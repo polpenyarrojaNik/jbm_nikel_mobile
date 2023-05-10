@@ -95,6 +95,7 @@ const kUsuario = Usuario(
   provisionalToken: 'TEST-TOKEN',
   test: true,
   idiomaId: 'ES',
+  modificarPedido: true,
 );
 
 final kArticuloGrupoNetoDTO = ArticuloGrupoNetoDTO(

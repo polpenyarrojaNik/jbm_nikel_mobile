@@ -19,6 +19,8 @@ class UsuarioDTO with _$UsuarioDTO {
     @JsonKey(name: 'REFRESH_TOKEN') String? refreshToken,
     @JsonKey(name: 'TEST') required String test,
     @JsonKey(name: 'IDIOMA_ID') required String idiomaId,
+    @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')
+        required String modificarPedido,
   }) = _UsuarioDTO;
 
   DateTime? get expiration {
@@ -47,6 +49,7 @@ class UsuarioDTO with _$UsuarioDTO {
       refreshToken: _.refreshToken,
       test: (_.test) ? 'S' : 'N',
       idiomaId: _.idiomaId,
+      modificarPedido: _.modificarPedido ? 'S' : 'N',
     );
   }
 
@@ -60,6 +63,7 @@ class UsuarioDTO with _$UsuarioDTO {
       refreshToken: refreshToken,
       test: (test == 'S') ? true : false,
       idiomaId: idiomaId,
+      modificarPedido: modificarPedido == 'S',
     );
   }
 }

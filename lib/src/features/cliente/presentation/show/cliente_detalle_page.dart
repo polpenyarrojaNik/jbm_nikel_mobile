@@ -91,7 +91,8 @@ class ClienteDetallePage extends ConsumerWidget {
         ref.read(deletePedidoVentaProvider(pedidoVentaBorradorId));
         if (context.mounted) {
           context.router.push(
-            PedidoVentaEditRoute(createPedidoFromClienteId: clienteId),
+            PedidoVentaEditRoute(
+                createPedidoFromClienteId: clienteId, isLocal: true),
           );
         }
       }
@@ -99,11 +100,14 @@ class ClienteDetallePage extends ConsumerWidget {
         clienteId == pedidoVentaClienteId) {
       context.router.push(
         PedidoVentaEditRoute(
-            id: pedidoVentaBorradorId, createPedidoFromClienteId: clienteId),
+            pedidoAppId: pedidoVentaBorradorId,
+            createPedidoFromClienteId: clienteId,
+            isLocal: true),
       );
     } else {
       context.router.push(
-        PedidoVentaEditRoute(createPedidoFromClienteId: clienteId),
+        PedidoVentaEditRoute(
+            createPedidoFromClienteId: clienteId, isLocal: true),
       );
     }
   }

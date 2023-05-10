@@ -24,6 +24,7 @@ mixin _$Usuario {
   String get provisionalToken => throw _privateConstructorUsedError;
   bool get test => throw _privateConstructorUsedError;
   String get idiomaId => throw _privateConstructorUsedError;
+  bool get modificarPedido => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UsuarioCopyWith<Usuario> get copyWith => throw _privateConstructorUsedError;
@@ -42,7 +43,8 @@ abstract class $UsuarioCopyWith<$Res> {
       String? refreshToken,
       String provisionalToken,
       bool test,
-      String idiomaId});
+      String idiomaId,
+      bool modificarPedido});
 }
 
 /// @nodoc
@@ -66,6 +68,7 @@ class _$UsuarioCopyWithImpl<$Res, $Val extends Usuario>
     Object? provisionalToken = null,
     Object? test = null,
     Object? idiomaId = null,
+    Object? modificarPedido = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -100,6 +103,10 @@ class _$UsuarioCopyWithImpl<$Res, $Val extends Usuario>
           ? _value.idiomaId
           : idiomaId // ignore: cast_nullable_to_non_nullable
               as String,
+      modificarPedido: null == modificarPedido
+          ? _value.modificarPedido
+          : modificarPedido // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -119,7 +126,8 @@ abstract class _$$_UsuarioCopyWith<$Res> implements $UsuarioCopyWith<$Res> {
       String? refreshToken,
       String provisionalToken,
       bool test,
-      String idiomaId});
+      String idiomaId,
+      bool modificarPedido});
 }
 
 /// @nodoc
@@ -140,6 +148,7 @@ class __$$_UsuarioCopyWithImpl<$Res>
     Object? provisionalToken = null,
     Object? test = null,
     Object? idiomaId = null,
+    Object? modificarPedido = null,
   }) {
     return _then(_$_Usuario(
       id: null == id
@@ -174,6 +183,10 @@ class __$$_UsuarioCopyWithImpl<$Res>
           ? _value.idiomaId
           : idiomaId // ignore: cast_nullable_to_non_nullable
               as String,
+      modificarPedido: null == modificarPedido
+          ? _value.modificarPedido
+          : modificarPedido // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -189,7 +202,8 @@ class _$_Usuario extends _Usuario {
       this.refreshToken,
       required this.provisionalToken,
       required this.test,
-      required this.idiomaId})
+      required this.idiomaId,
+      required this.modificarPedido})
       : super._();
 
   @override
@@ -208,10 +222,12 @@ class _$_Usuario extends _Usuario {
   final bool test;
   @override
   final String idiomaId;
+  @override
+  final bool modificarPedido;
 
   @override
   String toString() {
-    return 'Usuario(id: $id, usuario: $usuario, contrasenya: $contrasenya, nombreUsuario: $nombreUsuario, refreshToken: $refreshToken, provisionalToken: $provisionalToken, test: $test, idiomaId: $idiomaId)';
+    return 'Usuario(id: $id, usuario: $usuario, contrasenya: $contrasenya, nombreUsuario: $nombreUsuario, refreshToken: $refreshToken, provisionalToken: $provisionalToken, test: $test, idiomaId: $idiomaId, modificarPedido: $modificarPedido)';
   }
 
   @override
@@ -231,12 +247,23 @@ class _$_Usuario extends _Usuario {
                 other.provisionalToken == provisionalToken) &&
             (identical(other.test, test) || other.test == test) &&
             (identical(other.idiomaId, idiomaId) ||
-                other.idiomaId == idiomaId));
+                other.idiomaId == idiomaId) &&
+            (identical(other.modificarPedido, modificarPedido) ||
+                other.modificarPedido == modificarPedido));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, usuario, contrasenya,
-      nombreUsuario, refreshToken, provisionalToken, test, idiomaId);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      usuario,
+      contrasenya,
+      nombreUsuario,
+      refreshToken,
+      provisionalToken,
+      test,
+      idiomaId,
+      modificarPedido);
 
   @JsonKey(ignore: true)
   @override
@@ -254,7 +281,8 @@ abstract class _Usuario extends Usuario {
       final String? refreshToken,
       required final String provisionalToken,
       required final bool test,
-      required final String idiomaId}) = _$_Usuario;
+      required final String idiomaId,
+      required final bool modificarPedido}) = _$_Usuario;
   const _Usuario._() : super._();
 
   @override
@@ -273,6 +301,8 @@ abstract class _Usuario extends Usuario {
   bool get test;
   @override
   String get idiomaId;
+  @override
+  bool get modificarPedido;
   @override
   @JsonKey(ignore: true)
   _$$_UsuarioCopyWith<_$_Usuario> get copyWith =>

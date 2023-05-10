@@ -16,8 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SeleccionarCantidadParam {
-  EntityIdIsLocalParam get pedidoVentaIdIsLocalParam =>
-      throw _privateConstructorUsedError;
+  PedidoLocalParam get pedidoVentaParam => throw _privateConstructorUsedError;
   String get clienteId => throw _privateConstructorUsedError;
   String get articuloId => throw _privateConstructorUsedError;
   int? get cantidad => throw _privateConstructorUsedError;
@@ -40,7 +39,7 @@ abstract class $SeleccionarCantidadParamCopyWith<$Res> {
       _$SeleccionarCantidadParamCopyWithImpl<$Res, SeleccionarCantidadParam>;
   @useResult
   $Res call(
-      {EntityIdIsLocalParam pedidoVentaIdIsLocalParam,
+      {PedidoLocalParam pedidoVentaParam,
       String clienteId,
       String articuloId,
       int? cantidad,
@@ -51,7 +50,7 @@ abstract class $SeleccionarCantidadParamCopyWith<$Res> {
       int posicionLinea,
       bool addNewLineaDesdeArticulo});
 
-  $EntityIdIsLocalParamCopyWith<$Res> get pedidoVentaIdIsLocalParam;
+  $PedidoLocalParamCopyWith<$Res> get pedidoVentaParam;
 }
 
 /// @nodoc
@@ -68,7 +67,7 @@ class _$SeleccionarCantidadParamCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pedidoVentaIdIsLocalParam = null,
+    Object? pedidoVentaParam = null,
     Object? clienteId = null,
     Object? articuloId = null,
     Object? cantidad = freezed,
@@ -80,10 +79,10 @@ class _$SeleccionarCantidadParamCopyWithImpl<$Res,
     Object? addNewLineaDesdeArticulo = null,
   }) {
     return _then(_value.copyWith(
-      pedidoVentaIdIsLocalParam: null == pedidoVentaIdIsLocalParam
-          ? _value.pedidoVentaIdIsLocalParam
-          : pedidoVentaIdIsLocalParam // ignore: cast_nullable_to_non_nullable
-              as EntityIdIsLocalParam,
+      pedidoVentaParam: null == pedidoVentaParam
+          ? _value.pedidoVentaParam
+          : pedidoVentaParam // ignore: cast_nullable_to_non_nullable
+              as PedidoLocalParam,
       clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
@@ -125,10 +124,9 @@ class _$SeleccionarCantidadParamCopyWithImpl<$Res,
 
   @override
   @pragma('vm:prefer-inline')
-  $EntityIdIsLocalParamCopyWith<$Res> get pedidoVentaIdIsLocalParam {
-    return $EntityIdIsLocalParamCopyWith<$Res>(_value.pedidoVentaIdIsLocalParam,
-        (value) {
-      return _then(_value.copyWith(pedidoVentaIdIsLocalParam: value) as $Val);
+  $PedidoLocalParamCopyWith<$Res> get pedidoVentaParam {
+    return $PedidoLocalParamCopyWith<$Res>(_value.pedidoVentaParam, (value) {
+      return _then(_value.copyWith(pedidoVentaParam: value) as $Val);
     });
   }
 }
@@ -143,7 +141,7 @@ abstract class _$$_SeleccionarCantidadParamCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {EntityIdIsLocalParam pedidoVentaIdIsLocalParam,
+      {PedidoLocalParam pedidoVentaParam,
       String clienteId,
       String articuloId,
       int? cantidad,
@@ -155,7 +153,7 @@ abstract class _$$_SeleccionarCantidadParamCopyWith<$Res>
       bool addNewLineaDesdeArticulo});
 
   @override
-  $EntityIdIsLocalParamCopyWith<$Res> get pedidoVentaIdIsLocalParam;
+  $PedidoLocalParamCopyWith<$Res> get pedidoVentaParam;
 }
 
 /// @nodoc
@@ -170,7 +168,7 @@ class __$$_SeleccionarCantidadParamCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pedidoVentaIdIsLocalParam = null,
+    Object? pedidoVentaParam = null,
     Object? clienteId = null,
     Object? articuloId = null,
     Object? cantidad = freezed,
@@ -182,10 +180,10 @@ class __$$_SeleccionarCantidadParamCopyWithImpl<$Res>
     Object? addNewLineaDesdeArticulo = null,
   }) {
     return _then(_$_SeleccionarCantidadParam(
-      pedidoVentaIdIsLocalParam: null == pedidoVentaIdIsLocalParam
-          ? _value.pedidoVentaIdIsLocalParam
-          : pedidoVentaIdIsLocalParam // ignore: cast_nullable_to_non_nullable
-              as EntityIdIsLocalParam,
+      pedidoVentaParam: null == pedidoVentaParam
+          ? _value.pedidoVentaParam
+          : pedidoVentaParam // ignore: cast_nullable_to_non_nullable
+              as PedidoLocalParam,
       clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
@@ -230,7 +228,7 @@ class __$$_SeleccionarCantidadParamCopyWithImpl<$Res>
 
 class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
   const _$_SeleccionarCantidadParam(
-      {required this.pedidoVentaIdIsLocalParam,
+      {required this.pedidoVentaParam,
       required this.clienteId,
       required this.articuloId,
       this.cantidad,
@@ -243,7 +241,7 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
       : super._();
 
   @override
-  final EntityIdIsLocalParam pedidoVentaIdIsLocalParam;
+  final PedidoLocalParam pedidoVentaParam;
   @override
   final String clienteId;
   @override
@@ -265,7 +263,7 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
 
   @override
   String toString() {
-    return 'SeleccionarCantidadParam(pedidoVentaIdIsLocalParam: $pedidoVentaIdIsLocalParam, clienteId: $clienteId, articuloId: $articuloId, cantidad: $cantidad, precio: $precio, descuento1: $descuento1, descuento2: $descuento2, createdFromCliente: $createdFromCliente, posicionLinea: $posicionLinea, addNewLineaDesdeArticulo: $addNewLineaDesdeArticulo)';
+    return 'SeleccionarCantidadParam(pedidoVentaParam: $pedidoVentaParam, clienteId: $clienteId, articuloId: $articuloId, cantidad: $cantidad, precio: $precio, descuento1: $descuento1, descuento2: $descuento2, createdFromCliente: $createdFromCliente, posicionLinea: $posicionLinea, addNewLineaDesdeArticulo: $addNewLineaDesdeArticulo)';
   }
 
   @override
@@ -273,9 +271,8 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SeleccionarCantidadParam &&
-            (identical(other.pedidoVentaIdIsLocalParam,
-                    pedidoVentaIdIsLocalParam) ||
-                other.pedidoVentaIdIsLocalParam == pedidoVentaIdIsLocalParam) &&
+            (identical(other.pedidoVentaParam, pedidoVentaParam) ||
+                other.pedidoVentaParam == pedidoVentaParam) &&
             (identical(other.clienteId, clienteId) ||
                 other.clienteId == clienteId) &&
             (identical(other.articuloId, articuloId) ||
@@ -299,7 +296,7 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      pedidoVentaIdIsLocalParam,
+      pedidoVentaParam,
       clienteId,
       articuloId,
       cantidad,
@@ -320,7 +317,7 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
 
 abstract class _SeleccionarCantidadParam extends SeleccionarCantidadParam {
   const factory _SeleccionarCantidadParam(
-          {required final EntityIdIsLocalParam pedidoVentaIdIsLocalParam,
+          {required final PedidoLocalParam pedidoVentaParam,
           required final String clienteId,
           required final String articuloId,
           final int? cantidad,
@@ -334,7 +331,7 @@ abstract class _SeleccionarCantidadParam extends SeleccionarCantidadParam {
   const _SeleccionarCantidadParam._() : super._();
 
   @override
-  EntityIdIsLocalParam get pedidoVentaIdIsLocalParam;
+  PedidoLocalParam get pedidoVentaParam;
   @override
   String get clienteId;
   @override

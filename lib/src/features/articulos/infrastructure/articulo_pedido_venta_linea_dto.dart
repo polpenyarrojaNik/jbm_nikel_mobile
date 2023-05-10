@@ -60,7 +60,7 @@ class ArticuloPedidoVentaLineaDTO with _$ArticuloPedidoVentaLineaDTO {
       required String nombreCliente}) {
     return ArticuloPedidoVentaLineaDTO(
         empresaId: pedidoVentaLineaDto.empresaId,
-        pedidoVentaId: pedidoVentaLineaDto.pedidoVentaId,
+        pedidoVentaId: pedidoVentaLineaDto.pedidoId,
         id: pedidoVentaLineaDto.pedidoVentaLineaId,
         articuloId: pedidoVentaLineaDto.articuloId,
         articuloDescription: pedidoVentaLineaDto.articuloDescription,

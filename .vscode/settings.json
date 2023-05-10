@@ -8,8 +8,12 @@
     "**/.DS_Store": true,
     "**/Thumbs.db": true,
     "**/*.freezed.dart": true,
-    "**/*.g.dart": true,
+    "**/*.g.dart": false,
     "**/.gitkeep": true,
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": false,
+    "**/.factorypath": true,
     ".vscode": true,
     "**/.dart_tool": true,
     "**/.idea": true

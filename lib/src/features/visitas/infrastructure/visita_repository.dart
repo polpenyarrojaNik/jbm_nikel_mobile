@@ -9,12 +9,12 @@ import 'package:jbm_nikel_mobile/src/core/infrastructure/dio_extension.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/infrastructure/visita_local_dto.dart';
 
-import '../../../core/domain/entity_id_is_local_param.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/infrastructure/local_database.dart' as local;
 import '../../../core/presentation/app.dart';
 import '../../usuario/domain/usuario.dart';
 import '../domain/visita.dart';
+import '../domain/visita_id_param.dart';
 
 final visitaRepositoryProvider = Provider.autoDispose<VisitaRepository>(
   (ref) {
@@ -34,7 +34,7 @@ final visitaLastSyncDateProvider =
 });
 
 final visitaProvider = FutureProvider.autoDispose
-    .family<Visita, EntityIdIsLocalParam>((ref, visitaIdIsLocalParam) {
+    .family<Visita, VisitaIdIsLocalParam>((ref, visitaIdIsLocalParam) {
   final visitaRepository = ref.watch(visitaRepositoryProvider);
   return visitaRepository.getVisitaById(
       visitaIdIsLocalParam: visitaIdIsLocalParam);
@@ -117,7 +117,7 @@ class VisitaRepository {
   }
 
   Future<Visita> getVisitaById(
-      {required EntityIdIsLocalParam visitaIdIsLocalParam}) async {
+      {required VisitaIdIsLocalParam visitaIdIsLocalParam}) async {
     try {
       if (!visitaIdIsLocalParam.isLocal) {
         return await getVisita(visitaId: visitaIdIsLocalParam.id);

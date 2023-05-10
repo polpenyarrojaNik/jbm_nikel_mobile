@@ -8,10 +8,10 @@ class PedidoVentaLinea with _$PedidoVentaLinea {
   const PedidoVentaLinea._();
   const factory PedidoVentaLinea({
     String? empresaId,
-    String? pedidoVentaId,
+    String? pedidoId,
     String? pedidoVentaLineaId,
     String? pedidoVentaAppId,
-    String? pedidoVentaLineaAppId,
+    // String? pedidoVentaLineaAppId,
     required String articuloId,
     required String articuloDescription,
     required int cantidad,
@@ -33,5 +33,5 @@ class PedidoVentaLinea with _$PedidoVentaLinea {
     required bool deleted,
   }) = _PedidoVentaLinea;
 
-  bool isComponente() => pedidoLineaIdComponente != null;
+  bool get isComponente => pedidoLineaIdComponente != null;
 }

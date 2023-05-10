@@ -987,12 +987,10 @@ class SyncService {
         final pedidoNoTratado = pedidosNoTratadosDTO[i];
 
         final pedidoNoTratadoExisitInPedidos =
-            await (_remoteDb.select(_remoteDb.pedidoVentaTable)
-                  ..where((tbl) => tbl.pedidoVentaAppId
-                      .equals(pedidoNoTratado.pedidoVentaAppId)))
-                .getSingleOrNull();
+            await checkIfPedidosHaSidoImportado(
+                pedidoNoTratado.pedidoVentaAppId);
 
-        if (pedidoNoTratadoExisitInPedidos != null) {
+        if (pedidoNoTratadoExisitInPedidos) {
           await _localDb
               .update(_localDb.pedidoVentaLocalTable)
               .write(const PedidoVentaLocalTableCompanion(tratada: Value('S')));
@@ -1217,6 +1215,52 @@ class SyncService {
         final clienteDireccionHaveBeenTratada = response.data['data'] as bool;
 
         return clienteDireccionHaveBeenTratada;
+      } else {
+        throw AppException.restApiFailure(
+            response.statusCode ?? 400, response.statusMessage ?? '');
+      }
+    } catch (e) {
+      throw getApiError(e);
+    }
+  }
+
+  Future<bool> checkIfPedidosHaSidoImportado(String pedidoVentaAppId) async {
+    final pedidoExistInSyncTable =
+        await (_remoteDb.select(_remoteDb.pedidoVentaTable)
+              ..where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId)))
+            .getSingleOrNull();
+
+    if (pedidoExistInSyncTable == null) {
+      return await checkPedidoImportado(pedidoVentaAppId);
+    }
+
+    return true;
+  }
+
+  Future<bool> checkPedidoImportado(String pedidoVentaAppId) async {
+    try {
+      final requestUri = (_usuario!.test)
+          ? Uri.http(
+              // dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              'jbm-api-test.nikel.es:8080',
+              'api/v1/sync/pedidos/$pedidoVentaAppId/check',
+            )
+          : Uri.https(
+              // dotenv.get('URL', fallback: 'localhost:3001'),
+              'jbm-api.nikel.es',
+              'api/v1/sync/clientes/pedidos/$pedidoVentaAppId/check',
+            );
+
+      final response = await _dio.getUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer ${_usuario!.provisionalToken}'},
+        ),
+      );
+      if (response.statusCode == 200) {
+        final pedidoHaSidoImportado = response.data['data'] as bool;
+
+        return pedidoHaSidoImportado;
       } else {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');

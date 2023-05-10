@@ -90,6 +90,7 @@ class PedidoVentaDTO
       tipoVenta: tipoVenta,
       clienteId: clienteId,
       nombreCliente: nombreCliente,
+      direccionId: direccionId,
       direccionEntrga1: direccionEntrga1,
       direccionEntrga2: direccionEntrga2,
       codigoPostal: codigoPostal,

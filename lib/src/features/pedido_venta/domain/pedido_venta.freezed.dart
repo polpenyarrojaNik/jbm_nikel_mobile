@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$PedidoVenta {
-  String get empresaId => throw _privateConstructorUsedError;
+  String? get empresaId => throw _privateConstructorUsedError;
   String? get pedidoVentaId => throw _privateConstructorUsedError;
   String? get pedidoVentaAppId => throw _privateConstructorUsedError;
   String? get usuarioId => throw _privateConstructorUsedError;
@@ -65,7 +65,7 @@ abstract class $PedidoVentaCopyWith<$Res> {
       _$PedidoVentaCopyWithImpl<$Res, PedidoVenta>;
   @useResult
   $Res call(
-      {String empresaId,
+      {String? empresaId,
       String? pedidoVentaId,
       String? pedidoVentaAppId,
       String? usuarioId,
@@ -119,7 +119,7 @@ class _$PedidoVentaCopyWithImpl<$Res, $Val extends PedidoVenta>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? empresaId = null,
+    Object? empresaId = freezed,
     Object? pedidoVentaId = freezed,
     Object? pedidoVentaAppId = freezed,
     Object? usuarioId = freezed,
@@ -156,10 +156,10 @@ class _$PedidoVentaCopyWithImpl<$Res, $Val extends PedidoVenta>
     Object? errorSyncMessage = freezed,
   }) {
     return _then(_value.copyWith(
-      empresaId: null == empresaId
+      empresaId: freezed == empresaId
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       pedidoVentaId: freezed == pedidoVentaId
           ? _value.pedidoVentaId
           : pedidoVentaId // ignore: cast_nullable_to_non_nullable
@@ -341,7 +341,7 @@ abstract class _$$_PedidoVentaCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String empresaId,
+      {String? empresaId,
       String? pedidoVentaId,
       String? pedidoVentaAppId,
       String? usuarioId,
@@ -396,7 +396,7 @@ class __$$_PedidoVentaCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? empresaId = null,
+    Object? empresaId = freezed,
     Object? pedidoVentaId = freezed,
     Object? pedidoVentaAppId = freezed,
     Object? usuarioId = freezed,
@@ -433,10 +433,10 @@ class __$$_PedidoVentaCopyWithImpl<$Res>
     Object? errorSyncMessage = freezed,
   }) {
     return _then(_$_PedidoVenta(
-      empresaId: null == empresaId
+      empresaId: freezed == empresaId
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       pedidoVentaId: freezed == pedidoVentaId
           ? _value.pedidoVentaId
           : pedidoVentaId // ignore: cast_nullable_to_non_nullable
@@ -581,7 +581,7 @@ class __$$_PedidoVentaCopyWithImpl<$Res>
 
 class _$_PedidoVenta extends _PedidoVenta {
   const _$_PedidoVenta(
-      {required this.empresaId,
+      {this.empresaId,
       this.pedidoVentaId,
       this.pedidoVentaAppId,
       this.usuarioId,
@@ -619,7 +619,7 @@ class _$_PedidoVenta extends _PedidoVenta {
       : super._();
 
   @override
-  final String empresaId;
+  final String? empresaId;
   @override
   final String? pedidoVentaId;
   @override
@@ -812,7 +812,7 @@ class _$_PedidoVenta extends _PedidoVenta {
 
 abstract class _PedidoVenta extends PedidoVenta {
   const factory _PedidoVenta(
-      {required final String empresaId,
+      {final String? empresaId,
       final String? pedidoVentaId,
       final String? pedidoVentaAppId,
       final String? usuarioId,
@@ -850,7 +850,7 @@ abstract class _PedidoVenta extends PedidoVenta {
   const _PedidoVenta._() : super._();
 
   @override
-  String get empresaId;
+  String? get empresaId;
   @override
   String? get pedidoVentaId;
   @override

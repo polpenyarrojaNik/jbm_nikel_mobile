@@ -52,7 +52,9 @@ import '../../features/visitas/presentation/index/visita_lista_page.dart';
 import '../../features/visitas/presentation/show/visita_detalle_page.dart';
 import '../../features/cliente/domain/cliente_imp_param.dart';
 import '../domain/pais.dart';
-import '../domain/entity_id_is_local_param.dart';
+import '../../features/pedido_venta/domain/pedido_local_param.dart';
+import '../../features/visitas/domain/visita_id_param.dart';
+
 part 'app_auto_router.gr.dart';
 
 @MaterialAutoRouter(

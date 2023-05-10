@@ -170,14 +170,12 @@ final articuloVentasClienteProvider = FutureProvider.autoDispose
 });
 
 final articuloUltimosPreciosProvider = FutureProvider.autoDispose
-    .family<EstadisticasUltimosPrecios?, PedidoVentaLineaUltimosPreciosParam>(
+    .family<EstadisticasUltimosPrecios?, UltimosPreciosParam>(
         (ref, ultimosPreciosParam) async {
   final articuloRepository = ref.watch(articuloRepositoryProvider);
-  final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
   return articuloRepository.getArticuloUltimosPrecios(
     articuloId: ultimosPreciosParam.articuloId,
     clienteId: ultimosPreciosParam.clienteId,
-    usuarioId: usuario!.id,
   );
 });
 
@@ -572,7 +570,7 @@ SELECT *
         innerJoin(
             _remoteDb.pedidoVentaTable,
             (_remoteDb.pedidoVentaTable.pedidoVentaId
-                    .equalsExp(_remoteDb.pedidoVentaLineaTable.pedidoVentaId) &
+                    .equalsExp(_remoteDb.pedidoVentaLineaTable.pedidoId) &
                 _remoteDb.pedidoVentaTable.empresaId
                     .equalsExp(_remoteDb.pedidoVentaLineaTable.empresaId))),
         innerJoin(
@@ -664,9 +662,7 @@ SELECT *
   }
 
   Future<EstadisticasUltimosPrecios?> getArticuloUltimosPrecios(
-      {required String articuloId,
-      required String clienteId,
-      required String usuarioId}) async {
+      {required String articuloId, required String clienteId}) async {
     try {
       final query =
           _remoteDb.select(_remoteDb.estadisticasUltimosPreciosTable).join([
@@ -681,7 +677,6 @@ SELECT *
       ]);
       query.where((_remoteDb.estadisticasUltimosPreciosTable.articuloId
               .equals(articuloId) &
-          _remoteDb.clienteUsuarioTable.usuarioId.equals(usuarioId) &
           _remoteDb.clienteTable.id.equals(clienteId)));
 
       query.orderBy(

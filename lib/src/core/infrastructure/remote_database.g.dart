@@ -2490,10 +2490,10 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
   late final GeneratedColumn<String> empresaId = GeneratedColumn<String>(
       'EMPRESA_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _pedidoVentaIdMeta =
-      const VerificationMeta('pedidoVentaId');
+  static const VerificationMeta _pedidoIdMeta =
+      const VerificationMeta('pedidoId');
   @override
-  late final GeneratedColumn<String> pedidoVentaId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> pedidoId = GeneratedColumn<String>(
       'PEDIDO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _pedidoVentaLineaIdMeta =
@@ -2585,7 +2585,7 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
   @override
   List<GeneratedColumn> get $columns => [
         empresaId,
-        pedidoVentaId,
+        pedidoId,
         pedidoVentaLineaId,
         articuloId,
         articuloDescription,
@@ -2618,12 +2618,10 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
       context.missing(_empresaIdMeta);
     }
     if (data.containsKey('PEDIDO_ID')) {
-      context.handle(
-          _pedidoVentaIdMeta,
-          pedidoVentaId.isAcceptableOrUnknown(
-              data['PEDIDO_ID']!, _pedidoVentaIdMeta));
+      context.handle(_pedidoIdMeta,
+          pedidoId.isAcceptableOrUnknown(data['PEDIDO_ID']!, _pedidoIdMeta));
     } else if (isInserting) {
-      context.missing(_pedidoVentaIdMeta);
+      context.missing(_pedidoIdMeta);
     }
     if (data.containsKey('PEDIDO_LINEA_ID')) {
       context.handle(
@@ -2733,14 +2731,14 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
 
   @override
   Set<GeneratedColumn> get $primaryKey =>
-      {pedidoVentaId, empresaId, pedidoVentaLineaId};
+      {pedidoId, empresaId, pedidoVentaLineaId};
   @override
   PedidoVentaLineaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return PedidoVentaLineaDTO(
       empresaId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}EMPRESA_ID'])!,
-      pedidoVentaId: attachedDatabase.typeMapping
+      pedidoId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}PEDIDO_ID'])!,
       pedidoVentaLineaId: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}PEDIDO_LINEA_ID'])!,
@@ -2783,7 +2781,7 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
 class PedidoVentaLineaTableCompanion
     extends UpdateCompanion<PedidoVentaLineaDTO> {
   final Value<String> empresaId;
-  final Value<String> pedidoVentaId;
+  final Value<String> pedidoId;
   final Value<String> pedidoVentaLineaId;
   final Value<String> articuloId;
   final Value<String> articuloDescription;
@@ -2800,7 +2798,7 @@ class PedidoVentaLineaTableCompanion
   final Value<String> deleted;
   const PedidoVentaLineaTableCompanion({
     this.empresaId = const Value.absent(),
-    this.pedidoVentaId = const Value.absent(),
+    this.pedidoId = const Value.absent(),
     this.pedidoVentaLineaId = const Value.absent(),
     this.articuloId = const Value.absent(),
     this.articuloDescription = const Value.absent(),
@@ -2818,7 +2816,7 @@ class PedidoVentaLineaTableCompanion
   });
   PedidoVentaLineaTableCompanion.insert({
     required String empresaId,
-    required String pedidoVentaId,
+    required String pedidoId,
     required String pedidoVentaLineaId,
     required String articuloId,
     required String articuloDescription,
@@ -2834,7 +2832,7 @@ class PedidoVentaLineaTableCompanion
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : empresaId = Value(empresaId),
-        pedidoVentaId = Value(pedidoVentaId),
+        pedidoId = Value(pedidoId),
         pedidoVentaLineaId = Value(pedidoVentaLineaId),
         articuloId = Value(articuloId),
         articuloDescription = Value(articuloDescription),
@@ -2848,7 +2846,7 @@ class PedidoVentaLineaTableCompanion
         lastUpdated = Value(lastUpdated);
   static Insertable<PedidoVentaLineaDTO> custom({
     Expression<String>? empresaId,
-    Expression<String>? pedidoVentaId,
+    Expression<String>? pedidoId,
     Expression<String>? pedidoVentaLineaId,
     Expression<String>? articuloId,
     Expression<String>? articuloDescription,
@@ -2866,7 +2864,7 @@ class PedidoVentaLineaTableCompanion
   }) {
     return RawValuesInsertable({
       if (empresaId != null) 'EMPRESA_ID': empresaId,
-      if (pedidoVentaId != null) 'PEDIDO_ID': pedidoVentaId,
+      if (pedidoId != null) 'PEDIDO_ID': pedidoId,
       if (pedidoVentaLineaId != null) 'PEDIDO_LINEA_ID': pedidoVentaLineaId,
       if (articuloId != null) 'ARTICULO_ID': articuloId,
       if (articuloDescription != null)
@@ -2888,7 +2886,7 @@ class PedidoVentaLineaTableCompanion
 
   PedidoVentaLineaTableCompanion copyWith(
       {Value<String>? empresaId,
-      Value<String>? pedidoVentaId,
+      Value<String>? pedidoId,
       Value<String>? pedidoVentaLineaId,
       Value<String>? articuloId,
       Value<String>? articuloDescription,
@@ -2905,7 +2903,7 @@ class PedidoVentaLineaTableCompanion
       Value<String>? deleted}) {
     return PedidoVentaLineaTableCompanion(
       empresaId: empresaId ?? this.empresaId,
-      pedidoVentaId: pedidoVentaId ?? this.pedidoVentaId,
+      pedidoId: pedidoId ?? this.pedidoId,
       pedidoVentaLineaId: pedidoVentaLineaId ?? this.pedidoVentaLineaId,
       articuloId: articuloId ?? this.articuloId,
       articuloDescription: articuloDescription ?? this.articuloDescription,
@@ -2930,8 +2928,8 @@ class PedidoVentaLineaTableCompanion
     if (empresaId.present) {
       map['EMPRESA_ID'] = Variable<String>(empresaId.value);
     }
-    if (pedidoVentaId.present) {
-      map['PEDIDO_ID'] = Variable<String>(pedidoVentaId.value);
+    if (pedidoId.present) {
+      map['PEDIDO_ID'] = Variable<String>(pedidoId.value);
     }
     if (pedidoVentaLineaId.present) {
       map['PEDIDO_LINEA_ID'] = Variable<String>(pedidoVentaLineaId.value);
@@ -2983,7 +2981,7 @@ class PedidoVentaLineaTableCompanion
   String toString() {
     return (StringBuffer('PedidoVentaLineaTableCompanion(')
           ..write('empresaId: $empresaId, ')
-          ..write('pedidoVentaId: $pedidoVentaId, ')
+          ..write('pedidoId: $pedidoId, ')
           ..write('pedidoVentaLineaId: $pedidoVentaLineaId, ')
           ..write('articuloId: $articuloId, ')
           ..write('articuloDescription: $articuloDescription, ')

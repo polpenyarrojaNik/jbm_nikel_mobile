@@ -2,11 +2,11 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 
-import '../../../../core/domain/entity_id_is_local_param.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/chip_container.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/visita.dart';
+import '../../domain/visita_id_param.dart';
 
 class VisitaListaTile extends StatelessWidget {
   const VisitaListaTile(
@@ -72,7 +72,7 @@ class VisitaListaTile extends StatelessWidget {
     context.router.push(
       VisitaDetalleRoute(
         visitaIdIsLocalParam:
-            EntityIdIsLocalParam(id: id, isLocal: isLocal, isNew: false),
+            VisitaIdIsLocalParam(id: id, isLocal: isLocal, isNew: false),
       ),
     );
   }

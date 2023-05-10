@@ -106,14 +106,14 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
 
   void navigateToCreatePedido(BuildContext context) {
     context.router.push(
-      PedidoVentaEditRoute(id: null),
+      PedidoVentaEditRoute(isLocal: true),
     );
   }
 
   void navigateToEditPedidoBorrador(
       BuildContext context, String pedidoVentaBorradorId) async {
     context.router.push(
-      PedidoVentaEditRoute(id: pedidoVentaBorradorId),
+      PedidoVentaEditRoute(pedidoAppId: pedidoVentaBorradorId, isLocal: true),
     );
   }
 

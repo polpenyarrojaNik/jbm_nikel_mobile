@@ -20,8 +20,9 @@ class PedidoVentaLocalDTO
   const PedidoVentaLocalDTO._();
   const factory PedidoVentaLocalDTO({
     @JsonKey(name: 'USUARIO_ID') String? usuarioId,
+    @JsonKey(name: 'PEDIDO_ID') String? pedidoId,
+    @JsonKey(name: 'EMPRESA_ID') String? empresaId,
     @JsonKey(name: 'PEDIDO_APP_ID') required String pedidoVentaAppId,
-    @JsonKey(name: 'EMPRESA_ID') required String empresaId,
     @JsonKey(name: 'CLIENTE_ID') required String clienteId,
     @JsonKey(name: 'NOMBRE_CLIENTE') required String nombreCliente,
     @JsonKey(name: 'DIRECCION_ID') String? direccionId,
@@ -52,6 +53,7 @@ class PedidoVentaLocalDTO
     return PedidoVentaLocalDTO(
       usuarioId: _.usuarioId,
       pedidoVentaAppId: _.pedidoVentaAppId!,
+      pedidoId: _.pedidoVentaId,
       empresaId: _.empresaId,
       fechaAlta: _.pedidoVentaDate,
       clienteId: _.clienteId!,
@@ -79,6 +81,8 @@ class PedidoVentaLocalDTO
 
   factory PedidoVentaLocalDTO.fromForm(
     String pedidoVentaAppId,
+    String? pedidoId,
+    String? empresaId,
     String usuarioId,
     Cliente cliente,
     ClienteDireccion? clienteDireccion,
@@ -91,7 +95,8 @@ class PedidoVentaLocalDTO
     return PedidoVentaLocalDTO(
       usuarioId: usuarioId,
       pedidoVentaAppId: pedidoVentaAppId,
-      empresaId: cliente.empresaId,
+      empresaId: empresaId,
+      pedidoId: pedidoId,
       fechaAlta: DateTime.now().toUtc(),
       clienteId: cliente.id,
       nombreCliente: clienteDireccion?.nombre ?? cliente.nombreCliente,
@@ -127,7 +132,7 @@ class PedidoVentaLocalDTO
     return PedidoVenta(
       empresaId: empresaId,
       usuarioId: usuarioId,
-      pedidoVentaId: null,
+      pedidoVentaId: pedidoId,
       pedidoVentaAppId: pedidoVentaAppId,
       pedidoVentaDate: fechaAlta,
       tipoVenta: null,
@@ -168,6 +173,7 @@ class PedidoVentaLocalDTO
       usuarioId: Value(usuarioId),
       pedidoVentaAppId: Value(pedidoVentaAppId),
       empresaId: Value(empresaId),
+      pedidoId: Value(pedidoId),
       fechaAlta: Value(fechaAlta),
       clienteId: Value(clienteId),
       direccionId: Value(direccionId),
@@ -197,8 +203,8 @@ class PedidoVentaLocalDTO
 class PedidoVentaLocalTable extends Table {
   TextColumn get usuarioId => text().nullable().named('USUARIO_ID')();
   TextColumn get pedidoVentaAppId => text().named('PEDIDO_APP_ID')();
-  TextColumn get empresaId => text().named('EMPRESA_ID')();
-
+  TextColumn get empresaId => text().nullable().named('EMPRESA_ID')();
+  TextColumn get pedidoId => text().nullable().named('PEDIDO_ID')();
   DateTimeColumn get fechaAlta => dateTime().named('FECHA_ALTA')();
   TextColumn get clienteId => text().named('CLIENTE_ID')();
   TextColumn get nombreCliente => text().named('NOMBRE_CLIENTE')();

@@ -10,7 +10,7 @@ part 'pedido_venta.freezed.dart';
 class PedidoVenta with _$PedidoVenta {
   const PedidoVenta._();
   const factory PedidoVenta({
-    required String empresaId,
+    String? empresaId,
     String? pedidoVentaId,
     String? pedidoVentaAppId,
     String? usuarioId,
@@ -47,7 +47,8 @@ class PedidoVenta with _$PedidoVenta {
     String? errorSyncMessage,
   }) = _PedidoVenta;
 
-  bool getIsLocal() => !tratada;
+  bool get isEditable =>
+      ((!borrador && !tratada && !enviada) || pedidoVentaEstado?.id == 4);
 
-  bool isEditable() => (!borrador && !tratada && !enviada);
+  bool get isLocal => pedidoVentaId == null && empresaId == null;
 }

@@ -17,6 +17,8 @@ class PedidoVentaLineaLocalDTO
   const PedidoVentaLineaLocalDTO._();
   const factory PedidoVentaLineaLocalDTO({
     @JsonKey(name: 'PEDIDO_APP_ID') required String pedidoVentaAppId,
+    @JsonKey(name: 'EMPRESA_ID') String? empresaId,
+    @JsonKey(name: 'PEDIDO_ID') String? pedidoId,
     @JsonKey(name: 'LIN_APP_ID') required String pedidoVentaLineaAppId,
     @JsonKey(name: 'PRODUCTO_ID') required String articuloId,
     @JsonKey(name: 'DENOMINACION') required String articuloDescription,
@@ -38,7 +40,9 @@ class PedidoVentaLineaLocalDTO
   factory PedidoVentaLineaLocalDTO.fromDomain(PedidoVentaLinea _) {
     return _PedidoVentaLineaLocalDTO(
       pedidoVentaAppId: _.pedidoVentaAppId!,
-      pedidoVentaLineaAppId: _.pedidoVentaLineaAppId!,
+      pedidoId: _.pedidoId,
+      empresaId: _.empresaId,
+      pedidoVentaLineaAppId: _.pedidoVentaLineaId!,
       articuloId: _.articuloId,
       articuloDescription: _.articuloDescription,
       cantidad: _.cantidad,
@@ -55,11 +59,10 @@ class PedidoVentaLineaLocalDTO
 
   PedidoVentaLinea toDomain({required String divisaId, Money? importeLinea}) {
     return PedidoVentaLinea(
-        empresaId: null,
-        pedidoVentaId: null,
-        pedidoVentaLineaId: null,
+        empresaId: empresaId,
+        pedidoId: pedidoId,
         pedidoVentaAppId: pedidoVentaAppId,
-        pedidoVentaLineaAppId: pedidoVentaLineaAppId,
+        pedidoVentaLineaId: pedidoVentaLineaAppId,
         articuloId: articuloId,
         articuloDescription: articuloDescription,
         cantidad: cantidad,
@@ -84,6 +87,8 @@ class PedidoVentaLineaLocalDTO
   Map<String, Expression> toColumns(bool nullToAbsent) {
     return PedidoVentaLineaLocalTableCompanion(
       pedidoVentaAppId: Value(pedidoVentaAppId),
+      pedidoId: Value(pedidoId),
+      empresaId: Value(empresaId),
       pedidoVentaLineaAppId: Value(pedidoVentaLineaAppId),
       articuloId: Value(articuloId),
       articuloDescription: Value(articuloDescription),
@@ -104,6 +109,8 @@ class PedidoVentaLineaLocalDTO
 @UseRowClass(PedidoVentaLineaLocalDTO)
 class PedidoVentaLineaLocalTable extends Table {
   TextColumn get pedidoVentaAppId => text().named('PEDIDO_APP_ID')();
+  TextColumn get pedidoId => text().nullable().named('PEDIDO_ID')();
+  TextColumn get empresaId => text().nullable().named('EMPRESA_ID')();
   TextColumn get pedidoVentaLineaAppId => text().named('LIN_APP_ID')();
   TextColumn get articuloId => text().named('PRODUCTO_ID')();
   TextColumn get articuloDescription => text().named('DENOMINACION')();

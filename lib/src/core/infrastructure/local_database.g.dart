@@ -575,6 +575,18 @@ class $PedidoVentaLineaLocalTableTable extends PedidoVentaLineaLocalTable
   late final GeneratedColumn<String> pedidoVentaAppId = GeneratedColumn<String>(
       'PEDIDO_APP_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _pedidoIdMeta =
+      const VerificationMeta('pedidoId');
+  @override
+  late final GeneratedColumn<String> pedidoId = GeneratedColumn<String>(
+      'PEDIDO_ID', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _empresaIdMeta =
+      const VerificationMeta('empresaId');
+  @override
+  late final GeneratedColumn<String> empresaId = GeneratedColumn<String>(
+      'EMPRESA_ID', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _pedidoVentaLineaAppIdMeta =
       const VerificationMeta('pedidoVentaLineaAppId');
   @override
@@ -655,6 +667,8 @@ class $PedidoVentaLineaLocalTableTable extends PedidoVentaLineaLocalTable
   @override
   List<GeneratedColumn> get $columns => [
         pedidoVentaAppId,
+        pedidoId,
+        empresaId,
         pedidoVentaLineaAppId,
         articuloId,
         articuloDescription,
@@ -686,6 +700,14 @@ class $PedidoVentaLineaLocalTableTable extends PedidoVentaLineaLocalTable
               data['PEDIDO_APP_ID']!, _pedidoVentaAppIdMeta));
     } else if (isInserting) {
       context.missing(_pedidoVentaAppIdMeta);
+    }
+    if (data.containsKey('PEDIDO_ID')) {
+      context.handle(_pedidoIdMeta,
+          pedidoId.isAcceptableOrUnknown(data['PEDIDO_ID']!, _pedidoIdMeta));
+    }
+    if (data.containsKey('EMPRESA_ID')) {
+      context.handle(_empresaIdMeta,
+          empresaId.isAcceptableOrUnknown(data['EMPRESA_ID']!, _empresaIdMeta));
     }
     if (data.containsKey('LIN_APP_ID')) {
       context.handle(
@@ -790,6 +812,10 @@ class $PedidoVentaLineaLocalTableTable extends PedidoVentaLineaLocalTable
     return PedidoVentaLineaLocalDTO(
       pedidoVentaAppId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}PEDIDO_APP_ID'])!,
+      empresaId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}EMPRESA_ID']),
+      pedidoId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}PEDIDO_ID']),
       pedidoVentaLineaAppId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}LIN_APP_ID'])!,
       articuloId: attachedDatabase.typeMapping
@@ -828,6 +854,8 @@ class $PedidoVentaLineaLocalTableTable extends PedidoVentaLineaLocalTable
 class PedidoVentaLineaLocalTableCompanion
     extends UpdateCompanion<PedidoVentaLineaLocalDTO> {
   final Value<String> pedidoVentaAppId;
+  final Value<String?> pedidoId;
+  final Value<String?> empresaId;
   final Value<String> pedidoVentaLineaAppId;
   final Value<String> articuloId;
   final Value<String> articuloDescription;
@@ -843,6 +871,8 @@ class PedidoVentaLineaLocalTableCompanion
   final Value<double> iva;
   const PedidoVentaLineaLocalTableCompanion({
     this.pedidoVentaAppId = const Value.absent(),
+    this.pedidoId = const Value.absent(),
+    this.empresaId = const Value.absent(),
     this.pedidoVentaLineaAppId = const Value.absent(),
     this.articuloId = const Value.absent(),
     this.articuloDescription = const Value.absent(),
@@ -859,6 +889,8 @@ class PedidoVentaLineaLocalTableCompanion
   });
   PedidoVentaLineaLocalTableCompanion.insert({
     required String pedidoVentaAppId,
+    this.pedidoId = const Value.absent(),
+    this.empresaId = const Value.absent(),
     required String pedidoVentaLineaAppId,
     required String articuloId,
     required String articuloDescription,
@@ -887,6 +919,8 @@ class PedidoVentaLineaLocalTableCompanion
         iva = Value(iva);
   static Insertable<PedidoVentaLineaLocalDTO> custom({
     Expression<String>? pedidoVentaAppId,
+    Expression<String>? pedidoId,
+    Expression<String>? empresaId,
     Expression<String>? pedidoVentaLineaAppId,
     Expression<String>? articuloId,
     Expression<String>? articuloDescription,
@@ -903,6 +937,8 @@ class PedidoVentaLineaLocalTableCompanion
   }) {
     return RawValuesInsertable({
       if (pedidoVentaAppId != null) 'PEDIDO_APP_ID': pedidoVentaAppId,
+      if (pedidoId != null) 'PEDIDO_ID': pedidoId,
+      if (empresaId != null) 'EMPRESA_ID': empresaId,
       if (pedidoVentaLineaAppId != null) 'LIN_APP_ID': pedidoVentaLineaAppId,
       if (articuloId != null) 'PRODUCTO_ID': articuloId,
       if (articuloDescription != null) 'DENOMINACION': articuloDescription,
@@ -921,6 +957,8 @@ class PedidoVentaLineaLocalTableCompanion
 
   PedidoVentaLineaLocalTableCompanion copyWith(
       {Value<String>? pedidoVentaAppId,
+      Value<String?>? pedidoId,
+      Value<String?>? empresaId,
       Value<String>? pedidoVentaLineaAppId,
       Value<String>? articuloId,
       Value<String>? articuloDescription,
@@ -936,6 +974,8 @@ class PedidoVentaLineaLocalTableCompanion
       Value<double>? iva}) {
     return PedidoVentaLineaLocalTableCompanion(
       pedidoVentaAppId: pedidoVentaAppId ?? this.pedidoVentaAppId,
+      pedidoId: pedidoId ?? this.pedidoId,
+      empresaId: empresaId ?? this.empresaId,
       pedidoVentaLineaAppId:
           pedidoVentaLineaAppId ?? this.pedidoVentaLineaAppId,
       articuloId: articuloId ?? this.articuloId,
@@ -958,6 +998,12 @@ class PedidoVentaLineaLocalTableCompanion
     final map = <String, Expression>{};
     if (pedidoVentaAppId.present) {
       map['PEDIDO_APP_ID'] = Variable<String>(pedidoVentaAppId.value);
+    }
+    if (pedidoId.present) {
+      map['PEDIDO_ID'] = Variable<String>(pedidoId.value);
+    }
+    if (empresaId.present) {
+      map['EMPRESA_ID'] = Variable<String>(empresaId.value);
     }
     if (pedidoVentaLineaAppId.present) {
       map['LIN_APP_ID'] = Variable<String>(pedidoVentaLineaAppId.value);
@@ -1005,6 +1051,8 @@ class PedidoVentaLineaLocalTableCompanion
   String toString() {
     return (StringBuffer('PedidoVentaLineaLocalTableCompanion(')
           ..write('pedidoVentaAppId: $pedidoVentaAppId, ')
+          ..write('pedidoId: $pedidoId, ')
+          ..write('empresaId: $empresaId, ')
           ..write('pedidoVentaLineaAppId: $pedidoVentaLineaAppId, ')
           ..write('articuloId: $articuloId, ')
           ..write('articuloDescription: $articuloDescription, ')
@@ -1045,8 +1093,14 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
       const VerificationMeta('empresaId');
   @override
   late final GeneratedColumn<String> empresaId = GeneratedColumn<String>(
-      'EMPRESA_ID', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+      'EMPRESA_ID', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _pedidoIdMeta =
+      const VerificationMeta('pedidoId');
+  @override
+  late final GeneratedColumn<String> pedidoId = GeneratedColumn<String>(
+      'PEDIDO_ID', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _fechaAltaMeta =
       const VerificationMeta('fechaAlta');
   @override
@@ -1181,6 +1235,7 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
         usuarioId,
         pedidoVentaAppId,
         empresaId,
+        pedidoId,
         fechaAlta,
         clienteId,
         nombreCliente,
@@ -1228,8 +1283,10 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
     if (data.containsKey('EMPRESA_ID')) {
       context.handle(_empresaIdMeta,
           empresaId.isAcceptableOrUnknown(data['EMPRESA_ID']!, _empresaIdMeta));
-    } else if (isInserting) {
-      context.missing(_empresaIdMeta);
+    }
+    if (data.containsKey('PEDIDO_ID')) {
+      context.handle(_pedidoIdMeta,
+          pedidoId.isAcceptableOrUnknown(data['PEDIDO_ID']!, _pedidoIdMeta));
     }
     if (data.containsKey('FECHA_ALTA')) {
       context.handle(_fechaAltaMeta,
@@ -1358,10 +1415,12 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
     return PedidoVentaLocalDTO(
       usuarioId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}USUARIO_ID']),
+      pedidoId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}PEDIDO_ID']),
+      empresaId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}EMPRESA_ID']),
       pedidoVentaAppId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}PEDIDO_APP_ID'])!,
-      empresaId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}EMPRESA_ID'])!,
       clienteId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
       nombreCliente: attachedDatabase.typeMapping
@@ -1417,7 +1476,8 @@ class PedidoVentaLocalTableCompanion
     extends UpdateCompanion<PedidoVentaLocalDTO> {
   final Value<String?> usuarioId;
   final Value<String> pedidoVentaAppId;
-  final Value<String> empresaId;
+  final Value<String?> empresaId;
+  final Value<String?> pedidoId;
   final Value<DateTime> fechaAlta;
   final Value<String> clienteId;
   final Value<String> nombreCliente;
@@ -1443,6 +1503,7 @@ class PedidoVentaLocalTableCompanion
     this.usuarioId = const Value.absent(),
     this.pedidoVentaAppId = const Value.absent(),
     this.empresaId = const Value.absent(),
+    this.pedidoId = const Value.absent(),
     this.fechaAlta = const Value.absent(),
     this.clienteId = const Value.absent(),
     this.nombreCliente = const Value.absent(),
@@ -1468,7 +1529,8 @@ class PedidoVentaLocalTableCompanion
   PedidoVentaLocalTableCompanion.insert({
     this.usuarioId = const Value.absent(),
     required String pedidoVentaAppId,
-    required String empresaId,
+    this.empresaId = const Value.absent(),
+    this.pedidoId = const Value.absent(),
     required DateTime fechaAlta,
     required String clienteId,
     required String nombreCliente,
@@ -1491,7 +1553,6 @@ class PedidoVentaLocalTableCompanion
     this.borrador = const Value.absent(),
     this.errorSyncMessage = const Value.absent(),
   })  : pedidoVentaAppId = Value(pedidoVentaAppId),
-        empresaId = Value(empresaId),
         fechaAlta = Value(fechaAlta),
         clienteId = Value(clienteId),
         nombreCliente = Value(nombreCliente),
@@ -1502,6 +1563,7 @@ class PedidoVentaLocalTableCompanion
     Expression<String>? usuarioId,
     Expression<String>? pedidoVentaAppId,
     Expression<String>? empresaId,
+    Expression<String>? pedidoId,
     Expression<DateTime>? fechaAlta,
     Expression<String>? clienteId,
     Expression<String>? nombreCliente,
@@ -1528,6 +1590,7 @@ class PedidoVentaLocalTableCompanion
       if (usuarioId != null) 'USUARIO_ID': usuarioId,
       if (pedidoVentaAppId != null) 'PEDIDO_APP_ID': pedidoVentaAppId,
       if (empresaId != null) 'EMPRESA_ID': empresaId,
+      if (pedidoId != null) 'PEDIDO_ID': pedidoId,
       if (fechaAlta != null) 'FECHA_ALTA': fechaAlta,
       if (clienteId != null) 'CLIENTE_ID': clienteId,
       if (nombreCliente != null) 'NOMBRE_CLIENTE': nombreCliente,
@@ -1555,7 +1618,8 @@ class PedidoVentaLocalTableCompanion
   PedidoVentaLocalTableCompanion copyWith(
       {Value<String?>? usuarioId,
       Value<String>? pedidoVentaAppId,
-      Value<String>? empresaId,
+      Value<String?>? empresaId,
+      Value<String?>? pedidoId,
       Value<DateTime>? fechaAlta,
       Value<String>? clienteId,
       Value<String>? nombreCliente,
@@ -1581,6 +1645,7 @@ class PedidoVentaLocalTableCompanion
       usuarioId: usuarioId ?? this.usuarioId,
       pedidoVentaAppId: pedidoVentaAppId ?? this.pedidoVentaAppId,
       empresaId: empresaId ?? this.empresaId,
+      pedidoId: pedidoId ?? this.pedidoId,
       fechaAlta: fechaAlta ?? this.fechaAlta,
       clienteId: clienteId ?? this.clienteId,
       nombreCliente: nombreCliente ?? this.nombreCliente,
@@ -1616,6 +1681,9 @@ class PedidoVentaLocalTableCompanion
     }
     if (empresaId.present) {
       map['EMPRESA_ID'] = Variable<String>(empresaId.value);
+    }
+    if (pedidoId.present) {
+      map['PEDIDO_ID'] = Variable<String>(pedidoId.value);
     }
     if (fechaAlta.present) {
       map['FECHA_ALTA'] = Variable<DateTime>(fechaAlta.value);
@@ -1689,6 +1757,7 @@ class PedidoVentaLocalTableCompanion
           ..write('usuarioId: $usuarioId, ')
           ..write('pedidoVentaAppId: $pedidoVentaAppId, ')
           ..write('empresaId: $empresaId, ')
+          ..write('pedidoId: $pedidoId, ')
           ..write('fechaAlta: $fechaAlta, ')
           ..write('clienteId: $clienteId, ')
           ..write('nombreCliente: $nombreCliente, ')

@@ -6,7 +6,6 @@ import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 
 import 'package:jbm_nikel_mobile/src/features/cliente/presentation/index/cliente_search_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita.dart';
-import 'package:jbm_nikel_mobile/src/core/domain/entity_id_is_local_param.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/presentation/edit/visita_edit_page_controller.dart';
 import 'package:uuid/uuid.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -20,6 +19,7 @@ import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../cliente/domain/cliente.dart';
 import '../../../usuario/application/usuario_notifier.dart';
+import '../../domain/visita_id_param.dart';
 import '../../infrastructure/visita_repository.dart';
 import '../index/visita_search_controller.dart';
 
@@ -38,7 +38,7 @@ class VisitaEditPage extends ConsumerStatefulWidget {
 }
 
 class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
-  EntityIdIsLocalParam? visitaIdLocalParam;
+  VisitaIdIsLocalParam? visitaIdLocalParam;
 
   final formKey = GlobalKey<FormBuilderState>();
   bool isValid = false;
@@ -72,7 +72,7 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
   @override
   void initState() {
     super.initState();
-    visitaIdLocalParam = EntityIdIsLocalParam(
+    visitaIdLocalParam = VisitaIdIsLocalParam(
       id: widget.id,
       isLocal: true,
       isNew: widget.isNew,

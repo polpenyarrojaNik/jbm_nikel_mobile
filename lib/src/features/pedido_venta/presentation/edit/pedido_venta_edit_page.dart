@@ -20,7 +20,6 @@ import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/ped
 import 'package:uuid/uuid.dart';
 
 import '../../../../../generated/l10n.dart';
-import '../../../../core/domain/entity_id_is_local_param.dart';
 import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/presentation/common_widgets/address_text_widget.dart';
 import '../../../../core/presentation/common_widgets/column_field_text_detail.dart';
@@ -35,6 +34,7 @@ import '../../../cliente/domain/cliente.dart';
 import '../../../cliente/domain/cliente_direccion.dart';
 import '../../../cliente/infrastructure/cliente_repository.dart';
 import '../../../cliente/presentation/index/cliente_search_controller.dart';
+import '../../domain/pedido_local_param.dart';
 import '../../domain/pedido_venta_linea.dart';
 import '../../domain/seleccionar_cantidad_param.dart';
 import '../../infrastructure/pedido_venta_repository.dart';
@@ -46,14 +46,21 @@ import 'icon_stepper.dart';
 class PedidoVentaEditPage extends ConsumerStatefulWidget {
   PedidoVentaEditPage(
       {super.key,
-      String? id,
+      String? pedidoAppId,
+      this.pedidoId,
+      this.empresaId,
+      required this.isLocal,
       this.createPedidoFromClienteId,
       this.addLineaDesdeArticulo})
-      : id = id ?? const Uuid().v4(),
-        isNew = id == null ? true : false;
+      : pedidoAppId = pedidoAppId ?? const Uuid().v4(),
+        isEdit = (pedidoAppId == null && pedidoId == null) ? false : true;
 
-  final String id;
-  final bool isNew;
+  final String? pedidoAppId;
+  final String? pedidoId;
+  final String? empresaId;
+
+  final bool isLocal;
+  final bool isEdit;
   final String? createPedidoFromClienteId;
   final PedidoVentaLinea? addLineaDesdeArticulo;
 
@@ -63,15 +70,16 @@ class PedidoVentaEditPage extends ConsumerStatefulWidget {
 }
 
 class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
-  EntityIdIsLocalParam? pedidoVentaIdLocalParam;
+  late PedidoLocalParam pedidoLocalParam;
 
   @override
   void initState() {
     super.initState();
-    pedidoVentaIdLocalParam = EntityIdIsLocalParam(
-      id: widget.id,
-      isLocal: true,
-      isNew: widget.isNew,
+    pedidoLocalParam = PedidoLocalParam(
+      pedidoAppId: widget.pedidoAppId,
+      pedidoId: widget.pedidoId,
+      empresaId: widget.empresaId,
+      isEdit: widget.isEdit,
       createPedidoFromClienteId: widget.createPedidoFromClienteId,
       addLineaDesdeArticulo: widget.addLineaDesdeArticulo,
     );
@@ -79,11 +87,11 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
 
   @override
   Widget build(BuildContext context) {
-    final state = ref
-        .watch(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam!));
+    final state =
+        ref.watch(pedidoVentaEditPageControllerProvider(pedidoLocalParam));
 
     ref.listen<PedidoVentaEditPageControllerState>(
-      pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam!),
+      pedidoVentaEditPageControllerProvider(pedidoLocalParam),
       (__, state) {
         state.maybeWhen(
           saved: (_, __) => onSavedOrSavedErrorMessage(),
@@ -113,7 +121,7 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
 
     return Scaffold(
       appBar: CommonAppBar(
-        titleText: ((widget.isNew)
+        titleText: ((!widget.isEdit)
             ? S.of(context).pedido_edit_pedidoEdit_nuevoPedido
             : S.of(context).pedido_edit_pedidoEdit_editarPedido),
         actions: [
@@ -128,7 +136,7 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
                     oferta,
                     ofertaFechaHasta,
                     isBorrador) =>
-                (widget.isNew || isBorrador)
+                (!widget.isEdit || isBorrador)
                     ? IconButton(
                         icon: const Icon(Icons.save_as),
                         onPressed: () => saveBorrador(
@@ -146,7 +154,11 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
                     _________, __________, ________, error, _______) =>
                 IconButton(
               icon: const Icon(Icons.share),
-              onPressed: () => createCsvFile(widget.id, pedidoVentaLineasList),
+              onPressed: () => createCsvFile(
+                  pedidoLocalParam.isLocal
+                      ? pedidoLocalParam.pedidoAppId!
+                      : pedidoLocalParam.pedidoId!,
+                  pedidoVentaLineasList),
             ),
           ),
         ],
@@ -166,8 +178,8 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
             isBorrador,
           ) =>
               PedidoVentaEditForm(
-            isNew: widget.isNew,
-            pedidoVentaIdLocalParam: pedidoVentaIdLocalParam!,
+            isEdit: widget.isEdit,
+            pedidoLocalParam: pedidoLocalParam,
             cliente: cliente,
             clienteDireccion: clienteDireccion,
             pedidoVentaLineaList: pedidoVentaLineaList,
@@ -193,8 +205,8 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
                   error,
                   _) =>
               PedidoVentaEditForm(
-            isNew: widget.isNew,
-            pedidoVentaIdLocalParam: pedidoVentaIdLocalParam!,
+            isEdit: widget.isEdit,
+            pedidoLocalParam: pedidoLocalParam,
             cliente: cliente,
             clienteDireccion: clienteDireccion,
             pedidoVentaLineaList: pedidoVentaLineaList,
@@ -237,10 +249,9 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
       required bool oferta,
       DateTime? ofertaFechaHasta}) {
     ref
-        .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam!)
-            .notifier)
+        .read(pedidoVentaEditPageControllerProvider(pedidoLocalParam).notifier)
         .upsertPedidoVenta(
-          pedidoVentaAppId: pedidoVentaIdLocalParam!.id,
+          pedidoVentaAppId: pedidoLocalParam.pedidoAppId!,
           cliente: cliente,
           clienteDireccion: clienteDireccion,
           pedidoVentaLineaList: pedidoVentaLineaList,
@@ -252,7 +263,7 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
         );
 
     ref.invalidate(getPedidoVentaBorradorPendiente);
-    ref.invalidate(pedidoVentaProvider(pedidoVentaIdLocalParam!));
+    ref.invalidate(pedidoVentaProvider(pedidoLocalParam));
     ref.invalidate(pedidoVentaIndexScreenControllerProvider);
     ref.invalidate(pedidoVentaIndexScreenPaginatedControllerProvider);
   }
@@ -265,24 +276,31 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
             (error is AppException) ? error.details.message : error.toString()),
       );
     }
-    if (!widget.isNew) {
-      ref.invalidate(pedidoVentaProvider(pedidoVentaIdLocalParam!));
-      ref.invalidate(pedidoVentaLineaProvider(pedidoVentaIdLocalParam!));
+    if (widget.isEdit) {
+      if (pedidoLocalParam.isLocal) {
+        ref.invalidate(pedidoVentaProvider(pedidoLocalParam));
+        ref.invalidate(pedidoVentaLineaProvider(pedidoLocalParam));
+      }
     }
     ref.invalidate(pedidoVentaIndexScreenPaginatedControllerProvider);
     ref.invalidate(pedidoVentaIndexScreenControllerProvider);
 
     ref.invalidate(getPedidoVentaBorradorPendiente);
 
-    context.router.pop();
+    if (!pedidoLocalParam.isLocal) {
+      context.router.popUntil(
+          (route) => route.settings.name == PedidoVentaListRoute.name);
+    } else {
+      context.router.pop();
+    }
   }
 }
 
 class PedidoVentaEditForm extends ConsumerWidget {
   const PedidoVentaEditForm({
     super.key,
-    required this.isNew,
-    required this.pedidoVentaIdLocalParam,
+    required this.isEdit,
+    required this.pedidoLocalParam,
     required this.cliente,
     required this.clienteDireccion,
     required this.pedidoVentaLineaList,
@@ -295,8 +313,8 @@ class PedidoVentaEditForm extends ConsumerWidget {
     required this.isBorrador,
   });
 
-  final bool isNew;
-  final EntityIdIsLocalParam pedidoVentaIdLocalParam;
+  final bool isEdit;
+  final PedidoLocalParam pedidoLocalParam;
   final Cliente? cliente;
   final ClienteDireccion? clienteDireccion;
   final List<PedidoVentaLinea> pedidoVentaLineaList;
@@ -313,7 +331,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
     ref.listen<Cliente?>(clienteForFromStateProvider, (_, state) {
       if (state != null) {
         ref
-            .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
+            .read(pedidoVentaEditPageControllerProvider(pedidoLocalParam)
                 .notifier)
             .selectCliente(cliente: state);
       }
@@ -347,7 +365,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
       },
     ) as bool?;
     if (isBorrador && (result ?? false)) {
-      ref.read(deletePedidoVentaProvider(pedidoVentaIdLocalParam.id));
+      ref.read(deletePedidoVentaProvider(pedidoLocalParam.pedidoAppId!));
       ref.invalidate(getPedidoVentaBorradorPendiente);
       ref.invalidate(pedidoVentaIndexScreenPaginatedControllerProvider);
       ref.invalidate(pedidoVentaIndexScreenControllerProvider);
@@ -372,10 +390,12 @@ class PedidoVentaEditForm extends ConsumerWidget {
         break;
       case 4:
         ref
-            .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
+            .read(pedidoVentaEditPageControllerProvider(pedidoLocalParam)
                 .notifier)
             .upsertPedidoVenta(
-                pedidoVentaAppId: pedidoVentaIdLocalParam.id,
+                pedidoId: pedidoLocalParam.pedidoId,
+                empresaId: pedidoLocalParam.empresaId,
+                pedidoVentaAppId: pedidoLocalParam.pedidoAppId!,
                 cliente: cliente!,
                 clienteDireccion: clienteDireccion,
                 pedidoVentaLineaList: pedidoVentaLineaList,
@@ -387,7 +407,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
         break;
       default:
         ref
-            .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
+            .read(pedidoVentaEditPageControllerProvider(pedidoLocalParam)
                 .notifier)
             .navigateToNextStep();
     }
@@ -395,23 +415,21 @@ class PedidoVentaEditForm extends ConsumerWidget {
 
   void cancel(WidgetRef ref) {
     ref
-        .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
-            .notifier)
+        .read(pedidoVentaEditPageControllerProvider(pedidoLocalParam).notifier)
         .navigateToPreviousStep();
   }
 
   void tapped(int value, WidgetRef ref) {
     ref
-        .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
-            .notifier)
+        .read(pedidoVentaEditPageControllerProvider(pedidoLocalParam).notifier)
         .navigateToTappedStep(tappedStep: value);
   }
 
   void selectClienteValidate(BuildContext context, WidgetRef ref) {
     if (cliente != null) {
       ref
-          .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
-              .notifier)
+          .read(
+              pedidoVentaEditPageControllerProvider(pedidoLocalParam).notifier)
           .navigateToNextStep();
     } else {
       showToast(
@@ -423,16 +441,15 @@ class PedidoVentaEditForm extends ConsumerWidget {
 
   void selectClienteDireccionValidate(BuildContext context, WidgetRef ref) {
     ref
-        .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
-            .notifier)
+        .read(pedidoVentaEditPageControllerProvider(pedidoLocalParam).notifier)
         .navigateToNextStep();
   }
 
   void selectLineasValidate(BuildContext context, WidgetRef ref) {
     if (pedidoVentaLineaList.isNotEmpty) {
       ref
-          .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
-              .notifier)
+          .read(
+              pedidoVentaEditPageControllerProvider(pedidoLocalParam).notifier)
           .navigateToNextStep();
     } else {
       showToast(S.of(context).pedido_edit_pedidoEdit_anadeAlgunaLinea, context);
@@ -442,8 +459,8 @@ class PedidoVentaEditForm extends ConsumerWidget {
   void remarksValidate(BuildContext context, WidgetRef ref) {
     if (!oferta || oferta && ofertaFechaHasta != null) {
       ref
-          .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
-              .notifier)
+          .read(
+              pedidoVentaEditPageControllerProvider(pedidoLocalParam).notifier)
           .navigateToNextStep();
     } else {
       showToast(
@@ -459,8 +476,8 @@ class PedidoVentaEditForm extends ConsumerWidget {
         icon: Icons.account_circle,
         content: StepSelectClienteContent(
           cliente: cliente,
-          pedidoVentaIdLocalParam: pedidoVentaIdLocalParam,
-          isNew: isNew,
+          pedidoLocalParam: pedidoLocalParam,
+          isEdit: isEdit,
         ),
         state: (currentStep >= 0)
             ? (currentStep == 0
@@ -474,8 +491,8 @@ class PedidoVentaEditForm extends ConsumerWidget {
         content: StepSelectClienteDireccionContent(
           cliente: cliente,
           clienteDireccion: clienteDireccion,
-          pedidoVentaIdLocalParam: pedidoVentaIdLocalParam,
-          isNew: isNew,
+          pedidoLocalParam: pedidoLocalParam,
+          isEdit: isEdit,
         ),
         state: (currentStep >= 1)
             ? (currentStep == 1)
@@ -487,7 +504,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
       IconStep(
         icon: Icons.list_alt,
         content: StepArticuloListContent(
-          pedidoVentaIdIsLocalParam: pedidoVentaIdLocalParam,
+          pedidoLocalParam: pedidoLocalParam,
           cliente: cliente,
           pedidoVentaLineaList: pedidoVentaLineaList,
         ),
@@ -501,7 +518,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
       IconStep(
         icon: Icons.more_horiz,
         content: StepObservacionesContent(
-          pedidoVentaIdLocalParam: pedidoVentaIdLocalParam,
+          pedidoLocalParam: pedidoLocalParam,
           observaciones: observaciones,
           pedidoCliente: pedidoCliente,
           oferta: oferta,
@@ -518,7 +535,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
       IconStep(
         icon: Icons.summarize,
         content: StepResumenContent(
-          pedidoVentaIdLocalParam: pedidoVentaIdLocalParam,
+          pedidoLocalParam: pedidoLocalParam,
           cliente: cliente,
           clienteDireccion: clienteDireccion,
           pedidoVentaLineaList: pedidoVentaLineaList,
@@ -542,12 +559,12 @@ class StepSelectClienteContent extends ConsumerStatefulWidget {
   const StepSelectClienteContent(
       {super.key,
       required this.cliente,
-      required this.pedidoVentaIdLocalParam,
-      required this.isNew});
+      required this.pedidoLocalParam,
+      required this.isEdit});
 
   final Cliente? cliente;
-  final EntityIdIsLocalParam pedidoVentaIdLocalParam;
-  final bool isNew;
+  final PedidoLocalParam pedidoLocalParam;
+  final bool isEdit;
 
   @override
   ConsumerState<StepSelectClienteContent> createState() =>
@@ -560,7 +577,7 @@ class _StepSelectClienteContentState
   void initState() {
     super.initState();
     if (widget.cliente == null) {
-      Future.microtask(() => navigateToSelectCliente(context, widget.isNew));
+      Future.microtask(() => navigateToSelectCliente(context, widget.isEdit));
     }
   }
 
@@ -573,7 +590,8 @@ class _StepSelectClienteContentState
             child: Padding(
               padding: const EdgeInsets.all(24.0),
               child: TextButton(
-                onPressed: () => navigateToSelectCliente(context, widget.isNew),
+                onPressed: () =>
+                    navigateToSelectCliente(context, widget.isEdit),
                 child: Text(
                   S.of(context).pedido_edit_pedidoEdit_seleccioneCliente,
                 ),
@@ -588,7 +606,7 @@ class _StepSelectClienteContentState
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: GestureDetector(
-              onTap: () => navigateToSelectCliente(context, widget.isNew),
+              onTap: () => navigateToSelectCliente(context, widget.isEdit),
               child: Card(
                 elevation: 0,
                 shape: RoundedRectangleBorder(
@@ -611,7 +629,7 @@ class _StepSelectClienteContentState
                       ),
                       IconButton(
                         onPressed: () =>
-                            navigateToSelectCliente(context, widget.isNew),
+                            navigateToSelectCliente(context, widget.isEdit),
                         icon: const Icon(Icons.navigate_next_outlined),
                       )
                     ],
@@ -625,8 +643,8 @@ class _StepSelectClienteContentState
     }
   }
 
-  void navigateToSelectCliente(BuildContext context, bool isNew) async {
-    if (isNew) {
+  void navigateToSelectCliente(BuildContext context, bool isEdit) async {
+    if (!isEdit) {
       context.router.push(
         ClienteListaRoute(isSearchClienteForFrom: true),
       );
@@ -644,13 +662,13 @@ class StepSelectClienteDireccionContent extends ConsumerWidget {
       {super.key,
       required this.cliente,
       required this.clienteDireccion,
-      required this.pedidoVentaIdLocalParam,
-      required this.isNew});
+      required this.pedidoLocalParam,
+      required this.isEdit});
 
   final Cliente? cliente;
   final ClienteDireccion? clienteDireccion;
-  final EntityIdIsLocalParam pedidoVentaIdLocalParam;
-  final bool isNew;
+  final PedidoLocalParam pedidoLocalParam;
+  final bool isEdit;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -660,11 +678,11 @@ class StepSelectClienteDireccionContent extends ConsumerWidget {
         state.whenData(
           (clienteDireccionesList) {
             for (var i = 0; i < clienteDireccionesList.length; i++) {
-              if (isNew) {
+              if (!isEdit) {
                 if (clienteDireccionesList[i].predeterminada) {
                   ref
                       .read(pedidoVentaEditPageControllerProvider(
-                              pedidoVentaIdLocalParam)
+                              pedidoLocalParam)
                           .notifier)
                       .selectDireccion(
                           clienteDireccion: clienteDireccionesList[i]);
@@ -684,8 +702,7 @@ class StepSelectClienteDireccionContent extends ConsumerWidget {
           itemCount: clienteDireccionesList.length,
           itemBuilder: (context, i) => GestureDetector(
             onTap: () => ref
-                .read(pedidoVentaEditPageControllerProvider(
-                        pedidoVentaIdLocalParam)
+                .read(pedidoVentaEditPageControllerProvider(pedidoLocalParam)
                     .notifier)
                 .selectDireccion(
                     clienteDireccion: (clienteDireccion != null &&
@@ -719,11 +736,11 @@ class StepSelectClienteDireccionContent extends ConsumerWidget {
 class StepArticuloListContent extends ConsumerWidget {
   const StepArticuloListContent(
       {super.key,
-      required this.pedidoVentaIdIsLocalParam,
+      required this.pedidoLocalParam,
       required this.cliente,
       required this.pedidoVentaLineaList});
 
-  final EntityIdIsLocalParam pedidoVentaIdIsLocalParam;
+  final PedidoLocalParam pedidoLocalParam;
   final Cliente? cliente;
   final List<PedidoVentaLinea> pedidoVentaLineaList;
 
@@ -734,7 +751,7 @@ class StepArticuloListContent extends ConsumerWidget {
       (_, state) => setArtiucloValue(
           context: context,
           clienteId: cliente!.id,
-          pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam,
+          pedidoLocalParam: pedidoLocalParam,
           newArticuloValue: state),
     );
     return Stack(
@@ -774,7 +791,7 @@ class StepArticuloListContent extends ConsumerWidget {
                             cliente!.id,
                             pedidoVentaLineaList[i],
                             i,
-                            pedidoVentaIdIsLocalParam,
+                            pedidoLocalParam,
                           ),
                           child: Dismissible(
                             key: UniqueKey(),
@@ -784,6 +801,7 @@ class StepArticuloListContent extends ConsumerWidget {
                             child: PedidoVentaLineaNuevoTile(
                               pedidoVentaLinea: pedidoVentaLineaList[i],
                               clienteId: cliente!.id,
+                              isLocal: pedidoLocalParam.isLocal,
                             ),
                           ),
                         ),
@@ -804,8 +822,8 @@ class StepArticuloListContent extends ConsumerWidget {
             child: const Icon(
               Icons.add,
             ),
-            onPressed: () => navigateToAddArticulo(
-                context, cliente!.id, pedidoVentaIdIsLocalParam),
+            onPressed: () =>
+                navigateToAddArticulo(context, cliente!.id, pedidoLocalParam),
           ),
         ),
       ],
@@ -815,8 +833,7 @@ class StepArticuloListContent extends ConsumerWidget {
   void deletePedidoVentaLinea(
       PedidoVentaLinea pedidoVentaLinea, WidgetRef ref) {
     ref
-        .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdIsLocalParam)
-            .notifier)
+        .read(pedidoVentaEditPageControllerProvider(pedidoLocalParam).notifier)
         .deletePedidoVentaLinea(pedidoVentaLineaToDelete: pedidoVentaLinea);
   }
 
@@ -825,9 +842,9 @@ class StepArticuloListContent extends ConsumerWidget {
       String clienteId,
       PedidoVentaLinea pedidoVentaLinea,
       int i,
-      EntityIdIsLocalParam pedidoVentaIdIsLocalParam) {
+      PedidoLocalParam pedidoLocalParam) {
     final seleccionarCantidadParam = SeleccionarCantidadParam(
-      pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam,
+      pedidoVentaParam: pedidoLocalParam,
       clienteId: clienteId,
       precio: pedidoVentaLinea.precioDivisa.amount.toDecimal().toDouble(),
       articuloId: pedidoVentaLinea.articuloId,
@@ -835,8 +852,7 @@ class StepArticuloListContent extends ConsumerWidget {
       descuento1: pedidoVentaLinea.descuento1,
       descuento2: pedidoVentaLinea.descuento2,
       posicionLinea: i,
-      createdFromCliente:
-          pedidoVentaIdIsLocalParam.createPedidoFromClienteId != null,
+      createdFromCliente: pedidoLocalParam.createPedidoFromClienteId != null,
       addNewLineaDesdeArticulo: false,
     );
     context.router.push(SeleccionarCantidadRoute(
@@ -844,7 +860,7 @@ class StepArticuloListContent extends ConsumerWidget {
   }
 
   void navigateToAddArticulo(BuildContext context, String clienteId,
-      EntityIdIsLocalParam pedidoVentaIdIsLocalParam) {
+      PedidoLocalParam pedidoLocalParam) {
     context.router.push(
       ArticuloListaRoute(isSearchArticuloForForm: true),
     );
@@ -853,16 +869,15 @@ class StepArticuloListContent extends ConsumerWidget {
   void setArtiucloValue(
       {required BuildContext context,
       required String clienteId,
-      required EntityIdIsLocalParam pedidoVentaIdIsLocalParam,
+      required PedidoLocalParam pedidoLocalParam,
       Articulo? newArticuloValue}) {
     if (newArticuloValue != null) {
       final seleccionarCantidadParam = SeleccionarCantidadParam(
-        pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam,
+        pedidoVentaParam: pedidoLocalParam,
         clienteId: clienteId,
         articuloId: newArticuloValue.id,
         posicionLinea: pedidoVentaLineaList.length,
-        createdFromCliente:
-            pedidoVentaIdIsLocalParam.createPedidoFromClienteId != null,
+        createdFromCliente: pedidoLocalParam.createPedidoFromClienteId != null,
         addNewLineaDesdeArticulo: false,
       );
 
@@ -878,7 +893,7 @@ class StepArticuloListContent extends ConsumerWidget {
 class StepObservacionesContent extends ConsumerStatefulWidget {
   const StepObservacionesContent({
     super.key,
-    required this.pedidoVentaIdLocalParam,
+    required this.pedidoLocalParam,
     required this.observaciones,
     required this.pedidoCliente,
     required this.oferta,
@@ -886,7 +901,7 @@ class StepObservacionesContent extends ConsumerStatefulWidget {
     required this.isClientePotencial,
   });
 
-  final EntityIdIsLocalParam pedidoVentaIdLocalParam;
+  final PedidoLocalParam pedidoLocalParam;
   final String? observaciones;
   final String? pedidoCliente;
   final bool oferta;
@@ -934,7 +949,7 @@ class _StepObservacionesContentState
                 enabled: !widget.isClientePotencial,
                 onChanged: (value) => ref
                     .read(pedidoVentaEditPageControllerProvider(
-                            widget.pedidoVentaIdLocalParam)
+                            widget.pedidoLocalParam)
                         .notifier)
                     .setOfertaSN(value),
               ),
@@ -960,7 +975,7 @@ class _StepObservacionesContentState
                     [FormBuilderValidators.maxLength(50)]),
                 onChanged: (value) => ref
                     .read(pedidoVentaEditPageControllerProvider(
-                            widget.pedidoVentaIdLocalParam)
+                            widget.pedidoLocalParam)
                         .notifier)
                     .setPedidoCliente(value),
               ),
@@ -977,7 +992,7 @@ class _StepObservacionesContentState
                     [FormBuilderValidators.maxLength(4000)]),
                 onChanged: (value) => ref
                     .read(pedidoVentaEditPageControllerProvider(
-                            widget.pedidoVentaIdLocalParam)
+                            widget.pedidoLocalParam)
                         .notifier)
                     .setObservaciones(value),
               ),
@@ -998,8 +1013,7 @@ class _StepObservacionesContentState
     );
 
     ref
-        .read(pedidoVentaEditPageControllerProvider(
-                widget.pedidoVentaIdLocalParam)
+        .read(pedidoVentaEditPageControllerProvider(widget.pedidoLocalParam)
             .notifier)
         .setOfertaFechaHasta(selectedDate);
 
@@ -1012,7 +1026,7 @@ class _StepObservacionesContentState
 class StepResumenContent extends ConsumerWidget {
   const StepResumenContent({
     super.key,
-    required this.pedidoVentaIdLocalParam,
+    required this.pedidoLocalParam,
     required this.cliente,
     required this.clienteDireccion,
     required this.pedidoVentaLineaList,
@@ -1022,7 +1036,7 @@ class StepResumenContent extends ConsumerWidget {
     required this.ofertaFechaHasta,
   });
 
-  final EntityIdIsLocalParam pedidoVentaIdLocalParam;
+  final PedidoLocalParam pedidoLocalParam;
 
   final Cliente? cliente;
   final ClienteDireccion? clienteDireccion;
@@ -1112,6 +1126,7 @@ class StepResumenContent extends ConsumerWidget {
             itemBuilder: (context, i) => PedidoVentaLineaNuevoTile(
               pedidoVentaLinea: pedidoVentaLineaList[i],
               clienteId: cliente!.id,
+              isLocal: pedidoLocalParam.isLocal,
             ),
             separatorBuilder: (context, i) => const Divider(),
             itemCount: pedidoVentaLineaList.length,

@@ -16,6 +16,7 @@ _$_UsuarioDTO _$$_UsuarioDTOFromJson(Map<String, dynamic> json) =>
       refreshToken: json['REFRESH_TOKEN'] as String?,
       test: json['TEST'] as String,
       idiomaId: json['IDIOMA_ID'] as String,
+      modificarPedido: json['MODIFICAR_PRECIO_PEDIDO_SN'] as String,
     );
 
 Map<String, dynamic> _$$_UsuarioDTOToJson(_$_UsuarioDTO instance) =>
@@ -28,4 +29,5 @@ Map<String, dynamic> _$$_UsuarioDTOToJson(_$_UsuarioDTO instance) =>
       'REFRESH_TOKEN': instance.refreshToken,
       'TEST': instance.test,
       'IDIOMA_ID': instance.idiomaId,
+      'MODIFICAR_PRECIO_PEDIDO_SN': instance.modificarPedido,
     };

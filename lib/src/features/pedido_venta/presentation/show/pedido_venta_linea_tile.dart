@@ -25,10 +25,9 @@ class PedidoVentaLineaTile extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (!pedidoVentaLinea.isComponente())
+                  if (!pedidoVentaLinea.isComponente)
                     Text(
-                      pedidoVentaLinea.pedidoVentaLineaId ??
-                          pedidoVentaLinea.pedidoVentaLineaAppId!,
+                      pedidoVentaLinea.pedidoVentaLineaId!,
                     ),
                 ],
               ),
@@ -42,7 +41,7 @@ class PedidoVentaLineaTile extends StatelessWidget {
                       children: [
                         Text(
                           pedidoVentaLinea.articuloId,
-                          style: (!pedidoVentaLinea.isComponente())
+                          style: (!pedidoVentaLinea.isComponente)
                               ? Theme.of(context).textTheme.titleSmall
                               : Theme.of(context)
                                   .textTheme
@@ -57,7 +56,7 @@ class PedidoVentaLineaTile extends StatelessWidget {
                           children: [
                             Text(
                               '${numberFormatCantidades(pedidoVentaLinea.cantidad)} ${S.of(context).unidad}',
-                              style: (!pedidoVentaLinea.isComponente())
+                              style: (!pedidoVentaLinea.isComponente)
                                   ? Theme.of(context).textTheme.titleSmall
                                   : Theme.of(context)
                                       .textTheme
@@ -77,8 +76,8 @@ class PedidoVentaLineaTile extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
-                  if (!pedidoVentaLinea.isComponente()) const Spacer(),
-                  if (!pedidoVentaLinea.isComponente())
+                  if (!pedidoVentaLinea.isComponente) const Spacer(),
+                  if (!pedidoVentaLinea.isComponente)
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.end,

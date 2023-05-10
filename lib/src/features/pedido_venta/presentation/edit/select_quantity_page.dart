@@ -20,7 +20,9 @@ import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../articulos/domain/articulo.dart';
 import '../../../cliente/infrastructure/cliente_repository.dart';
+import '../../../usuario/application/usuario_notifier.dart';
 import '../../domain/pedido_venta_linea.dart';
+import '../../domain/pedido_venta_linea_ultimos_precios_param.dart';
 import '../../domain/precio.dart';
 import '../../domain/seleccionar_cantidad_param.dart';
 
@@ -157,6 +159,9 @@ class _SelecionarCantidadPageState
                       const Center(child: CircularProgressIndicator()),
                   data: (_) => (articuloPrecio != null)
                       ? _ArticuloPrecioContainer(
+                          articuloId:
+                              widget.seleccionarCantidadParam.articuloId,
+                          clienteId: widget.seleccionarCantidadParam.clienteId,
                           formKey: formKeyArticuloPrecio,
                           precio: precio,
                           tipoPrecio: articuloPrecio!.precio.tipoPrecio,
@@ -225,15 +230,15 @@ class _SelecionarCantidadPageState
     if (formKeyCantidad.currentState!.saveAndValidate() &&
         formKeyArticuloPrecio.currentState!.saveAndValidate()) {
       final linea = PedidoVentaLinea(
-        empresaId: null,
-        pedidoVentaId: null,
-        pedidoVentaLineaId: null,
+        empresaId: widget.seleccionarCantidadParam.pedidoVentaParam.empresaId,
+        pedidoId: widget.seleccionarCantidadParam.pedidoVentaParam.pedidoId,
+        pedidoVentaLineaId: (widget.seleccionarCantidadParam.posicionLinea + 1)
+            .toString()
+            .padLeft(3, '0'),
         pedidoVentaAppId:
-            widget.seleccionarCantidadParam.pedidoVentaIdIsLocalParam.id,
-        pedidoVentaLineaAppId:
-            (widget.seleccionarCantidadParam.posicionLinea + 1)
-                .toString()
-                .padLeft(3, '0'),
+            widget.seleccionarCantidadParam.pedidoVentaParam.pedidoAppId,
+        // pedidoVentaLineaId:
+
         articuloId: articulo.id,
         articuloDescription:
             getDescriptionArticuloInLocalLanguage(articulo: articulo),
@@ -266,7 +271,7 @@ class _SelecionarCantidadPageState
         if (widget.seleccionarCantidadParam.isUpdatingLinea()) {
           ref
               .read(pedidoVentaEditPageControllerProvider(
-                      widget.seleccionarCantidadParam.pedidoVentaIdIsLocalParam)
+                      widget.seleccionarCantidadParam.pedidoVentaParam)
                   .notifier)
               .updatePedidoVentaLinea(
                 pedidoVentaLinea: linea,
@@ -276,7 +281,7 @@ class _SelecionarCantidadPageState
         } else {
           ref
               .read(pedidoVentaEditPageControllerProvider(
-                      widget.seleccionarCantidadParam.pedidoVentaIdIsLocalParam)
+                      widget.seleccionarCantidadParam.pedidoVentaParam)
                   .notifier)
               .addPedidoVentaLinea(
                 newLinea: linea,
@@ -287,7 +292,10 @@ class _SelecionarCantidadPageState
       if (widget.seleccionarCantidadParam.addNewLineaDesdeArticulo) {
         context.router.pushAndPopUntil(
             PedidoVentaEditRoute(
-                id: linea.pedidoVentaAppId, addLineaDesdeArticulo: linea),
+                pedidoAppId: linea.pedidoVentaAppId,
+                addLineaDesdeArticulo: linea,
+                isLocal:
+                    widget.seleccionarCantidadParam.pedidoVentaParam.isLocal),
             predicate: (route) =>
                 route.settings.name ==
                 ArticuloListaRoute(isSearchArticuloForForm: false).routeName);
@@ -551,9 +559,11 @@ class _SelectQuantityFrom extends StatelessWidget {
   }
 }
 
-class _ArticuloPrecioContainer extends StatelessWidget {
+class _ArticuloPrecioContainer extends ConsumerWidget {
   const _ArticuloPrecioContainer({
     required this.formKey,
+    required this.articuloId,
+    required this.clienteId,
     required this.precio,
     required this.tipoPrecio,
     required this.precioController,
@@ -565,6 +575,8 @@ class _ArticuloPrecioContainer extends StatelessWidget {
     required this.setDescuento2,
   });
 
+  final String articuloId;
+  final String clienteId;
   final double precio;
   final int tipoPrecio;
   final double descuento2;
@@ -577,7 +589,9 @@ class _ArticuloPrecioContainer extends StatelessWidget {
   final GlobalKey<FormBuilderState> formKey;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final articuloPrecioValue = ref.watch(articuloUltimosPreciosProvider(
+        UltimosPreciosParam(clienteId: clienteId, articuloId: articuloId)));
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: FormBuilder(
@@ -585,6 +599,21 @@ class _ArticuloPrecioContainer extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            articuloPrecioValue.maybeWhen(
+              orElse: () => Container(),
+              data: (ultimosPrecios) => ultimosPrecios != null
+                  ? Text(
+                      '${S.of(context).pedido_edit_pedidoEdit_ultimoPrecioDeCompra}:  ${formatPrecioYDescuento(
+                        precio: ultimosPrecios.precioDivisa,
+                        tipoPrecio: ultimosPrecios.tipoPrecio,
+                        descuento1: ultimosPrecios.descuento1,
+                        descuento2: ultimosPrecios.descuento2,
+                        descuento3: ultimosPrecios.descuento3,
+                      )} (${numberFormatCantidades(ultimosPrecios.cantidad)} ${S.of(context).unidad})',
+                      style: Theme.of(context).textTheme.bodySmall,
+                    )
+                  : Container(),
+            ),
             FormBuilderTextField(
               name: 'precio',
               controller: precioController,
@@ -600,6 +629,8 @@ class _ArticuloPrecioContainer extends StatelessWidget {
               validator: FormBuilderValidators.compose([
                 FormBuilderValidators.required(),
               ]),
+              enabled:
+                  ref.watch(usuarioNotifierProvider)?.modificarPedido ?? false,
               onChanged: (value) {
                 if (value != null && value.isNotEmpty) {
                   final precioValue =
@@ -625,6 +656,8 @@ class _ArticuloPrecioContainer extends StatelessWidget {
                 labelText: S.of(context).pedido_edit_selectQuantity_descuneto1,
                 suffix: Text('%', style: Theme.of(context).textTheme.bodySmall),
               ),
+              enabled:
+                  ref.watch(usuarioNotifierProvider)?.modificarPedido ?? false,
               validator: FormBuilderValidators.compose([
                 FormBuilderValidators.required(),
               ]),

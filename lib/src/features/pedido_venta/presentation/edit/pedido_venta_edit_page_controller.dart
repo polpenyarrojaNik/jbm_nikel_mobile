@@ -3,11 +3,11 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/domain/pedido_venta.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/domain/pedido_venta_linea.dart';
 
-import '../../../../core/domain/entity_id_is_local_param.dart';
 import '../../../../core/exceptions/app_exception.dart';
 import '../../../cliente/domain/cliente.dart';
 import '../../../cliente/domain/cliente_direccion.dart';
 import '../../../cliente/infrastructure/cliente_repository.dart';
+import '../../domain/pedido_local_param.dart';
 import '../../infrastructure/pedido_venta_repository.dart';
 
 part 'pedido_venta_edit_page_controller.freezed.dart';
@@ -51,11 +51,11 @@ class PedidoVentaEditPageControllerState
 
 final pedidoVentaEditPageControllerProvider = StateNotifierProvider.autoDispose
     .family<PedidoVentaEditPageController, PedidoVentaEditPageControllerState,
-        EntityIdIsLocalParam>((ref, pedidoVentaIdIsLocalParam) {
+        PedidoLocalParam>((ref, pedidoVentaIdIsLocalParam) {
   return PedidoVentaEditPageController(
     pedidoVentaRepository: ref.watch(pedidoVentaRepositoryProvider),
     clienteRepository: ref.watch(clienteRepositoryProvider),
-    pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam,
+    pedidoLocalParam: pedidoVentaIdIsLocalParam,
   );
 });
 
@@ -63,7 +63,7 @@ class PedidoVentaEditPageController
     extends StateNotifier<PedidoVentaEditPageControllerState> {
   final PedidoVentaRepository pedidoVentaRepository;
   final ClienteRepository clienteRepository;
-  final EntityIdIsLocalParam pedidoVentaIdIsLocalParam;
+  final PedidoLocalParam pedidoLocalParam;
 
   Cliente? _cliente;
   ClienteDireccion? _clienteDireccion;
@@ -76,7 +76,7 @@ class PedidoVentaEditPageController
   bool _isBorrador = false;
 
   PedidoVentaEditPageController({
-    required this.pedidoVentaIdIsLocalParam,
+    required this.pedidoLocalParam,
     required this.pedidoVentaRepository,
     required this.clienteRepository,
   }) : super(const PedidoVentaEditPageControllerState.loading()) {
@@ -90,9 +90,8 @@ class PedidoVentaEditPageController
         _isBorrador = true;
         final pedidoVentaBorrador =
             await pedidoVentaRepository.getPedidoVentaBorrador();
-        pedidoVentaLineaList =
-            await pedidoVentaRepository.getPedidoVentaLineaListById(
-                pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam);
+        pedidoVentaLineaList = await pedidoVentaRepository
+            .getPedidoVentaLineaListById(pedidoLocalParam: pedidoLocalParam);
 
         _cliente = await clienteRepository.getClienteById(
             clienteId: pedidoVentaBorrador.clienteId!);
@@ -126,11 +125,10 @@ class PedidoVentaEditPageController
         );
       } else {
         _isBorrador = false;
-        if (pedidoVentaIdIsLocalParam.isNew) {
-          if (pedidoVentaIdIsLocalParam.createPedidoFromClienteId != null) {
+        if (!pedidoLocalParam.isEdit) {
+          if (pedidoLocalParam.createPedidoFromClienteId != null) {
             _cliente = await clienteRepository.getClienteById(
-                clienteId:
-                    pedidoVentaIdIsLocalParam.createPedidoFromClienteId!);
+                clienteId: pedidoLocalParam.createPedidoFromClienteId!);
           }
           state = PedidoVentaEditPageControllerState.data(
             _cliente,
@@ -145,12 +143,11 @@ class PedidoVentaEditPageController
           );
         } else {
           final pedidoVenta = await pedidoVentaRepository.getPedidoVentaById(
-            pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam,
+            pedidoVentaIdIsLocalParam: pedidoLocalParam,
           );
 
-          pedidoVentaLineaList =
-              await pedidoVentaRepository.getPedidoVentaLineaListById(
-                  pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam);
+          pedidoVentaLineaList = await pedidoVentaRepository
+              .getPedidoVentaLineaListById(pedidoLocalParam: pedidoLocalParam);
 
           _cliente = await clienteRepository.getClienteById(
               clienteId: pedidoVenta.clienteId!);
@@ -188,6 +185,8 @@ class PedidoVentaEditPageController
   }
 
   Future<void> upsertPedidoVenta({
+    String? pedidoId,
+    String? empresaId,
     required String pedidoVentaAppId,
     required Cliente cliente,
     required ClienteDireccion? clienteDireccion,
@@ -202,6 +201,8 @@ class PedidoVentaEditPageController
 
     try {
       await pedidoVentaRepository.upsertPedidoVenta(
+        pedidoId: pedidoId,
+        empresaId: empresaId,
         pedidoVentaAppId: pedidoVentaAppId,
         cliente: cliente,
         clienteDireccion: clienteDireccion,
@@ -475,10 +476,11 @@ class PedidoVentaEditPageController
 
     for (var i = 0; i < pedidoVentaLineaList.length; i++) {
       final newPedidoVentaLinea = PedidoVentaLinea(
-        pedidoVentaId: pedidoVentaLineaList[i].pedidoVentaId,
-        pedidoVentaLineaId: pedidoVentaLineaList[i].pedidoVentaLineaId,
+        pedidoId: pedidoVentaLineaList[i].pedidoId,
+        empresaId: pedidoVentaLineaList[i].empresaId,
+        // pedidoVentaLineaId: pedidoVentaLineaList[i].pedidoVentaLineaId,
         pedidoVentaAppId: pedidoVentaLineaList[i].pedidoVentaAppId,
-        pedidoVentaLineaAppId: (i + 1).toString().padLeft(3, '0'),
+        pedidoVentaLineaId: (i + 1).toString().padLeft(3, '0'),
         articuloId: pedidoVentaLineaList[i].articuloId,
         articuloDescription: pedidoVentaLineaList[i].articuloDescription,
         cantidad: pedidoVentaLineaList[i].cantidad,

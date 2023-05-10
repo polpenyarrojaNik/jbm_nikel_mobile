@@ -17,7 +17,6 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../../../core/domain/articulo_precio.dart';
-import '../../../core/domain/entity_id_is_local_param.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/exceptions/get_api_error.dart';
 import '../../../core/infrastructure/local_database.dart' as local;
@@ -27,6 +26,7 @@ import '../../cliente/domain/cliente_direccion.dart';
 import '../../cliente/infrastructure/cliente_dto.dart';
 import '../../usuario/domain/usuario.dart';
 import '../domain/pedido_albaran.dart';
+import '../domain/pedido_local_param.dart';
 import '../domain/pedido_venta.dart';
 import '../domain/pedido_venta_estado.dart';
 import '../domain/pedido_venta_linea.dart';
@@ -44,11 +44,10 @@ final pedidoVentaRepositoryProvider =
 );
 
 final pedidoVentaProvider = FutureProvider.autoDispose
-    .family<PedidoVenta, EntityIdIsLocalParam>(
-        (ref, pedidoVentaIdIsLocalParam) {
+    .family<PedidoVenta, PedidoLocalParam>((ref, pedidoLocalParam) {
   final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
   return pedidoVentaRepository.getPedidoVentaById(
-      pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam);
+      pedidoVentaIdIsLocalParam: pedidoLocalParam);
 });
 
 final pedidoVentaAlbaranProvider = FutureProvider.autoDispose
@@ -78,11 +77,10 @@ final pedidoVentaLastSyncDateProvider =
 });
 
 final pedidoVentaLineaProvider = FutureProvider.autoDispose
-    .family<List<PedidoVentaLinea>, EntityIdIsLocalParam>(
-        (ref, pedidoVentaIdIsLocalParam) {
+    .family<List<PedidoVentaLinea>, PedidoLocalParam>((ref, pedidoLocalParam) {
   final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
   return pedidoVentaRepository.getPedidoVentaLineaListById(
-      pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam);
+      pedidoLocalParam: pedidoLocalParam);
 });
 
 final getStockDisponibleProvider =
@@ -491,14 +489,14 @@ class PedidoVentaRepository {
   }
 
   Future<PedidoVenta> getPedidoVentaById(
-      {required EntityIdIsLocalParam pedidoVentaIdIsLocalParam}) async {
+      {required PedidoLocalParam pedidoVentaIdIsLocalParam}) async {
     try {
       if (!pedidoVentaIdIsLocalParam.isLocal) {
         return await getSyncPedidoVentaById(
-            pedidoVentaId: pedidoVentaIdIsLocalParam.id);
+            pedidoVentaId: pedidoVentaIdIsLocalParam.pedidoId!);
       } else {
         return await getPedidoVentaLocalById(
-            pedidoVentaAppId: pedidoVentaIdIsLocalParam.id);
+            pedidoVentaAppId: pedidoVentaIdIsLocalParam.pedidoAppId!);
       }
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
@@ -633,16 +631,17 @@ class PedidoVentaRepository {
   }
 
   Future<List<PedidoVentaLinea>> getPedidoVentaLineaListById(
-      {required EntityIdIsLocalParam pedidoVentaIdIsLocalParam}) async {
+      {required PedidoLocalParam pedidoLocalParam}) async {
     try {
-      if (!pedidoVentaIdIsLocalParam.isLocal) {
+      if (!pedidoLocalParam.isLocal) {
         return await getSyncPedidoVentaLineaList(
-            pedidoVentaId: pedidoVentaIdIsLocalParam.id);
+          pedidoVentaId: pedidoLocalParam.pedidoId!,
+          pedidoAppId: pedidoLocalParam.pedidoAppId,
+        );
       } else {
         return await getLocalPedidoVentaLineaList(
-            pedidoVentaAppId: pedidoVentaIdIsLocalParam.id,
-            addLineaDesdeArticulo:
-                pedidoVentaIdIsLocalParam.addLineaDesdeArticulo);
+            pedidoVentaAppId: pedidoLocalParam.pedidoAppId!,
+            addLineaDesdeArticulo: pedidoLocalParam.addLineaDesdeArticulo);
       }
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
@@ -650,23 +649,34 @@ class PedidoVentaRepository {
   }
 
   Future<List<PedidoVentaLinea>> getSyncPedidoVentaLineaList(
-      {required String pedidoVentaId}) async {
+      {required String pedidoVentaId, String? pedidoAppId}) async {
     try {
       final query = _remoteDb.select(_remoteDb.pedidoVentaLineaTable).join([
         innerJoin(
             _remoteDb.pedidoVentaTable,
             _remoteDb.pedidoVentaTable.pedidoVentaId
-                .equalsExp(_remoteDb.pedidoVentaLineaTable.pedidoVentaId))
+                .equalsExp(_remoteDb.pedidoVentaLineaTable.pedidoId))
       ]);
 
       query.where(
-          _remoteDb.pedidoVentaLineaTable.pedidoVentaId.equals(pedidoVentaId));
+          _remoteDb.pedidoVentaLineaTable.pedidoId.equals(pedidoVentaId));
 
-      return query.map((row) {
+      return query.asyncMap((row) async {
         final pedidoVentaDTO = row.readTable(_remoteDb.pedidoVentaTable);
         final pedidoVentaLineaDTO =
             row.readTable(_remoteDb.pedidoVentaLineaTable);
-        return pedidoVentaLineaDTO.toDomain(divisaId: pedidoVentaDTO.divisaId);
+
+        final stockDisponible =
+            await _getStockDisponible(pedidoVentaLineaDTO.articuloId);
+        final descuentoProntoPago =
+            await _getDescuentoProntoPago(pedidoVentaDTO.clienteId);
+        return pedidoVentaLineaDTO.toDomain(
+          pedidoVentaAppId: pedidoAppId,
+          iva: pedidoVentaDTO.iva,
+          descuentoProntoPago: descuentoProntoPago,
+          divisaId: pedidoVentaDTO.divisaId,
+          stockDisponible: stockDisponible,
+        );
       }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
@@ -741,6 +751,8 @@ class PedidoVentaRepository {
   }
 
   Future<void> upsertPedidoVenta({
+    String? pedidoId,
+    String? empresaId,
     required String pedidoVentaAppId,
     required Cliente cliente,
     required ClienteDireccion? clienteDireccion,
@@ -754,6 +766,8 @@ class PedidoVentaRepository {
     try {
       final pedidoVentaLocalDTO = PedidoVentaLocalDTO.fromForm(
         pedidoVentaAppId,
+        pedidoId,
+        empresaId,
         usuario.id,
         cliente,
         clienteDireccion,
@@ -772,6 +786,9 @@ class PedidoVentaRepository {
 
       if (!isBorrador) {
         try {
+          if (pedidoId != null && empresaId != null) {
+            await _removePedidoSyncDatabase(pedidoId);
+          }
           final pedidoVentaLocalDTOEnviado = await _remoteCreatePedidoVenta(
               pedidoVentaLocalDTO, pedidoVentaLineaLocalDTOList, usuario.test);
 
@@ -1111,11 +1128,11 @@ class PedidoVentaRepository {
       final requestUri = (test)
           ? Uri.http(
               dotenv.get('URLTEST', fallback: 'localhost:3001'),
-              'api/v1/online/pedidos',
+              'api/v3/online/pedidos',
             )
           : Uri.https(
               dotenv.get('URL', fallback: 'localhost:3001'),
-              'api/v1/online/pedidos',
+              'api/v3/online/pedidos',
             );
 
       final response = await _dio.postUri(
@@ -1972,7 +1989,7 @@ class PedidoVentaRepository {
     final row = [];
 
     row.add(pedidoVentaLinea.pedidoVentaAppId);
-    row.add(pedidoVentaLinea.pedidoVentaLineaAppId);
+    row.add(pedidoVentaLinea.pedidoVentaLineaId);
     row.add(pedidoVentaLinea.articuloId);
     row.add(pedidoVentaLinea.articuloDescription);
     row.add(pedidoVentaLinea.cantidad);
@@ -2042,5 +2059,30 @@ class PedidoVentaRepository {
     } catch (e) {
       throw getApiError(e);
     }
+  }
+
+  Future<int?> _getStockDisponible(String articuloId) async {
+    final articuloDto = await (_remoteDb.select(_remoteDb.articuloTable)
+          ..where((tbl) => tbl.id.equals(articuloId)))
+        .getSingleOrNull();
+
+    return articuloDto?.stockDisponible;
+  }
+
+  Future<double> _getDescuentoProntoPago(String clienteId) async {
+    final clienteDto = await (_remoteDb.select(_remoteDb.clienteTable)
+          ..where((tbl) => tbl.id.equals(clienteId)))
+        .getSingle();
+
+    return clienteDto.descuentoProntoPago;
+  }
+
+  Future<void> _removePedidoSyncDatabase(String pedidoId) async {
+    await (_remoteDb.delete(_remoteDb.pedidoVentaTable)
+          ..where((tbl) => tbl.pedidoVentaId.equals(pedidoId)))
+        .go();
+    await (_remoteDb.delete(_remoteDb.pedidoVentaLineaTable)
+          ..where((tbl) => tbl.pedidoId.equals(pedidoId)))
+        .go();
   }
 }

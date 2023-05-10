@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 
 import '../../../../../generated/l10n.dart';
-import '../../../../core/domain/entity_id_is_local_param.dart';
 import '../../../../core/helpers/formatters.dart';
+import '../../domain/pedido_local_param.dart';
 import '../../domain/pedido_venta.dart';
 
 class PedidoVentaListaTile extends StatelessWidget {
@@ -20,16 +20,17 @@ class PedidoVentaListaTile extends StatelessWidget {
       onTap: () => (!pedidoVenta.borrador)
           ? context.router.push(
               PedidoVentaDetalleRoute(
-                pedidoVentaIdIsLocalParam: EntityIdIsLocalParam(
-                  id: pedidoVenta.pedidoVentaId ??
-                      pedidoVenta.pedidoVentaAppId!,
-                  isNew: false,
-                  isLocal: !pedidoVenta.tratada,
-                ),
+                pedidoLocalParam: PedidoLocalParam(
+                    pedidoId: pedidoVenta.pedidoVentaId,
+                    empresaId: pedidoVenta.empresaId,
+                    pedidoAppId: pedidoVenta.pedidoVentaAppId,
+                    isEdit: false,
+                    tratada: pedidoVenta.tratada),
               ),
             )
           : context.router.push(
-              PedidoVentaEditRoute(id: pedidoVenta.pedidoVentaAppId),
+              PedidoVentaEditRoute(
+                  pedidoAppId: pedidoVenta.pedidoVentaAppId, isLocal: true),
             ),
       child: IntrinsicHeight(
         child: Container(

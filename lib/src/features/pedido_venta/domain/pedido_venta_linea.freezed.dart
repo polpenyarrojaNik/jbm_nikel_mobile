@@ -17,10 +17,10 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$PedidoVentaLinea {
   String? get empresaId => throw _privateConstructorUsedError;
-  String? get pedidoVentaId => throw _privateConstructorUsedError;
+  String? get pedidoId => throw _privateConstructorUsedError;
   String? get pedidoVentaLineaId => throw _privateConstructorUsedError;
-  String? get pedidoVentaAppId => throw _privateConstructorUsedError;
-  String? get pedidoVentaLineaAppId => throw _privateConstructorUsedError;
+  String? get pedidoVentaAppId =>
+      throw _privateConstructorUsedError; // String? pedidoVentaLineaAppId,
   String get articuloId => throw _privateConstructorUsedError;
   String get articuloDescription => throw _privateConstructorUsedError;
   int get cantidad => throw _privateConstructorUsedError;
@@ -54,10 +54,9 @@ abstract class $PedidoVentaLineaCopyWith<$Res> {
   @useResult
   $Res call(
       {String? empresaId,
-      String? pedidoVentaId,
+      String? pedidoId,
       String? pedidoVentaLineaId,
       String? pedidoVentaAppId,
-      String? pedidoVentaLineaAppId,
       String articuloId,
       String articuloDescription,
       int cantidad,
@@ -93,10 +92,9 @@ class _$PedidoVentaLineaCopyWithImpl<$Res, $Val extends PedidoVentaLinea>
   @override
   $Res call({
     Object? empresaId = freezed,
-    Object? pedidoVentaId = freezed,
+    Object? pedidoId = freezed,
     Object? pedidoVentaLineaId = freezed,
     Object? pedidoVentaAppId = freezed,
-    Object? pedidoVentaLineaAppId = freezed,
     Object? articuloId = null,
     Object? articuloDescription = null,
     Object? cantidad = null,
@@ -122,9 +120,9 @@ class _$PedidoVentaLineaCopyWithImpl<$Res, $Val extends PedidoVentaLinea>
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
               as String?,
-      pedidoVentaId: freezed == pedidoVentaId
-          ? _value.pedidoVentaId
-          : pedidoVentaId // ignore: cast_nullable_to_non_nullable
+      pedidoId: freezed == pedidoId
+          ? _value.pedidoId
+          : pedidoId // ignore: cast_nullable_to_non_nullable
               as String?,
       pedidoVentaLineaId: freezed == pedidoVentaLineaId
           ? _value.pedidoVentaLineaId
@@ -133,10 +131,6 @@ class _$PedidoVentaLineaCopyWithImpl<$Res, $Val extends PedidoVentaLinea>
       pedidoVentaAppId: freezed == pedidoVentaAppId
           ? _value.pedidoVentaAppId
           : pedidoVentaAppId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pedidoVentaLineaAppId: freezed == pedidoVentaLineaAppId
-          ? _value.pedidoVentaLineaAppId
-          : pedidoVentaLineaAppId // ignore: cast_nullable_to_non_nullable
               as String?,
       articuloId: null == articuloId
           ? _value.articuloId
@@ -228,10 +222,9 @@ abstract class _$$_PedidoVentaLineaCopyWith<$Res>
   @useResult
   $Res call(
       {String? empresaId,
-      String? pedidoVentaId,
+      String? pedidoId,
       String? pedidoVentaLineaId,
       String? pedidoVentaAppId,
-      String? pedidoVentaLineaAppId,
       String articuloId,
       String articuloDescription,
       int cantidad,
@@ -265,10 +258,9 @@ class __$$_PedidoVentaLineaCopyWithImpl<$Res>
   @override
   $Res call({
     Object? empresaId = freezed,
-    Object? pedidoVentaId = freezed,
+    Object? pedidoId = freezed,
     Object? pedidoVentaLineaId = freezed,
     Object? pedidoVentaAppId = freezed,
-    Object? pedidoVentaLineaAppId = freezed,
     Object? articuloId = null,
     Object? articuloDescription = null,
     Object? cantidad = null,
@@ -294,9 +286,9 @@ class __$$_PedidoVentaLineaCopyWithImpl<$Res>
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
               as String?,
-      pedidoVentaId: freezed == pedidoVentaId
-          ? _value.pedidoVentaId
-          : pedidoVentaId // ignore: cast_nullable_to_non_nullable
+      pedidoId: freezed == pedidoId
+          ? _value.pedidoId
+          : pedidoId // ignore: cast_nullable_to_non_nullable
               as String?,
       pedidoVentaLineaId: freezed == pedidoVentaLineaId
           ? _value.pedidoVentaLineaId
@@ -305,10 +297,6 @@ class __$$_PedidoVentaLineaCopyWithImpl<$Res>
       pedidoVentaAppId: freezed == pedidoVentaAppId
           ? _value.pedidoVentaAppId
           : pedidoVentaAppId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pedidoVentaLineaAppId: freezed == pedidoVentaLineaAppId
-          ? _value.pedidoVentaLineaAppId
-          : pedidoVentaLineaAppId // ignore: cast_nullable_to_non_nullable
               as String?,
       articuloId: null == articuloId
           ? _value.articuloId
@@ -395,10 +383,9 @@ class __$$_PedidoVentaLineaCopyWithImpl<$Res>
 class _$_PedidoVentaLinea extends _PedidoVentaLinea {
   const _$_PedidoVentaLinea(
       {this.empresaId,
-      this.pedidoVentaId,
+      this.pedidoId,
       this.pedidoVentaLineaId,
       this.pedidoVentaAppId,
-      this.pedidoVentaLineaAppId,
       required this.articuloId,
       required this.articuloDescription,
       required this.cantidad,
@@ -423,13 +410,12 @@ class _$_PedidoVentaLinea extends _PedidoVentaLinea {
   @override
   final String? empresaId;
   @override
-  final String? pedidoVentaId;
+  final String? pedidoId;
   @override
   final String? pedidoVentaLineaId;
   @override
   final String? pedidoVentaAppId;
-  @override
-  final String? pedidoVentaLineaAppId;
+// String? pedidoVentaLineaAppId,
   @override
   final String articuloId;
   @override
@@ -471,7 +457,7 @@ class _$_PedidoVentaLinea extends _PedidoVentaLinea {
 
   @override
   String toString() {
-    return 'PedidoVentaLinea(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, pedidoVentaLineaId: $pedidoVentaLineaId, pedidoVentaAppId: $pedidoVentaAppId, pedidoVentaLineaAppId: $pedidoVentaLineaAppId, articuloId: $articuloId, articuloDescription: $articuloDescription, cantidad: $cantidad, precioDivisa: $precioDivisa, divisaId: $divisaId, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, descuentoProntoPago: $descuentoProntoPago, pedidoLineaIdComponente: $pedidoLineaIdComponente, importeLinea: $importeLinea, stockDisponibleSN: $stockDisponibleSN, stockDisponible: $stockDisponible, fechaDisponible: $fechaDisponible, iva: $iva, cantidadPendiente: $cantidadPendiente, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'PedidoVentaLinea(empresaId: $empresaId, pedidoId: $pedidoId, pedidoVentaLineaId: $pedidoVentaLineaId, pedidoVentaAppId: $pedidoVentaAppId, articuloId: $articuloId, articuloDescription: $articuloDescription, cantidad: $cantidad, precioDivisa: $precioDivisa, divisaId: $divisaId, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, descuentoProntoPago: $descuentoProntoPago, pedidoLineaIdComponente: $pedidoLineaIdComponente, importeLinea: $importeLinea, stockDisponibleSN: $stockDisponibleSN, stockDisponible: $stockDisponible, fechaDisponible: $fechaDisponible, iva: $iva, cantidadPendiente: $cantidadPendiente, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -481,14 +467,12 @@ class _$_PedidoVentaLinea extends _PedidoVentaLinea {
             other is _$_PedidoVentaLinea &&
             (identical(other.empresaId, empresaId) ||
                 other.empresaId == empresaId) &&
-            (identical(other.pedidoVentaId, pedidoVentaId) ||
-                other.pedidoVentaId == pedidoVentaId) &&
+            (identical(other.pedidoId, pedidoId) ||
+                other.pedidoId == pedidoId) &&
             (identical(other.pedidoVentaLineaId, pedidoVentaLineaId) ||
                 other.pedidoVentaLineaId == pedidoVentaLineaId) &&
             (identical(other.pedidoVentaAppId, pedidoVentaAppId) ||
                 other.pedidoVentaAppId == pedidoVentaAppId) &&
-            (identical(other.pedidoVentaLineaAppId, pedidoVentaLineaAppId) ||
-                other.pedidoVentaLineaAppId == pedidoVentaLineaAppId) &&
             (identical(other.articuloId, articuloId) ||
                 other.articuloId == articuloId) &&
             (identical(other.articuloDescription, articuloDescription) ||
@@ -532,10 +516,9 @@ class _$_PedidoVentaLinea extends _PedidoVentaLinea {
   int get hashCode => Object.hashAll([
         runtimeType,
         empresaId,
-        pedidoVentaId,
+        pedidoId,
         pedidoVentaLineaId,
         pedidoVentaAppId,
-        pedidoVentaLineaAppId,
         articuloId,
         articuloDescription,
         cantidad,
@@ -567,10 +550,9 @@ class _$_PedidoVentaLinea extends _PedidoVentaLinea {
 abstract class _PedidoVentaLinea extends PedidoVentaLinea {
   const factory _PedidoVentaLinea(
       {final String? empresaId,
-      final String? pedidoVentaId,
+      final String? pedidoId,
       final String? pedidoVentaLineaId,
       final String? pedidoVentaAppId,
-      final String? pedidoVentaLineaAppId,
       required final String articuloId,
       required final String articuloDescription,
       required final int cantidad,
@@ -595,14 +577,12 @@ abstract class _PedidoVentaLinea extends PedidoVentaLinea {
   @override
   String? get empresaId;
   @override
-  String? get pedidoVentaId;
+  String? get pedidoId;
   @override
   String? get pedidoVentaLineaId;
   @override
   String? get pedidoVentaAppId;
-  @override
-  String? get pedidoVentaLineaAppId;
-  @override
+  @override // String? pedidoVentaLineaAppId,
   String get articuloId;
   @override
   String get articuloDescription;

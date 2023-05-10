@@ -10,7 +10,6 @@ import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/index/pe
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/show/pedido_venta_linea_tile.dart';
 
 import '../../../../../generated/l10n.dart';
-import '../../../../core/domain/entity_id_is_local_param.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
@@ -19,19 +18,19 @@ import '../../../../core/presentation/common_widgets/row_field_text_detail.dart'
 import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/presentation/toasts.dart';
 import '../../../../core/routing/app_auto_router.dart';
+import '../../domain/pedido_local_param.dart';
 import '../../domain/pedido_venta.dart';
 import '../../infrastructure/pedido_venta_repository.dart';
 import 'pedido_venta_adjunto_controller.dart';
 
 class PedidoVentaDetallePage extends ConsumerWidget {
-  const PedidoVentaDetallePage(
-      {super.key, required this.pedidoVentaIdIsLocalParam});
+  const PedidoVentaDetallePage({super.key, required this.pedidoLocalParam});
 
-  final EntityIdIsLocalParam pedidoVentaIdIsLocalParam;
+  final PedidoLocalParam pedidoLocalParam;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(pedidoVentaProvider(pedidoVentaIdIsLocalParam));
+    final state = ref.watch(pedidoVentaProvider(pedidoLocalParam));
 
     ref.listen<PedidoVentaAdjuntoState>(
       pedidoVentaAdjuntoControllerProvider,
@@ -47,13 +46,13 @@ class PedidoVentaDetallePage extends ConsumerWidget {
     return Scaffold(
       appBar: CommonAppBar(
         titleText:
-            ('${S.of(context).pedido_show_pedidoVentaDetalle_titulo} ${(pedidoVentaIdIsLocalParam.isLocal) ? S.of(context).pedido_index_offline : pedidoVentaIdIsLocalParam.id}'),
+            ('${S.of(context).pedido_show_pedidoVentaDetalle_titulo} ${(pedidoLocalParam.isLocal) ? S.of(context).pedido_index_offline : pedidoLocalParam.pedidoId}'),
         actions: state.maybeWhen(
           orElse: () => null,
           data: (pedidoVenta) {
             if (pedidoVenta.oferta ?? false) {
               final ofertaAdjuntoValue = ref.watch(
-                  ofertaHaveAttachmentProvider(pedidoVentaIdIsLocalParam.id));
+                  ofertaHaveAttachmentProvider(pedidoLocalParam.pedidoId!));
               return ofertaAdjuntoValue.maybeWhen(
                   orElse: () => [
                         const SizedBox(
@@ -67,25 +66,51 @@ class PedidoVentaDetallePage extends ConsumerWidget {
                       ? [
                           IconButton(
                             onPressed: () => _donwloadOfertaAttachment(
-                                ref, pedidoVentaIdIsLocalParam.id),
+                                ref, pedidoLocalParam.pedidoId!),
                             icon: const Icon(Icons.picture_as_pdf),
-                          )
+                          ),
+                          if (pedidoVenta.isEditable)
+                            IconButton(
+                              icon: const Icon(Icons.edit),
+                              onPressed: () => context.router.push(
+                                PedidoVentaEditRoute(
+                                  pedidoId: pedidoVenta.pedidoVentaId,
+                                  empresaId: pedidoVenta.empresaId,
+                                  isLocal: false,
+                                ),
+                              ),
+                            ),
                         ]
-                      : null);
+                      : [
+                          IconButton(
+                            icon: const Icon(Icons.edit),
+                            onPressed: () => context.router.push(
+                              PedidoVentaEditRoute(
+                                pedidoId: pedidoVenta.pedidoVentaId,
+                                empresaId: pedidoVenta.empresaId,
+                                isLocal: false,
+                              ),
+                            ),
+                          ),
+                        ]);
             } else {
-              if (pedidoVenta.isEditable()) {
+              if (pedidoVenta.isEditable) {
                 return [
                   IconButton(
                     icon: const Icon(Icons.edit),
                     onPressed: () => context.router.push(
-                      PedidoVentaEditRoute(id: pedidoVenta.pedidoVentaAppId),
+                      PedidoVentaEditRoute(
+                        pedidoAppId: pedidoVenta.pedidoVentaAppId,
+                        empresaId: pedidoVenta.empresaId,
+                        isLocal: true,
+                      ),
                     ),
                   ),
                   IconButton(
                     icon: const Icon(Icons.delete),
                     onPressed: () {
                       ref.read(deletePedidoVentaProvider(
-                          pedidoVentaIdIsLocalParam.id));
+                          pedidoLocalParam.pedidoAppId!));
                       ref.invalidate(
                           pedidoVentaIndexScreenPaginatedControllerProvider);
                       ref.invalidate(pedidoVentaIndexScreenControllerProvider);
@@ -113,15 +138,15 @@ class PedidoVentaDetallePage extends ConsumerWidget {
                     ClienteInfoContainer(pedidoVenta: pedidoVenta),
                     gapH12,
                     PedidoVentaInfoContainer(pedidoVenta: pedidoVenta),
-                    if (!pedidoVenta.getIsLocal()) gapH12,
-                    if (!pedidoVenta.getIsLocal())
+                    if (!pedidoVenta.isLocal) gapH12,
+                    if (!pedidoVenta.isLocal)
                       AlbaranesContainer(
                           pedidoVentaId: pedidoVenta.pedidoVentaId!),
                   ],
                 ),
               ),
               PedidoVentaLineaContainer(
-                pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam,
+                pedidoLocalParam: pedidoLocalParam,
               )
             ],
           ),
@@ -332,15 +357,13 @@ class AlbaranesContainer extends ConsumerWidget {
 }
 
 class PedidoVentaLineaContainer extends ConsumerWidget {
-  const PedidoVentaLineaContainer(
-      {super.key, required this.pedidoVentaIdIsLocalParam});
+  const PedidoVentaLineaContainer({super.key, required this.pedidoLocalParam});
 
-  final EntityIdIsLocalParam pedidoVentaIdIsLocalParam;
+  final PedidoLocalParam pedidoLocalParam;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state =
-        ref.watch(pedidoVentaLineaProvider(pedidoVentaIdIsLocalParam));
+    final state = ref.watch(pedidoVentaLineaProvider(pedidoLocalParam));
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

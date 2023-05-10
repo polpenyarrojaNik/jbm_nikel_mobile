@@ -252,18 +252,20 @@ class _$AppRouter extends RootStackRouter {
         routeData: routeData,
         child: PedidoVentaDetallePage(
           key: args.key,
-          pedidoVentaIdIsLocalParam: args.pedidoVentaIdIsLocalParam,
+          pedidoLocalParam: args.pedidoLocalParam,
         ),
       );
     },
     PedidoVentaEditRoute.name: (routeData) {
-      final args = routeData.argsAs<PedidoVentaEditRouteArgs>(
-          orElse: () => const PedidoVentaEditRouteArgs());
+      final args = routeData.argsAs<PedidoVentaEditRouteArgs>();
       return MaterialPageX<dynamic>(
         routeData: routeData,
         child: PedidoVentaEditPage(
           key: args.key,
-          id: args.id,
+          pedidoAppId: args.pedidoAppId,
+          pedidoId: args.pedidoId,
+          empresaId: args.empresaId,
+          isLocal: args.isLocal,
           createPedidoFromClienteId: args.createPedidoFromClienteId,
           addLineaDesdeArticulo: args.addLineaDesdeArticulo,
         ),
@@ -1425,13 +1427,13 @@ class PedidoVentaDetalleRoute
     extends PageRouteInfo<PedidoVentaDetalleRouteArgs> {
   PedidoVentaDetalleRoute({
     Key? key,
-    required EntityIdIsLocalParam pedidoVentaIdIsLocalParam,
+    required PedidoLocalParam pedidoLocalParam,
   }) : super(
           PedidoVentaDetalleRoute.name,
           path: '/pedido/:id',
           args: PedidoVentaDetalleRouteArgs(
             key: key,
-            pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam,
+            pedidoLocalParam: pedidoLocalParam,
           ),
         );
 
@@ -1441,16 +1443,16 @@ class PedidoVentaDetalleRoute
 class PedidoVentaDetalleRouteArgs {
   const PedidoVentaDetalleRouteArgs({
     this.key,
-    required this.pedidoVentaIdIsLocalParam,
+    required this.pedidoLocalParam,
   });
 
   final Key? key;
 
-  final EntityIdIsLocalParam pedidoVentaIdIsLocalParam;
+  final PedidoLocalParam pedidoLocalParam;
 
   @override
   String toString() {
-    return 'PedidoVentaDetalleRouteArgs{key: $key, pedidoVentaIdIsLocalParam: $pedidoVentaIdIsLocalParam}';
+    return 'PedidoVentaDetalleRouteArgs{key: $key, pedidoLocalParam: $pedidoLocalParam}';
   }
 }
 
@@ -1459,7 +1461,10 @@ class PedidoVentaDetalleRouteArgs {
 class PedidoVentaEditRoute extends PageRouteInfo<PedidoVentaEditRouteArgs> {
   PedidoVentaEditRoute({
     Key? key,
-    String? id,
+    String? pedidoAppId,
+    String? pedidoId,
+    String? empresaId,
+    required bool isLocal,
     String? createPedidoFromClienteId,
     PedidoVentaLinea? addLineaDesdeArticulo,
   }) : super(
@@ -1467,7 +1472,10 @@ class PedidoVentaEditRoute extends PageRouteInfo<PedidoVentaEditRouteArgs> {
           path: '/pedido/edit',
           args: PedidoVentaEditRouteArgs(
             key: key,
-            id: id,
+            pedidoAppId: pedidoAppId,
+            pedidoId: pedidoId,
+            empresaId: empresaId,
+            isLocal: isLocal,
             createPedidoFromClienteId: createPedidoFromClienteId,
             addLineaDesdeArticulo: addLineaDesdeArticulo,
           ),
@@ -1479,14 +1487,23 @@ class PedidoVentaEditRoute extends PageRouteInfo<PedidoVentaEditRouteArgs> {
 class PedidoVentaEditRouteArgs {
   const PedidoVentaEditRouteArgs({
     this.key,
-    this.id,
+    this.pedidoAppId,
+    this.pedidoId,
+    this.empresaId,
+    required this.isLocal,
     this.createPedidoFromClienteId,
     this.addLineaDesdeArticulo,
   });
 
   final Key? key;
 
-  final String? id;
+  final String? pedidoAppId;
+
+  final String? pedidoId;
+
+  final String? empresaId;
+
+  final bool isLocal;
 
   final String? createPedidoFromClienteId;
 
@@ -1494,7 +1511,7 @@ class PedidoVentaEditRouteArgs {
 
   @override
   String toString() {
-    return 'PedidoVentaEditRouteArgs{key: $key, id: $id, createPedidoFromClienteId: $createPedidoFromClienteId, addLineaDesdeArticulo: $addLineaDesdeArticulo}';
+    return 'PedidoVentaEditRouteArgs{key: $key, pedidoAppId: $pedidoAppId, pedidoId: $pedidoId, empresaId: $empresaId, isLocal: $isLocal, createPedidoFromClienteId: $createPedidoFromClienteId, addLineaDesdeArticulo: $addLineaDesdeArticulo}';
   }
 }
 
@@ -2014,7 +2031,7 @@ class VisitaListaRoute extends PageRouteInfo<void> {
 class VisitaDetalleRoute extends PageRouteInfo<VisitaDetalleRouteArgs> {
   VisitaDetalleRoute({
     Key? key,
-    required EntityIdIsLocalParam visitaIdIsLocalParam,
+    required VisitaIdIsLocalParam visitaIdIsLocalParam,
   }) : super(
           VisitaDetalleRoute.name,
           path: '/visita/:id',
@@ -2035,7 +2052,7 @@ class VisitaDetalleRouteArgs {
 
   final Key? key;
 
-  final EntityIdIsLocalParam visitaIdIsLocalParam;
+  final VisitaIdIsLocalParam visitaIdIsLocalParam;
 
   @override
   String toString() {

@@ -10,8 +10,9 @@ _$_PedidoVentaLocalDTO _$$_PedidoVentaLocalDTOFromJson(
         Map<String, dynamic> json) =>
     _$_PedidoVentaLocalDTO(
       usuarioId: json['USUARIO_ID'] as String?,
+      pedidoId: json['PEDIDO_ID'] as String?,
+      empresaId: json['EMPRESA_ID'] as String?,
       pedidoVentaAppId: json['PEDIDO_APP_ID'] as String,
-      empresaId: json['EMPRESA_ID'] as String,
       clienteId: json['CLIENTE_ID'] as String,
       nombreCliente: json['NOMBRE_CLIENTE'] as String,
       direccionId: json['DIRECCION_ID'] as String?,
@@ -41,8 +42,9 @@ Map<String, dynamic> _$$_PedidoVentaLocalDTOToJson(
         _$_PedidoVentaLocalDTO instance) =>
     <String, dynamic>{
       'USUARIO_ID': instance.usuarioId,
-      'PEDIDO_APP_ID': instance.pedidoVentaAppId,
+      'PEDIDO_ID': instance.pedidoId,
       'EMPRESA_ID': instance.empresaId,
+      'PEDIDO_APP_ID': instance.pedidoVentaAppId,
       'CLIENTE_ID': instance.clienteId,
       'NOMBRE_CLIENTE': instance.nombreCliente,
       'DIRECCION_ID': instance.direccionId,

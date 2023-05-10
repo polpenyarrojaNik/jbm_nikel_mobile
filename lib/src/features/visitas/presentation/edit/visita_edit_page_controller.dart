@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita.dart';
 
-import '../../../../core/domain/entity_id_is_local_param.dart';
 import '../../../cliente/infrastructure/cliente_repository.dart';
+import '../../domain/visita_id_param.dart';
 import '../../infrastructure/visita_repository.dart';
 
 part 'visita_edit_page_controller.freezed.dart';
@@ -33,7 +33,7 @@ class VisitaEditPageControllerState with _$VisitaEditPageControllerState {
 
 final visitaEditPageControllerProvider = StateNotifierProvider.autoDispose
     .family<VisitaEditPageController, VisitaEditPageControllerState,
-        EntityIdIsLocalParam>((ref, visitaIdIsLocalParam) {
+        VisitaIdIsLocalParam>((ref, visitaIdIsLocalParam) {
   return VisitaEditPageController(
     visitaRepository: ref.watch(visitaRepositoryProvider),
     clienteRepository: ref.watch(clienteRepositoryProvider),
@@ -47,7 +47,7 @@ class VisitaEditPageController
   final VisitaRepository visitaRepository;
   final ClienteRepository clienteRepository;
   final String usuarioId;
-  final EntityIdIsLocalParam visitaIdIsLocalParam;
+  final VisitaIdIsLocalParam visitaIdIsLocalParam;
 
   VisitaEditPageController({
     required this.visitaIdIsLocalParam,

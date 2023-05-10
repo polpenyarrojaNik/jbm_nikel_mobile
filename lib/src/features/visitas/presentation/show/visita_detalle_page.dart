@@ -11,13 +11,13 @@ import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../domain/visita.dart';
-import '../../../../core/domain/entity_id_is_local_param.dart';
+import '../../domain/visita_id_param.dart';
 import '../../infrastructure/visita_repository.dart';
 
 class VisitaDetallePage extends ConsumerWidget {
   const VisitaDetallePage({super.key, required this.visitaIdIsLocalParam});
 
-  final EntityIdIsLocalParam visitaIdIsLocalParam;
+  final VisitaIdIsLocalParam visitaIdIsLocalParam;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

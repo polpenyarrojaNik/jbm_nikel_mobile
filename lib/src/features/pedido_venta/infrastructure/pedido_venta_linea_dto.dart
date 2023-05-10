@@ -16,7 +16,7 @@ class PedidoVentaLineaDTO
   const PedidoVentaLineaDTO._();
   const factory PedidoVentaLineaDTO({
     @JsonKey(name: 'EMPRESA_ID') required String empresaId,
-    @JsonKey(name: 'PEDIDO_ID') required String pedidoVentaId,
+    @JsonKey(name: 'PEDIDO_ID') required String pedidoId,
     @JsonKey(name: 'PEDIDO_LINEA_ID') required String pedidoVentaLineaId,
     @JsonKey(name: 'ARTICULO_ID') required String articuloId,
     @JsonKey(name: 'ARTICULO_DESCRIPCION') required String articuloDescription,
@@ -37,10 +37,17 @@ class PedidoVentaLineaDTO
   factory PedidoVentaLineaDTO.fromJson(Map<String, dynamic> json) =>
       _$PedidoVentaLineaDTOFromJson(json);
 
-  PedidoVentaLinea toDomain({required String divisaId}) {
+  PedidoVentaLinea toDomain({
+    required String divisaId,
+    required double iva,
+    required double descuentoProntoPago,
+    String? pedidoVentaAppId,
+    int? stockDisponible,
+  }) {
     return PedidoVentaLinea(
         empresaId: empresaId,
-        pedidoVentaId: pedidoVentaId,
+        pedidoId: pedidoId,
+        pedidoVentaAppId: pedidoVentaAppId,
         pedidoVentaLineaId: pedidoVentaLineaId,
         articuloId: articuloId,
         articuloDescription: articuloDescription,
@@ -51,11 +58,15 @@ class PedidoVentaLineaDTO
         descuento1: descuento1,
         descuento2: descuento2,
         descuento3: descuento3,
+        descuentoProntoPago: descuentoProntoPago,
         pedidoLineaIdComponente: pedidoLineaIdComponente,
         importeLinea: (importeLinea != null)
             ? importeLinea!.toMoney(currencyId: divisaId)
             : null,
+        iva: iva,
         cantidadPendiente: cantidad - cantidadServida,
+        stockDisponible: stockDisponible,
+        stockDisponibleSN: stockDisponible != null && stockDisponible > 0,
         lastUpdated: lastUpdated,
         deleted: (deleted == 'S') ? true : false);
   }
@@ -64,7 +75,7 @@ class PedidoVentaLineaDTO
   Map<String, Expression> toColumns(bool nullToAbsent) {
     return PedidoVentaLineaTableCompanion(
       empresaId: Value(empresaId),
-      pedidoVentaId: Value(pedidoVentaId),
+      pedidoId: Value(pedidoId),
       pedidoVentaLineaId: Value(pedidoVentaLineaId),
       articuloId: Value(articuloId),
       articuloDescription: Value(articuloDescription),
@@ -86,7 +97,7 @@ class PedidoVentaLineaDTO
 @UseRowClass(PedidoVentaLineaDTO)
 class PedidoVentaLineaTable extends Table {
   TextColumn get empresaId => text().named('EMPRESA_ID')();
-  TextColumn get pedidoVentaId => text().named('PEDIDO_ID')();
+  TextColumn get pedidoId => text().named('PEDIDO_ID')();
   TextColumn get pedidoVentaLineaId => text().named('PEDIDO_LINEA_ID')();
   TextColumn get articuloId => text().named('ARTICULO_ID')();
   TextColumn get articuloDescription => text().named('ARTICULO_DESCRIPCION')();
@@ -105,7 +116,7 @@ class PedidoVentaLineaTable extends Table {
       text().withDefault(const Constant('N')).named('DELETED')();
 
   @override
-  Set<Column> get primaryKey => {pedidoVentaId, empresaId, pedidoVentaLineaId};
+  Set<Column> get primaryKey => {pedidoId, empresaId, pedidoVentaLineaId};
 
   @override
   String get tableName => 'PEDIDOS_LINEAS';
