@@ -33,7 +33,7 @@ class DevolucionLineaDTO
       _$DevolucionLineaDTOFromJson(json);
 
   DevolucionLinea toDomain(
-      DevolucionMotivo devolucionMotivo, DevolucionEstado devolucionEstado) {
+      DevolucionMotivo? devolucionMotivo, DevolucionEstado? devolucionEstado) {
     return DevolucionLinea(
         empresaId: empresaId,
         devolucionId: devolucionId,

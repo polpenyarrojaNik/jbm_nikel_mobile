@@ -17,21 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$DevolucionEstado {
   String get id => throw _privateConstructorUsedError;
-  String get descripcionES => throw _privateConstructorUsedError;
-  String? get descripcionEN => throw _privateConstructorUsedError;
-  String? get descripcionFR => throw _privateConstructorUsedError;
-  String? get descripcionDE => throw _privateConstructorUsedError;
-  String? get descripcionCA => throw _privateConstructorUsedError;
-  String? get descripcionGB => throw _privateConstructorUsedError;
-  String? get descripcionHU => throw _privateConstructorUsedError;
-  String? get descripcionIT => throw _privateConstructorUsedError;
-  String? get descripcionNL => throw _privateConstructorUsedError;
-  String? get descripcionPL => throw _privateConstructorUsedError;
-  String? get descripcionPT => throw _privateConstructorUsedError;
-  String? get descripcionRO => throw _privateConstructorUsedError;
-  String? get descripcionRU => throw _privateConstructorUsedError;
-  String? get descripcionCN => throw _privateConstructorUsedError;
-  String? get descripcionEL => throw _privateConstructorUsedError;
+  String get descripcion => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
@@ -47,24 +33,7 @@ abstract class $DevolucionEstadoCopyWith<$Res> {
       _$DevolucionEstadoCopyWithImpl<$Res, DevolucionEstado>;
   @useResult
   $Res call(
-      {String id,
-      String descripcionES,
-      String? descripcionEN,
-      String? descripcionFR,
-      String? descripcionDE,
-      String? descripcionCA,
-      String? descripcionGB,
-      String? descripcionHU,
-      String? descripcionIT,
-      String? descripcionNL,
-      String? descripcionPL,
-      String? descripcionPT,
-      String? descripcionRO,
-      String? descripcionRU,
-      String? descripcionCN,
-      String? descripcionEL,
-      DateTime lastUpdated,
-      bool deleted});
+      {String id, String descripcion, DateTime lastUpdated, bool deleted});
 }
 
 /// @nodoc
@@ -81,21 +50,7 @@ class _$DevolucionEstadoCopyWithImpl<$Res, $Val extends DevolucionEstado>
   @override
   $Res call({
     Object? id = null,
-    Object? descripcionES = null,
-    Object? descripcionEN = freezed,
-    Object? descripcionFR = freezed,
-    Object? descripcionDE = freezed,
-    Object? descripcionCA = freezed,
-    Object? descripcionGB = freezed,
-    Object? descripcionHU = freezed,
-    Object? descripcionIT = freezed,
-    Object? descripcionNL = freezed,
-    Object? descripcionPL = freezed,
-    Object? descripcionPT = freezed,
-    Object? descripcionRO = freezed,
-    Object? descripcionRU = freezed,
-    Object? descripcionCN = freezed,
-    Object? descripcionEL = freezed,
+    Object? descripcion = null,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -104,66 +59,10 @@ class _$DevolucionEstadoCopyWithImpl<$Res, $Val extends DevolucionEstado>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcionES: null == descripcionES
-          ? _value.descripcionES
-          : descripcionES // ignore: cast_nullable_to_non_nullable
+      descripcion: null == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcionEN: freezed == descripcionEN
-          ? _value.descripcionEN
-          : descripcionEN // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionFR: freezed == descripcionFR
-          ? _value.descripcionFR
-          : descripcionFR // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionDE: freezed == descripcionDE
-          ? _value.descripcionDE
-          : descripcionDE // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionCA: freezed == descripcionCA
-          ? _value.descripcionCA
-          : descripcionCA // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionGB: freezed == descripcionGB
-          ? _value.descripcionGB
-          : descripcionGB // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionHU: freezed == descripcionHU
-          ? _value.descripcionHU
-          : descripcionHU // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionIT: freezed == descripcionIT
-          ? _value.descripcionIT
-          : descripcionIT // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionNL: freezed == descripcionNL
-          ? _value.descripcionNL
-          : descripcionNL // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionPL: freezed == descripcionPL
-          ? _value.descripcionPL
-          : descripcionPL // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionPT: freezed == descripcionPT
-          ? _value.descripcionPT
-          : descripcionPT // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionRO: freezed == descripcionRO
-          ? _value.descripcionRO
-          : descripcionRO // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionRU: freezed == descripcionRU
-          ? _value.descripcionRU
-          : descripcionRU // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionCN: freezed == descripcionCN
-          ? _value.descripcionCN
-          : descripcionCN // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionEL: freezed == descripcionEL
-          ? _value.descripcionEL
-          : descripcionEL // ignore: cast_nullable_to_non_nullable
-              as String?,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -185,24 +84,7 @@ abstract class _$$_DevolucionEstadoCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
-      String descripcionES,
-      String? descripcionEN,
-      String? descripcionFR,
-      String? descripcionDE,
-      String? descripcionCA,
-      String? descripcionGB,
-      String? descripcionHU,
-      String? descripcionIT,
-      String? descripcionNL,
-      String? descripcionPL,
-      String? descripcionPT,
-      String? descripcionRO,
-      String? descripcionRU,
-      String? descripcionCN,
-      String? descripcionEL,
-      DateTime lastUpdated,
-      bool deleted});
+      {String id, String descripcion, DateTime lastUpdated, bool deleted});
 }
 
 /// @nodoc
@@ -217,21 +99,7 @@ class __$$_DevolucionEstadoCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? descripcionES = null,
-    Object? descripcionEN = freezed,
-    Object? descripcionFR = freezed,
-    Object? descripcionDE = freezed,
-    Object? descripcionCA = freezed,
-    Object? descripcionGB = freezed,
-    Object? descripcionHU = freezed,
-    Object? descripcionIT = freezed,
-    Object? descripcionNL = freezed,
-    Object? descripcionPL = freezed,
-    Object? descripcionPT = freezed,
-    Object? descripcionRO = freezed,
-    Object? descripcionRU = freezed,
-    Object? descripcionCN = freezed,
-    Object? descripcionEL = freezed,
+    Object? descripcion = null,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -240,66 +108,10 @@ class __$$_DevolucionEstadoCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcionES: null == descripcionES
-          ? _value.descripcionES
-          : descripcionES // ignore: cast_nullable_to_non_nullable
+      descripcion: null == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcionEN: freezed == descripcionEN
-          ? _value.descripcionEN
-          : descripcionEN // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionFR: freezed == descripcionFR
-          ? _value.descripcionFR
-          : descripcionFR // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionDE: freezed == descripcionDE
-          ? _value.descripcionDE
-          : descripcionDE // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionCA: freezed == descripcionCA
-          ? _value.descripcionCA
-          : descripcionCA // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionGB: freezed == descripcionGB
-          ? _value.descripcionGB
-          : descripcionGB // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionHU: freezed == descripcionHU
-          ? _value.descripcionHU
-          : descripcionHU // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionIT: freezed == descripcionIT
-          ? _value.descripcionIT
-          : descripcionIT // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionNL: freezed == descripcionNL
-          ? _value.descripcionNL
-          : descripcionNL // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionPL: freezed == descripcionPL
-          ? _value.descripcionPL
-          : descripcionPL // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionPT: freezed == descripcionPT
-          ? _value.descripcionPT
-          : descripcionPT // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionRO: freezed == descripcionRO
-          ? _value.descripcionRO
-          : descripcionRO // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionRU: freezed == descripcionRU
-          ? _value.descripcionRU
-          : descripcionRU // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionCN: freezed == descripcionCN
-          ? _value.descripcionCN
-          : descripcionCN // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionEL: freezed == descripcionEL
-          ? _value.descripcionEL
-          : descripcionEL // ignore: cast_nullable_to_non_nullable
-              as String?,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -317,21 +129,7 @@ class __$$_DevolucionEstadoCopyWithImpl<$Res>
 class _$_DevolucionEstado extends _DevolucionEstado {
   const _$_DevolucionEstado(
       {required this.id,
-      required this.descripcionES,
-      this.descripcionEN,
-      this.descripcionFR,
-      this.descripcionDE,
-      this.descripcionCA,
-      this.descripcionGB,
-      this.descripcionHU,
-      this.descripcionIT,
-      this.descripcionNL,
-      this.descripcionPL,
-      this.descripcionPT,
-      this.descripcionRO,
-      this.descripcionRU,
-      this.descripcionCN,
-      this.descripcionEL,
+      required this.descripcion,
       required this.lastUpdated,
       required this.deleted})
       : super._();
@@ -339,35 +137,7 @@ class _$_DevolucionEstado extends _DevolucionEstado {
   @override
   final String id;
   @override
-  final String descripcionES;
-  @override
-  final String? descripcionEN;
-  @override
-  final String? descripcionFR;
-  @override
-  final String? descripcionDE;
-  @override
-  final String? descripcionCA;
-  @override
-  final String? descripcionGB;
-  @override
-  final String? descripcionHU;
-  @override
-  final String? descripcionIT;
-  @override
-  final String? descripcionNL;
-  @override
-  final String? descripcionPL;
-  @override
-  final String? descripcionPT;
-  @override
-  final String? descripcionRO;
-  @override
-  final String? descripcionRU;
-  @override
-  final String? descripcionCN;
-  @override
-  final String? descripcionEL;
+  final String descripcion;
   @override
   final DateTime lastUpdated;
   @override
@@ -375,7 +145,7 @@ class _$_DevolucionEstado extends _DevolucionEstado {
 
   @override
   String toString() {
-    return 'DevolucionEstado(id: $id, descripcionES: $descripcionES, descripcionEN: $descripcionEN, descripcionFR: $descripcionFR, descripcionDE: $descripcionDE, descripcionCA: $descripcionCA, descripcionGB: $descripcionGB, descripcionHU: $descripcionHU, descripcionIT: $descripcionIT, descripcionNL: $descripcionNL, descripcionPL: $descripcionPL, descripcionPT: $descripcionPT, descripcionRO: $descripcionRO, descripcionRU: $descripcionRU, descripcionCN: $descripcionCN, descripcionEL: $descripcionEL, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'DevolucionEstado(id: $id, descripcion: $descripcion, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -384,62 +154,16 @@ class _$_DevolucionEstado extends _DevolucionEstado {
         (other.runtimeType == runtimeType &&
             other is _$_DevolucionEstado &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.descripcionES, descripcionES) ||
-                other.descripcionES == descripcionES) &&
-            (identical(other.descripcionEN, descripcionEN) ||
-                other.descripcionEN == descripcionEN) &&
-            (identical(other.descripcionFR, descripcionFR) ||
-                other.descripcionFR == descripcionFR) &&
-            (identical(other.descripcionDE, descripcionDE) ||
-                other.descripcionDE == descripcionDE) &&
-            (identical(other.descripcionCA, descripcionCA) ||
-                other.descripcionCA == descripcionCA) &&
-            (identical(other.descripcionGB, descripcionGB) ||
-                other.descripcionGB == descripcionGB) &&
-            (identical(other.descripcionHU, descripcionHU) ||
-                other.descripcionHU == descripcionHU) &&
-            (identical(other.descripcionIT, descripcionIT) ||
-                other.descripcionIT == descripcionIT) &&
-            (identical(other.descripcionNL, descripcionNL) ||
-                other.descripcionNL == descripcionNL) &&
-            (identical(other.descripcionPL, descripcionPL) ||
-                other.descripcionPL == descripcionPL) &&
-            (identical(other.descripcionPT, descripcionPT) ||
-                other.descripcionPT == descripcionPT) &&
-            (identical(other.descripcionRO, descripcionRO) ||
-                other.descripcionRO == descripcionRO) &&
-            (identical(other.descripcionRU, descripcionRU) ||
-                other.descripcionRU == descripcionRU) &&
-            (identical(other.descripcionCN, descripcionCN) ||
-                other.descripcionCN == descripcionCN) &&
-            (identical(other.descripcionEL, descripcionEL) ||
-                other.descripcionEL == descripcionEL) &&
+            (identical(other.descripcion, descripcion) ||
+                other.descripcion == descripcion) &&
             (identical(other.lastUpdated, lastUpdated) ||
                 other.lastUpdated == lastUpdated) &&
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      descripcionES,
-      descripcionEN,
-      descripcionFR,
-      descripcionDE,
-      descripcionCA,
-      descripcionGB,
-      descripcionHU,
-      descripcionIT,
-      descripcionNL,
-      descripcionPL,
-      descripcionPT,
-      descripcionRO,
-      descripcionRU,
-      descripcionCN,
-      descripcionEL,
-      lastUpdated,
-      deleted);
+  int get hashCode =>
+      Object.hash(runtimeType, id, descripcion, lastUpdated, deleted);
 
   @JsonKey(ignore: true)
   @override
@@ -451,21 +175,7 @@ class _$_DevolucionEstado extends _DevolucionEstado {
 abstract class _DevolucionEstado extends DevolucionEstado {
   const factory _DevolucionEstado(
       {required final String id,
-      required final String descripcionES,
-      final String? descripcionEN,
-      final String? descripcionFR,
-      final String? descripcionDE,
-      final String? descripcionCA,
-      final String? descripcionGB,
-      final String? descripcionHU,
-      final String? descripcionIT,
-      final String? descripcionNL,
-      final String? descripcionPL,
-      final String? descripcionPT,
-      final String? descripcionRO,
-      final String? descripcionRU,
-      final String? descripcionCN,
-      final String? descripcionEL,
+      required final String descripcion,
       required final DateTime lastUpdated,
       required final bool deleted}) = _$_DevolucionEstado;
   const _DevolucionEstado._() : super._();
@@ -473,35 +183,7 @@ abstract class _DevolucionEstado extends DevolucionEstado {
   @override
   String get id;
   @override
-  String get descripcionES;
-  @override
-  String? get descripcionEN;
-  @override
-  String? get descripcionFR;
-  @override
-  String? get descripcionDE;
-  @override
-  String? get descripcionCA;
-  @override
-  String? get descripcionGB;
-  @override
-  String? get descripcionHU;
-  @override
-  String? get descripcionIT;
-  @override
-  String? get descripcionNL;
-  @override
-  String? get descripcionPL;
-  @override
-  String? get descripcionPT;
-  @override
-  String? get descripcionRO;
-  @override
-  String? get descripcionRU;
-  @override
-  String? get descripcionCN;
-  @override
-  String? get descripcionEL;
+  String get descripcion;
   @override
   DateTime get lastUpdated;
   @override

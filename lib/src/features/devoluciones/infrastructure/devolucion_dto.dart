@@ -2,6 +2,7 @@ import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
 
+import '../../../core/domain/pais.dart';
 import '../domain/devolucion.dart';
 import '../domain/devolucion_estado.dart';
 
@@ -36,7 +37,10 @@ class DevolucionDTO with _$DevolucionDTO implements Insertable<DevolucionDTO> {
   factory DevolucionDTO.fromJson(Map<String, dynamic> json) =>
       _$DevolucionDTOFromJson(json);
 
-  Devolucion toDomain(DevolucionEstado devolucionEstado) {
+  Devolucion toDomain({
+    required DevolucionEstado devolucionEstado,
+    Pais? pais,
+  }) {
     return Devolucion(
       empresaId: empresaId,
       id: id,
@@ -48,7 +52,7 @@ class DevolucionDTO with _$DevolucionDTO implements Insertable<DevolucionDTO> {
       direccionRecogida2: direccionRecogida2,
       codigoPostal: codigoPostal,
       poblacion: poblacion,
-      paisId: paisId,
+      pais: pais,
       almacenDestino: almacenDestino,
       agenciaTransporte: agenciaTransporte,
       devolucionEstado: devolucionEstado,

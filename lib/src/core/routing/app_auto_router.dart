@@ -29,6 +29,8 @@ import '../../features/cliente/presentation/show/cliente_adjunto_page.dart';
 import '../../features/cliente/presentation/show/cliente_contacto_edit_page.dart';
 import '../../features/cliente/presentation/show/cliente_contacto_list_page.dart';
 import '../../features/cliente/presentation/show/cliente_descuento_page.dart';
+import '../../features/cliente/presentation/show/cliente_devolucion_detalle_page.dart';
+import '../../features/cliente/presentation/show/cliente_devolucion_page.dart';
 import '../../features/cliente/presentation/show/cliente_direccion_edit_page.dart';
 import '../../features/cliente/presentation/show/cliente_direccion_list_page.dart';
 import '../../features/cliente/presentation/show/cliente_direccion_seleccionar_pais_page.dart';
@@ -39,6 +41,7 @@ import '../../features/cliente/presentation/show/cliente_rappel_page.dart';
 import '../../features/cliente/presentation/show/cliente_ventas_articulo_page.dart';
 import '../../features/cliente/presentation/show/cliente_ventas_mes_page.dart';
 import '../../features/cliente/presentation/show/cliente_visita_page.dart';
+import '../../features/devoluciones/domain/devolucion.dart';
 import '../../features/cliente/presentation/show/ultimos_precios/cliente_ultimos_precios_page.dart';
 import '../../features/cliente_alrededor/presentation/clientes_alrededor_page.dart';
 import '../../features/pedido_venta/domain/seleccionar_cantidad_param.dart';
@@ -106,6 +109,10 @@ part 'app_auto_router.gr.dart';
     AutoRoute(page: ClienteRappelPage, path: '/cliente/:id/rappels'),
     AutoRoute(page: ClienteVisitasPage, path: '/cliente/:id/visitas'),
     AutoRoute(page: ClientePedidosPage, path: '/cliente/:id/pedidos'),
+    AutoRoute(page: ClienteDevolucionPage, path: '/cliente/:id/devoluciones'),
+    AutoRoute(
+        page: ClienteDevolucionDetallePage,
+        path: '/cliente/:id/devoluciones/:devolucionId'),
     AutoRoute(
         page: ClienteUltimosPreciosPage, path: '/cliente/:id/ultimos-precios'),
     AutoRoute(page: PedidoVentaListPage, path: '/pedido'),

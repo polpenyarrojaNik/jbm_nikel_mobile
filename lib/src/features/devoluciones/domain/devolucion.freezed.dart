@@ -26,7 +26,7 @@ mixin _$Devolucion {
   String? get direccionRecogida2 => throw _privateConstructorUsedError;
   String? get codigoPostal => throw _privateConstructorUsedError;
   String? get poblacion => throw _privateConstructorUsedError;
-  String? get paisId => throw _privateConstructorUsedError;
+  Pais? get pais => throw _privateConstructorUsedError;
   String? get almacenDestino => throw _privateConstructorUsedError;
   String? get agenciaTransporte => throw _privateConstructorUsedError;
   DevolucionEstado get devolucionEstado => throw _privateConstructorUsedError;
@@ -57,7 +57,7 @@ abstract class $DevolucionCopyWith<$Res> {
       String? direccionRecogida2,
       String? codigoPostal,
       String? poblacion,
-      String? paisId,
+      Pais? pais,
       String? almacenDestino,
       String? agenciaTransporte,
       DevolucionEstado devolucionEstado,
@@ -66,6 +66,7 @@ abstract class $DevolucionCopyWith<$Res> {
       DateTime lastUpdated,
       bool deleted});
 
+  $PaisCopyWith<$Res>? get pais;
   $DevolucionEstadoCopyWith<$Res> get devolucionEstado;
 }
 
@@ -92,7 +93,7 @@ class _$DevolucionCopyWithImpl<$Res, $Val extends Devolucion>
     Object? direccionRecogida2 = freezed,
     Object? codigoPostal = freezed,
     Object? poblacion = freezed,
-    Object? paisId = freezed,
+    Object? pais = freezed,
     Object? almacenDestino = freezed,
     Object? agenciaTransporte = freezed,
     Object? devolucionEstado = null,
@@ -142,10 +143,10 @@ class _$DevolucionCopyWithImpl<$Res, $Val extends Devolucion>
           ? _value.poblacion
           : poblacion // ignore: cast_nullable_to_non_nullable
               as String?,
-      paisId: freezed == paisId
-          ? _value.paisId
-          : paisId // ignore: cast_nullable_to_non_nullable
-              as String?,
+      pais: freezed == pais
+          ? _value.pais
+          : pais // ignore: cast_nullable_to_non_nullable
+              as Pais?,
       almacenDestino: freezed == almacenDestino
           ? _value.almacenDestino
           : almacenDestino // ignore: cast_nullable_to_non_nullable
@@ -179,6 +180,18 @@ class _$DevolucionCopyWithImpl<$Res, $Val extends Devolucion>
 
   @override
   @pragma('vm:prefer-inline')
+  $PaisCopyWith<$Res>? get pais {
+    if (_value.pais == null) {
+      return null;
+    }
+
+    return $PaisCopyWith<$Res>(_value.pais!, (value) {
+      return _then(_value.copyWith(pais: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
   $DevolucionEstadoCopyWith<$Res> get devolucionEstado {
     return $DevolucionEstadoCopyWith<$Res>(_value.devolucionEstado, (value) {
       return _then(_value.copyWith(devolucionEstado: value) as $Val);
@@ -205,7 +218,7 @@ abstract class _$$_DevolucionCopyWith<$Res>
       String? direccionRecogida2,
       String? codigoPostal,
       String? poblacion,
-      String? paisId,
+      Pais? pais,
       String? almacenDestino,
       String? agenciaTransporte,
       DevolucionEstado devolucionEstado,
@@ -214,6 +227,8 @@ abstract class _$$_DevolucionCopyWith<$Res>
       DateTime lastUpdated,
       bool deleted});
 
+  @override
+  $PaisCopyWith<$Res>? get pais;
   @override
   $DevolucionEstadoCopyWith<$Res> get devolucionEstado;
 }
@@ -239,7 +254,7 @@ class __$$_DevolucionCopyWithImpl<$Res>
     Object? direccionRecogida2 = freezed,
     Object? codigoPostal = freezed,
     Object? poblacion = freezed,
-    Object? paisId = freezed,
+    Object? pais = freezed,
     Object? almacenDestino = freezed,
     Object? agenciaTransporte = freezed,
     Object? devolucionEstado = null,
@@ -289,10 +304,10 @@ class __$$_DevolucionCopyWithImpl<$Res>
           ? _value.poblacion
           : poblacion // ignore: cast_nullable_to_non_nullable
               as String?,
-      paisId: freezed == paisId
-          ? _value.paisId
-          : paisId // ignore: cast_nullable_to_non_nullable
-              as String?,
+      pais: freezed == pais
+          ? _value.pais
+          : pais // ignore: cast_nullable_to_non_nullable
+              as Pais?,
       almacenDestino: freezed == almacenDestino
           ? _value.almacenDestino
           : almacenDestino // ignore: cast_nullable_to_non_nullable
@@ -339,7 +354,7 @@ class _$_Devolucion extends _Devolucion {
       this.direccionRecogida2,
       this.codigoPostal,
       this.poblacion,
-      this.paisId,
+      this.pais,
       this.almacenDestino,
       this.agenciaTransporte,
       required this.devolucionEstado,
@@ -370,7 +385,7 @@ class _$_Devolucion extends _Devolucion {
   @override
   final String? poblacion;
   @override
-  final String? paisId;
+  final Pais? pais;
   @override
   final String? almacenDestino;
   @override
@@ -388,7 +403,7 @@ class _$_Devolucion extends _Devolucion {
 
   @override
   String toString() {
-    return 'Devolucion(empresaId: $empresaId, id: $id, fechaDevolucion: $fechaDevolucion, clienteId: $clienteId, direccionId: $direccionId, nombre: $nombre, direccionRecogida1: $direccionRecogida1, direccionRecogida2: $direccionRecogida2, codigoPostal: $codigoPostal, poblacion: $poblacion, paisId: $paisId, almacenDestino: $almacenDestino, agenciaTransporte: $agenciaTransporte, devolucionEstado: $devolucionEstado, kilosDevolucion: $kilosDevolucion, bultos: $bultos, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'Devolucion(empresaId: $empresaId, id: $id, fechaDevolucion: $fechaDevolucion, clienteId: $clienteId, direccionId: $direccionId, nombre: $nombre, direccionRecogida1: $direccionRecogida1, direccionRecogida2: $direccionRecogida2, codigoPostal: $codigoPostal, poblacion: $poblacion, pais: $pais, almacenDestino: $almacenDestino, agenciaTransporte: $agenciaTransporte, devolucionEstado: $devolucionEstado, kilosDevolucion: $kilosDevolucion, bultos: $bultos, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -414,7 +429,7 @@ class _$_Devolucion extends _Devolucion {
                 other.codigoPostal == codigoPostal) &&
             (identical(other.poblacion, poblacion) ||
                 other.poblacion == poblacion) &&
-            (identical(other.paisId, paisId) || other.paisId == paisId) &&
+            (identical(other.pais, pais) || other.pais == pais) &&
             (identical(other.almacenDestino, almacenDestino) ||
                 other.almacenDestino == almacenDestino) &&
             (identical(other.agenciaTransporte, agenciaTransporte) ||
@@ -442,7 +457,7 @@ class _$_Devolucion extends _Devolucion {
       direccionRecogida2,
       codigoPostal,
       poblacion,
-      paisId,
+      pais,
       almacenDestino,
       agenciaTransporte,
       devolucionEstado,
@@ -470,7 +485,7 @@ abstract class _Devolucion extends Devolucion {
       final String? direccionRecogida2,
       final String? codigoPostal,
       final String? poblacion,
-      final String? paisId,
+      final Pais? pais,
       final String? almacenDestino,
       final String? agenciaTransporte,
       required final DevolucionEstado devolucionEstado,
@@ -501,7 +516,7 @@ abstract class _Devolucion extends Devolucion {
   @override
   String? get poblacion;
   @override
-  String? get paisId;
+  Pais? get pais;
   @override
   String? get almacenDestino;
   @override

@@ -1544,6 +1544,26 @@ class S {
     );
   }
 
+  /// `Returns`
+  String get cliente_show_clienteDevolucion_titulo {
+    return Intl.message(
+      'Returns',
+      name: 'cliente_show_clienteDevolucion_titulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Packages`
+  String get cliente_show_clienteDevolucion_bultos {
+    return Intl.message(
+      'Packages',
+      name: 'cliente_show_clienteDevolucion_bultos',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Contacts`
   String get cliente_show_clienteContacto_titulo {
     return Intl.message(

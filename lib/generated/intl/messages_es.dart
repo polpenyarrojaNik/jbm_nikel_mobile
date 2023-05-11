@@ -331,6 +331,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ventas"),
         "cliente_show_clienteDetalle_web":
             MessageLookupByLibrary.simpleMessage("Web"),
+        "cliente_show_clienteDevolucion_bultos":
+            MessageLookupByLibrary.simpleMessage("Bultos"),
+        "cliente_show_clienteDevolucion_titulo":
+            MessageLookupByLibrary.simpleMessage("Devoluciones"),
         "cliente_show_clienteDireccion_clienteDireccionEditPage_cambiosPendientesDeTramitar":
             MessageLookupByLibrary.simpleMessage(
                 "Cambios pendientes de tramitar"),

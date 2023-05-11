@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../core/domain/pais.dart';
 import 'devolucion_estado.dart';
 
 part 'devolucion.freezed.dart';
@@ -18,7 +19,7 @@ class Devolucion with _$Devolucion {
     String? direccionRecogida2,
     String? codigoPostal,
     String? poblacion,
-    String? paisId,
+    Pais? pais,
     String? almacenDestino,
     String? agenciaTransporte,
     required DevolucionEstado devolucionEstado,

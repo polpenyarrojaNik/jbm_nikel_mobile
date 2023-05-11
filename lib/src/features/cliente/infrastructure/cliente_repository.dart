@@ -21,6 +21,8 @@ import '../../../core/domain/adjunto_param.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/infrastructure/local_database.dart';
 import '../../articulos/domain/articulo.dart';
+import '../../devoluciones/domain/devolucion.dart';
+import '../../devoluciones/domain/devolucion_linea.dart';
 import '../../estadisticas/domain/estadisticas_ultimos_precios.dart';
 import '../../pedido_venta/domain/pedido_venta.dart';
 import '../../pedido_venta/infrastructure/pedido_venta_repository.dart';
@@ -130,6 +132,18 @@ final clientePedidosProvider = FutureProvider.autoDispose
   final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
   return pedidoVentaRepository.getPedidoVentaListaByCliente(
       clienteId: clienteId);
+});
+
+final clienteDevolucionesProvider = FutureProvider.autoDispose
+    .family<List<Devolucion>, String>((ref, clienteId) {
+  final clienteRepository = ref.watch(clienteRepositoryProvider);
+  return clienteRepository.getDevolucionByCliente(clienteId: clienteId);
+});
+
+final clienteDevolucionesLineaProvider = FutureProvider.autoDispose
+    .family<List<DevolucionLinea>, String>((ref, devolucionId) {
+  final clienteRepository = ref.watch(clienteRepositoryProvider);
+  return clienteRepository.getDevolucionLineaList(devolucionId: devolucionId);
 });
 
 final clienteAdjuntoProvider = FutureProvider.autoDispose
@@ -1064,6 +1078,77 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       visitas.addAll(visitasLocalList);
 
       return visitas;
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<List<Devolucion>> getDevolucionByCliente({required String clienteId}) {
+    try {
+      final query = _remoteDb.select(_remoteDb.devolucionTable).join([
+        innerJoin(
+            _remoteDb.clienteTable,
+            _remoteDb.clienteTable.id
+                .equalsExp(_remoteDb.devolucionTable.clienteId)),
+        leftOuterJoin(
+            _remoteDb.devolucionEstadoTable,
+            _remoteDb.devolucionEstadoTable.id
+                .equalsExp(_remoteDb.devolucionTable.devolucionEstadoId)),
+        leftOuterJoin(_remoteDb.paisTable,
+            _remoteDb.paisTable.id.equalsExp(_remoteDb.devolucionTable.paisId))
+      ]);
+
+      query.where(_remoteDb.devolucionTable.clienteId.equals(clienteId));
+
+      return query.map((row) {
+        final devolucionDTO = row.readTable(_remoteDb.devolucionTable);
+        final devolucionEstadoDTO =
+            row.readTable(_remoteDb.devolucionEstadoTable);
+        final paisDTO = row.readTableOrNull(_remoteDb.paisTable);
+
+        return devolucionDTO.toDomain(
+            devolucionEstado: devolucionEstadoDTO.toDomain(),
+            pais: paisDTO?.toDomain());
+      }).get();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<List<DevolucionLinea>> getDevolucionLineaList(
+      {required String devolucionId}) async {
+    try {
+      final query = _remoteDb.select(_remoteDb.devolucionLineaTable).join([
+        innerJoin(
+            _remoteDb.devolucionTable,
+            _remoteDb.devolucionTable.id
+                .equalsExp(_remoteDb.devolucionLineaTable.devolucionId)),
+        leftOuterJoin(
+            _remoteDb.devolucionEstadoTable,
+            _remoteDb.devolucionEstadoTable.id
+                .equalsExp(_remoteDb.devolucionLineaTable.devolucionEstadoId)),
+        leftOuterJoin(
+            _remoteDb.devolucionMotivoTable,
+            _remoteDb.devolucionMotivoTable.id
+                .equalsExp(_remoteDb.devolucionLineaTable.devolucionMotivoId))
+      ]);
+
+      query.where(
+          _remoteDb.devolucionLineaTable.devolucionId.equals(devolucionId));
+
+      return query.asyncMap((row) async {
+        final devolucionMotivoDTO =
+            row.readTableOrNull(_remoteDb.devolucionMotivoTable);
+        final devolucionEstadoDTO =
+            row.readTableOrNull(_remoteDb.devolucionEstadoTable);
+
+        final devolucionLineaDTO =
+            row.readTable(_remoteDb.devolucionLineaTable);
+        return devolucionLineaDTO.toDomain(
+          devolucionMotivoDTO?.toDomain(),
+          devolucionEstadoDTO?.toDomain(),
+        );
+      }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }

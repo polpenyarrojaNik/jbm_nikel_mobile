@@ -229,6 +229,27 @@ class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    ClienteDevolucionRoute.name: (routeData) {
+      final args = routeData.argsAs<ClienteDevolucionRouteArgs>();
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: ClienteDevolucionPage(
+          key: args.key,
+          clienteId: args.clienteId,
+          nombreCliente: args.nombreCliente,
+        ),
+      );
+    },
+    ClienteDevolucionDetalleRoute.name: (routeData) {
+      final args = routeData.argsAs<ClienteDevolucionDetalleRouteArgs>();
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: ClienteDevolucionDetallePage(
+          key: args.key,
+          devolucion: args.devolucion,
+        ),
+      );
+    },
     ClienteUltimosPreciosRoute.name: (routeData) {
       final args = routeData.argsAs<ClienteUltimosPreciosRouteArgs>();
       return MaterialPageX<dynamic>(
@@ -557,6 +578,14 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           ClientePedidosRoute.name,
           path: '/cliente/:id/pedidos',
+        ),
+        RouteConfig(
+          ClienteDevolucionRoute.name,
+          path: '/cliente/:id/devoluciones',
+        ),
+        RouteConfig(
+          ClienteDevolucionDetalleRoute.name,
+          path: '/cliente/:id/devoluciones/:devolucionId',
         ),
         RouteConfig(
           ClienteUltimosPreciosRoute.name,
@@ -1366,6 +1395,80 @@ class ClientePedidosRouteArgs {
   @override
   String toString() {
     return 'ClientePedidosRouteArgs{key: $key, clienteId: $clienteId, nombreCliente: $nombreCliente}';
+  }
+}
+
+/// generated route for
+/// [ClienteDevolucionPage]
+class ClienteDevolucionRoute extends PageRouteInfo<ClienteDevolucionRouteArgs> {
+  ClienteDevolucionRoute({
+    Key? key,
+    required String clienteId,
+    required String? nombreCliente,
+  }) : super(
+          ClienteDevolucionRoute.name,
+          path: '/cliente/:id/devoluciones',
+          args: ClienteDevolucionRouteArgs(
+            key: key,
+            clienteId: clienteId,
+            nombreCliente: nombreCliente,
+          ),
+        );
+
+  static const String name = 'ClienteDevolucionRoute';
+}
+
+class ClienteDevolucionRouteArgs {
+  const ClienteDevolucionRouteArgs({
+    this.key,
+    required this.clienteId,
+    required this.nombreCliente,
+  });
+
+  final Key? key;
+
+  final String clienteId;
+
+  final String? nombreCliente;
+
+  @override
+  String toString() {
+    return 'ClienteDevolucionRouteArgs{key: $key, clienteId: $clienteId, nombreCliente: $nombreCliente}';
+  }
+}
+
+/// generated route for
+/// [ClienteDevolucionDetallePage]
+class ClienteDevolucionDetalleRoute
+    extends PageRouteInfo<ClienteDevolucionDetalleRouteArgs> {
+  ClienteDevolucionDetalleRoute({
+    Key? key,
+    required Devolucion devolucion,
+  }) : super(
+          ClienteDevolucionDetalleRoute.name,
+          path: '/cliente/:id/devoluciones/:devolucionId',
+          args: ClienteDevolucionDetalleRouteArgs(
+            key: key,
+            devolucion: devolucion,
+          ),
+        );
+
+  static const String name = 'ClienteDevolucionDetalleRoute';
+}
+
+class ClienteDevolucionDetalleRouteArgs {
+  const ClienteDevolucionDetalleRouteArgs({
+    this.key,
+    required this.devolucion,
+  });
+
+  final Key? key;
+
+  final Devolucion devolucion;
+
+  @override
+  String toString() {
+    return 'ClienteDevolucionDetalleRouteArgs{key: $key, devolucion: $devolucion}';
   }
 }
 

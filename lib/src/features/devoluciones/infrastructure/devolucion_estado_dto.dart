@@ -1,5 +1,6 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:intl/intl.dart';
 
 import '../../../core/infrastructure/remote_database.dart';
 import '../domain/devolucion_estado.dart';
@@ -25,7 +26,6 @@ class DevolucionEstadoDTO
     @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
     @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
     @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
-    @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
     @JsonKey(name: 'DESCRIPCION_PT') String? descripcionPT,
     @JsonKey(name: 'DESCRIPCION_RO') String? descripcionRO,
     @JsonKey(name: 'DESCRIPCION_RU') String? descripcionRU,
@@ -41,23 +41,48 @@ class DevolucionEstadoDTO
   DevolucionEstado toDomain() {
     return DevolucionEstado(
         id: id,
-        descripcionES: descripcionES,
-        descripcionEN: descripcionEN,
-        descripcionFR: descripcionFR,
-        descripcionDE: descripcionDE,
-        descripcionCA: descripcionCA,
-        descripcionGB: descripcionGB,
-        descripcionHU: descripcionHU,
-        descripcionIT: descripcionIT,
-        descripcionNL: descripcionNL,
-        descripcionPL: descripcionPL,
-        descripcionPT: descripcionPT,
-        descripcionRO: descripcionRO,
-        descripcionRU: descripcionRU,
-        descripcionCN: descripcionCN,
-        descripcionEL: descripcionEL,
+        descripcion: getDescriptionInLocalLanguage(),
         lastUpdated: lastUpdated,
         deleted: (deleted == 'S') ? true : false);
+  }
+
+  String getDescriptionInLocalLanguage() {
+    final currentLocale = Intl.getCurrentLocale();
+    if (currentLocale == 'es') {
+    } else if (currentLocale == 'en' && descripcionEN != null) {
+      return descripcionEN!;
+    } else if (currentLocale == 'fr' && descripcionFR != null) {
+      return descripcionFR!;
+    } else if (currentLocale == 'it' && descripcionIT != null) {
+      return descripcionIT!;
+    } else if (currentLocale == 'pt' && descripcionPT != null) {
+      return descripcionPT!;
+    }
+    //else if (currentLocale == 'de' && descripcionDE != null) {
+    //   return descripcionDE!;
+    // } else if (currentLocale == 'ca' && descripcionCA != null) {
+    //   return descripcionCA!;
+    // } else if (currentLocale == 'gb' && descripcionGB != null) {
+    //   return descripcionGB!;
+    // } else if (currentLocale == 'hu' && descripcionHU != null) {
+    //   return descripcionHU!;
+    // }
+    //else if (currentLocale == 'nl' && descripcionNL != null) {
+    //   return descripcionNL!;
+    // } else if (currentLocale == 'pl' && descripcionPL != null) {
+    //   return descripcionPL!;
+    // }
+    //else if (currentLocale == 'ro' && descripcionRO != null) {
+    //   return descripcionRO!;
+    // } else if (currentLocale == 'ru' && descripcionRU != null) {
+    //   return descripcionRU!;
+    // } else if (currentLocale == 'cn' && descripcionCN != null) {
+    //   return descripcionCN!;
+    // } else if (currentLocale == 'el' && descripcionEL != null) {
+    //   return descripcionEL!;
+    // }
+
+    return descripcionES;
   }
 
   @override
@@ -73,7 +98,6 @@ class DevolucionEstadoDTO
       descripcionHU: Value(descripcionHU),
       descripcionIT: Value(descripcionIT),
       descripcionNL: Value(descripcionNL),
-      descripcionPL: Value(descripcionPL),
       descripcionPT: Value(descripcionPT),
       descripcionRO: Value(descripcionRO),
       descripcionRU: Value(descripcionRU),
@@ -103,7 +127,6 @@ class DevolucionEstadoTable extends Table {
   TextColumn get descripcionHU => text().nullable().named('DESCRIPCION_HU')();
   TextColumn get descripcionIT => text().nullable().named('DESCRIPCION_IT')();
   TextColumn get descripcionNL => text().nullable().named('DESCRIPCION_NL')();
-  TextColumn get descripcionPL => text().nullable().named('DESCRIPCION_PL')();
   TextColumn get descripcionPT => text().nullable().named('DESCRIPCION_PT')();
   TextColumn get descripcionRO => text().nullable().named('DESCRIPCION_RO')();
   TextColumn get descripcionRU => text().nullable().named('DESCRIPCION_RU')();
