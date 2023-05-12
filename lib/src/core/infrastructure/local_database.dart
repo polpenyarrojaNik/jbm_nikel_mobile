@@ -78,13 +78,17 @@ class LocalAppDatabase extends _$LocalAppDatabase {
         } else if (from == 2) {
           await m.deleteTable(pedidoVentaLocalTable.tableName);
           await m.deleteTable(pedidoVentaLineaLocalTable.tableName);
+          await m.deleteTable(visitaLocalTable.tableName);
           await m.createTable(pedidoVentaLocalTable);
           await m.createTable(pedidoVentaLineaLocalTable);
+          await m.createTable(visitaLocalTable);
         } else if (from == 3) {
           await m.deleteTable(pedidoVentaLocalTable.tableName);
           await m.deleteTable(pedidoVentaLineaLocalTable.tableName);
+          await m.deleteTable(visitaLocalTable.tableName);
           await m.createTable(pedidoVentaLocalTable);
           await m.createTable(pedidoVentaLineaLocalTable);
+          await m.createTable(visitaLocalTable);
         }
       }),
     );

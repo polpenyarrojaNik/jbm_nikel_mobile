@@ -45,11 +45,48 @@ class $VisitaLocalTableTable extends VisitaLocalTable
   late final GeneratedColumn<String> clienteProvisionalTelefono =
       GeneratedColumn<String>('CLIENTE_POTENCIAL_TELEFONO', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _clienteProvisionalDireccion1Meta =
+      const VerificationMeta('clienteProvisionalDireccion1');
+  @override
+  late final GeneratedColumn<String> clienteProvisionalDireccion1 =
+      GeneratedColumn<String>('CLIENTE_POTENCIAL_DIRECCION1', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _clienteProvisionalDireccion2Meta =
+      const VerificationMeta('clienteProvisionalDireccion2');
+  @override
+  late final GeneratedColumn<String> clienteProvisionalDireccion2 =
+      GeneratedColumn<String>('CLIENTE_POTENCIAL_DIRECCION2', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _clienteProvisionalCodigoPostalMeta =
+      const VerificationMeta('clienteProvisionalCodigoPostal');
+  @override
+  late final GeneratedColumn<String> clienteProvisionalCodigoPostal =
+      GeneratedColumn<String>('CLIENTE_POTENCIAL_COD_POS', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _clienteProvisionalPoblacionMeta =
       const VerificationMeta('clienteProvisionalPoblacion');
   @override
   late final GeneratedColumn<String> clienteProvisionalPoblacion =
       GeneratedColumn<String>('CLIENTE_POTENCIAL_POBLACION', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _clienteProvisionalProvinciaIdMeta =
+      const VerificationMeta('clienteProvisionalProvinciaId');
+  @override
+  late final GeneratedColumn<String> clienteProvisionalProvinciaId =
+      GeneratedColumn<String>(
+          'CLIENTE_POTENCIAL_PROVINCIA_ID', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _clienteProvisionalRegionIdMeta =
+      const VerificationMeta('clienteProvisionalRegionId');
+  @override
+  late final GeneratedColumn<String> clienteProvisionalRegionId =
+      GeneratedColumn<String>('CLIENTE_POTENCIAL_REGION_ID', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _clienteProvisionalPaisIdMeta =
+      const VerificationMeta('clienteProvisionalPaisId');
+  @override
+  late final GeneratedColumn<String> clienteProvisionalPaisId =
+      GeneratedColumn<String>('CLIENTE_POTENCIAL_PAIS_ID', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _fechaMeta = const VerificationMeta('fecha');
   @override
@@ -128,7 +165,13 @@ class $VisitaLocalTableTable extends VisitaLocalTable
         clienteProvisionalNombre,
         clienteProvisionalEmail,
         clienteProvisionalTelefono,
+        clienteProvisionalDireccion1,
+        clienteProvisionalDireccion2,
+        clienteProvisionalCodigoPostal,
         clienteProvisionalPoblacion,
+        clienteProvisionalProvinciaId,
+        clienteProvisionalRegionId,
+        clienteProvisionalPaisId,
         fecha,
         numEmpl,
         contacto,
@@ -190,12 +233,54 @@ class $VisitaLocalTableTable extends VisitaLocalTable
               data['CLIENTE_POTENCIAL_TELEFONO']!,
               _clienteProvisionalTelefonoMeta));
     }
+    if (data.containsKey('CLIENTE_POTENCIAL_DIRECCION1')) {
+      context.handle(
+          _clienteProvisionalDireccion1Meta,
+          clienteProvisionalDireccion1.isAcceptableOrUnknown(
+              data['CLIENTE_POTENCIAL_DIRECCION1']!,
+              _clienteProvisionalDireccion1Meta));
+    }
+    if (data.containsKey('CLIENTE_POTENCIAL_DIRECCION2')) {
+      context.handle(
+          _clienteProvisionalDireccion2Meta,
+          clienteProvisionalDireccion2.isAcceptableOrUnknown(
+              data['CLIENTE_POTENCIAL_DIRECCION2']!,
+              _clienteProvisionalDireccion2Meta));
+    }
+    if (data.containsKey('CLIENTE_POTENCIAL_COD_POS')) {
+      context.handle(
+          _clienteProvisionalCodigoPostalMeta,
+          clienteProvisionalCodigoPostal.isAcceptableOrUnknown(
+              data['CLIENTE_POTENCIAL_COD_POS']!,
+              _clienteProvisionalCodigoPostalMeta));
+    }
     if (data.containsKey('CLIENTE_POTENCIAL_POBLACION')) {
       context.handle(
           _clienteProvisionalPoblacionMeta,
           clienteProvisionalPoblacion.isAcceptableOrUnknown(
               data['CLIENTE_POTENCIAL_POBLACION']!,
               _clienteProvisionalPoblacionMeta));
+    }
+    if (data.containsKey('CLIENTE_POTENCIAL_PROVINCIA_ID')) {
+      context.handle(
+          _clienteProvisionalProvinciaIdMeta,
+          clienteProvisionalProvinciaId.isAcceptableOrUnknown(
+              data['CLIENTE_POTENCIAL_PROVINCIA_ID']!,
+              _clienteProvisionalProvinciaIdMeta));
+    }
+    if (data.containsKey('CLIENTE_POTENCIAL_REGION_ID')) {
+      context.handle(
+          _clienteProvisionalRegionIdMeta,
+          clienteProvisionalRegionId.isAcceptableOrUnknown(
+              data['CLIENTE_POTENCIAL_REGION_ID']!,
+              _clienteProvisionalRegionIdMeta));
+    }
+    if (data.containsKey('CLIENTE_POTENCIAL_PAIS_ID')) {
+      context.handle(
+          _clienteProvisionalPaisIdMeta,
+          clienteProvisionalPaisId.isAcceptableOrUnknown(
+              data['CLIENTE_POTENCIAL_PAIS_ID']!,
+              _clienteProvisionalPaisIdMeta));
     }
     if (data.containsKey('FECHA')) {
       context.handle(
@@ -283,9 +368,27 @@ class $VisitaLocalTableTable extends VisitaLocalTable
       clienteProvisionalTelefono: attachedDatabase.typeMapping.read(
           DriftSqlType.string,
           data['${effectivePrefix}CLIENTE_POTENCIAL_TELEFONO']),
+      clienteProvisionalDireccion1: attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}CLIENTE_POTENCIAL_DIRECCION1']),
+      clienteProvisionalDireccion2: attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}CLIENTE_POTENCIAL_DIRECCION2']),
+      clienteProvisionalCodigoPostal: attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}CLIENTE_POTENCIAL_COD_POS']),
       clienteProvisionalPoblacion: attachedDatabase.typeMapping.read(
           DriftSqlType.string,
           data['${effectivePrefix}CLIENTE_POTENCIAL_POBLACION']),
+      clienteProvisionalProvinciaId: attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}CLIENTE_POTENCIAL_PROVINCIA_ID']),
+      clienteProvisionalRegionId: attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}CLIENTE_POTENCIAL_REGION_ID']),
+      clienteProvisionalPaisId: attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}CLIENTE_POTENCIAL_PAIS_ID']),
       numEmpl: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}NUM_EMPL'])!,
       contacto: attachedDatabase.typeMapping
@@ -322,7 +425,13 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
   final Value<String?> clienteProvisionalNombre;
   final Value<String?> clienteProvisionalEmail;
   final Value<String?> clienteProvisionalTelefono;
+  final Value<String?> clienteProvisionalDireccion1;
+  final Value<String?> clienteProvisionalDireccion2;
+  final Value<String?> clienteProvisionalCodigoPostal;
   final Value<String?> clienteProvisionalPoblacion;
+  final Value<String?> clienteProvisionalProvinciaId;
+  final Value<String?> clienteProvisionalRegionId;
+  final Value<String?> clienteProvisionalPaisId;
   final Value<DateTime> fecha;
   final Value<String> numEmpl;
   final Value<String> contacto;
@@ -341,7 +450,13 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
     this.clienteProvisionalNombre = const Value.absent(),
     this.clienteProvisionalEmail = const Value.absent(),
     this.clienteProvisionalTelefono = const Value.absent(),
+    this.clienteProvisionalDireccion1 = const Value.absent(),
+    this.clienteProvisionalDireccion2 = const Value.absent(),
+    this.clienteProvisionalCodigoPostal = const Value.absent(),
     this.clienteProvisionalPoblacion = const Value.absent(),
+    this.clienteProvisionalProvinciaId = const Value.absent(),
+    this.clienteProvisionalRegionId = const Value.absent(),
+    this.clienteProvisionalPaisId = const Value.absent(),
     this.fecha = const Value.absent(),
     this.numEmpl = const Value.absent(),
     this.contacto = const Value.absent(),
@@ -361,7 +476,13 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
     this.clienteProvisionalNombre = const Value.absent(),
     this.clienteProvisionalEmail = const Value.absent(),
     this.clienteProvisionalTelefono = const Value.absent(),
+    this.clienteProvisionalDireccion1 = const Value.absent(),
+    this.clienteProvisionalDireccion2 = const Value.absent(),
+    this.clienteProvisionalCodigoPostal = const Value.absent(),
     this.clienteProvisionalPoblacion = const Value.absent(),
+    this.clienteProvisionalProvinciaId = const Value.absent(),
+    this.clienteProvisionalRegionId = const Value.absent(),
+    this.clienteProvisionalPaisId = const Value.absent(),
     required DateTime fecha,
     required String numEmpl,
     required String contacto,
@@ -387,7 +508,13 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
     Expression<String>? clienteProvisionalNombre,
     Expression<String>? clienteProvisionalEmail,
     Expression<String>? clienteProvisionalTelefono,
+    Expression<String>? clienteProvisionalDireccion1,
+    Expression<String>? clienteProvisionalDireccion2,
+    Expression<String>? clienteProvisionalCodigoPostal,
     Expression<String>? clienteProvisionalPoblacion,
+    Expression<String>? clienteProvisionalProvinciaId,
+    Expression<String>? clienteProvisionalRegionId,
+    Expression<String>? clienteProvisionalPaisId,
     Expression<DateTime>? fecha,
     Expression<String>? numEmpl,
     Expression<String>? contacto,
@@ -411,8 +538,20 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
         'CLIENTE_POTENCIAL_EMAIL': clienteProvisionalEmail,
       if (clienteProvisionalTelefono != null)
         'CLIENTE_POTENCIAL_TELEFONO': clienteProvisionalTelefono,
+      if (clienteProvisionalDireccion1 != null)
+        'CLIENTE_POTENCIAL_DIRECCION1': clienteProvisionalDireccion1,
+      if (clienteProvisionalDireccion2 != null)
+        'CLIENTE_POTENCIAL_DIRECCION2': clienteProvisionalDireccion2,
+      if (clienteProvisionalCodigoPostal != null)
+        'CLIENTE_POTENCIAL_COD_POS': clienteProvisionalCodigoPostal,
       if (clienteProvisionalPoblacion != null)
         'CLIENTE_POTENCIAL_POBLACION': clienteProvisionalPoblacion,
+      if (clienteProvisionalProvinciaId != null)
+        'CLIENTE_POTENCIAL_PROVINCIA_ID': clienteProvisionalProvinciaId,
+      if (clienteProvisionalRegionId != null)
+        'CLIENTE_POTENCIAL_REGION_ID': clienteProvisionalRegionId,
+      if (clienteProvisionalPaisId != null)
+        'CLIENTE_POTENCIAL_PAIS_ID': clienteProvisionalPaisId,
       if (fecha != null) 'FECHA': fecha,
       if (numEmpl != null) 'NUM_EMPL': numEmpl,
       if (contacto != null) 'CONTACTO': contacto,
@@ -434,7 +573,13 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
       Value<String?>? clienteProvisionalNombre,
       Value<String?>? clienteProvisionalEmail,
       Value<String?>? clienteProvisionalTelefono,
+      Value<String?>? clienteProvisionalDireccion1,
+      Value<String?>? clienteProvisionalDireccion2,
+      Value<String?>? clienteProvisionalCodigoPostal,
       Value<String?>? clienteProvisionalPoblacion,
+      Value<String?>? clienteProvisionalProvinciaId,
+      Value<String?>? clienteProvisionalRegionId,
+      Value<String?>? clienteProvisionalPaisId,
       Value<DateTime>? fecha,
       Value<String>? numEmpl,
       Value<String>? contacto,
@@ -456,8 +601,20 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
           clienteProvisionalEmail ?? this.clienteProvisionalEmail,
       clienteProvisionalTelefono:
           clienteProvisionalTelefono ?? this.clienteProvisionalTelefono,
+      clienteProvisionalDireccion1:
+          clienteProvisionalDireccion1 ?? this.clienteProvisionalDireccion1,
+      clienteProvisionalDireccion2:
+          clienteProvisionalDireccion2 ?? this.clienteProvisionalDireccion2,
+      clienteProvisionalCodigoPostal:
+          clienteProvisionalCodigoPostal ?? this.clienteProvisionalCodigoPostal,
       clienteProvisionalPoblacion:
           clienteProvisionalPoblacion ?? this.clienteProvisionalPoblacion,
+      clienteProvisionalProvinciaId:
+          clienteProvisionalProvinciaId ?? this.clienteProvisionalProvinciaId,
+      clienteProvisionalRegionId:
+          clienteProvisionalRegionId ?? this.clienteProvisionalRegionId,
+      clienteProvisionalPaisId:
+          clienteProvisionalPaisId ?? this.clienteProvisionalPaisId,
       fecha: fecha ?? this.fecha,
       numEmpl: numEmpl ?? this.numEmpl,
       contacto: contacto ?? this.contacto,
@@ -497,9 +654,33 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
       map['CLIENTE_POTENCIAL_TELEFONO'] =
           Variable<String>(clienteProvisionalTelefono.value);
     }
+    if (clienteProvisionalDireccion1.present) {
+      map['CLIENTE_POTENCIAL_DIRECCION1'] =
+          Variable<String>(clienteProvisionalDireccion1.value);
+    }
+    if (clienteProvisionalDireccion2.present) {
+      map['CLIENTE_POTENCIAL_DIRECCION2'] =
+          Variable<String>(clienteProvisionalDireccion2.value);
+    }
+    if (clienteProvisionalCodigoPostal.present) {
+      map['CLIENTE_POTENCIAL_COD_POS'] =
+          Variable<String>(clienteProvisionalCodigoPostal.value);
+    }
     if (clienteProvisionalPoblacion.present) {
       map['CLIENTE_POTENCIAL_POBLACION'] =
           Variable<String>(clienteProvisionalPoblacion.value);
+    }
+    if (clienteProvisionalProvinciaId.present) {
+      map['CLIENTE_POTENCIAL_PROVINCIA_ID'] =
+          Variable<String>(clienteProvisionalProvinciaId.value);
+    }
+    if (clienteProvisionalRegionId.present) {
+      map['CLIENTE_POTENCIAL_REGION_ID'] =
+          Variable<String>(clienteProvisionalRegionId.value);
+    }
+    if (clienteProvisionalPaisId.present) {
+      map['CLIENTE_POTENCIAL_PAIS_ID'] =
+          Variable<String>(clienteProvisionalPaisId.value);
     }
     if (fecha.present) {
       map['FECHA'] = Variable<DateTime>(fecha.value);
@@ -546,7 +727,17 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
           ..write('clienteProvisionalNombre: $clienteProvisionalNombre, ')
           ..write('clienteProvisionalEmail: $clienteProvisionalEmail, ')
           ..write('clienteProvisionalTelefono: $clienteProvisionalTelefono, ')
+          ..write(
+              'clienteProvisionalDireccion1: $clienteProvisionalDireccion1, ')
+          ..write(
+              'clienteProvisionalDireccion2: $clienteProvisionalDireccion2, ')
+          ..write(
+              'clienteProvisionalCodigoPostal: $clienteProvisionalCodigoPostal, ')
           ..write('clienteProvisionalPoblacion: $clienteProvisionalPoblacion, ')
+          ..write(
+              'clienteProvisionalProvinciaId: $clienteProvisionalProvinciaId, ')
+          ..write('clienteProvisionalRegionId: $clienteProvisionalRegionId, ')
+          ..write('clienteProvisionalPaisId: $clienteProvisionalPaisId, ')
           ..write('fecha: $fecha, ')
           ..write('numEmpl: $numEmpl, ')
           ..write('contacto: $contacto, ')

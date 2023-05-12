@@ -15,8 +15,19 @@ _$_VisitaLocalDTO _$$_VisitaLocalDTOFromJson(Map<String, dynamic> json) =>
       clienteProvisionalNombre: json['CLIENTE_POTENCIAL_NOMBRE'] as String?,
       clienteProvisionalEmail: json['CLIENTE_POTENCIAL_EMAIL'] as String?,
       clienteProvisionalTelefono: json['CLIENTE_POTENCIAL_TELEFONO'] as String?,
+      clienteProvisionalDireccion1:
+          json['CLIENTE_POTENCIAL_DIRECCION1'] as String?,
+      clienteProvisionalDireccion2:
+          json['CLIENTE_POTENCIAL_DIRECCION2'] as String?,
+      clienteProvisionalCodigoPostal:
+          json['CLIENTE_POTENCIAL_COD_POS'] as String?,
       clienteProvisionalPoblacion:
           json['CLIENTE_POTENCIAL_POBLACION'] as String?,
+      clienteProvisionalProvinciaId:
+          json['CLIENTE_POTENCIAL_PROVINCIA_ID'] as String?,
+      clienteProvisionalRegionId:
+          json['CLIENTE_POTENCIAL_REGION_ID'] as String?,
+      clienteProvisionalPaisId: json['CLIENTE_POTENCIAL_PAIS_ID'] as String?,
       numEmpl: json['NUM_EMPL'] as String,
       contacto: json['CONTACTO'] as String,
       atendidoPor: json['ATENDIDO_POR'] as String?,
@@ -38,7 +49,13 @@ Map<String, dynamic> _$$_VisitaLocalDTOToJson(_$_VisitaLocalDTO instance) =>
       'CLIENTE_POTENCIAL_NOMBRE': instance.clienteProvisionalNombre,
       'CLIENTE_POTENCIAL_EMAIL': instance.clienteProvisionalEmail,
       'CLIENTE_POTENCIAL_TELEFONO': instance.clienteProvisionalTelefono,
+      'CLIENTE_POTENCIAL_DIRECCION1': instance.clienteProvisionalDireccion1,
+      'CLIENTE_POTENCIAL_DIRECCION2': instance.clienteProvisionalDireccion2,
+      'CLIENTE_POTENCIAL_COD_POS': instance.clienteProvisionalCodigoPostal,
       'CLIENTE_POTENCIAL_POBLACION': instance.clienteProvisionalPoblacion,
+      'CLIENTE_POTENCIAL_PROVINCIA_ID': instance.clienteProvisionalProvinciaId,
+      'CLIENTE_POTENCIAL_REGION_ID': instance.clienteProvisionalRegionId,
+      'CLIENTE_POTENCIAL_PAIS_ID': instance.clienteProvisionalPaisId,
       'NUM_EMPL': instance.numEmpl,
       'CONTACTO': instance.contacto,
       'ATENDIDO_POR': instance.atendidoPor,

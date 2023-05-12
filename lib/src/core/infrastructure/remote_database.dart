@@ -7,6 +7,7 @@ import 'package:drift/native.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/divisa_dto.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/pais_dto.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/provincia_dto.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/subfamilia_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/estadisticas/infrastructure/estadisticas_venta_cliente_usuario_dto.dart';
 import 'package:path/path.dart' as p;
@@ -115,6 +116,7 @@ const remoteDatabaseName = 'jbm.sqlite';
   DevolucionEstadoTable,
   DevolucionLineaTable,
   DevolucionTable,
+  ProvinciaTable,
 ])
 class RemoteAppDatabase extends _$RemoteAppDatabase {
   final bool test;
