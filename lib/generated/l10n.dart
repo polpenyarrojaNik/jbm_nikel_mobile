@@ -1564,6 +1564,56 @@ class S {
     );
   }
 
+  /// `Served quantity`
+  String get cliente_show_clienteDevolucion_cantidadServida {
+    return Intl.message(
+      'Served quantity',
+      name: 'cliente_show_clienteDevolucion_cantidadServida',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Return detail`
+  String get cliente_show_clienteDevolucion_detalleDevolucion {
+    return Intl.message(
+      'Return detail',
+      name: 'cliente_show_clienteDevolucion_detalleDevolucion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Kilos return`
+  String get cliente_show_clienteDevolucion_kilosDevolucion {
+    return Intl.message(
+      'Kilos return',
+      name: 'cliente_show_clienteDevolucion_kilosDevolucion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Agency`
+  String get cliente_show_clienteDevolucion_agencia {
+    return Intl.message(
+      'Agency',
+      name: 'cliente_show_clienteDevolucion_agencia',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Destination`
+  String get cliente_show_clienteDevolucion_destino {
+    return Intl.message(
+      'Destination',
+      name: 'cliente_show_clienteDevolucion_destino',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Contacts`
   String get cliente_show_clienteContacto_titulo {
     return Intl.message(

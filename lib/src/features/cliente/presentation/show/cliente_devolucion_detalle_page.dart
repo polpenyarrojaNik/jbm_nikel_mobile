@@ -23,7 +23,8 @@ class ClienteDevolucionDetallePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CommonAppBar(
-        titleText: 'Detalle devolución',
+        titleText:
+            S.of(context).cliente_show_clienteDevolucion_detalleDevolucion,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -119,21 +120,24 @@ class DevolucionInfoContainer extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         RowFieldTextDetalle(
-          fieldTitleValue: 'Bultos',
+          fieldTitleValue: S.of(context).cliente_show_clienteDevolucion_bultos,
           value: numberFormatCantidades(devolucion.bultos),
         ),
         RowFieldTextDetalle(
-          fieldTitleValue: 'Kilos devolución',
+          fieldTitleValue:
+              S.of(context).cliente_show_clienteDevolucion_kilosDevolucion,
           value: '${numberFormatCantidades(devolucion.kilosDevolucion)} kg',
         ),
         if (devolucion.agenciaTransporte != null)
           RowFieldTextDetalle(
-            fieldTitleValue: 'Agencia',
+            fieldTitleValue:
+                S.of(context).cliente_show_clienteDevolucion_agencia,
             value: devolucion.agenciaTransporte,
           ),
         if (devolucion.almacenDestino != null)
           RowFieldTextDetalle(
-            fieldTitleValue: 'Destino',
+            fieldTitleValue:
+                S.of(context).cliente_show_clienteDevolucion_destino,
             value: devolucion.almacenDestino,
           ),
         gapH12,

@@ -328,5 +328,12 @@
 	"visitas_edit_visitaEditar_validatorExistPhoneMessage": "C'è un cliente con questo telefono.\nSei sicuro di voler salvare comunque la visita?",
 	"yes": "Sì",
 	"splash_a": "alla versione",
-	"splash_actualizandoBaseDeDatosDe": "Aggiornamento del database delle versioni"
+	"splash_actualizandoBaseDeDatosDe": "Aggiornamento del database delle versioni",
+	"cliente_show_clienteDevolucion_agencia": "Agenzia",
+	"cliente_show_clienteDevolucion_bultos": "Grumi",
+	"cliente_show_clienteDevolucion_cantidadServida": "Quantità servita",
+	"cliente_show_clienteDevolucion_destino": "Destinazione",
+	"cliente_show_clienteDevolucion_detalleDevolucion": "Dettaglio reso",
+	"cliente_show_clienteDevolucion_kilosDevolucion": "Ritorno chili",
+	"cliente_show_clienteDevolucion_titulo": "Ritorna"
 }

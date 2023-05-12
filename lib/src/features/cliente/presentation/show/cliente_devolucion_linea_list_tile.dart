@@ -54,10 +54,8 @@ class ClienteDevolucionLineaListTile extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
-
-                  //TODO traduccion
                   Text(
-                    'Cantidad servida: ${numberFormatCantidades(devolucionLinea.cantidadRecibida)} ${S.of(context).unidad}',
+                    '${S.of(context).cliente_show_clienteDevolucion_cantidadServida}: ${numberFormatCantidades(devolucionLinea.cantidadRecibida)} ${S.of(context).unidad}',
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   if (devolucionLinea.observaciones != null) const Spacer(),

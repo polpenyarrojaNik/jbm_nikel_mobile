@@ -326,8 +326,18 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sales"),
         "cliente_show_clienteDetalle_web":
             MessageLookupByLibrary.simpleMessage("Web"),
+        "cliente_show_clienteDevolucion_agencia":
+            MessageLookupByLibrary.simpleMessage("Agency"),
         "cliente_show_clienteDevolucion_bultos":
             MessageLookupByLibrary.simpleMessage("Packages"),
+        "cliente_show_clienteDevolucion_cantidadServida":
+            MessageLookupByLibrary.simpleMessage("Served quantity"),
+        "cliente_show_clienteDevolucion_destino":
+            MessageLookupByLibrary.simpleMessage("Destination"),
+        "cliente_show_clienteDevolucion_detalleDevolucion":
+            MessageLookupByLibrary.simpleMessage("Return detail"),
+        "cliente_show_clienteDevolucion_kilosDevolucion":
+            MessageLookupByLibrary.simpleMessage("Kilos return"),
         "cliente_show_clienteDevolucion_titulo":
             MessageLookupByLibrary.simpleMessage("Returns"),
         "cliente_show_clienteDireccion_clienteDireccionEditPage_cambiosPendientesDeTramitar":
