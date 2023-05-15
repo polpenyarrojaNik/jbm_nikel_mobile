@@ -3314,10 +3314,10 @@ class S {
     );
   }
 
-  /// `Articile`
+  /// `Article`
   String get articulo {
     return Intl.message(
-      'Articile',
+      'Article',
       name: 'articulo',
       desc: '',
       args: [],

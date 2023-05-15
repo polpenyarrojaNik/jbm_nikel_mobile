@@ -335,6 +335,20 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Vendite"),
         "cliente_show_clienteDetalle_web":
             MessageLookupByLibrary.simpleMessage("Web"),
+        "cliente_show_clienteDevolucion_agencia":
+            MessageLookupByLibrary.simpleMessage("Agenzia"),
+        "cliente_show_clienteDevolucion_bultos":
+            MessageLookupByLibrary.simpleMessage("Grumi"),
+        "cliente_show_clienteDevolucion_cantidadServida":
+            MessageLookupByLibrary.simpleMessage("Quantità servita"),
+        "cliente_show_clienteDevolucion_destino":
+            MessageLookupByLibrary.simpleMessage("Destinazione"),
+        "cliente_show_clienteDevolucion_detalleDevolucion":
+            MessageLookupByLibrary.simpleMessage("Dettaglio reso"),
+        "cliente_show_clienteDevolucion_kilosDevolucion":
+            MessageLookupByLibrary.simpleMessage("Ritorno chili"),
+        "cliente_show_clienteDevolucion_titulo":
+            MessageLookupByLibrary.simpleMessage("Ritorna"),
         "cliente_show_clienteDireccion_clienteDireccionEditPage_cambiosPendientesDeTramitar":
             MessageLookupByLibrary.simpleMessage(
                 "Modifiche in attesa di elaborazione"),

@@ -208,7 +208,6 @@ class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
     return SingleChildScrollView(
       child: FormBuilder(
         key: widget.formKey,
-        autoFocusOnValidationFailure: true,
         autovalidateMode: AutovalidateMode.disabled,
         child: Column(
           children: [

@@ -5,7 +5,7 @@ import 'package:jbm_nikel_mobile/src/features/settings/infrastructure/settings_r
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 
 class CustomSearchAppBar extends ConsumerStatefulWidget
-    with PreferredSizeWidget {
+    implements PreferredSizeWidget {
   const CustomSearchAppBar(
       {super.key,
       required this.title,
