@@ -452,6 +452,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "haOcurridoUnError":
             MessageLookupByLibrary.simpleMessage("An error occurred"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
+        "paises_search_title":
+            MessageLookupByLibrary.simpleMessage("Search country..."),
         "pedido_borrador": MessageLookupByLibrary.simpleMessage("Draft"),
         "pedido_edit_askPopAlertDialog_seguroQuieresSales":
             MessageLookupByLibrary.simpleMessage(
@@ -626,8 +628,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Customer"),
         "visitas_edit_visitaEditar_clienteProvisional":
             MessageLookupByLibrary.simpleMessage("Provisional customer"),
+        "visitas_edit_visitaEditar_codigoPostal":
+            MessageLookupByLibrary.simpleMessage("Zip code"),
         "visitas_edit_visitaEditar_contacto":
             MessageLookupByLibrary.simpleMessage("Contact"),
+        "visitas_edit_visitaEditar_direccion1":
+            MessageLookupByLibrary.simpleMessage("Address 1"),
+        "visitas_edit_visitaEditar_direccion2":
+            MessageLookupByLibrary.simpleMessage("Address 2"),
         "visitas_edit_visitaEditar_email":
             MessageLookupByLibrary.simpleMessage("Email"),
         "visitas_edit_visitaEditar_errorValidarFormulario":
@@ -638,8 +646,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Competitor brands"),
         "visitas_edit_visitaEditar_nombre":
             MessageLookupByLibrary.simpleMessage("Name"),
+        "visitas_edit_visitaEditar_pais":
+            MessageLookupByLibrary.simpleMessage("Country"),
         "visitas_edit_visitaEditar_poblacion":
             MessageLookupByLibrary.simpleMessage("City"),
+        "visitas_edit_visitaEditar_provincia":
+            MessageLookupByLibrary.simpleMessage("Province"),
         "visitas_edit_visitaEditar_resumen":
             MessageLookupByLibrary.simpleMessage("Summary"),
         "visitas_edit_visitaEditar_saved":

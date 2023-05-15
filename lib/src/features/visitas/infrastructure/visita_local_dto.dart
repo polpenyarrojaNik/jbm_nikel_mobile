@@ -1,6 +1,8 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../core/domain/pais.dart';
+import '../../../core/domain/provincia.dart';
 import '../../../core/infrastructure/local_database.dart';
 import '../domain/visita.dart';
 
@@ -15,12 +17,18 @@ class VisitaLocalDTO
     implements Insertable<VisitaLocalDTO> {
   const VisitaLocalDTO._();
   const factory VisitaLocalDTO({
-    @JsonKey(name: 'COD_VISITA_APP') String? visitaAppId,
-    @JsonKey(name: 'FECHA') required DateTime fecha,
-    @JsonKey(name: 'CLIENTE_ID') String? clienteId,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_SN') required String isClienteProvisional,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_NOMBRE') String? clienteProvisionalNombre,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL') String? clienteProvisionalEmail,
+    @JsonKey(name: 'COD_VISITA_APP')
+        String? visitaAppId,
+    @JsonKey(name: 'FECHA')
+        required DateTime fecha,
+    @JsonKey(name: 'CLIENTE_ID')
+        String? clienteId,
+    @JsonKey(name: 'CLIENTE_POTENCIAL_SN')
+        required String isClienteProvisional,
+    @JsonKey(name: 'CLIENTE_POTENCIAL_NOMBRE')
+        String? clienteProvisionalNombre,
+    @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL')
+        String? clienteProvisionalEmail,
     @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
         String? clienteProvisionalTelefono,
     @JsonKey(name: 'CLIENTE_POTENCIAL_DIRECCION1')
@@ -37,16 +45,28 @@ class VisitaLocalDTO
         String? clienteProvisionalRegionId,
     @JsonKey(name: 'CLIENTE_POTENCIAL_PAIS_ID')
         String? clienteProvisionalPaisId,
-    @JsonKey(name: 'NUM_EMPL') required String numEmpl,
-    @JsonKey(name: 'CONTACTO') required String contacto,
-    @JsonKey(name: 'ATENDIDO_POR') String? atendidoPor,
-    @JsonKey(name: 'RESUMEN') String? resumen,
-    @JsonKey(name: 'MARCAS_COMPETENCIA') String? marcasCompetencia,
-    @JsonKey(name: 'LATITUD') required double latitud,
-    @JsonKey(name: 'LONGITUD') required double longitud,
-    @JsonKey(name: 'ENVIADA') @Default('N') String enviada,
-    @JsonKey(name: 'TRATADA') @Default('N') String tratada,
-    @JsonKey(name: 'ERROR_SYNC') String? errorSyncMessage,
+    @JsonKey(name: 'NUM_EMPL')
+        required String numEmpl,
+    @JsonKey(name: 'CONTACTO')
+        required String contacto,
+    @JsonKey(name: 'ATENDIDO_POR')
+        String? atendidoPor,
+    @JsonKey(name: 'RESUMEN')
+        String? resumen,
+    @JsonKey(name: 'MARCAS_COMPETENCIA')
+        String? marcasCompetencia,
+    @JsonKey(name: 'LATITUD')
+        required double latitud,
+    @JsonKey(name: 'LONGITUD')
+        required double longitud,
+    @JsonKey(name: 'ENVIADA')
+    @Default('N')
+        String enviada,
+    @JsonKey(name: 'TRATADA')
+    @Default('N')
+        String tratada,
+    @JsonKey(name: 'ERROR_SYNC')
+        String? errorSyncMessage,
   }) = _VisitaLocalDTO;
 
   factory VisitaLocalDTO.fromJson(Map<String, dynamic> json) =>
@@ -65,9 +85,9 @@ class VisitaLocalDTO
       clienteProvisionalDireccion2: _.clienteProvisionalDireccion2,
       clienteProvisionalCodigoPostal: _.clienteProvisionalCodigoPostal,
       clienteProvisionalPoblacion: _.clienteProvisionalPoblacion,
-      clienteProvisionalProvinciaId: _.clienteProvisionalProvinciaId,
+      clienteProvisionalProvinciaId: _.clienteProvisionalProvincia?.provinciaId,
       clienteProvisionalRegionId: _.clienteProvisionalRegionId,
-      clienteProvisionalPaisId: _.clienteProvisionalPaisId,
+      clienteProvisionalPaisId: _.clienteProvisionalPais?.id,
       numEmpl: _.numEmpl,
       contacto: _.contacto!,
       atendidoPor: _.atendidoPor,
@@ -81,7 +101,10 @@ class VisitaLocalDTO
     );
   }
 
-  Visita toDomain({required String? nombreCliente}) {
+  Visita toDomain(
+      {required String? nombreCliente,
+      required Pais? pais,
+      required Provincia? provincia}) {
     return Visita(
         id: null,
         fecha: fecha,
@@ -95,9 +118,9 @@ class VisitaLocalDTO
         clienteProvisionalDireccion2: clienteProvisionalDireccion2,
         clienteProvisionalCodigoPostal: clienteProvisionalCodigoPostal,
         clienteProvisionalPoblacion: clienteProvisionalPoblacion,
-        clienteProvisionalProvinciaId: clienteProvisionalProvinciaId,
+        clienteProvisionalProvincia: provincia,
         clienteProvisionalRegionId: clienteProvisionalRegionId,
-        clienteProvisionalPaisId: clienteProvisionalPaisId,
+        clienteProvisionalPais: pais,
         numEmpl: numEmpl,
         contacto: contacto,
         atendidoPor: atendidoPor,

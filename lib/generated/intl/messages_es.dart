@@ -459,6 +459,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "haOcurridoUnError":
             MessageLookupByLibrary.simpleMessage("Ha ocurrido un error"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
+        "paises_search_title":
+            MessageLookupByLibrary.simpleMessage("Buscar país..."),
         "pedido_borrador": MessageLookupByLibrary.simpleMessage("Borrador"),
         "pedido_edit_askPopAlertDialog_seguroQuieresSales":
             MessageLookupByLibrary.simpleMessage(
@@ -635,8 +637,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Cliente"),
         "visitas_edit_visitaEditar_clienteProvisional":
             MessageLookupByLibrary.simpleMessage("Cliente provisional"),
+        "visitas_edit_visitaEditar_codigoPostal":
+            MessageLookupByLibrary.simpleMessage("Código postal"),
         "visitas_edit_visitaEditar_contacto":
             MessageLookupByLibrary.simpleMessage("Contacto"),
+        "visitas_edit_visitaEditar_direccion1":
+            MessageLookupByLibrary.simpleMessage("Dirección 1"),
+        "visitas_edit_visitaEditar_direccion2":
+            MessageLookupByLibrary.simpleMessage("Dirección 2"),
         "visitas_edit_visitaEditar_email":
             MessageLookupByLibrary.simpleMessage("Email"),
         "visitas_edit_visitaEditar_errorValidarFormulario":
@@ -648,8 +656,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Marcas competencia"),
         "visitas_edit_visitaEditar_nombre":
             MessageLookupByLibrary.simpleMessage("Nombre"),
+        "visitas_edit_visitaEditar_pais":
+            MessageLookupByLibrary.simpleMessage("País"),
         "visitas_edit_visitaEditar_poblacion":
             MessageLookupByLibrary.simpleMessage("Población"),
+        "visitas_edit_visitaEditar_provincia":
+            MessageLookupByLibrary.simpleMessage("Provincia"),
         "visitas_edit_visitaEditar_resumen":
             MessageLookupByLibrary.simpleMessage("Resumen"),
         "visitas_edit_visitaEditar_saved":

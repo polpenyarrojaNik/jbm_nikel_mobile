@@ -3224,11 +3224,61 @@ class S {
     );
   }
 
+  /// `Zip code`
+  String get visitas_edit_visitaEditar_codigoPostal {
+    return Intl.message(
+      'Zip code',
+      name: 'visitas_edit_visitaEditar_codigoPostal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address 1`
+  String get visitas_edit_visitaEditar_direccion1 {
+    return Intl.message(
+      'Address 1',
+      name: 'visitas_edit_visitaEditar_direccion1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address 2`
+  String get visitas_edit_visitaEditar_direccion2 {
+    return Intl.message(
+      'Address 2',
+      name: 'visitas_edit_visitaEditar_direccion2',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `City`
   String get visitas_edit_visitaEditar_poblacion {
     return Intl.message(
       'City',
       name: 'visitas_edit_visitaEditar_poblacion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Province`
+  String get visitas_edit_visitaEditar_provincia {
+    return Intl.message(
+      'Province',
+      name: 'visitas_edit_visitaEditar_provincia',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Country`
+  String get visitas_edit_visitaEditar_pais {
+    return Intl.message(
+      'Country',
+      name: 'visitas_edit_visitaEditar_pais',
       desc: '',
       args: [],
     );
@@ -3449,6 +3499,16 @@ class S {
     return Intl.message(
       '',
       name: 'visitas_edit_visitaEditar_validatorExisitingPhone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search country...`
+  String get paises_search_title {
+    return Intl.message(
+      'Search country...',
+      name: 'paises_search_title',
       desc: '',
       args: [],
     );

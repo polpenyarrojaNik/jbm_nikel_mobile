@@ -1,5 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../core/domain/pais.dart';
+import '../../../core/domain/provincia.dart';
+
 part 'visita.freezed.dart';
 
 @freezed
@@ -17,9 +20,9 @@ class Visita with _$Visita {
     String? clienteProvisionalDireccion2,
     String? clienteProvisionalCodigoPostal,
     String? clienteProvisionalPoblacion,
-    String? clienteProvisionalProvinciaId,
+    Provincia? clienteProvisionalProvincia,
     String? clienteProvisionalRegionId,
-    String? clienteProvisionalPaisId,
+    Pais? clienteProvisionalPais,
     required DateTime fecha,
     required String numEmpl,
     String? contacto,
