@@ -2,16 +2,20 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/core/domain/provincia.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 
 import 'package:jbm_nikel_mobile/src/features/cliente/presentation/index/cliente_search_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita.dart';
+import 'package:jbm_nikel_mobile/src/features/visitas/presentation/edit/pais_search_page.dart';
+import 'package:jbm_nikel_mobile/src/features/visitas/presentation/edit/provincia_search_page.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/presentation/edit/visita_edit_page_controller.dart';
 import 'package:uuid/uuid.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
 import '../../../../../generated/l10n.dart';
+import '../../../../core/domain/pais.dart';
 import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/presentation/common_widgets/alert_dialogs.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
@@ -41,8 +45,9 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
   VisitaIdIsLocalParam? visitaIdLocalParam;
 
   final formKey = GlobalKey<FormBuilderState>();
-  bool isValid = false;
   String? clienteId;
+  Pais? pais;
+  Provincia? provincia;
   bool isClientePotencial = false;
 
   void onSelectedCliente(String selectedClienteId) {
@@ -51,22 +56,22 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
     });
   }
 
+  void onSelectedPais(Pais selectedPais) {
+    setState(() {
+      pais = selectedPais;
+    });
+  }
+
+  void onSelectedProvincia(Provincia selectedProvincia) {
+    setState(() {
+      provincia = selectedProvincia;
+    });
+  }
+
   void onChangeClientePotencial(bool newVale) {
     setState(() {
       isClientePotencial = newVale;
     });
-  }
-
-  void _onChanged(dynamic val) {
-    if (formKey.currentState!.validate()) {
-      if (!isValid) {
-        setState(() => isValid = true);
-      }
-    } else {
-      if (isValid) {
-        setState(() => isValid = false);
-      }
-    }
   }
 
   @override
@@ -118,7 +123,7 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
             saving: (_) => const ProgressIndicatorWidget(),
             orElse: () => IconButton(
               icon: const Icon(Icons.save),
-              onPressed: (isValid) ? () => saveForm() : null,
+              onPressed: () => saveForm(),
             ),
           )
         ],
@@ -130,15 +135,16 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
             loading: () => const ProgressIndicatorWidget(),
             data: (visita) {
               return _VisitaForm(
-                formKey: formKey,
-                visita: visita,
-                onChanged: _onChanged,
-                onSelectedCliente: onSelectedCliente,
-                onChangeClientePotencial: onChangeClientePotencial,
-                isClienteProvisional: isClientePotencial,
-                readOnly: false,
-                isNew: widget.isNew,
-              );
+                  formKey: formKey,
+                  visita: visita,
+                  onSelectedCliente: onSelectedCliente,
+                  onSelectedProvincia: onSelectedProvincia,
+                  onSelectedPais: onSelectedPais,
+                  onChangeClientePotencial: onChangeClientePotencial,
+                  isClienteProvisional: isClientePotencial,
+                  readOnly: false,
+                  isNew: widget.isNew,
+                  paisId: pais?.id);
             },
             error: (Object error, StackTrace? _) => ErrorMessageWidget(
               (error is AppException)
@@ -148,33 +154,39 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
             saved: (visita) => _VisitaForm(
               formKey: formKey,
               visita: visita,
-              onChanged: _onChanged,
               onSelectedCliente: onSelectedCliente,
+              onSelectedProvincia: onSelectedProvincia,
+              onSelectedPais: onSelectedPais,
               onChangeClientePotencial: onChangeClientePotencial,
               isClienteProvisional: isClientePotencial,
               readOnly: false,
               isNew: widget.isNew,
+              paisId: pais?.id,
             ),
             saving: (visita) => _VisitaForm(
               formKey: formKey,
               visita: visita,
-              onChanged: _onChanged,
               onSelectedCliente: onSelectedCliente,
+              onSelectedProvincia: onSelectedProvincia,
+              onSelectedPais: onSelectedPais,
               onChangeClientePotencial: onChangeClientePotencial,
               isClienteProvisional: isClientePotencial,
               readOnly: true,
               isNew: widget.isNew,
+              paisId: pais?.id,
             ),
             savedError: (Visita visita, Object error, StackTrace? stackTrace) =>
                 _VisitaForm(
               formKey: formKey,
               visita: visita,
-              onChanged: _onChanged,
               onSelectedCliente: onSelectedCliente,
+              onSelectedProvincia: onSelectedProvincia,
+              onSelectedPais: onSelectedPais,
               onChangeClientePotencial: onChangeClientePotencial,
               isClienteProvisional: isClientePotencial,
               readOnly: false,
               isNew: widget.isNew,
+              paisId: pais?.id,
             ),
             deleted: () => const ProgressIndicatorWidget(),
           ),
@@ -187,6 +199,7 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
     if (formKey.currentState!.saveAndValidate()) {
       if (isClientePotencial) {
         final contiueToSavingVisit = await _checkClientePotencialValues(
+            formKey.currentState!.value['direccion1'] as String?,
             formKey.currentState!.value['telefono'] as String?,
             formKey.currentState!.value['email'] as String?);
         if (!contiueToSavingVisit) {
@@ -211,9 +224,21 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
               clienteProvisionalTelefono: isClientePotencial
                   ? formKey.currentState!.value['telefono'] as String?
                   : null,
+              clienteProvisionalDireccion1: isClientePotencial
+                  ? formKey.currentState!.value['direccion1'] as String?
+                  : null,
+              clienteProvisionalDireccion2: isClientePotencial
+                  ? formKey.currentState!.value['direccion2'] as String?
+                  : null,
+              clienteProvisionalCodigoPostal: isClientePotencial
+                  ? formKey.currentState!.value['codigo_postal'] as String?
+                  : null,
               clienteProvisionalPoblacion: isClientePotencial
                   ? formKey.currentState!.value['poblacion'] as String?
                   : null,
+              clienteProvisionalProvincia: provincia,
+              clienteProvisionalRegionId: provincia?.regionId,
+              clienteProvisionalPais: pais,
               numEmpl: ref.read(usuarioNotifierProvider)!.id,
               resumen: formKey.currentState!.value['resumen'] as String,
               contacto: formKey.currentState!.value['contacto'] as String,
@@ -239,7 +264,7 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
   }
 
   Future<bool> _checkClientePotencialValues(
-      String? telefono, String? email) async {
+      String? direccion1, String? telefono, String? email) async {
     if (telefono != null) {
       final existTelefono = await ref
           .read(visitaRepositoryProvider)
@@ -269,6 +294,8 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
       }
     }
 
+    if (direccion1 == null) {}
+
     return true;
   }
 }
@@ -276,22 +303,27 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
 class _VisitaForm extends StatelessWidget {
   const _VisitaForm({
     required this.formKey,
-    required this.onChanged,
     required this.onSelectedCliente,
+    required this.onSelectedPais,
+    required this.onSelectedProvincia,
     required this.onChangeClientePotencial,
     required this.isClienteProvisional,
     required this.visita,
     required this.readOnly,
     required this.isNew,
+    required this.paisId,
   });
   final GlobalKey<FormBuilderState> formKey;
-  final void Function(dynamic) onChanged;
   final void Function(String clienteId) onSelectedCliente;
+  final void Function(Pais pais) onSelectedPais;
+  final void Function(Provincia provincia) onSelectedProvincia;
+
   final void Function(bool newValue) onChangeClientePotencial;
   final bool isClienteProvisional;
   final Visita? visita;
   final bool readOnly;
   final bool isNew;
+  final String? paisId;
 
   @override
   Widget build(BuildContext context) {
@@ -310,21 +342,20 @@ class _VisitaForm extends StatelessWidget {
           if (isClienteProvisional)
             _ClienteProvisionalContainer(
               formKey: formKey,
-              onChanged: onChanged,
               visita: visita,
               readOnly: readOnly,
               onChangeClientePotencial: onChangeClientePotencial,
+              onSelectedPais: onSelectedPais,
+              onSelectedProvincia: onSelectedProvincia,
             ),
           if (!isClienteProvisional)
             _SelectClienteWidget(
-              onChanged: onChanged,
               visita: visita,
               readOnly: readOnly,
               onSelectedCliente: onSelectedCliente,
             ),
           FormBuilderDateTimePicker(
             name: 'fecha',
-            onChanged: onChanged,
             inputType: InputType.date,
             initialValue: visita?.fecha.toLocal() ?? DateTime.now().toLocal(),
             enabled: !readOnly,
@@ -337,7 +368,6 @@ class _VisitaForm extends StatelessWidget {
           ),
           FormBuilderTextField(
             name: 'contacto',
-            onChanged: onChanged,
             initialValue: visita?.contacto,
             enabled: !readOnly,
             validator: FormBuilderValidators.compose([
@@ -350,7 +380,6 @@ class _VisitaForm extends StatelessWidget {
           ),
           FormBuilderTextField(
             name: 'atendidoPor',
-            onChanged: onChanged,
             initialValue: visita?.atendidoPor,
             enabled: !readOnly,
             decoration: InputDecoration(
@@ -362,7 +391,6 @@ class _VisitaForm extends StatelessWidget {
           ),
           FormBuilderTextField(
             name: 'resumen',
-            onChanged: onChanged,
             initialValue: visita?.resumen,
             maxLines: null,
             minLines: 4,
@@ -377,7 +405,6 @@ class _VisitaForm extends StatelessWidget {
           ),
           FormBuilderTextField(
             name: 'marcasCompetencia',
-            onChanged: onChanged,
             initialValue: visita?.marcasCompetencia,
             maxLines: null,
             minLines: 4,
@@ -396,19 +423,55 @@ class _VisitaForm extends StatelessWidget {
   }
 }
 
-class _ClienteProvisionalContainer extends StatelessWidget {
-  const _ClienteProvisionalContainer(
-      {required this.formKey,
-      required this.onChanged,
-      required this.onChangeClientePotencial,
-      required this.visita,
-      required this.readOnly});
+class _ClienteProvisionalContainer extends ConsumerStatefulWidget {
+  const _ClienteProvisionalContainer({
+    required this.formKey,
+    required this.onChangeClientePotencial,
+    required this.onSelectedProvincia,
+    required this.onSelectedPais,
+    required this.visita,
+    required this.readOnly,
+  });
 
-  final void Function(dynamic) onChanged;
   final GlobalKey<FormBuilderState> formKey;
+  final void Function(Provincia provincia) onSelectedProvincia;
+  final void Function(Pais pais) onSelectedPais;
   final void Function(bool newValue) onChangeClientePotencial;
+
   final Visita? visita;
   final bool readOnly;
+
+  @override
+  ConsumerState<_ClienteProvisionalContainer> createState() =>
+      _ClienteProvisionalContainerState();
+}
+
+class _ClienteProvisionalContainerState
+    extends ConsumerState<_ClienteProvisionalContainer> {
+  final paisController = TextEditingController();
+  final provinciaController = TextEditingController();
+
+  String? paisId;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.visita != null &&
+        widget.visita?.clienteProvisionalProvincia != null) {
+      provinciaController.text =
+          widget.visita!.clienteProvisionalProvincia!.provincia ??
+              widget.visita!.clienteProvisionalProvincia!.provinciaId;
+      Future.microtask(() => widget
+          .onSelectedProvincia(widget.visita!.clienteProvisionalProvincia!));
+    }
+    if (widget.visita != null &&
+        widget.visita?.clienteProvisionalPais != null) {
+      paisController.text = widget.visita!.clienteProvisionalPais!.descripcion;
+      paisId = widget.visita!.clienteProvisionalPais!.id;
+      Future.microtask(
+          () => widget.onSelectedPais(widget.visita!.clienteProvisionalPais!));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -416,9 +479,9 @@ class _ClienteProvisionalContainer extends StatelessWidget {
       children: [
         FormBuilderTextField(
           name: 'nombre',
-          onChanged: onChanged,
-          initialValue: visita?.clienteProvisionalNombre,
-          enabled: !readOnly,
+          // onChanged: widget.olnChanged,
+          initialValue: widget.visita?.clienteProvisionalNombre,
+          enabled: !widget.readOnly,
           decoration: InputDecoration(
             labelText: S.of(context).visitas_edit_visitaEditar_nombre,
           ),
@@ -429,9 +492,8 @@ class _ClienteProvisionalContainer extends StatelessWidget {
         ),
         FormBuilderTextField(
           name: 'email',
-          onChanged: (_) => onChanged(_),
-          initialValue: visita?.clienteProvisionalEmail,
-          enabled: !readOnly,
+          initialValue: widget.visita?.clienteProvisionalEmail,
+          enabled: !widget.readOnly,
           keyboardType: TextInputType.emailAddress,
           validator: FormBuilderValidators.compose([
             FormBuilderValidators.email(),
@@ -443,9 +505,8 @@ class _ClienteProvisionalContainer extends StatelessWidget {
         ),
         FormBuilderTextField(
           name: 'telefono',
-          onChanged: (_) => onChanged,
-          initialValue: visita?.clienteProvisionalTelefono,
-          enabled: !readOnly,
+          initialValue: widget.visita?.clienteProvisionalTelefono,
+          enabled: !widget.readOnly,
           keyboardType: TextInputType.phone,
           validator: FormBuilderValidators.compose([
             FormBuilderValidators.numeric(),
@@ -456,10 +517,43 @@ class _ClienteProvisionalContainer extends StatelessWidget {
           ),
         ),
         FormBuilderTextField(
+          name: 'direccion1',
+          initialValue: widget.visita?.clienteProvisionalDireccion1,
+          enabled: !widget.readOnly,
+          decoration: InputDecoration(
+            labelText: S.of(context).visitas_edit_visitaEditar_direccion1,
+          ),
+          validator: FormBuilderValidators.compose([
+            FormBuilderValidators.required(),
+            FormBuilderValidators.maxLength(60),
+          ]),
+        ),
+        FormBuilderTextField(
+          name: 'direccion2',
+          initialValue: widget.visita?.clienteProvisionalDireccion2,
+          enabled: !widget.readOnly,
+          decoration: InputDecoration(
+            labelText: S.of(context).visitas_edit_visitaEditar_direccion2,
+          ),
+          validator: FormBuilderValidators.compose([
+            FormBuilderValidators.maxLength(60),
+          ]),
+        ),
+        FormBuilderTextField(
+          name: 'codigo_postal',
+          initialValue: widget.visita?.clienteProvisionalCodigoPostal,
+          enabled: !widget.readOnly,
+          decoration: InputDecoration(
+            labelText: S.of(context).visitas_edit_visitaEditar_codigoPostal,
+          ),
+          validator: FormBuilderValidators.compose([
+            FormBuilderValidators.maxLength(10),
+          ]),
+        ),
+        FormBuilderTextField(
           name: 'poblacion',
-          onChanged: onChanged,
-          initialValue: visita?.clienteProvisionalPoblacion,
-          enabled: !readOnly,
+          initialValue: widget.visita?.clienteProvisionalPoblacion,
+          enabled: !widget.readOnly,
           decoration: InputDecoration(
             labelText: S.of(context).visitas_edit_visitaEditar_poblacion,
           ),
@@ -467,20 +561,74 @@ class _ClienteProvisionalContainer extends StatelessWidget {
             FormBuilderValidators.maxLength(60),
           ]),
         ),
+        FormBuilderTextField(
+          name: 'pais',
+          controller: paisController,
+          enabled: !widget.readOnly,
+          readOnly: true,
+          decoration: InputDecoration(
+            labelText: S.of(context).visitas_edit_visitaEditar_pais,
+          ),
+          validator: FormBuilderValidators.compose([
+            FormBuilderValidators.required(),
+            FormBuilderValidators.maxLength(60),
+          ]),
+          onTap: () => showPaisSearchDialog(context),
+        ),
+        FormBuilderTextField(
+          name: 'provincia',
+          controller: provinciaController,
+          enabled: !widget.readOnly,
+          readOnly: true,
+          decoration: InputDecoration(
+            labelText: S.of(context).visitas_edit_visitaEditar_provincia,
+          ),
+          validator: FormBuilderValidators.compose([
+            FormBuilderValidators.required(),
+            FormBuilderValidators.maxLength(60),
+          ]),
+          onTap: () => showProvinciasSearchDialog(
+            context,
+            paisId,
+          ),
+        ),
       ],
     );
+  }
+
+  Future<void> showPaisSearchDialog(BuildContext context) async {
+    final pais = await showDialog(
+        context: context, builder: (context) => PaisSearchDialog()) as Pais?;
+
+    if (pais != null) {
+      widget.onSelectedPais(pais);
+      paisController.text = pais.descripcion;
+      paisId = pais.id;
+    }
+  }
+
+  Future<void> showProvinciasSearchDialog(
+      BuildContext context, String? paisId) async {
+    final provincia = await showDialog(
+        context: context,
+        builder: (context) => ProvinciaSearchDialog(
+              paisId: paisId,
+            )) as Provincia?;
+
+    if (provincia != null) {
+      widget.onSelectedProvincia(provincia);
+      provinciaController.text = provincia.provincia ?? provincia.provinciaId;
+    }
   }
 }
 
 class _SelectClienteWidget extends ConsumerStatefulWidget {
   const _SelectClienteWidget({
-    required this.onChanged,
     required this.visita,
     required this.readOnly,
     required this.onSelectedCliente,
   });
 
-  final void Function(dynamic p1) onChanged;
   final Visita? visita;
   final bool readOnly;
   final void Function(String clienteId) onSelectedCliente;
@@ -514,7 +662,6 @@ class _SelectClienteWidgetState extends ConsumerState<_SelectClienteWidget> {
     });
     return FormBuilderTextField(
       name: 'clienteId',
-      onChanged: widget.onChanged,
       controller: controller,
       onTap: () => navigateToSearchClientes(context),
       readOnly: true,

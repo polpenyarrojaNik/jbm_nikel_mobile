@@ -4,6 +4,10 @@ import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
+import 'package:jbm_nikel_mobile/src/core/domain/pais.dart';
+import 'package:jbm_nikel_mobile/src/core/domain/provincia.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/provincia_dto.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/dio_extension.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
@@ -11,6 +15,7 @@ import 'package:jbm_nikel_mobile/src/features/visitas/infrastructure/visita_loca
 
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/infrastructure/local_database.dart' as local;
+import '../../../core/infrastructure/pais_dto.dart';
 import '../../../core/presentation/app.dart';
 import '../../usuario/domain/usuario.dart';
 import '../domain/visita.dart';
@@ -191,11 +196,11 @@ class VisitaRepository {
       final requestUri = (test)
           ? Uri.http(
               dotenv.get('URLTEST', fallback: 'localhost:3001'),
-              'api/v1/online/v3/visitas',
+              'api/v4/online/visitas',
             )
           : Uri.https(
               dotenv.get('URL', fallback: 'localhost:3001'),
-              'api/v1/online/v3/visitas',
+              'api/v4/online/visitas',
             );
 
       final response = await _dio.postUri(
@@ -250,7 +255,7 @@ class VisitaRepository {
       String? clienteId}) async {
     try {
       final List<Visita> visitaLocalList = [];
-      final query = _localDb.select(_localDb.visitaLocalTable);
+      final query = _localDb.select(_localDb.visitaLocalTable)..join([]);
 
       query.where((tbl) => tbl.tratada.equals('N'));
 
@@ -317,8 +322,21 @@ class VisitaRepository {
                     (tbl) => tbl.id.equalsNullable(visitaLocalDTO.clienteId)))
               .getSingleOrNull();
 
+          final provinciaDTO = await (_remoteDb.select(_remoteDb.provinciaTable)
+                ..where((tbl) => tbl.provinciaId.equalsNullable(
+                    visitaLocalDTO.clienteProvisionalProvinciaId)))
+              .getSingleOrNull();
+
+          final paisDTO = await (_remoteDb.select(_remoteDb.paisTable)
+                ..where((tbl) => tbl.id
+                    .equalsNullable(visitaLocalDTO.clienteProvisionalPaisId)))
+              .getSingleOrNull();
+
           visitaLocalList.add(visitaLocalDTO.toDomain(
-              nombreCliente: clienteDTO?.nombreCliente));
+            nombreCliente: clienteDTO?.nombreCliente,
+            provincia: provinciaDTO?.toDomain(),
+            pais: paisDTO?.toDomain(),
+          ));
         }
       }
 
@@ -583,7 +601,62 @@ class VisitaRepository {
           ..where((tbl) => tbl.id.equalsNullable(visitaDTO.clienteId)))
         .getSingleOrNull();
 
-    return visitaDTO.toDomain(nombreCliente: clienteDTO?.nombreCliente);
+    final provinciaDTO = await (_remoteDb.select(_remoteDb.provinciaTable)
+          ..where((tbl) => tbl.provinciaId
+              .equalsNullable(visitaDTO.clienteProvisionalProvinciaId)))
+        .getSingleOrNull();
+
+    final paisDTO = await (_remoteDb.select(_remoteDb.paisTable)
+          ..where((tbl) =>
+              tbl.id.equalsNullable(visitaDTO.clienteProvisionalPaisId)))
+        .getSingleOrNull();
+
+    return visitaDTO.toDomain(
+      nombreCliente: clienteDTO?.nombreCliente,
+      provincia: provinciaDTO?.toDomain(),
+      pais: paisDTO?.toDomain(),
+    );
+  }
+
+  Future<List<Pais>> getPaises(String searchText) async {
+    final query = await _remoteDb.customSelect('''
+          SELECT *
+          FROM PAISES 
+          WHERE ${descripcionSegunLocale(searchText)}
+          ORDER BY CASE
+            WHEN  ${descripcionSegunLocale(searchText)} THEN 1
+            ELSE 2
+          END
+          , PAIS_ID
+''', readsFrom: {
+      _remoteDb.paisTable,
+    }).get();
+
+    return await Future.wait(query.map((row) async {
+      final paisDTO = PaisDTO.fromJson(row.data);
+      return paisDTO.toDomain();
+    }).toList());
+  }
+
+  Future<List<Provincia>> getProvincias(
+      String? paisId, String searchText) async {
+    var queryText = '''SELECT *
+          FROM PROVINCIAS 
+          WHERE (PROVINCIA LIKE '%$searchText%' OR PROVINCIA_ID LIKE '%$searchText%') ''';
+
+    if (paisId != null) {
+      queryText += '''AND PAIS_ID = '$paisId' ''';
+    }
+
+    queryText += 'ORDER BY PROVINCIA, PROVINCIA_ID';
+    final query = await _remoteDb.customSelect(queryText, readsFrom: {
+      _remoteDb.paisTable,
+    }).get();
+
+    return await Future.wait(query.map((row) async {
+      final provinciaDTO = ProvinciaDTO.fromJson(row.data);
+      return provinciaDTO.toDomain();
+    }).toList());
   }
 
   Future<DateTime> getLastSyncDate() async {
@@ -629,6 +702,27 @@ class VisitaRepository {
       return visitasList.isNotEmpty || clienteContactoList.isNotEmpty;
     } catch (e) {
       rethrow;
+    }
+  }
+
+  String descripcionSegunLocale(String searchText) {
+    final currentLocale = Intl.getCurrentLocale();
+
+    switch (currentLocale) {
+      case 'es':
+        return "DESCRIPCION_ES LIKE '%$searchText%'";
+      case 'en':
+        return "DESCRIPCION_EN LIKE '%$searchText%'";
+      case 'fr':
+        return "DESCRIPCION_FR LIKE '%$searchText%'";
+      case 'de':
+        return "DESCRIPCION_EN LIKE '%$searchText%'";
+
+      case 'it':
+        return "DESCRIPCION_IT LIKE '%$searchText%'";
+
+      default:
+        return "DESCRIPCION_ES LIKE '%$searchText%'";
     }
   }
 }

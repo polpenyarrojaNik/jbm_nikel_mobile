@@ -5,7 +5,7 @@ import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifi
 import '../../../features/settings/infrastructure/settings_repository.dart';
 import '../theme/app_sizes.dart';
 
-class CommonAppBar extends ConsumerWidget with PreferredSizeWidget {
+class CommonAppBar extends ConsumerWidget implements PreferredSizeWidget {
   const CommonAppBar({super.key, required this.titleText, this.actions});
 
   final String titleText;

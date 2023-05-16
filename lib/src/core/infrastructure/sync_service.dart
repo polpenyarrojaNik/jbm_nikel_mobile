@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/local_database.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/provincia_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/devoluciones/infrastructure/devolucion_dto.dart';
 
 import '../../core/infrastructure/pais_dto.dart';
@@ -191,6 +192,7 @@ class SyncService {
       await syncDivisas();
       await syncMetodoCobro();
       await syncPlazosCobro();
+      await syncProvincias();
     } catch (e) {
       rethrow;
     }
@@ -722,6 +724,21 @@ class SyncService {
     }
   }
 
+  Future<void> syncProvincias() async {
+    try {
+      await _syncTable(
+        apiPath: 'api/v1/sync/provincias',
+        tableInfo: _remoteDb.provinciaTable,
+        fromJson: (e) => ProvinciaDTO.fromJson(e),
+      );
+    } on AppException catch (e) {
+      log.e(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<void> syncMetodoCobro() async {
     try {
       await _syncTable(
@@ -1012,12 +1029,12 @@ class SyncService {
           ? Uri.http(
               // dotenv.get('URLTEST', fallback: 'localhost:3001')
               'jbm-api-test.nikel.es:8080',
-              'api/v1/online/v3/visitas',
+              'api/v4/online/visitas',
             )
           : Uri.https(
               // dotenv.get('URL', fallback: 'localhost:3001')
               'jbm-api.nikel.es',
-              'api/v1/online/v3/visitas',
+              'api/v4/online/visitas',
             );
 
       final response = await _dio.postUri(

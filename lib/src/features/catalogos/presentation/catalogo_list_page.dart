@@ -63,10 +63,10 @@ class _CatalogoListaPageState extends ConsumerState<CatalogoListaPage> {
               searchText,
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      body: const Padding(
+        padding: EdgeInsets.all(16.0),
         child: Column(
-          children: const [
+          children: [
             FilterDropdownWidget(),
             Expanded(child: CatalogoListViewWidget()),
           ],
@@ -81,9 +81,9 @@ class FilterDropdownWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Row(
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: const [
+      children: [
         TipoCatalogoFilterDropdown(),
         TipoPrecioCatalogoFilterDropdown(),
         IdiomaCatalogoFilterDropdown(),

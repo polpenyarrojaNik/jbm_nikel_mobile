@@ -18525,6 +18525,220 @@ class DevolucionTableCompanion extends UpdateCompanion<DevolucionDTO> {
   }
 }
 
+class $ProvinciaTableTable extends ProvinciaTable
+    with TableInfo<$ProvinciaTableTable, ProvinciaDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ProvinciaTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _paisIdMeta = const VerificationMeta('paisId');
+  @override
+  late final GeneratedColumn<String> paisId = GeneratedColumn<String>(
+      'PAIS_ID', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _regionIdMeta =
+      const VerificationMeta('regionId');
+  @override
+  late final GeneratedColumn<String> regionId = GeneratedColumn<String>(
+      'REGION_ID', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _provinciaIdMeta =
+      const VerificationMeta('provinciaId');
+  @override
+  late final GeneratedColumn<String> provinciaId = GeneratedColumn<String>(
+      'PROVINCIA_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _provinciaMeta =
+      const VerificationMeta('provincia');
+  @override
+  late final GeneratedColumn<String> provincia = GeneratedColumn<String>(
+      'PROVINCIA', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _lastUpdatedMeta =
+      const VerificationMeta('lastUpdated');
+  @override
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
+  @override
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
+      'DELETED', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('N'));
+  @override
+  List<GeneratedColumn> get $columns =>
+      [paisId, regionId, provinciaId, provincia, lastUpdated, deleted];
+  @override
+  String get aliasedName => _alias ?? 'PROVINCIAS';
+  @override
+  String get actualTableName => 'PROVINCIAS';
+  @override
+  VerificationContext validateIntegrity(Insertable<ProvinciaDTO> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('PAIS_ID')) {
+      context.handle(_paisIdMeta,
+          paisId.isAcceptableOrUnknown(data['PAIS_ID']!, _paisIdMeta));
+    }
+    if (data.containsKey('REGION_ID')) {
+      context.handle(_regionIdMeta,
+          regionId.isAcceptableOrUnknown(data['REGION_ID']!, _regionIdMeta));
+    }
+    if (data.containsKey('PROVINCIA_ID')) {
+      context.handle(
+          _provinciaIdMeta,
+          provinciaId.isAcceptableOrUnknown(
+              data['PROVINCIA_ID']!, _provinciaIdMeta));
+    } else if (isInserting) {
+      context.missing(_provinciaIdMeta);
+    }
+    if (data.containsKey('PROVINCIA')) {
+      context.handle(_provinciaMeta,
+          provincia.isAcceptableOrUnknown(data['PROVINCIA']!, _provinciaMeta));
+    }
+    if (data.containsKey('LAST_UPDATED')) {
+      context.handle(
+          _lastUpdatedMeta,
+          lastUpdated.isAcceptableOrUnknown(
+              data['LAST_UPDATED']!, _lastUpdatedMeta));
+    } else if (isInserting) {
+      context.missing(_lastUpdatedMeta);
+    }
+    if (data.containsKey('DELETED')) {
+      context.handle(_deletedMeta,
+          deleted.isAcceptableOrUnknown(data['DELETED']!, _deletedMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {provinciaId};
+  @override
+  ProvinciaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ProvinciaDTO(
+      paisId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}PAIS_ID']),
+      regionId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}REGION_ID']),
+      provinciaId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}PROVINCIA_ID'])!,
+      provincia: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}PROVINCIA']),
+      lastUpdated: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
+    );
+  }
+
+  @override
+  $ProvinciaTableTable createAlias(String alias) {
+    return $ProvinciaTableTable(attachedDatabase, alias);
+  }
+}
+
+class ProvinciaTableCompanion extends UpdateCompanion<ProvinciaDTO> {
+  final Value<String?> paisId;
+  final Value<String?> regionId;
+  final Value<String> provinciaId;
+  final Value<String?> provincia;
+  final Value<DateTime> lastUpdated;
+  final Value<String> deleted;
+  const ProvinciaTableCompanion({
+    this.paisId = const Value.absent(),
+    this.regionId = const Value.absent(),
+    this.provinciaId = const Value.absent(),
+    this.provincia = const Value.absent(),
+    this.lastUpdated = const Value.absent(),
+    this.deleted = const Value.absent(),
+  });
+  ProvinciaTableCompanion.insert({
+    this.paisId = const Value.absent(),
+    this.regionId = const Value.absent(),
+    required String provinciaId,
+    this.provincia = const Value.absent(),
+    required DateTime lastUpdated,
+    this.deleted = const Value.absent(),
+  })  : provinciaId = Value(provinciaId),
+        lastUpdated = Value(lastUpdated);
+  static Insertable<ProvinciaDTO> custom({
+    Expression<String>? paisId,
+    Expression<String>? regionId,
+    Expression<String>? provinciaId,
+    Expression<String>? provincia,
+    Expression<DateTime>? lastUpdated,
+    Expression<String>? deleted,
+  }) {
+    return RawValuesInsertable({
+      if (paisId != null) 'PAIS_ID': paisId,
+      if (regionId != null) 'REGION_ID': regionId,
+      if (provinciaId != null) 'PROVINCIA_ID': provinciaId,
+      if (provincia != null) 'PROVINCIA': provincia,
+      if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
+      if (deleted != null) 'DELETED': deleted,
+    });
+  }
+
+  ProvinciaTableCompanion copyWith(
+      {Value<String?>? paisId,
+      Value<String?>? regionId,
+      Value<String>? provinciaId,
+      Value<String?>? provincia,
+      Value<DateTime>? lastUpdated,
+      Value<String>? deleted}) {
+    return ProvinciaTableCompanion(
+      paisId: paisId ?? this.paisId,
+      regionId: regionId ?? this.regionId,
+      provinciaId: provinciaId ?? this.provinciaId,
+      provincia: provincia ?? this.provincia,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      deleted: deleted ?? this.deleted,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (paisId.present) {
+      map['PAIS_ID'] = Variable<String>(paisId.value);
+    }
+    if (regionId.present) {
+      map['REGION_ID'] = Variable<String>(regionId.value);
+    }
+    if (provinciaId.present) {
+      map['PROVINCIA_ID'] = Variable<String>(provinciaId.value);
+    }
+    if (provincia.present) {
+      map['PROVINCIA'] = Variable<String>(provincia.value);
+    }
+    if (lastUpdated.present) {
+      map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
+    }
+    if (deleted.present) {
+      map['DELETED'] = Variable<String>(deleted.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ProvinciaTableCompanion(')
+          ..write('paisId: $paisId, ')
+          ..write('regionId: $regionId, ')
+          ..write('provinciaId: $provinciaId, ')
+          ..write('provincia: $provincia, ')
+          ..write('lastUpdated: $lastUpdated, ')
+          ..write('deleted: $deleted')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$RemoteAppDatabase extends GeneratedDatabase {
   _$RemoteAppDatabase(QueryExecutor e) : super(e);
   _$RemoteAppDatabase.connect(DatabaseConnection c) : super.connect(c);
@@ -18600,6 +18814,7 @@ abstract class _$RemoteAppDatabase extends GeneratedDatabase {
       $DevolucionLineaTableTable(this);
   late final $DevolucionTableTable devolucionTable =
       $DevolucionTableTable(this);
+  late final $ProvinciaTableTable provinciaTable = $ProvinciaTableTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -18642,7 +18857,8 @@ abstract class _$RemoteAppDatabase extends GeneratedDatabase {
         devolucionMotivoTable,
         devolucionEstadoTable,
         devolucionLineaTable,
-        devolucionTable
+        devolucionTable,
+        provinciaTable
       ];
   @override
   DriftDatabaseOptions get options =>

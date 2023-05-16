@@ -1176,6 +1176,7 @@ GROUP BY ARTICULO_ID, DESCRIPCION
   }
 
   Future<List<Visita>> _getVisitasLocalById({required String clienteId}) async {
+    final List<Visita> visitas = [];
     try {
       final visitasLocalDto = await (_localDb.select(_localDb.visitaLocalTable)
             ..where((tbl) => tbl.clienteId.equals(clienteId)))
@@ -1185,9 +1186,22 @@ GROUP BY ARTICULO_ID, DESCRIPCION
             ..where((tbl) => tbl.id.equals(clienteId)))
           .getSingle();
 
-      return visitasLocalDto
-          .map((e) => e.toDomain(nombreCliente: clienteDto.nombreCliente))
-          .toList();
+      for (var i = 0; i < visitasLocalDto.length; i++) {
+        final provinciaDto = await (_remoteDb.select(_remoteDb.provinciaTable)
+              ..where((tbl) => tbl.provinciaId.equalsNullable(
+                  visitasLocalDto[i].clienteProvisionalProvinciaId)))
+            .getSingleOrNull();
+        final paisDto = await (_remoteDb.select(_remoteDb.paisTable)
+              ..where((tbl) => tbl.id
+                  .equalsNullable(visitasLocalDto[i].clienteProvisionalPaisId)))
+            .getSingleOrNull();
+        visitas.add(visitasLocalDto[i].toDomain(
+            nombreCliente: clienteDto.nombreCliente,
+            provincia: provinciaDto?.toDomain(),
+            pais: paisDto?.toDomain()));
+      }
+
+      return visitas;
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }

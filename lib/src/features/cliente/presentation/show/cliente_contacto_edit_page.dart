@@ -168,7 +168,6 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
     return SingleChildScrollView(
       child: FormBuilder(
         key: formKey,
-        autoFocusOnValidationFailure: true,
         autovalidateMode: AutovalidateMode.disabled,
         child: Column(
           children: [
