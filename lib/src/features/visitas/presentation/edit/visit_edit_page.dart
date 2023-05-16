@@ -234,7 +234,7 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
                   ? formKey.currentState!.value['codigo_postal'] as String?
                   : null,
               clienteProvisionalPoblacion: isClientePotencial
-                  ? formKey.currentState!.value['poblacion'] as String?
+                  ? formKey.currentState!.value['poblacion'] as String
                   : null,
               clienteProvisionalProvincia: provincia,
               clienteProvisionalRegionId: provincia?.regionId,
@@ -558,6 +558,7 @@ class _ClienteProvisionalContainerState
             labelText: S.of(context).visitas_edit_visitaEditar_poblacion,
           ),
           validator: FormBuilderValidators.compose([
+            FormBuilderValidators.required(),
             FormBuilderValidators.maxLength(60),
           ]),
         ),
