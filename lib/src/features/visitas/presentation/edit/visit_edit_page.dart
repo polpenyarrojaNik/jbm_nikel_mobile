@@ -348,6 +348,7 @@ class _VisitaForm extends StatelessWidget {
               onSelectedPais: onSelectedPais,
               onSelectedProvincia: onSelectedProvincia,
             ),
+          if (isClienteProvisional) const Divider(),
           if (!isClienteProvisional)
             _SelectClienteWidget(
               visita: visita,
@@ -363,7 +364,7 @@ class _VisitaForm extends StatelessWidget {
               FormBuilderValidators.required(),
             ]),
             decoration: InputDecoration(
-              labelText: S.of(context).visitas_edit_visitaEditar_fecha,
+              labelText: '${S.of(context).visitas_edit_visitaEditar_fecha} *',
             ),
           ),
           FormBuilderTextField(
@@ -375,7 +376,8 @@ class _VisitaForm extends StatelessWidget {
               FormBuilderValidators.maxLength(255),
             ]),
             decoration: InputDecoration(
-              labelText: S.of(context).visitas_edit_visitaEditar_contacto,
+              labelText:
+                  '${S.of(context).visitas_edit_visitaEditar_contacto} *',
             ),
           ),
           FormBuilderTextField(
@@ -400,7 +402,7 @@ class _VisitaForm extends StatelessWidget {
               FormBuilderValidators.maxLength(255),
             ]),
             decoration: InputDecoration(
-              labelText: S.of(context).visitas_edit_visitaEditar_resumen,
+              labelText: '${S.of(context).visitas_edit_visitaEditar_resumen} *',
             ),
           ),
           FormBuilderTextField(
@@ -475,125 +477,141 @@ class _ClienteProvisionalContainerState
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        FormBuilderTextField(
-          name: 'nombre',
-          // onChanged: widget.olnChanged,
-          initialValue: widget.visita?.clienteProvisionalNombre,
-          enabled: !widget.readOnly,
-          decoration: InputDecoration(
-            labelText: S.of(context).visitas_edit_visitaEditar_nombre,
-          ),
-          validator: FormBuilderValidators.compose([
-            FormBuilderValidators.required(),
-            FormBuilderValidators.maxLength(500),
-          ]),
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(4),
+        side: BorderSide(
+          color: Colors.grey.withOpacity(0.2),
+          width: 1,
         ),
-        FormBuilderTextField(
-          name: 'email',
-          initialValue: widget.visita?.clienteProvisionalEmail,
-          enabled: !widget.readOnly,
-          keyboardType: TextInputType.emailAddress,
-          validator: FormBuilderValidators.compose([
-            FormBuilderValidators.email(),
-            FormBuilderValidators.maxLength(500),
-          ]),
-          decoration: InputDecoration(
-            labelText: S.of(context).visitas_edit_visitaEditar_email,
-          ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            FormBuilderTextField(
+              name: 'nombre',
+              // onChanged: widget.olnChanged,
+              initialValue: widget.visita?.clienteProvisionalNombre,
+              enabled: !widget.readOnly,
+              decoration: InputDecoration(
+                labelText:
+                    '${S.of(context).visitas_edit_visitaEditar_nombre} *',
+              ),
+              validator: FormBuilderValidators.compose([
+                FormBuilderValidators.required(),
+                FormBuilderValidators.maxLength(500),
+              ]),
+            ),
+            FormBuilderTextField(
+              name: 'email',
+              initialValue: widget.visita?.clienteProvisionalEmail,
+              enabled: !widget.readOnly,
+              keyboardType: TextInputType.emailAddress,
+              validator: FormBuilderValidators.compose([
+                FormBuilderValidators.email(),
+                FormBuilderValidators.maxLength(500),
+              ]),
+              decoration: InputDecoration(
+                labelText: S.of(context).visitas_edit_visitaEditar_email,
+              ),
+            ),
+            FormBuilderTextField(
+              name: 'telefono',
+              initialValue: widget.visita?.clienteProvisionalTelefono,
+              enabled: !widget.readOnly,
+              keyboardType: TextInputType.phone,
+              validator: FormBuilderValidators.compose([
+                FormBuilderValidators.numeric(),
+                FormBuilderValidators.maxLength(50),
+              ]),
+              decoration: InputDecoration(
+                labelText: S.of(context).visitas_edit_visitaEditar_telefono,
+              ),
+            ),
+            FormBuilderTextField(
+              name: 'direccion1',
+              initialValue: widget.visita?.clienteProvisionalDireccion1,
+              enabled: !widget.readOnly,
+              decoration: InputDecoration(
+                labelText:
+                    '${S.of(context).visitas_edit_visitaEditar_direccion1} *',
+              ),
+              validator: FormBuilderValidators.compose([
+                FormBuilderValidators.required(),
+                FormBuilderValidators.maxLength(60),
+              ]),
+            ),
+            FormBuilderTextField(
+              name: 'direccion2',
+              initialValue: widget.visita?.clienteProvisionalDireccion2,
+              enabled: !widget.readOnly,
+              decoration: InputDecoration(
+                labelText: S.of(context).visitas_edit_visitaEditar_direccion2,
+              ),
+              validator: FormBuilderValidators.compose([
+                FormBuilderValidators.maxLength(60),
+              ]),
+            ),
+            FormBuilderTextField(
+              name: 'codigo_postal',
+              initialValue: widget.visita?.clienteProvisionalCodigoPostal,
+              enabled: !widget.readOnly,
+              decoration: InputDecoration(
+                labelText: S.of(context).visitas_edit_visitaEditar_codigoPostal,
+              ),
+              validator: FormBuilderValidators.compose([
+                FormBuilderValidators.maxLength(10),
+              ]),
+            ),
+            FormBuilderTextField(
+              name: 'poblacion',
+              initialValue: widget.visita?.clienteProvisionalPoblacion,
+              enabled: !widget.readOnly,
+              decoration: InputDecoration(
+                labelText:
+                    '${S.of(context).visitas_edit_visitaEditar_poblacion} *',
+              ),
+              validator: FormBuilderValidators.compose([
+                FormBuilderValidators.required(),
+                FormBuilderValidators.maxLength(60),
+              ]),
+            ),
+            FormBuilderTextField(
+              name: 'pais',
+              controller: paisController,
+              enabled: !widget.readOnly,
+              readOnly: true,
+              decoration: InputDecoration(
+                labelText: '${S.of(context).visitas_edit_visitaEditar_pais} *',
+              ),
+              validator: FormBuilderValidators.compose([
+                FormBuilderValidators.required(),
+                FormBuilderValidators.maxLength(60),
+              ]),
+              onTap: () => showPaisSearchDialog(context),
+            ),
+            FormBuilderTextField(
+              name: 'provincia',
+              controller: provinciaController,
+              enabled: !widget.readOnly,
+              readOnly: true,
+              decoration: InputDecoration(
+                labelText:
+                    '${S.of(context).visitas_edit_visitaEditar_provincia} *',
+              ),
+              validator: FormBuilderValidators.compose([
+                FormBuilderValidators.required(),
+                FormBuilderValidators.maxLength(60),
+              ]),
+              onTap: () => showProvinciasSearchDialog(
+                context,
+                paisId,
+              ),
+            ),
+          ],
         ),
-        FormBuilderTextField(
-          name: 'telefono',
-          initialValue: widget.visita?.clienteProvisionalTelefono,
-          enabled: !widget.readOnly,
-          keyboardType: TextInputType.phone,
-          validator: FormBuilderValidators.compose([
-            FormBuilderValidators.numeric(),
-            FormBuilderValidators.maxLength(50),
-          ]),
-          decoration: InputDecoration(
-            labelText: S.of(context).visitas_edit_visitaEditar_telefono,
-          ),
-        ),
-        FormBuilderTextField(
-          name: 'direccion1',
-          initialValue: widget.visita?.clienteProvisionalDireccion1,
-          enabled: !widget.readOnly,
-          decoration: InputDecoration(
-            labelText: S.of(context).visitas_edit_visitaEditar_direccion1,
-          ),
-          validator: FormBuilderValidators.compose([
-            FormBuilderValidators.required(),
-            FormBuilderValidators.maxLength(60),
-          ]),
-        ),
-        FormBuilderTextField(
-          name: 'direccion2',
-          initialValue: widget.visita?.clienteProvisionalDireccion2,
-          enabled: !widget.readOnly,
-          decoration: InputDecoration(
-            labelText: S.of(context).visitas_edit_visitaEditar_direccion2,
-          ),
-          validator: FormBuilderValidators.compose([
-            FormBuilderValidators.maxLength(60),
-          ]),
-        ),
-        FormBuilderTextField(
-          name: 'codigo_postal',
-          initialValue: widget.visita?.clienteProvisionalCodigoPostal,
-          enabled: !widget.readOnly,
-          decoration: InputDecoration(
-            labelText: S.of(context).visitas_edit_visitaEditar_codigoPostal,
-          ),
-          validator: FormBuilderValidators.compose([
-            FormBuilderValidators.maxLength(10),
-          ]),
-        ),
-        FormBuilderTextField(
-          name: 'poblacion',
-          initialValue: widget.visita?.clienteProvisionalPoblacion,
-          enabled: !widget.readOnly,
-          decoration: InputDecoration(
-            labelText: S.of(context).visitas_edit_visitaEditar_poblacion,
-          ),
-          validator: FormBuilderValidators.compose([
-            FormBuilderValidators.required(),
-            FormBuilderValidators.maxLength(60),
-          ]),
-        ),
-        FormBuilderTextField(
-          name: 'pais',
-          controller: paisController,
-          enabled: !widget.readOnly,
-          readOnly: true,
-          decoration: InputDecoration(
-            labelText: S.of(context).visitas_edit_visitaEditar_pais,
-          ),
-          validator: FormBuilderValidators.compose([
-            FormBuilderValidators.required(),
-            FormBuilderValidators.maxLength(60),
-          ]),
-          onTap: () => showPaisSearchDialog(context),
-        ),
-        FormBuilderTextField(
-          name: 'provincia',
-          controller: provinciaController,
-          enabled: !widget.readOnly,
-          readOnly: true,
-          decoration: InputDecoration(
-            labelText: S.of(context).visitas_edit_visitaEditar_provincia,
-          ),
-          validator: FormBuilderValidators.compose([
-            FormBuilderValidators.required(),
-            FormBuilderValidators.maxLength(60),
-          ]),
-          onTap: () => showProvinciasSearchDialog(
-            context,
-            paisId,
-          ),
-        ),
-      ],
+      ),
     );
   }
 
@@ -672,7 +690,7 @@ class _SelectClienteWidgetState extends ConsumerState<_SelectClienteWidget> {
         FormBuilderValidators.required(),
       ]),
       decoration: InputDecoration(
-        labelText: S.of(context).visitas_edit_visitaEditar_cliente,
+        labelText: '${S.of(context).visitas_edit_visitaEditar_cliente} *',
       ),
     );
   }

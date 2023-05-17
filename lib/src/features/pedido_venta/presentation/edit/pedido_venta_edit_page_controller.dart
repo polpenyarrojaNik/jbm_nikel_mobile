@@ -157,7 +157,7 @@ class PedidoVentaEditPageController
                   clienteId: pedidoVenta.clienteId!,
                   direccionId: pedidoVenta.direccionId);
 
-          _currentStep = 1;
+          _currentStep = 2;
 
           _observaciones = pedidoVenta.observaciones;
 

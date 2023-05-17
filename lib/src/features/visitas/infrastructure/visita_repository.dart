@@ -619,14 +619,12 @@ class VisitaRepository {
   }
 
   Future<List<Pais>> getPaises(String searchText) async {
-    final locale = Intl.getCurrentLocale();
-
     final query = await _remoteDb.customSelect('''
           SELECT *
           FROM PAISES 
           WHERE ${descripcionSegunLocale(searchText)}
           ORDER BY CASE
-            WHEN  PAIS_ID = UPPER('$locale') THEN 0
+            WHEN  PAIS_ID = 'ES' THEN 0
             WHEN  ${descripcionSegunLocale(searchText)} THEN 1
             ELSE 2
           END

@@ -424,7 +424,9 @@ class CatalogoRepository {
     if (idiomaCatalogo != null && idiomaCatalogo.idiomaId != '00') {
       query.addAll({'idiomaId': idiomaCatalogo.idiomaId});
     } else {
-      query.addAll({'idiomaId': _usuario.idiomaId});
+      if (idiomaCatalogo?.idiomaId != '00') {
+        query.addAll({'idiomaId': _usuario.idiomaId});
+      }
     }
 
     if (searchText != null) {
