@@ -1,7 +1,7 @@
 name: jbm_nikel_mobile
 description: JBM Nikel Mobile
 publish_to: "none"
-version: 1.2.20+88
+version: 1.2.22+90
 
 environment:
   sdk: ">=2.17.5 <3.0.0"
@@ -13,17 +13,17 @@ dependencies:
   flutter:
     sdk: flutter
   archive: ^3.3.4
-  auto_route: ^5.0.0
+  auto_route: ^7.1.0
   better_open_file: ^3.6.0
   cached_network_image: ^3.2.0
   dio: ^4.0.6
-  drift: ^2.0.0
+  drift: ^2.8.0
   dynamic_color: ^1.5.4
   fl_chart: ^0.55.2
   flash: ^2.0.5
   flutter_dotenv: ^5.0.2
   flutter_form_builder: ^9.0.0
-  flutter_riverpod: ^2.1.1
+  flutter_riverpod: ^2.3.6
   flutter_secure_storage: ^6.0.0
   font_awesome_flutter: ^10.2.0
   form_builder_validators: ^9.0.0
@@ -33,18 +33,18 @@ dependencies:
   google_fonts: ^4.0.0
   google_maps_flutter: ^2.2.0
   intl: ^0.18.0
-  json_annotation: ^4.7.0
-  jwt_decoder: ^2.0.0
+  json_annotation: ^4.8.1
+  jwt_decoder: ^2.0.1
   logger: ^1.1.0
-  map_launcher: ^2.4.0
+  map_launcher: ^2.5.0+1
   material_color_utilities:
   material_design_icons_flutter: ^6.0.7096
-  money2: ^3.3.0
+  money2: ^3.4.1
   package_info_plus: ^3.0.1
   path_provider: ^2.0.0
   path: ^1.8.0
   reactive_forms: ^14.1.0
-  riverpod_annotation: ^1.0.6
+  riverpod_annotation: ^2.0.0
   shimmer: ^2.0.0
   sqlite3_flutter_libs: ^0.5.0
   url_launcher: ^6.1.0
@@ -58,16 +58,16 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  auto_route_generator: ^5.0.0
-  build_runner: ^2.3.0
-  built_value_generator: ^8.0.0
-  dependency_validator: ^3.2.0
-  drift_dev: ^2.0.0
-  flutter_launcher_icons: ^0.11.0
+  auto_route_generator: ^7.0.0
+  build_runner: ^2.4.2
+  built_value_generator: ^8.5.0
+  dependency_validator: ^3.2.2
+  drift_dev: ^2.8.2
+  flutter_launcher_icons: ^0.13.1
   flutter_lints: ^2.0.0
-  freezed: ^2.2.0
-  json_serializable: ^6.5.0
-  riverpod_generator: ^1.0.6
+  freezed: ^2.3.4
+  json_serializable: ^6.6.2
+  riverpod_generator: ^2.2.3
 
 flutter_icons:
   android: true
