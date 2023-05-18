@@ -99,4 +99,38 @@ class RemoteUsuarioRepository {
       throw getApiError(e);
     }
   }
+
+  Future<String> remoteModificarPrecio(UsuarioDTO usuarioDto) async {
+    try {
+      final requestUri = (usuarioDto.isTest)
+          ? Uri.http(
+              // dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              'jbm-api-test.nikel.es:8080',
+              'api/v1/sync/modificar-precio',
+            )
+          : Uri.https(
+              // dotenv.get('URL', fallback: 'localhost:3001'),
+              'jbm-api.nikel.es',
+              'api/v1/sync/modificar-precio',
+            );
+
+      final response = await _dio.getUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer ${usuarioDto.provisionalToken}'},
+        ),
+      );
+
+      if (response.statusCode == 200) {
+        final jsonData = response.data['data'] as Map<String, dynamic>;
+
+        return jsonData['MODIFICAR_PRECIO_PEDIDO_SN'] as String;
+      } else {
+        throw AppException.restApiFailure(
+            response.statusCode ?? 400, response.statusMessage ?? '');
+      }
+    } catch (e) {
+      throw getApiError(e);
+    }
+  }
 }

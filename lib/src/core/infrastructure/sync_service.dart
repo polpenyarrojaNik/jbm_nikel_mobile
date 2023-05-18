@@ -44,6 +44,7 @@ import '../../features/pedido_venta/infrastructure/pedido_venta_linea_local_dto.
 import '../../features/pedido_venta/infrastructure/pedido_venta_local_dto.dart';
 import '../../features/usuario/application/usuario_notifier.dart';
 import '../../features/usuario/domain/usuario.dart';
+import '../../features/usuario/infrastructure/usuario_service.dart';
 import '../../features/visitas/infrastructure/visita_dto.dart';
 import '../../features/visitas/infrastructure/visita_local_dto.dart';
 import '../application/log_service.dart';
@@ -59,18 +60,20 @@ import 'remote_response.dart';
 
 final syncServiceProvider = Provider.autoDispose<SyncService>(
   (ref) => SyncService(
-      ref.watch(appRemoteDatabaseProvider),
-      ref.watch(local.appLocalDatabaseProvider),
-      ref.watch(dioProvider),
-      ref.watch(usuarioNotifierProvider)),
+    ref.watch(appRemoteDatabaseProvider),
+    ref.watch(local.appLocalDatabaseProvider),
+    ref.watch(dioProvider),
+    ref.watch(usuarioNotifierProvider),
+    ref.watch(usuarioServiceProvider),
+  ),
 );
 
 class SyncService {
   final Dio _dio;
   final RemoteAppDatabase _remoteDb;
   final local.LocalAppDatabase _localDb;
-
   final Usuario? _usuario;
+  final UsuarioService? usuarioService;
 
   static final remoteDatabaseDateTimeEndpoint = Uri.http(
     'jbm-api.nikel.es',
@@ -81,7 +84,13 @@ class SyncService {
     '/api/v1/sync/db-datetime',
   );
 
-  SyncService(this._remoteDb, this._localDb, this._dio, this._usuario);
+  SyncService(
+    this._remoteDb,
+    this._localDb,
+    this._dio,
+    this._usuario,
+    this.usuarioService,
+  );
 
   Future<DateTime> getRemoteDatabaseDateTime() async {
     try {
@@ -160,12 +169,14 @@ class SyncService {
   Future<void> syncAllPedidosRelacionados(
       {required bool isInMainThread}) async {
     try {
+      await usuarioService?.modificarPrecio();
       await enviarPedidosNoEnviados();
       await syncPedidos();
       await checkPedidoVentaTratados();
       await syncPedidoVentaLinea();
       await syncPedidoVentaAlbaran();
       await syncPedidoVentaEstado();
+
       if (isInMainThread) {
         await syncAllAuxiliares();
         await saveLastSyncDateTimeInPedidos();

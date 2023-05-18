@@ -7,6 +7,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/local_database.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_datetime_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
+import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_service.dart';
 
 import '../../../core/domain/isolate_args.dart';
 import '../../../core/infrastructure/remote_database.dart';
@@ -21,22 +22,26 @@ final syncNotifierProvider =
   (ref) {
     final user = ref.watch(usuarioNotifierProvider);
     final localDb = ref.watch(appLocalDatabaseProvider);
+    final usuarioService = ref.watch(usuarioServiceProvider);
 
-    return SyncNotifier(user, localDb);
+    return SyncNotifier(user, localDb, usuarioService);
   },
 );
 
 class SyncNotifier extends StateNotifier<SyncControllerState> {
   final Usuario? user;
   final LocalAppDatabase _localDb;
+  final UsuarioService usuarioService;
 
-  SyncNotifier(this.user, this._localDb)
+  SyncNotifier(this.user, this._localDb, this.usuarioService)
       : super(const SyncControllerState.initial());
 
   Future<void> syncAllInCompute({required bool initAppProcess}) async {
     if (state != const SyncControllerState.synchronizing()) {
       if (initAppProcess || await more30MinFromLastSync()) {
         state = const SyncControllerState.synchronizing();
+
+        await usuarioService.modificarPrecio();
 
         final syncProgress = await compute(
             syncInBackground,
@@ -134,7 +139,7 @@ Future<SyncProgress> syncInBackground(IsolateArgs isolateArgs) async {
     final localDb = await createLocalDatabaseConnection(isolateArgs);
 
     final SyncService syncService =
-        SyncService(remoteDb, localDb, Dio(), isolateArgs.user);
+        SyncService(remoteDb, localDb, Dio(), isolateArgs.user, null);
 
     return await syncService.syncAllTable();
   } catch (e) {

@@ -71,4 +71,31 @@ class UsuarioService {
       return null;
     }
   }
+
+  Future<void> modificarPrecio() async {
+    try {
+      final storedCredentials = await _localUsuarioRepository.read();
+
+      if (storedCredentials != null) {
+        final modificarPrecio = await _remoteUsuarioRepository
+            .remoteModificarPrecio(storedCredentials);
+
+        await syncModificarPrecio(modificarPrecio);
+      }
+    } catch (e) {}
+  }
+
+  Future<void> syncModificarPrecio(String modificarPrecio) async {
+    try {
+      final storedCredentials = await _localUsuarioRepository.read();
+
+      if (storedCredentials != null) {
+        final usuarioDto =
+            storedCredentials.copyWith(modificarPedido: modificarPrecio);
+        await _localUsuarioRepository.save(usuarioDto);
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
