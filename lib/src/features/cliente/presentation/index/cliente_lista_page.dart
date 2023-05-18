@@ -19,6 +19,7 @@ import '../../infrastructure/cliente_repository.dart';
 import 'cliente_list_shimmer.dart';
 import 'cliente_lista_tile.dart';
 
+@RoutePage()
 class ClienteListaPage extends ConsumerStatefulWidget {
   const ClienteListaPage({super.key, required this.isSearchClienteForFrom});
 

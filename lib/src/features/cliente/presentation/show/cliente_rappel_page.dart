@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:better_open_file/better_open_file.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -15,6 +16,7 @@ import '../../../../core/presentation/toasts.dart';
 import '../../domain/cliente_rappel.dart';
 import '../../infrastructure/cliente_repository.dart';
 
+@RoutePage()
 class ClienteRappelPage extends ConsumerWidget {
   const ClienteRappelPage(
       {super.key, required this.clienteId, required this.nombreCliente});

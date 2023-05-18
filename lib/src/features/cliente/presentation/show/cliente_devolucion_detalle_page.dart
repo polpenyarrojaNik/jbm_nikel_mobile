@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
@@ -14,6 +15,7 @@ import '../../../../core/presentation/common_widgets/row_field_text_detail.dart'
 import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../devoluciones/domain/devolucion.dart';
 
+@RoutePage()
 class ClienteDevolucionDetallePage extends StatelessWidget {
   const ClienteDevolucionDetallePage({super.key, required this.devolucion});
 

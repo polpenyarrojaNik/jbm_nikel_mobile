@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
+@RoutePage()
 class CatalogoPdfViewerPage extends StatelessWidget {
   const CatalogoPdfViewerPage({super.key, required this.pdfFile});
 

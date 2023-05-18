@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
@@ -10,6 +11,7 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import '../../../pedido_venta/presentation/index/pedido_venta_lista_tile.dart';
 import '../../infrastructure/cliente_repository.dart';
 
+@RoutePage()
 class ClientePedidosPage extends ConsumerWidget {
   const ClientePedidosPage(
       {super.key, required this.clienteId, required this.nombreCliente});

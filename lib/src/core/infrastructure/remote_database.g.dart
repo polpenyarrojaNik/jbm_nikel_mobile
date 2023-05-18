@@ -345,6 +345,7 @@ class PaisTableCompanion extends UpdateCompanion<PaisDTO> {
   final Value<String?> descripcionEL;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const PaisTableCompanion({
     this.id = const Value.absent(),
     this.isoCode = const Value.absent(),
@@ -365,6 +366,7 @@ class PaisTableCompanion extends UpdateCompanion<PaisDTO> {
     this.descripcionEL = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   PaisTableCompanion.insert({
     required String id,
@@ -386,6 +388,7 @@ class PaisTableCompanion extends UpdateCompanion<PaisDTO> {
     this.descripcionEL = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : id = Value(id),
         descripcionES = Value(descripcionES),
         lastUpdated = Value(lastUpdated);
@@ -409,6 +412,7 @@ class PaisTableCompanion extends UpdateCompanion<PaisDTO> {
     Expression<String>? descripcionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (id != null) 'PAIS_ID': id,
@@ -430,6 +434,7 @@ class PaisTableCompanion extends UpdateCompanion<PaisDTO> {
       if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -452,7 +457,8 @@ class PaisTableCompanion extends UpdateCompanion<PaisDTO> {
       Value<String?>? descripcionCN,
       Value<String?>? descripcionEL,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return PaisTableCompanion(
       id: id ?? this.id,
       isoCode: isoCode ?? this.isoCode,
@@ -473,6 +479,7 @@ class PaisTableCompanion extends UpdateCompanion<PaisDTO> {
       descripcionEL: descripcionEL ?? this.descripcionEL,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -536,6 +543,9 @@ class PaisTableCompanion extends UpdateCompanion<PaisDTO> {
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -560,7 +570,8 @@ class PaisTableCompanion extends UpdateCompanion<PaisDTO> {
           ..write('descripcionCN: $descripcionCN, ')
           ..write('descripcionEL: $descripcionEL, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -937,6 +948,7 @@ class DivisaTableCompanion extends UpdateCompanion<DivisaDTO> {
   final Value<String?> descripcionEL;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const DivisaTableCompanion({
     this.id = const Value.absent(),
     this.abv = const Value.absent(),
@@ -959,6 +971,7 @@ class DivisaTableCompanion extends UpdateCompanion<DivisaDTO> {
     this.descripcionEL = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   DivisaTableCompanion.insert({
     required String id,
@@ -982,6 +995,7 @@ class DivisaTableCompanion extends UpdateCompanion<DivisaDTO> {
     this.descripcionEL = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : id = Value(id),
         abv = Value(abv),
         descripcionES = Value(descripcionES),
@@ -1008,6 +1022,7 @@ class DivisaTableCompanion extends UpdateCompanion<DivisaDTO> {
     Expression<String>? descripcionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (id != null) 'DIVISA_ID': id,
@@ -1031,6 +1046,7 @@ class DivisaTableCompanion extends UpdateCompanion<DivisaDTO> {
       if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -1055,7 +1071,8 @@ class DivisaTableCompanion extends UpdateCompanion<DivisaDTO> {
       Value<String?>? descripcionCN,
       Value<String?>? descripcionEL,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return DivisaTableCompanion(
       id: id ?? this.id,
       abv: abv ?? this.abv,
@@ -1078,6 +1095,7 @@ class DivisaTableCompanion extends UpdateCompanion<DivisaDTO> {
       descripcionEL: descripcionEL ?? this.descripcionEL,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -1147,6 +1165,9 @@ class DivisaTableCompanion extends UpdateCompanion<DivisaDTO> {
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -1173,7 +1194,8 @@ class DivisaTableCompanion extends UpdateCompanion<DivisaDTO> {
           ..write('descripcionCN: $descripcionCN, ')
           ..write('descripcionEL: $descripcionEL, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -2182,6 +2204,7 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
   final Value<double> iva;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const PedidoVentaTableCompanion({
     this.empresaId = const Value.absent(),
     this.pedidoVentaId = const Value.absent(),
@@ -2209,6 +2232,7 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
     this.iva = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   PedidoVentaTableCompanion.insert({
     required String empresaId,
@@ -2237,6 +2261,7 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
     this.iva = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : empresaId = Value(empresaId),
         pedidoVentaId = Value(pedidoVentaId),
         pedidoVentaDate = Value(pedidoVentaDate),
@@ -2272,6 +2297,7 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
     Expression<double>? iva,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (empresaId != null) 'EMPRESA_ID': empresaId,
@@ -2300,6 +2326,7 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
       if (iva != null) 'IVA': iva,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -2329,7 +2356,8 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
       Value<String?>? pedidoVentaAppId,
       Value<double>? iva,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return PedidoVentaTableCompanion(
       empresaId: empresaId ?? this.empresaId,
       pedidoVentaId: pedidoVentaId ?? this.pedidoVentaId,
@@ -2357,6 +2385,7 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
       iva: iva ?? this.iva,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -2441,6 +2470,9 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -2472,7 +2504,8 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
           ..write('pedidoVentaAppId: $pedidoVentaAppId, ')
           ..write('iva: $iva, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -2796,6 +2829,7 @@ class PedidoVentaLineaTableCompanion
   final Value<int> cantidadServida;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const PedidoVentaLineaTableCompanion({
     this.empresaId = const Value.absent(),
     this.pedidoId = const Value.absent(),
@@ -2813,6 +2847,7 @@ class PedidoVentaLineaTableCompanion
     this.cantidadServida = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   PedidoVentaLineaTableCompanion.insert({
     required String empresaId,
@@ -2831,6 +2866,7 @@ class PedidoVentaLineaTableCompanion
     required int cantidadServida,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : empresaId = Value(empresaId),
         pedidoId = Value(pedidoId),
         pedidoVentaLineaId = Value(pedidoVentaLineaId),
@@ -2861,6 +2897,7 @@ class PedidoVentaLineaTableCompanion
     Expression<int>? cantidadServida,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (empresaId != null) 'EMPRESA_ID': empresaId,
@@ -2881,6 +2918,7 @@ class PedidoVentaLineaTableCompanion
       if (cantidadServida != null) 'CANTIDAD_SERVIDA': cantidadServida,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -2900,7 +2938,8 @@ class PedidoVentaLineaTableCompanion
       Value<double?>? importeLinea,
       Value<int>? cantidadServida,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return PedidoVentaLineaTableCompanion(
       empresaId: empresaId ?? this.empresaId,
       pedidoId: pedidoId ?? this.pedidoId,
@@ -2919,6 +2958,7 @@ class PedidoVentaLineaTableCompanion
       cantidadServida: cantidadServida ?? this.cantidadServida,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -2974,6 +3014,9 @@ class PedidoVentaLineaTableCompanion
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -2995,7 +3038,8 @@ class PedidoVentaLineaTableCompanion
           ..write('importeLinea: $importeLinea, ')
           ..write('cantidadServida: $cantidadServida, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -3329,6 +3373,7 @@ class PlazoDeCobroTableCompanion extends UpdateCompanion<PlazoDeCobroDTO> {
   final Value<String?> descripcionEL;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const PlazoDeCobroTableCompanion({
     this.id = const Value.absent(),
     this.descripcionES = const Value.absent(),
@@ -3348,6 +3393,7 @@ class PlazoDeCobroTableCompanion extends UpdateCompanion<PlazoDeCobroDTO> {
     this.descripcionEL = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   PlazoDeCobroTableCompanion.insert({
     required String id,
@@ -3368,6 +3414,7 @@ class PlazoDeCobroTableCompanion extends UpdateCompanion<PlazoDeCobroDTO> {
     this.descripcionEL = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : id = Value(id),
         descripcionES = Value(descripcionES),
         lastUpdated = Value(lastUpdated);
@@ -3390,6 +3437,7 @@ class PlazoDeCobroTableCompanion extends UpdateCompanion<PlazoDeCobroDTO> {
     Expression<String>? descripcionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (id != null) 'PLAZO_COBRO_ID': id,
@@ -3410,6 +3458,7 @@ class PlazoDeCobroTableCompanion extends UpdateCompanion<PlazoDeCobroDTO> {
       if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -3431,7 +3480,8 @@ class PlazoDeCobroTableCompanion extends UpdateCompanion<PlazoDeCobroDTO> {
       Value<String?>? descripcionCN,
       Value<String?>? descripcionEL,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return PlazoDeCobroTableCompanion(
       id: id ?? this.id,
       descripcionES: descripcionES ?? this.descripcionES,
@@ -3451,6 +3501,7 @@ class PlazoDeCobroTableCompanion extends UpdateCompanion<PlazoDeCobroDTO> {
       descripcionEL: descripcionEL ?? this.descripcionEL,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -3511,6 +3562,9 @@ class PlazoDeCobroTableCompanion extends UpdateCompanion<PlazoDeCobroDTO> {
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -3534,7 +3588,8 @@ class PlazoDeCobroTableCompanion extends UpdateCompanion<PlazoDeCobroDTO> {
           ..write('descripcionCN: $descripcionCN, ')
           ..write('descripcionEL: $descripcionEL, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -3868,6 +3923,7 @@ class MetodoDeCobroTableCompanion extends UpdateCompanion<MetodoDeCobroDTO> {
   final Value<String?> descripcionEL;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const MetodoDeCobroTableCompanion({
     this.id = const Value.absent(),
     this.descripcionES = const Value.absent(),
@@ -3887,6 +3943,7 @@ class MetodoDeCobroTableCompanion extends UpdateCompanion<MetodoDeCobroDTO> {
     this.descripcionEL = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   MetodoDeCobroTableCompanion.insert({
     required String id,
@@ -3907,6 +3964,7 @@ class MetodoDeCobroTableCompanion extends UpdateCompanion<MetodoDeCobroDTO> {
     this.descripcionEL = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : id = Value(id),
         descripcionES = Value(descripcionES),
         lastUpdated = Value(lastUpdated);
@@ -3929,6 +3987,7 @@ class MetodoDeCobroTableCompanion extends UpdateCompanion<MetodoDeCobroDTO> {
     Expression<String>? descripcionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (id != null) 'METODO_COBRO_ID': id,
@@ -3949,6 +4008,7 @@ class MetodoDeCobroTableCompanion extends UpdateCompanion<MetodoDeCobroDTO> {
       if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -3970,7 +4030,8 @@ class MetodoDeCobroTableCompanion extends UpdateCompanion<MetodoDeCobroDTO> {
       Value<String?>? descripcionCN,
       Value<String?>? descripcionEL,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return MetodoDeCobroTableCompanion(
       id: id ?? this.id,
       descripcionES: descripcionES ?? this.descripcionES,
@@ -3990,6 +4051,7 @@ class MetodoDeCobroTableCompanion extends UpdateCompanion<MetodoDeCobroDTO> {
       descripcionEL: descripcionEL ?? this.descripcionEL,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -4050,6 +4112,9 @@ class MetodoDeCobroTableCompanion extends UpdateCompanion<MetodoDeCobroDTO> {
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -4073,7 +4138,8 @@ class MetodoDeCobroTableCompanion extends UpdateCompanion<MetodoDeCobroDTO> {
           ..write('descripcionCN: $descripcionCN, ')
           ..write('descripcionEL: $descripcionEL, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -5004,6 +5070,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
   final Value<String?> representante2Nombre;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const ClienteTableCompanion({
     this.id = const Value.absent(),
     this.nombreCliente = const Value.absent(),
@@ -5057,6 +5124,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     this.representante2Nombre = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   ClienteTableCompanion.insert({
     required String id,
@@ -5111,6 +5179,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     this.representante2Nombre = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : id = Value(id),
         nombreCliente = Value(nombreCliente),
         nombreFiscal = Value(nombreFiscal),
@@ -5184,6 +5253,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     Expression<String>? representante2Nombre,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (id != null) 'CLIENTE_ID': id,
@@ -5260,6 +5330,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
         'REPRESENTANTE2_NOMBRE': representante2Nombre,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -5315,7 +5386,8 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
       Value<String?>? representante2Id,
       Value<String?>? representante2Nombre,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return ClienteTableCompanion(
       id: id ?? this.id,
       nombreCliente: nombreCliente ?? this.nombreCliente,
@@ -5380,6 +5452,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
       representante2Nombre: representante2Nombre ?? this.representante2Nombre,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -5556,6 +5629,9 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -5614,7 +5690,8 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
           ..write('representante2Id: $representante2Id, ')
           ..write('representante2Nombre: $representante2Nombre, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -5719,17 +5796,20 @@ class ClienteUsuarioTableCompanion extends UpdateCompanion<ClienteUsuarioDTO> {
   final Value<String> usuarioId;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const ClienteUsuarioTableCompanion({
     this.clienteId = const Value.absent(),
     this.usuarioId = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   ClienteUsuarioTableCompanion.insert({
     required String clienteId,
     required String usuarioId,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : clienteId = Value(clienteId),
         usuarioId = Value(usuarioId),
         lastUpdated = Value(lastUpdated);
@@ -5738,12 +5818,14 @@ class ClienteUsuarioTableCompanion extends UpdateCompanion<ClienteUsuarioDTO> {
     Expression<String>? usuarioId,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (clienteId != null) 'CLIENTE_ID': clienteId,
       if (usuarioId != null) 'USUARIO_ID': usuarioId,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -5751,12 +5833,14 @@ class ClienteUsuarioTableCompanion extends UpdateCompanion<ClienteUsuarioDTO> {
       {Value<String>? clienteId,
       Value<String>? usuarioId,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return ClienteUsuarioTableCompanion(
       clienteId: clienteId ?? this.clienteId,
       usuarioId: usuarioId ?? this.usuarioId,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -5775,6 +5859,9 @@ class ClienteUsuarioTableCompanion extends UpdateCompanion<ClienteUsuarioDTO> {
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -5784,7 +5871,8 @@ class ClienteUsuarioTableCompanion extends UpdateCompanion<ClienteUsuarioDTO> {
           ..write('clienteId: $clienteId, ')
           ..write('usuarioId: $usuarioId, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -5934,6 +6022,7 @@ class ClienteGrupoNetoTableCompanion
   final Value<double> dtoAdicional;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const ClienteGrupoNetoTableCompanion({
     this.clienteId = const Value.absent(),
     this.grupoNetoId = const Value.absent(),
@@ -5941,6 +6030,7 @@ class ClienteGrupoNetoTableCompanion
     this.dtoAdicional = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   ClienteGrupoNetoTableCompanion.insert({
     required String clienteId,
@@ -5949,6 +6039,7 @@ class ClienteGrupoNetoTableCompanion
     required double dtoAdicional,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : clienteId = Value(clienteId),
         grupoNetoId = Value(grupoNetoId),
         grupoNetoDescripcion = Value(grupoNetoDescripcion),
@@ -5961,6 +6052,7 @@ class ClienteGrupoNetoTableCompanion
     Expression<double>? dtoAdicional,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (clienteId != null) 'CLIENTE_ID': clienteId,
@@ -5970,6 +6062,7 @@ class ClienteGrupoNetoTableCompanion
       if (dtoAdicional != null) 'DTO_ADICIONAL': dtoAdicional,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -5979,7 +6072,8 @@ class ClienteGrupoNetoTableCompanion
       Value<String>? grupoNetoDescripcion,
       Value<double>? dtoAdicional,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return ClienteGrupoNetoTableCompanion(
       clienteId: clienteId ?? this.clienteId,
       grupoNetoId: grupoNetoId ?? this.grupoNetoId,
@@ -5987,6 +6081,7 @@ class ClienteGrupoNetoTableCompanion
       dtoAdicional: dtoAdicional ?? this.dtoAdicional,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -6012,6 +6107,9 @@ class ClienteGrupoNetoTableCompanion
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -6023,7 +6121,8 @@ class ClienteGrupoNetoTableCompanion
           ..write('grupoNetoDescripcion: $grupoNetoDescripcion, ')
           ..write('dtoAdicional: $dtoAdicional, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -6357,6 +6456,7 @@ class FamiliaTableCompanion extends UpdateCompanion<FamiliaDTO> {
   final Value<String?> descripcionEL;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const FamiliaTableCompanion({
     this.id = const Value.absent(),
     this.descripcionES = const Value.absent(),
@@ -6376,6 +6476,7 @@ class FamiliaTableCompanion extends UpdateCompanion<FamiliaDTO> {
     this.descripcionEL = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   FamiliaTableCompanion.insert({
     required String id,
@@ -6396,6 +6497,7 @@ class FamiliaTableCompanion extends UpdateCompanion<FamiliaDTO> {
     this.descripcionEL = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : id = Value(id),
         descripcionES = Value(descripcionES),
         lastUpdated = Value(lastUpdated);
@@ -6418,6 +6520,7 @@ class FamiliaTableCompanion extends UpdateCompanion<FamiliaDTO> {
     Expression<String>? descripcionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (id != null) 'FAMILIA_ID': id,
@@ -6438,6 +6541,7 @@ class FamiliaTableCompanion extends UpdateCompanion<FamiliaDTO> {
       if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -6459,7 +6563,8 @@ class FamiliaTableCompanion extends UpdateCompanion<FamiliaDTO> {
       Value<String?>? descripcionCN,
       Value<String?>? descripcionEL,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return FamiliaTableCompanion(
       id: id ?? this.id,
       descripcionES: descripcionES ?? this.descripcionES,
@@ -6479,6 +6584,7 @@ class FamiliaTableCompanion extends UpdateCompanion<FamiliaDTO> {
       descripcionEL: descripcionEL ?? this.descripcionEL,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -6539,6 +6645,9 @@ class FamiliaTableCompanion extends UpdateCompanion<FamiliaDTO> {
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -6562,7 +6671,8 @@ class FamiliaTableCompanion extends UpdateCompanion<FamiliaDTO> {
           ..write('descripcionCN: $descripcionCN, ')
           ..write('descripcionEL: $descripcionEL, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -6912,6 +7022,7 @@ class SubfamiliaTableCompanion extends UpdateCompanion<SubfamiliaDTO> {
   final Value<String?> descripcionEL;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const SubfamiliaTableCompanion({
     this.id = const Value.absent(),
     this.familiaId = const Value.absent(),
@@ -6932,6 +7043,7 @@ class SubfamiliaTableCompanion extends UpdateCompanion<SubfamiliaDTO> {
     this.descripcionEL = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   SubfamiliaTableCompanion.insert({
     required String id,
@@ -6953,6 +7065,7 @@ class SubfamiliaTableCompanion extends UpdateCompanion<SubfamiliaDTO> {
     this.descripcionEL = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : id = Value(id),
         familiaId = Value(familiaId),
         descripcionES = Value(descripcionES),
@@ -6977,6 +7090,7 @@ class SubfamiliaTableCompanion extends UpdateCompanion<SubfamiliaDTO> {
     Expression<String>? descripcionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (id != null) 'SUBFAMILIA_ID': id,
@@ -6998,6 +7112,7 @@ class SubfamiliaTableCompanion extends UpdateCompanion<SubfamiliaDTO> {
       if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -7020,7 +7135,8 @@ class SubfamiliaTableCompanion extends UpdateCompanion<SubfamiliaDTO> {
       Value<String?>? descripcionCN,
       Value<String?>? descripcionEL,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return SubfamiliaTableCompanion(
       id: id ?? this.id,
       familiaId: familiaId ?? this.familiaId,
@@ -7041,6 +7157,7 @@ class SubfamiliaTableCompanion extends UpdateCompanion<SubfamiliaDTO> {
       descripcionEL: descripcionEL ?? this.descripcionEL,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -7104,6 +7221,9 @@ class SubfamiliaTableCompanion extends UpdateCompanion<SubfamiliaDTO> {
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -7128,7 +7248,8 @@ class SubfamiliaTableCompanion extends UpdateCompanion<SubfamiliaDTO> {
           ..write('descripcionCN: $descripcionCN, ')
           ..write('descripcionEL: $descripcionEL, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -7316,6 +7437,7 @@ class ClienteDescuentoTableCompanion
   final Value<double> descuento;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const ClienteDescuentoTableCompanion({
     this.clienteId = const Value.absent(),
     this.articuloId = const Value.absent(),
@@ -7325,6 +7447,7 @@ class ClienteDescuentoTableCompanion
     this.descuento = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   ClienteDescuentoTableCompanion.insert({
     required String clienteId,
@@ -7335,6 +7458,7 @@ class ClienteDescuentoTableCompanion
     required double descuento,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : clienteId = Value(clienteId),
         articuloId = Value(articuloId),
         familiaId = Value(familiaId),
@@ -7351,6 +7475,7 @@ class ClienteDescuentoTableCompanion
     Expression<double>? descuento,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (clienteId != null) 'CLIENTE_ID': clienteId,
@@ -7361,6 +7486,7 @@ class ClienteDescuentoTableCompanion
       if (descuento != null) 'DESCUENTO': descuento,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -7372,7 +7498,8 @@ class ClienteDescuentoTableCompanion
       Value<int>? cantidadDesde,
       Value<double>? descuento,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return ClienteDescuentoTableCompanion(
       clienteId: clienteId ?? this.clienteId,
       articuloId: articuloId ?? this.articuloId,
@@ -7382,6 +7509,7 @@ class ClienteDescuentoTableCompanion
       descuento: descuento ?? this.descuento,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -7412,6 +7540,9 @@ class ClienteDescuentoTableCompanion
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -7425,7 +7556,8 @@ class ClienteDescuentoTableCompanion
           ..write('cantidadDesde: $cantidadDesde, ')
           ..write('descuento: $descuento, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -7635,6 +7767,7 @@ class ClienteContactoTableCompanion
   final Value<String?> email;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const ClienteContactoTableCompanion({
     this.clienteId = const Value.absent(),
     this.contactoId = const Value.absent(),
@@ -7647,6 +7780,7 @@ class ClienteContactoTableCompanion
     this.email = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   ClienteContactoTableCompanion.insert({
     required String clienteId,
@@ -7660,6 +7794,7 @@ class ClienteContactoTableCompanion
     this.email = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : clienteId = Value(clienteId),
         contactoId = Value(contactoId),
         lastUpdated = Value(lastUpdated);
@@ -7675,6 +7810,7 @@ class ClienteContactoTableCompanion
     Expression<String>? email,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (clienteId != null) 'CLIENTE_ID': clienteId,
@@ -7688,6 +7824,7 @@ class ClienteContactoTableCompanion
       if (email != null) 'EMAIL': email,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -7702,7 +7839,8 @@ class ClienteContactoTableCompanion
       Value<String?>? telefono2,
       Value<String?>? email,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return ClienteContactoTableCompanion(
       clienteId: clienteId ?? this.clienteId,
       contactoId: contactoId ?? this.contactoId,
@@ -7715,6 +7853,7 @@ class ClienteContactoTableCompanion
       email: email ?? this.email,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -7754,6 +7893,9 @@ class ClienteContactoTableCompanion
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -7770,7 +7912,8 @@ class ClienteContactoTableCompanion
           ..write('telefono2: $telefono2, ')
           ..write('email: $email, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -8036,6 +8179,7 @@ class ClienteDireccionTableCompanion
   final Value<String?> predeterminada;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const ClienteDireccionTableCompanion({
     this.clienteId = const Value.absent(),
     this.direccionId = const Value.absent(),
@@ -8051,6 +8195,7 @@ class ClienteDireccionTableCompanion
     this.predeterminada = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   ClienteDireccionTableCompanion.insert({
     required String clienteId,
@@ -8067,6 +8212,7 @@ class ClienteDireccionTableCompanion
     this.predeterminada = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : clienteId = Value(clienteId),
         direccionId = Value(direccionId),
         latitud = Value(latitud),
@@ -8087,6 +8233,7 @@ class ClienteDireccionTableCompanion
     Expression<String>? predeterminada,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (clienteId != null) 'CLIENTE_ID': clienteId,
@@ -8103,6 +8250,7 @@ class ClienteDireccionTableCompanion
       if (predeterminada != null) 'PREDETERMINADA_SN': predeterminada,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -8120,7 +8268,8 @@ class ClienteDireccionTableCompanion
       Value<double>? longitud,
       Value<String?>? predeterminada,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return ClienteDireccionTableCompanion(
       clienteId: clienteId ?? this.clienteId,
       direccionId: direccionId ?? this.direccionId,
@@ -8136,6 +8285,7 @@ class ClienteDireccionTableCompanion
       predeterminada: predeterminada ?? this.predeterminada,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -8184,6 +8334,9 @@ class ClienteDireccionTableCompanion
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -8203,7 +8356,8 @@ class ClienteDireccionTableCompanion
           ..write('longitud: $longitud, ')
           ..write('predeterminada: $predeterminada, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -8443,6 +8597,7 @@ class ClientePagoPendienteTableCompanion
   final Value<String?> vencidoJBM;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const ClientePagoPendienteTableCompanion({
     this.clienteId = const Value.absent(),
     this.efectoId = const Value.absent(),
@@ -8456,6 +8611,7 @@ class ClientePagoPendienteTableCompanion
     this.vencidoJBM = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   ClientePagoPendienteTableCompanion.insert({
     required String clienteId,
@@ -8470,6 +8626,7 @@ class ClientePagoPendienteTableCompanion
     this.vencidoJBM = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : clienteId = Value(clienteId),
         efectoId = Value(efectoId),
         lastUpdated = Value(lastUpdated);
@@ -8486,6 +8643,7 @@ class ClientePagoPendienteTableCompanion
     Expression<String>? vencidoJBM,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (clienteId != null) 'CLIENTE_ID': clienteId,
@@ -8501,6 +8659,7 @@ class ClientePagoPendienteTableCompanion
       if (vencidoJBM != null) 'VENCIDO_JBM': vencidoJBM,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -8516,7 +8675,8 @@ class ClientePagoPendienteTableCompanion
       Value<DateTime?>? fechaExpiracionInicial,
       Value<String?>? vencidoJBM,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return ClientePagoPendienteTableCompanion(
       clienteId: clienteId ?? this.clienteId,
       efectoId: efectoId ?? this.efectoId,
@@ -8531,6 +8691,7 @@ class ClientePagoPendienteTableCompanion
       vencidoJBM: vencidoJBM ?? this.vencidoJBM,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -8574,6 +8735,9 @@ class ClientePagoPendienteTableCompanion
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -8591,7 +8755,8 @@ class ClientePagoPendienteTableCompanion
           ..write('fechaExpiracionInicial: $fechaExpiracionInicial, ')
           ..write('vencidoJBM: $vencidoJBM, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -8774,6 +8939,7 @@ class ClientePrecioNetoTableCompanion
   final Value<double> dtoAdicional;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const ClientePrecioNetoTableCompanion({
     this.clienteId = const Value.absent(),
     this.articuloId = const Value.absent(),
@@ -8783,6 +8949,7 @@ class ClientePrecioNetoTableCompanion
     this.dtoAdicional = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   ClientePrecioNetoTableCompanion.insert({
     required String clienteId,
@@ -8793,6 +8960,7 @@ class ClientePrecioNetoTableCompanion
     required double dtoAdicional,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : clienteId = Value(clienteId),
         articuloId = Value(articuloId),
         cantidadDesde = Value(cantidadDesde),
@@ -8809,6 +8977,7 @@ class ClientePrecioNetoTableCompanion
     Expression<double>? dtoAdicional,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (clienteId != null) 'CLIENTE_ID': clienteId,
@@ -8819,6 +8988,7 @@ class ClientePrecioNetoTableCompanion
       if (dtoAdicional != null) 'DTO_ADICIONAL': dtoAdicional,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -8830,7 +9000,8 @@ class ClientePrecioNetoTableCompanion
       Value<int>? tipoPrecio,
       Value<double>? dtoAdicional,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return ClientePrecioNetoTableCompanion(
       clienteId: clienteId ?? this.clienteId,
       articuloId: articuloId ?? this.articuloId,
@@ -8840,6 +9011,7 @@ class ClientePrecioNetoTableCompanion
       dtoAdicional: dtoAdicional ?? this.dtoAdicional,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -8870,6 +9042,9 @@ class ClientePrecioNetoTableCompanion
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -8883,7 +9058,8 @@ class ClientePrecioNetoTableCompanion
           ..write('tipoPrecio: $tipoPrecio, ')
           ..write('dtoAdicional: $dtoAdicional, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -9074,6 +9250,7 @@ class ClienteRappelTableCompanion extends UpdateCompanion<ClienteRappelDTO> {
   final Value<String?> firmado;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const ClienteRappelTableCompanion({
     this.clienteId = const Value.absent(),
     this.rappelId = const Value.absent(),
@@ -9084,6 +9261,7 @@ class ClienteRappelTableCompanion extends UpdateCompanion<ClienteRappelDTO> {
     this.firmado = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   ClienteRappelTableCompanion.insert({
     required String clienteId,
@@ -9095,6 +9273,7 @@ class ClienteRappelTableCompanion extends UpdateCompanion<ClienteRappelDTO> {
     this.firmado = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : clienteId = Value(clienteId),
         rappelId = Value(rappelId),
         descripcion = Value(descripcion),
@@ -9110,6 +9289,7 @@ class ClienteRappelTableCompanion extends UpdateCompanion<ClienteRappelDTO> {
     Expression<String>? firmado,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (clienteId != null) 'CLIENTE_ID': clienteId,
@@ -9121,6 +9301,7 @@ class ClienteRappelTableCompanion extends UpdateCompanion<ClienteRappelDTO> {
       if (firmado != null) 'FIRMADO': firmado,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -9133,7 +9314,8 @@ class ClienteRappelTableCompanion extends UpdateCompanion<ClienteRappelDTO> {
       Value<String?>? nombreArchivo,
       Value<String?>? firmado,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return ClienteRappelTableCompanion(
       clienteId: clienteId ?? this.clienteId,
       rappelId: rappelId ?? this.rappelId,
@@ -9144,6 +9326,7 @@ class ClienteRappelTableCompanion extends UpdateCompanion<ClienteRappelDTO> {
       firmado: firmado ?? this.firmado,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -9177,6 +9360,9 @@ class ClienteRappelTableCompanion extends UpdateCompanion<ClienteRappelDTO> {
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -9191,7 +9377,8 @@ class ClienteRappelTableCompanion extends UpdateCompanion<ClienteRappelDTO> {
           ..write('nombreArchivo: $nombreArchivo, ')
           ..write('firmado: $firmado, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -9530,6 +9717,7 @@ class ClienteEstadoPotencialTableCompanion
   final Value<String?> descripcionEL;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const ClienteEstadoPotencialTableCompanion({
     this.id = const Value.absent(),
     this.descripcionES = const Value.absent(),
@@ -9549,6 +9737,7 @@ class ClienteEstadoPotencialTableCompanion
     this.descripcionEL = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   ClienteEstadoPotencialTableCompanion.insert({
     required String id,
@@ -9569,6 +9758,7 @@ class ClienteEstadoPotencialTableCompanion
     this.descripcionEL = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : id = Value(id),
         descripcionES = Value(descripcionES),
         lastUpdated = Value(lastUpdated);
@@ -9591,6 +9781,7 @@ class ClienteEstadoPotencialTableCompanion
     Expression<String>? descripcionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (id != null) 'ESTADO_POTENCIAL_ID': id,
@@ -9611,6 +9802,7 @@ class ClienteEstadoPotencialTableCompanion
       if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -9632,7 +9824,8 @@ class ClienteEstadoPotencialTableCompanion
       Value<String?>? descripcionCN,
       Value<String?>? descripcionEL,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return ClienteEstadoPotencialTableCompanion(
       id: id ?? this.id,
       descripcionES: descripcionES ?? this.descripcionES,
@@ -9652,6 +9845,7 @@ class ClienteEstadoPotencialTableCompanion
       descripcionEL: descripcionEL ?? this.descripcionEL,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -9712,6 +9906,9 @@ class ClienteEstadoPotencialTableCompanion
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -9735,7 +9932,8 @@ class ClienteEstadoPotencialTableCompanion
           ..write('descripcionCN: $descripcionCN, ')
           ..write('descripcionEL: $descripcionEL, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -10072,6 +10270,7 @@ class ClienteTipoPotencialTableCompanion
   final Value<String?> descripcionEL;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const ClienteTipoPotencialTableCompanion({
     this.id = const Value.absent(),
     this.descripcionES = const Value.absent(),
@@ -10091,6 +10290,7 @@ class ClienteTipoPotencialTableCompanion
     this.descripcionEL = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   ClienteTipoPotencialTableCompanion.insert({
     required String id,
@@ -10111,6 +10311,7 @@ class ClienteTipoPotencialTableCompanion
     this.descripcionEL = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : id = Value(id),
         descripcionES = Value(descripcionES),
         lastUpdated = Value(lastUpdated);
@@ -10133,6 +10334,7 @@ class ClienteTipoPotencialTableCompanion
     Expression<String>? descripcionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (id != null) 'TIPO_POTENCIAL_ID': id,
@@ -10153,6 +10355,7 @@ class ClienteTipoPotencialTableCompanion
       if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -10174,7 +10377,8 @@ class ClienteTipoPotencialTableCompanion
       Value<String?>? descripcionCN,
       Value<String?>? descripcionEL,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return ClienteTipoPotencialTableCompanion(
       id: id ?? this.id,
       descripcionES: descripcionES ?? this.descripcionES,
@@ -10194,6 +10398,7 @@ class ClienteTipoPotencialTableCompanion
       descripcionEL: descripcionEL ?? this.descripcionEL,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -10254,6 +10459,9 @@ class ClienteTipoPotencialTableCompanion
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -10277,7 +10485,8 @@ class ClienteTipoPotencialTableCompanion
           ..write('descripcionCN: $descripcionCN, ')
           ..write('descripcionEL: $descripcionEL, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -10373,37 +10582,44 @@ class EstadisticasArticulosTopTableCompanion
   final Value<String> articuloId;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const EstadisticasArticulosTopTableCompanion({
     this.articuloId = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   EstadisticasArticulosTopTableCompanion.insert({
     required String articuloId,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : articuloId = Value(articuloId),
         lastUpdated = Value(lastUpdated);
   static Insertable<EstadisitcasArticulosTopDTO> custom({
     Expression<String>? articuloId,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (articuloId != null) 'ARTICULO_ID': articuloId,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
   EstadisticasArticulosTopTableCompanion copyWith(
       {Value<String>? articuloId,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return EstadisticasArticulosTopTableCompanion(
       articuloId: articuloId ?? this.articuloId,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -10419,6 +10635,9 @@ class EstadisticasArticulosTopTableCompanion
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -10427,7 +10646,8 @@ class EstadisticasArticulosTopTableCompanion
     return (StringBuffer('EstadisticasArticulosTopTableCompanion(')
           ..write('articuloId: $articuloId, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -11575,6 +11795,7 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
   final Value<String?> gs1128Palet;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const ArticuloTableCompanion({
     this.id = const Value.absent(),
     this.descripcionES = const Value.absent(),
@@ -11644,6 +11865,7 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
     this.gs1128Palet = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   ArticuloTableCompanion.insert({
     required String id,
@@ -11714,6 +11936,7 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
     this.gs1128Palet = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : id = Value(id),
         descripcionES = Value(descripcionES),
         ventaMinimo = Value(ventaMinimo),
@@ -11806,6 +12029,7 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
     Expression<String>? gs1128Palet,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (id != null) 'ARTICULO_ID': id,
@@ -11886,6 +12110,7 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
       if (gs1128Palet != null) 'GS1_128_PALET': gs1128Palet,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -11957,7 +12182,8 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
       Value<String?>? gs1128Caja,
       Value<String?>? gs1128Palet,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return ArticuloTableCompanion(
       id: id ?? this.id,
       descripcionES: descripcionES ?? this.descripcionES,
@@ -12034,6 +12260,7 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
       gs1128Palet: gs1128Palet ?? this.gs1128Palet,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -12254,6 +12481,9 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -12327,7 +12557,8 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
           ..write('gs1128Caja: $gs1128Caja, ')
           ..write('gs1128Palet: $gs1128Palet, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -12701,6 +12932,7 @@ class ArticuloComponenteTableCompanion
   final Value<String?> descripcionEL;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const ArticuloComponenteTableCompanion({
     this.articuloId = const Value.absent(),
     this.articuloComponenteId = const Value.absent(),
@@ -12722,6 +12954,7 @@ class ArticuloComponenteTableCompanion
     this.descripcionEL = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   ArticuloComponenteTableCompanion.insert({
     required String articuloId,
@@ -12744,6 +12977,7 @@ class ArticuloComponenteTableCompanion
     this.descripcionEL = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : articuloId = Value(articuloId),
         articuloComponenteId = Value(articuloComponenteId),
         cantidad = Value(cantidad),
@@ -12770,6 +13004,7 @@ class ArticuloComponenteTableCompanion
     Expression<String>? descripcionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (articuloId != null) 'ARTICULO_ID': articuloId,
@@ -12793,6 +13028,7 @@ class ArticuloComponenteTableCompanion
       if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -12816,7 +13052,8 @@ class ArticuloComponenteTableCompanion
       Value<String?>? descripcionCN,
       Value<String?>? descripcionEL,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return ArticuloComponenteTableCompanion(
       articuloId: articuloId ?? this.articuloId,
       articuloComponenteId: articuloComponenteId ?? this.articuloComponenteId,
@@ -12838,6 +13075,7 @@ class ArticuloComponenteTableCompanion
       descripcionEL: descripcionEL ?? this.descripcionEL,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -12905,6 +13143,9 @@ class ArticuloComponenteTableCompanion
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -12930,7 +13171,8 @@ class ArticuloComponenteTableCompanion
           ..write('descripcionCN: $descripcionCN, ')
           ..write('descripcionEL: $descripcionEL, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -13053,12 +13295,14 @@ class ArticuloEmpresaIvaTableCompanion
   final Value<double> iva;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const ArticuloEmpresaIvaTableCompanion({
     this.articuloId = const Value.absent(),
     this.empresaId = const Value.absent(),
     this.iva = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   ArticuloEmpresaIvaTableCompanion.insert({
     required String articuloId,
@@ -13066,6 +13310,7 @@ class ArticuloEmpresaIvaTableCompanion
     required double iva,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : articuloId = Value(articuloId),
         empresaId = Value(empresaId),
         iva = Value(iva),
@@ -13076,6 +13321,7 @@ class ArticuloEmpresaIvaTableCompanion
     Expression<double>? iva,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (articuloId != null) 'ARTICULO_ID': articuloId,
@@ -13083,6 +13329,7 @@ class ArticuloEmpresaIvaTableCompanion
       if (iva != null) 'IVA': iva,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -13091,13 +13338,15 @@ class ArticuloEmpresaIvaTableCompanion
       Value<String>? empresaId,
       Value<double>? iva,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return ArticuloEmpresaIvaTableCompanion(
       articuloId: articuloId ?? this.articuloId,
       empresaId: empresaId ?? this.empresaId,
       iva: iva ?? this.iva,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -13119,6 +13368,9 @@ class ArticuloEmpresaIvaTableCompanion
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -13129,7 +13381,8 @@ class ArticuloEmpresaIvaTableCompanion
           ..write('empresaId: $empresaId, ')
           ..write('iva: $iva, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -13269,6 +13522,7 @@ class ArticuloRecambioTableCompanion
   final Value<int> cantidad;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const ArticuloRecambioTableCompanion({
     this.articuloId = const Value.absent(),
     this.id = const Value.absent(),
@@ -13276,6 +13530,7 @@ class ArticuloRecambioTableCompanion
     this.cantidad = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   ArticuloRecambioTableCompanion.insert({
     required String articuloId,
@@ -13284,6 +13539,7 @@ class ArticuloRecambioTableCompanion
     required int cantidad,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : articuloId = Value(articuloId),
         id = Value(id),
         descripcion = Value(descripcion),
@@ -13296,6 +13552,7 @@ class ArticuloRecambioTableCompanion
     Expression<int>? cantidad,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (articuloId != null) 'ARTICULO_ID': articuloId,
@@ -13304,6 +13561,7 @@ class ArticuloRecambioTableCompanion
       if (cantidad != null) 'CANTIDAD': cantidad,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -13313,7 +13571,8 @@ class ArticuloRecambioTableCompanion
       Value<String>? descripcion,
       Value<int>? cantidad,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return ArticuloRecambioTableCompanion(
       articuloId: articuloId ?? this.articuloId,
       id: id ?? this.id,
@@ -13321,6 +13580,7 @@ class ArticuloRecambioTableCompanion
       cantidad: cantidad ?? this.cantidad,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -13345,6 +13605,9 @@ class ArticuloRecambioTableCompanion
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -13356,7 +13619,8 @@ class ArticuloRecambioTableCompanion
           ..write('descripcion: $descripcion, ')
           ..write('cantidad: $cantidad, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -13482,12 +13746,14 @@ class ArticuloSustitutivoTableCompanion
   final Value<int> orden;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const ArticuloSustitutivoTableCompanion({
     this.articuloId = const Value.absent(),
     this.articuloSustitutivoId = const Value.absent(),
     this.orden = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   ArticuloSustitutivoTableCompanion.insert({
     required String articuloId,
@@ -13495,6 +13761,7 @@ class ArticuloSustitutivoTableCompanion
     required int orden,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : articuloId = Value(articuloId),
         articuloSustitutivoId = Value(articuloSustitutivoId),
         orden = Value(orden),
@@ -13505,6 +13772,7 @@ class ArticuloSustitutivoTableCompanion
     Expression<int>? orden,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (articuloId != null) 'ARTICULO_ID': articuloId,
@@ -13513,6 +13781,7 @@ class ArticuloSustitutivoTableCompanion
       if (orden != null) 'ORDEN': orden,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -13521,7 +13790,8 @@ class ArticuloSustitutivoTableCompanion
       Value<String>? articuloSustitutivoId,
       Value<int>? orden,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return ArticuloSustitutivoTableCompanion(
       articuloId: articuloId ?? this.articuloId,
       articuloSustitutivoId:
@@ -13529,6 +13799,7 @@ class ArticuloSustitutivoTableCompanion
       orden: orden ?? this.orden,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -13551,6 +13822,9 @@ class ArticuloSustitutivoTableCompanion
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -13561,7 +13835,8 @@ class ArticuloSustitutivoTableCompanion
           ..write('articuloSustitutivoId: $articuloSustitutivoId, ')
           ..write('orden: $orden, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -13758,6 +14033,7 @@ class ArticuloPrecioTarifaTableCompanion
   final Value<int> tipoPrecio;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const ArticuloPrecioTarifaTableCompanion({
     this.articuloId = const Value.absent(),
     this.tarifaId = const Value.absent(),
@@ -13768,6 +14044,7 @@ class ArticuloPrecioTarifaTableCompanion
     this.tipoPrecio = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   ArticuloPrecioTarifaTableCompanion.insert({
     required String articuloId,
@@ -13779,6 +14056,7 @@ class ArticuloPrecioTarifaTableCompanion
     required int tipoPrecio,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : articuloId = Value(articuloId),
         tarifaId = Value(tarifaId),
         cantidadDesde = Value(cantidadDesde),
@@ -13796,6 +14074,7 @@ class ArticuloPrecioTarifaTableCompanion
     Expression<int>? tipoPrecio,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (articuloId != null) 'ARTICULO_ID': articuloId,
@@ -13807,6 +14086,7 @@ class ArticuloPrecioTarifaTableCompanion
       if (tipoPrecio != null) 'TIPO_PRECIO': tipoPrecio,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -13819,7 +14099,8 @@ class ArticuloPrecioTarifaTableCompanion
       Value<String>? divisaId,
       Value<int>? tipoPrecio,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return ArticuloPrecioTarifaTableCompanion(
       articuloId: articuloId ?? this.articuloId,
       tarifaId: tarifaId ?? this.tarifaId,
@@ -13830,6 +14111,7 @@ class ArticuloPrecioTarifaTableCompanion
       tipoPrecio: tipoPrecio ?? this.tipoPrecio,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -13863,6 +14145,9 @@ class ArticuloPrecioTarifaTableCompanion
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -13877,7 +14162,8 @@ class ArticuloPrecioTarifaTableCompanion
           ..write('divisaId: $divisaId, ')
           ..write('tipoPrecio: $tipoPrecio, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -14079,6 +14365,7 @@ class ArticuloGrupoNetoTableCompanion
   final Value<int> tipoPrecio;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const ArticuloGrupoNetoTableCompanion({
     this.articuloId = const Value.absent(),
     this.grupoNetoId = const Value.absent(),
@@ -14089,6 +14376,7 @@ class ArticuloGrupoNetoTableCompanion
     this.tipoPrecio = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   ArticuloGrupoNetoTableCompanion.insert({
     required String articuloId,
@@ -14100,6 +14388,7 @@ class ArticuloGrupoNetoTableCompanion
     required int tipoPrecio,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : articuloId = Value(articuloId),
         grupoNetoId = Value(grupoNetoId),
         grupoNetoDescripcion = Value(grupoNetoDescripcion),
@@ -14118,6 +14407,7 @@ class ArticuloGrupoNetoTableCompanion
     Expression<int>? tipoPrecio,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (articuloId != null) 'ARTICULO_ID': articuloId,
@@ -14130,6 +14420,7 @@ class ArticuloGrupoNetoTableCompanion
       if (tipoPrecio != null) 'TIPO_PRECIO': tipoPrecio,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -14142,7 +14433,8 @@ class ArticuloGrupoNetoTableCompanion
       Value<String>? divisaId,
       Value<int>? tipoPrecio,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return ArticuloGrupoNetoTableCompanion(
       articuloId: articuloId ?? this.articuloId,
       grupoNetoId: grupoNetoId ?? this.grupoNetoId,
@@ -14153,6 +14445,7 @@ class ArticuloGrupoNetoTableCompanion
       tipoPrecio: tipoPrecio ?? this.tipoPrecio,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -14187,6 +14480,9 @@ class ArticuloGrupoNetoTableCompanion
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -14201,7 +14497,8 @@ class ArticuloGrupoNetoTableCompanion
           ..write('divisaId: $divisaId, ')
           ..write('tipoPrecio: $tipoPrecio, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -14390,6 +14687,7 @@ class EstadisticasClienteUsuarioVentasTableCompanion
   final Value<double?> coste;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const EstadisticasClienteUsuarioVentasTableCompanion({
     this.anyo = const Value.absent(),
     this.mes = const Value.absent(),
@@ -14400,6 +14698,7 @@ class EstadisticasClienteUsuarioVentasTableCompanion
     this.coste = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   EstadisticasClienteUsuarioVentasTableCompanion.insert({
     required double anyo,
@@ -14411,6 +14710,7 @@ class EstadisticasClienteUsuarioVentasTableCompanion
     this.coste = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : anyo = Value(anyo),
         mes = Value(mes),
         clienteId = Value(clienteId),
@@ -14426,6 +14726,7 @@ class EstadisticasClienteUsuarioVentasTableCompanion
     Expression<double>? coste,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (anyo != null) 'ANYO': anyo,
@@ -14437,6 +14738,7 @@ class EstadisticasClienteUsuarioVentasTableCompanion
       if (coste != null) 'COSTE': coste,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -14449,7 +14751,8 @@ class EstadisticasClienteUsuarioVentasTableCompanion
       Value<double?>? importe,
       Value<double?>? coste,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return EstadisticasClienteUsuarioVentasTableCompanion(
       anyo: anyo ?? this.anyo,
       mes: mes ?? this.mes,
@@ -14460,6 +14763,7 @@ class EstadisticasClienteUsuarioVentasTableCompanion
       coste: coste ?? this.coste,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -14493,6 +14797,9 @@ class EstadisticasClienteUsuarioVentasTableCompanion
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -14507,7 +14814,8 @@ class EstadisticasClienteUsuarioVentasTableCompanion
           ..write('importe: $importe, ')
           ..write('coste: $coste, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -14776,6 +15084,7 @@ class EstadisticasUltimosPreciosTableCompanion
   final Value<double> descuento3;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const EstadisticasUltimosPreciosTableCompanion({
     this.clienteId = const Value.absent(),
     this.articuloId = const Value.absent(),
@@ -14790,6 +15099,7 @@ class EstadisticasUltimosPreciosTableCompanion
     this.descuento3 = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   EstadisticasUltimosPreciosTableCompanion.insert({
     required String clienteId,
@@ -14805,6 +15115,7 @@ class EstadisticasUltimosPreciosTableCompanion
     required double descuento3,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : clienteId = Value(clienteId),
         articuloId = Value(articuloId),
         linea = Value(linea),
@@ -14831,6 +15142,7 @@ class EstadisticasUltimosPreciosTableCompanion
     Expression<double>? descuento3,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (clienteId != null) 'CLIENTE_ID': clienteId,
@@ -14846,6 +15158,7 @@ class EstadisticasUltimosPreciosTableCompanion
       if (descuento3 != null) 'DESCUENTO3': descuento3,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -14862,7 +15175,8 @@ class EstadisticasUltimosPreciosTableCompanion
       Value<double>? descuento2,
       Value<double>? descuento3,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return EstadisticasUltimosPreciosTableCompanion(
       clienteId: clienteId ?? this.clienteId,
       articuloId: articuloId ?? this.articuloId,
@@ -14877,6 +15191,7 @@ class EstadisticasUltimosPreciosTableCompanion
       descuento3: descuento3 ?? this.descuento3,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -14922,6 +15237,9 @@ class EstadisticasUltimosPreciosTableCompanion
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -14940,7 +15258,8 @@ class EstadisticasUltimosPreciosTableCompanion
           ..write('descuento2: $descuento2, ')
           ..write('descuento3: $descuento3, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -15274,6 +15593,7 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
   final Value<String?> visitaAppId;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const VisitaTableCompanion({
     this.id = const Value.absent(),
     this.fecha = const Value.absent(),
@@ -15293,6 +15613,7 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
     this.visitaAppId = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   VisitaTableCompanion.insert({
     required String id,
@@ -15313,6 +15634,7 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
     this.visitaAppId = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : id = Value(id),
         fecha = Value(fecha),
         isClienteProvisional = Value(isClienteProvisional),
@@ -15339,6 +15661,7 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
     Expression<String>? visitaAppId,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (id != null) 'VISITA_ID': id,
@@ -15364,6 +15687,7 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
       if (visitaAppId != null) 'COD_VISITA_APP': visitaAppId,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -15385,7 +15709,8 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
       Value<double>? longitud,
       Value<String?>? visitaAppId,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return VisitaTableCompanion(
       id: id ?? this.id,
       fecha: fecha ?? this.fecha,
@@ -15409,6 +15734,7 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
       visitaAppId: visitaAppId ?? this.visitaAppId,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -15474,6 +15800,9 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -15497,7 +15826,8 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
           ..write('longitud: $longitud, ')
           ..write('visitaAppId: $visitaAppId, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -15670,6 +16000,7 @@ class PedidoAlbaranTableCompanion extends UpdateCompanion<PedidoAlbaranDTO> {
   final Value<String?> trackId;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const PedidoAlbaranTableCompanion({
     this.empresaId = const Value.absent(),
     this.pedidoVentaId = const Value.absent(),
@@ -15679,6 +16010,7 @@ class PedidoAlbaranTableCompanion extends UpdateCompanion<PedidoAlbaranDTO> {
     this.trackId = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   PedidoAlbaranTableCompanion.insert({
     required String empresaId,
@@ -15689,6 +16021,7 @@ class PedidoAlbaranTableCompanion extends UpdateCompanion<PedidoAlbaranDTO> {
     this.trackId = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : empresaId = Value(empresaId),
         pedidoVentaId = Value(pedidoVentaId),
         albaranId = Value(albaranId),
@@ -15703,6 +16036,7 @@ class PedidoAlbaranTableCompanion extends UpdateCompanion<PedidoAlbaranDTO> {
     Expression<String>? trackId,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (empresaId != null) 'EMPRESA_ID': empresaId,
@@ -15713,6 +16047,7 @@ class PedidoAlbaranTableCompanion extends UpdateCompanion<PedidoAlbaranDTO> {
       if (trackId != null) 'TRACK_ID': trackId,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -15724,7 +16059,8 @@ class PedidoAlbaranTableCompanion extends UpdateCompanion<PedidoAlbaranDTO> {
       Value<String?>? agencia,
       Value<String?>? trackId,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return PedidoAlbaranTableCompanion(
       empresaId: empresaId ?? this.empresaId,
       pedidoVentaId: pedidoVentaId ?? this.pedidoVentaId,
@@ -15734,6 +16070,7 @@ class PedidoAlbaranTableCompanion extends UpdateCompanion<PedidoAlbaranDTO> {
       trackId: trackId ?? this.trackId,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -15764,6 +16101,9 @@ class PedidoAlbaranTableCompanion extends UpdateCompanion<PedidoAlbaranDTO> {
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -15777,7 +16117,8 @@ class PedidoAlbaranTableCompanion extends UpdateCompanion<PedidoAlbaranDTO> {
           ..write('agencia: $agencia, ')
           ..write('trackId: $trackId, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -15961,6 +16302,7 @@ class DescuentoGeneralTableCompanion
   final Value<double> descuento;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const DescuentoGeneralTableCompanion({
     this.descuentoGeneralId = const Value.absent(),
     this.articuloId = const Value.absent(),
@@ -15970,6 +16312,7 @@ class DescuentoGeneralTableCompanion
     this.descuento = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   DescuentoGeneralTableCompanion.insert({
     required String descuentoGeneralId,
@@ -15980,6 +16323,7 @@ class DescuentoGeneralTableCompanion
     required double descuento,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : descuentoGeneralId = Value(descuentoGeneralId),
         articuloId = Value(articuloId),
         familiaId = Value(familiaId),
@@ -15996,6 +16340,7 @@ class DescuentoGeneralTableCompanion
     Expression<double>? descuento,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (descuentoGeneralId != null)
@@ -16007,6 +16352,7 @@ class DescuentoGeneralTableCompanion
       if (descuento != null) 'DESCUENTO': descuento,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -16018,7 +16364,8 @@ class DescuentoGeneralTableCompanion
       Value<int>? cantidadDesde,
       Value<double>? descuento,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return DescuentoGeneralTableCompanion(
       descuentoGeneralId: descuentoGeneralId ?? this.descuentoGeneralId,
       articuloId: articuloId ?? this.articuloId,
@@ -16028,6 +16375,7 @@ class DescuentoGeneralTableCompanion
       descuento: descuento ?? this.descuento,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -16058,6 +16406,9 @@ class DescuentoGeneralTableCompanion
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -16071,7 +16422,8 @@ class DescuentoGeneralTableCompanion
           ..write('cantidadDesde: $cantidadDesde, ')
           ..write('descuento: $descuento, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -16405,6 +16757,7 @@ class DevolucionTipoTableCompanion extends UpdateCompanion<DevolucionTipoDTO> {
   final Value<String?> descripcionEL;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const DevolucionTipoTableCompanion({
     this.id = const Value.absent(),
     this.descripcionES = const Value.absent(),
@@ -16424,6 +16777,7 @@ class DevolucionTipoTableCompanion extends UpdateCompanion<DevolucionTipoDTO> {
     this.descripcionEL = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   DevolucionTipoTableCompanion.insert({
     required String id,
@@ -16444,6 +16798,7 @@ class DevolucionTipoTableCompanion extends UpdateCompanion<DevolucionTipoDTO> {
     this.descripcionEL = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : id = Value(id),
         descripcionES = Value(descripcionES),
         lastUpdated = Value(lastUpdated);
@@ -16466,6 +16821,7 @@ class DevolucionTipoTableCompanion extends UpdateCompanion<DevolucionTipoDTO> {
     Expression<String>? descripcionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (id != null) 'DEVOLUCION_TIPO_ID': id,
@@ -16486,6 +16842,7 @@ class DevolucionTipoTableCompanion extends UpdateCompanion<DevolucionTipoDTO> {
       if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -16507,7 +16864,8 @@ class DevolucionTipoTableCompanion extends UpdateCompanion<DevolucionTipoDTO> {
       Value<String?>? descripcionCN,
       Value<String?>? descripcionEL,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return DevolucionTipoTableCompanion(
       id: id ?? this.id,
       descripcionES: descripcionES ?? this.descripcionES,
@@ -16527,6 +16885,7 @@ class DevolucionTipoTableCompanion extends UpdateCompanion<DevolucionTipoDTO> {
       descripcionEL: descripcionEL ?? this.descripcionEL,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -16587,6 +16946,9 @@ class DevolucionTipoTableCompanion extends UpdateCompanion<DevolucionTipoDTO> {
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -16610,7 +16972,8 @@ class DevolucionTipoTableCompanion extends UpdateCompanion<DevolucionTipoDTO> {
           ..write('descripcionCN: $descripcionCN, ')
           ..write('descripcionEL: $descripcionEL, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -16930,6 +17293,7 @@ class DevolucionMotivoTableCompanion
   final Value<String?> descripcionEL;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const DevolucionMotivoTableCompanion({
     this.id = const Value.absent(),
     this.descripcionES = const Value.absent(),
@@ -16948,6 +17312,7 @@ class DevolucionMotivoTableCompanion
     this.descripcionEL = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   DevolucionMotivoTableCompanion.insert({
     required String id,
@@ -16967,6 +17332,7 @@ class DevolucionMotivoTableCompanion
     this.descripcionEL = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : id = Value(id),
         descripcionES = Value(descripcionES),
         lastUpdated = Value(lastUpdated);
@@ -16988,6 +17354,7 @@ class DevolucionMotivoTableCompanion
     Expression<String>? descripcionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (id != null) 'DEVOLUCION_MOTIVO_ID': id,
@@ -17007,6 +17374,7 @@ class DevolucionMotivoTableCompanion
       if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -17027,7 +17395,8 @@ class DevolucionMotivoTableCompanion
       Value<String?>? descripcionCN,
       Value<String?>? descripcionEL,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return DevolucionMotivoTableCompanion(
       id: id ?? this.id,
       descripcionES: descripcionES ?? this.descripcionES,
@@ -17046,6 +17415,7 @@ class DevolucionMotivoTableCompanion
       descripcionEL: descripcionEL ?? this.descripcionEL,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -17103,6 +17473,9 @@ class DevolucionMotivoTableCompanion
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -17125,7 +17498,8 @@ class DevolucionMotivoTableCompanion
           ..write('descripcionCN: $descripcionCN, ')
           ..write('descripcionEL: $descripcionEL, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -17445,6 +17819,7 @@ class DevolucionEstadoTableCompanion
   final Value<String?> descripcionEL;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const DevolucionEstadoTableCompanion({
     this.id = const Value.absent(),
     this.descripcionES = const Value.absent(),
@@ -17463,6 +17838,7 @@ class DevolucionEstadoTableCompanion
     this.descripcionEL = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   DevolucionEstadoTableCompanion.insert({
     required String id,
@@ -17482,6 +17858,7 @@ class DevolucionEstadoTableCompanion
     this.descripcionEL = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : id = Value(id),
         descripcionES = Value(descripcionES),
         lastUpdated = Value(lastUpdated);
@@ -17503,6 +17880,7 @@ class DevolucionEstadoTableCompanion
     Expression<String>? descripcionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (id != null) 'DEVOLUCION_ESTADO_ID': id,
@@ -17522,6 +17900,7 @@ class DevolucionEstadoTableCompanion
       if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -17542,7 +17921,8 @@ class DevolucionEstadoTableCompanion
       Value<String?>? descripcionCN,
       Value<String?>? descripcionEL,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return DevolucionEstadoTableCompanion(
       id: id ?? this.id,
       descripcionES: descripcionES ?? this.descripcionES,
@@ -17561,6 +17941,7 @@ class DevolucionEstadoTableCompanion
       descripcionEL: descripcionEL ?? this.descripcionEL,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -17618,6 +17999,9 @@ class DevolucionEstadoTableCompanion
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -17640,7 +18024,8 @@ class DevolucionEstadoTableCompanion
           ..write('descripcionCN: $descripcionCN, ')
           ..write('descripcionEL: $descripcionEL, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -17852,6 +18237,7 @@ class DevolucionLineaTableCompanion
   final Value<String?> devolucionMotivoId;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const DevolucionLineaTableCompanion({
     this.empresaId = const Value.absent(),
     this.devolucionId = const Value.absent(),
@@ -17863,6 +18249,7 @@ class DevolucionLineaTableCompanion
     this.devolucionMotivoId = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   DevolucionLineaTableCompanion.insert({
     required String empresaId,
@@ -17875,6 +18262,7 @@ class DevolucionLineaTableCompanion
     this.devolucionMotivoId = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : empresaId = Value(empresaId),
         devolucionId = Value(devolucionId),
         articuloId = Value(articuloId),
@@ -17891,6 +18279,7 @@ class DevolucionLineaTableCompanion
     Expression<String>? devolucionMotivoId,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (empresaId != null) 'EMPRESA_ID': empresaId,
@@ -17906,6 +18295,7 @@ class DevolucionLineaTableCompanion
         'DEVOLUCION_MOTIVO_ID': devolucionMotivoId,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -17919,7 +18309,8 @@ class DevolucionLineaTableCompanion
       Value<String?>? devolucionEstadoId,
       Value<String?>? devolucionMotivoId,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return DevolucionLineaTableCompanion(
       empresaId: empresaId ?? this.empresaId,
       devolucionId: devolucionId ?? this.devolucionId,
@@ -17931,6 +18322,7 @@ class DevolucionLineaTableCompanion
       devolucionMotivoId: devolucionMotivoId ?? this.devolucionMotivoId,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -17967,6 +18359,9 @@ class DevolucionLineaTableCompanion
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -17982,7 +18377,8 @@ class DevolucionLineaTableCompanion
           ..write('devolucionEstadoId: $devolucionEstadoId, ')
           ..write('devolucionMotivoId: $devolucionMotivoId, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -18309,6 +18705,7 @@ class DevolucionTableCompanion extends UpdateCompanion<DevolucionDTO> {
   final Value<double> bultos;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const DevolucionTableCompanion({
     this.empresaId = const Value.absent(),
     this.id = const Value.absent(),
@@ -18328,6 +18725,7 @@ class DevolucionTableCompanion extends UpdateCompanion<DevolucionDTO> {
     this.bultos = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   DevolucionTableCompanion.insert({
     required String empresaId,
@@ -18348,6 +18746,7 @@ class DevolucionTableCompanion extends UpdateCompanion<DevolucionDTO> {
     required double bultos,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : empresaId = Value(empresaId),
         id = Value(id),
         fechaDevolucion = Value(fechaDevolucion),
@@ -18374,6 +18773,7 @@ class DevolucionTableCompanion extends UpdateCompanion<DevolucionDTO> {
     Expression<double>? bultos,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (empresaId != null) 'EMPRESA_ID': empresaId,
@@ -18395,6 +18795,7 @@ class DevolucionTableCompanion extends UpdateCompanion<DevolucionDTO> {
       if (bultos != null) 'BULTOS': bultos,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -18416,7 +18817,8 @@ class DevolucionTableCompanion extends UpdateCompanion<DevolucionDTO> {
       Value<double>? kilosDevolucion,
       Value<double>? bultos,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return DevolucionTableCompanion(
       empresaId: empresaId ?? this.empresaId,
       id: id ?? this.id,
@@ -18436,6 +18838,7 @@ class DevolucionTableCompanion extends UpdateCompanion<DevolucionDTO> {
       bultos: bultos ?? this.bultos,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -18496,6 +18899,9 @@ class DevolucionTableCompanion extends UpdateCompanion<DevolucionDTO> {
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -18519,7 +18925,8 @@ class DevolucionTableCompanion extends UpdateCompanion<DevolucionDTO> {
           ..write('kilosDevolucion: $kilosDevolucion, ')
           ..write('bultos: $bultos, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -18649,6 +19056,7 @@ class ProvinciaTableCompanion extends UpdateCompanion<ProvinciaDTO> {
   final Value<String?> provincia;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
+  final Value<int> rowid;
   const ProvinciaTableCompanion({
     this.paisId = const Value.absent(),
     this.regionId = const Value.absent(),
@@ -18656,6 +19064,7 @@ class ProvinciaTableCompanion extends UpdateCompanion<ProvinciaDTO> {
     this.provincia = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   ProvinciaTableCompanion.insert({
     this.paisId = const Value.absent(),
@@ -18664,6 +19073,7 @@ class ProvinciaTableCompanion extends UpdateCompanion<ProvinciaDTO> {
     this.provincia = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : provinciaId = Value(provinciaId),
         lastUpdated = Value(lastUpdated);
   static Insertable<ProvinciaDTO> custom({
@@ -18673,6 +19083,7 @@ class ProvinciaTableCompanion extends UpdateCompanion<ProvinciaDTO> {
     Expression<String>? provincia,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (paisId != null) 'PAIS_ID': paisId,
@@ -18681,6 +19092,7 @@ class ProvinciaTableCompanion extends UpdateCompanion<ProvinciaDTO> {
       if (provincia != null) 'PROVINCIA': provincia,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -18690,7 +19102,8 @@ class ProvinciaTableCompanion extends UpdateCompanion<ProvinciaDTO> {
       Value<String>? provinciaId,
       Value<String?>? provincia,
       Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
+      Value<String>? deleted,
+      Value<int>? rowid}) {
     return ProvinciaTableCompanion(
       paisId: paisId ?? this.paisId,
       regionId: regionId ?? this.regionId,
@@ -18698,6 +19111,7 @@ class ProvinciaTableCompanion extends UpdateCompanion<ProvinciaDTO> {
       provincia: provincia ?? this.provincia,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -18722,6 +19136,9 @@ class ProvinciaTableCompanion extends UpdateCompanion<ProvinciaDTO> {
     if (deleted.present) {
       map['DELETED'] = Variable<String>(deleted.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -18733,7 +19150,8 @@ class ProvinciaTableCompanion extends UpdateCompanion<ProvinciaDTO> {
           ..write('provinciaId: $provinciaId, ')
           ..write('provincia: $provincia, ')
           ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }

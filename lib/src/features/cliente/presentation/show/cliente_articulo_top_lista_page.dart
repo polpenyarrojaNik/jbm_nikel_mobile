@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -10,6 +11,7 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/articulo_top.dart';
 
+@RoutePage()
 class ClienteArticulosTopListPage extends ConsumerWidget {
   const ClienteArticulosTopListPage(
       {super.key, required this.clienteId, required this.nombreCliente});

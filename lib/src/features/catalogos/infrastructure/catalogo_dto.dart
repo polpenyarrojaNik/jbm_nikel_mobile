@@ -11,21 +11,28 @@ part 'catalogo_dto.g.dart';
 class CatalogoDTO with _$CatalogoDTO {
   const CatalogoDTO._();
   const factory CatalogoDTO({
-    @JsonKey(name: 'CATALOGO_ID') required int catalogoId,
-    @JsonKey(name: 'NOMBRE') required String nombre,
-    @JsonKey(name: 'IDIOMA_ID') required String idiomaId,
+    @JsonKey(name: 'CATALOGO_ID')
+        required int catalogoId,
+    @JsonKey(name: 'NOMBRE')
+        required String nombre,
+    @JsonKey(name: 'IDIOMA_ID')
+        required String idiomaId,
     @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID')
         required String tipoPrecioCatalogoId,
     @JsonKey(name: 'TIPO_PRECIO_CATALOGO_NOMBRE')
         required String tipoPrecioCatalogoNombre,
-    @JsonKey(name: 'TIPO_CATALOGO_ID') required String tipoCatalogoId,
-    @JsonKey(name: 'TAG_BUSQUEDA') required String tagBusqueda,
-    @JsonKey(name: 'ORDEN') required int orden,
+    @JsonKey(name: 'TIPO_CATALOGO_ID')
+        required String tipoCatalogoId,
+    @JsonKey(name: 'TAG_BUSQUEDA')
+        required String tagBusqueda,
+    @JsonKey(name: 'ORDEN')
+        required int orden,
     @JsonKey(name: 'NOMBRE_FICHERO_PORTADA')
         required String nombreFicheroPortada,
     @JsonKey(name: 'NOMBRE_FICHERO_CATALOGO')
         required String nombreFicheroCatalogo,
-    @JsonKey(name: 'DESCARGA_SN') required String descarga,
+    @JsonKey(name: 'DESCARGA_SN')
+        required String descarga,
   }) = _CatalogoDTO;
 
   factory CatalogoDTO.fromJson(Map<String, dynamic> json) =>

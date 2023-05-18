@@ -10,6 +10,7 @@ import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart'
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import 'cliente_direccion_seleccionar_pais_search_controller.dart';
 
+@RoutePage()
 class ClienteDireccionSeleccionarPaisPage extends ConsumerWidget {
   ClienteDireccionSeleccionarPaisPage({super.key});
   final _debouncer = Debouncer(milliseconds: 500);

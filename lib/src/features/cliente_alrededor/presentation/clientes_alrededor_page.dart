@@ -17,6 +17,7 @@ import '../../../core/helpers/formatters.dart';
 import '../../../core/presentation/common_widgets/address_text_widget.dart';
 import '../../../core/presentation/common_widgets/row_field_text_detail.dart';
 
+@RoutePage()
 class ClientesAlrededorPage extends ConsumerStatefulWidget {
   const ClientesAlrededorPage({super.key});
 

@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/primary_button.dart';
@@ -11,6 +12,7 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import '../../../../core/presentation/toasts.dart';
 import 'login_page_controller.dart';
 
+@RoutePage()
 class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({super.key});
   // final Function(bool loggedIn) onLoginCallback;

@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
@@ -11,6 +12,7 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import '../../domain/articulo_ventas_cliente.dart';
 import '../../infrastructure/articulo_repository.dart';
 
+@RoutePage()
 class ArticuloVentasClientePage extends ConsumerWidget {
   const ArticuloVentasClientePage(
       {super.key, required this.articuloId, required this.description});

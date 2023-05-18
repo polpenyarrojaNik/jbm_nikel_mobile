@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,6 +14,7 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import '../../domain/cliente_ventas_articulo.dart';
 import 'cliente_ventas_articulo_controller.dart';
 
+@RoutePage()
 class ClienteVentasArticuloPage extends ConsumerWidget {
   ClienteVentasArticuloPage(
       {super.key, required this.clienteId, required this.nombreCliente});

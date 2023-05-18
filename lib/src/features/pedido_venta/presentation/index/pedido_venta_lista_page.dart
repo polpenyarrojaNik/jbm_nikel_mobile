@@ -21,6 +21,7 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import '../../../sync/application/sync_notifier_provider.dart';
 import '../../infrastructure/pedido_venta_repository.dart';
 
+@RoutePage()
 class PedidoVentaListPage extends ConsumerStatefulWidget {
   const PedidoVentaListPage({super.key});
 

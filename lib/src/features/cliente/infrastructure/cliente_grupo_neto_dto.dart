@@ -15,13 +15,19 @@ class ClienteGrupoNetoDTO
     implements Insertable<ClienteGrupoNetoDTO> {
   const ClienteGrupoNetoDTO._();
   const factory ClienteGrupoNetoDTO({
-    @JsonKey(name: 'CLIENTE_ID') required String clienteId,
-    @JsonKey(name: 'GRUPO_NETO_ID') required String grupoNetoId,
+    @JsonKey(name: 'CLIENTE_ID')
+        required String clienteId,
+    @JsonKey(name: 'GRUPO_NETO_ID')
+        required String grupoNetoId,
     @JsonKey(name: 'GRUPO_NETO_DESCRIPCION')
         required String grupoNetoDescripcion,
-    @JsonKey(name: 'DTO_ADICIONAL') required double dtoAdicional,
-    @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') @Default('N') String deleted,
+    @JsonKey(name: 'DTO_ADICIONAL')
+        required double dtoAdicional,
+    @JsonKey(name: 'LAST_UPDATED')
+        required DateTime lastUpdated,
+    @JsonKey(name: 'DELETED')
+    @Default('N')
+        String deleted,
   }) = _ClienteGrupoNetoDTO;
 
   factory ClienteGrupoNetoDTO.fromJson(Map<String, dynamic> json) =>

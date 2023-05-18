@@ -25,40 +25,72 @@ part 'cliente_dto.g.dart';
 class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
   const ClienteDTO._();
   const factory ClienteDTO({
-    @JsonKey(name: 'CLIENTE_ID') required String id,
-    @JsonKey(name: 'NOMBRE') required String nombreCliente,
-    @JsonKey(name: 'NIF') String? nif,
-    @JsonKey(name: 'NOMBRE_FISCAL') required String nombreFiscal,
-    @JsonKey(name: 'DIRECCION_FISCAL1') String? direccionFiscal1,
-    @JsonKey(name: 'DIRECCION_FISCAL2') String? direccionFiscal2,
-    @JsonKey(name: 'CODIGO_POSTAL_FISCAL') String? codigoPostalFiscal,
-    @JsonKey(name: 'POBLACION_FISCAL') String? poblacionFiscal,
-    @JsonKey(name: 'PAIS_ID_FISCAL') String? paisFiscalId,
-    @JsonKey(name: 'PROVINCIA_FISCAL') String? provinciaFiscal,
-    @JsonKey(name: 'LATITUD_FISCAL') required double latitudFiscal,
-    @JsonKey(name: 'LONGITUD_FISCAL') required double longitudFiscal,
-    @JsonKey(name: 'EMPRESA_ID') required String empresaId,
-    @JsonKey(name: 'IVA') required double iva,
-    @JsonKey(name: 'VENTAS_ANYO_ACTUAL') required double ventasAnyoActual,
-    @JsonKey(name: 'VENTAS_ANYO_ANTERIOR') required double ventasAnyoAnterior,
-    @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS') required double ventasHaceDosAnyos,
-    @JsonKey(name: 'MARGEN_ANYO_ACTUAL') required double margenAnyoActual,
-    @JsonKey(name: 'MARGEN_ANYO_ANTERIOR') required double margenAnyoAnterior,
-    @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS') required double margenHaceDosAnyos,
-    @JsonKey(name: 'PORCENTAJE_ABONOS') required double porcentajeAbonos,
-    @JsonKey(name: 'PORCENTAJE_GARANTIAS') required double porcentajeGarantias,
-    @JsonKey(name: 'CENTRAL_COMPRAS_NOMBRE') String? centralCompras,
-    @JsonKey(name: 'URL_WEB') String? urlWeb,
-    @JsonKey(name: 'DIVISA_ID') String? divisaId,
-    @JsonKey(name: 'TARIFA_ID') String? tarifaId,
-    @JsonKey(name: 'TARIFA_DESCRIPCION') String? tarifaDescripcion,
-    @JsonKey(name: 'DESCUENTO_GENERAL_ID') String? descuentoGeneralId,
+    @JsonKey(name: 'CLIENTE_ID')
+        required String id,
+    @JsonKey(name: 'NOMBRE')
+        required String nombreCliente,
+    @JsonKey(name: 'NIF')
+        String? nif,
+    @JsonKey(name: 'NOMBRE_FISCAL')
+        required String nombreFiscal,
+    @JsonKey(name: 'DIRECCION_FISCAL1')
+        String? direccionFiscal1,
+    @JsonKey(name: 'DIRECCION_FISCAL2')
+        String? direccionFiscal2,
+    @JsonKey(name: 'CODIGO_POSTAL_FISCAL')
+        String? codigoPostalFiscal,
+    @JsonKey(name: 'POBLACION_FISCAL')
+        String? poblacionFiscal,
+    @JsonKey(name: 'PAIS_ID_FISCAL')
+        String? paisFiscalId,
+    @JsonKey(name: 'PROVINCIA_FISCAL')
+        String? provinciaFiscal,
+    @JsonKey(name: 'LATITUD_FISCAL')
+        required double latitudFiscal,
+    @JsonKey(name: 'LONGITUD_FISCAL')
+        required double longitudFiscal,
+    @JsonKey(name: 'EMPRESA_ID')
+        required String empresaId,
+    @JsonKey(name: 'IVA')
+        required double iva,
+    @JsonKey(name: 'VENTAS_ANYO_ACTUAL')
+        required double ventasAnyoActual,
+    @JsonKey(name: 'VENTAS_ANYO_ANTERIOR')
+        required double ventasAnyoAnterior,
+    @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS')
+        required double ventasHaceDosAnyos,
+    @JsonKey(name: 'MARGEN_ANYO_ACTUAL')
+        required double margenAnyoActual,
+    @JsonKey(name: 'MARGEN_ANYO_ANTERIOR')
+        required double margenAnyoAnterior,
+    @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS')
+        required double margenHaceDosAnyos,
+    @JsonKey(name: 'PORCENTAJE_ABONOS')
+        required double porcentajeAbonos,
+    @JsonKey(name: 'PORCENTAJE_GARANTIAS')
+        required double porcentajeGarantias,
+    @JsonKey(name: 'CENTRAL_COMPRAS_NOMBRE')
+        String? centralCompras,
+    @JsonKey(name: 'URL_WEB')
+        String? urlWeb,
+    @JsonKey(name: 'DIVISA_ID')
+        String? divisaId,
+    @JsonKey(name: 'TARIFA_ID')
+        String? tarifaId,
+    @JsonKey(name: 'TARIFA_DESCRIPCION')
+        String? tarifaDescripcion,
+    @JsonKey(name: 'DESCUENTO_GENERAL_ID')
+        String? descuentoGeneralId,
     @JsonKey(name: 'DESCUENTO_GENERAL_DESCRIPCION')
         String? descripcionDescuentoGeneral,
-    @JsonKey(name: 'TIPO_CALCULO_PRECIO') required String tipoCalculoPrecio,
-    @JsonKey(name: 'PLAZO_COBRO_ID') String? plazoDeCobroId,
-    @JsonKey(name: 'METODO_COBRO_ID') String? metodoDeCobroId,
-    @JsonKey(name: 'DESCUENTO_PRONTO_PAGO') required double descuentoProntoPago,
+    @JsonKey(name: 'TIPO_CALCULO_PRECIO')
+        required String tipoCalculoPrecio,
+    @JsonKey(name: 'PLAZO_COBRO_ID')
+        String? plazoDeCobroId,
+    @JsonKey(name: 'METODO_COBRO_ID')
+        String? metodoDeCobroId,
+    @JsonKey(name: 'DESCUENTO_PRONTO_PAGO')
+        required double descuentoProntoPago,
     @JsonKey(name: 'RIESGO_CONCEDIDO_INTERNO')
         required double riesgoConcedidoInterno,
     @JsonKey(name: 'RIESGO_CONCEDIDO_INTERNO_FECHA')
@@ -67,24 +99,37 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
         required double riesgoConcedidoCoafe,
     @JsonKey(name: 'RIESGO_CONCEDIDO_COFACE_FECHA')
         DateTime? riesgoConcedidoCoafeFecha,
-    @JsonKey(name: 'RIESGO_CONCEDIDO') double? riesgoConcedido,
+    @JsonKey(name: 'RIESGO_CONCEDIDO')
+        double? riesgoConcedido,
     @JsonKey(name: 'RIESGO_PDTE_COBRO_VENCIDO_CLIENTE')
         double? riesgoPendienteCobroVencido,
     @JsonKey(name: 'RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE')
         double? riesgoPendienteCobroNoVencido,
-    @JsonKey(name: 'RIESGO_PDTE_SERVIR_CLIENTE') double? riesgoPendienteServir,
+    @JsonKey(name: 'RIESGO_PDTE_SERVIR_CLIENTE')
+        double? riesgoPendienteServir,
     @JsonKey(name: 'RIESGO_PDTE_FACTURAR_CLIENTE')
         double? riesgoPendienteFacturar,
-    @JsonKey(name: 'OBSERVACIONES_INTERNAS') String? obvservacionesInternas,
-    @JsonKey(name: 'CLIENTE_POTENCIAL') String? clientePotencial,
-    @JsonKey(name: 'ESTADO_POTENCIAL_ID') String? clienteEstadoPotencialId,
-    @JsonKey(name: 'TIPO_POTENCIAL_ID') String? clienteTipoPotencialId,
-    @JsonKey(name: 'REPRESENTANTE1_ID') String? representante1Id,
-    @JsonKey(name: 'REPRESENTANTE1_NOMBRE') String? representante1Nombre,
-    @JsonKey(name: 'REPRESENTANTE2_ID') String? representante2Id,
-    @JsonKey(name: 'REPRESENTANTE2_NOMBRE') String? representante2Nombre,
-    @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') @Default('N') String deleted,
+    @JsonKey(name: 'OBSERVACIONES_INTERNAS')
+        String? obvservacionesInternas,
+    @JsonKey(name: 'CLIENTE_POTENCIAL')
+        String? clientePotencial,
+    @JsonKey(name: 'ESTADO_POTENCIAL_ID')
+        String? clienteEstadoPotencialId,
+    @JsonKey(name: 'TIPO_POTENCIAL_ID')
+        String? clienteTipoPotencialId,
+    @JsonKey(name: 'REPRESENTANTE1_ID')
+        String? representante1Id,
+    @JsonKey(name: 'REPRESENTANTE1_NOMBRE')
+        String? representante1Nombre,
+    @JsonKey(name: 'REPRESENTANTE2_ID')
+        String? representante2Id,
+    @JsonKey(name: 'REPRESENTANTE2_NOMBRE')
+        String? representante2Nombre,
+    @JsonKey(name: 'LAST_UPDATED')
+        required DateTime lastUpdated,
+    @JsonKey(name: 'DELETED')
+    @Default('N')
+        String deleted,
   }) = _ClienteDTO;
 
   factory ClienteDTO.fromJson(Map<String, dynamic> json) =>

@@ -20,6 +20,7 @@ import '../../infrastructure/cliente_repository.dart';
 import 'cliente_direccion_delete_controller.dart';
 import 'cliente_direccion_list_imp_tile.dart';
 
+@RoutePage()
 class ClienteDireccionesListPage extends ConsumerWidget {
   const ClienteDireccionesListPage(
       {super.key,

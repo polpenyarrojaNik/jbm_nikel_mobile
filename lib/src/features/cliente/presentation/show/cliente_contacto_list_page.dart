@@ -19,6 +19,7 @@ import '../../infrastructure/cliente_repository.dart';
 import 'cliente_contacto_delete_controller.dart';
 import 'cliente_contacto_imp_list_tile.dart';
 
+@RoutePage()
 class ClienteContactoListPage extends ConsumerWidget {
   const ClienteContactoListPage(
       {super.key, required this.clienteId, required this.nombreCliente});

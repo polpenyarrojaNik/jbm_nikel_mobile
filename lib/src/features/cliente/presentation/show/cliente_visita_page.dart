@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -12,6 +13,7 @@ import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../visitas/domain/visita.dart';
 import '../../infrastructure/cliente_repository.dart';
 
+@RoutePage()
 class ClienteVisitasPage extends ConsumerWidget {
   const ClienteVisitasPage(
       {super.key, required this.clienteId, required this.nombreCliente});

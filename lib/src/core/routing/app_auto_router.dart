@@ -60,102 +60,111 @@ import '../../features/visitas/domain/visita_id_param.dart';
 
 part 'app_auto_router.gr.dart';
 
-@MaterialAutoRouter(
-  routes: [
-    AutoRoute(
-      page: SplashPage,
-      path: '/splash',
-    ),
-    AutoRoute(
-      page: LoginPage,
-      path: '/login',
-      initial: true,
-    ),
-    AutoRoute(
-      page: ClienteListaPage,
-      path: '/cliente',
-    ),
-    AutoRoute(page: ClientesAlrededorPage, path: '/cliente/alrededor'),
-    AutoRoute(page: ClienteDetallePage, path: '/cliente/:id'),
-    AutoRoute(page: ClienteVentasMesPage, path: '/cliente/:id/ventas-mes'),
-    AutoRoute(
-        page: ClienteVentasArticuloPage, path: '/cliente/:id/ventas-articulo'),
-    AutoRoute(
-        page: ClientePagoPendientePage,
-        path: '/cliente/:id/facturas_pendientes'),
-    AutoRoute(
-        page: ClienteArticulosTopListPage, path: '/cliente/:id/top-articulos'),
-    AutoRoute(page: ClienteAdjuntoPage, path: '/cliente/:id/adjuntos'),
-    AutoRoute(page: ClienteContactoListPage, path: '/cliente/:id/contactos'),
-    AutoRoute(
-      page: ClienteContactoEditPage,
-      path: '/cliente/:id/contactos/:contactoId',
-      fullscreenDialog: true,
-    ),
-    AutoRoute(page: ClienteDescuentoPage, path: '/cliente/:id/descuentos'),
-    AutoRoute(
-        page: ClienteDireccionesListPage, path: '/cliente/:id/direcciones'),
-    AutoRoute(
-      page: ClienteDireccionEditPage,
-      path: '/cliente/:id/direcciones/:direccionId',
-      fullscreenDialog: true,
-    ),
-    AutoRoute(
-      page: ClienteDireccionSeleccionarPaisPage,
-      path: '/cliente/:id/direcciones/:direccionId/pais',
-    ),
-    AutoRoute(page: ClientePrecioNetoPage, path: '/cliente/:id/precios-netos'),
-    AutoRoute(page: ClienteGrupoNetoPage, path: '/cliente/:id/grupos-netos'),
-    AutoRoute(page: ClienteRappelPage, path: '/cliente/:id/rappels'),
-    AutoRoute(page: ClienteVisitasPage, path: '/cliente/:id/visitas'),
-    AutoRoute(page: ClientePedidosPage, path: '/cliente/:id/pedidos'),
-    AutoRoute(page: ClienteDevolucionPage, path: '/cliente/:id/devoluciones'),
-    AutoRoute(
-        page: ClienteDevolucionDetallePage,
-        path: '/cliente/:id/devoluciones/:devolucionId'),
-    AutoRoute(
-        page: ClienteUltimosPreciosPage, path: '/cliente/:id/ultimos-precios'),
-    AutoRoute(page: PedidoVentaListPage, path: '/pedido'),
-    AutoRoute(page: PedidoVentaDetallePage, path: '/pedido/:id'),
-    AutoRoute(
-        page: PedidoVentaEditPage,
-        path: '/pedido/edit',
-        fullscreenDialog: true),
-    AutoRoute(
-        page: SeleccionarCantidadPage,
-        path: 'pedido/edit/seleccionar_cantidad'),
-    AutoRoute(page: ArticuloListaPage, path: '/articulo'),
-    AutoRoute(page: ArticuloDetallePage, path: '/articulo/:id'),
-    AutoRoute(
-        page: ArticuloPedidoVentaPage, path: '/articulo/:id/pedido-venta'),
-    AutoRoute(
-        page: ArticuloUltimosPreciosPage,
-        path: '/articulo/:id/ultimos-precios'),
-    AutoRoute(page: ArticuloComponentePage, path: '/articulo/:id/componentes'),
-    AutoRoute(page: ArticuloGrupoNetoPage, path: '/articulo/:id/grupos-netos'),
-    AutoRoute(
-        page: ArticuloPrecioTarifaPage, path: '/articulo/:id/precio-tarifa'),
-    AutoRoute(page: ArticuloRecambioPage, path: '/articulo/:id/recambios'),
-    AutoRoute(
-        page: ArticuloSustitutivoPage, path: '/articulo/:id/sustitutivos'),
-    AutoRoute(page: ArticuloVentasMesPage, path: '/articulo/:id/ventas-mes'),
-    AutoRoute(
-        page: ArticuloVentasClientePage, path: '/articulo/:id/ventas-cliente'),
-    AutoRoute(page: ArticuloDocumentoPage, path: '/articulo/:id/documentos'),
-    AutoRoute(page: VisitaListaPage, path: '/visita'),
-    AutoRoute(page: VisitaDetallePage, path: '/visita/:id'),
-    AutoRoute(page: VisitaEditPage, path: '/visita/edit'),
-    AutoRoute(page: CatalogoListaPage, path: '/catalogo'),
-    AutoRoute(
-        page: CatalogoPdfViewerPage,
-        path: '/catalogo/viewer',
-        fullscreenDialog: true),
-    AutoRoute(page: SettingsPage, path: '/settings'),
-  ],
+@AutoRouterConfig(
   replaceInRouteName: 'Page,Route',
 )
 class AppRouter extends _$AppRouter {
   // AppRouter({required super.routeGuard});
+  @override
+  RouteType get defaultRouteType => const RouteType.material();
+  @override
+  final List<AutoRoute> routes = [
+    AutoRoute(page: SplashRoute.page, path: '/splash'),
+    AutoRoute(page: LoginRoute.page, path: '/', initial: true),
+    AutoRoute(page: ClienteListaRoute.page, path: '/cliente'),
+    AutoRoute(page: ClientesAlrededorRoute.page, path: '/cliente/alrededor'),
+    AutoRoute(page: ClienteDetalleRoute.page, path: '/cliente/:id'),
+    AutoRoute(
+        page: ClienteVentasMesRoute.page, path: '/cliente/:id/ventas-mes'),
+    AutoRoute(
+        page: ClienteVentasArticuloRoute.page,
+        path: '/cliente/:id/ventas-articulo'),
+    AutoRoute(
+        page: ClientePagoPendienteRoute.page,
+        path: '/cliente/:id/facturas_pendientes'),
+    AutoRoute(
+        page: ClienteArticulosTopListRoute.page,
+        path: '/cliente/:id/top-articulos'),
+    AutoRoute(page: ClienteAdjuntoRoute.page, path: '/cliente/:id/adjuntos'),
+    AutoRoute(
+        page: ClienteContactoListRoute.page, path: '/cliente/:id/contactos'),
+    AutoRoute(
+        page: ClienteContactoEditRoute.page,
+        path: '/cliente/:id/contactos/:contactoId',
+        fullscreenDialog: true),
+    AutoRoute(
+        page: ClienteDescuentoRoute.page, path: '/cliente/:id/descuentos'),
+    AutoRoute(
+        page: ClienteDireccionesListRoute.page,
+        path: '/cliente/:id/direcciones'),
+    AutoRoute(
+        page: ClienteDireccionEditRoute.page,
+        path: '/cliente/:id/direcciones/:direccionId',
+        fullscreenDialog: true),
+    AutoRoute(
+        page: ClienteDireccionSeleccionarPaisRoute.page,
+        path: '/cliente/:id/direcciones/:direccionId/pais'),
+    AutoRoute(
+        page: ClientePrecioNetoRoute.page, path: '/cliente/:id/precios-netos'),
+    AutoRoute(
+        page: ClienteGrupoNetoRoute.page, path: '/cliente/:id/grupos-netos'),
+    AutoRoute(page: ClienteRappelRoute.page, path: '/cliente/:id/rappels'),
+    AutoRoute(page: ClienteVisitasRoute.page, path: '/cliente/:id/visitas'),
+    AutoRoute(page: ClientePedidosRoute.page, path: '/cliente/:id/pedidos'),
+    AutoRoute(
+        page: ClienteDevolucionRoute.page, path: '/cliente/:id/devoluciones'),
+    AutoRoute(
+        page: ClienteDevolucionDetalleRoute.page,
+        path: '/cliente/:id/devoluciones/:devolucionId'),
+    AutoRoute(
+        page: ClienteUltimosPreciosRoute.page,
+        path: '/cliente/:id/ultimos-precios'),
+    AutoRoute(page: PedidoVentaListRoute.page, path: '/pedido'),
+    AutoRoute(page: PedidoVentaDetalleRoute.page, path: '/pedido/:id'),
+    AutoRoute(
+        page: PedidoVentaEditRoute.page,
+        path: '/pedido/edit',
+        fullscreenDialog: true),
+    AutoRoute(
+        page: SeleccionarCantidadRoute.page,
+        path: '/pedido/edit/seleccionar_cantidad'),
+    AutoRoute(page: ArticuloListaRoute.page, path: '/articulo'),
+    AutoRoute(page: ArticuloDetalleRoute.page, path: '/articulo/:id'),
+    AutoRoute(
+        page: ArticuloPedidoVentaRoute.page,
+        path: '/articulo/:id/pedido-venta'),
+    AutoRoute(
+        page: ArticuloUltimosPreciosRoute.page,
+        path: '/articulo/:id/ultimos-precios'),
+    AutoRoute(
+        page: ArticuloComponenteRoute.page, path: '/articulo/:id/componentes'),
+    AutoRoute(
+        page: ArticuloGrupoNetoRoute.page, path: '/articulo/:id/grupos-netos'),
+    AutoRoute(
+        page: ArticuloPrecioTarifaRoute.page,
+        path: '/articulo/:id/precio-tarifa'),
+    AutoRoute(
+        page: ArticuloRecambioRoute.page, path: '/articulo/:id/recambios'),
+    AutoRoute(
+        page: ArticuloSustitutivoRoute.page,
+        path: '/articulo/:id/sustitutivos'),
+    AutoRoute(
+        page: ArticuloVentasMesRoute.page, path: '/articulo/:id/ventas-mes'),
+    AutoRoute(
+        page: ArticuloVentasClienteRoute.page,
+        path: '/articulo/:id/ventas-cliente'),
+    AutoRoute(
+        page: ArticuloDocumentoRoute.page, path: '/articulo/:id/documentos'),
+    AutoRoute(page: VisitaListaRoute.page, path: '/visita'),
+    AutoRoute(page: VisitaDetalleRoute.page, path: '/visita/:id'),
+    AutoRoute(page: VisitaEditRoute.page, path: '/visita/edit'),
+    AutoRoute(page: CatalogoListaRoute.page, path: '/catalogo'),
+    AutoRoute(
+        page: CatalogoPdfViewerRoute.page,
+        path: '/catalogo/viewer',
+        fullscreenDialog: true),
+    AutoRoute(page: SettingsRoute.page, path: '/settings'),
+  ];
 }
 
 // class RouteGuard extends AutoRedirectGuard {

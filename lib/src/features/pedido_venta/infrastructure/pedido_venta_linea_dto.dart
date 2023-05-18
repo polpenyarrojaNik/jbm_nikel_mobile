@@ -15,23 +15,38 @@ class PedidoVentaLineaDTO
     implements Insertable<PedidoVentaLineaDTO> {
   const PedidoVentaLineaDTO._();
   const factory PedidoVentaLineaDTO({
-    @JsonKey(name: 'EMPRESA_ID') required String empresaId,
-    @JsonKey(name: 'PEDIDO_ID') required String pedidoId,
-    @JsonKey(name: 'PEDIDO_LINEA_ID') required String pedidoVentaLineaId,
-    @JsonKey(name: 'ARTICULO_ID') required String articuloId,
-    @JsonKey(name: 'ARTICULO_DESCRIPCION') required String articuloDescription,
-    @JsonKey(name: 'CANTIDAD') required int cantidad,
-    @JsonKey(name: 'PRECIO_DIVISA') required double precioDivisa,
-    @JsonKey(name: 'TIPO_PRECIO') required int tipoPrecio,
-    @JsonKey(name: 'DESCUENTO1') required double descuento1,
-    @JsonKey(name: 'DESCUENTO2') required double descuento2,
-    @JsonKey(name: 'DESCUENTO3') required double descuento3,
+    @JsonKey(name: 'EMPRESA_ID')
+        required String empresaId,
+    @JsonKey(name: 'PEDIDO_ID')
+        required String pedidoId,
+    @JsonKey(name: 'PEDIDO_LINEA_ID')
+        required String pedidoVentaLineaId,
+    @JsonKey(name: 'ARTICULO_ID')
+        required String articuloId,
+    @JsonKey(name: 'ARTICULO_DESCRIPCION')
+        required String articuloDescription,
+    @JsonKey(name: 'CANTIDAD')
+        required int cantidad,
+    @JsonKey(name: 'PRECIO_DIVISA')
+        required double precioDivisa,
+    @JsonKey(name: 'TIPO_PRECIO')
+        required int tipoPrecio,
+    @JsonKey(name: 'DESCUENTO1')
+        required double descuento1,
+    @JsonKey(name: 'DESCUENTO2')
+        required double descuento2,
+    @JsonKey(name: 'DESCUENTO3')
+        required double descuento3,
     @JsonKey(name: 'PEDIDO_LINEA_ID_COMPONENTE')
         String? pedidoLineaIdComponente,
-    @JsonKey(name: 'TOTAL_LINEA') double? importeLinea,
-    @JsonKey(name: 'CANTIDAD_SERVIDA') required int cantidadServida,
-    @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') required String deleted,
+    @JsonKey(name: 'TOTAL_LINEA')
+        double? importeLinea,
+    @JsonKey(name: 'CANTIDAD_SERVIDA')
+        required int cantidadServida,
+    @JsonKey(name: 'LAST_UPDATED')
+        required DateTime lastUpdated,
+    @JsonKey(name: 'DELETED')
+        required String deleted,
   }) = _PedidoVentaLineaDTO;
 
   factory PedidoVentaLineaDTO.fromJson(Map<String, dynamic> json) =>

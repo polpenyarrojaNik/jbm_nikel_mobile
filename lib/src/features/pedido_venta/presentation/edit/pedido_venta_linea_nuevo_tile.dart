@@ -56,8 +56,15 @@ class PedidoVentaLineaNuevoTile extends ConsumerWidget {
                             ArticuloDetalleRoute(
                                 articuloId: pedidoVentaLinea.articuloId),
                           ),
-                          child: Text(pedidoVentaLinea.articuloId,
-                              style: Theme.of(context).textTheme.titleSmall),
+                          child: Text(
+                            pedidoVentaLinea.articuloId,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleSmall
+                                ?.copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.primary),
+                          ),
                         ),
                         Row(
                           children: [

@@ -18,19 +18,31 @@ class ClientePagoPendienteDTO
     implements Insertable<ClientePagoPendienteDTO> {
   const ClientePagoPendienteDTO._();
   const factory ClientePagoPendienteDTO({
-    @JsonKey(name: 'CLIENTE_ID') required String clienteId,
-    @JsonKey(name: 'EFECTO_ID') required String efectoId,
-    @JsonKey(name: 'FACTURA_ID') String? facutaId,
-    @JsonKey(name: 'FECHA_FACUTRA') DateTime? fechaFactura,
-    @JsonKey(name: 'FECHA_VENCIMIENTO') DateTime? fechaExpiracion,
-    @JsonKey(name: 'METODO_COBRO_ID') String? metodoDeCobroId,
-    @JsonKey(name: 'ESTADO_COBRO_ID') String? estadoCobroId,
-    @JsonKey(name: 'IMPORTE') double? importe,
+    @JsonKey(name: 'CLIENTE_ID')
+        required String clienteId,
+    @JsonKey(name: 'EFECTO_ID')
+        required String efectoId,
+    @JsonKey(name: 'FACTURA_ID')
+        String? facutaId,
+    @JsonKey(name: 'FECHA_FACUTRA')
+        DateTime? fechaFactura,
+    @JsonKey(name: 'FECHA_VENCIMIENTO')
+        DateTime? fechaExpiracion,
+    @JsonKey(name: 'METODO_COBRO_ID')
+        String? metodoDeCobroId,
+    @JsonKey(name: 'ESTADO_COBRO_ID')
+        String? estadoCobroId,
+    @JsonKey(name: 'IMPORTE')
+        double? importe,
     @JsonKey(name: 'FECHA_VENCIMIENTO_INICIAL')
         DateTime? fechaExpiracionInicial,
-    @JsonKey(name: 'VENCIDO_JBM') String? vencidoJBM,
-    @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') @Default('N') String deleted,
+    @JsonKey(name: 'VENCIDO_JBM')
+        String? vencidoJBM,
+    @JsonKey(name: 'LAST_UPDATED')
+        required DateTime lastUpdated,
+    @JsonKey(name: 'DELETED')
+    @Default('N')
+        String deleted,
   }) = _ClientePagoPendienteDTO;
 
   factory ClientePagoPendienteDTO.fromJson(Map<String, dynamic> json) =>

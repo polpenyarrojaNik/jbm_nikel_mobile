@@ -27,6 +27,7 @@ import '../../domain/visita_id_param.dart';
 import '../../infrastructure/visita_repository.dart';
 import '../index/visita_search_controller.dart';
 
+@RoutePage()
 class VisitaEditPage extends ConsumerStatefulWidget {
   VisitaEditPage(
       {super.key, String? id, bool? isNew, this.createVisitaFromClienteId})

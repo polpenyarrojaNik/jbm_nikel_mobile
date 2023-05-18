@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -15,6 +16,7 @@ import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/cliente_ventas_mes.dart';
 import '../../infrastructure/cliente_repository.dart';
 
+@RoutePage()
 class ClienteVentasMesPage extends ConsumerWidget {
   const ClienteVentasMesPage(
       {super.key, required this.clienteId, required this.nombreCliente});

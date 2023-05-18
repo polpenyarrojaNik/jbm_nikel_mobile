@@ -20,6 +20,7 @@ import '../../../pedido_venta/infrastructure/pedido_venta_repository.dart';
 import '../../../pedido_venta/presentation/edit/ask_pop_alert_dialog.dart';
 import '../../infrastructure/cliente_repository.dart';
 
+@RoutePage()
 class ClienteDetallePage extends ConsumerWidget {
   const ClienteDetallePage({super.key, required this.clienteId});
 

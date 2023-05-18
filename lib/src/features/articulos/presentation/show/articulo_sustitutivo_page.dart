@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -10,6 +11,7 @@ import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/articulo_sustitutivo.dart';
 import '../../infrastructure/articulo_repository.dart';
 
+@RoutePage()
 class ArticuloSustitutivoPage extends ConsumerWidget {
   const ArticuloSustitutivoPage(
       {super.key, required this.articuloId, required this.description});

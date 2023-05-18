@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -11,6 +12,7 @@ import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/cliente_precio_neto.dart';
 import '../../infrastructure/cliente_repository.dart';
 
+@RoutePage()
 class ClientePrecioNetoPage extends ConsumerWidget {
   const ClientePrecioNetoPage(
       {super.key, required this.clienteId, required this.nombreCliente});

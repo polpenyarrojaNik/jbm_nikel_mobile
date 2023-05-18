@@ -26,6 +26,7 @@ import '../../domain/pedido_venta_linea_ultimos_precios_param.dart';
 import '../../domain/precio.dart';
 import '../../domain/seleccionar_cantidad_param.dart';
 
+@RoutePage()
 class SeleccionarCantidadPage extends ConsumerStatefulWidget {
   const SeleccionarCantidadPage({
     super.key,

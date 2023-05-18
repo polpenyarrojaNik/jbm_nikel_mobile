@@ -20,6 +20,7 @@ import '../../../pedido_venta/domain/pedido_local_param.dart';
 import '../../../pedido_venta/infrastructure/pedido_venta_repository.dart';
 import '../../infrastructure/articulo_repository.dart';
 
+@RoutePage()
 class ArticuloDetallePage extends ConsumerWidget {
   const ArticuloDetallePage({super.key, required this.articuloId});
 

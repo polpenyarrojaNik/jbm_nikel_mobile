@@ -18,6 +18,7 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import '../../../sync/application/sync_notifier_provider.dart';
 import '../../infrastructure/visita_repository.dart';
 
+@RoutePage()
 class VisitaListaPage extends ConsumerStatefulWidget {
   const VisitaListaPage({super.key});
 

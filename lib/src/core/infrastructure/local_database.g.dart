@@ -443,6 +443,7 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
   final Value<String> enviada;
   final Value<String> tratada;
   final Value<String?> errorSyncMessage;
+  final Value<int> rowid;
   const VisitaLocalTableCompanion({
     this.visitaAppId = const Value.absent(),
     this.clienteId = const Value.absent(),
@@ -468,6 +469,7 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
     this.enviada = const Value.absent(),
     this.tratada = const Value.absent(),
     this.errorSyncMessage = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   VisitaLocalTableCompanion.insert({
     required String visitaAppId,
@@ -494,6 +496,7 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
     this.enviada = const Value.absent(),
     this.tratada = const Value.absent(),
     this.errorSyncMessage = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : visitaAppId = Value(visitaAppId),
         isClienteProvisional = Value(isClienteProvisional),
         fecha = Value(fecha),
@@ -526,6 +529,7 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
     Expression<String>? enviada,
     Expression<String>? tratada,
     Expression<String>? errorSyncMessage,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (visitaAppId != null) 'COD_VISITA_APP': visitaAppId,
@@ -563,6 +567,7 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
       if (enviada != null) 'ENVIADA': enviada,
       if (tratada != null) 'TRATADA': tratada,
       if (errorSyncMessage != null) 'ERROR_SYNC': errorSyncMessage,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -590,7 +595,8 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
       Value<double>? longitud,
       Value<String>? enviada,
       Value<String>? tratada,
-      Value<String?>? errorSyncMessage}) {
+      Value<String?>? errorSyncMessage,
+      Value<int>? rowid}) {
     return VisitaLocalTableCompanion(
       visitaAppId: visitaAppId ?? this.visitaAppId,
       clienteId: clienteId ?? this.clienteId,
@@ -626,6 +632,7 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
       enviada: enviada ?? this.enviada,
       tratada: tratada ?? this.tratada,
       errorSyncMessage: errorSyncMessage ?? this.errorSyncMessage,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -715,6 +722,9 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
     if (errorSyncMessage.present) {
       map['ERROR_SYNC'] = Variable<String>(errorSyncMessage.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -748,7 +758,8 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
           ..write('longitud: $longitud, ')
           ..write('enviada: $enviada, ')
           ..write('tratada: $tratada, ')
-          ..write('errorSyncMessage: $errorSyncMessage')
+          ..write('errorSyncMessage: $errorSyncMessage, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -1060,6 +1071,7 @@ class PedidoVentaLineaLocalTableCompanion
   final Value<String> stockDisponibleSN;
   final Value<DateTime?> fechaDisponible;
   final Value<double> iva;
+  final Value<int> rowid;
   const PedidoVentaLineaLocalTableCompanion({
     this.pedidoVentaAppId = const Value.absent(),
     this.pedidoId = const Value.absent(),
@@ -1077,6 +1089,7 @@ class PedidoVentaLineaLocalTableCompanion
     this.stockDisponibleSN = const Value.absent(),
     this.fechaDisponible = const Value.absent(),
     this.iva = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   PedidoVentaLineaLocalTableCompanion.insert({
     required String pedidoVentaAppId,
@@ -1095,6 +1108,7 @@ class PedidoVentaLineaLocalTableCompanion
     required String stockDisponibleSN,
     this.fechaDisponible = const Value.absent(),
     required double iva,
+    this.rowid = const Value.absent(),
   })  : pedidoVentaAppId = Value(pedidoVentaAppId),
         pedidoVentaLineaAppId = Value(pedidoVentaLineaAppId),
         articuloId = Value(articuloId),
@@ -1125,6 +1139,7 @@ class PedidoVentaLineaLocalTableCompanion
     Expression<String>? stockDisponibleSN,
     Expression<DateTime>? fechaDisponible,
     Expression<double>? iva,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (pedidoVentaAppId != null) 'PEDIDO_APP_ID': pedidoVentaAppId,
@@ -1143,6 +1158,7 @@ class PedidoVentaLineaLocalTableCompanion
       if (stockDisponibleSN != null) 'STOCK_DISPONIBLE_SN': stockDisponibleSN,
       if (fechaDisponible != null) 'F_DISPONIBLE': fechaDisponible,
       if (iva != null) 'IVA': iva,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -1162,7 +1178,8 @@ class PedidoVentaLineaLocalTableCompanion
       Value<double>? descuentoProntoPago,
       Value<String>? stockDisponibleSN,
       Value<DateTime?>? fechaDisponible,
-      Value<double>? iva}) {
+      Value<double>? iva,
+      Value<int>? rowid}) {
     return PedidoVentaLineaLocalTableCompanion(
       pedidoVentaAppId: pedidoVentaAppId ?? this.pedidoVentaAppId,
       pedidoId: pedidoId ?? this.pedidoId,
@@ -1181,6 +1198,7 @@ class PedidoVentaLineaLocalTableCompanion
       stockDisponibleSN: stockDisponibleSN ?? this.stockDisponibleSN,
       fechaDisponible: fechaDisponible ?? this.fechaDisponible,
       iva: iva ?? this.iva,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -1235,6 +1253,9 @@ class PedidoVentaLineaLocalTableCompanion
     if (iva.present) {
       map['IVA'] = Variable<double>(iva.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -1256,7 +1277,8 @@ class PedidoVentaLineaLocalTableCompanion
           ..write('descuentoProntoPago: $descuentoProntoPago, ')
           ..write('stockDisponibleSN: $stockDisponibleSN, ')
           ..write('fechaDisponible: $fechaDisponible, ')
-          ..write('iva: $iva')
+          ..write('iva: $iva, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -1690,6 +1712,7 @@ class PedidoVentaLocalTableCompanion
   final Value<String> tratada;
   final Value<String> borrador;
   final Value<String?> errorSyncMessage;
+  final Value<int> rowid;
   const PedidoVentaLocalTableCompanion({
     this.usuarioId = const Value.absent(),
     this.pedidoVentaAppId = const Value.absent(),
@@ -1716,6 +1739,7 @@ class PedidoVentaLocalTableCompanion
     this.tratada = const Value.absent(),
     this.borrador = const Value.absent(),
     this.errorSyncMessage = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   PedidoVentaLocalTableCompanion.insert({
     this.usuarioId = const Value.absent(),
@@ -1743,6 +1767,7 @@ class PedidoVentaLocalTableCompanion
     this.tratada = const Value.absent(),
     this.borrador = const Value.absent(),
     this.errorSyncMessage = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : pedidoVentaAppId = Value(pedidoVentaAppId),
         fechaAlta = Value(fechaAlta),
         clienteId = Value(clienteId),
@@ -1776,6 +1801,7 @@ class PedidoVentaLocalTableCompanion
     Expression<String>? tratada,
     Expression<String>? borrador,
     Expression<String>? errorSyncMessage,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (usuarioId != null) 'USUARIO_ID': usuarioId,
@@ -1803,6 +1829,7 @@ class PedidoVentaLocalTableCompanion
       if (tratada != null) 'TRATADA': tratada,
       if (borrador != null) 'BORRADOR': borrador,
       if (errorSyncMessage != null) 'ERROR_SYNC': errorSyncMessage,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -1831,7 +1858,8 @@ class PedidoVentaLocalTableCompanion
       Value<String>? enviada,
       Value<String>? tratada,
       Value<String>? borrador,
-      Value<String?>? errorSyncMessage}) {
+      Value<String?>? errorSyncMessage,
+      Value<int>? rowid}) {
     return PedidoVentaLocalTableCompanion(
       usuarioId: usuarioId ?? this.usuarioId,
       pedidoVentaAppId: pedidoVentaAppId ?? this.pedidoVentaAppId,
@@ -1858,6 +1886,7 @@ class PedidoVentaLocalTableCompanion
       tratada: tratada ?? this.tratada,
       borrador: borrador ?? this.borrador,
       errorSyncMessage: errorSyncMessage ?? this.errorSyncMessage,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -1939,6 +1968,9 @@ class PedidoVentaLocalTableCompanion
     if (errorSyncMessage.present) {
       map['ERROR_SYNC'] = Variable<String>(errorSyncMessage.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -1969,7 +2001,8 @@ class PedidoVentaLocalTableCompanion
           ..write('enviada: $enviada, ')
           ..write('tratada: $tratada, ')
           ..write('borrador: $borrador, ')
-          ..write('errorSyncMessage: $errorSyncMessage')
+          ..write('errorSyncMessage: $errorSyncMessage, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -2949,6 +2982,7 @@ class ClienteContactoImpTableCompanion
   final Value<String?> email;
   final Value<String> enviado;
   final Value<String> borrar;
+  final Value<int> rowid;
   const ClienteContactoImpTableCompanion({
     this.id = const Value.absent(),
     this.fecha = const Value.absent(),
@@ -2964,6 +2998,7 @@ class ClienteContactoImpTableCompanion
     this.email = const Value.absent(),
     this.enviado = const Value.absent(),
     this.borrar = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   ClienteContactoImpTableCompanion.insert({
     required String id,
@@ -2980,6 +3015,7 @@ class ClienteContactoImpTableCompanion
     this.email = const Value.absent(),
     this.enviado = const Value.absent(),
     this.borrar = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : id = Value(id),
         fecha = Value(fecha),
         usuarioId = Value(usuarioId),
@@ -2999,6 +3035,7 @@ class ClienteContactoImpTableCompanion
     Expression<String>? email,
     Expression<String>? enviado,
     Expression<String>? borrar,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (id != null) 'GUID': id,
@@ -3015,6 +3052,7 @@ class ClienteContactoImpTableCompanion
       if (email != null) 'EMAIL': email,
       if (enviado != null) 'ENVIADO': enviado,
       if (borrar != null) 'BORRAR': borrar,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -3032,7 +3070,8 @@ class ClienteContactoImpTableCompanion
       Value<String?>? telefono2,
       Value<String?>? email,
       Value<String>? enviado,
-      Value<String>? borrar}) {
+      Value<String>? borrar,
+      Value<int>? rowid}) {
     return ClienteContactoImpTableCompanion(
       id: id ?? this.id,
       fecha: fecha ?? this.fecha,
@@ -3048,6 +3087,7 @@ class ClienteContactoImpTableCompanion
       email: email ?? this.email,
       enviado: enviado ?? this.enviado,
       borrar: borrar ?? this.borrar,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -3096,6 +3136,9 @@ class ClienteContactoImpTableCompanion
     if (borrar.present) {
       map['BORRAR'] = Variable<String>(borrar.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -3115,7 +3158,8 @@ class ClienteContactoImpTableCompanion
           ..write('telefono2: $telefono2, ')
           ..write('email: $email, ')
           ..write('enviado: $enviado, ')
-          ..write('borrar: $borrar')
+          ..write('borrar: $borrar, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -3370,6 +3414,7 @@ class ClienteDireccionImpTableCompanion
   final Value<String?> paisId;
   final Value<String> enviada;
   final Value<String> borrar;
+  final Value<int> rowid;
   const ClienteDireccionImpTableCompanion({
     this.id = const Value.absent(),
     this.fecha = const Value.absent(),
@@ -3385,6 +3430,7 @@ class ClienteDireccionImpTableCompanion
     this.paisId = const Value.absent(),
     this.enviada = const Value.absent(),
     this.borrar = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   ClienteDireccionImpTableCompanion.insert({
     required String id,
@@ -3401,6 +3447,7 @@ class ClienteDireccionImpTableCompanion
     this.paisId = const Value.absent(),
     this.enviada = const Value.absent(),
     this.borrar = const Value.absent(),
+    this.rowid = const Value.absent(),
   })  : id = Value(id),
         fecha = Value(fecha),
         usuarioId = Value(usuarioId),
@@ -3420,6 +3467,7 @@ class ClienteDireccionImpTableCompanion
     Expression<String>? paisId,
     Expression<String>? enviada,
     Expression<String>? borrar,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (id != null) 'GUID': id,
@@ -3436,6 +3484,7 @@ class ClienteDireccionImpTableCompanion
       if (paisId != null) 'PAIS_ID': paisId,
       if (enviada != null) 'ENVIADA': enviada,
       if (borrar != null) 'BORRAR': borrar,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -3453,7 +3502,8 @@ class ClienteDireccionImpTableCompanion
       Value<String?>? provincia,
       Value<String?>? paisId,
       Value<String>? enviada,
-      Value<String>? borrar}) {
+      Value<String>? borrar,
+      Value<int>? rowid}) {
     return ClienteDireccionImpTableCompanion(
       id: id ?? this.id,
       fecha: fecha ?? this.fecha,
@@ -3469,6 +3519,7 @@ class ClienteDireccionImpTableCompanion
       paisId: paisId ?? this.paisId,
       enviada: enviada ?? this.enviada,
       borrar: borrar ?? this.borrar,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -3517,6 +3568,9 @@ class ClienteDireccionImpTableCompanion
     if (borrar.present) {
       map['BORRAR'] = Variable<String>(borrar.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -3536,7 +3590,8 @@ class ClienteDireccionImpTableCompanion
           ..write('provincia: $provincia, ')
           ..write('paisId: $paisId, ')
           ..write('enviada: $enviada, ')
-          ..write('borrar: $borrar')
+          ..write('borrar: $borrar, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }

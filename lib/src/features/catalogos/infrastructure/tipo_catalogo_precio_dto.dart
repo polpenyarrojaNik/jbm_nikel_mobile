@@ -14,16 +14,26 @@ class TipoPrecioCatalogoDTO with _$TipoPrecioCatalogoDTO {
   const factory TipoPrecioCatalogoDTO({
     @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID')
         required String tipoPrecioCatalogoId,
-    @JsonKey(name: 'DESCRIPCION_ES') required String descripcionES,
-    @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
-    @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
-    @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
-    @JsonKey(name: 'DESCRIPCION_CA') String? descripcionCA,
-    @JsonKey(name: 'DESCRIPCION_GB') String? descripcionGB,
-    @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
-    @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
-    @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
-    @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
+    @JsonKey(name: 'DESCRIPCION_ES')
+        required String descripcionES,
+    @JsonKey(name: 'DESCRIPCION_EN')
+        String? descripcionEN,
+    @JsonKey(name: 'DESCRIPCION_FR')
+        String? descripcionFR,
+    @JsonKey(name: 'DESCRIPCION_DE')
+        String? descripcionDE,
+    @JsonKey(name: 'DESCRIPCION_CA')
+        String? descripcionCA,
+    @JsonKey(name: 'DESCRIPCION_GB')
+        String? descripcionGB,
+    @JsonKey(name: 'DESCRIPCION_HU')
+        String? descripcionHU,
+    @JsonKey(name: 'DESCRIPCION_IT')
+        String? descripcionIT,
+    @JsonKey(name: 'DESCRIPCION_NL')
+        String? descripcionNL,
+    @JsonKey(name: 'DESCRIPCION_PL')
+        String? descripcionPL,
   }) = _TipoCatalogoDTO;
 
   factory TipoPrecioCatalogoDTO.fromJson(Map<String, dynamic> json) =>

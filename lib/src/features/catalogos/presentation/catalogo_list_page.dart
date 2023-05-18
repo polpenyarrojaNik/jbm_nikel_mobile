@@ -17,6 +17,7 @@ import '../../../core/routing/app_auto_router.dart';
 import 'catalogo_adjunto_controller.dart';
 import 'catalogo_search_controller.dart';
 
+@RoutePage()
 class CatalogoListaPage extends ConsumerStatefulWidget {
   const CatalogoListaPage({super.key});
 

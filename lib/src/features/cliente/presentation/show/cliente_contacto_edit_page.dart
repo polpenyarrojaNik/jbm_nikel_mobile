@@ -22,6 +22,7 @@ import '../../domain/cliente_imp_param.dart';
 import 'cliente_contacto_edit_page_controller.dart';
 import 'cliente_contacto_imp_list_tile.dart';
 
+@RoutePage()
 class ClienteContactoEditPage extends ConsumerWidget {
   ClienteContactoEditPage({super.key, required this.clienteImpParam});
 

@@ -14,6 +14,7 @@ import '../../domain/visita.dart';
 import '../../domain/visita_id_param.dart';
 import '../../infrastructure/visita_repository.dart';
 
+@RoutePage()
 class VisitaDetallePage extends ConsumerWidget {
   const VisitaDetallePage({super.key, required this.visitaIdIsLocalParam});
 

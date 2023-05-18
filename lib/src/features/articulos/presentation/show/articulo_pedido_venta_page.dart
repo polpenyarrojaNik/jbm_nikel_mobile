@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
@@ -11,6 +12,7 @@ import '../../../../core/presentation/common_widgets/header_datos_relacionados.d
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../domain/articulo_pedido_venta_linea.dart';
 
+@RoutePage()
 class ArticuloPedidoVentaPage extends ConsumerWidget {
   const ArticuloPedidoVentaPage(
       {super.key, required this.articuloId, required this.description});

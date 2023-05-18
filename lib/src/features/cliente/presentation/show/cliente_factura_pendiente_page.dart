@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_repository.dart';
@@ -10,6 +11,7 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/cliente_pago_pendiente.dart';
 
+@RoutePage()
 class ClientePagoPendientePage extends ConsumerWidget {
   const ClientePagoPendientePage(
       {super.key, required this.clienteId, required this.nombreCliente});

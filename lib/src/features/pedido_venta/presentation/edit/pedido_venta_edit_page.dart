@@ -43,6 +43,7 @@ import 'ask_pop_alert_dialog.dart';
 import 'crear_csv_controller.dart';
 import 'icon_stepper.dart';
 
+@RoutePage()
 class PedidoVentaEditPage extends ConsumerStatefulWidget {
   PedidoVentaEditPage(
       {super.key,

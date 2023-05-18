@@ -19,6 +19,7 @@ import '../../domain/articulo.dart';
 import 'articulo_lista_tile.dart';
 import 'articulo_search_controller.dart';
 
+@RoutePage()
 class ArticuloListaPage extends ConsumerStatefulWidget {
   const ArticuloListaPage({super.key, required this.isSearchArticuloForForm});
 

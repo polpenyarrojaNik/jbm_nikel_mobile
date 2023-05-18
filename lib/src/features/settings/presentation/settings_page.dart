@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -21,6 +22,7 @@ import '../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import 'delete_database_controller.dart';
 
+@RoutePage()
 class SettingsPage extends ConsumerWidget {
   const SettingsPage({super.key});
 

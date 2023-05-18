@@ -23,6 +23,7 @@ import '../../domain/pedido_venta.dart';
 import '../../infrastructure/pedido_venta_repository.dart';
 import 'pedido_venta_adjunto_controller.dart';
 
+@RoutePage()
 class PedidoVentaDetallePage extends ConsumerWidget {
   const PedidoVentaDetallePage({super.key, required this.pedidoLocalParam});
 

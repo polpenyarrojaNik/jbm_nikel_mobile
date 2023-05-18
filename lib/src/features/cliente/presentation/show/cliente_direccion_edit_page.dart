@@ -24,6 +24,7 @@ import '../../infrastructure/cliente_repository.dart';
 import 'cliente_direccion_edit_page_controller.dart';
 import 'cliente_direccion_list_imp_tile.dart';
 
+@RoutePage()
 class ClienteDireccionEditPage extends ConsumerStatefulWidget {
   const ClienteDireccionEditPage({super.key, required this.clienteImpParam});
 

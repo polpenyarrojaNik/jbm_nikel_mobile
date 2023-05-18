@@ -15,6 +15,7 @@ import '../../../core/exceptions/app_exception.dart';
 import '../../../core/infrastructure/log_repository.dart';
 import '../../../core/presentation/theme/app_sizes.dart';
 
+@RoutePage()
 class SplashPage extends ConsumerStatefulWidget {
   const SplashPage({super.key});
 

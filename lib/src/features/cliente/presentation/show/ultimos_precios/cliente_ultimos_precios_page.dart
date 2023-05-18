@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
@@ -15,6 +16,7 @@ import '../../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../estadisticas/domain/estadisticas_ultimos_precios.dart';
 import '../../../infrastructure/cliente_repository.dart';
 
+@RoutePage()
 class ClienteUltimosPreciosPage extends ConsumerWidget {
   ClienteUltimosPreciosPage(
       {super.key, required this.clienteId, required this.nombreCliente});
