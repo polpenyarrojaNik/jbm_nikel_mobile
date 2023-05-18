@@ -24,7 +24,7 @@ class ClienteDevolucionListTile extends StatelessWidget {
           padding: const EdgeInsets.only(right: 16),
           color: Colors.transparent,
           child: SizedBox(
-            height: 100,
+            height: 110,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [

@@ -58,7 +58,4 @@ class ClienteDevolucionPage extends ConsumerWidget {
       ),
     );
   }
-
-  void navigateToDevolucionDetalle(
-      {required BuildContext context, String? pedidoVentaId}) {}
 }
