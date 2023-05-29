@@ -335,5 +335,12 @@
 	"cliente_show_clienteDevolucion_destino": "Destinazione",
 	"cliente_show_clienteDevolucion_detalleDevolucion": "Dettaglio reso",
 	"cliente_show_clienteDevolucion_kilosDevolucion": "Ritorno chili",
-	"cliente_show_clienteDevolucion_titulo": "Ritorna"
+	"cliente_show_clienteDevolucion_titulo": "Ritorna",
+	"paises_search_title": "",
+	"search": "Cerca ...",
+	"visitas_edit_visitaEditar_codigoPostal": "",
+	"visitas_edit_visitaEditar_direccion1": "",
+	"visitas_edit_visitaEditar_direccion2": "",
+	"visitas_edit_visitaEditar_pais": "",
+	"visitas_edit_visitaEditar_provincia": ""
 }

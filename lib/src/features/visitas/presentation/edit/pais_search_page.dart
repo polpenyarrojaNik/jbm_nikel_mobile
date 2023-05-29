@@ -20,8 +20,8 @@ class PaisSearchDialog extends ConsumerWidget {
     return AlertDialog(
       title: CustomSearchAppBar(
         isSearchingFirst: true,
-        title: S.of(context).paises_search_title,
-        searchTitle: S.of(context).paises_search_title,
+        title: S.of(context).search,
+        searchTitle: S.of(context).search,
         onChanged: (searchText) => _debouncer.run(
           () => ref.read(paisesSearchQueryStateProvider.notifier).state =
               searchText,
@@ -33,7 +33,6 @@ class PaisSearchDialog extends ConsumerWidget {
         child: state.when(
           data: (paisList) => ListView.separated(
             shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (context, i) => GestureDetector(
               onTap: () => context.router.pop(
                 paisList[i],

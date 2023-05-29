@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_indicator_widget.dart';
-import 'package:jbm_nikel_mobile/src/features/visitas/presentation/edit/pais_search_page_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/presentation/edit/provincia_search_page_controller.dart';
 
 import '../../../../../generated/l10n.dart';
@@ -22,10 +21,10 @@ class ProvinciaSearchDialog extends ConsumerWidget {
     return AlertDialog(
       title: CustomSearchAppBar(
         isSearchingFirst: true,
-        title: S.of(context).paises_search_title,
-        searchTitle: S.of(context).paises_search_title,
+        title: S.of(context).search,
+        searchTitle: S.of(context).search,
         onChanged: (searchText) => _debouncer.run(
-          () => ref.read(paisesSearchQueryStateProvider.notifier).state =
+          () => ref.read(provinciasSearchQueryStateProvider.notifier).state =
               searchText,
         ),
       ),
@@ -35,7 +34,6 @@ class ProvinciaSearchDialog extends ConsumerWidget {
         child: state.when(
           data: (provinciaList) => ListView.separated(
             shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (context, i) => GestureDetector(
                 onTap: () => context.router.pop(provinciaList[i]),
                 child: Text(provinciaList[i].provincia ??
