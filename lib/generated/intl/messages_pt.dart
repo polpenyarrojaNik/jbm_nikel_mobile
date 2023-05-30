@@ -463,6 +463,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "haOcurridoUnError":
             MessageLookupByLibrary.simpleMessage("ocorreu um erro"),
         "no": MessageLookupByLibrary.simpleMessage("Não"),
+        "paises_search_title": MessageLookupByLibrary.simpleMessage(""),
         "pedido_borrador": MessageLookupByLibrary.simpleMessage("Rascunho"),
         "pedido_edit_askPopAlertDialog_seguroQuieresSales":
             MessageLookupByLibrary.simpleMessage(
@@ -582,6 +583,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Total linhas"),
         "pedido_show_pedidoVentaLineas_cantidadPendiente":
             MessageLookupByLibrary.simpleMessage("Quantidade pendente"),
+        "search": MessageLookupByLibrary.simpleMessage("Pesquisar ..."),
         "settings_cerrar_sesion":
             MessageLookupByLibrary.simpleMessage("Fechar Sessão"),
         "settings_creandoArchivo":
@@ -640,8 +642,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Cliente"),
         "visitas_edit_visitaEditar_clienteProvisional":
             MessageLookupByLibrary.simpleMessage("Cliente provisório"),
+        "visitas_edit_visitaEditar_codigoPostal":
+            MessageLookupByLibrary.simpleMessage(""),
         "visitas_edit_visitaEditar_contacto":
             MessageLookupByLibrary.simpleMessage("Contato"),
+        "visitas_edit_visitaEditar_direccion1":
+            MessageLookupByLibrary.simpleMessage(""),
+        "visitas_edit_visitaEditar_direccion2":
+            MessageLookupByLibrary.simpleMessage(""),
         "visitas_edit_visitaEditar_email":
             MessageLookupByLibrary.simpleMessage("Email"),
         "visitas_edit_visitaEditar_errorValidarFormulario":
@@ -653,8 +661,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Marcas da concorrência"),
         "visitas_edit_visitaEditar_nombre":
             MessageLookupByLibrary.simpleMessage("Nome"),
+        "visitas_edit_visitaEditar_pais":
+            MessageLookupByLibrary.simpleMessage(""),
         "visitas_edit_visitaEditar_poblacion":
             MessageLookupByLibrary.simpleMessage("Cidade"),
+        "visitas_edit_visitaEditar_provincia":
+            MessageLookupByLibrary.simpleMessage(""),
         "visitas_edit_visitaEditar_resumen":
             MessageLookupByLibrary.simpleMessage("Resume"),
         "visitas_edit_visitaEditar_saved":

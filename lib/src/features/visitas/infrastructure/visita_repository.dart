@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_single_quotes
+
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
@@ -625,10 +627,9 @@ class VisitaRepository {
           WHERE ${descripcionSegunLocale(searchText)}
           ORDER BY CASE
             WHEN  PAIS_ID = 'ES' THEN 0
-            WHEN  ${descripcionSegunLocale(searchText)} THEN 1
-            ELSE 2
+            ELSE ${orderyBySegunLocal()}
           END
-          , PAIS_ID
+          
 ''', readsFrom: {
       _remoteDb.paisTable,
     }).get();
@@ -713,17 +714,38 @@ class VisitaRepository {
       case 'es':
         return "DESCRIPCION_ES LIKE '%$searchText%'";
       case 'en':
-        return "DESCRIPCION_EN LIKE '%$searchText%'";
+        return "DESCRIPCION_EN LIKE '%$searchText%' OR DESCRIPCION_ES LIKE '%$searchText%'";
       case 'fr':
-        return "DESCRIPCION_FR LIKE '%$searchText%'";
+        return "DESCRIPCION_FR LIKE '%$searchText%' OR DESCRIPCION_ES LIKE '%$searchText%'";
       case 'de':
-        return "DESCRIPCION_EN LIKE '%$searchText%'";
+        return "DESCRIPCION_EN LIKE '%$searchText%' OR DESCRIPCION_ES LIKE '%$searchText%'";
 
       case 'it':
-        return "DESCRIPCION_IT LIKE '%$searchText%'";
+        return "DESCRIPCION_IT LIKE '%$searchText%' OR DESCRIPCION_ES LIKE '%$searchText%'";
 
       default:
         return "DESCRIPCION_ES LIKE '%$searchText%'";
+    }
+  }
+
+  String orderyBySegunLocal() {
+    final currentLocale = Intl.getCurrentLocale();
+
+    switch (currentLocale) {
+      case 'es':
+        return "DESCRIPCION_ES";
+      case 'en':
+        return "DESCRIPCION_ES";
+      case 'fr':
+        return "DESCRIPCION_ES";
+      case 'de':
+        return "DESCRIPCION_ES";
+
+      case 'it':
+        return "DESCRIPCION_ES";
+
+      default:
+        return "DESCRIPCION_ES";
     }
   }
 }
