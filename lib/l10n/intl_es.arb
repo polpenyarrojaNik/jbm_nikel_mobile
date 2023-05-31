@@ -333,14 +333,10 @@
 	"catalogos_index_tipoCatalogo": "Tipo de catálogo",
 	"catalogos_index_precio": "Precio",
 	"catalogos_index_idioma": "Idioma",
-	"pedido_edit_pedidoEdit_fecha": "",
-	"pedido_index_provisional": "",
 	"visitas_edit_visitaEditar_validatorExistPhoneMessage": "Existe un cliente con este teléfono.\nEstás seguro que quieres guardar la visita de todos modos?",
 	"visitas_edit_visitaEditar_validatorExistEmailMessage": "Existe un cliente con este email.\nEstás seguro que quieres guardar la visita de todos modos?",
 	"yes": "Sí",
 	"no": "No",
-	"visitas_edit_visitaEditar_validatorExisitingEmail": "",
-	"visitas_edit_visitaEditar_validatorExisitingPhone": "",
 	"paises_search_title": "Buscar país...",
 	"search": "Buscar..."
 }

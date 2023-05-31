@@ -260,7 +260,6 @@
 	"pedido_edit_pedidoEdit_oferta": "Offer",
 	"pedido_edit_pedidoEdit_fechaValidez": "Validate date",
 	"pedido_edit_pedidoEdit_fechaValidezNoPuedeEstarVacia": "Validate date cannot be empty",
-	"pedido_edit_pedidoEdit_fecha": "Lines",
 	"pedido_edit_pedidoEdit_ultimoPrecioDeCompra": "Last purchase price",
 	"pedido_edit_lineaNuevoTile_precio": "Price:",
 	"pedido_edit_lineaNuevoTile_dto": "Disc.:",
@@ -336,11 +335,8 @@
 	"catalogos_index_precio": "Price",
 	"catalogos_index_idioma": "Language",
 	"catalogos_index_buscarCatalogo": "Search catalogs...",
-	"pedido_index_provisional": "",
 	"yes": "Yes",
 	"no": "No",
-	"visitas_edit_visitaEditar_validatorExisitingEmail": "",
-	"visitas_edit_visitaEditar_validatorExisitingPhone": "",
 	"paises_search_title": "Search country...",
 	"search": "Search..."
 }

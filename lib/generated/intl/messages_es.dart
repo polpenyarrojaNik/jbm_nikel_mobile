@@ -482,8 +482,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Direcciones envío"),
         "pedido_edit_pedidoEdit_editarPedido":
             MessageLookupByLibrary.simpleMessage("Editar pedido"),
-        "pedido_edit_pedidoEdit_fecha":
-            MessageLookupByLibrary.simpleMessage(""),
         "pedido_edit_pedidoEdit_fechaValidez":
             MessageLookupByLibrary.simpleMessage("Fecha de validez"),
         "pedido_edit_pedidoEdit_fechaValidezNoPuedeEstarVacia":
@@ -545,7 +543,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "pedido_index_filtrar": MessageLookupByLibrary.simpleMessage("Filtrar"),
         "pedido_index_filtros": MessageLookupByLibrary.simpleMessage("Filtros"),
         "pedido_index_offline": MessageLookupByLibrary.simpleMessage("Offline"),
-        "pedido_index_provisional": MessageLookupByLibrary.simpleMessage(""),
         "pedido_index_reset": MessageLookupByLibrary.simpleMessage("Reset"),
         "pedido_index_titulo": MessageLookupByLibrary.simpleMessage("Pedidos"),
         "pedido_noEnviado": MessageLookupByLibrary.simpleMessage("No enviado"),
@@ -673,10 +670,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Editar visita"),
         "visitas_edit_visitaEditar_titleNueva":
             MessageLookupByLibrary.simpleMessage("Nueva visita"),
-        "visitas_edit_visitaEditar_validatorExisitingEmail":
-            MessageLookupByLibrary.simpleMessage(""),
-        "visitas_edit_visitaEditar_validatorExisitingPhone":
-            MessageLookupByLibrary.simpleMessage(""),
         "visitas_edit_visitaEditar_validatorExistEmailMessage":
             MessageLookupByLibrary.simpleMessage(
                 "Existe un cliente con este email.\nEstás seguro que quieres guardar la visita de todos modos?"),

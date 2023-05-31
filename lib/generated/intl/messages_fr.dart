@@ -461,7 +461,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "haOcurridoUnError":
             MessageLookupByLibrary.simpleMessage("Une érreur est survenue"),
         "no": MessageLookupByLibrary.simpleMessage("Non"),
-        "paises_search_title": MessageLookupByLibrary.simpleMessage(""),
+        "paises_search_title":
+            MessageLookupByLibrary.simpleMessage("Rechercher un pays..."),
         "pedido_borrador": MessageLookupByLibrary.simpleMessage("Brouillon"),
         "pedido_edit_askPopAlertDialog_seguroQuieresSales":
             MessageLookupByLibrary.simpleMessage(
@@ -483,8 +484,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Adresses d\'envois"),
         "pedido_edit_pedidoEdit_editarPedido":
             MessageLookupByLibrary.simpleMessage("Éditer la comande"),
-        "pedido_edit_pedidoEdit_fecha":
-            MessageLookupByLibrary.simpleMessage(""),
         "pedido_edit_pedidoEdit_fechaValidez":
             MessageLookupByLibrary.simpleMessage("Date de validaté"),
         "pedido_edit_pedidoEdit_fechaValidezNoPuedeEstarVacia":
@@ -545,9 +544,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "pedido_index_estados": MessageLookupByLibrary.simpleMessage("États"),
         "pedido_index_filtrar": MessageLookupByLibrary.simpleMessage("Filtrer"),
         "pedido_index_filtros": MessageLookupByLibrary.simpleMessage("Filtres"),
-        "pedido_index_offline": MessageLookupByLibrary.simpleMessage(""),
-        "pedido_index_provisional":
-            MessageLookupByLibrary.simpleMessage("Offline"),
+        "pedido_index_offline": MessageLookupByLibrary.simpleMessage("Offline"),
         "pedido_index_reset":
             MessageLookupByLibrary.simpleMessage("Redémarrer"),
         "pedido_index_titulo":
@@ -644,13 +641,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "visitas_edit_visitaEditar_clienteProvisional":
             MessageLookupByLibrary.simpleMessage("Client provisoire"),
         "visitas_edit_visitaEditar_codigoPostal":
-            MessageLookupByLibrary.simpleMessage(""),
+            MessageLookupByLibrary.simpleMessage("Code postal"),
         "visitas_edit_visitaEditar_contacto":
             MessageLookupByLibrary.simpleMessage("Contact"),
         "visitas_edit_visitaEditar_direccion1":
-            MessageLookupByLibrary.simpleMessage(""),
+            MessageLookupByLibrary.simpleMessage("Direction 1"),
         "visitas_edit_visitaEditar_direccion2":
-            MessageLookupByLibrary.simpleMessage(""),
+            MessageLookupByLibrary.simpleMessage("Adresse 2 "),
         "visitas_edit_visitaEditar_email":
             MessageLookupByLibrary.simpleMessage("Email"),
         "visitas_edit_visitaEditar_errorValidarFormulario":
@@ -663,11 +660,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "visitas_edit_visitaEditar_nombre":
             MessageLookupByLibrary.simpleMessage("Nom"),
         "visitas_edit_visitaEditar_pais":
-            MessageLookupByLibrary.simpleMessage(""),
+            MessageLookupByLibrary.simpleMessage("Pays"),
         "visitas_edit_visitaEditar_poblacion":
             MessageLookupByLibrary.simpleMessage("Ville"),
         "visitas_edit_visitaEditar_provincia":
-            MessageLookupByLibrary.simpleMessage(""),
+            MessageLookupByLibrary.simpleMessage("Province"),
         "visitas_edit_visitaEditar_resumen":
             MessageLookupByLibrary.simpleMessage("Résumé"),
         "visitas_edit_visitaEditar_saved":
@@ -678,12 +675,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Éditer la visite"),
         "visitas_edit_visitaEditar_titleNueva":
             MessageLookupByLibrary.simpleMessage("Nouvelle visite"),
-        "visitas_edit_visitaEditar_validatorExisitingEmail":
-            MessageLookupByLibrary.simpleMessage(
-                "Il y a un client avec cet e-mail."),
-        "visitas_edit_visitaEditar_validatorExisitingPhone":
-            MessageLookupByLibrary.simpleMessage(
-                "Il y a un client avec ce téléphone."),
         "visitas_edit_visitaEditar_validatorExistEmailMessage":
             MessageLookupByLibrary.simpleMessage(
                 "Il y a un client avec cet e-mail.\nVoulez-vous vraiment enregistrer la visite malgré tout ?"),

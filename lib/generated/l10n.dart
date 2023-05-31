@@ -2694,16 +2694,6 @@ class S {
     );
   }
 
-  /// `Lines`
-  String get pedido_edit_pedidoEdit_fecha {
-    return Intl.message(
-      'Lines',
-      name: 'pedido_edit_pedidoEdit_fecha',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Last purchase price`
   String get pedido_edit_pedidoEdit_ultimoPrecioDeCompra {
     return Intl.message(
@@ -3454,16 +3444,6 @@ class S {
     );
   }
 
-  /// ``
-  String get pedido_index_provisional {
-    return Intl.message(
-      '',
-      name: 'pedido_index_provisional',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Yes`
   String get yes {
     return Intl.message(
@@ -3479,26 +3459,6 @@ class S {
     return Intl.message(
       'No',
       name: 'no',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// ``
-  String get visitas_edit_visitaEditar_validatorExisitingEmail {
-    return Intl.message(
-      '',
-      name: 'visitas_edit_visitaEditar_validatorExisitingEmail',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// ``
-  String get visitas_edit_visitaEditar_validatorExisitingPhone {
-    return Intl.message(
-      '',
-      name: 'visitas_edit_visitaEditar_validatorExisitingPhone',
       desc: '',
       args: [],
     );
