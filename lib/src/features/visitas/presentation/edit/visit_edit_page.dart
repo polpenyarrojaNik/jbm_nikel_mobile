@@ -598,11 +598,9 @@ class _ClienteProvisionalContainerState
               enabled: !widget.readOnly,
               readOnly: true,
               decoration: InputDecoration(
-                labelText:
-                    '${S.of(context).visitas_edit_visitaEditar_provincia} *',
+                labelText: S.of(context).visitas_edit_visitaEditar_provincia,
               ),
               validator: FormBuilderValidators.compose([
-                FormBuilderValidators.required(),
                 FormBuilderValidators.maxLength(60),
               ]),
               onTap: () => showProvinciasSearchDialog(
