@@ -443,13 +443,14 @@ class VisitaRepository {
       leftOuterJoin(
         _remoteDb.clienteUsuarioTable,
         _remoteDb.clienteUsuarioTable.clienteId
-            .equalsExp(_remoteDb.visitaTable.clienteId),
+                .equalsExp(_remoteDb.visitaTable.clienteId) &
+            _remoteDb.clienteUsuarioTable.usuarioId
+                .equalsExp(_remoteDb.visitaTable.numEmpl),
       )
     ]);
 
     query.where(_remoteDb.clienteUsuarioTable.usuarioId.equals(usuarioId) |
-        (_remoteDb.visitaTable.numEmpl.equals(usuarioId) &
-            _remoteDb.visitaTable.clienteId.isNull()));
+        _remoteDb.visitaTable.numEmpl.equals(usuarioId));
 
     if (searchText != '') {
       final busqueda = searchText.split(' ');
@@ -521,13 +522,14 @@ class VisitaRepository {
       leftOuterJoin(
         _remoteDb.clienteUsuarioTable,
         _remoteDb.clienteUsuarioTable.clienteId
-            .equalsExp(_remoteDb.visitaTable.clienteId),
-      )
+                .equalsExp(_remoteDb.visitaTable.clienteId) &
+            _remoteDb.clienteUsuarioTable.usuarioId
+                .equalsExp(_remoteDb.visitaTable.numEmpl),
+      ),
     ]);
 
     query.where(_remoteDb.clienteUsuarioTable.usuarioId.equals(usuarioId) |
-        (_remoteDb.visitaTable.numEmpl.equals(usuarioId) &
-            _remoteDb.visitaTable.clienteId.isNull()));
+        _remoteDb.visitaTable.numEmpl.equals(usuarioId));
 
     if (searchText != '') {
       final busqueda = searchText.split(' ');
