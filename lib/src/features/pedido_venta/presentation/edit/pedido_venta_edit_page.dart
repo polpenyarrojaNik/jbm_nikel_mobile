@@ -285,7 +285,6 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
     }
     ref.invalidate(pedidoVentaIndexScreenPaginatedControllerProvider);
     ref.invalidate(pedidoVentaIndexScreenControllerProvider);
-
     ref.invalidate(getPedidoVentaBorradorPendiente);
 
     if (!pedidoLocalParam.isLocal) {

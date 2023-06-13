@@ -171,6 +171,7 @@ class SyncService {
     try {
       await usuarioService?.modificarPrecio();
       await enviarPedidosNoEnviados();
+      await checkBorradores();
       await syncPedidos();
       await checkPedidoVentaTratados();
       await syncPedidoVentaLinea();
@@ -983,7 +984,8 @@ class SyncService {
   Future<List<PedidoVentaLocalDTO>> getPedidosNoEnviados() async {
     try {
       return (_localDb.select(_localDb.pedidoVentaLocalTable)
-            ..where((tbl) => tbl.enviada.equals('N')))
+            ..where(
+                (tbl) => tbl.enviada.equals('N') & tbl.borrador.equals('N')))
           .get();
     } catch (e) {
       rethrow;
@@ -1090,10 +1092,11 @@ class SyncService {
 
   Future<void> checkPedidoVentaTratados() async {
     try {
-      final pedidosNoTratadosDTO =
-          await (_localDb.select(_localDb.pedidoVentaLocalTable)
-                ..where((tbl) => tbl.tratada.equals('N')))
-              .get();
+      final pedidosNoTratadosDTO = await (_localDb
+              .select(_localDb.pedidoVentaLocalTable)
+            ..where(
+                (tbl) => tbl.tratada.equals('N') & tbl.borrador.equals('N')))
+          .get();
 
       for (var i = 0; i < pedidosNoTratadosDTO.length; i++) {
         final pedidoNoTratado = pedidosNoTratadosDTO[i];
@@ -1379,6 +1382,20 @@ class SyncService {
       }
     } catch (e) {
       throw getApiError(e);
+    }
+  }
+
+  Future<void> checkBorradores() async {
+    final borradores = await (_localDb.select(_localDb.pedidoVentaLocalTable)
+          ..where((tbl) => tbl.borrador.equals('S')))
+        .get();
+
+    for (var i = 0; i < borradores.length; i++) {
+      if (borradores[i].enviada == 'S') {
+        await _localDb
+            .into(_localDb.pedidoVentaLocalTable)
+            .insertOnConflictUpdate(borradores[i].copyWith(borrador: 'N'));
+      }
     }
   }
 }
