@@ -7,6 +7,7 @@ import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:jbm_nikel_mobile/src/core/application/log_service.dart';
 import 'package:jbm_nikel_mobile/src/core/domain/pais.dart';
 import 'package:jbm_nikel_mobile/src/core/domain/provincia.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/provincia_dto.dart';
@@ -435,22 +436,20 @@ class VisitaRepository {
       required int page,
       required String searchText,
       String? clienteId}) async {
-    final query = _remoteDb.select(_remoteDb.visitaTable).join([
-      leftOuterJoin(
-        _remoteDb.clienteTable,
-        _remoteDb.clienteTable.id.equalsExp(_remoteDb.visitaTable.clienteId),
-      ),
-      leftOuterJoin(
-        _remoteDb.clienteUsuarioTable,
-        _remoteDb.clienteUsuarioTable.clienteId
-                .equalsExp(_remoteDb.visitaTable.clienteId) &
-            _remoteDb.clienteUsuarioTable.usuarioId
-                .equalsExp(_remoteDb.visitaTable.numEmpl),
-      )
-    ]);
+    final query = _remoteDb.select(_remoteDb.visitaTable).join(
+      [
+        innerJoin(
+          _remoteDb.clienteTable,
+          _remoteDb.clienteTable.id.equalsExp(_remoteDb.visitaTable.clienteId),
+        ),
+      ],
+    );
 
-    query.where(_remoteDb.clienteUsuarioTable.usuarioId.equals(usuarioId) |
-        _remoteDb.visitaTable.numEmpl.equals(usuarioId));
+    query.where(_remoteDb.visitaTable.numEmpl.equals(usuarioId) |
+        existsQuery(_remoteDb.select(_remoteDb.clienteUsuarioTable)
+          ..where((tbl) =>
+              tbl.usuarioId.equals(usuarioId) &
+              tbl.clienteId.equalsExp(_remoteDb.visitaTable.clienteId))));
 
     if (searchText != '') {
       final busqueda = searchText.split(' ');
@@ -515,21 +514,17 @@ class VisitaRepository {
     final countExp = _remoteDb.visitaTable.id.count();
 
     final query = _remoteDb.selectOnly(_remoteDb.visitaTable).join([
-      leftOuterJoin(
+      innerJoin(
         _remoteDb.clienteTable,
         _remoteDb.clienteTable.id.equalsExp(_remoteDb.visitaTable.clienteId),
       ),
-      leftOuterJoin(
-        _remoteDb.clienteUsuarioTable,
-        _remoteDb.clienteUsuarioTable.clienteId
-                .equalsExp(_remoteDb.visitaTable.clienteId) &
-            _remoteDb.clienteUsuarioTable.usuarioId
-                .equalsExp(_remoteDb.visitaTable.numEmpl),
-      ),
     ]);
 
-    query.where(_remoteDb.clienteUsuarioTable.usuarioId.equals(usuarioId) |
-        _remoteDb.visitaTable.numEmpl.equals(usuarioId));
+    query.where(_remoteDb.visitaTable.numEmpl.equals(usuarioId) |
+        existsQuery(_remoteDb.select(_remoteDb.clienteUsuarioTable)
+          ..where((tbl) =>
+              tbl.usuarioId.equals(usuarioId) &
+              tbl.clienteId.equalsExp(_remoteDb.visitaTable.clienteId))));
 
     if (searchText != '') {
       final busqueda = searchText.split(' ');
