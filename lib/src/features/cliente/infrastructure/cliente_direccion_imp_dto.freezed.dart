@@ -418,34 +418,22 @@ class _$_ClienteDireccionImpDTO extends _ClienteDireccionImpDTO {
 
 abstract class _ClienteDireccionImpDTO extends ClienteDireccionImpDTO {
   const factory _ClienteDireccionImpDTO(
-      {@JsonKey(name: 'GUID')
-          required final String id,
-      @JsonKey(name: 'FECHA')
-          required final DateTime fecha,
-      @JsonKey(name: 'USUARIO_ID')
-          required final String usuarioId,
-      @JsonKey(name: 'CLIENTE_ID')
-          required final String clienteId,
-      @JsonKey(name: 'DIRECCION_ID')
-          required final String? direccionId,
-      @JsonKey(name: 'NOMBRE')
-          final String? nombre,
-      @JsonKey(name: 'DIRECCION1')
-          final String? direccion1,
-      @JsonKey(name: 'DIRECCION2')
-          final String? direccion2,
-      @JsonKey(name: 'CODIGO_POSTAL')
-          final String? codigoPostal,
-      @JsonKey(name: 'POBLACION')
-          final String? poblacion,
-      @JsonKey(name: 'PROVINCIA')
-          final String? provincia,
-      @JsonKey(name: 'PAIS_ID')
-          final String? paisId,
+      {@JsonKey(name: 'GUID') required final String id,
+      @JsonKey(name: 'FECHA') required final DateTime fecha,
+      @JsonKey(name: 'USUARIO_ID') required final String usuarioId,
+      @JsonKey(name: 'CLIENTE_ID') required final String clienteId,
+      @JsonKey(name: 'DIRECCION_ID') required final String? direccionId,
+      @JsonKey(name: 'NOMBRE') final String? nombre,
+      @JsonKey(name: 'DIRECCION1') final String? direccion1,
+      @JsonKey(name: 'DIRECCION2') final String? direccion2,
+      @JsonKey(name: 'CODIGO_POSTAL') final String? codigoPostal,
+      @JsonKey(name: 'POBLACION') final String? poblacion,
+      @JsonKey(name: 'PROVINCIA') final String? provincia,
+      @JsonKey(name: 'PAIS_ID') final String? paisId,
       @JsonKey(name: 'ENVIADA', defaultValue: 'N')
-          required final String enviada,
+      required final String enviada,
       @JsonKey(name: 'BORRAR', defaultValue: 'N')
-          required final String borrar}) = _$_ClienteDireccionImpDTO;
+      required final String borrar}) = _$_ClienteDireccionImpDTO;
   const _ClienteDireccionImpDTO._() : super._();
 
   factory _ClienteDireccionImpDTO.fromJson(Map<String, dynamic> json) =

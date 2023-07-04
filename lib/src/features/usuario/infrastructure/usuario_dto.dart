@@ -10,24 +10,17 @@ part 'usuario_dto.g.dart';
 class UsuarioDTO with _$UsuarioDTO {
   const UsuarioDTO._();
   const factory UsuarioDTO({
-    @JsonKey(name: 'USUARIO_ID')
-        required String id,
-    @JsonKey(name: 'USUARIO')
-        required String usuario,
-    @JsonKey(name: 'CLAVE')
-        required String contrasenya,
+    @JsonKey(name: 'USUARIO_ID') required String id,
+    @JsonKey(name: 'USUARIO') required String usuario,
+    @JsonKey(name: 'CLAVE') required String contrasenya,
     @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')
-        required String? nombreUsuario,
-    @JsonKey(name: 'PROVISIONAL_TOKEN')
-        required String provisionalToken,
-    @JsonKey(name: 'REFRESH_TOKEN')
-        String? refreshToken,
-    @JsonKey(name: 'TEST')
-        required String test,
-    @JsonKey(name: 'IDIOMA_ID')
-        required String idiomaId,
+    required String? nombreUsuario,
+    @JsonKey(name: 'PROVISIONAL_TOKEN') required String provisionalToken,
+    @JsonKey(name: 'REFRESH_TOKEN') String? refreshToken,
+    @JsonKey(name: 'TEST') required String test,
+    @JsonKey(name: 'IDIOMA_ID') required String idiomaId,
     @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')
-        required String modificarPedido,
+    required String modificarPedido,
   }) = _UsuarioDTO;
 
   DateTime? get expiration {

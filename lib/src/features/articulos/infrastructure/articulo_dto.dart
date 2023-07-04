@@ -18,143 +18,78 @@ part 'articulo_dto.g.dart';
 class ArticuloDTO with _$ArticuloDTO implements Insertable<ArticuloDTO> {
   const ArticuloDTO._();
   const factory ArticuloDTO({
-    @JsonKey(name: 'ARTICULO_ID')
-        required String id,
-    @JsonKey(name: 'DESCRIPCION_ES')
-        required String descripcionES,
-    @JsonKey(name: 'DESCRIPCION_EN')
-        String? descripcionEN,
-    @JsonKey(name: 'DESCRIPCION_FR')
-        String? descripcionFR,
-    @JsonKey(name: 'DESCRIPCION_DE')
-        String? descripcionDE,
-    @JsonKey(name: 'DESCRIPCION_CA')
-        String? descripcionCA,
-    @JsonKey(name: 'DESCRIPCION_GB')
-        String? descripcionGB,
-    @JsonKey(name: 'DESCRIPCION_HU')
-        String? descripcionHU,
-    @JsonKey(name: 'DESCRIPCION_IT')
-        String? descripcionIT,
-    @JsonKey(name: 'DESCRIPCION_NL')
-        String? descripcionNL,
-    @JsonKey(name: 'DESCRIPCION_PL')
-        String? descripcionPL,
-    @JsonKey(name: 'DESCRIPCION_PT')
-        String? descripcionPT,
-    @JsonKey(name: 'DESCRIPCION_RO')
-        String? descripcionRO,
-    @JsonKey(name: 'DESCRIPCION_RU')
-        String? descripcionRU,
-    @JsonKey(name: 'DESCRIPCION_CN')
-        String? descripcionCN,
-    @JsonKey(name: 'DESCRIPCION_EL')
-        String? descripcionEL,
-    @JsonKey(name: 'FAMILIA_ID')
-        String? familiaId,
-    @JsonKey(name: 'SUBFAMILIA_ID')
-        String? subfamiliaId,
-    @JsonKey(name: 'VENTA_MINIMO')
-        required int ventaMinimo,
-    @JsonKey(name: 'VENTA_MULTIPLO')
-        required int ventaMultiplo,
-    @JsonKey(name: 'UNIDADES_SUBCAJA')
-        required int unidadesSubcaja,
-    @JsonKey(name: 'UNIDADES_CAJA')
-        required int unidadesCaja,
-    @JsonKey(name: 'UNIDADES_PALET')
-        required int unidadesPalet,
-    @JsonKey(name: 'ACTIVO_WEB')
-        required String activoWeb,
-    @JsonKey(name: 'ACTIVO_APP')
-        required String activoApp,
-    @JsonKey(name: 'EN_CATALOGO')
-        required String enCatalogo,
-    @JsonKey(name: 'DESCATALOGADO')
-        required String descatalogado,
-    @JsonKey(name: 'PAGINA_EN_CATALOGO')
-        String? paginaEnCatalgo,
-    @JsonKey(name: 'PAGINA_EN_CATALOGO2')
-        String? paginaEnCatalgo2,
-    @JsonKey(name: 'PESO_KG')
-        required double pesoKg,
-    @JsonKey(name: 'LARGO_CM')
-        required double largoCm,
-    @JsonKey(name: 'ANCHO_CM')
-        required double anchoCm,
-    @JsonKey(name: 'ALTO_CM')
-        required double altoCm,
-    @JsonKey(name: 'RESUMEN_ES')
-        String? resumenES,
-    @JsonKey(name: 'RESUMEN_EN')
-        String? resumenEN,
-    @JsonKey(name: 'RESUMEN_FR')
-        String? resumenFR,
-    @JsonKey(name: 'RESUMEN_DE')
-        String? resumenDE,
-    @JsonKey(name: 'RESUMEN_CA')
-        String? resumenCA,
-    @JsonKey(name: 'RESUMEN_GB')
-        String? resumenGB,
-    @JsonKey(name: 'RESUMEN_HU')
-        String? resumenHU,
-    @JsonKey(name: 'RESUMEN_IT')
-        String? resumenIT,
-    @JsonKey(name: 'RESUMEN_NL')
-        String? resumenNL,
-    @JsonKey(name: 'RESUMEN_PL')
-        String? resumenPL,
-    @JsonKey(name: 'RESUMEN_PT')
-        String? resumenPT,
-    @JsonKey(name: 'RESUMEN_RO')
-        String? resumenRO,
-    @JsonKey(name: 'RESUMEN_RU')
-        String? resumenRU,
-    @JsonKey(name: 'RESUMEN_CN')
-        String? resumenCN,
-    @JsonKey(name: 'RESUMEN_EL')
-        String? resumenEL,
-    @JsonKey(name: 'STOCK_DISPONIBLE')
-        required int stockDisponible,
-    @JsonKey(name: 'VENTAS_ACTUAL')
-        required double ventasActual,
-    @JsonKey(name: 'VENTAS_ANTERIOR')
-        required double ventasAnterior,
+    @JsonKey(name: 'ARTICULO_ID') required String id,
+    @JsonKey(name: 'DESCRIPCION_ES') required String descripcionES,
+    @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
+    @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
+    @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
+    @JsonKey(name: 'DESCRIPCION_CA') String? descripcionCA,
+    @JsonKey(name: 'DESCRIPCION_GB') String? descripcionGB,
+    @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
+    @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
+    @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
+    @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
+    @JsonKey(name: 'DESCRIPCION_PT') String? descripcionPT,
+    @JsonKey(name: 'DESCRIPCION_RO') String? descripcionRO,
+    @JsonKey(name: 'DESCRIPCION_RU') String? descripcionRU,
+    @JsonKey(name: 'DESCRIPCION_CN') String? descripcionCN,
+    @JsonKey(name: 'DESCRIPCION_EL') String? descripcionEL,
+    @JsonKey(name: 'FAMILIA_ID') String? familiaId,
+    @JsonKey(name: 'SUBFAMILIA_ID') String? subfamiliaId,
+    @JsonKey(name: 'VENTA_MINIMO') required int ventaMinimo,
+    @JsonKey(name: 'VENTA_MULTIPLO') required int ventaMultiplo,
+    @JsonKey(name: 'UNIDADES_SUBCAJA') required int unidadesSubcaja,
+    @JsonKey(name: 'UNIDADES_CAJA') required int unidadesCaja,
+    @JsonKey(name: 'UNIDADES_PALET') required int unidadesPalet,
+    @JsonKey(name: 'ACTIVO_WEB') required String activoWeb,
+    @JsonKey(name: 'ACTIVO_APP') required String activoApp,
+    @JsonKey(name: 'EN_CATALOGO') required String enCatalogo,
+    @JsonKey(name: 'DESCATALOGADO') required String descatalogado,
+    @JsonKey(name: 'PAGINA_EN_CATALOGO') String? paginaEnCatalgo,
+    @JsonKey(name: 'PAGINA_EN_CATALOGO2') String? paginaEnCatalgo2,
+    @JsonKey(name: 'PESO_KG') required double pesoKg,
+    @JsonKey(name: 'LARGO_CM') required double largoCm,
+    @JsonKey(name: 'ANCHO_CM') required double anchoCm,
+    @JsonKey(name: 'ALTO_CM') required double altoCm,
+    @JsonKey(name: 'RESUMEN_ES') String? resumenES,
+    @JsonKey(name: 'RESUMEN_EN') String? resumenEN,
+    @JsonKey(name: 'RESUMEN_FR') String? resumenFR,
+    @JsonKey(name: 'RESUMEN_DE') String? resumenDE,
+    @JsonKey(name: 'RESUMEN_CA') String? resumenCA,
+    @JsonKey(name: 'RESUMEN_GB') String? resumenGB,
+    @JsonKey(name: 'RESUMEN_HU') String? resumenHU,
+    @JsonKey(name: 'RESUMEN_IT') String? resumenIT,
+    @JsonKey(name: 'RESUMEN_NL') String? resumenNL,
+    @JsonKey(name: 'RESUMEN_PL') String? resumenPL,
+    @JsonKey(name: 'RESUMEN_PT') String? resumenPT,
+    @JsonKey(name: 'RESUMEN_RO') String? resumenRO,
+    @JsonKey(name: 'RESUMEN_RU') String? resumenRU,
+    @JsonKey(name: 'RESUMEN_CN') String? resumenCN,
+    @JsonKey(name: 'RESUMEN_EL') String? resumenEL,
+    @JsonKey(name: 'STOCK_DISPONIBLE') required int stockDisponible,
+    @JsonKey(name: 'VENTAS_ACTUAL') required double ventasActual,
+    @JsonKey(name: 'VENTAS_ANTERIOR') required double ventasAnterior,
     @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_1')
-        required int comprasEntregaCantidad1,
+    required int comprasEntregaCantidad1,
     @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_2')
-        required int comprasEntregaCantidad2,
+    required int comprasEntregaCantidad2,
     @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_3')
-        required int comprasEntregaCantidad3,
+    required int comprasEntregaCantidad3,
     @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_MAS_3')
-        required int comprasEntregaCantidadMas3,
-    @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_1')
-        DateTime? comprasEntregaFecha1,
-    @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_2')
-        DateTime? comprasEntregaFecha2,
-    @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_3')
-        DateTime? comprasEntregaFecha3,
-    @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_1')
-        String? comprasEntregaEstado1,
-    @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_2')
-        String? comprasEntregaEstado2,
-    @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_')
-        String? comprasEntregaEstado3,
-    @JsonKey(name: 'IMAGEN_PRINCIPAL')
-        String? imagenPrincipal,
-    @JsonKey(name: 'GTIN_13_UNIDAD')
-        String? gtin13Unidad,
-    @JsonKey(name: 'GS1_128_SUBCAJA')
-        String? gs1128Subcaja,
-    @JsonKey(name: 'GS1_128_CAJA')
-        String? gs1128Caja,
-    @JsonKey(name: 'GS1_128_PALET')
-        String? gs1128Palet,
-    @JsonKey(name: 'LAST_UPDATED')
-        required DateTime lastUpdated,
-    @JsonKey(name: 'DELETED')
-    @Default('N')
-        String deleted,
+    required int comprasEntregaCantidadMas3,
+    @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_1') DateTime? comprasEntregaFecha1,
+    @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_2') DateTime? comprasEntregaFecha2,
+    @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_3') DateTime? comprasEntregaFecha3,
+    @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_1') String? comprasEntregaEstado1,
+    @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_2') String? comprasEntregaEstado2,
+    @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_') String? comprasEntregaEstado3,
+    @JsonKey(name: 'IMAGEN_PRINCIPAL') String? imagenPrincipal,
+    @JsonKey(name: 'GTIN_13_UNIDAD') String? gtin13Unidad,
+    @JsonKey(name: 'GS1_128_SUBCAJA') String? gs1128Subcaja,
+    @JsonKey(name: 'GS1_128_CAJA') String? gs1128Caja,
+    @JsonKey(name: 'GS1_128_PALET') String? gs1128Palet,
+    @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _ArticuloDTO;
 
   factory ArticuloDTO.fromJson(Map<String, dynamic> json) =>

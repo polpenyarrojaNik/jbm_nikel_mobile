@@ -357,28 +357,19 @@ class _$_DevolucionLineaDTO extends _DevolucionLineaDTO {
 
 abstract class _DevolucionLineaDTO extends DevolucionLineaDTO {
   const factory _DevolucionLineaDTO(
-      {@JsonKey(name: 'EMPRESA_ID')
-          required final String empresaId,
-      @JsonKey(name: 'DEVOLUCION_ID')
-          required final String devolucionId,
-      @JsonKey(name: 'ARTICULO_ID')
-          required final String articuloId,
+      {@JsonKey(name: 'EMPRESA_ID') required final String empresaId,
+      @JsonKey(name: 'DEVOLUCION_ID') required final String devolucionId,
+      @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
       @JsonKey(name: 'ARTICULO_DESCRIPCION')
-          required final String articuloDescription,
-      @JsonKey(name: 'CANTIDAD_DEVOLUCION')
-          final double? cantidadDevolucion,
-      @JsonKey(name: 'CANTIDAD_RECIBIDA')
-          final double? cantidadRecibida,
-      @JsonKey(name: 'DEVOLUCION_MOTIVO_ID')
-          final String? devolucionMotivoId,
-      @JsonKey(name: 'DEVOLUCION_ESTADO_ID')
-          final String? devolucionEstadoId,
-      @JsonKey(name: 'OBSERVACIONES')
-          final String? observaciones,
-      @JsonKey(name: 'LAST_UPDATED')
-          required final DateTime lastUpdated,
+      required final String articuloDescription,
+      @JsonKey(name: 'CANTIDAD_DEVOLUCION') final double? cantidadDevolucion,
+      @JsonKey(name: 'CANTIDAD_RECIBIDA') final double? cantidadRecibida,
+      @JsonKey(name: 'DEVOLUCION_MOTIVO_ID') final String? devolucionMotivoId,
+      @JsonKey(name: 'DEVOLUCION_ESTADO_ID') final String? devolucionEstadoId,
+      @JsonKey(name: 'OBSERVACIONES') final String? observaciones,
+      @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
       @JsonKey(name: 'DELETED')
-          required final String deleted}) = _$_DevolucionLineaDTO;
+      required final String deleted}) = _$_DevolucionLineaDTO;
   const _DevolucionLineaDTO._() : super._();
 
   factory _DevolucionLineaDTO.fromJson(Map<String, dynamic> json) =

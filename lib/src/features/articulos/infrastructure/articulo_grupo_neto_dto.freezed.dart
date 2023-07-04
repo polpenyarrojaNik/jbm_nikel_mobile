@@ -214,24 +214,16 @@ class __$$_ArticuloGrupoNetoDTOCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ArticuloGrupoNetoDTO extends _ArticuloGrupoNetoDTO {
   const _$_ArticuloGrupoNetoDTO(
-      {@JsonKey(name: 'ARTICULO_ID')
-          required this.articuloId,
-      @JsonKey(name: 'GRUPO_NETO_ID')
-          required this.grupoNetoId,
+      {@JsonKey(name: 'ARTICULO_ID') required this.articuloId,
+      @JsonKey(name: 'GRUPO_NETO_ID') required this.grupoNetoId,
       @JsonKey(name: 'GRUPO_NETO_DESCRIPCION')
-          required this.grupoNetoDescripcion,
-      @JsonKey(name: 'CANTIDAD_DESDE')
-          required this.cantidadDesde,
-      @JsonKey(name: 'PRECIO')
-          required this.precio,
-      @JsonKey(name: 'DIVISA_ID')
-          required this.divisaId,
-      @JsonKey(name: 'TIPO_PRECIO')
-          required this.tipoPrecio,
-      @JsonKey(name: 'LAST_UPDATED')
-          required this.lastUpdated,
-      @JsonKey(name: 'DELETED')
-          this.deleted = 'N'})
+      required this.grupoNetoDescripcion,
+      @JsonKey(name: 'CANTIDAD_DESDE') required this.cantidadDesde,
+      @JsonKey(name: 'PRECIO') required this.precio,
+      @JsonKey(name: 'DIVISA_ID') required this.divisaId,
+      @JsonKey(name: 'TIPO_PRECIO') required this.tipoPrecio,
+      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+      @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
   factory _$_ArticuloGrupoNetoDTO.fromJson(Map<String, dynamic> json) =>
@@ -324,24 +316,17 @@ class _$_ArticuloGrupoNetoDTO extends _ArticuloGrupoNetoDTO {
 
 abstract class _ArticuloGrupoNetoDTO extends ArticuloGrupoNetoDTO {
   const factory _ArticuloGrupoNetoDTO(
-      {@JsonKey(name: 'ARTICULO_ID')
-          required final String articuloId,
-      @JsonKey(name: 'GRUPO_NETO_ID')
-          required final String grupoNetoId,
-      @JsonKey(name: 'GRUPO_NETO_DESCRIPCION')
+          {@JsonKey(name: 'ARTICULO_ID') required final String articuloId,
+          @JsonKey(name: 'GRUPO_NETO_ID') required final String grupoNetoId,
+          @JsonKey(name: 'GRUPO_NETO_DESCRIPCION')
           required final String grupoNetoDescripcion,
-      @JsonKey(name: 'CANTIDAD_DESDE')
-          required final int cantidadDesde,
-      @JsonKey(name: 'PRECIO')
-          required final double precio,
-      @JsonKey(name: 'DIVISA_ID')
-          required final String divisaId,
-      @JsonKey(name: 'TIPO_PRECIO')
-          required final int tipoPrecio,
-      @JsonKey(name: 'LAST_UPDATED')
-          required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED')
-          final String deleted}) = _$_ArticuloGrupoNetoDTO;
+          @JsonKey(name: 'CANTIDAD_DESDE') required final int cantidadDesde,
+          @JsonKey(name: 'PRECIO') required final double precio,
+          @JsonKey(name: 'DIVISA_ID') required final String divisaId,
+          @JsonKey(name: 'TIPO_PRECIO') required final int tipoPrecio,
+          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+          @JsonKey(name: 'DELETED') final String deleted}) =
+      _$_ArticuloGrupoNetoDTO;
   const _ArticuloGrupoNetoDTO._() : super._();
 
   factory _ArticuloGrupoNetoDTO.fromJson(Map<String, dynamic> json) =

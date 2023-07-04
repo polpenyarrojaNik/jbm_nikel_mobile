@@ -166,10 +166,9 @@ class _$_ArticuloImagenDTO extends _ArticuloImagenDTO {
 
 abstract class _ArticuloImagenDTO extends ArticuloImagenDTO {
   const factory _ArticuloImagenDTO(
-      {@JsonKey(name: 'ARTICULO_ID')
-          required final String articuloId,
+      {@JsonKey(name: 'ARTICULO_ID') required final String articuloId,
       @JsonKey(name: 'NOMBRE_ARCHIVO')
-          required final String nombreArchivo}) = _$_ArticuloImagenDTO;
+      required final String nombreArchivo}) = _$_ArticuloImagenDTO;
   const _ArticuloImagenDTO._() : super._();
 
   factory _ArticuloImagenDTO.fromJson(Map<String, dynamic> json) =

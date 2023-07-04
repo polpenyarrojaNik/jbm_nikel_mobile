@@ -369,46 +369,27 @@ class __$$_ArticuloComponenteDTOCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ArticuloComponenteDTO extends _ArticuloComponenteDTO {
   const _$_ArticuloComponenteDTO(
-      {@JsonKey(name: 'ARTICULO_ID')
-          required this.articuloId,
+      {@JsonKey(name: 'ARTICULO_ID') required this.articuloId,
       @JsonKey(name: 'ARTICULO_COMPONENTE_ID')
-          required this.articuloComponenteId,
-      @JsonKey(name: 'CANTIDAD')
-          required this.cantidad,
-      @JsonKey(name: 'DESCRIPCION_ES')
-          required this.descripcionES,
-      @JsonKey(name: 'DESCRIPCION_EN')
-          this.descripcionEN,
-      @JsonKey(name: 'DESCRIPCION_FR')
-          this.descripcionFR,
-      @JsonKey(name: 'DESCRIPCION_DE')
-          this.descripcionDE,
-      @JsonKey(name: 'DESCRIPCION_CA')
-          this.descripcionCA,
-      @JsonKey(name: 'DESCRIPCION_GB')
-          this.descripcionGB,
-      @JsonKey(name: 'DESCRIPCION_HU')
-          this.descripcionHU,
-      @JsonKey(name: 'DESCRIPCION_IT')
-          this.descripcionIT,
-      @JsonKey(name: 'DESCRIPCION_NL')
-          this.descripcionNL,
-      @JsonKey(name: 'DESCRIPCION_PL')
-          this.descripcionPL,
-      @JsonKey(name: 'DESCRIPCION_PT')
-          this.descripcionPT,
-      @JsonKey(name: 'DESCRIPCION_RO')
-          this.descripcionRO,
-      @JsonKey(name: 'DESCRIPCION_RU')
-          this.descripcionRU,
-      @JsonKey(name: 'DESCRIPCION_CN')
-          this.descripcionCN,
-      @JsonKey(name: 'DESCRIPCION_EL')
-          this.descripcionEL,
-      @JsonKey(name: 'LAST_UPDATED')
-          required this.lastUpdated,
-      @JsonKey(name: 'DELETED')
-          this.deleted = 'N'})
+      required this.articuloComponenteId,
+      @JsonKey(name: 'CANTIDAD') required this.cantidad,
+      @JsonKey(name: 'DESCRIPCION_ES') required this.descripcionES,
+      @JsonKey(name: 'DESCRIPCION_EN') this.descripcionEN,
+      @JsonKey(name: 'DESCRIPCION_FR') this.descripcionFR,
+      @JsonKey(name: 'DESCRIPCION_DE') this.descripcionDE,
+      @JsonKey(name: 'DESCRIPCION_CA') this.descripcionCA,
+      @JsonKey(name: 'DESCRIPCION_GB') this.descripcionGB,
+      @JsonKey(name: 'DESCRIPCION_HU') this.descripcionHU,
+      @JsonKey(name: 'DESCRIPCION_IT') this.descripcionIT,
+      @JsonKey(name: 'DESCRIPCION_NL') this.descripcionNL,
+      @JsonKey(name: 'DESCRIPCION_PL') this.descripcionPL,
+      @JsonKey(name: 'DESCRIPCION_PT') this.descripcionPT,
+      @JsonKey(name: 'DESCRIPCION_RO') this.descripcionRO,
+      @JsonKey(name: 'DESCRIPCION_RU') this.descripcionRU,
+      @JsonKey(name: 'DESCRIPCION_CN') this.descripcionCN,
+      @JsonKey(name: 'DESCRIPCION_EL') this.descripcionEL,
+      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+      @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
   factory _$_ArticuloComponenteDTO.fromJson(Map<String, dynamic> json) =>
@@ -569,46 +550,28 @@ class _$_ArticuloComponenteDTO extends _ArticuloComponenteDTO {
 
 abstract class _ArticuloComponenteDTO extends ArticuloComponenteDTO {
   const factory _ArticuloComponenteDTO(
-      {@JsonKey(name: 'ARTICULO_ID')
-          required final String articuloId,
-      @JsonKey(name: 'ARTICULO_COMPONENTE_ID')
+          {@JsonKey(name: 'ARTICULO_ID') required final String articuloId,
+          @JsonKey(name: 'ARTICULO_COMPONENTE_ID')
           required final String articuloComponenteId,
-      @JsonKey(name: 'CANTIDAD')
-          required final int cantidad,
-      @JsonKey(name: 'DESCRIPCION_ES')
-          required final String descripcionES,
-      @JsonKey(name: 'DESCRIPCION_EN')
-          final String? descripcionEN,
-      @JsonKey(name: 'DESCRIPCION_FR')
-          final String? descripcionFR,
-      @JsonKey(name: 'DESCRIPCION_DE')
-          final String? descripcionDE,
-      @JsonKey(name: 'DESCRIPCION_CA')
-          final String? descripcionCA,
-      @JsonKey(name: 'DESCRIPCION_GB')
-          final String? descripcionGB,
-      @JsonKey(name: 'DESCRIPCION_HU')
-          final String? descripcionHU,
-      @JsonKey(name: 'DESCRIPCION_IT')
-          final String? descripcionIT,
-      @JsonKey(name: 'DESCRIPCION_NL')
-          final String? descripcionNL,
-      @JsonKey(name: 'DESCRIPCION_PL')
-          final String? descripcionPL,
-      @JsonKey(name: 'DESCRIPCION_PT')
-          final String? descripcionPT,
-      @JsonKey(name: 'DESCRIPCION_RO')
-          final String? descripcionRO,
-      @JsonKey(name: 'DESCRIPCION_RU')
-          final String? descripcionRU,
-      @JsonKey(name: 'DESCRIPCION_CN')
-          final String? descripcionCN,
-      @JsonKey(name: 'DESCRIPCION_EL')
-          final String? descripcionEL,
-      @JsonKey(name: 'LAST_UPDATED')
-          required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED')
-          final String deleted}) = _$_ArticuloComponenteDTO;
+          @JsonKey(name: 'CANTIDAD') required final int cantidad,
+          @JsonKey(name: 'DESCRIPCION_ES') required final String descripcionES,
+          @JsonKey(name: 'DESCRIPCION_EN') final String? descripcionEN,
+          @JsonKey(name: 'DESCRIPCION_FR') final String? descripcionFR,
+          @JsonKey(name: 'DESCRIPCION_DE') final String? descripcionDE,
+          @JsonKey(name: 'DESCRIPCION_CA') final String? descripcionCA,
+          @JsonKey(name: 'DESCRIPCION_GB') final String? descripcionGB,
+          @JsonKey(name: 'DESCRIPCION_HU') final String? descripcionHU,
+          @JsonKey(name: 'DESCRIPCION_IT') final String? descripcionIT,
+          @JsonKey(name: 'DESCRIPCION_NL') final String? descripcionNL,
+          @JsonKey(name: 'DESCRIPCION_PL') final String? descripcionPL,
+          @JsonKey(name: 'DESCRIPCION_PT') final String? descripcionPT,
+          @JsonKey(name: 'DESCRIPCION_RO') final String? descripcionRO,
+          @JsonKey(name: 'DESCRIPCION_RU') final String? descripcionRU,
+          @JsonKey(name: 'DESCRIPCION_CN') final String? descripcionCN,
+          @JsonKey(name: 'DESCRIPCION_EL') final String? descripcionEL,
+          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+          @JsonKey(name: 'DELETED') final String deleted}) =
+      _$_ArticuloComponenteDTO;
   const _ArticuloComponenteDTO._() : super._();
 
   factory _ArticuloComponenteDTO.fromJson(Map<String, dynamic> json) =

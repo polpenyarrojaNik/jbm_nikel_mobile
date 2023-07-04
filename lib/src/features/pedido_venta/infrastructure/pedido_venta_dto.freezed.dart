@@ -668,58 +668,33 @@ class _$_PedidoVentaDTO extends _PedidoVentaDTO {
 
 abstract class _PedidoVentaDTO extends PedidoVentaDTO {
   const factory _PedidoVentaDTO(
-      {@JsonKey(name: 'EMPRESA_ID')
-          required final String empresaId,
-      @JsonKey(name: 'PEDIDO_ID')
-          required final String pedidoVentaId,
-      @JsonKey(name: 'FECHA_PEDIDO')
-          required final DateTime pedidoVentaDate,
-      @JsonKey(name: 'TIPO_VENTA')
-          required final String tipoVenta,
-      @JsonKey(name: 'CLIENTE_ID')
-          required final String clienteId,
-      @JsonKey(name: 'DIRECCION_ID')
-          final String? direccionId,
-      @JsonKey(name: 'NOMBRE_CLIENTE')
-          required final String nombreCliente,
-      @JsonKey(name: 'DIRECCION_ENVIO1')
-          final String? direccionEntrga1,
-      @JsonKey(name: 'DIRECCION_ENVIO2')
-          final String? direccionEntrga2,
-      @JsonKey(name: 'CODIGO_POSTAL')
-          final String? codigoPostal,
-      @JsonKey(name: 'POBLACION')
-          final String? poblacion,
-      @JsonKey(name: 'PROVINCIA')
-          final String? provincia,
-      @JsonKey(name: 'PAIS_ID')
-          final String? paisId,
-      @JsonKey(name: 'DIVISA_ID')
-          required final String divisaId,
-      @JsonKey(name: 'BASE_IMPONIBLE')
-          required final double baseImponible,
-      @JsonKey(name: 'TOTAL_LINEAS')
-          required final double totalLineas,
-      @JsonKey(name: 'IMPORTE_PORTES')
-          required final double importePortes,
-      @JsonKey(name: 'IMPORTE_IVA')
-          required final double importeIva,
-      @JsonKey(name: 'TOTAL')
-          required final double total,
-      @JsonKey(name: 'ESTADO_PEDIDO_ID')
-          required final int pedidoVentaEstadoId,
-      @JsonKey(name: 'OFERTA_SN')
-          required final String oferta,
-      @JsonKey(name: 'OFERTA_FECHA_HASTA')
-          final DateTime? ofertaFechaHasta,
-      @JsonKey(name: 'PEDIDO_APP_ID')
-          final String? pedidoVentaAppId,
-      @JsonKey(name: 'IVA')
-          required final double iva,
-      @JsonKey(name: 'LAST_UPDATED')
-          required final DateTime lastUpdated,
+      {@JsonKey(name: 'EMPRESA_ID') required final String empresaId,
+      @JsonKey(name: 'PEDIDO_ID') required final String pedidoVentaId,
+      @JsonKey(name: 'FECHA_PEDIDO') required final DateTime pedidoVentaDate,
+      @JsonKey(name: 'TIPO_VENTA') required final String tipoVenta,
+      @JsonKey(name: 'CLIENTE_ID') required final String clienteId,
+      @JsonKey(name: 'DIRECCION_ID') final String? direccionId,
+      @JsonKey(name: 'NOMBRE_CLIENTE') required final String nombreCliente,
+      @JsonKey(name: 'DIRECCION_ENVIO1') final String? direccionEntrga1,
+      @JsonKey(name: 'DIRECCION_ENVIO2') final String? direccionEntrga2,
+      @JsonKey(name: 'CODIGO_POSTAL') final String? codigoPostal,
+      @JsonKey(name: 'POBLACION') final String? poblacion,
+      @JsonKey(name: 'PROVINCIA') final String? provincia,
+      @JsonKey(name: 'PAIS_ID') final String? paisId,
+      @JsonKey(name: 'DIVISA_ID') required final String divisaId,
+      @JsonKey(name: 'BASE_IMPONIBLE') required final double baseImponible,
+      @JsonKey(name: 'TOTAL_LINEAS') required final double totalLineas,
+      @JsonKey(name: 'IMPORTE_PORTES') required final double importePortes,
+      @JsonKey(name: 'IMPORTE_IVA') required final double importeIva,
+      @JsonKey(name: 'TOTAL') required final double total,
+      @JsonKey(name: 'ESTADO_PEDIDO_ID') required final int pedidoVentaEstadoId,
+      @JsonKey(name: 'OFERTA_SN') required final String oferta,
+      @JsonKey(name: 'OFERTA_FECHA_HASTA') final DateTime? ofertaFechaHasta,
+      @JsonKey(name: 'PEDIDO_APP_ID') final String? pedidoVentaAppId,
+      @JsonKey(name: 'IVA') required final double iva,
+      @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
       @JsonKey(name: 'DELETED')
-          required final String deleted}) = _$_PedidoVentaDTO;
+      required final String deleted}) = _$_PedidoVentaDTO;
   const _PedidoVentaDTO._() : super._();
 
   factory _PedidoVentaDTO.fromJson(Map<String, dynamic> json) =

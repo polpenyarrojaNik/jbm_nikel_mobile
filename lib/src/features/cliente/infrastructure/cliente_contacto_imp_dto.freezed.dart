@@ -417,34 +417,22 @@ class _$_ClienteContactoImpDTO extends _ClienteContactoImpDTO {
 
 abstract class _ClienteContactoImpDTO extends ClienteContactoImpDTO {
   const factory _ClienteContactoImpDTO(
-      {@JsonKey(name: 'GUID')
-          required final String id,
-      @JsonKey(name: 'FECHA')
-          required final DateTime fecha,
-      @JsonKey(name: 'USUARIO_ID')
-          required final String usuarioId,
-      @JsonKey(name: 'CLIENTE_ID')
-          required final String clienteId,
-      @JsonKey(name: 'CONTACTO_ID')
-          required final String? contactoId,
-      @JsonKey(name: 'OBSERVACIONES')
-          final String? observaciones,
-      @JsonKey(name: 'NOMBRE')
-          final String? nombre,
-      @JsonKey(name: 'APELLIDO1')
-          final String? apellido1,
-      @JsonKey(name: 'APELLIDO2')
-          final String? apellido2,
-      @JsonKey(name: 'TELEFONO1')
-          final String? telefono1,
-      @JsonKey(name: 'TELEFONO2')
-          final String? telefono2,
-      @JsonKey(name: 'EMAIL')
-          final String? email,
+      {@JsonKey(name: 'GUID') required final String id,
+      @JsonKey(name: 'FECHA') required final DateTime fecha,
+      @JsonKey(name: 'USUARIO_ID') required final String usuarioId,
+      @JsonKey(name: 'CLIENTE_ID') required final String clienteId,
+      @JsonKey(name: 'CONTACTO_ID') required final String? contactoId,
+      @JsonKey(name: 'OBSERVACIONES') final String? observaciones,
+      @JsonKey(name: 'NOMBRE') final String? nombre,
+      @JsonKey(name: 'APELLIDO1') final String? apellido1,
+      @JsonKey(name: 'APELLIDO2') final String? apellido2,
+      @JsonKey(name: 'TELEFONO1') final String? telefono1,
+      @JsonKey(name: 'TELEFONO2') final String? telefono2,
+      @JsonKey(name: 'EMAIL') final String? email,
       @JsonKey(name: 'ENVIADO', defaultValue: 'N')
-          required final String enviado,
+      required final String enviado,
       @JsonKey(name: 'BORRAR', defaultValue: 'N')
-          required final String borrar}) = _$_ClienteContactoImpDTO;
+      required final String borrar}) = _$_ClienteContactoImpDTO;
   const _ClienteContactoImpDTO._() : super._();
 
   factory _ClienteContactoImpDTO.fromJson(Map<String, dynamic> json) =

@@ -213,24 +213,17 @@ class __$$_UsuarioDTOCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_UsuarioDTO extends _UsuarioDTO {
   const _$_UsuarioDTO(
-      {@JsonKey(name: 'USUARIO_ID')
-          required this.id,
-      @JsonKey(name: 'USUARIO')
-          required this.usuario,
-      @JsonKey(name: 'CLAVE')
-          required this.contrasenya,
+      {@JsonKey(name: 'USUARIO_ID') required this.id,
+      @JsonKey(name: 'USUARIO') required this.usuario,
+      @JsonKey(name: 'CLAVE') required this.contrasenya,
       @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')
-          required this.nombreUsuario,
-      @JsonKey(name: 'PROVISIONAL_TOKEN')
-          required this.provisionalToken,
-      @JsonKey(name: 'REFRESH_TOKEN')
-          this.refreshToken,
-      @JsonKey(name: 'TEST')
-          required this.test,
-      @JsonKey(name: 'IDIOMA_ID')
-          required this.idiomaId,
+      required this.nombreUsuario,
+      @JsonKey(name: 'PROVISIONAL_TOKEN') required this.provisionalToken,
+      @JsonKey(name: 'REFRESH_TOKEN') this.refreshToken,
+      @JsonKey(name: 'TEST') required this.test,
+      @JsonKey(name: 'IDIOMA_ID') required this.idiomaId,
       @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')
-          required this.modificarPedido})
+      required this.modificarPedido})
       : super._();
 
   factory _$_UsuarioDTO.fromJson(Map<String, dynamic> json) =>
@@ -321,24 +314,18 @@ class _$_UsuarioDTO extends _UsuarioDTO {
 
 abstract class _UsuarioDTO extends UsuarioDTO {
   const factory _UsuarioDTO(
-      {@JsonKey(name: 'USUARIO_ID')
-          required final String id,
-      @JsonKey(name: 'USUARIO')
-          required final String usuario,
-      @JsonKey(name: 'CLAVE')
-          required final String contrasenya,
+      {@JsonKey(name: 'USUARIO_ID') required final String id,
+      @JsonKey(name: 'USUARIO') required final String usuario,
+      @JsonKey(name: 'CLAVE') required final String contrasenya,
       @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')
-          required final String? nombreUsuario,
+      required final String? nombreUsuario,
       @JsonKey(name: 'PROVISIONAL_TOKEN')
-          required final String provisionalToken,
-      @JsonKey(name: 'REFRESH_TOKEN')
-          final String? refreshToken,
-      @JsonKey(name: 'TEST')
-          required final String test,
-      @JsonKey(name: 'IDIOMA_ID')
-          required final String idiomaId,
+      required final String provisionalToken,
+      @JsonKey(name: 'REFRESH_TOKEN') final String? refreshToken,
+      @JsonKey(name: 'TEST') required final String test,
+      @JsonKey(name: 'IDIOMA_ID') required final String idiomaId,
       @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')
-          required final String modificarPedido}) = _$_UsuarioDTO;
+      required final String modificarPedido}) = _$_UsuarioDTO;
   const _UsuarioDTO._() : super._();
 
   factory _UsuarioDTO.fromJson(Map<String, dynamic> json) =

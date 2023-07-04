@@ -383,30 +383,19 @@ class _$_ArticuloVentasClienteDTO extends _ArticuloVentasClienteDTO {
 
 abstract class _ArticuloVentasClienteDTO extends ArticuloVentasClienteDTO {
   const factory _ArticuloVentasClienteDTO(
-      {@JsonKey(name: 'CLIENTE_ID')
-          required final String clienteId,
-      @JsonKey(name: 'NOMBRE')
-          required final String nombreCliente,
-      @JsonKey(name: 'IMPORTE_ANYO')
-          required final double importeAnyo,
-      @JsonKey(name: 'IMPORTE_ANYO_1')
-          required final double importeAnyo_1,
-      @JsonKey(name: 'IMPORTE_ANYO_2')
-          required final double importeAnyo_2,
-      @JsonKey(name: 'IMPORTE_ANYO_3')
-          required final double importeAnyo_3,
-      @JsonKey(name: 'IMPORTE_ANYO_4')
-          required final double importeAnyo_4,
-      @JsonKey(name: 'CANTIDAD_ANYO')
-          required final int cantidadAnyo,
-      @JsonKey(name: 'CANTIDAD_ANYO_1')
-          required final int cantidadAnyo_1,
-      @JsonKey(name: 'CANTIDAD_ANYO_2')
-          required final int cantidadAnyo_2,
-      @JsonKey(name: 'CANTIDAD_ANYO_3')
-          required final int cantidadAnyo_3,
+      {@JsonKey(name: 'CLIENTE_ID') required final String clienteId,
+      @JsonKey(name: 'NOMBRE') required final String nombreCliente,
+      @JsonKey(name: 'IMPORTE_ANYO') required final double importeAnyo,
+      @JsonKey(name: 'IMPORTE_ANYO_1') required final double importeAnyo_1,
+      @JsonKey(name: 'IMPORTE_ANYO_2') required final double importeAnyo_2,
+      @JsonKey(name: 'IMPORTE_ANYO_3') required final double importeAnyo_3,
+      @JsonKey(name: 'IMPORTE_ANYO_4') required final double importeAnyo_4,
+      @JsonKey(name: 'CANTIDAD_ANYO') required final int cantidadAnyo,
+      @JsonKey(name: 'CANTIDAD_ANYO_1') required final int cantidadAnyo_1,
+      @JsonKey(name: 'CANTIDAD_ANYO_2') required final int cantidadAnyo_2,
+      @JsonKey(name: 'CANTIDAD_ANYO_3') required final int cantidadAnyo_3,
       @JsonKey(name: 'CANTIDAD_ANYO_4')
-          required final int cantidadAnyo_4}) = _$_ArticuloVentasClienteDTO;
+      required final int cantidadAnyo_4}) = _$_ArticuloVentasClienteDTO;
   const _ArticuloVentasClienteDTO._() : super._();
 
   factory _ArticuloVentasClienteDTO.fromJson(Map<String, dynamic> json) =

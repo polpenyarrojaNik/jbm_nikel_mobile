@@ -244,27 +244,17 @@ class __$$_TipoCatalogoDTOCopyWithImpl<$Res>
 class _$_TipoCatalogoDTO extends _TipoCatalogoDTO {
   const _$_TipoCatalogoDTO(
       {@JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID')
-          required this.tipoPrecioCatalogoId,
-      @JsonKey(name: 'DESCRIPCION_ES')
-          required this.descripcionES,
-      @JsonKey(name: 'DESCRIPCION_EN')
-          this.descripcionEN,
-      @JsonKey(name: 'DESCRIPCION_FR')
-          this.descripcionFR,
-      @JsonKey(name: 'DESCRIPCION_DE')
-          this.descripcionDE,
-      @JsonKey(name: 'DESCRIPCION_CA')
-          this.descripcionCA,
-      @JsonKey(name: 'DESCRIPCION_GB')
-          this.descripcionGB,
-      @JsonKey(name: 'DESCRIPCION_HU')
-          this.descripcionHU,
-      @JsonKey(name: 'DESCRIPCION_IT')
-          this.descripcionIT,
-      @JsonKey(name: 'DESCRIPCION_NL')
-          this.descripcionNL,
-      @JsonKey(name: 'DESCRIPCION_PL')
-          this.descripcionPL})
+      required this.tipoPrecioCatalogoId,
+      @JsonKey(name: 'DESCRIPCION_ES') required this.descripcionES,
+      @JsonKey(name: 'DESCRIPCION_EN') this.descripcionEN,
+      @JsonKey(name: 'DESCRIPCION_FR') this.descripcionFR,
+      @JsonKey(name: 'DESCRIPCION_DE') this.descripcionDE,
+      @JsonKey(name: 'DESCRIPCION_CA') this.descripcionCA,
+      @JsonKey(name: 'DESCRIPCION_GB') this.descripcionGB,
+      @JsonKey(name: 'DESCRIPCION_HU') this.descripcionHU,
+      @JsonKey(name: 'DESCRIPCION_IT') this.descripcionIT,
+      @JsonKey(name: 'DESCRIPCION_NL') this.descripcionNL,
+      @JsonKey(name: 'DESCRIPCION_PL') this.descripcionPL})
       : super._();
 
   factory _$_TipoCatalogoDTO.fromJson(Map<String, dynamic> json) =>
@@ -370,28 +360,19 @@ class _$_TipoCatalogoDTO extends _TipoCatalogoDTO {
 
 abstract class _TipoCatalogoDTO extends TipoPrecioCatalogoDTO {
   const factory _TipoCatalogoDTO(
-      {@JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID')
+          {@JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID')
           required final String tipoPrecioCatalogoId,
-      @JsonKey(name: 'DESCRIPCION_ES')
-          required final String descripcionES,
-      @JsonKey(name: 'DESCRIPCION_EN')
-          final String? descripcionEN,
-      @JsonKey(name: 'DESCRIPCION_FR')
-          final String? descripcionFR,
-      @JsonKey(name: 'DESCRIPCION_DE')
-          final String? descripcionDE,
-      @JsonKey(name: 'DESCRIPCION_CA')
-          final String? descripcionCA,
-      @JsonKey(name: 'DESCRIPCION_GB')
-          final String? descripcionGB,
-      @JsonKey(name: 'DESCRIPCION_HU')
-          final String? descripcionHU,
-      @JsonKey(name: 'DESCRIPCION_IT')
-          final String? descripcionIT,
-      @JsonKey(name: 'DESCRIPCION_NL')
-          final String? descripcionNL,
-      @JsonKey(name: 'DESCRIPCION_PL')
-          final String? descripcionPL}) = _$_TipoCatalogoDTO;
+          @JsonKey(name: 'DESCRIPCION_ES') required final String descripcionES,
+          @JsonKey(name: 'DESCRIPCION_EN') final String? descripcionEN,
+          @JsonKey(name: 'DESCRIPCION_FR') final String? descripcionFR,
+          @JsonKey(name: 'DESCRIPCION_DE') final String? descripcionDE,
+          @JsonKey(name: 'DESCRIPCION_CA') final String? descripcionCA,
+          @JsonKey(name: 'DESCRIPCION_GB') final String? descripcionGB,
+          @JsonKey(name: 'DESCRIPCION_HU') final String? descripcionHU,
+          @JsonKey(name: 'DESCRIPCION_IT') final String? descripcionIT,
+          @JsonKey(name: 'DESCRIPCION_NL') final String? descripcionNL,
+          @JsonKey(name: 'DESCRIPCION_PL') final String? descripcionPL}) =
+      _$_TipoCatalogoDTO;
   const _TipoCatalogoDTO._() : super._();
 
   factory _TipoCatalogoDTO.fromJson(Map<String, dynamic> json) =

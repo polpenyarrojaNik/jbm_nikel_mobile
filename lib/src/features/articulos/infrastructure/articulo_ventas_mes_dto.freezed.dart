@@ -247,18 +247,13 @@ class _$_ArticuloVentasMesDTO extends _ArticuloVentasMesDTO {
 
 abstract class _ArticuloVentasMesDTO extends ArticuloVentasMesDTO {
   const factory _ArticuloVentasMesDTO(
-      {@JsonKey(name: 'MES')
-          required final int mes,
-      @JsonKey(name: 'UNIDADES_ANYO')
-          required final int unidadesAnyo,
-      @JsonKey(name: 'UNIDADES_ANYO_1')
-          required final int unidadesAnyo_1,
-      @JsonKey(name: 'UNIDADES_ANYO_2')
-          required final int unidadesAnyo_2,
-      @JsonKey(name: 'UNIDADES_ANYO_3')
-          required final int unidadesAnyo_3,
+      {@JsonKey(name: 'MES') required final int mes,
+      @JsonKey(name: 'UNIDADES_ANYO') required final int unidadesAnyo,
+      @JsonKey(name: 'UNIDADES_ANYO_1') required final int unidadesAnyo_1,
+      @JsonKey(name: 'UNIDADES_ANYO_2') required final int unidadesAnyo_2,
+      @JsonKey(name: 'UNIDADES_ANYO_3') required final int unidadesAnyo_3,
       @JsonKey(name: 'UNIDADES_ANYO_4')
-          required final int unidadesAnyo_4}) = _$_ArticuloVentasMesDTO;
+      required final int unidadesAnyo_4}) = _$_ArticuloVentasMesDTO;
   const _ArticuloVentasMesDTO._() : super._();
 
   factory _ArticuloVentasMesDTO.fromJson(Map<String, dynamic> json) =

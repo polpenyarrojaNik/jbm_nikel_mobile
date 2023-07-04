@@ -15,17 +15,12 @@ class ArticuloSustitutivoDTO
     implements Insertable<ArticuloSustitutivoDTO> {
   const ArticuloSustitutivoDTO._();
   const factory ArticuloSustitutivoDTO({
-    @JsonKey(name: 'ARTICULO_ID')
-        required String articuloId,
+    @JsonKey(name: 'ARTICULO_ID') required String articuloId,
     @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO')
-        required String articuloSustitutivoId,
-    @JsonKey(name: 'ORDEN')
-        required int orden,
-    @JsonKey(name: 'LAST_UPDATED')
-        required DateTime lastUpdated,
-    @JsonKey(name: 'DELETED')
-    @Default('N')
-        String deleted,
+    required String articuloSustitutivoId,
+    @JsonKey(name: 'ORDEN') required int orden,
+    @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _ArticuloSustitutivoDTO;
 
   factory ArticuloSustitutivoDTO.fromJson(Map<String, dynamic> json) =>

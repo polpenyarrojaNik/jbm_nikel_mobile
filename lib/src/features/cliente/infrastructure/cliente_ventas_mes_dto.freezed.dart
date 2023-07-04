@@ -246,18 +246,13 @@ class _$_ClienteVentasMesDTO extends _ClienteVentasMesDTO {
 
 abstract class _ClienteVentasMesDTO extends ClienteVentasMesDTO {
   const factory _ClienteVentasMesDTO(
-      {@JsonKey(name: 'MES')
-          required final int mes,
-      @JsonKey(name: 'IMPORTE_ANYO')
-          required final double importeAnyo,
-      @JsonKey(name: 'IMPORTE_ANYO_1')
-          required final double importeAnyo_1,
-      @JsonKey(name: 'IMPORTE_ANYO_2')
-          required final double importeAnyo_2,
-      @JsonKey(name: 'IMPORTE_ANYO_3')
-          required final double importeAnyo_3,
+      {@JsonKey(name: 'MES') required final int mes,
+      @JsonKey(name: 'IMPORTE_ANYO') required final double importeAnyo,
+      @JsonKey(name: 'IMPORTE_ANYO_1') required final double importeAnyo_1,
+      @JsonKey(name: 'IMPORTE_ANYO_2') required final double importeAnyo_2,
+      @JsonKey(name: 'IMPORTE_ANYO_3') required final double importeAnyo_3,
       @JsonKey(name: 'IMPORTE_ANYO_4')
-          required final double importeAnyo_4}) = _$_ClienteVentasMesDTO;
+      required final double importeAnyo_4}) = _$_ClienteVentasMesDTO;
   const _ClienteVentasMesDTO._() : super._();
 
   factory _ClienteVentasMesDTO.fromJson(Map<String, dynamic> json) =

@@ -287,21 +287,14 @@ class _$_DescuentoGeneralDTO extends _DescuentoGeneralDTO {
 abstract class _DescuentoGeneralDTO extends DescuentoGeneralDTO {
   const factory _DescuentoGeneralDTO(
       {@JsonKey(name: 'DESCUENTO_GENERAL_ID')
-          required final String descuentoGeneralId,
-      @JsonKey(name: 'ARTICULO_ID')
-          required final String articuloId,
-      @JsonKey(name: 'FAMILIA_ID')
-          required final String familiaId,
-      @JsonKey(name: 'SUBFAMILIA_ID')
-          required final String subfamiliaId,
-      @JsonKey(name: 'CANTIDAD_DESDE')
-          required final int cantidadDesde,
-      @JsonKey(name: 'DESCUENTO')
-          required final double descuento,
-      @JsonKey(name: 'LAST_UPDATED')
-          required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED')
-          final String deleted}) = _$_DescuentoGeneralDTO;
+      required final String descuentoGeneralId,
+      @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
+      @JsonKey(name: 'FAMILIA_ID') required final String familiaId,
+      @JsonKey(name: 'SUBFAMILIA_ID') required final String subfamiliaId,
+      @JsonKey(name: 'CANTIDAD_DESDE') required final int cantidadDesde,
+      @JsonKey(name: 'DESCUENTO') required final double descuento,
+      @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') final String deleted}) = _$_DescuentoGeneralDTO;
   const _DescuentoGeneralDTO._() : super._();
 
   factory _DescuentoGeneralDTO.fromJson(Map<String, dynamic> json) =

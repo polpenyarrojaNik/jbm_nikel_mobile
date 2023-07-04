@@ -357,28 +357,18 @@ class _$_TipoCatalogoDTO extends _TipoCatalogoDTO {
 
 abstract class _TipoCatalogoDTO extends TipoCatalogoDTO {
   const factory _TipoCatalogoDTO(
-      {@JsonKey(name: 'TIPO_CATALOGO_ID')
-          required final String tipoCatalogoId,
-      @JsonKey(name: 'DESCRIPCION_ES')
-          required final String descripcionES,
-      @JsonKey(name: 'DESCRIPCION_EN')
-          final String? descripcionEN,
-      @JsonKey(name: 'DESCRIPCION_FR')
-          final String? descripcionFR,
-      @JsonKey(name: 'DESCRIPCION_DE')
-          final String? descripcionDE,
-      @JsonKey(name: 'DESCRIPCION_CA')
-          final String? descripcionCA,
-      @JsonKey(name: 'DESCRIPCION_GB')
-          final String? descripcionGB,
-      @JsonKey(name: 'DESCRIPCION_HU')
-          final String? descripcionHU,
-      @JsonKey(name: 'DESCRIPCION_IT')
-          final String? descripcionIT,
-      @JsonKey(name: 'DESCRIPCION_NL')
-          final String? descripcionNL,
+      {@JsonKey(name: 'TIPO_CATALOGO_ID') required final String tipoCatalogoId,
+      @JsonKey(name: 'DESCRIPCION_ES') required final String descripcionES,
+      @JsonKey(name: 'DESCRIPCION_EN') final String? descripcionEN,
+      @JsonKey(name: 'DESCRIPCION_FR') final String? descripcionFR,
+      @JsonKey(name: 'DESCRIPCION_DE') final String? descripcionDE,
+      @JsonKey(name: 'DESCRIPCION_CA') final String? descripcionCA,
+      @JsonKey(name: 'DESCRIPCION_GB') final String? descripcionGB,
+      @JsonKey(name: 'DESCRIPCION_HU') final String? descripcionHU,
+      @JsonKey(name: 'DESCRIPCION_IT') final String? descripcionIT,
+      @JsonKey(name: 'DESCRIPCION_NL') final String? descripcionNL,
       @JsonKey(name: 'DESCRIPCION_PL')
-          final String? descripcionPL}) = _$_TipoCatalogoDTO;
+      final String? descripcionPL}) = _$_TipoCatalogoDTO;
   const _TipoCatalogoDTO._() : super._();
 
   factory _TipoCatalogoDTO.fromJson(Map<String, dynamic> json) =

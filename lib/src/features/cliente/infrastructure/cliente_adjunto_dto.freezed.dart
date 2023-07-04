@@ -166,10 +166,9 @@ class _$_ClienteAdjuntoDTO extends _ClienteAdjuntoDTO {
 
 abstract class _ClienteAdjuntoDTO extends ClienteAdjuntoDTO {
   const factory _ClienteAdjuntoDTO(
-      {@JsonKey(name: 'CLIENTE_ID')
-          required final String clienteId,
+      {@JsonKey(name: 'CLIENTE_ID') required final String clienteId,
       @JsonKey(name: 'NOMBRE_ARCHIVO')
-          required final String nombreAdjunto}) = _$_ClienteAdjuntoDTO;
+      required final String nombreAdjunto}) = _$_ClienteAdjuntoDTO;
   const _ClienteAdjuntoDTO._() : super._();
 
   factory _ClienteAdjuntoDTO.fromJson(Map<String, dynamic> json) =

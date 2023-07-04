@@ -499,42 +499,27 @@ class _$_DevolucionDTO extends _DevolucionDTO {
 
 abstract class _DevolucionDTO extends DevolucionDTO {
   const factory _DevolucionDTO(
-      {@JsonKey(name: 'EMPRESA_ID')
-          required final String empresaId,
-      @JsonKey(name: 'DEVOLUCION_ID')
-          required final String id,
+      {@JsonKey(name: 'EMPRESA_ID') required final String empresaId,
+      @JsonKey(name: 'DEVOLUCION_ID') required final String id,
       @JsonKey(name: 'FECHA_DEVOLUCION')
-          required final DateTime fechaDevolucion,
-      @JsonKey(name: 'CLIENTE_ID')
-          final String? clienteId,
-      @JsonKey(name: 'DIRECCION_ID')
-          final String? direccionId,
-      @JsonKey(name: 'NOMBRE')
-          final String? nombre,
-      @JsonKey(name: 'DIRECCION_RECOGIDA1')
-          final String? direccionRecogida1,
-      @JsonKey(name: 'DIRECCION_RECOGIDA2')
-          final String? direccionRecogida2,
-      @JsonKey(name: 'CODIGO_POSTAL')
-          final String? codigoPostal,
-      @JsonKey(name: 'POBLACION')
-          final String? poblacion,
-      @JsonKey(name: 'PAIS_ID')
-          final String? paisId,
-      @JsonKey(name: 'ALMACEN_DESTINO')
-          final String? almacenDestino,
-      @JsonKey(name: 'AGENCIA_TRANSPORTE')
-          final String? agenciaTransporte,
+      required final DateTime fechaDevolucion,
+      @JsonKey(name: 'CLIENTE_ID') final String? clienteId,
+      @JsonKey(name: 'DIRECCION_ID') final String? direccionId,
+      @JsonKey(name: 'NOMBRE') final String? nombre,
+      @JsonKey(name: 'DIRECCION_RECOGIDA1') final String? direccionRecogida1,
+      @JsonKey(name: 'DIRECCION_RECOGIDA2') final String? direccionRecogida2,
+      @JsonKey(name: 'CODIGO_POSTAL') final String? codigoPostal,
+      @JsonKey(name: 'POBLACION') final String? poblacion,
+      @JsonKey(name: 'PAIS_ID') final String? paisId,
+      @JsonKey(name: 'ALMACEN_DESTINO') final String? almacenDestino,
+      @JsonKey(name: 'AGENCIA_TRANSPORTE') final String? agenciaTransporte,
       @JsonKey(name: 'DEVOLUCION_ESTADO_ID')
-          required final String devolucionEstadoId,
-      @JsonKey(name: 'KILOS_DEVOLUCION')
-          required final double kilosDevolucion,
-      @JsonKey(name: 'BULTOS')
-          required final double bultos,
-      @JsonKey(name: 'LAST_UPDATED')
-          required final DateTime lastUpdated,
+      required final String devolucionEstadoId,
+      @JsonKey(name: 'KILOS_DEVOLUCION') required final double kilosDevolucion,
+      @JsonKey(name: 'BULTOS') required final double bultos,
+      @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
       @JsonKey(name: 'DELETED')
-          required final String deleted}) = _$_DevolucionDTO;
+      required final String deleted}) = _$_DevolucionDTO;
   const _DevolucionDTO._() : super._();
 
   factory _DevolucionDTO.fromJson(Map<String, dynamic> json) =

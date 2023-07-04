@@ -160,16 +160,12 @@ class __$$_ArticuloSustitutivoDTOCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ArticuloSustitutivoDTO extends _ArticuloSustitutivoDTO {
   const _$_ArticuloSustitutivoDTO(
-      {@JsonKey(name: 'ARTICULO_ID')
-          required this.articuloId,
+      {@JsonKey(name: 'ARTICULO_ID') required this.articuloId,
       @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO')
-          required this.articuloSustitutivoId,
-      @JsonKey(name: 'ORDEN')
-          required this.orden,
-      @JsonKey(name: 'LAST_UPDATED')
-          required this.lastUpdated,
-      @JsonKey(name: 'DELETED')
-          this.deleted = 'N'})
+      required this.articuloSustitutivoId,
+      @JsonKey(name: 'ORDEN') required this.orden,
+      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+      @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
   factory _$_ArticuloSustitutivoDTO.fromJson(Map<String, dynamic> json) =>
@@ -233,16 +229,13 @@ class _$_ArticuloSustitutivoDTO extends _ArticuloSustitutivoDTO {
 
 abstract class _ArticuloSustitutivoDTO extends ArticuloSustitutivoDTO {
   const factory _ArticuloSustitutivoDTO(
-      {@JsonKey(name: 'ARTICULO_ID')
-          required final String articuloId,
-      @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO')
+          {@JsonKey(name: 'ARTICULO_ID') required final String articuloId,
+          @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO')
           required final String articuloSustitutivoId,
-      @JsonKey(name: 'ORDEN')
-          required final int orden,
-      @JsonKey(name: 'LAST_UPDATED')
-          required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED')
-          final String deleted}) = _$_ArticuloSustitutivoDTO;
+          @JsonKey(name: 'ORDEN') required final int orden,
+          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+          @JsonKey(name: 'DELETED') final String deleted}) =
+      _$_ArticuloSustitutivoDTO;
   const _ArticuloSustitutivoDTO._() : super._();
 
   factory _ArticuloSustitutivoDTO.fromJson(Map<String, dynamic> json) =

@@ -69,42 +69,27 @@ abstract class $VisitaDTOCopyWith<$Res> {
       _$VisitaDTOCopyWithImpl<$Res, VisitaDTO>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'VISITA_ID')
-          String id,
-      @JsonKey(name: 'FECHA')
-          DateTime fecha,
-      @JsonKey(name: 'CLIENTE_ID')
-          String? clienteId,
-      @JsonKey(name: 'CLIENTE_POTENCIAL_SN')
-          String isClienteProvisional,
+      {@JsonKey(name: 'VISITA_ID') String id,
+      @JsonKey(name: 'FECHA') DateTime fecha,
+      @JsonKey(name: 'CLIENTE_ID') String? clienteId,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_SN') String isClienteProvisional,
       @JsonKey(name: 'CLIENTE_POTENCIAL_NOMBRE')
-          String? clienteProvisionalNombre,
-      @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL')
-          String? clienteProvisionalEmail,
+      String? clienteProvisionalNombre,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL') String? clienteProvisionalEmail,
       @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
-          String? clienteProvisionalTelefono,
+      String? clienteProvisionalTelefono,
       @JsonKey(name: 'CLIENTE_POTENCIAL_POBLACION')
-          String? clienteProvisionalPoblacion,
-      @JsonKey(name: 'NUM_EMPL')
-          String numEmpl,
-      @JsonKey(name: 'CONTACTO')
-          String? contacto,
-      @JsonKey(name: 'ATENDIDO_POR')
-          String? atendidoPor,
-      @JsonKey(name: 'RESUMEN')
-          String? resumen,
-      @JsonKey(name: 'MARCAS_COMPETENCIA')
-          String? marcasCompetencia,
-      @JsonKey(name: 'LATITUD')
-          double latitud,
-      @JsonKey(name: 'LONGITUD')
-          double longitud,
-      @JsonKey(name: 'COD_VISITA_APP')
-          String? visitaAppId,
-      @JsonKey(name: 'LAST_UPDATED')
-          DateTime lastUpdated,
-      @JsonKey(name: 'DELETED')
-          String deleted});
+      String? clienteProvisionalPoblacion,
+      @JsonKey(name: 'NUM_EMPL') String numEmpl,
+      @JsonKey(name: 'CONTACTO') String? contacto,
+      @JsonKey(name: 'ATENDIDO_POR') String? atendidoPor,
+      @JsonKey(name: 'RESUMEN') String? resumen,
+      @JsonKey(name: 'MARCAS_COMPETENCIA') String? marcasCompetencia,
+      @JsonKey(name: 'LATITUD') double latitud,
+      @JsonKey(name: 'LONGITUD') double longitud,
+      @JsonKey(name: 'COD_VISITA_APP') String? visitaAppId,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
@@ -224,42 +209,27 @@ abstract class _$$_VisitaDTOCopyWith<$Res> implements $VisitaDTOCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'VISITA_ID')
-          String id,
-      @JsonKey(name: 'FECHA')
-          DateTime fecha,
-      @JsonKey(name: 'CLIENTE_ID')
-          String? clienteId,
-      @JsonKey(name: 'CLIENTE_POTENCIAL_SN')
-          String isClienteProvisional,
+      {@JsonKey(name: 'VISITA_ID') String id,
+      @JsonKey(name: 'FECHA') DateTime fecha,
+      @JsonKey(name: 'CLIENTE_ID') String? clienteId,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_SN') String isClienteProvisional,
       @JsonKey(name: 'CLIENTE_POTENCIAL_NOMBRE')
-          String? clienteProvisionalNombre,
-      @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL')
-          String? clienteProvisionalEmail,
+      String? clienteProvisionalNombre,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL') String? clienteProvisionalEmail,
       @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
-          String? clienteProvisionalTelefono,
+      String? clienteProvisionalTelefono,
       @JsonKey(name: 'CLIENTE_POTENCIAL_POBLACION')
-          String? clienteProvisionalPoblacion,
-      @JsonKey(name: 'NUM_EMPL')
-          String numEmpl,
-      @JsonKey(name: 'CONTACTO')
-          String? contacto,
-      @JsonKey(name: 'ATENDIDO_POR')
-          String? atendidoPor,
-      @JsonKey(name: 'RESUMEN')
-          String? resumen,
-      @JsonKey(name: 'MARCAS_COMPETENCIA')
-          String? marcasCompetencia,
-      @JsonKey(name: 'LATITUD')
-          double latitud,
-      @JsonKey(name: 'LONGITUD')
-          double longitud,
-      @JsonKey(name: 'COD_VISITA_APP')
-          String? visitaAppId,
-      @JsonKey(name: 'LAST_UPDATED')
-          DateTime lastUpdated,
-      @JsonKey(name: 'DELETED')
-          String deleted});
+      String? clienteProvisionalPoblacion,
+      @JsonKey(name: 'NUM_EMPL') String numEmpl,
+      @JsonKey(name: 'CONTACTO') String? contacto,
+      @JsonKey(name: 'ATENDIDO_POR') String? atendidoPor,
+      @JsonKey(name: 'RESUMEN') String? resumen,
+      @JsonKey(name: 'MARCAS_COMPETENCIA') String? marcasCompetencia,
+      @JsonKey(name: 'LATITUD') double latitud,
+      @JsonKey(name: 'LONGITUD') double longitud,
+      @JsonKey(name: 'COD_VISITA_APP') String? visitaAppId,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
@@ -373,42 +343,26 @@ class __$$_VisitaDTOCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_VisitaDTO extends _VisitaDTO {
   const _$_VisitaDTO(
-      {@JsonKey(name: 'VISITA_ID')
-          required this.id,
-      @JsonKey(name: 'FECHA')
-          required this.fecha,
-      @JsonKey(name: 'CLIENTE_ID')
-          this.clienteId,
-      @JsonKey(name: 'CLIENTE_POTENCIAL_SN')
-          required this.isClienteProvisional,
-      @JsonKey(name: 'CLIENTE_POTENCIAL_NOMBRE')
-          this.clienteProvisionalNombre,
-      @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL')
-          this.clienteProvisionalEmail,
+      {@JsonKey(name: 'VISITA_ID') required this.id,
+      @JsonKey(name: 'FECHA') required this.fecha,
+      @JsonKey(name: 'CLIENTE_ID') this.clienteId,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_SN') required this.isClienteProvisional,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_NOMBRE') this.clienteProvisionalNombre,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL') this.clienteProvisionalEmail,
       @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
-          this.clienteProvisionalTelefono,
+      this.clienteProvisionalTelefono,
       @JsonKey(name: 'CLIENTE_POTENCIAL_POBLACION')
-          this.clienteProvisionalPoblacion,
-      @JsonKey(name: 'NUM_EMPL')
-          required this.numEmpl,
-      @JsonKey(name: 'CONTACTO')
-          this.contacto,
-      @JsonKey(name: 'ATENDIDO_POR')
-          this.atendidoPor,
-      @JsonKey(name: 'RESUMEN')
-          this.resumen,
-      @JsonKey(name: 'MARCAS_COMPETENCIA')
-          this.marcasCompetencia,
-      @JsonKey(name: 'LATITUD')
-          required this.latitud,
-      @JsonKey(name: 'LONGITUD')
-          required this.longitud,
-      @JsonKey(name: 'COD_VISITA_APP')
-          this.visitaAppId,
-      @JsonKey(name: 'LAST_UPDATED')
-          required this.lastUpdated,
-      @JsonKey(name: 'DELETED')
-          this.deleted = 'N'})
+      this.clienteProvisionalPoblacion,
+      @JsonKey(name: 'NUM_EMPL') required this.numEmpl,
+      @JsonKey(name: 'CONTACTO') this.contacto,
+      @JsonKey(name: 'ATENDIDO_POR') this.atendidoPor,
+      @JsonKey(name: 'RESUMEN') this.resumen,
+      @JsonKey(name: 'MARCAS_COMPETENCIA') this.marcasCompetencia,
+      @JsonKey(name: 'LATITUD') required this.latitud,
+      @JsonKey(name: 'LONGITUD') required this.longitud,
+      @JsonKey(name: 'COD_VISITA_APP') this.visitaAppId,
+      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+      @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
   factory _$_VisitaDTO.fromJson(Map<String, dynamic> json) =>
@@ -556,42 +510,29 @@ class _$_VisitaDTO extends _VisitaDTO {
 
 abstract class _VisitaDTO extends VisitaDTO {
   const factory _VisitaDTO(
-      {@JsonKey(name: 'VISITA_ID')
-          required final String id,
-      @JsonKey(name: 'FECHA')
-          required final DateTime fecha,
-      @JsonKey(name: 'CLIENTE_ID')
-          final String? clienteId,
+      {@JsonKey(name: 'VISITA_ID') required final String id,
+      @JsonKey(name: 'FECHA') required final DateTime fecha,
+      @JsonKey(name: 'CLIENTE_ID') final String? clienteId,
       @JsonKey(name: 'CLIENTE_POTENCIAL_SN')
-          required final String isClienteProvisional,
+      required final String isClienteProvisional,
       @JsonKey(name: 'CLIENTE_POTENCIAL_NOMBRE')
-          final String? clienteProvisionalNombre,
+      final String? clienteProvisionalNombre,
       @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL')
-          final String? clienteProvisionalEmail,
+      final String? clienteProvisionalEmail,
       @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
-          final String? clienteProvisionalTelefono,
+      final String? clienteProvisionalTelefono,
       @JsonKey(name: 'CLIENTE_POTENCIAL_POBLACION')
-          final String? clienteProvisionalPoblacion,
-      @JsonKey(name: 'NUM_EMPL')
-          required final String numEmpl,
-      @JsonKey(name: 'CONTACTO')
-          final String? contacto,
-      @JsonKey(name: 'ATENDIDO_POR')
-          final String? atendidoPor,
-      @JsonKey(name: 'RESUMEN')
-          final String? resumen,
-      @JsonKey(name: 'MARCAS_COMPETENCIA')
-          final String? marcasCompetencia,
-      @JsonKey(name: 'LATITUD')
-          required final double latitud,
-      @JsonKey(name: 'LONGITUD')
-          required final double longitud,
-      @JsonKey(name: 'COD_VISITA_APP')
-          final String? visitaAppId,
-      @JsonKey(name: 'LAST_UPDATED')
-          required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED')
-          final String deleted}) = _$_VisitaDTO;
+      final String? clienteProvisionalPoblacion,
+      @JsonKey(name: 'NUM_EMPL') required final String numEmpl,
+      @JsonKey(name: 'CONTACTO') final String? contacto,
+      @JsonKey(name: 'ATENDIDO_POR') final String? atendidoPor,
+      @JsonKey(name: 'RESUMEN') final String? resumen,
+      @JsonKey(name: 'MARCAS_COMPETENCIA') final String? marcasCompetencia,
+      @JsonKey(name: 'LATITUD') required final double latitud,
+      @JsonKey(name: 'LONGITUD') required final double longitud,
+      @JsonKey(name: 'COD_VISITA_APP') final String? visitaAppId,
+      @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') final String deleted}) = _$_VisitaDTO;
   const _VisitaDTO._() : super._();
 
   factory _VisitaDTO.fromJson(Map<String, dynamic> json) =

@@ -648,56 +648,32 @@ class _$_PedidoVentaLocalDTO extends _PedidoVentaLocalDTO {
 
 abstract class _PedidoVentaLocalDTO extends PedidoVentaLocalDTO {
   const factory _PedidoVentaLocalDTO(
-      {@JsonKey(name: 'USUARIO_ID')
-          final String? usuarioId,
-      @JsonKey(name: 'PEDIDO_ID')
-          final String? pedidoId,
-      @JsonKey(name: 'EMPRESA_ID')
-          final String? empresaId,
-      @JsonKey(name: 'PEDIDO_APP_ID')
-          required final String pedidoVentaAppId,
-      @JsonKey(name: 'CLIENTE_ID')
-          required final String clienteId,
-      @JsonKey(name: 'NOMBRE_CLIENTE')
-          required final String nombreCliente,
-      @JsonKey(name: 'DIRECCION_ID')
-          final String? direccionId,
-      @JsonKey(name: 'DIRECCION1')
-          final String? direccion1,
-      @JsonKey(name: 'DIRECCION2')
-          final String? direccion2,
-      @JsonKey(name: 'CODIGO_POSTAL')
-          final String? codigoPostal,
-      @JsonKey(name: 'POBLACION')
-          final String? poblacion,
-      @JsonKey(name: 'PROVINCIA')
-          final String? provincia,
-      @JsonKey(name: 'PAIS_ID')
-          final String? paisId,
-      @JsonKey(name: 'DIVISA_ID')
-          final String? divisaId,
-      @JsonKey(name: 'PEDIDO_CLIENTE')
-          final String? pedidoCliente,
-      @JsonKey(name: 'OBSERVACIONES')
-          final String? observaciones,
-      @JsonKey(name: 'OFERTA_SN')
-          required final String oferta,
-      @JsonKey(name: 'OFERTA_FECHA_HASTA')
-          final DateTime? ofertaFechaHasta,
-      @JsonKey(name: 'FECHA_ALTA')
-          required final DateTime fechaAlta,
-      @JsonKey(name: 'IVA')
-          required final double iva,
-      @JsonKey(name: 'DTO_BONIFICACION')
-          required final double dtoBonificacion,
-      @JsonKey(name: 'ENVIADA')
-          required final String enviada,
-      @JsonKey(name: 'TRATADA')
-          required final String tratada,
-      @JsonKey(name: 'BORRADOR')
-          required final String borrador,
+      {@JsonKey(name: 'USUARIO_ID') final String? usuarioId,
+      @JsonKey(name: 'PEDIDO_ID') final String? pedidoId,
+      @JsonKey(name: 'EMPRESA_ID') final String? empresaId,
+      @JsonKey(name: 'PEDIDO_APP_ID') required final String pedidoVentaAppId,
+      @JsonKey(name: 'CLIENTE_ID') required final String clienteId,
+      @JsonKey(name: 'NOMBRE_CLIENTE') required final String nombreCliente,
+      @JsonKey(name: 'DIRECCION_ID') final String? direccionId,
+      @JsonKey(name: 'DIRECCION1') final String? direccion1,
+      @JsonKey(name: 'DIRECCION2') final String? direccion2,
+      @JsonKey(name: 'CODIGO_POSTAL') final String? codigoPostal,
+      @JsonKey(name: 'POBLACION') final String? poblacion,
+      @JsonKey(name: 'PROVINCIA') final String? provincia,
+      @JsonKey(name: 'PAIS_ID') final String? paisId,
+      @JsonKey(name: 'DIVISA_ID') final String? divisaId,
+      @JsonKey(name: 'PEDIDO_CLIENTE') final String? pedidoCliente,
+      @JsonKey(name: 'OBSERVACIONES') final String? observaciones,
+      @JsonKey(name: 'OFERTA_SN') required final String oferta,
+      @JsonKey(name: 'OFERTA_FECHA_HASTA') final DateTime? ofertaFechaHasta,
+      @JsonKey(name: 'FECHA_ALTA') required final DateTime fechaAlta,
+      @JsonKey(name: 'IVA') required final double iva,
+      @JsonKey(name: 'DTO_BONIFICACION') required final double dtoBonificacion,
+      @JsonKey(name: 'ENVIADA') required final String enviada,
+      @JsonKey(name: 'TRATADA') required final String tratada,
+      @JsonKey(name: 'BORRADOR') required final String borrador,
       @JsonKey(name: 'ERROR_SYNC')
-          final String? errorSyncMessage}) = _$_PedidoVentaLocalDTO;
+      final String? errorSyncMessage}) = _$_PedidoVentaLocalDTO;
   const _PedidoVentaLocalDTO._() : super._();
 
   factory _PedidoVentaLocalDTO.fromJson(Map<String, dynamic> json) =

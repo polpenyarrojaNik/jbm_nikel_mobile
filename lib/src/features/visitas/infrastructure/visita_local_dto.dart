@@ -17,56 +17,38 @@ class VisitaLocalDTO
     implements Insertable<VisitaLocalDTO> {
   const VisitaLocalDTO._();
   const factory VisitaLocalDTO({
-    @JsonKey(name: 'COD_VISITA_APP')
-        String? visitaAppId,
-    @JsonKey(name: 'FECHA')
-        required DateTime fecha,
-    @JsonKey(name: 'CLIENTE_ID')
-        String? clienteId,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_SN')
-        required String isClienteProvisional,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_NOMBRE')
-        String? clienteProvisionalNombre,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL')
-        String? clienteProvisionalEmail,
+    @JsonKey(name: 'COD_VISITA_APP') String? visitaAppId,
+    @JsonKey(name: 'FECHA') required DateTime fecha,
+    @JsonKey(name: 'CLIENTE_ID') String? clienteId,
+    @JsonKey(name: 'CLIENTE_POTENCIAL_SN') required String isClienteProvisional,
+    @JsonKey(name: 'CLIENTE_POTENCIAL_NOMBRE') String? clienteProvisionalNombre,
+    @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL') String? clienteProvisionalEmail,
     @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
-        String? clienteProvisionalTelefono,
+    String? clienteProvisionalTelefono,
     @JsonKey(name: 'CLIENTE_POTENCIAL_DIRECCION1')
-        String? clienteProvisionalDireccion1,
+    String? clienteProvisionalDireccion1,
     @JsonKey(name: 'CLIENTE_POTENCIAL_DIRECCION2')
-        String? clienteProvisionalDireccion2,
+    String? clienteProvisionalDireccion2,
     @JsonKey(name: 'CLIENTE_POTENCIAL_COD_POS')
-        String? clienteProvisionalCodigoPostal,
+    String? clienteProvisionalCodigoPostal,
     @JsonKey(name: 'CLIENTE_POTENCIAL_POBLACION')
-        String? clienteProvisionalPoblacion,
+    String? clienteProvisionalPoblacion,
     @JsonKey(name: 'CLIENTE_POTENCIAL_PROVINCIA_ID')
-        String? clienteProvisionalProvinciaId,
+    String? clienteProvisionalProvinciaId,
     @JsonKey(name: 'CLIENTE_POTENCIAL_REGION_ID')
-        String? clienteProvisionalRegionId,
+    String? clienteProvisionalRegionId,
     @JsonKey(name: 'CLIENTE_POTENCIAL_PAIS_ID')
-        String? clienteProvisionalPaisId,
-    @JsonKey(name: 'NUM_EMPL')
-        required String numEmpl,
-    @JsonKey(name: 'CONTACTO')
-        required String contacto,
-    @JsonKey(name: 'ATENDIDO_POR')
-        String? atendidoPor,
-    @JsonKey(name: 'RESUMEN')
-        String? resumen,
-    @JsonKey(name: 'MARCAS_COMPETENCIA')
-        String? marcasCompetencia,
-    @JsonKey(name: 'LATITUD')
-        required double latitud,
-    @JsonKey(name: 'LONGITUD')
-        required double longitud,
-    @JsonKey(name: 'ENVIADA')
-    @Default('N')
-        String enviada,
-    @JsonKey(name: 'TRATADA')
-    @Default('N')
-        String tratada,
-    @JsonKey(name: 'ERROR_SYNC')
-        String? errorSyncMessage,
+    String? clienteProvisionalPaisId,
+    @JsonKey(name: 'NUM_EMPL') required String numEmpl,
+    @JsonKey(name: 'CONTACTO') required String contacto,
+    @JsonKey(name: 'ATENDIDO_POR') String? atendidoPor,
+    @JsonKey(name: 'RESUMEN') String? resumen,
+    @JsonKey(name: 'MARCAS_COMPETENCIA') String? marcasCompetencia,
+    @JsonKey(name: 'LATITUD') required double latitud,
+    @JsonKey(name: 'LONGITUD') required double longitud,
+    @JsonKey(name: 'ENVIADA') @Default('N') String enviada,
+    @JsonKey(name: 'TRATADA') @Default('N') String tratada,
+    @JsonKey(name: 'ERROR_SYNC') String? errorSyncMessage,
   }) = _VisitaLocalDTO;
 
   factory VisitaLocalDTO.fromJson(Map<String, dynamic> json) =>

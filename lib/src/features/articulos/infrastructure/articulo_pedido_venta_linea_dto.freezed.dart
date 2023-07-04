@@ -448,36 +448,23 @@ class _$_ArticuloPedidoVentaLineaDTO extends _ArticuloPedidoVentaLineaDTO {
 abstract class _ArticuloPedidoVentaLineaDTO
     extends ArticuloPedidoVentaLineaDTO {
   const factory _ArticuloPedidoVentaLineaDTO(
-      {@JsonKey(name: 'EMPRESA_ID')
-          required final String empresaId,
-      @JsonKey(name: 'PEDIDO_ID')
-          required final String pedidoVentaId,
-      @JsonKey(name: 'PEDIDO_LINEA_ID')
-          required final String id,
-      @JsonKey(name: 'ARTICULO_ID')
-          required final String articuloId,
-      @JsonKey(name: 'ARTICULO_DESCRIPCION')
+          {@JsonKey(name: 'EMPRESA_ID') required final String empresaId,
+          @JsonKey(name: 'PEDIDO_ID') required final String pedidoVentaId,
+          @JsonKey(name: 'PEDIDO_LINEA_ID') required final String id,
+          @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
+          @JsonKey(name: 'ARTICULO_DESCRIPCION')
           required final String articuloDescription,
-      @JsonKey(name: 'CLIENTE_ID')
-          required final String clienteId,
-      @JsonKey(name: 'NOMRE_CLIENTE')
-          required final String nombreCliente,
-      @JsonKey(name: 'CANTIDAD')
-          required final int cantidad,
-      @JsonKey(name: 'PRECIO_DIVISA')
-          required final double precioDivisa,
-      @JsonKey(name: 'TIPO_PRECIO')
-          required final int tipoPrecio,
-      @JsonKey(name: 'DESCUENTO1')
-          required final double descuento1,
-      @JsonKey(name: 'DESCUENTO2')
-          required final double descuento2,
-      @JsonKey(name: 'DESCUENTO3')
-          required final double descuento3,
-      @JsonKey(name: 'LAST_UPDATED')
-          required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED')
-          required final String deleted}) = _$_ArticuloPedidoVentaLineaDTO;
+          @JsonKey(name: 'CLIENTE_ID') required final String clienteId,
+          @JsonKey(name: 'NOMRE_CLIENTE') required final String nombreCliente,
+          @JsonKey(name: 'CANTIDAD') required final int cantidad,
+          @JsonKey(name: 'PRECIO_DIVISA') required final double precioDivisa,
+          @JsonKey(name: 'TIPO_PRECIO') required final int tipoPrecio,
+          @JsonKey(name: 'DESCUENTO1') required final double descuento1,
+          @JsonKey(name: 'DESCUENTO2') required final double descuento2,
+          @JsonKey(name: 'DESCUENTO3') required final double descuento3,
+          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+          @JsonKey(name: 'DELETED') required final String deleted}) =
+      _$_ArticuloPedidoVentaLineaDTO;
   const _ArticuloPedidoVentaLineaDTO._() : super._();
 
   factory _ArticuloPedidoVentaLineaDTO.fromJson(Map<String, dynamic> json) =

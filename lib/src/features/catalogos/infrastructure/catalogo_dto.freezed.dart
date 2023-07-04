@@ -56,28 +56,18 @@ abstract class $CatalogoDTOCopyWith<$Res> {
       _$CatalogoDTOCopyWithImpl<$Res, CatalogoDTO>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'CATALOGO_ID')
-          int catalogoId,
-      @JsonKey(name: 'NOMBRE')
-          String nombre,
-      @JsonKey(name: 'IDIOMA_ID')
-          String idiomaId,
-      @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID')
-          String tipoPrecioCatalogoId,
+      {@JsonKey(name: 'CATALOGO_ID') int catalogoId,
+      @JsonKey(name: 'NOMBRE') String nombre,
+      @JsonKey(name: 'IDIOMA_ID') String idiomaId,
+      @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID') String tipoPrecioCatalogoId,
       @JsonKey(name: 'TIPO_PRECIO_CATALOGO_NOMBRE')
-          String tipoPrecioCatalogoNombre,
-      @JsonKey(name: 'TIPO_CATALOGO_ID')
-          String tipoCatalogoId,
-      @JsonKey(name: 'TAG_BUSQUEDA')
-          String tagBusqueda,
-      @JsonKey(name: 'ORDEN')
-          int orden,
-      @JsonKey(name: 'NOMBRE_FICHERO_PORTADA')
-          String nombreFicheroPortada,
-      @JsonKey(name: 'NOMBRE_FICHERO_CATALOGO')
-          String nombreFicheroCatalogo,
-      @JsonKey(name: 'DESCARGA_SN')
-          String descarga});
+      String tipoPrecioCatalogoNombre,
+      @JsonKey(name: 'TIPO_CATALOGO_ID') String tipoCatalogoId,
+      @JsonKey(name: 'TAG_BUSQUEDA') String tagBusqueda,
+      @JsonKey(name: 'ORDEN') int orden,
+      @JsonKey(name: 'NOMBRE_FICHERO_PORTADA') String nombreFicheroPortada,
+      @JsonKey(name: 'NOMBRE_FICHERO_CATALOGO') String nombreFicheroCatalogo,
+      @JsonKey(name: 'DESCARGA_SN') String descarga});
 }
 
 /// @nodoc
@@ -163,28 +153,18 @@ abstract class _$$_CatalogoDTOCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'CATALOGO_ID')
-          int catalogoId,
-      @JsonKey(name: 'NOMBRE')
-          String nombre,
-      @JsonKey(name: 'IDIOMA_ID')
-          String idiomaId,
-      @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID')
-          String tipoPrecioCatalogoId,
+      {@JsonKey(name: 'CATALOGO_ID') int catalogoId,
+      @JsonKey(name: 'NOMBRE') String nombre,
+      @JsonKey(name: 'IDIOMA_ID') String idiomaId,
+      @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID') String tipoPrecioCatalogoId,
       @JsonKey(name: 'TIPO_PRECIO_CATALOGO_NOMBRE')
-          String tipoPrecioCatalogoNombre,
-      @JsonKey(name: 'TIPO_CATALOGO_ID')
-          String tipoCatalogoId,
-      @JsonKey(name: 'TAG_BUSQUEDA')
-          String tagBusqueda,
-      @JsonKey(name: 'ORDEN')
-          int orden,
-      @JsonKey(name: 'NOMBRE_FICHERO_PORTADA')
-          String nombreFicheroPortada,
-      @JsonKey(name: 'NOMBRE_FICHERO_CATALOGO')
-          String nombreFicheroCatalogo,
-      @JsonKey(name: 'DESCARGA_SN')
-          String descarga});
+      String tipoPrecioCatalogoNombre,
+      @JsonKey(name: 'TIPO_CATALOGO_ID') String tipoCatalogoId,
+      @JsonKey(name: 'TAG_BUSQUEDA') String tagBusqueda,
+      @JsonKey(name: 'ORDEN') int orden,
+      @JsonKey(name: 'NOMBRE_FICHERO_PORTADA') String nombreFicheroPortada,
+      @JsonKey(name: 'NOMBRE_FICHERO_CATALOGO') String nombreFicheroCatalogo,
+      @JsonKey(name: 'DESCARGA_SN') String descarga});
 }
 
 /// @nodoc
@@ -263,28 +243,21 @@ class __$$_CatalogoDTOCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_CatalogoDTO extends _CatalogoDTO {
   const _$_CatalogoDTO(
-      {@JsonKey(name: 'CATALOGO_ID')
-          required this.catalogoId,
-      @JsonKey(name: 'NOMBRE')
-          required this.nombre,
-      @JsonKey(name: 'IDIOMA_ID')
-          required this.idiomaId,
+      {@JsonKey(name: 'CATALOGO_ID') required this.catalogoId,
+      @JsonKey(name: 'NOMBRE') required this.nombre,
+      @JsonKey(name: 'IDIOMA_ID') required this.idiomaId,
       @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID')
-          required this.tipoPrecioCatalogoId,
+      required this.tipoPrecioCatalogoId,
       @JsonKey(name: 'TIPO_PRECIO_CATALOGO_NOMBRE')
-          required this.tipoPrecioCatalogoNombre,
-      @JsonKey(name: 'TIPO_CATALOGO_ID')
-          required this.tipoCatalogoId,
-      @JsonKey(name: 'TAG_BUSQUEDA')
-          required this.tagBusqueda,
-      @JsonKey(name: 'ORDEN')
-          required this.orden,
+      required this.tipoPrecioCatalogoNombre,
+      @JsonKey(name: 'TIPO_CATALOGO_ID') required this.tipoCatalogoId,
+      @JsonKey(name: 'TAG_BUSQUEDA') required this.tagBusqueda,
+      @JsonKey(name: 'ORDEN') required this.orden,
       @JsonKey(name: 'NOMBRE_FICHERO_PORTADA')
-          required this.nombreFicheroPortada,
+      required this.nombreFicheroPortada,
       @JsonKey(name: 'NOMBRE_FICHERO_CATALOGO')
-          required this.nombreFicheroCatalogo,
-      @JsonKey(name: 'DESCARGA_SN')
-          required this.descarga})
+      required this.nombreFicheroCatalogo,
+      @JsonKey(name: 'DESCARGA_SN') required this.descarga})
       : super._();
 
   factory _$_CatalogoDTO.fromJson(Map<String, dynamic> json) =>
@@ -389,28 +362,22 @@ class _$_CatalogoDTO extends _CatalogoDTO {
 
 abstract class _CatalogoDTO extends CatalogoDTO {
   const factory _CatalogoDTO(
-      {@JsonKey(name: 'CATALOGO_ID')
-          required final int catalogoId,
-      @JsonKey(name: 'NOMBRE')
-          required final String nombre,
-      @JsonKey(name: 'IDIOMA_ID')
-          required final String idiomaId,
+      {@JsonKey(name: 'CATALOGO_ID') required final int catalogoId,
+      @JsonKey(name: 'NOMBRE') required final String nombre,
+      @JsonKey(name: 'IDIOMA_ID') required final String idiomaId,
       @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID')
-          required final String tipoPrecioCatalogoId,
+      required final String tipoPrecioCatalogoId,
       @JsonKey(name: 'TIPO_PRECIO_CATALOGO_NOMBRE')
-          required final String tipoPrecioCatalogoNombre,
-      @JsonKey(name: 'TIPO_CATALOGO_ID')
-          required final String tipoCatalogoId,
-      @JsonKey(name: 'TAG_BUSQUEDA')
-          required final String tagBusqueda,
-      @JsonKey(name: 'ORDEN')
-          required final int orden,
+      required final String tipoPrecioCatalogoNombre,
+      @JsonKey(name: 'TIPO_CATALOGO_ID') required final String tipoCatalogoId,
+      @JsonKey(name: 'TAG_BUSQUEDA') required final String tagBusqueda,
+      @JsonKey(name: 'ORDEN') required final int orden,
       @JsonKey(name: 'NOMBRE_FICHERO_PORTADA')
-          required final String nombreFicheroPortada,
+      required final String nombreFicheroPortada,
       @JsonKey(name: 'NOMBRE_FICHERO_CATALOGO')
-          required final String nombreFicheroCatalogo,
+      required final String nombreFicheroCatalogo,
       @JsonKey(name: 'DESCARGA_SN')
-          required final String descarga}) = _$_CatalogoDTO;
+      required final String descarga}) = _$_CatalogoDTO;
   const _CatalogoDTO._() : super._();
 
   factory _CatalogoDTO.fromJson(Map<String, dynamic> json) =

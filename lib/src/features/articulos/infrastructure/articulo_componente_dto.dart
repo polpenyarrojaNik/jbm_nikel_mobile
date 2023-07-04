@@ -15,47 +15,27 @@ class ArticuloComponenteDTO
     implements Insertable<ArticuloComponenteDTO> {
   const ArticuloComponenteDTO._();
   const factory ArticuloComponenteDTO({
-    @JsonKey(name: 'ARTICULO_ID')
-        required String articuloId,
+    @JsonKey(name: 'ARTICULO_ID') required String articuloId,
     @JsonKey(name: 'ARTICULO_COMPONENTE_ID')
-        required String articuloComponenteId,
-    @JsonKey(name: 'CANTIDAD')
-        required int cantidad,
-    @JsonKey(name: 'DESCRIPCION_ES')
-        required String descripcionES,
-    @JsonKey(name: 'DESCRIPCION_EN')
-        String? descripcionEN,
-    @JsonKey(name: 'DESCRIPCION_FR')
-        String? descripcionFR,
-    @JsonKey(name: 'DESCRIPCION_DE')
-        String? descripcionDE,
-    @JsonKey(name: 'DESCRIPCION_CA')
-        String? descripcionCA,
-    @JsonKey(name: 'DESCRIPCION_GB')
-        String? descripcionGB,
-    @JsonKey(name: 'DESCRIPCION_HU')
-        String? descripcionHU,
-    @JsonKey(name: 'DESCRIPCION_IT')
-        String? descripcionIT,
-    @JsonKey(name: 'DESCRIPCION_NL')
-        String? descripcionNL,
-    @JsonKey(name: 'DESCRIPCION_PL')
-        String? descripcionPL,
-    @JsonKey(name: 'DESCRIPCION_PT')
-        String? descripcionPT,
-    @JsonKey(name: 'DESCRIPCION_RO')
-        String? descripcionRO,
-    @JsonKey(name: 'DESCRIPCION_RU')
-        String? descripcionRU,
-    @JsonKey(name: 'DESCRIPCION_CN')
-        String? descripcionCN,
-    @JsonKey(name: 'DESCRIPCION_EL')
-        String? descripcionEL,
-    @JsonKey(name: 'LAST_UPDATED')
-        required DateTime lastUpdated,
-    @JsonKey(name: 'DELETED')
-    @Default('N')
-        String deleted,
+    required String articuloComponenteId,
+    @JsonKey(name: 'CANTIDAD') required int cantidad,
+    @JsonKey(name: 'DESCRIPCION_ES') required String descripcionES,
+    @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
+    @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
+    @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
+    @JsonKey(name: 'DESCRIPCION_CA') String? descripcionCA,
+    @JsonKey(name: 'DESCRIPCION_GB') String? descripcionGB,
+    @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
+    @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
+    @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
+    @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
+    @JsonKey(name: 'DESCRIPCION_PT') String? descripcionPT,
+    @JsonKey(name: 'DESCRIPCION_RO') String? descripcionRO,
+    @JsonKey(name: 'DESCRIPCION_RU') String? descripcionRU,
+    @JsonKey(name: 'DESCRIPCION_CN') String? descripcionCN,
+    @JsonKey(name: 'DESCRIPCION_EL') String? descripcionEL,
+    @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _ArticuloComponenteDTO;
 
   factory ArticuloComponenteDTO.fromJson(Map<String, dynamic> json) =>

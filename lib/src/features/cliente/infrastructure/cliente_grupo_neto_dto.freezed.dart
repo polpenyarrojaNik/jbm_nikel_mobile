@@ -171,18 +171,13 @@ class __$$_ClienteGrupoNetoDTOCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ClienteGrupoNetoDTO extends _ClienteGrupoNetoDTO {
   const _$_ClienteGrupoNetoDTO(
-      {@JsonKey(name: 'CLIENTE_ID')
-          required this.clienteId,
-      @JsonKey(name: 'GRUPO_NETO_ID')
-          required this.grupoNetoId,
+      {@JsonKey(name: 'CLIENTE_ID') required this.clienteId,
+      @JsonKey(name: 'GRUPO_NETO_ID') required this.grupoNetoId,
       @JsonKey(name: 'GRUPO_NETO_DESCRIPCION')
-          required this.grupoNetoDescripcion,
-      @JsonKey(name: 'DTO_ADICIONAL')
-          required this.dtoAdicional,
-      @JsonKey(name: 'LAST_UPDATED')
-          required this.lastUpdated,
-      @JsonKey(name: 'DELETED')
-          this.deleted = 'N'})
+      required this.grupoNetoDescripcion,
+      @JsonKey(name: 'DTO_ADICIONAL') required this.dtoAdicional,
+      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+      @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
   factory _$_ClienteGrupoNetoDTO.fromJson(Map<String, dynamic> json) =>
@@ -252,18 +247,13 @@ class _$_ClienteGrupoNetoDTO extends _ClienteGrupoNetoDTO {
 
 abstract class _ClienteGrupoNetoDTO extends ClienteGrupoNetoDTO {
   const factory _ClienteGrupoNetoDTO(
-      {@JsonKey(name: 'CLIENTE_ID')
-          required final String clienteId,
-      @JsonKey(name: 'GRUPO_NETO_ID')
-          required final String grupoNetoId,
+      {@JsonKey(name: 'CLIENTE_ID') required final String clienteId,
+      @JsonKey(name: 'GRUPO_NETO_ID') required final String grupoNetoId,
       @JsonKey(name: 'GRUPO_NETO_DESCRIPCION')
-          required final String grupoNetoDescripcion,
-      @JsonKey(name: 'DTO_ADICIONAL')
-          required final double dtoAdicional,
-      @JsonKey(name: 'LAST_UPDATED')
-          required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED')
-          final String deleted}) = _$_ClienteGrupoNetoDTO;
+      required final String grupoNetoDescripcion,
+      @JsonKey(name: 'DTO_ADICIONAL') required final double dtoAdicional,
+      @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') final String deleted}) = _$_ClienteGrupoNetoDTO;
   const _ClienteGrupoNetoDTO._() : super._();
 
   factory _ClienteGrupoNetoDTO.fromJson(Map<String, dynamic> json) =

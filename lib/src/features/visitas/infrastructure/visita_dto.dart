@@ -12,43 +12,26 @@ part 'visita_dto.g.dart';
 class VisitaDTO with _$VisitaDTO implements Insertable<VisitaDTO> {
   const VisitaDTO._();
   const factory VisitaDTO({
-    @JsonKey(name: 'VISITA_ID')
-        required String id,
-    @JsonKey(name: 'FECHA')
-        required DateTime fecha,
-    @JsonKey(name: 'CLIENTE_ID')
-        String? clienteId,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_SN')
-        required String isClienteProvisional,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_NOMBRE')
-        String? clienteProvisionalNombre,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL')
-        String? clienteProvisionalEmail,
+    @JsonKey(name: 'VISITA_ID') required String id,
+    @JsonKey(name: 'FECHA') required DateTime fecha,
+    @JsonKey(name: 'CLIENTE_ID') String? clienteId,
+    @JsonKey(name: 'CLIENTE_POTENCIAL_SN') required String isClienteProvisional,
+    @JsonKey(name: 'CLIENTE_POTENCIAL_NOMBRE') String? clienteProvisionalNombre,
+    @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL') String? clienteProvisionalEmail,
     @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
-        String? clienteProvisionalTelefono,
+    String? clienteProvisionalTelefono,
     @JsonKey(name: 'CLIENTE_POTENCIAL_POBLACION')
-        String? clienteProvisionalPoblacion,
-    @JsonKey(name: 'NUM_EMPL')
-        required String numEmpl,
-    @JsonKey(name: 'CONTACTO')
-        String? contacto,
-    @JsonKey(name: 'ATENDIDO_POR')
-        String? atendidoPor,
-    @JsonKey(name: 'RESUMEN')
-        String? resumen,
-    @JsonKey(name: 'MARCAS_COMPETENCIA')
-        String? marcasCompetencia,
-    @JsonKey(name: 'LATITUD')
-        required double latitud,
-    @JsonKey(name: 'LONGITUD')
-        required double longitud,
-    @JsonKey(name: 'COD_VISITA_APP')
-        String? visitaAppId,
-    @JsonKey(name: 'LAST_UPDATED')
-        required DateTime lastUpdated,
-    @JsonKey(name: 'DELETED')
-    @Default('N')
-        String deleted,
+    String? clienteProvisionalPoblacion,
+    @JsonKey(name: 'NUM_EMPL') required String numEmpl,
+    @JsonKey(name: 'CONTACTO') String? contacto,
+    @JsonKey(name: 'ATENDIDO_POR') String? atendidoPor,
+    @JsonKey(name: 'RESUMEN') String? resumen,
+    @JsonKey(name: 'MARCAS_COMPETENCIA') String? marcasCompetencia,
+    @JsonKey(name: 'LATITUD') required double latitud,
+    @JsonKey(name: 'LONGITUD') required double longitud,
+    @JsonKey(name: 'COD_VISITA_APP') String? visitaAppId,
+    @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _VisitaDTO;
 
   factory VisitaDTO.fromJson(Map<String, dynamic> json) =>

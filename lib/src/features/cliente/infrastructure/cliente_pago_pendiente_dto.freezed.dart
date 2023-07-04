@@ -59,30 +59,19 @@ abstract class $ClientePagoPendienteDTOCopyWith<$Res> {
       _$ClientePagoPendienteDTOCopyWithImpl<$Res, ClientePagoPendienteDTO>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'CLIENTE_ID')
-          String clienteId,
-      @JsonKey(name: 'EFECTO_ID')
-          String efectoId,
-      @JsonKey(name: 'FACTURA_ID')
-          String? facutaId,
-      @JsonKey(name: 'FECHA_FACUTRA')
-          DateTime? fechaFactura,
-      @JsonKey(name: 'FECHA_VENCIMIENTO')
-          DateTime? fechaExpiracion,
-      @JsonKey(name: 'METODO_COBRO_ID')
-          String? metodoDeCobroId,
-      @JsonKey(name: 'ESTADO_COBRO_ID')
-          String? estadoCobroId,
-      @JsonKey(name: 'IMPORTE')
-          double? importe,
+      {@JsonKey(name: 'CLIENTE_ID') String clienteId,
+      @JsonKey(name: 'EFECTO_ID') String efectoId,
+      @JsonKey(name: 'FACTURA_ID') String? facutaId,
+      @JsonKey(name: 'FECHA_FACUTRA') DateTime? fechaFactura,
+      @JsonKey(name: 'FECHA_VENCIMIENTO') DateTime? fechaExpiracion,
+      @JsonKey(name: 'METODO_COBRO_ID') String? metodoDeCobroId,
+      @JsonKey(name: 'ESTADO_COBRO_ID') String? estadoCobroId,
+      @JsonKey(name: 'IMPORTE') double? importe,
       @JsonKey(name: 'FECHA_VENCIMIENTO_INICIAL')
-          DateTime? fechaExpiracionInicial,
-      @JsonKey(name: 'VENCIDO_JBM')
-          String? vencidoJBM,
-      @JsonKey(name: 'LAST_UPDATED')
-          DateTime lastUpdated,
-      @JsonKey(name: 'DELETED')
-          String deleted});
+      DateTime? fechaExpiracionInicial,
+      @JsonKey(name: 'VENCIDO_JBM') String? vencidoJBM,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
@@ -174,30 +163,19 @@ abstract class _$$_ClientePagoPendienteDTOCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'CLIENTE_ID')
-          String clienteId,
-      @JsonKey(name: 'EFECTO_ID')
-          String efectoId,
-      @JsonKey(name: 'FACTURA_ID')
-          String? facutaId,
-      @JsonKey(name: 'FECHA_FACUTRA')
-          DateTime? fechaFactura,
-      @JsonKey(name: 'FECHA_VENCIMIENTO')
-          DateTime? fechaExpiracion,
-      @JsonKey(name: 'METODO_COBRO_ID')
-          String? metodoDeCobroId,
-      @JsonKey(name: 'ESTADO_COBRO_ID')
-          String? estadoCobroId,
-      @JsonKey(name: 'IMPORTE')
-          double? importe,
+      {@JsonKey(name: 'CLIENTE_ID') String clienteId,
+      @JsonKey(name: 'EFECTO_ID') String efectoId,
+      @JsonKey(name: 'FACTURA_ID') String? facutaId,
+      @JsonKey(name: 'FECHA_FACUTRA') DateTime? fechaFactura,
+      @JsonKey(name: 'FECHA_VENCIMIENTO') DateTime? fechaExpiracion,
+      @JsonKey(name: 'METODO_COBRO_ID') String? metodoDeCobroId,
+      @JsonKey(name: 'ESTADO_COBRO_ID') String? estadoCobroId,
+      @JsonKey(name: 'IMPORTE') double? importe,
       @JsonKey(name: 'FECHA_VENCIMIENTO_INICIAL')
-          DateTime? fechaExpiracionInicial,
-      @JsonKey(name: 'VENCIDO_JBM')
-          String? vencidoJBM,
-      @JsonKey(name: 'LAST_UPDATED')
-          DateTime lastUpdated,
-      @JsonKey(name: 'DELETED')
-          String deleted});
+      DateTime? fechaExpiracionInicial,
+      @JsonKey(name: 'VENCIDO_JBM') String? vencidoJBM,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
@@ -405,30 +383,20 @@ class _$_ClientePagoPendienteDTO extends _ClientePagoPendienteDTO {
 
 abstract class _ClientePagoPendienteDTO extends ClientePagoPendienteDTO {
   const factory _ClientePagoPendienteDTO(
-      {@JsonKey(name: 'CLIENTE_ID')
-          required final String clienteId,
-      @JsonKey(name: 'EFECTO_ID')
-          required final String efectoId,
-      @JsonKey(name: 'FACTURA_ID')
-          final String? facutaId,
-      @JsonKey(name: 'FECHA_FACUTRA')
-          final DateTime? fechaFactura,
-      @JsonKey(name: 'FECHA_VENCIMIENTO')
-          final DateTime? fechaExpiracion,
-      @JsonKey(name: 'METODO_COBRO_ID')
-          final String? metodoDeCobroId,
-      @JsonKey(name: 'ESTADO_COBRO_ID')
-          final String? estadoCobroId,
-      @JsonKey(name: 'IMPORTE')
-          final double? importe,
-      @JsonKey(name: 'FECHA_VENCIMIENTO_INICIAL')
+          {@JsonKey(name: 'CLIENTE_ID') required final String clienteId,
+          @JsonKey(name: 'EFECTO_ID') required final String efectoId,
+          @JsonKey(name: 'FACTURA_ID') final String? facutaId,
+          @JsonKey(name: 'FECHA_FACUTRA') final DateTime? fechaFactura,
+          @JsonKey(name: 'FECHA_VENCIMIENTO') final DateTime? fechaExpiracion,
+          @JsonKey(name: 'METODO_COBRO_ID') final String? metodoDeCobroId,
+          @JsonKey(name: 'ESTADO_COBRO_ID') final String? estadoCobroId,
+          @JsonKey(name: 'IMPORTE') final double? importe,
+          @JsonKey(name: 'FECHA_VENCIMIENTO_INICIAL')
           final DateTime? fechaExpiracionInicial,
-      @JsonKey(name: 'VENCIDO_JBM')
-          final String? vencidoJBM,
-      @JsonKey(name: 'LAST_UPDATED')
-          required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED')
-          final String deleted}) = _$_ClientePagoPendienteDTO;
+          @JsonKey(name: 'VENCIDO_JBM') final String? vencidoJBM,
+          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+          @JsonKey(name: 'DELETED') final String deleted}) =
+      _$_ClientePagoPendienteDTO;
   const _ClientePagoPendienteDTO._() : super._();
 
   factory _ClientePagoPendienteDTO.fromJson(Map<String, dynamic> json) =

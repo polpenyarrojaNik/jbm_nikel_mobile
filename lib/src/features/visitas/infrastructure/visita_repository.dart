@@ -7,7 +7,6 @@ import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:jbm_nikel_mobile/src/core/application/log_service.dart';
 import 'package:jbm_nikel_mobile/src/core/domain/pais.dart';
 import 'package:jbm_nikel_mobile/src/core/domain/provincia.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/provincia_dto.dart';

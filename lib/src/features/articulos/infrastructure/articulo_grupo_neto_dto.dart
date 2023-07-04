@@ -16,25 +16,16 @@ class ArticuloGrupoNetoDTO
     implements Insertable<ArticuloGrupoNetoDTO> {
   const ArticuloGrupoNetoDTO._();
   const factory ArticuloGrupoNetoDTO({
-    @JsonKey(name: 'ARTICULO_ID')
-        required String articuloId,
-    @JsonKey(name: 'GRUPO_NETO_ID')
-        required String grupoNetoId,
+    @JsonKey(name: 'ARTICULO_ID') required String articuloId,
+    @JsonKey(name: 'GRUPO_NETO_ID') required String grupoNetoId,
     @JsonKey(name: 'GRUPO_NETO_DESCRIPCION')
-        required String grupoNetoDescripcion,
-    @JsonKey(name: 'CANTIDAD_DESDE')
-        required int cantidadDesde,
-    @JsonKey(name: 'PRECIO')
-        required double precio,
-    @JsonKey(name: 'DIVISA_ID')
-        required String divisaId,
-    @JsonKey(name: 'TIPO_PRECIO')
-        required int tipoPrecio,
-    @JsonKey(name: 'LAST_UPDATED')
-        required DateTime lastUpdated,
-    @JsonKey(name: 'DELETED')
-    @Default('N')
-        String deleted,
+    required String grupoNetoDescripcion,
+    @JsonKey(name: 'CANTIDAD_DESDE') required int cantidadDesde,
+    @JsonKey(name: 'PRECIO') required double precio,
+    @JsonKey(name: 'DIVISA_ID') required String divisaId,
+    @JsonKey(name: 'TIPO_PRECIO') required int tipoPrecio,
+    @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _ArticuloGrupoNetoDTO;
 
   factory ArticuloGrupoNetoDTO.fromJson(Map<String, dynamic> json) =>

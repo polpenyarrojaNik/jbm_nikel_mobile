@@ -251,18 +251,16 @@ class _$_SyncDateTimeDTO extends _SyncDateTimeDTO {
 
 abstract class _SyncDateTimeDTO extends SyncDateTimeDTO {
   const factory _SyncDateTimeDTO(
-      {@JsonKey(name: 'ID')
-          required final int id,
-      @JsonKey(name: 'DB_SCHEMA_VERSION')
-          required final int dbSchemaVersion,
+      {@JsonKey(name: 'ID') required final int id,
+      @JsonKey(name: 'DB_SCHEMA_VERSION') required final int dbSchemaVersion,
       @JsonKey(name: 'ARTICULO_ULTIMA_SYNC')
-          required final DateTime articuloUltimaSync,
+      required final DateTime articuloUltimaSync,
       @JsonKey(name: 'CLIENTE_ULTIMA_SYNC')
-          required final DateTime clienteUltimaSync,
+      required final DateTime clienteUltimaSync,
       @JsonKey(name: 'PEDIDO_ULTIMA_SYNC')
-          required final DateTime pedidoUltimaSync,
+      required final DateTime pedidoUltimaSync,
       @JsonKey(name: 'VISITA_ULTIMA_SYNC')
-          required final DateTime visitaUltimaSync}) = _$_SyncDateTimeDTO;
+      required final DateTime visitaUltimaSync}) = _$_SyncDateTimeDTO;
   const _SyncDateTimeDTO._() : super._();
 
   factory _SyncDateTimeDTO.fromJson(Map<String, dynamic> json) =

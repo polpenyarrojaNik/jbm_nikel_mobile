@@ -466,38 +466,24 @@ class _$_PedidoVentaLineaLocalDTO extends _PedidoVentaLineaLocalDTO {
 
 abstract class _PedidoVentaLineaLocalDTO extends PedidoVentaLineaLocalDTO {
   const factory _PedidoVentaLineaLocalDTO(
-      {@JsonKey(name: 'PEDIDO_APP_ID')
-          required final String pedidoVentaAppId,
-      @JsonKey(name: 'EMPRESA_ID')
-          final String? empresaId,
-      @JsonKey(name: 'PEDIDO_ID')
-          final String? pedidoId,
-      @JsonKey(name: 'LIN_APP_ID')
-          required final String pedidoVentaLineaAppId,
-      @JsonKey(name: 'PRODUCTO_ID')
-          required final String articuloId,
-      @JsonKey(name: 'DENOMINACION')
-          required final String articuloDescription,
-      @JsonKey(name: 'CANTIDAD')
-          required final int cantidad,
-      @JsonKey(name: 'PRECIO_DIVISA')
-          required final double precioDivisa,
-      @JsonKey(name: 'TPRECIO')
-          required final int tipoPrecio,
-      @JsonKey(name: 'DTO1')
-          required final double descuento1,
-      @JsonKey(name: 'DTO2')
-          required final double descuento2,
-      @JsonKey(name: 'DTO3')
-          required final double descuento3,
-      @JsonKey(name: 'DTO_PP')
-          required final double descuentoProntoPago,
+      {@JsonKey(name: 'PEDIDO_APP_ID') required final String pedidoVentaAppId,
+      @JsonKey(name: 'EMPRESA_ID') final String? empresaId,
+      @JsonKey(name: 'PEDIDO_ID') final String? pedidoId,
+      @JsonKey(name: 'LIN_APP_ID') required final String pedidoVentaLineaAppId,
+      @JsonKey(name: 'PRODUCTO_ID') required final String articuloId,
+      @JsonKey(name: 'DENOMINACION') required final String articuloDescription,
+      @JsonKey(name: 'CANTIDAD') required final int cantidad,
+      @JsonKey(name: 'PRECIO_DIVISA') required final double precioDivisa,
+      @JsonKey(name: 'TPRECIO') required final int tipoPrecio,
+      @JsonKey(name: 'DTO1') required final double descuento1,
+      @JsonKey(name: 'DTO2') required final double descuento2,
+      @JsonKey(name: 'DTO3') required final double descuento3,
+      @JsonKey(name: 'DTO_PP') required final double descuentoProntoPago,
       @JsonKey(name: 'STOCK_DISPONIBLE_SN')
-          required final String stockDisponibleSN,
-      @JsonKey(name: 'F_DISPONIBLE')
-          final DateTime? fechaDisponible,
+      required final String stockDisponibleSN,
+      @JsonKey(name: 'F_DISPONIBLE') final DateTime? fechaDisponible,
       @JsonKey(name: 'IVA')
-          required final double iva}) = _$_PedidoVentaLineaLocalDTO;
+      required final double iva}) = _$_PedidoVentaLineaLocalDTO;
   const _PedidoVentaLineaLocalDTO._() : super._();
 
   factory _PedidoVentaLineaLocalDTO.fromJson(Map<String, dynamic> json) =

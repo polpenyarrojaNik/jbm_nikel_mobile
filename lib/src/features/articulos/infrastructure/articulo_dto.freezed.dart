@@ -170,142 +170,75 @@ abstract class $ArticuloDTOCopyWith<$Res> {
       _$ArticuloDTOCopyWithImpl<$Res, ArticuloDTO>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'ARTICULO_ID')
-          String id,
-      @JsonKey(name: 'DESCRIPCION_ES')
-          String descripcionES,
-      @JsonKey(name: 'DESCRIPCION_EN')
-          String? descripcionEN,
-      @JsonKey(name: 'DESCRIPCION_FR')
-          String? descripcionFR,
-      @JsonKey(name: 'DESCRIPCION_DE')
-          String? descripcionDE,
-      @JsonKey(name: 'DESCRIPCION_CA')
-          String? descripcionCA,
-      @JsonKey(name: 'DESCRIPCION_GB')
-          String? descripcionGB,
-      @JsonKey(name: 'DESCRIPCION_HU')
-          String? descripcionHU,
-      @JsonKey(name: 'DESCRIPCION_IT')
-          String? descripcionIT,
-      @JsonKey(name: 'DESCRIPCION_NL')
-          String? descripcionNL,
-      @JsonKey(name: 'DESCRIPCION_PL')
-          String? descripcionPL,
-      @JsonKey(name: 'DESCRIPCION_PT')
-          String? descripcionPT,
-      @JsonKey(name: 'DESCRIPCION_RO')
-          String? descripcionRO,
-      @JsonKey(name: 'DESCRIPCION_RU')
-          String? descripcionRU,
-      @JsonKey(name: 'DESCRIPCION_CN')
-          String? descripcionCN,
-      @JsonKey(name: 'DESCRIPCION_EL')
-          String? descripcionEL,
-      @JsonKey(name: 'FAMILIA_ID')
-          String? familiaId,
-      @JsonKey(name: 'SUBFAMILIA_ID')
-          String? subfamiliaId,
-      @JsonKey(name: 'VENTA_MINIMO')
-          int ventaMinimo,
-      @JsonKey(name: 'VENTA_MULTIPLO')
-          int ventaMultiplo,
-      @JsonKey(name: 'UNIDADES_SUBCAJA')
-          int unidadesSubcaja,
-      @JsonKey(name: 'UNIDADES_CAJA')
-          int unidadesCaja,
-      @JsonKey(name: 'UNIDADES_PALET')
-          int unidadesPalet,
-      @JsonKey(name: 'ACTIVO_WEB')
-          String activoWeb,
-      @JsonKey(name: 'ACTIVO_APP')
-          String activoApp,
-      @JsonKey(name: 'EN_CATALOGO')
-          String enCatalogo,
-      @JsonKey(name: 'DESCATALOGADO')
-          String descatalogado,
-      @JsonKey(name: 'PAGINA_EN_CATALOGO')
-          String? paginaEnCatalgo,
-      @JsonKey(name: 'PAGINA_EN_CATALOGO2')
-          String? paginaEnCatalgo2,
-      @JsonKey(name: 'PESO_KG')
-          double pesoKg,
-      @JsonKey(name: 'LARGO_CM')
-          double largoCm,
-      @JsonKey(name: 'ANCHO_CM')
-          double anchoCm,
-      @JsonKey(name: 'ALTO_CM')
-          double altoCm,
-      @JsonKey(name: 'RESUMEN_ES')
-          String? resumenES,
-      @JsonKey(name: 'RESUMEN_EN')
-          String? resumenEN,
-      @JsonKey(name: 'RESUMEN_FR')
-          String? resumenFR,
-      @JsonKey(name: 'RESUMEN_DE')
-          String? resumenDE,
-      @JsonKey(name: 'RESUMEN_CA')
-          String? resumenCA,
-      @JsonKey(name: 'RESUMEN_GB')
-          String? resumenGB,
-      @JsonKey(name: 'RESUMEN_HU')
-          String? resumenHU,
-      @JsonKey(name: 'RESUMEN_IT')
-          String? resumenIT,
-      @JsonKey(name: 'RESUMEN_NL')
-          String? resumenNL,
-      @JsonKey(name: 'RESUMEN_PL')
-          String? resumenPL,
-      @JsonKey(name: 'RESUMEN_PT')
-          String? resumenPT,
-      @JsonKey(name: 'RESUMEN_RO')
-          String? resumenRO,
-      @JsonKey(name: 'RESUMEN_RU')
-          String? resumenRU,
-      @JsonKey(name: 'RESUMEN_CN')
-          String? resumenCN,
-      @JsonKey(name: 'RESUMEN_EL')
-          String? resumenEL,
-      @JsonKey(name: 'STOCK_DISPONIBLE')
-          int stockDisponible,
-      @JsonKey(name: 'VENTAS_ACTUAL')
-          double ventasActual,
-      @JsonKey(name: 'VENTAS_ANTERIOR')
-          double ventasAnterior,
-      @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_1')
-          int comprasEntregaCantidad1,
-      @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_2')
-          int comprasEntregaCantidad2,
-      @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_3')
-          int comprasEntregaCantidad3,
+      {@JsonKey(name: 'ARTICULO_ID') String id,
+      @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
+      @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
+      @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
+      @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
+      @JsonKey(name: 'DESCRIPCION_CA') String? descripcionCA,
+      @JsonKey(name: 'DESCRIPCION_GB') String? descripcionGB,
+      @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
+      @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
+      @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
+      @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
+      @JsonKey(name: 'DESCRIPCION_PT') String? descripcionPT,
+      @JsonKey(name: 'DESCRIPCION_RO') String? descripcionRO,
+      @JsonKey(name: 'DESCRIPCION_RU') String? descripcionRU,
+      @JsonKey(name: 'DESCRIPCION_CN') String? descripcionCN,
+      @JsonKey(name: 'DESCRIPCION_EL') String? descripcionEL,
+      @JsonKey(name: 'FAMILIA_ID') String? familiaId,
+      @JsonKey(name: 'SUBFAMILIA_ID') String? subfamiliaId,
+      @JsonKey(name: 'VENTA_MINIMO') int ventaMinimo,
+      @JsonKey(name: 'VENTA_MULTIPLO') int ventaMultiplo,
+      @JsonKey(name: 'UNIDADES_SUBCAJA') int unidadesSubcaja,
+      @JsonKey(name: 'UNIDADES_CAJA') int unidadesCaja,
+      @JsonKey(name: 'UNIDADES_PALET') int unidadesPalet,
+      @JsonKey(name: 'ACTIVO_WEB') String activoWeb,
+      @JsonKey(name: 'ACTIVO_APP') String activoApp,
+      @JsonKey(name: 'EN_CATALOGO') String enCatalogo,
+      @JsonKey(name: 'DESCATALOGADO') String descatalogado,
+      @JsonKey(name: 'PAGINA_EN_CATALOGO') String? paginaEnCatalgo,
+      @JsonKey(name: 'PAGINA_EN_CATALOGO2') String? paginaEnCatalgo2,
+      @JsonKey(name: 'PESO_KG') double pesoKg,
+      @JsonKey(name: 'LARGO_CM') double largoCm,
+      @JsonKey(name: 'ANCHO_CM') double anchoCm,
+      @JsonKey(name: 'ALTO_CM') double altoCm,
+      @JsonKey(name: 'RESUMEN_ES') String? resumenES,
+      @JsonKey(name: 'RESUMEN_EN') String? resumenEN,
+      @JsonKey(name: 'RESUMEN_FR') String? resumenFR,
+      @JsonKey(name: 'RESUMEN_DE') String? resumenDE,
+      @JsonKey(name: 'RESUMEN_CA') String? resumenCA,
+      @JsonKey(name: 'RESUMEN_GB') String? resumenGB,
+      @JsonKey(name: 'RESUMEN_HU') String? resumenHU,
+      @JsonKey(name: 'RESUMEN_IT') String? resumenIT,
+      @JsonKey(name: 'RESUMEN_NL') String? resumenNL,
+      @JsonKey(name: 'RESUMEN_PL') String? resumenPL,
+      @JsonKey(name: 'RESUMEN_PT') String? resumenPT,
+      @JsonKey(name: 'RESUMEN_RO') String? resumenRO,
+      @JsonKey(name: 'RESUMEN_RU') String? resumenRU,
+      @JsonKey(name: 'RESUMEN_CN') String? resumenCN,
+      @JsonKey(name: 'RESUMEN_EL') String? resumenEL,
+      @JsonKey(name: 'STOCK_DISPONIBLE') int stockDisponible,
+      @JsonKey(name: 'VENTAS_ACTUAL') double ventasActual,
+      @JsonKey(name: 'VENTAS_ANTERIOR') double ventasAnterior,
+      @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_1') int comprasEntregaCantidad1,
+      @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_2') int comprasEntregaCantidad2,
+      @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_3') int comprasEntregaCantidad3,
       @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_MAS_3')
-          int comprasEntregaCantidadMas3,
-      @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_1')
-          DateTime? comprasEntregaFecha1,
-      @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_2')
-          DateTime? comprasEntregaFecha2,
-      @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_3')
-          DateTime? comprasEntregaFecha3,
-      @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_1')
-          String? comprasEntregaEstado1,
-      @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_2')
-          String? comprasEntregaEstado2,
-      @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_')
-          String? comprasEntregaEstado3,
-      @JsonKey(name: 'IMAGEN_PRINCIPAL')
-          String? imagenPrincipal,
-      @JsonKey(name: 'GTIN_13_UNIDAD')
-          String? gtin13Unidad,
-      @JsonKey(name: 'GS1_128_SUBCAJA')
-          String? gs1128Subcaja,
-      @JsonKey(name: 'GS1_128_CAJA')
-          String? gs1128Caja,
-      @JsonKey(name: 'GS1_128_PALET')
-          String? gs1128Palet,
-      @JsonKey(name: 'LAST_UPDATED')
-          DateTime lastUpdated,
-      @JsonKey(name: 'DELETED')
-          String deleted});
+      int comprasEntregaCantidadMas3,
+      @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_1') DateTime? comprasEntregaFecha1,
+      @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_2') DateTime? comprasEntregaFecha2,
+      @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_3') DateTime? comprasEntregaFecha3,
+      @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_1') String? comprasEntregaEstado1,
+      @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_2') String? comprasEntregaEstado2,
+      @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_') String? comprasEntregaEstado3,
+      @JsonKey(name: 'IMAGEN_PRINCIPAL') String? imagenPrincipal,
+      @JsonKey(name: 'GTIN_13_UNIDAD') String? gtin13Unidad,
+      @JsonKey(name: 'GS1_128_SUBCAJA') String? gs1128Subcaja,
+      @JsonKey(name: 'GS1_128_CAJA') String? gs1128Caja,
+      @JsonKey(name: 'GS1_128_PALET') String? gs1128Palet,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
@@ -676,142 +609,75 @@ abstract class _$$_ArticuloDTOCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'ARTICULO_ID')
-          String id,
-      @JsonKey(name: 'DESCRIPCION_ES')
-          String descripcionES,
-      @JsonKey(name: 'DESCRIPCION_EN')
-          String? descripcionEN,
-      @JsonKey(name: 'DESCRIPCION_FR')
-          String? descripcionFR,
-      @JsonKey(name: 'DESCRIPCION_DE')
-          String? descripcionDE,
-      @JsonKey(name: 'DESCRIPCION_CA')
-          String? descripcionCA,
-      @JsonKey(name: 'DESCRIPCION_GB')
-          String? descripcionGB,
-      @JsonKey(name: 'DESCRIPCION_HU')
-          String? descripcionHU,
-      @JsonKey(name: 'DESCRIPCION_IT')
-          String? descripcionIT,
-      @JsonKey(name: 'DESCRIPCION_NL')
-          String? descripcionNL,
-      @JsonKey(name: 'DESCRIPCION_PL')
-          String? descripcionPL,
-      @JsonKey(name: 'DESCRIPCION_PT')
-          String? descripcionPT,
-      @JsonKey(name: 'DESCRIPCION_RO')
-          String? descripcionRO,
-      @JsonKey(name: 'DESCRIPCION_RU')
-          String? descripcionRU,
-      @JsonKey(name: 'DESCRIPCION_CN')
-          String? descripcionCN,
-      @JsonKey(name: 'DESCRIPCION_EL')
-          String? descripcionEL,
-      @JsonKey(name: 'FAMILIA_ID')
-          String? familiaId,
-      @JsonKey(name: 'SUBFAMILIA_ID')
-          String? subfamiliaId,
-      @JsonKey(name: 'VENTA_MINIMO')
-          int ventaMinimo,
-      @JsonKey(name: 'VENTA_MULTIPLO')
-          int ventaMultiplo,
-      @JsonKey(name: 'UNIDADES_SUBCAJA')
-          int unidadesSubcaja,
-      @JsonKey(name: 'UNIDADES_CAJA')
-          int unidadesCaja,
-      @JsonKey(name: 'UNIDADES_PALET')
-          int unidadesPalet,
-      @JsonKey(name: 'ACTIVO_WEB')
-          String activoWeb,
-      @JsonKey(name: 'ACTIVO_APP')
-          String activoApp,
-      @JsonKey(name: 'EN_CATALOGO')
-          String enCatalogo,
-      @JsonKey(name: 'DESCATALOGADO')
-          String descatalogado,
-      @JsonKey(name: 'PAGINA_EN_CATALOGO')
-          String? paginaEnCatalgo,
-      @JsonKey(name: 'PAGINA_EN_CATALOGO2')
-          String? paginaEnCatalgo2,
-      @JsonKey(name: 'PESO_KG')
-          double pesoKg,
-      @JsonKey(name: 'LARGO_CM')
-          double largoCm,
-      @JsonKey(name: 'ANCHO_CM')
-          double anchoCm,
-      @JsonKey(name: 'ALTO_CM')
-          double altoCm,
-      @JsonKey(name: 'RESUMEN_ES')
-          String? resumenES,
-      @JsonKey(name: 'RESUMEN_EN')
-          String? resumenEN,
-      @JsonKey(name: 'RESUMEN_FR')
-          String? resumenFR,
-      @JsonKey(name: 'RESUMEN_DE')
-          String? resumenDE,
-      @JsonKey(name: 'RESUMEN_CA')
-          String? resumenCA,
-      @JsonKey(name: 'RESUMEN_GB')
-          String? resumenGB,
-      @JsonKey(name: 'RESUMEN_HU')
-          String? resumenHU,
-      @JsonKey(name: 'RESUMEN_IT')
-          String? resumenIT,
-      @JsonKey(name: 'RESUMEN_NL')
-          String? resumenNL,
-      @JsonKey(name: 'RESUMEN_PL')
-          String? resumenPL,
-      @JsonKey(name: 'RESUMEN_PT')
-          String? resumenPT,
-      @JsonKey(name: 'RESUMEN_RO')
-          String? resumenRO,
-      @JsonKey(name: 'RESUMEN_RU')
-          String? resumenRU,
-      @JsonKey(name: 'RESUMEN_CN')
-          String? resumenCN,
-      @JsonKey(name: 'RESUMEN_EL')
-          String? resumenEL,
-      @JsonKey(name: 'STOCK_DISPONIBLE')
-          int stockDisponible,
-      @JsonKey(name: 'VENTAS_ACTUAL')
-          double ventasActual,
-      @JsonKey(name: 'VENTAS_ANTERIOR')
-          double ventasAnterior,
-      @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_1')
-          int comprasEntregaCantidad1,
-      @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_2')
-          int comprasEntregaCantidad2,
-      @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_3')
-          int comprasEntregaCantidad3,
+      {@JsonKey(name: 'ARTICULO_ID') String id,
+      @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
+      @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
+      @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
+      @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
+      @JsonKey(name: 'DESCRIPCION_CA') String? descripcionCA,
+      @JsonKey(name: 'DESCRIPCION_GB') String? descripcionGB,
+      @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
+      @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
+      @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
+      @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
+      @JsonKey(name: 'DESCRIPCION_PT') String? descripcionPT,
+      @JsonKey(name: 'DESCRIPCION_RO') String? descripcionRO,
+      @JsonKey(name: 'DESCRIPCION_RU') String? descripcionRU,
+      @JsonKey(name: 'DESCRIPCION_CN') String? descripcionCN,
+      @JsonKey(name: 'DESCRIPCION_EL') String? descripcionEL,
+      @JsonKey(name: 'FAMILIA_ID') String? familiaId,
+      @JsonKey(name: 'SUBFAMILIA_ID') String? subfamiliaId,
+      @JsonKey(name: 'VENTA_MINIMO') int ventaMinimo,
+      @JsonKey(name: 'VENTA_MULTIPLO') int ventaMultiplo,
+      @JsonKey(name: 'UNIDADES_SUBCAJA') int unidadesSubcaja,
+      @JsonKey(name: 'UNIDADES_CAJA') int unidadesCaja,
+      @JsonKey(name: 'UNIDADES_PALET') int unidadesPalet,
+      @JsonKey(name: 'ACTIVO_WEB') String activoWeb,
+      @JsonKey(name: 'ACTIVO_APP') String activoApp,
+      @JsonKey(name: 'EN_CATALOGO') String enCatalogo,
+      @JsonKey(name: 'DESCATALOGADO') String descatalogado,
+      @JsonKey(name: 'PAGINA_EN_CATALOGO') String? paginaEnCatalgo,
+      @JsonKey(name: 'PAGINA_EN_CATALOGO2') String? paginaEnCatalgo2,
+      @JsonKey(name: 'PESO_KG') double pesoKg,
+      @JsonKey(name: 'LARGO_CM') double largoCm,
+      @JsonKey(name: 'ANCHO_CM') double anchoCm,
+      @JsonKey(name: 'ALTO_CM') double altoCm,
+      @JsonKey(name: 'RESUMEN_ES') String? resumenES,
+      @JsonKey(name: 'RESUMEN_EN') String? resumenEN,
+      @JsonKey(name: 'RESUMEN_FR') String? resumenFR,
+      @JsonKey(name: 'RESUMEN_DE') String? resumenDE,
+      @JsonKey(name: 'RESUMEN_CA') String? resumenCA,
+      @JsonKey(name: 'RESUMEN_GB') String? resumenGB,
+      @JsonKey(name: 'RESUMEN_HU') String? resumenHU,
+      @JsonKey(name: 'RESUMEN_IT') String? resumenIT,
+      @JsonKey(name: 'RESUMEN_NL') String? resumenNL,
+      @JsonKey(name: 'RESUMEN_PL') String? resumenPL,
+      @JsonKey(name: 'RESUMEN_PT') String? resumenPT,
+      @JsonKey(name: 'RESUMEN_RO') String? resumenRO,
+      @JsonKey(name: 'RESUMEN_RU') String? resumenRU,
+      @JsonKey(name: 'RESUMEN_CN') String? resumenCN,
+      @JsonKey(name: 'RESUMEN_EL') String? resumenEL,
+      @JsonKey(name: 'STOCK_DISPONIBLE') int stockDisponible,
+      @JsonKey(name: 'VENTAS_ACTUAL') double ventasActual,
+      @JsonKey(name: 'VENTAS_ANTERIOR') double ventasAnterior,
+      @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_1') int comprasEntregaCantidad1,
+      @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_2') int comprasEntregaCantidad2,
+      @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_3') int comprasEntregaCantidad3,
       @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_MAS_3')
-          int comprasEntregaCantidadMas3,
-      @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_1')
-          DateTime? comprasEntregaFecha1,
-      @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_2')
-          DateTime? comprasEntregaFecha2,
-      @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_3')
-          DateTime? comprasEntregaFecha3,
-      @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_1')
-          String? comprasEntregaEstado1,
-      @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_2')
-          String? comprasEntregaEstado2,
-      @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_')
-          String? comprasEntregaEstado3,
-      @JsonKey(name: 'IMAGEN_PRINCIPAL')
-          String? imagenPrincipal,
-      @JsonKey(name: 'GTIN_13_UNIDAD')
-          String? gtin13Unidad,
-      @JsonKey(name: 'GS1_128_SUBCAJA')
-          String? gs1128Subcaja,
-      @JsonKey(name: 'GS1_128_CAJA')
-          String? gs1128Caja,
-      @JsonKey(name: 'GS1_128_PALET')
-          String? gs1128Palet,
-      @JsonKey(name: 'LAST_UPDATED')
-          DateTime lastUpdated,
-      @JsonKey(name: 'DELETED')
-          String deleted});
+      int comprasEntregaCantidadMas3,
+      @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_1') DateTime? comprasEntregaFecha1,
+      @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_2') DateTime? comprasEntregaFecha2,
+      @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_3') DateTime? comprasEntregaFecha3,
+      @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_1') String? comprasEntregaEstado1,
+      @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_2') String? comprasEntregaEstado2,
+      @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_') String? comprasEntregaEstado3,
+      @JsonKey(name: 'IMAGEN_PRINCIPAL') String? imagenPrincipal,
+      @JsonKey(name: 'GTIN_13_UNIDAD') String? gtin13Unidad,
+      @JsonKey(name: 'GS1_128_SUBCAJA') String? gs1128Subcaja,
+      @JsonKey(name: 'GS1_128_CAJA') String? gs1128Caja,
+      @JsonKey(name: 'GS1_128_PALET') String? gs1128Palet,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
@@ -1175,142 +1041,78 @@ class __$$_ArticuloDTOCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ArticuloDTO extends _ArticuloDTO {
   const _$_ArticuloDTO(
-      {@JsonKey(name: 'ARTICULO_ID')
-          required this.id,
-      @JsonKey(name: 'DESCRIPCION_ES')
-          required this.descripcionES,
-      @JsonKey(name: 'DESCRIPCION_EN')
-          this.descripcionEN,
-      @JsonKey(name: 'DESCRIPCION_FR')
-          this.descripcionFR,
-      @JsonKey(name: 'DESCRIPCION_DE')
-          this.descripcionDE,
-      @JsonKey(name: 'DESCRIPCION_CA')
-          this.descripcionCA,
-      @JsonKey(name: 'DESCRIPCION_GB')
-          this.descripcionGB,
-      @JsonKey(name: 'DESCRIPCION_HU')
-          this.descripcionHU,
-      @JsonKey(name: 'DESCRIPCION_IT')
-          this.descripcionIT,
-      @JsonKey(name: 'DESCRIPCION_NL')
-          this.descripcionNL,
-      @JsonKey(name: 'DESCRIPCION_PL')
-          this.descripcionPL,
-      @JsonKey(name: 'DESCRIPCION_PT')
-          this.descripcionPT,
-      @JsonKey(name: 'DESCRIPCION_RO')
-          this.descripcionRO,
-      @JsonKey(name: 'DESCRIPCION_RU')
-          this.descripcionRU,
-      @JsonKey(name: 'DESCRIPCION_CN')
-          this.descripcionCN,
-      @JsonKey(name: 'DESCRIPCION_EL')
-          this.descripcionEL,
-      @JsonKey(name: 'FAMILIA_ID')
-          this.familiaId,
-      @JsonKey(name: 'SUBFAMILIA_ID')
-          this.subfamiliaId,
-      @JsonKey(name: 'VENTA_MINIMO')
-          required this.ventaMinimo,
-      @JsonKey(name: 'VENTA_MULTIPLO')
-          required this.ventaMultiplo,
-      @JsonKey(name: 'UNIDADES_SUBCAJA')
-          required this.unidadesSubcaja,
-      @JsonKey(name: 'UNIDADES_CAJA')
-          required this.unidadesCaja,
-      @JsonKey(name: 'UNIDADES_PALET')
-          required this.unidadesPalet,
-      @JsonKey(name: 'ACTIVO_WEB')
-          required this.activoWeb,
-      @JsonKey(name: 'ACTIVO_APP')
-          required this.activoApp,
-      @JsonKey(name: 'EN_CATALOGO')
-          required this.enCatalogo,
-      @JsonKey(name: 'DESCATALOGADO')
-          required this.descatalogado,
-      @JsonKey(name: 'PAGINA_EN_CATALOGO')
-          this.paginaEnCatalgo,
-      @JsonKey(name: 'PAGINA_EN_CATALOGO2')
-          this.paginaEnCatalgo2,
-      @JsonKey(name: 'PESO_KG')
-          required this.pesoKg,
-      @JsonKey(name: 'LARGO_CM')
-          required this.largoCm,
-      @JsonKey(name: 'ANCHO_CM')
-          required this.anchoCm,
-      @JsonKey(name: 'ALTO_CM')
-          required this.altoCm,
-      @JsonKey(name: 'RESUMEN_ES')
-          this.resumenES,
-      @JsonKey(name: 'RESUMEN_EN')
-          this.resumenEN,
-      @JsonKey(name: 'RESUMEN_FR')
-          this.resumenFR,
-      @JsonKey(name: 'RESUMEN_DE')
-          this.resumenDE,
-      @JsonKey(name: 'RESUMEN_CA')
-          this.resumenCA,
-      @JsonKey(name: 'RESUMEN_GB')
-          this.resumenGB,
-      @JsonKey(name: 'RESUMEN_HU')
-          this.resumenHU,
-      @JsonKey(name: 'RESUMEN_IT')
-          this.resumenIT,
-      @JsonKey(name: 'RESUMEN_NL')
-          this.resumenNL,
-      @JsonKey(name: 'RESUMEN_PL')
-          this.resumenPL,
-      @JsonKey(name: 'RESUMEN_PT')
-          this.resumenPT,
-      @JsonKey(name: 'RESUMEN_RO')
-          this.resumenRO,
-      @JsonKey(name: 'RESUMEN_RU')
-          this.resumenRU,
-      @JsonKey(name: 'RESUMEN_CN')
-          this.resumenCN,
-      @JsonKey(name: 'RESUMEN_EL')
-          this.resumenEL,
-      @JsonKey(name: 'STOCK_DISPONIBLE')
-          required this.stockDisponible,
-      @JsonKey(name: 'VENTAS_ACTUAL')
-          required this.ventasActual,
-      @JsonKey(name: 'VENTAS_ANTERIOR')
-          required this.ventasAnterior,
+      {@JsonKey(name: 'ARTICULO_ID') required this.id,
+      @JsonKey(name: 'DESCRIPCION_ES') required this.descripcionES,
+      @JsonKey(name: 'DESCRIPCION_EN') this.descripcionEN,
+      @JsonKey(name: 'DESCRIPCION_FR') this.descripcionFR,
+      @JsonKey(name: 'DESCRIPCION_DE') this.descripcionDE,
+      @JsonKey(name: 'DESCRIPCION_CA') this.descripcionCA,
+      @JsonKey(name: 'DESCRIPCION_GB') this.descripcionGB,
+      @JsonKey(name: 'DESCRIPCION_HU') this.descripcionHU,
+      @JsonKey(name: 'DESCRIPCION_IT') this.descripcionIT,
+      @JsonKey(name: 'DESCRIPCION_NL') this.descripcionNL,
+      @JsonKey(name: 'DESCRIPCION_PL') this.descripcionPL,
+      @JsonKey(name: 'DESCRIPCION_PT') this.descripcionPT,
+      @JsonKey(name: 'DESCRIPCION_RO') this.descripcionRO,
+      @JsonKey(name: 'DESCRIPCION_RU') this.descripcionRU,
+      @JsonKey(name: 'DESCRIPCION_CN') this.descripcionCN,
+      @JsonKey(name: 'DESCRIPCION_EL') this.descripcionEL,
+      @JsonKey(name: 'FAMILIA_ID') this.familiaId,
+      @JsonKey(name: 'SUBFAMILIA_ID') this.subfamiliaId,
+      @JsonKey(name: 'VENTA_MINIMO') required this.ventaMinimo,
+      @JsonKey(name: 'VENTA_MULTIPLO') required this.ventaMultiplo,
+      @JsonKey(name: 'UNIDADES_SUBCAJA') required this.unidadesSubcaja,
+      @JsonKey(name: 'UNIDADES_CAJA') required this.unidadesCaja,
+      @JsonKey(name: 'UNIDADES_PALET') required this.unidadesPalet,
+      @JsonKey(name: 'ACTIVO_WEB') required this.activoWeb,
+      @JsonKey(name: 'ACTIVO_APP') required this.activoApp,
+      @JsonKey(name: 'EN_CATALOGO') required this.enCatalogo,
+      @JsonKey(name: 'DESCATALOGADO') required this.descatalogado,
+      @JsonKey(name: 'PAGINA_EN_CATALOGO') this.paginaEnCatalgo,
+      @JsonKey(name: 'PAGINA_EN_CATALOGO2') this.paginaEnCatalgo2,
+      @JsonKey(name: 'PESO_KG') required this.pesoKg,
+      @JsonKey(name: 'LARGO_CM') required this.largoCm,
+      @JsonKey(name: 'ANCHO_CM') required this.anchoCm,
+      @JsonKey(name: 'ALTO_CM') required this.altoCm,
+      @JsonKey(name: 'RESUMEN_ES') this.resumenES,
+      @JsonKey(name: 'RESUMEN_EN') this.resumenEN,
+      @JsonKey(name: 'RESUMEN_FR') this.resumenFR,
+      @JsonKey(name: 'RESUMEN_DE') this.resumenDE,
+      @JsonKey(name: 'RESUMEN_CA') this.resumenCA,
+      @JsonKey(name: 'RESUMEN_GB') this.resumenGB,
+      @JsonKey(name: 'RESUMEN_HU') this.resumenHU,
+      @JsonKey(name: 'RESUMEN_IT') this.resumenIT,
+      @JsonKey(name: 'RESUMEN_NL') this.resumenNL,
+      @JsonKey(name: 'RESUMEN_PL') this.resumenPL,
+      @JsonKey(name: 'RESUMEN_PT') this.resumenPT,
+      @JsonKey(name: 'RESUMEN_RO') this.resumenRO,
+      @JsonKey(name: 'RESUMEN_RU') this.resumenRU,
+      @JsonKey(name: 'RESUMEN_CN') this.resumenCN,
+      @JsonKey(name: 'RESUMEN_EL') this.resumenEL,
+      @JsonKey(name: 'STOCK_DISPONIBLE') required this.stockDisponible,
+      @JsonKey(name: 'VENTAS_ACTUAL') required this.ventasActual,
+      @JsonKey(name: 'VENTAS_ANTERIOR') required this.ventasAnterior,
       @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_1')
-          required this.comprasEntregaCantidad1,
+      required this.comprasEntregaCantidad1,
       @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_2')
-          required this.comprasEntregaCantidad2,
+      required this.comprasEntregaCantidad2,
       @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_3')
-          required this.comprasEntregaCantidad3,
+      required this.comprasEntregaCantidad3,
       @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_MAS_3')
-          required this.comprasEntregaCantidadMas3,
-      @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_1')
-          this.comprasEntregaFecha1,
-      @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_2')
-          this.comprasEntregaFecha2,
-      @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_3')
-          this.comprasEntregaFecha3,
-      @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_1')
-          this.comprasEntregaEstado1,
-      @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_2')
-          this.comprasEntregaEstado2,
-      @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_')
-          this.comprasEntregaEstado3,
-      @JsonKey(name: 'IMAGEN_PRINCIPAL')
-          this.imagenPrincipal,
-      @JsonKey(name: 'GTIN_13_UNIDAD')
-          this.gtin13Unidad,
-      @JsonKey(name: 'GS1_128_SUBCAJA')
-          this.gs1128Subcaja,
-      @JsonKey(name: 'GS1_128_CAJA')
-          this.gs1128Caja,
-      @JsonKey(name: 'GS1_128_PALET')
-          this.gs1128Palet,
-      @JsonKey(name: 'LAST_UPDATED')
-          required this.lastUpdated,
-      @JsonKey(name: 'DELETED')
-          this.deleted = 'N'})
+      required this.comprasEntregaCantidadMas3,
+      @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_1') this.comprasEntregaFecha1,
+      @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_2') this.comprasEntregaFecha2,
+      @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_3') this.comprasEntregaFecha3,
+      @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_1') this.comprasEntregaEstado1,
+      @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_2') this.comprasEntregaEstado2,
+      @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_') this.comprasEntregaEstado3,
+      @JsonKey(name: 'IMAGEN_PRINCIPAL') this.imagenPrincipal,
+      @JsonKey(name: 'GTIN_13_UNIDAD') this.gtin13Unidad,
+      @JsonKey(name: 'GS1_128_SUBCAJA') this.gs1128Subcaja,
+      @JsonKey(name: 'GS1_128_CAJA') this.gs1128Caja,
+      @JsonKey(name: 'GS1_128_PALET') this.gs1128Palet,
+      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+      @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
   factory _$_ArticuloDTO.fromJson(Map<String, dynamic> json) =>
@@ -1734,142 +1536,84 @@ class _$_ArticuloDTO extends _ArticuloDTO {
 
 abstract class _ArticuloDTO extends ArticuloDTO {
   const factory _ArticuloDTO(
-      {@JsonKey(name: 'ARTICULO_ID')
-          required final String id,
-      @JsonKey(name: 'DESCRIPCION_ES')
-          required final String descripcionES,
-      @JsonKey(name: 'DESCRIPCION_EN')
-          final String? descripcionEN,
-      @JsonKey(name: 'DESCRIPCION_FR')
-          final String? descripcionFR,
-      @JsonKey(name: 'DESCRIPCION_DE')
-          final String? descripcionDE,
-      @JsonKey(name: 'DESCRIPCION_CA')
-          final String? descripcionCA,
-      @JsonKey(name: 'DESCRIPCION_GB')
-          final String? descripcionGB,
-      @JsonKey(name: 'DESCRIPCION_HU')
-          final String? descripcionHU,
-      @JsonKey(name: 'DESCRIPCION_IT')
-          final String? descripcionIT,
-      @JsonKey(name: 'DESCRIPCION_NL')
-          final String? descripcionNL,
-      @JsonKey(name: 'DESCRIPCION_PL')
-          final String? descripcionPL,
-      @JsonKey(name: 'DESCRIPCION_PT')
-          final String? descripcionPT,
-      @JsonKey(name: 'DESCRIPCION_RO')
-          final String? descripcionRO,
-      @JsonKey(name: 'DESCRIPCION_RU')
-          final String? descripcionRU,
-      @JsonKey(name: 'DESCRIPCION_CN')
-          final String? descripcionCN,
-      @JsonKey(name: 'DESCRIPCION_EL')
-          final String? descripcionEL,
-      @JsonKey(name: 'FAMILIA_ID')
-          final String? familiaId,
-      @JsonKey(name: 'SUBFAMILIA_ID')
-          final String? subfamiliaId,
-      @JsonKey(name: 'VENTA_MINIMO')
-          required final int ventaMinimo,
-      @JsonKey(name: 'VENTA_MULTIPLO')
-          required final int ventaMultiplo,
-      @JsonKey(name: 'UNIDADES_SUBCAJA')
-          required final int unidadesSubcaja,
-      @JsonKey(name: 'UNIDADES_CAJA')
-          required final int unidadesCaja,
-      @JsonKey(name: 'UNIDADES_PALET')
-          required final int unidadesPalet,
-      @JsonKey(name: 'ACTIVO_WEB')
-          required final String activoWeb,
-      @JsonKey(name: 'ACTIVO_APP')
-          required final String activoApp,
-      @JsonKey(name: 'EN_CATALOGO')
-          required final String enCatalogo,
-      @JsonKey(name: 'DESCATALOGADO')
-          required final String descatalogado,
-      @JsonKey(name: 'PAGINA_EN_CATALOGO')
-          final String? paginaEnCatalgo,
-      @JsonKey(name: 'PAGINA_EN_CATALOGO2')
-          final String? paginaEnCatalgo2,
-      @JsonKey(name: 'PESO_KG')
-          required final double pesoKg,
-      @JsonKey(name: 'LARGO_CM')
-          required final double largoCm,
-      @JsonKey(name: 'ANCHO_CM')
-          required final double anchoCm,
-      @JsonKey(name: 'ALTO_CM')
-          required final double altoCm,
-      @JsonKey(name: 'RESUMEN_ES')
-          final String? resumenES,
-      @JsonKey(name: 'RESUMEN_EN')
-          final String? resumenEN,
-      @JsonKey(name: 'RESUMEN_FR')
-          final String? resumenFR,
-      @JsonKey(name: 'RESUMEN_DE')
-          final String? resumenDE,
-      @JsonKey(name: 'RESUMEN_CA')
-          final String? resumenCA,
-      @JsonKey(name: 'RESUMEN_GB')
-          final String? resumenGB,
-      @JsonKey(name: 'RESUMEN_HU')
-          final String? resumenHU,
-      @JsonKey(name: 'RESUMEN_IT')
-          final String? resumenIT,
-      @JsonKey(name: 'RESUMEN_NL')
-          final String? resumenNL,
-      @JsonKey(name: 'RESUMEN_PL')
-          final String? resumenPL,
-      @JsonKey(name: 'RESUMEN_PT')
-          final String? resumenPT,
-      @JsonKey(name: 'RESUMEN_RO')
-          final String? resumenRO,
-      @JsonKey(name: 'RESUMEN_RU')
-          final String? resumenRU,
-      @JsonKey(name: 'RESUMEN_CN')
-          final String? resumenCN,
-      @JsonKey(name: 'RESUMEN_EL')
-          final String? resumenEL,
-      @JsonKey(name: 'STOCK_DISPONIBLE')
-          required final int stockDisponible,
-      @JsonKey(name: 'VENTAS_ACTUAL')
-          required final double ventasActual,
-      @JsonKey(name: 'VENTAS_ANTERIOR')
-          required final double ventasAnterior,
+      {@JsonKey(name: 'ARTICULO_ID') required final String id,
+      @JsonKey(name: 'DESCRIPCION_ES') required final String descripcionES,
+      @JsonKey(name: 'DESCRIPCION_EN') final String? descripcionEN,
+      @JsonKey(name: 'DESCRIPCION_FR') final String? descripcionFR,
+      @JsonKey(name: 'DESCRIPCION_DE') final String? descripcionDE,
+      @JsonKey(name: 'DESCRIPCION_CA') final String? descripcionCA,
+      @JsonKey(name: 'DESCRIPCION_GB') final String? descripcionGB,
+      @JsonKey(name: 'DESCRIPCION_HU') final String? descripcionHU,
+      @JsonKey(name: 'DESCRIPCION_IT') final String? descripcionIT,
+      @JsonKey(name: 'DESCRIPCION_NL') final String? descripcionNL,
+      @JsonKey(name: 'DESCRIPCION_PL') final String? descripcionPL,
+      @JsonKey(name: 'DESCRIPCION_PT') final String? descripcionPT,
+      @JsonKey(name: 'DESCRIPCION_RO') final String? descripcionRO,
+      @JsonKey(name: 'DESCRIPCION_RU') final String? descripcionRU,
+      @JsonKey(name: 'DESCRIPCION_CN') final String? descripcionCN,
+      @JsonKey(name: 'DESCRIPCION_EL') final String? descripcionEL,
+      @JsonKey(name: 'FAMILIA_ID') final String? familiaId,
+      @JsonKey(name: 'SUBFAMILIA_ID') final String? subfamiliaId,
+      @JsonKey(name: 'VENTA_MINIMO') required final int ventaMinimo,
+      @JsonKey(name: 'VENTA_MULTIPLO') required final int ventaMultiplo,
+      @JsonKey(name: 'UNIDADES_SUBCAJA') required final int unidadesSubcaja,
+      @JsonKey(name: 'UNIDADES_CAJA') required final int unidadesCaja,
+      @JsonKey(name: 'UNIDADES_PALET') required final int unidadesPalet,
+      @JsonKey(name: 'ACTIVO_WEB') required final String activoWeb,
+      @JsonKey(name: 'ACTIVO_APP') required final String activoApp,
+      @JsonKey(name: 'EN_CATALOGO') required final String enCatalogo,
+      @JsonKey(name: 'DESCATALOGADO') required final String descatalogado,
+      @JsonKey(name: 'PAGINA_EN_CATALOGO') final String? paginaEnCatalgo,
+      @JsonKey(name: 'PAGINA_EN_CATALOGO2') final String? paginaEnCatalgo2,
+      @JsonKey(name: 'PESO_KG') required final double pesoKg,
+      @JsonKey(name: 'LARGO_CM') required final double largoCm,
+      @JsonKey(name: 'ANCHO_CM') required final double anchoCm,
+      @JsonKey(name: 'ALTO_CM') required final double altoCm,
+      @JsonKey(name: 'RESUMEN_ES') final String? resumenES,
+      @JsonKey(name: 'RESUMEN_EN') final String? resumenEN,
+      @JsonKey(name: 'RESUMEN_FR') final String? resumenFR,
+      @JsonKey(name: 'RESUMEN_DE') final String? resumenDE,
+      @JsonKey(name: 'RESUMEN_CA') final String? resumenCA,
+      @JsonKey(name: 'RESUMEN_GB') final String? resumenGB,
+      @JsonKey(name: 'RESUMEN_HU') final String? resumenHU,
+      @JsonKey(name: 'RESUMEN_IT') final String? resumenIT,
+      @JsonKey(name: 'RESUMEN_NL') final String? resumenNL,
+      @JsonKey(name: 'RESUMEN_PL') final String? resumenPL,
+      @JsonKey(name: 'RESUMEN_PT') final String? resumenPT,
+      @JsonKey(name: 'RESUMEN_RO') final String? resumenRO,
+      @JsonKey(name: 'RESUMEN_RU') final String? resumenRU,
+      @JsonKey(name: 'RESUMEN_CN') final String? resumenCN,
+      @JsonKey(name: 'RESUMEN_EL') final String? resumenEL,
+      @JsonKey(name: 'STOCK_DISPONIBLE') required final int stockDisponible,
+      @JsonKey(name: 'VENTAS_ACTUAL') required final double ventasActual,
+      @JsonKey(name: 'VENTAS_ANTERIOR') required final double ventasAnterior,
       @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_1')
-          required final int comprasEntregaCantidad1,
+      required final int comprasEntregaCantidad1,
       @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_2')
-          required final int comprasEntregaCantidad2,
+      required final int comprasEntregaCantidad2,
       @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_3')
-          required final int comprasEntregaCantidad3,
+      required final int comprasEntregaCantidad3,
       @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_MAS_3')
-          required final int comprasEntregaCantidadMas3,
+      required final int comprasEntregaCantidadMas3,
       @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_1')
-          final DateTime? comprasEntregaFecha1,
+      final DateTime? comprasEntregaFecha1,
       @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_2')
-          final DateTime? comprasEntregaFecha2,
+      final DateTime? comprasEntregaFecha2,
       @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_3')
-          final DateTime? comprasEntregaFecha3,
+      final DateTime? comprasEntregaFecha3,
       @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_1')
-          final String? comprasEntregaEstado1,
+      final String? comprasEntregaEstado1,
       @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_2')
-          final String? comprasEntregaEstado2,
+      final String? comprasEntregaEstado2,
       @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_')
-          final String? comprasEntregaEstado3,
-      @JsonKey(name: 'IMAGEN_PRINCIPAL')
-          final String? imagenPrincipal,
-      @JsonKey(name: 'GTIN_13_UNIDAD')
-          final String? gtin13Unidad,
-      @JsonKey(name: 'GS1_128_SUBCAJA')
-          final String? gs1128Subcaja,
-      @JsonKey(name: 'GS1_128_CAJA')
-          final String? gs1128Caja,
-      @JsonKey(name: 'GS1_128_PALET')
-          final String? gs1128Palet,
-      @JsonKey(name: 'LAST_UPDATED')
-          required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED')
-          final String deleted}) = _$_ArticuloDTO;
+      final String? comprasEntregaEstado3,
+      @JsonKey(name: 'IMAGEN_PRINCIPAL') final String? imagenPrincipal,
+      @JsonKey(name: 'GTIN_13_UNIDAD') final String? gtin13Unidad,
+      @JsonKey(name: 'GS1_128_SUBCAJA') final String? gs1128Subcaja,
+      @JsonKey(name: 'GS1_128_CAJA') final String? gs1128Caja,
+      @JsonKey(name: 'GS1_128_PALET') final String? gs1128Palet,
+      @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') final String deleted}) = _$_ArticuloDTO;
   const _ArticuloDTO._() : super._();
 
   factory _ArticuloDTO.fromJson(Map<String, dynamic> json) =

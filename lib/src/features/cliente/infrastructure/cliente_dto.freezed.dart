@@ -140,110 +140,65 @@ abstract class $ClienteDTOCopyWith<$Res> {
       _$ClienteDTOCopyWithImpl<$Res, ClienteDTO>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'CLIENTE_ID')
-          String id,
-      @JsonKey(name: 'NOMBRE')
-          String nombreCliente,
-      @JsonKey(name: 'NIF')
-          String? nif,
-      @JsonKey(name: 'NOMBRE_FISCAL')
-          String nombreFiscal,
-      @JsonKey(name: 'DIRECCION_FISCAL1')
-          String? direccionFiscal1,
-      @JsonKey(name: 'DIRECCION_FISCAL2')
-          String? direccionFiscal2,
-      @JsonKey(name: 'CODIGO_POSTAL_FISCAL')
-          String? codigoPostalFiscal,
-      @JsonKey(name: 'POBLACION_FISCAL')
-          String? poblacionFiscal,
-      @JsonKey(name: 'PAIS_ID_FISCAL')
-          String? paisFiscalId,
-      @JsonKey(name: 'PROVINCIA_FISCAL')
-          String? provinciaFiscal,
-      @JsonKey(name: 'LATITUD_FISCAL')
-          double latitudFiscal,
-      @JsonKey(name: 'LONGITUD_FISCAL')
-          double longitudFiscal,
-      @JsonKey(name: 'EMPRESA_ID')
-          String empresaId,
-      @JsonKey(name: 'IVA')
-          double iva,
-      @JsonKey(name: 'VENTAS_ANYO_ACTUAL')
-          double ventasAnyoActual,
-      @JsonKey(name: 'VENTAS_ANYO_ANTERIOR')
-          double ventasAnyoAnterior,
-      @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS')
-          double ventasHaceDosAnyos,
-      @JsonKey(name: 'MARGEN_ANYO_ACTUAL')
-          double margenAnyoActual,
-      @JsonKey(name: 'MARGEN_ANYO_ANTERIOR')
-          double margenAnyoAnterior,
-      @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS')
-          double margenHaceDosAnyos,
-      @JsonKey(name: 'PORCENTAJE_ABONOS')
-          double porcentajeAbonos,
-      @JsonKey(name: 'PORCENTAJE_GARANTIAS')
-          double porcentajeGarantias,
-      @JsonKey(name: 'CENTRAL_COMPRAS_NOMBRE')
-          String? centralCompras,
-      @JsonKey(name: 'URL_WEB')
-          String? urlWeb,
-      @JsonKey(name: 'DIVISA_ID')
-          String? divisaId,
-      @JsonKey(name: 'TARIFA_ID')
-          String? tarifaId,
-      @JsonKey(name: 'TARIFA_DESCRIPCION')
-          String? tarifaDescripcion,
-      @JsonKey(name: 'DESCUENTO_GENERAL_ID')
-          String? descuentoGeneralId,
+      {@JsonKey(name: 'CLIENTE_ID') String id,
+      @JsonKey(name: 'NOMBRE') String nombreCliente,
+      @JsonKey(name: 'NIF') String? nif,
+      @JsonKey(name: 'NOMBRE_FISCAL') String nombreFiscal,
+      @JsonKey(name: 'DIRECCION_FISCAL1') String? direccionFiscal1,
+      @JsonKey(name: 'DIRECCION_FISCAL2') String? direccionFiscal2,
+      @JsonKey(name: 'CODIGO_POSTAL_FISCAL') String? codigoPostalFiscal,
+      @JsonKey(name: 'POBLACION_FISCAL') String? poblacionFiscal,
+      @JsonKey(name: 'PAIS_ID_FISCAL') String? paisFiscalId,
+      @JsonKey(name: 'PROVINCIA_FISCAL') String? provinciaFiscal,
+      @JsonKey(name: 'LATITUD_FISCAL') double latitudFiscal,
+      @JsonKey(name: 'LONGITUD_FISCAL') double longitudFiscal,
+      @JsonKey(name: 'EMPRESA_ID') String empresaId,
+      @JsonKey(name: 'IVA') double iva,
+      @JsonKey(name: 'VENTAS_ANYO_ACTUAL') double ventasAnyoActual,
+      @JsonKey(name: 'VENTAS_ANYO_ANTERIOR') double ventasAnyoAnterior,
+      @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS') double ventasHaceDosAnyos,
+      @JsonKey(name: 'MARGEN_ANYO_ACTUAL') double margenAnyoActual,
+      @JsonKey(name: 'MARGEN_ANYO_ANTERIOR') double margenAnyoAnterior,
+      @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS') double margenHaceDosAnyos,
+      @JsonKey(name: 'PORCENTAJE_ABONOS') double porcentajeAbonos,
+      @JsonKey(name: 'PORCENTAJE_GARANTIAS') double porcentajeGarantias,
+      @JsonKey(name: 'CENTRAL_COMPRAS_NOMBRE') String? centralCompras,
+      @JsonKey(name: 'URL_WEB') String? urlWeb,
+      @JsonKey(name: 'DIVISA_ID') String? divisaId,
+      @JsonKey(name: 'TARIFA_ID') String? tarifaId,
+      @JsonKey(name: 'TARIFA_DESCRIPCION') String? tarifaDescripcion,
+      @JsonKey(name: 'DESCUENTO_GENERAL_ID') String? descuentoGeneralId,
       @JsonKey(name: 'DESCUENTO_GENERAL_DESCRIPCION')
-          String? descripcionDescuentoGeneral,
-      @JsonKey(name: 'TIPO_CALCULO_PRECIO')
-          String tipoCalculoPrecio,
-      @JsonKey(name: 'PLAZO_COBRO_ID')
-          String? plazoDeCobroId,
-      @JsonKey(name: 'METODO_COBRO_ID')
-          String? metodoDeCobroId,
-      @JsonKey(name: 'DESCUENTO_PRONTO_PAGO')
-          double descuentoProntoPago,
-      @JsonKey(name: 'RIESGO_CONCEDIDO_INTERNO')
-          double riesgoConcedidoInterno,
+      String? descripcionDescuentoGeneral,
+      @JsonKey(name: 'TIPO_CALCULO_PRECIO') String tipoCalculoPrecio,
+      @JsonKey(name: 'PLAZO_COBRO_ID') String? plazoDeCobroId,
+      @JsonKey(name: 'METODO_COBRO_ID') String? metodoDeCobroId,
+      @JsonKey(name: 'DESCUENTO_PRONTO_PAGO') double descuentoProntoPago,
+      @JsonKey(name: 'RIESGO_CONCEDIDO_INTERNO') double riesgoConcedidoInterno,
       @JsonKey(name: 'RIESGO_CONCEDIDO_INTERNO_FECHA')
-          DateTime? riesgoConcedidoInternoDate,
-      @JsonKey(name: 'RIESGO_CONCEDIDO_COFACE')
-          double riesgoConcedidoCoafe,
+      DateTime? riesgoConcedidoInternoDate,
+      @JsonKey(name: 'RIESGO_CONCEDIDO_COFACE') double riesgoConcedidoCoafe,
       @JsonKey(name: 'RIESGO_CONCEDIDO_COFACE_FECHA')
-          DateTime? riesgoConcedidoCoafeFecha,
-      @JsonKey(name: 'RIESGO_CONCEDIDO')
-          double? riesgoConcedido,
+      DateTime? riesgoConcedidoCoafeFecha,
+      @JsonKey(name: 'RIESGO_CONCEDIDO') double? riesgoConcedido,
       @JsonKey(name: 'RIESGO_PDTE_COBRO_VENCIDO_CLIENTE')
-          double? riesgoPendienteCobroVencido,
+      double? riesgoPendienteCobroVencido,
       @JsonKey(name: 'RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE')
-          double? riesgoPendienteCobroNoVencido,
+      double? riesgoPendienteCobroNoVencido,
       @JsonKey(name: 'RIESGO_PDTE_SERVIR_CLIENTE')
-          double? riesgoPendienteServir,
+      double? riesgoPendienteServir,
       @JsonKey(name: 'RIESGO_PDTE_FACTURAR_CLIENTE')
-          double? riesgoPendienteFacturar,
-      @JsonKey(name: 'OBSERVACIONES_INTERNAS')
-          String? obvservacionesInternas,
-      @JsonKey(name: 'CLIENTE_POTENCIAL')
-          String? clientePotencial,
-      @JsonKey(name: 'ESTADO_POTENCIAL_ID')
-          String? clienteEstadoPotencialId,
-      @JsonKey(name: 'TIPO_POTENCIAL_ID')
-          String? clienteTipoPotencialId,
-      @JsonKey(name: 'REPRESENTANTE1_ID')
-          String? representante1Id,
-      @JsonKey(name: 'REPRESENTANTE1_NOMBRE')
-          String? representante1Nombre,
-      @JsonKey(name: 'REPRESENTANTE2_ID')
-          String? representante2Id,
-      @JsonKey(name: 'REPRESENTANTE2_NOMBRE')
-          String? representante2Nombre,
-      @JsonKey(name: 'LAST_UPDATED')
-          DateTime lastUpdated,
-      @JsonKey(name: 'DELETED')
-          String deleted});
+      double? riesgoPendienteFacturar,
+      @JsonKey(name: 'OBSERVACIONES_INTERNAS') String? obvservacionesInternas,
+      @JsonKey(name: 'CLIENTE_POTENCIAL') String? clientePotencial,
+      @JsonKey(name: 'ESTADO_POTENCIAL_ID') String? clienteEstadoPotencialId,
+      @JsonKey(name: 'TIPO_POTENCIAL_ID') String? clienteTipoPotencialId,
+      @JsonKey(name: 'REPRESENTANTE1_ID') String? representante1Id,
+      @JsonKey(name: 'REPRESENTANTE1_NOMBRE') String? representante1Nombre,
+      @JsonKey(name: 'REPRESENTANTE2_ID') String? representante2Id,
+      @JsonKey(name: 'REPRESENTANTE2_NOMBRE') String? representante2Nombre,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
@@ -534,110 +489,65 @@ abstract class _$$_ClienteDTOCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'CLIENTE_ID')
-          String id,
-      @JsonKey(name: 'NOMBRE')
-          String nombreCliente,
-      @JsonKey(name: 'NIF')
-          String? nif,
-      @JsonKey(name: 'NOMBRE_FISCAL')
-          String nombreFiscal,
-      @JsonKey(name: 'DIRECCION_FISCAL1')
-          String? direccionFiscal1,
-      @JsonKey(name: 'DIRECCION_FISCAL2')
-          String? direccionFiscal2,
-      @JsonKey(name: 'CODIGO_POSTAL_FISCAL')
-          String? codigoPostalFiscal,
-      @JsonKey(name: 'POBLACION_FISCAL')
-          String? poblacionFiscal,
-      @JsonKey(name: 'PAIS_ID_FISCAL')
-          String? paisFiscalId,
-      @JsonKey(name: 'PROVINCIA_FISCAL')
-          String? provinciaFiscal,
-      @JsonKey(name: 'LATITUD_FISCAL')
-          double latitudFiscal,
-      @JsonKey(name: 'LONGITUD_FISCAL')
-          double longitudFiscal,
-      @JsonKey(name: 'EMPRESA_ID')
-          String empresaId,
-      @JsonKey(name: 'IVA')
-          double iva,
-      @JsonKey(name: 'VENTAS_ANYO_ACTUAL')
-          double ventasAnyoActual,
-      @JsonKey(name: 'VENTAS_ANYO_ANTERIOR')
-          double ventasAnyoAnterior,
-      @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS')
-          double ventasHaceDosAnyos,
-      @JsonKey(name: 'MARGEN_ANYO_ACTUAL')
-          double margenAnyoActual,
-      @JsonKey(name: 'MARGEN_ANYO_ANTERIOR')
-          double margenAnyoAnterior,
-      @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS')
-          double margenHaceDosAnyos,
-      @JsonKey(name: 'PORCENTAJE_ABONOS')
-          double porcentajeAbonos,
-      @JsonKey(name: 'PORCENTAJE_GARANTIAS')
-          double porcentajeGarantias,
-      @JsonKey(name: 'CENTRAL_COMPRAS_NOMBRE')
-          String? centralCompras,
-      @JsonKey(name: 'URL_WEB')
-          String? urlWeb,
-      @JsonKey(name: 'DIVISA_ID')
-          String? divisaId,
-      @JsonKey(name: 'TARIFA_ID')
-          String? tarifaId,
-      @JsonKey(name: 'TARIFA_DESCRIPCION')
-          String? tarifaDescripcion,
-      @JsonKey(name: 'DESCUENTO_GENERAL_ID')
-          String? descuentoGeneralId,
+      {@JsonKey(name: 'CLIENTE_ID') String id,
+      @JsonKey(name: 'NOMBRE') String nombreCliente,
+      @JsonKey(name: 'NIF') String? nif,
+      @JsonKey(name: 'NOMBRE_FISCAL') String nombreFiscal,
+      @JsonKey(name: 'DIRECCION_FISCAL1') String? direccionFiscal1,
+      @JsonKey(name: 'DIRECCION_FISCAL2') String? direccionFiscal2,
+      @JsonKey(name: 'CODIGO_POSTAL_FISCAL') String? codigoPostalFiscal,
+      @JsonKey(name: 'POBLACION_FISCAL') String? poblacionFiscal,
+      @JsonKey(name: 'PAIS_ID_FISCAL') String? paisFiscalId,
+      @JsonKey(name: 'PROVINCIA_FISCAL') String? provinciaFiscal,
+      @JsonKey(name: 'LATITUD_FISCAL') double latitudFiscal,
+      @JsonKey(name: 'LONGITUD_FISCAL') double longitudFiscal,
+      @JsonKey(name: 'EMPRESA_ID') String empresaId,
+      @JsonKey(name: 'IVA') double iva,
+      @JsonKey(name: 'VENTAS_ANYO_ACTUAL') double ventasAnyoActual,
+      @JsonKey(name: 'VENTAS_ANYO_ANTERIOR') double ventasAnyoAnterior,
+      @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS') double ventasHaceDosAnyos,
+      @JsonKey(name: 'MARGEN_ANYO_ACTUAL') double margenAnyoActual,
+      @JsonKey(name: 'MARGEN_ANYO_ANTERIOR') double margenAnyoAnterior,
+      @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS') double margenHaceDosAnyos,
+      @JsonKey(name: 'PORCENTAJE_ABONOS') double porcentajeAbonos,
+      @JsonKey(name: 'PORCENTAJE_GARANTIAS') double porcentajeGarantias,
+      @JsonKey(name: 'CENTRAL_COMPRAS_NOMBRE') String? centralCompras,
+      @JsonKey(name: 'URL_WEB') String? urlWeb,
+      @JsonKey(name: 'DIVISA_ID') String? divisaId,
+      @JsonKey(name: 'TARIFA_ID') String? tarifaId,
+      @JsonKey(name: 'TARIFA_DESCRIPCION') String? tarifaDescripcion,
+      @JsonKey(name: 'DESCUENTO_GENERAL_ID') String? descuentoGeneralId,
       @JsonKey(name: 'DESCUENTO_GENERAL_DESCRIPCION')
-          String? descripcionDescuentoGeneral,
-      @JsonKey(name: 'TIPO_CALCULO_PRECIO')
-          String tipoCalculoPrecio,
-      @JsonKey(name: 'PLAZO_COBRO_ID')
-          String? plazoDeCobroId,
-      @JsonKey(name: 'METODO_COBRO_ID')
-          String? metodoDeCobroId,
-      @JsonKey(name: 'DESCUENTO_PRONTO_PAGO')
-          double descuentoProntoPago,
-      @JsonKey(name: 'RIESGO_CONCEDIDO_INTERNO')
-          double riesgoConcedidoInterno,
+      String? descripcionDescuentoGeneral,
+      @JsonKey(name: 'TIPO_CALCULO_PRECIO') String tipoCalculoPrecio,
+      @JsonKey(name: 'PLAZO_COBRO_ID') String? plazoDeCobroId,
+      @JsonKey(name: 'METODO_COBRO_ID') String? metodoDeCobroId,
+      @JsonKey(name: 'DESCUENTO_PRONTO_PAGO') double descuentoProntoPago,
+      @JsonKey(name: 'RIESGO_CONCEDIDO_INTERNO') double riesgoConcedidoInterno,
       @JsonKey(name: 'RIESGO_CONCEDIDO_INTERNO_FECHA')
-          DateTime? riesgoConcedidoInternoDate,
-      @JsonKey(name: 'RIESGO_CONCEDIDO_COFACE')
-          double riesgoConcedidoCoafe,
+      DateTime? riesgoConcedidoInternoDate,
+      @JsonKey(name: 'RIESGO_CONCEDIDO_COFACE') double riesgoConcedidoCoafe,
       @JsonKey(name: 'RIESGO_CONCEDIDO_COFACE_FECHA')
-          DateTime? riesgoConcedidoCoafeFecha,
-      @JsonKey(name: 'RIESGO_CONCEDIDO')
-          double? riesgoConcedido,
+      DateTime? riesgoConcedidoCoafeFecha,
+      @JsonKey(name: 'RIESGO_CONCEDIDO') double? riesgoConcedido,
       @JsonKey(name: 'RIESGO_PDTE_COBRO_VENCIDO_CLIENTE')
-          double? riesgoPendienteCobroVencido,
+      double? riesgoPendienteCobroVencido,
       @JsonKey(name: 'RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE')
-          double? riesgoPendienteCobroNoVencido,
+      double? riesgoPendienteCobroNoVencido,
       @JsonKey(name: 'RIESGO_PDTE_SERVIR_CLIENTE')
-          double? riesgoPendienteServir,
+      double? riesgoPendienteServir,
       @JsonKey(name: 'RIESGO_PDTE_FACTURAR_CLIENTE')
-          double? riesgoPendienteFacturar,
-      @JsonKey(name: 'OBSERVACIONES_INTERNAS')
-          String? obvservacionesInternas,
-      @JsonKey(name: 'CLIENTE_POTENCIAL')
-          String? clientePotencial,
-      @JsonKey(name: 'ESTADO_POTENCIAL_ID')
-          String? clienteEstadoPotencialId,
-      @JsonKey(name: 'TIPO_POTENCIAL_ID')
-          String? clienteTipoPotencialId,
-      @JsonKey(name: 'REPRESENTANTE1_ID')
-          String? representante1Id,
-      @JsonKey(name: 'REPRESENTANTE1_NOMBRE')
-          String? representante1Nombre,
-      @JsonKey(name: 'REPRESENTANTE2_ID')
-          String? representante2Id,
-      @JsonKey(name: 'REPRESENTANTE2_NOMBRE')
-          String? representante2Nombre,
-      @JsonKey(name: 'LAST_UPDATED')
-          DateTime lastUpdated,
-      @JsonKey(name: 'DELETED')
-          String deleted});
+      double? riesgoPendienteFacturar,
+      @JsonKey(name: 'OBSERVACIONES_INTERNAS') String? obvservacionesInternas,
+      @JsonKey(name: 'CLIENTE_POTENCIAL') String? clientePotencial,
+      @JsonKey(name: 'ESTADO_POTENCIAL_ID') String? clienteEstadoPotencialId,
+      @JsonKey(name: 'TIPO_POTENCIAL_ID') String? clienteTipoPotencialId,
+      @JsonKey(name: 'REPRESENTANTE1_ID') String? representante1Id,
+      @JsonKey(name: 'REPRESENTANTE1_NOMBRE') String? representante1Nombre,
+      @JsonKey(name: 'REPRESENTANTE2_ID') String? representante2Id,
+      @JsonKey(name: 'REPRESENTANTE2_NOMBRE') String? representante2Nombre,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
@@ -921,110 +831,66 @@ class __$$_ClienteDTOCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ClienteDTO extends _ClienteDTO {
   const _$_ClienteDTO(
-      {@JsonKey(name: 'CLIENTE_ID')
-          required this.id,
-      @JsonKey(name: 'NOMBRE')
-          required this.nombreCliente,
-      @JsonKey(name: 'NIF')
-          this.nif,
-      @JsonKey(name: 'NOMBRE_FISCAL')
-          required this.nombreFiscal,
-      @JsonKey(name: 'DIRECCION_FISCAL1')
-          this.direccionFiscal1,
-      @JsonKey(name: 'DIRECCION_FISCAL2')
-          this.direccionFiscal2,
-      @JsonKey(name: 'CODIGO_POSTAL_FISCAL')
-          this.codigoPostalFiscal,
-      @JsonKey(name: 'POBLACION_FISCAL')
-          this.poblacionFiscal,
-      @JsonKey(name: 'PAIS_ID_FISCAL')
-          this.paisFiscalId,
-      @JsonKey(name: 'PROVINCIA_FISCAL')
-          this.provinciaFiscal,
-      @JsonKey(name: 'LATITUD_FISCAL')
-          required this.latitudFiscal,
-      @JsonKey(name: 'LONGITUD_FISCAL')
-          required this.longitudFiscal,
-      @JsonKey(name: 'EMPRESA_ID')
-          required this.empresaId,
-      @JsonKey(name: 'IVA')
-          required this.iva,
-      @JsonKey(name: 'VENTAS_ANYO_ACTUAL')
-          required this.ventasAnyoActual,
-      @JsonKey(name: 'VENTAS_ANYO_ANTERIOR')
-          required this.ventasAnyoAnterior,
-      @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS')
-          required this.ventasHaceDosAnyos,
-      @JsonKey(name: 'MARGEN_ANYO_ACTUAL')
-          required this.margenAnyoActual,
-      @JsonKey(name: 'MARGEN_ANYO_ANTERIOR')
-          required this.margenAnyoAnterior,
-      @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS')
-          required this.margenHaceDosAnyos,
-      @JsonKey(name: 'PORCENTAJE_ABONOS')
-          required this.porcentajeAbonos,
-      @JsonKey(name: 'PORCENTAJE_GARANTIAS')
-          required this.porcentajeGarantias,
-      @JsonKey(name: 'CENTRAL_COMPRAS_NOMBRE')
-          this.centralCompras,
-      @JsonKey(name: 'URL_WEB')
-          this.urlWeb,
-      @JsonKey(name: 'DIVISA_ID')
-          this.divisaId,
-      @JsonKey(name: 'TARIFA_ID')
-          this.tarifaId,
-      @JsonKey(name: 'TARIFA_DESCRIPCION')
-          this.tarifaDescripcion,
-      @JsonKey(name: 'DESCUENTO_GENERAL_ID')
-          this.descuentoGeneralId,
+      {@JsonKey(name: 'CLIENTE_ID') required this.id,
+      @JsonKey(name: 'NOMBRE') required this.nombreCliente,
+      @JsonKey(name: 'NIF') this.nif,
+      @JsonKey(name: 'NOMBRE_FISCAL') required this.nombreFiscal,
+      @JsonKey(name: 'DIRECCION_FISCAL1') this.direccionFiscal1,
+      @JsonKey(name: 'DIRECCION_FISCAL2') this.direccionFiscal2,
+      @JsonKey(name: 'CODIGO_POSTAL_FISCAL') this.codigoPostalFiscal,
+      @JsonKey(name: 'POBLACION_FISCAL') this.poblacionFiscal,
+      @JsonKey(name: 'PAIS_ID_FISCAL') this.paisFiscalId,
+      @JsonKey(name: 'PROVINCIA_FISCAL') this.provinciaFiscal,
+      @JsonKey(name: 'LATITUD_FISCAL') required this.latitudFiscal,
+      @JsonKey(name: 'LONGITUD_FISCAL') required this.longitudFiscal,
+      @JsonKey(name: 'EMPRESA_ID') required this.empresaId,
+      @JsonKey(name: 'IVA') required this.iva,
+      @JsonKey(name: 'VENTAS_ANYO_ACTUAL') required this.ventasAnyoActual,
+      @JsonKey(name: 'VENTAS_ANYO_ANTERIOR') required this.ventasAnyoAnterior,
+      @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS') required this.ventasHaceDosAnyos,
+      @JsonKey(name: 'MARGEN_ANYO_ACTUAL') required this.margenAnyoActual,
+      @JsonKey(name: 'MARGEN_ANYO_ANTERIOR') required this.margenAnyoAnterior,
+      @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS') required this.margenHaceDosAnyos,
+      @JsonKey(name: 'PORCENTAJE_ABONOS') required this.porcentajeAbonos,
+      @JsonKey(name: 'PORCENTAJE_GARANTIAS') required this.porcentajeGarantias,
+      @JsonKey(name: 'CENTRAL_COMPRAS_NOMBRE') this.centralCompras,
+      @JsonKey(name: 'URL_WEB') this.urlWeb,
+      @JsonKey(name: 'DIVISA_ID') this.divisaId,
+      @JsonKey(name: 'TARIFA_ID') this.tarifaId,
+      @JsonKey(name: 'TARIFA_DESCRIPCION') this.tarifaDescripcion,
+      @JsonKey(name: 'DESCUENTO_GENERAL_ID') this.descuentoGeneralId,
       @JsonKey(name: 'DESCUENTO_GENERAL_DESCRIPCION')
-          this.descripcionDescuentoGeneral,
-      @JsonKey(name: 'TIPO_CALCULO_PRECIO')
-          required this.tipoCalculoPrecio,
-      @JsonKey(name: 'PLAZO_COBRO_ID')
-          this.plazoDeCobroId,
-      @JsonKey(name: 'METODO_COBRO_ID')
-          this.metodoDeCobroId,
-      @JsonKey(name: 'DESCUENTO_PRONTO_PAGO')
-          required this.descuentoProntoPago,
+      this.descripcionDescuentoGeneral,
+      @JsonKey(name: 'TIPO_CALCULO_PRECIO') required this.tipoCalculoPrecio,
+      @JsonKey(name: 'PLAZO_COBRO_ID') this.plazoDeCobroId,
+      @JsonKey(name: 'METODO_COBRO_ID') this.metodoDeCobroId,
+      @JsonKey(name: 'DESCUENTO_PRONTO_PAGO') required this.descuentoProntoPago,
       @JsonKey(name: 'RIESGO_CONCEDIDO_INTERNO')
-          required this.riesgoConcedidoInterno,
+      required this.riesgoConcedidoInterno,
       @JsonKey(name: 'RIESGO_CONCEDIDO_INTERNO_FECHA')
-          this.riesgoConcedidoInternoDate,
+      this.riesgoConcedidoInternoDate,
       @JsonKey(name: 'RIESGO_CONCEDIDO_COFACE')
-          required this.riesgoConcedidoCoafe,
+      required this.riesgoConcedidoCoafe,
       @JsonKey(name: 'RIESGO_CONCEDIDO_COFACE_FECHA')
-          this.riesgoConcedidoCoafeFecha,
-      @JsonKey(name: 'RIESGO_CONCEDIDO')
-          this.riesgoConcedido,
+      this.riesgoConcedidoCoafeFecha,
+      @JsonKey(name: 'RIESGO_CONCEDIDO') this.riesgoConcedido,
       @JsonKey(name: 'RIESGO_PDTE_COBRO_VENCIDO_CLIENTE')
-          this.riesgoPendienteCobroVencido,
+      this.riesgoPendienteCobroVencido,
       @JsonKey(name: 'RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE')
-          this.riesgoPendienteCobroNoVencido,
-      @JsonKey(name: 'RIESGO_PDTE_SERVIR_CLIENTE')
-          this.riesgoPendienteServir,
+      this.riesgoPendienteCobroNoVencido,
+      @JsonKey(name: 'RIESGO_PDTE_SERVIR_CLIENTE') this.riesgoPendienteServir,
       @JsonKey(name: 'RIESGO_PDTE_FACTURAR_CLIENTE')
-          this.riesgoPendienteFacturar,
-      @JsonKey(name: 'OBSERVACIONES_INTERNAS')
-          this.obvservacionesInternas,
-      @JsonKey(name: 'CLIENTE_POTENCIAL')
-          this.clientePotencial,
-      @JsonKey(name: 'ESTADO_POTENCIAL_ID')
-          this.clienteEstadoPotencialId,
-      @JsonKey(name: 'TIPO_POTENCIAL_ID')
-          this.clienteTipoPotencialId,
-      @JsonKey(name: 'REPRESENTANTE1_ID')
-          this.representante1Id,
-      @JsonKey(name: 'REPRESENTANTE1_NOMBRE')
-          this.representante1Nombre,
-      @JsonKey(name: 'REPRESENTANTE2_ID')
-          this.representante2Id,
-      @JsonKey(name: 'REPRESENTANTE2_NOMBRE')
-          this.representante2Nombre,
-      @JsonKey(name: 'LAST_UPDATED')
-          required this.lastUpdated,
-      @JsonKey(name: 'DELETED')
-          this.deleted = 'N'})
+      this.riesgoPendienteFacturar,
+      @JsonKey(name: 'OBSERVACIONES_INTERNAS') this.obvservacionesInternas,
+      @JsonKey(name: 'CLIENTE_POTENCIAL') this.clientePotencial,
+      @JsonKey(name: 'ESTADO_POTENCIAL_ID') this.clienteEstadoPotencialId,
+      @JsonKey(name: 'TIPO_POTENCIAL_ID') this.clienteTipoPotencialId,
+      @JsonKey(name: 'REPRESENTANTE1_ID') this.representante1Id,
+      @JsonKey(name: 'REPRESENTANTE1_NOMBRE') this.representante1Nombre,
+      @JsonKey(name: 'REPRESENTANTE2_ID') this.representante2Id,
+      @JsonKey(name: 'REPRESENTANTE2_NOMBRE') this.representante2Nombre,
+      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+      @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
   factory _$_ClienteDTO.fromJson(Map<String, dynamic> json) =>
@@ -1366,110 +1232,81 @@ class _$_ClienteDTO extends _ClienteDTO {
 
 abstract class _ClienteDTO extends ClienteDTO {
   const factory _ClienteDTO(
-      {@JsonKey(name: 'CLIENTE_ID')
-          required final String id,
-      @JsonKey(name: 'NOMBRE')
-          required final String nombreCliente,
-      @JsonKey(name: 'NIF')
-          final String? nif,
-      @JsonKey(name: 'NOMBRE_FISCAL')
-          required final String nombreFiscal,
-      @JsonKey(name: 'DIRECCION_FISCAL1')
-          final String? direccionFiscal1,
-      @JsonKey(name: 'DIRECCION_FISCAL2')
-          final String? direccionFiscal2,
-      @JsonKey(name: 'CODIGO_POSTAL_FISCAL')
-          final String? codigoPostalFiscal,
-      @JsonKey(name: 'POBLACION_FISCAL')
-          final String? poblacionFiscal,
-      @JsonKey(name: 'PAIS_ID_FISCAL')
-          final String? paisFiscalId,
-      @JsonKey(name: 'PROVINCIA_FISCAL')
-          final String? provinciaFiscal,
-      @JsonKey(name: 'LATITUD_FISCAL')
-          required final double latitudFiscal,
-      @JsonKey(name: 'LONGITUD_FISCAL')
-          required final double longitudFiscal,
-      @JsonKey(name: 'EMPRESA_ID')
-          required final String empresaId,
-      @JsonKey(name: 'IVA')
-          required final double iva,
+      {@JsonKey(name: 'CLIENTE_ID') required final String id,
+      @JsonKey(name: 'NOMBRE') required final String nombreCliente,
+      @JsonKey(name: 'NIF') final String? nif,
+      @JsonKey(name: 'NOMBRE_FISCAL') required final String nombreFiscal,
+      @JsonKey(name: 'DIRECCION_FISCAL1') final String? direccionFiscal1,
+      @JsonKey(name: 'DIRECCION_FISCAL2') final String? direccionFiscal2,
+      @JsonKey(name: 'CODIGO_POSTAL_FISCAL') final String? codigoPostalFiscal,
+      @JsonKey(name: 'POBLACION_FISCAL') final String? poblacionFiscal,
+      @JsonKey(name: 'PAIS_ID_FISCAL') final String? paisFiscalId,
+      @JsonKey(name: 'PROVINCIA_FISCAL') final String? provinciaFiscal,
+      @JsonKey(name: 'LATITUD_FISCAL') required final double latitudFiscal,
+      @JsonKey(name: 'LONGITUD_FISCAL') required final double longitudFiscal,
+      @JsonKey(name: 'EMPRESA_ID') required final String empresaId,
+      @JsonKey(name: 'IVA') required final double iva,
       @JsonKey(name: 'VENTAS_ANYO_ACTUAL')
-          required final double ventasAnyoActual,
+      required final double ventasAnyoActual,
       @JsonKey(name: 'VENTAS_ANYO_ANTERIOR')
-          required final double ventasAnyoAnterior,
+      required final double ventasAnyoAnterior,
       @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS')
-          required final double ventasHaceDosAnyos,
+      required final double ventasHaceDosAnyos,
       @JsonKey(name: 'MARGEN_ANYO_ACTUAL')
-          required final double margenAnyoActual,
+      required final double margenAnyoActual,
       @JsonKey(name: 'MARGEN_ANYO_ANTERIOR')
-          required final double margenAnyoAnterior,
+      required final double margenAnyoAnterior,
       @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS')
-          required final double margenHaceDosAnyos,
+      required final double margenHaceDosAnyos,
       @JsonKey(name: 'PORCENTAJE_ABONOS')
-          required final double porcentajeAbonos,
+      required final double porcentajeAbonos,
       @JsonKey(name: 'PORCENTAJE_GARANTIAS')
-          required final double porcentajeGarantias,
-      @JsonKey(name: 'CENTRAL_COMPRAS_NOMBRE')
-          final String? centralCompras,
-      @JsonKey(name: 'URL_WEB')
-          final String? urlWeb,
-      @JsonKey(name: 'DIVISA_ID')
-          final String? divisaId,
-      @JsonKey(name: 'TARIFA_ID')
-          final String? tarifaId,
-      @JsonKey(name: 'TARIFA_DESCRIPCION')
-          final String? tarifaDescripcion,
-      @JsonKey(name: 'DESCUENTO_GENERAL_ID')
-          final String? descuentoGeneralId,
+      required final double porcentajeGarantias,
+      @JsonKey(name: 'CENTRAL_COMPRAS_NOMBRE') final String? centralCompras,
+      @JsonKey(name: 'URL_WEB') final String? urlWeb,
+      @JsonKey(name: 'DIVISA_ID') final String? divisaId,
+      @JsonKey(name: 'TARIFA_ID') final String? tarifaId,
+      @JsonKey(name: 'TARIFA_DESCRIPCION') final String? tarifaDescripcion,
+      @JsonKey(name: 'DESCUENTO_GENERAL_ID') final String? descuentoGeneralId,
       @JsonKey(name: 'DESCUENTO_GENERAL_DESCRIPCION')
-          final String? descripcionDescuentoGeneral,
+      final String? descripcionDescuentoGeneral,
       @JsonKey(name: 'TIPO_CALCULO_PRECIO')
-          required final String tipoCalculoPrecio,
-      @JsonKey(name: 'PLAZO_COBRO_ID')
-          final String? plazoDeCobroId,
-      @JsonKey(name: 'METODO_COBRO_ID')
-          final String? metodoDeCobroId,
+      required final String tipoCalculoPrecio,
+      @JsonKey(name: 'PLAZO_COBRO_ID') final String? plazoDeCobroId,
+      @JsonKey(name: 'METODO_COBRO_ID') final String? metodoDeCobroId,
       @JsonKey(name: 'DESCUENTO_PRONTO_PAGO')
-          required final double descuentoProntoPago,
+      required final double descuentoProntoPago,
       @JsonKey(name: 'RIESGO_CONCEDIDO_INTERNO')
-          required final double riesgoConcedidoInterno,
+      required final double riesgoConcedidoInterno,
       @JsonKey(name: 'RIESGO_CONCEDIDO_INTERNO_FECHA')
-          final DateTime? riesgoConcedidoInternoDate,
+      final DateTime? riesgoConcedidoInternoDate,
       @JsonKey(name: 'RIESGO_CONCEDIDO_COFACE')
-          required final double riesgoConcedidoCoafe,
+      required final double riesgoConcedidoCoafe,
       @JsonKey(name: 'RIESGO_CONCEDIDO_COFACE_FECHA')
-          final DateTime? riesgoConcedidoCoafeFecha,
-      @JsonKey(name: 'RIESGO_CONCEDIDO')
-          final double? riesgoConcedido,
+      final DateTime? riesgoConcedidoCoafeFecha,
+      @JsonKey(name: 'RIESGO_CONCEDIDO') final double? riesgoConcedido,
       @JsonKey(name: 'RIESGO_PDTE_COBRO_VENCIDO_CLIENTE')
-          final double? riesgoPendienteCobroVencido,
+      final double? riesgoPendienteCobroVencido,
       @JsonKey(name: 'RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE')
-          final double? riesgoPendienteCobroNoVencido,
+      final double? riesgoPendienteCobroNoVencido,
       @JsonKey(name: 'RIESGO_PDTE_SERVIR_CLIENTE')
-          final double? riesgoPendienteServir,
+      final double? riesgoPendienteServir,
       @JsonKey(name: 'RIESGO_PDTE_FACTURAR_CLIENTE')
-          final double? riesgoPendienteFacturar,
+      final double? riesgoPendienteFacturar,
       @JsonKey(name: 'OBSERVACIONES_INTERNAS')
-          final String? obvservacionesInternas,
-      @JsonKey(name: 'CLIENTE_POTENCIAL')
-          final String? clientePotencial,
+      final String? obvservacionesInternas,
+      @JsonKey(name: 'CLIENTE_POTENCIAL') final String? clientePotencial,
       @JsonKey(name: 'ESTADO_POTENCIAL_ID')
-          final String? clienteEstadoPotencialId,
-      @JsonKey(name: 'TIPO_POTENCIAL_ID')
-          final String? clienteTipoPotencialId,
-      @JsonKey(name: 'REPRESENTANTE1_ID')
-          final String? representante1Id,
+      final String? clienteEstadoPotencialId,
+      @JsonKey(name: 'TIPO_POTENCIAL_ID') final String? clienteTipoPotencialId,
+      @JsonKey(name: 'REPRESENTANTE1_ID') final String? representante1Id,
       @JsonKey(name: 'REPRESENTANTE1_NOMBRE')
-          final String? representante1Nombre,
-      @JsonKey(name: 'REPRESENTANTE2_ID')
-          final String? representante2Id,
+      final String? representante1Nombre,
+      @JsonKey(name: 'REPRESENTANTE2_ID') final String? representante2Id,
       @JsonKey(name: 'REPRESENTANTE2_NOMBRE')
-          final String? representante2Nombre,
-      @JsonKey(name: 'LAST_UPDATED')
-          required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED')
-          final String deleted}) = _$_ClienteDTO;
+      final String? representante2Nombre,
+      @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') final String deleted}) = _$_ClienteDTO;
   const _ClienteDTO._() : super._();
 
   factory _ClienteDTO.fromJson(Map<String, dynamic> json) =
