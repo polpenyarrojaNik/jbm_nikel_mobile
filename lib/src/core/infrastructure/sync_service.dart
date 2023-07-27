@@ -32,6 +32,8 @@ import '../../features/cliente/infrastructure/metodo_cobro_dto.dart';
 import '../../features/cliente/infrastructure/plazo_cobro_dto.dart';
 import '../../features/devoluciones/infrastructure/devolucion_estado_dto.dart';
 import '../../features/devoluciones/infrastructure/devolucion_linea_dto.dart';
+import '../../features/devoluciones/infrastructure/devolucion_motivo_dto.dart';
+import '../../features/devoluciones/infrastructure/devolucion_tipo_dto.dart';
 import '../../features/estadisticas/infrastructure/estadisticas_articulos_top_dto.dart';
 import '../../features/estadisticas/infrastructure/estadisticas_ultimos_precios_dto.dart';
 import '../../features/estadisticas/infrastructure/estadisticas_venta_cliente_usuario_dto.dart';
@@ -531,7 +533,7 @@ class SyncService {
       await _syncTable(
         apiPath: 'api/v1/sync/devolucion/tipos',
         tableInfo: _remoteDb.devolucionTipoTable,
-        fromJson: (e) => DevolucionEstadoDTO.fromJson(e),
+        fromJson: (e) => DevolucionTipoDTO.fromJson(e),
       );
     } on AppException catch (e) {
       log.e(e.details);
@@ -546,7 +548,7 @@ class SyncService {
       await _syncTable(
         apiPath: 'api/v1/sync/devolucion/motivos',
         tableInfo: _remoteDb.devolucionMotivoTable,
-        fromJson: (e) => DevolucionEstadoDTO.fromJson(e),
+        fromJson: (e) => DevolucionMotivoDTO.fromJson(e),
       );
     } on AppException catch (e) {
       log.e(e.details);

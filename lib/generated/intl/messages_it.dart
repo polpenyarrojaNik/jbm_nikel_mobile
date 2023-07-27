@@ -464,6 +464,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "haOcurridoUnError":
             MessageLookupByLibrary.simpleMessage("C\'è stato un errore"),
         "no": MessageLookupByLibrary.simpleMessage("Non"),
+        "notification": MessageLookupByLibrary.simpleMessage("Notifica"),
+        "notification_detail":
+            MessageLookupByLibrary.simpleMessage("Dettaglio notifica"),
+        "notifications": MessageLookupByLibrary.simpleMessage(" notifiche"),
         "paises_search_title":
             MessageLookupByLibrary.simpleMessage("Cerca Paese..."),
         "pedido_borrador": MessageLookupByLibrary.simpleMessage("Brutta copia"),

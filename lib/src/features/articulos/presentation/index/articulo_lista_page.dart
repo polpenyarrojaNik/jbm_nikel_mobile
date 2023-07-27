@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/app_drawer.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/last_sync_date_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
@@ -11,10 +12,10 @@ import 'package:jbm_nikel_mobile/src/features/sync/application/sync_notifier_pro
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/debouncer.dart';
-import '../../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
+import '../../../notifications/core/application/notification_provider.dart';
 import '../../domain/articulo.dart';
 import 'articulo_lista_tile.dart';
 import 'articulo_search_controller.dart';
@@ -32,21 +33,13 @@ class ArticuloListaPage extends ConsumerStatefulWidget {
 class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
   final _debouncer = Debouncer(milliseconds: 500);
 
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   void initState() {
     super.initState();
-    // final locale = CountryCodes.getDeviceLocale();
 
-    // final newVersion = NewVersionPlus(
-    //   iOSId: 'es.nikel.jbm.jbm-nikel-mobile',
-    //   androidId: 'es.nikel.jbm.jbm_nikel_mobile',
-    //   iOSAppStoreCountry: locale?.countryCode,
-    // );
-
-    // final VersionStatus? versionStatus = await newVersion.getVersionStatus();
-    // if (versionStatus != null && versionStatus.canUpdate) {
-    //   newVersion.showUpdateDialog(context: context, versionStatus: versionStatus);
-    // }
+    ref.read(notificationNotifierProvider.notifier).haveNotification();
   }
 
   @override
@@ -58,9 +51,24 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
       (_, state) => state.showAlertDialogOnError(context),
     );
 
+    ref.listen<AsyncValue>(
+      notificationNotifierProvider,
+      (_, state) => state.maybeWhen(
+        orElse: () {},
+        data: (notificationId) {
+          if (notificationId != null) {
+            context.router
+                .push(NotificationDetailRoute(notificationId: notificationId));
+          }
+        },
+      ),
+    );
+
     return Scaffold(
-      drawer: (!widget.isSearchArticuloForForm) ? const AppDrawer() : null,
+      key: scaffoldKey,
+      drawer: const AppDrawer(),
       appBar: CustomSearchAppBar(
+        scaffoldKey: scaffoldKey,
         isSearchingFirst: widget.isSearchArticuloForForm,
         title: S.of(context).articulo_index_titulo,
         searchTitle: S.of(context).articulo_index_buscarArticulos,

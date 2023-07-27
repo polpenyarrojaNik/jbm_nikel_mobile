@@ -25,7 +25,6 @@ class DevolucionTipoDTO
     @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
     @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
     @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
-    @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
     @JsonKey(name: 'DESCRIPCION_PT') String? descripcionPT,
     @JsonKey(name: 'DESCRIPCION_RO') String? descripcionRO,
     @JsonKey(name: 'DESCRIPCION_RU') String? descripcionRU,
@@ -50,7 +49,6 @@ class DevolucionTipoDTO
         descripcionHU: descripcionHU,
         descripcionIT: descripcionIT,
         descripcionNL: descripcionNL,
-        descripcionPL: descripcionPL,
         descripcionPT: descripcionPT,
         descripcionRO: descripcionRO,
         descripcionRU: descripcionRU,
@@ -73,7 +71,6 @@ class DevolucionTipoDTO
       descripcionHU: Value(descripcionHU),
       descripcionIT: Value(descripcionIT),
       descripcionNL: Value(descripcionNL),
-      descripcionPL: Value(descripcionPL),
       descripcionPT: Value(descripcionPT),
       descripcionRO: Value(descripcionRO),
       descripcionRU: Value(descripcionRU),
@@ -103,7 +100,6 @@ class DevolucionTipoTable extends Table {
   TextColumn get descripcionHU => text().nullable().named('DESCRIPCION_HU')();
   TextColumn get descripcionIT => text().nullable().named('DESCRIPCION_IT')();
   TextColumn get descripcionNL => text().nullable().named('DESCRIPCION_NL')();
-  TextColumn get descripcionPL => text().nullable().named('DESCRIPCION_PL')();
   TextColumn get descripcionPT => text().nullable().named('DESCRIPCION_PT')();
   TextColumn get descripcionRO => text().nullable().named('DESCRIPCION_RO')();
   TextColumn get descripcionRU => text().nullable().named('DESCRIPCION_RU')();

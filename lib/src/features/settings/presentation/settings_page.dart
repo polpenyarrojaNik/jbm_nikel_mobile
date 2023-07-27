@@ -20,17 +20,34 @@ import '../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../core/routing/app_auto_router.dart';
+import '../../notifications/core/application/notification_provider.dart';
 import 'delete_database_controller.dart';
 
 @RoutePage()
 class SettingsPage extends ConsumerWidget {
-  const SettingsPage({super.key});
+  SettingsPage({super.key});
+
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final usuario = ref.watch(usuarioNotifierProvider);
     final statePackageInfo = ref.watch(packageInfoProvider);
     final stateSync = ref.watch(syncNotifierProvider);
+
+    ref.listen<AsyncValue>(
+      notificationNotifierProvider,
+      (_, state) => state.maybeWhen(
+        orElse: () {},
+        data: (notificationId) {
+          if (notificationId != null) {
+            context.router
+                .push(NotificationDetailRoute(notificationId: notificationId));
+          }
+        },
+      ),
+    );
 
     ref.listen<ExportDatabaseControllerState>(exportDatabaseControllerProvider,
         (_, state) {
@@ -47,6 +64,7 @@ class SettingsPage extends ConsumerWidget {
       drawer: const AppDrawer(),
       appBar: CommonAppBar(
         titleText: (S.of(context).settings_titulo),
+        scaffoldKey: scaffoldKey,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

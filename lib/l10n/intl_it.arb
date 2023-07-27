@@ -338,5 +338,8 @@
   "visitas_edit_visitaEditar_direccion1": "Indirizzo 1",
   "visitas_edit_visitaEditar_direccion2": "Indirizzo 2",
   "visitas_edit_visitaEditar_pais": "Paese",
-  "visitas_edit_visitaEditar_provincia": "Provincia"
+  "visitas_edit_visitaEditar_provincia": "Provincia",
+  "notification": "Notifica",
+  "notification_detail": "Dettaglio notifica",
+  "notifications": " notifiche"
 }

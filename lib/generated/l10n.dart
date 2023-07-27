@@ -3483,6 +3483,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Notification`
+  String get notification {
+    return Intl.message(
+      'Notification',
+      name: 'notification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` Notifications`
+  String get notifications {
+    return Intl.message(
+      ' Notifications',
+      name: 'notifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notification detail`
+  String get notification_detail {
+    return Intl.message(
+      'Notification detail',
+      name: 'notification_detail',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

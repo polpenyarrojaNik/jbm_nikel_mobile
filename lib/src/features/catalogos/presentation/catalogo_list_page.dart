@@ -14,6 +14,7 @@ import '../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../core/presentation/common_widgets/custom_search_app_bar.dart';
 import '../../../core/presentation/toasts.dart';
 import '../../../core/routing/app_auto_router.dart';
+import '../../notifications/core/application/notification_provider.dart';
 import 'catalogo_adjunto_controller.dart';
 import 'catalogo_search_controller.dart';
 
@@ -27,12 +28,32 @@ class CatalogoListaPage extends ConsumerStatefulWidget {
 
 class _CatalogoListaPageState extends ConsumerState<CatalogoListaPage> {
   final _debouncer = Debouncer(milliseconds: 500);
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    ref.read(notificationNotifierProvider.notifier).haveNotification();
+  }
 
   @override
   Widget build(BuildContext context) {
     ref.listen<AsyncValue>(
       catalogoIndexScreenControllerProvider,
       (_, state) => state.showAlertDialogOnError(context),
+    );
+
+    ref.listen<AsyncValue>(
+      notificationNotifierProvider,
+      (_, state) => state.maybeWhen(
+        orElse: () {},
+        data: (notificationId) {
+          if (notificationId != null) {
+            context.router
+                .push(NotificationDetailRoute(notificationId: notificationId));
+          }
+        },
+      ),
     );
 
     ref.listen<CatalogoAdjuntoState>(
@@ -56,6 +77,7 @@ class _CatalogoListaPageState extends ConsumerState<CatalogoListaPage> {
     return Scaffold(
       drawer: const AppDrawer(),
       appBar: CustomSearchAppBar(
+        scaffoldKey: scaffoldKey,
         isSearchingFirst: false,
         title: S.of(context).catalogos_index_titulo,
         searchTitle: S.of(context).catalogos_index_buscarCatalogo,

@@ -57,6 +57,8 @@ import '../../features/cliente/domain/cliente_imp_param.dart';
 import '../domain/pais.dart';
 import '../../features/pedido_venta/domain/pedido_local_param.dart';
 import '../../features/visitas/domain/visita_id_param.dart';
+import '../../features/notifications/index/notification_list_page.dart';
+import '../../features/notifications/detail/notification_detail_page.dart';
 
 part 'app_auto_router.gr.dart';
 
@@ -163,6 +165,12 @@ class AppRouter extends _$AppRouter {
         page: CatalogoPdfViewerRoute.page,
         path: '/catalogo/viewer',
         fullscreenDialog: true),
+    AutoRoute(page: NotificationIndexRoute.page, path: '/notification'),
+    AutoRoute(
+      page: NotificationDetailRoute.page,
+      path: '/notification/:id',
+      fullscreenDialog: true,
+    ),
     AutoRoute(page: SettingsRoute.page, path: '/settings'),
   ];
 }

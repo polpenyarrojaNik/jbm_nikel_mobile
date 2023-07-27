@@ -40,8 +40,6 @@ mixin _$DevolucionTipoDTO {
   String? get descripcionIT => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_NL')
   String? get descripcionNL => throw _privateConstructorUsedError;
-  @JsonKey(name: 'DESCRIPCION_PL')
-  String? get descripcionPL => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_PT')
   String? get descripcionPT => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_RO')
@@ -80,7 +78,6 @@ abstract class $DevolucionTipoDTOCopyWith<$Res> {
       @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
       @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
       @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
-      @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
       @JsonKey(name: 'DESCRIPCION_PT') String? descripcionPT,
       @JsonKey(name: 'DESCRIPCION_RO') String? descripcionRO,
       @JsonKey(name: 'DESCRIPCION_RU') String? descripcionRU,
@@ -113,7 +110,6 @@ class _$DevolucionTipoDTOCopyWithImpl<$Res, $Val extends DevolucionTipoDTO>
     Object? descripcionHU = freezed,
     Object? descripcionIT = freezed,
     Object? descripcionNL = freezed,
-    Object? descripcionPL = freezed,
     Object? descripcionPT = freezed,
     Object? descripcionRO = freezed,
     Object? descripcionRU = freezed,
@@ -162,10 +158,6 @@ class _$DevolucionTipoDTOCopyWithImpl<$Res, $Val extends DevolucionTipoDTO>
       descripcionNL: freezed == descripcionNL
           ? _value.descripcionNL
           : descripcionNL // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionPL: freezed == descripcionPL
-          ? _value.descripcionPL
-          : descripcionPL // ignore: cast_nullable_to_non_nullable
               as String?,
       descripcionPT: freezed == descripcionPT
           ? _value.descripcionPT
@@ -218,7 +210,6 @@ abstract class _$$_DevolucionTipoDTOCopyWith<$Res>
       @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
       @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
       @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
-      @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
       @JsonKey(name: 'DESCRIPCION_PT') String? descripcionPT,
       @JsonKey(name: 'DESCRIPCION_RO') String? descripcionRO,
       @JsonKey(name: 'DESCRIPCION_RU') String? descripcionRU,
@@ -249,7 +240,6 @@ class __$$_DevolucionTipoDTOCopyWithImpl<$Res>
     Object? descripcionHU = freezed,
     Object? descripcionIT = freezed,
     Object? descripcionNL = freezed,
-    Object? descripcionPL = freezed,
     Object? descripcionPT = freezed,
     Object? descripcionRO = freezed,
     Object? descripcionRU = freezed,
@@ -299,10 +289,6 @@ class __$$_DevolucionTipoDTOCopyWithImpl<$Res>
           ? _value.descripcionNL
           : descripcionNL // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionPL: freezed == descripcionPL
-          ? _value.descripcionPL
-          : descripcionPL // ignore: cast_nullable_to_non_nullable
-              as String?,
       descripcionPT: freezed == descripcionPT
           ? _value.descripcionPT
           : descripcionPT // ignore: cast_nullable_to_non_nullable
@@ -349,7 +335,6 @@ class _$_DevolucionTipoDTO extends _DevolucionTipoDTO {
       @JsonKey(name: 'DESCRIPCION_HU') this.descripcionHU,
       @JsonKey(name: 'DESCRIPCION_IT') this.descripcionIT,
       @JsonKey(name: 'DESCRIPCION_NL') this.descripcionNL,
-      @JsonKey(name: 'DESCRIPCION_PL') this.descripcionPL,
       @JsonKey(name: 'DESCRIPCION_PT') this.descripcionPT,
       @JsonKey(name: 'DESCRIPCION_RO') this.descripcionRO,
       @JsonKey(name: 'DESCRIPCION_RU') this.descripcionRU,
@@ -393,9 +378,6 @@ class _$_DevolucionTipoDTO extends _DevolucionTipoDTO {
   @JsonKey(name: 'DESCRIPCION_NL')
   final String? descripcionNL;
   @override
-  @JsonKey(name: 'DESCRIPCION_PL')
-  final String? descripcionPL;
-  @override
   @JsonKey(name: 'DESCRIPCION_PT')
   final String? descripcionPT;
   @override
@@ -419,7 +401,7 @@ class _$_DevolucionTipoDTO extends _DevolucionTipoDTO {
 
   @override
   String toString() {
-    return 'DevolucionTipoDTO(id: $id, descripcionES: $descripcionES, descripcionEN: $descripcionEN, descripcionFR: $descripcionFR, descripcionDE: $descripcionDE, descripcionCA: $descripcionCA, descripcionGB: $descripcionGB, descripcionHU: $descripcionHU, descripcionIT: $descripcionIT, descripcionNL: $descripcionNL, descripcionPL: $descripcionPL, descripcionPT: $descripcionPT, descripcionRO: $descripcionRO, descripcionRU: $descripcionRU, descripcionCN: $descripcionCN, descripcionEL: $descripcionEL, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'DevolucionTipoDTO(id: $id, descripcionES: $descripcionES, descripcionEN: $descripcionEN, descripcionFR: $descripcionFR, descripcionDE: $descripcionDE, descripcionCA: $descripcionCA, descripcionGB: $descripcionGB, descripcionHU: $descripcionHU, descripcionIT: $descripcionIT, descripcionNL: $descripcionNL, descripcionPT: $descripcionPT, descripcionRO: $descripcionRO, descripcionRU: $descripcionRU, descripcionCN: $descripcionCN, descripcionEL: $descripcionEL, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -446,8 +428,6 @@ class _$_DevolucionTipoDTO extends _DevolucionTipoDTO {
                 other.descripcionIT == descripcionIT) &&
             (identical(other.descripcionNL, descripcionNL) ||
                 other.descripcionNL == descripcionNL) &&
-            (identical(other.descripcionPL, descripcionPL) ||
-                other.descripcionPL == descripcionPL) &&
             (identical(other.descripcionPT, descripcionPT) ||
                 other.descripcionPT == descripcionPT) &&
             (identical(other.descripcionRO, descripcionRO) ||
@@ -477,7 +457,6 @@ class _$_DevolucionTipoDTO extends _DevolucionTipoDTO {
       descripcionHU,
       descripcionIT,
       descripcionNL,
-      descripcionPL,
       descripcionPT,
       descripcionRO,
       descripcionRU,
@@ -513,7 +492,6 @@ abstract class _DevolucionTipoDTO extends DevolucionTipoDTO {
       @JsonKey(name: 'DESCRIPCION_HU') final String? descripcionHU,
       @JsonKey(name: 'DESCRIPCION_IT') final String? descripcionIT,
       @JsonKey(name: 'DESCRIPCION_NL') final String? descripcionNL,
-      @JsonKey(name: 'DESCRIPCION_PL') final String? descripcionPL,
       @JsonKey(name: 'DESCRIPCION_PT') final String? descripcionPT,
       @JsonKey(name: 'DESCRIPCION_RO') final String? descripcionRO,
       @JsonKey(name: 'DESCRIPCION_RU') final String? descripcionRU,
@@ -556,9 +534,6 @@ abstract class _DevolucionTipoDTO extends DevolucionTipoDTO {
   @override
   @JsonKey(name: 'DESCRIPCION_NL')
   String? get descripcionNL;
-  @override
-  @JsonKey(name: 'DESCRIPCION_PL')
-  String? get descripcionPL;
   @override
   @JsonKey(name: 'DESCRIPCION_PT')
   String? get descripcionPT;

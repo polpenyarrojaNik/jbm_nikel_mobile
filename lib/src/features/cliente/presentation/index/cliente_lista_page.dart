@@ -14,6 +14,7 @@ import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart'
 import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
+import '../../../notifications/core/application/notification_provider.dart';
 import '../../../sync/application/sync_notifier_provider.dart';
 import '../../infrastructure/cliente_repository.dart';
 import 'cliente_list_shimmer.dart';
@@ -32,6 +33,8 @@ class ClienteListaPage extends ConsumerStatefulWidget {
 class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
   final _debouncer = Debouncer(milliseconds: 500);
 
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
   bool searchClientesPotenciales = false;
   @override
   void initState() {
@@ -39,6 +42,8 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
     ref
         .read(syncNotifierProvider.notifier)
         .syncAllInCompute(initAppProcess: false);
+
+    ref.read(notificationNotifierProvider.notifier).haveNotification();
   }
 
   @override
@@ -46,13 +51,28 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
     final stateSync = ref.watch(syncNotifierProvider);
 
     ref.listen<AsyncValue>(
+      notificationNotifierProvider,
+      (_, state) => state.maybeWhen(
+        orElse: () {},
+        data: (notificationId) {
+          if (notificationId != null) {
+            context.router
+                .push(NotificationDetailRoute(notificationId: notificationId));
+          }
+        },
+      ),
+    );
+
+    ref.listen<AsyncValue>(
       clienteIndexScreenControllerProvider,
       (_, state) => state.showAlertDialogOnError(context),
     );
 
     return Scaffold(
-      drawer: (!widget.isSearchClienteForFrom) ? const AppDrawer() : null,
+      key: scaffoldKey,
+      drawer: const AppDrawer(),
       appBar: CustomSearchAppBar(
+        scaffoldKey: scaffoldKey,
         isSearchingFirst: widget.isSearchClienteForFrom,
         title: S.of(context).cliente_index_titulo,
         searchTitle: S.of(context).cliente_index_buscarClientes,

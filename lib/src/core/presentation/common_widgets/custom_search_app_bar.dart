@@ -4,17 +4,21 @@ import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/features/settings/infrastructure/settings_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 
+import 'icon_menu_badge.dart';
+
 class CustomSearchAppBar extends ConsumerStatefulWidget
     implements PreferredSizeWidget {
   const CustomSearchAppBar(
       {super.key,
       required this.title,
+      this.scaffoldKey,
       required this.searchTitle,
       required this.isSearchingFirst,
       required this.onChanged,
       this.actionButtons});
 
   final String title;
+  final GlobalKey<ScaffoldState>? scaffoldKey;
   final String searchTitle;
   final bool isSearchingFirst;
   final Function(String searchText) onChanged;
@@ -53,7 +57,11 @@ class _CustomSearchAppBarState extends ConsumerState<CustomSearchAppBar> {
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(packageInfoProvider);
+
     return AppBar(
+      leading: !widget.isSearchingFirst && widget.scaffoldKey != null
+          ? IconMenuBadge(widget.scaffoldKey!)
+          : null,
       title: (isSearching)
           ? SearchListTile(
               searchTitle: widget.searchTitle,
