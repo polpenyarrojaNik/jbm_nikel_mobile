@@ -114,7 +114,7 @@ SPEC CHECKSUMS:
   GoogleMaps: 20d7b12be49a14287f797e88e0e31bc4156aaeb4
   map_launcher: e325db1261d029ff33e08e03baccffe09593ffea
   package_info_plus: 6c92f08e1f853dc01228d6f553146438dafcd14e
-  path_provider_foundation: eaf5b3e458fc0e5fbb9940fb09980e853fe058b8
+  path_provider_foundation: 29f094ae23ebbca9d3d0cec13889cd9060c0e943
   share_plus: 056a1e8ac890df3e33cb503afffaf1e9b4fbae68
   sqflite: 31f7eba61e3074736dff8807a9b41581e4f7f15a
   sqlite3: fd89671d969f3e73efe503ce203e28b016b58f68
