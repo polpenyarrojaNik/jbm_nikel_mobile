@@ -61,6 +61,7 @@ class SettingsPage extends ConsumerWidget {
     });
 
     return Scaffold(
+      key: scaffoldKey,
       drawer: const AppDrawer(),
       appBar: CommonAppBar(
         titleText: (S.of(context).settings_titulo),
