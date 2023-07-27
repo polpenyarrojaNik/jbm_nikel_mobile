@@ -15,6 +15,7 @@ import '../../../../core/helpers/debouncer.dart';
 import '../../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../notifications/core/application/notification_provider.dart';
 import '../../../sync/application/sync_notifier_provider.dart';
 import '../../infrastructure/visita_repository.dart';
 
@@ -28,6 +29,7 @@ class VisitaListaPage extends ConsumerStatefulWidget {
 
 class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
   final _debouncer = Debouncer(milliseconds: 500);
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -35,6 +37,7 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
     ref
         .read(syncNotifierProvider.notifier)
         .syncAllInCompute(initAppProcess: false);
+    ref.read(notificationNotifierProvider.notifier).haveNotification();
   }
 
   @override
@@ -42,13 +45,28 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
     final stateSync = ref.watch(syncNotifierProvider);
 
     ref.listen<AsyncValue>(
+      notificationNotifierProvider,
+      (_, state) => state.maybeWhen(
+        orElse: () {},
+        data: (notificationId) {
+          if (notificationId != null) {
+            context.router
+                .push(NotificationDetailRoute(notificationId: notificationId));
+          }
+        },
+      ),
+    );
+
+    ref.listen<AsyncValue>(
       visitaIndexScreenControllerProvider,
       (_, state) => state.showAlertDialogOnError(context),
     );
 
     return Scaffold(
+      key: scaffoldKey,
       drawer: const AppDrawer(),
       appBar: CustomSearchAppBar(
+        scaffoldKey: scaffoldKey,
         isSearchingFirst: false,
         title: S.of(context).visita_index_titulo,
         searchTitle: S.of(context).visita_index_buscarVisitas,

@@ -39,6 +39,7 @@ class ClienteUltimosPreciosPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: CustomSearchAppBar(
+        scaffoldKey: null,
         title: S.of(context).ultimosPrecios_titulo,
         isSearchingFirst: false,
         searchTitle: S.of(context).ultimosPrecios_buscarUltimosPrecios,

@@ -18,6 +18,7 @@ import '../../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
 import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../notifications/core/application/notification_provider.dart';
 import '../../../sync/application/sync_notifier_provider.dart';
 import '../../infrastructure/pedido_venta_repository.dart';
 
@@ -32,6 +33,8 @@ class PedidoVentaListPage extends ConsumerStatefulWidget {
 
 class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
   final _debouncer = Debouncer(milliseconds: 500);
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
   PedidoVentaEstado? filteredStatus;
 
   @override
@@ -40,6 +43,8 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
     ref
         .read(syncNotifierProvider.notifier)
         .syncAllInCompute(initAppProcess: false);
+
+    ref.read(notificationNotifierProvider.notifier).haveNotification();
   }
 
   @override
@@ -49,13 +54,28 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
         ref.watch(getPedidoVentaBorradorPendiente);
 
     ref.listen<AsyncValue>(
+      notificationNotifierProvider,
+      (_, state) => state.maybeWhen(
+        orElse: () {},
+        data: (notificationId) {
+          if (notificationId != null) {
+            context.router
+                .push(NotificationDetailRoute(notificationId: notificationId));
+          }
+        },
+      ),
+    );
+
+    ref.listen<AsyncValue>(
       pedidoVentaIndexScreenControllerProvider,
       (_, state) => state.showAlertDialogOnError(context),
     );
 
     return Scaffold(
+        key: scaffoldKey,
         drawer: const AppDrawer(),
         appBar: CustomSearchAppBar(
+          scaffoldKey: scaffoldKey,
           isSearchingFirst: false,
           title: S.of(context).pedido_index_titulo,
           searchTitle: S.of(context).pedido_index_buscarPedidos,

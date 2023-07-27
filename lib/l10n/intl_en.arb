@@ -338,5 +338,8 @@
 	"yes": "Yes",
 	"no": "No",
 	"paises_search_title": "Search country...",
-	"search": "Search..."
+	"search": "Search...",
+	"notification": "Notification",
+	"notifications": " Notifications",
+	"notification_detail": "Notification detail"
 }

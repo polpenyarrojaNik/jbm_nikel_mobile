@@ -452,6 +452,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "haOcurridoUnError":
             MessageLookupByLibrary.simpleMessage("An error occurred"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
+        "notification": MessageLookupByLibrary.simpleMessage("Notification"),
+        "notification_detail":
+            MessageLookupByLibrary.simpleMessage("Notification detail"),
+        "notifications": MessageLookupByLibrary.simpleMessage(" Notifications"),
         "paises_search_title":
             MessageLookupByLibrary.simpleMessage("Search country..."),
         "pedido_borrador": MessageLookupByLibrary.simpleMessage("Draft"),

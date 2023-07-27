@@ -103,12 +103,22 @@ class AppDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(
+              Icons.notifications,
+              size: 30,
+            ),
+            title: Text(S.of(context).notifications),
+            onTap: () => context.router.pushAndPopUntil(
+                NotificationIndexRoute(),
+                predicate: (route) => false),
+          ),
+          ListTile(
+            leading: const Icon(
               Icons.settings_outlined,
               size: 30,
             ),
             title: Text(S.of(context).commonWidgets_appDrawer_ajustes),
-            onTap: () => context.router.pushAndPopUntil(const SettingsRoute(),
-                predicate: (route) => false),
+            onTap: () => context.router
+                .pushAndPopUntil(SettingsRoute(), predicate: (route) => false),
           ),
         ],
       ),

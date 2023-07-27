@@ -16494,12 +16494,6 @@ class $DevolucionTipoTableTable extends DevolucionTipoTable
   late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
       'DESCRIPCION_NL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _descripcionPLMeta =
-      const VerificationMeta('descripcionPL');
-  @override
-  late final GeneratedColumn<String> descripcionPL = GeneratedColumn<String>(
-      'DESCRIPCION_PL', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _descripcionPTMeta =
       const VerificationMeta('descripcionPT');
   @override
@@ -16556,7 +16550,6 @@ class $DevolucionTipoTableTable extends DevolucionTipoTable
         descripcionHU,
         descripcionIT,
         descripcionNL,
-        descripcionPL,
         descripcionPT,
         descripcionRO,
         descripcionRU,
@@ -16636,12 +16629,6 @@ class $DevolucionTipoTableTable extends DevolucionTipoTable
           descripcionNL.isAcceptableOrUnknown(
               data['DESCRIPCION_NL']!, _descripcionNLMeta));
     }
-    if (data.containsKey('DESCRIPCION_PL')) {
-      context.handle(
-          _descripcionPLMeta,
-          descripcionPL.isAcceptableOrUnknown(
-              data['DESCRIPCION_PL']!, _descripcionPLMeta));
-    }
     if (data.containsKey('DESCRIPCION_PT')) {
       context.handle(
           _descripcionPTMeta,
@@ -16713,8 +16700,6 @@ class $DevolucionTipoTableTable extends DevolucionTipoTable
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
       descripcionNL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
-      descripcionPL: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
       descripcionPT: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
       descripcionRO: attachedDatabase.typeMapping
@@ -16749,7 +16734,6 @@ class DevolucionTipoTableCompanion extends UpdateCompanion<DevolucionTipoDTO> {
   final Value<String?> descripcionHU;
   final Value<String?> descripcionIT;
   final Value<String?> descripcionNL;
-  final Value<String?> descripcionPL;
   final Value<String?> descripcionPT;
   final Value<String?> descripcionRO;
   final Value<String?> descripcionRU;
@@ -16769,7 +16753,6 @@ class DevolucionTipoTableCompanion extends UpdateCompanion<DevolucionTipoDTO> {
     this.descripcionHU = const Value.absent(),
     this.descripcionIT = const Value.absent(),
     this.descripcionNL = const Value.absent(),
-    this.descripcionPL = const Value.absent(),
     this.descripcionPT = const Value.absent(),
     this.descripcionRO = const Value.absent(),
     this.descripcionRU = const Value.absent(),
@@ -16790,7 +16773,6 @@ class DevolucionTipoTableCompanion extends UpdateCompanion<DevolucionTipoDTO> {
     this.descripcionHU = const Value.absent(),
     this.descripcionIT = const Value.absent(),
     this.descripcionNL = const Value.absent(),
-    this.descripcionPL = const Value.absent(),
     this.descripcionPT = const Value.absent(),
     this.descripcionRO = const Value.absent(),
     this.descripcionRU = const Value.absent(),
@@ -16813,7 +16795,6 @@ class DevolucionTipoTableCompanion extends UpdateCompanion<DevolucionTipoDTO> {
     Expression<String>? descripcionHU,
     Expression<String>? descripcionIT,
     Expression<String>? descripcionNL,
-    Expression<String>? descripcionPL,
     Expression<String>? descripcionPT,
     Expression<String>? descripcionRO,
     Expression<String>? descripcionRU,
@@ -16834,7 +16815,6 @@ class DevolucionTipoTableCompanion extends UpdateCompanion<DevolucionTipoDTO> {
       if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
       if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
       if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
-      if (descripcionPL != null) 'DESCRIPCION_PL': descripcionPL,
       if (descripcionPT != null) 'DESCRIPCION_PT': descripcionPT,
       if (descripcionRO != null) 'DESCRIPCION_RO': descripcionRO,
       if (descripcionRU != null) 'DESCRIPCION_RU': descripcionRU,
@@ -16857,7 +16837,6 @@ class DevolucionTipoTableCompanion extends UpdateCompanion<DevolucionTipoDTO> {
       Value<String?>? descripcionHU,
       Value<String?>? descripcionIT,
       Value<String?>? descripcionNL,
-      Value<String?>? descripcionPL,
       Value<String?>? descripcionPT,
       Value<String?>? descripcionRO,
       Value<String?>? descripcionRU,
@@ -16877,7 +16856,6 @@ class DevolucionTipoTableCompanion extends UpdateCompanion<DevolucionTipoDTO> {
       descripcionHU: descripcionHU ?? this.descripcionHU,
       descripcionIT: descripcionIT ?? this.descripcionIT,
       descripcionNL: descripcionNL ?? this.descripcionNL,
-      descripcionPL: descripcionPL ?? this.descripcionPL,
       descripcionPT: descripcionPT ?? this.descripcionPT,
       descripcionRO: descripcionRO ?? this.descripcionRO,
       descripcionRU: descripcionRU ?? this.descripcionRU,
@@ -16922,9 +16900,6 @@ class DevolucionTipoTableCompanion extends UpdateCompanion<DevolucionTipoDTO> {
     if (descripcionNL.present) {
       map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
     }
-    if (descripcionPL.present) {
-      map['DESCRIPCION_PL'] = Variable<String>(descripcionPL.value);
-    }
     if (descripcionPT.present) {
       map['DESCRIPCION_PT'] = Variable<String>(descripcionPT.value);
     }
@@ -16965,7 +16940,6 @@ class DevolucionTipoTableCompanion extends UpdateCompanion<DevolucionTipoDTO> {
           ..write('descripcionHU: $descripcionHU, ')
           ..write('descripcionIT: $descripcionIT, ')
           ..write('descripcionNL: $descripcionNL, ')
-          ..write('descripcionPL: $descripcionPL, ')
           ..write('descripcionPT: $descripcionPT, ')
           ..write('descripcionRO: $descripcionRO, ')
           ..write('descripcionRU: $descripcionRU, ')

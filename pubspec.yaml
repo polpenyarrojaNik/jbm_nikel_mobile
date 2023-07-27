@@ -54,6 +54,8 @@ dependencies:
   csv: ^5.0.1
   share_plus: ^6.3.0
   syncfusion_flutter_pdfviewer: ^20.4.48
+  flutter_markdown: ^0.6.17
+  badges: ^3.1.1
 
 dev_dependencies:
   flutter_test:

@@ -16,9 +16,11 @@ abstract class _$AppRouter extends RootStackRouter {
   @override
   final Map<String, PageFactory> pagesMap = {
     SettingsRoute.name: (routeData) {
+      final args = routeData.argsAs<SettingsRouteArgs>(
+          orElse: () => const SettingsRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const SettingsPage(),
+        child: SettingsPage(key: args.key),
       );
     },
     ClientesAlrededorRoute.name: (routeData) {
@@ -479,21 +481,54 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const VisitaListaPage(),
       );
     },
+    NotificationDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<NotificationDetailRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: NotificationDetailPage(
+          key: args.key,
+          notificationId: args.notificationId,
+        ),
+      );
+    },
+    NotificationIndexRoute.name: (routeData) {
+      final args = routeData.argsAs<NotificationIndexRouteArgs>(
+          orElse: () => const NotificationIndexRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: NotificationIndexPage(key: args.key),
+      );
+    },
   };
 }
 
 /// generated route for
 /// [SettingsPage]
-class SettingsRoute extends PageRouteInfo<void> {
-  const SettingsRoute({List<PageRouteInfo>? children})
-      : super(
+class SettingsRoute extends PageRouteInfo<SettingsRouteArgs> {
+  SettingsRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           SettingsRoute.name,
+          args: SettingsRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'SettingsRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<SettingsRouteArgs> page =
+      PageInfo<SettingsRouteArgs>(name);
+}
+
+class SettingsRouteArgs {
+  const SettingsRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'SettingsRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for
@@ -2234,4 +2269,72 @@ class VisitaListaRoute extends PageRouteInfo<void> {
   static const String name = 'VisitaListaRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [NotificationDetailPage]
+class NotificationDetailRoute
+    extends PageRouteInfo<NotificationDetailRouteArgs> {
+  NotificationDetailRoute({
+    Key? key,
+    required String notificationId,
+    List<PageRouteInfo>? children,
+  }) : super(
+          NotificationDetailRoute.name,
+          args: NotificationDetailRouteArgs(
+            key: key,
+            notificationId: notificationId,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'NotificationDetailRoute';
+
+  static const PageInfo<NotificationDetailRouteArgs> page =
+      PageInfo<NotificationDetailRouteArgs>(name);
+}
+
+class NotificationDetailRouteArgs {
+  const NotificationDetailRouteArgs({
+    this.key,
+    required this.notificationId,
+  });
+
+  final Key? key;
+
+  final String notificationId;
+
+  @override
+  String toString() {
+    return 'NotificationDetailRouteArgs{key: $key, notificationId: $notificationId}';
+  }
+}
+
+/// generated route for
+/// [NotificationIndexPage]
+class NotificationIndexRoute extends PageRouteInfo<NotificationIndexRouteArgs> {
+  NotificationIndexRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          NotificationIndexRoute.name,
+          args: NotificationIndexRouteArgs(key: key),
+          initialChildren: children,
+        );
+
+  static const String name = 'NotificationIndexRoute';
+
+  static const PageInfo<NotificationIndexRouteArgs> page =
+      PageInfo<NotificationIndexRouteArgs>(name);
+}
+
+class NotificationIndexRouteArgs {
+  const NotificationIndexRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'NotificationIndexRouteArgs{key: $key}';
+  }
 }

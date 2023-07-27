@@ -4,11 +4,14 @@ import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifi
 
 import '../../../features/settings/infrastructure/settings_repository.dart';
 import '../theme/app_sizes.dart';
+import 'icon_menu_badge.dart';
 
 class CommonAppBar extends ConsumerWidget implements PreferredSizeWidget {
-  const CommonAppBar({super.key, required this.titleText, this.actions});
+  const CommonAppBar(
+      {super.key, required this.titleText, this.scaffoldKey, this.actions});
 
   final String titleText;
+  final GlobalKey<ScaffoldState>? scaffoldKey;
 
   final List<Widget>? actions;
 
@@ -20,6 +23,7 @@ class CommonAppBar extends ConsumerWidget implements PreferredSizeWidget {
     final state = ref.watch(packageInfoProvider);
 
     return AppBar(
+      leading: scaffoldKey != null ? IconMenuBadge(scaffoldKey!) : null,
       title: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
