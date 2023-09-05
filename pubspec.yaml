@@ -56,6 +56,7 @@ dependencies:
   syncfusion_flutter_pdfviewer: ^20.4.48
   flutter_markdown: ^0.6.17
   badges: ^3.1.1
+  flex_color_scheme: ^7.3.1
 
 dev_dependencies:
   flutter_test:
