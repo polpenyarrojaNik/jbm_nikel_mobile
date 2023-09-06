@@ -20,8 +20,8 @@ class ClientePrecioNetoDTO
     @JsonKey(name: 'ARTICULO_ID') required String articuloId,
     @JsonKey(name: 'CANTIDAD_DESDE') required int cantidadDesde,
     @JsonKey(name: 'PRECIO') required double precio,
-    @JsonKey(name: 'TIPO_PRECIO') required int tipoPrecio,
-    @JsonKey(name: 'DTO_ADICIONAL') required double dtoAdicional,
+    @JsonKey(name: 'TIPO_PRECIO') int? tipoPrecio,
+    @JsonKey(name: 'DTO_ADICIONAL') double? dtoAdicional,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _ClientePrecioNetoDTO;
@@ -71,8 +71,8 @@ class ClientePrecioNetoTable extends Table {
   TextColumn get articuloId => text().named('ARTICULO_ID')();
   IntColumn get cantidadDesde => integer().named('CANTIDAD_DESDE')();
   RealColumn get precio => real().named('PRECIO')();
-  IntColumn get tipoPrecio => integer().named('TIPO_PRECIO')();
-  RealColumn get dtoAdicional => real().named('DTO_ADICIONAL')();
+  IntColumn get tipoPrecio => integer().nullable().named('TIPO_PRECIO')();
+  RealColumn get dtoAdicional => real().nullable().named('DTO_ADICIONAL')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('DELETED')();

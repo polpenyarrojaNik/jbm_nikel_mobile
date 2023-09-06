@@ -1007,7 +1007,7 @@ class SyncService {
 
       final requestUri = (_usuario!.test)
           ? Uri.http(
-              // dotenv.get('URLTEST', fallback: 'localhost:3001')
+              // dotenv.get('URL', fallback: 'localhost:3001')
               'jbm-api-test.nikel.es:8080',
               'api/v1/online/pedidos',
             )
@@ -1042,7 +1042,7 @@ class SyncService {
     try {
       final requestUri = (_usuario!.test)
           ? Uri.http(
-              // dotenv.get('URLTEST', fallback: 'localhost:3001')
+              // dotenv.get('URL', fallback: 'localhost:3001')
               'jbm-api-test.nikel.es:8080',
               'api/v4/online/visitas',
             )
@@ -1278,7 +1278,7 @@ class SyncService {
     try {
       final requestUri = (_usuario!.test)
           ? Uri.http(
-              // dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              // dotenv.get('URL', fallback: 'localhost:3001'),
               'jbm-api-test.nikel.es:8080',
               'api/v1/sync/clientes/$clienteId/contactos/$contactoImpGuid',
             )
@@ -1312,7 +1312,7 @@ class SyncService {
     try {
       final requestUri = (_usuario!.test)
           ? Uri.http(
-              // dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              // dotenv.get('URL', fallback: 'localhost:3001'),
               'jbm-api-test.nikel.es:8080',
               'api/v1/sync/clientes/$clienteId/direcciones/$direccionImpGuid',
             )
@@ -1358,7 +1358,7 @@ class SyncService {
     try {
       final requestUri = (_usuario!.test)
           ? Uri.http(
-              // dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              // dotenv.get('URL', fallback: 'localhost:3001'),
               'jbm-api-test.nikel.es:8080',
               'api/v1/sync/pedidos/$pedidoVentaAppId/check',
             )

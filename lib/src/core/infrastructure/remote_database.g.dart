@@ -8795,14 +8795,14 @@ class $ClientePrecioNetoTableTable extends ClientePrecioNetoTable
       const VerificationMeta('tipoPrecio');
   @override
   late final GeneratedColumn<int> tipoPrecio = GeneratedColumn<int>(
-      'TIPO_PRECIO', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
+      'TIPO_PRECIO', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _dtoAdicionalMeta =
       const VerificationMeta('dtoAdicional');
   @override
   late final GeneratedColumn<double> dtoAdicional = GeneratedColumn<double>(
-      'DTO_ADICIONAL', aliasedName, false,
-      type: DriftSqlType.double, requiredDuringInsert: true);
+      'DTO_ADICIONAL', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
   static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
@@ -8871,16 +8871,12 @@ class $ClientePrecioNetoTableTable extends ClientePrecioNetoTable
           _tipoPrecioMeta,
           tipoPrecio.isAcceptableOrUnknown(
               data['TIPO_PRECIO']!, _tipoPrecioMeta));
-    } else if (isInserting) {
-      context.missing(_tipoPrecioMeta);
     }
     if (data.containsKey('DTO_ADICIONAL')) {
       context.handle(
           _dtoAdicionalMeta,
           dtoAdicional.isAcceptableOrUnknown(
               data['DTO_ADICIONAL']!, _dtoAdicionalMeta));
-    } else if (isInserting) {
-      context.missing(_dtoAdicionalMeta);
     }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
@@ -8913,9 +8909,9 @@ class $ClientePrecioNetoTableTable extends ClientePrecioNetoTable
       precio: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}PRECIO'])!,
       tipoPrecio: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}TIPO_PRECIO'])!,
+          .read(DriftSqlType.int, data['${effectivePrefix}TIPO_PRECIO']),
       dtoAdicional: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}DTO_ADICIONAL'])!,
+          .read(DriftSqlType.double, data['${effectivePrefix}DTO_ADICIONAL']),
       lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
       deleted: attachedDatabase.typeMapping
@@ -8935,8 +8931,8 @@ class ClientePrecioNetoTableCompanion
   final Value<String> articuloId;
   final Value<int> cantidadDesde;
   final Value<double> precio;
-  final Value<int> tipoPrecio;
-  final Value<double> dtoAdicional;
+  final Value<int?> tipoPrecio;
+  final Value<double?> dtoAdicional;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
   final Value<int> rowid;
@@ -8956,8 +8952,8 @@ class ClientePrecioNetoTableCompanion
     required String articuloId,
     required int cantidadDesde,
     required double precio,
-    required int tipoPrecio,
-    required double dtoAdicional,
+    this.tipoPrecio = const Value.absent(),
+    this.dtoAdicional = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -8965,8 +8961,6 @@ class ClientePrecioNetoTableCompanion
         articuloId = Value(articuloId),
         cantidadDesde = Value(cantidadDesde),
         precio = Value(precio),
-        tipoPrecio = Value(tipoPrecio),
-        dtoAdicional = Value(dtoAdicional),
         lastUpdated = Value(lastUpdated);
   static Insertable<ClientePrecioNetoDTO> custom({
     Expression<String>? clienteId,
@@ -8997,8 +8991,8 @@ class ClientePrecioNetoTableCompanion
       Value<String>? articuloId,
       Value<int>? cantidadDesde,
       Value<double>? precio,
-      Value<int>? tipoPrecio,
-      Value<double>? dtoAdicional,
+      Value<int?>? tipoPrecio,
+      Value<double?>? dtoAdicional,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted,
       Value<int>? rowid}) {

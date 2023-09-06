@@ -89,8 +89,8 @@ class ProvinciaSearchPageControllerProvider
         List<Provincia>> {
   /// See also [ProvinciaSearchPageController].
   ProvinciaSearchPageControllerProvider(
-    this.paisId,
-  ) : super.internal(
+    String? paisId,
+  ) : this._internal(
           () => ProvinciaSearchPageController()..paisId = paisId,
           from: provinciaSearchPageControllerProvider,
           name: r'provinciaSearchPageControllerProvider',
@@ -101,9 +101,51 @@ class ProvinciaSearchPageControllerProvider
           dependencies: ProvinciaSearchPageControllerFamily._dependencies,
           allTransitiveDependencies:
               ProvinciaSearchPageControllerFamily._allTransitiveDependencies,
+          paisId: paisId,
         );
 
+  ProvinciaSearchPageControllerProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.paisId,
+  }) : super.internal();
+
   final String? paisId;
+
+  @override
+  Future<List<Provincia>> runNotifierBuild(
+    covariant ProvinciaSearchPageController notifier,
+  ) {
+    return notifier.build(
+      paisId,
+    );
+  }
+
+  @override
+  Override overrideWith(ProvinciaSearchPageController Function() create) {
+    return ProviderOverride(
+      origin: this,
+      override: ProvinciaSearchPageControllerProvider._internal(
+        () => create()..paisId = paisId,
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        paisId: paisId,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeAsyncNotifierProviderElement<ProvinciaSearchPageController,
+      List<Provincia>> createElement() {
+    return _ProvinciaSearchPageControllerProviderElement(this);
+  }
 
   @override
   bool operator ==(Object other) {
@@ -118,15 +160,23 @@ class ProvinciaSearchPageControllerProvider
 
     return _SystemHash.finish(hash);
   }
+}
+
+mixin ProvinciaSearchPageControllerRef
+    on AutoDisposeAsyncNotifierProviderRef<List<Provincia>> {
+  /// The parameter `paisId` of this provider.
+  String? get paisId;
+}
+
+class _ProvinciaSearchPageControllerProviderElement
+    extends AutoDisposeAsyncNotifierProviderElement<
+        ProvinciaSearchPageController,
+        List<Provincia>> with ProvinciaSearchPageControllerRef {
+  _ProvinciaSearchPageControllerProviderElement(super.provider);
 
   @override
-  Future<List<Provincia>> runNotifierBuild(
-    covariant ProvinciaSearchPageController notifier,
-  ) {
-    return notifier.build(
-      paisId,
-    );
-  }
+  String? get paisId =>
+      (origin as ProvinciaSearchPageControllerProvider).paisId;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

@@ -31,7 +31,7 @@ class NotificationRepository {
       final notificationList = await _remoteNotificationList(
         requestUri: (user!.test)
             ? Uri.http(
-                dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                dotenv.get('URL', fallback: 'localhost:3001'),
                 'api/v1/online/notificacion',
                 {'USER_ID': user!.id},
               )
@@ -55,7 +55,7 @@ class NotificationRepository {
       final notificationDto = await _remoteNotificationById(
         requestUri: (user!.test)
             ? Uri.http(
-                dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                dotenv.get('URL', fallback: 'localhost:3001'),
                 'api/v1/online/notificacion/$id',
                 {'USER_ID': user!.id},
               )
@@ -79,7 +79,7 @@ class NotificationRepository {
       final notificationId = await _remoteHaveNotification(
         requestUri: (user!.test)
             ? Uri.http(
-                dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                dotenv.get('URL', fallback: 'localhost:3001'),
                 'api/v1/online/check_notificacion',
                 {'USER_ID': user!.id},
               )

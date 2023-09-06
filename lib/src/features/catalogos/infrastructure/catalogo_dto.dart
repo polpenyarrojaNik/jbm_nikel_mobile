@@ -59,7 +59,7 @@ class CatalogoDTO with _$CatalogoDTO {
 
   String getImageUrl(bool test) {
     return (test)
-        ? 'http://${dotenv.get('URLTEST', fallback: 'localhost:3001')}/api/v1/online/adjunto/catalogo/$catalogoId?NOMBRE_ARCHIVO=$nombreFicheroPortada'
+        ? 'http://${dotenv.get('URL', fallback: 'localhost:3001')}/api/v1/online/adjunto/catalogo/$catalogoId?NOMBRE_ARCHIVO=$nombreFicheroPortada'
         : 'https://${dotenv.get('URL', fallback: 'localhost:3001')}/api/v1/online/adjunto/catalogo/$catalogoId?NOMBRE_ARCHIVO=$nombreFicheroPortada';
   }
 

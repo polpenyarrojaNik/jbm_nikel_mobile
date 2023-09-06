@@ -28,23 +28,23 @@ class InitDatabaseService {
   final LocalAppDatabase localDb;
   final Usuario? usuario;
 
-  static final remoteInitDatabaseEndpoint = Uri.http(
+  static final remoteInitDatabaseEndpoint = Uri.https(
     'jbm-api.nikel.es',
-    '/api/v5/sync/init-db',
+    '/api/v6/sync/init-db',
   );
 
   static final remoteInitDatabaseTestEndpoint = Uri.http(
     'jbm-api-test.nikel.es:8080',
-    '/api/v5/sync/init-db',
+    '/api/v6/sync/init-db',
   );
 
-  static final remoteInitialDatabaseDateTimeEndpoint = Uri.http(
+  static final remoteInitialDatabaseDateTimeEndpoint = Uri.https(
     'jbm-api.nikel.es',
-    '/api/v5/sync/init-db-date',
+    '/api/v6/sync/init-db-date',
   );
   static final remoteInitialDatabaseDateTimeTestEndpoint = Uri.http(
     'jbm-api-test.nikel.es:8080',
-    '/api/v5/sync/init-db-date',
+    '/api/v6/sync/init-db-date',
   );
 
   InitDatabaseService(this.dio, this.localDb, this.usuario);

@@ -106,8 +106,8 @@ class ArticuloIndexScreenPaginatedControllerProvider
         ArticuloIndexScreenPaginatedController, List<Articulo>> {
   /// See also [ArticuloIndexScreenPaginatedController].
   ArticuloIndexScreenPaginatedControllerProvider({
-    required this.page,
-  }) : super.internal(
+    required int page,
+  }) : this._internal(
           () => ArticuloIndexScreenPaginatedController()..page = page,
           from: articuloIndexScreenPaginatedControllerProvider,
           name: r'articuloIndexScreenPaginatedControllerProvider',
@@ -120,9 +120,52 @@ class ArticuloIndexScreenPaginatedControllerProvider
           allTransitiveDependencies:
               ArticuloIndexScreenPaginatedControllerFamily
                   ._allTransitiveDependencies,
+          page: page,
         );
 
+  ArticuloIndexScreenPaginatedControllerProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.page,
+  }) : super.internal();
+
   final int page;
+
+  @override
+  Future<List<Articulo>> runNotifierBuild(
+    covariant ArticuloIndexScreenPaginatedController notifier,
+  ) {
+    return notifier.build(
+      page: page,
+    );
+  }
+
+  @override
+  Override overrideWith(
+      ArticuloIndexScreenPaginatedController Function() create) {
+    return ProviderOverride(
+      origin: this,
+      override: ArticuloIndexScreenPaginatedControllerProvider._internal(
+        () => create()..page = page,
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        page: page,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeAsyncNotifierProviderElement<
+      ArticuloIndexScreenPaginatedController, List<Articulo>> createElement() {
+    return _ArticuloIndexScreenPaginatedControllerProviderElement(this);
+  }
 
   @override
   bool operator ==(Object other) {
@@ -137,15 +180,23 @@ class ArticuloIndexScreenPaginatedControllerProvider
 
     return _SystemHash.finish(hash);
   }
+}
+
+mixin ArticuloIndexScreenPaginatedControllerRef
+    on AutoDisposeAsyncNotifierProviderRef<List<Articulo>> {
+  /// The parameter `page` of this provider.
+  int get page;
+}
+
+class _ArticuloIndexScreenPaginatedControllerProviderElement
+    extends AutoDisposeAsyncNotifierProviderElement<
+        ArticuloIndexScreenPaginatedController,
+        List<Articulo>> with ArticuloIndexScreenPaginatedControllerRef {
+  _ArticuloIndexScreenPaginatedControllerProviderElement(super.provider);
 
   @override
-  Future<List<Articulo>> runNotifierBuild(
-    covariant ArticuloIndexScreenPaginatedController notifier,
-  ) {
-    return notifier.build(
-      page: page,
-    );
-  }
+  int get page =>
+      (origin as ArticuloIndexScreenPaginatedControllerProvider).page;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

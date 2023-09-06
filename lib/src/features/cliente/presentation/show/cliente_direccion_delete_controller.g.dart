@@ -88,8 +88,8 @@ class ClienteDireccionDeleteControllerProvider
         ClienteDireccionDeleteController, bool> {
   /// See also [ClienteDireccionDeleteController].
   ClienteDireccionDeleteControllerProvider(
-    this.clienteImpParam,
-  ) : super.internal(
+    ClienteImpParam clienteImpParam,
+  ) : this._internal(
           () => ClienteDireccionDeleteController()
             ..clienteImpParam = clienteImpParam,
           from: clienteDireccionDeleteControllerProvider,
@@ -101,9 +101,51 @@ class ClienteDireccionDeleteControllerProvider
           dependencies: ClienteDireccionDeleteControllerFamily._dependencies,
           allTransitiveDependencies:
               ClienteDireccionDeleteControllerFamily._allTransitiveDependencies,
+          clienteImpParam: clienteImpParam,
         );
 
+  ClienteDireccionDeleteControllerProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.clienteImpParam,
+  }) : super.internal();
+
   final ClienteImpParam clienteImpParam;
+
+  @override
+  Future<bool> runNotifierBuild(
+    covariant ClienteDireccionDeleteController notifier,
+  ) {
+    return notifier.build(
+      clienteImpParam,
+    );
+  }
+
+  @override
+  Override overrideWith(ClienteDireccionDeleteController Function() create) {
+    return ProviderOverride(
+      origin: this,
+      override: ClienteDireccionDeleteControllerProvider._internal(
+        () => create()..clienteImpParam = clienteImpParam,
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        clienteImpParam: clienteImpParam,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeAsyncNotifierProviderElement<ClienteDireccionDeleteController,
+      bool> createElement() {
+    return _ClienteDireccionDeleteControllerProviderElement(this);
+  }
 
   @override
   bool operator ==(Object other) {
@@ -118,15 +160,23 @@ class ClienteDireccionDeleteControllerProvider
 
     return _SystemHash.finish(hash);
   }
+}
+
+mixin ClienteDireccionDeleteControllerRef
+    on AutoDisposeAsyncNotifierProviderRef<bool> {
+  /// The parameter `clienteImpParam` of this provider.
+  ClienteImpParam get clienteImpParam;
+}
+
+class _ClienteDireccionDeleteControllerProviderElement
+    extends AutoDisposeAsyncNotifierProviderElement<
+        ClienteDireccionDeleteController,
+        bool> with ClienteDireccionDeleteControllerRef {
+  _ClienteDireccionDeleteControllerProviderElement(super.provider);
 
   @override
-  Future<bool> runNotifierBuild(
-    covariant ClienteDireccionDeleteController notifier,
-  ) {
-    return notifier.build(
-      clienteImpParam,
-    );
-  }
+  ClienteImpParam get clienteImpParam =>
+      (origin as ClienteDireccionDeleteControllerProvider).clienteImpParam;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

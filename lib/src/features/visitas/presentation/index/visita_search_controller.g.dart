@@ -106,8 +106,8 @@ class VisitaIndexScreenPaginatedControllerProvider
         VisitaIndexScreenPaginatedController, List<Visita>> {
   /// See also [VisitaIndexScreenPaginatedController].
   VisitaIndexScreenPaginatedControllerProvider({
-    required this.page,
-  }) : super.internal(
+    required int page,
+  }) : this._internal(
           () => VisitaIndexScreenPaginatedController()..page = page,
           from: visitaIndexScreenPaginatedControllerProvider,
           name: r'visitaIndexScreenPaginatedControllerProvider',
@@ -119,9 +119,52 @@ class VisitaIndexScreenPaginatedControllerProvider
               VisitaIndexScreenPaginatedControllerFamily._dependencies,
           allTransitiveDependencies: VisitaIndexScreenPaginatedControllerFamily
               ._allTransitiveDependencies,
+          page: page,
         );
 
+  VisitaIndexScreenPaginatedControllerProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.page,
+  }) : super.internal();
+
   final int page;
+
+  @override
+  Future<List<Visita>> runNotifierBuild(
+    covariant VisitaIndexScreenPaginatedController notifier,
+  ) {
+    return notifier.build(
+      page: page,
+    );
+  }
+
+  @override
+  Override overrideWith(
+      VisitaIndexScreenPaginatedController Function() create) {
+    return ProviderOverride(
+      origin: this,
+      override: VisitaIndexScreenPaginatedControllerProvider._internal(
+        () => create()..page = page,
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        page: page,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeAsyncNotifierProviderElement<VisitaIndexScreenPaginatedController,
+      List<Visita>> createElement() {
+    return _VisitaIndexScreenPaginatedControllerProviderElement(this);
+  }
 
   @override
   bool operator ==(Object other) {
@@ -136,15 +179,22 @@ class VisitaIndexScreenPaginatedControllerProvider
 
     return _SystemHash.finish(hash);
   }
+}
+
+mixin VisitaIndexScreenPaginatedControllerRef
+    on AutoDisposeAsyncNotifierProviderRef<List<Visita>> {
+  /// The parameter `page` of this provider.
+  int get page;
+}
+
+class _VisitaIndexScreenPaginatedControllerProviderElement
+    extends AutoDisposeAsyncNotifierProviderElement<
+        VisitaIndexScreenPaginatedController,
+        List<Visita>> with VisitaIndexScreenPaginatedControllerRef {
+  _VisitaIndexScreenPaginatedControllerProviderElement(super.provider);
 
   @override
-  Future<List<Visita>> runNotifierBuild(
-    covariant VisitaIndexScreenPaginatedController notifier,
-  ) {
-    return notifier.build(
-      page: page,
-    );
-  }
+  int get page => (origin as VisitaIndexScreenPaginatedControllerProvider).page;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

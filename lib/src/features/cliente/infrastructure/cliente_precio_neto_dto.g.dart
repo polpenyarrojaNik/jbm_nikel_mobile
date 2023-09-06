@@ -13,8 +13,8 @@ _$_ClientePrecioNetoDTO _$$_ClientePrecioNetoDTOFromJson(
       articuloId: json['ARTICULO_ID'] as String,
       cantidadDesde: json['CANTIDAD_DESDE'] as int,
       precio: (json['PRECIO'] as num).toDouble(),
-      tipoPrecio: json['TIPO_PRECIO'] as int,
-      dtoAdicional: (json['DTO_ADICIONAL'] as num).toDouble(),
+      tipoPrecio: json['TIPO_PRECIO'] as int?,
+      dtoAdicional: (json['DTO_ADICIONAL'] as num?)?.toDouble(),
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       deleted: json['DELETED'] as String? ?? 'N',
     );

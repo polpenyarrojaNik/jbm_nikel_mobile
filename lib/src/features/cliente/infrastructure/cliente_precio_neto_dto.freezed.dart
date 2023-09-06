@@ -29,9 +29,9 @@ mixin _$ClientePrecioNetoDTO {
   @JsonKey(name: 'PRECIO')
   double get precio => throw _privateConstructorUsedError;
   @JsonKey(name: 'TIPO_PRECIO')
-  int get tipoPrecio => throw _privateConstructorUsedError;
+  int? get tipoPrecio => throw _privateConstructorUsedError;
   @JsonKey(name: 'DTO_ADICIONAL')
-  double get dtoAdicional => throw _privateConstructorUsedError;
+  double? get dtoAdicional => throw _privateConstructorUsedError;
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   @JsonKey(name: 'DELETED')
@@ -54,8 +54,8 @@ abstract class $ClientePrecioNetoDTOCopyWith<$Res> {
       @JsonKey(name: 'ARTICULO_ID') String articuloId,
       @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
       @JsonKey(name: 'PRECIO') double precio,
-      @JsonKey(name: 'TIPO_PRECIO') int tipoPrecio,
-      @JsonKey(name: 'DTO_ADICIONAL') double dtoAdicional,
+      @JsonKey(name: 'TIPO_PRECIO') int? tipoPrecio,
+      @JsonKey(name: 'DTO_ADICIONAL') double? dtoAdicional,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
 }
@@ -78,8 +78,8 @@ class _$ClientePrecioNetoDTOCopyWithImpl<$Res,
     Object? articuloId = null,
     Object? cantidadDesde = null,
     Object? precio = null,
-    Object? tipoPrecio = null,
-    Object? dtoAdicional = null,
+    Object? tipoPrecio = freezed,
+    Object? dtoAdicional = freezed,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -100,14 +100,14 @@ class _$ClientePrecioNetoDTOCopyWithImpl<$Res,
           ? _value.precio
           : precio // ignore: cast_nullable_to_non_nullable
               as double,
-      tipoPrecio: null == tipoPrecio
+      tipoPrecio: freezed == tipoPrecio
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as int,
-      dtoAdicional: null == dtoAdicional
+              as int?,
+      dtoAdicional: freezed == dtoAdicional
           ? _value.dtoAdicional
           : dtoAdicional // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -133,8 +133,8 @@ abstract class _$$_ClientePrecioNetoDTOCopyWith<$Res>
       @JsonKey(name: 'ARTICULO_ID') String articuloId,
       @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
       @JsonKey(name: 'PRECIO') double precio,
-      @JsonKey(name: 'TIPO_PRECIO') int tipoPrecio,
-      @JsonKey(name: 'DTO_ADICIONAL') double dtoAdicional,
+      @JsonKey(name: 'TIPO_PRECIO') int? tipoPrecio,
+      @JsonKey(name: 'DTO_ADICIONAL') double? dtoAdicional,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
 }
@@ -154,8 +154,8 @@ class __$$_ClientePrecioNetoDTOCopyWithImpl<$Res>
     Object? articuloId = null,
     Object? cantidadDesde = null,
     Object? precio = null,
-    Object? tipoPrecio = null,
-    Object? dtoAdicional = null,
+    Object? tipoPrecio = freezed,
+    Object? dtoAdicional = freezed,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -176,14 +176,14 @@ class __$$_ClientePrecioNetoDTOCopyWithImpl<$Res>
           ? _value.precio
           : precio // ignore: cast_nullable_to_non_nullable
               as double,
-      tipoPrecio: null == tipoPrecio
+      tipoPrecio: freezed == tipoPrecio
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as int,
-      dtoAdicional: null == dtoAdicional
+              as int?,
+      dtoAdicional: freezed == dtoAdicional
           ? _value.dtoAdicional
           : dtoAdicional // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -204,8 +204,8 @@ class _$_ClientePrecioNetoDTO extends _ClientePrecioNetoDTO {
       @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
       @JsonKey(name: 'CANTIDAD_DESDE') required this.cantidadDesde,
       @JsonKey(name: 'PRECIO') required this.precio,
-      @JsonKey(name: 'TIPO_PRECIO') required this.tipoPrecio,
-      @JsonKey(name: 'DTO_ADICIONAL') required this.dtoAdicional,
+      @JsonKey(name: 'TIPO_PRECIO') this.tipoPrecio,
+      @JsonKey(name: 'DTO_ADICIONAL') this.dtoAdicional,
       @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
@@ -227,10 +227,10 @@ class _$_ClientePrecioNetoDTO extends _ClientePrecioNetoDTO {
   final double precio;
   @override
   @JsonKey(name: 'TIPO_PRECIO')
-  final int tipoPrecio;
+  final int? tipoPrecio;
   @override
   @JsonKey(name: 'DTO_ADICIONAL')
-  final double dtoAdicional;
+  final double? dtoAdicional;
   @override
   @JsonKey(name: 'LAST_UPDATED')
   final DateTime lastUpdated;
@@ -290,8 +290,8 @@ abstract class _ClientePrecioNetoDTO extends ClientePrecioNetoDTO {
           @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
           @JsonKey(name: 'CANTIDAD_DESDE') required final int cantidadDesde,
           @JsonKey(name: 'PRECIO') required final double precio,
-          @JsonKey(name: 'TIPO_PRECIO') required final int tipoPrecio,
-          @JsonKey(name: 'DTO_ADICIONAL') required final double dtoAdicional,
+          @JsonKey(name: 'TIPO_PRECIO') final int? tipoPrecio,
+          @JsonKey(name: 'DTO_ADICIONAL') final double? dtoAdicional,
           @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
           @JsonKey(name: 'DELETED') final String deleted}) =
       _$_ClientePrecioNetoDTO;
@@ -314,10 +314,10 @@ abstract class _ClientePrecioNetoDTO extends ClientePrecioNetoDTO {
   double get precio;
   @override
   @JsonKey(name: 'TIPO_PRECIO')
-  int get tipoPrecio;
+  int? get tipoPrecio;
   @override
   @JsonKey(name: 'DTO_ADICIONAL')
-  double get dtoAdicional;
+  double? get dtoAdicional;
   @override
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated;

@@ -21,8 +21,8 @@ mixin _$ClientePrecioNeto {
   String get descripcion => throw _privateConstructorUsedError;
   int get cantidadDesde => throw _privateConstructorUsedError;
   Money get precio => throw _privateConstructorUsedError;
-  int get tipoPrecio => throw _privateConstructorUsedError;
-  double get dtoAdicional => throw _privateConstructorUsedError;
+  int? get tipoPrecio => throw _privateConstructorUsedError;
+  double? get dtoAdicional => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
@@ -43,8 +43,8 @@ abstract class $ClientePrecioNetoCopyWith<$Res> {
       String descripcion,
       int cantidadDesde,
       Money precio,
-      int tipoPrecio,
-      double dtoAdicional,
+      int? tipoPrecio,
+      double? dtoAdicional,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -67,8 +67,8 @@ class _$ClientePrecioNetoCopyWithImpl<$Res, $Val extends ClientePrecioNeto>
     Object? descripcion = null,
     Object? cantidadDesde = null,
     Object? precio = null,
-    Object? tipoPrecio = null,
-    Object? dtoAdicional = null,
+    Object? tipoPrecio = freezed,
+    Object? dtoAdicional = freezed,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -93,14 +93,14 @@ class _$ClientePrecioNetoCopyWithImpl<$Res, $Val extends ClientePrecioNeto>
           ? _value.precio
           : precio // ignore: cast_nullable_to_non_nullable
               as Money,
-      tipoPrecio: null == tipoPrecio
+      tipoPrecio: freezed == tipoPrecio
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as int,
-      dtoAdicional: null == dtoAdicional
+              as int?,
+      dtoAdicional: freezed == dtoAdicional
           ? _value.dtoAdicional
           : dtoAdicional // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -127,8 +127,8 @@ abstract class _$$_ClientePrecioNetoCopyWith<$Res>
       String descripcion,
       int cantidadDesde,
       Money precio,
-      int tipoPrecio,
-      double dtoAdicional,
+      int? tipoPrecio,
+      double? dtoAdicional,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -149,8 +149,8 @@ class __$$_ClientePrecioNetoCopyWithImpl<$Res>
     Object? descripcion = null,
     Object? cantidadDesde = null,
     Object? precio = null,
-    Object? tipoPrecio = null,
-    Object? dtoAdicional = null,
+    Object? tipoPrecio = freezed,
+    Object? dtoAdicional = freezed,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -175,14 +175,14 @@ class __$$_ClientePrecioNetoCopyWithImpl<$Res>
           ? _value.precio
           : precio // ignore: cast_nullable_to_non_nullable
               as Money,
-      tipoPrecio: null == tipoPrecio
+      tipoPrecio: freezed == tipoPrecio
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as int,
-      dtoAdicional: null == dtoAdicional
+              as int?,
+      dtoAdicional: freezed == dtoAdicional
           ? _value.dtoAdicional
           : dtoAdicional // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -204,8 +204,8 @@ class _$_ClientePrecioNeto extends _ClientePrecioNeto {
       required this.descripcion,
       required this.cantidadDesde,
       required this.precio,
-      required this.tipoPrecio,
-      required this.dtoAdicional,
+      this.tipoPrecio,
+      this.dtoAdicional,
       required this.lastUpdated,
       required this.deleted})
       : super._();
@@ -221,9 +221,9 @@ class _$_ClientePrecioNeto extends _ClientePrecioNeto {
   @override
   final Money precio;
   @override
-  final int tipoPrecio;
+  final int? tipoPrecio;
   @override
-  final double dtoAdicional;
+  final double? dtoAdicional;
   @override
   final DateTime lastUpdated;
   @override
@@ -285,8 +285,8 @@ abstract class _ClientePrecioNeto extends ClientePrecioNeto {
       required final String descripcion,
       required final int cantidadDesde,
       required final Money precio,
-      required final int tipoPrecio,
-      required final double dtoAdicional,
+      final int? tipoPrecio,
+      final double? dtoAdicional,
       required final DateTime lastUpdated,
       required final bool deleted}) = _$_ClientePrecioNeto;
   const _ClientePrecioNeto._() : super._();
@@ -302,9 +302,9 @@ abstract class _ClientePrecioNeto extends ClientePrecioNeto {
   @override
   Money get precio;
   @override
-  int get tipoPrecio;
+  int? get tipoPrecio;
   @override
-  double get dtoAdicional;
+  double? get dtoAdicional;
   @override
   DateTime get lastUpdated;
   @override

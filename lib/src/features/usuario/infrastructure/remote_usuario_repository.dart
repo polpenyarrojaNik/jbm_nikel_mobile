@@ -24,7 +24,7 @@ class RemoteUsuarioRepository {
     '/api/v3/login',
   );
   static final authorizationTestEndpoint = Uri.http(
-    dotenv.get('URLTEST', fallback: 'localhost:3001'),
+    dotenv.get('URL', fallback: 'localhost:3001'),
     '/api/v3/login',
   );
   static final renewTokenEndpoint = Uri.https(
@@ -32,7 +32,7 @@ class RemoteUsuarioRepository {
     '/api/v3/renew-token',
   );
   static final renewTokenTestEndpoint = Uri.http(
-    dotenv.get('URLTEST', fallback: 'localhost:3001'),
+    dotenv.get('URL', fallback: 'localhost:3001'),
     '/api/v3/renew-token',
   );
 
@@ -104,7 +104,7 @@ class RemoteUsuarioRepository {
     try {
       final requestUri = (usuarioDto.isTest)
           ? Uri.http(
-              // dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              // dotenv.get('URL', fallback: 'localhost:3001'),
               'jbm-api-test.nikel.es:8080',
               'api/v1/sync/modificar-precio',
             )

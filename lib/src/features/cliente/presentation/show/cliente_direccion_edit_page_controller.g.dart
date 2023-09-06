@@ -89,8 +89,8 @@ class ClienteDireccionEditPageControllerProvider
         ClienteDireccionEditPageController, ClienteDireccionEditPageData> {
   /// See also [ClienteDireccionEditPageController].
   ClienteDireccionEditPageControllerProvider(
-    this.clienteImpParam,
-  ) : super.internal(
+    ClienteImpParam clienteImpParam,
+  ) : this._internal(
           () => ClienteDireccionEditPageController()
             ..clienteImpParam = clienteImpParam,
           from: clienteDireccionEditPageControllerProvider,
@@ -102,9 +102,51 @@ class ClienteDireccionEditPageControllerProvider
           dependencies: ClienteDireccionEditPageControllerFamily._dependencies,
           allTransitiveDependencies: ClienteDireccionEditPageControllerFamily
               ._allTransitiveDependencies,
+          clienteImpParam: clienteImpParam,
         );
 
+  ClienteDireccionEditPageControllerProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.clienteImpParam,
+  }) : super.internal();
+
   final ClienteImpParam clienteImpParam;
+
+  @override
+  Future<ClienteDireccionEditPageData> runNotifierBuild(
+    covariant ClienteDireccionEditPageController notifier,
+  ) {
+    return notifier.build(
+      clienteImpParam,
+    );
+  }
+
+  @override
+  Override overrideWith(ClienteDireccionEditPageController Function() create) {
+    return ProviderOverride(
+      origin: this,
+      override: ClienteDireccionEditPageControllerProvider._internal(
+        () => create()..clienteImpParam = clienteImpParam,
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        clienteImpParam: clienteImpParam,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeAsyncNotifierProviderElement<ClienteDireccionEditPageController,
+      ClienteDireccionEditPageData> createElement() {
+    return _ClienteDireccionEditPageControllerProviderElement(this);
+  }
 
   @override
   bool operator ==(Object other) {
@@ -119,15 +161,23 @@ class ClienteDireccionEditPageControllerProvider
 
     return _SystemHash.finish(hash);
   }
+}
+
+mixin ClienteDireccionEditPageControllerRef
+    on AutoDisposeAsyncNotifierProviderRef<ClienteDireccionEditPageData> {
+  /// The parameter `clienteImpParam` of this provider.
+  ClienteImpParam get clienteImpParam;
+}
+
+class _ClienteDireccionEditPageControllerProviderElement
+    extends AutoDisposeAsyncNotifierProviderElement<
+        ClienteDireccionEditPageController, ClienteDireccionEditPageData>
+    with ClienteDireccionEditPageControllerRef {
+  _ClienteDireccionEditPageControllerProviderElement(super.provider);
 
   @override
-  Future<ClienteDireccionEditPageData> runNotifierBuild(
-    covariant ClienteDireccionEditPageController notifier,
-  ) {
-    return notifier.build(
-      clienteImpParam,
-    );
-  }
+  ClienteImpParam get clienteImpParam =>
+      (origin as ClienteDireccionEditPageControllerProvider).clienteImpParam;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

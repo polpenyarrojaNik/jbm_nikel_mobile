@@ -106,8 +106,8 @@ class ClienteIndexScreenPaginatedControllerProvider
         ClienteIndexScreenPaginatedController, List<Cliente>> {
   /// See also [ClienteIndexScreenPaginatedController].
   ClienteIndexScreenPaginatedControllerProvider({
-    required this.page,
-  }) : super.internal(
+    required int page,
+  }) : this._internal(
           () => ClienteIndexScreenPaginatedController()..page = page,
           from: clienteIndexScreenPaginatedControllerProvider,
           name: r'clienteIndexScreenPaginatedControllerProvider',
@@ -119,9 +119,52 @@ class ClienteIndexScreenPaginatedControllerProvider
               ClienteIndexScreenPaginatedControllerFamily._dependencies,
           allTransitiveDependencies: ClienteIndexScreenPaginatedControllerFamily
               ._allTransitiveDependencies,
+          page: page,
         );
 
+  ClienteIndexScreenPaginatedControllerProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.page,
+  }) : super.internal();
+
   final int page;
+
+  @override
+  Future<List<Cliente>> runNotifierBuild(
+    covariant ClienteIndexScreenPaginatedController notifier,
+  ) {
+    return notifier.build(
+      page: page,
+    );
+  }
+
+  @override
+  Override overrideWith(
+      ClienteIndexScreenPaginatedController Function() create) {
+    return ProviderOverride(
+      origin: this,
+      override: ClienteIndexScreenPaginatedControllerProvider._internal(
+        () => create()..page = page,
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        page: page,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeAsyncNotifierProviderElement<ClienteIndexScreenPaginatedController,
+      List<Cliente>> createElement() {
+    return _ClienteIndexScreenPaginatedControllerProviderElement(this);
+  }
 
   @override
   bool operator ==(Object other) {
@@ -136,15 +179,23 @@ class ClienteIndexScreenPaginatedControllerProvider
 
     return _SystemHash.finish(hash);
   }
+}
+
+mixin ClienteIndexScreenPaginatedControllerRef
+    on AutoDisposeAsyncNotifierProviderRef<List<Cliente>> {
+  /// The parameter `page` of this provider.
+  int get page;
+}
+
+class _ClienteIndexScreenPaginatedControllerProviderElement
+    extends AutoDisposeAsyncNotifierProviderElement<
+        ClienteIndexScreenPaginatedController,
+        List<Cliente>> with ClienteIndexScreenPaginatedControllerRef {
+  _ClienteIndexScreenPaginatedControllerProviderElement(super.provider);
 
   @override
-  Future<List<Cliente>> runNotifierBuild(
-    covariant ClienteIndexScreenPaginatedController notifier,
-  ) {
-    return notifier.build(
-      page: page,
-    );
-  }
+  int get page =>
+      (origin as ClienteIndexScreenPaginatedControllerProvider).page;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

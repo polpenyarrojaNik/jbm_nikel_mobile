@@ -1127,7 +1127,7 @@ class PedidoVentaRepository {
 
       final requestUri = (test)
           ? Uri.http(
-              dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              dotenv.get('URL', fallback: 'localhost:3001'),
               'api/v3/online/pedidos',
             )
           : Uri.https(
