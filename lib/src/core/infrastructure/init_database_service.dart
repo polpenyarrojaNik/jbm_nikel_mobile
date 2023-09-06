@@ -33,8 +33,8 @@ class InitDatabaseService {
     '/api/v6/sync/init-db',
   );
 
-  static final remoteInitDatabaseTestEndpoint = Uri.http(
-    'jbm-api-test.nikel.es:8080',
+  static final remoteInitDatabaseTestEndpoint = Uri.https(
+    'jbm-api.nikel.es',
     '/api/v6/sync/init-db',
   );
 
@@ -42,8 +42,8 @@ class InitDatabaseService {
     'jbm-api.nikel.es',
     '/api/v6/sync/init-db-date',
   );
-  static final remoteInitialDatabaseDateTimeTestEndpoint = Uri.http(
-    'jbm-api-test.nikel.es:8080',
+  static final remoteInitialDatabaseDateTimeTestEndpoint = Uri.https(
+    'jbm-api.nikel.es',
     '/api/v6/sync/init-db-date',
   );
 
