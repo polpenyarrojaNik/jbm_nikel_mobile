@@ -41,7 +41,7 @@ class SyncNotifier extends StateNotifier<SyncControllerState> {
       if (initAppProcess || await more30MinFromLastSync()) {
         state = const SyncControllerState.synchronizing();
 
-        await usuarioService.modificarPrecio();
+        await usuarioService.syncUser();
 
         final syncProgress = await compute(
             syncInBackground,

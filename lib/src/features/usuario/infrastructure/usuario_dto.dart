@@ -15,7 +15,7 @@ class UsuarioDTO with _$UsuarioDTO {
     @JsonKey(name: 'CLAVE') required String contrasenya,
     @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')
     required String? nombreUsuario,
-    @JsonKey(name: 'PROVISIONAL_TOKEN') required String provisionalToken,
+    @JsonKey(name: 'PROVISIONAL_TOKEN') String? provisionalToken,
     @JsonKey(name: 'REFRESH_TOKEN') String? refreshToken,
     @JsonKey(name: 'TEST') required String test,
     @JsonKey(name: 'IDIOMA_ID') required String idiomaId,
@@ -24,7 +24,7 @@ class UsuarioDTO with _$UsuarioDTO {
   }) = _UsuarioDTO;
 
   DateTime? get expiration {
-    return JwtDecoder.getExpirationDate(provisionalToken);
+    return JwtDecoder.getExpirationDate(provisionalToken!);
   }
 
   bool get isExpired {
@@ -59,7 +59,7 @@ class UsuarioDTO with _$UsuarioDTO {
       usuario: usuario,
       contrasenya: contrasenya,
       nombreUsuario: nombreUsuario,
-      provisionalToken: provisionalToken,
+      provisionalToken: provisionalToken ?? 'Undefined',
       refreshToken: refreshToken,
       test: (test == 'S') ? true : false,
       idiomaId: idiomaId,

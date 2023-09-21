@@ -100,18 +100,18 @@ class RemoteUsuarioRepository {
     }
   }
 
-  Future<String> remoteModificarPrecio(UsuarioDTO usuarioDto) async {
+  Future<UsuarioDTO> remoteSyncUser(UsuarioDTO usuarioDto) async {
     try {
       final requestUri = (usuarioDto.isTest)
           ? Uri.http(
               // dotenv.get('URL', fallback: 'localhost:3001'),
               'jbm-api-test.nikel.es:8080',
-              'api/v1/sync/modificar-precio',
+              'api/v1/sync/usuario/${usuarioDto.id}',
             )
           : Uri.https(
               // dotenv.get('URL', fallback: 'localhost:3001'),
               'jbm-api.nikel.es',
-              'api/v1/sync/modificar-precio',
+              'api/v1/sync/usuario/${usuarioDto.id}',
             );
 
       final response = await _dio.getUri(
@@ -124,7 +124,7 @@ class RemoteUsuarioRepository {
       if (response.statusCode == 200) {
         final jsonData = response.data['data'] as Map<String, dynamic>;
 
-        return jsonData['MODIFICAR_PRECIO_PEDIDO_SN'] as String;
+        return UsuarioDTO.fromJson(jsonData);
       } else {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');

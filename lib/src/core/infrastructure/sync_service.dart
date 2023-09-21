@@ -171,7 +171,7 @@ class SyncService {
   Future<void> syncAllPedidosRelacionados(
       {required bool isInMainThread}) async {
     try {
-      await usuarioService?.modificarPrecio();
+      await usuarioService?.syncUser();
       await enviarPedidosNoEnviados();
       await checkBorradores();
       await syncPedidos();

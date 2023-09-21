@@ -12,7 +12,7 @@ _$_UsuarioDTO _$$_UsuarioDTOFromJson(Map<String, dynamic> json) =>
       usuario: json['USUARIO'] as String,
       contrasenya: json['CLAVE'] as String,
       nombreUsuario: json['NOMBRE_MOSTRAR'] as String? ?? '',
-      provisionalToken: json['PROVISIONAL_TOKEN'] as String,
+      provisionalToken: json['PROVISIONAL_TOKEN'] as String?,
       refreshToken: json['REFRESH_TOKEN'] as String?,
       test: json['TEST'] as String,
       idiomaId: json['IDIOMA_ID'] as String,

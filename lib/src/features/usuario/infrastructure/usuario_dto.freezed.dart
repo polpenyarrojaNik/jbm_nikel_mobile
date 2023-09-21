@@ -29,7 +29,7 @@ mixin _$UsuarioDTO {
   @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')
   String? get nombreUsuario => throw _privateConstructorUsedError;
   @JsonKey(name: 'PROVISIONAL_TOKEN')
-  String get provisionalToken => throw _privateConstructorUsedError;
+  String? get provisionalToken => throw _privateConstructorUsedError;
   @JsonKey(name: 'REFRESH_TOKEN')
   String? get refreshToken => throw _privateConstructorUsedError;
   @JsonKey(name: 'TEST')
@@ -56,7 +56,7 @@ abstract class $UsuarioDTOCopyWith<$Res> {
       @JsonKey(name: 'USUARIO') String usuario,
       @JsonKey(name: 'CLAVE') String contrasenya,
       @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') String? nombreUsuario,
-      @JsonKey(name: 'PROVISIONAL_TOKEN') String provisionalToken,
+      @JsonKey(name: 'PROVISIONAL_TOKEN') String? provisionalToken,
       @JsonKey(name: 'REFRESH_TOKEN') String? refreshToken,
       @JsonKey(name: 'TEST') String test,
       @JsonKey(name: 'IDIOMA_ID') String idiomaId,
@@ -80,7 +80,7 @@ class _$UsuarioDTOCopyWithImpl<$Res, $Val extends UsuarioDTO>
     Object? usuario = null,
     Object? contrasenya = null,
     Object? nombreUsuario = freezed,
-    Object? provisionalToken = null,
+    Object? provisionalToken = freezed,
     Object? refreshToken = freezed,
     Object? test = null,
     Object? idiomaId = null,
@@ -103,10 +103,10 @@ class _$UsuarioDTOCopyWithImpl<$Res, $Val extends UsuarioDTO>
           ? _value.nombreUsuario
           : nombreUsuario // ignore: cast_nullable_to_non_nullable
               as String?,
-      provisionalToken: null == provisionalToken
+      provisionalToken: freezed == provisionalToken
           ? _value.provisionalToken
           : provisionalToken // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       refreshToken: freezed == refreshToken
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
@@ -140,7 +140,7 @@ abstract class _$$_UsuarioDTOCopyWith<$Res>
       @JsonKey(name: 'USUARIO') String usuario,
       @JsonKey(name: 'CLAVE') String contrasenya,
       @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') String? nombreUsuario,
-      @JsonKey(name: 'PROVISIONAL_TOKEN') String provisionalToken,
+      @JsonKey(name: 'PROVISIONAL_TOKEN') String? provisionalToken,
       @JsonKey(name: 'REFRESH_TOKEN') String? refreshToken,
       @JsonKey(name: 'TEST') String test,
       @JsonKey(name: 'IDIOMA_ID') String idiomaId,
@@ -162,7 +162,7 @@ class __$$_UsuarioDTOCopyWithImpl<$Res>
     Object? usuario = null,
     Object? contrasenya = null,
     Object? nombreUsuario = freezed,
-    Object? provisionalToken = null,
+    Object? provisionalToken = freezed,
     Object? refreshToken = freezed,
     Object? test = null,
     Object? idiomaId = null,
@@ -185,10 +185,10 @@ class __$$_UsuarioDTOCopyWithImpl<$Res>
           ? _value.nombreUsuario
           : nombreUsuario // ignore: cast_nullable_to_non_nullable
               as String?,
-      provisionalToken: null == provisionalToken
+      provisionalToken: freezed == provisionalToken
           ? _value.provisionalToken
           : provisionalToken // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       refreshToken: freezed == refreshToken
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
@@ -218,7 +218,7 @@ class _$_UsuarioDTO extends _UsuarioDTO {
       @JsonKey(name: 'CLAVE') required this.contrasenya,
       @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')
       required this.nombreUsuario,
-      @JsonKey(name: 'PROVISIONAL_TOKEN') required this.provisionalToken,
+      @JsonKey(name: 'PROVISIONAL_TOKEN') this.provisionalToken,
       @JsonKey(name: 'REFRESH_TOKEN') this.refreshToken,
       @JsonKey(name: 'TEST') required this.test,
       @JsonKey(name: 'IDIOMA_ID') required this.idiomaId,
@@ -243,7 +243,7 @@ class _$_UsuarioDTO extends _UsuarioDTO {
   final String? nombreUsuario;
   @override
   @JsonKey(name: 'PROVISIONAL_TOKEN')
-  final String provisionalToken;
+  final String? provisionalToken;
   @override
   @JsonKey(name: 'REFRESH_TOKEN')
   final String? refreshToken;
@@ -319,8 +319,7 @@ abstract class _UsuarioDTO extends UsuarioDTO {
       @JsonKey(name: 'CLAVE') required final String contrasenya,
       @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')
       required final String? nombreUsuario,
-      @JsonKey(name: 'PROVISIONAL_TOKEN')
-      required final String provisionalToken,
+      @JsonKey(name: 'PROVISIONAL_TOKEN') final String? provisionalToken,
       @JsonKey(name: 'REFRESH_TOKEN') final String? refreshToken,
       @JsonKey(name: 'TEST') required final String test,
       @JsonKey(name: 'IDIOMA_ID') required final String idiomaId,
@@ -345,7 +344,7 @@ abstract class _UsuarioDTO extends UsuarioDTO {
   String? get nombreUsuario;
   @override
   @JsonKey(name: 'PROVISIONAL_TOKEN')
-  String get provisionalToken;
+  String? get provisionalToken;
   @override
   @JsonKey(name: 'REFRESH_TOKEN')
   String? get refreshToken;
