@@ -22,7 +22,7 @@ class ArticuloVentasMesDTO with _$ArticuloVentasMesDTO {
   factory ArticuloVentasMesDTO.fromJson(Map<String, dynamic> json) =>
       _$ArticuloVentasMesDTOFromJson(json);
 
-  ArticuloVentasMes toDomain() {
+  ArticuloVentasMes toDomain({ArticuloVentasMes? articulosVentasMesTodos}) {
     return ArticuloVentasMes(
       mes: mes,
       unidadesAnyo: unidadesAnyo,
@@ -30,6 +30,11 @@ class ArticuloVentasMesDTO with _$ArticuloVentasMesDTO {
       unidadesAnyo_2: unidadesAnyo_2,
       unidadesAnyo_3: unidadesAnyo_3,
       unidadesAnyo_4: unidadesAnyo_4,
+      unidadesAnyoTodos: articulosVentasMesTodos?.unidadesAnyoTodos,
+      unidadesAnyoTodos_1: articulosVentasMesTodos?.unidadesAnyoTodos_1,
+      unidadesAnyoTodos_2: articulosVentasMesTodos?.unidadesAnyoTodos_2,
+      unidadesAnyoTodos_3: articulosVentasMesTodos?.unidadesAnyoTodos_3,
+      unidadesAnyoTodos_4: articulosVentasMesTodos?.unidadesAnyoTodos_4,
     );
   }
 }

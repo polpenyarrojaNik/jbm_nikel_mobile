@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/exceptions/get_api_error.dart';
+import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_aux_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_dto.dart';
 
 import '../../../core/exceptions/app_exception.dart';
@@ -21,19 +22,19 @@ class RemoteUsuarioRepository {
 
   static final authorizationEndpoint = Uri.https(
     dotenv.get('URL', fallback: 'localhost:3001'),
-    '/api/v3/login',
+    '/api/v4/login',
   );
   static final authorizationTestEndpoint = Uri.http(
     dotenv.get('URL', fallback: 'localhost:3001'),
-    '/api/v3/login',
+    '/api/v4/login',
   );
   static final renewTokenEndpoint = Uri.https(
     dotenv.get('URL', fallback: 'localhost:3001'),
-    '/api/v3/renew-token',
+    '/api/v4/renew-token',
   );
   static final renewTokenTestEndpoint = Uri.http(
     dotenv.get('URL', fallback: 'localhost:3001'),
-    '/api/v3/renew-token',
+    '/api/v4/renew-token',
   );
 
   Future<UsuarioDTO> signIn(String username, String password, bool test) async {
@@ -100,7 +101,7 @@ class RemoteUsuarioRepository {
     }
   }
 
-  Future<UsuarioDTO> remoteSyncUser(UsuarioDTO usuarioDto) async {
+  Future<UsuarioAuxDTO> remoteSyncUser(UsuarioDTO usuarioDto) async {
     try {
       final requestUri = (usuarioDto.isTest)
           ? Uri.http(
@@ -124,7 +125,7 @@ class RemoteUsuarioRepository {
       if (response.statusCode == 200) {
         final jsonData = response.data['data'] as Map<String, dynamic>;
 
-        return UsuarioDTO.fromJson(jsonData);
+        return UsuarioAuxDTO.fromJson(jsonData);
       } else {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');

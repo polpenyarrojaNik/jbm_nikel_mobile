@@ -15,5 +15,6 @@ class Usuario with _$Usuario {
     required bool test,
     required String idiomaId,
     required bool modificarPedido,
+    required bool verTotalVentas,
   }) = _Usuario;
 }

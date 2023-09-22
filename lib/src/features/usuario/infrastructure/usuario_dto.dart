@@ -15,16 +15,17 @@ class UsuarioDTO with _$UsuarioDTO {
     @JsonKey(name: 'CLAVE') required String contrasenya,
     @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')
     required String? nombreUsuario,
-    @JsonKey(name: 'PROVISIONAL_TOKEN') String? provisionalToken,
+    @JsonKey(name: 'PROVISIONAL_TOKEN') required String provisionalToken,
     @JsonKey(name: 'REFRESH_TOKEN') String? refreshToken,
     @JsonKey(name: 'TEST') required String test,
     @JsonKey(name: 'IDIOMA_ID') required String idiomaId,
     @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')
     required String modificarPedido,
+    @JsonKey(name: 'APP_VER_TOTAL_VENTAS') required String verTotalVentas,
   }) = _UsuarioDTO;
 
   DateTime? get expiration {
-    return JwtDecoder.getExpirationDate(provisionalToken!);
+    return JwtDecoder.getExpirationDate(provisionalToken);
   }
 
   bool get isExpired {
@@ -50,6 +51,7 @@ class UsuarioDTO with _$UsuarioDTO {
       test: (_.test) ? 'S' : 'N',
       idiomaId: _.idiomaId,
       modificarPedido: _.modificarPedido ? 'S' : 'N',
+      verTotalVentas: _.verTotalVentas ? 'S' : 'N',
     );
   }
 
@@ -59,11 +61,12 @@ class UsuarioDTO with _$UsuarioDTO {
       usuario: usuario,
       contrasenya: contrasenya,
       nombreUsuario: nombreUsuario,
-      provisionalToken: provisionalToken ?? 'Undefined',
+      provisionalToken: provisionalToken,
       refreshToken: refreshToken,
       test: (test == 'S') ? true : false,
       idiomaId: idiomaId,
       modificarPedido: modificarPedido == 'S',
+      verTotalVentas: verTotalVentas == 'S',
     );
   }
 }

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'usuario_dto.dart';
+part of 'usuario_aux_dto.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,26 +14,18 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-UsuarioDTO _$UsuarioDTOFromJson(Map<String, dynamic> json) {
-  return _UsuarioDTO.fromJson(json);
+UsuarioAuxDTO _$UsuarioAuxDTOFromJson(Map<String, dynamic> json) {
+  return _UsuarioAuxDTO.fromJson(json);
 }
 
 /// @nodoc
-mixin _$UsuarioDTO {
+mixin _$UsuarioAuxDTO {
   @JsonKey(name: 'USUARIO_ID')
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'USUARIO')
   String get usuario => throw _privateConstructorUsedError;
-  @JsonKey(name: 'CLAVE')
-  String get contrasenya => throw _privateConstructorUsedError;
   @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')
   String? get nombreUsuario => throw _privateConstructorUsedError;
-  @JsonKey(name: 'PROVISIONAL_TOKEN')
-  String get provisionalToken => throw _privateConstructorUsedError;
-  @JsonKey(name: 'REFRESH_TOKEN')
-  String? get refreshToken => throw _privateConstructorUsedError;
-  @JsonKey(name: 'TEST')
-  String get test => throw _privateConstructorUsedError;
   @JsonKey(name: 'IDIOMA_ID')
   String get idiomaId => throw _privateConstructorUsedError;
   @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')
@@ -43,33 +35,29 @@ mixin _$UsuarioDTO {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UsuarioDTOCopyWith<UsuarioDTO> get copyWith =>
+  $UsuarioAuxDTOCopyWith<UsuarioAuxDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UsuarioDTOCopyWith<$Res> {
-  factory $UsuarioDTOCopyWith(
-          UsuarioDTO value, $Res Function(UsuarioDTO) then) =
-      _$UsuarioDTOCopyWithImpl<$Res, UsuarioDTO>;
+abstract class $UsuarioAuxDTOCopyWith<$Res> {
+  factory $UsuarioAuxDTOCopyWith(
+          UsuarioAuxDTO value, $Res Function(UsuarioAuxDTO) then) =
+      _$UsuarioAuxDTOCopyWithImpl<$Res, UsuarioAuxDTO>;
   @useResult
   $Res call(
       {@JsonKey(name: 'USUARIO_ID') String id,
       @JsonKey(name: 'USUARIO') String usuario,
-      @JsonKey(name: 'CLAVE') String contrasenya,
       @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') String? nombreUsuario,
-      @JsonKey(name: 'PROVISIONAL_TOKEN') String provisionalToken,
-      @JsonKey(name: 'REFRESH_TOKEN') String? refreshToken,
-      @JsonKey(name: 'TEST') String test,
       @JsonKey(name: 'IDIOMA_ID') String idiomaId,
       @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') String modificarPedido,
       @JsonKey(name: 'APP_VER_TOTAL_VENTAS') String verTotalVentas});
 }
 
 /// @nodoc
-class _$UsuarioDTOCopyWithImpl<$Res, $Val extends UsuarioDTO>
-    implements $UsuarioDTOCopyWith<$Res> {
-  _$UsuarioDTOCopyWithImpl(this._value, this._then);
+class _$UsuarioAuxDTOCopyWithImpl<$Res, $Val extends UsuarioAuxDTO>
+    implements $UsuarioAuxDTOCopyWith<$Res> {
+  _$UsuarioAuxDTOCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -81,11 +69,7 @@ class _$UsuarioDTOCopyWithImpl<$Res, $Val extends UsuarioDTO>
   $Res call({
     Object? id = null,
     Object? usuario = null,
-    Object? contrasenya = null,
     Object? nombreUsuario = freezed,
-    Object? provisionalToken = null,
-    Object? refreshToken = freezed,
-    Object? test = null,
     Object? idiomaId = null,
     Object? modificarPedido = null,
     Object? verTotalVentas = null,
@@ -99,26 +83,10 @@ class _$UsuarioDTOCopyWithImpl<$Res, $Val extends UsuarioDTO>
           ? _value.usuario
           : usuario // ignore: cast_nullable_to_non_nullable
               as String,
-      contrasenya: null == contrasenya
-          ? _value.contrasenya
-          : contrasenya // ignore: cast_nullable_to_non_nullable
-              as String,
       nombreUsuario: freezed == nombreUsuario
           ? _value.nombreUsuario
           : nombreUsuario // ignore: cast_nullable_to_non_nullable
               as String?,
-      provisionalToken: null == provisionalToken
-          ? _value.provisionalToken
-          : provisionalToken // ignore: cast_nullable_to_non_nullable
-              as String,
-      refreshToken: freezed == refreshToken
-          ? _value.refreshToken
-          : refreshToken // ignore: cast_nullable_to_non_nullable
-              as String?,
-      test: null == test
-          ? _value.test
-          : test // ignore: cast_nullable_to_non_nullable
-              as String,
       idiomaId: null == idiomaId
           ? _value.idiomaId
           : idiomaId // ignore: cast_nullable_to_non_nullable
@@ -136,32 +104,28 @@ class _$UsuarioDTOCopyWithImpl<$Res, $Val extends UsuarioDTO>
 }
 
 /// @nodoc
-abstract class _$$_UsuarioDTOCopyWith<$Res>
-    implements $UsuarioDTOCopyWith<$Res> {
-  factory _$$_UsuarioDTOCopyWith(
-          _$_UsuarioDTO value, $Res Function(_$_UsuarioDTO) then) =
-      __$$_UsuarioDTOCopyWithImpl<$Res>;
+abstract class _$$_UsuarioAuxDTOCopyWith<$Res>
+    implements $UsuarioAuxDTOCopyWith<$Res> {
+  factory _$$_UsuarioAuxDTOCopyWith(
+          _$_UsuarioAuxDTO value, $Res Function(_$_UsuarioAuxDTO) then) =
+      __$$_UsuarioAuxDTOCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {@JsonKey(name: 'USUARIO_ID') String id,
       @JsonKey(name: 'USUARIO') String usuario,
-      @JsonKey(name: 'CLAVE') String contrasenya,
       @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') String? nombreUsuario,
-      @JsonKey(name: 'PROVISIONAL_TOKEN') String provisionalToken,
-      @JsonKey(name: 'REFRESH_TOKEN') String? refreshToken,
-      @JsonKey(name: 'TEST') String test,
       @JsonKey(name: 'IDIOMA_ID') String idiomaId,
       @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') String modificarPedido,
       @JsonKey(name: 'APP_VER_TOTAL_VENTAS') String verTotalVentas});
 }
 
 /// @nodoc
-class __$$_UsuarioDTOCopyWithImpl<$Res>
-    extends _$UsuarioDTOCopyWithImpl<$Res, _$_UsuarioDTO>
-    implements _$$_UsuarioDTOCopyWith<$Res> {
-  __$$_UsuarioDTOCopyWithImpl(
-      _$_UsuarioDTO _value, $Res Function(_$_UsuarioDTO) _then)
+class __$$_UsuarioAuxDTOCopyWithImpl<$Res>
+    extends _$UsuarioAuxDTOCopyWithImpl<$Res, _$_UsuarioAuxDTO>
+    implements _$$_UsuarioAuxDTOCopyWith<$Res> {
+  __$$_UsuarioAuxDTOCopyWithImpl(
+      _$_UsuarioAuxDTO _value, $Res Function(_$_UsuarioAuxDTO) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -169,16 +133,12 @@ class __$$_UsuarioDTOCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? usuario = null,
-    Object? contrasenya = null,
     Object? nombreUsuario = freezed,
-    Object? provisionalToken = null,
-    Object? refreshToken = freezed,
-    Object? test = null,
     Object? idiomaId = null,
     Object? modificarPedido = null,
     Object? verTotalVentas = null,
   }) {
-    return _then(_$_UsuarioDTO(
+    return _then(_$_UsuarioAuxDTO(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -187,26 +147,10 @@ class __$$_UsuarioDTOCopyWithImpl<$Res>
           ? _value.usuario
           : usuario // ignore: cast_nullable_to_non_nullable
               as String,
-      contrasenya: null == contrasenya
-          ? _value.contrasenya
-          : contrasenya // ignore: cast_nullable_to_non_nullable
-              as String,
       nombreUsuario: freezed == nombreUsuario
           ? _value.nombreUsuario
           : nombreUsuario // ignore: cast_nullable_to_non_nullable
               as String?,
-      provisionalToken: null == provisionalToken
-          ? _value.provisionalToken
-          : provisionalToken // ignore: cast_nullable_to_non_nullable
-              as String,
-      refreshToken: freezed == refreshToken
-          ? _value.refreshToken
-          : refreshToken // ignore: cast_nullable_to_non_nullable
-              as String?,
-      test: null == test
-          ? _value.test
-          : test // ignore: cast_nullable_to_non_nullable
-              as String,
       idiomaId: null == idiomaId
           ? _value.idiomaId
           : idiomaId // ignore: cast_nullable_to_non_nullable
@@ -225,24 +169,20 @@ class __$$_UsuarioDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UsuarioDTO extends _UsuarioDTO {
-  const _$_UsuarioDTO(
+class _$_UsuarioAuxDTO extends _UsuarioAuxDTO {
+  const _$_UsuarioAuxDTO(
       {@JsonKey(name: 'USUARIO_ID') required this.id,
       @JsonKey(name: 'USUARIO') required this.usuario,
-      @JsonKey(name: 'CLAVE') required this.contrasenya,
       @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')
       required this.nombreUsuario,
-      @JsonKey(name: 'PROVISIONAL_TOKEN') required this.provisionalToken,
-      @JsonKey(name: 'REFRESH_TOKEN') this.refreshToken,
-      @JsonKey(name: 'TEST') required this.test,
       @JsonKey(name: 'IDIOMA_ID') required this.idiomaId,
       @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')
       required this.modificarPedido,
       @JsonKey(name: 'APP_VER_TOTAL_VENTAS') required this.verTotalVentas})
       : super._();
 
-  factory _$_UsuarioDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_UsuarioDTOFromJson(json);
+  factory _$_UsuarioAuxDTO.fromJson(Map<String, dynamic> json) =>
+      _$$_UsuarioAuxDTOFromJson(json);
 
   @override
   @JsonKey(name: 'USUARIO_ID')
@@ -251,20 +191,8 @@ class _$_UsuarioDTO extends _UsuarioDTO {
   @JsonKey(name: 'USUARIO')
   final String usuario;
   @override
-  @JsonKey(name: 'CLAVE')
-  final String contrasenya;
-  @override
   @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')
   final String? nombreUsuario;
-  @override
-  @JsonKey(name: 'PROVISIONAL_TOKEN')
-  final String provisionalToken;
-  @override
-  @JsonKey(name: 'REFRESH_TOKEN')
-  final String? refreshToken;
-  @override
-  @JsonKey(name: 'TEST')
-  final String test;
   @override
   @JsonKey(name: 'IDIOMA_ID')
   final String idiomaId;
@@ -277,25 +205,18 @@ class _$_UsuarioDTO extends _UsuarioDTO {
 
   @override
   String toString() {
-    return 'UsuarioDTO(id: $id, usuario: $usuario, contrasenya: $contrasenya, nombreUsuario: $nombreUsuario, provisionalToken: $provisionalToken, refreshToken: $refreshToken, test: $test, idiomaId: $idiomaId, modificarPedido: $modificarPedido, verTotalVentas: $verTotalVentas)';
+    return 'UsuarioAuxDTO(id: $id, usuario: $usuario, nombreUsuario: $nombreUsuario, idiomaId: $idiomaId, modificarPedido: $modificarPedido, verTotalVentas: $verTotalVentas)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UsuarioDTO &&
+            other is _$_UsuarioAuxDTO &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.usuario, usuario) || other.usuario == usuario) &&
-            (identical(other.contrasenya, contrasenya) ||
-                other.contrasenya == contrasenya) &&
             (identical(other.nombreUsuario, nombreUsuario) ||
                 other.nombreUsuario == nombreUsuario) &&
-            (identical(other.provisionalToken, provisionalToken) ||
-                other.provisionalToken == provisionalToken) &&
-            (identical(other.refreshToken, refreshToken) ||
-                other.refreshToken == refreshToken) &&
-            (identical(other.test, test) || other.test == test) &&
             (identical(other.idiomaId, idiomaId) ||
                 other.idiomaId == idiomaId) &&
             (identical(other.modificarPedido, modificarPedido) ||
@@ -306,53 +227,38 @@ class _$_UsuarioDTO extends _UsuarioDTO {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      usuario,
-      contrasenya,
-      nombreUsuario,
-      provisionalToken,
-      refreshToken,
-      test,
-      idiomaId,
-      modificarPedido,
-      verTotalVentas);
+  int get hashCode => Object.hash(runtimeType, id, usuario, nombreUsuario,
+      idiomaId, modificarPedido, verTotalVentas);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UsuarioDTOCopyWith<_$_UsuarioDTO> get copyWith =>
-      __$$_UsuarioDTOCopyWithImpl<_$_UsuarioDTO>(this, _$identity);
+  _$$_UsuarioAuxDTOCopyWith<_$_UsuarioAuxDTO> get copyWith =>
+      __$$_UsuarioAuxDTOCopyWithImpl<_$_UsuarioAuxDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UsuarioDTOToJson(
+    return _$$_UsuarioAuxDTOToJson(
       this,
     );
   }
 }
 
-abstract class _UsuarioDTO extends UsuarioDTO {
-  const factory _UsuarioDTO(
+abstract class _UsuarioAuxDTO extends UsuarioAuxDTO {
+  const factory _UsuarioAuxDTO(
       {@JsonKey(name: 'USUARIO_ID') required final String id,
       @JsonKey(name: 'USUARIO') required final String usuario,
-      @JsonKey(name: 'CLAVE') required final String contrasenya,
       @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')
       required final String? nombreUsuario,
-      @JsonKey(name: 'PROVISIONAL_TOKEN')
-      required final String provisionalToken,
-      @JsonKey(name: 'REFRESH_TOKEN') final String? refreshToken,
-      @JsonKey(name: 'TEST') required final String test,
       @JsonKey(name: 'IDIOMA_ID') required final String idiomaId,
       @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')
       required final String modificarPedido,
       @JsonKey(name: 'APP_VER_TOTAL_VENTAS')
-      required final String verTotalVentas}) = _$_UsuarioDTO;
-  const _UsuarioDTO._() : super._();
+      required final String verTotalVentas}) = _$_UsuarioAuxDTO;
+  const _UsuarioAuxDTO._() : super._();
 
-  factory _UsuarioDTO.fromJson(Map<String, dynamic> json) =
-      _$_UsuarioDTO.fromJson;
+  factory _UsuarioAuxDTO.fromJson(Map<String, dynamic> json) =
+      _$_UsuarioAuxDTO.fromJson;
 
   @override
   @JsonKey(name: 'USUARIO_ID')
@@ -361,20 +267,8 @@ abstract class _UsuarioDTO extends UsuarioDTO {
   @JsonKey(name: 'USUARIO')
   String get usuario;
   @override
-  @JsonKey(name: 'CLAVE')
-  String get contrasenya;
-  @override
   @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')
   String? get nombreUsuario;
-  @override
-  @JsonKey(name: 'PROVISIONAL_TOKEN')
-  String get provisionalToken;
-  @override
-  @JsonKey(name: 'REFRESH_TOKEN')
-  String? get refreshToken;
-  @override
-  @JsonKey(name: 'TEST')
-  String get test;
   @override
   @JsonKey(name: 'IDIOMA_ID')
   String get idiomaId;
@@ -386,6 +280,6 @@ abstract class _UsuarioDTO extends UsuarioDTO {
   String get verTotalVentas;
   @override
   @JsonKey(ignore: true)
-  _$$_UsuarioDTOCopyWith<_$_UsuarioDTO> get copyWith =>
+  _$$_UsuarioAuxDTOCopyWith<_$_UsuarioAuxDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }

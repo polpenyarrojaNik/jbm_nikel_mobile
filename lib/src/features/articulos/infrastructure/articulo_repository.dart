@@ -12,6 +12,7 @@ import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_recambio
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_documento_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_grupo_neto_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_pedido_venta_linea_dto.dart';
+import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_ventas_mes_todos_dto.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../../../core/domain/adjunto_param.dart';
@@ -156,6 +157,7 @@ final articuloVentasMesProvider = FutureProvider.autoDispose
   return articuloRepository.getVentasMesById(
     articuloId: articuloId,
     usuarioId: usuario!.id,
+    verTotalVentas: usuario.verTotalVentas,
   );
 });
 
@@ -741,9 +743,10 @@ SELECT *
   Future<List<ArticuloVentasMes>> getVentasMesById({
     required String articuloId,
     required String usuarioId,
+    required bool verTotalVentas,
   }) async {
     try {
-      final query =
+      final queryVentasMes =
           await _remoteDb.customSelect(_getVentasMesCustomSelect(), variables: [
         Variable(articuloId),
         Variable(usuarioId),
@@ -751,7 +754,31 @@ SELECT *
         _remoteDb.estadisticasClienteUsuarioVentasTable,
       }).get();
 
-      return query.map((row) {
+      if (verTotalVentas) {
+        final List<ArticuloVentasMes> articuloVentaMesList = [];
+
+        final queryVentasMesTodos = await _remoteDb
+            .customSelect(_getVentasMesAllCustomSelect(), variables: [
+          Variable(articuloId),
+          Variable(usuarioId),
+        ], readsFrom: {
+          _remoteDb.estadisticasClienteUsuarioVentasTable,
+        }).get();
+
+        final ventasMesTodos = queryVentasMesTodos.map((row) {
+          return ArticuloVentasMesTodosDTO.fromJson(row.data).toDomain();
+        }).toList();
+
+        for (var i = 0; i < queryVentasMes.length; i++) {
+          articuloVentaMesList.add(
+              ArticuloVentasMesDTO.fromJson(queryVentasMes[i].data)
+                  .toDomain(articulosVentasMesTodos: ventasMesTodos[i]));
+        }
+
+        return articuloVentaMesList;
+      }
+
+      return queryVentasMes.map((row) {
         return ArticuloVentasMesDTO.fromJson(row.data).toDomain();
       }).toList();
     } catch (e) {
@@ -881,7 +908,94 @@ WHERE  articulo_id = :articuloId
 )
 GROUP BY mes
 ''';
+    print('VENTAS-MES SELECT: $select');
 
+    return select;
+  }
+
+  String _getVentasMesAllCustomSelect() {
+    String select = '''
+SELECT mes MES
+        , SUM(unidades_anyo_todos_0) UNIDADES_ANYO_TODOS
+        , SUM(unidades_anyo_todos_1) UNIDADES_ANYO_TODOS_1
+        , SUM(unidades_anyo_todos_2) UNIDADES_ANYO_TODOS_2
+        , SUM(unidades_anyo_todos_3) UNIDADES_ANYO_TODOS_3
+        , SUM(unidades_anyo_todos_4) UNIDADES_ANYO_TODOS_4
+FROM (  
+  ''';
+    for (var mes = 1; mes <= 12; mes++) {
+      if (mes != 1) {
+        select += ' UNION ALL ';
+      }
+
+      select += '''
+SELECT $mes          mes,
+       Sum(unidades) unidades_anyo_todos_0,
+       0             unidades_anyo_todos_1,
+       0             unidades_anyo_todos_2,
+       0             unidades_anyo_todos_3,
+       0             unidades_anyo_todos_4
+FROM   estadisticas_venta
+WHERE  articulo_id = :articuloId
+       AND anyo = Strftime('%Y', Date())
+       AND mes = $mes
+       AND EXISTS (SELECT *
+                   FROM   clientes_usuario
+                   WHERE  clientes_usuario.cliente_id =
+                          estadisticas_venta.cliente_id
+                          AND clientes_usuario.usuario_id = :usuarioId)
+UNION ALL
+SELECT $mes          mes,
+       0             unidades_anyo_todos_0,
+       Sum(unidades) unidades_anyo_todos_1,
+       0             unidades_anyo_todos_2,
+       0             unidades_anyo_todos_3,
+       0             unidades_anyo_todos_4
+FROM   estadisticas_venta
+WHERE  articulo_id = :articuloId
+       AND anyo = Strftime('%Y', Date()) - 1
+       AND mes = $mes
+UNION ALL
+SELECT $mes          mes,
+       0             unidades_anyo_todos_0,
+       0             unidades_anyo_todos_1,
+       Sum(unidades) unidades_anyo_todos_2,
+       0             unidades_anyo_todos_3,
+       0             unidades_anyo_todos_4
+FROM   estadisticas_venta
+WHERE  articulo_id = :articuloId
+       AND anyo = Strftime('%Y', Date()) - 2
+       AND mes = $mes
+UNION ALL
+SELECT $mes          mes,
+       0             unidades_anyo_todos_0,
+       0             unidades_anyo_todos_1,
+       0             unidades_anyo_todos_2,
+       Sum(unidades) unidades_anyo_todos_3,
+       0             unidades_anyo_todos_4
+FROM   estadisticas_venta
+WHERE  articulo_id = :articuloId
+       AND anyo = Strftime('%Y', Date()) - 3
+       AND mes = $mes
+UNION ALL
+SELECT $mes          mes,
+       0             unidades_anyo_todos_0,
+       0             unidades_anyo_todos_1,
+       0             unidades_anyo_todos_2,
+       0             unidades_anyo_todos_3,
+       Sum(unidades) unidades_anyo_todos_4
+FROM   estadisticas_venta
+WHERE  articulo_id = :articuloId
+       AND anyo = Strftime('%Y', Date()) - 4
+       AND mes = $mes
+''';
+    }
+    select += '''
+)
+GROUP BY mes
+''';
+
+    print('ALL SELECT: $select');
     return select;
   }
 

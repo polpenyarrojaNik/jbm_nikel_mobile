@@ -96,6 +96,7 @@ const kUsuario = Usuario(
   test: true,
   idiomaId: 'ES',
   modificarPedido: true,
+  verTotalVentas: true,
 );
 
 final kArticuloGrupoNetoDTO = ArticuloGrupoNetoDTO(

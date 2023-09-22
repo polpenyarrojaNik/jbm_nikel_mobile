@@ -84,6 +84,7 @@ class UsuarioService {
           nombreUsuario: userDto.nombreUsuario,
           idiomaId: userDto.idiomaId,
           modificarPedido: userDto.modificarPedido,
+          verTotalVentas: userDto.verTotalVentas,
         );
         await _localUsuarioRepository.save(usuarioDto);
       }

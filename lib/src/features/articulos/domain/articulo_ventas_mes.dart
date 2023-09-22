@@ -12,5 +12,10 @@ class ArticuloVentasMes with _$ArticuloVentasMes {
     required int unidadesAnyo_2,
     required int unidadesAnyo_3,
     required int unidadesAnyo_4,
+    int? unidadesAnyoTodos,
+    int? unidadesAnyoTodos_1,
+    int? unidadesAnyoTodos_2,
+    int? unidadesAnyoTodos_3,
+    int? unidadesAnyoTodos_4,
   }) = _ArticuloVentasMes;
 }
