@@ -147,9 +147,10 @@ class $PaisTableTable extends PaisTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'PAISES';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'PAISES';
+  String get actualTableName => $name;
+  static const String $name = 'PAISES';
   @override
   VerificationContext validateIntegrity(Insertable<PaisDTO> instance,
       {bool isInserting = false}) {
@@ -734,9 +735,10 @@ class $DivisaTableTable extends DivisaTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'DIVISAS';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'DIVISAS';
+  String get actualTableName => $name;
+  static const String $name = 'DIVISAS';
   @override
   VerificationContext validateIntegrity(Insertable<DivisaDTO> instance,
       {bool isInserting = false}) {
@@ -1331,9 +1333,10 @@ class $PedidoVentaEstadoTableTable extends PedidoVentaEstadoTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'PEDIDOS_ESTADOS';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'PEDIDOS_ESTADOS';
+  String get actualTableName => $name;
+  static const String $name = 'PEDIDOS_ESTADOS';
   @override
   VerificationContext validateIntegrity(
       Insertable<PedidoVentaEstadoDTO> instance,
@@ -1949,9 +1952,10 @@ class $PedidoVentaTableTable extends PedidoVentaTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'PEDIDOS';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'PEDIDOS';
+  String get actualTableName => $name;
+  static const String $name = 'PEDIDOS';
   @override
   VerificationContext validateIntegrity(Insertable<PedidoVentaDTO> instance,
       {bool isInserting = false}) {
@@ -2635,9 +2639,10 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'PEDIDOS_LINEAS';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'PEDIDOS_LINEAS';
+  String get actualTableName => $name;
+  static const String $name = 'PEDIDOS_LINEAS';
   @override
   VerificationContext validateIntegrity(
       Insertable<PedidoVentaLineaDTO> instance,
@@ -3182,9 +3187,10 @@ class $PlazoDeCobroTableTable extends PlazoDeCobroTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'PLAZOS_COBRO';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'PLAZOS_COBRO';
+  String get actualTableName => $name;
+  static const String $name = 'PLAZOS_COBRO';
   @override
   VerificationContext validateIntegrity(Insertable<PlazoDeCobroDTO> instance,
       {bool isInserting = false}) {
@@ -3732,9 +3738,10 @@ class $MetodoDeCobroTableTable extends MetodoDeCobroTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'METODOS_COBRO';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'METODOS_COBRO';
+  String get actualTableName => $name;
+  static const String $name = 'METODOS_COBRO';
   @override
   VerificationContext validateIntegrity(Insertable<MetodoDeCobroDTO> instance,
       {bool isInserting = false}) {
@@ -4534,9 +4541,10 @@ class $ClienteTableTable extends ClienteTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'CLIENTES';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'CLIENTES';
+  String get actualTableName => $name;
+  static const String $name = 'CLIENTES';
   @override
   VerificationContext validateIntegrity(Insertable<ClienteDTO> instance,
       {bool isInserting = false}) {
@@ -5733,9 +5741,10 @@ class $ClienteUsuarioTableTable extends ClienteUsuarioTable
   List<GeneratedColumn> get $columns =>
       [clienteId, usuarioId, lastUpdated, deleted];
   @override
-  String get aliasedName => _alias ?? 'CLIENTES_USUARIO';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'CLIENTES_USUARIO';
+  String get actualTableName => $name;
+  static const String $name = 'CLIENTES_USUARIO';
   @override
   VerificationContext validateIntegrity(Insertable<ClienteUsuarioDTO> instance,
       {bool isInserting = false}) {
@@ -5932,9 +5941,10 @@ class $ClienteGrupoNetoTableTable extends ClienteGrupoNetoTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'CLIENTES_GRUPOS_NETOS';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'CLIENTES_GRUPOS_NETOS';
+  String get actualTableName => $name;
+  static const String $name = 'CLIENTES_GRUPOS_NETOS';
   @override
   VerificationContext validateIntegrity(
       Insertable<ClienteGrupoNetoDTO> instance,
@@ -6265,9 +6275,10 @@ class $FamiliaTableTable extends FamiliaTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'FAMILIAS';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'FAMILIAS';
+  String get actualTableName => $name;
+  static const String $name = 'FAMILIAS';
   @override
   VerificationContext validateIntegrity(Insertable<FamiliaDTO> instance,
       {bool isInserting = false}) {
@@ -6822,9 +6833,10 @@ class $SubfamiliaTableTable extends SubfamiliaTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'SUBFAMILIAS';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'SUBFAMILIAS';
+  String get actualTableName => $name;
+  static const String $name = 'SUBFAMILIAS';
   @override
   VerificationContext validateIntegrity(Insertable<SubfamiliaDTO> instance,
       {bool isInserting = false}) {
@@ -7329,9 +7341,10 @@ class $ClienteDescuentoTableTable extends ClienteDescuentoTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'CLIENTES_DESCUENTOS';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'CLIENTES_DESCUENTOS';
+  String get actualTableName => $name;
+  static const String $name = 'CLIENTES_DESCUENTOS';
   @override
   VerificationContext validateIntegrity(
       Insertable<ClienteDescuentoDTO> instance,
@@ -7650,9 +7663,10 @@ class $ClienteContactoTableTable extends ClienteContactoTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'CLIENTES_CONTACTOS';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'CLIENTES_CONTACTOS';
+  String get actualTableName => $name;
+  static const String $name = 'CLIENTES_CONTACTOS';
   @override
   VerificationContext validateIntegrity(Insertable<ClienteContactoDTO> instance,
       {bool isInserting = false}) {
@@ -8030,9 +8044,10 @@ class $ClienteDireccionTableTable extends ClienteDireccionTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'CLIENTES_DIRECCIONES_ENVIO';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'CLIENTES_DIRECCIONES_ENVIO';
+  String get actualTableName => $name;
+  static const String $name = 'CLIENTES_DIRECCIONES_ENVIO';
   @override
   VerificationContext validateIntegrity(
       Insertable<ClienteDireccionDTO> instance,
@@ -8462,9 +8477,10 @@ class $ClientePagoPendienteTableTable extends ClientePagoPendienteTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'CLIENTES_PAGOS_PENDIENTES';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'CLIENTES_PAGOS_PENDIENTES';
+  String get actualTableName => $name;
+  static const String $name = 'CLIENTES_PAGOS_PENDIENTES';
   @override
   VerificationContext validateIntegrity(
       Insertable<ClientePagoPendienteDTO> instance,
@@ -8829,9 +8845,10 @@ class $ClientePrecioNetoTableTable extends ClientePrecioNetoTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'CLIENTES_PRECIOS_NETOS';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'CLIENTES_PRECIOS_NETOS';
+  String get actualTableName => $name;
+  static const String $name = 'CLIENTES_PRECIOS_NETOS';
   @override
   VerificationContext validateIntegrity(
       Insertable<ClientePrecioNetoDTO> instance,
@@ -9134,9 +9151,10 @@ class $ClienteRappelTableTable extends ClienteRappelTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'CLIENTES_RAPPELS';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'CLIENTES_RAPPELS';
+  String get actualTableName => $name;
+  static const String $name = 'CLIENTES_RAPPELS';
   @override
   VerificationContext validateIntegrity(Insertable<ClienteRappelDTO> instance,
       {bool isInserting = false}) {
@@ -9517,9 +9535,10 @@ class $ClienteEstadoPotencialTableTable extends ClienteEstadoPotencialTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'CLIENTES_ESTADOS_POTENCIAL';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'CLIENTES_ESTADOS_POTENCIAL';
+  String get actualTableName => $name;
+  static const String $name = 'CLIENTES_ESTADOS_POTENCIAL';
   @override
   VerificationContext validateIntegrity(
       Insertable<ClienteEstadoPotencialDTO> instance,
@@ -10070,9 +10089,10 @@ class $ClienteTipoPotencialTableTable extends ClienteTipoPotencialTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'CLIENTES_TIPOS_POTENCIAL';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'CLIENTES_TIPOS_POTENCIAL';
+  String get actualTableName => $name;
+  static const String $name = 'CLIENTES_TIPOS_POTENCIAL';
   @override
   VerificationContext validateIntegrity(
       Insertable<ClienteTipoPotencialDTO> instance,
@@ -10517,9 +10537,10 @@ class $EstadisticasArticulosTopTableTable extends EstadisticasArticulosTopTable
   @override
   List<GeneratedColumn> get $columns => [articuloId, lastUpdated, deleted];
   @override
-  String get aliasedName => _alias ?? 'ESTADISTICAS_ARTICULOS_TOP';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'ESTADISTICAS_ARTICULOS_TOP';
+  String get actualTableName => $name;
+  static const String $name = 'ESTADISTICAS_ARTICULOS_TOP';
   @override
   VerificationContext validateIntegrity(
       Insertable<EstadisitcasArticulosTopDTO> instance,
@@ -11138,9 +11159,10 @@ class $ArticuloTableTable extends ArticuloTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'ARTICULOS';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'ARTICULOS';
+  String get actualTableName => $name;
+  static const String $name = 'ARTICULOS';
   @override
   VerificationContext validateIntegrity(Insertable<ArticuloDTO> instance,
       {bool isInserting = false}) {
@@ -12710,9 +12732,10 @@ class $ArticuloComponenteTableTable extends ArticuloComponenteTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'ARTICULOS_COMPONENTES';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'ARTICULOS_COMPONENTES';
+  String get actualTableName => $name;
+  static const String $name = 'ARTICULOS_COMPONENTES';
   @override
   VerificationContext validateIntegrity(
       Insertable<ArticuloComponenteDTO> instance,
@@ -13213,9 +13236,10 @@ class $ArticuloEmpresaIvaTableTable extends ArticuloEmpresaIvaTable
   List<GeneratedColumn> get $columns =>
       [articuloId, empresaId, iva, lastUpdated, deleted];
   @override
-  String get aliasedName => _alias ?? 'ARTICULOS_EMPRESAS_IVA';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'ARTICULOS_EMPRESAS_IVA';
+  String get actualTableName => $name;
+  static const String $name = 'ARTICULOS_EMPRESAS_IVA';
   @override
   VerificationContext validateIntegrity(
       Insertable<ArticuloEmpresaIvaDTO> instance,
@@ -13429,9 +13453,10 @@ class $ArticuloRecambioTableTable extends ArticuloRecambioTable
   List<GeneratedColumn> get $columns =>
       [articuloId, id, descripcion, cantidad, lastUpdated, deleted];
   @override
-  String get aliasedName => _alias ?? 'ARTICULOS_RECAMBIOS';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'ARTICULOS_RECAMBIOS';
+  String get actualTableName => $name;
+  static const String $name = 'ARTICULOS_RECAMBIOS';
   @override
   VerificationContext validateIntegrity(
       Insertable<ArticuloRecambioDTO> instance,
@@ -13661,9 +13686,10 @@ class $ArticuloSustitutivoTableTable extends ArticuloSustitutivoTable
   List<GeneratedColumn> get $columns =>
       [articuloId, articuloSustitutivoId, orden, lastUpdated, deleted];
   @override
-  String get aliasedName => _alias ?? 'ARTICULOS_SUSTITUTIVOS';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'ARTICULOS_SUSTITUTIVOS';
+  String get actualTableName => $name;
+  static const String $name = 'ARTICULOS_SUSTITUTIVOS';
   @override
   VerificationContext validateIntegrity(
       Insertable<ArticuloSustitutivoDTO> instance,
@@ -13910,9 +13936,10 @@ class $ArticuloPrecioTarifaTableTable extends ArticuloPrecioTarifaTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'ARTICULOS_TARIFA_PRECIO';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'ARTICULOS_TARIFA_PRECIO';
+  String get actualTableName => $name;
+  static const String $name = 'ARTICULOS_TARIFA_PRECIO';
   @override
   VerificationContext validateIntegrity(
       Insertable<ArticuloPrecioTarifaDTO> instance,
@@ -14237,9 +14264,10 @@ class $ArticuloGrupoNetoTableTable extends ArticuloGrupoNetoTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'ARTICULOS_GRUPOS_NETOS_PRECIO';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'ARTICULOS_GRUPOS_NETOS_PRECIO';
+  String get actualTableName => $name;
+  static const String $name = 'ARTICULOS_GRUPOS_NETOS_PRECIO';
   @override
   VerificationContext validateIntegrity(
       Insertable<ArticuloGrupoNetoDTO> instance,
@@ -14574,9 +14602,10 @@ class $EstadisticasClienteUsuarioVentasTableTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'ESTADISTICAS_VENTA';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'ESTADISTICAS_VENTA';
+  String get actualTableName => $name;
+  static const String $name = 'ESTADISTICAS_VENTA';
   @override
   VerificationContext validateIntegrity(
       Insertable<EstadisticasVentaClienteUsuarioDTO> instance,
@@ -14919,9 +14948,10 @@ class $EstadisticasUltimosPreciosTableTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'ULTIMOS_PRECIOS';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'ULTIMOS_PRECIOS';
+  String get actualTableName => $name;
+  static const String $name = 'ULTIMOS_PRECIOS';
   @override
   VerificationContext validateIntegrity(
       Insertable<EstadisticasUltimosPreciosDTO> instance,
@@ -15395,9 +15425,10 @@ class $VisitaTableTable extends VisitaTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'VISITAS';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'VISITAS';
+  String get actualTableName => $name;
+  static const String $name = 'VISITAS';
   @override
   VerificationContext validateIntegrity(Insertable<VisitaDTO> instance,
       {bool isInserting = false}) {
@@ -15895,9 +15926,10 @@ class $PedidoAlbaranTableTable extends PedidoAlbaranTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'PEDIDOS_ALBARANES';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'PEDIDOS_ALBARANES';
+  String get actualTableName => $name;
+  static const String $name = 'PEDIDOS_ALBARANES';
   @override
   VerificationContext validateIntegrity(Insertable<PedidoAlbaranDTO> instance,
       {bool isInserting = false}) {
@@ -16186,9 +16218,10 @@ class $DescuentoGeneralTableTable extends DescuentoGeneralTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'DESCUENTO_GENERAL';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'DESCUENTO_GENERAL';
+  String get actualTableName => $name;
+  static const String $name = 'DESCUENTO_GENERAL';
   @override
   VerificationContext validateIntegrity(
       Insertable<DescuentoGeneralDTO> instance,
@@ -16553,9 +16586,10 @@ class $DevolucionTipoTableTable extends DevolucionTipoTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'DEVOLUCIONES_TIPOS';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'DEVOLUCIONES_TIPOS';
+  String get actualTableName => $name;
+  static const String $name = 'DEVOLUCIONES_TIPOS';
   @override
   VerificationContext validateIntegrity(Insertable<DevolucionTipoDTO> instance,
       {bool isInserting = false}) {
@@ -17077,9 +17111,10 @@ class $DevolucionMotivoTableTable extends DevolucionMotivoTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'DEVOLUCIONES_MOTIVOS';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'DEVOLUCIONES_MOTIVOS';
+  String get actualTableName => $name;
+  static const String $name = 'DEVOLUCIONES_MOTIVOS';
   @override
   VerificationContext validateIntegrity(
       Insertable<DevolucionMotivoDTO> instance,
@@ -17603,9 +17638,10 @@ class $DevolucionEstadoTableTable extends DevolucionEstadoTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'DEVOLUCIONES_ESTADOS';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'DEVOLUCIONES_ESTADOS';
+  String get actualTableName => $name;
+  static const String $name = 'DEVOLUCIONES_ESTADOS';
   @override
   VerificationContext validateIntegrity(
       Insertable<DevolucionEstadoDTO> instance,
@@ -18081,9 +18117,10 @@ class $DevolucionLineaTableTable extends DevolucionLineaTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'DEVOLUCIONES_LINEAS';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'DEVOLUCIONES_LINEAS';
+  String get actualTableName => $name;
+  static const String $name = 'DEVOLUCIONES_LINEAS';
   @override
   VerificationContext validateIntegrity(Insertable<DevolucionLineaDTO> instance,
       {bool isInserting = false}) {
@@ -18486,9 +18523,10 @@ class $DevolucionTableTable extends DevolucionTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'DEVOLUCIONES';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'DEVOLUCIONES';
+  String get actualTableName => $name;
+  static const String $name = 'DEVOLUCIONES';
   @override
   VerificationContext validateIntegrity(Insertable<DevolucionDTO> instance,
       {bool isInserting = false}) {
@@ -18947,9 +18985,10 @@ class $ProvinciaTableTable extends ProvinciaTable
   List<GeneratedColumn> get $columns =>
       [paisId, regionId, provinciaId, provincia, lastUpdated, deleted];
   @override
-  String get aliasedName => _alias ?? 'PROVINCIAS';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'PROVINCIAS';
+  String get actualTableName => $name;
+  static const String $name = 'PROVINCIAS';
   @override
   VerificationContext validateIntegrity(Insertable<ProvinciaDTO> instance,
       {bool isInserting = false}) {

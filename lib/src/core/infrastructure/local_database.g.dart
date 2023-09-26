@@ -185,9 +185,10 @@ class $VisitaLocalTableTable extends VisitaLocalTable
         errorSyncMessage
       ];
   @override
-  String get aliasedName => _alias ?? 'VISITAS_LOCAL_IMP';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'VISITAS_LOCAL_IMP';
+  String get actualTableName => $name;
+  static const String $name = 'VISITAS_LOCAL_IMP';
   @override
   VerificationContext validateIntegrity(Insertable<VisitaLocalDTO> instance,
       {bool isInserting = false}) {
@@ -886,9 +887,10 @@ class $PedidoVentaLineaLocalTableTable extends PedidoVentaLineaLocalTable
         iva
       ];
   @override
-  String get aliasedName => _alias ?? 'PEDIDOS_LINEAS_LOCAL_IMP';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'PEDIDOS_LINEAS_LOCAL_IMP';
+  String get actualTableName => $name;
+  static const String $name = 'PEDIDOS_LINEAS_LOCAL_IMP';
   @override
   VerificationContext validateIntegrity(
       Insertable<PedidoVentaLineaLocalDTO> instance,
@@ -1472,9 +1474,10 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
         errorSyncMessage
       ];
   @override
-  String get aliasedName => _alias ?? 'PEDIDOS_LOCAL_IMP';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'PEDIDOS_LOCAL_IMP';
+  String get actualTableName => $name;
+  static const String $name = 'PEDIDOS_LOCAL_IMP';
   @override
   VerificationContext validateIntegrity(
       Insertable<PedidoVentaLocalDTO> instance,
@@ -2061,9 +2064,10 @@ class $SyncDateTimeTableTable extends SyncDateTimeTable
         visitaUltimaSync
       ];
   @override
-  String get aliasedName => _alias ?? 'SYNC_DATETIME';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'SYNC_DATETIME';
+  String get actualTableName => $name;
+  static const String $name = 'SYNC_DATETIME';
   @override
   VerificationContext validateIntegrity(Insertable<SyncDateTimeDTO> instance,
       {bool isInserting = false}) {
@@ -2338,9 +2342,10 @@ class $LogTableTable extends LogTable with TableInfo<$LogTableTable, LogDTO> {
         timestamp
       ];
   @override
-  String get aliasedName => _alias ?? 'LOG';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'LOG';
+  String get actualTableName => $name;
+  static const String $name = 'LOG';
   @override
   VerificationContext validateIntegrity(Insertable<LogDTO> instance,
       {bool isInserting = false}) {
@@ -2643,9 +2648,10 @@ class $CatalogoFavoritoTableTable extends CatalogoFavoritoTable
   @override
   List<GeneratedColumn> get $columns => [id, catalogoId];
   @override
-  String get aliasedName => _alias ?? 'CATALOGO_FAVORITO';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'CATALOGO_FAVORITO';
+  String get actualTableName => $name;
+  static const String $name = 'CATALOGO_FAVORITO';
   @override
   VerificationContext validateIntegrity(
       Insertable<CatalogoFavoritoDTO> instance,
@@ -2844,9 +2850,10 @@ class $ClienteContactoImpTableTable extends ClienteContactoImpTable
         borrar
       ];
   @override
-  String get aliasedName => _alias ?? 'CLIENTES_CONTACTOS_IMP';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'CLIENTES_CONTACTOS_IMP';
+  String get actualTableName => $name;
+  static const String $name = 'CLIENTES_CONTACTOS_IMP';
   @override
   VerificationContext validateIntegrity(
       Insertable<ClienteContactoImpDTO> instance,
@@ -3272,9 +3279,10 @@ class $ClienteDireccionImpTableTable extends ClienteDireccionImpTable
         borrar
       ];
   @override
-  String get aliasedName => _alias ?? 'CLIENTES_DIRECCIONES_ENVIO_IMP';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'CLIENTES_DIRECCIONES_ENVIO_IMP';
+  String get actualTableName => $name;
+  static const String $name = 'CLIENTES_DIRECCIONES_ENVIO_IMP';
   @override
   VerificationContext validateIntegrity(
       Insertable<ClienteDireccionImpDTO> instance,
