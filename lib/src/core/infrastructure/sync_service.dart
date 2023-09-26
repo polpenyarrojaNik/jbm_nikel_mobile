@@ -130,8 +130,8 @@ class SyncService {
       await syncDescuentoGeneral();
       if (isInMainThread) {
         await syncAllAuxiliares();
-        await saveLastSyncDateTimeInArticulos();
       }
+      await saveLastSyncDateTimeInArticulos();
     } catch (e) {
       rethrow;
     }
@@ -161,8 +161,8 @@ class SyncService {
 
       if (isInMainThread) {
         await syncAllAuxiliares();
-        await saveLastSyncDateTimeInClientes();
       }
+      await saveLastSyncDateTimeInClientes();
     } catch (e) {
       rethrow;
     }
@@ -182,8 +182,8 @@ class SyncService {
 
       if (isInMainThread) {
         await syncAllAuxiliares();
-        await saveLastSyncDateTimeInPedidos();
       }
+      await saveLastSyncDateTimeInPedidos();
     } catch (e) {
       rethrow;
     }
@@ -196,8 +196,8 @@ class SyncService {
     await checkVisitasTratadas();
     if (isInMainThread) {
       await syncAllAuxiliares();
-      await saveLastSyncDateTimeInVisitas();
     }
+    await saveLastSyncDateTimeInVisitas();
   }
 
   Future<void> syncAllAuxiliares() async {
@@ -624,7 +624,6 @@ class SyncService {
         tableInfo: _remoteDb.pedidoVentaTable,
         fromJson: (e) => PedidoVentaDTO.fromJson(e),
       );
-      // await saveLastSyncInSharedPreferences(pedidoVentaFechaUltimaSyncKey);
     } on AppException catch (e) {
       log.e(e.details);
       rethrow;
