@@ -63,22 +63,22 @@ class _$IdiomaCatalogoCopyWithImpl<$Res, $Val extends IdiomaCatalogo>
 }
 
 /// @nodoc
-abstract class _$$_IdiomaCatalogoCopyWith<$Res>
+abstract class _$$IdiomaCatalogoImplCopyWith<$Res>
     implements $IdiomaCatalogoCopyWith<$Res> {
-  factory _$$_IdiomaCatalogoCopyWith(
-          _$_IdiomaCatalogo value, $Res Function(_$_IdiomaCatalogo) then) =
-      __$$_IdiomaCatalogoCopyWithImpl<$Res>;
+  factory _$$IdiomaCatalogoImplCopyWith(_$IdiomaCatalogoImpl value,
+          $Res Function(_$IdiomaCatalogoImpl) then) =
+      __$$IdiomaCatalogoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String idiomaId, String descripcion});
 }
 
 /// @nodoc
-class __$$_IdiomaCatalogoCopyWithImpl<$Res>
-    extends _$IdiomaCatalogoCopyWithImpl<$Res, _$_IdiomaCatalogo>
-    implements _$$_IdiomaCatalogoCopyWith<$Res> {
-  __$$_IdiomaCatalogoCopyWithImpl(
-      _$_IdiomaCatalogo _value, $Res Function(_$_IdiomaCatalogo) _then)
+class __$$IdiomaCatalogoImplCopyWithImpl<$Res>
+    extends _$IdiomaCatalogoCopyWithImpl<$Res, _$IdiomaCatalogoImpl>
+    implements _$$IdiomaCatalogoImplCopyWith<$Res> {
+  __$$IdiomaCatalogoImplCopyWithImpl(
+      _$IdiomaCatalogoImpl _value, $Res Function(_$IdiomaCatalogoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_IdiomaCatalogoCopyWithImpl<$Res>
     Object? idiomaId = null,
     Object? descripcion = null,
   }) {
-    return _then(_$_IdiomaCatalogo(
+    return _then(_$IdiomaCatalogoImpl(
       idiomaId: null == idiomaId
           ? _value.idiomaId
           : idiomaId // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,9 @@ class __$$_IdiomaCatalogoCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_IdiomaCatalogo extends _IdiomaCatalogo {
-  const _$_IdiomaCatalogo({required this.idiomaId, required this.descripcion})
+class _$IdiomaCatalogoImpl extends _IdiomaCatalogo {
+  const _$IdiomaCatalogoImpl(
+      {required this.idiomaId, required this.descripcion})
       : super._();
 
   @override
@@ -120,7 +121,7 @@ class _$_IdiomaCatalogo extends _IdiomaCatalogo {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_IdiomaCatalogo &&
+            other is _$IdiomaCatalogoImpl &&
             (identical(other.idiomaId, idiomaId) ||
                 other.idiomaId == idiomaId) &&
             (identical(other.descripcion, descripcion) ||
@@ -133,14 +134,15 @@ class _$_IdiomaCatalogo extends _IdiomaCatalogo {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_IdiomaCatalogoCopyWith<_$_IdiomaCatalogo> get copyWith =>
-      __$$_IdiomaCatalogoCopyWithImpl<_$_IdiomaCatalogo>(this, _$identity);
+  _$$IdiomaCatalogoImplCopyWith<_$IdiomaCatalogoImpl> get copyWith =>
+      __$$IdiomaCatalogoImplCopyWithImpl<_$IdiomaCatalogoImpl>(
+          this, _$identity);
 }
 
 abstract class _IdiomaCatalogo extends IdiomaCatalogo {
   const factory _IdiomaCatalogo(
       {required final String idiomaId,
-      required final String descripcion}) = _$_IdiomaCatalogo;
+      required final String descripcion}) = _$IdiomaCatalogoImpl;
   const _IdiomaCatalogo._() : super._();
 
   @override
@@ -149,6 +151,6 @@ abstract class _IdiomaCatalogo extends IdiomaCatalogo {
   String get descripcion;
   @override
   @JsonKey(ignore: true)
-  _$$_IdiomaCatalogoCopyWith<_$_IdiomaCatalogo> get copyWith =>
+  _$$IdiomaCatalogoImplCopyWith<_$IdiomaCatalogoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

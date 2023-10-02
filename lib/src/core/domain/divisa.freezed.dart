@@ -98,9 +98,10 @@ class _$DivisaCopyWithImpl<$Res, $Val extends Divisa>
 }
 
 /// @nodoc
-abstract class _$$_DivisaCopyWith<$Res> implements $DivisaCopyWith<$Res> {
-  factory _$$_DivisaCopyWith(_$_Divisa value, $Res Function(_$_Divisa) then) =
-      __$$_DivisaCopyWithImpl<$Res>;
+abstract class _$$DivisaImplCopyWith<$Res> implements $DivisaCopyWith<$Res> {
+  factory _$$DivisaImplCopyWith(
+          _$DivisaImpl value, $Res Function(_$DivisaImpl) then) =
+      __$$DivisaImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -114,10 +115,11 @@ abstract class _$$_DivisaCopyWith<$Res> implements $DivisaCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_DivisaCopyWithImpl<$Res>
-    extends _$DivisaCopyWithImpl<$Res, _$_Divisa>
-    implements _$$_DivisaCopyWith<$Res> {
-  __$$_DivisaCopyWithImpl(_$_Divisa _value, $Res Function(_$_Divisa) _then)
+class __$$DivisaImplCopyWithImpl<$Res>
+    extends _$DivisaCopyWithImpl<$Res, _$DivisaImpl>
+    implements _$$DivisaImplCopyWith<$Res> {
+  __$$DivisaImplCopyWithImpl(
+      _$DivisaImpl _value, $Res Function(_$DivisaImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -131,7 +133,7 @@ class __$$_DivisaCopyWithImpl<$Res>
     Object? lastUpdate = null,
     Object? deleted = null,
   }) {
-    return _then(_$_Divisa(
+    return _then(_$DivisaImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -166,8 +168,8 @@ class __$$_DivisaCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Divisa extends _Divisa {
-  const _$_Divisa(
+class _$DivisaImpl extends _Divisa {
+  const _$DivisaImpl(
       {required this.id,
       required this.abv,
       required this.simbolo,
@@ -201,7 +203,7 @@ class _$_Divisa extends _Divisa {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Divisa &&
+            other is _$DivisaImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.abv, abv) || other.abv == abv) &&
             (identical(other.simbolo, simbolo) || other.simbolo == simbolo) &&
@@ -221,8 +223,8 @@ class _$_Divisa extends _Divisa {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DivisaCopyWith<_$_Divisa> get copyWith =>
-      __$$_DivisaCopyWithImpl<_$_Divisa>(this, _$identity);
+  _$$DivisaImplCopyWith<_$DivisaImpl> get copyWith =>
+      __$$DivisaImplCopyWithImpl<_$DivisaImpl>(this, _$identity);
 }
 
 abstract class _Divisa extends Divisa {
@@ -233,7 +235,7 @@ abstract class _Divisa extends Divisa {
       required final double? redondeo,
       required final String descripcion,
       required final DateTime lastUpdate,
-      required final bool deleted}) = _$_Divisa;
+      required final bool deleted}) = _$DivisaImpl;
   const _Divisa._() : super._();
 
   @override
@@ -252,6 +254,6 @@ abstract class _Divisa extends Divisa {
   bool get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_DivisaCopyWith<_$_Divisa> get copyWith =>
+  _$$DivisaImplCopyWith<_$DivisaImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

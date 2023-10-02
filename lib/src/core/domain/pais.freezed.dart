@@ -84,9 +84,10 @@ class _$PaisCopyWithImpl<$Res, $Val extends Pais>
 }
 
 /// @nodoc
-abstract class _$$_PaisCopyWith<$Res> implements $PaisCopyWith<$Res> {
-  factory _$$_PaisCopyWith(_$_Pais value, $Res Function(_$_Pais) then) =
-      __$$_PaisCopyWithImpl<$Res>;
+abstract class _$$PaisImplCopyWith<$Res> implements $PaisCopyWith<$Res> {
+  factory _$$PaisImplCopyWith(
+          _$PaisImpl value, $Res Function(_$PaisImpl) then) =
+      __$$PaisImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -98,9 +99,10 @@ abstract class _$$_PaisCopyWith<$Res> implements $PaisCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_PaisCopyWithImpl<$Res> extends _$PaisCopyWithImpl<$Res, _$_Pais>
-    implements _$$_PaisCopyWith<$Res> {
-  __$$_PaisCopyWithImpl(_$_Pais _value, $Res Function(_$_Pais) _then)
+class __$$PaisImplCopyWithImpl<$Res>
+    extends _$PaisCopyWithImpl<$Res, _$PaisImpl>
+    implements _$$PaisImplCopyWith<$Res> {
+  __$$PaisImplCopyWithImpl(_$PaisImpl _value, $Res Function(_$PaisImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -112,7 +114,7 @@ class __$$_PaisCopyWithImpl<$Res> extends _$PaisCopyWithImpl<$Res, _$_Pais>
     Object? lastUpdate = null,
     Object? deleted = null,
   }) {
-    return _then(_$_Pais(
+    return _then(_$PaisImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -139,8 +141,8 @@ class __$$_PaisCopyWithImpl<$Res> extends _$PaisCopyWithImpl<$Res, _$_Pais>
 
 /// @nodoc
 
-class _$_Pais extends _Pais {
-  const _$_Pais(
+class _$PaisImpl extends _Pais {
+  const _$PaisImpl(
       {required this.id,
       required this.isoCode,
       required this.descripcion,
@@ -168,7 +170,7 @@ class _$_Pais extends _Pais {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Pais &&
+            other is _$PaisImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.isoCode, isoCode) || other.isoCode == isoCode) &&
             (identical(other.descripcion, descripcion) ||
@@ -185,8 +187,8 @@ class _$_Pais extends _Pais {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaisCopyWith<_$_Pais> get copyWith =>
-      __$$_PaisCopyWithImpl<_$_Pais>(this, _$identity);
+  _$$PaisImplCopyWith<_$PaisImpl> get copyWith =>
+      __$$PaisImplCopyWithImpl<_$PaisImpl>(this, _$identity);
 }
 
 abstract class _Pais extends Pais {
@@ -195,7 +197,7 @@ abstract class _Pais extends Pais {
       required final String? isoCode,
       required final String descripcion,
       required final DateTime lastUpdate,
-      required final bool deleted}) = _$_Pais;
+      required final bool deleted}) = _$PaisImpl;
   const _Pais._() : super._();
 
   @override
@@ -210,5 +212,6 @@ abstract class _Pais extends Pais {
   bool get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_PaisCopyWith<_$_Pais> get copyWith => throw _privateConstructorUsedError;
+  _$$PaisImplCopyWith<_$PaisImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

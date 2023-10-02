@@ -6,9 +6,9 @@ part of 'cliente_precio_neto_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ClientePrecioNetoDTO _$$_ClientePrecioNetoDTOFromJson(
+_$ClientePrecioNetoDTOImpl _$$ClientePrecioNetoDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_ClientePrecioNetoDTO(
+    _$ClientePrecioNetoDTOImpl(
       clienteId: json['CLIENTE_ID'] as String,
       articuloId: json['ARTICULO_ID'] as String,
       cantidadDesde: json['CANTIDAD_DESDE'] as int,
@@ -19,8 +19,8 @@ _$_ClientePrecioNetoDTO _$$_ClientePrecioNetoDTOFromJson(
       deleted: json['DELETED'] as String? ?? 'N',
     );
 
-Map<String, dynamic> _$$_ClientePrecioNetoDTOToJson(
-        _$_ClientePrecioNetoDTO instance) =>
+Map<String, dynamic> _$$ClientePrecioNetoDTOImplToJson(
+        _$ClientePrecioNetoDTOImpl instance) =>
     <String, dynamic>{
       'CLIENTE_ID': instance.clienteId,
       'ARTICULO_ID': instance.articuloId,

@@ -127,10 +127,11 @@ class _$CatalogoCopyWithImpl<$Res, $Val extends Catalogo>
 }
 
 /// @nodoc
-abstract class _$$_CatalogoCopyWith<$Res> implements $CatalogoCopyWith<$Res> {
-  factory _$$_CatalogoCopyWith(
-          _$_Catalogo value, $Res Function(_$_Catalogo) then) =
-      __$$_CatalogoCopyWithImpl<$Res>;
+abstract class _$$CatalogoImplCopyWith<$Res>
+    implements $CatalogoCopyWith<$Res> {
+  factory _$$CatalogoImplCopyWith(
+          _$CatalogoImpl value, $Res Function(_$CatalogoImpl) then) =
+      __$$CatalogoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -148,11 +149,11 @@ abstract class _$$_CatalogoCopyWith<$Res> implements $CatalogoCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_CatalogoCopyWithImpl<$Res>
-    extends _$CatalogoCopyWithImpl<$Res, _$_Catalogo>
-    implements _$$_CatalogoCopyWith<$Res> {
-  __$$_CatalogoCopyWithImpl(
-      _$_Catalogo _value, $Res Function(_$_Catalogo) _then)
+class __$$CatalogoImplCopyWithImpl<$Res>
+    extends _$CatalogoCopyWithImpl<$Res, _$CatalogoImpl>
+    implements _$$CatalogoImplCopyWith<$Res> {
+  __$$CatalogoImplCopyWithImpl(
+      _$CatalogoImpl _value, $Res Function(_$CatalogoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -170,7 +171,7 @@ class __$$_CatalogoCopyWithImpl<$Res>
     Object? nombreFicheroCatalogo = null,
     Object? descarga = null,
   }) {
-    return _then(_$_Catalogo(
+    return _then(_$CatalogoImpl(
       catalogoId: null == catalogoId
           ? _value.catalogoId
           : catalogoId // ignore: cast_nullable_to_non_nullable
@@ -221,8 +222,8 @@ class __$$_CatalogoCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Catalogo extends _Catalogo {
-  const _$_Catalogo(
+class _$CatalogoImpl extends _Catalogo {
+  const _$CatalogoImpl(
       {required this.catalogoId,
       required this.nombre,
       required this.idiomaId,
@@ -268,7 +269,7 @@ class _$_Catalogo extends _Catalogo {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Catalogo &&
+            other is _$CatalogoImpl &&
             (identical(other.catalogoId, catalogoId) ||
                 other.catalogoId == catalogoId) &&
             (identical(other.nombre, nombre) || other.nombre == nombre) &&
@@ -310,8 +311,8 @@ class _$_Catalogo extends _Catalogo {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CatalogoCopyWith<_$_Catalogo> get copyWith =>
-      __$$_CatalogoCopyWithImpl<_$_Catalogo>(this, _$identity);
+  _$$CatalogoImplCopyWith<_$CatalogoImpl> get copyWith =>
+      __$$CatalogoImplCopyWithImpl<_$CatalogoImpl>(this, _$identity);
 }
 
 abstract class _Catalogo extends Catalogo {
@@ -326,7 +327,7 @@ abstract class _Catalogo extends Catalogo {
       required final int orden,
       required final String urlFicherPortada,
       required final String nombreFicheroCatalogo,
-      required final bool descarga}) = _$_Catalogo;
+      required final bool descarga}) = _$CatalogoImpl;
   const _Catalogo._() : super._();
 
   @override
@@ -353,6 +354,6 @@ abstract class _Catalogo extends Catalogo {
   bool get descarga;
   @override
   @JsonKey(ignore: true)
-  _$$_CatalogoCopyWith<_$_Catalogo> get copyWith =>
+  _$$CatalogoImplCopyWith<_$CatalogoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -186,12 +186,12 @@ class _$PedidoVentaLineaLocalDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_PedidoVentaLineaLocalDTOCopyWith<$Res>
+abstract class _$$PedidoVentaLineaLocalDTOImplCopyWith<$Res>
     implements $PedidoVentaLineaLocalDTOCopyWith<$Res> {
-  factory _$$_PedidoVentaLineaLocalDTOCopyWith(
-          _$_PedidoVentaLineaLocalDTO value,
-          $Res Function(_$_PedidoVentaLineaLocalDTO) then) =
-      __$$_PedidoVentaLineaLocalDTOCopyWithImpl<$Res>;
+  factory _$$PedidoVentaLineaLocalDTOImplCopyWith(
+          _$PedidoVentaLineaLocalDTOImpl value,
+          $Res Function(_$PedidoVentaLineaLocalDTOImpl) then) =
+      __$$PedidoVentaLineaLocalDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -214,12 +214,13 @@ abstract class _$$_PedidoVentaLineaLocalDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PedidoVentaLineaLocalDTOCopyWithImpl<$Res>
+class __$$PedidoVentaLineaLocalDTOImplCopyWithImpl<$Res>
     extends _$PedidoVentaLineaLocalDTOCopyWithImpl<$Res,
-        _$_PedidoVentaLineaLocalDTO>
-    implements _$$_PedidoVentaLineaLocalDTOCopyWith<$Res> {
-  __$$_PedidoVentaLineaLocalDTOCopyWithImpl(_$_PedidoVentaLineaLocalDTO _value,
-      $Res Function(_$_PedidoVentaLineaLocalDTO) _then)
+        _$PedidoVentaLineaLocalDTOImpl>
+    implements _$$PedidoVentaLineaLocalDTOImplCopyWith<$Res> {
+  __$$PedidoVentaLineaLocalDTOImplCopyWithImpl(
+      _$PedidoVentaLineaLocalDTOImpl _value,
+      $Res Function(_$PedidoVentaLineaLocalDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -242,7 +243,7 @@ class __$$_PedidoVentaLineaLocalDTOCopyWithImpl<$Res>
     Object? fechaDisponible = freezed,
     Object? iva = null,
   }) {
-    return _then(_$_PedidoVentaLineaLocalDTO(
+    return _then(_$PedidoVentaLineaLocalDTOImpl(
       pedidoVentaAppId: null == pedidoVentaAppId
           ? _value.pedidoVentaAppId
           : pedidoVentaAppId // ignore: cast_nullable_to_non_nullable
@@ -313,8 +314,8 @@ class __$$_PedidoVentaLineaLocalDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PedidoVentaLineaLocalDTO extends _PedidoVentaLineaLocalDTO {
-  const _$_PedidoVentaLineaLocalDTO(
+class _$PedidoVentaLineaLocalDTOImpl extends _PedidoVentaLineaLocalDTO {
+  const _$PedidoVentaLineaLocalDTOImpl(
       {@JsonKey(name: 'PEDIDO_APP_ID') required this.pedidoVentaAppId,
       @JsonKey(name: 'EMPRESA_ID') this.empresaId,
       @JsonKey(name: 'PEDIDO_ID') this.pedidoId,
@@ -333,8 +334,8 @@ class _$_PedidoVentaLineaLocalDTO extends _PedidoVentaLineaLocalDTO {
       @JsonKey(name: 'IVA') required this.iva})
       : super._();
 
-  factory _$_PedidoVentaLineaLocalDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_PedidoVentaLineaLocalDTOFromJson(json);
+  factory _$PedidoVentaLineaLocalDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PedidoVentaLineaLocalDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'PEDIDO_APP_ID')
@@ -394,7 +395,7 @@ class _$_PedidoVentaLineaLocalDTO extends _PedidoVentaLineaLocalDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PedidoVentaLineaLocalDTO &&
+            other is _$PedidoVentaLineaLocalDTOImpl &&
             (identical(other.pedidoVentaAppId, pedidoVentaAppId) ||
                 other.pedidoVentaAppId == pedidoVentaAppId) &&
             (identical(other.empresaId, empresaId) ||
@@ -452,13 +453,13 @@ class _$_PedidoVentaLineaLocalDTO extends _PedidoVentaLineaLocalDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PedidoVentaLineaLocalDTOCopyWith<_$_PedidoVentaLineaLocalDTO>
-      get copyWith => __$$_PedidoVentaLineaLocalDTOCopyWithImpl<
-          _$_PedidoVentaLineaLocalDTO>(this, _$identity);
+  _$$PedidoVentaLineaLocalDTOImplCopyWith<_$PedidoVentaLineaLocalDTOImpl>
+      get copyWith => __$$PedidoVentaLineaLocalDTOImplCopyWithImpl<
+          _$PedidoVentaLineaLocalDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PedidoVentaLineaLocalDTOToJson(
+    return _$$PedidoVentaLineaLocalDTOImplToJson(
       this,
     );
   }
@@ -483,11 +484,11 @@ abstract class _PedidoVentaLineaLocalDTO extends PedidoVentaLineaLocalDTO {
       required final String stockDisponibleSN,
       @JsonKey(name: 'F_DISPONIBLE') final DateTime? fechaDisponible,
       @JsonKey(name: 'IVA')
-      required final double iva}) = _$_PedidoVentaLineaLocalDTO;
+      required final double iva}) = _$PedidoVentaLineaLocalDTOImpl;
   const _PedidoVentaLineaLocalDTO._() : super._();
 
   factory _PedidoVentaLineaLocalDTO.fromJson(Map<String, dynamic> json) =
-      _$_PedidoVentaLineaLocalDTO.fromJson;
+      _$PedidoVentaLineaLocalDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'PEDIDO_APP_ID')
@@ -539,6 +540,6 @@ abstract class _PedidoVentaLineaLocalDTO extends PedidoVentaLineaLocalDTO {
   double get iva;
   @override
   @JsonKey(ignore: true)
-  _$$_PedidoVentaLineaLocalDTOCopyWith<_$_PedidoVentaLineaLocalDTO>
+  _$$PedidoVentaLineaLocalDTOImplCopyWith<_$PedidoVentaLineaLocalDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

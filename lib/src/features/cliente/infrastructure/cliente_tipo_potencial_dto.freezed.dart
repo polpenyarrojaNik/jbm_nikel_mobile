@@ -202,11 +202,12 @@ class _$ClienteTipoPotencialDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ClienteTipoPotencialDTOCopyWith<$Res>
+abstract class _$$ClienteTipoPotencialDTOImplCopyWith<$Res>
     implements $ClienteTipoPotencialDTOCopyWith<$Res> {
-  factory _$$_ClienteTipoPotencialDTOCopyWith(_$_ClienteTipoPotencialDTO value,
-          $Res Function(_$_ClienteTipoPotencialDTO) then) =
-      __$$_ClienteTipoPotencialDTOCopyWithImpl<$Res>;
+  factory _$$ClienteTipoPotencialDTOImplCopyWith(
+          _$ClienteTipoPotencialDTOImpl value,
+          $Res Function(_$ClienteTipoPotencialDTOImpl) then) =
+      __$$ClienteTipoPotencialDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -231,12 +232,13 @@ abstract class _$$_ClienteTipoPotencialDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ClienteTipoPotencialDTOCopyWithImpl<$Res>
+class __$$ClienteTipoPotencialDTOImplCopyWithImpl<$Res>
     extends _$ClienteTipoPotencialDTOCopyWithImpl<$Res,
-        _$_ClienteTipoPotencialDTO>
-    implements _$$_ClienteTipoPotencialDTOCopyWith<$Res> {
-  __$$_ClienteTipoPotencialDTOCopyWithImpl(_$_ClienteTipoPotencialDTO _value,
-      $Res Function(_$_ClienteTipoPotencialDTO) _then)
+        _$ClienteTipoPotencialDTOImpl>
+    implements _$$ClienteTipoPotencialDTOImplCopyWith<$Res> {
+  __$$ClienteTipoPotencialDTOImplCopyWithImpl(
+      _$ClienteTipoPotencialDTOImpl _value,
+      $Res Function(_$ClienteTipoPotencialDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -261,7 +263,7 @@ class __$$_ClienteTipoPotencialDTOCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_ClienteTipoPotencialDTO(
+    return _then(_$ClienteTipoPotencialDTOImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -340,8 +342,8 @@ class __$$_ClienteTipoPotencialDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ClienteTipoPotencialDTO extends _ClienteTipoPotencialDTO {
-  const _$_ClienteTipoPotencialDTO(
+class _$ClienteTipoPotencialDTOImpl extends _ClienteTipoPotencialDTO {
+  const _$ClienteTipoPotencialDTOImpl(
       {@JsonKey(name: 'TIPO_POTENCIAL_ID') required this.id,
       @JsonKey(name: 'DESCRIPCION_ES') required this.descripcionES,
       @JsonKey(name: 'DESCRIPCION_EN') this.descripcionEN,
@@ -362,8 +364,8 @@ class _$_ClienteTipoPotencialDTO extends _ClienteTipoPotencialDTO {
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
-  factory _$_ClienteTipoPotencialDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_ClienteTipoPotencialDTOFromJson(json);
+  factory _$ClienteTipoPotencialDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ClienteTipoPotencialDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'TIPO_POTENCIAL_ID')
@@ -429,7 +431,7 @@ class _$_ClienteTipoPotencialDTO extends _ClienteTipoPotencialDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClienteTipoPotencialDTO &&
+            other is _$ClienteTipoPotencialDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.descripcionES, descripcionES) ||
                 other.descripcionES == descripcionES) &&
@@ -492,14 +494,13 @@ class _$_ClienteTipoPotencialDTO extends _ClienteTipoPotencialDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClienteTipoPotencialDTOCopyWith<_$_ClienteTipoPotencialDTO>
-      get copyWith =>
-          __$$_ClienteTipoPotencialDTOCopyWithImpl<_$_ClienteTipoPotencialDTO>(
-              this, _$identity);
+  _$$ClienteTipoPotencialDTOImplCopyWith<_$ClienteTipoPotencialDTOImpl>
+      get copyWith => __$$ClienteTipoPotencialDTOImplCopyWithImpl<
+          _$ClienteTipoPotencialDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ClienteTipoPotencialDTOToJson(
+    return _$$ClienteTipoPotencialDTOImplToJson(
       this,
     );
   }
@@ -525,11 +526,11 @@ abstract class _ClienteTipoPotencialDTO extends ClienteTipoPotencialDTO {
           @JsonKey(name: 'DESCRIPCION_EL') final String? descripcionEL,
           @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
           @JsonKey(name: 'DELETED') final String deleted}) =
-      _$_ClienteTipoPotencialDTO;
+      _$ClienteTipoPotencialDTOImpl;
   const _ClienteTipoPotencialDTO._() : super._();
 
   factory _ClienteTipoPotencialDTO.fromJson(Map<String, dynamic> json) =
-      _$_ClienteTipoPotencialDTO.fromJson;
+      _$ClienteTipoPotencialDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'TIPO_POTENCIAL_ID')
@@ -587,6 +588,6 @@ abstract class _ClienteTipoPotencialDTO extends ClienteTipoPotencialDTO {
   String get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_ClienteTipoPotencialDTOCopyWith<_$_ClienteTipoPotencialDTO>
+  _$$ClienteTipoPotencialDTOImplCopyWith<_$ClienteTipoPotencialDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

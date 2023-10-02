@@ -130,11 +130,12 @@ class _$ArticuloPrecioTarifaDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ArticuloPrecioTarifaDTOCopyWith<$Res>
+abstract class _$$ArticuloPrecioTarifaDTOImplCopyWith<$Res>
     implements $ArticuloPrecioTarifaDTOCopyWith<$Res> {
-  factory _$$_ArticuloPrecioTarifaDTOCopyWith(_$_ArticuloPrecioTarifaDTO value,
-          $Res Function(_$_ArticuloPrecioTarifaDTO) then) =
-      __$$_ArticuloPrecioTarifaDTOCopyWithImpl<$Res>;
+  factory _$$ArticuloPrecioTarifaDTOImplCopyWith(
+          _$ArticuloPrecioTarifaDTOImpl value,
+          $Res Function(_$ArticuloPrecioTarifaDTOImpl) then) =
+      __$$ArticuloPrecioTarifaDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -150,12 +151,13 @@ abstract class _$$_ArticuloPrecioTarifaDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ArticuloPrecioTarifaDTOCopyWithImpl<$Res>
+class __$$ArticuloPrecioTarifaDTOImplCopyWithImpl<$Res>
     extends _$ArticuloPrecioTarifaDTOCopyWithImpl<$Res,
-        _$_ArticuloPrecioTarifaDTO>
-    implements _$$_ArticuloPrecioTarifaDTOCopyWith<$Res> {
-  __$$_ArticuloPrecioTarifaDTOCopyWithImpl(_$_ArticuloPrecioTarifaDTO _value,
-      $Res Function(_$_ArticuloPrecioTarifaDTO) _then)
+        _$ArticuloPrecioTarifaDTOImpl>
+    implements _$$ArticuloPrecioTarifaDTOImplCopyWith<$Res> {
+  __$$ArticuloPrecioTarifaDTOImplCopyWithImpl(
+      _$ArticuloPrecioTarifaDTOImpl _value,
+      $Res Function(_$ArticuloPrecioTarifaDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -171,7 +173,7 @@ class __$$_ArticuloPrecioTarifaDTOCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_ArticuloPrecioTarifaDTO(
+    return _then(_$ArticuloPrecioTarifaDTOImpl(
       articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
@@ -214,8 +216,8 @@ class __$$_ArticuloPrecioTarifaDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ArticuloPrecioTarifaDTO extends _ArticuloPrecioTarifaDTO {
-  const _$_ArticuloPrecioTarifaDTO(
+class _$ArticuloPrecioTarifaDTOImpl extends _ArticuloPrecioTarifaDTO {
+  const _$ArticuloPrecioTarifaDTOImpl(
       {@JsonKey(name: 'ARTICULO_ID') required this.articuloId,
       @JsonKey(name: 'TARIFA_ID') required this.tarifaId,
       @JsonKey(name: 'TARIFA_DESCRIPCION') this.tarifaDescripcion,
@@ -227,8 +229,8 @@ class _$_ArticuloPrecioTarifaDTO extends _ArticuloPrecioTarifaDTO {
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
-  factory _$_ArticuloPrecioTarifaDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_ArticuloPrecioTarifaDTOFromJson(json);
+  factory _$ArticuloPrecioTarifaDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ArticuloPrecioTarifaDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'ARTICULO_ID')
@@ -267,7 +269,7 @@ class _$_ArticuloPrecioTarifaDTO extends _ArticuloPrecioTarifaDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ArticuloPrecioTarifaDTO &&
+            other is _$ArticuloPrecioTarifaDTOImpl &&
             (identical(other.articuloId, articuloId) ||
                 other.articuloId == articuloId) &&
             (identical(other.tarifaId, tarifaId) ||
@@ -303,14 +305,13 @@ class _$_ArticuloPrecioTarifaDTO extends _ArticuloPrecioTarifaDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArticuloPrecioTarifaDTOCopyWith<_$_ArticuloPrecioTarifaDTO>
-      get copyWith =>
-          __$$_ArticuloPrecioTarifaDTOCopyWithImpl<_$_ArticuloPrecioTarifaDTO>(
-              this, _$identity);
+  _$$ArticuloPrecioTarifaDTOImplCopyWith<_$ArticuloPrecioTarifaDTOImpl>
+      get copyWith => __$$ArticuloPrecioTarifaDTOImplCopyWithImpl<
+          _$ArticuloPrecioTarifaDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ArticuloPrecioTarifaDTOToJson(
+    return _$$ArticuloPrecioTarifaDTOImplToJson(
       this,
     );
   }
@@ -327,11 +328,11 @@ abstract class _ArticuloPrecioTarifaDTO extends ArticuloPrecioTarifaDTO {
           @JsonKey(name: 'TIPO_PRECIO') required final int tipoPrecio,
           @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
           @JsonKey(name: 'DELETED') final String deleted}) =
-      _$_ArticuloPrecioTarifaDTO;
+      _$ArticuloPrecioTarifaDTOImpl;
   const _ArticuloPrecioTarifaDTO._() : super._();
 
   factory _ArticuloPrecioTarifaDTO.fromJson(Map<String, dynamic> json) =
-      _$_ArticuloPrecioTarifaDTO.fromJson;
+      _$ArticuloPrecioTarifaDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'ARTICULO_ID')
@@ -362,6 +363,6 @@ abstract class _ArticuloPrecioTarifaDTO extends ArticuloPrecioTarifaDTO {
   String get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_ArticuloPrecioTarifaDTOCopyWith<_$_ArticuloPrecioTarifaDTO>
+  _$$ArticuloPrecioTarifaDTOImplCopyWith<_$ArticuloPrecioTarifaDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

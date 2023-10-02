@@ -90,24 +90,25 @@ class _$CatalogoFavoritoControllerStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_loadingCopyWith<$Res> {
-  factory _$$_loadingCopyWith(
-          _$_loading value, $Res Function(_$_loading) then) =
-      __$$_loadingCopyWithImpl<$Res>;
+abstract class _$$loadingImplCopyWith<$Res> {
+  factory _$$loadingImplCopyWith(
+          _$loadingImpl value, $Res Function(_$loadingImpl) then) =
+      __$$loadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_loadingCopyWithImpl<$Res>
-    extends _$CatalogoFavoritoControllerStateCopyWithImpl<$Res, _$_loading>
-    implements _$$_loadingCopyWith<$Res> {
-  __$$_loadingCopyWithImpl(_$_loading _value, $Res Function(_$_loading) _then)
+class __$$loadingImplCopyWithImpl<$Res>
+    extends _$CatalogoFavoritoControllerStateCopyWithImpl<$Res, _$loadingImpl>
+    implements _$$loadingImplCopyWith<$Res> {
+  __$$loadingImplCopyWithImpl(
+      _$loadingImpl _value, $Res Function(_$loadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_loading extends _loading {
-  const _$_loading() : super._();
+class _$loadingImpl extends _loading {
+  const _$loadingImpl() : super._();
 
   @override
   String toString() {
@@ -117,7 +118,7 @@ class _$_loading extends _loading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_loading);
+        (other.runtimeType == runtimeType && other is _$loadingImpl);
   }
 
   @override
@@ -199,30 +200,30 @@ class _$_loading extends _loading {
 }
 
 abstract class _loading extends CatalogoFavoritoControllerState {
-  const factory _loading() = _$_loading;
+  const factory _loading() = _$loadingImpl;
   const _loading._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_favoriteCopyWith<$Res> {
-  factory _$$_favoriteCopyWith(
-          _$_favorite value, $Res Function(_$_favorite) then) =
-      __$$_favoriteCopyWithImpl<$Res>;
+abstract class _$$favoriteImplCopyWith<$Res> {
+  factory _$$favoriteImplCopyWith(
+          _$favoriteImpl value, $Res Function(_$favoriteImpl) then) =
+      __$$favoriteImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_favoriteCopyWithImpl<$Res>
-    extends _$CatalogoFavoritoControllerStateCopyWithImpl<$Res, _$_favorite>
-    implements _$$_favoriteCopyWith<$Res> {
-  __$$_favoriteCopyWithImpl(
-      _$_favorite _value, $Res Function(_$_favorite) _then)
+class __$$favoriteImplCopyWithImpl<$Res>
+    extends _$CatalogoFavoritoControllerStateCopyWithImpl<$Res, _$favoriteImpl>
+    implements _$$favoriteImplCopyWith<$Res> {
+  __$$favoriteImplCopyWithImpl(
+      _$favoriteImpl _value, $Res Function(_$favoriteImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_favorite extends _favorite {
-  const _$_favorite() : super._();
+class _$favoriteImpl extends _favorite {
+  const _$favoriteImpl() : super._();
 
   @override
   String toString() {
@@ -232,7 +233,7 @@ class _$_favorite extends _favorite {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_favorite);
+        (other.runtimeType == runtimeType && other is _$favoriteImpl);
   }
 
   @override
@@ -314,23 +315,25 @@ class _$_favorite extends _favorite {
 }
 
 abstract class _favorite extends CatalogoFavoritoControllerState {
-  const factory _favorite() = _$_favorite;
+  const factory _favorite() = _$favoriteImpl;
   const _favorite._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_errorCopyWith<$Res> {
-  factory _$$_errorCopyWith(_$_error value, $Res Function(_$_error) then) =
-      __$$_errorCopyWithImpl<$Res>;
+abstract class _$$errorImplCopyWith<$Res> {
+  factory _$$errorImplCopyWith(
+          _$errorImpl value, $Res Function(_$errorImpl) then) =
+      __$$errorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Object error, StackTrace? stackTrace});
 }
 
 /// @nodoc
-class __$$_errorCopyWithImpl<$Res>
-    extends _$CatalogoFavoritoControllerStateCopyWithImpl<$Res, _$_error>
-    implements _$$_errorCopyWith<$Res> {
-  __$$_errorCopyWithImpl(_$_error _value, $Res Function(_$_error) _then)
+class __$$errorImplCopyWithImpl<$Res>
+    extends _$CatalogoFavoritoControllerStateCopyWithImpl<$Res, _$errorImpl>
+    implements _$$errorImplCopyWith<$Res> {
+  __$$errorImplCopyWithImpl(
+      _$errorImpl _value, $Res Function(_$errorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -339,7 +342,7 @@ class __$$_errorCopyWithImpl<$Res>
     Object? error = null,
     Object? stackTrace = freezed,
   }) {
-    return _then(_$_error(
+    return _then(_$errorImpl(
       null == error ? _value.error : error,
       stackTrace: freezed == stackTrace
           ? _value.stackTrace
@@ -351,8 +354,8 @@ class __$$_errorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_error extends _error {
-  const _$_error(this.error, {this.stackTrace}) : super._();
+class _$errorImpl extends _error {
+  const _$errorImpl(this.error, {this.stackTrace}) : super._();
 
   @override
   final Object error;
@@ -368,7 +371,7 @@ class _$_error extends _error {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_error &&
+            other is _$errorImpl &&
             const DeepCollectionEquality().equals(other.error, error) &&
             (identical(other.stackTrace, stackTrace) ||
                 other.stackTrace == stackTrace));
@@ -381,8 +384,8 @@ class _$_error extends _error {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_errorCopyWith<_$_error> get copyWith =>
-      __$$_errorCopyWithImpl<_$_error>(this, _$identity);
+  _$$errorImplCopyWith<_$errorImpl> get copyWith =>
+      __$$errorImplCopyWithImpl<_$errorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -461,36 +464,36 @@ class _$_error extends _error {
 
 abstract class _error extends CatalogoFavoritoControllerState {
   const factory _error(final Object error, {final StackTrace? stackTrace}) =
-      _$_error;
+      _$errorImpl;
   const _error._() : super._();
 
   Object get error;
   StackTrace? get stackTrace;
   @JsonKey(ignore: true)
-  _$$_errorCopyWith<_$_error> get copyWith =>
+  _$$errorImplCopyWith<_$errorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_noFavoriteCopyWith<$Res> {
-  factory _$$_noFavoriteCopyWith(
-          _$_noFavorite value, $Res Function(_$_noFavorite) then) =
-      __$$_noFavoriteCopyWithImpl<$Res>;
+abstract class _$$noFavoriteImplCopyWith<$Res> {
+  factory _$$noFavoriteImplCopyWith(
+          _$noFavoriteImpl value, $Res Function(_$noFavoriteImpl) then) =
+      __$$noFavoriteImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_noFavoriteCopyWithImpl<$Res>
-    extends _$CatalogoFavoritoControllerStateCopyWithImpl<$Res, _$_noFavorite>
-    implements _$$_noFavoriteCopyWith<$Res> {
-  __$$_noFavoriteCopyWithImpl(
-      _$_noFavorite _value, $Res Function(_$_noFavorite) _then)
+class __$$noFavoriteImplCopyWithImpl<$Res>
+    extends _$CatalogoFavoritoControllerStateCopyWithImpl<$Res,
+        _$noFavoriteImpl> implements _$$noFavoriteImplCopyWith<$Res> {
+  __$$noFavoriteImplCopyWithImpl(
+      _$noFavoriteImpl _value, $Res Function(_$noFavoriteImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_noFavorite extends _noFavorite {
-  const _$_noFavorite() : super._();
+class _$noFavoriteImpl extends _noFavorite {
+  const _$noFavoriteImpl() : super._();
 
   @override
   String toString() {
@@ -500,7 +503,7 @@ class _$_noFavorite extends _noFavorite {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_noFavorite);
+        (other.runtimeType == runtimeType && other is _$noFavoriteImpl);
   }
 
   @override
@@ -582,6 +585,6 @@ class _$_noFavorite extends _noFavorite {
 }
 
 abstract class _noFavorite extends CatalogoFavoritoControllerState {
-  const factory _noFavorite() = _$_noFavorite;
+  const factory _noFavorite() = _$noFavoriteImpl;
   const _noFavorite._() : super._();
 }

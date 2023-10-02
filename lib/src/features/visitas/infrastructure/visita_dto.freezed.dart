@@ -202,10 +202,11 @@ class _$VisitaDTOCopyWithImpl<$Res, $Val extends VisitaDTO>
 }
 
 /// @nodoc
-abstract class _$$_VisitaDTOCopyWith<$Res> implements $VisitaDTOCopyWith<$Res> {
-  factory _$$_VisitaDTOCopyWith(
-          _$_VisitaDTO value, $Res Function(_$_VisitaDTO) then) =
-      __$$_VisitaDTOCopyWithImpl<$Res>;
+abstract class _$$VisitaDTOImplCopyWith<$Res>
+    implements $VisitaDTOCopyWith<$Res> {
+  factory _$$VisitaDTOImplCopyWith(
+          _$VisitaDTOImpl value, $Res Function(_$VisitaDTOImpl) then) =
+      __$$VisitaDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -233,11 +234,11 @@ abstract class _$$_VisitaDTOCopyWith<$Res> implements $VisitaDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_VisitaDTOCopyWithImpl<$Res>
-    extends _$VisitaDTOCopyWithImpl<$Res, _$_VisitaDTO>
-    implements _$$_VisitaDTOCopyWith<$Res> {
-  __$$_VisitaDTOCopyWithImpl(
-      _$_VisitaDTO _value, $Res Function(_$_VisitaDTO) _then)
+class __$$VisitaDTOImplCopyWithImpl<$Res>
+    extends _$VisitaDTOCopyWithImpl<$Res, _$VisitaDTOImpl>
+    implements _$$VisitaDTOImplCopyWith<$Res> {
+  __$$VisitaDTOImplCopyWithImpl(
+      _$VisitaDTOImpl _value, $Res Function(_$VisitaDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -262,7 +263,7 @@ class __$$_VisitaDTOCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_VisitaDTO(
+    return _then(_$VisitaDTOImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -341,8 +342,8 @@ class __$$_VisitaDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_VisitaDTO extends _VisitaDTO {
-  const _$_VisitaDTO(
+class _$VisitaDTOImpl extends _VisitaDTO {
+  const _$VisitaDTOImpl(
       {@JsonKey(name: 'VISITA_ID') required this.id,
       @JsonKey(name: 'FECHA') required this.fecha,
       @JsonKey(name: 'CLIENTE_ID') this.clienteId,
@@ -365,8 +366,8 @@ class _$_VisitaDTO extends _VisitaDTO {
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
-  factory _$_VisitaDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_VisitaDTOFromJson(json);
+  factory _$VisitaDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$VisitaDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'VISITA_ID')
@@ -432,7 +433,7 @@ class _$_VisitaDTO extends _VisitaDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_VisitaDTO &&
+            other is _$VisitaDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.fecha, fecha) || other.fecha == fecha) &&
             (identical(other.clienteId, clienteId) ||
@@ -497,12 +498,12 @@ class _$_VisitaDTO extends _VisitaDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_VisitaDTOCopyWith<_$_VisitaDTO> get copyWith =>
-      __$$_VisitaDTOCopyWithImpl<_$_VisitaDTO>(this, _$identity);
+  _$$VisitaDTOImplCopyWith<_$VisitaDTOImpl> get copyWith =>
+      __$$VisitaDTOImplCopyWithImpl<_$VisitaDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_VisitaDTOToJson(
+    return _$$VisitaDTOImplToJson(
       this,
     );
   }
@@ -532,11 +533,11 @@ abstract class _VisitaDTO extends VisitaDTO {
       @JsonKey(name: 'LONGITUD') required final double longitud,
       @JsonKey(name: 'COD_VISITA_APP') final String? visitaAppId,
       @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') final String deleted}) = _$_VisitaDTO;
+      @JsonKey(name: 'DELETED') final String deleted}) = _$VisitaDTOImpl;
   const _VisitaDTO._() : super._();
 
   factory _VisitaDTO.fromJson(Map<String, dynamic> json) =
-      _$_VisitaDTO.fromJson;
+      _$VisitaDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'VISITA_ID')
@@ -594,6 +595,6 @@ abstract class _VisitaDTO extends VisitaDTO {
   String get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_VisitaDTOCopyWith<_$_VisitaDTO> get copyWith =>
+  _$$VisitaDTOImplCopyWith<_$VisitaDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

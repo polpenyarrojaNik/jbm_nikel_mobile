@@ -61,19 +61,21 @@ class _$PrecioCopyWithImpl<$Res, $Val extends Precio>
 }
 
 /// @nodoc
-abstract class _$$_PrecioCopyWith<$Res> implements $PrecioCopyWith<$Res> {
-  factory _$$_PrecioCopyWith(_$_Precio value, $Res Function(_$_Precio) then) =
-      __$$_PrecioCopyWithImpl<$Res>;
+abstract class _$$PrecioImplCopyWith<$Res> implements $PrecioCopyWith<$Res> {
+  factory _$$PrecioImplCopyWith(
+          _$PrecioImpl value, $Res Function(_$PrecioImpl) then) =
+      __$$PrecioImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Money precio, int tipoPrecio});
 }
 
 /// @nodoc
-class __$$_PrecioCopyWithImpl<$Res>
-    extends _$PrecioCopyWithImpl<$Res, _$_Precio>
-    implements _$$_PrecioCopyWith<$Res> {
-  __$$_PrecioCopyWithImpl(_$_Precio _value, $Res Function(_$_Precio) _then)
+class __$$PrecioImplCopyWithImpl<$Res>
+    extends _$PrecioCopyWithImpl<$Res, _$PrecioImpl>
+    implements _$$PrecioImplCopyWith<$Res> {
+  __$$PrecioImplCopyWithImpl(
+      _$PrecioImpl _value, $Res Function(_$PrecioImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -82,7 +84,7 @@ class __$$_PrecioCopyWithImpl<$Res>
     Object? precio = null,
     Object? tipoPrecio = null,
   }) {
-    return _then(_$_Precio(
+    return _then(_$PrecioImpl(
       precio: null == precio
           ? _value.precio
           : precio // ignore: cast_nullable_to_non_nullable
@@ -97,8 +99,9 @@ class __$$_PrecioCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Precio extends _Precio {
-  const _$_Precio({required this.precio, required this.tipoPrecio}) : super._();
+class _$PrecioImpl extends _Precio {
+  const _$PrecioImpl({required this.precio, required this.tipoPrecio})
+      : super._();
 
   @override
   final Money precio;
@@ -114,7 +117,7 @@ class _$_Precio extends _Precio {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Precio &&
+            other is _$PrecioImpl &&
             (identical(other.precio, precio) || other.precio == precio) &&
             (identical(other.tipoPrecio, tipoPrecio) ||
                 other.tipoPrecio == tipoPrecio));
@@ -126,13 +129,14 @@ class _$_Precio extends _Precio {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PrecioCopyWith<_$_Precio> get copyWith =>
-      __$$_PrecioCopyWithImpl<_$_Precio>(this, _$identity);
+  _$$PrecioImplCopyWith<_$PrecioImpl> get copyWith =>
+      __$$PrecioImplCopyWithImpl<_$PrecioImpl>(this, _$identity);
 }
 
 abstract class _Precio extends Precio {
   const factory _Precio(
-      {required final Money precio, required final int tipoPrecio}) = _$_Precio;
+      {required final Money precio,
+      required final int tipoPrecio}) = _$PrecioImpl;
   const _Precio._() : super._();
 
   @override
@@ -141,6 +145,6 @@ abstract class _Precio extends Precio {
   int get tipoPrecio;
   @override
   @JsonKey(ignore: true)
-  _$$_PrecioCopyWith<_$_Precio> get copyWith =>
+  _$$PrecioImplCopyWith<_$PrecioImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

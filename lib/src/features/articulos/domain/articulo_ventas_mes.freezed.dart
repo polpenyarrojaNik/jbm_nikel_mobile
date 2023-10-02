@@ -128,11 +128,11 @@ class _$ArticuloVentasMesCopyWithImpl<$Res, $Val extends ArticuloVentasMes>
 }
 
 /// @nodoc
-abstract class _$$_ArticuloVentasMesCopyWith<$Res>
+abstract class _$$ArticuloVentasMesImplCopyWith<$Res>
     implements $ArticuloVentasMesCopyWith<$Res> {
-  factory _$$_ArticuloVentasMesCopyWith(_$_ArticuloVentasMes value,
-          $Res Function(_$_ArticuloVentasMes) then) =
-      __$$_ArticuloVentasMesCopyWithImpl<$Res>;
+  factory _$$ArticuloVentasMesImplCopyWith(_$ArticuloVentasMesImpl value,
+          $Res Function(_$ArticuloVentasMesImpl) then) =
+      __$$ArticuloVentasMesImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -150,11 +150,11 @@ abstract class _$$_ArticuloVentasMesCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ArticuloVentasMesCopyWithImpl<$Res>
-    extends _$ArticuloVentasMesCopyWithImpl<$Res, _$_ArticuloVentasMes>
-    implements _$$_ArticuloVentasMesCopyWith<$Res> {
-  __$$_ArticuloVentasMesCopyWithImpl(
-      _$_ArticuloVentasMes _value, $Res Function(_$_ArticuloVentasMes) _then)
+class __$$ArticuloVentasMesImplCopyWithImpl<$Res>
+    extends _$ArticuloVentasMesCopyWithImpl<$Res, _$ArticuloVentasMesImpl>
+    implements _$$ArticuloVentasMesImplCopyWith<$Res> {
+  __$$ArticuloVentasMesImplCopyWithImpl(_$ArticuloVentasMesImpl _value,
+      $Res Function(_$ArticuloVentasMesImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -172,7 +172,7 @@ class __$$_ArticuloVentasMesCopyWithImpl<$Res>
     Object? unidadesAnyoTodos_3 = freezed,
     Object? unidadesAnyoTodos_4 = freezed,
   }) {
-    return _then(_$_ArticuloVentasMes(
+    return _then(_$ArticuloVentasMesImpl(
       mes: null == mes
           ? _value.mes
           : mes // ignore: cast_nullable_to_non_nullable
@@ -223,8 +223,8 @@ class __$$_ArticuloVentasMesCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ArticuloVentasMes extends _ArticuloVentasMes {
-  const _$_ArticuloVentasMes(
+class _$ArticuloVentasMesImpl extends _ArticuloVentasMes {
+  const _$ArticuloVentasMesImpl(
       {required this.mes,
       required this.unidadesAnyo,
       required this.unidadesAnyo_1,
@@ -270,7 +270,7 @@ class _$_ArticuloVentasMes extends _ArticuloVentasMes {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ArticuloVentasMes &&
+            other is _$ArticuloVentasMesImpl &&
             (identical(other.mes, mes) || other.mes == mes) &&
             (identical(other.unidadesAnyo, unidadesAnyo) ||
                 other.unidadesAnyo == unidadesAnyo) &&
@@ -312,8 +312,8 @@ class _$_ArticuloVentasMes extends _ArticuloVentasMes {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArticuloVentasMesCopyWith<_$_ArticuloVentasMes> get copyWith =>
-      __$$_ArticuloVentasMesCopyWithImpl<_$_ArticuloVentasMes>(
+  _$$ArticuloVentasMesImplCopyWith<_$ArticuloVentasMesImpl> get copyWith =>
+      __$$ArticuloVentasMesImplCopyWithImpl<_$ArticuloVentasMesImpl>(
           this, _$identity);
 }
 
@@ -329,7 +329,7 @@ abstract class _ArticuloVentasMes extends ArticuloVentasMes {
       final int? unidadesAnyoTodos_1,
       final int? unidadesAnyoTodos_2,
       final int? unidadesAnyoTodos_3,
-      final int? unidadesAnyoTodos_4}) = _$_ArticuloVentasMes;
+      final int? unidadesAnyoTodos_4}) = _$ArticuloVentasMesImpl;
   const _ArticuloVentasMes._() : super._();
 
   @override
@@ -356,6 +356,6 @@ abstract class _ArticuloVentasMes extends ArticuloVentasMes {
   int? get unidadesAnyoTodos_4;
   @override
   @JsonKey(ignore: true)
-  _$$_ArticuloVentasMesCopyWith<_$_ArticuloVentasMes> get copyWith =>
+  _$$ArticuloVentasMesImplCopyWith<_$ArticuloVentasMesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

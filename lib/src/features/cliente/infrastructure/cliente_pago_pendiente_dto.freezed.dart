@@ -155,11 +155,12 @@ class _$ClientePagoPendienteDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ClientePagoPendienteDTOCopyWith<$Res>
+abstract class _$$ClientePagoPendienteDTOImplCopyWith<$Res>
     implements $ClientePagoPendienteDTOCopyWith<$Res> {
-  factory _$$_ClientePagoPendienteDTOCopyWith(_$_ClientePagoPendienteDTO value,
-          $Res Function(_$_ClientePagoPendienteDTO) then) =
-      __$$_ClientePagoPendienteDTOCopyWithImpl<$Res>;
+  factory _$$ClientePagoPendienteDTOImplCopyWith(
+          _$ClientePagoPendienteDTOImpl value,
+          $Res Function(_$ClientePagoPendienteDTOImpl) then) =
+      __$$ClientePagoPendienteDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -179,12 +180,13 @@ abstract class _$$_ClientePagoPendienteDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ClientePagoPendienteDTOCopyWithImpl<$Res>
+class __$$ClientePagoPendienteDTOImplCopyWithImpl<$Res>
     extends _$ClientePagoPendienteDTOCopyWithImpl<$Res,
-        _$_ClientePagoPendienteDTO>
-    implements _$$_ClientePagoPendienteDTOCopyWith<$Res> {
-  __$$_ClientePagoPendienteDTOCopyWithImpl(_$_ClientePagoPendienteDTO _value,
-      $Res Function(_$_ClientePagoPendienteDTO) _then)
+        _$ClientePagoPendienteDTOImpl>
+    implements _$$ClientePagoPendienteDTOImplCopyWith<$Res> {
+  __$$ClientePagoPendienteDTOImplCopyWithImpl(
+      _$ClientePagoPendienteDTOImpl _value,
+      $Res Function(_$ClientePagoPendienteDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -203,7 +205,7 @@ class __$$_ClientePagoPendienteDTOCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_ClientePagoPendienteDTO(
+    return _then(_$ClientePagoPendienteDTOImpl(
       clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
@@ -258,8 +260,8 @@ class __$$_ClientePagoPendienteDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ClientePagoPendienteDTO extends _ClientePagoPendienteDTO {
-  const _$_ClientePagoPendienteDTO(
+class _$ClientePagoPendienteDTOImpl extends _ClientePagoPendienteDTO {
+  const _$ClientePagoPendienteDTOImpl(
       {@JsonKey(name: 'CLIENTE_ID') required this.clienteId,
       @JsonKey(name: 'EFECTO_ID') required this.efectoId,
       @JsonKey(name: 'FACTURA_ID') this.facutaId,
@@ -274,8 +276,8 @@ class _$_ClientePagoPendienteDTO extends _ClientePagoPendienteDTO {
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
-  factory _$_ClientePagoPendienteDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_ClientePagoPendienteDTOFromJson(json);
+  factory _$ClientePagoPendienteDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ClientePagoPendienteDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'CLIENTE_ID')
@@ -323,7 +325,7 @@ class _$_ClientePagoPendienteDTO extends _ClientePagoPendienteDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClientePagoPendienteDTO &&
+            other is _$ClientePagoPendienteDTOImpl &&
             (identical(other.clienteId, clienteId) ||
                 other.clienteId == clienteId) &&
             (identical(other.efectoId, efectoId) ||
@@ -368,14 +370,13 @@ class _$_ClientePagoPendienteDTO extends _ClientePagoPendienteDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClientePagoPendienteDTOCopyWith<_$_ClientePagoPendienteDTO>
-      get copyWith =>
-          __$$_ClientePagoPendienteDTOCopyWithImpl<_$_ClientePagoPendienteDTO>(
-              this, _$identity);
+  _$$ClientePagoPendienteDTOImplCopyWith<_$ClientePagoPendienteDTOImpl>
+      get copyWith => __$$ClientePagoPendienteDTOImplCopyWithImpl<
+          _$ClientePagoPendienteDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ClientePagoPendienteDTOToJson(
+    return _$$ClientePagoPendienteDTOImplToJson(
       this,
     );
   }
@@ -396,11 +397,11 @@ abstract class _ClientePagoPendienteDTO extends ClientePagoPendienteDTO {
           @JsonKey(name: 'VENCIDO_JBM') final String? vencidoJBM,
           @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
           @JsonKey(name: 'DELETED') final String deleted}) =
-      _$_ClientePagoPendienteDTO;
+      _$ClientePagoPendienteDTOImpl;
   const _ClientePagoPendienteDTO._() : super._();
 
   factory _ClientePagoPendienteDTO.fromJson(Map<String, dynamic> json) =
-      _$_ClientePagoPendienteDTO.fromJson;
+      _$ClientePagoPendienteDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'CLIENTE_ID')
@@ -440,6 +441,6 @@ abstract class _ClientePagoPendienteDTO extends ClientePagoPendienteDTO {
   String get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_ClientePagoPendienteDTOCopyWith<_$_ClientePagoPendienteDTO>
+  _$$ClientePagoPendienteDTOImplCopyWith<_$ClientePagoPendienteDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

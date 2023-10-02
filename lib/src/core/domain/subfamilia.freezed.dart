@@ -86,11 +86,11 @@ class _$SubfamiliaCopyWithImpl<$Res, $Val extends Subfamilia>
 }
 
 /// @nodoc
-abstract class _$$_SubfamiliaCopyWith<$Res>
+abstract class _$$SubfamiliaImplCopyWith<$Res>
     implements $SubfamiliaCopyWith<$Res> {
-  factory _$$_SubfamiliaCopyWith(
-          _$_Subfamilia value, $Res Function(_$_Subfamilia) then) =
-      __$$_SubfamiliaCopyWithImpl<$Res>;
+  factory _$$SubfamiliaImplCopyWith(
+          _$SubfamiliaImpl value, $Res Function(_$SubfamiliaImpl) then) =
+      __$$SubfamiliaImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -102,11 +102,11 @@ abstract class _$$_SubfamiliaCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SubfamiliaCopyWithImpl<$Res>
-    extends _$SubfamiliaCopyWithImpl<$Res, _$_Subfamilia>
-    implements _$$_SubfamiliaCopyWith<$Res> {
-  __$$_SubfamiliaCopyWithImpl(
-      _$_Subfamilia _value, $Res Function(_$_Subfamilia) _then)
+class __$$SubfamiliaImplCopyWithImpl<$Res>
+    extends _$SubfamiliaCopyWithImpl<$Res, _$SubfamiliaImpl>
+    implements _$$SubfamiliaImplCopyWith<$Res> {
+  __$$SubfamiliaImplCopyWithImpl(
+      _$SubfamiliaImpl _value, $Res Function(_$SubfamiliaImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -118,7 +118,7 @@ class __$$_SubfamiliaCopyWithImpl<$Res>
     Object? lastUpdate = null,
     Object? deleted = null,
   }) {
-    return _then(_$_Subfamilia(
+    return _then(_$SubfamiliaImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -145,8 +145,8 @@ class __$$_SubfamiliaCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Subfamilia extends _Subfamilia {
-  const _$_Subfamilia(
+class _$SubfamiliaImpl extends _Subfamilia {
+  const _$SubfamiliaImpl(
       {required this.id,
       required this.familiaId,
       required this.descripcion,
@@ -174,7 +174,7 @@ class _$_Subfamilia extends _Subfamilia {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Subfamilia &&
+            other is _$SubfamiliaImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.familiaId, familiaId) ||
                 other.familiaId == familiaId) &&
@@ -192,8 +192,8 @@ class _$_Subfamilia extends _Subfamilia {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SubfamiliaCopyWith<_$_Subfamilia> get copyWith =>
-      __$$_SubfamiliaCopyWithImpl<_$_Subfamilia>(this, _$identity);
+  _$$SubfamiliaImplCopyWith<_$SubfamiliaImpl> get copyWith =>
+      __$$SubfamiliaImplCopyWithImpl<_$SubfamiliaImpl>(this, _$identity);
 }
 
 abstract class _Subfamilia extends Subfamilia {
@@ -202,7 +202,7 @@ abstract class _Subfamilia extends Subfamilia {
       required final String familiaId,
       required final String descripcion,
       required final DateTime lastUpdate,
-      required final bool deleted}) = _$_Subfamilia;
+      required final bool deleted}) = _$SubfamiliaImpl;
   const _Subfamilia._() : super._();
 
   @override
@@ -217,6 +217,6 @@ abstract class _Subfamilia extends Subfamilia {
   bool get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_SubfamiliaCopyWith<_$_Subfamilia> get copyWith =>
+  _$$SubfamiliaImplCopyWith<_$SubfamiliaImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -119,10 +119,10 @@ class _$UsuarioCopyWithImpl<$Res, $Val extends Usuario>
 }
 
 /// @nodoc
-abstract class _$$_UsuarioCopyWith<$Res> implements $UsuarioCopyWith<$Res> {
-  factory _$$_UsuarioCopyWith(
-          _$_Usuario value, $Res Function(_$_Usuario) then) =
-      __$$_UsuarioCopyWithImpl<$Res>;
+abstract class _$$UsuarioImplCopyWith<$Res> implements $UsuarioCopyWith<$Res> {
+  factory _$$UsuarioImplCopyWith(
+          _$UsuarioImpl value, $Res Function(_$UsuarioImpl) then) =
+      __$$UsuarioImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -139,10 +139,11 @@ abstract class _$$_UsuarioCopyWith<$Res> implements $UsuarioCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UsuarioCopyWithImpl<$Res>
-    extends _$UsuarioCopyWithImpl<$Res, _$_Usuario>
-    implements _$$_UsuarioCopyWith<$Res> {
-  __$$_UsuarioCopyWithImpl(_$_Usuario _value, $Res Function(_$_Usuario) _then)
+class __$$UsuarioImplCopyWithImpl<$Res>
+    extends _$UsuarioCopyWithImpl<$Res, _$UsuarioImpl>
+    implements _$$UsuarioImplCopyWith<$Res> {
+  __$$UsuarioImplCopyWithImpl(
+      _$UsuarioImpl _value, $Res Function(_$UsuarioImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -159,7 +160,7 @@ class __$$_UsuarioCopyWithImpl<$Res>
     Object? modificarPedido = null,
     Object? verTotalVentas = null,
   }) {
-    return _then(_$_Usuario(
+    return _then(_$UsuarioImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -206,8 +207,8 @@ class __$$_UsuarioCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Usuario extends _Usuario {
-  const _$_Usuario(
+class _$UsuarioImpl extends _Usuario {
+  const _$UsuarioImpl(
       {required this.id,
       required this.usuario,
       required this.contrasenya,
@@ -250,7 +251,7 @@ class _$_Usuario extends _Usuario {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Usuario &&
+            other is _$UsuarioImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.usuario, usuario) || other.usuario == usuario) &&
             (identical(other.contrasenya, contrasenya) ||
@@ -287,8 +288,8 @@ class _$_Usuario extends _Usuario {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UsuarioCopyWith<_$_Usuario> get copyWith =>
-      __$$_UsuarioCopyWithImpl<_$_Usuario>(this, _$identity);
+  _$$UsuarioImplCopyWith<_$UsuarioImpl> get copyWith =>
+      __$$UsuarioImplCopyWithImpl<_$UsuarioImpl>(this, _$identity);
 }
 
 abstract class _Usuario extends Usuario {
@@ -302,7 +303,7 @@ abstract class _Usuario extends Usuario {
       required final bool test,
       required final String idiomaId,
       required final bool modificarPedido,
-      required final bool verTotalVentas}) = _$_Usuario;
+      required final bool verTotalVentas}) = _$UsuarioImpl;
   const _Usuario._() : super._();
 
   @override
@@ -327,6 +328,6 @@ abstract class _Usuario extends Usuario {
   bool get verTotalVentas;
   @override
   @JsonKey(ignore: true)
-  _$$_UsuarioCopyWith<_$_Usuario> get copyWith =>
+  _$$UsuarioImplCopyWith<_$UsuarioImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

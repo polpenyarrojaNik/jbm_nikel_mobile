@@ -6,9 +6,9 @@ part of 'cliente_pago_pendiente_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ClientePagoPendienteDTO _$$_ClientePagoPendienteDTOFromJson(
+_$ClientePagoPendienteDTOImpl _$$ClientePagoPendienteDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_ClientePagoPendienteDTO(
+    _$ClientePagoPendienteDTOImpl(
       clienteId: json['CLIENTE_ID'] as String,
       efectoId: json['EFECTO_ID'] as String,
       facutaId: json['FACTURA_ID'] as String?,
@@ -29,8 +29,8 @@ _$_ClientePagoPendienteDTO _$$_ClientePagoPendienteDTOFromJson(
       deleted: json['DELETED'] as String? ?? 'N',
     );
 
-Map<String, dynamic> _$$_ClientePagoPendienteDTOToJson(
-        _$_ClientePagoPendienteDTO instance) =>
+Map<String, dynamic> _$$ClientePagoPendienteDTOImplToJson(
+        _$ClientePagoPendienteDTOImpl instance) =>
     <String, dynamic>{
       'CLIENTE_ID': instance.clienteId,
       'EFECTO_ID': instance.efectoId,

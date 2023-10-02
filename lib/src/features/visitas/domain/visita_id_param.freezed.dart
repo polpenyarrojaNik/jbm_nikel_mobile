@@ -77,11 +77,11 @@ class _$VisitaIdIsLocalParamCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_VisitaIdIsLocalParamCopyWith<$Res>
+abstract class _$$VisitaIdIsLocalParamImplCopyWith<$Res>
     implements $VisitaIdIsLocalParamCopyWith<$Res> {
-  factory _$$_VisitaIdIsLocalParamCopyWith(_$_VisitaIdIsLocalParam value,
-          $Res Function(_$_VisitaIdIsLocalParam) then) =
-      __$$_VisitaIdIsLocalParamCopyWithImpl<$Res>;
+  factory _$$VisitaIdIsLocalParamImplCopyWith(_$VisitaIdIsLocalParamImpl value,
+          $Res Function(_$VisitaIdIsLocalParamImpl) then) =
+      __$$VisitaIdIsLocalParamImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -89,11 +89,11 @@ abstract class _$$_VisitaIdIsLocalParamCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_VisitaIdIsLocalParamCopyWithImpl<$Res>
-    extends _$VisitaIdIsLocalParamCopyWithImpl<$Res, _$_VisitaIdIsLocalParam>
-    implements _$$_VisitaIdIsLocalParamCopyWith<$Res> {
-  __$$_VisitaIdIsLocalParamCopyWithImpl(_$_VisitaIdIsLocalParam _value,
-      $Res Function(_$_VisitaIdIsLocalParam) _then)
+class __$$VisitaIdIsLocalParamImplCopyWithImpl<$Res>
+    extends _$VisitaIdIsLocalParamCopyWithImpl<$Res, _$VisitaIdIsLocalParamImpl>
+    implements _$$VisitaIdIsLocalParamImplCopyWith<$Res> {
+  __$$VisitaIdIsLocalParamImplCopyWithImpl(_$VisitaIdIsLocalParamImpl _value,
+      $Res Function(_$VisitaIdIsLocalParamImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -104,7 +104,7 @@ class __$$_VisitaIdIsLocalParamCopyWithImpl<$Res>
     Object? isNew = null,
     Object? createVisitaFromClienteId = freezed,
   }) {
-    return _then(_$_VisitaIdIsLocalParam(
+    return _then(_$VisitaIdIsLocalParamImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -127,8 +127,8 @@ class __$$_VisitaIdIsLocalParamCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_VisitaIdIsLocalParam extends _VisitaIdIsLocalParam {
-  const _$_VisitaIdIsLocalParam(
+class _$VisitaIdIsLocalParamImpl extends _VisitaIdIsLocalParam {
+  const _$VisitaIdIsLocalParamImpl(
       {required this.id,
       required this.isLocal,
       required this.isNew,
@@ -153,7 +153,7 @@ class _$_VisitaIdIsLocalParam extends _VisitaIdIsLocalParam {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_VisitaIdIsLocalParam &&
+            other is _$VisitaIdIsLocalParamImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.isLocal, isLocal) || other.isLocal == isLocal) &&
             (identical(other.isNew, isNew) || other.isNew == isNew) &&
@@ -169,9 +169,10 @@ class _$_VisitaIdIsLocalParam extends _VisitaIdIsLocalParam {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_VisitaIdIsLocalParamCopyWith<_$_VisitaIdIsLocalParam> get copyWith =>
-      __$$_VisitaIdIsLocalParamCopyWithImpl<_$_VisitaIdIsLocalParam>(
-          this, _$identity);
+  _$$VisitaIdIsLocalParamImplCopyWith<_$VisitaIdIsLocalParamImpl>
+      get copyWith =>
+          __$$VisitaIdIsLocalParamImplCopyWithImpl<_$VisitaIdIsLocalParamImpl>(
+              this, _$identity);
 }
 
 abstract class _VisitaIdIsLocalParam extends VisitaIdIsLocalParam {
@@ -179,7 +180,7 @@ abstract class _VisitaIdIsLocalParam extends VisitaIdIsLocalParam {
       {required final String id,
       required final bool isLocal,
       required final bool isNew,
-      final String? createVisitaFromClienteId}) = _$_VisitaIdIsLocalParam;
+      final String? createVisitaFromClienteId}) = _$VisitaIdIsLocalParamImpl;
   const _VisitaIdIsLocalParam._() : super._();
 
   @override
@@ -192,6 +193,6 @@ abstract class _VisitaIdIsLocalParam extends VisitaIdIsLocalParam {
   String? get createVisitaFromClienteId;
   @override
   @JsonKey(ignore: true)
-  _$$_VisitaIdIsLocalParamCopyWith<_$_VisitaIdIsLocalParam> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$VisitaIdIsLocalParamImplCopyWith<_$VisitaIdIsLocalParamImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

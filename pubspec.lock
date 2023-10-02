@@ -29,10 +29,10 @@ packages:
     dependency: "direct main"
     description:
       name: archive
-      sha256: "20071638cbe4e5964a427cfa0e86dce55d060bc7d82d56f3554095d7239a8765"
+      sha256: "06a96f1249f38a00435b3b0c9a3246d934d7dbc8183fc7c9e56989860edb99d4"
       url: "https://pub.dev"
     source: hosted
-    version: "3.4.2"
+    version: "3.4.4"
   args:
     dependency: transitive
     description:
@@ -117,10 +117,10 @@ packages:
     dependency: transitive
     description:
       name: build_resolvers
-      sha256: "0713a05b0386bd97f9e63e78108805a4feca5898a4b821d6610857f10c91e975"
+      sha256: "64e12b0521812d1684b1917bc80945625391cb9bdd4312536b1d69dcb6133ed8"
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.0"
+    version: "2.4.1"
   build_runner:
     dependency: "direct dev"
     description:
@@ -341,10 +341,10 @@ packages:
     dependency: "direct dev"
     description:
       name: dependency_validator
-      sha256: "08349175533ed0bd06eb9b6043cde66c45b2bfc7ebc222a7542cdb1324f1bf03"
+      sha256: f727a5627aa405965fab4aef4f468e50a9b632ba0737fd2f98c932fec6d712b9
       url: "https://pub.dev"
     source: hosted
-    version: "3.2.2"
+    version: "3.2.3"
   dio:
     dependency: "direct main"
     description:
@@ -357,18 +357,18 @@ packages:
     dependency: "direct main"
     description:
       name: drift
-      sha256: "5722f6db3b24018627ecf88cfc9879a57ee29a2c76286f309132336ef949e931"
+      sha256: c66df5f88616f5b1fb8d83266738d4f3671c692b2aa680fd8fe53e57a4e149be
       url: "https://pub.dev"
     source: hosted
-    version: "2.12.0"
+    version: "2.12.1"
   drift_dev:
     dependency: "direct dev"
     description:
       name: drift_dev
-      sha256: "2b6491530c113450e6a674aef88fee700eeb15c4dde1935692c7ec1c36d64df1"
+      sha256: "8c9bb294a2f1a053f6d09890798ad5ac1fe436d527a4aa3254499105b7b93f96"
       url: "https://pub.dev"
     source: hosted
-    version: "2.12.0"
+    version: "2.12.1"
   dynamic_color:
     dependency: "direct main"
     description:
@@ -527,10 +527,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_riverpod
-      sha256: "1bd39b04f1bcd217a969589777ca6bd642d116e3e5de65c3e6a8e8bdd8b178ec"
+      sha256: fcea39b84b666649280f6f678bc0bb479253bf865abc0387a8b11dac6477bf92
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.0"
+    version: "2.4.1"
   flutter_secure_storage:
     dependency: "direct main"
     description:
@@ -609,10 +609,10 @@ packages:
     dependency: "direct dev"
     description:
       name: freezed
-      sha256: "83462cfc33dc9680533a7f3a4a6ab60aa94f287db5f4ee6511248c22833c497f"
+      sha256: be7826ed5d87e98c924a839542674fc14edbcb3e4fc0adbc058d680f2b241837
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.2"
+    version: "2.4.3"
   freezed_annotation:
     dependency: "direct main"
     description:
@@ -641,10 +641,10 @@ packages:
     dependency: transitive
     description:
       name: geolocator_android
-      sha256: fb7fc45ce08714a17d1bb097c58b751a10c12255c35c3f64a3c6922222d93be2
+      sha256: "93906636752ea4d4e778afa981fdfe7409f545b3147046300df194330044d349"
       url: "https://pub.dev"
     source: hosted
-    version: "4.3.0"
+    version: "4.3.1"
   geolocator_apple:
     dependency: transitive
     description:
@@ -657,10 +657,10 @@ packages:
     dependency: transitive
     description:
       name: geolocator_platform_interface
-      sha256: b8cc1d3be0ca039a3f2174b0b026feab8af3610e220b8532e42cff8ec6658535
+      sha256: b7aca62aa05d7e610c396a53a1936ff87fce2f735d76e93fde9269c341c46a25
       url: "https://pub.dev"
     source: hosted
-    version: "4.1.0"
+    version: "4.1.1"
   geolocator_web:
     dependency: transitive
     description:
@@ -1113,34 +1113,34 @@ packages:
     dependency: transitive
     description:
       name: riverpod
-      sha256: a600120d6f213a9922860eea1abc32597436edd5b2c4e73b91410f8c2af67d22
+      sha256: ff676bd8a715c7085692fe4919564f78fb90d33b10a1c5c14e740581857cc914
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.0"
+    version: "2.4.1"
   riverpod_analyzer_utils:
     dependency: transitive
     description:
       name: riverpod_analyzer_utils
-      sha256: aa216069d72f5478126029fa555874b4b38119f17e3f0f6c93fd63365f74502d
+      sha256: d72d7096964baf288b55619fe48100001fc4564ab7923ed0a7f5c7650e03c0d6
       url: "https://pub.dev"
     source: hosted
-    version: "0.3.3"
+    version: "0.3.4"
   riverpod_annotation:
     dependency: "direct main"
     description:
       name: riverpod_annotation
-      sha256: "6294fe7e7d1875f32bdf04c8fce7620e718070273703097847df8f3bf16995ea"
+      sha256: aeeb1eb6ccf2d779f2ef730e6d96d560316b677662222316779a8cf0a94ee317
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.5"
+    version: "2.1.6"
   riverpod_generator:
     dependency: "direct dev"
     description:
       name: riverpod_generator
-      sha256: d132b1ccb476e60f99989caa6ba9b1c4d88409806c93d880d1633c60c382454d
+      sha256: "5b36ad2f2b562cffb37212e8d59390b25499bf045b732276e30a207b16a25f61"
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.2"
+    version: "2.3.3"
   rxdart:
     dependency: transitive
     description:
@@ -1153,10 +1153,10 @@ packages:
     dependency: transitive
     description:
       name: sanitize_html
-      sha256: "0a445f19bbaa196f5a4f93461aa066b94e6e025622eb1e9bc77872a5e25233a5"
+      sha256: "12669c4a913688a26555323fb9cec373d8f9fbe091f2d01c40c723b33caa8989"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.0"
+    version: "2.1.0"
   share_plus:
     dependency: "direct main"
     description:
@@ -1262,10 +1262,10 @@ packages:
     dependency: transitive
     description:
       name: sqlparser
-      sha256: "46b36e901766bc7d37a0adb79bbe5fb63de6a83b0d888114d912d0729b86cf2a"
+      sha256: d0a6c3ad33d530da1b1306edb33d9948a0d4bf1ce0681a3587bbe47e86d1c82b
       url: "https://pub.dev"
     source: hosted
-    version: "0.31.2"
+    version: "0.31.3"
   stack_trace:
     dependency: transitive
     description:

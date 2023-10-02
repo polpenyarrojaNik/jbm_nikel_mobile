@@ -6,8 +6,8 @@ part of 'pedido_venta_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PedidoVentaDTO _$$_PedidoVentaDTOFromJson(Map<String, dynamic> json) =>
-    _$_PedidoVentaDTO(
+_$PedidoVentaDTOImpl _$$PedidoVentaDTOImplFromJson(Map<String, dynamic> json) =>
+    _$PedidoVentaDTOImpl(
       empresaId: json['EMPRESA_ID'] as String,
       pedidoVentaId: json['PEDIDO_ID'] as String,
       pedidoVentaDate: DateTime.parse(json['FECHA_PEDIDO'] as String),
@@ -38,7 +38,8 @@ _$_PedidoVentaDTO _$$_PedidoVentaDTOFromJson(Map<String, dynamic> json) =>
       deleted: json['DELETED'] as String,
     );
 
-Map<String, dynamic> _$$_PedidoVentaDTOToJson(_$_PedidoVentaDTO instance) =>
+Map<String, dynamic> _$$PedidoVentaDTOImplToJson(
+        _$PedidoVentaDTOImpl instance) =>
     <String, dynamic>{
       'EMPRESA_ID': instance.empresaId,
       'PEDIDO_ID': instance.pedidoVentaId,

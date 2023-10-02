@@ -104,11 +104,11 @@ class _$ProvinciaDTOCopyWithImpl<$Res, $Val extends ProvinciaDTO>
 }
 
 /// @nodoc
-abstract class _$$_ProvinciaDTOCopyWith<$Res>
+abstract class _$$ProvinciaDTOImplCopyWith<$Res>
     implements $ProvinciaDTOCopyWith<$Res> {
-  factory _$$_ProvinciaDTOCopyWith(
-          _$_ProvinciaDTO value, $Res Function(_$_ProvinciaDTO) then) =
-      __$$_ProvinciaDTOCopyWithImpl<$Res>;
+  factory _$$ProvinciaDTOImplCopyWith(
+          _$ProvinciaDTOImpl value, $Res Function(_$ProvinciaDTOImpl) then) =
+      __$$ProvinciaDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -121,11 +121,11 @@ abstract class _$$_ProvinciaDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ProvinciaDTOCopyWithImpl<$Res>
-    extends _$ProvinciaDTOCopyWithImpl<$Res, _$_ProvinciaDTO>
-    implements _$$_ProvinciaDTOCopyWith<$Res> {
-  __$$_ProvinciaDTOCopyWithImpl(
-      _$_ProvinciaDTO _value, $Res Function(_$_ProvinciaDTO) _then)
+class __$$ProvinciaDTOImplCopyWithImpl<$Res>
+    extends _$ProvinciaDTOCopyWithImpl<$Res, _$ProvinciaDTOImpl>
+    implements _$$ProvinciaDTOImplCopyWith<$Res> {
+  __$$ProvinciaDTOImplCopyWithImpl(
+      _$ProvinciaDTOImpl _value, $Res Function(_$ProvinciaDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -138,7 +138,7 @@ class __$$_ProvinciaDTOCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_ProvinciaDTO(
+    return _then(_$ProvinciaDTOImpl(
       paisId: freezed == paisId
           ? _value.paisId
           : paisId // ignore: cast_nullable_to_non_nullable
@@ -169,8 +169,8 @@ class __$$_ProvinciaDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ProvinciaDTO extends _ProvinciaDTO {
-  const _$_ProvinciaDTO(
+class _$ProvinciaDTOImpl extends _ProvinciaDTO {
+  const _$ProvinciaDTOImpl(
       {@JsonKey(name: 'PAIS_ID') required this.paisId,
       @JsonKey(name: 'REGION_ID') required this.regionId,
       @JsonKey(name: 'PROVINCIA_ID') required this.provinciaId,
@@ -179,8 +179,8 @@ class _$_ProvinciaDTO extends _ProvinciaDTO {
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
-  factory _$_ProvinciaDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_ProvinciaDTOFromJson(json);
+  factory _$ProvinciaDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ProvinciaDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'PAIS_ID')
@@ -210,7 +210,7 @@ class _$_ProvinciaDTO extends _ProvinciaDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ProvinciaDTO &&
+            other is _$ProvinciaDTOImpl &&
             (identical(other.paisId, paisId) || other.paisId == paisId) &&
             (identical(other.regionId, regionId) ||
                 other.regionId == regionId) &&
@@ -231,12 +231,12 @@ class _$_ProvinciaDTO extends _ProvinciaDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ProvinciaDTOCopyWith<_$_ProvinciaDTO> get copyWith =>
-      __$$_ProvinciaDTOCopyWithImpl<_$_ProvinciaDTO>(this, _$identity);
+  _$$ProvinciaDTOImplCopyWith<_$ProvinciaDTOImpl> get copyWith =>
+      __$$ProvinciaDTOImplCopyWithImpl<_$ProvinciaDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ProvinciaDTOToJson(
+    return _$$ProvinciaDTOImplToJson(
       this,
     );
   }
@@ -249,11 +249,11 @@ abstract class _ProvinciaDTO extends ProvinciaDTO {
       @JsonKey(name: 'PROVINCIA_ID') required final String provinciaId,
       @JsonKey(name: 'PROVINCIA') final String? provincia,
       @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') final String deleted}) = _$_ProvinciaDTO;
+      @JsonKey(name: 'DELETED') final String deleted}) = _$ProvinciaDTOImpl;
   const _ProvinciaDTO._() : super._();
 
   factory _ProvinciaDTO.fromJson(Map<String, dynamic> json) =
-      _$_ProvinciaDTO.fromJson;
+      _$ProvinciaDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'PAIS_ID')
@@ -275,6 +275,6 @@ abstract class _ProvinciaDTO extends ProvinciaDTO {
   String get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_ProvinciaDTOCopyWith<_$_ProvinciaDTO> get copyWith =>
+  _$$ProvinciaDTOImplCopyWith<_$ProvinciaDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

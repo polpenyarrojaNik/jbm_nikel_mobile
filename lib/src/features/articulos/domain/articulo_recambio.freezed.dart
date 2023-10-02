@@ -93,11 +93,11 @@ class _$ArticuloRecambioCopyWithImpl<$Res, $Val extends ArticuloRecambio>
 }
 
 /// @nodoc
-abstract class _$$_ArticuloRecambioCopyWith<$Res>
+abstract class _$$ArticuloRecambioImplCopyWith<$Res>
     implements $ArticuloRecambioCopyWith<$Res> {
-  factory _$$_ArticuloRecambioCopyWith(
-          _$_ArticuloRecambio value, $Res Function(_$_ArticuloRecambio) then) =
-      __$$_ArticuloRecambioCopyWithImpl<$Res>;
+  factory _$$ArticuloRecambioImplCopyWith(_$ArticuloRecambioImpl value,
+          $Res Function(_$ArticuloRecambioImpl) then) =
+      __$$ArticuloRecambioImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -110,11 +110,11 @@ abstract class _$$_ArticuloRecambioCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ArticuloRecambioCopyWithImpl<$Res>
-    extends _$ArticuloRecambioCopyWithImpl<$Res, _$_ArticuloRecambio>
-    implements _$$_ArticuloRecambioCopyWith<$Res> {
-  __$$_ArticuloRecambioCopyWithImpl(
-      _$_ArticuloRecambio _value, $Res Function(_$_ArticuloRecambio) _then)
+class __$$ArticuloRecambioImplCopyWithImpl<$Res>
+    extends _$ArticuloRecambioCopyWithImpl<$Res, _$ArticuloRecambioImpl>
+    implements _$$ArticuloRecambioImplCopyWith<$Res> {
+  __$$ArticuloRecambioImplCopyWithImpl(_$ArticuloRecambioImpl _value,
+      $Res Function(_$ArticuloRecambioImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -127,7 +127,7 @@ class __$$_ArticuloRecambioCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_ArticuloRecambio(
+    return _then(_$ArticuloRecambioImpl(
       articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
@@ -158,8 +158,8 @@ class __$$_ArticuloRecambioCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ArticuloRecambio extends _ArticuloRecambio {
-  const _$_ArticuloRecambio(
+class _$ArticuloRecambioImpl extends _ArticuloRecambio {
+  const _$ArticuloRecambioImpl(
       {required this.articuloId,
       required this.id,
       required this.descripcion,
@@ -190,7 +190,7 @@ class _$_ArticuloRecambio extends _ArticuloRecambio {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ArticuloRecambio &&
+            other is _$ArticuloRecambioImpl &&
             (identical(other.articuloId, articuloId) ||
                 other.articuloId == articuloId) &&
             (identical(other.id, id) || other.id == id) &&
@@ -210,8 +210,9 @@ class _$_ArticuloRecambio extends _ArticuloRecambio {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArticuloRecambioCopyWith<_$_ArticuloRecambio> get copyWith =>
-      __$$_ArticuloRecambioCopyWithImpl<_$_ArticuloRecambio>(this, _$identity);
+  _$$ArticuloRecambioImplCopyWith<_$ArticuloRecambioImpl> get copyWith =>
+      __$$ArticuloRecambioImplCopyWithImpl<_$ArticuloRecambioImpl>(
+          this, _$identity);
 }
 
 abstract class _ArticuloRecambio extends ArticuloRecambio {
@@ -221,7 +222,7 @@ abstract class _ArticuloRecambio extends ArticuloRecambio {
       required final String descripcion,
       required final int cantidad,
       required final DateTime lastUpdated,
-      required final bool deleted}) = _$_ArticuloRecambio;
+      required final bool deleted}) = _$ArticuloRecambioImpl;
   const _ArticuloRecambio._() : super._();
 
   @override
@@ -238,6 +239,6 @@ abstract class _ArticuloRecambio extends ArticuloRecambio {
   bool get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_ArticuloRecambioCopyWith<_$_ArticuloRecambio> get copyWith =>
+  _$$ArticuloRecambioImplCopyWith<_$ArticuloRecambioImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

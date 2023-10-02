@@ -86,11 +86,11 @@ class _$ArticuloEmpresaIvaCopyWithImpl<$Res, $Val extends ArticuloEmpresaIva>
 }
 
 /// @nodoc
-abstract class _$$_ArticuloEmpresaIvaCopyWith<$Res>
+abstract class _$$ArticuloEmpresaIvaImplCopyWith<$Res>
     implements $ArticuloEmpresaIvaCopyWith<$Res> {
-  factory _$$_ArticuloEmpresaIvaCopyWith(_$_ArticuloEmpresaIva value,
-          $Res Function(_$_ArticuloEmpresaIva) then) =
-      __$$_ArticuloEmpresaIvaCopyWithImpl<$Res>;
+  factory _$$ArticuloEmpresaIvaImplCopyWith(_$ArticuloEmpresaIvaImpl value,
+          $Res Function(_$ArticuloEmpresaIvaImpl) then) =
+      __$$ArticuloEmpresaIvaImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -102,11 +102,11 @@ abstract class _$$_ArticuloEmpresaIvaCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ArticuloEmpresaIvaCopyWithImpl<$Res>
-    extends _$ArticuloEmpresaIvaCopyWithImpl<$Res, _$_ArticuloEmpresaIva>
-    implements _$$_ArticuloEmpresaIvaCopyWith<$Res> {
-  __$$_ArticuloEmpresaIvaCopyWithImpl(
-      _$_ArticuloEmpresaIva _value, $Res Function(_$_ArticuloEmpresaIva) _then)
+class __$$ArticuloEmpresaIvaImplCopyWithImpl<$Res>
+    extends _$ArticuloEmpresaIvaCopyWithImpl<$Res, _$ArticuloEmpresaIvaImpl>
+    implements _$$ArticuloEmpresaIvaImplCopyWith<$Res> {
+  __$$ArticuloEmpresaIvaImplCopyWithImpl(_$ArticuloEmpresaIvaImpl _value,
+      $Res Function(_$ArticuloEmpresaIvaImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -118,7 +118,7 @@ class __$$_ArticuloEmpresaIvaCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_ArticuloEmpresaIva(
+    return _then(_$ArticuloEmpresaIvaImpl(
       articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
@@ -145,8 +145,8 @@ class __$$_ArticuloEmpresaIvaCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ArticuloEmpresaIva extends _ArticuloEmpresaIva {
-  const _$_ArticuloEmpresaIva(
+class _$ArticuloEmpresaIvaImpl extends _ArticuloEmpresaIva {
+  const _$ArticuloEmpresaIvaImpl(
       {required this.articuloId,
       required this.empresaId,
       required this.iva,
@@ -174,7 +174,7 @@ class _$_ArticuloEmpresaIva extends _ArticuloEmpresaIva {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ArticuloEmpresaIva &&
+            other is _$ArticuloEmpresaIvaImpl &&
             (identical(other.articuloId, articuloId) ||
                 other.articuloId == articuloId) &&
             (identical(other.empresaId, empresaId) ||
@@ -192,8 +192,8 @@ class _$_ArticuloEmpresaIva extends _ArticuloEmpresaIva {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArticuloEmpresaIvaCopyWith<_$_ArticuloEmpresaIva> get copyWith =>
-      __$$_ArticuloEmpresaIvaCopyWithImpl<_$_ArticuloEmpresaIva>(
+  _$$ArticuloEmpresaIvaImplCopyWith<_$ArticuloEmpresaIvaImpl> get copyWith =>
+      __$$ArticuloEmpresaIvaImplCopyWithImpl<_$ArticuloEmpresaIvaImpl>(
           this, _$identity);
 }
 
@@ -203,7 +203,7 @@ abstract class _ArticuloEmpresaIva extends ArticuloEmpresaIva {
       required final String empresaId,
       required final double iva,
       required final DateTime lastUpdated,
-      required final bool deleted}) = _$_ArticuloEmpresaIva;
+      required final bool deleted}) = _$ArticuloEmpresaIvaImpl;
   const _ArticuloEmpresaIva._() : super._();
 
   @override
@@ -218,6 +218,6 @@ abstract class _ArticuloEmpresaIva extends ArticuloEmpresaIva {
   bool get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_ArticuloEmpresaIvaCopyWith<_$_ArticuloEmpresaIva> get copyWith =>
+  _$$ArticuloEmpresaIvaImplCopyWith<_$ArticuloEmpresaIvaImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

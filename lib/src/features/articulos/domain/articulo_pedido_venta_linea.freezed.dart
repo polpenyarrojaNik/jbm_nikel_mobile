@@ -171,12 +171,12 @@ class _$ArticuloPedidoVentaLineaCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ArticuloPedidoVentaLineaCopyWith<$Res>
+abstract class _$$ArticuloPedidoVentaLineaImplCopyWith<$Res>
     implements $ArticuloPedidoVentaLineaCopyWith<$Res> {
-  factory _$$_ArticuloPedidoVentaLineaCopyWith(
-          _$_ArticuloPedidoVentaLinea value,
-          $Res Function(_$_ArticuloPedidoVentaLinea) then) =
-      __$$_ArticuloPedidoVentaLineaCopyWithImpl<$Res>;
+  factory _$$ArticuloPedidoVentaLineaImplCopyWith(
+          _$ArticuloPedidoVentaLineaImpl value,
+          $Res Function(_$ArticuloPedidoVentaLineaImpl) then) =
+      __$$ArticuloPedidoVentaLineaImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -200,12 +200,13 @@ abstract class _$$_ArticuloPedidoVentaLineaCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ArticuloPedidoVentaLineaCopyWithImpl<$Res>
+class __$$ArticuloPedidoVentaLineaImplCopyWithImpl<$Res>
     extends _$ArticuloPedidoVentaLineaCopyWithImpl<$Res,
-        _$_ArticuloPedidoVentaLinea>
-    implements _$$_ArticuloPedidoVentaLineaCopyWith<$Res> {
-  __$$_ArticuloPedidoVentaLineaCopyWithImpl(_$_ArticuloPedidoVentaLinea _value,
-      $Res Function(_$_ArticuloPedidoVentaLinea) _then)
+        _$ArticuloPedidoVentaLineaImpl>
+    implements _$$ArticuloPedidoVentaLineaImplCopyWith<$Res> {
+  __$$ArticuloPedidoVentaLineaImplCopyWithImpl(
+      _$ArticuloPedidoVentaLineaImpl _value,
+      $Res Function(_$ArticuloPedidoVentaLineaImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -229,7 +230,7 @@ class __$$_ArticuloPedidoVentaLineaCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_ArticuloPedidoVentaLinea(
+    return _then(_$ArticuloPedidoVentaLineaImpl(
       empresaId: null == empresaId
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
@@ -304,8 +305,8 @@ class __$$_ArticuloPedidoVentaLineaCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ArticuloPedidoVentaLinea extends _ArticuloPedidoVentaLinea {
-  const _$_ArticuloPedidoVentaLinea(
+class _$ArticuloPedidoVentaLineaImpl extends _ArticuloPedidoVentaLinea {
+  const _$ArticuloPedidoVentaLineaImpl(
       {required this.empresaId,
       required this.pedidoVentaId,
       required this.id,
@@ -369,7 +370,7 @@ class _$_ArticuloPedidoVentaLinea extends _ArticuloPedidoVentaLinea {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ArticuloPedidoVentaLinea &&
+            other is _$ArticuloPedidoVentaLineaImpl &&
             (identical(other.empresaId, empresaId) ||
                 other.empresaId == empresaId) &&
             (identical(other.pedidoVentaId, pedidoVentaId) ||
@@ -428,9 +429,9 @@ class _$_ArticuloPedidoVentaLinea extends _ArticuloPedidoVentaLinea {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArticuloPedidoVentaLineaCopyWith<_$_ArticuloPedidoVentaLinea>
-      get copyWith => __$$_ArticuloPedidoVentaLineaCopyWithImpl<
-          _$_ArticuloPedidoVentaLinea>(this, _$identity);
+  _$$ArticuloPedidoVentaLineaImplCopyWith<_$ArticuloPedidoVentaLineaImpl>
+      get copyWith => __$$ArticuloPedidoVentaLineaImplCopyWithImpl<
+          _$ArticuloPedidoVentaLineaImpl>(this, _$identity);
 }
 
 abstract class _ArticuloPedidoVentaLinea extends ArticuloPedidoVentaLinea {
@@ -451,7 +452,7 @@ abstract class _ArticuloPedidoVentaLinea extends ArticuloPedidoVentaLinea {
       required final double descuento3,
       required final DateTime fechaPedido,
       required final DateTime lastUpdated,
-      required final bool deleted}) = _$_ArticuloPedidoVentaLinea;
+      required final bool deleted}) = _$ArticuloPedidoVentaLineaImpl;
   const _ArticuloPedidoVentaLinea._() : super._();
 
   @override
@@ -490,6 +491,6 @@ abstract class _ArticuloPedidoVentaLinea extends ArticuloPedidoVentaLinea {
   bool get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_ArticuloPedidoVentaLineaCopyWith<_$_ArticuloPedidoVentaLinea>
+  _$$ArticuloPedidoVentaLineaImplCopyWith<_$ArticuloPedidoVentaLineaImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

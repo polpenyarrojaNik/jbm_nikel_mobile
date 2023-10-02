@@ -63,22 +63,22 @@ class _$TipoCatalogoCopyWithImpl<$Res, $Val extends TipoCatalogo>
 }
 
 /// @nodoc
-abstract class _$$_TipoCatalogoCopyWith<$Res>
+abstract class _$$TipoCatalogoImplCopyWith<$Res>
     implements $TipoCatalogoCopyWith<$Res> {
-  factory _$$_TipoCatalogoCopyWith(
-          _$_TipoCatalogo value, $Res Function(_$_TipoCatalogo) then) =
-      __$$_TipoCatalogoCopyWithImpl<$Res>;
+  factory _$$TipoCatalogoImplCopyWith(
+          _$TipoCatalogoImpl value, $Res Function(_$TipoCatalogoImpl) then) =
+      __$$TipoCatalogoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String tipoCatalogoId, String descripcion});
 }
 
 /// @nodoc
-class __$$_TipoCatalogoCopyWithImpl<$Res>
-    extends _$TipoCatalogoCopyWithImpl<$Res, _$_TipoCatalogo>
-    implements _$$_TipoCatalogoCopyWith<$Res> {
-  __$$_TipoCatalogoCopyWithImpl(
-      _$_TipoCatalogo _value, $Res Function(_$_TipoCatalogo) _then)
+class __$$TipoCatalogoImplCopyWithImpl<$Res>
+    extends _$TipoCatalogoCopyWithImpl<$Res, _$TipoCatalogoImpl>
+    implements _$$TipoCatalogoImplCopyWith<$Res> {
+  __$$TipoCatalogoImplCopyWithImpl(
+      _$TipoCatalogoImpl _value, $Res Function(_$TipoCatalogoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_TipoCatalogoCopyWithImpl<$Res>
     Object? tipoCatalogoId = null,
     Object? descripcion = null,
   }) {
-    return _then(_$_TipoCatalogo(
+    return _then(_$TipoCatalogoImpl(
       tipoCatalogoId: null == tipoCatalogoId
           ? _value.tipoCatalogoId
           : tipoCatalogoId // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_TipoCatalogoCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TipoCatalogo extends _TipoCatalogo {
-  const _$_TipoCatalogo(
+class _$TipoCatalogoImpl extends _TipoCatalogo {
+  const _$TipoCatalogoImpl(
       {required this.tipoCatalogoId, required this.descripcion})
       : super._();
 
@@ -121,7 +121,7 @@ class _$_TipoCatalogo extends _TipoCatalogo {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TipoCatalogo &&
+            other is _$TipoCatalogoImpl &&
             (identical(other.tipoCatalogoId, tipoCatalogoId) ||
                 other.tipoCatalogoId == tipoCatalogoId) &&
             (identical(other.descripcion, descripcion) ||
@@ -134,14 +134,14 @@ class _$_TipoCatalogo extends _TipoCatalogo {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TipoCatalogoCopyWith<_$_TipoCatalogo> get copyWith =>
-      __$$_TipoCatalogoCopyWithImpl<_$_TipoCatalogo>(this, _$identity);
+  _$$TipoCatalogoImplCopyWith<_$TipoCatalogoImpl> get copyWith =>
+      __$$TipoCatalogoImplCopyWithImpl<_$TipoCatalogoImpl>(this, _$identity);
 }
 
 abstract class _TipoCatalogo extends TipoCatalogo {
   const factory _TipoCatalogo(
       {required final String tipoCatalogoId,
-      required final String descripcion}) = _$_TipoCatalogo;
+      required final String descripcion}) = _$TipoCatalogoImpl;
   const _TipoCatalogo._() : super._();
 
   @override
@@ -150,6 +150,6 @@ abstract class _TipoCatalogo extends TipoCatalogo {
   String get descripcion;
   @override
   @JsonKey(ignore: true)
-  _$$_TipoCatalogoCopyWith<_$_TipoCatalogo> get copyWith =>
+  _$$TipoCatalogoImplCopyWith<_$TipoCatalogoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

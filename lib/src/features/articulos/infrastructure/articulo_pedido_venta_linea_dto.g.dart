@@ -6,9 +6,9 @@ part of 'articulo_pedido_venta_linea_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ArticuloPedidoVentaLineaDTO _$$_ArticuloPedidoVentaLineaDTOFromJson(
+_$ArticuloPedidoVentaLineaDTOImpl _$$ArticuloPedidoVentaLineaDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_ArticuloPedidoVentaLineaDTO(
+    _$ArticuloPedidoVentaLineaDTOImpl(
       empresaId: json['EMPRESA_ID'] as String,
       pedidoVentaId: json['PEDIDO_ID'] as String,
       id: json['PEDIDO_LINEA_ID'] as String,
@@ -26,8 +26,8 @@ _$_ArticuloPedidoVentaLineaDTO _$$_ArticuloPedidoVentaLineaDTOFromJson(
       deleted: json['DELETED'] as String,
     );
 
-Map<String, dynamic> _$$_ArticuloPedidoVentaLineaDTOToJson(
-        _$_ArticuloPedidoVentaLineaDTO instance) =>
+Map<String, dynamic> _$$ArticuloPedidoVentaLineaDTOImplToJson(
+        _$ArticuloPedidoVentaLineaDTOImpl instance) =>
     <String, dynamic>{
       'EMPRESA_ID': instance.empresaId,
       'PEDIDO_ID': instance.pedidoVentaId,

@@ -6,8 +6,9 @@ part of 'tipo_catalogo_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_TipoCatalogoDTO _$$_TipoCatalogoDTOFromJson(Map<String, dynamic> json) =>
-    _$_TipoCatalogoDTO(
+_$TipoCatalogoDTOImpl _$$TipoCatalogoDTOImplFromJson(
+        Map<String, dynamic> json) =>
+    _$TipoCatalogoDTOImpl(
       tipoCatalogoId: json['TIPO_CATALOGO_ID'] as String,
       descripcionES: json['DESCRIPCION_ES'] as String,
       descripcionEN: json['DESCRIPCION_EN'] as String?,
@@ -21,7 +22,8 @@ _$_TipoCatalogoDTO _$$_TipoCatalogoDTOFromJson(Map<String, dynamic> json) =>
       descripcionPL: json['DESCRIPCION_PL'] as String?,
     );
 
-Map<String, dynamic> _$$_TipoCatalogoDTOToJson(_$_TipoCatalogoDTO instance) =>
+Map<String, dynamic> _$$TipoCatalogoDTOImplToJson(
+        _$TipoCatalogoDTOImpl instance) =>
     <String, dynamic>{
       'TIPO_CATALOGO_ID': instance.tipoCatalogoId,
       'DESCRIPCION_ES': instance.descripcionES,

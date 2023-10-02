@@ -73,20 +73,21 @@ class _$FamiliaCopyWithImpl<$Res, $Val extends Familia>
 }
 
 /// @nodoc
-abstract class _$$_FamiliaCopyWith<$Res> implements $FamiliaCopyWith<$Res> {
-  factory _$$_FamiliaCopyWith(
-          _$_Familia value, $Res Function(_$_Familia) then) =
-      __$$_FamiliaCopyWithImpl<$Res>;
+abstract class _$$FamiliaImplCopyWith<$Res> implements $FamiliaCopyWith<$Res> {
+  factory _$$FamiliaImplCopyWith(
+          _$FamiliaImpl value, $Res Function(_$FamiliaImpl) then) =
+      __$$FamiliaImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id, String descripcion, DateTime lastUpdate, bool deleted});
 }
 
 /// @nodoc
-class __$$_FamiliaCopyWithImpl<$Res>
-    extends _$FamiliaCopyWithImpl<$Res, _$_Familia>
-    implements _$$_FamiliaCopyWith<$Res> {
-  __$$_FamiliaCopyWithImpl(_$_Familia _value, $Res Function(_$_Familia) _then)
+class __$$FamiliaImplCopyWithImpl<$Res>
+    extends _$FamiliaCopyWithImpl<$Res, _$FamiliaImpl>
+    implements _$$FamiliaImplCopyWith<$Res> {
+  __$$FamiliaImplCopyWithImpl(
+      _$FamiliaImpl _value, $Res Function(_$FamiliaImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -97,7 +98,7 @@ class __$$_FamiliaCopyWithImpl<$Res>
     Object? lastUpdate = null,
     Object? deleted = null,
   }) {
-    return _then(_$_Familia(
+    return _then(_$FamiliaImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -120,8 +121,8 @@ class __$$_FamiliaCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Familia extends _Familia {
-  const _$_Familia(
+class _$FamiliaImpl extends _Familia {
+  const _$FamiliaImpl(
       {required this.id,
       required this.descripcion,
       required this.lastUpdate,
@@ -146,7 +147,7 @@ class _$_Familia extends _Familia {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Familia &&
+            other is _$FamiliaImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.descripcion, descripcion) ||
                 other.descripcion == descripcion) &&
@@ -162,8 +163,8 @@ class _$_Familia extends _Familia {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FamiliaCopyWith<_$_Familia> get copyWith =>
-      __$$_FamiliaCopyWithImpl<_$_Familia>(this, _$identity);
+  _$$FamiliaImplCopyWith<_$FamiliaImpl> get copyWith =>
+      __$$FamiliaImplCopyWithImpl<_$FamiliaImpl>(this, _$identity);
 }
 
 abstract class _Familia extends Familia {
@@ -171,7 +172,7 @@ abstract class _Familia extends Familia {
       {required final String id,
       required final String descripcion,
       required final DateTime lastUpdate,
-      required final bool deleted}) = _$_Familia;
+      required final bool deleted}) = _$FamiliaImpl;
   const _Familia._() : super._();
 
   @override
@@ -184,6 +185,6 @@ abstract class _Familia extends Familia {
   bool get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_FamiliaCopyWith<_$_Familia> get copyWith =>
+  _$$FamiliaImplCopyWith<_$FamiliaImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

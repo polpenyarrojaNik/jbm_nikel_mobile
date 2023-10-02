@@ -6,9 +6,9 @@ part of 'pedido_venta_estado_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PedidoVentaEstadoDTO _$$_PedidoVentaEstadoDTOFromJson(
+_$PedidoVentaEstadoDTOImpl _$$PedidoVentaEstadoDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_PedidoVentaEstadoDTO(
+    _$PedidoVentaEstadoDTOImpl(
       id: json['ESTADO_PEDIDO_ID'] as int,
       descripcionES: json['DESCRIPCION_ES'] as String,
       descripcionEN: json['DESCRIPCION_EN'] as String?,
@@ -28,8 +28,8 @@ _$_PedidoVentaEstadoDTO _$$_PedidoVentaEstadoDTOFromJson(
       deleted: json['DELETED'] as String? ?? 'N',
     );
 
-Map<String, dynamic> _$$_PedidoVentaEstadoDTOToJson(
-        _$_PedidoVentaEstadoDTO instance) =>
+Map<String, dynamic> _$$PedidoVentaEstadoDTOImplToJson(
+        _$PedidoVentaEstadoDTOImpl instance) =>
     <String, dynamic>{
       'ESTADO_PEDIDO_ID': instance.id,
       'DESCRIPCION_ES': instance.descripcionES,

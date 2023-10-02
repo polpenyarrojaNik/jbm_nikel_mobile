@@ -92,10 +92,11 @@ class _$ProvinciaCopyWithImpl<$Res, $Val extends Provincia>
 }
 
 /// @nodoc
-abstract class _$$_ProvinciaCopyWith<$Res> implements $ProvinciaCopyWith<$Res> {
-  factory _$$_ProvinciaCopyWith(
-          _$_Provincia value, $Res Function(_$_Provincia) then) =
-      __$$_ProvinciaCopyWithImpl<$Res>;
+abstract class _$$ProvinciaImplCopyWith<$Res>
+    implements $ProvinciaCopyWith<$Res> {
+  factory _$$ProvinciaImplCopyWith(
+          _$ProvinciaImpl value, $Res Function(_$ProvinciaImpl) then) =
+      __$$ProvinciaImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -108,11 +109,11 @@ abstract class _$$_ProvinciaCopyWith<$Res> implements $ProvinciaCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ProvinciaCopyWithImpl<$Res>
-    extends _$ProvinciaCopyWithImpl<$Res, _$_Provincia>
-    implements _$$_ProvinciaCopyWith<$Res> {
-  __$$_ProvinciaCopyWithImpl(
-      _$_Provincia _value, $Res Function(_$_Provincia) _then)
+class __$$ProvinciaImplCopyWithImpl<$Res>
+    extends _$ProvinciaCopyWithImpl<$Res, _$ProvinciaImpl>
+    implements _$$ProvinciaImplCopyWith<$Res> {
+  __$$ProvinciaImplCopyWithImpl(
+      _$ProvinciaImpl _value, $Res Function(_$ProvinciaImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -125,7 +126,7 @@ class __$$_ProvinciaCopyWithImpl<$Res>
     Object? lastUpdate = null,
     Object? deleted = null,
   }) {
-    return _then(_$_Provincia(
+    return _then(_$ProvinciaImpl(
       paisId: null == paisId
           ? _value.paisId
           : paisId // ignore: cast_nullable_to_non_nullable
@@ -156,8 +157,8 @@ class __$$_ProvinciaCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Provincia extends _Provincia {
-  const _$_Provincia(
+class _$ProvinciaImpl extends _Provincia {
+  const _$ProvinciaImpl(
       {required this.paisId,
       required this.regionId,
       required this.provinciaId,
@@ -188,7 +189,7 @@ class _$_Provincia extends _Provincia {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Provincia &&
+            other is _$ProvinciaImpl &&
             (identical(other.paisId, paisId) || other.paisId == paisId) &&
             (identical(other.regionId, regionId) ||
                 other.regionId == regionId) &&
@@ -208,8 +209,8 @@ class _$_Provincia extends _Provincia {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ProvinciaCopyWith<_$_Provincia> get copyWith =>
-      __$$_ProvinciaCopyWithImpl<_$_Provincia>(this, _$identity);
+  _$$ProvinciaImplCopyWith<_$ProvinciaImpl> get copyWith =>
+      __$$ProvinciaImplCopyWithImpl<_$ProvinciaImpl>(this, _$identity);
 }
 
 abstract class _Provincia extends Provincia {
@@ -219,7 +220,7 @@ abstract class _Provincia extends Provincia {
       required final String provinciaId,
       final String? provincia,
       required final DateTime lastUpdate,
-      required final bool deleted}) = _$_Provincia;
+      required final bool deleted}) = _$ProvinciaImpl;
   const _Provincia._() : super._();
 
   @override
@@ -236,6 +237,6 @@ abstract class _Provincia extends Provincia {
   bool get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_ProvinciaCopyWith<_$_Provincia> get copyWith =>
+  _$$ProvinciaImplCopyWith<_$ProvinciaImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

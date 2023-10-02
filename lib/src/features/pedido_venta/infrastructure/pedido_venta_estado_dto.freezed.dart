@@ -194,11 +194,11 @@ class _$PedidoVentaEstadoDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_PedidoVentaEstadoDTOCopyWith<$Res>
+abstract class _$$PedidoVentaEstadoDTOImplCopyWith<$Res>
     implements $PedidoVentaEstadoDTOCopyWith<$Res> {
-  factory _$$_PedidoVentaEstadoDTOCopyWith(_$_PedidoVentaEstadoDTO value,
-          $Res Function(_$_PedidoVentaEstadoDTO) then) =
-      __$$_PedidoVentaEstadoDTOCopyWithImpl<$Res>;
+  factory _$$PedidoVentaEstadoDTOImplCopyWith(_$PedidoVentaEstadoDTOImpl value,
+          $Res Function(_$PedidoVentaEstadoDTOImpl) then) =
+      __$$PedidoVentaEstadoDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -222,11 +222,11 @@ abstract class _$$_PedidoVentaEstadoDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PedidoVentaEstadoDTOCopyWithImpl<$Res>
-    extends _$PedidoVentaEstadoDTOCopyWithImpl<$Res, _$_PedidoVentaEstadoDTO>
-    implements _$$_PedidoVentaEstadoDTOCopyWith<$Res> {
-  __$$_PedidoVentaEstadoDTOCopyWithImpl(_$_PedidoVentaEstadoDTO _value,
-      $Res Function(_$_PedidoVentaEstadoDTO) _then)
+class __$$PedidoVentaEstadoDTOImplCopyWithImpl<$Res>
+    extends _$PedidoVentaEstadoDTOCopyWithImpl<$Res, _$PedidoVentaEstadoDTOImpl>
+    implements _$$PedidoVentaEstadoDTOImplCopyWith<$Res> {
+  __$$PedidoVentaEstadoDTOImplCopyWithImpl(_$PedidoVentaEstadoDTOImpl _value,
+      $Res Function(_$PedidoVentaEstadoDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -250,7 +250,7 @@ class __$$_PedidoVentaEstadoDTOCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_PedidoVentaEstadoDTO(
+    return _then(_$PedidoVentaEstadoDTOImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -325,8 +325,8 @@ class __$$_PedidoVentaEstadoDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PedidoVentaEstadoDTO extends _PedidoVentaEstadoDTO {
-  const _$_PedidoVentaEstadoDTO(
+class _$PedidoVentaEstadoDTOImpl extends _PedidoVentaEstadoDTO {
+  const _$PedidoVentaEstadoDTOImpl(
       {@JsonKey(name: 'ESTADO_PEDIDO_ID') required this.id,
       @JsonKey(name: 'DESCRIPCION_ES') required this.descripcionES,
       @JsonKey(name: 'DESCRIPCION_EN') this.descripcionEN,
@@ -346,8 +346,8 @@ class _$_PedidoVentaEstadoDTO extends _PedidoVentaEstadoDTO {
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
-  factory _$_PedidoVentaEstadoDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_PedidoVentaEstadoDTOFromJson(json);
+  factory _$PedidoVentaEstadoDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PedidoVentaEstadoDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'ESTADO_PEDIDO_ID')
@@ -411,7 +411,7 @@ class _$_PedidoVentaEstadoDTO extends _PedidoVentaEstadoDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PedidoVentaEstadoDTO &&
+            other is _$PedidoVentaEstadoDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.descripcionES, descripcionES) ||
                 other.descripcionES == descripcionES) &&
@@ -471,13 +471,14 @@ class _$_PedidoVentaEstadoDTO extends _PedidoVentaEstadoDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PedidoVentaEstadoDTOCopyWith<_$_PedidoVentaEstadoDTO> get copyWith =>
-      __$$_PedidoVentaEstadoDTOCopyWithImpl<_$_PedidoVentaEstadoDTO>(
-          this, _$identity);
+  _$$PedidoVentaEstadoDTOImplCopyWith<_$PedidoVentaEstadoDTOImpl>
+      get copyWith =>
+          __$$PedidoVentaEstadoDTOImplCopyWithImpl<_$PedidoVentaEstadoDTOImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PedidoVentaEstadoDTOToJson(
+    return _$$PedidoVentaEstadoDTOImplToJson(
       this,
     );
   }
@@ -502,11 +503,11 @@ abstract class _PedidoVentaEstadoDTO extends PedidoVentaEstadoDTO {
           @JsonKey(name: 'DESCRIPCION_EL') final String? descripcionEL,
           @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
           @JsonKey(name: 'DELETED') final String deleted}) =
-      _$_PedidoVentaEstadoDTO;
+      _$PedidoVentaEstadoDTOImpl;
   const _PedidoVentaEstadoDTO._() : super._();
 
   factory _PedidoVentaEstadoDTO.fromJson(Map<String, dynamic> json) =
-      _$_PedidoVentaEstadoDTO.fromJson;
+      _$PedidoVentaEstadoDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'ESTADO_PEDIDO_ID')
@@ -561,6 +562,6 @@ abstract class _PedidoVentaEstadoDTO extends PedidoVentaEstadoDTO {
   String get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_PedidoVentaEstadoDTOCopyWith<_$_PedidoVentaEstadoDTO> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$PedidoVentaEstadoDTOImplCopyWith<_$PedidoVentaEstadoDTOImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

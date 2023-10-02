@@ -6,7 +6,8 @@ part of 'divisa_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_DivisaDTO _$$_DivisaDTOFromJson(Map<String, dynamic> json) => _$_DivisaDTO(
+_$DivisaDTOImpl _$$DivisaDTOImplFromJson(Map<String, dynamic> json) =>
+    _$DivisaDTOImpl(
       id: json['DIVISA_ID'] as String,
       abv: json['ABREVIACION'] as String,
       simbolo: json['SIMBOLO'] as String?,
@@ -30,7 +31,7 @@ _$_DivisaDTO _$$_DivisaDTOFromJson(Map<String, dynamic> json) => _$_DivisaDTO(
       deleted: json['DELETED'] as String? ?? 'N',
     );
 
-Map<String, dynamic> _$$_DivisaDTOToJson(_$_DivisaDTO instance) =>
+Map<String, dynamic> _$$DivisaDTOImplToJson(_$DivisaDTOImpl instance) =>
     <String, dynamic>{
       'DIVISA_ID': instance.id,
       'ABREVIACION': instance.abv,

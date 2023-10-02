@@ -192,11 +192,11 @@ class _$DevolucionTipoDTOCopyWithImpl<$Res, $Val extends DevolucionTipoDTO>
 }
 
 /// @nodoc
-abstract class _$$_DevolucionTipoDTOCopyWith<$Res>
+abstract class _$$DevolucionTipoDTOImplCopyWith<$Res>
     implements $DevolucionTipoDTOCopyWith<$Res> {
-  factory _$$_DevolucionTipoDTOCopyWith(_$_DevolucionTipoDTO value,
-          $Res Function(_$_DevolucionTipoDTO) then) =
-      __$$_DevolucionTipoDTOCopyWithImpl<$Res>;
+  factory _$$DevolucionTipoDTOImplCopyWith(_$DevolucionTipoDTOImpl value,
+          $Res Function(_$DevolucionTipoDTOImpl) then) =
+      __$$DevolucionTipoDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -220,11 +220,11 @@ abstract class _$$_DevolucionTipoDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DevolucionTipoDTOCopyWithImpl<$Res>
-    extends _$DevolucionTipoDTOCopyWithImpl<$Res, _$_DevolucionTipoDTO>
-    implements _$$_DevolucionTipoDTOCopyWith<$Res> {
-  __$$_DevolucionTipoDTOCopyWithImpl(
-      _$_DevolucionTipoDTO _value, $Res Function(_$_DevolucionTipoDTO) _then)
+class __$$DevolucionTipoDTOImplCopyWithImpl<$Res>
+    extends _$DevolucionTipoDTOCopyWithImpl<$Res, _$DevolucionTipoDTOImpl>
+    implements _$$DevolucionTipoDTOImplCopyWith<$Res> {
+  __$$DevolucionTipoDTOImplCopyWithImpl(_$DevolucionTipoDTOImpl _value,
+      $Res Function(_$DevolucionTipoDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -248,7 +248,7 @@ class __$$_DevolucionTipoDTOCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_DevolucionTipoDTO(
+    return _then(_$DevolucionTipoDTOImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -323,8 +323,8 @@ class __$$_DevolucionTipoDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_DevolucionTipoDTO extends _DevolucionTipoDTO {
-  const _$_DevolucionTipoDTO(
+class _$DevolucionTipoDTOImpl extends _DevolucionTipoDTO {
+  const _$DevolucionTipoDTOImpl(
       {@JsonKey(name: 'DEVOLUCION_TIPO_ID') required this.id,
       @JsonKey(name: 'DESCRIPCION_ES') required this.descripcionES,
       @JsonKey(name: 'DESCRIPCION_EN') this.descripcionEN,
@@ -344,8 +344,8 @@ class _$_DevolucionTipoDTO extends _DevolucionTipoDTO {
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
-  factory _$_DevolucionTipoDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_DevolucionTipoDTOFromJson(json);
+  factory _$DevolucionTipoDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DevolucionTipoDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'DEVOLUCION_TIPO_ID')
@@ -408,7 +408,7 @@ class _$_DevolucionTipoDTO extends _DevolucionTipoDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DevolucionTipoDTO &&
+            other is _$DevolucionTipoDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.descripcionES, descripcionES) ||
                 other.descripcionES == descripcionES) &&
@@ -468,13 +468,13 @@ class _$_DevolucionTipoDTO extends _DevolucionTipoDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DevolucionTipoDTOCopyWith<_$_DevolucionTipoDTO> get copyWith =>
-      __$$_DevolucionTipoDTOCopyWithImpl<_$_DevolucionTipoDTO>(
+  _$$DevolucionTipoDTOImplCopyWith<_$DevolucionTipoDTOImpl> get copyWith =>
+      __$$DevolucionTipoDTOImplCopyWithImpl<_$DevolucionTipoDTOImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DevolucionTipoDTOToJson(
+    return _$$DevolucionTipoDTOImplToJson(
       this,
     );
   }
@@ -482,27 +482,28 @@ class _$_DevolucionTipoDTO extends _DevolucionTipoDTO {
 
 abstract class _DevolucionTipoDTO extends DevolucionTipoDTO {
   const factory _DevolucionTipoDTO(
-      {@JsonKey(name: 'DEVOLUCION_TIPO_ID') required final String id,
-      @JsonKey(name: 'DESCRIPCION_ES') required final String descripcionES,
-      @JsonKey(name: 'DESCRIPCION_EN') final String? descripcionEN,
-      @JsonKey(name: 'DESCRIPCION_FR') final String? descripcionFR,
-      @JsonKey(name: 'DESCRIPCION_DE') final String? descripcionDE,
-      @JsonKey(name: 'DESCRIPCION_CA') final String? descripcionCA,
-      @JsonKey(name: 'DESCRIPCION_GB') final String? descripcionGB,
-      @JsonKey(name: 'DESCRIPCION_HU') final String? descripcionHU,
-      @JsonKey(name: 'DESCRIPCION_IT') final String? descripcionIT,
-      @JsonKey(name: 'DESCRIPCION_NL') final String? descripcionNL,
-      @JsonKey(name: 'DESCRIPCION_PT') final String? descripcionPT,
-      @JsonKey(name: 'DESCRIPCION_RO') final String? descripcionRO,
-      @JsonKey(name: 'DESCRIPCION_RU') final String? descripcionRU,
-      @JsonKey(name: 'DESCRIPCION_CN') final String? descripcionCN,
-      @JsonKey(name: 'DESCRIPCION_EL') final String? descripcionEL,
-      @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') final String deleted}) = _$_DevolucionTipoDTO;
+          {@JsonKey(name: 'DEVOLUCION_TIPO_ID') required final String id,
+          @JsonKey(name: 'DESCRIPCION_ES') required final String descripcionES,
+          @JsonKey(name: 'DESCRIPCION_EN') final String? descripcionEN,
+          @JsonKey(name: 'DESCRIPCION_FR') final String? descripcionFR,
+          @JsonKey(name: 'DESCRIPCION_DE') final String? descripcionDE,
+          @JsonKey(name: 'DESCRIPCION_CA') final String? descripcionCA,
+          @JsonKey(name: 'DESCRIPCION_GB') final String? descripcionGB,
+          @JsonKey(name: 'DESCRIPCION_HU') final String? descripcionHU,
+          @JsonKey(name: 'DESCRIPCION_IT') final String? descripcionIT,
+          @JsonKey(name: 'DESCRIPCION_NL') final String? descripcionNL,
+          @JsonKey(name: 'DESCRIPCION_PT') final String? descripcionPT,
+          @JsonKey(name: 'DESCRIPCION_RO') final String? descripcionRO,
+          @JsonKey(name: 'DESCRIPCION_RU') final String? descripcionRU,
+          @JsonKey(name: 'DESCRIPCION_CN') final String? descripcionCN,
+          @JsonKey(name: 'DESCRIPCION_EL') final String? descripcionEL,
+          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+          @JsonKey(name: 'DELETED') final String deleted}) =
+      _$DevolucionTipoDTOImpl;
   const _DevolucionTipoDTO._() : super._();
 
   factory _DevolucionTipoDTO.fromJson(Map<String, dynamic> json) =
-      _$_DevolucionTipoDTO.fromJson;
+      _$DevolucionTipoDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'DEVOLUCION_TIPO_ID')
@@ -557,6 +558,6 @@ abstract class _DevolucionTipoDTO extends DevolucionTipoDTO {
   String get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_DevolucionTipoDTOCopyWith<_$_DevolucionTipoDTO> get copyWith =>
+  _$$DevolucionTipoDTOImplCopyWith<_$DevolucionTipoDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

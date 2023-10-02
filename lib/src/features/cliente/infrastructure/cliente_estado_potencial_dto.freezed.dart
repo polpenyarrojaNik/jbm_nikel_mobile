@@ -202,12 +202,12 @@ class _$ClienteEstadoPotencialDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ClienteEstadoPotencialDTOCopyWith<$Res>
+abstract class _$$ClienteEstadoPotencialDTOImplCopyWith<$Res>
     implements $ClienteEstadoPotencialDTOCopyWith<$Res> {
-  factory _$$_ClienteEstadoPotencialDTOCopyWith(
-          _$_ClienteEstadoPotencialDTO value,
-          $Res Function(_$_ClienteEstadoPotencialDTO) then) =
-      __$$_ClienteEstadoPotencialDTOCopyWithImpl<$Res>;
+  factory _$$ClienteEstadoPotencialDTOImplCopyWith(
+          _$ClienteEstadoPotencialDTOImpl value,
+          $Res Function(_$ClienteEstadoPotencialDTOImpl) then) =
+      __$$ClienteEstadoPotencialDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -232,13 +232,13 @@ abstract class _$$_ClienteEstadoPotencialDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ClienteEstadoPotencialDTOCopyWithImpl<$Res>
+class __$$ClienteEstadoPotencialDTOImplCopyWithImpl<$Res>
     extends _$ClienteEstadoPotencialDTOCopyWithImpl<$Res,
-        _$_ClienteEstadoPotencialDTO>
-    implements _$$_ClienteEstadoPotencialDTOCopyWith<$Res> {
-  __$$_ClienteEstadoPotencialDTOCopyWithImpl(
-      _$_ClienteEstadoPotencialDTO _value,
-      $Res Function(_$_ClienteEstadoPotencialDTO) _then)
+        _$ClienteEstadoPotencialDTOImpl>
+    implements _$$ClienteEstadoPotencialDTOImplCopyWith<$Res> {
+  __$$ClienteEstadoPotencialDTOImplCopyWithImpl(
+      _$ClienteEstadoPotencialDTOImpl _value,
+      $Res Function(_$ClienteEstadoPotencialDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -263,7 +263,7 @@ class __$$_ClienteEstadoPotencialDTOCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_ClienteEstadoPotencialDTO(
+    return _then(_$ClienteEstadoPotencialDTOImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -342,8 +342,8 @@ class __$$_ClienteEstadoPotencialDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ClienteEstadoPotencialDTO extends _ClienteEstadoPotencialDTO {
-  const _$_ClienteEstadoPotencialDTO(
+class _$ClienteEstadoPotencialDTOImpl extends _ClienteEstadoPotencialDTO {
+  const _$ClienteEstadoPotencialDTOImpl(
       {@JsonKey(name: 'ESTADO_POTENCIAL_ID') required this.id,
       @JsonKey(name: 'DESCRIPCION_ES') required this.descripcionES,
       @JsonKey(name: 'DESCRIPCION_EN') this.descripcionEN,
@@ -364,8 +364,8 @@ class _$_ClienteEstadoPotencialDTO extends _ClienteEstadoPotencialDTO {
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
-  factory _$_ClienteEstadoPotencialDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_ClienteEstadoPotencialDTOFromJson(json);
+  factory _$ClienteEstadoPotencialDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ClienteEstadoPotencialDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'ESTADO_POTENCIAL_ID')
@@ -431,7 +431,7 @@ class _$_ClienteEstadoPotencialDTO extends _ClienteEstadoPotencialDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClienteEstadoPotencialDTO &&
+            other is _$ClienteEstadoPotencialDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.descripcionES, descripcionES) ||
                 other.descripcionES == descripcionES) &&
@@ -494,13 +494,13 @@ class _$_ClienteEstadoPotencialDTO extends _ClienteEstadoPotencialDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClienteEstadoPotencialDTOCopyWith<_$_ClienteEstadoPotencialDTO>
-      get copyWith => __$$_ClienteEstadoPotencialDTOCopyWithImpl<
-          _$_ClienteEstadoPotencialDTO>(this, _$identity);
+  _$$ClienteEstadoPotencialDTOImplCopyWith<_$ClienteEstadoPotencialDTOImpl>
+      get copyWith => __$$ClienteEstadoPotencialDTOImplCopyWithImpl<
+          _$ClienteEstadoPotencialDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ClienteEstadoPotencialDTOToJson(
+    return _$$ClienteEstadoPotencialDTOImplToJson(
       this,
     );
   }
@@ -526,11 +526,11 @@ abstract class _ClienteEstadoPotencialDTO extends ClienteEstadoPotencialDTO {
           @JsonKey(name: 'DESCRIPCION_EL') final String? descripcionEL,
           @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
           @JsonKey(name: 'DELETED') final String deleted}) =
-      _$_ClienteEstadoPotencialDTO;
+      _$ClienteEstadoPotencialDTOImpl;
   const _ClienteEstadoPotencialDTO._() : super._();
 
   factory _ClienteEstadoPotencialDTO.fromJson(Map<String, dynamic> json) =
-      _$_ClienteEstadoPotencialDTO.fromJson;
+      _$ClienteEstadoPotencialDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'ESTADO_POTENCIAL_ID')
@@ -588,6 +588,6 @@ abstract class _ClienteEstadoPotencialDTO extends ClienteEstadoPotencialDTO {
   String get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_ClienteEstadoPotencialDTOCopyWith<_$_ClienteEstadoPotencialDTO>
+  _$$ClienteEstadoPotencialDTOImplCopyWith<_$ClienteEstadoPotencialDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

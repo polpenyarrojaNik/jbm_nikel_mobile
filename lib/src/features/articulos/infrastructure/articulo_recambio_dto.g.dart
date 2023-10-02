@@ -6,9 +6,9 @@ part of 'articulo_recambio_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ArticuloRecambioDTO _$$_ArticuloRecambioDTOFromJson(
+_$ArticuloRecambioDTOImpl _$$ArticuloRecambioDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_ArticuloRecambioDTO(
+    _$ArticuloRecambioDTOImpl(
       articuloId: json['ARTICULO_ID'] as String,
       id: json['RECAMBIO_ID'] as String,
       descripcion: json['DESCRIPCION'] as String,
@@ -17,8 +17,8 @@ _$_ArticuloRecambioDTO _$$_ArticuloRecambioDTOFromJson(
       deleted: json['DELETED'] as String? ?? 'N',
     );
 
-Map<String, dynamic> _$$_ArticuloRecambioDTOToJson(
-        _$_ArticuloRecambioDTO instance) =>
+Map<String, dynamic> _$$ArticuloRecambioDTOImplToJson(
+        _$ArticuloRecambioDTOImpl instance) =>
     <String, dynamic>{
       'ARTICULO_ID': instance.articuloId,
       'RECAMBIO_ID': instance.id,

@@ -121,11 +121,11 @@ class _$ClientePrecioNetoDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ClientePrecioNetoDTOCopyWith<$Res>
+abstract class _$$ClientePrecioNetoDTOImplCopyWith<$Res>
     implements $ClientePrecioNetoDTOCopyWith<$Res> {
-  factory _$$_ClientePrecioNetoDTOCopyWith(_$_ClientePrecioNetoDTO value,
-          $Res Function(_$_ClientePrecioNetoDTO) then) =
-      __$$_ClientePrecioNetoDTOCopyWithImpl<$Res>;
+  factory _$$ClientePrecioNetoDTOImplCopyWith(_$ClientePrecioNetoDTOImpl value,
+          $Res Function(_$ClientePrecioNetoDTOImpl) then) =
+      __$$ClientePrecioNetoDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -140,11 +140,11 @@ abstract class _$$_ClientePrecioNetoDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ClientePrecioNetoDTOCopyWithImpl<$Res>
-    extends _$ClientePrecioNetoDTOCopyWithImpl<$Res, _$_ClientePrecioNetoDTO>
-    implements _$$_ClientePrecioNetoDTOCopyWith<$Res> {
-  __$$_ClientePrecioNetoDTOCopyWithImpl(_$_ClientePrecioNetoDTO _value,
-      $Res Function(_$_ClientePrecioNetoDTO) _then)
+class __$$ClientePrecioNetoDTOImplCopyWithImpl<$Res>
+    extends _$ClientePrecioNetoDTOCopyWithImpl<$Res, _$ClientePrecioNetoDTOImpl>
+    implements _$$ClientePrecioNetoDTOImplCopyWith<$Res> {
+  __$$ClientePrecioNetoDTOImplCopyWithImpl(_$ClientePrecioNetoDTOImpl _value,
+      $Res Function(_$ClientePrecioNetoDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -159,7 +159,7 @@ class __$$_ClientePrecioNetoDTOCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_ClientePrecioNetoDTO(
+    return _then(_$ClientePrecioNetoDTOImpl(
       clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
@@ -198,8 +198,8 @@ class __$$_ClientePrecioNetoDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ClientePrecioNetoDTO extends _ClientePrecioNetoDTO {
-  const _$_ClientePrecioNetoDTO(
+class _$ClientePrecioNetoDTOImpl extends _ClientePrecioNetoDTO {
+  const _$ClientePrecioNetoDTOImpl(
       {@JsonKey(name: 'CLIENTE_ID') required this.clienteId,
       @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
       @JsonKey(name: 'CANTIDAD_DESDE') required this.cantidadDesde,
@@ -210,8 +210,8 @@ class _$_ClientePrecioNetoDTO extends _ClientePrecioNetoDTO {
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
-  factory _$_ClientePrecioNetoDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_ClientePrecioNetoDTOFromJson(json);
+  factory _$ClientePrecioNetoDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ClientePrecioNetoDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'CLIENTE_ID')
@@ -247,7 +247,7 @@ class _$_ClientePrecioNetoDTO extends _ClientePrecioNetoDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClientePrecioNetoDTO &&
+            other is _$ClientePrecioNetoDTOImpl &&
             (identical(other.clienteId, clienteId) ||
                 other.clienteId == clienteId) &&
             (identical(other.articuloId, articuloId) ||
@@ -272,13 +272,14 @@ class _$_ClientePrecioNetoDTO extends _ClientePrecioNetoDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClientePrecioNetoDTOCopyWith<_$_ClientePrecioNetoDTO> get copyWith =>
-      __$$_ClientePrecioNetoDTOCopyWithImpl<_$_ClientePrecioNetoDTO>(
-          this, _$identity);
+  _$$ClientePrecioNetoDTOImplCopyWith<_$ClientePrecioNetoDTOImpl>
+      get copyWith =>
+          __$$ClientePrecioNetoDTOImplCopyWithImpl<_$ClientePrecioNetoDTOImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ClientePrecioNetoDTOToJson(
+    return _$$ClientePrecioNetoDTOImplToJson(
       this,
     );
   }
@@ -294,11 +295,11 @@ abstract class _ClientePrecioNetoDTO extends ClientePrecioNetoDTO {
           @JsonKey(name: 'DTO_ADICIONAL') final double? dtoAdicional,
           @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
           @JsonKey(name: 'DELETED') final String deleted}) =
-      _$_ClientePrecioNetoDTO;
+      _$ClientePrecioNetoDTOImpl;
   const _ClientePrecioNetoDTO._() : super._();
 
   factory _ClientePrecioNetoDTO.fromJson(Map<String, dynamic> json) =
-      _$_ClientePrecioNetoDTO.fromJson;
+      _$ClientePrecioNetoDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'CLIENTE_ID')
@@ -326,6 +327,6 @@ abstract class _ClientePrecioNetoDTO extends ClientePrecioNetoDTO {
   String get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_ClientePrecioNetoDTOCopyWith<_$_ClientePrecioNetoDTO> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ClientePrecioNetoDTOImplCopyWith<_$ClientePrecioNetoDTOImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

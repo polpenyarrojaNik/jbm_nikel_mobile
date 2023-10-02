@@ -6,9 +6,9 @@ part of 'cliente_contacto_imp_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ClienteContactoImpDTO _$$_ClienteContactoImpDTOFromJson(
+_$ClienteContactoImpDTOImpl _$$ClienteContactoImpDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_ClienteContactoImpDTO(
+    _$ClienteContactoImpDTOImpl(
       id: json['GUID'] as String,
       fecha: DateTime.parse(json['FECHA'] as String),
       usuarioId: json['USUARIO_ID'] as String,
@@ -25,8 +25,8 @@ _$_ClienteContactoImpDTO _$$_ClienteContactoImpDTOFromJson(
       borrar: json['BORRAR'] as String? ?? 'N',
     );
 
-Map<String, dynamic> _$$_ClienteContactoImpDTOToJson(
-        _$_ClienteContactoImpDTO instance) =>
+Map<String, dynamic> _$$ClienteContactoImpDTOImplToJson(
+        _$ClienteContactoImpDTOImpl instance) =>
     <String, dynamic>{
       'GUID': instance.id,
       'FECHA': instance.fecha.toIso8601String(),

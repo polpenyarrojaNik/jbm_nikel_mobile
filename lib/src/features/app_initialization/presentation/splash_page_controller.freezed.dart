@@ -103,20 +103,20 @@ class _$SplashControllerStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_downloadDatabaseCopyWith<$Res> {
-  factory _$$_downloadDatabaseCopyWith(
-          _$_downloadDatabase value, $Res Function(_$_downloadDatabase) then) =
-      __$$_downloadDatabaseCopyWithImpl<$Res>;
+abstract class _$$downloadDatabaseImplCopyWith<$Res> {
+  factory _$$downloadDatabaseImplCopyWith(_$downloadDatabaseImpl value,
+          $Res Function(_$downloadDatabaseImpl) then) =
+      __$$downloadDatabaseImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int lastScehmaVersion, int newScehmaVersion});
 }
 
 /// @nodoc
-class __$$_downloadDatabaseCopyWithImpl<$Res>
-    extends _$SplashControllerStateCopyWithImpl<$Res, _$_downloadDatabase>
-    implements _$$_downloadDatabaseCopyWith<$Res> {
-  __$$_downloadDatabaseCopyWithImpl(
-      _$_downloadDatabase _value, $Res Function(_$_downloadDatabase) _then)
+class __$$downloadDatabaseImplCopyWithImpl<$Res>
+    extends _$SplashControllerStateCopyWithImpl<$Res, _$downloadDatabaseImpl>
+    implements _$$downloadDatabaseImplCopyWith<$Res> {
+  __$$downloadDatabaseImplCopyWithImpl(_$downloadDatabaseImpl _value,
+      $Res Function(_$downloadDatabaseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -125,7 +125,7 @@ class __$$_downloadDatabaseCopyWithImpl<$Res>
     Object? lastScehmaVersion = null,
     Object? newScehmaVersion = null,
   }) {
-    return _then(_$_downloadDatabase(
+    return _then(_$downloadDatabaseImpl(
       null == lastScehmaVersion
           ? _value.lastScehmaVersion
           : lastScehmaVersion // ignore: cast_nullable_to_non_nullable
@@ -140,9 +140,9 @@ class __$$_downloadDatabaseCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_downloadDatabase extends _downloadDatabase
+class _$downloadDatabaseImpl extends _downloadDatabase
     with DiagnosticableTreeMixin {
-  const _$_downloadDatabase(this.lastScehmaVersion, this.newScehmaVersion)
+  const _$downloadDatabaseImpl(this.lastScehmaVersion, this.newScehmaVersion)
       : super._();
 
   @override
@@ -169,7 +169,7 @@ class _$_downloadDatabase extends _downloadDatabase
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_downloadDatabase &&
+            other is _$downloadDatabaseImpl &&
             (identical(other.lastScehmaVersion, lastScehmaVersion) ||
                 other.lastScehmaVersion == lastScehmaVersion) &&
             (identical(other.newScehmaVersion, newScehmaVersion) ||
@@ -183,8 +183,9 @@ class _$_downloadDatabase extends _downloadDatabase
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_downloadDatabaseCopyWith<_$_downloadDatabase> get copyWith =>
-      __$$_downloadDatabaseCopyWithImpl<_$_downloadDatabase>(this, _$identity);
+  _$$downloadDatabaseImplCopyWith<_$downloadDatabaseImpl> get copyWith =>
+      __$$downloadDatabaseImplCopyWithImpl<_$downloadDatabaseImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -279,35 +280,36 @@ class _$_downloadDatabase extends _downloadDatabase
 abstract class _downloadDatabase extends SplashControllerState {
   const factory _downloadDatabase(
           final int lastScehmaVersion, final int newScehmaVersion) =
-      _$_downloadDatabase;
+      _$downloadDatabaseImpl;
   const _downloadDatabase._() : super._();
 
   int get lastScehmaVersion;
   int get newScehmaVersion;
   @JsonKey(ignore: true)
-  _$$_downloadDatabaseCopyWith<_$_downloadDatabase> get copyWith =>
+  _$$downloadDatabaseImplCopyWith<_$downloadDatabaseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_loadingCopyWith<$Res> {
-  factory _$$_loadingCopyWith(
-          _$_loading value, $Res Function(_$_loading) then) =
-      __$$_loadingCopyWithImpl<$Res>;
+abstract class _$$loadingImplCopyWith<$Res> {
+  factory _$$loadingImplCopyWith(
+          _$loadingImpl value, $Res Function(_$loadingImpl) then) =
+      __$$loadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_loadingCopyWithImpl<$Res>
-    extends _$SplashControllerStateCopyWithImpl<$Res, _$_loading>
-    implements _$$_loadingCopyWith<$Res> {
-  __$$_loadingCopyWithImpl(_$_loading _value, $Res Function(_$_loading) _then)
+class __$$loadingImplCopyWithImpl<$Res>
+    extends _$SplashControllerStateCopyWithImpl<$Res, _$loadingImpl>
+    implements _$$loadingImplCopyWith<$Res> {
+  __$$loadingImplCopyWithImpl(
+      _$loadingImpl _value, $Res Function(_$loadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_loading extends _loading with DiagnosticableTreeMixin {
-  const _$_loading() : super._();
+class _$loadingImpl extends _loading with DiagnosticableTreeMixin {
+  const _$loadingImpl() : super._();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -324,7 +326,7 @@ class _$_loading extends _loading with DiagnosticableTreeMixin {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_loading);
+        (other.runtimeType == runtimeType && other is _$loadingImpl);
   }
 
   @override
@@ -421,29 +423,30 @@ class _$_loading extends _loading with DiagnosticableTreeMixin {
 }
 
 abstract class _loading extends SplashControllerState {
-  const factory _loading() = _$_loading;
+  const factory _loading() = _$loadingImpl;
   const _loading._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_initialCopyWith<$Res> {
-  factory _$$_initialCopyWith(
-          _$_initial value, $Res Function(_$_initial) then) =
-      __$$_initialCopyWithImpl<$Res>;
+abstract class _$$initialImplCopyWith<$Res> {
+  factory _$$initialImplCopyWith(
+          _$initialImpl value, $Res Function(_$initialImpl) then) =
+      __$$initialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_initialCopyWithImpl<$Res>
-    extends _$SplashControllerStateCopyWithImpl<$Res, _$_initial>
-    implements _$$_initialCopyWith<$Res> {
-  __$$_initialCopyWithImpl(_$_initial _value, $Res Function(_$_initial) _then)
+class __$$initialImplCopyWithImpl<$Res>
+    extends _$SplashControllerStateCopyWithImpl<$Res, _$initialImpl>
+    implements _$$initialImplCopyWith<$Res> {
+  __$$initialImplCopyWithImpl(
+      _$initialImpl _value, $Res Function(_$initialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_initial extends _initial with DiagnosticableTreeMixin {
-  const _$_initial() : super._();
+class _$initialImpl extends _initial with DiagnosticableTreeMixin {
+  const _$initialImpl() : super._();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -460,7 +463,7 @@ class _$_initial extends _initial with DiagnosticableTreeMixin {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_initial);
+        (other.runtimeType == runtimeType && other is _$initialImpl);
   }
 
   @override
@@ -557,30 +560,30 @@ class _$_initial extends _initial with DiagnosticableTreeMixin {
 }
 
 abstract class _initial extends SplashControllerState {
-  const factory _initial() = _$_initial;
+  const factory _initial() = _$initialImpl;
   const _initial._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_notDownloadedCopyWith<$Res> {
-  factory _$$_notDownloadedCopyWith(
-          _$_notDownloaded value, $Res Function(_$_notDownloaded) then) =
-      __$$_notDownloadedCopyWithImpl<$Res>;
+abstract class _$$notDownloadedImplCopyWith<$Res> {
+  factory _$$notDownloadedImplCopyWith(
+          _$notDownloadedImpl value, $Res Function(_$notDownloadedImpl) then) =
+      __$$notDownloadedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_notDownloadedCopyWithImpl<$Res>
-    extends _$SplashControllerStateCopyWithImpl<$Res, _$_notDownloaded>
-    implements _$$_notDownloadedCopyWith<$Res> {
-  __$$_notDownloadedCopyWithImpl(
-      _$_notDownloaded _value, $Res Function(_$_notDownloaded) _then)
+class __$$notDownloadedImplCopyWithImpl<$Res>
+    extends _$SplashControllerStateCopyWithImpl<$Res, _$notDownloadedImpl>
+    implements _$$notDownloadedImplCopyWith<$Res> {
+  __$$notDownloadedImplCopyWithImpl(
+      _$notDownloadedImpl _value, $Res Function(_$notDownloadedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_notDownloaded extends _notDownloaded with DiagnosticableTreeMixin {
-  const _$_notDownloaded() : super._();
+class _$notDownloadedImpl extends _notDownloaded with DiagnosticableTreeMixin {
+  const _$notDownloadedImpl() : super._();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -597,7 +600,7 @@ class _$_notDownloaded extends _notDownloaded with DiagnosticableTreeMixin {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_notDownloaded);
+        (other.runtimeType == runtimeType && other is _$notDownloadedImpl);
   }
 
   @override
@@ -694,23 +697,25 @@ class _$_notDownloaded extends _notDownloaded with DiagnosticableTreeMixin {
 }
 
 abstract class _notDownloaded extends SplashControllerState {
-  const factory _notDownloaded() = _$_notDownloaded;
+  const factory _notDownloaded() = _$notDownloadedImpl;
   const _notDownloaded._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_errorCopyWith<$Res> {
-  factory _$$_errorCopyWith(_$_error value, $Res Function(_$_error) then) =
-      __$$_errorCopyWithImpl<$Res>;
+abstract class _$$errorImplCopyWith<$Res> {
+  factory _$$errorImplCopyWith(
+          _$errorImpl value, $Res Function(_$errorImpl) then) =
+      __$$errorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Object error, StackTrace? stackTrace});
 }
 
 /// @nodoc
-class __$$_errorCopyWithImpl<$Res>
-    extends _$SplashControllerStateCopyWithImpl<$Res, _$_error>
-    implements _$$_errorCopyWith<$Res> {
-  __$$_errorCopyWithImpl(_$_error _value, $Res Function(_$_error) _then)
+class __$$errorImplCopyWithImpl<$Res>
+    extends _$SplashControllerStateCopyWithImpl<$Res, _$errorImpl>
+    implements _$$errorImplCopyWith<$Res> {
+  __$$errorImplCopyWithImpl(
+      _$errorImpl _value, $Res Function(_$errorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -719,7 +724,7 @@ class __$$_errorCopyWithImpl<$Res>
     Object? error = null,
     Object? stackTrace = freezed,
   }) {
-    return _then(_$_error(
+    return _then(_$errorImpl(
       null == error ? _value.error : error,
       stackTrace: freezed == stackTrace
           ? _value.stackTrace
@@ -731,8 +736,8 @@ class __$$_errorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_error extends _error with DiagnosticableTreeMixin {
-  const _$_error(this.error, {this.stackTrace}) : super._();
+class _$errorImpl extends _error with DiagnosticableTreeMixin {
+  const _$errorImpl(this.error, {this.stackTrace}) : super._();
 
   @override
   final Object error;
@@ -757,7 +762,7 @@ class _$_error extends _error with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_error &&
+            other is _$errorImpl &&
             const DeepCollectionEquality().equals(other.error, error) &&
             (identical(other.stackTrace, stackTrace) ||
                 other.stackTrace == stackTrace));
@@ -770,8 +775,8 @@ class _$_error extends _error with DiagnosticableTreeMixin {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_errorCopyWith<_$_error> get copyWith =>
-      __$$_errorCopyWithImpl<_$_error>(this, _$identity);
+  _$$errorImplCopyWith<_$errorImpl> get copyWith =>
+      __$$errorImplCopyWithImpl<_$errorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -865,34 +870,35 @@ class _$_error extends _error with DiagnosticableTreeMixin {
 
 abstract class _error extends SplashControllerState {
   const factory _error(final Object error, {final StackTrace? stackTrace}) =
-      _$_error;
+      _$errorImpl;
   const _error._() : super._();
 
   Object get error;
   StackTrace? get stackTrace;
   @JsonKey(ignore: true)
-  _$$_errorCopyWith<_$_error> get copyWith =>
+  _$$errorImplCopyWith<_$errorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_dataCopyWith<$Res> {
-  factory _$$_dataCopyWith(_$_data value, $Res Function(_$_data) then) =
-      __$$_dataCopyWithImpl<$Res>;
+abstract class _$$dataImplCopyWith<$Res> {
+  factory _$$dataImplCopyWith(
+          _$dataImpl value, $Res Function(_$dataImpl) then) =
+      __$$dataImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_dataCopyWithImpl<$Res>
-    extends _$SplashControllerStateCopyWithImpl<$Res, _$_data>
-    implements _$$_dataCopyWith<$Res> {
-  __$$_dataCopyWithImpl(_$_data _value, $Res Function(_$_data) _then)
+class __$$dataImplCopyWithImpl<$Res>
+    extends _$SplashControllerStateCopyWithImpl<$Res, _$dataImpl>
+    implements _$$dataImplCopyWith<$Res> {
+  __$$dataImplCopyWithImpl(_$dataImpl _value, $Res Function(_$dataImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_data extends _data with DiagnosticableTreeMixin {
-  const _$_data() : super._();
+class _$dataImpl extends _data with DiagnosticableTreeMixin {
+  const _$dataImpl() : super._();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -908,7 +914,7 @@ class _$_data extends _data with DiagnosticableTreeMixin {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_data);
+        (other.runtimeType == runtimeType && other is _$dataImpl);
   }
 
   @override
@@ -1005,6 +1011,6 @@ class _$_data extends _data with DiagnosticableTreeMixin {
 }
 
 abstract class _data extends SplashControllerState {
-  const factory _data() = _$_data;
+  const factory _data() = _$dataImpl;
   const _data._() : super._();
 }

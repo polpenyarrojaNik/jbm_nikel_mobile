@@ -133,12 +133,12 @@ class _$EstadisticasVentaClienteUsuarioDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_EstadisticasVentaClienteUsuarioDTOCopyWith<$Res>
+abstract class _$$EstadisticasVentaClienteUsuarioDTOImplCopyWith<$Res>
     implements $EstadisticasVentaClienteUsuarioDTOCopyWith<$Res> {
-  factory _$$_EstadisticasVentaClienteUsuarioDTOCopyWith(
-          _$_EstadisticasVentaClienteUsuarioDTO value,
-          $Res Function(_$_EstadisticasVentaClienteUsuarioDTO) then) =
-      __$$_EstadisticasVentaClienteUsuarioDTOCopyWithImpl<$Res>;
+  factory _$$EstadisticasVentaClienteUsuarioDTOImplCopyWith(
+          _$EstadisticasVentaClienteUsuarioDTOImpl value,
+          $Res Function(_$EstadisticasVentaClienteUsuarioDTOImpl) then) =
+      __$$EstadisticasVentaClienteUsuarioDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -154,13 +154,13 @@ abstract class _$$_EstadisticasVentaClienteUsuarioDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_EstadisticasVentaClienteUsuarioDTOCopyWithImpl<$Res>
+class __$$EstadisticasVentaClienteUsuarioDTOImplCopyWithImpl<$Res>
     extends _$EstadisticasVentaClienteUsuarioDTOCopyWithImpl<$Res,
-        _$_EstadisticasVentaClienteUsuarioDTO>
-    implements _$$_EstadisticasVentaClienteUsuarioDTOCopyWith<$Res> {
-  __$$_EstadisticasVentaClienteUsuarioDTOCopyWithImpl(
-      _$_EstadisticasVentaClienteUsuarioDTO _value,
-      $Res Function(_$_EstadisticasVentaClienteUsuarioDTO) _then)
+        _$EstadisticasVentaClienteUsuarioDTOImpl>
+    implements _$$EstadisticasVentaClienteUsuarioDTOImplCopyWith<$Res> {
+  __$$EstadisticasVentaClienteUsuarioDTOImplCopyWithImpl(
+      _$EstadisticasVentaClienteUsuarioDTOImpl _value,
+      $Res Function(_$EstadisticasVentaClienteUsuarioDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -176,7 +176,7 @@ class __$$_EstadisticasVentaClienteUsuarioDTOCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_EstadisticasVentaClienteUsuarioDTO(
+    return _then(_$EstadisticasVentaClienteUsuarioDTOImpl(
       anyo: null == anyo
           ? _value.anyo
           : anyo // ignore: cast_nullable_to_non_nullable
@@ -219,9 +219,9 @@ class __$$_EstadisticasVentaClienteUsuarioDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_EstadisticasVentaClienteUsuarioDTO
+class _$EstadisticasVentaClienteUsuarioDTOImpl
     extends _EstadisticasVentaClienteUsuarioDTO {
-  const _$_EstadisticasVentaClienteUsuarioDTO(
+  const _$EstadisticasVentaClienteUsuarioDTOImpl(
       {@JsonKey(name: 'ANYO') required this.anyo,
       @JsonKey(name: 'MES') required this.mes,
       @JsonKey(name: 'CLIENTE_ID') required this.clienteId,
@@ -233,9 +233,9 @@ class _$_EstadisticasVentaClienteUsuarioDTO
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
-  factory _$_EstadisticasVentaClienteUsuarioDTO.fromJson(
+  factory _$EstadisticasVentaClienteUsuarioDTOImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$_EstadisticasVentaClienteUsuarioDTOFromJson(json);
+      _$$EstadisticasVentaClienteUsuarioDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'ANYO')
@@ -274,7 +274,7 @@ class _$_EstadisticasVentaClienteUsuarioDTO
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EstadisticasVentaClienteUsuarioDTO &&
+            other is _$EstadisticasVentaClienteUsuarioDTOImpl &&
             (identical(other.anyo, anyo) || other.anyo == anyo) &&
             (identical(other.mes, mes) || other.mes == mes) &&
             (identical(other.clienteId, clienteId) ||
@@ -298,14 +298,14 @@ class _$_EstadisticasVentaClienteUsuarioDTO
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EstadisticasVentaClienteUsuarioDTOCopyWith<
-          _$_EstadisticasVentaClienteUsuarioDTO>
-      get copyWith => __$$_EstadisticasVentaClienteUsuarioDTOCopyWithImpl<
-          _$_EstadisticasVentaClienteUsuarioDTO>(this, _$identity);
+  _$$EstadisticasVentaClienteUsuarioDTOImplCopyWith<
+          _$EstadisticasVentaClienteUsuarioDTOImpl>
+      get copyWith => __$$EstadisticasVentaClienteUsuarioDTOImplCopyWithImpl<
+          _$EstadisticasVentaClienteUsuarioDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_EstadisticasVentaClienteUsuarioDTOToJson(
+    return _$$EstadisticasVentaClienteUsuarioDTOImplToJson(
       this,
     );
   }
@@ -323,12 +323,12 @@ abstract class _EstadisticasVentaClienteUsuarioDTO
           @JsonKey(name: 'COSTE') final double? coste,
           @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
           @JsonKey(name: 'DELETED') final String deleted}) =
-      _$_EstadisticasVentaClienteUsuarioDTO;
+      _$EstadisticasVentaClienteUsuarioDTOImpl;
   const _EstadisticasVentaClienteUsuarioDTO._() : super._();
 
   factory _EstadisticasVentaClienteUsuarioDTO.fromJson(
           Map<String, dynamic> json) =
-      _$_EstadisticasVentaClienteUsuarioDTO.fromJson;
+      _$EstadisticasVentaClienteUsuarioDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'ANYO')
@@ -359,7 +359,7 @@ abstract class _EstadisticasVentaClienteUsuarioDTO
   String get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_EstadisticasVentaClienteUsuarioDTOCopyWith<
-          _$_EstadisticasVentaClienteUsuarioDTO>
+  _$$EstadisticasVentaClienteUsuarioDTOImplCopyWith<
+          _$EstadisticasVentaClienteUsuarioDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

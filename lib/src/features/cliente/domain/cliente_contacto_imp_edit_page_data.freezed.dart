@@ -83,12 +83,12 @@ class _$ClienteContactoImpEditPageDataCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ClienteContactoImpEditPageDataCopyWith<$Res>
+abstract class _$$ClienteContactoImpEditPageDataImplCopyWith<$Res>
     implements $ClienteContactoImpEditPageDataCopyWith<$Res> {
-  factory _$$_ClienteContactoImpEditPageDataCopyWith(
-          _$_ClienteContactoImpEditPageData value,
-          $Res Function(_$_ClienteContactoImpEditPageData) then) =
-      __$$_ClienteContactoImpEditPageDataCopyWithImpl<$Res>;
+  factory _$$ClienteContactoImpEditPageDataImplCopyWith(
+          _$ClienteContactoImpEditPageDataImpl value,
+          $Res Function(_$ClienteContactoImpEditPageDataImpl) then) =
+      __$$ClienteContactoImpEditPageDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({ClienteContacto? clienteContacto, bool isSent, Object? error});
@@ -98,13 +98,13 @@ abstract class _$$_ClienteContactoImpEditPageDataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ClienteContactoImpEditPageDataCopyWithImpl<$Res>
+class __$$ClienteContactoImpEditPageDataImplCopyWithImpl<$Res>
     extends _$ClienteContactoImpEditPageDataCopyWithImpl<$Res,
-        _$_ClienteContactoImpEditPageData>
-    implements _$$_ClienteContactoImpEditPageDataCopyWith<$Res> {
-  __$$_ClienteContactoImpEditPageDataCopyWithImpl(
-      _$_ClienteContactoImpEditPageData _value,
-      $Res Function(_$_ClienteContactoImpEditPageData) _then)
+        _$ClienteContactoImpEditPageDataImpl>
+    implements _$$ClienteContactoImpEditPageDataImplCopyWith<$Res> {
+  __$$ClienteContactoImpEditPageDataImplCopyWithImpl(
+      _$ClienteContactoImpEditPageDataImpl _value,
+      $Res Function(_$ClienteContactoImpEditPageDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -114,7 +114,7 @@ class __$$_ClienteContactoImpEditPageDataCopyWithImpl<$Res>
     Object? isSent = null,
     Object? error = freezed,
   }) {
-    return _then(_$_ClienteContactoImpEditPageData(
+    return _then(_$ClienteContactoImpEditPageDataImpl(
       clienteContacto: freezed == clienteContacto
           ? _value.clienteContacto
           : clienteContacto // ignore: cast_nullable_to_non_nullable
@@ -130,9 +130,9 @@ class __$$_ClienteContactoImpEditPageDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ClienteContactoImpEditPageData
+class _$ClienteContactoImpEditPageDataImpl
     extends _ClienteContactoImpEditPageData {
-  const _$_ClienteContactoImpEditPageData(
+  const _$ClienteContactoImpEditPageDataImpl(
       {required this.clienteContacto, required this.isSent, this.error})
       : super._();
 
@@ -152,7 +152,7 @@ class _$_ClienteContactoImpEditPageData
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClienteContactoImpEditPageData &&
+            other is _$ClienteContactoImpEditPageDataImpl &&
             (identical(other.clienteContacto, clienteContacto) ||
                 other.clienteContacto == clienteContacto) &&
             (identical(other.isSent, isSent) || other.isSent == isSent) &&
@@ -166,9 +166,10 @@ class _$_ClienteContactoImpEditPageData
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClienteContactoImpEditPageDataCopyWith<_$_ClienteContactoImpEditPageData>
-      get copyWith => __$$_ClienteContactoImpEditPageDataCopyWithImpl<
-          _$_ClienteContactoImpEditPageData>(this, _$identity);
+  _$$ClienteContactoImpEditPageDataImplCopyWith<
+          _$ClienteContactoImpEditPageDataImpl>
+      get copyWith => __$$ClienteContactoImpEditPageDataImplCopyWithImpl<
+          _$ClienteContactoImpEditPageDataImpl>(this, _$identity);
 }
 
 abstract class _ClienteContactoImpEditPageData
@@ -176,7 +177,7 @@ abstract class _ClienteContactoImpEditPageData
   const factory _ClienteContactoImpEditPageData(
       {required final ClienteContacto? clienteContacto,
       required final bool isSent,
-      final Object? error}) = _$_ClienteContactoImpEditPageData;
+      final Object? error}) = _$ClienteContactoImpEditPageDataImpl;
   const _ClienteContactoImpEditPageData._() : super._();
 
   @override
@@ -187,6 +188,7 @@ abstract class _ClienteContactoImpEditPageData
   Object? get error;
   @override
   @JsonKey(ignore: true)
-  _$$_ClienteContactoImpEditPageDataCopyWith<_$_ClienteContactoImpEditPageData>
+  _$$ClienteContactoImpEditPageDataImplCopyWith<
+          _$ClienteContactoImpEditPageDataImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

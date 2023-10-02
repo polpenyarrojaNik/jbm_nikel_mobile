@@ -84,12 +84,12 @@ class _$EstadisitcasArticulosTopDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_EstadisitcasArticulosTopDTOCopyWith<$Res>
+abstract class _$$EstadisitcasArticulosTopDTOImplCopyWith<$Res>
     implements $EstadisitcasArticulosTopDTOCopyWith<$Res> {
-  factory _$$_EstadisitcasArticulosTopDTOCopyWith(
-          _$_EstadisitcasArticulosTopDTO value,
-          $Res Function(_$_EstadisitcasArticulosTopDTO) then) =
-      __$$_EstadisitcasArticulosTopDTOCopyWithImpl<$Res>;
+  factory _$$EstadisitcasArticulosTopDTOImplCopyWith(
+          _$EstadisitcasArticulosTopDTOImpl value,
+          $Res Function(_$EstadisitcasArticulosTopDTOImpl) then) =
+      __$$EstadisitcasArticulosTopDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -99,13 +99,13 @@ abstract class _$$_EstadisitcasArticulosTopDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_EstadisitcasArticulosTopDTOCopyWithImpl<$Res>
+class __$$EstadisitcasArticulosTopDTOImplCopyWithImpl<$Res>
     extends _$EstadisitcasArticulosTopDTOCopyWithImpl<$Res,
-        _$_EstadisitcasArticulosTopDTO>
-    implements _$$_EstadisitcasArticulosTopDTOCopyWith<$Res> {
-  __$$_EstadisitcasArticulosTopDTOCopyWithImpl(
-      _$_EstadisitcasArticulosTopDTO _value,
-      $Res Function(_$_EstadisitcasArticulosTopDTO) _then)
+        _$EstadisitcasArticulosTopDTOImpl>
+    implements _$$EstadisitcasArticulosTopDTOImplCopyWith<$Res> {
+  __$$EstadisitcasArticulosTopDTOImplCopyWithImpl(
+      _$EstadisitcasArticulosTopDTOImpl _value,
+      $Res Function(_$EstadisitcasArticulosTopDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -115,7 +115,7 @@ class __$$_EstadisitcasArticulosTopDTOCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_EstadisitcasArticulosTopDTO(
+    return _then(_$EstadisitcasArticulosTopDTOImpl(
       articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
@@ -134,15 +134,16 @@ class __$$_EstadisitcasArticulosTopDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_EstadisitcasArticulosTopDTO extends _EstadisitcasArticulosTopDTO {
-  const _$_EstadisitcasArticulosTopDTO(
+class _$EstadisitcasArticulosTopDTOImpl extends _EstadisitcasArticulosTopDTO {
+  const _$EstadisitcasArticulosTopDTOImpl(
       {@JsonKey(name: 'ARTICULO_ID') required this.articuloId,
       @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
-  factory _$_EstadisitcasArticulosTopDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_EstadisitcasArticulosTopDTOFromJson(json);
+  factory _$EstadisitcasArticulosTopDTOImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$EstadisitcasArticulosTopDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'ARTICULO_ID')
@@ -163,7 +164,7 @@ class _$_EstadisitcasArticulosTopDTO extends _EstadisitcasArticulosTopDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EstadisitcasArticulosTopDTO &&
+            other is _$EstadisitcasArticulosTopDTOImpl &&
             (identical(other.articuloId, articuloId) ||
                 other.articuloId == articuloId) &&
             (identical(other.lastUpdated, lastUpdated) ||
@@ -179,13 +180,13 @@ class _$_EstadisitcasArticulosTopDTO extends _EstadisitcasArticulosTopDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EstadisitcasArticulosTopDTOCopyWith<_$_EstadisitcasArticulosTopDTO>
-      get copyWith => __$$_EstadisitcasArticulosTopDTOCopyWithImpl<
-          _$_EstadisitcasArticulosTopDTO>(this, _$identity);
+  _$$EstadisitcasArticulosTopDTOImplCopyWith<_$EstadisitcasArticulosTopDTOImpl>
+      get copyWith => __$$EstadisitcasArticulosTopDTOImplCopyWithImpl<
+          _$EstadisitcasArticulosTopDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_EstadisitcasArticulosTopDTOToJson(
+    return _$$EstadisitcasArticulosTopDTOImplToJson(
       this,
     );
   }
@@ -197,11 +198,11 @@ abstract class _EstadisitcasArticulosTopDTO
           {@JsonKey(name: 'ARTICULO_ID') required final String articuloId,
           @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
           @JsonKey(name: 'DELETED') final String deleted}) =
-      _$_EstadisitcasArticulosTopDTO;
+      _$EstadisitcasArticulosTopDTOImpl;
   const _EstadisitcasArticulosTopDTO._() : super._();
 
   factory _EstadisitcasArticulosTopDTO.fromJson(Map<String, dynamic> json) =
-      _$_EstadisitcasArticulosTopDTO.fromJson;
+      _$EstadisitcasArticulosTopDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'ARTICULO_ID')
@@ -214,6 +215,6 @@ abstract class _EstadisitcasArticulosTopDTO
   String get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_EstadisitcasArticulosTopDTOCopyWith<_$_EstadisitcasArticulosTopDTO>
+  _$$EstadisitcasArticulosTopDTOImplCopyWith<_$EstadisitcasArticulosTopDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

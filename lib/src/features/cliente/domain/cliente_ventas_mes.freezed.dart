@@ -93,11 +93,11 @@ class _$ClienteVentasMesCopyWithImpl<$Res, $Val extends ClienteVentasMes>
 }
 
 /// @nodoc
-abstract class _$$_ClienteVentasMesCopyWith<$Res>
+abstract class _$$ClienteVentasMesImplCopyWith<$Res>
     implements $ClienteVentasMesCopyWith<$Res> {
-  factory _$$_ClienteVentasMesCopyWith(
-          _$_ClienteVentasMes value, $Res Function(_$_ClienteVentasMes) then) =
-      __$$_ClienteVentasMesCopyWithImpl<$Res>;
+  factory _$$ClienteVentasMesImplCopyWith(_$ClienteVentasMesImpl value,
+          $Res Function(_$ClienteVentasMesImpl) then) =
+      __$$ClienteVentasMesImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -110,11 +110,11 @@ abstract class _$$_ClienteVentasMesCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ClienteVentasMesCopyWithImpl<$Res>
-    extends _$ClienteVentasMesCopyWithImpl<$Res, _$_ClienteVentasMes>
-    implements _$$_ClienteVentasMesCopyWith<$Res> {
-  __$$_ClienteVentasMesCopyWithImpl(
-      _$_ClienteVentasMes _value, $Res Function(_$_ClienteVentasMes) _then)
+class __$$ClienteVentasMesImplCopyWithImpl<$Res>
+    extends _$ClienteVentasMesCopyWithImpl<$Res, _$ClienteVentasMesImpl>
+    implements _$$ClienteVentasMesImplCopyWith<$Res> {
+  __$$ClienteVentasMesImplCopyWithImpl(_$ClienteVentasMesImpl _value,
+      $Res Function(_$ClienteVentasMesImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -127,7 +127,7 @@ class __$$_ClienteVentasMesCopyWithImpl<$Res>
     Object? importeAnyo_3 = null,
     Object? importeAnyo_4 = null,
   }) {
-    return _then(_$_ClienteVentasMes(
+    return _then(_$ClienteVentasMesImpl(
       mes: null == mes
           ? _value.mes
           : mes // ignore: cast_nullable_to_non_nullable
@@ -158,8 +158,8 @@ class __$$_ClienteVentasMesCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ClienteVentasMes extends _ClienteVentasMes {
-  const _$_ClienteVentasMes(
+class _$ClienteVentasMesImpl extends _ClienteVentasMes {
+  const _$ClienteVentasMesImpl(
       {required this.mes,
       required this.importeAnyo,
       required this.importeAnyo_1,
@@ -190,7 +190,7 @@ class _$_ClienteVentasMes extends _ClienteVentasMes {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClienteVentasMes &&
+            other is _$ClienteVentasMesImpl &&
             (identical(other.mes, mes) || other.mes == mes) &&
             (identical(other.importeAnyo, importeAnyo) ||
                 other.importeAnyo == importeAnyo) &&
@@ -211,8 +211,9 @@ class _$_ClienteVentasMes extends _ClienteVentasMes {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClienteVentasMesCopyWith<_$_ClienteVentasMes> get copyWith =>
-      __$$_ClienteVentasMesCopyWithImpl<_$_ClienteVentasMes>(this, _$identity);
+  _$$ClienteVentasMesImplCopyWith<_$ClienteVentasMesImpl> get copyWith =>
+      __$$ClienteVentasMesImplCopyWithImpl<_$ClienteVentasMesImpl>(
+          this, _$identity);
 }
 
 abstract class _ClienteVentasMes extends ClienteVentasMes {
@@ -222,7 +223,7 @@ abstract class _ClienteVentasMes extends ClienteVentasMes {
       required final Money importeAnyo_1,
       required final Money importeAnyo_2,
       required final Money importeAnyo_3,
-      required final Money importeAnyo_4}) = _$_ClienteVentasMes;
+      required final Money importeAnyo_4}) = _$ClienteVentasMesImpl;
   const _ClienteVentasMes._() : super._();
 
   @override
@@ -239,6 +240,6 @@ abstract class _ClienteVentasMes extends ClienteVentasMes {
   Money get importeAnyo_4;
   @override
   @JsonKey(ignore: true)
-  _$$_ClienteVentasMesCopyWith<_$_ClienteVentasMes> get copyWith =>
+  _$$ClienteVentasMesImplCopyWith<_$ClienteVentasMesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

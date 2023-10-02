@@ -63,22 +63,22 @@ class _$TipoPrecioCatalogoCopyWithImpl<$Res, $Val extends TipoPrecioCatalogo>
 }
 
 /// @nodoc
-abstract class _$$_TipoPrecioCatalogoCopyWith<$Res>
+abstract class _$$TipoPrecioCatalogoImplCopyWith<$Res>
     implements $TipoPrecioCatalogoCopyWith<$Res> {
-  factory _$$_TipoPrecioCatalogoCopyWith(_$_TipoPrecioCatalogo value,
-          $Res Function(_$_TipoPrecioCatalogo) then) =
-      __$$_TipoPrecioCatalogoCopyWithImpl<$Res>;
+  factory _$$TipoPrecioCatalogoImplCopyWith(_$TipoPrecioCatalogoImpl value,
+          $Res Function(_$TipoPrecioCatalogoImpl) then) =
+      __$$TipoPrecioCatalogoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String tipoPrecioCatalogoId, String descripcion});
 }
 
 /// @nodoc
-class __$$_TipoPrecioCatalogoCopyWithImpl<$Res>
-    extends _$TipoPrecioCatalogoCopyWithImpl<$Res, _$_TipoPrecioCatalogo>
-    implements _$$_TipoPrecioCatalogoCopyWith<$Res> {
-  __$$_TipoPrecioCatalogoCopyWithImpl(
-      _$_TipoPrecioCatalogo _value, $Res Function(_$_TipoPrecioCatalogo) _then)
+class __$$TipoPrecioCatalogoImplCopyWithImpl<$Res>
+    extends _$TipoPrecioCatalogoCopyWithImpl<$Res, _$TipoPrecioCatalogoImpl>
+    implements _$$TipoPrecioCatalogoImplCopyWith<$Res> {
+  __$$TipoPrecioCatalogoImplCopyWithImpl(_$TipoPrecioCatalogoImpl _value,
+      $Res Function(_$TipoPrecioCatalogoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_TipoPrecioCatalogoCopyWithImpl<$Res>
     Object? tipoPrecioCatalogoId = null,
     Object? descripcion = null,
   }) {
-    return _then(_$_TipoPrecioCatalogo(
+    return _then(_$TipoPrecioCatalogoImpl(
       tipoPrecioCatalogoId: null == tipoPrecioCatalogoId
           ? _value.tipoPrecioCatalogoId
           : tipoPrecioCatalogoId // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_TipoPrecioCatalogoCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TipoPrecioCatalogo extends _TipoPrecioCatalogo {
-  const _$_TipoPrecioCatalogo(
+class _$TipoPrecioCatalogoImpl extends _TipoPrecioCatalogo {
+  const _$TipoPrecioCatalogoImpl(
       {required this.tipoPrecioCatalogoId, required this.descripcion})
       : super._();
 
@@ -121,7 +121,7 @@ class _$_TipoPrecioCatalogo extends _TipoPrecioCatalogo {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TipoPrecioCatalogo &&
+            other is _$TipoPrecioCatalogoImpl &&
             (identical(other.tipoPrecioCatalogoId, tipoPrecioCatalogoId) ||
                 other.tipoPrecioCatalogoId == tipoPrecioCatalogoId) &&
             (identical(other.descripcion, descripcion) ||
@@ -135,15 +135,15 @@ class _$_TipoPrecioCatalogo extends _TipoPrecioCatalogo {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TipoPrecioCatalogoCopyWith<_$_TipoPrecioCatalogo> get copyWith =>
-      __$$_TipoPrecioCatalogoCopyWithImpl<_$_TipoPrecioCatalogo>(
+  _$$TipoPrecioCatalogoImplCopyWith<_$TipoPrecioCatalogoImpl> get copyWith =>
+      __$$TipoPrecioCatalogoImplCopyWithImpl<_$TipoPrecioCatalogoImpl>(
           this, _$identity);
 }
 
 abstract class _TipoPrecioCatalogo extends TipoPrecioCatalogo {
   const factory _TipoPrecioCatalogo(
       {required final String tipoPrecioCatalogoId,
-      required final String descripcion}) = _$_TipoPrecioCatalogo;
+      required final String descripcion}) = _$TipoPrecioCatalogoImpl;
   const _TipoPrecioCatalogo._() : super._();
 
   @override
@@ -152,6 +152,6 @@ abstract class _TipoPrecioCatalogo extends TipoPrecioCatalogo {
   String get descripcion;
   @override
   @JsonKey(ignore: true)
-  _$$_TipoPrecioCatalogoCopyWith<_$_TipoPrecioCatalogo> get copyWith =>
+  _$$TipoPrecioCatalogoImplCopyWith<_$TipoPrecioCatalogoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

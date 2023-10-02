@@ -132,12 +132,12 @@ class _$SeleccionarCantidadParamCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_SeleccionarCantidadParamCopyWith<$Res>
+abstract class _$$SeleccionarCantidadParamImplCopyWith<$Res>
     implements $SeleccionarCantidadParamCopyWith<$Res> {
-  factory _$$_SeleccionarCantidadParamCopyWith(
-          _$_SeleccionarCantidadParam value,
-          $Res Function(_$_SeleccionarCantidadParam) then) =
-      __$$_SeleccionarCantidadParamCopyWithImpl<$Res>;
+  factory _$$SeleccionarCantidadParamImplCopyWith(
+          _$SeleccionarCantidadParamImpl value,
+          $Res Function(_$SeleccionarCantidadParamImpl) then) =
+      __$$SeleccionarCantidadParamImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -157,12 +157,13 @@ abstract class _$$_SeleccionarCantidadParamCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SeleccionarCantidadParamCopyWithImpl<$Res>
+class __$$SeleccionarCantidadParamImplCopyWithImpl<$Res>
     extends _$SeleccionarCantidadParamCopyWithImpl<$Res,
-        _$_SeleccionarCantidadParam>
-    implements _$$_SeleccionarCantidadParamCopyWith<$Res> {
-  __$$_SeleccionarCantidadParamCopyWithImpl(_$_SeleccionarCantidadParam _value,
-      $Res Function(_$_SeleccionarCantidadParam) _then)
+        _$SeleccionarCantidadParamImpl>
+    implements _$$SeleccionarCantidadParamImplCopyWith<$Res> {
+  __$$SeleccionarCantidadParamImplCopyWithImpl(
+      _$SeleccionarCantidadParamImpl _value,
+      $Res Function(_$SeleccionarCantidadParamImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -179,7 +180,7 @@ class __$$_SeleccionarCantidadParamCopyWithImpl<$Res>
     Object? posicionLinea = null,
     Object? addNewLineaDesdeArticulo = null,
   }) {
-    return _then(_$_SeleccionarCantidadParam(
+    return _then(_$SeleccionarCantidadParamImpl(
       pedidoVentaParam: null == pedidoVentaParam
           ? _value.pedidoVentaParam
           : pedidoVentaParam // ignore: cast_nullable_to_non_nullable
@@ -226,8 +227,8 @@ class __$$_SeleccionarCantidadParamCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
-  const _$_SeleccionarCantidadParam(
+class _$SeleccionarCantidadParamImpl extends _SeleccionarCantidadParam {
+  const _$SeleccionarCantidadParamImpl(
       {required this.pedidoVentaParam,
       required this.clienteId,
       required this.articuloId,
@@ -270,7 +271,7 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SeleccionarCantidadParam &&
+            other is _$SeleccionarCantidadParamImpl &&
             (identical(other.pedidoVentaParam, pedidoVentaParam) ||
                 other.pedidoVentaParam == pedidoVentaParam) &&
             (identical(other.clienteId, clienteId) ||
@@ -310,9 +311,9 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SeleccionarCantidadParamCopyWith<_$_SeleccionarCantidadParam>
-      get copyWith => __$$_SeleccionarCantidadParamCopyWithImpl<
-          _$_SeleccionarCantidadParam>(this, _$identity);
+  _$$SeleccionarCantidadParamImplCopyWith<_$SeleccionarCantidadParamImpl>
+      get copyWith => __$$SeleccionarCantidadParamImplCopyWithImpl<
+          _$SeleccionarCantidadParamImpl>(this, _$identity);
 }
 
 abstract class _SeleccionarCantidadParam extends SeleccionarCantidadParam {
@@ -327,7 +328,7 @@ abstract class _SeleccionarCantidadParam extends SeleccionarCantidadParam {
           final bool? createdFromCliente,
           required final int posicionLinea,
           required final bool addNewLineaDesdeArticulo}) =
-      _$_SeleccionarCantidadParam;
+      _$SeleccionarCantidadParamImpl;
   const _SeleccionarCantidadParam._() : super._();
 
   @override
@@ -352,6 +353,6 @@ abstract class _SeleccionarCantidadParam extends SeleccionarCantidadParam {
   bool get addNewLineaDesdeArticulo;
   @override
   @JsonKey(ignore: true)
-  _$$_SeleccionarCantidadParamCopyWith<_$_SeleccionarCantidadParam>
+  _$$SeleccionarCantidadParamImplCopyWith<_$SeleccionarCantidadParamImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

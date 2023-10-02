@@ -117,12 +117,12 @@ class _$EstadisticasVentaClienteUsuarioCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_EstadisticasVentaClienteUsuarioCopyWith<$Res>
+abstract class _$$EstadisticasVentaClienteUsuarioImplCopyWith<$Res>
     implements $EstadisticasVentaClienteUsuarioCopyWith<$Res> {
-  factory _$$_EstadisticasVentaClienteUsuarioCopyWith(
-          _$_EstadisticasVentaClienteUsuario value,
-          $Res Function(_$_EstadisticasVentaClienteUsuario) then) =
-      __$$_EstadisticasVentaClienteUsuarioCopyWithImpl<$Res>;
+  factory _$$EstadisticasVentaClienteUsuarioImplCopyWith(
+          _$EstadisticasVentaClienteUsuarioImpl value,
+          $Res Function(_$EstadisticasVentaClienteUsuarioImpl) then) =
+      __$$EstadisticasVentaClienteUsuarioImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -138,13 +138,13 @@ abstract class _$$_EstadisticasVentaClienteUsuarioCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_EstadisticasVentaClienteUsuarioCopyWithImpl<$Res>
+class __$$EstadisticasVentaClienteUsuarioImplCopyWithImpl<$Res>
     extends _$EstadisticasVentaClienteUsuarioCopyWithImpl<$Res,
-        _$_EstadisticasVentaClienteUsuario>
-    implements _$$_EstadisticasVentaClienteUsuarioCopyWith<$Res> {
-  __$$_EstadisticasVentaClienteUsuarioCopyWithImpl(
-      _$_EstadisticasVentaClienteUsuario _value,
-      $Res Function(_$_EstadisticasVentaClienteUsuario) _then)
+        _$EstadisticasVentaClienteUsuarioImpl>
+    implements _$$EstadisticasVentaClienteUsuarioImplCopyWith<$Res> {
+  __$$EstadisticasVentaClienteUsuarioImplCopyWithImpl(
+      _$EstadisticasVentaClienteUsuarioImpl _value,
+      $Res Function(_$EstadisticasVentaClienteUsuarioImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -160,7 +160,7 @@ class __$$_EstadisticasVentaClienteUsuarioCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_EstadisticasVentaClienteUsuario(
+    return _then(_$EstadisticasVentaClienteUsuarioImpl(
       anyo: null == anyo
           ? _value.anyo
           : anyo // ignore: cast_nullable_to_non_nullable
@@ -203,9 +203,9 @@ class __$$_EstadisticasVentaClienteUsuarioCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_EstadisticasVentaClienteUsuario
+class _$EstadisticasVentaClienteUsuarioImpl
     extends _EstadisticasVentaClienteUsuario {
-  const _$_EstadisticasVentaClienteUsuario(
+  const _$EstadisticasVentaClienteUsuarioImpl(
       {required this.anyo,
       required this.mes,
       required this.clienteId,
@@ -245,7 +245,7 @@ class _$_EstadisticasVentaClienteUsuario
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EstadisticasVentaClienteUsuario &&
+            other is _$EstadisticasVentaClienteUsuarioImpl &&
             (identical(other.anyo, anyo) || other.anyo == anyo) &&
             (identical(other.mes, mes) || other.mes == mes) &&
             (identical(other.clienteId, clienteId) ||
@@ -268,10 +268,10 @@ class _$_EstadisticasVentaClienteUsuario
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EstadisticasVentaClienteUsuarioCopyWith<
-          _$_EstadisticasVentaClienteUsuario>
-      get copyWith => __$$_EstadisticasVentaClienteUsuarioCopyWithImpl<
-          _$_EstadisticasVentaClienteUsuario>(this, _$identity);
+  _$$EstadisticasVentaClienteUsuarioImplCopyWith<
+          _$EstadisticasVentaClienteUsuarioImpl>
+      get copyWith => __$$EstadisticasVentaClienteUsuarioImplCopyWithImpl<
+          _$EstadisticasVentaClienteUsuarioImpl>(this, _$identity);
 }
 
 abstract class _EstadisticasVentaClienteUsuario
@@ -285,7 +285,7 @@ abstract class _EstadisticasVentaClienteUsuario
       final Money? importe,
       final Money? coste,
       required final DateTime lastUpdated,
-      required final bool deleted}) = _$_EstadisticasVentaClienteUsuario;
+      required final bool deleted}) = _$EstadisticasVentaClienteUsuarioImpl;
   const _EstadisticasVentaClienteUsuario._() : super._();
 
   @override
@@ -308,7 +308,7 @@ abstract class _EstadisticasVentaClienteUsuario
   bool get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_EstadisticasVentaClienteUsuarioCopyWith<
-          _$_EstadisticasVentaClienteUsuario>
+  _$$EstadisticasVentaClienteUsuarioImplCopyWith<
+          _$EstadisticasVentaClienteUsuarioImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

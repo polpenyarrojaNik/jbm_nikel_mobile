@@ -6,8 +6,9 @@ part of 'idioma_catalogo_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_IdiomaCatalogoDTO _$$_IdiomaCatalogoDTOFromJson(Map<String, dynamic> json) =>
-    _$_IdiomaCatalogoDTO(
+_$IdiomaCatalogoDTOImpl _$$IdiomaCatalogoDTOImplFromJson(
+        Map<String, dynamic> json) =>
+    _$IdiomaCatalogoDTOImpl(
       idiomaId: json['IDIOMA_ID'] as String,
       descripcionES: json['DESCRIPCION_ES'] as String,
       descripcionEN: json['DESCRIPCION_EN'] as String?,
@@ -21,8 +22,8 @@ _$_IdiomaCatalogoDTO _$$_IdiomaCatalogoDTOFromJson(Map<String, dynamic> json) =>
       descripcionPL: json['DESCRIPCION_PL'] as String?,
     );
 
-Map<String, dynamic> _$$_IdiomaCatalogoDTOToJson(
-        _$_IdiomaCatalogoDTO instance) =>
+Map<String, dynamic> _$$IdiomaCatalogoDTOImplToJson(
+        _$IdiomaCatalogoDTOImpl instance) =>
     <String, dynamic>{
       'IDIOMA_ID': instance.idiomaId,
       'DESCRIPCION_ES': instance.descripcionES,

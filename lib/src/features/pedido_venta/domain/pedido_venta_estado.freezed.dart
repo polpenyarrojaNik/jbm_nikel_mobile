@@ -75,22 +75,22 @@ class _$PedidoVentaEstadoCopyWithImpl<$Res, $Val extends PedidoVentaEstado>
 }
 
 /// @nodoc
-abstract class _$$_PedidoVentaEstadoCopyWith<$Res>
+abstract class _$$PedidoVentaEstadoImplCopyWith<$Res>
     implements $PedidoVentaEstadoCopyWith<$Res> {
-  factory _$$_PedidoVentaEstadoCopyWith(_$_PedidoVentaEstado value,
-          $Res Function(_$_PedidoVentaEstado) then) =
-      __$$_PedidoVentaEstadoCopyWithImpl<$Res>;
+  factory _$$PedidoVentaEstadoImplCopyWith(_$PedidoVentaEstadoImpl value,
+          $Res Function(_$PedidoVentaEstadoImpl) then) =
+      __$$PedidoVentaEstadoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, String descripcion, DateTime lastUpdate, bool deleted});
 }
 
 /// @nodoc
-class __$$_PedidoVentaEstadoCopyWithImpl<$Res>
-    extends _$PedidoVentaEstadoCopyWithImpl<$Res, _$_PedidoVentaEstado>
-    implements _$$_PedidoVentaEstadoCopyWith<$Res> {
-  __$$_PedidoVentaEstadoCopyWithImpl(
-      _$_PedidoVentaEstado _value, $Res Function(_$_PedidoVentaEstado) _then)
+class __$$PedidoVentaEstadoImplCopyWithImpl<$Res>
+    extends _$PedidoVentaEstadoCopyWithImpl<$Res, _$PedidoVentaEstadoImpl>
+    implements _$$PedidoVentaEstadoImplCopyWith<$Res> {
+  __$$PedidoVentaEstadoImplCopyWithImpl(_$PedidoVentaEstadoImpl _value,
+      $Res Function(_$PedidoVentaEstadoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -101,7 +101,7 @@ class __$$_PedidoVentaEstadoCopyWithImpl<$Res>
     Object? lastUpdate = null,
     Object? deleted = null,
   }) {
-    return _then(_$_PedidoVentaEstado(
+    return _then(_$PedidoVentaEstadoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -124,8 +124,8 @@ class __$$_PedidoVentaEstadoCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PedidoVentaEstado extends _PedidoVentaEstado {
-  const _$_PedidoVentaEstado(
+class _$PedidoVentaEstadoImpl extends _PedidoVentaEstado {
+  const _$PedidoVentaEstadoImpl(
       {required this.id,
       required this.descripcion,
       required this.lastUpdate,
@@ -150,7 +150,7 @@ class _$_PedidoVentaEstado extends _PedidoVentaEstado {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PedidoVentaEstado &&
+            other is _$PedidoVentaEstadoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.descripcion, descripcion) ||
                 other.descripcion == descripcion) &&
@@ -166,8 +166,8 @@ class _$_PedidoVentaEstado extends _PedidoVentaEstado {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PedidoVentaEstadoCopyWith<_$_PedidoVentaEstado> get copyWith =>
-      __$$_PedidoVentaEstadoCopyWithImpl<_$_PedidoVentaEstado>(
+  _$$PedidoVentaEstadoImplCopyWith<_$PedidoVentaEstadoImpl> get copyWith =>
+      __$$PedidoVentaEstadoImplCopyWithImpl<_$PedidoVentaEstadoImpl>(
           this, _$identity);
 }
 
@@ -176,7 +176,7 @@ abstract class _PedidoVentaEstado extends PedidoVentaEstado {
       {required final int id,
       required final String descripcion,
       required final DateTime lastUpdate,
-      required final bool deleted}) = _$_PedidoVentaEstado;
+      required final bool deleted}) = _$PedidoVentaEstadoImpl;
   const _PedidoVentaEstado._() : super._();
 
   @override
@@ -189,6 +189,6 @@ abstract class _PedidoVentaEstado extends PedidoVentaEstado {
   bool get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_PedidoVentaEstadoCopyWith<_$_PedidoVentaEstado> get copyWith =>
+  _$$PedidoVentaEstadoImplCopyWith<_$PedidoVentaEstadoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

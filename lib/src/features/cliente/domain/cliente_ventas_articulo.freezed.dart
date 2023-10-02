@@ -136,11 +136,12 @@ class _$ClienteVentasArticuloCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ClienteVentasArticuloCopyWith<$Res>
+abstract class _$$ClienteVentasArticuloImplCopyWith<$Res>
     implements $ClienteVentasArticuloCopyWith<$Res> {
-  factory _$$_ClienteVentasArticuloCopyWith(_$_ClienteVentasArticulo value,
-          $Res Function(_$_ClienteVentasArticulo) then) =
-      __$$_ClienteVentasArticuloCopyWithImpl<$Res>;
+  factory _$$ClienteVentasArticuloImplCopyWith(
+          _$ClienteVentasArticuloImpl value,
+          $Res Function(_$ClienteVentasArticuloImpl) then) =
+      __$$ClienteVentasArticuloImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -159,11 +160,12 @@ abstract class _$$_ClienteVentasArticuloCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ClienteVentasArticuloCopyWithImpl<$Res>
-    extends _$ClienteVentasArticuloCopyWithImpl<$Res, _$_ClienteVentasArticulo>
-    implements _$$_ClienteVentasArticuloCopyWith<$Res> {
-  __$$_ClienteVentasArticuloCopyWithImpl(_$_ClienteVentasArticulo _value,
-      $Res Function(_$_ClienteVentasArticulo) _then)
+class __$$ClienteVentasArticuloImplCopyWithImpl<$Res>
+    extends _$ClienteVentasArticuloCopyWithImpl<$Res,
+        _$ClienteVentasArticuloImpl>
+    implements _$$ClienteVentasArticuloImplCopyWith<$Res> {
+  __$$ClienteVentasArticuloImplCopyWithImpl(_$ClienteVentasArticuloImpl _value,
+      $Res Function(_$ClienteVentasArticuloImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -182,7 +184,7 @@ class __$$_ClienteVentasArticuloCopyWithImpl<$Res>
     Object? cantidadAnyo_3 = null,
     Object? cantidadAnyo_4 = null,
   }) {
-    return _then(_$_ClienteVentasArticulo(
+    return _then(_$ClienteVentasArticuloImpl(
       articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
@@ -237,8 +239,8 @@ class __$$_ClienteVentasArticuloCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ClienteVentasArticulo extends _ClienteVentasArticulo {
-  const _$_ClienteVentasArticulo(
+class _$ClienteVentasArticuloImpl extends _ClienteVentasArticulo {
+  const _$ClienteVentasArticuloImpl(
       {required this.articuloId,
       required this.descripcion,
       required this.importeAnyo,
@@ -287,7 +289,7 @@ class _$_ClienteVentasArticulo extends _ClienteVentasArticulo {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClienteVentasArticulo &&
+            other is _$ClienteVentasArticuloImpl &&
             (identical(other.articuloId, articuloId) ||
                 other.articuloId == articuloId) &&
             (identical(other.descripcion, descripcion) ||
@@ -333,9 +335,9 @@ class _$_ClienteVentasArticulo extends _ClienteVentasArticulo {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClienteVentasArticuloCopyWith<_$_ClienteVentasArticulo> get copyWith =>
-      __$$_ClienteVentasArticuloCopyWithImpl<_$_ClienteVentasArticulo>(
-          this, _$identity);
+  _$$ClienteVentasArticuloImplCopyWith<_$ClienteVentasArticuloImpl>
+      get copyWith => __$$ClienteVentasArticuloImplCopyWithImpl<
+          _$ClienteVentasArticuloImpl>(this, _$identity);
 }
 
 abstract class _ClienteVentasArticulo extends ClienteVentasArticulo {
@@ -351,7 +353,7 @@ abstract class _ClienteVentasArticulo extends ClienteVentasArticulo {
       required final int cantidadAnyo_1,
       required final int cantidadAnyo_2,
       required final int cantidadAnyo_3,
-      required final int cantidadAnyo_4}) = _$_ClienteVentasArticulo;
+      required final int cantidadAnyo_4}) = _$ClienteVentasArticuloImpl;
   const _ClienteVentasArticulo._() : super._();
 
   @override
@@ -380,6 +382,6 @@ abstract class _ClienteVentasArticulo extends ClienteVentasArticulo {
   int get cantidadAnyo_4;
   @override
   @JsonKey(ignore: true)
-  _$$_ClienteVentasArticuloCopyWith<_$_ClienteVentasArticulo> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ClienteVentasArticuloImplCopyWith<_$ClienteVentasArticuloImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

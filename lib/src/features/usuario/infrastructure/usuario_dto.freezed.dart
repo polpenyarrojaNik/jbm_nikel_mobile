@@ -136,11 +136,11 @@ class _$UsuarioDTOCopyWithImpl<$Res, $Val extends UsuarioDTO>
 }
 
 /// @nodoc
-abstract class _$$_UsuarioDTOCopyWith<$Res>
+abstract class _$$UsuarioDTOImplCopyWith<$Res>
     implements $UsuarioDTOCopyWith<$Res> {
-  factory _$$_UsuarioDTOCopyWith(
-          _$_UsuarioDTO value, $Res Function(_$_UsuarioDTO) then) =
-      __$$_UsuarioDTOCopyWithImpl<$Res>;
+  factory _$$UsuarioDTOImplCopyWith(
+          _$UsuarioDTOImpl value, $Res Function(_$UsuarioDTOImpl) then) =
+      __$$UsuarioDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -157,11 +157,11 @@ abstract class _$$_UsuarioDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_UsuarioDTOCopyWithImpl<$Res>
-    extends _$UsuarioDTOCopyWithImpl<$Res, _$_UsuarioDTO>
-    implements _$$_UsuarioDTOCopyWith<$Res> {
-  __$$_UsuarioDTOCopyWithImpl(
-      _$_UsuarioDTO _value, $Res Function(_$_UsuarioDTO) _then)
+class __$$UsuarioDTOImplCopyWithImpl<$Res>
+    extends _$UsuarioDTOCopyWithImpl<$Res, _$UsuarioDTOImpl>
+    implements _$$UsuarioDTOImplCopyWith<$Res> {
+  __$$UsuarioDTOImplCopyWithImpl(
+      _$UsuarioDTOImpl _value, $Res Function(_$UsuarioDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -178,7 +178,7 @@ class __$$_UsuarioDTOCopyWithImpl<$Res>
     Object? modificarPedido = null,
     Object? verTotalVentas = null,
   }) {
-    return _then(_$_UsuarioDTO(
+    return _then(_$UsuarioDTOImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -225,8 +225,8 @@ class __$$_UsuarioDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UsuarioDTO extends _UsuarioDTO {
-  const _$_UsuarioDTO(
+class _$UsuarioDTOImpl extends _UsuarioDTO {
+  const _$UsuarioDTOImpl(
       {@JsonKey(name: 'USUARIO_ID') required this.id,
       @JsonKey(name: 'USUARIO') required this.usuario,
       @JsonKey(name: 'CLAVE') required this.contrasenya,
@@ -241,8 +241,8 @@ class _$_UsuarioDTO extends _UsuarioDTO {
       @JsonKey(name: 'APP_VER_TOTAL_VENTAS') required this.verTotalVentas})
       : super._();
 
-  factory _$_UsuarioDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_UsuarioDTOFromJson(json);
+  factory _$UsuarioDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UsuarioDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'USUARIO_ID')
@@ -284,7 +284,7 @@ class _$_UsuarioDTO extends _UsuarioDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UsuarioDTO &&
+            other is _$UsuarioDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.usuario, usuario) || other.usuario == usuario) &&
             (identical(other.contrasenya, contrasenya) ||
@@ -322,12 +322,12 @@ class _$_UsuarioDTO extends _UsuarioDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UsuarioDTOCopyWith<_$_UsuarioDTO> get copyWith =>
-      __$$_UsuarioDTOCopyWithImpl<_$_UsuarioDTO>(this, _$identity);
+  _$$UsuarioDTOImplCopyWith<_$UsuarioDTOImpl> get copyWith =>
+      __$$UsuarioDTOImplCopyWithImpl<_$UsuarioDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UsuarioDTOToJson(
+    return _$$UsuarioDTOImplToJson(
       this,
     );
   }
@@ -348,11 +348,11 @@ abstract class _UsuarioDTO extends UsuarioDTO {
       @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')
       required final String modificarPedido,
       @JsonKey(name: 'APP_VER_TOTAL_VENTAS')
-      required final String verTotalVentas}) = _$_UsuarioDTO;
+      required final String verTotalVentas}) = _$UsuarioDTOImpl;
   const _UsuarioDTO._() : super._();
 
   factory _UsuarioDTO.fromJson(Map<String, dynamic> json) =
-      _$_UsuarioDTO.fromJson;
+      _$UsuarioDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'USUARIO_ID')
@@ -386,6 +386,6 @@ abstract class _UsuarioDTO extends UsuarioDTO {
   String get verTotalVentas;
   @override
   @JsonKey(ignore: true)
-  _$$_UsuarioDTOCopyWith<_$_UsuarioDTO> get copyWith =>
+  _$$UsuarioDTOImplCopyWith<_$UsuarioDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -6,9 +6,9 @@ part of 'articulo_ventas_mes_todos_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ArticuloVentasMesTodosDTO _$$_ArticuloVentasMesTodosDTOFromJson(
+_$ArticuloVentasMesTodosDTOImpl _$$ArticuloVentasMesTodosDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_ArticuloVentasMesTodosDTO(
+    _$ArticuloVentasMesTodosDTOImpl(
       mes: json['MES'] as int,
       unidadesAnyoTodos: json['UNIDADES_ANYO_TODOS'] as int,
       unidadesAnyoTodos_1: json['UNIDADES_ANYO_TODOS_1'] as int,
@@ -17,8 +17,8 @@ _$_ArticuloVentasMesTodosDTO _$$_ArticuloVentasMesTodosDTOFromJson(
       unidadesAnyoTodos_4: json['UNIDADES_ANYO_TODOS_4'] as int,
     );
 
-Map<String, dynamic> _$$_ArticuloVentasMesTodosDTOToJson(
-        _$_ArticuloVentasMesTodosDTO instance) =>
+Map<String, dynamic> _$$ArticuloVentasMesTodosDTOImplToJson(
+        _$ArticuloVentasMesTodosDTOImpl instance) =>
     <String, dynamic>{
       'MES': instance.mes,
       'UNIDADES_ANYO_TODOS': instance.unidadesAnyoTodos,

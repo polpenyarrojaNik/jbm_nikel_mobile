@@ -178,11 +178,11 @@ class _$ClienteTipoPotencialCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ClienteTipoPotencialCopyWith<$Res>
+abstract class _$$ClienteTipoPotencialImplCopyWith<$Res>
     implements $ClienteTipoPotencialCopyWith<$Res> {
-  factory _$$_ClienteTipoPotencialCopyWith(_$_ClienteTipoPotencial value,
-          $Res Function(_$_ClienteTipoPotencial) then) =
-      __$$_ClienteTipoPotencialCopyWithImpl<$Res>;
+  factory _$$ClienteTipoPotencialImplCopyWith(_$ClienteTipoPotencialImpl value,
+          $Res Function(_$ClienteTipoPotencialImpl) then) =
+      __$$ClienteTipoPotencialImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -207,11 +207,11 @@ abstract class _$$_ClienteTipoPotencialCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ClienteTipoPotencialCopyWithImpl<$Res>
-    extends _$ClienteTipoPotencialCopyWithImpl<$Res, _$_ClienteTipoPotencial>
-    implements _$$_ClienteTipoPotencialCopyWith<$Res> {
-  __$$_ClienteTipoPotencialCopyWithImpl(_$_ClienteTipoPotencial _value,
-      $Res Function(_$_ClienteTipoPotencial) _then)
+class __$$ClienteTipoPotencialImplCopyWithImpl<$Res>
+    extends _$ClienteTipoPotencialCopyWithImpl<$Res, _$ClienteTipoPotencialImpl>
+    implements _$$ClienteTipoPotencialImplCopyWith<$Res> {
+  __$$ClienteTipoPotencialImplCopyWithImpl(_$ClienteTipoPotencialImpl _value,
+      $Res Function(_$ClienteTipoPotencialImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -236,7 +236,7 @@ class __$$_ClienteTipoPotencialCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_ClienteTipoPotencial(
+    return _then(_$ClienteTipoPotencialImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -315,8 +315,8 @@ class __$$_ClienteTipoPotencialCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ClienteTipoPotencial extends _ClienteTipoPotencial {
-  const _$_ClienteTipoPotencial(
+class _$ClienteTipoPotencialImpl extends _ClienteTipoPotencial {
+  const _$ClienteTipoPotencialImpl(
       {required this.id,
       required this.descripcionES,
       this.descripcionEN,
@@ -383,7 +383,7 @@ class _$_ClienteTipoPotencial extends _ClienteTipoPotencial {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClienteTipoPotencial &&
+            other is _$ClienteTipoPotencialImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.descripcionES, descripcionES) ||
                 other.descripcionES == descripcionES) &&
@@ -445,9 +445,10 @@ class _$_ClienteTipoPotencial extends _ClienteTipoPotencial {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClienteTipoPotencialCopyWith<_$_ClienteTipoPotencial> get copyWith =>
-      __$$_ClienteTipoPotencialCopyWithImpl<_$_ClienteTipoPotencial>(
-          this, _$identity);
+  _$$ClienteTipoPotencialImplCopyWith<_$ClienteTipoPotencialImpl>
+      get copyWith =>
+          __$$ClienteTipoPotencialImplCopyWithImpl<_$ClienteTipoPotencialImpl>(
+              this, _$identity);
 }
 
 abstract class _ClienteTipoPotencial extends ClienteTipoPotencial {
@@ -469,7 +470,7 @@ abstract class _ClienteTipoPotencial extends ClienteTipoPotencial {
       final String? descripcionCN,
       final String? descripcionEL,
       required final DateTime lastUpdated,
-      required final bool deleted}) = _$_ClienteTipoPotencial;
+      required final bool deleted}) = _$ClienteTipoPotencialImpl;
   const _ClienteTipoPotencial._() : super._();
 
   @override
@@ -510,6 +511,6 @@ abstract class _ClienteTipoPotencial extends ClienteTipoPotencial {
   bool get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_ClienteTipoPotencialCopyWith<_$_ClienteTipoPotencial> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ClienteTipoPotencialImplCopyWith<_$ClienteTipoPotencialImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

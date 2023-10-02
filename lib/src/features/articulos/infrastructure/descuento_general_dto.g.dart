@@ -6,9 +6,9 @@ part of 'descuento_general_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_DescuentoGeneralDTO _$$_DescuentoGeneralDTOFromJson(
+_$DescuentoGeneralDTOImpl _$$DescuentoGeneralDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_DescuentoGeneralDTO(
+    _$DescuentoGeneralDTOImpl(
       descuentoGeneralId: json['DESCUENTO_GENERAL_ID'] as String,
       articuloId: json['ARTICULO_ID'] as String,
       familiaId: json['FAMILIA_ID'] as String,
@@ -19,8 +19,8 @@ _$_DescuentoGeneralDTO _$$_DescuentoGeneralDTOFromJson(
       deleted: json['DELETED'] as String? ?? 'N',
     );
 
-Map<String, dynamic> _$$_DescuentoGeneralDTOToJson(
-        _$_DescuentoGeneralDTO instance) =>
+Map<String, dynamic> _$$DescuentoGeneralDTOImplToJson(
+        _$DescuentoGeneralDTOImpl instance) =>
     <String, dynamic>{
       'DESCUENTO_GENERAL_ID': instance.descuentoGeneralId,
       'ARTICULO_ID': instance.articuloId,

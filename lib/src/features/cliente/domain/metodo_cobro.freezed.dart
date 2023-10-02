@@ -177,11 +177,11 @@ class _$MetodoDeCobroCopyWithImpl<$Res, $Val extends MetodoDeCobro>
 }
 
 /// @nodoc
-abstract class _$$_MetodoDeCobroCopyWith<$Res>
+abstract class _$$MetodoDeCobroImplCopyWith<$Res>
     implements $MetodoDeCobroCopyWith<$Res> {
-  factory _$$_MetodoDeCobroCopyWith(
-          _$_MetodoDeCobro value, $Res Function(_$_MetodoDeCobro) then) =
-      __$$_MetodoDeCobroCopyWithImpl<$Res>;
+  factory _$$MetodoDeCobroImplCopyWith(
+          _$MetodoDeCobroImpl value, $Res Function(_$MetodoDeCobroImpl) then) =
+      __$$MetodoDeCobroImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -206,11 +206,11 @@ abstract class _$$_MetodoDeCobroCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MetodoDeCobroCopyWithImpl<$Res>
-    extends _$MetodoDeCobroCopyWithImpl<$Res, _$_MetodoDeCobro>
-    implements _$$_MetodoDeCobroCopyWith<$Res> {
-  __$$_MetodoDeCobroCopyWithImpl(
-      _$_MetodoDeCobro _value, $Res Function(_$_MetodoDeCobro) _then)
+class __$$MetodoDeCobroImplCopyWithImpl<$Res>
+    extends _$MetodoDeCobroCopyWithImpl<$Res, _$MetodoDeCobroImpl>
+    implements _$$MetodoDeCobroImplCopyWith<$Res> {
+  __$$MetodoDeCobroImplCopyWithImpl(
+      _$MetodoDeCobroImpl _value, $Res Function(_$MetodoDeCobroImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -235,7 +235,7 @@ class __$$_MetodoDeCobroCopyWithImpl<$Res>
     Object? lastUpdate = null,
     Object? deleted = null,
   }) {
-    return _then(_$_MetodoDeCobro(
+    return _then(_$MetodoDeCobroImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -314,8 +314,8 @@ class __$$_MetodoDeCobroCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MetodoDeCobro extends _MetodoDeCobro {
-  const _$_MetodoDeCobro(
+class _$MetodoDeCobroImpl extends _MetodoDeCobro {
+  const _$MetodoDeCobroImpl(
       {required this.id,
       required this.descripcionES,
       this.descripcionEN,
@@ -382,7 +382,7 @@ class _$_MetodoDeCobro extends _MetodoDeCobro {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MetodoDeCobro &&
+            other is _$MetodoDeCobroImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.descripcionES, descripcionES) ||
                 other.descripcionES == descripcionES) &&
@@ -444,8 +444,8 @@ class _$_MetodoDeCobro extends _MetodoDeCobro {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MetodoDeCobroCopyWith<_$_MetodoDeCobro> get copyWith =>
-      __$$_MetodoDeCobroCopyWithImpl<_$_MetodoDeCobro>(this, _$identity);
+  _$$MetodoDeCobroImplCopyWith<_$MetodoDeCobroImpl> get copyWith =>
+      __$$MetodoDeCobroImplCopyWithImpl<_$MetodoDeCobroImpl>(this, _$identity);
 }
 
 abstract class _MetodoDeCobro extends MetodoDeCobro {
@@ -467,7 +467,7 @@ abstract class _MetodoDeCobro extends MetodoDeCobro {
       final String? descripcionCN,
       final String? descripcionEL,
       required final DateTime lastUpdate,
-      required final bool deleted}) = _$_MetodoDeCobro;
+      required final bool deleted}) = _$MetodoDeCobroImpl;
   const _MetodoDeCobro._() : super._();
 
   @override
@@ -508,6 +508,6 @@ abstract class _MetodoDeCobro extends MetodoDeCobro {
   bool get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_MetodoDeCobroCopyWith<_$_MetodoDeCobro> get copyWith =>
+  _$$MetodoDeCobroImplCopyWith<_$MetodoDeCobroImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

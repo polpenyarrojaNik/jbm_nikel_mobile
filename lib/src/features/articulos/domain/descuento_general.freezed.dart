@@ -107,11 +107,11 @@ class _$DescuentoGeneralCopyWithImpl<$Res, $Val extends DescuentoGeneral>
 }
 
 /// @nodoc
-abstract class _$$_DescuentoGeneralCopyWith<$Res>
+abstract class _$$DescuentoGeneralImplCopyWith<$Res>
     implements $DescuentoGeneralCopyWith<$Res> {
-  factory _$$_DescuentoGeneralCopyWith(
-          _$_DescuentoGeneral value, $Res Function(_$_DescuentoGeneral) then) =
-      __$$_DescuentoGeneralCopyWithImpl<$Res>;
+  factory _$$DescuentoGeneralImplCopyWith(_$DescuentoGeneralImpl value,
+          $Res Function(_$DescuentoGeneralImpl) then) =
+      __$$DescuentoGeneralImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -126,11 +126,11 @@ abstract class _$$_DescuentoGeneralCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DescuentoGeneralCopyWithImpl<$Res>
-    extends _$DescuentoGeneralCopyWithImpl<$Res, _$_DescuentoGeneral>
-    implements _$$_DescuentoGeneralCopyWith<$Res> {
-  __$$_DescuentoGeneralCopyWithImpl(
-      _$_DescuentoGeneral _value, $Res Function(_$_DescuentoGeneral) _then)
+class __$$DescuentoGeneralImplCopyWithImpl<$Res>
+    extends _$DescuentoGeneralCopyWithImpl<$Res, _$DescuentoGeneralImpl>
+    implements _$$DescuentoGeneralImplCopyWith<$Res> {
+  __$$DescuentoGeneralImplCopyWithImpl(_$DescuentoGeneralImpl _value,
+      $Res Function(_$DescuentoGeneralImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -145,7 +145,7 @@ class __$$_DescuentoGeneralCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_DescuentoGeneral(
+    return _then(_$DescuentoGeneralImpl(
       descuentoGeneralId: null == descuentoGeneralId
           ? _value.descuentoGeneralId
           : descuentoGeneralId // ignore: cast_nullable_to_non_nullable
@@ -184,8 +184,8 @@ class __$$_DescuentoGeneralCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DescuentoGeneral extends _DescuentoGeneral {
-  const _$_DescuentoGeneral(
+class _$DescuentoGeneralImpl extends _DescuentoGeneral {
+  const _$DescuentoGeneralImpl(
       {required this.descuentoGeneralId,
       required this.articuloId,
       required this.familiaId,
@@ -222,7 +222,7 @@ class _$_DescuentoGeneral extends _DescuentoGeneral {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DescuentoGeneral &&
+            other is _$DescuentoGeneralImpl &&
             (identical(other.descuentoGeneralId, descuentoGeneralId) ||
                 other.descuentoGeneralId == descuentoGeneralId) &&
             (identical(other.articuloId, articuloId) ||
@@ -247,8 +247,9 @@ class _$_DescuentoGeneral extends _DescuentoGeneral {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DescuentoGeneralCopyWith<_$_DescuentoGeneral> get copyWith =>
-      __$$_DescuentoGeneralCopyWithImpl<_$_DescuentoGeneral>(this, _$identity);
+  _$$DescuentoGeneralImplCopyWith<_$DescuentoGeneralImpl> get copyWith =>
+      __$$DescuentoGeneralImplCopyWithImpl<_$DescuentoGeneralImpl>(
+          this, _$identity);
 }
 
 abstract class _DescuentoGeneral extends DescuentoGeneral {
@@ -260,7 +261,7 @@ abstract class _DescuentoGeneral extends DescuentoGeneral {
       required final int cantidadDesde,
       required final double descuento,
       required final DateTime lastUpdated,
-      required final bool deleted}) = _$_DescuentoGeneral;
+      required final bool deleted}) = _$DescuentoGeneralImpl;
   const _DescuentoGeneral._() : super._();
 
   @override
@@ -281,6 +282,6 @@ abstract class _DescuentoGeneral extends DescuentoGeneral {
   bool get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_DescuentoGeneralCopyWith<_$_DescuentoGeneral> get copyWith =>
+  _$$DescuentoGeneralImplCopyWith<_$DescuentoGeneralImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

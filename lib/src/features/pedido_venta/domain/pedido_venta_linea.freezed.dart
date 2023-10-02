@@ -213,11 +213,11 @@ class _$PedidoVentaLineaCopyWithImpl<$Res, $Val extends PedidoVentaLinea>
 }
 
 /// @nodoc
-abstract class _$$_PedidoVentaLineaCopyWith<$Res>
+abstract class _$$PedidoVentaLineaImplCopyWith<$Res>
     implements $PedidoVentaLineaCopyWith<$Res> {
-  factory _$$_PedidoVentaLineaCopyWith(
-          _$_PedidoVentaLinea value, $Res Function(_$_PedidoVentaLinea) then) =
-      __$$_PedidoVentaLineaCopyWithImpl<$Res>;
+  factory _$$PedidoVentaLineaImplCopyWith(_$PedidoVentaLineaImpl value,
+          $Res Function(_$PedidoVentaLineaImpl) then) =
+      __$$PedidoVentaLineaImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -247,11 +247,11 @@ abstract class _$$_PedidoVentaLineaCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PedidoVentaLineaCopyWithImpl<$Res>
-    extends _$PedidoVentaLineaCopyWithImpl<$Res, _$_PedidoVentaLinea>
-    implements _$$_PedidoVentaLineaCopyWith<$Res> {
-  __$$_PedidoVentaLineaCopyWithImpl(
-      _$_PedidoVentaLinea _value, $Res Function(_$_PedidoVentaLinea) _then)
+class __$$PedidoVentaLineaImplCopyWithImpl<$Res>
+    extends _$PedidoVentaLineaCopyWithImpl<$Res, _$PedidoVentaLineaImpl>
+    implements _$$PedidoVentaLineaImplCopyWith<$Res> {
+  __$$PedidoVentaLineaImplCopyWithImpl(_$PedidoVentaLineaImpl _value,
+      $Res Function(_$PedidoVentaLineaImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -281,7 +281,7 @@ class __$$_PedidoVentaLineaCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_PedidoVentaLinea(
+    return _then(_$PedidoVentaLineaImpl(
       empresaId: freezed == empresaId
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
@@ -380,8 +380,8 @@ class __$$_PedidoVentaLineaCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PedidoVentaLinea extends _PedidoVentaLinea {
-  const _$_PedidoVentaLinea(
+class _$PedidoVentaLineaImpl extends _PedidoVentaLinea {
+  const _$PedidoVentaLineaImpl(
       {this.empresaId,
       this.pedidoId,
       this.pedidoVentaLineaId,
@@ -464,7 +464,7 @@ class _$_PedidoVentaLinea extends _PedidoVentaLinea {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PedidoVentaLinea &&
+            other is _$PedidoVentaLineaImpl &&
             (identical(other.empresaId, empresaId) ||
                 other.empresaId == empresaId) &&
             (identical(other.pedidoId, pedidoId) ||
@@ -543,8 +543,9 @@ class _$_PedidoVentaLinea extends _PedidoVentaLinea {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PedidoVentaLineaCopyWith<_$_PedidoVentaLinea> get copyWith =>
-      __$$_PedidoVentaLineaCopyWithImpl<_$_PedidoVentaLinea>(this, _$identity);
+  _$$PedidoVentaLineaImplCopyWith<_$PedidoVentaLineaImpl> get copyWith =>
+      __$$PedidoVentaLineaImplCopyWithImpl<_$PedidoVentaLineaImpl>(
+          this, _$identity);
 }
 
 abstract class _PedidoVentaLinea extends PedidoVentaLinea {
@@ -571,7 +572,7 @@ abstract class _PedidoVentaLinea extends PedidoVentaLinea {
       final double? iva,
       required final int cantidadPendiente,
       required final DateTime lastUpdated,
-      required final bool deleted}) = _$_PedidoVentaLinea;
+      required final bool deleted}) = _$PedidoVentaLineaImpl;
   const _PedidoVentaLinea._() : super._();
 
   @override
@@ -622,6 +623,6 @@ abstract class _PedidoVentaLinea extends PedidoVentaLinea {
   bool get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_PedidoVentaLineaCopyWith<_$_PedidoVentaLinea> get copyWith =>
+  _$$PedidoVentaLineaImplCopyWith<_$PedidoVentaLineaImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -74,22 +74,22 @@ class _$JBMHeadersCopyWithImpl<$Res, $Val extends JBMHeaders>
 }
 
 /// @nodoc
-abstract class _$$_JBMHeadersCopyWith<$Res>
+abstract class _$$JBMHeadersImplCopyWith<$Res>
     implements $JBMHeadersCopyWith<$Res> {
-  factory _$$_JBMHeadersCopyWith(
-          _$_JBMHeaders value, $Res Function(_$_JBMHeaders) then) =
-      __$$_JBMHeadersCopyWithImpl<$Res>;
+  factory _$$JBMHeadersImplCopyWith(
+          _$JBMHeadersImpl value, $Res Function(_$JBMHeadersImpl) then) =
+      __$$JBMHeadersImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? etag, int? maxPage, int? totalRows});
 }
 
 /// @nodoc
-class __$$_JBMHeadersCopyWithImpl<$Res>
-    extends _$JBMHeadersCopyWithImpl<$Res, _$_JBMHeaders>
-    implements _$$_JBMHeadersCopyWith<$Res> {
-  __$$_JBMHeadersCopyWithImpl(
-      _$_JBMHeaders _value, $Res Function(_$_JBMHeaders) _then)
+class __$$JBMHeadersImplCopyWithImpl<$Res>
+    extends _$JBMHeadersCopyWithImpl<$Res, _$JBMHeadersImpl>
+    implements _$$JBMHeadersImplCopyWith<$Res> {
+  __$$JBMHeadersImplCopyWithImpl(
+      _$JBMHeadersImpl _value, $Res Function(_$JBMHeadersImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,7 +99,7 @@ class __$$_JBMHeadersCopyWithImpl<$Res>
     Object? maxPage = freezed,
     Object? totalRows = freezed,
   }) {
-    return _then(_$_JBMHeaders(
+    return _then(_$JBMHeadersImpl(
       etag: freezed == etag
           ? _value.etag
           : etag // ignore: cast_nullable_to_non_nullable
@@ -118,11 +118,11 @@ class __$$_JBMHeadersCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_JBMHeaders extends _JBMHeaders {
-  const _$_JBMHeaders({this.etag, this.maxPage, this.totalRows}) : super._();
+class _$JBMHeadersImpl extends _JBMHeaders {
+  const _$JBMHeadersImpl({this.etag, this.maxPage, this.totalRows}) : super._();
 
-  factory _$_JBMHeaders.fromJson(Map<String, dynamic> json) =>
-      _$$_JBMHeadersFromJson(json);
+  factory _$JBMHeadersImpl.fromJson(Map<String, dynamic> json) =>
+      _$$JBMHeadersImplFromJson(json);
 
   @override
   final String? etag;
@@ -140,7 +140,7 @@ class _$_JBMHeaders extends _JBMHeaders {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_JBMHeaders &&
+            other is _$JBMHeadersImpl &&
             (identical(other.etag, etag) || other.etag == etag) &&
             (identical(other.maxPage, maxPage) || other.maxPage == maxPage) &&
             (identical(other.totalRows, totalRows) ||
@@ -154,12 +154,12 @@ class _$_JBMHeaders extends _JBMHeaders {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_JBMHeadersCopyWith<_$_JBMHeaders> get copyWith =>
-      __$$_JBMHeadersCopyWithImpl<_$_JBMHeaders>(this, _$identity);
+  _$$JBMHeadersImplCopyWith<_$JBMHeadersImpl> get copyWith =>
+      __$$JBMHeadersImplCopyWithImpl<_$JBMHeadersImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_JBMHeadersToJson(
+    return _$$JBMHeadersImplToJson(
       this,
     );
   }
@@ -169,11 +169,11 @@ abstract class _JBMHeaders extends JBMHeaders {
   const factory _JBMHeaders(
       {final String? etag,
       final int? maxPage,
-      final int? totalRows}) = _$_JBMHeaders;
+      final int? totalRows}) = _$JBMHeadersImpl;
   const _JBMHeaders._() : super._();
 
   factory _JBMHeaders.fromJson(Map<String, dynamic> json) =
-      _$_JBMHeaders.fromJson;
+      _$JBMHeadersImpl.fromJson;
 
   @override
   String? get etag;
@@ -183,6 +183,6 @@ abstract class _JBMHeaders extends JBMHeaders {
   int? get totalRows;
   @override
   @JsonKey(ignore: true)
-  _$$_JBMHeadersCopyWith<_$_JBMHeaders> get copyWith =>
+  _$$JBMHeadersImplCopyWith<_$JBMHeadersImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

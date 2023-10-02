@@ -206,10 +206,10 @@ class _$PaisDTOCopyWithImpl<$Res, $Val extends PaisDTO>
 }
 
 /// @nodoc
-abstract class _$$_PaisDTOCopyWith<$Res> implements $PaisDTOCopyWith<$Res> {
-  factory _$$_PaisDTOCopyWith(
-          _$_PaisDTO value, $Res Function(_$_PaisDTO) then) =
-      __$$_PaisDTOCopyWithImpl<$Res>;
+abstract class _$$PaisDTOImplCopyWith<$Res> implements $PaisDTOCopyWith<$Res> {
+  factory _$$PaisDTOImplCopyWith(
+          _$PaisDTOImpl value, $Res Function(_$PaisDTOImpl) then) =
+      __$$PaisDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -235,10 +235,11 @@ abstract class _$$_PaisDTOCopyWith<$Res> implements $PaisDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_PaisDTOCopyWithImpl<$Res>
-    extends _$PaisDTOCopyWithImpl<$Res, _$_PaisDTO>
-    implements _$$_PaisDTOCopyWith<$Res> {
-  __$$_PaisDTOCopyWithImpl(_$_PaisDTO _value, $Res Function(_$_PaisDTO) _then)
+class __$$PaisDTOImplCopyWithImpl<$Res>
+    extends _$PaisDTOCopyWithImpl<$Res, _$PaisDTOImpl>
+    implements _$$PaisDTOImplCopyWith<$Res> {
+  __$$PaisDTOImplCopyWithImpl(
+      _$PaisDTOImpl _value, $Res Function(_$PaisDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -264,7 +265,7 @@ class __$$_PaisDTOCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_PaisDTO(
+    return _then(_$PaisDTOImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -347,8 +348,8 @@ class __$$_PaisDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PaisDTO extends _PaisDTO {
-  const _$_PaisDTO(
+class _$PaisDTOImpl extends _PaisDTO {
+  const _$PaisDTOImpl(
       {@JsonKey(name: 'PAIS_ID') required this.id,
       @JsonKey(name: 'CODIGO_ISO') this.isoCode,
       @JsonKey(name: 'DESCRIPCION_ES') required this.descripcionES,
@@ -370,8 +371,8 @@ class _$_PaisDTO extends _PaisDTO {
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
-  factory _$_PaisDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_PaisDTOFromJson(json);
+  factory _$PaisDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PaisDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'PAIS_ID')
@@ -440,7 +441,7 @@ class _$_PaisDTO extends _PaisDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PaisDTO &&
+            other is _$PaisDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.isoCode, isoCode) || other.isoCode == isoCode) &&
             (identical(other.descripcionES, descripcionES) ||
@@ -506,12 +507,12 @@ class _$_PaisDTO extends _PaisDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaisDTOCopyWith<_$_PaisDTO> get copyWith =>
-      __$$_PaisDTOCopyWithImpl<_$_PaisDTO>(this, _$identity);
+  _$$PaisDTOImplCopyWith<_$PaisDTOImpl> get copyWith =>
+      __$$PaisDTOImplCopyWithImpl<_$PaisDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaisDTOToJson(
+    return _$$PaisDTOImplToJson(
       this,
     );
   }
@@ -537,10 +538,10 @@ abstract class _PaisDTO extends PaisDTO {
       @JsonKey(name: 'DESCRIPCION_CN') final String? descripcionCN,
       @JsonKey(name: 'DESCRIPCION_EL') final String? descripcionEL,
       @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') final String deleted}) = _$_PaisDTO;
+      @JsonKey(name: 'DELETED') final String deleted}) = _$PaisDTOImpl;
   const _PaisDTO._() : super._();
 
-  factory _PaisDTO.fromJson(Map<String, dynamic> json) = _$_PaisDTO.fromJson;
+  factory _PaisDTO.fromJson(Map<String, dynamic> json) = _$PaisDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'PAIS_ID')
@@ -601,6 +602,6 @@ abstract class _PaisDTO extends PaisDTO {
   String get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_PaisDTOCopyWith<_$_PaisDTO> get copyWith =>
+  _$$PaisDTOImplCopyWith<_$PaisDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

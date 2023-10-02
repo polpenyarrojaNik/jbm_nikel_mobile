@@ -76,22 +76,22 @@ class _$ClienteVentaArticuloCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ClienteVentaArticuloCopyWith<$Res>
+abstract class _$$ClienteVentaArticuloImplCopyWith<$Res>
     implements $ClienteVentaArticuloCopyWith<$Res> {
-  factory _$$_ClienteVentaArticuloCopyWith(_$_ClienteVentaArticulo value,
-          $Res Function(_$_ClienteVentaArticulo) then) =
-      __$$_ClienteVentaArticuloCopyWithImpl<$Res>;
+  factory _$$ClienteVentaArticuloImplCopyWith(_$ClienteVentaArticuloImpl value,
+          $Res Function(_$ClienteVentaArticuloImpl) then) =
+      __$$ClienteVentaArticuloImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({double clienteId, double mes, Money importe, Money coste});
 }
 
 /// @nodoc
-class __$$_ClienteVentaArticuloCopyWithImpl<$Res>
-    extends _$ClienteVentaArticuloCopyWithImpl<$Res, _$_ClienteVentaArticulo>
-    implements _$$_ClienteVentaArticuloCopyWith<$Res> {
-  __$$_ClienteVentaArticuloCopyWithImpl(_$_ClienteVentaArticulo _value,
-      $Res Function(_$_ClienteVentaArticulo) _then)
+class __$$ClienteVentaArticuloImplCopyWithImpl<$Res>
+    extends _$ClienteVentaArticuloCopyWithImpl<$Res, _$ClienteVentaArticuloImpl>
+    implements _$$ClienteVentaArticuloImplCopyWith<$Res> {
+  __$$ClienteVentaArticuloImplCopyWithImpl(_$ClienteVentaArticuloImpl _value,
+      $Res Function(_$ClienteVentaArticuloImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -102,7 +102,7 @@ class __$$_ClienteVentaArticuloCopyWithImpl<$Res>
     Object? importe = null,
     Object? coste = null,
   }) {
-    return _then(_$_ClienteVentaArticulo(
+    return _then(_$ClienteVentaArticuloImpl(
       clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
@@ -125,8 +125,8 @@ class __$$_ClienteVentaArticuloCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ClienteVentaArticulo extends _ClienteVentaArticulo {
-  const _$_ClienteVentaArticulo(
+class _$ClienteVentaArticuloImpl extends _ClienteVentaArticulo {
+  const _$ClienteVentaArticuloImpl(
       {required this.clienteId,
       required this.mes,
       required this.importe,
@@ -151,7 +151,7 @@ class _$_ClienteVentaArticulo extends _ClienteVentaArticulo {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClienteVentaArticulo &&
+            other is _$ClienteVentaArticuloImpl &&
             (identical(other.clienteId, clienteId) ||
                 other.clienteId == clienteId) &&
             (identical(other.mes, mes) || other.mes == mes) &&
@@ -165,9 +165,10 @@ class _$_ClienteVentaArticulo extends _ClienteVentaArticulo {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClienteVentaArticuloCopyWith<_$_ClienteVentaArticulo> get copyWith =>
-      __$$_ClienteVentaArticuloCopyWithImpl<_$_ClienteVentaArticulo>(
-          this, _$identity);
+  _$$ClienteVentaArticuloImplCopyWith<_$ClienteVentaArticuloImpl>
+      get copyWith =>
+          __$$ClienteVentaArticuloImplCopyWithImpl<_$ClienteVentaArticuloImpl>(
+              this, _$identity);
 }
 
 abstract class _ClienteVentaArticulo extends ClienteVentaArticulo {
@@ -175,7 +176,7 @@ abstract class _ClienteVentaArticulo extends ClienteVentaArticulo {
       {required final double clienteId,
       required final double mes,
       required final Money importe,
-      required final Money coste}) = _$_ClienteVentaArticulo;
+      required final Money coste}) = _$ClienteVentaArticuloImpl;
   const _ClienteVentaArticulo._() : super._();
 
   @override
@@ -188,6 +189,6 @@ abstract class _ClienteVentaArticulo extends ClienteVentaArticulo {
   Money get coste;
   @override
   @JsonKey(ignore: true)
-  _$$_ClienteVentaArticuloCopyWith<_$_ClienteVentaArticulo> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ClienteVentaArticuloImplCopyWith<_$ClienteVentaArticuloImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

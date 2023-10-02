@@ -133,11 +133,11 @@ class _$ClienteDescuentoCopyWithImpl<$Res, $Val extends ClienteDescuento>
 }
 
 /// @nodoc
-abstract class _$$_ClienteDescuentoCopyWith<$Res>
+abstract class _$$ClienteDescuentoImplCopyWith<$Res>
     implements $ClienteDescuentoCopyWith<$Res> {
-  factory _$$_ClienteDescuentoCopyWith(
-          _$_ClienteDescuento value, $Res Function(_$_ClienteDescuento) then) =
-      __$$_ClienteDescuentoCopyWithImpl<$Res>;
+  factory _$$ClienteDescuentoImplCopyWith(_$ClienteDescuentoImpl value,
+          $Res Function(_$ClienteDescuentoImpl) then) =
+      __$$ClienteDescuentoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -158,11 +158,11 @@ abstract class _$$_ClienteDescuentoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ClienteDescuentoCopyWithImpl<$Res>
-    extends _$ClienteDescuentoCopyWithImpl<$Res, _$_ClienteDescuento>
-    implements _$$_ClienteDescuentoCopyWith<$Res> {
-  __$$_ClienteDescuentoCopyWithImpl(
-      _$_ClienteDescuento _value, $Res Function(_$_ClienteDescuento) _then)
+class __$$ClienteDescuentoImplCopyWithImpl<$Res>
+    extends _$ClienteDescuentoCopyWithImpl<$Res, _$ClienteDescuentoImpl>
+    implements _$$ClienteDescuentoImplCopyWith<$Res> {
+  __$$ClienteDescuentoImplCopyWithImpl(_$ClienteDescuentoImpl _value,
+      $Res Function(_$ClienteDescuentoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -178,7 +178,7 @@ class __$$_ClienteDescuentoCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_ClienteDescuento(
+    return _then(_$ClienteDescuentoImpl(
       clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
@@ -221,8 +221,8 @@ class __$$_ClienteDescuentoCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ClienteDescuento extends _ClienteDescuento {
-  const _$_ClienteDescuento(
+class _$ClienteDescuentoImpl extends _ClienteDescuento {
+  const _$ClienteDescuentoImpl(
       {required this.clienteId,
       required this.articuloId,
       required this.descripcion,
@@ -262,7 +262,7 @@ class _$_ClienteDescuento extends _ClienteDescuento {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClienteDescuento &&
+            other is _$ClienteDescuentoImpl &&
             (identical(other.clienteId, clienteId) ||
                 other.clienteId == clienteId) &&
             (identical(other.articuloId, articuloId) ||
@@ -297,8 +297,9 @@ class _$_ClienteDescuento extends _ClienteDescuento {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClienteDescuentoCopyWith<_$_ClienteDescuento> get copyWith =>
-      __$$_ClienteDescuentoCopyWithImpl<_$_ClienteDescuento>(this, _$identity);
+  _$$ClienteDescuentoImplCopyWith<_$ClienteDescuentoImpl> get copyWith =>
+      __$$ClienteDescuentoImplCopyWithImpl<_$ClienteDescuentoImpl>(
+          this, _$identity);
 }
 
 abstract class _ClienteDescuento extends ClienteDescuento {
@@ -311,7 +312,7 @@ abstract class _ClienteDescuento extends ClienteDescuento {
       required final int cantidadDesde,
       required final double descuento,
       required final DateTime lastUpdated,
-      required final bool deleted}) = _$_ClienteDescuento;
+      required final bool deleted}) = _$ClienteDescuentoImpl;
   const _ClienteDescuento._() : super._();
 
   @override
@@ -334,6 +335,6 @@ abstract class _ClienteDescuento extends ClienteDescuento {
   bool get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_ClienteDescuentoCopyWith<_$_ClienteDescuento> get copyWith =>
+  _$$ClienteDescuentoImplCopyWith<_$ClienteDescuentoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -120,11 +120,11 @@ class _$PedidoAlbaranDTOCopyWithImpl<$Res, $Val extends PedidoAlbaranDTO>
 }
 
 /// @nodoc
-abstract class _$$_PedidoAlbaranDTOCopyWith<$Res>
+abstract class _$$PedidoAlbaranDTOImplCopyWith<$Res>
     implements $PedidoAlbaranDTOCopyWith<$Res> {
-  factory _$$_PedidoAlbaranDTOCopyWith(
-          _$_PedidoAlbaranDTO value, $Res Function(_$_PedidoAlbaranDTO) then) =
-      __$$_PedidoAlbaranDTOCopyWithImpl<$Res>;
+  factory _$$PedidoAlbaranDTOImplCopyWith(_$PedidoAlbaranDTOImpl value,
+          $Res Function(_$PedidoAlbaranDTOImpl) then) =
+      __$$PedidoAlbaranDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -139,11 +139,11 @@ abstract class _$$_PedidoAlbaranDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PedidoAlbaranDTOCopyWithImpl<$Res>
-    extends _$PedidoAlbaranDTOCopyWithImpl<$Res, _$_PedidoAlbaranDTO>
-    implements _$$_PedidoAlbaranDTOCopyWith<$Res> {
-  __$$_PedidoAlbaranDTOCopyWithImpl(
-      _$_PedidoAlbaranDTO _value, $Res Function(_$_PedidoAlbaranDTO) _then)
+class __$$PedidoAlbaranDTOImplCopyWithImpl<$Res>
+    extends _$PedidoAlbaranDTOCopyWithImpl<$Res, _$PedidoAlbaranDTOImpl>
+    implements _$$PedidoAlbaranDTOImplCopyWith<$Res> {
+  __$$PedidoAlbaranDTOImplCopyWithImpl(_$PedidoAlbaranDTOImpl _value,
+      $Res Function(_$PedidoAlbaranDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -158,7 +158,7 @@ class __$$_PedidoAlbaranDTOCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_PedidoAlbaranDTO(
+    return _then(_$PedidoAlbaranDTOImpl(
       empresaId: null == empresaId
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
@@ -197,8 +197,8 @@ class __$$_PedidoAlbaranDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PedidoAlbaranDTO extends _PedidoAlbaranDTO {
-  const _$_PedidoAlbaranDTO(
+class _$PedidoAlbaranDTOImpl extends _PedidoAlbaranDTO {
+  const _$PedidoAlbaranDTOImpl(
       {@JsonKey(name: 'EMPRESA_ID') required this.empresaId,
       @JsonKey(name: 'PEDIDO_ID') required this.pedidoVentaId,
       @JsonKey(name: 'ALBARAN_ID') required this.albaranId,
@@ -209,8 +209,8 @@ class _$_PedidoAlbaranDTO extends _PedidoAlbaranDTO {
       @JsonKey(name: 'DELETED') required this.deleted})
       : super._();
 
-  factory _$_PedidoAlbaranDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_PedidoAlbaranDTOFromJson(json);
+  factory _$PedidoAlbaranDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PedidoAlbaranDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'EMPRESA_ID')
@@ -246,7 +246,7 @@ class _$_PedidoAlbaranDTO extends _PedidoAlbaranDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PedidoAlbaranDTO &&
+            other is _$PedidoAlbaranDTOImpl &&
             (identical(other.empresaId, empresaId) ||
                 other.empresaId == empresaId) &&
             (identical(other.pedidoVentaId, pedidoVentaId) ||
@@ -270,12 +270,13 @@ class _$_PedidoAlbaranDTO extends _PedidoAlbaranDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PedidoAlbaranDTOCopyWith<_$_PedidoAlbaranDTO> get copyWith =>
-      __$$_PedidoAlbaranDTOCopyWithImpl<_$_PedidoAlbaranDTO>(this, _$identity);
+  _$$PedidoAlbaranDTOImplCopyWith<_$PedidoAlbaranDTOImpl> get copyWith =>
+      __$$PedidoAlbaranDTOImplCopyWithImpl<_$PedidoAlbaranDTOImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PedidoAlbaranDTOToJson(
+    return _$$PedidoAlbaranDTOImplToJson(
       this,
     );
   }
@@ -291,11 +292,11 @@ abstract class _PedidoAlbaranDTO extends PedidoAlbaranDTO {
           @JsonKey(name: 'TRACK_ID') final String? trackId,
           @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
           @JsonKey(name: 'DELETED') required final String deleted}) =
-      _$_PedidoAlbaranDTO;
+      _$PedidoAlbaranDTOImpl;
   const _PedidoAlbaranDTO._() : super._();
 
   factory _PedidoAlbaranDTO.fromJson(Map<String, dynamic> json) =
-      _$_PedidoAlbaranDTO.fromJson;
+      _$PedidoAlbaranDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'EMPRESA_ID')
@@ -323,6 +324,6 @@ abstract class _PedidoAlbaranDTO extends PedidoAlbaranDTO {
   String get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_PedidoAlbaranDTOCopyWith<_$_PedidoAlbaranDTO> get copyWith =>
+  _$$PedidoAlbaranDTOImplCopyWith<_$PedidoAlbaranDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

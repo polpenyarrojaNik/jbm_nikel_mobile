@@ -6,8 +6,8 @@ part of 'devolucion_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_DevolucionDTO _$$_DevolucionDTOFromJson(Map<String, dynamic> json) =>
-    _$_DevolucionDTO(
+_$DevolucionDTOImpl _$$DevolucionDTOImplFromJson(Map<String, dynamic> json) =>
+    _$DevolucionDTOImpl(
       empresaId: json['EMPRESA_ID'] as String,
       id: json['DEVOLUCION_ID'] as String,
       fechaDevolucion: DateTime.parse(json['FECHA_DEVOLUCION'] as String),
@@ -28,7 +28,7 @@ _$_DevolucionDTO _$$_DevolucionDTOFromJson(Map<String, dynamic> json) =>
       deleted: json['DELETED'] as String,
     );
 
-Map<String, dynamic> _$$_DevolucionDTOToJson(_$_DevolucionDTO instance) =>
+Map<String, dynamic> _$$DevolucionDTOImplToJson(_$DevolucionDTOImpl instance) =>
     <String, dynamic>{
       'EMPRESA_ID': instance.empresaId,
       'DEVOLUCION_ID': instance.id,

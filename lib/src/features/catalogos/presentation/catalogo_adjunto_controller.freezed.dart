@@ -88,24 +88,25 @@ class _$CatalogoAdjuntoStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$CatalogoAdjuntoStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$CatalogoAdjuntoStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial extends _Initial {
-  const _$_Initial() : super._();
+class _$InitialImpl extends _Initial {
+  const _$InitialImpl() : super._();
 
   @override
   String toString() {
@@ -115,7 +116,7 @@ class _$_Initial extends _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -197,29 +198,30 @@ class _$_Initial extends _Initial {
 }
 
 abstract class _Initial extends CatalogoAdjuntoState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
   const _Initial._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$CatalogoAdjuntoStateCopyWithImpl<$Res, _$_Loading>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$CatalogoAdjuntoStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Loading extends _Loading {
-  const _$_Loading() : super._();
+class _$LoadingImpl extends _Loading {
+  const _$LoadingImpl() : super._();
 
   @override
   String toString() {
@@ -229,7 +231,7 @@ class _$_Loading extends _Loading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -311,23 +313,24 @@ class _$_Loading extends _Loading {
 }
 
 abstract class _Loading extends CatalogoAdjuntoState {
-  const factory _Loading() = _$_Loading;
+  const factory _Loading() = _$LoadingImpl;
   const _Loading._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_DataCopyWith<$Res> {
-  factory _$$_DataCopyWith(_$_Data value, $Res Function(_$_Data) then) =
-      __$$_DataCopyWithImpl<$Res>;
+abstract class _$$DataImplCopyWith<$Res> {
+  factory _$$DataImplCopyWith(
+          _$DataImpl value, $Res Function(_$DataImpl) then) =
+      __$$DataImplCopyWithImpl<$Res>;
   @useResult
   $Res call({File? file, bool descarga});
 }
 
 /// @nodoc
-class __$$_DataCopyWithImpl<$Res>
-    extends _$CatalogoAdjuntoStateCopyWithImpl<$Res, _$_Data>
-    implements _$$_DataCopyWith<$Res> {
-  __$$_DataCopyWithImpl(_$_Data _value, $Res Function(_$_Data) _then)
+class __$$DataImplCopyWithImpl<$Res>
+    extends _$CatalogoAdjuntoStateCopyWithImpl<$Res, _$DataImpl>
+    implements _$$DataImplCopyWith<$Res> {
+  __$$DataImplCopyWithImpl(_$DataImpl _value, $Res Function(_$DataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -336,7 +339,7 @@ class __$$_DataCopyWithImpl<$Res>
     Object? file = freezed,
     Object? descarga = null,
   }) {
-    return _then(_$_Data(
+    return _then(_$DataImpl(
       freezed == file
           ? _value.file
           : file // ignore: cast_nullable_to_non_nullable
@@ -351,8 +354,8 @@ class __$$_DataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Data extends _Data {
-  const _$_Data(this.file, this.descarga) : super._();
+class _$DataImpl extends _Data {
+  const _$DataImpl(this.file, this.descarga) : super._();
 
   @override
   final File? file;
@@ -368,7 +371,7 @@ class _$_Data extends _Data {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Data &&
+            other is _$DataImpl &&
             (identical(other.file, file) || other.file == file) &&
             (identical(other.descarga, descarga) ||
                 other.descarga == descarga));
@@ -380,8 +383,8 @@ class _$_Data extends _Data {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DataCopyWith<_$_Data> get copyWith =>
-      __$$_DataCopyWithImpl<_$_Data>(this, _$identity);
+  _$$DataImplCopyWith<_$DataImpl> get copyWith =>
+      __$$DataImplCopyWithImpl<_$DataImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -459,28 +462,31 @@ class _$_Data extends _Data {
 }
 
 abstract class _Data extends CatalogoAdjuntoState {
-  const factory _Data(final File? file, final bool descarga) = _$_Data;
+  const factory _Data(final File? file, final bool descarga) = _$DataImpl;
   const _Data._() : super._();
 
   File? get file;
   bool get descarga;
   @JsonKey(ignore: true)
-  _$$_DataCopyWith<_$_Data> get copyWith => throw _privateConstructorUsedError;
+  _$$DataImplCopyWith<_$DataImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ErrorCopyWith<$Res> {
-  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
-      __$$_ErrorCopyWithImpl<$Res>;
+abstract class _$$ErrorImplCopyWith<$Res> {
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String failure});
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res>
-    extends _$CatalogoAdjuntoStateCopyWithImpl<$Res, _$_Error>
-    implements _$$_ErrorCopyWith<$Res> {
-  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$CatalogoAdjuntoStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -488,7 +494,7 @@ class __$$_ErrorCopyWithImpl<$Res>
   $Res call({
     Object? failure = null,
   }) {
-    return _then(_$_Error(
+    return _then(_$ErrorImpl(
       null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -499,8 +505,8 @@ class __$$_ErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Error extends _Error {
-  const _$_Error(this.failure) : super._();
+class _$ErrorImpl extends _Error {
+  const _$ErrorImpl(this.failure) : super._();
 
   @override
   final String failure;
@@ -514,7 +520,7 @@ class _$_Error extends _Error {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Error &&
+            other is _$ErrorImpl &&
             (identical(other.failure, failure) || other.failure == failure));
   }
 
@@ -524,8 +530,8 @@ class _$_Error extends _Error {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
-      __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -603,11 +609,11 @@ class _$_Error extends _Error {
 }
 
 abstract class _Error extends CatalogoAdjuntoState {
-  const factory _Error(final String failure) = _$_Error;
+  const factory _Error(final String failure) = _$ErrorImpl;
   const _Error._() : super._();
 
   String get failure;
   @JsonKey(ignore: true)
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -6,7 +6,7 @@ part of 'log_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_LogDTO _$$_LogDTOFromJson(Map<String, dynamic> json) => _$_LogDTO(
+_$LogDTOImpl _$$LogDTOImplFromJson(Map<String, dynamic> json) => _$LogDTOImpl(
       id: json['ID'] as int?,
       level: json['LOG_LEVEL'] as String,
       message: json['LOG_MESSAGE'] as String,
@@ -20,7 +20,8 @@ _$_LogDTO _$$_LogDTOFromJson(Map<String, dynamic> json) => _$_LogDTO(
       timestamp: DateTime.parse(json['TIMESTAMP'] as String),
     );
 
-Map<String, dynamic> _$$_LogDTOToJson(_$_LogDTO instance) => <String, dynamic>{
+Map<String, dynamic> _$$LogDTOImplToJson(_$LogDTOImpl instance) =>
+    <String, dynamic>{
       'ID': instance.id,
       'LOG_LEVEL': instance.level,
       'LOG_MESSAGE': instance.message,

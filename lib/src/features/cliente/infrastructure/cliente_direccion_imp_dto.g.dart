@@ -6,9 +6,9 @@ part of 'cliente_direccion_imp_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ClienteDireccionImpDTO _$$_ClienteDireccionImpDTOFromJson(
+_$ClienteDireccionImpDTOImpl _$$ClienteDireccionImpDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_ClienteDireccionImpDTO(
+    _$ClienteDireccionImpDTOImpl(
       id: json['GUID'] as String,
       fecha: DateTime.parse(json['FECHA'] as String),
       usuarioId: json['USUARIO_ID'] as String,
@@ -25,8 +25,8 @@ _$_ClienteDireccionImpDTO _$$_ClienteDireccionImpDTOFromJson(
       borrar: json['BORRAR'] as String? ?? 'N',
     );
 
-Map<String, dynamic> _$$_ClienteDireccionImpDTOToJson(
-        _$_ClienteDireccionImpDTO instance) =>
+Map<String, dynamic> _$$ClienteDireccionImpDTOImplToJson(
+        _$ClienteDireccionImpDTOImpl instance) =>
     <String, dynamic>{
       'GUID': instance.id,
       'FECHA': instance.fecha.toIso8601String(),

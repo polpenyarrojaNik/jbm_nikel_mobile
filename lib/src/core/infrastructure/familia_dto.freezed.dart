@@ -200,11 +200,11 @@ class _$FamiliaDTOCopyWithImpl<$Res, $Val extends FamiliaDTO>
 }
 
 /// @nodoc
-abstract class _$$_FamiliaDTOCopyWith<$Res>
+abstract class _$$FamiliaDTOImplCopyWith<$Res>
     implements $FamiliaDTOCopyWith<$Res> {
-  factory _$$_FamiliaDTOCopyWith(
-          _$_FamiliaDTO value, $Res Function(_$_FamiliaDTO) then) =
-      __$$_FamiliaDTOCopyWithImpl<$Res>;
+  factory _$$FamiliaDTOImplCopyWith(
+          _$FamiliaDTOImpl value, $Res Function(_$FamiliaDTOImpl) then) =
+      __$$FamiliaDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -229,11 +229,11 @@ abstract class _$$_FamiliaDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_FamiliaDTOCopyWithImpl<$Res>
-    extends _$FamiliaDTOCopyWithImpl<$Res, _$_FamiliaDTO>
-    implements _$$_FamiliaDTOCopyWith<$Res> {
-  __$$_FamiliaDTOCopyWithImpl(
-      _$_FamiliaDTO _value, $Res Function(_$_FamiliaDTO) _then)
+class __$$FamiliaDTOImplCopyWithImpl<$Res>
+    extends _$FamiliaDTOCopyWithImpl<$Res, _$FamiliaDTOImpl>
+    implements _$$FamiliaDTOImplCopyWith<$Res> {
+  __$$FamiliaDTOImplCopyWithImpl(
+      _$FamiliaDTOImpl _value, $Res Function(_$FamiliaDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -258,7 +258,7 @@ class __$$_FamiliaDTOCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_FamiliaDTO(
+    return _then(_$FamiliaDTOImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -337,8 +337,8 @@ class __$$_FamiliaDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_FamiliaDTO extends _FamiliaDTO {
-  const _$_FamiliaDTO(
+class _$FamiliaDTOImpl extends _FamiliaDTO {
+  const _$FamiliaDTOImpl(
       {@JsonKey(name: 'FAMILIA_ID') required this.id,
       @JsonKey(name: 'DESCRIPCION_ES') required this.descripcionES,
       @JsonKey(name: 'DESCRIPCION_EN') this.descripcionEN,
@@ -359,8 +359,8 @@ class _$_FamiliaDTO extends _FamiliaDTO {
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
-  factory _$_FamiliaDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_FamiliaDTOFromJson(json);
+  factory _$FamiliaDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$FamiliaDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'FAMILIA_ID')
@@ -426,7 +426,7 @@ class _$_FamiliaDTO extends _FamiliaDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FamiliaDTO &&
+            other is _$FamiliaDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.descripcionES, descripcionES) ||
                 other.descripcionES == descripcionES) &&
@@ -489,12 +489,12 @@ class _$_FamiliaDTO extends _FamiliaDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FamiliaDTOCopyWith<_$_FamiliaDTO> get copyWith =>
-      __$$_FamiliaDTOCopyWithImpl<_$_FamiliaDTO>(this, _$identity);
+  _$$FamiliaDTOImplCopyWith<_$FamiliaDTOImpl> get copyWith =>
+      __$$FamiliaDTOImplCopyWithImpl<_$FamiliaDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_FamiliaDTOToJson(
+    return _$$FamiliaDTOImplToJson(
       this,
     );
   }
@@ -519,11 +519,11 @@ abstract class _FamiliaDTO extends FamiliaDTO {
       @JsonKey(name: 'DESCRIPCION_CN') final String? descripcionCN,
       @JsonKey(name: 'DESCRIPCION_EL') final String? descripcionEL,
       @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') final String deleted}) = _$_FamiliaDTO;
+      @JsonKey(name: 'DELETED') final String deleted}) = _$FamiliaDTOImpl;
   const _FamiliaDTO._() : super._();
 
   factory _FamiliaDTO.fromJson(Map<String, dynamic> json) =
-      _$_FamiliaDTO.fromJson;
+      _$FamiliaDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'FAMILIA_ID')
@@ -581,6 +581,6 @@ abstract class _FamiliaDTO extends FamiliaDTO {
   String get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_FamiliaDTOCopyWith<_$_FamiliaDTO> get copyWith =>
+  _$$FamiliaDTOImplCopyWith<_$FamiliaDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

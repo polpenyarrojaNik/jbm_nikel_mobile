@@ -6,7 +6,8 @@ part of 'pais_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PaisDTO _$$_PaisDTOFromJson(Map<String, dynamic> json) => _$_PaisDTO(
+_$PaisDTOImpl _$$PaisDTOImplFromJson(Map<String, dynamic> json) =>
+    _$PaisDTOImpl(
       id: json['PAIS_ID'] as String,
       isoCode: json['CODIGO_ISO'] as String?,
       descripcionES: json['DESCRIPCION_ES'] as String,
@@ -28,7 +29,7 @@ _$_PaisDTO _$$_PaisDTOFromJson(Map<String, dynamic> json) => _$_PaisDTO(
       deleted: json['DELETED'] as String? ?? 'N',
     );
 
-Map<String, dynamic> _$$_PaisDTOToJson(_$_PaisDTO instance) =>
+Map<String, dynamic> _$$PaisDTOImplToJson(_$PaisDTOImpl instance) =>
     <String, dynamic>{
       'PAIS_ID': instance.id,
       'CODIGO_ISO': instance.isoCode,

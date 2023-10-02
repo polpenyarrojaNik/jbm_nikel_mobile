@@ -277,9 +277,10 @@ class _$VisitaCopyWithImpl<$Res, $Val extends Visita>
 }
 
 /// @nodoc
-abstract class _$$_VisitaCopyWith<$Res> implements $VisitaCopyWith<$Res> {
-  factory _$$_VisitaCopyWith(_$_Visita value, $Res Function(_$_Visita) then) =
-      __$$_VisitaCopyWithImpl<$Res>;
+abstract class _$$VisitaImplCopyWith<$Res> implements $VisitaCopyWith<$Res> {
+  factory _$$VisitaImplCopyWith(
+          _$VisitaImpl value, $Res Function(_$VisitaImpl) then) =
+      __$$VisitaImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -319,10 +320,11 @@ abstract class _$$_VisitaCopyWith<$Res> implements $VisitaCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_VisitaCopyWithImpl<$Res>
-    extends _$VisitaCopyWithImpl<$Res, _$_Visita>
-    implements _$$_VisitaCopyWith<$Res> {
-  __$$_VisitaCopyWithImpl(_$_Visita _value, $Res Function(_$_Visita) _then)
+class __$$VisitaImplCopyWithImpl<$Res>
+    extends _$VisitaCopyWithImpl<$Res, _$VisitaImpl>
+    implements _$$VisitaImplCopyWith<$Res> {
+  __$$VisitaImplCopyWithImpl(
+      _$VisitaImpl _value, $Res Function(_$VisitaImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -357,7 +359,7 @@ class __$$_VisitaCopyWithImpl<$Res>
     Object? tratada = null,
     Object? errorSyncMessage = freezed,
   }) {
-    return _then(_$_Visita(
+    return _then(_$VisitaImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -476,8 +478,8 @@ class __$$_VisitaCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Visita extends _Visita {
-  const _$_Visita(
+class _$VisitaImpl extends _Visita {
+  const _$VisitaImpl(
       {this.id,
       this.clienteId,
       this.nombreCliente,
@@ -574,7 +576,7 @@ class _$_Visita extends _Visita {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Visita &&
+            other is _$VisitaImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.clienteId, clienteId) ||
                 other.clienteId == clienteId) &&
@@ -663,8 +665,8 @@ class _$_Visita extends _Visita {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_VisitaCopyWith<_$_Visita> get copyWith =>
-      __$$_VisitaCopyWithImpl<_$_Visita>(this, _$identity);
+  _$$VisitaImplCopyWith<_$VisitaImpl> get copyWith =>
+      __$$VisitaImplCopyWithImpl<_$VisitaImpl>(this, _$identity);
 }
 
 abstract class _Visita extends Visita {
@@ -696,7 +698,7 @@ abstract class _Visita extends Visita {
       required final bool deleted,
       required final bool enviada,
       required final bool tratada,
-      final String? errorSyncMessage}) = _$_Visita;
+      final String? errorSyncMessage}) = _$VisitaImpl;
   const _Visita._() : super._();
 
   @override
@@ -757,6 +759,6 @@ abstract class _Visita extends Visita {
   String? get errorSyncMessage;
   @override
   @JsonKey(ignore: true)
-  _$$_VisitaCopyWith<_$_Visita> get copyWith =>
+  _$$VisitaImplCopyWith<_$VisitaImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

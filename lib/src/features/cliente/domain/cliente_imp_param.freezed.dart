@@ -89,11 +89,11 @@ class _$ClienteImpParamCopyWithImpl<$Res, $Val extends ClienteImpParam>
 }
 
 /// @nodoc
-abstract class _$$_ClienteImpParamCopyWith<$Res>
+abstract class _$$ClienteImpParamImplCopyWith<$Res>
     implements $ClienteImpParamCopyWith<$Res> {
-  factory _$$_ClienteImpParamCopyWith(
-          _$_ClienteImpParam value, $Res Function(_$_ClienteImpParam) then) =
-      __$$_ClienteImpParamCopyWithImpl<$Res>;
+  factory _$$ClienteImpParamImplCopyWith(_$ClienteImpParamImpl value,
+          $Res Function(_$ClienteImpParamImpl) then) =
+      __$$ClienteImpParamImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String clienteId, String? id, String? impId, Pais? clientePais});
@@ -103,11 +103,11 @@ abstract class _$$_ClienteImpParamCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ClienteImpParamCopyWithImpl<$Res>
-    extends _$ClienteImpParamCopyWithImpl<$Res, _$_ClienteImpParam>
-    implements _$$_ClienteImpParamCopyWith<$Res> {
-  __$$_ClienteImpParamCopyWithImpl(
-      _$_ClienteImpParam _value, $Res Function(_$_ClienteImpParam) _then)
+class __$$ClienteImpParamImplCopyWithImpl<$Res>
+    extends _$ClienteImpParamCopyWithImpl<$Res, _$ClienteImpParamImpl>
+    implements _$$ClienteImpParamImplCopyWith<$Res> {
+  __$$ClienteImpParamImplCopyWithImpl(
+      _$ClienteImpParamImpl _value, $Res Function(_$ClienteImpParamImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -118,7 +118,7 @@ class __$$_ClienteImpParamCopyWithImpl<$Res>
     Object? impId = freezed,
     Object? clientePais = freezed,
   }) {
-    return _then(_$_ClienteImpParam(
+    return _then(_$ClienteImpParamImpl(
       null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
@@ -141,8 +141,8 @@ class __$$_ClienteImpParamCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ClienteImpParam extends _ClienteImpParam {
-  const _$_ClienteImpParam(this.clienteId,
+class _$ClienteImpParamImpl extends _ClienteImpParam {
+  const _$ClienteImpParamImpl(this.clienteId,
       {this.id, this.impId, this.clientePais})
       : super._();
 
@@ -164,7 +164,7 @@ class _$_ClienteImpParam extends _ClienteImpParam {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClienteImpParam &&
+            other is _$ClienteImpParamImpl &&
             (identical(other.clienteId, clienteId) ||
                 other.clienteId == clienteId) &&
             (identical(other.id, id) || other.id == id) &&
@@ -180,15 +180,16 @@ class _$_ClienteImpParam extends _ClienteImpParam {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClienteImpParamCopyWith<_$_ClienteImpParam> get copyWith =>
-      __$$_ClienteImpParamCopyWithImpl<_$_ClienteImpParam>(this, _$identity);
+  _$$ClienteImpParamImplCopyWith<_$ClienteImpParamImpl> get copyWith =>
+      __$$ClienteImpParamImplCopyWithImpl<_$ClienteImpParamImpl>(
+          this, _$identity);
 }
 
 abstract class _ClienteImpParam extends ClienteImpParam {
   const factory _ClienteImpParam(final String clienteId,
       {final String? id,
       final String? impId,
-      final Pais? clientePais}) = _$_ClienteImpParam;
+      final Pais? clientePais}) = _$ClienteImpParamImpl;
   const _ClienteImpParam._() : super._();
 
   @override
@@ -201,6 +202,6 @@ abstract class _ClienteImpParam extends ClienteImpParam {
   Pais? get clientePais;
   @override
   @JsonKey(ignore: true)
-  _$$_ClienteImpParamCopyWith<_$_ClienteImpParam> get copyWith =>
+  _$$ClienteImpParamImplCopyWith<_$ClienteImpParamImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -333,11 +333,11 @@ class _$PedidoVentaCopyWithImpl<$Res, $Val extends PedidoVenta>
 }
 
 /// @nodoc
-abstract class _$$_PedidoVentaCopyWith<$Res>
+abstract class _$$PedidoVentaImplCopyWith<$Res>
     implements $PedidoVentaCopyWith<$Res> {
-  factory _$$_PedidoVentaCopyWith(
-          _$_PedidoVenta value, $Res Function(_$_PedidoVenta) then) =
-      __$$_PedidoVentaCopyWithImpl<$Res>;
+  factory _$$PedidoVentaImplCopyWith(
+          _$PedidoVentaImpl value, $Res Function(_$PedidoVentaImpl) then) =
+      __$$PedidoVentaImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -386,11 +386,11 @@ abstract class _$$_PedidoVentaCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PedidoVentaCopyWithImpl<$Res>
-    extends _$PedidoVentaCopyWithImpl<$Res, _$_PedidoVenta>
-    implements _$$_PedidoVentaCopyWith<$Res> {
-  __$$_PedidoVentaCopyWithImpl(
-      _$_PedidoVenta _value, $Res Function(_$_PedidoVenta) _then)
+class __$$PedidoVentaImplCopyWithImpl<$Res>
+    extends _$PedidoVentaCopyWithImpl<$Res, _$PedidoVentaImpl>
+    implements _$$PedidoVentaImplCopyWith<$Res> {
+  __$$PedidoVentaImplCopyWithImpl(
+      _$PedidoVentaImpl _value, $Res Function(_$PedidoVentaImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -432,7 +432,7 @@ class __$$_PedidoVentaCopyWithImpl<$Res>
     Object? borrador = null,
     Object? errorSyncMessage = freezed,
   }) {
-    return _then(_$_PedidoVenta(
+    return _then(_$PedidoVentaImpl(
       empresaId: freezed == empresaId
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
@@ -579,8 +579,8 @@ class __$$_PedidoVentaCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PedidoVenta extends _PedidoVenta {
-  const _$_PedidoVenta(
+class _$PedidoVentaImpl extends _PedidoVenta {
+  const _$PedidoVentaImpl(
       {this.empresaId,
       this.pedidoVentaId,
       this.pedidoVentaAppId,
@@ -698,7 +698,7 @@ class _$_PedidoVenta extends _PedidoVenta {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PedidoVenta &&
+            other is _$PedidoVentaImpl &&
             (identical(other.empresaId, empresaId) ||
                 other.empresaId == empresaId) &&
             (identical(other.pedidoVentaId, pedidoVentaId) ||
@@ -806,8 +806,8 @@ class _$_PedidoVenta extends _PedidoVenta {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PedidoVentaCopyWith<_$_PedidoVenta> get copyWith =>
-      __$$_PedidoVentaCopyWithImpl<_$_PedidoVenta>(this, _$identity);
+  _$$PedidoVentaImplCopyWith<_$PedidoVentaImpl> get copyWith =>
+      __$$PedidoVentaImplCopyWithImpl<_$PedidoVentaImpl>(this, _$identity);
 }
 
 abstract class _PedidoVenta extends PedidoVenta {
@@ -846,7 +846,7 @@ abstract class _PedidoVenta extends PedidoVenta {
       required final bool enviada,
       required final bool tratada,
       required final bool borrador,
-      final String? errorSyncMessage}) = _$_PedidoVenta;
+      final String? errorSyncMessage}) = _$PedidoVentaImpl;
   const _PedidoVenta._() : super._();
 
   @override
@@ -921,6 +921,6 @@ abstract class _PedidoVenta extends PedidoVenta {
   String? get errorSyncMessage;
   @override
   @JsonKey(ignore: true)
-  _$$_PedidoVentaCopyWith<_$_PedidoVenta> get copyWith =>
+  _$$PedidoVentaImplCopyWith<_$PedidoVentaImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

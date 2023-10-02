@@ -70,23 +70,25 @@ class _$GetClienteAlrededorArgCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_GetClienteAlrededorArgCopyWith<$Res>
+abstract class _$$GetClienteAlrededorArgImplCopyWith<$Res>
     implements $GetClienteAlrededorArgCopyWith<$Res> {
-  factory _$$_GetClienteAlrededorArgCopyWith(_$_GetClienteAlrededorArg value,
-          $Res Function(_$_GetClienteAlrededorArg) then) =
-      __$$_GetClienteAlrededorArgCopyWithImpl<$Res>;
+  factory _$$GetClienteAlrededorArgImplCopyWith(
+          _$GetClienteAlrededorArgImpl value,
+          $Res Function(_$GetClienteAlrededorArgImpl) then) =
+      __$$GetClienteAlrededorArgImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({LatLng latLng, double radiusDistance, bool showDireccionesEnvio});
 }
 
 /// @nodoc
-class __$$_GetClienteAlrededorArgCopyWithImpl<$Res>
+class __$$GetClienteAlrededorArgImplCopyWithImpl<$Res>
     extends _$GetClienteAlrededorArgCopyWithImpl<$Res,
-        _$_GetClienteAlrededorArg>
-    implements _$$_GetClienteAlrededorArgCopyWith<$Res> {
-  __$$_GetClienteAlrededorArgCopyWithImpl(_$_GetClienteAlrededorArg _value,
-      $Res Function(_$_GetClienteAlrededorArg) _then)
+        _$GetClienteAlrededorArgImpl>
+    implements _$$GetClienteAlrededorArgImplCopyWith<$Res> {
+  __$$GetClienteAlrededorArgImplCopyWithImpl(
+      _$GetClienteAlrededorArgImpl _value,
+      $Res Function(_$GetClienteAlrededorArgImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -96,7 +98,7 @@ class __$$_GetClienteAlrededorArgCopyWithImpl<$Res>
     Object? radiusDistance = null,
     Object? showDireccionesEnvio = null,
   }) {
-    return _then(_$_GetClienteAlrededorArg(
+    return _then(_$GetClienteAlrededorArgImpl(
       latLng: null == latLng
           ? _value.latLng
           : latLng // ignore: cast_nullable_to_non_nullable
@@ -115,8 +117,8 @@ class __$$_GetClienteAlrededorArgCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GetClienteAlrededorArg extends _GetClienteAlrededorArg {
-  const _$_GetClienteAlrededorArg(
+class _$GetClienteAlrededorArgImpl extends _GetClienteAlrededorArg {
+  const _$GetClienteAlrededorArgImpl(
       {required this.latLng,
       required this.radiusDistance,
       required this.showDireccionesEnvio})
@@ -138,7 +140,7 @@ class _$_GetClienteAlrededorArg extends _GetClienteAlrededorArg {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GetClienteAlrededorArg &&
+            other is _$GetClienteAlrededorArgImpl &&
             (identical(other.latLng, latLng) || other.latLng == latLng) &&
             (identical(other.radiusDistance, radiusDistance) ||
                 other.radiusDistance == radiusDistance) &&
@@ -153,16 +155,16 @@ class _$_GetClienteAlrededorArg extends _GetClienteAlrededorArg {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GetClienteAlrededorArgCopyWith<_$_GetClienteAlrededorArg> get copyWith =>
-      __$$_GetClienteAlrededorArgCopyWithImpl<_$_GetClienteAlrededorArg>(
-          this, _$identity);
+  _$$GetClienteAlrededorArgImplCopyWith<_$GetClienteAlrededorArgImpl>
+      get copyWith => __$$GetClienteAlrededorArgImplCopyWithImpl<
+          _$GetClienteAlrededorArgImpl>(this, _$identity);
 }
 
 abstract class _GetClienteAlrededorArg extends GetClienteAlrededorArg {
   const factory _GetClienteAlrededorArg(
       {required final LatLng latLng,
       required final double radiusDistance,
-      required final bool showDireccionesEnvio}) = _$_GetClienteAlrededorArg;
+      required final bool showDireccionesEnvio}) = _$GetClienteAlrededorArgImpl;
   const _GetClienteAlrededorArg._() : super._();
 
   @override
@@ -173,6 +175,6 @@ abstract class _GetClienteAlrededorArg extends GetClienteAlrededorArg {
   bool get showDireccionesEnvio;
   @override
   @JsonKey(ignore: true)
-  _$$_GetClienteAlrededorArgCopyWith<_$_GetClienteAlrededorArg> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$GetClienteAlrededorArgImplCopyWith<_$GetClienteAlrededorArgImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

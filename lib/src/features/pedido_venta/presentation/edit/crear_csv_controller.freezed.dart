@@ -88,24 +88,25 @@ class _$CrearCsvControllerStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_loadingCopyWith<$Res> {
-  factory _$$_loadingCopyWith(
-          _$_loading value, $Res Function(_$_loading) then) =
-      __$$_loadingCopyWithImpl<$Res>;
+abstract class _$$loadingImplCopyWith<$Res> {
+  factory _$$loadingImplCopyWith(
+          _$loadingImpl value, $Res Function(_$loadingImpl) then) =
+      __$$loadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_loadingCopyWithImpl<$Res>
-    extends _$CrearCsvControllerStateCopyWithImpl<$Res, _$_loading>
-    implements _$$_loadingCopyWith<$Res> {
-  __$$_loadingCopyWithImpl(_$_loading _value, $Res Function(_$_loading) _then)
+class __$$loadingImplCopyWithImpl<$Res>
+    extends _$CrearCsvControllerStateCopyWithImpl<$Res, _$loadingImpl>
+    implements _$$loadingImplCopyWith<$Res> {
+  __$$loadingImplCopyWithImpl(
+      _$loadingImpl _value, $Res Function(_$loadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_loading extends _loading {
-  const _$_loading() : super._();
+class _$loadingImpl extends _loading {
+  const _$loadingImpl() : super._();
 
   @override
   String toString() {
@@ -115,7 +116,7 @@ class _$_loading extends _loading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_loading);
+        (other.runtimeType == runtimeType && other is _$loadingImpl);
   }
 
   @override
@@ -197,29 +198,30 @@ class _$_loading extends _loading {
 }
 
 abstract class _loading extends CrearCsvControllerState {
-  const factory _loading() = _$_loading;
+  const factory _loading() = _$loadingImpl;
   const _loading._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_initialCopyWith<$Res> {
-  factory _$$_initialCopyWith(
-          _$_initial value, $Res Function(_$_initial) then) =
-      __$$_initialCopyWithImpl<$Res>;
+abstract class _$$initialImplCopyWith<$Res> {
+  factory _$$initialImplCopyWith(
+          _$initialImpl value, $Res Function(_$initialImpl) then) =
+      __$$initialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_initialCopyWithImpl<$Res>
-    extends _$CrearCsvControllerStateCopyWithImpl<$Res, _$_initial>
-    implements _$$_initialCopyWith<$Res> {
-  __$$_initialCopyWithImpl(_$_initial _value, $Res Function(_$_initial) _then)
+class __$$initialImplCopyWithImpl<$Res>
+    extends _$CrearCsvControllerStateCopyWithImpl<$Res, _$initialImpl>
+    implements _$$initialImplCopyWith<$Res> {
+  __$$initialImplCopyWithImpl(
+      _$initialImpl _value, $Res Function(_$initialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_initial extends _initial {
-  const _$_initial() : super._();
+class _$initialImpl extends _initial {
+  const _$initialImpl() : super._();
 
   @override
   String toString() {
@@ -229,7 +231,7 @@ class _$_initial extends _initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_initial);
+        (other.runtimeType == runtimeType && other is _$initialImpl);
   }
 
   @override
@@ -311,23 +313,25 @@ class _$_initial extends _initial {
 }
 
 abstract class _initial extends CrearCsvControllerState {
-  const factory _initial() = _$_initial;
+  const factory _initial() = _$initialImpl;
   const _initial._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_errorCopyWith<$Res> {
-  factory _$$_errorCopyWith(_$_error value, $Res Function(_$_error) then) =
-      __$$_errorCopyWithImpl<$Res>;
+abstract class _$$errorImplCopyWith<$Res> {
+  factory _$$errorImplCopyWith(
+          _$errorImpl value, $Res Function(_$errorImpl) then) =
+      __$$errorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Object error, StackTrace? stackTrace});
 }
 
 /// @nodoc
-class __$$_errorCopyWithImpl<$Res>
-    extends _$CrearCsvControllerStateCopyWithImpl<$Res, _$_error>
-    implements _$$_errorCopyWith<$Res> {
-  __$$_errorCopyWithImpl(_$_error _value, $Res Function(_$_error) _then)
+class __$$errorImplCopyWithImpl<$Res>
+    extends _$CrearCsvControllerStateCopyWithImpl<$Res, _$errorImpl>
+    implements _$$errorImplCopyWith<$Res> {
+  __$$errorImplCopyWithImpl(
+      _$errorImpl _value, $Res Function(_$errorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -336,7 +340,7 @@ class __$$_errorCopyWithImpl<$Res>
     Object? error = null,
     Object? stackTrace = freezed,
   }) {
-    return _then(_$_error(
+    return _then(_$errorImpl(
       null == error ? _value.error : error,
       stackTrace: freezed == stackTrace
           ? _value.stackTrace
@@ -348,8 +352,8 @@ class __$$_errorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_error extends _error {
-  const _$_error(this.error, {this.stackTrace}) : super._();
+class _$errorImpl extends _error {
+  const _$errorImpl(this.error, {this.stackTrace}) : super._();
 
   @override
   final Object error;
@@ -365,7 +369,7 @@ class _$_error extends _error {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_error &&
+            other is _$errorImpl &&
             const DeepCollectionEquality().equals(other.error, error) &&
             (identical(other.stackTrace, stackTrace) ||
                 other.stackTrace == stackTrace));
@@ -378,8 +382,8 @@ class _$_error extends _error {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_errorCopyWith<_$_error> get copyWith =>
-      __$$_errorCopyWithImpl<_$_error>(this, _$identity);
+  _$$errorImplCopyWith<_$errorImpl> get copyWith =>
+      __$$errorImplCopyWithImpl<_$errorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -458,29 +462,30 @@ class _$_error extends _error {
 
 abstract class _error extends CrearCsvControllerState {
   const factory _error(final Object error, {final StackTrace? stackTrace}) =
-      _$_error;
+      _$errorImpl;
   const _error._() : super._();
 
   Object get error;
   StackTrace? get stackTrace;
   @JsonKey(ignore: true)
-  _$$_errorCopyWith<_$_error> get copyWith =>
+  _$$errorImplCopyWith<_$errorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_dataCopyWith<$Res> {
-  factory _$$_dataCopyWith(_$_data value, $Res Function(_$_data) then) =
-      __$$_dataCopyWithImpl<$Res>;
+abstract class _$$dataImplCopyWith<$Res> {
+  factory _$$dataImplCopyWith(
+          _$dataImpl value, $Res Function(_$dataImpl) then) =
+      __$$dataImplCopyWithImpl<$Res>;
   @useResult
   $Res call({File csvFile});
 }
 
 /// @nodoc
-class __$$_dataCopyWithImpl<$Res>
-    extends _$CrearCsvControllerStateCopyWithImpl<$Res, _$_data>
-    implements _$$_dataCopyWith<$Res> {
-  __$$_dataCopyWithImpl(_$_data _value, $Res Function(_$_data) _then)
+class __$$dataImplCopyWithImpl<$Res>
+    extends _$CrearCsvControllerStateCopyWithImpl<$Res, _$dataImpl>
+    implements _$$dataImplCopyWith<$Res> {
+  __$$dataImplCopyWithImpl(_$dataImpl _value, $Res Function(_$dataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -488,7 +493,7 @@ class __$$_dataCopyWithImpl<$Res>
   $Res call({
     Object? csvFile = null,
   }) {
-    return _then(_$_data(
+    return _then(_$dataImpl(
       null == csvFile
           ? _value.csvFile
           : csvFile // ignore: cast_nullable_to_non_nullable
@@ -499,8 +504,8 @@ class __$$_dataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_data extends _data {
-  const _$_data(this.csvFile) : super._();
+class _$dataImpl extends _data {
+  const _$dataImpl(this.csvFile) : super._();
 
   @override
   final File csvFile;
@@ -514,7 +519,7 @@ class _$_data extends _data {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_data &&
+            other is _$dataImpl &&
             (identical(other.csvFile, csvFile) || other.csvFile == csvFile));
   }
 
@@ -524,8 +529,8 @@ class _$_data extends _data {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_dataCopyWith<_$_data> get copyWith =>
-      __$$_dataCopyWithImpl<_$_data>(this, _$identity);
+  _$$dataImplCopyWith<_$dataImpl> get copyWith =>
+      __$$dataImplCopyWithImpl<_$dataImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -603,10 +608,11 @@ class _$_data extends _data {
 }
 
 abstract class _data extends CrearCsvControllerState {
-  const factory _data(final File csvFile) = _$_data;
+  const factory _data(final File csvFile) = _$dataImpl;
   const _data._() : super._();
 
   File get csvFile;
   @JsonKey(ignore: true)
-  _$$_dataCopyWith<_$_data> get copyWith => throw _privateConstructorUsedError;
+  _$$dataImplCopyWith<_$dataImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

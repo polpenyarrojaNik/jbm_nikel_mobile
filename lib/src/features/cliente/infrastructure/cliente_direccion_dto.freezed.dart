@@ -168,11 +168,11 @@ class _$ClienteDireccionDTOCopyWithImpl<$Res, $Val extends ClienteDireccionDTO>
 }
 
 /// @nodoc
-abstract class _$$_ClienteDireccionDTOCopyWith<$Res>
+abstract class _$$ClienteDireccionDTOImplCopyWith<$Res>
     implements $ClienteDireccionDTOCopyWith<$Res> {
-  factory _$$_ClienteDireccionDTOCopyWith(_$_ClienteDireccionDTO value,
-          $Res Function(_$_ClienteDireccionDTO) then) =
-      __$$_ClienteDireccionDTOCopyWithImpl<$Res>;
+  factory _$$ClienteDireccionDTOImplCopyWith(_$ClienteDireccionDTOImpl value,
+          $Res Function(_$ClienteDireccionDTOImpl) then) =
+      __$$ClienteDireccionDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -193,11 +193,11 @@ abstract class _$$_ClienteDireccionDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ClienteDireccionDTOCopyWithImpl<$Res>
-    extends _$ClienteDireccionDTOCopyWithImpl<$Res, _$_ClienteDireccionDTO>
-    implements _$$_ClienteDireccionDTOCopyWith<$Res> {
-  __$$_ClienteDireccionDTOCopyWithImpl(_$_ClienteDireccionDTO _value,
-      $Res Function(_$_ClienteDireccionDTO) _then)
+class __$$ClienteDireccionDTOImplCopyWithImpl<$Res>
+    extends _$ClienteDireccionDTOCopyWithImpl<$Res, _$ClienteDireccionDTOImpl>
+    implements _$$ClienteDireccionDTOImplCopyWith<$Res> {
+  __$$ClienteDireccionDTOImplCopyWithImpl(_$ClienteDireccionDTOImpl _value,
+      $Res Function(_$ClienteDireccionDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -218,7 +218,7 @@ class __$$_ClienteDireccionDTOCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_ClienteDireccionDTO(
+    return _then(_$ClienteDireccionDTOImpl(
       clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
@@ -281,8 +281,8 @@ class __$$_ClienteDireccionDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ClienteDireccionDTO extends _ClienteDireccionDTO {
-  const _$_ClienteDireccionDTO(
+class _$ClienteDireccionDTOImpl extends _ClienteDireccionDTO {
+  const _$ClienteDireccionDTOImpl(
       {@JsonKey(name: 'CLIENTE_ID') required this.clienteId,
       @JsonKey(name: 'DIRECCION_ID') required this.direccionId,
       @JsonKey(name: 'NOMBRE') this.nombre,
@@ -299,8 +299,8 @@ class _$_ClienteDireccionDTO extends _ClienteDireccionDTO {
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
-  factory _$_ClienteDireccionDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_ClienteDireccionDTOFromJson(json);
+  factory _$ClienteDireccionDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ClienteDireccionDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'CLIENTE_ID')
@@ -354,7 +354,7 @@ class _$_ClienteDireccionDTO extends _ClienteDireccionDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClienteDireccionDTO &&
+            other is _$ClienteDireccionDTOImpl &&
             (identical(other.clienteId, clienteId) ||
                 other.clienteId == clienteId) &&
             (identical(other.direccionId, direccionId) ||
@@ -403,13 +403,13 @@ class _$_ClienteDireccionDTO extends _ClienteDireccionDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClienteDireccionDTOCopyWith<_$_ClienteDireccionDTO> get copyWith =>
-      __$$_ClienteDireccionDTOCopyWithImpl<_$_ClienteDireccionDTO>(
+  _$$ClienteDireccionDTOImplCopyWith<_$ClienteDireccionDTOImpl> get copyWith =>
+      __$$ClienteDireccionDTOImplCopyWithImpl<_$ClienteDireccionDTOImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ClienteDireccionDTOToJson(
+    return _$$ClienteDireccionDTOImplToJson(
       this,
     );
   }
@@ -417,24 +417,25 @@ class _$_ClienteDireccionDTO extends _ClienteDireccionDTO {
 
 abstract class _ClienteDireccionDTO extends ClienteDireccionDTO {
   const factory _ClienteDireccionDTO(
-      {@JsonKey(name: 'CLIENTE_ID') required final String clienteId,
-      @JsonKey(name: 'DIRECCION_ID') required final String? direccionId,
-      @JsonKey(name: 'NOMBRE') final String? nombre,
-      @JsonKey(name: 'DIRECCION1') final String? direccion1,
-      @JsonKey(name: 'DIRECCION2') final String? direccion2,
-      @JsonKey(name: 'CODIGO_POSTAL') final String? codigoPostal,
-      @JsonKey(name: 'POBLACION') final String? poblacion,
-      @JsonKey(name: 'PROVINCIA') final String? provincia,
-      @JsonKey(name: 'PAIS_ID') final String? paisId,
-      @JsonKey(name: 'LATITUD') required final double latitud,
-      @JsonKey(name: 'LONGITUD') required final double longitud,
-      @JsonKey(name: 'PREDETERMINADA_SN') final String? predeterminada,
-      @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') final String deleted}) = _$_ClienteDireccionDTO;
+          {@JsonKey(name: 'CLIENTE_ID') required final String clienteId,
+          @JsonKey(name: 'DIRECCION_ID') required final String? direccionId,
+          @JsonKey(name: 'NOMBRE') final String? nombre,
+          @JsonKey(name: 'DIRECCION1') final String? direccion1,
+          @JsonKey(name: 'DIRECCION2') final String? direccion2,
+          @JsonKey(name: 'CODIGO_POSTAL') final String? codigoPostal,
+          @JsonKey(name: 'POBLACION') final String? poblacion,
+          @JsonKey(name: 'PROVINCIA') final String? provincia,
+          @JsonKey(name: 'PAIS_ID') final String? paisId,
+          @JsonKey(name: 'LATITUD') required final double latitud,
+          @JsonKey(name: 'LONGITUD') required final double longitud,
+          @JsonKey(name: 'PREDETERMINADA_SN') final String? predeterminada,
+          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+          @JsonKey(name: 'DELETED') final String deleted}) =
+      _$ClienteDireccionDTOImpl;
   const _ClienteDireccionDTO._() : super._();
 
   factory _ClienteDireccionDTO.fromJson(Map<String, dynamic> json) =
-      _$_ClienteDireccionDTO.fromJson;
+      _$ClienteDireccionDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'CLIENTE_ID')
@@ -480,6 +481,6 @@ abstract class _ClienteDireccionDTO extends ClienteDireccionDTO {
   String get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_ClienteDireccionDTOCopyWith<_$_ClienteDireccionDTO> get copyWith =>
+  _$$ClienteDireccionDTOImplCopyWith<_$ClienteDireccionDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

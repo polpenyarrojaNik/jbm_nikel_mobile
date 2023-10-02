@@ -6,9 +6,9 @@ part of 'articulo_ventas_cliente_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ArticuloVentasClienteDTO _$$_ArticuloVentasClienteDTOFromJson(
+_$ArticuloVentasClienteDTOImpl _$$ArticuloVentasClienteDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_ArticuloVentasClienteDTO(
+    _$ArticuloVentasClienteDTOImpl(
       clienteId: json['CLIENTE_ID'] as String,
       nombreCliente: json['NOMBRE'] as String,
       importeAnyo: (json['IMPORTE_ANYO'] as num).toDouble(),
@@ -23,8 +23,8 @@ _$_ArticuloVentasClienteDTO _$$_ArticuloVentasClienteDTOFromJson(
       cantidadAnyo_4: json['CANTIDAD_ANYO_4'] as int,
     );
 
-Map<String, dynamic> _$$_ArticuloVentasClienteDTOToJson(
-        _$_ArticuloVentasClienteDTO instance) =>
+Map<String, dynamic> _$$ArticuloVentasClienteDTOImplToJson(
+        _$ArticuloVentasClienteDTOImpl instance) =>
     <String, dynamic>{
       'CLIENTE_ID': instance.clienteId,
       'NOMBRE': instance.nombreCliente,

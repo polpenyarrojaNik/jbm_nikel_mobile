@@ -177,11 +177,11 @@ class _$ClienteAlrededorCopyWithImpl<$Res, $Val extends ClienteAlrededor>
 }
 
 /// @nodoc
-abstract class _$$_ClienteAlrededorCopyWith<$Res>
+abstract class _$$ClienteAlrededorImplCopyWith<$Res>
     implements $ClienteAlrededorCopyWith<$Res> {
-  factory _$$_ClienteAlrededorCopyWith(
-          _$_ClienteAlrededor value, $Res Function(_$_ClienteAlrededor) then) =
-      __$$_ClienteAlrededorCopyWithImpl<$Res>;
+  factory _$$ClienteAlrededorImplCopyWith(_$ClienteAlrededorImpl value,
+          $Res Function(_$ClienteAlrededorImpl) then) =
+      __$$ClienteAlrededorImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -207,11 +207,11 @@ abstract class _$$_ClienteAlrededorCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ClienteAlrededorCopyWithImpl<$Res>
-    extends _$ClienteAlrededorCopyWithImpl<$Res, _$_ClienteAlrededor>
-    implements _$$_ClienteAlrededorCopyWith<$Res> {
-  __$$_ClienteAlrededorCopyWithImpl(
-      _$_ClienteAlrededor _value, $Res Function(_$_ClienteAlrededor) _then)
+class __$$ClienteAlrededorImplCopyWithImpl<$Res>
+    extends _$ClienteAlrededorCopyWithImpl<$Res, _$ClienteAlrededorImpl>
+    implements _$$ClienteAlrededorImplCopyWith<$Res> {
+  __$$ClienteAlrededorImplCopyWithImpl(_$ClienteAlrededorImpl _value,
+      $Res Function(_$ClienteAlrededorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -234,7 +234,7 @@ class __$$_ClienteAlrededorCopyWithImpl<$Res>
     Object? nombreRepresentante1 = freezed,
     Object? nombreRepresentante2 = freezed,
   }) {
-    return _then(_$_ClienteAlrededor(
+    return _then(_$ClienteAlrededorImpl(
       clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
@@ -305,8 +305,8 @@ class __$$_ClienteAlrededorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ClienteAlrededor extends _ClienteAlrededor {
-  const _$_ClienteAlrededor(
+class _$ClienteAlrededorImpl extends _ClienteAlrededor {
+  const _$ClienteAlrededorImpl(
       {required this.clienteId,
       required this.markerId,
       required this.nombre,
@@ -367,7 +367,7 @@ class _$_ClienteAlrededor extends _ClienteAlrededor {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClienteAlrededor &&
+            other is _$ClienteAlrededorImpl &&
             (identical(other.clienteId, clienteId) ||
                 other.clienteId == clienteId) &&
             (identical(other.markerId, markerId) ||
@@ -422,8 +422,9 @@ class _$_ClienteAlrededor extends _ClienteAlrededor {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClienteAlrededorCopyWith<_$_ClienteAlrededor> get copyWith =>
-      __$$_ClienteAlrededorCopyWithImpl<_$_ClienteAlrededor>(this, _$identity);
+  _$$ClienteAlrededorImplCopyWith<_$ClienteAlrededorImpl> get copyWith =>
+      __$$ClienteAlrededorImplCopyWithImpl<_$ClienteAlrededorImpl>(
+          this, _$identity);
 }
 
 abstract class _ClienteAlrededor extends ClienteAlrededor {
@@ -443,7 +444,7 @@ abstract class _ClienteAlrededor extends ClienteAlrededor {
       required final Money ventasAnyoActual,
       required final double porcentajeAbonos,
       final String? nombreRepresentante1,
-      final String? nombreRepresentante2}) = _$_ClienteAlrededor;
+      final String? nombreRepresentante2}) = _$ClienteAlrededorImpl;
   const _ClienteAlrededor._() : super._();
 
   @override
@@ -480,6 +481,6 @@ abstract class _ClienteAlrededor extends ClienteAlrededor {
   String? get nombreRepresentante2;
   @override
   @JsonKey(ignore: true)
-  _$$_ClienteAlrededorCopyWith<_$_ClienteAlrededor> get copyWith =>
+  _$$ClienteAlrededorImplCopyWith<_$ClienteAlrededorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -6,9 +6,9 @@ part of 'cliente_estado_potencial_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ClienteEstadoPotencialDTO _$$_ClienteEstadoPotencialDTOFromJson(
+_$ClienteEstadoPotencialDTOImpl _$$ClienteEstadoPotencialDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_ClienteEstadoPotencialDTO(
+    _$ClienteEstadoPotencialDTOImpl(
       id: json['ESTADO_POTENCIAL_ID'] as String,
       descripcionES: json['DESCRIPCION_ES'] as String,
       descripcionEN: json['DESCRIPCION_EN'] as String?,
@@ -29,8 +29,8 @@ _$_ClienteEstadoPotencialDTO _$$_ClienteEstadoPotencialDTOFromJson(
       deleted: json['DELETED'] as String? ?? 'N',
     );
 
-Map<String, dynamic> _$$_ClienteEstadoPotencialDTOToJson(
-        _$_ClienteEstadoPotencialDTO instance) =>
+Map<String, dynamic> _$$ClienteEstadoPotencialDTOImplToJson(
+        _$ClienteEstadoPotencialDTOImpl instance) =>
     <String, dynamic>{
       'ESTADO_POTENCIAL_ID': instance.id,
       'DESCRIPCION_ES': instance.descripcionES,

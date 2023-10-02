@@ -6,9 +6,9 @@ part of 'articulo_precio_tarifa_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ArticuloPrecioTarifaDTO _$$_ArticuloPrecioTarifaDTOFromJson(
+_$ArticuloPrecioTarifaDTOImpl _$$ArticuloPrecioTarifaDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_ArticuloPrecioTarifaDTO(
+    _$ArticuloPrecioTarifaDTOImpl(
       articuloId: json['ARTICULO_ID'] as String,
       tarifaId: json['TARIFA_ID'] as String,
       tarifaDescripcion: json['TARIFA_DESCRIPCION'] as String?,
@@ -20,8 +20,8 @@ _$_ArticuloPrecioTarifaDTO _$$_ArticuloPrecioTarifaDTOFromJson(
       deleted: json['DELETED'] as String? ?? 'N',
     );
 
-Map<String, dynamic> _$$_ArticuloPrecioTarifaDTOToJson(
-        _$_ArticuloPrecioTarifaDTO instance) =>
+Map<String, dynamic> _$$ArticuloPrecioTarifaDTOImplToJson(
+        _$ArticuloPrecioTarifaDTOImpl instance) =>
     <String, dynamic>{
       'ARTICULO_ID': instance.articuloId,
       'TARIFA_ID': instance.tarifaId,

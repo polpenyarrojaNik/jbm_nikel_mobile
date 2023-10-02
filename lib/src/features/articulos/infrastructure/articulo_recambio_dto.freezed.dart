@@ -104,11 +104,11 @@ class _$ArticuloRecambioDTOCopyWithImpl<$Res, $Val extends ArticuloRecambioDTO>
 }
 
 /// @nodoc
-abstract class _$$_ArticuloRecambioDTOCopyWith<$Res>
+abstract class _$$ArticuloRecambioDTOImplCopyWith<$Res>
     implements $ArticuloRecambioDTOCopyWith<$Res> {
-  factory _$$_ArticuloRecambioDTOCopyWith(_$_ArticuloRecambioDTO value,
-          $Res Function(_$_ArticuloRecambioDTO) then) =
-      __$$_ArticuloRecambioDTOCopyWithImpl<$Res>;
+  factory _$$ArticuloRecambioDTOImplCopyWith(_$ArticuloRecambioDTOImpl value,
+          $Res Function(_$ArticuloRecambioDTOImpl) then) =
+      __$$ArticuloRecambioDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -121,11 +121,11 @@ abstract class _$$_ArticuloRecambioDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ArticuloRecambioDTOCopyWithImpl<$Res>
-    extends _$ArticuloRecambioDTOCopyWithImpl<$Res, _$_ArticuloRecambioDTO>
-    implements _$$_ArticuloRecambioDTOCopyWith<$Res> {
-  __$$_ArticuloRecambioDTOCopyWithImpl(_$_ArticuloRecambioDTO _value,
-      $Res Function(_$_ArticuloRecambioDTO) _then)
+class __$$ArticuloRecambioDTOImplCopyWithImpl<$Res>
+    extends _$ArticuloRecambioDTOCopyWithImpl<$Res, _$ArticuloRecambioDTOImpl>
+    implements _$$ArticuloRecambioDTOImplCopyWith<$Res> {
+  __$$ArticuloRecambioDTOImplCopyWithImpl(_$ArticuloRecambioDTOImpl _value,
+      $Res Function(_$ArticuloRecambioDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -138,7 +138,7 @@ class __$$_ArticuloRecambioDTOCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_ArticuloRecambioDTO(
+    return _then(_$ArticuloRecambioDTOImpl(
       articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
@@ -169,8 +169,8 @@ class __$$_ArticuloRecambioDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ArticuloRecambioDTO extends _ArticuloRecambioDTO {
-  const _$_ArticuloRecambioDTO(
+class _$ArticuloRecambioDTOImpl extends _ArticuloRecambioDTO {
+  const _$ArticuloRecambioDTOImpl(
       {@JsonKey(name: 'ARTICULO_ID') required this.articuloId,
       @JsonKey(name: 'RECAMBIO_ID') required this.id,
       @JsonKey(name: 'DESCRIPCION') required this.descripcion,
@@ -179,8 +179,8 @@ class _$_ArticuloRecambioDTO extends _ArticuloRecambioDTO {
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
-  factory _$_ArticuloRecambioDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_ArticuloRecambioDTOFromJson(json);
+  factory _$ArticuloRecambioDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ArticuloRecambioDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'ARTICULO_ID')
@@ -210,7 +210,7 @@ class _$_ArticuloRecambioDTO extends _ArticuloRecambioDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ArticuloRecambioDTO &&
+            other is _$ArticuloRecambioDTOImpl &&
             (identical(other.articuloId, articuloId) ||
                 other.articuloId == articuloId) &&
             (identical(other.id, id) || other.id == id) &&
@@ -231,13 +231,13 @@ class _$_ArticuloRecambioDTO extends _ArticuloRecambioDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArticuloRecambioDTOCopyWith<_$_ArticuloRecambioDTO> get copyWith =>
-      __$$_ArticuloRecambioDTOCopyWithImpl<_$_ArticuloRecambioDTO>(
+  _$$ArticuloRecambioDTOImplCopyWith<_$ArticuloRecambioDTOImpl> get copyWith =>
+      __$$ArticuloRecambioDTOImplCopyWithImpl<_$ArticuloRecambioDTOImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ArticuloRecambioDTOToJson(
+    return _$$ArticuloRecambioDTOImplToJson(
       this,
     );
   }
@@ -245,16 +245,17 @@ class _$_ArticuloRecambioDTO extends _ArticuloRecambioDTO {
 
 abstract class _ArticuloRecambioDTO extends ArticuloRecambioDTO {
   const factory _ArticuloRecambioDTO(
-      {@JsonKey(name: 'ARTICULO_ID') required final String articuloId,
-      @JsonKey(name: 'RECAMBIO_ID') required final String id,
-      @JsonKey(name: 'DESCRIPCION') required final String descripcion,
-      @JsonKey(name: 'CANTIDAD') required final int cantidad,
-      @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') final String deleted}) = _$_ArticuloRecambioDTO;
+          {@JsonKey(name: 'ARTICULO_ID') required final String articuloId,
+          @JsonKey(name: 'RECAMBIO_ID') required final String id,
+          @JsonKey(name: 'DESCRIPCION') required final String descripcion,
+          @JsonKey(name: 'CANTIDAD') required final int cantidad,
+          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+          @JsonKey(name: 'DELETED') final String deleted}) =
+      _$ArticuloRecambioDTOImpl;
   const _ArticuloRecambioDTO._() : super._();
 
   factory _ArticuloRecambioDTO.fromJson(Map<String, dynamic> json) =
-      _$_ArticuloRecambioDTO.fromJson;
+      _$ArticuloRecambioDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'ARTICULO_ID')
@@ -276,6 +277,6 @@ abstract class _ArticuloRecambioDTO extends ArticuloRecambioDTO {
   String get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_ArticuloRecambioDTOCopyWith<_$_ArticuloRecambioDTO> get copyWith =>
+  _$$ArticuloRecambioDTOImplCopyWith<_$ArticuloRecambioDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

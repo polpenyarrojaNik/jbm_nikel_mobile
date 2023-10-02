@@ -93,11 +93,11 @@ class _$ClienteGrupoNetoCopyWithImpl<$Res, $Val extends ClienteGrupoNeto>
 }
 
 /// @nodoc
-abstract class _$$_ClienteGrupoNetoCopyWith<$Res>
+abstract class _$$ClienteGrupoNetoImplCopyWith<$Res>
     implements $ClienteGrupoNetoCopyWith<$Res> {
-  factory _$$_ClienteGrupoNetoCopyWith(
-          _$_ClienteGrupoNeto value, $Res Function(_$_ClienteGrupoNeto) then) =
-      __$$_ClienteGrupoNetoCopyWithImpl<$Res>;
+  factory _$$ClienteGrupoNetoImplCopyWith(_$ClienteGrupoNetoImpl value,
+          $Res Function(_$ClienteGrupoNetoImpl) then) =
+      __$$ClienteGrupoNetoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -110,11 +110,11 @@ abstract class _$$_ClienteGrupoNetoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ClienteGrupoNetoCopyWithImpl<$Res>
-    extends _$ClienteGrupoNetoCopyWithImpl<$Res, _$_ClienteGrupoNeto>
-    implements _$$_ClienteGrupoNetoCopyWith<$Res> {
-  __$$_ClienteGrupoNetoCopyWithImpl(
-      _$_ClienteGrupoNeto _value, $Res Function(_$_ClienteGrupoNeto) _then)
+class __$$ClienteGrupoNetoImplCopyWithImpl<$Res>
+    extends _$ClienteGrupoNetoCopyWithImpl<$Res, _$ClienteGrupoNetoImpl>
+    implements _$$ClienteGrupoNetoImplCopyWith<$Res> {
+  __$$ClienteGrupoNetoImplCopyWithImpl(_$ClienteGrupoNetoImpl _value,
+      $Res Function(_$ClienteGrupoNetoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -127,7 +127,7 @@ class __$$_ClienteGrupoNetoCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_ClienteGrupoNeto(
+    return _then(_$ClienteGrupoNetoImpl(
       clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
@@ -158,8 +158,8 @@ class __$$_ClienteGrupoNetoCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ClienteGrupoNeto extends _ClienteGrupoNeto {
-  const _$_ClienteGrupoNeto(
+class _$ClienteGrupoNetoImpl extends _ClienteGrupoNeto {
+  const _$ClienteGrupoNetoImpl(
       {required this.clienteId,
       required this.grupoNetoId,
       required this.grupoNetoDescripcion,
@@ -190,7 +190,7 @@ class _$_ClienteGrupoNeto extends _ClienteGrupoNeto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClienteGrupoNeto &&
+            other is _$ClienteGrupoNetoImpl &&
             (identical(other.clienteId, clienteId) ||
                 other.clienteId == clienteId) &&
             (identical(other.grupoNetoId, grupoNetoId) ||
@@ -211,8 +211,9 @@ class _$_ClienteGrupoNeto extends _ClienteGrupoNeto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClienteGrupoNetoCopyWith<_$_ClienteGrupoNeto> get copyWith =>
-      __$$_ClienteGrupoNetoCopyWithImpl<_$_ClienteGrupoNeto>(this, _$identity);
+  _$$ClienteGrupoNetoImplCopyWith<_$ClienteGrupoNetoImpl> get copyWith =>
+      __$$ClienteGrupoNetoImplCopyWithImpl<_$ClienteGrupoNetoImpl>(
+          this, _$identity);
 }
 
 abstract class _ClienteGrupoNeto extends ClienteGrupoNeto {
@@ -222,7 +223,7 @@ abstract class _ClienteGrupoNeto extends ClienteGrupoNeto {
       required final String grupoNetoDescripcion,
       required final double dtoAdicional,
       required final DateTime lastUpdated,
-      required final bool deleted}) = _$_ClienteGrupoNeto;
+      required final bool deleted}) = _$ClienteGrupoNetoImpl;
   const _ClienteGrupoNeto._() : super._();
 
   @override
@@ -239,6 +240,6 @@ abstract class _ClienteGrupoNeto extends ClienteGrupoNeto {
   bool get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_ClienteGrupoNetoCopyWith<_$_ClienteGrupoNeto> get copyWith =>
+  _$$ClienteGrupoNetoImplCopyWith<_$ClienteGrupoNetoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

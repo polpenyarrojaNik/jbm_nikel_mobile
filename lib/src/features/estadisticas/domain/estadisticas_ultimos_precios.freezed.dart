@@ -158,12 +158,12 @@ class _$EstadisticasUltimosPreciosCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_EstadisticasUltimosPreciosCopyWith<$Res>
+abstract class _$$EstadisticasUltimosPreciosImplCopyWith<$Res>
     implements $EstadisticasUltimosPreciosCopyWith<$Res> {
-  factory _$$_EstadisticasUltimosPreciosCopyWith(
-          _$_EstadisticasUltimosPrecios value,
-          $Res Function(_$_EstadisticasUltimosPrecios) then) =
-      __$$_EstadisticasUltimosPreciosCopyWithImpl<$Res>;
+  factory _$$EstadisticasUltimosPreciosImplCopyWith(
+          _$EstadisticasUltimosPreciosImpl value,
+          $Res Function(_$EstadisticasUltimosPreciosImpl) then) =
+      __$$EstadisticasUltimosPreciosImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -185,13 +185,13 @@ abstract class _$$_EstadisticasUltimosPreciosCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_EstadisticasUltimosPreciosCopyWithImpl<$Res>
+class __$$EstadisticasUltimosPreciosImplCopyWithImpl<$Res>
     extends _$EstadisticasUltimosPreciosCopyWithImpl<$Res,
-        _$_EstadisticasUltimosPrecios>
-    implements _$$_EstadisticasUltimosPreciosCopyWith<$Res> {
-  __$$_EstadisticasUltimosPreciosCopyWithImpl(
-      _$_EstadisticasUltimosPrecios _value,
-      $Res Function(_$_EstadisticasUltimosPrecios) _then)
+        _$EstadisticasUltimosPreciosImpl>
+    implements _$$EstadisticasUltimosPreciosImplCopyWith<$Res> {
+  __$$EstadisticasUltimosPreciosImplCopyWithImpl(
+      _$EstadisticasUltimosPreciosImpl _value,
+      $Res Function(_$EstadisticasUltimosPreciosImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -213,7 +213,7 @@ class __$$_EstadisticasUltimosPreciosCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_EstadisticasUltimosPrecios(
+    return _then(_$EstadisticasUltimosPreciosImpl(
       clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
@@ -280,8 +280,8 @@ class __$$_EstadisticasUltimosPreciosCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_EstadisticasUltimosPrecios extends _EstadisticasUltimosPrecios {
-  const _$_EstadisticasUltimosPrecios(
+class _$EstadisticasUltimosPreciosImpl extends _EstadisticasUltimosPrecios {
+  const _$EstadisticasUltimosPreciosImpl(
       {required this.clienteId,
       this.nombreCliente,
       required this.articuloId,
@@ -339,7 +339,7 @@ class _$_EstadisticasUltimosPrecios extends _EstadisticasUltimosPrecios {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EstadisticasUltimosPrecios &&
+            other is _$EstadisticasUltimosPreciosImpl &&
             (identical(other.clienteId, clienteId) ||
                 other.clienteId == clienteId) &&
             (identical(other.nombreCliente, nombreCliente) ||
@@ -391,9 +391,9 @@ class _$_EstadisticasUltimosPrecios extends _EstadisticasUltimosPrecios {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EstadisticasUltimosPreciosCopyWith<_$_EstadisticasUltimosPrecios>
-      get copyWith => __$$_EstadisticasUltimosPreciosCopyWithImpl<
-          _$_EstadisticasUltimosPrecios>(this, _$identity);
+  _$$EstadisticasUltimosPreciosImplCopyWith<_$EstadisticasUltimosPreciosImpl>
+      get copyWith => __$$EstadisticasUltimosPreciosImplCopyWithImpl<
+          _$EstadisticasUltimosPreciosImpl>(this, _$identity);
 }
 
 abstract class _EstadisticasUltimosPrecios extends EstadisticasUltimosPrecios {
@@ -412,7 +412,7 @@ abstract class _EstadisticasUltimosPrecios extends EstadisticasUltimosPrecios {
       required final double descuento2,
       required final double descuento3,
       required final DateTime lastUpdated,
-      required final bool deleted}) = _$_EstadisticasUltimosPrecios;
+      required final bool deleted}) = _$EstadisticasUltimosPreciosImpl;
   const _EstadisticasUltimosPrecios._() : super._();
 
   @override
@@ -447,6 +447,6 @@ abstract class _EstadisticasUltimosPrecios extends EstadisticasUltimosPrecios {
   bool get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_EstadisticasUltimosPreciosCopyWith<_$_EstadisticasUltimosPrecios>
+  _$$EstadisticasUltimosPreciosImplCopyWith<_$EstadisticasUltimosPreciosImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

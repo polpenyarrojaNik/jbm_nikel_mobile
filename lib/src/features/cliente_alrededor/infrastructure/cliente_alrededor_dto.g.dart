@@ -6,9 +6,9 @@ part of 'cliente_alrededor_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ClienteAlrededorDTO _$$_ClienteAlrededorDTOFromJson(
+_$ClienteAlrededorDTOImpl _$$ClienteAlrededorDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_ClienteAlrededorDTO(
+    _$ClienteAlrededorDTOImpl(
       markerId: json['markerId'] as String,
       clienteId: json['clienteId'] as String,
       nombre: json['nombre'] as String,
@@ -27,8 +27,8 @@ _$_ClienteAlrededorDTO _$$_ClienteAlrededorDTOFromJson(
       porcentajeAbonos: (json['porcentajeAbonos'] as num).toDouble(),
     );
 
-Map<String, dynamic> _$$_ClienteAlrededorDTOToJson(
-        _$_ClienteAlrededorDTO instance) =>
+Map<String, dynamic> _$$ClienteAlrededorDTOImplToJson(
+        _$ClienteAlrededorDTOImpl instance) =>
     <String, dynamic>{
       'markerId': instance.markerId,
       'clienteId': instance.clienteId,

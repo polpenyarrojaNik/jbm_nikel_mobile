@@ -200,11 +200,11 @@ class _$MetodoDeCobroDTOCopyWithImpl<$Res, $Val extends MetodoDeCobroDTO>
 }
 
 /// @nodoc
-abstract class _$$_MetodoDeCobroDTOCopyWith<$Res>
+abstract class _$$MetodoDeCobroDTOImplCopyWith<$Res>
     implements $MetodoDeCobroDTOCopyWith<$Res> {
-  factory _$$_MetodoDeCobroDTOCopyWith(
-          _$_MetodoDeCobroDTO value, $Res Function(_$_MetodoDeCobroDTO) then) =
-      __$$_MetodoDeCobroDTOCopyWithImpl<$Res>;
+  factory _$$MetodoDeCobroDTOImplCopyWith(_$MetodoDeCobroDTOImpl value,
+          $Res Function(_$MetodoDeCobroDTOImpl) then) =
+      __$$MetodoDeCobroDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -229,11 +229,11 @@ abstract class _$$_MetodoDeCobroDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MetodoDeCobroDTOCopyWithImpl<$Res>
-    extends _$MetodoDeCobroDTOCopyWithImpl<$Res, _$_MetodoDeCobroDTO>
-    implements _$$_MetodoDeCobroDTOCopyWith<$Res> {
-  __$$_MetodoDeCobroDTOCopyWithImpl(
-      _$_MetodoDeCobroDTO _value, $Res Function(_$_MetodoDeCobroDTO) _then)
+class __$$MetodoDeCobroDTOImplCopyWithImpl<$Res>
+    extends _$MetodoDeCobroDTOCopyWithImpl<$Res, _$MetodoDeCobroDTOImpl>
+    implements _$$MetodoDeCobroDTOImplCopyWith<$Res> {
+  __$$MetodoDeCobroDTOImplCopyWithImpl(_$MetodoDeCobroDTOImpl _value,
+      $Res Function(_$MetodoDeCobroDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -258,7 +258,7 @@ class __$$_MetodoDeCobroDTOCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_MetodoDeCobroDTO(
+    return _then(_$MetodoDeCobroDTOImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -337,8 +337,8 @@ class __$$_MetodoDeCobroDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MetodoDeCobroDTO extends _MetodoDeCobroDTO {
-  const _$_MetodoDeCobroDTO(
+class _$MetodoDeCobroDTOImpl extends _MetodoDeCobroDTO {
+  const _$MetodoDeCobroDTOImpl(
       {@JsonKey(name: 'METODO_COBRO_ID') required this.id,
       @JsonKey(name: 'DESCRIPCION_ES') required this.descripcionES,
       @JsonKey(name: 'DESCRIPCION_EN') this.descripcionEN,
@@ -359,8 +359,8 @@ class _$_MetodoDeCobroDTO extends _MetodoDeCobroDTO {
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
-  factory _$_MetodoDeCobroDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_MetodoDeCobroDTOFromJson(json);
+  factory _$MetodoDeCobroDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MetodoDeCobroDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'METODO_COBRO_ID')
@@ -426,7 +426,7 @@ class _$_MetodoDeCobroDTO extends _MetodoDeCobroDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MetodoDeCobroDTO &&
+            other is _$MetodoDeCobroDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.descripcionES, descripcionES) ||
                 other.descripcionES == descripcionES) &&
@@ -489,12 +489,13 @@ class _$_MetodoDeCobroDTO extends _MetodoDeCobroDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MetodoDeCobroDTOCopyWith<_$_MetodoDeCobroDTO> get copyWith =>
-      __$$_MetodoDeCobroDTOCopyWithImpl<_$_MetodoDeCobroDTO>(this, _$identity);
+  _$$MetodoDeCobroDTOImplCopyWith<_$MetodoDeCobroDTOImpl> get copyWith =>
+      __$$MetodoDeCobroDTOImplCopyWithImpl<_$MetodoDeCobroDTOImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MetodoDeCobroDTOToJson(
+    return _$$MetodoDeCobroDTOImplToJson(
       this,
     );
   }
@@ -519,11 +520,11 @@ abstract class _MetodoDeCobroDTO extends MetodoDeCobroDTO {
       @JsonKey(name: 'DESCRIPCION_CN') final String? descripcionCN,
       @JsonKey(name: 'DESCRIPCION_EL') final String? descripcionEL,
       @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') final String deleted}) = _$_MetodoDeCobroDTO;
+      @JsonKey(name: 'DELETED') final String deleted}) = _$MetodoDeCobroDTOImpl;
   const _MetodoDeCobroDTO._() : super._();
 
   factory _MetodoDeCobroDTO.fromJson(Map<String, dynamic> json) =
-      _$_MetodoDeCobroDTO.fromJson;
+      _$MetodoDeCobroDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'METODO_COBRO_ID')
@@ -581,6 +582,6 @@ abstract class _MetodoDeCobroDTO extends MetodoDeCobroDTO {
   String get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_MetodoDeCobroDTOCopyWith<_$_MetodoDeCobroDTO> get copyWith =>
+  _$$MetodoDeCobroDTOImplCopyWith<_$MetodoDeCobroDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -155,11 +155,11 @@ class _$DevolucionLineaCopyWithImpl<$Res, $Val extends DevolucionLinea>
 }
 
 /// @nodoc
-abstract class _$$_DevolucionLineaCopyWith<$Res>
+abstract class _$$DevolucionLineaImplCopyWith<$Res>
     implements $DevolucionLineaCopyWith<$Res> {
-  factory _$$_DevolucionLineaCopyWith(
-          _$_DevolucionLinea value, $Res Function(_$_DevolucionLinea) then) =
-      __$$_DevolucionLineaCopyWithImpl<$Res>;
+  factory _$$DevolucionLineaImplCopyWith(_$DevolucionLineaImpl value,
+          $Res Function(_$DevolucionLineaImpl) then) =
+      __$$DevolucionLineaImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -182,11 +182,11 @@ abstract class _$$_DevolucionLineaCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DevolucionLineaCopyWithImpl<$Res>
-    extends _$DevolucionLineaCopyWithImpl<$Res, _$_DevolucionLinea>
-    implements _$$_DevolucionLineaCopyWith<$Res> {
-  __$$_DevolucionLineaCopyWithImpl(
-      _$_DevolucionLinea _value, $Res Function(_$_DevolucionLinea) _then)
+class __$$DevolucionLineaImplCopyWithImpl<$Res>
+    extends _$DevolucionLineaCopyWithImpl<$Res, _$DevolucionLineaImpl>
+    implements _$$DevolucionLineaImplCopyWith<$Res> {
+  __$$DevolucionLineaImplCopyWithImpl(
+      _$DevolucionLineaImpl _value, $Res Function(_$DevolucionLineaImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -204,7 +204,7 @@ class __$$_DevolucionLineaCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_DevolucionLinea(
+    return _then(_$DevolucionLineaImpl(
       empresaId: null == empresaId
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
@@ -255,8 +255,8 @@ class __$$_DevolucionLineaCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DevolucionLinea extends _DevolucionLinea {
-  const _$_DevolucionLinea(
+class _$DevolucionLineaImpl extends _DevolucionLinea {
+  const _$DevolucionLineaImpl(
       {required this.empresaId,
       required this.devolucionId,
       required this.articuloId,
@@ -302,7 +302,7 @@ class _$_DevolucionLinea extends _DevolucionLinea {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DevolucionLinea &&
+            other is _$DevolucionLineaImpl &&
             (identical(other.empresaId, empresaId) ||
                 other.empresaId == empresaId) &&
             (identical(other.devolucionId, devolucionId) ||
@@ -344,8 +344,9 @@ class _$_DevolucionLinea extends _DevolucionLinea {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DevolucionLineaCopyWith<_$_DevolucionLinea> get copyWith =>
-      __$$_DevolucionLineaCopyWithImpl<_$_DevolucionLinea>(this, _$identity);
+  _$$DevolucionLineaImplCopyWith<_$DevolucionLineaImpl> get copyWith =>
+      __$$DevolucionLineaImplCopyWithImpl<_$DevolucionLineaImpl>(
+          this, _$identity);
 }
 
 abstract class _DevolucionLinea extends DevolucionLinea {
@@ -360,7 +361,7 @@ abstract class _DevolucionLinea extends DevolucionLinea {
       final DevolucionEstado? devolucionEstado,
       final String? observaciones,
       required final DateTime lastUpdated,
-      required final bool deleted}) = _$_DevolucionLinea;
+      required final bool deleted}) = _$DevolucionLineaImpl;
   const _DevolucionLinea._() : super._();
 
   @override
@@ -387,6 +388,6 @@ abstract class _DevolucionLinea extends DevolucionLinea {
   bool get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_DevolucionLineaCopyWith<_$_DevolucionLinea> get copyWith =>
+  _$$DevolucionLineaImplCopyWith<_$DevolucionLineaImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

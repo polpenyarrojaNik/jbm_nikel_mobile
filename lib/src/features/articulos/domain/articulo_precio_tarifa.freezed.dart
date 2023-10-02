@@ -115,11 +115,11 @@ class _$ArticuloPrecioTarifaCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ArticuloPrecioTarifaCopyWith<$Res>
+abstract class _$$ArticuloPrecioTarifaImplCopyWith<$Res>
     implements $ArticuloPrecioTarifaCopyWith<$Res> {
-  factory _$$_ArticuloPrecioTarifaCopyWith(_$_ArticuloPrecioTarifa value,
-          $Res Function(_$_ArticuloPrecioTarifa) then) =
-      __$$_ArticuloPrecioTarifaCopyWithImpl<$Res>;
+  factory _$$ArticuloPrecioTarifaImplCopyWith(_$ArticuloPrecioTarifaImpl value,
+          $Res Function(_$ArticuloPrecioTarifaImpl) then) =
+      __$$ArticuloPrecioTarifaImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -135,11 +135,11 @@ abstract class _$$_ArticuloPrecioTarifaCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ArticuloPrecioTarifaCopyWithImpl<$Res>
-    extends _$ArticuloPrecioTarifaCopyWithImpl<$Res, _$_ArticuloPrecioTarifa>
-    implements _$$_ArticuloPrecioTarifaCopyWith<$Res> {
-  __$$_ArticuloPrecioTarifaCopyWithImpl(_$_ArticuloPrecioTarifa _value,
-      $Res Function(_$_ArticuloPrecioTarifa) _then)
+class __$$ArticuloPrecioTarifaImplCopyWithImpl<$Res>
+    extends _$ArticuloPrecioTarifaCopyWithImpl<$Res, _$ArticuloPrecioTarifaImpl>
+    implements _$$ArticuloPrecioTarifaImplCopyWith<$Res> {
+  __$$ArticuloPrecioTarifaImplCopyWithImpl(_$ArticuloPrecioTarifaImpl _value,
+      $Res Function(_$ArticuloPrecioTarifaImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -155,7 +155,7 @@ class __$$_ArticuloPrecioTarifaCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_ArticuloPrecioTarifa(
+    return _then(_$ArticuloPrecioTarifaImpl(
       articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
@@ -198,8 +198,8 @@ class __$$_ArticuloPrecioTarifaCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ArticuloPrecioTarifa extends _ArticuloPrecioTarifa {
-  const _$_ArticuloPrecioTarifa(
+class _$ArticuloPrecioTarifaImpl extends _ArticuloPrecioTarifa {
+  const _$ArticuloPrecioTarifaImpl(
       {required this.articuloId,
       required this.tarifaId,
       this.tarifaDescripcion,
@@ -239,7 +239,7 @@ class _$_ArticuloPrecioTarifa extends _ArticuloPrecioTarifa {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ArticuloPrecioTarifa &&
+            other is _$ArticuloPrecioTarifaImpl &&
             (identical(other.articuloId, articuloId) ||
                 other.articuloId == articuloId) &&
             (identical(other.tarifaId, tarifaId) ||
@@ -274,9 +274,10 @@ class _$_ArticuloPrecioTarifa extends _ArticuloPrecioTarifa {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArticuloPrecioTarifaCopyWith<_$_ArticuloPrecioTarifa> get copyWith =>
-      __$$_ArticuloPrecioTarifaCopyWithImpl<_$_ArticuloPrecioTarifa>(
-          this, _$identity);
+  _$$ArticuloPrecioTarifaImplCopyWith<_$ArticuloPrecioTarifaImpl>
+      get copyWith =>
+          __$$ArticuloPrecioTarifaImplCopyWithImpl<_$ArticuloPrecioTarifaImpl>(
+              this, _$identity);
 }
 
 abstract class _ArticuloPrecioTarifa extends ArticuloPrecioTarifa {
@@ -289,7 +290,7 @@ abstract class _ArticuloPrecioTarifa extends ArticuloPrecioTarifa {
       required final String divisaId,
       required final int tipoPrecio,
       required final DateTime lastUpdated,
-      required final bool deleted}) = _$_ArticuloPrecioTarifa;
+      required final bool deleted}) = _$ArticuloPrecioTarifaImpl;
   const _ArticuloPrecioTarifa._() : super._();
 
   @override
@@ -312,6 +313,6 @@ abstract class _ArticuloPrecioTarifa extends ArticuloPrecioTarifa {
   bool get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_ArticuloPrecioTarifaCopyWith<_$_ArticuloPrecioTarifa> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ArticuloPrecioTarifaImplCopyWith<_$ArticuloPrecioTarifaImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

@@ -6,9 +6,9 @@ part of 'pedido_venta_local_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PedidoVentaLocalDTO _$$_PedidoVentaLocalDTOFromJson(
+_$PedidoVentaLocalDTOImpl _$$PedidoVentaLocalDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_PedidoVentaLocalDTO(
+    _$PedidoVentaLocalDTOImpl(
       usuarioId: json['USUARIO_ID'] as String?,
       pedidoId: json['PEDIDO_ID'] as String?,
       empresaId: json['EMPRESA_ID'] as String?,
@@ -38,8 +38,8 @@ _$_PedidoVentaLocalDTO _$$_PedidoVentaLocalDTOFromJson(
       errorSyncMessage: json['ERROR_SYNC'] as String?,
     );
 
-Map<String, dynamic> _$$_PedidoVentaLocalDTOToJson(
-        _$_PedidoVentaLocalDTO instance) =>
+Map<String, dynamic> _$$PedidoVentaLocalDTOImplToJson(
+        _$PedidoVentaLocalDTOImpl instance) =>
     <String, dynamic>{
       'USUARIO_ID': instance.usuarioId,
       'PEDIDO_ID': instance.pedidoId,

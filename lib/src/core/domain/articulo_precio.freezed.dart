@@ -103,11 +103,11 @@ class _$ArticuloPrecioCopyWithImpl<$Res, $Val extends ArticuloPrecio>
 }
 
 /// @nodoc
-abstract class _$$_ArticuloPrecioCopyWith<$Res>
+abstract class _$$ArticuloPrecioImplCopyWith<$Res>
     implements $ArticuloPrecioCopyWith<$Res> {
-  factory _$$_ArticuloPrecioCopyWith(
-          _$_ArticuloPrecio value, $Res Function(_$_ArticuloPrecio) then) =
-      __$$_ArticuloPrecioCopyWithImpl<$Res>;
+  factory _$$ArticuloPrecioImplCopyWith(_$ArticuloPrecioImpl value,
+          $Res Function(_$ArticuloPrecioImpl) then) =
+      __$$ArticuloPrecioImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -123,11 +123,11 @@ abstract class _$$_ArticuloPrecioCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ArticuloPrecioCopyWithImpl<$Res>
-    extends _$ArticuloPrecioCopyWithImpl<$Res, _$_ArticuloPrecio>
-    implements _$$_ArticuloPrecioCopyWith<$Res> {
-  __$$_ArticuloPrecioCopyWithImpl(
-      _$_ArticuloPrecio _value, $Res Function(_$_ArticuloPrecio) _then)
+class __$$ArticuloPrecioImplCopyWithImpl<$Res>
+    extends _$ArticuloPrecioCopyWithImpl<$Res, _$ArticuloPrecioImpl>
+    implements _$$ArticuloPrecioImplCopyWith<$Res> {
+  __$$ArticuloPrecioImplCopyWithImpl(
+      _$ArticuloPrecioImpl _value, $Res Function(_$ArticuloPrecioImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -140,7 +140,7 @@ class __$$_ArticuloPrecioCopyWithImpl<$Res>
     Object? descuento3 = null,
     Object? iva = null,
   }) {
-    return _then(_$_ArticuloPrecio(
+    return _then(_$ArticuloPrecioImpl(
       precio: null == precio
           ? _value.precio
           : precio // ignore: cast_nullable_to_non_nullable
@@ -171,8 +171,8 @@ class __$$_ArticuloPrecioCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ArticuloPrecio extends _ArticuloPrecio {
-  const _$_ArticuloPrecio(
+class _$ArticuloPrecioImpl extends _ArticuloPrecio {
+  const _$ArticuloPrecioImpl(
       {required this.precio,
       required this.divisaId,
       required this.descuento1,
@@ -203,7 +203,7 @@ class _$_ArticuloPrecio extends _ArticuloPrecio {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ArticuloPrecio &&
+            other is _$ArticuloPrecioImpl &&
             (identical(other.precio, precio) || other.precio == precio) &&
             (identical(other.divisaId, divisaId) ||
                 other.divisaId == divisaId) &&
@@ -223,8 +223,9 @@ class _$_ArticuloPrecio extends _ArticuloPrecio {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArticuloPrecioCopyWith<_$_ArticuloPrecio> get copyWith =>
-      __$$_ArticuloPrecioCopyWithImpl<_$_ArticuloPrecio>(this, _$identity);
+  _$$ArticuloPrecioImplCopyWith<_$ArticuloPrecioImpl> get copyWith =>
+      __$$ArticuloPrecioImplCopyWithImpl<_$ArticuloPrecioImpl>(
+          this, _$identity);
 }
 
 abstract class _ArticuloPrecio extends ArticuloPrecio {
@@ -234,7 +235,7 @@ abstract class _ArticuloPrecio extends ArticuloPrecio {
       required final double descuento1,
       required final double descuento2,
       required final double descuento3,
-      required final double iva}) = _$_ArticuloPrecio;
+      required final double iva}) = _$ArticuloPrecioImpl;
   const _ArticuloPrecio._() : super._();
 
   @override
@@ -251,6 +252,6 @@ abstract class _ArticuloPrecio extends ArticuloPrecio {
   double get iva;
   @override
   @JsonKey(ignore: true)
-  _$$_ArticuloPrecioCopyWith<_$_ArticuloPrecio> get copyWith =>
+  _$$ArticuloPrecioImplCopyWith<_$ArticuloPrecioImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

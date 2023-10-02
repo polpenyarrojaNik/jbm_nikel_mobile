@@ -120,11 +120,11 @@ class _$DescuentoGeneralDTOCopyWithImpl<$Res, $Val extends DescuentoGeneralDTO>
 }
 
 /// @nodoc
-abstract class _$$_DescuentoGeneralDTOCopyWith<$Res>
+abstract class _$$DescuentoGeneralDTOImplCopyWith<$Res>
     implements $DescuentoGeneralDTOCopyWith<$Res> {
-  factory _$$_DescuentoGeneralDTOCopyWith(_$_DescuentoGeneralDTO value,
-          $Res Function(_$_DescuentoGeneralDTO) then) =
-      __$$_DescuentoGeneralDTOCopyWithImpl<$Res>;
+  factory _$$DescuentoGeneralDTOImplCopyWith(_$DescuentoGeneralDTOImpl value,
+          $Res Function(_$DescuentoGeneralDTOImpl) then) =
+      __$$DescuentoGeneralDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -139,11 +139,11 @@ abstract class _$$_DescuentoGeneralDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DescuentoGeneralDTOCopyWithImpl<$Res>
-    extends _$DescuentoGeneralDTOCopyWithImpl<$Res, _$_DescuentoGeneralDTO>
-    implements _$$_DescuentoGeneralDTOCopyWith<$Res> {
-  __$$_DescuentoGeneralDTOCopyWithImpl(_$_DescuentoGeneralDTO _value,
-      $Res Function(_$_DescuentoGeneralDTO) _then)
+class __$$DescuentoGeneralDTOImplCopyWithImpl<$Res>
+    extends _$DescuentoGeneralDTOCopyWithImpl<$Res, _$DescuentoGeneralDTOImpl>
+    implements _$$DescuentoGeneralDTOImplCopyWith<$Res> {
+  __$$DescuentoGeneralDTOImplCopyWithImpl(_$DescuentoGeneralDTOImpl _value,
+      $Res Function(_$DescuentoGeneralDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -158,7 +158,7 @@ class __$$_DescuentoGeneralDTOCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_DescuentoGeneralDTO(
+    return _then(_$DescuentoGeneralDTOImpl(
       descuentoGeneralId: null == descuentoGeneralId
           ? _value.descuentoGeneralId
           : descuentoGeneralId // ignore: cast_nullable_to_non_nullable
@@ -197,8 +197,8 @@ class __$$_DescuentoGeneralDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_DescuentoGeneralDTO extends _DescuentoGeneralDTO {
-  const _$_DescuentoGeneralDTO(
+class _$DescuentoGeneralDTOImpl extends _DescuentoGeneralDTO {
+  const _$DescuentoGeneralDTOImpl(
       {@JsonKey(name: 'DESCUENTO_GENERAL_ID') required this.descuentoGeneralId,
       @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
       @JsonKey(name: 'FAMILIA_ID') required this.familiaId,
@@ -209,8 +209,8 @@ class _$_DescuentoGeneralDTO extends _DescuentoGeneralDTO {
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
-  factory _$_DescuentoGeneralDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_DescuentoGeneralDTOFromJson(json);
+  factory _$DescuentoGeneralDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DescuentoGeneralDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'DESCUENTO_GENERAL_ID')
@@ -246,7 +246,7 @@ class _$_DescuentoGeneralDTO extends _DescuentoGeneralDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DescuentoGeneralDTO &&
+            other is _$DescuentoGeneralDTOImpl &&
             (identical(other.descuentoGeneralId, descuentoGeneralId) ||
                 other.descuentoGeneralId == descuentoGeneralId) &&
             (identical(other.articuloId, articuloId) ||
@@ -272,13 +272,13 @@ class _$_DescuentoGeneralDTO extends _DescuentoGeneralDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DescuentoGeneralDTOCopyWith<_$_DescuentoGeneralDTO> get copyWith =>
-      __$$_DescuentoGeneralDTOCopyWithImpl<_$_DescuentoGeneralDTO>(
+  _$$DescuentoGeneralDTOImplCopyWith<_$DescuentoGeneralDTOImpl> get copyWith =>
+      __$$DescuentoGeneralDTOImplCopyWithImpl<_$DescuentoGeneralDTOImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DescuentoGeneralDTOToJson(
+    return _$$DescuentoGeneralDTOImplToJson(
       this,
     );
   }
@@ -286,19 +286,20 @@ class _$_DescuentoGeneralDTO extends _DescuentoGeneralDTO {
 
 abstract class _DescuentoGeneralDTO extends DescuentoGeneralDTO {
   const factory _DescuentoGeneralDTO(
-      {@JsonKey(name: 'DESCUENTO_GENERAL_ID')
-      required final String descuentoGeneralId,
-      @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
-      @JsonKey(name: 'FAMILIA_ID') required final String familiaId,
-      @JsonKey(name: 'SUBFAMILIA_ID') required final String subfamiliaId,
-      @JsonKey(name: 'CANTIDAD_DESDE') required final int cantidadDesde,
-      @JsonKey(name: 'DESCUENTO') required final double descuento,
-      @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') final String deleted}) = _$_DescuentoGeneralDTO;
+          {@JsonKey(name: 'DESCUENTO_GENERAL_ID')
+          required final String descuentoGeneralId,
+          @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
+          @JsonKey(name: 'FAMILIA_ID') required final String familiaId,
+          @JsonKey(name: 'SUBFAMILIA_ID') required final String subfamiliaId,
+          @JsonKey(name: 'CANTIDAD_DESDE') required final int cantidadDesde,
+          @JsonKey(name: 'DESCUENTO') required final double descuento,
+          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+          @JsonKey(name: 'DELETED') final String deleted}) =
+      _$DescuentoGeneralDTOImpl;
   const _DescuentoGeneralDTO._() : super._();
 
   factory _DescuentoGeneralDTO.fromJson(Map<String, dynamic> json) =
-      _$_DescuentoGeneralDTO.fromJson;
+      _$DescuentoGeneralDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'DESCUENTO_GENERAL_ID')
@@ -326,6 +327,6 @@ abstract class _DescuentoGeneralDTO extends DescuentoGeneralDTO {
   String get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_DescuentoGeneralDTOCopyWith<_$_DescuentoGeneralDTO> get copyWith =>
+  _$$DescuentoGeneralDTOImplCopyWith<_$DescuentoGeneralDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

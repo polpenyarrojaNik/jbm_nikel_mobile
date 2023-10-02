@@ -149,11 +149,11 @@ class _$ClienteContactoImpCopyWithImpl<$Res, $Val extends ClienteContactoImp>
 }
 
 /// @nodoc
-abstract class _$$_ClienteContactoImpCopyWith<$Res>
+abstract class _$$ClienteContactoImpImplCopyWith<$Res>
     implements $ClienteContactoImpCopyWith<$Res> {
-  factory _$$_ClienteContactoImpCopyWith(_$_ClienteContactoImp value,
-          $Res Function(_$_ClienteContactoImp) then) =
-      __$$_ClienteContactoImpCopyWithImpl<$Res>;
+  factory _$$ClienteContactoImpImplCopyWith(_$ClienteContactoImpImpl value,
+          $Res Function(_$ClienteContactoImpImpl) then) =
+      __$$ClienteContactoImpImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -174,11 +174,11 @@ abstract class _$$_ClienteContactoImpCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ClienteContactoImpCopyWithImpl<$Res>
-    extends _$ClienteContactoImpCopyWithImpl<$Res, _$_ClienteContactoImp>
-    implements _$$_ClienteContactoImpCopyWith<$Res> {
-  __$$_ClienteContactoImpCopyWithImpl(
-      _$_ClienteContactoImp _value, $Res Function(_$_ClienteContactoImp) _then)
+class __$$ClienteContactoImpImplCopyWithImpl<$Res>
+    extends _$ClienteContactoImpCopyWithImpl<$Res, _$ClienteContactoImpImpl>
+    implements _$$ClienteContactoImpImplCopyWith<$Res> {
+  __$$ClienteContactoImpImplCopyWithImpl(_$ClienteContactoImpImpl _value,
+      $Res Function(_$ClienteContactoImpImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -199,7 +199,7 @@ class __$$_ClienteContactoImpCopyWithImpl<$Res>
     Object? enviado = null,
     Object? borrar = null,
   }) {
-    return _then(_$_ClienteContactoImp(
+    return _then(_$ClienteContactoImpImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -262,8 +262,8 @@ class __$$_ClienteContactoImpCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ClienteContactoImp extends _ClienteContactoImp {
-  const _$_ClienteContactoImp(
+class _$ClienteContactoImpImpl extends _ClienteContactoImp {
+  const _$ClienteContactoImpImpl(
       {required this.id,
       required this.fecha,
       required this.usuarioId,
@@ -318,7 +318,7 @@ class _$_ClienteContactoImp extends _ClienteContactoImp {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClienteContactoImp &&
+            other is _$ClienteContactoImpImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.fecha, fecha) || other.fecha == fecha) &&
             (identical(other.usuarioId, usuarioId) ||
@@ -364,8 +364,8 @@ class _$_ClienteContactoImp extends _ClienteContactoImp {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClienteContactoImpCopyWith<_$_ClienteContactoImp> get copyWith =>
-      __$$_ClienteContactoImpCopyWithImpl<_$_ClienteContactoImp>(
+  _$$ClienteContactoImpImplCopyWith<_$ClienteContactoImpImpl> get copyWith =>
+      __$$ClienteContactoImpImplCopyWithImpl<_$ClienteContactoImpImpl>(
           this, _$identity);
 }
 
@@ -384,7 +384,7 @@ abstract class _ClienteContactoImp extends ClienteContactoImp {
       final String? telefono2,
       final String? email,
       required final bool enviado,
-      required final bool borrar}) = _$_ClienteContactoImp;
+      required final bool borrar}) = _$ClienteContactoImpImpl;
   const _ClienteContactoImp._() : super._();
 
   @override
@@ -417,6 +417,6 @@ abstract class _ClienteContactoImp extends ClienteContactoImp {
   bool get borrar;
   @override
   @JsonKey(ignore: true)
-  _$$_ClienteContactoImpCopyWith<_$_ClienteContactoImp> get copyWith =>
+  _$$ClienteContactoImpImplCopyWith<_$ClienteContactoImpImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

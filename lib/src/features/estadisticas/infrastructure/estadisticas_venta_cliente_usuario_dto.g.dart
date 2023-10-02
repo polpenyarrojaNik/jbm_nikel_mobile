@@ -6,9 +6,10 @@ part of 'estadisticas_venta_cliente_usuario_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_EstadisticasVentaClienteUsuarioDTO
-    _$$_EstadisticasVentaClienteUsuarioDTOFromJson(Map<String, dynamic> json) =>
-        _$_EstadisticasVentaClienteUsuarioDTO(
+_$EstadisticasVentaClienteUsuarioDTOImpl
+    _$$EstadisticasVentaClienteUsuarioDTOImplFromJson(
+            Map<String, dynamic> json) =>
+        _$EstadisticasVentaClienteUsuarioDTOImpl(
           anyo: (json['ANYO'] as num).toDouble(),
           mes: (json['MES'] as num).toDouble(),
           clienteId: json['CLIENTE_ID'] as String,
@@ -20,8 +21,8 @@ _$_EstadisticasVentaClienteUsuarioDTO
           deleted: json['DELETED'] as String? ?? 'N',
         );
 
-Map<String, dynamic> _$$_EstadisticasVentaClienteUsuarioDTOToJson(
-        _$_EstadisticasVentaClienteUsuarioDTO instance) =>
+Map<String, dynamic> _$$EstadisticasVentaClienteUsuarioDTOImplToJson(
+        _$EstadisticasVentaClienteUsuarioDTOImpl instance) =>
     <String, dynamic>{
       'ANYO': instance.anyo,
       'MES': instance.mes,

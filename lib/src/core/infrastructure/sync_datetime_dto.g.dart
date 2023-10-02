@@ -6,8 +6,9 @@ part of 'sync_datetime_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SyncDateTimeDTO _$$_SyncDateTimeDTOFromJson(Map<String, dynamic> json) =>
-    _$_SyncDateTimeDTO(
+_$SyncDateTimeDTOImpl _$$SyncDateTimeDTOImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SyncDateTimeDTOImpl(
       id: json['ID'] as int,
       dbSchemaVersion: json['DB_SCHEMA_VERSION'] as int,
       articuloUltimaSync:
@@ -17,7 +18,8 @@ _$_SyncDateTimeDTO _$$_SyncDateTimeDTOFromJson(Map<String, dynamic> json) =>
       visitaUltimaSync: DateTime.parse(json['VISITA_ULTIMA_SYNC'] as String),
     );
 
-Map<String, dynamic> _$$_SyncDateTimeDTOToJson(_$_SyncDateTimeDTO instance) =>
+Map<String, dynamic> _$$SyncDateTimeDTOImplToJson(
+        _$SyncDateTimeDTOImpl instance) =>
     <String, dynamic>{
       'ID': instance.id,
       'DB_SCHEMA_VERSION': instance.dbSchemaVersion,

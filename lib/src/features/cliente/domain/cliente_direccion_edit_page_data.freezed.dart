@@ -83,12 +83,12 @@ class _$ClienteDireccionEditPageDataCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ClienteDireccionEditPageDataCopyWith<$Res>
+abstract class _$$ClienteDireccionEditPageDataImplCopyWith<$Res>
     implements $ClienteDireccionEditPageDataCopyWith<$Res> {
-  factory _$$_ClienteDireccionEditPageDataCopyWith(
-          _$_ClienteDireccionEditPageData value,
-          $Res Function(_$_ClienteDireccionEditPageData) then) =
-      __$$_ClienteDireccionEditPageDataCopyWithImpl<$Res>;
+  factory _$$ClienteDireccionEditPageDataImplCopyWith(
+          _$ClienteDireccionEditPageDataImpl value,
+          $Res Function(_$ClienteDireccionEditPageDataImpl) then) =
+      __$$ClienteDireccionEditPageDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({ClienteDireccion? clienteDireccion, bool isSent, Object? error});
@@ -98,13 +98,13 @@ abstract class _$$_ClienteDireccionEditPageDataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ClienteDireccionEditPageDataCopyWithImpl<$Res>
+class __$$ClienteDireccionEditPageDataImplCopyWithImpl<$Res>
     extends _$ClienteDireccionEditPageDataCopyWithImpl<$Res,
-        _$_ClienteDireccionEditPageData>
-    implements _$$_ClienteDireccionEditPageDataCopyWith<$Res> {
-  __$$_ClienteDireccionEditPageDataCopyWithImpl(
-      _$_ClienteDireccionEditPageData _value,
-      $Res Function(_$_ClienteDireccionEditPageData) _then)
+        _$ClienteDireccionEditPageDataImpl>
+    implements _$$ClienteDireccionEditPageDataImplCopyWith<$Res> {
+  __$$ClienteDireccionEditPageDataImplCopyWithImpl(
+      _$ClienteDireccionEditPageDataImpl _value,
+      $Res Function(_$ClienteDireccionEditPageDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -114,7 +114,7 @@ class __$$_ClienteDireccionEditPageDataCopyWithImpl<$Res>
     Object? isSent = null,
     Object? error = freezed,
   }) {
-    return _then(_$_ClienteDireccionEditPageData(
+    return _then(_$ClienteDireccionEditPageDataImpl(
       clienteDireccion: freezed == clienteDireccion
           ? _value.clienteDireccion
           : clienteDireccion // ignore: cast_nullable_to_non_nullable
@@ -130,8 +130,8 @@ class __$$_ClienteDireccionEditPageDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ClienteDireccionEditPageData extends _ClienteDireccionEditPageData {
-  const _$_ClienteDireccionEditPageData(
+class _$ClienteDireccionEditPageDataImpl extends _ClienteDireccionEditPageData {
+  const _$ClienteDireccionEditPageDataImpl(
       {required this.clienteDireccion, required this.isSent, this.error})
       : super._();
 
@@ -151,7 +151,7 @@ class _$_ClienteDireccionEditPageData extends _ClienteDireccionEditPageData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClienteDireccionEditPageData &&
+            other is _$ClienteDireccionEditPageDataImpl &&
             (identical(other.clienteDireccion, clienteDireccion) ||
                 other.clienteDireccion == clienteDireccion) &&
             (identical(other.isSent, isSent) || other.isSent == isSent) &&
@@ -165,9 +165,10 @@ class _$_ClienteDireccionEditPageData extends _ClienteDireccionEditPageData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClienteDireccionEditPageDataCopyWith<_$_ClienteDireccionEditPageData>
-      get copyWith => __$$_ClienteDireccionEditPageDataCopyWithImpl<
-          _$_ClienteDireccionEditPageData>(this, _$identity);
+  _$$ClienteDireccionEditPageDataImplCopyWith<
+          _$ClienteDireccionEditPageDataImpl>
+      get copyWith => __$$ClienteDireccionEditPageDataImplCopyWithImpl<
+          _$ClienteDireccionEditPageDataImpl>(this, _$identity);
 }
 
 abstract class _ClienteDireccionEditPageData
@@ -175,7 +176,7 @@ abstract class _ClienteDireccionEditPageData
   const factory _ClienteDireccionEditPageData(
       {required final ClienteDireccion? clienteDireccion,
       required final bool isSent,
-      final Object? error}) = _$_ClienteDireccionEditPageData;
+      final Object? error}) = _$ClienteDireccionEditPageDataImpl;
   const _ClienteDireccionEditPageData._() : super._();
 
   @override
@@ -186,6 +187,7 @@ abstract class _ClienteDireccionEditPageData
   Object? get error;
   @override
   @JsonKey(ignore: true)
-  _$$_ClienteDireccionEditPageDataCopyWith<_$_ClienteDireccionEditPageData>
+  _$$ClienteDireccionEditPageDataImplCopyWith<
+          _$ClienteDireccionEditPageDataImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

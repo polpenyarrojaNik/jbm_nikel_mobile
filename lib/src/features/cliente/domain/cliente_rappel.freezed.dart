@@ -114,11 +114,11 @@ class _$ClienteRappelCopyWithImpl<$Res, $Val extends ClienteRappel>
 }
 
 /// @nodoc
-abstract class _$$_ClienteRappelCopyWith<$Res>
+abstract class _$$ClienteRappelImplCopyWith<$Res>
     implements $ClienteRappelCopyWith<$Res> {
-  factory _$$_ClienteRappelCopyWith(
-          _$_ClienteRappel value, $Res Function(_$_ClienteRappel) then) =
-      __$$_ClienteRappelCopyWithImpl<$Res>;
+  factory _$$ClienteRappelImplCopyWith(
+          _$ClienteRappelImpl value, $Res Function(_$ClienteRappelImpl) then) =
+      __$$ClienteRappelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -134,11 +134,11 @@ abstract class _$$_ClienteRappelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ClienteRappelCopyWithImpl<$Res>
-    extends _$ClienteRappelCopyWithImpl<$Res, _$_ClienteRappel>
-    implements _$$_ClienteRappelCopyWith<$Res> {
-  __$$_ClienteRappelCopyWithImpl(
-      _$_ClienteRappel _value, $Res Function(_$_ClienteRappel) _then)
+class __$$ClienteRappelImplCopyWithImpl<$Res>
+    extends _$ClienteRappelCopyWithImpl<$Res, _$ClienteRappelImpl>
+    implements _$$ClienteRappelImplCopyWith<$Res> {
+  __$$ClienteRappelImplCopyWithImpl(
+      _$ClienteRappelImpl _value, $Res Function(_$ClienteRappelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -154,7 +154,7 @@ class __$$_ClienteRappelCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_ClienteRappel(
+    return _then(_$ClienteRappelImpl(
       clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
@@ -197,8 +197,8 @@ class __$$_ClienteRappelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ClienteRappel extends _ClienteRappel {
-  const _$_ClienteRappel(
+class _$ClienteRappelImpl extends _ClienteRappel {
+  const _$ClienteRappelImpl(
       {required this.clienteId,
       required this.rappelId,
       required this.descripcion,
@@ -238,7 +238,7 @@ class _$_ClienteRappel extends _ClienteRappel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClienteRappel &&
+            other is _$ClienteRappelImpl &&
             (identical(other.clienteId, clienteId) ||
                 other.clienteId == clienteId) &&
             (identical(other.rappelId, rappelId) ||
@@ -264,8 +264,8 @@ class _$_ClienteRappel extends _ClienteRappel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClienteRappelCopyWith<_$_ClienteRappel> get copyWith =>
-      __$$_ClienteRappelCopyWithImpl<_$_ClienteRappel>(this, _$identity);
+  _$$ClienteRappelImplCopyWith<_$ClienteRappelImpl> get copyWith =>
+      __$$ClienteRappelImplCopyWithImpl<_$ClienteRappelImpl>(this, _$identity);
 }
 
 abstract class _ClienteRappel extends ClienteRappel {
@@ -278,7 +278,7 @@ abstract class _ClienteRappel extends ClienteRappel {
       final String? nombreArchivo,
       required final bool firmado,
       required final DateTime lastUpdated,
-      required final bool deleted}) = _$_ClienteRappel;
+      required final bool deleted}) = _$ClienteRappelImpl;
   const _ClienteRappel._() : super._();
 
   @override
@@ -301,6 +301,6 @@ abstract class _ClienteRappel extends ClienteRappel {
   bool get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_ClienteRappelCopyWith<_$_ClienteRappel> get copyWith =>
+  _$$ClienteRappelImplCopyWith<_$ClienteRappelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

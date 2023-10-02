@@ -142,9 +142,10 @@ class _$LogDTOCopyWithImpl<$Res, $Val extends LogDTO>
 }
 
 /// @nodoc
-abstract class _$$_LogDTOCopyWith<$Res> implements $LogDTOCopyWith<$Res> {
-  factory _$$_LogDTOCopyWith(_$_LogDTO value, $Res Function(_$_LogDTO) then) =
-      __$$_LogDTOCopyWithImpl<$Res>;
+abstract class _$$LogDTOImplCopyWith<$Res> implements $LogDTOCopyWith<$Res> {
+  factory _$$LogDTOImplCopyWith(
+          _$LogDTOImpl value, $Res Function(_$LogDTOImpl) then) =
+      __$$LogDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -162,10 +163,11 @@ abstract class _$$_LogDTOCopyWith<$Res> implements $LogDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LogDTOCopyWithImpl<$Res>
-    extends _$LogDTOCopyWithImpl<$Res, _$_LogDTO>
-    implements _$$_LogDTOCopyWith<$Res> {
-  __$$_LogDTOCopyWithImpl(_$_LogDTO _value, $Res Function(_$_LogDTO) _then)
+class __$$LogDTOImplCopyWithImpl<$Res>
+    extends _$LogDTOCopyWithImpl<$Res, _$LogDTOImpl>
+    implements _$$LogDTOImplCopyWith<$Res> {
+  __$$LogDTOImplCopyWithImpl(
+      _$LogDTOImpl _value, $Res Function(_$LogDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -183,7 +185,7 @@ class __$$_LogDTOCopyWithImpl<$Res>
     Object? userName = freezed,
     Object? timestamp = null,
   }) {
-    return _then(_$_LogDTO(
+    return _then(_$LogDTOImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -234,8 +236,8 @@ class __$$_LogDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_LogDTO extends _LogDTO {
-  const _$_LogDTO(
+class _$LogDTOImpl extends _LogDTO {
+  const _$LogDTOImpl(
       {@JsonKey(name: 'ID') required this.id,
       @JsonKey(name: 'LOG_LEVEL') required this.level,
       @JsonKey(name: 'LOG_MESSAGE') required this.message,
@@ -249,8 +251,8 @@ class _$_LogDTO extends _LogDTO {
       @JsonKey(name: 'TIMESTAMP') required this.timestamp})
       : super._();
 
-  factory _$_LogDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_LogDTOFromJson(json);
+  factory _$LogDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LogDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'ID')
@@ -295,7 +297,7 @@ class _$_LogDTO extends _LogDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LogDTO &&
+            other is _$LogDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.level, level) || other.level == level) &&
             (identical(other.message, message) || other.message == message) &&
@@ -322,12 +324,12 @@ class _$_LogDTO extends _LogDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LogDTOCopyWith<_$_LogDTO> get copyWith =>
-      __$$_LogDTOCopyWithImpl<_$_LogDTO>(this, _$identity);
+  _$$LogDTOImplCopyWith<_$LogDTOImpl> get copyWith =>
+      __$$LogDTOImplCopyWithImpl<_$LogDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LogDTOToJson(
+    return _$$LogDTOImplToJson(
       this,
     );
   }
@@ -346,10 +348,10 @@ abstract class _LogDTO extends LogDTO {
           @JsonKey(name: 'USER_EMAIL') final String? userEmail,
           @JsonKey(name: 'USER_NAME') final String? userName,
           @JsonKey(name: 'TIMESTAMP') required final DateTime timestamp}) =
-      _$_LogDTO;
+      _$LogDTOImpl;
   const _LogDTO._() : super._();
 
-  factory _LogDTO.fromJson(Map<String, dynamic> json) = _$_LogDTO.fromJson;
+  factory _LogDTO.fromJson(Map<String, dynamic> json) = _$LogDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'ID')
@@ -386,6 +388,6 @@ abstract class _LogDTO extends LogDTO {
   DateTime get timestamp;
   @override
   @JsonKey(ignore: true)
-  _$$_LogDTOCopyWith<_$_LogDTO> get copyWith =>
+  _$$LogDTOImplCopyWith<_$LogDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

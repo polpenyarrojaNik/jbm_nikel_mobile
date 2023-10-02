@@ -79,11 +79,11 @@ class _$ArticuloDocumentoCopyWithImpl<$Res, $Val extends ArticuloDocumento>
 }
 
 /// @nodoc
-abstract class _$$_ArticuloDocumentoCopyWith<$Res>
+abstract class _$$ArticuloDocumentoImplCopyWith<$Res>
     implements $ArticuloDocumentoCopyWith<$Res> {
-  factory _$$_ArticuloDocumentoCopyWith(_$_ArticuloDocumento value,
-          $Res Function(_$_ArticuloDocumento) then) =
-      __$$_ArticuloDocumentoCopyWithImpl<$Res>;
+  factory _$$ArticuloDocumentoImplCopyWith(_$ArticuloDocumentoImpl value,
+          $Res Function(_$ArticuloDocumentoImpl) then) =
+      __$$ArticuloDocumentoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -94,11 +94,11 @@ abstract class _$$_ArticuloDocumentoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ArticuloDocumentoCopyWithImpl<$Res>
-    extends _$ArticuloDocumentoCopyWithImpl<$Res, _$_ArticuloDocumento>
-    implements _$$_ArticuloDocumentoCopyWith<$Res> {
-  __$$_ArticuloDocumentoCopyWithImpl(
-      _$_ArticuloDocumento _value, $Res Function(_$_ArticuloDocumento) _then)
+class __$$ArticuloDocumentoImplCopyWithImpl<$Res>
+    extends _$ArticuloDocumentoCopyWithImpl<$Res, _$ArticuloDocumentoImpl>
+    implements _$$ArticuloDocumentoImplCopyWith<$Res> {
+  __$$ArticuloDocumentoImplCopyWithImpl(_$ArticuloDocumentoImpl _value,
+      $Res Function(_$ArticuloDocumentoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -109,7 +109,7 @@ class __$$_ArticuloDocumentoCopyWithImpl<$Res>
     Object? idiomaId = null,
     Object? observaciones = freezed,
   }) {
-    return _then(_$_ArticuloDocumento(
+    return _then(_$ArticuloDocumentoImpl(
       articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
@@ -132,8 +132,8 @@ class __$$_ArticuloDocumentoCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ArticuloDocumento extends _ArticuloDocumento {
-  const _$_ArticuloDocumento(
+class _$ArticuloDocumentoImpl extends _ArticuloDocumento {
+  const _$ArticuloDocumentoImpl(
       {required this.articuloId,
       this.nombreArchivo,
       required this.idiomaId,
@@ -158,7 +158,7 @@ class _$_ArticuloDocumento extends _ArticuloDocumento {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ArticuloDocumento &&
+            other is _$ArticuloDocumentoImpl &&
             (identical(other.articuloId, articuloId) ||
                 other.articuloId == articuloId) &&
             (identical(other.nombreArchivo, nombreArchivo) ||
@@ -176,8 +176,8 @@ class _$_ArticuloDocumento extends _ArticuloDocumento {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArticuloDocumentoCopyWith<_$_ArticuloDocumento> get copyWith =>
-      __$$_ArticuloDocumentoCopyWithImpl<_$_ArticuloDocumento>(
+  _$$ArticuloDocumentoImplCopyWith<_$ArticuloDocumentoImpl> get copyWith =>
+      __$$ArticuloDocumentoImplCopyWithImpl<_$ArticuloDocumentoImpl>(
           this, _$identity);
 }
 
@@ -186,7 +186,7 @@ abstract class _ArticuloDocumento extends ArticuloDocumento {
       {required final String articuloId,
       final String? nombreArchivo,
       required final String idiomaId,
-      final String? observaciones}) = _$_ArticuloDocumento;
+      final String? observaciones}) = _$ArticuloDocumentoImpl;
   const _ArticuloDocumento._() : super._();
 
   @override
@@ -199,6 +199,6 @@ abstract class _ArticuloDocumento extends ArticuloDocumento {
   String? get observaciones;
   @override
   @JsonKey(ignore: true)
-  _$$_ArticuloDocumentoCopyWith<_$_ArticuloDocumento> get copyWith =>
+  _$$ArticuloDocumentoImplCopyWith<_$ArticuloDocumentoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

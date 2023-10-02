@@ -79,11 +79,11 @@ class _$ArticuloTopCopyWithImpl<$Res, $Val extends ArticuloTop>
 }
 
 /// @nodoc
-abstract class _$$_ArticuloTopCopyWith<$Res>
+abstract class _$$ArticuloTopImplCopyWith<$Res>
     implements $ArticuloTopCopyWith<$Res> {
-  factory _$$_ArticuloTopCopyWith(
-          _$_ArticuloTop value, $Res Function(_$_ArticuloTop) then) =
-      __$$_ArticuloTopCopyWithImpl<$Res>;
+  factory _$$ArticuloTopImplCopyWith(
+          _$ArticuloTopImpl value, $Res Function(_$ArticuloTopImpl) then) =
+      __$$ArticuloTopImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -94,11 +94,11 @@ abstract class _$$_ArticuloTopCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ArticuloTopCopyWithImpl<$Res>
-    extends _$ArticuloTopCopyWithImpl<$Res, _$_ArticuloTop>
-    implements _$$_ArticuloTopCopyWith<$Res> {
-  __$$_ArticuloTopCopyWithImpl(
-      _$_ArticuloTop _value, $Res Function(_$_ArticuloTop) _then)
+class __$$ArticuloTopImplCopyWithImpl<$Res>
+    extends _$ArticuloTopCopyWithImpl<$Res, _$ArticuloTopImpl>
+    implements _$$ArticuloTopImplCopyWith<$Res> {
+  __$$ArticuloTopImplCopyWithImpl(
+      _$ArticuloTopImpl _value, $Res Function(_$ArticuloTopImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -109,7 +109,7 @@ class __$$_ArticuloTopCopyWithImpl<$Res>
     Object? ventasTotal = null,
     Object? ventasCliente = null,
   }) {
-    return _then(_$_ArticuloTop(
+    return _then(_$ArticuloTopImpl(
       articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
@@ -132,8 +132,8 @@ class __$$_ArticuloTopCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ArticuloTop extends _ArticuloTop {
-  const _$_ArticuloTop(
+class _$ArticuloTopImpl extends _ArticuloTop {
+  const _$ArticuloTopImpl(
       {required this.articuloId,
       required this.descripcion,
       required this.ventasTotal,
@@ -158,7 +158,7 @@ class _$_ArticuloTop extends _ArticuloTop {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ArticuloTop &&
+            other is _$ArticuloTopImpl &&
             (identical(other.articuloId, articuloId) ||
                 other.articuloId == articuloId) &&
             (identical(other.descripcion, descripcion) ||
@@ -176,8 +176,8 @@ class _$_ArticuloTop extends _ArticuloTop {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArticuloTopCopyWith<_$_ArticuloTop> get copyWith =>
-      __$$_ArticuloTopCopyWithImpl<_$_ArticuloTop>(this, _$identity);
+  _$$ArticuloTopImplCopyWith<_$ArticuloTopImpl> get copyWith =>
+      __$$ArticuloTopImplCopyWithImpl<_$ArticuloTopImpl>(this, _$identity);
 }
 
 abstract class _ArticuloTop extends ArticuloTop {
@@ -185,7 +185,7 @@ abstract class _ArticuloTop extends ArticuloTop {
       {required final String articuloId,
       required final String descripcion,
       required final Money ventasTotal,
-      required final Money ventasCliente}) = _$_ArticuloTop;
+      required final Money ventasCliente}) = _$ArticuloTopImpl;
   const _ArticuloTop._() : super._();
 
   @override
@@ -198,6 +198,6 @@ abstract class _ArticuloTop extends ArticuloTop {
   Money get ventasCliente;
   @override
   @JsonKey(ignore: true)
-  _$$_ArticuloTopCopyWith<_$_ArticuloTop> get copyWith =>
+  _$$ArticuloTopImplCopyWith<_$ArticuloTopImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

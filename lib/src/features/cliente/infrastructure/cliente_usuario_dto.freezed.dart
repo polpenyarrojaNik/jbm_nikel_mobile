@@ -88,11 +88,11 @@ class _$ClienteUsuarioDTOCopyWithImpl<$Res, $Val extends ClienteUsuarioDTO>
 }
 
 /// @nodoc
-abstract class _$$_ClienteUsuarioDTOCopyWith<$Res>
+abstract class _$$ClienteUsuarioDTOImplCopyWith<$Res>
     implements $ClienteUsuarioDTOCopyWith<$Res> {
-  factory _$$_ClienteUsuarioDTOCopyWith(_$_ClienteUsuarioDTO value,
-          $Res Function(_$_ClienteUsuarioDTO) then) =
-      __$$_ClienteUsuarioDTOCopyWithImpl<$Res>;
+  factory _$$ClienteUsuarioDTOImplCopyWith(_$ClienteUsuarioDTOImpl value,
+          $Res Function(_$ClienteUsuarioDTOImpl) then) =
+      __$$ClienteUsuarioDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -103,11 +103,11 @@ abstract class _$$_ClienteUsuarioDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ClienteUsuarioDTOCopyWithImpl<$Res>
-    extends _$ClienteUsuarioDTOCopyWithImpl<$Res, _$_ClienteUsuarioDTO>
-    implements _$$_ClienteUsuarioDTOCopyWith<$Res> {
-  __$$_ClienteUsuarioDTOCopyWithImpl(
-      _$_ClienteUsuarioDTO _value, $Res Function(_$_ClienteUsuarioDTO) _then)
+class __$$ClienteUsuarioDTOImplCopyWithImpl<$Res>
+    extends _$ClienteUsuarioDTOCopyWithImpl<$Res, _$ClienteUsuarioDTOImpl>
+    implements _$$ClienteUsuarioDTOImplCopyWith<$Res> {
+  __$$ClienteUsuarioDTOImplCopyWithImpl(_$ClienteUsuarioDTOImpl _value,
+      $Res Function(_$ClienteUsuarioDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -118,7 +118,7 @@ class __$$_ClienteUsuarioDTOCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_ClienteUsuarioDTO(
+    return _then(_$ClienteUsuarioDTOImpl(
       clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
@@ -141,16 +141,16 @@ class __$$_ClienteUsuarioDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ClienteUsuarioDTO extends _ClienteUsuarioDTO {
-  const _$_ClienteUsuarioDTO(
+class _$ClienteUsuarioDTOImpl extends _ClienteUsuarioDTO {
+  const _$ClienteUsuarioDTOImpl(
       {@JsonKey(name: 'CLIENTE_ID') required this.clienteId,
       @JsonKey(name: 'USUARIO_ID') required this.usuarioId,
       @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
-  factory _$_ClienteUsuarioDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_ClienteUsuarioDTOFromJson(json);
+  factory _$ClienteUsuarioDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ClienteUsuarioDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'CLIENTE_ID')
@@ -174,7 +174,7 @@ class _$_ClienteUsuarioDTO extends _ClienteUsuarioDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClienteUsuarioDTO &&
+            other is _$ClienteUsuarioDTOImpl &&
             (identical(other.clienteId, clienteId) ||
                 other.clienteId == clienteId) &&
             (identical(other.usuarioId, usuarioId) ||
@@ -192,13 +192,13 @@ class _$_ClienteUsuarioDTO extends _ClienteUsuarioDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClienteUsuarioDTOCopyWith<_$_ClienteUsuarioDTO> get copyWith =>
-      __$$_ClienteUsuarioDTOCopyWithImpl<_$_ClienteUsuarioDTO>(
+  _$$ClienteUsuarioDTOImplCopyWith<_$ClienteUsuarioDTOImpl> get copyWith =>
+      __$$ClienteUsuarioDTOImplCopyWithImpl<_$ClienteUsuarioDTOImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ClienteUsuarioDTOToJson(
+    return _$$ClienteUsuarioDTOImplToJson(
       this,
     );
   }
@@ -206,14 +206,15 @@ class _$_ClienteUsuarioDTO extends _ClienteUsuarioDTO {
 
 abstract class _ClienteUsuarioDTO extends ClienteUsuarioDTO {
   const factory _ClienteUsuarioDTO(
-      {@JsonKey(name: 'CLIENTE_ID') required final String clienteId,
-      @JsonKey(name: 'USUARIO_ID') required final String usuarioId,
-      @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') final String deleted}) = _$_ClienteUsuarioDTO;
+          {@JsonKey(name: 'CLIENTE_ID') required final String clienteId,
+          @JsonKey(name: 'USUARIO_ID') required final String usuarioId,
+          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+          @JsonKey(name: 'DELETED') final String deleted}) =
+      _$ClienteUsuarioDTOImpl;
   const _ClienteUsuarioDTO._() : super._();
 
   factory _ClienteUsuarioDTO.fromJson(Map<String, dynamic> json) =
-      _$_ClienteUsuarioDTO.fromJson;
+      _$ClienteUsuarioDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'CLIENTE_ID')
@@ -229,6 +230,6 @@ abstract class _ClienteUsuarioDTO extends ClienteUsuarioDTO {
   String get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_ClienteUsuarioDTOCopyWith<_$_ClienteUsuarioDTO> get copyWith =>
+  _$$ClienteUsuarioDTOImplCopyWith<_$ClienteUsuarioDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

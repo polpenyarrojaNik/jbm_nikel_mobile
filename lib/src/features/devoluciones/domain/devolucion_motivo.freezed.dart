@@ -177,11 +177,11 @@ class _$DevolucionMotivoCopyWithImpl<$Res, $Val extends DevolucionMotivo>
 }
 
 /// @nodoc
-abstract class _$$_DevolucionMotivoCopyWith<$Res>
+abstract class _$$DevolucionMotivoImplCopyWith<$Res>
     implements $DevolucionMotivoCopyWith<$Res> {
-  factory _$$_DevolucionMotivoCopyWith(
-          _$_DevolucionMotivo value, $Res Function(_$_DevolucionMotivo) then) =
-      __$$_DevolucionMotivoCopyWithImpl<$Res>;
+  factory _$$DevolucionMotivoImplCopyWith(_$DevolucionMotivoImpl value,
+          $Res Function(_$DevolucionMotivoImpl) then) =
+      __$$DevolucionMotivoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -206,11 +206,11 @@ abstract class _$$_DevolucionMotivoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DevolucionMotivoCopyWithImpl<$Res>
-    extends _$DevolucionMotivoCopyWithImpl<$Res, _$_DevolucionMotivo>
-    implements _$$_DevolucionMotivoCopyWith<$Res> {
-  __$$_DevolucionMotivoCopyWithImpl(
-      _$_DevolucionMotivo _value, $Res Function(_$_DevolucionMotivo) _then)
+class __$$DevolucionMotivoImplCopyWithImpl<$Res>
+    extends _$DevolucionMotivoCopyWithImpl<$Res, _$DevolucionMotivoImpl>
+    implements _$$DevolucionMotivoImplCopyWith<$Res> {
+  __$$DevolucionMotivoImplCopyWithImpl(_$DevolucionMotivoImpl _value,
+      $Res Function(_$DevolucionMotivoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -235,7 +235,7 @@ class __$$_DevolucionMotivoCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_DevolucionMotivo(
+    return _then(_$DevolucionMotivoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -314,8 +314,8 @@ class __$$_DevolucionMotivoCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DevolucionMotivo extends _DevolucionMotivo {
-  const _$_DevolucionMotivo(
+class _$DevolucionMotivoImpl extends _DevolucionMotivo {
+  const _$DevolucionMotivoImpl(
       {required this.id,
       required this.descripcionES,
       this.descripcionEN,
@@ -382,7 +382,7 @@ class _$_DevolucionMotivo extends _DevolucionMotivo {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DevolucionMotivo &&
+            other is _$DevolucionMotivoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.descripcionES, descripcionES) ||
                 other.descripcionES == descripcionES) &&
@@ -444,8 +444,9 @@ class _$_DevolucionMotivo extends _DevolucionMotivo {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DevolucionMotivoCopyWith<_$_DevolucionMotivo> get copyWith =>
-      __$$_DevolucionMotivoCopyWithImpl<_$_DevolucionMotivo>(this, _$identity);
+  _$$DevolucionMotivoImplCopyWith<_$DevolucionMotivoImpl> get copyWith =>
+      __$$DevolucionMotivoImplCopyWithImpl<_$DevolucionMotivoImpl>(
+          this, _$identity);
 }
 
 abstract class _DevolucionMotivo extends DevolucionMotivo {
@@ -467,7 +468,7 @@ abstract class _DevolucionMotivo extends DevolucionMotivo {
       final String? descripcionCN,
       final String? descripcionEL,
       required final DateTime lastUpdated,
-      required final bool deleted}) = _$_DevolucionMotivo;
+      required final bool deleted}) = _$DevolucionMotivoImpl;
   const _DevolucionMotivo._() : super._();
 
   @override
@@ -508,6 +509,6 @@ abstract class _DevolucionMotivo extends DevolucionMotivo {
   bool get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_DevolucionMotivoCopyWith<_$_DevolucionMotivo> get copyWith =>
+  _$$DevolucionMotivoImplCopyWith<_$DevolucionMotivoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

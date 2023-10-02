@@ -144,11 +144,11 @@ class _$DevolucionLineaDTOCopyWithImpl<$Res, $Val extends DevolucionLineaDTO>
 }
 
 /// @nodoc
-abstract class _$$_DevolucionLineaDTOCopyWith<$Res>
+abstract class _$$DevolucionLineaDTOImplCopyWith<$Res>
     implements $DevolucionLineaDTOCopyWith<$Res> {
-  factory _$$_DevolucionLineaDTOCopyWith(_$_DevolucionLineaDTO value,
-          $Res Function(_$_DevolucionLineaDTO) then) =
-      __$$_DevolucionLineaDTOCopyWithImpl<$Res>;
+  factory _$$DevolucionLineaDTOImplCopyWith(_$DevolucionLineaDTOImpl value,
+          $Res Function(_$DevolucionLineaDTOImpl) then) =
+      __$$DevolucionLineaDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -166,11 +166,11 @@ abstract class _$$_DevolucionLineaDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DevolucionLineaDTOCopyWithImpl<$Res>
-    extends _$DevolucionLineaDTOCopyWithImpl<$Res, _$_DevolucionLineaDTO>
-    implements _$$_DevolucionLineaDTOCopyWith<$Res> {
-  __$$_DevolucionLineaDTOCopyWithImpl(
-      _$_DevolucionLineaDTO _value, $Res Function(_$_DevolucionLineaDTO) _then)
+class __$$DevolucionLineaDTOImplCopyWithImpl<$Res>
+    extends _$DevolucionLineaDTOCopyWithImpl<$Res, _$DevolucionLineaDTOImpl>
+    implements _$$DevolucionLineaDTOImplCopyWith<$Res> {
+  __$$DevolucionLineaDTOImplCopyWithImpl(_$DevolucionLineaDTOImpl _value,
+      $Res Function(_$DevolucionLineaDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -188,7 +188,7 @@ class __$$_DevolucionLineaDTOCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_DevolucionLineaDTO(
+    return _then(_$DevolucionLineaDTOImpl(
       empresaId: null == empresaId
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
@@ -239,8 +239,8 @@ class __$$_DevolucionLineaDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_DevolucionLineaDTO extends _DevolucionLineaDTO {
-  const _$_DevolucionLineaDTO(
+class _$DevolucionLineaDTOImpl extends _DevolucionLineaDTO {
+  const _$DevolucionLineaDTOImpl(
       {@JsonKey(name: 'EMPRESA_ID') required this.empresaId,
       @JsonKey(name: 'DEVOLUCION_ID') required this.devolucionId,
       @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
@@ -254,8 +254,8 @@ class _$_DevolucionLineaDTO extends _DevolucionLineaDTO {
       @JsonKey(name: 'DELETED') required this.deleted})
       : super._();
 
-  factory _$_DevolucionLineaDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_DevolucionLineaDTOFromJson(json);
+  factory _$DevolucionLineaDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DevolucionLineaDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'EMPRESA_ID')
@@ -300,7 +300,7 @@ class _$_DevolucionLineaDTO extends _DevolucionLineaDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DevolucionLineaDTO &&
+            other is _$DevolucionLineaDTOImpl &&
             (identical(other.empresaId, empresaId) ||
                 other.empresaId == empresaId) &&
             (identical(other.devolucionId, devolucionId) ||
@@ -343,13 +343,13 @@ class _$_DevolucionLineaDTO extends _DevolucionLineaDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DevolucionLineaDTOCopyWith<_$_DevolucionLineaDTO> get copyWith =>
-      __$$_DevolucionLineaDTOCopyWithImpl<_$_DevolucionLineaDTO>(
+  _$$DevolucionLineaDTOImplCopyWith<_$DevolucionLineaDTOImpl> get copyWith =>
+      __$$DevolucionLineaDTOImplCopyWithImpl<_$DevolucionLineaDTOImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DevolucionLineaDTOToJson(
+    return _$$DevolucionLineaDTOImplToJson(
       this,
     );
   }
@@ -369,11 +369,11 @@ abstract class _DevolucionLineaDTO extends DevolucionLineaDTO {
       @JsonKey(name: 'OBSERVACIONES') final String? observaciones,
       @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
       @JsonKey(name: 'DELETED')
-      required final String deleted}) = _$_DevolucionLineaDTO;
+      required final String deleted}) = _$DevolucionLineaDTOImpl;
   const _DevolucionLineaDTO._() : super._();
 
   factory _DevolucionLineaDTO.fromJson(Map<String, dynamic> json) =
-      _$_DevolucionLineaDTO.fromJson;
+      _$DevolucionLineaDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'EMPRESA_ID')
@@ -410,6 +410,6 @@ abstract class _DevolucionLineaDTO extends DevolucionLineaDTO {
   String get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_DevolucionLineaDTOCopyWith<_$_DevolucionLineaDTO> get copyWith =>
+  _$$DevolucionLineaDTOImplCopyWith<_$DevolucionLineaDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

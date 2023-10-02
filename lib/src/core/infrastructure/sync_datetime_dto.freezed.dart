@@ -104,11 +104,11 @@ class _$SyncDateTimeDTOCopyWithImpl<$Res, $Val extends SyncDateTimeDTO>
 }
 
 /// @nodoc
-abstract class _$$_SyncDateTimeDTOCopyWith<$Res>
+abstract class _$$SyncDateTimeDTOImplCopyWith<$Res>
     implements $SyncDateTimeDTOCopyWith<$Res> {
-  factory _$$_SyncDateTimeDTOCopyWith(
-          _$_SyncDateTimeDTO value, $Res Function(_$_SyncDateTimeDTO) then) =
-      __$$_SyncDateTimeDTOCopyWithImpl<$Res>;
+  factory _$$SyncDateTimeDTOImplCopyWith(_$SyncDateTimeDTOImpl value,
+          $Res Function(_$SyncDateTimeDTOImpl) then) =
+      __$$SyncDateTimeDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -121,11 +121,11 @@ abstract class _$$_SyncDateTimeDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SyncDateTimeDTOCopyWithImpl<$Res>
-    extends _$SyncDateTimeDTOCopyWithImpl<$Res, _$_SyncDateTimeDTO>
-    implements _$$_SyncDateTimeDTOCopyWith<$Res> {
-  __$$_SyncDateTimeDTOCopyWithImpl(
-      _$_SyncDateTimeDTO _value, $Res Function(_$_SyncDateTimeDTO) _then)
+class __$$SyncDateTimeDTOImplCopyWithImpl<$Res>
+    extends _$SyncDateTimeDTOCopyWithImpl<$Res, _$SyncDateTimeDTOImpl>
+    implements _$$SyncDateTimeDTOImplCopyWith<$Res> {
+  __$$SyncDateTimeDTOImplCopyWithImpl(
+      _$SyncDateTimeDTOImpl _value, $Res Function(_$SyncDateTimeDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -138,7 +138,7 @@ class __$$_SyncDateTimeDTOCopyWithImpl<$Res>
     Object? pedidoUltimaSync = null,
     Object? visitaUltimaSync = null,
   }) {
-    return _then(_$_SyncDateTimeDTO(
+    return _then(_$SyncDateTimeDTOImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -169,8 +169,8 @@ class __$$_SyncDateTimeDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SyncDateTimeDTO extends _SyncDateTimeDTO {
-  const _$_SyncDateTimeDTO(
+class _$SyncDateTimeDTOImpl extends _SyncDateTimeDTO {
+  const _$SyncDateTimeDTOImpl(
       {@JsonKey(name: 'ID') required this.id,
       @JsonKey(name: 'DB_SCHEMA_VERSION') required this.dbSchemaVersion,
       @JsonKey(name: 'ARTICULO_ULTIMA_SYNC') required this.articuloUltimaSync,
@@ -179,8 +179,8 @@ class _$_SyncDateTimeDTO extends _SyncDateTimeDTO {
       @JsonKey(name: 'VISITA_ULTIMA_SYNC') required this.visitaUltimaSync})
       : super._();
 
-  factory _$_SyncDateTimeDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_SyncDateTimeDTOFromJson(json);
+  factory _$SyncDateTimeDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SyncDateTimeDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'ID')
@@ -210,7 +210,7 @@ class _$_SyncDateTimeDTO extends _SyncDateTimeDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SyncDateTimeDTO &&
+            other is _$SyncDateTimeDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.dbSchemaVersion, dbSchemaVersion) ||
                 other.dbSchemaVersion == dbSchemaVersion) &&
@@ -238,12 +238,13 @@ class _$_SyncDateTimeDTO extends _SyncDateTimeDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SyncDateTimeDTOCopyWith<_$_SyncDateTimeDTO> get copyWith =>
-      __$$_SyncDateTimeDTOCopyWithImpl<_$_SyncDateTimeDTO>(this, _$identity);
+  _$$SyncDateTimeDTOImplCopyWith<_$SyncDateTimeDTOImpl> get copyWith =>
+      __$$SyncDateTimeDTOImplCopyWithImpl<_$SyncDateTimeDTOImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SyncDateTimeDTOToJson(
+    return _$$SyncDateTimeDTOImplToJson(
       this,
     );
   }
@@ -260,11 +261,11 @@ abstract class _SyncDateTimeDTO extends SyncDateTimeDTO {
       @JsonKey(name: 'PEDIDO_ULTIMA_SYNC')
       required final DateTime pedidoUltimaSync,
       @JsonKey(name: 'VISITA_ULTIMA_SYNC')
-      required final DateTime visitaUltimaSync}) = _$_SyncDateTimeDTO;
+      required final DateTime visitaUltimaSync}) = _$SyncDateTimeDTOImpl;
   const _SyncDateTimeDTO._() : super._();
 
   factory _SyncDateTimeDTO.fromJson(Map<String, dynamic> json) =
-      _$_SyncDateTimeDTO.fromJson;
+      _$SyncDateTimeDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'ID')
@@ -286,6 +287,6 @@ abstract class _SyncDateTimeDTO extends SyncDateTimeDTO {
   DateTime get visitaUltimaSync;
   @override
   @JsonKey(ignore: true)
-  _$$_SyncDateTimeDTOCopyWith<_$_SyncDateTimeDTO> get copyWith =>
+  _$$SyncDateTimeDTOImplCopyWith<_$SyncDateTimeDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

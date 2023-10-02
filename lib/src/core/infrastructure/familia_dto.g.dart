@@ -6,8 +6,8 @@ part of 'familia_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_FamiliaDTO _$$_FamiliaDTOFromJson(Map<String, dynamic> json) =>
-    _$_FamiliaDTO(
+_$FamiliaDTOImpl _$$FamiliaDTOImplFromJson(Map<String, dynamic> json) =>
+    _$FamiliaDTOImpl(
       id: json['FAMILIA_ID'] as String,
       descripcionES: json['DESCRIPCION_ES'] as String,
       descripcionEN: json['DESCRIPCION_EN'] as String?,
@@ -28,7 +28,7 @@ _$_FamiliaDTO _$$_FamiliaDTOFromJson(Map<String, dynamic> json) =>
       deleted: json['DELETED'] as String? ?? 'N',
     );
 
-Map<String, dynamic> _$$_FamiliaDTOToJson(_$_FamiliaDTO instance) =>
+Map<String, dynamic> _$$FamiliaDTOImplToJson(_$FamiliaDTOImpl instance) =>
     <String, dynamic>{
       'FAMILIA_ID': instance.id,
       'DESCRIPCION_ES': instance.descripcionES,

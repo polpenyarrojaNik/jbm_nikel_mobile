@@ -107,11 +107,11 @@ class _$PedidoAlbaranCopyWithImpl<$Res, $Val extends PedidoAlbaran>
 }
 
 /// @nodoc
-abstract class _$$_PedidoAlbaranCopyWith<$Res>
+abstract class _$$PedidoAlbaranImplCopyWith<$Res>
     implements $PedidoAlbaranCopyWith<$Res> {
-  factory _$$_PedidoAlbaranCopyWith(
-          _$_PedidoAlbaran value, $Res Function(_$_PedidoAlbaran) then) =
-      __$$_PedidoAlbaranCopyWithImpl<$Res>;
+  factory _$$PedidoAlbaranImplCopyWith(
+          _$PedidoAlbaranImpl value, $Res Function(_$PedidoAlbaranImpl) then) =
+      __$$PedidoAlbaranImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -126,11 +126,11 @@ abstract class _$$_PedidoAlbaranCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PedidoAlbaranCopyWithImpl<$Res>
-    extends _$PedidoAlbaranCopyWithImpl<$Res, _$_PedidoAlbaran>
-    implements _$$_PedidoAlbaranCopyWith<$Res> {
-  __$$_PedidoAlbaranCopyWithImpl(
-      _$_PedidoAlbaran _value, $Res Function(_$_PedidoAlbaran) _then)
+class __$$PedidoAlbaranImplCopyWithImpl<$Res>
+    extends _$PedidoAlbaranCopyWithImpl<$Res, _$PedidoAlbaranImpl>
+    implements _$$PedidoAlbaranImplCopyWith<$Res> {
+  __$$PedidoAlbaranImplCopyWithImpl(
+      _$PedidoAlbaranImpl _value, $Res Function(_$PedidoAlbaranImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -145,7 +145,7 @@ class __$$_PedidoAlbaranCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_PedidoAlbaran(
+    return _then(_$PedidoAlbaranImpl(
       empresaId: null == empresaId
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
@@ -184,8 +184,8 @@ class __$$_PedidoAlbaranCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PedidoAlbaran extends _PedidoAlbaran {
-  const _$_PedidoAlbaran(
+class _$PedidoAlbaranImpl extends _PedidoAlbaran {
+  const _$PedidoAlbaranImpl(
       {required this.empresaId,
       required this.pedidoVentaId,
       required this.albaranId,
@@ -222,7 +222,7 @@ class _$_PedidoAlbaran extends _PedidoAlbaran {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PedidoAlbaran &&
+            other is _$PedidoAlbaranImpl &&
             (identical(other.empresaId, empresaId) ||
                 other.empresaId == empresaId) &&
             (identical(other.pedidoVentaId, pedidoVentaId) ||
@@ -245,8 +245,8 @@ class _$_PedidoAlbaran extends _PedidoAlbaran {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PedidoAlbaranCopyWith<_$_PedidoAlbaran> get copyWith =>
-      __$$_PedidoAlbaranCopyWithImpl<_$_PedidoAlbaran>(this, _$identity);
+  _$$PedidoAlbaranImplCopyWith<_$PedidoAlbaranImpl> get copyWith =>
+      __$$PedidoAlbaranImplCopyWithImpl<_$PedidoAlbaranImpl>(this, _$identity);
 }
 
 abstract class _PedidoAlbaran extends PedidoAlbaran {
@@ -258,7 +258,7 @@ abstract class _PedidoAlbaran extends PedidoAlbaran {
       final String? agencia,
       final String? trackId,
       required final DateTime lastUpdated,
-      required final bool deleted}) = _$_PedidoAlbaran;
+      required final bool deleted}) = _$PedidoAlbaranImpl;
   const _PedidoAlbaran._() : super._();
 
   @override
@@ -279,6 +279,6 @@ abstract class _PedidoAlbaran extends PedidoAlbaran {
   bool get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_PedidoAlbaranCopyWith<_$_PedidoAlbaran> get copyWith =>
+  _$$PedidoAlbaranImplCopyWith<_$PedidoAlbaranImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -129,11 +129,11 @@ class _$ArticuloGrupoNetoDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ArticuloGrupoNetoDTOCopyWith<$Res>
+abstract class _$$ArticuloGrupoNetoDTOImplCopyWith<$Res>
     implements $ArticuloGrupoNetoDTOCopyWith<$Res> {
-  factory _$$_ArticuloGrupoNetoDTOCopyWith(_$_ArticuloGrupoNetoDTO value,
-          $Res Function(_$_ArticuloGrupoNetoDTO) then) =
-      __$$_ArticuloGrupoNetoDTOCopyWithImpl<$Res>;
+  factory _$$ArticuloGrupoNetoDTOImplCopyWith(_$ArticuloGrupoNetoDTOImpl value,
+          $Res Function(_$ArticuloGrupoNetoDTOImpl) then) =
+      __$$ArticuloGrupoNetoDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -149,11 +149,11 @@ abstract class _$$_ArticuloGrupoNetoDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ArticuloGrupoNetoDTOCopyWithImpl<$Res>
-    extends _$ArticuloGrupoNetoDTOCopyWithImpl<$Res, _$_ArticuloGrupoNetoDTO>
-    implements _$$_ArticuloGrupoNetoDTOCopyWith<$Res> {
-  __$$_ArticuloGrupoNetoDTOCopyWithImpl(_$_ArticuloGrupoNetoDTO _value,
-      $Res Function(_$_ArticuloGrupoNetoDTO) _then)
+class __$$ArticuloGrupoNetoDTOImplCopyWithImpl<$Res>
+    extends _$ArticuloGrupoNetoDTOCopyWithImpl<$Res, _$ArticuloGrupoNetoDTOImpl>
+    implements _$$ArticuloGrupoNetoDTOImplCopyWith<$Res> {
+  __$$ArticuloGrupoNetoDTOImplCopyWithImpl(_$ArticuloGrupoNetoDTOImpl _value,
+      $Res Function(_$ArticuloGrupoNetoDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -169,7 +169,7 @@ class __$$_ArticuloGrupoNetoDTOCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_ArticuloGrupoNetoDTO(
+    return _then(_$ArticuloGrupoNetoDTOImpl(
       articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
@@ -212,8 +212,8 @@ class __$$_ArticuloGrupoNetoDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ArticuloGrupoNetoDTO extends _ArticuloGrupoNetoDTO {
-  const _$_ArticuloGrupoNetoDTO(
+class _$ArticuloGrupoNetoDTOImpl extends _ArticuloGrupoNetoDTO {
+  const _$ArticuloGrupoNetoDTOImpl(
       {@JsonKey(name: 'ARTICULO_ID') required this.articuloId,
       @JsonKey(name: 'GRUPO_NETO_ID') required this.grupoNetoId,
       @JsonKey(name: 'GRUPO_NETO_DESCRIPCION')
@@ -226,8 +226,8 @@ class _$_ArticuloGrupoNetoDTO extends _ArticuloGrupoNetoDTO {
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
-  factory _$_ArticuloGrupoNetoDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_ArticuloGrupoNetoDTOFromJson(json);
+  factory _$ArticuloGrupoNetoDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ArticuloGrupoNetoDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'ARTICULO_ID')
@@ -266,7 +266,7 @@ class _$_ArticuloGrupoNetoDTO extends _ArticuloGrupoNetoDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ArticuloGrupoNetoDTO &&
+            other is _$ArticuloGrupoNetoDTOImpl &&
             (identical(other.articuloId, articuloId) ||
                 other.articuloId == articuloId) &&
             (identical(other.grupoNetoId, grupoNetoId) ||
@@ -302,13 +302,14 @@ class _$_ArticuloGrupoNetoDTO extends _ArticuloGrupoNetoDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArticuloGrupoNetoDTOCopyWith<_$_ArticuloGrupoNetoDTO> get copyWith =>
-      __$$_ArticuloGrupoNetoDTOCopyWithImpl<_$_ArticuloGrupoNetoDTO>(
-          this, _$identity);
+  _$$ArticuloGrupoNetoDTOImplCopyWith<_$ArticuloGrupoNetoDTOImpl>
+      get copyWith =>
+          __$$ArticuloGrupoNetoDTOImplCopyWithImpl<_$ArticuloGrupoNetoDTOImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ArticuloGrupoNetoDTOToJson(
+    return _$$ArticuloGrupoNetoDTOImplToJson(
       this,
     );
   }
@@ -326,11 +327,11 @@ abstract class _ArticuloGrupoNetoDTO extends ArticuloGrupoNetoDTO {
           @JsonKey(name: 'TIPO_PRECIO') required final int tipoPrecio,
           @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
           @JsonKey(name: 'DELETED') final String deleted}) =
-      _$_ArticuloGrupoNetoDTO;
+      _$ArticuloGrupoNetoDTOImpl;
   const _ArticuloGrupoNetoDTO._() : super._();
 
   factory _ArticuloGrupoNetoDTO.fromJson(Map<String, dynamic> json) =
-      _$_ArticuloGrupoNetoDTO.fromJson;
+      _$ArticuloGrupoNetoDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'ARTICULO_ID')
@@ -361,6 +362,6 @@ abstract class _ArticuloGrupoNetoDTO extends ArticuloGrupoNetoDTO {
   String get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_ArticuloGrupoNetoDTOCopyWith<_$_ArticuloGrupoNetoDTO> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ArticuloGrupoNetoDTOImplCopyWith<_$ArticuloGrupoNetoDTOImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

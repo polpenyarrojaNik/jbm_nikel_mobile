@@ -63,22 +63,22 @@ class _$ClienteIdNombreCopyWithImpl<$Res, $Val extends ClienteIdNombre>
 }
 
 /// @nodoc
-abstract class _$$_ClienteIdNombreCopyWith<$Res>
+abstract class _$$ClienteIdNombreImplCopyWith<$Res>
     implements $ClienteIdNombreCopyWith<$Res> {
-  factory _$$_ClienteIdNombreCopyWith(
-          _$_ClienteIdNombre value, $Res Function(_$_ClienteIdNombre) then) =
-      __$$_ClienteIdNombreCopyWithImpl<$Res>;
+  factory _$$ClienteIdNombreImplCopyWith(_$ClienteIdNombreImpl value,
+          $Res Function(_$ClienteIdNombreImpl) then) =
+      __$$ClienteIdNombreImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id, String? nombreCliente});
 }
 
 /// @nodoc
-class __$$_ClienteIdNombreCopyWithImpl<$Res>
-    extends _$ClienteIdNombreCopyWithImpl<$Res, _$_ClienteIdNombre>
-    implements _$$_ClienteIdNombreCopyWith<$Res> {
-  __$$_ClienteIdNombreCopyWithImpl(
-      _$_ClienteIdNombre _value, $Res Function(_$_ClienteIdNombre) _then)
+class __$$ClienteIdNombreImplCopyWithImpl<$Res>
+    extends _$ClienteIdNombreCopyWithImpl<$Res, _$ClienteIdNombreImpl>
+    implements _$$ClienteIdNombreImplCopyWith<$Res> {
+  __$$ClienteIdNombreImplCopyWithImpl(
+      _$ClienteIdNombreImpl _value, $Res Function(_$ClienteIdNombreImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_ClienteIdNombreCopyWithImpl<$Res>
     Object? id = null,
     Object? nombreCliente = freezed,
   }) {
-    return _then(_$_ClienteIdNombre(
+    return _then(_$ClienteIdNombreImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_ClienteIdNombreCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ClienteIdNombre extends _ClienteIdNombre {
-  const _$_ClienteIdNombre({required this.id, required this.nombreCliente})
+class _$ClienteIdNombreImpl extends _ClienteIdNombre {
+  const _$ClienteIdNombreImpl({required this.id, required this.nombreCliente})
       : super._();
 
   @override
@@ -120,7 +120,7 @@ class _$_ClienteIdNombre extends _ClienteIdNombre {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClienteIdNombre &&
+            other is _$ClienteIdNombreImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.nombreCliente, nombreCliente) ||
                 other.nombreCliente == nombreCliente));
@@ -132,14 +132,15 @@ class _$_ClienteIdNombre extends _ClienteIdNombre {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClienteIdNombreCopyWith<_$_ClienteIdNombre> get copyWith =>
-      __$$_ClienteIdNombreCopyWithImpl<_$_ClienteIdNombre>(this, _$identity);
+  _$$ClienteIdNombreImplCopyWith<_$ClienteIdNombreImpl> get copyWith =>
+      __$$ClienteIdNombreImplCopyWithImpl<_$ClienteIdNombreImpl>(
+          this, _$identity);
 }
 
 abstract class _ClienteIdNombre extends ClienteIdNombre {
   const factory _ClienteIdNombre(
       {required final String id,
-      required final String? nombreCliente}) = _$_ClienteIdNombre;
+      required final String? nombreCliente}) = _$ClienteIdNombreImpl;
   const _ClienteIdNombre._() : super._();
 
   @override
@@ -148,6 +149,6 @@ abstract class _ClienteIdNombre extends ClienteIdNombre {
   String? get nombreCliente;
   @override
   @JsonKey(ignore: true)
-  _$$_ClienteIdNombreCopyWith<_$_ClienteIdNombre> get copyWith =>
+  _$$ClienteIdNombreImplCopyWith<_$ClienteIdNombreImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

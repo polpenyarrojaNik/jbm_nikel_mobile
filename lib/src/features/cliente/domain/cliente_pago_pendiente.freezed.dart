@@ -150,11 +150,11 @@ class _$ClientePagoPendienteCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ClientePagoPendienteCopyWith<$Res>
+abstract class _$$ClientePagoPendienteImplCopyWith<$Res>
     implements $ClientePagoPendienteCopyWith<$Res> {
-  factory _$$_ClientePagoPendienteCopyWith(_$_ClientePagoPendiente value,
-          $Res Function(_$_ClientePagoPendiente) then) =
-      __$$_ClientePagoPendienteCopyWithImpl<$Res>;
+  factory _$$ClientePagoPendienteImplCopyWith(_$ClientePagoPendienteImpl value,
+          $Res Function(_$ClientePagoPendienteImpl) then) =
+      __$$ClientePagoPendienteImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -176,11 +176,11 @@ abstract class _$$_ClientePagoPendienteCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ClientePagoPendienteCopyWithImpl<$Res>
-    extends _$ClientePagoPendienteCopyWithImpl<$Res, _$_ClientePagoPendiente>
-    implements _$$_ClientePagoPendienteCopyWith<$Res> {
-  __$$_ClientePagoPendienteCopyWithImpl(_$_ClientePagoPendiente _value,
-      $Res Function(_$_ClientePagoPendiente) _then)
+class __$$ClientePagoPendienteImplCopyWithImpl<$Res>
+    extends _$ClientePagoPendienteCopyWithImpl<$Res, _$ClientePagoPendienteImpl>
+    implements _$$ClientePagoPendienteImplCopyWith<$Res> {
+  __$$ClientePagoPendienteImplCopyWithImpl(_$ClientePagoPendienteImpl _value,
+      $Res Function(_$ClientePagoPendienteImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -199,7 +199,7 @@ class __$$_ClientePagoPendienteCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_ClientePagoPendiente(
+    return _then(_$ClientePagoPendienteImpl(
       clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
@@ -254,8 +254,8 @@ class __$$_ClientePagoPendienteCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ClientePagoPendiente extends _ClientePagoPendiente {
-  const _$_ClientePagoPendiente(
+class _$ClientePagoPendienteImpl extends _ClientePagoPendiente {
+  const _$ClientePagoPendienteImpl(
       {required this.clienteId,
       required this.efectoId,
       this.facutaId,
@@ -304,7 +304,7 @@ class _$_ClientePagoPendiente extends _ClientePagoPendiente {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClientePagoPendiente &&
+            other is _$ClientePagoPendienteImpl &&
             (identical(other.clienteId, clienteId) ||
                 other.clienteId == clienteId) &&
             (identical(other.efectoId, efectoId) ||
@@ -348,9 +348,10 @@ class _$_ClientePagoPendiente extends _ClientePagoPendiente {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClientePagoPendienteCopyWith<_$_ClientePagoPendiente> get copyWith =>
-      __$$_ClientePagoPendienteCopyWithImpl<_$_ClientePagoPendiente>(
-          this, _$identity);
+  _$$ClientePagoPendienteImplCopyWith<_$ClientePagoPendienteImpl>
+      get copyWith =>
+          __$$ClientePagoPendienteImplCopyWithImpl<_$ClientePagoPendienteImpl>(
+              this, _$identity);
 }
 
 abstract class _ClientePagoPendiente extends ClientePagoPendiente {
@@ -366,7 +367,7 @@ abstract class _ClientePagoPendiente extends ClientePagoPendiente {
       final DateTime? fechaExpiracionInicial,
       final bool? vencidoJBM,
       required final DateTime lastUpdated,
-      required final bool deleted}) = _$_ClientePagoPendiente;
+      required final bool deleted}) = _$ClientePagoPendienteImpl;
   const _ClientePagoPendiente._() : super._();
 
   @override
@@ -395,6 +396,6 @@ abstract class _ClientePagoPendiente extends ClientePagoPendiente {
   bool get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_ClientePagoPendienteCopyWith<_$_ClientePagoPendiente> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ClientePagoPendienteImplCopyWith<_$ClientePagoPendienteImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

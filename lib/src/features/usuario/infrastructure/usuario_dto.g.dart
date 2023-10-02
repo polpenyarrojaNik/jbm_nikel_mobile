@@ -6,8 +6,8 @@ part of 'usuario_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_UsuarioDTO _$$_UsuarioDTOFromJson(Map<String, dynamic> json) =>
-    _$_UsuarioDTO(
+_$UsuarioDTOImpl _$$UsuarioDTOImplFromJson(Map<String, dynamic> json) =>
+    _$UsuarioDTOImpl(
       id: json['USUARIO_ID'] as String,
       usuario: json['USUARIO'] as String,
       contrasenya: json['CLAVE'] as String,
@@ -20,7 +20,7 @@ _$_UsuarioDTO _$$_UsuarioDTOFromJson(Map<String, dynamic> json) =>
       verTotalVentas: json['APP_VER_TOTAL_VENTAS'] as String,
     );
 
-Map<String, dynamic> _$$_UsuarioDTOToJson(_$_UsuarioDTO instance) =>
+Map<String, dynamic> _$$UsuarioDTOImplToJson(_$UsuarioDTOImpl instance) =>
     <String, dynamic>{
       'USUARIO_ID': instance.id,
       'USUARIO': instance.usuario,

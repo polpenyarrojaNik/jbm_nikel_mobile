@@ -146,11 +146,11 @@ class _$TipoPrecioCatalogoDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_TipoCatalogoDTOCopyWith<$Res>
+abstract class _$$TipoCatalogoDTOImplCopyWith<$Res>
     implements $TipoPrecioCatalogoDTOCopyWith<$Res> {
-  factory _$$_TipoCatalogoDTOCopyWith(
-          _$_TipoCatalogoDTO value, $Res Function(_$_TipoCatalogoDTO) then) =
-      __$$_TipoCatalogoDTOCopyWithImpl<$Res>;
+  factory _$$TipoCatalogoDTOImplCopyWith(_$TipoCatalogoDTOImpl value,
+          $Res Function(_$TipoCatalogoDTOImpl) then) =
+      __$$TipoCatalogoDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -168,11 +168,11 @@ abstract class _$$_TipoCatalogoDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TipoCatalogoDTOCopyWithImpl<$Res>
-    extends _$TipoPrecioCatalogoDTOCopyWithImpl<$Res, _$_TipoCatalogoDTO>
-    implements _$$_TipoCatalogoDTOCopyWith<$Res> {
-  __$$_TipoCatalogoDTOCopyWithImpl(
-      _$_TipoCatalogoDTO _value, $Res Function(_$_TipoCatalogoDTO) _then)
+class __$$TipoCatalogoDTOImplCopyWithImpl<$Res>
+    extends _$TipoPrecioCatalogoDTOCopyWithImpl<$Res, _$TipoCatalogoDTOImpl>
+    implements _$$TipoCatalogoDTOImplCopyWith<$Res> {
+  __$$TipoCatalogoDTOImplCopyWithImpl(
+      _$TipoCatalogoDTOImpl _value, $Res Function(_$TipoCatalogoDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -190,7 +190,7 @@ class __$$_TipoCatalogoDTOCopyWithImpl<$Res>
     Object? descripcionNL = freezed,
     Object? descripcionPL = freezed,
   }) {
-    return _then(_$_TipoCatalogoDTO(
+    return _then(_$TipoCatalogoDTOImpl(
       tipoPrecioCatalogoId: null == tipoPrecioCatalogoId
           ? _value.tipoPrecioCatalogoId
           : tipoPrecioCatalogoId // ignore: cast_nullable_to_non_nullable
@@ -241,8 +241,8 @@ class __$$_TipoCatalogoDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TipoCatalogoDTO extends _TipoCatalogoDTO {
-  const _$_TipoCatalogoDTO(
+class _$TipoCatalogoDTOImpl extends _TipoCatalogoDTO {
+  const _$TipoCatalogoDTOImpl(
       {@JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID')
       required this.tipoPrecioCatalogoId,
       @JsonKey(name: 'DESCRIPCION_ES') required this.descripcionES,
@@ -257,8 +257,8 @@ class _$_TipoCatalogoDTO extends _TipoCatalogoDTO {
       @JsonKey(name: 'DESCRIPCION_PL') this.descripcionPL})
       : super._();
 
-  factory _$_TipoCatalogoDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_TipoCatalogoDTOFromJson(json);
+  factory _$TipoCatalogoDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TipoCatalogoDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID')
@@ -303,7 +303,7 @@ class _$_TipoCatalogoDTO extends _TipoCatalogoDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TipoCatalogoDTO &&
+            other is _$TipoCatalogoDTOImpl &&
             (identical(other.tipoPrecioCatalogoId, tipoPrecioCatalogoId) ||
                 other.tipoPrecioCatalogoId == tipoPrecioCatalogoId) &&
             (identical(other.descripcionES, descripcionES) ||
@@ -347,12 +347,13 @@ class _$_TipoCatalogoDTO extends _TipoCatalogoDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TipoCatalogoDTOCopyWith<_$_TipoCatalogoDTO> get copyWith =>
-      __$$_TipoCatalogoDTOCopyWithImpl<_$_TipoCatalogoDTO>(this, _$identity);
+  _$$TipoCatalogoDTOImplCopyWith<_$TipoCatalogoDTOImpl> get copyWith =>
+      __$$TipoCatalogoDTOImplCopyWithImpl<_$TipoCatalogoDTOImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TipoCatalogoDTOToJson(
+    return _$$TipoCatalogoDTOImplToJson(
       this,
     );
   }
@@ -372,11 +373,11 @@ abstract class _TipoCatalogoDTO extends TipoPrecioCatalogoDTO {
           @JsonKey(name: 'DESCRIPCION_IT') final String? descripcionIT,
           @JsonKey(name: 'DESCRIPCION_NL') final String? descripcionNL,
           @JsonKey(name: 'DESCRIPCION_PL') final String? descripcionPL}) =
-      _$_TipoCatalogoDTO;
+      _$TipoCatalogoDTOImpl;
   const _TipoCatalogoDTO._() : super._();
 
   factory _TipoCatalogoDTO.fromJson(Map<String, dynamic> json) =
-      _$_TipoCatalogoDTO.fromJson;
+      _$TipoCatalogoDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID')
@@ -413,6 +414,6 @@ abstract class _TipoCatalogoDTO extends TipoPrecioCatalogoDTO {
   String? get descripcionPL;
   @override
   @JsonKey(ignore: true)
-  _$$_TipoCatalogoDTOCopyWith<_$_TipoCatalogoDTO> get copyWith =>
+  _$$TipoCatalogoDTOImplCopyWith<_$TipoCatalogoDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

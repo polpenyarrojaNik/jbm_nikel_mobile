@@ -63,22 +63,22 @@ class _$UltimosPreciosParamCopyWithImpl<$Res, $Val extends UltimosPreciosParam>
 }
 
 /// @nodoc
-abstract class _$$_UltimosPreciosParamCopyWith<$Res>
+abstract class _$$UltimosPreciosParamImplCopyWith<$Res>
     implements $UltimosPreciosParamCopyWith<$Res> {
-  factory _$$_UltimosPreciosParamCopyWith(_$_UltimosPreciosParam value,
-          $Res Function(_$_UltimosPreciosParam) then) =
-      __$$_UltimosPreciosParamCopyWithImpl<$Res>;
+  factory _$$UltimosPreciosParamImplCopyWith(_$UltimosPreciosParamImpl value,
+          $Res Function(_$UltimosPreciosParamImpl) then) =
+      __$$UltimosPreciosParamImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String clienteId, String articuloId});
 }
 
 /// @nodoc
-class __$$_UltimosPreciosParamCopyWithImpl<$Res>
-    extends _$UltimosPreciosParamCopyWithImpl<$Res, _$_UltimosPreciosParam>
-    implements _$$_UltimosPreciosParamCopyWith<$Res> {
-  __$$_UltimosPreciosParamCopyWithImpl(_$_UltimosPreciosParam _value,
-      $Res Function(_$_UltimosPreciosParam) _then)
+class __$$UltimosPreciosParamImplCopyWithImpl<$Res>
+    extends _$UltimosPreciosParamCopyWithImpl<$Res, _$UltimosPreciosParamImpl>
+    implements _$$UltimosPreciosParamImplCopyWith<$Res> {
+  __$$UltimosPreciosParamImplCopyWithImpl(_$UltimosPreciosParamImpl _value,
+      $Res Function(_$UltimosPreciosParamImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_UltimosPreciosParamCopyWithImpl<$Res>
     Object? clienteId = null,
     Object? articuloId = null,
   }) {
-    return _then(_$_UltimosPreciosParam(
+    return _then(_$UltimosPreciosParamImpl(
       clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_UltimosPreciosParamCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UltimosPreciosParam extends _UltimosPreciosParam {
-  const _$_UltimosPreciosParam(
+class _$UltimosPreciosParamImpl extends _UltimosPreciosParam {
+  const _$UltimosPreciosParamImpl(
       {required this.clienteId, required this.articuloId})
       : super._();
 
@@ -121,7 +121,7 @@ class _$_UltimosPreciosParam extends _UltimosPreciosParam {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UltimosPreciosParam &&
+            other is _$UltimosPreciosParamImpl &&
             (identical(other.clienteId, clienteId) ||
                 other.clienteId == clienteId) &&
             (identical(other.articuloId, articuloId) ||
@@ -134,15 +134,15 @@ class _$_UltimosPreciosParam extends _UltimosPreciosParam {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UltimosPreciosParamCopyWith<_$_UltimosPreciosParam> get copyWith =>
-      __$$_UltimosPreciosParamCopyWithImpl<_$_UltimosPreciosParam>(
+  _$$UltimosPreciosParamImplCopyWith<_$UltimosPreciosParamImpl> get copyWith =>
+      __$$UltimosPreciosParamImplCopyWithImpl<_$UltimosPreciosParamImpl>(
           this, _$identity);
 }
 
 abstract class _UltimosPreciosParam extends UltimosPreciosParam {
   const factory _UltimosPreciosParam(
       {required final String clienteId,
-      required final String articuloId}) = _$_UltimosPreciosParam;
+      required final String articuloId}) = _$UltimosPreciosParamImpl;
   const _UltimosPreciosParam._() : super._();
 
   @override
@@ -151,6 +151,6 @@ abstract class _UltimosPreciosParam extends UltimosPreciosParam {
   String get articuloId;
   @override
   @JsonKey(ignore: true)
-  _$$_UltimosPreciosParamCopyWith<_$_UltimosPreciosParam> get copyWith =>
+  _$$UltimosPreciosParamImplCopyWith<_$UltimosPreciosParamImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

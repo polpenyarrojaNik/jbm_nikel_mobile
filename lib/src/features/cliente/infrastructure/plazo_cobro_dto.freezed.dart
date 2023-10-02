@@ -200,11 +200,11 @@ class _$PlazoDeCobroDTOCopyWithImpl<$Res, $Val extends PlazoDeCobroDTO>
 }
 
 /// @nodoc
-abstract class _$$_PlazoDeCobroDTOCopyWith<$Res>
+abstract class _$$PlazoDeCobroDTOImplCopyWith<$Res>
     implements $PlazoDeCobroDTOCopyWith<$Res> {
-  factory _$$_PlazoDeCobroDTOCopyWith(
-          _$_PlazoDeCobroDTO value, $Res Function(_$_PlazoDeCobroDTO) then) =
-      __$$_PlazoDeCobroDTOCopyWithImpl<$Res>;
+  factory _$$PlazoDeCobroDTOImplCopyWith(_$PlazoDeCobroDTOImpl value,
+          $Res Function(_$PlazoDeCobroDTOImpl) then) =
+      __$$PlazoDeCobroDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -229,11 +229,11 @@ abstract class _$$_PlazoDeCobroDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PlazoDeCobroDTOCopyWithImpl<$Res>
-    extends _$PlazoDeCobroDTOCopyWithImpl<$Res, _$_PlazoDeCobroDTO>
-    implements _$$_PlazoDeCobroDTOCopyWith<$Res> {
-  __$$_PlazoDeCobroDTOCopyWithImpl(
-      _$_PlazoDeCobroDTO _value, $Res Function(_$_PlazoDeCobroDTO) _then)
+class __$$PlazoDeCobroDTOImplCopyWithImpl<$Res>
+    extends _$PlazoDeCobroDTOCopyWithImpl<$Res, _$PlazoDeCobroDTOImpl>
+    implements _$$PlazoDeCobroDTOImplCopyWith<$Res> {
+  __$$PlazoDeCobroDTOImplCopyWithImpl(
+      _$PlazoDeCobroDTOImpl _value, $Res Function(_$PlazoDeCobroDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -258,7 +258,7 @@ class __$$_PlazoDeCobroDTOCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_PlazoDeCobroDTO(
+    return _then(_$PlazoDeCobroDTOImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -337,8 +337,8 @@ class __$$_PlazoDeCobroDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PlazoDeCobroDTO extends _PlazoDeCobroDTO {
-  const _$_PlazoDeCobroDTO(
+class _$PlazoDeCobroDTOImpl extends _PlazoDeCobroDTO {
+  const _$PlazoDeCobroDTOImpl(
       {@JsonKey(name: 'PLAZO_COBRO_ID') required this.id,
       @JsonKey(name: 'DESCRIPCION_ES') required this.descripcionES,
       @JsonKey(name: 'DESCRIPCION_EN') this.descripcionEN,
@@ -359,8 +359,8 @@ class _$_PlazoDeCobroDTO extends _PlazoDeCobroDTO {
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
-  factory _$_PlazoDeCobroDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_PlazoDeCobroDTOFromJson(json);
+  factory _$PlazoDeCobroDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PlazoDeCobroDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'PLAZO_COBRO_ID')
@@ -426,7 +426,7 @@ class _$_PlazoDeCobroDTO extends _PlazoDeCobroDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PlazoDeCobroDTO &&
+            other is _$PlazoDeCobroDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.descripcionES, descripcionES) ||
                 other.descripcionES == descripcionES) &&
@@ -489,12 +489,13 @@ class _$_PlazoDeCobroDTO extends _PlazoDeCobroDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PlazoDeCobroDTOCopyWith<_$_PlazoDeCobroDTO> get copyWith =>
-      __$$_PlazoDeCobroDTOCopyWithImpl<_$_PlazoDeCobroDTO>(this, _$identity);
+  _$$PlazoDeCobroDTOImplCopyWith<_$PlazoDeCobroDTOImpl> get copyWith =>
+      __$$PlazoDeCobroDTOImplCopyWithImpl<_$PlazoDeCobroDTOImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PlazoDeCobroDTOToJson(
+    return _$$PlazoDeCobroDTOImplToJson(
       this,
     );
   }
@@ -519,11 +520,11 @@ abstract class _PlazoDeCobroDTO extends PlazoDeCobroDTO {
       @JsonKey(name: 'DESCRIPCION_CN') final String? descripcionCN,
       @JsonKey(name: 'DESCRIPCION_EL') final String? descripcionEL,
       @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') final String deleted}) = _$_PlazoDeCobroDTO;
+      @JsonKey(name: 'DELETED') final String deleted}) = _$PlazoDeCobroDTOImpl;
   const _PlazoDeCobroDTO._() : super._();
 
   factory _PlazoDeCobroDTO.fromJson(Map<String, dynamic> json) =
-      _$_PlazoDeCobroDTO.fromJson;
+      _$PlazoDeCobroDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'PLAZO_COBRO_ID')
@@ -581,6 +582,6 @@ abstract class _PlazoDeCobroDTO extends PlazoDeCobroDTO {
   String get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_PlazoDeCobroDTOCopyWith<_$_PlazoDeCobroDTO> get copyWith =>
+  _$$PlazoDeCobroDTOImplCopyWith<_$PlazoDeCobroDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

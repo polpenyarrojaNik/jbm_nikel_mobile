@@ -261,11 +261,11 @@ class _$VisitaLocalDTOCopyWithImpl<$Res, $Val extends VisitaLocalDTO>
 }
 
 /// @nodoc
-abstract class _$$_VisitaLocalDTOCopyWith<$Res>
+abstract class _$$VisitaLocalDTOImplCopyWith<$Res>
     implements $VisitaLocalDTOCopyWith<$Res> {
-  factory _$$_VisitaLocalDTOCopyWith(
-          _$_VisitaLocalDTO value, $Res Function(_$_VisitaLocalDTO) then) =
-      __$$_VisitaLocalDTOCopyWithImpl<$Res>;
+  factory _$$VisitaLocalDTOImplCopyWith(_$VisitaLocalDTOImpl value,
+          $Res Function(_$VisitaLocalDTOImpl) then) =
+      __$$VisitaLocalDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -305,11 +305,11 @@ abstract class _$$_VisitaLocalDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_VisitaLocalDTOCopyWithImpl<$Res>
-    extends _$VisitaLocalDTOCopyWithImpl<$Res, _$_VisitaLocalDTO>
-    implements _$$_VisitaLocalDTOCopyWith<$Res> {
-  __$$_VisitaLocalDTOCopyWithImpl(
-      _$_VisitaLocalDTO _value, $Res Function(_$_VisitaLocalDTO) _then)
+class __$$VisitaLocalDTOImplCopyWithImpl<$Res>
+    extends _$VisitaLocalDTOCopyWithImpl<$Res, _$VisitaLocalDTOImpl>
+    implements _$$VisitaLocalDTOImplCopyWith<$Res> {
+  __$$VisitaLocalDTOImplCopyWithImpl(
+      _$VisitaLocalDTOImpl _value, $Res Function(_$VisitaLocalDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -340,7 +340,7 @@ class __$$_VisitaLocalDTOCopyWithImpl<$Res>
     Object? tratada = null,
     Object? errorSyncMessage = freezed,
   }) {
-    return _then(_$_VisitaLocalDTO(
+    return _then(_$VisitaLocalDTOImpl(
       visitaAppId: freezed == visitaAppId
           ? _value.visitaAppId
           : visitaAppId // ignore: cast_nullable_to_non_nullable
@@ -443,8 +443,8 @@ class __$$_VisitaLocalDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_VisitaLocalDTO extends _VisitaLocalDTO {
-  const _$_VisitaLocalDTO(
+class _$VisitaLocalDTOImpl extends _VisitaLocalDTO {
+  const _$VisitaLocalDTOImpl(
       {@JsonKey(name: 'COD_VISITA_APP') this.visitaAppId,
       @JsonKey(name: 'FECHA') required this.fecha,
       @JsonKey(name: 'CLIENTE_ID') this.clienteId,
@@ -478,8 +478,8 @@ class _$_VisitaLocalDTO extends _VisitaLocalDTO {
       @JsonKey(name: 'ERROR_SYNC') this.errorSyncMessage})
       : super._();
 
-  factory _$_VisitaLocalDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_VisitaLocalDTOFromJson(json);
+  factory _$VisitaLocalDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$VisitaLocalDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'COD_VISITA_APP')
@@ -563,7 +563,7 @@ class _$_VisitaLocalDTO extends _VisitaLocalDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_VisitaLocalDTO &&
+            other is _$VisitaLocalDTOImpl &&
             (identical(other.visitaAppId, visitaAppId) ||
                 other.visitaAppId == visitaAppId) &&
             (identical(other.fecha, fecha) || other.fecha == fecha) &&
@@ -645,12 +645,13 @@ class _$_VisitaLocalDTO extends _VisitaLocalDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_VisitaLocalDTOCopyWith<_$_VisitaLocalDTO> get copyWith =>
-      __$$_VisitaLocalDTOCopyWithImpl<_$_VisitaLocalDTO>(this, _$identity);
+  _$$VisitaLocalDTOImplCopyWith<_$VisitaLocalDTOImpl> get copyWith =>
+      __$$VisitaLocalDTOImplCopyWithImpl<_$VisitaLocalDTOImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_VisitaLocalDTOToJson(
+    return _$$VisitaLocalDTOImplToJson(
       this,
     );
   }
@@ -693,11 +694,11 @@ abstract class _VisitaLocalDTO extends VisitaLocalDTO {
           @JsonKey(name: 'ENVIADA') final String enviada,
           @JsonKey(name: 'TRATADA') final String tratada,
           @JsonKey(name: 'ERROR_SYNC') final String? errorSyncMessage}) =
-      _$_VisitaLocalDTO;
+      _$VisitaLocalDTOImpl;
   const _VisitaLocalDTO._() : super._();
 
   factory _VisitaLocalDTO.fromJson(Map<String, dynamic> json) =
-      _$_VisitaLocalDTO.fromJson;
+      _$VisitaLocalDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'COD_VISITA_APP')
@@ -773,6 +774,6 @@ abstract class _VisitaLocalDTO extends VisitaLocalDTO {
   String? get errorSyncMessage;
   @override
   @JsonKey(ignore: true)
-  _$$_VisitaLocalDTOCopyWith<_$_VisitaLocalDTO> get copyWith =>
+  _$$VisitaLocalDTOImplCopyWith<_$VisitaLocalDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -184,11 +184,11 @@ class _$ClienteDireccionCopyWithImpl<$Res, $Val extends ClienteDireccion>
 }
 
 /// @nodoc
-abstract class _$$_ClienteDireccionCopyWith<$Res>
+abstract class _$$ClienteDireccionImplCopyWith<$Res>
     implements $ClienteDireccionCopyWith<$Res> {
-  factory _$$_ClienteDireccionCopyWith(
-          _$_ClienteDireccion value, $Res Function(_$_ClienteDireccion) then) =
-      __$$_ClienteDireccionCopyWithImpl<$Res>;
+  factory _$$ClienteDireccionImplCopyWith(_$ClienteDireccionImpl value,
+          $Res Function(_$ClienteDireccionImpl) then) =
+      __$$ClienteDireccionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -215,11 +215,11 @@ abstract class _$$_ClienteDireccionCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ClienteDireccionCopyWithImpl<$Res>
-    extends _$ClienteDireccionCopyWithImpl<$Res, _$_ClienteDireccion>
-    implements _$$_ClienteDireccionCopyWith<$Res> {
-  __$$_ClienteDireccionCopyWithImpl(
-      _$_ClienteDireccion _value, $Res Function(_$_ClienteDireccion) _then)
+class __$$ClienteDireccionImplCopyWithImpl<$Res>
+    extends _$ClienteDireccionCopyWithImpl<$Res, _$ClienteDireccionImpl>
+    implements _$$ClienteDireccionImplCopyWith<$Res> {
+  __$$ClienteDireccionImplCopyWithImpl(_$ClienteDireccionImpl _value,
+      $Res Function(_$ClienteDireccionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -243,7 +243,7 @@ class __$$_ClienteDireccionCopyWithImpl<$Res>
     Object? tratada = null,
     Object? deleted = null,
   }) {
-    return _then(_$_ClienteDireccion(
+    return _then(_$ClienteDireccionImpl(
       clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
@@ -318,8 +318,8 @@ class __$$_ClienteDireccionCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ClienteDireccion extends _ClienteDireccion {
-  const _$_ClienteDireccion(
+class _$ClienteDireccionImpl extends _ClienteDireccion {
+  const _$ClienteDireccionImpl(
       {required this.clienteId,
       required this.direccionId,
       required this.direccionImpGuid,
@@ -383,7 +383,7 @@ class _$_ClienteDireccion extends _ClienteDireccion {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClienteDireccion &&
+            other is _$ClienteDireccionImpl &&
             (identical(other.clienteId, clienteId) ||
                 other.clienteId == clienteId) &&
             (identical(other.direccionId, direccionId) ||
@@ -438,8 +438,9 @@ class _$_ClienteDireccion extends _ClienteDireccion {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClienteDireccionCopyWith<_$_ClienteDireccion> get copyWith =>
-      __$$_ClienteDireccionCopyWithImpl<_$_ClienteDireccion>(this, _$identity);
+  _$$ClienteDireccionImplCopyWith<_$ClienteDireccionImpl> get copyWith =>
+      __$$ClienteDireccionImplCopyWithImpl<_$ClienteDireccionImpl>(
+          this, _$identity);
 }
 
 abstract class _ClienteDireccion extends ClienteDireccion {
@@ -460,7 +461,7 @@ abstract class _ClienteDireccion extends ClienteDireccion {
       required final DateTime lastUpdated,
       required final bool enviada,
       required final bool tratada,
-      required final bool deleted}) = _$_ClienteDireccion;
+      required final bool deleted}) = _$ClienteDireccionImpl;
   const _ClienteDireccion._() : super._();
 
   @override
@@ -499,6 +500,6 @@ abstract class _ClienteDireccion extends ClienteDireccion {
   bool get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_ClienteDireccionCopyWith<_$_ClienteDireccion> get copyWith =>
+  _$$ClienteDireccionImplCopyWith<_$ClienteDireccionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

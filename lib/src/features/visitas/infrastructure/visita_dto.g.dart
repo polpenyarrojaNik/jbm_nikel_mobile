@@ -6,7 +6,8 @@ part of 'visita_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_VisitaDTO _$$_VisitaDTOFromJson(Map<String, dynamic> json) => _$_VisitaDTO(
+_$VisitaDTOImpl _$$VisitaDTOImplFromJson(Map<String, dynamic> json) =>
+    _$VisitaDTOImpl(
       id: json['VISITA_ID'] as String,
       fecha: DateTime.parse(json['FECHA'] as String),
       clienteId: json['CLIENTE_ID'] as String?,
@@ -28,7 +29,7 @@ _$_VisitaDTO _$$_VisitaDTOFromJson(Map<String, dynamic> json) => _$_VisitaDTO(
       deleted: json['DELETED'] as String? ?? 'N',
     );
 
-Map<String, dynamic> _$$_VisitaDTOToJson(_$_VisitaDTO instance) =>
+Map<String, dynamic> _$$VisitaDTOImplToJson(_$VisitaDTOImpl instance) =>
     <String, dynamic>{
       'VISITA_ID': instance.id,
       'FECHA': instance.fecha.toIso8601String(),

@@ -89,11 +89,11 @@ class _$ArticuloDocumentoDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ArticuloDocumentoDTOCopyWith<$Res>
+abstract class _$$ArticuloDocumentoDTOImplCopyWith<$Res>
     implements $ArticuloDocumentoDTOCopyWith<$Res> {
-  factory _$$_ArticuloDocumentoDTOCopyWith(_$_ArticuloDocumentoDTO value,
-          $Res Function(_$_ArticuloDocumentoDTO) then) =
-      __$$_ArticuloDocumentoDTOCopyWithImpl<$Res>;
+  factory _$$ArticuloDocumentoDTOImplCopyWith(_$ArticuloDocumentoDTOImpl value,
+          $Res Function(_$ArticuloDocumentoDTOImpl) then) =
+      __$$ArticuloDocumentoDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -104,11 +104,11 @@ abstract class _$$_ArticuloDocumentoDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ArticuloDocumentoDTOCopyWithImpl<$Res>
-    extends _$ArticuloDocumentoDTOCopyWithImpl<$Res, _$_ArticuloDocumentoDTO>
-    implements _$$_ArticuloDocumentoDTOCopyWith<$Res> {
-  __$$_ArticuloDocumentoDTOCopyWithImpl(_$_ArticuloDocumentoDTO _value,
-      $Res Function(_$_ArticuloDocumentoDTO) _then)
+class __$$ArticuloDocumentoDTOImplCopyWithImpl<$Res>
+    extends _$ArticuloDocumentoDTOCopyWithImpl<$Res, _$ArticuloDocumentoDTOImpl>
+    implements _$$ArticuloDocumentoDTOImplCopyWith<$Res> {
+  __$$ArticuloDocumentoDTOImplCopyWithImpl(_$ArticuloDocumentoDTOImpl _value,
+      $Res Function(_$ArticuloDocumentoDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -119,7 +119,7 @@ class __$$_ArticuloDocumentoDTOCopyWithImpl<$Res>
     Object? idiomaId = null,
     Object? observaciones = freezed,
   }) {
-    return _then(_$_ArticuloDocumentoDTO(
+    return _then(_$ArticuloDocumentoDTOImpl(
       articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
@@ -142,16 +142,16 @@ class __$$_ArticuloDocumentoDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ArticuloDocumentoDTO extends _ArticuloDocumentoDTO {
-  const _$_ArticuloDocumentoDTO(
+class _$ArticuloDocumentoDTOImpl extends _ArticuloDocumentoDTO {
+  const _$ArticuloDocumentoDTOImpl(
       {@JsonKey(name: 'ARTICULO_ID') required this.articuloId,
       @JsonKey(name: 'NOMBRE_ARCHIVO') this.nombreArchivo,
       @JsonKey(name: 'IDIOMA_ID') required this.idiomaId,
       @JsonKey(name: 'OBSERVACIONES') this.observaciones})
       : super._();
 
-  factory _$_ArticuloDocumentoDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_ArticuloDocumentoDTOFromJson(json);
+  factory _$ArticuloDocumentoDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ArticuloDocumentoDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'ARTICULO_ID')
@@ -175,7 +175,7 @@ class _$_ArticuloDocumentoDTO extends _ArticuloDocumentoDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ArticuloDocumentoDTO &&
+            other is _$ArticuloDocumentoDTOImpl &&
             (identical(other.articuloId, articuloId) ||
                 other.articuloId == articuloId) &&
             (identical(other.nombreArchivo, nombreArchivo) ||
@@ -194,13 +194,14 @@ class _$_ArticuloDocumentoDTO extends _ArticuloDocumentoDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArticuloDocumentoDTOCopyWith<_$_ArticuloDocumentoDTO> get copyWith =>
-      __$$_ArticuloDocumentoDTOCopyWithImpl<_$_ArticuloDocumentoDTO>(
-          this, _$identity);
+  _$$ArticuloDocumentoDTOImplCopyWith<_$ArticuloDocumentoDTOImpl>
+      get copyWith =>
+          __$$ArticuloDocumentoDTOImplCopyWithImpl<_$ArticuloDocumentoDTOImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ArticuloDocumentoDTOToJson(
+    return _$$ArticuloDocumentoDTOImplToJson(
       this,
     );
   }
@@ -212,11 +213,11 @@ abstract class _ArticuloDocumentoDTO extends ArticuloDocumentoDTO {
           @JsonKey(name: 'NOMBRE_ARCHIVO') final String? nombreArchivo,
           @JsonKey(name: 'IDIOMA_ID') required final String idiomaId,
           @JsonKey(name: 'OBSERVACIONES') final String? observaciones}) =
-      _$_ArticuloDocumentoDTO;
+      _$ArticuloDocumentoDTOImpl;
   const _ArticuloDocumentoDTO._() : super._();
 
   factory _ArticuloDocumentoDTO.fromJson(Map<String, dynamic> json) =
-      _$_ArticuloDocumentoDTO.fromJson;
+      _$ArticuloDocumentoDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'ARTICULO_ID')
@@ -232,6 +233,6 @@ abstract class _ArticuloDocumentoDTO extends ArticuloDocumentoDTO {
   String? get observaciones;
   @override
   @JsonKey(ignore: true)
-  _$$_ArticuloDocumentoDTOCopyWith<_$_ArticuloDocumentoDTO> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ArticuloDocumentoDTOImplCopyWith<_$ArticuloDocumentoDTOImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

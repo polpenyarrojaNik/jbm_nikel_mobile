@@ -86,11 +86,11 @@ class _$NotificacionCopyWithImpl<$Res, $Val extends Notificacion>
 }
 
 /// @nodoc
-abstract class _$$_NotificacionCopyWith<$Res>
+abstract class _$$NotificacionImplCopyWith<$Res>
     implements $NotificacionCopyWith<$Res> {
-  factory _$$_NotificacionCopyWith(
-          _$_Notificacion value, $Res Function(_$_Notificacion) then) =
-      __$$_NotificacionCopyWithImpl<$Res>;
+  factory _$$NotificacionImplCopyWith(
+          _$NotificacionImpl value, $Res Function(_$NotificacionImpl) then) =
+      __$$NotificacionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -102,11 +102,11 @@ abstract class _$$_NotificacionCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_NotificacionCopyWithImpl<$Res>
-    extends _$NotificacionCopyWithImpl<$Res, _$_Notificacion>
-    implements _$$_NotificacionCopyWith<$Res> {
-  __$$_NotificacionCopyWithImpl(
-      _$_Notificacion _value, $Res Function(_$_Notificacion) _then)
+class __$$NotificacionImplCopyWithImpl<$Res>
+    extends _$NotificacionCopyWithImpl<$Res, _$NotificacionImpl>
+    implements _$$NotificacionImplCopyWith<$Res> {
+  __$$NotificacionImplCopyWithImpl(
+      _$NotificacionImpl _value, $Res Function(_$NotificacionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -118,7 +118,7 @@ class __$$_NotificacionCopyWithImpl<$Res>
     Object? leidoSN = null,
     Object? mensaje = null,
   }) {
-    return _then(_$_Notificacion(
+    return _then(_$NotificacionImpl(
       notificationId: null == notificationId
           ? _value.notificationId
           : notificationId // ignore: cast_nullable_to_non_nullable
@@ -145,8 +145,8 @@ class __$$_NotificacionCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Notificacion extends _Notificacion {
-  const _$_Notificacion(
+class _$NotificacionImpl extends _Notificacion {
+  const _$NotificacionImpl(
       {required this.notificationId,
       required this.fecha,
       required this.usuarioId,
@@ -174,7 +174,7 @@ class _$_Notificacion extends _Notificacion {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Notificacion &&
+            other is _$NotificacionImpl &&
             (identical(other.notificationId, notificationId) ||
                 other.notificationId == notificationId) &&
             (identical(other.fecha, fecha) || other.fecha == fecha) &&
@@ -191,8 +191,8 @@ class _$_Notificacion extends _Notificacion {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NotificacionCopyWith<_$_Notificacion> get copyWith =>
-      __$$_NotificacionCopyWithImpl<_$_Notificacion>(this, _$identity);
+  _$$NotificacionImplCopyWith<_$NotificacionImpl> get copyWith =>
+      __$$NotificacionImplCopyWithImpl<_$NotificacionImpl>(this, _$identity);
 }
 
 abstract class _Notificacion extends Notificacion {
@@ -201,7 +201,7 @@ abstract class _Notificacion extends Notificacion {
       required final DateTime fecha,
       required final String usuarioId,
       required final bool leidoSN,
-      required final String mensaje}) = _$_Notificacion;
+      required final String mensaje}) = _$NotificacionImpl;
   const _Notificacion._() : super._();
 
   @override
@@ -216,6 +216,6 @@ abstract class _Notificacion extends Notificacion {
   String get mensaje;
   @override
   @JsonKey(ignore: true)
-  _$$_NotificacionCopyWith<_$_Notificacion> get copyWith =>
+  _$$NotificacionImplCopyWith<_$NotificacionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

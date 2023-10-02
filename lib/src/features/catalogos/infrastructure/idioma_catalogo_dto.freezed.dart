@@ -144,11 +144,11 @@ class _$IdiomaCatalogoDTOCopyWithImpl<$Res, $Val extends IdiomaCatalogoDTO>
 }
 
 /// @nodoc
-abstract class _$$_IdiomaCatalogoDTOCopyWith<$Res>
+abstract class _$$IdiomaCatalogoDTOImplCopyWith<$Res>
     implements $IdiomaCatalogoDTOCopyWith<$Res> {
-  factory _$$_IdiomaCatalogoDTOCopyWith(_$_IdiomaCatalogoDTO value,
-          $Res Function(_$_IdiomaCatalogoDTO) then) =
-      __$$_IdiomaCatalogoDTOCopyWithImpl<$Res>;
+  factory _$$IdiomaCatalogoDTOImplCopyWith(_$IdiomaCatalogoDTOImpl value,
+          $Res Function(_$IdiomaCatalogoDTOImpl) then) =
+      __$$IdiomaCatalogoDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -166,11 +166,11 @@ abstract class _$$_IdiomaCatalogoDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_IdiomaCatalogoDTOCopyWithImpl<$Res>
-    extends _$IdiomaCatalogoDTOCopyWithImpl<$Res, _$_IdiomaCatalogoDTO>
-    implements _$$_IdiomaCatalogoDTOCopyWith<$Res> {
-  __$$_IdiomaCatalogoDTOCopyWithImpl(
-      _$_IdiomaCatalogoDTO _value, $Res Function(_$_IdiomaCatalogoDTO) _then)
+class __$$IdiomaCatalogoDTOImplCopyWithImpl<$Res>
+    extends _$IdiomaCatalogoDTOCopyWithImpl<$Res, _$IdiomaCatalogoDTOImpl>
+    implements _$$IdiomaCatalogoDTOImplCopyWith<$Res> {
+  __$$IdiomaCatalogoDTOImplCopyWithImpl(_$IdiomaCatalogoDTOImpl _value,
+      $Res Function(_$IdiomaCatalogoDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -188,7 +188,7 @@ class __$$_IdiomaCatalogoDTOCopyWithImpl<$Res>
     Object? descripcionNL = freezed,
     Object? descripcionPL = freezed,
   }) {
-    return _then(_$_IdiomaCatalogoDTO(
+    return _then(_$IdiomaCatalogoDTOImpl(
       idiomaId: null == idiomaId
           ? _value.idiomaId
           : idiomaId // ignore: cast_nullable_to_non_nullable
@@ -239,8 +239,8 @@ class __$$_IdiomaCatalogoDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_IdiomaCatalogoDTO extends _IdiomaCatalogoDTO {
-  const _$_IdiomaCatalogoDTO(
+class _$IdiomaCatalogoDTOImpl extends _IdiomaCatalogoDTO {
+  const _$IdiomaCatalogoDTOImpl(
       {@JsonKey(name: 'IDIOMA_ID') required this.idiomaId,
       @JsonKey(name: 'DESCRIPCION_ES') required this.descripcionES,
       @JsonKey(name: 'DESCRIPCION_EN') this.descripcionEN,
@@ -254,8 +254,8 @@ class _$_IdiomaCatalogoDTO extends _IdiomaCatalogoDTO {
       @JsonKey(name: 'DESCRIPCION_PL') this.descripcionPL})
       : super._();
 
-  factory _$_IdiomaCatalogoDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_IdiomaCatalogoDTOFromJson(json);
+  factory _$IdiomaCatalogoDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$IdiomaCatalogoDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'IDIOMA_ID')
@@ -300,7 +300,7 @@ class _$_IdiomaCatalogoDTO extends _IdiomaCatalogoDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_IdiomaCatalogoDTO &&
+            other is _$IdiomaCatalogoDTOImpl &&
             (identical(other.idiomaId, idiomaId) ||
                 other.idiomaId == idiomaId) &&
             (identical(other.descripcionES, descripcionES) ||
@@ -344,13 +344,13 @@ class _$_IdiomaCatalogoDTO extends _IdiomaCatalogoDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_IdiomaCatalogoDTOCopyWith<_$_IdiomaCatalogoDTO> get copyWith =>
-      __$$_IdiomaCatalogoDTOCopyWithImpl<_$_IdiomaCatalogoDTO>(
+  _$$IdiomaCatalogoDTOImplCopyWith<_$IdiomaCatalogoDTOImpl> get copyWith =>
+      __$$IdiomaCatalogoDTOImplCopyWithImpl<_$IdiomaCatalogoDTOImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_IdiomaCatalogoDTOToJson(
+    return _$$IdiomaCatalogoDTOImplToJson(
       this,
     );
   }
@@ -369,11 +369,11 @@ abstract class _IdiomaCatalogoDTO extends IdiomaCatalogoDTO {
           @JsonKey(name: 'DESCRIPCION_IT') final String? descripcionIT,
           @JsonKey(name: 'DESCRIPCION_NL') final String? descripcionNL,
           @JsonKey(name: 'DESCRIPCION_PL') final String? descripcionPL}) =
-      _$_IdiomaCatalogoDTO;
+      _$IdiomaCatalogoDTOImpl;
   const _IdiomaCatalogoDTO._() : super._();
 
   factory _IdiomaCatalogoDTO.fromJson(Map<String, dynamic> json) =
-      _$_IdiomaCatalogoDTO.fromJson;
+      _$IdiomaCatalogoDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'IDIOMA_ID')
@@ -410,6 +410,6 @@ abstract class _IdiomaCatalogoDTO extends IdiomaCatalogoDTO {
   String? get descripcionPL;
   @override
   @JsonKey(ignore: true)
-  _$$_IdiomaCatalogoDTOCopyWith<_$_IdiomaCatalogoDTO> get copyWith =>
+  _$$IdiomaCatalogoDTOImplCopyWith<_$IdiomaCatalogoDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

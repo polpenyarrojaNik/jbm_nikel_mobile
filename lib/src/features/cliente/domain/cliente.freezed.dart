@@ -512,10 +512,10 @@ class _$ClienteCopyWithImpl<$Res, $Val extends Cliente>
 }
 
 /// @nodoc
-abstract class _$$_ClienteCopyWith<$Res> implements $ClienteCopyWith<$Res> {
-  factory _$$_ClienteCopyWith(
-          _$_Cliente value, $Res Function(_$_Cliente) then) =
-      __$$_ClienteCopyWithImpl<$Res>;
+abstract class _$$ClienteImplCopyWith<$Res> implements $ClienteCopyWith<$Res> {
+  factory _$$ClienteImplCopyWith(
+          _$ClienteImpl value, $Res Function(_$ClienteImpl) then) =
+      __$$ClienteImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -589,10 +589,11 @@ abstract class _$$_ClienteCopyWith<$Res> implements $ClienteCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ClienteCopyWithImpl<$Res>
-    extends _$ClienteCopyWithImpl<$Res, _$_Cliente>
-    implements _$$_ClienteCopyWith<$Res> {
-  __$$_ClienteCopyWithImpl(_$_Cliente _value, $Res Function(_$_Cliente) _then)
+class __$$ClienteImplCopyWithImpl<$Res>
+    extends _$ClienteCopyWithImpl<$Res, _$ClienteImpl>
+    implements _$$ClienteImplCopyWith<$Res> {
+  __$$ClienteImplCopyWithImpl(
+      _$ClienteImpl _value, $Res Function(_$ClienteImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -653,7 +654,7 @@ class __$$_ClienteCopyWithImpl<$Res>
     Object? lastUpdated = freezed,
     Object? deleted = null,
   }) {
-    return _then(_$_Cliente(
+    return _then(_$ClienteImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -876,8 +877,8 @@ class __$$_ClienteCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Cliente extends _Cliente {
-  const _$_Cliente(
+class _$ClienteImpl extends _Cliente {
+  const _$ClienteImpl(
       {required this.id,
       required this.nombreCliente,
       required this.nombreFiscal,
@@ -1052,7 +1053,7 @@ class _$_Cliente extends _Cliente {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Cliente &&
+            other is _$ClienteImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.nombreCliente, nombreCliente) ||
                 other.nombreCliente == nombreCliente) &&
@@ -1212,8 +1213,8 @@ class _$_Cliente extends _Cliente {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClienteCopyWith<_$_Cliente> get copyWith =>
-      __$$_ClienteCopyWithImpl<_$_Cliente>(this, _$identity);
+  _$$ClienteImplCopyWith<_$ClienteImpl> get copyWith =>
+      __$$ClienteImplCopyWithImpl<_$ClienteImpl>(this, _$identity);
 }
 
 abstract class _Cliente extends Cliente {
@@ -1271,7 +1272,7 @@ abstract class _Cliente extends Cliente {
       final String? representante2Id,
       final String? representante2Nombre,
       final DateTime? lastUpdated,
-      required final bool deleted}) = _$_Cliente;
+      required final bool deleted}) = _$ClienteImpl;
   const _Cliente._() : super._();
 
   @override
@@ -1384,6 +1385,6 @@ abstract class _Cliente extends Cliente {
   bool get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_ClienteCopyWith<_$_Cliente> get copyWith =>
+  _$$ClienteImplCopyWith<_$ClienteImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

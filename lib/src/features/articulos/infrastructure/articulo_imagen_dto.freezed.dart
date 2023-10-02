@@ -72,11 +72,11 @@ class _$ArticuloImagenDTOCopyWithImpl<$Res, $Val extends ArticuloImagenDTO>
 }
 
 /// @nodoc
-abstract class _$$_ArticuloImagenDTOCopyWith<$Res>
+abstract class _$$ArticuloImagenDTOImplCopyWith<$Res>
     implements $ArticuloImagenDTOCopyWith<$Res> {
-  factory _$$_ArticuloImagenDTOCopyWith(_$_ArticuloImagenDTO value,
-          $Res Function(_$_ArticuloImagenDTO) then) =
-      __$$_ArticuloImagenDTOCopyWithImpl<$Res>;
+  factory _$$ArticuloImagenDTOImplCopyWith(_$ArticuloImagenDTOImpl value,
+          $Res Function(_$ArticuloImagenDTOImpl) then) =
+      __$$ArticuloImagenDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -85,11 +85,11 @@ abstract class _$$_ArticuloImagenDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ArticuloImagenDTOCopyWithImpl<$Res>
-    extends _$ArticuloImagenDTOCopyWithImpl<$Res, _$_ArticuloImagenDTO>
-    implements _$$_ArticuloImagenDTOCopyWith<$Res> {
-  __$$_ArticuloImagenDTOCopyWithImpl(
-      _$_ArticuloImagenDTO _value, $Res Function(_$_ArticuloImagenDTO) _then)
+class __$$ArticuloImagenDTOImplCopyWithImpl<$Res>
+    extends _$ArticuloImagenDTOCopyWithImpl<$Res, _$ArticuloImagenDTOImpl>
+    implements _$$ArticuloImagenDTOImplCopyWith<$Res> {
+  __$$ArticuloImagenDTOImplCopyWithImpl(_$ArticuloImagenDTOImpl _value,
+      $Res Function(_$ArticuloImagenDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -98,7 +98,7 @@ class __$$_ArticuloImagenDTOCopyWithImpl<$Res>
     Object? articuloId = null,
     Object? nombreArchivo = null,
   }) {
-    return _then(_$_ArticuloImagenDTO(
+    return _then(_$ArticuloImagenDTOImpl(
       articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
@@ -113,14 +113,14 @@ class __$$_ArticuloImagenDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ArticuloImagenDTO extends _ArticuloImagenDTO {
-  const _$_ArticuloImagenDTO(
+class _$ArticuloImagenDTOImpl extends _ArticuloImagenDTO {
+  const _$ArticuloImagenDTOImpl(
       {@JsonKey(name: 'ARTICULO_ID') required this.articuloId,
       @JsonKey(name: 'NOMBRE_ARCHIVO') required this.nombreArchivo})
       : super._();
 
-  factory _$_ArticuloImagenDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_ArticuloImagenDTOFromJson(json);
+  factory _$ArticuloImagenDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ArticuloImagenDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'ARTICULO_ID')
@@ -138,7 +138,7 @@ class _$_ArticuloImagenDTO extends _ArticuloImagenDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ArticuloImagenDTO &&
+            other is _$ArticuloImagenDTOImpl &&
             (identical(other.articuloId, articuloId) ||
                 other.articuloId == articuloId) &&
             (identical(other.nombreArchivo, nombreArchivo) ||
@@ -152,13 +152,13 @@ class _$_ArticuloImagenDTO extends _ArticuloImagenDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArticuloImagenDTOCopyWith<_$_ArticuloImagenDTO> get copyWith =>
-      __$$_ArticuloImagenDTOCopyWithImpl<_$_ArticuloImagenDTO>(
+  _$$ArticuloImagenDTOImplCopyWith<_$ArticuloImagenDTOImpl> get copyWith =>
+      __$$ArticuloImagenDTOImplCopyWithImpl<_$ArticuloImagenDTOImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ArticuloImagenDTOToJson(
+    return _$$ArticuloImagenDTOImplToJson(
       this,
     );
   }
@@ -168,11 +168,11 @@ abstract class _ArticuloImagenDTO extends ArticuloImagenDTO {
   const factory _ArticuloImagenDTO(
       {@JsonKey(name: 'ARTICULO_ID') required final String articuloId,
       @JsonKey(name: 'NOMBRE_ARCHIVO')
-      required final String nombreArchivo}) = _$_ArticuloImagenDTO;
+      required final String nombreArchivo}) = _$ArticuloImagenDTOImpl;
   const _ArticuloImagenDTO._() : super._();
 
   factory _ArticuloImagenDTO.fromJson(Map<String, dynamic> json) =
-      _$_ArticuloImagenDTO.fromJson;
+      _$ArticuloImagenDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'ARTICULO_ID')
@@ -182,6 +182,6 @@ abstract class _ArticuloImagenDTO extends ArticuloImagenDTO {
   String get nombreArchivo;
   @override
   @JsonKey(ignore: true)
-  _$$_ArticuloImagenDTOCopyWith<_$_ArticuloImagenDTO> get copyWith =>
+  _$$ArticuloImagenDTOImplCopyWith<_$ArticuloImagenDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -6,9 +6,9 @@ part of 'cliente_grupo_neto_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ClienteGrupoNetoDTO _$$_ClienteGrupoNetoDTOFromJson(
+_$ClienteGrupoNetoDTOImpl _$$ClienteGrupoNetoDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_ClienteGrupoNetoDTO(
+    _$ClienteGrupoNetoDTOImpl(
       clienteId: json['CLIENTE_ID'] as String,
       grupoNetoId: json['GRUPO_NETO_ID'] as String,
       grupoNetoDescripcion: json['GRUPO_NETO_DESCRIPCION'] as String,
@@ -17,8 +17,8 @@ _$_ClienteGrupoNetoDTO _$$_ClienteGrupoNetoDTOFromJson(
       deleted: json['DELETED'] as String? ?? 'N',
     );
 
-Map<String, dynamic> _$$_ClienteGrupoNetoDTOToJson(
-        _$_ClienteGrupoNetoDTO instance) =>
+Map<String, dynamic> _$$ClienteGrupoNetoDTOImplToJson(
+        _$ClienteGrupoNetoDTOImpl instance) =>
     <String, dynamic>{
       'CLIENTE_ID': instance.clienteId,
       'GRUPO_NETO_ID': instance.grupoNetoId,

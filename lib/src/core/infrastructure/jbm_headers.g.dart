@@ -6,14 +6,14 @@ part of 'jbm_headers.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_JBMHeaders _$$_JBMHeadersFromJson(Map<String, dynamic> json) =>
-    _$_JBMHeaders(
+_$JBMHeadersImpl _$$JBMHeadersImplFromJson(Map<String, dynamic> json) =>
+    _$JBMHeadersImpl(
       etag: json['etag'] as String?,
       maxPage: json['maxPage'] as int?,
       totalRows: json['totalRows'] as int?,
     );
 
-Map<String, dynamic> _$$_JBMHeadersToJson(_$_JBMHeaders instance) =>
+Map<String, dynamic> _$$JBMHeadersImplToJson(_$JBMHeadersImpl instance) =>
     <String, dynamic>{
       'etag': instance.etag,
       'maxPage': instance.maxPage,

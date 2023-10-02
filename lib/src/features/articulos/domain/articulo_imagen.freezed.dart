@@ -69,22 +69,22 @@ class _$ArticuloImagenCopyWithImpl<$Res, $Val extends ArticuloImagen>
 }
 
 /// @nodoc
-abstract class _$$_ArticuloImagenCopyWith<$Res>
+abstract class _$$ArticuloImagenImplCopyWith<$Res>
     implements $ArticuloImagenCopyWith<$Res> {
-  factory _$$_ArticuloImagenCopyWith(
-          _$_ArticuloImagen value, $Res Function(_$_ArticuloImagen) then) =
-      __$$_ArticuloImagenCopyWithImpl<$Res>;
+  factory _$$ArticuloImagenImplCopyWith(_$ArticuloImagenImpl value,
+          $Res Function(_$ArticuloImagenImpl) then) =
+      __$$ArticuloImagenImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String articuloId, String nombreArchivo, String url});
 }
 
 /// @nodoc
-class __$$_ArticuloImagenCopyWithImpl<$Res>
-    extends _$ArticuloImagenCopyWithImpl<$Res, _$_ArticuloImagen>
-    implements _$$_ArticuloImagenCopyWith<$Res> {
-  __$$_ArticuloImagenCopyWithImpl(
-      _$_ArticuloImagen _value, $Res Function(_$_ArticuloImagen) _then)
+class __$$ArticuloImagenImplCopyWithImpl<$Res>
+    extends _$ArticuloImagenCopyWithImpl<$Res, _$ArticuloImagenImpl>
+    implements _$$ArticuloImagenImplCopyWith<$Res> {
+  __$$ArticuloImagenImplCopyWithImpl(
+      _$ArticuloImagenImpl _value, $Res Function(_$ArticuloImagenImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -94,7 +94,7 @@ class __$$_ArticuloImagenCopyWithImpl<$Res>
     Object? nombreArchivo = null,
     Object? url = null,
   }) {
-    return _then(_$_ArticuloImagen(
+    return _then(_$ArticuloImagenImpl(
       articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
@@ -113,8 +113,8 @@ class __$$_ArticuloImagenCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ArticuloImagen extends _ArticuloImagen {
-  const _$_ArticuloImagen(
+class _$ArticuloImagenImpl extends _ArticuloImagen {
+  const _$ArticuloImagenImpl(
       {required this.articuloId,
       required this.nombreArchivo,
       required this.url})
@@ -136,7 +136,7 @@ class _$_ArticuloImagen extends _ArticuloImagen {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ArticuloImagen &&
+            other is _$ArticuloImagenImpl &&
             (identical(other.articuloId, articuloId) ||
                 other.articuloId == articuloId) &&
             (identical(other.nombreArchivo, nombreArchivo) ||
@@ -150,15 +150,16 @@ class _$_ArticuloImagen extends _ArticuloImagen {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArticuloImagenCopyWith<_$_ArticuloImagen> get copyWith =>
-      __$$_ArticuloImagenCopyWithImpl<_$_ArticuloImagen>(this, _$identity);
+  _$$ArticuloImagenImplCopyWith<_$ArticuloImagenImpl> get copyWith =>
+      __$$ArticuloImagenImplCopyWithImpl<_$ArticuloImagenImpl>(
+          this, _$identity);
 }
 
 abstract class _ArticuloImagen extends ArticuloImagen {
   const factory _ArticuloImagen(
       {required final String articuloId,
       required final String nombreArchivo,
-      required final String url}) = _$_ArticuloImagen;
+      required final String url}) = _$ArticuloImagenImpl;
   const _ArticuloImagen._() : super._();
 
   @override
@@ -169,6 +170,6 @@ abstract class _ArticuloImagen extends ArticuloImagen {
   String get url;
   @override
   @JsonKey(ignore: true)
-  _$$_ArticuloImagenCopyWith<_$_ArticuloImagen> get copyWith =>
+  _$$ArticuloImagenImplCopyWith<_$ArticuloImagenImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

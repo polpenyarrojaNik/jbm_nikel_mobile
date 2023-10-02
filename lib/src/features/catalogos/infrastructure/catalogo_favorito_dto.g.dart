@@ -6,15 +6,15 @@ part of 'catalogo_favorito_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CatalogoFavoritoDTO _$$_CatalogoFavoritoDTOFromJson(
+_$CatalogoFavoritoDTOImpl _$$CatalogoFavoritoDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_CatalogoFavoritoDTO(
+    _$CatalogoFavoritoDTOImpl(
       id: json['ID'] as int,
       catalogoId: json['CATALOGO_ID'] as int,
     );
 
-Map<String, dynamic> _$$_CatalogoFavoritoDTOToJson(
-        _$_CatalogoFavoritoDTO instance) =>
+Map<String, dynamic> _$$CatalogoFavoritoDTOImplToJson(
+        _$CatalogoFavoritoDTOImpl instance) =>
     <String, dynamic>{
       'ID': instance.id,
       'CATALOGO_ID': instance.catalogoId,

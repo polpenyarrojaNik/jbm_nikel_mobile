@@ -5,6 +5,7 @@ import 'package:country_codes/country_codes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:money2/money2.dart';
 
 import 'src/core/application/log_service.dart';
 import 'src/core/presentation/app.dart';
@@ -16,6 +17,11 @@ void main() async {
       await CountryCodes.init();
 
       await dotenv.load();
+
+      Currencies().registerList([
+        Currency.create('GB', 2,
+            symbol: '£', invertSeparators: true, pattern: 'S#.##0,##'),
+      ]);
 
       runApp(
         ProviderScope(

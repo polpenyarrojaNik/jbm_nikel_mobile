@@ -112,24 +112,25 @@ class _$VisitaEditPageControllerStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_loadingCopyWith<$Res> {
-  factory _$$_loadingCopyWith(
-          _$_loading value, $Res Function(_$_loading) then) =
-      __$$_loadingCopyWithImpl<$Res>;
+abstract class _$$loadingImplCopyWith<$Res> {
+  factory _$$loadingImplCopyWith(
+          _$loadingImpl value, $Res Function(_$loadingImpl) then) =
+      __$$loadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_loadingCopyWithImpl<$Res>
-    extends _$VisitaEditPageControllerStateCopyWithImpl<$Res, _$_loading>
-    implements _$$_loadingCopyWith<$Res> {
-  __$$_loadingCopyWithImpl(_$_loading _value, $Res Function(_$_loading) _then)
+class __$$loadingImplCopyWithImpl<$Res>
+    extends _$VisitaEditPageControllerStateCopyWithImpl<$Res, _$loadingImpl>
+    implements _$$loadingImplCopyWith<$Res> {
+  __$$loadingImplCopyWithImpl(
+      _$loadingImpl _value, $Res Function(_$loadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_loading extends _loading {
-  const _$_loading() : super._();
+class _$loadingImpl extends _loading {
+  const _$loadingImpl() : super._();
 
   @override
   String toString() {
@@ -139,7 +140,7 @@ class _$_loading extends _loading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_loading);
+        (other.runtimeType == runtimeType && other is _$loadingImpl);
   }
 
   @override
@@ -243,14 +244,15 @@ class _$_loading extends _loading {
 }
 
 abstract class _loading extends VisitaEditPageControllerState {
-  const factory _loading() = _$_loading;
+  const factory _loading() = _$loadingImpl;
   const _loading._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_dataCopyWith<$Res> {
-  factory _$$_dataCopyWith(_$_data value, $Res Function(_$_data) then) =
-      __$$_dataCopyWithImpl<$Res>;
+abstract class _$$dataImplCopyWith<$Res> {
+  factory _$$dataImplCopyWith(
+          _$dataImpl value, $Res Function(_$dataImpl) then) =
+      __$$dataImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Visita? visitaLocal});
 
@@ -258,10 +260,10 @@ abstract class _$$_dataCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_dataCopyWithImpl<$Res>
-    extends _$VisitaEditPageControllerStateCopyWithImpl<$Res, _$_data>
-    implements _$$_dataCopyWith<$Res> {
-  __$$_dataCopyWithImpl(_$_data _value, $Res Function(_$_data) _then)
+class __$$dataImplCopyWithImpl<$Res>
+    extends _$VisitaEditPageControllerStateCopyWithImpl<$Res, _$dataImpl>
+    implements _$$dataImplCopyWith<$Res> {
+  __$$dataImplCopyWithImpl(_$dataImpl _value, $Res Function(_$dataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -269,7 +271,7 @@ class __$$_dataCopyWithImpl<$Res>
   $Res call({
     Object? visitaLocal = freezed,
   }) {
-    return _then(_$_data(
+    return _then(_$dataImpl(
       freezed == visitaLocal
           ? _value.visitaLocal
           : visitaLocal // ignore: cast_nullable_to_non_nullable
@@ -292,8 +294,8 @@ class __$$_dataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_data extends _data {
-  const _$_data(this.visitaLocal) : super._();
+class _$dataImpl extends _data {
+  const _$dataImpl(this.visitaLocal) : super._();
 
   @override
   final Visita? visitaLocal;
@@ -307,7 +309,7 @@ class _$_data extends _data {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_data &&
+            other is _$dataImpl &&
             (identical(other.visitaLocal, visitaLocal) ||
                 other.visitaLocal == visitaLocal));
   }
@@ -318,8 +320,8 @@ class _$_data extends _data {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_dataCopyWith<_$_data> get copyWith =>
-      __$$_dataCopyWithImpl<_$_data>(this, _$identity);
+  _$$dataImplCopyWith<_$dataImpl> get copyWith =>
+      __$$dataImplCopyWithImpl<_$dataImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -419,27 +421,30 @@ class _$_data extends _data {
 }
 
 abstract class _data extends VisitaEditPageControllerState {
-  const factory _data(final Visita? visitaLocal) = _$_data;
+  const factory _data(final Visita? visitaLocal) = _$dataImpl;
   const _data._() : super._();
 
   Visita? get visitaLocal;
   @JsonKey(ignore: true)
-  _$$_dataCopyWith<_$_data> get copyWith => throw _privateConstructorUsedError;
+  _$$dataImplCopyWith<_$dataImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_errorCopyWith<$Res> {
-  factory _$$_errorCopyWith(_$_error value, $Res Function(_$_error) then) =
-      __$$_errorCopyWithImpl<$Res>;
+abstract class _$$errorImplCopyWith<$Res> {
+  factory _$$errorImplCopyWith(
+          _$errorImpl value, $Res Function(_$errorImpl) then) =
+      __$$errorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Object error, StackTrace? stackTrace});
 }
 
 /// @nodoc
-class __$$_errorCopyWithImpl<$Res>
-    extends _$VisitaEditPageControllerStateCopyWithImpl<$Res, _$_error>
-    implements _$$_errorCopyWith<$Res> {
-  __$$_errorCopyWithImpl(_$_error _value, $Res Function(_$_error) _then)
+class __$$errorImplCopyWithImpl<$Res>
+    extends _$VisitaEditPageControllerStateCopyWithImpl<$Res, _$errorImpl>
+    implements _$$errorImplCopyWith<$Res> {
+  __$$errorImplCopyWithImpl(
+      _$errorImpl _value, $Res Function(_$errorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -448,7 +453,7 @@ class __$$_errorCopyWithImpl<$Res>
     Object? error = null,
     Object? stackTrace = freezed,
   }) {
-    return _then(_$_error(
+    return _then(_$errorImpl(
       null == error ? _value.error : error,
       stackTrace: freezed == stackTrace
           ? _value.stackTrace
@@ -460,8 +465,8 @@ class __$$_errorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_error extends _error {
-  const _$_error(this.error, {this.stackTrace}) : super._();
+class _$errorImpl extends _error {
+  const _$errorImpl(this.error, {this.stackTrace}) : super._();
 
   @override
   final Object error;
@@ -477,7 +482,7 @@ class _$_error extends _error {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_error &&
+            other is _$errorImpl &&
             const DeepCollectionEquality().equals(other.error, error) &&
             (identical(other.stackTrace, stackTrace) ||
                 other.stackTrace == stackTrace));
@@ -490,8 +495,8 @@ class _$_error extends _error {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_errorCopyWith<_$_error> get copyWith =>
-      __$$_errorCopyWithImpl<_$_error>(this, _$identity);
+  _$$errorImplCopyWith<_$errorImpl> get copyWith =>
+      __$$errorImplCopyWithImpl<_$errorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -592,20 +597,21 @@ class _$_error extends _error {
 
 abstract class _error extends VisitaEditPageControllerState {
   const factory _error(final Object error, {final StackTrace? stackTrace}) =
-      _$_error;
+      _$errorImpl;
   const _error._() : super._();
 
   Object get error;
   StackTrace? get stackTrace;
   @JsonKey(ignore: true)
-  _$$_errorCopyWith<_$_error> get copyWith =>
+  _$$errorImplCopyWith<_$errorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_savedCopyWith<$Res> {
-  factory _$$_savedCopyWith(_$_saved value, $Res Function(_$_saved) then) =
-      __$$_savedCopyWithImpl<$Res>;
+abstract class _$$savedImplCopyWith<$Res> {
+  factory _$$savedImplCopyWith(
+          _$savedImpl value, $Res Function(_$savedImpl) then) =
+      __$$savedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Visita visitaLocal});
 
@@ -613,10 +619,11 @@ abstract class _$$_savedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_savedCopyWithImpl<$Res>
-    extends _$VisitaEditPageControllerStateCopyWithImpl<$Res, _$_saved>
-    implements _$$_savedCopyWith<$Res> {
-  __$$_savedCopyWithImpl(_$_saved _value, $Res Function(_$_saved) _then)
+class __$$savedImplCopyWithImpl<$Res>
+    extends _$VisitaEditPageControllerStateCopyWithImpl<$Res, _$savedImpl>
+    implements _$$savedImplCopyWith<$Res> {
+  __$$savedImplCopyWithImpl(
+      _$savedImpl _value, $Res Function(_$savedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -624,7 +631,7 @@ class __$$_savedCopyWithImpl<$Res>
   $Res call({
     Object? visitaLocal = null,
   }) {
-    return _then(_$_saved(
+    return _then(_$savedImpl(
       null == visitaLocal
           ? _value.visitaLocal
           : visitaLocal // ignore: cast_nullable_to_non_nullable
@@ -643,8 +650,8 @@ class __$$_savedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_saved extends _saved {
-  const _$_saved(this.visitaLocal) : super._();
+class _$savedImpl extends _saved {
+  const _$savedImpl(this.visitaLocal) : super._();
 
   @override
   final Visita visitaLocal;
@@ -658,7 +665,7 @@ class _$_saved extends _saved {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_saved &&
+            other is _$savedImpl &&
             (identical(other.visitaLocal, visitaLocal) ||
                 other.visitaLocal == visitaLocal));
   }
@@ -669,8 +676,8 @@ class _$_saved extends _saved {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_savedCopyWith<_$_saved> get copyWith =>
-      __$$_savedCopyWithImpl<_$_saved>(this, _$identity);
+  _$$savedImplCopyWith<_$savedImpl> get copyWith =>
+      __$$savedImplCopyWithImpl<_$savedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -770,19 +777,20 @@ class _$_saved extends _saved {
 }
 
 abstract class _saved extends VisitaEditPageControllerState {
-  const factory _saved(final Visita visitaLocal) = _$_saved;
+  const factory _saved(final Visita visitaLocal) = _$savedImpl;
   const _saved._() : super._();
 
   Visita get visitaLocal;
   @JsonKey(ignore: true)
-  _$$_savedCopyWith<_$_saved> get copyWith =>
+  _$$savedImplCopyWith<_$savedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_savingCopyWith<$Res> {
-  factory _$$_savingCopyWith(_$_saving value, $Res Function(_$_saving) then) =
-      __$$_savingCopyWithImpl<$Res>;
+abstract class _$$savingImplCopyWith<$Res> {
+  factory _$$savingImplCopyWith(
+          _$savingImpl value, $Res Function(_$savingImpl) then) =
+      __$$savingImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Visita visitaLocal});
 
@@ -790,10 +798,11 @@ abstract class _$$_savingCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_savingCopyWithImpl<$Res>
-    extends _$VisitaEditPageControllerStateCopyWithImpl<$Res, _$_saving>
-    implements _$$_savingCopyWith<$Res> {
-  __$$_savingCopyWithImpl(_$_saving _value, $Res Function(_$_saving) _then)
+class __$$savingImplCopyWithImpl<$Res>
+    extends _$VisitaEditPageControllerStateCopyWithImpl<$Res, _$savingImpl>
+    implements _$$savingImplCopyWith<$Res> {
+  __$$savingImplCopyWithImpl(
+      _$savingImpl _value, $Res Function(_$savingImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -801,7 +810,7 @@ class __$$_savingCopyWithImpl<$Res>
   $Res call({
     Object? visitaLocal = null,
   }) {
-    return _then(_$_saving(
+    return _then(_$savingImpl(
       null == visitaLocal
           ? _value.visitaLocal
           : visitaLocal // ignore: cast_nullable_to_non_nullable
@@ -820,8 +829,8 @@ class __$$_savingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_saving extends _saving {
-  const _$_saving(this.visitaLocal) : super._();
+class _$savingImpl extends _saving {
+  const _$savingImpl(this.visitaLocal) : super._();
 
   @override
   final Visita visitaLocal;
@@ -835,7 +844,7 @@ class _$_saving extends _saving {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_saving &&
+            other is _$savingImpl &&
             (identical(other.visitaLocal, visitaLocal) ||
                 other.visitaLocal == visitaLocal));
   }
@@ -846,8 +855,8 @@ class _$_saving extends _saving {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_savingCopyWith<_$_saving> get copyWith =>
-      __$$_savingCopyWithImpl<_$_saving>(this, _$identity);
+  _$$savingImplCopyWith<_$savingImpl> get copyWith =>
+      __$$savingImplCopyWithImpl<_$savingImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -947,20 +956,20 @@ class _$_saving extends _saving {
 }
 
 abstract class _saving extends VisitaEditPageControllerState {
-  const factory _saving(final Visita visitaLocal) = _$_saving;
+  const factory _saving(final Visita visitaLocal) = _$savingImpl;
   const _saving._() : super._();
 
   Visita get visitaLocal;
   @JsonKey(ignore: true)
-  _$$_savingCopyWith<_$_saving> get copyWith =>
+  _$$savingImplCopyWith<_$savingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_savedErrorCopyWith<$Res> {
-  factory _$$_savedErrorCopyWith(
-          _$_savedError value, $Res Function(_$_savedError) then) =
-      __$$_savedErrorCopyWithImpl<$Res>;
+abstract class _$$savedErrorImplCopyWith<$Res> {
+  factory _$$savedErrorImplCopyWith(
+          _$savedErrorImpl value, $Res Function(_$savedErrorImpl) then) =
+      __$$savedErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Visita visitaLocal, Object error, StackTrace? stackTrace});
 
@@ -968,11 +977,11 @@ abstract class _$$_savedErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_savedErrorCopyWithImpl<$Res>
-    extends _$VisitaEditPageControllerStateCopyWithImpl<$Res, _$_savedError>
-    implements _$$_savedErrorCopyWith<$Res> {
-  __$$_savedErrorCopyWithImpl(
-      _$_savedError _value, $Res Function(_$_savedError) _then)
+class __$$savedErrorImplCopyWithImpl<$Res>
+    extends _$VisitaEditPageControllerStateCopyWithImpl<$Res, _$savedErrorImpl>
+    implements _$$savedErrorImplCopyWith<$Res> {
+  __$$savedErrorImplCopyWithImpl(
+      _$savedErrorImpl _value, $Res Function(_$savedErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -982,7 +991,7 @@ class __$$_savedErrorCopyWithImpl<$Res>
     Object? error = null,
     Object? stackTrace = freezed,
   }) {
-    return _then(_$_savedError(
+    return _then(_$savedErrorImpl(
       null == visitaLocal
           ? _value.visitaLocal
           : visitaLocal // ignore: cast_nullable_to_non_nullable
@@ -1006,8 +1015,8 @@ class __$$_savedErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_savedError extends _savedError {
-  const _$_savedError(this.visitaLocal, this.error, {this.stackTrace})
+class _$savedErrorImpl extends _savedError {
+  const _$savedErrorImpl(this.visitaLocal, this.error, {this.stackTrace})
       : super._();
 
   @override
@@ -1026,7 +1035,7 @@ class _$_savedError extends _savedError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_savedError &&
+            other is _$savedErrorImpl &&
             (identical(other.visitaLocal, visitaLocal) ||
                 other.visitaLocal == visitaLocal) &&
             const DeepCollectionEquality().equals(other.error, error) &&
@@ -1041,8 +1050,8 @@ class _$_savedError extends _savedError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_savedErrorCopyWith<_$_savedError> get copyWith =>
-      __$$_savedErrorCopyWithImpl<_$_savedError>(this, _$identity);
+  _$$savedErrorImplCopyWith<_$savedErrorImpl> get copyWith =>
+      __$$savedErrorImplCopyWithImpl<_$savedErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1143,36 +1152,37 @@ class _$_savedError extends _savedError {
 
 abstract class _savedError extends VisitaEditPageControllerState {
   const factory _savedError(final Visita visitaLocal, final Object error,
-      {final StackTrace? stackTrace}) = _$_savedError;
+      {final StackTrace? stackTrace}) = _$savedErrorImpl;
   const _savedError._() : super._();
 
   Visita get visitaLocal;
   Object get error;
   StackTrace? get stackTrace;
   @JsonKey(ignore: true)
-  _$$_savedErrorCopyWith<_$_savedError> get copyWith =>
+  _$$savedErrorImplCopyWith<_$savedErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_deletedCopyWith<$Res> {
-  factory _$$_deletedCopyWith(
-          _$_deleted value, $Res Function(_$_deleted) then) =
-      __$$_deletedCopyWithImpl<$Res>;
+abstract class _$$deletedImplCopyWith<$Res> {
+  factory _$$deletedImplCopyWith(
+          _$deletedImpl value, $Res Function(_$deletedImpl) then) =
+      __$$deletedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_deletedCopyWithImpl<$Res>
-    extends _$VisitaEditPageControllerStateCopyWithImpl<$Res, _$_deleted>
-    implements _$$_deletedCopyWith<$Res> {
-  __$$_deletedCopyWithImpl(_$_deleted _value, $Res Function(_$_deleted) _then)
+class __$$deletedImplCopyWithImpl<$Res>
+    extends _$VisitaEditPageControllerStateCopyWithImpl<$Res, _$deletedImpl>
+    implements _$$deletedImplCopyWith<$Res> {
+  __$$deletedImplCopyWithImpl(
+      _$deletedImpl _value, $Res Function(_$deletedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_deleted extends _deleted {
-  const _$_deleted() : super._();
+class _$deletedImpl extends _deleted {
+  const _$deletedImpl() : super._();
 
   @override
   String toString() {
@@ -1182,7 +1192,7 @@ class _$_deleted extends _deleted {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_deleted);
+        (other.runtimeType == runtimeType && other is _$deletedImpl);
   }
 
   @override
@@ -1286,6 +1296,6 @@ class _$_deleted extends _deleted {
 }
 
 abstract class _deleted extends VisitaEditPageControllerState {
-  const factory _deleted() = _$_deleted;
+  const factory _deleted() = _$deletedImpl;
   const _deleted._() : super._();
 }

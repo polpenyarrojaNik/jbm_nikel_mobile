@@ -170,11 +170,12 @@ class _$ClienteDireccionImpDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ClienteDireccionImpDTOCopyWith<$Res>
+abstract class _$$ClienteDireccionImpDTOImplCopyWith<$Res>
     implements $ClienteDireccionImpDTOCopyWith<$Res> {
-  factory _$$_ClienteDireccionImpDTOCopyWith(_$_ClienteDireccionImpDTO value,
-          $Res Function(_$_ClienteDireccionImpDTO) then) =
-      __$$_ClienteDireccionImpDTOCopyWithImpl<$Res>;
+  factory _$$ClienteDireccionImpDTOImplCopyWith(
+          _$ClienteDireccionImpDTOImpl value,
+          $Res Function(_$ClienteDireccionImpDTOImpl) then) =
+      __$$ClienteDireccionImpDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -195,12 +196,13 @@ abstract class _$$_ClienteDireccionImpDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ClienteDireccionImpDTOCopyWithImpl<$Res>
+class __$$ClienteDireccionImpDTOImplCopyWithImpl<$Res>
     extends _$ClienteDireccionImpDTOCopyWithImpl<$Res,
-        _$_ClienteDireccionImpDTO>
-    implements _$$_ClienteDireccionImpDTOCopyWith<$Res> {
-  __$$_ClienteDireccionImpDTOCopyWithImpl(_$_ClienteDireccionImpDTO _value,
-      $Res Function(_$_ClienteDireccionImpDTO) _then)
+        _$ClienteDireccionImpDTOImpl>
+    implements _$$ClienteDireccionImpDTOImplCopyWith<$Res> {
+  __$$ClienteDireccionImpDTOImplCopyWithImpl(
+      _$ClienteDireccionImpDTOImpl _value,
+      $Res Function(_$ClienteDireccionImpDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -221,7 +223,7 @@ class __$$_ClienteDireccionImpDTOCopyWithImpl<$Res>
     Object? enviada = null,
     Object? borrar = null,
   }) {
-    return _then(_$_ClienteDireccionImpDTO(
+    return _then(_$ClienteDireccionImpDTOImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -284,8 +286,8 @@ class __$$_ClienteDireccionImpDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ClienteDireccionImpDTO extends _ClienteDireccionImpDTO {
-  const _$_ClienteDireccionImpDTO(
+class _$ClienteDireccionImpDTOImpl extends _ClienteDireccionImpDTO {
+  const _$ClienteDireccionImpDTOImpl(
       {@JsonKey(name: 'GUID') required this.id,
       @JsonKey(name: 'FECHA') required this.fecha,
       @JsonKey(name: 'USUARIO_ID') required this.usuarioId,
@@ -302,8 +304,8 @@ class _$_ClienteDireccionImpDTO extends _ClienteDireccionImpDTO {
       @JsonKey(name: 'BORRAR', defaultValue: 'N') required this.borrar})
       : super._();
 
-  factory _$_ClienteDireccionImpDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_ClienteDireccionImpDTOFromJson(json);
+  factory _$ClienteDireccionImpDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ClienteDireccionImpDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'GUID')
@@ -357,7 +359,7 @@ class _$_ClienteDireccionImpDTO extends _ClienteDireccionImpDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClienteDireccionImpDTO &&
+            other is _$ClienteDireccionImpDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.fecha, fecha) || other.fecha == fecha) &&
             (identical(other.usuarioId, usuarioId) ||
@@ -404,13 +406,13 @@ class _$_ClienteDireccionImpDTO extends _ClienteDireccionImpDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClienteDireccionImpDTOCopyWith<_$_ClienteDireccionImpDTO> get copyWith =>
-      __$$_ClienteDireccionImpDTOCopyWithImpl<_$_ClienteDireccionImpDTO>(
-          this, _$identity);
+  _$$ClienteDireccionImpDTOImplCopyWith<_$ClienteDireccionImpDTOImpl>
+      get copyWith => __$$ClienteDireccionImpDTOImplCopyWithImpl<
+          _$ClienteDireccionImpDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ClienteDireccionImpDTOToJson(
+    return _$$ClienteDireccionImpDTOImplToJson(
       this,
     );
   }
@@ -433,11 +435,11 @@ abstract class _ClienteDireccionImpDTO extends ClienteDireccionImpDTO {
       @JsonKey(name: 'ENVIADA', defaultValue: 'N')
       required final String enviada,
       @JsonKey(name: 'BORRAR', defaultValue: 'N')
-      required final String borrar}) = _$_ClienteDireccionImpDTO;
+      required final String borrar}) = _$ClienteDireccionImpDTOImpl;
   const _ClienteDireccionImpDTO._() : super._();
 
   factory _ClienteDireccionImpDTO.fromJson(Map<String, dynamic> json) =
-      _$_ClienteDireccionImpDTO.fromJson;
+      _$ClienteDireccionImpDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'GUID')
@@ -483,6 +485,6 @@ abstract class _ClienteDireccionImpDTO extends ClienteDireccionImpDTO {
   String get borrar;
   @override
   @JsonKey(ignore: true)
-  _$$_ClienteDireccionImpDTOCopyWith<_$_ClienteDireccionImpDTO> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ClienteDireccionImpDTOImplCopyWith<_$ClienteDireccionImpDTOImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

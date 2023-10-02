@@ -168,11 +168,11 @@ class _$ClienteAlrededorDTOCopyWithImpl<$Res, $Val extends ClienteAlrededorDTO>
 }
 
 /// @nodoc
-abstract class _$$_ClienteAlrededorDTOCopyWith<$Res>
+abstract class _$$ClienteAlrededorDTOImplCopyWith<$Res>
     implements $ClienteAlrededorDTOCopyWith<$Res> {
-  factory _$$_ClienteAlrededorDTOCopyWith(_$_ClienteAlrededorDTO value,
-          $Res Function(_$_ClienteAlrededorDTO) then) =
-      __$$_ClienteAlrededorDTOCopyWithImpl<$Res>;
+  factory _$$ClienteAlrededorDTOImplCopyWith(_$ClienteAlrededorDTOImpl value,
+          $Res Function(_$ClienteAlrededorDTOImpl) then) =
+      __$$ClienteAlrededorDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -195,11 +195,11 @@ abstract class _$$_ClienteAlrededorDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ClienteAlrededorDTOCopyWithImpl<$Res>
-    extends _$ClienteAlrededorDTOCopyWithImpl<$Res, _$_ClienteAlrededorDTO>
-    implements _$$_ClienteAlrededorDTOCopyWith<$Res> {
-  __$$_ClienteAlrededorDTOCopyWithImpl(_$_ClienteAlrededorDTO _value,
-      $Res Function(_$_ClienteAlrededorDTO) _then)
+class __$$ClienteAlrededorDTOImplCopyWithImpl<$Res>
+    extends _$ClienteAlrededorDTOCopyWithImpl<$Res, _$ClienteAlrededorDTOImpl>
+    implements _$$ClienteAlrededorDTOImplCopyWith<$Res> {
+  __$$ClienteAlrededorDTOImplCopyWithImpl(_$ClienteAlrededorDTOImpl _value,
+      $Res Function(_$ClienteAlrededorDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -222,7 +222,7 @@ class __$$_ClienteAlrededorDTOCopyWithImpl<$Res>
     Object? ventasAnyoActual = null,
     Object? porcentajeAbonos = null,
   }) {
-    return _then(_$_ClienteAlrededorDTO(
+    return _then(_$ClienteAlrededorDTOImpl(
       markerId: null == markerId
           ? _value.markerId
           : markerId // ignore: cast_nullable_to_non_nullable
@@ -293,8 +293,8 @@ class __$$_ClienteAlrededorDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ClienteAlrededorDTO extends _ClienteAlrededorDTO {
-  const _$_ClienteAlrededorDTO(
+class _$ClienteAlrededorDTOImpl extends _ClienteAlrededorDTO {
+  const _$ClienteAlrededorDTOImpl(
       {required this.markerId,
       required this.clienteId,
       required this.nombre,
@@ -313,8 +313,8 @@ class _$_ClienteAlrededorDTO extends _ClienteAlrededorDTO {
       required this.porcentajeAbonos})
       : super._();
 
-  factory _$_ClienteAlrededorDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_ClienteAlrededorDTOFromJson(json);
+  factory _$ClienteAlrededorDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ClienteAlrededorDTOImplFromJson(json);
 
   @override
   final String markerId;
@@ -358,7 +358,7 @@ class _$_ClienteAlrededorDTO extends _ClienteAlrededorDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClienteAlrededorDTO &&
+            other is _$ClienteAlrededorDTOImpl &&
             (identical(other.markerId, markerId) ||
                 other.markerId == markerId) &&
             (identical(other.clienteId, clienteId) ||
@@ -414,13 +414,13 @@ class _$_ClienteAlrededorDTO extends _ClienteAlrededorDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClienteAlrededorDTOCopyWith<_$_ClienteAlrededorDTO> get copyWith =>
-      __$$_ClienteAlrededorDTOCopyWithImpl<_$_ClienteAlrededorDTO>(
+  _$$ClienteAlrededorDTOImplCopyWith<_$ClienteAlrededorDTOImpl> get copyWith =>
+      __$$ClienteAlrededorDTOImplCopyWithImpl<_$ClienteAlrededorDTOImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ClienteAlrededorDTOToJson(
+    return _$$ClienteAlrededorDTOImplToJson(
       this,
     );
   }
@@ -443,11 +443,11 @@ abstract class _ClienteAlrededorDTO extends ClienteAlrededorDTO {
       final String? nombreRepresentante1,
       final String? nombreRepresentante2,
       required final double ventasAnyoActual,
-      required final double porcentajeAbonos}) = _$_ClienteAlrededorDTO;
+      required final double porcentajeAbonos}) = _$ClienteAlrededorDTOImpl;
   const _ClienteAlrededorDTO._() : super._();
 
   factory _ClienteAlrededorDTO.fromJson(Map<String, dynamic> json) =
-      _$_ClienteAlrededorDTO.fromJson;
+      _$ClienteAlrededorDTOImpl.fromJson;
 
   @override
   String get markerId;
@@ -483,6 +483,6 @@ abstract class _ClienteAlrededorDTO extends ClienteAlrededorDTO {
   double get porcentajeAbonos;
   @override
   @JsonKey(ignore: true)
-  _$$_ClienteAlrededorDTOCopyWith<_$_ClienteAlrededorDTO> get copyWith =>
+  _$$ClienteAlrededorDTOImplCopyWith<_$ClienteAlrededorDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

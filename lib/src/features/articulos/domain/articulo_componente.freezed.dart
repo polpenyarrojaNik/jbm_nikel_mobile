@@ -191,11 +191,11 @@ class _$ArticuloComponenteCopyWithImpl<$Res, $Val extends ArticuloComponente>
 }
 
 /// @nodoc
-abstract class _$$_ArticuloComponenteCopyWith<$Res>
+abstract class _$$ArticuloComponenteImplCopyWith<$Res>
     implements $ArticuloComponenteCopyWith<$Res> {
-  factory _$$_ArticuloComponenteCopyWith(_$_ArticuloComponente value,
-          $Res Function(_$_ArticuloComponente) then) =
-      __$$_ArticuloComponenteCopyWithImpl<$Res>;
+  factory _$$ArticuloComponenteImplCopyWith(_$ArticuloComponenteImpl value,
+          $Res Function(_$ArticuloComponenteImpl) then) =
+      __$$ArticuloComponenteImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -222,11 +222,11 @@ abstract class _$$_ArticuloComponenteCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ArticuloComponenteCopyWithImpl<$Res>
-    extends _$ArticuloComponenteCopyWithImpl<$Res, _$_ArticuloComponente>
-    implements _$$_ArticuloComponenteCopyWith<$Res> {
-  __$$_ArticuloComponenteCopyWithImpl(
-      _$_ArticuloComponente _value, $Res Function(_$_ArticuloComponente) _then)
+class __$$ArticuloComponenteImplCopyWithImpl<$Res>
+    extends _$ArticuloComponenteCopyWithImpl<$Res, _$ArticuloComponenteImpl>
+    implements _$$ArticuloComponenteImplCopyWith<$Res> {
+  __$$ArticuloComponenteImplCopyWithImpl(_$ArticuloComponenteImpl _value,
+      $Res Function(_$ArticuloComponenteImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -253,7 +253,7 @@ class __$$_ArticuloComponenteCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_ArticuloComponente(
+    return _then(_$ArticuloComponenteImpl(
       articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
@@ -340,8 +340,8 @@ class __$$_ArticuloComponenteCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ArticuloComponente extends _ArticuloComponente {
-  const _$_ArticuloComponente(
+class _$ArticuloComponenteImpl extends _ArticuloComponente {
+  const _$ArticuloComponenteImpl(
       {required this.articuloId,
       required this.articuloComponenteId,
       required this.descripcionES,
@@ -414,7 +414,7 @@ class _$_ArticuloComponente extends _ArticuloComponente {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ArticuloComponente &&
+            other is _$ArticuloComponenteImpl &&
             (identical(other.articuloId, articuloId) ||
                 other.articuloId == articuloId) &&
             (identical(other.articuloComponenteId, articuloComponenteId) ||
@@ -484,8 +484,8 @@ class _$_ArticuloComponente extends _ArticuloComponente {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArticuloComponenteCopyWith<_$_ArticuloComponente> get copyWith =>
-      __$$_ArticuloComponenteCopyWithImpl<_$_ArticuloComponente>(
+  _$$ArticuloComponenteImplCopyWith<_$ArticuloComponenteImpl> get copyWith =>
+      __$$ArticuloComponenteImplCopyWithImpl<_$ArticuloComponenteImpl>(
           this, _$identity);
 }
 
@@ -510,7 +510,7 @@ abstract class _ArticuloComponente extends ArticuloComponente {
       final String? descripcionEL,
       required final int cantidad,
       required final DateTime lastUpdated,
-      required final bool deleted}) = _$_ArticuloComponente;
+      required final bool deleted}) = _$ArticuloComponenteImpl;
   const _ArticuloComponente._() : super._();
 
   @override
@@ -555,6 +555,6 @@ abstract class _ArticuloComponente extends ArticuloComponente {
   bool get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_ArticuloComponenteCopyWith<_$_ArticuloComponente> get copyWith =>
+  _$$ArticuloComponenteImplCopyWith<_$ArticuloComponenteImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

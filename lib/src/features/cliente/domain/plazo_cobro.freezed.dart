@@ -177,11 +177,11 @@ class _$PlazoDeCobroCopyWithImpl<$Res, $Val extends PlazoDeCobro>
 }
 
 /// @nodoc
-abstract class _$$_PlazoDeCobroCopyWith<$Res>
+abstract class _$$PlazoDeCobroImplCopyWith<$Res>
     implements $PlazoDeCobroCopyWith<$Res> {
-  factory _$$_PlazoDeCobroCopyWith(
-          _$_PlazoDeCobro value, $Res Function(_$_PlazoDeCobro) then) =
-      __$$_PlazoDeCobroCopyWithImpl<$Res>;
+  factory _$$PlazoDeCobroImplCopyWith(
+          _$PlazoDeCobroImpl value, $Res Function(_$PlazoDeCobroImpl) then) =
+      __$$PlazoDeCobroImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -206,11 +206,11 @@ abstract class _$$_PlazoDeCobroCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PlazoDeCobroCopyWithImpl<$Res>
-    extends _$PlazoDeCobroCopyWithImpl<$Res, _$_PlazoDeCobro>
-    implements _$$_PlazoDeCobroCopyWith<$Res> {
-  __$$_PlazoDeCobroCopyWithImpl(
-      _$_PlazoDeCobro _value, $Res Function(_$_PlazoDeCobro) _then)
+class __$$PlazoDeCobroImplCopyWithImpl<$Res>
+    extends _$PlazoDeCobroCopyWithImpl<$Res, _$PlazoDeCobroImpl>
+    implements _$$PlazoDeCobroImplCopyWith<$Res> {
+  __$$PlazoDeCobroImplCopyWithImpl(
+      _$PlazoDeCobroImpl _value, $Res Function(_$PlazoDeCobroImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -235,7 +235,7 @@ class __$$_PlazoDeCobroCopyWithImpl<$Res>
     Object? lastUpdate = null,
     Object? deleted = null,
   }) {
-    return _then(_$_PlazoDeCobro(
+    return _then(_$PlazoDeCobroImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -314,8 +314,8 @@ class __$$_PlazoDeCobroCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PlazoDeCobro extends _PlazoDeCobro {
-  const _$_PlazoDeCobro(
+class _$PlazoDeCobroImpl extends _PlazoDeCobro {
+  const _$PlazoDeCobroImpl(
       {required this.id,
       required this.descripcionES,
       this.descripcionEN,
@@ -382,7 +382,7 @@ class _$_PlazoDeCobro extends _PlazoDeCobro {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PlazoDeCobro &&
+            other is _$PlazoDeCobroImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.descripcionES, descripcionES) ||
                 other.descripcionES == descripcionES) &&
@@ -444,8 +444,8 @@ class _$_PlazoDeCobro extends _PlazoDeCobro {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PlazoDeCobroCopyWith<_$_PlazoDeCobro> get copyWith =>
-      __$$_PlazoDeCobroCopyWithImpl<_$_PlazoDeCobro>(this, _$identity);
+  _$$PlazoDeCobroImplCopyWith<_$PlazoDeCobroImpl> get copyWith =>
+      __$$PlazoDeCobroImplCopyWithImpl<_$PlazoDeCobroImpl>(this, _$identity);
 }
 
 abstract class _PlazoDeCobro extends PlazoDeCobro {
@@ -467,7 +467,7 @@ abstract class _PlazoDeCobro extends PlazoDeCobro {
       final String? descripcionCN,
       final String? descripcionEL,
       required final DateTime lastUpdate,
-      required final bool deleted}) = _$_PlazoDeCobro;
+      required final bool deleted}) = _$PlazoDeCobroImpl;
   const _PlazoDeCobro._() : super._();
 
   @override
@@ -508,6 +508,6 @@ abstract class _PlazoDeCobro extends PlazoDeCobro {
   bool get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_PlazoDeCobroCopyWith<_$_PlazoDeCobro> get copyWith =>
+  _$$PlazoDeCobroImplCopyWith<_$PlazoDeCobroImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

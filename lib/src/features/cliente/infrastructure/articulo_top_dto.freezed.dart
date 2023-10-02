@@ -96,11 +96,11 @@ class _$ArticuloTopDTOCopyWithImpl<$Res, $Val extends ArticuloTopDTO>
 }
 
 /// @nodoc
-abstract class _$$_ArticuloTopDTOCopyWith<$Res>
+abstract class _$$ArticuloTopDTOImplCopyWith<$Res>
     implements $ArticuloTopDTOCopyWith<$Res> {
-  factory _$$_ArticuloTopDTOCopyWith(
-          _$_ArticuloTopDTO value, $Res Function(_$_ArticuloTopDTO) then) =
-      __$$_ArticuloTopDTOCopyWithImpl<$Res>;
+  factory _$$ArticuloTopDTOImplCopyWith(_$ArticuloTopDTOImpl value,
+          $Res Function(_$ArticuloTopDTOImpl) then) =
+      __$$ArticuloTopDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -112,11 +112,11 @@ abstract class _$$_ArticuloTopDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ArticuloTopDTOCopyWithImpl<$Res>
-    extends _$ArticuloTopDTOCopyWithImpl<$Res, _$_ArticuloTopDTO>
-    implements _$$_ArticuloTopDTOCopyWith<$Res> {
-  __$$_ArticuloTopDTOCopyWithImpl(
-      _$_ArticuloTopDTO _value, $Res Function(_$_ArticuloTopDTO) _then)
+class __$$ArticuloTopDTOImplCopyWithImpl<$Res>
+    extends _$ArticuloTopDTOCopyWithImpl<$Res, _$ArticuloTopDTOImpl>
+    implements _$$ArticuloTopDTOImplCopyWith<$Res> {
+  __$$ArticuloTopDTOImplCopyWithImpl(
+      _$ArticuloTopDTOImpl _value, $Res Function(_$ArticuloTopDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -128,7 +128,7 @@ class __$$_ArticuloTopDTOCopyWithImpl<$Res>
     Object? ventasCliente = null,
     Object? divisaId = null,
   }) {
-    return _then(_$_ArticuloTopDTO(
+    return _then(_$ArticuloTopDTOImpl(
       articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
@@ -155,8 +155,8 @@ class __$$_ArticuloTopDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ArticuloTopDTO extends _ArticuloTopDTO {
-  const _$_ArticuloTopDTO(
+class _$ArticuloTopDTOImpl extends _ArticuloTopDTO {
+  const _$ArticuloTopDTOImpl(
       {@JsonKey(name: 'ARTICULO_ID') required this.articuloId,
       @JsonKey(name: 'DESCRIPCION_ES') required this.descripcion,
       @JsonKey(name: 'VENTAS_TOTAL') required this.ventasTotal,
@@ -164,8 +164,8 @@ class _$_ArticuloTopDTO extends _ArticuloTopDTO {
       @JsonKey(name: 'DIVISA_ID') required this.divisaId})
       : super._();
 
-  factory _$_ArticuloTopDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_ArticuloTopDTOFromJson(json);
+  factory _$ArticuloTopDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ArticuloTopDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'ARTICULO_ID')
@@ -192,7 +192,7 @@ class _$_ArticuloTopDTO extends _ArticuloTopDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ArticuloTopDTO &&
+            other is _$ArticuloTopDTOImpl &&
             (identical(other.articuloId, articuloId) ||
                 other.articuloId == articuloId) &&
             (identical(other.descripcion, descripcion) ||
@@ -213,12 +213,13 @@ class _$_ArticuloTopDTO extends _ArticuloTopDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArticuloTopDTOCopyWith<_$_ArticuloTopDTO> get copyWith =>
-      __$$_ArticuloTopDTOCopyWithImpl<_$_ArticuloTopDTO>(this, _$identity);
+  _$$ArticuloTopDTOImplCopyWith<_$ArticuloTopDTOImpl> get copyWith =>
+      __$$ArticuloTopDTOImplCopyWithImpl<_$ArticuloTopDTOImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ArticuloTopDTOToJson(
+    return _$$ArticuloTopDTOImplToJson(
       this,
     );
   }
@@ -231,11 +232,11 @@ abstract class _ArticuloTopDTO extends ArticuloTopDTO {
           @JsonKey(name: 'VENTAS_TOTAL') required final double ventasTotal,
           @JsonKey(name: 'VENTAS_CLIENTE') required final double ventasCliente,
           @JsonKey(name: 'DIVISA_ID') required final String divisaId}) =
-      _$_ArticuloTopDTO;
+      _$ArticuloTopDTOImpl;
   const _ArticuloTopDTO._() : super._();
 
   factory _ArticuloTopDTO.fromJson(Map<String, dynamic> json) =
-      _$_ArticuloTopDTO.fromJson;
+      _$ArticuloTopDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'ARTICULO_ID')
@@ -254,6 +255,6 @@ abstract class _ArticuloTopDTO extends ArticuloTopDTO {
   String get divisaId;
   @override
   @JsonKey(ignore: true)
-  _$$_ArticuloTopDTOCopyWith<_$_ArticuloTopDTO> get copyWith =>
+  _$$ArticuloTopDTOImplCopyWith<_$ArticuloTopDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

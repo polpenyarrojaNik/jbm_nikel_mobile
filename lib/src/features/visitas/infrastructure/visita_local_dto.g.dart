@@ -6,8 +6,8 @@ part of 'visita_local_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_VisitaLocalDTO _$$_VisitaLocalDTOFromJson(Map<String, dynamic> json) =>
-    _$_VisitaLocalDTO(
+_$VisitaLocalDTOImpl _$$VisitaLocalDTOImplFromJson(Map<String, dynamic> json) =>
+    _$VisitaLocalDTOImpl(
       visitaAppId: json['COD_VISITA_APP'] as String?,
       fecha: DateTime.parse(json['FECHA'] as String),
       clienteId: json['CLIENTE_ID'] as String?,
@@ -40,7 +40,8 @@ _$_VisitaLocalDTO _$$_VisitaLocalDTOFromJson(Map<String, dynamic> json) =>
       errorSyncMessage: json['ERROR_SYNC'] as String?,
     );
 
-Map<String, dynamic> _$$_VisitaLocalDTOToJson(_$_VisitaLocalDTO instance) =>
+Map<String, dynamic> _$$VisitaLocalDTOImplToJson(
+        _$VisitaLocalDTOImpl instance) =>
     <String, dynamic>{
       'COD_VISITA_APP': instance.visitaAppId,
       'FECHA': instance.fecha.toIso8601String(),

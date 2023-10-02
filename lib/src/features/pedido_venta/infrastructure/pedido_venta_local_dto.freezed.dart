@@ -256,11 +256,11 @@ class _$PedidoVentaLocalDTOCopyWithImpl<$Res, $Val extends PedidoVentaLocalDTO>
 }
 
 /// @nodoc
-abstract class _$$_PedidoVentaLocalDTOCopyWith<$Res>
+abstract class _$$PedidoVentaLocalDTOImplCopyWith<$Res>
     implements $PedidoVentaLocalDTOCopyWith<$Res> {
-  factory _$$_PedidoVentaLocalDTOCopyWith(_$_PedidoVentaLocalDTO value,
-          $Res Function(_$_PedidoVentaLocalDTO) then) =
-      __$$_PedidoVentaLocalDTOCopyWithImpl<$Res>;
+  factory _$$PedidoVentaLocalDTOImplCopyWith(_$PedidoVentaLocalDTOImpl value,
+          $Res Function(_$PedidoVentaLocalDTOImpl) then) =
+      __$$PedidoVentaLocalDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -292,11 +292,11 @@ abstract class _$$_PedidoVentaLocalDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PedidoVentaLocalDTOCopyWithImpl<$Res>
-    extends _$PedidoVentaLocalDTOCopyWithImpl<$Res, _$_PedidoVentaLocalDTO>
-    implements _$$_PedidoVentaLocalDTOCopyWith<$Res> {
-  __$$_PedidoVentaLocalDTOCopyWithImpl(_$_PedidoVentaLocalDTO _value,
-      $Res Function(_$_PedidoVentaLocalDTO) _then)
+class __$$PedidoVentaLocalDTOImplCopyWithImpl<$Res>
+    extends _$PedidoVentaLocalDTOCopyWithImpl<$Res, _$PedidoVentaLocalDTOImpl>
+    implements _$$PedidoVentaLocalDTOImplCopyWith<$Res> {
+  __$$PedidoVentaLocalDTOImplCopyWithImpl(_$PedidoVentaLocalDTOImpl _value,
+      $Res Function(_$PedidoVentaLocalDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -328,7 +328,7 @@ class __$$_PedidoVentaLocalDTOCopyWithImpl<$Res>
     Object? borrador = null,
     Object? errorSyncMessage = freezed,
   }) {
-    return _then(_$_PedidoVentaLocalDTO(
+    return _then(_$PedidoVentaLocalDTOImpl(
       usuarioId: freezed == usuarioId
           ? _value.usuarioId
           : usuarioId // ignore: cast_nullable_to_non_nullable
@@ -435,8 +435,8 @@ class __$$_PedidoVentaLocalDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PedidoVentaLocalDTO extends _PedidoVentaLocalDTO {
-  const _$_PedidoVentaLocalDTO(
+class _$PedidoVentaLocalDTOImpl extends _PedidoVentaLocalDTO {
+  const _$PedidoVentaLocalDTOImpl(
       {@JsonKey(name: 'USUARIO_ID') this.usuarioId,
       @JsonKey(name: 'PEDIDO_ID') this.pedidoId,
       @JsonKey(name: 'EMPRESA_ID') this.empresaId,
@@ -464,8 +464,8 @@ class _$_PedidoVentaLocalDTO extends _PedidoVentaLocalDTO {
       @JsonKey(name: 'ERROR_SYNC') this.errorSyncMessage})
       : super._();
 
-  factory _$_PedidoVentaLocalDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_PedidoVentaLocalDTOFromJson(json);
+  factory _$PedidoVentaLocalDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PedidoVentaLocalDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'USUARIO_ID')
@@ -552,7 +552,7 @@ class _$_PedidoVentaLocalDTO extends _PedidoVentaLocalDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PedidoVentaLocalDTO &&
+            other is _$PedidoVentaLocalDTOImpl &&
             (identical(other.usuarioId, usuarioId) ||
                 other.usuarioId == usuarioId) &&
             (identical(other.pedidoId, pedidoId) ||
@@ -634,13 +634,13 @@ class _$_PedidoVentaLocalDTO extends _PedidoVentaLocalDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PedidoVentaLocalDTOCopyWith<_$_PedidoVentaLocalDTO> get copyWith =>
-      __$$_PedidoVentaLocalDTOCopyWithImpl<_$_PedidoVentaLocalDTO>(
+  _$$PedidoVentaLocalDTOImplCopyWith<_$PedidoVentaLocalDTOImpl> get copyWith =>
+      __$$PedidoVentaLocalDTOImplCopyWithImpl<_$PedidoVentaLocalDTOImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PedidoVentaLocalDTOToJson(
+    return _$$PedidoVentaLocalDTOImplToJson(
       this,
     );
   }
@@ -673,11 +673,11 @@ abstract class _PedidoVentaLocalDTO extends PedidoVentaLocalDTO {
       @JsonKey(name: 'TRATADA') required final String tratada,
       @JsonKey(name: 'BORRADOR') required final String borrador,
       @JsonKey(name: 'ERROR_SYNC')
-      final String? errorSyncMessage}) = _$_PedidoVentaLocalDTO;
+      final String? errorSyncMessage}) = _$PedidoVentaLocalDTOImpl;
   const _PedidoVentaLocalDTO._() : super._();
 
   factory _PedidoVentaLocalDTO.fromJson(Map<String, dynamic> json) =
-      _$_PedidoVentaLocalDTO.fromJson;
+      _$PedidoVentaLocalDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'USUARIO_ID')
@@ -756,6 +756,6 @@ abstract class _PedidoVentaLocalDTO extends PedidoVentaLocalDTO {
   String? get errorSyncMessage;
   @override
   @JsonKey(ignore: true)
-  _$$_PedidoVentaLocalDTOCopyWith<_$_PedidoVentaLocalDTO> get copyWith =>
+  _$$PedidoVentaLocalDTOImplCopyWith<_$PedidoVentaLocalDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

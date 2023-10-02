@@ -164,12 +164,12 @@ class _$EstadisticasUltimosPreciosDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_EstadisticasUltimosPreciosDTOCopyWith<$Res>
+abstract class _$$EstadisticasUltimosPreciosDTOImplCopyWith<$Res>
     implements $EstadisticasUltimosPreciosDTOCopyWith<$Res> {
-  factory _$$_EstadisticasUltimosPreciosDTOCopyWith(
-          _$_EstadisticasUltimosPreciosDTO value,
-          $Res Function(_$_EstadisticasUltimosPreciosDTO) then) =
-      __$$_EstadisticasUltimosPreciosDTOCopyWithImpl<$Res>;
+  factory _$$EstadisticasUltimosPreciosDTOImplCopyWith(
+          _$EstadisticasUltimosPreciosDTOImpl value,
+          $Res Function(_$EstadisticasUltimosPreciosDTOImpl) then) =
+      __$$EstadisticasUltimosPreciosDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -189,13 +189,13 @@ abstract class _$$_EstadisticasUltimosPreciosDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_EstadisticasUltimosPreciosDTOCopyWithImpl<$Res>
+class __$$EstadisticasUltimosPreciosDTOImplCopyWithImpl<$Res>
     extends _$EstadisticasUltimosPreciosDTOCopyWithImpl<$Res,
-        _$_EstadisticasUltimosPreciosDTO>
-    implements _$$_EstadisticasUltimosPreciosDTOCopyWith<$Res> {
-  __$$_EstadisticasUltimosPreciosDTOCopyWithImpl(
-      _$_EstadisticasUltimosPreciosDTO _value,
-      $Res Function(_$_EstadisticasUltimosPreciosDTO) _then)
+        _$EstadisticasUltimosPreciosDTOImpl>
+    implements _$$EstadisticasUltimosPreciosDTOImplCopyWith<$Res> {
+  __$$EstadisticasUltimosPreciosDTOImplCopyWithImpl(
+      _$EstadisticasUltimosPreciosDTOImpl _value,
+      $Res Function(_$EstadisticasUltimosPreciosDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -215,7 +215,7 @@ class __$$_EstadisticasUltimosPreciosDTOCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_EstadisticasUltimosPreciosDTO(
+    return _then(_$EstadisticasUltimosPreciosDTOImpl(
       clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
@@ -274,8 +274,9 @@ class __$$_EstadisticasUltimosPreciosDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_EstadisticasUltimosPreciosDTO extends _EstadisticasUltimosPreciosDTO {
-  const _$_EstadisticasUltimosPreciosDTO(
+class _$EstadisticasUltimosPreciosDTOImpl
+    extends _EstadisticasUltimosPreciosDTO {
+  const _$EstadisticasUltimosPreciosDTOImpl(
       {@JsonKey(name: 'CLIENTE_ID') required this.clienteId,
       @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
       @JsonKey(name: 'LINEA') required this.linea,
@@ -291,9 +292,9 @@ class _$_EstadisticasUltimosPreciosDTO extends _EstadisticasUltimosPreciosDTO {
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
-  factory _$_EstadisticasUltimosPreciosDTO.fromJson(
+  factory _$EstadisticasUltimosPreciosDTOImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$_EstadisticasUltimosPreciosDTOFromJson(json);
+      _$$EstadisticasUltimosPreciosDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'CLIENTE_ID')
@@ -344,7 +345,7 @@ class _$_EstadisticasUltimosPreciosDTO extends _EstadisticasUltimosPreciosDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EstadisticasUltimosPreciosDTO &&
+            other is _$EstadisticasUltimosPreciosDTOImpl &&
             (identical(other.clienteId, clienteId) ||
                 other.clienteId == clienteId) &&
             (identical(other.articuloId, articuloId) ||
@@ -391,13 +392,14 @@ class _$_EstadisticasUltimosPreciosDTO extends _EstadisticasUltimosPreciosDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EstadisticasUltimosPreciosDTOCopyWith<_$_EstadisticasUltimosPreciosDTO>
-      get copyWith => __$$_EstadisticasUltimosPreciosDTOCopyWithImpl<
-          _$_EstadisticasUltimosPreciosDTO>(this, _$identity);
+  _$$EstadisticasUltimosPreciosDTOImplCopyWith<
+          _$EstadisticasUltimosPreciosDTOImpl>
+      get copyWith => __$$EstadisticasUltimosPreciosDTOImplCopyWithImpl<
+          _$EstadisticasUltimosPreciosDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_EstadisticasUltimosPreciosDTOToJson(
+    return _$$EstadisticasUltimosPreciosDTOImplToJson(
       this,
     );
   }
@@ -419,11 +421,11 @@ abstract class _EstadisticasUltimosPreciosDTO
           @JsonKey(name: 'DESCUENTO3') required final double descuento3,
           @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
           @JsonKey(name: 'DELETED') final String deleted}) =
-      _$_EstadisticasUltimosPreciosDTO;
+      _$EstadisticasUltimosPreciosDTOImpl;
   const _EstadisticasUltimosPreciosDTO._() : super._();
 
   factory _EstadisticasUltimosPreciosDTO.fromJson(Map<String, dynamic> json) =
-      _$_EstadisticasUltimosPreciosDTO.fromJson;
+      _$EstadisticasUltimosPreciosDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'CLIENTE_ID')
@@ -466,6 +468,7 @@ abstract class _EstadisticasUltimosPreciosDTO
   String get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_EstadisticasUltimosPreciosDTOCopyWith<_$_EstadisticasUltimosPreciosDTO>
+  _$$EstadisticasUltimosPreciosDTOImplCopyWith<
+          _$EstadisticasUltimosPreciosDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

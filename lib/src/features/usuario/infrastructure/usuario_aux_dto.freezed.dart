@@ -104,11 +104,11 @@ class _$UsuarioAuxDTOCopyWithImpl<$Res, $Val extends UsuarioAuxDTO>
 }
 
 /// @nodoc
-abstract class _$$_UsuarioAuxDTOCopyWith<$Res>
+abstract class _$$UsuarioAuxDTOImplCopyWith<$Res>
     implements $UsuarioAuxDTOCopyWith<$Res> {
-  factory _$$_UsuarioAuxDTOCopyWith(
-          _$_UsuarioAuxDTO value, $Res Function(_$_UsuarioAuxDTO) then) =
-      __$$_UsuarioAuxDTOCopyWithImpl<$Res>;
+  factory _$$UsuarioAuxDTOImplCopyWith(
+          _$UsuarioAuxDTOImpl value, $Res Function(_$UsuarioAuxDTOImpl) then) =
+      __$$UsuarioAuxDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -121,11 +121,11 @@ abstract class _$$_UsuarioAuxDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_UsuarioAuxDTOCopyWithImpl<$Res>
-    extends _$UsuarioAuxDTOCopyWithImpl<$Res, _$_UsuarioAuxDTO>
-    implements _$$_UsuarioAuxDTOCopyWith<$Res> {
-  __$$_UsuarioAuxDTOCopyWithImpl(
-      _$_UsuarioAuxDTO _value, $Res Function(_$_UsuarioAuxDTO) _then)
+class __$$UsuarioAuxDTOImplCopyWithImpl<$Res>
+    extends _$UsuarioAuxDTOCopyWithImpl<$Res, _$UsuarioAuxDTOImpl>
+    implements _$$UsuarioAuxDTOImplCopyWith<$Res> {
+  __$$UsuarioAuxDTOImplCopyWithImpl(
+      _$UsuarioAuxDTOImpl _value, $Res Function(_$UsuarioAuxDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -138,7 +138,7 @@ class __$$_UsuarioAuxDTOCopyWithImpl<$Res>
     Object? modificarPedido = null,
     Object? verTotalVentas = null,
   }) {
-    return _then(_$_UsuarioAuxDTO(
+    return _then(_$UsuarioAuxDTOImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -169,8 +169,8 @@ class __$$_UsuarioAuxDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UsuarioAuxDTO extends _UsuarioAuxDTO {
-  const _$_UsuarioAuxDTO(
+class _$UsuarioAuxDTOImpl extends _UsuarioAuxDTO {
+  const _$UsuarioAuxDTOImpl(
       {@JsonKey(name: 'USUARIO_ID') required this.id,
       @JsonKey(name: 'USUARIO') required this.usuario,
       @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')
@@ -181,8 +181,8 @@ class _$_UsuarioAuxDTO extends _UsuarioAuxDTO {
       @JsonKey(name: 'APP_VER_TOTAL_VENTAS') required this.verTotalVentas})
       : super._();
 
-  factory _$_UsuarioAuxDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_UsuarioAuxDTOFromJson(json);
+  factory _$UsuarioAuxDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UsuarioAuxDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'USUARIO_ID')
@@ -212,7 +212,7 @@ class _$_UsuarioAuxDTO extends _UsuarioAuxDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UsuarioAuxDTO &&
+            other is _$UsuarioAuxDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.usuario, usuario) || other.usuario == usuario) &&
             (identical(other.nombreUsuario, nombreUsuario) ||
@@ -233,12 +233,12 @@ class _$_UsuarioAuxDTO extends _UsuarioAuxDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UsuarioAuxDTOCopyWith<_$_UsuarioAuxDTO> get copyWith =>
-      __$$_UsuarioAuxDTOCopyWithImpl<_$_UsuarioAuxDTO>(this, _$identity);
+  _$$UsuarioAuxDTOImplCopyWith<_$UsuarioAuxDTOImpl> get copyWith =>
+      __$$UsuarioAuxDTOImplCopyWithImpl<_$UsuarioAuxDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UsuarioAuxDTOToJson(
+    return _$$UsuarioAuxDTOImplToJson(
       this,
     );
   }
@@ -254,11 +254,11 @@ abstract class _UsuarioAuxDTO extends UsuarioAuxDTO {
       @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')
       required final String modificarPedido,
       @JsonKey(name: 'APP_VER_TOTAL_VENTAS')
-      required final String verTotalVentas}) = _$_UsuarioAuxDTO;
+      required final String verTotalVentas}) = _$UsuarioAuxDTOImpl;
   const _UsuarioAuxDTO._() : super._();
 
   factory _UsuarioAuxDTO.fromJson(Map<String, dynamic> json) =
-      _$_UsuarioAuxDTO.fromJson;
+      _$UsuarioAuxDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'USUARIO_ID')
@@ -280,6 +280,6 @@ abstract class _UsuarioAuxDTO extends UsuarioAuxDTO {
   String get verTotalVentas;
   @override
   @JsonKey(ignore: true)
-  _$$_UsuarioAuxDTOCopyWith<_$_UsuarioAuxDTO> get copyWith =>
+  _$$UsuarioAuxDTOImplCopyWith<_$UsuarioAuxDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

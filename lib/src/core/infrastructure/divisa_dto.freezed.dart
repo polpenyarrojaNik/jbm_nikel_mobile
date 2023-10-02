@@ -223,10 +223,11 @@ class _$DivisaDTOCopyWithImpl<$Res, $Val extends DivisaDTO>
 }
 
 /// @nodoc
-abstract class _$$_DivisaDTOCopyWith<$Res> implements $DivisaDTOCopyWith<$Res> {
-  factory _$$_DivisaDTOCopyWith(
-          _$_DivisaDTO value, $Res Function(_$_DivisaDTO) then) =
-      __$$_DivisaDTOCopyWithImpl<$Res>;
+abstract class _$$DivisaDTOImplCopyWith<$Res>
+    implements $DivisaDTOCopyWith<$Res> {
+  factory _$$DivisaDTOImplCopyWith(
+          _$DivisaDTOImpl value, $Res Function(_$DivisaDTOImpl) then) =
+      __$$DivisaDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -254,11 +255,11 @@ abstract class _$$_DivisaDTOCopyWith<$Res> implements $DivisaDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_DivisaDTOCopyWithImpl<$Res>
-    extends _$DivisaDTOCopyWithImpl<$Res, _$_DivisaDTO>
-    implements _$$_DivisaDTOCopyWith<$Res> {
-  __$$_DivisaDTOCopyWithImpl(
-      _$_DivisaDTO _value, $Res Function(_$_DivisaDTO) _then)
+class __$$DivisaDTOImplCopyWithImpl<$Res>
+    extends _$DivisaDTOCopyWithImpl<$Res, _$DivisaDTOImpl>
+    implements _$$DivisaDTOImplCopyWith<$Res> {
+  __$$DivisaDTOImplCopyWithImpl(
+      _$DivisaDTOImpl _value, $Res Function(_$DivisaDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -286,7 +287,7 @@ class __$$_DivisaDTOCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_DivisaDTO(
+    return _then(_$DivisaDTOImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -377,8 +378,8 @@ class __$$_DivisaDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_DivisaDTO extends _DivisaDTO {
-  const _$_DivisaDTO(
+class _$DivisaDTOImpl extends _DivisaDTO {
+  const _$DivisaDTOImpl(
       {@JsonKey(name: 'DIVISA_ID') required this.id,
       @JsonKey(name: 'ABREVIACION') required this.abv,
       @JsonKey(name: 'SIMBOLO') this.simbolo,
@@ -402,8 +403,8 @@ class _$_DivisaDTO extends _DivisaDTO {
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
-  factory _$_DivisaDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_DivisaDTOFromJson(json);
+  factory _$DivisaDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DivisaDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'DIVISA_ID')
@@ -478,7 +479,7 @@ class _$_DivisaDTO extends _DivisaDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DivisaDTO &&
+            other is _$DivisaDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.abv, abv) || other.abv == abv) &&
             (identical(other.simbolo, simbolo) || other.simbolo == simbolo) &&
@@ -549,12 +550,12 @@ class _$_DivisaDTO extends _DivisaDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DivisaDTOCopyWith<_$_DivisaDTO> get copyWith =>
-      __$$_DivisaDTOCopyWithImpl<_$_DivisaDTO>(this, _$identity);
+  _$$DivisaDTOImplCopyWith<_$DivisaDTOImpl> get copyWith =>
+      __$$DivisaDTOImplCopyWithImpl<_$DivisaDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DivisaDTOToJson(
+    return _$$DivisaDTOImplToJson(
       this,
     );
   }
@@ -582,11 +583,11 @@ abstract class _DivisaDTO extends DivisaDTO {
       @JsonKey(name: 'DESCRIPCION_CN') final String? descripcionCN,
       @JsonKey(name: 'DESCRIPCION_EL') final String? descripcionEL,
       @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') final String deleted}) = _$_DivisaDTO;
+      @JsonKey(name: 'DELETED') final String deleted}) = _$DivisaDTOImpl;
   const _DivisaDTO._() : super._();
 
   factory _DivisaDTO.fromJson(Map<String, dynamic> json) =
-      _$_DivisaDTO.fromJson;
+      _$DivisaDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'DIVISA_ID')
@@ -653,6 +654,6 @@ abstract class _DivisaDTO extends DivisaDTO {
   String get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_DivisaDTOCopyWith<_$_DivisaDTO> get copyWith =>
+  _$$DivisaDTOImplCopyWith<_$DivisaDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

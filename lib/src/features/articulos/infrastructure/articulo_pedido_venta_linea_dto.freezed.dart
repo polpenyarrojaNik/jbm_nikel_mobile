@@ -180,12 +180,12 @@ class _$ArticuloPedidoVentaLineaDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ArticuloPedidoVentaLineaDTOCopyWith<$Res>
+abstract class _$$ArticuloPedidoVentaLineaDTOImplCopyWith<$Res>
     implements $ArticuloPedidoVentaLineaDTOCopyWith<$Res> {
-  factory _$$_ArticuloPedidoVentaLineaDTOCopyWith(
-          _$_ArticuloPedidoVentaLineaDTO value,
-          $Res Function(_$_ArticuloPedidoVentaLineaDTO) then) =
-      __$$_ArticuloPedidoVentaLineaDTOCopyWithImpl<$Res>;
+  factory _$$ArticuloPedidoVentaLineaDTOImplCopyWith(
+          _$ArticuloPedidoVentaLineaDTOImpl value,
+          $Res Function(_$ArticuloPedidoVentaLineaDTOImpl) then) =
+      __$$ArticuloPedidoVentaLineaDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -207,13 +207,13 @@ abstract class _$$_ArticuloPedidoVentaLineaDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ArticuloPedidoVentaLineaDTOCopyWithImpl<$Res>
+class __$$ArticuloPedidoVentaLineaDTOImplCopyWithImpl<$Res>
     extends _$ArticuloPedidoVentaLineaDTOCopyWithImpl<$Res,
-        _$_ArticuloPedidoVentaLineaDTO>
-    implements _$$_ArticuloPedidoVentaLineaDTOCopyWith<$Res> {
-  __$$_ArticuloPedidoVentaLineaDTOCopyWithImpl(
-      _$_ArticuloPedidoVentaLineaDTO _value,
-      $Res Function(_$_ArticuloPedidoVentaLineaDTO) _then)
+        _$ArticuloPedidoVentaLineaDTOImpl>
+    implements _$$ArticuloPedidoVentaLineaDTOImplCopyWith<$Res> {
+  __$$ArticuloPedidoVentaLineaDTOImplCopyWithImpl(
+      _$ArticuloPedidoVentaLineaDTOImpl _value,
+      $Res Function(_$ArticuloPedidoVentaLineaDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -235,7 +235,7 @@ class __$$_ArticuloPedidoVentaLineaDTOCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_ArticuloPedidoVentaLineaDTO(
+    return _then(_$ArticuloPedidoVentaLineaDTOImpl(
       empresaId: null == empresaId
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
@@ -302,8 +302,8 @@ class __$$_ArticuloPedidoVentaLineaDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ArticuloPedidoVentaLineaDTO extends _ArticuloPedidoVentaLineaDTO {
-  const _$_ArticuloPedidoVentaLineaDTO(
+class _$ArticuloPedidoVentaLineaDTOImpl extends _ArticuloPedidoVentaLineaDTO {
+  const _$ArticuloPedidoVentaLineaDTOImpl(
       {@JsonKey(name: 'EMPRESA_ID') required this.empresaId,
       @JsonKey(name: 'PEDIDO_ID') required this.pedidoVentaId,
       @JsonKey(name: 'PEDIDO_LINEA_ID') required this.id,
@@ -321,8 +321,9 @@ class _$_ArticuloPedidoVentaLineaDTO extends _ArticuloPedidoVentaLineaDTO {
       @JsonKey(name: 'DELETED') required this.deleted})
       : super._();
 
-  factory _$_ArticuloPedidoVentaLineaDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_ArticuloPedidoVentaLineaDTOFromJson(json);
+  factory _$ArticuloPedidoVentaLineaDTOImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$ArticuloPedidoVentaLineaDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'EMPRESA_ID')
@@ -379,7 +380,7 @@ class _$_ArticuloPedidoVentaLineaDTO extends _ArticuloPedidoVentaLineaDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ArticuloPedidoVentaLineaDTO &&
+            other is _$ArticuloPedidoVentaLineaDTOImpl &&
             (identical(other.empresaId, empresaId) ||
                 other.empresaId == empresaId) &&
             (identical(other.pedidoVentaId, pedidoVentaId) ||
@@ -433,13 +434,13 @@ class _$_ArticuloPedidoVentaLineaDTO extends _ArticuloPedidoVentaLineaDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArticuloPedidoVentaLineaDTOCopyWith<_$_ArticuloPedidoVentaLineaDTO>
-      get copyWith => __$$_ArticuloPedidoVentaLineaDTOCopyWithImpl<
-          _$_ArticuloPedidoVentaLineaDTO>(this, _$identity);
+  _$$ArticuloPedidoVentaLineaDTOImplCopyWith<_$ArticuloPedidoVentaLineaDTOImpl>
+      get copyWith => __$$ArticuloPedidoVentaLineaDTOImplCopyWithImpl<
+          _$ArticuloPedidoVentaLineaDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ArticuloPedidoVentaLineaDTOToJson(
+    return _$$ArticuloPedidoVentaLineaDTOImplToJson(
       this,
     );
   }
@@ -464,11 +465,11 @@ abstract class _ArticuloPedidoVentaLineaDTO
           @JsonKey(name: 'DESCUENTO3') required final double descuento3,
           @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
           @JsonKey(name: 'DELETED') required final String deleted}) =
-      _$_ArticuloPedidoVentaLineaDTO;
+      _$ArticuloPedidoVentaLineaDTOImpl;
   const _ArticuloPedidoVentaLineaDTO._() : super._();
 
   factory _ArticuloPedidoVentaLineaDTO.fromJson(Map<String, dynamic> json) =
-      _$_ArticuloPedidoVentaLineaDTO.fromJson;
+      _$ArticuloPedidoVentaLineaDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'EMPRESA_ID')
@@ -517,6 +518,6 @@ abstract class _ArticuloPedidoVentaLineaDTO
   String get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_ArticuloPedidoVentaLineaDTOCopyWith<_$_ArticuloPedidoVentaLineaDTO>
+  _$$ArticuloPedidoVentaLineaDTOImplCopyWith<_$ArticuloPedidoVentaLineaDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

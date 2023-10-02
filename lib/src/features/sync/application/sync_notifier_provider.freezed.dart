@@ -87,24 +87,25 @@ class _$SyncControllerStateCopyWithImpl<$Res, $Val extends SyncControllerState>
 }
 
 /// @nodoc
-abstract class _$$_initialCopyWith<$Res> {
-  factory _$$_initialCopyWith(
-          _$_initial value, $Res Function(_$_initial) then) =
-      __$$_initialCopyWithImpl<$Res>;
+abstract class _$$initialImplCopyWith<$Res> {
+  factory _$$initialImplCopyWith(
+          _$initialImpl value, $Res Function(_$initialImpl) then) =
+      __$$initialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_initialCopyWithImpl<$Res>
-    extends _$SyncControllerStateCopyWithImpl<$Res, _$_initial>
-    implements _$$_initialCopyWith<$Res> {
-  __$$_initialCopyWithImpl(_$_initial _value, $Res Function(_$_initial) _then)
+class __$$initialImplCopyWithImpl<$Res>
+    extends _$SyncControllerStateCopyWithImpl<$Res, _$initialImpl>
+    implements _$$initialImplCopyWith<$Res> {
+  __$$initialImplCopyWithImpl(
+      _$initialImpl _value, $Res Function(_$initialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_initial extends _initial with DiagnosticableTreeMixin {
-  const _$_initial() : super._();
+class _$initialImpl extends _initial with DiagnosticableTreeMixin {
+  const _$initialImpl() : super._();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -120,7 +121,7 @@ class _$_initial extends _initial with DiagnosticableTreeMixin {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_initial);
+        (other.runtimeType == runtimeType && other is _$initialImpl);
   }
 
   @override
@@ -202,30 +203,31 @@ class _$_initial extends _initial with DiagnosticableTreeMixin {
 }
 
 abstract class _initial extends SyncControllerState {
-  const factory _initial() = _$_initial;
+  const factory _initial() = _$initialImpl;
   const _initial._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_shinchronizingCopyWith<$Res> {
-  factory _$$_shinchronizingCopyWith(
-          _$_shinchronizing value, $Res Function(_$_shinchronizing) then) =
-      __$$_shinchronizingCopyWithImpl<$Res>;
+abstract class _$$shinchronizingImplCopyWith<$Res> {
+  factory _$$shinchronizingImplCopyWith(_$shinchronizingImpl value,
+          $Res Function(_$shinchronizingImpl) then) =
+      __$$shinchronizingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_shinchronizingCopyWithImpl<$Res>
-    extends _$SyncControllerStateCopyWithImpl<$Res, _$_shinchronizing>
-    implements _$$_shinchronizingCopyWith<$Res> {
-  __$$_shinchronizingCopyWithImpl(
-      _$_shinchronizing _value, $Res Function(_$_shinchronizing) _then)
+class __$$shinchronizingImplCopyWithImpl<$Res>
+    extends _$SyncControllerStateCopyWithImpl<$Res, _$shinchronizingImpl>
+    implements _$$shinchronizingImplCopyWith<$Res> {
+  __$$shinchronizingImplCopyWithImpl(
+      _$shinchronizingImpl _value, $Res Function(_$shinchronizingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_shinchronizing extends _shinchronizing with DiagnosticableTreeMixin {
-  const _$_shinchronizing() : super._();
+class _$shinchronizingImpl extends _shinchronizing
+    with DiagnosticableTreeMixin {
+  const _$shinchronizingImpl() : super._();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -242,7 +244,7 @@ class _$_shinchronizing extends _shinchronizing with DiagnosticableTreeMixin {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_shinchronizing);
+        (other.runtimeType == runtimeType && other is _$shinchronizingImpl);
   }
 
   @override
@@ -324,30 +326,30 @@ class _$_shinchronizing extends _shinchronizing with DiagnosticableTreeMixin {
 }
 
 abstract class _shinchronizing extends SyncControllerState {
-  const factory _shinchronizing() = _$_shinchronizing;
+  const factory _shinchronizing() = _$shinchronizingImpl;
   const _shinchronizing._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_synchronizedCopyWith<$Res> {
-  factory _$$_synchronizedCopyWith(
-          _$_synchronized value, $Res Function(_$_synchronized) then) =
-      __$$_synchronizedCopyWithImpl<$Res>;
+abstract class _$$synchronizedImplCopyWith<$Res> {
+  factory _$$synchronizedImplCopyWith(
+          _$synchronizedImpl value, $Res Function(_$synchronizedImpl) then) =
+      __$$synchronizedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_synchronizedCopyWithImpl<$Res>
-    extends _$SyncControllerStateCopyWithImpl<$Res, _$_synchronized>
-    implements _$$_synchronizedCopyWith<$Res> {
-  __$$_synchronizedCopyWithImpl(
-      _$_synchronized _value, $Res Function(_$_synchronized) _then)
+class __$$synchronizedImplCopyWithImpl<$Res>
+    extends _$SyncControllerStateCopyWithImpl<$Res, _$synchronizedImpl>
+    implements _$$synchronizedImplCopyWith<$Res> {
+  __$$synchronizedImplCopyWithImpl(
+      _$synchronizedImpl _value, $Res Function(_$synchronizedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_synchronized extends _synchronized with DiagnosticableTreeMixin {
-  const _$_synchronized() : super._();
+class _$synchronizedImpl extends _synchronized with DiagnosticableTreeMixin {
+  const _$synchronizedImpl() : super._();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -364,7 +366,7 @@ class _$_synchronized extends _synchronized with DiagnosticableTreeMixin {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_synchronized);
+        (other.runtimeType == runtimeType && other is _$synchronizedImpl);
   }
 
   @override
@@ -446,23 +448,25 @@ class _$_synchronized extends _synchronized with DiagnosticableTreeMixin {
 }
 
 abstract class _synchronized extends SyncControllerState {
-  const factory _synchronized() = _$_synchronized;
+  const factory _synchronized() = _$synchronizedImpl;
   const _synchronized._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_errorCopyWith<$Res> {
-  factory _$$_errorCopyWith(_$_error value, $Res Function(_$_error) then) =
-      __$$_errorCopyWithImpl<$Res>;
+abstract class _$$errorImplCopyWith<$Res> {
+  factory _$$errorImplCopyWith(
+          _$errorImpl value, $Res Function(_$errorImpl) then) =
+      __$$errorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Object error, StackTrace? stackTrace});
 }
 
 /// @nodoc
-class __$$_errorCopyWithImpl<$Res>
-    extends _$SyncControllerStateCopyWithImpl<$Res, _$_error>
-    implements _$$_errorCopyWith<$Res> {
-  __$$_errorCopyWithImpl(_$_error _value, $Res Function(_$_error) _then)
+class __$$errorImplCopyWithImpl<$Res>
+    extends _$SyncControllerStateCopyWithImpl<$Res, _$errorImpl>
+    implements _$$errorImplCopyWith<$Res> {
+  __$$errorImplCopyWithImpl(
+      _$errorImpl _value, $Res Function(_$errorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -471,7 +475,7 @@ class __$$_errorCopyWithImpl<$Res>
     Object? error = null,
     Object? stackTrace = freezed,
   }) {
-    return _then(_$_error(
+    return _then(_$errorImpl(
       null == error ? _value.error : error,
       stackTrace: freezed == stackTrace
           ? _value.stackTrace
@@ -483,8 +487,8 @@ class __$$_errorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_error extends _error with DiagnosticableTreeMixin {
-  const _$_error(this.error, {this.stackTrace}) : super._();
+class _$errorImpl extends _error with DiagnosticableTreeMixin {
+  const _$errorImpl(this.error, {this.stackTrace}) : super._();
 
   @override
   final Object error;
@@ -509,7 +513,7 @@ class _$_error extends _error with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_error &&
+            other is _$errorImpl &&
             const DeepCollectionEquality().equals(other.error, error) &&
             (identical(other.stackTrace, stackTrace) ||
                 other.stackTrace == stackTrace));
@@ -522,8 +526,8 @@ class _$_error extends _error with DiagnosticableTreeMixin {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_errorCopyWith<_$_error> get copyWith =>
-      __$$_errorCopyWithImpl<_$_error>(this, _$identity);
+  _$$errorImplCopyWith<_$errorImpl> get copyWith =>
+      __$$errorImplCopyWithImpl<_$errorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -602,12 +606,12 @@ class _$_error extends _error with DiagnosticableTreeMixin {
 
 abstract class _error extends SyncControllerState {
   const factory _error(final Object error, {final StackTrace? stackTrace}) =
-      _$_error;
+      _$errorImpl;
   const _error._() : super._();
 
   Object get error;
   StackTrace? get stackTrace;
   @JsonKey(ignore: true)
-  _$$_errorCopyWith<_$_error> get copyWith =>
+  _$$errorImplCopyWith<_$errorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

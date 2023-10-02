@@ -6,9 +6,9 @@ part of 'articulo_empresa_iva_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ArticuloEmpresaIvaDTO _$$_ArticuloEmpresaIvaDTOFromJson(
+_$ArticuloEmpresaIvaDTOImpl _$$ArticuloEmpresaIvaDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_ArticuloEmpresaIvaDTO(
+    _$ArticuloEmpresaIvaDTOImpl(
       articuloId: json['ARTICULO_ID'] as String,
       empresaId: json['EMPRESA_ID'] as String,
       iva: (json['IVA'] as num).toDouble(),
@@ -16,8 +16,8 @@ _$_ArticuloEmpresaIvaDTO _$$_ArticuloEmpresaIvaDTOFromJson(
       deleted: json['DELETED'] as String? ?? 'N',
     );
 
-Map<String, dynamic> _$$_ArticuloEmpresaIvaDTOToJson(
-        _$_ArticuloEmpresaIvaDTO instance) =>
+Map<String, dynamic> _$$ArticuloEmpresaIvaDTOImplToJson(
+        _$ArticuloEmpresaIvaDTOImpl instance) =>
     <String, dynamic>{
       'ARTICULO_ID': instance.articuloId,
       'EMPRESA_ID': instance.empresaId,

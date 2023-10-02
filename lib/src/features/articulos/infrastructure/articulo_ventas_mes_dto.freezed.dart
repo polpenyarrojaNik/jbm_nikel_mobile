@@ -105,11 +105,11 @@ class _$ArticuloVentasMesDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ArticuloVentasMesDTOCopyWith<$Res>
+abstract class _$$ArticuloVentasMesDTOImplCopyWith<$Res>
     implements $ArticuloVentasMesDTOCopyWith<$Res> {
-  factory _$$_ArticuloVentasMesDTOCopyWith(_$_ArticuloVentasMesDTO value,
-          $Res Function(_$_ArticuloVentasMesDTO) then) =
-      __$$_ArticuloVentasMesDTOCopyWithImpl<$Res>;
+  factory _$$ArticuloVentasMesDTOImplCopyWith(_$ArticuloVentasMesDTOImpl value,
+          $Res Function(_$ArticuloVentasMesDTOImpl) then) =
+      __$$ArticuloVentasMesDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -122,11 +122,11 @@ abstract class _$$_ArticuloVentasMesDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ArticuloVentasMesDTOCopyWithImpl<$Res>
-    extends _$ArticuloVentasMesDTOCopyWithImpl<$Res, _$_ArticuloVentasMesDTO>
-    implements _$$_ArticuloVentasMesDTOCopyWith<$Res> {
-  __$$_ArticuloVentasMesDTOCopyWithImpl(_$_ArticuloVentasMesDTO _value,
-      $Res Function(_$_ArticuloVentasMesDTO) _then)
+class __$$ArticuloVentasMesDTOImplCopyWithImpl<$Res>
+    extends _$ArticuloVentasMesDTOCopyWithImpl<$Res, _$ArticuloVentasMesDTOImpl>
+    implements _$$ArticuloVentasMesDTOImplCopyWith<$Res> {
+  __$$ArticuloVentasMesDTOImplCopyWithImpl(_$ArticuloVentasMesDTOImpl _value,
+      $Res Function(_$ArticuloVentasMesDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -139,7 +139,7 @@ class __$$_ArticuloVentasMesDTOCopyWithImpl<$Res>
     Object? unidadesAnyo_3 = null,
     Object? unidadesAnyo_4 = null,
   }) {
-    return _then(_$_ArticuloVentasMesDTO(
+    return _then(_$ArticuloVentasMesDTOImpl(
       mes: null == mes
           ? _value.mes
           : mes // ignore: cast_nullable_to_non_nullable
@@ -170,8 +170,8 @@ class __$$_ArticuloVentasMesDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ArticuloVentasMesDTO extends _ArticuloVentasMesDTO {
-  const _$_ArticuloVentasMesDTO(
+class _$ArticuloVentasMesDTOImpl extends _ArticuloVentasMesDTO {
+  const _$ArticuloVentasMesDTOImpl(
       {@JsonKey(name: 'MES') required this.mes,
       @JsonKey(name: 'UNIDADES_ANYO') required this.unidadesAnyo,
       @JsonKey(name: 'UNIDADES_ANYO_1') required this.unidadesAnyo_1,
@@ -180,8 +180,8 @@ class _$_ArticuloVentasMesDTO extends _ArticuloVentasMesDTO {
       @JsonKey(name: 'UNIDADES_ANYO_4') required this.unidadesAnyo_4})
       : super._();
 
-  factory _$_ArticuloVentasMesDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_ArticuloVentasMesDTOFromJson(json);
+  factory _$ArticuloVentasMesDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ArticuloVentasMesDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'MES')
@@ -211,7 +211,7 @@ class _$_ArticuloVentasMesDTO extends _ArticuloVentasMesDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ArticuloVentasMesDTO &&
+            other is _$ArticuloVentasMesDTOImpl &&
             (identical(other.mes, mes) || other.mes == mes) &&
             (identical(other.unidadesAnyo, unidadesAnyo) ||
                 other.unidadesAnyo == unidadesAnyo) &&
@@ -233,13 +233,14 @@ class _$_ArticuloVentasMesDTO extends _ArticuloVentasMesDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArticuloVentasMesDTOCopyWith<_$_ArticuloVentasMesDTO> get copyWith =>
-      __$$_ArticuloVentasMesDTOCopyWithImpl<_$_ArticuloVentasMesDTO>(
-          this, _$identity);
+  _$$ArticuloVentasMesDTOImplCopyWith<_$ArticuloVentasMesDTOImpl>
+      get copyWith =>
+          __$$ArticuloVentasMesDTOImplCopyWithImpl<_$ArticuloVentasMesDTOImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ArticuloVentasMesDTOToJson(
+    return _$$ArticuloVentasMesDTOImplToJson(
       this,
     );
   }
@@ -253,11 +254,11 @@ abstract class _ArticuloVentasMesDTO extends ArticuloVentasMesDTO {
       @JsonKey(name: 'UNIDADES_ANYO_2') required final int unidadesAnyo_2,
       @JsonKey(name: 'UNIDADES_ANYO_3') required final int unidadesAnyo_3,
       @JsonKey(name: 'UNIDADES_ANYO_4')
-      required final int unidadesAnyo_4}) = _$_ArticuloVentasMesDTO;
+      required final int unidadesAnyo_4}) = _$ArticuloVentasMesDTOImpl;
   const _ArticuloVentasMesDTO._() : super._();
 
   factory _ArticuloVentasMesDTO.fromJson(Map<String, dynamic> json) =
-      _$_ArticuloVentasMesDTO.fromJson;
+      _$ArticuloVentasMesDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'MES')
@@ -279,6 +280,6 @@ abstract class _ArticuloVentasMesDTO extends ArticuloVentasMesDTO {
   int get unidadesAnyo_4;
   @override
   @JsonKey(ignore: true)
-  _$$_ArticuloVentasMesDTOCopyWith<_$_ArticuloVentasMesDTO> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ArticuloVentasMesDTOImplCopyWith<_$ArticuloVentasMesDTOImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

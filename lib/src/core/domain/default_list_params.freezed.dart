@@ -76,11 +76,11 @@ class _$DefaultListParamsCopyWithImpl<$Res, $Val extends DefaultListParams>
 }
 
 /// @nodoc
-abstract class _$$_DefaultListParamsCopyWith<$Res>
+abstract class _$$DefaultListParamsImplCopyWith<$Res>
     implements $DefaultListParamsCopyWith<$Res> {
-  factory _$$_DefaultListParamsCopyWith(_$_DefaultListParams value,
-          $Res Function(_$_DefaultListParams) then) =
-      __$$_DefaultListParamsCopyWithImpl<$Res>;
+  factory _$$DefaultListParamsImplCopyWith(_$DefaultListParamsImpl value,
+          $Res Function(_$DefaultListParamsImpl) then) =
+      __$$DefaultListParamsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -88,11 +88,11 @@ abstract class _$$_DefaultListParamsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DefaultListParamsCopyWithImpl<$Res>
-    extends _$DefaultListParamsCopyWithImpl<$Res, _$_DefaultListParams>
-    implements _$$_DefaultListParamsCopyWith<$Res> {
-  __$$_DefaultListParamsCopyWithImpl(
-      _$_DefaultListParams _value, $Res Function(_$_DefaultListParams) _then)
+class __$$DefaultListParamsImplCopyWithImpl<$Res>
+    extends _$DefaultListParamsCopyWithImpl<$Res, _$DefaultListParamsImpl>
+    implements _$$DefaultListParamsImplCopyWith<$Res> {
+  __$$DefaultListParamsImplCopyWithImpl(_$DefaultListParamsImpl _value,
+      $Res Function(_$DefaultListParamsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -103,7 +103,7 @@ class __$$_DefaultListParamsCopyWithImpl<$Res>
     Object? searchPotenciales = freezed,
     Object? entityId = freezed,
   }) {
-    return _then(_$_DefaultListParams(
+    return _then(_$DefaultListParamsImpl(
       page: null == page
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
@@ -126,8 +126,8 @@ class __$$_DefaultListParamsCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DefaultListParams extends _DefaultListParams {
-  const _$_DefaultListParams(
+class _$DefaultListParamsImpl extends _DefaultListParams {
+  const _$DefaultListParamsImpl(
       {required this.page,
       required this.searchText,
       this.searchPotenciales,
@@ -152,7 +152,7 @@ class _$_DefaultListParams extends _DefaultListParams {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DefaultListParams &&
+            other is _$DefaultListParamsImpl &&
             (identical(other.page, page) || other.page == page) &&
             (identical(other.searchText, searchText) ||
                 other.searchText == searchText) &&
@@ -169,8 +169,8 @@ class _$_DefaultListParams extends _DefaultListParams {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DefaultListParamsCopyWith<_$_DefaultListParams> get copyWith =>
-      __$$_DefaultListParamsCopyWithImpl<_$_DefaultListParams>(
+  _$$DefaultListParamsImplCopyWith<_$DefaultListParamsImpl> get copyWith =>
+      __$$DefaultListParamsImplCopyWithImpl<_$DefaultListParamsImpl>(
           this, _$identity);
 }
 
@@ -179,7 +179,7 @@ abstract class _DefaultListParams extends DefaultListParams {
       {required final int page,
       required final String searchText,
       final bool? searchPotenciales,
-      final String? entityId}) = _$_DefaultListParams;
+      final String? entityId}) = _$DefaultListParamsImpl;
   const _DefaultListParams._() : super._();
 
   @override
@@ -192,6 +192,6 @@ abstract class _DefaultListParams extends DefaultListParams {
   String? get entityId;
   @override
   @JsonKey(ignore: true)
-  _$$_DefaultListParamsCopyWith<_$_DefaultListParams> get copyWith =>
+  _$$DefaultListParamsImplCopyWith<_$DefaultListParamsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

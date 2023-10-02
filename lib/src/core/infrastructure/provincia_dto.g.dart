@@ -6,8 +6,8 @@ part of 'provincia_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ProvinciaDTO _$$_ProvinciaDTOFromJson(Map<String, dynamic> json) =>
-    _$_ProvinciaDTO(
+_$ProvinciaDTOImpl _$$ProvinciaDTOImplFromJson(Map<String, dynamic> json) =>
+    _$ProvinciaDTOImpl(
       paisId: json['PAIS_ID'] as String?,
       regionId: json['REGION_ID'] as String?,
       provinciaId: json['PROVINCIA_ID'] as String,
@@ -16,7 +16,7 @@ _$_ProvinciaDTO _$$_ProvinciaDTOFromJson(Map<String, dynamic> json) =>
       deleted: json['DELETED'] as String? ?? 'N',
     );
 
-Map<String, dynamic> _$$_ProvinciaDTOToJson(_$_ProvinciaDTO instance) =>
+Map<String, dynamic> _$$ProvinciaDTOImplToJson(_$ProvinciaDTOImpl instance) =>
     <String, dynamic>{
       'PAIS_ID': instance.paisId,
       'REGION_ID': instance.regionId,

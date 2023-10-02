@@ -63,22 +63,22 @@ class _$ClienteAdjuntoCopyWithImpl<$Res, $Val extends ClienteAdjunto>
 }
 
 /// @nodoc
-abstract class _$$_ClienteAdjuntoCopyWith<$Res>
+abstract class _$$ClienteAdjuntoImplCopyWith<$Res>
     implements $ClienteAdjuntoCopyWith<$Res> {
-  factory _$$_ClienteAdjuntoCopyWith(
-          _$_ClienteAdjunto value, $Res Function(_$_ClienteAdjunto) then) =
-      __$$_ClienteAdjuntoCopyWithImpl<$Res>;
+  factory _$$ClienteAdjuntoImplCopyWith(_$ClienteAdjuntoImpl value,
+          $Res Function(_$ClienteAdjuntoImpl) then) =
+      __$$ClienteAdjuntoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String clienteId, String nombreAdjunto});
 }
 
 /// @nodoc
-class __$$_ClienteAdjuntoCopyWithImpl<$Res>
-    extends _$ClienteAdjuntoCopyWithImpl<$Res, _$_ClienteAdjunto>
-    implements _$$_ClienteAdjuntoCopyWith<$Res> {
-  __$$_ClienteAdjuntoCopyWithImpl(
-      _$_ClienteAdjunto _value, $Res Function(_$_ClienteAdjunto) _then)
+class __$$ClienteAdjuntoImplCopyWithImpl<$Res>
+    extends _$ClienteAdjuntoCopyWithImpl<$Res, _$ClienteAdjuntoImpl>
+    implements _$$ClienteAdjuntoImplCopyWith<$Res> {
+  __$$ClienteAdjuntoImplCopyWithImpl(
+      _$ClienteAdjuntoImpl _value, $Res Function(_$ClienteAdjuntoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_ClienteAdjuntoCopyWithImpl<$Res>
     Object? clienteId = null,
     Object? nombreAdjunto = null,
   }) {
-    return _then(_$_ClienteAdjunto(
+    return _then(_$ClienteAdjuntoImpl(
       clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_ClienteAdjuntoCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ClienteAdjunto extends _ClienteAdjunto {
-  const _$_ClienteAdjunto(
+class _$ClienteAdjuntoImpl extends _ClienteAdjunto {
+  const _$ClienteAdjuntoImpl(
       {required this.clienteId, required this.nombreAdjunto})
       : super._();
 
@@ -121,7 +121,7 @@ class _$_ClienteAdjunto extends _ClienteAdjunto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClienteAdjunto &&
+            other is _$ClienteAdjuntoImpl &&
             (identical(other.clienteId, clienteId) ||
                 other.clienteId == clienteId) &&
             (identical(other.nombreAdjunto, nombreAdjunto) ||
@@ -134,14 +134,15 @@ class _$_ClienteAdjunto extends _ClienteAdjunto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClienteAdjuntoCopyWith<_$_ClienteAdjunto> get copyWith =>
-      __$$_ClienteAdjuntoCopyWithImpl<_$_ClienteAdjunto>(this, _$identity);
+  _$$ClienteAdjuntoImplCopyWith<_$ClienteAdjuntoImpl> get copyWith =>
+      __$$ClienteAdjuntoImplCopyWithImpl<_$ClienteAdjuntoImpl>(
+          this, _$identity);
 }
 
 abstract class _ClienteAdjunto extends ClienteAdjunto {
   const factory _ClienteAdjunto(
       {required final String clienteId,
-      required final String nombreAdjunto}) = _$_ClienteAdjunto;
+      required final String nombreAdjunto}) = _$ClienteAdjuntoImpl;
   const _ClienteAdjunto._() : super._();
 
   @override
@@ -150,6 +151,6 @@ abstract class _ClienteAdjunto extends ClienteAdjunto {
   String get nombreAdjunto;
   @override
   @JsonKey(ignore: true)
-  _$$_ClienteAdjuntoCopyWith<_$_ClienteAdjunto> get copyWith =>
+  _$$ClienteAdjuntoImplCopyWith<_$ClienteAdjuntoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

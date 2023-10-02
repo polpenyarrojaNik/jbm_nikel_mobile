@@ -6,8 +6,9 @@ part of 'metodo_cobro_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_MetodoDeCobroDTO _$$_MetodoDeCobroDTOFromJson(Map<String, dynamic> json) =>
-    _$_MetodoDeCobroDTO(
+_$MetodoDeCobroDTOImpl _$$MetodoDeCobroDTOImplFromJson(
+        Map<String, dynamic> json) =>
+    _$MetodoDeCobroDTOImpl(
       id: json['METODO_COBRO_ID'] as String,
       descripcionES: json['DESCRIPCION_ES'] as String,
       descripcionEN: json['DESCRIPCION_EN'] as String?,
@@ -28,7 +29,8 @@ _$_MetodoDeCobroDTO _$$_MetodoDeCobroDTOFromJson(Map<String, dynamic> json) =>
       deleted: json['DELETED'] as String? ?? 'N',
     );
 
-Map<String, dynamic> _$$_MetodoDeCobroDTOToJson(_$_MetodoDeCobroDTO instance) =>
+Map<String, dynamic> _$$MetodoDeCobroDTOImplToJson(
+        _$MetodoDeCobroDTOImpl instance) =>
     <String, dynamic>{
       'METODO_COBRO_ID': instance.id,
       'DESCRIPCION_ES': instance.descripcionES,

@@ -481,11 +481,11 @@ class _$ClienteDTOCopyWithImpl<$Res, $Val extends ClienteDTO>
 }
 
 /// @nodoc
-abstract class _$$_ClienteDTOCopyWith<$Res>
+abstract class _$$ClienteDTOImplCopyWith<$Res>
     implements $ClienteDTOCopyWith<$Res> {
-  factory _$$_ClienteDTOCopyWith(
-          _$_ClienteDTO value, $Res Function(_$_ClienteDTO) then) =
-      __$$_ClienteDTOCopyWithImpl<$Res>;
+  factory _$$ClienteDTOImplCopyWith(
+          _$ClienteDTOImpl value, $Res Function(_$ClienteDTOImpl) then) =
+      __$$ClienteDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -551,11 +551,11 @@ abstract class _$$_ClienteDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ClienteDTOCopyWithImpl<$Res>
-    extends _$ClienteDTOCopyWithImpl<$Res, _$_ClienteDTO>
-    implements _$$_ClienteDTOCopyWith<$Res> {
-  __$$_ClienteDTOCopyWithImpl(
-      _$_ClienteDTO _value, $Res Function(_$_ClienteDTO) _then)
+class __$$ClienteDTOImplCopyWithImpl<$Res>
+    extends _$ClienteDTOCopyWithImpl<$Res, _$ClienteDTOImpl>
+    implements _$$ClienteDTOImplCopyWith<$Res> {
+  __$$ClienteDTOImplCopyWithImpl(
+      _$ClienteDTOImpl _value, $Res Function(_$ClienteDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -614,7 +614,7 @@ class __$$_ClienteDTOCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_ClienteDTO(
+    return _then(_$ClienteDTOImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -829,8 +829,8 @@ class __$$_ClienteDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ClienteDTO extends _ClienteDTO {
-  const _$_ClienteDTO(
+class _$ClienteDTOImpl extends _ClienteDTO {
+  const _$ClienteDTOImpl(
       {@JsonKey(name: 'CLIENTE_ID') required this.id,
       @JsonKey(name: 'NOMBRE') required this.nombreCliente,
       @JsonKey(name: 'NIF') this.nif,
@@ -893,8 +893,8 @@ class _$_ClienteDTO extends _ClienteDTO {
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
-  factory _$_ClienteDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_ClienteDTOFromJson(json);
+  factory _$ClienteDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ClienteDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'CLIENTE_ID')
@@ -1062,7 +1062,7 @@ class _$_ClienteDTO extends _ClienteDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClienteDTO &&
+            other is _$ClienteDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.nombreCliente, nombreCliente) ||
                 other.nombreCliente == nombreCliente) &&
@@ -1219,12 +1219,12 @@ class _$_ClienteDTO extends _ClienteDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClienteDTOCopyWith<_$_ClienteDTO> get copyWith =>
-      __$$_ClienteDTOCopyWithImpl<_$_ClienteDTO>(this, _$identity);
+  _$$ClienteDTOImplCopyWith<_$ClienteDTOImpl> get copyWith =>
+      __$$ClienteDTOImplCopyWithImpl<_$ClienteDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ClienteDTOToJson(
+    return _$$ClienteDTOImplToJson(
       this,
     );
   }
@@ -1306,11 +1306,11 @@ abstract class _ClienteDTO extends ClienteDTO {
       @JsonKey(name: 'REPRESENTANTE2_NOMBRE')
       final String? representante2Nombre,
       @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') final String deleted}) = _$_ClienteDTO;
+      @JsonKey(name: 'DELETED') final String deleted}) = _$ClienteDTOImpl;
   const _ClienteDTO._() : super._();
 
   factory _ClienteDTO.fromJson(Map<String, dynamic> json) =
-      _$_ClienteDTO.fromJson;
+      _$ClienteDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'CLIENTE_ID')
@@ -1470,6 +1470,6 @@ abstract class _ClienteDTO extends ClienteDTO {
   String get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_ClienteDTOCopyWith<_$_ClienteDTO> get copyWith =>
+  _$$ClienteDTOImplCopyWith<_$ClienteDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

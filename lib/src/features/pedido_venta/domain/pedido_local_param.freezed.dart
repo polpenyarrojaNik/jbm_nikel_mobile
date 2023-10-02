@@ -116,11 +116,11 @@ class _$PedidoLocalParamCopyWithImpl<$Res, $Val extends PedidoLocalParam>
 }
 
 /// @nodoc
-abstract class _$$_PedidoLocalParamCopyWith<$Res>
+abstract class _$$PedidoLocalParamImplCopyWith<$Res>
     implements $PedidoLocalParamCopyWith<$Res> {
-  factory _$$_PedidoLocalParamCopyWith(
-          _$_PedidoLocalParam value, $Res Function(_$_PedidoLocalParam) then) =
-      __$$_PedidoLocalParamCopyWithImpl<$Res>;
+  factory _$$PedidoLocalParamImplCopyWith(_$PedidoLocalParamImpl value,
+          $Res Function(_$PedidoLocalParamImpl) then) =
+      __$$PedidoLocalParamImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -137,11 +137,11 @@ abstract class _$$_PedidoLocalParamCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PedidoLocalParamCopyWithImpl<$Res>
-    extends _$PedidoLocalParamCopyWithImpl<$Res, _$_PedidoLocalParam>
-    implements _$$_PedidoLocalParamCopyWith<$Res> {
-  __$$_PedidoLocalParamCopyWithImpl(
-      _$_PedidoLocalParam _value, $Res Function(_$_PedidoLocalParam) _then)
+class __$$PedidoLocalParamImplCopyWithImpl<$Res>
+    extends _$PedidoLocalParamCopyWithImpl<$Res, _$PedidoLocalParamImpl>
+    implements _$$PedidoLocalParamImplCopyWith<$Res> {
+  __$$PedidoLocalParamImplCopyWithImpl(_$PedidoLocalParamImpl _value,
+      $Res Function(_$PedidoLocalParamImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -155,7 +155,7 @@ class __$$_PedidoLocalParamCopyWithImpl<$Res>
     Object? createPedidoFromClienteId = freezed,
     Object? addLineaDesdeArticulo = freezed,
   }) {
-    return _then(_$_PedidoLocalParam(
+    return _then(_$PedidoLocalParamImpl(
       pedidoAppId: freezed == pedidoAppId
           ? _value.pedidoAppId
           : pedidoAppId // ignore: cast_nullable_to_non_nullable
@@ -190,8 +190,8 @@ class __$$_PedidoLocalParamCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PedidoLocalParam extends _PedidoLocalParam {
-  const _$_PedidoLocalParam(
+class _$PedidoLocalParamImpl extends _PedidoLocalParam {
+  const _$PedidoLocalParamImpl(
       {this.pedidoAppId,
       this.pedidoId,
       this.empresaId,
@@ -225,7 +225,7 @@ class _$_PedidoLocalParam extends _PedidoLocalParam {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PedidoLocalParam &&
+            other is _$PedidoLocalParamImpl &&
             (identical(other.pedidoAppId, pedidoAppId) ||
                 other.pedidoAppId == pedidoAppId) &&
             (identical(other.pedidoId, pedidoId) ||
@@ -248,8 +248,9 @@ class _$_PedidoLocalParam extends _PedidoLocalParam {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PedidoLocalParamCopyWith<_$_PedidoLocalParam> get copyWith =>
-      __$$_PedidoLocalParamCopyWithImpl<_$_PedidoLocalParam>(this, _$identity);
+  _$$PedidoLocalParamImplCopyWith<_$PedidoLocalParamImpl> get copyWith =>
+      __$$PedidoLocalParamImplCopyWithImpl<_$PedidoLocalParamImpl>(
+          this, _$identity);
 }
 
 abstract class _PedidoLocalParam extends PedidoLocalParam {
@@ -260,7 +261,7 @@ abstract class _PedidoLocalParam extends PedidoLocalParam {
       required final bool isEdit,
       final bool? tratada,
       final String? createPedidoFromClienteId,
-      final PedidoVentaLinea? addLineaDesdeArticulo}) = _$_PedidoLocalParam;
+      final PedidoVentaLinea? addLineaDesdeArticulo}) = _$PedidoLocalParamImpl;
   const _PedidoLocalParam._() : super._();
 
   @override
@@ -279,6 +280,6 @@ abstract class _PedidoLocalParam extends PedidoLocalParam {
   PedidoVentaLinea? get addLineaDesdeArticulo;
   @override
   @JsonKey(ignore: true)
-  _$$_PedidoLocalParamCopyWith<_$_PedidoLocalParam> get copyWith =>
+  _$$PedidoLocalParamImplCopyWith<_$PedidoLocalParamImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

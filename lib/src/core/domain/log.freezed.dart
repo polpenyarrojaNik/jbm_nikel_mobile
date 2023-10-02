@@ -125,9 +125,9 @@ class _$LogCopyWithImpl<$Res, $Val extends Log> implements $LogCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_LogCopyWith<$Res> implements $LogCopyWith<$Res> {
-  factory _$$_LogCopyWith(_$_Log value, $Res Function(_$_Log) then) =
-      __$$_LogCopyWithImpl<$Res>;
+abstract class _$$LogImplCopyWith<$Res> implements $LogCopyWith<$Res> {
+  factory _$$LogImplCopyWith(_$LogImpl value, $Res Function(_$LogImpl) then) =
+      __$$LogImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -145,9 +145,9 @@ abstract class _$$_LogCopyWith<$Res> implements $LogCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LogCopyWithImpl<$Res> extends _$LogCopyWithImpl<$Res, _$_Log>
-    implements _$$_LogCopyWith<$Res> {
-  __$$_LogCopyWithImpl(_$_Log _value, $Res Function(_$_Log) _then)
+class __$$LogImplCopyWithImpl<$Res> extends _$LogCopyWithImpl<$Res, _$LogImpl>
+    implements _$$LogImplCopyWith<$Res> {
+  __$$LogImplCopyWithImpl(_$LogImpl _value, $Res Function(_$LogImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -165,7 +165,7 @@ class __$$_LogCopyWithImpl<$Res> extends _$LogCopyWithImpl<$Res, _$_Log>
     Object? userName = freezed,
     Object? timestamp = null,
   }) {
-    return _then(_$_Log(
+    return _then(_$LogImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -216,8 +216,8 @@ class __$$_LogCopyWithImpl<$Res> extends _$LogCopyWithImpl<$Res, _$_Log>
 
 /// @nodoc
 
-class _$_Log extends _Log {
-  const _$_Log(
+class _$LogImpl extends _Log {
+  const _$LogImpl(
       {this.id,
       required this.level,
       required this.message,
@@ -263,7 +263,7 @@ class _$_Log extends _Log {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Log &&
+            other is _$LogImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.level, level) || other.level == level) &&
             (identical(other.message, message) || other.message == message) &&
@@ -289,8 +289,8 @@ class _$_Log extends _Log {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LogCopyWith<_$_Log> get copyWith =>
-      __$$_LogCopyWithImpl<_$_Log>(this, _$identity);
+  _$$LogImplCopyWith<_$LogImpl> get copyWith =>
+      __$$LogImplCopyWithImpl<_$LogImpl>(this, _$identity);
 }
 
 abstract class _Log extends Log {
@@ -305,7 +305,7 @@ abstract class _Log extends Log {
       required final String userId,
       final String? userEmail,
       final String? userName,
-      required final DateTime timestamp}) = _$_Log;
+      required final DateTime timestamp}) = _$LogImpl;
   const _Log._() : super._();
 
   @override
@@ -332,5 +332,6 @@ abstract class _Log extends Log {
   DateTime get timestamp;
   @override
   @JsonKey(ignore: true)
-  _$$_LogCopyWith<_$_Log> get copyWith => throw _privateConstructorUsedError;
+  _$$LogImplCopyWith<_$LogImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

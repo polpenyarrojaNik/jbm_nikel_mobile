@@ -208,11 +208,11 @@ class _$SubfamiliaDTOCopyWithImpl<$Res, $Val extends SubfamiliaDTO>
 }
 
 /// @nodoc
-abstract class _$$_SubfamiliaDTOCopyWith<$Res>
+abstract class _$$SubfamiliaDTOImplCopyWith<$Res>
     implements $SubfamiliaDTOCopyWith<$Res> {
-  factory _$$_SubfamiliaDTOCopyWith(
-          _$_SubfamiliaDTO value, $Res Function(_$_SubfamiliaDTO) then) =
-      __$$_SubfamiliaDTOCopyWithImpl<$Res>;
+  factory _$$SubfamiliaDTOImplCopyWith(
+          _$SubfamiliaDTOImpl value, $Res Function(_$SubfamiliaDTOImpl) then) =
+      __$$SubfamiliaDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -238,11 +238,11 @@ abstract class _$$_SubfamiliaDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SubfamiliaDTOCopyWithImpl<$Res>
-    extends _$SubfamiliaDTOCopyWithImpl<$Res, _$_SubfamiliaDTO>
-    implements _$$_SubfamiliaDTOCopyWith<$Res> {
-  __$$_SubfamiliaDTOCopyWithImpl(
-      _$_SubfamiliaDTO _value, $Res Function(_$_SubfamiliaDTO) _then)
+class __$$SubfamiliaDTOImplCopyWithImpl<$Res>
+    extends _$SubfamiliaDTOCopyWithImpl<$Res, _$SubfamiliaDTOImpl>
+    implements _$$SubfamiliaDTOImplCopyWith<$Res> {
+  __$$SubfamiliaDTOImplCopyWithImpl(
+      _$SubfamiliaDTOImpl _value, $Res Function(_$SubfamiliaDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -268,7 +268,7 @@ class __$$_SubfamiliaDTOCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_SubfamiliaDTO(
+    return _then(_$SubfamiliaDTOImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -351,8 +351,8 @@ class __$$_SubfamiliaDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SubfamiliaDTO extends _SubfamiliaDTO {
-  const _$_SubfamiliaDTO(
+class _$SubfamiliaDTOImpl extends _SubfamiliaDTO {
+  const _$SubfamiliaDTOImpl(
       {@JsonKey(name: 'SUBFAMILIA_ID') required this.id,
       @JsonKey(name: 'FAMILIA_ID') required this.familiaId,
       @JsonKey(name: 'DESCRIPCION_ES') required this.descripcionES,
@@ -374,8 +374,8 @@ class _$_SubfamiliaDTO extends _SubfamiliaDTO {
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
-  factory _$_SubfamiliaDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_SubfamiliaDTOFromJson(json);
+  factory _$SubfamiliaDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SubfamiliaDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'SUBFAMILIA_ID')
@@ -444,7 +444,7 @@ class _$_SubfamiliaDTO extends _SubfamiliaDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SubfamiliaDTO &&
+            other is _$SubfamiliaDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.familiaId, familiaId) ||
                 other.familiaId == familiaId) &&
@@ -511,12 +511,12 @@ class _$_SubfamiliaDTO extends _SubfamiliaDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SubfamiliaDTOCopyWith<_$_SubfamiliaDTO> get copyWith =>
-      __$$_SubfamiliaDTOCopyWithImpl<_$_SubfamiliaDTO>(this, _$identity);
+  _$$SubfamiliaDTOImplCopyWith<_$SubfamiliaDTOImpl> get copyWith =>
+      __$$SubfamiliaDTOImplCopyWithImpl<_$SubfamiliaDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SubfamiliaDTOToJson(
+    return _$$SubfamiliaDTOImplToJson(
       this,
     );
   }
@@ -542,11 +542,11 @@ abstract class _SubfamiliaDTO extends SubfamiliaDTO {
       @JsonKey(name: 'DESCRIPCION_CN') final String? descripcionCN,
       @JsonKey(name: 'DESCRIPCION_EL') final String? descripcionEL,
       @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') final String deleted}) = _$_SubfamiliaDTO;
+      @JsonKey(name: 'DELETED') final String deleted}) = _$SubfamiliaDTOImpl;
   const _SubfamiliaDTO._() : super._();
 
   factory _SubfamiliaDTO.fromJson(Map<String, dynamic> json) =
-      _$_SubfamiliaDTO.fromJson;
+      _$SubfamiliaDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'SUBFAMILIA_ID')
@@ -607,6 +607,6 @@ abstract class _SubfamiliaDTO extends SubfamiliaDTO {
   String get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_SubfamiliaDTOCopyWith<_$_SubfamiliaDTO> get copyWith =>
+  _$$SubfamiliaDTOImplCopyWith<_$SubfamiliaDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

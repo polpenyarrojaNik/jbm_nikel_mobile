@@ -192,11 +192,11 @@ class _$DevolucionMotivoDTOCopyWithImpl<$Res, $Val extends DevolucionMotivoDTO>
 }
 
 /// @nodoc
-abstract class _$$_DevolucionMotivoDTOCopyWith<$Res>
+abstract class _$$DevolucionMotivoDTOImplCopyWith<$Res>
     implements $DevolucionMotivoDTOCopyWith<$Res> {
-  factory _$$_DevolucionMotivoDTOCopyWith(_$_DevolucionMotivoDTO value,
-          $Res Function(_$_DevolucionMotivoDTO) then) =
-      __$$_DevolucionMotivoDTOCopyWithImpl<$Res>;
+  factory _$$DevolucionMotivoDTOImplCopyWith(_$DevolucionMotivoDTOImpl value,
+          $Res Function(_$DevolucionMotivoDTOImpl) then) =
+      __$$DevolucionMotivoDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -220,11 +220,11 @@ abstract class _$$_DevolucionMotivoDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DevolucionMotivoDTOCopyWithImpl<$Res>
-    extends _$DevolucionMotivoDTOCopyWithImpl<$Res, _$_DevolucionMotivoDTO>
-    implements _$$_DevolucionMotivoDTOCopyWith<$Res> {
-  __$$_DevolucionMotivoDTOCopyWithImpl(_$_DevolucionMotivoDTO _value,
-      $Res Function(_$_DevolucionMotivoDTO) _then)
+class __$$DevolucionMotivoDTOImplCopyWithImpl<$Res>
+    extends _$DevolucionMotivoDTOCopyWithImpl<$Res, _$DevolucionMotivoDTOImpl>
+    implements _$$DevolucionMotivoDTOImplCopyWith<$Res> {
+  __$$DevolucionMotivoDTOImplCopyWithImpl(_$DevolucionMotivoDTOImpl _value,
+      $Res Function(_$DevolucionMotivoDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -248,7 +248,7 @@ class __$$_DevolucionMotivoDTOCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_DevolucionMotivoDTO(
+    return _then(_$DevolucionMotivoDTOImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -323,8 +323,8 @@ class __$$_DevolucionMotivoDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_DevolucionMotivoDTO extends _DevolucionMotivoDTO {
-  const _$_DevolucionMotivoDTO(
+class _$DevolucionMotivoDTOImpl extends _DevolucionMotivoDTO {
+  const _$DevolucionMotivoDTOImpl(
       {@JsonKey(name: 'DEVOLUCION_MOTIVO_ID') required this.id,
       @JsonKey(name: 'DESCRIPCION_ES') required this.descripcionES,
       @JsonKey(name: 'DESCRIPCION_EN') this.descripcionEN,
@@ -344,8 +344,8 @@ class _$_DevolucionMotivoDTO extends _DevolucionMotivoDTO {
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
-  factory _$_DevolucionMotivoDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_DevolucionMotivoDTOFromJson(json);
+  factory _$DevolucionMotivoDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DevolucionMotivoDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'DEVOLUCION_MOTIVO_ID')
@@ -408,7 +408,7 @@ class _$_DevolucionMotivoDTO extends _DevolucionMotivoDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DevolucionMotivoDTO &&
+            other is _$DevolucionMotivoDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.descripcionES, descripcionES) ||
                 other.descripcionES == descripcionES) &&
@@ -468,13 +468,13 @@ class _$_DevolucionMotivoDTO extends _DevolucionMotivoDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DevolucionMotivoDTOCopyWith<_$_DevolucionMotivoDTO> get copyWith =>
-      __$$_DevolucionMotivoDTOCopyWithImpl<_$_DevolucionMotivoDTO>(
+  _$$DevolucionMotivoDTOImplCopyWith<_$DevolucionMotivoDTOImpl> get copyWith =>
+      __$$DevolucionMotivoDTOImplCopyWithImpl<_$DevolucionMotivoDTOImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DevolucionMotivoDTOToJson(
+    return _$$DevolucionMotivoDTOImplToJson(
       this,
     );
   }
@@ -482,27 +482,28 @@ class _$_DevolucionMotivoDTO extends _DevolucionMotivoDTO {
 
 abstract class _DevolucionMotivoDTO extends DevolucionMotivoDTO {
   const factory _DevolucionMotivoDTO(
-      {@JsonKey(name: 'DEVOLUCION_MOTIVO_ID') required final String id,
-      @JsonKey(name: 'DESCRIPCION_ES') required final String descripcionES,
-      @JsonKey(name: 'DESCRIPCION_EN') final String? descripcionEN,
-      @JsonKey(name: 'DESCRIPCION_FR') final String? descripcionFR,
-      @JsonKey(name: 'DESCRIPCION_DE') final String? descripcionDE,
-      @JsonKey(name: 'DESCRIPCION_CA') final String? descripcionCA,
-      @JsonKey(name: 'DESCRIPCION_GB') final String? descripcionGB,
-      @JsonKey(name: 'DESCRIPCION_HU') final String? descripcionHU,
-      @JsonKey(name: 'DESCRIPCION_IT') final String? descripcionIT,
-      @JsonKey(name: 'DESCRIPCION_NL') final String? descripcionNL,
-      @JsonKey(name: 'DESCRIPCION_PT') final String? descripcionPT,
-      @JsonKey(name: 'DESCRIPCION_RO') final String? descripcionRO,
-      @JsonKey(name: 'DESCRIPCION_RU') final String? descripcionRU,
-      @JsonKey(name: 'DESCRIPCION_CN') final String? descripcionCN,
-      @JsonKey(name: 'DESCRIPCION_EL') final String? descripcionEL,
-      @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') final String deleted}) = _$_DevolucionMotivoDTO;
+          {@JsonKey(name: 'DEVOLUCION_MOTIVO_ID') required final String id,
+          @JsonKey(name: 'DESCRIPCION_ES') required final String descripcionES,
+          @JsonKey(name: 'DESCRIPCION_EN') final String? descripcionEN,
+          @JsonKey(name: 'DESCRIPCION_FR') final String? descripcionFR,
+          @JsonKey(name: 'DESCRIPCION_DE') final String? descripcionDE,
+          @JsonKey(name: 'DESCRIPCION_CA') final String? descripcionCA,
+          @JsonKey(name: 'DESCRIPCION_GB') final String? descripcionGB,
+          @JsonKey(name: 'DESCRIPCION_HU') final String? descripcionHU,
+          @JsonKey(name: 'DESCRIPCION_IT') final String? descripcionIT,
+          @JsonKey(name: 'DESCRIPCION_NL') final String? descripcionNL,
+          @JsonKey(name: 'DESCRIPCION_PT') final String? descripcionPT,
+          @JsonKey(name: 'DESCRIPCION_RO') final String? descripcionRO,
+          @JsonKey(name: 'DESCRIPCION_RU') final String? descripcionRU,
+          @JsonKey(name: 'DESCRIPCION_CN') final String? descripcionCN,
+          @JsonKey(name: 'DESCRIPCION_EL') final String? descripcionEL,
+          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+          @JsonKey(name: 'DELETED') final String deleted}) =
+      _$DevolucionMotivoDTOImpl;
   const _DevolucionMotivoDTO._() : super._();
 
   factory _DevolucionMotivoDTO.fromJson(Map<String, dynamic> json) =
-      _$_DevolucionMotivoDTO.fromJson;
+      _$DevolucionMotivoDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'DEVOLUCION_MOTIVO_ID')
@@ -557,6 +558,6 @@ abstract class _DevolucionMotivoDTO extends DevolucionMotivoDTO {
   String get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_DevolucionMotivoDTOCopyWith<_$_DevolucionMotivoDTO> get copyWith =>
+  _$$DevolucionMotivoDTOImplCopyWith<_$DevolucionMotivoDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

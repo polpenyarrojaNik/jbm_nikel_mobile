@@ -69,22 +69,22 @@ class _$AdjuntoParamCopyWithImpl<$Res, $Val extends AdjuntoParam>
 }
 
 /// @nodoc
-abstract class _$$_AdjuntoParamCopyWith<$Res>
+abstract class _$$AdjuntoParamImplCopyWith<$Res>
     implements $AdjuntoParamCopyWith<$Res> {
-  factory _$$_AdjuntoParamCopyWith(
-          _$_AdjuntoParam value, $Res Function(_$_AdjuntoParam) then) =
-      __$$_AdjuntoParamCopyWithImpl<$Res>;
+  factory _$$AdjuntoParamImplCopyWith(
+          _$AdjuntoParamImpl value, $Res Function(_$AdjuntoParamImpl) then) =
+      __$$AdjuntoParamImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id, String? nombreArchivo, bool? descarga});
 }
 
 /// @nodoc
-class __$$_AdjuntoParamCopyWithImpl<$Res>
-    extends _$AdjuntoParamCopyWithImpl<$Res, _$_AdjuntoParam>
-    implements _$$_AdjuntoParamCopyWith<$Res> {
-  __$$_AdjuntoParamCopyWithImpl(
-      _$_AdjuntoParam _value, $Res Function(_$_AdjuntoParam) _then)
+class __$$AdjuntoParamImplCopyWithImpl<$Res>
+    extends _$AdjuntoParamCopyWithImpl<$Res, _$AdjuntoParamImpl>
+    implements _$$AdjuntoParamImplCopyWith<$Res> {
+  __$$AdjuntoParamImplCopyWithImpl(
+      _$AdjuntoParamImpl _value, $Res Function(_$AdjuntoParamImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -94,7 +94,7 @@ class __$$_AdjuntoParamCopyWithImpl<$Res>
     Object? nombreArchivo = freezed,
     Object? descarga = freezed,
   }) {
-    return _then(_$_AdjuntoParam(
+    return _then(_$AdjuntoParamImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -113,8 +113,8 @@ class __$$_AdjuntoParamCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AdjuntoParam extends _AdjuntoParam {
-  const _$_AdjuntoParam(
+class _$AdjuntoParamImpl extends _AdjuntoParam {
+  const _$AdjuntoParamImpl(
       {required this.id, required this.nombreArchivo, this.descarga})
       : super._();
 
@@ -134,7 +134,7 @@ class _$_AdjuntoParam extends _AdjuntoParam {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AdjuntoParam &&
+            other is _$AdjuntoParamImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.nombreArchivo, nombreArchivo) ||
                 other.nombreArchivo == nombreArchivo) &&
@@ -148,15 +148,15 @@ class _$_AdjuntoParam extends _AdjuntoParam {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AdjuntoParamCopyWith<_$_AdjuntoParam> get copyWith =>
-      __$$_AdjuntoParamCopyWithImpl<_$_AdjuntoParam>(this, _$identity);
+  _$$AdjuntoParamImplCopyWith<_$AdjuntoParamImpl> get copyWith =>
+      __$$AdjuntoParamImplCopyWithImpl<_$AdjuntoParamImpl>(this, _$identity);
 }
 
 abstract class _AdjuntoParam extends AdjuntoParam {
   const factory _AdjuntoParam(
       {required final String id,
       required final String? nombreArchivo,
-      final bool? descarga}) = _$_AdjuntoParam;
+      final bool? descarga}) = _$AdjuntoParamImpl;
   const _AdjuntoParam._() : super._();
 
   @override
@@ -167,6 +167,6 @@ abstract class _AdjuntoParam extends AdjuntoParam {
   bool? get descarga;
   @override
   @JsonKey(ignore: true)
-  _$$_AdjuntoParamCopyWith<_$_AdjuntoParam> get copyWith =>
+  _$$AdjuntoParamImplCopyWith<_$AdjuntoParamImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

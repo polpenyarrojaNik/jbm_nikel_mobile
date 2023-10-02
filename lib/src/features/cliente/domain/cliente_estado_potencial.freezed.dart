@@ -178,11 +178,12 @@ class _$ClienteEstadoPotencialCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ClienteEstadoPotencialCopyWith<$Res>
+abstract class _$$ClienteEstadoPotencialImplCopyWith<$Res>
     implements $ClienteEstadoPotencialCopyWith<$Res> {
-  factory _$$_ClienteEstadoPotencialCopyWith(_$_ClienteEstadoPotencial value,
-          $Res Function(_$_ClienteEstadoPotencial) then) =
-      __$$_ClienteEstadoPotencialCopyWithImpl<$Res>;
+  factory _$$ClienteEstadoPotencialImplCopyWith(
+          _$ClienteEstadoPotencialImpl value,
+          $Res Function(_$ClienteEstadoPotencialImpl) then) =
+      __$$ClienteEstadoPotencialImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -207,12 +208,13 @@ abstract class _$$_ClienteEstadoPotencialCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ClienteEstadoPotencialCopyWithImpl<$Res>
+class __$$ClienteEstadoPotencialImplCopyWithImpl<$Res>
     extends _$ClienteEstadoPotencialCopyWithImpl<$Res,
-        _$_ClienteEstadoPotencial>
-    implements _$$_ClienteEstadoPotencialCopyWith<$Res> {
-  __$$_ClienteEstadoPotencialCopyWithImpl(_$_ClienteEstadoPotencial _value,
-      $Res Function(_$_ClienteEstadoPotencial) _then)
+        _$ClienteEstadoPotencialImpl>
+    implements _$$ClienteEstadoPotencialImplCopyWith<$Res> {
+  __$$ClienteEstadoPotencialImplCopyWithImpl(
+      _$ClienteEstadoPotencialImpl _value,
+      $Res Function(_$ClienteEstadoPotencialImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -237,7 +239,7 @@ class __$$_ClienteEstadoPotencialCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$_ClienteEstadoPotencial(
+    return _then(_$ClienteEstadoPotencialImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -316,8 +318,8 @@ class __$$_ClienteEstadoPotencialCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ClienteEstadoPotencial extends _ClienteEstadoPotencial {
-  const _$_ClienteEstadoPotencial(
+class _$ClienteEstadoPotencialImpl extends _ClienteEstadoPotencial {
+  const _$ClienteEstadoPotencialImpl(
       {required this.id,
       required this.descripcionES,
       this.descripcionEN,
@@ -384,7 +386,7 @@ class _$_ClienteEstadoPotencial extends _ClienteEstadoPotencial {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClienteEstadoPotencial &&
+            other is _$ClienteEstadoPotencialImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.descripcionES, descripcionES) ||
                 other.descripcionES == descripcionES) &&
@@ -446,9 +448,9 @@ class _$_ClienteEstadoPotencial extends _ClienteEstadoPotencial {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClienteEstadoPotencialCopyWith<_$_ClienteEstadoPotencial> get copyWith =>
-      __$$_ClienteEstadoPotencialCopyWithImpl<_$_ClienteEstadoPotencial>(
-          this, _$identity);
+  _$$ClienteEstadoPotencialImplCopyWith<_$ClienteEstadoPotencialImpl>
+      get copyWith => __$$ClienteEstadoPotencialImplCopyWithImpl<
+          _$ClienteEstadoPotencialImpl>(this, _$identity);
 }
 
 abstract class _ClienteEstadoPotencial extends ClienteEstadoPotencial {
@@ -470,7 +472,7 @@ abstract class _ClienteEstadoPotencial extends ClienteEstadoPotencial {
       final String? descripcionCN,
       final String? descripcionEL,
       required final DateTime lastUpdated,
-      required final bool deleted}) = _$_ClienteEstadoPotencial;
+      required final bool deleted}) = _$ClienteEstadoPotencialImpl;
   const _ClienteEstadoPotencial._() : super._();
 
   @override
@@ -511,6 +513,6 @@ abstract class _ClienteEstadoPotencial extends ClienteEstadoPotencial {
   bool get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_ClienteEstadoPotencialCopyWith<_$_ClienteEstadoPotencial> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ClienteEstadoPotencialImplCopyWith<_$ClienteEstadoPotencialImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

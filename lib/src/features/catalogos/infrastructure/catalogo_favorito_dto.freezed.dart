@@ -72,11 +72,11 @@ class _$CatalogoFavoritoDTOCopyWithImpl<$Res, $Val extends CatalogoFavoritoDTO>
 }
 
 /// @nodoc
-abstract class _$$_CatalogoFavoritoDTOCopyWith<$Res>
+abstract class _$$CatalogoFavoritoDTOImplCopyWith<$Res>
     implements $CatalogoFavoritoDTOCopyWith<$Res> {
-  factory _$$_CatalogoFavoritoDTOCopyWith(_$_CatalogoFavoritoDTO value,
-          $Res Function(_$_CatalogoFavoritoDTO) then) =
-      __$$_CatalogoFavoritoDTOCopyWithImpl<$Res>;
+  factory _$$CatalogoFavoritoDTOImplCopyWith(_$CatalogoFavoritoDTOImpl value,
+          $Res Function(_$CatalogoFavoritoDTOImpl) then) =
+      __$$CatalogoFavoritoDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -85,11 +85,11 @@ abstract class _$$_CatalogoFavoritoDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CatalogoFavoritoDTOCopyWithImpl<$Res>
-    extends _$CatalogoFavoritoDTOCopyWithImpl<$Res, _$_CatalogoFavoritoDTO>
-    implements _$$_CatalogoFavoritoDTOCopyWith<$Res> {
-  __$$_CatalogoFavoritoDTOCopyWithImpl(_$_CatalogoFavoritoDTO _value,
-      $Res Function(_$_CatalogoFavoritoDTO) _then)
+class __$$CatalogoFavoritoDTOImplCopyWithImpl<$Res>
+    extends _$CatalogoFavoritoDTOCopyWithImpl<$Res, _$CatalogoFavoritoDTOImpl>
+    implements _$$CatalogoFavoritoDTOImplCopyWith<$Res> {
+  __$$CatalogoFavoritoDTOImplCopyWithImpl(_$CatalogoFavoritoDTOImpl _value,
+      $Res Function(_$CatalogoFavoritoDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -98,7 +98,7 @@ class __$$_CatalogoFavoritoDTOCopyWithImpl<$Res>
     Object? id = null,
     Object? catalogoId = null,
   }) {
-    return _then(_$_CatalogoFavoritoDTO(
+    return _then(_$CatalogoFavoritoDTOImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -113,14 +113,14 @@ class __$$_CatalogoFavoritoDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CatalogoFavoritoDTO extends _CatalogoFavoritoDTO {
-  const _$_CatalogoFavoritoDTO(
+class _$CatalogoFavoritoDTOImpl extends _CatalogoFavoritoDTO {
+  const _$CatalogoFavoritoDTOImpl(
       {@JsonKey(name: 'ID') required this.id,
       @JsonKey(name: 'CATALOGO_ID') required this.catalogoId})
       : super._();
 
-  factory _$_CatalogoFavoritoDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_CatalogoFavoritoDTOFromJson(json);
+  factory _$CatalogoFavoritoDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CatalogoFavoritoDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'ID')
@@ -138,7 +138,7 @@ class _$_CatalogoFavoritoDTO extends _CatalogoFavoritoDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CatalogoFavoritoDTO &&
+            other is _$CatalogoFavoritoDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.catalogoId, catalogoId) ||
                 other.catalogoId == catalogoId));
@@ -151,13 +151,13 @@ class _$_CatalogoFavoritoDTO extends _CatalogoFavoritoDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CatalogoFavoritoDTOCopyWith<_$_CatalogoFavoritoDTO> get copyWith =>
-      __$$_CatalogoFavoritoDTOCopyWithImpl<_$_CatalogoFavoritoDTO>(
+  _$$CatalogoFavoritoDTOImplCopyWith<_$CatalogoFavoritoDTOImpl> get copyWith =>
+      __$$CatalogoFavoritoDTOImplCopyWithImpl<_$CatalogoFavoritoDTOImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CatalogoFavoritoDTOToJson(
+    return _$$CatalogoFavoritoDTOImplToJson(
       this,
     );
   }
@@ -167,11 +167,11 @@ abstract class _CatalogoFavoritoDTO extends CatalogoFavoritoDTO {
   const factory _CatalogoFavoritoDTO(
           {@JsonKey(name: 'ID') required final int id,
           @JsonKey(name: 'CATALOGO_ID') required final int catalogoId}) =
-      _$_CatalogoFavoritoDTO;
+      _$CatalogoFavoritoDTOImpl;
   const _CatalogoFavoritoDTO._() : super._();
 
   factory _CatalogoFavoritoDTO.fromJson(Map<String, dynamic> json) =
-      _$_CatalogoFavoritoDTO.fromJson;
+      _$CatalogoFavoritoDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'ID')
@@ -181,6 +181,6 @@ abstract class _CatalogoFavoritoDTO extends CatalogoFavoritoDTO {
   int get catalogoId;
   @override
   @JsonKey(ignore: true)
-  _$$_CatalogoFavoritoDTOCopyWith<_$_CatalogoFavoritoDTO> get copyWith =>
+  _$$CatalogoFavoritoDTOImplCopyWith<_$CatalogoFavoritoDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

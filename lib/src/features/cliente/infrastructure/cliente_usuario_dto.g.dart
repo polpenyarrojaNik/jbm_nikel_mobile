@@ -6,16 +6,17 @@ part of 'cliente_usuario_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ClienteUsuarioDTO _$$_ClienteUsuarioDTOFromJson(Map<String, dynamic> json) =>
-    _$_ClienteUsuarioDTO(
+_$ClienteUsuarioDTOImpl _$$ClienteUsuarioDTOImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ClienteUsuarioDTOImpl(
       clienteId: json['CLIENTE_ID'] as String,
       usuarioId: json['USUARIO_ID'] as String,
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       deleted: json['DELETED'] as String? ?? 'N',
     );
 
-Map<String, dynamic> _$$_ClienteUsuarioDTOToJson(
-        _$_ClienteUsuarioDTO instance) =>
+Map<String, dynamic> _$$ClienteUsuarioDTOImplToJson(
+        _$ClienteUsuarioDTOImpl instance) =>
     <String, dynamic>{
       'CLIENTE_ID': instance.clienteId,
       'USUARIO_ID': instance.usuarioId,
