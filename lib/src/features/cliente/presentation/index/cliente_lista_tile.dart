@@ -39,7 +39,7 @@ class ClienteListaTile extends StatelessWidget {
           ),
           if (!isSameName(cliente))
             Text(
-              '#${cliente.id} ${cliente.nombreFiscal}',
+              cliente.nombreFiscal,
               style: Theme.of(context).textTheme.bodySmall,
             ),
           AddressTextWidget(
