@@ -424,3 +424,10 @@ bool isSameAddress(Cliente cliente) {
   }
   return false;
 }
+
+bool isSameName(Cliente cliente) {
+  if (cliente.nombreCliente == cliente.nombreFiscal) {
+    return true;
+  }
+  return false;
+}

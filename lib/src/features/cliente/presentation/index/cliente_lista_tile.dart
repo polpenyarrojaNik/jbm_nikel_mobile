@@ -37,6 +37,11 @@ class ClienteListaTile extends StatelessWidget {
                 )
             ],
           ),
+          if (!isSameName(cliente))
+            Text(
+              '#${cliente.id} ${cliente.nombreFiscal}',
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
           AddressTextWidget(
             codigoPostal: cliente.codigoPostalPredeterminada,
             poblacion: cliente.poblacionPredeterminada,
