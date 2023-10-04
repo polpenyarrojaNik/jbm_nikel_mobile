@@ -169,11 +169,6 @@ class _ClienteHeader extends StatelessWidget {
             ],
           ),
           gapH8,
-          SelectableText(
-            cliente.nombreFiscal,
-            style: Theme.of(context).textTheme.bodyMedium,
-          ),
-          gapH4,
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -181,23 +176,69 @@ class _ClienteHeader extends StatelessWidget {
                 child: SelectableText(
                   selectionControls: MaterialTextSelectionControls(),
                   formatCustomerAddress(
-                      cliente.direccionFiscal1,
-                      cliente.codigoPostalFiscal,
-                      cliente.poblacionFiscal,
-                      cliente.provinciaFiscal,
-                      cliente.paisFiscal),
+                    cliente.direccionPredeterminada1,
+                    cliente.codigoPostalPredeterminada,
+                    cliente.poblacionPredeterminada,
+                    cliente.provinciaPredeterminada,
+                    cliente.paisPredeterminada,
+                  ),
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: Theme.of(context).textTheme.bodySmall?.color),
                 ),
               ),
               IconButton(
                 onPressed: () => navigateToGoogleMapsAddress(
-                  cliente.nombreFiscal,
-                  cliente.latitudFiscal,
-                  cliente.longitudFiscal,
+                  cliente.nombreCliente,
+                  cliente.latitudPredeterminada,
+                  cliente.longitudPredeterminada,
                 ),
                 icon: const Icon(MdiIcons.googleMaps),
               )
+            ],
+          ),
+          gapH8,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                S.of(context).cliente_show_clienteDetalle_fiscalData,
+                style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                    color: Theme.of(context).textTheme.bodySmall?.color),
+              ),
+              SelectableText(
+                cliente.nombreFiscal,
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+              if (!isSameAddress(cliente)) gapH4,
+              if (!isSameAddress(cliente))
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Flexible(
+                      child: SelectableText(
+                        selectionControls: MaterialTextSelectionControls(),
+                        formatCustomerAddress(
+                          cliente.direccionFiscal1,
+                          cliente.codigoPostalFiscal,
+                          cliente.poblacionFiscal,
+                          cliente.provinciaFiscal,
+                          cliente.paisFiscal,
+                        ),
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color:
+                                Theme.of(context).textTheme.bodySmall?.color),
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () => navigateToGoogleMapsAddress(
+                        cliente.nombreFiscal,
+                        cliente.latitudFiscal,
+                        cliente.longitudFiscal,
+                      ),
+                      icon: const Icon(MdiIcons.googleMaps),
+                    )
+                  ],
+                ),
             ],
           ),
           gapH8,
@@ -234,14 +275,14 @@ class _ClienteHeader extends StatelessWidget {
   }
 
   void navigateToGoogleMapsAddress(
-      String? nombreFiscal, double? latitude, double? longitude) async {
+      String? nombre, double? latitude, double? longitude) async {
     if (latitude != null && longitude != null) {
       final isAvailable = await MapLauncher.isMapAvailable(MapType.google);
       if (isAvailable ?? false) {
         await MapLauncher.showMarker(
           mapType: MapType.google,
           coords: Coords(latitude, longitude),
-          title: nombreFiscal ?? '',
+          title: nombre ?? '',
         );
       } else {
         final isAvailable = await MapLauncher.isMapAvailable(MapType.apple);
@@ -249,7 +290,7 @@ class _ClienteHeader extends StatelessWidget {
           await MapLauncher.showMarker(
             mapType: MapType.apple,
             coords: Coords(latitude, longitude),
-            title: nombreFiscal ?? '',
+            title: nombre ?? '',
           );
         }
       }

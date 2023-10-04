@@ -28,6 +28,14 @@ mixin _$Cliente {
   Pais? get paisFiscal => throw _privateConstructorUsedError;
   double get latitudFiscal => throw _privateConstructorUsedError;
   double get longitudFiscal => throw _privateConstructorUsedError;
+  String? get direccionPredeterminada1 => throw _privateConstructorUsedError;
+  String? get direccionPredeterminada2 => throw _privateConstructorUsedError;
+  String? get codigoPostalPredeterminada => throw _privateConstructorUsedError;
+  String? get poblacionPredeterminada => throw _privateConstructorUsedError;
+  String? get provinciaPredeterminada => throw _privateConstructorUsedError;
+  Pais? get paisPredeterminada => throw _privateConstructorUsedError;
+  double? get latitudPredeterminada => throw _privateConstructorUsedError;
+  double? get longitudPredeterminada => throw _privateConstructorUsedError;
   String get empresaId => throw _privateConstructorUsedError;
   double get iva => throw _privateConstructorUsedError;
   Money get ventasAnyoActual => throw _privateConstructorUsedError;
@@ -97,6 +105,14 @@ abstract class $ClienteCopyWith<$Res> {
       Pais? paisFiscal,
       double latitudFiscal,
       double longitudFiscal,
+      String? direccionPredeterminada1,
+      String? direccionPredeterminada2,
+      String? codigoPostalPredeterminada,
+      String? poblacionPredeterminada,
+      String? provinciaPredeterminada,
+      Pais? paisPredeterminada,
+      double? latitudPredeterminada,
+      double? longitudPredeterminada,
       String empresaId,
       double iva,
       Money ventasAnyoActual,
@@ -141,6 +157,7 @@ abstract class $ClienteCopyWith<$Res> {
       bool deleted});
 
   $PaisCopyWith<$Res>? get paisFiscal;
+  $PaisCopyWith<$Res>? get paisPredeterminada;
   $DivisaCopyWith<$Res>? get divisa;
   $PlazoDeCobroCopyWith<$Res>? get plazoDeCobro;
   $MetodoDeCobroCopyWith<$Res>? get metodoDeCobro;
@@ -173,6 +190,14 @@ class _$ClienteCopyWithImpl<$Res, $Val extends Cliente>
     Object? paisFiscal = freezed,
     Object? latitudFiscal = null,
     Object? longitudFiscal = null,
+    Object? direccionPredeterminada1 = freezed,
+    Object? direccionPredeterminada2 = freezed,
+    Object? codigoPostalPredeterminada = freezed,
+    Object? poblacionPredeterminada = freezed,
+    Object? provinciaPredeterminada = freezed,
+    Object? paisPredeterminada = freezed,
+    Object? latitudPredeterminada = freezed,
+    Object? longitudPredeterminada = freezed,
     Object? empresaId = null,
     Object? iva = null,
     Object? ventasAnyoActual = null,
@@ -265,6 +290,38 @@ class _$ClienteCopyWithImpl<$Res, $Val extends Cliente>
           ? _value.longitudFiscal
           : longitudFiscal // ignore: cast_nullable_to_non_nullable
               as double,
+      direccionPredeterminada1: freezed == direccionPredeterminada1
+          ? _value.direccionPredeterminada1
+          : direccionPredeterminada1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      direccionPredeterminada2: freezed == direccionPredeterminada2
+          ? _value.direccionPredeterminada2
+          : direccionPredeterminada2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      codigoPostalPredeterminada: freezed == codigoPostalPredeterminada
+          ? _value.codigoPostalPredeterminada
+          : codigoPostalPredeterminada // ignore: cast_nullable_to_non_nullable
+              as String?,
+      poblacionPredeterminada: freezed == poblacionPredeterminada
+          ? _value.poblacionPredeterminada
+          : poblacionPredeterminada // ignore: cast_nullable_to_non_nullable
+              as String?,
+      provinciaPredeterminada: freezed == provinciaPredeterminada
+          ? _value.provinciaPredeterminada
+          : provinciaPredeterminada // ignore: cast_nullable_to_non_nullable
+              as String?,
+      paisPredeterminada: freezed == paisPredeterminada
+          ? _value.paisPredeterminada
+          : paisPredeterminada // ignore: cast_nullable_to_non_nullable
+              as Pais?,
+      latitudPredeterminada: freezed == latitudPredeterminada
+          ? _value.latitudPredeterminada
+          : latitudPredeterminada // ignore: cast_nullable_to_non_nullable
+              as double?,
+      longitudPredeterminada: freezed == longitudPredeterminada
+          ? _value.longitudPredeterminada
+          : longitudPredeterminada // ignore: cast_nullable_to_non_nullable
+              as double?,
       empresaId: null == empresaId
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
@@ -450,6 +507,18 @@ class _$ClienteCopyWithImpl<$Res, $Val extends Cliente>
 
   @override
   @pragma('vm:prefer-inline')
+  $PaisCopyWith<$Res>? get paisPredeterminada {
+    if (_value.paisPredeterminada == null) {
+      return null;
+    }
+
+    return $PaisCopyWith<$Res>(_value.paisPredeterminada!, (value) {
+      return _then(_value.copyWith(paisPredeterminada: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
   $DivisaCopyWith<$Res>? get divisa {
     if (_value.divisa == null) {
       return null;
@@ -531,6 +600,14 @@ abstract class _$$ClienteImplCopyWith<$Res> implements $ClienteCopyWith<$Res> {
       Pais? paisFiscal,
       double latitudFiscal,
       double longitudFiscal,
+      String? direccionPredeterminada1,
+      String? direccionPredeterminada2,
+      String? codigoPostalPredeterminada,
+      String? poblacionPredeterminada,
+      String? provinciaPredeterminada,
+      Pais? paisPredeterminada,
+      double? latitudPredeterminada,
+      double? longitudPredeterminada,
       String empresaId,
       double iva,
       Money ventasAnyoActual,
@@ -577,6 +654,8 @@ abstract class _$$ClienteImplCopyWith<$Res> implements $ClienteCopyWith<$Res> {
   @override
   $PaisCopyWith<$Res>? get paisFiscal;
   @override
+  $PaisCopyWith<$Res>? get paisPredeterminada;
+  @override
   $DivisaCopyWith<$Res>? get divisa;
   @override
   $PlazoDeCobroCopyWith<$Res>? get plazoDeCobro;
@@ -611,6 +690,14 @@ class __$$ClienteImplCopyWithImpl<$Res>
     Object? paisFiscal = freezed,
     Object? latitudFiscal = null,
     Object? longitudFiscal = null,
+    Object? direccionPredeterminada1 = freezed,
+    Object? direccionPredeterminada2 = freezed,
+    Object? codigoPostalPredeterminada = freezed,
+    Object? poblacionPredeterminada = freezed,
+    Object? provinciaPredeterminada = freezed,
+    Object? paisPredeterminada = freezed,
+    Object? latitudPredeterminada = freezed,
+    Object? longitudPredeterminada = freezed,
     Object? empresaId = null,
     Object? iva = null,
     Object? ventasAnyoActual = null,
@@ -703,6 +790,38 @@ class __$$ClienteImplCopyWithImpl<$Res>
           ? _value.longitudFiscal
           : longitudFiscal // ignore: cast_nullable_to_non_nullable
               as double,
+      direccionPredeterminada1: freezed == direccionPredeterminada1
+          ? _value.direccionPredeterminada1
+          : direccionPredeterminada1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      direccionPredeterminada2: freezed == direccionPredeterminada2
+          ? _value.direccionPredeterminada2
+          : direccionPredeterminada2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      codigoPostalPredeterminada: freezed == codigoPostalPredeterminada
+          ? _value.codigoPostalPredeterminada
+          : codigoPostalPredeterminada // ignore: cast_nullable_to_non_nullable
+              as String?,
+      poblacionPredeterminada: freezed == poblacionPredeterminada
+          ? _value.poblacionPredeterminada
+          : poblacionPredeterminada // ignore: cast_nullable_to_non_nullable
+              as String?,
+      provinciaPredeterminada: freezed == provinciaPredeterminada
+          ? _value.provinciaPredeterminada
+          : provinciaPredeterminada // ignore: cast_nullable_to_non_nullable
+              as String?,
+      paisPredeterminada: freezed == paisPredeterminada
+          ? _value.paisPredeterminada
+          : paisPredeterminada // ignore: cast_nullable_to_non_nullable
+              as Pais?,
+      latitudPredeterminada: freezed == latitudPredeterminada
+          ? _value.latitudPredeterminada
+          : latitudPredeterminada // ignore: cast_nullable_to_non_nullable
+              as double?,
+      longitudPredeterminada: freezed == longitudPredeterminada
+          ? _value.longitudPredeterminada
+          : longitudPredeterminada // ignore: cast_nullable_to_non_nullable
+              as double?,
       empresaId: null == empresaId
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
@@ -891,6 +1010,14 @@ class _$ClienteImpl extends _Cliente {
       this.paisFiscal,
       required this.latitudFiscal,
       required this.longitudFiscal,
+      this.direccionPredeterminada1,
+      this.direccionPredeterminada2,
+      this.codigoPostalPredeterminada,
+      this.poblacionPredeterminada,
+      this.provinciaPredeterminada,
+      this.paisPredeterminada,
+      this.latitudPredeterminada,
+      this.longitudPredeterminada,
       required this.empresaId,
       required this.iva,
       required this.ventasAnyoActual,
@@ -959,6 +1086,22 @@ class _$ClienteImpl extends _Cliente {
   final double latitudFiscal;
   @override
   final double longitudFiscal;
+  @override
+  final String? direccionPredeterminada1;
+  @override
+  final String? direccionPredeterminada2;
+  @override
+  final String? codigoPostalPredeterminada;
+  @override
+  final String? poblacionPredeterminada;
+  @override
+  final String? provinciaPredeterminada;
+  @override
+  final Pais? paisPredeterminada;
+  @override
+  final double? latitudPredeterminada;
+  @override
+  final double? longitudPredeterminada;
   @override
   final String empresaId;
   @override
@@ -1046,7 +1189,7 @@ class _$ClienteImpl extends _Cliente {
 
   @override
   String toString() {
-    return 'Cliente(id: $id, nombreCliente: $nombreCliente, nombreFiscal: $nombreFiscal, nif: $nif, direccionFiscal1: $direccionFiscal1, direccionFiscal2: $direccionFiscal2, codigoPostalFiscal: $codigoPostalFiscal, poblacionFiscal: $poblacionFiscal, provinciaFiscal: $provinciaFiscal, paisFiscal: $paisFiscal, latitudFiscal: $latitudFiscal, longitudFiscal: $longitudFiscal, empresaId: $empresaId, iva: $iva, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, porcentajeAbonos: $porcentajeAbonos, porcentajeGarantias: $porcentajeGarantias, centralCompras: $centralCompras, urlWeb: $urlWeb, divisa: $divisa, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, descuentoGeneralId: $descuentoGeneralId, descripcionDescuentoGeneral: $descripcionDescuentoGeneral, tipoCalculoPrecio: $tipoCalculoPrecio, plazoDeCobro: $plazoDeCobro, metodoDeCobro: $metodoDeCobro, descuentoProntoPago: $descuentoProntoPago, riesgoConcedidoInterno: $riesgoConcedidoInterno, riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, riesgoConcedidoCoafe: $riesgoConcedidoCoafe, riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, riesgoActual: $riesgoActual, riesgoConcedido: $riesgoConcedido, riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, riesgoPendienteServir: $riesgoPendienteServir, riesgoPendienteFacturar: $riesgoPendienteFacturar, riesgoExcedido: $riesgoExcedido, obvservacionesInternas: $obvservacionesInternas, clientePotencial: $clientePotencial, clienteEstadoPotencial: $clienteEstadoPotencial, clienteTipoPotencial: $clienteTipoPotencial, representante1Id: $representante1Id, representante1Nombre: $representante1Nombre, representante2Id: $representante2Id, representante2Nombre: $representante2Nombre, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'Cliente(id: $id, nombreCliente: $nombreCliente, nombreFiscal: $nombreFiscal, nif: $nif, direccionFiscal1: $direccionFiscal1, direccionFiscal2: $direccionFiscal2, codigoPostalFiscal: $codigoPostalFiscal, poblacionFiscal: $poblacionFiscal, provinciaFiscal: $provinciaFiscal, paisFiscal: $paisFiscal, latitudFiscal: $latitudFiscal, longitudFiscal: $longitudFiscal, direccionPredeterminada1: $direccionPredeterminada1, direccionPredeterminada2: $direccionPredeterminada2, codigoPostalPredeterminada: $codigoPostalPredeterminada, poblacionPredeterminada: $poblacionPredeterminada, provinciaPredeterminada: $provinciaPredeterminada, paisPredeterminada: $paisPredeterminada, latitudPredeterminada: $latitudPredeterminada, longitudPredeterminada: $longitudPredeterminada, empresaId: $empresaId, iva: $iva, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, porcentajeAbonos: $porcentajeAbonos, porcentajeGarantias: $porcentajeGarantias, centralCompras: $centralCompras, urlWeb: $urlWeb, divisa: $divisa, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, descuentoGeneralId: $descuentoGeneralId, descripcionDescuentoGeneral: $descripcionDescuentoGeneral, tipoCalculoPrecio: $tipoCalculoPrecio, plazoDeCobro: $plazoDeCobro, metodoDeCobro: $metodoDeCobro, descuentoProntoPago: $descuentoProntoPago, riesgoConcedidoInterno: $riesgoConcedidoInterno, riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, riesgoConcedidoCoafe: $riesgoConcedidoCoafe, riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, riesgoActual: $riesgoActual, riesgoConcedido: $riesgoConcedido, riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, riesgoPendienteServir: $riesgoPendienteServir, riesgoPendienteFacturar: $riesgoPendienteFacturar, riesgoExcedido: $riesgoExcedido, obvservacionesInternas: $obvservacionesInternas, clientePotencial: $clientePotencial, clienteEstadoPotencial: $clienteEstadoPotencial, clienteTipoPotencial: $clienteTipoPotencial, representante1Id: $representante1Id, representante1Nombre: $representante1Nombre, representante2Id: $representante2Id, representante2Nombre: $representante2Nombre, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -1076,6 +1219,23 @@ class _$ClienteImpl extends _Cliente {
                 other.latitudFiscal == latitudFiscal) &&
             (identical(other.longitudFiscal, longitudFiscal) ||
                 other.longitudFiscal == longitudFiscal) &&
+            (identical(other.direccionPredeterminada1, direccionPredeterminada1) ||
+                other.direccionPredeterminada1 == direccionPredeterminada1) &&
+            (identical(other.direccionPredeterminada2, direccionPredeterminada2) ||
+                other.direccionPredeterminada2 == direccionPredeterminada2) &&
+            (identical(other.codigoPostalPredeterminada, codigoPostalPredeterminada) ||
+                other.codigoPostalPredeterminada ==
+                    codigoPostalPredeterminada) &&
+            (identical(other.poblacionPredeterminada, poblacionPredeterminada) ||
+                other.poblacionPredeterminada == poblacionPredeterminada) &&
+            (identical(other.provinciaPredeterminada, provinciaPredeterminada) ||
+                other.provinciaPredeterminada == provinciaPredeterminada) &&
+            (identical(other.paisPredeterminada, paisPredeterminada) ||
+                other.paisPredeterminada == paisPredeterminada) &&
+            (identical(other.latitudPredeterminada, latitudPredeterminada) ||
+                other.latitudPredeterminada == latitudPredeterminada) &&
+            (identical(other.longitudPredeterminada, longitudPredeterminada) ||
+                other.longitudPredeterminada == longitudPredeterminada) &&
             (identical(other.empresaId, empresaId) ||
                 other.empresaId == empresaId) &&
             (identical(other.iva, iva) || other.iva == iva) &&
@@ -1095,48 +1255,26 @@ class _$ClienteImpl extends _Cliente {
                 other.porcentajeAbonos == porcentajeAbonos) &&
             (identical(other.porcentajeGarantias, porcentajeGarantias) ||
                 other.porcentajeGarantias == porcentajeGarantias) &&
-            (identical(other.centralCompras, centralCompras) ||
-                other.centralCompras == centralCompras) &&
+            (identical(other.centralCompras, centralCompras) || other.centralCompras == centralCompras) &&
             (identical(other.urlWeb, urlWeb) || other.urlWeb == urlWeb) &&
             (identical(other.divisa, divisa) || other.divisa == divisa) &&
-            (identical(other.tarifaId, tarifaId) ||
-                other.tarifaId == tarifaId) &&
-            (identical(other.tarifaDescripcion, tarifaDescripcion) ||
-                other.tarifaDescripcion == tarifaDescripcion) &&
-            (identical(other.descuentoGeneralId, descuentoGeneralId) ||
-                other.descuentoGeneralId == descuentoGeneralId) &&
-            (identical(other.descripcionDescuentoGeneral, descripcionDescuentoGeneral) ||
-                other.descripcionDescuentoGeneral ==
-                    descripcionDescuentoGeneral) &&
-            (identical(other.tipoCalculoPrecio, tipoCalculoPrecio) ||
-                other.tipoCalculoPrecio == tipoCalculoPrecio) &&
-            (identical(other.plazoDeCobro, plazoDeCobro) ||
-                other.plazoDeCobro == plazoDeCobro) &&
-            (identical(other.metodoDeCobro, metodoDeCobro) ||
-                other.metodoDeCobro == metodoDeCobro) &&
-            (identical(other.descuentoProntoPago, descuentoProntoPago) ||
-                other.descuentoProntoPago == descuentoProntoPago) &&
-            (identical(other.riesgoConcedidoInterno, riesgoConcedidoInterno) ||
-                other.riesgoConcedidoInterno == riesgoConcedidoInterno) &&
-            (identical(other.riesgoConcedidoInternoDate, riesgoConcedidoInternoDate) ||
-                other.riesgoConcedidoInternoDate ==
-                    riesgoConcedidoInternoDate) &&
-            (identical(other.riesgoConcedidoCoafe, riesgoConcedidoCoafe) ||
-                other.riesgoConcedidoCoafe == riesgoConcedidoCoafe) &&
-            (identical(other.riesgoConcedidoCoafeFecha, riesgoConcedidoCoafeFecha) ||
-                other.riesgoConcedidoCoafeFecha == riesgoConcedidoCoafeFecha) &&
-            (identical(other.riesgoActual, riesgoActual) ||
-                other.riesgoActual == riesgoActual) &&
-            (identical(other.riesgoConcedido, riesgoConcedido) ||
-                other.riesgoConcedido == riesgoConcedido) &&
-            (identical(other.riesgoPendienteCobroVencido, riesgoPendienteCobroVencido) ||
-                other.riesgoPendienteCobroVencido ==
-                    riesgoPendienteCobroVencido) &&
-            (identical(other.riesgoPendienteCobroNoVencido, riesgoPendienteCobroNoVencido) ||
-                other.riesgoPendienteCobroNoVencido ==
-                    riesgoPendienteCobroNoVencido) &&
-            (identical(other.riesgoPendienteServir, riesgoPendienteServir) ||
-                other.riesgoPendienteServir == riesgoPendienteServir) &&
+            (identical(other.tarifaId, tarifaId) || other.tarifaId == tarifaId) &&
+            (identical(other.tarifaDescripcion, tarifaDescripcion) || other.tarifaDescripcion == tarifaDescripcion) &&
+            (identical(other.descuentoGeneralId, descuentoGeneralId) || other.descuentoGeneralId == descuentoGeneralId) &&
+            (identical(other.descripcionDescuentoGeneral, descripcionDescuentoGeneral) || other.descripcionDescuentoGeneral == descripcionDescuentoGeneral) &&
+            (identical(other.tipoCalculoPrecio, tipoCalculoPrecio) || other.tipoCalculoPrecio == tipoCalculoPrecio) &&
+            (identical(other.plazoDeCobro, plazoDeCobro) || other.plazoDeCobro == plazoDeCobro) &&
+            (identical(other.metodoDeCobro, metodoDeCobro) || other.metodoDeCobro == metodoDeCobro) &&
+            (identical(other.descuentoProntoPago, descuentoProntoPago) || other.descuentoProntoPago == descuentoProntoPago) &&
+            (identical(other.riesgoConcedidoInterno, riesgoConcedidoInterno) || other.riesgoConcedidoInterno == riesgoConcedidoInterno) &&
+            (identical(other.riesgoConcedidoInternoDate, riesgoConcedidoInternoDate) || other.riesgoConcedidoInternoDate == riesgoConcedidoInternoDate) &&
+            (identical(other.riesgoConcedidoCoafe, riesgoConcedidoCoafe) || other.riesgoConcedidoCoafe == riesgoConcedidoCoafe) &&
+            (identical(other.riesgoConcedidoCoafeFecha, riesgoConcedidoCoafeFecha) || other.riesgoConcedidoCoafeFecha == riesgoConcedidoCoafeFecha) &&
+            (identical(other.riesgoActual, riesgoActual) || other.riesgoActual == riesgoActual) &&
+            (identical(other.riesgoConcedido, riesgoConcedido) || other.riesgoConcedido == riesgoConcedido) &&
+            (identical(other.riesgoPendienteCobroVencido, riesgoPendienteCobroVencido) || other.riesgoPendienteCobroVencido == riesgoPendienteCobroVencido) &&
+            (identical(other.riesgoPendienteCobroNoVencido, riesgoPendienteCobroNoVencido) || other.riesgoPendienteCobroNoVencido == riesgoPendienteCobroNoVencido) &&
+            (identical(other.riesgoPendienteServir, riesgoPendienteServir) || other.riesgoPendienteServir == riesgoPendienteServir) &&
             (identical(other.riesgoPendienteFacturar, riesgoPendienteFacturar) || other.riesgoPendienteFacturar == riesgoPendienteFacturar) &&
             (identical(other.riesgoExcedido, riesgoExcedido) || other.riesgoExcedido == riesgoExcedido) &&
             (identical(other.obvservacionesInternas, obvservacionesInternas) || other.obvservacionesInternas == obvservacionesInternas) &&
@@ -1166,6 +1304,14 @@ class _$ClienteImpl extends _Cliente {
         paisFiscal,
         latitudFiscal,
         longitudFiscal,
+        direccionPredeterminada1,
+        direccionPredeterminada2,
+        codigoPostalPredeterminada,
+        poblacionPredeterminada,
+        provinciaPredeterminada,
+        paisPredeterminada,
+        latitudPredeterminada,
+        longitudPredeterminada,
         empresaId,
         iva,
         ventasAnyoActual,
@@ -1231,6 +1377,14 @@ abstract class _Cliente extends Cliente {
       final Pais? paisFiscal,
       required final double latitudFiscal,
       required final double longitudFiscal,
+      final String? direccionPredeterminada1,
+      final String? direccionPredeterminada2,
+      final String? codigoPostalPredeterminada,
+      final String? poblacionPredeterminada,
+      final String? provinciaPredeterminada,
+      final Pais? paisPredeterminada,
+      final double? latitudPredeterminada,
+      final double? longitudPredeterminada,
       required final String empresaId,
       required final double iva,
       required final Money ventasAnyoActual,
@@ -1299,6 +1453,22 @@ abstract class _Cliente extends Cliente {
   double get latitudFiscal;
   @override
   double get longitudFiscal;
+  @override
+  String? get direccionPredeterminada1;
+  @override
+  String? get direccionPredeterminada2;
+  @override
+  String? get codigoPostalPredeterminada;
+  @override
+  String? get poblacionPredeterminada;
+  @override
+  String? get provinciaPredeterminada;
+  @override
+  Pais? get paisPredeterminada;
+  @override
+  double? get latitudPredeterminada;
+  @override
+  double? get longitudPredeterminada;
   @override
   String get empresaId;
   @override

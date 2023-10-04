@@ -57,6 +57,7 @@ dependencies:
   flutter_markdown: ^0.6.17
   badges: ^3.1.1
   flex_color_scheme: ^7.3.1
+  go_router: ^11.1.2
 
 dev_dependencies:
   flutter_test:

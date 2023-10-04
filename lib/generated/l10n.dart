@@ -1524,6 +1524,16 @@ class S {
     );
   }
 
+  /// `Fiscal data`
+  String get cliente_show_clienteDetalle_fiscalData {
+    return Intl.message(
+      'Fiscal data',
+      name: 'cliente_show_clienteDetalle_fiscalData',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Visits`
   String get cliente_show_clienteVisitas_titulo {
     return Intl.message(

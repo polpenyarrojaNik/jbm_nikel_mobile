@@ -266,6 +266,8 @@ class ClienteRepository {
       ]);
 
       final clienteList = await query.asyncMap((row) async {
+        ClienteDireccion? clienteDireccionPredeterminada;
+
         final clienteDTO = row.readTable(_remoteDb.clienteTable);
         final paisDTO = row.readTableOrNull(_remoteDb.paisTable);
         final divisaDTO = row.readTableOrNull(_remoteDb.divisaTable);
@@ -278,6 +280,16 @@ class ClienteRepository {
         final clienteTipoPotencialDTO =
             row.readTableOrNull(_remoteDb.clienteTipoPotencialTable);
 
+        final direccionesPredeterminada =
+            await getClienteDireccionesListById(clienteId: clienteDTO.id);
+
+        for (var i = 0; i < direccionesPredeterminada.length; i++) {
+          if (direccionesPredeterminada[i].predeterminada) {
+            clienteDireccionPredeterminada = direccionesPredeterminada[i];
+            break;
+          }
+        }
+
         return clienteDTO.toDomain(
           paisFiscal: paisDTO?.toDomain(),
           divisa: divisaDTO?.toDomain(),
@@ -285,6 +297,7 @@ class ClienteRepository {
           plazoDeCobro: plazoDeCobroDTO?.toDomain(),
           clienteEstadoPotencial: clienteEstadoPotencialDTO?.toDomain(),
           clienteTipoPotencial: clienteTipoPotencialDTO?.toDomain(),
+          clienteDireccionPredeterminada: clienteDireccionPredeterminada,
         );
       }).get();
       return clienteList;
@@ -402,7 +415,8 @@ class ClienteRepository {
 
       query.where(_remoteDb.clienteTable.id.equals(clienteId));
 
-      return query.map((row) {
+      return query.asyncMap((row) async {
+        ClienteDireccion? clienteDireccionPredeterminada;
         final clienteDTO = row.readTable(_remoteDb.clienteTable);
         final paisDTO = row.readTableOrNull(_remoteDb.paisTable);
         final divisaDTO = row.readTableOrNull(_remoteDb.divisaTable);
@@ -415,6 +429,16 @@ class ClienteRepository {
         final clienteTipoPotencialDTO =
             row.readTableOrNull(_remoteDb.clienteTipoPotencialTable);
 
+        final direccionesPredeterminada =
+            await getClienteDireccionesListById(clienteId: clienteDTO.id);
+
+        for (var i = 0; i < direccionesPredeterminada.length; i++) {
+          if (direccionesPredeterminada[i].predeterminada) {
+            clienteDireccionPredeterminada = direccionesPredeterminada[i];
+            break;
+          }
+        }
+
         return clienteDTO.toDomain(
           paisFiscal: paisDTO?.toDomain(),
           divisa: divisaDTO?.toDomain(),
@@ -422,6 +446,7 @@ class ClienteRepository {
           plazoDeCobro: plazoDeCobroDTO?.toDomain(),
           clienteEstadoPotencial: clienteEstadoPotencialDTO?.toDomain(),
           clienteTipoPotencial: clienteTipoPotencialDTO?.toDomain(),
+          clienteDireccionPredeterminada: clienteDireccionPredeterminada,
         );
       }).getSingle();
     } catch (e) {

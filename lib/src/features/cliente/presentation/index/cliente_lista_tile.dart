@@ -38,10 +38,10 @@ class ClienteListaTile extends StatelessWidget {
             ],
           ),
           AddressTextWidget(
-            codigoPostal: cliente.codigoPostalFiscal,
-            poblacion: cliente.poblacionFiscal,
-            provincia: cliente.provinciaFiscal,
-            pais: cliente.paisFiscal,
+            codigoPostal: cliente.codigoPostalPredeterminada,
+            poblacion: cliente.poblacionPredeterminada,
+            provincia: cliente.provinciaPredeterminada,
+            pais: cliente.paisPredeterminada,
           )
         ],
       ),

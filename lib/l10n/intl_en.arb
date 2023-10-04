@@ -146,6 +146,7 @@
 	"cliente_show_clienteDetalle_consultas": "Queries",
 	"cliente_show_clienteDetalle_comercial1": "Commercial 1",
 	"cliente_show_clienteDetalle_comercial2": "Commercial 2",
+	"cliente_show_clienteDetalle_fiscalData": "Fiscal data",
 	"cliente_show_clienteVisitas_titulo": "Visits",
 	"cliente_show_clientePedidos_titulo": "Sales orders",
 	"cliente_show_clienteDevolucion_titulo": "Returns",

@@ -1,6 +1,7 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_direccion.dart';
 import 'package:money2/money2.dart';
 
 import '../../../core/domain/divisa.dart';
@@ -97,6 +98,7 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
     PlazoDeCobro? plazoDeCobro,
     ClienteTipoPotencial? clienteTipoPotencial,
     ClienteEstadoPotencial? clienteEstadoPotencial,
+    required ClienteDireccion? clienteDireccionPredeterminada,
   }) {
     return Cliente(
       id: id,
@@ -111,6 +113,14 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       paisFiscal: paisFiscal,
       latitudFiscal: latitudFiscal,
       longitudFiscal: longitudFiscal,
+      direccionPredeterminada1: clienteDireccionPredeterminada?.direccion1,
+      direccionPredeterminada2: clienteDireccionPredeterminada?.direccion2,
+      poblacionPredeterminada: clienteDireccionPredeterminada?.poblacion,
+      codigoPostalPredeterminada: clienteDireccionPredeterminada?.codigoPostal,
+      provinciaPredeterminada: clienteDireccionPredeterminada?.provincia,
+      paisPredeterminada: clienteDireccionPredeterminada?.pais,
+      latitudPredeterminada: clienteDireccionPredeterminada?.latitud,
+      longitudPredeterminada: clienteDireccionPredeterminada?.longitud,
       empresaId: empresaId,
       iva: iva,
       ventasAnyoActual: ventasAnyoActual.toMoney(currencyId: divisaId),

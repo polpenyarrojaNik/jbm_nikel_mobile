@@ -271,6 +271,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Facturation"),
         "cliente_show_clienteDetalle_fechaCOFACE":
             MessageLookupByLibrary.simpleMessage("Date COFACE"),
+        "cliente_show_clienteDetalle_fiscalData":
+            MessageLookupByLibrary.simpleMessage("Données fiscales"),
         "cliente_show_clienteDetalle_hace2Anos":
             MessageLookupByLibrary.simpleMessage("Il y\'a 2 ans"),
         "cliente_show_clienteDetalle_latitud":

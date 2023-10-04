@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:jbm_nikel_mobile/src/core/domain/pais.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_componente.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
 import 'package:money2/money2.dart';
 
 import '../../../generated/l10n.dart';
@@ -411,4 +412,15 @@ Color pedidoVentaEstadoColor({
     default:
       return Colors.red.withOpacity(opacidad ?? 1);
   }
+}
+
+bool isSameAddress(Cliente cliente) {
+  if (cliente.direccionFiscal1 == cliente.direccionPredeterminada1 &&
+      cliente.codigoPostalFiscal == cliente.codigoPostalPredeterminada &&
+      cliente.poblacionFiscal == cliente.poblacionPredeterminada &&
+      cliente.provinciaFiscal == cliente.provinciaPredeterminada &&
+      cliente.paisFiscal == cliente.paisPredeterminada) {
+    return true;
+  }
+  return false;
 }

@@ -341,5 +341,6 @@
   "visitas_edit_visitaEditar_provincia": "Provincia",
   "notification": "Notifica",
   "notification_detail": "Dettaglio notifica",
-  "notifications": " notifiche"
+  "notifications": " notifiche",
+  "cliente_show_clienteDetalle_fiscalData": "Dati fiscali"
 }
