@@ -1211,21 +1211,77 @@ ORDER  BY IMPORTE_ANYO DESC
   String descripcionSegunLocale(String searchText) {
     final currentLocale = Intl.getCurrentLocale();
 
+    final stringList = searchText.split(' ');
+
     switch (currentLocale) {
       case 'es':
-        return "art.DESCRIPCION_ES LIKE '%$searchText%'";
+        String sqlWhere = '';
+        for (var i = 0; i < stringList.length; i++) {
+          if (i > 0 && i < stringList.length) {
+            sqlWhere += " OR art.DESCRIPCION_ES LIKE '%${stringList[i]}%'";
+          } else {
+            sqlWhere += "art.DESCRIPCION_ES LIKE '%${stringList[i]}%'";
+          }
+        }
+
+        return sqlWhere;
       case 'en':
-        return "art.DESCRIPCION_EN LIKE '%$searchText%'";
+        String sqlWhere = '';
+        for (var i = 0; i < stringList.length; i++) {
+          if (i > 0 && i < stringList.length) {
+            sqlWhere += " OR art.DESCRIPCION_EN LIKE '%${stringList[i]}%'";
+          } else {
+            sqlWhere += "art.DESCRIPCION_EN LIKE '%${stringList[i]}%'";
+          }
+        }
+
+        return sqlWhere;
       case 'fr':
-        return "art.DESCRIPCION_FR LIKE '%$searchText%'";
+        String sqlWhere = '';
+        for (var i = 0; i < stringList.length; i++) {
+          if (i > 0 && i < stringList.length) {
+            sqlWhere += " OR art.DESCRIPCION_FR LIKE '%${stringList[i]}%'";
+          } else {
+            sqlWhere += "art.DESCRIPCION_FR LIKE '%${stringList[i]}%'";
+          }
+        }
+
+        return sqlWhere;
       case 'de':
-        return "art.DESCRIPCION_EN LIKE '%$searchText%'";
+        String sqlWhere = '';
+        for (var i = 0; i < stringList.length; i++) {
+          if (i > 0 && i < stringList.length) {
+            sqlWhere += " OR art.DESCRIPCION_EN LIKE '%${stringList[i]}%'";
+          } else {
+            sqlWhere += "art.DESCRIPCION_EN LIKE '%${stringList[i]}%'";
+          }
+        }
+
+        return sqlWhere;
 
       case 'it':
-        return "art.DESCRIPCION_IT LIKE '%$searchText%'";
+        String sqlWhere = '';
+        for (var i = 0; i < stringList.length; i++) {
+          if (i > 0 && i < stringList.length) {
+            sqlWhere += " OR art.DESCRIPCION_IT LIKE '%${stringList[i]}%'";
+          } else {
+            sqlWhere += "art.DESCRIPCION_IT LIKE '%${stringList[i]}%'";
+          }
+        }
+
+        return sqlWhere;
 
       default:
-        return "art.DESCRIPCION_ES LIKE '%$searchText%'";
+        String sqlWhere = '';
+        for (var i = 0; i < stringList.length; i++) {
+          if (i > 0 && i < stringList.length) {
+            sqlWhere += " OR art.DESCRIPCION_ES LIKE '%${stringList[i]}%'";
+          } else {
+            sqlWhere += "art.DESCRIPCION_ES LIKE '%${stringList[i]}%'";
+          }
+        }
+
+        return sqlWhere;
     }
   }
 
