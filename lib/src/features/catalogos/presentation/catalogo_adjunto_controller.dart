@@ -33,8 +33,9 @@ class CatalogoAdjuntoController extends StateNotifier<CatalogoAdjuntoState> {
       : super(const CatalogoAdjuntoState.initial());
 
   Future<void> getAttachmentFile({required AdjuntoParam adjuntoParam}) async {
+    state = const CatalogoAdjuntoState.loading();
+
     try {
-      state = const CatalogoAdjuntoState.loading();
       final user = await _ref.read(usuarioServiceProvider).getSignedInUsuario();
 
       final file = await _ref.read(catalogoRepositoryProvider).getDocumentFile(

@@ -183,25 +183,33 @@ class CatalogoListViewWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final stateCatalogoList = ref.watch(catalogoIndexScreenControllerProvider);
+
+    final stateGetAttachment = ref.watch(catalogoAdjuntoControllerProvider);
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: stateCatalogoList.maybeWhen(
         orElse: () => const ProgressIndicatorWidget(),
-        data: (catalgoList) => LayoutBuilder(
-          builder: (context, boxConstrains) => GridView.builder(
-            shrinkWrap: true,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                mainAxisSpacing: 8,
-                crossAxisSpacing: 8,
-                crossAxisCount: boxConstrains.maxWidth > 1080
-                    ? 5
-                    : boxConstrains.maxWidth > 560
-                        ? 3
-                        : 2,
-                childAspectRatio: 1 / 1.95),
-            itemCount: catalgoList.length,
-            itemBuilder: (context, i) => CatalogoListTile(
-                catalogo: catalgoList[i], boxConstrains: boxConstrains),
+        data: (catalgoList) => stateGetAttachment.maybeWhen(
+          loading: () => const ProgressIndicatorWidget(),
+          orElse: () => LayoutBuilder(
+            builder: (context, boxConstrains) => GridView.builder(
+              shrinkWrap: true,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  mainAxisSpacing: 8,
+                  crossAxisSpacing: 8,
+                  crossAxisCount: boxConstrains.maxWidth > 1080
+                      ? 5
+                      : boxConstrains.maxWidth > 560
+                          ? 3
+                          : 2,
+                  childAspectRatio: 1 / 1.95),
+              itemCount: catalgoList.length,
+              itemBuilder: (context, i) => CatalogoListTile(
+                catalogo: catalgoList[i],
+                boxConstrains: boxConstrains,
+              ),
+            ),
           ),
         ),
       ),

@@ -20,8 +20,13 @@ class CatalogoListTile extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final stateFavorite =
         ref.watch(catalogoFavoritoControllerProvider(catalogo.catalogoId));
+
+    final state = ref.watch(catalogoAdjuntoControllerProvider);
     return GestureDetector(
-      onTap: () => downloadAttachment(ref),
+      onTap: state.maybeWhen(
+        orElse: () => () => downloadAttachment(ref),
+        loading: null,
+      ),
       child: Card(
         elevation: 0,
         shape: RoundedRectangleBorder(

@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:ui';
 
 import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
@@ -11,6 +12,7 @@ import 'package:jbm_nikel_mobile/src/features/catalogos/infrastructure/catalogo_
 import 'package:jbm_nikel_mobile/src/features/catalogos/infrastructure/tipo_catalogo_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/catalogos/infrastructure/tipo_catalogo_precio_dto.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:syncfusion_flutter_pdf/pdf.dart';
 
 import '../../../core/domain/adjunto_param.dart';
 import '../../../core/exceptions/app_exception.dart';
@@ -183,33 +185,65 @@ class CatalogoRepository {
       required bool test}) async {
     try {
       if (adjuntoParam.nombreArchivo != '') {
-        final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
-        final data = await _remoteGetAttachment(
-            requestUri: (test)
-                ? Uri.http(
-                    dotenv.get('URL', fallback: 'localhost:3001'),
-                    'api/v1/online/adjunto/catalogo/${adjuntoParam.id}',
-                    query,
-                  )
-                : Uri.https(
-                    dotenv.get('URL', fallback: 'localhost:3001'),
-                    'api/v1/online/adjunto/catalogo/${adjuntoParam.id}',
-                    query,
-                  ),
-            provisionalToken: provisionalToken);
+        final cahceDirectories = await getTemporaryDirectory();
 
-        try {
-          final cahceDirectories = await getTemporaryDirectory();
+        if (fileExistInLocal(adjuntoParam, cahceDirectories)) {
+          try {
+            final filePath =
+                '${cahceDirectories.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}';
 
-          final File file = await File(
-                  '${cahceDirectories.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}')
-              .create(recursive: true);
-          final raf = file.openSync(mode: FileMode.write);
-          raf.writeFromSync(data);
-          await raf.close();
-          return file;
-        } catch (e) {
-          throw AppException.createFileInCacheFailure(e.toString());
+            final file = File(filePath);
+
+            return file;
+          } catch (e) {
+            throw AppException.createFileInCacheFailure(e.toString());
+          }
+        } else {
+          final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
+          final data = await _remoteGetAttachment(
+              requestUri: (test)
+                  ? Uri.http(
+                      dotenv.get('URL', fallback: 'localhost:3001'),
+                      'api/v1/online/adjunto/catalogo/${adjuntoParam.id}',
+                      query,
+                    )
+                  : Uri.https(
+                      dotenv.get('URL', fallback: 'localhost:3001'),
+                      'api/v1/online/adjunto/catalogo/${adjuntoParam.id}',
+                      query,
+                    ),
+              provisionalToken: provisionalToken);
+
+          try {
+            final File file = await File(
+                    '${cahceDirectories.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}')
+                .create(recursive: true);
+
+            final raf = file.openSync(mode: FileMode.write);
+            raf.writeFromSync(data);
+            await raf.close();
+
+            final PdfDocument document =
+                PdfDocument(inputBytes: file.readAsBytesSync());
+
+            for (var i = 0; i < document.pages.count; i++) {
+              final pageSize = document.pages[i].size;
+              document.pages[i].graphics.drawString(
+                _usuario.id,
+                PdfStandardFont(PdfFontFamily.helvetica, 9),
+                brush: PdfSolidBrush(PdfColor(105, 105, 105)),
+                bounds: Rect.fromLTWH(8, pageSize.height - 16, 50, 20),
+              );
+            }
+            final savedFile = await document.save();
+
+            await file.writeAsBytes(savedFile);
+            document.dispose();
+
+            return file;
+          } catch (e) {
+            throw AppException.createFileInCacheFailure(e.toString());
+          }
         }
       }
 
@@ -217,6 +251,15 @@ class CatalogoRepository {
     } catch (e) {
       rethrow;
     }
+  }
+
+  bool fileExistInLocal(AdjuntoParam adjuntoParam, Directory cahceDirectories) {
+    final filePath =
+        '${cahceDirectories.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}';
+
+    final file = File(filePath);
+
+    return file.existsSync();
   }
 
   Future<void> setCatalogoToFavorite({required int catalogoId}) async {
@@ -387,7 +430,7 @@ class CatalogoRepository {
       required List<CatalogoFavoritoDTO> favoriteLocalList}) {
     catalogosList.sort((a, b) => a.orden.compareTo(b.orden));
 
-    for (var i = 0; i < favoriteLocalList.length; i++) {
+    for (var i = 0; i < catalogosList.length; i++) {
       for (var j = 0; j < favoriteLocalList.length; j++) {
         if (catalogosList[i].catalogoId == favoriteLocalList[j].catalogoId) {
           final favoriteCatalogo = catalogosList[i];
