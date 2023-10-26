@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:jbm_nikel_mobile/src/features/catalogos/presentation/catalogo_search_controller.dart';
 
 import '../../../core/exceptions/app_exception.dart';
 import '../infrastructure/catalogo_repository.dart';
@@ -21,18 +22,19 @@ class CatalogoFavoritoControllerState with _$CatalogoFavoritoControllerState {
 final catalogoFavoritoControllerProvider = StateNotifierProvider.autoDispose
     .family<CatalogoFavoritoController, CatalogoFavoritoControllerState, int>(
   (ref, catalogoId) => CatalogoFavoritoController(
-      ref.watch(catalogoRepositoryProvider), catalogoId),
+      ref.watch(catalogoRepositoryProvider), catalogoId, ref),
 );
 
 class CatalogoFavoritoController
     extends StateNotifier<CatalogoFavoritoControllerState> {
-  CatalogoFavoritoController(this.catalogoRepository, this.catalogoId)
+  CatalogoFavoritoController(this.catalogoRepository, this.catalogoId, this.ref)
       : super(const CatalogoFavoritoControllerState.checking()) {
     isModuleFavorite();
   }
 
   final CatalogoRepository catalogoRepository;
   final int catalogoId;
+  final AutoDisposeStateNotifierProviderRef ref;
 
   Future<void> isModuleFavorite() async {
     try {
@@ -59,6 +61,7 @@ class CatalogoFavoritoController
         state = const CatalogoFavoritoControllerState.checking();
       }
       await catalogoRepository.removeCatalogoFavorito(catalogoId: catalogoId);
+      ref.invalidate(catalogoIndexScreenControllerProvider);
 
       await isModuleFavorite();
     } on AppException catch (e, stackTrace) {
@@ -76,6 +79,7 @@ class CatalogoFavoritoController
       }
 
       await catalogoRepository.setCatalogoToFavorite(catalogoId: catalogoId);
+      ref.invalidate(catalogoIndexScreenControllerProvider);
 
       await isModuleFavorite();
     } on AppException catch (e, stackTrace) {
