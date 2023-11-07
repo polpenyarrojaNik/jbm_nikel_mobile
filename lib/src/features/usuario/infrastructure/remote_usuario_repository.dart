@@ -76,7 +76,7 @@ class RemoteUsuarioRepository {
       throw AppException.restApiFailure(
         e.response?.statusCode ?? 400,
         e.response?.data['error']['detail'] ??
-            e.response?.data['message'] ??
+            e.response?.data['error']['message'] ??
             'Internet Error',
       );
     }

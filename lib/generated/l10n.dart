@@ -3523,6 +3523,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Pending`
+  String get pending {
+    return Intl.message(
+      'Pending',
+      name: 'pending',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

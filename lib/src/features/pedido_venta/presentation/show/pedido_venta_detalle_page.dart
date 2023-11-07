@@ -190,6 +190,7 @@ class ClienteInfoContainer extends StatelessWidget {
                   : getEstadoPedidoLocal(context, pedidoVenta.enviada,
                       pedidoVenta.enviada, pedidoVenta.tratada)!,
               color: pedidoVentaEstadoColor(
+                  enviada: pedidoVenta.enviada,
                   pedidoVentaEstadoId: pedidoVenta.pedidoVentaEstado?.id,
                   opacidad: 0.25),
             )

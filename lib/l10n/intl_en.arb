@@ -342,5 +342,6 @@
 	"search": "Search...",
 	"notification": "Notification",
 	"notifications": " Notifications",
-	"notification_detail": "Notification detail"
+	"notification_detail": "Notification detail",
+	"pending": "Pending"
 }

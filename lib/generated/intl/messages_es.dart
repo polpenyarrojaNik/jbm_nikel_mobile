@@ -583,6 +583,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Total líneas"),
         "pedido_show_pedidoVentaLineas_cantidadPendiente":
             MessageLookupByLibrary.simpleMessage("Cantidad pendiente"),
+        "pending": MessageLookupByLibrary.simpleMessage("Pendiente"),
         "search": MessageLookupByLibrary.simpleMessage("Buscar..."),
         "settings_cerrar_sesion":
             MessageLookupByLibrary.simpleMessage("Cerrar sesión"),

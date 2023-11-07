@@ -44,6 +44,7 @@ class PedidoVentaListaTile extends StatelessWidget {
                 Container(
                   width: 8,
                   color: pedidoVentaEstadoColor(
+                    enviada: pedidoVenta.enviada,
                     pedidoVentaEstadoId: pedidoVenta.pedidoVentaEstado?.id,
                   ),
                 ),
@@ -57,7 +58,9 @@ class PedidoVentaListaTile extends StatelessWidget {
                       children: [
                         Text(
                           pedidoVenta.pedidoVentaId ??
-                              S.of(context).pedido_index_offline,
+                              (pedidoVenta.enviada
+                                  ? S.of(context).pending
+                                  : S.of(context).pedido_index_offline),
                           style: Theme.of(context)
                               .textTheme
                               .bodySmall

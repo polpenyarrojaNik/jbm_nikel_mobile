@@ -389,6 +389,7 @@ TextStyle? getTextStyleFechaEntregaByEstado(
 
 Color pedidoVentaEstadoColor({
   int? pedidoVentaEstadoId,
+  required bool enviada,
   double? opacidad,
 }) {
   switch (pedidoVentaEstadoId) {
@@ -408,6 +409,8 @@ Color pedidoVentaEstadoColor({
       return Colors.yellow.shade300.withOpacity(opacidad ?? 1);
     case 99: //Liberado
       return Colors.yellow.shade700.withOpacity(opacidad ?? 1);
+    case null:
+      return Colors.grey.withOpacity(0.5);
 
     default:
       return Colors.red.withOpacity(opacidad ?? 1);

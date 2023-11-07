@@ -342,5 +342,6 @@
   "notification": "Notification",
   "notification_detail": "Détails des notifications",
   "notifications": " notifications",
-  "cliente_show_clienteDetalle_fiscalData": "Données fiscales"
+  "cliente_show_clienteDetalle_fiscalData": "Données fiscales",
+  "pending": "En attente"
 }
