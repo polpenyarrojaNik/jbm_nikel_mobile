@@ -51,7 +51,9 @@ class PedidoVentaDetallePage extends ConsumerWidget {
         actions: state.maybeWhen(
           orElse: () => null,
           data: (pedidoVenta) {
-            if (pedidoVenta.oferta ?? false) {
+            if (pedidoLocalParam.pedidoId != null &&
+                pedidoVenta.oferta != null &&
+                pedidoVenta.oferta!) {
               final ofertaAdjuntoValue = ref.watch(
                   ofertaHaveAttachmentProvider(pedidoLocalParam.pedidoId!));
               return ofertaAdjuntoValue.maybeWhen(

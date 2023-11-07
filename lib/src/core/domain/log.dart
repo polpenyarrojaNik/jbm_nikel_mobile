@@ -14,6 +14,7 @@ class Log with _$Log {
     required String appBuild,
     required String appBuildName,
     required String userId,
+    required String device,
     String? userEmail,
     String? userName,
     required DateTime timestamp,

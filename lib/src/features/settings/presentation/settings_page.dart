@@ -125,12 +125,12 @@ class SettingsPage extends ConsumerWidget {
       {required BuildContext context,
       required File file,
       required String usuarioId}) async {
-    final box = context.findRenderObject() as RenderBox?;
+    final Size size = MediaQuery.of(context).size;
     final directory = await getApplicationDocumentsDirectory();
     final file = XFile('${directory.path}/$localDatabaseName');
-    await Share.shareXFiles([file],
+    Share.shareXFiles([file],
         subject: 'Base de datos local #$usuarioId',
-        sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size);
+        sharePositionOrigin: Rect.fromLTWH(0, 0, size.width, size.height / 2));
   }
 }
 

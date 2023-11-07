@@ -1364,7 +1364,7 @@ class SyncService {
           : Uri.https(
               // dotenv.get('URL', fallback: 'localhost:3001'),
               'jbm-api.nikel.es',
-              'api/v1/sync/clientes/pedidos/$pedidoVentaAppId/check',
+              'api/v1/sync/pedidos/$pedidoVentaAppId/check',
             );
 
       final response = await _dio.getUri(

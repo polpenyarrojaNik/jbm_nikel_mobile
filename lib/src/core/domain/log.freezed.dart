@@ -24,6 +24,7 @@ mixin _$Log {
   String get appBuild => throw _privateConstructorUsedError;
   String get appBuildName => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
+  String get device => throw _privateConstructorUsedError;
   String? get userEmail => throw _privateConstructorUsedError;
   String? get userName => throw _privateConstructorUsedError;
   DateTime get timestamp => throw _privateConstructorUsedError;
@@ -46,6 +47,7 @@ abstract class $LogCopyWith<$Res> {
       String appBuild,
       String appBuildName,
       String userId,
+      String device,
       String? userEmail,
       String? userName,
       DateTime timestamp});
@@ -71,6 +73,7 @@ class _$LogCopyWithImpl<$Res, $Val extends Log> implements $LogCopyWith<$Res> {
     Object? appBuild = null,
     Object? appBuildName = null,
     Object? userId = null,
+    Object? device = null,
     Object? userEmail = freezed,
     Object? userName = freezed,
     Object? timestamp = null,
@@ -108,6 +111,10 @@ class _$LogCopyWithImpl<$Res, $Val extends Log> implements $LogCopyWith<$Res> {
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
+      device: null == device
+          ? _value.device
+          : device // ignore: cast_nullable_to_non_nullable
+              as String,
       userEmail: freezed == userEmail
           ? _value.userEmail
           : userEmail // ignore: cast_nullable_to_non_nullable
@@ -139,6 +146,7 @@ abstract class _$$LogImplCopyWith<$Res> implements $LogCopyWith<$Res> {
       String appBuild,
       String appBuildName,
       String userId,
+      String device,
       String? userEmail,
       String? userName,
       DateTime timestamp});
@@ -161,6 +169,7 @@ class __$$LogImplCopyWithImpl<$Res> extends _$LogCopyWithImpl<$Res, _$LogImpl>
     Object? appBuild = null,
     Object? appBuildName = null,
     Object? userId = null,
+    Object? device = null,
     Object? userEmail = freezed,
     Object? userName = freezed,
     Object? timestamp = null,
@@ -198,6 +207,10 @@ class __$$LogImplCopyWithImpl<$Res> extends _$LogCopyWithImpl<$Res, _$LogImpl>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
+      device: null == device
+          ? _value.device
+          : device // ignore: cast_nullable_to_non_nullable
+              as String,
       userEmail: freezed == userEmail
           ? _value.userEmail
           : userEmail // ignore: cast_nullable_to_non_nullable
@@ -226,6 +239,7 @@ class _$LogImpl extends _Log {
       required this.appBuild,
       required this.appBuildName,
       required this.userId,
+      required this.device,
       this.userEmail,
       this.userName,
       required this.timestamp})
@@ -248,6 +262,8 @@ class _$LogImpl extends _Log {
   @override
   final String userId;
   @override
+  final String device;
+  @override
   final String? userEmail;
   @override
   final String? userName;
@@ -256,7 +272,7 @@ class _$LogImpl extends _Log {
 
   @override
   String toString() {
-    return 'Log(id: $id, level: $level, message: $message, error: $error, appId: $appId, appBuild: $appBuild, appBuildName: $appBuildName, userId: $userId, userEmail: $userEmail, userName: $userName, timestamp: $timestamp)';
+    return 'Log(id: $id, level: $level, message: $message, error: $error, appId: $appId, appBuild: $appBuild, appBuildName: $appBuildName, userId: $userId, device: $device, userEmail: $userEmail, userName: $userName, timestamp: $timestamp)';
   }
 
   @override
@@ -274,6 +290,7 @@ class _$LogImpl extends _Log {
             (identical(other.appBuildName, appBuildName) ||
                 other.appBuildName == appBuildName) &&
             (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.device, device) || other.device == device) &&
             (identical(other.userEmail, userEmail) ||
                 other.userEmail == userEmail) &&
             (identical(other.userName, userName) ||
@@ -284,7 +301,7 @@ class _$LogImpl extends _Log {
 
   @override
   int get hashCode => Object.hash(runtimeType, id, level, message, error, appId,
-      appBuild, appBuildName, userId, userEmail, userName, timestamp);
+      appBuild, appBuildName, userId, device, userEmail, userName, timestamp);
 
   @JsonKey(ignore: true)
   @override
@@ -303,6 +320,7 @@ abstract class _Log extends Log {
       required final String appBuild,
       required final String appBuildName,
       required final String userId,
+      required final String device,
       final String? userEmail,
       final String? userName,
       required final DateTime timestamp}) = _$LogImpl;
@@ -324,6 +342,8 @@ abstract class _Log extends Log {
   String get appBuildName;
   @override
   String get userId;
+  @override
+  String get device;
   @override
   String? get userEmail;
   @override

@@ -66,7 +66,7 @@ class LocalAppDatabase extends _$LocalAppDatabase {
       : test = true,
         super(NativeDatabase.memory());
   @override
-  int get schemaVersion => 4;
+  int get schemaVersion => 5;
 
   @override
   MigrationStrategy get migration {
@@ -89,6 +89,9 @@ class LocalAppDatabase extends _$LocalAppDatabase {
           await m.createTable(pedidoVentaLocalTable);
           await m.createTable(pedidoVentaLineaLocalTable);
           await m.createTable(visitaLocalTable);
+        } else if (from == 4) {
+          await m.deleteTable(logTable.tableName);
+          await m.createTable(logTable);
         }
       }),
     );

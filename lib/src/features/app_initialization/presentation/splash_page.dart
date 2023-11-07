@@ -35,7 +35,7 @@ class _SplashPageState extends ConsumerState<SplashPage> {
             ref.read(appRemoteDatabaseProvider);
             await ref
                 .read(logRepositoryProvider)
-                .insetLog(level: 'I', message: 'Inizialize App');
+                .insetLog(level: 'I', message: 'Initialize App');
             ref
                 .read(syncNotifierProvider.notifier)
                 .syncAllInCompute(initAppProcess: true);

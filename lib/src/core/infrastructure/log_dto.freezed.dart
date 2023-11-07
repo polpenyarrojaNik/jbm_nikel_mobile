@@ -34,6 +34,8 @@ mixin _$LogDTO {
   String get appBuild => throw _privateConstructorUsedError;
   @JsonKey(name: 'APP_BUILD_NAME')
   String get appBuildName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'DEVICE')
+  String get device => throw _privateConstructorUsedError;
   @JsonKey(name: 'USER_ID')
   String get userId => throw _privateConstructorUsedError;
   @JsonKey(name: 'USER_EMAIL')
@@ -61,6 +63,7 @@ abstract class $LogDTOCopyWith<$Res> {
       @JsonKey(name: 'APP_ID') String appId,
       @JsonKey(name: 'APP_BUILD') String appBuild,
       @JsonKey(name: 'APP_BUILD_NAME') String appBuildName,
+      @JsonKey(name: 'DEVICE') String device,
       @JsonKey(name: 'USER_ID') String userId,
       @JsonKey(name: 'USER_EMAIL') String? userEmail,
       @JsonKey(name: 'USER_NAME') String? userName,
@@ -87,6 +90,7 @@ class _$LogDTOCopyWithImpl<$Res, $Val extends LogDTO>
     Object? appId = null,
     Object? appBuild = null,
     Object? appBuildName = null,
+    Object? device = null,
     Object? userId = null,
     Object? userEmail = freezed,
     Object? userName = freezed,
@@ -120,6 +124,10 @@ class _$LogDTOCopyWithImpl<$Res, $Val extends LogDTO>
       appBuildName: null == appBuildName
           ? _value.appBuildName
           : appBuildName // ignore: cast_nullable_to_non_nullable
+              as String,
+      device: null == device
+          ? _value.device
+          : device // ignore: cast_nullable_to_non_nullable
               as String,
       userId: null == userId
           ? _value.userId
@@ -156,6 +164,7 @@ abstract class _$$LogDTOImplCopyWith<$Res> implements $LogDTOCopyWith<$Res> {
       @JsonKey(name: 'APP_ID') String appId,
       @JsonKey(name: 'APP_BUILD') String appBuild,
       @JsonKey(name: 'APP_BUILD_NAME') String appBuildName,
+      @JsonKey(name: 'DEVICE') String device,
       @JsonKey(name: 'USER_ID') String userId,
       @JsonKey(name: 'USER_EMAIL') String? userEmail,
       @JsonKey(name: 'USER_NAME') String? userName,
@@ -180,6 +189,7 @@ class __$$LogDTOImplCopyWithImpl<$Res>
     Object? appId = null,
     Object? appBuild = null,
     Object? appBuildName = null,
+    Object? device = null,
     Object? userId = null,
     Object? userEmail = freezed,
     Object? userName = freezed,
@@ -214,6 +224,10 @@ class __$$LogDTOImplCopyWithImpl<$Res>
           ? _value.appBuildName
           : appBuildName // ignore: cast_nullable_to_non_nullable
               as String,
+      device: null == device
+          ? _value.device
+          : device // ignore: cast_nullable_to_non_nullable
+              as String,
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -245,6 +259,7 @@ class _$LogDTOImpl extends _LogDTO {
       @JsonKey(name: 'APP_ID') required this.appId,
       @JsonKey(name: 'APP_BUILD') required this.appBuild,
       @JsonKey(name: 'APP_BUILD_NAME') required this.appBuildName,
+      @JsonKey(name: 'DEVICE') required this.device,
       @JsonKey(name: 'USER_ID') required this.userId,
       @JsonKey(name: 'USER_EMAIL') this.userEmail,
       @JsonKey(name: 'USER_NAME') this.userName,
@@ -276,6 +291,9 @@ class _$LogDTOImpl extends _LogDTO {
   @JsonKey(name: 'APP_BUILD_NAME')
   final String appBuildName;
   @override
+  @JsonKey(name: 'DEVICE')
+  final String device;
+  @override
   @JsonKey(name: 'USER_ID')
   final String userId;
   @override
@@ -290,7 +308,7 @@ class _$LogDTOImpl extends _LogDTO {
 
   @override
   String toString() {
-    return 'LogDTO(id: $id, level: $level, message: $message, error: $error, appId: $appId, appBuild: $appBuild, appBuildName: $appBuildName, userId: $userId, userEmail: $userEmail, userName: $userName, timestamp: $timestamp)';
+    return 'LogDTO(id: $id, level: $level, message: $message, error: $error, appId: $appId, appBuild: $appBuild, appBuildName: $appBuildName, device: $device, userId: $userId, userEmail: $userEmail, userName: $userName, timestamp: $timestamp)';
   }
 
   @override
@@ -307,6 +325,7 @@ class _$LogDTOImpl extends _LogDTO {
                 other.appBuild == appBuild) &&
             (identical(other.appBuildName, appBuildName) ||
                 other.appBuildName == appBuildName) &&
+            (identical(other.device, device) || other.device == device) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.userEmail, userEmail) ||
                 other.userEmail == userEmail) &&
@@ -319,7 +338,7 @@ class _$LogDTOImpl extends _LogDTO {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, level, message, error, appId,
-      appBuild, appBuildName, userId, userEmail, userName, timestamp);
+      appBuild, appBuildName, device, userId, userEmail, userName, timestamp);
 
   @JsonKey(ignore: true)
   @override
@@ -344,6 +363,7 @@ abstract class _LogDTO extends LogDTO {
           @JsonKey(name: 'APP_ID') required final String appId,
           @JsonKey(name: 'APP_BUILD') required final String appBuild,
           @JsonKey(name: 'APP_BUILD_NAME') required final String appBuildName,
+          @JsonKey(name: 'DEVICE') required final String device,
           @JsonKey(name: 'USER_ID') required final String userId,
           @JsonKey(name: 'USER_EMAIL') final String? userEmail,
           @JsonKey(name: 'USER_NAME') final String? userName,
@@ -374,6 +394,9 @@ abstract class _LogDTO extends LogDTO {
   @override
   @JsonKey(name: 'APP_BUILD_NAME')
   String get appBuildName;
+  @override
+  @JsonKey(name: 'DEVICE')
+  String get device;
   @override
   @JsonKey(name: 'USER_ID')
   String get userId;

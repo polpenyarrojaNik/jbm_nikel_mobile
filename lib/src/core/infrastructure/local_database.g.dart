@@ -2303,6 +2303,11 @@ class $LogTableTable extends LogTable with TableInfo<$LogTableTable, LogDTO> {
   late final GeneratedColumn<String> appBuildName = GeneratedColumn<String>(
       'APP_BUILD_NAME', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _deviceMeta = const VerificationMeta('device');
+  @override
+  late final GeneratedColumn<String> device = GeneratedColumn<String>(
+      'DEVICE', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _userIdMeta = const VerificationMeta('userId');
   @override
   late final GeneratedColumn<String> userId = GeneratedColumn<String>(
@@ -2336,6 +2341,7 @@ class $LogTableTable extends LogTable with TableInfo<$LogTableTable, LogDTO> {
         appId,
         appBuild,
         appBuildName,
+        device,
         userId,
         userEmail,
         userName,
@@ -2396,6 +2402,12 @@ class $LogTableTable extends LogTable with TableInfo<$LogTableTable, LogDTO> {
     } else if (isInserting) {
       context.missing(_appBuildNameMeta);
     }
+    if (data.containsKey('DEVICE')) {
+      context.handle(_deviceMeta,
+          device.isAcceptableOrUnknown(data['DEVICE']!, _deviceMeta));
+    } else if (isInserting) {
+      context.missing(_deviceMeta);
+    }
     if (data.containsKey('USER_ID')) {
       context.handle(_userIdMeta,
           userId.isAcceptableOrUnknown(data['USER_ID']!, _userIdMeta));
@@ -2439,6 +2451,8 @@ class $LogTableTable extends LogTable with TableInfo<$LogTableTable, LogDTO> {
           .read(DriftSqlType.string, data['${effectivePrefix}APP_BUILD'])!,
       appBuildName: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}APP_BUILD_NAME'])!,
+      device: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DEVICE'])!,
       userId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}USER_ID'])!,
       userEmail: attachedDatabase.typeMapping
@@ -2465,6 +2479,7 @@ class LogTableCompanion extends UpdateCompanion<LogDTO> {
   final Value<String> appId;
   final Value<String> appBuild;
   final Value<String> appBuildName;
+  final Value<String> device;
   final Value<String> userId;
   final Value<String?> userEmail;
   final Value<String?> userName;
@@ -2478,6 +2493,7 @@ class LogTableCompanion extends UpdateCompanion<LogDTO> {
     this.appId = const Value.absent(),
     this.appBuild = const Value.absent(),
     this.appBuildName = const Value.absent(),
+    this.device = const Value.absent(),
     this.userId = const Value.absent(),
     this.userEmail = const Value.absent(),
     this.userName = const Value.absent(),
@@ -2492,6 +2508,7 @@ class LogTableCompanion extends UpdateCompanion<LogDTO> {
     required String appId,
     required String appBuild,
     required String appBuildName,
+    required String device,
     required String userId,
     this.userEmail = const Value.absent(),
     this.userName = const Value.absent(),
@@ -2501,6 +2518,7 @@ class LogTableCompanion extends UpdateCompanion<LogDTO> {
         appId = Value(appId),
         appBuild = Value(appBuild),
         appBuildName = Value(appBuildName),
+        device = Value(device),
         userId = Value(userId),
         timestamp = Value(timestamp);
   static Insertable<LogDTO> custom({
@@ -2512,6 +2530,7 @@ class LogTableCompanion extends UpdateCompanion<LogDTO> {
     Expression<String>? appId,
     Expression<String>? appBuild,
     Expression<String>? appBuildName,
+    Expression<String>? device,
     Expression<String>? userId,
     Expression<String>? userEmail,
     Expression<String>? userName,
@@ -2526,6 +2545,7 @@ class LogTableCompanion extends UpdateCompanion<LogDTO> {
       if (appId != null) 'APP_ID': appId,
       if (appBuild != null) 'APP_BUILD': appBuild,
       if (appBuildName != null) 'APP_BUILD_NAME': appBuildName,
+      if (device != null) 'DEVICE': device,
       if (userId != null) 'USER_ID': userId,
       if (userEmail != null) 'USER_EMAIL': userEmail,
       if (userName != null) 'USER_NAME': userName,
@@ -2542,6 +2562,7 @@ class LogTableCompanion extends UpdateCompanion<LogDTO> {
       Value<String>? appId,
       Value<String>? appBuild,
       Value<String>? appBuildName,
+      Value<String>? device,
       Value<String>? userId,
       Value<String?>? userEmail,
       Value<String?>? userName,
@@ -2555,6 +2576,7 @@ class LogTableCompanion extends UpdateCompanion<LogDTO> {
       appId: appId ?? this.appId,
       appBuild: appBuild ?? this.appBuild,
       appBuildName: appBuildName ?? this.appBuildName,
+      device: device ?? this.device,
       userId: userId ?? this.userId,
       userEmail: userEmail ?? this.userEmail,
       userName: userName ?? this.userName,
@@ -2589,6 +2611,9 @@ class LogTableCompanion extends UpdateCompanion<LogDTO> {
     if (appBuildName.present) {
       map['APP_BUILD_NAME'] = Variable<String>(appBuildName.value);
     }
+    if (device.present) {
+      map['DEVICE'] = Variable<String>(device.value);
+    }
     if (userId.present) {
       map['USER_ID'] = Variable<String>(userId.value);
     }
@@ -2615,6 +2640,7 @@ class LogTableCompanion extends UpdateCompanion<LogDTO> {
           ..write('appId: $appId, ')
           ..write('appBuild: $appBuild, ')
           ..write('appBuildName: $appBuildName, ')
+          ..write('device: $device, ')
           ..write('userId: $userId, ')
           ..write('userEmail: $userEmail, ')
           ..write('userName: $userName, ')

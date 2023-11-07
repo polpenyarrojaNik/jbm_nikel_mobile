@@ -20,6 +20,7 @@ class LogDTO with _$LogDTO implements Insertable<LogDTO> {
     @JsonKey(name: 'APP_ID') required String appId,
     @JsonKey(name: 'APP_BUILD') required String appBuild,
     @JsonKey(name: 'APP_BUILD_NAME') required String appBuildName,
+    @JsonKey(name: 'DEVICE') required String device,
     @JsonKey(name: 'USER_ID') required String userId,
     @JsonKey(name: 'USER_EMAIL') String? userEmail,
     @JsonKey(name: 'USER_NAME') String? userName,
@@ -37,6 +38,7 @@ class LogDTO with _$LogDTO implements Insertable<LogDTO> {
         appId: _.appId,
         appBuild: _.appBuild,
         appBuildName: _.appBuildName,
+        device: _.device,
         userId: _.userId,
         timestamp: _.timestamp);
   }
@@ -49,6 +51,7 @@ class LogDTO with _$LogDTO implements Insertable<LogDTO> {
       appId: appId,
       appBuild: appBuild,
       appBuildName: appBuildName,
+      device: device,
       userId: userId,
       timestamp: timestamp,
     );
@@ -63,6 +66,7 @@ class LogDTO with _$LogDTO implements Insertable<LogDTO> {
       appId: Value(appId),
       appBuild: Value(appBuild),
       appBuildName: Value(appBuildName),
+      device: Value(device),
       userId: Value(userId),
       timestamp: Value(timestamp),
     ).toColumns(nullToAbsent);
@@ -82,6 +86,7 @@ class LogTable extends Table {
   TextColumn get appId => text().named('APP_ID')();
   TextColumn get appBuild => text().named('APP_BUILD')();
   TextColumn get appBuildName => text().named('APP_BUILD_NAME')();
+  TextColumn get device => text().named('DEVICE')();
   TextColumn get userId => text().named('USER_ID')();
   TextColumn get userEmail => text().nullable().named('USER_EMAIL')();
   TextColumn get userName => text().nullable().named('USER_NAME')();
