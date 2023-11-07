@@ -34,7 +34,7 @@ abstract class _$NotificationDetailScreenController
     extends BuildlessAutoDisposeAsyncNotifier<Notificacion> {
   late final String id;
 
-  Future<Notificacion> build(
+  FutureOr<Notificacion> build(
     String id,
   );
 }
@@ -117,7 +117,7 @@ class NotificationDetailScreenControllerProvider
   final String id;
 
   @override
-  Future<Notificacion> runNotifierBuild(
+  FutureOr<Notificacion> runNotifierBuild(
     covariant NotificationDetailScreenController notifier,
   ) {
     return notifier.build(

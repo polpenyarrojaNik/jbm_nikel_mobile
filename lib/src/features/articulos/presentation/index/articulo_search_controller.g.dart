@@ -51,7 +51,7 @@ abstract class _$ArticuloIndexScreenPaginatedController
     extends BuildlessAutoDisposeAsyncNotifier<List<Articulo>> {
   late final int page;
 
-  Future<List<Articulo>> build({
+  FutureOr<List<Articulo>> build({
     required int page,
   });
 }
@@ -136,7 +136,7 @@ class ArticuloIndexScreenPaginatedControllerProvider
   final int page;
 
   @override
-  Future<List<Articulo>> runNotifierBuild(
+  FutureOr<List<Articulo>> runNotifierBuild(
     covariant ArticuloIndexScreenPaginatedController notifier,
   ) {
     return notifier.build(

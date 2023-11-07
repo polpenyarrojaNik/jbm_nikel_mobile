@@ -34,7 +34,7 @@ abstract class _$ClienteContactoEditPageController
     extends BuildlessAutoDisposeAsyncNotifier<ClienteContactoImpEditPageData> {
   late final ClienteImpParam clienteImpParam;
 
-  Future<ClienteContactoImpEditPageData> build(
+  FutureOr<ClienteContactoImpEditPageData> build(
     ClienteImpParam clienteImpParam,
   );
 }
@@ -118,7 +118,7 @@ class ClienteContactoEditPageControllerProvider
   final ClienteImpParam clienteImpParam;
 
   @override
-  Future<ClienteContactoImpEditPageData> runNotifierBuild(
+  FutureOr<ClienteContactoImpEditPageData> runNotifierBuild(
     covariant ClienteContactoEditPageController notifier,
   ) {
     return notifier.build(

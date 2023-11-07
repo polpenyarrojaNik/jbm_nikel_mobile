@@ -34,7 +34,7 @@ abstract class _$ProvinciaSearchPageController
     extends BuildlessAutoDisposeAsyncNotifier<List<Provincia>> {
   late final String? paisId;
 
-  Future<List<Provincia>> build(
+  FutureOr<List<Provincia>> build(
     String? paisId,
   );
 }
@@ -117,7 +117,7 @@ class ProvinciaSearchPageControllerProvider
   final String? paisId;
 
   @override
-  Future<List<Provincia>> runNotifierBuild(
+  FutureOr<List<Provincia>> runNotifierBuild(
     covariant ProvinciaSearchPageController notifier,
   ) {
     return notifier.build(

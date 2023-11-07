@@ -34,7 +34,7 @@ abstract class _$ClienteContactoDeleteController
     extends BuildlessAutoDisposeAsyncNotifier<bool> {
   late final ClienteImpParam clienteImpParam;
 
-  Future<bool> build(
+  FutureOr<bool> build(
     ClienteImpParam clienteImpParam,
   );
 }
@@ -117,7 +117,7 @@ class ClienteContactoDeleteControllerProvider
   final ClienteImpParam clienteImpParam;
 
   @override
-  Future<bool> runNotifierBuild(
+  FutureOr<bool> runNotifierBuild(
     covariant ClienteContactoDeleteController notifier,
   ) {
     return notifier.build(

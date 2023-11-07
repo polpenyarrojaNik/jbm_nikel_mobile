@@ -34,7 +34,7 @@ abstract class _$ClienteVentasArticuloIndexScreenPaginatedController
     extends BuildlessAutoDisposeAsyncNotifier<List<ClienteVentasArticulo>> {
   late final String clienteId;
 
-  Future<List<ClienteVentasArticulo>> build({
+  FutureOr<List<ClienteVentasArticulo>> build({
     required String clienteId,
   });
 }
@@ -125,7 +125,7 @@ class ClienteVentasArticuloIndexScreenPaginatedControllerProvider
   final String clienteId;
 
   @override
-  Future<List<ClienteVentasArticulo>> runNotifierBuild(
+  FutureOr<List<ClienteVentasArticulo>> runNotifierBuild(
     covariant ClienteVentasArticuloIndexScreenPaginatedController notifier,
   ) {
     return notifier.build(

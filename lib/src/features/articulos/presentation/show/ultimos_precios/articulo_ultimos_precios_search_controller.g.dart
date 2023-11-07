@@ -34,7 +34,7 @@ abstract class _$ArticuloUltimosPreciosIndexScreenController
     extends BuildlessAutoDisposeAsyncNotifier<int> {
   late final String articuloId;
 
-  Future<int> build({
+  FutureOr<int> build({
     required String articuloId,
   });
 }
@@ -120,7 +120,7 @@ class ArticuloUltimosPreciosIndexScreenControllerProvider
   final String articuloId;
 
   @override
-  Future<int> runNotifierBuild(
+  FutureOr<int> runNotifierBuild(
     covariant ArticuloUltimosPreciosIndexScreenController notifier,
   ) {
     return notifier.build(
@@ -193,7 +193,7 @@ abstract class _$ArticuloUltimosPreciosIndexScreenPaginatedController
   late final int page;
   late final String articuloId;
 
-  Future<List<EstadisticasUltimosPrecios>> build({
+  FutureOr<List<EstadisticasUltimosPrecios>> build({
     required int page,
     required String articuloId,
   });
@@ -293,7 +293,7 @@ class ArticuloUltimosPreciosIndexScreenPaginatedControllerProvider
   final String articuloId;
 
   @override
-  Future<List<EstadisticasUltimosPrecios>> runNotifierBuild(
+  FutureOr<List<EstadisticasUltimosPrecios>> runNotifierBuild(
     covariant ArticuloUltimosPreciosIndexScreenPaginatedController notifier,
   ) {
     return notifier.build(

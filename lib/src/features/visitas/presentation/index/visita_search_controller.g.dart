@@ -51,7 +51,7 @@ abstract class _$VisitaIndexScreenPaginatedController
     extends BuildlessAutoDisposeAsyncNotifier<List<Visita>> {
   late final int page;
 
-  Future<List<Visita>> build({
+  FutureOr<List<Visita>> build({
     required int page,
   });
 }
@@ -135,7 +135,7 @@ class VisitaIndexScreenPaginatedControllerProvider
   final int page;
 
   @override
-  Future<List<Visita>> runNotifierBuild(
+  FutureOr<List<Visita>> runNotifierBuild(
     covariant VisitaIndexScreenPaginatedController notifier,
   ) {
     return notifier.build(
