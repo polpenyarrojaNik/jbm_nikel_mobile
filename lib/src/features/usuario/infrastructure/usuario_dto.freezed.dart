@@ -40,6 +40,14 @@ mixin _$UsuarioDTO {
   String get modificarPedido => throw _privateConstructorUsedError;
   @JsonKey(name: 'APP_VER_TOTAL_VENTAS')
   String get verTotalVentas => throw _privateConstructorUsedError;
+  @JsonKey(name: 'PACKAGE_NAME')
+  String? get packageName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'VERSION')
+  String? get version => throw _privateConstructorUsedError;
+  @JsonKey(name: 'BUILD_NUMBER')
+  String? get buildNumber => throw _privateConstructorUsedError;
+  @JsonKey(name: 'DEVICE_INFO')
+  String? get deviceInfo => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -63,7 +71,11 @@ abstract class $UsuarioDTOCopyWith<$Res> {
       @JsonKey(name: 'TEST') String test,
       @JsonKey(name: 'IDIOMA_ID') String idiomaId,
       @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') String modificarPedido,
-      @JsonKey(name: 'APP_VER_TOTAL_VENTAS') String verTotalVentas});
+      @JsonKey(name: 'APP_VER_TOTAL_VENTAS') String verTotalVentas,
+      @JsonKey(name: 'PACKAGE_NAME') String? packageName,
+      @JsonKey(name: 'VERSION') String? version,
+      @JsonKey(name: 'BUILD_NUMBER') String? buildNumber,
+      @JsonKey(name: 'DEVICE_INFO') String? deviceInfo});
 }
 
 /// @nodoc
@@ -89,6 +101,10 @@ class _$UsuarioDTOCopyWithImpl<$Res, $Val extends UsuarioDTO>
     Object? idiomaId = null,
     Object? modificarPedido = null,
     Object? verTotalVentas = null,
+    Object? packageName = freezed,
+    Object? version = freezed,
+    Object? buildNumber = freezed,
+    Object? deviceInfo = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -131,6 +147,22 @@ class _$UsuarioDTOCopyWithImpl<$Res, $Val extends UsuarioDTO>
           ? _value.verTotalVentas
           : verTotalVentas // ignore: cast_nullable_to_non_nullable
               as String,
+      packageName: freezed == packageName
+          ? _value.packageName
+          : packageName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      version: freezed == version
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String?,
+      buildNumber: freezed == buildNumber
+          ? _value.buildNumber
+          : buildNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deviceInfo: freezed == deviceInfo
+          ? _value.deviceInfo
+          : deviceInfo // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -153,7 +185,11 @@ abstract class _$$UsuarioDTOImplCopyWith<$Res>
       @JsonKey(name: 'TEST') String test,
       @JsonKey(name: 'IDIOMA_ID') String idiomaId,
       @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') String modificarPedido,
-      @JsonKey(name: 'APP_VER_TOTAL_VENTAS') String verTotalVentas});
+      @JsonKey(name: 'APP_VER_TOTAL_VENTAS') String verTotalVentas,
+      @JsonKey(name: 'PACKAGE_NAME') String? packageName,
+      @JsonKey(name: 'VERSION') String? version,
+      @JsonKey(name: 'BUILD_NUMBER') String? buildNumber,
+      @JsonKey(name: 'DEVICE_INFO') String? deviceInfo});
 }
 
 /// @nodoc
@@ -177,6 +213,10 @@ class __$$UsuarioDTOImplCopyWithImpl<$Res>
     Object? idiomaId = null,
     Object? modificarPedido = null,
     Object? verTotalVentas = null,
+    Object? packageName = freezed,
+    Object? version = freezed,
+    Object? buildNumber = freezed,
+    Object? deviceInfo = freezed,
   }) {
     return _then(_$UsuarioDTOImpl(
       id: null == id
@@ -219,6 +259,22 @@ class __$$UsuarioDTOImplCopyWithImpl<$Res>
           ? _value.verTotalVentas
           : verTotalVentas // ignore: cast_nullable_to_non_nullable
               as String,
+      packageName: freezed == packageName
+          ? _value.packageName
+          : packageName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      version: freezed == version
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String?,
+      buildNumber: freezed == buildNumber
+          ? _value.buildNumber
+          : buildNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deviceInfo: freezed == deviceInfo
+          ? _value.deviceInfo
+          : deviceInfo // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -238,7 +294,11 @@ class _$UsuarioDTOImpl extends _UsuarioDTO {
       @JsonKey(name: 'IDIOMA_ID') required this.idiomaId,
       @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')
       required this.modificarPedido,
-      @JsonKey(name: 'APP_VER_TOTAL_VENTAS') required this.verTotalVentas})
+      @JsonKey(name: 'APP_VER_TOTAL_VENTAS') required this.verTotalVentas,
+      @JsonKey(name: 'PACKAGE_NAME') this.packageName,
+      @JsonKey(name: 'VERSION') this.version,
+      @JsonKey(name: 'BUILD_NUMBER') this.buildNumber,
+      @JsonKey(name: 'DEVICE_INFO') this.deviceInfo})
       : super._();
 
   factory _$UsuarioDTOImpl.fromJson(Map<String, dynamic> json) =>
@@ -274,10 +334,22 @@ class _$UsuarioDTOImpl extends _UsuarioDTO {
   @override
   @JsonKey(name: 'APP_VER_TOTAL_VENTAS')
   final String verTotalVentas;
+  @override
+  @JsonKey(name: 'PACKAGE_NAME')
+  final String? packageName;
+  @override
+  @JsonKey(name: 'VERSION')
+  final String? version;
+  @override
+  @JsonKey(name: 'BUILD_NUMBER')
+  final String? buildNumber;
+  @override
+  @JsonKey(name: 'DEVICE_INFO')
+  final String? deviceInfo;
 
   @override
   String toString() {
-    return 'UsuarioDTO(id: $id, usuario: $usuario, contrasenya: $contrasenya, nombreUsuario: $nombreUsuario, provisionalToken: $provisionalToken, refreshToken: $refreshToken, test: $test, idiomaId: $idiomaId, modificarPedido: $modificarPedido, verTotalVentas: $verTotalVentas)';
+    return 'UsuarioDTO(id: $id, usuario: $usuario, contrasenya: $contrasenya, nombreUsuario: $nombreUsuario, provisionalToken: $provisionalToken, refreshToken: $refreshToken, test: $test, idiomaId: $idiomaId, modificarPedido: $modificarPedido, verTotalVentas: $verTotalVentas, packageName: $packageName, version: $version, buildNumber: $buildNumber, deviceInfo: $deviceInfo)';
   }
 
   @override
@@ -301,7 +373,14 @@ class _$UsuarioDTOImpl extends _UsuarioDTO {
             (identical(other.modificarPedido, modificarPedido) ||
                 other.modificarPedido == modificarPedido) &&
             (identical(other.verTotalVentas, verTotalVentas) ||
-                other.verTotalVentas == verTotalVentas));
+                other.verTotalVentas == verTotalVentas) &&
+            (identical(other.packageName, packageName) ||
+                other.packageName == packageName) &&
+            (identical(other.version, version) || other.version == version) &&
+            (identical(other.buildNumber, buildNumber) ||
+                other.buildNumber == buildNumber) &&
+            (identical(other.deviceInfo, deviceInfo) ||
+                other.deviceInfo == deviceInfo));
   }
 
   @JsonKey(ignore: true)
@@ -317,7 +396,11 @@ class _$UsuarioDTOImpl extends _UsuarioDTO {
       test,
       idiomaId,
       modificarPedido,
-      verTotalVentas);
+      verTotalVentas,
+      packageName,
+      version,
+      buildNumber,
+      deviceInfo);
 
   @JsonKey(ignore: true)
   @override
@@ -335,20 +418,25 @@ class _$UsuarioDTOImpl extends _UsuarioDTO {
 
 abstract class _UsuarioDTO extends UsuarioDTO {
   const factory _UsuarioDTO(
-      {@JsonKey(name: 'USUARIO_ID') required final String id,
-      @JsonKey(name: 'USUARIO') required final String usuario,
-      @JsonKey(name: 'CLAVE') required final String contrasenya,
-      @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')
-      required final String? nombreUsuario,
-      @JsonKey(name: 'PROVISIONAL_TOKEN')
-      required final String provisionalToken,
-      @JsonKey(name: 'REFRESH_TOKEN') final String? refreshToken,
-      @JsonKey(name: 'TEST') required final String test,
-      @JsonKey(name: 'IDIOMA_ID') required final String idiomaId,
-      @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')
-      required final String modificarPedido,
-      @JsonKey(name: 'APP_VER_TOTAL_VENTAS')
-      required final String verTotalVentas}) = _$UsuarioDTOImpl;
+          {@JsonKey(name: 'USUARIO_ID') required final String id,
+          @JsonKey(name: 'USUARIO') required final String usuario,
+          @JsonKey(name: 'CLAVE') required final String contrasenya,
+          @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')
+          required final String? nombreUsuario,
+          @JsonKey(name: 'PROVISIONAL_TOKEN')
+          required final String provisionalToken,
+          @JsonKey(name: 'REFRESH_TOKEN') final String? refreshToken,
+          @JsonKey(name: 'TEST') required final String test,
+          @JsonKey(name: 'IDIOMA_ID') required final String idiomaId,
+          @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')
+          required final String modificarPedido,
+          @JsonKey(name: 'APP_VER_TOTAL_VENTAS')
+          required final String verTotalVentas,
+          @JsonKey(name: 'PACKAGE_NAME') final String? packageName,
+          @JsonKey(name: 'VERSION') final String? version,
+          @JsonKey(name: 'BUILD_NUMBER') final String? buildNumber,
+          @JsonKey(name: 'DEVICE_INFO') final String? deviceInfo}) =
+      _$UsuarioDTOImpl;
   const _UsuarioDTO._() : super._();
 
   factory _UsuarioDTO.fromJson(Map<String, dynamic> json) =
@@ -384,6 +472,18 @@ abstract class _UsuarioDTO extends UsuarioDTO {
   @override
   @JsonKey(name: 'APP_VER_TOTAL_VENTAS')
   String get verTotalVentas;
+  @override
+  @JsonKey(name: 'PACKAGE_NAME')
+  String? get packageName;
+  @override
+  @JsonKey(name: 'VERSION')
+  String? get version;
+  @override
+  @JsonKey(name: 'BUILD_NUMBER')
+  String? get buildNumber;
+  @override
+  @JsonKey(name: 'DEVICE_INFO')
+  String? get deviceInfo;
   @override
   @JsonKey(ignore: true)
   _$$UsuarioDTOImplCopyWith<_$UsuarioDTOImpl> get copyWith =>

@@ -22,6 +22,10 @@ class UsuarioDTO with _$UsuarioDTO {
     @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')
     required String modificarPedido,
     @JsonKey(name: 'APP_VER_TOTAL_VENTAS') required String verTotalVentas,
+    @JsonKey(name: 'PACKAGE_NAME') String? packageName,
+    @JsonKey(name: 'VERSION') String? version,
+    @JsonKey(name: 'BUILD_NUMBER') String? buildNumber,
+    @JsonKey(name: 'DEVICE_INFO') String? deviceInfo,
   }) = _UsuarioDTO;
 
   DateTime? get expiration {
@@ -52,6 +56,10 @@ class UsuarioDTO with _$UsuarioDTO {
       idiomaId: _.idiomaId,
       modificarPedido: _.modificarPedido ? 'S' : 'N',
       verTotalVentas: _.verTotalVentas ? 'S' : 'N',
+      packageName: _.packageName,
+      version: _.version,
+      buildNumber: _.buildNumber,
+      deviceInfo: _.deviceInfo,
     );
   }
 
@@ -67,6 +75,10 @@ class UsuarioDTO with _$UsuarioDTO {
       idiomaId: idiomaId,
       modificarPedido: modificarPedido == 'S',
       verTotalVentas: verTotalVentas == 'S',
+      packageName: packageName!,
+      version: version!,
+      buildNumber: buildNumber!,
+      deviceInfo: deviceInfo!,
     );
   }
 }

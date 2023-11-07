@@ -1,11 +1,8 @@
 import 'dart:convert';
-import 'dart:io';
 
-import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 
 import '../../features/usuario/application/usuario_notifier.dart';
 import '../../features/usuario/domain/usuario.dart';
@@ -34,7 +31,7 @@ class LogRepository {
     '/api/v2/online/log',
   );
   static final remoteLogTestEndpoint = Uri.http(
-    dotenv.get('URL', fallback: 'localhost:3001'),
+    dotenv.get('URL_TEST', fallback: 'localhost:3001'),
     '/api/v2/online/log',
   );
 
@@ -42,28 +39,13 @@ class LogRepository {
 
   Future<void> insetLog(
       {required String level, required String message, String? error}) async {
-    final packageInfo = await PackageInfo.fromPlatform();
-    final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
-
-    late String deviceInfoStr;
-
-    if (Platform.isAndroid) {
-      final andoridInfo = await deviceInfoPlugin.androidInfo;
-
-      deviceInfoStr = '${andoridInfo.model}/${andoridInfo.id}';
-    } else {
-      final iOSInfo = await deviceInfoPlugin.iosInfo;
-      deviceInfoStr =
-          '${iOSInfo.utsname.machine}/${iOSInfo.identifierForVendor}';
-    }
-
     final appLog = Log(
       level: level,
       message: message,
-      appId: packageInfo.packageName,
-      appBuild: packageInfo.buildNumber,
-      appBuildName: '${packageInfo.appName} ${packageInfo.version}',
-      device: deviceInfoStr,
+      appId: usuario!.packageName,
+      appBuild: usuario!.buildNumber,
+      appBuildName: usuario!.version,
+      device: usuario!.deviceInfo,
       userId: usuario!.id,
       timestamp: DateTime.now().toUtc(),
     );

@@ -26,6 +26,10 @@ mixin _$Usuario {
   String get idiomaId => throw _privateConstructorUsedError;
   bool get modificarPedido => throw _privateConstructorUsedError;
   bool get verTotalVentas => throw _privateConstructorUsedError;
+  String get packageName => throw _privateConstructorUsedError;
+  String get version => throw _privateConstructorUsedError;
+  String get buildNumber => throw _privateConstructorUsedError;
+  String get deviceInfo => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UsuarioCopyWith<Usuario> get copyWith => throw _privateConstructorUsedError;
@@ -46,7 +50,11 @@ abstract class $UsuarioCopyWith<$Res> {
       bool test,
       String idiomaId,
       bool modificarPedido,
-      bool verTotalVentas});
+      bool verTotalVentas,
+      String packageName,
+      String version,
+      String buildNumber,
+      String deviceInfo});
 }
 
 /// @nodoc
@@ -72,6 +80,10 @@ class _$UsuarioCopyWithImpl<$Res, $Val extends Usuario>
     Object? idiomaId = null,
     Object? modificarPedido = null,
     Object? verTotalVentas = null,
+    Object? packageName = null,
+    Object? version = null,
+    Object? buildNumber = null,
+    Object? deviceInfo = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -114,6 +126,22 @@ class _$UsuarioCopyWithImpl<$Res, $Val extends Usuario>
           ? _value.verTotalVentas
           : verTotalVentas // ignore: cast_nullable_to_non_nullable
               as bool,
+      packageName: null == packageName
+          ? _value.packageName
+          : packageName // ignore: cast_nullable_to_non_nullable
+              as String,
+      version: null == version
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String,
+      buildNumber: null == buildNumber
+          ? _value.buildNumber
+          : buildNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      deviceInfo: null == deviceInfo
+          ? _value.deviceInfo
+          : deviceInfo // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -135,7 +163,11 @@ abstract class _$$UsuarioImplCopyWith<$Res> implements $UsuarioCopyWith<$Res> {
       bool test,
       String idiomaId,
       bool modificarPedido,
-      bool verTotalVentas});
+      bool verTotalVentas,
+      String packageName,
+      String version,
+      String buildNumber,
+      String deviceInfo});
 }
 
 /// @nodoc
@@ -159,6 +191,10 @@ class __$$UsuarioImplCopyWithImpl<$Res>
     Object? idiomaId = null,
     Object? modificarPedido = null,
     Object? verTotalVentas = null,
+    Object? packageName = null,
+    Object? version = null,
+    Object? buildNumber = null,
+    Object? deviceInfo = null,
   }) {
     return _then(_$UsuarioImpl(
       id: null == id
@@ -201,6 +237,22 @@ class __$$UsuarioImplCopyWithImpl<$Res>
           ? _value.verTotalVentas
           : verTotalVentas // ignore: cast_nullable_to_non_nullable
               as bool,
+      packageName: null == packageName
+          ? _value.packageName
+          : packageName // ignore: cast_nullable_to_non_nullable
+              as String,
+      version: null == version
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String,
+      buildNumber: null == buildNumber
+          ? _value.buildNumber
+          : buildNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      deviceInfo: null == deviceInfo
+          ? _value.deviceInfo
+          : deviceInfo // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -218,7 +270,11 @@ class _$UsuarioImpl extends _Usuario {
       required this.test,
       required this.idiomaId,
       required this.modificarPedido,
-      required this.verTotalVentas})
+      required this.verTotalVentas,
+      required this.packageName,
+      required this.version,
+      required this.buildNumber,
+      required this.deviceInfo})
       : super._();
 
   @override
@@ -241,10 +297,18 @@ class _$UsuarioImpl extends _Usuario {
   final bool modificarPedido;
   @override
   final bool verTotalVentas;
+  @override
+  final String packageName;
+  @override
+  final String version;
+  @override
+  final String buildNumber;
+  @override
+  final String deviceInfo;
 
   @override
   String toString() {
-    return 'Usuario(id: $id, usuario: $usuario, contrasenya: $contrasenya, nombreUsuario: $nombreUsuario, refreshToken: $refreshToken, provisionalToken: $provisionalToken, test: $test, idiomaId: $idiomaId, modificarPedido: $modificarPedido, verTotalVentas: $verTotalVentas)';
+    return 'Usuario(id: $id, usuario: $usuario, contrasenya: $contrasenya, nombreUsuario: $nombreUsuario, refreshToken: $refreshToken, provisionalToken: $provisionalToken, test: $test, idiomaId: $idiomaId, modificarPedido: $modificarPedido, verTotalVentas: $verTotalVentas, packageName: $packageName, version: $version, buildNumber: $buildNumber, deviceInfo: $deviceInfo)';
   }
 
   @override
@@ -268,7 +332,14 @@ class _$UsuarioImpl extends _Usuario {
             (identical(other.modificarPedido, modificarPedido) ||
                 other.modificarPedido == modificarPedido) &&
             (identical(other.verTotalVentas, verTotalVentas) ||
-                other.verTotalVentas == verTotalVentas));
+                other.verTotalVentas == verTotalVentas) &&
+            (identical(other.packageName, packageName) ||
+                other.packageName == packageName) &&
+            (identical(other.version, version) || other.version == version) &&
+            (identical(other.buildNumber, buildNumber) ||
+                other.buildNumber == buildNumber) &&
+            (identical(other.deviceInfo, deviceInfo) ||
+                other.deviceInfo == deviceInfo));
   }
 
   @override
@@ -283,7 +354,11 @@ class _$UsuarioImpl extends _Usuario {
       test,
       idiomaId,
       modificarPedido,
-      verTotalVentas);
+      verTotalVentas,
+      packageName,
+      version,
+      buildNumber,
+      deviceInfo);
 
   @JsonKey(ignore: true)
   @override
@@ -303,7 +378,11 @@ abstract class _Usuario extends Usuario {
       required final bool test,
       required final String idiomaId,
       required final bool modificarPedido,
-      required final bool verTotalVentas}) = _$UsuarioImpl;
+      required final bool verTotalVentas,
+      required final String packageName,
+      required final String version,
+      required final String buildNumber,
+      required final String deviceInfo}) = _$UsuarioImpl;
   const _Usuario._() : super._();
 
   @override
@@ -326,6 +405,14 @@ abstract class _Usuario extends Usuario {
   bool get modificarPedido;
   @override
   bool get verTotalVentas;
+  @override
+  String get packageName;
+  @override
+  String get version;
+  @override
+  String get buildNumber;
+  @override
+  String get deviceInfo;
   @override
   @JsonKey(ignore: true)
   _$$UsuarioImplCopyWith<_$UsuarioImpl> get copyWith =>

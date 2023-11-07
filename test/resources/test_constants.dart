@@ -89,15 +89,18 @@ final kArticuloPrecioTarifaDTO = ArticuloPrecioTarifaDTO(
 );
 
 const kUsuario = Usuario(
-  id: 'TEST',
-  usuario: 'TEST',
-  contrasenya: '1234',
-  provisionalToken: 'TEST-TOKEN',
-  test: true,
-  idiomaId: 'ES',
-  modificarPedido: true,
-  verTotalVentas: true,
-);
+    id: 'TEST',
+    usuario: 'TEST',
+    contrasenya: '1234',
+    provisionalToken: 'TEST-TOKEN',
+    test: true,
+    idiomaId: 'ES',
+    modificarPedido: true,
+    verTotalVentas: true,
+    packageName: 'PAckage',
+    buildNumber: 'TEST',
+    deviceInfo: 'TEST',
+    version: 'TEST');
 
 final kArticuloGrupoNetoDTO = ArticuloGrupoNetoDTO(
   articuloId: kArticuloId,

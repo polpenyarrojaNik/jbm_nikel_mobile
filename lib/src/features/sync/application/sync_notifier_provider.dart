@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/local_database.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/log_repository.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_datetime_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_service.dart';
@@ -138,8 +139,10 @@ Future<SyncProgress> syncInBackground(IsolateArgs isolateArgs) async {
     final remoteDb = await createRemoteDatabaseConnection(isolateArgs);
     final localDb = await createLocalDatabaseConnection(isolateArgs);
 
-    final SyncService syncService =
-        SyncService(remoteDb, localDb, Dio(), isolateArgs.user, null);
+    final dio = Dio();
+
+    final SyncService syncService = SyncService(remoteDb, localDb, dio,
+        isolateArgs.user, null, LogRepository(dio, localDb, isolateArgs.user));
 
     return await syncService.syncAllTable();
   } catch (e) {

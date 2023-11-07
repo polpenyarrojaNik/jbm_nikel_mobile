@@ -18,6 +18,10 @@ _$UsuarioDTOImpl _$$UsuarioDTOImplFromJson(Map<String, dynamic> json) =>
       idiomaId: json['IDIOMA_ID'] as String,
       modificarPedido: json['MODIFICAR_PRECIO_PEDIDO_SN'] as String,
       verTotalVentas: json['APP_VER_TOTAL_VENTAS'] as String,
+      packageName: json['PACKAGE_NAME'] as String?,
+      version: json['VERSION'] as String?,
+      buildNumber: json['BUILD_NUMBER'] as String?,
+      deviceInfo: json['DEVICE_INFO'] as String?,
     );
 
 Map<String, dynamic> _$$UsuarioDTOImplToJson(_$UsuarioDTOImpl instance) =>
@@ -32,4 +36,8 @@ Map<String, dynamic> _$$UsuarioDTOImplToJson(_$UsuarioDTOImpl instance) =>
       'IDIOMA_ID': instance.idiomaId,
       'MODIFICAR_PRECIO_PEDIDO_SN': instance.modificarPedido,
       'APP_VER_TOTAL_VENTAS': instance.verTotalVentas,
+      'PACKAGE_NAME': instance.packageName,
+      'VERSION': instance.version,
+      'BUILD_NUMBER': instance.buildNumber,
+      'DEVICE_INFO': instance.deviceInfo,
     };

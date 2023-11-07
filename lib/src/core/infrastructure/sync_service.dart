@@ -4,7 +4,10 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/core/domain/log.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/local_database.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/log_dto.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/log_repository.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/provincia_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/devoluciones/infrastructure/devolucion_dto.dart';
 
@@ -62,12 +65,12 @@ import 'remote_response.dart';
 
 final syncServiceProvider = Provider.autoDispose<SyncService>(
   (ref) => SyncService(
-    ref.watch(appRemoteDatabaseProvider),
-    ref.watch(local.appLocalDatabaseProvider),
-    ref.watch(dioProvider),
-    ref.watch(usuarioNotifierProvider),
-    ref.watch(usuarioServiceProvider),
-  ),
+      ref.watch(appRemoteDatabaseProvider),
+      ref.watch(local.appLocalDatabaseProvider),
+      ref.watch(dioProvider),
+      ref.watch(usuarioNotifierProvider),
+      ref.watch(usuarioServiceProvider),
+      ref.watch(logRepositoryProvider)),
 );
 
 class SyncService {
@@ -76,6 +79,7 @@ class SyncService {
   final local.LocalAppDatabase _localDb;
   final Usuario? _usuario;
   final UsuarioService? usuarioService;
+  final LogRepository logRepository;
 
   static final remoteDatabaseDateTimeEndpoint = Uri.http(
     'jbm-api.nikel.es',
@@ -86,12 +90,22 @@ class SyncService {
     '/api/v1/sync/db-datetime',
   );
 
+  static final remoteLogEndpoint = Uri.http(
+    'jbm-api.nikel.es',
+    '/api/v2/online/log',
+  );
+  static final remoteLogTestEndpoint = Uri.http(
+    'jbm-api-test.nikel.es:8080',
+    '/api/v2/online/log',
+  );
+
   SyncService(
     this._remoteDb,
     this._localDb,
     this._dio,
     this._usuario,
     this.usuarioService,
+    this.logRepository,
   );
 
   Future<DateTime> getRemoteDatabaseDateTime() async {
@@ -117,6 +131,7 @@ class SyncService {
   Future<void> syncAllArticulosRelacionados(
       {required bool isInMainThread}) async {
     try {
+      await insetLog(level: 'I', message: 'Init article sync');
       await syncArticulos();
       await syncArticuloEmpresasIva();
       await syncArticuloGruposNetos();
@@ -131,8 +146,12 @@ class SyncService {
       if (isInMainThread) {
         await syncAllAuxiliares();
       }
+      await insetLog(level: 'I', message: 'End article sync');
+
       await saveLastSyncDateTimeInArticulos();
     } catch (e) {
+      await insetLog(level: 'I', message: 'Error article sync');
+
       rethrow;
     }
   }
@@ -140,6 +159,8 @@ class SyncService {
   Future<void> syncAllClientesRelacionados(
       {required bool isInMainThread}) async {
     try {
+      await insetLog(level: 'I', message: 'Init customer sync');
+
       await syncClientes();
       await syncTopArticulos();
       await syncClienteGruposNetos();
@@ -162,8 +183,12 @@ class SyncService {
       if (isInMainThread) {
         await syncAllAuxiliares();
       }
+      await insetLog(level: 'I', message: 'End customer sync');
+
       await saveLastSyncDateTimeInClientes();
     } catch (e) {
+      await insetLog(level: 'I', message: 'Error customer sync');
+
       rethrow;
     }
   }
@@ -171,6 +196,8 @@ class SyncService {
   Future<void> syncAllPedidosRelacionados(
       {required bool isInMainThread}) async {
     try {
+      await insetLog(level: 'I', message: 'Init sales order sync');
+
       await usuarioService?.syncUser();
       await enviarPedidosNoEnviados();
       await checkBorradores();
@@ -183,21 +210,35 @@ class SyncService {
       if (isInMainThread) {
         await syncAllAuxiliares();
       }
+      await insetLog(level: 'I', message: 'End sales order sync');
+
       await saveLastSyncDateTimeInPedidos();
     } catch (e) {
+      await insetLog(level: 'I', message: 'Error sales order sync');
+
       rethrow;
     }
   }
 
   Future<void> syncAllVisitasRelacionados(
       {required bool isInMainThread}) async {
-    await enviarVisitasNoEnviadas();
-    await syncVisitas();
-    await checkVisitasTratadas();
-    if (isInMainThread) {
-      await syncAllAuxiliares();
+    try {
+      await insetLog(level: 'I', message: 'Init visits sync');
+
+      await enviarVisitasNoEnviadas();
+      await syncVisitas();
+      await checkVisitasTratadas();
+      if (isInMainThread) {
+        await syncAllAuxiliares();
+      }
+      await insetLog(level: 'I', message: 'End visits sync');
+
+      await saveLastSyncDateTimeInVisitas();
+    } catch (e) {
+      await insetLog(level: 'I', message: 'Error vists sync');
+
+      rethrow;
     }
-    await saveLastSyncDateTimeInVisitas();
   }
 
   Future<void> syncAllAuxiliares() async {
@@ -208,6 +249,8 @@ class SyncService {
       await syncPlazosCobro();
       await syncProvincias();
     } catch (e) {
+      await insetLog(level: 'I', message: 'Error visits sync');
+
       rethrow;
     }
   }
@@ -1397,6 +1440,60 @@ class SyncService {
             .into(_localDb.pedidoVentaLocalTable)
             .insertOnConflictUpdate(borradores[i].copyWith(borrador: 'N'));
       }
+    }
+  }
+
+  Future<void> insetLog(
+      {required String level, required String message, String? error}) async {
+    final appLog = Log(
+      level: level,
+      message: message,
+      appId: _usuario!.packageName,
+      appBuild: _usuario!.buildNumber,
+      appBuildName: _usuario!.version,
+      device: _usuario!.deviceInfo,
+      userId: _usuario!.id,
+      timestamp: DateTime.now().toUtc(),
+    );
+
+    final logDto = LogDTO.fromDomain(appLog);
+
+    try {
+      await _localDb.into(_localDb.logTable).insert(logDto);
+      final logsDtoList = await _localDb.select(_localDb.logTable).get();
+      for (var i = 0; i < logsDtoList.length; i++) {
+        final responseLogDto = await remotePostLogs(logDto: logsDtoList[i]);
+        await (_localDb.delete(_localDb.logTable)
+              ..where((tbl) => tbl.id.equals(responseLogDto.id!)))
+            .go();
+      }
+    } catch (e) {
+      log.e(e);
+    }
+  }
+
+  Future<LogDTO> remotePostLogs({required LogDTO logDto}) async {
+    try {
+      final requestUri =
+          (_usuario!.test) ? remoteLogTestEndpoint : remoteLogEndpoint;
+
+      final response = await _dio.postUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer ${_usuario!.provisionalToken}'},
+        ),
+        data: jsonEncode(logDto.toJson()),
+      );
+      if (response.statusCode == 200) {
+        final json = response.data['data'] as Map<String, dynamic>;
+
+        return LogDTO.fromJson(json);
+      } else {
+        throw AppException.restApiFailure(
+            response.statusCode ?? 400, response.statusMessage ?? '');
+      }
+    } catch (e) {
+      rethrow;
     }
   }
 }

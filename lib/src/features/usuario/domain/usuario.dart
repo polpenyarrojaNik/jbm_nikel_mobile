@@ -16,5 +16,9 @@ class Usuario with _$Usuario {
     required String idiomaId,
     required bool modificarPedido,
     required bool verTotalVentas,
+    required String packageName,
+    required String version,
+    required String buildNumber,
+    required String deviceInfo,
   }) = _Usuario;
 }

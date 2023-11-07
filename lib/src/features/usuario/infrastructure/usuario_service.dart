@@ -1,8 +1,12 @@
+import 'dart:io';
+
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/exceptions/app_exception.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/local_usuario_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/remote_usuario_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_dto.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 import '../domain/usuario.dart';
 
@@ -37,9 +41,31 @@ class UsuarioService {
       password,
       username.contains('@'),
     );
+    final packageInfo = await PackageInfo.fromPlatform();
+    final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
 
-    await _localUsuarioRepository.save(usuarioDTO);
-    return usuarioDTO.toDomain();
+    late String deviceInfoStr;
+
+    if (Platform.isAndroid) {
+      final andoridInfo = await deviceInfoPlugin.androidInfo;
+
+      deviceInfoStr = '${andoridInfo.model}/${andoridInfo.id}';
+    } else {
+      final iOSInfo = await deviceInfoPlugin.iosInfo;
+      deviceInfoStr =
+          '${iOSInfo.utsname.machine}/${iOSInfo.identifierForVendor}';
+    }
+
+    final usuarioDtos = usuarioDTO.copyWith(
+      packageName: packageInfo.appName,
+      version: '${packageInfo.appName} ${packageInfo.version}',
+      buildNumber: packageInfo.buildNumber,
+      deviceInfo: deviceInfoStr,
+    );
+
+    await _localUsuarioRepository.save(usuarioDtos);
+
+    return usuarioDtos.toDomain();
   }
 
   Future<void> signOut() async {
@@ -80,11 +106,30 @@ class UsuarioService {
         final userDto =
             await _remoteUsuarioRepository.remoteSyncUser(storedCredentials);
 
+        final packageInfo = await PackageInfo.fromPlatform();
+        final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
+
+        late String deviceInfoStr;
+
+        if (Platform.isAndroid) {
+          final andoridInfo = await deviceInfoPlugin.androidInfo;
+
+          deviceInfoStr = '${andoridInfo.model}/${andoridInfo.id}';
+        } else {
+          final iOSInfo = await deviceInfoPlugin.iosInfo;
+          deviceInfoStr =
+              '${iOSInfo.utsname.machine}/${iOSInfo.identifierForVendor}';
+        }
+
         final usuarioDto = storedCredentials.copyWith(
           nombreUsuario: userDto.nombreUsuario,
           idiomaId: userDto.idiomaId,
           modificarPedido: userDto.modificarPedido,
           verTotalVentas: userDto.verTotalVentas,
+          packageName: packageInfo.appName,
+          version: '${packageInfo.appName} ${packageInfo.version}',
+          buildNumber: packageInfo.buildNumber,
+          deviceInfo: deviceInfoStr,
         );
         await _localUsuarioRepository.save(usuarioDto);
       }

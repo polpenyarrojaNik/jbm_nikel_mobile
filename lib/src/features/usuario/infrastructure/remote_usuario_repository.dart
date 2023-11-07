@@ -1,9 +1,13 @@
+import 'dart:io';
+
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/exceptions/get_api_error.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_aux_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_dto.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/presentation/app.dart';
@@ -87,7 +91,27 @@ class RemoteUsuarioRepository {
       if (response.statusCode == 200) {
         final newToken = response.data['data']['PROVISIONAL_TOKEN'] as String;
 
-        return usuarioDTO.copyWith(provisionalToken: newToken);
+        final packageInfo = await PackageInfo.fromPlatform();
+        final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
+
+        late String deviceInfoStr;
+
+        if (Platform.isAndroid) {
+          final andoridInfo = await deviceInfoPlugin.androidInfo;
+
+          deviceInfoStr = '${andoridInfo.model}/${andoridInfo.id}';
+        } else {
+          final iOSInfo = await deviceInfoPlugin.iosInfo;
+          deviceInfoStr =
+              '${iOSInfo.utsname.machine}/${iOSInfo.identifierForVendor}';
+        }
+
+        return usuarioDTO.copyWith(
+          provisionalToken: newToken,
+          version: '${packageInfo.appName} ${packageInfo.version}',
+          buildNumber: packageInfo.buildNumber,
+          deviceInfo: deviceInfoStr,
+        );
       } else {
         throw AppException.restApiFailure(
           response.statusCode ?? 400,
