@@ -32,6 +32,8 @@ class PedidoVentaLineaLocalDTO
     @JsonKey(name: 'STOCK_DISPONIBLE_SN') required String stockDisponibleSN,
     @JsonKey(name: 'F_DISPONIBLE') DateTime? fechaDisponible,
     @JsonKey(name: 'IVA') required double iva,
+    @JsonKey(name: 'PEDIDO_LINEA_ID_COMPONENTE')
+    String? pedidoLineaComponenteId,
   }) = _PedidoVentaLineaLocalDTO;
 
   factory PedidoVentaLineaLocalDTO.fromJson(Map<String, dynamic> json) =>
@@ -54,33 +56,38 @@ class PedidoVentaLineaLocalDTO
       descuentoProntoPago: _.descuentoProntoPago!,
       stockDisponibleSN: (_.stockDisponibleSN ?? false) ? 'S' : 'N',
       iva: _.iva!,
+      pedidoLineaComponenteId: _.pedidoLineaIdComponente,
     );
   }
 
-  PedidoVentaLinea toDomain({required String divisaId, Money? importeLinea}) {
+  PedidoVentaLinea toDomain({
+    required String divisaId,
+    Money? importeLinea,
+  }) {
     return PedidoVentaLinea(
-        empresaId: empresaId,
-        pedidoId: pedidoId,
-        pedidoVentaAppId: pedidoVentaAppId,
-        pedidoVentaLineaId: pedidoVentaLineaAppId,
-        articuloId: articuloId,
-        articuloDescription: articuloDescription,
-        cantidad: cantidad,
-        precioDivisa: precioDivisa.toMoney(currencyId: divisaId),
-        divisaId: divisaId,
-        tipoPrecio: tipoPrecio,
-        descuento1: descuento1,
-        descuento2: descuento2,
-        descuento3: descuento3,
-        descuentoProntoPago: descuentoProntoPago,
-        pedidoLineaIdComponente: null,
-        importeLinea: importeLinea,
-        stockDisponibleSN: (stockDisponibleSN == 'S') ? true : false,
-        fechaDisponible: fechaDisponible,
-        iva: iva,
-        cantidadPendiente: cantidad,
-        lastUpdated: DateTime.now().toUtc(),
-        deleted: false);
+      empresaId: empresaId,
+      pedidoId: pedidoId,
+      pedidoVentaAppId: pedidoVentaAppId,
+      pedidoVentaLineaId: pedidoVentaLineaAppId,
+      articuloId: articuloId,
+      articuloDescription: articuloDescription,
+      cantidad: cantidad,
+      precioDivisa: precioDivisa.toMoney(currencyId: divisaId),
+      divisaId: divisaId,
+      tipoPrecio: tipoPrecio,
+      descuento1: descuento1,
+      descuento2: descuento2,
+      descuento3: descuento3,
+      descuentoProntoPago: descuentoProntoPago,
+      pedidoLineaIdComponente: pedidoLineaComponenteId,
+      importeLinea: importeLinea,
+      stockDisponibleSN: (stockDisponibleSN == 'S') ? true : false,
+      fechaDisponible: fechaDisponible,
+      iva: iva,
+      cantidadPendiente: cantidad,
+      lastUpdated: DateTime.now().toUtc(),
+      deleted: false,
+    );
   }
 
   @override
@@ -102,6 +109,7 @@ class PedidoVentaLineaLocalDTO
       stockDisponibleSN: Value(stockDisponibleSN),
       fechaDisponible: Value(fechaDisponible),
       iva: Value(iva),
+      pedidoLineaIdComponente: Value(pedidoLineaComponenteId),
     ).toColumns(nullToAbsent);
   }
 }
@@ -125,7 +133,8 @@ class PedidoVentaLineaLocalTable extends Table {
   DateTimeColumn get fechaDisponible =>
       dateTime().nullable().named('F_DISPONIBLE')();
   RealColumn get iva => real().named('IVA')();
-
+  TextColumn get pedidoLineaIdComponente =>
+      text().nullable().named('PEDIDO_LINEA_ID_COMPONENTE')();
   @override
   Set<Column> get primaryKey => {
         pedidoVentaAppId,

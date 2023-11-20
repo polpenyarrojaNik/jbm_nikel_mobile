@@ -27,6 +27,7 @@ _$PedidoVentaLineaLocalDTOImpl _$$PedidoVentaLineaLocalDTOImplFromJson(
           ? null
           : DateTime.parse(json['F_DISPONIBLE'] as String),
       iva: (json['IVA'] as num).toDouble(),
+      pedidoLineaComponenteId: json['PEDIDO_LINEA_ID_COMPONENTE'] as String?,
     );
 
 Map<String, dynamic> _$$PedidoVentaLineaLocalDTOImplToJson(
@@ -48,4 +49,5 @@ Map<String, dynamic> _$$PedidoVentaLineaLocalDTOImplToJson(
       'STOCK_DISPONIBLE_SN': instance.stockDisponibleSN,
       'F_DISPONIBLE': instance.fechaDisponible?.toIso8601String(),
       'IVA': instance.iva,
+      'PEDIDO_LINEA_ID_COMPONENTE': instance.pedidoLineaComponenteId,
     };

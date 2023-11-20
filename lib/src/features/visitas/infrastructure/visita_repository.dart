@@ -744,4 +744,22 @@ class VisitaRepository {
         return "DESCRIPCION_ES";
     }
   }
+
+  Future<void> deleteVisitasLocalAntiguas() async {
+    final currentDate = DateTime.now();
+    final visitaLocalList =
+        await (_localDb.select(_localDb.visitaLocalTable)).get();
+
+    for (var i = 0; i < visitaLocalList.length; i++) {
+      if (visitaLocalList[i].tratada == 'S' &&
+          visitaLocalList[i]
+              .fecha
+              .add(const Duration(days: 30))
+              .isBefore(currentDate)) {
+        await (_localDb.delete(_localDb.visitaLocalTable)
+              ..where((tbl) => tbl.fecha.equals(visitaLocalList[i].fecha)))
+            .go();
+      }
+    }
+  }
 }

@@ -703,18 +703,19 @@ class PedidoVentaRepository {
         final pedidoVentaLineaDTO =
             row.readTable(_localDb.pedidoVentaLineaLocalTable);
         return pedidoVentaLineaDTO.toDomain(
-            divisaId: pedidoVentaLocalDTO.divisaId!,
-            importeLinea: getTotalLinea(
-              precio: Precio(
-                precio: pedidoVentaLineaDTO.precioDivisa
-                    .toMoney(currencyId: pedidoVentaLocalDTO.divisaId!),
-                tipoPrecio: pedidoVentaLineaDTO.tipoPrecio,
-              ),
-              cantidad: pedidoVentaLineaDTO.cantidad,
-              descuento1: pedidoVentaLineaDTO.descuento1,
-              descuento2: pedidoVentaLineaDTO.descuento2,
-              descuento3: pedidoVentaLineaDTO.descuento3,
-            ));
+          divisaId: pedidoVentaLocalDTO.divisaId!,
+          importeLinea: getTotalLinea(
+            precio: Precio(
+              precio: pedidoVentaLineaDTO.precioDivisa
+                  .toMoney(currencyId: pedidoVentaLocalDTO.divisaId!),
+              tipoPrecio: pedidoVentaLineaDTO.tipoPrecio,
+            ),
+            cantidad: pedidoVentaLineaDTO.cantidad,
+            descuento1: pedidoVentaLineaDTO.descuento1,
+            descuento2: pedidoVentaLineaDTO.descuento2,
+            descuento3: pedidoVentaLineaDTO.descuento3,
+          ),
+        );
       }).get();
 
       if (addLineaDesdeArticulo != null) {
@@ -1128,11 +1129,11 @@ class PedidoVentaRepository {
       final requestUri = (test)
           ? Uri.http(
               dotenv.get('URL', fallback: 'localhost:3001'),
-              'api/v3/online/pedidos',
+              'api/v4/online/pedidos',
             )
           : Uri.https(
               dotenv.get('URL', fallback: 'localhost:3001'),
-              'api/v3/online/pedidos',
+              'api/v4/online/pedidos',
             );
 
       final response = await _dio.postUri(
@@ -2084,5 +2085,28 @@ class PedidoVentaRepository {
     await (_remoteDb.delete(_remoteDb.pedidoVentaLineaTable)
           ..where((tbl) => tbl.pedidoId.equals(pedidoId)))
         .go();
+  }
+
+  Future<void> deletePedidoVentaLocalAntiguos() async {
+    final currentDate = DateTime.now();
+    final pedidosVentaLocalList =
+        await (_localDb.select(_localDb.pedidoVentaLocalTable)).get();
+
+    for (var i = 0; i < pedidosVentaLocalList.length; i++) {
+      if (pedidosVentaLocalList[i].tratada == 'S' &&
+          pedidosVentaLocalList[i]
+              .fechaAlta
+              .add(const Duration(days: 30))
+              .isBefore(currentDate)) {
+        await (_localDb.delete(_localDb.pedidoVentaLineaLocalTable)
+              ..where((tbl) => tbl.pedidoVentaAppId
+                  .equals(pedidosVentaLocalList[i].pedidoVentaAppId)))
+            .go();
+        await (_localDb.delete(_localDb.pedidoVentaLocalTable)
+              ..where((tbl) => tbl.pedidoVentaAppId
+                  .equals(pedidosVentaLocalList[i].pedidoVentaAppId)))
+            .go();
+      }
+    }
   }
 }

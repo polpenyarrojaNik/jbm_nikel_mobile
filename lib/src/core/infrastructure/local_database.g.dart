@@ -867,6 +867,12 @@ class $PedidoVentaLineaLocalTableTable extends PedidoVentaLineaLocalTable
   late final GeneratedColumn<double> iva = GeneratedColumn<double>(
       'IVA', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
+  static const VerificationMeta _pedidoLineaIdComponenteMeta =
+      const VerificationMeta('pedidoLineaIdComponente');
+  @override
+  late final GeneratedColumn<String> pedidoLineaIdComponente =
+      GeneratedColumn<String>('PEDIDO_LINEA_ID_COMPONENTE', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   @override
   List<GeneratedColumn> get $columns => [
         pedidoVentaAppId,
@@ -884,7 +890,8 @@ class $PedidoVentaLineaLocalTableTable extends PedidoVentaLineaLocalTable
         descuentoProntoPago,
         stockDisponibleSN,
         fechaDisponible,
-        iva
+        iva,
+        pedidoLineaIdComponente
       ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -1003,6 +1010,13 @@ class $PedidoVentaLineaLocalTableTable extends PedidoVentaLineaLocalTable
     } else if (isInserting) {
       context.missing(_ivaMeta);
     }
+    if (data.containsKey('PEDIDO_LINEA_ID_COMPONENTE')) {
+      context.handle(
+          _pedidoLineaIdComponenteMeta,
+          pedidoLineaIdComponente.isAcceptableOrUnknown(
+              data['PEDIDO_LINEA_ID_COMPONENTE']!,
+              _pedidoLineaIdComponenteMeta));
+    }
     return context;
   }
 
@@ -1073,6 +1087,7 @@ class PedidoVentaLineaLocalTableCompanion
   final Value<String> stockDisponibleSN;
   final Value<DateTime?> fechaDisponible;
   final Value<double> iva;
+  final Value<String?> pedidoLineaIdComponente;
   final Value<int> rowid;
   const PedidoVentaLineaLocalTableCompanion({
     this.pedidoVentaAppId = const Value.absent(),
@@ -1091,6 +1106,7 @@ class PedidoVentaLineaLocalTableCompanion
     this.stockDisponibleSN = const Value.absent(),
     this.fechaDisponible = const Value.absent(),
     this.iva = const Value.absent(),
+    this.pedidoLineaIdComponente = const Value.absent(),
     this.rowid = const Value.absent(),
   });
   PedidoVentaLineaLocalTableCompanion.insert({
@@ -1110,6 +1126,7 @@ class PedidoVentaLineaLocalTableCompanion
     required String stockDisponibleSN,
     this.fechaDisponible = const Value.absent(),
     required double iva,
+    this.pedidoLineaIdComponente = const Value.absent(),
     this.rowid = const Value.absent(),
   })  : pedidoVentaAppId = Value(pedidoVentaAppId),
         pedidoVentaLineaAppId = Value(pedidoVentaLineaAppId),
@@ -1141,6 +1158,7 @@ class PedidoVentaLineaLocalTableCompanion
     Expression<String>? stockDisponibleSN,
     Expression<DateTime>? fechaDisponible,
     Expression<double>? iva,
+    Expression<String>? pedidoLineaIdComponente,
     Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
@@ -1160,6 +1178,8 @@ class PedidoVentaLineaLocalTableCompanion
       if (stockDisponibleSN != null) 'STOCK_DISPONIBLE_SN': stockDisponibleSN,
       if (fechaDisponible != null) 'F_DISPONIBLE': fechaDisponible,
       if (iva != null) 'IVA': iva,
+      if (pedidoLineaIdComponente != null)
+        'PEDIDO_LINEA_ID_COMPONENTE': pedidoLineaIdComponente,
       if (rowid != null) 'rowid': rowid,
     });
   }
@@ -1181,6 +1201,7 @@ class PedidoVentaLineaLocalTableCompanion
       Value<String>? stockDisponibleSN,
       Value<DateTime?>? fechaDisponible,
       Value<double>? iva,
+      Value<String?>? pedidoLineaIdComponente,
       Value<int>? rowid}) {
     return PedidoVentaLineaLocalTableCompanion(
       pedidoVentaAppId: pedidoVentaAppId ?? this.pedidoVentaAppId,
@@ -1200,6 +1221,8 @@ class PedidoVentaLineaLocalTableCompanion
       stockDisponibleSN: stockDisponibleSN ?? this.stockDisponibleSN,
       fechaDisponible: fechaDisponible ?? this.fechaDisponible,
       iva: iva ?? this.iva,
+      pedidoLineaIdComponente:
+          pedidoLineaIdComponente ?? this.pedidoLineaIdComponente,
       rowid: rowid ?? this.rowid,
     );
   }
@@ -1255,6 +1278,10 @@ class PedidoVentaLineaLocalTableCompanion
     if (iva.present) {
       map['IVA'] = Variable<double>(iva.value);
     }
+    if (pedidoLineaIdComponente.present) {
+      map['PEDIDO_LINEA_ID_COMPONENTE'] =
+          Variable<String>(pedidoLineaIdComponente.value);
+    }
     if (rowid.present) {
       map['rowid'] = Variable<int>(rowid.value);
     }
@@ -1280,6 +1307,7 @@ class PedidoVentaLineaLocalTableCompanion
           ..write('stockDisponibleSN: $stockDisponibleSN, ')
           ..write('fechaDisponible: $fechaDisponible, ')
           ..write('iva: $iva, ')
+          ..write('pedidoLineaIdComponente: $pedidoLineaIdComponente, ')
           ..write('rowid: $rowid')
           ..write(')'))
         .toString();

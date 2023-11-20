@@ -1051,12 +1051,12 @@ class SyncService {
           ? Uri.http(
               // dotenv.get('URL', fallback: 'localhost:3001')
               'jbm-api-test.nikel.es:8080',
-              'api/v1/online/pedidos',
+              'api/v4/online/pedidos',
             )
           : Uri.https(
               // dotenv.get('URL', fallback: 'localhost:3001')
               'jbm-api.nikel.es',
-              'api/v1/online/pedidos',
+              'api/v4/online/pedidos',
             );
 
       final response = await _dio.postUri(

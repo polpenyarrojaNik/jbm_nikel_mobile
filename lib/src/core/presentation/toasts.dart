@@ -5,12 +5,11 @@ Future<void> showToast(String message, BuildContext context) async {
   await showFlash(
     context: context,
     duration: const Duration(seconds: 2),
-    builder: (context, controller) => Flash.dialog(
+    builder: (context, controller) => FlashBar(
       controller: controller,
       backgroundColor: Colors.black.withOpacity(0.7),
-      borderRadius: BorderRadius.circular(4),
       margin: const EdgeInsets.all(8.0),
-      child: Padding(
+      content: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Text(
           message,

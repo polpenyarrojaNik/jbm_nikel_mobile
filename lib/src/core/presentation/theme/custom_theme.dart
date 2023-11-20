@@ -128,7 +128,6 @@ class CustomTheme {
       tabBarTheme: tabBarTheme(_colors),
       drawerTheme: drawerTheme(_colors),
       scaffoldBackgroundColor: _colors.background,
-      useMaterial3: true,
       textTheme: GoogleFonts.montserratTextTheme(
         ThemeData.light().textTheme,
       ).copyWith(
@@ -150,7 +149,6 @@ class CustomTheme {
       tabBarTheme: tabBarTheme(_colors),
       drawerTheme: drawerTheme(_colors),
       scaffoldBackgroundColor: _colors.background,
-      useMaterial3: true,
       textTheme: GoogleFonts.montserratTextTheme(
         ThemeData.dark().textTheme,
       ).copyWith(

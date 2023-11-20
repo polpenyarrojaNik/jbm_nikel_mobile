@@ -113,15 +113,22 @@ class PedidoVentaListaTile extends StatelessWidget {
                               formatCodigoPostalAndPoblacion(
                                   codigoPostal: pedidoVenta.codigoPostal,
                                   poblacion: pedidoVenta.poblacion),
-                              style: Theme.of(context).textTheme.bodySmall,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall
+                                  ?.copyWith(fontSize: 10),
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                             ),
                             Text(
-                                formatProvinciaAndPais(
-                                    province: pedidoVenta.provincia,
-                                    pais: pedidoVenta.pais),
-                                style: Theme.of(context).textTheme.bodySmall),
+                              formatProvinciaAndPais(
+                                  province: pedidoVenta.provincia,
+                                  pais: pedidoVenta.pais),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall
+                                  ?.copyWith(fontSize: 10),
+                            ),
                           ],
                         ),
                       ],

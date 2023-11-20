@@ -53,6 +53,8 @@ mixin _$PedidoVentaLineaLocalDTO {
   DateTime? get fechaDisponible => throw _privateConstructorUsedError;
   @JsonKey(name: 'IVA')
   double get iva => throw _privateConstructorUsedError;
+  @JsonKey(name: 'PEDIDO_LINEA_ID_COMPONENTE')
+  String? get pedidoLineaComponenteId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -82,7 +84,9 @@ abstract class $PedidoVentaLineaLocalDTOCopyWith<$Res> {
       @JsonKey(name: 'DTO_PP') double descuentoProntoPago,
       @JsonKey(name: 'STOCK_DISPONIBLE_SN') String stockDisponibleSN,
       @JsonKey(name: 'F_DISPONIBLE') DateTime? fechaDisponible,
-      @JsonKey(name: 'IVA') double iva});
+      @JsonKey(name: 'IVA') double iva,
+      @JsonKey(name: 'PEDIDO_LINEA_ID_COMPONENTE')
+      String? pedidoLineaComponenteId});
 }
 
 /// @nodoc
@@ -115,6 +119,7 @@ class _$PedidoVentaLineaLocalDTOCopyWithImpl<$Res,
     Object? stockDisponibleSN = null,
     Object? fechaDisponible = freezed,
     Object? iva = null,
+    Object? pedidoLineaComponenteId = freezed,
   }) {
     return _then(_value.copyWith(
       pedidoVentaAppId: null == pedidoVentaAppId
@@ -181,6 +186,10 @@ class _$PedidoVentaLineaLocalDTOCopyWithImpl<$Res,
           ? _value.iva
           : iva // ignore: cast_nullable_to_non_nullable
               as double,
+      pedidoLineaComponenteId: freezed == pedidoLineaComponenteId
+          ? _value.pedidoLineaComponenteId
+          : pedidoLineaComponenteId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -210,7 +219,9 @@ abstract class _$$PedidoVentaLineaLocalDTOImplCopyWith<$Res>
       @JsonKey(name: 'DTO_PP') double descuentoProntoPago,
       @JsonKey(name: 'STOCK_DISPONIBLE_SN') String stockDisponibleSN,
       @JsonKey(name: 'F_DISPONIBLE') DateTime? fechaDisponible,
-      @JsonKey(name: 'IVA') double iva});
+      @JsonKey(name: 'IVA') double iva,
+      @JsonKey(name: 'PEDIDO_LINEA_ID_COMPONENTE')
+      String? pedidoLineaComponenteId});
 }
 
 /// @nodoc
@@ -242,6 +253,7 @@ class __$$PedidoVentaLineaLocalDTOImplCopyWithImpl<$Res>
     Object? stockDisponibleSN = null,
     Object? fechaDisponible = freezed,
     Object? iva = null,
+    Object? pedidoLineaComponenteId = freezed,
   }) {
     return _then(_$PedidoVentaLineaLocalDTOImpl(
       pedidoVentaAppId: null == pedidoVentaAppId
@@ -308,6 +320,10 @@ class __$$PedidoVentaLineaLocalDTOImplCopyWithImpl<$Res>
           ? _value.iva
           : iva // ignore: cast_nullable_to_non_nullable
               as double,
+      pedidoLineaComponenteId: freezed == pedidoLineaComponenteId
+          ? _value.pedidoLineaComponenteId
+          : pedidoLineaComponenteId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -331,7 +347,9 @@ class _$PedidoVentaLineaLocalDTOImpl extends _PedidoVentaLineaLocalDTO {
       @JsonKey(name: 'DTO_PP') required this.descuentoProntoPago,
       @JsonKey(name: 'STOCK_DISPONIBLE_SN') required this.stockDisponibleSN,
       @JsonKey(name: 'F_DISPONIBLE') this.fechaDisponible,
-      @JsonKey(name: 'IVA') required this.iva})
+      @JsonKey(name: 'IVA') required this.iva,
+      @JsonKey(name: 'PEDIDO_LINEA_ID_COMPONENTE')
+      this.pedidoLineaComponenteId})
       : super._();
 
   factory _$PedidoVentaLineaLocalDTOImpl.fromJson(Map<String, dynamic> json) =>
@@ -385,10 +403,13 @@ class _$PedidoVentaLineaLocalDTOImpl extends _PedidoVentaLineaLocalDTO {
   @override
   @JsonKey(name: 'IVA')
   final double iva;
+  @override
+  @JsonKey(name: 'PEDIDO_LINEA_ID_COMPONENTE')
+  final String? pedidoLineaComponenteId;
 
   @override
   String toString() {
-    return 'PedidoVentaLineaLocalDTO(pedidoVentaAppId: $pedidoVentaAppId, empresaId: $empresaId, pedidoId: $pedidoId, pedidoVentaLineaAppId: $pedidoVentaLineaAppId, articuloId: $articuloId, articuloDescription: $articuloDescription, cantidad: $cantidad, precioDivisa: $precioDivisa, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, descuentoProntoPago: $descuentoProntoPago, stockDisponibleSN: $stockDisponibleSN, fechaDisponible: $fechaDisponible, iva: $iva)';
+    return 'PedidoVentaLineaLocalDTO(pedidoVentaAppId: $pedidoVentaAppId, empresaId: $empresaId, pedidoId: $pedidoId, pedidoVentaLineaAppId: $pedidoVentaLineaAppId, articuloId: $articuloId, articuloDescription: $articuloDescription, cantidad: $cantidad, precioDivisa: $precioDivisa, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, descuentoProntoPago: $descuentoProntoPago, stockDisponibleSN: $stockDisponibleSN, fechaDisponible: $fechaDisponible, iva: $iva, pedidoLineaComponenteId: $pedidoLineaComponenteId)';
   }
 
   @override
@@ -426,7 +447,10 @@ class _$PedidoVentaLineaLocalDTOImpl extends _PedidoVentaLineaLocalDTO {
                 other.stockDisponibleSN == stockDisponibleSN) &&
             (identical(other.fechaDisponible, fechaDisponible) ||
                 other.fechaDisponible == fechaDisponible) &&
-            (identical(other.iva, iva) || other.iva == iva));
+            (identical(other.iva, iva) || other.iva == iva) &&
+            (identical(
+                    other.pedidoLineaComponenteId, pedidoLineaComponenteId) ||
+                other.pedidoLineaComponenteId == pedidoLineaComponenteId));
   }
 
   @JsonKey(ignore: true)
@@ -448,7 +472,8 @@ class _$PedidoVentaLineaLocalDTOImpl extends _PedidoVentaLineaLocalDTO {
       descuentoProntoPago,
       stockDisponibleSN,
       fechaDisponible,
-      iva);
+      iva,
+      pedidoLineaComponenteId);
 
   @JsonKey(ignore: true)
   @override
@@ -483,8 +508,9 @@ abstract class _PedidoVentaLineaLocalDTO extends PedidoVentaLineaLocalDTO {
       @JsonKey(name: 'STOCK_DISPONIBLE_SN')
       required final String stockDisponibleSN,
       @JsonKey(name: 'F_DISPONIBLE') final DateTime? fechaDisponible,
-      @JsonKey(name: 'IVA')
-      required final double iva}) = _$PedidoVentaLineaLocalDTOImpl;
+      @JsonKey(name: 'IVA') required final double iva,
+      @JsonKey(name: 'PEDIDO_LINEA_ID_COMPONENTE')
+      final String? pedidoLineaComponenteId}) = _$PedidoVentaLineaLocalDTOImpl;
   const _PedidoVentaLineaLocalDTO._() : super._();
 
   factory _PedidoVentaLineaLocalDTO.fromJson(Map<String, dynamic> json) =
@@ -538,6 +564,9 @@ abstract class _PedidoVentaLineaLocalDTO extends PedidoVentaLineaLocalDTO {
   @override
   @JsonKey(name: 'IVA')
   double get iva;
+  @override
+  @JsonKey(name: 'PEDIDO_LINEA_ID_COMPONENTE')
+  String? get pedidoLineaComponenteId;
   @override
   @JsonKey(ignore: true)
   _$$PedidoVentaLineaLocalDTOImplCopyWith<_$PedidoVentaLineaLocalDTOImpl>

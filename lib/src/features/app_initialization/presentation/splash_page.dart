@@ -7,6 +7,7 @@ import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_i
 import 'package:jbm_nikel_mobile/src/core/presentation/toasts.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 import 'package:jbm_nikel_mobile/src/features/app_initialization/presentation/splash_page_controller.dart';
+import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/sync/application/sync_notifier_provider.dart';
 
 import '../../../../generated/l10n.dart';
@@ -36,6 +37,12 @@ class _SplashPageState extends ConsumerState<SplashPage> {
             await ref
                 .read(logRepositoryProvider)
                 .insetLog(level: 'I', message: 'Initialize App');
+            await ref
+                .read(pedidoVentaRepositoryProvider)
+                .deletePedidoVentaLocalAntiguos();
+            // await ref
+            //     .read(visitaRepositoryProvider)
+            //     .deleteVisitasLocalAntiguas();
             ref
                 .read(syncNotifierProvider.notifier)
                 .syncAllInCompute(initAppProcess: true);
