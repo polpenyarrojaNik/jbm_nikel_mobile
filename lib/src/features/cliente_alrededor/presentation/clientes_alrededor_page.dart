@@ -30,12 +30,14 @@ class _ClientesAlrededorPageState extends ConsumerState<ClientesAlrededorPage> {
   late double radiusKm;
 
   late bool showDireccionesEnvio;
+  late bool showPotenciales;
 
   @override
   void initState() {
     super.initState();
     radiusKm = 10000;
     showDireccionesEnvio = false;
+    showPotenciales = false;
   }
 
   @override
@@ -55,10 +57,26 @@ class _ClientesAlrededorPageState extends ConsumerState<ClientesAlrededorPage> {
                 position.longitude,
               ),
               showDireccionesEnvio: showDireccionesEnvio,
+              showPotenciales: showPotenciales,
             ),
-            _CheckboxDireccionesEnvio(
-              onShowDireccionesEnvioChanged: (_) => onChangeDireccionesEnvio(),
-              showDireccionesEnvio: showDireccionesEnvio,
+            Positioned(
+              top: 8,
+              right: 8,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  _CheckboxDireccionesEnvio(
+                    onShowDireccionesEnvioChanged: (_) =>
+                        onChangeDireccionesEnvio(),
+                    showDireccionesEnvio: showDireccionesEnvio,
+                  ),
+                  gapH4,
+                  _CheckboxPotenciales(
+                    onShowPotencialesChanged: (_) => onChangePotenciales(),
+                    showPotenciales: showPotenciales,
+                  ),
+                ],
+              ),
             ),
             _SliderKm(
               onSliderChanged: (radiusKm) => onSliderChanged(radiusKm),
@@ -88,6 +106,12 @@ class _ClientesAlrededorPageState extends ConsumerState<ClientesAlrededorPage> {
     });
   }
 
+  void onChangePotenciales() {
+    setState(() {
+      showPotenciales = !showPotenciales;
+    });
+  }
+
   void onSliderChanged(double value) {
     setState(() {
       value = (value == 0) ? 1 : value;
@@ -101,11 +125,13 @@ class GoogleMapsContainer extends ConsumerStatefulWidget {
       {super.key,
       required this.radiusKm,
       required this.currentLatLng,
-      required this.showDireccionesEnvio});
+      required this.showDireccionesEnvio,
+      required this.showPotenciales});
 
   final double radiusKm;
   final LatLng currentLatLng;
   final bool showDireccionesEnvio;
+  final bool showPotenciales;
 
   @override
   ConsumerState<GoogleMapsContainer> createState() =>
@@ -134,6 +160,7 @@ class _GoogleMapsContainerState extends ConsumerState<GoogleMapsContainer> {
           latLng: mapLatLng!,
           radiusDistance: widget.radiusKm,
           showDireccionesEnvio: widget.showDireccionesEnvio,
+          showPotenciales: widget.showPotenciales,
         ),
       ),
     );
@@ -303,28 +330,57 @@ class _CheckboxDireccionesEnvio extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      top: 8,
-      right: 8,
-      child: Container(
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.background,
-          borderRadius: BorderRadius.circular(4),
-          border: Border.all(width: 0.5),
+    return Container(
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.background,
+        borderRadius: BorderRadius.circular(4),
+        border: Border.all(width: 0.5),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(S.of(context).cliente_alrededor_direccionesEnvio),
+            gapW8,
+            Switch(
+              value: showDireccionesEnvio,
+              onChanged: (_) => onShowDireccionesEnvioChanged(_),
+            ),
+          ],
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(S.of(context).cliente_alrededor_direccionesEnvio),
-              gapW8,
-              Switch(
-                value: showDireccionesEnvio,
-                onChanged: (_) => onShowDireccionesEnvioChanged(_),
-              ),
-            ],
-          ),
+      ),
+    );
+  }
+}
+
+class _CheckboxPotenciales extends StatelessWidget {
+  const _CheckboxPotenciales(
+      {required this.showPotenciales, required this.onShowPotencialesChanged});
+
+  final bool showPotenciales;
+  final Function(bool value) onShowPotencialesChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.background,
+        borderRadius: BorderRadius.circular(4),
+        border: Border.all(width: 0.5),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(S.of(context).cliente_alrededor_potenciales),
+            gapW8,
+            Switch(
+              value: showPotenciales,
+              onChanged: (_) => onShowPotencialesChanged(_),
+            ),
+          ],
         ),
       ),
     );

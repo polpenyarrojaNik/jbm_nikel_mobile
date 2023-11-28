@@ -2274,6 +2274,16 @@ class S {
     );
   }
 
+  /// `Potentials`
+  String get cliente_alrededor_potenciales {
+    return Intl.message(
+      'Potentials',
+      name: 'cliente_alrededor_potenciales',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Sales orders`
   String get pedido_index_titulo {
     return Intl.message(

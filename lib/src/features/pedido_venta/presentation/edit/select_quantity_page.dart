@@ -45,6 +45,8 @@ class _SelecionarCantidadPageState
   final formKeyCantidad = GlobalKey<FormBuilderState>();
   final formKeyArticuloPrecio = GlobalKey<FormBuilderState>();
   final quanitityController = TextEditingController();
+  final quanitityBoxController = TextEditingController();
+
   final precioController = TextEditingController();
   final descuento1Controller = TextEditingController();
   int totalQuantity = 1;
@@ -130,7 +132,7 @@ class _SelecionarCantidadPageState
                     ),
                   ),
                 if (articulo != null)
-                  _SelectQuantityFrom(
+                  _QuantityForm(
                     formKey: formKeyCantidad,
                     quanitityController: quanitityController,
                     setTotalQuantity: (value) {
@@ -472,8 +474,8 @@ class _ArticuloInfo extends ConsumerWidget {
   }
 }
 
-class _SelectQuantityFrom extends StatelessWidget {
-  const _SelectQuantityFrom(
+class _QuantityForm extends StatelessWidget {
+  const _QuantityForm(
       {required this.formKey,
       required this.setTotalQuantity,
       required this.quanitityController,
@@ -484,6 +486,7 @@ class _SelectQuantityFrom extends StatelessWidget {
   final void Function(int value) setTotalQuantity;
   final GlobalKey<FormBuilderState> formKey;
   final TextEditingController quanitityController;
+
   final int? cantidad;
   final int ventaMinimo;
   final int ventaMultiplo;

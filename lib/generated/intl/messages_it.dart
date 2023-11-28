@@ -150,6 +150,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Margine dell\'anno in corso"),
         "cliente_alrededor_porcentajeAbonos":
             MessageLookupByLibrary.simpleMessage("Percentuale di pagamento"),
+        "cliente_alrededor_potenciales":
+            MessageLookupByLibrary.simpleMessage("Potenziali"),
         "cliente_alrededor_titulo":
             MessageLookupByLibrary.simpleMessage("Clienti vicino a te "),
         "cliente_alrededor_ventasAnoActual":

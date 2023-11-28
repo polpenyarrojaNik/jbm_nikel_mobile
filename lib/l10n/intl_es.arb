@@ -343,5 +343,6 @@
   "notifications": " Notificaciones",
   "notification_detail": "Detalle de la notificación",
   "cliente_show_clienteDetalle_fiscalData": "Datos fiscales",
-  "pending": "Pendiente"
+  "pending": "Pendiente",
+  "cliente_alrededor_potenciales": "Potenciales"
 }

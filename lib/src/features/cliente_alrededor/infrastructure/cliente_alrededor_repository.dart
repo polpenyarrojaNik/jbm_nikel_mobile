@@ -77,7 +77,9 @@ class ClienteAlrededorRepository {
   Future<List<ClienteAlrededor>> _getClienteDireccionesFiscalesList(
       GetClienteAlrededorArg clienteAlrededorArg) async {
     try {
-      final query = remoteDb.customSelect('''SELECT c.*, paises.*
+      final query = remoteDb.customSelect(
+          clienteAlrededorArg.showPotenciales
+              ? '''SELECT c.*, paises.*
         from CLIENTES_USUARIO cUsuario
         INNER JOIN CLIENTES c ON c.cliente_id = cUsuario.cliente_id
         INNER JOIN PAISES paises ON c.pais_id_fiscal = paises.pais_id
@@ -85,17 +87,28 @@ class ClienteAlrededorRepository {
           SELECT (12742 * ASIN(SQRT(0.5 - COS((c.latitud_fiscal - :latitud) * :p) /2 + COS(:latitud * :p) * COS(c.latitud_fiscal * :p) * (1 - COS((c.longitud_fiscal - :longitud) * :p)) / 2)))
           as distanceKm
           ) < :radiusKm
-          ''', variables: [
-        Variable.withString(usuario.id),
-        Variable.withReal(clienteAlrededorArg.latLng.latitude),
-        Variable.withReal(0.017453292519943295),
-        Variable.withReal(clienteAlrededorArg.latLng.longitude),
-        Variable.withReal(clienteAlrededorArg.radiusDistance / 1000),
-      ], readsFrom: {
-        remoteDb.clienteTable,
-        remoteDb.clienteUsuarioTable,
-        remoteDb.paisTable,
-      });
+          '''
+              : '''SELECT c.*, paises.*
+        from CLIENTES_USUARIO cUsuario
+        INNER JOIN CLIENTES c ON c.cliente_id = cUsuario.cliente_id
+        INNER JOIN PAISES paises ON c.pais_id_fiscal = paises.pais_id
+        WHERE c.CLIENTE_POTENCIAL = 'N' AND (cUsuario.USUARIO_ID = :usuarioId AND c.latitud_fiscal is not null AND c.longitud_fiscal is not null) AND(
+          SELECT (12742 * ASIN(SQRT(0.5 - COS((c.latitud_fiscal - :latitud) * :p) /2 + COS(:latitud * :p) * COS(c.latitud_fiscal * :p) * (1 - COS((c.longitud_fiscal - :longitud) * :p)) / 2)))
+          as distanceKm
+          ) < :radiusKm
+          ''',
+          variables: [
+            Variable.withString(usuario.id),
+            Variable.withReal(clienteAlrededorArg.latLng.latitude),
+            Variable.withReal(0.017453292519943295),
+            Variable.withReal(clienteAlrededorArg.latLng.longitude),
+            Variable.withReal(clienteAlrededorArg.radiusDistance / 1000),
+          ],
+          readsFrom: {
+            remoteDb.clienteTable,
+            remoteDb.clienteUsuarioTable,
+            remoteDb.paisTable,
+          });
 
       return await query.map((rows) {
         final paisDTO =
@@ -115,7 +128,9 @@ class ClienteAlrededorRepository {
   Future<List<ClienteAlrededor>> _getClienteDireccionesAlrededorList(
       GetClienteAlrededorArg clienteAlrededorArg) async {
     try {
-      final query = remoteDb.customSelect('''SELECT cd.*, paises.*
+      final query = remoteDb.customSelect(
+          clienteAlrededorArg.showPotenciales
+              ? '''SELECT cd.*, paises.*
         FROM CLIENTES_USUARIO cUsuario
         INNER JOIN CLIENTES_DIRECCIONES_ENVIO cd ON cd.cliente_id = cUsuario.cliente_id
         INNER JOIN CLIENTES c ON c.CLIENTE_ID = cd.CLIENTE_ID
@@ -124,17 +139,29 @@ class ClienteAlrededorRepository {
           SELECT (12742 * ASIN(SQRT(0.5 - COS((cd.latitud - :latitud) * :p) /2 + COS(:latitud * :p) * COS(cd.latitud * :p) * (1 - COS((cd.longitud - :longitud) * :p)) / 2)))
           as distanceKm
           ) < :radiusKm
-          ''', variables: [
-        Variable.withString(usuario.id),
-        Variable.withReal(clienteAlrededorArg.latLng.latitude),
-        Variable.withReal(0.017453292519943295),
-        Variable.withReal(clienteAlrededorArg.latLng.longitude),
-        Variable.withReal(clienteAlrededorArg.radiusDistance / 1000),
-      ], readsFrom: {
-        remoteDb.clienteDireccionTable,
-        remoteDb.clienteUsuarioTable,
-        remoteDb.paisTable,
-      });
+          '''
+              : '''SELECT cd.*, paises.*
+        FROM CLIENTES_USUARIO cUsuario
+        INNER JOIN CLIENTES_DIRECCIONES_ENVIO cd ON cd.cliente_id = cUsuario.cliente_id
+        INNER JOIN CLIENTES c ON c.CLIENTE_ID = cd.CLIENTE_ID
+        INNER JOIN PAISES paises ON cd.pais_id = paises.pais_id
+        WHERE c.CLIENTE_POTENCIAL = 'N' AND (cUsuario.USUARIO_ID = :usuarioId AND cd.latitud is not null AND cd.longitud is not null) AND(
+          SELECT (12742 * ASIN(SQRT(0.5 - COS((cd.latitud - :latitud) * :p) /2 + COS(:latitud * :p) * COS(cd.latitud * :p) * (1 - COS((cd.longitud - :longitud) * :p)) / 2)))
+          as distanceKm
+          ) < :radiusKm
+          ''',
+          variables: [
+            Variable.withString(usuario.id),
+            Variable.withReal(clienteAlrededorArg.latLng.latitude),
+            Variable.withReal(0.017453292519943295),
+            Variable.withReal(clienteAlrededorArg.latLng.longitude),
+            Variable.withReal(clienteAlrededorArg.radiusDistance / 1000),
+          ],
+          readsFrom: {
+            remoteDb.clienteDireccionTable,
+            remoteDb.clienteUsuarioTable,
+            remoteDb.paisTable,
+          });
 
       return await query.asyncMap((rows) async {
         final paisDTO =
