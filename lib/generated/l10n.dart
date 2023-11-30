@@ -3543,6 +3543,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Box Quantity`
+  String get pedido_edit_selectQuantity_cantidadCaja {
+    return Intl.message(
+      'Box Quantity',
+      name: 'pedido_edit_selectQuantity_cantidadCaja',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pallet Quantity`
+  String get pedido_edit_selectQuantity_cantidadPalet {
+    return Intl.message(
+      'Pallet Quantity',
+      name: 'pedido_edit_selectQuantity_cantidadPalet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subbox quantity`
+  String get pedido_edit_selectQuantity_cantidadSubcaja {
+    return Intl.message(
+      'Subbox quantity',
+      name: 'pedido_edit_selectQuantity_cantidadSubcaja',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

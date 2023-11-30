@@ -13,6 +13,7 @@ import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/pedido_venta_edit_page_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/select_cantidad_controller.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/articulo_precio.dart';
@@ -44,12 +45,17 @@ class _SelecionarCantidadPageState
     extends ConsumerState<SeleccionarCantidadPage> {
   final formKeyCantidad = GlobalKey<FormBuilderState>();
   final formKeyArticuloPrecio = GlobalKey<FormBuilderState>();
-  final quanitityController = TextEditingController();
-  final quanitityBoxController = TextEditingController();
-
+  final unitsController = TextEditingController();
+  final cajaController = TextEditingController();
+  final subcajaController = TextEditingController();
+  final paletController = TextEditingController();
   final precioController = TextEditingController();
   final descuento1Controller = TextEditingController();
-  int totalQuantity = 1;
+  int totalQuantity = 0;
+  int units = 0;
+  int unitsCaja = 0;
+  int unitsSubcaja = 0;
+  int unitsPalet = 0;
   double precio = 0;
   double descuento1 = 0;
   double descuento2 = 0;
@@ -58,7 +64,6 @@ class _SelecionarCantidadPageState
   ArticuloPrecio? articuloPrecio;
   Articulo? articulo;
   Cliente? cliente;
-
   bool initialLoadingData = true;
 
   @override
@@ -66,11 +71,11 @@ class _SelecionarCantidadPageState
     super.initState();
     setValoresIniciales();
     precioController.text = numberFormatDecimal(precio);
-    quanitityController.text = totalQuantity.toString();
+    unitsController.text = totalQuantity.toString();
     descuento1Controller.text = numberFormatCantidades(descuento1);
     // descuento2Controller.text = numberFormatCantidades(descuento2);
-    quanitityController.selection = TextSelection(
-        baseOffset: 0, extentOffset: quanitityController.text.length);
+    unitsController.selection =
+        TextSelection(baseOffset: 0, extentOffset: unitsController.text.length);
 
     if (widget.seleccionarCantidadParam.addNewLineaDesdeArticulo) {
       Future.microtask(() => ref.invalidate(
@@ -118,99 +123,164 @@ class _SelecionarCantidadPageState
       ),
       body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                if (articulo != null)
-                  _ArticuloInfo(
-                    articulo: articulo!,
-                    setArticuloSustitutivo: (articuloSusititutivoId) =>
-                        setState(
-                      () => articuloId = articuloSusititutivoId,
-                    ),
-                  ),
-                if (articulo != null)
-                  _QuantityForm(
-                    formKey: formKeyCantidad,
-                    quanitityController: quanitityController,
-                    setTotalQuantity: (value) {
-                      setState(() => totalQuantity = value);
-                      ref
-                          .read(articuloPrecioProvider.notifier)
-                          .getArticuloPrecio(
-                            articuloId: articulo!.id,
-                            clienteId:
-                                widget.seleccionarCantidadParam.clienteId,
-                            cantidad: totalQuantity,
-                          );
-                    },
-                    cantidad: totalQuantity,
-                    ventaMinimo: articulo!.ventaMinimo,
-                    ventaMultiplo: articulo!.ventaMultiplo,
-                  ),
-                const Divider(),
-                state.when(
-                  initial: () => Container(),
-                  error: (error, _) => Center(
-                    child: ErrorMessageWidget(
-                      error.toString(),
-                    ),
-                  ),
-                  loading: () =>
-                      const Center(child: CircularProgressIndicator()),
-                  data: (_) => (articuloPrecio != null)
-                      ? _ArticuloPrecioContainer(
-                          articuloId:
-                              widget.seleccionarCantidadParam.articuloId,
-                          clienteId: widget.seleccionarCantidadParam.clienteId,
-                          formKey: formKeyArticuloPrecio,
-                          precio: precio,
-                          tipoPrecio: articuloPrecio!.precio.tipoPrecio,
-                          precioController: precioController,
-                          descuento1Controller: descuento1Controller,
-                          descuento2: descuento2,
-                          descuento3: articuloPrecio!.descuento3,
-                          setPrecio: (value) => setState(() => precio = value),
-                          setDescuento1: (value) =>
-                              setState(() => descuento1 = value),
-                          setDescuento2: (value) =>
-                              setState(() => descuento2 = value),
-                        )
-                      : Container(),
+            if (articulo != null)
+              _ArticuloInfo(
+                articulo: articulo!,
+                setArticuloSustitutivo: (articuloSusititutivoId) => setState(
+                  () => articuloId = articuloSusititutivoId,
                 ),
-                if (articuloPrecio != null) const Divider(),
-                if (articuloPrecio != null)
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          S.of(context).pedido_edit_selectQuantity_importeLinea,
+              ),
+            if (articulo != null)
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: FormBuilder(
+                  key: formKeyCantidad,
+                  autovalidateMode: AutovalidateMode.disabled,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _UnitsFormField(
+                        formKey: formKeyCantidad,
+                        unitsController: unitsController,
+                        setUnitsQuantity: (value) {
+                          setState(() {
+                            units = value;
+                          });
+
+                          setTotalQuantity();
+                        },
+                        cantidad: units,
+                        ventaMinimo: articulo!.ventaMinimo,
+                        ventaMultiplo: articulo!.ventaMultiplo,
+                      ),
+                      if (articulo != null && articulo!.unidadesCaja > 0)
+                        _CajaUnitsFormField(
+                          formKey: formKeyCantidad,
+                          cajaController: cajaController,
+                          setUnitCajaQuantity: (value) {
+                            setState(() {
+                              unitsCaja = value;
+                            });
+
+                            setTotalQuantity();
+                          },
+                          cantidad: unitsCaja,
+                          unidadesPorCaja: articulo!.unidadesCaja,
+                          ventaMultiplo: articulo!.ventaMultiplo,
+                          ventaMinimo: articulo!.ventaMinimo,
                         ),
-                        Text(
-                          ref
-                              .read(pedidoVentaRepositoryProvider)
-                              .getTotalLinea(
-                                  precio: Precio(
-                                      precio: precio.toMoney(
-                                          currencyId: articuloPrecio!.divisaId),
-                                      tipoPrecio:
-                                          articuloPrecio!.precio.tipoPrecio),
-                                  cantidad: totalQuantity,
-                                  descuento1: descuento1,
-                                  descuento2: descuento2,
-                                  descuento3: articuloPrecio!.descuento3)
-                              .toString(),
-                          style: Theme.of(context).textTheme.titleSmall,
-                        )
-                      ],
-                    ),
+                      if (articulo != null && articulo!.unidadesSubcaja > 0)
+                        _SubcajaUnitsFormField(
+                          formKey: formKeyCantidad,
+                          subcajaController: subcajaController,
+                          setUnitSubcajaQuantity: (value) {
+                            setState(() {
+                              unitsSubcaja = value;
+                            });
+
+                            setTotalQuantity();
+                          },
+                          cantidad: unitsSubcaja,
+                          unidadesPorSubcaja: articulo!.unidadesSubcaja,
+                          ventaMultiplo: articulo!.ventaMultiplo,
+                          ventaMinimo: articulo!.ventaMinimo,
+                        ),
+                      if (articulo != null &&
+                          (articulo!.unidadesPalet > 0 &&
+                              articulo!.unidadesPalet != 99999))
+                        _PaletUnitsFormField(
+                          formKey: formKeyCantidad,
+                          cajaController: paletController,
+                          setUnitPaletQuantity: (value) {
+                            setState(() {
+                              unitsPalet = value;
+                            });
+
+                            setTotalQuantity();
+                          },
+                          cantidad: unitsPalet,
+                          unidadesPorPalet: articulo!.unidadesPalet,
+                          ventaMultiplo: articulo!.ventaMultiplo,
+                          ventaMinimo: articulo!.ventaMinimo,
+                        ),
+                    ],
                   ),
-              ],
+                ),
+              ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Total quantity',
+                  ),
+                  Text(
+                    numberFormatCantidades(totalQuantity),
+                    style: Theme.of(context).textTheme.titleSmall,
+                  )
+                ],
+              ),
             ),
+            const Divider(),
+            state.when(
+              initial: () => Container(),
+              error: (error, _) => Center(
+                child: ErrorMessageWidget(
+                  error.toString(),
+                ),
+              ),
+              loading: () => const Center(child: CircularProgressIndicator()),
+              data: (_) => (articuloPrecio != null)
+                  ? _ArticuloPrecioContainer(
+                      articuloId: widget.seleccionarCantidadParam.articuloId,
+                      clienteId: widget.seleccionarCantidadParam.clienteId,
+                      formKey: formKeyArticuloPrecio,
+                      precio: precio,
+                      tipoPrecio: articuloPrecio!.precio.tipoPrecio,
+                      precioController: precioController,
+                      descuento1Controller: descuento1Controller,
+                      descuento2: descuento2,
+                      descuento3: articuloPrecio!.descuento3,
+                      setPrecio: (value) => setState(() => precio = value),
+                      setDescuento1: (value) =>
+                          setState(() => descuento1 = value),
+                      setDescuento2: (value) =>
+                          setState(() => descuento2 = value),
+                    )
+                  : Container(),
+            ),
+            if (articuloPrecio != null) const Divider(),
+            if (articuloPrecio != null)
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      S.of(context).pedido_edit_selectQuantity_importeLinea,
+                    ),
+                    Text(
+                      ref
+                          .read(pedidoVentaRepositoryProvider)
+                          .getTotalLinea(
+                              precio: Precio(
+                                  precio: precio.toMoney(
+                                      currencyId: articuloPrecio!.divisaId),
+                                  tipoPrecio:
+                                      articuloPrecio!.precio.tipoPrecio),
+                              cantidad: totalQuantity,
+                              descuento1: descuento1,
+                              descuento2: descuento2,
+                              descuento3: articuloPrecio!.descuento3)
+                          .toString(),
+                      style: Theme.of(context).textTheme.titleSmall,
+                    )
+                  ],
+                ),
+              ),
           ],
         ),
       ),
@@ -240,8 +310,6 @@ class _SelecionarCantidadPageState
             .padLeft(3, '0'),
         pedidoVentaAppId:
             widget.seleccionarCantidadParam.pedidoVentaParam.pedidoAppId,
-        // pedidoVentaLineaId:
-
         articuloId: articulo.id,
         articuloDescription:
             getDescriptionArticuloInLocalLanguage(articulo: articulo),
@@ -315,6 +383,7 @@ class _SelecionarCantidadPageState
           articulo = newArticuloValue;
           if (!widget.seleccionarCantidadParam.isUpdatingLinea()) {
             totalQuantity = newArticuloValue.ventaMinimo;
+            units = newArticuloValue.ventaMinimo;
           }
         },
       );
@@ -341,6 +410,7 @@ class _SelecionarCantidadPageState
     articuloId = widget.seleccionarCantidadParam.articuloId;
 
     if (widget.seleccionarCantidadParam.isUpdatingLinea()) {
+      units = widget.seleccionarCantidadParam.cantidad!;
       totalQuantity = widget.seleccionarCantidadParam.cantidad!;
       descuento1 = widget.seleccionarCantidadParam.descuento1!;
       descuento2 = widget.seleccionarCantidadParam.descuento2!;
@@ -364,11 +434,20 @@ class _SelecionarCantidadPageState
           descuento1Controller.text = numberFormatCantidades(descuento1);
 
           descuento2 = newArticuloPrecio.descuento2;
-          // descuento2Controller.text = numberFormatCantidades(descuento2);
         }
         initialLoadingData = false;
       });
     }
+  }
+
+  void setTotalQuantity() {
+    final quantity = units + unitsCaja + unitsSubcaja + unitsPalet;
+    setState(() => totalQuantity = quantity);
+    ref.read(articuloPrecioProvider.notifier).getArticuloPrecio(
+          articuloId: articulo!.id,
+          clienteId: widget.seleccionarCantidadParam.clienteId,
+          cantidad: totalQuantity,
+        );
   }
 }
 
@@ -474,64 +553,65 @@ class _ArticuloInfo extends ConsumerWidget {
   }
 }
 
-class _QuantityForm extends StatelessWidget {
-  const _QuantityForm(
-      {required this.formKey,
-      required this.setTotalQuantity,
-      required this.quanitityController,
-      required this.cantidad,
-      required this.ventaMinimo,
-      required this.ventaMultiplo});
+class _UnitsFormField extends StatelessWidget {
+  const _UnitsFormField({
+    required this.formKey,
+    required this.setUnitsQuantity,
+    required this.unitsController,
+    required this.cantidad,
+    required this.ventaMinimo,
+    required this.ventaMultiplo,
+  });
 
-  final void Function(int value) setTotalQuantity;
+  final void Function(int value) setUnitsQuantity;
   final GlobalKey<FormBuilderState> formKey;
-  final TextEditingController quanitityController;
-
+  final TextEditingController unitsController;
   final int? cantidad;
   final int ventaMinimo;
   final int ventaMultiplo;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: FormBuilder(
-        key: formKey,
-        autovalidateMode: AutovalidateMode.disabled,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            FormBuilderTextField(
-              name: 'cantidad',
-              autofocus: true,
-              keyboardType: TextInputType.number,
-              controller: quanitityController,
-              decoration: InputDecoration(
-                labelText: S.of(context).pedido_edit_selectQuantity_cantidad,
-              ),
-              validator: (value) => validateQuantity(context, value),
-              onChanged: (value) {
-                if (value != null && value.isNotEmpty) {
-                  final totalQuantity = int.tryParse(value);
-                  if (totalQuantity != null) {
-                    setTotalQuantity(totalQuantity);
-                  }
-                } else {
-                  setTotalQuantity(0);
-                }
-              },
-              onTap: () => quanitityController.selection = TextSelection(
-                baseOffset: 0,
-                extentOffset: quanitityController.text.length,
-              ),
-            ),
-            gapH4,
-            Text(
-                '${S.of(context).pedido_edit_selectQuantity_multiplo} x$ventaMultiplo ${S.of(context).unidad}',
-                style: Theme.of(context).textTheme.bodySmall),
-          ],
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Expanded(
+          flex: 3,
+          child: Center(
+              child: Row(
+            children: [
+              const Icon(MdiIcons.screwFlatTop),
+              gapW8,
+              Text('x$ventaMultiplo ${S.of(context).unidad}',
+                  style: Theme.of(context).textTheme.bodySmall),
+            ],
+          )),
         ),
-      ),
+        Expanded(
+          flex: 5,
+          child: FormBuilderTextField(
+            name: 'unidades',
+            autofocus: true,
+            textAlign: TextAlign.right,
+            keyboardType: TextInputType.number,
+            initialValue: (cantidad ?? 0).toString(),
+            decoration: InputDecoration(
+              labelText: S.of(context).pedido_edit_selectQuantity_cantidad,
+            ),
+            validator: (value) => validateQuantity(context, value),
+            onChanged: (value) {
+              if (value != null && value.isNotEmpty) {
+                final totalQuantity = int.tryParse(value);
+                if (totalQuantity != null) {
+                  setUnitsQuantity(totalQuantity);
+                }
+              } else {
+                setUnitsQuantity(0);
+              }
+            },
+          ),
+        ),
+      ],
     );
   }
 
@@ -539,10 +619,13 @@ class _QuantityForm extends StatelessWidget {
     if (quantityStr != null && quantityStr != '') {
       final quantity = int.parse(quantityStr);
       if (quantity < ventaMinimo) {
-        setTotalQuantity(ventaMinimo);
+        setUnitsQuantity(ventaMinimo);
         return '${S.of(context).pedido_edit_selectQuantity_minimo} $ventaMinimo ${S.of(context).unidad}';
       } else if (quantity % ventaMultiplo != 0) {
-        setTotalQuantity(setMultiploMasCercano(quantity, ventaMultiplo));
+        final multiploMasCercano =
+            setMultiploMasCercano(quantity, ventaMultiplo);
+        formKey.currentState?.patchValue({'unidades': multiploMasCercano});
+        setUnitsQuantity(multiploMasCercano);
         return '${S.of(context).pedido_edit_selectQuantity_tieneQueSerMultiploDe} $ventaMultiplo';
       } else {
         return null;
@@ -553,6 +636,289 @@ class _QuantityForm extends StatelessWidget {
   }
 
   int setMultiploMasCercano(int quantity, int ventaMultiplo) {
+    int nuevaCantidad = 0;
+    for (int i = 0; i < ventaMultiplo; i++) {
+      if ((quantity + i) % ventaMultiplo == 0) {
+        nuevaCantidad = quantity + i;
+      }
+    }
+    return nuevaCantidad;
+  }
+}
+
+class _CajaUnitsFormField extends StatelessWidget {
+  const _CajaUnitsFormField({
+    required this.formKey,
+    required this.setUnitCajaQuantity,
+    required this.cajaController,
+    required this.cantidad,
+    required this.unidadesPorCaja,
+    required this.ventaMultiplo,
+    required this.ventaMinimo,
+  });
+
+  final void Function(int value) setUnitCajaQuantity;
+  final GlobalKey<FormBuilderState> formKey;
+  final TextEditingController cajaController;
+  final int? cantidad;
+  final int unidadesPorCaja;
+  final int ventaMultiplo;
+  final int ventaMinimo;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Expanded(
+          flex: 3,
+          child: Row(
+            children: [
+              const Icon(MdiIcons.packageVariantClosed),
+              gapW8,
+              Text('x$unidadesPorCaja ${S.of(context).unidad}',
+                  style: Theme.of(context).textTheme.bodySmall)
+            ],
+          ),
+        ),
+        Expanded(
+          flex: 5,
+          child: FormBuilderTextField(
+            name: 'unidades_caja',
+            autofocus: true,
+            keyboardType: TextInputType.number,
+            initialValue: (cantidad ?? 0).toString(),
+            decoration: InputDecoration(
+              labelText:
+                  S.of(context).articulo_show_articuloDetalle_cantidadCaja,
+            ),
+            textAlign: TextAlign.right,
+            validator: (value) => validateQuantityCaja(context, value),
+            onChanged: (value) {
+              if (value != null && value.isNotEmpty) {
+                int? totalQuantity = int.tryParse(value);
+                if (totalQuantity != null) {
+                  totalQuantity = totalQuantity * unidadesPorCaja;
+                  setUnitCajaQuantity(totalQuantity);
+                }
+              } else {
+                setUnitCajaQuantity(0);
+              }
+            },
+          ),
+        ),
+      ],
+    );
+  }
+
+  String? validateQuantityCaja(BuildContext context, String? quantityStr) {
+    if (quantityStr != null && quantityStr != '' && quantityStr != '0') {
+      final quantity = int.parse(quantityStr);
+      if (quantity * unidadesPorCaja < ventaMinimo) {
+        setUnitCajaQuantity(ventaMinimo % unidadesPorCaja);
+        return '${S.of(context).pedido_edit_selectQuantity_minimo} $ventaMinimo ${S.of(context).unidad}';
+      } else if ((quantity * unidadesPorCaja) % ventaMultiplo != 0) {
+        final multiploMasCercano =
+            setMultiploMasCercanoCaja(quantity, ventaMultiplo);
+        formKey.currentState
+            ?.patchValue({'unidades_caja': multiploMasCercano.toString()});
+        setUnitCajaQuantity(multiploMasCercano * unidadesPorCaja);
+        return '${S.of(context).pedido_edit_selectQuantity_tieneQueSerMultiploDe} $ventaMultiplo';
+      }
+    }
+    return null;
+  }
+
+  int setMultiploMasCercanoCaja(int quantity, int ventaMultiplo) {
+    int nuevaCantidad = 0;
+    for (int i = ventaMultiplo; i > 0; i--) {
+      if ((i * unidadesPorCaja) % ventaMultiplo == 0) {
+        nuevaCantidad = i;
+      }
+    }
+    return nuevaCantidad;
+  }
+}
+
+class _SubcajaUnitsFormField extends StatelessWidget {
+  const _SubcajaUnitsFormField({
+    required this.formKey,
+    required this.setUnitSubcajaQuantity,
+    required this.subcajaController,
+    required this.cantidad,
+    required this.unidadesPorSubcaja,
+    required this.ventaMultiplo,
+    required this.ventaMinimo,
+  });
+
+  final void Function(int value) setUnitSubcajaQuantity;
+  final GlobalKey<FormBuilderState> formKey;
+  final TextEditingController subcajaController;
+  final int? cantidad;
+  final int unidadesPorSubcaja;
+  final int ventaMultiplo;
+  final int ventaMinimo;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Expanded(
+          flex: 3,
+          child: Row(
+            children: [
+              const Icon(Icons.unarchive),
+              gapW8,
+              Text('x$unidadesPorSubcaja ${S.of(context).unidad}',
+                  style: Theme.of(context).textTheme.bodySmall)
+            ],
+          ),
+        ),
+        Expanded(
+          flex: 5,
+          child: FormBuilderTextField(
+            name: 'unidades_subcaja',
+            autofocus: true,
+            keyboardType: TextInputType.number,
+            initialValue: (cantidad ?? 0).toString(),
+            decoration: InputDecoration(
+              labelText:
+                  S.of(context).articulo_show_articuloDetalle_cantidadSubcaja,
+            ),
+            textAlign: TextAlign.right,
+            validator: (value) => validateQuantitySubcaja(context, value),
+            onChanged: (value) {
+              if (value != null && value.isNotEmpty) {
+                int? totalQuantity = int.tryParse(value);
+                if (totalQuantity != null) {
+                  totalQuantity = totalQuantity * unidadesPorSubcaja;
+                  setUnitSubcajaQuantity(totalQuantity);
+                }
+              } else {
+                setUnitSubcajaQuantity(0);
+              }
+            },
+          ),
+        ),
+      ],
+    );
+  }
+
+  String? validateQuantitySubcaja(BuildContext context, String? quantityStr) {
+    if (quantityStr != null && quantityStr != '' && quantityStr != '0') {
+      final quantity = int.parse(quantityStr);
+      if (quantity * unidadesPorSubcaja < ventaMinimo) {
+        setUnitSubcajaQuantity(ventaMinimo % unidadesPorSubcaja);
+        return '${S.of(context).pedido_edit_selectQuantity_minimo} $ventaMinimo ${S.of(context).unidad}';
+      } else if ((quantity * unidadesPorSubcaja) % ventaMultiplo != 0) {
+        final multiploMasCercano =
+            setMultiploMasCercanoSubcaja(quantity, ventaMultiplo);
+        formKey.currentState
+            ?.patchValue({'unidades_subcaja': multiploMasCercano.toString()});
+        setUnitSubcajaQuantity(multiploMasCercano * unidadesPorSubcaja);
+        return '${S.of(context).pedido_edit_selectQuantity_tieneQueSerMultiploDe} $ventaMultiplo';
+      }
+    }
+    return null;
+  }
+
+  int setMultiploMasCercanoSubcaja(int quantity, int ventaMultiplo) {
+    int nuevaCantidad = 0;
+    for (int i = ventaMultiplo; i > 0; i--) {
+      if ((i * unidadesPorSubcaja) % ventaMultiplo == 0) {
+        nuevaCantidad = i;
+      }
+    }
+    return nuevaCantidad;
+  }
+}
+
+class _PaletUnitsFormField extends StatelessWidget {
+  const _PaletUnitsFormField({
+    required this.formKey,
+    required this.setUnitPaletQuantity,
+    required this.cajaController,
+    required this.cantidad,
+    required this.unidadesPorPalet,
+    required this.ventaMultiplo,
+    required this.ventaMinimo,
+  });
+
+  final void Function(int value) setUnitPaletQuantity;
+  final GlobalKey<FormBuilderState> formKey;
+  final TextEditingController cajaController;
+  final int? cantidad;
+  final int unidadesPorPalet;
+  final int ventaMultiplo;
+  final int ventaMinimo;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Expanded(
+          flex: 3,
+          child: Row(
+            children: [
+              const Icon(Icons.pallet),
+              gapW8,
+              Text('x$unidadesPorPalet ${S.of(context).unidad}',
+                  style: Theme.of(context).textTheme.bodySmall)
+            ],
+          ),
+        ),
+        Expanded(
+          flex: 5,
+          child: FormBuilderTextField(
+            name: 'unidades_palet',
+            autofocus: true,
+            keyboardType: TextInputType.number,
+            textAlign: TextAlign.right,
+            initialValue: (cantidad ?? 0).toString(),
+            decoration: InputDecoration(
+              labelText:
+                  S.of(context).articulo_show_articuloDetalle_cantidadPalet,
+            ),
+            validator: (value) => validateQuantityPalet(context, value),
+            onChanged: (value) {
+              if (value != null && value.isNotEmpty) {
+                int? quantity = int.tryParse(value);
+                if (quantity != null) {
+                  quantity = quantity * unidadesPorPalet;
+                  setUnitPaletQuantity(quantity);
+                }
+              } else {
+                setUnitPaletQuantity(0);
+              }
+            },
+          ),
+        ),
+      ],
+    );
+  }
+
+  String? validateQuantityPalet(BuildContext context, String? quantityStr) {
+    if (quantityStr != null && quantityStr != '' && quantityStr != '0') {
+      final quantity = int.parse(quantityStr);
+      if (quantity * unidadesPorPalet < ventaMinimo) {
+        setUnitPaletQuantity(ventaMinimo);
+        return '${S.of(context).pedido_edit_selectQuantity_minimo} $ventaMinimo ${S.of(context).unidad}';
+      } else if ((quantity * unidadesPorPalet) % ventaMultiplo != 0) {
+        final multiploMasCercano =
+            setMultiploMasCercanoPalet(quantity, ventaMultiplo);
+        formKey.currentState
+            ?.patchValue({'unidades_palet': multiploMasCercano.toString()});
+        setUnitPaletQuantity(multiploMasCercano);
+
+        return '${S.of(context).pedido_edit_selectQuantity_tieneQueSerMultiploDe} $ventaMultiplo';
+      }
+    }
+    return null;
+  }
+
+  int setMultiploMasCercanoPalet(int quantity, int ventaMultiplo) {
     int nuevaCantidad = 0;
     for (int i = 0; i < ventaMultiplo; i++) {
       if ((quantity + i) % ventaMultiplo == 0) {

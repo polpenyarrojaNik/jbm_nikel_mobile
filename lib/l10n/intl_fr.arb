@@ -344,5 +344,8 @@
   "notifications": " notifications",
   "cliente_show_clienteDetalle_fiscalData": "Données fiscales",
   "pending": "En attente",
-  "cliente_alrededor_potenciales": "Potentiels"
+  "cliente_alrededor_potenciales": "Potentiels",
+  "pedido_edit_selectQuantity_cantidadCaja": "Quantité de la boîte",
+  "pedido_edit_selectQuantity_cantidadPalet": "Quantité de palette",
+  "pedido_edit_selectQuantity_cantidadSubcaja": "Quantité de sous-boîte"
 }

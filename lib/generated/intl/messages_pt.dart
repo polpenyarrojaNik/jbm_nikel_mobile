@@ -526,6 +526,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Itens substitutos:"),
         "pedido_edit_selectQuantity_cantidad":
             MessageLookupByLibrary.simpleMessage("Quantidade"),
+        "pedido_edit_selectQuantity_cantidadCaja":
+            MessageLookupByLibrary.simpleMessage("Quantidade de caixas"),
+        "pedido_edit_selectQuantity_cantidadPalet":
+            MessageLookupByLibrary.simpleMessage("Quantidade de paletes"),
+        "pedido_edit_selectQuantity_cantidadSubcaja":
+            MessageLookupByLibrary.simpleMessage("Quantidade de subcaixas"),
         "pedido_edit_selectQuantity_descuneto1":
             MessageLookupByLibrary.simpleMessage("Desconto 1"),
         "pedido_edit_selectQuantity_descuneto2":
