@@ -347,5 +347,9 @@
   "pending": "Pending",
   "pedido_edit_selectQuantity_cantidadCaja": "Box Quantity",
   "pedido_edit_selectQuantity_cantidadPalet": "Pallet Quantity",
-  "pedido_edit_selectQuantity_cantidadSubcaja": "Subbox quantity"
+  "pedido_edit_selectQuantity_cantidadSubcaja": "Subbox quantity",
+  "pedido_edit_selectQuantity_caja": "Box",
+  "pedido_edit_selectQuantity_palet": "Pallet",
+  "pedido_edit_selectQuantity_subcaja": "Subbox",
+  "pedido_edit_selectQuantity_unidades": "Units"
 }

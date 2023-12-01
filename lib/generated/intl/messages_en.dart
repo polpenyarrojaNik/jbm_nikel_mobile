@@ -512,6 +512,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Last purchase price"),
         "pedido_edit_selectQuantity_artiuclosSustitutivos":
             MessageLookupByLibrary.simpleMessage("Substitute articles:"),
+        "pedido_edit_selectQuantity_caja":
+            MessageLookupByLibrary.simpleMessage("Box"),
         "pedido_edit_selectQuantity_cantidad":
             MessageLookupByLibrary.simpleMessage("Quantity"),
         "pedido_edit_selectQuantity_cantidadCaja":
@@ -534,14 +536,20 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Multiple"),
         "pedido_edit_selectQuantity_noPuedeEstarVacio":
             MessageLookupByLibrary.simpleMessage("Must not be empty"),
+        "pedido_edit_selectQuantity_palet":
+            MessageLookupByLibrary.simpleMessage("Pallet"),
         "pedido_edit_selectQuantity_precio":
             MessageLookupByLibrary.simpleMessage("Price"),
         "pedido_edit_selectQuantity_seleccionarCantidad":
             MessageLookupByLibrary.simpleMessage("Select quantity"),
         "pedido_edit_selectQuantity_stockDisponible":
             MessageLookupByLibrary.simpleMessage("Available stock:"),
+        "pedido_edit_selectQuantity_subcaja":
+            MessageLookupByLibrary.simpleMessage("Subbox"),
         "pedido_edit_selectQuantity_tieneQueSerMultiploDe":
             MessageLookupByLibrary.simpleMessage("Must be multiple of"),
+        "pedido_edit_selectQuantity_unidades":
+            MessageLookupByLibrary.simpleMessage("Units"),
         "pedido_enviado": MessageLookupByLibrary.simpleMessage("Sent"),
         "pedido_index_buscarPedidos":
             MessageLookupByLibrary.simpleMessage("Search sales orders..."),

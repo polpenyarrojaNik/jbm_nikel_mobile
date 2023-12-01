@@ -3573,6 +3573,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Box`
+  String get pedido_edit_selectQuantity_caja {
+    return Intl.message(
+      'Box',
+      name: 'pedido_edit_selectQuantity_caja',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pallet`
+  String get pedido_edit_selectQuantity_palet {
+    return Intl.message(
+      'Pallet',
+      name: 'pedido_edit_selectQuantity_palet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subbox`
+  String get pedido_edit_selectQuantity_subcaja {
+    return Intl.message(
+      'Subbox',
+      name: 'pedido_edit_selectQuantity_subcaja',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Units`
+  String get pedido_edit_selectQuantity_unidades {
+    return Intl.message(
+      'Units',
+      name: 'pedido_edit_selectQuantity_unidades',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

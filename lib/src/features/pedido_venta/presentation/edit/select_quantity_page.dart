@@ -13,7 +13,6 @@ import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/pedido_venta_edit_page_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/select_cantidad_controller.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/articulo_precio.dart';
@@ -71,7 +70,8 @@ class _SelecionarCantidadPageState
     super.initState();
     setValoresIniciales();
     precioController.text = numberFormatDecimal(precio);
-    unitsController.text = totalQuantity.toString();
+    unitsController.text = units.toString();
+
     descuento1Controller.text = numberFormatCantidades(descuento1);
     // descuento2Controller.text = numberFormatCantidades(descuento2);
     unitsController.selection =
@@ -134,7 +134,8 @@ class _SelecionarCantidadPageState
               ),
             if (articulo != null)
               Padding(
-                padding: const EdgeInsets.all(16),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 child: FormBuilder(
                   key: formKeyCantidad,
                   autovalidateMode: AutovalidateMode.disabled,
@@ -155,22 +156,6 @@ class _SelecionarCantidadPageState
                         ventaMinimo: articulo!.ventaMinimo,
                         ventaMultiplo: articulo!.ventaMultiplo,
                       ),
-                      if (articulo != null && articulo!.unidadesCaja > 0)
-                        _CajaUnitsFormField(
-                          formKey: formKeyCantidad,
-                          cajaController: cajaController,
-                          setUnitCajaQuantity: (value) {
-                            setState(() {
-                              unitsCaja = value;
-                            });
-
-                            setTotalQuantity();
-                          },
-                          cantidad: unitsCaja,
-                          unidadesPorCaja: articulo!.unidadesCaja,
-                          ventaMultiplo: articulo!.ventaMultiplo,
-                          ventaMinimo: articulo!.ventaMinimo,
-                        ),
                       if (articulo != null && articulo!.unidadesSubcaja > 0)
                         _SubcajaUnitsFormField(
                           formKey: formKeyCantidad,
@@ -187,12 +172,28 @@ class _SelecionarCantidadPageState
                           ventaMultiplo: articulo!.ventaMultiplo,
                           ventaMinimo: articulo!.ventaMinimo,
                         ),
+                      if (articulo != null && articulo!.unidadesCaja > 0)
+                        _CajaUnitsFormField(
+                          formKey: formKeyCantidad,
+                          cajaController: cajaController,
+                          setUnitCajaQuantity: (value) {
+                            setState(() {
+                              unitsCaja = value;
+                            });
+
+                            setTotalQuantity();
+                          },
+                          cantidad: unitsCaja,
+                          unidadesPorCaja: articulo!.unidadesCaja,
+                          ventaMultiplo: articulo!.ventaMultiplo,
+                          ventaMinimo: articulo!.ventaMinimo,
+                        ),
                       if (articulo != null &&
                           (articulo!.unidadesPalet > 0 &&
                               articulo!.unidadesPalet != 99999))
                         _PaletUnitsFormField(
                           formKey: formKeyCantidad,
-                          cajaController: paletController,
+                          paletController: paletController,
                           setUnitPaletQuantity: (value) {
                             setState(() {
                               unitsPalet = value;
@@ -210,7 +211,8 @@ class _SelecionarCantidadPageState
                 ),
               ),
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -225,37 +227,39 @@ class _SelecionarCantidadPageState
               ),
             ),
             const Divider(),
-            state.when(
-              initial: () => Container(),
-              error: (error, _) => Center(
-                child: ErrorMessageWidget(
-                  error.toString(),
+            if (articuloPrecio != null)
+              state.when(
+                initial: () => Container(),
+                error: (error, _) => Center(
+                  child: ErrorMessageWidget(
+                    error.toString(),
+                  ),
                 ),
+                loading: () => const Center(child: CircularProgressIndicator()),
+                data: (_) => (articuloPrecio != null)
+                    ? _ArticuloPrecioContainer(
+                        articuloId: widget.seleccionarCantidadParam.articuloId,
+                        clienteId: widget.seleccionarCantidadParam.clienteId,
+                        formKey: formKeyArticuloPrecio,
+                        precio: precio,
+                        tipoPrecio: articuloPrecio!.precio.tipoPrecio,
+                        precioController: precioController,
+                        descuento1Controller: descuento1Controller,
+                        descuento2: descuento2,
+                        descuento3: articuloPrecio!.descuento3,
+                        setPrecio: (value) => setState(() => precio = value),
+                        setDescuento1: (value) =>
+                            setState(() => descuento1 = value),
+                        setDescuento2: (value) =>
+                            setState(() => descuento2 = value),
+                      )
+                    : Container(),
               ),
-              loading: () => const Center(child: CircularProgressIndicator()),
-              data: (_) => (articuloPrecio != null)
-                  ? _ArticuloPrecioContainer(
-                      articuloId: widget.seleccionarCantidadParam.articuloId,
-                      clienteId: widget.seleccionarCantidadParam.clienteId,
-                      formKey: formKeyArticuloPrecio,
-                      precio: precio,
-                      tipoPrecio: articuloPrecio!.precio.tipoPrecio,
-                      precioController: precioController,
-                      descuento1Controller: descuento1Controller,
-                      descuento2: descuento2,
-                      descuento3: articuloPrecio!.descuento3,
-                      setPrecio: (value) => setState(() => precio = value),
-                      setDescuento1: (value) =>
-                          setState(() => descuento1 = value),
-                      setDescuento2: (value) =>
-                          setState(() => descuento2 = value),
-                    )
-                  : Container(),
-            ),
             if (articuloPrecio != null) const Divider(),
             if (articuloPrecio != null)
               Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -577,15 +581,14 @@ class _UnitsFormField extends StatelessWidget {
       children: [
         Expanded(
           flex: 3,
-          child: Center(
-              child: Row(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Icon(MdiIcons.screwFlatTop),
-              gapW8,
+              Text(S.of(context).pedido_edit_selectQuantity_unidades),
               Text('x$ventaMultiplo ${S.of(context).unidad}',
                   style: Theme.of(context).textTheme.bodySmall),
             ],
-          )),
+          ),
         ),
         Expanded(
           flex: 5,
@@ -594,7 +597,7 @@ class _UnitsFormField extends StatelessWidget {
             autofocus: true,
             textAlign: TextAlign.right,
             keyboardType: TextInputType.number,
-            initialValue: (cantidad ?? 0).toString(),
+            controller: unitsController,
             decoration: InputDecoration(
               labelText: S.of(context).pedido_edit_selectQuantity_cantidad,
             ),
@@ -609,6 +612,8 @@ class _UnitsFormField extends StatelessWidget {
                 setUnitsQuantity(0);
               }
             },
+            onTap: () => unitsController.selection = TextSelection(
+                baseOffset: 0, extentOffset: unitsController.text.length),
           ),
         ),
       ],
@@ -624,7 +629,9 @@ class _UnitsFormField extends StatelessWidget {
       } else if (quantity % ventaMultiplo != 0) {
         final multiploMasCercano =
             setMultiploMasCercano(quantity, ventaMultiplo);
-        formKey.currentState?.patchValue({'unidades': multiploMasCercano});
+
+        unitsController.text = multiploMasCercano.toString();
+
         setUnitsQuantity(multiploMasCercano);
         return '${S.of(context).pedido_edit_selectQuantity_tieneQueSerMultiploDe} $ventaMultiplo';
       } else {
@@ -672,10 +679,10 @@ class _CajaUnitsFormField extends StatelessWidget {
       children: [
         Expanded(
           flex: 3,
-          child: Row(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Icon(MdiIcons.packageVariantClosed),
-              gapW8,
+              Text(S.of(context).pedido_edit_selectQuantity_caja),
               Text('x$unidadesPorCaja ${S.of(context).unidad}',
                   style: Theme.of(context).textTheme.bodySmall)
             ],
@@ -687,7 +694,7 @@ class _CajaUnitsFormField extends StatelessWidget {
             name: 'unidades_caja',
             autofocus: true,
             keyboardType: TextInputType.number,
-            initialValue: (cantidad ?? 0).toString(),
+            controller: cajaController,
             decoration: InputDecoration(
               labelText:
                   S.of(context).articulo_show_articuloDetalle_cantidadCaja,
@@ -705,6 +712,8 @@ class _CajaUnitsFormField extends StatelessWidget {
                 setUnitCajaQuantity(0);
               }
             },
+            onTap: () => cajaController.selection = TextSelection(
+                baseOffset: 0, extentOffset: cajaController.text.length),
           ),
         ),
       ],
@@ -720,8 +729,8 @@ class _CajaUnitsFormField extends StatelessWidget {
       } else if ((quantity * unidadesPorCaja) % ventaMultiplo != 0) {
         final multiploMasCercano =
             setMultiploMasCercanoCaja(quantity, ventaMultiplo);
-        formKey.currentState
-            ?.patchValue({'unidades_caja': multiploMasCercano.toString()});
+        cajaController.text = multiploMasCercano.toString();
+
         setUnitCajaQuantity(multiploMasCercano * unidadesPorCaja);
         return '${S.of(context).pedido_edit_selectQuantity_tieneQueSerMultiploDe} $ventaMultiplo';
       }
@@ -766,10 +775,10 @@ class _SubcajaUnitsFormField extends StatelessWidget {
       children: [
         Expanded(
           flex: 3,
-          child: Row(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Icon(Icons.unarchive),
-              gapW8,
+              Text(S.of(context).pedido_edit_selectQuantity_subcaja),
               Text('x$unidadesPorSubcaja ${S.of(context).unidad}',
                   style: Theme.of(context).textTheme.bodySmall)
             ],
@@ -781,7 +790,7 @@ class _SubcajaUnitsFormField extends StatelessWidget {
             name: 'unidades_subcaja',
             autofocus: true,
             keyboardType: TextInputType.number,
-            initialValue: (cantidad ?? 0).toString(),
+            controller: subcajaController,
             decoration: InputDecoration(
               labelText:
                   S.of(context).articulo_show_articuloDetalle_cantidadSubcaja,
@@ -799,6 +808,8 @@ class _SubcajaUnitsFormField extends StatelessWidget {
                 setUnitSubcajaQuantity(0);
               }
             },
+            onTap: () => subcajaController.selection = TextSelection(
+                baseOffset: 0, extentOffset: subcajaController.text.length),
           ),
         ),
       ],
@@ -814,8 +825,8 @@ class _SubcajaUnitsFormField extends StatelessWidget {
       } else if ((quantity * unidadesPorSubcaja) % ventaMultiplo != 0) {
         final multiploMasCercano =
             setMultiploMasCercanoSubcaja(quantity, ventaMultiplo);
-        formKey.currentState
-            ?.patchValue({'unidades_subcaja': multiploMasCercano.toString()});
+        subcajaController.text = multiploMasCercano.toString();
+
         setUnitSubcajaQuantity(multiploMasCercano * unidadesPorSubcaja);
         return '${S.of(context).pedido_edit_selectQuantity_tieneQueSerMultiploDe} $ventaMultiplo';
       }
@@ -838,7 +849,7 @@ class _PaletUnitsFormField extends StatelessWidget {
   const _PaletUnitsFormField({
     required this.formKey,
     required this.setUnitPaletQuantity,
-    required this.cajaController,
+    required this.paletController,
     required this.cantidad,
     required this.unidadesPorPalet,
     required this.ventaMultiplo,
@@ -847,7 +858,7 @@ class _PaletUnitsFormField extends StatelessWidget {
 
   final void Function(int value) setUnitPaletQuantity;
   final GlobalKey<FormBuilderState> formKey;
-  final TextEditingController cajaController;
+  final TextEditingController paletController;
   final int? cantidad;
   final int unidadesPorPalet;
   final int ventaMultiplo;
@@ -860,10 +871,10 @@ class _PaletUnitsFormField extends StatelessWidget {
       children: [
         Expanded(
           flex: 3,
-          child: Row(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Icon(Icons.pallet),
-              gapW8,
+              Text(S.of(context).pedido_edit_selectQuantity_palet),
               Text('x$unidadesPorPalet ${S.of(context).unidad}',
                   style: Theme.of(context).textTheme.bodySmall)
             ],
@@ -876,7 +887,7 @@ class _PaletUnitsFormField extends StatelessWidget {
             autofocus: true,
             keyboardType: TextInputType.number,
             textAlign: TextAlign.right,
-            initialValue: (cantidad ?? 0).toString(),
+            controller: paletController,
             decoration: InputDecoration(
               labelText:
                   S.of(context).articulo_show_articuloDetalle_cantidadPalet,
@@ -893,6 +904,8 @@ class _PaletUnitsFormField extends StatelessWidget {
                 setUnitPaletQuantity(0);
               }
             },
+            onTap: () => paletController.selection = TextSelection(
+                baseOffset: 0, extentOffset: paletController.text.length),
           ),
         ),
       ],
@@ -908,8 +921,8 @@ class _PaletUnitsFormField extends StatelessWidget {
       } else if ((quantity * unidadesPorPalet) % ventaMultiplo != 0) {
         final multiploMasCercano =
             setMultiploMasCercanoPalet(quantity, ventaMultiplo);
-        formKey.currentState
-            ?.patchValue({'unidades_palet': multiploMasCercano.toString()});
+        paletController.text = multiploMasCercano.toString();
+
         setUnitPaletQuantity(multiploMasCercano);
 
         return '${S.of(context).pedido_edit_selectQuantity_tieneQueSerMultiploDe} $ventaMultiplo';
@@ -963,7 +976,7 @@ class _ArticuloPrecioContainer extends ConsumerWidget {
     final articuloPrecioValue = ref.watch(articuloUltimosPreciosProvider(
         UltimosPreciosParam(clienteId: clienteId, articuloId: articuloId)));
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
       child: FormBuilder(
         key: formKey,
         child: Column(

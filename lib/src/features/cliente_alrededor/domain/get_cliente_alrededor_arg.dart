@@ -10,7 +10,6 @@ class GetClienteAlrededorArg with _$GetClienteAlrededorArg {
     required LatLng latLng,
     required double radiusDistance,
     required bool showDireccionesEnvio,
-        required bool showPotenciales,
-
+    required bool showPotenciales,
   }) = _GetClienteAlrededorArg;
 }
