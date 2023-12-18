@@ -351,5 +351,10 @@
   "pedido_edit_selectQuantity_caja": "Scatola",
   "pedido_edit_selectQuantity_palet": "Pallet",
   "pedido_edit_selectQuantity_subcaja": "Sottocasella",
-  "pedido_edit_selectQuantity_unidades": "Unità"
+  "pedido_edit_selectQuantity_unidades": "Unità",
+  "pedido_edit_selectQuantity_cajas": "Cajas",
+  "pedido_edit_selectQuantity_cantidadTotal": "",
+  "pedido_edit_selectQuantity_pallets": "Pallet",
+  "pedido_edit_selectQuantity_subcajas": "Sottocaselle",
+  "pedido_edit_selectQuantity_importe": "Importo"
 }

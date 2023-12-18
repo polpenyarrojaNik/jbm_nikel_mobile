@@ -524,6 +524,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Article de remplacement:"),
         "pedido_edit_selectQuantity_caja":
             MessageLookupByLibrary.simpleMessage("Boîte"),
+        "pedido_edit_selectQuantity_cajas":
+            MessageLookupByLibrary.simpleMessage("Des boîtes"),
         "pedido_edit_selectQuantity_cantidad":
             MessageLookupByLibrary.simpleMessage("Quantité"),
         "pedido_edit_selectQuantity_cantidadCaja":
@@ -532,12 +534,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Quantité de palette"),
         "pedido_edit_selectQuantity_cantidadSubcaja":
             MessageLookupByLibrary.simpleMessage("Quantité de sous-boîte"),
+        "pedido_edit_selectQuantity_cantidadTotal":
+            MessageLookupByLibrary.simpleMessage(""),
         "pedido_edit_selectQuantity_descuneto1":
             MessageLookupByLibrary.simpleMessage("Remise 1"),
         "pedido_edit_selectQuantity_descuneto2":
             MessageLookupByLibrary.simpleMessage("Remise 2"),
         "pedido_edit_selectQuantity_descuneto3":
             MessageLookupByLibrary.simpleMessage("Remise 3"),
+        "pedido_edit_selectQuantity_importe":
+            MessageLookupByLibrary.simpleMessage("Montant"),
         "pedido_edit_selectQuantity_importeLinea":
             MessageLookupByLibrary.simpleMessage("Montant ligne"),
         "pedido_edit_selectQuantity_minimo":
@@ -548,6 +554,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ne peux pas être vide"),
         "pedido_edit_selectQuantity_palet":
             MessageLookupByLibrary.simpleMessage("Palette"),
+        "pedido_edit_selectQuantity_pallets":
+            MessageLookupByLibrary.simpleMessage("Palettes"),
         "pedido_edit_selectQuantity_precio":
             MessageLookupByLibrary.simpleMessage("Prix"),
         "pedido_edit_selectQuantity_seleccionarCantidad":
@@ -556,6 +564,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Stock disponible:"),
         "pedido_edit_selectQuantity_subcaja":
             MessageLookupByLibrary.simpleMessage("Sous-boîte"),
+        "pedido_edit_selectQuantity_subcajas":
+            MessageLookupByLibrary.simpleMessage("Sous-boîtes"),
         "pedido_edit_selectQuantity_tieneQueSerMultiploDe":
             MessageLookupByLibrary.simpleMessage("Doit être multiple de"),
         "pedido_edit_selectQuantity_unidades":

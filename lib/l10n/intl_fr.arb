@@ -351,5 +351,10 @@
   "pedido_edit_selectQuantity_caja": "Boîte",
   "pedido_edit_selectQuantity_palet": "Palette",
   "pedido_edit_selectQuantity_subcaja": "Sous-boîte",
-  "pedido_edit_selectQuantity_unidades": "Unités"
+  "pedido_edit_selectQuantity_unidades": "Unités",
+  "pedido_edit_selectQuantity_cajas": "Des boîtes",
+  "pedido_edit_selectQuantity_cantidadTotal": "",
+  "pedido_edit_selectQuantity_pallets": "Palettes",
+  "pedido_edit_selectQuantity_subcajas": "Sous-boîtes",
+  "pedido_edit_selectQuantity_importe": "Montant"
 }

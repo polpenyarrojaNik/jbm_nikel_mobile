@@ -71,6 +71,9 @@ class _SelecionarCantidadPageState
     setValoresIniciales();
     precioController.text = numberFormatDecimal(precio);
     unitsController.text = units.toString();
+    cajaController.text = unitsCaja.toString();
+    subcajaController.text = unitsSubcaja.toString();
+    paletController.text = unitsPalet.toString();
 
     descuento1Controller.text = numberFormatCantidades(descuento1);
     // descuento2Controller.text = numberFormatCantidades(descuento2);
@@ -121,172 +124,166 @@ class _SelecionarCantidadPageState
         title:
             Text(S.of(context).pedido_edit_selectQuantity_seleccionarCantidad),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            if (articulo != null)
-              _ArticuloInfo(
-                articulo: articulo!,
-                setArticuloSustitutivo: (articuloSusititutivoId) => setState(
-                  () => articuloId = articuloSusititutivoId,
-                ),
-              ),
-            if (articulo != null)
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: FormBuilder(
-                  key: formKeyCantidad,
-                  autovalidateMode: AutovalidateMode.disabled,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _UnitsFormField(
-                        formKey: formKeyCantidad,
-                        unitsController: unitsController,
-                        setUnitsQuantity: (value) {
-                          setState(() {
-                            units = value;
-                          });
-
-                          setTotalQuantity();
-                        },
-                        cantidad: units,
-                        ventaMinimo: articulo!.ventaMinimo,
-                        ventaMultiplo: articulo!.ventaMultiplo,
-                      ),
-                      if (articulo != null && articulo!.unidadesSubcaja > 0)
-                        _SubcajaUnitsFormField(
-                          formKey: formKeyCantidad,
-                          subcajaController: subcajaController,
-                          setUnitSubcajaQuantity: (value) {
-                            setState(() {
-                              unitsSubcaja = value;
-                            });
-
-                            setTotalQuantity();
-                          },
-                          cantidad: unitsSubcaja,
-                          unidadesPorSubcaja: articulo!.unidadesSubcaja,
-                          ventaMultiplo: articulo!.ventaMultiplo,
-                          ventaMinimo: articulo!.ventaMinimo,
-                        ),
-                      if (articulo != null && articulo!.unidadesCaja > 0)
-                        _CajaUnitsFormField(
-                          formKey: formKeyCantidad,
-                          cajaController: cajaController,
-                          setUnitCajaQuantity: (value) {
-                            setState(() {
-                              unitsCaja = value;
-                            });
-
-                            setTotalQuantity();
-                          },
-                          cantidad: unitsCaja,
-                          unidadesPorCaja: articulo!.unidadesCaja,
-                          ventaMultiplo: articulo!.ventaMultiplo,
-                          ventaMinimo: articulo!.ventaMinimo,
-                        ),
-                      if (articulo != null &&
-                          (articulo!.unidadesPalet > 0 &&
-                              articulo!.unidadesPalet != 99999))
-                        _PaletUnitsFormField(
-                          formKey: formKeyCantidad,
-                          paletController: paletController,
-                          setUnitPaletQuantity: (value) {
-                            setState(() {
-                              unitsPalet = value;
-                            });
-
-                            setTotalQuantity();
-                          },
-                          cantidad: unitsPalet,
-                          unidadesPorPalet: articulo!.unidadesPalet,
-                          ventaMultiplo: articulo!.ventaMultiplo,
-                          ventaMinimo: articulo!.ventaMinimo,
-                        ),
-                    ],
-                  ),
-                ),
-              ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'Total quantity',
-                  ),
-                  Text(
-                    numberFormatCantidades(totalQuantity),
-                    style: Theme.of(context).textTheme.titleSmall,
-                  )
-                ],
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (articulo != null)
+            _ArticuloInfo(
+              articulo: articulo!,
+              setArticuloSustitutivo: (articuloSusititutivoId) => setState(
+                () => articuloId = articuloSusititutivoId,
               ),
             ),
-            const Divider(),
-            if (articuloPrecio != null)
-              state.when(
-                initial: () => Container(),
-                error: (error, _) => Center(
-                  child: ErrorMessageWidget(
-                    error.toString(),
-                  ),
-                ),
-                loading: () => const Center(child: CircularProgressIndicator()),
-                data: (_) => (articuloPrecio != null)
-                    ? _ArticuloPrecioContainer(
-                        articuloId: widget.seleccionarCantidadParam.articuloId,
-                        clienteId: widget.seleccionarCantidadParam.clienteId,
-                        formKey: formKeyArticuloPrecio,
-                        precio: precio,
-                        tipoPrecio: articuloPrecio!.precio.tipoPrecio,
-                        precioController: precioController,
-                        descuento1Controller: descuento1Controller,
-                        descuento2: descuento2,
-                        descuento3: articuloPrecio!.descuento3,
-                        setPrecio: (value) => setState(() => precio = value),
-                        setDescuento1: (value) =>
-                            setState(() => descuento1 = value),
-                        setDescuento2: (value) =>
-                            setState(() => descuento2 = value),
-                      )
-                    : Container(),
-              ),
-            if (articuloPrecio != null) const Divider(),
-            if (articuloPrecio != null)
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          if (articuloPrecio != null)
+            TotalQuantityWidget(
+              totalQuantity: totalQuantity,
+              precio: precio,
+              descuento1: descuento1,
+              descuento2: descuento2,
+              articuloPrecio: articuloPrecio!,
+            ),
+          if (articulo != null)
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
                   children: [
-                    Text(
-                      S.of(context).pedido_edit_selectQuantity_importeLinea,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 8),
+                      child: FormBuilder(
+                        key: formKeyCantidad,
+                        autovalidateMode: AutovalidateMode.disabled,
+                        child: IntrinsicHeight(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: _UnitsFormField(
+                                  formKey: formKeyCantidad,
+                                  unitsController: unitsController,
+                                  setUnitsQuantity: (value) {
+                                    setState(() {
+                                      units = value;
+                                    });
+
+                                    setTotalQuantity();
+                                  },
+                                  cantidad: units,
+                                  ventaMinimo: articulo!.ventaMinimo,
+                                  ventaMultiplo: articulo!.ventaMultiplo,
+                                ),
+                              ),
+                              if (articulo != null &&
+                                  articulo!.unidadesSubcaja > 0)
+                                const VerticalDivider(),
+                              if (articulo != null &&
+                                  articulo!.unidadesSubcaja > 0)
+                                Expanded(
+                                  child: _SubcajaUnitsFormField(
+                                    formKey: formKeyCantidad,
+                                    subcajaController: subcajaController,
+                                    setUnitSubcajaQuantity: (value) {
+                                      setState(() {
+                                        unitsSubcaja = value;
+                                      });
+
+                                      setTotalQuantity();
+                                    },
+                                    cantidad: unitsSubcaja,
+                                    unidadesPorSubcaja:
+                                        articulo!.unidadesSubcaja,
+                                    ventaMultiplo: articulo!.ventaMultiplo,
+                                    ventaMinimo: articulo!.ventaMinimo,
+                                  ),
+                                ),
+                              if (articulo != null &&
+                                  articulo!.unidadesCaja > 0)
+                                const VerticalDivider(),
+                              if (articulo != null &&
+                                  articulo!.unidadesCaja > 0)
+                                Expanded(
+                                  child: _CajaUnitsFormField(
+                                    formKey: formKeyCantidad,
+                                    cajaController: cajaController,
+                                    setUnitCajaQuantity: (value) {
+                                      setState(() {
+                                        unitsCaja = value;
+                                      });
+
+                                      setTotalQuantity();
+                                    },
+                                    cantidad: unitsCaja,
+                                    unidadesPorCaja: articulo!.unidadesCaja,
+                                    ventaMultiplo: articulo!.ventaMultiplo,
+                                    ventaMinimo: articulo!.ventaMinimo,
+                                  ),
+                                ),
+                              if (articulo != null &&
+                                  (articulo!.unidadesPalet > 0 &&
+                                      articulo!.unidadesPalet != 99999))
+                                const VerticalDivider(),
+                              if (articulo != null &&
+                                  (articulo!.unidadesPalet > 0 &&
+                                      articulo!.unidadesPalet != 99999))
+                                Expanded(
+                                  child: _PaletUnitsFormField(
+                                    formKey: formKeyCantidad,
+                                    paletController: paletController,
+                                    setUnitPaletQuantity: (value) {
+                                      setState(() {
+                                        unitsPalet = value;
+                                      });
+
+                                      setTotalQuantity();
+                                    },
+                                    cantidad: unitsPalet,
+                                    unidadesPorPalet: articulo!.unidadesPalet,
+                                    ventaMultiplo: articulo!.ventaMultiplo,
+                                    ventaMinimo: articulo!.ventaMinimo,
+                                  ),
+                                ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
-                    Text(
-                      ref
-                          .read(pedidoVentaRepositoryProvider)
-                          .getTotalLinea(
-                              precio: Precio(
-                                  precio: precio.toMoney(
-                                      currencyId: articuloPrecio!.divisaId),
-                                  tipoPrecio:
-                                      articuloPrecio!.precio.tipoPrecio),
-                              cantidad: totalQuantity,
-                              descuento1: descuento1,
-                              descuento2: descuento2,
-                              descuento3: articuloPrecio!.descuento3)
-                          .toString(),
-                      style: Theme.of(context).textTheme.titleSmall,
-                    )
+                    if (articuloPrecio != null)
+                      state.when(
+                        initial: () => Container(),
+                        error: (error, _) => Center(
+                          child: ErrorMessageWidget(
+                            error.toString(),
+                          ),
+                        ),
+                        loading: () =>
+                            const Center(child: CircularProgressIndicator()),
+                        data: (_) => (articuloPrecio != null)
+                            ? _ArticuloPrecioContainer(
+                                articuloId:
+                                    widget.seleccionarCantidadParam.articuloId,
+                                clienteId:
+                                    widget.seleccionarCantidadParam.clienteId,
+                                formKey: formKeyArticuloPrecio,
+                                precio: precio,
+                                tipoPrecio: articuloPrecio!.precio.tipoPrecio,
+                                precioController: precioController,
+                                descuento1Controller: descuento1Controller,
+                                descuento2: descuento2,
+                                descuento3: articuloPrecio!.descuento3,
+                                setPrecio: (value) =>
+                                    setState(() => precio = value),
+                                setDescuento1: (value) =>
+                                    setState(() => descuento1 = value),
+                                setDescuento2: (value) =>
+                                    setState(() => descuento2 = value),
+                              )
+                            : Container(),
+                      ),
                   ],
                 ),
               ),
-          ],
-        ),
+            ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => (articulo != null && cliente != null)
@@ -483,7 +480,7 @@ class _ArticuloInfo extends ConsumerWidget {
                       style: Theme.of(context).textTheme.titleSmall,
                     ),
                     Text(
-                      '${S.of(context).pedido_edit_selectQuantity_stockDisponible} ${articulo.stockDisponible} ${S.of(context).unidad}',
+                      '${S.of(context).pedido_edit_selectQuantity_stockDisponible} ${numberFormatCantidades(articulo.stockDisponible)} ${S.of(context).unidad}',
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ],
@@ -557,6 +554,103 @@ class _ArticuloInfo extends ConsumerWidget {
   }
 }
 
+class TotalQuantityWidget extends ConsumerWidget {
+  const TotalQuantityWidget({
+    super.key,
+    required this.totalQuantity,
+    required this.precio,
+    required this.descuento1,
+    required this.descuento2,
+    required this.articuloPrecio,
+  });
+
+  final int totalQuantity;
+  final double precio;
+  final double descuento1;
+  final double descuento2;
+  final ArticuloPrecio articuloPrecio;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Expanded(
+            child: Card(
+              color: Theme.of(context).colorScheme.primaryContainer,
+              child: Padding(
+                padding: const EdgeInsets.all(24.0),
+                child: Column(
+                  children: [
+                    Text(
+                      S.of(context).pedido_edit_selectQuantity_cantidad,
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color:
+                              Theme.of(context).colorScheme.onPrimaryContainer),
+                    ),
+                    gapH8,
+                    Text(
+                      '${numberFormatCantidades(totalQuantity)} ${S.of(context).unidad}',
+                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onPrimaryContainer,
+                          ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            child: Card(
+              color: Theme.of(context).colorScheme.primaryContainer,
+              child: Padding(
+                padding: const EdgeInsets.all(24),
+                child: Column(
+                  children: [
+                    Text(
+                      S.of(context).pedido_edit_selectQuantity_importe,
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onPrimaryContainer,
+                          ),
+                    ),
+                    gapH8,
+                    Text(
+                      ref
+                          .read(pedidoVentaRepositoryProvider)
+                          .getTotalLinea(
+                            precio: Precio(
+                                precio: precio.toMoney(
+                                    currencyId: articuloPrecio.divisaId),
+                                tipoPrecio: articuloPrecio.precio.tipoPrecio),
+                            cantidad: totalQuantity,
+                            descuento1: descuento1,
+                            descuento2: descuento2,
+                            descuento3: articuloPrecio.descuento3,
+                          )
+                          .toString(),
+                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onPrimaryContainer,
+                          ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class _UnitsFormField extends StatelessWidget {
   const _UnitsFormField({
     required this.formKey,
@@ -576,46 +670,40 @@ class _UnitsFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Column(
       children: [
-        Expanded(
-          flex: 3,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(S.of(context).pedido_edit_selectQuantity_unidades),
-              Text('x$ventaMultiplo ${S.of(context).unidad}',
-                  style: Theme.of(context).textTheme.bodySmall),
-            ],
+        FormBuilderTextField(
+          name: 'unidades',
+          autofocus: true,
+          textAlign: TextAlign.right,
+          keyboardType: TextInputType.number,
+          controller: unitsController,
+          decoration: InputDecoration(
+            labelText: S.of(context).pedido_edit_selectQuantity_unidades,
+            labelStyle: Theme.of(context)
+                .inputDecorationTheme
+                .labelStyle
+                ?.copyWith(fontSize: 9),
           ),
-        ),
-        Expanded(
-          flex: 5,
-          child: FormBuilderTextField(
-            name: 'unidades',
-            autofocus: true,
-            textAlign: TextAlign.right,
-            keyboardType: TextInputType.number,
-            controller: unitsController,
-            decoration: InputDecoration(
-              labelText: S.of(context).pedido_edit_selectQuantity_cantidad,
-            ),
-            validator: (value) => validateQuantity(context, value),
-            onChanged: (value) {
-              if (value != null && value.isNotEmpty) {
-                final totalQuantity = int.tryParse(value);
-                if (totalQuantity != null) {
-                  setUnitsQuantity(totalQuantity);
-                }
-              } else {
-                setUnitsQuantity(0);
+          validator: (value) => validateQuantity(context, value),
+          onChanged: (value) {
+            if (value != null && value.isNotEmpty) {
+              final totalQuantity = int.tryParse(value);
+              if (totalQuantity != null) {
+                setUnitsQuantity(totalQuantity);
               }
-            },
-            onTap: () => unitsController.selection = TextSelection(
-                baseOffset: 0, extentOffset: unitsController.text.length),
-          ),
+            } else {
+              setUnitsQuantity(0);
+            }
+          },
+          onTap: () => unitsController.selection = TextSelection(
+              baseOffset: 0, extentOffset: unitsController.text.length),
         ),
+        gapH4,
+        Text(
+            'x${numberFormatCantidades(ventaMultiplo)} ${S.of(context).unidad}',
+            style:
+                Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 9)),
       ],
     );
   }
@@ -674,48 +762,40 @@ class _CajaUnitsFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Column(
       children: [
-        Expanded(
-          flex: 3,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(S.of(context).pedido_edit_selectQuantity_caja),
-              Text('x$unidadesPorCaja ${S.of(context).unidad}',
-                  style: Theme.of(context).textTheme.bodySmall)
-            ],
+        FormBuilderTextField(
+          name: 'unidades_caja',
+          autofocus: true,
+          keyboardType: TextInputType.number,
+          controller: cajaController,
+          decoration: InputDecoration(
+            labelText: S.of(context).pedido_edit_selectQuantity_cajas,
+            labelStyle: Theme.of(context)
+                .inputDecorationTheme
+                .labelStyle
+                ?.copyWith(fontSize: 9),
           ),
-        ),
-        Expanded(
-          flex: 5,
-          child: FormBuilderTextField(
-            name: 'unidades_caja',
-            autofocus: true,
-            keyboardType: TextInputType.number,
-            controller: cajaController,
-            decoration: InputDecoration(
-              labelText:
-                  S.of(context).articulo_show_articuloDetalle_cantidadCaja,
-            ),
-            textAlign: TextAlign.right,
-            validator: (value) => validateQuantityCaja(context, value),
-            onChanged: (value) {
-              if (value != null && value.isNotEmpty) {
-                int? totalQuantity = int.tryParse(value);
-                if (totalQuantity != null) {
-                  totalQuantity = totalQuantity * unidadesPorCaja;
-                  setUnitCajaQuantity(totalQuantity);
-                }
-              } else {
-                setUnitCajaQuantity(0);
+          textAlign: TextAlign.right,
+          validator: (value) => validateQuantityCaja(context, value),
+          onChanged: (value) {
+            if (value != null && value.isNotEmpty) {
+              int? totalQuantity = int.tryParse(value);
+              if (totalQuantity != null) {
+                totalQuantity = totalQuantity * unidadesPorCaja;
+                setUnitCajaQuantity(totalQuantity);
               }
-            },
-            onTap: () => cajaController.selection = TextSelection(
-                baseOffset: 0, extentOffset: cajaController.text.length),
-          ),
+            } else {
+              setUnitCajaQuantity(0);
+            }
+          },
+          onTap: () => cajaController.selection = TextSelection(
+              baseOffset: 0, extentOffset: cajaController.text.length),
         ),
+        gapH4,
+        Text(
+            'x${numberFormatCantidades(unidadesPorCaja)} ${S.of(context).unidad}',
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 9))
       ],
     );
   }
@@ -770,48 +850,41 @@ class _SubcajaUnitsFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Column(
       children: [
-        Expanded(
-          flex: 3,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(S.of(context).pedido_edit_selectQuantity_subcaja),
-              Text('x$unidadesPorSubcaja ${S.of(context).unidad}',
-                  style: Theme.of(context).textTheme.bodySmall)
-            ],
+        FormBuilderTextField(
+          name: 'unidades_subcaja',
+          autofocus: true,
+          keyboardType: TextInputType.number,
+          controller: subcajaController,
+          decoration: InputDecoration(
+            labelText: S.of(context).pedido_edit_selectQuantity_subcajas,
+            labelStyle: Theme.of(context)
+                .inputDecorationTheme
+                .labelStyle
+                ?.copyWith(fontSize: 9),
           ),
-        ),
-        Expanded(
-          flex: 5,
-          child: FormBuilderTextField(
-            name: 'unidades_subcaja',
-            autofocus: true,
-            keyboardType: TextInputType.number,
-            controller: subcajaController,
-            decoration: InputDecoration(
-              labelText:
-                  S.of(context).articulo_show_articuloDetalle_cantidadSubcaja,
-            ),
-            textAlign: TextAlign.right,
-            validator: (value) => validateQuantitySubcaja(context, value),
-            onChanged: (value) {
-              if (value != null && value.isNotEmpty) {
-                int? totalQuantity = int.tryParse(value);
-                if (totalQuantity != null) {
-                  totalQuantity = totalQuantity * unidadesPorSubcaja;
-                  setUnitSubcajaQuantity(totalQuantity);
-                }
-              } else {
-                setUnitSubcajaQuantity(0);
+          textAlign: TextAlign.right,
+          validator: (value) => validateQuantitySubcaja(context, value),
+          onChanged: (value) {
+            if (value != null && value.isNotEmpty) {
+              int? totalQuantity = int.tryParse(value);
+              if (totalQuantity != null) {
+                totalQuantity = totalQuantity * unidadesPorSubcaja;
+                setUnitSubcajaQuantity(totalQuantity);
               }
-            },
-            onTap: () => subcajaController.selection = TextSelection(
-                baseOffset: 0, extentOffset: subcajaController.text.length),
-          ),
+            } else {
+              setUnitSubcajaQuantity(0);
+            }
+          },
+          onTap: () => subcajaController.selection = TextSelection(
+              baseOffset: 0, extentOffset: subcajaController.text.length),
         ),
+        gapH4,
+        Text(
+          'x${numberFormatCantidades(unidadesPorSubcaja)} ${S.of(context).unidad}',
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 9),
+        )
       ],
     );
   }
@@ -866,48 +939,41 @@ class _PaletUnitsFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Column(
       children: [
-        Expanded(
-          flex: 3,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(S.of(context).pedido_edit_selectQuantity_palet),
-              Text('x$unidadesPorPalet ${S.of(context).unidad}',
-                  style: Theme.of(context).textTheme.bodySmall)
-            ],
+        FormBuilderTextField(
+          name: 'unidades_palet',
+          autofocus: true,
+          keyboardType: TextInputType.number,
+          textAlign: TextAlign.right,
+          controller: paletController,
+          decoration: InputDecoration(
+            labelText: S.of(context).pedido_edit_selectQuantity_pallets,
+            labelStyle: Theme.of(context)
+                .inputDecorationTheme
+                .labelStyle
+                ?.copyWith(fontSize: 9),
           ),
-        ),
-        Expanded(
-          flex: 5,
-          child: FormBuilderTextField(
-            name: 'unidades_palet',
-            autofocus: true,
-            keyboardType: TextInputType.number,
-            textAlign: TextAlign.right,
-            controller: paletController,
-            decoration: InputDecoration(
-              labelText:
-                  S.of(context).articulo_show_articuloDetalle_cantidadPalet,
-            ),
-            validator: (value) => validateQuantityPalet(context, value),
-            onChanged: (value) {
-              if (value != null && value.isNotEmpty) {
-                int? quantity = int.tryParse(value);
-                if (quantity != null) {
-                  quantity = quantity * unidadesPorPalet;
-                  setUnitPaletQuantity(quantity);
-                }
-              } else {
-                setUnitPaletQuantity(0);
+          validator: (value) => validateQuantityPalet(context, value),
+          onChanged: (value) {
+            if (value != null && value.isNotEmpty) {
+              int? quantity = int.tryParse(value);
+              if (quantity != null) {
+                quantity = quantity * unidadesPorPalet;
+                setUnitPaletQuantity(quantity);
               }
-            },
-            onTap: () => paletController.selection = TextSelection(
-                baseOffset: 0, extentOffset: paletController.text.length),
-          ),
+            } else {
+              setUnitPaletQuantity(0);
+            }
+          },
+          onTap: () => paletController.selection = TextSelection(
+              baseOffset: 0, extentOffset: paletController.text.length),
         ),
+        gapH4,
+        Text(
+          'x${numberFormatCantidades(unidadesPorPalet)} ${S.of(context).unidad}',
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 9),
+        )
       ],
     );
   }
@@ -979,88 +1045,104 @@ class _ArticuloPrecioContainer extends ConsumerWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
       child: FormBuilder(
         key: formKey,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            articuloPrecioValue.maybeWhen(
-              orElse: () => Container(),
-              data: (ultimosPrecios) => ultimosPrecios != null
-                  ? Text(
-                      '${S.of(context).pedido_edit_pedidoEdit_ultimoPrecioDeCompra}:  ${formatPrecioYDescuento(
-                        precio: ultimosPrecios.precioDivisa,
-                        tipoPrecio: ultimosPrecios.tipoPrecio,
-                        descuento1: ultimosPrecios.descuento1,
-                        descuento2: ultimosPrecios.descuento2,
-                        descuento3: ultimosPrecios.descuento3,
-                      )} (${numberFormatCantidades(ultimosPrecios.cantidad)} ${S.of(context).unidad})',
+        child: IntrinsicHeight(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              articuloPrecioValue.maybeWhen(
+                orElse: () => Container(),
+                data: (ultimosPrecios) => ultimosPrecios != null
+                    ? Text(
+                        '${S.of(context).pedido_edit_pedidoEdit_ultimoPrecioDeCompra}:  ${formatPrecioYDescuento(
+                          precio: ultimosPrecios.precioDivisa,
+                          tipoPrecio: ultimosPrecios.tipoPrecio,
+                          descuento1: ultimosPrecios.descuento1,
+                          descuento2: ultimosPrecios.descuento2,
+                          descuento3: ultimosPrecios.descuento3,
+                        )} (${numberFormatCantidades(ultimosPrecios.cantidad)} ${S.of(context).unidad})',
+                        style: Theme.of(context).textTheme.bodySmall,
+                      )
+                    : Container(),
+              ),
+              Expanded(
+                child: FormBuilderTextField(
+                  name: 'precio',
+                  controller: precioController,
+                  keyboardType:
+                      const TextInputType.numberWithOptions(decimal: true),
+                  textAlign: TextAlign.right,
+                  decoration: InputDecoration(
+                    labelText: S.of(context).pedido_edit_selectQuantity_precio,
+                    suffix: Text(
+                      'x$tipoPrecio',
                       style: Theme.of(context).textTheme.bodySmall,
-                    )
-                  : Container(),
-            ),
-            FormBuilderTextField(
-              name: 'precio',
-              controller: precioController,
-              keyboardType:
-                  const TextInputType.numberWithOptions(decimal: true),
-              decoration: InputDecoration(
-                labelText: S.of(context).pedido_edit_selectQuantity_precio,
-                suffix: Text(
-                  'x$tipoPrecio',
-                  style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                  ),
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(),
+                  ]),
+                  enabled:
+                      ref.watch(usuarioNotifierProvider)?.modificarPedido ??
+                          false,
+                  onChanged: (value) {
+                    if (value != null && value.isNotEmpty) {
+                      final precioValue =
+                          double.tryParse(value.replaceAll(',', '.'));
+
+                      if (precioValue != null) {
+                        setPrecio(precioValue);
+                      }
+                    } else {
+                      setPrecio(0);
+                    }
+                  },
+                  onTap: () => precioController.selection = TextSelection(
+                    baseOffset: 0,
+                    extentOffset: precioController.text.length,
+                  ),
                 ),
               ),
-              validator: FormBuilderValidators.compose([
-                FormBuilderValidators.required(),
-              ]),
-              enabled:
-                  ref.watch(usuarioNotifierProvider)?.modificarPedido ?? false,
-              onChanged: (value) {
-                if (value != null && value.isNotEmpty) {
-                  final precioValue =
-                      double.tryParse(value.replaceAll(',', '.'));
+              gapW16,
+              const VerticalDivider(),
+              gapW16,
+              Expanded(
+                child: FormBuilderTextField(
+                  name: 'dto1',
+                  keyboardType: TextInputType.number,
+                  controller: descuento1Controller,
+                  decoration: InputDecoration(
+                    labelText:
+                        S.of(context).pedido_edit_selectQuantity_descuneto1,
+                    suffix:
+                        Text('%', style: Theme.of(context).textTheme.bodySmall),
+                  ),
+                  textAlign: TextAlign.right,
+                  enabled:
+                      ref.watch(usuarioNotifierProvider)?.modificarPedido ??
+                          false,
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(),
+                  ]),
+                  onChanged: (value) {
+                    if (value != null && value.isNotEmpty) {
+                      final dto1Value =
+                          double.tryParse(value.replaceAll(',', '.'));
 
-                  if (precioValue != null) {
-                    setPrecio(precioValue);
-                  }
-                } else {
-                  setPrecio(0);
-                }
-              },
-              onTap: () => precioController.selection = TextSelection(
-                baseOffset: 0,
-                extentOffset: precioController.text.length,
+                      if (dto1Value != null) {
+                        setDescuento1(dto1Value);
+                      }
+                    } else {
+                      setDescuento1(0);
+                    }
+                  },
+                  onTap: () => descuento1Controller.selection = TextSelection(
+                    baseOffset: 0,
+                    extentOffset: descuento1Controller.text.length,
+                  ),
+                ),
               ),
-            ),
-            FormBuilderTextField(
-              name: 'dto1',
-              keyboardType: TextInputType.number,
-              controller: descuento1Controller,
-              decoration: InputDecoration(
-                labelText: S.of(context).pedido_edit_selectQuantity_descuneto1,
-                suffix: Text('%', style: Theme.of(context).textTheme.bodySmall),
-              ),
-              enabled:
-                  ref.watch(usuarioNotifierProvider)?.modificarPedido ?? false,
-              validator: FormBuilderValidators.compose([
-                FormBuilderValidators.required(),
-              ]),
-              onChanged: (value) {
-                if (value != null && value.isNotEmpty) {
-                  final dto1Value = double.tryParse(value.replaceAll(',', '.'));
-
-                  if (dto1Value != null) {
-                    setDescuento1(dto1Value);
-                  }
-                } else {
-                  setDescuento1(0);
-                }
-              },
-              onTap: () => descuento1Controller.selection = TextSelection(
-                baseOffset: 0,
-                extentOffset: descuento1Controller.text.length,
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

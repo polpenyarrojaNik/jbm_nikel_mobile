@@ -470,10 +470,10 @@ class S {
     );
   }
 
-  /// `Palet quantity`
+  /// `Pallet quantity`
   String get articulo_show_articuloDetalle_cantidadPalet {
     return Intl.message(
-      'Palet quantity',
+      'Pallet quantity',
       name: 'articulo_show_articuloDetalle_cantidadPalet',
       desc: '',
       args: [],
@@ -2764,6 +2764,16 @@ class S {
     );
   }
 
+  /// `Total quantity`
+  String get pedido_edit_selectQuantity_cantidadTotal {
+    return Intl.message(
+      'Total quantity',
+      name: 'pedido_edit_selectQuantity_cantidadTotal',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Price`
   String get pedido_edit_selectQuantity_precio {
     return Intl.message(
@@ -2809,6 +2819,16 @@ class S {
     return Intl.message(
       'Amount line',
       name: 'pedido_edit_selectQuantity_importeLinea',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Amount`
+  String get pedido_edit_selectQuantity_importe {
+    return Intl.message(
+      'Amount',
+      name: 'pedido_edit_selectQuantity_importe',
       desc: '',
       args: [],
     );
@@ -3609,6 +3629,36 @@ class S {
     return Intl.message(
       'Units',
       name: 'pedido_edit_selectQuantity_unidades',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Boxes`
+  String get pedido_edit_selectQuantity_cajas {
+    return Intl.message(
+      'Boxes',
+      name: 'pedido_edit_selectQuantity_cajas',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pallets`
+  String get pedido_edit_selectQuantity_pallets {
+    return Intl.message(
+      'Pallets',
+      name: 'pedido_edit_selectQuantity_pallets',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subboxes`
+  String get pedido_edit_selectQuantity_subcajas {
+    return Intl.message(
+      'Subboxes',
+      name: 'pedido_edit_selectQuantity_subcajas',
       desc: '',
       args: [],
     );
