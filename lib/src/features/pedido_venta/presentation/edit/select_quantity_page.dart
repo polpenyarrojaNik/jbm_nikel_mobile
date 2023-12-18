@@ -385,6 +385,7 @@ class _SelecionarCantidadPageState
           if (!widget.seleccionarCantidadParam.isUpdatingLinea()) {
             totalQuantity = newArticuloValue.ventaMinimo;
             units = newArticuloValue.ventaMinimo;
+            unitsController.text = units.toString();
           }
         },
       );
