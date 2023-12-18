@@ -147,7 +147,7 @@ class _$PedidoVentaEstadoImpl extends _PedidoVentaEstado {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PedidoVentaEstadoImpl &&

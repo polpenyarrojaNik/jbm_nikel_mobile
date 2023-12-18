@@ -107,7 +107,7 @@ class _$NoConnectionImpl<T> extends _NoConnection<T> {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$NoConnectionImpl<T>);
   }
@@ -234,7 +234,7 @@ class _$NotModifiedImpl<T> extends _NotModified<T> {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NotModifiedImpl<T> &&
@@ -392,7 +392,7 @@ class _$WithNewDataImpl<T> extends _WithNewData<T> {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$WithNewDataImpl<T> &&

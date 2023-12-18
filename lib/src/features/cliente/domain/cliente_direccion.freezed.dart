@@ -380,7 +380,7 @@ class _$ClienteDireccionImpl extends _ClienteDireccion {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ClienteDireccionImpl &&

@@ -114,7 +114,7 @@ class _$loadingImpl extends _loading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$loadingImpl);
   }
@@ -229,7 +229,7 @@ class _$initialImpl extends _initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$initialImpl);
   }
@@ -366,7 +366,7 @@ class _$errorImpl extends _error {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$errorImpl &&
@@ -516,7 +516,7 @@ class _$dataImpl extends _data {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$dataImpl &&

@@ -207,7 +207,7 @@ class _$SyncDateTimeDTOImpl extends _SyncDateTimeDTO {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SyncDateTimeDTOImpl &&

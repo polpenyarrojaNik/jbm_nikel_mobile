@@ -135,7 +135,7 @@ class _$ArticuloImagenDTOImpl extends _ArticuloImagenDTO {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ArticuloImagenDTOImpl &&

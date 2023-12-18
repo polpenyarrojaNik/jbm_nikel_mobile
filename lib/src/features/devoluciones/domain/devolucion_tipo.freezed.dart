@@ -379,7 +379,7 @@ class _$DevolucionTipoImpl extends _DevolucionTipo {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DevolucionTipoImpl &&

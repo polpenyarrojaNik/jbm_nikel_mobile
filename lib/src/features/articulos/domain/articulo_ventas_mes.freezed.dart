@@ -267,7 +267,7 @@ class _$ArticuloVentasMesImpl extends _ArticuloVentasMes {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ArticuloVentasMesImpl &&

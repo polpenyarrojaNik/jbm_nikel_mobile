@@ -166,7 +166,7 @@ class _$downloadDatabaseImpl extends _downloadDatabase
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$downloadDatabaseImpl &&
@@ -324,7 +324,7 @@ class _$loadingImpl extends _loading with DiagnosticableTreeMixin {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$loadingImpl);
   }
@@ -461,7 +461,7 @@ class _$initialImpl extends _initial with DiagnosticableTreeMixin {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$initialImpl);
   }
@@ -598,7 +598,7 @@ class _$notDownloadedImpl extends _notDownloaded with DiagnosticableTreeMixin {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$notDownloadedImpl);
   }
@@ -759,7 +759,7 @@ class _$errorImpl extends _error with DiagnosticableTreeMixin {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$errorImpl &&
@@ -912,7 +912,7 @@ class _$dataImpl extends _data with DiagnosticableTreeMixin {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$dataImpl);
   }

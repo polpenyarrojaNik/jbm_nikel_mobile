@@ -119,7 +119,7 @@ class _$initialImpl extends _initial with DiagnosticableTreeMixin {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$initialImpl);
   }
@@ -242,7 +242,7 @@ class _$shinchronizingImpl extends _shinchronizing
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$shinchronizingImpl);
   }
@@ -364,7 +364,7 @@ class _$synchronizedImpl extends _synchronized with DiagnosticableTreeMixin {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$synchronizedImpl);
   }
@@ -510,7 +510,7 @@ class _$errorImpl extends _error with DiagnosticableTreeMixin {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$errorImpl &&

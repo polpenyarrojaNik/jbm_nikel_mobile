@@ -213,7 +213,7 @@ class _$ArticuloVentasMesTodosDTOImpl extends _ArticuloVentasMesTodosDTO {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ArticuloVentasMesTodosDTOImpl &&

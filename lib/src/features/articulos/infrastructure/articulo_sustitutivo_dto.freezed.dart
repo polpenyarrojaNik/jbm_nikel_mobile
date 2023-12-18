@@ -195,7 +195,7 @@ class _$ArticuloSustitutivoDTOImpl extends _ArticuloSustitutivoDTO {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ArticuloSustitutivoDTOImpl &&

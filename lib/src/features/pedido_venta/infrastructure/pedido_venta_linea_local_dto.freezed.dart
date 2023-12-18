@@ -413,7 +413,7 @@ class _$PedidoVentaLineaLocalDTOImpl extends _PedidoVentaLineaLocalDTO {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PedidoVentaLineaLocalDTOImpl &&

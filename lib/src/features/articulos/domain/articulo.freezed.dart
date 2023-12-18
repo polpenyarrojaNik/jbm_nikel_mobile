@@ -1210,7 +1210,7 @@ class _$ArticuloImpl extends _Articulo {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ArticuloImpl &&

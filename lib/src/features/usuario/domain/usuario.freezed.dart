@@ -312,7 +312,7 @@ class _$UsuarioImpl extends _Usuario {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UsuarioImpl &&

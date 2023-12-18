@@ -476,7 +476,7 @@ class _$DivisaDTOImpl extends _DivisaDTO {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DivisaDTOImpl &&

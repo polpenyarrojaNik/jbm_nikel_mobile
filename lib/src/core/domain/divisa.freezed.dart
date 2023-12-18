@@ -200,7 +200,7 @@ class _$DivisaImpl extends _Divisa {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DivisaImpl &&

@@ -207,7 +207,7 @@ class _$ProvinciaDTOImpl extends _ProvinciaDTO {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProvinciaDTOImpl &&

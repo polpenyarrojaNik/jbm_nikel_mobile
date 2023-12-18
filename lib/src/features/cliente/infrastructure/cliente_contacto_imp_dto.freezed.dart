@@ -355,7 +355,7 @@ class _$ClienteContactoImpDTOImpl extends _ClienteContactoImpDTO {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ClienteContactoImpDTOImpl &&

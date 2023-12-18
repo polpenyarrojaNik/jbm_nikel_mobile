@@ -423,7 +423,7 @@ class _$MetodoDeCobroDTOImpl extends _MetodoDeCobroDTO {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MetodoDeCobroDTOImpl &&

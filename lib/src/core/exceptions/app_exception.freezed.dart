@@ -192,7 +192,7 @@ class _$RestApiFailureImpl implements RestApiFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RestApiFailureImpl &&
@@ -397,7 +397,7 @@ class _$AuthLocalFailureImpl implements AuthLocalFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuthLocalFailureImpl &&
@@ -600,7 +600,7 @@ class _$FetchLocalDataFailureImpl implements FetchLocalDataFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FetchLocalDataFailureImpl &&
@@ -804,7 +804,7 @@ class _$CreateFileInCahceFailureImpl implements CreateFileInCahceFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateFileInCahceFailureImpl &&
@@ -1013,7 +1013,7 @@ class _$SyncFailureImpl implements SyncFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SyncFailureImpl &&
@@ -1201,7 +1201,7 @@ class _$ClienteNotFoundFailureImpl implements ClienteNotFoundFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ClienteNotFoundFailureImpl);
@@ -1372,7 +1372,7 @@ class _$ArticuloNotFoundFailureImpl implements ArticuloNotFoundFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ArticuloNotFoundFailureImpl);
@@ -1543,7 +1543,7 @@ class _$PedidoVentaNotFoundFailureImpl implements PedidoVentaNotFoundFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PedidoVentaNotFoundFailureImpl);
@@ -1732,7 +1732,7 @@ class _$PedidoVentaDeleteFailureImpl implements PedidoVentaDeleteFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PedidoVentaDeleteFailureImpl &&
@@ -1934,7 +1934,7 @@ class _$InsertDataFailureImpl implements InsertDataFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InsertDataFailureImpl &&
@@ -2118,7 +2118,7 @@ class _$NotConnectionFailureImpl implements NotConnectionFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NotConnectionFailureImpl);
@@ -2287,7 +2287,7 @@ class _$ArchivoNoEncontradoImpl implements ArchivoNoEncontrado {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ArchivoNoEncontradoImpl);

@@ -261,7 +261,7 @@ class _$ClienteRappelDTOImpl extends _ClienteRappelDTO {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ClienteRappelDTOImpl &&

@@ -379,7 +379,7 @@ class _$PlazoDeCobroImpl extends _PlazoDeCobro {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PlazoDeCobroImpl &&

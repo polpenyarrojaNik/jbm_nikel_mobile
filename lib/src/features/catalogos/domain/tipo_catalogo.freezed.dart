@@ -118,7 +118,7 @@ class _$TipoCatalogoImpl extends _TipoCatalogo {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TipoCatalogoImpl &&

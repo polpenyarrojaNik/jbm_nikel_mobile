@@ -194,7 +194,7 @@ class _$loadingImpl extends _loading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$loadingImpl);
   }
@@ -514,7 +514,7 @@ class _$dataImpl extends _data {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$dataImpl &&
@@ -787,7 +787,7 @@ class _$errorImpl extends _error {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$errorImpl &&
@@ -998,7 +998,7 @@ class _$deletedImpl extends _deleted {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$deletedImpl);
   }
@@ -1216,7 +1216,7 @@ class _$savedImpl extends _saved {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$savedImpl &&
@@ -1570,7 +1570,7 @@ class _$savedErrorImpl extends _savedError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$savedErrorImpl &&
