@@ -1046,104 +1046,112 @@ class _ArticuloPrecioContainer extends ConsumerWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
       child: FormBuilder(
         key: formKey,
-        child: IntrinsicHeight(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              articuloPrecioValue.maybeWhen(
-                orElse: () => Container(),
-                data: (ultimosPrecios) => ultimosPrecios != null
-                    ? Text(
-                        '${S.of(context).pedido_edit_pedidoEdit_ultimoPrecioDeCompra}:  ${formatPrecioYDescuento(
-                          precio: ultimosPrecios.precioDivisa,
-                          tipoPrecio: ultimosPrecios.tipoPrecio,
-                          descuento1: ultimosPrecios.descuento1,
-                          descuento2: ultimosPrecios.descuento2,
-                          descuento3: ultimosPrecios.descuento3,
-                        )} (${numberFormatCantidades(ultimosPrecios.cantidad)} ${S.of(context).unidad})',
-                        style: Theme.of(context).textTheme.bodySmall,
-                      )
-                    : Container(),
-              ),
-              Expanded(
-                child: FormBuilderTextField(
-                  name: 'precio',
-                  controller: precioController,
-                  keyboardType:
-                      const TextInputType.numberWithOptions(decimal: true),
-                  textAlign: TextAlign.right,
-                  decoration: InputDecoration(
-                    labelText: S.of(context).pedido_edit_selectQuantity_precio,
-                    suffix: Text(
-                      'x$tipoPrecio',
-                      style: Theme.of(context).textTheme.bodySmall,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            IntrinsicHeight(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: FormBuilderTextField(
+                      name: 'precio',
+                      controller: precioController,
+                      keyboardType:
+                          const TextInputType.numberWithOptions(decimal: true),
+                      textAlign: TextAlign.right,
+                      decoration: InputDecoration(
+                        labelText:
+                            S.of(context).pedido_edit_selectQuantity_precio,
+                        suffix: Text(
+                          'x$tipoPrecio',
+                          style: Theme.of(context).textTheme.bodySmall,
+                        ),
+                      ),
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(),
+                      ]),
+                      enabled:
+                          ref.watch(usuarioNotifierProvider)?.modificarPedido ??
+                              false,
+                      onChanged: (value) {
+                        if (value != null && value.isNotEmpty) {
+                          final precioValue =
+                              double.tryParse(value.replaceAll(',', '.'));
+
+                          if (precioValue != null) {
+                            setPrecio(precioValue);
+                          }
+                        } else {
+                          setPrecio(0);
+                        }
+                      },
+                      onTap: () => precioController.selection = TextSelection(
+                        baseOffset: 0,
+                        extentOffset: precioController.text.length,
+                      ),
                     ),
                   ),
-                  validator: FormBuilderValidators.compose([
-                    FormBuilderValidators.required(),
-                  ]),
-                  enabled:
-                      ref.watch(usuarioNotifierProvider)?.modificarPedido ??
-                          false,
-                  onChanged: (value) {
-                    if (value != null && value.isNotEmpty) {
-                      final precioValue =
-                          double.tryParse(value.replaceAll(',', '.'));
+                  gapW16,
+                  const VerticalDivider(),
+                  gapW16,
+                  Expanded(
+                    child: FormBuilderTextField(
+                      name: 'dto1',
+                      keyboardType: TextInputType.number,
+                      controller: descuento1Controller,
+                      decoration: InputDecoration(
+                        labelText:
+                            S.of(context).pedido_edit_selectQuantity_descuneto1,
+                        suffix: Text('%',
+                            style: Theme.of(context).textTheme.bodySmall),
+                      ),
+                      textAlign: TextAlign.right,
+                      enabled:
+                          ref.watch(usuarioNotifierProvider)?.modificarPedido ??
+                              false,
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(),
+                      ]),
+                      onChanged: (value) {
+                        if (value != null && value.isNotEmpty) {
+                          final dto1Value =
+                              double.tryParse(value.replaceAll(',', '.'));
 
-                      if (precioValue != null) {
-                        setPrecio(precioValue);
-                      }
-                    } else {
-                      setPrecio(0);
-                    }
-                  },
-                  onTap: () => precioController.selection = TextSelection(
-                    baseOffset: 0,
-                    extentOffset: precioController.text.length,
+                          if (dto1Value != null) {
+                            setDescuento1(dto1Value);
+                          }
+                        } else {
+                          setDescuento1(0);
+                        }
+                      },
+                      onTap: () =>
+                          descuento1Controller.selection = TextSelection(
+                        baseOffset: 0,
+                        extentOffset: descuento1Controller.text.length,
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
-              gapW16,
-              const VerticalDivider(),
-              gapW16,
-              Expanded(
-                child: FormBuilderTextField(
-                  name: 'dto1',
-                  keyboardType: TextInputType.number,
-                  controller: descuento1Controller,
-                  decoration: InputDecoration(
-                    labelText:
-                        S.of(context).pedido_edit_selectQuantity_descuneto1,
-                    suffix:
-                        Text('%', style: Theme.of(context).textTheme.bodySmall),
-                  ),
-                  textAlign: TextAlign.right,
-                  enabled:
-                      ref.watch(usuarioNotifierProvider)?.modificarPedido ??
-                          false,
-                  validator: FormBuilderValidators.compose([
-                    FormBuilderValidators.required(),
-                  ]),
-                  onChanged: (value) {
-                    if (value != null && value.isNotEmpty) {
-                      final dto1Value =
-                          double.tryParse(value.replaceAll(',', '.'));
-
-                      if (dto1Value != null) {
-                        setDescuento1(dto1Value);
-                      }
-                    } else {
-                      setDescuento1(0);
-                    }
-                  },
-                  onTap: () => descuento1Controller.selection = TextSelection(
-                    baseOffset: 0,
-                    extentOffset: descuento1Controller.text.length,
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+            gapH4,
+            articuloPrecioValue.maybeWhen(
+              orElse: () => Container(),
+              data: (ultimosPrecios) => ultimosPrecios != null
+                  ? Text(
+                      '${S.of(context).pedido_edit_pedidoEdit_ultimoPrecioDeCompra}:  ${formatPrecioYDescuento(
+                        precio: ultimosPrecios.precioDivisa,
+                        tipoPrecio: ultimosPrecios.tipoPrecio,
+                        descuento1: ultimosPrecios.descuento1,
+                        descuento2: ultimosPrecios.descuento2,
+                        descuento3: ultimosPrecios.descuento3,
+                      )} (${numberFormatCantidades(ultimosPrecios.cantidad)} ${S.of(context).unidad})',
+                      style: Theme.of(context).textTheme.bodySmall,
+                    )
+                  : Container(),
+            ),
+          ],
         ),
       ),
     );
