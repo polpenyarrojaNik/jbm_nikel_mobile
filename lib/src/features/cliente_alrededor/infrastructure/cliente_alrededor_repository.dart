@@ -173,6 +173,7 @@ class ClienteAlrededorRepository {
         final clienteAlrededorDto = ClienteAlrededorDTO.fromClienteDireccionDTO(
           clienteDireccionDto,
           clienteDto.ventasAnyoActual,
+          clienteDto.ventasAnyoAnterior,
           clienteDto.porcentajeAbonos,
           clienteDto.representante1Nombre,
           clienteDto.representante2Nombre,

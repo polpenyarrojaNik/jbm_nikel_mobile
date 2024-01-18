@@ -21,6 +21,7 @@ class ClienteAlrededor with _$ClienteAlrededor {
     required double latitud,
     required double longitud,
     required Money ventasAnyoActual,
+    required Money ventasAnyoAnterior,
     required double porcentajeAbonos,
     String? nombreRepresentante1,
     String? nombreRepresentante2,

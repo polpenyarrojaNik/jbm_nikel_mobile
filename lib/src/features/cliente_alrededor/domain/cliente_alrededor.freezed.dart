@@ -29,6 +29,7 @@ mixin _$ClienteAlrededor {
   double get latitud => throw _privateConstructorUsedError;
   double get longitud => throw _privateConstructorUsedError;
   Money get ventasAnyoActual => throw _privateConstructorUsedError;
+  Money get ventasAnyoAnterior => throw _privateConstructorUsedError;
   double get porcentajeAbonos => throw _privateConstructorUsedError;
   String? get nombreRepresentante1 => throw _privateConstructorUsedError;
   String? get nombreRepresentante2 => throw _privateConstructorUsedError;
@@ -58,6 +59,7 @@ abstract class $ClienteAlrededorCopyWith<$Res> {
       double latitud,
       double longitud,
       Money ventasAnyoActual,
+      Money ventasAnyoAnterior,
       double porcentajeAbonos,
       String? nombreRepresentante1,
       String? nombreRepresentante2});
@@ -91,6 +93,7 @@ class _$ClienteAlrededorCopyWithImpl<$Res, $Val extends ClienteAlrededor>
     Object? latitud = null,
     Object? longitud = null,
     Object? ventasAnyoActual = null,
+    Object? ventasAnyoAnterior = null,
     Object? porcentajeAbonos = null,
     Object? nombreRepresentante1 = freezed,
     Object? nombreRepresentante2 = freezed,
@@ -148,6 +151,10 @@ class _$ClienteAlrededorCopyWithImpl<$Res, $Val extends ClienteAlrededor>
           ? _value.ventasAnyoActual
           : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
               as Money,
+      ventasAnyoAnterior: null == ventasAnyoAnterior
+          ? _value.ventasAnyoAnterior
+          : ventasAnyoAnterior // ignore: cast_nullable_to_non_nullable
+              as Money,
       porcentajeAbonos: null == porcentajeAbonos
           ? _value.porcentajeAbonos
           : porcentajeAbonos // ignore: cast_nullable_to_non_nullable
@@ -198,6 +205,7 @@ abstract class _$$ClienteAlrededorImplCopyWith<$Res>
       double latitud,
       double longitud,
       Money ventasAnyoActual,
+      Money ventasAnyoAnterior,
       double porcentajeAbonos,
       String? nombreRepresentante1,
       String? nombreRepresentante2});
@@ -230,6 +238,7 @@ class __$$ClienteAlrededorImplCopyWithImpl<$Res>
     Object? latitud = null,
     Object? longitud = null,
     Object? ventasAnyoActual = null,
+    Object? ventasAnyoAnterior = null,
     Object? porcentajeAbonos = null,
     Object? nombreRepresentante1 = freezed,
     Object? nombreRepresentante2 = freezed,
@@ -287,6 +296,10 @@ class __$$ClienteAlrededorImplCopyWithImpl<$Res>
           ? _value.ventasAnyoActual
           : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
               as Money,
+      ventasAnyoAnterior: null == ventasAnyoAnterior
+          ? _value.ventasAnyoAnterior
+          : ventasAnyoAnterior // ignore: cast_nullable_to_non_nullable
+              as Money,
       porcentajeAbonos: null == porcentajeAbonos
           ? _value.porcentajeAbonos
           : porcentajeAbonos // ignore: cast_nullable_to_non_nullable
@@ -320,6 +333,7 @@ class _$ClienteAlrededorImpl extends _ClienteAlrededor {
       required this.latitud,
       required this.longitud,
       required this.ventasAnyoActual,
+      required this.ventasAnyoAnterior,
       required this.porcentajeAbonos,
       this.nombreRepresentante1,
       this.nombreRepresentante2})
@@ -352,6 +366,8 @@ class _$ClienteAlrededorImpl extends _ClienteAlrededor {
   @override
   final Money ventasAnyoActual;
   @override
+  final Money ventasAnyoAnterior;
+  @override
   final double porcentajeAbonos;
   @override
   final String? nombreRepresentante1;
@@ -360,7 +376,7 @@ class _$ClienteAlrededorImpl extends _ClienteAlrededor {
 
   @override
   String toString() {
-    return 'ClienteAlrededor(clienteId: $clienteId, markerId: $markerId, nombre: $nombre, isDireccionFiscal: $isDireccionFiscal, direccion: $direccion, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, isClientePotencial: $isClientePotencial, latitud: $latitud, longitud: $longitud, ventasAnyoActual: $ventasAnyoActual, porcentajeAbonos: $porcentajeAbonos, nombreRepresentante1: $nombreRepresentante1, nombreRepresentante2: $nombreRepresentante2)';
+    return 'ClienteAlrededor(clienteId: $clienteId, markerId: $markerId, nombre: $nombre, isDireccionFiscal: $isDireccionFiscal, direccion: $direccion, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, isClientePotencial: $isClientePotencial, latitud: $latitud, longitud: $longitud, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, porcentajeAbonos: $porcentajeAbonos, nombreRepresentante1: $nombreRepresentante1, nombreRepresentante2: $nombreRepresentante2)';
   }
 
   @override
@@ -391,6 +407,8 @@ class _$ClienteAlrededorImpl extends _ClienteAlrededor {
                 other.longitud == longitud) &&
             (identical(other.ventasAnyoActual, ventasAnyoActual) ||
                 other.ventasAnyoActual == ventasAnyoActual) &&
+            (identical(other.ventasAnyoAnterior, ventasAnyoAnterior) ||
+                other.ventasAnyoAnterior == ventasAnyoAnterior) &&
             (identical(other.porcentajeAbonos, porcentajeAbonos) ||
                 other.porcentajeAbonos == porcentajeAbonos) &&
             (identical(other.nombreRepresentante1, nombreRepresentante1) ||
@@ -415,6 +433,7 @@ class _$ClienteAlrededorImpl extends _ClienteAlrededor {
       latitud,
       longitud,
       ventasAnyoActual,
+      ventasAnyoAnterior,
       porcentajeAbonos,
       nombreRepresentante1,
       nombreRepresentante2);
@@ -442,6 +461,7 @@ abstract class _ClienteAlrededor extends ClienteAlrededor {
       required final double latitud,
       required final double longitud,
       required final Money ventasAnyoActual,
+      required final Money ventasAnyoAnterior,
       required final double porcentajeAbonos,
       final String? nombreRepresentante1,
       final String? nombreRepresentante2}) = _$ClienteAlrededorImpl;
@@ -473,6 +493,8 @@ abstract class _ClienteAlrededor extends ClienteAlrededor {
   double get longitud;
   @override
   Money get ventasAnyoActual;
+  @override
+  Money get ventasAnyoAnterior;
   @override
   double get porcentajeAbonos;
   @override

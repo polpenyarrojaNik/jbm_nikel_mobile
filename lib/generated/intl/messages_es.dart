@@ -156,6 +156,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Clientes alrededor"),
         "cliente_alrededor_ventasAnoActual":
             MessageLookupByLibrary.simpleMessage("Ventas año actual"),
+        "cliente_alrededor_ventasAnoAnterior":
+            MessageLookupByLibrary.simpleMessage("Ventas año anterior"),
         "cliente_index_buscarClientes":
             MessageLookupByLibrary.simpleMessage(" Buscar clientes..."),
         "cliente_index_titulo":

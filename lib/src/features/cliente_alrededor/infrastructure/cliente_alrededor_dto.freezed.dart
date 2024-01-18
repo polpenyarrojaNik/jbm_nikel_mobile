@@ -35,6 +35,7 @@ mixin _$ClienteAlrededorDTO {
   String? get nombreRepresentante1 => throw _privateConstructorUsedError;
   String? get nombreRepresentante2 => throw _privateConstructorUsedError;
   double get ventasAnyoActual => throw _privateConstructorUsedError;
+  double get ventasAnyoAnterior => throw _privateConstructorUsedError;
   double get porcentajeAbonos => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -65,6 +66,7 @@ abstract class $ClienteAlrededorDTOCopyWith<$Res> {
       String? nombreRepresentante1,
       String? nombreRepresentante2,
       double ventasAnyoActual,
+      double ventasAnyoAnterior,
       double porcentajeAbonos});
 }
 
@@ -96,6 +98,7 @@ class _$ClienteAlrededorDTOCopyWithImpl<$Res, $Val extends ClienteAlrededorDTO>
     Object? nombreRepresentante1 = freezed,
     Object? nombreRepresentante2 = freezed,
     Object? ventasAnyoActual = null,
+    Object? ventasAnyoAnterior = null,
     Object? porcentajeAbonos = null,
   }) {
     return _then(_value.copyWith(
@@ -159,6 +162,10 @@ class _$ClienteAlrededorDTOCopyWithImpl<$Res, $Val extends ClienteAlrededorDTO>
           ? _value.ventasAnyoActual
           : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
               as double,
+      ventasAnyoAnterior: null == ventasAnyoAnterior
+          ? _value.ventasAnyoAnterior
+          : ventasAnyoAnterior // ignore: cast_nullable_to_non_nullable
+              as double,
       porcentajeAbonos: null == porcentajeAbonos
           ? _value.porcentajeAbonos
           : porcentajeAbonos // ignore: cast_nullable_to_non_nullable
@@ -191,6 +198,7 @@ abstract class _$$ClienteAlrededorDTOImplCopyWith<$Res>
       String? nombreRepresentante1,
       String? nombreRepresentante2,
       double ventasAnyoActual,
+      double ventasAnyoAnterior,
       double porcentajeAbonos});
 }
 
@@ -220,6 +228,7 @@ class __$$ClienteAlrededorDTOImplCopyWithImpl<$Res>
     Object? nombreRepresentante1 = freezed,
     Object? nombreRepresentante2 = freezed,
     Object? ventasAnyoActual = null,
+    Object? ventasAnyoAnterior = null,
     Object? porcentajeAbonos = null,
   }) {
     return _then(_$ClienteAlrededorDTOImpl(
@@ -283,6 +292,10 @@ class __$$ClienteAlrededorDTOImplCopyWithImpl<$Res>
           ? _value.ventasAnyoActual
           : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
               as double,
+      ventasAnyoAnterior: null == ventasAnyoAnterior
+          ? _value.ventasAnyoAnterior
+          : ventasAnyoAnterior // ignore: cast_nullable_to_non_nullable
+              as double,
       porcentajeAbonos: null == porcentajeAbonos
           ? _value.porcentajeAbonos
           : porcentajeAbonos // ignore: cast_nullable_to_non_nullable
@@ -310,6 +323,7 @@ class _$ClienteAlrededorDTOImpl extends _ClienteAlrededorDTO {
       this.nombreRepresentante1,
       this.nombreRepresentante2,
       required this.ventasAnyoActual,
+      required this.ventasAnyoAnterior,
       required this.porcentajeAbonos})
       : super._();
 
@@ -347,11 +361,13 @@ class _$ClienteAlrededorDTOImpl extends _ClienteAlrededorDTO {
   @override
   final double ventasAnyoActual;
   @override
+  final double ventasAnyoAnterior;
+  @override
   final double porcentajeAbonos;
 
   @override
   String toString() {
-    return 'ClienteAlrededorDTO(markerId: $markerId, clienteId: $clienteId, nombre: $nombre, isDireccionFiscal: $isDireccionFiscal, direccion: $direccion, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, paisId: $paisId, isClientePotencial: $isClientePotencial, latitud: $latitud, longitud: $longitud, nombreRepresentante1: $nombreRepresentante1, nombreRepresentante2: $nombreRepresentante2, ventasAnyoActual: $ventasAnyoActual, porcentajeAbonos: $porcentajeAbonos)';
+    return 'ClienteAlrededorDTO(markerId: $markerId, clienteId: $clienteId, nombre: $nombre, isDireccionFiscal: $isDireccionFiscal, direccion: $direccion, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, paisId: $paisId, isClientePotencial: $isClientePotencial, latitud: $latitud, longitud: $longitud, nombreRepresentante1: $nombreRepresentante1, nombreRepresentante2: $nombreRepresentante2, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, porcentajeAbonos: $porcentajeAbonos)';
   }
 
   @override
@@ -386,6 +402,8 @@ class _$ClienteAlrededorDTOImpl extends _ClienteAlrededorDTO {
                 other.nombreRepresentante2 == nombreRepresentante2) &&
             (identical(other.ventasAnyoActual, ventasAnyoActual) ||
                 other.ventasAnyoActual == ventasAnyoActual) &&
+            (identical(other.ventasAnyoAnterior, ventasAnyoAnterior) ||
+                other.ventasAnyoAnterior == ventasAnyoAnterior) &&
             (identical(other.porcentajeAbonos, porcentajeAbonos) ||
                 other.porcentajeAbonos == porcentajeAbonos));
   }
@@ -409,6 +427,7 @@ class _$ClienteAlrededorDTOImpl extends _ClienteAlrededorDTO {
       nombreRepresentante1,
       nombreRepresentante2,
       ventasAnyoActual,
+      ventasAnyoAnterior,
       porcentajeAbonos);
 
   @JsonKey(ignore: true)
@@ -443,6 +462,7 @@ abstract class _ClienteAlrededorDTO extends ClienteAlrededorDTO {
       final String? nombreRepresentante1,
       final String? nombreRepresentante2,
       required final double ventasAnyoActual,
+      required final double ventasAnyoAnterior,
       required final double porcentajeAbonos}) = _$ClienteAlrededorDTOImpl;
   const _ClienteAlrededorDTO._() : super._();
 
@@ -479,6 +499,8 @@ abstract class _ClienteAlrededorDTO extends ClienteAlrededorDTO {
   String? get nombreRepresentante2;
   @override
   double get ventasAnyoActual;
+  @override
+  double get ventasAnyoAnterior;
   @override
   double get porcentajeAbonos;
   @override

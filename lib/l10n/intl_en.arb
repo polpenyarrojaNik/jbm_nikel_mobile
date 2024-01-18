@@ -214,6 +214,7 @@
 	"cliente_show_clienteArticulosTop_ventasCliente": "Customer sales",
 	"cliente_alrededor_titulo": "Towards clients ",
 	"cliente_alrededor_ventasAnoActual": "Current year sales",
+	"cliente_alrededor_ventasAnoAnterior": "Last year sales",
 	"cliente_alrededor_margenAnoActual": "Current year margin",
 	"cliente_alrededor_porcentajeAbonos": "Payment percentage",
 	"cliente_alrededor_cargandoMapa": "Loading map",

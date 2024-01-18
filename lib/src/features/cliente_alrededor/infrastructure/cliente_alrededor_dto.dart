@@ -30,6 +30,7 @@ class ClienteAlrededorDTO with _$ClienteAlrededorDTO {
     String? nombreRepresentante1,
     String? nombreRepresentante2,
     required double ventasAnyoActual,
+    required double ventasAnyoAnterior,
     required double porcentajeAbonos,
   }) = _ClienteAlrededorDTO;
 
@@ -53,6 +54,7 @@ class ClienteAlrededorDTO with _$ClienteAlrededorDTO {
       nombreRepresentante1: _.representante1Nombre,
       nombreRepresentante2: _.representante2Nombre,
       ventasAnyoActual: _.ventasAnyoActual,
+      ventasAnyoAnterior: _.ventasAnyoAnterior,
       porcentajeAbonos: _.porcentajeAbonos,
     );
   }
@@ -60,6 +62,7 @@ class ClienteAlrededorDTO with _$ClienteAlrededorDTO {
   factory ClienteAlrededorDTO.fromClienteDireccionDTO(
     ClienteDireccionDTO _,
     double ventasAnyoActual,
+    double ventasAnyoAnterior,
     double porcentajeAbonos,
     String? nombreRepresentante1,
     String? nombreRepresentante2,
@@ -80,6 +83,7 @@ class ClienteAlrededorDTO with _$ClienteAlrededorDTO {
       nombreRepresentante1: nombreRepresentante1,
       nombreRepresentante2: nombreRepresentante2,
       ventasAnyoActual: ventasAnyoActual,
+      ventasAnyoAnterior: ventasAnyoAnterior,
       porcentajeAbonos: porcentajeAbonos,
     );
   }
@@ -101,6 +105,7 @@ class ClienteAlrededorDTO with _$ClienteAlrededorDTO {
       nombreRepresentante1: nombreRepresentante1,
       nombreRepresentante2: nombreRepresentante2,
       ventasAnyoActual: ventasAnyoActual.toMoney(),
+      ventasAnyoAnterior: ventasAnyoAnterior.toMoney(),
       porcentajeAbonos: porcentajeAbonos,
     );
   }

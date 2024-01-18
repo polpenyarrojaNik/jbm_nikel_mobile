@@ -356,5 +356,6 @@
   "pedido_edit_selectQuantity_cantidadTotal": "",
   "pedido_edit_selectQuantity_pallets": "Pallet",
   "pedido_edit_selectQuantity_subcajas": "Sottocaselle",
-  "pedido_edit_selectQuantity_importe": "Importo"
+  "pedido_edit_selectQuantity_importe": "Importo",
+  "cliente_alrededor_ventasAnoAnterior": "Vendite dell'anno precedente"
 }

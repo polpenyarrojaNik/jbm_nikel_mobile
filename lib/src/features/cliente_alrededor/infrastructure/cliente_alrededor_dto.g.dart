@@ -24,6 +24,7 @@ _$ClienteAlrededorDTOImpl _$$ClienteAlrededorDTOImplFromJson(
       nombreRepresentante1: json['nombreRepresentante1'] as String?,
       nombreRepresentante2: json['nombreRepresentante2'] as String?,
       ventasAnyoActual: (json['ventasAnyoActual'] as num).toDouble(),
+      ventasAnyoAnterior: (json['ventasAnyoAnterior'] as num).toDouble(),
       porcentajeAbonos: (json['porcentajeAbonos'] as num).toDouble(),
     );
 
@@ -45,5 +46,6 @@ Map<String, dynamic> _$$ClienteAlrededorDTOImplToJson(
       'nombreRepresentante1': instance.nombreRepresentante1,
       'nombreRepresentante2': instance.nombreRepresentante2,
       'ventasAnyoActual': instance.ventasAnyoActual,
+      'ventasAnyoAnterior': instance.ventasAnyoAnterior,
       'porcentajeAbonos': instance.porcentajeAbonos,
     };

@@ -445,6 +445,12 @@ class _ClienteAlrededorDialog extends StatelessWidget {
               fieldTitleValue: S.of(context).cliente_alrededor_ventasAnoActual,
               value: formatPrecios(
                   precio: clienteAlrededor.ventasAnyoActual, tipoPrecio: null)),
+          RowFieldTextDetalle(
+              fieldTitleValue:
+                  S.of(context).cliente_alrededor_ventasAnoAnterior,
+              value: formatPrecios(
+                  precio: clienteAlrededor.ventasAnyoAnterior,
+                  tipoPrecio: null)),
           gapH2,
           RowFieldTextDetalle(
               fieldTitleValue: S.of(context).cliente_alrededor_porcentajeAbonos,

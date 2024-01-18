@@ -2234,6 +2234,16 @@ class S {
     );
   }
 
+  /// `Last year sales`
+  String get cliente_alrededor_ventasAnoAnterior {
+    return Intl.message(
+      'Last year sales',
+      name: 'cliente_alrededor_ventasAnoAnterior',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Current year margin`
   String get cliente_alrededor_margenAnoActual {
     return Intl.message(
