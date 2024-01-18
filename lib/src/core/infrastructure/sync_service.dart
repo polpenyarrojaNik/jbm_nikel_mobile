@@ -1435,7 +1435,7 @@ class SyncService {
         .get();
 
     for (var i = 0; i < borradores.length; i++) {
-      if (borradores[i].enviada == 'S') {
+      if (borradores[i].enviada == 'S' || borradores[i].tratada == 'S') {
         await _localDb
             .into(_localDb.pedidoVentaLocalTable)
             .insertOnConflictUpdate(borradores[i].copyWith(borrador: 'N'));

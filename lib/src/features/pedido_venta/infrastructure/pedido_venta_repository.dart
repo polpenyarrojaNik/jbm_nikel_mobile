@@ -505,10 +505,11 @@ class PedidoVentaRepository {
 
   Future<PedidoVenta?> getBorradorPendiete() async {
     try {
-      final pedidoVentaBorradorDTO =
-          await (_localDb.select(_localDb.pedidoVentaLocalTable)
-                ..where((tbl) => tbl.borrador.equals('S')))
-              .getSingleOrNull();
+      final pedidoVentaBorradorDTO = await (_localDb
+              .select(_localDb.pedidoVentaLocalTable)
+            ..where(
+                (tbl) => tbl.borrador.equals('S') & tbl.tratada.equals('N')))
+          .getSingleOrNull();
 
       if (pedidoVentaBorradorDTO != null) {
         final divisaDTO = await (_remoteDb.select(_remoteDb.divisaTable)
@@ -542,10 +543,10 @@ class PedidoVentaRepository {
   }
 
   Future<PedidoVenta> getPedidoVentaBorrador() async {
-    final pedidoVentaBorradorDTO =
-        await (_localDb.select(_localDb.pedidoVentaLocalTable)
-              ..where((tbl) => tbl.borrador.equals('S')))
-            .getSingle();
+    final pedidoVentaBorradorDTO = await (_localDb
+            .select(_localDb.pedidoVentaLocalTable)
+          ..where((tbl) => tbl.borrador.equals('S') & tbl.tratada.equals('N')))
+        .getSingle();
 
     final divisaDTO = await (_remoteDb.select(_remoteDb.divisaTable)
           ..where((tbl) => tbl.id.equals(pedidoVentaBorradorDTO.divisaId!)))
