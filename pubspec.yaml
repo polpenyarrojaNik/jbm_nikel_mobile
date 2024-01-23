@@ -40,7 +40,7 @@ dependencies:
   material_color_utilities:
   material_design_icons_flutter: ^6.0.7096
   money2: ^3.4.1
-  package_info_plus: ^3.0.1
+  package_info_plus: ^5.0.1
   path_provider: ^2.0.0
   path: ^1.8.0
   reactive_forms: ^14.1.0
@@ -49,7 +49,6 @@ dependencies:
   sqlite3_flutter_libs: ^0.5.15
   url_launcher: ^6.1.0
   uuid: ^3.0.6
-  new_version_plus: ^0.0.4
   country_codes: ^2.2.0
   csv: ^5.0.1
   share_plus: ^7.2.1
@@ -60,6 +59,7 @@ dependencies:
   flex_color_scheme: ^7.3.1
   go_router: ^11.1.2
   device_info_plus: ^9.1.0
+  upgrader: ^9.0.0
 
 dev_dependencies:
   flutter_test:

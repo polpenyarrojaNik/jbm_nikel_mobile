@@ -9,6 +9,7 @@ import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/presentation/index/articulo_list_shimmer.dart';
 import 'package:jbm_nikel_mobile/src/features/sync/application/sync_notifier_provider.dart';
+import 'package:upgrader/upgrader.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/debouncer.dart';
@@ -64,31 +65,37 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
       ),
     );
 
-    return Scaffold(
-      key: scaffoldKey,
-      drawer: const AppDrawer(),
-      appBar: CustomSearchAppBar(
-        scaffoldKey: scaffoldKey,
-        isSearchingFirst: widget.isSearchArticuloForForm,
-        title: S.of(context).articulo_index_titulo,
-        searchTitle: S.of(context).articulo_index_buscarArticulos,
-        onChanged: (searchText) => _debouncer.run(
-          () => ref.read(articulosSearchQueryStateProvider.notifier).state =
-              searchText,
+    return UpgradeAlert(
+      canDismissDialog: false,
+      showIgnore: true,
+      showLater: true,
+      showReleaseNotes: true,
+      child: Scaffold(
+        key: scaffoldKey,
+        drawer: const AppDrawer(),
+        appBar: CustomSearchAppBar(
+          scaffoldKey: scaffoldKey,
+          isSearchingFirst: widget.isSearchArticuloForForm,
+          title: S.of(context).articulo_index_titulo,
+          searchTitle: S.of(context).articulo_index_buscarArticulos,
+          onChanged: (searchText) => _debouncer.run(
+            () => ref.read(articulosSearchQueryStateProvider.notifier).state =
+                searchText,
+          ),
         ),
-      ),
-      body: stateSync.maybeWhen(
-        orElse: () => ArticleListViewWidget(
-          stateSync: stateSync,
-          ref: ref,
-          isSearchArticuloForForm: widget.isSearchArticuloForForm,
-        ),
-        synchronized: () => RefreshIndicator(
-          onRefresh: () => refreshArticleDb(ref),
-          child: ArticleListViewWidget(
+        body: stateSync.maybeWhen(
+          orElse: () => ArticleListViewWidget(
             stateSync: stateSync,
             ref: ref,
             isSearchArticuloForForm: widget.isSearchArticuloForForm,
+          ),
+          synchronized: () => RefreshIndicator(
+            onRefresh: () => refreshArticleDb(ref),
+            child: ArticleListViewWidget(
+              stateSync: stateSync,
+              ref: ref,
+              isSearchArticuloForForm: widget.isSearchArticuloForForm,
+            ),
           ),
         ),
       ),
