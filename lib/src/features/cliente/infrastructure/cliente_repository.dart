@@ -227,7 +227,7 @@ class ClienteRepository {
       query.where(_remoteDb.clienteUsuarioTable.usuarioId.equals(usuario.id));
 
       if (searchText != '') {
-        final busqueda = searchText.split(' ');
+        final busqueda = searchText.toUpperCase().split(' ');
         Expression<bool>? predicate;
         for (var i = 0; i < busqueda.length; i++) {
           if (predicate == null) {
@@ -345,7 +345,7 @@ class ClienteRepository {
       query.where(_remoteDb.clienteUsuarioTable.usuarioId.equals(usuario.id));
 
       if (searchText != '') {
-        final busqueda = searchText.split(' ');
+        final busqueda = searchText.toUpperCase().split(' ');
         Expression<bool>? predicate;
         for (var i = 0; i < busqueda.length; i++) {
           if (predicate == null) {
@@ -1032,7 +1032,7 @@ GROUP BY ARTICULO_ID, DESCRIPCION
         query.where((_remoteDb.estadisticasUltimosPreciosTable.clienteId
                 .equals(clienteId) &
             (_remoteDb.articuloTable.id.contains(searchText) |
-                _filtrarArticuloPorDescripcion(searchText))));
+                _filtrarArticuloPorDescripcion(searchText.toUpperCase()))));
       } else {
         query.where(_remoteDb.estadisticasUltimosPreciosTable.clienteId
             .equals(clienteId));
@@ -1076,7 +1076,7 @@ GROUP BY ARTICULO_ID, DESCRIPCION
         query.where((_remoteDb.estadisticasUltimosPreciosTable.clienteId
                 .equals(clienteId)) &
             (_remoteDb.articuloTable.id.contains(searchText) |
-                _filtrarArticuloPorDescripcion(searchText)));
+                _filtrarArticuloPorDescripcion(searchText.toUpperCase())));
       } else {
         query.where(_remoteDb.estadisticasUltimosPreciosTable.clienteId
             .equals(clienteId));
@@ -1832,7 +1832,8 @@ GROUP BY ARTICULO_ID, DESCRIPCION
 
     if (searchText != '') {
       query.where((tbl) =>
-          tbl.id.contains(searchText) | _filtrarPaisPorDescripcion(searchText));
+          tbl.id.contains(searchText) |
+          _filtrarPaisPorDescripcion(searchText.toUpperCase()));
     }
 
     query.orderBy(

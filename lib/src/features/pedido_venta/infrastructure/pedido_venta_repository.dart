@@ -211,7 +211,7 @@ class PedidoVentaRepository {
     }
 
     if (searchText != '') {
-      final busqueda = searchText.split(' ');
+      final busqueda = searchText.toUpperCase().split(' ');
       Expression<bool>? predicate;
       for (var i = 0; i < busqueda.length; i++) {
         if (predicate == null) {
@@ -302,7 +302,7 @@ class PedidoVentaRepository {
     }
 
     if (searchText != '') {
-      final busqueda = searchText.split(' ');
+      final busqueda = searchText.toUpperCase().split(' ');
       Expression<bool>? predicate;
       for (var i = 0; i < busqueda.length; i++) {
         if (predicate == null) {
@@ -353,7 +353,7 @@ class PedidoVentaRepository {
     query.where((tbl) => tbl.tratada.equals('N'));
 
     if (searchText != '') {
-      final busqueda = searchText.split(' ');
+      final busqueda = searchText.toUpperCase().split(' ');
       Expression<bool>? predicate;
       for (var i = 0; i < busqueda.length; i++) {
         if (predicate == null) {

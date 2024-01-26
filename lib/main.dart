@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:money2/money2.dart';
-import 'package:upgrader/upgrader.dart';
+// import 'package:upgrader/upgrader.dart';
 
 import 'src/core/application/log_service.dart';
 import 'src/core/presentation/app.dart';
@@ -19,7 +19,7 @@ void main() async {
 
       await dotenv.load();
       //TODO REMOVE this for release builds
-      await Upgrader.clearSavedSettings();
+      // await Upgrader.clearSavedSettings();
 
       Currencies().registerList([
         Currency.create('GB', 2,

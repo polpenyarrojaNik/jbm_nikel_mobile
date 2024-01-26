@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/local_database.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/column_field_text_detail.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/toasts.dart';
@@ -148,6 +149,9 @@ class _ActualizarArchivoBaseDeDatosButton extends ConsumerWidget {
               ref.invalidate(syncNotifierProvider);
               ref.invalidate(appLocalDatabaseProvider);
               ref.invalidate(appRemoteDatabaseProvider);
+              isolateRemoteDatabaseConnectPort = null;
+              ref.invalidate(syncServiceProvider);
+
               ref.read(usuarioNotifierProvider.notifier).signOut();
             }
           });

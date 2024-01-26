@@ -262,7 +262,7 @@ class VisitaRepository {
       query.where((tbl) => tbl.tratada.equals('N'));
 
       if (searchText != '') {
-        final busqueda = searchText.split(' ');
+        final busqueda = searchText.toUpperCase().split(' ');
         Expression<bool>? predicate;
         for (var i = 0; i < busqueda.length; i++) {
           if (predicate == null) {
@@ -451,7 +451,7 @@ class VisitaRepository {
               tbl.clienteId.equalsExp(_remoteDb.visitaTable.clienteId))));
 
     if (searchText != '') {
-      final busqueda = searchText.split(' ');
+      final busqueda = searchText.toUpperCase().split(' ');
       Expression<bool>? predicate;
       for (var i = 0; i < busqueda.length; i++) {
         if (predicate == null) {
@@ -526,7 +526,7 @@ class VisitaRepository {
               tbl.clienteId.equalsExp(_remoteDb.visitaTable.clienteId))));
 
     if (searchText != '') {
-      final busqueda = searchText.split(' ');
+      final busqueda = searchText.toUpperCase().split(' ');
       Expression<bool>? predicate;
       for (var i = 0; i < busqueda.length; i++) {
         if (predicate == null) {
