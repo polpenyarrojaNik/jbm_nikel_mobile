@@ -318,6 +318,10 @@ class _ClienteAnalisis extends StatelessWidget {
             children: [
               _VentasRowWidget(cliente: cliente),
               gapH8,
+              _MargenRowWidget(
+                cliente: cliente,
+              ),
+              gapH8,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -409,6 +413,72 @@ class _VentasRowWidget extends StatelessWidget {
                   SelectableTextWidget(
                     formatPrecios(
                         precio: cliente.ventasHaceDosAnyos, tipoPrecio: null),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class _MargenRowWidget extends StatelessWidget {
+  const _MargenRowWidget({
+    required this.cliente,
+  });
+
+  final Cliente cliente;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          S.of(context).cliente_show_clienteDetalle_margen,
+          style: Theme.of(context)
+              .textTheme
+              .titleSmall!
+              .copyWith(color: Theme.of(context).textTheme.bodySmall!.color),
+        ),
+        gapH4,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: Column(
+                children: [
+                  Text(S.of(context).cliente_show_clienteDetalle_anoActual,
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          color: Theme.of(context).textTheme.bodySmall!.color)),
+                  SelectableTextWidget(
+                    '${numberFormatDecimal(cliente.margenAnyoActual)}%',
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: Column(
+                children: [
+                  Text(S.of(context).cliente_show_clienteDetalle_anoAnterior,
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          color: Theme.of(context).textTheme.bodySmall!.color)),
+                  SelectableTextWidget(
+                    '${numberFormatDecimal(cliente.margenAnyoAnterior)}%',
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: Column(
+                children: [
+                  Text(S.of(context).cliente_show_clienteDetalle_hace2Anos,
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          color: Theme.of(context).textTheme.bodySmall!.color)),
+                  SelectableTextWidget(
+                    '${numberFormatDecimal(cliente.margenHaceDosAnyos)}%',
                   ),
                 ],
               ),

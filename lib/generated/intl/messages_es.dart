@@ -511,6 +511,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Oferta"),
         "pedido_edit_pedidoEdit_pedidoCliente":
             MessageLookupByLibrary.simpleMessage("Pedido cliente"),
+        "pedido_edit_pedidoEdit_pedidoClienteMax50":
+            MessageLookupByLibrary.simpleMessage(
+                "El campo pedido cliente no puede tener más de 50 caracteres"),
         "pedido_edit_pedidoEdit_seleccioneCliente":
             MessageLookupByLibrary.simpleMessage("Seleccione un cliente"),
         "pedido_edit_pedidoEdit_sinArticulos":

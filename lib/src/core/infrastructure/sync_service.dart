@@ -175,6 +175,7 @@ class SyncService {
       await syncClientesUsuario();
       await syncVentasUsuario();
       await syncDevoluciones();
+      await syncUltimosPrecios();
       await syncDevolucionesLineas();
       await syncDevolucionesTipos();
       await syncDevolucionesEstados();

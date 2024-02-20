@@ -254,6 +254,7 @@
   "pedido_edit_pedidoEdit_noPuedesCambiarCliente": "No puedes cambiar el cliente",
   "pedido_edit_pedidoEdit_sinArticulos": "Sin artículos",
   "pedido_edit_pedidoEdit_pedidoCliente": "Pedido cliente",
+  "pedido_edit_pedidoEdit_pedidoClienteMax50": "El campo pedido cliente no puede tener más de 50 caracteres",
   "pedido_edit_pedidoEdit_observaciones": "Observaciones",
   "pedido_edit_pedidoEdit_totalLineas": "Total líneas",
   "pedido_edit_pedidoEdit_stockDisponible": "Stock disponible:",

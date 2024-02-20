@@ -357,5 +357,6 @@
   "pedido_edit_selectQuantity_pallets": "Pallet",
   "pedido_edit_selectQuantity_subcajas": "Sottocaselle",
   "pedido_edit_selectQuantity_importe": "Importo",
-  "cliente_alrededor_ventasAnoAnterior": "Vendite dell'anno precedente"
+  "cliente_alrededor_ventasAnoAnterior": "Vendite dell'anno precedente",
+  "pedido_edit_pedidoEdit_pedidoClienteMax50": "Il campo dell'ordine del cliente non può contenere più di 50 caratteri"
 }

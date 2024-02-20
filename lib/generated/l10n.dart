@@ -3673,6 +3673,16 @@ class S {
       args: [],
     );
   }
+
+  /// `The field customer sales order cannot be more than 50 characters`
+  String get pedido_edit_pedidoEdit_pedidoClienteMax50 {
+    return Intl.message(
+      'The field customer sales order cannot be more than 50 characters',
+      name: 'pedido_edit_pedidoEdit_pedidoClienteMax50',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

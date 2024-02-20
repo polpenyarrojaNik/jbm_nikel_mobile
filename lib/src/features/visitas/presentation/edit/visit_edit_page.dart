@@ -400,7 +400,7 @@ class _VisitaForm extends StatelessWidget {
             enabled: !readOnly,
             validator: FormBuilderValidators.compose([
               FormBuilderValidators.required(),
-              FormBuilderValidators.maxLength(255),
+              FormBuilderValidators.maxLength(4000),
             ]),
             decoration: InputDecoration(
               labelText: '${S.of(context).visitas_edit_visitaEditar_resumen} *',

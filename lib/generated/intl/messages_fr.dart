@@ -513,6 +513,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Offer"),
         "pedido_edit_pedidoEdit_pedidoCliente":
             MessageLookupByLibrary.simpleMessage("Commande client"),
+        "pedido_edit_pedidoEdit_pedidoClienteMax50":
+            MessageLookupByLibrary.simpleMessage(
+                "Le champ de commande client ne peut pas contenir plus de 50 caractères"),
         "pedido_edit_pedidoEdit_seleccioneCliente":
             MessageLookupByLibrary.simpleMessage("Sélectionner un client"),
         "pedido_edit_pedidoEdit_sinArticulos":

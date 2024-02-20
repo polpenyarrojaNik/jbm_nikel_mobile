@@ -357,5 +357,6 @@
   "pedido_edit_selectQuantity_pallets": "Palettes",
   "pedido_edit_selectQuantity_subcajas": "Sous-boîtes",
   "pedido_edit_selectQuantity_importe": "Montant",
-  "cliente_alrededor_ventasAnoAnterior": "Ventes de l'année précédente"
+  "cliente_alrededor_ventasAnoAnterior": "Ventes de l'année précédente",
+  "pedido_edit_pedidoEdit_pedidoClienteMax50": "Le champ de commande client ne peut pas contenir plus de 50 caractères"
 }
