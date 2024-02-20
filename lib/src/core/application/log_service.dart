@@ -33,7 +33,7 @@ class CustomPrinter extends LogPrinter {
   @override
   List<String> log(LogEvent event) {
     // var color = PrettyPrinter.levelColors[event.level];
-    final emoji = PrettyPrinter.levelEmojis[event.level];
+    final emoji = PrettyPrinter.defaultLevelEmojis[event.level];
     String timeStr = getTime();
 
     return [

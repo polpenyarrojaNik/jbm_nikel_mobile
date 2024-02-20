@@ -89,8 +89,8 @@ class VisitaRepository {
         usuarioId: _usuario!.id,
       );
 
-      final visitasSyncCount = await getVisitasCount(
-          usuarioId: _usuario!.id, searchText: searchText);
+      final visitasSyncCount =
+          await getVisitasCount(usuarioId: _usuario.id, searchText: searchText);
 
       return visitasLocalCount + visitasSyncCount;
     } catch (e) {
@@ -111,7 +111,7 @@ class VisitaRepository {
       vistiasListByCliente.addAll(visitasLocal);
 
       final visitas = await getVisitas(
-          usuarioId: _usuario!.id,
+          usuarioId: _usuario.id,
           page: 0,
           searchText: '',
           clienteId: clienteId);

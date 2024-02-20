@@ -403,14 +403,14 @@ class _GraficaVentasMesState extends State<GraficaVentasMes> {
                     ),
                   ),
                   titlesData: FlTitlesData(
-                    leftTitles: AxisTitles(
+                    leftTitles: const AxisTitles(
                       sideTitles:
                           SideTitles(showTitles: true, reservedSize: 50),
                     ),
-                    topTitles:
-                        AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                    rightTitles:
-                        AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                    topTitles: const AxisTitles(
+                        sideTitles: SideTitles(showTitles: false)),
+                    rightTitles: const AxisTitles(
+                        sideTitles: SideTitles(showTitles: false)),
                     bottomTitles: AxisTitles(
                       sideTitles: SideTitles(
                         showTitles: true,
@@ -422,8 +422,8 @@ class _GraficaVentasMesState extends State<GraficaVentasMes> {
                   gridData: FlGridData(
                     show: true,
                     drawVerticalLine: false,
-                    getDrawingHorizontalLine: (value) => FlLine(
-                      color: const Color(0xFFececec),
+                    getDrawingHorizontalLine: (value) => const FlLine(
+                      color: Color(0xFFececec),
                       strokeWidth: 1,
                     ),
                   ),

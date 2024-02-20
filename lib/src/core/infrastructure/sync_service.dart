@@ -959,7 +959,7 @@ class SyncService {
 
       final response = await _dio.getUri(!(_usuario!.test) ? uri : testUri,
           options: Options(
-            headers: {'authorization': 'Bearer ${_usuario!.provisionalToken}'},
+            headers: {'authorization': 'Bearer ${_usuario.provisionalToken}'},
           ));
 
       if (response.statusCode == 200) {
@@ -1334,7 +1334,7 @@ class SyncService {
       final response = await _dio.getUri(
         requestUri,
         options: Options(
-          headers: {'authorization': 'Bearer ${_usuario!.provisionalToken}'},
+          headers: {'authorization': 'Bearer ${_usuario.provisionalToken}'},
         ),
       );
       if (response.statusCode == 200) {
@@ -1368,7 +1368,7 @@ class SyncService {
       final response = await _dio.getUri(
         requestUri,
         options: Options(
-          headers: {'authorization': 'Bearer ${_usuario!.provisionalToken}'},
+          headers: {'authorization': 'Bearer ${_usuario.provisionalToken}'},
         ),
       );
       if (response.statusCode == 200) {
@@ -1414,7 +1414,7 @@ class SyncService {
       final response = await _dio.getUri(
         requestUri,
         options: Options(
-          headers: {'authorization': 'Bearer ${_usuario!.provisionalToken}'},
+          headers: {'authorization': 'Bearer ${_usuario.provisionalToken}'},
         ),
       );
       if (response.statusCode == 200) {
@@ -1450,10 +1450,10 @@ class SyncService {
       level: level,
       message: message,
       appId: _usuario!.packageName,
-      appBuild: _usuario!.buildNumber,
-      appBuildName: _usuario!.version,
-      device: _usuario!.deviceInfo,
-      userId: _usuario!.id,
+      appBuild: _usuario.buildNumber,
+      appBuildName: _usuario.version,
+      device: _usuario.deviceInfo,
+      userId: _usuario.id,
       timestamp: DateTime.now().toUtc(),
     );
 
@@ -1481,7 +1481,7 @@ class SyncService {
       final response = await _dio.postUri(
         requestUri,
         options: Options(
-          headers: {'authorization': 'Bearer ${_usuario!.provisionalToken}'},
+          headers: {'authorization': 'Bearer ${_usuario.provisionalToken}'},
         ),
         data: jsonEncode(logDto.toJson()),
       );
