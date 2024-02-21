@@ -458,6 +458,10 @@ class PedidoVentaEditForm extends ConsumerWidget {
 
   void remarksValidate(BuildContext context, WidgetRef ref) {
     if (!oferta || oferta && ofertaFechaHasta != null) {
+      ref
+          .read(
+              pedidoVentaEditPageControllerProvider(pedidoLocalParam).notifier)
+          .navigateToNextStep();
       if (pedidoCliente != null && pedidoCliente!.length < 50) {
         ref
             .read(pedidoVentaEditPageControllerProvider(pedidoLocalParam)
