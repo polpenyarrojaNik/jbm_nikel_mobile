@@ -82,6 +82,12 @@ mixin _$Articulo {
   String? get gs1128Subcaja => throw _privateConstructorUsedError;
   String? get gs1128Caja => throw _privateConstructorUsedError;
   String? get gs1128Palet => throw _privateConstructorUsedError;
+  Money get ventasAnyoActual => throw _privateConstructorUsedError;
+  Money get ventasAnyoAnterior => throw _privateConstructorUsedError;
+  Money get ventasHaceDosAnyos => throw _privateConstructorUsedError;
+  double get margenAnyoActual => throw _privateConstructorUsedError;
+  double get margenAnyoAnterior => throw _privateConstructorUsedError;
+  double get margenHaceDosAnyos => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
@@ -162,6 +168,12 @@ abstract class $ArticuloCopyWith<$Res> {
       String? gs1128Subcaja,
       String? gs1128Caja,
       String? gs1128Palet,
+      Money ventasAnyoActual,
+      Money ventasAnyoAnterior,
+      Money ventasHaceDosAnyos,
+      double margenAnyoActual,
+      double margenAnyoAnterior,
+      double margenHaceDosAnyos,
       DateTime lastUpdated,
       bool deleted});
 
@@ -248,6 +260,12 @@ class _$ArticuloCopyWithImpl<$Res, $Val extends Articulo>
     Object? gs1128Subcaja = freezed,
     Object? gs1128Caja = freezed,
     Object? gs1128Palet = freezed,
+    Object? ventasAnyoActual = null,
+    Object? ventasAnyoAnterior = null,
+    Object? ventasHaceDosAnyos = null,
+    Object? margenAnyoActual = null,
+    Object? margenAnyoAnterior = null,
+    Object? margenHaceDosAnyos = null,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -516,6 +534,30 @@ class _$ArticuloCopyWithImpl<$Res, $Val extends Articulo>
           ? _value.gs1128Palet
           : gs1128Palet // ignore: cast_nullable_to_non_nullable
               as String?,
+      ventasAnyoActual: null == ventasAnyoActual
+          ? _value.ventasAnyoActual
+          : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
+              as Money,
+      ventasAnyoAnterior: null == ventasAnyoAnterior
+          ? _value.ventasAnyoAnterior
+          : ventasAnyoAnterior // ignore: cast_nullable_to_non_nullable
+              as Money,
+      ventasHaceDosAnyos: null == ventasHaceDosAnyos
+          ? _value.ventasHaceDosAnyos
+          : ventasHaceDosAnyos // ignore: cast_nullable_to_non_nullable
+              as Money,
+      margenAnyoActual: null == margenAnyoActual
+          ? _value.margenAnyoActual
+          : margenAnyoActual // ignore: cast_nullable_to_non_nullable
+              as double,
+      margenAnyoAnterior: null == margenAnyoAnterior
+          ? _value.margenAnyoAnterior
+          : margenAnyoAnterior // ignore: cast_nullable_to_non_nullable
+              as double,
+      margenHaceDosAnyos: null == margenHaceDosAnyos
+          ? _value.margenHaceDosAnyos
+          : margenHaceDosAnyos // ignore: cast_nullable_to_non_nullable
+              as double,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -627,6 +669,12 @@ abstract class _$$ArticuloImplCopyWith<$Res>
       String? gs1128Subcaja,
       String? gs1128Caja,
       String? gs1128Palet,
+      Money ventasAnyoActual,
+      Money ventasAnyoAnterior,
+      Money ventasHaceDosAnyos,
+      double margenAnyoActual,
+      double margenAnyoAnterior,
+      double margenHaceDosAnyos,
       DateTime lastUpdated,
       bool deleted});
 
@@ -713,6 +761,12 @@ class __$$ArticuloImplCopyWithImpl<$Res>
     Object? gs1128Subcaja = freezed,
     Object? gs1128Caja = freezed,
     Object? gs1128Palet = freezed,
+    Object? ventasAnyoActual = null,
+    Object? ventasAnyoAnterior = null,
+    Object? ventasHaceDosAnyos = null,
+    Object? margenAnyoActual = null,
+    Object? margenAnyoAnterior = null,
+    Object? margenHaceDosAnyos = null,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -981,6 +1035,30 @@ class __$$ArticuloImplCopyWithImpl<$Res>
           ? _value.gs1128Palet
           : gs1128Palet // ignore: cast_nullable_to_non_nullable
               as String?,
+      ventasAnyoActual: null == ventasAnyoActual
+          ? _value.ventasAnyoActual
+          : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
+              as Money,
+      ventasAnyoAnterior: null == ventasAnyoAnterior
+          ? _value.ventasAnyoAnterior
+          : ventasAnyoAnterior // ignore: cast_nullable_to_non_nullable
+              as Money,
+      ventasHaceDosAnyos: null == ventasHaceDosAnyos
+          ? _value.ventasHaceDosAnyos
+          : ventasHaceDosAnyos // ignore: cast_nullable_to_non_nullable
+              as Money,
+      margenAnyoActual: null == margenAnyoActual
+          ? _value.margenAnyoActual
+          : margenAnyoActual // ignore: cast_nullable_to_non_nullable
+              as double,
+      margenAnyoAnterior: null == margenAnyoAnterior
+          ? _value.margenAnyoAnterior
+          : margenAnyoAnterior // ignore: cast_nullable_to_non_nullable
+              as double,
+      margenHaceDosAnyos: null == margenHaceDosAnyos
+          ? _value.margenHaceDosAnyos
+          : margenHaceDosAnyos // ignore: cast_nullable_to_non_nullable
+              as double,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -1063,6 +1141,12 @@ class _$ArticuloImpl extends _Articulo {
       this.gs1128Subcaja,
       this.gs1128Caja,
       this.gs1128Palet,
+      required this.ventasAnyoActual,
+      required this.ventasAnyoAnterior,
+      required this.ventasHaceDosAnyos,
+      required this.margenAnyoActual,
+      required this.margenAnyoAnterior,
+      required this.margenHaceDosAnyos,
       required this.lastUpdated,
       required this.deleted})
       : super._();
@@ -1200,13 +1284,25 @@ class _$ArticuloImpl extends _Articulo {
   @override
   final String? gs1128Palet;
   @override
+  final Money ventasAnyoActual;
+  @override
+  final Money ventasAnyoAnterior;
+  @override
+  final Money ventasHaceDosAnyos;
+  @override
+  final double margenAnyoActual;
+  @override
+  final double margenAnyoAnterior;
+  @override
+  final double margenHaceDosAnyos;
+  @override
   final DateTime lastUpdated;
   @override
   final bool deleted;
 
   @override
   String toString() {
-    return 'Articulo(id: $id, descripcionES: $descripcionES, descripcionEN: $descripcionEN, descripcionFR: $descripcionFR, descripcionDE: $descripcionDE, descripcionCA: $descripcionCA, descripcionGB: $descripcionGB, descripcionHU: $descripcionHU, descripcionIT: $descripcionIT, descripcionNL: $descripcionNL, descripcionPL: $descripcionPL, descripcionPT: $descripcionPT, descripcionRO: $descripcionRO, descripcionRU: $descripcionRU, descripcionCN: $descripcionCN, descripcionEL: $descripcionEL, familia: $familia, subfamilia: $subfamilia, ventaMinimo: $ventaMinimo, ventaMultiplo: $ventaMultiplo, unidadesSubcaja: $unidadesSubcaja, unidadesCaja: $unidadesCaja, unidadesPalet: $unidadesPalet, activoWeb: $activoWeb, activoApp: $activoApp, enCatalogo: $enCatalogo, descatalogado: $descatalogado, paginaEnCatalgo: $paginaEnCatalgo, paginaEnCatalgo2: $paginaEnCatalgo2, pesoKg: $pesoKg, largoCm: $largoCm, anchoCm: $anchoCm, altoCm: $altoCm, resumenES: $resumenES, resumenEN: $resumenEN, resumenFR: $resumenFR, resumenDE: $resumenDE, resumenCA: $resumenCA, resumenGB: $resumenGB, resumenHU: $resumenHU, resumenIT: $resumenIT, resumenNL: $resumenNL, resumenPL: $resumenPL, resumenPT: $resumenPT, resumenRO: $resumenRO, resumenRU: $resumenRU, resumenCN: $resumenCN, resumenEL: $resumenEL, stockDisponible: $stockDisponible, ventasActual: $ventasActual, ventasAnterior: $ventasAnterior, comprasEntregaCantidad1: $comprasEntregaCantidad1, comprasEntregaCantidad2: $comprasEntregaCantidad2, comprasEntregaCantidad3: $comprasEntregaCantidad3, comprasEntregaCantidadMas3: $comprasEntregaCantidadMas3, comprasEntregaFecha1: $comprasEntregaFecha1, comprasEntregaFecha2: $comprasEntregaFecha2, comprasEntregaFecha3: $comprasEntregaFecha3, comprasEntregaEstado1: $comprasEntregaEstado1, comprasEntregaEstado2: $comprasEntregaEstado2, comprasEntregaEstado3: $comprasEntregaEstado3, imagenPrincipal: $imagenPrincipal, gtin13Unidad: $gtin13Unidad, gs1128Subcaja: $gs1128Subcaja, gs1128Caja: $gs1128Caja, gs1128Palet: $gs1128Palet, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'Articulo(id: $id, descripcionES: $descripcionES, descripcionEN: $descripcionEN, descripcionFR: $descripcionFR, descripcionDE: $descripcionDE, descripcionCA: $descripcionCA, descripcionGB: $descripcionGB, descripcionHU: $descripcionHU, descripcionIT: $descripcionIT, descripcionNL: $descripcionNL, descripcionPL: $descripcionPL, descripcionPT: $descripcionPT, descripcionRO: $descripcionRO, descripcionRU: $descripcionRU, descripcionCN: $descripcionCN, descripcionEL: $descripcionEL, familia: $familia, subfamilia: $subfamilia, ventaMinimo: $ventaMinimo, ventaMultiplo: $ventaMultiplo, unidadesSubcaja: $unidadesSubcaja, unidadesCaja: $unidadesCaja, unidadesPalet: $unidadesPalet, activoWeb: $activoWeb, activoApp: $activoApp, enCatalogo: $enCatalogo, descatalogado: $descatalogado, paginaEnCatalgo: $paginaEnCatalgo, paginaEnCatalgo2: $paginaEnCatalgo2, pesoKg: $pesoKg, largoCm: $largoCm, anchoCm: $anchoCm, altoCm: $altoCm, resumenES: $resumenES, resumenEN: $resumenEN, resumenFR: $resumenFR, resumenDE: $resumenDE, resumenCA: $resumenCA, resumenGB: $resumenGB, resumenHU: $resumenHU, resumenIT: $resumenIT, resumenNL: $resumenNL, resumenPL: $resumenPL, resumenPT: $resumenPT, resumenRO: $resumenRO, resumenRU: $resumenRU, resumenCN: $resumenCN, resumenEL: $resumenEL, stockDisponible: $stockDisponible, ventasActual: $ventasActual, ventasAnterior: $ventasAnterior, comprasEntregaCantidad1: $comprasEntregaCantidad1, comprasEntregaCantidad2: $comprasEntregaCantidad2, comprasEntregaCantidad3: $comprasEntregaCantidad3, comprasEntregaCantidadMas3: $comprasEntregaCantidadMas3, comprasEntregaFecha1: $comprasEntregaFecha1, comprasEntregaFecha2: $comprasEntregaFecha2, comprasEntregaFecha3: $comprasEntregaFecha3, comprasEntregaEstado1: $comprasEntregaEstado1, comprasEntregaEstado2: $comprasEntregaEstado2, comprasEntregaEstado3: $comprasEntregaEstado3, imagenPrincipal: $imagenPrincipal, gtin13Unidad: $gtin13Unidad, gs1128Subcaja: $gs1128Subcaja, gs1128Caja: $gs1128Caja, gs1128Palet: $gs1128Palet, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -1323,6 +1419,12 @@ class _$ArticuloImpl extends _Articulo {
             (identical(other.gs1128Subcaja, gs1128Subcaja) || other.gs1128Subcaja == gs1128Subcaja) &&
             (identical(other.gs1128Caja, gs1128Caja) || other.gs1128Caja == gs1128Caja) &&
             (identical(other.gs1128Palet, gs1128Palet) || other.gs1128Palet == gs1128Palet) &&
+            (identical(other.ventasAnyoActual, ventasAnyoActual) || other.ventasAnyoActual == ventasAnyoActual) &&
+            (identical(other.ventasAnyoAnterior, ventasAnyoAnterior) || other.ventasAnyoAnterior == ventasAnyoAnterior) &&
+            (identical(other.ventasHaceDosAnyos, ventasHaceDosAnyos) || other.ventasHaceDosAnyos == ventasHaceDosAnyos) &&
+            (identical(other.margenAnyoActual, margenAnyoActual) || other.margenAnyoActual == margenAnyoActual) &&
+            (identical(other.margenAnyoAnterior, margenAnyoAnterior) || other.margenAnyoAnterior == margenAnyoAnterior) &&
+            (identical(other.margenHaceDosAnyos, margenHaceDosAnyos) || other.margenHaceDosAnyos == margenHaceDosAnyos) &&
             (identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated) &&
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
@@ -1396,6 +1498,12 @@ class _$ArticuloImpl extends _Articulo {
         gs1128Subcaja,
         gs1128Caja,
         gs1128Palet,
+        ventasAnyoActual,
+        ventasAnyoAnterior,
+        ventasHaceDosAnyos,
+        margenAnyoActual,
+        margenAnyoAnterior,
+        margenHaceDosAnyos,
         lastUpdated,
         deleted
       ]);
@@ -1475,6 +1583,12 @@ abstract class _Articulo extends Articulo {
       final String? gs1128Subcaja,
       final String? gs1128Caja,
       final String? gs1128Palet,
+      required final Money ventasAnyoActual,
+      required final Money ventasAnyoAnterior,
+      required final Money ventasHaceDosAnyos,
+      required final double margenAnyoActual,
+      required final double margenAnyoAnterior,
+      required final double margenHaceDosAnyos,
       required final DateTime lastUpdated,
       required final bool deleted}) = _$ArticuloImpl;
   const _Articulo._() : super._();
@@ -1611,6 +1725,18 @@ abstract class _Articulo extends Articulo {
   String? get gs1128Caja;
   @override
   String? get gs1128Palet;
+  @override
+  Money get ventasAnyoActual;
+  @override
+  Money get ventasAnyoAnterior;
+  @override
+  Money get ventasHaceDosAnyos;
+  @override
+  double get margenAnyoActual;
+  @override
+  double get margenAnyoAnterior;
+  @override
+  double get margenHaceDosAnyos;
   @override
   DateTime get lastUpdated;
   @override

@@ -500,6 +500,66 @@ class S {
     );
   }
 
+  /// `Analysis`
+  String get articulo_show_articuloDetalle_analisis {
+    return Intl.message(
+      'Analysis',
+      name: 'articulo_show_articuloDetalle_analisis',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sales`
+  String get articulo_show_articuloDetalle_ventas {
+    return Intl.message(
+      'Sales',
+      name: 'articulo_show_articuloDetalle_ventas',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Margin`
+  String get articulo_show_articuloDetalle_margen {
+    return Intl.message(
+      'Margin',
+      name: 'articulo_show_articuloDetalle_margen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Current year`
+  String get articulo_show_articuloDetalle_anoActual {
+    return Intl.message(
+      'Current year',
+      name: 'articulo_show_articuloDetalle_anoActual',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last year`
+  String get articulo_show_articuloDetalle_anoAnterior {
+    return Intl.message(
+      'Last year',
+      name: 'articulo_show_articuloDetalle_anoAnterior',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Two years ago`
+  String get articulo_show_articuloDetalle_hace2Anos {
+    return Intl.message(
+      'Two years ago',
+      name: 'articulo_show_articuloDetalle_hace2Anos',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Measures`
   String get articulo_show_articuloDetalle_medidas {
     return Intl.message(

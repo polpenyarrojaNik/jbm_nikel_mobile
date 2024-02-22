@@ -17,6 +17,7 @@ class UsuarioAuxDTO with _$UsuarioAuxDTO {
     @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')
     required String modificarPedido,
     @JsonKey(name: 'APP_VER_TOTAL_VENTAS') required String verTotalVentas,
+    @JsonKey(name: 'MARGEN_COMERCIAL') required double margenComercial,
   }) = _UsuarioAuxDTO;
 
   factory UsuarioAuxDTO.fromJson(Map<String, dynamic> json) =>
@@ -30,6 +31,7 @@ class UsuarioAuxDTO with _$UsuarioAuxDTO {
       idiomaId: _.idiomaId,
       modificarPedido: _.modificarPedido ? 'S' : 'N',
       verTotalVentas: _.verTotalVentas ? 'S' : 'N',
+      margenComercial: _.margenComercial,
     );
   }
 }

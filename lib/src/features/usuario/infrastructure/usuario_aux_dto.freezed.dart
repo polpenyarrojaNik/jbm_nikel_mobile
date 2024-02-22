@@ -32,6 +32,8 @@ mixin _$UsuarioAuxDTO {
   String get modificarPedido => throw _privateConstructorUsedError;
   @JsonKey(name: 'APP_VER_TOTAL_VENTAS')
   String get verTotalVentas => throw _privateConstructorUsedError;
+  @JsonKey(name: 'MARGEN_COMERCIAL')
+  double get margenComercial => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,7 +53,8 @@ abstract class $UsuarioAuxDTOCopyWith<$Res> {
       @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') String? nombreUsuario,
       @JsonKey(name: 'IDIOMA_ID') String idiomaId,
       @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') String modificarPedido,
-      @JsonKey(name: 'APP_VER_TOTAL_VENTAS') String verTotalVentas});
+      @JsonKey(name: 'APP_VER_TOTAL_VENTAS') String verTotalVentas,
+      @JsonKey(name: 'MARGEN_COMERCIAL') double margenComercial});
 }
 
 /// @nodoc
@@ -73,6 +76,7 @@ class _$UsuarioAuxDTOCopyWithImpl<$Res, $Val extends UsuarioAuxDTO>
     Object? idiomaId = null,
     Object? modificarPedido = null,
     Object? verTotalVentas = null,
+    Object? margenComercial = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -99,6 +103,10 @@ class _$UsuarioAuxDTOCopyWithImpl<$Res, $Val extends UsuarioAuxDTO>
           ? _value.verTotalVentas
           : verTotalVentas // ignore: cast_nullable_to_non_nullable
               as String,
+      margenComercial: null == margenComercial
+          ? _value.margenComercial
+          : margenComercial // ignore: cast_nullable_to_non_nullable
+              as double,
     ) as $Val);
   }
 }
@@ -117,7 +125,8 @@ abstract class _$$UsuarioAuxDTOImplCopyWith<$Res>
       @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') String? nombreUsuario,
       @JsonKey(name: 'IDIOMA_ID') String idiomaId,
       @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') String modificarPedido,
-      @JsonKey(name: 'APP_VER_TOTAL_VENTAS') String verTotalVentas});
+      @JsonKey(name: 'APP_VER_TOTAL_VENTAS') String verTotalVentas,
+      @JsonKey(name: 'MARGEN_COMERCIAL') double margenComercial});
 }
 
 /// @nodoc
@@ -137,6 +146,7 @@ class __$$UsuarioAuxDTOImplCopyWithImpl<$Res>
     Object? idiomaId = null,
     Object? modificarPedido = null,
     Object? verTotalVentas = null,
+    Object? margenComercial = null,
   }) {
     return _then(_$UsuarioAuxDTOImpl(
       id: null == id
@@ -163,6 +173,10 @@ class __$$UsuarioAuxDTOImplCopyWithImpl<$Res>
           ? _value.verTotalVentas
           : verTotalVentas // ignore: cast_nullable_to_non_nullable
               as String,
+      margenComercial: null == margenComercial
+          ? _value.margenComercial
+          : margenComercial // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -178,7 +192,8 @@ class _$UsuarioAuxDTOImpl extends _UsuarioAuxDTO {
       @JsonKey(name: 'IDIOMA_ID') required this.idiomaId,
       @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')
       required this.modificarPedido,
-      @JsonKey(name: 'APP_VER_TOTAL_VENTAS') required this.verTotalVentas})
+      @JsonKey(name: 'APP_VER_TOTAL_VENTAS') required this.verTotalVentas,
+      @JsonKey(name: 'MARGEN_COMERCIAL') required this.margenComercial})
       : super._();
 
   factory _$UsuarioAuxDTOImpl.fromJson(Map<String, dynamic> json) =>
@@ -202,10 +217,13 @@ class _$UsuarioAuxDTOImpl extends _UsuarioAuxDTO {
   @override
   @JsonKey(name: 'APP_VER_TOTAL_VENTAS')
   final String verTotalVentas;
+  @override
+  @JsonKey(name: 'MARGEN_COMERCIAL')
+  final double margenComercial;
 
   @override
   String toString() {
-    return 'UsuarioAuxDTO(id: $id, usuario: $usuario, nombreUsuario: $nombreUsuario, idiomaId: $idiomaId, modificarPedido: $modificarPedido, verTotalVentas: $verTotalVentas)';
+    return 'UsuarioAuxDTO(id: $id, usuario: $usuario, nombreUsuario: $nombreUsuario, idiomaId: $idiomaId, modificarPedido: $modificarPedido, verTotalVentas: $verTotalVentas, margenComercial: $margenComercial)';
   }
 
   @override
@@ -222,13 +240,15 @@ class _$UsuarioAuxDTOImpl extends _UsuarioAuxDTO {
             (identical(other.modificarPedido, modificarPedido) ||
                 other.modificarPedido == modificarPedido) &&
             (identical(other.verTotalVentas, verTotalVentas) ||
-                other.verTotalVentas == verTotalVentas));
+                other.verTotalVentas == verTotalVentas) &&
+            (identical(other.margenComercial, margenComercial) ||
+                other.margenComercial == margenComercial));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, usuario, nombreUsuario,
-      idiomaId, modificarPedido, verTotalVentas);
+      idiomaId, modificarPedido, verTotalVentas, margenComercial);
 
   @JsonKey(ignore: true)
   @override
@@ -254,7 +274,9 @@ abstract class _UsuarioAuxDTO extends UsuarioAuxDTO {
       @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')
       required final String modificarPedido,
       @JsonKey(name: 'APP_VER_TOTAL_VENTAS')
-      required final String verTotalVentas}) = _$UsuarioAuxDTOImpl;
+      required final String verTotalVentas,
+      @JsonKey(name: 'MARGEN_COMERCIAL')
+      required final double margenComercial}) = _$UsuarioAuxDTOImpl;
   const _UsuarioAuxDTO._() : super._();
 
   factory _UsuarioAuxDTO.fromJson(Map<String, dynamic> json) =
@@ -278,6 +300,9 @@ abstract class _UsuarioAuxDTO extends UsuarioAuxDTO {
   @override
   @JsonKey(name: 'APP_VER_TOTAL_VENTAS')
   String get verTotalVentas;
+  @override
+  @JsonKey(name: 'MARGEN_COMERCIAL')
+  double get margenComercial;
   @override
   @JsonKey(ignore: true)
   _$$UsuarioAuxDTOImplCopyWith<_$UsuarioAuxDTOImpl> get copyWith =>

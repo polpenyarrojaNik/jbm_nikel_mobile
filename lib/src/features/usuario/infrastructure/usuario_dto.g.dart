@@ -22,6 +22,7 @@ _$UsuarioDTOImpl _$$UsuarioDTOImplFromJson(Map<String, dynamic> json) =>
       version: json['VERSION'] as String?,
       buildNumber: json['BUILD_NUMBER'] as String?,
       deviceInfo: json['DEVICE_INFO'] as String?,
+      margenComercial: (json['MARGEN_COMERCIAL'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$$UsuarioDTOImplToJson(_$UsuarioDTOImpl instance) =>
@@ -40,4 +41,5 @@ Map<String, dynamic> _$$UsuarioDTOImplToJson(_$UsuarioDTOImpl instance) =>
       'VERSION': instance.version,
       'BUILD_NUMBER': instance.buildNumber,
       'DEVICE_INFO': instance.deviceInfo,
+      'MARGEN_COMERCIAL': instance.margenComercial,
     };

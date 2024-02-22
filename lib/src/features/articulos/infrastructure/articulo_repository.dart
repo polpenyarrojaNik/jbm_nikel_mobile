@@ -13,6 +13,7 @@ import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_grupo_neto_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_pedido_venta_linea_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_ventas_mes_todos_dto.dart';
+import 'package:money2/money2.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../../../core/domain/adjunto_param.dart';
@@ -43,9 +44,15 @@ final articuloRepositoryProvider = Provider.autoDispose<ArticuloRepository>(
   (ref) {
     final remoteDb = ref.watch(appRemoteDatabaseProvider);
     final localDb = ref.watch(appLocalDatabaseProvider);
+    final usuarioService = ref.watch(usuarioServiceProvider);
 
     final dio = ref.watch(dioProvider);
-    return ArticuloRepository(remoteDb, localDb, dio);
+    return ArticuloRepository(
+      remoteDb,
+      localDb,
+      dio,
+      usuarioService,
+    );
   },
 );
 
@@ -191,10 +198,16 @@ class ArticuloRepository {
 
   final RemoteAppDatabase _remoteDb;
   final LocalAppDatabase _localDb;
+  final UsuarioService _usuario;
 
   final Dio _dio;
 
-  ArticuloRepository(this._remoteDb, this._localDb, this._dio);
+  ArticuloRepository(
+    this._remoteDb,
+    this._localDb,
+    this._dio,
+    this._usuario,
+  );
 
   Future<List<Articulo>> getArticuloLista(
       {required int page, required String searchText}) async {
@@ -263,6 +276,10 @@ class ArticuloRepository {
 
   Future<Articulo> getArticuloById({required String articuloId}) async {
     try {
+      final usuario = await _usuario.getSignedInUsuario();
+      final usuarioId = usuario?.id ?? '';
+      final margenComercial = usuario?.margenComercial ?? 0.0;
+
       final query = (_remoteDb.select(_remoteDb.articuloTable)
         ..where((t) => t.id.equals(articuloId)));
 
@@ -273,14 +290,104 @@ class ArticuloRepository {
         final subfamiliaDTO = await (_remoteDb.select(_remoteDb.subfamiliaTable)
               ..where((t) => t.id.equals(row.subfamiliaId ?? '')))
             .getSingleOrNull();
-        return row.toDomain(
-          familia: familiaDTO?.toDomain(),
-          subfamilia: subfamiliaDTO?.toDomain(),
-        );
+
+        final ventasAnyoActual =
+            await _getSalesForYear(DateTime.now().year, articuloId, usuarioId);
+        final ventasAnyoAnterior = await _getSalesForYear(
+            DateTime.now().year - 1, articuloId, usuarioId);
+        final ventasHaceDosAnyos = await _getSalesForYear(
+            DateTime.now().year - 2, articuloId, usuarioId);
+
+        final costeAnyoActual =
+            await _getCostForYear(DateTime.now().year, articuloId, usuarioId);
+        // margenComercial
+        final costeAnyoAnterior = await _getCostForYear(
+            DateTime.now().year - 1, articuloId, usuarioId);
+        final costeHaceDosAnyos = await _getCostForYear(
+            DateTime.now().year - 2, articuloId, usuarioId);
+
+        final margenAnyoActual = ventasAnyoActual == 0
+            ? 0.0
+            : ((1 - (costeAnyoActual / ventasAnyoActual)) * 100) -
+                margenComercial;
+        final margenAnyoAnterior = ventasAnyoAnterior == 0
+            ? 0.0
+            : ((1 - (costeAnyoAnterior / ventasAnyoAnterior)) * 100) -
+                margenComercial;
+        final margenHaceDosAnyos = ventasHaceDosAnyos == 0
+            ? 0.0
+            : ((1 - (costeHaceDosAnyos / ventasHaceDosAnyos)) * 100) -
+                margenComercial;
+
+        return row
+            .toDomain(
+              familia: familiaDTO?.toDomain(),
+              subfamilia: subfamiliaDTO?.toDomain(),
+            )
+            .copyWith(
+              ventasAnyoActual: Money.fromNum(ventasAnyoActual, code: 'EU'),
+              ventasAnyoAnterior: Money.fromNum(ventasAnyoAnterior, code: 'EU'),
+              ventasHaceDosAnyos: Money.fromNum(ventasHaceDosAnyos, code: 'EU'),
+              margenAnyoActual: margenAnyoActual,
+              margenAnyoAnterior: margenAnyoAnterior,
+              margenHaceDosAnyos: margenHaceDosAnyos,
+            );
       }).getSingle();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
+  }
+
+  Future<double> _getSalesForYear(
+      int year, String articuloId, String usuarioId) async {
+    final ventas = await _remoteDb
+        .customSelect(
+          '''SELECT SUM(estadisticas_venta.importe) AS ventas
+FROM estadisticas_venta
+WHERE estadisticas_venta.anyo = ?
+AND estadisticas_venta.articulo_id = ?
+AND estadisticas_venta.cliente_id IN (SELECT clientes_usuario.cliente_id
+                    FROM clientes_usuario
+                   WHERE clientes_usuario.usuario_id = ?)''',
+          variables: [
+            Variable.withInt(year),
+            Variable.withString(articuloId),
+            Variable.withString(usuarioId)
+          ],
+          readsFrom: {
+            _remoteDb.estadisticasClienteUsuarioVentasTable,
+          },
+        )
+        .map((row) => row.read<double>('ventas'))
+        .getSingle();
+
+    return ventas;
+  }
+
+  Future<double> _getCostForYear(
+      int year, String articuloId, String usuarioId) async {
+    final coste = await _remoteDb
+        .customSelect(
+          '''SELECT SUM(estadisticas_venta.coste) AS coste
+FROM estadisticas_venta
+WHERE estadisticas_venta.anyo = ?
+AND estadisticas_venta.articulo_id = ?
+AND estadisticas_venta.cliente_id IN (SELECT clientes_usuario.cliente_id
+                    FROM clientes_usuario
+                   WHERE clientes_usuario.usuario_id = ?)''',
+          variables: [
+            Variable.withInt(year),
+            Variable.withString(articuloId),
+            Variable.withString(usuarioId)
+          ],
+          readsFrom: {
+            _remoteDb.estadisticasClienteUsuarioVentasTable,
+          },
+        )
+        .map((row) => row.read<double>('coste'))
+        .getSingle();
+
+    return coste;
   }
 
   Future<List<ArticuloComponente>> getArticuloComponenteListaById(

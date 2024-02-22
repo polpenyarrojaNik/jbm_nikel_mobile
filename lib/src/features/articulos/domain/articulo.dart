@@ -76,6 +76,12 @@ class Articulo with _$Articulo {
       String? gs1128Subcaja,
       String? gs1128Caja,
       String? gs1128Palet,
+      required Money ventasAnyoActual,
+      required Money ventasAnyoAnterior,
+      required Money ventasHaceDosAnyos,
+      required double margenAnyoActual,
+      required double margenAnyoAnterior,
+      required double margenHaceDosAnyos,
       required DateTime lastUpdated,
       required bool deleted}) = _Articulo;
 }

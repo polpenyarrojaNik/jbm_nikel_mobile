@@ -35,9 +35,6 @@ class CatalogoFavoritoTable extends Table {
   @override
   String get tableName => 'CATALOGO_FAVORITO';
 
-  @override
-  Set<Column> get primaryKey => {id};
-
   IntColumn get id => integer().autoIncrement().named('ID')();
   IntColumn get catalogoId => integer().named('CATALOGO_ID')();
 }

@@ -48,6 +48,8 @@ mixin _$UsuarioDTO {
   String? get buildNumber => throw _privateConstructorUsedError;
   @JsonKey(name: 'DEVICE_INFO')
   String? get deviceInfo => throw _privateConstructorUsedError;
+  @JsonKey(name: 'MARGEN_COMERCIAL')
+  double? get margenComercial => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -75,7 +77,8 @@ abstract class $UsuarioDTOCopyWith<$Res> {
       @JsonKey(name: 'PACKAGE_NAME') String? packageName,
       @JsonKey(name: 'VERSION') String? version,
       @JsonKey(name: 'BUILD_NUMBER') String? buildNumber,
-      @JsonKey(name: 'DEVICE_INFO') String? deviceInfo});
+      @JsonKey(name: 'DEVICE_INFO') String? deviceInfo,
+      @JsonKey(name: 'MARGEN_COMERCIAL') double? margenComercial});
 }
 
 /// @nodoc
@@ -105,6 +108,7 @@ class _$UsuarioDTOCopyWithImpl<$Res, $Val extends UsuarioDTO>
     Object? version = freezed,
     Object? buildNumber = freezed,
     Object? deviceInfo = freezed,
+    Object? margenComercial = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -163,6 +167,10 @@ class _$UsuarioDTOCopyWithImpl<$Res, $Val extends UsuarioDTO>
           ? _value.deviceInfo
           : deviceInfo // ignore: cast_nullable_to_non_nullable
               as String?,
+      margenComercial: freezed == margenComercial
+          ? _value.margenComercial
+          : margenComercial // ignore: cast_nullable_to_non_nullable
+              as double?,
     ) as $Val);
   }
 }
@@ -189,7 +197,8 @@ abstract class _$$UsuarioDTOImplCopyWith<$Res>
       @JsonKey(name: 'PACKAGE_NAME') String? packageName,
       @JsonKey(name: 'VERSION') String? version,
       @JsonKey(name: 'BUILD_NUMBER') String? buildNumber,
-      @JsonKey(name: 'DEVICE_INFO') String? deviceInfo});
+      @JsonKey(name: 'DEVICE_INFO') String? deviceInfo,
+      @JsonKey(name: 'MARGEN_COMERCIAL') double? margenComercial});
 }
 
 /// @nodoc
@@ -217,6 +226,7 @@ class __$$UsuarioDTOImplCopyWithImpl<$Res>
     Object? version = freezed,
     Object? buildNumber = freezed,
     Object? deviceInfo = freezed,
+    Object? margenComercial = freezed,
   }) {
     return _then(_$UsuarioDTOImpl(
       id: null == id
@@ -275,6 +285,10 @@ class __$$UsuarioDTOImplCopyWithImpl<$Res>
           ? _value.deviceInfo
           : deviceInfo // ignore: cast_nullable_to_non_nullable
               as String?,
+      margenComercial: freezed == margenComercial
+          ? _value.margenComercial
+          : margenComercial // ignore: cast_nullable_to_non_nullable
+              as double?,
     ));
   }
 }
@@ -298,7 +312,8 @@ class _$UsuarioDTOImpl extends _UsuarioDTO {
       @JsonKey(name: 'PACKAGE_NAME') this.packageName,
       @JsonKey(name: 'VERSION') this.version,
       @JsonKey(name: 'BUILD_NUMBER') this.buildNumber,
-      @JsonKey(name: 'DEVICE_INFO') this.deviceInfo})
+      @JsonKey(name: 'DEVICE_INFO') this.deviceInfo,
+      @JsonKey(name: 'MARGEN_COMERCIAL') this.margenComercial})
       : super._();
 
   factory _$UsuarioDTOImpl.fromJson(Map<String, dynamic> json) =>
@@ -346,10 +361,13 @@ class _$UsuarioDTOImpl extends _UsuarioDTO {
   @override
   @JsonKey(name: 'DEVICE_INFO')
   final String? deviceInfo;
+  @override
+  @JsonKey(name: 'MARGEN_COMERCIAL')
+  final double? margenComercial;
 
   @override
   String toString() {
-    return 'UsuarioDTO(id: $id, usuario: $usuario, contrasenya: $contrasenya, nombreUsuario: $nombreUsuario, provisionalToken: $provisionalToken, refreshToken: $refreshToken, test: $test, idiomaId: $idiomaId, modificarPedido: $modificarPedido, verTotalVentas: $verTotalVentas, packageName: $packageName, version: $version, buildNumber: $buildNumber, deviceInfo: $deviceInfo)';
+    return 'UsuarioDTO(id: $id, usuario: $usuario, contrasenya: $contrasenya, nombreUsuario: $nombreUsuario, provisionalToken: $provisionalToken, refreshToken: $refreshToken, test: $test, idiomaId: $idiomaId, modificarPedido: $modificarPedido, verTotalVentas: $verTotalVentas, packageName: $packageName, version: $version, buildNumber: $buildNumber, deviceInfo: $deviceInfo, margenComercial: $margenComercial)';
   }
 
   @override
@@ -380,7 +398,9 @@ class _$UsuarioDTOImpl extends _UsuarioDTO {
             (identical(other.buildNumber, buildNumber) ||
                 other.buildNumber == buildNumber) &&
             (identical(other.deviceInfo, deviceInfo) ||
-                other.deviceInfo == deviceInfo));
+                other.deviceInfo == deviceInfo) &&
+            (identical(other.margenComercial, margenComercial) ||
+                other.margenComercial == margenComercial));
   }
 
   @JsonKey(ignore: true)
@@ -400,7 +420,8 @@ class _$UsuarioDTOImpl extends _UsuarioDTO {
       packageName,
       version,
       buildNumber,
-      deviceInfo);
+      deviceInfo,
+      margenComercial);
 
   @JsonKey(ignore: true)
   @override
@@ -435,7 +456,8 @@ abstract class _UsuarioDTO extends UsuarioDTO {
           @JsonKey(name: 'PACKAGE_NAME') final String? packageName,
           @JsonKey(name: 'VERSION') final String? version,
           @JsonKey(name: 'BUILD_NUMBER') final String? buildNumber,
-          @JsonKey(name: 'DEVICE_INFO') final String? deviceInfo}) =
+          @JsonKey(name: 'DEVICE_INFO') final String? deviceInfo,
+          @JsonKey(name: 'MARGEN_COMERCIAL') final double? margenComercial}) =
       _$UsuarioDTOImpl;
   const _UsuarioDTO._() : super._();
 
@@ -484,6 +506,9 @@ abstract class _UsuarioDTO extends UsuarioDTO {
   @override
   @JsonKey(name: 'DEVICE_INFO')
   String? get deviceInfo;
+  @override
+  @JsonKey(name: 'MARGEN_COMERCIAL')
+  double? get margenComercial;
   @override
   @JsonKey(ignore: true)
   _$$UsuarioDTOImplCopyWith<_$UsuarioDTOImpl> get copyWith =>

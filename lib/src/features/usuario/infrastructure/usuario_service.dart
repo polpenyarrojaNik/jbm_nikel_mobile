@@ -126,6 +126,7 @@ class UsuarioService {
           idiomaId: userDto.idiomaId,
           modificarPedido: userDto.modificarPedido,
           verTotalVentas: userDto.verTotalVentas,
+          margenComercial: userDto.margenComercial,
           packageName: packageInfo.appName,
           version: '${packageInfo.appName} ${packageInfo.version}',
           buildNumber: packageInfo.buildNumber,
@@ -133,6 +134,8 @@ class UsuarioService {
         );
         await _localUsuarioRepository.save(usuarioDto);
       }
-    } catch (e) {}
+    } catch (e) {
+      // Do nothing
+    }
   }
 }

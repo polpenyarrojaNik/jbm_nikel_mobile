@@ -88,8 +88,8 @@ class ArticuloDetallePage extends ConsumerWidget {
       SeleccionarCantidadRoute(
         seleccionarCantidadParam: SeleccionarCantidadParam(
             pedidoVentaParam: pedidoVentaParam,
-            clienteId: clienteId,
             articuloId: articuloId,
+            clienteId: clienteId,
             posicionLinea: posicionLinea,
             addNewLineaDesdeArticulo: true),
       ),
@@ -380,6 +380,7 @@ class _ArticuloInfoContainer extends StatelessWidget {
             ],
           ),
         ),
+        _ArticuloAnalisis(articulo: articulo),
         MobileCustomSeparators(
             separatorTitle:
                 S.of(context).articulo_show_articuloDetalle_otrosDatos),
@@ -1076,6 +1077,179 @@ class _SummaryTextWidgetState extends State<SummaryTextWidget> {
     showDialog(
       context: context,
       builder: (context) => _ArticluloResumenDialog(articulo: articulo),
+    );
+  }
+}
+
+class _ArticuloAnalisis extends StatelessWidget {
+  const _ArticuloAnalisis({required this.articulo});
+
+  final Articulo articulo;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        MobileCustomSeparators(
+            separatorTitle:
+                S.of(context).articulo_show_articuloDetalle_analisis),
+        gapH8,
+        Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _VentasRowWidget(articulo: articulo),
+              gapH8,
+              _MargenRowWidget(
+                articulo: articulo,
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _VentasRowWidget extends StatelessWidget {
+  const _VentasRowWidget({
+    required this.articulo,
+  });
+
+  final Articulo articulo;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          S.of(context).articulo_show_articuloDetalle_ventas,
+          style: Theme.of(context)
+              .textTheme
+              .titleSmall!
+              .copyWith(color: Theme.of(context).textTheme.bodySmall!.color),
+        ),
+        gapH4,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: Column(
+                children: [
+                  Text(S.of(context).articulo_show_articuloDetalle_anoActual,
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          color: Theme.of(context).textTheme.bodySmall!.color)),
+                  SelectableTextWidget(
+                    formatPrecios(
+                      precio: articulo.ventasAnyoActual,
+                      tipoPrecio: null,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: Column(
+                children: [
+                  Text(S.of(context).articulo_show_articuloDetalle_anoAnterior,
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          color: Theme.of(context).textTheme.bodySmall!.color)),
+                  SelectableTextWidget(
+                    formatPrecios(
+                      precio: articulo.ventasAnyoAnterior,
+                      tipoPrecio: null,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: Column(
+                children: [
+                  Text(S.of(context).articulo_show_articuloDetalle_hace2Anos,
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          color: Theme.of(context).textTheme.bodySmall!.color)),
+                  SelectableTextWidget(
+                    formatPrecios(
+                      precio: articulo.ventasHaceDosAnyos,
+                      tipoPrecio: null,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class _MargenRowWidget extends StatelessWidget {
+  const _MargenRowWidget({
+    required this.articulo,
+  });
+
+  final Articulo articulo;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          S.of(context).articulo_show_articuloDetalle_margen,
+          style: Theme.of(context)
+              .textTheme
+              .titleSmall!
+              .copyWith(color: Theme.of(context).textTheme.bodySmall!.color),
+        ),
+        gapH4,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: Column(
+                children: [
+                  Text(S.of(context).articulo_show_articuloDetalle_anoActual,
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          color: Theme.of(context).textTheme.bodySmall!.color)),
+                  SelectableTextWidget(
+                    '${numberFormatDecimal(articulo.margenAnyoActual)}%',
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: Column(
+                children: [
+                  Text(S.of(context).articulo_show_articuloDetalle_anoAnterior,
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          color: Theme.of(context).textTheme.bodySmall!.color)),
+                  SelectableTextWidget(
+                    '${numberFormatDecimal(articulo.margenAnyoAnterior)}%',
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: Column(
+                children: [
+                  Text(S.of(context).articulo_show_articuloDetalle_hace2Anos,
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          color: Theme.of(context).textTheme.bodySmall!.color)),
+                  SelectableTextWidget(
+                    '${numberFormatDecimal(articulo.margenHaceDosAnyos)}%',
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

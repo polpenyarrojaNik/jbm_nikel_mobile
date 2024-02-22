@@ -26,6 +26,7 @@ mixin _$Usuario {
   String get idiomaId => throw _privateConstructorUsedError;
   bool get modificarPedido => throw _privateConstructorUsedError;
   bool get verTotalVentas => throw _privateConstructorUsedError;
+  double get margenComercial => throw _privateConstructorUsedError;
   String get packageName => throw _privateConstructorUsedError;
   String get version => throw _privateConstructorUsedError;
   String get buildNumber => throw _privateConstructorUsedError;
@@ -51,6 +52,7 @@ abstract class $UsuarioCopyWith<$Res> {
       String idiomaId,
       bool modificarPedido,
       bool verTotalVentas,
+      double margenComercial,
       String packageName,
       String version,
       String buildNumber,
@@ -80,6 +82,7 @@ class _$UsuarioCopyWithImpl<$Res, $Val extends Usuario>
     Object? idiomaId = null,
     Object? modificarPedido = null,
     Object? verTotalVentas = null,
+    Object? margenComercial = null,
     Object? packageName = null,
     Object? version = null,
     Object? buildNumber = null,
@@ -126,6 +129,10 @@ class _$UsuarioCopyWithImpl<$Res, $Val extends Usuario>
           ? _value.verTotalVentas
           : verTotalVentas // ignore: cast_nullable_to_non_nullable
               as bool,
+      margenComercial: null == margenComercial
+          ? _value.margenComercial
+          : margenComercial // ignore: cast_nullable_to_non_nullable
+              as double,
       packageName: null == packageName
           ? _value.packageName
           : packageName // ignore: cast_nullable_to_non_nullable
@@ -164,6 +171,7 @@ abstract class _$$UsuarioImplCopyWith<$Res> implements $UsuarioCopyWith<$Res> {
       String idiomaId,
       bool modificarPedido,
       bool verTotalVentas,
+      double margenComercial,
       String packageName,
       String version,
       String buildNumber,
@@ -191,6 +199,7 @@ class __$$UsuarioImplCopyWithImpl<$Res>
     Object? idiomaId = null,
     Object? modificarPedido = null,
     Object? verTotalVentas = null,
+    Object? margenComercial = null,
     Object? packageName = null,
     Object? version = null,
     Object? buildNumber = null,
@@ -237,6 +246,10 @@ class __$$UsuarioImplCopyWithImpl<$Res>
           ? _value.verTotalVentas
           : verTotalVentas // ignore: cast_nullable_to_non_nullable
               as bool,
+      margenComercial: null == margenComercial
+          ? _value.margenComercial
+          : margenComercial // ignore: cast_nullable_to_non_nullable
+              as double,
       packageName: null == packageName
           ? _value.packageName
           : packageName // ignore: cast_nullable_to_non_nullable
@@ -271,6 +284,7 @@ class _$UsuarioImpl extends _Usuario {
       required this.idiomaId,
       required this.modificarPedido,
       required this.verTotalVentas,
+      required this.margenComercial,
       required this.packageName,
       required this.version,
       required this.buildNumber,
@@ -298,6 +312,8 @@ class _$UsuarioImpl extends _Usuario {
   @override
   final bool verTotalVentas;
   @override
+  final double margenComercial;
+  @override
   final String packageName;
   @override
   final String version;
@@ -308,7 +324,7 @@ class _$UsuarioImpl extends _Usuario {
 
   @override
   String toString() {
-    return 'Usuario(id: $id, usuario: $usuario, contrasenya: $contrasenya, nombreUsuario: $nombreUsuario, refreshToken: $refreshToken, provisionalToken: $provisionalToken, test: $test, idiomaId: $idiomaId, modificarPedido: $modificarPedido, verTotalVentas: $verTotalVentas, packageName: $packageName, version: $version, buildNumber: $buildNumber, deviceInfo: $deviceInfo)';
+    return 'Usuario(id: $id, usuario: $usuario, contrasenya: $contrasenya, nombreUsuario: $nombreUsuario, refreshToken: $refreshToken, provisionalToken: $provisionalToken, test: $test, idiomaId: $idiomaId, modificarPedido: $modificarPedido, verTotalVentas: $verTotalVentas, margenComercial: $margenComercial, packageName: $packageName, version: $version, buildNumber: $buildNumber, deviceInfo: $deviceInfo)';
   }
 
   @override
@@ -333,6 +349,8 @@ class _$UsuarioImpl extends _Usuario {
                 other.modificarPedido == modificarPedido) &&
             (identical(other.verTotalVentas, verTotalVentas) ||
                 other.verTotalVentas == verTotalVentas) &&
+            (identical(other.margenComercial, margenComercial) ||
+                other.margenComercial == margenComercial) &&
             (identical(other.packageName, packageName) ||
                 other.packageName == packageName) &&
             (identical(other.version, version) || other.version == version) &&
@@ -355,6 +373,7 @@ class _$UsuarioImpl extends _Usuario {
       idiomaId,
       modificarPedido,
       verTotalVentas,
+      margenComercial,
       packageName,
       version,
       buildNumber,
@@ -379,6 +398,7 @@ abstract class _Usuario extends Usuario {
       required final String idiomaId,
       required final bool modificarPedido,
       required final bool verTotalVentas,
+      required final double margenComercial,
       required final String packageName,
       required final String version,
       required final String buildNumber,
@@ -405,6 +425,8 @@ abstract class _Usuario extends Usuario {
   bool get modificarPedido;
   @override
   bool get verTotalVentas;
+  @override
+  double get margenComercial;
   @override
   String get packageName;
   @override

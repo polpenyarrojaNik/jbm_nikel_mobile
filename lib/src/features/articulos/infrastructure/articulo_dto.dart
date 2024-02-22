@@ -4,6 +4,7 @@ import 'package:jbm_nikel_mobile/src/core/domain/familia.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/familia_dto.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/subfamilia_dto.dart';
+import 'package:money2/money2.dart';
 
 import '../../../core/domain/subfamilia.dart';
 import '../../../core/infrastructure/remote_database.dart';
@@ -166,6 +167,12 @@ class ArticuloDTO with _$ArticuloDTO implements Insertable<ArticuloDTO> {
       gs1128Subcaja: gs1128Subcaja,
       gs1128Caja: gs1128Caja,
       gs1128Palet: gs1128Palet,
+      ventasAnyoActual: Money.fromNum(0.0, code: 'EU'),
+      ventasAnyoAnterior: Money.fromNum(0.0, code: 'EU'),
+      ventasHaceDosAnyos: Money.fromNum(0.0, code: 'EU'),
+      margenAnyoActual: 0.0,
+      margenAnyoAnterior: 0.0,
+      margenHaceDosAnyos: 0.0,
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S') ? true : false,
     );

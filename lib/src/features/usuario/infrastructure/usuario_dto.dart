@@ -26,6 +26,7 @@ class UsuarioDTO with _$UsuarioDTO {
     @JsonKey(name: 'VERSION') String? version,
     @JsonKey(name: 'BUILD_NUMBER') String? buildNumber,
     @JsonKey(name: 'DEVICE_INFO') String? deviceInfo,
+    @JsonKey(name: 'MARGEN_COMERCIAL') double? margenComercial,
   }) = _UsuarioDTO;
 
   DateTime? get expiration {
@@ -56,6 +57,7 @@ class UsuarioDTO with _$UsuarioDTO {
       idiomaId: _.idiomaId,
       modificarPedido: _.modificarPedido ? 'S' : 'N',
       verTotalVentas: _.verTotalVentas ? 'S' : 'N',
+      margenComercial: _.margenComercial,
       packageName: _.packageName,
       version: _.version,
       buildNumber: _.buildNumber,
@@ -75,6 +77,7 @@ class UsuarioDTO with _$UsuarioDTO {
       idiomaId: idiomaId,
       modificarPedido: modificarPedido == 'S',
       verTotalVentas: verTotalVentas == 'S',
+      margenComercial: margenComercial ?? 0.0,
       packageName: packageName!,
       version: version!,
       buildNumber: buildNumber!,
