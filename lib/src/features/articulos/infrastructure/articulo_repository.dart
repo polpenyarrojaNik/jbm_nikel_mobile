@@ -341,25 +341,26 @@ class ArticuloRepository {
   Future<double> _getSalesForYear(
       int year, String articuloId, String usuarioId) async {
     final ventas = await _remoteDb
-        .customSelect(
-          '''SELECT SUM(estadisticas_venta.importe) AS ventas
+            .customSelect(
+              '''SELECT SUM(estadisticas_venta.importe) AS ventas
 FROM estadisticas_venta
 WHERE estadisticas_venta.anyo = ?
 AND estadisticas_venta.articulo_id = ?
 AND estadisticas_venta.cliente_id IN (SELECT clientes_usuario.cliente_id
                     FROM clientes_usuario
                    WHERE clientes_usuario.usuario_id = ?)''',
-          variables: [
-            Variable.withInt(year),
-            Variable.withString(articuloId),
-            Variable.withString(usuarioId)
-          ],
-          readsFrom: {
-            _remoteDb.estadisticasClienteUsuarioVentasTable,
-          },
-        )
-        .map((row) => row.read<double>('ventas'))
-        .getSingle();
+              variables: [
+                Variable.withInt(year),
+                Variable.withString(articuloId),
+                Variable.withString(usuarioId)
+              ],
+              readsFrom: {
+                _remoteDb.estadisticasClienteUsuarioVentasTable,
+              },
+            )
+            .map((row) => row.read<double?>('ventas'))
+            .getSingleOrNull() ??
+        0;
 
     return ventas;
   }
@@ -367,25 +368,26 @@ AND estadisticas_venta.cliente_id IN (SELECT clientes_usuario.cliente_id
   Future<double> _getCostForYear(
       int year, String articuloId, String usuarioId) async {
     final coste = await _remoteDb
-        .customSelect(
-          '''SELECT SUM(estadisticas_venta.coste) AS coste
+            .customSelect(
+              '''SELECT SUM(estadisticas_venta.coste) AS coste
 FROM estadisticas_venta
 WHERE estadisticas_venta.anyo = ?
 AND estadisticas_venta.articulo_id = ?
 AND estadisticas_venta.cliente_id IN (SELECT clientes_usuario.cliente_id
                     FROM clientes_usuario
                    WHERE clientes_usuario.usuario_id = ?)''',
-          variables: [
-            Variable.withInt(year),
-            Variable.withString(articuloId),
-            Variable.withString(usuarioId)
-          ],
-          readsFrom: {
-            _remoteDb.estadisticasClienteUsuarioVentasTable,
-          },
-        )
-        .map((row) => row.read<double>('coste'))
-        .getSingle();
+              variables: [
+                Variable.withInt(year),
+                Variable.withString(articuloId),
+                Variable.withString(usuarioId)
+              ],
+              readsFrom: {
+                _remoteDb.estadisticasClienteUsuarioVentasTable,
+              },
+            )
+            .map((row) => row.read<double?>('coste'))
+            .getSingleOrNull() ??
+        0;
 
     return coste;
   }
