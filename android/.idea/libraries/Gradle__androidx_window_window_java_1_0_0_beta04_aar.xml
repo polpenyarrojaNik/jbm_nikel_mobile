@@ -1,9 +1,9 @@
 <component name="libraryTable">
-  <library name="Gradle: androidx.window:window-java:1.0.0-beta04@aar">
+  <library name="Gradle: androidx.window:window-java:1.0.0-beta04@aar" external-system-id="GRADLE">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/444fb7254d3037d77d143f3d69c16d39/transformed/jetified-window-java-1.0.0-beta04/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/444fb7254d3037d77d143f3d69c16d39/transformed/jetified-window-java-1.0.0-beta04/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/444fb7254d3037d77d143f3d69c16d39/transformed/jetified-window-java-1.0.0-beta04/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5a8e73658519ebd74fa1f2de38c9357f/transformed/jetified-window-java-1.0.0-beta04/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/5a8e73658519ebd74fa1f2de38c9357f/transformed/jetified-window-java-1.0.0-beta04/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5a8e73658519ebd74fa1f2de38c9357f/transformed/jetified-window-java-1.0.0-beta04/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

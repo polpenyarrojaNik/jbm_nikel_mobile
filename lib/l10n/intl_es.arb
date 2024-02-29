@@ -358,5 +358,11 @@
   "notification_detail": "Detalle de la notificación",
   "cliente_show_clienteDetalle_fiscalData": "Datos fiscales",
   "pending": "Pendiente",
-  "cliente_alrededor_potenciales": "Potenciales"
+  "cliente_alrededor_potenciales": "Potenciales",
+  "articulo_show_articuloDetalle_analisis": "Análisis",
+  "articulo_show_articuloDetalle_anoActual": "Actual",
+  "articulo_show_articuloDetalle_anoAnterior": "Anterior",
+  "articulo_show_articuloDetalle_hace2Anos": "Hace 2 años",
+  "articulo_show_articuloDetalle_margen": "Margen",
+  "articulo_show_articuloDetalle_ventas": "Ventas"
 }

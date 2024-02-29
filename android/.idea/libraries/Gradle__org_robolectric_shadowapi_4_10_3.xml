@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: org.robolectric:shadowapi:4.10.3">
+  <library name="Gradle: org.robolectric:shadowapi:4.10.3" external-system-id="GRADLE">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.robolectric/shadowapi/4.10.3/3fd0f79f83756e07ccbf93a1ec83c441ac3b4ef8/shadowapi-4.10.3.jar!/" />
     </CLASSES>

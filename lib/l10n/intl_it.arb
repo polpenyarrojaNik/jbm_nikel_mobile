@@ -358,5 +358,11 @@
   "pedido_edit_selectQuantity_subcajas": "Sottocaselle",
   "pedido_edit_selectQuantity_importe": "Importo",
   "cliente_alrededor_ventasAnoAnterior": "Vendite dell'anno precedente",
-  "pedido_edit_pedidoEdit_pedidoClienteMax50": "Il campo dell'ordine del cliente non può contenere più di 50 caratteri"
+  "pedido_edit_pedidoEdit_pedidoClienteMax50": "Il campo dell'ordine del cliente non può contenere più di 50 caratteri",
+  "articulo_show_articuloDetalle_analisis": "Analisi",
+  "articulo_show_articuloDetalle_anoActual": "Attuale",
+  "articulo_show_articuloDetalle_anoAnterior": "Precedente",
+  "articulo_show_articuloDetalle_hace2Anos": "2 anni fa",
+  "articulo_show_articuloDetalle_margen": "Margine",
+  "articulo_show_articuloDetalle_ventas": "Vendite"
 }

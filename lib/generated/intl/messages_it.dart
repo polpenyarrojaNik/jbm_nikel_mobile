@@ -33,6 +33,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Attivo APP"),
         "articulo_show_articuloDetalle_activoWeb":
             MessageLookupByLibrary.simpleMessage("Attivo web"),
+        "articulo_show_articuloDetalle_analisis":
+            MessageLookupByLibrary.simpleMessage("Analisi"),
+        "articulo_show_articuloDetalle_anoActual":
+            MessageLookupByLibrary.simpleMessage("Attuale"),
+        "articulo_show_articuloDetalle_anoAnterior":
+            MessageLookupByLibrary.simpleMessage("Precedente"),
         "articulo_show_articuloDetalle_cantidadCaja":
             MessageLookupByLibrary.simpleMessage("Quantità scatola"),
         "articulo_show_articuloDetalle_cantidadPalet":
@@ -63,8 +69,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Consegna 3"),
         "articulo_show_articuloDetalle_familia":
             MessageLookupByLibrary.simpleMessage("Famiglia"),
+        "articulo_show_articuloDetalle_hace2Anos":
+            MessageLookupByLibrary.simpleMessage("2 anni fa"),
         "articulo_show_articuloDetalle_kg":
             MessageLookupByLibrary.simpleMessage("Kg"),
+        "articulo_show_articuloDetalle_margen":
+            MessageLookupByLibrary.simpleMessage("Margine"),
         "articulo_show_articuloDetalle_mas":
             MessageLookupByLibrary.simpleMessage("+"),
         "articulo_show_articuloDetalle_medidas":
@@ -87,6 +97,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sottofamiglia"),
         "articulo_show_articuloDetalle_titulo":
             MessageLookupByLibrary.simpleMessage("Dettaglio articolo"),
+        "articulo_show_articuloDetalle_ventas":
+            MessageLookupByLibrary.simpleMessage("Vendite"),
         "articulo_show_articuloDocumentos_titulo":
             MessageLookupByLibrary.simpleMessage("Documenti"),
         "articulo_show_articuloGruposNetos_titulo":

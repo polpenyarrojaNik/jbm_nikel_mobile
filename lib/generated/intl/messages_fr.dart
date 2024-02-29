@@ -33,6 +33,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Actif sur l\'app"),
         "articulo_show_articuloDetalle_activoWeb":
             MessageLookupByLibrary.simpleMessage("Actif sur la web"),
+        "articulo_show_articuloDetalle_analisis":
+            MessageLookupByLibrary.simpleMessage("Une analyse"),
+        "articulo_show_articuloDetalle_anoActual":
+            MessageLookupByLibrary.simpleMessage("Courant"),
+        "articulo_show_articuloDetalle_anoAnterior":
+            MessageLookupByLibrary.simpleMessage("Précédent"),
         "articulo_show_articuloDetalle_cantidadCaja":
             MessageLookupByLibrary.simpleMessage("Quantité carton"),
         "articulo_show_articuloDetalle_cantidadPalet":
@@ -63,8 +69,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Livraison 3"),
         "articulo_show_articuloDetalle_familia":
             MessageLookupByLibrary.simpleMessage("Famille"),
+        "articulo_show_articuloDetalle_hace2Anos":
+            MessageLookupByLibrary.simpleMessage("Il y\'a 2 ans"),
         "articulo_show_articuloDetalle_kg":
             MessageLookupByLibrary.simpleMessage("Kg"),
+        "articulo_show_articuloDetalle_margen":
+            MessageLookupByLibrary.simpleMessage("Marge"),
         "articulo_show_articuloDetalle_mas":
             MessageLookupByLibrary.simpleMessage("+"),
         "articulo_show_articuloDetalle_medidas":
@@ -87,6 +97,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Subfamille"),
         "articulo_show_articuloDetalle_titulo":
             MessageLookupByLibrary.simpleMessage("Article détail"),
+        "articulo_show_articuloDetalle_ventas":
+            MessageLookupByLibrary.simpleMessage("Ventes"),
         "articulo_show_articuloDocumentos_titulo":
             MessageLookupByLibrary.simpleMessage("Documents"),
         "articulo_show_articuloGruposNetos_titulo":

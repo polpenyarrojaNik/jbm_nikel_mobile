@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: org.ow2.asm:asm-commons:9.5">
+  <library name="Gradle: org.ow2.asm:asm-commons:9.5" external-system-id="GRADLE">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-commons/9.5/19ab5b5800a3910d30d3a3e64fdb00fd0cb42de0/asm-commons-9.5.jar!/" />
     </CLASSES>

@@ -36,9 +36,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "articulo_show_articuloDetalle_analisis":
             MessageLookupByLibrary.simpleMessage("Analysis"),
         "articulo_show_articuloDetalle_anoActual":
-            MessageLookupByLibrary.simpleMessage("Current year"),
+            MessageLookupByLibrary.simpleMessage("Current"),
         "articulo_show_articuloDetalle_anoAnterior":
-            MessageLookupByLibrary.simpleMessage("Last year"),
+            MessageLookupByLibrary.simpleMessage("Last"),
         "articulo_show_articuloDetalle_cantidadCaja":
             MessageLookupByLibrary.simpleMessage("Box quantity"),
         "articulo_show_articuloDetalle_cantidadPalet":

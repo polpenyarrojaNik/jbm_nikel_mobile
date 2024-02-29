@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: org.robolectric:nativeruntime:4.10.3">
+  <library name="Gradle: org.robolectric:nativeruntime:4.10.3" external-system-id="GRADLE">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.robolectric/nativeruntime/4.10.3/3c268718b5fedc03e3c132fcbb6051cb0818acbb/nativeruntime-4.10.3.jar!/" />
     </CLASSES>

@@ -530,20 +530,20 @@ class S {
     );
   }
 
-  /// `Current year`
+  /// `Current`
   String get articulo_show_articuloDetalle_anoActual {
     return Intl.message(
-      'Current year',
+      'Current',
       name: 'articulo_show_articuloDetalle_anoActual',
       desc: '',
       args: [],
     );
   }
 
-  /// `Last year`
+  /// `Last`
   String get articulo_show_articuloDetalle_anoAnterior {
     return Intl.message(
-      'Last year',
+      'Last',
       name: 'articulo_show_articuloDetalle_anoAnterior',
       desc: '',
       args: [],

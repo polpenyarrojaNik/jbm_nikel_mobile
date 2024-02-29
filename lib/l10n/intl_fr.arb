@@ -358,5 +358,11 @@
   "pedido_edit_selectQuantity_subcajas": "Sous-boîtes",
   "pedido_edit_selectQuantity_importe": "Montant",
   "cliente_alrededor_ventasAnoAnterior": "Ventes de l'année précédente",
-  "pedido_edit_pedidoEdit_pedidoClienteMax50": "Le champ de commande client ne peut pas contenir plus de 50 caractères"
+  "pedido_edit_pedidoEdit_pedidoClienteMax50": "Le champ de commande client ne peut pas contenir plus de 50 caractères",
+  "articulo_show_articuloDetalle_analisis": "Une analyse",
+  "articulo_show_articuloDetalle_anoActual": "Courant",
+  "articulo_show_articuloDetalle_anoAnterior": "Précédent",
+  "articulo_show_articuloDetalle_hace2Anos": "Il y'a 2 ans",
+  "articulo_show_articuloDetalle_margen": "Marge",
+  "articulo_show_articuloDetalle_ventas": "Ventes"
 }

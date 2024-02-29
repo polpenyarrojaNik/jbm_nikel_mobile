@@ -33,6 +33,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Activo app"),
         "articulo_show_articuloDetalle_activoWeb":
             MessageLookupByLibrary.simpleMessage("Activo web"),
+        "articulo_show_articuloDetalle_analisis":
+            MessageLookupByLibrary.simpleMessage("Análisis"),
+        "articulo_show_articuloDetalle_anoActual":
+            MessageLookupByLibrary.simpleMessage("Actual"),
+        "articulo_show_articuloDetalle_anoAnterior":
+            MessageLookupByLibrary.simpleMessage("Anterior"),
         "articulo_show_articuloDetalle_cantidadCaja":
             MessageLookupByLibrary.simpleMessage("Cantidad caja"),
         "articulo_show_articuloDetalle_cantidadPalet":
@@ -63,8 +69,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Entrega 3"),
         "articulo_show_articuloDetalle_familia":
             MessageLookupByLibrary.simpleMessage("Familia"),
+        "articulo_show_articuloDetalle_hace2Anos":
+            MessageLookupByLibrary.simpleMessage("Hace 2 años"),
         "articulo_show_articuloDetalle_kg":
             MessageLookupByLibrary.simpleMessage("kg"),
+        "articulo_show_articuloDetalle_margen":
+            MessageLookupByLibrary.simpleMessage("Margen"),
         "articulo_show_articuloDetalle_mas":
             MessageLookupByLibrary.simpleMessage("+"),
         "articulo_show_articuloDetalle_medidas":
@@ -87,6 +97,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Subfamilia"),
         "articulo_show_articuloDetalle_titulo":
             MessageLookupByLibrary.simpleMessage("Artículo detalle"),
+        "articulo_show_articuloDetalle_ventas":
+            MessageLookupByLibrary.simpleMessage("Ventas"),
         "articulo_show_articuloDocumentos_titulo":
             MessageLookupByLibrary.simpleMessage("Documentos"),
         "articulo_show_articuloGruposNetos_titulo":
