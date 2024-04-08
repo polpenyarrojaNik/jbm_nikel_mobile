@@ -386,6 +386,8 @@ class _SelecionarCantidadPageState
             totalQuantity = newArticuloValue.ventaMinimo;
             units = newArticuloValue.ventaMinimo;
             unitsController.text = units.toString();
+            unitsController.selection = TextSelection(
+                baseOffset: 0, extentOffset: unitsController.text.length);
           }
         },
       );
