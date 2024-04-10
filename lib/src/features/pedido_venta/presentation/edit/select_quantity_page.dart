@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -295,84 +296,105 @@ class _SelecionarCantidadPageState
     );
   }
 
-  void navigateToCrearPedido(
+  Future<void> navigateToCrearPedido(
     BuildContext context,
     ArticuloPrecio articuloPrecio,
     Articulo articulo,
     Cliente cliente,
-  ) {
-    if (formKeyCantidad.currentState!.saveAndValidate() &&
+  ) async {
+    if (context.mounted &&
+        formKeyCantidad.currentState!.saveAndValidate() &&
         formKeyArticuloPrecio.currentState!.saveAndValidate()) {
-      final linea = PedidoVentaLinea(
-        empresaId: widget.seleccionarCantidadParam.pedidoVentaParam.empresaId,
-        pedidoId: widget.seleccionarCantidadParam.pedidoVentaParam.pedidoId,
-        pedidoVentaLineaId: (widget.seleccionarCantidadParam.posicionLinea + 1)
-            .toString()
-            .padLeft(3, '0'),
-        pedidoVentaAppId:
-            widget.seleccionarCantidadParam.pedidoVentaParam.pedidoAppId,
-        articuloId: articulo.id,
-        articuloDescription:
-            getDescriptionArticuloInLocalLanguage(articulo: articulo),
-        cantidad: totalQuantity,
-        precioDivisa: precio.toMoney(currencyId: articuloPrecio.divisaId),
-        divisaId: articuloPrecio.divisaId,
-        tipoPrecio: articuloPrecio.precio.tipoPrecio,
-        descuento1: descuento1,
-        descuento2: articuloPrecio.descuento2,
-        descuento3: articuloPrecio.descuento3,
-        descuentoProntoPago: cliente.descuentoProntoPago,
-        stockDisponible: articulo.stockDisponible,
-        stockDisponibleSN: articulo.stockDisponible > 0,
-        iva: articuloPrecio.iva,
-        importeLinea: ref.read(pedidoVentaRepositoryProvider).getTotalLinea(
-              precio: Precio(
-                  precio: precio.toMoney(currencyId: articuloPrecio.divisaId),
-                  tipoPrecio: articuloPrecio.precio.tipoPrecio),
-              cantidad: totalQuantity,
-              descuento1: descuento1,
-              descuento2: articuloPrecio.descuento2,
-              descuento3: articuloPrecio.descuento3,
-            ),
-        cantidadPendiente: totalQuantity,
-        lastUpdated: DateTime.now().toUtc(),
-        deleted: false,
-      );
+      final importeLinea =
+          ref.read(pedidoVentaRepositoryProvider).getTotalLinea(
+                precio: Precio(
+                    precio: precio.toMoney(currencyId: articuloPrecio.divisaId),
+                    tipoPrecio: articuloPrecio.precio.tipoPrecio),
+                cantidad: totalQuantity,
+                descuento1: descuento1,
+                descuento2: articuloPrecio.descuento2,
+                descuento3: articuloPrecio.descuento3,
+              );
 
-      if (!widget.seleccionarCantidadParam.addNewLineaDesdeArticulo) {
-        if (widget.seleccionarCantidadParam.isUpdatingLinea()) {
-          ref
-              .read(pedidoVentaEditPageControllerProvider(
-                      widget.seleccionarCantidadParam.pedidoVentaParam)
-                  .notifier)
-              .updatePedidoVentaLinea(
-                pedidoVentaLinea: linea,
-                posicionActualizar:
-                    widget.seleccionarCantidadParam.posicionLinea,
-              );
-        } else {
-          ref
-              .read(pedidoVentaEditPageControllerProvider(
-                      widget.seleccionarCantidadParam.pedidoVentaParam)
-                  .notifier)
-              .addPedidoVentaLinea(
-                newLinea: linea,
-              );
+      final minimumPrice = await ref
+          .read(pedidoVentaRepositoryProvider)
+          .checkMinimumPrice(articulo.id, importeLinea, totalQuantity,
+              articuloPrecio.divisaId);
+      if (minimumPrice == null) {
+        final linea = PedidoVentaLinea(
+          empresaId: widget.seleccionarCantidadParam.pedidoVentaParam.empresaId,
+          pedidoId: widget.seleccionarCantidadParam.pedidoVentaParam.pedidoId,
+          pedidoVentaLineaId:
+              (widget.seleccionarCantidadParam.posicionLinea + 1)
+                  .toString()
+                  .padLeft(3, '0'),
+          pedidoVentaAppId:
+              widget.seleccionarCantidadParam.pedidoVentaParam.pedidoAppId,
+          articuloId: articulo.id,
+          articuloDescription:
+              getDescriptionArticuloInLocalLanguage(articulo: articulo),
+          cantidad: totalQuantity,
+          precioDivisa: precio.toMoney(currencyId: articuloPrecio.divisaId),
+          divisaId: articuloPrecio.divisaId,
+          tipoPrecio: articuloPrecio.precio.tipoPrecio,
+          descuento1: descuento1,
+          descuento2: articuloPrecio.descuento2,
+          descuento3: articuloPrecio.descuento3,
+          descuentoProntoPago: cliente.descuentoProntoPago,
+          stockDisponible: articulo.stockDisponible,
+          stockDisponibleSN: articulo.stockDisponible > 0,
+          iva: articuloPrecio.iva,
+          importeLinea: importeLinea,
+          cantidadPendiente: totalQuantity,
+          lastUpdated: DateTime.now().toUtc(),
+          deleted: false,
+        );
+
+        if (!widget.seleccionarCantidadParam.addNewLineaDesdeArticulo) {
+          if (widget.seleccionarCantidadParam.isUpdatingLinea()) {
+            ref
+                .read(pedidoVentaEditPageControllerProvider(
+                        widget.seleccionarCantidadParam.pedidoVentaParam)
+                    .notifier)
+                .updatePedidoVentaLinea(
+                  pedidoVentaLinea: linea,
+                  posicionActualizar:
+                      widget.seleccionarCantidadParam.posicionLinea,
+                );
+          } else {
+            ref
+                .read(pedidoVentaEditPageControllerProvider(
+                        widget.seleccionarCantidadParam.pedidoVentaParam)
+                    .notifier)
+                .addPedidoVentaLinea(
+                  newLinea: linea,
+                );
+          }
         }
-      }
 
-      if (widget.seleccionarCantidadParam.addNewLineaDesdeArticulo) {
-        context.router.pushAndPopUntil(
-            PedidoVentaEditRoute(
-                pedidoAppId: linea.pedidoVentaAppId,
-                addLineaDesdeArticulo: linea,
-                isLocal:
-                    widget.seleccionarCantidadParam.pedidoVentaParam.isLocal),
-            predicate: (route) =>
-                route.settings.name ==
-                ArticuloListaRoute(isSearchArticuloForForm: false).routeName);
+        if (context.mounted &&
+            widget.seleccionarCantidadParam.addNewLineaDesdeArticulo) {
+          context.router.pushAndPopUntil(
+              PedidoVentaEditRoute(
+                  pedidoAppId: linea.pedidoVentaAppId,
+                  addLineaDesdeArticulo: linea,
+                  isLocal:
+                      widget.seleccionarCantidadParam.pedidoVentaParam.isLocal),
+              predicate: (route) =>
+                  route.settings.name ==
+                  ArticuloListaRoute(isSearchArticuloForForm: false).routeName);
+        } else {
+          if (context.mounted) {
+            context.router.maybePop();
+          }
+        }
       } else {
-        context.router.pop();
+        if (context.mounted) {
+          context.showErrorBar(
+              content: Text(
+                  '${S.of(context).precioNoPuedeSerMenorAlPrecioMinimo}: ${minimumPrice.precio.toString()}'),
+              duration: const Duration(seconds: 5));
+        }
       }
     }
   }

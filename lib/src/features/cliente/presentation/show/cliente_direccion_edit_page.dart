@@ -70,7 +70,7 @@ class _ClienteDireccionEditPageState
 
             ref.invalidate(
                 clienteDireccionListProvider(widget.clienteImpParam.clienteId));
-            context.router.pop();
+            context.router.maybePop();
           },
           data: (clienteDireccionEditPageData) {
             clienteDireccionEditPageData =
@@ -95,7 +95,7 @@ class _ClienteDireccionEditPageState
                   widget.clienteImpParam.clienteId));
               ref.invalidate(clienteDireccionImpListInSyncByClienteProvider(
                   widget.clienteImpParam));
-              context.router.pop();
+              context.router.maybePop();
             }
           }),
     );

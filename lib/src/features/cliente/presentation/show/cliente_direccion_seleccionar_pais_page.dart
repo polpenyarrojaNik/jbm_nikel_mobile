@@ -69,6 +69,6 @@ class ClienteDireccionSeleccionarPaisPage extends ConsumerWidget {
   }
 
   void onSelectedPais(BuildContext context, Pais pais) {
-    context.router.pop(pais);
+    context.router.maybePop(pais);
   }
 }

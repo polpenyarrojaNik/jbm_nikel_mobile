@@ -631,6 +631,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "pedido_show_pedidoVentaLineas_cantidadPendiente":
             MessageLookupByLibrary.simpleMessage("Quantités en attente"),
         "pending": MessageLookupByLibrary.simpleMessage("En attente"),
+        "precioNoPuedeSerMenorAlPrecioMinimo":
+            MessageLookupByLibrary.simpleMessage(
+                "Le prix ne peut être inférieur au prix minimum"),
         "search": MessageLookupByLibrary.simpleMessage("Rechercher ..."),
         "settings_cerrar_sesion":
             MessageLookupByLibrary.simpleMessage("Se déconnecter"),

@@ -16,13 +16,13 @@ class AskPopAlertDialog extends StatelessWidget {
       content: Text(text),
       actions: <Widget>[
         TextButton(
-          onPressed: () => context.router.pop(false),
+          onPressed: () => context.router.maybePop(false),
           child: Text(
             S.of(context).askPopAlertDialog_cancelar,
           ),
         ),
         TextButton(
-          onPressed: () => context.router.pop(true),
+          onPressed: () => context.router.maybePop(true),
           child: Text(
             S.of(context).askPopAlertDialog_aceptar,
           ),

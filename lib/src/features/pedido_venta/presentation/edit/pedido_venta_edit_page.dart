@@ -291,7 +291,7 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
       context.router.popUntil(
           (route) => route.settings.name == PedidoVentaListRoute.name);
     } else {
-      context.router.pop();
+      context.router.maybePop();
     }
   }
 }

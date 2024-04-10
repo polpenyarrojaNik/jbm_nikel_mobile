@@ -184,6 +184,6 @@ class ArticleListViewWidget extends StatelessWidget {
   void selectArticuloForFromPage(
       BuildContext context, WidgetRef ref, Articulo articulo) {
     ref.read(articuloForFromStateProvider.notifier).state = articulo;
-    context.router.pop();
+    context.router.maybePop();
   }
 }

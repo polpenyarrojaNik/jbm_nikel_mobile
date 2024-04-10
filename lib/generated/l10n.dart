@@ -3743,6 +3743,16 @@ class S {
       args: [],
     );
   }
+
+  /// `The price cannot be less than the minimum price`
+  String get precioNoPuedeSerMenorAlPrecioMinimo {
+    return Intl.message(
+      'The price cannot be less than the minimum price',
+      name: 'precioNoPuedeSerMenorAlPrecioMinimo',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

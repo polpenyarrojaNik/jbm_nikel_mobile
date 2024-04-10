@@ -212,6 +212,6 @@ class ClientesListViewWidget extends StatelessWidget {
   void selectClienteForFromPage(
       {required BuildContext context, required Cliente cliente}) {
     ref.read(clienteForFromStateProvider.notifier).state = cliente;
-    context.router.pop();
+    context.router.maybePop();
   }
 }

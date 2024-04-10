@@ -1187,26 +1187,30 @@ class PedidoVentaRepository {
         total: importeBaseImponible + importeIva);
   }
 
-  Future<Precio> _getPrecioTarifa({
-    required String tarifaId,
-    required String articuloId,
-    required int cantidad,
-  }) async {
-    final articuloPrecioTarifaDTO =
-        await (_remoteDb.select(_remoteDb.articuloPrecioTarifaTable)
-              ..where(
-                (precioTarifa) =>
-                    precioTarifa.tarifaId.equals(tarifaId) &
+  Future<Precio> _getPrecioTarifa(
+      {required String tarifaId,
+      required String articuloId,
+      required int cantidad,
+      String? divisaId}) async {
+    final articuloPrecioTarifaDTO = await (_remoteDb
+            .select(_remoteDb.articuloPrecioTarifaTable)
+          ..where(
+            (precioTarifa) => divisaId != null
+                ? precioTarifa.tarifaId.equals(tarifaId) &
+                    precioTarifa.articuloId.equals(articuloId) &
+                    precioTarifa.cantidadDesde.isSmallerOrEqualValue(cantidad) &
+                    precioTarifa.divisaId.equals(divisaId)
+                : precioTarifa.tarifaId.equals(tarifaId) &
                     precioTarifa.articuloId.equals(articuloId) &
                     precioTarifa.cantidadDesde.isSmallerOrEqualValue(cantidad),
-              )
-              ..orderBy([
-                (precioTarifa) => OrderingTerm(
-                    expression: precioTarifa.cantidadDesde,
-                    mode: OrderingMode.desc),
-              ])
-              ..limit(1))
-            .getSingleOrNull();
+          )
+          ..orderBy([
+            (precioTarifa) => OrderingTerm(
+                expression: precioTarifa.cantidadDesde,
+                mode: OrderingMode.desc),
+          ])
+          ..limit(1))
+        .getSingleOrNull();
 
     return (articuloPrecioTarifaDTO != null)
         ? Precio(
@@ -2109,5 +2113,24 @@ class PedidoVentaRepository {
             .go();
       }
     }
+  }
+
+  Future<Precio?> checkMinimumPrice(String articuloId, Money importeLinea,
+      int totalQuantity, String divisaId) async {
+    if (usuario.modificarPedido) {
+      final unitPrice = importeLinea / totalQuantity;
+
+      final precioTarifa = await _getPrecioTarifa(
+          tarifaId: 'MAX',
+          articuloId: articuloId,
+          cantidad: totalQuantity,
+          divisaId: divisaId);
+
+      if (unitPrice < precioTarifa.precio) {
+        return precioTarifa;
+      }
+    }
+
+    return null;
   }
 }

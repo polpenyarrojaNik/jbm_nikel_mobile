@@ -103,7 +103,7 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
           context.showSuccessBar(
               content: Text(S.of(context).visitas_edit_visitaEditar_saved));
 
-          context.router.pop();
+          context.router.maybePop();
         },
         deleted: () => context.router.popUntilRouteWithName('/visita'),
         savedError: (_, error, __) => context.showErrorBar(

@@ -34,7 +34,7 @@ class PaisSearchDialog extends ConsumerWidget {
           data: (paisList) => ListView.separated(
             shrinkWrap: true,
             itemBuilder: (context, i) => GestureDetector(
-              onTap: () => context.router.pop(
+              onTap: () => context.router.maybePop(
                 paisList[i],
               ),
               child: Text(paisList[i].descripcion),

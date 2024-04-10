@@ -364,5 +364,6 @@
   "articulo_show_articuloDetalle_anoAnterior": "Précédent",
   "articulo_show_articuloDetalle_hace2Anos": "Il y'a 2 ans",
   "articulo_show_articuloDetalle_margen": "Marge",
-  "articulo_show_articuloDetalle_ventas": "Ventes"
+  "articulo_show_articuloDetalle_ventas": "Ventes",
+  "precioNoPuedeSerMenorAlPrecioMinimo": "Le prix ne peut être inférieur au prix minimum"
 }

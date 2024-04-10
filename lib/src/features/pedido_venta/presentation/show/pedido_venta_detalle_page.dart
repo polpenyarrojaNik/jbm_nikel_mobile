@@ -117,7 +117,7 @@ class PedidoVentaDetallePage extends ConsumerWidget {
                       ref.invalidate(
                           pedidoVentaIndexScreenPaginatedControllerProvider);
                       ref.invalidate(pedidoVentaIndexScreenControllerProvider);
-                      context.router.pop();
+                      context.router.maybePop();
                     },
                   ),
                 ];

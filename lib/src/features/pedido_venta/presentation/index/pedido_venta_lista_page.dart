@@ -287,11 +287,11 @@ class _PedidoVentaFilterDialogState
   }
 
   void resetFilter(BuildContext context, WidgetRef ref) {
-    context.router.pop(null);
+    context.router.maybePop(null);
   }
 
   void applyFilters(BuildContext context, WidgetRef ref) {
-    context.router.pop(newFilterStatus);
+    context.router.maybePop(newFilterStatus);
   }
 
   void changeFilterValue({Object? filterValue}) {

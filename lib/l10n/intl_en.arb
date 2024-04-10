@@ -364,5 +364,6 @@
   "pedido_edit_selectQuantity_cajas": "Boxes",
   "pedido_edit_selectQuantity_pallets": "Pallets",
   "pedido_edit_selectQuantity_subcajas": "Subboxes",
-  "pedido_edit_pedidoEdit_pedidoClienteMax50": "The field customer sales order cannot be more than 50 characters"
+  "pedido_edit_pedidoEdit_pedidoClienteMax50": "The field customer sales order cannot be more than 50 characters",
+  "precioNoPuedeSerMenorAlPrecioMinimo": "The price cannot be less than the minimum price"
 }

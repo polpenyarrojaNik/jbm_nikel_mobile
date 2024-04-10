@@ -35,7 +35,7 @@ class ProvinciaSearchDialog extends ConsumerWidget {
           data: (provinciaList) => ListView.separated(
             shrinkWrap: true,
             itemBuilder: (context, i) => GestureDetector(
-                onTap: () => context.router.pop(provinciaList[i]),
+                onTap: () => context.router.maybePop(provinciaList[i]),
                 child: Text(provinciaList[i].provincia ??
                     provinciaList[i].provinciaId)),
             separatorBuilder: (context, i) => const Divider(),
