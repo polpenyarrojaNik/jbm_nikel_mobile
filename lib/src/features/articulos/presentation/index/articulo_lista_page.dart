@@ -66,7 +66,6 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
     );
 
     return UpgradeAlert(
-      canDismissDialog: false,
       showIgnore: true,
       showLater: true,
       showReleaseNotes: true,
