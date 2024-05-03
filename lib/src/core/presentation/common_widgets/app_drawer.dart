@@ -43,7 +43,7 @@ class AppDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: const Icon(
+            leading: Icon(
               MdiIcons.packageVariantClosed,
               size: 30,
             ),
@@ -63,7 +63,7 @@ class AppDrawer extends StatelessWidget {
                 predicate: (route) => false),
           ),
           ListTile(
-            leading: const Icon(
+            leading: Icon(
               MdiIcons.cartOutline,
               size: 30,
             ),

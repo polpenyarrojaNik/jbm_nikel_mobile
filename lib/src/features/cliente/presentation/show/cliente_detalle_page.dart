@@ -192,7 +192,7 @@ class _ClienteHeader extends StatelessWidget {
                   cliente.latitudPredeterminada,
                   cliente.longitudPredeterminada,
                 ),
-                icon: const Icon(MdiIcons.googleMaps),
+                icon: Icon(MdiIcons.googleMaps),
               )
             ],
           ),
@@ -235,7 +235,7 @@ class _ClienteHeader extends StatelessWidget {
                         cliente.latitudFiscal,
                         cliente.longitudFiscal,
                       ),
-                      icon: const Icon(MdiIcons.googleMaps),
+                      icon: Icon(MdiIcons.googleMaps),
                     )
                   ],
                 ),
