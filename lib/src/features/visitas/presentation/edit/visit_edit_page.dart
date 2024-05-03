@@ -270,7 +270,7 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
       final existTelefono = await ref
           .read(visitaRepositoryProvider)
           .existClientePotencialPhone(telefono);
-      if (existTelefono && context.mounted) {
+      if (existTelefono && mounted) {
         final dialogPhoneResult = await showDialogSaveVisitAnyway(context,
             S.current.visitas_edit_visitaEditar_validatorExistPhoneMessage);
 
@@ -285,7 +285,7 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
           .read(visitaRepositoryProvider)
           .existClientePotencialEmail(email);
 
-      if (existEmail && context.mounted) {
+      if (existEmail && mounted) {
         final dialogEmailResult = await showDialogSaveVisitAnyway(context,
             S.current.visitas_edit_visitaEditar_validatorExistEmailMessage);
 
