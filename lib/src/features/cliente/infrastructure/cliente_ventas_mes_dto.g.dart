@@ -9,7 +9,7 @@ part of 'cliente_ventas_mes_dto.dart';
 _$ClienteVentasMesDTOImpl _$$ClienteVentasMesDTOImplFromJson(
         Map<String, dynamic> json) =>
     _$ClienteVentasMesDTOImpl(
-      mes: json['MES'] as int,
+      mes: (json['MES'] as num).toInt(),
       importeAnyo: (json['IMPORTE_ANYO'] as num).toDouble(),
       importeAnyo_1: (json['IMPORTE_ANYO_1'] as num).toDouble(),
       importeAnyo_2: (json['IMPORTE_ANYO_2'] as num).toDouble(),

@@ -11,7 +11,7 @@ _$ArticuloComponenteDTOImpl _$$ArticuloComponenteDTOImplFromJson(
     _$ArticuloComponenteDTOImpl(
       articuloId: json['ARTICULO_ID'] as String,
       articuloComponenteId: json['ARTICULO_COMPONENTE_ID'] as String,
-      cantidad: json['CANTIDAD'] as int,
+      cantidad: (json['CANTIDAD'] as num).toInt(),
       descripcionES: json['DESCRIPCION_ES'] as String,
       descripcionEN: json['DESCRIPCION_EN'] as String?,
       descripcionFR: json['DESCRIPCION_FR'] as String?,

@@ -27,7 +27,7 @@ _$PedidoVentaDTOImpl _$$PedidoVentaDTOImplFromJson(Map<String, dynamic> json) =>
       importePortes: (json['IMPORTE_PORTES'] as num).toDouble(),
       importeIva: (json['IMPORTE_IVA'] as num).toDouble(),
       total: (json['TOTAL'] as num).toDouble(),
-      pedidoVentaEstadoId: json['ESTADO_PEDIDO_ID'] as int,
+      pedidoVentaEstadoId: (json['ESTADO_PEDIDO_ID'] as num).toInt(),
       oferta: json['OFERTA_SN'] as String,
       ofertaFechaHasta: json['OFERTA_FECHA_HASTA'] == null
           ? null

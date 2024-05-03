@@ -9,8 +9,8 @@ part of 'sync_datetime_dto.dart';
 _$SyncDateTimeDTOImpl _$$SyncDateTimeDTOImplFromJson(
         Map<String, dynamic> json) =>
     _$SyncDateTimeDTOImpl(
-      id: json['ID'] as int,
-      dbSchemaVersion: json['DB_SCHEMA_VERSION'] as int,
+      id: (json['ID'] as num).toInt(),
+      dbSchemaVersion: (json['DB_SCHEMA_VERSION'] as num).toInt(),
       articuloUltimaSync:
           DateTime.parse(json['ARTICULO_ULTIMA_SYNC'] as String),
       clienteUltimaSync: DateTime.parse(json['CLIENTE_ULTIMA_SYNC'] as String),

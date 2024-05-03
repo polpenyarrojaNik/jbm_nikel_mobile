@@ -16,11 +16,11 @@ _$ClienteVentasArticuloDTOImpl _$$ClienteVentasArticuloDTOImplFromJson(
       importeAnyo_2: (json['IMPORTE_ANYO_2'] as num).toDouble(),
       importeAnyo_3: (json['IMPORTE_ANYO_3'] as num).toDouble(),
       importeAnyo_4: (json['IMPORTE_ANYO_4'] as num).toDouble(),
-      cantidadAnyo: json['CANTIDAD_ANYO'] as int,
-      cantidadAnyo_1: json['CANTIDAD_ANYO_1'] as int,
-      cantidadAnyo_2: json['CANTIDAD_ANYO_2'] as int,
-      cantidadAnyo_3: json['CANTIDAD_ANYO_3'] as int,
-      cantidadAnyo_4: json['CANTIDAD_ANYO_4'] as int,
+      cantidadAnyo: (json['CANTIDAD_ANYO'] as num).toInt(),
+      cantidadAnyo_1: (json['CANTIDAD_ANYO_1'] as num).toInt(),
+      cantidadAnyo_2: (json['CANTIDAD_ANYO_2'] as num).toInt(),
+      cantidadAnyo_3: (json['CANTIDAD_ANYO_3'] as num).toInt(),
+      cantidadAnyo_4: (json['CANTIDAD_ANYO_4'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$ClienteVentasArticuloDTOImplToJson(

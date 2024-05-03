@@ -9,7 +9,7 @@ part of 'pedido_venta_estado_dto.dart';
 _$PedidoVentaEstadoDTOImpl _$$PedidoVentaEstadoDTOImplFromJson(
         Map<String, dynamic> json) =>
     _$PedidoVentaEstadoDTOImpl(
-      id: json['ESTADO_PEDIDO_ID'] as int,
+      id: (json['ESTADO_PEDIDO_ID'] as num).toInt(),
       descripcionES: json['DESCRIPCION_ES'] as String,
       descripcionEN: json['DESCRIPCION_EN'] as String?,
       descripcionFR: json['DESCRIPCION_FR'] as String?,

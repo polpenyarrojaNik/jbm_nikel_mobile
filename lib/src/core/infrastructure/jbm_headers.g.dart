@@ -9,8 +9,8 @@ part of 'jbm_headers.dart';
 _$JBMHeadersImpl _$$JBMHeadersImplFromJson(Map<String, dynamic> json) =>
     _$JBMHeadersImpl(
       etag: json['etag'] as String?,
-      maxPage: json['maxPage'] as int?,
-      totalRows: json['totalRows'] as int?,
+      maxPage: (json['maxPage'] as num?)?.toInt(),
+      totalRows: (json['totalRows'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$JBMHeadersImplToJson(_$JBMHeadersImpl instance) =>

@@ -13,7 +13,7 @@ _$ClienteDescuentoDTOImpl _$$ClienteDescuentoDTOImplFromJson(
       articuloId: json['ARTICULO_ID'] as String,
       familiaId: json['FAMILIA_ID'] as String,
       subfamiliaId: json['SUBFAMILIA_ID'] as String,
-      cantidadDesde: json['CANTIDAD_DESDE'] as int,
+      cantidadDesde: (json['CANTIDAD_DESDE'] as num).toInt(),
       descuento: (json['DESCUENTO'] as num).toDouble(),
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       deleted: json['DELETED'] as String? ?? 'N',

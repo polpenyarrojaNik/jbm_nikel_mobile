@@ -11,9 +11,9 @@ _$ClientePrecioNetoDTOImpl _$$ClientePrecioNetoDTOImplFromJson(
     _$ClientePrecioNetoDTOImpl(
       clienteId: json['CLIENTE_ID'] as String,
       articuloId: json['ARTICULO_ID'] as String,
-      cantidadDesde: json['CANTIDAD_DESDE'] as int,
+      cantidadDesde: (json['CANTIDAD_DESDE'] as num).toInt(),
       precio: (json['PRECIO'] as num).toDouble(),
-      tipoPrecio: json['TIPO_PRECIO'] as int?,
+      tipoPrecio: (json['TIPO_PRECIO'] as num?)?.toInt(),
       dtoAdicional: (json['DTO_ADICIONAL'] as num?)?.toDouble(),
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       deleted: json['DELETED'] as String? ?? 'N',

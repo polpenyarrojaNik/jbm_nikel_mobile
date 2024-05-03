@@ -9,12 +9,12 @@ part of 'articulo_ventas_mes_dto.dart';
 _$ArticuloVentasMesDTOImpl _$$ArticuloVentasMesDTOImplFromJson(
         Map<String, dynamic> json) =>
     _$ArticuloVentasMesDTOImpl(
-      mes: json['MES'] as int,
-      unidadesAnyo: json['UNIDADES_ANYO'] as int,
-      unidadesAnyo_1: json['UNIDADES_ANYO_1'] as int,
-      unidadesAnyo_2: json['UNIDADES_ANYO_2'] as int,
-      unidadesAnyo_3: json['UNIDADES_ANYO_3'] as int,
-      unidadesAnyo_4: json['UNIDADES_ANYO_4'] as int,
+      mes: (json['MES'] as num).toInt(),
+      unidadesAnyo: (json['UNIDADES_ANYO'] as num).toInt(),
+      unidadesAnyo_1: (json['UNIDADES_ANYO_1'] as num).toInt(),
+      unidadesAnyo_2: (json['UNIDADES_ANYO_2'] as num).toInt(),
+      unidadesAnyo_3: (json['UNIDADES_ANYO_3'] as num).toInt(),
+      unidadesAnyo_4: (json['UNIDADES_ANYO_4'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$ArticuloVentasMesDTOImplToJson(

@@ -9,8 +9,8 @@ part of 'catalogo_favorito_dto.dart';
 _$CatalogoFavoritoDTOImpl _$$CatalogoFavoritoDTOImplFromJson(
         Map<String, dynamic> json) =>
     _$CatalogoFavoritoDTOImpl(
-      id: json['ID'] as int,
-      catalogoId: json['CATALOGO_ID'] as int,
+      id: (json['ID'] as num).toInt(),
+      catalogoId: (json['CATALOGO_ID'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$CatalogoFavoritoDTOImplToJson(

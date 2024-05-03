@@ -12,10 +12,10 @@ _$ArticuloPrecioTarifaDTOImpl _$$ArticuloPrecioTarifaDTOImplFromJson(
       articuloId: json['ARTICULO_ID'] as String,
       tarifaId: json['TARIFA_ID'] as String,
       tarifaDescripcion: json['TARIFA_DESCRIPCION'] as String?,
-      cantidadDesde: json['CANTIDAD_DESDE'] as int,
+      cantidadDesde: (json['CANTIDAD_DESDE'] as num).toInt(),
       precio: (json['PRECIO'] as num).toDouble(),
       divisaId: json['DIVISA_ID'] as String,
-      tipoPrecio: json['TIPO_PRECIO'] as int,
+      tipoPrecio: (json['TIPO_PRECIO'] as num).toInt(),
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       deleted: json['DELETED'] as String? ?? 'N',
     );

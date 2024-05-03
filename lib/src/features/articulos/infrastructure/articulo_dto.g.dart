@@ -26,11 +26,11 @@ _$ArticuloDTOImpl _$$ArticuloDTOImplFromJson(Map<String, dynamic> json) =>
       descripcionEL: json['DESCRIPCION_EL'] as String?,
       familiaId: json['FAMILIA_ID'] as String?,
       subfamiliaId: json['SUBFAMILIA_ID'] as String?,
-      ventaMinimo: json['VENTA_MINIMO'] as int,
-      ventaMultiplo: json['VENTA_MULTIPLO'] as int,
-      unidadesSubcaja: json['UNIDADES_SUBCAJA'] as int,
-      unidadesCaja: json['UNIDADES_CAJA'] as int,
-      unidadesPalet: json['UNIDADES_PALET'] as int,
+      ventaMinimo: (json['VENTA_MINIMO'] as num).toInt(),
+      ventaMultiplo: (json['VENTA_MULTIPLO'] as num).toInt(),
+      unidadesSubcaja: (json['UNIDADES_SUBCAJA'] as num).toInt(),
+      unidadesCaja: (json['UNIDADES_CAJA'] as num).toInt(),
+      unidadesPalet: (json['UNIDADES_PALET'] as num).toInt(),
       activoWeb: json['ACTIVO_WEB'] as String,
       activoApp: json['ACTIVO_APP'] as String,
       enCatalogo: json['EN_CATALOGO'] as String,
@@ -56,13 +56,17 @@ _$ArticuloDTOImpl _$$ArticuloDTOImplFromJson(Map<String, dynamic> json) =>
       resumenRU: json['RESUMEN_RU'] as String?,
       resumenCN: json['RESUMEN_CN'] as String?,
       resumenEL: json['RESUMEN_EL'] as String?,
-      stockDisponible: json['STOCK_DISPONIBLE'] as int,
+      stockDisponible: (json['STOCK_DISPONIBLE'] as num).toInt(),
       ventasActual: (json['VENTAS_ACTUAL'] as num).toDouble(),
       ventasAnterior: (json['VENTAS_ANTERIOR'] as num).toDouble(),
-      comprasEntregaCantidad1: json['COMPRAS_ENTREGA_CANTIDAD_1'] as int,
-      comprasEntregaCantidad2: json['COMPRAS_ENTREGA_CANTIDAD_2'] as int,
-      comprasEntregaCantidad3: json['COMPRAS_ENTREGA_CANTIDAD_3'] as int,
-      comprasEntregaCantidadMas3: json['COMPRAS_ENTREGA_CANTIDAD_MAS_3'] as int,
+      comprasEntregaCantidad1:
+          (json['COMPRAS_ENTREGA_CANTIDAD_1'] as num).toInt(),
+      comprasEntregaCantidad2:
+          (json['COMPRAS_ENTREGA_CANTIDAD_2'] as num).toInt(),
+      comprasEntregaCantidad3:
+          (json['COMPRAS_ENTREGA_CANTIDAD_3'] as num).toInt(),
+      comprasEntregaCantidadMas3:
+          (json['COMPRAS_ENTREGA_CANTIDAD_MAS_3'] as num).toInt(),
       comprasEntregaFecha1: json['COMPRAS_ENTREGA_FECHA_1'] == null
           ? null
           : DateTime.parse(json['COMPRAS_ENTREGA_FECHA_1'] as String),

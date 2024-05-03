@@ -8,14 +8,14 @@ part of 'catalogo_dto.dart';
 
 _$CatalogoDTOImpl _$$CatalogoDTOImplFromJson(Map<String, dynamic> json) =>
     _$CatalogoDTOImpl(
-      catalogoId: json['CATALOGO_ID'] as int,
+      catalogoId: (json['CATALOGO_ID'] as num).toInt(),
       nombre: json['NOMBRE'] as String,
       idiomaId: json['IDIOMA_ID'] as String,
       tipoPrecioCatalogoId: json['TIPO_PRECIO_CATALOGO_ID'] as String,
       tipoPrecioCatalogoNombre: json['TIPO_PRECIO_CATALOGO_NOMBRE'] as String,
       tipoCatalogoId: json['TIPO_CATALOGO_ID'] as String,
       tagBusqueda: json['TAG_BUSQUEDA'] as String,
-      orden: json['ORDEN'] as int,
+      orden: (json['ORDEN'] as num).toInt(),
       nombreFicheroPortada: json['NOMBRE_FICHERO_PORTADA'] as String,
       nombreFicheroCatalogo: json['NOMBRE_FICHERO_CATALOGO'] as String,
       descarga: json['DESCARGA_SN'] as String,

@@ -7,7 +7,7 @@ part of 'log_dto.dart';
 // **************************************************************************
 
 _$LogDTOImpl _$$LogDTOImplFromJson(Map<String, dynamic> json) => _$LogDTOImpl(
-      id: json['ID'] as int?,
+      id: (json['ID'] as num?)?.toInt(),
       level: json['LOG_LEVEL'] as String,
       message: json['LOG_MESSAGE'] as String,
       error: json['LOG_ERROR'] as String?,
