@@ -877,6 +877,7 @@ class PedidoVentaRepository {
               tarifaId: tarifaId,
               articuloId: articuloId,
               cantidad: cantidad,
+              divisaId: divisaId,
             )
           : Precio(precio: 0.toMoney(currencyId: divisaId), tipoPrecio: 1);
 
@@ -884,12 +885,14 @@ class PedidoVentaRepository {
         clienteId: clienteId,
         articuloId: articuloId,
         cantidad: cantidad,
+        divisaId: divisaId,
       );
 
       final precioGrupoNetos = await _getPrecioGrupoNeto(
         clienteId: clienteId,
         articuloId: articuloId,
         cantidad: cantidad,
+        divisaId: divisaId,
       );
 
       final descuentoGeneral = descuentoGeneralId != null
@@ -1219,7 +1222,7 @@ class PedidoVentaRepository {
             tipoPrecio: articuloPrecioTarifaDTO.tipoPrecio,
           )
         : Precio(
-            precio: 0.toMoney(),
+            precio: 0.toMoney(currencyId: divisaId),
             tipoPrecio: 1,
           );
   }
@@ -1228,6 +1231,7 @@ class PedidoVentaRepository {
     required String clienteId,
     required String articuloId,
     required int cantidad,
+    String? divisaId,
   }) async {
     final query = _remoteDb.select(_remoteDb.clienteGrupoNetoTable).join([
       innerJoin(
@@ -1246,7 +1250,7 @@ class PedidoVentaRepository {
     final queryResult = await query.get();
     if (queryResult.isEmpty) {
       return Precio(
-        precio: 0.toMoney(),
+        precio: 0.toMoney(currencyId: divisaId),
         tipoPrecio: 1,
       );
     }
@@ -1282,6 +1286,7 @@ class PedidoVentaRepository {
     required String clienteId,
     required String articuloId,
     required int cantidad,
+    String? divisaId,
   }) async {
     final queryResult = await (_remoteDb
             .select(_remoteDb.clientePrecioNetoTable)
@@ -1319,7 +1324,7 @@ class PedidoVentaRepository {
                 queryResult.read(_remoteDb.clientePrecioNetoTable.tipoPrecio)!,
           )
         : Precio(
-            precio: 0.toMoney(),
+            precio: 0.toMoney(currencyId: divisaId),
             tipoPrecio: 1,
           );
   }

@@ -31,7 +31,7 @@ class LogRepository {
     '/api/v2/online/log',
   );
   static final remoteLogTestEndpoint = Uri.http(
-    dotenv.get('URL_TEST', fallback: 'localhost:3001'),
+    dotenv.get('URL', fallback: 'localhost:3001'),
     '/api/v2/online/log',
   );
 
