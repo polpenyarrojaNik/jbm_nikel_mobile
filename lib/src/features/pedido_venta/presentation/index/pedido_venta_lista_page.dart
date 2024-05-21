@@ -4,6 +4,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/sin_resultados_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/domain/pedido_venta_estado.dart';
@@ -197,10 +198,12 @@ class PedidosListViewWidget extends StatelessWidget {
                       page: (i ~/ PedidoVentaRepository.pageSize)))
                   .maybeWhen(
                     orElse: () => const PedidoVentaShimmer(),
-                    data: (pedidoVentaList) => PedidoVentaListaTile(
-                      pedidoVenta:
-                          pedidoVentaList[i % PedidoVentaRepository.pageSize],
-                    ),
+                    data: (pedidoVentaList) => pedidoVentaList.isNotEmpty
+                        ? PedidoVentaListaTile(
+                            pedidoVenta: pedidoVentaList[
+                                i % PedidoVentaRepository.pageSize],
+                          )
+                        : const SinResultadosWidget(),
                   ),
             ),
           ),

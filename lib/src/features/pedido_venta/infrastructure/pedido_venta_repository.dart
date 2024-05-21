@@ -278,10 +278,10 @@ class PedidoVentaRepository {
     final countExp = _remoteDb.pedidoVentaTable.pedidoVentaId.count();
 
     final query = _remoteDb.selectOnly(_remoteDb.pedidoVentaTable).join([
-      // innerJoin(
-      //     _remoteDb.clienteUsuarioTable,
-      //     _remoteDb.clienteUsuarioTable.clienteId
-      //         .equalsExp(_remoteDb.pedidoVentaTable.clienteId)),
+      innerJoin(
+          _remoteDb.clienteUsuarioTable,
+          _remoteDb.clienteUsuarioTable.clienteId
+              .equalsExp(_remoteDb.pedidoVentaTable.clienteId)),
       leftOuterJoin(_remoteDb.paisTable,
           _remoteDb.paisTable.id.equalsExp(_remoteDb.pedidoVentaTable.paisId)),
       leftOuterJoin(
@@ -294,7 +294,7 @@ class PedidoVentaRepository {
               .equalsExp(_remoteDb.pedidoVentaTable.pedidoVentaEstadoId)),
     ]);
 
-    // query.where(_remoteDb.clienteUsuarioTable.usuarioId.equals(usuario.id));
+    query.where(_remoteDb.clienteUsuarioTable.usuarioId.equals(usuario.id));
 
     if (pedidoVentaEstado != null) {
       query.where(_remoteDb.pedidoVentaTable.pedidoVentaEstadoId
