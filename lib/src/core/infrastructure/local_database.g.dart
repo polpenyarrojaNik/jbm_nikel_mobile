@@ -3662,6 +3662,7 @@ class ClienteDireccionImpTableCompanion
 abstract class _$LocalAppDatabase extends GeneratedDatabase {
   _$LocalAppDatabase(QueryExecutor e) : super(e);
   _$LocalAppDatabase.connect(DatabaseConnection c) : super.connect(c);
+  _$LocalAppDatabaseManager get managers => _$LocalAppDatabaseManager(this);
   late final $VisitaLocalTableTable visitaLocalTable =
       $VisitaLocalTableTable(this);
   late final $PedidoVentaLineaLocalTableTable pedidoVentaLineaLocalTable =
@@ -3694,4 +3695,9 @@ abstract class _$LocalAppDatabase extends GeneratedDatabase {
   @override
   DriftDatabaseOptions get options =>
       const DriftDatabaseOptions(storeDateTimeAsText: true);
+}
+
+class _$LocalAppDatabaseManager {
+  final _$LocalAppDatabase _db;
+  _$LocalAppDatabaseManager(this._db);
 }

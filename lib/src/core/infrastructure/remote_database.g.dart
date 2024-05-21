@@ -19167,6 +19167,7 @@ class ProvinciaTableCompanion extends UpdateCompanion<ProvinciaDTO> {
 abstract class _$RemoteAppDatabase extends GeneratedDatabase {
   _$RemoteAppDatabase(QueryExecutor e) : super(e);
   _$RemoteAppDatabase.connect(DatabaseConnection c) : super.connect(c);
+  _$RemoteAppDatabaseManager get managers => _$RemoteAppDatabaseManager(this);
   late final $PaisTableTable paisTable = $PaisTableTable(this);
   late final $DivisaTableTable divisaTable = $DivisaTableTable(this);
   late final $PedidoVentaEstadoTableTable pedidoVentaEstadoTable =
@@ -19288,4 +19289,9 @@ abstract class _$RemoteAppDatabase extends GeneratedDatabase {
   @override
   DriftDatabaseOptions get options =>
       const DriftDatabaseOptions(storeDateTimeAsText: true);
+}
+
+class _$RemoteAppDatabaseManager {
+  final _$RemoteAppDatabase _db;
+  _$RemoteAppDatabaseManager(this._db);
 }
