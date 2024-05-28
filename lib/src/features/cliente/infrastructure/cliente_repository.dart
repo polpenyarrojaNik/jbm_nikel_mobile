@@ -12,6 +12,7 @@ import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/app.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_contacto_imp.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_adjunto_dto.dart';
+import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/pedido_venta_edit_page_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/domain/usuario.dart';
 import 'package:path_provider/path_provider.dart';
@@ -76,7 +77,10 @@ final clienteDireccionListProvider = FutureProvider.autoDispose
     .family<List<ClienteDireccion>, String>((ref, clienteId) {
   final clienteRepository = ref.watch(clienteRepositoryProvider);
 
-  return clienteRepository.getClienteDireccionesListById(clienteId: clienteId);
+  return clienteRepository.getClienteDireccionesListById(
+    clienteId: clienteId,
+    searchText: ref.watch(customerAddressSearchQueryStateProvider),
+  );
 });
 
 final clienteContactosListProvider = FutureProvider.autoDispose
@@ -1499,14 +1503,14 @@ GROUP BY ARTICULO_ID, DESCRIPCION
   }
 
   Future<List<ClienteDireccion>> getClienteDireccionesListById(
-      {required String clienteId}) async {
+      {required String clienteId, String? searchText}) async {
     final List<ClienteDireccion> clienteDireccionList = [];
     try {
       final clienteDireccionImpList =
-          await _getClienteDireccionImpList(clienteId);
+          await _getClienteDireccionImpList(clienteId, searchText);
 
       final clienteDireccionSyncList = await _getClienteDireccionSyncList(
-          clienteId, clienteDireccionImpList);
+          clienteId, clienteDireccionImpList, searchText);
 
       clienteDireccionList.addAll(clienteDireccionSyncList);
 
@@ -1678,10 +1682,20 @@ GROUP BY ARTICULO_ID, DESCRIPCION
   }
 
   Future<List<ClienteDireccion>> _getClienteDireccionSyncList(
-      String clienteId, List<ClienteDireccion> clienteDireccionImpList) async {
+      String clienteId,
+      List<ClienteDireccion> clienteDireccionImpList,
+      String? searchText) async {
     try {
       final query = (_remoteDb.select(_remoteDb.clienteDireccionTable)
-        ..where((t) => t.clienteId.equals(clienteId)));
+        ..where((t) =>
+            t.clienteId.equals(clienteId) &
+            (t.nombre.contains(searchText ?? '') |
+                t.direccion1.contains(searchText ?? '') |
+                t.direccion1.contains(searchText ?? '') |
+                t.codigoPostal.contains(searchText ?? '') |
+                t.poblacion.contains(searchText ?? '') |
+                t.provincia.contains(searchText ?? '') |
+                t.paisId.contains(searchText ?? ''))));
 
       return await query.asyncMap((row) async {
         final pais = await _getPaisCliente(clienteId: clienteId);
@@ -1705,10 +1719,18 @@ GROUP BY ARTICULO_ID, DESCRIPCION
   }
 
   Future<List<ClienteDireccion>> _getClienteDireccionImpList(
-      String clienteId) async {
+      String clienteId, String? searchText) async {
     try {
       final query = (_localDb.select(_localDb.clienteDireccionImpTable)
-        ..where((t) => t.clienteId.equals(clienteId)));
+        ..where((t) =>
+            t.clienteId.equals(clienteId) &
+            (t.nombre.contains(searchText ?? '') |
+                t.direccion1.contains(searchText ?? '') |
+                t.direccion1.contains(searchText ?? '') |
+                t.codigoPostal.contains(searchText ?? '') |
+                t.poblacion.contains(searchText ?? '') |
+                t.provincia.contains(searchText ?? '') |
+                t.paisId.contains(searchText ?? ''))));
 
       return await query.asyncMap((row) async {
         final pais = await _getPaisCliente(clienteId: row.clienteId);

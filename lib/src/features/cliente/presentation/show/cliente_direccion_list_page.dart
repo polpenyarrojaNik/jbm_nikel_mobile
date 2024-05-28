@@ -2,13 +2,15 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/custom_search_app_bar.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
+import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/pedido_venta_edit_page_controller.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/pais.dart';
 import '../../../../core/exceptions/app_exception.dart';
+import '../../../../core/helpers/debouncer.dart';
 import '../../../../core/helpers/formatters.dart';
-import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
@@ -21,7 +23,7 @@ import 'cliente_direccion_delete_controller.dart';
 import 'cliente_direccion_list_imp_tile.dart';
 
 @RoutePage()
-class ClienteDireccionesListPage extends ConsumerWidget {
+class ClienteDireccionesListPage extends ConsumerStatefulWidget {
   const ClienteDireccionesListPage(
       {super.key,
       required this.clienteId,
@@ -33,16 +35,44 @@ class ClienteDireccionesListPage extends ConsumerWidget {
   final String? nombreCliente;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(clienteDireccionListProvider(clienteId));
+  ConsumerState<ClienteDireccionesListPage> createState() =>
+      _ClienteDireccionesListPageState();
+}
+
+class _ClienteDireccionesListPageState
+    extends ConsumerState<ClienteDireccionesListPage> {
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final _debouncer = Debouncer(milliseconds: 500);
+  FocusNode focusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    focusNode.requestFocus();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final state = ref.watch(clienteDireccionListProvider(widget.clienteId));
     return Scaffold(
-      appBar: CommonAppBar(
-        titleText: (S.of(context).cliente_show_clienteDireccion_titulo),
+      key: scaffoldKey,
+      appBar: CustomSearchAppBar(
+        scaffoldKey: scaffoldKey,
+        isSearchingFirst: false,
+        title: S.of(context).cliente_show_clienteDireccion_titulo,
+        searchTitle: S.of(context).search,
+        onChanged: (searchText) => _debouncer.run(
+          () {
+            ref.read(customerAddressSearchQueryStateProvider.notifier).state =
+                searchText;
+          },
+        ),
       ),
       body: Column(
         children: [
           HeaderDatosRelacionados(
-            entityId: '#$clienteId ${nombreCliente ?? ''}',
+            entityId: '#${widget.clienteId} ${widget.nombreCliente ?? ''}',
           ),
           gapH8,
           state.maybeWhen(
@@ -55,10 +85,10 @@ class ClienteDireccionesListPage extends ConsumerWidget {
                       itemBuilder: (context, i) => ClienteDireccionTile(
                         clienteDireccion: clienteDireccionList[i],
                         clienteImpParam: ClienteImpParam(
-                          clienteId,
+                          widget.clienteId,
                           id: clienteDireccionList[i].direccionId,
                           impId: clienteDireccionList[i].direccionImpGuid,
-                          clientePais: paisCliente,
+                          clientePais: widget.paisCliente,
                         ),
                       ),
                       separatorBuilder: (context, i) => const Divider(),
@@ -84,8 +114,8 @@ class ClienteDireccionesListPage extends ConsumerWidget {
     context.router.push(
       ClienteDireccionEditRoute(
         clienteImpParam: ClienteImpParam(
-          clienteId,
-          clientePais: paisCliente,
+          widget.clienteId,
+          clientePais: widget.paisCliente,
         ),
       ),
     );

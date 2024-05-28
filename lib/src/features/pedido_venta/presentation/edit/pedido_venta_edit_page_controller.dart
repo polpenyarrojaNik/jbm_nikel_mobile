@@ -12,6 +12,11 @@ import '../../infrastructure/pedido_venta_repository.dart';
 
 part 'pedido_venta_edit_page_controller.freezed.dart';
 
+final customerAddressSearchQueryStateProvider =
+    StateProvider.autoDispose<String>((ref) {
+  return '';
+});
+
 @freezed
 class PedidoVentaEditPageControllerState
     with _$PedidoVentaEditPageControllerState {

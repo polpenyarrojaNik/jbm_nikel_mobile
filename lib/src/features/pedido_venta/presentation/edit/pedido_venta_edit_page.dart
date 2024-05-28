@@ -7,7 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:jbm_nikel_mobile/src/core/helpers/debouncer.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/custom_search_app_bar.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/mobile_custom_separatos.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_indicator_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
@@ -665,7 +667,7 @@ class _StepSelectClienteContentState
   }
 }
 
-class StepSelectClienteDireccionContent extends ConsumerWidget {
+class StepSelectClienteDireccionContent extends ConsumerStatefulWidget {
   const StepSelectClienteDireccionContent(
       {super.key,
       required this.cliente,
@@ -679,18 +681,36 @@ class StepSelectClienteDireccionContent extends ConsumerWidget {
   final bool isEdit;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<StepSelectClienteDireccionContent> createState() =>
+      _StepSelectClienteDireccionContentState();
+}
+
+class _StepSelectClienteDireccionContentState
+    extends ConsumerState<StepSelectClienteDireccionContent> {
+  final _debouncer = Debouncer(milliseconds: 500);
+
+  final focusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+
+    focusNode.requestFocus();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     ref.listen<AsyncValue<List<ClienteDireccion>>>(
-      clienteDireccionListProvider(cliente!.id),
+      clienteDireccionListProvider(widget.cliente!.id),
       (_, state) {
         state.whenData(
           (clienteDireccionesList) {
             for (var i = 0; i < clienteDireccionesList.length; i++) {
-              if (!isEdit) {
+              if (!widget.isEdit) {
                 if (clienteDireccionesList[i].predeterminada) {
                   ref
                       .read(pedidoVentaEditPageControllerProvider(
-                              pedidoLocalParam)
+                              widget.pedidoLocalParam)
                           .notifier)
                       .selectDireccion(
                           clienteDireccion: clienteDireccionesList[i]);
@@ -701,42 +721,59 @@ class StepSelectClienteDireccionContent extends ConsumerWidget {
         );
       },
     );
-    final state = ref.watch(clienteDireccionListProvider(cliente!.id));
-    return state.when(
-      data: (clienteDireccionesList) => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: ListView.separated(
-          shrinkWrap: true,
-          itemCount: clienteDireccionesList.length,
-          itemBuilder: (context, i) => GestureDetector(
-            onTap: () => ref
-                .read(pedidoVentaEditPageControllerProvider(pedidoLocalParam)
-                    .notifier)
-                .selectDireccion(
-                    clienteDireccion: (clienteDireccion != null &&
-                            clienteDireccion!.direccionId ==
+    final state = ref.watch(clienteDireccionListProvider(widget.cliente!.id));
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        children: [
+          SearchListTile(
+            searchTitle: S.of(context).search,
+            onChanged: (searchText) => _debouncer.run(
+              () => ref
+                  .read(customerAddressSearchQueryStateProvider.notifier)
+                  .state = searchText,
+            ),
+            focusNode: focusNode,
+          ),
+          state.when(
+            data: (clienteDireccionesList) => Expanded(
+              child: ListView.separated(
+                shrinkWrap: true,
+                itemCount: clienteDireccionesList.length,
+                physics: const BouncingScrollPhysics(),
+                itemBuilder: (context, i) => GestureDetector(
+                  onTap: () => ref
+                      .read(pedidoVentaEditPageControllerProvider(
+                              widget.pedidoLocalParam)
+                          .notifier)
+                      .selectDireccion(
+                          clienteDireccion: (widget.clienteDireccion != null &&
+                                  widget.clienteDireccion!.direccionId ==
+                                      clienteDireccionesList[i].direccionId)
+                              ? null
+                              : clienteDireccionesList[i]),
+                  child: Container(
+                    color: (widget.clienteDireccion != null &&
+                            widget.clienteDireccion!.direccionId ==
                                 clienteDireccionesList[i].direccionId)
-                        ? null
-                        : clienteDireccionesList[i]),
-            child: Container(
-              color: (clienteDireccion != null &&
-                      clienteDireccion!.direccionId ==
-                          clienteDireccionesList[i].direccionId)
-                  ? Theme.of(context).colorScheme.secondaryContainer
-                  : Colors.transparent,
-              child: ClienteDireccionTile(
-                clienteDireccion: clienteDireccionesList[i],
-                clienteImpParam:
-                    ClienteImpParam(clienteDireccionesList[i].clienteId),
-                isFromPedido: true,
+                        ? Theme.of(context).colorScheme.secondaryContainer
+                        : Colors.transparent,
+                    child: ClienteDireccionTile(
+                      clienteDireccion: clienteDireccionesList[i],
+                      clienteImpParam:
+                          ClienteImpParam(clienteDireccionesList[i].clienteId),
+                      isFromPedido: true,
+                    ),
+                  ),
+                ),
+                separatorBuilder: (context, i) => const Divider(),
               ),
             ),
+            error: (error, _) => ErrorMessageWidget(error.toString()),
+            loading: () => const ProgressIndicatorWidget(),
           ),
-          separatorBuilder: (context, i) => const Divider(),
-        ),
+        ],
       ),
-      error: (error, _) => ErrorMessageWidget(error.toString()),
-      loading: () => const ProgressIndicatorWidget(),
     );
   }
 }
