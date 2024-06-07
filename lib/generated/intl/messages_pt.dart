@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "aceptar": MessageLookupByLibrary.simpleMessage("Aceitar"),
         "articulo":
             MessageLookupByLibrary.simpleMessage("Pesquisar um produto"),
         "articulo_index_buscarArticulos":
@@ -144,6 +145,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("bem-vindo a"),
         "auth_loginPage_usuario":
             MessageLookupByLibrary.simpleMessage("usuário"),
+        "cancelar": MessageLookupByLibrary.simpleMessage("Cancelar"),
         "catalogos_index_buscarCatalogo":
             MessageLookupByLibrary.simpleMessage("Buscar catálogos..."),
         "catalogos_index_catalogoAdjunto_abriendoArchivo":
@@ -155,6 +157,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Tipo de catálogo"),
         "catalogos_index_titulo":
             MessageLookupByLibrary.simpleMessage("Catálogos"),
+        "claveNikel": MessageLookupByLibrary.simpleMessage("Código Nikel"),
         "cliente_alrededor_cargandoMapa":
             MessageLookupByLibrary.simpleMessage("Carregando mapa"),
         "cliente_alrededor_direccionesEnvio":
@@ -477,9 +480,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("última sincronização"),
         "commonWidgets_visitDialogue_saving":
             MessageLookupByLibrary.simpleMessage("Salvando..."),
+        "estasSeguroQueQuieresReemplazarLaBaseDeDatos":
+            MessageLookupByLibrary.simpleMessage(
+                "Tem certeza de que deseja substituir o banco de dados? Você perderá os dados salvos localmente."),
         "familia": MessageLookupByLibrary.simpleMessage("Desc. :"),
         "haOcurridoUnError":
             MessageLookupByLibrary.simpleMessage("ocorreu um erro"),
+        "introduceClaveDeNikel":
+            MessageLookupByLibrary.simpleMessage("Digite o código de Nikel"),
         "no": MessageLookupByLibrary.simpleMessage("Não"),
         "notification": MessageLookupByLibrary.simpleMessage("Notificação"),
         "notification_detail":

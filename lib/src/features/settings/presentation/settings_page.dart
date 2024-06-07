@@ -2,7 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/local_database.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
@@ -10,6 +12,7 @@ import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/column_fie
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/toasts.dart';
 import 'package:jbm_nikel_mobile/src/features/settings/infrastructure/settings_repository.dart';
+import 'package:jbm_nikel_mobile/src/features/settings/presentation/delete_local_database_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/settings/presentation/export_database_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/sync/application/sync_notifier_provider.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
@@ -110,6 +113,11 @@ class SettingsPage extends ConsumerWidget {
             stateSync.maybeWhen(
               orElse: () => Container(),
               synchronized: () =>
+                  const _ReemplazarArchivoBaseDeDatosLocalButton(),
+            ),
+            stateSync.maybeWhen(
+              orElse: () => Container(),
+              synchronized: () =>
                   _EnviarBaseDeDatosLocalButton(usuarioId: usuario!.id),
             ),
             stateSync.maybeWhen(
@@ -175,6 +183,130 @@ class _ActualizarArchivoBaseDeDatosButton extends ConsumerWidget {
     ref.invalidate(appRemoteDatabaseProvider);
 
     ref.read(deleteDatabaseControllerProvider.notifier).deleteRemoteDatabase();
+  }
+}
+
+class _ReemplazarArchivoBaseDeDatosLocalButton extends ConsumerWidget {
+  const _ReemplazarArchivoBaseDeDatosLocalButton();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.listen(deleteLocalDatabaseControllerProvider, (_, state) {
+      state.maybeWhen(
+          orElse: () {},
+          data: (deleted) {
+            if (deleted) {
+              print('HOLA');
+              ref.invalidate(syncNotifierProvider);
+              ref.invalidate(appLocalDatabaseProvider);
+              isolateLocalDatabaseConnectPort = null;
+              ref.invalidate(syncServiceProvider);
+              ref.read(usuarioNotifierProvider.notifier).signOut();
+            }
+          });
+    });
+    return ElevatedButton(
+      onPressed: () => replaceLocalDatabase(context, ref),
+      style: ButtonStyle(backgroundColor: WidgetStateProperty.all(Colors.red)),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.refresh,
+            color: Theme.of(context).colorScheme.onError,
+          ),
+          const SizedBox(width: 5),
+          Text(
+            S.of(context).settings_reemplazarBaseDeDatosLocal,
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: Theme.of(context).colorScheme.onError,
+                ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void replaceLocalDatabase(BuildContext context, WidgetRef ref) async {
+    // final replaceDatabase = await showDialog<bool?>(
+    //     context: context,
+    //     builder: (context) => const ReplaceDatabaseAlertDialog());
+
+    // if (replaceDatabase != null && replaceDatabase && context.mounted) {
+    //   final correctKey = await showDialog<bool?>(
+    //     context: context,
+    //     builder: (context) => ReplaceDatabaseKeyAlertDialog(),
+    //   );
+
+    //   if (correctKey != null && correctKey) {
+    ref.invalidate(appLocalDatabaseProvider);
+
+    ref
+        .read(deleteLocalDatabaseControllerProvider.notifier)
+        .deleteLocalDatabase();
+    // }
+    //   }
+  }
+}
+
+class ReplaceDatabaseAlertDialog extends StatelessWidget {
+  const ReplaceDatabaseAlertDialog({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      content: Text(S.of(context).estasSeguroQueQuieresReemplazarLaBaseDeDatos),
+      actions: [
+        ElevatedButton(
+          onPressed: () => Navigator.of(context).pop(false),
+          child: Text(S.of(context).cancelar),
+        ),
+        const SizedBox(width: 5),
+        ElevatedButton(
+          onPressed: () => Navigator.of(context).pop(true),
+          child: Text(S.of(context).aceptar),
+        ),
+      ],
+    );
+  }
+}
+
+class ReplaceDatabaseKeyAlertDialog extends StatelessWidget {
+  ReplaceDatabaseKeyAlertDialog({super.key});
+
+  final GlobalKey<FormBuilderState> _formKey = GlobalKey<FormBuilderState>();
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text(S.of(context).introduceClaveDeNikel),
+      content: FormBuilder(
+        key: _formKey,
+        child: FormBuilderTextField(
+          name: 'clave',
+          decoration: InputDecoration(labelText: S.of(context).claveNikel),
+          validator: FormBuilderValidators.compose([
+            FormBuilderValidators.required(),
+            FormBuilderValidators.match('N1k3l')
+          ]),
+        ),
+      ),
+      actions: [
+        ElevatedButton(
+          onPressed: () => Navigator.of(context).pop(false),
+          child: Text(S.of(context).cancelar),
+        ),
+        const SizedBox(width: 5),
+        ElevatedButton(
+          onPressed: () {
+            if (_formKey.currentState!.saveAndValidate()) {
+              Navigator.of(context).pop(true);
+            }
+          },
+          child: Text(S.of(context).aceptar),
+        ),
+      ],
+    );
   }
 }
 

@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "aceptar": MessageLookupByLibrary.simpleMessage("Accept"),
         "articulo": MessageLookupByLibrary.simpleMessage("Article"),
         "articulo_index_buscarArticulos":
             MessageLookupByLibrary.simpleMessage("Search articles..."),
@@ -141,6 +142,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "auth_loginPage_titulo":
             MessageLookupByLibrary.simpleMessage("Welcome to"),
         "auth_loginPage_usuario": MessageLookupByLibrary.simpleMessage("User"),
+        "cancelar": MessageLookupByLibrary.simpleMessage("Cancel"),
         "catalogos_index_buscarCatalogo":
             MessageLookupByLibrary.simpleMessage("Search catalogs..."),
         "catalogos_index_catalogoAdjunto_abriendoArchivo":
@@ -152,6 +154,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Catalogs type"),
         "catalogos_index_titulo":
             MessageLookupByLibrary.simpleMessage("Catalogs"),
+        "claveNikel": MessageLookupByLibrary.simpleMessage("Nikel key"),
         "cliente_alrededor_cargandoMapa":
             MessageLookupByLibrary.simpleMessage("Loading map"),
         "cliente_alrededor_direccionesEnvio":
@@ -466,9 +469,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Last sync"),
         "commonWidgets_visitDialogue_saving":
             MessageLookupByLibrary.simpleMessage("Saving..."),
+        "estasSeguroQueQuieresReemplazarLaBaseDeDatos":
+            MessageLookupByLibrary.simpleMessage(
+                "Are you sure you want to replace the database? You will lose the data stored locally."),
         "familia": MessageLookupByLibrary.simpleMessage("Family"),
         "haOcurridoUnError":
             MessageLookupByLibrary.simpleMessage("An error occurred"),
+        "introduceClaveDeNikel":
+            MessageLookupByLibrary.simpleMessage("Introduce Nikel key"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
         "notification": MessageLookupByLibrary.simpleMessage("Notification"),
         "notification_detail":
@@ -633,6 +641,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Username"),
         "settings_reemplazarBaseDeDatos":
             MessageLookupByLibrary.simpleMessage("Replace database"),
+        "settings_reemplazarBaseDeDatosLocal":
+            MessageLookupByLibrary.simpleMessage(
+                "Replace provisional database"),
         "settings_sincronicacionRealizadaConExito":
             MessageLookupByLibrary.simpleMessage("Sync done successfully"),
         "settings_sincronizarDatos":

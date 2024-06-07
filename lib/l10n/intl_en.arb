@@ -297,6 +297,7 @@
   "settings_sincronicacionRealizadaConExito": "Sync done successfully",
   "settings_titulo": "Settings",
   "settings_reemplazarBaseDeDatos": "Replace database",
+  "settings_reemplazarBaseDeDatosLocal": "Replace provisional database",
   "settings_enviarBaseDeDatos": "Send database",
   "settings_creandoArchivo": "Creating file...",
   "settings_sincronizarDatos": "Sync data",
@@ -365,5 +366,10 @@
   "pedido_edit_selectQuantity_pallets": "Pallets",
   "pedido_edit_selectQuantity_subcajas": "Subboxes",
   "pedido_edit_pedidoEdit_pedidoClienteMax50": "The field customer sales order cannot be more than 50 characters",
-  "precioNoPuedeSerMenorAlPrecioMinimo": "The price cannot be less than the minimum price"
+  "precioNoPuedeSerMenorAlPrecioMinimo": "The price cannot be less than the minimum price",
+  "estasSeguroQueQuieresReemplazarLaBaseDeDatos": "Are you sure you want to replace the database? You will lose the data stored locally.",
+  "aceptar": "Accept",
+  "cancelar": "Cancel",
+  "introduceClaveDeNikel": "Introduce Nikel key",
+  "claveNikel": "Nikel key"
 }

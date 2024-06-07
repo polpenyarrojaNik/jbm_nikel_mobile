@@ -3064,6 +3064,16 @@ class S {
     );
   }
 
+  /// `Replace provisional database`
+  String get settings_reemplazarBaseDeDatosLocal {
+    return Intl.message(
+      'Replace provisional database',
+      name: 'settings_reemplazarBaseDeDatosLocal',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Send database`
   String get settings_enviarBaseDeDatos {
     return Intl.message(
@@ -3749,6 +3759,56 @@ class S {
     return Intl.message(
       'The price cannot be less than the minimum price',
       name: 'precioNoPuedeSerMenorAlPrecioMinimo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to replace the database? You will lose the data stored locally.`
+  String get estasSeguroQueQuieresReemplazarLaBaseDeDatos {
+    return Intl.message(
+      'Are you sure you want to replace the database? You will lose the data stored locally.',
+      name: 'estasSeguroQueQuieresReemplazarLaBaseDeDatos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Accept`
+  String get aceptar {
+    return Intl.message(
+      'Accept',
+      name: 'aceptar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancelar {
+    return Intl.message(
+      'Cancel',
+      name: 'cancelar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Introduce Nikel key`
+  String get introduceClaveDeNikel {
+    return Intl.message(
+      'Introduce Nikel key',
+      name: 'introduceClaveDeNikel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nikel key`
+  String get claveNikel {
+    return Intl.message(
+      'Nikel key',
+      name: 'claveNikel',
       desc: '',
       args: [],
     );

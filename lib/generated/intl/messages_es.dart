@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "aceptar": MessageLookupByLibrary.simpleMessage("Aceptar"),
         "articulo": MessageLookupByLibrary.simpleMessage("Artículo"),
         "articulo_index_buscarArticulos":
             MessageLookupByLibrary.simpleMessage("Buscar artículos"),
@@ -142,6 +143,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Bienvenido a"),
         "auth_loginPage_usuario":
             MessageLookupByLibrary.simpleMessage("Usuario"),
+        "cancelar": MessageLookupByLibrary.simpleMessage("Cancelar"),
         "catalogos_index_buscarCatalogo":
             MessageLookupByLibrary.simpleMessage("Buscar catálogos..."),
         "catalogos_index_catalogoAdjunto_abriendoArchivo":
@@ -154,6 +156,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Tipo de catálogo"),
         "catalogos_index_titulo":
             MessageLookupByLibrary.simpleMessage("Catálogos"),
+        "claveNikel": MessageLookupByLibrary.simpleMessage("Clave Nikel"),
         "cliente_alrededor_cargandoMapa":
             MessageLookupByLibrary.simpleMessage("Cargando mapa"),
         "cliente_alrededor_direccionesEnvio":
@@ -473,9 +476,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Última sincronización"),
         "commonWidgets_visitDialogue_saving":
             MessageLookupByLibrary.simpleMessage("Guardando..."),
+        "estasSeguroQueQuieresReemplazarLaBaseDeDatos":
+            MessageLookupByLibrary.simpleMessage(
+                "¿Estás seguro que quieres reemplazar la base de datos? Perderás los datos guardados en local."),
         "familia": MessageLookupByLibrary.simpleMessage("Familia"),
         "haOcurridoUnError":
             MessageLookupByLibrary.simpleMessage("Ha ocurrido un error"),
+        "introduceClaveDeNikel":
+            MessageLookupByLibrary.simpleMessage("Introduce la clave de Nikel"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
         "notification": MessageLookupByLibrary.simpleMessage("Notificación"),
         "notification_detail":

@@ -365,5 +365,11 @@
   "articulo_show_articuloDetalle_hace2Anos": "2 anni fa",
   "articulo_show_articuloDetalle_margen": "Margine",
   "articulo_show_articuloDetalle_ventas": "Vendite",
-  "precioNoPuedeSerMenorAlPrecioMinimo": "Il prezzo non può essere inferiore al prezzo minimo"
+  "precioNoPuedeSerMenorAlPrecioMinimo": "Il prezzo non può essere inferiore al prezzo minimo",
+  "settings_reemplazarLocalBaseDeDatos": "Sostituisci il database temporaneo",
+  "estasSeguroQueQuieresReemplazarLaBaseDeDatos": "Sei sicuro di voler sostituire il database? Perderai i dati salvati localmente.",
+  "aceptar": "Accettare",
+  "cancelar": "Anulla",
+  "introduceClaveDeNikel": "Inserisci il codice Nikel",
+  "claveNikel": "Codice Nikel"
 }

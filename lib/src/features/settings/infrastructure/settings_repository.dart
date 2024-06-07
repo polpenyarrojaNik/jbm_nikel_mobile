@@ -76,6 +76,30 @@ class SettingsRepository {
     }
   }
 
+  Future<void> deleteLocalDatabase() async {
+    const localDatabaseName = 'local_jbm.sqlite';
+    const localDatabaseJournalName = 'local_jbm.sqlite-journal';
+
+    try {
+      final Directory directory = await getApplicationDocumentsDirectory();
+      if (await _databaseFileExist(
+          directory: directory, remoteDatabaseName: localDatabaseName)) {
+        File((join(directory.path, localDatabaseName)))
+            .deleteSync(recursive: true);
+      }
+      if (await _databaseFileExist(
+          directory: directory, remoteDatabaseName: localDatabaseJournalName)) {
+        File((join(directory.path, localDatabaseJournalName)))
+            .deleteSync(recursive: true);
+      }
+    } on AppException catch (e) {
+      log.e(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<bool> _databaseFileExist(
       {required Directory directory,
       required String remoteDatabaseName}) async {
