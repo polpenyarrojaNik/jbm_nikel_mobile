@@ -325,9 +325,11 @@ class ArticuloRepository {
               subfamilia: subfamiliaDTO?.toDomain(),
             )
             .copyWith(
-              ventasAnyoActual: Money.fromNum(ventasAnyoActual, code: 'EU'),
-              ventasAnyoAnterior: Money.fromNum(ventasAnyoAnterior, code: 'EU'),
-              ventasHaceDosAnyos: Money.fromNum(ventasHaceDosAnyos, code: 'EU'),
+              ventasAnyoActual: Money.fromNum(ventasAnyoActual, isoCode: 'EU'),
+              ventasAnyoAnterior:
+                  Money.fromNum(ventasAnyoAnterior, isoCode: 'EU'),
+              ventasHaceDosAnyos:
+                  Money.fromNum(ventasHaceDosAnyos, isoCode: 'EU'),
               margenAnyoActual: margenAnyoActual,
               margenAnyoAnterior: margenAnyoAnterior,
               margenHaceDosAnyos: margenHaceDosAnyos,

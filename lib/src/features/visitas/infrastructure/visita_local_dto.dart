@@ -54,32 +54,33 @@ class VisitaLocalDTO
   factory VisitaLocalDTO.fromJson(Map<String, dynamic> json) =>
       _$VisitaLocalDTOFromJson(json);
 
-  factory VisitaLocalDTO.fromDomain(Visita _) {
+  factory VisitaLocalDTO.fromDomain(Visita visita) {
     return VisitaLocalDTO(
-      visitaAppId: _.visitaAppId,
-      clienteId: _.clienteId,
-      fecha: _.fecha,
-      isClienteProvisional: (_.isClienteProvisional) ? 'S' : 'N',
-      clienteProvisionalNombre: _.clienteProvisionalNombre,
-      clienteProvisionalEmail: _.clienteProvisionalEmail,
-      clienteProvisionalTelefono: _.clienteProvisionalTelefono,
-      clienteProvisionalDireccion1: _.clienteProvisionalDireccion1,
-      clienteProvisionalDireccion2: _.clienteProvisionalDireccion2,
-      clienteProvisionalCodigoPostal: _.clienteProvisionalCodigoPostal,
-      clienteProvisionalPoblacion: _.clienteProvisionalPoblacion,
-      clienteProvisionalProvinciaId: _.clienteProvisionalProvincia?.provinciaId,
-      clienteProvisionalRegionId: _.clienteProvisionalRegionId,
-      clienteProvisionalPaisId: _.clienteProvisionalPais?.id,
-      numEmpl: _.numEmpl,
-      contacto: _.contacto!,
-      atendidoPor: _.atendidoPor,
-      resumen: _.resumen,
-      marcasCompetencia: _.marcasCompetencia,
-      latitud: _.latitud,
-      longitud: _.longitud,
-      enviada: (_.enviada) ? 'S' : 'N',
-      tratada: (_.tratada) ? 'S' : 'N',
-      errorSyncMessage: _.errorSyncMessage,
+      visitaAppId: visita.visitaAppId,
+      clienteId: visita.clienteId,
+      fecha: visita.fecha,
+      isClienteProvisional: (visita.isClienteProvisional) ? 'S' : 'N',
+      clienteProvisionalNombre: visita.clienteProvisionalNombre,
+      clienteProvisionalEmail: visita.clienteProvisionalEmail,
+      clienteProvisionalTelefono: visita.clienteProvisionalTelefono,
+      clienteProvisionalDireccion1: visita.clienteProvisionalDireccion1,
+      clienteProvisionalDireccion2: visita.clienteProvisionalDireccion2,
+      clienteProvisionalCodigoPostal: visita.clienteProvisionalCodigoPostal,
+      clienteProvisionalPoblacion: visita.clienteProvisionalPoblacion,
+      clienteProvisionalProvinciaId:
+          visita.clienteProvisionalProvincia?.provinciaId,
+      clienteProvisionalRegionId: visita.clienteProvisionalRegionId,
+      clienteProvisionalPaisId: visita.clienteProvisionalPais?.id,
+      numEmpl: visita.numEmpl,
+      contacto: visita.contacto!,
+      atendidoPor: visita.atendidoPor,
+      resumen: visita.resumen,
+      marcasCompetencia: visita.marcasCompetencia,
+      latitud: visita.latitud,
+      longitud: visita.longitud,
+      enviada: (visita.enviada) ? 'S' : 'N',
+      tratada: (visita.tratada) ? 'S' : 'N',
+      errorSyncMessage: visita.errorSyncMessage,
     );
   }
 

@@ -1,28 +1,91 @@
 import 'package:intl/intl.dart';
 import 'package:money2/money2.dart';
 
+final currencies = [
+  Currency.create(
+    'EU',
+    2,
+    symbol: '€',
+    decimalSeparator: ',',
+    groupSeparator: '.',
+    pattern: 'S#,##0.##',
+  ),
+  Currency.create(
+    'RMB',
+    2,
+    symbol: '¥',
+    pattern: 'S#,##0.##',
+  ),
+  Currency.create(
+    'HUF',
+    2,
+    symbol: 'Ft',
+    decimalSeparator: ',',
+    groupSeparator: '.',
+    pattern: 'S#,##0.##',
+  ),
+  Currency.create(
+    'MXP',
+    2,
+    decimalSeparator: ',',
+    groupSeparator: '.',
+    pattern: 'S#,##0.##',
+  ),
+  Currency.create(
+    'PLN',
+    2,
+    symbol: 'zł',
+    decimalSeparator: ',',
+    groupSeparator: '.',
+    pattern: 'S#,##0.##',
+  ),
+  Currency.create(
+    'CLP',
+    2,
+    decimalSeparator: ',',
+    groupSeparator: '.',
+    pattern: 'S#,##0.##',
+  ),
+  Currency.create(
+    'USD',
+    2,
+    pattern: 'S#,##0.##',
+  ),
+  Currency.create(
+    'CLP',
+    2,
+    decimalSeparator: ',',
+    groupSeparator: '.',
+    pattern: 'S#,##0.##',
+  ),
+  Currency.create(
+    'MAD',
+    2,
+    symbol: 'DH',
+    decimalSeparator: ',',
+    groupSeparator: '.',
+    pattern: 'S#,##0.##',
+  ),
+  Currency.create('GB', 2,
+      symbol: '£',
+      groupSeparator: ',',
+      decimalSeparator: '.',
+      pattern: 'S#.##0,##'),
+];
+
 extension MoneyParsing on String {
-  Money toMoney({String? currencyId}) {
-    final euroCurrency = Currency.create('EU', 2,
-        symbol: '€', invertSeparators: true, pattern: 'S#.##0,##');
+  Money parseMoney(String currencyId) {
+    final Currency currency = Currencies().find(currencyId) ?? currencies[0];
 
-    Currencies().registerList(
-      [
-        euroCurrency,
-        Currency.create('RMB', 2, symbol: '¥', pattern: 'S#,##0.00'),
-        Currency.create('HUF', 2,
-            symbol: 'Ft', invertSeparators: true, pattern: 'S#.##0,00'),
-        Currency.create('MXP', 2, invertSeparators: true, pattern: 'S#.##0,00'),
-        Currency.create('PLN', 2,
-            symbol: 'zł', invertSeparators: true, pattern: 'S#.##0,00'),
-        Currency.create('CLP', 2, invertSeparators: true, pattern: 'S#.##0,##'),
-        Currency.create('USD', 2, pattern: 'S#,##0.00'),
-      ],
-    );
+    try {
+      return Money.parseWithCurrency(this, currency);
+    } on MoneyParseException {
+      return Money.fromIntWithCurrency(0, currency);
+    }
+  }
 
-    final currency = (currencyId != null)
-        ? Currencies().find(currencyId) ?? euroCurrency
-        : euroCurrency;
+  Money parseMoneyWithoutDecimal(String currencyId) {
+    final Currency currency = Currencies().find(currencyId) ?? currencies[0];
 
     try {
       return Money.parseWithCurrency(this, currency);
@@ -32,25 +95,7 @@ extension MoneyParsing on String {
   }
 
   Money toMoneyWithoutDecimal(String currencyId) {
-    final euroCurrency = Currency.create('EU', 1,
-        symbol: '€', invertSeparators: true, pattern: 'S#.##0');
-
-    Currencies().registerList(
-      [
-        euroCurrency,
-        Currency.create('RMB', 1, symbol: '¥', pattern: 'S#,##0'),
-        Currency.create('HUF', 1,
-            symbol: 'Ft', invertSeparators: true, pattern: 'S#.##0'),
-        Currency.create('MXP', 1, invertSeparators: true, pattern: 'S#.##0'),
-        Currency.create('PLN', 1,
-            symbol: 'zł', invertSeparators: true, pattern: 'S#.##0'),
-        Currency.create('CLP', 1, invertSeparators: true, pattern: 'S#.##0'),
-        Currency.create('USD', 1, pattern: 'S#,##0'),
-        Currency.create('US', 1, pattern: 'S#,##0'),
-      ],
-    );
-
-    final currency = Currencies().find(currencyId) ?? euroCurrency;
+    final Currency currency = Currencies().find(currencyId) ?? currencies[0];
 
     try {
       return Money.parseWithCurrency(this, currency);
@@ -62,27 +107,8 @@ extension MoneyParsing on String {
 
 extension MoneyParsingDouble on num {
   Money toMoney({String? currencyId}) {
-    final euroCurrency = Currency.create('EU', 2,
-        symbol: '€', invertSeparators: true, pattern: 'S#.##0,00');
-
-    Currencies().registerList(
-      [
-        euroCurrency,
-        Currency.create('RMB', 2, symbol: '¥', pattern: 'S#,##0.00'),
-        Currency.create('HUF', 2,
-            symbol: 'Ft', invertSeparators: true, pattern: 'S#.##0,00'),
-        Currency.create('MXP', 2, invertSeparators: true, pattern: 'S#.##0,00'),
-        Currency.create('PLN', 2,
-            symbol: 'zł', invertSeparators: true, pattern: 'S#.##0,00'),
-        Currency.create('CLP', 2, invertSeparators: true, pattern: 'S#.##0,##'),
-        Currency.create('USD', 2, pattern: 'S#,##0.00'),
-        Currency.create('US', 2, pattern: 'S#,##0.00'),
-      ],
-    );
-
-    final currency = (currencyId != null)
-        ? Currencies().find(currencyId) ?? euroCurrency
-        : euroCurrency;
+    final Currency currency =
+        Currencies().find(currencyId ?? 'EU') ?? currencies[0];
 
     NumberFormat formatter = NumberFormat.decimalPattern('es');
 

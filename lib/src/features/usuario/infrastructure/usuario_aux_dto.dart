@@ -23,15 +23,15 @@ class UsuarioAuxDTO with _$UsuarioAuxDTO {
   factory UsuarioAuxDTO.fromJson(Map<String, dynamic> json) =>
       _$UsuarioAuxDTOFromJson(json);
 
-  factory UsuarioAuxDTO.fromDomain(Usuario _) {
+  factory UsuarioAuxDTO.fromDomain(Usuario usuario) {
     return UsuarioAuxDTO(
-      id: _.id,
-      usuario: _.usuario,
-      nombreUsuario: _.nombreUsuario,
-      idiomaId: _.idiomaId,
-      modificarPedido: _.modificarPedido ? 'S' : 'N',
-      verTotalVentas: _.verTotalVentas ? 'S' : 'N',
-      margenComercial: _.margenComercial,
+      id: usuario.id,
+      usuario: usuario.usuario,
+      nombreUsuario: usuario.nombreUsuario,
+      idiomaId: usuario.idiomaId,
+      modificarPedido: usuario.modificarPedido ? 'S' : 'N',
+      verTotalVentas: usuario.verTotalVentas ? 'S' : 'N',
+      margenComercial: usuario.margenComercial,
     );
   }
 }

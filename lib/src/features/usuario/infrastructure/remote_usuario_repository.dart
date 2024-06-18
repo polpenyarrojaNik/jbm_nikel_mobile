@@ -72,7 +72,7 @@ class RemoteUsuarioRepository {
         throw AppException.restApiFailure(response.statusCode ?? 400,
             response.statusMessage ?? 'Internet Error');
       }
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       throw AppException.restApiFailure(
         e.response?.statusCode ?? 400,
         e.response?.data['error']['detail'] ??

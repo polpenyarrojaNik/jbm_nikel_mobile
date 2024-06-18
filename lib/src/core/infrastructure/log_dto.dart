@@ -29,18 +29,18 @@ class LogDTO with _$LogDTO implements Insertable<LogDTO> {
 
   factory LogDTO.fromJson(Map<String, dynamic> json) => _$LogDTOFromJson(json);
 
-  factory LogDTO.fromDomain(Log _) {
+  factory LogDTO.fromDomain(Log log) {
     return LogDTO(
-        id: _.id,
-        level: _.level,
-        message: _.message,
-        error: _.error,
-        appId: _.appId,
-        appBuild: _.appBuild,
-        appBuildName: _.appBuildName,
-        device: _.device,
-        userId: _.userId,
-        timestamp: _.timestamp);
+        id: log.id,
+        level: log.level,
+        message: log.message,
+        error: log.error,
+        appId: log.appId,
+        appBuild: log.appBuild,
+        appBuildName: log.appBuildName,
+        device: log.device,
+        userId: log.userId,
+        timestamp: log.timestamp);
   }
 
   Log toDomain() {

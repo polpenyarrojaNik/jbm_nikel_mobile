@@ -220,7 +220,7 @@ class VisitaRepository {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');
       }
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       String? errorDetalle;
       if (e.isNoConnectionError) {
         throw const AppException.notConnection();

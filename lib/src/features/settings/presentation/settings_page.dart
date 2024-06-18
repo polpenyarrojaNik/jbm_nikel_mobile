@@ -191,14 +191,15 @@ class _ReemplazarArchivoBaseDeDatosLocalButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen(deleteLocalDatabaseControllerProvider, (_, state) {
+    ref.listen<DeleteLocalDatabaseControllerState>(
+        deleteLocalDatabaseControllerProvider, (_, state) {
       state.maybeWhen(
           orElse: () {},
           data: (deleted) {
             if (deleted) {
-              print('HOLA');
               ref.invalidate(syncNotifierProvider);
               ref.invalidate(appLocalDatabaseProvider);
+              ref.invalidate(appRemoteDatabaseProvider);
               isolateLocalDatabaseConnectPort = null;
               ref.invalidate(syncServiceProvider);
               ref.read(usuarioNotifierProvider.notifier).signOut();
@@ -228,24 +229,22 @@ class _ReemplazarArchivoBaseDeDatosLocalButton extends ConsumerWidget {
   }
 
   void replaceLocalDatabase(BuildContext context, WidgetRef ref) async {
-    // final replaceDatabase = await showDialog<bool?>(
-    //     context: context,
-    //     builder: (context) => const ReplaceDatabaseAlertDialog());
+    final replaceDatabase = await showDialog<bool?>(
+        context: context,
+        builder: (context) => const ReplaceDatabaseAlertDialog());
 
-    // if (replaceDatabase != null && replaceDatabase && context.mounted) {
-    //   final correctKey = await showDialog<bool?>(
-    //     context: context,
-    //     builder: (context) => ReplaceDatabaseKeyAlertDialog(),
-    //   );
+    if (replaceDatabase != null && replaceDatabase && context.mounted) {
+      final correctKey = await showDialog<bool?>(
+        context: context,
+        builder: (context) => ReplaceDatabaseKeyAlertDialog(),
+      );
 
-    //   if (correctKey != null && correctKey) {
-    ref.invalidate(appLocalDatabaseProvider);
-
-    ref
-        .read(deleteLocalDatabaseControllerProvider.notifier)
-        .deleteLocalDatabase();
-    // }
-    //   }
+      if (correctKey != null && correctKey) {
+        ref
+            .read(deleteLocalDatabaseControllerProvider.notifier)
+            .deleteLocalDatabase();
+      }
+    }
   }
 }
 

@@ -5,6 +5,7 @@ import 'package:country_codes/country_codes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
 import 'package:money2/money2.dart';
 // import 'package:upgrader/upgrader.dart';
 
@@ -18,13 +19,10 @@ void main() async {
       await CountryCodes.init();
 
       await dotenv.load();
+      Currencies().registerList(currencies);
+
       //TODO REMOVE this for release builds
       // await Upgrader.clearSavedSettings();
-
-      Currencies().registerList([
-        Currency.create('GB', 2,
-            symbol: '£', invertSeparators: true, pattern: 'S#.##0,##'),
-      ]);
 
       runApp(
         ProviderScope(

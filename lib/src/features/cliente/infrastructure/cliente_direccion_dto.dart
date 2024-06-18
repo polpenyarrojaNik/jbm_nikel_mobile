@@ -37,22 +37,23 @@ class ClienteDireccionDTO
   factory ClienteDireccionDTO.fromJson(Map<String, dynamic> json) =>
       _$ClienteDireccionDTOFromJson(json);
 
-  factory ClienteDireccionDTO.fromDireccionImp(ClienteDireccionImpDTO _) {
+  factory ClienteDireccionDTO.fromDireccionImp(
+      ClienteDireccionImpDTO clienteDireccionImpDTO) {
     return ClienteDireccionDTO(
-      clienteId: _.clienteId,
-      direccionId: _.direccionId,
-      nombre: _.nombre,
-      direccion1: _.direccion1,
-      direccion2: _.direccion2,
-      codigoPostal: _.codigoPostal,
-      poblacion: _.poblacion,
-      provincia: _.provincia,
-      paisId: _.paisId,
+      clienteId: clienteDireccionImpDTO.clienteId,
+      direccionId: clienteDireccionImpDTO.direccionId,
+      nombre: clienteDireccionImpDTO.nombre,
+      direccion1: clienteDireccionImpDTO.direccion1,
+      direccion2: clienteDireccionImpDTO.direccion2,
+      codigoPostal: clienteDireccionImpDTO.codigoPostal,
+      poblacion: clienteDireccionImpDTO.poblacion,
+      provincia: clienteDireccionImpDTO.provincia,
+      paisId: clienteDireccionImpDTO.paisId,
       latitud: 0,
       longitud: 0,
       predeterminada: 'N',
       lastUpdated: DateTime.now().toUtc(),
-      deleted: _.borrar,
+      deleted: clienteDireccionImpDTO.borrar,
     );
   }
 

@@ -1,28 +1,46 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jbm_nikel_mobile/src/features/settings/infrastructure/settings_repository.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../core/exceptions/app_exception.dart';
 
-part 'delete_local_database_controller.g.dart';
+part 'delete_local_database_controller.freezed.dart';
 
-@riverpod
-class DeleteLocalDatabaseController extends _$DeleteLocalDatabaseController {
-  DeleteLocalDatabaseController();
+final deleteLocalDatabaseControllerProvider = StateNotifierProvider.autoDispose<
+        DeleteLocalDatabaseController, DeleteLocalDatabaseControllerState>(
+    (ref) =>
+        DeleteLocalDatabaseController(ref.watch(settingsRepositoryProvider)));
 
-  @override
-  Future<bool> build() async {
-    return false;
-  }
+@freezed
+class DeleteLocalDatabaseControllerState
+    with _$DeleteLocalDatabaseControllerState {
+  const DeleteLocalDatabaseControllerState._();
+  const factory DeleteLocalDatabaseControllerState.loading() = _loading;
+
+  const factory DeleteLocalDatabaseControllerState.initial() = _initial;
+
+  const factory DeleteLocalDatabaseControllerState.error(Object error,
+      {StackTrace? stackTrace}) = _error;
+  const factory DeleteLocalDatabaseControllerState.data(bool deleted) = _data;
+}
+
+class DeleteLocalDatabaseController
+    extends StateNotifier<DeleteLocalDatabaseControllerState> {
+  final SettingsRepository _settingsRepository;
+
+  DeleteLocalDatabaseController(this._settingsRepository)
+      : super(const DeleteLocalDatabaseControllerState.initial());
 
   Future<void> deleteLocalDatabase() async {
     try {
-      state = const AsyncLoading();
+      state = const DeleteLocalDatabaseControllerState.loading();
 
-      await ref.read(settingsRepositoryProvider).deleteLocalDatabase();
+      await _settingsRepository.deleteLocalDatabase();
 
-      state = const AsyncData(true);
+      state = const DeleteLocalDatabaseControllerState.data(true);
     } on AppException catch (e, stackTrace) {
-      state = AsyncError(e, stackTrace);
+      state =
+          DeleteLocalDatabaseControllerState.error(e, stackTrace: stackTrace);
     } catch (e) {
       rethrow;
     }

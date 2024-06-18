@@ -34,22 +34,23 @@ class ClienteContactoImpDTO
   factory ClienteContactoImpDTO.fromJson(Map<String, dynamic> json) =>
       _$ClienteContactoImpDTOFromJson(json);
 
-  factory ClienteContactoImpDTO.fromDomain(ClienteContactoImp _) =>
+  factory ClienteContactoImpDTO.fromDomain(
+          ClienteContactoImp clienteContactoImp) =>
       ClienteContactoImpDTO(
-        id: _.id,
-        fecha: _.fecha,
-        usuarioId: _.usuarioId,
-        clienteId: _.clienteId,
-        contactoId: _.contactoId,
-        observaciones: _.observaciones,
-        nombre: _.nombre,
-        apellido1: _.apellido1,
-        apellido2: _.apellido2,
-        telefono1: _.telefono1,
-        telefono2: _.telefono2,
-        email: _.email,
-        enviado: _.enviado ? 'S' : 'N',
-        borrar: _.borrar ? 'S' : 'N',
+        id: clienteContactoImp.id,
+        fecha: clienteContactoImp.fecha,
+        usuarioId: clienteContactoImp.usuarioId,
+        clienteId: clienteContactoImp.clienteId,
+        contactoId: clienteContactoImp.contactoId,
+        observaciones: clienteContactoImp.observaciones,
+        nombre: clienteContactoImp.nombre,
+        apellido1: clienteContactoImp.apellido1,
+        apellido2: clienteContactoImp.apellido2,
+        telefono1: clienteContactoImp.telefono1,
+        telefono2: clienteContactoImp.telefono2,
+        email: clienteContactoImp.email,
+        enviado: clienteContactoImp.enviado ? 'S' : 'N',
+        borrar: clienteContactoImp.borrar ? 'S' : 'N',
       );
 
   ClienteContactoImp toDomain() {

@@ -28,25 +28,26 @@ class ClienteDireccion with _$ClienteDireccion {
     required bool deleted,
   }) = _ClienteDireccion;
 
-  factory ClienteDireccion.fromClienteDireccionImp(ClienteDireccionImp _) {
+  factory ClienteDireccion.fromClienteDireccionImp(
+      ClienteDireccionImp clienteDireccionImp) {
     return ClienteDireccion(
-      clienteId: _.clienteId,
-      direccionId: _.direccionId,
-      direccionImpGuid: _.id,
-      nombre: _.nombre,
-      direccion1: _.direccion1,
-      direccion2: _.direccion2,
-      codigoPostal: _.codigoPostal,
-      poblacion: _.poblacion,
-      provincia: _.provincia,
-      pais: _.pais,
+      clienteId: clienteDireccionImp.clienteId,
+      direccionId: clienteDireccionImp.direccionId,
+      direccionImpGuid: clienteDireccionImp.id,
+      nombre: clienteDireccionImp.nombre,
+      direccion1: clienteDireccionImp.direccion1,
+      direccion2: clienteDireccionImp.direccion2,
+      codigoPostal: clienteDireccionImp.codigoPostal,
+      poblacion: clienteDireccionImp.poblacion,
+      provincia: clienteDireccionImp.provincia,
+      pais: clienteDireccionImp.pais,
       latitud: 0,
       longitud: 0,
       predeterminada: false,
       lastUpdated: DateTime.now().toUtc(),
-      enviada: _.enviada,
+      enviada: clienteDireccionImp.enviada,
       tratada: false,
-      deleted: _.borrar,
+      deleted: clienteDireccionImp.borrar,
     );
   }
 }

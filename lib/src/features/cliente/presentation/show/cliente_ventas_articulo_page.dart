@@ -107,8 +107,11 @@ class _VentasArticuloDataTableState
           smRatio: 0.7,
           fit: FlexFit.tight,
           columns: _createColumns(clienteVentasArticuloList),
-          source: _ClienteVentasArticuloDataList(clienteVentasArticuloList,
-              selectedRow, (_) => setState(() => selectedRow = _), context),
+          source: _ClienteVentasArticuloDataList(
+              clienteVentasArticuloList,
+              selectedRow,
+              (numRow) => setState(() => selectedRow = numRow),
+              context),
         ),
       ),
     );

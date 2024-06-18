@@ -1896,7 +1896,9 @@ class PedidoVentaRepository {
         ? Money.fromFixedWithCurrency(
             precio.amount / Fixed.fromNum(tipoPrecio, scale: 0),
             precio.currency)
-        : 0.toMoney(currencyId: precio.currency.code);
+        : 0.toMoney(
+            currencyId: precio.currency.isoCode,
+          );
   }
 
   double _roundDouble(double value, int places) {
@@ -1949,7 +1951,7 @@ class PedidoVentaRepository {
 
   Money getBaseImponible(
       List<PedidoVentaLinea> pedidoVentaLineaList, String divisaId) {
-    Money total = Money.parse('0', code: divisaId);
+    Money total = Money.parse('0', isoCode: divisaId);
     for (var i = 0; i < pedidoVentaLineaList.length; i++) {
       if (pedidoVentaLineaList[i].importeLinea != null) {
         total = total + pedidoVentaLineaList[i].importeLinea!;

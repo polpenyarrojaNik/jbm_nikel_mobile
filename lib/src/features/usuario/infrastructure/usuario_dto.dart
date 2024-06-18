@@ -45,23 +45,23 @@ class UsuarioDTO with _$UsuarioDTO {
   factory UsuarioDTO.fromJson(Map<String, dynamic> json) =>
       _$UsuarioDTOFromJson(json);
 
-  factory UsuarioDTO.fromDomain(Usuario _) {
+  factory UsuarioDTO.fromDomain(Usuario usuario) {
     return UsuarioDTO(
-      id: _.id,
-      usuario: _.usuario,
-      contrasenya: _.contrasenya,
-      nombreUsuario: _.nombreUsuario,
-      provisionalToken: _.provisionalToken,
-      refreshToken: _.refreshToken,
-      test: (_.test) ? 'S' : 'N',
-      idiomaId: _.idiomaId,
-      modificarPedido: _.modificarPedido ? 'S' : 'N',
-      verTotalVentas: _.verTotalVentas ? 'S' : 'N',
-      margenComercial: _.margenComercial,
-      packageName: _.packageName,
-      version: _.version,
-      buildNumber: _.buildNumber,
-      deviceInfo: _.deviceInfo,
+      id: usuario.id,
+      usuario: usuario.usuario,
+      contrasenya: usuario.contrasenya,
+      nombreUsuario: usuario.nombreUsuario,
+      provisionalToken: usuario.provisionalToken,
+      refreshToken: usuario.refreshToken,
+      test: (usuario.test) ? 'S' : 'N',
+      idiomaId: usuario.idiomaId,
+      modificarPedido: usuario.modificarPedido ? 'S' : 'N',
+      verTotalVentas: usuario.verTotalVentas ? 'S' : 'N',
+      margenComercial: usuario.margenComercial,
+      packageName: usuario.packageName,
+      version: usuario.version,
+      buildNumber: usuario.buildNumber,
+      deviceInfo: usuario.deviceInfo,
     );
   }
 

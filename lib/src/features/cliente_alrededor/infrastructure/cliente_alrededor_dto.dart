@@ -37,30 +37,30 @@ class ClienteAlrededorDTO with _$ClienteAlrededorDTO {
   factory ClienteAlrededorDTO.fromJson(Map<String, dynamic> json) =>
       _$ClienteAlrededorDTOFromJson(json);
 
-  factory ClienteAlrededorDTO.fromClienteDTO(ClienteDTO _) {
+  factory ClienteAlrededorDTO.fromClienteDTO(ClienteDTO clienteAlrededorDto) {
     return ClienteAlrededorDTO(
-      clienteId: _.id,
-      markerId: '${_.id}/fiscal',
-      nombre: _.nombreFiscal,
+      clienteId: clienteAlrededorDto.id,
+      markerId: '${clienteAlrededorDto.id}/fiscal',
+      nombre: clienteAlrededorDto.nombreFiscal,
       isDireccionFiscal: 'S',
-      direccion: _.direccionFiscal1,
-      codigoPostal: _.codigoPostalFiscal,
-      poblacion: _.poblacionFiscal,
-      provincia: _.provinciaFiscal,
-      paisId: _.paisFiscalId,
-      latitud: _.latitudFiscal,
-      longitud: _.longitudFiscal,
-      isClientePotencial: _.clientePotencial,
-      nombreRepresentante1: _.representante1Nombre,
-      nombreRepresentante2: _.representante2Nombre,
-      ventasAnyoActual: _.ventasAnyoActual,
-      ventasAnyoAnterior: _.ventasAnyoAnterior,
-      porcentajeAbonos: _.porcentajeAbonos,
+      direccion: clienteAlrededorDto.direccionFiscal1,
+      codigoPostal: clienteAlrededorDto.codigoPostalFiscal,
+      poblacion: clienteAlrededorDto.poblacionFiscal,
+      provincia: clienteAlrededorDto.provinciaFiscal,
+      paisId: clienteAlrededorDto.paisFiscalId,
+      latitud: clienteAlrededorDto.latitudFiscal,
+      longitud: clienteAlrededorDto.longitudFiscal,
+      isClientePotencial: clienteAlrededorDto.clientePotencial,
+      nombreRepresentante1: clienteAlrededorDto.representante1Nombre,
+      nombreRepresentante2: clienteAlrededorDto.representante2Nombre,
+      ventasAnyoActual: clienteAlrededorDto.ventasAnyoActual,
+      ventasAnyoAnterior: clienteAlrededorDto.ventasAnyoAnterior,
+      porcentajeAbonos: clienteAlrededorDto.porcentajeAbonos,
     );
   }
 
   factory ClienteAlrededorDTO.fromClienteDireccionDTO(
-    ClienteDireccionDTO _,
+    ClienteDireccionDTO clienteDireccionDto,
     double ventasAnyoActual,
     double ventasAnyoAnterior,
     double porcentajeAbonos,
@@ -68,17 +68,18 @@ class ClienteAlrededorDTO with _$ClienteAlrededorDTO {
     String? nombreRepresentante2,
   ) {
     return ClienteAlrededorDTO(
-      clienteId: _.clienteId,
-      markerId: '${_.clienteId}/${_.direccionId}',
-      nombre: _.nombre!,
+      clienteId: clienteDireccionDto.clienteId,
+      markerId:
+          '${clienteDireccionDto.clienteId}/${clienteDireccionDto.direccionId}',
+      nombre: clienteDireccionDto.nombre!,
       isDireccionFiscal: 'N',
-      direccion: _.direccion1,
-      codigoPostal: _.codigoPostal,
-      poblacion: _.poblacion,
-      provincia: _.provincia,
-      paisId: _.paisId,
-      latitud: _.latitud,
-      longitud: _.longitud,
+      direccion: clienteDireccionDto.direccion1,
+      codigoPostal: clienteDireccionDto.codigoPostal,
+      poblacion: clienteDireccionDto.poblacion,
+      provincia: clienteDireccionDto.provincia,
+      paisId: clienteDireccionDto.paisId,
+      latitud: clienteDireccionDto.latitud,
+      longitud: clienteDireccionDto.longitud,
       isClientePotencial: 'N',
       nombreRepresentante1: nombreRepresentante1,
       nombreRepresentante2: nombreRepresentante2,

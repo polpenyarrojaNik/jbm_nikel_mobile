@@ -344,9 +344,9 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
   String calcularTotalAnyo(
       {required int anyo,
       required List<ClienteVentasMes> clienteVentasMesList}) {
-    final divisaId = clienteVentasMesList[0].importeAnyo.currency.code;
+    final divisaId = clienteVentasMesList[0].importeAnyo.currency.isoCode;
 
-    Money totalAnyo = Money.fromInt(0, code: divisaId);
+    Money totalAnyo = Money.fromInt(0, isoCode: divisaId);
 
     for (var i = 0; i < clienteVentasMesList.length; i++) {
       if (anyo == 0) {

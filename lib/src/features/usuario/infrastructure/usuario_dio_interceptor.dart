@@ -40,7 +40,8 @@ class UsuarioDioInterceptor extends Interceptor {
   }
 
   @override
-  Future<void> onError(DioError err, ErrorInterceptorHandler handler) async {
+  Future<void> onError(
+      DioException err, ErrorInterceptorHandler handler) async {
     final errorResponse = err.response;
     if (errorResponse != null && errorResponse.statusCode == 401) {
       final usuario = await _usuarioService.getSignedInUsuario();

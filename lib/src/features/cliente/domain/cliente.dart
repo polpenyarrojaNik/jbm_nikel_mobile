@@ -79,6 +79,6 @@ class Cliente with _$Cliente {
 
   bool isActivo() {
     return (ventasAnyoActual + ventasAnyoAnterior) !=
-        Money.parse('0', code: divisa!.id);
+        Money.parse('0', isoCode: divisa!.id);
   }
 }

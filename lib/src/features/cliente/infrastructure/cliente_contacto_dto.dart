@@ -31,19 +31,20 @@ class ClienteContactoDTO
   factory ClienteContactoDTO.fromJson(Map<String, dynamic> json) =>
       _$ClienteContactoDTOFromJson(json);
 
-  factory ClienteContactoDTO.fromContactoImp(ClienteContactoImpDTO _) {
+  factory ClienteContactoDTO.fromContactoImp(
+      ClienteContactoImpDTO clienteContactoImpDto) {
     return ClienteContactoDTO(
-      clienteId: _.clienteId,
-      contactoId: _.contactoId,
-      observaciones: _.observaciones,
-      nombre: _.nombre,
-      apellido1: _.apellido1,
-      apellido2: _.apellido2,
-      telefono1: _.telefono1,
-      telefono2: _.telefono2,
-      email: _.email,
+      clienteId: clienteContactoImpDto.clienteId,
+      contactoId: clienteContactoImpDto.contactoId,
+      observaciones: clienteContactoImpDto.observaciones,
+      nombre: clienteContactoImpDto.nombre,
+      apellido1: clienteContactoImpDto.apellido1,
+      apellido2: clienteContactoImpDto.apellido2,
+      telefono1: clienteContactoImpDto.telefono1,
+      telefono2: clienteContactoImpDto.telefono2,
+      email: clienteContactoImpDto.email,
       lastUpdated: DateTime.now().toUtc(),
-      deleted: _.borrar,
+      deleted: clienteContactoImpDto.borrar,
     );
   }
 

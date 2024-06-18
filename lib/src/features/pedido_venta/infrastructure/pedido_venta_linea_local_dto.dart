@@ -39,24 +39,26 @@ class PedidoVentaLineaLocalDTO
   factory PedidoVentaLineaLocalDTO.fromJson(Map<String, dynamic> json) =>
       _$PedidoVentaLineaLocalDTOFromJson(json);
 
-  factory PedidoVentaLineaLocalDTO.fromDomain(PedidoVentaLinea _) {
+  factory PedidoVentaLineaLocalDTO.fromDomain(
+      PedidoVentaLinea pedidoVentaLinea) {
     return _PedidoVentaLineaLocalDTO(
-      pedidoVentaAppId: _.pedidoVentaAppId!,
-      pedidoId: _.pedidoId,
-      empresaId: _.empresaId,
-      pedidoVentaLineaAppId: _.pedidoVentaLineaId!,
-      articuloId: _.articuloId,
-      articuloDescription: _.articuloDescription,
-      cantidad: _.cantidad,
-      precioDivisa: _.precioDivisa.amount.toDecimal().toDouble(),
-      tipoPrecio: _.tipoPrecio,
-      descuento1: _.descuento1,
-      descuento2: _.descuento2,
-      descuento3: _.descuento3,
-      descuentoProntoPago: _.descuentoProntoPago!,
-      stockDisponibleSN: (_.stockDisponibleSN ?? false) ? 'S' : 'N',
-      iva: _.iva!,
-      pedidoLineaComponenteId: _.pedidoLineaIdComponente,
+      pedidoVentaAppId: pedidoVentaLinea.pedidoVentaAppId!,
+      pedidoId: pedidoVentaLinea.pedidoId,
+      empresaId: pedidoVentaLinea.empresaId,
+      pedidoVentaLineaAppId: pedidoVentaLinea.pedidoVentaLineaId!,
+      articuloId: pedidoVentaLinea.articuloId,
+      articuloDescription: pedidoVentaLinea.articuloDescription,
+      cantidad: pedidoVentaLinea.cantidad,
+      precioDivisa: pedidoVentaLinea.precioDivisa.amount.toDecimal().toDouble(),
+      tipoPrecio: pedidoVentaLinea.tipoPrecio,
+      descuento1: pedidoVentaLinea.descuento1,
+      descuento2: pedidoVentaLinea.descuento2,
+      descuento3: pedidoVentaLinea.descuento3,
+      descuentoProntoPago: pedidoVentaLinea.descuentoProntoPago!,
+      stockDisponibleSN:
+          (pedidoVentaLinea.stockDisponibleSN ?? false) ? 'S' : 'N',
+      iva: pedidoVentaLinea.iva!,
+      pedidoLineaComponenteId: pedidoVentaLinea.pedidoLineaIdComponente,
     );
   }
 

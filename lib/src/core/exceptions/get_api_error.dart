@@ -6,7 +6,7 @@ import 'package:jbm_nikel_mobile/src/core/infrastructure/dio_extension.dart';
 import 'app_exception.dart';
 
 Error getApiError(Object e) {
-  if (e is DioError) {
+  if (e is DioException) {
     if (e.response != null && e.response!.data != null) {
       final responseData = e.response!.data;
       try {

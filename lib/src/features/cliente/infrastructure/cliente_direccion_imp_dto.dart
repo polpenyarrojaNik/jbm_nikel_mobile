@@ -35,22 +35,23 @@ class ClienteDireccionImpDTO
   factory ClienteDireccionImpDTO.fromJson(Map<String, dynamic> json) =>
       _$ClienteDireccionImpDTOFromJson(json);
 
-  factory ClienteDireccionImpDTO.fromDomain(ClienteDireccionImp _) =>
+  factory ClienteDireccionImpDTO.fromDomain(
+          ClienteDireccionImp clienteDireccionImp) =>
       ClienteDireccionImpDTO(
-        id: _.id,
-        fecha: _.fecha,
-        usuarioId: _.usuarioId,
-        clienteId: _.clienteId,
-        direccionId: _.direccionId,
-        nombre: _.nombre,
-        direccion1: _.direccion1,
-        direccion2: _.direccion2,
-        codigoPostal: _.codigoPostal,
-        poblacion: _.poblacion,
-        provincia: _.provincia,
-        paisId: _.pais?.id,
-        enviada: _.enviada ? 'S' : 'N',
-        borrar: _.borrar ? 'S' : 'N',
+        id: clienteDireccionImp.id,
+        fecha: clienteDireccionImp.fecha,
+        usuarioId: clienteDireccionImp.usuarioId,
+        clienteId: clienteDireccionImp.clienteId,
+        direccionId: clienteDireccionImp.direccionId,
+        nombre: clienteDireccionImp.nombre,
+        direccion1: clienteDireccionImp.direccion1,
+        direccion2: clienteDireccionImp.direccion2,
+        codigoPostal: clienteDireccionImp.codigoPostal,
+        poblacion: clienteDireccionImp.poblacion,
+        provincia: clienteDireccionImp.provincia,
+        paisId: clienteDireccionImp.pais?.id,
+        enviada: clienteDireccionImp.enviada ? 'S' : 'N',
+        borrar: clienteDireccionImp.borrar ? 'S' : 'N',
       );
 
   ClienteDireccionImp toDomain(Pais? pais) {

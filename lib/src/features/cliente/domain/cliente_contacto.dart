@@ -24,22 +24,23 @@ class ClienteContacto with _$ClienteContacto {
     required bool deleted,
   }) = _ClienteContacto;
 
-  factory ClienteContacto.fromClienteContactoImp(ClienteContactoImp _) {
+  factory ClienteContacto.fromClienteContactoImp(
+      ClienteContactoImp clienteContactoImp) {
     return ClienteContacto(
-      clienteId: _.clienteId,
-      contactoId: _.contactoId,
-      contactoImpGuid: _.id,
-      observaciones: _.observaciones,
-      nombre: _.nombre,
-      apellido1: _.apellido1,
-      apellido2: _.apellido2,
-      telefono1: _.telefono1,
-      telefono2: _.telefono2,
-      email: _.email,
+      clienteId: clienteContactoImp.clienteId,
+      contactoId: clienteContactoImp.contactoId,
+      contactoImpGuid: clienteContactoImp.id,
+      observaciones: clienteContactoImp.observaciones,
+      nombre: clienteContactoImp.nombre,
+      apellido1: clienteContactoImp.apellido1,
+      apellido2: clienteContactoImp.apellido2,
+      telefono1: clienteContactoImp.telefono1,
+      telefono2: clienteContactoImp.telefono2,
+      email: clienteContactoImp.email,
       lastUpdated: DateTime.now().toUtc(),
-      enviado: _.enviado,
+      enviado: clienteContactoImp.enviado,
       tratado: false,
-      deleted: _.borrar,
+      deleted: clienteContactoImp.borrar,
     );
   }
 
