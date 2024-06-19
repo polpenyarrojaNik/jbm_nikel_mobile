@@ -1,4 +1,3 @@
-import 'package:intl/intl.dart';
 import 'package:money2/money2.dart';
 
 final currencies = [
@@ -66,11 +65,14 @@ final currencies = [
     groupSeparator: '.',
     pattern: 'S#,##0.##',
   ),
-  Currency.create('GB', 2,
-      symbol: '£',
-      groupSeparator: ',',
-      decimalSeparator: '.',
-      pattern: 'S#.##0,##'),
+  Currency.create(
+    'GB',
+    2,
+    symbol: '£',
+    groupSeparator: ',',
+    decimalSeparator: '.',
+    pattern: 'S#,##0.##',
+  ),
 ];
 
 extension MoneyParsing on String {
@@ -110,12 +112,15 @@ extension MoneyParsingDouble on num {
     final Currency currency =
         Currencies().find(currencyId ?? 'EU') ?? currencies[0];
 
-    NumberFormat formatter = NumberFormat.decimalPattern('es');
+    // NumberFormat formatter =
+    //     NumberFormat.decimalPattern(Intl.getCurrentLocale());
 
-    final importeStr = formatter.format(this);
+    // final importeStr = formatter.format(this);
 
     try {
-      return Money.parseWithCurrency(importeStr, currency);
+      return Money.fromNumWithCurrency(this, currency);
+
+      // return Money.parseWithCurrency(importeStr, currency);
     } on MoneyParseException {
       if (isNegative) {
         try {
