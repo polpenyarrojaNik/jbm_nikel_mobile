@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:archive/archive.dart';
 import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
+import 'package:flutter_archive/flutter_archive.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/local_database.dart';
 import 'package:path/path.dart';
@@ -58,9 +58,16 @@ class InitDatabaseService {
       final Directory directory = await getApplicationDocumentsDirectory();
 
       if (!await _databaseFileExist(directory: directory)) {
-        final data = await _getRemoteInitialDatabase();
+        await _getRemoteInitialDatabase(directory: directory);
 
-        await _saveLocalInitialDatabase(directory: directory, data: data);
+        final zipFile = File('${directory.path}/jbm_sqlite.zip');
+
+        await ZipFile.extractToDirectory(
+          zipFile: zipFile,
+          destinationDir: directory,
+        );
+
+        zipFile.deleteSync();
 
         await _saveDataInPreferences();
       }
@@ -94,46 +101,28 @@ class InitDatabaseService {
     return await File((join(directory.path, remoteDatabaseName))).exists();
   }
 
-  Future<dynamic> _getRemoteInitialDatabase() async {
+  Future<void> _getRemoteInitialDatabase({
+    required Directory directory,
+  }) async {
     try {
-      final response = await dio.getUri(
+      final response = await dio.downloadUri(
         (usuario!.test)
             ? remoteInitDatabaseTestEndpoint
             : remoteInitDatabaseEndpoint,
+        '${directory.path}/jbm_sqlite.zip',
         options: Options(
-          responseType: ResponseType.bytes,
+          responseType: ResponseType.stream,
           receiveDataWhenStatusError: true,
           followRedirects: false,
         ),
       );
 
-      if (response.statusCode == 200) {
-        return response.data;
-      } else {
+      if (response.statusCode != 200) {
         throw AppException.restApiFailure(
             response.statusCode ?? 500, response.toString());
       }
     } catch (e) {
       throw getApiError(e);
-    }
-  }
-
-  Future<void> _saveLocalInitialDatabase(
-      {required Directory directory, required List<int> data}) async {
-    try {
-      final archive = ZipDecoder().decodeBytes(data);
-      for (final file in archive) {
-        if (file.isFile && !file.name.contains('MACOSX')) {
-          final data = file.content as List<int>;
-          log.i('Direcotry: ${directory.path}');
-          log.i('File: ${file.name}');
-          final databaseFile = File('${directory.path}/${file.name}');
-          databaseFile.writeAsBytesSync(data);
-        }
-        file.clear();
-      }
-    } catch (e) {
-      rethrow;
     }
   }
 
