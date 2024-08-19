@@ -200,6 +200,7 @@ class SyncService {
       await insetLog(level: 'I', message: 'Init sales order sync');
 
       await usuarioService?.syncUser();
+      await deletePedidosAntiguos();
       await enviarPedidosNoEnviados();
       await checkBorradores();
       await syncPedidos();
@@ -1496,5 +1497,29 @@ class SyncService {
     } catch (e) {
       rethrow;
     }
+  }
+
+  Future<void> deletePedidosAntiguos() async {
+    final monthBeforeDate = DateTime.now().add(const Duration(days: -30));
+
+    final pedidosAntiguosLista = await (_localDb
+            .select(_localDb.pedidoVentaLocalTable)
+          ..where((tbl) => tbl.fechaAlta.isSmallerThanValue(monthBeforeDate)))
+        .get();
+
+    for (var i = 0; i < pedidosAntiguosLista.length; i++) {
+      await deletePedidoVentaLineasAntiguas(
+          pedidosAntiguosLista[i].pedidoVentaAppId);
+      await (_localDb.delete(_localDb.pedidoVentaLocalTable)
+            ..where((tbl) => tbl.pedidoVentaAppId
+                .equals(pedidosAntiguosLista[i].pedidoVentaAppId)))
+          .go();
+    }
+  }
+
+  Future<void> deletePedidoVentaLineasAntiguas(String pedidoVentaAppId) async {
+    await (_localDb.delete(_localDb.pedidoVentaLineaLocalTable)
+          ..where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId)))
+        .go();
   }
 }
