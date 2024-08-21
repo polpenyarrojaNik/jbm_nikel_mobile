@@ -371,5 +371,6 @@
   "aceptar": "Accept",
   "cancelar": "Cancel",
   "introduceClaveDeNikel": "Introduce Nikel key",
-  "claveNikel": "Nikel key"
+  "claveNikel": "Nikel key",
+  "noSeHaPodidoSincronizar": "Can not synchronize correctly"
 }

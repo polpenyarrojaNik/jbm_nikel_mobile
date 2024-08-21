@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
@@ -92,14 +93,21 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
   }
 
   Future<void> refreshVisitsDB(WidgetRef ref) async {
-    await ref
-        .read(syncServiceProvider)
-        .syncAllVisitasRelacionados(isInMainThread: true);
-    ref.invalidate(visitaLastSyncDateProvider);
+    try {
+      await ref
+          .read(syncServiceProvider)
+          .syncAllVisitasRelacionados(isInMainThread: true);
+      ref.invalidate(visitaLastSyncDateProvider);
 
-    ref.invalidate(visitaIndexScreenPaginatedControllerProvider);
+      ref.invalidate(visitaIndexScreenPaginatedControllerProvider);
 
-    ref.invalidate(visitaIndexScreenControllerProvider);
+      ref.invalidate(visitaIndexScreenControllerProvider);
+    } catch (e) {
+      if (mounted) {
+        context.showErrorBar(
+            content: Text(S.of(context).noSeHaPodidoSincronizar));
+      }
+    }
   }
 
   void navigateToCreateVisitas(BuildContext context) {

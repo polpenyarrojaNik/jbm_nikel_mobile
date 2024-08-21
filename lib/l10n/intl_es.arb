@@ -371,5 +371,6 @@
   "aceptar": "Aceptar",
   "cancelar": "Cancelar",
   "introduceClaveDeNikel": "Introduce la clave de Nikel",
-  "claveNikel": "Clave Nikel"
+  "claveNikel": "Clave Nikel",
+  "noSeHaPodidoSincronizar": "No se ha podido sincronizar correctamente"
 }

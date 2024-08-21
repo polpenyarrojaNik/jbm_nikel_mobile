@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
@@ -102,13 +103,20 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
   }
 
   Future<void> refreshArticleDb(WidgetRef ref) async {
-    await ref
-        .read(syncServiceProvider)
-        .syncAllArticulosRelacionados(isInMainThread: true);
+    try {
+      await ref
+          .read(syncServiceProvider)
+          .syncAllArticulosRelacionados(isInMainThread: true);
 
-    ref.invalidate(articuloLastSyncDateProvider);
+      ref.invalidate(articuloLastSyncDateProvider);
 
-    ref.invalidate(articuloIndexScreenControllerProvider);
+      ref.invalidate(articuloIndexScreenControllerProvider);
+    } catch (e) {
+      if (mounted) {
+        context.showErrorBar(
+            content: Text(S.of(context).noSeHaPodidoSincronizar));
+      }
+    }
   }
 }
 

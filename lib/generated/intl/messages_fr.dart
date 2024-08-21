@@ -488,6 +488,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "introduceClaveDeNikel":
             MessageLookupByLibrary.simpleMessage("Entrez le code Nikel"),
         "no": MessageLookupByLibrary.simpleMessage("Non"),
+        "noSeHaPodidoSincronizar": MessageLookupByLibrary.simpleMessage(
+            "Ne peut pas se synchroniser correctement"),
         "notification": MessageLookupByLibrary.simpleMessage("Notification"),
         "notification_detail":
             MessageLookupByLibrary.simpleMessage("Détails des notifications"),

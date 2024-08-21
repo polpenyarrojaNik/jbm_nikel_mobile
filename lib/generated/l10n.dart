@@ -3813,6 +3813,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Can not synchronize correctly`
+  String get noSeHaPodidoSincronizar {
+    return Intl.message(
+      'Can not synchronize correctly',
+      name: 'noSeHaPodidoSincronizar',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
