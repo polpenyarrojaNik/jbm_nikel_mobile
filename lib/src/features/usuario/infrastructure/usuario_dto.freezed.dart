@@ -51,8 +51,12 @@ mixin _$UsuarioDTO {
   @JsonKey(name: 'MARGEN_COMERCIAL')
   double? get margenComercial => throw _privateConstructorUsedError;
 
+  /// Serializes this UsuarioDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UsuarioDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UsuarioDTOCopyWith<UsuarioDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -91,6 +95,8 @@ class _$UsuarioDTOCopyWithImpl<$Res, $Val extends UsuarioDTO>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UsuarioDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -209,6 +215,8 @@ class __$$UsuarioDTOImplCopyWithImpl<$Res>
       _$UsuarioDTOImpl _value, $Res Function(_$UsuarioDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UsuarioDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -403,7 +411,7 @@ class _$UsuarioDTOImpl extends _UsuarioDTO {
                 other.margenComercial == margenComercial));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -423,7 +431,9 @@ class _$UsuarioDTOImpl extends _UsuarioDTO {
       deviceInfo,
       margenComercial);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UsuarioDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UsuarioDTOImplCopyWith<_$UsuarioDTOImpl> get copyWith =>
@@ -509,8 +519,11 @@ abstract class _UsuarioDTO extends UsuarioDTO {
   @override
   @JsonKey(name: 'MARGEN_COMERCIAL')
   double? get margenComercial;
+
+  /// Create a copy of UsuarioDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UsuarioDTOImplCopyWith<_$UsuarioDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

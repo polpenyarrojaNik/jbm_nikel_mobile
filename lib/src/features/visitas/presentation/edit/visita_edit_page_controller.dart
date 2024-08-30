@@ -2,12 +2,17 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita.dart';
+import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita_motivos_no_venta.dart';
+import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita_sector.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../cliente/infrastructure/cliente_repository.dart';
+import '../../domain/visita_competidor.dart';
 import '../../domain/visita_id_param.dart';
 import '../../infrastructure/visita_repository.dart';
 
 part 'visita_edit_page_controller.freezed.dart';
+part 'visita_edit_page_controller.g.dart';
 
 @freezed
 class VisitaEditPageControllerState with _$VisitaEditPageControllerState {
@@ -76,6 +81,12 @@ class VisitaEditPageController
                 : null,
             fecha: DateTime.now().toUtc(),
             numEmpl: usuarioId,
+            ofertaRealizada: false,
+            interesCliente: false,
+            pedidoRealizado: false,
+            almacenPropio: false,
+            capacidad: 'M',
+            frecuenciaPedido: 'M',
             latitud: 0,
             longitud: 0,
             lastUpdated: DateTime.now().toUtc(),
@@ -93,6 +104,12 @@ class VisitaEditPageController
             clienteProvisionalNombre: null,
             fecha: DateTime.now().toUtc(),
             numEmpl: usuarioId,
+            ofertaRealizada: false,
+            interesCliente: false,
+            pedidoRealizado: false,
+            almacenPropio: false,
+            capacidad: 'M',
+            frecuenciaPedido: 'M',
             latitud: 0,
             longitud: 0,
             lastUpdated: DateTime.now().toUtc(),
@@ -140,5 +157,38 @@ class VisitaEditPageController
       state = VisitaEditPageControllerState.savedError(visitaLocal, err,
           stackTrace: stack);
     }
+  }
+}
+
+@riverpod
+class VisitaSectorListFormDropdownController
+    extends _$VisitaSectorListFormDropdownController {
+  VisitaSectorListFormDropdownController();
+
+  @override
+  Future<List<VisitaSector>> build() async {
+    return ref.read(visitaRepositoryProvider).getVisitaSectores();
+  }
+}
+
+@riverpod
+class VisitaCompetidorListFormDropdownController
+    extends _$VisitaCompetidorListFormDropdownController {
+  VisitaCompetidorListFormDropdownController();
+
+  @override
+  Future<List<VisitaCompetidor>> build() async {
+    return ref.read(visitaRepositoryProvider).getVisitaCompetidores();
+  }
+}
+
+@riverpod
+class VisitaMotivosNoVentaListFormDropdownController
+    extends _$VisitaMotivosNoVentaListFormDropdownController {
+  VisitaMotivosNoVentaListFormDropdownController();
+
+  @override
+  Future<List<VisitaMotivoNoVenta>> build() async {
+    return ref.read(visitaRepositoryProvider).getVisitaMotivosNoVenta();
   }
 }

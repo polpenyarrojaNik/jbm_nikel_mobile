@@ -25,8 +25,12 @@ mixin _$CatalogoFavoritoDTO {
   @JsonKey(name: 'CATALOGO_ID')
   int get catalogoId => throw _privateConstructorUsedError;
 
+  /// Serializes this CatalogoFavoritoDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogoFavoritoDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CatalogoFavoritoDTOCopyWith<CatalogoFavoritoDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,6 +56,8 @@ class _$CatalogoFavoritoDTOCopyWithImpl<$Res, $Val extends CatalogoFavoritoDTO>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CatalogoFavoritoDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$CatalogoFavoritoDTOImplCopyWithImpl<$Res>
       $Res Function(_$CatalogoFavoritoDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogoFavoritoDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -144,11 +152,13 @@ class _$CatalogoFavoritoDTOImpl extends _CatalogoFavoritoDTO {
                 other.catalogoId == catalogoId));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, catalogoId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogoFavoritoDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CatalogoFavoritoDTOImplCopyWith<_$CatalogoFavoritoDTOImpl> get copyWith =>
@@ -179,8 +189,11 @@ abstract class _CatalogoFavoritoDTO extends CatalogoFavoritoDTO {
   @override
   @JsonKey(name: 'CATALOGO_ID')
   int get catalogoId;
+
+  /// Create a copy of CatalogoFavoritoDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CatalogoFavoritoDTOImplCopyWith<_$CatalogoFavoritoDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

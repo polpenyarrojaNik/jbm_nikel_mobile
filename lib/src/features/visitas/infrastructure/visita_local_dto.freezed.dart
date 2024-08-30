@@ -62,6 +62,26 @@ mixin _$VisitaLocalDTO {
   String? get resumen => throw _privateConstructorUsedError;
   @JsonKey(name: 'MARCAS_COMPETENCIA')
   String? get marcasCompetencia => throw _privateConstructorUsedError;
+  @JsonKey(name: 'OFERTA_REALIZADA')
+  String get ofertaRealizada => throw _privateConstructorUsedError;
+  @JsonKey(name: 'INTERES_CLIENTE')
+  String get interesCliente => throw _privateConstructorUsedError;
+  @JsonKey(name: 'PEDIDO_REALIZADO')
+  String get pedidoRealizado => throw _privateConstructorUsedError;
+  @JsonKey(name: 'CODIGO_MOTIVO_NO_INTERES')
+  int? get codigoMotivoNoInteres => throw _privateConstructorUsedError;
+  @JsonKey(name: 'CODIGO_MOTIVO_NO_PEDIDO')
+  int? get codigoMotivoNoPedido => throw _privateConstructorUsedError;
+  @JsonKey(name: 'CODIGO_SECTOR')
+  int? get codigoSector => throw _privateConstructorUsedError;
+  @JsonKey(name: 'CODIGO_COMPETENCIA')
+  int? get codigoCompetencia => throw _privateConstructorUsedError;
+  @JsonKey(name: 'ALMACEN_PROPIO')
+  String get almacenPropio => throw _privateConstructorUsedError;
+  @JsonKey(name: 'CAPACIDAD')
+  String get capacidad => throw _privateConstructorUsedError;
+  @JsonKey(name: 'FRECUENCIA_PEDIDO')
+  String get frecuenciaPedido => throw _privateConstructorUsedError;
   @JsonKey(name: 'LATITUD')
   double get latitud => throw _privateConstructorUsedError;
   @JsonKey(name: 'LONGITUD')
@@ -73,8 +93,12 @@ mixin _$VisitaLocalDTO {
   @JsonKey(name: 'ERROR_SYNC')
   String? get errorSyncMessage => throw _privateConstructorUsedError;
 
+  /// Serializes this VisitaLocalDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of VisitaLocalDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $VisitaLocalDTOCopyWith<VisitaLocalDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -114,6 +138,16 @@ abstract class $VisitaLocalDTOCopyWith<$Res> {
       @JsonKey(name: 'ATENDIDO_POR') String? atendidoPor,
       @JsonKey(name: 'RESUMEN') String? resumen,
       @JsonKey(name: 'MARCAS_COMPETENCIA') String? marcasCompetencia,
+      @JsonKey(name: 'OFERTA_REALIZADA') String ofertaRealizada,
+      @JsonKey(name: 'INTERES_CLIENTE') String interesCliente,
+      @JsonKey(name: 'PEDIDO_REALIZADO') String pedidoRealizado,
+      @JsonKey(name: 'CODIGO_MOTIVO_NO_INTERES') int? codigoMotivoNoInteres,
+      @JsonKey(name: 'CODIGO_MOTIVO_NO_PEDIDO') int? codigoMotivoNoPedido,
+      @JsonKey(name: 'CODIGO_SECTOR') int? codigoSector,
+      @JsonKey(name: 'CODIGO_COMPETENCIA') int? codigoCompetencia,
+      @JsonKey(name: 'ALMACEN_PROPIO') String almacenPropio,
+      @JsonKey(name: 'CAPACIDAD') String capacidad,
+      @JsonKey(name: 'FRECUENCIA_PEDIDO') String frecuenciaPedido,
       @JsonKey(name: 'LATITUD') double latitud,
       @JsonKey(name: 'LONGITUD') double longitud,
       @JsonKey(name: 'ENVIADA') String enviada,
@@ -131,6 +165,8 @@ class _$VisitaLocalDTOCopyWithImpl<$Res, $Val extends VisitaLocalDTO>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of VisitaLocalDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -153,6 +189,16 @@ class _$VisitaLocalDTOCopyWithImpl<$Res, $Val extends VisitaLocalDTO>
     Object? atendidoPor = freezed,
     Object? resumen = freezed,
     Object? marcasCompetencia = freezed,
+    Object? ofertaRealizada = null,
+    Object? interesCliente = null,
+    Object? pedidoRealizado = null,
+    Object? codigoMotivoNoInteres = freezed,
+    Object? codigoMotivoNoPedido = freezed,
+    Object? codigoSector = freezed,
+    Object? codigoCompetencia = freezed,
+    Object? almacenPropio = null,
+    Object? capacidad = null,
+    Object? frecuenciaPedido = null,
     Object? latitud = null,
     Object? longitud = null,
     Object? enviada = null,
@@ -236,6 +282,46 @@ class _$VisitaLocalDTOCopyWithImpl<$Res, $Val extends VisitaLocalDTO>
           ? _value.marcasCompetencia
           : marcasCompetencia // ignore: cast_nullable_to_non_nullable
               as String?,
+      ofertaRealizada: null == ofertaRealizada
+          ? _value.ofertaRealizada
+          : ofertaRealizada // ignore: cast_nullable_to_non_nullable
+              as String,
+      interesCliente: null == interesCliente
+          ? _value.interesCliente
+          : interesCliente // ignore: cast_nullable_to_non_nullable
+              as String,
+      pedidoRealizado: null == pedidoRealizado
+          ? _value.pedidoRealizado
+          : pedidoRealizado // ignore: cast_nullable_to_non_nullable
+              as String,
+      codigoMotivoNoInteres: freezed == codigoMotivoNoInteres
+          ? _value.codigoMotivoNoInteres
+          : codigoMotivoNoInteres // ignore: cast_nullable_to_non_nullable
+              as int?,
+      codigoMotivoNoPedido: freezed == codigoMotivoNoPedido
+          ? _value.codigoMotivoNoPedido
+          : codigoMotivoNoPedido // ignore: cast_nullable_to_non_nullable
+              as int?,
+      codigoSector: freezed == codigoSector
+          ? _value.codigoSector
+          : codigoSector // ignore: cast_nullable_to_non_nullable
+              as int?,
+      codigoCompetencia: freezed == codigoCompetencia
+          ? _value.codigoCompetencia
+          : codigoCompetencia // ignore: cast_nullable_to_non_nullable
+              as int?,
+      almacenPropio: null == almacenPropio
+          ? _value.almacenPropio
+          : almacenPropio // ignore: cast_nullable_to_non_nullable
+              as String,
+      capacidad: null == capacidad
+          ? _value.capacidad
+          : capacidad // ignore: cast_nullable_to_non_nullable
+              as String,
+      frecuenciaPedido: null == frecuenciaPedido
+          ? _value.frecuenciaPedido
+          : frecuenciaPedido // ignore: cast_nullable_to_non_nullable
+              as String,
       latitud: null == latitud
           ? _value.latitud
           : latitud // ignore: cast_nullable_to_non_nullable
@@ -297,6 +383,16 @@ abstract class _$$VisitaLocalDTOImplCopyWith<$Res>
       @JsonKey(name: 'ATENDIDO_POR') String? atendidoPor,
       @JsonKey(name: 'RESUMEN') String? resumen,
       @JsonKey(name: 'MARCAS_COMPETENCIA') String? marcasCompetencia,
+      @JsonKey(name: 'OFERTA_REALIZADA') String ofertaRealizada,
+      @JsonKey(name: 'INTERES_CLIENTE') String interesCliente,
+      @JsonKey(name: 'PEDIDO_REALIZADO') String pedidoRealizado,
+      @JsonKey(name: 'CODIGO_MOTIVO_NO_INTERES') int? codigoMotivoNoInteres,
+      @JsonKey(name: 'CODIGO_MOTIVO_NO_PEDIDO') int? codigoMotivoNoPedido,
+      @JsonKey(name: 'CODIGO_SECTOR') int? codigoSector,
+      @JsonKey(name: 'CODIGO_COMPETENCIA') int? codigoCompetencia,
+      @JsonKey(name: 'ALMACEN_PROPIO') String almacenPropio,
+      @JsonKey(name: 'CAPACIDAD') String capacidad,
+      @JsonKey(name: 'FRECUENCIA_PEDIDO') String frecuenciaPedido,
       @JsonKey(name: 'LATITUD') double latitud,
       @JsonKey(name: 'LONGITUD') double longitud,
       @JsonKey(name: 'ENVIADA') String enviada,
@@ -312,6 +408,8 @@ class __$$VisitaLocalDTOImplCopyWithImpl<$Res>
       _$VisitaLocalDTOImpl _value, $Res Function(_$VisitaLocalDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of VisitaLocalDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -334,6 +432,16 @@ class __$$VisitaLocalDTOImplCopyWithImpl<$Res>
     Object? atendidoPor = freezed,
     Object? resumen = freezed,
     Object? marcasCompetencia = freezed,
+    Object? ofertaRealizada = null,
+    Object? interesCliente = null,
+    Object? pedidoRealizado = null,
+    Object? codigoMotivoNoInteres = freezed,
+    Object? codigoMotivoNoPedido = freezed,
+    Object? codigoSector = freezed,
+    Object? codigoCompetencia = freezed,
+    Object? almacenPropio = null,
+    Object? capacidad = null,
+    Object? frecuenciaPedido = null,
     Object? latitud = null,
     Object? longitud = null,
     Object? enviada = null,
@@ -417,6 +525,46 @@ class __$$VisitaLocalDTOImplCopyWithImpl<$Res>
           ? _value.marcasCompetencia
           : marcasCompetencia // ignore: cast_nullable_to_non_nullable
               as String?,
+      ofertaRealizada: null == ofertaRealizada
+          ? _value.ofertaRealizada
+          : ofertaRealizada // ignore: cast_nullable_to_non_nullable
+              as String,
+      interesCliente: null == interesCliente
+          ? _value.interesCliente
+          : interesCliente // ignore: cast_nullable_to_non_nullable
+              as String,
+      pedidoRealizado: null == pedidoRealizado
+          ? _value.pedidoRealizado
+          : pedidoRealizado // ignore: cast_nullable_to_non_nullable
+              as String,
+      codigoMotivoNoInteres: freezed == codigoMotivoNoInteres
+          ? _value.codigoMotivoNoInteres
+          : codigoMotivoNoInteres // ignore: cast_nullable_to_non_nullable
+              as int?,
+      codigoMotivoNoPedido: freezed == codigoMotivoNoPedido
+          ? _value.codigoMotivoNoPedido
+          : codigoMotivoNoPedido // ignore: cast_nullable_to_non_nullable
+              as int?,
+      codigoSector: freezed == codigoSector
+          ? _value.codigoSector
+          : codigoSector // ignore: cast_nullable_to_non_nullable
+              as int?,
+      codigoCompetencia: freezed == codigoCompetencia
+          ? _value.codigoCompetencia
+          : codigoCompetencia // ignore: cast_nullable_to_non_nullable
+              as int?,
+      almacenPropio: null == almacenPropio
+          ? _value.almacenPropio
+          : almacenPropio // ignore: cast_nullable_to_non_nullable
+              as String,
+      capacidad: null == capacidad
+          ? _value.capacidad
+          : capacidad // ignore: cast_nullable_to_non_nullable
+              as String,
+      frecuenciaPedido: null == frecuenciaPedido
+          ? _value.frecuenciaPedido
+          : frecuenciaPedido // ignore: cast_nullable_to_non_nullable
+              as String,
       latitud: null == latitud
           ? _value.latitud
           : latitud // ignore: cast_nullable_to_non_nullable
@@ -471,6 +619,16 @@ class _$VisitaLocalDTOImpl extends _VisitaLocalDTO {
       @JsonKey(name: 'ATENDIDO_POR') this.atendidoPor,
       @JsonKey(name: 'RESUMEN') this.resumen,
       @JsonKey(name: 'MARCAS_COMPETENCIA') this.marcasCompetencia,
+      @JsonKey(name: 'OFERTA_REALIZADA') required this.ofertaRealizada,
+      @JsonKey(name: 'INTERES_CLIENTE') required this.interesCliente,
+      @JsonKey(name: 'PEDIDO_REALIZADO') required this.pedidoRealizado,
+      @JsonKey(name: 'CODIGO_MOTIVO_NO_INTERES') this.codigoMotivoNoInteres,
+      @JsonKey(name: 'CODIGO_MOTIVO_NO_PEDIDO') this.codigoMotivoNoPedido,
+      @JsonKey(name: 'CODIGO_SECTOR') this.codigoSector,
+      @JsonKey(name: 'CODIGO_COMPETENCIA') this.codigoCompetencia,
+      @JsonKey(name: 'ALMACEN_PROPIO') required this.almacenPropio,
+      @JsonKey(name: 'CAPACIDAD') required this.capacidad,
+      @JsonKey(name: 'FRECUENCIA_PEDIDO') required this.frecuenciaPedido,
       @JsonKey(name: 'LATITUD') required this.latitud,
       @JsonKey(name: 'LONGITUD') required this.longitud,
       @JsonKey(name: 'ENVIADA') this.enviada = 'N',
@@ -539,6 +697,36 @@ class _$VisitaLocalDTOImpl extends _VisitaLocalDTO {
   @JsonKey(name: 'MARCAS_COMPETENCIA')
   final String? marcasCompetencia;
   @override
+  @JsonKey(name: 'OFERTA_REALIZADA')
+  final String ofertaRealizada;
+  @override
+  @JsonKey(name: 'INTERES_CLIENTE')
+  final String interesCliente;
+  @override
+  @JsonKey(name: 'PEDIDO_REALIZADO')
+  final String pedidoRealizado;
+  @override
+  @JsonKey(name: 'CODIGO_MOTIVO_NO_INTERES')
+  final int? codigoMotivoNoInteres;
+  @override
+  @JsonKey(name: 'CODIGO_MOTIVO_NO_PEDIDO')
+  final int? codigoMotivoNoPedido;
+  @override
+  @JsonKey(name: 'CODIGO_SECTOR')
+  final int? codigoSector;
+  @override
+  @JsonKey(name: 'CODIGO_COMPETENCIA')
+  final int? codigoCompetencia;
+  @override
+  @JsonKey(name: 'ALMACEN_PROPIO')
+  final String almacenPropio;
+  @override
+  @JsonKey(name: 'CAPACIDAD')
+  final String capacidad;
+  @override
+  @JsonKey(name: 'FRECUENCIA_PEDIDO')
+  final String frecuenciaPedido;
+  @override
   @JsonKey(name: 'LATITUD')
   final double latitud;
   @override
@@ -556,7 +744,7 @@ class _$VisitaLocalDTOImpl extends _VisitaLocalDTO {
 
   @override
   String toString() {
-    return 'VisitaLocalDTO(visitaAppId: $visitaAppId, fecha: $fecha, clienteId: $clienteId, isClienteProvisional: $isClienteProvisional, clienteProvisionalNombre: $clienteProvisionalNombre, clienteProvisionalEmail: $clienteProvisionalEmail, clienteProvisionalTelefono: $clienteProvisionalTelefono, clienteProvisionalDireccion1: $clienteProvisionalDireccion1, clienteProvisionalDireccion2: $clienteProvisionalDireccion2, clienteProvisionalCodigoPostal: $clienteProvisionalCodigoPostal, clienteProvisionalPoblacion: $clienteProvisionalPoblacion, clienteProvisionalProvinciaId: $clienteProvisionalProvinciaId, clienteProvisionalRegionId: $clienteProvisionalRegionId, clienteProvisionalPaisId: $clienteProvisionalPaisId, numEmpl: $numEmpl, contacto: $contacto, atendidoPor: $atendidoPor, resumen: $resumen, marcasCompetencia: $marcasCompetencia, latitud: $latitud, longitud: $longitud, enviada: $enviada, tratada: $tratada, errorSyncMessage: $errorSyncMessage)';
+    return 'VisitaLocalDTO(visitaAppId: $visitaAppId, fecha: $fecha, clienteId: $clienteId, isClienteProvisional: $isClienteProvisional, clienteProvisionalNombre: $clienteProvisionalNombre, clienteProvisionalEmail: $clienteProvisionalEmail, clienteProvisionalTelefono: $clienteProvisionalTelefono, clienteProvisionalDireccion1: $clienteProvisionalDireccion1, clienteProvisionalDireccion2: $clienteProvisionalDireccion2, clienteProvisionalCodigoPostal: $clienteProvisionalCodigoPostal, clienteProvisionalPoblacion: $clienteProvisionalPoblacion, clienteProvisionalProvinciaId: $clienteProvisionalProvinciaId, clienteProvisionalRegionId: $clienteProvisionalRegionId, clienteProvisionalPaisId: $clienteProvisionalPaisId, numEmpl: $numEmpl, contacto: $contacto, atendidoPor: $atendidoPor, resumen: $resumen, marcasCompetencia: $marcasCompetencia, ofertaRealizada: $ofertaRealizada, interesCliente: $interesCliente, pedidoRealizado: $pedidoRealizado, codigoMotivoNoInteres: $codigoMotivoNoInteres, codigoMotivoNoPedido: $codigoMotivoNoPedido, codigoSector: $codigoSector, codigoCompetencia: $codigoCompetencia, almacenPropio: $almacenPropio, capacidad: $capacidad, frecuenciaPedido: $frecuenciaPedido, latitud: $latitud, longitud: $longitud, enviada: $enviada, tratada: $tratada, errorSyncMessage: $errorSyncMessage)';
   }
 
   @override
@@ -605,6 +793,16 @@ class _$VisitaLocalDTOImpl extends _VisitaLocalDTO {
                 other.atendidoPor == atendidoPor) &&
             (identical(other.resumen, resumen) || other.resumen == resumen) &&
             (identical(other.marcasCompetencia, marcasCompetencia) || other.marcasCompetencia == marcasCompetencia) &&
+            (identical(other.ofertaRealizada, ofertaRealizada) || other.ofertaRealizada == ofertaRealizada) &&
+            (identical(other.interesCliente, interesCliente) || other.interesCliente == interesCliente) &&
+            (identical(other.pedidoRealizado, pedidoRealizado) || other.pedidoRealizado == pedidoRealizado) &&
+            (identical(other.codigoMotivoNoInteres, codigoMotivoNoInteres) || other.codigoMotivoNoInteres == codigoMotivoNoInteres) &&
+            (identical(other.codigoMotivoNoPedido, codigoMotivoNoPedido) || other.codigoMotivoNoPedido == codigoMotivoNoPedido) &&
+            (identical(other.codigoSector, codigoSector) || other.codigoSector == codigoSector) &&
+            (identical(other.codigoCompetencia, codigoCompetencia) || other.codigoCompetencia == codigoCompetencia) &&
+            (identical(other.almacenPropio, almacenPropio) || other.almacenPropio == almacenPropio) &&
+            (identical(other.capacidad, capacidad) || other.capacidad == capacidad) &&
+            (identical(other.frecuenciaPedido, frecuenciaPedido) || other.frecuenciaPedido == frecuenciaPedido) &&
             (identical(other.latitud, latitud) || other.latitud == latitud) &&
             (identical(other.longitud, longitud) || other.longitud == longitud) &&
             (identical(other.enviada, enviada) || other.enviada == enviada) &&
@@ -612,7 +810,7 @@ class _$VisitaLocalDTOImpl extends _VisitaLocalDTO {
             (identical(other.errorSyncMessage, errorSyncMessage) || other.errorSyncMessage == errorSyncMessage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -635,6 +833,16 @@ class _$VisitaLocalDTOImpl extends _VisitaLocalDTO {
         atendidoPor,
         resumen,
         marcasCompetencia,
+        ofertaRealizada,
+        interesCliente,
+        pedidoRealizado,
+        codigoMotivoNoInteres,
+        codigoMotivoNoPedido,
+        codigoSector,
+        codigoCompetencia,
+        almacenPropio,
+        capacidad,
+        frecuenciaPedido,
         latitud,
         longitud,
         enviada,
@@ -642,7 +850,9 @@ class _$VisitaLocalDTOImpl extends _VisitaLocalDTO {
         errorSyncMessage
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VisitaLocalDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$VisitaLocalDTOImplCopyWith<_$VisitaLocalDTOImpl> get copyWith =>
@@ -659,42 +869,54 @@ class _$VisitaLocalDTOImpl extends _VisitaLocalDTO {
 
 abstract class _VisitaLocalDTO extends VisitaLocalDTO {
   const factory _VisitaLocalDTO(
-          {@JsonKey(name: 'COD_VISITA_APP') final String? visitaAppId,
-          @JsonKey(name: 'FECHA') required final DateTime fecha,
-          @JsonKey(name: 'CLIENTE_ID') final String? clienteId,
-          @JsonKey(name: 'CLIENTE_POTENCIAL_SN')
-          required final String isClienteProvisional,
-          @JsonKey(name: 'CLIENTE_POTENCIAL_NOMBRE')
-          final String? clienteProvisionalNombre,
-          @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL')
-          final String? clienteProvisionalEmail,
-          @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
-          final String? clienteProvisionalTelefono,
-          @JsonKey(name: 'CLIENTE_POTENCIAL_DIRECCION1')
-          final String? clienteProvisionalDireccion1,
-          @JsonKey(name: 'CLIENTE_POTENCIAL_DIRECCION2')
-          final String? clienteProvisionalDireccion2,
-          @JsonKey(name: 'CLIENTE_POTENCIAL_COD_POS')
-          final String? clienteProvisionalCodigoPostal,
-          @JsonKey(name: 'CLIENTE_POTENCIAL_POBLACION')
-          final String? clienteProvisionalPoblacion,
-          @JsonKey(name: 'CLIENTE_POTENCIAL_PROVINCIA_ID')
-          final String? clienteProvisionalProvinciaId,
-          @JsonKey(name: 'CLIENTE_POTENCIAL_REGION_ID')
-          final String? clienteProvisionalRegionId,
-          @JsonKey(name: 'CLIENTE_POTENCIAL_PAIS_ID')
-          final String? clienteProvisionalPaisId,
-          @JsonKey(name: 'NUM_EMPL') required final String numEmpl,
-          @JsonKey(name: 'CONTACTO') required final String contacto,
-          @JsonKey(name: 'ATENDIDO_POR') final String? atendidoPor,
-          @JsonKey(name: 'RESUMEN') final String? resumen,
-          @JsonKey(name: 'MARCAS_COMPETENCIA') final String? marcasCompetencia,
-          @JsonKey(name: 'LATITUD') required final double latitud,
-          @JsonKey(name: 'LONGITUD') required final double longitud,
-          @JsonKey(name: 'ENVIADA') final String enviada,
-          @JsonKey(name: 'TRATADA') final String tratada,
-          @JsonKey(name: 'ERROR_SYNC') final String? errorSyncMessage}) =
-      _$VisitaLocalDTOImpl;
+      {@JsonKey(name: 'COD_VISITA_APP') final String? visitaAppId,
+      @JsonKey(name: 'FECHA') required final DateTime fecha,
+      @JsonKey(name: 'CLIENTE_ID') final String? clienteId,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_SN')
+      required final String isClienteProvisional,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_NOMBRE')
+      final String? clienteProvisionalNombre,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL')
+      final String? clienteProvisionalEmail,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
+      final String? clienteProvisionalTelefono,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_DIRECCION1')
+      final String? clienteProvisionalDireccion1,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_DIRECCION2')
+      final String? clienteProvisionalDireccion2,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_COD_POS')
+      final String? clienteProvisionalCodigoPostal,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_POBLACION')
+      final String? clienteProvisionalPoblacion,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_PROVINCIA_ID')
+      final String? clienteProvisionalProvinciaId,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_REGION_ID')
+      final String? clienteProvisionalRegionId,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_PAIS_ID')
+      final String? clienteProvisionalPaisId,
+      @JsonKey(name: 'NUM_EMPL') required final String numEmpl,
+      @JsonKey(name: 'CONTACTO') required final String contacto,
+      @JsonKey(name: 'ATENDIDO_POR') final String? atendidoPor,
+      @JsonKey(name: 'RESUMEN') final String? resumen,
+      @JsonKey(name: 'MARCAS_COMPETENCIA') final String? marcasCompetencia,
+      @JsonKey(name: 'OFERTA_REALIZADA') required final String ofertaRealizada,
+      @JsonKey(name: 'INTERES_CLIENTE') required final String interesCliente,
+      @JsonKey(name: 'PEDIDO_REALIZADO') required final String pedidoRealizado,
+      @JsonKey(name: 'CODIGO_MOTIVO_NO_INTERES')
+      final int? codigoMotivoNoInteres,
+      @JsonKey(name: 'CODIGO_MOTIVO_NO_PEDIDO') final int? codigoMotivoNoPedido,
+      @JsonKey(name: 'CODIGO_SECTOR') final int? codigoSector,
+      @JsonKey(name: 'CODIGO_COMPETENCIA') final int? codigoCompetencia,
+      @JsonKey(name: 'ALMACEN_PROPIO') required final String almacenPropio,
+      @JsonKey(name: 'CAPACIDAD') required final String capacidad,
+      @JsonKey(name: 'FRECUENCIA_PEDIDO')
+      required final String frecuenciaPedido,
+      @JsonKey(name: 'LATITUD') required final double latitud,
+      @JsonKey(name: 'LONGITUD') required final double longitud,
+      @JsonKey(name: 'ENVIADA') final String enviada,
+      @JsonKey(name: 'TRATADA') final String tratada,
+      @JsonKey(name: 'ERROR_SYNC')
+      final String? errorSyncMessage}) = _$VisitaLocalDTOImpl;
   const _VisitaLocalDTO._() : super._();
 
   factory _VisitaLocalDTO.fromJson(Map<String, dynamic> json) =
@@ -758,6 +980,36 @@ abstract class _VisitaLocalDTO extends VisitaLocalDTO {
   @JsonKey(name: 'MARCAS_COMPETENCIA')
   String? get marcasCompetencia;
   @override
+  @JsonKey(name: 'OFERTA_REALIZADA')
+  String get ofertaRealizada;
+  @override
+  @JsonKey(name: 'INTERES_CLIENTE')
+  String get interesCliente;
+  @override
+  @JsonKey(name: 'PEDIDO_REALIZADO')
+  String get pedidoRealizado;
+  @override
+  @JsonKey(name: 'CODIGO_MOTIVO_NO_INTERES')
+  int? get codigoMotivoNoInteres;
+  @override
+  @JsonKey(name: 'CODIGO_MOTIVO_NO_PEDIDO')
+  int? get codigoMotivoNoPedido;
+  @override
+  @JsonKey(name: 'CODIGO_SECTOR')
+  int? get codigoSector;
+  @override
+  @JsonKey(name: 'CODIGO_COMPETENCIA')
+  int? get codigoCompetencia;
+  @override
+  @JsonKey(name: 'ALMACEN_PROPIO')
+  String get almacenPropio;
+  @override
+  @JsonKey(name: 'CAPACIDAD')
+  String get capacidad;
+  @override
+  @JsonKey(name: 'FRECUENCIA_PEDIDO')
+  String get frecuenciaPedido;
+  @override
   @JsonKey(name: 'LATITUD')
   double get latitud;
   @override
@@ -772,8 +1024,11 @@ abstract class _VisitaLocalDTO extends VisitaLocalDTO {
   @override
   @JsonKey(name: 'ERROR_SYNC')
   String? get errorSyncMessage;
+
+  /// Create a copy of VisitaLocalDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$VisitaLocalDTOImplCopyWith<_$VisitaLocalDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -25,7 +25,9 @@ mixin _$PedidoAlbaran {
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PedidoAlbaran
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PedidoAlbaranCopyWith<PedidoAlbaran> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -57,6 +59,8 @@ class _$PedidoAlbaranCopyWithImpl<$Res, $Val extends PedidoAlbaran>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PedidoAlbaran
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -133,6 +137,8 @@ class __$$PedidoAlbaranImplCopyWithImpl<$Res>
       _$PedidoAlbaranImpl _value, $Res Function(_$PedidoAlbaranImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PedidoAlbaran
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -242,7 +248,9 @@ class _$PedidoAlbaranImpl extends _PedidoAlbaran {
   int get hashCode => Object.hash(runtimeType, empresaId, pedidoVentaId,
       albaranId, fechaAlbaran, agencia, trackId, lastUpdated, deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PedidoAlbaran
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PedidoAlbaranImplCopyWith<_$PedidoAlbaranImpl> get copyWith =>
@@ -277,8 +285,11 @@ abstract class _PedidoAlbaran extends PedidoAlbaran {
   DateTime get lastUpdated;
   @override
   bool get deleted;
+
+  /// Create a copy of PedidoAlbaran
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PedidoAlbaranImplCopyWith<_$PedidoAlbaranImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

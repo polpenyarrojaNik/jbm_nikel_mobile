@@ -53,8 +53,12 @@ mixin _$PedidoVentaLineaDTO {
   @JsonKey(name: 'DELETED')
   String get deleted => throw _privateConstructorUsedError;
 
+  /// Serializes this PedidoVentaLineaDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PedidoVentaLineaDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PedidoVentaLineaDTOCopyWith<PedidoVentaLineaDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -95,6 +99,8 @@ class _$PedidoVentaLineaDTOCopyWithImpl<$Res, $Val extends PedidoVentaLineaDTO>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PedidoVentaLineaDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -220,6 +226,8 @@ class __$$PedidoVentaLineaDTOImplCopyWithImpl<$Res>
       $Res Function(_$PedidoVentaLineaDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PedidoVentaLineaDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -427,7 +435,7 @@ class _$PedidoVentaLineaDTOImpl extends _PedidoVentaLineaDTO {
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -448,7 +456,9 @@ class _$PedidoVentaLineaDTOImpl extends _PedidoVentaLineaDTO {
       lastUpdated,
       deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PedidoVentaLineaDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PedidoVentaLineaDTOImplCopyWith<_$PedidoVentaLineaDTOImpl> get copyWith =>
@@ -538,8 +548,11 @@ abstract class _PedidoVentaLineaDTO extends PedidoVentaLineaDTO {
   @override
   @JsonKey(name: 'DELETED')
   String get deleted;
+
+  /// Create a copy of PedidoVentaLineaDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PedidoVentaLineaDTOImplCopyWith<_$PedidoVentaLineaDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

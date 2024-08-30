@@ -27,6 +27,7 @@ dependencies:
   flutter_riverpod: ^2.5.1
   flutter_secure_storage: ^9.0.0
   font_awesome_flutter: ^10.7.0
+  form_builder_extra_fields: ^10.1.0
   form_builder_validators: ^10.0.1
   freezed_annotation: ^2.4.1
   data_table_2: ^2.5.12

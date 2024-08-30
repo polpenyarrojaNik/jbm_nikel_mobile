@@ -33,8 +33,12 @@ mixin _$ArticuloRecambioDTO {
   @JsonKey(name: 'DELETED')
   String get deleted => throw _privateConstructorUsedError;
 
+  /// Serializes this ArticuloRecambioDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ArticuloRecambioDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ArticuloRecambioDTOCopyWith<ArticuloRecambioDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -64,6 +68,8 @@ class _$ArticuloRecambioDTOCopyWithImpl<$Res, $Val extends ArticuloRecambioDTO>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ArticuloRecambioDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -128,6 +134,8 @@ class __$$ArticuloRecambioDTOImplCopyWithImpl<$Res>
       $Res Function(_$ArticuloRecambioDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ArticuloRecambioDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -223,12 +231,14 @@ class _$ArticuloRecambioDTOImpl extends _ArticuloRecambioDTO {
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, articuloId, id, descripcion, cantidad, lastUpdated, deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArticuloRecambioDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ArticuloRecambioDTOImplCopyWith<_$ArticuloRecambioDTOImpl> get copyWith =>
@@ -275,8 +285,11 @@ abstract class _ArticuloRecambioDTO extends ArticuloRecambioDTO {
   @override
   @JsonKey(name: 'DELETED')
   String get deleted;
+
+  /// Create a copy of ArticuloRecambioDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ArticuloRecambioDTOImplCopyWith<_$ArticuloRecambioDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -43,8 +43,12 @@ mixin _$TipoCatalogoDTO {
   @JsonKey(name: 'DESCRIPCION_PL')
   String? get descripcionPL => throw _privateConstructorUsedError;
 
+  /// Serializes this TipoCatalogoDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TipoCatalogoDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TipoCatalogoDTOCopyWith<TipoCatalogoDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -79,6 +83,8 @@ class _$TipoCatalogoDTOCopyWithImpl<$Res, $Val extends TipoCatalogoDTO>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TipoCatalogoDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -173,6 +179,8 @@ class __$$TipoCatalogoDTOImplCopyWithImpl<$Res>
       _$TipoCatalogoDTOImpl _value, $Res Function(_$TipoCatalogoDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TipoCatalogoDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -325,7 +333,7 @@ class _$TipoCatalogoDTOImpl extends _TipoCatalogoDTO {
                 other.descripcionPL == descripcionPL));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -341,7 +349,9 @@ class _$TipoCatalogoDTOImpl extends _TipoCatalogoDTO {
       descripcionNL,
       descripcionPL);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TipoCatalogoDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TipoCatalogoDTOImplCopyWith<_$TipoCatalogoDTOImpl> get copyWith =>
@@ -408,8 +418,11 @@ abstract class _TipoCatalogoDTO extends TipoCatalogoDTO {
   @override
   @JsonKey(name: 'DESCRIPCION_PL')
   String? get descripcionPL;
+
+  /// Create a copy of TipoCatalogoDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TipoCatalogoDTOImplCopyWith<_$TipoCatalogoDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

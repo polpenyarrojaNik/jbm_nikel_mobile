@@ -11073,6 +11073,12 @@ class $ArticuloTableTable extends ArticuloTable
   late final GeneratedColumn<String> gs1128Palet = GeneratedColumn<String>(
       'GS1_128_PALET', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _ventasOrdenMeta =
+      const VerificationMeta('ventasOrden');
+  @override
+  late final GeneratedColumn<int> ventasOrden = GeneratedColumn<int>(
+      'GS1_128_PALET', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
@@ -11155,6 +11161,7 @@ class $ArticuloTableTable extends ArticuloTable
         gs1128Subcaja,
         gs1128Caja,
         gs1128Palet,
+        ventasOrden,
         lastUpdated,
         deleted
       ];
@@ -11566,6 +11573,12 @@ class $ArticuloTableTable extends ArticuloTable
           gs1128Palet.isAcceptableOrUnknown(
               data['GS1_128_PALET']!, _gs1128PaletMeta));
     }
+    if (data.containsKey('GS1_128_PALET')) {
+      context.handle(
+          _ventasOrdenMeta,
+          ventasOrden.isAcceptableOrUnknown(
+              data['GS1_128_PALET']!, _ventasOrdenMeta));
+    }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
           _lastUpdatedMeta,
@@ -11727,8 +11740,8 @@ class $ArticuloTableTable extends ArticuloTable
           .read(DriftSqlType.string, data['${effectivePrefix}GS1_128_SUBCAJA']),
       gs1128Caja: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}GS1_128_CAJA']),
-      gs1128Palet: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}GS1_128_PALET']),
+      ventasOrden: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}GS1_128_PALET']),
       lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
       deleted: attachedDatabase.typeMapping
@@ -11809,6 +11822,7 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
   final Value<String?> gs1128Subcaja;
   final Value<String?> gs1128Caja;
   final Value<String?> gs1128Palet;
+  final Value<int?> ventasOrden;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
   final Value<int> rowid;
@@ -11879,6 +11893,7 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
     this.gs1128Subcaja = const Value.absent(),
     this.gs1128Caja = const Value.absent(),
     this.gs1128Palet = const Value.absent(),
+    this.ventasOrden = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -11950,6 +11965,7 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
     this.gs1128Subcaja = const Value.absent(),
     this.gs1128Caja = const Value.absent(),
     this.gs1128Palet = const Value.absent(),
+    this.ventasOrden = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -12043,6 +12059,7 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
     Expression<String>? gs1128Subcaja,
     Expression<String>? gs1128Caja,
     Expression<String>? gs1128Palet,
+    Expression<int>? ventasOrden,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
     Expression<int>? rowid,
@@ -12124,6 +12141,7 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
       if (gs1128Subcaja != null) 'GS1_128_SUBCAJA': gs1128Subcaja,
       if (gs1128Caja != null) 'GS1_128_CAJA': gs1128Caja,
       if (gs1128Palet != null) 'GS1_128_PALET': gs1128Palet,
+      if (ventasOrden != null) 'GS1_128_PALET': ventasOrden,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
       if (rowid != null) 'rowid': rowid,
@@ -12197,6 +12215,7 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
       Value<String?>? gs1128Subcaja,
       Value<String?>? gs1128Caja,
       Value<String?>? gs1128Palet,
+      Value<int?>? ventasOrden,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted,
       Value<int>? rowid}) {
@@ -12274,6 +12293,7 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
       gs1128Subcaja: gs1128Subcaja ?? this.gs1128Subcaja,
       gs1128Caja: gs1128Caja ?? this.gs1128Caja,
       gs1128Palet: gs1128Palet ?? this.gs1128Palet,
+      ventasOrden: ventasOrden ?? this.ventasOrden,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
       rowid: rowid ?? this.rowid,
@@ -12491,6 +12511,9 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
     if (gs1128Palet.present) {
       map['GS1_128_PALET'] = Variable<String>(gs1128Palet.value);
     }
+    if (ventasOrden.present) {
+      map['GS1_128_PALET'] = Variable<int>(ventasOrden.value);
+    }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
     }
@@ -12572,6 +12595,7 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
           ..write('gs1128Subcaja: $gs1128Subcaja, ')
           ..write('gs1128Caja: $gs1128Caja, ')
           ..write('gs1128Palet: $gs1128Palet, ')
+          ..write('ventasOrden: $ventasOrden, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted, ')
           ..write('rowid: $rowid')
@@ -15371,6 +15395,66 @@ class $VisitaTableTable extends VisitaTable
   late final GeneratedColumn<String> marcasCompetencia =
       GeneratedColumn<String>('MARCAS_COMPETENCIA', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _ofertaRealizadaMeta =
+      const VerificationMeta('ofertaRealizada');
+  @override
+  late final GeneratedColumn<String> ofertaRealizada = GeneratedColumn<String>(
+      'OFERTA_REALIZADA', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _interesClienteMeta =
+      const VerificationMeta('interesCliente');
+  @override
+  late final GeneratedColumn<String> interesCliente = GeneratedColumn<String>(
+      'INTERES_CLIENTE', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _pedidoRealizadoMeta =
+      const VerificationMeta('pedidoRealizado');
+  @override
+  late final GeneratedColumn<String> pedidoRealizado = GeneratedColumn<String>(
+      'PEDIDO_REALIZADO', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _codigoMotivoNoInteresMeta =
+      const VerificationMeta('codigoMotivoNoInteres');
+  @override
+  late final GeneratedColumn<int> codigoMotivoNoInteres = GeneratedColumn<int>(
+      'CODIGO_MOTIVO_NO_INTERES', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
+  static const VerificationMeta _codigoMotivoNoPedidoMeta =
+      const VerificationMeta('codigoMotivoNoPedido');
+  @override
+  late final GeneratedColumn<int> codigoMotivoNoPedido = GeneratedColumn<int>(
+      'CODIGO_MOTIVO_NO_PEDIDO', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
+  static const VerificationMeta _codigoSectorMeta =
+      const VerificationMeta('codigoSector');
+  @override
+  late final GeneratedColumn<int> codigoSector = GeneratedColumn<int>(
+      'CODIGO_SECTOR', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
+  static const VerificationMeta _codigoCompetenciaMeta =
+      const VerificationMeta('codigoCompetencia');
+  @override
+  late final GeneratedColumn<int> codigoCompetencia = GeneratedColumn<int>(
+      'CODIGO_COMPETENCIA', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
+  static const VerificationMeta _almacenPropioMeta =
+      const VerificationMeta('almacenPropio');
+  @override
+  late final GeneratedColumn<String> almacenPropio = GeneratedColumn<String>(
+      'ALMACEN_PROPIO', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _capacidadMeta =
+      const VerificationMeta('capacidad');
+  @override
+  late final GeneratedColumn<String> capacidad = GeneratedColumn<String>(
+      'CAPACIDAD', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _frecuenciaPedidoMeta =
+      const VerificationMeta('frecuenciaPedido');
+  @override
+  late final GeneratedColumn<String> frecuenciaPedido = GeneratedColumn<String>(
+      'FRECUENCIA_PEDIDO', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _latitudMeta =
       const VerificationMeta('latitud');
   @override
@@ -15418,6 +15502,16 @@ class $VisitaTableTable extends VisitaTable
         atendidoPor,
         resumen,
         marcasCompetencia,
+        ofertaRealizada,
+        interesCliente,
+        pedidoRealizado,
+        codigoMotivoNoInteres,
+        codigoMotivoNoPedido,
+        codigoSector,
+        codigoCompetencia,
+        almacenPropio,
+        capacidad,
+        frecuenciaPedido,
         latitud,
         longitud,
         visitaAppId,
@@ -15511,6 +15605,76 @@ class $VisitaTableTable extends VisitaTable
           marcasCompetencia.isAcceptableOrUnknown(
               data['MARCAS_COMPETENCIA']!, _marcasCompetenciaMeta));
     }
+    if (data.containsKey('OFERTA_REALIZADA')) {
+      context.handle(
+          _ofertaRealizadaMeta,
+          ofertaRealizada.isAcceptableOrUnknown(
+              data['OFERTA_REALIZADA']!, _ofertaRealizadaMeta));
+    } else if (isInserting) {
+      context.missing(_ofertaRealizadaMeta);
+    }
+    if (data.containsKey('INTERES_CLIENTE')) {
+      context.handle(
+          _interesClienteMeta,
+          interesCliente.isAcceptableOrUnknown(
+              data['INTERES_CLIENTE']!, _interesClienteMeta));
+    } else if (isInserting) {
+      context.missing(_interesClienteMeta);
+    }
+    if (data.containsKey('PEDIDO_REALIZADO')) {
+      context.handle(
+          _pedidoRealizadoMeta,
+          pedidoRealizado.isAcceptableOrUnknown(
+              data['PEDIDO_REALIZADO']!, _pedidoRealizadoMeta));
+    } else if (isInserting) {
+      context.missing(_pedidoRealizadoMeta);
+    }
+    if (data.containsKey('CODIGO_MOTIVO_NO_INTERES')) {
+      context.handle(
+          _codigoMotivoNoInteresMeta,
+          codigoMotivoNoInteres.isAcceptableOrUnknown(
+              data['CODIGO_MOTIVO_NO_INTERES']!, _codigoMotivoNoInteresMeta));
+    }
+    if (data.containsKey('CODIGO_MOTIVO_NO_PEDIDO')) {
+      context.handle(
+          _codigoMotivoNoPedidoMeta,
+          codigoMotivoNoPedido.isAcceptableOrUnknown(
+              data['CODIGO_MOTIVO_NO_PEDIDO']!, _codigoMotivoNoPedidoMeta));
+    }
+    if (data.containsKey('CODIGO_SECTOR')) {
+      context.handle(
+          _codigoSectorMeta,
+          codigoSector.isAcceptableOrUnknown(
+              data['CODIGO_SECTOR']!, _codigoSectorMeta));
+    }
+    if (data.containsKey('CODIGO_COMPETENCIA')) {
+      context.handle(
+          _codigoCompetenciaMeta,
+          codigoCompetencia.isAcceptableOrUnknown(
+              data['CODIGO_COMPETENCIA']!, _codigoCompetenciaMeta));
+    }
+    if (data.containsKey('ALMACEN_PROPIO')) {
+      context.handle(
+          _almacenPropioMeta,
+          almacenPropio.isAcceptableOrUnknown(
+              data['ALMACEN_PROPIO']!, _almacenPropioMeta));
+    } else if (isInserting) {
+      context.missing(_almacenPropioMeta);
+    }
+    if (data.containsKey('CAPACIDAD')) {
+      context.handle(_capacidadMeta,
+          capacidad.isAcceptableOrUnknown(data['CAPACIDAD']!, _capacidadMeta));
+    } else if (isInserting) {
+      context.missing(_capacidadMeta);
+    }
+    if (data.containsKey('FRECUENCIA_PEDIDO')) {
+      context.handle(
+          _frecuenciaPedidoMeta,
+          frecuenciaPedido.isAcceptableOrUnknown(
+              data['FRECUENCIA_PEDIDO']!, _frecuenciaPedidoMeta));
+    } else if (isInserting) {
+      context.missing(_frecuenciaPedidoMeta);
+    }
     if (data.containsKey('LATITUD')) {
       context.handle(_latitudMeta,
           latitud.isAcceptableOrUnknown(data['LATITUD']!, _latitudMeta));
@@ -15580,6 +15744,26 @@ class $VisitaTableTable extends VisitaTable
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN']),
       marcasCompetencia: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}MARCAS_COMPETENCIA']),
+      ofertaRealizada: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}OFERTA_REALIZADA'])!,
+      interesCliente: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}INTERES_CLIENTE'])!,
+      pedidoRealizado: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}PEDIDO_REALIZADO'])!,
+      codigoMotivoNoInteres: attachedDatabase.typeMapping.read(
+          DriftSqlType.int, data['${effectivePrefix}CODIGO_MOTIVO_NO_INTERES']),
+      codigoMotivoNoPedido: attachedDatabase.typeMapping.read(
+          DriftSqlType.int, data['${effectivePrefix}CODIGO_MOTIVO_NO_PEDIDO']),
+      codigoSector: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}CODIGO_SECTOR']),
+      codigoCompetencia: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}CODIGO_COMPETENCIA']),
+      almacenPropio: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}ALMACEN_PROPIO'])!,
+      capacidad: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}CAPACIDAD'])!,
+      frecuenciaPedido: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}FRECUENCIA_PEDIDO'])!,
       latitud: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}LATITUD'])!,
       longitud: attachedDatabase.typeMapping
@@ -15613,6 +15797,16 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
   final Value<String?> atendidoPor;
   final Value<String?> resumen;
   final Value<String?> marcasCompetencia;
+  final Value<String> ofertaRealizada;
+  final Value<String> interesCliente;
+  final Value<String> pedidoRealizado;
+  final Value<int?> codigoMotivoNoInteres;
+  final Value<int?> codigoMotivoNoPedido;
+  final Value<int?> codigoSector;
+  final Value<int?> codigoCompetencia;
+  final Value<String> almacenPropio;
+  final Value<String> capacidad;
+  final Value<String> frecuenciaPedido;
   final Value<double> latitud;
   final Value<double> longitud;
   final Value<String?> visitaAppId;
@@ -15633,6 +15827,16 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
     this.atendidoPor = const Value.absent(),
     this.resumen = const Value.absent(),
     this.marcasCompetencia = const Value.absent(),
+    this.ofertaRealizada = const Value.absent(),
+    this.interesCliente = const Value.absent(),
+    this.pedidoRealizado = const Value.absent(),
+    this.codigoMotivoNoInteres = const Value.absent(),
+    this.codigoMotivoNoPedido = const Value.absent(),
+    this.codigoSector = const Value.absent(),
+    this.codigoCompetencia = const Value.absent(),
+    this.almacenPropio = const Value.absent(),
+    this.capacidad = const Value.absent(),
+    this.frecuenciaPedido = const Value.absent(),
     this.latitud = const Value.absent(),
     this.longitud = const Value.absent(),
     this.visitaAppId = const Value.absent(),
@@ -15654,6 +15858,16 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
     this.atendidoPor = const Value.absent(),
     this.resumen = const Value.absent(),
     this.marcasCompetencia = const Value.absent(),
+    required String ofertaRealizada,
+    required String interesCliente,
+    required String pedidoRealizado,
+    this.codigoMotivoNoInteres = const Value.absent(),
+    this.codigoMotivoNoPedido = const Value.absent(),
+    this.codigoSector = const Value.absent(),
+    this.codigoCompetencia = const Value.absent(),
+    required String almacenPropio,
+    required String capacidad,
+    required String frecuenciaPedido,
     required double latitud,
     required double longitud,
     this.visitaAppId = const Value.absent(),
@@ -15664,6 +15878,12 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
         fecha = Value(fecha),
         isClienteProvisional = Value(isClienteProvisional),
         numEmpl = Value(numEmpl),
+        ofertaRealizada = Value(ofertaRealizada),
+        interesCliente = Value(interesCliente),
+        pedidoRealizado = Value(pedidoRealizado),
+        almacenPropio = Value(almacenPropio),
+        capacidad = Value(capacidad),
+        frecuenciaPedido = Value(frecuenciaPedido),
         latitud = Value(latitud),
         longitud = Value(longitud),
         lastUpdated = Value(lastUpdated);
@@ -15681,6 +15901,16 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
     Expression<String>? atendidoPor,
     Expression<String>? resumen,
     Expression<String>? marcasCompetencia,
+    Expression<String>? ofertaRealizada,
+    Expression<String>? interesCliente,
+    Expression<String>? pedidoRealizado,
+    Expression<int>? codigoMotivoNoInteres,
+    Expression<int>? codigoMotivoNoPedido,
+    Expression<int>? codigoSector,
+    Expression<int>? codigoCompetencia,
+    Expression<String>? almacenPropio,
+    Expression<String>? capacidad,
+    Expression<String>? frecuenciaPedido,
     Expression<double>? latitud,
     Expression<double>? longitud,
     Expression<String>? visitaAppId,
@@ -15707,6 +15937,18 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
       if (atendidoPor != null) 'ATENDIDO_POR': atendidoPor,
       if (resumen != null) 'RESUMEN': resumen,
       if (marcasCompetencia != null) 'MARCAS_COMPETENCIA': marcasCompetencia,
+      if (ofertaRealizada != null) 'OFERTA_REALIZADA': ofertaRealizada,
+      if (interesCliente != null) 'INTERES_CLIENTE': interesCliente,
+      if (pedidoRealizado != null) 'PEDIDO_REALIZADO': pedidoRealizado,
+      if (codigoMotivoNoInteres != null)
+        'CODIGO_MOTIVO_NO_INTERES': codigoMotivoNoInteres,
+      if (codigoMotivoNoPedido != null)
+        'CODIGO_MOTIVO_NO_PEDIDO': codigoMotivoNoPedido,
+      if (codigoSector != null) 'CODIGO_SECTOR': codigoSector,
+      if (codigoCompetencia != null) 'CODIGO_COMPETENCIA': codigoCompetencia,
+      if (almacenPropio != null) 'ALMACEN_PROPIO': almacenPropio,
+      if (capacidad != null) 'CAPACIDAD': capacidad,
+      if (frecuenciaPedido != null) 'FRECUENCIA_PEDIDO': frecuenciaPedido,
       if (latitud != null) 'LATITUD': latitud,
       if (longitud != null) 'LONGITUD': longitud,
       if (visitaAppId != null) 'COD_VISITA_APP': visitaAppId,
@@ -15730,6 +15972,16 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
       Value<String?>? atendidoPor,
       Value<String?>? resumen,
       Value<String?>? marcasCompetencia,
+      Value<String>? ofertaRealizada,
+      Value<String>? interesCliente,
+      Value<String>? pedidoRealizado,
+      Value<int?>? codigoMotivoNoInteres,
+      Value<int?>? codigoMotivoNoPedido,
+      Value<int?>? codigoSector,
+      Value<int?>? codigoCompetencia,
+      Value<String>? almacenPropio,
+      Value<String>? capacidad,
+      Value<String>? frecuenciaPedido,
       Value<double>? latitud,
       Value<double>? longitud,
       Value<String?>? visitaAppId,
@@ -15754,6 +16006,17 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
       atendidoPor: atendidoPor ?? this.atendidoPor,
       resumen: resumen ?? this.resumen,
       marcasCompetencia: marcasCompetencia ?? this.marcasCompetencia,
+      ofertaRealizada: ofertaRealizada ?? this.ofertaRealizada,
+      interesCliente: interesCliente ?? this.interesCliente,
+      pedidoRealizado: pedidoRealizado ?? this.pedidoRealizado,
+      codigoMotivoNoInteres:
+          codigoMotivoNoInteres ?? this.codigoMotivoNoInteres,
+      codigoMotivoNoPedido: codigoMotivoNoPedido ?? this.codigoMotivoNoPedido,
+      codigoSector: codigoSector ?? this.codigoSector,
+      codigoCompetencia: codigoCompetencia ?? this.codigoCompetencia,
+      almacenPropio: almacenPropio ?? this.almacenPropio,
+      capacidad: capacidad ?? this.capacidad,
+      frecuenciaPedido: frecuenciaPedido ?? this.frecuenciaPedido,
       latitud: latitud ?? this.latitud,
       longitud: longitud ?? this.longitud,
       visitaAppId: visitaAppId ?? this.visitaAppId,
@@ -15810,6 +16073,38 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
     if (marcasCompetencia.present) {
       map['MARCAS_COMPETENCIA'] = Variable<String>(marcasCompetencia.value);
     }
+    if (ofertaRealizada.present) {
+      map['OFERTA_REALIZADA'] = Variable<String>(ofertaRealizada.value);
+    }
+    if (interesCliente.present) {
+      map['INTERES_CLIENTE'] = Variable<String>(interesCliente.value);
+    }
+    if (pedidoRealizado.present) {
+      map['PEDIDO_REALIZADO'] = Variable<String>(pedidoRealizado.value);
+    }
+    if (codigoMotivoNoInteres.present) {
+      map['CODIGO_MOTIVO_NO_INTERES'] =
+          Variable<int>(codigoMotivoNoInteres.value);
+    }
+    if (codigoMotivoNoPedido.present) {
+      map['CODIGO_MOTIVO_NO_PEDIDO'] =
+          Variable<int>(codigoMotivoNoPedido.value);
+    }
+    if (codigoSector.present) {
+      map['CODIGO_SECTOR'] = Variable<int>(codigoSector.value);
+    }
+    if (codigoCompetencia.present) {
+      map['CODIGO_COMPETENCIA'] = Variable<int>(codigoCompetencia.value);
+    }
+    if (almacenPropio.present) {
+      map['ALMACEN_PROPIO'] = Variable<String>(almacenPropio.value);
+    }
+    if (capacidad.present) {
+      map['CAPACIDAD'] = Variable<String>(capacidad.value);
+    }
+    if (frecuenciaPedido.present) {
+      map['FRECUENCIA_PEDIDO'] = Variable<String>(frecuenciaPedido.value);
+    }
     if (latitud.present) {
       map['LATITUD'] = Variable<double>(latitud.value);
     }
@@ -15847,6 +16142,16 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
           ..write('atendidoPor: $atendidoPor, ')
           ..write('resumen: $resumen, ')
           ..write('marcasCompetencia: $marcasCompetencia, ')
+          ..write('ofertaRealizada: $ofertaRealizada, ')
+          ..write('interesCliente: $interesCliente, ')
+          ..write('pedidoRealizado: $pedidoRealizado, ')
+          ..write('codigoMotivoNoInteres: $codigoMotivoNoInteres, ')
+          ..write('codigoMotivoNoPedido: $codigoMotivoNoPedido, ')
+          ..write('codigoSector: $codigoSector, ')
+          ..write('codigoCompetencia: $codigoCompetencia, ')
+          ..write('almacenPropio: $almacenPropio, ')
+          ..write('capacidad: $capacidad, ')
+          ..write('frecuenciaPedido: $frecuenciaPedido, ')
           ..write('latitud: $latitud, ')
           ..write('longitud: $longitud, ')
           ..write('visitaAppId: $visitaAppId, ')
@@ -19164,10 +19469,1235 @@ class ProvinciaTableCompanion extends UpdateCompanion<ProvinciaDTO> {
   }
 }
 
+class $VisitaCompetidorTableTable extends VisitaCompetidorTable
+    with TableInfo<$VisitaCompetidorTableTable, VisitaCompetidorDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $VisitaCompetidorTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'CODIGO', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionESMeta =
+      const VerificationMeta('descripcionES');
+  @override
+  late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
+      'DESCRIPCION_ES', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _descripcionENMeta =
+      const VerificationMeta('descripcionEN');
+  @override
+  late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
+      'DESCRIPCION_EN', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionFRMeta =
+      const VerificationMeta('descripcionFR');
+  @override
+  late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
+      'DESCRIPCION_FR', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionDEMeta =
+      const VerificationMeta('descripcionDE');
+  @override
+  late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
+      'DESCRIPCION_DE', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionCAMeta =
+      const VerificationMeta('descripcionCA');
+  @override
+  late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
+      'DESCRIPCION_CA', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionGBMeta =
+      const VerificationMeta('descripcionGB');
+  @override
+  late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
+      'DESCRIPCION_GB', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionHUMeta =
+      const VerificationMeta('descripcionHU');
+  @override
+  late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
+      'DESCRIPCION_HU', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionITMeta =
+      const VerificationMeta('descripcionIT');
+  @override
+  late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
+      'DESCRIPCION_IT', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionNLMeta =
+      const VerificationMeta('descripcionNL');
+  @override
+  late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
+      'DESCRIPCION_NL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionPLMeta =
+      const VerificationMeta('descripcionPL');
+  @override
+  late final GeneratedColumn<String> descripcionPL = GeneratedColumn<String>(
+      'DESCRIPCION_PL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _lastUpdatedMeta =
+      const VerificationMeta('lastUpdated');
+  @override
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
+  @override
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
+      'DELETED', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('N'));
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        descripcionES,
+        descripcionEN,
+        descripcionFR,
+        descripcionDE,
+        descripcionCA,
+        descripcionGB,
+        descripcionHU,
+        descripcionIT,
+        descripcionNL,
+        descripcionPL,
+        lastUpdated,
+        deleted
+      ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'VISITA_COMPETIDORES';
+  @override
+  VerificationContext validateIntegrity(
+      Insertable<VisitaCompetidorDTO> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('CODIGO')) {
+      context.handle(
+          _idMeta, id.isAcceptableOrUnknown(data['CODIGO']!, _idMeta));
+    }
+    if (data.containsKey('DESCRIPCION_ES')) {
+      context.handle(
+          _descripcionESMeta,
+          descripcionES.isAcceptableOrUnknown(
+              data['DESCRIPCION_ES']!, _descripcionESMeta));
+    } else if (isInserting) {
+      context.missing(_descripcionESMeta);
+    }
+    if (data.containsKey('DESCRIPCION_EN')) {
+      context.handle(
+          _descripcionENMeta,
+          descripcionEN.isAcceptableOrUnknown(
+              data['DESCRIPCION_EN']!, _descripcionENMeta));
+    }
+    if (data.containsKey('DESCRIPCION_FR')) {
+      context.handle(
+          _descripcionFRMeta,
+          descripcionFR.isAcceptableOrUnknown(
+              data['DESCRIPCION_FR']!, _descripcionFRMeta));
+    }
+    if (data.containsKey('DESCRIPCION_DE')) {
+      context.handle(
+          _descripcionDEMeta,
+          descripcionDE.isAcceptableOrUnknown(
+              data['DESCRIPCION_DE']!, _descripcionDEMeta));
+    }
+    if (data.containsKey('DESCRIPCION_CA')) {
+      context.handle(
+          _descripcionCAMeta,
+          descripcionCA.isAcceptableOrUnknown(
+              data['DESCRIPCION_CA']!, _descripcionCAMeta));
+    }
+    if (data.containsKey('DESCRIPCION_GB')) {
+      context.handle(
+          _descripcionGBMeta,
+          descripcionGB.isAcceptableOrUnknown(
+              data['DESCRIPCION_GB']!, _descripcionGBMeta));
+    }
+    if (data.containsKey('DESCRIPCION_HU')) {
+      context.handle(
+          _descripcionHUMeta,
+          descripcionHU.isAcceptableOrUnknown(
+              data['DESCRIPCION_HU']!, _descripcionHUMeta));
+    }
+    if (data.containsKey('DESCRIPCION_IT')) {
+      context.handle(
+          _descripcionITMeta,
+          descripcionIT.isAcceptableOrUnknown(
+              data['DESCRIPCION_IT']!, _descripcionITMeta));
+    }
+    if (data.containsKey('DESCRIPCION_NL')) {
+      context.handle(
+          _descripcionNLMeta,
+          descripcionNL.isAcceptableOrUnknown(
+              data['DESCRIPCION_NL']!, _descripcionNLMeta));
+    }
+    if (data.containsKey('DESCRIPCION_PL')) {
+      context.handle(
+          _descripcionPLMeta,
+          descripcionPL.isAcceptableOrUnknown(
+              data['DESCRIPCION_PL']!, _descripcionPLMeta));
+    }
+    if (data.containsKey('LAST_UPDATED')) {
+      context.handle(
+          _lastUpdatedMeta,
+          lastUpdated.isAcceptableOrUnknown(
+              data['LAST_UPDATED']!, _lastUpdatedMeta));
+    } else if (isInserting) {
+      context.missing(_lastUpdatedMeta);
+    }
+    if (data.containsKey('DELETED')) {
+      context.handle(_deletedMeta,
+          deleted.isAcceptableOrUnknown(data['DELETED']!, _deletedMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  VisitaCompetidorDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return VisitaCompetidorDTO(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}CODIGO'])!,
+      descripcionES: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
+      descripcionEN: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
+      descripcionFR: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
+      descripcionDE: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
+      descripcionCA: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
+      descripcionGB: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
+      descripcionHU: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
+      descripcionIT: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
+      descripcionNL: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
+      descripcionPL: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
+      lastUpdated: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
+    );
+  }
+
+  @override
+  $VisitaCompetidorTableTable createAlias(String alias) {
+    return $VisitaCompetidorTableTable(attachedDatabase, alias);
+  }
+}
+
+class VisitaCompetidorTableCompanion
+    extends UpdateCompanion<VisitaCompetidorDTO> {
+  final Value<int> id;
+  final Value<String> descripcionES;
+  final Value<String?> descripcionEN;
+  final Value<String?> descripcionFR;
+  final Value<String?> descripcionDE;
+  final Value<String?> descripcionCA;
+  final Value<String?> descripcionGB;
+  final Value<String?> descripcionHU;
+  final Value<String?> descripcionIT;
+  final Value<String?> descripcionNL;
+  final Value<String?> descripcionPL;
+  final Value<DateTime> lastUpdated;
+  final Value<String> deleted;
+  const VisitaCompetidorTableCompanion({
+    this.id = const Value.absent(),
+    this.descripcionES = const Value.absent(),
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.lastUpdated = const Value.absent(),
+    this.deleted = const Value.absent(),
+  });
+  VisitaCompetidorTableCompanion.insert({
+    this.id = const Value.absent(),
+    required String descripcionES,
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    required DateTime lastUpdated,
+    this.deleted = const Value.absent(),
+  })  : descripcionES = Value(descripcionES),
+        lastUpdated = Value(lastUpdated);
+  static Insertable<VisitaCompetidorDTO> custom({
+    Expression<int>? id,
+    Expression<String>? descripcionES,
+    Expression<String>? descripcionEN,
+    Expression<String>? descripcionFR,
+    Expression<String>? descripcionDE,
+    Expression<String>? descripcionCA,
+    Expression<String>? descripcionGB,
+    Expression<String>? descripcionHU,
+    Expression<String>? descripcionIT,
+    Expression<String>? descripcionNL,
+    Expression<String>? descripcionPL,
+    Expression<DateTime>? lastUpdated,
+    Expression<String>? deleted,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'CODIGO': id,
+      if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
+      if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
+      if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
+      if (descripcionDE != null) 'DESCRIPCION_DE': descripcionDE,
+      if (descripcionCA != null) 'DESCRIPCION_CA': descripcionCA,
+      if (descripcionGB != null) 'DESCRIPCION_GB': descripcionGB,
+      if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
+      if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
+      if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
+      if (descripcionPL != null) 'DESCRIPCION_PL': descripcionPL,
+      if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
+      if (deleted != null) 'DELETED': deleted,
+    });
+  }
+
+  VisitaCompetidorTableCompanion copyWith(
+      {Value<int>? id,
+      Value<String>? descripcionES,
+      Value<String?>? descripcionEN,
+      Value<String?>? descripcionFR,
+      Value<String?>? descripcionDE,
+      Value<String?>? descripcionCA,
+      Value<String?>? descripcionGB,
+      Value<String?>? descripcionHU,
+      Value<String?>? descripcionIT,
+      Value<String?>? descripcionNL,
+      Value<String?>? descripcionPL,
+      Value<DateTime>? lastUpdated,
+      Value<String>? deleted}) {
+    return VisitaCompetidorTableCompanion(
+      id: id ?? this.id,
+      descripcionES: descripcionES ?? this.descripcionES,
+      descripcionEN: descripcionEN ?? this.descripcionEN,
+      descripcionFR: descripcionFR ?? this.descripcionFR,
+      descripcionDE: descripcionDE ?? this.descripcionDE,
+      descripcionCA: descripcionCA ?? this.descripcionCA,
+      descripcionGB: descripcionGB ?? this.descripcionGB,
+      descripcionHU: descripcionHU ?? this.descripcionHU,
+      descripcionIT: descripcionIT ?? this.descripcionIT,
+      descripcionNL: descripcionNL ?? this.descripcionNL,
+      descripcionPL: descripcionPL ?? this.descripcionPL,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      deleted: deleted ?? this.deleted,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['CODIGO'] = Variable<int>(id.value);
+    }
+    if (descripcionES.present) {
+      map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
+    }
+    if (descripcionEN.present) {
+      map['DESCRIPCION_EN'] = Variable<String>(descripcionEN.value);
+    }
+    if (descripcionFR.present) {
+      map['DESCRIPCION_FR'] = Variable<String>(descripcionFR.value);
+    }
+    if (descripcionDE.present) {
+      map['DESCRIPCION_DE'] = Variable<String>(descripcionDE.value);
+    }
+    if (descripcionCA.present) {
+      map['DESCRIPCION_CA'] = Variable<String>(descripcionCA.value);
+    }
+    if (descripcionGB.present) {
+      map['DESCRIPCION_GB'] = Variable<String>(descripcionGB.value);
+    }
+    if (descripcionHU.present) {
+      map['DESCRIPCION_HU'] = Variable<String>(descripcionHU.value);
+    }
+    if (descripcionIT.present) {
+      map['DESCRIPCION_IT'] = Variable<String>(descripcionIT.value);
+    }
+    if (descripcionNL.present) {
+      map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
+    }
+    if (descripcionPL.present) {
+      map['DESCRIPCION_PL'] = Variable<String>(descripcionPL.value);
+    }
+    if (lastUpdated.present) {
+      map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
+    }
+    if (deleted.present) {
+      map['DELETED'] = Variable<String>(deleted.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('VisitaCompetidorTableCompanion(')
+          ..write('id: $id, ')
+          ..write('descripcionES: $descripcionES, ')
+          ..write('descripcionEN: $descripcionEN, ')
+          ..write('descripcionFR: $descripcionFR, ')
+          ..write('descripcionDE: $descripcionDE, ')
+          ..write('descripcionCA: $descripcionCA, ')
+          ..write('descripcionGB: $descripcionGB, ')
+          ..write('descripcionHU: $descripcionHU, ')
+          ..write('descripcionIT: $descripcionIT, ')
+          ..write('descripcionNL: $descripcionNL, ')
+          ..write('descripcionPL: $descripcionPL, ')
+          ..write('lastUpdated: $lastUpdated, ')
+          ..write('deleted: $deleted')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $VisitaSectorTableTable extends VisitaSectorTable
+    with TableInfo<$VisitaSectorTableTable, VisitaSectorDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $VisitaSectorTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'CODIGO', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionESMeta =
+      const VerificationMeta('descripcionES');
+  @override
+  late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
+      'DESCRIPCION_ES', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _descripcionENMeta =
+      const VerificationMeta('descripcionEN');
+  @override
+  late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
+      'DESCRIPCION_EN', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionFRMeta =
+      const VerificationMeta('descripcionFR');
+  @override
+  late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
+      'DESCRIPCION_FR', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionDEMeta =
+      const VerificationMeta('descripcionDE');
+  @override
+  late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
+      'DESCRIPCION_DE', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionCAMeta =
+      const VerificationMeta('descripcionCA');
+  @override
+  late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
+      'DESCRIPCION_CA', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionGBMeta =
+      const VerificationMeta('descripcionGB');
+  @override
+  late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
+      'DESCRIPCION_GB', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionHUMeta =
+      const VerificationMeta('descripcionHU');
+  @override
+  late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
+      'DESCRIPCION_HU', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionITMeta =
+      const VerificationMeta('descripcionIT');
+  @override
+  late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
+      'DESCRIPCION_IT', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionNLMeta =
+      const VerificationMeta('descripcionNL');
+  @override
+  late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
+      'DESCRIPCION_NL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionPLMeta =
+      const VerificationMeta('descripcionPL');
+  @override
+  late final GeneratedColumn<String> descripcionPL = GeneratedColumn<String>(
+      'DESCRIPCION_PL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _lastUpdatedMeta =
+      const VerificationMeta('lastUpdated');
+  @override
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
+  @override
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
+      'DELETED', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('N'));
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        descripcionES,
+        descripcionEN,
+        descripcionFR,
+        descripcionDE,
+        descripcionCA,
+        descripcionGB,
+        descripcionHU,
+        descripcionIT,
+        descripcionNL,
+        descripcionPL,
+        lastUpdated,
+        deleted
+      ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'VISITA_SECTORES';
+  @override
+  VerificationContext validateIntegrity(Insertable<VisitaSectorDTO> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('CODIGO')) {
+      context.handle(
+          _idMeta, id.isAcceptableOrUnknown(data['CODIGO']!, _idMeta));
+    }
+    if (data.containsKey('DESCRIPCION_ES')) {
+      context.handle(
+          _descripcionESMeta,
+          descripcionES.isAcceptableOrUnknown(
+              data['DESCRIPCION_ES']!, _descripcionESMeta));
+    } else if (isInserting) {
+      context.missing(_descripcionESMeta);
+    }
+    if (data.containsKey('DESCRIPCION_EN')) {
+      context.handle(
+          _descripcionENMeta,
+          descripcionEN.isAcceptableOrUnknown(
+              data['DESCRIPCION_EN']!, _descripcionENMeta));
+    }
+    if (data.containsKey('DESCRIPCION_FR')) {
+      context.handle(
+          _descripcionFRMeta,
+          descripcionFR.isAcceptableOrUnknown(
+              data['DESCRIPCION_FR']!, _descripcionFRMeta));
+    }
+    if (data.containsKey('DESCRIPCION_DE')) {
+      context.handle(
+          _descripcionDEMeta,
+          descripcionDE.isAcceptableOrUnknown(
+              data['DESCRIPCION_DE']!, _descripcionDEMeta));
+    }
+    if (data.containsKey('DESCRIPCION_CA')) {
+      context.handle(
+          _descripcionCAMeta,
+          descripcionCA.isAcceptableOrUnknown(
+              data['DESCRIPCION_CA']!, _descripcionCAMeta));
+    }
+    if (data.containsKey('DESCRIPCION_GB')) {
+      context.handle(
+          _descripcionGBMeta,
+          descripcionGB.isAcceptableOrUnknown(
+              data['DESCRIPCION_GB']!, _descripcionGBMeta));
+    }
+    if (data.containsKey('DESCRIPCION_HU')) {
+      context.handle(
+          _descripcionHUMeta,
+          descripcionHU.isAcceptableOrUnknown(
+              data['DESCRIPCION_HU']!, _descripcionHUMeta));
+    }
+    if (data.containsKey('DESCRIPCION_IT')) {
+      context.handle(
+          _descripcionITMeta,
+          descripcionIT.isAcceptableOrUnknown(
+              data['DESCRIPCION_IT']!, _descripcionITMeta));
+    }
+    if (data.containsKey('DESCRIPCION_NL')) {
+      context.handle(
+          _descripcionNLMeta,
+          descripcionNL.isAcceptableOrUnknown(
+              data['DESCRIPCION_NL']!, _descripcionNLMeta));
+    }
+    if (data.containsKey('DESCRIPCION_PL')) {
+      context.handle(
+          _descripcionPLMeta,
+          descripcionPL.isAcceptableOrUnknown(
+              data['DESCRIPCION_PL']!, _descripcionPLMeta));
+    }
+    if (data.containsKey('LAST_UPDATED')) {
+      context.handle(
+          _lastUpdatedMeta,
+          lastUpdated.isAcceptableOrUnknown(
+              data['LAST_UPDATED']!, _lastUpdatedMeta));
+    } else if (isInserting) {
+      context.missing(_lastUpdatedMeta);
+    }
+    if (data.containsKey('DELETED')) {
+      context.handle(_deletedMeta,
+          deleted.isAcceptableOrUnknown(data['DELETED']!, _deletedMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  VisitaSectorDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return VisitaSectorDTO(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}CODIGO'])!,
+      descripcionES: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
+      descripcionEN: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
+      descripcionFR: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
+      descripcionDE: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
+      descripcionCA: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
+      descripcionGB: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
+      descripcionHU: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
+      descripcionIT: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
+      descripcionNL: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
+      descripcionPL: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
+      lastUpdated: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
+    );
+  }
+
+  @override
+  $VisitaSectorTableTable createAlias(String alias) {
+    return $VisitaSectorTableTable(attachedDatabase, alias);
+  }
+}
+
+class VisitaSectorTableCompanion extends UpdateCompanion<VisitaSectorDTO> {
+  final Value<int> id;
+  final Value<String> descripcionES;
+  final Value<String?> descripcionEN;
+  final Value<String?> descripcionFR;
+  final Value<String?> descripcionDE;
+  final Value<String?> descripcionCA;
+  final Value<String?> descripcionGB;
+  final Value<String?> descripcionHU;
+  final Value<String?> descripcionIT;
+  final Value<String?> descripcionNL;
+  final Value<String?> descripcionPL;
+  final Value<DateTime> lastUpdated;
+  final Value<String> deleted;
+  const VisitaSectorTableCompanion({
+    this.id = const Value.absent(),
+    this.descripcionES = const Value.absent(),
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.lastUpdated = const Value.absent(),
+    this.deleted = const Value.absent(),
+  });
+  VisitaSectorTableCompanion.insert({
+    this.id = const Value.absent(),
+    required String descripcionES,
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    required DateTime lastUpdated,
+    this.deleted = const Value.absent(),
+  })  : descripcionES = Value(descripcionES),
+        lastUpdated = Value(lastUpdated);
+  static Insertable<VisitaSectorDTO> custom({
+    Expression<int>? id,
+    Expression<String>? descripcionES,
+    Expression<String>? descripcionEN,
+    Expression<String>? descripcionFR,
+    Expression<String>? descripcionDE,
+    Expression<String>? descripcionCA,
+    Expression<String>? descripcionGB,
+    Expression<String>? descripcionHU,
+    Expression<String>? descripcionIT,
+    Expression<String>? descripcionNL,
+    Expression<String>? descripcionPL,
+    Expression<DateTime>? lastUpdated,
+    Expression<String>? deleted,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'CODIGO': id,
+      if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
+      if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
+      if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
+      if (descripcionDE != null) 'DESCRIPCION_DE': descripcionDE,
+      if (descripcionCA != null) 'DESCRIPCION_CA': descripcionCA,
+      if (descripcionGB != null) 'DESCRIPCION_GB': descripcionGB,
+      if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
+      if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
+      if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
+      if (descripcionPL != null) 'DESCRIPCION_PL': descripcionPL,
+      if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
+      if (deleted != null) 'DELETED': deleted,
+    });
+  }
+
+  VisitaSectorTableCompanion copyWith(
+      {Value<int>? id,
+      Value<String>? descripcionES,
+      Value<String?>? descripcionEN,
+      Value<String?>? descripcionFR,
+      Value<String?>? descripcionDE,
+      Value<String?>? descripcionCA,
+      Value<String?>? descripcionGB,
+      Value<String?>? descripcionHU,
+      Value<String?>? descripcionIT,
+      Value<String?>? descripcionNL,
+      Value<String?>? descripcionPL,
+      Value<DateTime>? lastUpdated,
+      Value<String>? deleted}) {
+    return VisitaSectorTableCompanion(
+      id: id ?? this.id,
+      descripcionES: descripcionES ?? this.descripcionES,
+      descripcionEN: descripcionEN ?? this.descripcionEN,
+      descripcionFR: descripcionFR ?? this.descripcionFR,
+      descripcionDE: descripcionDE ?? this.descripcionDE,
+      descripcionCA: descripcionCA ?? this.descripcionCA,
+      descripcionGB: descripcionGB ?? this.descripcionGB,
+      descripcionHU: descripcionHU ?? this.descripcionHU,
+      descripcionIT: descripcionIT ?? this.descripcionIT,
+      descripcionNL: descripcionNL ?? this.descripcionNL,
+      descripcionPL: descripcionPL ?? this.descripcionPL,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      deleted: deleted ?? this.deleted,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['CODIGO'] = Variable<int>(id.value);
+    }
+    if (descripcionES.present) {
+      map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
+    }
+    if (descripcionEN.present) {
+      map['DESCRIPCION_EN'] = Variable<String>(descripcionEN.value);
+    }
+    if (descripcionFR.present) {
+      map['DESCRIPCION_FR'] = Variable<String>(descripcionFR.value);
+    }
+    if (descripcionDE.present) {
+      map['DESCRIPCION_DE'] = Variable<String>(descripcionDE.value);
+    }
+    if (descripcionCA.present) {
+      map['DESCRIPCION_CA'] = Variable<String>(descripcionCA.value);
+    }
+    if (descripcionGB.present) {
+      map['DESCRIPCION_GB'] = Variable<String>(descripcionGB.value);
+    }
+    if (descripcionHU.present) {
+      map['DESCRIPCION_HU'] = Variable<String>(descripcionHU.value);
+    }
+    if (descripcionIT.present) {
+      map['DESCRIPCION_IT'] = Variable<String>(descripcionIT.value);
+    }
+    if (descripcionNL.present) {
+      map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
+    }
+    if (descripcionPL.present) {
+      map['DESCRIPCION_PL'] = Variable<String>(descripcionPL.value);
+    }
+    if (lastUpdated.present) {
+      map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
+    }
+    if (deleted.present) {
+      map['DELETED'] = Variable<String>(deleted.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('VisitaSectorTableCompanion(')
+          ..write('id: $id, ')
+          ..write('descripcionES: $descripcionES, ')
+          ..write('descripcionEN: $descripcionEN, ')
+          ..write('descripcionFR: $descripcionFR, ')
+          ..write('descripcionDE: $descripcionDE, ')
+          ..write('descripcionCA: $descripcionCA, ')
+          ..write('descripcionGB: $descripcionGB, ')
+          ..write('descripcionHU: $descripcionHU, ')
+          ..write('descripcionIT: $descripcionIT, ')
+          ..write('descripcionNL: $descripcionNL, ')
+          ..write('descripcionPL: $descripcionPL, ')
+          ..write('lastUpdated: $lastUpdated, ')
+          ..write('deleted: $deleted')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $VisitaMotivoNoVentaTableTable extends VisitaMotivoNoVentaTable
+    with TableInfo<$VisitaMotivoNoVentaTableTable, VisitaMotivoNoVentaDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $VisitaMotivoNoVentaTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'CODIGO', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionESMeta =
+      const VerificationMeta('descripcionES');
+  @override
+  late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
+      'DESCRIPCION_ES', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _descripcionENMeta =
+      const VerificationMeta('descripcionEN');
+  @override
+  late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
+      'DESCRIPCION_EN', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionFRMeta =
+      const VerificationMeta('descripcionFR');
+  @override
+  late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
+      'DESCRIPCION_FR', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionDEMeta =
+      const VerificationMeta('descripcionDE');
+  @override
+  late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
+      'DESCRIPCION_DE', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionCAMeta =
+      const VerificationMeta('descripcionCA');
+  @override
+  late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
+      'DESCRIPCION_CA', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionGBMeta =
+      const VerificationMeta('descripcionGB');
+  @override
+  late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
+      'DESCRIPCION_GB', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionHUMeta =
+      const VerificationMeta('descripcionHU');
+  @override
+  late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
+      'DESCRIPCION_HU', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionITMeta =
+      const VerificationMeta('descripcionIT');
+  @override
+  late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
+      'DESCRIPCION_IT', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionNLMeta =
+      const VerificationMeta('descripcionNL');
+  @override
+  late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
+      'DESCRIPCION_NL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionPLMeta =
+      const VerificationMeta('descripcionPL');
+  @override
+  late final GeneratedColumn<String> descripcionPL = GeneratedColumn<String>(
+      'DESCRIPCION_PL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _lastUpdatedMeta =
+      const VerificationMeta('lastUpdated');
+  @override
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
+  @override
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
+      'DELETED', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('N'));
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        descripcionES,
+        descripcionEN,
+        descripcionFR,
+        descripcionDE,
+        descripcionCA,
+        descripcionGB,
+        descripcionHU,
+        descripcionIT,
+        descripcionNL,
+        descripcionPL,
+        lastUpdated,
+        deleted
+      ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'VISITA_MOTIVOS_NO_VENTA';
+  @override
+  VerificationContext validateIntegrity(
+      Insertable<VisitaMotivoNoVentaDTO> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('CODIGO')) {
+      context.handle(
+          _idMeta, id.isAcceptableOrUnknown(data['CODIGO']!, _idMeta));
+    }
+    if (data.containsKey('DESCRIPCION_ES')) {
+      context.handle(
+          _descripcionESMeta,
+          descripcionES.isAcceptableOrUnknown(
+              data['DESCRIPCION_ES']!, _descripcionESMeta));
+    } else if (isInserting) {
+      context.missing(_descripcionESMeta);
+    }
+    if (data.containsKey('DESCRIPCION_EN')) {
+      context.handle(
+          _descripcionENMeta,
+          descripcionEN.isAcceptableOrUnknown(
+              data['DESCRIPCION_EN']!, _descripcionENMeta));
+    }
+    if (data.containsKey('DESCRIPCION_FR')) {
+      context.handle(
+          _descripcionFRMeta,
+          descripcionFR.isAcceptableOrUnknown(
+              data['DESCRIPCION_FR']!, _descripcionFRMeta));
+    }
+    if (data.containsKey('DESCRIPCION_DE')) {
+      context.handle(
+          _descripcionDEMeta,
+          descripcionDE.isAcceptableOrUnknown(
+              data['DESCRIPCION_DE']!, _descripcionDEMeta));
+    }
+    if (data.containsKey('DESCRIPCION_CA')) {
+      context.handle(
+          _descripcionCAMeta,
+          descripcionCA.isAcceptableOrUnknown(
+              data['DESCRIPCION_CA']!, _descripcionCAMeta));
+    }
+    if (data.containsKey('DESCRIPCION_GB')) {
+      context.handle(
+          _descripcionGBMeta,
+          descripcionGB.isAcceptableOrUnknown(
+              data['DESCRIPCION_GB']!, _descripcionGBMeta));
+    }
+    if (data.containsKey('DESCRIPCION_HU')) {
+      context.handle(
+          _descripcionHUMeta,
+          descripcionHU.isAcceptableOrUnknown(
+              data['DESCRIPCION_HU']!, _descripcionHUMeta));
+    }
+    if (data.containsKey('DESCRIPCION_IT')) {
+      context.handle(
+          _descripcionITMeta,
+          descripcionIT.isAcceptableOrUnknown(
+              data['DESCRIPCION_IT']!, _descripcionITMeta));
+    }
+    if (data.containsKey('DESCRIPCION_NL')) {
+      context.handle(
+          _descripcionNLMeta,
+          descripcionNL.isAcceptableOrUnknown(
+              data['DESCRIPCION_NL']!, _descripcionNLMeta));
+    }
+    if (data.containsKey('DESCRIPCION_PL')) {
+      context.handle(
+          _descripcionPLMeta,
+          descripcionPL.isAcceptableOrUnknown(
+              data['DESCRIPCION_PL']!, _descripcionPLMeta));
+    }
+    if (data.containsKey('LAST_UPDATED')) {
+      context.handle(
+          _lastUpdatedMeta,
+          lastUpdated.isAcceptableOrUnknown(
+              data['LAST_UPDATED']!, _lastUpdatedMeta));
+    } else if (isInserting) {
+      context.missing(_lastUpdatedMeta);
+    }
+    if (data.containsKey('DELETED')) {
+      context.handle(_deletedMeta,
+          deleted.isAcceptableOrUnknown(data['DELETED']!, _deletedMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  VisitaMotivoNoVentaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return VisitaMotivoNoVentaDTO(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}CODIGO'])!,
+      descripcionES: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
+      descripcionEN: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
+      descripcionFR: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
+      descripcionDE: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
+      descripcionCA: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
+      descripcionGB: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
+      descripcionHU: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
+      descripcionIT: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
+      descripcionNL: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
+      descripcionPL: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
+      lastUpdated: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
+    );
+  }
+
+  @override
+  $VisitaMotivoNoVentaTableTable createAlias(String alias) {
+    return $VisitaMotivoNoVentaTableTable(attachedDatabase, alias);
+  }
+}
+
+class VisitaMotivoNoVentaTableCompanion
+    extends UpdateCompanion<VisitaMotivoNoVentaDTO> {
+  final Value<int> id;
+  final Value<String> descripcionES;
+  final Value<String?> descripcionEN;
+  final Value<String?> descripcionFR;
+  final Value<String?> descripcionDE;
+  final Value<String?> descripcionCA;
+  final Value<String?> descripcionGB;
+  final Value<String?> descripcionHU;
+  final Value<String?> descripcionIT;
+  final Value<String?> descripcionNL;
+  final Value<String?> descripcionPL;
+  final Value<DateTime> lastUpdated;
+  final Value<String> deleted;
+  const VisitaMotivoNoVentaTableCompanion({
+    this.id = const Value.absent(),
+    this.descripcionES = const Value.absent(),
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.lastUpdated = const Value.absent(),
+    this.deleted = const Value.absent(),
+  });
+  VisitaMotivoNoVentaTableCompanion.insert({
+    this.id = const Value.absent(),
+    required String descripcionES,
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    required DateTime lastUpdated,
+    this.deleted = const Value.absent(),
+  })  : descripcionES = Value(descripcionES),
+        lastUpdated = Value(lastUpdated);
+  static Insertable<VisitaMotivoNoVentaDTO> custom({
+    Expression<int>? id,
+    Expression<String>? descripcionES,
+    Expression<String>? descripcionEN,
+    Expression<String>? descripcionFR,
+    Expression<String>? descripcionDE,
+    Expression<String>? descripcionCA,
+    Expression<String>? descripcionGB,
+    Expression<String>? descripcionHU,
+    Expression<String>? descripcionIT,
+    Expression<String>? descripcionNL,
+    Expression<String>? descripcionPL,
+    Expression<DateTime>? lastUpdated,
+    Expression<String>? deleted,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'CODIGO': id,
+      if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
+      if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
+      if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
+      if (descripcionDE != null) 'DESCRIPCION_DE': descripcionDE,
+      if (descripcionCA != null) 'DESCRIPCION_CA': descripcionCA,
+      if (descripcionGB != null) 'DESCRIPCION_GB': descripcionGB,
+      if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
+      if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
+      if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
+      if (descripcionPL != null) 'DESCRIPCION_PL': descripcionPL,
+      if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
+      if (deleted != null) 'DELETED': deleted,
+    });
+  }
+
+  VisitaMotivoNoVentaTableCompanion copyWith(
+      {Value<int>? id,
+      Value<String>? descripcionES,
+      Value<String?>? descripcionEN,
+      Value<String?>? descripcionFR,
+      Value<String?>? descripcionDE,
+      Value<String?>? descripcionCA,
+      Value<String?>? descripcionGB,
+      Value<String?>? descripcionHU,
+      Value<String?>? descripcionIT,
+      Value<String?>? descripcionNL,
+      Value<String?>? descripcionPL,
+      Value<DateTime>? lastUpdated,
+      Value<String>? deleted}) {
+    return VisitaMotivoNoVentaTableCompanion(
+      id: id ?? this.id,
+      descripcionES: descripcionES ?? this.descripcionES,
+      descripcionEN: descripcionEN ?? this.descripcionEN,
+      descripcionFR: descripcionFR ?? this.descripcionFR,
+      descripcionDE: descripcionDE ?? this.descripcionDE,
+      descripcionCA: descripcionCA ?? this.descripcionCA,
+      descripcionGB: descripcionGB ?? this.descripcionGB,
+      descripcionHU: descripcionHU ?? this.descripcionHU,
+      descripcionIT: descripcionIT ?? this.descripcionIT,
+      descripcionNL: descripcionNL ?? this.descripcionNL,
+      descripcionPL: descripcionPL ?? this.descripcionPL,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      deleted: deleted ?? this.deleted,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['CODIGO'] = Variable<int>(id.value);
+    }
+    if (descripcionES.present) {
+      map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
+    }
+    if (descripcionEN.present) {
+      map['DESCRIPCION_EN'] = Variable<String>(descripcionEN.value);
+    }
+    if (descripcionFR.present) {
+      map['DESCRIPCION_FR'] = Variable<String>(descripcionFR.value);
+    }
+    if (descripcionDE.present) {
+      map['DESCRIPCION_DE'] = Variable<String>(descripcionDE.value);
+    }
+    if (descripcionCA.present) {
+      map['DESCRIPCION_CA'] = Variable<String>(descripcionCA.value);
+    }
+    if (descripcionGB.present) {
+      map['DESCRIPCION_GB'] = Variable<String>(descripcionGB.value);
+    }
+    if (descripcionHU.present) {
+      map['DESCRIPCION_HU'] = Variable<String>(descripcionHU.value);
+    }
+    if (descripcionIT.present) {
+      map['DESCRIPCION_IT'] = Variable<String>(descripcionIT.value);
+    }
+    if (descripcionNL.present) {
+      map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
+    }
+    if (descripcionPL.present) {
+      map['DESCRIPCION_PL'] = Variable<String>(descripcionPL.value);
+    }
+    if (lastUpdated.present) {
+      map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
+    }
+    if (deleted.present) {
+      map['DELETED'] = Variable<String>(deleted.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('VisitaMotivoNoVentaTableCompanion(')
+          ..write('id: $id, ')
+          ..write('descripcionES: $descripcionES, ')
+          ..write('descripcionEN: $descripcionEN, ')
+          ..write('descripcionFR: $descripcionFR, ')
+          ..write('descripcionDE: $descripcionDE, ')
+          ..write('descripcionCA: $descripcionCA, ')
+          ..write('descripcionGB: $descripcionGB, ')
+          ..write('descripcionHU: $descripcionHU, ')
+          ..write('descripcionIT: $descripcionIT, ')
+          ..write('descripcionNL: $descripcionNL, ')
+          ..write('descripcionPL: $descripcionPL, ')
+          ..write('lastUpdated: $lastUpdated, ')
+          ..write('deleted: $deleted')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$RemoteAppDatabase extends GeneratedDatabase {
   _$RemoteAppDatabase(QueryExecutor e) : super(e);
   _$RemoteAppDatabase.connect(DatabaseConnection c) : super.connect(c);
-  _$RemoteAppDatabaseManager get managers => _$RemoteAppDatabaseManager(this);
+  $RemoteAppDatabaseManager get managers => $RemoteAppDatabaseManager(this);
   late final $PaisTableTable paisTable = $PaisTableTable(this);
   late final $DivisaTableTable divisaTable = $DivisaTableTable(this);
   late final $PedidoVentaEstadoTableTable pedidoVentaEstadoTable =
@@ -19241,6 +20771,12 @@ abstract class _$RemoteAppDatabase extends GeneratedDatabase {
   late final $DevolucionTableTable devolucionTable =
       $DevolucionTableTable(this);
   late final $ProvinciaTableTable provinciaTable = $ProvinciaTableTable(this);
+  late final $VisitaCompetidorTableTable visitaCompetidorTable =
+      $VisitaCompetidorTableTable(this);
+  late final $VisitaSectorTableTable visitaSectorTable =
+      $VisitaSectorTableTable(this);
+  late final $VisitaMotivoNoVentaTableTable visitaMotivoNoVentaTable =
+      $VisitaMotivoNoVentaTableTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -19284,14 +20820,12972 @@ abstract class _$RemoteAppDatabase extends GeneratedDatabase {
         devolucionEstadoTable,
         devolucionLineaTable,
         devolucionTable,
-        provinciaTable
+        provinciaTable,
+        visitaCompetidorTable,
+        visitaSectorTable,
+        visitaMotivoNoVentaTable
       ];
   @override
   DriftDatabaseOptions get options =>
       const DriftDatabaseOptions(storeDateTimeAsText: true);
 }
 
-class _$RemoteAppDatabaseManager {
+typedef $$PaisTableTableCreateCompanionBuilder = PaisTableCompanion Function({
+  required String id,
+  Value<String?> isoCode,
+  required String descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$PaisTableTableUpdateCompanionBuilder = PaisTableCompanion Function({
+  Value<String> id,
+  Value<String?> isoCode,
+  Value<String> descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$PaisTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $PaisTableTable,
+    PaisDTO,
+    $$PaisTableTableFilterComposer,
+    $$PaisTableTableOrderingComposer,
+    $$PaisTableTableCreateCompanionBuilder,
+    $$PaisTableTableUpdateCompanionBuilder> {
+  $$PaisTableTableTableManager(_$RemoteAppDatabase db, $PaisTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$PaisTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$PaisTableTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String?> isoCode = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              PaisTableCompanion(
+            id: id,
+            isoCode: isoCode,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            Value<String?> isoCode = const Value.absent(),
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              PaisTableCompanion.insert(
+            id: id,
+            isoCode: isoCode,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$PaisTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $PaisTableTable> {
+  $$PaisTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get isoCode => $state.composableBuilder(
+      column: $state.table.isoCode,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionPL => $state.composableBuilder(
+      column: $state.table.descripcionPL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionPT => $state.composableBuilder(
+      column: $state.table.descripcionPT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionRO => $state.composableBuilder(
+      column: $state.table.descripcionRO,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionRU => $state.composableBuilder(
+      column: $state.table.descripcionRU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCN => $state.composableBuilder(
+      column: $state.table.descripcionCN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEL => $state.composableBuilder(
+      column: $state.table.descripcionEL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ComposableFilter pedidoVentaTableRefs(
+      ComposableFilter Function($$PedidoVentaTableTableFilterComposer f) f) {
+    final $$PedidoVentaTableTableFilterComposer composer =
+        $state.composerBuilder(
+            composer: this,
+            getCurrentColumn: (t) => t.id,
+            referencedTable: $state.db.pedidoVentaTable,
+            getReferencedColumn: (t) => t.paisId,
+            builder: (joinBuilder, parentComposers) =>
+                $$PedidoVentaTableTableFilterComposer(ComposerState($state.db,
+                    $state.db.pedidoVentaTable, joinBuilder, parentComposers)));
+    return f(composer);
+  }
+
+  ComposableFilter clienteTableRefs(
+      ComposableFilter Function($$ClienteTableTableFilterComposer f) f) {
+    final $$ClienteTableTableFilterComposer composer = $state.composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.id,
+        referencedTable: $state.db.clienteTable,
+        getReferencedColumn: (t) => t.paisFiscalId,
+        builder: (joinBuilder, parentComposers) =>
+            $$ClienteTableTableFilterComposer(ComposerState($state.db,
+                $state.db.clienteTable, joinBuilder, parentComposers)));
+    return f(composer);
+  }
+
+  ComposableFilter clienteDireccionTableRefs(
+      ComposableFilter Function($$ClienteDireccionTableTableFilterComposer f)
+          f) {
+    final $$ClienteDireccionTableTableFilterComposer composer =
+        $state.composerBuilder(
+            composer: this,
+            getCurrentColumn: (t) => t.id,
+            referencedTable: $state.db.clienteDireccionTable,
+            getReferencedColumn: (t) => t.paisId,
+            builder: (joinBuilder, parentComposers) =>
+                $$ClienteDireccionTableTableFilterComposer(ComposerState(
+                    $state.db,
+                    $state.db.clienteDireccionTable,
+                    joinBuilder,
+                    parentComposers)));
+    return f(composer);
+  }
+}
+
+class $$PaisTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $PaisTableTable> {
+  $$PaisTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get isoCode => $state.composableBuilder(
+      column: $state.table.isoCode,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionPL => $state.composableBuilder(
+      column: $state.table.descripcionPL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionPT => $state.composableBuilder(
+      column: $state.table.descripcionPT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionRO => $state.composableBuilder(
+      column: $state.table.descripcionRO,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionRU => $state.composableBuilder(
+      column: $state.table.descripcionRU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCN => $state.composableBuilder(
+      column: $state.table.descripcionCN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEL => $state.composableBuilder(
+      column: $state.table.descripcionEL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$DivisaTableTableCreateCompanionBuilder = DivisaTableCompanion
+    Function({
+  required String id,
+  required String abv,
+  Value<String?> simbolo,
+  Value<double?> redondeo,
+  required String descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$DivisaTableTableUpdateCompanionBuilder = DivisaTableCompanion
+    Function({
+  Value<String> id,
+  Value<String> abv,
+  Value<String?> simbolo,
+  Value<double?> redondeo,
+  Value<String> descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$DivisaTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $DivisaTableTable,
+    DivisaDTO,
+    $$DivisaTableTableFilterComposer,
+    $$DivisaTableTableOrderingComposer,
+    $$DivisaTableTableCreateCompanionBuilder,
+    $$DivisaTableTableUpdateCompanionBuilder> {
+  $$DivisaTableTableTableManager(
+      _$RemoteAppDatabase db, $DivisaTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$DivisaTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$DivisaTableTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> abv = const Value.absent(),
+            Value<String?> simbolo = const Value.absent(),
+            Value<double?> redondeo = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              DivisaTableCompanion(
+            id: id,
+            abv: abv,
+            simbolo: simbolo,
+            redondeo: redondeo,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String abv,
+            Value<String?> simbolo = const Value.absent(),
+            Value<double?> redondeo = const Value.absent(),
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              DivisaTableCompanion.insert(
+            id: id,
+            abv: abv,
+            simbolo: simbolo,
+            redondeo: redondeo,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$DivisaTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $DivisaTableTable> {
+  $$DivisaTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get abv => $state.composableBuilder(
+      column: $state.table.abv,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get simbolo => $state.composableBuilder(
+      column: $state.table.simbolo,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get redondeo => $state.composableBuilder(
+      column: $state.table.redondeo,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionPL => $state.composableBuilder(
+      column: $state.table.descripcionPL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionPT => $state.composableBuilder(
+      column: $state.table.descripcionPT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionRO => $state.composableBuilder(
+      column: $state.table.descripcionRO,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionRU => $state.composableBuilder(
+      column: $state.table.descripcionRU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCN => $state.composableBuilder(
+      column: $state.table.descripcionCN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEL => $state.composableBuilder(
+      column: $state.table.descripcionEL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ComposableFilter pedidoVentaTableRefs(
+      ComposableFilter Function($$PedidoVentaTableTableFilterComposer f) f) {
+    final $$PedidoVentaTableTableFilterComposer composer =
+        $state.composerBuilder(
+            composer: this,
+            getCurrentColumn: (t) => t.id,
+            referencedTable: $state.db.pedidoVentaTable,
+            getReferencedColumn: (t) => t.divisaId,
+            builder: (joinBuilder, parentComposers) =>
+                $$PedidoVentaTableTableFilterComposer(ComposerState($state.db,
+                    $state.db.pedidoVentaTable, joinBuilder, parentComposers)));
+    return f(composer);
+  }
+
+  ComposableFilter clienteTableRefs(
+      ComposableFilter Function($$ClienteTableTableFilterComposer f) f) {
+    final $$ClienteTableTableFilterComposer composer = $state.composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.id,
+        referencedTable: $state.db.clienteTable,
+        getReferencedColumn: (t) => t.divisaId,
+        builder: (joinBuilder, parentComposers) =>
+            $$ClienteTableTableFilterComposer(ComposerState($state.db,
+                $state.db.clienteTable, joinBuilder, parentComposers)));
+    return f(composer);
+  }
+}
+
+class $$DivisaTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $DivisaTableTable> {
+  $$DivisaTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get abv => $state.composableBuilder(
+      column: $state.table.abv,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get simbolo => $state.composableBuilder(
+      column: $state.table.simbolo,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get redondeo => $state.composableBuilder(
+      column: $state.table.redondeo,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionPL => $state.composableBuilder(
+      column: $state.table.descripcionPL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionPT => $state.composableBuilder(
+      column: $state.table.descripcionPT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionRO => $state.composableBuilder(
+      column: $state.table.descripcionRO,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionRU => $state.composableBuilder(
+      column: $state.table.descripcionRU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCN => $state.composableBuilder(
+      column: $state.table.descripcionCN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEL => $state.composableBuilder(
+      column: $state.table.descripcionEL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$PedidoVentaEstadoTableTableCreateCompanionBuilder
+    = PedidoVentaEstadoTableCompanion Function({
+  Value<int> id,
+  required String descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+});
+typedef $$PedidoVentaEstadoTableTableUpdateCompanionBuilder
+    = PedidoVentaEstadoTableCompanion Function({
+  Value<int> id,
+  Value<String> descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+});
+
+class $$PedidoVentaEstadoTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $PedidoVentaEstadoTableTable,
+    PedidoVentaEstadoDTO,
+    $$PedidoVentaEstadoTableTableFilterComposer,
+    $$PedidoVentaEstadoTableTableOrderingComposer,
+    $$PedidoVentaEstadoTableTableCreateCompanionBuilder,
+    $$PedidoVentaEstadoTableTableUpdateCompanionBuilder> {
+  $$PedidoVentaEstadoTableTableTableManager(
+      _$RemoteAppDatabase db, $PedidoVentaEstadoTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$PedidoVentaEstadoTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$PedidoVentaEstadoTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+          }) =>
+              PedidoVentaEstadoTableCompanion(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+          }) =>
+              PedidoVentaEstadoTableCompanion.insert(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+          ),
+        ));
+}
+
+class $$PedidoVentaEstadoTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $PedidoVentaEstadoTableTable> {
+  $$PedidoVentaEstadoTableTableFilterComposer(super.$state);
+  ColumnFilters<int> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionPT => $state.composableBuilder(
+      column: $state.table.descripcionPT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionRO => $state.composableBuilder(
+      column: $state.table.descripcionRO,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionRU => $state.composableBuilder(
+      column: $state.table.descripcionRU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCN => $state.composableBuilder(
+      column: $state.table.descripcionCN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEL => $state.composableBuilder(
+      column: $state.table.descripcionEL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ComposableFilter pedidoVentaTableRefs(
+      ComposableFilter Function($$PedidoVentaTableTableFilterComposer f) f) {
+    final $$PedidoVentaTableTableFilterComposer composer =
+        $state.composerBuilder(
+            composer: this,
+            getCurrentColumn: (t) => t.id,
+            referencedTable: $state.db.pedidoVentaTable,
+            getReferencedColumn: (t) => t.pedidoVentaEstadoId,
+            builder: (joinBuilder, parentComposers) =>
+                $$PedidoVentaTableTableFilterComposer(ComposerState($state.db,
+                    $state.db.pedidoVentaTable, joinBuilder, parentComposers)));
+    return f(composer);
+  }
+}
+
+class $$PedidoVentaEstadoTableTableOrderingComposer extends OrderingComposer<
+    _$RemoteAppDatabase, $PedidoVentaEstadoTableTable> {
+  $$PedidoVentaEstadoTableTableOrderingComposer(super.$state);
+  ColumnOrderings<int> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionPT => $state.composableBuilder(
+      column: $state.table.descripcionPT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionRO => $state.composableBuilder(
+      column: $state.table.descripcionRO,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionRU => $state.composableBuilder(
+      column: $state.table.descripcionRU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCN => $state.composableBuilder(
+      column: $state.table.descripcionCN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEL => $state.composableBuilder(
+      column: $state.table.descripcionEL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$PedidoVentaTableTableCreateCompanionBuilder
+    = PedidoVentaTableCompanion Function({
+  required String empresaId,
+  required String pedidoVentaId,
+  required DateTime pedidoVentaDate,
+  required String tipoVenta,
+  required String clienteId,
+  required String nombreCliente,
+  Value<String?> direccionId,
+  Value<String?> direccionEntrga1,
+  Value<String?> direccionEntrga2,
+  Value<String?> codigoPostal,
+  Value<String?> poblacion,
+  Value<String?> provincia,
+  Value<String?> paisId,
+  required String divisaId,
+  Value<double> baseImponible,
+  Value<double> totalLineas,
+  Value<double> importePortes,
+  Value<double> importeIva,
+  Value<double> total,
+  Value<int> pedidoVentaEstadoId,
+  Value<String> oferta,
+  Value<DateTime?> ofertaFechaHasta,
+  Value<String?> pedidoVentaAppId,
+  Value<double> iva,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$PedidoVentaTableTableUpdateCompanionBuilder
+    = PedidoVentaTableCompanion Function({
+  Value<String> empresaId,
+  Value<String> pedidoVentaId,
+  Value<DateTime> pedidoVentaDate,
+  Value<String> tipoVenta,
+  Value<String> clienteId,
+  Value<String> nombreCliente,
+  Value<String?> direccionId,
+  Value<String?> direccionEntrga1,
+  Value<String?> direccionEntrga2,
+  Value<String?> codigoPostal,
+  Value<String?> poblacion,
+  Value<String?> provincia,
+  Value<String?> paisId,
+  Value<String> divisaId,
+  Value<double> baseImponible,
+  Value<double> totalLineas,
+  Value<double> importePortes,
+  Value<double> importeIva,
+  Value<double> total,
+  Value<int> pedidoVentaEstadoId,
+  Value<String> oferta,
+  Value<DateTime?> ofertaFechaHasta,
+  Value<String?> pedidoVentaAppId,
+  Value<double> iva,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$PedidoVentaTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $PedidoVentaTableTable,
+    PedidoVentaDTO,
+    $$PedidoVentaTableTableFilterComposer,
+    $$PedidoVentaTableTableOrderingComposer,
+    $$PedidoVentaTableTableCreateCompanionBuilder,
+    $$PedidoVentaTableTableUpdateCompanionBuilder> {
+  $$PedidoVentaTableTableTableManager(
+      _$RemoteAppDatabase db, $PedidoVentaTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$PedidoVentaTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$PedidoVentaTableTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> empresaId = const Value.absent(),
+            Value<String> pedidoVentaId = const Value.absent(),
+            Value<DateTime> pedidoVentaDate = const Value.absent(),
+            Value<String> tipoVenta = const Value.absent(),
+            Value<String> clienteId = const Value.absent(),
+            Value<String> nombreCliente = const Value.absent(),
+            Value<String?> direccionId = const Value.absent(),
+            Value<String?> direccionEntrga1 = const Value.absent(),
+            Value<String?> direccionEntrga2 = const Value.absent(),
+            Value<String?> codigoPostal = const Value.absent(),
+            Value<String?> poblacion = const Value.absent(),
+            Value<String?> provincia = const Value.absent(),
+            Value<String?> paisId = const Value.absent(),
+            Value<String> divisaId = const Value.absent(),
+            Value<double> baseImponible = const Value.absent(),
+            Value<double> totalLineas = const Value.absent(),
+            Value<double> importePortes = const Value.absent(),
+            Value<double> importeIva = const Value.absent(),
+            Value<double> total = const Value.absent(),
+            Value<int> pedidoVentaEstadoId = const Value.absent(),
+            Value<String> oferta = const Value.absent(),
+            Value<DateTime?> ofertaFechaHasta = const Value.absent(),
+            Value<String?> pedidoVentaAppId = const Value.absent(),
+            Value<double> iva = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              PedidoVentaTableCompanion(
+            empresaId: empresaId,
+            pedidoVentaId: pedidoVentaId,
+            pedidoVentaDate: pedidoVentaDate,
+            tipoVenta: tipoVenta,
+            clienteId: clienteId,
+            nombreCliente: nombreCliente,
+            direccionId: direccionId,
+            direccionEntrga1: direccionEntrga1,
+            direccionEntrga2: direccionEntrga2,
+            codigoPostal: codigoPostal,
+            poblacion: poblacion,
+            provincia: provincia,
+            paisId: paisId,
+            divisaId: divisaId,
+            baseImponible: baseImponible,
+            totalLineas: totalLineas,
+            importePortes: importePortes,
+            importeIva: importeIva,
+            total: total,
+            pedidoVentaEstadoId: pedidoVentaEstadoId,
+            oferta: oferta,
+            ofertaFechaHasta: ofertaFechaHasta,
+            pedidoVentaAppId: pedidoVentaAppId,
+            iva: iva,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String empresaId,
+            required String pedidoVentaId,
+            required DateTime pedidoVentaDate,
+            required String tipoVenta,
+            required String clienteId,
+            required String nombreCliente,
+            Value<String?> direccionId = const Value.absent(),
+            Value<String?> direccionEntrga1 = const Value.absent(),
+            Value<String?> direccionEntrga2 = const Value.absent(),
+            Value<String?> codigoPostal = const Value.absent(),
+            Value<String?> poblacion = const Value.absent(),
+            Value<String?> provincia = const Value.absent(),
+            Value<String?> paisId = const Value.absent(),
+            required String divisaId,
+            Value<double> baseImponible = const Value.absent(),
+            Value<double> totalLineas = const Value.absent(),
+            Value<double> importePortes = const Value.absent(),
+            Value<double> importeIva = const Value.absent(),
+            Value<double> total = const Value.absent(),
+            Value<int> pedidoVentaEstadoId = const Value.absent(),
+            Value<String> oferta = const Value.absent(),
+            Value<DateTime?> ofertaFechaHasta = const Value.absent(),
+            Value<String?> pedidoVentaAppId = const Value.absent(),
+            Value<double> iva = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              PedidoVentaTableCompanion.insert(
+            empresaId: empresaId,
+            pedidoVentaId: pedidoVentaId,
+            pedidoVentaDate: pedidoVentaDate,
+            tipoVenta: tipoVenta,
+            clienteId: clienteId,
+            nombreCliente: nombreCliente,
+            direccionId: direccionId,
+            direccionEntrga1: direccionEntrga1,
+            direccionEntrga2: direccionEntrga2,
+            codigoPostal: codigoPostal,
+            poblacion: poblacion,
+            provincia: provincia,
+            paisId: paisId,
+            divisaId: divisaId,
+            baseImponible: baseImponible,
+            totalLineas: totalLineas,
+            importePortes: importePortes,
+            importeIva: importeIva,
+            total: total,
+            pedidoVentaEstadoId: pedidoVentaEstadoId,
+            oferta: oferta,
+            ofertaFechaHasta: ofertaFechaHasta,
+            pedidoVentaAppId: pedidoVentaAppId,
+            iva: iva,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$PedidoVentaTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $PedidoVentaTableTable> {
+  $$PedidoVentaTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get empresaId => $state.composableBuilder(
+      column: $state.table.empresaId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get pedidoVentaId => $state.composableBuilder(
+      column: $state.table.pedidoVentaId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get pedidoVentaDate => $state.composableBuilder(
+      column: $state.table.pedidoVentaDate,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get tipoVenta => $state.composableBuilder(
+      column: $state.table.tipoVenta,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get clienteId => $state.composableBuilder(
+      column: $state.table.clienteId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get nombreCliente => $state.composableBuilder(
+      column: $state.table.nombreCliente,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get direccionId => $state.composableBuilder(
+      column: $state.table.direccionId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get direccionEntrga1 => $state.composableBuilder(
+      column: $state.table.direccionEntrga1,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get direccionEntrga2 => $state.composableBuilder(
+      column: $state.table.direccionEntrga2,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get codigoPostal => $state.composableBuilder(
+      column: $state.table.codigoPostal,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get poblacion => $state.composableBuilder(
+      column: $state.table.poblacion,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get provincia => $state.composableBuilder(
+      column: $state.table.provincia,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get baseImponible => $state.composableBuilder(
+      column: $state.table.baseImponible,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get totalLineas => $state.composableBuilder(
+      column: $state.table.totalLineas,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get importePortes => $state.composableBuilder(
+      column: $state.table.importePortes,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get importeIva => $state.composableBuilder(
+      column: $state.table.importeIva,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get total => $state.composableBuilder(
+      column: $state.table.total,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get oferta => $state.composableBuilder(
+      column: $state.table.oferta,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get ofertaFechaHasta => $state.composableBuilder(
+      column: $state.table.ofertaFechaHasta,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get pedidoVentaAppId => $state.composableBuilder(
+      column: $state.table.pedidoVentaAppId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get iva => $state.composableBuilder(
+      column: $state.table.iva,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  $$PaisTableTableFilterComposer get paisId {
+    final $$PaisTableTableFilterComposer composer = $state.composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.paisId,
+        referencedTable: $state.db.paisTable,
+        getReferencedColumn: (t) => t.id,
+        builder: (joinBuilder, parentComposers) =>
+            $$PaisTableTableFilterComposer(ComposerState(
+                $state.db, $state.db.paisTable, joinBuilder, parentComposers)));
+    return composer;
+  }
+
+  $$DivisaTableTableFilterComposer get divisaId {
+    final $$DivisaTableTableFilterComposer composer = $state.composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.divisaId,
+        referencedTable: $state.db.divisaTable,
+        getReferencedColumn: (t) => t.id,
+        builder: (joinBuilder, parentComposers) =>
+            $$DivisaTableTableFilterComposer(ComposerState($state.db,
+                $state.db.divisaTable, joinBuilder, parentComposers)));
+    return composer;
+  }
+
+  $$PedidoVentaEstadoTableTableFilterComposer get pedidoVentaEstadoId {
+    final $$PedidoVentaEstadoTableTableFilterComposer composer =
+        $state.composerBuilder(
+            composer: this,
+            getCurrentColumn: (t) => t.pedidoVentaEstadoId,
+            referencedTable: $state.db.pedidoVentaEstadoTable,
+            getReferencedColumn: (t) => t.id,
+            builder: (joinBuilder, parentComposers) =>
+                $$PedidoVentaEstadoTableTableFilterComposer(ComposerState(
+                    $state.db,
+                    $state.db.pedidoVentaEstadoTable,
+                    joinBuilder,
+                    parentComposers)));
+    return composer;
+  }
+}
+
+class $$PedidoVentaTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $PedidoVentaTableTable> {
+  $$PedidoVentaTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get empresaId => $state.composableBuilder(
+      column: $state.table.empresaId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get pedidoVentaId => $state.composableBuilder(
+      column: $state.table.pedidoVentaId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get pedidoVentaDate => $state.composableBuilder(
+      column: $state.table.pedidoVentaDate,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get tipoVenta => $state.composableBuilder(
+      column: $state.table.tipoVenta,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get clienteId => $state.composableBuilder(
+      column: $state.table.clienteId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get nombreCliente => $state.composableBuilder(
+      column: $state.table.nombreCliente,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get direccionId => $state.composableBuilder(
+      column: $state.table.direccionId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get direccionEntrga1 => $state.composableBuilder(
+      column: $state.table.direccionEntrga1,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get direccionEntrga2 => $state.composableBuilder(
+      column: $state.table.direccionEntrga2,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get codigoPostal => $state.composableBuilder(
+      column: $state.table.codigoPostal,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get poblacion => $state.composableBuilder(
+      column: $state.table.poblacion,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get provincia => $state.composableBuilder(
+      column: $state.table.provincia,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get baseImponible => $state.composableBuilder(
+      column: $state.table.baseImponible,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get totalLineas => $state.composableBuilder(
+      column: $state.table.totalLineas,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get importePortes => $state.composableBuilder(
+      column: $state.table.importePortes,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get importeIva => $state.composableBuilder(
+      column: $state.table.importeIva,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get total => $state.composableBuilder(
+      column: $state.table.total,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get oferta => $state.composableBuilder(
+      column: $state.table.oferta,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get ofertaFechaHasta => $state.composableBuilder(
+      column: $state.table.ofertaFechaHasta,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get pedidoVentaAppId => $state.composableBuilder(
+      column: $state.table.pedidoVentaAppId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get iva => $state.composableBuilder(
+      column: $state.table.iva,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  $$PaisTableTableOrderingComposer get paisId {
+    final $$PaisTableTableOrderingComposer composer = $state.composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.paisId,
+        referencedTable: $state.db.paisTable,
+        getReferencedColumn: (t) => t.id,
+        builder: (joinBuilder, parentComposers) =>
+            $$PaisTableTableOrderingComposer(ComposerState(
+                $state.db, $state.db.paisTable, joinBuilder, parentComposers)));
+    return composer;
+  }
+
+  $$DivisaTableTableOrderingComposer get divisaId {
+    final $$DivisaTableTableOrderingComposer composer = $state.composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.divisaId,
+        referencedTable: $state.db.divisaTable,
+        getReferencedColumn: (t) => t.id,
+        builder: (joinBuilder, parentComposers) =>
+            $$DivisaTableTableOrderingComposer(ComposerState($state.db,
+                $state.db.divisaTable, joinBuilder, parentComposers)));
+    return composer;
+  }
+
+  $$PedidoVentaEstadoTableTableOrderingComposer get pedidoVentaEstadoId {
+    final $$PedidoVentaEstadoTableTableOrderingComposer composer =
+        $state.composerBuilder(
+            composer: this,
+            getCurrentColumn: (t) => t.pedidoVentaEstadoId,
+            referencedTable: $state.db.pedidoVentaEstadoTable,
+            getReferencedColumn: (t) => t.id,
+            builder: (joinBuilder, parentComposers) =>
+                $$PedidoVentaEstadoTableTableOrderingComposer(ComposerState(
+                    $state.db,
+                    $state.db.pedidoVentaEstadoTable,
+                    joinBuilder,
+                    parentComposers)));
+    return composer;
+  }
+}
+
+typedef $$PedidoVentaLineaTableTableCreateCompanionBuilder
+    = PedidoVentaLineaTableCompanion Function({
+  required String empresaId,
+  required String pedidoId,
+  required String pedidoVentaLineaId,
+  required String articuloId,
+  required String articuloDescription,
+  required int cantidad,
+  required double precioDivisa,
+  required int tipoPrecio,
+  required double descuento1,
+  required double descuento2,
+  required double descuento3,
+  Value<String?> pedidoLineaIdComponente,
+  Value<double?> importeLinea,
+  required int cantidadServida,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$PedidoVentaLineaTableTableUpdateCompanionBuilder
+    = PedidoVentaLineaTableCompanion Function({
+  Value<String> empresaId,
+  Value<String> pedidoId,
+  Value<String> pedidoVentaLineaId,
+  Value<String> articuloId,
+  Value<String> articuloDescription,
+  Value<int> cantidad,
+  Value<double> precioDivisa,
+  Value<int> tipoPrecio,
+  Value<double> descuento1,
+  Value<double> descuento2,
+  Value<double> descuento3,
+  Value<String?> pedidoLineaIdComponente,
+  Value<double?> importeLinea,
+  Value<int> cantidadServida,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$PedidoVentaLineaTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $PedidoVentaLineaTableTable,
+    PedidoVentaLineaDTO,
+    $$PedidoVentaLineaTableTableFilterComposer,
+    $$PedidoVentaLineaTableTableOrderingComposer,
+    $$PedidoVentaLineaTableTableCreateCompanionBuilder,
+    $$PedidoVentaLineaTableTableUpdateCompanionBuilder> {
+  $$PedidoVentaLineaTableTableTableManager(
+      _$RemoteAppDatabase db, $PedidoVentaLineaTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$PedidoVentaLineaTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$PedidoVentaLineaTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> empresaId = const Value.absent(),
+            Value<String> pedidoId = const Value.absent(),
+            Value<String> pedidoVentaLineaId = const Value.absent(),
+            Value<String> articuloId = const Value.absent(),
+            Value<String> articuloDescription = const Value.absent(),
+            Value<int> cantidad = const Value.absent(),
+            Value<double> precioDivisa = const Value.absent(),
+            Value<int> tipoPrecio = const Value.absent(),
+            Value<double> descuento1 = const Value.absent(),
+            Value<double> descuento2 = const Value.absent(),
+            Value<double> descuento3 = const Value.absent(),
+            Value<String?> pedidoLineaIdComponente = const Value.absent(),
+            Value<double?> importeLinea = const Value.absent(),
+            Value<int> cantidadServida = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              PedidoVentaLineaTableCompanion(
+            empresaId: empresaId,
+            pedidoId: pedidoId,
+            pedidoVentaLineaId: pedidoVentaLineaId,
+            articuloId: articuloId,
+            articuloDescription: articuloDescription,
+            cantidad: cantidad,
+            precioDivisa: precioDivisa,
+            tipoPrecio: tipoPrecio,
+            descuento1: descuento1,
+            descuento2: descuento2,
+            descuento3: descuento3,
+            pedidoLineaIdComponente: pedidoLineaIdComponente,
+            importeLinea: importeLinea,
+            cantidadServida: cantidadServida,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String empresaId,
+            required String pedidoId,
+            required String pedidoVentaLineaId,
+            required String articuloId,
+            required String articuloDescription,
+            required int cantidad,
+            required double precioDivisa,
+            required int tipoPrecio,
+            required double descuento1,
+            required double descuento2,
+            required double descuento3,
+            Value<String?> pedidoLineaIdComponente = const Value.absent(),
+            Value<double?> importeLinea = const Value.absent(),
+            required int cantidadServida,
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              PedidoVentaLineaTableCompanion.insert(
+            empresaId: empresaId,
+            pedidoId: pedidoId,
+            pedidoVentaLineaId: pedidoVentaLineaId,
+            articuloId: articuloId,
+            articuloDescription: articuloDescription,
+            cantidad: cantidad,
+            precioDivisa: precioDivisa,
+            tipoPrecio: tipoPrecio,
+            descuento1: descuento1,
+            descuento2: descuento2,
+            descuento3: descuento3,
+            pedidoLineaIdComponente: pedidoLineaIdComponente,
+            importeLinea: importeLinea,
+            cantidadServida: cantidadServida,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$PedidoVentaLineaTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $PedidoVentaLineaTableTable> {
+  $$PedidoVentaLineaTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get empresaId => $state.composableBuilder(
+      column: $state.table.empresaId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get pedidoId => $state.composableBuilder(
+      column: $state.table.pedidoId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get pedidoVentaLineaId => $state.composableBuilder(
+      column: $state.table.pedidoVentaLineaId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get articuloId => $state.composableBuilder(
+      column: $state.table.articuloId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get articuloDescription => $state.composableBuilder(
+      column: $state.table.articuloDescription,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get cantidad => $state.composableBuilder(
+      column: $state.table.cantidad,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get precioDivisa => $state.composableBuilder(
+      column: $state.table.precioDivisa,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get tipoPrecio => $state.composableBuilder(
+      column: $state.table.tipoPrecio,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get descuento1 => $state.composableBuilder(
+      column: $state.table.descuento1,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get descuento2 => $state.composableBuilder(
+      column: $state.table.descuento2,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get descuento3 => $state.composableBuilder(
+      column: $state.table.descuento3,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get pedidoLineaIdComponente => $state.composableBuilder(
+      column: $state.table.pedidoLineaIdComponente,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get importeLinea => $state.composableBuilder(
+      column: $state.table.importeLinea,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get cantidadServida => $state.composableBuilder(
+      column: $state.table.cantidadServida,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$PedidoVentaLineaTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $PedidoVentaLineaTableTable> {
+  $$PedidoVentaLineaTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get empresaId => $state.composableBuilder(
+      column: $state.table.empresaId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get pedidoId => $state.composableBuilder(
+      column: $state.table.pedidoId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get pedidoVentaLineaId => $state.composableBuilder(
+      column: $state.table.pedidoVentaLineaId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get articuloId => $state.composableBuilder(
+      column: $state.table.articuloId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get articuloDescription => $state.composableBuilder(
+      column: $state.table.articuloDescription,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get cantidad => $state.composableBuilder(
+      column: $state.table.cantidad,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get precioDivisa => $state.composableBuilder(
+      column: $state.table.precioDivisa,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get tipoPrecio => $state.composableBuilder(
+      column: $state.table.tipoPrecio,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get descuento1 => $state.composableBuilder(
+      column: $state.table.descuento1,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get descuento2 => $state.composableBuilder(
+      column: $state.table.descuento2,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get descuento3 => $state.composableBuilder(
+      column: $state.table.descuento3,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get pedidoLineaIdComponente =>
+      $state.composableBuilder(
+          column: $state.table.pedidoLineaIdComponente,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get importeLinea => $state.composableBuilder(
+      column: $state.table.importeLinea,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get cantidadServida => $state.composableBuilder(
+      column: $state.table.cantidadServida,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$PlazoDeCobroTableTableCreateCompanionBuilder
+    = PlazoDeCobroTableCompanion Function({
+  required String id,
+  required String descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$PlazoDeCobroTableTableUpdateCompanionBuilder
+    = PlazoDeCobroTableCompanion Function({
+  Value<String> id,
+  Value<String> descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$PlazoDeCobroTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $PlazoDeCobroTableTable,
+    PlazoDeCobroDTO,
+    $$PlazoDeCobroTableTableFilterComposer,
+    $$PlazoDeCobroTableTableOrderingComposer,
+    $$PlazoDeCobroTableTableCreateCompanionBuilder,
+    $$PlazoDeCobroTableTableUpdateCompanionBuilder> {
+  $$PlazoDeCobroTableTableTableManager(
+      _$RemoteAppDatabase db, $PlazoDeCobroTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$PlazoDeCobroTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer: $$PlazoDeCobroTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              PlazoDeCobroTableCompanion(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              PlazoDeCobroTableCompanion.insert(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$PlazoDeCobroTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $PlazoDeCobroTableTable> {
+  $$PlazoDeCobroTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionPL => $state.composableBuilder(
+      column: $state.table.descripcionPL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionPT => $state.composableBuilder(
+      column: $state.table.descripcionPT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionRO => $state.composableBuilder(
+      column: $state.table.descripcionRO,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionRU => $state.composableBuilder(
+      column: $state.table.descripcionRU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCN => $state.composableBuilder(
+      column: $state.table.descripcionCN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEL => $state.composableBuilder(
+      column: $state.table.descripcionEL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ComposableFilter clienteTableRefs(
+      ComposableFilter Function($$ClienteTableTableFilterComposer f) f) {
+    final $$ClienteTableTableFilterComposer composer = $state.composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.id,
+        referencedTable: $state.db.clienteTable,
+        getReferencedColumn: (t) => t.plazoDeCobroId,
+        builder: (joinBuilder, parentComposers) =>
+            $$ClienteTableTableFilterComposer(ComposerState($state.db,
+                $state.db.clienteTable, joinBuilder, parentComposers)));
+    return f(composer);
+  }
+}
+
+class $$PlazoDeCobroTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $PlazoDeCobroTableTable> {
+  $$PlazoDeCobroTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionPL => $state.composableBuilder(
+      column: $state.table.descripcionPL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionPT => $state.composableBuilder(
+      column: $state.table.descripcionPT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionRO => $state.composableBuilder(
+      column: $state.table.descripcionRO,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionRU => $state.composableBuilder(
+      column: $state.table.descripcionRU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCN => $state.composableBuilder(
+      column: $state.table.descripcionCN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEL => $state.composableBuilder(
+      column: $state.table.descripcionEL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$MetodoDeCobroTableTableCreateCompanionBuilder
+    = MetodoDeCobroTableCompanion Function({
+  required String id,
+  required String descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$MetodoDeCobroTableTableUpdateCompanionBuilder
+    = MetodoDeCobroTableCompanion Function({
+  Value<String> id,
+  Value<String> descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$MetodoDeCobroTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $MetodoDeCobroTableTable,
+    MetodoDeCobroDTO,
+    $$MetodoDeCobroTableTableFilterComposer,
+    $$MetodoDeCobroTableTableOrderingComposer,
+    $$MetodoDeCobroTableTableCreateCompanionBuilder,
+    $$MetodoDeCobroTableTableUpdateCompanionBuilder> {
+  $$MetodoDeCobroTableTableTableManager(
+      _$RemoteAppDatabase db, $MetodoDeCobroTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$MetodoDeCobroTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer: $$MetodoDeCobroTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              MetodoDeCobroTableCompanion(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              MetodoDeCobroTableCompanion.insert(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$MetodoDeCobroTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $MetodoDeCobroTableTable> {
+  $$MetodoDeCobroTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionPL => $state.composableBuilder(
+      column: $state.table.descripcionPL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionPT => $state.composableBuilder(
+      column: $state.table.descripcionPT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionRO => $state.composableBuilder(
+      column: $state.table.descripcionRO,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionRU => $state.composableBuilder(
+      column: $state.table.descripcionRU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCN => $state.composableBuilder(
+      column: $state.table.descripcionCN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEL => $state.composableBuilder(
+      column: $state.table.descripcionEL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ComposableFilter clienteTableRefs(
+      ComposableFilter Function($$ClienteTableTableFilterComposer f) f) {
+    final $$ClienteTableTableFilterComposer composer = $state.composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.id,
+        referencedTable: $state.db.clienteTable,
+        getReferencedColumn: (t) => t.metodoDeCobroId,
+        builder: (joinBuilder, parentComposers) =>
+            $$ClienteTableTableFilterComposer(ComposerState($state.db,
+                $state.db.clienteTable, joinBuilder, parentComposers)));
+    return f(composer);
+  }
+
+  ComposableFilter clientePagoPendienteTableRefs(
+      ComposableFilter Function(
+              $$ClientePagoPendienteTableTableFilterComposer f)
+          f) {
+    final $$ClientePagoPendienteTableTableFilterComposer composer =
+        $state.composerBuilder(
+            composer: this,
+            getCurrentColumn: (t) => t.id,
+            referencedTable: $state.db.clientePagoPendienteTable,
+            getReferencedColumn: (t) => t.metodoDeCobroId,
+            builder: (joinBuilder, parentComposers) =>
+                $$ClientePagoPendienteTableTableFilterComposer(ComposerState(
+                    $state.db,
+                    $state.db.clientePagoPendienteTable,
+                    joinBuilder,
+                    parentComposers)));
+    return f(composer);
+  }
+}
+
+class $$MetodoDeCobroTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $MetodoDeCobroTableTable> {
+  $$MetodoDeCobroTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionPL => $state.composableBuilder(
+      column: $state.table.descripcionPL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionPT => $state.composableBuilder(
+      column: $state.table.descripcionPT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionRO => $state.composableBuilder(
+      column: $state.table.descripcionRO,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionRU => $state.composableBuilder(
+      column: $state.table.descripcionRU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCN => $state.composableBuilder(
+      column: $state.table.descripcionCN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEL => $state.composableBuilder(
+      column: $state.table.descripcionEL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$ClienteTableTableCreateCompanionBuilder = ClienteTableCompanion
+    Function({
+  required String id,
+  required String nombreCliente,
+  Value<String?> nif,
+  required String nombreFiscal,
+  Value<String?> direccionFiscal1,
+  Value<String?> direccionFiscal2,
+  Value<String?> codigoPostalFiscal,
+  Value<String?> poblacionFiscal,
+  Value<String?> provinciaFiscal,
+  Value<String?> paisFiscalId,
+  required double latitudFiscal,
+  required double longitudFiscal,
+  required String empresaId,
+  required double iva,
+  required double ventasAnyoActual,
+  required double ventasAnyoAnterior,
+  required double ventasHaceDosAnyos,
+  required double margenAnyoActual,
+  required double margenAnyoAnterior,
+  required double margenHaceDosAnyos,
+  required double porcentajeAbonos,
+  required double porcentajeGarantias,
+  Value<String?> centralCompras,
+  Value<String?> urlWeb,
+  Value<String?> divisaId,
+  Value<String?> tarifaId,
+  Value<String?> tarifaDescripcion,
+  Value<String?> descuentoGeneralId,
+  Value<String?> descripcionDescuentoGeneral,
+  required String tipoCalculoPrecio,
+  Value<String?> plazoDeCobroId,
+  Value<String?> metodoDeCobroId,
+  required double descuentoProntoPago,
+  required double riesgoConcedidoInterno,
+  Value<DateTime?> riesgoConcedidoInternoDate,
+  required double riesgoConcedidoCoafe,
+  Value<DateTime?> riesgoConcedidoCoafeFecha,
+  Value<double?> riesgoConcedido,
+  Value<double?> riesgoPendienteCobroVencido,
+  Value<double?> riesgoPendienteCobroNoVencido,
+  Value<double?> riesgoPendienteServir,
+  Value<double?> riesgoPendienteFacturar,
+  Value<String?> obvservacionesInternas,
+  Value<String?> clientePotencial,
+  Value<String?> clienteEstadoPotencialId,
+  Value<String?> clienteTipoPotencialId,
+  Value<String?> representante1Id,
+  Value<String?> representante1Nombre,
+  Value<String?> representante2Id,
+  Value<String?> representante2Nombre,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$ClienteTableTableUpdateCompanionBuilder = ClienteTableCompanion
+    Function({
+  Value<String> id,
+  Value<String> nombreCliente,
+  Value<String?> nif,
+  Value<String> nombreFiscal,
+  Value<String?> direccionFiscal1,
+  Value<String?> direccionFiscal2,
+  Value<String?> codigoPostalFiscal,
+  Value<String?> poblacionFiscal,
+  Value<String?> provinciaFiscal,
+  Value<String?> paisFiscalId,
+  Value<double> latitudFiscal,
+  Value<double> longitudFiscal,
+  Value<String> empresaId,
+  Value<double> iva,
+  Value<double> ventasAnyoActual,
+  Value<double> ventasAnyoAnterior,
+  Value<double> ventasHaceDosAnyos,
+  Value<double> margenAnyoActual,
+  Value<double> margenAnyoAnterior,
+  Value<double> margenHaceDosAnyos,
+  Value<double> porcentajeAbonos,
+  Value<double> porcentajeGarantias,
+  Value<String?> centralCompras,
+  Value<String?> urlWeb,
+  Value<String?> divisaId,
+  Value<String?> tarifaId,
+  Value<String?> tarifaDescripcion,
+  Value<String?> descuentoGeneralId,
+  Value<String?> descripcionDescuentoGeneral,
+  Value<String> tipoCalculoPrecio,
+  Value<String?> plazoDeCobroId,
+  Value<String?> metodoDeCobroId,
+  Value<double> descuentoProntoPago,
+  Value<double> riesgoConcedidoInterno,
+  Value<DateTime?> riesgoConcedidoInternoDate,
+  Value<double> riesgoConcedidoCoafe,
+  Value<DateTime?> riesgoConcedidoCoafeFecha,
+  Value<double?> riesgoConcedido,
+  Value<double?> riesgoPendienteCobroVencido,
+  Value<double?> riesgoPendienteCobroNoVencido,
+  Value<double?> riesgoPendienteServir,
+  Value<double?> riesgoPendienteFacturar,
+  Value<String?> obvservacionesInternas,
+  Value<String?> clientePotencial,
+  Value<String?> clienteEstadoPotencialId,
+  Value<String?> clienteTipoPotencialId,
+  Value<String?> representante1Id,
+  Value<String?> representante1Nombre,
+  Value<String?> representante2Id,
+  Value<String?> representante2Nombre,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$ClienteTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ClienteTableTable,
+    ClienteDTO,
+    $$ClienteTableTableFilterComposer,
+    $$ClienteTableTableOrderingComposer,
+    $$ClienteTableTableCreateCompanionBuilder,
+    $$ClienteTableTableUpdateCompanionBuilder> {
+  $$ClienteTableTableTableManager(
+      _$RemoteAppDatabase db, $ClienteTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$ClienteTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$ClienteTableTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> nombreCliente = const Value.absent(),
+            Value<String?> nif = const Value.absent(),
+            Value<String> nombreFiscal = const Value.absent(),
+            Value<String?> direccionFiscal1 = const Value.absent(),
+            Value<String?> direccionFiscal2 = const Value.absent(),
+            Value<String?> codigoPostalFiscal = const Value.absent(),
+            Value<String?> poblacionFiscal = const Value.absent(),
+            Value<String?> provinciaFiscal = const Value.absent(),
+            Value<String?> paisFiscalId = const Value.absent(),
+            Value<double> latitudFiscal = const Value.absent(),
+            Value<double> longitudFiscal = const Value.absent(),
+            Value<String> empresaId = const Value.absent(),
+            Value<double> iva = const Value.absent(),
+            Value<double> ventasAnyoActual = const Value.absent(),
+            Value<double> ventasAnyoAnterior = const Value.absent(),
+            Value<double> ventasHaceDosAnyos = const Value.absent(),
+            Value<double> margenAnyoActual = const Value.absent(),
+            Value<double> margenAnyoAnterior = const Value.absent(),
+            Value<double> margenHaceDosAnyos = const Value.absent(),
+            Value<double> porcentajeAbonos = const Value.absent(),
+            Value<double> porcentajeGarantias = const Value.absent(),
+            Value<String?> centralCompras = const Value.absent(),
+            Value<String?> urlWeb = const Value.absent(),
+            Value<String?> divisaId = const Value.absent(),
+            Value<String?> tarifaId = const Value.absent(),
+            Value<String?> tarifaDescripcion = const Value.absent(),
+            Value<String?> descuentoGeneralId = const Value.absent(),
+            Value<String?> descripcionDescuentoGeneral = const Value.absent(),
+            Value<String> tipoCalculoPrecio = const Value.absent(),
+            Value<String?> plazoDeCobroId = const Value.absent(),
+            Value<String?> metodoDeCobroId = const Value.absent(),
+            Value<double> descuentoProntoPago = const Value.absent(),
+            Value<double> riesgoConcedidoInterno = const Value.absent(),
+            Value<DateTime?> riesgoConcedidoInternoDate = const Value.absent(),
+            Value<double> riesgoConcedidoCoafe = const Value.absent(),
+            Value<DateTime?> riesgoConcedidoCoafeFecha = const Value.absent(),
+            Value<double?> riesgoConcedido = const Value.absent(),
+            Value<double?> riesgoPendienteCobroVencido = const Value.absent(),
+            Value<double?> riesgoPendienteCobroNoVencido = const Value.absent(),
+            Value<double?> riesgoPendienteServir = const Value.absent(),
+            Value<double?> riesgoPendienteFacturar = const Value.absent(),
+            Value<String?> obvservacionesInternas = const Value.absent(),
+            Value<String?> clientePotencial = const Value.absent(),
+            Value<String?> clienteEstadoPotencialId = const Value.absent(),
+            Value<String?> clienteTipoPotencialId = const Value.absent(),
+            Value<String?> representante1Id = const Value.absent(),
+            Value<String?> representante1Nombre = const Value.absent(),
+            Value<String?> representante2Id = const Value.absent(),
+            Value<String?> representante2Nombre = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteTableCompanion(
+            id: id,
+            nombreCliente: nombreCliente,
+            nif: nif,
+            nombreFiscal: nombreFiscal,
+            direccionFiscal1: direccionFiscal1,
+            direccionFiscal2: direccionFiscal2,
+            codigoPostalFiscal: codigoPostalFiscal,
+            poblacionFiscal: poblacionFiscal,
+            provinciaFiscal: provinciaFiscal,
+            paisFiscalId: paisFiscalId,
+            latitudFiscal: latitudFiscal,
+            longitudFiscal: longitudFiscal,
+            empresaId: empresaId,
+            iva: iva,
+            ventasAnyoActual: ventasAnyoActual,
+            ventasAnyoAnterior: ventasAnyoAnterior,
+            ventasHaceDosAnyos: ventasHaceDosAnyos,
+            margenAnyoActual: margenAnyoActual,
+            margenAnyoAnterior: margenAnyoAnterior,
+            margenHaceDosAnyos: margenHaceDosAnyos,
+            porcentajeAbonos: porcentajeAbonos,
+            porcentajeGarantias: porcentajeGarantias,
+            centralCompras: centralCompras,
+            urlWeb: urlWeb,
+            divisaId: divisaId,
+            tarifaId: tarifaId,
+            tarifaDescripcion: tarifaDescripcion,
+            descuentoGeneralId: descuentoGeneralId,
+            descripcionDescuentoGeneral: descripcionDescuentoGeneral,
+            tipoCalculoPrecio: tipoCalculoPrecio,
+            plazoDeCobroId: plazoDeCobroId,
+            metodoDeCobroId: metodoDeCobroId,
+            descuentoProntoPago: descuentoProntoPago,
+            riesgoConcedidoInterno: riesgoConcedidoInterno,
+            riesgoConcedidoInternoDate: riesgoConcedidoInternoDate,
+            riesgoConcedidoCoafe: riesgoConcedidoCoafe,
+            riesgoConcedidoCoafeFecha: riesgoConcedidoCoafeFecha,
+            riesgoConcedido: riesgoConcedido,
+            riesgoPendienteCobroVencido: riesgoPendienteCobroVencido,
+            riesgoPendienteCobroNoVencido: riesgoPendienteCobroNoVencido,
+            riesgoPendienteServir: riesgoPendienteServir,
+            riesgoPendienteFacturar: riesgoPendienteFacturar,
+            obvservacionesInternas: obvservacionesInternas,
+            clientePotencial: clientePotencial,
+            clienteEstadoPotencialId: clienteEstadoPotencialId,
+            clienteTipoPotencialId: clienteTipoPotencialId,
+            representante1Id: representante1Id,
+            representante1Nombre: representante1Nombre,
+            representante2Id: representante2Id,
+            representante2Nombre: representante2Nombre,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String nombreCliente,
+            Value<String?> nif = const Value.absent(),
+            required String nombreFiscal,
+            Value<String?> direccionFiscal1 = const Value.absent(),
+            Value<String?> direccionFiscal2 = const Value.absent(),
+            Value<String?> codigoPostalFiscal = const Value.absent(),
+            Value<String?> poblacionFiscal = const Value.absent(),
+            Value<String?> provinciaFiscal = const Value.absent(),
+            Value<String?> paisFiscalId = const Value.absent(),
+            required double latitudFiscal,
+            required double longitudFiscal,
+            required String empresaId,
+            required double iva,
+            required double ventasAnyoActual,
+            required double ventasAnyoAnterior,
+            required double ventasHaceDosAnyos,
+            required double margenAnyoActual,
+            required double margenAnyoAnterior,
+            required double margenHaceDosAnyos,
+            required double porcentajeAbonos,
+            required double porcentajeGarantias,
+            Value<String?> centralCompras = const Value.absent(),
+            Value<String?> urlWeb = const Value.absent(),
+            Value<String?> divisaId = const Value.absent(),
+            Value<String?> tarifaId = const Value.absent(),
+            Value<String?> tarifaDescripcion = const Value.absent(),
+            Value<String?> descuentoGeneralId = const Value.absent(),
+            Value<String?> descripcionDescuentoGeneral = const Value.absent(),
+            required String tipoCalculoPrecio,
+            Value<String?> plazoDeCobroId = const Value.absent(),
+            Value<String?> metodoDeCobroId = const Value.absent(),
+            required double descuentoProntoPago,
+            required double riesgoConcedidoInterno,
+            Value<DateTime?> riesgoConcedidoInternoDate = const Value.absent(),
+            required double riesgoConcedidoCoafe,
+            Value<DateTime?> riesgoConcedidoCoafeFecha = const Value.absent(),
+            Value<double?> riesgoConcedido = const Value.absent(),
+            Value<double?> riesgoPendienteCobroVencido = const Value.absent(),
+            Value<double?> riesgoPendienteCobroNoVencido = const Value.absent(),
+            Value<double?> riesgoPendienteServir = const Value.absent(),
+            Value<double?> riesgoPendienteFacturar = const Value.absent(),
+            Value<String?> obvservacionesInternas = const Value.absent(),
+            Value<String?> clientePotencial = const Value.absent(),
+            Value<String?> clienteEstadoPotencialId = const Value.absent(),
+            Value<String?> clienteTipoPotencialId = const Value.absent(),
+            Value<String?> representante1Id = const Value.absent(),
+            Value<String?> representante1Nombre = const Value.absent(),
+            Value<String?> representante2Id = const Value.absent(),
+            Value<String?> representante2Nombre = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteTableCompanion.insert(
+            id: id,
+            nombreCliente: nombreCliente,
+            nif: nif,
+            nombreFiscal: nombreFiscal,
+            direccionFiscal1: direccionFiscal1,
+            direccionFiscal2: direccionFiscal2,
+            codigoPostalFiscal: codigoPostalFiscal,
+            poblacionFiscal: poblacionFiscal,
+            provinciaFiscal: provinciaFiscal,
+            paisFiscalId: paisFiscalId,
+            latitudFiscal: latitudFiscal,
+            longitudFiscal: longitudFiscal,
+            empresaId: empresaId,
+            iva: iva,
+            ventasAnyoActual: ventasAnyoActual,
+            ventasAnyoAnterior: ventasAnyoAnterior,
+            ventasHaceDosAnyos: ventasHaceDosAnyos,
+            margenAnyoActual: margenAnyoActual,
+            margenAnyoAnterior: margenAnyoAnterior,
+            margenHaceDosAnyos: margenHaceDosAnyos,
+            porcentajeAbonos: porcentajeAbonos,
+            porcentajeGarantias: porcentajeGarantias,
+            centralCompras: centralCompras,
+            urlWeb: urlWeb,
+            divisaId: divisaId,
+            tarifaId: tarifaId,
+            tarifaDescripcion: tarifaDescripcion,
+            descuentoGeneralId: descuentoGeneralId,
+            descripcionDescuentoGeneral: descripcionDescuentoGeneral,
+            tipoCalculoPrecio: tipoCalculoPrecio,
+            plazoDeCobroId: plazoDeCobroId,
+            metodoDeCobroId: metodoDeCobroId,
+            descuentoProntoPago: descuentoProntoPago,
+            riesgoConcedidoInterno: riesgoConcedidoInterno,
+            riesgoConcedidoInternoDate: riesgoConcedidoInternoDate,
+            riesgoConcedidoCoafe: riesgoConcedidoCoafe,
+            riesgoConcedidoCoafeFecha: riesgoConcedidoCoafeFecha,
+            riesgoConcedido: riesgoConcedido,
+            riesgoPendienteCobroVencido: riesgoPendienteCobroVencido,
+            riesgoPendienteCobroNoVencido: riesgoPendienteCobroNoVencido,
+            riesgoPendienteServir: riesgoPendienteServir,
+            riesgoPendienteFacturar: riesgoPendienteFacturar,
+            obvservacionesInternas: obvservacionesInternas,
+            clientePotencial: clientePotencial,
+            clienteEstadoPotencialId: clienteEstadoPotencialId,
+            clienteTipoPotencialId: clienteTipoPotencialId,
+            representante1Id: representante1Id,
+            representante1Nombre: representante1Nombre,
+            representante2Id: representante2Id,
+            representante2Nombre: representante2Nombre,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$ClienteTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $ClienteTableTable> {
+  $$ClienteTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get nombreCliente => $state.composableBuilder(
+      column: $state.table.nombreCliente,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get nif => $state.composableBuilder(
+      column: $state.table.nif,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get nombreFiscal => $state.composableBuilder(
+      column: $state.table.nombreFiscal,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get direccionFiscal1 => $state.composableBuilder(
+      column: $state.table.direccionFiscal1,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get direccionFiscal2 => $state.composableBuilder(
+      column: $state.table.direccionFiscal2,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get codigoPostalFiscal => $state.composableBuilder(
+      column: $state.table.codigoPostalFiscal,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get poblacionFiscal => $state.composableBuilder(
+      column: $state.table.poblacionFiscal,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get provinciaFiscal => $state.composableBuilder(
+      column: $state.table.provinciaFiscal,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get latitudFiscal => $state.composableBuilder(
+      column: $state.table.latitudFiscal,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get longitudFiscal => $state.composableBuilder(
+      column: $state.table.longitudFiscal,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get empresaId => $state.composableBuilder(
+      column: $state.table.empresaId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get iva => $state.composableBuilder(
+      column: $state.table.iva,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get ventasAnyoActual => $state.composableBuilder(
+      column: $state.table.ventasAnyoActual,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get ventasAnyoAnterior => $state.composableBuilder(
+      column: $state.table.ventasAnyoAnterior,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get ventasHaceDosAnyos => $state.composableBuilder(
+      column: $state.table.ventasHaceDosAnyos,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get margenAnyoActual => $state.composableBuilder(
+      column: $state.table.margenAnyoActual,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get margenAnyoAnterior => $state.composableBuilder(
+      column: $state.table.margenAnyoAnterior,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get margenHaceDosAnyos => $state.composableBuilder(
+      column: $state.table.margenHaceDosAnyos,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get porcentajeAbonos => $state.composableBuilder(
+      column: $state.table.porcentajeAbonos,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get porcentajeGarantias => $state.composableBuilder(
+      column: $state.table.porcentajeGarantias,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get centralCompras => $state.composableBuilder(
+      column: $state.table.centralCompras,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get urlWeb => $state.composableBuilder(
+      column: $state.table.urlWeb,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get tarifaId => $state.composableBuilder(
+      column: $state.table.tarifaId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get tarifaDescripcion => $state.composableBuilder(
+      column: $state.table.tarifaDescripcion,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descuentoGeneralId => $state.composableBuilder(
+      column: $state.table.descuentoGeneralId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionDescuentoGeneral => $state
+      .composableBuilder(
+          column: $state.table.descripcionDescuentoGeneral,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get tipoCalculoPrecio => $state.composableBuilder(
+      column: $state.table.tipoCalculoPrecio,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get descuentoProntoPago => $state.composableBuilder(
+      column: $state.table.descuentoProntoPago,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get riesgoConcedidoInterno => $state.composableBuilder(
+      column: $state.table.riesgoConcedidoInterno,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get riesgoConcedidoInternoDate =>
+      $state.composableBuilder(
+          column: $state.table.riesgoConcedidoInternoDate,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get riesgoConcedidoCoafe => $state.composableBuilder(
+      column: $state.table.riesgoConcedidoCoafe,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get riesgoConcedidoCoafeFecha => $state
+      .composableBuilder(
+          column: $state.table.riesgoConcedidoCoafeFecha,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get riesgoConcedido => $state.composableBuilder(
+      column: $state.table.riesgoConcedido,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get riesgoPendienteCobroVencido => $state
+      .composableBuilder(
+          column: $state.table.riesgoPendienteCobroVencido,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get riesgoPendienteCobroNoVencido =>
+      $state.composableBuilder(
+          column: $state.table.riesgoPendienteCobroNoVencido,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get riesgoPendienteServir => $state.composableBuilder(
+      column: $state.table.riesgoPendienteServir,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get riesgoPendienteFacturar => $state.composableBuilder(
+      column: $state.table.riesgoPendienteFacturar,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get obvservacionesInternas => $state.composableBuilder(
+      column: $state.table.obvservacionesInternas,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get clientePotencial => $state.composableBuilder(
+      column: $state.table.clientePotencial,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get clienteEstadoPotencialId =>
+      $state.composableBuilder(
+          column: $state.table.clienteEstadoPotencialId,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get clienteTipoPotencialId => $state.composableBuilder(
+      column: $state.table.clienteTipoPotencialId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get representante1Id => $state.composableBuilder(
+      column: $state.table.representante1Id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get representante1Nombre => $state.composableBuilder(
+      column: $state.table.representante1Nombre,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get representante2Id => $state.composableBuilder(
+      column: $state.table.representante2Id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get representante2Nombre => $state.composableBuilder(
+      column: $state.table.representante2Nombre,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  $$PaisTableTableFilterComposer get paisFiscalId {
+    final $$PaisTableTableFilterComposer composer = $state.composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.paisFiscalId,
+        referencedTable: $state.db.paisTable,
+        getReferencedColumn: (t) => t.id,
+        builder: (joinBuilder, parentComposers) =>
+            $$PaisTableTableFilterComposer(ComposerState(
+                $state.db, $state.db.paisTable, joinBuilder, parentComposers)));
+    return composer;
+  }
+
+  $$DivisaTableTableFilterComposer get divisaId {
+    final $$DivisaTableTableFilterComposer composer = $state.composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.divisaId,
+        referencedTable: $state.db.divisaTable,
+        getReferencedColumn: (t) => t.id,
+        builder: (joinBuilder, parentComposers) =>
+            $$DivisaTableTableFilterComposer(ComposerState($state.db,
+                $state.db.divisaTable, joinBuilder, parentComposers)));
+    return composer;
+  }
+
+  $$PlazoDeCobroTableTableFilterComposer get plazoDeCobroId {
+    final $$PlazoDeCobroTableTableFilterComposer composer =
+        $state.composerBuilder(
+            composer: this,
+            getCurrentColumn: (t) => t.plazoDeCobroId,
+            referencedTable: $state.db.plazoDeCobroTable,
+            getReferencedColumn: (t) => t.id,
+            builder: (joinBuilder, parentComposers) =>
+                $$PlazoDeCobroTableTableFilterComposer(ComposerState(
+                    $state.db,
+                    $state.db.plazoDeCobroTable,
+                    joinBuilder,
+                    parentComposers)));
+    return composer;
+  }
+
+  $$MetodoDeCobroTableTableFilterComposer get metodoDeCobroId {
+    final $$MetodoDeCobroTableTableFilterComposer composer = $state
+        .composerBuilder(
+            composer: this,
+            getCurrentColumn: (t) => t.metodoDeCobroId,
+            referencedTable: $state.db.metodoDeCobroTable,
+            getReferencedColumn: (t) => t.id,
+            builder: (joinBuilder, parentComposers) =>
+                $$MetodoDeCobroTableTableFilterComposer(ComposerState(
+                    $state.db,
+                    $state.db.metodoDeCobroTable,
+                    joinBuilder,
+                    parentComposers)));
+    return composer;
+  }
+}
+
+class $$ClienteTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $ClienteTableTable> {
+  $$ClienteTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get nombreCliente => $state.composableBuilder(
+      column: $state.table.nombreCliente,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get nif => $state.composableBuilder(
+      column: $state.table.nif,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get nombreFiscal => $state.composableBuilder(
+      column: $state.table.nombreFiscal,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get direccionFiscal1 => $state.composableBuilder(
+      column: $state.table.direccionFiscal1,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get direccionFiscal2 => $state.composableBuilder(
+      column: $state.table.direccionFiscal2,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get codigoPostalFiscal => $state.composableBuilder(
+      column: $state.table.codigoPostalFiscal,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get poblacionFiscal => $state.composableBuilder(
+      column: $state.table.poblacionFiscal,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get provinciaFiscal => $state.composableBuilder(
+      column: $state.table.provinciaFiscal,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get latitudFiscal => $state.composableBuilder(
+      column: $state.table.latitudFiscal,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get longitudFiscal => $state.composableBuilder(
+      column: $state.table.longitudFiscal,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get empresaId => $state.composableBuilder(
+      column: $state.table.empresaId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get iva => $state.composableBuilder(
+      column: $state.table.iva,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get ventasAnyoActual => $state.composableBuilder(
+      column: $state.table.ventasAnyoActual,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get ventasAnyoAnterior => $state.composableBuilder(
+      column: $state.table.ventasAnyoAnterior,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get ventasHaceDosAnyos => $state.composableBuilder(
+      column: $state.table.ventasHaceDosAnyos,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get margenAnyoActual => $state.composableBuilder(
+      column: $state.table.margenAnyoActual,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get margenAnyoAnterior => $state.composableBuilder(
+      column: $state.table.margenAnyoAnterior,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get margenHaceDosAnyos => $state.composableBuilder(
+      column: $state.table.margenHaceDosAnyos,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get porcentajeAbonos => $state.composableBuilder(
+      column: $state.table.porcentajeAbonos,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get porcentajeGarantias => $state.composableBuilder(
+      column: $state.table.porcentajeGarantias,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get centralCompras => $state.composableBuilder(
+      column: $state.table.centralCompras,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get urlWeb => $state.composableBuilder(
+      column: $state.table.urlWeb,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get tarifaId => $state.composableBuilder(
+      column: $state.table.tarifaId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get tarifaDescripcion => $state.composableBuilder(
+      column: $state.table.tarifaDescripcion,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descuentoGeneralId => $state.composableBuilder(
+      column: $state.table.descuentoGeneralId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionDescuentoGeneral =>
+      $state.composableBuilder(
+          column: $state.table.descripcionDescuentoGeneral,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get tipoCalculoPrecio => $state.composableBuilder(
+      column: $state.table.tipoCalculoPrecio,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get descuentoProntoPago => $state.composableBuilder(
+      column: $state.table.descuentoProntoPago,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get riesgoConcedidoInterno =>
+      $state.composableBuilder(
+          column: $state.table.riesgoConcedidoInterno,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get riesgoConcedidoInternoDate =>
+      $state.composableBuilder(
+          column: $state.table.riesgoConcedidoInternoDate,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get riesgoConcedidoCoafe => $state.composableBuilder(
+      column: $state.table.riesgoConcedidoCoafe,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get riesgoConcedidoCoafeFecha =>
+      $state.composableBuilder(
+          column: $state.table.riesgoConcedidoCoafeFecha,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get riesgoConcedido => $state.composableBuilder(
+      column: $state.table.riesgoConcedido,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get riesgoPendienteCobroVencido =>
+      $state.composableBuilder(
+          column: $state.table.riesgoPendienteCobroVencido,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get riesgoPendienteCobroNoVencido =>
+      $state.composableBuilder(
+          column: $state.table.riesgoPendienteCobroNoVencido,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get riesgoPendienteServir => $state.composableBuilder(
+      column: $state.table.riesgoPendienteServir,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get riesgoPendienteFacturar =>
+      $state.composableBuilder(
+          column: $state.table.riesgoPendienteFacturar,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get obvservacionesInternas =>
+      $state.composableBuilder(
+          column: $state.table.obvservacionesInternas,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get clientePotencial => $state.composableBuilder(
+      column: $state.table.clientePotencial,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get clienteEstadoPotencialId =>
+      $state.composableBuilder(
+          column: $state.table.clienteEstadoPotencialId,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get clienteTipoPotencialId =>
+      $state.composableBuilder(
+          column: $state.table.clienteTipoPotencialId,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get representante1Id => $state.composableBuilder(
+      column: $state.table.representante1Id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get representante1Nombre => $state.composableBuilder(
+      column: $state.table.representante1Nombre,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get representante2Id => $state.composableBuilder(
+      column: $state.table.representante2Id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get representante2Nombre => $state.composableBuilder(
+      column: $state.table.representante2Nombre,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  $$PaisTableTableOrderingComposer get paisFiscalId {
+    final $$PaisTableTableOrderingComposer composer = $state.composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.paisFiscalId,
+        referencedTable: $state.db.paisTable,
+        getReferencedColumn: (t) => t.id,
+        builder: (joinBuilder, parentComposers) =>
+            $$PaisTableTableOrderingComposer(ComposerState(
+                $state.db, $state.db.paisTable, joinBuilder, parentComposers)));
+    return composer;
+  }
+
+  $$DivisaTableTableOrderingComposer get divisaId {
+    final $$DivisaTableTableOrderingComposer composer = $state.composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.divisaId,
+        referencedTable: $state.db.divisaTable,
+        getReferencedColumn: (t) => t.id,
+        builder: (joinBuilder, parentComposers) =>
+            $$DivisaTableTableOrderingComposer(ComposerState($state.db,
+                $state.db.divisaTable, joinBuilder, parentComposers)));
+    return composer;
+  }
+
+  $$PlazoDeCobroTableTableOrderingComposer get plazoDeCobroId {
+    final $$PlazoDeCobroTableTableOrderingComposer composer =
+        $state.composerBuilder(
+            composer: this,
+            getCurrentColumn: (t) => t.plazoDeCobroId,
+            referencedTable: $state.db.plazoDeCobroTable,
+            getReferencedColumn: (t) => t.id,
+            builder: (joinBuilder, parentComposers) =>
+                $$PlazoDeCobroTableTableOrderingComposer(ComposerState(
+                    $state.db,
+                    $state.db.plazoDeCobroTable,
+                    joinBuilder,
+                    parentComposers)));
+    return composer;
+  }
+
+  $$MetodoDeCobroTableTableOrderingComposer get metodoDeCobroId {
+    final $$MetodoDeCobroTableTableOrderingComposer composer =
+        $state.composerBuilder(
+            composer: this,
+            getCurrentColumn: (t) => t.metodoDeCobroId,
+            referencedTable: $state.db.metodoDeCobroTable,
+            getReferencedColumn: (t) => t.id,
+            builder: (joinBuilder, parentComposers) =>
+                $$MetodoDeCobroTableTableOrderingComposer(ComposerState(
+                    $state.db,
+                    $state.db.metodoDeCobroTable,
+                    joinBuilder,
+                    parentComposers)));
+    return composer;
+  }
+}
+
+typedef $$ClienteUsuarioTableTableCreateCompanionBuilder
+    = ClienteUsuarioTableCompanion Function({
+  required String clienteId,
+  required String usuarioId,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$ClienteUsuarioTableTableUpdateCompanionBuilder
+    = ClienteUsuarioTableCompanion Function({
+  Value<String> clienteId,
+  Value<String> usuarioId,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$ClienteUsuarioTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ClienteUsuarioTableTable,
+    ClienteUsuarioDTO,
+    $$ClienteUsuarioTableTableFilterComposer,
+    $$ClienteUsuarioTableTableOrderingComposer,
+    $$ClienteUsuarioTableTableCreateCompanionBuilder,
+    $$ClienteUsuarioTableTableUpdateCompanionBuilder> {
+  $$ClienteUsuarioTableTableTableManager(
+      _$RemoteAppDatabase db, $ClienteUsuarioTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ClienteUsuarioTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ClienteUsuarioTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> clienteId = const Value.absent(),
+            Value<String> usuarioId = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteUsuarioTableCompanion(
+            clienteId: clienteId,
+            usuarioId: usuarioId,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String clienteId,
+            required String usuarioId,
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteUsuarioTableCompanion.insert(
+            clienteId: clienteId,
+            usuarioId: usuarioId,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$ClienteUsuarioTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $ClienteUsuarioTableTable> {
+  $$ClienteUsuarioTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get clienteId => $state.composableBuilder(
+      column: $state.table.clienteId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get usuarioId => $state.composableBuilder(
+      column: $state.table.usuarioId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$ClienteUsuarioTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $ClienteUsuarioTableTable> {
+  $$ClienteUsuarioTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get clienteId => $state.composableBuilder(
+      column: $state.table.clienteId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get usuarioId => $state.composableBuilder(
+      column: $state.table.usuarioId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$ClienteGrupoNetoTableTableCreateCompanionBuilder
+    = ClienteGrupoNetoTableCompanion Function({
+  required String clienteId,
+  required String grupoNetoId,
+  required String grupoNetoDescripcion,
+  required double dtoAdicional,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$ClienteGrupoNetoTableTableUpdateCompanionBuilder
+    = ClienteGrupoNetoTableCompanion Function({
+  Value<String> clienteId,
+  Value<String> grupoNetoId,
+  Value<String> grupoNetoDescripcion,
+  Value<double> dtoAdicional,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$ClienteGrupoNetoTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ClienteGrupoNetoTableTable,
+    ClienteGrupoNetoDTO,
+    $$ClienteGrupoNetoTableTableFilterComposer,
+    $$ClienteGrupoNetoTableTableOrderingComposer,
+    $$ClienteGrupoNetoTableTableCreateCompanionBuilder,
+    $$ClienteGrupoNetoTableTableUpdateCompanionBuilder> {
+  $$ClienteGrupoNetoTableTableTableManager(
+      _$RemoteAppDatabase db, $ClienteGrupoNetoTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ClienteGrupoNetoTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ClienteGrupoNetoTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> clienteId = const Value.absent(),
+            Value<String> grupoNetoId = const Value.absent(),
+            Value<String> grupoNetoDescripcion = const Value.absent(),
+            Value<double> dtoAdicional = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteGrupoNetoTableCompanion(
+            clienteId: clienteId,
+            grupoNetoId: grupoNetoId,
+            grupoNetoDescripcion: grupoNetoDescripcion,
+            dtoAdicional: dtoAdicional,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String clienteId,
+            required String grupoNetoId,
+            required String grupoNetoDescripcion,
+            required double dtoAdicional,
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteGrupoNetoTableCompanion.insert(
+            clienteId: clienteId,
+            grupoNetoId: grupoNetoId,
+            grupoNetoDescripcion: grupoNetoDescripcion,
+            dtoAdicional: dtoAdicional,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$ClienteGrupoNetoTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $ClienteGrupoNetoTableTable> {
+  $$ClienteGrupoNetoTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get clienteId => $state.composableBuilder(
+      column: $state.table.clienteId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get grupoNetoId => $state.composableBuilder(
+      column: $state.table.grupoNetoId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get grupoNetoDescripcion => $state.composableBuilder(
+      column: $state.table.grupoNetoDescripcion,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get dtoAdicional => $state.composableBuilder(
+      column: $state.table.dtoAdicional,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$ClienteGrupoNetoTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $ClienteGrupoNetoTableTable> {
+  $$ClienteGrupoNetoTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get clienteId => $state.composableBuilder(
+      column: $state.table.clienteId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get grupoNetoId => $state.composableBuilder(
+      column: $state.table.grupoNetoId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get grupoNetoDescripcion => $state.composableBuilder(
+      column: $state.table.grupoNetoDescripcion,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get dtoAdicional => $state.composableBuilder(
+      column: $state.table.dtoAdicional,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$FamiliaTableTableCreateCompanionBuilder = FamiliaTableCompanion
+    Function({
+  required String id,
+  required String descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$FamiliaTableTableUpdateCompanionBuilder = FamiliaTableCompanion
+    Function({
+  Value<String> id,
+  Value<String> descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$FamiliaTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $FamiliaTableTable,
+    FamiliaDTO,
+    $$FamiliaTableTableFilterComposer,
+    $$FamiliaTableTableOrderingComposer,
+    $$FamiliaTableTableCreateCompanionBuilder,
+    $$FamiliaTableTableUpdateCompanionBuilder> {
+  $$FamiliaTableTableTableManager(
+      _$RemoteAppDatabase db, $FamiliaTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$FamiliaTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$FamiliaTableTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              FamiliaTableCompanion(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              FamiliaTableCompanion.insert(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$FamiliaTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $FamiliaTableTable> {
+  $$FamiliaTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionPL => $state.composableBuilder(
+      column: $state.table.descripcionPL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionPT => $state.composableBuilder(
+      column: $state.table.descripcionPT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionRO => $state.composableBuilder(
+      column: $state.table.descripcionRO,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionRU => $state.composableBuilder(
+      column: $state.table.descripcionRU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCN => $state.composableBuilder(
+      column: $state.table.descripcionCN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEL => $state.composableBuilder(
+      column: $state.table.descripcionEL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ComposableFilter clienteDescuentoTableRefs(
+      ComposableFilter Function($$ClienteDescuentoTableTableFilterComposer f)
+          f) {
+    final $$ClienteDescuentoTableTableFilterComposer composer =
+        $state.composerBuilder(
+            composer: this,
+            getCurrentColumn: (t) => t.id,
+            referencedTable: $state.db.clienteDescuentoTable,
+            getReferencedColumn: (t) => t.familiaId,
+            builder: (joinBuilder, parentComposers) =>
+                $$ClienteDescuentoTableTableFilterComposer(ComposerState(
+                    $state.db,
+                    $state.db.clienteDescuentoTable,
+                    joinBuilder,
+                    parentComposers)));
+    return f(composer);
+  }
+
+  ComposableFilter articuloTableRefs(
+      ComposableFilter Function($$ArticuloTableTableFilterComposer f) f) {
+    final $$ArticuloTableTableFilterComposer composer = $state.composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.id,
+        referencedTable: $state.db.articuloTable,
+        getReferencedColumn: (t) => t.familiaId,
+        builder: (joinBuilder, parentComposers) =>
+            $$ArticuloTableTableFilterComposer(ComposerState($state.db,
+                $state.db.articuloTable, joinBuilder, parentComposers)));
+    return f(composer);
+  }
+}
+
+class $$FamiliaTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $FamiliaTableTable> {
+  $$FamiliaTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionPL => $state.composableBuilder(
+      column: $state.table.descripcionPL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionPT => $state.composableBuilder(
+      column: $state.table.descripcionPT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionRO => $state.composableBuilder(
+      column: $state.table.descripcionRO,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionRU => $state.composableBuilder(
+      column: $state.table.descripcionRU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCN => $state.composableBuilder(
+      column: $state.table.descripcionCN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEL => $state.composableBuilder(
+      column: $state.table.descripcionEL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$SubfamiliaTableTableCreateCompanionBuilder = SubfamiliaTableCompanion
+    Function({
+  required String id,
+  required String familiaId,
+  required String descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$SubfamiliaTableTableUpdateCompanionBuilder = SubfamiliaTableCompanion
+    Function({
+  Value<String> id,
+  Value<String> familiaId,
+  Value<String> descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$SubfamiliaTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $SubfamiliaTableTable,
+    SubfamiliaDTO,
+    $$SubfamiliaTableTableFilterComposer,
+    $$SubfamiliaTableTableOrderingComposer,
+    $$SubfamiliaTableTableCreateCompanionBuilder,
+    $$SubfamiliaTableTableUpdateCompanionBuilder> {
+  $$SubfamiliaTableTableTableManager(
+      _$RemoteAppDatabase db, $SubfamiliaTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$SubfamiliaTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$SubfamiliaTableTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> familiaId = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              SubfamiliaTableCompanion(
+            id: id,
+            familiaId: familiaId,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String familiaId,
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              SubfamiliaTableCompanion.insert(
+            id: id,
+            familiaId: familiaId,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$SubfamiliaTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $SubfamiliaTableTable> {
+  $$SubfamiliaTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get familiaId => $state.composableBuilder(
+      column: $state.table.familiaId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionPL => $state.composableBuilder(
+      column: $state.table.descripcionPL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionPT => $state.composableBuilder(
+      column: $state.table.descripcionPT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionRO => $state.composableBuilder(
+      column: $state.table.descripcionRO,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionRU => $state.composableBuilder(
+      column: $state.table.descripcionRU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCN => $state.composableBuilder(
+      column: $state.table.descripcionCN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEL => $state.composableBuilder(
+      column: $state.table.descripcionEL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ComposableFilter clienteDescuentoTableRefs(
+      ComposableFilter Function($$ClienteDescuentoTableTableFilterComposer f)
+          f) {
+    final $$ClienteDescuentoTableTableFilterComposer composer =
+        $state.composerBuilder(
+            composer: this,
+            getCurrentColumn: (t) => t.id,
+            referencedTable: $state.db.clienteDescuentoTable,
+            getReferencedColumn: (t) => t.subfamiliaId,
+            builder: (joinBuilder, parentComposers) =>
+                $$ClienteDescuentoTableTableFilterComposer(ComposerState(
+                    $state.db,
+                    $state.db.clienteDescuentoTable,
+                    joinBuilder,
+                    parentComposers)));
+    return f(composer);
+  }
+
+  ComposableFilter articuloTableRefs(
+      ComposableFilter Function($$ArticuloTableTableFilterComposer f) f) {
+    final $$ArticuloTableTableFilterComposer composer = $state.composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.id,
+        referencedTable: $state.db.articuloTable,
+        getReferencedColumn: (t) => t.subfamiliaId,
+        builder: (joinBuilder, parentComposers) =>
+            $$ArticuloTableTableFilterComposer(ComposerState($state.db,
+                $state.db.articuloTable, joinBuilder, parentComposers)));
+    return f(composer);
+  }
+}
+
+class $$SubfamiliaTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $SubfamiliaTableTable> {
+  $$SubfamiliaTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get familiaId => $state.composableBuilder(
+      column: $state.table.familiaId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionPL => $state.composableBuilder(
+      column: $state.table.descripcionPL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionPT => $state.composableBuilder(
+      column: $state.table.descripcionPT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionRO => $state.composableBuilder(
+      column: $state.table.descripcionRO,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionRU => $state.composableBuilder(
+      column: $state.table.descripcionRU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCN => $state.composableBuilder(
+      column: $state.table.descripcionCN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEL => $state.composableBuilder(
+      column: $state.table.descripcionEL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$ClienteDescuentoTableTableCreateCompanionBuilder
+    = ClienteDescuentoTableCompanion Function({
+  required String clienteId,
+  required String articuloId,
+  required String familiaId,
+  required String subfamiliaId,
+  required int cantidadDesde,
+  required double descuento,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$ClienteDescuentoTableTableUpdateCompanionBuilder
+    = ClienteDescuentoTableCompanion Function({
+  Value<String> clienteId,
+  Value<String> articuloId,
+  Value<String> familiaId,
+  Value<String> subfamiliaId,
+  Value<int> cantidadDesde,
+  Value<double> descuento,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$ClienteDescuentoTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ClienteDescuentoTableTable,
+    ClienteDescuentoDTO,
+    $$ClienteDescuentoTableTableFilterComposer,
+    $$ClienteDescuentoTableTableOrderingComposer,
+    $$ClienteDescuentoTableTableCreateCompanionBuilder,
+    $$ClienteDescuentoTableTableUpdateCompanionBuilder> {
+  $$ClienteDescuentoTableTableTableManager(
+      _$RemoteAppDatabase db, $ClienteDescuentoTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ClienteDescuentoTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ClienteDescuentoTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> clienteId = const Value.absent(),
+            Value<String> articuloId = const Value.absent(),
+            Value<String> familiaId = const Value.absent(),
+            Value<String> subfamiliaId = const Value.absent(),
+            Value<int> cantidadDesde = const Value.absent(),
+            Value<double> descuento = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteDescuentoTableCompanion(
+            clienteId: clienteId,
+            articuloId: articuloId,
+            familiaId: familiaId,
+            subfamiliaId: subfamiliaId,
+            cantidadDesde: cantidadDesde,
+            descuento: descuento,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String clienteId,
+            required String articuloId,
+            required String familiaId,
+            required String subfamiliaId,
+            required int cantidadDesde,
+            required double descuento,
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteDescuentoTableCompanion.insert(
+            clienteId: clienteId,
+            articuloId: articuloId,
+            familiaId: familiaId,
+            subfamiliaId: subfamiliaId,
+            cantidadDesde: cantidadDesde,
+            descuento: descuento,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$ClienteDescuentoTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $ClienteDescuentoTableTable> {
+  $$ClienteDescuentoTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get clienteId => $state.composableBuilder(
+      column: $state.table.clienteId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get articuloId => $state.composableBuilder(
+      column: $state.table.articuloId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get cantidadDesde => $state.composableBuilder(
+      column: $state.table.cantidadDesde,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get descuento => $state.composableBuilder(
+      column: $state.table.descuento,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  $$FamiliaTableTableFilterComposer get familiaId {
+    final $$FamiliaTableTableFilterComposer composer = $state.composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.familiaId,
+        referencedTable: $state.db.familiaTable,
+        getReferencedColumn: (t) => t.id,
+        builder: (joinBuilder, parentComposers) =>
+            $$FamiliaTableTableFilterComposer(ComposerState($state.db,
+                $state.db.familiaTable, joinBuilder, parentComposers)));
+    return composer;
+  }
+
+  $$SubfamiliaTableTableFilterComposer get subfamiliaId {
+    final $$SubfamiliaTableTableFilterComposer composer =
+        $state.composerBuilder(
+            composer: this,
+            getCurrentColumn: (t) => t.subfamiliaId,
+            referencedTable: $state.db.subfamiliaTable,
+            getReferencedColumn: (t) => t.id,
+            builder: (joinBuilder, parentComposers) =>
+                $$SubfamiliaTableTableFilterComposer(ComposerState($state.db,
+                    $state.db.subfamiliaTable, joinBuilder, parentComposers)));
+    return composer;
+  }
+}
+
+class $$ClienteDescuentoTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $ClienteDescuentoTableTable> {
+  $$ClienteDescuentoTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get clienteId => $state.composableBuilder(
+      column: $state.table.clienteId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get articuloId => $state.composableBuilder(
+      column: $state.table.articuloId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get cantidadDesde => $state.composableBuilder(
+      column: $state.table.cantidadDesde,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get descuento => $state.composableBuilder(
+      column: $state.table.descuento,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  $$FamiliaTableTableOrderingComposer get familiaId {
+    final $$FamiliaTableTableOrderingComposer composer = $state.composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.familiaId,
+        referencedTable: $state.db.familiaTable,
+        getReferencedColumn: (t) => t.id,
+        builder: (joinBuilder, parentComposers) =>
+            $$FamiliaTableTableOrderingComposer(ComposerState($state.db,
+                $state.db.familiaTable, joinBuilder, parentComposers)));
+    return composer;
+  }
+
+  $$SubfamiliaTableTableOrderingComposer get subfamiliaId {
+    final $$SubfamiliaTableTableOrderingComposer composer =
+        $state.composerBuilder(
+            composer: this,
+            getCurrentColumn: (t) => t.subfamiliaId,
+            referencedTable: $state.db.subfamiliaTable,
+            getReferencedColumn: (t) => t.id,
+            builder: (joinBuilder, parentComposers) =>
+                $$SubfamiliaTableTableOrderingComposer(ComposerState($state.db,
+                    $state.db.subfamiliaTable, joinBuilder, parentComposers)));
+    return composer;
+  }
+}
+
+typedef $$ClienteContactoTableTableCreateCompanionBuilder
+    = ClienteContactoTableCompanion Function({
+  required String clienteId,
+  required String contactoId,
+  Value<String?> observaciones,
+  Value<String?> nombre,
+  Value<String?> apellido1,
+  Value<String?> apellido2,
+  Value<String?> telefono1,
+  Value<String?> telefono2,
+  Value<String?> email,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$ClienteContactoTableTableUpdateCompanionBuilder
+    = ClienteContactoTableCompanion Function({
+  Value<String> clienteId,
+  Value<String> contactoId,
+  Value<String?> observaciones,
+  Value<String?> nombre,
+  Value<String?> apellido1,
+  Value<String?> apellido2,
+  Value<String?> telefono1,
+  Value<String?> telefono2,
+  Value<String?> email,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$ClienteContactoTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ClienteContactoTableTable,
+    ClienteContactoDTO,
+    $$ClienteContactoTableTableFilterComposer,
+    $$ClienteContactoTableTableOrderingComposer,
+    $$ClienteContactoTableTableCreateCompanionBuilder,
+    $$ClienteContactoTableTableUpdateCompanionBuilder> {
+  $$ClienteContactoTableTableTableManager(
+      _$RemoteAppDatabase db, $ClienteContactoTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ClienteContactoTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ClienteContactoTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> clienteId = const Value.absent(),
+            Value<String> contactoId = const Value.absent(),
+            Value<String?> observaciones = const Value.absent(),
+            Value<String?> nombre = const Value.absent(),
+            Value<String?> apellido1 = const Value.absent(),
+            Value<String?> apellido2 = const Value.absent(),
+            Value<String?> telefono1 = const Value.absent(),
+            Value<String?> telefono2 = const Value.absent(),
+            Value<String?> email = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteContactoTableCompanion(
+            clienteId: clienteId,
+            contactoId: contactoId,
+            observaciones: observaciones,
+            nombre: nombre,
+            apellido1: apellido1,
+            apellido2: apellido2,
+            telefono1: telefono1,
+            telefono2: telefono2,
+            email: email,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String clienteId,
+            required String contactoId,
+            Value<String?> observaciones = const Value.absent(),
+            Value<String?> nombre = const Value.absent(),
+            Value<String?> apellido1 = const Value.absent(),
+            Value<String?> apellido2 = const Value.absent(),
+            Value<String?> telefono1 = const Value.absent(),
+            Value<String?> telefono2 = const Value.absent(),
+            Value<String?> email = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteContactoTableCompanion.insert(
+            clienteId: clienteId,
+            contactoId: contactoId,
+            observaciones: observaciones,
+            nombre: nombre,
+            apellido1: apellido1,
+            apellido2: apellido2,
+            telefono1: telefono1,
+            telefono2: telefono2,
+            email: email,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$ClienteContactoTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $ClienteContactoTableTable> {
+  $$ClienteContactoTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get clienteId => $state.composableBuilder(
+      column: $state.table.clienteId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get contactoId => $state.composableBuilder(
+      column: $state.table.contactoId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get observaciones => $state.composableBuilder(
+      column: $state.table.observaciones,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get nombre => $state.composableBuilder(
+      column: $state.table.nombre,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get apellido1 => $state.composableBuilder(
+      column: $state.table.apellido1,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get apellido2 => $state.composableBuilder(
+      column: $state.table.apellido2,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get telefono1 => $state.composableBuilder(
+      column: $state.table.telefono1,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get telefono2 => $state.composableBuilder(
+      column: $state.table.telefono2,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get email => $state.composableBuilder(
+      column: $state.table.email,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$ClienteContactoTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $ClienteContactoTableTable> {
+  $$ClienteContactoTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get clienteId => $state.composableBuilder(
+      column: $state.table.clienteId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get contactoId => $state.composableBuilder(
+      column: $state.table.contactoId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get observaciones => $state.composableBuilder(
+      column: $state.table.observaciones,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get nombre => $state.composableBuilder(
+      column: $state.table.nombre,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get apellido1 => $state.composableBuilder(
+      column: $state.table.apellido1,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get apellido2 => $state.composableBuilder(
+      column: $state.table.apellido2,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get telefono1 => $state.composableBuilder(
+      column: $state.table.telefono1,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get telefono2 => $state.composableBuilder(
+      column: $state.table.telefono2,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get email => $state.composableBuilder(
+      column: $state.table.email,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$ClienteDireccionTableTableCreateCompanionBuilder
+    = ClienteDireccionTableCompanion Function({
+  required String clienteId,
+  required String direccionId,
+  Value<String?> nombre,
+  Value<String?> direccion1,
+  Value<String?> direccion2,
+  Value<String?> codigoPostal,
+  Value<String?> poblacion,
+  Value<String?> provincia,
+  Value<String?> paisId,
+  required double latitud,
+  required double longitud,
+  Value<String?> predeterminada,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$ClienteDireccionTableTableUpdateCompanionBuilder
+    = ClienteDireccionTableCompanion Function({
+  Value<String> clienteId,
+  Value<String> direccionId,
+  Value<String?> nombre,
+  Value<String?> direccion1,
+  Value<String?> direccion2,
+  Value<String?> codigoPostal,
+  Value<String?> poblacion,
+  Value<String?> provincia,
+  Value<String?> paisId,
+  Value<double> latitud,
+  Value<double> longitud,
+  Value<String?> predeterminada,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$ClienteDireccionTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ClienteDireccionTableTable,
+    ClienteDireccionDTO,
+    $$ClienteDireccionTableTableFilterComposer,
+    $$ClienteDireccionTableTableOrderingComposer,
+    $$ClienteDireccionTableTableCreateCompanionBuilder,
+    $$ClienteDireccionTableTableUpdateCompanionBuilder> {
+  $$ClienteDireccionTableTableTableManager(
+      _$RemoteAppDatabase db, $ClienteDireccionTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ClienteDireccionTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ClienteDireccionTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> clienteId = const Value.absent(),
+            Value<String> direccionId = const Value.absent(),
+            Value<String?> nombre = const Value.absent(),
+            Value<String?> direccion1 = const Value.absent(),
+            Value<String?> direccion2 = const Value.absent(),
+            Value<String?> codigoPostal = const Value.absent(),
+            Value<String?> poblacion = const Value.absent(),
+            Value<String?> provincia = const Value.absent(),
+            Value<String?> paisId = const Value.absent(),
+            Value<double> latitud = const Value.absent(),
+            Value<double> longitud = const Value.absent(),
+            Value<String?> predeterminada = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteDireccionTableCompanion(
+            clienteId: clienteId,
+            direccionId: direccionId,
+            nombre: nombre,
+            direccion1: direccion1,
+            direccion2: direccion2,
+            codigoPostal: codigoPostal,
+            poblacion: poblacion,
+            provincia: provincia,
+            paisId: paisId,
+            latitud: latitud,
+            longitud: longitud,
+            predeterminada: predeterminada,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String clienteId,
+            required String direccionId,
+            Value<String?> nombre = const Value.absent(),
+            Value<String?> direccion1 = const Value.absent(),
+            Value<String?> direccion2 = const Value.absent(),
+            Value<String?> codigoPostal = const Value.absent(),
+            Value<String?> poblacion = const Value.absent(),
+            Value<String?> provincia = const Value.absent(),
+            Value<String?> paisId = const Value.absent(),
+            required double latitud,
+            required double longitud,
+            Value<String?> predeterminada = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteDireccionTableCompanion.insert(
+            clienteId: clienteId,
+            direccionId: direccionId,
+            nombre: nombre,
+            direccion1: direccion1,
+            direccion2: direccion2,
+            codigoPostal: codigoPostal,
+            poblacion: poblacion,
+            provincia: provincia,
+            paisId: paisId,
+            latitud: latitud,
+            longitud: longitud,
+            predeterminada: predeterminada,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$ClienteDireccionTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $ClienteDireccionTableTable> {
+  $$ClienteDireccionTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get clienteId => $state.composableBuilder(
+      column: $state.table.clienteId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get direccionId => $state.composableBuilder(
+      column: $state.table.direccionId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get nombre => $state.composableBuilder(
+      column: $state.table.nombre,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get direccion1 => $state.composableBuilder(
+      column: $state.table.direccion1,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get direccion2 => $state.composableBuilder(
+      column: $state.table.direccion2,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get codigoPostal => $state.composableBuilder(
+      column: $state.table.codigoPostal,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get poblacion => $state.composableBuilder(
+      column: $state.table.poblacion,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get provincia => $state.composableBuilder(
+      column: $state.table.provincia,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get latitud => $state.composableBuilder(
+      column: $state.table.latitud,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get longitud => $state.composableBuilder(
+      column: $state.table.longitud,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get predeterminada => $state.composableBuilder(
+      column: $state.table.predeterminada,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  $$PaisTableTableFilterComposer get paisId {
+    final $$PaisTableTableFilterComposer composer = $state.composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.paisId,
+        referencedTable: $state.db.paisTable,
+        getReferencedColumn: (t) => t.id,
+        builder: (joinBuilder, parentComposers) =>
+            $$PaisTableTableFilterComposer(ComposerState(
+                $state.db, $state.db.paisTable, joinBuilder, parentComposers)));
+    return composer;
+  }
+}
+
+class $$ClienteDireccionTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $ClienteDireccionTableTable> {
+  $$ClienteDireccionTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get clienteId => $state.composableBuilder(
+      column: $state.table.clienteId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get direccionId => $state.composableBuilder(
+      column: $state.table.direccionId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get nombre => $state.composableBuilder(
+      column: $state.table.nombre,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get direccion1 => $state.composableBuilder(
+      column: $state.table.direccion1,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get direccion2 => $state.composableBuilder(
+      column: $state.table.direccion2,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get codigoPostal => $state.composableBuilder(
+      column: $state.table.codigoPostal,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get poblacion => $state.composableBuilder(
+      column: $state.table.poblacion,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get provincia => $state.composableBuilder(
+      column: $state.table.provincia,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get latitud => $state.composableBuilder(
+      column: $state.table.latitud,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get longitud => $state.composableBuilder(
+      column: $state.table.longitud,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get predeterminada => $state.composableBuilder(
+      column: $state.table.predeterminada,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  $$PaisTableTableOrderingComposer get paisId {
+    final $$PaisTableTableOrderingComposer composer = $state.composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.paisId,
+        referencedTable: $state.db.paisTable,
+        getReferencedColumn: (t) => t.id,
+        builder: (joinBuilder, parentComposers) =>
+            $$PaisTableTableOrderingComposer(ComposerState(
+                $state.db, $state.db.paisTable, joinBuilder, parentComposers)));
+    return composer;
+  }
+}
+
+typedef $$ClientePagoPendienteTableTableCreateCompanionBuilder
+    = ClientePagoPendienteTableCompanion Function({
+  required String clienteId,
+  required String efectoId,
+  Value<String?> facutaId,
+  Value<DateTime?> fechaFactura,
+  Value<DateTime?> fechaExpiracion,
+  Value<String?> metodoDeCobroId,
+  Value<String?> estadoCobroId,
+  Value<double?> importe,
+  Value<DateTime?> fechaExpiracionInicial,
+  Value<String?> vencidoJBM,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$ClientePagoPendienteTableTableUpdateCompanionBuilder
+    = ClientePagoPendienteTableCompanion Function({
+  Value<String> clienteId,
+  Value<String> efectoId,
+  Value<String?> facutaId,
+  Value<DateTime?> fechaFactura,
+  Value<DateTime?> fechaExpiracion,
+  Value<String?> metodoDeCobroId,
+  Value<String?> estadoCobroId,
+  Value<double?> importe,
+  Value<DateTime?> fechaExpiracionInicial,
+  Value<String?> vencidoJBM,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$ClientePagoPendienteTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ClientePagoPendienteTableTable,
+    ClientePagoPendienteDTO,
+    $$ClientePagoPendienteTableTableFilterComposer,
+    $$ClientePagoPendienteTableTableOrderingComposer,
+    $$ClientePagoPendienteTableTableCreateCompanionBuilder,
+    $$ClientePagoPendienteTableTableUpdateCompanionBuilder> {
+  $$ClientePagoPendienteTableTableTableManager(
+      _$RemoteAppDatabase db, $ClientePagoPendienteTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ClientePagoPendienteTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ClientePagoPendienteTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> clienteId = const Value.absent(),
+            Value<String> efectoId = const Value.absent(),
+            Value<String?> facutaId = const Value.absent(),
+            Value<DateTime?> fechaFactura = const Value.absent(),
+            Value<DateTime?> fechaExpiracion = const Value.absent(),
+            Value<String?> metodoDeCobroId = const Value.absent(),
+            Value<String?> estadoCobroId = const Value.absent(),
+            Value<double?> importe = const Value.absent(),
+            Value<DateTime?> fechaExpiracionInicial = const Value.absent(),
+            Value<String?> vencidoJBM = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClientePagoPendienteTableCompanion(
+            clienteId: clienteId,
+            efectoId: efectoId,
+            facutaId: facutaId,
+            fechaFactura: fechaFactura,
+            fechaExpiracion: fechaExpiracion,
+            metodoDeCobroId: metodoDeCobroId,
+            estadoCobroId: estadoCobroId,
+            importe: importe,
+            fechaExpiracionInicial: fechaExpiracionInicial,
+            vencidoJBM: vencidoJBM,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String clienteId,
+            required String efectoId,
+            Value<String?> facutaId = const Value.absent(),
+            Value<DateTime?> fechaFactura = const Value.absent(),
+            Value<DateTime?> fechaExpiracion = const Value.absent(),
+            Value<String?> metodoDeCobroId = const Value.absent(),
+            Value<String?> estadoCobroId = const Value.absent(),
+            Value<double?> importe = const Value.absent(),
+            Value<DateTime?> fechaExpiracionInicial = const Value.absent(),
+            Value<String?> vencidoJBM = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClientePagoPendienteTableCompanion.insert(
+            clienteId: clienteId,
+            efectoId: efectoId,
+            facutaId: facutaId,
+            fechaFactura: fechaFactura,
+            fechaExpiracion: fechaExpiracion,
+            metodoDeCobroId: metodoDeCobroId,
+            estadoCobroId: estadoCobroId,
+            importe: importe,
+            fechaExpiracionInicial: fechaExpiracionInicial,
+            vencidoJBM: vencidoJBM,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$ClientePagoPendienteTableTableFilterComposer extends FilterComposer<
+    _$RemoteAppDatabase, $ClientePagoPendienteTableTable> {
+  $$ClientePagoPendienteTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get clienteId => $state.composableBuilder(
+      column: $state.table.clienteId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get efectoId => $state.composableBuilder(
+      column: $state.table.efectoId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get facutaId => $state.composableBuilder(
+      column: $state.table.facutaId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get fechaFactura => $state.composableBuilder(
+      column: $state.table.fechaFactura,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get fechaExpiracion => $state.composableBuilder(
+      column: $state.table.fechaExpiracion,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get estadoCobroId => $state.composableBuilder(
+      column: $state.table.estadoCobroId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get importe => $state.composableBuilder(
+      column: $state.table.importe,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get fechaExpiracionInicial =>
+      $state.composableBuilder(
+          column: $state.table.fechaExpiracionInicial,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get vencidoJBM => $state.composableBuilder(
+      column: $state.table.vencidoJBM,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  $$MetodoDeCobroTableTableFilterComposer get metodoDeCobroId {
+    final $$MetodoDeCobroTableTableFilterComposer composer = $state
+        .composerBuilder(
+            composer: this,
+            getCurrentColumn: (t) => t.metodoDeCobroId,
+            referencedTable: $state.db.metodoDeCobroTable,
+            getReferencedColumn: (t) => t.id,
+            builder: (joinBuilder, parentComposers) =>
+                $$MetodoDeCobroTableTableFilterComposer(ComposerState(
+                    $state.db,
+                    $state.db.metodoDeCobroTable,
+                    joinBuilder,
+                    parentComposers)));
+    return composer;
+  }
+}
+
+class $$ClientePagoPendienteTableTableOrderingComposer extends OrderingComposer<
+    _$RemoteAppDatabase, $ClientePagoPendienteTableTable> {
+  $$ClientePagoPendienteTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get clienteId => $state.composableBuilder(
+      column: $state.table.clienteId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get efectoId => $state.composableBuilder(
+      column: $state.table.efectoId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get facutaId => $state.composableBuilder(
+      column: $state.table.facutaId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get fechaFactura => $state.composableBuilder(
+      column: $state.table.fechaFactura,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get fechaExpiracion => $state.composableBuilder(
+      column: $state.table.fechaExpiracion,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get estadoCobroId => $state.composableBuilder(
+      column: $state.table.estadoCobroId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get importe => $state.composableBuilder(
+      column: $state.table.importe,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get fechaExpiracionInicial =>
+      $state.composableBuilder(
+          column: $state.table.fechaExpiracionInicial,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get vencidoJBM => $state.composableBuilder(
+      column: $state.table.vencidoJBM,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  $$MetodoDeCobroTableTableOrderingComposer get metodoDeCobroId {
+    final $$MetodoDeCobroTableTableOrderingComposer composer =
+        $state.composerBuilder(
+            composer: this,
+            getCurrentColumn: (t) => t.metodoDeCobroId,
+            referencedTable: $state.db.metodoDeCobroTable,
+            getReferencedColumn: (t) => t.id,
+            builder: (joinBuilder, parentComposers) =>
+                $$MetodoDeCobroTableTableOrderingComposer(ComposerState(
+                    $state.db,
+                    $state.db.metodoDeCobroTable,
+                    joinBuilder,
+                    parentComposers)));
+    return composer;
+  }
+}
+
+typedef $$ClientePrecioNetoTableTableCreateCompanionBuilder
+    = ClientePrecioNetoTableCompanion Function({
+  required String clienteId,
+  required String articuloId,
+  required int cantidadDesde,
+  required double precio,
+  Value<int?> tipoPrecio,
+  Value<double?> dtoAdicional,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$ClientePrecioNetoTableTableUpdateCompanionBuilder
+    = ClientePrecioNetoTableCompanion Function({
+  Value<String> clienteId,
+  Value<String> articuloId,
+  Value<int> cantidadDesde,
+  Value<double> precio,
+  Value<int?> tipoPrecio,
+  Value<double?> dtoAdicional,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$ClientePrecioNetoTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ClientePrecioNetoTableTable,
+    ClientePrecioNetoDTO,
+    $$ClientePrecioNetoTableTableFilterComposer,
+    $$ClientePrecioNetoTableTableOrderingComposer,
+    $$ClientePrecioNetoTableTableCreateCompanionBuilder,
+    $$ClientePrecioNetoTableTableUpdateCompanionBuilder> {
+  $$ClientePrecioNetoTableTableTableManager(
+      _$RemoteAppDatabase db, $ClientePrecioNetoTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ClientePrecioNetoTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ClientePrecioNetoTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> clienteId = const Value.absent(),
+            Value<String> articuloId = const Value.absent(),
+            Value<int> cantidadDesde = const Value.absent(),
+            Value<double> precio = const Value.absent(),
+            Value<int?> tipoPrecio = const Value.absent(),
+            Value<double?> dtoAdicional = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClientePrecioNetoTableCompanion(
+            clienteId: clienteId,
+            articuloId: articuloId,
+            cantidadDesde: cantidadDesde,
+            precio: precio,
+            tipoPrecio: tipoPrecio,
+            dtoAdicional: dtoAdicional,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String clienteId,
+            required String articuloId,
+            required int cantidadDesde,
+            required double precio,
+            Value<int?> tipoPrecio = const Value.absent(),
+            Value<double?> dtoAdicional = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClientePrecioNetoTableCompanion.insert(
+            clienteId: clienteId,
+            articuloId: articuloId,
+            cantidadDesde: cantidadDesde,
+            precio: precio,
+            tipoPrecio: tipoPrecio,
+            dtoAdicional: dtoAdicional,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$ClientePrecioNetoTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $ClientePrecioNetoTableTable> {
+  $$ClientePrecioNetoTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get clienteId => $state.composableBuilder(
+      column: $state.table.clienteId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get articuloId => $state.composableBuilder(
+      column: $state.table.articuloId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get cantidadDesde => $state.composableBuilder(
+      column: $state.table.cantidadDesde,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get precio => $state.composableBuilder(
+      column: $state.table.precio,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get tipoPrecio => $state.composableBuilder(
+      column: $state.table.tipoPrecio,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get dtoAdicional => $state.composableBuilder(
+      column: $state.table.dtoAdicional,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$ClientePrecioNetoTableTableOrderingComposer extends OrderingComposer<
+    _$RemoteAppDatabase, $ClientePrecioNetoTableTable> {
+  $$ClientePrecioNetoTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get clienteId => $state.composableBuilder(
+      column: $state.table.clienteId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get articuloId => $state.composableBuilder(
+      column: $state.table.articuloId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get cantidadDesde => $state.composableBuilder(
+      column: $state.table.cantidadDesde,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get precio => $state.composableBuilder(
+      column: $state.table.precio,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get tipoPrecio => $state.composableBuilder(
+      column: $state.table.tipoPrecio,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get dtoAdicional => $state.composableBuilder(
+      column: $state.table.dtoAdicional,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$ClienteRappelTableTableCreateCompanionBuilder
+    = ClienteRappelTableCompanion Function({
+  required String clienteId,
+  required String rappelId,
+  required String descripcion,
+  required DateTime fechaDesDe,
+  Value<DateTime?> fechaHasta,
+  Value<String?> nombreArchivo,
+  Value<String?> firmado,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$ClienteRappelTableTableUpdateCompanionBuilder
+    = ClienteRappelTableCompanion Function({
+  Value<String> clienteId,
+  Value<String> rappelId,
+  Value<String> descripcion,
+  Value<DateTime> fechaDesDe,
+  Value<DateTime?> fechaHasta,
+  Value<String?> nombreArchivo,
+  Value<String?> firmado,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$ClienteRappelTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ClienteRappelTableTable,
+    ClienteRappelDTO,
+    $$ClienteRappelTableTableFilterComposer,
+    $$ClienteRappelTableTableOrderingComposer,
+    $$ClienteRappelTableTableCreateCompanionBuilder,
+    $$ClienteRappelTableTableUpdateCompanionBuilder> {
+  $$ClienteRappelTableTableTableManager(
+      _$RemoteAppDatabase db, $ClienteRappelTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$ClienteRappelTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer: $$ClienteRappelTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> clienteId = const Value.absent(),
+            Value<String> rappelId = const Value.absent(),
+            Value<String> descripcion = const Value.absent(),
+            Value<DateTime> fechaDesDe = const Value.absent(),
+            Value<DateTime?> fechaHasta = const Value.absent(),
+            Value<String?> nombreArchivo = const Value.absent(),
+            Value<String?> firmado = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteRappelTableCompanion(
+            clienteId: clienteId,
+            rappelId: rappelId,
+            descripcion: descripcion,
+            fechaDesDe: fechaDesDe,
+            fechaHasta: fechaHasta,
+            nombreArchivo: nombreArchivo,
+            firmado: firmado,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String clienteId,
+            required String rappelId,
+            required String descripcion,
+            required DateTime fechaDesDe,
+            Value<DateTime?> fechaHasta = const Value.absent(),
+            Value<String?> nombreArchivo = const Value.absent(),
+            Value<String?> firmado = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteRappelTableCompanion.insert(
+            clienteId: clienteId,
+            rappelId: rappelId,
+            descripcion: descripcion,
+            fechaDesDe: fechaDesDe,
+            fechaHasta: fechaHasta,
+            nombreArchivo: nombreArchivo,
+            firmado: firmado,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$ClienteRappelTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $ClienteRappelTableTable> {
+  $$ClienteRappelTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get clienteId => $state.composableBuilder(
+      column: $state.table.clienteId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get rappelId => $state.composableBuilder(
+      column: $state.table.rappelId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcion => $state.composableBuilder(
+      column: $state.table.descripcion,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get fechaDesDe => $state.composableBuilder(
+      column: $state.table.fechaDesDe,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get fechaHasta => $state.composableBuilder(
+      column: $state.table.fechaHasta,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get nombreArchivo => $state.composableBuilder(
+      column: $state.table.nombreArchivo,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get firmado => $state.composableBuilder(
+      column: $state.table.firmado,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$ClienteRappelTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $ClienteRappelTableTable> {
+  $$ClienteRappelTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get clienteId => $state.composableBuilder(
+      column: $state.table.clienteId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get rappelId => $state.composableBuilder(
+      column: $state.table.rappelId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcion => $state.composableBuilder(
+      column: $state.table.descripcion,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get fechaDesDe => $state.composableBuilder(
+      column: $state.table.fechaDesDe,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get fechaHasta => $state.composableBuilder(
+      column: $state.table.fechaHasta,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get nombreArchivo => $state.composableBuilder(
+      column: $state.table.nombreArchivo,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get firmado => $state.composableBuilder(
+      column: $state.table.firmado,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$ClienteEstadoPotencialTableTableCreateCompanionBuilder
+    = ClienteEstadoPotencialTableCompanion Function({
+  required String id,
+  required String descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$ClienteEstadoPotencialTableTableUpdateCompanionBuilder
+    = ClienteEstadoPotencialTableCompanion Function({
+  Value<String> id,
+  Value<String> descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$ClienteEstadoPotencialTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ClienteEstadoPotencialTableTable,
+    ClienteEstadoPotencialDTO,
+    $$ClienteEstadoPotencialTableTableFilterComposer,
+    $$ClienteEstadoPotencialTableTableOrderingComposer,
+    $$ClienteEstadoPotencialTableTableCreateCompanionBuilder,
+    $$ClienteEstadoPotencialTableTableUpdateCompanionBuilder> {
+  $$ClienteEstadoPotencialTableTableTableManager(
+      _$RemoteAppDatabase db, $ClienteEstadoPotencialTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ClienteEstadoPotencialTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ClienteEstadoPotencialTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteEstadoPotencialTableCompanion(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteEstadoPotencialTableCompanion.insert(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$ClienteEstadoPotencialTableTableFilterComposer extends FilterComposer<
+    _$RemoteAppDatabase, $ClienteEstadoPotencialTableTable> {
+  $$ClienteEstadoPotencialTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionPL => $state.composableBuilder(
+      column: $state.table.descripcionPL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionPT => $state.composableBuilder(
+      column: $state.table.descripcionPT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionRO => $state.composableBuilder(
+      column: $state.table.descripcionRO,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionRU => $state.composableBuilder(
+      column: $state.table.descripcionRU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCN => $state.composableBuilder(
+      column: $state.table.descripcionCN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEL => $state.composableBuilder(
+      column: $state.table.descripcionEL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$ClienteEstadoPotencialTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase,
+        $ClienteEstadoPotencialTableTable> {
+  $$ClienteEstadoPotencialTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionPL => $state.composableBuilder(
+      column: $state.table.descripcionPL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionPT => $state.composableBuilder(
+      column: $state.table.descripcionPT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionRO => $state.composableBuilder(
+      column: $state.table.descripcionRO,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionRU => $state.composableBuilder(
+      column: $state.table.descripcionRU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCN => $state.composableBuilder(
+      column: $state.table.descripcionCN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEL => $state.composableBuilder(
+      column: $state.table.descripcionEL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$ClienteTipoPotencialTableTableCreateCompanionBuilder
+    = ClienteTipoPotencialTableCompanion Function({
+  required String id,
+  required String descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$ClienteTipoPotencialTableTableUpdateCompanionBuilder
+    = ClienteTipoPotencialTableCompanion Function({
+  Value<String> id,
+  Value<String> descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$ClienteTipoPotencialTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ClienteTipoPotencialTableTable,
+    ClienteTipoPotencialDTO,
+    $$ClienteTipoPotencialTableTableFilterComposer,
+    $$ClienteTipoPotencialTableTableOrderingComposer,
+    $$ClienteTipoPotencialTableTableCreateCompanionBuilder,
+    $$ClienteTipoPotencialTableTableUpdateCompanionBuilder> {
+  $$ClienteTipoPotencialTableTableTableManager(
+      _$RemoteAppDatabase db, $ClienteTipoPotencialTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ClienteTipoPotencialTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ClienteTipoPotencialTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteTipoPotencialTableCompanion(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteTipoPotencialTableCompanion.insert(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$ClienteTipoPotencialTableTableFilterComposer extends FilterComposer<
+    _$RemoteAppDatabase, $ClienteTipoPotencialTableTable> {
+  $$ClienteTipoPotencialTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionPL => $state.composableBuilder(
+      column: $state.table.descripcionPL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionPT => $state.composableBuilder(
+      column: $state.table.descripcionPT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionRO => $state.composableBuilder(
+      column: $state.table.descripcionRO,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionRU => $state.composableBuilder(
+      column: $state.table.descripcionRU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCN => $state.composableBuilder(
+      column: $state.table.descripcionCN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEL => $state.composableBuilder(
+      column: $state.table.descripcionEL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$ClienteTipoPotencialTableTableOrderingComposer extends OrderingComposer<
+    _$RemoteAppDatabase, $ClienteTipoPotencialTableTable> {
+  $$ClienteTipoPotencialTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionPL => $state.composableBuilder(
+      column: $state.table.descripcionPL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionPT => $state.composableBuilder(
+      column: $state.table.descripcionPT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionRO => $state.composableBuilder(
+      column: $state.table.descripcionRO,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionRU => $state.composableBuilder(
+      column: $state.table.descripcionRU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCN => $state.composableBuilder(
+      column: $state.table.descripcionCN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEL => $state.composableBuilder(
+      column: $state.table.descripcionEL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$EstadisticasArticulosTopTableTableCreateCompanionBuilder
+    = EstadisticasArticulosTopTableCompanion Function({
+  required String articuloId,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$EstadisticasArticulosTopTableTableUpdateCompanionBuilder
+    = EstadisticasArticulosTopTableCompanion Function({
+  Value<String> articuloId,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$EstadisticasArticulosTopTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $EstadisticasArticulosTopTableTable,
+    EstadisitcasArticulosTopDTO,
+    $$EstadisticasArticulosTopTableTableFilterComposer,
+    $$EstadisticasArticulosTopTableTableOrderingComposer,
+    $$EstadisticasArticulosTopTableTableCreateCompanionBuilder,
+    $$EstadisticasArticulosTopTableTableUpdateCompanionBuilder> {
+  $$EstadisticasArticulosTopTableTableTableManager(
+      _$RemoteAppDatabase db, $EstadisticasArticulosTopTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$EstadisticasArticulosTopTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer:
+              $$EstadisticasArticulosTopTableTableOrderingComposer(
+                  ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> articuloId = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              EstadisticasArticulosTopTableCompanion(
+            articuloId: articuloId,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String articuloId,
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              EstadisticasArticulosTopTableCompanion.insert(
+            articuloId: articuloId,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$EstadisticasArticulosTopTableTableFilterComposer extends FilterComposer<
+    _$RemoteAppDatabase, $EstadisticasArticulosTopTableTable> {
+  $$EstadisticasArticulosTopTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get articuloId => $state.composableBuilder(
+      column: $state.table.articuloId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$EstadisticasArticulosTopTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase,
+        $EstadisticasArticulosTopTableTable> {
+  $$EstadisticasArticulosTopTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get articuloId => $state.composableBuilder(
+      column: $state.table.articuloId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$ArticuloTableTableCreateCompanionBuilder = ArticuloTableCompanion
+    Function({
+  required String id,
+  required String descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  Value<String?> familiaId,
+  Value<String?> subfamiliaId,
+  required int ventaMinimo,
+  required int ventaMultiplo,
+  required int unidadesSubcaja,
+  required int unidadesCaja,
+  required int unidadesPalet,
+  required String activoWeb,
+  required String activoApp,
+  required String enCatalogo,
+  required String descatalogado,
+  Value<String?> paginaEnCatalgo,
+  Value<String?> paginaEnCatalgo2,
+  required double pesoKg,
+  required double largoCm,
+  required double anchoCm,
+  required double altoCm,
+  Value<String?> resumenES,
+  Value<String?> resumenEN,
+  Value<String?> resumenFR,
+  Value<String?> resumenDE,
+  Value<String?> resumenCA,
+  Value<String?> resumenGB,
+  Value<String?> resumenHU,
+  Value<String?> resumenIT,
+  Value<String?> resumenNL,
+  Value<String?> resumenPL,
+  Value<String?> resumenPT,
+  Value<String?> resumenRO,
+  Value<String?> resumenRU,
+  Value<String?> resumenCN,
+  Value<String?> resumenEL,
+  required int stockDisponible,
+  required double ventasActual,
+  required double ventasAnterior,
+  required int comprasEntregaCantidad1,
+  required int comprasEntregaCantidad2,
+  required int comprasEntregaCantidad3,
+  required int comprasEntregaCantidadMas3,
+  Value<DateTime?> comprasEntregaFecha1,
+  Value<DateTime?> comprasEntregaFecha2,
+  Value<DateTime?> comprasEntregaFecha3,
+  Value<String?> comprasEntregaEstado1,
+  Value<String?> comprasEntregaEstado2,
+  Value<String?> comprasEntregaEstado3,
+  Value<String?> imagenPrincipal,
+  Value<String?> gtin13Unidad,
+  Value<String?> gs1128Subcaja,
+  Value<String?> gs1128Caja,
+  Value<String?> gs1128Palet,
+  Value<int?> ventasOrden,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$ArticuloTableTableUpdateCompanionBuilder = ArticuloTableCompanion
+    Function({
+  Value<String> id,
+  Value<String> descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  Value<String?> familiaId,
+  Value<String?> subfamiliaId,
+  Value<int> ventaMinimo,
+  Value<int> ventaMultiplo,
+  Value<int> unidadesSubcaja,
+  Value<int> unidadesCaja,
+  Value<int> unidadesPalet,
+  Value<String> activoWeb,
+  Value<String> activoApp,
+  Value<String> enCatalogo,
+  Value<String> descatalogado,
+  Value<String?> paginaEnCatalgo,
+  Value<String?> paginaEnCatalgo2,
+  Value<double> pesoKg,
+  Value<double> largoCm,
+  Value<double> anchoCm,
+  Value<double> altoCm,
+  Value<String?> resumenES,
+  Value<String?> resumenEN,
+  Value<String?> resumenFR,
+  Value<String?> resumenDE,
+  Value<String?> resumenCA,
+  Value<String?> resumenGB,
+  Value<String?> resumenHU,
+  Value<String?> resumenIT,
+  Value<String?> resumenNL,
+  Value<String?> resumenPL,
+  Value<String?> resumenPT,
+  Value<String?> resumenRO,
+  Value<String?> resumenRU,
+  Value<String?> resumenCN,
+  Value<String?> resumenEL,
+  Value<int> stockDisponible,
+  Value<double> ventasActual,
+  Value<double> ventasAnterior,
+  Value<int> comprasEntregaCantidad1,
+  Value<int> comprasEntregaCantidad2,
+  Value<int> comprasEntregaCantidad3,
+  Value<int> comprasEntregaCantidadMas3,
+  Value<DateTime?> comprasEntregaFecha1,
+  Value<DateTime?> comprasEntregaFecha2,
+  Value<DateTime?> comprasEntregaFecha3,
+  Value<String?> comprasEntregaEstado1,
+  Value<String?> comprasEntregaEstado2,
+  Value<String?> comprasEntregaEstado3,
+  Value<String?> imagenPrincipal,
+  Value<String?> gtin13Unidad,
+  Value<String?> gs1128Subcaja,
+  Value<String?> gs1128Caja,
+  Value<String?> gs1128Palet,
+  Value<int?> ventasOrden,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$ArticuloTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ArticuloTableTable,
+    ArticuloDTO,
+    $$ArticuloTableTableFilterComposer,
+    $$ArticuloTableTableOrderingComposer,
+    $$ArticuloTableTableCreateCompanionBuilder,
+    $$ArticuloTableTableUpdateCompanionBuilder> {
+  $$ArticuloTableTableTableManager(
+      _$RemoteAppDatabase db, $ArticuloTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$ArticuloTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$ArticuloTableTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<String?> familiaId = const Value.absent(),
+            Value<String?> subfamiliaId = const Value.absent(),
+            Value<int> ventaMinimo = const Value.absent(),
+            Value<int> ventaMultiplo = const Value.absent(),
+            Value<int> unidadesSubcaja = const Value.absent(),
+            Value<int> unidadesCaja = const Value.absent(),
+            Value<int> unidadesPalet = const Value.absent(),
+            Value<String> activoWeb = const Value.absent(),
+            Value<String> activoApp = const Value.absent(),
+            Value<String> enCatalogo = const Value.absent(),
+            Value<String> descatalogado = const Value.absent(),
+            Value<String?> paginaEnCatalgo = const Value.absent(),
+            Value<String?> paginaEnCatalgo2 = const Value.absent(),
+            Value<double> pesoKg = const Value.absent(),
+            Value<double> largoCm = const Value.absent(),
+            Value<double> anchoCm = const Value.absent(),
+            Value<double> altoCm = const Value.absent(),
+            Value<String?> resumenES = const Value.absent(),
+            Value<String?> resumenEN = const Value.absent(),
+            Value<String?> resumenFR = const Value.absent(),
+            Value<String?> resumenDE = const Value.absent(),
+            Value<String?> resumenCA = const Value.absent(),
+            Value<String?> resumenGB = const Value.absent(),
+            Value<String?> resumenHU = const Value.absent(),
+            Value<String?> resumenIT = const Value.absent(),
+            Value<String?> resumenNL = const Value.absent(),
+            Value<String?> resumenPL = const Value.absent(),
+            Value<String?> resumenPT = const Value.absent(),
+            Value<String?> resumenRO = const Value.absent(),
+            Value<String?> resumenRU = const Value.absent(),
+            Value<String?> resumenCN = const Value.absent(),
+            Value<String?> resumenEL = const Value.absent(),
+            Value<int> stockDisponible = const Value.absent(),
+            Value<double> ventasActual = const Value.absent(),
+            Value<double> ventasAnterior = const Value.absent(),
+            Value<int> comprasEntregaCantidad1 = const Value.absent(),
+            Value<int> comprasEntregaCantidad2 = const Value.absent(),
+            Value<int> comprasEntregaCantidad3 = const Value.absent(),
+            Value<int> comprasEntregaCantidadMas3 = const Value.absent(),
+            Value<DateTime?> comprasEntregaFecha1 = const Value.absent(),
+            Value<DateTime?> comprasEntregaFecha2 = const Value.absent(),
+            Value<DateTime?> comprasEntregaFecha3 = const Value.absent(),
+            Value<String?> comprasEntregaEstado1 = const Value.absent(),
+            Value<String?> comprasEntregaEstado2 = const Value.absent(),
+            Value<String?> comprasEntregaEstado3 = const Value.absent(),
+            Value<String?> imagenPrincipal = const Value.absent(),
+            Value<String?> gtin13Unidad = const Value.absent(),
+            Value<String?> gs1128Subcaja = const Value.absent(),
+            Value<String?> gs1128Caja = const Value.absent(),
+            Value<String?> gs1128Palet = const Value.absent(),
+            Value<int?> ventasOrden = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ArticuloTableCompanion(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            familiaId: familiaId,
+            subfamiliaId: subfamiliaId,
+            ventaMinimo: ventaMinimo,
+            ventaMultiplo: ventaMultiplo,
+            unidadesSubcaja: unidadesSubcaja,
+            unidadesCaja: unidadesCaja,
+            unidadesPalet: unidadesPalet,
+            activoWeb: activoWeb,
+            activoApp: activoApp,
+            enCatalogo: enCatalogo,
+            descatalogado: descatalogado,
+            paginaEnCatalgo: paginaEnCatalgo,
+            paginaEnCatalgo2: paginaEnCatalgo2,
+            pesoKg: pesoKg,
+            largoCm: largoCm,
+            anchoCm: anchoCm,
+            altoCm: altoCm,
+            resumenES: resumenES,
+            resumenEN: resumenEN,
+            resumenFR: resumenFR,
+            resumenDE: resumenDE,
+            resumenCA: resumenCA,
+            resumenGB: resumenGB,
+            resumenHU: resumenHU,
+            resumenIT: resumenIT,
+            resumenNL: resumenNL,
+            resumenPL: resumenPL,
+            resumenPT: resumenPT,
+            resumenRO: resumenRO,
+            resumenRU: resumenRU,
+            resumenCN: resumenCN,
+            resumenEL: resumenEL,
+            stockDisponible: stockDisponible,
+            ventasActual: ventasActual,
+            ventasAnterior: ventasAnterior,
+            comprasEntregaCantidad1: comprasEntregaCantidad1,
+            comprasEntregaCantidad2: comprasEntregaCantidad2,
+            comprasEntregaCantidad3: comprasEntregaCantidad3,
+            comprasEntregaCantidadMas3: comprasEntregaCantidadMas3,
+            comprasEntregaFecha1: comprasEntregaFecha1,
+            comprasEntregaFecha2: comprasEntregaFecha2,
+            comprasEntregaFecha3: comprasEntregaFecha3,
+            comprasEntregaEstado1: comprasEntregaEstado1,
+            comprasEntregaEstado2: comprasEntregaEstado2,
+            comprasEntregaEstado3: comprasEntregaEstado3,
+            imagenPrincipal: imagenPrincipal,
+            gtin13Unidad: gtin13Unidad,
+            gs1128Subcaja: gs1128Subcaja,
+            gs1128Caja: gs1128Caja,
+            gs1128Palet: gs1128Palet,
+            ventasOrden: ventasOrden,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<String?> familiaId = const Value.absent(),
+            Value<String?> subfamiliaId = const Value.absent(),
+            required int ventaMinimo,
+            required int ventaMultiplo,
+            required int unidadesSubcaja,
+            required int unidadesCaja,
+            required int unidadesPalet,
+            required String activoWeb,
+            required String activoApp,
+            required String enCatalogo,
+            required String descatalogado,
+            Value<String?> paginaEnCatalgo = const Value.absent(),
+            Value<String?> paginaEnCatalgo2 = const Value.absent(),
+            required double pesoKg,
+            required double largoCm,
+            required double anchoCm,
+            required double altoCm,
+            Value<String?> resumenES = const Value.absent(),
+            Value<String?> resumenEN = const Value.absent(),
+            Value<String?> resumenFR = const Value.absent(),
+            Value<String?> resumenDE = const Value.absent(),
+            Value<String?> resumenCA = const Value.absent(),
+            Value<String?> resumenGB = const Value.absent(),
+            Value<String?> resumenHU = const Value.absent(),
+            Value<String?> resumenIT = const Value.absent(),
+            Value<String?> resumenNL = const Value.absent(),
+            Value<String?> resumenPL = const Value.absent(),
+            Value<String?> resumenPT = const Value.absent(),
+            Value<String?> resumenRO = const Value.absent(),
+            Value<String?> resumenRU = const Value.absent(),
+            Value<String?> resumenCN = const Value.absent(),
+            Value<String?> resumenEL = const Value.absent(),
+            required int stockDisponible,
+            required double ventasActual,
+            required double ventasAnterior,
+            required int comprasEntregaCantidad1,
+            required int comprasEntregaCantidad2,
+            required int comprasEntregaCantidad3,
+            required int comprasEntregaCantidadMas3,
+            Value<DateTime?> comprasEntregaFecha1 = const Value.absent(),
+            Value<DateTime?> comprasEntregaFecha2 = const Value.absent(),
+            Value<DateTime?> comprasEntregaFecha3 = const Value.absent(),
+            Value<String?> comprasEntregaEstado1 = const Value.absent(),
+            Value<String?> comprasEntregaEstado2 = const Value.absent(),
+            Value<String?> comprasEntregaEstado3 = const Value.absent(),
+            Value<String?> imagenPrincipal = const Value.absent(),
+            Value<String?> gtin13Unidad = const Value.absent(),
+            Value<String?> gs1128Subcaja = const Value.absent(),
+            Value<String?> gs1128Caja = const Value.absent(),
+            Value<String?> gs1128Palet = const Value.absent(),
+            Value<int?> ventasOrden = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ArticuloTableCompanion.insert(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            familiaId: familiaId,
+            subfamiliaId: subfamiliaId,
+            ventaMinimo: ventaMinimo,
+            ventaMultiplo: ventaMultiplo,
+            unidadesSubcaja: unidadesSubcaja,
+            unidadesCaja: unidadesCaja,
+            unidadesPalet: unidadesPalet,
+            activoWeb: activoWeb,
+            activoApp: activoApp,
+            enCatalogo: enCatalogo,
+            descatalogado: descatalogado,
+            paginaEnCatalgo: paginaEnCatalgo,
+            paginaEnCatalgo2: paginaEnCatalgo2,
+            pesoKg: pesoKg,
+            largoCm: largoCm,
+            anchoCm: anchoCm,
+            altoCm: altoCm,
+            resumenES: resumenES,
+            resumenEN: resumenEN,
+            resumenFR: resumenFR,
+            resumenDE: resumenDE,
+            resumenCA: resumenCA,
+            resumenGB: resumenGB,
+            resumenHU: resumenHU,
+            resumenIT: resumenIT,
+            resumenNL: resumenNL,
+            resumenPL: resumenPL,
+            resumenPT: resumenPT,
+            resumenRO: resumenRO,
+            resumenRU: resumenRU,
+            resumenCN: resumenCN,
+            resumenEL: resumenEL,
+            stockDisponible: stockDisponible,
+            ventasActual: ventasActual,
+            ventasAnterior: ventasAnterior,
+            comprasEntregaCantidad1: comprasEntregaCantidad1,
+            comprasEntregaCantidad2: comprasEntregaCantidad2,
+            comprasEntregaCantidad3: comprasEntregaCantidad3,
+            comprasEntregaCantidadMas3: comprasEntregaCantidadMas3,
+            comprasEntregaFecha1: comprasEntregaFecha1,
+            comprasEntregaFecha2: comprasEntregaFecha2,
+            comprasEntregaFecha3: comprasEntregaFecha3,
+            comprasEntregaEstado1: comprasEntregaEstado1,
+            comprasEntregaEstado2: comprasEntregaEstado2,
+            comprasEntregaEstado3: comprasEntregaEstado3,
+            imagenPrincipal: imagenPrincipal,
+            gtin13Unidad: gtin13Unidad,
+            gs1128Subcaja: gs1128Subcaja,
+            gs1128Caja: gs1128Caja,
+            gs1128Palet: gs1128Palet,
+            ventasOrden: ventasOrden,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$ArticuloTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $ArticuloTableTable> {
+  $$ArticuloTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionPL => $state.composableBuilder(
+      column: $state.table.descripcionPL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionPT => $state.composableBuilder(
+      column: $state.table.descripcionPT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionRO => $state.composableBuilder(
+      column: $state.table.descripcionRO,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionRU => $state.composableBuilder(
+      column: $state.table.descripcionRU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCN => $state.composableBuilder(
+      column: $state.table.descripcionCN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEL => $state.composableBuilder(
+      column: $state.table.descripcionEL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get ventaMinimo => $state.composableBuilder(
+      column: $state.table.ventaMinimo,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get ventaMultiplo => $state.composableBuilder(
+      column: $state.table.ventaMultiplo,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get unidadesSubcaja => $state.composableBuilder(
+      column: $state.table.unidadesSubcaja,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get unidadesCaja => $state.composableBuilder(
+      column: $state.table.unidadesCaja,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get unidadesPalet => $state.composableBuilder(
+      column: $state.table.unidadesPalet,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get activoWeb => $state.composableBuilder(
+      column: $state.table.activoWeb,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get activoApp => $state.composableBuilder(
+      column: $state.table.activoApp,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get enCatalogo => $state.composableBuilder(
+      column: $state.table.enCatalogo,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descatalogado => $state.composableBuilder(
+      column: $state.table.descatalogado,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get paginaEnCatalgo => $state.composableBuilder(
+      column: $state.table.paginaEnCatalgo,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get paginaEnCatalgo2 => $state.composableBuilder(
+      column: $state.table.paginaEnCatalgo2,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get pesoKg => $state.composableBuilder(
+      column: $state.table.pesoKg,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get largoCm => $state.composableBuilder(
+      column: $state.table.largoCm,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get anchoCm => $state.composableBuilder(
+      column: $state.table.anchoCm,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get altoCm => $state.composableBuilder(
+      column: $state.table.altoCm,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get resumenES => $state.composableBuilder(
+      column: $state.table.resumenES,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get resumenEN => $state.composableBuilder(
+      column: $state.table.resumenEN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get resumenFR => $state.composableBuilder(
+      column: $state.table.resumenFR,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get resumenDE => $state.composableBuilder(
+      column: $state.table.resumenDE,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get resumenCA => $state.composableBuilder(
+      column: $state.table.resumenCA,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get resumenGB => $state.composableBuilder(
+      column: $state.table.resumenGB,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get resumenHU => $state.composableBuilder(
+      column: $state.table.resumenHU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get resumenIT => $state.composableBuilder(
+      column: $state.table.resumenIT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get resumenNL => $state.composableBuilder(
+      column: $state.table.resumenNL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get resumenPL => $state.composableBuilder(
+      column: $state.table.resumenPL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get resumenPT => $state.composableBuilder(
+      column: $state.table.resumenPT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get resumenRO => $state.composableBuilder(
+      column: $state.table.resumenRO,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get resumenRU => $state.composableBuilder(
+      column: $state.table.resumenRU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get resumenCN => $state.composableBuilder(
+      column: $state.table.resumenCN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get resumenEL => $state.composableBuilder(
+      column: $state.table.resumenEL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get stockDisponible => $state.composableBuilder(
+      column: $state.table.stockDisponible,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get ventasActual => $state.composableBuilder(
+      column: $state.table.ventasActual,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get ventasAnterior => $state.composableBuilder(
+      column: $state.table.ventasAnterior,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get comprasEntregaCantidad1 => $state.composableBuilder(
+      column: $state.table.comprasEntregaCantidad1,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get comprasEntregaCantidad2 => $state.composableBuilder(
+      column: $state.table.comprasEntregaCantidad2,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get comprasEntregaCantidad3 => $state.composableBuilder(
+      column: $state.table.comprasEntregaCantidad3,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get comprasEntregaCantidadMas3 => $state.composableBuilder(
+      column: $state.table.comprasEntregaCantidadMas3,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get comprasEntregaFecha1 => $state.composableBuilder(
+      column: $state.table.comprasEntregaFecha1,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get comprasEntregaFecha2 => $state.composableBuilder(
+      column: $state.table.comprasEntregaFecha2,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get comprasEntregaFecha3 => $state.composableBuilder(
+      column: $state.table.comprasEntregaFecha3,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get comprasEntregaEstado1 => $state.composableBuilder(
+      column: $state.table.comprasEntregaEstado1,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get comprasEntregaEstado2 => $state.composableBuilder(
+      column: $state.table.comprasEntregaEstado2,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get comprasEntregaEstado3 => $state.composableBuilder(
+      column: $state.table.comprasEntregaEstado3,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get imagenPrincipal => $state.composableBuilder(
+      column: $state.table.imagenPrincipal,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get gtin13Unidad => $state.composableBuilder(
+      column: $state.table.gtin13Unidad,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get gs1128Subcaja => $state.composableBuilder(
+      column: $state.table.gs1128Subcaja,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get gs1128Caja => $state.composableBuilder(
+      column: $state.table.gs1128Caja,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get gs1128Palet => $state.composableBuilder(
+      column: $state.table.gs1128Palet,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get ventasOrden => $state.composableBuilder(
+      column: $state.table.ventasOrden,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  $$FamiliaTableTableFilterComposer get familiaId {
+    final $$FamiliaTableTableFilterComposer composer = $state.composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.familiaId,
+        referencedTable: $state.db.familiaTable,
+        getReferencedColumn: (t) => t.id,
+        builder: (joinBuilder, parentComposers) =>
+            $$FamiliaTableTableFilterComposer(ComposerState($state.db,
+                $state.db.familiaTable, joinBuilder, parentComposers)));
+    return composer;
+  }
+
+  $$SubfamiliaTableTableFilterComposer get subfamiliaId {
+    final $$SubfamiliaTableTableFilterComposer composer =
+        $state.composerBuilder(
+            composer: this,
+            getCurrentColumn: (t) => t.subfamiliaId,
+            referencedTable: $state.db.subfamiliaTable,
+            getReferencedColumn: (t) => t.id,
+            builder: (joinBuilder, parentComposers) =>
+                $$SubfamiliaTableTableFilterComposer(ComposerState($state.db,
+                    $state.db.subfamiliaTable, joinBuilder, parentComposers)));
+    return composer;
+  }
+}
+
+class $$ArticuloTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $ArticuloTableTable> {
+  $$ArticuloTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionPL => $state.composableBuilder(
+      column: $state.table.descripcionPL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionPT => $state.composableBuilder(
+      column: $state.table.descripcionPT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionRO => $state.composableBuilder(
+      column: $state.table.descripcionRO,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionRU => $state.composableBuilder(
+      column: $state.table.descripcionRU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCN => $state.composableBuilder(
+      column: $state.table.descripcionCN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEL => $state.composableBuilder(
+      column: $state.table.descripcionEL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get ventaMinimo => $state.composableBuilder(
+      column: $state.table.ventaMinimo,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get ventaMultiplo => $state.composableBuilder(
+      column: $state.table.ventaMultiplo,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get unidadesSubcaja => $state.composableBuilder(
+      column: $state.table.unidadesSubcaja,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get unidadesCaja => $state.composableBuilder(
+      column: $state.table.unidadesCaja,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get unidadesPalet => $state.composableBuilder(
+      column: $state.table.unidadesPalet,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get activoWeb => $state.composableBuilder(
+      column: $state.table.activoWeb,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get activoApp => $state.composableBuilder(
+      column: $state.table.activoApp,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get enCatalogo => $state.composableBuilder(
+      column: $state.table.enCatalogo,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descatalogado => $state.composableBuilder(
+      column: $state.table.descatalogado,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get paginaEnCatalgo => $state.composableBuilder(
+      column: $state.table.paginaEnCatalgo,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get paginaEnCatalgo2 => $state.composableBuilder(
+      column: $state.table.paginaEnCatalgo2,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get pesoKg => $state.composableBuilder(
+      column: $state.table.pesoKg,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get largoCm => $state.composableBuilder(
+      column: $state.table.largoCm,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get anchoCm => $state.composableBuilder(
+      column: $state.table.anchoCm,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get altoCm => $state.composableBuilder(
+      column: $state.table.altoCm,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get resumenES => $state.composableBuilder(
+      column: $state.table.resumenES,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get resumenEN => $state.composableBuilder(
+      column: $state.table.resumenEN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get resumenFR => $state.composableBuilder(
+      column: $state.table.resumenFR,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get resumenDE => $state.composableBuilder(
+      column: $state.table.resumenDE,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get resumenCA => $state.composableBuilder(
+      column: $state.table.resumenCA,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get resumenGB => $state.composableBuilder(
+      column: $state.table.resumenGB,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get resumenHU => $state.composableBuilder(
+      column: $state.table.resumenHU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get resumenIT => $state.composableBuilder(
+      column: $state.table.resumenIT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get resumenNL => $state.composableBuilder(
+      column: $state.table.resumenNL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get resumenPL => $state.composableBuilder(
+      column: $state.table.resumenPL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get resumenPT => $state.composableBuilder(
+      column: $state.table.resumenPT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get resumenRO => $state.composableBuilder(
+      column: $state.table.resumenRO,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get resumenRU => $state.composableBuilder(
+      column: $state.table.resumenRU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get resumenCN => $state.composableBuilder(
+      column: $state.table.resumenCN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get resumenEL => $state.composableBuilder(
+      column: $state.table.resumenEL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get stockDisponible => $state.composableBuilder(
+      column: $state.table.stockDisponible,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get ventasActual => $state.composableBuilder(
+      column: $state.table.ventasActual,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get ventasAnterior => $state.composableBuilder(
+      column: $state.table.ventasAnterior,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get comprasEntregaCantidad1 => $state.composableBuilder(
+      column: $state.table.comprasEntregaCantidad1,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get comprasEntregaCantidad2 => $state.composableBuilder(
+      column: $state.table.comprasEntregaCantidad2,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get comprasEntregaCantidad3 => $state.composableBuilder(
+      column: $state.table.comprasEntregaCantidad3,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get comprasEntregaCantidadMas3 =>
+      $state.composableBuilder(
+          column: $state.table.comprasEntregaCantidadMas3,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get comprasEntregaFecha1 =>
+      $state.composableBuilder(
+          column: $state.table.comprasEntregaFecha1,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get comprasEntregaFecha2 =>
+      $state.composableBuilder(
+          column: $state.table.comprasEntregaFecha2,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get comprasEntregaFecha3 =>
+      $state.composableBuilder(
+          column: $state.table.comprasEntregaFecha3,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get comprasEntregaEstado1 => $state.composableBuilder(
+      column: $state.table.comprasEntregaEstado1,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get comprasEntregaEstado2 => $state.composableBuilder(
+      column: $state.table.comprasEntregaEstado2,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get comprasEntregaEstado3 => $state.composableBuilder(
+      column: $state.table.comprasEntregaEstado3,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get imagenPrincipal => $state.composableBuilder(
+      column: $state.table.imagenPrincipal,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get gtin13Unidad => $state.composableBuilder(
+      column: $state.table.gtin13Unidad,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get gs1128Subcaja => $state.composableBuilder(
+      column: $state.table.gs1128Subcaja,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get gs1128Caja => $state.composableBuilder(
+      column: $state.table.gs1128Caja,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get gs1128Palet => $state.composableBuilder(
+      column: $state.table.gs1128Palet,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get ventasOrden => $state.composableBuilder(
+      column: $state.table.ventasOrden,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  $$FamiliaTableTableOrderingComposer get familiaId {
+    final $$FamiliaTableTableOrderingComposer composer = $state.composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.familiaId,
+        referencedTable: $state.db.familiaTable,
+        getReferencedColumn: (t) => t.id,
+        builder: (joinBuilder, parentComposers) =>
+            $$FamiliaTableTableOrderingComposer(ComposerState($state.db,
+                $state.db.familiaTable, joinBuilder, parentComposers)));
+    return composer;
+  }
+
+  $$SubfamiliaTableTableOrderingComposer get subfamiliaId {
+    final $$SubfamiliaTableTableOrderingComposer composer =
+        $state.composerBuilder(
+            composer: this,
+            getCurrentColumn: (t) => t.subfamiliaId,
+            referencedTable: $state.db.subfamiliaTable,
+            getReferencedColumn: (t) => t.id,
+            builder: (joinBuilder, parentComposers) =>
+                $$SubfamiliaTableTableOrderingComposer(ComposerState($state.db,
+                    $state.db.subfamiliaTable, joinBuilder, parentComposers)));
+    return composer;
+  }
+}
+
+typedef $$ArticuloComponenteTableTableCreateCompanionBuilder
+    = ArticuloComponenteTableCompanion Function({
+  required String articuloId,
+  required String articuloComponenteId,
+  required int cantidad,
+  required String descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$ArticuloComponenteTableTableUpdateCompanionBuilder
+    = ArticuloComponenteTableCompanion Function({
+  Value<String> articuloId,
+  Value<String> articuloComponenteId,
+  Value<int> cantidad,
+  Value<String> descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$ArticuloComponenteTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ArticuloComponenteTableTable,
+    ArticuloComponenteDTO,
+    $$ArticuloComponenteTableTableFilterComposer,
+    $$ArticuloComponenteTableTableOrderingComposer,
+    $$ArticuloComponenteTableTableCreateCompanionBuilder,
+    $$ArticuloComponenteTableTableUpdateCompanionBuilder> {
+  $$ArticuloComponenteTableTableTableManager(
+      _$RemoteAppDatabase db, $ArticuloComponenteTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ArticuloComponenteTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ArticuloComponenteTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> articuloId = const Value.absent(),
+            Value<String> articuloComponenteId = const Value.absent(),
+            Value<int> cantidad = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ArticuloComponenteTableCompanion(
+            articuloId: articuloId,
+            articuloComponenteId: articuloComponenteId,
+            cantidad: cantidad,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String articuloId,
+            required String articuloComponenteId,
+            required int cantidad,
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ArticuloComponenteTableCompanion.insert(
+            articuloId: articuloId,
+            articuloComponenteId: articuloComponenteId,
+            cantidad: cantidad,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$ArticuloComponenteTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $ArticuloComponenteTableTable> {
+  $$ArticuloComponenteTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get articuloId => $state.composableBuilder(
+      column: $state.table.articuloId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get articuloComponenteId => $state.composableBuilder(
+      column: $state.table.articuloComponenteId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get cantidad => $state.composableBuilder(
+      column: $state.table.cantidad,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionPL => $state.composableBuilder(
+      column: $state.table.descripcionPL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionPT => $state.composableBuilder(
+      column: $state.table.descripcionPT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionRO => $state.composableBuilder(
+      column: $state.table.descripcionRO,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionRU => $state.composableBuilder(
+      column: $state.table.descripcionRU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCN => $state.composableBuilder(
+      column: $state.table.descripcionCN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEL => $state.composableBuilder(
+      column: $state.table.descripcionEL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$ArticuloComponenteTableTableOrderingComposer extends OrderingComposer<
+    _$RemoteAppDatabase, $ArticuloComponenteTableTable> {
+  $$ArticuloComponenteTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get articuloId => $state.composableBuilder(
+      column: $state.table.articuloId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get articuloComponenteId => $state.composableBuilder(
+      column: $state.table.articuloComponenteId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get cantidad => $state.composableBuilder(
+      column: $state.table.cantidad,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionPL => $state.composableBuilder(
+      column: $state.table.descripcionPL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionPT => $state.composableBuilder(
+      column: $state.table.descripcionPT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionRO => $state.composableBuilder(
+      column: $state.table.descripcionRO,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionRU => $state.composableBuilder(
+      column: $state.table.descripcionRU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCN => $state.composableBuilder(
+      column: $state.table.descripcionCN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEL => $state.composableBuilder(
+      column: $state.table.descripcionEL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$ArticuloEmpresaIvaTableTableCreateCompanionBuilder
+    = ArticuloEmpresaIvaTableCompanion Function({
+  required String articuloId,
+  required String empresaId,
+  required double iva,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$ArticuloEmpresaIvaTableTableUpdateCompanionBuilder
+    = ArticuloEmpresaIvaTableCompanion Function({
+  Value<String> articuloId,
+  Value<String> empresaId,
+  Value<double> iva,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$ArticuloEmpresaIvaTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ArticuloEmpresaIvaTableTable,
+    ArticuloEmpresaIvaDTO,
+    $$ArticuloEmpresaIvaTableTableFilterComposer,
+    $$ArticuloEmpresaIvaTableTableOrderingComposer,
+    $$ArticuloEmpresaIvaTableTableCreateCompanionBuilder,
+    $$ArticuloEmpresaIvaTableTableUpdateCompanionBuilder> {
+  $$ArticuloEmpresaIvaTableTableTableManager(
+      _$RemoteAppDatabase db, $ArticuloEmpresaIvaTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ArticuloEmpresaIvaTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ArticuloEmpresaIvaTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> articuloId = const Value.absent(),
+            Value<String> empresaId = const Value.absent(),
+            Value<double> iva = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ArticuloEmpresaIvaTableCompanion(
+            articuloId: articuloId,
+            empresaId: empresaId,
+            iva: iva,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String articuloId,
+            required String empresaId,
+            required double iva,
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ArticuloEmpresaIvaTableCompanion.insert(
+            articuloId: articuloId,
+            empresaId: empresaId,
+            iva: iva,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$ArticuloEmpresaIvaTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $ArticuloEmpresaIvaTableTable> {
+  $$ArticuloEmpresaIvaTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get articuloId => $state.composableBuilder(
+      column: $state.table.articuloId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get empresaId => $state.composableBuilder(
+      column: $state.table.empresaId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get iva => $state.composableBuilder(
+      column: $state.table.iva,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$ArticuloEmpresaIvaTableTableOrderingComposer extends OrderingComposer<
+    _$RemoteAppDatabase, $ArticuloEmpresaIvaTableTable> {
+  $$ArticuloEmpresaIvaTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get articuloId => $state.composableBuilder(
+      column: $state.table.articuloId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get empresaId => $state.composableBuilder(
+      column: $state.table.empresaId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get iva => $state.composableBuilder(
+      column: $state.table.iva,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$ArticuloRecambioTableTableCreateCompanionBuilder
+    = ArticuloRecambioTableCompanion Function({
+  required String articuloId,
+  required String id,
+  required String descripcion,
+  required int cantidad,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$ArticuloRecambioTableTableUpdateCompanionBuilder
+    = ArticuloRecambioTableCompanion Function({
+  Value<String> articuloId,
+  Value<String> id,
+  Value<String> descripcion,
+  Value<int> cantidad,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$ArticuloRecambioTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ArticuloRecambioTableTable,
+    ArticuloRecambioDTO,
+    $$ArticuloRecambioTableTableFilterComposer,
+    $$ArticuloRecambioTableTableOrderingComposer,
+    $$ArticuloRecambioTableTableCreateCompanionBuilder,
+    $$ArticuloRecambioTableTableUpdateCompanionBuilder> {
+  $$ArticuloRecambioTableTableTableManager(
+      _$RemoteAppDatabase db, $ArticuloRecambioTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ArticuloRecambioTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ArticuloRecambioTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> articuloId = const Value.absent(),
+            Value<String> id = const Value.absent(),
+            Value<String> descripcion = const Value.absent(),
+            Value<int> cantidad = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ArticuloRecambioTableCompanion(
+            articuloId: articuloId,
+            id: id,
+            descripcion: descripcion,
+            cantidad: cantidad,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String articuloId,
+            required String id,
+            required String descripcion,
+            required int cantidad,
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ArticuloRecambioTableCompanion.insert(
+            articuloId: articuloId,
+            id: id,
+            descripcion: descripcion,
+            cantidad: cantidad,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$ArticuloRecambioTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $ArticuloRecambioTableTable> {
+  $$ArticuloRecambioTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get articuloId => $state.composableBuilder(
+      column: $state.table.articuloId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcion => $state.composableBuilder(
+      column: $state.table.descripcion,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get cantidad => $state.composableBuilder(
+      column: $state.table.cantidad,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$ArticuloRecambioTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $ArticuloRecambioTableTable> {
+  $$ArticuloRecambioTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get articuloId => $state.composableBuilder(
+      column: $state.table.articuloId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcion => $state.composableBuilder(
+      column: $state.table.descripcion,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get cantidad => $state.composableBuilder(
+      column: $state.table.cantidad,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$ArticuloSustitutivoTableTableCreateCompanionBuilder
+    = ArticuloSustitutivoTableCompanion Function({
+  required String articuloId,
+  required String articuloSustitutivoId,
+  required int orden,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$ArticuloSustitutivoTableTableUpdateCompanionBuilder
+    = ArticuloSustitutivoTableCompanion Function({
+  Value<String> articuloId,
+  Value<String> articuloSustitutivoId,
+  Value<int> orden,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$ArticuloSustitutivoTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ArticuloSustitutivoTableTable,
+    ArticuloSustitutivoDTO,
+    $$ArticuloSustitutivoTableTableFilterComposer,
+    $$ArticuloSustitutivoTableTableOrderingComposer,
+    $$ArticuloSustitutivoTableTableCreateCompanionBuilder,
+    $$ArticuloSustitutivoTableTableUpdateCompanionBuilder> {
+  $$ArticuloSustitutivoTableTableTableManager(
+      _$RemoteAppDatabase db, $ArticuloSustitutivoTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ArticuloSustitutivoTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ArticuloSustitutivoTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> articuloId = const Value.absent(),
+            Value<String> articuloSustitutivoId = const Value.absent(),
+            Value<int> orden = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ArticuloSustitutivoTableCompanion(
+            articuloId: articuloId,
+            articuloSustitutivoId: articuloSustitutivoId,
+            orden: orden,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String articuloId,
+            required String articuloSustitutivoId,
+            required int orden,
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ArticuloSustitutivoTableCompanion.insert(
+            articuloId: articuloId,
+            articuloSustitutivoId: articuloSustitutivoId,
+            orden: orden,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$ArticuloSustitutivoTableTableFilterComposer extends FilterComposer<
+    _$RemoteAppDatabase, $ArticuloSustitutivoTableTable> {
+  $$ArticuloSustitutivoTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get articuloId => $state.composableBuilder(
+      column: $state.table.articuloId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get articuloSustitutivoId => $state.composableBuilder(
+      column: $state.table.articuloSustitutivoId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get orden => $state.composableBuilder(
+      column: $state.table.orden,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$ArticuloSustitutivoTableTableOrderingComposer extends OrderingComposer<
+    _$RemoteAppDatabase, $ArticuloSustitutivoTableTable> {
+  $$ArticuloSustitutivoTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get articuloId => $state.composableBuilder(
+      column: $state.table.articuloId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get articuloSustitutivoId => $state.composableBuilder(
+      column: $state.table.articuloSustitutivoId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get orden => $state.composableBuilder(
+      column: $state.table.orden,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$ArticuloPrecioTarifaTableTableCreateCompanionBuilder
+    = ArticuloPrecioTarifaTableCompanion Function({
+  required String articuloId,
+  required String tarifaId,
+  Value<String?> tarifaDescripcion,
+  required int cantidadDesde,
+  required double precio,
+  required String divisaId,
+  required int tipoPrecio,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$ArticuloPrecioTarifaTableTableUpdateCompanionBuilder
+    = ArticuloPrecioTarifaTableCompanion Function({
+  Value<String> articuloId,
+  Value<String> tarifaId,
+  Value<String?> tarifaDescripcion,
+  Value<int> cantidadDesde,
+  Value<double> precio,
+  Value<String> divisaId,
+  Value<int> tipoPrecio,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$ArticuloPrecioTarifaTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ArticuloPrecioTarifaTableTable,
+    ArticuloPrecioTarifaDTO,
+    $$ArticuloPrecioTarifaTableTableFilterComposer,
+    $$ArticuloPrecioTarifaTableTableOrderingComposer,
+    $$ArticuloPrecioTarifaTableTableCreateCompanionBuilder,
+    $$ArticuloPrecioTarifaTableTableUpdateCompanionBuilder> {
+  $$ArticuloPrecioTarifaTableTableTableManager(
+      _$RemoteAppDatabase db, $ArticuloPrecioTarifaTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ArticuloPrecioTarifaTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ArticuloPrecioTarifaTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> articuloId = const Value.absent(),
+            Value<String> tarifaId = const Value.absent(),
+            Value<String?> tarifaDescripcion = const Value.absent(),
+            Value<int> cantidadDesde = const Value.absent(),
+            Value<double> precio = const Value.absent(),
+            Value<String> divisaId = const Value.absent(),
+            Value<int> tipoPrecio = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ArticuloPrecioTarifaTableCompanion(
+            articuloId: articuloId,
+            tarifaId: tarifaId,
+            tarifaDescripcion: tarifaDescripcion,
+            cantidadDesde: cantidadDesde,
+            precio: precio,
+            divisaId: divisaId,
+            tipoPrecio: tipoPrecio,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String articuloId,
+            required String tarifaId,
+            Value<String?> tarifaDescripcion = const Value.absent(),
+            required int cantidadDesde,
+            required double precio,
+            required String divisaId,
+            required int tipoPrecio,
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ArticuloPrecioTarifaTableCompanion.insert(
+            articuloId: articuloId,
+            tarifaId: tarifaId,
+            tarifaDescripcion: tarifaDescripcion,
+            cantidadDesde: cantidadDesde,
+            precio: precio,
+            divisaId: divisaId,
+            tipoPrecio: tipoPrecio,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$ArticuloPrecioTarifaTableTableFilterComposer extends FilterComposer<
+    _$RemoteAppDatabase, $ArticuloPrecioTarifaTableTable> {
+  $$ArticuloPrecioTarifaTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get articuloId => $state.composableBuilder(
+      column: $state.table.articuloId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get tarifaId => $state.composableBuilder(
+      column: $state.table.tarifaId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get tarifaDescripcion => $state.composableBuilder(
+      column: $state.table.tarifaDescripcion,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get cantidadDesde => $state.composableBuilder(
+      column: $state.table.cantidadDesde,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get precio => $state.composableBuilder(
+      column: $state.table.precio,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get divisaId => $state.composableBuilder(
+      column: $state.table.divisaId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get tipoPrecio => $state.composableBuilder(
+      column: $state.table.tipoPrecio,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$ArticuloPrecioTarifaTableTableOrderingComposer extends OrderingComposer<
+    _$RemoteAppDatabase, $ArticuloPrecioTarifaTableTable> {
+  $$ArticuloPrecioTarifaTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get articuloId => $state.composableBuilder(
+      column: $state.table.articuloId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get tarifaId => $state.composableBuilder(
+      column: $state.table.tarifaId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get tarifaDescripcion => $state.composableBuilder(
+      column: $state.table.tarifaDescripcion,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get cantidadDesde => $state.composableBuilder(
+      column: $state.table.cantidadDesde,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get precio => $state.composableBuilder(
+      column: $state.table.precio,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get divisaId => $state.composableBuilder(
+      column: $state.table.divisaId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get tipoPrecio => $state.composableBuilder(
+      column: $state.table.tipoPrecio,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$ArticuloGrupoNetoTableTableCreateCompanionBuilder
+    = ArticuloGrupoNetoTableCompanion Function({
+  required String articuloId,
+  required String grupoNetoId,
+  required String grupoNetoDescripcion,
+  required int cantidadDesde,
+  required double precio,
+  required String divisaId,
+  required int tipoPrecio,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$ArticuloGrupoNetoTableTableUpdateCompanionBuilder
+    = ArticuloGrupoNetoTableCompanion Function({
+  Value<String> articuloId,
+  Value<String> grupoNetoId,
+  Value<String> grupoNetoDescripcion,
+  Value<int> cantidadDesde,
+  Value<double> precio,
+  Value<String> divisaId,
+  Value<int> tipoPrecio,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$ArticuloGrupoNetoTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ArticuloGrupoNetoTableTable,
+    ArticuloGrupoNetoDTO,
+    $$ArticuloGrupoNetoTableTableFilterComposer,
+    $$ArticuloGrupoNetoTableTableOrderingComposer,
+    $$ArticuloGrupoNetoTableTableCreateCompanionBuilder,
+    $$ArticuloGrupoNetoTableTableUpdateCompanionBuilder> {
+  $$ArticuloGrupoNetoTableTableTableManager(
+      _$RemoteAppDatabase db, $ArticuloGrupoNetoTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ArticuloGrupoNetoTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ArticuloGrupoNetoTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> articuloId = const Value.absent(),
+            Value<String> grupoNetoId = const Value.absent(),
+            Value<String> grupoNetoDescripcion = const Value.absent(),
+            Value<int> cantidadDesde = const Value.absent(),
+            Value<double> precio = const Value.absent(),
+            Value<String> divisaId = const Value.absent(),
+            Value<int> tipoPrecio = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ArticuloGrupoNetoTableCompanion(
+            articuloId: articuloId,
+            grupoNetoId: grupoNetoId,
+            grupoNetoDescripcion: grupoNetoDescripcion,
+            cantidadDesde: cantidadDesde,
+            precio: precio,
+            divisaId: divisaId,
+            tipoPrecio: tipoPrecio,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String articuloId,
+            required String grupoNetoId,
+            required String grupoNetoDescripcion,
+            required int cantidadDesde,
+            required double precio,
+            required String divisaId,
+            required int tipoPrecio,
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ArticuloGrupoNetoTableCompanion.insert(
+            articuloId: articuloId,
+            grupoNetoId: grupoNetoId,
+            grupoNetoDescripcion: grupoNetoDescripcion,
+            cantidadDesde: cantidadDesde,
+            precio: precio,
+            divisaId: divisaId,
+            tipoPrecio: tipoPrecio,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$ArticuloGrupoNetoTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $ArticuloGrupoNetoTableTable> {
+  $$ArticuloGrupoNetoTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get articuloId => $state.composableBuilder(
+      column: $state.table.articuloId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get grupoNetoId => $state.composableBuilder(
+      column: $state.table.grupoNetoId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get grupoNetoDescripcion => $state.composableBuilder(
+      column: $state.table.grupoNetoDescripcion,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get cantidadDesde => $state.composableBuilder(
+      column: $state.table.cantidadDesde,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get precio => $state.composableBuilder(
+      column: $state.table.precio,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get divisaId => $state.composableBuilder(
+      column: $state.table.divisaId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get tipoPrecio => $state.composableBuilder(
+      column: $state.table.tipoPrecio,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$ArticuloGrupoNetoTableTableOrderingComposer extends OrderingComposer<
+    _$RemoteAppDatabase, $ArticuloGrupoNetoTableTable> {
+  $$ArticuloGrupoNetoTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get articuloId => $state.composableBuilder(
+      column: $state.table.articuloId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get grupoNetoId => $state.composableBuilder(
+      column: $state.table.grupoNetoId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get grupoNetoDescripcion => $state.composableBuilder(
+      column: $state.table.grupoNetoDescripcion,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get cantidadDesde => $state.composableBuilder(
+      column: $state.table.cantidadDesde,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get precio => $state.composableBuilder(
+      column: $state.table.precio,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get divisaId => $state.composableBuilder(
+      column: $state.table.divisaId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get tipoPrecio => $state.composableBuilder(
+      column: $state.table.tipoPrecio,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$EstadisticasClienteUsuarioVentasTableTableCreateCompanionBuilder
+    = EstadisticasClienteUsuarioVentasTableCompanion Function({
+  required double anyo,
+  required double mes,
+  required String clienteId,
+  required String articuloId,
+  Value<double?> unidades,
+  Value<double?> importe,
+  Value<double?> coste,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$EstadisticasClienteUsuarioVentasTableTableUpdateCompanionBuilder
+    = EstadisticasClienteUsuarioVentasTableCompanion Function({
+  Value<double> anyo,
+  Value<double> mes,
+  Value<String> clienteId,
+  Value<String> articuloId,
+  Value<double?> unidades,
+  Value<double?> importe,
+  Value<double?> coste,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$EstadisticasClienteUsuarioVentasTableTableTableManager
+    extends RootTableManager<
+        _$RemoteAppDatabase,
+        $EstadisticasClienteUsuarioVentasTableTable,
+        EstadisticasVentaClienteUsuarioDTO,
+        $$EstadisticasClienteUsuarioVentasTableTableFilterComposer,
+        $$EstadisticasClienteUsuarioVentasTableTableOrderingComposer,
+        $$EstadisticasClienteUsuarioVentasTableTableCreateCompanionBuilder,
+        $$EstadisticasClienteUsuarioVentasTableTableUpdateCompanionBuilder> {
+  $$EstadisticasClienteUsuarioVentasTableTableTableManager(
+      _$RemoteAppDatabase db, $EstadisticasClienteUsuarioVentasTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$EstadisticasClienteUsuarioVentasTableTableFilterComposer(
+                  ComposerState(db, table)),
+          orderingComposer:
+              $$EstadisticasClienteUsuarioVentasTableTableOrderingComposer(
+                  ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<double> anyo = const Value.absent(),
+            Value<double> mes = const Value.absent(),
+            Value<String> clienteId = const Value.absent(),
+            Value<String> articuloId = const Value.absent(),
+            Value<double?> unidades = const Value.absent(),
+            Value<double?> importe = const Value.absent(),
+            Value<double?> coste = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              EstadisticasClienteUsuarioVentasTableCompanion(
+            anyo: anyo,
+            mes: mes,
+            clienteId: clienteId,
+            articuloId: articuloId,
+            unidades: unidades,
+            importe: importe,
+            coste: coste,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required double anyo,
+            required double mes,
+            required String clienteId,
+            required String articuloId,
+            Value<double?> unidades = const Value.absent(),
+            Value<double?> importe = const Value.absent(),
+            Value<double?> coste = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              EstadisticasClienteUsuarioVentasTableCompanion.insert(
+            anyo: anyo,
+            mes: mes,
+            clienteId: clienteId,
+            articuloId: articuloId,
+            unidades: unidades,
+            importe: importe,
+            coste: coste,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$EstadisticasClienteUsuarioVentasTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase,
+        $EstadisticasClienteUsuarioVentasTableTable> {
+  $$EstadisticasClienteUsuarioVentasTableTableFilterComposer(super.$state);
+  ColumnFilters<double> get anyo => $state.composableBuilder(
+      column: $state.table.anyo,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get mes => $state.composableBuilder(
+      column: $state.table.mes,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get clienteId => $state.composableBuilder(
+      column: $state.table.clienteId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get articuloId => $state.composableBuilder(
+      column: $state.table.articuloId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get unidades => $state.composableBuilder(
+      column: $state.table.unidades,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get importe => $state.composableBuilder(
+      column: $state.table.importe,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get coste => $state.composableBuilder(
+      column: $state.table.coste,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$EstadisticasClienteUsuarioVentasTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase,
+        $EstadisticasClienteUsuarioVentasTableTable> {
+  $$EstadisticasClienteUsuarioVentasTableTableOrderingComposer(super.$state);
+  ColumnOrderings<double> get anyo => $state.composableBuilder(
+      column: $state.table.anyo,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get mes => $state.composableBuilder(
+      column: $state.table.mes,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get clienteId => $state.composableBuilder(
+      column: $state.table.clienteId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get articuloId => $state.composableBuilder(
+      column: $state.table.articuloId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get unidades => $state.composableBuilder(
+      column: $state.table.unidades,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get importe => $state.composableBuilder(
+      column: $state.table.importe,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get coste => $state.composableBuilder(
+      column: $state.table.coste,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$EstadisticasUltimosPreciosTableTableCreateCompanionBuilder
+    = EstadisticasUltimosPreciosTableCompanion Function({
+  required String clienteId,
+  required String articuloId,
+  required int linea,
+  required int cantidad,
+  required DateTime fecha,
+  required double precioDivisa,
+  required int tipoPrecio,
+  required String divisaId,
+  required double descuento1,
+  required double descuento2,
+  required double descuento3,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$EstadisticasUltimosPreciosTableTableUpdateCompanionBuilder
+    = EstadisticasUltimosPreciosTableCompanion Function({
+  Value<String> clienteId,
+  Value<String> articuloId,
+  Value<int> linea,
+  Value<int> cantidad,
+  Value<DateTime> fecha,
+  Value<double> precioDivisa,
+  Value<int> tipoPrecio,
+  Value<String> divisaId,
+  Value<double> descuento1,
+  Value<double> descuento2,
+  Value<double> descuento3,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$EstadisticasUltimosPreciosTableTableTableManager
+    extends RootTableManager<
+        _$RemoteAppDatabase,
+        $EstadisticasUltimosPreciosTableTable,
+        EstadisticasUltimosPreciosDTO,
+        $$EstadisticasUltimosPreciosTableTableFilterComposer,
+        $$EstadisticasUltimosPreciosTableTableOrderingComposer,
+        $$EstadisticasUltimosPreciosTableTableCreateCompanionBuilder,
+        $$EstadisticasUltimosPreciosTableTableUpdateCompanionBuilder> {
+  $$EstadisticasUltimosPreciosTableTableTableManager(
+      _$RemoteAppDatabase db, $EstadisticasUltimosPreciosTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$EstadisticasUltimosPreciosTableTableFilterComposer(
+                  ComposerState(db, table)),
+          orderingComposer:
+              $$EstadisticasUltimosPreciosTableTableOrderingComposer(
+                  ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> clienteId = const Value.absent(),
+            Value<String> articuloId = const Value.absent(),
+            Value<int> linea = const Value.absent(),
+            Value<int> cantidad = const Value.absent(),
+            Value<DateTime> fecha = const Value.absent(),
+            Value<double> precioDivisa = const Value.absent(),
+            Value<int> tipoPrecio = const Value.absent(),
+            Value<String> divisaId = const Value.absent(),
+            Value<double> descuento1 = const Value.absent(),
+            Value<double> descuento2 = const Value.absent(),
+            Value<double> descuento3 = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              EstadisticasUltimosPreciosTableCompanion(
+            clienteId: clienteId,
+            articuloId: articuloId,
+            linea: linea,
+            cantidad: cantidad,
+            fecha: fecha,
+            precioDivisa: precioDivisa,
+            tipoPrecio: tipoPrecio,
+            divisaId: divisaId,
+            descuento1: descuento1,
+            descuento2: descuento2,
+            descuento3: descuento3,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String clienteId,
+            required String articuloId,
+            required int linea,
+            required int cantidad,
+            required DateTime fecha,
+            required double precioDivisa,
+            required int tipoPrecio,
+            required String divisaId,
+            required double descuento1,
+            required double descuento2,
+            required double descuento3,
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              EstadisticasUltimosPreciosTableCompanion.insert(
+            clienteId: clienteId,
+            articuloId: articuloId,
+            linea: linea,
+            cantidad: cantidad,
+            fecha: fecha,
+            precioDivisa: precioDivisa,
+            tipoPrecio: tipoPrecio,
+            divisaId: divisaId,
+            descuento1: descuento1,
+            descuento2: descuento2,
+            descuento3: descuento3,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$EstadisticasUltimosPreciosTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase,
+        $EstadisticasUltimosPreciosTableTable> {
+  $$EstadisticasUltimosPreciosTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get clienteId => $state.composableBuilder(
+      column: $state.table.clienteId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get articuloId => $state.composableBuilder(
+      column: $state.table.articuloId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get linea => $state.composableBuilder(
+      column: $state.table.linea,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get cantidad => $state.composableBuilder(
+      column: $state.table.cantidad,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get fecha => $state.composableBuilder(
+      column: $state.table.fecha,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get precioDivisa => $state.composableBuilder(
+      column: $state.table.precioDivisa,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get tipoPrecio => $state.composableBuilder(
+      column: $state.table.tipoPrecio,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get divisaId => $state.composableBuilder(
+      column: $state.table.divisaId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get descuento1 => $state.composableBuilder(
+      column: $state.table.descuento1,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get descuento2 => $state.composableBuilder(
+      column: $state.table.descuento2,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get descuento3 => $state.composableBuilder(
+      column: $state.table.descuento3,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$EstadisticasUltimosPreciosTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase,
+        $EstadisticasUltimosPreciosTableTable> {
+  $$EstadisticasUltimosPreciosTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get clienteId => $state.composableBuilder(
+      column: $state.table.clienteId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get articuloId => $state.composableBuilder(
+      column: $state.table.articuloId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get linea => $state.composableBuilder(
+      column: $state.table.linea,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get cantidad => $state.composableBuilder(
+      column: $state.table.cantidad,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get fecha => $state.composableBuilder(
+      column: $state.table.fecha,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get precioDivisa => $state.composableBuilder(
+      column: $state.table.precioDivisa,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get tipoPrecio => $state.composableBuilder(
+      column: $state.table.tipoPrecio,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get divisaId => $state.composableBuilder(
+      column: $state.table.divisaId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get descuento1 => $state.composableBuilder(
+      column: $state.table.descuento1,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get descuento2 => $state.composableBuilder(
+      column: $state.table.descuento2,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get descuento3 => $state.composableBuilder(
+      column: $state.table.descuento3,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$VisitaTableTableCreateCompanionBuilder = VisitaTableCompanion
+    Function({
+  required String id,
+  required DateTime fecha,
+  Value<String?> clienteId,
+  required String isClienteProvisional,
+  Value<String?> clienteProvisionalNombre,
+  Value<String?> clienteProvisionalEmail,
+  Value<String?> clienteProvisionalTelefono,
+  Value<String?> clienteProvisionalPoblacion,
+  required String numEmpl,
+  Value<String?> contacto,
+  Value<String?> atendidoPor,
+  Value<String?> resumen,
+  Value<String?> marcasCompetencia,
+  required String ofertaRealizada,
+  required String interesCliente,
+  required String pedidoRealizado,
+  Value<int?> codigoMotivoNoInteres,
+  Value<int?> codigoMotivoNoPedido,
+  Value<int?> codigoSector,
+  Value<int?> codigoCompetencia,
+  required String almacenPropio,
+  required String capacidad,
+  required String frecuenciaPedido,
+  required double latitud,
+  required double longitud,
+  Value<String?> visitaAppId,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$VisitaTableTableUpdateCompanionBuilder = VisitaTableCompanion
+    Function({
+  Value<String> id,
+  Value<DateTime> fecha,
+  Value<String?> clienteId,
+  Value<String> isClienteProvisional,
+  Value<String?> clienteProvisionalNombre,
+  Value<String?> clienteProvisionalEmail,
+  Value<String?> clienteProvisionalTelefono,
+  Value<String?> clienteProvisionalPoblacion,
+  Value<String> numEmpl,
+  Value<String?> contacto,
+  Value<String?> atendidoPor,
+  Value<String?> resumen,
+  Value<String?> marcasCompetencia,
+  Value<String> ofertaRealizada,
+  Value<String> interesCliente,
+  Value<String> pedidoRealizado,
+  Value<int?> codigoMotivoNoInteres,
+  Value<int?> codigoMotivoNoPedido,
+  Value<int?> codigoSector,
+  Value<int?> codigoCompetencia,
+  Value<String> almacenPropio,
+  Value<String> capacidad,
+  Value<String> frecuenciaPedido,
+  Value<double> latitud,
+  Value<double> longitud,
+  Value<String?> visitaAppId,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$VisitaTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $VisitaTableTable,
+    VisitaDTO,
+    $$VisitaTableTableFilterComposer,
+    $$VisitaTableTableOrderingComposer,
+    $$VisitaTableTableCreateCompanionBuilder,
+    $$VisitaTableTableUpdateCompanionBuilder> {
+  $$VisitaTableTableTableManager(
+      _$RemoteAppDatabase db, $VisitaTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$VisitaTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$VisitaTableTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<DateTime> fecha = const Value.absent(),
+            Value<String?> clienteId = const Value.absent(),
+            Value<String> isClienteProvisional = const Value.absent(),
+            Value<String?> clienteProvisionalNombre = const Value.absent(),
+            Value<String?> clienteProvisionalEmail = const Value.absent(),
+            Value<String?> clienteProvisionalTelefono = const Value.absent(),
+            Value<String?> clienteProvisionalPoblacion = const Value.absent(),
+            Value<String> numEmpl = const Value.absent(),
+            Value<String?> contacto = const Value.absent(),
+            Value<String?> atendidoPor = const Value.absent(),
+            Value<String?> resumen = const Value.absent(),
+            Value<String?> marcasCompetencia = const Value.absent(),
+            Value<String> ofertaRealizada = const Value.absent(),
+            Value<String> interesCliente = const Value.absent(),
+            Value<String> pedidoRealizado = const Value.absent(),
+            Value<int?> codigoMotivoNoInteres = const Value.absent(),
+            Value<int?> codigoMotivoNoPedido = const Value.absent(),
+            Value<int?> codigoSector = const Value.absent(),
+            Value<int?> codigoCompetencia = const Value.absent(),
+            Value<String> almacenPropio = const Value.absent(),
+            Value<String> capacidad = const Value.absent(),
+            Value<String> frecuenciaPedido = const Value.absent(),
+            Value<double> latitud = const Value.absent(),
+            Value<double> longitud = const Value.absent(),
+            Value<String?> visitaAppId = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              VisitaTableCompanion(
+            id: id,
+            fecha: fecha,
+            clienteId: clienteId,
+            isClienteProvisional: isClienteProvisional,
+            clienteProvisionalNombre: clienteProvisionalNombre,
+            clienteProvisionalEmail: clienteProvisionalEmail,
+            clienteProvisionalTelefono: clienteProvisionalTelefono,
+            clienteProvisionalPoblacion: clienteProvisionalPoblacion,
+            numEmpl: numEmpl,
+            contacto: contacto,
+            atendidoPor: atendidoPor,
+            resumen: resumen,
+            marcasCompetencia: marcasCompetencia,
+            ofertaRealizada: ofertaRealizada,
+            interesCliente: interesCliente,
+            pedidoRealizado: pedidoRealizado,
+            codigoMotivoNoInteres: codigoMotivoNoInteres,
+            codigoMotivoNoPedido: codigoMotivoNoPedido,
+            codigoSector: codigoSector,
+            codigoCompetencia: codigoCompetencia,
+            almacenPropio: almacenPropio,
+            capacidad: capacidad,
+            frecuenciaPedido: frecuenciaPedido,
+            latitud: latitud,
+            longitud: longitud,
+            visitaAppId: visitaAppId,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required DateTime fecha,
+            Value<String?> clienteId = const Value.absent(),
+            required String isClienteProvisional,
+            Value<String?> clienteProvisionalNombre = const Value.absent(),
+            Value<String?> clienteProvisionalEmail = const Value.absent(),
+            Value<String?> clienteProvisionalTelefono = const Value.absent(),
+            Value<String?> clienteProvisionalPoblacion = const Value.absent(),
+            required String numEmpl,
+            Value<String?> contacto = const Value.absent(),
+            Value<String?> atendidoPor = const Value.absent(),
+            Value<String?> resumen = const Value.absent(),
+            Value<String?> marcasCompetencia = const Value.absent(),
+            required String ofertaRealizada,
+            required String interesCliente,
+            required String pedidoRealizado,
+            Value<int?> codigoMotivoNoInteres = const Value.absent(),
+            Value<int?> codigoMotivoNoPedido = const Value.absent(),
+            Value<int?> codigoSector = const Value.absent(),
+            Value<int?> codigoCompetencia = const Value.absent(),
+            required String almacenPropio,
+            required String capacidad,
+            required String frecuenciaPedido,
+            required double latitud,
+            required double longitud,
+            Value<String?> visitaAppId = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              VisitaTableCompanion.insert(
+            id: id,
+            fecha: fecha,
+            clienteId: clienteId,
+            isClienteProvisional: isClienteProvisional,
+            clienteProvisionalNombre: clienteProvisionalNombre,
+            clienteProvisionalEmail: clienteProvisionalEmail,
+            clienteProvisionalTelefono: clienteProvisionalTelefono,
+            clienteProvisionalPoblacion: clienteProvisionalPoblacion,
+            numEmpl: numEmpl,
+            contacto: contacto,
+            atendidoPor: atendidoPor,
+            resumen: resumen,
+            marcasCompetencia: marcasCompetencia,
+            ofertaRealizada: ofertaRealizada,
+            interesCliente: interesCliente,
+            pedidoRealizado: pedidoRealizado,
+            codigoMotivoNoInteres: codigoMotivoNoInteres,
+            codigoMotivoNoPedido: codigoMotivoNoPedido,
+            codigoSector: codigoSector,
+            codigoCompetencia: codigoCompetencia,
+            almacenPropio: almacenPropio,
+            capacidad: capacidad,
+            frecuenciaPedido: frecuenciaPedido,
+            latitud: latitud,
+            longitud: longitud,
+            visitaAppId: visitaAppId,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$VisitaTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $VisitaTableTable> {
+  $$VisitaTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get fecha => $state.composableBuilder(
+      column: $state.table.fecha,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get clienteId => $state.composableBuilder(
+      column: $state.table.clienteId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get isClienteProvisional => $state.composableBuilder(
+      column: $state.table.isClienteProvisional,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get clienteProvisionalNombre =>
+      $state.composableBuilder(
+          column: $state.table.clienteProvisionalNombre,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get clienteProvisionalEmail => $state.composableBuilder(
+      column: $state.table.clienteProvisionalEmail,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get clienteProvisionalTelefono =>
+      $state.composableBuilder(
+          column: $state.table.clienteProvisionalTelefono,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get clienteProvisionalPoblacion => $state
+      .composableBuilder(
+          column: $state.table.clienteProvisionalPoblacion,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get numEmpl => $state.composableBuilder(
+      column: $state.table.numEmpl,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get contacto => $state.composableBuilder(
+      column: $state.table.contacto,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get atendidoPor => $state.composableBuilder(
+      column: $state.table.atendidoPor,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get resumen => $state.composableBuilder(
+      column: $state.table.resumen,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get marcasCompetencia => $state.composableBuilder(
+      column: $state.table.marcasCompetencia,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get ofertaRealizada => $state.composableBuilder(
+      column: $state.table.ofertaRealizada,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get interesCliente => $state.composableBuilder(
+      column: $state.table.interesCliente,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get pedidoRealizado => $state.composableBuilder(
+      column: $state.table.pedidoRealizado,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get codigoMotivoNoInteres => $state.composableBuilder(
+      column: $state.table.codigoMotivoNoInteres,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get codigoMotivoNoPedido => $state.composableBuilder(
+      column: $state.table.codigoMotivoNoPedido,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get codigoSector => $state.composableBuilder(
+      column: $state.table.codigoSector,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get codigoCompetencia => $state.composableBuilder(
+      column: $state.table.codigoCompetencia,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get almacenPropio => $state.composableBuilder(
+      column: $state.table.almacenPropio,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get capacidad => $state.composableBuilder(
+      column: $state.table.capacidad,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get frecuenciaPedido => $state.composableBuilder(
+      column: $state.table.frecuenciaPedido,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get latitud => $state.composableBuilder(
+      column: $state.table.latitud,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get longitud => $state.composableBuilder(
+      column: $state.table.longitud,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get visitaAppId => $state.composableBuilder(
+      column: $state.table.visitaAppId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$VisitaTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $VisitaTableTable> {
+  $$VisitaTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get fecha => $state.composableBuilder(
+      column: $state.table.fecha,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get clienteId => $state.composableBuilder(
+      column: $state.table.clienteId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get isClienteProvisional => $state.composableBuilder(
+      column: $state.table.isClienteProvisional,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get clienteProvisionalNombre =>
+      $state.composableBuilder(
+          column: $state.table.clienteProvisionalNombre,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get clienteProvisionalEmail =>
+      $state.composableBuilder(
+          column: $state.table.clienteProvisionalEmail,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get clienteProvisionalTelefono =>
+      $state.composableBuilder(
+          column: $state.table.clienteProvisionalTelefono,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get clienteProvisionalPoblacion =>
+      $state.composableBuilder(
+          column: $state.table.clienteProvisionalPoblacion,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get numEmpl => $state.composableBuilder(
+      column: $state.table.numEmpl,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get contacto => $state.composableBuilder(
+      column: $state.table.contacto,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get atendidoPor => $state.composableBuilder(
+      column: $state.table.atendidoPor,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get resumen => $state.composableBuilder(
+      column: $state.table.resumen,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get marcasCompetencia => $state.composableBuilder(
+      column: $state.table.marcasCompetencia,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get ofertaRealizada => $state.composableBuilder(
+      column: $state.table.ofertaRealizada,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get interesCliente => $state.composableBuilder(
+      column: $state.table.interesCliente,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get pedidoRealizado => $state.composableBuilder(
+      column: $state.table.pedidoRealizado,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get codigoMotivoNoInteres => $state.composableBuilder(
+      column: $state.table.codigoMotivoNoInteres,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get codigoMotivoNoPedido => $state.composableBuilder(
+      column: $state.table.codigoMotivoNoPedido,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get codigoSector => $state.composableBuilder(
+      column: $state.table.codigoSector,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get codigoCompetencia => $state.composableBuilder(
+      column: $state.table.codigoCompetencia,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get almacenPropio => $state.composableBuilder(
+      column: $state.table.almacenPropio,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get capacidad => $state.composableBuilder(
+      column: $state.table.capacidad,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get frecuenciaPedido => $state.composableBuilder(
+      column: $state.table.frecuenciaPedido,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get latitud => $state.composableBuilder(
+      column: $state.table.latitud,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get longitud => $state.composableBuilder(
+      column: $state.table.longitud,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get visitaAppId => $state.composableBuilder(
+      column: $state.table.visitaAppId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$PedidoAlbaranTableTableCreateCompanionBuilder
+    = PedidoAlbaranTableCompanion Function({
+  required String empresaId,
+  required String pedidoVentaId,
+  required String albaranId,
+  required DateTime fechaAlbaran,
+  Value<String?> agencia,
+  Value<String?> trackId,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$PedidoAlbaranTableTableUpdateCompanionBuilder
+    = PedidoAlbaranTableCompanion Function({
+  Value<String> empresaId,
+  Value<String> pedidoVentaId,
+  Value<String> albaranId,
+  Value<DateTime> fechaAlbaran,
+  Value<String?> agencia,
+  Value<String?> trackId,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$PedidoAlbaranTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $PedidoAlbaranTableTable,
+    PedidoAlbaranDTO,
+    $$PedidoAlbaranTableTableFilterComposer,
+    $$PedidoAlbaranTableTableOrderingComposer,
+    $$PedidoAlbaranTableTableCreateCompanionBuilder,
+    $$PedidoAlbaranTableTableUpdateCompanionBuilder> {
+  $$PedidoAlbaranTableTableTableManager(
+      _$RemoteAppDatabase db, $PedidoAlbaranTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$PedidoAlbaranTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer: $$PedidoAlbaranTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> empresaId = const Value.absent(),
+            Value<String> pedidoVentaId = const Value.absent(),
+            Value<String> albaranId = const Value.absent(),
+            Value<DateTime> fechaAlbaran = const Value.absent(),
+            Value<String?> agencia = const Value.absent(),
+            Value<String?> trackId = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              PedidoAlbaranTableCompanion(
+            empresaId: empresaId,
+            pedidoVentaId: pedidoVentaId,
+            albaranId: albaranId,
+            fechaAlbaran: fechaAlbaran,
+            agencia: agencia,
+            trackId: trackId,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String empresaId,
+            required String pedidoVentaId,
+            required String albaranId,
+            required DateTime fechaAlbaran,
+            Value<String?> agencia = const Value.absent(),
+            Value<String?> trackId = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              PedidoAlbaranTableCompanion.insert(
+            empresaId: empresaId,
+            pedidoVentaId: pedidoVentaId,
+            albaranId: albaranId,
+            fechaAlbaran: fechaAlbaran,
+            agencia: agencia,
+            trackId: trackId,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$PedidoAlbaranTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $PedidoAlbaranTableTable> {
+  $$PedidoAlbaranTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get empresaId => $state.composableBuilder(
+      column: $state.table.empresaId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get pedidoVentaId => $state.composableBuilder(
+      column: $state.table.pedidoVentaId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get albaranId => $state.composableBuilder(
+      column: $state.table.albaranId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get fechaAlbaran => $state.composableBuilder(
+      column: $state.table.fechaAlbaran,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get agencia => $state.composableBuilder(
+      column: $state.table.agencia,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get trackId => $state.composableBuilder(
+      column: $state.table.trackId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$PedidoAlbaranTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $PedidoAlbaranTableTable> {
+  $$PedidoAlbaranTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get empresaId => $state.composableBuilder(
+      column: $state.table.empresaId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get pedidoVentaId => $state.composableBuilder(
+      column: $state.table.pedidoVentaId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get albaranId => $state.composableBuilder(
+      column: $state.table.albaranId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get fechaAlbaran => $state.composableBuilder(
+      column: $state.table.fechaAlbaran,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get agencia => $state.composableBuilder(
+      column: $state.table.agencia,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get trackId => $state.composableBuilder(
+      column: $state.table.trackId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$DescuentoGeneralTableTableCreateCompanionBuilder
+    = DescuentoGeneralTableCompanion Function({
+  required String descuentoGeneralId,
+  required String articuloId,
+  required String familiaId,
+  required String subfamiliaId,
+  required int cantidadDesde,
+  required double descuento,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$DescuentoGeneralTableTableUpdateCompanionBuilder
+    = DescuentoGeneralTableCompanion Function({
+  Value<String> descuentoGeneralId,
+  Value<String> articuloId,
+  Value<String> familiaId,
+  Value<String> subfamiliaId,
+  Value<int> cantidadDesde,
+  Value<double> descuento,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$DescuentoGeneralTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $DescuentoGeneralTableTable,
+    DescuentoGeneralDTO,
+    $$DescuentoGeneralTableTableFilterComposer,
+    $$DescuentoGeneralTableTableOrderingComposer,
+    $$DescuentoGeneralTableTableCreateCompanionBuilder,
+    $$DescuentoGeneralTableTableUpdateCompanionBuilder> {
+  $$DescuentoGeneralTableTableTableManager(
+      _$RemoteAppDatabase db, $DescuentoGeneralTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$DescuentoGeneralTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$DescuentoGeneralTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> descuentoGeneralId = const Value.absent(),
+            Value<String> articuloId = const Value.absent(),
+            Value<String> familiaId = const Value.absent(),
+            Value<String> subfamiliaId = const Value.absent(),
+            Value<int> cantidadDesde = const Value.absent(),
+            Value<double> descuento = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              DescuentoGeneralTableCompanion(
+            descuentoGeneralId: descuentoGeneralId,
+            articuloId: articuloId,
+            familiaId: familiaId,
+            subfamiliaId: subfamiliaId,
+            cantidadDesde: cantidadDesde,
+            descuento: descuento,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String descuentoGeneralId,
+            required String articuloId,
+            required String familiaId,
+            required String subfamiliaId,
+            required int cantidadDesde,
+            required double descuento,
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              DescuentoGeneralTableCompanion.insert(
+            descuentoGeneralId: descuentoGeneralId,
+            articuloId: articuloId,
+            familiaId: familiaId,
+            subfamiliaId: subfamiliaId,
+            cantidadDesde: cantidadDesde,
+            descuento: descuento,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$DescuentoGeneralTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $DescuentoGeneralTableTable> {
+  $$DescuentoGeneralTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get descuentoGeneralId => $state.composableBuilder(
+      column: $state.table.descuentoGeneralId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get articuloId => $state.composableBuilder(
+      column: $state.table.articuloId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get familiaId => $state.composableBuilder(
+      column: $state.table.familiaId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get subfamiliaId => $state.composableBuilder(
+      column: $state.table.subfamiliaId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get cantidadDesde => $state.composableBuilder(
+      column: $state.table.cantidadDesde,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get descuento => $state.composableBuilder(
+      column: $state.table.descuento,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$DescuentoGeneralTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $DescuentoGeneralTableTable> {
+  $$DescuentoGeneralTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get descuentoGeneralId => $state.composableBuilder(
+      column: $state.table.descuentoGeneralId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get articuloId => $state.composableBuilder(
+      column: $state.table.articuloId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get familiaId => $state.composableBuilder(
+      column: $state.table.familiaId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get subfamiliaId => $state.composableBuilder(
+      column: $state.table.subfamiliaId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get cantidadDesde => $state.composableBuilder(
+      column: $state.table.cantidadDesde,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get descuento => $state.composableBuilder(
+      column: $state.table.descuento,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$DevolucionTipoTableTableCreateCompanionBuilder
+    = DevolucionTipoTableCompanion Function({
+  required String id,
+  required String descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$DevolucionTipoTableTableUpdateCompanionBuilder
+    = DevolucionTipoTableCompanion Function({
+  Value<String> id,
+  Value<String> descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$DevolucionTipoTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $DevolucionTipoTableTable,
+    DevolucionTipoDTO,
+    $$DevolucionTipoTableTableFilterComposer,
+    $$DevolucionTipoTableTableOrderingComposer,
+    $$DevolucionTipoTableTableCreateCompanionBuilder,
+    $$DevolucionTipoTableTableUpdateCompanionBuilder> {
+  $$DevolucionTipoTableTableTableManager(
+      _$RemoteAppDatabase db, $DevolucionTipoTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$DevolucionTipoTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$DevolucionTipoTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              DevolucionTipoTableCompanion(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              DevolucionTipoTableCompanion.insert(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$DevolucionTipoTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $DevolucionTipoTableTable> {
+  $$DevolucionTipoTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionPT => $state.composableBuilder(
+      column: $state.table.descripcionPT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionRO => $state.composableBuilder(
+      column: $state.table.descripcionRO,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionRU => $state.composableBuilder(
+      column: $state.table.descripcionRU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCN => $state.composableBuilder(
+      column: $state.table.descripcionCN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEL => $state.composableBuilder(
+      column: $state.table.descripcionEL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$DevolucionTipoTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $DevolucionTipoTableTable> {
+  $$DevolucionTipoTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionPT => $state.composableBuilder(
+      column: $state.table.descripcionPT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionRO => $state.composableBuilder(
+      column: $state.table.descripcionRO,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionRU => $state.composableBuilder(
+      column: $state.table.descripcionRU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCN => $state.composableBuilder(
+      column: $state.table.descripcionCN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEL => $state.composableBuilder(
+      column: $state.table.descripcionEL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$DevolucionMotivoTableTableCreateCompanionBuilder
+    = DevolucionMotivoTableCompanion Function({
+  required String id,
+  required String descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$DevolucionMotivoTableTableUpdateCompanionBuilder
+    = DevolucionMotivoTableCompanion Function({
+  Value<String> id,
+  Value<String> descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$DevolucionMotivoTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $DevolucionMotivoTableTable,
+    DevolucionMotivoDTO,
+    $$DevolucionMotivoTableTableFilterComposer,
+    $$DevolucionMotivoTableTableOrderingComposer,
+    $$DevolucionMotivoTableTableCreateCompanionBuilder,
+    $$DevolucionMotivoTableTableUpdateCompanionBuilder> {
+  $$DevolucionMotivoTableTableTableManager(
+      _$RemoteAppDatabase db, $DevolucionMotivoTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$DevolucionMotivoTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$DevolucionMotivoTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              DevolucionMotivoTableCompanion(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              DevolucionMotivoTableCompanion.insert(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$DevolucionMotivoTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $DevolucionMotivoTableTable> {
+  $$DevolucionMotivoTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionPT => $state.composableBuilder(
+      column: $state.table.descripcionPT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionRO => $state.composableBuilder(
+      column: $state.table.descripcionRO,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionRU => $state.composableBuilder(
+      column: $state.table.descripcionRU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCN => $state.composableBuilder(
+      column: $state.table.descripcionCN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEL => $state.composableBuilder(
+      column: $state.table.descripcionEL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$DevolucionMotivoTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $DevolucionMotivoTableTable> {
+  $$DevolucionMotivoTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionPT => $state.composableBuilder(
+      column: $state.table.descripcionPT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionRO => $state.composableBuilder(
+      column: $state.table.descripcionRO,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionRU => $state.composableBuilder(
+      column: $state.table.descripcionRU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCN => $state.composableBuilder(
+      column: $state.table.descripcionCN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEL => $state.composableBuilder(
+      column: $state.table.descripcionEL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$DevolucionEstadoTableTableCreateCompanionBuilder
+    = DevolucionEstadoTableCompanion Function({
+  required String id,
+  required String descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$DevolucionEstadoTableTableUpdateCompanionBuilder
+    = DevolucionEstadoTableCompanion Function({
+  Value<String> id,
+  Value<String> descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$DevolucionEstadoTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $DevolucionEstadoTableTable,
+    DevolucionEstadoDTO,
+    $$DevolucionEstadoTableTableFilterComposer,
+    $$DevolucionEstadoTableTableOrderingComposer,
+    $$DevolucionEstadoTableTableCreateCompanionBuilder,
+    $$DevolucionEstadoTableTableUpdateCompanionBuilder> {
+  $$DevolucionEstadoTableTableTableManager(
+      _$RemoteAppDatabase db, $DevolucionEstadoTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$DevolucionEstadoTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$DevolucionEstadoTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              DevolucionEstadoTableCompanion(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              DevolucionEstadoTableCompanion.insert(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$DevolucionEstadoTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $DevolucionEstadoTableTable> {
+  $$DevolucionEstadoTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionPT => $state.composableBuilder(
+      column: $state.table.descripcionPT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionRO => $state.composableBuilder(
+      column: $state.table.descripcionRO,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionRU => $state.composableBuilder(
+      column: $state.table.descripcionRU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCN => $state.composableBuilder(
+      column: $state.table.descripcionCN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEL => $state.composableBuilder(
+      column: $state.table.descripcionEL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$DevolucionEstadoTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $DevolucionEstadoTableTable> {
+  $$DevolucionEstadoTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionPT => $state.composableBuilder(
+      column: $state.table.descripcionPT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionRO => $state.composableBuilder(
+      column: $state.table.descripcionRO,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionRU => $state.composableBuilder(
+      column: $state.table.descripcionRU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCN => $state.composableBuilder(
+      column: $state.table.descripcionCN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEL => $state.composableBuilder(
+      column: $state.table.descripcionEL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$DevolucionLineaTableTableCreateCompanionBuilder
+    = DevolucionLineaTableCompanion Function({
+  required String empresaId,
+  required String devolucionId,
+  required String articuloId,
+  required String articuloDescription,
+  Value<double?> cantidadDevolucion,
+  Value<double?> cantidadRecibida,
+  Value<String?> devolucionEstadoId,
+  Value<String?> devolucionMotivoId,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$DevolucionLineaTableTableUpdateCompanionBuilder
+    = DevolucionLineaTableCompanion Function({
+  Value<String> empresaId,
+  Value<String> devolucionId,
+  Value<String> articuloId,
+  Value<String> articuloDescription,
+  Value<double?> cantidadDevolucion,
+  Value<double?> cantidadRecibida,
+  Value<String?> devolucionEstadoId,
+  Value<String?> devolucionMotivoId,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$DevolucionLineaTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $DevolucionLineaTableTable,
+    DevolucionLineaDTO,
+    $$DevolucionLineaTableTableFilterComposer,
+    $$DevolucionLineaTableTableOrderingComposer,
+    $$DevolucionLineaTableTableCreateCompanionBuilder,
+    $$DevolucionLineaTableTableUpdateCompanionBuilder> {
+  $$DevolucionLineaTableTableTableManager(
+      _$RemoteAppDatabase db, $DevolucionLineaTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$DevolucionLineaTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$DevolucionLineaTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> empresaId = const Value.absent(),
+            Value<String> devolucionId = const Value.absent(),
+            Value<String> articuloId = const Value.absent(),
+            Value<String> articuloDescription = const Value.absent(),
+            Value<double?> cantidadDevolucion = const Value.absent(),
+            Value<double?> cantidadRecibida = const Value.absent(),
+            Value<String?> devolucionEstadoId = const Value.absent(),
+            Value<String?> devolucionMotivoId = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              DevolucionLineaTableCompanion(
+            empresaId: empresaId,
+            devolucionId: devolucionId,
+            articuloId: articuloId,
+            articuloDescription: articuloDescription,
+            cantidadDevolucion: cantidadDevolucion,
+            cantidadRecibida: cantidadRecibida,
+            devolucionEstadoId: devolucionEstadoId,
+            devolucionMotivoId: devolucionMotivoId,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String empresaId,
+            required String devolucionId,
+            required String articuloId,
+            required String articuloDescription,
+            Value<double?> cantidadDevolucion = const Value.absent(),
+            Value<double?> cantidadRecibida = const Value.absent(),
+            Value<String?> devolucionEstadoId = const Value.absent(),
+            Value<String?> devolucionMotivoId = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              DevolucionLineaTableCompanion.insert(
+            empresaId: empresaId,
+            devolucionId: devolucionId,
+            articuloId: articuloId,
+            articuloDescription: articuloDescription,
+            cantidadDevolucion: cantidadDevolucion,
+            cantidadRecibida: cantidadRecibida,
+            devolucionEstadoId: devolucionEstadoId,
+            devolucionMotivoId: devolucionMotivoId,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$DevolucionLineaTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $DevolucionLineaTableTable> {
+  $$DevolucionLineaTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get empresaId => $state.composableBuilder(
+      column: $state.table.empresaId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get devolucionId => $state.composableBuilder(
+      column: $state.table.devolucionId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get articuloId => $state.composableBuilder(
+      column: $state.table.articuloId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get articuloDescription => $state.composableBuilder(
+      column: $state.table.articuloDescription,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get cantidadDevolucion => $state.composableBuilder(
+      column: $state.table.cantidadDevolucion,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get cantidadRecibida => $state.composableBuilder(
+      column: $state.table.cantidadRecibida,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get devolucionEstadoId => $state.composableBuilder(
+      column: $state.table.devolucionEstadoId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get devolucionMotivoId => $state.composableBuilder(
+      column: $state.table.devolucionMotivoId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$DevolucionLineaTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $DevolucionLineaTableTable> {
+  $$DevolucionLineaTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get empresaId => $state.composableBuilder(
+      column: $state.table.empresaId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get devolucionId => $state.composableBuilder(
+      column: $state.table.devolucionId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get articuloId => $state.composableBuilder(
+      column: $state.table.articuloId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get articuloDescription => $state.composableBuilder(
+      column: $state.table.articuloDescription,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get cantidadDevolucion => $state.composableBuilder(
+      column: $state.table.cantidadDevolucion,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get cantidadRecibida => $state.composableBuilder(
+      column: $state.table.cantidadRecibida,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get devolucionEstadoId => $state.composableBuilder(
+      column: $state.table.devolucionEstadoId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get devolucionMotivoId => $state.composableBuilder(
+      column: $state.table.devolucionMotivoId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$DevolucionTableTableCreateCompanionBuilder = DevolucionTableCompanion
+    Function({
+  required String empresaId,
+  required String id,
+  required DateTime fechaDevolucion,
+  Value<String?> clienteId,
+  Value<String?> direccionId,
+  Value<String?> nombre,
+  Value<String?> direccionRecogida1,
+  Value<String?> direccionRecogida2,
+  Value<String?> codigoPostal,
+  Value<String?> poblacion,
+  Value<String?> paisId,
+  Value<String?> almacenDestino,
+  Value<String?> agenciaTransporte,
+  required String devolucionEstadoId,
+  required double kilosDevolucion,
+  required double bultos,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$DevolucionTableTableUpdateCompanionBuilder = DevolucionTableCompanion
+    Function({
+  Value<String> empresaId,
+  Value<String> id,
+  Value<DateTime> fechaDevolucion,
+  Value<String?> clienteId,
+  Value<String?> direccionId,
+  Value<String?> nombre,
+  Value<String?> direccionRecogida1,
+  Value<String?> direccionRecogida2,
+  Value<String?> codigoPostal,
+  Value<String?> poblacion,
+  Value<String?> paisId,
+  Value<String?> almacenDestino,
+  Value<String?> agenciaTransporte,
+  Value<String> devolucionEstadoId,
+  Value<double> kilosDevolucion,
+  Value<double> bultos,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$DevolucionTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $DevolucionTableTable,
+    DevolucionDTO,
+    $$DevolucionTableTableFilterComposer,
+    $$DevolucionTableTableOrderingComposer,
+    $$DevolucionTableTableCreateCompanionBuilder,
+    $$DevolucionTableTableUpdateCompanionBuilder> {
+  $$DevolucionTableTableTableManager(
+      _$RemoteAppDatabase db, $DevolucionTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$DevolucionTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$DevolucionTableTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> empresaId = const Value.absent(),
+            Value<String> id = const Value.absent(),
+            Value<DateTime> fechaDevolucion = const Value.absent(),
+            Value<String?> clienteId = const Value.absent(),
+            Value<String?> direccionId = const Value.absent(),
+            Value<String?> nombre = const Value.absent(),
+            Value<String?> direccionRecogida1 = const Value.absent(),
+            Value<String?> direccionRecogida2 = const Value.absent(),
+            Value<String?> codigoPostal = const Value.absent(),
+            Value<String?> poblacion = const Value.absent(),
+            Value<String?> paisId = const Value.absent(),
+            Value<String?> almacenDestino = const Value.absent(),
+            Value<String?> agenciaTransporte = const Value.absent(),
+            Value<String> devolucionEstadoId = const Value.absent(),
+            Value<double> kilosDevolucion = const Value.absent(),
+            Value<double> bultos = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              DevolucionTableCompanion(
+            empresaId: empresaId,
+            id: id,
+            fechaDevolucion: fechaDevolucion,
+            clienteId: clienteId,
+            direccionId: direccionId,
+            nombre: nombre,
+            direccionRecogida1: direccionRecogida1,
+            direccionRecogida2: direccionRecogida2,
+            codigoPostal: codigoPostal,
+            poblacion: poblacion,
+            paisId: paisId,
+            almacenDestino: almacenDestino,
+            agenciaTransporte: agenciaTransporte,
+            devolucionEstadoId: devolucionEstadoId,
+            kilosDevolucion: kilosDevolucion,
+            bultos: bultos,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String empresaId,
+            required String id,
+            required DateTime fechaDevolucion,
+            Value<String?> clienteId = const Value.absent(),
+            Value<String?> direccionId = const Value.absent(),
+            Value<String?> nombre = const Value.absent(),
+            Value<String?> direccionRecogida1 = const Value.absent(),
+            Value<String?> direccionRecogida2 = const Value.absent(),
+            Value<String?> codigoPostal = const Value.absent(),
+            Value<String?> poblacion = const Value.absent(),
+            Value<String?> paisId = const Value.absent(),
+            Value<String?> almacenDestino = const Value.absent(),
+            Value<String?> agenciaTransporte = const Value.absent(),
+            required String devolucionEstadoId,
+            required double kilosDevolucion,
+            required double bultos,
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              DevolucionTableCompanion.insert(
+            empresaId: empresaId,
+            id: id,
+            fechaDevolucion: fechaDevolucion,
+            clienteId: clienteId,
+            direccionId: direccionId,
+            nombre: nombre,
+            direccionRecogida1: direccionRecogida1,
+            direccionRecogida2: direccionRecogida2,
+            codigoPostal: codigoPostal,
+            poblacion: poblacion,
+            paisId: paisId,
+            almacenDestino: almacenDestino,
+            agenciaTransporte: agenciaTransporte,
+            devolucionEstadoId: devolucionEstadoId,
+            kilosDevolucion: kilosDevolucion,
+            bultos: bultos,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$DevolucionTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $DevolucionTableTable> {
+  $$DevolucionTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get empresaId => $state.composableBuilder(
+      column: $state.table.empresaId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get fechaDevolucion => $state.composableBuilder(
+      column: $state.table.fechaDevolucion,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get clienteId => $state.composableBuilder(
+      column: $state.table.clienteId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get direccionId => $state.composableBuilder(
+      column: $state.table.direccionId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get nombre => $state.composableBuilder(
+      column: $state.table.nombre,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get direccionRecogida1 => $state.composableBuilder(
+      column: $state.table.direccionRecogida1,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get direccionRecogida2 => $state.composableBuilder(
+      column: $state.table.direccionRecogida2,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get codigoPostal => $state.composableBuilder(
+      column: $state.table.codigoPostal,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get poblacion => $state.composableBuilder(
+      column: $state.table.poblacion,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get paisId => $state.composableBuilder(
+      column: $state.table.paisId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get almacenDestino => $state.composableBuilder(
+      column: $state.table.almacenDestino,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get agenciaTransporte => $state.composableBuilder(
+      column: $state.table.agenciaTransporte,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get devolucionEstadoId => $state.composableBuilder(
+      column: $state.table.devolucionEstadoId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get kilosDevolucion => $state.composableBuilder(
+      column: $state.table.kilosDevolucion,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get bultos => $state.composableBuilder(
+      column: $state.table.bultos,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$DevolucionTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $DevolucionTableTable> {
+  $$DevolucionTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get empresaId => $state.composableBuilder(
+      column: $state.table.empresaId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get fechaDevolucion => $state.composableBuilder(
+      column: $state.table.fechaDevolucion,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get clienteId => $state.composableBuilder(
+      column: $state.table.clienteId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get direccionId => $state.composableBuilder(
+      column: $state.table.direccionId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get nombre => $state.composableBuilder(
+      column: $state.table.nombre,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get direccionRecogida1 => $state.composableBuilder(
+      column: $state.table.direccionRecogida1,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get direccionRecogida2 => $state.composableBuilder(
+      column: $state.table.direccionRecogida2,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get codigoPostal => $state.composableBuilder(
+      column: $state.table.codigoPostal,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get poblacion => $state.composableBuilder(
+      column: $state.table.poblacion,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get paisId => $state.composableBuilder(
+      column: $state.table.paisId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get almacenDestino => $state.composableBuilder(
+      column: $state.table.almacenDestino,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get agenciaTransporte => $state.composableBuilder(
+      column: $state.table.agenciaTransporte,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get devolucionEstadoId => $state.composableBuilder(
+      column: $state.table.devolucionEstadoId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get kilosDevolucion => $state.composableBuilder(
+      column: $state.table.kilosDevolucion,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get bultos => $state.composableBuilder(
+      column: $state.table.bultos,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$ProvinciaTableTableCreateCompanionBuilder = ProvinciaTableCompanion
+    Function({
+  Value<String?> paisId,
+  Value<String?> regionId,
+  required String provinciaId,
+  Value<String?> provincia,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$ProvinciaTableTableUpdateCompanionBuilder = ProvinciaTableCompanion
+    Function({
+  Value<String?> paisId,
+  Value<String?> regionId,
+  Value<String> provinciaId,
+  Value<String?> provincia,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$ProvinciaTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ProvinciaTableTable,
+    ProvinciaDTO,
+    $$ProvinciaTableTableFilterComposer,
+    $$ProvinciaTableTableOrderingComposer,
+    $$ProvinciaTableTableCreateCompanionBuilder,
+    $$ProvinciaTableTableUpdateCompanionBuilder> {
+  $$ProvinciaTableTableTableManager(
+      _$RemoteAppDatabase db, $ProvinciaTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$ProvinciaTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$ProvinciaTableTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String?> paisId = const Value.absent(),
+            Value<String?> regionId = const Value.absent(),
+            Value<String> provinciaId = const Value.absent(),
+            Value<String?> provincia = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ProvinciaTableCompanion(
+            paisId: paisId,
+            regionId: regionId,
+            provinciaId: provinciaId,
+            provincia: provincia,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            Value<String?> paisId = const Value.absent(),
+            Value<String?> regionId = const Value.absent(),
+            required String provinciaId,
+            Value<String?> provincia = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ProvinciaTableCompanion.insert(
+            paisId: paisId,
+            regionId: regionId,
+            provinciaId: provinciaId,
+            provincia: provincia,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$ProvinciaTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $ProvinciaTableTable> {
+  $$ProvinciaTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get paisId => $state.composableBuilder(
+      column: $state.table.paisId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get regionId => $state.composableBuilder(
+      column: $state.table.regionId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get provinciaId => $state.composableBuilder(
+      column: $state.table.provinciaId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get provincia => $state.composableBuilder(
+      column: $state.table.provincia,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$ProvinciaTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $ProvinciaTableTable> {
+  $$ProvinciaTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get paisId => $state.composableBuilder(
+      column: $state.table.paisId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get regionId => $state.composableBuilder(
+      column: $state.table.regionId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get provinciaId => $state.composableBuilder(
+      column: $state.table.provinciaId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get provincia => $state.composableBuilder(
+      column: $state.table.provincia,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$VisitaCompetidorTableTableCreateCompanionBuilder
+    = VisitaCompetidorTableCompanion Function({
+  Value<int> id,
+  required String descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+});
+typedef $$VisitaCompetidorTableTableUpdateCompanionBuilder
+    = VisitaCompetidorTableCompanion Function({
+  Value<int> id,
+  Value<String> descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+});
+
+class $$VisitaCompetidorTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $VisitaCompetidorTableTable,
+    VisitaCompetidorDTO,
+    $$VisitaCompetidorTableTableFilterComposer,
+    $$VisitaCompetidorTableTableOrderingComposer,
+    $$VisitaCompetidorTableTableCreateCompanionBuilder,
+    $$VisitaCompetidorTableTableUpdateCompanionBuilder> {
+  $$VisitaCompetidorTableTableTableManager(
+      _$RemoteAppDatabase db, $VisitaCompetidorTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$VisitaCompetidorTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$VisitaCompetidorTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+          }) =>
+              VisitaCompetidorTableCompanion(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+          }) =>
+              VisitaCompetidorTableCompanion.insert(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+          ),
+        ));
+}
+
+class $$VisitaCompetidorTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $VisitaCompetidorTableTable> {
+  $$VisitaCompetidorTableTableFilterComposer(super.$state);
+  ColumnFilters<int> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionPL => $state.composableBuilder(
+      column: $state.table.descripcionPL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$VisitaCompetidorTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $VisitaCompetidorTableTable> {
+  $$VisitaCompetidorTableTableOrderingComposer(super.$state);
+  ColumnOrderings<int> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionPL => $state.composableBuilder(
+      column: $state.table.descripcionPL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$VisitaSectorTableTableCreateCompanionBuilder
+    = VisitaSectorTableCompanion Function({
+  Value<int> id,
+  required String descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+});
+typedef $$VisitaSectorTableTableUpdateCompanionBuilder
+    = VisitaSectorTableCompanion Function({
+  Value<int> id,
+  Value<String> descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+});
+
+class $$VisitaSectorTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $VisitaSectorTableTable,
+    VisitaSectorDTO,
+    $$VisitaSectorTableTableFilterComposer,
+    $$VisitaSectorTableTableOrderingComposer,
+    $$VisitaSectorTableTableCreateCompanionBuilder,
+    $$VisitaSectorTableTableUpdateCompanionBuilder> {
+  $$VisitaSectorTableTableTableManager(
+      _$RemoteAppDatabase db, $VisitaSectorTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$VisitaSectorTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer: $$VisitaSectorTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+          }) =>
+              VisitaSectorTableCompanion(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+          }) =>
+              VisitaSectorTableCompanion.insert(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+          ),
+        ));
+}
+
+class $$VisitaSectorTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $VisitaSectorTableTable> {
+  $$VisitaSectorTableTableFilterComposer(super.$state);
+  ColumnFilters<int> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionPL => $state.composableBuilder(
+      column: $state.table.descripcionPL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$VisitaSectorTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $VisitaSectorTableTable> {
+  $$VisitaSectorTableTableOrderingComposer(super.$state);
+  ColumnOrderings<int> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionPL => $state.composableBuilder(
+      column: $state.table.descripcionPL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$VisitaMotivoNoVentaTableTableCreateCompanionBuilder
+    = VisitaMotivoNoVentaTableCompanion Function({
+  Value<int> id,
+  required String descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+});
+typedef $$VisitaMotivoNoVentaTableTableUpdateCompanionBuilder
+    = VisitaMotivoNoVentaTableCompanion Function({
+  Value<int> id,
+  Value<String> descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+});
+
+class $$VisitaMotivoNoVentaTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $VisitaMotivoNoVentaTableTable,
+    VisitaMotivoNoVentaDTO,
+    $$VisitaMotivoNoVentaTableTableFilterComposer,
+    $$VisitaMotivoNoVentaTableTableOrderingComposer,
+    $$VisitaMotivoNoVentaTableTableCreateCompanionBuilder,
+    $$VisitaMotivoNoVentaTableTableUpdateCompanionBuilder> {
+  $$VisitaMotivoNoVentaTableTableTableManager(
+      _$RemoteAppDatabase db, $VisitaMotivoNoVentaTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$VisitaMotivoNoVentaTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$VisitaMotivoNoVentaTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+          }) =>
+              VisitaMotivoNoVentaTableCompanion(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+          }) =>
+              VisitaMotivoNoVentaTableCompanion.insert(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+          ),
+        ));
+}
+
+class $$VisitaMotivoNoVentaTableTableFilterComposer extends FilterComposer<
+    _$RemoteAppDatabase, $VisitaMotivoNoVentaTableTable> {
+  $$VisitaMotivoNoVentaTableTableFilterComposer(super.$state);
+  ColumnFilters<int> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionPL => $state.composableBuilder(
+      column: $state.table.descripcionPL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$VisitaMotivoNoVentaTableTableOrderingComposer extends OrderingComposer<
+    _$RemoteAppDatabase, $VisitaMotivoNoVentaTableTable> {
+  $$VisitaMotivoNoVentaTableTableOrderingComposer(super.$state);
+  ColumnOrderings<int> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionPL => $state.composableBuilder(
+      column: $state.table.descripcionPL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+class $RemoteAppDatabaseManager {
   final _$RemoteAppDatabase _db;
-  _$RemoteAppDatabaseManager(this._db);
+  $RemoteAppDatabaseManager(this._db);
+  $$PaisTableTableTableManager get paisTable =>
+      $$PaisTableTableTableManager(_db, _db.paisTable);
+  $$DivisaTableTableTableManager get divisaTable =>
+      $$DivisaTableTableTableManager(_db, _db.divisaTable);
+  $$PedidoVentaEstadoTableTableTableManager get pedidoVentaEstadoTable =>
+      $$PedidoVentaEstadoTableTableTableManager(
+          _db, _db.pedidoVentaEstadoTable);
+  $$PedidoVentaTableTableTableManager get pedidoVentaTable =>
+      $$PedidoVentaTableTableTableManager(_db, _db.pedidoVentaTable);
+  $$PedidoVentaLineaTableTableTableManager get pedidoVentaLineaTable =>
+      $$PedidoVentaLineaTableTableTableManager(_db, _db.pedidoVentaLineaTable);
+  $$PlazoDeCobroTableTableTableManager get plazoDeCobroTable =>
+      $$PlazoDeCobroTableTableTableManager(_db, _db.plazoDeCobroTable);
+  $$MetodoDeCobroTableTableTableManager get metodoDeCobroTable =>
+      $$MetodoDeCobroTableTableTableManager(_db, _db.metodoDeCobroTable);
+  $$ClienteTableTableTableManager get clienteTable =>
+      $$ClienteTableTableTableManager(_db, _db.clienteTable);
+  $$ClienteUsuarioTableTableTableManager get clienteUsuarioTable =>
+      $$ClienteUsuarioTableTableTableManager(_db, _db.clienteUsuarioTable);
+  $$ClienteGrupoNetoTableTableTableManager get clienteGrupoNetoTable =>
+      $$ClienteGrupoNetoTableTableTableManager(_db, _db.clienteGrupoNetoTable);
+  $$FamiliaTableTableTableManager get familiaTable =>
+      $$FamiliaTableTableTableManager(_db, _db.familiaTable);
+  $$SubfamiliaTableTableTableManager get subfamiliaTable =>
+      $$SubfamiliaTableTableTableManager(_db, _db.subfamiliaTable);
+  $$ClienteDescuentoTableTableTableManager get clienteDescuentoTable =>
+      $$ClienteDescuentoTableTableTableManager(_db, _db.clienteDescuentoTable);
+  $$ClienteContactoTableTableTableManager get clienteContactoTable =>
+      $$ClienteContactoTableTableTableManager(_db, _db.clienteContactoTable);
+  $$ClienteDireccionTableTableTableManager get clienteDireccionTable =>
+      $$ClienteDireccionTableTableTableManager(_db, _db.clienteDireccionTable);
+  $$ClientePagoPendienteTableTableTableManager get clientePagoPendienteTable =>
+      $$ClientePagoPendienteTableTableTableManager(
+          _db, _db.clientePagoPendienteTable);
+  $$ClientePrecioNetoTableTableTableManager get clientePrecioNetoTable =>
+      $$ClientePrecioNetoTableTableTableManager(
+          _db, _db.clientePrecioNetoTable);
+  $$ClienteRappelTableTableTableManager get clienteRappelTable =>
+      $$ClienteRappelTableTableTableManager(_db, _db.clienteRappelTable);
+  $$ClienteEstadoPotencialTableTableTableManager
+      get clienteEstadoPotencialTable =>
+          $$ClienteEstadoPotencialTableTableTableManager(
+              _db, _db.clienteEstadoPotencialTable);
+  $$ClienteTipoPotencialTableTableTableManager get clienteTipoPotencialTable =>
+      $$ClienteTipoPotencialTableTableTableManager(
+          _db, _db.clienteTipoPotencialTable);
+  $$EstadisticasArticulosTopTableTableTableManager
+      get estadisticasArticulosTopTable =>
+          $$EstadisticasArticulosTopTableTableTableManager(
+              _db, _db.estadisticasArticulosTopTable);
+  $$ArticuloTableTableTableManager get articuloTable =>
+      $$ArticuloTableTableTableManager(_db, _db.articuloTable);
+  $$ArticuloComponenteTableTableTableManager get articuloComponenteTable =>
+      $$ArticuloComponenteTableTableTableManager(
+          _db, _db.articuloComponenteTable);
+  $$ArticuloEmpresaIvaTableTableTableManager get articuloEmpresaIvaTable =>
+      $$ArticuloEmpresaIvaTableTableTableManager(
+          _db, _db.articuloEmpresaIvaTable);
+  $$ArticuloRecambioTableTableTableManager get articuloRecambioTable =>
+      $$ArticuloRecambioTableTableTableManager(_db, _db.articuloRecambioTable);
+  $$ArticuloSustitutivoTableTableTableManager get articuloSustitutivoTable =>
+      $$ArticuloSustitutivoTableTableTableManager(
+          _db, _db.articuloSustitutivoTable);
+  $$ArticuloPrecioTarifaTableTableTableManager get articuloPrecioTarifaTable =>
+      $$ArticuloPrecioTarifaTableTableTableManager(
+          _db, _db.articuloPrecioTarifaTable);
+  $$ArticuloGrupoNetoTableTableTableManager get articuloGrupoNetoTable =>
+      $$ArticuloGrupoNetoTableTableTableManager(
+          _db, _db.articuloGrupoNetoTable);
+  $$EstadisticasClienteUsuarioVentasTableTableTableManager
+      get estadisticasClienteUsuarioVentasTable =>
+          $$EstadisticasClienteUsuarioVentasTableTableTableManager(
+              _db, _db.estadisticasClienteUsuarioVentasTable);
+  $$EstadisticasUltimosPreciosTableTableTableManager
+      get estadisticasUltimosPreciosTable =>
+          $$EstadisticasUltimosPreciosTableTableTableManager(
+              _db, _db.estadisticasUltimosPreciosTable);
+  $$VisitaTableTableTableManager get visitaTable =>
+      $$VisitaTableTableTableManager(_db, _db.visitaTable);
+  $$PedidoAlbaranTableTableTableManager get pedidoAlbaranTable =>
+      $$PedidoAlbaranTableTableTableManager(_db, _db.pedidoAlbaranTable);
+  $$DescuentoGeneralTableTableTableManager get descuentoGeneralTable =>
+      $$DescuentoGeneralTableTableTableManager(_db, _db.descuentoGeneralTable);
+  $$DevolucionTipoTableTableTableManager get devolucionTipoTable =>
+      $$DevolucionTipoTableTableTableManager(_db, _db.devolucionTipoTable);
+  $$DevolucionMotivoTableTableTableManager get devolucionMotivoTable =>
+      $$DevolucionMotivoTableTableTableManager(_db, _db.devolucionMotivoTable);
+  $$DevolucionEstadoTableTableTableManager get devolucionEstadoTable =>
+      $$DevolucionEstadoTableTableTableManager(_db, _db.devolucionEstadoTable);
+  $$DevolucionLineaTableTableTableManager get devolucionLineaTable =>
+      $$DevolucionLineaTableTableTableManager(_db, _db.devolucionLineaTable);
+  $$DevolucionTableTableTableManager get devolucionTable =>
+      $$DevolucionTableTableTableManager(_db, _db.devolucionTable);
+  $$ProvinciaTableTableTableManager get provinciaTable =>
+      $$ProvinciaTableTableTableManager(_db, _db.provinciaTable);
+  $$VisitaCompetidorTableTableTableManager get visitaCompetidorTable =>
+      $$VisitaCompetidorTableTableTableManager(_db, _db.visitaCompetidorTable);
+  $$VisitaSectorTableTableTableManager get visitaSectorTable =>
+      $$VisitaSectorTableTableTableManager(_db, _db.visitaSectorTable);
+  $$VisitaMotivoNoVentaTableTableTableManager get visitaMotivoNoVentaTable =>
+      $$VisitaMotivoNoVentaTableTableTableManager(
+          _db, _db.visitaMotivoNoVentaTable);
 }

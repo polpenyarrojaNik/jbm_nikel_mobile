@@ -25,8 +25,12 @@ mixin _$ClienteAdjuntoDTO {
   @JsonKey(name: 'NOMBRE_ARCHIVO')
   String get nombreAdjunto => throw _privateConstructorUsedError;
 
+  /// Serializes this ClienteAdjuntoDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ClienteAdjuntoDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ClienteAdjuntoDTOCopyWith<ClienteAdjuntoDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,6 +56,8 @@ class _$ClienteAdjuntoDTOCopyWithImpl<$Res, $Val extends ClienteAdjuntoDTO>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ClienteAdjuntoDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$ClienteAdjuntoDTOImplCopyWithImpl<$Res>
       $Res Function(_$ClienteAdjuntoDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ClienteAdjuntoDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -145,11 +153,13 @@ class _$ClienteAdjuntoDTOImpl extends _ClienteAdjuntoDTO {
                 other.nombreAdjunto == nombreAdjunto));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, clienteId, nombreAdjunto);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClienteAdjuntoDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ClienteAdjuntoDTOImplCopyWith<_$ClienteAdjuntoDTOImpl> get copyWith =>
@@ -180,8 +190,11 @@ abstract class _ClienteAdjuntoDTO extends ClienteAdjuntoDTO {
   @override
   @JsonKey(name: 'NOMBRE_ARCHIVO')
   String get nombreAdjunto;
+
+  /// Create a copy of ClienteAdjuntoDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClienteAdjuntoDTOImplCopyWith<_$ClienteAdjuntoDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

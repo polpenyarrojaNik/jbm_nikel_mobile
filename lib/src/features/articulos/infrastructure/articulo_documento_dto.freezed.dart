@@ -29,8 +29,12 @@ mixin _$ArticuloDocumentoDTO {
   @JsonKey(name: 'OBSERVACIONES')
   String? get observaciones => throw _privateConstructorUsedError;
 
+  /// Serializes this ArticuloDocumentoDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ArticuloDocumentoDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ArticuloDocumentoDTOCopyWith<ArticuloDocumentoDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -59,6 +63,8 @@ class _$ArticuloDocumentoDTOCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ArticuloDocumentoDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -111,6 +117,8 @@ class __$$ArticuloDocumentoDTOImplCopyWithImpl<$Res>
       $Res Function(_$ArticuloDocumentoDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ArticuloDocumentoDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -186,12 +194,14 @@ class _$ArticuloDocumentoDTOImpl extends _ArticuloDocumentoDTO {
                 other.observaciones == observaciones));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, articuloId, nombreArchivo, idiomaId, observaciones);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArticuloDocumentoDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ArticuloDocumentoDTOImplCopyWith<_$ArticuloDocumentoDTOImpl>
@@ -231,8 +241,11 @@ abstract class _ArticuloDocumentoDTO extends ArticuloDocumentoDTO {
   @override
   @JsonKey(name: 'OBSERVACIONES')
   String? get observaciones;
+
+  /// Create a copy of ArticuloDocumentoDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ArticuloDocumentoDTOImplCopyWith<_$ArticuloDocumentoDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -10,6 +10,9 @@ import 'package:jbm_nikel_mobile/src/core/infrastructure/pais_dto.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/provincia_dto.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/subfamilia_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/estadisticas/infrastructure/estadisticas_venta_cliente_usuario_dto.dart';
+import 'package:jbm_nikel_mobile/src/features/visitas/infrastructure/visita_competidor_dto.dart';
+import 'package:jbm_nikel_mobile/src/features/visitas/infrastructure/visita_motivos_no_venta_dto.dart';
+import 'package:jbm_nikel_mobile/src/features/visitas/infrastructure/visita_sector_dto.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 
@@ -117,6 +120,9 @@ const remoteDatabaseName = 'jbm.sqlite';
   DevolucionLineaTable,
   DevolucionTable,
   ProvinciaTable,
+  VisitaCompetidorTable,
+  VisitaSectorTable,
+  VisitaMotivoNoVentaTable,
 ])
 class RemoteAppDatabase extends _$RemoteAppDatabase {
   final bool test;
@@ -128,7 +134,7 @@ class RemoteAppDatabase extends _$RemoteAppDatabase {
       : test = true,
         super(NativeDatabase.memory());
   @override
-  int get schemaVersion => 25;
+  int get schemaVersion => 26;
 }
 
 Future<DriftIsolate> _createDriftIsolate() async {

@@ -43,8 +43,12 @@ mixin _$IdiomaCatalogoDTO {
   @JsonKey(name: 'DESCRIPCION_PL')
   String? get descripcionPL => throw _privateConstructorUsedError;
 
+  /// Serializes this IdiomaCatalogoDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of IdiomaCatalogoDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $IdiomaCatalogoDTOCopyWith<IdiomaCatalogoDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -79,6 +83,8 @@ class _$IdiomaCatalogoDTOCopyWithImpl<$Res, $Val extends IdiomaCatalogoDTO>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of IdiomaCatalogoDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -173,6 +179,8 @@ class __$$IdiomaCatalogoDTOImplCopyWithImpl<$Res>
       $Res Function(_$IdiomaCatalogoDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of IdiomaCatalogoDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -325,7 +333,7 @@ class _$IdiomaCatalogoDTOImpl extends _IdiomaCatalogoDTO {
                 other.descripcionPL == descripcionPL));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -341,7 +349,9 @@ class _$IdiomaCatalogoDTOImpl extends _IdiomaCatalogoDTO {
       descripcionNL,
       descripcionPL);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of IdiomaCatalogoDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$IdiomaCatalogoDTOImplCopyWith<_$IdiomaCatalogoDTOImpl> get copyWith =>
@@ -408,8 +418,11 @@ abstract class _IdiomaCatalogoDTO extends IdiomaCatalogoDTO {
   @override
   @JsonKey(name: 'DESCRIPCION_PL')
   String? get descripcionPL;
+
+  /// Create a copy of IdiomaCatalogoDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$IdiomaCatalogoDTOImplCopyWith<_$IdiomaCatalogoDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

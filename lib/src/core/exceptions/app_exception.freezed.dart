@@ -138,6 +138,9 @@ class _$AppExceptionCopyWithImpl<$Res, $Val extends AppException>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -157,6 +160,8 @@ class __$$RestApiFailureImplCopyWithImpl<$Res>
       _$RestApiFailureImpl _value, $Res Function(_$RestApiFailureImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -205,7 +210,9 @@ class _$RestApiFailureImpl implements RestApiFailure {
   @override
   int get hashCode => Object.hash(runtimeType, errorCode, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RestApiFailureImplCopyWith<_$RestApiFailureImpl> get copyWith =>
@@ -347,7 +354,10 @@ abstract class RestApiFailure implements AppException {
 
   int get errorCode;
   String get errorMessage;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RestApiFailureImplCopyWith<_$RestApiFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -369,6 +379,8 @@ class __$$AuthLocalFailureImplCopyWithImpl<$Res>
       $Res Function(_$AuthLocalFailureImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -408,7 +420,9 @@ class _$AuthLocalFailureImpl implements AuthLocalFailure {
   @override
   int get hashCode => Object.hash(runtimeType, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AuthLocalFailureImplCopyWith<_$AuthLocalFailureImpl> get copyWith =>
@@ -549,7 +563,10 @@ abstract class AuthLocalFailure implements AppException {
       _$AuthLocalFailureImpl;
 
   String get errorMessage;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AuthLocalFailureImplCopyWith<_$AuthLocalFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -572,6 +589,8 @@ class __$$FetchLocalDataFailureImplCopyWithImpl<$Res>
       $Res Function(_$FetchLocalDataFailureImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -611,7 +630,9 @@ class _$FetchLocalDataFailureImpl implements FetchLocalDataFailure {
   @override
   int get hashCode => Object.hash(runtimeType, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FetchLocalDataFailureImplCopyWith<_$FetchLocalDataFailureImpl>
@@ -752,7 +773,10 @@ abstract class FetchLocalDataFailure implements AppException {
       _$FetchLocalDataFailureImpl;
 
   String get errorMessage;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FetchLocalDataFailureImplCopyWith<_$FetchLocalDataFailureImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -776,6 +800,8 @@ class __$$CreateFileInCahceFailureImplCopyWithImpl<$Res>
       $Res Function(_$CreateFileInCahceFailureImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -815,7 +841,9 @@ class _$CreateFileInCahceFailureImpl implements CreateFileInCahceFailure {
   @override
   int get hashCode => Object.hash(runtimeType, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CreateFileInCahceFailureImplCopyWith<_$CreateFileInCahceFailureImpl>
@@ -956,7 +984,10 @@ abstract class CreateFileInCahceFailure implements AppException {
       _$CreateFileInCahceFailureImpl;
 
   String get errorMessage;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreateFileInCahceFailureImplCopyWith<_$CreateFileInCahceFailureImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -978,6 +1009,8 @@ class __$$SyncFailureImplCopyWithImpl<$Res>
       _$SyncFailureImpl _value, $Res Function(_$SyncFailureImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1026,7 +1059,9 @@ class _$SyncFailureImpl implements SyncFailure {
   @override
   int get hashCode => Object.hash(runtimeType, tableToSync, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SyncFailureImplCopyWith<_$SyncFailureImpl> get copyWith =>
@@ -1167,7 +1202,10 @@ abstract class SyncFailure implements AppException {
 
   String get tableToSync;
   String get errorMessage;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SyncFailureImplCopyWith<_$SyncFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1188,6 +1226,9 @@ class __$$ClienteNotFoundFailureImplCopyWithImpl<$Res>
       _$ClienteNotFoundFailureImpl _value,
       $Res Function(_$ClienteNotFoundFailureImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1359,6 +1400,9 @@ class __$$ArticuloNotFoundFailureImplCopyWithImpl<$Res>
       _$ArticuloNotFoundFailureImpl _value,
       $Res Function(_$ArticuloNotFoundFailureImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1530,6 +1574,9 @@ class __$$PedidoVentaNotFoundFailureImplCopyWithImpl<$Res>
       _$PedidoVentaNotFoundFailureImpl _value,
       $Res Function(_$PedidoVentaNotFoundFailureImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1704,6 +1751,8 @@ class __$$PedidoVentaDeleteFailureImplCopyWithImpl<$Res>
       $Res Function(_$PedidoVentaDeleteFailureImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1743,7 +1792,9 @@ class _$PedidoVentaDeleteFailureImpl implements PedidoVentaDeleteFailure {
   @override
   int get hashCode => Object.hash(runtimeType, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PedidoVentaDeleteFailureImplCopyWith<_$PedidoVentaDeleteFailureImpl>
@@ -1884,7 +1935,10 @@ abstract class PedidoVentaDeleteFailure implements AppException {
       _$PedidoVentaDeleteFailureImpl;
 
   String get errorMessage;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PedidoVentaDeleteFailureImplCopyWith<_$PedidoVentaDeleteFailureImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1906,6 +1960,8 @@ class __$$InsertDataFailureImplCopyWithImpl<$Res>
       $Res Function(_$InsertDataFailureImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1945,7 +2001,9 @@ class _$InsertDataFailureImpl implements InsertDataFailure {
   @override
   int get hashCode => Object.hash(runtimeType, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InsertDataFailureImplCopyWith<_$InsertDataFailureImpl> get copyWith =>
@@ -2086,7 +2144,10 @@ abstract class InsertDataFailure implements AppException {
       _$InsertDataFailureImpl;
 
   String get errorMessage;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InsertDataFailureImplCopyWith<_$InsertDataFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2105,6 +2166,9 @@ class __$$NotConnectionFailureImplCopyWithImpl<$Res>
   __$$NotConnectionFailureImplCopyWithImpl(_$NotConnectionFailureImpl _value,
       $Res Function(_$NotConnectionFailureImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2274,6 +2338,9 @@ class __$$ArchivoNoEncontradoImplCopyWithImpl<$Res>
   __$$ArchivoNoEncontradoImplCopyWithImpl(_$ArchivoNoEncontradoImpl _value,
       $Res Function(_$ArchivoNoEncontradoImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

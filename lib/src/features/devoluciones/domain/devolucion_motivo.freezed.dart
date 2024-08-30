@@ -35,7 +35,9 @@ mixin _$DevolucionMotivo {
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DevolucionMotivo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DevolucionMotivoCopyWith<DevolucionMotivo> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -77,6 +79,8 @@ class _$DevolucionMotivoCopyWithImpl<$Res, $Val extends DevolucionMotivo>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DevolucionMotivo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -213,6 +217,8 @@ class __$$DevolucionMotivoImplCopyWithImpl<$Res>
       $Res Function(_$DevolucionMotivoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DevolucionMotivo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -441,7 +447,9 @@ class _$DevolucionMotivoImpl extends _DevolucionMotivo {
       lastUpdated,
       deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DevolucionMotivo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DevolucionMotivoImplCopyWith<_$DevolucionMotivoImpl> get copyWith =>
@@ -507,8 +515,11 @@ abstract class _DevolucionMotivo extends DevolucionMotivo {
   DateTime get lastUpdated;
   @override
   bool get deleted;
+
+  /// Create a copy of DevolucionMotivo
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DevolucionMotivoImplCopyWith<_$DevolucionMotivoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

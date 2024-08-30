@@ -27,7 +27,9 @@ mixin _$SeleccionarCantidadParam {
   int get posicionLinea => throw _privateConstructorUsedError;
   bool get addNewLineaDesdeArticulo => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SeleccionarCantidadParam
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SeleccionarCantidadParamCopyWith<SeleccionarCantidadParam> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -64,6 +66,8 @@ class _$SeleccionarCantidadParamCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SeleccionarCantidadParam
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -122,6 +126,8 @@ class _$SeleccionarCantidadParamCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of SeleccionarCantidadParam
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PedidoLocalParamCopyWith<$Res> get pedidoVentaParam {
@@ -166,6 +172,8 @@ class __$$SeleccionarCantidadParamImplCopyWithImpl<$Res>
       $Res Function(_$SeleccionarCantidadParamImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SeleccionarCantidadParam
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -308,7 +316,9 @@ class _$SeleccionarCantidadParamImpl extends _SeleccionarCantidadParam {
       posicionLinea,
       addNewLineaDesdeArticulo);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SeleccionarCantidadParam
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SeleccionarCantidadParamImplCopyWith<_$SeleccionarCantidadParamImpl>
@@ -351,8 +361,11 @@ abstract class _SeleccionarCantidadParam extends SeleccionarCantidadParam {
   int get posicionLinea;
   @override
   bool get addNewLineaDesdeArticulo;
+
+  /// Create a copy of SeleccionarCantidadParam
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SeleccionarCantidadParamImplCopyWith<_$SeleccionarCantidadParamImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

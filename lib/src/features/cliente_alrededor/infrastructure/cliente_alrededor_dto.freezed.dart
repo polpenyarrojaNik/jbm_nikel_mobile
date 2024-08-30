@@ -38,8 +38,12 @@ mixin _$ClienteAlrededorDTO {
   double get ventasAnyoAnterior => throw _privateConstructorUsedError;
   double get porcentajeAbonos => throw _privateConstructorUsedError;
 
+  /// Serializes this ClienteAlrededorDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ClienteAlrededorDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ClienteAlrededorDTOCopyWith<ClienteAlrededorDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -80,6 +84,8 @@ class _$ClienteAlrededorDTOCopyWithImpl<$Res, $Val extends ClienteAlrededorDTO>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ClienteAlrededorDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -210,6 +216,8 @@ class __$$ClienteAlrededorDTOImplCopyWithImpl<$Res>
       $Res Function(_$ClienteAlrededorDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ClienteAlrededorDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -408,7 +416,7 @@ class _$ClienteAlrededorDTOImpl extends _ClienteAlrededorDTO {
                 other.porcentajeAbonos == porcentajeAbonos));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -430,7 +438,9 @@ class _$ClienteAlrededorDTOImpl extends _ClienteAlrededorDTO {
       ventasAnyoAnterior,
       porcentajeAbonos);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClienteAlrededorDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ClienteAlrededorDTOImplCopyWith<_$ClienteAlrededorDTOImpl> get copyWith =>
@@ -503,8 +513,11 @@ abstract class _ClienteAlrededorDTO extends ClienteAlrededorDTO {
   double get ventasAnyoAnterior;
   @override
   double get porcentajeAbonos;
+
+  /// Create a copy of ClienteAlrededorDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClienteAlrededorDTOImplCopyWith<_$ClienteAlrededorDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

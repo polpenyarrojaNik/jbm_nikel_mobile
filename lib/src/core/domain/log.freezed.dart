@@ -29,7 +29,9 @@ mixin _$Log {
   String? get userName => throw _privateConstructorUsedError;
   DateTime get timestamp => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Log
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LogCopyWith<Log> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -62,6 +64,8 @@ class _$LogCopyWithImpl<$Res, $Val extends Log> implements $LogCopyWith<$Res> {
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Log
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -158,6 +162,8 @@ class __$$LogImplCopyWithImpl<$Res> extends _$LogCopyWithImpl<$Res, _$LogImpl>
   __$$LogImplCopyWithImpl(_$LogImpl _value, $Res Function(_$LogImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Log
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -303,7 +309,9 @@ class _$LogImpl extends _Log {
   int get hashCode => Object.hash(runtimeType, id, level, message, error, appId,
       appBuild, appBuildName, userId, device, userEmail, userName, timestamp);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Log
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LogImplCopyWith<_$LogImpl> get copyWith =>
@@ -350,8 +358,11 @@ abstract class _Log extends Log {
   String? get userName;
   @override
   DateTime get timestamp;
+
+  /// Create a copy of Log
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LogImplCopyWith<_$LogImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -33,7 +33,8 @@ class NotificationIndexPage extends ConsumerWidget {
           icon: Icon(
             stateNotification.maybeWhen(
               orElse: () => Icons.menu,
-              data: (_) => _ != null ? Icons.notification_add : Icons.menu,
+              data: (notificationId) =>
+                  notificationId != null ? Icons.notification_add : Icons.menu,
             ),
           ),
         ),

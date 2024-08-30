@@ -82,6 +82,7 @@ mixin _$Articulo {
   String? get gs1128Subcaja => throw _privateConstructorUsedError;
   String? get gs1128Caja => throw _privateConstructorUsedError;
   String? get gs1128Palet => throw _privateConstructorUsedError;
+  int? get ventasOrden => throw _privateConstructorUsedError;
   Money get ventasAnyoActual => throw _privateConstructorUsedError;
   Money get ventasAnyoAnterior => throw _privateConstructorUsedError;
   Money get ventasHaceDosAnyos => throw _privateConstructorUsedError;
@@ -91,7 +92,9 @@ mixin _$Articulo {
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Articulo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ArticuloCopyWith<Articulo> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -168,6 +171,7 @@ abstract class $ArticuloCopyWith<$Res> {
       String? gs1128Subcaja,
       String? gs1128Caja,
       String? gs1128Palet,
+      int? ventasOrden,
       Money ventasAnyoActual,
       Money ventasAnyoAnterior,
       Money ventasHaceDosAnyos,
@@ -191,6 +195,8 @@ class _$ArticuloCopyWithImpl<$Res, $Val extends Articulo>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Articulo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -260,6 +266,7 @@ class _$ArticuloCopyWithImpl<$Res, $Val extends Articulo>
     Object? gs1128Subcaja = freezed,
     Object? gs1128Caja = freezed,
     Object? gs1128Palet = freezed,
+    Object? ventasOrden = freezed,
     Object? ventasAnyoActual = null,
     Object? ventasAnyoAnterior = null,
     Object? ventasHaceDosAnyos = null,
@@ -534,6 +541,10 @@ class _$ArticuloCopyWithImpl<$Res, $Val extends Articulo>
           ? _value.gs1128Palet
           : gs1128Palet // ignore: cast_nullable_to_non_nullable
               as String?,
+      ventasOrden: freezed == ventasOrden
+          ? _value.ventasOrden
+          : ventasOrden // ignore: cast_nullable_to_non_nullable
+              as int?,
       ventasAnyoActual: null == ventasAnyoActual
           ? _value.ventasAnyoActual
           : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
@@ -569,6 +580,8 @@ class _$ArticuloCopyWithImpl<$Res, $Val extends Articulo>
     ) as $Val);
   }
 
+  /// Create a copy of Articulo
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FamiliaCopyWith<$Res>? get familia {
@@ -581,6 +594,8 @@ class _$ArticuloCopyWithImpl<$Res, $Val extends Articulo>
     });
   }
 
+  /// Create a copy of Articulo
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SubfamiliaCopyWith<$Res>? get subfamilia {
@@ -669,6 +684,7 @@ abstract class _$$ArticuloImplCopyWith<$Res>
       String? gs1128Subcaja,
       String? gs1128Caja,
       String? gs1128Palet,
+      int? ventasOrden,
       Money ventasAnyoActual,
       Money ventasAnyoAnterior,
       Money ventasHaceDosAnyos,
@@ -692,6 +708,8 @@ class __$$ArticuloImplCopyWithImpl<$Res>
       _$ArticuloImpl _value, $Res Function(_$ArticuloImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Articulo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -761,6 +779,7 @@ class __$$ArticuloImplCopyWithImpl<$Res>
     Object? gs1128Subcaja = freezed,
     Object? gs1128Caja = freezed,
     Object? gs1128Palet = freezed,
+    Object? ventasOrden = freezed,
     Object? ventasAnyoActual = null,
     Object? ventasAnyoAnterior = null,
     Object? ventasHaceDosAnyos = null,
@@ -1035,6 +1054,10 @@ class __$$ArticuloImplCopyWithImpl<$Res>
           ? _value.gs1128Palet
           : gs1128Palet // ignore: cast_nullable_to_non_nullable
               as String?,
+      ventasOrden: freezed == ventasOrden
+          ? _value.ventasOrden
+          : ventasOrden // ignore: cast_nullable_to_non_nullable
+              as int?,
       ventasAnyoActual: null == ventasAnyoActual
           ? _value.ventasAnyoActual
           : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
@@ -1141,6 +1164,7 @@ class _$ArticuloImpl extends _Articulo {
       this.gs1128Subcaja,
       this.gs1128Caja,
       this.gs1128Palet,
+      this.ventasOrden,
       required this.ventasAnyoActual,
       required this.ventasAnyoAnterior,
       required this.ventasHaceDosAnyos,
@@ -1284,6 +1308,8 @@ class _$ArticuloImpl extends _Articulo {
   @override
   final String? gs1128Palet;
   @override
+  final int? ventasOrden;
+  @override
   final Money ventasAnyoActual;
   @override
   final Money ventasAnyoAnterior;
@@ -1302,7 +1328,7 @@ class _$ArticuloImpl extends _Articulo {
 
   @override
   String toString() {
-    return 'Articulo(id: $id, descripcionES: $descripcionES, descripcionEN: $descripcionEN, descripcionFR: $descripcionFR, descripcionDE: $descripcionDE, descripcionCA: $descripcionCA, descripcionGB: $descripcionGB, descripcionHU: $descripcionHU, descripcionIT: $descripcionIT, descripcionNL: $descripcionNL, descripcionPL: $descripcionPL, descripcionPT: $descripcionPT, descripcionRO: $descripcionRO, descripcionRU: $descripcionRU, descripcionCN: $descripcionCN, descripcionEL: $descripcionEL, familia: $familia, subfamilia: $subfamilia, ventaMinimo: $ventaMinimo, ventaMultiplo: $ventaMultiplo, unidadesSubcaja: $unidadesSubcaja, unidadesCaja: $unidadesCaja, unidadesPalet: $unidadesPalet, activoWeb: $activoWeb, activoApp: $activoApp, enCatalogo: $enCatalogo, descatalogado: $descatalogado, paginaEnCatalgo: $paginaEnCatalgo, paginaEnCatalgo2: $paginaEnCatalgo2, pesoKg: $pesoKg, largoCm: $largoCm, anchoCm: $anchoCm, altoCm: $altoCm, resumenES: $resumenES, resumenEN: $resumenEN, resumenFR: $resumenFR, resumenDE: $resumenDE, resumenCA: $resumenCA, resumenGB: $resumenGB, resumenHU: $resumenHU, resumenIT: $resumenIT, resumenNL: $resumenNL, resumenPL: $resumenPL, resumenPT: $resumenPT, resumenRO: $resumenRO, resumenRU: $resumenRU, resumenCN: $resumenCN, resumenEL: $resumenEL, stockDisponible: $stockDisponible, ventasActual: $ventasActual, ventasAnterior: $ventasAnterior, comprasEntregaCantidad1: $comprasEntregaCantidad1, comprasEntregaCantidad2: $comprasEntregaCantidad2, comprasEntregaCantidad3: $comprasEntregaCantidad3, comprasEntregaCantidadMas3: $comprasEntregaCantidadMas3, comprasEntregaFecha1: $comprasEntregaFecha1, comprasEntregaFecha2: $comprasEntregaFecha2, comprasEntregaFecha3: $comprasEntregaFecha3, comprasEntregaEstado1: $comprasEntregaEstado1, comprasEntregaEstado2: $comprasEntregaEstado2, comprasEntregaEstado3: $comprasEntregaEstado3, imagenPrincipal: $imagenPrincipal, gtin13Unidad: $gtin13Unidad, gs1128Subcaja: $gs1128Subcaja, gs1128Caja: $gs1128Caja, gs1128Palet: $gs1128Palet, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'Articulo(id: $id, descripcionES: $descripcionES, descripcionEN: $descripcionEN, descripcionFR: $descripcionFR, descripcionDE: $descripcionDE, descripcionCA: $descripcionCA, descripcionGB: $descripcionGB, descripcionHU: $descripcionHU, descripcionIT: $descripcionIT, descripcionNL: $descripcionNL, descripcionPL: $descripcionPL, descripcionPT: $descripcionPT, descripcionRO: $descripcionRO, descripcionRU: $descripcionRU, descripcionCN: $descripcionCN, descripcionEL: $descripcionEL, familia: $familia, subfamilia: $subfamilia, ventaMinimo: $ventaMinimo, ventaMultiplo: $ventaMultiplo, unidadesSubcaja: $unidadesSubcaja, unidadesCaja: $unidadesCaja, unidadesPalet: $unidadesPalet, activoWeb: $activoWeb, activoApp: $activoApp, enCatalogo: $enCatalogo, descatalogado: $descatalogado, paginaEnCatalgo: $paginaEnCatalgo, paginaEnCatalgo2: $paginaEnCatalgo2, pesoKg: $pesoKg, largoCm: $largoCm, anchoCm: $anchoCm, altoCm: $altoCm, resumenES: $resumenES, resumenEN: $resumenEN, resumenFR: $resumenFR, resumenDE: $resumenDE, resumenCA: $resumenCA, resumenGB: $resumenGB, resumenHU: $resumenHU, resumenIT: $resumenIT, resumenNL: $resumenNL, resumenPL: $resumenPL, resumenPT: $resumenPT, resumenRO: $resumenRO, resumenRU: $resumenRU, resumenCN: $resumenCN, resumenEL: $resumenEL, stockDisponible: $stockDisponible, ventasActual: $ventasActual, ventasAnterior: $ventasAnterior, comprasEntregaCantidad1: $comprasEntregaCantidad1, comprasEntregaCantidad2: $comprasEntregaCantidad2, comprasEntregaCantidad3: $comprasEntregaCantidad3, comprasEntregaCantidadMas3: $comprasEntregaCantidadMas3, comprasEntregaFecha1: $comprasEntregaFecha1, comprasEntregaFecha2: $comprasEntregaFecha2, comprasEntregaFecha3: $comprasEntregaFecha3, comprasEntregaEstado1: $comprasEntregaEstado1, comprasEntregaEstado2: $comprasEntregaEstado2, comprasEntregaEstado3: $comprasEntregaEstado3, imagenPrincipal: $imagenPrincipal, gtin13Unidad: $gtin13Unidad, gs1128Subcaja: $gs1128Subcaja, gs1128Caja: $gs1128Caja, gs1128Palet: $gs1128Palet, ventasOrden: $ventasOrden, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -1419,6 +1445,7 @@ class _$ArticuloImpl extends _Articulo {
             (identical(other.gs1128Subcaja, gs1128Subcaja) || other.gs1128Subcaja == gs1128Subcaja) &&
             (identical(other.gs1128Caja, gs1128Caja) || other.gs1128Caja == gs1128Caja) &&
             (identical(other.gs1128Palet, gs1128Palet) || other.gs1128Palet == gs1128Palet) &&
+            (identical(other.ventasOrden, ventasOrden) || other.ventasOrden == ventasOrden) &&
             (identical(other.ventasAnyoActual, ventasAnyoActual) || other.ventasAnyoActual == ventasAnyoActual) &&
             (identical(other.ventasAnyoAnterior, ventasAnyoAnterior) || other.ventasAnyoAnterior == ventasAnyoAnterior) &&
             (identical(other.ventasHaceDosAnyos, ventasHaceDosAnyos) || other.ventasHaceDosAnyos == ventasHaceDosAnyos) &&
@@ -1498,6 +1525,7 @@ class _$ArticuloImpl extends _Articulo {
         gs1128Subcaja,
         gs1128Caja,
         gs1128Palet,
+        ventasOrden,
         ventasAnyoActual,
         ventasAnyoAnterior,
         ventasHaceDosAnyos,
@@ -1508,7 +1536,9 @@ class _$ArticuloImpl extends _Articulo {
         deleted
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Articulo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ArticuloImplCopyWith<_$ArticuloImpl> get copyWith =>
@@ -1583,6 +1613,7 @@ abstract class _Articulo extends Articulo {
       final String? gs1128Subcaja,
       final String? gs1128Caja,
       final String? gs1128Palet,
+      final int? ventasOrden,
       required final Money ventasAnyoActual,
       required final Money ventasAnyoAnterior,
       required final Money ventasHaceDosAnyos,
@@ -1726,6 +1757,8 @@ abstract class _Articulo extends Articulo {
   @override
   String? get gs1128Palet;
   @override
+  int? get ventasOrden;
+  @override
   Money get ventasAnyoActual;
   @override
   Money get ventasAnyoAnterior;
@@ -1741,8 +1774,11 @@ abstract class _Articulo extends Articulo {
   DateTime get lastUpdated;
   @override
   bool get deleted;
+
+  /// Create a copy of Articulo
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ArticuloImplCopyWith<_$ArticuloImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

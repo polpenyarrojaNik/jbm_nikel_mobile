@@ -33,8 +33,12 @@ mixin _$ClienteGrupoNetoDTO {
   @JsonKey(name: 'DELETED')
   String get deleted => throw _privateConstructorUsedError;
 
+  /// Serializes this ClienteGrupoNetoDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ClienteGrupoNetoDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ClienteGrupoNetoDTOCopyWith<ClienteGrupoNetoDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -64,6 +68,8 @@ class _$ClienteGrupoNetoDTOCopyWithImpl<$Res, $Val extends ClienteGrupoNetoDTO>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ClienteGrupoNetoDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -128,6 +134,8 @@ class __$$ClienteGrupoNetoDTOImplCopyWithImpl<$Res>
       $Res Function(_$ClienteGrupoNetoDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ClienteGrupoNetoDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -225,12 +233,14 @@ class _$ClienteGrupoNetoDTOImpl extends _ClienteGrupoNetoDTO {
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, clienteId, grupoNetoId,
       grupoNetoDescripcion, dtoAdicional, lastUpdated, deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClienteGrupoNetoDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ClienteGrupoNetoDTOImplCopyWith<_$ClienteGrupoNetoDTOImpl> get copyWith =>
@@ -278,8 +288,11 @@ abstract class _ClienteGrupoNetoDTO extends ClienteGrupoNetoDTO {
   @override
   @JsonKey(name: 'DELETED')
   String get deleted;
+
+  /// Create a copy of ClienteGrupoNetoDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClienteGrupoNetoDTOImplCopyWith<_$ClienteGrupoNetoDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

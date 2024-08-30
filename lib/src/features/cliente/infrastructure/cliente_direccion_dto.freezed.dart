@@ -49,8 +49,12 @@ mixin _$ClienteDireccionDTO {
   @JsonKey(name: 'DELETED')
   String get deleted => throw _privateConstructorUsedError;
 
+  /// Serializes this ClienteDireccionDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ClienteDireccionDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ClienteDireccionDTOCopyWith<ClienteDireccionDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -88,6 +92,8 @@ class _$ClienteDireccionDTOCopyWithImpl<$Res, $Val extends ClienteDireccionDTO>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ClienteDireccionDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -200,6 +206,8 @@ class __$$ClienteDireccionDTOImplCopyWithImpl<$Res>
       $Res Function(_$ClienteDireccionDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ClienteDireccionDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -381,7 +389,7 @@ class _$ClienteDireccionDTOImpl extends _ClienteDireccionDTO {
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -400,7 +408,9 @@ class _$ClienteDireccionDTOImpl extends _ClienteDireccionDTO {
       lastUpdated,
       deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClienteDireccionDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ClienteDireccionDTOImplCopyWith<_$ClienteDireccionDTOImpl> get copyWith =>
@@ -479,8 +489,11 @@ abstract class _ClienteDireccionDTO extends ClienteDireccionDTO {
   @override
   @JsonKey(name: 'DELETED')
   String get deleted;
+
+  /// Create a copy of ClienteDireccionDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClienteDireccionDTOImplCopyWith<_$ClienteDireccionDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

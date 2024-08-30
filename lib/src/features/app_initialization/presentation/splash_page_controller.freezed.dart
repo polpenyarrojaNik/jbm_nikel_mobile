@@ -100,6 +100,9 @@ class _$SplashControllerStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SplashControllerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -119,6 +122,8 @@ class __$$downloadDatabaseImplCopyWithImpl<$Res>
       $Res Function(_$downloadDatabaseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SplashControllerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -180,7 +185,9 @@ class _$downloadDatabaseImpl extends _downloadDatabase
   int get hashCode =>
       Object.hash(runtimeType, lastScehmaVersion, newScehmaVersion);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SplashControllerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$downloadDatabaseImplCopyWith<_$downloadDatabaseImpl> get copyWith =>
@@ -285,7 +292,10 @@ abstract class _downloadDatabase extends SplashControllerState {
 
   int get lastScehmaVersion;
   int get newScehmaVersion;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SplashControllerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$downloadDatabaseImplCopyWith<_$downloadDatabaseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -304,6 +314,9 @@ class __$$loadingImplCopyWithImpl<$Res>
   __$$loadingImplCopyWithImpl(
       _$loadingImpl _value, $Res Function(_$loadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SplashControllerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -441,6 +454,9 @@ class __$$initialImplCopyWithImpl<$Res>
   __$$initialImplCopyWithImpl(
       _$initialImpl _value, $Res Function(_$initialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SplashControllerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -578,6 +594,9 @@ class __$$notDownloadedImplCopyWithImpl<$Res>
   __$$notDownloadedImplCopyWithImpl(
       _$notDownloadedImpl _value, $Res Function(_$notDownloadedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SplashControllerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -718,6 +737,8 @@ class __$$errorImplCopyWithImpl<$Res>
       _$errorImpl _value, $Res Function(_$errorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SplashControllerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -772,7 +793,9 @@ class _$errorImpl extends _error with DiagnosticableTreeMixin {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(error), stackTrace);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SplashControllerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$errorImplCopyWith<_$errorImpl> get copyWith =>
@@ -875,7 +898,10 @@ abstract class _error extends SplashControllerState {
 
   Object get error;
   StackTrace? get stackTrace;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SplashControllerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$errorImplCopyWith<_$errorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -893,6 +919,9 @@ class __$$dataImplCopyWithImpl<$Res>
     implements _$$dataImplCopyWith<$Res> {
   __$$dataImplCopyWithImpl(_$dataImpl _value, $Res Function(_$dataImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SplashControllerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

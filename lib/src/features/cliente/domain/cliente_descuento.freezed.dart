@@ -26,7 +26,9 @@ mixin _$ClienteDescuento {
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClienteDescuento
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ClienteDescuentoCopyWith<ClienteDescuento> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -62,6 +64,8 @@ class _$ClienteDescuentoCopyWithImpl<$Res, $Val extends ClienteDescuento>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ClienteDescuento
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -115,6 +119,8 @@ class _$ClienteDescuentoCopyWithImpl<$Res, $Val extends ClienteDescuento>
     ) as $Val);
   }
 
+  /// Create a copy of ClienteDescuento
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FamiliaCopyWith<$Res> get familia {
@@ -123,6 +129,8 @@ class _$ClienteDescuentoCopyWithImpl<$Res, $Val extends ClienteDescuento>
     });
   }
 
+  /// Create a copy of ClienteDescuento
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SubfamiliaCopyWith<$Res> get subfamilia {
@@ -165,6 +173,8 @@ class __$$ClienteDescuentoImplCopyWithImpl<$Res>
       $Res Function(_$ClienteDescuentoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ClienteDescuento
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -294,7 +304,9 @@ class _$ClienteDescuentoImpl extends _ClienteDescuento {
       lastUpdated,
       deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClienteDescuento
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ClienteDescuentoImplCopyWith<_$ClienteDescuentoImpl> get copyWith =>
@@ -333,8 +345,11 @@ abstract class _ClienteDescuento extends ClienteDescuento {
   DateTime get lastUpdated;
   @override
   bool get deleted;
+
+  /// Create a copy of ClienteDescuento
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClienteDescuentoImplCopyWith<_$ClienteDescuentoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

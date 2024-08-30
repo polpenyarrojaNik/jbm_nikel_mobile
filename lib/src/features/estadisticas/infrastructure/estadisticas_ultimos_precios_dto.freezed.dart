@@ -48,8 +48,12 @@ mixin _$EstadisticasUltimosPreciosDTO {
   @JsonKey(name: 'DELETED')
   String get deleted => throw _privateConstructorUsedError;
 
+  /// Serializes this EstadisticasUltimosPreciosDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EstadisticasUltimosPreciosDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EstadisticasUltimosPreciosDTOCopyWith<EstadisticasUltimosPreciosDTO>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -89,6 +93,8 @@ class _$EstadisticasUltimosPreciosDTOCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of EstadisticasUltimosPreciosDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -198,6 +204,8 @@ class __$$EstadisticasUltimosPreciosDTOImplCopyWithImpl<$Res>
       $Res Function(_$EstadisticasUltimosPreciosDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EstadisticasUltimosPreciosDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -371,7 +379,7 @@ class _$EstadisticasUltimosPreciosDTOImpl
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -389,7 +397,9 @@ class _$EstadisticasUltimosPreciosDTOImpl
       lastUpdated,
       deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EstadisticasUltimosPreciosDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EstadisticasUltimosPreciosDTOImplCopyWith<
@@ -466,8 +476,11 @@ abstract class _EstadisticasUltimosPreciosDTO
   @override
   @JsonKey(name: 'DELETED')
   String get deleted;
+
+  /// Create a copy of EstadisticasUltimosPreciosDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EstadisticasUltimosPreciosDTOImplCopyWith<
           _$EstadisticasUltimosPreciosDTOImpl>
       get copyWith => throw _privateConstructorUsedError;

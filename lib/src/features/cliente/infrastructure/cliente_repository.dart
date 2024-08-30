@@ -1095,23 +1095,6 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     }
   }
 
-  Future<List<Visita>> getVisitasByClienteId(
-      {required String clienteId}) async {
-    try {
-      final List<Visita> visitas = [];
-      final visitasList = await _getVisitasById(clienteId: clienteId);
-      final visitasLocalList = await _getVisitasLocalById(clienteId: clienteId);
-
-      visitas.addAll(visitasList);
-
-      visitas.addAll(visitasLocalList);
-
-      return visitas;
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
-    }
-  }
-
   Future<List<Devolucion>> getDevolucionByCliente({required String clienteId}) {
     try {
       final query = _remoteDb.select(_remoteDb.devolucionTable).join([
@@ -1178,59 +1161,6 @@ GROUP BY ARTICULO_ID, DESCRIPCION
           devolucionEstadoDTO?.toDomain(),
         );
       }).get();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
-    }
-  }
-
-  Future<List<Visita>> _getVisitasById({required String clienteId}) async {
-    try {
-      final query = _remoteDb.select(_remoteDb.visitaTable).join([
-        innerJoin(
-            _remoteDb.clienteTable,
-            _remoteDb.clienteTable.id
-                .equalsExp(_remoteDb.visitaTable.clienteId))
-      ]);
-
-      query.where(_remoteDb.visitaTable.clienteId.equals(clienteId));
-
-      return query.map((row) {
-        final visitaDTO = row.readTable(_remoteDb.visitaTable);
-        final clienteDto = row.readTable(_remoteDb.clienteTable);
-        return visitaDTO.toDomain(nombreCliente: clienteDto.nombreCliente);
-      }).get();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
-    }
-  }
-
-  Future<List<Visita>> _getVisitasLocalById({required String clienteId}) async {
-    final List<Visita> visitas = [];
-    try {
-      final visitasLocalDto = await (_localDb.select(_localDb.visitaLocalTable)
-            ..where((tbl) => tbl.clienteId.equals(clienteId)))
-          .get();
-
-      final clienteDto = await (_remoteDb.select(_remoteDb.clienteTable)
-            ..where((tbl) => tbl.id.equals(clienteId)))
-          .getSingle();
-
-      for (var i = 0; i < visitasLocalDto.length; i++) {
-        final provinciaDto = await (_remoteDb.select(_remoteDb.provinciaTable)
-              ..where((tbl) => tbl.provinciaId.equalsNullable(
-                  visitasLocalDto[i].clienteProvisionalProvinciaId)))
-            .getSingleOrNull();
-        final paisDto = await (_remoteDb.select(_remoteDb.paisTable)
-              ..where((tbl) => tbl.id
-                  .equalsNullable(visitasLocalDto[i].clienteProvisionalPaisId)))
-            .getSingleOrNull();
-        visitas.add(visitasLocalDto[i].toDomain(
-            nombreCliente: clienteDto.nombreCliente,
-            provincia: provinciaDto?.toDomain(),
-            pais: paisDto?.toDomain()));
-      }
-
-      return visitas;
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }

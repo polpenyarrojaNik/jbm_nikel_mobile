@@ -29,8 +29,12 @@ mixin _$ClienteUsuarioDTO {
   @JsonKey(name: 'DELETED')
   String get deleted => throw _privateConstructorUsedError;
 
+  /// Serializes this ClienteUsuarioDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ClienteUsuarioDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ClienteUsuarioDTOCopyWith<ClienteUsuarioDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -58,6 +62,8 @@ class _$ClienteUsuarioDTOCopyWithImpl<$Res, $Val extends ClienteUsuarioDTO>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ClienteUsuarioDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -110,6 +116,8 @@ class __$$ClienteUsuarioDTOImplCopyWithImpl<$Res>
       $Res Function(_$ClienteUsuarioDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ClienteUsuarioDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -184,12 +192,14 @@ class _$ClienteUsuarioDTOImpl extends _ClienteUsuarioDTO {
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, clienteId, usuarioId, lastUpdated, deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClienteUsuarioDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ClienteUsuarioDTOImplCopyWith<_$ClienteUsuarioDTOImpl> get copyWith =>
@@ -228,8 +238,11 @@ abstract class _ClienteUsuarioDTO extends ClienteUsuarioDTO {
   @override
   @JsonKey(name: 'DELETED')
   String get deleted;
+
+  /// Create a copy of ClienteUsuarioDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClienteUsuarioDTOImplCopyWith<_$ClienteUsuarioDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -35,8 +35,12 @@ mixin _$UsuarioAuxDTO {
   @JsonKey(name: 'MARGEN_COMERCIAL')
   double get margenComercial => throw _privateConstructorUsedError;
 
+  /// Serializes this UsuarioAuxDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UsuarioAuxDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UsuarioAuxDTOCopyWith<UsuarioAuxDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -67,6 +71,8 @@ class _$UsuarioAuxDTOCopyWithImpl<$Res, $Val extends UsuarioAuxDTO>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UsuarioAuxDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -137,6 +143,8 @@ class __$$UsuarioAuxDTOImplCopyWithImpl<$Res>
       _$UsuarioAuxDTOImpl _value, $Res Function(_$UsuarioAuxDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UsuarioAuxDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -245,12 +253,14 @@ class _$UsuarioAuxDTOImpl extends _UsuarioAuxDTO {
                 other.margenComercial == margenComercial));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, usuario, nombreUsuario,
       idiomaId, modificarPedido, verTotalVentas, margenComercial);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UsuarioAuxDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UsuarioAuxDTOImplCopyWith<_$UsuarioAuxDTOImpl> get copyWith =>
@@ -303,8 +313,11 @@ abstract class _UsuarioAuxDTO extends UsuarioAuxDTO {
   @override
   @JsonKey(name: 'MARGEN_COMERCIAL')
   double get margenComercial;
+
+  /// Create a copy of UsuarioAuxDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UsuarioAuxDTOImplCopyWith<_$UsuarioAuxDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

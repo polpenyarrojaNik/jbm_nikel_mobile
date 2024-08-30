@@ -26,7 +26,9 @@ mixin _$ArticuloGrupoNeto {
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArticuloGrupoNeto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ArticuloGrupoNetoCopyWith<ArticuloGrupoNeto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -59,6 +61,8 @@ class _$ArticuloGrupoNetoCopyWithImpl<$Res, $Val extends ArticuloGrupoNeto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ArticuloGrupoNeto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -141,6 +145,8 @@ class __$$ArticuloGrupoNetoImplCopyWithImpl<$Res>
       $Res Function(_$ArticuloGrupoNetoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ArticuloGrupoNeto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -270,7 +276,9 @@ class _$ArticuloGrupoNetoImpl extends _ArticuloGrupoNeto {
       lastUpdated,
       deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArticuloGrupoNeto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ArticuloGrupoNetoImplCopyWith<_$ArticuloGrupoNetoImpl> get copyWith =>
@@ -309,8 +317,11 @@ abstract class _ArticuloGrupoNeto extends ArticuloGrupoNeto {
   DateTime get lastUpdated;
   @override
   bool get deleted;
+
+  /// Create a copy of ArticuloGrupoNeto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ArticuloGrupoNetoImplCopyWith<_$ArticuloGrupoNetoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

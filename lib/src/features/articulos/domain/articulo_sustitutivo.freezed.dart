@@ -25,7 +25,9 @@ mixin _$ArticuloSustitutivo {
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArticuloSustitutivo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ArticuloSustitutivoCopyWith<ArticuloSustitutivo> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -56,6 +58,8 @@ class _$ArticuloSustitutivoCopyWithImpl<$Res, $Val extends ArticuloSustitutivo>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ArticuloSustitutivo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -126,6 +130,8 @@ class __$$ArticuloSustitutivoImplCopyWithImpl<$Res>
       $Res Function(_$ArticuloSustitutivoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ArticuloSustitutivo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -235,7 +241,9 @@ class _$ArticuloSustitutivoImpl extends _ArticuloSustitutivo {
       lastUpdated,
       deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArticuloSustitutivo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ArticuloSustitutivoImplCopyWith<_$ArticuloSustitutivoImpl> get copyWith =>
@@ -268,8 +276,11 @@ abstract class _ArticuloSustitutivo extends ArticuloSustitutivo {
   DateTime get lastUpdated;
   @override
   bool get deleted;
+
+  /// Create a copy of ArticuloSustitutivo
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ArticuloSustitutivoImplCopyWith<_$ArticuloSustitutivoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

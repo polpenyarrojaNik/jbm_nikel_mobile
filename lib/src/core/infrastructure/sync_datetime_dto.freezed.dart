@@ -33,8 +33,12 @@ mixin _$SyncDateTimeDTO {
   @JsonKey(name: 'VISITA_ULTIMA_SYNC')
   DateTime get visitaUltimaSync => throw _privateConstructorUsedError;
 
+  /// Serializes this SyncDateTimeDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SyncDateTimeDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SyncDateTimeDTOCopyWith<SyncDateTimeDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -64,6 +68,8 @@ class _$SyncDateTimeDTOCopyWithImpl<$Res, $Val extends SyncDateTimeDTO>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SyncDateTimeDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -128,6 +134,8 @@ class __$$SyncDateTimeDTOImplCopyWithImpl<$Res>
       _$SyncDateTimeDTOImpl _value, $Res Function(_$SyncDateTimeDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SyncDateTimeDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -224,7 +232,7 @@ class _$SyncDateTimeDTOImpl extends _SyncDateTimeDTO {
                 other.visitaUltimaSync == visitaUltimaSync));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -235,7 +243,9 @@ class _$SyncDateTimeDTOImpl extends _SyncDateTimeDTO {
       pedidoUltimaSync,
       visitaUltimaSync);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SyncDateTimeDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SyncDateTimeDTOImplCopyWith<_$SyncDateTimeDTOImpl> get copyWith =>
@@ -285,8 +295,11 @@ abstract class _SyncDateTimeDTO extends SyncDateTimeDTO {
   @override
   @JsonKey(name: 'VISITA_ULTIMA_SYNC')
   DateTime get visitaUltimaSync;
+
+  /// Create a copy of SyncDateTimeDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SyncDateTimeDTOImplCopyWith<_$SyncDateTimeDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

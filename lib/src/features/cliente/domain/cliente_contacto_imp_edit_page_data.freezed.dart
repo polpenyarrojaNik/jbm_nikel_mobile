@@ -20,7 +20,9 @@ mixin _$ClienteContactoImpEditPageData {
   bool get isSent => throw _privateConstructorUsedError;
   Object? get error => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClienteContactoImpEditPageData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ClienteContactoImpEditPageDataCopyWith<ClienteContactoImpEditPageData>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -49,6 +51,8 @@ class _$ClienteContactoImpEditPageDataCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ClienteContactoImpEditPageData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -69,6 +73,8 @@ class _$ClienteContactoImpEditPageDataCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of ClienteContactoImpEditPageData
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ClienteContactoCopyWith<$Res>? get clienteContacto {
@@ -107,6 +113,8 @@ class __$$ClienteContactoImpEditPageDataImplCopyWithImpl<$Res>
       $Res Function(_$ClienteContactoImpEditPageDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ClienteContactoImpEditPageData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -163,7 +171,9 @@ class _$ClienteContactoImpEditPageDataImpl
   int get hashCode => Object.hash(runtimeType, clienteContacto, isSent,
       const DeepCollectionEquality().hash(error));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClienteContactoImpEditPageData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ClienteContactoImpEditPageDataImplCopyWith<
@@ -186,8 +196,11 @@ abstract class _ClienteContactoImpEditPageData
   bool get isSent;
   @override
   Object? get error;
+
+  /// Create a copy of ClienteContactoImpEditPageData
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClienteContactoImpEditPageDataImplCopyWith<
           _$ClienteContactoImpEditPageDataImpl>
       get copyWith => throw _privateConstructorUsedError;

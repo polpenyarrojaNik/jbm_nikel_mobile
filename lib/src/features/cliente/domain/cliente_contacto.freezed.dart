@@ -31,7 +31,9 @@ mixin _$ClienteContacto {
   bool get tratado => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClienteContacto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ClienteContactoCopyWith<ClienteContacto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -69,6 +71,8 @@ class _$ClienteContactoCopyWithImpl<$Res, $Val extends ClienteContacto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ClienteContacto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -181,6 +185,8 @@ class __$$ClienteContactoImplCopyWithImpl<$Res>
       _$ClienteContactoImpl _value, $Res Function(_$ClienteContactoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ClienteContacto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -362,7 +368,9 @@ class _$ClienteContactoImpl extends _ClienteContacto {
       tratado,
       deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClienteContacto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ClienteContactoImplCopyWith<_$ClienteContactoImpl> get copyWith =>
@@ -416,8 +424,11 @@ abstract class _ClienteContacto extends ClienteContacto {
   bool get tratado;
   @override
   bool get deleted;
+
+  /// Create a copy of ClienteContacto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClienteContactoImplCopyWith<_$ClienteContactoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

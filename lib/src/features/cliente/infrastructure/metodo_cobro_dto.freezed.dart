@@ -57,8 +57,12 @@ mixin _$MetodoDeCobroDTO {
   @JsonKey(name: 'DELETED')
   String get deleted => throw _privateConstructorUsedError;
 
+  /// Serializes this MetodoDeCobroDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MetodoDeCobroDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MetodoDeCobroDTOCopyWith<MetodoDeCobroDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -100,6 +104,8 @@ class _$MetodoDeCobroDTOCopyWithImpl<$Res, $Val extends MetodoDeCobroDTO>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MetodoDeCobroDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -236,6 +242,8 @@ class __$$MetodoDeCobroDTOImplCopyWithImpl<$Res>
       $Res Function(_$MetodoDeCobroDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MetodoDeCobroDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -463,7 +471,7 @@ class _$MetodoDeCobroDTOImpl extends _MetodoDeCobroDTO {
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -486,7 +494,9 @@ class _$MetodoDeCobroDTOImpl extends _MetodoDeCobroDTO {
       lastUpdated,
       deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MetodoDeCobroDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MetodoDeCobroDTOImplCopyWith<_$MetodoDeCobroDTOImpl> get copyWith =>
@@ -580,8 +590,11 @@ abstract class _MetodoDeCobroDTO extends MetodoDeCobroDTO {
   @override
   @JsonKey(name: 'DELETED')
   String get deleted;
+
+  /// Create a copy of MetodoDeCobroDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MetodoDeCobroDTOImplCopyWith<_$MetodoDeCobroDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

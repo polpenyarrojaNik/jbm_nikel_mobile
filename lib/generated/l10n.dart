@@ -3823,6 +3823,106 @@ class S {
       args: [],
     );
   }
+
+  /// `Sector`
+  String get sector {
+    return Intl.message(
+      'Sector',
+      name: 'sector',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Competitor`
+  String get competencia {
+    return Intl.message(
+      'Competitor',
+      name: 'competencia',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No interest reason`
+  String get motivoNoInteres {
+    return Intl.message(
+      'No interest reason',
+      name: 'motivoNoInteres',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No order reason`
+  String get motivoNoPedido {
+    return Intl.message(
+      'No order reason',
+      name: 'motivoNoPedido',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Offer released`
+  String get ofertaRealziada {
+    return Intl.message(
+      'Offer released',
+      name: 'ofertaRealziada',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Customer interest`
+  String get interesCliente {
+    return Intl.message(
+      'Customer interest',
+      name: 'interesCliente',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order released`
+  String get pedidoRealizado {
+    return Intl.message(
+      'Order released',
+      name: 'pedidoRealizado',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Own store`
+  String get almacenPropio {
+    return Intl.message(
+      'Own store',
+      name: 'almacenPropio',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Capacity`
+  String get capacidad {
+    return Intl.message(
+      'Capacity',
+      name: 'capacidad',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order frequency`
+  String get frecuenciaPedido {
+    return Intl.message(
+      'Order frequency',
+      name: 'frecuenciaPedido',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

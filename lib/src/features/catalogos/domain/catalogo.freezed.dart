@@ -28,7 +28,9 @@ mixin _$Catalogo {
   String get nombreFicheroCatalogo => throw _privateConstructorUsedError;
   bool get descarga => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Catalogo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CatalogoCopyWith<Catalogo> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -62,6 +64,8 @@ class _$CatalogoCopyWithImpl<$Res, $Val extends Catalogo>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Catalogo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -156,6 +160,8 @@ class __$$CatalogoImplCopyWithImpl<$Res>
       _$CatalogoImpl _value, $Res Function(_$CatalogoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Catalogo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -308,7 +314,9 @@ class _$CatalogoImpl extends _Catalogo {
       nombreFicheroCatalogo,
       descarga);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Catalogo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CatalogoImplCopyWith<_$CatalogoImpl> get copyWith =>
@@ -352,8 +360,11 @@ abstract class _Catalogo extends Catalogo {
   String get nombreFicheroCatalogo;
   @override
   bool get descarga;
+
+  /// Create a copy of Catalogo
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CatalogoImplCopyWith<_$CatalogoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

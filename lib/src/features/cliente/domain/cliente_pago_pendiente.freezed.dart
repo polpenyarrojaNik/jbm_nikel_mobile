@@ -29,7 +29,9 @@ mixin _$ClientePagoPendiente {
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClientePagoPendiente
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ClientePagoPendienteCopyWith<ClientePagoPendiente> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -68,6 +70,8 @@ class _$ClientePagoPendienteCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ClientePagoPendiente
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -136,6 +140,8 @@ class _$ClientePagoPendienteCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of ClientePagoPendiente
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $MetodoDeCobroCopyWith<$Res>? get metodoDeCobro {
@@ -183,6 +189,8 @@ class __$$ClientePagoPendienteImplCopyWithImpl<$Res>
       $Res Function(_$ClientePagoPendienteImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ClientePagoPendiente
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -345,7 +353,9 @@ class _$ClientePagoPendienteImpl extends _ClientePagoPendiente {
       lastUpdated,
       deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClientePagoPendiente
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ClientePagoPendienteImplCopyWith<_$ClientePagoPendienteImpl>
@@ -394,8 +404,11 @@ abstract class _ClientePagoPendiente extends ClientePagoPendiente {
   DateTime get lastUpdated;
   @override
   bool get deleted;
+
+  /// Create a copy of ClientePagoPendiente
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClientePagoPendienteImplCopyWith<_$ClientePagoPendienteImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

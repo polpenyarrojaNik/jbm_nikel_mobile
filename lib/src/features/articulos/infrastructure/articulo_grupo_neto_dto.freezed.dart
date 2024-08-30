@@ -39,8 +39,12 @@ mixin _$ArticuloGrupoNetoDTO {
   @JsonKey(name: 'DELETED')
   String get deleted => throw _privateConstructorUsedError;
 
+  /// Serializes this ArticuloGrupoNetoDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ArticuloGrupoNetoDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ArticuloGrupoNetoDTOCopyWith<ArticuloGrupoNetoDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -74,6 +78,8 @@ class _$ArticuloGrupoNetoDTOCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ArticuloGrupoNetoDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -156,6 +162,8 @@ class __$$ArticuloGrupoNetoDTOImplCopyWithImpl<$Res>
       $Res Function(_$ArticuloGrupoNetoDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ArticuloGrupoNetoDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -285,7 +293,7 @@ class _$ArticuloGrupoNetoDTOImpl extends _ArticuloGrupoNetoDTO {
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -299,7 +307,9 @@ class _$ArticuloGrupoNetoDTOImpl extends _ArticuloGrupoNetoDTO {
       lastUpdated,
       deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArticuloGrupoNetoDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ArticuloGrupoNetoDTOImplCopyWith<_$ArticuloGrupoNetoDTOImpl>
@@ -360,8 +370,11 @@ abstract class _ArticuloGrupoNetoDTO extends ArticuloGrupoNetoDTO {
   @override
   @JsonKey(name: 'DELETED')
   String get deleted;
+
+  /// Create a copy of ArticuloGrupoNetoDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ArticuloGrupoNetoDTOImplCopyWith<_$ArticuloGrupoNetoDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

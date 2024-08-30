@@ -3,10 +3,12 @@ import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/domain/provincia.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/app_form_builder_searchable_dropdown.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 
 import 'package:jbm_nikel_mobile/src/features/cliente/presentation/index/cliente_search_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita.dart';
+import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita_competidor.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/presentation/edit/pais_search_page.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/presentation/edit/provincia_search_page.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/presentation/edit/visita_edit_page_controller.dart';
@@ -17,6 +19,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/pais.dart';
 import '../../../../core/exceptions/app_exception.dart';
+import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/alert_dialogs.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
@@ -24,6 +27,8 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import '../../../cliente/domain/cliente.dart';
 import '../../../usuario/application/usuario_notifier.dart';
 import '../../domain/visita_id_param.dart';
+import '../../domain/visita_motivos_no_venta.dart';
+import '../../domain/visita_sector.dart';
 import '../../infrastructure/visita_repository.dart';
 import '../index/visita_search_controller.dart';
 
@@ -247,6 +252,20 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
                   formKey.currentState!.value['atendidoPor'] as String?,
               marcasCompetencia:
                   formKey.currentState!.value['marcasCompetencia'] as String?,
+              ofertaRealizada: getFormValue<bool>(formKey, 'ofertaRealizada'),
+              interesCliente: getFormValue<bool>(formKey, 'interesCliente'),
+              pedidoRealizado: getFormValue<bool>(formKey, 'pedidoRealizado'),
+              sector: getFormValue<VisitaSector?>(formKey, 'sector'),
+              competencia:
+                  getFormValue<VisitaCompetidor?>(formKey, 'competencia'),
+              motivoNoInteres: getFormValue<VisitaMotivoNoVenta?>(
+                  formKey, 'motivoNoInteres'),
+              motivoNoPedido:
+                  getFormValue<VisitaMotivoNoVenta?>(formKey, 'motivoNoPedido'),
+              almacenPropio: getFormValue<bool>(formKey, 'almacenPropio'),
+              capacidad: getFormValue<String>(formKey, 'capacidad'),
+              frecuenciaPedido:
+                  getFormValue<String>(formKey, 'frecuenciaPedido'),
               latitud: 0,
               longitud: 0,
               visitaAppId: widget.id,
@@ -418,6 +437,78 @@ class _VisitaForm extends StatelessWidget {
             ),
             validator: FormBuilderValidators.compose([
               FormBuilderValidators.maxLength(255),
+            ]),
+          ),
+          FormBuilderSwitch(
+            name: 'ofertaRealizada',
+            title: Text(S.of(context).ofertaRealziada),
+            initialValue: visita?.ofertaRealizada ?? false,
+            validator: FormBuilderValidators.compose([
+              FormBuilderValidators.required(),
+            ]),
+          ),
+          FormBuilderSwitch(
+            name: 'interesCliente',
+            title: Text(S.of(context).interesCliente),
+            initialValue: visita?.interesCliente ?? false,
+            validator: FormBuilderValidators.compose([
+              FormBuilderValidators.required(),
+            ]),
+          ),
+          FormBuilderSwitch(
+            name: 'pedidoRealizado',
+            title: Text(S.of(context).pedidoRealizado),
+            initialValue: visita?.pedidoRealizado ?? false,
+            validator: FormBuilderValidators.compose([
+              FormBuilderValidators.required(),
+            ]),
+          ),
+          VisitaSectorFormDropdown(
+            name: 'sector',
+            initialValue: visita?.sector,
+          ),
+          VisitaCompetidorFormDropdown(
+            name: 'competencia',
+            initialValue: visita?.competencia,
+          ),
+          VisitaMotivoNoVentaFormDropdown(
+            name: 'motivoNoInteres',
+            initialValue: visita?.motivoNoInteres,
+            labelText: S.of(context).motivoNoInteres,
+          ),
+          VisitaMotivoNoVentaFormDropdown(
+            name: 'motivoNoPedido',
+            initialValue: visita?.motivoNoPedido,
+            labelText: S.of(context).motivoNoPedido,
+          ),
+          FormBuilderSwitch(
+            name: 'almacenPropio',
+            title: Text(S.of(context).almacenPropio),
+            initialValue: visita?.almacenPropio ?? false,
+            validator: FormBuilderValidators.compose([
+              FormBuilderValidators.required(),
+            ]),
+          ),
+          FormBuilderTextField(
+            name: 'capacidad',
+            initialValue: visita?.capacidad,
+            decoration: InputDecoration(
+              labelText: S.of(context).capacidad,
+            ),
+            validator: FormBuilderValidators.compose([
+              FormBuilderValidators.maxLength(1),
+              FormBuilderValidators.required(),
+            ]),
+          ),
+          FormBuilderTextField(
+            name: 'frecuenciaPedido',
+            initialValue: visita?.frecuenciaPedido,
+            decoration: InputDecoration(
+              labelText: S.of(context).frecuenciaPedido,
+            ),
+            validator: FormBuilderValidators.compose([
+              FormBuilderValidators.maxLength(1),
+              FormBuilderValidators.required(),
             ]),
           ),
         ],
@@ -702,5 +793,110 @@ class _SelectClienteWidgetState extends ConsumerState<_SelectClienteWidget> {
     return (nombreCliente != null)
         ? '#$clienteId $nombreCliente'
         : '#$clienteId';
+  }
+}
+
+class VisitaSectorFormDropdown extends ConsumerWidget {
+  const VisitaSectorFormDropdown({
+    super.key,
+    required this.initialValue,
+    required this.name,
+  });
+
+  final VisitaSector? initialValue;
+  final String name;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(visitaSectorListFormDropdownControllerProvider);
+
+    return AppFormBuilderSearchableDropdown<VisitaSector>(
+      name: name,
+      decoration: InputDecoration(
+        labelText: S.of(context).sector,
+        border: InputBorder.none,
+      ),
+      initialValue: initialValue,
+      items: state.maybeWhen(
+        orElse: () => [],
+        data: (sectoresList) => sectoresList,
+      ),
+      itemAsString: (item) => item.descripcion,
+      compareFn: (i, s) => i.id == s.id,
+      validator: FormBuilderValidators.compose([
+        FormBuilderValidators.required(),
+      ]),
+    );
+  }
+}
+
+class VisitaCompetidorFormDropdown extends ConsumerWidget {
+  const VisitaCompetidorFormDropdown({
+    super.key,
+    required this.initialValue,
+    required this.name,
+  });
+
+  final VisitaCompetidor? initialValue;
+  final String name;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(visitaCompetidorListFormDropdownControllerProvider);
+
+    return AppFormBuilderSearchableDropdown<VisitaCompetidor>(
+      name: name,
+      decoration: InputDecoration(
+        labelText: S.of(context).competencia,
+        border: InputBorder.none,
+      ),
+      initialValue: initialValue,
+      items: state.maybeWhen(
+        orElse: () => [],
+        data: (competidoresList) => competidoresList,
+      ),
+      itemAsString: (item) => item.descripcion,
+      compareFn: (i, s) => i.id == s.id,
+      validator: FormBuilderValidators.compose([
+        FormBuilderValidators.required(),
+      ]),
+    );
+  }
+}
+
+class VisitaMotivoNoVentaFormDropdown extends ConsumerWidget {
+  const VisitaMotivoNoVentaFormDropdown({
+    super.key,
+    required this.initialValue,
+    required this.name,
+    required this.labelText,
+  });
+
+  final VisitaMotivoNoVenta? initialValue;
+  final String name;
+  final String labelText;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state =
+        ref.watch(visitaMotivosNoVentaListFormDropdownControllerProvider);
+
+    return AppFormBuilderSearchableDropdown<VisitaMotivoNoVenta>(
+      name: name,
+      decoration: InputDecoration(
+        labelText: labelText,
+        border: InputBorder.none,
+      ),
+      initialValue: initialValue,
+      items: state.maybeWhen(
+        orElse: () => [],
+        data: (motivosNoVentaList) => motivosNoVentaList,
+      ),
+      itemAsString: (item) => item.descripcion,
+      compareFn: (i, s) => i.id == s.id,
+      validator: FormBuilderValidators.compose([
+        FormBuilderValidators.required(),
+      ]),
+    );
   }
 }

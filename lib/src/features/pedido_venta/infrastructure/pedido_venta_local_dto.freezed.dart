@@ -71,8 +71,12 @@ mixin _$PedidoVentaLocalDTO {
   @JsonKey(name: 'ERROR_SYNC')
   String? get errorSyncMessage => throw _privateConstructorUsedError;
 
+  /// Serializes this PedidoVentaLocalDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PedidoVentaLocalDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PedidoVentaLocalDTOCopyWith<PedidoVentaLocalDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -121,6 +125,8 @@ class _$PedidoVentaLocalDTOCopyWithImpl<$Res, $Val extends PedidoVentaLocalDTO>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PedidoVentaLocalDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -299,6 +305,8 @@ class __$$PedidoVentaLocalDTOImplCopyWithImpl<$Res>
       $Res Function(_$PedidoVentaLocalDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PedidoVentaLocalDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -600,7 +608,7 @@ class _$PedidoVentaLocalDTOImpl extends _PedidoVentaLocalDTO {
                 other.errorSyncMessage == errorSyncMessage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -631,7 +639,9 @@ class _$PedidoVentaLocalDTOImpl extends _PedidoVentaLocalDTO {
         errorSyncMessage
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PedidoVentaLocalDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PedidoVentaLocalDTOImplCopyWith<_$PedidoVentaLocalDTOImpl> get copyWith =>
@@ -754,8 +764,11 @@ abstract class _PedidoVentaLocalDTO extends PedidoVentaLocalDTO {
   @override
   @JsonKey(name: 'ERROR_SYNC')
   String? get errorSyncMessage;
+
+  /// Create a copy of PedidoVentaLocalDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PedidoVentaLocalDTOImplCopyWith<_$PedidoVentaLocalDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

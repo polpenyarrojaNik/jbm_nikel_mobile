@@ -24,8 +24,12 @@ mixin _$JBMHeaders {
   int? get maxPage => throw _privateConstructorUsedError;
   int? get totalRows => throw _privateConstructorUsedError;
 
+  /// Serializes this JBMHeaders to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of JBMHeaders
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $JBMHeadersCopyWith<JBMHeaders> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$JBMHeadersCopyWithImpl<$Res, $Val extends JBMHeaders>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of JBMHeaders
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$JBMHeadersImplCopyWithImpl<$Res>
       _$JBMHeadersImpl _value, $Res Function(_$JBMHeadersImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of JBMHeaders
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,11 +155,13 @@ class _$JBMHeadersImpl extends _JBMHeaders {
                 other.totalRows == totalRows));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, etag, maxPage, totalRows);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of JBMHeaders
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$JBMHeadersImplCopyWith<_$JBMHeadersImpl> get copyWith =>
@@ -181,8 +191,11 @@ abstract class _JBMHeaders extends JBMHeaders {
   int? get maxPage;
   @override
   int? get totalRows;
+
+  /// Create a copy of JBMHeaders
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$JBMHeadersImplCopyWith<_$JBMHeadersImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

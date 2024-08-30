@@ -43,13 +43,26 @@ mixin _$Visita {
   double get latitud => throw _privateConstructorUsedError;
   double get longitud => throw _privateConstructorUsedError;
   String? get visitaAppId => throw _privateConstructorUsedError;
+  bool get ofertaRealizada => throw _privateConstructorUsedError;
+  bool get interesCliente => throw _privateConstructorUsedError;
+  bool get pedidoRealizado => throw _privateConstructorUsedError;
+  VisitaMotivoNoVenta? get motivoNoInteres =>
+      throw _privateConstructorUsedError;
+  VisitaMotivoNoVenta? get motivoNoPedido => throw _privateConstructorUsedError;
+  VisitaSector? get sector => throw _privateConstructorUsedError;
+  VisitaCompetidor? get competencia => throw _privateConstructorUsedError;
+  bool get almacenPropio => throw _privateConstructorUsedError;
+  String get capacidad => throw _privateConstructorUsedError;
+  String get frecuenciaPedido => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
   bool get enviada => throw _privateConstructorUsedError;
   bool get tratada => throw _privateConstructorUsedError;
   String? get errorSyncMessage => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Visita
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $VisitaCopyWith<Visita> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -82,6 +95,16 @@ abstract class $VisitaCopyWith<$Res> {
       double latitud,
       double longitud,
       String? visitaAppId,
+      bool ofertaRealizada,
+      bool interesCliente,
+      bool pedidoRealizado,
+      VisitaMotivoNoVenta? motivoNoInteres,
+      VisitaMotivoNoVenta? motivoNoPedido,
+      VisitaSector? sector,
+      VisitaCompetidor? competencia,
+      bool almacenPropio,
+      String capacidad,
+      String frecuenciaPedido,
       DateTime lastUpdated,
       bool deleted,
       bool enviada,
@@ -90,6 +113,10 @@ abstract class $VisitaCopyWith<$Res> {
 
   $ProvinciaCopyWith<$Res>? get clienteProvisionalProvincia;
   $PaisCopyWith<$Res>? get clienteProvisionalPais;
+  $VisitaMotivoNoVentaCopyWith<$Res>? get motivoNoInteres;
+  $VisitaMotivoNoVentaCopyWith<$Res>? get motivoNoPedido;
+  $VisitaSectorCopyWith<$Res>? get sector;
+  $VisitaCompetidorCopyWith<$Res>? get competencia;
 }
 
 /// @nodoc
@@ -102,6 +129,8 @@ class _$VisitaCopyWithImpl<$Res, $Val extends Visita>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Visita
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -128,6 +157,16 @@ class _$VisitaCopyWithImpl<$Res, $Val extends Visita>
     Object? latitud = null,
     Object? longitud = null,
     Object? visitaAppId = freezed,
+    Object? ofertaRealizada = null,
+    Object? interesCliente = null,
+    Object? pedidoRealizado = null,
+    Object? motivoNoInteres = freezed,
+    Object? motivoNoPedido = freezed,
+    Object? sector = freezed,
+    Object? competencia = freezed,
+    Object? almacenPropio = null,
+    Object? capacidad = null,
+    Object? frecuenciaPedido = null,
     Object? lastUpdated = null,
     Object? deleted = null,
     Object? enviada = null,
@@ -227,6 +266,46 @@ class _$VisitaCopyWithImpl<$Res, $Val extends Visita>
           ? _value.visitaAppId
           : visitaAppId // ignore: cast_nullable_to_non_nullable
               as String?,
+      ofertaRealizada: null == ofertaRealizada
+          ? _value.ofertaRealizada
+          : ofertaRealizada // ignore: cast_nullable_to_non_nullable
+              as bool,
+      interesCliente: null == interesCliente
+          ? _value.interesCliente
+          : interesCliente // ignore: cast_nullable_to_non_nullable
+              as bool,
+      pedidoRealizado: null == pedidoRealizado
+          ? _value.pedidoRealizado
+          : pedidoRealizado // ignore: cast_nullable_to_non_nullable
+              as bool,
+      motivoNoInteres: freezed == motivoNoInteres
+          ? _value.motivoNoInteres
+          : motivoNoInteres // ignore: cast_nullable_to_non_nullable
+              as VisitaMotivoNoVenta?,
+      motivoNoPedido: freezed == motivoNoPedido
+          ? _value.motivoNoPedido
+          : motivoNoPedido // ignore: cast_nullable_to_non_nullable
+              as VisitaMotivoNoVenta?,
+      sector: freezed == sector
+          ? _value.sector
+          : sector // ignore: cast_nullable_to_non_nullable
+              as VisitaSector?,
+      competencia: freezed == competencia
+          ? _value.competencia
+          : competencia // ignore: cast_nullable_to_non_nullable
+              as VisitaCompetidor?,
+      almacenPropio: null == almacenPropio
+          ? _value.almacenPropio
+          : almacenPropio // ignore: cast_nullable_to_non_nullable
+              as bool,
+      capacidad: null == capacidad
+          ? _value.capacidad
+          : capacidad // ignore: cast_nullable_to_non_nullable
+              as String,
+      frecuenciaPedido: null == frecuenciaPedido
+          ? _value.frecuenciaPedido
+          : frecuenciaPedido // ignore: cast_nullable_to_non_nullable
+              as String,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -250,6 +329,8 @@ class _$VisitaCopyWithImpl<$Res, $Val extends Visita>
     ) as $Val);
   }
 
+  /// Create a copy of Visita
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ProvinciaCopyWith<$Res>? get clienteProvisionalProvincia {
@@ -263,6 +344,8 @@ class _$VisitaCopyWithImpl<$Res, $Val extends Visita>
     });
   }
 
+  /// Create a copy of Visita
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaisCopyWith<$Res>? get clienteProvisionalPais {
@@ -272,6 +355,62 @@ class _$VisitaCopyWithImpl<$Res, $Val extends Visita>
 
     return $PaisCopyWith<$Res>(_value.clienteProvisionalPais!, (value) {
       return _then(_value.copyWith(clienteProvisionalPais: value) as $Val);
+    });
+  }
+
+  /// Create a copy of Visita
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $VisitaMotivoNoVentaCopyWith<$Res>? get motivoNoInteres {
+    if (_value.motivoNoInteres == null) {
+      return null;
+    }
+
+    return $VisitaMotivoNoVentaCopyWith<$Res>(_value.motivoNoInteres!, (value) {
+      return _then(_value.copyWith(motivoNoInteres: value) as $Val);
+    });
+  }
+
+  /// Create a copy of Visita
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $VisitaMotivoNoVentaCopyWith<$Res>? get motivoNoPedido {
+    if (_value.motivoNoPedido == null) {
+      return null;
+    }
+
+    return $VisitaMotivoNoVentaCopyWith<$Res>(_value.motivoNoPedido!, (value) {
+      return _then(_value.copyWith(motivoNoPedido: value) as $Val);
+    });
+  }
+
+  /// Create a copy of Visita
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $VisitaSectorCopyWith<$Res>? get sector {
+    if (_value.sector == null) {
+      return null;
+    }
+
+    return $VisitaSectorCopyWith<$Res>(_value.sector!, (value) {
+      return _then(_value.copyWith(sector: value) as $Val);
+    });
+  }
+
+  /// Create a copy of Visita
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $VisitaCompetidorCopyWith<$Res>? get competencia {
+    if (_value.competencia == null) {
+      return null;
+    }
+
+    return $VisitaCompetidorCopyWith<$Res>(_value.competencia!, (value) {
+      return _then(_value.copyWith(competencia: value) as $Val);
     });
   }
 }
@@ -307,6 +446,16 @@ abstract class _$$VisitaImplCopyWith<$Res> implements $VisitaCopyWith<$Res> {
       double latitud,
       double longitud,
       String? visitaAppId,
+      bool ofertaRealizada,
+      bool interesCliente,
+      bool pedidoRealizado,
+      VisitaMotivoNoVenta? motivoNoInteres,
+      VisitaMotivoNoVenta? motivoNoPedido,
+      VisitaSector? sector,
+      VisitaCompetidor? competencia,
+      bool almacenPropio,
+      String capacidad,
+      String frecuenciaPedido,
       DateTime lastUpdated,
       bool deleted,
       bool enviada,
@@ -317,6 +466,14 @@ abstract class _$$VisitaImplCopyWith<$Res> implements $VisitaCopyWith<$Res> {
   $ProvinciaCopyWith<$Res>? get clienteProvisionalProvincia;
   @override
   $PaisCopyWith<$Res>? get clienteProvisionalPais;
+  @override
+  $VisitaMotivoNoVentaCopyWith<$Res>? get motivoNoInteres;
+  @override
+  $VisitaMotivoNoVentaCopyWith<$Res>? get motivoNoPedido;
+  @override
+  $VisitaSectorCopyWith<$Res>? get sector;
+  @override
+  $VisitaCompetidorCopyWith<$Res>? get competencia;
 }
 
 /// @nodoc
@@ -327,6 +484,8 @@ class __$$VisitaImplCopyWithImpl<$Res>
       _$VisitaImpl _value, $Res Function(_$VisitaImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Visita
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -353,6 +512,16 @@ class __$$VisitaImplCopyWithImpl<$Res>
     Object? latitud = null,
     Object? longitud = null,
     Object? visitaAppId = freezed,
+    Object? ofertaRealizada = null,
+    Object? interesCliente = null,
+    Object? pedidoRealizado = null,
+    Object? motivoNoInteres = freezed,
+    Object? motivoNoPedido = freezed,
+    Object? sector = freezed,
+    Object? competencia = freezed,
+    Object? almacenPropio = null,
+    Object? capacidad = null,
+    Object? frecuenciaPedido = null,
     Object? lastUpdated = null,
     Object? deleted = null,
     Object? enviada = null,
@@ -452,6 +621,46 @@ class __$$VisitaImplCopyWithImpl<$Res>
           ? _value.visitaAppId
           : visitaAppId // ignore: cast_nullable_to_non_nullable
               as String?,
+      ofertaRealizada: null == ofertaRealizada
+          ? _value.ofertaRealizada
+          : ofertaRealizada // ignore: cast_nullable_to_non_nullable
+              as bool,
+      interesCliente: null == interesCliente
+          ? _value.interesCliente
+          : interesCliente // ignore: cast_nullable_to_non_nullable
+              as bool,
+      pedidoRealizado: null == pedidoRealizado
+          ? _value.pedidoRealizado
+          : pedidoRealizado // ignore: cast_nullable_to_non_nullable
+              as bool,
+      motivoNoInteres: freezed == motivoNoInteres
+          ? _value.motivoNoInteres
+          : motivoNoInteres // ignore: cast_nullable_to_non_nullable
+              as VisitaMotivoNoVenta?,
+      motivoNoPedido: freezed == motivoNoPedido
+          ? _value.motivoNoPedido
+          : motivoNoPedido // ignore: cast_nullable_to_non_nullable
+              as VisitaMotivoNoVenta?,
+      sector: freezed == sector
+          ? _value.sector
+          : sector // ignore: cast_nullable_to_non_nullable
+              as VisitaSector?,
+      competencia: freezed == competencia
+          ? _value.competencia
+          : competencia // ignore: cast_nullable_to_non_nullable
+              as VisitaCompetidor?,
+      almacenPropio: null == almacenPropio
+          ? _value.almacenPropio
+          : almacenPropio // ignore: cast_nullable_to_non_nullable
+              as bool,
+      capacidad: null == capacidad
+          ? _value.capacidad
+          : capacidad // ignore: cast_nullable_to_non_nullable
+              as String,
+      frecuenciaPedido: null == frecuenciaPedido
+          ? _value.frecuenciaPedido
+          : frecuenciaPedido // ignore: cast_nullable_to_non_nullable
+              as String,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -503,6 +712,16 @@ class _$VisitaImpl extends _Visita {
       required this.latitud,
       required this.longitud,
       this.visitaAppId,
+      required this.ofertaRealizada,
+      required this.interesCliente,
+      required this.pedidoRealizado,
+      this.motivoNoInteres,
+      this.motivoNoPedido,
+      this.sector,
+      this.competencia,
+      required this.almacenPropio,
+      required this.capacidad,
+      required this.frecuenciaPedido,
       required this.lastUpdated,
       required this.deleted,
       required this.enviada,
@@ -557,6 +776,26 @@ class _$VisitaImpl extends _Visita {
   @override
   final String? visitaAppId;
   @override
+  final bool ofertaRealizada;
+  @override
+  final bool interesCliente;
+  @override
+  final bool pedidoRealizado;
+  @override
+  final VisitaMotivoNoVenta? motivoNoInteres;
+  @override
+  final VisitaMotivoNoVenta? motivoNoPedido;
+  @override
+  final VisitaSector? sector;
+  @override
+  final VisitaCompetidor? competencia;
+  @override
+  final bool almacenPropio;
+  @override
+  final String capacidad;
+  @override
+  final String frecuenciaPedido;
+  @override
   final DateTime lastUpdated;
   @override
   final bool deleted;
@@ -569,7 +808,7 @@ class _$VisitaImpl extends _Visita {
 
   @override
   String toString() {
-    return 'Visita(id: $id, clienteId: $clienteId, nombreCliente: $nombreCliente, isClienteProvisional: $isClienteProvisional, clienteProvisionalNombre: $clienteProvisionalNombre, clienteProvisionalEmail: $clienteProvisionalEmail, clienteProvisionalTelefono: $clienteProvisionalTelefono, clienteProvisionalDireccion1: $clienteProvisionalDireccion1, clienteProvisionalDireccion2: $clienteProvisionalDireccion2, clienteProvisionalCodigoPostal: $clienteProvisionalCodigoPostal, clienteProvisionalPoblacion: $clienteProvisionalPoblacion, clienteProvisionalProvincia: $clienteProvisionalProvincia, clienteProvisionalRegionId: $clienteProvisionalRegionId, clienteProvisionalPais: $clienteProvisionalPais, fecha: $fecha, numEmpl: $numEmpl, contacto: $contacto, atendidoPor: $atendidoPor, resumen: $resumen, marcasCompetencia: $marcasCompetencia, latitud: $latitud, longitud: $longitud, visitaAppId: $visitaAppId, lastUpdated: $lastUpdated, deleted: $deleted, enviada: $enviada, tratada: $tratada, errorSyncMessage: $errorSyncMessage)';
+    return 'Visita(id: $id, clienteId: $clienteId, nombreCliente: $nombreCliente, isClienteProvisional: $isClienteProvisional, clienteProvisionalNombre: $clienteProvisionalNombre, clienteProvisionalEmail: $clienteProvisionalEmail, clienteProvisionalTelefono: $clienteProvisionalTelefono, clienteProvisionalDireccion1: $clienteProvisionalDireccion1, clienteProvisionalDireccion2: $clienteProvisionalDireccion2, clienteProvisionalCodigoPostal: $clienteProvisionalCodigoPostal, clienteProvisionalPoblacion: $clienteProvisionalPoblacion, clienteProvisionalProvincia: $clienteProvisionalProvincia, clienteProvisionalRegionId: $clienteProvisionalRegionId, clienteProvisionalPais: $clienteProvisionalPais, fecha: $fecha, numEmpl: $numEmpl, contacto: $contacto, atendidoPor: $atendidoPor, resumen: $resumen, marcasCompetencia: $marcasCompetencia, latitud: $latitud, longitud: $longitud, visitaAppId: $visitaAppId, ofertaRealizada: $ofertaRealizada, interesCliente: $interesCliente, pedidoRealizado: $pedidoRealizado, motivoNoInteres: $motivoNoInteres, motivoNoPedido: $motivoNoPedido, sector: $sector, competencia: $competencia, almacenPropio: $almacenPropio, capacidad: $capacidad, frecuenciaPedido: $frecuenciaPedido, lastUpdated: $lastUpdated, deleted: $deleted, enviada: $enviada, tratada: $tratada, errorSyncMessage: $errorSyncMessage)';
   }
 
   @override
@@ -622,6 +861,16 @@ class _$VisitaImpl extends _Visita {
             (identical(other.latitud, latitud) || other.latitud == latitud) &&
             (identical(other.longitud, longitud) || other.longitud == longitud) &&
             (identical(other.visitaAppId, visitaAppId) || other.visitaAppId == visitaAppId) &&
+            (identical(other.ofertaRealizada, ofertaRealizada) || other.ofertaRealizada == ofertaRealizada) &&
+            (identical(other.interesCliente, interesCliente) || other.interesCliente == interesCliente) &&
+            (identical(other.pedidoRealizado, pedidoRealizado) || other.pedidoRealizado == pedidoRealizado) &&
+            (identical(other.motivoNoInteres, motivoNoInteres) || other.motivoNoInteres == motivoNoInteres) &&
+            (identical(other.motivoNoPedido, motivoNoPedido) || other.motivoNoPedido == motivoNoPedido) &&
+            (identical(other.sector, sector) || other.sector == sector) &&
+            (identical(other.competencia, competencia) || other.competencia == competencia) &&
+            (identical(other.almacenPropio, almacenPropio) || other.almacenPropio == almacenPropio) &&
+            (identical(other.capacidad, capacidad) || other.capacidad == capacidad) &&
+            (identical(other.frecuenciaPedido, frecuenciaPedido) || other.frecuenciaPedido == frecuenciaPedido) &&
             (identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated) &&
             (identical(other.deleted, deleted) || other.deleted == deleted) &&
             (identical(other.enviada, enviada) || other.enviada == enviada) &&
@@ -655,6 +904,16 @@ class _$VisitaImpl extends _Visita {
         latitud,
         longitud,
         visitaAppId,
+        ofertaRealizada,
+        interesCliente,
+        pedidoRealizado,
+        motivoNoInteres,
+        motivoNoPedido,
+        sector,
+        competencia,
+        almacenPropio,
+        capacidad,
+        frecuenciaPedido,
         lastUpdated,
         deleted,
         enviada,
@@ -662,7 +921,9 @@ class _$VisitaImpl extends _Visita {
         errorSyncMessage
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Visita
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$VisitaImplCopyWith<_$VisitaImpl> get copyWith =>
@@ -694,6 +955,16 @@ abstract class _Visita extends Visita {
       required final double latitud,
       required final double longitud,
       final String? visitaAppId,
+      required final bool ofertaRealizada,
+      required final bool interesCliente,
+      required final bool pedidoRealizado,
+      final VisitaMotivoNoVenta? motivoNoInteres,
+      final VisitaMotivoNoVenta? motivoNoPedido,
+      final VisitaSector? sector,
+      final VisitaCompetidor? competencia,
+      required final bool almacenPropio,
+      required final String capacidad,
+      required final String frecuenciaPedido,
       required final DateTime lastUpdated,
       required final bool deleted,
       required final bool enviada,
@@ -748,6 +1019,26 @@ abstract class _Visita extends Visita {
   @override
   String? get visitaAppId;
   @override
+  bool get ofertaRealizada;
+  @override
+  bool get interesCliente;
+  @override
+  bool get pedidoRealizado;
+  @override
+  VisitaMotivoNoVenta? get motivoNoInteres;
+  @override
+  VisitaMotivoNoVenta? get motivoNoPedido;
+  @override
+  VisitaSector? get sector;
+  @override
+  VisitaCompetidor? get competencia;
+  @override
+  bool get almacenPropio;
+  @override
+  String get capacidad;
+  @override
+  String get frecuenciaPedido;
+  @override
   DateTime get lastUpdated;
   @override
   bool get deleted;
@@ -757,8 +1048,11 @@ abstract class _Visita extends Visita {
   bool get tratada;
   @override
   String? get errorSyncMessage;
+
+  /// Create a copy of Visita
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$VisitaImplCopyWith<_$VisitaImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -23,7 +23,9 @@ mixin _$ArticuloPrecio {
   double get descuento3 => throw _privateConstructorUsedError;
   double get iva => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArticuloPrecio
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ArticuloPrecioCopyWith<ArticuloPrecio> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -55,6 +57,8 @@ class _$ArticuloPrecioCopyWithImpl<$Res, $Val extends ArticuloPrecio>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ArticuloPrecio
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -93,6 +97,8 @@ class _$ArticuloPrecioCopyWithImpl<$Res, $Val extends ArticuloPrecio>
     ) as $Val);
   }
 
+  /// Create a copy of ArticuloPrecio
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PrecioCopyWith<$Res> get precio {
@@ -130,6 +136,8 @@ class __$$ArticuloPrecioImplCopyWithImpl<$Res>
       _$ArticuloPrecioImpl _value, $Res Function(_$ArticuloPrecioImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ArticuloPrecio
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -220,7 +228,9 @@ class _$ArticuloPrecioImpl extends _ArticuloPrecio {
   int get hashCode => Object.hash(
       runtimeType, precio, divisaId, descuento1, descuento2, descuento3, iva);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArticuloPrecio
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ArticuloPrecioImplCopyWith<_$ArticuloPrecioImpl> get copyWith =>
@@ -250,8 +260,11 @@ abstract class _ArticuloPrecio extends ArticuloPrecio {
   double get descuento3;
   @override
   double get iva;
+
+  /// Create a copy of ArticuloPrecio
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ArticuloPrecioImplCopyWith<_$ArticuloPrecioImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

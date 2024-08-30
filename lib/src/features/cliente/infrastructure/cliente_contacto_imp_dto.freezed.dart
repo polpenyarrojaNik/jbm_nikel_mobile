@@ -50,8 +50,12 @@ mixin _$ClienteContactoImpDTO {
   @JsonKey(name: 'BORRAR', defaultValue: 'N')
   String get borrar => throw _privateConstructorUsedError;
 
+  /// Serializes this ClienteContactoImpDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ClienteContactoImpDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ClienteContactoImpDTOCopyWith<ClienteContactoImpDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -90,6 +94,8 @@ class _$ClienteContactoImpDTOCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ClienteContactoImpDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -204,6 +210,8 @@ class __$$ClienteContactoImpDTOImplCopyWithImpl<$Res>
       $Res Function(_$ClienteContactoImpDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ClienteContactoImpDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -383,7 +391,7 @@ class _$ClienteContactoImpDTOImpl extends _ClienteContactoImpDTO {
             (identical(other.borrar, borrar) || other.borrar == borrar));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -402,7 +410,9 @@ class _$ClienteContactoImpDTOImpl extends _ClienteContactoImpDTO {
       enviado,
       borrar);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClienteContactoImpDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ClienteContactoImpDTOImplCopyWith<_$ClienteContactoImpDTOImpl>
@@ -482,8 +492,11 @@ abstract class _ClienteContactoImpDTO extends ClienteContactoImpDTO {
   @override
   @JsonKey(name: 'BORRAR', defaultValue: 'N')
   String get borrar;
+
+  /// Create a copy of ClienteContactoImpDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClienteContactoImpDTOImplCopyWith<_$ClienteContactoImpDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -26,7 +26,9 @@ mixin _$ArticuloPrecioTarifa {
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArticuloPrecioTarifa
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ArticuloPrecioTarifaCopyWith<ArticuloPrecioTarifa> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -60,6 +62,8 @@ class _$ArticuloPrecioTarifaCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ArticuloPrecioTarifa
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -142,6 +146,8 @@ class __$$ArticuloPrecioTarifaImplCopyWithImpl<$Res>
       $Res Function(_$ArticuloPrecioTarifaImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ArticuloPrecioTarifa
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -271,7 +277,9 @@ class _$ArticuloPrecioTarifaImpl extends _ArticuloPrecioTarifa {
       lastUpdated,
       deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArticuloPrecioTarifa
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ArticuloPrecioTarifaImplCopyWith<_$ArticuloPrecioTarifaImpl>
@@ -311,8 +319,11 @@ abstract class _ArticuloPrecioTarifa extends ArticuloPrecioTarifa {
   DateTime get lastUpdated;
   @override
   bool get deleted;
+
+  /// Create a copy of ArticuloPrecioTarifa
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ArticuloPrecioTarifaImplCopyWith<_$ArticuloPrecioTarifaImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

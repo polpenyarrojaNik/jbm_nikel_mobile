@@ -29,8 +29,12 @@ mixin _$NotificationListDto {
   @JsonKey(name: 'MENSAJE_MARKDOWN')
   String get mensaje => throw _privateConstructorUsedError;
 
+  /// Serializes this NotificationListDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NotificationListDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NotificationListDtoCopyWith<NotificationListDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -58,6 +62,8 @@ class _$NotificationListDtoCopyWithImpl<$Res, $Val extends NotificationListDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NotificationListDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -110,6 +116,8 @@ class __$$NotificationListDtoImplCopyWithImpl<$Res>
       $Res Function(_$NotificationListDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NotificationListDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -182,12 +190,14 @@ class _$NotificationListDtoImpl extends _NotificationListDto {
             (identical(other.mensaje, mensaje) || other.mensaje == mensaje));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, notificacionId, fecha, leidoSN, mensaje);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NotificationListDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NotificationListDtoImplCopyWith<_$NotificationListDtoImpl> get copyWith =>
@@ -226,8 +236,11 @@ abstract class _NotificationListDto extends NotificationListDto {
   @override
   @JsonKey(name: 'MENSAJE_MARKDOWN')
   String get mensaje;
+
+  /// Create a copy of NotificationListDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NotificationListDtoImplCopyWith<_$NotificationListDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

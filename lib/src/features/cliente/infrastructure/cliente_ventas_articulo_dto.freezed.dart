@@ -46,8 +46,12 @@ mixin _$ClienteVentasArticuloDTO {
   @JsonKey(name: 'CANTIDAD_ANYO_4')
   int get cantidadAnyo_4 => throw _privateConstructorUsedError;
 
+  /// Serializes this ClienteVentasArticuloDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ClienteVentasArticuloDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ClienteVentasArticuloDTOCopyWith<ClienteVentasArticuloDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -84,6 +88,8 @@ class _$ClienteVentasArticuloDTOCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ClienteVentasArticuloDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -187,6 +193,8 @@ class __$$ClienteVentasArticuloDTOImplCopyWithImpl<$Res>
       $Res Function(_$ClienteVentasArticuloDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ClienteVentasArticuloDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -350,7 +358,7 @@ class _$ClienteVentasArticuloDTOImpl extends _ClienteVentasArticuloDTO {
                 other.cantidadAnyo_4 == cantidadAnyo_4));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -367,7 +375,9 @@ class _$ClienteVentasArticuloDTOImpl extends _ClienteVentasArticuloDTO {
       cantidadAnyo_3,
       cantidadAnyo_4);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClienteVentasArticuloDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ClienteVentasArticuloDTOImplCopyWith<_$ClienteVentasArticuloDTOImpl>
@@ -438,8 +448,11 @@ abstract class _ClienteVentasArticuloDTO extends ClienteVentasArticuloDTO {
   @override
   @JsonKey(name: 'CANTIDAD_ANYO_4')
   int get cantidadAnyo_4;
+
+  /// Create a copy of ClienteVentasArticuloDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClienteVentasArticuloDTOImplCopyWith<_$ClienteVentasArticuloDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

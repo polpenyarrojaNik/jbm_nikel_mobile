@@ -26,7 +26,9 @@ mixin _$ClienteRappel {
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClienteRappel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ClienteRappelCopyWith<ClienteRappel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -59,6 +61,8 @@ class _$ClienteRappelCopyWithImpl<$Res, $Val extends ClienteRappel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ClienteRappel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -141,6 +145,8 @@ class __$$ClienteRappelImplCopyWithImpl<$Res>
       _$ClienteRappelImpl _value, $Res Function(_$ClienteRappelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ClienteRappel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -261,7 +267,9 @@ class _$ClienteRappelImpl extends _ClienteRappel {
   int get hashCode => Object.hash(runtimeType, clienteId, rappelId, descripcion,
       fechaDesDe, fechaHasta, nombreArchivo, firmado, lastUpdated, deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClienteRappel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ClienteRappelImplCopyWith<_$ClienteRappelImpl> get copyWith =>
@@ -299,8 +307,11 @@ abstract class _ClienteRappel extends ClienteRappel {
   DateTime get lastUpdated;
   @override
   bool get deleted;
+
+  /// Create a copy of ClienteRappel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClienteRappelImplCopyWith<_$ClienteRappelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

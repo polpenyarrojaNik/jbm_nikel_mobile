@@ -32,7 +32,9 @@ mixin _$Usuario {
   String get buildNumber => throw _privateConstructorUsedError;
   String get deviceInfo => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Usuario
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UsuarioCopyWith<Usuario> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -69,6 +71,8 @@ class _$UsuarioCopyWithImpl<$Res, $Val extends Usuario>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Usuario
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -186,6 +190,8 @@ class __$$UsuarioImplCopyWithImpl<$Res>
       _$UsuarioImpl _value, $Res Function(_$UsuarioImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Usuario
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -379,7 +385,9 @@ class _$UsuarioImpl extends _Usuario {
       buildNumber,
       deviceInfo);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Usuario
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UsuarioImplCopyWith<_$UsuarioImpl> get copyWith =>
@@ -435,8 +443,11 @@ abstract class _Usuario extends Usuario {
   String get buildNumber;
   @override
   String get deviceInfo;
+
+  /// Create a copy of Usuario
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UsuarioImplCopyWith<_$UsuarioImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -28,7 +28,9 @@ mixin _$DevolucionLinea {
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DevolucionLinea
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DevolucionLineaCopyWith<DevolucionLinea> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -66,6 +68,8 @@ class _$DevolucionLineaCopyWithImpl<$Res, $Val extends DevolucionLinea>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DevolucionLinea
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -129,6 +133,8 @@ class _$DevolucionLineaCopyWithImpl<$Res, $Val extends DevolucionLinea>
     ) as $Val);
   }
 
+  /// Create a copy of DevolucionLinea
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DevolucionMotivoCopyWith<$Res>? get devolucionMotivo {
@@ -141,6 +147,8 @@ class _$DevolucionLineaCopyWithImpl<$Res, $Val extends DevolucionLinea>
     });
   }
 
+  /// Create a copy of DevolucionLinea
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DevolucionEstadoCopyWith<$Res>? get devolucionEstado {
@@ -189,6 +197,8 @@ class __$$DevolucionLineaImplCopyWithImpl<$Res>
       _$DevolucionLineaImpl _value, $Res Function(_$DevolucionLineaImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DevolucionLinea
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -341,7 +351,9 @@ class _$DevolucionLineaImpl extends _DevolucionLinea {
       lastUpdated,
       deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DevolucionLinea
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DevolucionLineaImplCopyWith<_$DevolucionLineaImpl> get copyWith =>
@@ -386,8 +398,11 @@ abstract class _DevolucionLinea extends DevolucionLinea {
   DateTime get lastUpdated;
   @override
   bool get deleted;
+
+  /// Create a copy of DevolucionLinea
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DevolucionLineaImplCopyWith<_$DevolucionLineaImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -20,7 +20,9 @@ mixin _$ClienteDireccionEditPageData {
   bool get isSent => throw _privateConstructorUsedError;
   Object? get error => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClienteDireccionEditPageData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ClienteDireccionEditPageDataCopyWith<ClienteDireccionEditPageData>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -49,6 +51,8 @@ class _$ClienteDireccionEditPageDataCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ClienteDireccionEditPageData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -69,6 +73,8 @@ class _$ClienteDireccionEditPageDataCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of ClienteDireccionEditPageData
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ClienteDireccionCopyWith<$Res>? get clienteDireccion {
@@ -107,6 +113,8 @@ class __$$ClienteDireccionEditPageDataImplCopyWithImpl<$Res>
       $Res Function(_$ClienteDireccionEditPageDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ClienteDireccionEditPageData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -162,7 +170,9 @@ class _$ClienteDireccionEditPageDataImpl extends _ClienteDireccionEditPageData {
   int get hashCode => Object.hash(runtimeType, clienteDireccion, isSent,
       const DeepCollectionEquality().hash(error));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClienteDireccionEditPageData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ClienteDireccionEditPageDataImplCopyWith<
@@ -185,8 +195,11 @@ abstract class _ClienteDireccionEditPageData
   bool get isSent;
   @override
   Object? get error;
+
+  /// Create a copy of ClienteDireccionEditPageData
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClienteDireccionEditPageDataImplCopyWith<
           _$ClienteDireccionEditPageDataImpl>
       get copyWith => throw _privateConstructorUsedError;

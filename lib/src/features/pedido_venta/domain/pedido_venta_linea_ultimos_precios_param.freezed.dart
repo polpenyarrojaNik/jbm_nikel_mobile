@@ -19,7 +19,9 @@ mixin _$UltimosPreciosParam {
   String get clienteId => throw _privateConstructorUsedError;
   String get articuloId => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UltimosPreciosParam
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UltimosPreciosParamCopyWith<UltimosPreciosParam> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$UltimosPreciosParamCopyWithImpl<$Res, $Val extends UltimosPreciosParam>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UltimosPreciosParam
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +85,8 @@ class __$$UltimosPreciosParamImplCopyWithImpl<$Res>
       $Res Function(_$UltimosPreciosParamImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UltimosPreciosParam
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -131,7 +137,9 @@ class _$UltimosPreciosParamImpl extends _UltimosPreciosParam {
   @override
   int get hashCode => Object.hash(runtimeType, clienteId, articuloId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UltimosPreciosParam
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UltimosPreciosParamImplCopyWith<_$UltimosPreciosParamImpl> get copyWith =>
@@ -149,8 +157,11 @@ abstract class _UltimosPreciosParam extends UltimosPreciosParam {
   String get clienteId;
   @override
   String get articuloId;
+
+  /// Create a copy of UltimosPreciosParam
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UltimosPreciosParamImplCopyWith<_$UltimosPreciosParamImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

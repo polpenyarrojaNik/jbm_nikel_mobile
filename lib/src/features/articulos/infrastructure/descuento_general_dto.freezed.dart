@@ -37,8 +37,12 @@ mixin _$DescuentoGeneralDTO {
   @JsonKey(name: 'DELETED')
   String get deleted => throw _privateConstructorUsedError;
 
+  /// Serializes this DescuentoGeneralDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DescuentoGeneralDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DescuentoGeneralDTOCopyWith<DescuentoGeneralDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -70,6 +74,8 @@ class _$DescuentoGeneralDTOCopyWithImpl<$Res, $Val extends DescuentoGeneralDTO>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DescuentoGeneralDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -146,6 +152,8 @@ class __$$DescuentoGeneralDTOImplCopyWithImpl<$Res>
       $Res Function(_$DescuentoGeneralDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DescuentoGeneralDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -264,12 +272,14 @@ class _$DescuentoGeneralDTOImpl extends _DescuentoGeneralDTO {
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, descuentoGeneralId, articuloId,
       familiaId, subfamiliaId, cantidadDesde, descuento, lastUpdated, deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DescuentoGeneralDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DescuentoGeneralDTOImplCopyWith<_$DescuentoGeneralDTOImpl> get copyWith =>
@@ -325,8 +335,11 @@ abstract class _DescuentoGeneralDTO extends DescuentoGeneralDTO {
   @override
   @JsonKey(name: 'DELETED')
   String get deleted;
+
+  /// Create a copy of DescuentoGeneralDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DescuentoGeneralDTOImplCopyWith<_$DescuentoGeneralDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

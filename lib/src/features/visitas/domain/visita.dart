@@ -1,4 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita_competidor.dart';
+import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita_motivos_no_venta.dart';
+import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita_sector.dart';
 
 import '../../../core/domain/pais.dart';
 import '../../../core/domain/provincia.dart';
@@ -32,6 +35,16 @@ class Visita with _$Visita {
     required double latitud,
     required double longitud,
     String? visitaAppId,
+    required bool ofertaRealizada,
+    required bool interesCliente,
+    required bool pedidoRealizado,
+    VisitaMotivoNoVenta? motivoNoInteres,
+    VisitaMotivoNoVenta? motivoNoPedido,
+    VisitaSector? sector,
+    VisitaCompetidor? competencia,
+    required bool almacenPropio,
+    required String capacidad,
+    required String frecuenciaPedido,
     required DateTime lastUpdated,
     required bool deleted,
     required bool enviada,

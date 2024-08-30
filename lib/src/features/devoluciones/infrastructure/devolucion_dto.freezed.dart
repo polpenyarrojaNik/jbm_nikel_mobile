@@ -57,8 +57,12 @@ mixin _$DevolucionDTO {
   @JsonKey(name: 'DELETED')
   String get deleted => throw _privateConstructorUsedError;
 
+  /// Serializes this DevolucionDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DevolucionDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DevolucionDTOCopyWith<DevolucionDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -100,6 +104,8 @@ class _$DevolucionDTOCopyWithImpl<$Res, $Val extends DevolucionDTO>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DevolucionDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -236,6 +242,8 @@ class __$$DevolucionDTOImplCopyWithImpl<$Res>
       _$DevolucionDTOImpl _value, $Res Function(_$DevolucionDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DevolucionDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -460,7 +468,7 @@ class _$DevolucionDTOImpl extends _DevolucionDTO {
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -483,7 +491,9 @@ class _$DevolucionDTOImpl extends _DevolucionDTO {
       lastUpdated,
       deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DevolucionDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DevolucionDTOImplCopyWith<_$DevolucionDTOImpl> get copyWith =>
@@ -579,8 +589,11 @@ abstract class _DevolucionDTO extends DevolucionDTO {
   @override
   @JsonKey(name: 'DELETED')
   String get deleted;
+
+  /// Create a copy of DevolucionDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DevolucionDTOImplCopyWith<_$DevolucionDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -43,8 +43,12 @@ mixin _$DevolucionLineaDTO {
   @JsonKey(name: 'DELETED')
   String get deleted => throw _privateConstructorUsedError;
 
+  /// Serializes this DevolucionLineaDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DevolucionLineaDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DevolucionLineaDTOCopyWith<DevolucionLineaDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -79,6 +83,8 @@ class _$DevolucionLineaDTOCopyWithImpl<$Res, $Val extends DevolucionLineaDTO>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DevolucionLineaDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -173,6 +179,8 @@ class __$$DevolucionLineaDTOImplCopyWithImpl<$Res>
       $Res Function(_$DevolucionLineaDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DevolucionLineaDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -324,7 +332,7 @@ class _$DevolucionLineaDTOImpl extends _DevolucionLineaDTO {
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -340,7 +348,9 @@ class _$DevolucionLineaDTOImpl extends _DevolucionLineaDTO {
       lastUpdated,
       deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DevolucionLineaDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DevolucionLineaDTOImplCopyWith<_$DevolucionLineaDTOImpl> get copyWith =>
@@ -408,8 +418,11 @@ abstract class _DevolucionLineaDTO extends DevolucionLineaDTO {
   @override
   @JsonKey(name: 'DELETED')
   String get deleted;
+
+  /// Create a copy of DevolucionLineaDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DevolucionLineaDTOImplCopyWith<_$DevolucionLineaDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

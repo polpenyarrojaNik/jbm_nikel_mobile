@@ -109,6 +109,9 @@ class _$VisitaEditPageControllerStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of VisitaEditPageControllerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -125,6 +128,9 @@ class __$$loadingImplCopyWithImpl<$Res>
   __$$loadingImplCopyWithImpl(
       _$loadingImpl _value, $Res Function(_$loadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of VisitaEditPageControllerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -266,6 +272,8 @@ class __$$dataImplCopyWithImpl<$Res>
   __$$dataImplCopyWithImpl(_$dataImpl _value, $Res Function(_$dataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of VisitaEditPageControllerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -279,6 +287,8 @@ class __$$dataImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of VisitaEditPageControllerState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $VisitaCopyWith<$Res>? get visitaLocal {
@@ -317,7 +327,9 @@ class _$dataImpl extends _data {
   @override
   int get hashCode => Object.hash(runtimeType, visitaLocal);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VisitaEditPageControllerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$dataImplCopyWith<_$dataImpl> get copyWith =>
@@ -425,7 +437,10 @@ abstract class _data extends VisitaEditPageControllerState {
   const _data._() : super._();
 
   Visita? get visitaLocal;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of VisitaEditPageControllerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$dataImplCopyWith<_$dataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -447,6 +462,8 @@ class __$$errorImplCopyWithImpl<$Res>
       _$errorImpl _value, $Res Function(_$errorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of VisitaEditPageControllerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -492,7 +509,9 @@ class _$errorImpl extends _error {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(error), stackTrace);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VisitaEditPageControllerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$errorImplCopyWith<_$errorImpl> get copyWith =>
@@ -602,7 +621,10 @@ abstract class _error extends VisitaEditPageControllerState {
 
   Object get error;
   StackTrace? get stackTrace;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of VisitaEditPageControllerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$errorImplCopyWith<_$errorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -626,6 +648,8 @@ class __$$savedImplCopyWithImpl<$Res>
       _$savedImpl _value, $Res Function(_$savedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of VisitaEditPageControllerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -639,6 +663,8 @@ class __$$savedImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of VisitaEditPageControllerState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $VisitaCopyWith<$Res> get visitaLocal {
@@ -673,7 +699,9 @@ class _$savedImpl extends _saved {
   @override
   int get hashCode => Object.hash(runtimeType, visitaLocal);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VisitaEditPageControllerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$savedImplCopyWith<_$savedImpl> get copyWith =>
@@ -781,7 +809,10 @@ abstract class _saved extends VisitaEditPageControllerState {
   const _saved._() : super._();
 
   Visita get visitaLocal;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of VisitaEditPageControllerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$savedImplCopyWith<_$savedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -805,6 +836,8 @@ class __$$savingImplCopyWithImpl<$Res>
       _$savingImpl _value, $Res Function(_$savingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of VisitaEditPageControllerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -818,6 +851,8 @@ class __$$savingImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of VisitaEditPageControllerState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $VisitaCopyWith<$Res> get visitaLocal {
@@ -852,7 +887,9 @@ class _$savingImpl extends _saving {
   @override
   int get hashCode => Object.hash(runtimeType, visitaLocal);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VisitaEditPageControllerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$savingImplCopyWith<_$savingImpl> get copyWith =>
@@ -960,7 +997,10 @@ abstract class _saving extends VisitaEditPageControllerState {
   const _saving._() : super._();
 
   Visita get visitaLocal;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of VisitaEditPageControllerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$savingImplCopyWith<_$savingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -984,6 +1024,8 @@ class __$$savedErrorImplCopyWithImpl<$Res>
       _$savedErrorImpl _value, $Res Function(_$savedErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of VisitaEditPageControllerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1004,6 +1046,8 @@ class __$$savedErrorImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of VisitaEditPageControllerState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $VisitaCopyWith<$Res> get visitaLocal {
@@ -1047,7 +1091,9 @@ class _$savedErrorImpl extends _savedError {
   int get hashCode => Object.hash(runtimeType, visitaLocal,
       const DeepCollectionEquality().hash(error), stackTrace);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VisitaEditPageControllerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$savedErrorImplCopyWith<_$savedErrorImpl> get copyWith =>
@@ -1158,7 +1204,10 @@ abstract class _savedError extends VisitaEditPageControllerState {
   Visita get visitaLocal;
   Object get error;
   StackTrace? get stackTrace;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of VisitaEditPageControllerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$savedErrorImplCopyWith<_$savedErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1177,6 +1226,9 @@ class __$$deletedImplCopyWithImpl<$Res>
   __$$deletedImplCopyWithImpl(
       _$deletedImpl _value, $Res Function(_$deletedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of VisitaEditPageControllerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

@@ -19,7 +19,9 @@ mixin _$Precio {
   Money get precio => throw _privateConstructorUsedError;
   int get tipoPrecio => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Precio
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PrecioCopyWith<Precio> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -41,6 +43,8 @@ class _$PrecioCopyWithImpl<$Res, $Val extends Precio>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Precio
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -78,6 +82,8 @@ class __$$PrecioImplCopyWithImpl<$Res>
       _$PrecioImpl _value, $Res Function(_$PrecioImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Precio
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -126,7 +132,9 @@ class _$PrecioImpl extends _Precio {
   @override
   int get hashCode => Object.hash(runtimeType, precio, tipoPrecio);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Precio
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PrecioImplCopyWith<_$PrecioImpl> get copyWith =>
@@ -143,8 +151,11 @@ abstract class _Precio extends Precio {
   Money get precio;
   @override
   int get tipoPrecio;
+
+  /// Create a copy of Precio
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PrecioImplCopyWith<_$PrecioImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

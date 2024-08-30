@@ -28,8 +28,12 @@ mixin _$EstadisitcasArticulosTopDTO {
   @JsonKey(name: 'DELETED')
   String get deleted => throw _privateConstructorUsedError;
 
+  /// Serializes this EstadisitcasArticulosTopDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EstadisitcasArticulosTopDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EstadisitcasArticulosTopDTOCopyWith<EstadisitcasArticulosTopDTO>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -59,6 +63,8 @@ class _$EstadisitcasArticulosTopDTOCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of EstadisitcasArticulosTopDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -108,6 +114,8 @@ class __$$EstadisitcasArticulosTopDTOImplCopyWithImpl<$Res>
       $Res Function(_$EstadisitcasArticulosTopDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EstadisitcasArticulosTopDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -172,12 +180,14 @@ class _$EstadisitcasArticulosTopDTOImpl extends _EstadisitcasArticulosTopDTO {
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, articuloId, lastUpdated, deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EstadisitcasArticulosTopDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EstadisitcasArticulosTopDTOImplCopyWith<_$EstadisitcasArticulosTopDTOImpl>
@@ -213,8 +223,11 @@ abstract class _EstadisitcasArticulosTopDTO
   @override
   @JsonKey(name: 'DELETED')
   String get deleted;
+
+  /// Create a copy of EstadisitcasArticulosTopDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EstadisitcasArticulosTopDTOImplCopyWith<_$EstadisitcasArticulosTopDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

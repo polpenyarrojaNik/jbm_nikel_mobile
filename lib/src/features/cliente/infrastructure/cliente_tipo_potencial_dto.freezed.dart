@@ -58,8 +58,12 @@ mixin _$ClienteTipoPotencialDTO {
   @JsonKey(name: 'DELETED')
   String get deleted => throw _privateConstructorUsedError;
 
+  /// Serializes this ClienteTipoPotencialDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ClienteTipoPotencialDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ClienteTipoPotencialDTOCopyWith<ClienteTipoPotencialDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -102,6 +106,8 @@ class _$ClienteTipoPotencialDTOCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ClienteTipoPotencialDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -241,6 +247,8 @@ class __$$ClienteTipoPotencialDTOImplCopyWithImpl<$Res>
       $Res Function(_$ClienteTipoPotencialDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ClienteTipoPotencialDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -468,7 +476,7 @@ class _$ClienteTipoPotencialDTOImpl extends _ClienteTipoPotencialDTO {
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -491,7 +499,9 @@ class _$ClienteTipoPotencialDTOImpl extends _ClienteTipoPotencialDTO {
       lastUpdated,
       deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClienteTipoPotencialDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ClienteTipoPotencialDTOImplCopyWith<_$ClienteTipoPotencialDTOImpl>
@@ -586,8 +596,11 @@ abstract class _ClienteTipoPotencialDTO extends ClienteTipoPotencialDTO {
   @override
   @JsonKey(name: 'DELETED')
   String get deleted;
+
+  /// Create a copy of ClienteTipoPotencialDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClienteTipoPotencialDTOImplCopyWith<_$ClienteTipoPotencialDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

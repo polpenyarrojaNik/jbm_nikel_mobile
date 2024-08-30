@@ -21,7 +21,9 @@ mixin _$ClienteImpParam {
   String? get impId => throw _privateConstructorUsedError;
   Pais? get clientePais => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClienteImpParam
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ClienteImpParamCopyWith<ClienteImpParam> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -47,6 +49,8 @@ class _$ClienteImpParamCopyWithImpl<$Res, $Val extends ClienteImpParam>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ClienteImpParam
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -75,6 +79,8 @@ class _$ClienteImpParamCopyWithImpl<$Res, $Val extends ClienteImpParam>
     ) as $Val);
   }
 
+  /// Create a copy of ClienteImpParam
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaisCopyWith<$Res>? get clientePais {
@@ -110,6 +116,8 @@ class __$$ClienteImpParamImplCopyWithImpl<$Res>
       _$ClienteImpParamImpl _value, $Res Function(_$ClienteImpParamImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ClienteImpParam
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -177,7 +185,9 @@ class _$ClienteImpParamImpl extends _ClienteImpParam {
   int get hashCode =>
       Object.hash(runtimeType, clienteId, id, impId, clientePais);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClienteImpParam
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ClienteImpParamImplCopyWith<_$ClienteImpParamImpl> get copyWith =>
@@ -200,8 +210,11 @@ abstract class _ClienteImpParam extends ClienteImpParam {
   String? get impId;
   @override
   Pais? get clientePais;
+
+  /// Create a copy of ClienteImpParam
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClienteImpParamImplCopyWith<_$ClienteImpParamImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

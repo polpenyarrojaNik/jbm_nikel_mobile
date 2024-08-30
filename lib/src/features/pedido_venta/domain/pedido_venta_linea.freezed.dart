@@ -41,7 +41,9 @@ mixin _$PedidoVentaLinea {
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PedidoVentaLinea
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PedidoVentaLineaCopyWith<PedidoVentaLinea> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -88,6 +90,8 @@ class _$PedidoVentaLineaCopyWithImpl<$Res, $Val extends PedidoVentaLinea>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PedidoVentaLinea
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -254,6 +258,8 @@ class __$$PedidoVentaLineaImplCopyWithImpl<$Res>
       $Res Function(_$PedidoVentaLineaImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PedidoVentaLinea
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -540,7 +546,9 @@ class _$PedidoVentaLineaImpl extends _PedidoVentaLinea {
         deleted
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PedidoVentaLinea
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PedidoVentaLineaImplCopyWith<_$PedidoVentaLineaImpl> get copyWith =>
@@ -582,8 +590,8 @@ abstract class _PedidoVentaLinea extends PedidoVentaLinea {
   @override
   String? get pedidoVentaLineaId;
   @override
-  String? get pedidoVentaAppId;
-  @override // String? pedidoVentaLineaAppId,
+  String? get pedidoVentaAppId; // String? pedidoVentaLineaAppId,
+  @override
   String get articuloId;
   @override
   String get articuloDescription;
@@ -621,8 +629,11 @@ abstract class _PedidoVentaLinea extends PedidoVentaLinea {
   DateTime get lastUpdated;
   @override
   bool get deleted;
+
+  /// Create a copy of PedidoVentaLinea
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PedidoVentaLineaImplCopyWith<_$PedidoVentaLineaImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

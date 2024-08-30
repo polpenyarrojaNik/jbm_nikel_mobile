@@ -34,7 +34,9 @@ mixin _$ClienteDireccion {
   bool get tratada => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClienteDireccion
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ClienteDireccionCopyWith<ClienteDireccion> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -77,6 +79,8 @@ class _$ClienteDireccionCopyWithImpl<$Res, $Val extends ClienteDireccion>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ClienteDireccion
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -170,6 +174,8 @@ class _$ClienteDireccionCopyWithImpl<$Res, $Val extends ClienteDireccion>
     ) as $Val);
   }
 
+  /// Create a copy of ClienteDireccion
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaisCopyWith<$Res>? get pais {
@@ -222,6 +228,8 @@ class __$$ClienteDireccionImplCopyWithImpl<$Res>
       $Res Function(_$ClienteDireccionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ClienteDireccion
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -435,7 +443,9 @@ class _$ClienteDireccionImpl extends _ClienteDireccion {
       tratada,
       deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClienteDireccion
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ClienteDireccionImplCopyWith<_$ClienteDireccionImpl> get copyWith =>
@@ -498,8 +508,11 @@ abstract class _ClienteDireccion extends ClienteDireccion {
   bool get tratada;
   @override
   bool get deleted;
+
+  /// Create a copy of ClienteDireccion
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClienteDireccionImplCopyWith<_$ClienteDireccionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

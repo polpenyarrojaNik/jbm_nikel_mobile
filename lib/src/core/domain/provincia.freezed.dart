@@ -23,7 +23,9 @@ mixin _$Provincia {
   DateTime get lastUpdate => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Provincia
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ProvinciaCopyWith<Provincia> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,6 +54,8 @@ class _$ProvinciaCopyWithImpl<$Res, $Val extends Provincia>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Provincia
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -116,6 +120,8 @@ class __$$ProvinciaImplCopyWithImpl<$Res>
       _$ProvinciaImpl _value, $Res Function(_$ProvinciaImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Provincia
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -206,7 +212,9 @@ class _$ProvinciaImpl extends _Provincia {
   int get hashCode => Object.hash(runtimeType, paisId, regionId, provinciaId,
       provincia, lastUpdate, deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Provincia
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ProvinciaImplCopyWith<_$ProvinciaImpl> get copyWith =>
@@ -235,8 +243,11 @@ abstract class _Provincia extends Provincia {
   DateTime get lastUpdate;
   @override
   bool get deleted;
+
+  /// Create a copy of Provincia
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProvinciaImplCopyWith<_$ProvinciaImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

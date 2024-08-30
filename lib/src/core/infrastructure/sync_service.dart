@@ -10,6 +10,9 @@ import 'package:jbm_nikel_mobile/src/core/infrastructure/log_dto.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/log_repository.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/provincia_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/devoluciones/infrastructure/devolucion_dto.dart';
+import 'package:jbm_nikel_mobile/src/features/visitas/infrastructure/visita_competidor_dto.dart';
+import 'package:jbm_nikel_mobile/src/features/visitas/infrastructure/visita_motivos_no_venta_dto.dart';
+import 'package:jbm_nikel_mobile/src/features/visitas/infrastructure/visita_sector_dto.dart';
 
 import '../../core/infrastructure/pais_dto.dart';
 import '../../core/infrastructure/subfamilia_dto.dart';
@@ -228,8 +231,12 @@ class SyncService {
       await insetLog(level: 'I', message: 'Init visits sync');
 
       await enviarVisitasNoEnviadas();
+
       await syncVisitas();
       await checkVisitasTratadas();
+      await syncVisitasCompetidor();
+      await syncVisitasMotivosNoVenta();
+      await syncVisitasSectores();
       if (isInMainThread) {
         await syncAllAuxiliares();
       }
@@ -737,6 +744,51 @@ class SyncService {
     }
   }
 
+  Future<void> syncVisitasCompetidor() async {
+    try {
+      await _syncTable(
+        apiPath: 'api/v1/sync/visitas/competidores',
+        tableInfo: _remoteDb.visitaCompetidorTable,
+        fromJson: (e) => VisitaCompetidorDTO.fromJson(e),
+      );
+    } on AppException catch (e) {
+      log.e(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncVisitasSectores() async {
+    try {
+      await _syncTable(
+        apiPath: 'api/v1/sync/visitas/sectores',
+        tableInfo: _remoteDb.visitaSectorTable,
+        fromJson: (e) => VisitaSectorDTO.fromJson(e),
+      );
+    } on AppException catch (e) {
+      log.e(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncVisitasMotivosNoVenta() async {
+    try {
+      await _syncTable(
+        apiPath: 'api/v1/sync/visitas/motivos_no_venta',
+        tableInfo: _remoteDb.visitaSectorTable,
+        fromJson: (e) => VisitaMotivoNoVentaDTO.fromJson(e),
+      );
+    } on AppException catch (e) {
+      log.e(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<void> syncPaises() async {
     try {
       await _syncTable(
@@ -1088,12 +1140,12 @@ class SyncService {
           ? Uri.http(
               // dotenv.get('URL', fallback: 'localhost:3001')
               'jbm-api-test.nikel.es:8080',
-              'api/v4/online/visitas',
+              'api/v5/online/visitas',
             )
           : Uri.https(
               // dotenv.get('URL', fallback: 'localhost:3001')
               'jbm-api.nikel.es',
-              'api/v4/online/visitas',
+              'api/v5/online/visitas',
             );
 
       final response = await _dio.postUri(

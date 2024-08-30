@@ -37,7 +37,9 @@ mixin _$ArticuloComponente {
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArticuloComponente
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ArticuloComponenteCopyWith<ArticuloComponente> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -81,6 +83,8 @@ class _$ArticuloComponenteCopyWithImpl<$Res, $Val extends ArticuloComponente>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ArticuloComponente
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -229,6 +233,8 @@ class __$$ArticuloComponenteImplCopyWithImpl<$Res>
       $Res Function(_$ArticuloComponenteImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ArticuloComponente
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -481,7 +487,9 @@ class _$ArticuloComponenteImpl extends _ArticuloComponente {
         deleted
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArticuloComponente
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ArticuloComponenteImplCopyWith<_$ArticuloComponenteImpl> get copyWith =>
@@ -553,8 +561,11 @@ abstract class _ArticuloComponente extends ArticuloComponente {
   DateTime get lastUpdated;
   @override
   bool get deleted;
+
+  /// Create a copy of ArticuloComponente
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ArticuloComponenteImplCopyWith<_$ArticuloComponenteImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

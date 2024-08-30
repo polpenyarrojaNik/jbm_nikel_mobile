@@ -19,7 +19,9 @@ mixin _$TipoPrecioCatalogo {
   String get tipoPrecioCatalogoId => throw _privateConstructorUsedError;
   String get descripcion => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TipoPrecioCatalogo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TipoPrecioCatalogoCopyWith<TipoPrecioCatalogo> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$TipoPrecioCatalogoCopyWithImpl<$Res, $Val extends TipoPrecioCatalogo>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TipoPrecioCatalogo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +85,8 @@ class __$$TipoPrecioCatalogoImplCopyWithImpl<$Res>
       $Res Function(_$TipoPrecioCatalogoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TipoPrecioCatalogo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -132,7 +138,9 @@ class _$TipoPrecioCatalogoImpl extends _TipoPrecioCatalogo {
   int get hashCode =>
       Object.hash(runtimeType, tipoPrecioCatalogoId, descripcion);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TipoPrecioCatalogo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TipoPrecioCatalogoImplCopyWith<_$TipoPrecioCatalogoImpl> get copyWith =>
@@ -150,8 +158,11 @@ abstract class _TipoPrecioCatalogo extends TipoPrecioCatalogo {
   String get tipoPrecioCatalogoId;
   @override
   String get descripcion;
+
+  /// Create a copy of TipoPrecioCatalogo
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TipoPrecioCatalogoImplCopyWith<_$TipoPrecioCatalogoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

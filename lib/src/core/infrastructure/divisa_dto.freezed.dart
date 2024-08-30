@@ -63,8 +63,12 @@ mixin _$DivisaDTO {
   @JsonKey(name: 'DELETED')
   String get deleted => throw _privateConstructorUsedError;
 
+  /// Serializes this DivisaDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DivisaDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DivisaDTOCopyWith<DivisaDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -108,6 +112,8 @@ class _$DivisaDTOCopyWithImpl<$Res, $Val extends DivisaDTO>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DivisaDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -262,6 +268,8 @@ class __$$DivisaDTOImplCopyWithImpl<$Res>
       _$DivisaDTOImpl _value, $Res Function(_$DivisaDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DivisaDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -520,7 +528,7 @@ class _$DivisaDTOImpl extends _DivisaDTO {
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -547,7 +555,9 @@ class _$DivisaDTOImpl extends _DivisaDTO {
         deleted
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DivisaDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DivisaDTOImplCopyWith<_$DivisaDTOImpl> get copyWith =>
@@ -652,8 +662,11 @@ abstract class _DivisaDTO extends DivisaDTO {
   @override
   @JsonKey(name: 'DELETED')
   String get deleted;
+
+  /// Create a copy of DivisaDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DivisaDTOImplCopyWith<_$DivisaDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

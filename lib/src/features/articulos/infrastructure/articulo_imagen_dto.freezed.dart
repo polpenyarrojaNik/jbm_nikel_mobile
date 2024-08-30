@@ -25,8 +25,12 @@ mixin _$ArticuloImagenDTO {
   @JsonKey(name: 'NOMBRE_ARCHIVO')
   String get nombreArchivo => throw _privateConstructorUsedError;
 
+  /// Serializes this ArticuloImagenDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ArticuloImagenDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ArticuloImagenDTOCopyWith<ArticuloImagenDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,6 +56,8 @@ class _$ArticuloImagenDTOCopyWithImpl<$Res, $Val extends ArticuloImagenDTO>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ArticuloImagenDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$ArticuloImagenDTOImplCopyWithImpl<$Res>
       $Res Function(_$ArticuloImagenDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ArticuloImagenDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -145,11 +153,13 @@ class _$ArticuloImagenDTOImpl extends _ArticuloImagenDTO {
                 other.nombreArchivo == nombreArchivo));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, articuloId, nombreArchivo);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArticuloImagenDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ArticuloImagenDTOImplCopyWith<_$ArticuloImagenDTOImpl> get copyWith =>
@@ -180,8 +190,11 @@ abstract class _ArticuloImagenDTO extends ArticuloImagenDTO {
   @override
   @JsonKey(name: 'NOMBRE_ARCHIVO')
   String get nombreArchivo;
+
+  /// Create a copy of ArticuloImagenDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ArticuloImagenDTOImplCopyWith<_$ArticuloImagenDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

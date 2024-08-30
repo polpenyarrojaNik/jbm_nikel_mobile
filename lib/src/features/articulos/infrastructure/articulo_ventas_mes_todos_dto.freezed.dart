@@ -34,8 +34,12 @@ mixin _$ArticuloVentasMesTodosDTO {
   @JsonKey(name: 'UNIDADES_ANYO_TODOS_4')
   int get unidadesAnyoTodos_4 => throw _privateConstructorUsedError;
 
+  /// Serializes this ArticuloVentasMesTodosDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ArticuloVentasMesTodosDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ArticuloVentasMesTodosDTOCopyWith<ArticuloVentasMesTodosDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -66,6 +70,8 @@ class _$ArticuloVentasMesTodosDTOCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ArticuloVentasMesTodosDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -133,6 +139,8 @@ class __$$ArticuloVentasMesTodosDTOImplCopyWithImpl<$Res>
       $Res Function(_$ArticuloVentasMesTodosDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ArticuloVentasMesTodosDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -230,7 +238,7 @@ class _$ArticuloVentasMesTodosDTOImpl extends _ArticuloVentasMesTodosDTO {
                 other.unidadesAnyoTodos_4 == unidadesAnyoTodos_4));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -241,7 +249,9 @@ class _$ArticuloVentasMesTodosDTOImpl extends _ArticuloVentasMesTodosDTO {
       unidadesAnyoTodos_3,
       unidadesAnyoTodos_4);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArticuloVentasMesTodosDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ArticuloVentasMesTodosDTOImplCopyWith<_$ArticuloVentasMesTodosDTOImpl>
@@ -293,8 +303,11 @@ abstract class _ArticuloVentasMesTodosDTO extends ArticuloVentasMesTodosDTO {
   @override
   @JsonKey(name: 'UNIDADES_ANYO_TODOS_4')
   int get unidadesAnyoTodos_4;
+
+  /// Create a copy of ArticuloVentasMesTodosDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ArticuloVentasMesTodosDTOImplCopyWith<_$ArticuloVentasMesTodosDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

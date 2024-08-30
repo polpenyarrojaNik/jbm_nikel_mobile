@@ -34,7 +34,9 @@ mixin _$ArticuloPedidoVentaLinea {
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArticuloPedidoVentaLinea
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ArticuloPedidoVentaLineaCopyWith<ArticuloPedidoVentaLinea> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -76,6 +78,8 @@ class _$ArticuloPedidoVentaLineaCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ArticuloPedidoVentaLinea
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -209,6 +213,8 @@ class __$$ArticuloPedidoVentaLineaImplCopyWithImpl<$Res>
       $Res Function(_$ArticuloPedidoVentaLineaImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ArticuloPedidoVentaLinea
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -426,7 +432,9 @@ class _$ArticuloPedidoVentaLineaImpl extends _ArticuloPedidoVentaLinea {
       lastUpdated,
       deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArticuloPedidoVentaLinea
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ArticuloPedidoVentaLineaImplCopyWith<_$ArticuloPedidoVentaLineaImpl>
@@ -489,8 +497,11 @@ abstract class _ArticuloPedidoVentaLinea extends ArticuloPedidoVentaLinea {
   DateTime get lastUpdated;
   @override
   bool get deleted;
+
+  /// Create a copy of ArticuloPedidoVentaLinea
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ArticuloPedidoVentaLineaImplCopyWith<_$ArticuloPedidoVentaLineaImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

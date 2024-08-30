@@ -59,8 +59,12 @@ mixin _$PaisDTO {
   @JsonKey(name: 'DELETED')
   String get deleted => throw _privateConstructorUsedError;
 
+  /// Serializes this PaisDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaisDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaisDTOCopyWith<PaisDTO> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -101,6 +105,8 @@ class _$PaisDTOCopyWithImpl<$Res, $Val extends PaisDTO>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaisDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -242,6 +248,8 @@ class __$$PaisDTOImplCopyWithImpl<$Res>
       _$PaisDTOImpl _value, $Res Function(_$PaisDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaisDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -479,7 +487,7 @@ class _$PaisDTOImpl extends _PaisDTO {
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -504,7 +512,9 @@ class _$PaisDTOImpl extends _PaisDTO {
         deleted
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaisDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaisDTOImplCopyWith<_$PaisDTOImpl> get copyWith =>
@@ -600,8 +610,11 @@ abstract class _PaisDTO extends PaisDTO {
   @override
   @JsonKey(name: 'DELETED')
   String get deleted;
+
+  /// Create a copy of PaisDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaisDTOImplCopyWith<_$PaisDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

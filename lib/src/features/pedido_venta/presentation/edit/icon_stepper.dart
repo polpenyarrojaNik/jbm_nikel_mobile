@@ -451,23 +451,23 @@ class _IconStepperState extends State<IconStepper>
             child: TextButton(
               onPressed: widget.onStepCancel,
               style: ButtonStyle(
-                foregroundColor: MaterialStateProperty.resolveWith<Color?>(
-                    (Set<MaterialState> states) {
-                  return states.contains(MaterialState.disabled)
+                foregroundColor: WidgetStateProperty.resolveWith<Color?>(
+                    (Set<WidgetState> states) {
+                  return states.contains(WidgetState.disabled)
                       ? null
                       : (_isDark()
                           ? colorScheme.onSurface
                           : colorScheme.onPrimary);
                 }),
-                backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                    (Set<MaterialState> states) {
-                  return states.contains(MaterialState.disabled)
+                backgroundColor: WidgetStateProperty.resolveWith<Color?>(
+                    (Set<WidgetState> states) {
+                  return states.contains(WidgetState.disabled)
                       ? null
                       : _isDark()
                           ? colorScheme.onPrimary
                           : colorScheme.primary;
                 }),
-                shape: MaterialStateProperty.all<OutlinedBorder>(buttonShape),
+                shape: WidgetStateProperty.all<OutlinedBorder>(buttonShape),
               ),
               child: const Icon(Icons.navigate_before),
             ),
@@ -477,23 +477,23 @@ class _IconStepperState extends State<IconStepper>
             child: TextButton(
               onPressed: widget.onStepContinue,
               style: ButtonStyle(
-                foregroundColor: MaterialStateProperty.resolveWith<Color?>(
-                    (Set<MaterialState> states) {
-                  return states.contains(MaterialState.disabled)
+                foregroundColor: WidgetStateProperty.resolveWith<Color?>(
+                    (Set<WidgetState> states) {
+                  return states.contains(WidgetState.disabled)
                       ? null
                       : _isDark()
                           ? colorScheme.onSurface
                           : colorScheme.onPrimary;
                 }),
-                backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                    (Set<MaterialState> states) {
-                  return states.contains(MaterialState.disabled)
+                backgroundColor: WidgetStateProperty.resolveWith<Color?>(
+                    (Set<WidgetState> states) {
+                  return states.contains(WidgetState.disabled)
                       ? null
                       : _isDark()
                           ? colorScheme.onPrimary
                           : colorScheme.primary;
                 }),
-                shape: MaterialStateProperty.all<OutlinedBorder>(buttonShape),
+                shape: WidgetStateProperty.all<OutlinedBorder>(buttonShape),
               ),
               child: (widget.currentStep == widget.steps.length - 1)
                   ? const Icon(

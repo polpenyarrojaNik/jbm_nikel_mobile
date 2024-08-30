@@ -372,5 +372,15 @@
   "cancelar": "Cancel",
   "introduceClaveDeNikel": "Introduce Nikel key",
   "claveNikel": "Nikel key",
-  "noSeHaPodidoSincronizar": "Can not synchronize correctly"
+  "noSeHaPodidoSincronizar": "Can not synchronize correctly",
+  "sector": "Sector",
+  "competencia": "Competitor",
+  "motivoNoInteres": "No interest reason",
+  "motivoNoPedido": "No order reason",
+  "ofertaRealziada": "Offer released",
+  "interesCliente": "Customer interest",
+  "pedidoRealizado": "Order released",
+  "almacenPropio": "Own store",
+  "capacidad": "Capacity",
+  "frecuenciaPedido": "Order frequency"
 }

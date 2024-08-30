@@ -32,7 +32,9 @@ mixin _$EstadisticasUltimosPrecios {
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EstadisticasUltimosPrecios
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EstadisticasUltimosPreciosCopyWith<EstadisticasUltimosPrecios>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -73,6 +75,8 @@ class _$EstadisticasUltimosPreciosCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of EstadisticasUltimosPrecios
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -194,6 +198,8 @@ class __$$EstadisticasUltimosPreciosImplCopyWithImpl<$Res>
       $Res Function(_$EstadisticasUltimosPreciosImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EstadisticasUltimosPrecios
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -388,7 +394,9 @@ class _$EstadisticasUltimosPreciosImpl extends _EstadisticasUltimosPrecios {
       lastUpdated,
       deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EstadisticasUltimosPrecios
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EstadisticasUltimosPreciosImplCopyWith<_$EstadisticasUltimosPreciosImpl>
@@ -445,8 +453,11 @@ abstract class _EstadisticasUltimosPrecios extends EstadisticasUltimosPrecios {
   DateTime get lastUpdated;
   @override
   bool get deleted;
+
+  /// Create a copy of EstadisticasUltimosPrecios
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EstadisticasUltimosPreciosImplCopyWith<_$EstadisticasUltimosPreciosImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

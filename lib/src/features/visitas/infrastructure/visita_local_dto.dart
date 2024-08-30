@@ -1,5 +1,8 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita_competidor.dart';
+import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita_motivos_no_venta.dart';
+import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita_sector.dart';
 
 import '../../../core/domain/pais.dart';
 import '../../../core/domain/provincia.dart';
@@ -44,6 +47,16 @@ class VisitaLocalDTO
     @JsonKey(name: 'ATENDIDO_POR') String? atendidoPor,
     @JsonKey(name: 'RESUMEN') String? resumen,
     @JsonKey(name: 'MARCAS_COMPETENCIA') String? marcasCompetencia,
+    @JsonKey(name: 'OFERTA_REALIZADA') required String ofertaRealizada,
+    @JsonKey(name: 'INTERES_CLIENTE') required String interesCliente,
+    @JsonKey(name: 'PEDIDO_REALIZADO') required String pedidoRealizado,
+    @JsonKey(name: 'CODIGO_MOTIVO_NO_INTERES') int? codigoMotivoNoInteres,
+    @JsonKey(name: 'CODIGO_MOTIVO_NO_PEDIDO') int? codigoMotivoNoPedido,
+    @JsonKey(name: 'CODIGO_SECTOR') int? codigoSector,
+    @JsonKey(name: 'CODIGO_COMPETENCIA') int? codigoCompetencia,
+    @JsonKey(name: 'ALMACEN_PROPIO') required String almacenPropio,
+    @JsonKey(name: 'CAPACIDAD') required String capacidad,
+    @JsonKey(name: 'FRECUENCIA_PEDIDO') required String frecuenciaPedido,
     @JsonKey(name: 'LATITUD') required double latitud,
     @JsonKey(name: 'LONGITUD') required double longitud,
     @JsonKey(name: 'ENVIADA') @Default('N') String enviada,
@@ -76,6 +89,16 @@ class VisitaLocalDTO
       atendidoPor: visita.atendidoPor,
       resumen: visita.resumen,
       marcasCompetencia: visita.marcasCompetencia,
+      ofertaRealizada: visita.ofertaRealizada ? 'S' : 'N',
+      interesCliente: visita.interesCliente ? 'S' : 'N',
+      pedidoRealizado: visita.pedidoRealizado ? 'S' : 'N',
+      codigoMotivoNoInteres: visita.motivoNoInteres?.id,
+      codigoMotivoNoPedido: visita.motivoNoPedido?.id,
+      codigoSector: visita.sector?.id,
+      codigoCompetencia: visita.competencia?.id,
+      almacenPropio: visita.almacenPropio ? 'S' : 'N',
+      capacidad: visita.capacidad,
+      frecuenciaPedido: visita.frecuenciaPedido,
       latitud: visita.latitud,
       longitud: visita.longitud,
       enviada: (visita.enviada) ? 'S' : 'N',
@@ -84,10 +107,15 @@ class VisitaLocalDTO
     );
   }
 
-  Visita toDomain(
-      {required String? nombreCliente,
-      required Pais? pais,
-      required Provincia? provincia}) {
+  Visita toDomain({
+    required String? nombreCliente,
+    required Pais? pais,
+    required Provincia? provincia,
+    required VisitaMotivoNoVenta? motivoNoInteres,
+    required VisitaMotivoNoVenta? motivoNoPedido,
+    required VisitaSector? sector,
+    required VisitaCompetidor? competencia,
+  }) {
     return Visita(
         id: null,
         fecha: fecha,
@@ -109,6 +137,16 @@ class VisitaLocalDTO
         atendidoPor: atendidoPor,
         resumen: resumen,
         marcasCompetencia: marcasCompetencia,
+        ofertaRealizada: ofertaRealizada == 'S',
+        interesCliente: interesCliente == 'S',
+        pedidoRealizado: pedidoRealizado == 'S',
+        motivoNoInteres: motivoNoInteres,
+        motivoNoPedido: motivoNoPedido,
+        sector: sector,
+        competencia: competencia,
+        almacenPropio: almacenPropio == 'S',
+        capacidad: capacidad,
+        frecuenciaPedido: frecuenciaPedido,
         latitud: latitud,
         longitud: longitud,
         visitaAppId: visitaAppId,
@@ -141,6 +179,16 @@ class VisitaLocalDTO
       atendidoPor: Value(atendidoPor),
       resumen: Value(resumen),
       marcasCompetencia: Value(marcasCompetencia),
+      ofertaRealizada: Value(ofertaRealizada),
+      interesCliente: Value(interesCliente),
+      pedidoRealizado: Value(pedidoRealizado),
+      codigoMotivoNoInteres: Value(codigoMotivoNoInteres),
+      codigoMotivoNoPedido: Value(codigoMotivoNoPedido),
+      codigoSector: Value(codigoSector),
+      codigoCompetencia: Value(codigoCompetencia),
+      almacenPropio: Value(almacenPropio),
+      capacidad: Value(capacidad),
+      frecuenciaPedido: Value(frecuenciaPedido),
       latitud: Value(latitud),
       longitud: Value(longitud),
       enviada: Value(enviada),
@@ -188,6 +236,25 @@ class VisitaLocalTable extends Table {
   TextColumn get resumen => text().nullable().named('RESUMEN')();
   TextColumn get marcasCompetencia =>
       text().nullable().named('MARCAS_COMPETENCIA')();
+  TextColumn get ofertaRealizada =>
+      text().withDefault(const Constant('N')).named('OFERTA_REALIZADA')();
+  TextColumn get interesCliente =>
+      text().withDefault(const Constant('N')).named('INTERES_CLIENTE')();
+  TextColumn get pedidoRealizado =>
+      text().withDefault(const Constant('N')).named('PEDIDO_REALIZADO')();
+  IntColumn get codigoMotivoNoInteres =>
+      integer().nullable().named('CODIGO_MOTIVO_NO_INTERES')();
+  IntColumn get codigoMotivoNoPedido =>
+      integer().nullable().named('CODIGO_MOTIVO_NO_PEDIDO')();
+  IntColumn get codigoSector => integer().nullable().named('CODIGO_SECTOR')();
+  IntColumn get codigoCompetencia =>
+      integer().nullable().named('CODIGO_COMPETENCIA')();
+  TextColumn get almacenPropio =>
+      text().withDefault(const Constant('N')).named('ALMACEN_PROPIO')();
+  TextColumn get capacidad =>
+      text().withDefault(const Constant('M')).named('CAPACIDAD')();
+  TextColumn get frecuenciaPedido =>
+      text().withDefault(const Constant('M')).named('FRECUENCIA_PEDIDO')();
   RealColumn get latitud => real().named('LATITUD')();
   RealColumn get longitud => real().named('LONGITUD')();
   TextColumn get enviada =>

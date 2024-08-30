@@ -46,6 +46,26 @@ mixin _$VisitaDTO {
   String? get resumen => throw _privateConstructorUsedError;
   @JsonKey(name: 'MARCAS_COMPETENCIA')
   String? get marcasCompetencia => throw _privateConstructorUsedError;
+  @JsonKey(name: 'OFERTA_REALIZADA')
+  String get ofertaRealizada => throw _privateConstructorUsedError;
+  @JsonKey(name: 'INTERES_CLIENTE')
+  String get interesCliente => throw _privateConstructorUsedError;
+  @JsonKey(name: 'PEDIDO_REALIZADO')
+  String get pedidoRealizado => throw _privateConstructorUsedError;
+  @JsonKey(name: 'CODIGO_MOTIVO_NO_INTERES')
+  int? get codigoMotivoNoInteres => throw _privateConstructorUsedError;
+  @JsonKey(name: 'CODIGO_MOTIVO_NO_PEDIDO')
+  int? get codigoMotivoNoPedido => throw _privateConstructorUsedError;
+  @JsonKey(name: 'CODIGO_SECTOR')
+  int? get codigoSector => throw _privateConstructorUsedError;
+  @JsonKey(name: 'CODIGO_COMPETENCIA')
+  int? get codigoCompetencia => throw _privateConstructorUsedError;
+  @JsonKey(name: 'ALMACEN_PROPIO')
+  String get almacenPropio => throw _privateConstructorUsedError;
+  @JsonKey(name: 'CAPACIDAD')
+  String get capacidad => throw _privateConstructorUsedError;
+  @JsonKey(name: 'FRECUENCIA_PEDIDO')
+  String get frecuenciaPedido => throw _privateConstructorUsedError;
   @JsonKey(name: 'LATITUD')
   double get latitud => throw _privateConstructorUsedError;
   @JsonKey(name: 'LONGITUD')
@@ -57,8 +77,12 @@ mixin _$VisitaDTO {
   @JsonKey(name: 'DELETED')
   String get deleted => throw _privateConstructorUsedError;
 
+  /// Serializes this VisitaDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of VisitaDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $VisitaDTOCopyWith<VisitaDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -85,6 +109,16 @@ abstract class $VisitaDTOCopyWith<$Res> {
       @JsonKey(name: 'ATENDIDO_POR') String? atendidoPor,
       @JsonKey(name: 'RESUMEN') String? resumen,
       @JsonKey(name: 'MARCAS_COMPETENCIA') String? marcasCompetencia,
+      @JsonKey(name: 'OFERTA_REALIZADA') String ofertaRealizada,
+      @JsonKey(name: 'INTERES_CLIENTE') String interesCliente,
+      @JsonKey(name: 'PEDIDO_REALIZADO') String pedidoRealizado,
+      @JsonKey(name: 'CODIGO_MOTIVO_NO_INTERES') int? codigoMotivoNoInteres,
+      @JsonKey(name: 'CODIGO_MOTIVO_NO_PEDIDO') int? codigoMotivoNoPedido,
+      @JsonKey(name: 'CODIGO_SECTOR') int? codigoSector,
+      @JsonKey(name: 'CODIGO_COMPETENCIA') int? codigoCompetencia,
+      @JsonKey(name: 'ALMACEN_PROPIO') String almacenPropio,
+      @JsonKey(name: 'CAPACIDAD') String capacidad,
+      @JsonKey(name: 'FRECUENCIA_PEDIDO') String frecuenciaPedido,
       @JsonKey(name: 'LATITUD') double latitud,
       @JsonKey(name: 'LONGITUD') double longitud,
       @JsonKey(name: 'COD_VISITA_APP') String? visitaAppId,
@@ -102,6 +136,8 @@ class _$VisitaDTOCopyWithImpl<$Res, $Val extends VisitaDTO>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of VisitaDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -118,6 +154,16 @@ class _$VisitaDTOCopyWithImpl<$Res, $Val extends VisitaDTO>
     Object? atendidoPor = freezed,
     Object? resumen = freezed,
     Object? marcasCompetencia = freezed,
+    Object? ofertaRealizada = null,
+    Object? interesCliente = null,
+    Object? pedidoRealizado = null,
+    Object? codigoMotivoNoInteres = freezed,
+    Object? codigoMotivoNoPedido = freezed,
+    Object? codigoSector = freezed,
+    Object? codigoCompetencia = freezed,
+    Object? almacenPropio = null,
+    Object? capacidad = null,
+    Object? frecuenciaPedido = null,
     Object? latitud = null,
     Object? longitud = null,
     Object? visitaAppId = freezed,
@@ -177,6 +223,46 @@ class _$VisitaDTOCopyWithImpl<$Res, $Val extends VisitaDTO>
           ? _value.marcasCompetencia
           : marcasCompetencia // ignore: cast_nullable_to_non_nullable
               as String?,
+      ofertaRealizada: null == ofertaRealizada
+          ? _value.ofertaRealizada
+          : ofertaRealizada // ignore: cast_nullable_to_non_nullable
+              as String,
+      interesCliente: null == interesCliente
+          ? _value.interesCliente
+          : interesCliente // ignore: cast_nullable_to_non_nullable
+              as String,
+      pedidoRealizado: null == pedidoRealizado
+          ? _value.pedidoRealizado
+          : pedidoRealizado // ignore: cast_nullable_to_non_nullable
+              as String,
+      codigoMotivoNoInteres: freezed == codigoMotivoNoInteres
+          ? _value.codigoMotivoNoInteres
+          : codigoMotivoNoInteres // ignore: cast_nullable_to_non_nullable
+              as int?,
+      codigoMotivoNoPedido: freezed == codigoMotivoNoPedido
+          ? _value.codigoMotivoNoPedido
+          : codigoMotivoNoPedido // ignore: cast_nullable_to_non_nullable
+              as int?,
+      codigoSector: freezed == codigoSector
+          ? _value.codigoSector
+          : codigoSector // ignore: cast_nullable_to_non_nullable
+              as int?,
+      codigoCompetencia: freezed == codigoCompetencia
+          ? _value.codigoCompetencia
+          : codigoCompetencia // ignore: cast_nullable_to_non_nullable
+              as int?,
+      almacenPropio: null == almacenPropio
+          ? _value.almacenPropio
+          : almacenPropio // ignore: cast_nullable_to_non_nullable
+              as String,
+      capacidad: null == capacidad
+          ? _value.capacidad
+          : capacidad // ignore: cast_nullable_to_non_nullable
+              as String,
+      frecuenciaPedido: null == frecuenciaPedido
+          ? _value.frecuenciaPedido
+          : frecuenciaPedido // ignore: cast_nullable_to_non_nullable
+              as String,
       latitud: null == latitud
           ? _value.latitud
           : latitud // ignore: cast_nullable_to_non_nullable
@@ -226,6 +312,16 @@ abstract class _$$VisitaDTOImplCopyWith<$Res>
       @JsonKey(name: 'ATENDIDO_POR') String? atendidoPor,
       @JsonKey(name: 'RESUMEN') String? resumen,
       @JsonKey(name: 'MARCAS_COMPETENCIA') String? marcasCompetencia,
+      @JsonKey(name: 'OFERTA_REALIZADA') String ofertaRealizada,
+      @JsonKey(name: 'INTERES_CLIENTE') String interesCliente,
+      @JsonKey(name: 'PEDIDO_REALIZADO') String pedidoRealizado,
+      @JsonKey(name: 'CODIGO_MOTIVO_NO_INTERES') int? codigoMotivoNoInteres,
+      @JsonKey(name: 'CODIGO_MOTIVO_NO_PEDIDO') int? codigoMotivoNoPedido,
+      @JsonKey(name: 'CODIGO_SECTOR') int? codigoSector,
+      @JsonKey(name: 'CODIGO_COMPETENCIA') int? codigoCompetencia,
+      @JsonKey(name: 'ALMACEN_PROPIO') String almacenPropio,
+      @JsonKey(name: 'CAPACIDAD') String capacidad,
+      @JsonKey(name: 'FRECUENCIA_PEDIDO') String frecuenciaPedido,
       @JsonKey(name: 'LATITUD') double latitud,
       @JsonKey(name: 'LONGITUD') double longitud,
       @JsonKey(name: 'COD_VISITA_APP') String? visitaAppId,
@@ -241,6 +337,8 @@ class __$$VisitaDTOImplCopyWithImpl<$Res>
       _$VisitaDTOImpl _value, $Res Function(_$VisitaDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of VisitaDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -257,6 +355,16 @@ class __$$VisitaDTOImplCopyWithImpl<$Res>
     Object? atendidoPor = freezed,
     Object? resumen = freezed,
     Object? marcasCompetencia = freezed,
+    Object? ofertaRealizada = null,
+    Object? interesCliente = null,
+    Object? pedidoRealizado = null,
+    Object? codigoMotivoNoInteres = freezed,
+    Object? codigoMotivoNoPedido = freezed,
+    Object? codigoSector = freezed,
+    Object? codigoCompetencia = freezed,
+    Object? almacenPropio = null,
+    Object? capacidad = null,
+    Object? frecuenciaPedido = null,
     Object? latitud = null,
     Object? longitud = null,
     Object? visitaAppId = freezed,
@@ -316,6 +424,46 @@ class __$$VisitaDTOImplCopyWithImpl<$Res>
           ? _value.marcasCompetencia
           : marcasCompetencia // ignore: cast_nullable_to_non_nullable
               as String?,
+      ofertaRealizada: null == ofertaRealizada
+          ? _value.ofertaRealizada
+          : ofertaRealizada // ignore: cast_nullable_to_non_nullable
+              as String,
+      interesCliente: null == interesCliente
+          ? _value.interesCliente
+          : interesCliente // ignore: cast_nullable_to_non_nullable
+              as String,
+      pedidoRealizado: null == pedidoRealizado
+          ? _value.pedidoRealizado
+          : pedidoRealizado // ignore: cast_nullable_to_non_nullable
+              as String,
+      codigoMotivoNoInteres: freezed == codigoMotivoNoInteres
+          ? _value.codigoMotivoNoInteres
+          : codigoMotivoNoInteres // ignore: cast_nullable_to_non_nullable
+              as int?,
+      codigoMotivoNoPedido: freezed == codigoMotivoNoPedido
+          ? _value.codigoMotivoNoPedido
+          : codigoMotivoNoPedido // ignore: cast_nullable_to_non_nullable
+              as int?,
+      codigoSector: freezed == codigoSector
+          ? _value.codigoSector
+          : codigoSector // ignore: cast_nullable_to_non_nullable
+              as int?,
+      codigoCompetencia: freezed == codigoCompetencia
+          ? _value.codigoCompetencia
+          : codigoCompetencia // ignore: cast_nullable_to_non_nullable
+              as int?,
+      almacenPropio: null == almacenPropio
+          ? _value.almacenPropio
+          : almacenPropio // ignore: cast_nullable_to_non_nullable
+              as String,
+      capacidad: null == capacidad
+          ? _value.capacidad
+          : capacidad // ignore: cast_nullable_to_non_nullable
+              as String,
+      frecuenciaPedido: null == frecuenciaPedido
+          ? _value.frecuenciaPedido
+          : frecuenciaPedido // ignore: cast_nullable_to_non_nullable
+              as String,
       latitud: null == latitud
           ? _value.latitud
           : latitud // ignore: cast_nullable_to_non_nullable
@@ -359,6 +507,16 @@ class _$VisitaDTOImpl extends _VisitaDTO {
       @JsonKey(name: 'ATENDIDO_POR') this.atendidoPor,
       @JsonKey(name: 'RESUMEN') this.resumen,
       @JsonKey(name: 'MARCAS_COMPETENCIA') this.marcasCompetencia,
+      @JsonKey(name: 'OFERTA_REALIZADA') required this.ofertaRealizada,
+      @JsonKey(name: 'INTERES_CLIENTE') required this.interesCliente,
+      @JsonKey(name: 'PEDIDO_REALIZADO') required this.pedidoRealizado,
+      @JsonKey(name: 'CODIGO_MOTIVO_NO_INTERES') this.codigoMotivoNoInteres,
+      @JsonKey(name: 'CODIGO_MOTIVO_NO_PEDIDO') this.codigoMotivoNoPedido,
+      @JsonKey(name: 'CODIGO_SECTOR') this.codigoSector,
+      @JsonKey(name: 'CODIGO_COMPETENCIA') this.codigoCompetencia,
+      @JsonKey(name: 'ALMACEN_PROPIO') required this.almacenPropio,
+      @JsonKey(name: 'CAPACIDAD') required this.capacidad,
+      @JsonKey(name: 'FRECUENCIA_PEDIDO') required this.frecuenciaPedido,
       @JsonKey(name: 'LATITUD') required this.latitud,
       @JsonKey(name: 'LONGITUD') required this.longitud,
       @JsonKey(name: 'COD_VISITA_APP') this.visitaAppId,
@@ -409,6 +567,36 @@ class _$VisitaDTOImpl extends _VisitaDTO {
   @JsonKey(name: 'MARCAS_COMPETENCIA')
   final String? marcasCompetencia;
   @override
+  @JsonKey(name: 'OFERTA_REALIZADA')
+  final String ofertaRealizada;
+  @override
+  @JsonKey(name: 'INTERES_CLIENTE')
+  final String interesCliente;
+  @override
+  @JsonKey(name: 'PEDIDO_REALIZADO')
+  final String pedidoRealizado;
+  @override
+  @JsonKey(name: 'CODIGO_MOTIVO_NO_INTERES')
+  final int? codigoMotivoNoInteres;
+  @override
+  @JsonKey(name: 'CODIGO_MOTIVO_NO_PEDIDO')
+  final int? codigoMotivoNoPedido;
+  @override
+  @JsonKey(name: 'CODIGO_SECTOR')
+  final int? codigoSector;
+  @override
+  @JsonKey(name: 'CODIGO_COMPETENCIA')
+  final int? codigoCompetencia;
+  @override
+  @JsonKey(name: 'ALMACEN_PROPIO')
+  final String almacenPropio;
+  @override
+  @JsonKey(name: 'CAPACIDAD')
+  final String capacidad;
+  @override
+  @JsonKey(name: 'FRECUENCIA_PEDIDO')
+  final String frecuenciaPedido;
+  @override
   @JsonKey(name: 'LATITUD')
   final double latitud;
   @override
@@ -426,7 +614,7 @@ class _$VisitaDTOImpl extends _VisitaDTO {
 
   @override
   String toString() {
-    return 'VisitaDTO(id: $id, fecha: $fecha, clienteId: $clienteId, isClienteProvisional: $isClienteProvisional, clienteProvisionalNombre: $clienteProvisionalNombre, clienteProvisionalEmail: $clienteProvisionalEmail, clienteProvisionalTelefono: $clienteProvisionalTelefono, clienteProvisionalPoblacion: $clienteProvisionalPoblacion, numEmpl: $numEmpl, contacto: $contacto, atendidoPor: $atendidoPor, resumen: $resumen, marcasCompetencia: $marcasCompetencia, latitud: $latitud, longitud: $longitud, visitaAppId: $visitaAppId, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'VisitaDTO(id: $id, fecha: $fecha, clienteId: $clienteId, isClienteProvisional: $isClienteProvisional, clienteProvisionalNombre: $clienteProvisionalNombre, clienteProvisionalEmail: $clienteProvisionalEmail, clienteProvisionalTelefono: $clienteProvisionalTelefono, clienteProvisionalPoblacion: $clienteProvisionalPoblacion, numEmpl: $numEmpl, contacto: $contacto, atendidoPor: $atendidoPor, resumen: $resumen, marcasCompetencia: $marcasCompetencia, ofertaRealizada: $ofertaRealizada, interesCliente: $interesCliente, pedidoRealizado: $pedidoRealizado, codigoMotivoNoInteres: $codigoMotivoNoInteres, codigoMotivoNoPedido: $codigoMotivoNoPedido, codigoSector: $codigoSector, codigoCompetencia: $codigoCompetencia, almacenPropio: $almacenPropio, capacidad: $capacidad, frecuenciaPedido: $frecuenciaPedido, latitud: $latitud, longitud: $longitud, visitaAppId: $visitaAppId, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -440,18 +628,14 @@ class _$VisitaDTOImpl extends _VisitaDTO {
                 other.clienteId == clienteId) &&
             (identical(other.isClienteProvisional, isClienteProvisional) ||
                 other.isClienteProvisional == isClienteProvisional) &&
-            (identical(
-                    other.clienteProvisionalNombre, clienteProvisionalNombre) ||
+            (identical(other.clienteProvisionalNombre, clienteProvisionalNombre) ||
                 other.clienteProvisionalNombre == clienteProvisionalNombre) &&
-            (identical(
-                    other.clienteProvisionalEmail, clienteProvisionalEmail) ||
+            (identical(other.clienteProvisionalEmail, clienteProvisionalEmail) ||
                 other.clienteProvisionalEmail == clienteProvisionalEmail) &&
-            (identical(other.clienteProvisionalTelefono,
-                    clienteProvisionalTelefono) ||
+            (identical(other.clienteProvisionalTelefono, clienteProvisionalTelefono) ||
                 other.clienteProvisionalTelefono ==
                     clienteProvisionalTelefono) &&
-            (identical(other.clienteProvisionalPoblacion,
-                    clienteProvisionalPoblacion) ||
+            (identical(other.clienteProvisionalPoblacion, clienteProvisionalPoblacion) ||
                 other.clienteProvisionalPoblacion ==
                     clienteProvisionalPoblacion) &&
             (identical(other.numEmpl, numEmpl) || other.numEmpl == numEmpl) &&
@@ -462,40 +646,70 @@ class _$VisitaDTOImpl extends _VisitaDTO {
             (identical(other.resumen, resumen) || other.resumen == resumen) &&
             (identical(other.marcasCompetencia, marcasCompetencia) ||
                 other.marcasCompetencia == marcasCompetencia) &&
+            (identical(other.ofertaRealizada, ofertaRealizada) ||
+                other.ofertaRealizada == ofertaRealizada) &&
+            (identical(other.interesCliente, interesCliente) ||
+                other.interesCliente == interesCliente) &&
+            (identical(other.pedidoRealizado, pedidoRealizado) ||
+                other.pedidoRealizado == pedidoRealizado) &&
+            (identical(other.codigoMotivoNoInteres, codigoMotivoNoInteres) ||
+                other.codigoMotivoNoInteres == codigoMotivoNoInteres) &&
+            (identical(other.codigoMotivoNoPedido, codigoMotivoNoPedido) ||
+                other.codigoMotivoNoPedido == codigoMotivoNoPedido) &&
+            (identical(other.codigoSector, codigoSector) ||
+                other.codigoSector == codigoSector) &&
+            (identical(other.codigoCompetencia, codigoCompetencia) ||
+                other.codigoCompetencia == codigoCompetencia) &&
+            (identical(other.almacenPropio, almacenPropio) ||
+                other.almacenPropio == almacenPropio) &&
+            (identical(other.capacidad, capacidad) ||
+                other.capacidad == capacidad) &&
+            (identical(other.frecuenciaPedido, frecuenciaPedido) ||
+                other.frecuenciaPedido == frecuenciaPedido) &&
             (identical(other.latitud, latitud) || other.latitud == latitud) &&
-            (identical(other.longitud, longitud) ||
-                other.longitud == longitud) &&
-            (identical(other.visitaAppId, visitaAppId) ||
-                other.visitaAppId == visitaAppId) &&
-            (identical(other.lastUpdated, lastUpdated) ||
-                other.lastUpdated == lastUpdated) &&
+            (identical(other.longitud, longitud) || other.longitud == longitud) &&
+            (identical(other.visitaAppId, visitaAppId) || other.visitaAppId == visitaAppId) &&
+            (identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated) &&
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      fecha,
-      clienteId,
-      isClienteProvisional,
-      clienteProvisionalNombre,
-      clienteProvisionalEmail,
-      clienteProvisionalTelefono,
-      clienteProvisionalPoblacion,
-      numEmpl,
-      contacto,
-      atendidoPor,
-      resumen,
-      marcasCompetencia,
-      latitud,
-      longitud,
-      visitaAppId,
-      lastUpdated,
-      deleted);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        id,
+        fecha,
+        clienteId,
+        isClienteProvisional,
+        clienteProvisionalNombre,
+        clienteProvisionalEmail,
+        clienteProvisionalTelefono,
+        clienteProvisionalPoblacion,
+        numEmpl,
+        contacto,
+        atendidoPor,
+        resumen,
+        marcasCompetencia,
+        ofertaRealizada,
+        interesCliente,
+        pedidoRealizado,
+        codigoMotivoNoInteres,
+        codigoMotivoNoPedido,
+        codigoSector,
+        codigoCompetencia,
+        almacenPropio,
+        capacidad,
+        frecuenciaPedido,
+        latitud,
+        longitud,
+        visitaAppId,
+        lastUpdated,
+        deleted
+      ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VisitaDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$VisitaDTOImplCopyWith<_$VisitaDTOImpl> get copyWith =>
@@ -529,6 +743,18 @@ abstract class _VisitaDTO extends VisitaDTO {
       @JsonKey(name: 'ATENDIDO_POR') final String? atendidoPor,
       @JsonKey(name: 'RESUMEN') final String? resumen,
       @JsonKey(name: 'MARCAS_COMPETENCIA') final String? marcasCompetencia,
+      @JsonKey(name: 'OFERTA_REALIZADA') required final String ofertaRealizada,
+      @JsonKey(name: 'INTERES_CLIENTE') required final String interesCliente,
+      @JsonKey(name: 'PEDIDO_REALIZADO') required final String pedidoRealizado,
+      @JsonKey(name: 'CODIGO_MOTIVO_NO_INTERES')
+      final int? codigoMotivoNoInteres,
+      @JsonKey(name: 'CODIGO_MOTIVO_NO_PEDIDO') final int? codigoMotivoNoPedido,
+      @JsonKey(name: 'CODIGO_SECTOR') final int? codigoSector,
+      @JsonKey(name: 'CODIGO_COMPETENCIA') final int? codigoCompetencia,
+      @JsonKey(name: 'ALMACEN_PROPIO') required final String almacenPropio,
+      @JsonKey(name: 'CAPACIDAD') required final String capacidad,
+      @JsonKey(name: 'FRECUENCIA_PEDIDO')
+      required final String frecuenciaPedido,
       @JsonKey(name: 'LATITUD') required final double latitud,
       @JsonKey(name: 'LONGITUD') required final double longitud,
       @JsonKey(name: 'COD_VISITA_APP') final String? visitaAppId,
@@ -579,6 +805,36 @@ abstract class _VisitaDTO extends VisitaDTO {
   @JsonKey(name: 'MARCAS_COMPETENCIA')
   String? get marcasCompetencia;
   @override
+  @JsonKey(name: 'OFERTA_REALIZADA')
+  String get ofertaRealizada;
+  @override
+  @JsonKey(name: 'INTERES_CLIENTE')
+  String get interesCliente;
+  @override
+  @JsonKey(name: 'PEDIDO_REALIZADO')
+  String get pedidoRealizado;
+  @override
+  @JsonKey(name: 'CODIGO_MOTIVO_NO_INTERES')
+  int? get codigoMotivoNoInteres;
+  @override
+  @JsonKey(name: 'CODIGO_MOTIVO_NO_PEDIDO')
+  int? get codigoMotivoNoPedido;
+  @override
+  @JsonKey(name: 'CODIGO_SECTOR')
+  int? get codigoSector;
+  @override
+  @JsonKey(name: 'CODIGO_COMPETENCIA')
+  int? get codigoCompetencia;
+  @override
+  @JsonKey(name: 'ALMACEN_PROPIO')
+  String get almacenPropio;
+  @override
+  @JsonKey(name: 'CAPACIDAD')
+  String get capacidad;
+  @override
+  @JsonKey(name: 'FRECUENCIA_PEDIDO')
+  String get frecuenciaPedido;
+  @override
   @JsonKey(name: 'LATITUD')
   double get latitud;
   @override
@@ -593,8 +849,11 @@ abstract class _VisitaDTO extends VisitaDTO {
   @override
   @JsonKey(name: 'DELETED')
   String get deleted;
+
+  /// Create a copy of VisitaDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$VisitaDTOImplCopyWith<_$VisitaDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

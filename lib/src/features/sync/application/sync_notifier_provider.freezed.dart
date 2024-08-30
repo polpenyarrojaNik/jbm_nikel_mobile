@@ -84,6 +84,9 @@ class _$SyncControllerStateCopyWithImpl<$Res, $Val extends SyncControllerState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SyncControllerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -100,6 +103,9 @@ class __$$initialImplCopyWithImpl<$Res>
   __$$initialImplCopyWithImpl(
       _$initialImpl _value, $Res Function(_$initialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SyncControllerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -221,6 +227,9 @@ class __$$shinchronizingImplCopyWithImpl<$Res>
   __$$shinchronizingImplCopyWithImpl(
       _$shinchronizingImpl _value, $Res Function(_$shinchronizingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SyncControllerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -344,6 +353,9 @@ class __$$synchronizedImplCopyWithImpl<$Res>
   __$$synchronizedImplCopyWithImpl(
       _$synchronizedImpl _value, $Res Function(_$synchronizedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SyncControllerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -469,6 +481,8 @@ class __$$errorImplCopyWithImpl<$Res>
       _$errorImpl _value, $Res Function(_$errorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SyncControllerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -523,7 +537,9 @@ class _$errorImpl extends _error with DiagnosticableTreeMixin {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(error), stackTrace);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SyncControllerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$errorImplCopyWith<_$errorImpl> get copyWith =>
@@ -611,7 +627,10 @@ abstract class _error extends SyncControllerState {
 
   Object get error;
   StackTrace? get stackTrace;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SyncControllerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$errorImplCopyWith<_$errorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

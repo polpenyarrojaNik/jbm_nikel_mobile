@@ -23,7 +23,9 @@ mixin _$ArticuloRecambio {
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArticuloRecambio
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ArticuloRecambioCopyWith<ArticuloRecambio> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -53,6 +55,8 @@ class _$ArticuloRecambioCopyWithImpl<$Res, $Val extends ArticuloRecambio>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ArticuloRecambio
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -117,6 +121,8 @@ class __$$ArticuloRecambioImplCopyWithImpl<$Res>
       $Res Function(_$ArticuloRecambioImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ArticuloRecambio
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -207,7 +213,9 @@ class _$ArticuloRecambioImpl extends _ArticuloRecambio {
   int get hashCode => Object.hash(
       runtimeType, articuloId, id, descripcion, cantidad, lastUpdated, deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArticuloRecambio
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ArticuloRecambioImplCopyWith<_$ArticuloRecambioImpl> get copyWith =>
@@ -237,8 +245,11 @@ abstract class _ArticuloRecambio extends ArticuloRecambio {
   DateTime get lastUpdated;
   @override
   bool get deleted;
+
+  /// Create a copy of ArticuloRecambio
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ArticuloRecambioImplCopyWith<_$ArticuloRecambioImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

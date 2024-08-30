@@ -33,8 +33,12 @@ mixin _$ArticuloVentasMesDTO {
   @JsonKey(name: 'UNIDADES_ANYO_4')
   int get unidadesAnyo_4 => throw _privateConstructorUsedError;
 
+  /// Serializes this ArticuloVentasMesDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ArticuloVentasMesDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ArticuloVentasMesDTOCopyWith<ArticuloVentasMesDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -65,6 +69,8 @@ class _$ArticuloVentasMesDTOCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ArticuloVentasMesDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -129,6 +135,8 @@ class __$$ArticuloVentasMesDTOImplCopyWithImpl<$Res>
       $Res Function(_$ArticuloVentasMesDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ArticuloVentasMesDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -225,12 +233,14 @@ class _$ArticuloVentasMesDTOImpl extends _ArticuloVentasMesDTO {
                 other.unidadesAnyo_4 == unidadesAnyo_4));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, mes, unidadesAnyo,
       unidadesAnyo_1, unidadesAnyo_2, unidadesAnyo_3, unidadesAnyo_4);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArticuloVentasMesDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ArticuloVentasMesDTOImplCopyWith<_$ArticuloVentasMesDTOImpl>
@@ -278,8 +288,11 @@ abstract class _ArticuloVentasMesDTO extends ArticuloVentasMesDTO {
   @override
   @JsonKey(name: 'UNIDADES_ANYO_4')
   int get unidadesAnyo_4;
+
+  /// Create a copy of ArticuloVentasMesDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ArticuloVentasMesDTOImplCopyWith<_$ArticuloVentasMesDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

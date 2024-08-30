@@ -31,8 +31,12 @@ mixin _$ArticuloTopDTO {
   @JsonKey(name: 'DIVISA_ID')
   String get divisaId => throw _privateConstructorUsedError;
 
+  /// Serializes this ArticuloTopDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ArticuloTopDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ArticuloTopDTOCopyWith<ArticuloTopDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -61,6 +65,8 @@ class _$ArticuloTopDTOCopyWithImpl<$Res, $Val extends ArticuloTopDTO>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ArticuloTopDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -119,6 +125,8 @@ class __$$ArticuloTopDTOImplCopyWithImpl<$Res>
       _$ArticuloTopDTOImpl _value, $Res Function(_$ArticuloTopDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ArticuloTopDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -205,12 +213,14 @@ class _$ArticuloTopDTOImpl extends _ArticuloTopDTO {
                 other.divisaId == divisaId));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, articuloId, descripcion,
       ventasTotal, ventasCliente, divisaId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArticuloTopDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ArticuloTopDTOImplCopyWith<_$ArticuloTopDTOImpl> get copyWith =>
@@ -253,8 +263,11 @@ abstract class _ArticuloTopDTO extends ArticuloTopDTO {
   @override
   @JsonKey(name: 'DIVISA_ID')
   String get divisaId;
+
+  /// Create a copy of ArticuloTopDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ArticuloTopDTOImplCopyWith<_$ArticuloTopDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

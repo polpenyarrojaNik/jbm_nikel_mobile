@@ -21,7 +21,9 @@ mixin _$DefaultListParams {
   bool? get searchPotenciales => throw _privateConstructorUsedError;
   String? get entityId => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DefaultListParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DefaultListParamsCopyWith<DefaultListParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -46,6 +48,8 @@ class _$DefaultListParamsCopyWithImpl<$Res, $Val extends DefaultListParams>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DefaultListParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -95,6 +99,8 @@ class __$$DefaultListParamsImplCopyWithImpl<$Res>
       $Res Function(_$DefaultListParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DefaultListParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -166,7 +172,9 @@ class _$DefaultListParamsImpl extends _DefaultListParams {
   int get hashCode =>
       Object.hash(runtimeType, page, searchText, searchPotenciales, entityId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DefaultListParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DefaultListParamsImplCopyWith<_$DefaultListParamsImpl> get copyWith =>
@@ -190,8 +198,11 @@ abstract class _DefaultListParams extends DefaultListParams {
   bool? get searchPotenciales;
   @override
   String? get entityId;
+
+  /// Create a copy of DefaultListParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DefaultListParamsImplCopyWith<_$DefaultListParamsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

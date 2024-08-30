@@ -22,7 +22,9 @@ mixin _$Notificacion {
   bool get leidoSN => throw _privateConstructorUsedError;
   String get mensaje => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Notificacion
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NotificacionCopyWith<Notificacion> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +53,8 @@ class _$NotificacionCopyWithImpl<$Res, $Val extends Notificacion>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Notificacion
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -109,6 +113,8 @@ class __$$NotificacionImplCopyWithImpl<$Res>
       _$NotificacionImpl _value, $Res Function(_$NotificacionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Notificacion
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -188,7 +194,9 @@ class _$NotificacionImpl extends _Notificacion {
   int get hashCode => Object.hash(
       runtimeType, notificationId, fecha, usuarioId, leidoSN, mensaje);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Notificacion
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NotificacionImplCopyWith<_$NotificacionImpl> get copyWith =>
@@ -214,8 +222,11 @@ abstract class _Notificacion extends Notificacion {
   bool get leidoSN;
   @override
   String get mensaje;
+
+  /// Create a copy of Notificacion
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NotificacionImplCopyWith<_$NotificacionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

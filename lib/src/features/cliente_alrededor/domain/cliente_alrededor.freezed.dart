@@ -34,7 +34,9 @@ mixin _$ClienteAlrededor {
   String? get nombreRepresentante1 => throw _privateConstructorUsedError;
   String? get nombreRepresentante2 => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClienteAlrededor
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ClienteAlrededorCopyWith<ClienteAlrededor> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -77,6 +79,8 @@ class _$ClienteAlrededorCopyWithImpl<$Res, $Val extends ClienteAlrededor>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ClienteAlrededor
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -170,6 +174,8 @@ class _$ClienteAlrededorCopyWithImpl<$Res, $Val extends ClienteAlrededor>
     ) as $Val);
   }
 
+  /// Create a copy of ClienteAlrededor
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaisCopyWith<$Res>? get pais {
@@ -222,6 +228,8 @@ class __$$ClienteAlrededorImplCopyWithImpl<$Res>
       $Res Function(_$ClienteAlrededorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ClienteAlrededor
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -438,7 +446,9 @@ class _$ClienteAlrededorImpl extends _ClienteAlrededor {
       nombreRepresentante1,
       nombreRepresentante2);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClienteAlrededor
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ClienteAlrededorImplCopyWith<_$ClienteAlrededorImpl> get copyWith =>
@@ -501,8 +511,11 @@ abstract class _ClienteAlrededor extends ClienteAlrededor {
   String? get nombreRepresentante1;
   @override
   String? get nombreRepresentante2;
+
+  /// Create a copy of ClienteAlrededor
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClienteAlrededorImplCopyWith<_$ClienteAlrededorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

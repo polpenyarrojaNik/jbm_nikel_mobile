@@ -40,8 +40,12 @@ mixin _$ArticuloPrecioTarifaDTO {
   @JsonKey(name: 'DELETED')
   String get deleted => throw _privateConstructorUsedError;
 
+  /// Serializes this ArticuloPrecioTarifaDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ArticuloPrecioTarifaDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ArticuloPrecioTarifaDTOCopyWith<ArticuloPrecioTarifaDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -75,6 +79,8 @@ class _$ArticuloPrecioTarifaDTOCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ArticuloPrecioTarifaDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -160,6 +166,8 @@ class __$$ArticuloPrecioTarifaDTOImplCopyWithImpl<$Res>
       $Res Function(_$ArticuloPrecioTarifaDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ArticuloPrecioTarifaDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -288,7 +296,7 @@ class _$ArticuloPrecioTarifaDTOImpl extends _ArticuloPrecioTarifaDTO {
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -302,7 +310,9 @@ class _$ArticuloPrecioTarifaDTOImpl extends _ArticuloPrecioTarifaDTO {
       lastUpdated,
       deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArticuloPrecioTarifaDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ArticuloPrecioTarifaDTOImplCopyWith<_$ArticuloPrecioTarifaDTOImpl>
@@ -361,8 +371,11 @@ abstract class _ArticuloPrecioTarifaDTO extends ArticuloPrecioTarifaDTO {
   @override
   @JsonKey(name: 'DELETED')
   String get deleted;
+
+  /// Create a copy of ArticuloPrecioTarifaDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ArticuloPrecioTarifaDTOImplCopyWith<_$ArticuloPrecioTarifaDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

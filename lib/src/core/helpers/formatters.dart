@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:jbm_nikel_mobile/src/core/domain/pais.dart';
@@ -433,4 +434,8 @@ bool isSameName(Cliente cliente) {
     return true;
   }
   return false;
+}
+
+T getFormValue<T>(GlobalKey<FormBuilderState> formKey, String fieldName) {
+  return formKey.currentState?.value[fieldName] as T;
 }

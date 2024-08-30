@@ -25,7 +25,9 @@ mixin _$PedidoLocalParam {
   PedidoVentaLinea? get addLineaDesdeArticulo =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PedidoLocalParam
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PedidoLocalParamCopyWith<PedidoLocalParam> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -58,6 +60,8 @@ class _$PedidoLocalParamCopyWithImpl<$Res, $Val extends PedidoLocalParam>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PedidoLocalParam
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -101,6 +105,8 @@ class _$PedidoLocalParamCopyWithImpl<$Res, $Val extends PedidoLocalParam>
     ) as $Val);
   }
 
+  /// Create a copy of PedidoLocalParam
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PedidoVentaLineaCopyWith<$Res>? get addLineaDesdeArticulo {
@@ -144,6 +150,8 @@ class __$$PedidoLocalParamImplCopyWithImpl<$Res>
       $Res Function(_$PedidoLocalParamImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PedidoLocalParam
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -245,7 +253,9 @@ class _$PedidoLocalParamImpl extends _PedidoLocalParam {
   int get hashCode => Object.hash(runtimeType, pedidoAppId, pedidoId, empresaId,
       isEdit, tratada, createPedidoFromClienteId, addLineaDesdeArticulo);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PedidoLocalParam
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PedidoLocalParamImplCopyWith<_$PedidoLocalParamImpl> get copyWith =>
@@ -278,8 +288,11 @@ abstract class _PedidoLocalParam extends PedidoLocalParam {
   String? get createPedidoFromClienteId;
   @override
   PedidoVentaLinea? get addLineaDesdeArticulo;
+
+  /// Create a copy of PedidoLocalParam
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PedidoLocalParamImplCopyWith<_$PedidoLocalParamImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

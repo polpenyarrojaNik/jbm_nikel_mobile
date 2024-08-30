@@ -21,7 +21,9 @@ mixin _$VisitaIdIsLocalParam {
   bool get isNew => throw _privateConstructorUsedError;
   String? get createVisitaFromClienteId => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VisitaIdIsLocalParam
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $VisitaIdIsLocalParamCopyWith<VisitaIdIsLocalParam> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -47,6 +49,8 @@ class _$VisitaIdIsLocalParamCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of VisitaIdIsLocalParam
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -96,6 +100,8 @@ class __$$VisitaIdIsLocalParamImplCopyWithImpl<$Res>
       $Res Function(_$VisitaIdIsLocalParamImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of VisitaIdIsLocalParam
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -166,7 +172,9 @@ class _$VisitaIdIsLocalParamImpl extends _VisitaIdIsLocalParam {
   int get hashCode =>
       Object.hash(runtimeType, id, isLocal, isNew, createVisitaFromClienteId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VisitaIdIsLocalParam
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$VisitaIdIsLocalParamImplCopyWith<_$VisitaIdIsLocalParamImpl>
@@ -191,8 +199,11 @@ abstract class _VisitaIdIsLocalParam extends VisitaIdIsLocalParam {
   bool get isNew;
   @override
   String? get createVisitaFromClienteId;
+
+  /// Create a copy of VisitaIdIsLocalParam
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$VisitaIdIsLocalParamImplCopyWith<_$VisitaIdIsLocalParamImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

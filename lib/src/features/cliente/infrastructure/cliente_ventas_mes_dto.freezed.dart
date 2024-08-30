@@ -33,8 +33,12 @@ mixin _$ClienteVentasMesDTO {
   @JsonKey(name: 'IMPORTE_ANYO_4')
   double get importeAnyo_4 => throw _privateConstructorUsedError;
 
+  /// Serializes this ClienteVentasMesDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ClienteVentasMesDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ClienteVentasMesDTOCopyWith<ClienteVentasMesDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -64,6 +68,8 @@ class _$ClienteVentasMesDTOCopyWithImpl<$Res, $Val extends ClienteVentasMesDTO>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ClienteVentasMesDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -128,6 +134,8 @@ class __$$ClienteVentasMesDTOImplCopyWithImpl<$Res>
       $Res Function(_$ClienteVentasMesDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ClienteVentasMesDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -224,12 +232,14 @@ class _$ClienteVentasMesDTOImpl extends _ClienteVentasMesDTO {
                 other.importeAnyo_4 == importeAnyo_4));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, mes, importeAnyo, importeAnyo_1,
       importeAnyo_2, importeAnyo_3, importeAnyo_4);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClienteVentasMesDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ClienteVentasMesDTOImplCopyWith<_$ClienteVentasMesDTOImpl> get copyWith =>
@@ -276,8 +286,11 @@ abstract class _ClienteVentasMesDTO extends ClienteVentasMesDTO {
   @override
   @JsonKey(name: 'IMPORTE_ANYO_4')
   double get importeAnyo_4;
+
+  /// Create a copy of ClienteVentasMesDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClienteVentasMesDTOImplCopyWith<_$ClienteVentasMesDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

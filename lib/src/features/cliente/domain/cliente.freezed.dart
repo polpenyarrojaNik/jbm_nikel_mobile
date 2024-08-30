@@ -83,7 +83,9 @@ mixin _$Cliente {
   DateTime? get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Cliente
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ClienteCopyWith<Cliente> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -175,6 +177,8 @@ class _$ClienteCopyWithImpl<$Res, $Val extends Cliente>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Cliente
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -493,6 +497,8 @@ class _$ClienteCopyWithImpl<$Res, $Val extends Cliente>
     ) as $Val);
   }
 
+  /// Create a copy of Cliente
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaisCopyWith<$Res>? get paisFiscal {
@@ -505,6 +511,8 @@ class _$ClienteCopyWithImpl<$Res, $Val extends Cliente>
     });
   }
 
+  /// Create a copy of Cliente
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaisCopyWith<$Res>? get paisPredeterminada {
@@ -517,6 +525,8 @@ class _$ClienteCopyWithImpl<$Res, $Val extends Cliente>
     });
   }
 
+  /// Create a copy of Cliente
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DivisaCopyWith<$Res>? get divisa {
@@ -529,6 +539,8 @@ class _$ClienteCopyWithImpl<$Res, $Val extends Cliente>
     });
   }
 
+  /// Create a copy of Cliente
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PlazoDeCobroCopyWith<$Res>? get plazoDeCobro {
@@ -541,6 +553,8 @@ class _$ClienteCopyWithImpl<$Res, $Val extends Cliente>
     });
   }
 
+  /// Create a copy of Cliente
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $MetodoDeCobroCopyWith<$Res>? get metodoDeCobro {
@@ -553,6 +567,8 @@ class _$ClienteCopyWithImpl<$Res, $Val extends Cliente>
     });
   }
 
+  /// Create a copy of Cliente
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ClienteEstadoPotencialCopyWith<$Res>? get clienteEstadoPotencial {
@@ -566,6 +582,8 @@ class _$ClienteCopyWithImpl<$Res, $Val extends Cliente>
     });
   }
 
+  /// Create a copy of Cliente
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ClienteTipoPotencialCopyWith<$Res>? get clienteTipoPotencial {
@@ -675,6 +693,8 @@ class __$$ClienteImplCopyWithImpl<$Res>
       _$ClienteImpl _value, $Res Function(_$ClienteImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Cliente
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1356,7 +1376,9 @@ class _$ClienteImpl extends _Cliente {
         deleted
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Cliente
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ClienteImplCopyWith<_$ClienteImpl> get copyWith =>
@@ -1553,8 +1575,11 @@ abstract class _Cliente extends Cliente {
   DateTime? get lastUpdated;
   @override
   bool get deleted;
+
+  /// Create a copy of Cliente
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClienteImplCopyWith<_$ClienteImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aceptar": MessageLookupByLibrary.simpleMessage("Accept"),
+        "almacenPropio": MessageLookupByLibrary.simpleMessage("Own store"),
         "articulo": MessageLookupByLibrary.simpleMessage("Article"),
         "articulo_index_buscarArticulos":
             MessageLookupByLibrary.simpleMessage("Search articles..."),
@@ -143,6 +144,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Welcome to"),
         "auth_loginPage_usuario": MessageLookupByLibrary.simpleMessage("User"),
         "cancelar": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "capacidad": MessageLookupByLibrary.simpleMessage("Capacity"),
         "catalogos_index_buscarCatalogo":
             MessageLookupByLibrary.simpleMessage("Search catalogs..."),
         "catalogos_index_catalogoAdjunto_abriendoArchivo":
@@ -469,14 +471,23 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Last sync"),
         "commonWidgets_visitDialogue_saving":
             MessageLookupByLibrary.simpleMessage("Saving..."),
+        "competencia": MessageLookupByLibrary.simpleMessage("Competitor"),
         "estasSeguroQueQuieresReemplazarLaBaseDeDatos":
             MessageLookupByLibrary.simpleMessage(
                 "Are you sure you want to replace the database? You will lose the data stored locally."),
         "familia": MessageLookupByLibrary.simpleMessage("Family"),
+        "frecuenciaPedido":
+            MessageLookupByLibrary.simpleMessage("Order frequency"),
         "haOcurridoUnError":
             MessageLookupByLibrary.simpleMessage("An error occurred"),
+        "interesCliente":
+            MessageLookupByLibrary.simpleMessage("Customer interest"),
         "introduceClaveDeNikel":
             MessageLookupByLibrary.simpleMessage("Introduce Nikel key"),
+        "motivoNoInteres":
+            MessageLookupByLibrary.simpleMessage("No interest reason"),
+        "motivoNoPedido":
+            MessageLookupByLibrary.simpleMessage("No order reason"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
         "noSeHaPodidoSincronizar": MessageLookupByLibrary.simpleMessage(
             "Can not synchronize correctly"),
@@ -484,8 +495,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "notification_detail":
             MessageLookupByLibrary.simpleMessage("Notification detail"),
         "notifications": MessageLookupByLibrary.simpleMessage(" Notifications"),
+        "ofertaRealziada":
+            MessageLookupByLibrary.simpleMessage("Offer released"),
         "paises_search_title":
             MessageLookupByLibrary.simpleMessage("Search country..."),
+        "pedidoRealizado":
+            MessageLookupByLibrary.simpleMessage("Order released"),
         "pedido_borrador": MessageLookupByLibrary.simpleMessage("Draft"),
         "pedido_edit_askPopAlertDialog_seguroQuieresSales":
             MessageLookupByLibrary.simpleMessage(
@@ -633,6 +648,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "The price cannot be less than the minimum price"),
         "search": MessageLookupByLibrary.simpleMessage("Search..."),
+        "sector": MessageLookupByLibrary.simpleMessage("Sector"),
         "settings_cerrar_sesion":
             MessageLookupByLibrary.simpleMessage("Sign out"),
         "settings_creandoArchivo":

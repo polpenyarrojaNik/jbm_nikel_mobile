@@ -85,6 +85,9 @@ class _$CrearCsvControllerStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CrearCsvControllerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -101,6 +104,9 @@ class __$$loadingImplCopyWithImpl<$Res>
   __$$loadingImplCopyWithImpl(
       _$loadingImpl _value, $Res Function(_$loadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CrearCsvControllerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -216,6 +222,9 @@ class __$$initialImplCopyWithImpl<$Res>
   __$$initialImplCopyWithImpl(
       _$initialImpl _value, $Res Function(_$initialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CrearCsvControllerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -334,6 +343,8 @@ class __$$errorImplCopyWithImpl<$Res>
       _$errorImpl _value, $Res Function(_$errorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CrearCsvControllerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -379,7 +390,9 @@ class _$errorImpl extends _error {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(error), stackTrace);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CrearCsvControllerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$errorImplCopyWith<_$errorImpl> get copyWith =>
@@ -467,7 +480,10 @@ abstract class _error extends CrearCsvControllerState {
 
   Object get error;
   StackTrace? get stackTrace;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CrearCsvControllerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$errorImplCopyWith<_$errorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -488,6 +504,8 @@ class __$$dataImplCopyWithImpl<$Res>
   __$$dataImplCopyWithImpl(_$dataImpl _value, $Res Function(_$dataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CrearCsvControllerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -526,7 +544,9 @@ class _$dataImpl extends _data {
   @override
   int get hashCode => Object.hash(runtimeType, csvFile);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CrearCsvControllerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$dataImplCopyWith<_$dataImpl> get copyWith =>
@@ -612,7 +632,10 @@ abstract class _data extends CrearCsvControllerState {
   const _data._() : super._();
 
   File get csvFile;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CrearCsvControllerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$dataImplCopyWith<_$dataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

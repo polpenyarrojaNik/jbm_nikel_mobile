@@ -21,7 +21,9 @@ mixin _$Familia {
   DateTime get lastUpdate => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Familia
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FamiliaCopyWith<Familia> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -43,6 +45,8 @@ class _$FamiliaCopyWithImpl<$Res, $Val extends Familia>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Familia
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -90,6 +94,8 @@ class __$$FamiliaImplCopyWithImpl<$Res>
       _$FamiliaImpl _value, $Res Function(_$FamiliaImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Familia
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -160,7 +166,9 @@ class _$FamiliaImpl extends _Familia {
   int get hashCode =>
       Object.hash(runtimeType, id, descripcion, lastUpdate, deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Familia
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FamiliaImplCopyWith<_$FamiliaImpl> get copyWith =>
@@ -183,8 +191,11 @@ abstract class _Familia extends Familia {
   DateTime get lastUpdate;
   @override
   bool get deleted;
+
+  /// Create a copy of Familia
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FamiliaImplCopyWith<_$FamiliaImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

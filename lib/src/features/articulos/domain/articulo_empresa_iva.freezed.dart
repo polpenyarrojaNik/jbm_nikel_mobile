@@ -22,7 +22,9 @@ mixin _$ArticuloEmpresaIva {
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArticuloEmpresaIva
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ArticuloEmpresaIvaCopyWith<ArticuloEmpresaIva> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +53,8 @@ class _$ArticuloEmpresaIvaCopyWithImpl<$Res, $Val extends ArticuloEmpresaIva>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ArticuloEmpresaIva
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -109,6 +113,8 @@ class __$$ArticuloEmpresaIvaImplCopyWithImpl<$Res>
       $Res Function(_$ArticuloEmpresaIvaImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ArticuloEmpresaIva
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -189,7 +195,9 @@ class _$ArticuloEmpresaIvaImpl extends _ArticuloEmpresaIva {
   int get hashCode => Object.hash(
       runtimeType, articuloId, empresaId, iva, lastUpdated, deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArticuloEmpresaIva
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ArticuloEmpresaIvaImplCopyWith<_$ArticuloEmpresaIvaImpl> get copyWith =>
@@ -216,8 +224,11 @@ abstract class _ArticuloEmpresaIva extends ArticuloEmpresaIva {
   DateTime get lastUpdated;
   @override
   bool get deleted;
+
+  /// Create a copy of ArticuloEmpresaIva
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ArticuloEmpresaIvaImplCopyWith<_$ArticuloEmpresaIvaImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

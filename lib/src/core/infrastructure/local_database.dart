@@ -66,7 +66,7 @@ class LocalAppDatabase extends _$LocalAppDatabase {
       : test = true,
         super(NativeDatabase.memory());
   @override
-  int get schemaVersion => 7;
+  int get schemaVersion => 8;
 
   @override
   MigrationStrategy get migration {
@@ -103,6 +103,28 @@ class LocalAppDatabase extends _$LocalAppDatabase {
                 pedidoVentaLineaLocalTable.pedidoLineaIdComponente,
               ],
             ),
+          );
+        } else if (to == 8) {
+          await m.alterTable(
+            TableMigration(visitaLocalTable, newColumns: [
+              visitaLocalTable.ofertaRealizada,
+              visitaLocalTable.interesCliente,
+              visitaLocalTable.pedidoRealizado,
+              visitaLocalTable.codigoMotivoNoInteres,
+              visitaLocalTable.codigoMotivoNoPedido,
+              visitaLocalTable.codigoSector,
+              visitaLocalTable.codigoCompetencia,
+              visitaLocalTable.almacenPropio,
+              visitaLocalTable.capacidad,
+              visitaLocalTable.frecuenciaPedido,
+            ], columnTransformer: {
+              visitaLocalTable.ofertaRealizada: const Constant('N'),
+              visitaLocalTable.interesCliente: const Constant('N'),
+              visitaLocalTable.pedidoRealizado: const Constant('N'),
+              visitaLocalTable.almacenPropio: const Constant('N'),
+              visitaLocalTable.capacidad: const Constant('M'),
+              visitaLocalTable.frecuenciaPedido: const Constant('M'),
+            }),
           );
         }
       }),

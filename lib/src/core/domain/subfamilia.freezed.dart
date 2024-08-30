@@ -22,7 +22,9 @@ mixin _$Subfamilia {
   DateTime get lastUpdate => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Subfamilia
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SubfamiliaCopyWith<Subfamilia> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +53,8 @@ class _$SubfamiliaCopyWithImpl<$Res, $Val extends Subfamilia>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Subfamilia
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -109,6 +113,8 @@ class __$$SubfamiliaImplCopyWithImpl<$Res>
       _$SubfamiliaImpl _value, $Res Function(_$SubfamiliaImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Subfamilia
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -189,7 +195,9 @@ class _$SubfamiliaImpl extends _Subfamilia {
   int get hashCode =>
       Object.hash(runtimeType, id, familiaId, descripcion, lastUpdate, deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Subfamilia
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SubfamiliaImplCopyWith<_$SubfamiliaImpl> get copyWith =>
@@ -215,8 +223,11 @@ abstract class _Subfamilia extends Subfamilia {
   DateTime get lastUpdate;
   @override
   bool get deleted;
+
+  /// Create a copy of Subfamilia
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SubfamiliaImplCopyWith<_$SubfamiliaImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -35,7 +35,9 @@ mixin _$PlazoDeCobro {
   DateTime get lastUpdate => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlazoDeCobro
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PlazoDeCobroCopyWith<PlazoDeCobro> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -77,6 +79,8 @@ class _$PlazoDeCobroCopyWithImpl<$Res, $Val extends PlazoDeCobro>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PlazoDeCobro
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -213,6 +217,8 @@ class __$$PlazoDeCobroImplCopyWithImpl<$Res>
       _$PlazoDeCobroImpl _value, $Res Function(_$PlazoDeCobroImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PlazoDeCobro
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -441,7 +447,9 @@ class _$PlazoDeCobroImpl extends _PlazoDeCobro {
       lastUpdate,
       deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlazoDeCobro
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PlazoDeCobroImplCopyWith<_$PlazoDeCobroImpl> get copyWith =>
@@ -506,8 +514,11 @@ abstract class _PlazoDeCobro extends PlazoDeCobro {
   DateTime get lastUpdate;
   @override
   bool get deleted;
+
+  /// Create a copy of PlazoDeCobro
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PlazoDeCobroImplCopyWith<_$PlazoDeCobroImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

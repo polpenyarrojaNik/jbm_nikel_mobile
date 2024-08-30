@@ -45,8 +45,12 @@ mixin _$LogDTO {
   @JsonKey(name: 'TIMESTAMP')
   DateTime get timestamp => throw _privateConstructorUsedError;
 
+  /// Serializes this LogDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LogDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LogDTOCopyWith<LogDTO> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -80,6 +84,8 @@ class _$LogDTOCopyWithImpl<$Res, $Val extends LogDTO>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of LogDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -179,6 +185,8 @@ class __$$LogDTOImplCopyWithImpl<$Res>
       _$LogDTOImpl _value, $Res Function(_$LogDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LogDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -335,12 +343,14 @@ class _$LogDTOImpl extends _LogDTO {
                 other.timestamp == timestamp));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, level, message, error, appId,
       appBuild, appBuildName, device, userId, userEmail, userName, timestamp);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LogDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LogDTOImplCopyWith<_$LogDTOImpl> get copyWith =>
@@ -409,8 +419,11 @@ abstract class _LogDTO extends LogDTO {
   @override
   @JsonKey(name: 'TIMESTAMP')
   DateTime get timestamp;
+
+  /// Create a copy of LogDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LogDTOImplCopyWith<_$LogDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

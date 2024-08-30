@@ -3,6 +3,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita.dart';
 
+import '../domain/visita_competidor.dart';
+import '../domain/visita_motivos_no_venta.dart';
+import '../domain/visita_sector.dart';
+
 part 'visita_dto.freezed.dart';
 part 'visita_dto.g.dart';
 
@@ -27,6 +31,16 @@ class VisitaDTO with _$VisitaDTO implements Insertable<VisitaDTO> {
     @JsonKey(name: 'ATENDIDO_POR') String? atendidoPor,
     @JsonKey(name: 'RESUMEN') String? resumen,
     @JsonKey(name: 'MARCAS_COMPETENCIA') String? marcasCompetencia,
+    @JsonKey(name: 'OFERTA_REALIZADA') required String ofertaRealizada,
+    @JsonKey(name: 'INTERES_CLIENTE') required String interesCliente,
+    @JsonKey(name: 'PEDIDO_REALIZADO') required String pedidoRealizado,
+    @JsonKey(name: 'CODIGO_MOTIVO_NO_INTERES') int? codigoMotivoNoInteres,
+    @JsonKey(name: 'CODIGO_MOTIVO_NO_PEDIDO') int? codigoMotivoNoPedido,
+    @JsonKey(name: 'CODIGO_SECTOR') int? codigoSector,
+    @JsonKey(name: 'CODIGO_COMPETENCIA') int? codigoCompetencia,
+    @JsonKey(name: 'ALMACEN_PROPIO') required String almacenPropio,
+    @JsonKey(name: 'CAPACIDAD') required String capacidad,
+    @JsonKey(name: 'FRECUENCIA_PEDIDO') required String frecuenciaPedido,
     @JsonKey(name: 'LATITUD') required double latitud,
     @JsonKey(name: 'LONGITUD') required double longitud,
     @JsonKey(name: 'COD_VISITA_APP') String? visitaAppId,
@@ -39,6 +53,10 @@ class VisitaDTO with _$VisitaDTO implements Insertable<VisitaDTO> {
 
   Visita toDomain({
     required String? nombreCliente,
+    required VisitaMotivoNoVenta? motivoNoInteres,
+    required VisitaMotivoNoVenta? motivoNoPedido,
+    required VisitaSector? sector,
+    required VisitaCompetidor? competencia,
     bool? enviada = true,
     bool? tratada = true,
   }) {
@@ -57,6 +75,16 @@ class VisitaDTO with _$VisitaDTO implements Insertable<VisitaDTO> {
       atendidoPor: atendidoPor,
       resumen: resumen,
       marcasCompetencia: marcasCompetencia,
+      ofertaRealizada: ofertaRealizada == 'S',
+      interesCliente: interesCliente == 'S',
+      pedidoRealizado: pedidoRealizado == 'S',
+      motivoNoInteres: motivoNoInteres,
+      motivoNoPedido: motivoNoPedido,
+      sector: sector,
+      competencia: competencia,
+      almacenPropio: almacenPropio == 'S',
+      capacidad: capacidad,
+      frecuenciaPedido: frecuenciaPedido,
       latitud: latitud,
       longitud: longitud,
       lastUpdated: lastUpdated,
@@ -83,6 +111,16 @@ class VisitaDTO with _$VisitaDTO implements Insertable<VisitaDTO> {
       atendidoPor: Value(atendidoPor),
       resumen: Value(resumen),
       marcasCompetencia: Value(marcasCompetencia),
+      ofertaRealizada: Value(ofertaRealizada),
+      interesCliente: Value(interesCliente),
+      pedidoRealizado: Value(pedidoRealizado),
+      codigoMotivoNoInteres: Value(codigoMotivoNoInteres),
+      codigoMotivoNoPedido: Value(codigoMotivoNoPedido),
+      codigoSector: Value(codigoSector),
+      codigoCompetencia: Value(codigoCompetencia),
+      almacenPropio: Value(almacenPropio),
+      capacidad: Value(capacidad),
+      frecuenciaPedido: Value(frecuenciaPedido),
       latitud: Value(latitud),
       longitud: Value(longitud),
       visitaAppId: Value(visitaAppId),
@@ -118,6 +156,19 @@ class VisitaTable extends Table {
   TextColumn get resumen => text().nullable().named('RESUMEN')();
   TextColumn get marcasCompetencia =>
       text().nullable().named('MARCAS_COMPETENCIA')();
+  TextColumn get ofertaRealizada => text().named('OFERTA_REALIZADA')();
+  TextColumn get interesCliente => text().named('INTERES_CLIENTE')();
+  TextColumn get pedidoRealizado => text().named('PEDIDO_REALIZADO')();
+  IntColumn get codigoMotivoNoInteres =>
+      integer().nullable().named('CODIGO_MOTIVO_NO_INTERES')();
+  IntColumn get codigoMotivoNoPedido =>
+      integer().nullable().named('CODIGO_MOTIVO_NO_PEDIDO')();
+  IntColumn get codigoSector => integer().nullable().named('CODIGO_SECTOR')();
+  IntColumn get codigoCompetencia =>
+      integer().nullable().named('CODIGO_COMPETENCIA')();
+  TextColumn get almacenPropio => text().named('ALMACEN_PROPIO')();
+  TextColumn get capacidad => text().named('CAPACIDAD')();
+  TextColumn get frecuenciaPedido => text().named('FRECUENCIA_PEDIDO')();
   RealColumn get latitud => real().named('LATITUD')();
   RealColumn get longitud => real().named('LONGITUD')();
   TextColumn get visitaAppId => text().nullable().named('COD_VISITA_APP')();

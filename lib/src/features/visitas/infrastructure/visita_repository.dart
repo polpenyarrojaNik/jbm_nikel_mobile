@@ -13,6 +13,9 @@ import 'package:jbm_nikel_mobile/src/core/infrastructure/provincia_dto.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/dio_extension.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
+import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita_competidor.dart';
+import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita_motivos_no_venta.dart';
+import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita_sector.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/infrastructure/visita_local_dto.dart';
 
 import '../../../core/exceptions/app_exception.dart';
@@ -198,11 +201,11 @@ class VisitaRepository {
       final requestUri = (test)
           ? Uri.http(
               dotenv.get('URL', fallback: 'localhost:3001'),
-              'api/v4/online/visitas',
+              'api/v5/online/visitas',
             )
           : Uri.https(
               dotenv.get('URL', fallback: 'localhost:3001'),
-              'api/v4/online/visitas',
+              'api/v5/online/visitas',
             );
 
       final response = await _dio.postUri(
@@ -334,10 +337,38 @@ class VisitaRepository {
                     .equalsNullable(visitaLocalDTO.clienteProvisionalPaisId)))
               .getSingleOrNull();
 
+          final motivoNoInteresDTO =
+              await (_remoteDb.select(_remoteDb.visitaMotivoNoVentaTable)
+                    ..where((tbl) => tbl.id
+                        .equalsNullable(visitaLocalDTO.codigoMotivoNoInteres)))
+                  .getSingleOrNull();
+
+          final motivoNoPedidoDTO = await (_remoteDb
+                  .select(_remoteDb.visitaMotivoNoVentaTable)
+                ..where((tbl) =>
+                    tbl.id.equalsNullable(visitaLocalDTO.codigoMotivoNoPedido)))
+              .getSingleOrNull();
+
+          final visitaSectorDTO =
+              await (_remoteDb.select(_remoteDb.visitaSectorTable)
+                    ..where((tbl) =>
+                        tbl.id.equalsNullable(visitaLocalDTO.codigoSector)))
+                  .getSingleOrNull();
+
+          final visitaCompetenciaDTO = await (_remoteDb
+                  .select(_remoteDb.visitaCompetidorTable)
+                ..where((tbl) =>
+                    tbl.id.equalsNullable(visitaLocalDTO.codigoCompetencia)))
+              .getSingleOrNull();
+
           visitaLocalList.add(visitaLocalDTO.toDomain(
             nombreCliente: clienteDTO?.nombreCliente,
             provincia: provinciaDTO?.toDomain(),
             pais: paisDTO?.toDomain(),
+            motivoNoInteres: motivoNoInteresDTO?.toDomain(),
+            motivoNoPedido: motivoNoPedidoDTO?.toDomain(),
+            sector: visitaSectorDTO?.toDomain(),
+            competencia: visitaCompetenciaDTO?.toDomain(),
           ));
         }
       }
@@ -494,15 +525,21 @@ class VisitaRepository {
 
     query.limit(pageSize, offset: page * pageSize);
 
-    query.orderBy([
-      OrderingTerm.desc(_remoteDb.visitaTable.fecha),
-    ]);
+    // query.orderBy([
+    //   OrderingTerm.desc(_remoteDb.visitaTable.fecha),
+    // ]);
 
     return query.asyncMap((row) async {
       final clienteDTO = row.readTableOrNull(_remoteDb.clienteTable);
 
       final visitaDTO = row.readTable(_remoteDb.visitaTable);
-      return visitaDTO.toDomain(nombreCliente: clienteDTO?.nombreCliente);
+      return visitaDTO.toDomain(
+        nombreCliente: clienteDTO?.nombreCliente,
+        motivoNoInteres: null,
+        motivoNoPedido: null,
+        sector: null,
+        competencia: null,
+      );
     }).get();
   }
 
@@ -578,7 +615,24 @@ class VisitaRepository {
       leftOuterJoin(
         _remoteDb.clienteTable,
         _remoteDb.clienteTable.id.equalsExp(_remoteDb.visitaTable.clienteId),
-      )
+      ),
+      leftOuterJoin(
+        _remoteDb.visitaCompetidorTable,
+        _remoteDb.visitaCompetidorTable.id
+            .equalsExp(_remoteDb.visitaTable.codigoCompetencia),
+      ),
+      leftOuterJoin(
+        _remoteDb.visitaSectorTable,
+        _remoteDb.visitaSectorTable.id
+            .equalsExp(_remoteDb.visitaTable.codigoSector),
+      ),
+      leftOuterJoin(
+        _remoteDb.visitaMotivoNoVentaTable,
+        _remoteDb.visitaMotivoNoVentaTable.id
+                .equalsExp(_remoteDb.visitaTable.codigoMotivoNoPedido) |
+            _remoteDb.visitaMotivoNoVentaTable.id
+                .equalsExp(_remoteDb.visitaTable.codigoMotivoNoInteres),
+      ),
     ]);
     query.where(_remoteDb.visitaTable.id.equals(visitaId));
 
@@ -586,7 +640,13 @@ class VisitaRepository {
       final clienteDTO = row.readTableOrNull(_remoteDb.clienteTable);
 
       final visitaDTO = row.readTable(_remoteDb.visitaTable);
-      return visitaDTO.toDomain(nombreCliente: clienteDTO?.nombreCliente);
+      return visitaDTO.toDomain(
+        nombreCliente: clienteDTO?.nombreCliente,
+        motivoNoInteres: null,
+        motivoNoPedido: null,
+        sector: null,
+        competencia: null,
+      );
     }).getSingle();
   }
 
@@ -609,10 +669,35 @@ class VisitaRepository {
               tbl.id.equalsNullable(visitaDTO.clienteProvisionalPaisId)))
         .getSingleOrNull();
 
+    final motivoNoInteresDTO = await (_remoteDb
+            .select(_remoteDb.visitaMotivoNoVentaTable)
+          ..where(
+              (tbl) => tbl.id.equalsNullable(visitaDTO.codigoMotivoNoInteres)))
+        .getSingleOrNull();
+
+    final motivoNoPedidoDTO = await (_remoteDb
+            .select(_remoteDb.visitaMotivoNoVentaTable)
+          ..where(
+              (tbl) => tbl.id.equalsNullable(visitaDTO.codigoMotivoNoPedido)))
+        .getSingleOrNull();
+
+    final visitaSectorDTO = await (_remoteDb.select(_remoteDb.visitaSectorTable)
+          ..where((tbl) => tbl.id.equalsNullable(visitaDTO.codigoSector)))
+        .getSingleOrNull();
+
+    final visitaCompetenciaDTO = await (_remoteDb
+            .select(_remoteDb.visitaCompetidorTable)
+          ..where((tbl) => tbl.id.equalsNullable(visitaDTO.codigoCompetencia)))
+        .getSingleOrNull();
+
     return visitaDTO.toDomain(
       nombreCliente: clienteDTO?.nombreCliente,
       provincia: provinciaDTO?.toDomain(),
       pais: paisDTO?.toDomain(),
+      motivoNoInteres: motivoNoInteresDTO?.toDomain(),
+      motivoNoPedido: motivoNoPedidoDTO?.toDomain(),
+      sector: visitaSectorDTO?.toDomain(),
+      competencia: visitaCompetenciaDTO?.toDomain(),
     );
   }
 
@@ -761,5 +846,26 @@ class VisitaRepository {
             .go();
       }
     }
+  }
+
+  Future<List<VisitaSector>> getVisitaSectores() async {
+    final visitaSectoresDTOList =
+        await (_remoteDb.select(_remoteDb.visitaSectorTable)).get();
+
+    return visitaSectoresDTOList.map((e) => e.toDomain()).toList();
+  }
+
+  Future<List<VisitaCompetidor>> getVisitaCompetidores() async {
+    final visitaCompetidoresDTOList =
+        await (_remoteDb.select(_remoteDb.visitaCompetidorTable)).get();
+
+    return visitaCompetidoresDTOList.map((e) => e.toDomain()).toList();
+  }
+
+  Future<List<VisitaMotivoNoVenta>> getVisitaMotivosNoVenta() async {
+    final visitaMotivosNoVentaDTOList =
+        await (_remoteDb.select(_remoteDb.visitaMotivoNoVentaTable)).get();
+
+    return visitaMotivosNoVentaDTOList.map((e) => e.toDomain()).toList();
   }
 }

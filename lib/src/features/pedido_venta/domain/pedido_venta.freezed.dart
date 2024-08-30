@@ -53,7 +53,9 @@ mixin _$PedidoVenta {
   bool get borrador => throw _privateConstructorUsedError;
   String? get errorSyncMessage => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PedidoVenta
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PedidoVentaCopyWith<PedidoVenta> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -116,6 +118,8 @@ class _$PedidoVentaCopyWithImpl<$Res, $Val extends PedidoVenta>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PedidoVenta
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -299,6 +303,8 @@ class _$PedidoVentaCopyWithImpl<$Res, $Val extends PedidoVenta>
     ) as $Val);
   }
 
+  /// Create a copy of PedidoVenta
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaisCopyWith<$Res>? get pais {
@@ -311,6 +317,8 @@ class _$PedidoVentaCopyWithImpl<$Res, $Val extends PedidoVenta>
     });
   }
 
+  /// Create a copy of PedidoVenta
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DivisaCopyWith<$Res> get divisa {
@@ -319,6 +327,8 @@ class _$PedidoVentaCopyWithImpl<$Res, $Val extends PedidoVenta>
     });
   }
 
+  /// Create a copy of PedidoVenta
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PedidoVentaEstadoCopyWith<$Res>? get pedidoVentaEstado {
@@ -393,6 +403,8 @@ class __$$PedidoVentaImplCopyWithImpl<$Res>
       _$PedidoVentaImpl _value, $Res Function(_$PedidoVentaImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PedidoVenta
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -803,7 +815,9 @@ class _$PedidoVentaImpl extends _PedidoVenta {
         errorSyncMessage
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PedidoVenta
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PedidoVentaImplCopyWith<_$PedidoVentaImpl> get copyWith =>
@@ -919,8 +933,11 @@ abstract class _PedidoVenta extends PedidoVenta {
   bool get borrador;
   @override
   String? get errorSyncMessage;
+
+  /// Create a copy of PedidoVenta
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PedidoVentaImplCopyWith<_$PedidoVentaImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

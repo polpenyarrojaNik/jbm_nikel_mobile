@@ -33,8 +33,12 @@ mixin _$ProvinciaDTO {
   @JsonKey(name: 'DELETED')
   String get deleted => throw _privateConstructorUsedError;
 
+  /// Serializes this ProvinciaDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ProvinciaDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ProvinciaDTOCopyWith<ProvinciaDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -64,6 +68,8 @@ class _$ProvinciaDTOCopyWithImpl<$Res, $Val extends ProvinciaDTO>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ProvinciaDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -128,6 +134,8 @@ class __$$ProvinciaDTOImplCopyWithImpl<$Res>
       _$ProvinciaDTOImpl _value, $Res Function(_$ProvinciaDTOImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProvinciaDTO
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -223,12 +231,14 @@ class _$ProvinciaDTOImpl extends _ProvinciaDTO {
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, paisId, regionId, provinciaId,
       provincia, lastUpdated, deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProvinciaDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ProvinciaDTOImplCopyWith<_$ProvinciaDTOImpl> get copyWith =>
@@ -273,8 +283,11 @@ abstract class _ProvinciaDTO extends ProvinciaDTO {
   @override
   @JsonKey(name: 'DELETED')
   String get deleted;
+
+  /// Create a copy of ProvinciaDTO
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProvinciaDTOImplCopyWith<_$ProvinciaDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

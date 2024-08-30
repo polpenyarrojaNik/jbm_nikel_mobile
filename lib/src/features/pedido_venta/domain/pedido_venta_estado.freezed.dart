@@ -21,7 +21,9 @@ mixin _$PedidoVentaEstado {
   DateTime get lastUpdate => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PedidoVentaEstado
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PedidoVentaEstadoCopyWith<PedidoVentaEstado> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -45,6 +47,8 @@ class _$PedidoVentaEstadoCopyWithImpl<$Res, $Val extends PedidoVentaEstado>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PedidoVentaEstado
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -93,6 +97,8 @@ class __$$PedidoVentaEstadoImplCopyWithImpl<$Res>
       $Res Function(_$PedidoVentaEstadoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PedidoVentaEstado
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -163,7 +169,9 @@ class _$PedidoVentaEstadoImpl extends _PedidoVentaEstado {
   int get hashCode =>
       Object.hash(runtimeType, id, descripcion, lastUpdate, deleted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PedidoVentaEstado
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PedidoVentaEstadoImplCopyWith<_$PedidoVentaEstadoImpl> get copyWith =>
@@ -187,8 +195,11 @@ abstract class _PedidoVentaEstado extends PedidoVentaEstado {
   DateTime get lastUpdate;
   @override
   bool get deleted;
+
+  /// Create a copy of PedidoVentaEstado
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PedidoVentaEstadoImplCopyWith<_$PedidoVentaEstadoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
