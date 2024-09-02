@@ -466,6 +466,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Catálogos"),
         "commonWidgets_appDrawer_clientes":
             MessageLookupByLibrary.simpleMessage("Clientes"),
+        "commonWidgets_appDrawer_expediciones":
+            MessageLookupByLibrary.simpleMessage("Expedições"),
         "commonWidgets_appDrawer_kpi":
             MessageLookupByLibrary.simpleMessage("KPI"),
         "commonWidgets_appDrawer_pedidos":

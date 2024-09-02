@@ -372,5 +372,6 @@
   "cancelar": "Cancelar",
   "introduceClaveDeNikel": "Introduce la clave de Nikel",
   "claveNikel": "Clave Nikel",
-  "noSeHaPodidoSincronizar": "No se ha podido sincronizar correctamente"
+  "noSeHaPodidoSincronizar": "No se ha podido sincronizar correctamente",
+  "commonWidgets_appDrawer_expediciones": "Expediciones"
 }
