@@ -32,6 +32,8 @@ mixin _$PedidoAlbaranDTO {
   String? get agencia => throw _privateConstructorUsedError;
   @JsonKey(name: 'TRACK_ID')
   String? get trackId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'TRACKING_ESTADO')
+  String? get trackingEstadoId => throw _privateConstructorUsedError;
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   @JsonKey(name: 'DELETED')
@@ -60,6 +62,7 @@ abstract class $PedidoAlbaranDTOCopyWith<$Res> {
       @JsonKey(name: 'FECHA_ALBARAN') DateTime fechaAlbaran,
       @JsonKey(name: 'AGENCIA') String? agencia,
       @JsonKey(name: 'TRACK_ID') String? trackId,
+      @JsonKey(name: 'TRACKING_ESTADO') String? trackingEstadoId,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
 }
@@ -85,6 +88,7 @@ class _$PedidoAlbaranDTOCopyWithImpl<$Res, $Val extends PedidoAlbaranDTO>
     Object? fechaAlbaran = null,
     Object? agencia = freezed,
     Object? trackId = freezed,
+    Object? trackingEstadoId = freezed,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -113,6 +117,10 @@ class _$PedidoAlbaranDTOCopyWithImpl<$Res, $Val extends PedidoAlbaranDTO>
           ? _value.trackId
           : trackId // ignore: cast_nullable_to_non_nullable
               as String?,
+      trackingEstadoId: freezed == trackingEstadoId
+          ? _value.trackingEstadoId
+          : trackingEstadoId // ignore: cast_nullable_to_non_nullable
+              as String?,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -140,6 +148,7 @@ abstract class _$$PedidoAlbaranDTOImplCopyWith<$Res>
       @JsonKey(name: 'FECHA_ALBARAN') DateTime fechaAlbaran,
       @JsonKey(name: 'AGENCIA') String? agencia,
       @JsonKey(name: 'TRACK_ID') String? trackId,
+      @JsonKey(name: 'TRACKING_ESTADO') String? trackingEstadoId,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
 }
@@ -163,6 +172,7 @@ class __$$PedidoAlbaranDTOImplCopyWithImpl<$Res>
     Object? fechaAlbaran = null,
     Object? agencia = freezed,
     Object? trackId = freezed,
+    Object? trackingEstadoId = freezed,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -191,6 +201,10 @@ class __$$PedidoAlbaranDTOImplCopyWithImpl<$Res>
           ? _value.trackId
           : trackId // ignore: cast_nullable_to_non_nullable
               as String?,
+      trackingEstadoId: freezed == trackingEstadoId
+          ? _value.trackingEstadoId
+          : trackingEstadoId // ignore: cast_nullable_to_non_nullable
+              as String?,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -213,6 +227,7 @@ class _$PedidoAlbaranDTOImpl extends _PedidoAlbaranDTO {
       @JsonKey(name: 'FECHA_ALBARAN') required this.fechaAlbaran,
       @JsonKey(name: 'AGENCIA') this.agencia,
       @JsonKey(name: 'TRACK_ID') this.trackId,
+      @JsonKey(name: 'TRACKING_ESTADO') this.trackingEstadoId,
       @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
       @JsonKey(name: 'DELETED') required this.deleted})
       : super._();
@@ -239,6 +254,9 @@ class _$PedidoAlbaranDTOImpl extends _PedidoAlbaranDTO {
   @JsonKey(name: 'TRACK_ID')
   final String? trackId;
   @override
+  @JsonKey(name: 'TRACKING_ESTADO')
+  final String? trackingEstadoId;
+  @override
   @JsonKey(name: 'LAST_UPDATED')
   final DateTime lastUpdated;
   @override
@@ -247,7 +265,7 @@ class _$PedidoAlbaranDTOImpl extends _PedidoAlbaranDTO {
 
   @override
   String toString() {
-    return 'PedidoAlbaranDTO(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, albaranId: $albaranId, fechaAlbaran: $fechaAlbaran, agencia: $agencia, trackId: $trackId, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'PedidoAlbaranDTO(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, albaranId: $albaranId, fechaAlbaran: $fechaAlbaran, agencia: $agencia, trackId: $trackId, trackingEstadoId: $trackingEstadoId, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -265,6 +283,8 @@ class _$PedidoAlbaranDTOImpl extends _PedidoAlbaranDTO {
                 other.fechaAlbaran == fechaAlbaran) &&
             (identical(other.agencia, agencia) || other.agencia == agencia) &&
             (identical(other.trackId, trackId) || other.trackId == trackId) &&
+            (identical(other.trackingEstadoId, trackingEstadoId) ||
+                other.trackingEstadoId == trackingEstadoId) &&
             (identical(other.lastUpdated, lastUpdated) ||
                 other.lastUpdated == lastUpdated) &&
             (identical(other.deleted, deleted) || other.deleted == deleted));
@@ -272,8 +292,17 @@ class _$PedidoAlbaranDTOImpl extends _PedidoAlbaranDTO {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, empresaId, pedidoVentaId,
-      albaranId, fechaAlbaran, agencia, trackId, lastUpdated, deleted);
+  int get hashCode => Object.hash(
+      runtimeType,
+      empresaId,
+      pedidoVentaId,
+      albaranId,
+      fechaAlbaran,
+      agencia,
+      trackId,
+      trackingEstadoId,
+      lastUpdated,
+      deleted);
 
   /// Create a copy of PedidoAlbaranDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -300,6 +329,7 @@ abstract class _PedidoAlbaranDTO extends PedidoAlbaranDTO {
           @JsonKey(name: 'FECHA_ALBARAN') required final DateTime fechaAlbaran,
           @JsonKey(name: 'AGENCIA') final String? agencia,
           @JsonKey(name: 'TRACK_ID') final String? trackId,
+          @JsonKey(name: 'TRACKING_ESTADO') final String? trackingEstadoId,
           @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
           @JsonKey(name: 'DELETED') required final String deleted}) =
       _$PedidoAlbaranDTOImpl;
@@ -326,6 +356,9 @@ abstract class _PedidoAlbaranDTO extends PedidoAlbaranDTO {
   @override
   @JsonKey(name: 'TRACK_ID')
   String? get trackId;
+  @override
+  @JsonKey(name: 'TRACKING_ESTADO')
+  String? get trackingEstadoId;
   @override
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated;

@@ -1,0 +1,579 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'tracking_estado_dto.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+
+TrackingEstadoDTO _$TrackingEstadoDTOFromJson(Map<String, dynamic> json) {
+  return _TrackingEstadoDTO.fromJson(json);
+}
+
+/// @nodoc
+mixin _$TrackingEstadoDTO {
+  @JsonKey(name: 'TRACKING_ESTADO')
+  String get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'DESCRIPCION_ES')
+  String get descripcionES => throw _privateConstructorUsedError;
+  @JsonKey(name: 'DESCRIPCION_EN')
+  String? get descripcionEN => throw _privateConstructorUsedError;
+  @JsonKey(name: 'DESCRIPCION_FR')
+  String? get descripcionFR => throw _privateConstructorUsedError;
+  @JsonKey(name: 'DESCRIPCION_DE')
+  String? get descripcionDE => throw _privateConstructorUsedError;
+  @JsonKey(name: 'DESCRIPCION_CA')
+  String? get descripcionCA => throw _privateConstructorUsedError;
+  @JsonKey(name: 'DESCRIPCION_GB')
+  String? get descripcionGB => throw _privateConstructorUsedError;
+  @JsonKey(name: 'DESCRIPCION_HU')
+  String? get descripcionHU => throw _privateConstructorUsedError;
+  @JsonKey(name: 'DESCRIPCION_IT')
+  String? get descripcionIT => throw _privateConstructorUsedError;
+  @JsonKey(name: 'DESCRIPCION_NL')
+  String? get descripcionNL =>
+      throw _privateConstructorUsedError; // @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
+  @JsonKey(name: 'DESCRIPCION_PT')
+  String? get descripcionPT => throw _privateConstructorUsedError;
+  @JsonKey(name: 'DESCRIPCION_RO')
+  String? get descripcionRO => throw _privateConstructorUsedError;
+  @JsonKey(name: 'DESCRIPCION_RU')
+  String? get descripcionRU => throw _privateConstructorUsedError;
+  @JsonKey(name: 'DESCRIPCION_CN')
+  String? get descripcionCN => throw _privateConstructorUsedError;
+  @JsonKey(name: 'DESCRIPCION_EL')
+  String? get descripcionEL => throw _privateConstructorUsedError;
+  @JsonKey(name: 'LAST_UPDATED')
+  DateTime get lastUpdated => throw _privateConstructorUsedError;
+  @JsonKey(name: 'DELETED')
+  String get deleted => throw _privateConstructorUsedError;
+
+  /// Serializes this TrackingEstadoDTO to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of TrackingEstadoDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $TrackingEstadoDTOCopyWith<TrackingEstadoDTO> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TrackingEstadoDTOCopyWith<$Res> {
+  factory $TrackingEstadoDTOCopyWith(
+          TrackingEstadoDTO value, $Res Function(TrackingEstadoDTO) then) =
+      _$TrackingEstadoDTOCopyWithImpl<$Res, TrackingEstadoDTO>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'TRACKING_ESTADO') String id,
+      @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
+      @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
+      @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
+      @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
+      @JsonKey(name: 'DESCRIPCION_CA') String? descripcionCA,
+      @JsonKey(name: 'DESCRIPCION_GB') String? descripcionGB,
+      @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
+      @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
+      @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
+      @JsonKey(name: 'DESCRIPCION_PT') String? descripcionPT,
+      @JsonKey(name: 'DESCRIPCION_RO') String? descripcionRO,
+      @JsonKey(name: 'DESCRIPCION_RU') String? descripcionRU,
+      @JsonKey(name: 'DESCRIPCION_CN') String? descripcionCN,
+      @JsonKey(name: 'DESCRIPCION_EL') String? descripcionEL,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
+}
+
+/// @nodoc
+class _$TrackingEstadoDTOCopyWithImpl<$Res, $Val extends TrackingEstadoDTO>
+    implements $TrackingEstadoDTOCopyWith<$Res> {
+  _$TrackingEstadoDTOCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of TrackingEstadoDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? descripcionES = null,
+    Object? descripcionEN = freezed,
+    Object? descripcionFR = freezed,
+    Object? descripcionDE = freezed,
+    Object? descripcionCA = freezed,
+    Object? descripcionGB = freezed,
+    Object? descripcionHU = freezed,
+    Object? descripcionIT = freezed,
+    Object? descripcionNL = freezed,
+    Object? descripcionPT = freezed,
+    Object? descripcionRO = freezed,
+    Object? descripcionRU = freezed,
+    Object? descripcionCN = freezed,
+    Object? descripcionEL = freezed,
+    Object? lastUpdated = null,
+    Object? deleted = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcionES: null == descripcionES
+          ? _value.descripcionES
+          : descripcionES // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcionEN: freezed == descripcionEN
+          ? _value.descripcionEN
+          : descripcionEN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionFR: freezed == descripcionFR
+          ? _value.descripcionFR
+          : descripcionFR // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionDE: freezed == descripcionDE
+          ? _value.descripcionDE
+          : descripcionDE // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCA: freezed == descripcionCA
+          ? _value.descripcionCA
+          : descripcionCA // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionGB: freezed == descripcionGB
+          ? _value.descripcionGB
+          : descripcionGB // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionHU: freezed == descripcionHU
+          ? _value.descripcionHU
+          : descripcionHU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionIT: freezed == descripcionIT
+          ? _value.descripcionIT
+          : descripcionIT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionNL: freezed == descripcionNL
+          ? _value.descripcionNL
+          : descripcionNL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPT: freezed == descripcionPT
+          ? _value.descripcionPT
+          : descripcionPT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRO: freezed == descripcionRO
+          ? _value.descripcionRO
+          : descripcionRO // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRU: freezed == descripcionRU
+          ? _value.descripcionRU
+          : descripcionRU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCN: freezed == descripcionCN
+          ? _value.descripcionCN
+          : descripcionCN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionEL: freezed == descripcionEL
+          ? _value.descripcionEL
+          : descripcionEL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$TrackingEstadoDTOImplCopyWith<$Res>
+    implements $TrackingEstadoDTOCopyWith<$Res> {
+  factory _$$TrackingEstadoDTOImplCopyWith(_$TrackingEstadoDTOImpl value,
+          $Res Function(_$TrackingEstadoDTOImpl) then) =
+      __$$TrackingEstadoDTOImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'TRACKING_ESTADO') String id,
+      @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
+      @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
+      @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
+      @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
+      @JsonKey(name: 'DESCRIPCION_CA') String? descripcionCA,
+      @JsonKey(name: 'DESCRIPCION_GB') String? descripcionGB,
+      @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
+      @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
+      @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
+      @JsonKey(name: 'DESCRIPCION_PT') String? descripcionPT,
+      @JsonKey(name: 'DESCRIPCION_RO') String? descripcionRO,
+      @JsonKey(name: 'DESCRIPCION_RU') String? descripcionRU,
+      @JsonKey(name: 'DESCRIPCION_CN') String? descripcionCN,
+      @JsonKey(name: 'DESCRIPCION_EL') String? descripcionEL,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
+}
+
+/// @nodoc
+class __$$TrackingEstadoDTOImplCopyWithImpl<$Res>
+    extends _$TrackingEstadoDTOCopyWithImpl<$Res, _$TrackingEstadoDTOImpl>
+    implements _$$TrackingEstadoDTOImplCopyWith<$Res> {
+  __$$TrackingEstadoDTOImplCopyWithImpl(_$TrackingEstadoDTOImpl _value,
+      $Res Function(_$TrackingEstadoDTOImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of TrackingEstadoDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? descripcionES = null,
+    Object? descripcionEN = freezed,
+    Object? descripcionFR = freezed,
+    Object? descripcionDE = freezed,
+    Object? descripcionCA = freezed,
+    Object? descripcionGB = freezed,
+    Object? descripcionHU = freezed,
+    Object? descripcionIT = freezed,
+    Object? descripcionNL = freezed,
+    Object? descripcionPT = freezed,
+    Object? descripcionRO = freezed,
+    Object? descripcionRU = freezed,
+    Object? descripcionCN = freezed,
+    Object? descripcionEL = freezed,
+    Object? lastUpdated = null,
+    Object? deleted = null,
+  }) {
+    return _then(_$TrackingEstadoDTOImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcionES: null == descripcionES
+          ? _value.descripcionES
+          : descripcionES // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcionEN: freezed == descripcionEN
+          ? _value.descripcionEN
+          : descripcionEN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionFR: freezed == descripcionFR
+          ? _value.descripcionFR
+          : descripcionFR // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionDE: freezed == descripcionDE
+          ? _value.descripcionDE
+          : descripcionDE // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCA: freezed == descripcionCA
+          ? _value.descripcionCA
+          : descripcionCA // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionGB: freezed == descripcionGB
+          ? _value.descripcionGB
+          : descripcionGB // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionHU: freezed == descripcionHU
+          ? _value.descripcionHU
+          : descripcionHU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionIT: freezed == descripcionIT
+          ? _value.descripcionIT
+          : descripcionIT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionNL: freezed == descripcionNL
+          ? _value.descripcionNL
+          : descripcionNL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPT: freezed == descripcionPT
+          ? _value.descripcionPT
+          : descripcionPT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRO: freezed == descripcionRO
+          ? _value.descripcionRO
+          : descripcionRO // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRU: freezed == descripcionRU
+          ? _value.descripcionRU
+          : descripcionRU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCN: freezed == descripcionCN
+          ? _value.descripcionCN
+          : descripcionCN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionEL: freezed == descripcionEL
+          ? _value.descripcionEL
+          : descripcionEL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$TrackingEstadoDTOImpl extends _TrackingEstadoDTO {
+  const _$TrackingEstadoDTOImpl(
+      {@JsonKey(name: 'TRACKING_ESTADO') required this.id,
+      @JsonKey(name: 'DESCRIPCION_ES') required this.descripcionES,
+      @JsonKey(name: 'DESCRIPCION_EN') this.descripcionEN,
+      @JsonKey(name: 'DESCRIPCION_FR') this.descripcionFR,
+      @JsonKey(name: 'DESCRIPCION_DE') this.descripcionDE,
+      @JsonKey(name: 'DESCRIPCION_CA') this.descripcionCA,
+      @JsonKey(name: 'DESCRIPCION_GB') this.descripcionGB,
+      @JsonKey(name: 'DESCRIPCION_HU') this.descripcionHU,
+      @JsonKey(name: 'DESCRIPCION_IT') this.descripcionIT,
+      @JsonKey(name: 'DESCRIPCION_NL') this.descripcionNL,
+      @JsonKey(name: 'DESCRIPCION_PT') this.descripcionPT,
+      @JsonKey(name: 'DESCRIPCION_RO') this.descripcionRO,
+      @JsonKey(name: 'DESCRIPCION_RU') this.descripcionRU,
+      @JsonKey(name: 'DESCRIPCION_CN') this.descripcionCN,
+      @JsonKey(name: 'DESCRIPCION_EL') this.descripcionEL,
+      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+      @JsonKey(name: 'DELETED') this.deleted = 'N'})
+      : super._();
+
+  factory _$TrackingEstadoDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TrackingEstadoDTOImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'TRACKING_ESTADO')
+  final String id;
+  @override
+  @JsonKey(name: 'DESCRIPCION_ES')
+  final String descripcionES;
+  @override
+  @JsonKey(name: 'DESCRIPCION_EN')
+  final String? descripcionEN;
+  @override
+  @JsonKey(name: 'DESCRIPCION_FR')
+  final String? descripcionFR;
+  @override
+  @JsonKey(name: 'DESCRIPCION_DE')
+  final String? descripcionDE;
+  @override
+  @JsonKey(name: 'DESCRIPCION_CA')
+  final String? descripcionCA;
+  @override
+  @JsonKey(name: 'DESCRIPCION_GB')
+  final String? descripcionGB;
+  @override
+  @JsonKey(name: 'DESCRIPCION_HU')
+  final String? descripcionHU;
+  @override
+  @JsonKey(name: 'DESCRIPCION_IT')
+  final String? descripcionIT;
+  @override
+  @JsonKey(name: 'DESCRIPCION_NL')
+  final String? descripcionNL;
+// @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
+  @override
+  @JsonKey(name: 'DESCRIPCION_PT')
+  final String? descripcionPT;
+  @override
+  @JsonKey(name: 'DESCRIPCION_RO')
+  final String? descripcionRO;
+  @override
+  @JsonKey(name: 'DESCRIPCION_RU')
+  final String? descripcionRU;
+  @override
+  @JsonKey(name: 'DESCRIPCION_CN')
+  final String? descripcionCN;
+  @override
+  @JsonKey(name: 'DESCRIPCION_EL')
+  final String? descripcionEL;
+  @override
+  @JsonKey(name: 'LAST_UPDATED')
+  final DateTime lastUpdated;
+  @override
+  @JsonKey(name: 'DELETED')
+  final String deleted;
+
+  @override
+  String toString() {
+    return 'TrackingEstadoDTO(id: $id, descripcionES: $descripcionES, descripcionEN: $descripcionEN, descripcionFR: $descripcionFR, descripcionDE: $descripcionDE, descripcionCA: $descripcionCA, descripcionGB: $descripcionGB, descripcionHU: $descripcionHU, descripcionIT: $descripcionIT, descripcionNL: $descripcionNL, descripcionPT: $descripcionPT, descripcionRO: $descripcionRO, descripcionRU: $descripcionRU, descripcionCN: $descripcionCN, descripcionEL: $descripcionEL, lastUpdated: $lastUpdated, deleted: $deleted)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TrackingEstadoDTOImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.descripcionES, descripcionES) ||
+                other.descripcionES == descripcionES) &&
+            (identical(other.descripcionEN, descripcionEN) ||
+                other.descripcionEN == descripcionEN) &&
+            (identical(other.descripcionFR, descripcionFR) ||
+                other.descripcionFR == descripcionFR) &&
+            (identical(other.descripcionDE, descripcionDE) ||
+                other.descripcionDE == descripcionDE) &&
+            (identical(other.descripcionCA, descripcionCA) ||
+                other.descripcionCA == descripcionCA) &&
+            (identical(other.descripcionGB, descripcionGB) ||
+                other.descripcionGB == descripcionGB) &&
+            (identical(other.descripcionHU, descripcionHU) ||
+                other.descripcionHU == descripcionHU) &&
+            (identical(other.descripcionIT, descripcionIT) ||
+                other.descripcionIT == descripcionIT) &&
+            (identical(other.descripcionNL, descripcionNL) ||
+                other.descripcionNL == descripcionNL) &&
+            (identical(other.descripcionPT, descripcionPT) ||
+                other.descripcionPT == descripcionPT) &&
+            (identical(other.descripcionRO, descripcionRO) ||
+                other.descripcionRO == descripcionRO) &&
+            (identical(other.descripcionRU, descripcionRU) ||
+                other.descripcionRU == descripcionRU) &&
+            (identical(other.descripcionCN, descripcionCN) ||
+                other.descripcionCN == descripcionCN) &&
+            (identical(other.descripcionEL, descripcionEL) ||
+                other.descripcionEL == descripcionEL) &&
+            (identical(other.lastUpdated, lastUpdated) ||
+                other.lastUpdated == lastUpdated) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      descripcionES,
+      descripcionEN,
+      descripcionFR,
+      descripcionDE,
+      descripcionCA,
+      descripcionGB,
+      descripcionHU,
+      descripcionIT,
+      descripcionNL,
+      descripcionPT,
+      descripcionRO,
+      descripcionRU,
+      descripcionCN,
+      descripcionEL,
+      lastUpdated,
+      deleted);
+
+  /// Create a copy of TrackingEstadoDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TrackingEstadoDTOImplCopyWith<_$TrackingEstadoDTOImpl> get copyWith =>
+      __$$TrackingEstadoDTOImplCopyWithImpl<_$TrackingEstadoDTOImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$TrackingEstadoDTOImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _TrackingEstadoDTO extends TrackingEstadoDTO {
+  const factory _TrackingEstadoDTO(
+          {@JsonKey(name: 'TRACKING_ESTADO') required final String id,
+          @JsonKey(name: 'DESCRIPCION_ES') required final String descripcionES,
+          @JsonKey(name: 'DESCRIPCION_EN') final String? descripcionEN,
+          @JsonKey(name: 'DESCRIPCION_FR') final String? descripcionFR,
+          @JsonKey(name: 'DESCRIPCION_DE') final String? descripcionDE,
+          @JsonKey(name: 'DESCRIPCION_CA') final String? descripcionCA,
+          @JsonKey(name: 'DESCRIPCION_GB') final String? descripcionGB,
+          @JsonKey(name: 'DESCRIPCION_HU') final String? descripcionHU,
+          @JsonKey(name: 'DESCRIPCION_IT') final String? descripcionIT,
+          @JsonKey(name: 'DESCRIPCION_NL') final String? descripcionNL,
+          @JsonKey(name: 'DESCRIPCION_PT') final String? descripcionPT,
+          @JsonKey(name: 'DESCRIPCION_RO') final String? descripcionRO,
+          @JsonKey(name: 'DESCRIPCION_RU') final String? descripcionRU,
+          @JsonKey(name: 'DESCRIPCION_CN') final String? descripcionCN,
+          @JsonKey(name: 'DESCRIPCION_EL') final String? descripcionEL,
+          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+          @JsonKey(name: 'DELETED') final String deleted}) =
+      _$TrackingEstadoDTOImpl;
+  const _TrackingEstadoDTO._() : super._();
+
+  factory _TrackingEstadoDTO.fromJson(Map<String, dynamic> json) =
+      _$TrackingEstadoDTOImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'TRACKING_ESTADO')
+  String get id;
+  @override
+  @JsonKey(name: 'DESCRIPCION_ES')
+  String get descripcionES;
+  @override
+  @JsonKey(name: 'DESCRIPCION_EN')
+  String? get descripcionEN;
+  @override
+  @JsonKey(name: 'DESCRIPCION_FR')
+  String? get descripcionFR;
+  @override
+  @JsonKey(name: 'DESCRIPCION_DE')
+  String? get descripcionDE;
+  @override
+  @JsonKey(name: 'DESCRIPCION_CA')
+  String? get descripcionCA;
+  @override
+  @JsonKey(name: 'DESCRIPCION_GB')
+  String? get descripcionGB;
+  @override
+  @JsonKey(name: 'DESCRIPCION_HU')
+  String? get descripcionHU;
+  @override
+  @JsonKey(name: 'DESCRIPCION_IT')
+  String? get descripcionIT;
+  @override
+  @JsonKey(name: 'DESCRIPCION_NL')
+  String?
+      get descripcionNL; // @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
+  @override
+  @JsonKey(name: 'DESCRIPCION_PT')
+  String? get descripcionPT;
+  @override
+  @JsonKey(name: 'DESCRIPCION_RO')
+  String? get descripcionRO;
+  @override
+  @JsonKey(name: 'DESCRIPCION_RU')
+  String? get descripcionRU;
+  @override
+  @JsonKey(name: 'DESCRIPCION_CN')
+  String? get descripcionCN;
+  @override
+  @JsonKey(name: 'DESCRIPCION_EL')
+  String? get descripcionEL;
+  @override
+  @JsonKey(name: 'LAST_UPDATED')
+  DateTime get lastUpdated;
+  @override
+  @JsonKey(name: 'DELETED')
+  String get deleted;
+
+  /// Create a copy of TrackingEstadoDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$TrackingEstadoDTOImplCopyWith<_$TrackingEstadoDTOImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

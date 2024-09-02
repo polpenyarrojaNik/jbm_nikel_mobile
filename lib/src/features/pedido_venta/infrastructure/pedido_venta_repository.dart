@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-import 'dart:math';
+import 'dart:math' as math;
 
 import 'package:csv/csv.dart';
 import 'package:dio/dio.dart';
@@ -184,7 +184,7 @@ class PedidoVentaRepository {
   Future<List<PedidoVenta>> getSyncPedidoVentaList(
       {required int page,
       required String searchText,
-      required PedidoVentaEstado? pedidoVentaEstado,
+      PedidoVentaEstado? pedidoVentaEstado,
       String? clienteId}) async {
     final query = _remoteDb.select(_remoteDb.pedidoVentaTable).join([
       innerJoin(
@@ -611,7 +611,11 @@ class PedidoVentaRepository {
         innerJoin(
             _remoteDb.pedidoVentaTable,
             _remoteDb.pedidoVentaTable.pedidoVentaId
-                .equalsExp(_remoteDb.pedidoAlbaranTable.pedidoVentaId))
+                .equalsExp(_remoteDb.pedidoAlbaranTable.pedidoVentaId)),
+        leftOuterJoin(
+            _remoteDb.trackingEstadoTable,
+            _remoteDb.trackingEstadoTable.id
+                .equalsExp(_remoteDb.pedidoAlbaranTable.trackingEstadoId))
       ]);
 
       query.where(
@@ -624,7 +628,11 @@ class PedidoVentaRepository {
       return query.map((row) {
         final pedidoVentaAlbaranDTO =
             row.readTable(_remoteDb.pedidoAlbaranTable);
-        return pedidoVentaAlbaranDTO.toDomain();
+
+        final trackingEstadoDTO =
+            row.readTableOrNull(_remoteDb.trackingEstadoTable);
+        return pedidoVentaAlbaranDTO.toDomain(
+            trackingEstado: trackingEstadoDTO?.toDomain());
       }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
@@ -1902,7 +1910,7 @@ class PedidoVentaRepository {
   }
 
   double _roundDouble(double value, int places) {
-    num mod = pow(10.0, places);
+    num mod = math.pow(10.0, places);
     return ((value * mod).round().toDouble() / mod);
   }
 

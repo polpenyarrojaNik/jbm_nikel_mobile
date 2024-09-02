@@ -73,6 +73,16 @@ class AppDrawer extends StatelessWidget {
                 predicate: (route) => false),
           ),
           ListTile(
+            leading: Icon(
+              MdiIcons.cartOutline,
+              size: 30,
+            ),
+            title: Text(S.of(context).commonWidgets_appDrawer_expediciones),
+            onTap: () => context.router.pushAndPopUntil(
+                const ExpedicionListRoute(),
+                predicate: (route) => false),
+          ),
+          ListTile(
             leading: const Icon(
               Icons.group,
               size: 30,

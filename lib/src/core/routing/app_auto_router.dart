@@ -11,6 +11,7 @@ import 'package:jbm_nikel_mobile/src/features/cliente/presentation/show/cliente_
 import 'package:jbm_nikel_mobile/src/features/cliente/presentation/show/cliente_detalle_page.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/presentation/show/cliente_factura_pendiente_page.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/select_quantity_page.dart';
+import 'package:jbm_nikel_mobile/src/features/expediciones/presentation/expedicion_lista_page.dart';
 import 'package:jbm_nikel_mobile/src/features/settings/presentation/settings_page.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/presentation/login/login_page.dart';
 
@@ -130,6 +131,7 @@ class AppRouter extends _$AppRouter {
     AutoRoute(
         page: SeleccionarCantidadRoute.page,
         path: '/pedido/edit/seleccionar_cantidad'),
+    AutoRoute(page: ExpedicionListRoute.page, path: '/pedido_expedicion'),
     AutoRoute(page: ArticuloListaRoute.page, path: '/articulo'),
     AutoRoute(page: ArticuloDetalleRoute.page, path: '/articulo/:id'),
     AutoRoute(

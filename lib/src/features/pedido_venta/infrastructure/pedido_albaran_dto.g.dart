@@ -15,6 +15,7 @@ _$PedidoAlbaranDTOImpl _$$PedidoAlbaranDTOImplFromJson(
       fechaAlbaran: DateTime.parse(json['FECHA_ALBARAN'] as String),
       agencia: json['AGENCIA'] as String?,
       trackId: json['TRACK_ID'] as String?,
+      trackingEstadoId: json['TRACKING_ESTADO'] as String?,
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       deleted: json['DELETED'] as String,
     );
@@ -28,6 +29,7 @@ Map<String, dynamic> _$$PedidoAlbaranDTOImplToJson(
       'FECHA_ALBARAN': instance.fechaAlbaran.toIso8601String(),
       'AGENCIA': instance.agencia,
       'TRACK_ID': instance.trackId,
+      'TRACKING_ESTADO': instance.trackingEstadoId,
       'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
       'DELETED': instance.deleted,
     };

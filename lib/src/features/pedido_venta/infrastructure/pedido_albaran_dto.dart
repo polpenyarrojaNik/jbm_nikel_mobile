@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/domain/pedido_albaran.dart';
 
 import '../../../core/infrastructure/remote_database.dart';
+import '../../expediciones/domain/tracking_estado.dart';
 
 part 'pedido_albaran_dto.freezed.dart';
 part 'pedido_albaran_dto.g.dart';
@@ -20,6 +21,7 @@ class PedidoAlbaranDTO
     @JsonKey(name: 'FECHA_ALBARAN') required DateTime fechaAlbaran,
     @JsonKey(name: 'AGENCIA') String? agencia,
     @JsonKey(name: 'TRACK_ID') String? trackId,
+    @JsonKey(name: 'TRACKING_ESTADO') String? trackingEstadoId,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') required String deleted,
   }) = _PedidoAlbaranDTO;
@@ -27,7 +29,7 @@ class PedidoAlbaranDTO
   factory PedidoAlbaranDTO.fromJson(Map<String, dynamic> json) =>
       _$PedidoAlbaranDTOFromJson(json);
 
-  PedidoAlbaran toDomain() {
+  PedidoAlbaran toDomain({required TrackingEstado? trackingEstado}) {
     return PedidoAlbaran(
       empresaId: empresaId,
       pedidoVentaId: pedidoVentaId,
@@ -35,6 +37,7 @@ class PedidoAlbaranDTO
       fechaAlbaran: fechaAlbaran,
       agencia: agencia,
       trackId: trackId,
+      trackingEstado: trackingEstado,
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S') ? true : false,
     );
@@ -49,6 +52,7 @@ class PedidoAlbaranDTO
       fechaAlbaran: Value(fechaAlbaran),
       agencia: Value(agencia),
       trackId: Value(trackId),
+      trackingEstadoId: Value(trackingEstadoId),
       lastUpdated: Value(lastUpdated),
       deleted: Value(deleted),
     ).toColumns(nullToAbsent);
@@ -63,7 +67,8 @@ class PedidoAlbaranTable extends Table {
   DateTimeColumn get fechaAlbaran => dateTime().named('FECHA_ALBARAN')();
   TextColumn get agencia => text().nullable().named('AGENCIA')();
   TextColumn get trackId => text().nullable().named('TRACK_ID')();
-
+  TextColumn get trackingEstadoId =>
+      text().nullable().named('TRACKING_ESTADO')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('DELETED')();

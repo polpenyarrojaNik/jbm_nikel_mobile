@@ -391,6 +391,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ClientesAlrededorPage(),
       );
     },
+    ExpedicionListRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ExpedicionListPage(),
+      );
+    },
     LoginRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -1955,6 +1961,20 @@ class ClientesAlrededorRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ClientesAlrededorRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ExpedicionListPage]
+class ExpedicionListRoute extends PageRouteInfo<void> {
+  const ExpedicionListRoute({List<PageRouteInfo>? children})
+      : super(
+          ExpedicionListRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ExpedicionListRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

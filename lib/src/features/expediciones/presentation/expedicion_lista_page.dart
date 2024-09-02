@@ -1,0 +1,284 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:flash/flash_helper.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/sin_resultados_widget.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
+import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
+import 'package:jbm_nikel_mobile/src/features/expediciones/presentation/expedicion_search_controller.dart';
+import 'package:jbm_nikel_mobile/src/features/expediciones/presentation/expedicion_tile.dart';
+import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/index/pedido_search_controller.dart';
+
+import '../../../../generated/l10n.dart';
+import '../../../core/helpers/debouncer.dart';
+import '../../../core/infrastructure/sync_service.dart';
+import '../../../core/presentation/common_widgets/app_drawer.dart';
+import '../../../core/presentation/common_widgets/custom_search_app_bar.dart';
+import '../../../core/presentation/common_widgets/last_sync_date_widget.dart';
+import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../notifications/core/application/notification_provider.dart';
+import '../../sync/application/sync_notifier_provider.dart';
+import '../../pedido_venta/infrastructure/pedido_venta_repository.dart';
+
+@RoutePage()
+class ExpedicionListPage extends ConsumerStatefulWidget {
+  const ExpedicionListPage({super.key});
+
+  @override
+  ConsumerState<ExpedicionListPage> createState() =>
+      _ExpedicionListPageListPageState();
+}
+
+class _ExpedicionListPageListPageState
+    extends ConsumerState<ExpedicionListPage> {
+  final _debouncer = Debouncer(milliseconds: 500);
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  // PedidoVentaEstado? filteredStatus;
+
+  @override
+  void initState() {
+    super.initState();
+    ref
+        .read(syncNotifierProvider.notifier)
+        .syncAllInCompute(initAppProcess: false);
+
+    ref.read(notificationNotifierProvider.notifier).haveNotification();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final stateSync = ref.watch(syncNotifierProvider);
+
+    ref.listen<AsyncValue>(
+      notificationNotifierProvider,
+      (_, state) => state.maybeWhen(
+        orElse: () {},
+        data: (notificationId) {
+          if (notificationId != null) {
+            context.router
+                .push(NotificationDetailRoute(notificationId: notificationId));
+          }
+        },
+      ),
+    );
+
+    ref.listen<AsyncValue>(
+      pedidoVentaIndexScreenControllerProvider,
+      (_, state) => state.showAlertDialogOnError(context),
+    );
+
+    return Scaffold(
+      key: scaffoldKey,
+      drawer: const AppDrawer(),
+      appBar: CustomSearchAppBar(
+        scaffoldKey: scaffoldKey,
+        isSearchingFirst: false,
+        title: S.of(context).commonWidgets_appDrawer_expediciones,
+        searchTitle: S.of(context).pedido_index_buscarPedidos,
+        onChanged: (searchText) => _debouncer.run(
+          () {
+            ref.read(pedidosSearchQueryStateProvider.notifier).state =
+                searchText;
+          },
+        ),
+        // actionButtons: [
+        //   IconButton(
+        //     onPressed: () => searchFilterByEstado(),
+        //     icon: const Icon(Icons.filter_list,
+        //         color:
+        //            (filteredStatus != null)
+        //             ? Theme.of(context).colorScheme.surfaceTint
+        //             :null),
+        //   ),
+        // ],
+      ),
+      body: stateSync.maybeWhen(
+        orElse: () =>
+            PedidoExpedicionListViewWidget(stateSync: stateSync, ref: ref),
+        synchronized: () => RefreshIndicator(
+          onRefresh: () => syncSalesOrderDB(ref),
+          child: PedidoExpedicionListViewWidget(stateSync: stateSync, ref: ref),
+        ),
+      ),
+    );
+  }
+
+  Future<void> syncSalesOrderDB(WidgetRef ref) async {
+    try {
+      await ref
+          .read(syncServiceProvider)
+          .syncAllPedidosRelacionados(isInMainThread: true);
+      ref.invalidate(pedidoVentaLastSyncDateProvider);
+
+      ref.invalidate(pedidoVentaIndexScreenControllerProvider);
+    } catch (e) {
+      if (mounted) {
+        context.showErrorBar(
+            content: Text(S.of(context).noSeHaPodidoSincronizar));
+      }
+    }
+  }
+
+  // void searchFilterByEstado() async {
+  //   final filterEstado = await showDialog(
+  //     context: context,
+  //     builder: (context) => PedidoVentaFilterDialog(
+  //       filteredStatus: filteredStatus,
+  //     ),
+  //   ) as PedidoVentaEstado?;
+
+  //   filteredStatus = filterEstado;
+
+  //   ref.read(pedidoVentaEstadoQueryStateProvider.notifier).state = filterEstado;
+  // }
+}
+
+class PedidoExpedicionListViewWidget extends StatelessWidget {
+  const PedidoExpedicionListViewWidget({
+    super.key,
+    required this.stateSync,
+    required this.ref,
+  });
+
+  final SyncControllerState stateSync;
+  final WidgetRef ref;
+
+  @override
+  Widget build(BuildContext context) {
+    final statePedidoVentaList =
+        ref.watch(expedicionIndexScreenControllerProvider);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        stateSync.maybeWhen(
+          orElse: () => const LinearProgressIndicator(),
+          synchronized: () {
+            final stateLastSyncDate =
+                ref.watch(pedidoVentaLastSyncDateProvider);
+
+            return stateLastSyncDate.when(
+              data: (fechaUltimaSync) =>
+                  UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
+              error: (_, __) => Container(),
+              loading: () => const ProgressIndicatorWidget(),
+            );
+          },
+        ),
+        gapH8,
+        Expanded(
+          child: statePedidoVentaList.when(
+            loading: () => const Center(child: ProgressIndicatorWidget()),
+            error: (error, _) =>
+                Center(child: ErrorMessageWidget(error.toString())),
+            data: (expedicionList) => expedicionList.isNotEmpty
+                ? ListView.separated(
+                    separatorBuilder: (context, i) => const Divider(),
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: expedicionList.length,
+                    itemBuilder: (context, i) => ExpedicionListaTile(
+                      expedicion: expedicionList[i],
+                    ),
+                  )
+                : const SinResultadosWidget(),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+// class ExpedicionListPageFilterDialog extends ConsumerStatefulWidget {
+//   const ExpedicionListPageFilterDialog(
+//       {super.key, required this.filteredStatus});
+
+//   final PedidoVentaEstado? filteredStatus;
+
+//   @override
+//   ConsumerState<ExpedicionListPageFilterDialog> createState() =>
+//       _PedidoVentaFilterDialogState();
+// }
+
+// class _PedidoVentaFilterDialogState
+//     extends ConsumerState<ExpedicionListPageFilterDialog> {
+//   PedidoVentaEstado? newFilterStatus;
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     newFilterStatus = widget.filteredStatus;
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final state = ref.watch(pedidoVentaEstadoProvider);
+//     return AlertDialog(
+//       title: Center(
+//         child: Text(S.of(context).pedido_index_filtros),
+//       ),
+//       content: state.when(
+//           data: (pedidoVentaEstadoList) => FormBuilderRadioGroup(
+//                 decoration: InputDecoration(
+//                   labelText: S.of(context).pedido_index_estados,
+//                   border: InputBorder.none,
+//                 ),
+//                 name: 'filter_estados',
+//                 options: showFieldOption(context, pedidoVentaEstadoList),
+//                 initialValue: widget.filteredStatus ?? pedidoVentaEstadoList[0],
+//                 onChanged: (newFilterValue) =>
+//                     changeFilterValue(filterValue: newFilterValue),
+//               ),
+//           error: (err, _) => ErrorMessageWidget(err.toString()),
+//           loading: () => const ProgressIndicatorWidget()),
+//       actions: [
+//         MaterialButton(
+//           color: Theme.of(context).colorScheme.secondary,
+//           onPressed: () => resetFilter(context, ref),
+//           child: Text(
+//             S.of(context).pedido_index_reset,
+//             style: const TextStyle(color: Colors.white),
+//           ),
+//         ),
+//         MaterialButton(
+//           color: Theme.of(context).colorScheme.secondary,
+//           onPressed: () => applyFilters(context, ref),
+//           child: Text(
+//             S.of(context).pedido_index_filtrar,
+//             style: const TextStyle(color: Colors.white),
+//           ),
+//         ),
+//       ],
+//     );
+//   }
+
+//   List<FormBuilderFieldOption<Object>> showFieldOption(
+//       BuildContext context, List<PedidoVentaEstado> pedidoVentaEstadoList) {
+//     final List<FormBuilderFieldOption<Object>> fieldOptions = [];
+//     for (final pedidoVentaEstado in pedidoVentaEstadoList) {
+//       fieldOptions.add(
+//         FormBuilderFieldOption(
+//           value: pedidoVentaEstado,
+//           child: Text(pedidoVentaEstado.descripcion),
+//         ),
+//       );
+//     }
+//     return fieldOptions;
+//   }
+
+//   void resetFilter(BuildContext context, WidgetRef ref) {
+//     context.router.maybePop(null);
+//   }
+
+//   void applyFilters(BuildContext context, WidgetRef ref) {
+//     context.router.maybePop(newFilterStatus);
+//   }
+
+//   void changeFilterValue({Object? filterValue}) {
+//     setState(() {
+//       newFilterStatus = (filterValue as PedidoVentaEstado?);
+//     });
+//   }
+// }

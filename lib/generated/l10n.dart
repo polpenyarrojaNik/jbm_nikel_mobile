@@ -130,6 +130,16 @@ class S {
     );
   }
 
+  /// `Shipments`
+  String get commonWidgets_appDrawer_expediciones {
+    return Intl.message(
+      'Shipments',
+      name: 'commonWidgets_appDrawer_expediciones',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Visits`
   String get commonWidgets_appDrawer_visitas {
     return Intl.message(

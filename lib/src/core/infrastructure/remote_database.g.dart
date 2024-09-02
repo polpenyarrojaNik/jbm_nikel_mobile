@@ -16205,6 +16205,12 @@ class $PedidoAlbaranTableTable extends PedidoAlbaranTable
   late final GeneratedColumn<String> trackId = GeneratedColumn<String>(
       'TRACK_ID', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _trackingEstadoIdMeta =
+      const VerificationMeta('trackingEstadoId');
+  @override
+  late final GeneratedColumn<String> trackingEstadoId = GeneratedColumn<String>(
+      'TRACKING_ESTADO', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
@@ -16227,6 +16233,7 @@ class $PedidoAlbaranTableTable extends PedidoAlbaranTable
         fechaAlbaran,
         agencia,
         trackId,
+        trackingEstadoId,
         lastUpdated,
         deleted
       ];
@@ -16276,6 +16283,12 @@ class $PedidoAlbaranTableTable extends PedidoAlbaranTable
       context.handle(_trackIdMeta,
           trackId.isAcceptableOrUnknown(data['TRACK_ID']!, _trackIdMeta));
     }
+    if (data.containsKey('TRACKING_ESTADO')) {
+      context.handle(
+          _trackingEstadoIdMeta,
+          trackingEstadoId.isAcceptableOrUnknown(
+              data['TRACKING_ESTADO']!, _trackingEstadoIdMeta));
+    }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
           _lastUpdatedMeta,
@@ -16309,6 +16322,8 @@ class $PedidoAlbaranTableTable extends PedidoAlbaranTable
           .read(DriftSqlType.string, data['${effectivePrefix}AGENCIA']),
       trackId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}TRACK_ID']),
+      trackingEstadoId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}TRACKING_ESTADO']),
       lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
       deleted: attachedDatabase.typeMapping
@@ -16329,6 +16344,7 @@ class PedidoAlbaranTableCompanion extends UpdateCompanion<PedidoAlbaranDTO> {
   final Value<DateTime> fechaAlbaran;
   final Value<String?> agencia;
   final Value<String?> trackId;
+  final Value<String?> trackingEstadoId;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
   final Value<int> rowid;
@@ -16339,6 +16355,7 @@ class PedidoAlbaranTableCompanion extends UpdateCompanion<PedidoAlbaranDTO> {
     this.fechaAlbaran = const Value.absent(),
     this.agencia = const Value.absent(),
     this.trackId = const Value.absent(),
+    this.trackingEstadoId = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -16350,6 +16367,7 @@ class PedidoAlbaranTableCompanion extends UpdateCompanion<PedidoAlbaranDTO> {
     required DateTime fechaAlbaran,
     this.agencia = const Value.absent(),
     this.trackId = const Value.absent(),
+    this.trackingEstadoId = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -16365,6 +16383,7 @@ class PedidoAlbaranTableCompanion extends UpdateCompanion<PedidoAlbaranDTO> {
     Expression<DateTime>? fechaAlbaran,
     Expression<String>? agencia,
     Expression<String>? trackId,
+    Expression<String>? trackingEstadoId,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
     Expression<int>? rowid,
@@ -16376,6 +16395,7 @@ class PedidoAlbaranTableCompanion extends UpdateCompanion<PedidoAlbaranDTO> {
       if (fechaAlbaran != null) 'FECHA_ALBARAN': fechaAlbaran,
       if (agencia != null) 'AGENCIA': agencia,
       if (trackId != null) 'TRACK_ID': trackId,
+      if (trackingEstadoId != null) 'TRACKING_ESTADO': trackingEstadoId,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
       if (rowid != null) 'rowid': rowid,
@@ -16389,6 +16409,7 @@ class PedidoAlbaranTableCompanion extends UpdateCompanion<PedidoAlbaranDTO> {
       Value<DateTime>? fechaAlbaran,
       Value<String?>? agencia,
       Value<String?>? trackId,
+      Value<String?>? trackingEstadoId,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted,
       Value<int>? rowid}) {
@@ -16399,6 +16420,7 @@ class PedidoAlbaranTableCompanion extends UpdateCompanion<PedidoAlbaranDTO> {
       fechaAlbaran: fechaAlbaran ?? this.fechaAlbaran,
       agencia: agencia ?? this.agencia,
       trackId: trackId ?? this.trackId,
+      trackingEstadoId: trackingEstadoId ?? this.trackingEstadoId,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
       rowid: rowid ?? this.rowid,
@@ -16426,6 +16448,9 @@ class PedidoAlbaranTableCompanion extends UpdateCompanion<PedidoAlbaranDTO> {
     if (trackId.present) {
       map['TRACK_ID'] = Variable<String>(trackId.value);
     }
+    if (trackingEstadoId.present) {
+      map['TRACKING_ESTADO'] = Variable<String>(trackingEstadoId.value);
+    }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
     }
@@ -16447,6 +16472,7 @@ class PedidoAlbaranTableCompanion extends UpdateCompanion<PedidoAlbaranDTO> {
           ..write('fechaAlbaran: $fechaAlbaran, ')
           ..write('agencia: $agencia, ')
           ..write('trackId: $trackId, ')
+          ..write('trackingEstadoId: $trackingEstadoId, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted, ')
           ..write('rowid: $rowid')
@@ -20694,6 +20720,531 @@ class VisitaMotivoNoVentaTableCompanion
   }
 }
 
+class $TrackingEstadoTableTable extends TrackingEstadoTable
+    with TableInfo<$TrackingEstadoTableTable, TrackingEstadoDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $TrackingEstadoTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+      'TRACKING_ESTADO', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _descripcionESMeta =
+      const VerificationMeta('descripcionES');
+  @override
+  late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
+      'DESCRIPCION_ES', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _descripcionENMeta =
+      const VerificationMeta('descripcionEN');
+  @override
+  late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
+      'DESCRIPCION_EN', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionFRMeta =
+      const VerificationMeta('descripcionFR');
+  @override
+  late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
+      'DESCRIPCION_FR', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionDEMeta =
+      const VerificationMeta('descripcionDE');
+  @override
+  late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
+      'DESCRIPCION_DE', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionCAMeta =
+      const VerificationMeta('descripcionCA');
+  @override
+  late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
+      'DESCRIPCION_CA', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionGBMeta =
+      const VerificationMeta('descripcionGB');
+  @override
+  late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
+      'DESCRIPCION_GB', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionHUMeta =
+      const VerificationMeta('descripcionHU');
+  @override
+  late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
+      'DESCRIPCION_HU', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionITMeta =
+      const VerificationMeta('descripcionIT');
+  @override
+  late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
+      'DESCRIPCION_IT', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionNLMeta =
+      const VerificationMeta('descripcionNL');
+  @override
+  late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
+      'DESCRIPCION_NL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionPTMeta =
+      const VerificationMeta('descripcionPT');
+  @override
+  late final GeneratedColumn<String> descripcionPT = GeneratedColumn<String>(
+      'DESCRIPCION_PT', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionROMeta =
+      const VerificationMeta('descripcionRO');
+  @override
+  late final GeneratedColumn<String> descripcionRO = GeneratedColumn<String>(
+      'DESCRIPCION_RO', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionRUMeta =
+      const VerificationMeta('descripcionRU');
+  @override
+  late final GeneratedColumn<String> descripcionRU = GeneratedColumn<String>(
+      'DESCRIPCION_RU', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionCNMeta =
+      const VerificationMeta('descripcionCN');
+  @override
+  late final GeneratedColumn<String> descripcionCN = GeneratedColumn<String>(
+      'DESCRIPCION_CN', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionELMeta =
+      const VerificationMeta('descripcionEL');
+  @override
+  late final GeneratedColumn<String> descripcionEL = GeneratedColumn<String>(
+      'DESCRIPCION_EL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _lastUpdatedMeta =
+      const VerificationMeta('lastUpdated');
+  @override
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
+  @override
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
+      'DELETED', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('N'));
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        descripcionES,
+        descripcionEN,
+        descripcionFR,
+        descripcionDE,
+        descripcionCA,
+        descripcionGB,
+        descripcionHU,
+        descripcionIT,
+        descripcionNL,
+        descripcionPT,
+        descripcionRO,
+        descripcionRU,
+        descripcionCN,
+        descripcionEL,
+        lastUpdated,
+        deleted
+      ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'TRACKING_ESTADO';
+  @override
+  VerificationContext validateIntegrity(Insertable<TrackingEstadoDTO> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('TRACKING_ESTADO')) {
+      context.handle(
+          _idMeta, id.isAcceptableOrUnknown(data['TRACKING_ESTADO']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('DESCRIPCION_ES')) {
+      context.handle(
+          _descripcionESMeta,
+          descripcionES.isAcceptableOrUnknown(
+              data['DESCRIPCION_ES']!, _descripcionESMeta));
+    } else if (isInserting) {
+      context.missing(_descripcionESMeta);
+    }
+    if (data.containsKey('DESCRIPCION_EN')) {
+      context.handle(
+          _descripcionENMeta,
+          descripcionEN.isAcceptableOrUnknown(
+              data['DESCRIPCION_EN']!, _descripcionENMeta));
+    }
+    if (data.containsKey('DESCRIPCION_FR')) {
+      context.handle(
+          _descripcionFRMeta,
+          descripcionFR.isAcceptableOrUnknown(
+              data['DESCRIPCION_FR']!, _descripcionFRMeta));
+    }
+    if (data.containsKey('DESCRIPCION_DE')) {
+      context.handle(
+          _descripcionDEMeta,
+          descripcionDE.isAcceptableOrUnknown(
+              data['DESCRIPCION_DE']!, _descripcionDEMeta));
+    }
+    if (data.containsKey('DESCRIPCION_CA')) {
+      context.handle(
+          _descripcionCAMeta,
+          descripcionCA.isAcceptableOrUnknown(
+              data['DESCRIPCION_CA']!, _descripcionCAMeta));
+    }
+    if (data.containsKey('DESCRIPCION_GB')) {
+      context.handle(
+          _descripcionGBMeta,
+          descripcionGB.isAcceptableOrUnknown(
+              data['DESCRIPCION_GB']!, _descripcionGBMeta));
+    }
+    if (data.containsKey('DESCRIPCION_HU')) {
+      context.handle(
+          _descripcionHUMeta,
+          descripcionHU.isAcceptableOrUnknown(
+              data['DESCRIPCION_HU']!, _descripcionHUMeta));
+    }
+    if (data.containsKey('DESCRIPCION_IT')) {
+      context.handle(
+          _descripcionITMeta,
+          descripcionIT.isAcceptableOrUnknown(
+              data['DESCRIPCION_IT']!, _descripcionITMeta));
+    }
+    if (data.containsKey('DESCRIPCION_NL')) {
+      context.handle(
+          _descripcionNLMeta,
+          descripcionNL.isAcceptableOrUnknown(
+              data['DESCRIPCION_NL']!, _descripcionNLMeta));
+    }
+    if (data.containsKey('DESCRIPCION_PT')) {
+      context.handle(
+          _descripcionPTMeta,
+          descripcionPT.isAcceptableOrUnknown(
+              data['DESCRIPCION_PT']!, _descripcionPTMeta));
+    }
+    if (data.containsKey('DESCRIPCION_RO')) {
+      context.handle(
+          _descripcionROMeta,
+          descripcionRO.isAcceptableOrUnknown(
+              data['DESCRIPCION_RO']!, _descripcionROMeta));
+    }
+    if (data.containsKey('DESCRIPCION_RU')) {
+      context.handle(
+          _descripcionRUMeta,
+          descripcionRU.isAcceptableOrUnknown(
+              data['DESCRIPCION_RU']!, _descripcionRUMeta));
+    }
+    if (data.containsKey('DESCRIPCION_CN')) {
+      context.handle(
+          _descripcionCNMeta,
+          descripcionCN.isAcceptableOrUnknown(
+              data['DESCRIPCION_CN']!, _descripcionCNMeta));
+    }
+    if (data.containsKey('DESCRIPCION_EL')) {
+      context.handle(
+          _descripcionELMeta,
+          descripcionEL.isAcceptableOrUnknown(
+              data['DESCRIPCION_EL']!, _descripcionELMeta));
+    }
+    if (data.containsKey('LAST_UPDATED')) {
+      context.handle(
+          _lastUpdatedMeta,
+          lastUpdated.isAcceptableOrUnknown(
+              data['LAST_UPDATED']!, _lastUpdatedMeta));
+    } else if (isInserting) {
+      context.missing(_lastUpdatedMeta);
+    }
+    if (data.containsKey('DELETED')) {
+      context.handle(_deletedMeta,
+          deleted.isAcceptableOrUnknown(data['DELETED']!, _deletedMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  TrackingEstadoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return TrackingEstadoDTO(
+      id: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}TRACKING_ESTADO'])!,
+      descripcionES: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
+      descripcionEN: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
+      descripcionFR: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
+      descripcionDE: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
+      descripcionCA: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
+      descripcionGB: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
+      descripcionHU: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
+      descripcionIT: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
+      descripcionNL: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
+      descripcionPT: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
+      descripcionRO: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
+      descripcionRU: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
+      descripcionCN: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
+      descripcionEL: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
+      lastUpdated: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
+    );
+  }
+
+  @override
+  $TrackingEstadoTableTable createAlias(String alias) {
+    return $TrackingEstadoTableTable(attachedDatabase, alias);
+  }
+}
+
+class TrackingEstadoTableCompanion extends UpdateCompanion<TrackingEstadoDTO> {
+  final Value<String> id;
+  final Value<String> descripcionES;
+  final Value<String?> descripcionEN;
+  final Value<String?> descripcionFR;
+  final Value<String?> descripcionDE;
+  final Value<String?> descripcionCA;
+  final Value<String?> descripcionGB;
+  final Value<String?> descripcionHU;
+  final Value<String?> descripcionIT;
+  final Value<String?> descripcionNL;
+  final Value<String?> descripcionPT;
+  final Value<String?> descripcionRO;
+  final Value<String?> descripcionRU;
+  final Value<String?> descripcionCN;
+  final Value<String?> descripcionEL;
+  final Value<DateTime> lastUpdated;
+  final Value<String> deleted;
+  final Value<int> rowid;
+  const TrackingEstadoTableCompanion({
+    this.id = const Value.absent(),
+    this.descripcionES = const Value.absent(),
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
+    this.lastUpdated = const Value.absent(),
+    this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  TrackingEstadoTableCompanion.insert({
+    required String id,
+    required String descripcionES,
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
+    required DateTime lastUpdated,
+    this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
+  })  : id = Value(id),
+        descripcionES = Value(descripcionES),
+        lastUpdated = Value(lastUpdated);
+  static Insertable<TrackingEstadoDTO> custom({
+    Expression<String>? id,
+    Expression<String>? descripcionES,
+    Expression<String>? descripcionEN,
+    Expression<String>? descripcionFR,
+    Expression<String>? descripcionDE,
+    Expression<String>? descripcionCA,
+    Expression<String>? descripcionGB,
+    Expression<String>? descripcionHU,
+    Expression<String>? descripcionIT,
+    Expression<String>? descripcionNL,
+    Expression<String>? descripcionPT,
+    Expression<String>? descripcionRO,
+    Expression<String>? descripcionRU,
+    Expression<String>? descripcionCN,
+    Expression<String>? descripcionEL,
+    Expression<DateTime>? lastUpdated,
+    Expression<String>? deleted,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'TRACKING_ESTADO': id,
+      if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
+      if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
+      if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
+      if (descripcionDE != null) 'DESCRIPCION_DE': descripcionDE,
+      if (descripcionCA != null) 'DESCRIPCION_CA': descripcionCA,
+      if (descripcionGB != null) 'DESCRIPCION_GB': descripcionGB,
+      if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
+      if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
+      if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
+      if (descripcionPT != null) 'DESCRIPCION_PT': descripcionPT,
+      if (descripcionRO != null) 'DESCRIPCION_RO': descripcionRO,
+      if (descripcionRU != null) 'DESCRIPCION_RU': descripcionRU,
+      if (descripcionCN != null) 'DESCRIPCION_CN': descripcionCN,
+      if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
+      if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
+      if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  TrackingEstadoTableCompanion copyWith(
+      {Value<String>? id,
+      Value<String>? descripcionES,
+      Value<String?>? descripcionEN,
+      Value<String?>? descripcionFR,
+      Value<String?>? descripcionDE,
+      Value<String?>? descripcionCA,
+      Value<String?>? descripcionGB,
+      Value<String?>? descripcionHU,
+      Value<String?>? descripcionIT,
+      Value<String?>? descripcionNL,
+      Value<String?>? descripcionPT,
+      Value<String?>? descripcionRO,
+      Value<String?>? descripcionRU,
+      Value<String?>? descripcionCN,
+      Value<String?>? descripcionEL,
+      Value<DateTime>? lastUpdated,
+      Value<String>? deleted,
+      Value<int>? rowid}) {
+    return TrackingEstadoTableCompanion(
+      id: id ?? this.id,
+      descripcionES: descripcionES ?? this.descripcionES,
+      descripcionEN: descripcionEN ?? this.descripcionEN,
+      descripcionFR: descripcionFR ?? this.descripcionFR,
+      descripcionDE: descripcionDE ?? this.descripcionDE,
+      descripcionCA: descripcionCA ?? this.descripcionCA,
+      descripcionGB: descripcionGB ?? this.descripcionGB,
+      descripcionHU: descripcionHU ?? this.descripcionHU,
+      descripcionIT: descripcionIT ?? this.descripcionIT,
+      descripcionNL: descripcionNL ?? this.descripcionNL,
+      descripcionPT: descripcionPT ?? this.descripcionPT,
+      descripcionRO: descripcionRO ?? this.descripcionRO,
+      descripcionRU: descripcionRU ?? this.descripcionRU,
+      descripcionCN: descripcionCN ?? this.descripcionCN,
+      descripcionEL: descripcionEL ?? this.descripcionEL,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['TRACKING_ESTADO'] = Variable<String>(id.value);
+    }
+    if (descripcionES.present) {
+      map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
+    }
+    if (descripcionEN.present) {
+      map['DESCRIPCION_EN'] = Variable<String>(descripcionEN.value);
+    }
+    if (descripcionFR.present) {
+      map['DESCRIPCION_FR'] = Variable<String>(descripcionFR.value);
+    }
+    if (descripcionDE.present) {
+      map['DESCRIPCION_DE'] = Variable<String>(descripcionDE.value);
+    }
+    if (descripcionCA.present) {
+      map['DESCRIPCION_CA'] = Variable<String>(descripcionCA.value);
+    }
+    if (descripcionGB.present) {
+      map['DESCRIPCION_GB'] = Variable<String>(descripcionGB.value);
+    }
+    if (descripcionHU.present) {
+      map['DESCRIPCION_HU'] = Variable<String>(descripcionHU.value);
+    }
+    if (descripcionIT.present) {
+      map['DESCRIPCION_IT'] = Variable<String>(descripcionIT.value);
+    }
+    if (descripcionNL.present) {
+      map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
+    }
+    if (descripcionPT.present) {
+      map['DESCRIPCION_PT'] = Variable<String>(descripcionPT.value);
+    }
+    if (descripcionRO.present) {
+      map['DESCRIPCION_RO'] = Variable<String>(descripcionRO.value);
+    }
+    if (descripcionRU.present) {
+      map['DESCRIPCION_RU'] = Variable<String>(descripcionRU.value);
+    }
+    if (descripcionCN.present) {
+      map['DESCRIPCION_CN'] = Variable<String>(descripcionCN.value);
+    }
+    if (descripcionEL.present) {
+      map['DESCRIPCION_EL'] = Variable<String>(descripcionEL.value);
+    }
+    if (lastUpdated.present) {
+      map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
+    }
+    if (deleted.present) {
+      map['DELETED'] = Variable<String>(deleted.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('TrackingEstadoTableCompanion(')
+          ..write('id: $id, ')
+          ..write('descripcionES: $descripcionES, ')
+          ..write('descripcionEN: $descripcionEN, ')
+          ..write('descripcionFR: $descripcionFR, ')
+          ..write('descripcionDE: $descripcionDE, ')
+          ..write('descripcionCA: $descripcionCA, ')
+          ..write('descripcionGB: $descripcionGB, ')
+          ..write('descripcionHU: $descripcionHU, ')
+          ..write('descripcionIT: $descripcionIT, ')
+          ..write('descripcionNL: $descripcionNL, ')
+          ..write('descripcionPT: $descripcionPT, ')
+          ..write('descripcionRO: $descripcionRO, ')
+          ..write('descripcionRU: $descripcionRU, ')
+          ..write('descripcionCN: $descripcionCN, ')
+          ..write('descripcionEL: $descripcionEL, ')
+          ..write('lastUpdated: $lastUpdated, ')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$RemoteAppDatabase extends GeneratedDatabase {
   _$RemoteAppDatabase(QueryExecutor e) : super(e);
   _$RemoteAppDatabase.connect(DatabaseConnection c) : super.connect(c);
@@ -20777,6 +21328,8 @@ abstract class _$RemoteAppDatabase extends GeneratedDatabase {
       $VisitaSectorTableTable(this);
   late final $VisitaMotivoNoVentaTableTable visitaMotivoNoVentaTable =
       $VisitaMotivoNoVentaTableTable(this);
+  late final $TrackingEstadoTableTable trackingEstadoTable =
+      $TrackingEstadoTableTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -20823,7 +21376,8 @@ abstract class _$RemoteAppDatabase extends GeneratedDatabase {
         provinciaTable,
         visitaCompetidorTable,
         visitaSectorTable,
-        visitaMotivoNoVentaTable
+        visitaMotivoNoVentaTable,
+        trackingEstadoTable
       ];
   @override
   DriftDatabaseOptions get options =>
@@ -30930,6 +31484,7 @@ typedef $$PedidoAlbaranTableTableCreateCompanionBuilder
   required DateTime fechaAlbaran,
   Value<String?> agencia,
   Value<String?> trackId,
+  Value<String?> trackingEstadoId,
   required DateTime lastUpdated,
   Value<String> deleted,
   Value<int> rowid,
@@ -30942,6 +31497,7 @@ typedef $$PedidoAlbaranTableTableUpdateCompanionBuilder
   Value<DateTime> fechaAlbaran,
   Value<String?> agencia,
   Value<String?> trackId,
+  Value<String?> trackingEstadoId,
   Value<DateTime> lastUpdated,
   Value<String> deleted,
   Value<int> rowid,
@@ -30971,6 +31527,7 @@ class $$PedidoAlbaranTableTableTableManager extends RootTableManager<
             Value<DateTime> fechaAlbaran = const Value.absent(),
             Value<String?> agencia = const Value.absent(),
             Value<String?> trackId = const Value.absent(),
+            Value<String?> trackingEstadoId = const Value.absent(),
             Value<DateTime> lastUpdated = const Value.absent(),
             Value<String> deleted = const Value.absent(),
             Value<int> rowid = const Value.absent(),
@@ -30982,6 +31539,7 @@ class $$PedidoAlbaranTableTableTableManager extends RootTableManager<
             fechaAlbaran: fechaAlbaran,
             agencia: agencia,
             trackId: trackId,
+            trackingEstadoId: trackingEstadoId,
             lastUpdated: lastUpdated,
             deleted: deleted,
             rowid: rowid,
@@ -30993,6 +31551,7 @@ class $$PedidoAlbaranTableTableTableManager extends RootTableManager<
             required DateTime fechaAlbaran,
             Value<String?> agencia = const Value.absent(),
             Value<String?> trackId = const Value.absent(),
+            Value<String?> trackingEstadoId = const Value.absent(),
             required DateTime lastUpdated,
             Value<String> deleted = const Value.absent(),
             Value<int> rowid = const Value.absent(),
@@ -31004,6 +31563,7 @@ class $$PedidoAlbaranTableTableTableManager extends RootTableManager<
             fechaAlbaran: fechaAlbaran,
             agencia: agencia,
             trackId: trackId,
+            trackingEstadoId: trackingEstadoId,
             lastUpdated: lastUpdated,
             deleted: deleted,
             rowid: rowid,
@@ -31041,6 +31601,11 @@ class $$PedidoAlbaranTableTableFilterComposer
 
   ColumnFilters<String> get trackId => $state.composableBuilder(
       column: $state.table.trackId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get trackingEstadoId => $state.composableBuilder(
+      column: $state.table.trackingEstadoId,
       builder: (column, joinBuilders) =>
           ColumnFilters(column, joinBuilders: joinBuilders));
 
@@ -31085,6 +31650,11 @@ class $$PedidoAlbaranTableTableOrderingComposer
 
   ColumnOrderings<String> get trackId => $state.composableBuilder(
       column: $state.table.trackId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get trackingEstadoId => $state.composableBuilder(
+      column: $state.table.trackingEstadoId,
       builder: (column, joinBuilders) =>
           ColumnOrderings(column, joinBuilders: joinBuilders));
 
@@ -33683,6 +34253,327 @@ class $$VisitaMotivoNoVentaTableTableOrderingComposer extends OrderingComposer<
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+typedef $$TrackingEstadoTableTableCreateCompanionBuilder
+    = TrackingEstadoTableCompanion Function({
+  required String id,
+  required String descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$TrackingEstadoTableTableUpdateCompanionBuilder
+    = TrackingEstadoTableCompanion Function({
+  Value<String> id,
+  Value<String> descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPT,
+  Value<String?> descripcionRO,
+  Value<String?> descripcionRU,
+  Value<String?> descripcionCN,
+  Value<String?> descripcionEL,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$TrackingEstadoTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $TrackingEstadoTableTable,
+    TrackingEstadoDTO,
+    $$TrackingEstadoTableTableFilterComposer,
+    $$TrackingEstadoTableTableOrderingComposer,
+    $$TrackingEstadoTableTableCreateCompanionBuilder,
+    $$TrackingEstadoTableTableUpdateCompanionBuilder> {
+  $$TrackingEstadoTableTableTableManager(
+      _$RemoteAppDatabase db, $TrackingEstadoTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$TrackingEstadoTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$TrackingEstadoTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              TrackingEstadoTableCompanion(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              TrackingEstadoTableCompanion.insert(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$TrackingEstadoTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $TrackingEstadoTableTable> {
+  $$TrackingEstadoTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionPT => $state.composableBuilder(
+      column: $state.table.descripcionPT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionRO => $state.composableBuilder(
+      column: $state.table.descripcionRO,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionRU => $state.composableBuilder(
+      column: $state.table.descripcionRU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCN => $state.composableBuilder(
+      column: $state.table.descripcionCN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEL => $state.composableBuilder(
+      column: $state.table.descripcionEL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$TrackingEstadoTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $TrackingEstadoTableTable> {
+  $$TrackingEstadoTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionPT => $state.composableBuilder(
+      column: $state.table.descripcionPT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionRO => $state.composableBuilder(
+      column: $state.table.descripcionRO,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionRU => $state.composableBuilder(
+      column: $state.table.descripcionRU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCN => $state.composableBuilder(
+      column: $state.table.descripcionCN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEL => $state.composableBuilder(
+      column: $state.table.descripcionEL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
 class $RemoteAppDatabaseManager {
   final _$RemoteAppDatabase _db;
   $RemoteAppDatabaseManager(this._db);
@@ -33788,4 +34679,6 @@ class $RemoteAppDatabaseManager {
   $$VisitaMotivoNoVentaTableTableTableManager get visitaMotivoNoVentaTable =>
       $$VisitaMotivoNoVentaTableTableTableManager(
           _db, _db.visitaMotivoNoVentaTable);
+  $$TrackingEstadoTableTableTableManager get trackingEstadoTable =>
+      $$TrackingEstadoTableTableTableManager(_db, _db.trackingEstadoTable);
 }

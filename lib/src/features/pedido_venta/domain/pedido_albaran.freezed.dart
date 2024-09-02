@@ -22,6 +22,7 @@ mixin _$PedidoAlbaran {
   DateTime get fechaAlbaran => throw _privateConstructorUsedError;
   String? get agencia => throw _privateConstructorUsedError;
   String? get trackId => throw _privateConstructorUsedError;
+  TrackingEstado? get trackingEstado => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
@@ -45,8 +46,11 @@ abstract class $PedidoAlbaranCopyWith<$Res> {
       DateTime fechaAlbaran,
       String? agencia,
       String? trackId,
+      TrackingEstado? trackingEstado,
       DateTime lastUpdated,
       bool deleted});
+
+  $TrackingEstadoCopyWith<$Res>? get trackingEstado;
 }
 
 /// @nodoc
@@ -70,6 +74,7 @@ class _$PedidoAlbaranCopyWithImpl<$Res, $Val extends PedidoAlbaran>
     Object? fechaAlbaran = null,
     Object? agencia = freezed,
     Object? trackId = freezed,
+    Object? trackingEstado = freezed,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -98,6 +103,10 @@ class _$PedidoAlbaranCopyWithImpl<$Res, $Val extends PedidoAlbaran>
           ? _value.trackId
           : trackId // ignore: cast_nullable_to_non_nullable
               as String?,
+      trackingEstado: freezed == trackingEstado
+          ? _value.trackingEstado
+          : trackingEstado // ignore: cast_nullable_to_non_nullable
+              as TrackingEstado?,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -107,6 +116,20 @@ class _$PedidoAlbaranCopyWithImpl<$Res, $Val extends PedidoAlbaran>
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
+  }
+
+  /// Create a copy of PedidoAlbaran
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $TrackingEstadoCopyWith<$Res>? get trackingEstado {
+    if (_value.trackingEstado == null) {
+      return null;
+    }
+
+    return $TrackingEstadoCopyWith<$Res>(_value.trackingEstado!, (value) {
+      return _then(_value.copyWith(trackingEstado: value) as $Val);
+    });
   }
 }
 
@@ -125,8 +148,12 @@ abstract class _$$PedidoAlbaranImplCopyWith<$Res>
       DateTime fechaAlbaran,
       String? agencia,
       String? trackId,
+      TrackingEstado? trackingEstado,
       DateTime lastUpdated,
       bool deleted});
+
+  @override
+  $TrackingEstadoCopyWith<$Res>? get trackingEstado;
 }
 
 /// @nodoc
@@ -148,6 +175,7 @@ class __$$PedidoAlbaranImplCopyWithImpl<$Res>
     Object? fechaAlbaran = null,
     Object? agencia = freezed,
     Object? trackId = freezed,
+    Object? trackingEstado = freezed,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -176,6 +204,10 @@ class __$$PedidoAlbaranImplCopyWithImpl<$Res>
           ? _value.trackId
           : trackId // ignore: cast_nullable_to_non_nullable
               as String?,
+      trackingEstado: freezed == trackingEstado
+          ? _value.trackingEstado
+          : trackingEstado // ignore: cast_nullable_to_non_nullable
+              as TrackingEstado?,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -198,6 +230,7 @@ class _$PedidoAlbaranImpl extends _PedidoAlbaran {
       required this.fechaAlbaran,
       this.agencia,
       this.trackId,
+      this.trackingEstado,
       required this.lastUpdated,
       required this.deleted})
       : super._();
@@ -215,13 +248,15 @@ class _$PedidoAlbaranImpl extends _PedidoAlbaran {
   @override
   final String? trackId;
   @override
+  final TrackingEstado? trackingEstado;
+  @override
   final DateTime lastUpdated;
   @override
   final bool deleted;
 
   @override
   String toString() {
-    return 'PedidoAlbaran(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, albaranId: $albaranId, fechaAlbaran: $fechaAlbaran, agencia: $agencia, trackId: $trackId, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'PedidoAlbaran(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, albaranId: $albaranId, fechaAlbaran: $fechaAlbaran, agencia: $agencia, trackId: $trackId, trackingEstado: $trackingEstado, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -239,14 +274,25 @@ class _$PedidoAlbaranImpl extends _PedidoAlbaran {
                 other.fechaAlbaran == fechaAlbaran) &&
             (identical(other.agencia, agencia) || other.agencia == agencia) &&
             (identical(other.trackId, trackId) || other.trackId == trackId) &&
+            (identical(other.trackingEstado, trackingEstado) ||
+                other.trackingEstado == trackingEstado) &&
             (identical(other.lastUpdated, lastUpdated) ||
                 other.lastUpdated == lastUpdated) &&
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, empresaId, pedidoVentaId,
-      albaranId, fechaAlbaran, agencia, trackId, lastUpdated, deleted);
+  int get hashCode => Object.hash(
+      runtimeType,
+      empresaId,
+      pedidoVentaId,
+      albaranId,
+      fechaAlbaran,
+      agencia,
+      trackId,
+      trackingEstado,
+      lastUpdated,
+      deleted);
 
   /// Create a copy of PedidoAlbaran
   /// with the given fields replaced by the non-null parameter values.
@@ -265,6 +311,7 @@ abstract class _PedidoAlbaran extends PedidoAlbaran {
       required final DateTime fechaAlbaran,
       final String? agencia,
       final String? trackId,
+      final TrackingEstado? trackingEstado,
       required final DateTime lastUpdated,
       required final bool deleted}) = _$PedidoAlbaranImpl;
   const _PedidoAlbaran._() : super._();
@@ -281,6 +328,8 @@ abstract class _PedidoAlbaran extends PedidoAlbaran {
   String? get agencia;
   @override
   String? get trackId;
+  @override
+  TrackingEstado? get trackingEstado;
   @override
   DateTime get lastUpdated;
   @override

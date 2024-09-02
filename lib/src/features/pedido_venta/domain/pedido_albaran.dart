@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:jbm_nikel_mobile/src/features/expediciones/domain/tracking_estado.dart';
 
 part 'pedido_albaran.freezed.dart';
 
@@ -12,6 +13,7 @@ class PedidoAlbaran with _$PedidoAlbaran {
       required DateTime fechaAlbaran,
       String? agencia,
       String? trackId,
+      TrackingEstado? trackingEstado,
       required DateTime lastUpdated,
       required bool deleted}) = _PedidoAlbaran;
 }
