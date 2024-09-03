@@ -80,7 +80,7 @@ class _ExpedicionListPageListPageState
         searchTitle: S.of(context).pedido_index_buscarPedidos,
         onChanged: (searchText) => _debouncer.run(
           () {
-            ref.read(pedidosSearchQueryStateProvider.notifier).state =
+            ref.read(expedicionSearchQueryStateProvider.notifier).state =
                 searchText;
           },
         ),

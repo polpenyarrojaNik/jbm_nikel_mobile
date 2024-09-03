@@ -31,7 +31,8 @@ class ExpedicionRepository {
 
   Future<List<Expedicion>> getExpedicionDTOLista(
       {required String searchText}) async {
-    final Map<String, dynamic> query = {};
+    final Map<String, dynamic> query =
+        searchText.isNotEmpty ? {'busqueda': searchText} : {};
 
     final expedicionDTOList = await _remoteExpedicionDTOList(
       requestUri: (usuario.test)
