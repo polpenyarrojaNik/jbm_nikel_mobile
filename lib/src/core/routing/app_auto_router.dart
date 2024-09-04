@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:jbm_nikel_mobile/src/core/application/log_service.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/presentation/index/articulo_lista_page.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/presentation/show/articulo_pedido_venta_page.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/presentation/show/articulo_precio_tarifa_page.dart';
@@ -13,7 +14,10 @@ import 'package:jbm_nikel_mobile/src/features/cliente/presentation/show/cliente_
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/select_quantity_page.dart';
 import 'package:jbm_nikel_mobile/src/features/expediciones/presentation/expedicion_lista_page.dart';
 import 'package:jbm_nikel_mobile/src/features/settings/presentation/settings_page.dart';
+import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
+import 'package:jbm_nikel_mobile/src/features/usuario/domain/usuario.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/presentation/login/login_page.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../features/app_initialization/presentation/splash_page.dart';
 import '../../features/articulos/presentation/show/articulo_componente_page.dart';
@@ -61,19 +65,35 @@ import '../../features/visitas/domain/visita_id_param.dart';
 import '../../features/notifications/index/notification_list_page.dart';
 import '../../features/notifications/detail/notification_detail_page.dart';
 
+part 'app_auto_router.g.dart';
 part 'app_auto_router.gr.dart';
+
+@Riverpod(keepAlive: true)
+// ignore: unsupported_provider_value
+AppRouter appRouter(AppRouterRef ref) {
+  final usuario = ref.watch(usuarioNotifierProvider);
+  final router = AppRouter(usuario: usuario);
+  ref.onDispose(router.dispose);
+  return router;
+}
 
 @AutoRouterConfig(
   replaceInRouteName: 'Page,Route',
 )
-class AppRouter extends _$AppRouter {
-  // AppRouter({required super.routeGuard});
+class AppRouter extends _$AppRouter implements AutoRouteGuard {
+  AppRouter({super.navigatorKey, this.usuario});
+  final Usuario? usuario;
+
   @override
   RouteType get defaultRouteType => const RouteType.material();
+
   @override
   final List<AutoRoute> routes = [
-    AutoRoute(page: SplashRoute.page, path: '/splash'),
-    AutoRoute(page: LoginRoute.page, path: '/', initial: true),
+    AutoRoute(page: SplashRoute.page, path: '/', initial: true),
+    AutoRoute(
+      page: LoginRoute.page,
+      path: '/login',
+    ),
     AutoRoute(page: ClienteListaRoute.page, path: '/cliente'),
     AutoRoute(page: ClientesAlrededorRoute.page, path: '/cliente/alrededor'),
     AutoRoute(page: ClienteDetalleRoute.page, path: '/cliente/:id'),
@@ -175,38 +195,53 @@ class AppRouter extends _$AppRouter {
     ),
     AutoRoute(page: SettingsRoute.page, path: '/settings'),
   ];
+
+  @override
+  void onNavigation(NavigationResolver resolver, StackRouter router) {
+    if (usuario != null || resolver.route.name == LoginRoute.name) {
+      resolver.next(true);
+    } else {
+      resolver.redirect(const LoginRoute());
+    }
+  }
 }
 
-// class RouteGuard extends AutoRedirectGuard {
-//   final WidgetRef ref;
-//   RouteGuard(this.ref) {
-//     ref.listen<Usuario?>(usuarioNotifierProvider, (_, state) {
-//       if (state == null) {
-//         reevaluate();
-//       } else {}
-//     });
-//   }
+class AuthGuard extends AutoRouteGuard {
+  AuthGuard(this.usuario);
 
-//   @override
-//   void onNavigation(NavigationResolver resolver, StackRouter router) {
-//     final usuario = ref.read(usuarioNotifierProvider);
-//     if (usuario != null) return resolver.next();
-//     router.push(
-//       LoginRoute(
-//         onLoginCallback: (_) {
-//           resolver.next();
-//           router.removeLast();
-//         },
-//       ),
-//     );
-//   }
+  final Usuario? usuario;
+  @override
+  void onNavigation(NavigationResolver resolver, StackRouter router) {
+    if (usuario != null) {
+      resolver.next(true);
+    } else {
+      resolver.redirect(const LoginRoute());
+    }
+  }
+}
 
-//   @override
-//   Future<bool> canNavigate(RouteMatch route) async {
-//     final usuario = ref.read(usuarioNotifierProvider);
-//     if (usuario == null) {
-//       return false;
-//     }
-//     return true;
-//   }
-// }
+class AutoRouteLogObserver extends AutoRouterObserver {
+  @override
+  void didPush(Route route, Route? previousRoute) =>
+      log.d('Route: [pushed] ${route.settings.name}');
+
+  @override
+  void didReplace({Route<dynamic>? newRoute, Route<dynamic>? oldRoute}) =>
+      log.d('Route: [replaced] ${newRoute?.settings.name}');
+
+  @override
+  void didPop(Route route, Route? previousRoute) =>
+      log.d('Route: [popped] ${route.settings.name}');
+
+  @override
+  void didRemove(Route route, Route? previousRoute) =>
+      log.d('Route: [removed] ${route.settings.name}');
+
+  @override
+  void didInitTabRoute(TabPageRoute route, TabPageRoute? previousRoute) =>
+      log.d('Route: [tab route visited]: ${route.name}');
+
+  @override
+  void didChangeTabRoute(TabPageRoute route, TabPageRoute previousRoute) =>
+      log.d('Route: [tab route re-visited: ${route.name}');
+}

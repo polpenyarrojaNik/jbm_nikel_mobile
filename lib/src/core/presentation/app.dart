@@ -8,8 +8,6 @@ import 'package:form_builder_validators/localization/l10n.dart';
 import 'package:jbm_nikel_mobile/generated/l10n.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_dio_interceptor.dart';
 
-import '../../features/usuario/application/usuario_notifier.dart';
-import '../../features/usuario/domain/usuario.dart';
 import '../routing/app_auto_router.dart';
 import 'theme/custom_theme.dart';
 
@@ -32,7 +30,7 @@ class App extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final appRouter = AppRouter();
+    final appRouter = ref.watch(appRouterProvider);
 
     ref.read(dioProvider)
       ..options = BaseOptions(
@@ -42,16 +40,6 @@ class App extends ConsumerWidget {
       ..interceptors.add(
         ref.read(usuarioDioInterceptorProvider),
       );
-
-    ref.listen<Usuario?>(usuarioNotifierProvider, (_, state) {
-      if (state == null) {
-        appRouter.pushAndPopUntil(const LoginRoute(),
-            predicate: (route) => false);
-      } else {
-        appRouter.pushAndPopUntil(const SplashRoute(),
-            predicate: (route) => false);
-      }
-    });
 
     return DynamicColorBuilder(
       builder: (ColorScheme? lightDynamic, ColorScheme? darkDynamic) {
@@ -75,8 +63,9 @@ class App extends ConsumerWidget {
           theme: theme.light(settings.sourceColor),
           darkTheme: theme.dark(settings.sourceColor),
           themeMode: theme.themeMode(),
-          routerDelegate: appRouter.delegate(),
-          routeInformationParser: appRouter.defaultRouteParser(),
+          routerConfig: appRouter.config(
+            navigatorObservers: () => [AutoRouteLogObserver()],
+          ),
         );
       },
     );
