@@ -3854,20 +3854,20 @@ class S {
     );
   }
 
-  /// `No interest reason`
+  /// `Reason not interested`
   String get motivoNoInteres {
     return Intl.message(
-      'No interest reason',
+      'Reason not interested',
       name: 'motivoNoInteres',
       desc: '',
       args: [],
     );
   }
 
-  /// `No order reason`
+  /// `Reason not ordered`
   String get motivoNoPedido {
     return Intl.message(
-      'No order reason',
+      'Reason not ordered',
       name: 'motivoNoPedido',
       desc: '',
       args: [],
@@ -3904,10 +3904,10 @@ class S {
     );
   }
 
-  /// `Own store`
+  /// `Own warehouse`
   String get almacenPropio {
     return Intl.message(
-      'Own store',
+      'Own warehouse',
       name: 'almacenPropio',
       desc: '',
       args: [],
@@ -3929,6 +3929,116 @@ class S {
     return Intl.message(
       'Order frequency',
       name: 'frecuenciaPedido',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Track ID`
+  String get trackId {
+    return Intl.message(
+      'Track ID',
+      name: 'trackId',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Num. Lines`
+  String get numLineas {
+    return Intl.message(
+      'Num. Lines',
+      name: 'numLineas',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Big`
+  String get grande {
+    return Intl.message(
+      'Big',
+      name: 'grande',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Medium`
+  String get media {
+    return Intl.message(
+      'Medium',
+      name: 'media',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Small`
+  String get pequena {
+    return Intl.message(
+      'Small',
+      name: 'pequena',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Medium`
+  String get medio {
+    return Intl.message(
+      'Medium',
+      name: 'medio',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Low`
+  String get bajo {
+    return Intl.message(
+      'Low',
+      name: 'bajo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Weekly`
+  String get semanal {
+    return Intl.message(
+      'Weekly',
+      name: 'semanal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Monthly`
+  String get mensual {
+    return Intl.message(
+      'Monthly',
+      name: 'mensual',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quarterly`
+  String get trimestral {
+    return Intl.message(
+      'Quarterly',
+      name: 'trimestral',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `High`
+  String get alto {
+    return Intl.message(
+      'High',
+      name: 'alto',
       desc: '',
       args: [],
     );

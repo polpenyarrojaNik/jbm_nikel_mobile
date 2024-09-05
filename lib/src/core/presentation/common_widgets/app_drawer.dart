@@ -74,7 +74,7 @@ class AppDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(
-              MdiIcons.cartOutline,
+              MdiIcons.truckFastOutline,
               size: 30,
             ),
             title: Text(S.of(context).commonWidgets_appDrawer_expediciones),

@@ -23,6 +23,9 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aceptar": MessageLookupByLibrary.simpleMessage("Accettare"),
+        "almacenPropio":
+            MessageLookupByLibrary.simpleMessage("Magazzino proprio"),
+        "alto": MessageLookupByLibrary.simpleMessage("Alto"),
         "articulo": MessageLookupByLibrary.simpleMessage("Articolo"),
         "articulo_index_buscarArticulos":
             MessageLookupByLibrary.simpleMessage("Cercare articoli"),
@@ -143,7 +146,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Benvenuto a"),
         "auth_loginPage_usuario":
             MessageLookupByLibrary.simpleMessage("Utente"),
+        "bajo": MessageLookupByLibrary.simpleMessage("Basso"),
         "cancelar": MessageLookupByLibrary.simpleMessage("Anulla"),
+        "capacidad": MessageLookupByLibrary.simpleMessage("Capacità"),
         "catalogos_index_buscarCatalogo":
             MessageLookupByLibrary.simpleMessage("Cercare cataloghi..."),
         "catalogos_index_catalogoAdjunto_abriendoArchivo":
@@ -484,14 +489,27 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ultima sincronizzazione"),
         "commonWidgets_visitDialogue_saving":
             MessageLookupByLibrary.simpleMessage("Salvataggio..."),
+        "competencia": MessageLookupByLibrary.simpleMessage("Concorrente"),
         "estasSeguroQueQuieresReemplazarLaBaseDeDatos":
             MessageLookupByLibrary.simpleMessage(
                 "Sei sicuro di voler sostituire il database? Perderai i dati salvati localmente."),
         "familia": MessageLookupByLibrary.simpleMessage("Famiglia"),
+        "frecuenciaPedido":
+            MessageLookupByLibrary.simpleMessage("Frequenza dell\'ordine"),
+        "grande": MessageLookupByLibrary.simpleMessage("Grande"),
         "haOcurridoUnError":
             MessageLookupByLibrary.simpleMessage("C\'è stato un errore"),
+        "interesCliente":
+            MessageLookupByLibrary.simpleMessage("Interesse del cliente"),
         "introduceClaveDeNikel":
             MessageLookupByLibrary.simpleMessage("Inserisci il codice Nikel"),
+        "media": MessageLookupByLibrary.simpleMessage("Media"),
+        "medio": MessageLookupByLibrary.simpleMessage("Medio"),
+        "mensual": MessageLookupByLibrary.simpleMessage("Mensile"),
+        "motivoNoInteres":
+            MessageLookupByLibrary.simpleMessage("Motivo non interessato"),
+        "motivoNoPedido":
+            MessageLookupByLibrary.simpleMessage("Motivo non ordinato"),
         "no": MessageLookupByLibrary.simpleMessage("Non"),
         "noSeHaPodidoSincronizar": MessageLookupByLibrary.simpleMessage(
             "Non è possibile sincronizzare correttamente"),
@@ -499,8 +517,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "notification_detail":
             MessageLookupByLibrary.simpleMessage("Dettaglio notifica"),
         "notifications": MessageLookupByLibrary.simpleMessage(" notifiche"),
+        "numLineas": MessageLookupByLibrary.simpleMessage("Numero di linee"),
+        "ofertaRealziada":
+            MessageLookupByLibrary.simpleMessage("Offerta fatta"),
         "paises_search_title":
             MessageLookupByLibrary.simpleMessage("Cerca Paese..."),
+        "pedidoRealizado":
+            MessageLookupByLibrary.simpleMessage("Ordine effettuato"),
         "pedido_borrador": MessageLookupByLibrary.simpleMessage("Brutta copia"),
         "pedido_edit_askPopAlertDialog_seguroQuieresSales":
             MessageLookupByLibrary.simpleMessage("Sei sicuro che vuoi uscire?"),
@@ -643,10 +666,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "pedido_show_pedidoVentaLineas_cantidadPendiente":
             MessageLookupByLibrary.simpleMessage("Quantità in sospeso"),
         "pending": MessageLookupByLibrary.simpleMessage("In attesa di"),
+        "pequena": MessageLookupByLibrary.simpleMessage("Piccolo"),
         "precioNoPuedeSerMenorAlPrecioMinimo":
             MessageLookupByLibrary.simpleMessage(
                 "Il prezzo non può essere inferiore al prezzo minimo"),
         "search": MessageLookupByLibrary.simpleMessage("Cerca ..."),
+        "sector": MessageLookupByLibrary.simpleMessage("Settore"),
+        "semanal": MessageLookupByLibrary.simpleMessage("Settimanale"),
         "settings_cerrar_sesion":
             MessageLookupByLibrary.simpleMessage("Chiudere la sessione"),
         "settings_creandoArchivo":
@@ -657,6 +683,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nome utente"),
         "settings_reemplazarBaseDeDatos":
             MessageLookupByLibrary.simpleMessage("Sostituire il database"),
+        "settings_reemplazarBaseDeDatosLocal":
+            MessageLookupByLibrary.simpleMessage(
+                "Sostituisci il database provvisorio"),
         "settings_sincronicacionRealizadaConExito":
             MessageLookupByLibrary.simpleMessage(
                 "Sincronizzazione eseguita correttamente"),
@@ -687,6 +716,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Sincronizzazione delle visite..."),
         "stock": MessageLookupByLibrary.simpleMessage("Stock"),
         "subfamilia": MessageLookupByLibrary.simpleMessage("Sottofamiglia"),
+        "trackId": MessageLookupByLibrary.simpleMessage("Track ID"),
+        "trimestral": MessageLookupByLibrary.simpleMessage("Trimestrale"),
         "ultimosPrecios_buscarUltimosPrecios":
             MessageLookupByLibrary.simpleMessage("Cercare..."),
         "ultimosPrecios_precio": MessageLookupByLibrary.simpleMessage("Prezzo"),

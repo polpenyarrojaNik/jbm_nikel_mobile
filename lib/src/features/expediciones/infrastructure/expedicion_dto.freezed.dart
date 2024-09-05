@@ -46,10 +46,18 @@ mixin _$ExpedicionDTO {
   double get baseImponible => throw _privateConstructorUsedError;
   @JsonKey(name: 'ESTADO_PEDIDO_ID')
   int get pedidoVentaEstadoId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'NUM_LINEAS')
+  int get numLineas => throw _privateConstructorUsedError;
   @JsonKey(name: 'TRACKING_ESTADO')
   String get estadoTrackingId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'ALBARAN_ID')
+  String get albaranId => throw _privateConstructorUsedError;
   @JsonKey(name: 'TRACK_ID')
   String? get trackId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'AGENCIA')
+  String? get agencia => throw _privateConstructorUsedError;
+  @JsonKey(name: 'FECHA_ALBARAN')
+  DateTime get fechaAlbaran => throw _privateConstructorUsedError;
   @JsonKey(name: 'OFERTA_SN')
   String get oferta => throw _privateConstructorUsedError;
   @JsonKey(name: 'LAST_UPDATED')
@@ -87,8 +95,12 @@ abstract class $ExpedicionDTOCopyWith<$Res> {
       @JsonKey(name: 'DIVISA_ID') String divisaId,
       @JsonKey(name: 'BASE_IMPONIBLE') double baseImponible,
       @JsonKey(name: 'ESTADO_PEDIDO_ID') int pedidoVentaEstadoId,
+      @JsonKey(name: 'NUM_LINEAS') int numLineas,
       @JsonKey(name: 'TRACKING_ESTADO') String estadoTrackingId,
+      @JsonKey(name: 'ALBARAN_ID') String albaranId,
       @JsonKey(name: 'TRACK_ID') String? trackId,
+      @JsonKey(name: 'AGENCIA') String? agencia,
+      @JsonKey(name: 'FECHA_ALBARAN') DateTime fechaAlbaran,
       @JsonKey(name: 'OFERTA_SN') String oferta,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
@@ -122,8 +134,12 @@ class _$ExpedicionDTOCopyWithImpl<$Res, $Val extends ExpedicionDTO>
     Object? divisaId = null,
     Object? baseImponible = null,
     Object? pedidoVentaEstadoId = null,
+    Object? numLineas = null,
     Object? estadoTrackingId = null,
+    Object? albaranId = null,
     Object? trackId = freezed,
+    Object? agencia = freezed,
+    Object? fechaAlbaran = null,
     Object? oferta = null,
     Object? lastUpdated = null,
     Object? deleted = null,
@@ -181,14 +197,30 @@ class _$ExpedicionDTOCopyWithImpl<$Res, $Val extends ExpedicionDTO>
           ? _value.pedidoVentaEstadoId
           : pedidoVentaEstadoId // ignore: cast_nullable_to_non_nullable
               as int,
+      numLineas: null == numLineas
+          ? _value.numLineas
+          : numLineas // ignore: cast_nullable_to_non_nullable
+              as int,
       estadoTrackingId: null == estadoTrackingId
           ? _value.estadoTrackingId
           : estadoTrackingId // ignore: cast_nullable_to_non_nullable
+              as String,
+      albaranId: null == albaranId
+          ? _value.albaranId
+          : albaranId // ignore: cast_nullable_to_non_nullable
               as String,
       trackId: freezed == trackId
           ? _value.trackId
           : trackId // ignore: cast_nullable_to_non_nullable
               as String?,
+      agencia: freezed == agencia
+          ? _value.agencia
+          : agencia // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fechaAlbaran: null == fechaAlbaran
+          ? _value.fechaAlbaran
+          : fechaAlbaran // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       oferta: null == oferta
           ? _value.oferta
           : oferta // ignore: cast_nullable_to_non_nullable
@@ -227,8 +259,12 @@ abstract class _$$ExpedicionDTOImplCopyWith<$Res>
       @JsonKey(name: 'DIVISA_ID') String divisaId,
       @JsonKey(name: 'BASE_IMPONIBLE') double baseImponible,
       @JsonKey(name: 'ESTADO_PEDIDO_ID') int pedidoVentaEstadoId,
+      @JsonKey(name: 'NUM_LINEAS') int numLineas,
       @JsonKey(name: 'TRACKING_ESTADO') String estadoTrackingId,
+      @JsonKey(name: 'ALBARAN_ID') String albaranId,
       @JsonKey(name: 'TRACK_ID') String? trackId,
+      @JsonKey(name: 'AGENCIA') String? agencia,
+      @JsonKey(name: 'FECHA_ALBARAN') DateTime fechaAlbaran,
       @JsonKey(name: 'OFERTA_SN') String oferta,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
@@ -260,8 +296,12 @@ class __$$ExpedicionDTOImplCopyWithImpl<$Res>
     Object? divisaId = null,
     Object? baseImponible = null,
     Object? pedidoVentaEstadoId = null,
+    Object? numLineas = null,
     Object? estadoTrackingId = null,
+    Object? albaranId = null,
     Object? trackId = freezed,
+    Object? agencia = freezed,
+    Object? fechaAlbaran = null,
     Object? oferta = null,
     Object? lastUpdated = null,
     Object? deleted = null,
@@ -319,14 +359,30 @@ class __$$ExpedicionDTOImplCopyWithImpl<$Res>
           ? _value.pedidoVentaEstadoId
           : pedidoVentaEstadoId // ignore: cast_nullable_to_non_nullable
               as int,
+      numLineas: null == numLineas
+          ? _value.numLineas
+          : numLineas // ignore: cast_nullable_to_non_nullable
+              as int,
       estadoTrackingId: null == estadoTrackingId
           ? _value.estadoTrackingId
           : estadoTrackingId // ignore: cast_nullable_to_non_nullable
+              as String,
+      albaranId: null == albaranId
+          ? _value.albaranId
+          : albaranId // ignore: cast_nullable_to_non_nullable
               as String,
       trackId: freezed == trackId
           ? _value.trackId
           : trackId // ignore: cast_nullable_to_non_nullable
               as String?,
+      agencia: freezed == agencia
+          ? _value.agencia
+          : agencia // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fechaAlbaran: null == fechaAlbaran
+          ? _value.fechaAlbaran
+          : fechaAlbaran // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       oferta: null == oferta
           ? _value.oferta
           : oferta // ignore: cast_nullable_to_non_nullable
@@ -360,8 +416,12 @@ class _$ExpedicionDTOImpl extends _ExpedicionDTO {
       @JsonKey(name: 'DIVISA_ID') required this.divisaId,
       @JsonKey(name: 'BASE_IMPONIBLE') required this.baseImponible,
       @JsonKey(name: 'ESTADO_PEDIDO_ID') required this.pedidoVentaEstadoId,
+      @JsonKey(name: 'NUM_LINEAS') required this.numLineas,
       @JsonKey(name: 'TRACKING_ESTADO') required this.estadoTrackingId,
+      @JsonKey(name: 'ALBARAN_ID') required this.albaranId,
       @JsonKey(name: 'TRACK_ID') this.trackId,
+      @JsonKey(name: 'AGENCIA') this.agencia,
+      @JsonKey(name: 'FECHA_ALBARAN') required this.fechaAlbaran,
       @JsonKey(name: 'OFERTA_SN') required this.oferta,
       @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
       @JsonKey(name: 'DELETED') required this.deleted})
@@ -410,11 +470,23 @@ class _$ExpedicionDTOImpl extends _ExpedicionDTO {
   @JsonKey(name: 'ESTADO_PEDIDO_ID')
   final int pedidoVentaEstadoId;
   @override
+  @JsonKey(name: 'NUM_LINEAS')
+  final int numLineas;
+  @override
   @JsonKey(name: 'TRACKING_ESTADO')
   final String estadoTrackingId;
   @override
+  @JsonKey(name: 'ALBARAN_ID')
+  final String albaranId;
+  @override
   @JsonKey(name: 'TRACK_ID')
   final String? trackId;
+  @override
+  @JsonKey(name: 'AGENCIA')
+  final String? agencia;
+  @override
+  @JsonKey(name: 'FECHA_ALBARAN')
+  final DateTime fechaAlbaran;
   @override
   @JsonKey(name: 'OFERTA_SN')
   final String oferta;
@@ -427,7 +499,7 @@ class _$ExpedicionDTOImpl extends _ExpedicionDTO {
 
   @override
   String toString() {
-    return 'ExpedicionDTO(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, pedidoVentaDate: $pedidoVentaDate, clienteId: $clienteId, direccionId: $direccionId, nombreCliente: $nombreCliente, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, paisId: $paisId, divisaId: $divisaId, baseImponible: $baseImponible, pedidoVentaEstadoId: $pedidoVentaEstadoId, estadoTrackingId: $estadoTrackingId, trackId: $trackId, oferta: $oferta, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ExpedicionDTO(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, pedidoVentaDate: $pedidoVentaDate, clienteId: $clienteId, direccionId: $direccionId, nombreCliente: $nombreCliente, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, paisId: $paisId, divisaId: $divisaId, baseImponible: $baseImponible, pedidoVentaEstadoId: $pedidoVentaEstadoId, numLineas: $numLineas, estadoTrackingId: $estadoTrackingId, albaranId: $albaranId, trackId: $trackId, agencia: $agencia, fechaAlbaran: $fechaAlbaran, oferta: $oferta, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -460,9 +532,16 @@ class _$ExpedicionDTOImpl extends _ExpedicionDTO {
                 other.baseImponible == baseImponible) &&
             (identical(other.pedidoVentaEstadoId, pedidoVentaEstadoId) ||
                 other.pedidoVentaEstadoId == pedidoVentaEstadoId) &&
+            (identical(other.numLineas, numLineas) ||
+                other.numLineas == numLineas) &&
             (identical(other.estadoTrackingId, estadoTrackingId) ||
                 other.estadoTrackingId == estadoTrackingId) &&
+            (identical(other.albaranId, albaranId) ||
+                other.albaranId == albaranId) &&
             (identical(other.trackId, trackId) || other.trackId == trackId) &&
+            (identical(other.agencia, agencia) || other.agencia == agencia) &&
+            (identical(other.fechaAlbaran, fechaAlbaran) ||
+                other.fechaAlbaran == fechaAlbaran) &&
             (identical(other.oferta, oferta) || other.oferta == oferta) &&
             (identical(other.lastUpdated, lastUpdated) ||
                 other.lastUpdated == lastUpdated) &&
@@ -471,26 +550,31 @@ class _$ExpedicionDTOImpl extends _ExpedicionDTO {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      empresaId,
-      pedidoVentaId,
-      pedidoVentaDate,
-      clienteId,
-      direccionId,
-      nombreCliente,
-      codigoPostal,
-      poblacion,
-      provincia,
-      paisId,
-      divisaId,
-      baseImponible,
-      pedidoVentaEstadoId,
-      estadoTrackingId,
-      trackId,
-      oferta,
-      lastUpdated,
-      deleted);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        empresaId,
+        pedidoVentaId,
+        pedidoVentaDate,
+        clienteId,
+        direccionId,
+        nombreCliente,
+        codigoPostal,
+        poblacion,
+        provincia,
+        paisId,
+        divisaId,
+        baseImponible,
+        pedidoVentaEstadoId,
+        numLineas,
+        estadoTrackingId,
+        albaranId,
+        trackId,
+        agencia,
+        fechaAlbaran,
+        oferta,
+        lastUpdated,
+        deleted
+      ]);
 
   /// Create a copy of ExpedicionDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -523,8 +607,12 @@ abstract class _ExpedicionDTO extends ExpedicionDTO {
       @JsonKey(name: 'DIVISA_ID') required final String divisaId,
       @JsonKey(name: 'BASE_IMPONIBLE') required final double baseImponible,
       @JsonKey(name: 'ESTADO_PEDIDO_ID') required final int pedidoVentaEstadoId,
+      @JsonKey(name: 'NUM_LINEAS') required final int numLineas,
       @JsonKey(name: 'TRACKING_ESTADO') required final String estadoTrackingId,
+      @JsonKey(name: 'ALBARAN_ID') required final String albaranId,
       @JsonKey(name: 'TRACK_ID') final String? trackId,
+      @JsonKey(name: 'AGENCIA') final String? agencia,
+      @JsonKey(name: 'FECHA_ALBARAN') required final DateTime fechaAlbaran,
       @JsonKey(name: 'OFERTA_SN') required final String oferta,
       @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
       @JsonKey(name: 'DELETED')
@@ -574,11 +662,23 @@ abstract class _ExpedicionDTO extends ExpedicionDTO {
   @JsonKey(name: 'ESTADO_PEDIDO_ID')
   int get pedidoVentaEstadoId;
   @override
+  @JsonKey(name: 'NUM_LINEAS')
+  int get numLineas;
+  @override
   @JsonKey(name: 'TRACKING_ESTADO')
   String get estadoTrackingId;
   @override
+  @JsonKey(name: 'ALBARAN_ID')
+  String get albaranId;
+  @override
   @JsonKey(name: 'TRACK_ID')
   String? get trackId;
+  @override
+  @JsonKey(name: 'AGENCIA')
+  String? get agencia;
+  @override
+  @JsonKey(name: 'FECHA_ALBARAN')
+  DateTime get fechaAlbaran;
   @override
   @JsonKey(name: 'OFERTA_SN')
   String get oferta;

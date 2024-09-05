@@ -23,7 +23,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aceptar": MessageLookupByLibrary.simpleMessage("Accept"),
-        "almacenPropio": MessageLookupByLibrary.simpleMessage("Own store"),
+        "almacenPropio": MessageLookupByLibrary.simpleMessage("Own warehouse"),
+        "alto": MessageLookupByLibrary.simpleMessage("High"),
         "articulo": MessageLookupByLibrary.simpleMessage("Article"),
         "articulo_index_buscarArticulos":
             MessageLookupByLibrary.simpleMessage("Search articles..."),
@@ -143,6 +144,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "auth_loginPage_titulo":
             MessageLookupByLibrary.simpleMessage("Welcome to"),
         "auth_loginPage_usuario": MessageLookupByLibrary.simpleMessage("User"),
+        "bajo": MessageLookupByLibrary.simpleMessage("Low"),
         "cancelar": MessageLookupByLibrary.simpleMessage("Cancel"),
         "capacidad": MessageLookupByLibrary.simpleMessage("Capacity"),
         "catalogos_index_buscarCatalogo":
@@ -480,16 +482,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "familia": MessageLookupByLibrary.simpleMessage("Family"),
         "frecuenciaPedido":
             MessageLookupByLibrary.simpleMessage("Order frequency"),
+        "grande": MessageLookupByLibrary.simpleMessage("Big"),
         "haOcurridoUnError":
             MessageLookupByLibrary.simpleMessage("An error occurred"),
         "interesCliente":
             MessageLookupByLibrary.simpleMessage("Customer interest"),
         "introduceClaveDeNikel":
             MessageLookupByLibrary.simpleMessage("Introduce Nikel key"),
+        "media": MessageLookupByLibrary.simpleMessage("Medium"),
+        "medio": MessageLookupByLibrary.simpleMessage("Medium"),
+        "mensual": MessageLookupByLibrary.simpleMessage("Monthly"),
         "motivoNoInteres":
-            MessageLookupByLibrary.simpleMessage("No interest reason"),
+            MessageLookupByLibrary.simpleMessage("Reason not interested"),
         "motivoNoPedido":
-            MessageLookupByLibrary.simpleMessage("No order reason"),
+            MessageLookupByLibrary.simpleMessage("Reason not ordered"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
         "noSeHaPodidoSincronizar": MessageLookupByLibrary.simpleMessage(
             "Can not synchronize correctly"),
@@ -497,6 +503,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notification_detail":
             MessageLookupByLibrary.simpleMessage("Notification detail"),
         "notifications": MessageLookupByLibrary.simpleMessage(" Notifications"),
+        "numLineas": MessageLookupByLibrary.simpleMessage("Num. Lines"),
         "ofertaRealziada":
             MessageLookupByLibrary.simpleMessage("Offer released"),
         "paises_search_title":
@@ -646,11 +653,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "pedido_show_pedidoVentaLineas_cantidadPendiente":
             MessageLookupByLibrary.simpleMessage("Pending quantity"),
         "pending": MessageLookupByLibrary.simpleMessage("Pending"),
+        "pequena": MessageLookupByLibrary.simpleMessage("Small"),
         "precioNoPuedeSerMenorAlPrecioMinimo":
             MessageLookupByLibrary.simpleMessage(
                 "The price cannot be less than the minimum price"),
         "search": MessageLookupByLibrary.simpleMessage("Search..."),
         "sector": MessageLookupByLibrary.simpleMessage("Sector"),
+        "semanal": MessageLookupByLibrary.simpleMessage("Weekly"),
         "settings_cerrar_sesion":
             MessageLookupByLibrary.simpleMessage("Sign out"),
         "settings_creandoArchivo":
@@ -690,6 +699,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Synchronizing visits..."),
         "stock": MessageLookupByLibrary.simpleMessage("Stock"),
         "subfamilia": MessageLookupByLibrary.simpleMessage("Subfamily"),
+        "trackId": MessageLookupByLibrary.simpleMessage("Track ID"),
+        "trimestral": MessageLookupByLibrary.simpleMessage("Quarterly"),
         "ultimosPrecios_buscarUltimosPrecios":
             MessageLookupByLibrary.simpleMessage("Search..."),
         "ultimosPrecios_precio": MessageLookupByLibrary.simpleMessage("Price"),

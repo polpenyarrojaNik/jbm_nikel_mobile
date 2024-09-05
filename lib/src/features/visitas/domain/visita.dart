@@ -36,15 +36,15 @@ class Visita with _$Visita {
     required double longitud,
     String? visitaAppId,
     required bool ofertaRealizada,
-    required bool interesCliente,
+    required InteresCliente interesCliente,
     required bool pedidoRealizado,
     VisitaMotivoNoVenta? motivoNoInteres,
     VisitaMotivoNoVenta? motivoNoPedido,
     VisitaSector? sector,
     VisitaCompetidor? competencia,
     required bool almacenPropio,
-    required String capacidad,
-    required String frecuenciaPedido,
+    required Capacidad capacidad,
+    required FrecuenciaPedido frecuenciaPedido,
     required DateTime lastUpdated,
     required bool deleted,
     required bool enviada,
@@ -60,3 +60,9 @@ class Visita with _$Visita {
       ? clienteProvisionalNombre!
       : '#$clienteId ${(nombreCliente != null) ? nombreCliente : ''}';
 }
+
+enum FrecuenciaPedido { semanal, mensual, trimestral }
+
+enum InteresCliente { alto, medio, bajo }
+
+enum Capacidad { grande, media, pequena }

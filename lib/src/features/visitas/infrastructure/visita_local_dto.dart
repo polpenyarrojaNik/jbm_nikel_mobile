@@ -1,5 +1,6 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita_competidor.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita_motivos_no_venta.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita_sector.dart';
@@ -90,15 +91,15 @@ class VisitaLocalDTO
       resumen: visita.resumen,
       marcasCompetencia: visita.marcasCompetencia,
       ofertaRealizada: visita.ofertaRealizada ? 'S' : 'N',
-      interesCliente: visita.interesCliente ? 'S' : 'N',
+      interesCliente: getIdFromInteresCliente(visita.interesCliente),
       pedidoRealizado: visita.pedidoRealizado ? 'S' : 'N',
       codigoMotivoNoInteres: visita.motivoNoInteres?.id,
       codigoMotivoNoPedido: visita.motivoNoPedido?.id,
       codigoSector: visita.sector?.id,
       codigoCompetencia: visita.competencia?.id,
       almacenPropio: visita.almacenPropio ? 'S' : 'N',
-      capacidad: visita.capacidad,
-      frecuenciaPedido: visita.frecuenciaPedido,
+      capacidad: getIdFromCapacidad(visita.capacidad),
+      frecuenciaPedido: getIdFromFrecuenciaPedido(visita.frecuenciaPedido),
       latitud: visita.latitud,
       longitud: visita.longitud,
       enviada: (visita.enviada) ? 'S' : 'N',
@@ -138,15 +139,15 @@ class VisitaLocalDTO
         resumen: resumen,
         marcasCompetencia: marcasCompetencia,
         ofertaRealizada: ofertaRealizada == 'S',
-        interesCliente: interesCliente == 'S',
+        interesCliente: getInteresClienteFromId(interesCliente),
         pedidoRealizado: pedidoRealizado == 'S',
         motivoNoInteres: motivoNoInteres,
         motivoNoPedido: motivoNoPedido,
         sector: sector,
         competencia: competencia,
         almacenPropio: almacenPropio == 'S',
-        capacidad: capacidad,
-        frecuenciaPedido: frecuenciaPedido,
+        capacidad: getCapacidadFromId(capacidad),
+        frecuenciaPedido: getFrecuenciaPedidoFromId(frecuenciaPedido),
         latitud: latitud,
         longitud: longitud,
         visitaAppId: visitaAppId,

@@ -217,11 +217,13 @@ class _ReemplazarArchivoBaseDeDatosLocalButton extends ConsumerWidget {
             color: Theme.of(context).colorScheme.onError,
           ),
           const SizedBox(width: 5),
-          Text(
-            S.of(context).settings_reemplazarBaseDeDatosLocal,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Theme.of(context).colorScheme.onError,
-                ),
+          Flexible(
+            child: Text(
+              S.of(context).settings_reemplazarBaseDeDatosLocal,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Theme.of(context).colorScheme.onError,
+                  ),
+            ),
           ),
         ],
       ),

@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:jbm_nikel_mobile/src/core/domain/pais.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_componente.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
+import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita.dart';
 import 'package:money2/money2.dart';
 
 import '../../../generated/l10n.dart';
@@ -438,4 +439,91 @@ bool isSameName(Cliente cliente) {
 
 T getFormValue<T>(GlobalKey<FormBuilderState> formKey, String fieldName) {
   return formKey.currentState?.value[fieldName] as T;
+}
+
+FrecuenciaPedido getFrecuenciaPedidoFromId(String id) {
+  switch (id) {
+    case 'M':
+      return FrecuenciaPedido.semanal;
+    case 'S':
+      return FrecuenciaPedido.mensual;
+    case 'T':
+      return FrecuenciaPedido.trimestral;
+    default:
+      return FrecuenciaPedido.mensual;
+  }
+}
+
+String getIdFromFrecuenciaPedido(FrecuenciaPedido frecuenciaPedido) {
+  return frecuenciaPedido == FrecuenciaPedido.mensual
+      ? 'M'
+      : frecuenciaPedido == FrecuenciaPedido.semanal
+          ? 'S'
+          : 'T';
+}
+
+String getNameFromFrecuenciaPedido(FrecuenciaPedido frecuenciaPedido) {
+  return frecuenciaPedido == FrecuenciaPedido.mensual
+      ? S.current.mensual
+      : frecuenciaPedido == FrecuenciaPedido.semanal
+          ? S.current.semanal
+          : S.current.trimestral;
+}
+
+InteresCliente getInteresClienteFromId(String id) {
+  switch (id) {
+    case 'A':
+      return InteresCliente.alto;
+    case 'M':
+      return InteresCliente.medio;
+    case 'B':
+      return InteresCliente.bajo;
+    default:
+      return InteresCliente.medio;
+  }
+}
+
+String getIdFromInteresCliente(InteresCliente interesCliente) {
+  return interesCliente == InteresCliente.alto
+      ? 'A'
+      : interesCliente == InteresCliente.medio
+          ? 'M'
+          : 'B';
+}
+
+String getNameFromInteresCliente(InteresCliente interesCliente) {
+  return interesCliente == InteresCliente.alto
+      ? S.current.alto
+      : interesCliente == InteresCliente.medio
+          ? S.current.medio
+          : S.current.bajo;
+}
+
+Capacidad getCapacidadFromId(String id) {
+  switch (id) {
+    case 'G':
+      return Capacidad.grande;
+    case 'M':
+      return Capacidad.media;
+    case 'P':
+      return Capacidad.pequena;
+    default:
+      return Capacidad.media;
+  }
+}
+
+String getIdFromCapacidad(Capacidad capacidad) {
+  return capacidad == Capacidad.grande
+      ? 'G'
+      : capacidad == Capacidad.media
+          ? 'M'
+          : 'P';
+}
+
+String getNameFromCapacidad(Capacidad capacidad) {
+  return capacidad == Capacidad.grande
+      ? S.current.grande
+      : capacidad == Capacidad.media
+          ? S.current.media
+          : S.current.pequena;
 }

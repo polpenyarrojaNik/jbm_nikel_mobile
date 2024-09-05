@@ -253,7 +253,8 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
               marcasCompetencia:
                   formKey.currentState!.value['marcasCompetencia'] as String?,
               ofertaRealizada: getFormValue<bool>(formKey, 'ofertaRealizada'),
-              interesCliente: getFormValue<bool>(formKey, 'interesCliente'),
+              interesCliente:
+                  getFormValue<InteresCliente>(formKey, 'interesCliente'),
               pedidoRealizado: getFormValue<bool>(formKey, 'pedidoRealizado'),
               sector: getFormValue<VisitaSector?>(formKey, 'sector'),
               competencia:
@@ -263,9 +264,9 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
               motivoNoPedido:
                   getFormValue<VisitaMotivoNoVenta?>(formKey, 'motivoNoPedido'),
               almacenPropio: getFormValue<bool>(formKey, 'almacenPropio'),
-              capacidad: getFormValue<String>(formKey, 'capacidad'),
+              capacidad: getFormValue<Capacidad>(formKey, 'capacidad'),
               frecuenciaPedido:
-                  getFormValue<String>(formKey, 'frecuenciaPedido'),
+                  getFormValue<FrecuenciaPedido>(formKey, 'frecuenciaPedido'),
               latitud: 0,
               longitud: 0,
               visitaAppId: widget.id,
@@ -448,17 +449,17 @@ class _VisitaForm extends StatelessWidget {
             ]),
           ),
           FormBuilderSwitch(
-            name: 'interesCliente',
-            title: Text(S.of(context).interesCliente),
-            initialValue: visita?.interesCliente ?? false,
+            name: 'pedidoRealizado',
+            title: Text(S.of(context).pedidoRealizado),
+            initialValue: visita?.pedidoRealizado ?? false,
             validator: FormBuilderValidators.compose([
               FormBuilderValidators.required(),
             ]),
           ),
           FormBuilderSwitch(
-            name: 'pedidoRealizado',
-            title: Text(S.of(context).pedidoRealizado),
-            initialValue: visita?.pedidoRealizado ?? false,
+            name: 'almacenPropio',
+            title: Text(S.of(context).almacenPropio),
+            initialValue: visita?.almacenPropio ?? false,
             validator: FormBuilderValidators.compose([
               FormBuilderValidators.required(),
             ]),
@@ -471,6 +472,24 @@ class _VisitaForm extends StatelessWidget {
             name: 'competencia',
             initialValue: visita?.competencia,
           ),
+          AppFormBuilderSearchableDropdown<InteresCliente>(
+            name: 'interesCliente',
+            decoration: InputDecoration(
+              labelText: S.of(context).interesCliente,
+              border: InputBorder.none,
+            ),
+            initialValue: visita?.interesCliente,
+            items: const [
+              InteresCliente.alto,
+              InteresCliente.medio,
+              InteresCliente.bajo,
+            ],
+            itemAsString: (item) => getNameFromInteresCliente(item),
+            compareFn: (i, s) => i.index == s.index,
+            validator: FormBuilderValidators.compose([
+              FormBuilderValidators.required(),
+            ]),
+          ),
           VisitaMotivoNoVentaFormDropdown(
             name: 'motivoNoInteres',
             initialValue: visita?.motivoNoInteres,
@@ -481,33 +500,39 @@ class _VisitaForm extends StatelessWidget {
             initialValue: visita?.motivoNoPedido,
             labelText: S.of(context).motivoNoPedido,
           ),
-          FormBuilderSwitch(
-            name: 'almacenPropio',
-            title: Text(S.of(context).almacenPropio),
-            initialValue: visita?.almacenPropio ?? false,
-            validator: FormBuilderValidators.compose([
-              FormBuilderValidators.required(),
-            ]),
-          ),
-          FormBuilderTextField(
+          AppFormBuilderSearchableDropdown<Capacidad>(
             name: 'capacidad',
-            initialValue: visita?.capacidad,
             decoration: InputDecoration(
               labelText: S.of(context).capacidad,
+              border: InputBorder.none,
             ),
+            initialValue: visita?.capacidad,
+            items: const [
+              Capacidad.grande,
+              Capacidad.media,
+              Capacidad.pequena,
+            ],
+            itemAsString: (item) => getNameFromCapacidad(item),
+            compareFn: (i, s) => i.index == s.index,
             validator: FormBuilderValidators.compose([
-              FormBuilderValidators.maxLength(1),
               FormBuilderValidators.required(),
             ]),
           ),
-          FormBuilderTextField(
+          AppFormBuilderSearchableDropdown<FrecuenciaPedido>(
             name: 'frecuenciaPedido',
-            initialValue: visita?.frecuenciaPedido,
             decoration: InputDecoration(
               labelText: S.of(context).frecuenciaPedido,
+              border: InputBorder.none,
             ),
+            initialValue: visita?.frecuenciaPedido,
+            items: const [
+              FrecuenciaPedido.semanal,
+              FrecuenciaPedido.mensual,
+              FrecuenciaPedido.trimestral,
+            ],
+            itemAsString: (item) => getNameFromFrecuenciaPedido(item),
+            compareFn: (i, s) => i.index == s.index,
             validator: FormBuilderValidators.compose([
-              FormBuilderValidators.maxLength(1),
               FormBuilderValidators.required(),
             ]),
           ),

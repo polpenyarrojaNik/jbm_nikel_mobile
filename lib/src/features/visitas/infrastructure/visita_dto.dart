@@ -1,5 +1,6 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita.dart';
 
@@ -76,15 +77,15 @@ class VisitaDTO with _$VisitaDTO implements Insertable<VisitaDTO> {
       resumen: resumen,
       marcasCompetencia: marcasCompetencia,
       ofertaRealizada: ofertaRealizada == 'S',
-      interesCliente: interesCliente == 'S',
+      interesCliente: getInteresClienteFromId(interesCliente),
       pedidoRealizado: pedidoRealizado == 'S',
       motivoNoInteres: motivoNoInteres,
       motivoNoPedido: motivoNoPedido,
       sector: sector,
       competencia: competencia,
       almacenPropio: almacenPropio == 'S',
-      capacidad: capacidad,
-      frecuenciaPedido: frecuenciaPedido,
+      capacidad: getCapacidadFromId(capacidad),
+      frecuenciaPedido: getFrecuenciaPedidoFromId(frecuenciaPedido),
       latitud: latitud,
       longitud: longitud,
       lastUpdated: lastUpdated,

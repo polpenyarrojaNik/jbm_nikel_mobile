@@ -33,8 +33,12 @@ mixin _$Expedicion {
       throw _privateConstructorUsedError;
   bool? get oferta => throw _privateConstructorUsedError;
   String? get pedidoAppId => throw _privateConstructorUsedError;
+  int get numLineas => throw _privateConstructorUsedError;
   TrackingEstado get trackingEstado => throw _privateConstructorUsedError;
+  String get albaranId => throw _privateConstructorUsedError;
   String? get trackId => throw _privateConstructorUsedError;
+  String? get agencia => throw _privateConstructorUsedError;
+  DateTime get fechaAlbaran => throw _privateConstructorUsedError;
   bool get enviada => throw _privateConstructorUsedError;
   bool get tratada => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
@@ -70,8 +74,12 @@ abstract class $ExpedicionCopyWith<$Res> {
       PedidoVentaEstado? pedidoVentaEstado,
       bool? oferta,
       String? pedidoAppId,
+      int numLineas,
       TrackingEstado trackingEstado,
+      String albaranId,
       String? trackId,
+      String? agencia,
+      DateTime fechaAlbaran,
       bool enviada,
       bool tratada,
       DateTime lastUpdated,
@@ -114,8 +122,12 @@ class _$ExpedicionCopyWithImpl<$Res, $Val extends Expedicion>
     Object? pedidoVentaEstado = freezed,
     Object? oferta = freezed,
     Object? pedidoAppId = freezed,
+    Object? numLineas = null,
     Object? trackingEstado = null,
+    Object? albaranId = null,
     Object? trackId = freezed,
+    Object? agencia = freezed,
+    Object? fechaAlbaran = null,
     Object? enviada = null,
     Object? tratada = null,
     Object? lastUpdated = null,
@@ -186,14 +198,30 @@ class _$ExpedicionCopyWithImpl<$Res, $Val extends Expedicion>
           ? _value.pedidoAppId
           : pedidoAppId // ignore: cast_nullable_to_non_nullable
               as String?,
+      numLineas: null == numLineas
+          ? _value.numLineas
+          : numLineas // ignore: cast_nullable_to_non_nullable
+              as int,
       trackingEstado: null == trackingEstado
           ? _value.trackingEstado
           : trackingEstado // ignore: cast_nullable_to_non_nullable
               as TrackingEstado,
+      albaranId: null == albaranId
+          ? _value.albaranId
+          : albaranId // ignore: cast_nullable_to_non_nullable
+              as String,
       trackId: freezed == trackId
           ? _value.trackId
           : trackId // ignore: cast_nullable_to_non_nullable
               as String?,
+      agencia: freezed == agencia
+          ? _value.agencia
+          : agencia // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fechaAlbaran: null == fechaAlbaran
+          ? _value.fechaAlbaran
+          : fechaAlbaran // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       enviada: null == enviada
           ? _value.enviada
           : enviada // ignore: cast_nullable_to_non_nullable
@@ -287,8 +315,12 @@ abstract class _$$ExpedicionImplCopyWith<$Res>
       PedidoVentaEstado? pedidoVentaEstado,
       bool? oferta,
       String? pedidoAppId,
+      int numLineas,
       TrackingEstado trackingEstado,
+      String albaranId,
       String? trackId,
+      String? agencia,
+      DateTime fechaAlbaran,
       bool enviada,
       bool tratada,
       DateTime lastUpdated,
@@ -333,8 +365,12 @@ class __$$ExpedicionImplCopyWithImpl<$Res>
     Object? pedidoVentaEstado = freezed,
     Object? oferta = freezed,
     Object? pedidoAppId = freezed,
+    Object? numLineas = null,
     Object? trackingEstado = null,
+    Object? albaranId = null,
     Object? trackId = freezed,
+    Object? agencia = freezed,
+    Object? fechaAlbaran = null,
     Object? enviada = null,
     Object? tratada = null,
     Object? lastUpdated = null,
@@ -405,14 +441,30 @@ class __$$ExpedicionImplCopyWithImpl<$Res>
           ? _value.pedidoAppId
           : pedidoAppId // ignore: cast_nullable_to_non_nullable
               as String?,
+      numLineas: null == numLineas
+          ? _value.numLineas
+          : numLineas // ignore: cast_nullable_to_non_nullable
+              as int,
       trackingEstado: null == trackingEstado
           ? _value.trackingEstado
           : trackingEstado // ignore: cast_nullable_to_non_nullable
               as TrackingEstado,
+      albaranId: null == albaranId
+          ? _value.albaranId
+          : albaranId // ignore: cast_nullable_to_non_nullable
+              as String,
       trackId: freezed == trackId
           ? _value.trackId
           : trackId // ignore: cast_nullable_to_non_nullable
               as String?,
+      agencia: freezed == agencia
+          ? _value.agencia
+          : agencia // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fechaAlbaran: null == fechaAlbaran
+          ? _value.fechaAlbaran
+          : fechaAlbaran // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       enviada: null == enviada
           ? _value.enviada
           : enviada // ignore: cast_nullable_to_non_nullable
@@ -453,8 +505,12 @@ class _$ExpedicionImpl extends _Expedicion {
       this.pedidoVentaEstado,
       this.oferta,
       this.pedidoAppId,
+      required this.numLineas,
       required this.trackingEstado,
+      required this.albaranId,
       required this.trackId,
+      this.agencia,
+      required this.fechaAlbaran,
       required this.enviada,
       required this.tratada,
       required this.lastUpdated,
@@ -494,9 +550,17 @@ class _$ExpedicionImpl extends _Expedicion {
   @override
   final String? pedidoAppId;
   @override
+  final int numLineas;
+  @override
   final TrackingEstado trackingEstado;
   @override
+  final String albaranId;
+  @override
   final String? trackId;
+  @override
+  final String? agencia;
+  @override
+  final DateTime fechaAlbaran;
   @override
   final bool enviada;
   @override
@@ -508,7 +572,7 @@ class _$ExpedicionImpl extends _Expedicion {
 
   @override
   String toString() {
-    return 'Expedicion(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, usuarioId: $usuarioId, pedidoVentaDate: $pedidoVentaDate, clienteId: $clienteId, direccionId: $direccionId, nombreCliente: $nombreCliente, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, divisa: $divisa, baseImponible: $baseImponible, pedidoVentaEstado: $pedidoVentaEstado, oferta: $oferta, pedidoAppId: $pedidoAppId, trackingEstado: $trackingEstado, trackId: $trackId, enviada: $enviada, tratada: $tratada, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'Expedicion(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, usuarioId: $usuarioId, pedidoVentaDate: $pedidoVentaDate, clienteId: $clienteId, direccionId: $direccionId, nombreCliente: $nombreCliente, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, divisa: $divisa, baseImponible: $baseImponible, pedidoVentaEstado: $pedidoVentaEstado, oferta: $oferta, pedidoAppId: $pedidoAppId, numLineas: $numLineas, trackingEstado: $trackingEstado, albaranId: $albaranId, trackId: $trackId, agencia: $agencia, fechaAlbaran: $fechaAlbaran, enviada: $enviada, tratada: $tratada, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -545,9 +609,16 @@ class _$ExpedicionImpl extends _Expedicion {
             (identical(other.oferta, oferta) || other.oferta == oferta) &&
             (identical(other.pedidoAppId, pedidoAppId) ||
                 other.pedidoAppId == pedidoAppId) &&
+            (identical(other.numLineas, numLineas) ||
+                other.numLineas == numLineas) &&
             (identical(other.trackingEstado, trackingEstado) ||
                 other.trackingEstado == trackingEstado) &&
+            (identical(other.albaranId, albaranId) ||
+                other.albaranId == albaranId) &&
             (identical(other.trackId, trackId) || other.trackId == trackId) &&
+            (identical(other.agencia, agencia) || other.agencia == agencia) &&
+            (identical(other.fechaAlbaran, fechaAlbaran) ||
+                other.fechaAlbaran == fechaAlbaran) &&
             (identical(other.enviada, enviada) || other.enviada == enviada) &&
             (identical(other.tratada, tratada) || other.tratada == tratada) &&
             (identical(other.lastUpdated, lastUpdated) ||
@@ -574,8 +645,12 @@ class _$ExpedicionImpl extends _Expedicion {
         pedidoVentaEstado,
         oferta,
         pedidoAppId,
+        numLineas,
         trackingEstado,
+        albaranId,
         trackId,
+        agencia,
+        fechaAlbaran,
         enviada,
         tratada,
         lastUpdated,
@@ -609,8 +684,12 @@ abstract class _Expedicion extends Expedicion {
       final PedidoVentaEstado? pedidoVentaEstado,
       final bool? oferta,
       final String? pedidoAppId,
+      required final int numLineas,
       required final TrackingEstado trackingEstado,
+      required final String albaranId,
       required final String? trackId,
+      final String? agencia,
+      required final DateTime fechaAlbaran,
       required final bool enviada,
       required final bool tratada,
       required final DateTime lastUpdated,
@@ -650,9 +729,17 @@ abstract class _Expedicion extends Expedicion {
   @override
   String? get pedidoAppId;
   @override
+  int get numLineas;
+  @override
   TrackingEstado get trackingEstado;
   @override
+  String get albaranId;
+  @override
   String? get trackId;
+  @override
+  String? get agencia;
+  @override
+  DateTime get fechaAlbaran;
   @override
   bool get enviada;
   @override
