@@ -89,7 +89,7 @@ class ArticuloDTO with _$ArticuloDTO implements Insertable<ArticuloDTO> {
     @JsonKey(name: 'GS1_128_SUBCAJA') String? gs1128Subcaja,
     @JsonKey(name: 'GS1_128_CAJA') String? gs1128Caja,
     @JsonKey(name: 'GS1_128_PALET') String? gs1128Palet,
-    @JsonKey(name: 'VENTAS_ORDEN') int? ventasOrden,
+    // @JsonKey(name: 'VENTAS_ORDEN') int? ventasOrden,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _ArticuloDTO;
@@ -174,7 +174,7 @@ class ArticuloDTO with _$ArticuloDTO implements Insertable<ArticuloDTO> {
       margenAnyoActual: 0.0,
       margenAnyoAnterior: 0.0,
       margenHaceDosAnyos: 0.0,
-      ventasOrden: ventasOrden,
+      // ventasOrden: ventasOrden,
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S') ? true : false,
     );
@@ -249,7 +249,7 @@ class ArticuloDTO with _$ArticuloDTO implements Insertable<ArticuloDTO> {
       gs1128Subcaja: Value(gs1128Subcaja),
       gs1128Caja: Value(gs1128Caja),
       gs1128Palet: Value(gs1128Palet),
-      ventasOrden: Value(ventasOrden),
+      // ventasOrden: Value(ventasOrden),
       lastUpdated: Value(lastUpdated),
       deleted: Value(deleted),
     ).toColumns(nullToAbsent);
@@ -347,7 +347,7 @@ class ArticuloTable extends Table {
   TextColumn get gs1128Subcaja => text().nullable().named('GS1_128_SUBCAJA')();
   TextColumn get gs1128Caja => text().nullable().named('GS1_128_CAJA')();
   TextColumn get gs1128Palet => text().nullable().named('GS1_128_PALET')();
-  IntColumn get ventasOrden => integer().nullable().named('GS1_128_PALET')();
+  // IntColumn get ventasOrden => integer().nullable().named('VENTAS_ORDEN')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('DELETED')();

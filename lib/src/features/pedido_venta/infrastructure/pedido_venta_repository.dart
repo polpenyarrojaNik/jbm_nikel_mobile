@@ -1069,6 +1069,12 @@ class PedidoVentaRepository {
   Future<void> insertPedidoInDB(PedidoVentaLocalDTO pedidoVentaLocalDTO,
       List<PedidoVentaLineaLocalDTO> pedidoVentaLineaLocalDTOList) async {
     try {
+      if (pedidoVentaLocalDTO.borrador == 'S') {
+        await (_localDb.delete(_localDb.pedidoVentaLocalTable)
+              ..where((tbl) => tbl.borrador.equals('S')))
+            .go();
+      }
+
       return await _localDb.transaction(() async {
         await _localDb
             .into(_localDb.pedidoVentaLocalTable)
