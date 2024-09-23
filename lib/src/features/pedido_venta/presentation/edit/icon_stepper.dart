@@ -276,7 +276,7 @@ class _IconStepperState extends State<IconStepper>
       (int i) => GlobalKey(),
     );
 
-    for (int i = 0; i < widget.steps.length; i += 1) {
+    for (var i = 0; i < widget.steps.length; i += 1) {
       _oldStates[i] = widget.steps[i].state;
     }
   }
@@ -286,7 +286,7 @@ class _IconStepperState extends State<IconStepper>
     super.didUpdateWidget(oldWidget);
     assert(widget.steps.length == oldWidget.steps.length);
 
-    for (int i = 0; i < oldWidget.steps.length; i += 1) {
+    for (var i = 0; i < oldWidget.steps.length; i += 1) {
       _oldStates[i] = oldWidget.steps[i].state;
     }
   }
@@ -316,7 +316,7 @@ class _IconStepperState extends State<IconStepper>
   }
 
   Widget _buildCircleChild(int index, bool oldState) {
-    final bool isDarkActive = _isDark() && widget.steps[index].isActive;
+    final isDarkActive = _isDark() && widget.steps[index].isActive;
 
     if (widget.steps[index].icon == null) {
       return Text(
@@ -335,8 +335,8 @@ class _IconStepperState extends State<IconStepper>
   }
 
   Color _circleColor(int index) {
-    final IconStepState state = widget.steps[index].state;
-    final ColorScheme colorScheme = Theme.of(context).colorScheme;
+    final state = widget.steps[index].state;
+    final colorScheme = Theme.of(context).colorScheme;
 
     if (widget.steps[index].isActive) {
       switch (state) {
@@ -354,7 +354,7 @@ class _IconStepperState extends State<IconStepper>
     } else {
       return !_isDark()
           ? colorScheme.onSurface.withOpacity(0.38)
-          : colorScheme.background;
+          : colorScheme.surface;
     }
   }
 
@@ -433,8 +433,8 @@ class _IconStepperState extends State<IconStepper>
     //       onStepCancel: widget.onStepCancel);
     // }
 
-    final ThemeData themeData = Theme.of(context);
-    final ColorScheme colorScheme = themeData.colorScheme;
+    final themeData = Theme.of(context);
+    final colorScheme = themeData.colorScheme;
 
     const OutlinedBorder buttonShape = RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(4)));
@@ -607,7 +607,7 @@ class _IconStepperState extends State<IconStepper>
   }
 
   Widget _buildHorizontal() {
-    final List<Widget> children = <Widget>[
+    final children = <Widget>[
       for (int i = 0; i < widget.steps.length; i += 1) ...<Widget>[
         InkResponse(
           onTap: widget.steps[i].state != IconStepState.disabled
@@ -701,10 +701,10 @@ class _TrianglePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final double base = size.width;
-    final double halfBase = size.width / 2.0;
-    final double height = size.height;
-    final List<Offset> points = <Offset>[
+    final base = size.width;
+    final halfBase = size.width / 2.0;
+    final height = size.height;
+    final points = <Offset>[
       Offset(0.0, height),
       Offset(base, height),
       Offset(halfBase, 0.0),

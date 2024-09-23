@@ -1,10 +1,13 @@
-.PHONY: all run_unit clean format lint create_icons build_runner pub_get pub_major_version sqlite_patch pub_upgrade bump_version_number bump_build_number tag_version deploy_mobile deploy_mobile_test help 
+.PHONY: all run run_test install_pubspec upgrade_pubspec install_pubspec deploy_mobile icons run_dependency_validator run_build_runner watch_build_runner deploy_windows update_i18n help
 
-EXTRACT_VERSION_NUMBER = $(shell grep 'version: ' pubspec.yaml | sed 's/version: //')
-SET_VERSION_NUMBER = $(eval VERSION_NUMBER=$(EXTRACT_VERSION_NUMBER))
+FLUTTER=flutter
+DART=dart
+RIMRAF=rimraf
+PERL=perl
+GIT=git
 
-all: lint format
-# Adding a help file: https://gist.github.com/prwhite/8168133#gistcomment-1313022
+all: run
+
 help: ## This help dialog.
 	@IFS=$$'\n' ; \
 	help_lines=(`fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//'`); \
@@ -16,71 +19,65 @@ help: ## This help dialog.
 		printf "%-30s %s\n" $$help_command $$help_info ; \
 	done
 
-run_unit: ## Runs unit tests
-	@echo "╠ Running the tests"
-	@flutter test || (echo "Error while running tests"; exit 1)
+update_i18n: ## Update i18n files
+	@$(DART) pub global run intl_utils:generate
 
-clean: ## Cleans the environment
-	@echo "╠ Cleaning the project..."
-	@rm -rf pubspec.lock
-	@flutter clean
+run_test: ## Runs all unit tests
+	@echo ":: Running unit tests..."
+	@$(FLUTTER) test || (echo "Error while running tests"; exit 1)
 
 format: ## Formats the code
-	@echo "╠ Formatting the code"
-	@dart format .
+	@echo ":: Formatting code..."
+	@$(DART) format .
 
 lint: ## Lints the code
-	@echo "╠ Verifying code..."
-	@dart analyze . || (echo "Error in project"; exit 1)
+	@echo ":: Verifying code..."
+	@$(DART) analyze . || (echo "Error in project"; exit 1)
 
 create_icons: ## Create App icons
-	@echo "╠ Creating icons..."
-	@flutter pub run flutter_launcher_icons
+	@echo ":: Creating App icons..."
+	@$(DART) run flutter_launcher_icons
 
 build_runner: ## Generates automatic code
-	@echo "╠ Creating generated code..."
-	@flutter pub run build_runner clean
-	@flutter pub run build_runner build --delete-conflicting-outputs
+	@echo ":: Creating generated code..."
+	@$(DART) run build_runner clean
+	@$(DART) run build_runner build --delete-conflicting-outputs
 
-pub_get: clean ## Getting pubspec dependencies
-	@echo "╠ Upgrading dependencies..."
-	@flutter pub get
+pub_get: ## Install pubspec dependencies
+	@echo ":: Installing dependencies..."
+	@$(FLUTTER) pub get
 
-pub_major_upgrade: clean ## Upgrades pubspec dependencies
-	@echo "╠ Upgrading dependencies..."
-	@flutter pub upgrade --major-versions
+pub_major_upgrade: ## Upgrades pubspec dependencies
+	@echo ":: Upgrading dependencies..."
+	@$(FLUTTER) clean
+	@$(RIMRAF) -rf pubspec.lock
+	@$(RIMRAF) -rf Podfile.lock
+	@$(FLUTTER) pub upgrade --major-versions
 
-sqlite_patch: ## SQLite patch macOS after upgrading SQLite
-	cd ./ios/; \
-	pod repo remove trunk;  \
-	sudo arch -x86_64 gem install ffi;  \
-	arch -x86_64 pod install --repo-update
+upgrade_pubspec: pub_major_upgrade build_runner format update_i18n lint icons ## Upgrades pubspec dependencies
 
-pub_upgrade: pub_major_upgrade sqlite_patch pub_get build_runner create_icons  ## Upgrades dependencies
-bump_version_number:	## Bump build number
-	@perl -i -pe 's/^(version:\s+\d+\.\d+\.)(\d+)(\+)(\d+)$$/$$1.($$2+1).$$3.($$4+1)/e' pubspec.yaml
-	$(SET_VERSION_NUMBER)
-	@git commit -m "Bump version to $(VERSION_NUMBER)" pubspec.yaml
-	@git push origin main
-	@echo "╠ Bump build number $(VERSION_NUMBER)"
-bump_build_number:	## Bump build number
-	@perl -i -pe 's/^(version:\s+\d+\.\d+\.)(\d+)(\+)(\d+)$$/$$1.$$2.$$3.($$4+1)/e' pubspec.yaml
-	$(SET_VERSION_NUMBER)
-	@git commit -m "Bump version to $(VERSION_NUMBER)" pubspec.yaml
-	@git push origin main
-	@echo "╠ Bump build number $(VERSION_NUMBER)"
-tag_version: ## Tag version
-	$(SET_VERSION_NUMBER)
-	@echo "Tag version $(VERSION_NUMBER)"
-	@git tag -a $(VERSION_NUMBER) -m "v$(VERSION_NUMBER)"
-	@git push origin --tags
+install_pubspec: pub_get build_runner format update_i18n lint icons  ## Install dependencies
 
-deploy_mobile: format lint pub_get create_icons build_runner bump_version_number tag_version ## Deploy iOS and Android release
+bump_version: ## Bump version
+	@$(PERL) -i -pe 's/^(version:\s+\d+\.\d+\.)(\d+)(\+)(\d+)$$/$$1.($$2+1).$$3.($$4+1)/e' pubspec.yaml
+	@$(eval VERSION_NUMBER=`grep 'version: ' pubspec.yaml | sed 's/version: //'`)
+	@$(GIT) commit -m "Bump version to $(VERSION_NUMBER)" pubspec.yaml
+	@$(GIT) push origin main
+	@echo ":: Bump version number $(VERSION_NUMBER)"
+
+	@echo "╠  Building the macOS app"
+	@$(FLUTTER) build macos --release
+
+run_dependency_validator:
+	@$(DART) pub global run dependency_validator
+
+run_build_runner:
+	@$(DART) run build_runner build --delete-conflicting-outputs
+
+watch_build_runner:
+	@$(DART) run build_runner watch --delete-conflicting-outputs
+
+deploy_mobile: format lint pub_get create_icons build_runner bump_version
 	@echo "╠  Building the iOS/Android app"
-	@flutter build ipa
-	@flutter build appbundle
-
-deploy_mobile_test: format lint pub_get create_icons build_runner bump_build_number tag_version ## Deploy iOS and Android release for testing
-	@echo "╠  Building the iOS/Android app"
-	@flutter build ipa
-	@flutter build appbundle
+	@$(FLUTTER) build ipa
+	@$(FLUTTER) build appbundle

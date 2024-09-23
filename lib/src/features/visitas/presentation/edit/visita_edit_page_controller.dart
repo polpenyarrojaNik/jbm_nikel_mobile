@@ -1,9 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
-import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita.dart';
-import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita_motivos_no_venta.dart';
-import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita_sector.dart';
+import '../../../usuario/application/usuario_notifier.dart';
+import '../../domain/visita.dart';
+import '../../domain/visita_motivos_no_venta.dart';
+import '../../domain/visita_sector.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../cliente/infrastructure/cliente_repository.dart';

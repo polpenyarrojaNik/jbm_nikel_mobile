@@ -6,33 +6,33 @@ import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:jbm_nikel_mobile/src/core/domain/pais.dart';
-import 'package:jbm_nikel_mobile/src/core/exceptions/get_api_error.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/app.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_contacto_imp.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_adjunto_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/pedido_venta_edit_page_controller.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/domain/usuario.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:uuid/uuid.dart';
 
+import '../../../core/application/log_service.dart';
 import '../../../core/domain/adjunto_param.dart';
+import '../../../core/domain/pais.dart';
 import '../../../core/exceptions/app_exception.dart';
+import '../../../core/exceptions/get_api_error.dart';
 import '../../../core/infrastructure/local_database.dart';
+import '../../../core/infrastructure/remote_database.dart';
+import '../../../core/presentation/app.dart';
 import '../../articulos/domain/articulo.dart';
 import '../../devoluciones/domain/devolucion.dart';
 import '../../devoluciones/domain/devolucion_linea.dart';
 import '../../estadisticas/domain/estadisticas_ultimos_precios.dart';
 import '../../pedido_venta/domain/pedido_venta.dart';
 import '../../pedido_venta/infrastructure/pedido_venta_repository.dart';
+import '../../pedido_venta/presentation/edit/pedido_venta_edit_page_controller.dart';
+import '../../usuario/application/usuario_notifier.dart';
+import '../../usuario/domain/usuario.dart';
 import '../../usuario/infrastructure/usuario_service.dart';
 import '../../visitas/domain/visita.dart';
 import '../../visitas/infrastructure/visita_repository.dart';
 import '../domain/cliente.dart';
 import '../domain/cliente_adjunto.dart';
 import '../domain/cliente_contacto.dart';
+import '../domain/cliente_contacto_imp.dart';
 import '../domain/cliente_descuento.dart';
 import '../domain/cliente_direccion.dart';
 import '../domain/cliente_direccion_imp.dart';
@@ -43,6 +43,7 @@ import '../domain/cliente_precio_neto.dart';
 import '../domain/cliente_rappel.dart';
 import '../domain/cliente_ventas_articulo.dart';
 import '../domain/cliente_ventas_mes.dart';
+import 'cliente_adjunto_dto.dart';
 import 'cliente_contacto_dto.dart';
 import 'cliente_contacto_imp_dto.dart';
 import 'cliente_direccion_dto.dart';
@@ -665,7 +666,7 @@ class ClienteRepository {
       );
       if (response.statusCode == 200) {
         final data = jsonDataSelector(response.data) as List<dynamic>;
-        return data.map((e) => ClienteAdjuntoDTO.fromJson(e)).toList();
+        return data.map((e) => ClienteAdjuntoDTO.fromJson(e as Json)).toList();
       } else {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');
@@ -699,7 +700,7 @@ class ClienteRepository {
         try {
           final cahceDirectories = await getTemporaryDirectory();
 
-          final File file = await File(
+          final file = await File(
                   '${cahceDirectories.path}/cliente/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}')
               .create(recursive: true);
           final raf = file.openSync(mode: FileMode.write);
@@ -741,7 +742,7 @@ class ClienteRepository {
         try {
           final cahceDirectories = await getTemporaryDirectory();
 
-          final File file = await File(
+          final file = await File(
                   '${cahceDirectories.path}/rappel/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}')
               .create(recursive: true);
           final raf = file.openSync(mode: FileMode.write);
@@ -773,7 +774,7 @@ class ClienteRepository {
         ),
       );
       if (response.statusCode == 200) {
-        return response.data;
+        return response.data as List<int>;
       } else {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');
@@ -784,14 +785,14 @@ class ClienteRepository {
   }
 
   String _getVentasMesCustomSelect() {
-    String select = '''
+    var select = '''
 SELECT mes MES
         , SUM(importe_anyo_0) IMPORTE_ANYO
         , SUM(importe_anyo_1) IMPORTE_ANYO_1
         , SUM(importe_anyo_2) IMPORTE_ANYO_2
         , SUM(importe_anyo_3) IMPORTE_ANYO_3
         , SUM(importe_anyo_4) IMPORTE_ANYO_4
-FROM (  
+FROM (
   ''';
     for (var mes = 1; mes <= 12; mes++) {
       if (mes != 1) {
@@ -859,7 +860,7 @@ GROUP BY mes
   }
 
   String _getVentasArticuloCustomSelect(String searchText) {
-    String select = '''
+    final select = '''
 SELECT ARTICULO_ID
         , DESCRIPCION
         , GTIN_13_UNIDAD
@@ -876,7 +877,7 @@ SELECT ARTICULO_ID
         , SUM(unidades_anyo_2) CANTIDAD_ANYO_2
         , SUM(unidades_anyo_3) CANTIDAD_ANYO_3
         , SUM(unidades_anyo_4) CANTIDAD_ANYO_4
-FROM (  
+FROM (
         SELECT ventas.ARTICULO_ID
                 , case :idioma when 'es' then art.descripcion_ES
                   when 'de' then IFNULL(art.descripcion_DE,  art.descripcion_ES)
@@ -895,9 +896,9 @@ FROM (
                 , 0 importe_anyo_4
                 , ventas.unidades unidades_anyo_0
                 , 0 unidades_anyo_1
-                , 0 unidades_anyo_2 
+                , 0 unidades_anyo_2
                 , 0 unidades_anyo_3
-                , 0 unidades_anyo_4              
+                , 0 unidades_anyo_4
     FROM estadisticas_venta ventas
       INNER JOIN articulos art ON ventas.articulo_id = art.articulo_id
     WHERE ventas.cliente_id = :clienteId
@@ -923,7 +924,7 @@ FROM (
                 , ventas.unidades unidades_anyo_1
                 , 0 unidades_anyo_2
                 , 0 unidades_anyo_3
-                , 0 unidades_anyo_4   
+                , 0 unidades_anyo_4
     FROM estadisticas_venta ventas
     INNER JOIN articulos art ON ventas.articulo_id = art.articulo_id
     WHERE ventas.cliente_id = :clienteId
@@ -949,7 +950,7 @@ FROM (
                 , 0 unidades_anyo_1
                 , ventas.unidades unidades_anyo_2
                 , 0 unidades_anyo_3
-                , 0 unidades_anyo_4   
+                , 0 unidades_anyo_4
     FROM estadisticas_venta ventas
     INNER JOIN articulos art ON ventas.articulo_id = art.articulo_id
     WHERE ventas.cliente_id = :clienteId
@@ -975,7 +976,7 @@ FROM (
                 , 0 unidades_anyo_1
                 , 0 unidades_anyo_2
                 , ventas.unidades unidades_anyo_3
-                , 0 unidades_anyo_4   
+                , 0 unidades_anyo_4
     FROM estadisticas_venta ventas
     INNER JOIN articulos art ON ventas.articulo_id = art.articulo_id
     WHERE ventas.cliente_id = :clienteId
@@ -1002,13 +1003,13 @@ FROM (
                 , 0 unidades_anyo_1
                 , 0 unidades_anyo_2
                 , 0 unidades_anyo_3
-                , ventas.unidades unidades_anyo_4   
+                , ventas.unidades unidades_anyo_4
     FROM estadisticas_venta ventas
     INNER JOIN articulos art ON ventas.articulo_id = art.articulo_id
     WHERE ventas.cliente_id = :clienteId
     AND ventas.anyo = strftime('%Y' ,DATE()) - 4
   )
-WHERE ARTICULO_ID IS NOT NULL AND (ARTICULO_ID LIKE '%$searchText%' 
+WHERE ARTICULO_ID IS NOT NULL AND (ARTICULO_ID LIKE '%$searchText%'
                                     OR DESCRIPCION LIKE '%$searchText%'
                                     OR GTIN_13_UNIDAD LIKE '%$searchText%'
                                     OR GS1_128_SUBCAJA LIKE '%$searchText%'
@@ -1168,7 +1169,7 @@ GROUP BY ARTICULO_ID, DESCRIPCION
 
   Future<List<ClienteContacto>> getClienteContactosListById(
       {required String clienteId}) async {
-    final List<ClienteContacto> clienteContactoList = [];
+    final clienteContactoList = <ClienteContacto>[];
     try {
       final clienteContactoImpList =
           await _getClienteContactoImpList(clienteId);
@@ -1281,7 +1282,7 @@ GROUP BY ARTICULO_ID, DESCRIPCION
           final jsonData = response.data['data'] as List<dynamic>;
 
           final clienteContactoDTOList =
-              jsonData.map((e) => ClienteContactoImpDTO.fromJson(e));
+              jsonData.map((e) => ClienteContactoImpDTO.fromJson(e as Json));
 
           return clienteContactoDTOList.map((e) => e.toDomain()).toList();
         } else {
@@ -1352,7 +1353,7 @@ GROUP BY ARTICULO_ID, DESCRIPCION
   ) async {
     try {
       final clienteContactoImpToJson = clienteContactoImpDTO.toJson();
-      print(jsonEncode(clienteContactoImpToJson));
+      log.d(jsonEncode(clienteContactoImpToJson));
 
       final requestUri = (usuario.test)
           ? Uri.http(
@@ -1434,7 +1435,7 @@ GROUP BY ARTICULO_ID, DESCRIPCION
 
   Future<List<ClienteDireccion>> getClienteDireccionesListById(
       {required String clienteId, String? searchText}) async {
-    final List<ClienteDireccion> clienteDireccionList = [];
+    final clienteDireccionList = <ClienteDireccion>[];
     try {
       final clienteDireccionImpList =
           await _getClienteDireccionImpList(clienteId, searchText);
@@ -1559,7 +1560,7 @@ GROUP BY ARTICULO_ID, DESCRIPCION
           final jsonData = response.data['data'] as List<dynamic>;
 
           final clienteDireccionDTOList =
-              jsonData.map((e) => ClienteDireccionImpDTO.fromJson(e));
+              jsonData.map((e) => ClienteDireccionImpDTO.fromJson(e as Json));
 
           return await Future.wait(clienteDireccionDTOList.map((e) async {
             final pais = await _getPaisCliente(clienteId: e.clienteId);
@@ -1687,7 +1688,7 @@ GROUP BY ARTICULO_ID, DESCRIPCION
   ) async {
     try {
       final clienteDireccionImpToJson = clienteDireccionImpDTO.toJson();
-      print(jsonEncode(clienteDireccionImpToJson));
+      log.d(jsonEncode(clienteDireccionImpToJson));
 
       final requestUri = (usuario.test)
           ? Uri.http(

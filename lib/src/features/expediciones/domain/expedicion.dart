@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/core/domain/divisa.dart';
-import 'package:jbm_nikel_mobile/src/core/domain/pais.dart';
-import 'package:jbm_nikel_mobile/src/features/pedido_venta/domain/pedido_venta_estado.dart';
-import 'package:jbm_nikel_mobile/src/features/expediciones/domain/tracking_estado.dart';
+import '../../../core/domain/divisa.dart';
+import '../../../core/domain/pais.dart';
+import '../../pedido_venta/domain/pedido_venta_estado.dart';
+import 'tracking_estado.dart';
 import 'package:money2/money2.dart';
 
 part 'expedicion.freezed.dart';

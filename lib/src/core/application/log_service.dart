@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 
 bool get isInDebugMode {
-  bool inDebugMode = false;
+  var inDebugMode = false;
   assert(inDebugMode = true);
   return inDebugMode;
 }
@@ -17,7 +17,7 @@ final log = Logger(
 class RiverpodLogger extends ProviderObserver {
   @override
   void didUpdateProvider(
-    ProviderBase provider,
+    ProviderBase<dynamic> provider,
     Object? previousValue,
     Object? newValue,
     ProviderContainer container,
@@ -34,7 +34,7 @@ class CustomPrinter extends LogPrinter {
   List<String> log(LogEvent event) {
     // var color = PrettyPrinter.levelColors[event.level];
     final emoji = PrettyPrinter.defaultLevelEmojis[event.level];
-    String timeStr = getTime();
+    final timeStr = getTime();
 
     return [
       truncate('$emoji[$timeStr] > ${event.message}',
@@ -42,8 +42,12 @@ class CustomPrinter extends LogPrinter {
     ];
   }
 
-  String truncate(String text,
-      {length = 80, omission = '...', int rightLength = 0}) {
+  String truncate(
+    String text, {
+    int length = 80,
+    String omission = '...',
+    int rightLength = 0,
+  }) {
     if (length >= text.length) {
       return text;
     }
@@ -62,11 +66,11 @@ class CustomPrinter extends LogPrinter {
       return '0$n';
     }
 
-    var now = DateTime.now();
-    var h = twoDigits(now.hour);
-    var min = twoDigits(now.minute);
-    var sec = twoDigits(now.second);
-    var ms = threeDigits(now.millisecond);
+    final now = DateTime.now();
+    final h = twoDigits(now.hour);
+    final min = twoDigits(now.minute);
+    final sec = twoDigits(now.second);
+    final ms = threeDigits(now.millisecond);
 
     return '$h:$min:$sec.$ms';
   }

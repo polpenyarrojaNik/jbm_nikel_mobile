@@ -7,35 +7,34 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:jbm_nikel_mobile/src/core/helpers/debouncer.dart';
-import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/custom_search_app_bar.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/mobile_custom_separatos.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_indicator_widget.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
-import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_imp_param.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/presentation/index/cliente_lista_tile.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/presentation/show/cliente_direccion_list_page.dart';
-import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/pedido_venta_edit_page_controller.dart';
-import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/pedido_venta_linea_nuevo_tile.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../../../generated/l10n.dart';
+import '../../../../core/application/log_service.dart';
 import '../../../../core/exceptions/app_exception.dart';
+import '../../../../core/helpers/debouncer.dart';
+import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/address_text_widget.dart';
 import '../../../../core/presentation/common_widgets/column_field_text_detail.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
+import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../../core/presentation/common_widgets/mobile_custom_separatos.dart';
+import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/common_widgets/row_field_text_detail.dart';
 import '../../../../core/presentation/common_widgets/slider_background.dart';
+import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/presentation/toasts.dart';
+import '../../../../core/routing/app_auto_router.dart';
 import '../../../articulos/domain/articulo.dart';
 import '../../../articulos/presentation/index/articulo_search_controller.dart';
 import '../../../cliente/domain/cliente.dart';
 import '../../../cliente/domain/cliente_direccion.dart';
+import '../../../cliente/domain/cliente_imp_param.dart';
 import '../../../cliente/infrastructure/cliente_repository.dart';
+import '../../../cliente/presentation/index/cliente_lista_tile.dart';
 import '../../../cliente/presentation/index/cliente_search_controller.dart';
+import '../../../cliente/presentation/show/cliente_direccion_list_page.dart';
 import '../../domain/pedido_local_param.dart';
 import '../../domain/pedido_venta_linea.dart';
 import '../../domain/seleccionar_cantidad_param.dart';
@@ -44,6 +43,8 @@ import '../index/pedido_search_controller.dart';
 import 'ask_pop_alert_dialog.dart';
 import 'crear_csv_controller.dart';
 import 'icon_stepper.dart';
+import 'pedido_venta_edit_page_controller.dart';
+import 'pedido_venta_linea_nuevo_tile.dart';
 
 @RoutePage()
 class PedidoVentaEditPage extends ConsumerStatefulWidget {
@@ -227,7 +228,7 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
 
   void createCsvFile(String pedidoVentaAppId,
       List<PedidoVentaLinea> pedidoVentaLineaList) async {
-    ref.read(crearCsvControllerProvider.notifier).crearCsvController(
+    await ref.read(crearCsvControllerProvider.notifier).crearCsvController(
         pedidoVentaAppId: pedidoVentaAppId,
         pedidoVentaLineaList: pedidoVentaLineaList);
   }
@@ -235,11 +236,11 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
   void openFile(File csvFile) async {
     try {
       final res = await OpenFile.open(csvFile.path)
-          .catchError((error, _) => throw error);
+          .catchError((error, _) => throw error as Object);
 
-      print(res.message);
+      log.d(res.message);
     } catch (e) {
-      print(e);
+      log.e(e);
     }
   }
 
@@ -339,6 +340,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
       }
     });
 
+    // ignore: deprecated_member_use
     return WillPopScope(
       onWillPop: () async => _askIfUserPop(context, ref, isBorrador),
       child: IconStepper(
@@ -587,7 +589,11 @@ class _StepSelectClienteContentState
   void initState() {
     super.initState();
     if (widget.cliente == null) {
-      Future.microtask(() => navigateToSelectCliente(context, widget.isEdit));
+      Future.microtask(() {
+        if (mounted) {
+          navigateToSelectCliente(context, widget.isEdit);
+        }
+      });
     }
   }
 
@@ -655,7 +661,7 @@ class _StepSelectClienteContentState
 
   void navigateToSelectCliente(BuildContext context, bool isEdit) async {
     if (!isEdit) {
-      context.router.push(
+      await context.router.push(
         ClienteListaRoute(isSearchClienteForFrom: true),
       );
     } else {
@@ -1057,7 +1063,7 @@ class _StepObservacionesContentState
       lastDate: DateTime(DateTime.now().year + 5),
     );
 
-    ref
+    await ref
         .read(pedidoVentaEditPageControllerProvider(widget.pedidoLocalParam)
             .notifier)
         .setOfertaFechaHasta(selectedDate);

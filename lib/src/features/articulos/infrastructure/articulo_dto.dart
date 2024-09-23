@@ -1,9 +1,9 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/core/domain/familia.dart';
-import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/familia_dto.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/subfamilia_dto.dart';
+import '../../../core/domain/familia.dart';
+import '../../../core/helpers/extension.dart';
+import '../../../core/infrastructure/familia_dto.dart';
+import '../../../core/infrastructure/subfamilia_dto.dart';
 import 'package:money2/money2.dart';
 
 import '../../../core/domain/subfamilia.dart';

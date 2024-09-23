@@ -5,21 +5,16 @@ import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
-import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_precio_tarifa.dart';
-import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_recambio.dart';
-import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_documento_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_grupo_neto_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_pedido_venta_linea_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_ventas_mes_todos_dto.dart';
 import 'package:money2/money2.dart';
 import 'package:path_provider/path_provider.dart';
 
+import '../../../core/application/log_service.dart';
 import '../../../core/domain/adjunto_param.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/exceptions/get_api_error.dart';
+import '../../../core/helpers/formatters.dart';
 import '../../../core/infrastructure/local_database.dart';
+import '../../../core/infrastructure/remote_database.dart';
 import '../../../core/infrastructure/sync_service.dart';
 import '../../../core/presentation/app.dart';
 import '../../estadisticas/domain/estadisticas_ultimos_precios.dart';
@@ -31,14 +26,20 @@ import '../domain/articulo_documento.dart';
 import '../domain/articulo_grupo_neto.dart';
 import '../domain/articulo_imagen.dart';
 import '../domain/articulo_pedido_venta_linea.dart';
+import '../domain/articulo_precio_tarifa.dart';
+import '../domain/articulo_recambio.dart';
 import '../domain/articulo_sustitutivo.dart';
 import '../domain/articulo_ventas_cliente.dart';
 import '../domain/articulo_ventas_mes.dart';
+import 'articulo_documento_dto.dart';
 import 'articulo_dto.dart';
+import 'articulo_grupo_neto_dto.dart';
 import 'articulo_imagen_dto.dart';
+import 'articulo_pedido_venta_linea_dto.dart';
 import 'articulo_precio_tarifa_dto.dart';
 import 'articulo_ventas_cliente_dto.dart';
 import 'articulo_ventas_mes_dto.dart';
+import 'articulo_ventas_mes_todos_dto.dart';
 
 final articuloRepositoryProvider = Provider.autoDispose<ArticuloRepository>(
   (ref) {
@@ -237,10 +238,12 @@ class ArticuloRepository {
       return await Future.wait(query.map((row) async {
         final articuloDTO = ArticuloDTO.fromJson(row.data);
         final familiaDTO = await (_remoteDb.select(_remoteDb.familiaTable)
-              ..where((t) => t.id.equals(row.data['FAMILIA_ID'] ?? '')))
+              ..where(
+                  (t) => t.id.equals(row.data['FAMILIA_ID'] as String? ?? '')))
             .getSingleOrNull();
         final subfamiliaDTO = await (_remoteDb.select(_remoteDb.subfamiliaTable)
-              ..where((t) => t.id.equals(row.data['SUBFAMILIA_ID'] ?? '')))
+              ..where((t) =>
+                  t.id.equals(row.data['SUBFAMILIA_ID'] as String? ?? '')))
             .getSingleOrNull();
         return articuloDTO.toDomain(
             familia: familiaDTO?.toDomain(),
@@ -416,7 +419,7 @@ AND estadisticas_venta.cliente_id IN (SELECT clientes_usuario.cliente_id
       final query = await _remoteDb.customSelect('''
 SELECT *
   FROM ARTICULOS_TARIFA_PRECIO
- WHERE ARTICULOS_TARIFA_PRECIO.TARIFA_ID 
+ WHERE ARTICULOS_TARIFA_PRECIO.TARIFA_ID
        IN (SELECT DISTINCT CLIENTES.TARIFA_ID
                       FROM CLIENTES
                 INNER JOIN CLIENTES_USUARIO
@@ -616,7 +619,7 @@ SELECT *
         try {
           final cahceDirectories = await getTemporaryDirectory();
 
-          final File file = await File(
+          final file = await File(
                   '${cahceDirectories.path}/articulo/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}')
               .create(recursive: true);
           final raf = file.openSync(mode: FileMode.write);
@@ -658,7 +661,7 @@ SELECT *
         try {
           final cahceDirectories = await getTemporaryDirectory();
 
-          final File file = await File(
+          final file = await File(
                   '${cahceDirectories.path}/clientes/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}')
               .create(recursive: true);
           final raf = file.openSync(mode: FileMode.write);
@@ -866,7 +869,7 @@ SELECT *
       }).get();
 
       if (verTotalVentas) {
-        final List<ArticuloVentasMes> articuloVentaMesList = [];
+        final articuloVentaMesList = <ArticuloVentasMes>[];
 
         final queryVentasMesTodos = await _remoteDb
             .customSelect(_getVentasMesAllCustomSelect(), variables: [
@@ -919,14 +922,14 @@ SELECT *
   }
 
   String _getVentasMesCustomSelect() {
-    String select = '''
+    var select = '''
 SELECT mes MES
         , SUM(unidades_anyo_0) UNIDADES_ANYO
         , SUM(unidades_anyo_1) UNIDADES_ANYO_1
         , SUM(unidades_anyo_2) UNIDADES_ANYO_2
         , SUM(unidades_anyo_3) UNIDADES_ANYO_3
         , SUM(unidades_anyo_4) UNIDADES_ANYO_4
-FROM (  
+FROM (
   ''';
     for (var mes = 1; mes <= 12; mes++) {
       if (mes != 1) {
@@ -1012,27 +1015,27 @@ WHERE  articulo_id = :articuloId
                    FROM   clientes_usuario
                    WHERE  clientes_usuario.cliente_id =
                           estadisticas_venta.cliente_id
-                          AND clientes_usuario.usuario_id = :usuarioId) 
+                          AND clientes_usuario.usuario_id = :usuarioId)
 ''';
     }
     select += '''
 )
 GROUP BY mes
 ''';
-    print('VENTAS-MES SELECT: $select');
+    log.i('VENTAS-MES SELECT: $select');
 
     return select;
   }
 
   String _getVentasMesAllCustomSelect() {
-    String select = '''
+    var select = '''
 SELECT mes MES
         , SUM(unidades_anyo_todos_0) UNIDADES_ANYO_TODOS
         , SUM(unidades_anyo_todos_1) UNIDADES_ANYO_TODOS_1
         , SUM(unidades_anyo_todos_2) UNIDADES_ANYO_TODOS_2
         , SUM(unidades_anyo_todos_3) UNIDADES_ANYO_TODOS_3
         , SUM(unidades_anyo_todos_4) UNIDADES_ANYO_TODOS_4
-FROM (  
+FROM (
   ''';
     for (var mes = 1; mes <= 12; mes++) {
       if (mes != 1) {
@@ -1106,12 +1109,12 @@ WHERE  articulo_id = :articuloId
 GROUP BY mes
 ''';
 
-    print('ALL SELECT: $select');
+    log.i('ALL SELECT: $select');
     return select;
   }
 
   String _getVentasClienteCustomSelect() {
-    String select = '''
+    const select = '''
 SELECT CLIENTE_ID,
        NOMBRE,
        SUM(IMPORTE_ANYO_0)  IMPORTE_ANYO,
@@ -1241,7 +1244,7 @@ FROM   (SELECT VENTAS.CLIENTE_ID,
 WHERE  CLIENTE_ID IS NOT NULL
 GROUP  BY CLIENTE_ID,
           NOMBRE
-ORDER  BY IMPORTE_ANYO DESC 
+ORDER  BY IMPORTE_ANYO DESC
 ''';
 
     return select;
@@ -1261,7 +1264,9 @@ ORDER  BY IMPORTE_ANYO DESC
       );
       if (response.statusCode == 200) {
         final data = jsonDataSelector(response.data) as List<dynamic>;
-        return data.map((e) => ArticuloImagenDTO.fromJson(e)).toList();
+        return data
+            .map((e) => ArticuloImagenDTO.fromJson(e as Map<String, dynamic>))
+            .toList();
       } else {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');
@@ -1285,7 +1290,10 @@ ORDER  BY IMPORTE_ANYO DESC
       );
       if (response.statusCode == 200) {
         final data = jsonDataSelector(response.data) as List<dynamic>;
-        return data.map((e) => ArticuloDocumentoDTO.fromJson(e)).toList();
+        return data
+            .map(
+                (e) => ArticuloDocumentoDTO.fromJson(e as Map<String, dynamic>))
+            .toList();
       } else {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');
@@ -1309,7 +1317,7 @@ ORDER  BY IMPORTE_ANYO DESC
         ),
       );
       if (response.statusCode == 200) {
-        return response.data;
+        return response.data as List<int>;
       } else {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');
@@ -1326,7 +1334,7 @@ ORDER  BY IMPORTE_ANYO DESC
 
     switch (currentLocale) {
       case 'es':
-        String sqlWhere = '';
+        var sqlWhere = '';
         for (var i = 0; i < stringList.length; i++) {
           if (i > 0 && i < stringList.length) {
             sqlWhere += " OR art.DESCRIPCION_ES LIKE '%${stringList[i]}%'";
@@ -1337,7 +1345,7 @@ ORDER  BY IMPORTE_ANYO DESC
 
         return sqlWhere;
       case 'en':
-        String sqlWhere = '';
+        var sqlWhere = '';
         for (var i = 0; i < stringList.length; i++) {
           if (i > 0 && i < stringList.length) {
             sqlWhere += " OR art.DESCRIPCION_EN LIKE '%${stringList[i]}%'";
@@ -1348,7 +1356,7 @@ ORDER  BY IMPORTE_ANYO DESC
 
         return sqlWhere;
       case 'fr':
-        String sqlWhere = '';
+        var sqlWhere = '';
         for (var i = 0; i < stringList.length; i++) {
           if (i > 0 && i < stringList.length) {
             sqlWhere += " OR art.DESCRIPCION_FR LIKE '%${stringList[i]}%'";
@@ -1359,7 +1367,7 @@ ORDER  BY IMPORTE_ANYO DESC
 
         return sqlWhere;
       case 'de':
-        String sqlWhere = '';
+        var sqlWhere = '';
         for (var i = 0; i < stringList.length; i++) {
           if (i > 0 && i < stringList.length) {
             sqlWhere += " OR art.DESCRIPCION_EN LIKE '%${stringList[i]}%'";
@@ -1371,7 +1379,7 @@ ORDER  BY IMPORTE_ANYO DESC
         return sqlWhere;
 
       case 'it':
-        String sqlWhere = '';
+        var sqlWhere = '';
         for (var i = 0; i < stringList.length; i++) {
           if (i > 0 && i < stringList.length) {
             sqlWhere += " OR art.DESCRIPCION_IT LIKE '%${stringList[i]}%'";
@@ -1383,7 +1391,7 @@ ORDER  BY IMPORTE_ANYO DESC
         return sqlWhere;
 
       default:
-        String sqlWhere = '';
+        var sqlWhere = '';
         for (var i = 0; i < stringList.length; i++) {
           if (i > 0 && i < stringList.length) {
             sqlWhere += " OR art.DESCRIPCION_ES LIKE '%${stringList[i]}%'";

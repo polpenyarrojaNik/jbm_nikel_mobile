@@ -2,10 +2,9 @@ import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/exceptions/app_exception.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/local_usuario_repository.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/remote_usuario_repository.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_dto.dart';
+import '../../../core/exceptions/app_exception.dart';
+import 'local_usuario_repository.dart';
+import 'remote_usuario_repository.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 import '../domain/usuario.dart';
@@ -26,10 +25,10 @@ class UsuarioService {
   UsuarioService(this._localUsuarioRepository, this._remoteUsuarioRepository);
 
   Future<Usuario?> getSignedInUsuario() async {
-    UsuarioDTO? storedCredentials = await _localUsuarioRepository.read();
+    final storedCredentials = await _localUsuarioRepository.read();
 
     if (storedCredentials?.isExpired ?? false) {
-      return await refresh();
+      return refresh();
     }
 
     return storedCredentials?.toDomain();
@@ -42,7 +41,7 @@ class UsuarioService {
       username.contains('@'),
     );
     final packageInfo = await PackageInfo.fromPlatform();
-    final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
+    final deviceInfoPlugin = DeviceInfoPlugin();
 
     late String deviceInfoStr;
 
@@ -107,7 +106,7 @@ class UsuarioService {
             await _remoteUsuarioRepository.remoteSyncUser(storedCredentials);
 
         final packageInfo = await PackageInfo.fromPlatform();
-        final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
+        final deviceInfoPlugin = DeviceInfoPlugin();
 
         late String deviceInfoStr;
 

@@ -4,18 +4,18 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
-import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente_alrededor/domain/cliente_alrededor.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente_alrededor/domain/get_cliente_alrededor_arg.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente_alrededor/infrastructure/cliente_alrededor_repository.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/helpers/formatters.dart';
 import '../../../core/presentation/common_widgets/address_text_widget.dart';
+import '../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../core/presentation/common_widgets/row_field_text_detail.dart';
+import '../../../core/presentation/theme/app_sizes.dart';
+import '../../../core/routing/app_auto_router.dart';
+import '../domain/cliente_alrededor.dart';
+import '../domain/get_cliente_alrededor_arg.dart';
+import '../infrastructure/cliente_alrededor_repository.dart';
 
 @RoutePage()
 class ClientesAlrededorPage extends ConsumerStatefulWidget {
@@ -198,8 +198,8 @@ class _GoogleMapsContainerState extends ConsumerState<GoogleMapsContainer> {
   }
 
   double getZoomLevel(Circle circle) {
-    double radius = (circle.radius + circle.radius) / 2;
-    double scale = radius / 500;
+    final radius = (circle.radius + circle.radius) / 2;
+    final scale = radius / 500;
     final zoomLevel = (16 - log(scale) / log(2));
 
     return double.parse(zoomLevel.toStringAsFixed(2));
@@ -296,7 +296,7 @@ class _SliderKm extends StatelessWidget {
           ),
           DecoratedBox(
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.background,
+              color: Theme.of(context).colorScheme.surface,
               borderRadius: BorderRadius.circular(4),
               border: Border.all(width: 0.5),
             ),
@@ -305,8 +305,10 @@ class _SliderKm extends StatelessWidget {
                   const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
               child: Text(
                 '${(radiusKm / 1000).round().toString()} Km',
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Theme.of(context).colorScheme.onBackground),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium
+                    ?.copyWith(color: Theme.of(context).colorScheme.onSurface),
               ),
             ),
           )
@@ -332,7 +334,7 @@ class _CheckboxDireccionesEnvio extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.background,
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(4),
         border: Border.all(width: 0.5),
       ),
@@ -345,7 +347,7 @@ class _CheckboxDireccionesEnvio extends StatelessWidget {
             gapW8,
             Switch(
               value: showDireccionesEnvio,
-              onChanged: (_) => onShowDireccionesEnvioChanged(_),
+              onChanged: (value) => onShowDireccionesEnvioChanged(value),
             ),
           ],
         ),
@@ -365,7 +367,7 @@ class _CheckboxPotenciales extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.background,
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(4),
         border: Border.all(width: 0.5),
       ),
@@ -378,7 +380,7 @@ class _CheckboxPotenciales extends StatelessWidget {
             gapW8,
             Switch(
               value: showPotenciales,
-              onChanged: (_) => onShowPotencialesChanged(_),
+              onChanged: (value) => onShowPotencialesChanged(value),
             ),
           ],
         ),

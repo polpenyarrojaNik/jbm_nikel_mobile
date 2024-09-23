@@ -1,15 +1,15 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_direccion.dart';
 import 'package:money2/money2.dart';
 
 import '../../../core/domain/divisa.dart';
 import '../../../core/domain/pais.dart';
-import '../../../core/infrastructure/remote_database.dart';
+import '../../../core/helpers/extension.dart';
 import '../../../core/infrastructure/divisa_dto.dart';
 import '../../../core/infrastructure/pais_dto.dart';
+import '../../../core/infrastructure/remote_database.dart';
 import '../domain/cliente.dart';
+import '../domain/cliente_direccion.dart';
 import '../domain/cliente_estado_potencial.dart';
 import '../domain/cliente_tipo_potencial.dart';
 import '../domain/metodo_cobro.dart';
@@ -240,7 +240,7 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       double? riesgoPendienteServir,
       double? riesgoPendienteFacturar,
       String? divisaId) {
-    double amount = 0;
+    var amount = 0.0;
     amount += (riesgoPendienteCobroVencido ?? 0) +
         (riesgoPendienteCobroNoVencido ?? 0) +
         (riesgoPendienteServir ?? 0) +

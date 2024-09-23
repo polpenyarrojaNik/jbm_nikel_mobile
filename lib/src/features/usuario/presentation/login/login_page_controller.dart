@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
+import '../../application/usuario_notifier.dart';
 
 import '../../../../core/exceptions/app_exception.dart';
 import '../../infrastructure/usuario_service.dart';

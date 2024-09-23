@@ -10,7 +10,7 @@ class MobileCustomSeparators extends StatelessWidget {
     return Container(
       height: MediaQuery.of(context).size.height * 0.055,
       padding: const EdgeInsets.symmetric(horizontal: 16),
-      color: Theme.of(context).colorScheme.surfaceVariant,
+      color: Theme.of(context).colorScheme.surfaceContainerHighest,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

@@ -4,15 +4,6 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/domain/log.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/local_database.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/log_dto.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/log_repository.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/provincia_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/devoluciones/infrastructure/devolucion_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/visitas/infrastructure/visita_competidor_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/visitas/infrastructure/visita_motivos_no_venta_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/visitas/infrastructure/visita_sector_dto.dart';
 
 import '../../core/infrastructure/pais_dto.dart';
 import '../../core/infrastructure/subfamilia_dto.dart';
@@ -36,6 +27,7 @@ import '../../features/cliente/infrastructure/cliente_rappel_dto.dart';
 import '../../features/cliente/infrastructure/cliente_usuario_dto.dart';
 import '../../features/cliente/infrastructure/metodo_cobro_dto.dart';
 import '../../features/cliente/infrastructure/plazo_cobro_dto.dart';
+import '../../features/devoluciones/infrastructure/devolucion_dto.dart';
 import '../../features/devoluciones/infrastructure/devolucion_estado_dto.dart';
 import '../../features/devoluciones/infrastructure/devolucion_linea_dto.dart';
 import '../../features/devoluciones/infrastructure/devolucion_motivo_dto.dart';
@@ -53,19 +45,28 @@ import '../../features/pedido_venta/infrastructure/pedido_venta_local_dto.dart';
 import '../../features/usuario/application/usuario_notifier.dart';
 import '../../features/usuario/domain/usuario.dart';
 import '../../features/usuario/infrastructure/usuario_service.dart';
+import '../../features/visitas/infrastructure/visita_competidor_dto.dart';
 import '../../features/visitas/infrastructure/visita_dto.dart';
 import '../../features/visitas/infrastructure/visita_local_dto.dart';
+import '../../features/visitas/infrastructure/visita_motivos_no_venta_dto.dart';
+import '../../features/visitas/infrastructure/visita_sector_dto.dart';
 import '../application/log_service.dart';
+import '../domain/log.dart';
 import '../exceptions/app_exception.dart';
 import '../exceptions/get_api_error.dart';
 import '../presentation/app.dart';
-import 'local_database.dart' as local;
-import 'remote_database.dart';
 import 'divisa_dto.dart';
 import 'familia_dto.dart';
 import 'jbm_headers.dart';
+import 'local_database.dart' as local;
+import 'local_database.dart';
+import 'log_dto.dart';
+import 'log_repository.dart';
+import 'provincia_dto.dart';
+import 'remote_database.dart';
 import 'remote_response.dart';
 
+typedef Json = Map<String, dynamic>;
 final syncServiceProvider = Provider.autoDispose<SyncService>(
   (ref) => SyncService(
       ref.watch(appRemoteDatabaseProvider),
@@ -640,7 +641,7 @@ class SyncService {
               _usuario!.provisionalToken);
           await updatePedidoVentaInDB(pedidoVentaLocalDto: pedidoLocalEnviado);
         } catch (e) {
-          print(e);
+          log.e(e);
         }
       }
     } catch (e) {
@@ -899,8 +900,8 @@ class SyncService {
     required TableInfo<Table, dynamic> tableInfo,
     required Function(Map<String, dynamic> e) fromJson,
   }) async {
-    int page = 1;
-    bool isNextPageAvailable = true;
+    var page = 1;
+    var isNextPageAvailable = true;
     int? totalRows;
 
     try {
@@ -925,16 +926,20 @@ class SyncService {
         await remotePageItems.maybeWhen(
           orElse: () {},
           withNewData: (data, maxPage, totalRows) async {
-            print('NUM VALUES ${tableInfo.actualTableName}: $totalRows');
+            log.d('NUM VALUES ${tableInfo.actualTableName}: $totalRows');
             final tableValueDTOList = data.map((e) => fromJson(e)).toList();
 
             for (var i = 0; i < tableValueDTOList.length; i++) {
               final tableValue = tableValueDTOList[i];
 
               if (tableValue.deleted == 'S') {
-                await deleteTableValue(tableInfo: tableInfo, dto: tableValue);
+                await deleteTableValue(
+                    tableInfo: tableInfo,
+                    dto: tableValue as Insertable<dynamic>);
               } else {
-                await upsertTable(tableInfo: tableInfo, dto: tableValue);
+                await upsertTable(
+                    tableInfo: tableInfo,
+                    dto: tableValue as Insertable<dynamic>);
               }
             }
 
@@ -954,7 +959,7 @@ class SyncService {
 
   Future<void> upsertTable(
       {required TableInfo<Table, dynamic> tableInfo,
-      required dynamic dto}) async {
+      required Insertable<dynamic> dto}) async {
     try {
       await _remoteDb.into(tableInfo).insertOnConflictUpdate(dto);
     } catch (e) {
@@ -964,7 +969,7 @@ class SyncService {
 
   Future<void> deleteTableValue(
       {required TableInfo<Table, dynamic> tableInfo,
-      required dynamic dto}) async {
+      required Insertable<dynamic> dto}) async {
     try {
       await _remoteDb.delete(tableInfo).delete(dto);
     } catch (e) {
@@ -1019,7 +1024,7 @@ class SyncService {
         final convertedDate = jsonDataSelector(response.data)
             .map((pedidoVentaMap) => pedidoVentaMap as Map<String, dynamic>)
             .toList();
-        final headers = JBMHeaders.parse(response);
+        final headers = JBMHeaders.parse(response as Response<Json>);
 
         return RemoteResponse.withNewData(
           convertedDate,
@@ -1043,7 +1048,7 @@ class SyncService {
           ''').getSingle();
 
       if (query.data['MAX_DATE'] != null) {
-        return DateTime.parse(query.data['MAX_DATE']);
+        return DateTime.parse(query.data['MAX_DATE'] as String);
       } else {
         return null;
       }
@@ -1061,7 +1066,7 @@ class SyncService {
               visitasNoEnviadas[i], _usuario!.provisionalToken);
           await updateVisitaInDB(visitaLocalDto: visitaLocalEnviada);
         } catch (e) {
-          print(e);
+          log.e(e);
         }
       }
     } catch (e) {
@@ -1231,7 +1236,7 @@ class SyncService {
             .getSingleOrNull();
 
         if (visitaNoTratadaExisitInVisitas != null) {
-          _localDb.update(_localDb.visitaLocalTable).write(
+          await _localDb.update(_localDb.visitaLocalTable).write(
               const local.VisitaLocalTableCompanion(tratada: Value('S')));
         }
       }
@@ -1349,7 +1354,7 @@ class SyncService {
   }
 
   Future<SyncProgress> syncAllTable() async {
-    SyncProgress splashProgress = SyncProgress.downloadedDatabase;
+    var splashProgress = SyncProgress.downloadedDatabase;
 
     try {
       await syncAllArticulosRelacionados(isInMainThread: false);
@@ -1444,7 +1449,7 @@ class SyncService {
             .getSingleOrNull();
 
     if (pedidoExistInSyncTable == null) {
-      return await checkPedidoImportado(pedidoVentaAppId);
+      return checkPedidoImportado(pedidoVentaAppId);
     }
 
     return true;

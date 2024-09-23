@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/core/domain/articulo_precio.dart';
+import '../../../../core/domain/articulo_precio.dart';
 
 import '../../infrastructure/pedido_venta_repository.dart';
 

@@ -1,20 +1,20 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/custom_search_app_bar.dart';
-import 'package:jbm_nikel_mobile/src/features/articulos/presentation/index/articulo_list_shimmer.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/presentation/show/ultimos_precios/cliente_ultimos_precios_search_controller.dart';
 
 import '../../../../../../generated/l10n.dart';
 import '../../../../../core/helpers/debouncer.dart';
 import '../../../../../core/helpers/formatters.dart';
+import '../../../../../core/presentation/common_widgets/async_value_ui.dart';
+import '../../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
 import '../../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../../core/presentation/theme/app_sizes.dart';
+import '../../../../articulos/presentation/index/articulo_list_shimmer.dart';
 import '../../../../estadisticas/domain/estadisticas_ultimos_precios.dart';
 import '../../../infrastructure/cliente_repository.dart';
+import 'cliente_ultimos_precios_search_controller.dart';
 
 @RoutePage()
 class ClienteUltimosPreciosPage extends ConsumerWidget {
@@ -32,7 +32,7 @@ class ClienteUltimosPreciosPage extends ConsumerWidget {
         clienteUltimosPreciosIndexScreenControllerProvider(
             clienteId: clienteId));
 
-    ref.listen<AsyncValue>(
+    ref.listen<AsyncValue<void>>(
       clienteUltimosPreciosIndexScreenControllerProvider(clienteId: clienteId),
       (_, state) => state.showAlertDialogOnError(context),
     );

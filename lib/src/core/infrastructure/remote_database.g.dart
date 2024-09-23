@@ -21429,111 +21429,60 @@ typedef $$PaisTableTableUpdateCompanionBuilder = PaisTableCompanion Function({
   Value<int> rowid,
 });
 
-class $$PaisTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $PaisTableTable,
-    PaisDTO,
-    $$PaisTableTableFilterComposer,
-    $$PaisTableTableOrderingComposer,
-    $$PaisTableTableCreateCompanionBuilder,
-    $$PaisTableTableUpdateCompanionBuilder> {
-  $$PaisTableTableTableManager(_$RemoteAppDatabase db, $PaisTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer:
-              $$PaisTableTableFilterComposer(ComposerState(db, table)),
-          orderingComposer:
-              $$PaisTableTableOrderingComposer(ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> id = const Value.absent(),
-            Value<String?> isoCode = const Value.absent(),
-            Value<String> descripcionES = const Value.absent(),
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPL = const Value.absent(),
-            Value<String?> descripcionPT = const Value.absent(),
-            Value<String?> descripcionRO = const Value.absent(),
-            Value<String?> descripcionRU = const Value.absent(),
-            Value<String?> descripcionCN = const Value.absent(),
-            Value<String?> descripcionEL = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              PaisTableCompanion(
-            id: id,
-            isoCode: isoCode,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPL: descripcionPL,
-            descripcionPT: descripcionPT,
-            descripcionRO: descripcionRO,
-            descripcionRU: descripcionRU,
-            descripcionCN: descripcionCN,
-            descripcionEL: descripcionEL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String id,
-            Value<String?> isoCode = const Value.absent(),
-            required String descripcionES,
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPL = const Value.absent(),
-            Value<String?> descripcionPT = const Value.absent(),
-            Value<String?> descripcionRO = const Value.absent(),
-            Value<String?> descripcionRU = const Value.absent(),
-            Value<String?> descripcionCN = const Value.absent(),
-            Value<String?> descripcionEL = const Value.absent(),
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              PaisTableCompanion.insert(
-            id: id,
-            isoCode: isoCode,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPL: descripcionPL,
-            descripcionPT: descripcionPT,
-            descripcionRO: descripcionRO,
-            descripcionRU: descripcionRU,
-            descripcionCN: descripcionCN,
-            descripcionEL: descripcionEL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
+final class $$PaisTableTableReferences
+    extends BaseReferences<_$RemoteAppDatabase, $PaisTableTable, PaisDTO> {
+  $$PaisTableTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static MultiTypedResultKey<$PedidoVentaTableTable, List<PedidoVentaDTO>>
+      _pedidoVentaTableRefsTable(_$RemoteAppDatabase db) =>
+          MultiTypedResultKey.fromTable(db.pedidoVentaTable,
+              aliasName: $_aliasNameGenerator(
+                  db.paisTable.id, db.pedidoVentaTable.paisId));
+
+  $$PedidoVentaTableTableProcessedTableManager get pedidoVentaTableRefs {
+    final manager =
+        $$PedidoVentaTableTableTableManager($_db, $_db.pedidoVentaTable)
+            .filter((f) => f.paisId.id($_item.id));
+
+    final cache =
+        $_typedResult.readTableOrNull(_pedidoVentaTableRefsTable($_db));
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: cache));
+  }
+
+  static MultiTypedResultKey<$ClienteTableTable, List<ClienteDTO>>
+      _clienteTableRefsTable(_$RemoteAppDatabase db) =>
+          MultiTypedResultKey.fromTable(db.clienteTable,
+              aliasName: $_aliasNameGenerator(
+                  db.paisTable.id, db.clienteTable.paisFiscalId));
+
+  $$ClienteTableTableProcessedTableManager get clienteTableRefs {
+    final manager = $$ClienteTableTableTableManager($_db, $_db.clienteTable)
+        .filter((f) => f.paisFiscalId.id($_item.id));
+
+    final cache = $_typedResult.readTableOrNull(_clienteTableRefsTable($_db));
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: cache));
+  }
+
+  static MultiTypedResultKey<$ClienteDireccionTableTable,
+      List<ClienteDireccionDTO>> _clienteDireccionTableRefsTable(
+          _$RemoteAppDatabase db) =>
+      MultiTypedResultKey.fromTable(db.clienteDireccionTable,
+          aliasName: $_aliasNameGenerator(
+              db.paisTable.id, db.clienteDireccionTable.paisId));
+
+  $$ClienteDireccionTableTableProcessedTableManager
+      get clienteDireccionTableRefs {
+    final manager = $$ClienteDireccionTableTableTableManager(
+            $_db, $_db.clienteDireccionTable)
+        .filter((f) => f.paisId.id($_item.id));
+
+    final cache =
+        $_typedResult.readTableOrNull(_clienteDireccionTableRefsTable($_db));
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: cache));
+  }
 }
 
 class $$PaisTableTableFilterComposer
@@ -21779,6 +21728,193 @@ class $$PaisTableTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$PaisTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $PaisTableTable,
+    PaisDTO,
+    $$PaisTableTableFilterComposer,
+    $$PaisTableTableOrderingComposer,
+    $$PaisTableTableCreateCompanionBuilder,
+    $$PaisTableTableUpdateCompanionBuilder,
+    (PaisDTO, $$PaisTableTableReferences),
+    PaisDTO,
+    PrefetchHooks Function(
+        {bool pedidoVentaTableRefs,
+        bool clienteTableRefs,
+        bool clienteDireccionTableRefs})> {
+  $$PaisTableTableTableManager(_$RemoteAppDatabase db, $PaisTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$PaisTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$PaisTableTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String?> isoCode = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              PaisTableCompanion(
+            id: id,
+            isoCode: isoCode,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            Value<String?> isoCode = const Value.absent(),
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              PaisTableCompanion.insert(
+            id: id,
+            isoCode: isoCode,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (
+                    e.readTable(table),
+                    $$PaisTableTableReferences(db, table, e)
+                  ))
+              .toList(),
+          prefetchHooksCallback: (
+              {pedidoVentaTableRefs = false,
+              clienteTableRefs = false,
+              clienteDireccionTableRefs = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [
+                if (pedidoVentaTableRefs) db.pedidoVentaTable,
+                if (clienteTableRefs) db.clienteTable,
+                if (clienteDireccionTableRefs) db.clienteDireccionTable
+              ],
+              addJoins: null,
+              getPrefetchedDataCallback: (items) async {
+                return [
+                  if (pedidoVentaTableRefs)
+                    await $_getPrefetchedData(
+                        currentTable: table,
+                        referencedTable: $$PaisTableTableReferences
+                            ._pedidoVentaTableRefsTable(db),
+                        managerFromTypedResult: (p0) =>
+                            $$PaisTableTableReferences(db, table, p0)
+                                .pedidoVentaTableRefs,
+                        referencedItemsForCurrentItem: (item,
+                                referencedItems) =>
+                            referencedItems.where((e) => e.paisId == item.id),
+                        typedResults: items),
+                  if (clienteTableRefs)
+                    await $_getPrefetchedData(
+                        currentTable: table,
+                        referencedTable: $$PaisTableTableReferences
+                            ._clienteTableRefsTable(db),
+                        managerFromTypedResult: (p0) =>
+                            $$PaisTableTableReferences(db, table, p0)
+                                .clienteTableRefs,
+                        referencedItemsForCurrentItem:
+                            (item, referencedItems) => referencedItems
+                                .where((e) => e.paisFiscalId == item.id),
+                        typedResults: items),
+                  if (clienteDireccionTableRefs)
+                    await $_getPrefetchedData(
+                        currentTable: table,
+                        referencedTable: $$PaisTableTableReferences
+                            ._clienteDireccionTableRefsTable(db),
+                        managerFromTypedResult: (p0) =>
+                            $$PaisTableTableReferences(db, table, p0)
+                                .clienteDireccionTableRefs,
+                        referencedItemsForCurrentItem: (item,
+                                referencedItems) =>
+                            referencedItems.where((e) => e.paisId == item.id),
+                        typedResults: items)
+                ];
+              },
+            );
+          },
+        ));
+}
+
+typedef $$PaisTableTableProcessedTableManager = ProcessedTableManager<
+    _$RemoteAppDatabase,
+    $PaisTableTable,
+    PaisDTO,
+    $$PaisTableTableFilterComposer,
+    $$PaisTableTableOrderingComposer,
+    $$PaisTableTableCreateCompanionBuilder,
+    $$PaisTableTableUpdateCompanionBuilder,
+    (PaisDTO, $$PaisTableTableReferences),
+    PaisDTO,
+    PrefetchHooks Function(
+        {bool pedidoVentaTableRefs,
+        bool clienteTableRefs,
+        bool clienteDireccionTableRefs})>;
 typedef $$DivisaTableTableCreateCompanionBuilder = DivisaTableCompanion
     Function({
   required String id,
@@ -21830,120 +21966,41 @@ typedef $$DivisaTableTableUpdateCompanionBuilder = DivisaTableCompanion
   Value<int> rowid,
 });
 
-class $$DivisaTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $DivisaTableTable,
-    DivisaDTO,
-    $$DivisaTableTableFilterComposer,
-    $$DivisaTableTableOrderingComposer,
-    $$DivisaTableTableCreateCompanionBuilder,
-    $$DivisaTableTableUpdateCompanionBuilder> {
-  $$DivisaTableTableTableManager(
-      _$RemoteAppDatabase db, $DivisaTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer:
-              $$DivisaTableTableFilterComposer(ComposerState(db, table)),
-          orderingComposer:
-              $$DivisaTableTableOrderingComposer(ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> id = const Value.absent(),
-            Value<String> abv = const Value.absent(),
-            Value<String?> simbolo = const Value.absent(),
-            Value<double?> redondeo = const Value.absent(),
-            Value<String> descripcionES = const Value.absent(),
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPL = const Value.absent(),
-            Value<String?> descripcionPT = const Value.absent(),
-            Value<String?> descripcionRO = const Value.absent(),
-            Value<String?> descripcionRU = const Value.absent(),
-            Value<String?> descripcionCN = const Value.absent(),
-            Value<String?> descripcionEL = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              DivisaTableCompanion(
-            id: id,
-            abv: abv,
-            simbolo: simbolo,
-            redondeo: redondeo,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPL: descripcionPL,
-            descripcionPT: descripcionPT,
-            descripcionRO: descripcionRO,
-            descripcionRU: descripcionRU,
-            descripcionCN: descripcionCN,
-            descripcionEL: descripcionEL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String id,
-            required String abv,
-            Value<String?> simbolo = const Value.absent(),
-            Value<double?> redondeo = const Value.absent(),
-            required String descripcionES,
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPL = const Value.absent(),
-            Value<String?> descripcionPT = const Value.absent(),
-            Value<String?> descripcionRO = const Value.absent(),
-            Value<String?> descripcionRU = const Value.absent(),
-            Value<String?> descripcionCN = const Value.absent(),
-            Value<String?> descripcionEL = const Value.absent(),
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              DivisaTableCompanion.insert(
-            id: id,
-            abv: abv,
-            simbolo: simbolo,
-            redondeo: redondeo,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPL: descripcionPL,
-            descripcionPT: descripcionPT,
-            descripcionRO: descripcionRO,
-            descripcionRU: descripcionRU,
-            descripcionCN: descripcionCN,
-            descripcionEL: descripcionEL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
+final class $$DivisaTableTableReferences
+    extends BaseReferences<_$RemoteAppDatabase, $DivisaTableTable, DivisaDTO> {
+  $$DivisaTableTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static MultiTypedResultKey<$PedidoVentaTableTable, List<PedidoVentaDTO>>
+      _pedidoVentaTableRefsTable(_$RemoteAppDatabase db) =>
+          MultiTypedResultKey.fromTable(db.pedidoVentaTable,
+              aliasName: $_aliasNameGenerator(
+                  db.divisaTable.id, db.pedidoVentaTable.divisaId));
+
+  $$PedidoVentaTableTableProcessedTableManager get pedidoVentaTableRefs {
+    final manager =
+        $$PedidoVentaTableTableTableManager($_db, $_db.pedidoVentaTable)
+            .filter((f) => f.divisaId.id($_item.id));
+
+    final cache =
+        $_typedResult.readTableOrNull(_pedidoVentaTableRefsTable($_db));
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: cache));
+  }
+
+  static MultiTypedResultKey<$ClienteTableTable, List<ClienteDTO>>
+      _clienteTableRefsTable(_$RemoteAppDatabase db) =>
+          MultiTypedResultKey.fromTable(db.clienteTable,
+              aliasName: $_aliasNameGenerator(
+                  db.divisaTable.id, db.clienteTable.divisaId));
+
+  $$ClienteTableTableProcessedTableManager get clienteTableRefs {
+    final manager = $$ClienteTableTableTableManager($_db, $_db.clienteTable)
+        .filter((f) => f.divisaId.id($_item.id));
+
+    final cache = $_typedResult.readTableOrNull(_clienteTableRefsTable($_db));
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: cache));
+  }
 }
 
 class $$DivisaTableTableFilterComposer
@@ -22191,6 +22248,182 @@ class $$DivisaTableTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$DivisaTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $DivisaTableTable,
+    DivisaDTO,
+    $$DivisaTableTableFilterComposer,
+    $$DivisaTableTableOrderingComposer,
+    $$DivisaTableTableCreateCompanionBuilder,
+    $$DivisaTableTableUpdateCompanionBuilder,
+    (DivisaDTO, $$DivisaTableTableReferences),
+    DivisaDTO,
+    PrefetchHooks Function(
+        {bool pedidoVentaTableRefs, bool clienteTableRefs})> {
+  $$DivisaTableTableTableManager(
+      _$RemoteAppDatabase db, $DivisaTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$DivisaTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$DivisaTableTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> abv = const Value.absent(),
+            Value<String?> simbolo = const Value.absent(),
+            Value<double?> redondeo = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              DivisaTableCompanion(
+            id: id,
+            abv: abv,
+            simbolo: simbolo,
+            redondeo: redondeo,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String abv,
+            Value<String?> simbolo = const Value.absent(),
+            Value<double?> redondeo = const Value.absent(),
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              DivisaTableCompanion.insert(
+            id: id,
+            abv: abv,
+            simbolo: simbolo,
+            redondeo: redondeo,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (
+                    e.readTable(table),
+                    $$DivisaTableTableReferences(db, table, e)
+                  ))
+              .toList(),
+          prefetchHooksCallback: (
+              {pedidoVentaTableRefs = false, clienteTableRefs = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [
+                if (pedidoVentaTableRefs) db.pedidoVentaTable,
+                if (clienteTableRefs) db.clienteTable
+              ],
+              addJoins: null,
+              getPrefetchedDataCallback: (items) async {
+                return [
+                  if (pedidoVentaTableRefs)
+                    await $_getPrefetchedData(
+                        currentTable: table,
+                        referencedTable: $$DivisaTableTableReferences
+                            ._pedidoVentaTableRefsTable(db),
+                        managerFromTypedResult: (p0) =>
+                            $$DivisaTableTableReferences(db, table, p0)
+                                .pedidoVentaTableRefs,
+                        referencedItemsForCurrentItem: (item,
+                                referencedItems) =>
+                            referencedItems.where((e) => e.divisaId == item.id),
+                        typedResults: items),
+                  if (clienteTableRefs)
+                    await $_getPrefetchedData(
+                        currentTable: table,
+                        referencedTable: $$DivisaTableTableReferences
+                            ._clienteTableRefsTable(db),
+                        managerFromTypedResult: (p0) =>
+                            $$DivisaTableTableReferences(db, table, p0)
+                                .clienteTableRefs,
+                        referencedItemsForCurrentItem: (item,
+                                referencedItems) =>
+                            referencedItems.where((e) => e.divisaId == item.id),
+                        typedResults: items)
+                ];
+              },
+            );
+          },
+        ));
+}
+
+typedef $$DivisaTableTableProcessedTableManager = ProcessedTableManager<
+    _$RemoteAppDatabase,
+    $DivisaTableTable,
+    DivisaDTO,
+    $$DivisaTableTableFilterComposer,
+    $$DivisaTableTableOrderingComposer,
+    $$DivisaTableTableCreateCompanionBuilder,
+    $$DivisaTableTableUpdateCompanionBuilder,
+    (DivisaDTO, $$DivisaTableTableReferences),
+    DivisaDTO,
+    PrefetchHooks Function({bool pedidoVentaTableRefs, bool clienteTableRefs})>;
 typedef $$PedidoVentaEstadoTableTableCreateCompanionBuilder
     = PedidoVentaEstadoTableCompanion Function({
   Value<int> id,
@@ -22232,100 +22465,27 @@ typedef $$PedidoVentaEstadoTableTableUpdateCompanionBuilder
   Value<String> deleted,
 });
 
-class $$PedidoVentaEstadoTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $PedidoVentaEstadoTableTable,
-    PedidoVentaEstadoDTO,
-    $$PedidoVentaEstadoTableTableFilterComposer,
-    $$PedidoVentaEstadoTableTableOrderingComposer,
-    $$PedidoVentaEstadoTableTableCreateCompanionBuilder,
-    $$PedidoVentaEstadoTableTableUpdateCompanionBuilder> {
-  $$PedidoVentaEstadoTableTableTableManager(
-      _$RemoteAppDatabase db, $PedidoVentaEstadoTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer: $$PedidoVentaEstadoTableTableFilterComposer(
-              ComposerState(db, table)),
-          orderingComposer: $$PedidoVentaEstadoTableTableOrderingComposer(
-              ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            Value<String> descripcionES = const Value.absent(),
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPT = const Value.absent(),
-            Value<String?> descripcionRO = const Value.absent(),
-            Value<String?> descripcionRU = const Value.absent(),
-            Value<String?> descripcionCN = const Value.absent(),
-            Value<String?> descripcionEL = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-          }) =>
-              PedidoVentaEstadoTableCompanion(
-            id: id,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPT: descripcionPT,
-            descripcionRO: descripcionRO,
-            descripcionRU: descripcionRU,
-            descripcionCN: descripcionCN,
-            descripcionEL: descripcionEL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-          ),
-          createCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            required String descripcionES,
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPT = const Value.absent(),
-            Value<String?> descripcionRO = const Value.absent(),
-            Value<String?> descripcionRU = const Value.absent(),
-            Value<String?> descripcionCN = const Value.absent(),
-            Value<String?> descripcionEL = const Value.absent(),
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-          }) =>
-              PedidoVentaEstadoTableCompanion.insert(
-            id: id,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPT: descripcionPT,
-            descripcionRO: descripcionRO,
-            descripcionRU: descripcionRU,
-            descripcionCN: descripcionCN,
-            descripcionEL: descripcionEL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-          ),
-        ));
+final class $$PedidoVentaEstadoTableTableReferences extends BaseReferences<
+    _$RemoteAppDatabase, $PedidoVentaEstadoTableTable, PedidoVentaEstadoDTO> {
+  $$PedidoVentaEstadoTableTableReferences(
+      super.$_db, super.$_table, super.$_typedResult);
+
+  static MultiTypedResultKey<$PedidoVentaTableTable, List<PedidoVentaDTO>>
+      _pedidoVentaTableRefsTable(_$RemoteAppDatabase db) =>
+          MultiTypedResultKey.fromTable(db.pedidoVentaTable,
+              aliasName: $_aliasNameGenerator(db.pedidoVentaEstadoTable.id,
+                  db.pedidoVentaTable.pedidoVentaEstadoId));
+
+  $$PedidoVentaTableTableProcessedTableManager get pedidoVentaTableRefs {
+    final manager =
+        $$PedidoVentaTableTableTableManager($_db, $_db.pedidoVentaTable)
+            .filter((f) => f.pedidoVentaEstadoId.id($_item.id));
+
+    final cache =
+        $_typedResult.readTableOrNull(_pedidoVentaTableRefsTable($_db));
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: cache));
+  }
 }
 
 class $$PedidoVentaEstadoTableTableFilterComposer
@@ -22520,6 +22680,149 @@ class $$PedidoVentaEstadoTableTableOrderingComposer extends OrderingComposer<
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$PedidoVentaEstadoTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $PedidoVentaEstadoTableTable,
+    PedidoVentaEstadoDTO,
+    $$PedidoVentaEstadoTableTableFilterComposer,
+    $$PedidoVentaEstadoTableTableOrderingComposer,
+    $$PedidoVentaEstadoTableTableCreateCompanionBuilder,
+    $$PedidoVentaEstadoTableTableUpdateCompanionBuilder,
+    (PedidoVentaEstadoDTO, $$PedidoVentaEstadoTableTableReferences),
+    PedidoVentaEstadoDTO,
+    PrefetchHooks Function({bool pedidoVentaTableRefs})> {
+  $$PedidoVentaEstadoTableTableTableManager(
+      _$RemoteAppDatabase db, $PedidoVentaEstadoTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$PedidoVentaEstadoTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$PedidoVentaEstadoTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+          }) =>
+              PedidoVentaEstadoTableCompanion(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+          }) =>
+              PedidoVentaEstadoTableCompanion.insert(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (
+                    e.readTable(table),
+                    $$PedidoVentaEstadoTableTableReferences(db, table, e)
+                  ))
+              .toList(),
+          prefetchHooksCallback: ({pedidoVentaTableRefs = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [
+                if (pedidoVentaTableRefs) db.pedidoVentaTable
+              ],
+              addJoins: null,
+              getPrefetchedDataCallback: (items) async {
+                return [
+                  if (pedidoVentaTableRefs)
+                    await $_getPrefetchedData(
+                        currentTable: table,
+                        referencedTable: $$PedidoVentaEstadoTableTableReferences
+                            ._pedidoVentaTableRefsTable(db),
+                        managerFromTypedResult: (p0) =>
+                            $$PedidoVentaEstadoTableTableReferences(
+                                    db, table, p0)
+                                .pedidoVentaTableRefs,
+                        referencedItemsForCurrentItem:
+                            (item, referencedItems) => referencedItems
+                                .where((e) => e.pedidoVentaEstadoId == item.id),
+                        typedResults: items)
+                ];
+              },
+            );
+          },
+        ));
+}
+
+typedef $$PedidoVentaEstadoTableTableProcessedTableManager
+    = ProcessedTableManager<
+        _$RemoteAppDatabase,
+        $PedidoVentaEstadoTableTable,
+        PedidoVentaEstadoDTO,
+        $$PedidoVentaEstadoTableTableFilterComposer,
+        $$PedidoVentaEstadoTableTableOrderingComposer,
+        $$PedidoVentaEstadoTableTableCreateCompanionBuilder,
+        $$PedidoVentaEstadoTableTableUpdateCompanionBuilder,
+        (PedidoVentaEstadoDTO, $$PedidoVentaEstadoTableTableReferences),
+        PedidoVentaEstadoDTO,
+        PrefetchHooks Function({bool pedidoVentaTableRefs})>;
 typedef $$PedidoVentaTableTableCreateCompanionBuilder
     = PedidoVentaTableCompanion Function({
   required String empresaId,
@@ -22581,140 +22884,55 @@ typedef $$PedidoVentaTableTableUpdateCompanionBuilder
   Value<int> rowid,
 });
 
-class $$PedidoVentaTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $PedidoVentaTableTable,
-    PedidoVentaDTO,
-    $$PedidoVentaTableTableFilterComposer,
-    $$PedidoVentaTableTableOrderingComposer,
-    $$PedidoVentaTableTableCreateCompanionBuilder,
-    $$PedidoVentaTableTableUpdateCompanionBuilder> {
-  $$PedidoVentaTableTableTableManager(
-      _$RemoteAppDatabase db, $PedidoVentaTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer:
-              $$PedidoVentaTableTableFilterComposer(ComposerState(db, table)),
-          orderingComposer:
-              $$PedidoVentaTableTableOrderingComposer(ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> empresaId = const Value.absent(),
-            Value<String> pedidoVentaId = const Value.absent(),
-            Value<DateTime> pedidoVentaDate = const Value.absent(),
-            Value<String> tipoVenta = const Value.absent(),
-            Value<String> clienteId = const Value.absent(),
-            Value<String> nombreCliente = const Value.absent(),
-            Value<String?> direccionId = const Value.absent(),
-            Value<String?> direccionEntrga1 = const Value.absent(),
-            Value<String?> direccionEntrga2 = const Value.absent(),
-            Value<String?> codigoPostal = const Value.absent(),
-            Value<String?> poblacion = const Value.absent(),
-            Value<String?> provincia = const Value.absent(),
-            Value<String?> paisId = const Value.absent(),
-            Value<String> divisaId = const Value.absent(),
-            Value<double> baseImponible = const Value.absent(),
-            Value<double> totalLineas = const Value.absent(),
-            Value<double> importePortes = const Value.absent(),
-            Value<double> importeIva = const Value.absent(),
-            Value<double> total = const Value.absent(),
-            Value<int> pedidoVentaEstadoId = const Value.absent(),
-            Value<String> oferta = const Value.absent(),
-            Value<DateTime?> ofertaFechaHasta = const Value.absent(),
-            Value<String?> pedidoVentaAppId = const Value.absent(),
-            Value<double> iva = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              PedidoVentaTableCompanion(
-            empresaId: empresaId,
-            pedidoVentaId: pedidoVentaId,
-            pedidoVentaDate: pedidoVentaDate,
-            tipoVenta: tipoVenta,
-            clienteId: clienteId,
-            nombreCliente: nombreCliente,
-            direccionId: direccionId,
-            direccionEntrga1: direccionEntrga1,
-            direccionEntrga2: direccionEntrga2,
-            codigoPostal: codigoPostal,
-            poblacion: poblacion,
-            provincia: provincia,
-            paisId: paisId,
-            divisaId: divisaId,
-            baseImponible: baseImponible,
-            totalLineas: totalLineas,
-            importePortes: importePortes,
-            importeIva: importeIva,
-            total: total,
-            pedidoVentaEstadoId: pedidoVentaEstadoId,
-            oferta: oferta,
-            ofertaFechaHasta: ofertaFechaHasta,
-            pedidoVentaAppId: pedidoVentaAppId,
-            iva: iva,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String empresaId,
-            required String pedidoVentaId,
-            required DateTime pedidoVentaDate,
-            required String tipoVenta,
-            required String clienteId,
-            required String nombreCliente,
-            Value<String?> direccionId = const Value.absent(),
-            Value<String?> direccionEntrga1 = const Value.absent(),
-            Value<String?> direccionEntrga2 = const Value.absent(),
-            Value<String?> codigoPostal = const Value.absent(),
-            Value<String?> poblacion = const Value.absent(),
-            Value<String?> provincia = const Value.absent(),
-            Value<String?> paisId = const Value.absent(),
-            required String divisaId,
-            Value<double> baseImponible = const Value.absent(),
-            Value<double> totalLineas = const Value.absent(),
-            Value<double> importePortes = const Value.absent(),
-            Value<double> importeIva = const Value.absent(),
-            Value<double> total = const Value.absent(),
-            Value<int> pedidoVentaEstadoId = const Value.absent(),
-            Value<String> oferta = const Value.absent(),
-            Value<DateTime?> ofertaFechaHasta = const Value.absent(),
-            Value<String?> pedidoVentaAppId = const Value.absent(),
-            Value<double> iva = const Value.absent(),
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              PedidoVentaTableCompanion.insert(
-            empresaId: empresaId,
-            pedidoVentaId: pedidoVentaId,
-            pedidoVentaDate: pedidoVentaDate,
-            tipoVenta: tipoVenta,
-            clienteId: clienteId,
-            nombreCliente: nombreCliente,
-            direccionId: direccionId,
-            direccionEntrga1: direccionEntrga1,
-            direccionEntrga2: direccionEntrga2,
-            codigoPostal: codigoPostal,
-            poblacion: poblacion,
-            provincia: provincia,
-            paisId: paisId,
-            divisaId: divisaId,
-            baseImponible: baseImponible,
-            totalLineas: totalLineas,
-            importePortes: importePortes,
-            importeIva: importeIva,
-            total: total,
-            pedidoVentaEstadoId: pedidoVentaEstadoId,
-            oferta: oferta,
-            ofertaFechaHasta: ofertaFechaHasta,
-            pedidoVentaAppId: pedidoVentaAppId,
-            iva: iva,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
+final class $$PedidoVentaTableTableReferences extends BaseReferences<
+    _$RemoteAppDatabase, $PedidoVentaTableTable, PedidoVentaDTO> {
+  $$PedidoVentaTableTableReferences(
+      super.$_db, super.$_table, super.$_typedResult);
+
+  static $PaisTableTable _paisIdTable(_$RemoteAppDatabase db) =>
+      db.paisTable.createAlias(
+          $_aliasNameGenerator(db.pedidoVentaTable.paisId, db.paisTable.id));
+
+  $$PaisTableTableProcessedTableManager? get paisId {
+    if ($_item.paisId == null) return null;
+    final manager = $$PaisTableTableTableManager($_db, $_db.paisTable)
+        .filter((f) => f.id($_item.paisId!));
+    final item = $_typedResult.readTableOrNull(_paisIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: [item]));
+  }
+
+  static $DivisaTableTable _divisaIdTable(_$RemoteAppDatabase db) =>
+      db.divisaTable.createAlias($_aliasNameGenerator(
+          db.pedidoVentaTable.divisaId, db.divisaTable.id));
+
+  $$DivisaTableTableProcessedTableManager? get divisaId {
+    if ($_item.divisaId == null) return null;
+    final manager = $$DivisaTableTableTableManager($_db, $_db.divisaTable)
+        .filter((f) => f.id($_item.divisaId!));
+    final item = $_typedResult.readTableOrNull(_divisaIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: [item]));
+  }
+
+  static $PedidoVentaEstadoTableTable _pedidoVentaEstadoIdTable(
+          _$RemoteAppDatabase db) =>
+      db.pedidoVentaEstadoTable.createAlias($_aliasNameGenerator(
+          db.pedidoVentaTable.pedidoVentaEstadoId,
+          db.pedidoVentaEstadoTable.id));
+
+  $$PedidoVentaEstadoTableTableProcessedTableManager? get pedidoVentaEstadoId {
+    if ($_item.pedidoVentaEstadoId == null) return null;
+    final manager = $$PedidoVentaEstadoTableTableTableManager(
+            $_db, $_db.pedidoVentaEstadoTable)
+        .filter((f) => f.id($_item.pedidoVentaEstadoId!));
+    final item = $_typedResult.readTableOrNull(_pedidoVentaEstadoIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: [item]));
+  }
 }
 
 class $$PedidoVentaTableTableFilterComposer
@@ -23035,6 +23253,220 @@ class $$PedidoVentaTableTableOrderingComposer
   }
 }
 
+class $$PedidoVentaTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $PedidoVentaTableTable,
+    PedidoVentaDTO,
+    $$PedidoVentaTableTableFilterComposer,
+    $$PedidoVentaTableTableOrderingComposer,
+    $$PedidoVentaTableTableCreateCompanionBuilder,
+    $$PedidoVentaTableTableUpdateCompanionBuilder,
+    (PedidoVentaDTO, $$PedidoVentaTableTableReferences),
+    PedidoVentaDTO,
+    PrefetchHooks Function(
+        {bool paisId, bool divisaId, bool pedidoVentaEstadoId})> {
+  $$PedidoVentaTableTableTableManager(
+      _$RemoteAppDatabase db, $PedidoVentaTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$PedidoVentaTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$PedidoVentaTableTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> empresaId = const Value.absent(),
+            Value<String> pedidoVentaId = const Value.absent(),
+            Value<DateTime> pedidoVentaDate = const Value.absent(),
+            Value<String> tipoVenta = const Value.absent(),
+            Value<String> clienteId = const Value.absent(),
+            Value<String> nombreCliente = const Value.absent(),
+            Value<String?> direccionId = const Value.absent(),
+            Value<String?> direccionEntrga1 = const Value.absent(),
+            Value<String?> direccionEntrga2 = const Value.absent(),
+            Value<String?> codigoPostal = const Value.absent(),
+            Value<String?> poblacion = const Value.absent(),
+            Value<String?> provincia = const Value.absent(),
+            Value<String?> paisId = const Value.absent(),
+            Value<String> divisaId = const Value.absent(),
+            Value<double> baseImponible = const Value.absent(),
+            Value<double> totalLineas = const Value.absent(),
+            Value<double> importePortes = const Value.absent(),
+            Value<double> importeIva = const Value.absent(),
+            Value<double> total = const Value.absent(),
+            Value<int> pedidoVentaEstadoId = const Value.absent(),
+            Value<String> oferta = const Value.absent(),
+            Value<DateTime?> ofertaFechaHasta = const Value.absent(),
+            Value<String?> pedidoVentaAppId = const Value.absent(),
+            Value<double> iva = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              PedidoVentaTableCompanion(
+            empresaId: empresaId,
+            pedidoVentaId: pedidoVentaId,
+            pedidoVentaDate: pedidoVentaDate,
+            tipoVenta: tipoVenta,
+            clienteId: clienteId,
+            nombreCliente: nombreCliente,
+            direccionId: direccionId,
+            direccionEntrga1: direccionEntrga1,
+            direccionEntrga2: direccionEntrga2,
+            codigoPostal: codigoPostal,
+            poblacion: poblacion,
+            provincia: provincia,
+            paisId: paisId,
+            divisaId: divisaId,
+            baseImponible: baseImponible,
+            totalLineas: totalLineas,
+            importePortes: importePortes,
+            importeIva: importeIva,
+            total: total,
+            pedidoVentaEstadoId: pedidoVentaEstadoId,
+            oferta: oferta,
+            ofertaFechaHasta: ofertaFechaHasta,
+            pedidoVentaAppId: pedidoVentaAppId,
+            iva: iva,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String empresaId,
+            required String pedidoVentaId,
+            required DateTime pedidoVentaDate,
+            required String tipoVenta,
+            required String clienteId,
+            required String nombreCliente,
+            Value<String?> direccionId = const Value.absent(),
+            Value<String?> direccionEntrga1 = const Value.absent(),
+            Value<String?> direccionEntrga2 = const Value.absent(),
+            Value<String?> codigoPostal = const Value.absent(),
+            Value<String?> poblacion = const Value.absent(),
+            Value<String?> provincia = const Value.absent(),
+            Value<String?> paisId = const Value.absent(),
+            required String divisaId,
+            Value<double> baseImponible = const Value.absent(),
+            Value<double> totalLineas = const Value.absent(),
+            Value<double> importePortes = const Value.absent(),
+            Value<double> importeIva = const Value.absent(),
+            Value<double> total = const Value.absent(),
+            Value<int> pedidoVentaEstadoId = const Value.absent(),
+            Value<String> oferta = const Value.absent(),
+            Value<DateTime?> ofertaFechaHasta = const Value.absent(),
+            Value<String?> pedidoVentaAppId = const Value.absent(),
+            Value<double> iva = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              PedidoVentaTableCompanion.insert(
+            empresaId: empresaId,
+            pedidoVentaId: pedidoVentaId,
+            pedidoVentaDate: pedidoVentaDate,
+            tipoVenta: tipoVenta,
+            clienteId: clienteId,
+            nombreCliente: nombreCliente,
+            direccionId: direccionId,
+            direccionEntrga1: direccionEntrga1,
+            direccionEntrga2: direccionEntrga2,
+            codigoPostal: codigoPostal,
+            poblacion: poblacion,
+            provincia: provincia,
+            paisId: paisId,
+            divisaId: divisaId,
+            baseImponible: baseImponible,
+            totalLineas: totalLineas,
+            importePortes: importePortes,
+            importeIva: importeIva,
+            total: total,
+            pedidoVentaEstadoId: pedidoVentaEstadoId,
+            oferta: oferta,
+            ofertaFechaHasta: ofertaFechaHasta,
+            pedidoVentaAppId: pedidoVentaAppId,
+            iva: iva,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (
+                    e.readTable(table),
+                    $$PedidoVentaTableTableReferences(db, table, e)
+                  ))
+              .toList(),
+          prefetchHooksCallback: (
+              {paisId = false, divisaId = false, pedidoVentaEstadoId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins: <
+                  T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic>>(state) {
+                if (paisId) {
+                  state = state.withJoin(
+                    currentTable: table,
+                    currentColumn: table.paisId,
+                    referencedTable:
+                        $$PedidoVentaTableTableReferences._paisIdTable(db),
+                    referencedColumn:
+                        $$PedidoVentaTableTableReferences._paisIdTable(db).id,
+                  ) as T;
+                }
+                if (divisaId) {
+                  state = state.withJoin(
+                    currentTable: table,
+                    currentColumn: table.divisaId,
+                    referencedTable:
+                        $$PedidoVentaTableTableReferences._divisaIdTable(db),
+                    referencedColumn:
+                        $$PedidoVentaTableTableReferences._divisaIdTable(db).id,
+                  ) as T;
+                }
+                if (pedidoVentaEstadoId) {
+                  state = state.withJoin(
+                    currentTable: table,
+                    currentColumn: table.pedidoVentaEstadoId,
+                    referencedTable: $$PedidoVentaTableTableReferences
+                        ._pedidoVentaEstadoIdTable(db),
+                    referencedColumn: $$PedidoVentaTableTableReferences
+                        ._pedidoVentaEstadoIdTable(db)
+                        .id,
+                  ) as T;
+                }
+
+                return state;
+              },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ));
+}
+
+typedef $$PedidoVentaTableTableProcessedTableManager = ProcessedTableManager<
+    _$RemoteAppDatabase,
+    $PedidoVentaTableTable,
+    PedidoVentaDTO,
+    $$PedidoVentaTableTableFilterComposer,
+    $$PedidoVentaTableTableOrderingComposer,
+    $$PedidoVentaTableTableCreateCompanionBuilder,
+    $$PedidoVentaTableTableUpdateCompanionBuilder,
+    (PedidoVentaDTO, $$PedidoVentaTableTableReferences),
+    PedidoVentaDTO,
+    PrefetchHooks Function(
+        {bool paisId, bool divisaId, bool pedidoVentaEstadoId})>;
 typedef $$PedidoVentaLineaTableTableCreateCompanionBuilder
     = PedidoVentaLineaTableCompanion Function({
   required String empresaId,
@@ -23075,102 +23507,6 @@ typedef $$PedidoVentaLineaTableTableUpdateCompanionBuilder
   Value<String> deleted,
   Value<int> rowid,
 });
-
-class $$PedidoVentaLineaTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $PedidoVentaLineaTableTable,
-    PedidoVentaLineaDTO,
-    $$PedidoVentaLineaTableTableFilterComposer,
-    $$PedidoVentaLineaTableTableOrderingComposer,
-    $$PedidoVentaLineaTableTableCreateCompanionBuilder,
-    $$PedidoVentaLineaTableTableUpdateCompanionBuilder> {
-  $$PedidoVentaLineaTableTableTableManager(
-      _$RemoteAppDatabase db, $PedidoVentaLineaTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer: $$PedidoVentaLineaTableTableFilterComposer(
-              ComposerState(db, table)),
-          orderingComposer: $$PedidoVentaLineaTableTableOrderingComposer(
-              ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> empresaId = const Value.absent(),
-            Value<String> pedidoId = const Value.absent(),
-            Value<String> pedidoVentaLineaId = const Value.absent(),
-            Value<String> articuloId = const Value.absent(),
-            Value<String> articuloDescription = const Value.absent(),
-            Value<int> cantidad = const Value.absent(),
-            Value<double> precioDivisa = const Value.absent(),
-            Value<int> tipoPrecio = const Value.absent(),
-            Value<double> descuento1 = const Value.absent(),
-            Value<double> descuento2 = const Value.absent(),
-            Value<double> descuento3 = const Value.absent(),
-            Value<String?> pedidoLineaIdComponente = const Value.absent(),
-            Value<double?> importeLinea = const Value.absent(),
-            Value<int> cantidadServida = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              PedidoVentaLineaTableCompanion(
-            empresaId: empresaId,
-            pedidoId: pedidoId,
-            pedidoVentaLineaId: pedidoVentaLineaId,
-            articuloId: articuloId,
-            articuloDescription: articuloDescription,
-            cantidad: cantidad,
-            precioDivisa: precioDivisa,
-            tipoPrecio: tipoPrecio,
-            descuento1: descuento1,
-            descuento2: descuento2,
-            descuento3: descuento3,
-            pedidoLineaIdComponente: pedidoLineaIdComponente,
-            importeLinea: importeLinea,
-            cantidadServida: cantidadServida,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String empresaId,
-            required String pedidoId,
-            required String pedidoVentaLineaId,
-            required String articuloId,
-            required String articuloDescription,
-            required int cantidad,
-            required double precioDivisa,
-            required int tipoPrecio,
-            required double descuento1,
-            required double descuento2,
-            required double descuento3,
-            Value<String?> pedidoLineaIdComponente = const Value.absent(),
-            Value<double?> importeLinea = const Value.absent(),
-            required int cantidadServida,
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              PedidoVentaLineaTableCompanion.insert(
-            empresaId: empresaId,
-            pedidoId: pedidoId,
-            pedidoVentaLineaId: pedidoVentaLineaId,
-            articuloId: articuloId,
-            articuloDescription: articuloDescription,
-            cantidad: cantidad,
-            precioDivisa: precioDivisa,
-            tipoPrecio: tipoPrecio,
-            descuento1: descuento1,
-            descuento2: descuento2,
-            descuento3: descuento3,
-            pedidoLineaIdComponente: pedidoLineaIdComponente,
-            importeLinea: importeLinea,
-            cantidadServida: cantidadServida,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
-}
 
 class $$PedidoVentaLineaTableTableFilterComposer
     extends FilterComposer<_$RemoteAppDatabase, $PedidoVentaLineaTableTable> {
@@ -23341,6 +23677,129 @@ class $$PedidoVentaLineaTableTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$PedidoVentaLineaTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $PedidoVentaLineaTableTable,
+    PedidoVentaLineaDTO,
+    $$PedidoVentaLineaTableTableFilterComposer,
+    $$PedidoVentaLineaTableTableOrderingComposer,
+    $$PedidoVentaLineaTableTableCreateCompanionBuilder,
+    $$PedidoVentaLineaTableTableUpdateCompanionBuilder,
+    (
+      PedidoVentaLineaDTO,
+      BaseReferences<_$RemoteAppDatabase, $PedidoVentaLineaTableTable,
+          PedidoVentaLineaDTO>
+    ),
+    PedidoVentaLineaDTO,
+    PrefetchHooks Function()> {
+  $$PedidoVentaLineaTableTableTableManager(
+      _$RemoteAppDatabase db, $PedidoVentaLineaTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$PedidoVentaLineaTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$PedidoVentaLineaTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> empresaId = const Value.absent(),
+            Value<String> pedidoId = const Value.absent(),
+            Value<String> pedidoVentaLineaId = const Value.absent(),
+            Value<String> articuloId = const Value.absent(),
+            Value<String> articuloDescription = const Value.absent(),
+            Value<int> cantidad = const Value.absent(),
+            Value<double> precioDivisa = const Value.absent(),
+            Value<int> tipoPrecio = const Value.absent(),
+            Value<double> descuento1 = const Value.absent(),
+            Value<double> descuento2 = const Value.absent(),
+            Value<double> descuento3 = const Value.absent(),
+            Value<String?> pedidoLineaIdComponente = const Value.absent(),
+            Value<double?> importeLinea = const Value.absent(),
+            Value<int> cantidadServida = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              PedidoVentaLineaTableCompanion(
+            empresaId: empresaId,
+            pedidoId: pedidoId,
+            pedidoVentaLineaId: pedidoVentaLineaId,
+            articuloId: articuloId,
+            articuloDescription: articuloDescription,
+            cantidad: cantidad,
+            precioDivisa: precioDivisa,
+            tipoPrecio: tipoPrecio,
+            descuento1: descuento1,
+            descuento2: descuento2,
+            descuento3: descuento3,
+            pedidoLineaIdComponente: pedidoLineaIdComponente,
+            importeLinea: importeLinea,
+            cantidadServida: cantidadServida,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String empresaId,
+            required String pedidoId,
+            required String pedidoVentaLineaId,
+            required String articuloId,
+            required String articuloDescription,
+            required int cantidad,
+            required double precioDivisa,
+            required int tipoPrecio,
+            required double descuento1,
+            required double descuento2,
+            required double descuento3,
+            Value<String?> pedidoLineaIdComponente = const Value.absent(),
+            Value<double?> importeLinea = const Value.absent(),
+            required int cantidadServida,
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              PedidoVentaLineaTableCompanion.insert(
+            empresaId: empresaId,
+            pedidoId: pedidoId,
+            pedidoVentaLineaId: pedidoVentaLineaId,
+            articuloId: articuloId,
+            articuloDescription: articuloDescription,
+            cantidad: cantidad,
+            precioDivisa: precioDivisa,
+            tipoPrecio: tipoPrecio,
+            descuento1: descuento1,
+            descuento2: descuento2,
+            descuento3: descuento3,
+            pedidoLineaIdComponente: pedidoLineaIdComponente,
+            importeLinea: importeLinea,
+            cantidadServida: cantidadServida,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$PedidoVentaLineaTableTableProcessedTableManager
+    = ProcessedTableManager<
+        _$RemoteAppDatabase,
+        $PedidoVentaLineaTableTable,
+        PedidoVentaLineaDTO,
+        $$PedidoVentaLineaTableTableFilterComposer,
+        $$PedidoVentaLineaTableTableOrderingComposer,
+        $$PedidoVentaLineaTableTableCreateCompanionBuilder,
+        $$PedidoVentaLineaTableTableUpdateCompanionBuilder,
+        (
+          PedidoVentaLineaDTO,
+          BaseReferences<_$RemoteAppDatabase, $PedidoVentaLineaTableTable,
+              PedidoVentaLineaDTO>
+        ),
+        PedidoVentaLineaDTO,
+        PrefetchHooks Function()>;
 typedef $$PlazoDeCobroTableTableCreateCompanionBuilder
     = PlazoDeCobroTableCompanion Function({
   required String id,
@@ -23386,108 +23845,25 @@ typedef $$PlazoDeCobroTableTableUpdateCompanionBuilder
   Value<int> rowid,
 });
 
-class $$PlazoDeCobroTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $PlazoDeCobroTableTable,
-    PlazoDeCobroDTO,
-    $$PlazoDeCobroTableTableFilterComposer,
-    $$PlazoDeCobroTableTableOrderingComposer,
-    $$PlazoDeCobroTableTableCreateCompanionBuilder,
-    $$PlazoDeCobroTableTableUpdateCompanionBuilder> {
-  $$PlazoDeCobroTableTableTableManager(
-      _$RemoteAppDatabase db, $PlazoDeCobroTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer:
-              $$PlazoDeCobroTableTableFilterComposer(ComposerState(db, table)),
-          orderingComposer: $$PlazoDeCobroTableTableOrderingComposer(
-              ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> id = const Value.absent(),
-            Value<String> descripcionES = const Value.absent(),
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPL = const Value.absent(),
-            Value<String?> descripcionPT = const Value.absent(),
-            Value<String?> descripcionRO = const Value.absent(),
-            Value<String?> descripcionRU = const Value.absent(),
-            Value<String?> descripcionCN = const Value.absent(),
-            Value<String?> descripcionEL = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              PlazoDeCobroTableCompanion(
-            id: id,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPL: descripcionPL,
-            descripcionPT: descripcionPT,
-            descripcionRO: descripcionRO,
-            descripcionRU: descripcionRU,
-            descripcionCN: descripcionCN,
-            descripcionEL: descripcionEL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String id,
-            required String descripcionES,
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPL = const Value.absent(),
-            Value<String?> descripcionPT = const Value.absent(),
-            Value<String?> descripcionRO = const Value.absent(),
-            Value<String?> descripcionRU = const Value.absent(),
-            Value<String?> descripcionCN = const Value.absent(),
-            Value<String?> descripcionEL = const Value.absent(),
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              PlazoDeCobroTableCompanion.insert(
-            id: id,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPL: descripcionPL,
-            descripcionPT: descripcionPT,
-            descripcionRO: descripcionRO,
-            descripcionRU: descripcionRU,
-            descripcionCN: descripcionCN,
-            descripcionEL: descripcionEL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
+final class $$PlazoDeCobroTableTableReferences extends BaseReferences<
+    _$RemoteAppDatabase, $PlazoDeCobroTableTable, PlazoDeCobroDTO> {
+  $$PlazoDeCobroTableTableReferences(
+      super.$_db, super.$_table, super.$_typedResult);
+
+  static MultiTypedResultKey<$ClienteTableTable, List<ClienteDTO>>
+      _clienteTableRefsTable(_$RemoteAppDatabase db) =>
+          MultiTypedResultKey.fromTable(db.clienteTable,
+              aliasName: $_aliasNameGenerator(
+                  db.plazoDeCobroTable.id, db.clienteTable.plazoDeCobroId));
+
+  $$ClienteTableTableProcessedTableManager get clienteTableRefs {
+    final manager = $$ClienteTableTableTableManager($_db, $_db.clienteTable)
+        .filter((f) => f.plazoDeCobroId.id($_item.id));
+
+    final cache = $_typedResult.readTableOrNull(_clienteTableRefsTable($_db));
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: cache));
+  }
 }
 
 class $$PlazoDeCobroTableTableFilterComposer
@@ -23691,6 +24067,153 @@ class $$PlazoDeCobroTableTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$PlazoDeCobroTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $PlazoDeCobroTableTable,
+    PlazoDeCobroDTO,
+    $$PlazoDeCobroTableTableFilterComposer,
+    $$PlazoDeCobroTableTableOrderingComposer,
+    $$PlazoDeCobroTableTableCreateCompanionBuilder,
+    $$PlazoDeCobroTableTableUpdateCompanionBuilder,
+    (PlazoDeCobroDTO, $$PlazoDeCobroTableTableReferences),
+    PlazoDeCobroDTO,
+    PrefetchHooks Function({bool clienteTableRefs})> {
+  $$PlazoDeCobroTableTableTableManager(
+      _$RemoteAppDatabase db, $PlazoDeCobroTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$PlazoDeCobroTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer: $$PlazoDeCobroTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              PlazoDeCobroTableCompanion(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              PlazoDeCobroTableCompanion.insert(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (
+                    e.readTable(table),
+                    $$PlazoDeCobroTableTableReferences(db, table, e)
+                  ))
+              .toList(),
+          prefetchHooksCallback: ({clienteTableRefs = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [if (clienteTableRefs) db.clienteTable],
+              addJoins: null,
+              getPrefetchedDataCallback: (items) async {
+                return [
+                  if (clienteTableRefs)
+                    await $_getPrefetchedData(
+                        currentTable: table,
+                        referencedTable: $$PlazoDeCobroTableTableReferences
+                            ._clienteTableRefsTable(db),
+                        managerFromTypedResult: (p0) =>
+                            $$PlazoDeCobroTableTableReferences(db, table, p0)
+                                .clienteTableRefs,
+                        referencedItemsForCurrentItem:
+                            (item, referencedItems) => referencedItems
+                                .where((e) => e.plazoDeCobroId == item.id),
+                        typedResults: items)
+                ];
+              },
+            );
+          },
+        ));
+}
+
+typedef $$PlazoDeCobroTableTableProcessedTableManager = ProcessedTableManager<
+    _$RemoteAppDatabase,
+    $PlazoDeCobroTableTable,
+    PlazoDeCobroDTO,
+    $$PlazoDeCobroTableTableFilterComposer,
+    $$PlazoDeCobroTableTableOrderingComposer,
+    $$PlazoDeCobroTableTableCreateCompanionBuilder,
+    $$PlazoDeCobroTableTableUpdateCompanionBuilder,
+    (PlazoDeCobroDTO, $$PlazoDeCobroTableTableReferences),
+    PlazoDeCobroDTO,
+    PrefetchHooks Function({bool clienteTableRefs})>;
 typedef $$MetodoDeCobroTableTableCreateCompanionBuilder
     = MetodoDeCobroTableCompanion Function({
   required String id,
@@ -23736,108 +24259,44 @@ typedef $$MetodoDeCobroTableTableUpdateCompanionBuilder
   Value<int> rowid,
 });
 
-class $$MetodoDeCobroTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $MetodoDeCobroTableTable,
-    MetodoDeCobroDTO,
-    $$MetodoDeCobroTableTableFilterComposer,
-    $$MetodoDeCobroTableTableOrderingComposer,
-    $$MetodoDeCobroTableTableCreateCompanionBuilder,
-    $$MetodoDeCobroTableTableUpdateCompanionBuilder> {
-  $$MetodoDeCobroTableTableTableManager(
-      _$RemoteAppDatabase db, $MetodoDeCobroTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer:
-              $$MetodoDeCobroTableTableFilterComposer(ComposerState(db, table)),
-          orderingComposer: $$MetodoDeCobroTableTableOrderingComposer(
-              ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> id = const Value.absent(),
-            Value<String> descripcionES = const Value.absent(),
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPL = const Value.absent(),
-            Value<String?> descripcionPT = const Value.absent(),
-            Value<String?> descripcionRO = const Value.absent(),
-            Value<String?> descripcionRU = const Value.absent(),
-            Value<String?> descripcionCN = const Value.absent(),
-            Value<String?> descripcionEL = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              MetodoDeCobroTableCompanion(
-            id: id,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPL: descripcionPL,
-            descripcionPT: descripcionPT,
-            descripcionRO: descripcionRO,
-            descripcionRU: descripcionRU,
-            descripcionCN: descripcionCN,
-            descripcionEL: descripcionEL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String id,
-            required String descripcionES,
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPL = const Value.absent(),
-            Value<String?> descripcionPT = const Value.absent(),
-            Value<String?> descripcionRO = const Value.absent(),
-            Value<String?> descripcionRU = const Value.absent(),
-            Value<String?> descripcionCN = const Value.absent(),
-            Value<String?> descripcionEL = const Value.absent(),
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              MetodoDeCobroTableCompanion.insert(
-            id: id,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPL: descripcionPL,
-            descripcionPT: descripcionPT,
-            descripcionRO: descripcionRO,
-            descripcionRU: descripcionRU,
-            descripcionCN: descripcionCN,
-            descripcionEL: descripcionEL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
+final class $$MetodoDeCobroTableTableReferences extends BaseReferences<
+    _$RemoteAppDatabase, $MetodoDeCobroTableTable, MetodoDeCobroDTO> {
+  $$MetodoDeCobroTableTableReferences(
+      super.$_db, super.$_table, super.$_typedResult);
+
+  static MultiTypedResultKey<$ClienteTableTable, List<ClienteDTO>>
+      _clienteTableRefsTable(_$RemoteAppDatabase db) =>
+          MultiTypedResultKey.fromTable(db.clienteTable,
+              aliasName: $_aliasNameGenerator(
+                  db.metodoDeCobroTable.id, db.clienteTable.metodoDeCobroId));
+
+  $$ClienteTableTableProcessedTableManager get clienteTableRefs {
+    final manager = $$ClienteTableTableTableManager($_db, $_db.clienteTable)
+        .filter((f) => f.metodoDeCobroId.id($_item.id));
+
+    final cache = $_typedResult.readTableOrNull(_clienteTableRefsTable($_db));
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: cache));
+  }
+
+  static MultiTypedResultKey<$ClientePagoPendienteTableTable,
+      List<ClientePagoPendienteDTO>> _clientePagoPendienteTableRefsTable(
+          _$RemoteAppDatabase db) =>
+      MultiTypedResultKey.fromTable(db.clientePagoPendienteTable,
+          aliasName: $_aliasNameGenerator(db.metodoDeCobroTable.id,
+              db.clientePagoPendienteTable.metodoDeCobroId));
+
+  $$ClientePagoPendienteTableTableProcessedTableManager
+      get clientePagoPendienteTableRefs {
+    final manager = $$ClientePagoPendienteTableTableTableManager(
+            $_db, $_db.clientePagoPendienteTable)
+        .filter((f) => f.metodoDeCobroId.id($_item.id));
+
+    final cache = $_typedResult
+        .readTableOrNull(_clientePagoPendienteTableRefsTable($_db));
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: cache));
+  }
 }
 
 class $$MetodoDeCobroTableTableFilterComposer
@@ -24060,6 +24519,172 @@ class $$MetodoDeCobroTableTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$MetodoDeCobroTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $MetodoDeCobroTableTable,
+    MetodoDeCobroDTO,
+    $$MetodoDeCobroTableTableFilterComposer,
+    $$MetodoDeCobroTableTableOrderingComposer,
+    $$MetodoDeCobroTableTableCreateCompanionBuilder,
+    $$MetodoDeCobroTableTableUpdateCompanionBuilder,
+    (MetodoDeCobroDTO, $$MetodoDeCobroTableTableReferences),
+    MetodoDeCobroDTO,
+    PrefetchHooks Function(
+        {bool clienteTableRefs, bool clientePagoPendienteTableRefs})> {
+  $$MetodoDeCobroTableTableTableManager(
+      _$RemoteAppDatabase db, $MetodoDeCobroTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$MetodoDeCobroTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer: $$MetodoDeCobroTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              MetodoDeCobroTableCompanion(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              MetodoDeCobroTableCompanion.insert(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (
+                    e.readTable(table),
+                    $$MetodoDeCobroTableTableReferences(db, table, e)
+                  ))
+              .toList(),
+          prefetchHooksCallback: (
+              {clienteTableRefs = false,
+              clientePagoPendienteTableRefs = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [
+                if (clienteTableRefs) db.clienteTable,
+                if (clientePagoPendienteTableRefs) db.clientePagoPendienteTable
+              ],
+              addJoins: null,
+              getPrefetchedDataCallback: (items) async {
+                return [
+                  if (clienteTableRefs)
+                    await $_getPrefetchedData(
+                        currentTable: table,
+                        referencedTable: $$MetodoDeCobroTableTableReferences
+                            ._clienteTableRefsTable(db),
+                        managerFromTypedResult: (p0) =>
+                            $$MetodoDeCobroTableTableReferences(db, table, p0)
+                                .clienteTableRefs,
+                        referencedItemsForCurrentItem:
+                            (item, referencedItems) => referencedItems
+                                .where((e) => e.metodoDeCobroId == item.id),
+                        typedResults: items),
+                  if (clientePagoPendienteTableRefs)
+                    await $_getPrefetchedData(
+                        currentTable: table,
+                        referencedTable: $$MetodoDeCobroTableTableReferences
+                            ._clientePagoPendienteTableRefsTable(db),
+                        managerFromTypedResult: (p0) =>
+                            $$MetodoDeCobroTableTableReferences(db, table, p0)
+                                .clientePagoPendienteTableRefs,
+                        referencedItemsForCurrentItem:
+                            (item, referencedItems) => referencedItems
+                                .where((e) => e.metodoDeCobroId == item.id),
+                        typedResults: items)
+                ];
+              },
+            );
+          },
+        ));
+}
+
+typedef $$MetodoDeCobroTableTableProcessedTableManager = ProcessedTableManager<
+    _$RemoteAppDatabase,
+    $MetodoDeCobroTableTable,
+    MetodoDeCobroDTO,
+    $$MetodoDeCobroTableTableFilterComposer,
+    $$MetodoDeCobroTableTableOrderingComposer,
+    $$MetodoDeCobroTableTableCreateCompanionBuilder,
+    $$MetodoDeCobroTableTableUpdateCompanionBuilder,
+    (MetodoDeCobroDTO, $$MetodoDeCobroTableTableReferences),
+    MetodoDeCobroDTO,
+    PrefetchHooks Function(
+        {bool clienteTableRefs, bool clientePagoPendienteTableRefs})>;
 typedef $$ClienteTableTableCreateCompanionBuilder = ClienteTableCompanion
     Function({
   required String id,
@@ -24173,244 +24798,68 @@ typedef $$ClienteTableTableUpdateCompanionBuilder = ClienteTableCompanion
   Value<int> rowid,
 });
 
-class $$ClienteTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $ClienteTableTable,
-    ClienteDTO,
-    $$ClienteTableTableFilterComposer,
-    $$ClienteTableTableOrderingComposer,
-    $$ClienteTableTableCreateCompanionBuilder,
-    $$ClienteTableTableUpdateCompanionBuilder> {
-  $$ClienteTableTableTableManager(
-      _$RemoteAppDatabase db, $ClienteTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer:
-              $$ClienteTableTableFilterComposer(ComposerState(db, table)),
-          orderingComposer:
-              $$ClienteTableTableOrderingComposer(ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> id = const Value.absent(),
-            Value<String> nombreCliente = const Value.absent(),
-            Value<String?> nif = const Value.absent(),
-            Value<String> nombreFiscal = const Value.absent(),
-            Value<String?> direccionFiscal1 = const Value.absent(),
-            Value<String?> direccionFiscal2 = const Value.absent(),
-            Value<String?> codigoPostalFiscal = const Value.absent(),
-            Value<String?> poblacionFiscal = const Value.absent(),
-            Value<String?> provinciaFiscal = const Value.absent(),
-            Value<String?> paisFiscalId = const Value.absent(),
-            Value<double> latitudFiscal = const Value.absent(),
-            Value<double> longitudFiscal = const Value.absent(),
-            Value<String> empresaId = const Value.absent(),
-            Value<double> iva = const Value.absent(),
-            Value<double> ventasAnyoActual = const Value.absent(),
-            Value<double> ventasAnyoAnterior = const Value.absent(),
-            Value<double> ventasHaceDosAnyos = const Value.absent(),
-            Value<double> margenAnyoActual = const Value.absent(),
-            Value<double> margenAnyoAnterior = const Value.absent(),
-            Value<double> margenHaceDosAnyos = const Value.absent(),
-            Value<double> porcentajeAbonos = const Value.absent(),
-            Value<double> porcentajeGarantias = const Value.absent(),
-            Value<String?> centralCompras = const Value.absent(),
-            Value<String?> urlWeb = const Value.absent(),
-            Value<String?> divisaId = const Value.absent(),
-            Value<String?> tarifaId = const Value.absent(),
-            Value<String?> tarifaDescripcion = const Value.absent(),
-            Value<String?> descuentoGeneralId = const Value.absent(),
-            Value<String?> descripcionDescuentoGeneral = const Value.absent(),
-            Value<String> tipoCalculoPrecio = const Value.absent(),
-            Value<String?> plazoDeCobroId = const Value.absent(),
-            Value<String?> metodoDeCobroId = const Value.absent(),
-            Value<double> descuentoProntoPago = const Value.absent(),
-            Value<double> riesgoConcedidoInterno = const Value.absent(),
-            Value<DateTime?> riesgoConcedidoInternoDate = const Value.absent(),
-            Value<double> riesgoConcedidoCoafe = const Value.absent(),
-            Value<DateTime?> riesgoConcedidoCoafeFecha = const Value.absent(),
-            Value<double?> riesgoConcedido = const Value.absent(),
-            Value<double?> riesgoPendienteCobroVencido = const Value.absent(),
-            Value<double?> riesgoPendienteCobroNoVencido = const Value.absent(),
-            Value<double?> riesgoPendienteServir = const Value.absent(),
-            Value<double?> riesgoPendienteFacturar = const Value.absent(),
-            Value<String?> obvservacionesInternas = const Value.absent(),
-            Value<String?> clientePotencial = const Value.absent(),
-            Value<String?> clienteEstadoPotencialId = const Value.absent(),
-            Value<String?> clienteTipoPotencialId = const Value.absent(),
-            Value<String?> representante1Id = const Value.absent(),
-            Value<String?> representante1Nombre = const Value.absent(),
-            Value<String?> representante2Id = const Value.absent(),
-            Value<String?> representante2Nombre = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ClienteTableCompanion(
-            id: id,
-            nombreCliente: nombreCliente,
-            nif: nif,
-            nombreFiscal: nombreFiscal,
-            direccionFiscal1: direccionFiscal1,
-            direccionFiscal2: direccionFiscal2,
-            codigoPostalFiscal: codigoPostalFiscal,
-            poblacionFiscal: poblacionFiscal,
-            provinciaFiscal: provinciaFiscal,
-            paisFiscalId: paisFiscalId,
-            latitudFiscal: latitudFiscal,
-            longitudFiscal: longitudFiscal,
-            empresaId: empresaId,
-            iva: iva,
-            ventasAnyoActual: ventasAnyoActual,
-            ventasAnyoAnterior: ventasAnyoAnterior,
-            ventasHaceDosAnyos: ventasHaceDosAnyos,
-            margenAnyoActual: margenAnyoActual,
-            margenAnyoAnterior: margenAnyoAnterior,
-            margenHaceDosAnyos: margenHaceDosAnyos,
-            porcentajeAbonos: porcentajeAbonos,
-            porcentajeGarantias: porcentajeGarantias,
-            centralCompras: centralCompras,
-            urlWeb: urlWeb,
-            divisaId: divisaId,
-            tarifaId: tarifaId,
-            tarifaDescripcion: tarifaDescripcion,
-            descuentoGeneralId: descuentoGeneralId,
-            descripcionDescuentoGeneral: descripcionDescuentoGeneral,
-            tipoCalculoPrecio: tipoCalculoPrecio,
-            plazoDeCobroId: plazoDeCobroId,
-            metodoDeCobroId: metodoDeCobroId,
-            descuentoProntoPago: descuentoProntoPago,
-            riesgoConcedidoInterno: riesgoConcedidoInterno,
-            riesgoConcedidoInternoDate: riesgoConcedidoInternoDate,
-            riesgoConcedidoCoafe: riesgoConcedidoCoafe,
-            riesgoConcedidoCoafeFecha: riesgoConcedidoCoafeFecha,
-            riesgoConcedido: riesgoConcedido,
-            riesgoPendienteCobroVencido: riesgoPendienteCobroVencido,
-            riesgoPendienteCobroNoVencido: riesgoPendienteCobroNoVencido,
-            riesgoPendienteServir: riesgoPendienteServir,
-            riesgoPendienteFacturar: riesgoPendienteFacturar,
-            obvservacionesInternas: obvservacionesInternas,
-            clientePotencial: clientePotencial,
-            clienteEstadoPotencialId: clienteEstadoPotencialId,
-            clienteTipoPotencialId: clienteTipoPotencialId,
-            representante1Id: representante1Id,
-            representante1Nombre: representante1Nombre,
-            representante2Id: representante2Id,
-            representante2Nombre: representante2Nombre,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String id,
-            required String nombreCliente,
-            Value<String?> nif = const Value.absent(),
-            required String nombreFiscal,
-            Value<String?> direccionFiscal1 = const Value.absent(),
-            Value<String?> direccionFiscal2 = const Value.absent(),
-            Value<String?> codigoPostalFiscal = const Value.absent(),
-            Value<String?> poblacionFiscal = const Value.absent(),
-            Value<String?> provinciaFiscal = const Value.absent(),
-            Value<String?> paisFiscalId = const Value.absent(),
-            required double latitudFiscal,
-            required double longitudFiscal,
-            required String empresaId,
-            required double iva,
-            required double ventasAnyoActual,
-            required double ventasAnyoAnterior,
-            required double ventasHaceDosAnyos,
-            required double margenAnyoActual,
-            required double margenAnyoAnterior,
-            required double margenHaceDosAnyos,
-            required double porcentajeAbonos,
-            required double porcentajeGarantias,
-            Value<String?> centralCompras = const Value.absent(),
-            Value<String?> urlWeb = const Value.absent(),
-            Value<String?> divisaId = const Value.absent(),
-            Value<String?> tarifaId = const Value.absent(),
-            Value<String?> tarifaDescripcion = const Value.absent(),
-            Value<String?> descuentoGeneralId = const Value.absent(),
-            Value<String?> descripcionDescuentoGeneral = const Value.absent(),
-            required String tipoCalculoPrecio,
-            Value<String?> plazoDeCobroId = const Value.absent(),
-            Value<String?> metodoDeCobroId = const Value.absent(),
-            required double descuentoProntoPago,
-            required double riesgoConcedidoInterno,
-            Value<DateTime?> riesgoConcedidoInternoDate = const Value.absent(),
-            required double riesgoConcedidoCoafe,
-            Value<DateTime?> riesgoConcedidoCoafeFecha = const Value.absent(),
-            Value<double?> riesgoConcedido = const Value.absent(),
-            Value<double?> riesgoPendienteCobroVencido = const Value.absent(),
-            Value<double?> riesgoPendienteCobroNoVencido = const Value.absent(),
-            Value<double?> riesgoPendienteServir = const Value.absent(),
-            Value<double?> riesgoPendienteFacturar = const Value.absent(),
-            Value<String?> obvservacionesInternas = const Value.absent(),
-            Value<String?> clientePotencial = const Value.absent(),
-            Value<String?> clienteEstadoPotencialId = const Value.absent(),
-            Value<String?> clienteTipoPotencialId = const Value.absent(),
-            Value<String?> representante1Id = const Value.absent(),
-            Value<String?> representante1Nombre = const Value.absent(),
-            Value<String?> representante2Id = const Value.absent(),
-            Value<String?> representante2Nombre = const Value.absent(),
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ClienteTableCompanion.insert(
-            id: id,
-            nombreCliente: nombreCliente,
-            nif: nif,
-            nombreFiscal: nombreFiscal,
-            direccionFiscal1: direccionFiscal1,
-            direccionFiscal2: direccionFiscal2,
-            codigoPostalFiscal: codigoPostalFiscal,
-            poblacionFiscal: poblacionFiscal,
-            provinciaFiscal: provinciaFiscal,
-            paisFiscalId: paisFiscalId,
-            latitudFiscal: latitudFiscal,
-            longitudFiscal: longitudFiscal,
-            empresaId: empresaId,
-            iva: iva,
-            ventasAnyoActual: ventasAnyoActual,
-            ventasAnyoAnterior: ventasAnyoAnterior,
-            ventasHaceDosAnyos: ventasHaceDosAnyos,
-            margenAnyoActual: margenAnyoActual,
-            margenAnyoAnterior: margenAnyoAnterior,
-            margenHaceDosAnyos: margenHaceDosAnyos,
-            porcentajeAbonos: porcentajeAbonos,
-            porcentajeGarantias: porcentajeGarantias,
-            centralCompras: centralCompras,
-            urlWeb: urlWeb,
-            divisaId: divisaId,
-            tarifaId: tarifaId,
-            tarifaDescripcion: tarifaDescripcion,
-            descuentoGeneralId: descuentoGeneralId,
-            descripcionDescuentoGeneral: descripcionDescuentoGeneral,
-            tipoCalculoPrecio: tipoCalculoPrecio,
-            plazoDeCobroId: plazoDeCobroId,
-            metodoDeCobroId: metodoDeCobroId,
-            descuentoProntoPago: descuentoProntoPago,
-            riesgoConcedidoInterno: riesgoConcedidoInterno,
-            riesgoConcedidoInternoDate: riesgoConcedidoInternoDate,
-            riesgoConcedidoCoafe: riesgoConcedidoCoafe,
-            riesgoConcedidoCoafeFecha: riesgoConcedidoCoafeFecha,
-            riesgoConcedido: riesgoConcedido,
-            riesgoPendienteCobroVencido: riesgoPendienteCobroVencido,
-            riesgoPendienteCobroNoVencido: riesgoPendienteCobroNoVencido,
-            riesgoPendienteServir: riesgoPendienteServir,
-            riesgoPendienteFacturar: riesgoPendienteFacturar,
-            obvservacionesInternas: obvservacionesInternas,
-            clientePotencial: clientePotencial,
-            clienteEstadoPotencialId: clienteEstadoPotencialId,
-            clienteTipoPotencialId: clienteTipoPotencialId,
-            representante1Id: representante1Id,
-            representante1Nombre: representante1Nombre,
-            representante2Id: representante2Id,
-            representante2Nombre: representante2Nombre,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
+final class $$ClienteTableTableReferences extends BaseReferences<
+    _$RemoteAppDatabase, $ClienteTableTable, ClienteDTO> {
+  $$ClienteTableTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static $PaisTableTable _paisFiscalIdTable(_$RemoteAppDatabase db) =>
+      db.paisTable.createAlias(
+          $_aliasNameGenerator(db.clienteTable.paisFiscalId, db.paisTable.id));
+
+  $$PaisTableTableProcessedTableManager? get paisFiscalId {
+    if ($_item.paisFiscalId == null) return null;
+    final manager = $$PaisTableTableTableManager($_db, $_db.paisTable)
+        .filter((f) => f.id($_item.paisFiscalId!));
+    final item = $_typedResult.readTableOrNull(_paisFiscalIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: [item]));
+  }
+
+  static $DivisaTableTable _divisaIdTable(_$RemoteAppDatabase db) =>
+      db.divisaTable.createAlias(
+          $_aliasNameGenerator(db.clienteTable.divisaId, db.divisaTable.id));
+
+  $$DivisaTableTableProcessedTableManager? get divisaId {
+    if ($_item.divisaId == null) return null;
+    final manager = $$DivisaTableTableTableManager($_db, $_db.divisaTable)
+        .filter((f) => f.id($_item.divisaId!));
+    final item = $_typedResult.readTableOrNull(_divisaIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: [item]));
+  }
+
+  static $PlazoDeCobroTableTable _plazoDeCobroIdTable(_$RemoteAppDatabase db) =>
+      db.plazoDeCobroTable.createAlias($_aliasNameGenerator(
+          db.clienteTable.plazoDeCobroId, db.plazoDeCobroTable.id));
+
+  $$PlazoDeCobroTableTableProcessedTableManager? get plazoDeCobroId {
+    if ($_item.plazoDeCobroId == null) return null;
+    final manager =
+        $$PlazoDeCobroTableTableTableManager($_db, $_db.plazoDeCobroTable)
+            .filter((f) => f.id($_item.plazoDeCobroId!));
+    final item = $_typedResult.readTableOrNull(_plazoDeCobroIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: [item]));
+  }
+
+  static $MetodoDeCobroTableTable _metodoDeCobroIdTable(
+          _$RemoteAppDatabase db) =>
+      db.metodoDeCobroTable.createAlias($_aliasNameGenerator(
+          db.clienteTable.metodoDeCobroId, db.metodoDeCobroTable.id));
+
+  $$MetodoDeCobroTableTableProcessedTableManager? get metodoDeCobroId {
+    if ($_item.metodoDeCobroId == null) return null;
+    final manager =
+        $$MetodoDeCobroTableTableTableManager($_db, $_db.metodoDeCobroTable)
+            .filter((f) => f.id($_item.metodoDeCobroId!));
+    final item = $_typedResult.readTableOrNull(_metodoDeCobroIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: [item]));
+  }
 }
 
 class $$ClienteTableTableFilterComposer
@@ -25029,6 +25478,344 @@ class $$ClienteTableTableOrderingComposer
   }
 }
 
+class $$ClienteTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ClienteTableTable,
+    ClienteDTO,
+    $$ClienteTableTableFilterComposer,
+    $$ClienteTableTableOrderingComposer,
+    $$ClienteTableTableCreateCompanionBuilder,
+    $$ClienteTableTableUpdateCompanionBuilder,
+    (ClienteDTO, $$ClienteTableTableReferences),
+    ClienteDTO,
+    PrefetchHooks Function(
+        {bool paisFiscalId,
+        bool divisaId,
+        bool plazoDeCobroId,
+        bool metodoDeCobroId})> {
+  $$ClienteTableTableTableManager(
+      _$RemoteAppDatabase db, $ClienteTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$ClienteTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$ClienteTableTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> nombreCliente = const Value.absent(),
+            Value<String?> nif = const Value.absent(),
+            Value<String> nombreFiscal = const Value.absent(),
+            Value<String?> direccionFiscal1 = const Value.absent(),
+            Value<String?> direccionFiscal2 = const Value.absent(),
+            Value<String?> codigoPostalFiscal = const Value.absent(),
+            Value<String?> poblacionFiscal = const Value.absent(),
+            Value<String?> provinciaFiscal = const Value.absent(),
+            Value<String?> paisFiscalId = const Value.absent(),
+            Value<double> latitudFiscal = const Value.absent(),
+            Value<double> longitudFiscal = const Value.absent(),
+            Value<String> empresaId = const Value.absent(),
+            Value<double> iva = const Value.absent(),
+            Value<double> ventasAnyoActual = const Value.absent(),
+            Value<double> ventasAnyoAnterior = const Value.absent(),
+            Value<double> ventasHaceDosAnyos = const Value.absent(),
+            Value<double> margenAnyoActual = const Value.absent(),
+            Value<double> margenAnyoAnterior = const Value.absent(),
+            Value<double> margenHaceDosAnyos = const Value.absent(),
+            Value<double> porcentajeAbonos = const Value.absent(),
+            Value<double> porcentajeGarantias = const Value.absent(),
+            Value<String?> centralCompras = const Value.absent(),
+            Value<String?> urlWeb = const Value.absent(),
+            Value<String?> divisaId = const Value.absent(),
+            Value<String?> tarifaId = const Value.absent(),
+            Value<String?> tarifaDescripcion = const Value.absent(),
+            Value<String?> descuentoGeneralId = const Value.absent(),
+            Value<String?> descripcionDescuentoGeneral = const Value.absent(),
+            Value<String> tipoCalculoPrecio = const Value.absent(),
+            Value<String?> plazoDeCobroId = const Value.absent(),
+            Value<String?> metodoDeCobroId = const Value.absent(),
+            Value<double> descuentoProntoPago = const Value.absent(),
+            Value<double> riesgoConcedidoInterno = const Value.absent(),
+            Value<DateTime?> riesgoConcedidoInternoDate = const Value.absent(),
+            Value<double> riesgoConcedidoCoafe = const Value.absent(),
+            Value<DateTime?> riesgoConcedidoCoafeFecha = const Value.absent(),
+            Value<double?> riesgoConcedido = const Value.absent(),
+            Value<double?> riesgoPendienteCobroVencido = const Value.absent(),
+            Value<double?> riesgoPendienteCobroNoVencido = const Value.absent(),
+            Value<double?> riesgoPendienteServir = const Value.absent(),
+            Value<double?> riesgoPendienteFacturar = const Value.absent(),
+            Value<String?> obvservacionesInternas = const Value.absent(),
+            Value<String?> clientePotencial = const Value.absent(),
+            Value<String?> clienteEstadoPotencialId = const Value.absent(),
+            Value<String?> clienteTipoPotencialId = const Value.absent(),
+            Value<String?> representante1Id = const Value.absent(),
+            Value<String?> representante1Nombre = const Value.absent(),
+            Value<String?> representante2Id = const Value.absent(),
+            Value<String?> representante2Nombre = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteTableCompanion(
+            id: id,
+            nombreCliente: nombreCliente,
+            nif: nif,
+            nombreFiscal: nombreFiscal,
+            direccionFiscal1: direccionFiscal1,
+            direccionFiscal2: direccionFiscal2,
+            codigoPostalFiscal: codigoPostalFiscal,
+            poblacionFiscal: poblacionFiscal,
+            provinciaFiscal: provinciaFiscal,
+            paisFiscalId: paisFiscalId,
+            latitudFiscal: latitudFiscal,
+            longitudFiscal: longitudFiscal,
+            empresaId: empresaId,
+            iva: iva,
+            ventasAnyoActual: ventasAnyoActual,
+            ventasAnyoAnterior: ventasAnyoAnterior,
+            ventasHaceDosAnyos: ventasHaceDosAnyos,
+            margenAnyoActual: margenAnyoActual,
+            margenAnyoAnterior: margenAnyoAnterior,
+            margenHaceDosAnyos: margenHaceDosAnyos,
+            porcentajeAbonos: porcentajeAbonos,
+            porcentajeGarantias: porcentajeGarantias,
+            centralCompras: centralCompras,
+            urlWeb: urlWeb,
+            divisaId: divisaId,
+            tarifaId: tarifaId,
+            tarifaDescripcion: tarifaDescripcion,
+            descuentoGeneralId: descuentoGeneralId,
+            descripcionDescuentoGeneral: descripcionDescuentoGeneral,
+            tipoCalculoPrecio: tipoCalculoPrecio,
+            plazoDeCobroId: plazoDeCobroId,
+            metodoDeCobroId: metodoDeCobroId,
+            descuentoProntoPago: descuentoProntoPago,
+            riesgoConcedidoInterno: riesgoConcedidoInterno,
+            riesgoConcedidoInternoDate: riesgoConcedidoInternoDate,
+            riesgoConcedidoCoafe: riesgoConcedidoCoafe,
+            riesgoConcedidoCoafeFecha: riesgoConcedidoCoafeFecha,
+            riesgoConcedido: riesgoConcedido,
+            riesgoPendienteCobroVencido: riesgoPendienteCobroVencido,
+            riesgoPendienteCobroNoVencido: riesgoPendienteCobroNoVencido,
+            riesgoPendienteServir: riesgoPendienteServir,
+            riesgoPendienteFacturar: riesgoPendienteFacturar,
+            obvservacionesInternas: obvservacionesInternas,
+            clientePotencial: clientePotencial,
+            clienteEstadoPotencialId: clienteEstadoPotencialId,
+            clienteTipoPotencialId: clienteTipoPotencialId,
+            representante1Id: representante1Id,
+            representante1Nombre: representante1Nombre,
+            representante2Id: representante2Id,
+            representante2Nombre: representante2Nombre,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String nombreCliente,
+            Value<String?> nif = const Value.absent(),
+            required String nombreFiscal,
+            Value<String?> direccionFiscal1 = const Value.absent(),
+            Value<String?> direccionFiscal2 = const Value.absent(),
+            Value<String?> codigoPostalFiscal = const Value.absent(),
+            Value<String?> poblacionFiscal = const Value.absent(),
+            Value<String?> provinciaFiscal = const Value.absent(),
+            Value<String?> paisFiscalId = const Value.absent(),
+            required double latitudFiscal,
+            required double longitudFiscal,
+            required String empresaId,
+            required double iva,
+            required double ventasAnyoActual,
+            required double ventasAnyoAnterior,
+            required double ventasHaceDosAnyos,
+            required double margenAnyoActual,
+            required double margenAnyoAnterior,
+            required double margenHaceDosAnyos,
+            required double porcentajeAbonos,
+            required double porcentajeGarantias,
+            Value<String?> centralCompras = const Value.absent(),
+            Value<String?> urlWeb = const Value.absent(),
+            Value<String?> divisaId = const Value.absent(),
+            Value<String?> tarifaId = const Value.absent(),
+            Value<String?> tarifaDescripcion = const Value.absent(),
+            Value<String?> descuentoGeneralId = const Value.absent(),
+            Value<String?> descripcionDescuentoGeneral = const Value.absent(),
+            required String tipoCalculoPrecio,
+            Value<String?> plazoDeCobroId = const Value.absent(),
+            Value<String?> metodoDeCobroId = const Value.absent(),
+            required double descuentoProntoPago,
+            required double riesgoConcedidoInterno,
+            Value<DateTime?> riesgoConcedidoInternoDate = const Value.absent(),
+            required double riesgoConcedidoCoafe,
+            Value<DateTime?> riesgoConcedidoCoafeFecha = const Value.absent(),
+            Value<double?> riesgoConcedido = const Value.absent(),
+            Value<double?> riesgoPendienteCobroVencido = const Value.absent(),
+            Value<double?> riesgoPendienteCobroNoVencido = const Value.absent(),
+            Value<double?> riesgoPendienteServir = const Value.absent(),
+            Value<double?> riesgoPendienteFacturar = const Value.absent(),
+            Value<String?> obvservacionesInternas = const Value.absent(),
+            Value<String?> clientePotencial = const Value.absent(),
+            Value<String?> clienteEstadoPotencialId = const Value.absent(),
+            Value<String?> clienteTipoPotencialId = const Value.absent(),
+            Value<String?> representante1Id = const Value.absent(),
+            Value<String?> representante1Nombre = const Value.absent(),
+            Value<String?> representante2Id = const Value.absent(),
+            Value<String?> representante2Nombre = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteTableCompanion.insert(
+            id: id,
+            nombreCliente: nombreCliente,
+            nif: nif,
+            nombreFiscal: nombreFiscal,
+            direccionFiscal1: direccionFiscal1,
+            direccionFiscal2: direccionFiscal2,
+            codigoPostalFiscal: codigoPostalFiscal,
+            poblacionFiscal: poblacionFiscal,
+            provinciaFiscal: provinciaFiscal,
+            paisFiscalId: paisFiscalId,
+            latitudFiscal: latitudFiscal,
+            longitudFiscal: longitudFiscal,
+            empresaId: empresaId,
+            iva: iva,
+            ventasAnyoActual: ventasAnyoActual,
+            ventasAnyoAnterior: ventasAnyoAnterior,
+            ventasHaceDosAnyos: ventasHaceDosAnyos,
+            margenAnyoActual: margenAnyoActual,
+            margenAnyoAnterior: margenAnyoAnterior,
+            margenHaceDosAnyos: margenHaceDosAnyos,
+            porcentajeAbonos: porcentajeAbonos,
+            porcentajeGarantias: porcentajeGarantias,
+            centralCompras: centralCompras,
+            urlWeb: urlWeb,
+            divisaId: divisaId,
+            tarifaId: tarifaId,
+            tarifaDescripcion: tarifaDescripcion,
+            descuentoGeneralId: descuentoGeneralId,
+            descripcionDescuentoGeneral: descripcionDescuentoGeneral,
+            tipoCalculoPrecio: tipoCalculoPrecio,
+            plazoDeCobroId: plazoDeCobroId,
+            metodoDeCobroId: metodoDeCobroId,
+            descuentoProntoPago: descuentoProntoPago,
+            riesgoConcedidoInterno: riesgoConcedidoInterno,
+            riesgoConcedidoInternoDate: riesgoConcedidoInternoDate,
+            riesgoConcedidoCoafe: riesgoConcedidoCoafe,
+            riesgoConcedidoCoafeFecha: riesgoConcedidoCoafeFecha,
+            riesgoConcedido: riesgoConcedido,
+            riesgoPendienteCobroVencido: riesgoPendienteCobroVencido,
+            riesgoPendienteCobroNoVencido: riesgoPendienteCobroNoVencido,
+            riesgoPendienteServir: riesgoPendienteServir,
+            riesgoPendienteFacturar: riesgoPendienteFacturar,
+            obvservacionesInternas: obvservacionesInternas,
+            clientePotencial: clientePotencial,
+            clienteEstadoPotencialId: clienteEstadoPotencialId,
+            clienteTipoPotencialId: clienteTipoPotencialId,
+            representante1Id: representante1Id,
+            representante1Nombre: representante1Nombre,
+            representante2Id: representante2Id,
+            representante2Nombre: representante2Nombre,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (
+                    e.readTable(table),
+                    $$ClienteTableTableReferences(db, table, e)
+                  ))
+              .toList(),
+          prefetchHooksCallback: (
+              {paisFiscalId = false,
+              divisaId = false,
+              plazoDeCobroId = false,
+              metodoDeCobroId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins: <
+                  T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic>>(state) {
+                if (paisFiscalId) {
+                  state = state.withJoin(
+                    currentTable: table,
+                    currentColumn: table.paisFiscalId,
+                    referencedTable:
+                        $$ClienteTableTableReferences._paisFiscalIdTable(db),
+                    referencedColumn:
+                        $$ClienteTableTableReferences._paisFiscalIdTable(db).id,
+                  ) as T;
+                }
+                if (divisaId) {
+                  state = state.withJoin(
+                    currentTable: table,
+                    currentColumn: table.divisaId,
+                    referencedTable:
+                        $$ClienteTableTableReferences._divisaIdTable(db),
+                    referencedColumn:
+                        $$ClienteTableTableReferences._divisaIdTable(db).id,
+                  ) as T;
+                }
+                if (plazoDeCobroId) {
+                  state = state.withJoin(
+                    currentTable: table,
+                    currentColumn: table.plazoDeCobroId,
+                    referencedTable:
+                        $$ClienteTableTableReferences._plazoDeCobroIdTable(db),
+                    referencedColumn: $$ClienteTableTableReferences
+                        ._plazoDeCobroIdTable(db)
+                        .id,
+                  ) as T;
+                }
+                if (metodoDeCobroId) {
+                  state = state.withJoin(
+                    currentTable: table,
+                    currentColumn: table.metodoDeCobroId,
+                    referencedTable:
+                        $$ClienteTableTableReferences._metodoDeCobroIdTable(db),
+                    referencedColumn: $$ClienteTableTableReferences
+                        ._metodoDeCobroIdTable(db)
+                        .id,
+                  ) as T;
+                }
+
+                return state;
+              },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ));
+}
+
+typedef $$ClienteTableTableProcessedTableManager = ProcessedTableManager<
+    _$RemoteAppDatabase,
+    $ClienteTableTable,
+    ClienteDTO,
+    $$ClienteTableTableFilterComposer,
+    $$ClienteTableTableOrderingComposer,
+    $$ClienteTableTableCreateCompanionBuilder,
+    $$ClienteTableTableUpdateCompanionBuilder,
+    (ClienteDTO, $$ClienteTableTableReferences),
+    ClienteDTO,
+    PrefetchHooks Function(
+        {bool paisFiscalId,
+        bool divisaId,
+        bool plazoDeCobroId,
+        bool metodoDeCobroId})>;
 typedef $$ClienteUsuarioTableTableCreateCompanionBuilder
     = ClienteUsuarioTableCompanion Function({
   required String clienteId,
@@ -25045,54 +25832,6 @@ typedef $$ClienteUsuarioTableTableUpdateCompanionBuilder
   Value<String> deleted,
   Value<int> rowid,
 });
-
-class $$ClienteUsuarioTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $ClienteUsuarioTableTable,
-    ClienteUsuarioDTO,
-    $$ClienteUsuarioTableTableFilterComposer,
-    $$ClienteUsuarioTableTableOrderingComposer,
-    $$ClienteUsuarioTableTableCreateCompanionBuilder,
-    $$ClienteUsuarioTableTableUpdateCompanionBuilder> {
-  $$ClienteUsuarioTableTableTableManager(
-      _$RemoteAppDatabase db, $ClienteUsuarioTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer: $$ClienteUsuarioTableTableFilterComposer(
-              ComposerState(db, table)),
-          orderingComposer: $$ClienteUsuarioTableTableOrderingComposer(
-              ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> clienteId = const Value.absent(),
-            Value<String> usuarioId = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ClienteUsuarioTableCompanion(
-            clienteId: clienteId,
-            usuarioId: usuarioId,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String clienteId,
-            required String usuarioId,
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ClienteUsuarioTableCompanion.insert(
-            clienteId: clienteId,
-            usuarioId: usuarioId,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
-}
 
 class $$ClienteUsuarioTableTableFilterComposer
     extends FilterComposer<_$RemoteAppDatabase, $ClienteUsuarioTableTable> {
@@ -25142,6 +25881,80 @@ class $$ClienteUsuarioTableTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$ClienteUsuarioTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ClienteUsuarioTableTable,
+    ClienteUsuarioDTO,
+    $$ClienteUsuarioTableTableFilterComposer,
+    $$ClienteUsuarioTableTableOrderingComposer,
+    $$ClienteUsuarioTableTableCreateCompanionBuilder,
+    $$ClienteUsuarioTableTableUpdateCompanionBuilder,
+    (
+      ClienteUsuarioDTO,
+      BaseReferences<_$RemoteAppDatabase, $ClienteUsuarioTableTable,
+          ClienteUsuarioDTO>
+    ),
+    ClienteUsuarioDTO,
+    PrefetchHooks Function()> {
+  $$ClienteUsuarioTableTableTableManager(
+      _$RemoteAppDatabase db, $ClienteUsuarioTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ClienteUsuarioTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ClienteUsuarioTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> clienteId = const Value.absent(),
+            Value<String> usuarioId = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteUsuarioTableCompanion(
+            clienteId: clienteId,
+            usuarioId: usuarioId,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String clienteId,
+            required String usuarioId,
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteUsuarioTableCompanion.insert(
+            clienteId: clienteId,
+            usuarioId: usuarioId,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$ClienteUsuarioTableTableProcessedTableManager = ProcessedTableManager<
+    _$RemoteAppDatabase,
+    $ClienteUsuarioTableTable,
+    ClienteUsuarioDTO,
+    $$ClienteUsuarioTableTableFilterComposer,
+    $$ClienteUsuarioTableTableOrderingComposer,
+    $$ClienteUsuarioTableTableCreateCompanionBuilder,
+    $$ClienteUsuarioTableTableUpdateCompanionBuilder,
+    (
+      ClienteUsuarioDTO,
+      BaseReferences<_$RemoteAppDatabase, $ClienteUsuarioTableTable,
+          ClienteUsuarioDTO>
+    ),
+    ClienteUsuarioDTO,
+    PrefetchHooks Function()>;
 typedef $$ClienteGrupoNetoTableTableCreateCompanionBuilder
     = ClienteGrupoNetoTableCompanion Function({
   required String clienteId,
@@ -25162,62 +25975,6 @@ typedef $$ClienteGrupoNetoTableTableUpdateCompanionBuilder
   Value<String> deleted,
   Value<int> rowid,
 });
-
-class $$ClienteGrupoNetoTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $ClienteGrupoNetoTableTable,
-    ClienteGrupoNetoDTO,
-    $$ClienteGrupoNetoTableTableFilterComposer,
-    $$ClienteGrupoNetoTableTableOrderingComposer,
-    $$ClienteGrupoNetoTableTableCreateCompanionBuilder,
-    $$ClienteGrupoNetoTableTableUpdateCompanionBuilder> {
-  $$ClienteGrupoNetoTableTableTableManager(
-      _$RemoteAppDatabase db, $ClienteGrupoNetoTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer: $$ClienteGrupoNetoTableTableFilterComposer(
-              ComposerState(db, table)),
-          orderingComposer: $$ClienteGrupoNetoTableTableOrderingComposer(
-              ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> clienteId = const Value.absent(),
-            Value<String> grupoNetoId = const Value.absent(),
-            Value<String> grupoNetoDescripcion = const Value.absent(),
-            Value<double> dtoAdicional = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ClienteGrupoNetoTableCompanion(
-            clienteId: clienteId,
-            grupoNetoId: grupoNetoId,
-            grupoNetoDescripcion: grupoNetoDescripcion,
-            dtoAdicional: dtoAdicional,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String clienteId,
-            required String grupoNetoId,
-            required String grupoNetoDescripcion,
-            required double dtoAdicional,
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ClienteGrupoNetoTableCompanion.insert(
-            clienteId: clienteId,
-            grupoNetoId: grupoNetoId,
-            grupoNetoDescripcion: grupoNetoDescripcion,
-            dtoAdicional: dtoAdicional,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
-}
 
 class $$ClienteGrupoNetoTableTableFilterComposer
     extends FilterComposer<_$RemoteAppDatabase, $ClienteGrupoNetoTableTable> {
@@ -25287,6 +26044,89 @@ class $$ClienteGrupoNetoTableTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$ClienteGrupoNetoTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ClienteGrupoNetoTableTable,
+    ClienteGrupoNetoDTO,
+    $$ClienteGrupoNetoTableTableFilterComposer,
+    $$ClienteGrupoNetoTableTableOrderingComposer,
+    $$ClienteGrupoNetoTableTableCreateCompanionBuilder,
+    $$ClienteGrupoNetoTableTableUpdateCompanionBuilder,
+    (
+      ClienteGrupoNetoDTO,
+      BaseReferences<_$RemoteAppDatabase, $ClienteGrupoNetoTableTable,
+          ClienteGrupoNetoDTO>
+    ),
+    ClienteGrupoNetoDTO,
+    PrefetchHooks Function()> {
+  $$ClienteGrupoNetoTableTableTableManager(
+      _$RemoteAppDatabase db, $ClienteGrupoNetoTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ClienteGrupoNetoTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ClienteGrupoNetoTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> clienteId = const Value.absent(),
+            Value<String> grupoNetoId = const Value.absent(),
+            Value<String> grupoNetoDescripcion = const Value.absent(),
+            Value<double> dtoAdicional = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteGrupoNetoTableCompanion(
+            clienteId: clienteId,
+            grupoNetoId: grupoNetoId,
+            grupoNetoDescripcion: grupoNetoDescripcion,
+            dtoAdicional: dtoAdicional,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String clienteId,
+            required String grupoNetoId,
+            required String grupoNetoDescripcion,
+            required double dtoAdicional,
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteGrupoNetoTableCompanion.insert(
+            clienteId: clienteId,
+            grupoNetoId: grupoNetoId,
+            grupoNetoDescripcion: grupoNetoDescripcion,
+            dtoAdicional: dtoAdicional,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$ClienteGrupoNetoTableTableProcessedTableManager
+    = ProcessedTableManager<
+        _$RemoteAppDatabase,
+        $ClienteGrupoNetoTableTable,
+        ClienteGrupoNetoDTO,
+        $$ClienteGrupoNetoTableTableFilterComposer,
+        $$ClienteGrupoNetoTableTableOrderingComposer,
+        $$ClienteGrupoNetoTableTableCreateCompanionBuilder,
+        $$ClienteGrupoNetoTableTableUpdateCompanionBuilder,
+        (
+          ClienteGrupoNetoDTO,
+          BaseReferences<_$RemoteAppDatabase, $ClienteGrupoNetoTableTable,
+              ClienteGrupoNetoDTO>
+        ),
+        ClienteGrupoNetoDTO,
+        PrefetchHooks Function()>;
 typedef $$FamiliaTableTableCreateCompanionBuilder = FamiliaTableCompanion
     Function({
   required String id,
@@ -25332,108 +26172,43 @@ typedef $$FamiliaTableTableUpdateCompanionBuilder = FamiliaTableCompanion
   Value<int> rowid,
 });
 
-class $$FamiliaTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $FamiliaTableTable,
-    FamiliaDTO,
-    $$FamiliaTableTableFilterComposer,
-    $$FamiliaTableTableOrderingComposer,
-    $$FamiliaTableTableCreateCompanionBuilder,
-    $$FamiliaTableTableUpdateCompanionBuilder> {
-  $$FamiliaTableTableTableManager(
-      _$RemoteAppDatabase db, $FamiliaTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer:
-              $$FamiliaTableTableFilterComposer(ComposerState(db, table)),
-          orderingComposer:
-              $$FamiliaTableTableOrderingComposer(ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> id = const Value.absent(),
-            Value<String> descripcionES = const Value.absent(),
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPL = const Value.absent(),
-            Value<String?> descripcionPT = const Value.absent(),
-            Value<String?> descripcionRO = const Value.absent(),
-            Value<String?> descripcionRU = const Value.absent(),
-            Value<String?> descripcionCN = const Value.absent(),
-            Value<String?> descripcionEL = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              FamiliaTableCompanion(
-            id: id,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPL: descripcionPL,
-            descripcionPT: descripcionPT,
-            descripcionRO: descripcionRO,
-            descripcionRU: descripcionRU,
-            descripcionCN: descripcionCN,
-            descripcionEL: descripcionEL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String id,
-            required String descripcionES,
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPL = const Value.absent(),
-            Value<String?> descripcionPT = const Value.absent(),
-            Value<String?> descripcionRO = const Value.absent(),
-            Value<String?> descripcionRU = const Value.absent(),
-            Value<String?> descripcionCN = const Value.absent(),
-            Value<String?> descripcionEL = const Value.absent(),
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              FamiliaTableCompanion.insert(
-            id: id,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPL: descripcionPL,
-            descripcionPT: descripcionPT,
-            descripcionRO: descripcionRO,
-            descripcionRU: descripcionRU,
-            descripcionCN: descripcionCN,
-            descripcionEL: descripcionEL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
+final class $$FamiliaTableTableReferences extends BaseReferences<
+    _$RemoteAppDatabase, $FamiliaTableTable, FamiliaDTO> {
+  $$FamiliaTableTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static MultiTypedResultKey<$ClienteDescuentoTableTable,
+      List<ClienteDescuentoDTO>> _clienteDescuentoTableRefsTable(
+          _$RemoteAppDatabase db) =>
+      MultiTypedResultKey.fromTable(db.clienteDescuentoTable,
+          aliasName: $_aliasNameGenerator(
+              db.familiaTable.id, db.clienteDescuentoTable.familiaId));
+
+  $$ClienteDescuentoTableTableProcessedTableManager
+      get clienteDescuentoTableRefs {
+    final manager = $$ClienteDescuentoTableTableTableManager(
+            $_db, $_db.clienteDescuentoTable)
+        .filter((f) => f.familiaId.id($_item.id));
+
+    final cache =
+        $_typedResult.readTableOrNull(_clienteDescuentoTableRefsTable($_db));
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: cache));
+  }
+
+  static MultiTypedResultKey<$ArticuloTableTable, List<ArticuloDTO>>
+      _articuloTableRefsTable(_$RemoteAppDatabase db) =>
+          MultiTypedResultKey.fromTable(db.articuloTable,
+              aliasName: $_aliasNameGenerator(
+                  db.familiaTable.id, db.articuloTable.familiaId));
+
+  $$ArticuloTableTableProcessedTableManager get articuloTableRefs {
+    final manager = $$ArticuloTableTableTableManager($_db, $_db.articuloTable)
+        .filter((f) => f.familiaId.id($_item.id));
+
+    final cache = $_typedResult.readTableOrNull(_articuloTableRefsTable($_db));
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: cache));
+  }
 }
 
 class $$FamiliaTableTableFilterComposer
@@ -25655,6 +26430,171 @@ class $$FamiliaTableTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$FamiliaTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $FamiliaTableTable,
+    FamiliaDTO,
+    $$FamiliaTableTableFilterComposer,
+    $$FamiliaTableTableOrderingComposer,
+    $$FamiliaTableTableCreateCompanionBuilder,
+    $$FamiliaTableTableUpdateCompanionBuilder,
+    (FamiliaDTO, $$FamiliaTableTableReferences),
+    FamiliaDTO,
+    PrefetchHooks Function(
+        {bool clienteDescuentoTableRefs, bool articuloTableRefs})> {
+  $$FamiliaTableTableTableManager(
+      _$RemoteAppDatabase db, $FamiliaTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$FamiliaTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$FamiliaTableTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              FamiliaTableCompanion(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              FamiliaTableCompanion.insert(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (
+                    e.readTable(table),
+                    $$FamiliaTableTableReferences(db, table, e)
+                  ))
+              .toList(),
+          prefetchHooksCallback: (
+              {clienteDescuentoTableRefs = false, articuloTableRefs = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [
+                if (clienteDescuentoTableRefs) db.clienteDescuentoTable,
+                if (articuloTableRefs) db.articuloTable
+              ],
+              addJoins: null,
+              getPrefetchedDataCallback: (items) async {
+                return [
+                  if (clienteDescuentoTableRefs)
+                    await $_getPrefetchedData(
+                        currentTable: table,
+                        referencedTable: $$FamiliaTableTableReferences
+                            ._clienteDescuentoTableRefsTable(db),
+                        managerFromTypedResult: (p0) =>
+                            $$FamiliaTableTableReferences(db, table, p0)
+                                .clienteDescuentoTableRefs,
+                        referencedItemsForCurrentItem:
+                            (item, referencedItems) => referencedItems
+                                .where((e) => e.familiaId == item.id),
+                        typedResults: items),
+                  if (articuloTableRefs)
+                    await $_getPrefetchedData(
+                        currentTable: table,
+                        referencedTable: $$FamiliaTableTableReferences
+                            ._articuloTableRefsTable(db),
+                        managerFromTypedResult: (p0) =>
+                            $$FamiliaTableTableReferences(db, table, p0)
+                                .articuloTableRefs,
+                        referencedItemsForCurrentItem:
+                            (item, referencedItems) => referencedItems
+                                .where((e) => e.familiaId == item.id),
+                        typedResults: items)
+                ];
+              },
+            );
+          },
+        ));
+}
+
+typedef $$FamiliaTableTableProcessedTableManager = ProcessedTableManager<
+    _$RemoteAppDatabase,
+    $FamiliaTableTable,
+    FamiliaDTO,
+    $$FamiliaTableTableFilterComposer,
+    $$FamiliaTableTableOrderingComposer,
+    $$FamiliaTableTableCreateCompanionBuilder,
+    $$FamiliaTableTableUpdateCompanionBuilder,
+    (FamiliaDTO, $$FamiliaTableTableReferences),
+    FamiliaDTO,
+    PrefetchHooks Function(
+        {bool clienteDescuentoTableRefs, bool articuloTableRefs})>;
 typedef $$SubfamiliaTableTableCreateCompanionBuilder = SubfamiliaTableCompanion
     Function({
   required String id,
@@ -25702,112 +26642,44 @@ typedef $$SubfamiliaTableTableUpdateCompanionBuilder = SubfamiliaTableCompanion
   Value<int> rowid,
 });
 
-class $$SubfamiliaTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $SubfamiliaTableTable,
-    SubfamiliaDTO,
-    $$SubfamiliaTableTableFilterComposer,
-    $$SubfamiliaTableTableOrderingComposer,
-    $$SubfamiliaTableTableCreateCompanionBuilder,
-    $$SubfamiliaTableTableUpdateCompanionBuilder> {
-  $$SubfamiliaTableTableTableManager(
-      _$RemoteAppDatabase db, $SubfamiliaTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer:
-              $$SubfamiliaTableTableFilterComposer(ComposerState(db, table)),
-          orderingComposer:
-              $$SubfamiliaTableTableOrderingComposer(ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> id = const Value.absent(),
-            Value<String> familiaId = const Value.absent(),
-            Value<String> descripcionES = const Value.absent(),
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPL = const Value.absent(),
-            Value<String?> descripcionPT = const Value.absent(),
-            Value<String?> descripcionRO = const Value.absent(),
-            Value<String?> descripcionRU = const Value.absent(),
-            Value<String?> descripcionCN = const Value.absent(),
-            Value<String?> descripcionEL = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              SubfamiliaTableCompanion(
-            id: id,
-            familiaId: familiaId,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPL: descripcionPL,
-            descripcionPT: descripcionPT,
-            descripcionRO: descripcionRO,
-            descripcionRU: descripcionRU,
-            descripcionCN: descripcionCN,
-            descripcionEL: descripcionEL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String id,
-            required String familiaId,
-            required String descripcionES,
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPL = const Value.absent(),
-            Value<String?> descripcionPT = const Value.absent(),
-            Value<String?> descripcionRO = const Value.absent(),
-            Value<String?> descripcionRU = const Value.absent(),
-            Value<String?> descripcionCN = const Value.absent(),
-            Value<String?> descripcionEL = const Value.absent(),
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              SubfamiliaTableCompanion.insert(
-            id: id,
-            familiaId: familiaId,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPL: descripcionPL,
-            descripcionPT: descripcionPT,
-            descripcionRO: descripcionRO,
-            descripcionRU: descripcionRU,
-            descripcionCN: descripcionCN,
-            descripcionEL: descripcionEL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
+final class $$SubfamiliaTableTableReferences extends BaseReferences<
+    _$RemoteAppDatabase, $SubfamiliaTableTable, SubfamiliaDTO> {
+  $$SubfamiliaTableTableReferences(
+      super.$_db, super.$_table, super.$_typedResult);
+
+  static MultiTypedResultKey<$ClienteDescuentoTableTable,
+      List<ClienteDescuentoDTO>> _clienteDescuentoTableRefsTable(
+          _$RemoteAppDatabase db) =>
+      MultiTypedResultKey.fromTable(db.clienteDescuentoTable,
+          aliasName: $_aliasNameGenerator(
+              db.subfamiliaTable.id, db.clienteDescuentoTable.subfamiliaId));
+
+  $$ClienteDescuentoTableTableProcessedTableManager
+      get clienteDescuentoTableRefs {
+    final manager = $$ClienteDescuentoTableTableTableManager(
+            $_db, $_db.clienteDescuentoTable)
+        .filter((f) => f.subfamiliaId.id($_item.id));
+
+    final cache =
+        $_typedResult.readTableOrNull(_clienteDescuentoTableRefsTable($_db));
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: cache));
+  }
+
+  static MultiTypedResultKey<$ArticuloTableTable, List<ArticuloDTO>>
+      _articuloTableRefsTable(_$RemoteAppDatabase db) =>
+          MultiTypedResultKey.fromTable(db.articuloTable,
+              aliasName: $_aliasNameGenerator(
+                  db.subfamiliaTable.id, db.articuloTable.subfamiliaId));
+
+  $$ArticuloTableTableProcessedTableManager get articuloTableRefs {
+    final manager = $$ArticuloTableTableTableManager($_db, $_db.articuloTable)
+        .filter((f) => f.subfamiliaId.id($_item.id));
+
+    final cache = $_typedResult.readTableOrNull(_articuloTableRefsTable($_db));
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: cache));
+  }
 }
 
 class $$SubfamiliaTableTableFilterComposer
@@ -26039,6 +26911,175 @@ class $$SubfamiliaTableTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$SubfamiliaTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $SubfamiliaTableTable,
+    SubfamiliaDTO,
+    $$SubfamiliaTableTableFilterComposer,
+    $$SubfamiliaTableTableOrderingComposer,
+    $$SubfamiliaTableTableCreateCompanionBuilder,
+    $$SubfamiliaTableTableUpdateCompanionBuilder,
+    (SubfamiliaDTO, $$SubfamiliaTableTableReferences),
+    SubfamiliaDTO,
+    PrefetchHooks Function(
+        {bool clienteDescuentoTableRefs, bool articuloTableRefs})> {
+  $$SubfamiliaTableTableTableManager(
+      _$RemoteAppDatabase db, $SubfamiliaTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$SubfamiliaTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$SubfamiliaTableTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> familiaId = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              SubfamiliaTableCompanion(
+            id: id,
+            familiaId: familiaId,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String familiaId,
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              SubfamiliaTableCompanion.insert(
+            id: id,
+            familiaId: familiaId,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (
+                    e.readTable(table),
+                    $$SubfamiliaTableTableReferences(db, table, e)
+                  ))
+              .toList(),
+          prefetchHooksCallback: (
+              {clienteDescuentoTableRefs = false, articuloTableRefs = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [
+                if (clienteDescuentoTableRefs) db.clienteDescuentoTable,
+                if (articuloTableRefs) db.articuloTable
+              ],
+              addJoins: null,
+              getPrefetchedDataCallback: (items) async {
+                return [
+                  if (clienteDescuentoTableRefs)
+                    await $_getPrefetchedData(
+                        currentTable: table,
+                        referencedTable: $$SubfamiliaTableTableReferences
+                            ._clienteDescuentoTableRefsTable(db),
+                        managerFromTypedResult: (p0) =>
+                            $$SubfamiliaTableTableReferences(db, table, p0)
+                                .clienteDescuentoTableRefs,
+                        referencedItemsForCurrentItem:
+                            (item, referencedItems) => referencedItems
+                                .where((e) => e.subfamiliaId == item.id),
+                        typedResults: items),
+                  if (articuloTableRefs)
+                    await $_getPrefetchedData(
+                        currentTable: table,
+                        referencedTable: $$SubfamiliaTableTableReferences
+                            ._articuloTableRefsTable(db),
+                        managerFromTypedResult: (p0) =>
+                            $$SubfamiliaTableTableReferences(db, table, p0)
+                                .articuloTableRefs,
+                        referencedItemsForCurrentItem:
+                            (item, referencedItems) => referencedItems
+                                .where((e) => e.subfamiliaId == item.id),
+                        typedResults: items)
+                ];
+              },
+            );
+          },
+        ));
+}
+
+typedef $$SubfamiliaTableTableProcessedTableManager = ProcessedTableManager<
+    _$RemoteAppDatabase,
+    $SubfamiliaTableTable,
+    SubfamiliaDTO,
+    $$SubfamiliaTableTableFilterComposer,
+    $$SubfamiliaTableTableOrderingComposer,
+    $$SubfamiliaTableTableCreateCompanionBuilder,
+    $$SubfamiliaTableTableUpdateCompanionBuilder,
+    (SubfamiliaDTO, $$SubfamiliaTableTableReferences),
+    SubfamiliaDTO,
+    PrefetchHooks Function(
+        {bool clienteDescuentoTableRefs, bool articuloTableRefs})>;
 typedef $$ClienteDescuentoTableTableCreateCompanionBuilder
     = ClienteDescuentoTableCompanion Function({
   required String clienteId,
@@ -26064,68 +27105,39 @@ typedef $$ClienteDescuentoTableTableUpdateCompanionBuilder
   Value<int> rowid,
 });
 
-class $$ClienteDescuentoTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $ClienteDescuentoTableTable,
-    ClienteDescuentoDTO,
-    $$ClienteDescuentoTableTableFilterComposer,
-    $$ClienteDescuentoTableTableOrderingComposer,
-    $$ClienteDescuentoTableTableCreateCompanionBuilder,
-    $$ClienteDescuentoTableTableUpdateCompanionBuilder> {
-  $$ClienteDescuentoTableTableTableManager(
-      _$RemoteAppDatabase db, $ClienteDescuentoTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer: $$ClienteDescuentoTableTableFilterComposer(
-              ComposerState(db, table)),
-          orderingComposer: $$ClienteDescuentoTableTableOrderingComposer(
-              ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> clienteId = const Value.absent(),
-            Value<String> articuloId = const Value.absent(),
-            Value<String> familiaId = const Value.absent(),
-            Value<String> subfamiliaId = const Value.absent(),
-            Value<int> cantidadDesde = const Value.absent(),
-            Value<double> descuento = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ClienteDescuentoTableCompanion(
-            clienteId: clienteId,
-            articuloId: articuloId,
-            familiaId: familiaId,
-            subfamiliaId: subfamiliaId,
-            cantidadDesde: cantidadDesde,
-            descuento: descuento,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String clienteId,
-            required String articuloId,
-            required String familiaId,
-            required String subfamiliaId,
-            required int cantidadDesde,
-            required double descuento,
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ClienteDescuentoTableCompanion.insert(
-            clienteId: clienteId,
-            articuloId: articuloId,
-            familiaId: familiaId,
-            subfamiliaId: subfamiliaId,
-            cantidadDesde: cantidadDesde,
-            descuento: descuento,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
+final class $$ClienteDescuentoTableTableReferences extends BaseReferences<
+    _$RemoteAppDatabase, $ClienteDescuentoTableTable, ClienteDescuentoDTO> {
+  $$ClienteDescuentoTableTableReferences(
+      super.$_db, super.$_table, super.$_typedResult);
+
+  static $FamiliaTableTable _familiaIdTable(_$RemoteAppDatabase db) =>
+      db.familiaTable.createAlias($_aliasNameGenerator(
+          db.clienteDescuentoTable.familiaId, db.familiaTable.id));
+
+  $$FamiliaTableTableProcessedTableManager? get familiaId {
+    if ($_item.familiaId == null) return null;
+    final manager = $$FamiliaTableTableTableManager($_db, $_db.familiaTable)
+        .filter((f) => f.id($_item.familiaId!));
+    final item = $_typedResult.readTableOrNull(_familiaIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: [item]));
+  }
+
+  static $SubfamiliaTableTable _subfamiliaIdTable(_$RemoteAppDatabase db) =>
+      db.subfamiliaTable.createAlias($_aliasNameGenerator(
+          db.clienteDescuentoTable.subfamiliaId, db.subfamiliaTable.id));
+
+  $$SubfamiliaTableTableProcessedTableManager? get subfamiliaId {
+    if ($_item.subfamiliaId == null) return null;
+    final manager =
+        $$SubfamiliaTableTableTableManager($_db, $_db.subfamiliaTable)
+            .filter((f) => f.id($_item.subfamiliaId!));
+    final item = $_typedResult.readTableOrNull(_subfamiliaIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: [item]));
+  }
 }
 
 class $$ClienteDescuentoTableTableFilterComposer
@@ -26246,6 +27258,137 @@ class $$ClienteDescuentoTableTableOrderingComposer
   }
 }
 
+class $$ClienteDescuentoTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ClienteDescuentoTableTable,
+    ClienteDescuentoDTO,
+    $$ClienteDescuentoTableTableFilterComposer,
+    $$ClienteDescuentoTableTableOrderingComposer,
+    $$ClienteDescuentoTableTableCreateCompanionBuilder,
+    $$ClienteDescuentoTableTableUpdateCompanionBuilder,
+    (ClienteDescuentoDTO, $$ClienteDescuentoTableTableReferences),
+    ClienteDescuentoDTO,
+    PrefetchHooks Function({bool familiaId, bool subfamiliaId})> {
+  $$ClienteDescuentoTableTableTableManager(
+      _$RemoteAppDatabase db, $ClienteDescuentoTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ClienteDescuentoTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ClienteDescuentoTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> clienteId = const Value.absent(),
+            Value<String> articuloId = const Value.absent(),
+            Value<String> familiaId = const Value.absent(),
+            Value<String> subfamiliaId = const Value.absent(),
+            Value<int> cantidadDesde = const Value.absent(),
+            Value<double> descuento = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteDescuentoTableCompanion(
+            clienteId: clienteId,
+            articuloId: articuloId,
+            familiaId: familiaId,
+            subfamiliaId: subfamiliaId,
+            cantidadDesde: cantidadDesde,
+            descuento: descuento,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String clienteId,
+            required String articuloId,
+            required String familiaId,
+            required String subfamiliaId,
+            required int cantidadDesde,
+            required double descuento,
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteDescuentoTableCompanion.insert(
+            clienteId: clienteId,
+            articuloId: articuloId,
+            familiaId: familiaId,
+            subfamiliaId: subfamiliaId,
+            cantidadDesde: cantidadDesde,
+            descuento: descuento,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (
+                    e.readTable(table),
+                    $$ClienteDescuentoTableTableReferences(db, table, e)
+                  ))
+              .toList(),
+          prefetchHooksCallback: ({familiaId = false, subfamiliaId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins: <
+                  T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic>>(state) {
+                if (familiaId) {
+                  state = state.withJoin(
+                    currentTable: table,
+                    currentColumn: table.familiaId,
+                    referencedTable: $$ClienteDescuentoTableTableReferences
+                        ._familiaIdTable(db),
+                    referencedColumn: $$ClienteDescuentoTableTableReferences
+                        ._familiaIdTable(db)
+                        .id,
+                  ) as T;
+                }
+                if (subfamiliaId) {
+                  state = state.withJoin(
+                    currentTable: table,
+                    currentColumn: table.subfamiliaId,
+                    referencedTable: $$ClienteDescuentoTableTableReferences
+                        ._subfamiliaIdTable(db),
+                    referencedColumn: $$ClienteDescuentoTableTableReferences
+                        ._subfamiliaIdTable(db)
+                        .id,
+                  ) as T;
+                }
+
+                return state;
+              },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ));
+}
+
+typedef $$ClienteDescuentoTableTableProcessedTableManager
+    = ProcessedTableManager<
+        _$RemoteAppDatabase,
+        $ClienteDescuentoTableTable,
+        ClienteDescuentoDTO,
+        $$ClienteDescuentoTableTableFilterComposer,
+        $$ClienteDescuentoTableTableOrderingComposer,
+        $$ClienteDescuentoTableTableCreateCompanionBuilder,
+        $$ClienteDescuentoTableTableUpdateCompanionBuilder,
+        (ClienteDescuentoDTO, $$ClienteDescuentoTableTableReferences),
+        ClienteDescuentoDTO,
+        PrefetchHooks Function({bool familiaId, bool subfamiliaId})>;
 typedef $$ClienteContactoTableTableCreateCompanionBuilder
     = ClienteContactoTableCompanion Function({
   required String clienteId,
@@ -26276,82 +27419,6 @@ typedef $$ClienteContactoTableTableUpdateCompanionBuilder
   Value<String> deleted,
   Value<int> rowid,
 });
-
-class $$ClienteContactoTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $ClienteContactoTableTable,
-    ClienteContactoDTO,
-    $$ClienteContactoTableTableFilterComposer,
-    $$ClienteContactoTableTableOrderingComposer,
-    $$ClienteContactoTableTableCreateCompanionBuilder,
-    $$ClienteContactoTableTableUpdateCompanionBuilder> {
-  $$ClienteContactoTableTableTableManager(
-      _$RemoteAppDatabase db, $ClienteContactoTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer: $$ClienteContactoTableTableFilterComposer(
-              ComposerState(db, table)),
-          orderingComposer: $$ClienteContactoTableTableOrderingComposer(
-              ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> clienteId = const Value.absent(),
-            Value<String> contactoId = const Value.absent(),
-            Value<String?> observaciones = const Value.absent(),
-            Value<String?> nombre = const Value.absent(),
-            Value<String?> apellido1 = const Value.absent(),
-            Value<String?> apellido2 = const Value.absent(),
-            Value<String?> telefono1 = const Value.absent(),
-            Value<String?> telefono2 = const Value.absent(),
-            Value<String?> email = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ClienteContactoTableCompanion(
-            clienteId: clienteId,
-            contactoId: contactoId,
-            observaciones: observaciones,
-            nombre: nombre,
-            apellido1: apellido1,
-            apellido2: apellido2,
-            telefono1: telefono1,
-            telefono2: telefono2,
-            email: email,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String clienteId,
-            required String contactoId,
-            Value<String?> observaciones = const Value.absent(),
-            Value<String?> nombre = const Value.absent(),
-            Value<String?> apellido1 = const Value.absent(),
-            Value<String?> apellido2 = const Value.absent(),
-            Value<String?> telefono1 = const Value.absent(),
-            Value<String?> telefono2 = const Value.absent(),
-            Value<String?> email = const Value.absent(),
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ClienteContactoTableCompanion.insert(
-            clienteId: clienteId,
-            contactoId: contactoId,
-            observaciones: observaciones,
-            nombre: nombre,
-            apellido1: apellido1,
-            apellido2: apellido2,
-            telefono1: telefono1,
-            telefono2: telefono2,
-            email: email,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
-}
 
 class $$ClienteContactoTableTableFilterComposer
     extends FilterComposer<_$RemoteAppDatabase, $ClienteContactoTableTable> {
@@ -26471,6 +27538,109 @@ class $$ClienteContactoTableTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$ClienteContactoTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ClienteContactoTableTable,
+    ClienteContactoDTO,
+    $$ClienteContactoTableTableFilterComposer,
+    $$ClienteContactoTableTableOrderingComposer,
+    $$ClienteContactoTableTableCreateCompanionBuilder,
+    $$ClienteContactoTableTableUpdateCompanionBuilder,
+    (
+      ClienteContactoDTO,
+      BaseReferences<_$RemoteAppDatabase, $ClienteContactoTableTable,
+          ClienteContactoDTO>
+    ),
+    ClienteContactoDTO,
+    PrefetchHooks Function()> {
+  $$ClienteContactoTableTableTableManager(
+      _$RemoteAppDatabase db, $ClienteContactoTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ClienteContactoTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ClienteContactoTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> clienteId = const Value.absent(),
+            Value<String> contactoId = const Value.absent(),
+            Value<String?> observaciones = const Value.absent(),
+            Value<String?> nombre = const Value.absent(),
+            Value<String?> apellido1 = const Value.absent(),
+            Value<String?> apellido2 = const Value.absent(),
+            Value<String?> telefono1 = const Value.absent(),
+            Value<String?> telefono2 = const Value.absent(),
+            Value<String?> email = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteContactoTableCompanion(
+            clienteId: clienteId,
+            contactoId: contactoId,
+            observaciones: observaciones,
+            nombre: nombre,
+            apellido1: apellido1,
+            apellido2: apellido2,
+            telefono1: telefono1,
+            telefono2: telefono2,
+            email: email,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String clienteId,
+            required String contactoId,
+            Value<String?> observaciones = const Value.absent(),
+            Value<String?> nombre = const Value.absent(),
+            Value<String?> apellido1 = const Value.absent(),
+            Value<String?> apellido2 = const Value.absent(),
+            Value<String?> telefono1 = const Value.absent(),
+            Value<String?> telefono2 = const Value.absent(),
+            Value<String?> email = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteContactoTableCompanion.insert(
+            clienteId: clienteId,
+            contactoId: contactoId,
+            observaciones: observaciones,
+            nombre: nombre,
+            apellido1: apellido1,
+            apellido2: apellido2,
+            telefono1: telefono1,
+            telefono2: telefono2,
+            email: email,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$ClienteContactoTableTableProcessedTableManager
+    = ProcessedTableManager<
+        _$RemoteAppDatabase,
+        $ClienteContactoTableTable,
+        ClienteContactoDTO,
+        $$ClienteContactoTableTableFilterComposer,
+        $$ClienteContactoTableTableOrderingComposer,
+        $$ClienteContactoTableTableCreateCompanionBuilder,
+        $$ClienteContactoTableTableUpdateCompanionBuilder,
+        (
+          ClienteContactoDTO,
+          BaseReferences<_$RemoteAppDatabase, $ClienteContactoTableTable,
+              ClienteContactoDTO>
+        ),
+        ClienteContactoDTO,
+        PrefetchHooks Function()>;
 typedef $$ClienteDireccionTableTableCreateCompanionBuilder
     = ClienteDireccionTableCompanion Function({
   required String clienteId,
@@ -26508,92 +27678,24 @@ typedef $$ClienteDireccionTableTableUpdateCompanionBuilder
   Value<int> rowid,
 });
 
-class $$ClienteDireccionTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $ClienteDireccionTableTable,
-    ClienteDireccionDTO,
-    $$ClienteDireccionTableTableFilterComposer,
-    $$ClienteDireccionTableTableOrderingComposer,
-    $$ClienteDireccionTableTableCreateCompanionBuilder,
-    $$ClienteDireccionTableTableUpdateCompanionBuilder> {
-  $$ClienteDireccionTableTableTableManager(
-      _$RemoteAppDatabase db, $ClienteDireccionTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer: $$ClienteDireccionTableTableFilterComposer(
-              ComposerState(db, table)),
-          orderingComposer: $$ClienteDireccionTableTableOrderingComposer(
-              ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> clienteId = const Value.absent(),
-            Value<String> direccionId = const Value.absent(),
-            Value<String?> nombre = const Value.absent(),
-            Value<String?> direccion1 = const Value.absent(),
-            Value<String?> direccion2 = const Value.absent(),
-            Value<String?> codigoPostal = const Value.absent(),
-            Value<String?> poblacion = const Value.absent(),
-            Value<String?> provincia = const Value.absent(),
-            Value<String?> paisId = const Value.absent(),
-            Value<double> latitud = const Value.absent(),
-            Value<double> longitud = const Value.absent(),
-            Value<String?> predeterminada = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ClienteDireccionTableCompanion(
-            clienteId: clienteId,
-            direccionId: direccionId,
-            nombre: nombre,
-            direccion1: direccion1,
-            direccion2: direccion2,
-            codigoPostal: codigoPostal,
-            poblacion: poblacion,
-            provincia: provincia,
-            paisId: paisId,
-            latitud: latitud,
-            longitud: longitud,
-            predeterminada: predeterminada,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String clienteId,
-            required String direccionId,
-            Value<String?> nombre = const Value.absent(),
-            Value<String?> direccion1 = const Value.absent(),
-            Value<String?> direccion2 = const Value.absent(),
-            Value<String?> codigoPostal = const Value.absent(),
-            Value<String?> poblacion = const Value.absent(),
-            Value<String?> provincia = const Value.absent(),
-            Value<String?> paisId = const Value.absent(),
-            required double latitud,
-            required double longitud,
-            Value<String?> predeterminada = const Value.absent(),
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ClienteDireccionTableCompanion.insert(
-            clienteId: clienteId,
-            direccionId: direccionId,
-            nombre: nombre,
-            direccion1: direccion1,
-            direccion2: direccion2,
-            codigoPostal: codigoPostal,
-            poblacion: poblacion,
-            provincia: provincia,
-            paisId: paisId,
-            latitud: latitud,
-            longitud: longitud,
-            predeterminada: predeterminada,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
+final class $$ClienteDireccionTableTableReferences extends BaseReferences<
+    _$RemoteAppDatabase, $ClienteDireccionTableTable, ClienteDireccionDTO> {
+  $$ClienteDireccionTableTableReferences(
+      super.$_db, super.$_table, super.$_typedResult);
+
+  static $PaisTableTable _paisIdTable(_$RemoteAppDatabase db) =>
+      db.paisTable.createAlias($_aliasNameGenerator(
+          db.clienteDireccionTable.paisId, db.paisTable.id));
+
+  $$PaisTableTableProcessedTableManager? get paisId {
+    if ($_item.paisId == null) return null;
+    final manager = $$PaisTableTableTableManager($_db, $_db.paisTable)
+        .filter((f) => f.id($_item.paisId!));
+    final item = $_typedResult.readTableOrNull(_paisIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: [item]));
+  }
 }
 
 class $$ClienteDireccionTableTableFilterComposer
@@ -26758,6 +27860,150 @@ class $$ClienteDireccionTableTableOrderingComposer
   }
 }
 
+class $$ClienteDireccionTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ClienteDireccionTableTable,
+    ClienteDireccionDTO,
+    $$ClienteDireccionTableTableFilterComposer,
+    $$ClienteDireccionTableTableOrderingComposer,
+    $$ClienteDireccionTableTableCreateCompanionBuilder,
+    $$ClienteDireccionTableTableUpdateCompanionBuilder,
+    (ClienteDireccionDTO, $$ClienteDireccionTableTableReferences),
+    ClienteDireccionDTO,
+    PrefetchHooks Function({bool paisId})> {
+  $$ClienteDireccionTableTableTableManager(
+      _$RemoteAppDatabase db, $ClienteDireccionTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ClienteDireccionTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ClienteDireccionTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> clienteId = const Value.absent(),
+            Value<String> direccionId = const Value.absent(),
+            Value<String?> nombre = const Value.absent(),
+            Value<String?> direccion1 = const Value.absent(),
+            Value<String?> direccion2 = const Value.absent(),
+            Value<String?> codigoPostal = const Value.absent(),
+            Value<String?> poblacion = const Value.absent(),
+            Value<String?> provincia = const Value.absent(),
+            Value<String?> paisId = const Value.absent(),
+            Value<double> latitud = const Value.absent(),
+            Value<double> longitud = const Value.absent(),
+            Value<String?> predeterminada = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteDireccionTableCompanion(
+            clienteId: clienteId,
+            direccionId: direccionId,
+            nombre: nombre,
+            direccion1: direccion1,
+            direccion2: direccion2,
+            codigoPostal: codigoPostal,
+            poblacion: poblacion,
+            provincia: provincia,
+            paisId: paisId,
+            latitud: latitud,
+            longitud: longitud,
+            predeterminada: predeterminada,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String clienteId,
+            required String direccionId,
+            Value<String?> nombre = const Value.absent(),
+            Value<String?> direccion1 = const Value.absent(),
+            Value<String?> direccion2 = const Value.absent(),
+            Value<String?> codigoPostal = const Value.absent(),
+            Value<String?> poblacion = const Value.absent(),
+            Value<String?> provincia = const Value.absent(),
+            Value<String?> paisId = const Value.absent(),
+            required double latitud,
+            required double longitud,
+            Value<String?> predeterminada = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteDireccionTableCompanion.insert(
+            clienteId: clienteId,
+            direccionId: direccionId,
+            nombre: nombre,
+            direccion1: direccion1,
+            direccion2: direccion2,
+            codigoPostal: codigoPostal,
+            poblacion: poblacion,
+            provincia: provincia,
+            paisId: paisId,
+            latitud: latitud,
+            longitud: longitud,
+            predeterminada: predeterminada,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (
+                    e.readTable(table),
+                    $$ClienteDireccionTableTableReferences(db, table, e)
+                  ))
+              .toList(),
+          prefetchHooksCallback: ({paisId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins: <
+                  T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic>>(state) {
+                if (paisId) {
+                  state = state.withJoin(
+                    currentTable: table,
+                    currentColumn: table.paisId,
+                    referencedTable:
+                        $$ClienteDireccionTableTableReferences._paisIdTable(db),
+                    referencedColumn: $$ClienteDireccionTableTableReferences
+                        ._paisIdTable(db)
+                        .id,
+                  ) as T;
+                }
+
+                return state;
+              },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ));
+}
+
+typedef $$ClienteDireccionTableTableProcessedTableManager
+    = ProcessedTableManager<
+        _$RemoteAppDatabase,
+        $ClienteDireccionTableTable,
+        ClienteDireccionDTO,
+        $$ClienteDireccionTableTableFilterComposer,
+        $$ClienteDireccionTableTableOrderingComposer,
+        $$ClienteDireccionTableTableCreateCompanionBuilder,
+        $$ClienteDireccionTableTableUpdateCompanionBuilder,
+        (ClienteDireccionDTO, $$ClienteDireccionTableTableReferences),
+        ClienteDireccionDTO,
+        PrefetchHooks Function({bool paisId})>;
 typedef $$ClientePagoPendienteTableTableCreateCompanionBuilder
     = ClientePagoPendienteTableCompanion Function({
   required String clienteId,
@@ -26791,84 +28037,29 @@ typedef $$ClientePagoPendienteTableTableUpdateCompanionBuilder
   Value<int> rowid,
 });
 
-class $$ClientePagoPendienteTableTableTableManager extends RootTableManager<
+final class $$ClientePagoPendienteTableTableReferences extends BaseReferences<
     _$RemoteAppDatabase,
     $ClientePagoPendienteTableTable,
-    ClientePagoPendienteDTO,
-    $$ClientePagoPendienteTableTableFilterComposer,
-    $$ClientePagoPendienteTableTableOrderingComposer,
-    $$ClientePagoPendienteTableTableCreateCompanionBuilder,
-    $$ClientePagoPendienteTableTableUpdateCompanionBuilder> {
-  $$ClientePagoPendienteTableTableTableManager(
-      _$RemoteAppDatabase db, $ClientePagoPendienteTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer: $$ClientePagoPendienteTableTableFilterComposer(
-              ComposerState(db, table)),
-          orderingComposer: $$ClientePagoPendienteTableTableOrderingComposer(
-              ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> clienteId = const Value.absent(),
-            Value<String> efectoId = const Value.absent(),
-            Value<String?> facutaId = const Value.absent(),
-            Value<DateTime?> fechaFactura = const Value.absent(),
-            Value<DateTime?> fechaExpiracion = const Value.absent(),
-            Value<String?> metodoDeCobroId = const Value.absent(),
-            Value<String?> estadoCobroId = const Value.absent(),
-            Value<double?> importe = const Value.absent(),
-            Value<DateTime?> fechaExpiracionInicial = const Value.absent(),
-            Value<String?> vencidoJBM = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ClientePagoPendienteTableCompanion(
-            clienteId: clienteId,
-            efectoId: efectoId,
-            facutaId: facutaId,
-            fechaFactura: fechaFactura,
-            fechaExpiracion: fechaExpiracion,
-            metodoDeCobroId: metodoDeCobroId,
-            estadoCobroId: estadoCobroId,
-            importe: importe,
-            fechaExpiracionInicial: fechaExpiracionInicial,
-            vencidoJBM: vencidoJBM,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String clienteId,
-            required String efectoId,
-            Value<String?> facutaId = const Value.absent(),
-            Value<DateTime?> fechaFactura = const Value.absent(),
-            Value<DateTime?> fechaExpiracion = const Value.absent(),
-            Value<String?> metodoDeCobroId = const Value.absent(),
-            Value<String?> estadoCobroId = const Value.absent(),
-            Value<double?> importe = const Value.absent(),
-            Value<DateTime?> fechaExpiracionInicial = const Value.absent(),
-            Value<String?> vencidoJBM = const Value.absent(),
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ClientePagoPendienteTableCompanion.insert(
-            clienteId: clienteId,
-            efectoId: efectoId,
-            facutaId: facutaId,
-            fechaFactura: fechaFactura,
-            fechaExpiracion: fechaExpiracion,
-            metodoDeCobroId: metodoDeCobroId,
-            estadoCobroId: estadoCobroId,
-            importe: importe,
-            fechaExpiracionInicial: fechaExpiracionInicial,
-            vencidoJBM: vencidoJBM,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
+    ClientePagoPendienteDTO> {
+  $$ClientePagoPendienteTableTableReferences(
+      super.$_db, super.$_table, super.$_typedResult);
+
+  static $MetodoDeCobroTableTable _metodoDeCobroIdTable(
+          _$RemoteAppDatabase db) =>
+      db.metodoDeCobroTable.createAlias($_aliasNameGenerator(
+          db.clientePagoPendienteTable.metodoDeCobroId,
+          db.metodoDeCobroTable.id));
+
+  $$MetodoDeCobroTableTableProcessedTableManager? get metodoDeCobroId {
+    if ($_item.metodoDeCobroId == null) return null;
+    final manager =
+        $$MetodoDeCobroTableTableTableManager($_db, $_db.metodoDeCobroTable)
+            .filter((f) => f.id($_item.metodoDeCobroId!));
+    final item = $_typedResult.readTableOrNull(_metodoDeCobroIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: [item]));
+  }
 }
 
 class $$ClientePagoPendienteTableTableFilterComposer extends FilterComposer<
@@ -27023,6 +28214,142 @@ class $$ClientePagoPendienteTableTableOrderingComposer extends OrderingComposer<
   }
 }
 
+class $$ClientePagoPendienteTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ClientePagoPendienteTableTable,
+    ClientePagoPendienteDTO,
+    $$ClientePagoPendienteTableTableFilterComposer,
+    $$ClientePagoPendienteTableTableOrderingComposer,
+    $$ClientePagoPendienteTableTableCreateCompanionBuilder,
+    $$ClientePagoPendienteTableTableUpdateCompanionBuilder,
+    (ClientePagoPendienteDTO, $$ClientePagoPendienteTableTableReferences),
+    ClientePagoPendienteDTO,
+    PrefetchHooks Function({bool metodoDeCobroId})> {
+  $$ClientePagoPendienteTableTableTableManager(
+      _$RemoteAppDatabase db, $ClientePagoPendienteTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ClientePagoPendienteTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ClientePagoPendienteTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> clienteId = const Value.absent(),
+            Value<String> efectoId = const Value.absent(),
+            Value<String?> facutaId = const Value.absent(),
+            Value<DateTime?> fechaFactura = const Value.absent(),
+            Value<DateTime?> fechaExpiracion = const Value.absent(),
+            Value<String?> metodoDeCobroId = const Value.absent(),
+            Value<String?> estadoCobroId = const Value.absent(),
+            Value<double?> importe = const Value.absent(),
+            Value<DateTime?> fechaExpiracionInicial = const Value.absent(),
+            Value<String?> vencidoJBM = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClientePagoPendienteTableCompanion(
+            clienteId: clienteId,
+            efectoId: efectoId,
+            facutaId: facutaId,
+            fechaFactura: fechaFactura,
+            fechaExpiracion: fechaExpiracion,
+            metodoDeCobroId: metodoDeCobroId,
+            estadoCobroId: estadoCobroId,
+            importe: importe,
+            fechaExpiracionInicial: fechaExpiracionInicial,
+            vencidoJBM: vencidoJBM,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String clienteId,
+            required String efectoId,
+            Value<String?> facutaId = const Value.absent(),
+            Value<DateTime?> fechaFactura = const Value.absent(),
+            Value<DateTime?> fechaExpiracion = const Value.absent(),
+            Value<String?> metodoDeCobroId = const Value.absent(),
+            Value<String?> estadoCobroId = const Value.absent(),
+            Value<double?> importe = const Value.absent(),
+            Value<DateTime?> fechaExpiracionInicial = const Value.absent(),
+            Value<String?> vencidoJBM = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClientePagoPendienteTableCompanion.insert(
+            clienteId: clienteId,
+            efectoId: efectoId,
+            facutaId: facutaId,
+            fechaFactura: fechaFactura,
+            fechaExpiracion: fechaExpiracion,
+            metodoDeCobroId: metodoDeCobroId,
+            estadoCobroId: estadoCobroId,
+            importe: importe,
+            fechaExpiracionInicial: fechaExpiracionInicial,
+            vencidoJBM: vencidoJBM,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (
+                    e.readTable(table),
+                    $$ClientePagoPendienteTableTableReferences(db, table, e)
+                  ))
+              .toList(),
+          prefetchHooksCallback: ({metodoDeCobroId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins: <
+                  T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic>>(state) {
+                if (metodoDeCobroId) {
+                  state = state.withJoin(
+                    currentTable: table,
+                    currentColumn: table.metodoDeCobroId,
+                    referencedTable: $$ClientePagoPendienteTableTableReferences
+                        ._metodoDeCobroIdTable(db),
+                    referencedColumn: $$ClientePagoPendienteTableTableReferences
+                        ._metodoDeCobroIdTable(db)
+                        .id,
+                  ) as T;
+                }
+
+                return state;
+              },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ));
+}
+
+typedef $$ClientePagoPendienteTableTableProcessedTableManager
+    = ProcessedTableManager<
+        _$RemoteAppDatabase,
+        $ClientePagoPendienteTableTable,
+        ClientePagoPendienteDTO,
+        $$ClientePagoPendienteTableTableFilterComposer,
+        $$ClientePagoPendienteTableTableOrderingComposer,
+        $$ClientePagoPendienteTableTableCreateCompanionBuilder,
+        $$ClientePagoPendienteTableTableUpdateCompanionBuilder,
+        (ClientePagoPendienteDTO, $$ClientePagoPendienteTableTableReferences),
+        ClientePagoPendienteDTO,
+        PrefetchHooks Function({bool metodoDeCobroId})>;
 typedef $$ClientePrecioNetoTableTableCreateCompanionBuilder
     = ClientePrecioNetoTableCompanion Function({
   required String clienteId,
@@ -27047,70 +28374,6 @@ typedef $$ClientePrecioNetoTableTableUpdateCompanionBuilder
   Value<String> deleted,
   Value<int> rowid,
 });
-
-class $$ClientePrecioNetoTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $ClientePrecioNetoTableTable,
-    ClientePrecioNetoDTO,
-    $$ClientePrecioNetoTableTableFilterComposer,
-    $$ClientePrecioNetoTableTableOrderingComposer,
-    $$ClientePrecioNetoTableTableCreateCompanionBuilder,
-    $$ClientePrecioNetoTableTableUpdateCompanionBuilder> {
-  $$ClientePrecioNetoTableTableTableManager(
-      _$RemoteAppDatabase db, $ClientePrecioNetoTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer: $$ClientePrecioNetoTableTableFilterComposer(
-              ComposerState(db, table)),
-          orderingComposer: $$ClientePrecioNetoTableTableOrderingComposer(
-              ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> clienteId = const Value.absent(),
-            Value<String> articuloId = const Value.absent(),
-            Value<int> cantidadDesde = const Value.absent(),
-            Value<double> precio = const Value.absent(),
-            Value<int?> tipoPrecio = const Value.absent(),
-            Value<double?> dtoAdicional = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ClientePrecioNetoTableCompanion(
-            clienteId: clienteId,
-            articuloId: articuloId,
-            cantidadDesde: cantidadDesde,
-            precio: precio,
-            tipoPrecio: tipoPrecio,
-            dtoAdicional: dtoAdicional,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String clienteId,
-            required String articuloId,
-            required int cantidadDesde,
-            required double precio,
-            Value<int?> tipoPrecio = const Value.absent(),
-            Value<double?> dtoAdicional = const Value.absent(),
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ClientePrecioNetoTableCompanion.insert(
-            clienteId: clienteId,
-            articuloId: articuloId,
-            cantidadDesde: cantidadDesde,
-            precio: precio,
-            tipoPrecio: tipoPrecio,
-            dtoAdicional: dtoAdicional,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
-}
 
 class $$ClientePrecioNetoTableTableFilterComposer
     extends FilterComposer<_$RemoteAppDatabase, $ClientePrecioNetoTableTable> {
@@ -27200,6 +28463,97 @@ class $$ClientePrecioNetoTableTableOrderingComposer extends OrderingComposer<
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$ClientePrecioNetoTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ClientePrecioNetoTableTable,
+    ClientePrecioNetoDTO,
+    $$ClientePrecioNetoTableTableFilterComposer,
+    $$ClientePrecioNetoTableTableOrderingComposer,
+    $$ClientePrecioNetoTableTableCreateCompanionBuilder,
+    $$ClientePrecioNetoTableTableUpdateCompanionBuilder,
+    (
+      ClientePrecioNetoDTO,
+      BaseReferences<_$RemoteAppDatabase, $ClientePrecioNetoTableTable,
+          ClientePrecioNetoDTO>
+    ),
+    ClientePrecioNetoDTO,
+    PrefetchHooks Function()> {
+  $$ClientePrecioNetoTableTableTableManager(
+      _$RemoteAppDatabase db, $ClientePrecioNetoTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ClientePrecioNetoTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ClientePrecioNetoTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> clienteId = const Value.absent(),
+            Value<String> articuloId = const Value.absent(),
+            Value<int> cantidadDesde = const Value.absent(),
+            Value<double> precio = const Value.absent(),
+            Value<int?> tipoPrecio = const Value.absent(),
+            Value<double?> dtoAdicional = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClientePrecioNetoTableCompanion(
+            clienteId: clienteId,
+            articuloId: articuloId,
+            cantidadDesde: cantidadDesde,
+            precio: precio,
+            tipoPrecio: tipoPrecio,
+            dtoAdicional: dtoAdicional,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String clienteId,
+            required String articuloId,
+            required int cantidadDesde,
+            required double precio,
+            Value<int?> tipoPrecio = const Value.absent(),
+            Value<double?> dtoAdicional = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClientePrecioNetoTableCompanion.insert(
+            clienteId: clienteId,
+            articuloId: articuloId,
+            cantidadDesde: cantidadDesde,
+            precio: precio,
+            tipoPrecio: tipoPrecio,
+            dtoAdicional: dtoAdicional,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$ClientePrecioNetoTableTableProcessedTableManager
+    = ProcessedTableManager<
+        _$RemoteAppDatabase,
+        $ClientePrecioNetoTableTable,
+        ClientePrecioNetoDTO,
+        $$ClientePrecioNetoTableTableFilterComposer,
+        $$ClientePrecioNetoTableTableOrderingComposer,
+        $$ClientePrecioNetoTableTableCreateCompanionBuilder,
+        $$ClientePrecioNetoTableTableUpdateCompanionBuilder,
+        (
+          ClientePrecioNetoDTO,
+          BaseReferences<_$RemoteAppDatabase, $ClientePrecioNetoTableTable,
+              ClientePrecioNetoDTO>
+        ),
+        ClientePrecioNetoDTO,
+        PrefetchHooks Function()>;
 typedef $$ClienteRappelTableTableCreateCompanionBuilder
     = ClienteRappelTableCompanion Function({
   required String clienteId,
@@ -27226,74 +28580,6 @@ typedef $$ClienteRappelTableTableUpdateCompanionBuilder
   Value<String> deleted,
   Value<int> rowid,
 });
-
-class $$ClienteRappelTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $ClienteRappelTableTable,
-    ClienteRappelDTO,
-    $$ClienteRappelTableTableFilterComposer,
-    $$ClienteRappelTableTableOrderingComposer,
-    $$ClienteRappelTableTableCreateCompanionBuilder,
-    $$ClienteRappelTableTableUpdateCompanionBuilder> {
-  $$ClienteRappelTableTableTableManager(
-      _$RemoteAppDatabase db, $ClienteRappelTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer:
-              $$ClienteRappelTableTableFilterComposer(ComposerState(db, table)),
-          orderingComposer: $$ClienteRappelTableTableOrderingComposer(
-              ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> clienteId = const Value.absent(),
-            Value<String> rappelId = const Value.absent(),
-            Value<String> descripcion = const Value.absent(),
-            Value<DateTime> fechaDesDe = const Value.absent(),
-            Value<DateTime?> fechaHasta = const Value.absent(),
-            Value<String?> nombreArchivo = const Value.absent(),
-            Value<String?> firmado = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ClienteRappelTableCompanion(
-            clienteId: clienteId,
-            rappelId: rappelId,
-            descripcion: descripcion,
-            fechaDesDe: fechaDesDe,
-            fechaHasta: fechaHasta,
-            nombreArchivo: nombreArchivo,
-            firmado: firmado,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String clienteId,
-            required String rappelId,
-            required String descripcion,
-            required DateTime fechaDesDe,
-            Value<DateTime?> fechaHasta = const Value.absent(),
-            Value<String?> nombreArchivo = const Value.absent(),
-            Value<String?> firmado = const Value.absent(),
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ClienteRappelTableCompanion.insert(
-            clienteId: clienteId,
-            rappelId: rappelId,
-            descripcion: descripcion,
-            fechaDesDe: fechaDesDe,
-            fechaHasta: fechaHasta,
-            nombreArchivo: nombreArchivo,
-            firmado: firmado,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
-}
 
 class $$ClienteRappelTableTableFilterComposer
     extends FilterComposer<_$RemoteAppDatabase, $ClienteRappelTableTable> {
@@ -27393,6 +28679,100 @@ class $$ClienteRappelTableTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$ClienteRappelTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ClienteRappelTableTable,
+    ClienteRappelDTO,
+    $$ClienteRappelTableTableFilterComposer,
+    $$ClienteRappelTableTableOrderingComposer,
+    $$ClienteRappelTableTableCreateCompanionBuilder,
+    $$ClienteRappelTableTableUpdateCompanionBuilder,
+    (
+      ClienteRappelDTO,
+      BaseReferences<_$RemoteAppDatabase, $ClienteRappelTableTable,
+          ClienteRappelDTO>
+    ),
+    ClienteRappelDTO,
+    PrefetchHooks Function()> {
+  $$ClienteRappelTableTableTableManager(
+      _$RemoteAppDatabase db, $ClienteRappelTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$ClienteRappelTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer: $$ClienteRappelTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> clienteId = const Value.absent(),
+            Value<String> rappelId = const Value.absent(),
+            Value<String> descripcion = const Value.absent(),
+            Value<DateTime> fechaDesDe = const Value.absent(),
+            Value<DateTime?> fechaHasta = const Value.absent(),
+            Value<String?> nombreArchivo = const Value.absent(),
+            Value<String?> firmado = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteRappelTableCompanion(
+            clienteId: clienteId,
+            rappelId: rappelId,
+            descripcion: descripcion,
+            fechaDesDe: fechaDesDe,
+            fechaHasta: fechaHasta,
+            nombreArchivo: nombreArchivo,
+            firmado: firmado,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String clienteId,
+            required String rappelId,
+            required String descripcion,
+            required DateTime fechaDesDe,
+            Value<DateTime?> fechaHasta = const Value.absent(),
+            Value<String?> nombreArchivo = const Value.absent(),
+            Value<String?> firmado = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteRappelTableCompanion.insert(
+            clienteId: clienteId,
+            rappelId: rappelId,
+            descripcion: descripcion,
+            fechaDesDe: fechaDesDe,
+            fechaHasta: fechaHasta,
+            nombreArchivo: nombreArchivo,
+            firmado: firmado,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$ClienteRappelTableTableProcessedTableManager = ProcessedTableManager<
+    _$RemoteAppDatabase,
+    $ClienteRappelTableTable,
+    ClienteRappelDTO,
+    $$ClienteRappelTableTableFilterComposer,
+    $$ClienteRappelTableTableOrderingComposer,
+    $$ClienteRappelTableTableCreateCompanionBuilder,
+    $$ClienteRappelTableTableUpdateCompanionBuilder,
+    (
+      ClienteRappelDTO,
+      BaseReferences<_$RemoteAppDatabase, $ClienteRappelTableTable,
+          ClienteRappelDTO>
+    ),
+    ClienteRappelDTO,
+    PrefetchHooks Function()>;
 typedef $$ClienteEstadoPotencialTableTableCreateCompanionBuilder
     = ClienteEstadoPotencialTableCompanion Function({
   required String id,
@@ -27437,110 +28817,6 @@ typedef $$ClienteEstadoPotencialTableTableUpdateCompanionBuilder
   Value<String> deleted,
   Value<int> rowid,
 });
-
-class $$ClienteEstadoPotencialTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $ClienteEstadoPotencialTableTable,
-    ClienteEstadoPotencialDTO,
-    $$ClienteEstadoPotencialTableTableFilterComposer,
-    $$ClienteEstadoPotencialTableTableOrderingComposer,
-    $$ClienteEstadoPotencialTableTableCreateCompanionBuilder,
-    $$ClienteEstadoPotencialTableTableUpdateCompanionBuilder> {
-  $$ClienteEstadoPotencialTableTableTableManager(
-      _$RemoteAppDatabase db, $ClienteEstadoPotencialTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer: $$ClienteEstadoPotencialTableTableFilterComposer(
-              ComposerState(db, table)),
-          orderingComposer: $$ClienteEstadoPotencialTableTableOrderingComposer(
-              ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> id = const Value.absent(),
-            Value<String> descripcionES = const Value.absent(),
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPL = const Value.absent(),
-            Value<String?> descripcionPT = const Value.absent(),
-            Value<String?> descripcionRO = const Value.absent(),
-            Value<String?> descripcionRU = const Value.absent(),
-            Value<String?> descripcionCN = const Value.absent(),
-            Value<String?> descripcionEL = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ClienteEstadoPotencialTableCompanion(
-            id: id,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPL: descripcionPL,
-            descripcionPT: descripcionPT,
-            descripcionRO: descripcionRO,
-            descripcionRU: descripcionRU,
-            descripcionCN: descripcionCN,
-            descripcionEL: descripcionEL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String id,
-            required String descripcionES,
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPL = const Value.absent(),
-            Value<String?> descripcionPT = const Value.absent(),
-            Value<String?> descripcionRO = const Value.absent(),
-            Value<String?> descripcionRU = const Value.absent(),
-            Value<String?> descripcionCN = const Value.absent(),
-            Value<String?> descripcionEL = const Value.absent(),
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ClienteEstadoPotencialTableCompanion.insert(
-            id: id,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPL: descripcionPL,
-            descripcionPT: descripcionPT,
-            descripcionRO: descripcionRO,
-            descripcionRU: descripcionRU,
-            descripcionCN: descripcionCN,
-            descripcionEL: descripcionEL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
-}
 
 class $$ClienteEstadoPotencialTableTableFilterComposer extends FilterComposer<
     _$RemoteAppDatabase, $ClienteEstadoPotencialTableTable> {
@@ -27731,6 +29007,137 @@ class $$ClienteEstadoPotencialTableTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$ClienteEstadoPotencialTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ClienteEstadoPotencialTableTable,
+    ClienteEstadoPotencialDTO,
+    $$ClienteEstadoPotencialTableTableFilterComposer,
+    $$ClienteEstadoPotencialTableTableOrderingComposer,
+    $$ClienteEstadoPotencialTableTableCreateCompanionBuilder,
+    $$ClienteEstadoPotencialTableTableUpdateCompanionBuilder,
+    (
+      ClienteEstadoPotencialDTO,
+      BaseReferences<_$RemoteAppDatabase, $ClienteEstadoPotencialTableTable,
+          ClienteEstadoPotencialDTO>
+    ),
+    ClienteEstadoPotencialDTO,
+    PrefetchHooks Function()> {
+  $$ClienteEstadoPotencialTableTableTableManager(
+      _$RemoteAppDatabase db, $ClienteEstadoPotencialTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ClienteEstadoPotencialTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ClienteEstadoPotencialTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteEstadoPotencialTableCompanion(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteEstadoPotencialTableCompanion.insert(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$ClienteEstadoPotencialTableTableProcessedTableManager
+    = ProcessedTableManager<
+        _$RemoteAppDatabase,
+        $ClienteEstadoPotencialTableTable,
+        ClienteEstadoPotencialDTO,
+        $$ClienteEstadoPotencialTableTableFilterComposer,
+        $$ClienteEstadoPotencialTableTableOrderingComposer,
+        $$ClienteEstadoPotencialTableTableCreateCompanionBuilder,
+        $$ClienteEstadoPotencialTableTableUpdateCompanionBuilder,
+        (
+          ClienteEstadoPotencialDTO,
+          BaseReferences<_$RemoteAppDatabase, $ClienteEstadoPotencialTableTable,
+              ClienteEstadoPotencialDTO>
+        ),
+        ClienteEstadoPotencialDTO,
+        PrefetchHooks Function()>;
 typedef $$ClienteTipoPotencialTableTableCreateCompanionBuilder
     = ClienteTipoPotencialTableCompanion Function({
   required String id,
@@ -27775,110 +29182,6 @@ typedef $$ClienteTipoPotencialTableTableUpdateCompanionBuilder
   Value<String> deleted,
   Value<int> rowid,
 });
-
-class $$ClienteTipoPotencialTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $ClienteTipoPotencialTableTable,
-    ClienteTipoPotencialDTO,
-    $$ClienteTipoPotencialTableTableFilterComposer,
-    $$ClienteTipoPotencialTableTableOrderingComposer,
-    $$ClienteTipoPotencialTableTableCreateCompanionBuilder,
-    $$ClienteTipoPotencialTableTableUpdateCompanionBuilder> {
-  $$ClienteTipoPotencialTableTableTableManager(
-      _$RemoteAppDatabase db, $ClienteTipoPotencialTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer: $$ClienteTipoPotencialTableTableFilterComposer(
-              ComposerState(db, table)),
-          orderingComposer: $$ClienteTipoPotencialTableTableOrderingComposer(
-              ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> id = const Value.absent(),
-            Value<String> descripcionES = const Value.absent(),
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPL = const Value.absent(),
-            Value<String?> descripcionPT = const Value.absent(),
-            Value<String?> descripcionRO = const Value.absent(),
-            Value<String?> descripcionRU = const Value.absent(),
-            Value<String?> descripcionCN = const Value.absent(),
-            Value<String?> descripcionEL = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ClienteTipoPotencialTableCompanion(
-            id: id,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPL: descripcionPL,
-            descripcionPT: descripcionPT,
-            descripcionRO: descripcionRO,
-            descripcionRU: descripcionRU,
-            descripcionCN: descripcionCN,
-            descripcionEL: descripcionEL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String id,
-            required String descripcionES,
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPL = const Value.absent(),
-            Value<String?> descripcionPT = const Value.absent(),
-            Value<String?> descripcionRO = const Value.absent(),
-            Value<String?> descripcionRU = const Value.absent(),
-            Value<String?> descripcionCN = const Value.absent(),
-            Value<String?> descripcionEL = const Value.absent(),
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ClienteTipoPotencialTableCompanion.insert(
-            id: id,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPL: descripcionPL,
-            descripcionPT: descripcionPT,
-            descripcionRO: descripcionRO,
-            descripcionRU: descripcionRU,
-            descripcionCN: descripcionCN,
-            descripcionEL: descripcionEL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
-}
 
 class $$ClienteTipoPotencialTableTableFilterComposer extends FilterComposer<
     _$RemoteAppDatabase, $ClienteTipoPotencialTableTable> {
@@ -28068,6 +29371,137 @@ class $$ClienteTipoPotencialTableTableOrderingComposer extends OrderingComposer<
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$ClienteTipoPotencialTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ClienteTipoPotencialTableTable,
+    ClienteTipoPotencialDTO,
+    $$ClienteTipoPotencialTableTableFilterComposer,
+    $$ClienteTipoPotencialTableTableOrderingComposer,
+    $$ClienteTipoPotencialTableTableCreateCompanionBuilder,
+    $$ClienteTipoPotencialTableTableUpdateCompanionBuilder,
+    (
+      ClienteTipoPotencialDTO,
+      BaseReferences<_$RemoteAppDatabase, $ClienteTipoPotencialTableTable,
+          ClienteTipoPotencialDTO>
+    ),
+    ClienteTipoPotencialDTO,
+    PrefetchHooks Function()> {
+  $$ClienteTipoPotencialTableTableTableManager(
+      _$RemoteAppDatabase db, $ClienteTipoPotencialTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ClienteTipoPotencialTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ClienteTipoPotencialTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteTipoPotencialTableCompanion(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteTipoPotencialTableCompanion.insert(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$ClienteTipoPotencialTableTableProcessedTableManager
+    = ProcessedTableManager<
+        _$RemoteAppDatabase,
+        $ClienteTipoPotencialTableTable,
+        ClienteTipoPotencialDTO,
+        $$ClienteTipoPotencialTableTableFilterComposer,
+        $$ClienteTipoPotencialTableTableOrderingComposer,
+        $$ClienteTipoPotencialTableTableCreateCompanionBuilder,
+        $$ClienteTipoPotencialTableTableUpdateCompanionBuilder,
+        (
+          ClienteTipoPotencialDTO,
+          BaseReferences<_$RemoteAppDatabase, $ClienteTipoPotencialTableTable,
+              ClienteTipoPotencialDTO>
+        ),
+        ClienteTipoPotencialDTO,
+        PrefetchHooks Function()>;
 typedef $$EstadisticasArticulosTopTableTableCreateCompanionBuilder
     = EstadisticasArticulosTopTableCompanion Function({
   required String articuloId,
@@ -28082,51 +29516,6 @@ typedef $$EstadisticasArticulosTopTableTableUpdateCompanionBuilder
   Value<String> deleted,
   Value<int> rowid,
 });
-
-class $$EstadisticasArticulosTopTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $EstadisticasArticulosTopTableTable,
-    EstadisitcasArticulosTopDTO,
-    $$EstadisticasArticulosTopTableTableFilterComposer,
-    $$EstadisticasArticulosTopTableTableOrderingComposer,
-    $$EstadisticasArticulosTopTableTableCreateCompanionBuilder,
-    $$EstadisticasArticulosTopTableTableUpdateCompanionBuilder> {
-  $$EstadisticasArticulosTopTableTableTableManager(
-      _$RemoteAppDatabase db, $EstadisticasArticulosTopTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer: $$EstadisticasArticulosTopTableTableFilterComposer(
-              ComposerState(db, table)),
-          orderingComposer:
-              $$EstadisticasArticulosTopTableTableOrderingComposer(
-                  ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> articuloId = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              EstadisticasArticulosTopTableCompanion(
-            articuloId: articuloId,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String articuloId,
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              EstadisticasArticulosTopTableCompanion.insert(
-            articuloId: articuloId,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
-}
 
 class $$EstadisticasArticulosTopTableTableFilterComposer extends FilterComposer<
     _$RemoteAppDatabase, $EstadisticasArticulosTopTableTable> {
@@ -28167,6 +29556,78 @@ class $$EstadisticasArticulosTopTableTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$EstadisticasArticulosTopTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $EstadisticasArticulosTopTableTable,
+    EstadisitcasArticulosTopDTO,
+    $$EstadisticasArticulosTopTableTableFilterComposer,
+    $$EstadisticasArticulosTopTableTableOrderingComposer,
+    $$EstadisticasArticulosTopTableTableCreateCompanionBuilder,
+    $$EstadisticasArticulosTopTableTableUpdateCompanionBuilder,
+    (
+      EstadisitcasArticulosTopDTO,
+      BaseReferences<_$RemoteAppDatabase, $EstadisticasArticulosTopTableTable,
+          EstadisitcasArticulosTopDTO>
+    ),
+    EstadisitcasArticulosTopDTO,
+    PrefetchHooks Function()> {
+  $$EstadisticasArticulosTopTableTableTableManager(
+      _$RemoteAppDatabase db, $EstadisticasArticulosTopTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$EstadisticasArticulosTopTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer:
+              $$EstadisticasArticulosTopTableTableOrderingComposer(
+                  ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> articuloId = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              EstadisticasArticulosTopTableCompanion(
+            articuloId: articuloId,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String articuloId,
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              EstadisticasArticulosTopTableCompanion.insert(
+            articuloId: articuloId,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$EstadisticasArticulosTopTableTableProcessedTableManager
+    = ProcessedTableManager<
+        _$RemoteAppDatabase,
+        $EstadisticasArticulosTopTableTable,
+        EstadisitcasArticulosTopDTO,
+        $$EstadisticasArticulosTopTableTableFilterComposer,
+        $$EstadisticasArticulosTopTableTableOrderingComposer,
+        $$EstadisticasArticulosTopTableTableCreateCompanionBuilder,
+        $$EstadisticasArticulosTopTableTableUpdateCompanionBuilder,
+        (
+          EstadisitcasArticulosTopDTO,
+          BaseReferences<_$RemoteAppDatabase,
+              $EstadisticasArticulosTopTableTable, EstadisitcasArticulosTopDTO>
+        ),
+        EstadisitcasArticulosTopDTO,
+        PrefetchHooks Function()>;
 typedef $$ArticuloTableTableCreateCompanionBuilder = ArticuloTableCompanion
     Function({
   required String id,
@@ -28314,312 +29775,39 @@ typedef $$ArticuloTableTableUpdateCompanionBuilder = ArticuloTableCompanion
   Value<int> rowid,
 });
 
-class $$ArticuloTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $ArticuloTableTable,
-    ArticuloDTO,
-    $$ArticuloTableTableFilterComposer,
-    $$ArticuloTableTableOrderingComposer,
-    $$ArticuloTableTableCreateCompanionBuilder,
-    $$ArticuloTableTableUpdateCompanionBuilder> {
-  $$ArticuloTableTableTableManager(
-      _$RemoteAppDatabase db, $ArticuloTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer:
-              $$ArticuloTableTableFilterComposer(ComposerState(db, table)),
-          orderingComposer:
-              $$ArticuloTableTableOrderingComposer(ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> id = const Value.absent(),
-            Value<String> descripcionES = const Value.absent(),
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPL = const Value.absent(),
-            Value<String?> descripcionPT = const Value.absent(),
-            Value<String?> descripcionRO = const Value.absent(),
-            Value<String?> descripcionRU = const Value.absent(),
-            Value<String?> descripcionCN = const Value.absent(),
-            Value<String?> descripcionEL = const Value.absent(),
-            Value<String?> familiaId = const Value.absent(),
-            Value<String?> subfamiliaId = const Value.absent(),
-            Value<int> ventaMinimo = const Value.absent(),
-            Value<int> ventaMultiplo = const Value.absent(),
-            Value<int> unidadesSubcaja = const Value.absent(),
-            Value<int> unidadesCaja = const Value.absent(),
-            Value<int> unidadesPalet = const Value.absent(),
-            Value<String> activoWeb = const Value.absent(),
-            Value<String> activoApp = const Value.absent(),
-            Value<String> enCatalogo = const Value.absent(),
-            Value<String> descatalogado = const Value.absent(),
-            Value<String?> paginaEnCatalgo = const Value.absent(),
-            Value<String?> paginaEnCatalgo2 = const Value.absent(),
-            Value<double> pesoKg = const Value.absent(),
-            Value<double> largoCm = const Value.absent(),
-            Value<double> anchoCm = const Value.absent(),
-            Value<double> altoCm = const Value.absent(),
-            Value<String?> resumenES = const Value.absent(),
-            Value<String?> resumenEN = const Value.absent(),
-            Value<String?> resumenFR = const Value.absent(),
-            Value<String?> resumenDE = const Value.absent(),
-            Value<String?> resumenCA = const Value.absent(),
-            Value<String?> resumenGB = const Value.absent(),
-            Value<String?> resumenHU = const Value.absent(),
-            Value<String?> resumenIT = const Value.absent(),
-            Value<String?> resumenNL = const Value.absent(),
-            Value<String?> resumenPL = const Value.absent(),
-            Value<String?> resumenPT = const Value.absent(),
-            Value<String?> resumenRO = const Value.absent(),
-            Value<String?> resumenRU = const Value.absent(),
-            Value<String?> resumenCN = const Value.absent(),
-            Value<String?> resumenEL = const Value.absent(),
-            Value<int> stockDisponible = const Value.absent(),
-            Value<double> ventasActual = const Value.absent(),
-            Value<double> ventasAnterior = const Value.absent(),
-            Value<int> comprasEntregaCantidad1 = const Value.absent(),
-            Value<int> comprasEntregaCantidad2 = const Value.absent(),
-            Value<int> comprasEntregaCantidad3 = const Value.absent(),
-            Value<int> comprasEntregaCantidadMas3 = const Value.absent(),
-            Value<DateTime?> comprasEntregaFecha1 = const Value.absent(),
-            Value<DateTime?> comprasEntregaFecha2 = const Value.absent(),
-            Value<DateTime?> comprasEntregaFecha3 = const Value.absent(),
-            Value<String?> comprasEntregaEstado1 = const Value.absent(),
-            Value<String?> comprasEntregaEstado2 = const Value.absent(),
-            Value<String?> comprasEntregaEstado3 = const Value.absent(),
-            Value<String?> imagenPrincipal = const Value.absent(),
-            Value<String?> gtin13Unidad = const Value.absent(),
-            Value<String?> gs1128Subcaja = const Value.absent(),
-            Value<String?> gs1128Caja = const Value.absent(),
-            Value<String?> gs1128Palet = const Value.absent(),
-            Value<int?> ventasOrden = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ArticuloTableCompanion(
-            id: id,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPL: descripcionPL,
-            descripcionPT: descripcionPT,
-            descripcionRO: descripcionRO,
-            descripcionRU: descripcionRU,
-            descripcionCN: descripcionCN,
-            descripcionEL: descripcionEL,
-            familiaId: familiaId,
-            subfamiliaId: subfamiliaId,
-            ventaMinimo: ventaMinimo,
-            ventaMultiplo: ventaMultiplo,
-            unidadesSubcaja: unidadesSubcaja,
-            unidadesCaja: unidadesCaja,
-            unidadesPalet: unidadesPalet,
-            activoWeb: activoWeb,
-            activoApp: activoApp,
-            enCatalogo: enCatalogo,
-            descatalogado: descatalogado,
-            paginaEnCatalgo: paginaEnCatalgo,
-            paginaEnCatalgo2: paginaEnCatalgo2,
-            pesoKg: pesoKg,
-            largoCm: largoCm,
-            anchoCm: anchoCm,
-            altoCm: altoCm,
-            resumenES: resumenES,
-            resumenEN: resumenEN,
-            resumenFR: resumenFR,
-            resumenDE: resumenDE,
-            resumenCA: resumenCA,
-            resumenGB: resumenGB,
-            resumenHU: resumenHU,
-            resumenIT: resumenIT,
-            resumenNL: resumenNL,
-            resumenPL: resumenPL,
-            resumenPT: resumenPT,
-            resumenRO: resumenRO,
-            resumenRU: resumenRU,
-            resumenCN: resumenCN,
-            resumenEL: resumenEL,
-            stockDisponible: stockDisponible,
-            ventasActual: ventasActual,
-            ventasAnterior: ventasAnterior,
-            comprasEntregaCantidad1: comprasEntregaCantidad1,
-            comprasEntregaCantidad2: comprasEntregaCantidad2,
-            comprasEntregaCantidad3: comprasEntregaCantidad3,
-            comprasEntregaCantidadMas3: comprasEntregaCantidadMas3,
-            comprasEntregaFecha1: comprasEntregaFecha1,
-            comprasEntregaFecha2: comprasEntregaFecha2,
-            comprasEntregaFecha3: comprasEntregaFecha3,
-            comprasEntregaEstado1: comprasEntregaEstado1,
-            comprasEntregaEstado2: comprasEntregaEstado2,
-            comprasEntregaEstado3: comprasEntregaEstado3,
-            imagenPrincipal: imagenPrincipal,
-            gtin13Unidad: gtin13Unidad,
-            gs1128Subcaja: gs1128Subcaja,
-            gs1128Caja: gs1128Caja,
-            gs1128Palet: gs1128Palet,
-            ventasOrden: ventasOrden,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String id,
-            required String descripcionES,
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPL = const Value.absent(),
-            Value<String?> descripcionPT = const Value.absent(),
-            Value<String?> descripcionRO = const Value.absent(),
-            Value<String?> descripcionRU = const Value.absent(),
-            Value<String?> descripcionCN = const Value.absent(),
-            Value<String?> descripcionEL = const Value.absent(),
-            Value<String?> familiaId = const Value.absent(),
-            Value<String?> subfamiliaId = const Value.absent(),
-            required int ventaMinimo,
-            required int ventaMultiplo,
-            required int unidadesSubcaja,
-            required int unidadesCaja,
-            required int unidadesPalet,
-            required String activoWeb,
-            required String activoApp,
-            required String enCatalogo,
-            required String descatalogado,
-            Value<String?> paginaEnCatalgo = const Value.absent(),
-            Value<String?> paginaEnCatalgo2 = const Value.absent(),
-            required double pesoKg,
-            required double largoCm,
-            required double anchoCm,
-            required double altoCm,
-            Value<String?> resumenES = const Value.absent(),
-            Value<String?> resumenEN = const Value.absent(),
-            Value<String?> resumenFR = const Value.absent(),
-            Value<String?> resumenDE = const Value.absent(),
-            Value<String?> resumenCA = const Value.absent(),
-            Value<String?> resumenGB = const Value.absent(),
-            Value<String?> resumenHU = const Value.absent(),
-            Value<String?> resumenIT = const Value.absent(),
-            Value<String?> resumenNL = const Value.absent(),
-            Value<String?> resumenPL = const Value.absent(),
-            Value<String?> resumenPT = const Value.absent(),
-            Value<String?> resumenRO = const Value.absent(),
-            Value<String?> resumenRU = const Value.absent(),
-            Value<String?> resumenCN = const Value.absent(),
-            Value<String?> resumenEL = const Value.absent(),
-            required int stockDisponible,
-            required double ventasActual,
-            required double ventasAnterior,
-            required int comprasEntregaCantidad1,
-            required int comprasEntregaCantidad2,
-            required int comprasEntregaCantidad3,
-            required int comprasEntregaCantidadMas3,
-            Value<DateTime?> comprasEntregaFecha1 = const Value.absent(),
-            Value<DateTime?> comprasEntregaFecha2 = const Value.absent(),
-            Value<DateTime?> comprasEntregaFecha3 = const Value.absent(),
-            Value<String?> comprasEntregaEstado1 = const Value.absent(),
-            Value<String?> comprasEntregaEstado2 = const Value.absent(),
-            Value<String?> comprasEntregaEstado3 = const Value.absent(),
-            Value<String?> imagenPrincipal = const Value.absent(),
-            Value<String?> gtin13Unidad = const Value.absent(),
-            Value<String?> gs1128Subcaja = const Value.absent(),
-            Value<String?> gs1128Caja = const Value.absent(),
-            Value<String?> gs1128Palet = const Value.absent(),
-            Value<int?> ventasOrden = const Value.absent(),
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ArticuloTableCompanion.insert(
-            id: id,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPL: descripcionPL,
-            descripcionPT: descripcionPT,
-            descripcionRO: descripcionRO,
-            descripcionRU: descripcionRU,
-            descripcionCN: descripcionCN,
-            descripcionEL: descripcionEL,
-            familiaId: familiaId,
-            subfamiliaId: subfamiliaId,
-            ventaMinimo: ventaMinimo,
-            ventaMultiplo: ventaMultiplo,
-            unidadesSubcaja: unidadesSubcaja,
-            unidadesCaja: unidadesCaja,
-            unidadesPalet: unidadesPalet,
-            activoWeb: activoWeb,
-            activoApp: activoApp,
-            enCatalogo: enCatalogo,
-            descatalogado: descatalogado,
-            paginaEnCatalgo: paginaEnCatalgo,
-            paginaEnCatalgo2: paginaEnCatalgo2,
-            pesoKg: pesoKg,
-            largoCm: largoCm,
-            anchoCm: anchoCm,
-            altoCm: altoCm,
-            resumenES: resumenES,
-            resumenEN: resumenEN,
-            resumenFR: resumenFR,
-            resumenDE: resumenDE,
-            resumenCA: resumenCA,
-            resumenGB: resumenGB,
-            resumenHU: resumenHU,
-            resumenIT: resumenIT,
-            resumenNL: resumenNL,
-            resumenPL: resumenPL,
-            resumenPT: resumenPT,
-            resumenRO: resumenRO,
-            resumenRU: resumenRU,
-            resumenCN: resumenCN,
-            resumenEL: resumenEL,
-            stockDisponible: stockDisponible,
-            ventasActual: ventasActual,
-            ventasAnterior: ventasAnterior,
-            comprasEntregaCantidad1: comprasEntregaCantidad1,
-            comprasEntregaCantidad2: comprasEntregaCantidad2,
-            comprasEntregaCantidad3: comprasEntregaCantidad3,
-            comprasEntregaCantidadMas3: comprasEntregaCantidadMas3,
-            comprasEntregaFecha1: comprasEntregaFecha1,
-            comprasEntregaFecha2: comprasEntregaFecha2,
-            comprasEntregaFecha3: comprasEntregaFecha3,
-            comprasEntregaEstado1: comprasEntregaEstado1,
-            comprasEntregaEstado2: comprasEntregaEstado2,
-            comprasEntregaEstado3: comprasEntregaEstado3,
-            imagenPrincipal: imagenPrincipal,
-            gtin13Unidad: gtin13Unidad,
-            gs1128Subcaja: gs1128Subcaja,
-            gs1128Caja: gs1128Caja,
-            gs1128Palet: gs1128Palet,
-            ventasOrden: ventasOrden,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
+final class $$ArticuloTableTableReferences extends BaseReferences<
+    _$RemoteAppDatabase, $ArticuloTableTable, ArticuloDTO> {
+  $$ArticuloTableTableReferences(
+      super.$_db, super.$_table, super.$_typedResult);
+
+  static $FamiliaTableTable _familiaIdTable(_$RemoteAppDatabase db) =>
+      db.familiaTable.createAlias(
+          $_aliasNameGenerator(db.articuloTable.familiaId, db.familiaTable.id));
+
+  $$FamiliaTableTableProcessedTableManager? get familiaId {
+    if ($_item.familiaId == null) return null;
+    final manager = $$FamiliaTableTableTableManager($_db, $_db.familiaTable)
+        .filter((f) => f.id($_item.familiaId!));
+    final item = $_typedResult.readTableOrNull(_familiaIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: [item]));
+  }
+
+  static $SubfamiliaTableTable _subfamiliaIdTable(_$RemoteAppDatabase db) =>
+      db.subfamiliaTable.createAlias($_aliasNameGenerator(
+          db.articuloTable.subfamiliaId, db.subfamiliaTable.id));
+
+  $$SubfamiliaTableTableProcessedTableManager? get subfamiliaId {
+    if ($_item.subfamiliaId == null) return null;
+    final manager =
+        $$SubfamiliaTableTableTableManager($_db, $_db.subfamiliaTable)
+            .filter((f) => f.id($_item.subfamiliaId!));
+    final item = $_typedResult.readTableOrNull(_subfamiliaIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: [item]));
+  }
 }
 
 class $$ArticuloTableTableFilterComposer
@@ -29354,6 +30542,379 @@ class $$ArticuloTableTableOrderingComposer
   }
 }
 
+class $$ArticuloTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ArticuloTableTable,
+    ArticuloDTO,
+    $$ArticuloTableTableFilterComposer,
+    $$ArticuloTableTableOrderingComposer,
+    $$ArticuloTableTableCreateCompanionBuilder,
+    $$ArticuloTableTableUpdateCompanionBuilder,
+    (ArticuloDTO, $$ArticuloTableTableReferences),
+    ArticuloDTO,
+    PrefetchHooks Function({bool familiaId, bool subfamiliaId})> {
+  $$ArticuloTableTableTableManager(
+      _$RemoteAppDatabase db, $ArticuloTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$ArticuloTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$ArticuloTableTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<String?> familiaId = const Value.absent(),
+            Value<String?> subfamiliaId = const Value.absent(),
+            Value<int> ventaMinimo = const Value.absent(),
+            Value<int> ventaMultiplo = const Value.absent(),
+            Value<int> unidadesSubcaja = const Value.absent(),
+            Value<int> unidadesCaja = const Value.absent(),
+            Value<int> unidadesPalet = const Value.absent(),
+            Value<String> activoWeb = const Value.absent(),
+            Value<String> activoApp = const Value.absent(),
+            Value<String> enCatalogo = const Value.absent(),
+            Value<String> descatalogado = const Value.absent(),
+            Value<String?> paginaEnCatalgo = const Value.absent(),
+            Value<String?> paginaEnCatalgo2 = const Value.absent(),
+            Value<double> pesoKg = const Value.absent(),
+            Value<double> largoCm = const Value.absent(),
+            Value<double> anchoCm = const Value.absent(),
+            Value<double> altoCm = const Value.absent(),
+            Value<String?> resumenES = const Value.absent(),
+            Value<String?> resumenEN = const Value.absent(),
+            Value<String?> resumenFR = const Value.absent(),
+            Value<String?> resumenDE = const Value.absent(),
+            Value<String?> resumenCA = const Value.absent(),
+            Value<String?> resumenGB = const Value.absent(),
+            Value<String?> resumenHU = const Value.absent(),
+            Value<String?> resumenIT = const Value.absent(),
+            Value<String?> resumenNL = const Value.absent(),
+            Value<String?> resumenPL = const Value.absent(),
+            Value<String?> resumenPT = const Value.absent(),
+            Value<String?> resumenRO = const Value.absent(),
+            Value<String?> resumenRU = const Value.absent(),
+            Value<String?> resumenCN = const Value.absent(),
+            Value<String?> resumenEL = const Value.absent(),
+            Value<int> stockDisponible = const Value.absent(),
+            Value<double> ventasActual = const Value.absent(),
+            Value<double> ventasAnterior = const Value.absent(),
+            Value<int> comprasEntregaCantidad1 = const Value.absent(),
+            Value<int> comprasEntregaCantidad2 = const Value.absent(),
+            Value<int> comprasEntregaCantidad3 = const Value.absent(),
+            Value<int> comprasEntregaCantidadMas3 = const Value.absent(),
+            Value<DateTime?> comprasEntregaFecha1 = const Value.absent(),
+            Value<DateTime?> comprasEntregaFecha2 = const Value.absent(),
+            Value<DateTime?> comprasEntregaFecha3 = const Value.absent(),
+            Value<String?> comprasEntregaEstado1 = const Value.absent(),
+            Value<String?> comprasEntregaEstado2 = const Value.absent(),
+            Value<String?> comprasEntregaEstado3 = const Value.absent(),
+            Value<String?> imagenPrincipal = const Value.absent(),
+            Value<String?> gtin13Unidad = const Value.absent(),
+            Value<String?> gs1128Subcaja = const Value.absent(),
+            Value<String?> gs1128Caja = const Value.absent(),
+            Value<String?> gs1128Palet = const Value.absent(),
+            Value<int?> ventasOrden = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ArticuloTableCompanion(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            familiaId: familiaId,
+            subfamiliaId: subfamiliaId,
+            ventaMinimo: ventaMinimo,
+            ventaMultiplo: ventaMultiplo,
+            unidadesSubcaja: unidadesSubcaja,
+            unidadesCaja: unidadesCaja,
+            unidadesPalet: unidadesPalet,
+            activoWeb: activoWeb,
+            activoApp: activoApp,
+            enCatalogo: enCatalogo,
+            descatalogado: descatalogado,
+            paginaEnCatalgo: paginaEnCatalgo,
+            paginaEnCatalgo2: paginaEnCatalgo2,
+            pesoKg: pesoKg,
+            largoCm: largoCm,
+            anchoCm: anchoCm,
+            altoCm: altoCm,
+            resumenES: resumenES,
+            resumenEN: resumenEN,
+            resumenFR: resumenFR,
+            resumenDE: resumenDE,
+            resumenCA: resumenCA,
+            resumenGB: resumenGB,
+            resumenHU: resumenHU,
+            resumenIT: resumenIT,
+            resumenNL: resumenNL,
+            resumenPL: resumenPL,
+            resumenPT: resumenPT,
+            resumenRO: resumenRO,
+            resumenRU: resumenRU,
+            resumenCN: resumenCN,
+            resumenEL: resumenEL,
+            stockDisponible: stockDisponible,
+            ventasActual: ventasActual,
+            ventasAnterior: ventasAnterior,
+            comprasEntregaCantidad1: comprasEntregaCantidad1,
+            comprasEntregaCantidad2: comprasEntregaCantidad2,
+            comprasEntregaCantidad3: comprasEntregaCantidad3,
+            comprasEntregaCantidadMas3: comprasEntregaCantidadMas3,
+            comprasEntregaFecha1: comprasEntregaFecha1,
+            comprasEntregaFecha2: comprasEntregaFecha2,
+            comprasEntregaFecha3: comprasEntregaFecha3,
+            comprasEntregaEstado1: comprasEntregaEstado1,
+            comprasEntregaEstado2: comprasEntregaEstado2,
+            comprasEntregaEstado3: comprasEntregaEstado3,
+            imagenPrincipal: imagenPrincipal,
+            gtin13Unidad: gtin13Unidad,
+            gs1128Subcaja: gs1128Subcaja,
+            gs1128Caja: gs1128Caja,
+            gs1128Palet: gs1128Palet,
+            ventasOrden: ventasOrden,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<String?> familiaId = const Value.absent(),
+            Value<String?> subfamiliaId = const Value.absent(),
+            required int ventaMinimo,
+            required int ventaMultiplo,
+            required int unidadesSubcaja,
+            required int unidadesCaja,
+            required int unidadesPalet,
+            required String activoWeb,
+            required String activoApp,
+            required String enCatalogo,
+            required String descatalogado,
+            Value<String?> paginaEnCatalgo = const Value.absent(),
+            Value<String?> paginaEnCatalgo2 = const Value.absent(),
+            required double pesoKg,
+            required double largoCm,
+            required double anchoCm,
+            required double altoCm,
+            Value<String?> resumenES = const Value.absent(),
+            Value<String?> resumenEN = const Value.absent(),
+            Value<String?> resumenFR = const Value.absent(),
+            Value<String?> resumenDE = const Value.absent(),
+            Value<String?> resumenCA = const Value.absent(),
+            Value<String?> resumenGB = const Value.absent(),
+            Value<String?> resumenHU = const Value.absent(),
+            Value<String?> resumenIT = const Value.absent(),
+            Value<String?> resumenNL = const Value.absent(),
+            Value<String?> resumenPL = const Value.absent(),
+            Value<String?> resumenPT = const Value.absent(),
+            Value<String?> resumenRO = const Value.absent(),
+            Value<String?> resumenRU = const Value.absent(),
+            Value<String?> resumenCN = const Value.absent(),
+            Value<String?> resumenEL = const Value.absent(),
+            required int stockDisponible,
+            required double ventasActual,
+            required double ventasAnterior,
+            required int comprasEntregaCantidad1,
+            required int comprasEntregaCantidad2,
+            required int comprasEntregaCantidad3,
+            required int comprasEntregaCantidadMas3,
+            Value<DateTime?> comprasEntregaFecha1 = const Value.absent(),
+            Value<DateTime?> comprasEntregaFecha2 = const Value.absent(),
+            Value<DateTime?> comprasEntregaFecha3 = const Value.absent(),
+            Value<String?> comprasEntregaEstado1 = const Value.absent(),
+            Value<String?> comprasEntregaEstado2 = const Value.absent(),
+            Value<String?> comprasEntregaEstado3 = const Value.absent(),
+            Value<String?> imagenPrincipal = const Value.absent(),
+            Value<String?> gtin13Unidad = const Value.absent(),
+            Value<String?> gs1128Subcaja = const Value.absent(),
+            Value<String?> gs1128Caja = const Value.absent(),
+            Value<String?> gs1128Palet = const Value.absent(),
+            Value<int?> ventasOrden = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ArticuloTableCompanion.insert(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            familiaId: familiaId,
+            subfamiliaId: subfamiliaId,
+            ventaMinimo: ventaMinimo,
+            ventaMultiplo: ventaMultiplo,
+            unidadesSubcaja: unidadesSubcaja,
+            unidadesCaja: unidadesCaja,
+            unidadesPalet: unidadesPalet,
+            activoWeb: activoWeb,
+            activoApp: activoApp,
+            enCatalogo: enCatalogo,
+            descatalogado: descatalogado,
+            paginaEnCatalgo: paginaEnCatalgo,
+            paginaEnCatalgo2: paginaEnCatalgo2,
+            pesoKg: pesoKg,
+            largoCm: largoCm,
+            anchoCm: anchoCm,
+            altoCm: altoCm,
+            resumenES: resumenES,
+            resumenEN: resumenEN,
+            resumenFR: resumenFR,
+            resumenDE: resumenDE,
+            resumenCA: resumenCA,
+            resumenGB: resumenGB,
+            resumenHU: resumenHU,
+            resumenIT: resumenIT,
+            resumenNL: resumenNL,
+            resumenPL: resumenPL,
+            resumenPT: resumenPT,
+            resumenRO: resumenRO,
+            resumenRU: resumenRU,
+            resumenCN: resumenCN,
+            resumenEL: resumenEL,
+            stockDisponible: stockDisponible,
+            ventasActual: ventasActual,
+            ventasAnterior: ventasAnterior,
+            comprasEntregaCantidad1: comprasEntregaCantidad1,
+            comprasEntregaCantidad2: comprasEntregaCantidad2,
+            comprasEntregaCantidad3: comprasEntregaCantidad3,
+            comprasEntregaCantidadMas3: comprasEntregaCantidadMas3,
+            comprasEntregaFecha1: comprasEntregaFecha1,
+            comprasEntregaFecha2: comprasEntregaFecha2,
+            comprasEntregaFecha3: comprasEntregaFecha3,
+            comprasEntregaEstado1: comprasEntregaEstado1,
+            comprasEntregaEstado2: comprasEntregaEstado2,
+            comprasEntregaEstado3: comprasEntregaEstado3,
+            imagenPrincipal: imagenPrincipal,
+            gtin13Unidad: gtin13Unidad,
+            gs1128Subcaja: gs1128Subcaja,
+            gs1128Caja: gs1128Caja,
+            gs1128Palet: gs1128Palet,
+            ventasOrden: ventasOrden,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (
+                    e.readTable(table),
+                    $$ArticuloTableTableReferences(db, table, e)
+                  ))
+              .toList(),
+          prefetchHooksCallback: ({familiaId = false, subfamiliaId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins: <
+                  T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic>>(state) {
+                if (familiaId) {
+                  state = state.withJoin(
+                    currentTable: table,
+                    currentColumn: table.familiaId,
+                    referencedTable:
+                        $$ArticuloTableTableReferences._familiaIdTable(db),
+                    referencedColumn:
+                        $$ArticuloTableTableReferences._familiaIdTable(db).id,
+                  ) as T;
+                }
+                if (subfamiliaId) {
+                  state = state.withJoin(
+                    currentTable: table,
+                    currentColumn: table.subfamiliaId,
+                    referencedTable:
+                        $$ArticuloTableTableReferences._subfamiliaIdTable(db),
+                    referencedColumn: $$ArticuloTableTableReferences
+                        ._subfamiliaIdTable(db)
+                        .id,
+                  ) as T;
+                }
+
+                return state;
+              },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ));
+}
+
+typedef $$ArticuloTableTableProcessedTableManager = ProcessedTableManager<
+    _$RemoteAppDatabase,
+    $ArticuloTableTable,
+    ArticuloDTO,
+    $$ArticuloTableTableFilterComposer,
+    $$ArticuloTableTableOrderingComposer,
+    $$ArticuloTableTableCreateCompanionBuilder,
+    $$ArticuloTableTableUpdateCompanionBuilder,
+    (ArticuloDTO, $$ArticuloTableTableReferences),
+    ArticuloDTO,
+    PrefetchHooks Function({bool familiaId, bool subfamiliaId})>;
 typedef $$ArticuloComponenteTableTableCreateCompanionBuilder
     = ArticuloComponenteTableCompanion Function({
   required String articuloId,
@@ -29402,118 +30963,6 @@ typedef $$ArticuloComponenteTableTableUpdateCompanionBuilder
   Value<String> deleted,
   Value<int> rowid,
 });
-
-class $$ArticuloComponenteTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $ArticuloComponenteTableTable,
-    ArticuloComponenteDTO,
-    $$ArticuloComponenteTableTableFilterComposer,
-    $$ArticuloComponenteTableTableOrderingComposer,
-    $$ArticuloComponenteTableTableCreateCompanionBuilder,
-    $$ArticuloComponenteTableTableUpdateCompanionBuilder> {
-  $$ArticuloComponenteTableTableTableManager(
-      _$RemoteAppDatabase db, $ArticuloComponenteTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer: $$ArticuloComponenteTableTableFilterComposer(
-              ComposerState(db, table)),
-          orderingComposer: $$ArticuloComponenteTableTableOrderingComposer(
-              ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> articuloId = const Value.absent(),
-            Value<String> articuloComponenteId = const Value.absent(),
-            Value<int> cantidad = const Value.absent(),
-            Value<String> descripcionES = const Value.absent(),
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPL = const Value.absent(),
-            Value<String?> descripcionPT = const Value.absent(),
-            Value<String?> descripcionRO = const Value.absent(),
-            Value<String?> descripcionRU = const Value.absent(),
-            Value<String?> descripcionCN = const Value.absent(),
-            Value<String?> descripcionEL = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ArticuloComponenteTableCompanion(
-            articuloId: articuloId,
-            articuloComponenteId: articuloComponenteId,
-            cantidad: cantidad,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPL: descripcionPL,
-            descripcionPT: descripcionPT,
-            descripcionRO: descripcionRO,
-            descripcionRU: descripcionRU,
-            descripcionCN: descripcionCN,
-            descripcionEL: descripcionEL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String articuloId,
-            required String articuloComponenteId,
-            required int cantidad,
-            required String descripcionES,
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPL = const Value.absent(),
-            Value<String?> descripcionPT = const Value.absent(),
-            Value<String?> descripcionRO = const Value.absent(),
-            Value<String?> descripcionRU = const Value.absent(),
-            Value<String?> descripcionCN = const Value.absent(),
-            Value<String?> descripcionEL = const Value.absent(),
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ArticuloComponenteTableCompanion.insert(
-            articuloId: articuloId,
-            articuloComponenteId: articuloComponenteId,
-            cantidad: cantidad,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPL: descripcionPL,
-            descripcionPT: descripcionPT,
-            descripcionRO: descripcionRO,
-            descripcionRU: descripcionRU,
-            descripcionCN: descripcionCN,
-            descripcionEL: descripcionEL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
-}
 
 class $$ArticuloComponenteTableTableFilterComposer
     extends FilterComposer<_$RemoteAppDatabase, $ArticuloComponenteTableTable> {
@@ -29723,6 +31172,145 @@ class $$ArticuloComponenteTableTableOrderingComposer extends OrderingComposer<
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$ArticuloComponenteTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ArticuloComponenteTableTable,
+    ArticuloComponenteDTO,
+    $$ArticuloComponenteTableTableFilterComposer,
+    $$ArticuloComponenteTableTableOrderingComposer,
+    $$ArticuloComponenteTableTableCreateCompanionBuilder,
+    $$ArticuloComponenteTableTableUpdateCompanionBuilder,
+    (
+      ArticuloComponenteDTO,
+      BaseReferences<_$RemoteAppDatabase, $ArticuloComponenteTableTable,
+          ArticuloComponenteDTO>
+    ),
+    ArticuloComponenteDTO,
+    PrefetchHooks Function()> {
+  $$ArticuloComponenteTableTableTableManager(
+      _$RemoteAppDatabase db, $ArticuloComponenteTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ArticuloComponenteTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ArticuloComponenteTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> articuloId = const Value.absent(),
+            Value<String> articuloComponenteId = const Value.absent(),
+            Value<int> cantidad = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ArticuloComponenteTableCompanion(
+            articuloId: articuloId,
+            articuloComponenteId: articuloComponenteId,
+            cantidad: cantidad,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String articuloId,
+            required String articuloComponenteId,
+            required int cantidad,
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ArticuloComponenteTableCompanion.insert(
+            articuloId: articuloId,
+            articuloComponenteId: articuloComponenteId,
+            cantidad: cantidad,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$ArticuloComponenteTableTableProcessedTableManager
+    = ProcessedTableManager<
+        _$RemoteAppDatabase,
+        $ArticuloComponenteTableTable,
+        ArticuloComponenteDTO,
+        $$ArticuloComponenteTableTableFilterComposer,
+        $$ArticuloComponenteTableTableOrderingComposer,
+        $$ArticuloComponenteTableTableCreateCompanionBuilder,
+        $$ArticuloComponenteTableTableUpdateCompanionBuilder,
+        (
+          ArticuloComponenteDTO,
+          BaseReferences<_$RemoteAppDatabase, $ArticuloComponenteTableTable,
+              ArticuloComponenteDTO>
+        ),
+        ArticuloComponenteDTO,
+        PrefetchHooks Function()>;
 typedef $$ArticuloEmpresaIvaTableTableCreateCompanionBuilder
     = ArticuloEmpresaIvaTableCompanion Function({
   required String articuloId,
@@ -29741,58 +31329,6 @@ typedef $$ArticuloEmpresaIvaTableTableUpdateCompanionBuilder
   Value<String> deleted,
   Value<int> rowid,
 });
-
-class $$ArticuloEmpresaIvaTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $ArticuloEmpresaIvaTableTable,
-    ArticuloEmpresaIvaDTO,
-    $$ArticuloEmpresaIvaTableTableFilterComposer,
-    $$ArticuloEmpresaIvaTableTableOrderingComposer,
-    $$ArticuloEmpresaIvaTableTableCreateCompanionBuilder,
-    $$ArticuloEmpresaIvaTableTableUpdateCompanionBuilder> {
-  $$ArticuloEmpresaIvaTableTableTableManager(
-      _$RemoteAppDatabase db, $ArticuloEmpresaIvaTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer: $$ArticuloEmpresaIvaTableTableFilterComposer(
-              ComposerState(db, table)),
-          orderingComposer: $$ArticuloEmpresaIvaTableTableOrderingComposer(
-              ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> articuloId = const Value.absent(),
-            Value<String> empresaId = const Value.absent(),
-            Value<double> iva = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ArticuloEmpresaIvaTableCompanion(
-            articuloId: articuloId,
-            empresaId: empresaId,
-            iva: iva,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String articuloId,
-            required String empresaId,
-            required double iva,
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ArticuloEmpresaIvaTableCompanion.insert(
-            articuloId: articuloId,
-            empresaId: empresaId,
-            iva: iva,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
-}
 
 class $$ArticuloEmpresaIvaTableTableFilterComposer
     extends FilterComposer<_$RemoteAppDatabase, $ArticuloEmpresaIvaTableTable> {
@@ -29852,6 +31388,85 @@ class $$ArticuloEmpresaIvaTableTableOrderingComposer extends OrderingComposer<
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$ArticuloEmpresaIvaTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ArticuloEmpresaIvaTableTable,
+    ArticuloEmpresaIvaDTO,
+    $$ArticuloEmpresaIvaTableTableFilterComposer,
+    $$ArticuloEmpresaIvaTableTableOrderingComposer,
+    $$ArticuloEmpresaIvaTableTableCreateCompanionBuilder,
+    $$ArticuloEmpresaIvaTableTableUpdateCompanionBuilder,
+    (
+      ArticuloEmpresaIvaDTO,
+      BaseReferences<_$RemoteAppDatabase, $ArticuloEmpresaIvaTableTable,
+          ArticuloEmpresaIvaDTO>
+    ),
+    ArticuloEmpresaIvaDTO,
+    PrefetchHooks Function()> {
+  $$ArticuloEmpresaIvaTableTableTableManager(
+      _$RemoteAppDatabase db, $ArticuloEmpresaIvaTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ArticuloEmpresaIvaTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ArticuloEmpresaIvaTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> articuloId = const Value.absent(),
+            Value<String> empresaId = const Value.absent(),
+            Value<double> iva = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ArticuloEmpresaIvaTableCompanion(
+            articuloId: articuloId,
+            empresaId: empresaId,
+            iva: iva,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String articuloId,
+            required String empresaId,
+            required double iva,
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ArticuloEmpresaIvaTableCompanion.insert(
+            articuloId: articuloId,
+            empresaId: empresaId,
+            iva: iva,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$ArticuloEmpresaIvaTableTableProcessedTableManager
+    = ProcessedTableManager<
+        _$RemoteAppDatabase,
+        $ArticuloEmpresaIvaTableTable,
+        ArticuloEmpresaIvaDTO,
+        $$ArticuloEmpresaIvaTableTableFilterComposer,
+        $$ArticuloEmpresaIvaTableTableOrderingComposer,
+        $$ArticuloEmpresaIvaTableTableCreateCompanionBuilder,
+        $$ArticuloEmpresaIvaTableTableUpdateCompanionBuilder,
+        (
+          ArticuloEmpresaIvaDTO,
+          BaseReferences<_$RemoteAppDatabase, $ArticuloEmpresaIvaTableTable,
+              ArticuloEmpresaIvaDTO>
+        ),
+        ArticuloEmpresaIvaDTO,
+        PrefetchHooks Function()>;
 typedef $$ArticuloRecambioTableTableCreateCompanionBuilder
     = ArticuloRecambioTableCompanion Function({
   required String articuloId,
@@ -29872,62 +31487,6 @@ typedef $$ArticuloRecambioTableTableUpdateCompanionBuilder
   Value<String> deleted,
   Value<int> rowid,
 });
-
-class $$ArticuloRecambioTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $ArticuloRecambioTableTable,
-    ArticuloRecambioDTO,
-    $$ArticuloRecambioTableTableFilterComposer,
-    $$ArticuloRecambioTableTableOrderingComposer,
-    $$ArticuloRecambioTableTableCreateCompanionBuilder,
-    $$ArticuloRecambioTableTableUpdateCompanionBuilder> {
-  $$ArticuloRecambioTableTableTableManager(
-      _$RemoteAppDatabase db, $ArticuloRecambioTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer: $$ArticuloRecambioTableTableFilterComposer(
-              ComposerState(db, table)),
-          orderingComposer: $$ArticuloRecambioTableTableOrderingComposer(
-              ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> articuloId = const Value.absent(),
-            Value<String> id = const Value.absent(),
-            Value<String> descripcion = const Value.absent(),
-            Value<int> cantidad = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ArticuloRecambioTableCompanion(
-            articuloId: articuloId,
-            id: id,
-            descripcion: descripcion,
-            cantidad: cantidad,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String articuloId,
-            required String id,
-            required String descripcion,
-            required int cantidad,
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ArticuloRecambioTableCompanion.insert(
-            articuloId: articuloId,
-            id: id,
-            descripcion: descripcion,
-            cantidad: cantidad,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
-}
 
 class $$ArticuloRecambioTableTableFilterComposer
     extends FilterComposer<_$RemoteAppDatabase, $ArticuloRecambioTableTable> {
@@ -29997,6 +31556,89 @@ class $$ArticuloRecambioTableTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$ArticuloRecambioTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ArticuloRecambioTableTable,
+    ArticuloRecambioDTO,
+    $$ArticuloRecambioTableTableFilterComposer,
+    $$ArticuloRecambioTableTableOrderingComposer,
+    $$ArticuloRecambioTableTableCreateCompanionBuilder,
+    $$ArticuloRecambioTableTableUpdateCompanionBuilder,
+    (
+      ArticuloRecambioDTO,
+      BaseReferences<_$RemoteAppDatabase, $ArticuloRecambioTableTable,
+          ArticuloRecambioDTO>
+    ),
+    ArticuloRecambioDTO,
+    PrefetchHooks Function()> {
+  $$ArticuloRecambioTableTableTableManager(
+      _$RemoteAppDatabase db, $ArticuloRecambioTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ArticuloRecambioTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ArticuloRecambioTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> articuloId = const Value.absent(),
+            Value<String> id = const Value.absent(),
+            Value<String> descripcion = const Value.absent(),
+            Value<int> cantidad = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ArticuloRecambioTableCompanion(
+            articuloId: articuloId,
+            id: id,
+            descripcion: descripcion,
+            cantidad: cantidad,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String articuloId,
+            required String id,
+            required String descripcion,
+            required int cantidad,
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ArticuloRecambioTableCompanion.insert(
+            articuloId: articuloId,
+            id: id,
+            descripcion: descripcion,
+            cantidad: cantidad,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$ArticuloRecambioTableTableProcessedTableManager
+    = ProcessedTableManager<
+        _$RemoteAppDatabase,
+        $ArticuloRecambioTableTable,
+        ArticuloRecambioDTO,
+        $$ArticuloRecambioTableTableFilterComposer,
+        $$ArticuloRecambioTableTableOrderingComposer,
+        $$ArticuloRecambioTableTableCreateCompanionBuilder,
+        $$ArticuloRecambioTableTableUpdateCompanionBuilder,
+        (
+          ArticuloRecambioDTO,
+          BaseReferences<_$RemoteAppDatabase, $ArticuloRecambioTableTable,
+              ArticuloRecambioDTO>
+        ),
+        ArticuloRecambioDTO,
+        PrefetchHooks Function()>;
 typedef $$ArticuloSustitutivoTableTableCreateCompanionBuilder
     = ArticuloSustitutivoTableCompanion Function({
   required String articuloId,
@@ -30015,58 +31657,6 @@ typedef $$ArticuloSustitutivoTableTableUpdateCompanionBuilder
   Value<String> deleted,
   Value<int> rowid,
 });
-
-class $$ArticuloSustitutivoTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $ArticuloSustitutivoTableTable,
-    ArticuloSustitutivoDTO,
-    $$ArticuloSustitutivoTableTableFilterComposer,
-    $$ArticuloSustitutivoTableTableOrderingComposer,
-    $$ArticuloSustitutivoTableTableCreateCompanionBuilder,
-    $$ArticuloSustitutivoTableTableUpdateCompanionBuilder> {
-  $$ArticuloSustitutivoTableTableTableManager(
-      _$RemoteAppDatabase db, $ArticuloSustitutivoTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer: $$ArticuloSustitutivoTableTableFilterComposer(
-              ComposerState(db, table)),
-          orderingComposer: $$ArticuloSustitutivoTableTableOrderingComposer(
-              ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> articuloId = const Value.absent(),
-            Value<String> articuloSustitutivoId = const Value.absent(),
-            Value<int> orden = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ArticuloSustitutivoTableCompanion(
-            articuloId: articuloId,
-            articuloSustitutivoId: articuloSustitutivoId,
-            orden: orden,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String articuloId,
-            required String articuloSustitutivoId,
-            required int orden,
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ArticuloSustitutivoTableCompanion.insert(
-            articuloId: articuloId,
-            articuloSustitutivoId: articuloSustitutivoId,
-            orden: orden,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
-}
 
 class $$ArticuloSustitutivoTableTableFilterComposer extends FilterComposer<
     _$RemoteAppDatabase, $ArticuloSustitutivoTableTable> {
@@ -30126,6 +31716,85 @@ class $$ArticuloSustitutivoTableTableOrderingComposer extends OrderingComposer<
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$ArticuloSustitutivoTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ArticuloSustitutivoTableTable,
+    ArticuloSustitutivoDTO,
+    $$ArticuloSustitutivoTableTableFilterComposer,
+    $$ArticuloSustitutivoTableTableOrderingComposer,
+    $$ArticuloSustitutivoTableTableCreateCompanionBuilder,
+    $$ArticuloSustitutivoTableTableUpdateCompanionBuilder,
+    (
+      ArticuloSustitutivoDTO,
+      BaseReferences<_$RemoteAppDatabase, $ArticuloSustitutivoTableTable,
+          ArticuloSustitutivoDTO>
+    ),
+    ArticuloSustitutivoDTO,
+    PrefetchHooks Function()> {
+  $$ArticuloSustitutivoTableTableTableManager(
+      _$RemoteAppDatabase db, $ArticuloSustitutivoTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ArticuloSustitutivoTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ArticuloSustitutivoTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> articuloId = const Value.absent(),
+            Value<String> articuloSustitutivoId = const Value.absent(),
+            Value<int> orden = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ArticuloSustitutivoTableCompanion(
+            articuloId: articuloId,
+            articuloSustitutivoId: articuloSustitutivoId,
+            orden: orden,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String articuloId,
+            required String articuloSustitutivoId,
+            required int orden,
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ArticuloSustitutivoTableCompanion.insert(
+            articuloId: articuloId,
+            articuloSustitutivoId: articuloSustitutivoId,
+            orden: orden,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$ArticuloSustitutivoTableTableProcessedTableManager
+    = ProcessedTableManager<
+        _$RemoteAppDatabase,
+        $ArticuloSustitutivoTableTable,
+        ArticuloSustitutivoDTO,
+        $$ArticuloSustitutivoTableTableFilterComposer,
+        $$ArticuloSustitutivoTableTableOrderingComposer,
+        $$ArticuloSustitutivoTableTableCreateCompanionBuilder,
+        $$ArticuloSustitutivoTableTableUpdateCompanionBuilder,
+        (
+          ArticuloSustitutivoDTO,
+          BaseReferences<_$RemoteAppDatabase, $ArticuloSustitutivoTableTable,
+              ArticuloSustitutivoDTO>
+        ),
+        ArticuloSustitutivoDTO,
+        PrefetchHooks Function()>;
 typedef $$ArticuloPrecioTarifaTableTableCreateCompanionBuilder
     = ArticuloPrecioTarifaTableCompanion Function({
   required String articuloId,
@@ -30152,74 +31821,6 @@ typedef $$ArticuloPrecioTarifaTableTableUpdateCompanionBuilder
   Value<String> deleted,
   Value<int> rowid,
 });
-
-class $$ArticuloPrecioTarifaTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $ArticuloPrecioTarifaTableTable,
-    ArticuloPrecioTarifaDTO,
-    $$ArticuloPrecioTarifaTableTableFilterComposer,
-    $$ArticuloPrecioTarifaTableTableOrderingComposer,
-    $$ArticuloPrecioTarifaTableTableCreateCompanionBuilder,
-    $$ArticuloPrecioTarifaTableTableUpdateCompanionBuilder> {
-  $$ArticuloPrecioTarifaTableTableTableManager(
-      _$RemoteAppDatabase db, $ArticuloPrecioTarifaTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer: $$ArticuloPrecioTarifaTableTableFilterComposer(
-              ComposerState(db, table)),
-          orderingComposer: $$ArticuloPrecioTarifaTableTableOrderingComposer(
-              ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> articuloId = const Value.absent(),
-            Value<String> tarifaId = const Value.absent(),
-            Value<String?> tarifaDescripcion = const Value.absent(),
-            Value<int> cantidadDesde = const Value.absent(),
-            Value<double> precio = const Value.absent(),
-            Value<String> divisaId = const Value.absent(),
-            Value<int> tipoPrecio = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ArticuloPrecioTarifaTableCompanion(
-            articuloId: articuloId,
-            tarifaId: tarifaId,
-            tarifaDescripcion: tarifaDescripcion,
-            cantidadDesde: cantidadDesde,
-            precio: precio,
-            divisaId: divisaId,
-            tipoPrecio: tipoPrecio,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String articuloId,
-            required String tarifaId,
-            Value<String?> tarifaDescripcion = const Value.absent(),
-            required int cantidadDesde,
-            required double precio,
-            required String divisaId,
-            required int tipoPrecio,
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ArticuloPrecioTarifaTableCompanion.insert(
-            articuloId: articuloId,
-            tarifaId: tarifaId,
-            tarifaDescripcion: tarifaDescripcion,
-            cantidadDesde: cantidadDesde,
-            precio: precio,
-            divisaId: divisaId,
-            tipoPrecio: tipoPrecio,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
-}
 
 class $$ArticuloPrecioTarifaTableTableFilterComposer extends FilterComposer<
     _$RemoteAppDatabase, $ArticuloPrecioTarifaTableTable> {
@@ -30319,6 +31920,101 @@ class $$ArticuloPrecioTarifaTableTableOrderingComposer extends OrderingComposer<
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$ArticuloPrecioTarifaTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ArticuloPrecioTarifaTableTable,
+    ArticuloPrecioTarifaDTO,
+    $$ArticuloPrecioTarifaTableTableFilterComposer,
+    $$ArticuloPrecioTarifaTableTableOrderingComposer,
+    $$ArticuloPrecioTarifaTableTableCreateCompanionBuilder,
+    $$ArticuloPrecioTarifaTableTableUpdateCompanionBuilder,
+    (
+      ArticuloPrecioTarifaDTO,
+      BaseReferences<_$RemoteAppDatabase, $ArticuloPrecioTarifaTableTable,
+          ArticuloPrecioTarifaDTO>
+    ),
+    ArticuloPrecioTarifaDTO,
+    PrefetchHooks Function()> {
+  $$ArticuloPrecioTarifaTableTableTableManager(
+      _$RemoteAppDatabase db, $ArticuloPrecioTarifaTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ArticuloPrecioTarifaTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ArticuloPrecioTarifaTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> articuloId = const Value.absent(),
+            Value<String> tarifaId = const Value.absent(),
+            Value<String?> tarifaDescripcion = const Value.absent(),
+            Value<int> cantidadDesde = const Value.absent(),
+            Value<double> precio = const Value.absent(),
+            Value<String> divisaId = const Value.absent(),
+            Value<int> tipoPrecio = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ArticuloPrecioTarifaTableCompanion(
+            articuloId: articuloId,
+            tarifaId: tarifaId,
+            tarifaDescripcion: tarifaDescripcion,
+            cantidadDesde: cantidadDesde,
+            precio: precio,
+            divisaId: divisaId,
+            tipoPrecio: tipoPrecio,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String articuloId,
+            required String tarifaId,
+            Value<String?> tarifaDescripcion = const Value.absent(),
+            required int cantidadDesde,
+            required double precio,
+            required String divisaId,
+            required int tipoPrecio,
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ArticuloPrecioTarifaTableCompanion.insert(
+            articuloId: articuloId,
+            tarifaId: tarifaId,
+            tarifaDescripcion: tarifaDescripcion,
+            cantidadDesde: cantidadDesde,
+            precio: precio,
+            divisaId: divisaId,
+            tipoPrecio: tipoPrecio,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$ArticuloPrecioTarifaTableTableProcessedTableManager
+    = ProcessedTableManager<
+        _$RemoteAppDatabase,
+        $ArticuloPrecioTarifaTableTable,
+        ArticuloPrecioTarifaDTO,
+        $$ArticuloPrecioTarifaTableTableFilterComposer,
+        $$ArticuloPrecioTarifaTableTableOrderingComposer,
+        $$ArticuloPrecioTarifaTableTableCreateCompanionBuilder,
+        $$ArticuloPrecioTarifaTableTableUpdateCompanionBuilder,
+        (
+          ArticuloPrecioTarifaDTO,
+          BaseReferences<_$RemoteAppDatabase, $ArticuloPrecioTarifaTableTable,
+              ArticuloPrecioTarifaDTO>
+        ),
+        ArticuloPrecioTarifaDTO,
+        PrefetchHooks Function()>;
 typedef $$ArticuloGrupoNetoTableTableCreateCompanionBuilder
     = ArticuloGrupoNetoTableCompanion Function({
   required String articuloId,
@@ -30345,74 +32041,6 @@ typedef $$ArticuloGrupoNetoTableTableUpdateCompanionBuilder
   Value<String> deleted,
   Value<int> rowid,
 });
-
-class $$ArticuloGrupoNetoTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $ArticuloGrupoNetoTableTable,
-    ArticuloGrupoNetoDTO,
-    $$ArticuloGrupoNetoTableTableFilterComposer,
-    $$ArticuloGrupoNetoTableTableOrderingComposer,
-    $$ArticuloGrupoNetoTableTableCreateCompanionBuilder,
-    $$ArticuloGrupoNetoTableTableUpdateCompanionBuilder> {
-  $$ArticuloGrupoNetoTableTableTableManager(
-      _$RemoteAppDatabase db, $ArticuloGrupoNetoTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer: $$ArticuloGrupoNetoTableTableFilterComposer(
-              ComposerState(db, table)),
-          orderingComposer: $$ArticuloGrupoNetoTableTableOrderingComposer(
-              ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> articuloId = const Value.absent(),
-            Value<String> grupoNetoId = const Value.absent(),
-            Value<String> grupoNetoDescripcion = const Value.absent(),
-            Value<int> cantidadDesde = const Value.absent(),
-            Value<double> precio = const Value.absent(),
-            Value<String> divisaId = const Value.absent(),
-            Value<int> tipoPrecio = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ArticuloGrupoNetoTableCompanion(
-            articuloId: articuloId,
-            grupoNetoId: grupoNetoId,
-            grupoNetoDescripcion: grupoNetoDescripcion,
-            cantidadDesde: cantidadDesde,
-            precio: precio,
-            divisaId: divisaId,
-            tipoPrecio: tipoPrecio,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String articuloId,
-            required String grupoNetoId,
-            required String grupoNetoDescripcion,
-            required int cantidadDesde,
-            required double precio,
-            required String divisaId,
-            required int tipoPrecio,
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ArticuloGrupoNetoTableCompanion.insert(
-            articuloId: articuloId,
-            grupoNetoId: grupoNetoId,
-            grupoNetoDescripcion: grupoNetoDescripcion,
-            cantidadDesde: cantidadDesde,
-            precio: precio,
-            divisaId: divisaId,
-            tipoPrecio: tipoPrecio,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
-}
 
 class $$ArticuloGrupoNetoTableTableFilterComposer
     extends FilterComposer<_$RemoteAppDatabase, $ArticuloGrupoNetoTableTable> {
@@ -30512,6 +32140,101 @@ class $$ArticuloGrupoNetoTableTableOrderingComposer extends OrderingComposer<
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$ArticuloGrupoNetoTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ArticuloGrupoNetoTableTable,
+    ArticuloGrupoNetoDTO,
+    $$ArticuloGrupoNetoTableTableFilterComposer,
+    $$ArticuloGrupoNetoTableTableOrderingComposer,
+    $$ArticuloGrupoNetoTableTableCreateCompanionBuilder,
+    $$ArticuloGrupoNetoTableTableUpdateCompanionBuilder,
+    (
+      ArticuloGrupoNetoDTO,
+      BaseReferences<_$RemoteAppDatabase, $ArticuloGrupoNetoTableTable,
+          ArticuloGrupoNetoDTO>
+    ),
+    ArticuloGrupoNetoDTO,
+    PrefetchHooks Function()> {
+  $$ArticuloGrupoNetoTableTableTableManager(
+      _$RemoteAppDatabase db, $ArticuloGrupoNetoTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ArticuloGrupoNetoTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ArticuloGrupoNetoTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> articuloId = const Value.absent(),
+            Value<String> grupoNetoId = const Value.absent(),
+            Value<String> grupoNetoDescripcion = const Value.absent(),
+            Value<int> cantidadDesde = const Value.absent(),
+            Value<double> precio = const Value.absent(),
+            Value<String> divisaId = const Value.absent(),
+            Value<int> tipoPrecio = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ArticuloGrupoNetoTableCompanion(
+            articuloId: articuloId,
+            grupoNetoId: grupoNetoId,
+            grupoNetoDescripcion: grupoNetoDescripcion,
+            cantidadDesde: cantidadDesde,
+            precio: precio,
+            divisaId: divisaId,
+            tipoPrecio: tipoPrecio,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String articuloId,
+            required String grupoNetoId,
+            required String grupoNetoDescripcion,
+            required int cantidadDesde,
+            required double precio,
+            required String divisaId,
+            required int tipoPrecio,
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ArticuloGrupoNetoTableCompanion.insert(
+            articuloId: articuloId,
+            grupoNetoId: grupoNetoId,
+            grupoNetoDescripcion: grupoNetoDescripcion,
+            cantidadDesde: cantidadDesde,
+            precio: precio,
+            divisaId: divisaId,
+            tipoPrecio: tipoPrecio,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$ArticuloGrupoNetoTableTableProcessedTableManager
+    = ProcessedTableManager<
+        _$RemoteAppDatabase,
+        $ArticuloGrupoNetoTableTable,
+        ArticuloGrupoNetoDTO,
+        $$ArticuloGrupoNetoTableTableFilterComposer,
+        $$ArticuloGrupoNetoTableTableOrderingComposer,
+        $$ArticuloGrupoNetoTableTableCreateCompanionBuilder,
+        $$ArticuloGrupoNetoTableTableUpdateCompanionBuilder,
+        (
+          ArticuloGrupoNetoDTO,
+          BaseReferences<_$RemoteAppDatabase, $ArticuloGrupoNetoTableTable,
+              ArticuloGrupoNetoDTO>
+        ),
+        ArticuloGrupoNetoDTO,
+        PrefetchHooks Function()>;
 typedef $$EstadisticasClienteUsuarioVentasTableTableCreateCompanionBuilder
     = EstadisticasClienteUsuarioVentasTableCompanion Function({
   required double anyo,
@@ -30538,77 +32261,6 @@ typedef $$EstadisticasClienteUsuarioVentasTableTableUpdateCompanionBuilder
   Value<String> deleted,
   Value<int> rowid,
 });
-
-class $$EstadisticasClienteUsuarioVentasTableTableTableManager
-    extends RootTableManager<
-        _$RemoteAppDatabase,
-        $EstadisticasClienteUsuarioVentasTableTable,
-        EstadisticasVentaClienteUsuarioDTO,
-        $$EstadisticasClienteUsuarioVentasTableTableFilterComposer,
-        $$EstadisticasClienteUsuarioVentasTableTableOrderingComposer,
-        $$EstadisticasClienteUsuarioVentasTableTableCreateCompanionBuilder,
-        $$EstadisticasClienteUsuarioVentasTableTableUpdateCompanionBuilder> {
-  $$EstadisticasClienteUsuarioVentasTableTableTableManager(
-      _$RemoteAppDatabase db, $EstadisticasClienteUsuarioVentasTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer:
-              $$EstadisticasClienteUsuarioVentasTableTableFilterComposer(
-                  ComposerState(db, table)),
-          orderingComposer:
-              $$EstadisticasClienteUsuarioVentasTableTableOrderingComposer(
-                  ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<double> anyo = const Value.absent(),
-            Value<double> mes = const Value.absent(),
-            Value<String> clienteId = const Value.absent(),
-            Value<String> articuloId = const Value.absent(),
-            Value<double?> unidades = const Value.absent(),
-            Value<double?> importe = const Value.absent(),
-            Value<double?> coste = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              EstadisticasClienteUsuarioVentasTableCompanion(
-            anyo: anyo,
-            mes: mes,
-            clienteId: clienteId,
-            articuloId: articuloId,
-            unidades: unidades,
-            importe: importe,
-            coste: coste,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required double anyo,
-            required double mes,
-            required String clienteId,
-            required String articuloId,
-            Value<double?> unidades = const Value.absent(),
-            Value<double?> importe = const Value.absent(),
-            Value<double?> coste = const Value.absent(),
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              EstadisticasClienteUsuarioVentasTableCompanion.insert(
-            anyo: anyo,
-            mes: mes,
-            clienteId: clienteId,
-            articuloId: articuloId,
-            unidades: unidades,
-            importe: importe,
-            coste: coste,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
-}
 
 class $$EstadisticasClienteUsuarioVentasTableTableFilterComposer
     extends FilterComposer<_$RemoteAppDatabase,
@@ -30710,6 +32362,108 @@ class $$EstadisticasClienteUsuarioVentasTableTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$EstadisticasClienteUsuarioVentasTableTableTableManager
+    extends RootTableManager<
+        _$RemoteAppDatabase,
+        $EstadisticasClienteUsuarioVentasTableTable,
+        EstadisticasVentaClienteUsuarioDTO,
+        $$EstadisticasClienteUsuarioVentasTableTableFilterComposer,
+        $$EstadisticasClienteUsuarioVentasTableTableOrderingComposer,
+        $$EstadisticasClienteUsuarioVentasTableTableCreateCompanionBuilder,
+        $$EstadisticasClienteUsuarioVentasTableTableUpdateCompanionBuilder,
+        (
+          EstadisticasVentaClienteUsuarioDTO,
+          BaseReferences<
+              _$RemoteAppDatabase,
+              $EstadisticasClienteUsuarioVentasTableTable,
+              EstadisticasVentaClienteUsuarioDTO>
+        ),
+        EstadisticasVentaClienteUsuarioDTO,
+        PrefetchHooks Function()> {
+  $$EstadisticasClienteUsuarioVentasTableTableTableManager(
+      _$RemoteAppDatabase db, $EstadisticasClienteUsuarioVentasTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$EstadisticasClienteUsuarioVentasTableTableFilterComposer(
+                  ComposerState(db, table)),
+          orderingComposer:
+              $$EstadisticasClienteUsuarioVentasTableTableOrderingComposer(
+                  ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<double> anyo = const Value.absent(),
+            Value<double> mes = const Value.absent(),
+            Value<String> clienteId = const Value.absent(),
+            Value<String> articuloId = const Value.absent(),
+            Value<double?> unidades = const Value.absent(),
+            Value<double?> importe = const Value.absent(),
+            Value<double?> coste = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              EstadisticasClienteUsuarioVentasTableCompanion(
+            anyo: anyo,
+            mes: mes,
+            clienteId: clienteId,
+            articuloId: articuloId,
+            unidades: unidades,
+            importe: importe,
+            coste: coste,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required double anyo,
+            required double mes,
+            required String clienteId,
+            required String articuloId,
+            Value<double?> unidades = const Value.absent(),
+            Value<double?> importe = const Value.absent(),
+            Value<double?> coste = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              EstadisticasClienteUsuarioVentasTableCompanion.insert(
+            anyo: anyo,
+            mes: mes,
+            clienteId: clienteId,
+            articuloId: articuloId,
+            unidades: unidades,
+            importe: importe,
+            coste: coste,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$EstadisticasClienteUsuarioVentasTableTableProcessedTableManager
+    = ProcessedTableManager<
+        _$RemoteAppDatabase,
+        $EstadisticasClienteUsuarioVentasTableTable,
+        EstadisticasVentaClienteUsuarioDTO,
+        $$EstadisticasClienteUsuarioVentasTableTableFilterComposer,
+        $$EstadisticasClienteUsuarioVentasTableTableOrderingComposer,
+        $$EstadisticasClienteUsuarioVentasTableTableCreateCompanionBuilder,
+        $$EstadisticasClienteUsuarioVentasTableTableUpdateCompanionBuilder,
+        (
+          EstadisticasVentaClienteUsuarioDTO,
+          BaseReferences<
+              _$RemoteAppDatabase,
+              $EstadisticasClienteUsuarioVentasTableTable,
+              EstadisticasVentaClienteUsuarioDTO>
+        ),
+        EstadisticasVentaClienteUsuarioDTO,
+        PrefetchHooks Function()>;
 typedef $$EstadisticasUltimosPreciosTableTableCreateCompanionBuilder
     = EstadisticasUltimosPreciosTableCompanion Function({
   required String clienteId,
@@ -30744,93 +32498,6 @@ typedef $$EstadisticasUltimosPreciosTableTableUpdateCompanionBuilder
   Value<String> deleted,
   Value<int> rowid,
 });
-
-class $$EstadisticasUltimosPreciosTableTableTableManager
-    extends RootTableManager<
-        _$RemoteAppDatabase,
-        $EstadisticasUltimosPreciosTableTable,
-        EstadisticasUltimosPreciosDTO,
-        $$EstadisticasUltimosPreciosTableTableFilterComposer,
-        $$EstadisticasUltimosPreciosTableTableOrderingComposer,
-        $$EstadisticasUltimosPreciosTableTableCreateCompanionBuilder,
-        $$EstadisticasUltimosPreciosTableTableUpdateCompanionBuilder> {
-  $$EstadisticasUltimosPreciosTableTableTableManager(
-      _$RemoteAppDatabase db, $EstadisticasUltimosPreciosTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer:
-              $$EstadisticasUltimosPreciosTableTableFilterComposer(
-                  ComposerState(db, table)),
-          orderingComposer:
-              $$EstadisticasUltimosPreciosTableTableOrderingComposer(
-                  ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> clienteId = const Value.absent(),
-            Value<String> articuloId = const Value.absent(),
-            Value<int> linea = const Value.absent(),
-            Value<int> cantidad = const Value.absent(),
-            Value<DateTime> fecha = const Value.absent(),
-            Value<double> precioDivisa = const Value.absent(),
-            Value<int> tipoPrecio = const Value.absent(),
-            Value<String> divisaId = const Value.absent(),
-            Value<double> descuento1 = const Value.absent(),
-            Value<double> descuento2 = const Value.absent(),
-            Value<double> descuento3 = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              EstadisticasUltimosPreciosTableCompanion(
-            clienteId: clienteId,
-            articuloId: articuloId,
-            linea: linea,
-            cantidad: cantidad,
-            fecha: fecha,
-            precioDivisa: precioDivisa,
-            tipoPrecio: tipoPrecio,
-            divisaId: divisaId,
-            descuento1: descuento1,
-            descuento2: descuento2,
-            descuento3: descuento3,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String clienteId,
-            required String articuloId,
-            required int linea,
-            required int cantidad,
-            required DateTime fecha,
-            required double precioDivisa,
-            required int tipoPrecio,
-            required String divisaId,
-            required double descuento1,
-            required double descuento2,
-            required double descuento3,
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              EstadisticasUltimosPreciosTableCompanion.insert(
-            clienteId: clienteId,
-            articuloId: articuloId,
-            linea: linea,
-            cantidad: cantidad,
-            fecha: fecha,
-            precioDivisa: precioDivisa,
-            tipoPrecio: tipoPrecio,
-            divisaId: divisaId,
-            descuento1: descuento1,
-            descuento2: descuento2,
-            descuento3: descuento3,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
-}
 
 class $$EstadisticasUltimosPreciosTableTableFilterComposer
     extends FilterComposer<_$RemoteAppDatabase,
@@ -30972,6 +32639,124 @@ class $$EstadisticasUltimosPreciosTableTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$EstadisticasUltimosPreciosTableTableTableManager
+    extends RootTableManager<
+        _$RemoteAppDatabase,
+        $EstadisticasUltimosPreciosTableTable,
+        EstadisticasUltimosPreciosDTO,
+        $$EstadisticasUltimosPreciosTableTableFilterComposer,
+        $$EstadisticasUltimosPreciosTableTableOrderingComposer,
+        $$EstadisticasUltimosPreciosTableTableCreateCompanionBuilder,
+        $$EstadisticasUltimosPreciosTableTableUpdateCompanionBuilder,
+        (
+          EstadisticasUltimosPreciosDTO,
+          BaseReferences<
+              _$RemoteAppDatabase,
+              $EstadisticasUltimosPreciosTableTable,
+              EstadisticasUltimosPreciosDTO>
+        ),
+        EstadisticasUltimosPreciosDTO,
+        PrefetchHooks Function()> {
+  $$EstadisticasUltimosPreciosTableTableTableManager(
+      _$RemoteAppDatabase db, $EstadisticasUltimosPreciosTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$EstadisticasUltimosPreciosTableTableFilterComposer(
+                  ComposerState(db, table)),
+          orderingComposer:
+              $$EstadisticasUltimosPreciosTableTableOrderingComposer(
+                  ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> clienteId = const Value.absent(),
+            Value<String> articuloId = const Value.absent(),
+            Value<int> linea = const Value.absent(),
+            Value<int> cantidad = const Value.absent(),
+            Value<DateTime> fecha = const Value.absent(),
+            Value<double> precioDivisa = const Value.absent(),
+            Value<int> tipoPrecio = const Value.absent(),
+            Value<String> divisaId = const Value.absent(),
+            Value<double> descuento1 = const Value.absent(),
+            Value<double> descuento2 = const Value.absent(),
+            Value<double> descuento3 = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              EstadisticasUltimosPreciosTableCompanion(
+            clienteId: clienteId,
+            articuloId: articuloId,
+            linea: linea,
+            cantidad: cantidad,
+            fecha: fecha,
+            precioDivisa: precioDivisa,
+            tipoPrecio: tipoPrecio,
+            divisaId: divisaId,
+            descuento1: descuento1,
+            descuento2: descuento2,
+            descuento3: descuento3,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String clienteId,
+            required String articuloId,
+            required int linea,
+            required int cantidad,
+            required DateTime fecha,
+            required double precioDivisa,
+            required int tipoPrecio,
+            required String divisaId,
+            required double descuento1,
+            required double descuento2,
+            required double descuento3,
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              EstadisticasUltimosPreciosTableCompanion.insert(
+            clienteId: clienteId,
+            articuloId: articuloId,
+            linea: linea,
+            cantidad: cantidad,
+            fecha: fecha,
+            precioDivisa: precioDivisa,
+            tipoPrecio: tipoPrecio,
+            divisaId: divisaId,
+            descuento1: descuento1,
+            descuento2: descuento2,
+            descuento3: descuento3,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$EstadisticasUltimosPreciosTableTableProcessedTableManager
+    = ProcessedTableManager<
+        _$RemoteAppDatabase,
+        $EstadisticasUltimosPreciosTableTable,
+        EstadisticasUltimosPreciosDTO,
+        $$EstadisticasUltimosPreciosTableTableFilterComposer,
+        $$EstadisticasUltimosPreciosTableTableOrderingComposer,
+        $$EstadisticasUltimosPreciosTableTableCreateCompanionBuilder,
+        $$EstadisticasUltimosPreciosTableTableUpdateCompanionBuilder,
+        (
+          EstadisticasUltimosPreciosDTO,
+          BaseReferences<
+              _$RemoteAppDatabase,
+              $EstadisticasUltimosPreciosTableTable,
+              EstadisticasUltimosPreciosDTO>
+        ),
+        EstadisticasUltimosPreciosDTO,
+        PrefetchHooks Function()>;
 typedef $$VisitaTableTableCreateCompanionBuilder = VisitaTableCompanion
     Function({
   required String id,
@@ -31036,150 +32821,6 @@ typedef $$VisitaTableTableUpdateCompanionBuilder = VisitaTableCompanion
   Value<String> deleted,
   Value<int> rowid,
 });
-
-class $$VisitaTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $VisitaTableTable,
-    VisitaDTO,
-    $$VisitaTableTableFilterComposer,
-    $$VisitaTableTableOrderingComposer,
-    $$VisitaTableTableCreateCompanionBuilder,
-    $$VisitaTableTableUpdateCompanionBuilder> {
-  $$VisitaTableTableTableManager(
-      _$RemoteAppDatabase db, $VisitaTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer:
-              $$VisitaTableTableFilterComposer(ComposerState(db, table)),
-          orderingComposer:
-              $$VisitaTableTableOrderingComposer(ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> id = const Value.absent(),
-            Value<DateTime> fecha = const Value.absent(),
-            Value<String?> clienteId = const Value.absent(),
-            Value<String> isClienteProvisional = const Value.absent(),
-            Value<String?> clienteProvisionalNombre = const Value.absent(),
-            Value<String?> clienteProvisionalEmail = const Value.absent(),
-            Value<String?> clienteProvisionalTelefono = const Value.absent(),
-            Value<String?> clienteProvisionalPoblacion = const Value.absent(),
-            Value<String> numEmpl = const Value.absent(),
-            Value<String?> contacto = const Value.absent(),
-            Value<String?> atendidoPor = const Value.absent(),
-            Value<String?> resumen = const Value.absent(),
-            Value<String?> marcasCompetencia = const Value.absent(),
-            Value<String> ofertaRealizada = const Value.absent(),
-            Value<String> interesCliente = const Value.absent(),
-            Value<String> pedidoRealizado = const Value.absent(),
-            Value<int?> codigoMotivoNoInteres = const Value.absent(),
-            Value<int?> codigoMotivoNoPedido = const Value.absent(),
-            Value<int?> codigoSector = const Value.absent(),
-            Value<int?> codigoCompetencia = const Value.absent(),
-            Value<String> almacenPropio = const Value.absent(),
-            Value<String> capacidad = const Value.absent(),
-            Value<String> frecuenciaPedido = const Value.absent(),
-            Value<double> latitud = const Value.absent(),
-            Value<double> longitud = const Value.absent(),
-            Value<String?> visitaAppId = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              VisitaTableCompanion(
-            id: id,
-            fecha: fecha,
-            clienteId: clienteId,
-            isClienteProvisional: isClienteProvisional,
-            clienteProvisionalNombre: clienteProvisionalNombre,
-            clienteProvisionalEmail: clienteProvisionalEmail,
-            clienteProvisionalTelefono: clienteProvisionalTelefono,
-            clienteProvisionalPoblacion: clienteProvisionalPoblacion,
-            numEmpl: numEmpl,
-            contacto: contacto,
-            atendidoPor: atendidoPor,
-            resumen: resumen,
-            marcasCompetencia: marcasCompetencia,
-            ofertaRealizada: ofertaRealizada,
-            interesCliente: interesCliente,
-            pedidoRealizado: pedidoRealizado,
-            codigoMotivoNoInteres: codigoMotivoNoInteres,
-            codigoMotivoNoPedido: codigoMotivoNoPedido,
-            codigoSector: codigoSector,
-            codigoCompetencia: codigoCompetencia,
-            almacenPropio: almacenPropio,
-            capacidad: capacidad,
-            frecuenciaPedido: frecuenciaPedido,
-            latitud: latitud,
-            longitud: longitud,
-            visitaAppId: visitaAppId,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String id,
-            required DateTime fecha,
-            Value<String?> clienteId = const Value.absent(),
-            required String isClienteProvisional,
-            Value<String?> clienteProvisionalNombre = const Value.absent(),
-            Value<String?> clienteProvisionalEmail = const Value.absent(),
-            Value<String?> clienteProvisionalTelefono = const Value.absent(),
-            Value<String?> clienteProvisionalPoblacion = const Value.absent(),
-            required String numEmpl,
-            Value<String?> contacto = const Value.absent(),
-            Value<String?> atendidoPor = const Value.absent(),
-            Value<String?> resumen = const Value.absent(),
-            Value<String?> marcasCompetencia = const Value.absent(),
-            required String ofertaRealizada,
-            required String interesCliente,
-            required String pedidoRealizado,
-            Value<int?> codigoMotivoNoInteres = const Value.absent(),
-            Value<int?> codigoMotivoNoPedido = const Value.absent(),
-            Value<int?> codigoSector = const Value.absent(),
-            Value<int?> codigoCompetencia = const Value.absent(),
-            required String almacenPropio,
-            required String capacidad,
-            required String frecuenciaPedido,
-            required double latitud,
-            required double longitud,
-            Value<String?> visitaAppId = const Value.absent(),
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              VisitaTableCompanion.insert(
-            id: id,
-            fecha: fecha,
-            clienteId: clienteId,
-            isClienteProvisional: isClienteProvisional,
-            clienteProvisionalNombre: clienteProvisionalNombre,
-            clienteProvisionalEmail: clienteProvisionalEmail,
-            clienteProvisionalTelefono: clienteProvisionalTelefono,
-            clienteProvisionalPoblacion: clienteProvisionalPoblacion,
-            numEmpl: numEmpl,
-            contacto: contacto,
-            atendidoPor: atendidoPor,
-            resumen: resumen,
-            marcasCompetencia: marcasCompetencia,
-            ofertaRealizada: ofertaRealizada,
-            interesCliente: interesCliente,
-            pedidoRealizado: pedidoRealizado,
-            codigoMotivoNoInteres: codigoMotivoNoInteres,
-            codigoMotivoNoPedido: codigoMotivoNoPedido,
-            codigoSector: codigoSector,
-            codigoCompetencia: codigoCompetencia,
-            almacenPropio: almacenPropio,
-            capacidad: capacidad,
-            frecuenciaPedido: frecuenciaPedido,
-            latitud: latitud,
-            longitud: longitud,
-            visitaAppId: visitaAppId,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
-}
 
 class $$VisitaTableTableFilterComposer
     extends FilterComposer<_$RemoteAppDatabase, $VisitaTableTable> {
@@ -31476,6 +33117,174 @@ class $$VisitaTableTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$VisitaTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $VisitaTableTable,
+    VisitaDTO,
+    $$VisitaTableTableFilterComposer,
+    $$VisitaTableTableOrderingComposer,
+    $$VisitaTableTableCreateCompanionBuilder,
+    $$VisitaTableTableUpdateCompanionBuilder,
+    (
+      VisitaDTO,
+      BaseReferences<_$RemoteAppDatabase, $VisitaTableTable, VisitaDTO>
+    ),
+    VisitaDTO,
+    PrefetchHooks Function()> {
+  $$VisitaTableTableTableManager(
+      _$RemoteAppDatabase db, $VisitaTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$VisitaTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$VisitaTableTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<DateTime> fecha = const Value.absent(),
+            Value<String?> clienteId = const Value.absent(),
+            Value<String> isClienteProvisional = const Value.absent(),
+            Value<String?> clienteProvisionalNombre = const Value.absent(),
+            Value<String?> clienteProvisionalEmail = const Value.absent(),
+            Value<String?> clienteProvisionalTelefono = const Value.absent(),
+            Value<String?> clienteProvisionalPoblacion = const Value.absent(),
+            Value<String> numEmpl = const Value.absent(),
+            Value<String?> contacto = const Value.absent(),
+            Value<String?> atendidoPor = const Value.absent(),
+            Value<String?> resumen = const Value.absent(),
+            Value<String?> marcasCompetencia = const Value.absent(),
+            Value<String> ofertaRealizada = const Value.absent(),
+            Value<String> interesCliente = const Value.absent(),
+            Value<String> pedidoRealizado = const Value.absent(),
+            Value<int?> codigoMotivoNoInteres = const Value.absent(),
+            Value<int?> codigoMotivoNoPedido = const Value.absent(),
+            Value<int?> codigoSector = const Value.absent(),
+            Value<int?> codigoCompetencia = const Value.absent(),
+            Value<String> almacenPropio = const Value.absent(),
+            Value<String> capacidad = const Value.absent(),
+            Value<String> frecuenciaPedido = const Value.absent(),
+            Value<double> latitud = const Value.absent(),
+            Value<double> longitud = const Value.absent(),
+            Value<String?> visitaAppId = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              VisitaTableCompanion(
+            id: id,
+            fecha: fecha,
+            clienteId: clienteId,
+            isClienteProvisional: isClienteProvisional,
+            clienteProvisionalNombre: clienteProvisionalNombre,
+            clienteProvisionalEmail: clienteProvisionalEmail,
+            clienteProvisionalTelefono: clienteProvisionalTelefono,
+            clienteProvisionalPoblacion: clienteProvisionalPoblacion,
+            numEmpl: numEmpl,
+            contacto: contacto,
+            atendidoPor: atendidoPor,
+            resumen: resumen,
+            marcasCompetencia: marcasCompetencia,
+            ofertaRealizada: ofertaRealizada,
+            interesCliente: interesCliente,
+            pedidoRealizado: pedidoRealizado,
+            codigoMotivoNoInteres: codigoMotivoNoInteres,
+            codigoMotivoNoPedido: codigoMotivoNoPedido,
+            codigoSector: codigoSector,
+            codigoCompetencia: codigoCompetencia,
+            almacenPropio: almacenPropio,
+            capacidad: capacidad,
+            frecuenciaPedido: frecuenciaPedido,
+            latitud: latitud,
+            longitud: longitud,
+            visitaAppId: visitaAppId,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required DateTime fecha,
+            Value<String?> clienteId = const Value.absent(),
+            required String isClienteProvisional,
+            Value<String?> clienteProvisionalNombre = const Value.absent(),
+            Value<String?> clienteProvisionalEmail = const Value.absent(),
+            Value<String?> clienteProvisionalTelefono = const Value.absent(),
+            Value<String?> clienteProvisionalPoblacion = const Value.absent(),
+            required String numEmpl,
+            Value<String?> contacto = const Value.absent(),
+            Value<String?> atendidoPor = const Value.absent(),
+            Value<String?> resumen = const Value.absent(),
+            Value<String?> marcasCompetencia = const Value.absent(),
+            required String ofertaRealizada,
+            required String interesCliente,
+            required String pedidoRealizado,
+            Value<int?> codigoMotivoNoInteres = const Value.absent(),
+            Value<int?> codigoMotivoNoPedido = const Value.absent(),
+            Value<int?> codigoSector = const Value.absent(),
+            Value<int?> codigoCompetencia = const Value.absent(),
+            required String almacenPropio,
+            required String capacidad,
+            required String frecuenciaPedido,
+            required double latitud,
+            required double longitud,
+            Value<String?> visitaAppId = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              VisitaTableCompanion.insert(
+            id: id,
+            fecha: fecha,
+            clienteId: clienteId,
+            isClienteProvisional: isClienteProvisional,
+            clienteProvisionalNombre: clienteProvisionalNombre,
+            clienteProvisionalEmail: clienteProvisionalEmail,
+            clienteProvisionalTelefono: clienteProvisionalTelefono,
+            clienteProvisionalPoblacion: clienteProvisionalPoblacion,
+            numEmpl: numEmpl,
+            contacto: contacto,
+            atendidoPor: atendidoPor,
+            resumen: resumen,
+            marcasCompetencia: marcasCompetencia,
+            ofertaRealizada: ofertaRealizada,
+            interesCliente: interesCliente,
+            pedidoRealizado: pedidoRealizado,
+            codigoMotivoNoInteres: codigoMotivoNoInteres,
+            codigoMotivoNoPedido: codigoMotivoNoPedido,
+            codigoSector: codigoSector,
+            codigoCompetencia: codigoCompetencia,
+            almacenPropio: almacenPropio,
+            capacidad: capacidad,
+            frecuenciaPedido: frecuenciaPedido,
+            latitud: latitud,
+            longitud: longitud,
+            visitaAppId: visitaAppId,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$VisitaTableTableProcessedTableManager = ProcessedTableManager<
+    _$RemoteAppDatabase,
+    $VisitaTableTable,
+    VisitaDTO,
+    $$VisitaTableTableFilterComposer,
+    $$VisitaTableTableOrderingComposer,
+    $$VisitaTableTableCreateCompanionBuilder,
+    $$VisitaTableTableUpdateCompanionBuilder,
+    (
+      VisitaDTO,
+      BaseReferences<_$RemoteAppDatabase, $VisitaTableTable, VisitaDTO>
+    ),
+    VisitaDTO,
+    PrefetchHooks Function()>;
 typedef $$PedidoAlbaranTableTableCreateCompanionBuilder
     = PedidoAlbaranTableCompanion Function({
   required String empresaId,
@@ -31502,74 +33311,6 @@ typedef $$PedidoAlbaranTableTableUpdateCompanionBuilder
   Value<String> deleted,
   Value<int> rowid,
 });
-
-class $$PedidoAlbaranTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $PedidoAlbaranTableTable,
-    PedidoAlbaranDTO,
-    $$PedidoAlbaranTableTableFilterComposer,
-    $$PedidoAlbaranTableTableOrderingComposer,
-    $$PedidoAlbaranTableTableCreateCompanionBuilder,
-    $$PedidoAlbaranTableTableUpdateCompanionBuilder> {
-  $$PedidoAlbaranTableTableTableManager(
-      _$RemoteAppDatabase db, $PedidoAlbaranTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer:
-              $$PedidoAlbaranTableTableFilterComposer(ComposerState(db, table)),
-          orderingComposer: $$PedidoAlbaranTableTableOrderingComposer(
-              ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> empresaId = const Value.absent(),
-            Value<String> pedidoVentaId = const Value.absent(),
-            Value<String> albaranId = const Value.absent(),
-            Value<DateTime> fechaAlbaran = const Value.absent(),
-            Value<String?> agencia = const Value.absent(),
-            Value<String?> trackId = const Value.absent(),
-            Value<String?> trackingEstadoId = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              PedidoAlbaranTableCompanion(
-            empresaId: empresaId,
-            pedidoVentaId: pedidoVentaId,
-            albaranId: albaranId,
-            fechaAlbaran: fechaAlbaran,
-            agencia: agencia,
-            trackId: trackId,
-            trackingEstadoId: trackingEstadoId,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String empresaId,
-            required String pedidoVentaId,
-            required String albaranId,
-            required DateTime fechaAlbaran,
-            Value<String?> agencia = const Value.absent(),
-            Value<String?> trackId = const Value.absent(),
-            Value<String?> trackingEstadoId = const Value.absent(),
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              PedidoAlbaranTableCompanion.insert(
-            empresaId: empresaId,
-            pedidoVentaId: pedidoVentaId,
-            albaranId: albaranId,
-            fechaAlbaran: fechaAlbaran,
-            agencia: agencia,
-            trackId: trackId,
-            trackingEstadoId: trackingEstadoId,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
-}
 
 class $$PedidoAlbaranTableTableFilterComposer
     extends FilterComposer<_$RemoteAppDatabase, $PedidoAlbaranTableTable> {
@@ -31669,6 +33410,100 @@ class $$PedidoAlbaranTableTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$PedidoAlbaranTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $PedidoAlbaranTableTable,
+    PedidoAlbaranDTO,
+    $$PedidoAlbaranTableTableFilterComposer,
+    $$PedidoAlbaranTableTableOrderingComposer,
+    $$PedidoAlbaranTableTableCreateCompanionBuilder,
+    $$PedidoAlbaranTableTableUpdateCompanionBuilder,
+    (
+      PedidoAlbaranDTO,
+      BaseReferences<_$RemoteAppDatabase, $PedidoAlbaranTableTable,
+          PedidoAlbaranDTO>
+    ),
+    PedidoAlbaranDTO,
+    PrefetchHooks Function()> {
+  $$PedidoAlbaranTableTableTableManager(
+      _$RemoteAppDatabase db, $PedidoAlbaranTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$PedidoAlbaranTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer: $$PedidoAlbaranTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> empresaId = const Value.absent(),
+            Value<String> pedidoVentaId = const Value.absent(),
+            Value<String> albaranId = const Value.absent(),
+            Value<DateTime> fechaAlbaran = const Value.absent(),
+            Value<String?> agencia = const Value.absent(),
+            Value<String?> trackId = const Value.absent(),
+            Value<String?> trackingEstadoId = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              PedidoAlbaranTableCompanion(
+            empresaId: empresaId,
+            pedidoVentaId: pedidoVentaId,
+            albaranId: albaranId,
+            fechaAlbaran: fechaAlbaran,
+            agencia: agencia,
+            trackId: trackId,
+            trackingEstadoId: trackingEstadoId,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String empresaId,
+            required String pedidoVentaId,
+            required String albaranId,
+            required DateTime fechaAlbaran,
+            Value<String?> agencia = const Value.absent(),
+            Value<String?> trackId = const Value.absent(),
+            Value<String?> trackingEstadoId = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              PedidoAlbaranTableCompanion.insert(
+            empresaId: empresaId,
+            pedidoVentaId: pedidoVentaId,
+            albaranId: albaranId,
+            fechaAlbaran: fechaAlbaran,
+            agencia: agencia,
+            trackId: trackId,
+            trackingEstadoId: trackingEstadoId,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$PedidoAlbaranTableTableProcessedTableManager = ProcessedTableManager<
+    _$RemoteAppDatabase,
+    $PedidoAlbaranTableTable,
+    PedidoAlbaranDTO,
+    $$PedidoAlbaranTableTableFilterComposer,
+    $$PedidoAlbaranTableTableOrderingComposer,
+    $$PedidoAlbaranTableTableCreateCompanionBuilder,
+    $$PedidoAlbaranTableTableUpdateCompanionBuilder,
+    (
+      PedidoAlbaranDTO,
+      BaseReferences<_$RemoteAppDatabase, $PedidoAlbaranTableTable,
+          PedidoAlbaranDTO>
+    ),
+    PedidoAlbaranDTO,
+    PrefetchHooks Function()>;
 typedef $$DescuentoGeneralTableTableCreateCompanionBuilder
     = DescuentoGeneralTableCompanion Function({
   required String descuentoGeneralId,
@@ -31693,70 +33528,6 @@ typedef $$DescuentoGeneralTableTableUpdateCompanionBuilder
   Value<String> deleted,
   Value<int> rowid,
 });
-
-class $$DescuentoGeneralTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $DescuentoGeneralTableTable,
-    DescuentoGeneralDTO,
-    $$DescuentoGeneralTableTableFilterComposer,
-    $$DescuentoGeneralTableTableOrderingComposer,
-    $$DescuentoGeneralTableTableCreateCompanionBuilder,
-    $$DescuentoGeneralTableTableUpdateCompanionBuilder> {
-  $$DescuentoGeneralTableTableTableManager(
-      _$RemoteAppDatabase db, $DescuentoGeneralTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer: $$DescuentoGeneralTableTableFilterComposer(
-              ComposerState(db, table)),
-          orderingComposer: $$DescuentoGeneralTableTableOrderingComposer(
-              ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> descuentoGeneralId = const Value.absent(),
-            Value<String> articuloId = const Value.absent(),
-            Value<String> familiaId = const Value.absent(),
-            Value<String> subfamiliaId = const Value.absent(),
-            Value<int> cantidadDesde = const Value.absent(),
-            Value<double> descuento = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              DescuentoGeneralTableCompanion(
-            descuentoGeneralId: descuentoGeneralId,
-            articuloId: articuloId,
-            familiaId: familiaId,
-            subfamiliaId: subfamiliaId,
-            cantidadDesde: cantidadDesde,
-            descuento: descuento,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String descuentoGeneralId,
-            required String articuloId,
-            required String familiaId,
-            required String subfamiliaId,
-            required int cantidadDesde,
-            required double descuento,
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              DescuentoGeneralTableCompanion.insert(
-            descuentoGeneralId: descuentoGeneralId,
-            articuloId: articuloId,
-            familiaId: familiaId,
-            subfamiliaId: subfamiliaId,
-            cantidadDesde: cantidadDesde,
-            descuento: descuento,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
-}
 
 class $$DescuentoGeneralTableTableFilterComposer
     extends FilterComposer<_$RemoteAppDatabase, $DescuentoGeneralTableTable> {
@@ -31846,6 +33617,97 @@ class $$DescuentoGeneralTableTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$DescuentoGeneralTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $DescuentoGeneralTableTable,
+    DescuentoGeneralDTO,
+    $$DescuentoGeneralTableTableFilterComposer,
+    $$DescuentoGeneralTableTableOrderingComposer,
+    $$DescuentoGeneralTableTableCreateCompanionBuilder,
+    $$DescuentoGeneralTableTableUpdateCompanionBuilder,
+    (
+      DescuentoGeneralDTO,
+      BaseReferences<_$RemoteAppDatabase, $DescuentoGeneralTableTable,
+          DescuentoGeneralDTO>
+    ),
+    DescuentoGeneralDTO,
+    PrefetchHooks Function()> {
+  $$DescuentoGeneralTableTableTableManager(
+      _$RemoteAppDatabase db, $DescuentoGeneralTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$DescuentoGeneralTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$DescuentoGeneralTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> descuentoGeneralId = const Value.absent(),
+            Value<String> articuloId = const Value.absent(),
+            Value<String> familiaId = const Value.absent(),
+            Value<String> subfamiliaId = const Value.absent(),
+            Value<int> cantidadDesde = const Value.absent(),
+            Value<double> descuento = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              DescuentoGeneralTableCompanion(
+            descuentoGeneralId: descuentoGeneralId,
+            articuloId: articuloId,
+            familiaId: familiaId,
+            subfamiliaId: subfamiliaId,
+            cantidadDesde: cantidadDesde,
+            descuento: descuento,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String descuentoGeneralId,
+            required String articuloId,
+            required String familiaId,
+            required String subfamiliaId,
+            required int cantidadDesde,
+            required double descuento,
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              DescuentoGeneralTableCompanion.insert(
+            descuentoGeneralId: descuentoGeneralId,
+            articuloId: articuloId,
+            familiaId: familiaId,
+            subfamiliaId: subfamiliaId,
+            cantidadDesde: cantidadDesde,
+            descuento: descuento,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$DescuentoGeneralTableTableProcessedTableManager
+    = ProcessedTableManager<
+        _$RemoteAppDatabase,
+        $DescuentoGeneralTableTable,
+        DescuentoGeneralDTO,
+        $$DescuentoGeneralTableTableFilterComposer,
+        $$DescuentoGeneralTableTableOrderingComposer,
+        $$DescuentoGeneralTableTableCreateCompanionBuilder,
+        $$DescuentoGeneralTableTableUpdateCompanionBuilder,
+        (
+          DescuentoGeneralDTO,
+          BaseReferences<_$RemoteAppDatabase, $DescuentoGeneralTableTable,
+              DescuentoGeneralDTO>
+        ),
+        DescuentoGeneralDTO,
+        PrefetchHooks Function()>;
 typedef $$DevolucionTipoTableTableCreateCompanionBuilder
     = DevolucionTipoTableCompanion Function({
   required String id,
@@ -31888,106 +33750,6 @@ typedef $$DevolucionTipoTableTableUpdateCompanionBuilder
   Value<String> deleted,
   Value<int> rowid,
 });
-
-class $$DevolucionTipoTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $DevolucionTipoTableTable,
-    DevolucionTipoDTO,
-    $$DevolucionTipoTableTableFilterComposer,
-    $$DevolucionTipoTableTableOrderingComposer,
-    $$DevolucionTipoTableTableCreateCompanionBuilder,
-    $$DevolucionTipoTableTableUpdateCompanionBuilder> {
-  $$DevolucionTipoTableTableTableManager(
-      _$RemoteAppDatabase db, $DevolucionTipoTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer: $$DevolucionTipoTableTableFilterComposer(
-              ComposerState(db, table)),
-          orderingComposer: $$DevolucionTipoTableTableOrderingComposer(
-              ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> id = const Value.absent(),
-            Value<String> descripcionES = const Value.absent(),
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPT = const Value.absent(),
-            Value<String?> descripcionRO = const Value.absent(),
-            Value<String?> descripcionRU = const Value.absent(),
-            Value<String?> descripcionCN = const Value.absent(),
-            Value<String?> descripcionEL = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              DevolucionTipoTableCompanion(
-            id: id,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPT: descripcionPT,
-            descripcionRO: descripcionRO,
-            descripcionRU: descripcionRU,
-            descripcionCN: descripcionCN,
-            descripcionEL: descripcionEL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String id,
-            required String descripcionES,
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPT = const Value.absent(),
-            Value<String?> descripcionRO = const Value.absent(),
-            Value<String?> descripcionRU = const Value.absent(),
-            Value<String?> descripcionCN = const Value.absent(),
-            Value<String?> descripcionEL = const Value.absent(),
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              DevolucionTipoTableCompanion.insert(
-            id: id,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPT: descripcionPT,
-            descripcionRO: descripcionRO,
-            descripcionRU: descripcionRU,
-            descripcionCN: descripcionCN,
-            descripcionEL: descripcionEL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
-}
 
 class $$DevolucionTipoTableTableFilterComposer
     extends FilterComposer<_$RemoteAppDatabase, $DevolucionTipoTableTable> {
@@ -32167,6 +33929,132 @@ class $$DevolucionTipoTableTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$DevolucionTipoTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $DevolucionTipoTableTable,
+    DevolucionTipoDTO,
+    $$DevolucionTipoTableTableFilterComposer,
+    $$DevolucionTipoTableTableOrderingComposer,
+    $$DevolucionTipoTableTableCreateCompanionBuilder,
+    $$DevolucionTipoTableTableUpdateCompanionBuilder,
+    (
+      DevolucionTipoDTO,
+      BaseReferences<_$RemoteAppDatabase, $DevolucionTipoTableTable,
+          DevolucionTipoDTO>
+    ),
+    DevolucionTipoDTO,
+    PrefetchHooks Function()> {
+  $$DevolucionTipoTableTableTableManager(
+      _$RemoteAppDatabase db, $DevolucionTipoTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$DevolucionTipoTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$DevolucionTipoTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              DevolucionTipoTableCompanion(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              DevolucionTipoTableCompanion.insert(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$DevolucionTipoTableTableProcessedTableManager = ProcessedTableManager<
+    _$RemoteAppDatabase,
+    $DevolucionTipoTableTable,
+    DevolucionTipoDTO,
+    $$DevolucionTipoTableTableFilterComposer,
+    $$DevolucionTipoTableTableOrderingComposer,
+    $$DevolucionTipoTableTableCreateCompanionBuilder,
+    $$DevolucionTipoTableTableUpdateCompanionBuilder,
+    (
+      DevolucionTipoDTO,
+      BaseReferences<_$RemoteAppDatabase, $DevolucionTipoTableTable,
+          DevolucionTipoDTO>
+    ),
+    DevolucionTipoDTO,
+    PrefetchHooks Function()>;
 typedef $$DevolucionMotivoTableTableCreateCompanionBuilder
     = DevolucionMotivoTableCompanion Function({
   required String id,
@@ -32209,106 +34097,6 @@ typedef $$DevolucionMotivoTableTableUpdateCompanionBuilder
   Value<String> deleted,
   Value<int> rowid,
 });
-
-class $$DevolucionMotivoTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $DevolucionMotivoTableTable,
-    DevolucionMotivoDTO,
-    $$DevolucionMotivoTableTableFilterComposer,
-    $$DevolucionMotivoTableTableOrderingComposer,
-    $$DevolucionMotivoTableTableCreateCompanionBuilder,
-    $$DevolucionMotivoTableTableUpdateCompanionBuilder> {
-  $$DevolucionMotivoTableTableTableManager(
-      _$RemoteAppDatabase db, $DevolucionMotivoTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer: $$DevolucionMotivoTableTableFilterComposer(
-              ComposerState(db, table)),
-          orderingComposer: $$DevolucionMotivoTableTableOrderingComposer(
-              ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> id = const Value.absent(),
-            Value<String> descripcionES = const Value.absent(),
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPT = const Value.absent(),
-            Value<String?> descripcionRO = const Value.absent(),
-            Value<String?> descripcionRU = const Value.absent(),
-            Value<String?> descripcionCN = const Value.absent(),
-            Value<String?> descripcionEL = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              DevolucionMotivoTableCompanion(
-            id: id,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPT: descripcionPT,
-            descripcionRO: descripcionRO,
-            descripcionRU: descripcionRU,
-            descripcionCN: descripcionCN,
-            descripcionEL: descripcionEL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String id,
-            required String descripcionES,
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPT = const Value.absent(),
-            Value<String?> descripcionRO = const Value.absent(),
-            Value<String?> descripcionRU = const Value.absent(),
-            Value<String?> descripcionCN = const Value.absent(),
-            Value<String?> descripcionEL = const Value.absent(),
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              DevolucionMotivoTableCompanion.insert(
-            id: id,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPT: descripcionPT,
-            descripcionRO: descripcionRO,
-            descripcionRU: descripcionRU,
-            descripcionCN: descripcionCN,
-            descripcionEL: descripcionEL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
-}
 
 class $$DevolucionMotivoTableTableFilterComposer
     extends FilterComposer<_$RemoteAppDatabase, $DevolucionMotivoTableTable> {
@@ -32488,6 +34276,133 @@ class $$DevolucionMotivoTableTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$DevolucionMotivoTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $DevolucionMotivoTableTable,
+    DevolucionMotivoDTO,
+    $$DevolucionMotivoTableTableFilterComposer,
+    $$DevolucionMotivoTableTableOrderingComposer,
+    $$DevolucionMotivoTableTableCreateCompanionBuilder,
+    $$DevolucionMotivoTableTableUpdateCompanionBuilder,
+    (
+      DevolucionMotivoDTO,
+      BaseReferences<_$RemoteAppDatabase, $DevolucionMotivoTableTable,
+          DevolucionMotivoDTO>
+    ),
+    DevolucionMotivoDTO,
+    PrefetchHooks Function()> {
+  $$DevolucionMotivoTableTableTableManager(
+      _$RemoteAppDatabase db, $DevolucionMotivoTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$DevolucionMotivoTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$DevolucionMotivoTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              DevolucionMotivoTableCompanion(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              DevolucionMotivoTableCompanion.insert(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$DevolucionMotivoTableTableProcessedTableManager
+    = ProcessedTableManager<
+        _$RemoteAppDatabase,
+        $DevolucionMotivoTableTable,
+        DevolucionMotivoDTO,
+        $$DevolucionMotivoTableTableFilterComposer,
+        $$DevolucionMotivoTableTableOrderingComposer,
+        $$DevolucionMotivoTableTableCreateCompanionBuilder,
+        $$DevolucionMotivoTableTableUpdateCompanionBuilder,
+        (
+          DevolucionMotivoDTO,
+          BaseReferences<_$RemoteAppDatabase, $DevolucionMotivoTableTable,
+              DevolucionMotivoDTO>
+        ),
+        DevolucionMotivoDTO,
+        PrefetchHooks Function()>;
 typedef $$DevolucionEstadoTableTableCreateCompanionBuilder
     = DevolucionEstadoTableCompanion Function({
   required String id,
@@ -32530,106 +34445,6 @@ typedef $$DevolucionEstadoTableTableUpdateCompanionBuilder
   Value<String> deleted,
   Value<int> rowid,
 });
-
-class $$DevolucionEstadoTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $DevolucionEstadoTableTable,
-    DevolucionEstadoDTO,
-    $$DevolucionEstadoTableTableFilterComposer,
-    $$DevolucionEstadoTableTableOrderingComposer,
-    $$DevolucionEstadoTableTableCreateCompanionBuilder,
-    $$DevolucionEstadoTableTableUpdateCompanionBuilder> {
-  $$DevolucionEstadoTableTableTableManager(
-      _$RemoteAppDatabase db, $DevolucionEstadoTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer: $$DevolucionEstadoTableTableFilterComposer(
-              ComposerState(db, table)),
-          orderingComposer: $$DevolucionEstadoTableTableOrderingComposer(
-              ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> id = const Value.absent(),
-            Value<String> descripcionES = const Value.absent(),
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPT = const Value.absent(),
-            Value<String?> descripcionRO = const Value.absent(),
-            Value<String?> descripcionRU = const Value.absent(),
-            Value<String?> descripcionCN = const Value.absent(),
-            Value<String?> descripcionEL = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              DevolucionEstadoTableCompanion(
-            id: id,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPT: descripcionPT,
-            descripcionRO: descripcionRO,
-            descripcionRU: descripcionRU,
-            descripcionCN: descripcionCN,
-            descripcionEL: descripcionEL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String id,
-            required String descripcionES,
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPT = const Value.absent(),
-            Value<String?> descripcionRO = const Value.absent(),
-            Value<String?> descripcionRU = const Value.absent(),
-            Value<String?> descripcionCN = const Value.absent(),
-            Value<String?> descripcionEL = const Value.absent(),
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              DevolucionEstadoTableCompanion.insert(
-            id: id,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPT: descripcionPT,
-            descripcionRO: descripcionRO,
-            descripcionRU: descripcionRU,
-            descripcionCN: descripcionCN,
-            descripcionEL: descripcionEL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
-}
 
 class $$DevolucionEstadoTableTableFilterComposer
     extends FilterComposer<_$RemoteAppDatabase, $DevolucionEstadoTableTable> {
@@ -32809,6 +34624,133 @@ class $$DevolucionEstadoTableTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$DevolucionEstadoTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $DevolucionEstadoTableTable,
+    DevolucionEstadoDTO,
+    $$DevolucionEstadoTableTableFilterComposer,
+    $$DevolucionEstadoTableTableOrderingComposer,
+    $$DevolucionEstadoTableTableCreateCompanionBuilder,
+    $$DevolucionEstadoTableTableUpdateCompanionBuilder,
+    (
+      DevolucionEstadoDTO,
+      BaseReferences<_$RemoteAppDatabase, $DevolucionEstadoTableTable,
+          DevolucionEstadoDTO>
+    ),
+    DevolucionEstadoDTO,
+    PrefetchHooks Function()> {
+  $$DevolucionEstadoTableTableTableManager(
+      _$RemoteAppDatabase db, $DevolucionEstadoTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$DevolucionEstadoTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$DevolucionEstadoTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              DevolucionEstadoTableCompanion(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              DevolucionEstadoTableCompanion.insert(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$DevolucionEstadoTableTableProcessedTableManager
+    = ProcessedTableManager<
+        _$RemoteAppDatabase,
+        $DevolucionEstadoTableTable,
+        DevolucionEstadoDTO,
+        $$DevolucionEstadoTableTableFilterComposer,
+        $$DevolucionEstadoTableTableOrderingComposer,
+        $$DevolucionEstadoTableTableCreateCompanionBuilder,
+        $$DevolucionEstadoTableTableUpdateCompanionBuilder,
+        (
+          DevolucionEstadoDTO,
+          BaseReferences<_$RemoteAppDatabase, $DevolucionEstadoTableTable,
+              DevolucionEstadoDTO>
+        ),
+        DevolucionEstadoDTO,
+        PrefetchHooks Function()>;
 typedef $$DevolucionLineaTableTableCreateCompanionBuilder
     = DevolucionLineaTableCompanion Function({
   required String empresaId,
@@ -32837,78 +34779,6 @@ typedef $$DevolucionLineaTableTableUpdateCompanionBuilder
   Value<String> deleted,
   Value<int> rowid,
 });
-
-class $$DevolucionLineaTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $DevolucionLineaTableTable,
-    DevolucionLineaDTO,
-    $$DevolucionLineaTableTableFilterComposer,
-    $$DevolucionLineaTableTableOrderingComposer,
-    $$DevolucionLineaTableTableCreateCompanionBuilder,
-    $$DevolucionLineaTableTableUpdateCompanionBuilder> {
-  $$DevolucionLineaTableTableTableManager(
-      _$RemoteAppDatabase db, $DevolucionLineaTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer: $$DevolucionLineaTableTableFilterComposer(
-              ComposerState(db, table)),
-          orderingComposer: $$DevolucionLineaTableTableOrderingComposer(
-              ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> empresaId = const Value.absent(),
-            Value<String> devolucionId = const Value.absent(),
-            Value<String> articuloId = const Value.absent(),
-            Value<String> articuloDescription = const Value.absent(),
-            Value<double?> cantidadDevolucion = const Value.absent(),
-            Value<double?> cantidadRecibida = const Value.absent(),
-            Value<String?> devolucionEstadoId = const Value.absent(),
-            Value<String?> devolucionMotivoId = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              DevolucionLineaTableCompanion(
-            empresaId: empresaId,
-            devolucionId: devolucionId,
-            articuloId: articuloId,
-            articuloDescription: articuloDescription,
-            cantidadDevolucion: cantidadDevolucion,
-            cantidadRecibida: cantidadRecibida,
-            devolucionEstadoId: devolucionEstadoId,
-            devolucionMotivoId: devolucionMotivoId,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String empresaId,
-            required String devolucionId,
-            required String articuloId,
-            required String articuloDescription,
-            Value<double?> cantidadDevolucion = const Value.absent(),
-            Value<double?> cantidadRecibida = const Value.absent(),
-            Value<String?> devolucionEstadoId = const Value.absent(),
-            Value<String?> devolucionMotivoId = const Value.absent(),
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              DevolucionLineaTableCompanion.insert(
-            empresaId: empresaId,
-            devolucionId: devolucionId,
-            articuloId: articuloId,
-            articuloDescription: articuloDescription,
-            cantidadDevolucion: cantidadDevolucion,
-            cantidadRecibida: cantidadRecibida,
-            devolucionEstadoId: devolucionEstadoId,
-            devolucionMotivoId: devolucionMotivoId,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
-}
 
 class $$DevolucionLineaTableTableFilterComposer
     extends FilterComposer<_$RemoteAppDatabase, $DevolucionLineaTableTable> {
@@ -33018,6 +34888,105 @@ class $$DevolucionLineaTableTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$DevolucionLineaTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $DevolucionLineaTableTable,
+    DevolucionLineaDTO,
+    $$DevolucionLineaTableTableFilterComposer,
+    $$DevolucionLineaTableTableOrderingComposer,
+    $$DevolucionLineaTableTableCreateCompanionBuilder,
+    $$DevolucionLineaTableTableUpdateCompanionBuilder,
+    (
+      DevolucionLineaDTO,
+      BaseReferences<_$RemoteAppDatabase, $DevolucionLineaTableTable,
+          DevolucionLineaDTO>
+    ),
+    DevolucionLineaDTO,
+    PrefetchHooks Function()> {
+  $$DevolucionLineaTableTableTableManager(
+      _$RemoteAppDatabase db, $DevolucionLineaTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$DevolucionLineaTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$DevolucionLineaTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> empresaId = const Value.absent(),
+            Value<String> devolucionId = const Value.absent(),
+            Value<String> articuloId = const Value.absent(),
+            Value<String> articuloDescription = const Value.absent(),
+            Value<double?> cantidadDevolucion = const Value.absent(),
+            Value<double?> cantidadRecibida = const Value.absent(),
+            Value<String?> devolucionEstadoId = const Value.absent(),
+            Value<String?> devolucionMotivoId = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              DevolucionLineaTableCompanion(
+            empresaId: empresaId,
+            devolucionId: devolucionId,
+            articuloId: articuloId,
+            articuloDescription: articuloDescription,
+            cantidadDevolucion: cantidadDevolucion,
+            cantidadRecibida: cantidadRecibida,
+            devolucionEstadoId: devolucionEstadoId,
+            devolucionMotivoId: devolucionMotivoId,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String empresaId,
+            required String devolucionId,
+            required String articuloId,
+            required String articuloDescription,
+            Value<double?> cantidadDevolucion = const Value.absent(),
+            Value<double?> cantidadRecibida = const Value.absent(),
+            Value<String?> devolucionEstadoId = const Value.absent(),
+            Value<String?> devolucionMotivoId = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              DevolucionLineaTableCompanion.insert(
+            empresaId: empresaId,
+            devolucionId: devolucionId,
+            articuloId: articuloId,
+            articuloDescription: articuloDescription,
+            cantidadDevolucion: cantidadDevolucion,
+            cantidadRecibida: cantidadRecibida,
+            devolucionEstadoId: devolucionEstadoId,
+            devolucionMotivoId: devolucionMotivoId,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$DevolucionLineaTableTableProcessedTableManager
+    = ProcessedTableManager<
+        _$RemoteAppDatabase,
+        $DevolucionLineaTableTable,
+        DevolucionLineaDTO,
+        $$DevolucionLineaTableTableFilterComposer,
+        $$DevolucionLineaTableTableOrderingComposer,
+        $$DevolucionLineaTableTableCreateCompanionBuilder,
+        $$DevolucionLineaTableTableUpdateCompanionBuilder,
+        (
+          DevolucionLineaDTO,
+          BaseReferences<_$RemoteAppDatabase, $DevolucionLineaTableTable,
+              DevolucionLineaDTO>
+        ),
+        DevolucionLineaDTO,
+        PrefetchHooks Function()>;
 typedef $$DevolucionTableTableCreateCompanionBuilder = DevolucionTableCompanion
     Function({
   required String empresaId,
@@ -33062,110 +35031,6 @@ typedef $$DevolucionTableTableUpdateCompanionBuilder = DevolucionTableCompanion
   Value<String> deleted,
   Value<int> rowid,
 });
-
-class $$DevolucionTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $DevolucionTableTable,
-    DevolucionDTO,
-    $$DevolucionTableTableFilterComposer,
-    $$DevolucionTableTableOrderingComposer,
-    $$DevolucionTableTableCreateCompanionBuilder,
-    $$DevolucionTableTableUpdateCompanionBuilder> {
-  $$DevolucionTableTableTableManager(
-      _$RemoteAppDatabase db, $DevolucionTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer:
-              $$DevolucionTableTableFilterComposer(ComposerState(db, table)),
-          orderingComposer:
-              $$DevolucionTableTableOrderingComposer(ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> empresaId = const Value.absent(),
-            Value<String> id = const Value.absent(),
-            Value<DateTime> fechaDevolucion = const Value.absent(),
-            Value<String?> clienteId = const Value.absent(),
-            Value<String?> direccionId = const Value.absent(),
-            Value<String?> nombre = const Value.absent(),
-            Value<String?> direccionRecogida1 = const Value.absent(),
-            Value<String?> direccionRecogida2 = const Value.absent(),
-            Value<String?> codigoPostal = const Value.absent(),
-            Value<String?> poblacion = const Value.absent(),
-            Value<String?> paisId = const Value.absent(),
-            Value<String?> almacenDestino = const Value.absent(),
-            Value<String?> agenciaTransporte = const Value.absent(),
-            Value<String> devolucionEstadoId = const Value.absent(),
-            Value<double> kilosDevolucion = const Value.absent(),
-            Value<double> bultos = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              DevolucionTableCompanion(
-            empresaId: empresaId,
-            id: id,
-            fechaDevolucion: fechaDevolucion,
-            clienteId: clienteId,
-            direccionId: direccionId,
-            nombre: nombre,
-            direccionRecogida1: direccionRecogida1,
-            direccionRecogida2: direccionRecogida2,
-            codigoPostal: codigoPostal,
-            poblacion: poblacion,
-            paisId: paisId,
-            almacenDestino: almacenDestino,
-            agenciaTransporte: agenciaTransporte,
-            devolucionEstadoId: devolucionEstadoId,
-            kilosDevolucion: kilosDevolucion,
-            bultos: bultos,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String empresaId,
-            required String id,
-            required DateTime fechaDevolucion,
-            Value<String?> clienteId = const Value.absent(),
-            Value<String?> direccionId = const Value.absent(),
-            Value<String?> nombre = const Value.absent(),
-            Value<String?> direccionRecogida1 = const Value.absent(),
-            Value<String?> direccionRecogida2 = const Value.absent(),
-            Value<String?> codigoPostal = const Value.absent(),
-            Value<String?> poblacion = const Value.absent(),
-            Value<String?> paisId = const Value.absent(),
-            Value<String?> almacenDestino = const Value.absent(),
-            Value<String?> agenciaTransporte = const Value.absent(),
-            required String devolucionEstadoId,
-            required double kilosDevolucion,
-            required double bultos,
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              DevolucionTableCompanion.insert(
-            empresaId: empresaId,
-            id: id,
-            fechaDevolucion: fechaDevolucion,
-            clienteId: clienteId,
-            direccionId: direccionId,
-            nombre: nombre,
-            direccionRecogida1: direccionRecogida1,
-            direccionRecogida2: direccionRecogida2,
-            codigoPostal: codigoPostal,
-            poblacion: poblacion,
-            paisId: paisId,
-            almacenDestino: almacenDestino,
-            agenciaTransporte: agenciaTransporte,
-            devolucionEstadoId: devolucionEstadoId,
-            kilosDevolucion: kilosDevolucion,
-            bultos: bultos,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
-}
 
 class $$DevolucionTableTableFilterComposer
     extends FilterComposer<_$RemoteAppDatabase, $DevolucionTableTable> {
@@ -33355,6 +35220,134 @@ class $$DevolucionTableTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$DevolucionTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $DevolucionTableTable,
+    DevolucionDTO,
+    $$DevolucionTableTableFilterComposer,
+    $$DevolucionTableTableOrderingComposer,
+    $$DevolucionTableTableCreateCompanionBuilder,
+    $$DevolucionTableTableUpdateCompanionBuilder,
+    (
+      DevolucionDTO,
+      BaseReferences<_$RemoteAppDatabase, $DevolucionTableTable, DevolucionDTO>
+    ),
+    DevolucionDTO,
+    PrefetchHooks Function()> {
+  $$DevolucionTableTableTableManager(
+      _$RemoteAppDatabase db, $DevolucionTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$DevolucionTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$DevolucionTableTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> empresaId = const Value.absent(),
+            Value<String> id = const Value.absent(),
+            Value<DateTime> fechaDevolucion = const Value.absent(),
+            Value<String?> clienteId = const Value.absent(),
+            Value<String?> direccionId = const Value.absent(),
+            Value<String?> nombre = const Value.absent(),
+            Value<String?> direccionRecogida1 = const Value.absent(),
+            Value<String?> direccionRecogida2 = const Value.absent(),
+            Value<String?> codigoPostal = const Value.absent(),
+            Value<String?> poblacion = const Value.absent(),
+            Value<String?> paisId = const Value.absent(),
+            Value<String?> almacenDestino = const Value.absent(),
+            Value<String?> agenciaTransporte = const Value.absent(),
+            Value<String> devolucionEstadoId = const Value.absent(),
+            Value<double> kilosDevolucion = const Value.absent(),
+            Value<double> bultos = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              DevolucionTableCompanion(
+            empresaId: empresaId,
+            id: id,
+            fechaDevolucion: fechaDevolucion,
+            clienteId: clienteId,
+            direccionId: direccionId,
+            nombre: nombre,
+            direccionRecogida1: direccionRecogida1,
+            direccionRecogida2: direccionRecogida2,
+            codigoPostal: codigoPostal,
+            poblacion: poblacion,
+            paisId: paisId,
+            almacenDestino: almacenDestino,
+            agenciaTransporte: agenciaTransporte,
+            devolucionEstadoId: devolucionEstadoId,
+            kilosDevolucion: kilosDevolucion,
+            bultos: bultos,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String empresaId,
+            required String id,
+            required DateTime fechaDevolucion,
+            Value<String?> clienteId = const Value.absent(),
+            Value<String?> direccionId = const Value.absent(),
+            Value<String?> nombre = const Value.absent(),
+            Value<String?> direccionRecogida1 = const Value.absent(),
+            Value<String?> direccionRecogida2 = const Value.absent(),
+            Value<String?> codigoPostal = const Value.absent(),
+            Value<String?> poblacion = const Value.absent(),
+            Value<String?> paisId = const Value.absent(),
+            Value<String?> almacenDestino = const Value.absent(),
+            Value<String?> agenciaTransporte = const Value.absent(),
+            required String devolucionEstadoId,
+            required double kilosDevolucion,
+            required double bultos,
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              DevolucionTableCompanion.insert(
+            empresaId: empresaId,
+            id: id,
+            fechaDevolucion: fechaDevolucion,
+            clienteId: clienteId,
+            direccionId: direccionId,
+            nombre: nombre,
+            direccionRecogida1: direccionRecogida1,
+            direccionRecogida2: direccionRecogida2,
+            codigoPostal: codigoPostal,
+            poblacion: poblacion,
+            paisId: paisId,
+            almacenDestino: almacenDestino,
+            agenciaTransporte: agenciaTransporte,
+            devolucionEstadoId: devolucionEstadoId,
+            kilosDevolucion: kilosDevolucion,
+            bultos: bultos,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$DevolucionTableTableProcessedTableManager = ProcessedTableManager<
+    _$RemoteAppDatabase,
+    $DevolucionTableTable,
+    DevolucionDTO,
+    $$DevolucionTableTableFilterComposer,
+    $$DevolucionTableTableOrderingComposer,
+    $$DevolucionTableTableCreateCompanionBuilder,
+    $$DevolucionTableTableUpdateCompanionBuilder,
+    (
+      DevolucionDTO,
+      BaseReferences<_$RemoteAppDatabase, $DevolucionTableTable, DevolucionDTO>
+    ),
+    DevolucionDTO,
+    PrefetchHooks Function()>;
 typedef $$ProvinciaTableTableCreateCompanionBuilder = ProvinciaTableCompanion
     Function({
   Value<String?> paisId,
@@ -33375,62 +35368,6 @@ typedef $$ProvinciaTableTableUpdateCompanionBuilder = ProvinciaTableCompanion
   Value<String> deleted,
   Value<int> rowid,
 });
-
-class $$ProvinciaTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $ProvinciaTableTable,
-    ProvinciaDTO,
-    $$ProvinciaTableTableFilterComposer,
-    $$ProvinciaTableTableOrderingComposer,
-    $$ProvinciaTableTableCreateCompanionBuilder,
-    $$ProvinciaTableTableUpdateCompanionBuilder> {
-  $$ProvinciaTableTableTableManager(
-      _$RemoteAppDatabase db, $ProvinciaTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer:
-              $$ProvinciaTableTableFilterComposer(ComposerState(db, table)),
-          orderingComposer:
-              $$ProvinciaTableTableOrderingComposer(ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String?> paisId = const Value.absent(),
-            Value<String?> regionId = const Value.absent(),
-            Value<String> provinciaId = const Value.absent(),
-            Value<String?> provincia = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ProvinciaTableCompanion(
-            paisId: paisId,
-            regionId: regionId,
-            provinciaId: provinciaId,
-            provincia: provincia,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            Value<String?> paisId = const Value.absent(),
-            Value<String?> regionId = const Value.absent(),
-            required String provinciaId,
-            Value<String?> provincia = const Value.absent(),
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ProvinciaTableCompanion.insert(
-            paisId: paisId,
-            regionId: regionId,
-            provinciaId: provinciaId,
-            provincia: provincia,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
-}
 
 class $$ProvinciaTableTableFilterComposer
     extends FilterComposer<_$RemoteAppDatabase, $ProvinciaTableTable> {
@@ -33500,6 +35437,86 @@ class $$ProvinciaTableTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$ProvinciaTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $ProvinciaTableTable,
+    ProvinciaDTO,
+    $$ProvinciaTableTableFilterComposer,
+    $$ProvinciaTableTableOrderingComposer,
+    $$ProvinciaTableTableCreateCompanionBuilder,
+    $$ProvinciaTableTableUpdateCompanionBuilder,
+    (
+      ProvinciaDTO,
+      BaseReferences<_$RemoteAppDatabase, $ProvinciaTableTable, ProvinciaDTO>
+    ),
+    ProvinciaDTO,
+    PrefetchHooks Function()> {
+  $$ProvinciaTableTableTableManager(
+      _$RemoteAppDatabase db, $ProvinciaTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$ProvinciaTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$ProvinciaTableTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String?> paisId = const Value.absent(),
+            Value<String?> regionId = const Value.absent(),
+            Value<String> provinciaId = const Value.absent(),
+            Value<String?> provincia = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ProvinciaTableCompanion(
+            paisId: paisId,
+            regionId: regionId,
+            provinciaId: provinciaId,
+            provincia: provincia,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            Value<String?> paisId = const Value.absent(),
+            Value<String?> regionId = const Value.absent(),
+            required String provinciaId,
+            Value<String?> provincia = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ProvinciaTableCompanion.insert(
+            paisId: paisId,
+            regionId: regionId,
+            provinciaId: provinciaId,
+            provincia: provincia,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$ProvinciaTableTableProcessedTableManager = ProcessedTableManager<
+    _$RemoteAppDatabase,
+    $ProvinciaTableTable,
+    ProvinciaDTO,
+    $$ProvinciaTableTableFilterComposer,
+    $$ProvinciaTableTableOrderingComposer,
+    $$ProvinciaTableTableCreateCompanionBuilder,
+    $$ProvinciaTableTableUpdateCompanionBuilder,
+    (
+      ProvinciaDTO,
+      BaseReferences<_$RemoteAppDatabase, $ProvinciaTableTable, ProvinciaDTO>
+    ),
+    ProvinciaDTO,
+    PrefetchHooks Function()>;
 typedef $$VisitaCompetidorTableTableCreateCompanionBuilder
     = VisitaCompetidorTableCompanion Function({
   Value<int> id,
@@ -33532,86 +35549,6 @@ typedef $$VisitaCompetidorTableTableUpdateCompanionBuilder
   Value<DateTime> lastUpdated,
   Value<String> deleted,
 });
-
-class $$VisitaCompetidorTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $VisitaCompetidorTableTable,
-    VisitaCompetidorDTO,
-    $$VisitaCompetidorTableTableFilterComposer,
-    $$VisitaCompetidorTableTableOrderingComposer,
-    $$VisitaCompetidorTableTableCreateCompanionBuilder,
-    $$VisitaCompetidorTableTableUpdateCompanionBuilder> {
-  $$VisitaCompetidorTableTableTableManager(
-      _$RemoteAppDatabase db, $VisitaCompetidorTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer: $$VisitaCompetidorTableTableFilterComposer(
-              ComposerState(db, table)),
-          orderingComposer: $$VisitaCompetidorTableTableOrderingComposer(
-              ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            Value<String> descripcionES = const Value.absent(),
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPL = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-          }) =>
-              VisitaCompetidorTableCompanion(
-            id: id,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPL: descripcionPL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-          ),
-          createCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            required String descripcionES,
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPL = const Value.absent(),
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-          }) =>
-              VisitaCompetidorTableCompanion.insert(
-            id: id,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPL: descripcionPL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-          ),
-        ));
-}
 
 class $$VisitaCompetidorTableTableFilterComposer
     extends FilterComposer<_$RemoteAppDatabase, $VisitaCompetidorTableTable> {
@@ -33751,6 +35688,113 @@ class $$VisitaCompetidorTableTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$VisitaCompetidorTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $VisitaCompetidorTableTable,
+    VisitaCompetidorDTO,
+    $$VisitaCompetidorTableTableFilterComposer,
+    $$VisitaCompetidorTableTableOrderingComposer,
+    $$VisitaCompetidorTableTableCreateCompanionBuilder,
+    $$VisitaCompetidorTableTableUpdateCompanionBuilder,
+    (
+      VisitaCompetidorDTO,
+      BaseReferences<_$RemoteAppDatabase, $VisitaCompetidorTableTable,
+          VisitaCompetidorDTO>
+    ),
+    VisitaCompetidorDTO,
+    PrefetchHooks Function()> {
+  $$VisitaCompetidorTableTableTableManager(
+      _$RemoteAppDatabase db, $VisitaCompetidorTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$VisitaCompetidorTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$VisitaCompetidorTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+          }) =>
+              VisitaCompetidorTableCompanion(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+          }) =>
+              VisitaCompetidorTableCompanion.insert(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$VisitaCompetidorTableTableProcessedTableManager
+    = ProcessedTableManager<
+        _$RemoteAppDatabase,
+        $VisitaCompetidorTableTable,
+        VisitaCompetidorDTO,
+        $$VisitaCompetidorTableTableFilterComposer,
+        $$VisitaCompetidorTableTableOrderingComposer,
+        $$VisitaCompetidorTableTableCreateCompanionBuilder,
+        $$VisitaCompetidorTableTableUpdateCompanionBuilder,
+        (
+          VisitaCompetidorDTO,
+          BaseReferences<_$RemoteAppDatabase, $VisitaCompetidorTableTable,
+              VisitaCompetidorDTO>
+        ),
+        VisitaCompetidorDTO,
+        PrefetchHooks Function()>;
 typedef $$VisitaSectorTableTableCreateCompanionBuilder
     = VisitaSectorTableCompanion Function({
   Value<int> id,
@@ -33783,86 +35827,6 @@ typedef $$VisitaSectorTableTableUpdateCompanionBuilder
   Value<DateTime> lastUpdated,
   Value<String> deleted,
 });
-
-class $$VisitaSectorTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $VisitaSectorTableTable,
-    VisitaSectorDTO,
-    $$VisitaSectorTableTableFilterComposer,
-    $$VisitaSectorTableTableOrderingComposer,
-    $$VisitaSectorTableTableCreateCompanionBuilder,
-    $$VisitaSectorTableTableUpdateCompanionBuilder> {
-  $$VisitaSectorTableTableTableManager(
-      _$RemoteAppDatabase db, $VisitaSectorTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer:
-              $$VisitaSectorTableTableFilterComposer(ComposerState(db, table)),
-          orderingComposer: $$VisitaSectorTableTableOrderingComposer(
-              ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            Value<String> descripcionES = const Value.absent(),
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPL = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-          }) =>
-              VisitaSectorTableCompanion(
-            id: id,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPL: descripcionPL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-          ),
-          createCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            required String descripcionES,
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPL = const Value.absent(),
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-          }) =>
-              VisitaSectorTableCompanion.insert(
-            id: id,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPL: descripcionPL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-          ),
-        ));
-}
 
 class $$VisitaSectorTableTableFilterComposer
     extends FilterComposer<_$RemoteAppDatabase, $VisitaSectorTableTable> {
@@ -34002,6 +35966,112 @@ class $$VisitaSectorTableTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$VisitaSectorTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $VisitaSectorTableTable,
+    VisitaSectorDTO,
+    $$VisitaSectorTableTableFilterComposer,
+    $$VisitaSectorTableTableOrderingComposer,
+    $$VisitaSectorTableTableCreateCompanionBuilder,
+    $$VisitaSectorTableTableUpdateCompanionBuilder,
+    (
+      VisitaSectorDTO,
+      BaseReferences<_$RemoteAppDatabase, $VisitaSectorTableTable,
+          VisitaSectorDTO>
+    ),
+    VisitaSectorDTO,
+    PrefetchHooks Function()> {
+  $$VisitaSectorTableTableTableManager(
+      _$RemoteAppDatabase db, $VisitaSectorTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$VisitaSectorTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer: $$VisitaSectorTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+          }) =>
+              VisitaSectorTableCompanion(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+          }) =>
+              VisitaSectorTableCompanion.insert(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$VisitaSectorTableTableProcessedTableManager = ProcessedTableManager<
+    _$RemoteAppDatabase,
+    $VisitaSectorTableTable,
+    VisitaSectorDTO,
+    $$VisitaSectorTableTableFilterComposer,
+    $$VisitaSectorTableTableOrderingComposer,
+    $$VisitaSectorTableTableCreateCompanionBuilder,
+    $$VisitaSectorTableTableUpdateCompanionBuilder,
+    (
+      VisitaSectorDTO,
+      BaseReferences<_$RemoteAppDatabase, $VisitaSectorTableTable,
+          VisitaSectorDTO>
+    ),
+    VisitaSectorDTO,
+    PrefetchHooks Function()>;
 typedef $$VisitaMotivoNoVentaTableTableCreateCompanionBuilder
     = VisitaMotivoNoVentaTableCompanion Function({
   Value<int> id,
@@ -34034,86 +36104,6 @@ typedef $$VisitaMotivoNoVentaTableTableUpdateCompanionBuilder
   Value<DateTime> lastUpdated,
   Value<String> deleted,
 });
-
-class $$VisitaMotivoNoVentaTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $VisitaMotivoNoVentaTableTable,
-    VisitaMotivoNoVentaDTO,
-    $$VisitaMotivoNoVentaTableTableFilterComposer,
-    $$VisitaMotivoNoVentaTableTableOrderingComposer,
-    $$VisitaMotivoNoVentaTableTableCreateCompanionBuilder,
-    $$VisitaMotivoNoVentaTableTableUpdateCompanionBuilder> {
-  $$VisitaMotivoNoVentaTableTableTableManager(
-      _$RemoteAppDatabase db, $VisitaMotivoNoVentaTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer: $$VisitaMotivoNoVentaTableTableFilterComposer(
-              ComposerState(db, table)),
-          orderingComposer: $$VisitaMotivoNoVentaTableTableOrderingComposer(
-              ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            Value<String> descripcionES = const Value.absent(),
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPL = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-          }) =>
-              VisitaMotivoNoVentaTableCompanion(
-            id: id,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPL: descripcionPL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-          ),
-          createCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            required String descripcionES,
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPL = const Value.absent(),
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-          }) =>
-              VisitaMotivoNoVentaTableCompanion.insert(
-            id: id,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPL: descripcionPL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-          ),
-        ));
-}
 
 class $$VisitaMotivoNoVentaTableTableFilterComposer extends FilterComposer<
     _$RemoteAppDatabase, $VisitaMotivoNoVentaTableTable> {
@@ -34253,6 +36243,113 @@ class $$VisitaMotivoNoVentaTableTableOrderingComposer extends OrderingComposer<
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+class $$VisitaMotivoNoVentaTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $VisitaMotivoNoVentaTableTable,
+    VisitaMotivoNoVentaDTO,
+    $$VisitaMotivoNoVentaTableTableFilterComposer,
+    $$VisitaMotivoNoVentaTableTableOrderingComposer,
+    $$VisitaMotivoNoVentaTableTableCreateCompanionBuilder,
+    $$VisitaMotivoNoVentaTableTableUpdateCompanionBuilder,
+    (
+      VisitaMotivoNoVentaDTO,
+      BaseReferences<_$RemoteAppDatabase, $VisitaMotivoNoVentaTableTable,
+          VisitaMotivoNoVentaDTO>
+    ),
+    VisitaMotivoNoVentaDTO,
+    PrefetchHooks Function()> {
+  $$VisitaMotivoNoVentaTableTableTableManager(
+      _$RemoteAppDatabase db, $VisitaMotivoNoVentaTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$VisitaMotivoNoVentaTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$VisitaMotivoNoVentaTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+          }) =>
+              VisitaMotivoNoVentaTableCompanion(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+          }) =>
+              VisitaMotivoNoVentaTableCompanion.insert(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$VisitaMotivoNoVentaTableTableProcessedTableManager
+    = ProcessedTableManager<
+        _$RemoteAppDatabase,
+        $VisitaMotivoNoVentaTableTable,
+        VisitaMotivoNoVentaDTO,
+        $$VisitaMotivoNoVentaTableTableFilterComposer,
+        $$VisitaMotivoNoVentaTableTableOrderingComposer,
+        $$VisitaMotivoNoVentaTableTableCreateCompanionBuilder,
+        $$VisitaMotivoNoVentaTableTableUpdateCompanionBuilder,
+        (
+          VisitaMotivoNoVentaDTO,
+          BaseReferences<_$RemoteAppDatabase, $VisitaMotivoNoVentaTableTable,
+              VisitaMotivoNoVentaDTO>
+        ),
+        VisitaMotivoNoVentaDTO,
+        PrefetchHooks Function()>;
 typedef $$TrackingEstadoTableTableCreateCompanionBuilder
     = TrackingEstadoTableCompanion Function({
   required String id,
@@ -34295,106 +36392,6 @@ typedef $$TrackingEstadoTableTableUpdateCompanionBuilder
   Value<String> deleted,
   Value<int> rowid,
 });
-
-class $$TrackingEstadoTableTableTableManager extends RootTableManager<
-    _$RemoteAppDatabase,
-    $TrackingEstadoTableTable,
-    TrackingEstadoDTO,
-    $$TrackingEstadoTableTableFilterComposer,
-    $$TrackingEstadoTableTableOrderingComposer,
-    $$TrackingEstadoTableTableCreateCompanionBuilder,
-    $$TrackingEstadoTableTableUpdateCompanionBuilder> {
-  $$TrackingEstadoTableTableTableManager(
-      _$RemoteAppDatabase db, $TrackingEstadoTableTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer: $$TrackingEstadoTableTableFilterComposer(
-              ComposerState(db, table)),
-          orderingComposer: $$TrackingEstadoTableTableOrderingComposer(
-              ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String> id = const Value.absent(),
-            Value<String> descripcionES = const Value.absent(),
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPT = const Value.absent(),
-            Value<String?> descripcionRO = const Value.absent(),
-            Value<String?> descripcionRU = const Value.absent(),
-            Value<String?> descripcionCN = const Value.absent(),
-            Value<String?> descripcionEL = const Value.absent(),
-            Value<DateTime> lastUpdated = const Value.absent(),
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              TrackingEstadoTableCompanion(
-            id: id,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPT: descripcionPT,
-            descripcionRO: descripcionRO,
-            descripcionRU: descripcionRU,
-            descripcionCN: descripcionCN,
-            descripcionEL: descripcionEL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String id,
-            required String descripcionES,
-            Value<String?> descripcionEN = const Value.absent(),
-            Value<String?> descripcionFR = const Value.absent(),
-            Value<String?> descripcionDE = const Value.absent(),
-            Value<String?> descripcionCA = const Value.absent(),
-            Value<String?> descripcionGB = const Value.absent(),
-            Value<String?> descripcionHU = const Value.absent(),
-            Value<String?> descripcionIT = const Value.absent(),
-            Value<String?> descripcionNL = const Value.absent(),
-            Value<String?> descripcionPT = const Value.absent(),
-            Value<String?> descripcionRO = const Value.absent(),
-            Value<String?> descripcionRU = const Value.absent(),
-            Value<String?> descripcionCN = const Value.absent(),
-            Value<String?> descripcionEL = const Value.absent(),
-            required DateTime lastUpdated,
-            Value<String> deleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              TrackingEstadoTableCompanion.insert(
-            id: id,
-            descripcionES: descripcionES,
-            descripcionEN: descripcionEN,
-            descripcionFR: descripcionFR,
-            descripcionDE: descripcionDE,
-            descripcionCA: descripcionCA,
-            descripcionGB: descripcionGB,
-            descripcionHU: descripcionHU,
-            descripcionIT: descripcionIT,
-            descripcionNL: descripcionNL,
-            descripcionPT: descripcionPT,
-            descripcionRO: descripcionRO,
-            descripcionRU: descripcionRU,
-            descripcionCN: descripcionCN,
-            descripcionEL: descripcionEL,
-            lastUpdated: lastUpdated,
-            deleted: deleted,
-            rowid: rowid,
-          ),
-        ));
-}
 
 class $$TrackingEstadoTableTableFilterComposer
     extends FilterComposer<_$RemoteAppDatabase, $TrackingEstadoTableTable> {
@@ -34573,6 +36570,133 @@ class $$TrackingEstadoTableTableOrderingComposer
       builder: (column, joinBuilders) =>
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
+
+class $$TrackingEstadoTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $TrackingEstadoTableTable,
+    TrackingEstadoDTO,
+    $$TrackingEstadoTableTableFilterComposer,
+    $$TrackingEstadoTableTableOrderingComposer,
+    $$TrackingEstadoTableTableCreateCompanionBuilder,
+    $$TrackingEstadoTableTableUpdateCompanionBuilder,
+    (
+      TrackingEstadoDTO,
+      BaseReferences<_$RemoteAppDatabase, $TrackingEstadoTableTable,
+          TrackingEstadoDTO>
+    ),
+    TrackingEstadoDTO,
+    PrefetchHooks Function()> {
+  $$TrackingEstadoTableTableTableManager(
+      _$RemoteAppDatabase db, $TrackingEstadoTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$TrackingEstadoTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$TrackingEstadoTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              TrackingEstadoTableCompanion(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPT = const Value.absent(),
+            Value<String?> descripcionRO = const Value.absent(),
+            Value<String?> descripcionRU = const Value.absent(),
+            Value<String?> descripcionCN = const Value.absent(),
+            Value<String?> descripcionEL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              TrackingEstadoTableCompanion.insert(
+            id: id,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPT: descripcionPT,
+            descripcionRO: descripcionRO,
+            descripcionRU: descripcionRU,
+            descripcionCN: descripcionCN,
+            descripcionEL: descripcionEL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$TrackingEstadoTableTableProcessedTableManager = ProcessedTableManager<
+    _$RemoteAppDatabase,
+    $TrackingEstadoTableTable,
+    TrackingEstadoDTO,
+    $$TrackingEstadoTableTableFilterComposer,
+    $$TrackingEstadoTableTableOrderingComposer,
+    $$TrackingEstadoTableTableCreateCompanionBuilder,
+    $$TrackingEstadoTableTableUpdateCompanionBuilder,
+    (
+      TrackingEstadoDTO,
+      BaseReferences<_$RemoteAppDatabase, $TrackingEstadoTableTable,
+          TrackingEstadoDTO>
+    ),
+    TrackingEstadoDTO,
+    PrefetchHooks Function()>;
 
 class $RemoteAppDatabaseManager {
   final _$RemoteAppDatabase _db;

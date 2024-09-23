@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/domain/usuario.dart';
+import '../domain/usuario.dart';
 
 part 'usuario_aux_dto.freezed.dart';
 part 'usuario_aux_dto.g.dart';

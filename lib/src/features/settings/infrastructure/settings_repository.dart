@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/exceptions/app_exception.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/local_database.dart';
+import '../../../core/exceptions/app_exception.dart';
+import '../../../core/infrastructure/local_database.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -26,7 +26,7 @@ class SettingsRepository {
   const SettingsRepository(this.localDb);
 
   Future<PackageInfo> getPackageInfo() async {
-    return await PackageInfo.fromPlatform();
+    return PackageInfo.fromPlatform();
   }
 
   Future<File> exportDatabaseInto() async {
@@ -54,7 +54,7 @@ class SettingsRepository {
     const remoteDatabaseJournalName = 'jbm.sqlite-journal';
 
     try {
-      final Directory directory = await getApplicationDocumentsDirectory();
+      final directory = await getApplicationDocumentsDirectory();
       if (await _databaseFileExist(
           directory: directory, remoteDatabaseName: remoteDatabaseName)) {
         File((join(directory.path, remoteDatabaseName)))
@@ -81,7 +81,7 @@ class SettingsRepository {
     const localDatabaseJournalName = 'local_jbm.sqlite-journal';
 
     try {
-      final Directory directory = await getApplicationDocumentsDirectory();
+      final directory = await getApplicationDocumentsDirectory();
       if (await _databaseFileExist(
           directory: directory, remoteDatabaseName: localDatabaseName)) {
         File((join(directory.path, localDatabaseName)))
@@ -103,6 +103,6 @@ class SettingsRepository {
   Future<bool> _databaseFileExist(
       {required Directory directory,
       required String remoteDatabaseName}) async {
-    return await File((join(directory.path, remoteDatabaseName))).exists();
+    return File((join(directory.path, remoteDatabaseName))).exists();
   }
 }

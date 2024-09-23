@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/features/notifications/core/application/notification_provider.dart';
+
+import '../../../features/notifications/core/application/notification_provider.dart';
 
 class IconMenuBadge extends ConsumerWidget {
   const IconMenuBadge(this.scaffoldKey, {super.key});
@@ -19,7 +20,7 @@ class IconMenuBadge extends ConsumerWidget {
         ),
         state.maybeWhen(
             orElse: () => Container(),
-            data: (_) => _ != null
+            data: (data) => data != null
                 ? Positioned(
                     right: 18,
                     top: 14,

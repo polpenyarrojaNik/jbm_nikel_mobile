@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_indicator_widget.dart';
+import 'progress_indicator_widget.dart';
 
 import '../../exceptions/app_exception.dart';
 import 'error_message_widget.dart';

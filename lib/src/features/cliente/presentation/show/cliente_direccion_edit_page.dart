@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_direccion.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../../../generated/l10n.dart';
@@ -17,6 +16,7 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../../usuario/application/usuario_notifier.dart';
+import '../../domain/cliente_direccion.dart';
 import '../../domain/cliente_direccion_edit_page_data.dart';
 import '../../domain/cliente_direccion_imp.dart';
 import '../../domain/cliente_imp_param.dart';
@@ -57,7 +57,7 @@ class _ClienteDireccionEditPageState
     final value = ref.watch(
         clienteDireccionEditPageControllerProvider(widget.clienteImpParam));
 
-    ref.listen<AsyncValue>(
+    ref.listen<AsyncValue<ClienteDireccionEditPageData>>(
       clienteDireccionEditPageControllerProvider(widget.clienteImpParam),
       (_, state) => state.maybeWhen(
           orElse: () {},
@@ -73,8 +73,7 @@ class _ClienteDireccionEditPageState
             context.router.maybePop();
           },
           data: (clienteDireccionEditPageData) {
-            clienteDireccionEditPageData =
-                clienteDireccionEditPageData as ClienteDireccionEditPageData;
+            clienteDireccionEditPageData = clienteDireccionEditPageData;
             if (clienteDireccionEditPageData.isSent) {
               if (clienteDireccionEditPageData.clienteDireccion != null) {
                 context.showSuccessBar(

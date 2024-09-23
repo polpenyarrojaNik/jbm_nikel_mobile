@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
-import 'package:jbm_nikel_mobile/src/features/expediciones/domain/expedicion.dart';
+import '../../../core/helpers/extension.dart';
+import '../domain/expedicion.dart';
 
 import '../../../core/domain/divisa.dart';
 import '../../../core/domain/pais.dart';

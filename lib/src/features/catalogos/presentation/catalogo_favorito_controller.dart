@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/features/catalogos/presentation/catalogo_search_controller.dart';
 
 import '../../../core/exceptions/app_exception.dart';
 import '../infrastructure/catalogo_repository.dart';
+import 'catalogo_search_controller.dart';
 
 part 'catalogo_favorito_controller.freezed.dart';
 
@@ -34,7 +34,8 @@ class CatalogoFavoritoController
 
   final CatalogoRepository catalogoRepository;
   final int catalogoId;
-  final AutoDisposeStateNotifierProviderRef ref;
+  final AutoDisposeStateNotifierProviderRef<StateNotifier<dynamic>, dynamic>
+      ref;
 
   Future<void> isModuleFavorite() async {
     try {

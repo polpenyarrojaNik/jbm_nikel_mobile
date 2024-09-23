@@ -1,6 +1,6 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/features/devoluciones/domain/devolucion_tipo.dart';
+import '../domain/devolucion_tipo.dart';
 
 import '../../../core/infrastructure/remote_database.dart';
 

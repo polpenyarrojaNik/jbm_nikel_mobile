@@ -1,6 +1,6 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/features/catalogos/domain/catalogo.dart';
+import '../domain/catalogo.dart';
 
 part 'catalogo_dto.freezed.dart';
 part 'catalogo_dto.g.dart';

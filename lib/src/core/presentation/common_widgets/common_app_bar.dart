@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
+import '../../../features/usuario/application/usuario_notifier.dart';
 
 import '../../../features/settings/infrastructure/settings_repository.dart';
 import '../theme/app_sizes.dart';

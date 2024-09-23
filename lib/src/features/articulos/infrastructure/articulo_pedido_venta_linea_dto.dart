@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
+import '../../../core/helpers/extension.dart';
 
 import '../../pedido_venta/infrastructure/pedido_venta_linea_dto.dart';
 import '../domain/articulo_pedido_venta_linea.dart';

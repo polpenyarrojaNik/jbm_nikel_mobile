@@ -2,12 +2,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:better_open_file/better_open_file.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_widget.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/chip_container.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/column_field_text_detail.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/mobile_custom_separatos.dart';
-import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/index/pedido_search_controller.dart';
-import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/show/pedido_venta_linea_tile.dart';
+import '../../../../core/presentation/common_widgets/async_value_widget.dart';
+import '../../../../core/presentation/common_widgets/chip_container.dart';
+import '../../../../core/presentation/common_widgets/column_field_text_detail.dart';
+import '../../../../core/presentation/common_widgets/mobile_custom_separatos.dart';
+import '../index/pedido_search_controller.dart';
+import 'pedido_venta_linea_tile.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';

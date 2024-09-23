@@ -1,36 +1,35 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/domain/provincia.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/app_form_builder_searchable_dropdown.dart';
-import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
-
-import 'package:jbm_nikel_mobile/src/features/cliente/presentation/index/cliente_search_controller.dart';
-import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita.dart';
-import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita_competidor.dart';
-import 'package:jbm_nikel_mobile/src/features/visitas/presentation/edit/pais_search_page.dart';
-import 'package:jbm_nikel_mobile/src/features/visitas/presentation/edit/provincia_search_page.dart';
-import 'package:jbm_nikel_mobile/src/features/visitas/presentation/edit/visita_edit_page_controller.dart';
-import 'package:uuid/uuid.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/pais.dart';
+import '../../../../core/domain/provincia.dart';
 import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/alert_dialogs.dart';
+import '../../../../core/presentation/common_widgets/app_form_builder_searchable_dropdown.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/routing/app_auto_router.dart';
 import '../../../cliente/domain/cliente.dart';
+import '../../../cliente/presentation/index/cliente_search_controller.dart';
 import '../../../usuario/application/usuario_notifier.dart';
+import '../../domain/visita.dart';
+import '../../domain/visita_competidor.dart';
 import '../../domain/visita_id_param.dart';
 import '../../domain/visita_motivos_no_venta.dart';
 import '../../domain/visita_sector.dart';
 import '../../infrastructure/visita_repository.dart';
 import '../index/visita_search_controller.dart';
+import 'pais_search_page.dart';
+import 'provincia_search_page.dart';
+import 'visita_edit_page_controller.dart';
 
 @RoutePage()
 class VisitaEditPage extends ConsumerStatefulWidget {
@@ -213,7 +212,7 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
         }
       }
 
-      ref
+      await ref
           .read(visitaEditPageControllerProvider(visitaIdLocalParam!).notifier)
           .upsertVisita(
             visitaLocal: Visita(
@@ -276,7 +275,7 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
             ),
           );
     } else {
-      context.showErrorBar(
+      await context.showErrorBar(
         content: Text(
             S.of(context).visitas_edit_visitaEditar_errorValidarFormulario),
       );
@@ -786,7 +785,7 @@ class _SelectClienteWidgetState extends ConsumerState<_SelectClienteWidget> {
   }
 
   void navigateToSearchClientes(BuildContext context) async {
-    context.router.push(ClienteListaRoute(isSearchClienteForFrom: true));
+    await context.router.push(ClienteListaRoute(isSearchClienteForFrom: true));
   }
 
   String setClienteValue(String clienteId, String? nombreCliente) {

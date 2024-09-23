@@ -244,7 +244,7 @@ class _ClienteContactoTile extends StatelessWidget {
   }
 
   void openPhoneCall(String phone) async {
-    final Uri params = Uri(
+    final params = Uri(
       scheme: 'tel',
       path: phone,
     );
@@ -252,7 +252,7 @@ class _ClienteContactoTile extends StatelessWidget {
   }
 
   void navigateToEmailApp(String contactEmail) async {
-    final Uri params = Uri(
+    final params = Uri(
       scheme: 'mailto',
       path: contactEmail,
     );

@@ -1,32 +1,32 @@
-import 'package:auto_route/auto_route.dart';
 import 'dart:io';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/local_database.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/column_field_text_detail.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/toasts.dart';
-import 'package:jbm_nikel_mobile/src/features/settings/infrastructure/settings_repository.dart';
-import 'package:jbm_nikel_mobile/src/features/settings/presentation/delete_local_database_controller.dart';
-import 'package:jbm_nikel_mobile/src/features/settings/presentation/export_database_controller.dart';
-import 'package:jbm_nikel_mobile/src/features/sync/application/sync_notifier_provider.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../../../../generated/l10n.dart';
+import '../../../core/infrastructure/local_database.dart';
+import '../../../core/infrastructure/remote_database.dart';
+import '../../../core/infrastructure/sync_service.dart';
 import '../../../core/presentation/common_widgets/app_drawer.dart';
+import '../../../core/presentation/common_widgets/column_field_text_detail.dart';
 import '../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../core/presentation/theme/app_sizes.dart';
+import '../../../core/presentation/toasts.dart';
 import '../../../core/routing/app_auto_router.dart';
 import '../../notifications/core/application/notification_provider.dart';
+import '../../sync/application/sync_notifier_provider.dart';
+import '../../usuario/application/usuario_notifier.dart';
+import '../infrastructure/settings_repository.dart';
 import 'delete_database_controller.dart';
+import 'delete_local_database_controller.dart';
+import 'export_database_controller.dart';
 
 @RoutePage()
 class SettingsPage extends ConsumerWidget {
@@ -40,7 +40,7 @@ class SettingsPage extends ConsumerWidget {
     final statePackageInfo = ref.watch(packageInfoProvider);
     final stateSync = ref.watch(syncNotifierProvider);
 
-    ref.listen<AsyncValue>(
+    ref.listen<AsyncValue<String?>>(
       notificationNotifierProvider,
       (_, state) => state.maybeWhen(
         orElse: () {},
@@ -134,10 +134,10 @@ class SettingsPage extends ConsumerWidget {
       {required BuildContext context,
       required File file,
       required String usuarioId}) async {
-    final Size size = MediaQuery.of(context).size;
+    final size = MediaQuery.of(context).size;
     final directory = await getApplicationDocumentsDirectory();
     final file = XFile('${directory.path}/$localDatabaseName');
-    Share.shareXFiles([file],
+    await Share.shareXFiles([file],
         subject: 'Base de datos local #$usuarioId',
         sharePositionOrigin: Rect.fromLTWH(0, 0, size.width, size.height / 2));
   }
@@ -240,7 +240,7 @@ class _ReemplazarArchivoBaseDeDatosLocalButton extends ConsumerWidget {
       );
 
       if (correctKey != null && correctKey) {
-        ref
+        await ref
             .read(deleteLocalDatabaseControllerProvider.notifier)
             .deleteLocalDatabase();
       }
@@ -286,7 +286,7 @@ class ReplaceDatabaseKeyAlertDialog extends StatelessWidget {
           decoration: InputDecoration(labelText: S.of(context).claveNikel),
           validator: FormBuilderValidators.compose([
             FormBuilderValidators.required(),
-            FormBuilderValidators.match('N1k3l')
+            FormBuilderValidators.match('N1k3l' as RegExp)
           ]),
         ),
       ),

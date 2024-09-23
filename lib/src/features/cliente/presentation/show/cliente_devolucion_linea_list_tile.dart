@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jbm_nikel_mobile/src/features/devoluciones/domain/devolucion_linea.dart';
+import '../../../devoluciones/domain/devolucion_linea.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';

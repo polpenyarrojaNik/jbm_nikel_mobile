@@ -1,8 +1,8 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
-import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita_sector.dart';
+import '../../../core/infrastructure/remote_database.dart';
+import '../domain/visita_sector.dart';
 
 part 'visita_sector_dto.freezed.dart';
 part 'visita_sector_dto.g.dart';

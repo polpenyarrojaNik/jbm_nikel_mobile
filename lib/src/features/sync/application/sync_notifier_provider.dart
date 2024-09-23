@@ -4,11 +4,11 @@ import 'package:drift/isolate.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/local_database.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/log_repository.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_datetime_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_service.dart';
+import '../../../core/infrastructure/local_database.dart';
+import '../../../core/infrastructure/log_repository.dart';
+import '../../../core/infrastructure/sync_datetime_dto.dart';
+import '../../usuario/application/usuario_notifier.dart';
+import '../../usuario/infrastructure/usuario_service.dart';
 
 import '../../../core/domain/isolate_args.dart';
 import '../../../core/infrastructure/remote_database.dart';
@@ -141,7 +141,7 @@ Future<SyncProgress> syncInBackground(IsolateArgs isolateArgs) async {
 
     final dio = Dio();
 
-    final SyncService syncService = SyncService(remoteDb, localDb, dio,
+    final syncService = SyncService(remoteDb, localDb, dio,
         isolateArgs.user, null, LogRepository(dio, localDb, isolateArgs.user));
 
     return await syncService.syncAllTable();

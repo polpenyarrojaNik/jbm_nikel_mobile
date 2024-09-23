@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita_competidor.dart';
-import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita_motivos_no_venta.dart';
-import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita_sector.dart';
+import 'visita_competidor.dart';
+import 'visita_motivos_no_venta.dart';
+import 'visita_sector.dart';
 
 import '../../../core/domain/pais.dart';
 import '../../../core/domain/provincia.dart';

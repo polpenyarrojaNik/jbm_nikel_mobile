@@ -7,23 +7,22 @@ import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
-import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_linea_local_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_local_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 import 'package:money2/money2.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
+import '../../../core/application/log_service.dart';
 import '../../../core/domain/articulo_precio.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/exceptions/get_api_error.dart';
+import '../../../core/helpers/extension.dart';
 import '../../../core/infrastructure/local_database.dart' as local;
+import '../../../core/infrastructure/remote_database.dart';
 import '../../../core/presentation/app.dart';
 import '../../cliente/domain/cliente.dart';
 import '../../cliente/domain/cliente_direccion.dart';
 import '../../cliente/infrastructure/cliente_dto.dart';
+import '../../usuario/application/usuario_notifier.dart';
 import '../../usuario/domain/usuario.dart';
 import '../domain/pedido_albaran.dart';
 import '../domain/pedido_local_param.dart';
@@ -31,6 +30,8 @@ import '../domain/pedido_venta.dart';
 import '../domain/pedido_venta_estado.dart';
 import '../domain/pedido_venta_linea.dart';
 import '../domain/precio.dart';
+import 'pedido_venta_linea_local_dto.dart';
+import 'pedido_venta_local_dto.dart';
 
 final pedidoVentaRepositoryProvider =
     Provider.autoDispose<PedidoVentaRepository>(
@@ -118,7 +119,7 @@ class PedidoVentaRepository {
       required PedidoVentaEstado? pedidoVentaEstado,
       String? clienteId}) async {
     try {
-      final List<PedidoVenta> pedidoVentaList = [];
+      final pedidoVentaList = <PedidoVenta>[];
 
       if (page == 0) {
         final pedidoVentaLocalList = await getPedidosVentaLocal(
@@ -164,7 +165,7 @@ class PedidoVentaRepository {
   Future<List<PedidoVenta>> getPedidoVentaListaByCliente(
       {required String clienteId}) async {
     try {
-      final List<PedidoVenta> pedidoVentaListByCliente = [];
+      final pedidoVentaListByCliente = <PedidoVenta>[];
       final pedidoVentaLocalList = await getPedidosVentaLocal(
           searchText: '', clienteId: clienteId, pedidoVentaEstado: null);
       pedidoVentaListByCliente.addAll(pedidoVentaLocalList);
@@ -347,7 +348,7 @@ class PedidoVentaRepository {
     String? clienteId,
     required PedidoVentaEstado? pedidoVentaEstado,
   }) async {
-    final List<PedidoVenta> pedidoVentaList = [];
+    final pedidoVentaList = <PedidoVenta>[];
     final query = _localDb.select(_localDb.pedidoVentaLocalTable);
 
     query.where((tbl) => tbl.tratada.equals('N'));
@@ -806,7 +807,7 @@ class PedidoVentaRepository {
               pedidoVentaLocalDTO: pedidoVentaLocalDTOEnviado);
         } catch (e) {
           if (e is AppException) {
-            e.maybeWhen(
+            await e.maybeWhen(
                 orElse: () {},
                 notConnection: () =>
                     updateWithError(pedidoVentaLocalDTO, e.details.message),
@@ -824,7 +825,7 @@ class PedidoVentaRepository {
   Future<void> updateWithError(
       PedidoVentaLocalDTO pedidoVentaLocalDTO, String errorMessage) async {
     try {
-      (_localDb.update(_localDb.pedidoVentaLocalTable)
+      await (_localDb.update(_localDb.pedidoVentaLocalTable)
             ..where((tbl) => tbl.pedidoVentaAppId
                 .equals(pedidoVentaLocalDTO.pedidoVentaAppId)))
           .write(local.PedidoVentaLocalTableCompanion(
@@ -851,19 +852,19 @@ class PedidoVentaRepository {
       {required String articuloId,
       required String clienteId,
       required int cantidad}) async {
-    Money precio = 0.toMoney();
-    Precio precioNeto = Precio(
+    var precio = 0.toMoney();
+    var precioNeto = Precio(
       precio: 0.toMoney(),
       tipoPrecio: 1,
     );
-    String divisaId = 'EU';
-    double descuento1 = 0.0;
-    double descuento2 = 0.0;
-    double descuento3 = 0.0;
-    double descuento = 0.0;
+    var divisaId = 'EU';
+    var descuento1 = 0.0;
+    const descuento2 = 0.0;
+    const descuento3 = 0.0;
+    var descuento = 0.0;
 
-    int tipoPrecio = 1;
-    double iva = 0.0;
+    var tipoPrecio = 1;
+    var iva = 0.0;
 
     final clienteDto = await (_remoteDb.select(_remoteDb.clienteTable)
           ..where((t) => t.id.equals(clienteId)))
@@ -1014,7 +1015,7 @@ class PedidoVentaRepository {
       try {
         final cahceDirectories = await getTemporaryDirectory();
 
-        final File file = await File(
+        final file = await File(
                 '${cahceDirectories.path}/pedido/$pedidoVentaId/PV$pedidoVentaId.PDF')
             .create(recursive: true);
         final raf = file.openSync(mode: FileMode.write);
@@ -1104,7 +1105,7 @@ class PedidoVentaRepository {
 
       if (!await _csvFileExists(
           directory: getTempDirectory, fileName: fileName)) {
-        final List<List<dynamic>> rows = [];
+        final rows = <List<dynamic>>[];
         _addNombreDeLosCampos(rows);
         for (var i = 0; i < pedidoVentaLineaList.length; i++) {
           final row = _addValoresDeLosCampos(pedidoVentaLineaList[i]);
@@ -1112,7 +1113,7 @@ class PedidoVentaRepository {
           rows.add(row);
         }
         final res = const ListToCsvConverter(fieldDelimiter: ';').convert(rows);
-        print(res);
+        log.d(res);
 
         final csvFile = await File(join(getTempDirectory.path, fileName))
             .create(recursive: true);
@@ -1910,7 +1911,7 @@ class PedidoVentaRepository {
   }
 
   double _roundDouble(double value, int places) {
-    num mod = math.pow(10.0, places);
+    final mod = math.pow(10.0, places);
     return ((value * mod).round().toDouble() / mod);
   }
 
@@ -1959,7 +1960,7 @@ class PedidoVentaRepository {
 
   Money getBaseImponible(
       List<PedidoVentaLinea> pedidoVentaLineaList, String divisaId) {
-    Money total = Money.parse('0', isoCode: divisaId);
+    var total = Money.parse('0', isoCode: divisaId);
     for (var i = 0; i < pedidoVentaLineaList.length; i++) {
       if (pedidoVentaLineaList[i].importeLinea != null) {
         total = total + pedidoVentaLineaList[i].importeLinea!;
@@ -1990,42 +1991,41 @@ class PedidoVentaRepository {
     );
   }
 
-  void _addNombreDeLosCampos(List rows) {
-    final row = [];
-    row.add('PEDIDO_ID');
-    row.add('PEDIDO_LINEA_ID');
-    row.add('ARTICULO_ID');
-    row.add('ARTICULO_DESCRIPCION');
-    row.add('CANTIDAD');
-    row.add('PRECIO_DIVISA');
-    row.add('TIPO_PRECIO');
-    row.add('DESCUENTO1');
-    row.add('DESCUENTO2');
-    row.add('DESCUENTO3');
-    row.add('TOTAL_LINEA');
-    rows.add(row);
+  void _addNombreDeLosCampos(List<dynamic> rows) {
+    rows.addAll([
+      'PEDIDO_ID',
+      'PEDIDO_LINEA_ID',
+      'ARTICULO_ID',
+      'ARTICULO_DESCRIPCION',
+      'CANTIDAD',
+      'PRECIO_DIVISA',
+      'TIPO_PRECIO',
+      'DESCUENTO1',
+      'DESCUENTO2',
+      'DESCUENTO3',
+      'TOTAL_LINEA'
+    ]);
   }
 
   List<dynamic> _addValoresDeLosCampos(PedidoVentaLinea pedidoVentaLinea) {
-    final row = [];
-
-    row.add(pedidoVentaLinea.pedidoVentaAppId);
-    row.add(pedidoVentaLinea.pedidoVentaLineaId);
-    row.add(pedidoVentaLinea.articuloId);
-    row.add(pedidoVentaLinea.articuloDescription);
-    row.add(pedidoVentaLinea.cantidad);
-    row.add(pedidoVentaLinea.precioDivisa.amount.toDecimal().toDouble());
-    row.add(pedidoVentaLinea.tipoPrecio);
-    row.add(pedidoVentaLinea.descuento1);
-    row.add(pedidoVentaLinea.descuento2);
-    row.add(pedidoVentaLinea.descuento3);
-    row.add(pedidoVentaLinea.importeLinea?.amount.toDecimal().toDouble() ?? '');
-    return row;
+    return [
+      pedidoVentaLinea.pedidoVentaAppId,
+      pedidoVentaLinea.pedidoVentaLineaId,
+      pedidoVentaLinea.articuloId,
+      pedidoVentaLinea.articuloDescription,
+      pedidoVentaLinea.cantidad,
+      pedidoVentaLinea.precioDivisa.amount.toDecimal().toDouble(),
+      pedidoVentaLinea.tipoPrecio,
+      pedidoVentaLinea.descuento1,
+      pedidoVentaLinea.descuento2,
+      pedidoVentaLinea.descuento3,
+      pedidoVentaLinea.importeLinea?.amount.toDecimal().toDouble() ?? ''
+    ];
   }
 
   Future<bool> _csvFileExists(
       {required Directory directory, required String fileName}) async {
-    return (await File((join(directory.path, fileName))).exists());
+    return (File((join(directory.path, fileName))).exists());
   }
 
   Future<bool> _remoteOfertaHaveAttachment(String pedidoVentaId) async {
@@ -2072,7 +2072,7 @@ class PedidoVentaRepository {
         ),
       );
       if (response.statusCode == 200) {
-        return response.data;
+        return response.data as List<int>;
       } else {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');

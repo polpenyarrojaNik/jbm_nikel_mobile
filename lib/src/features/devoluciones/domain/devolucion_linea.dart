@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/features/devoluciones/domain/devolucion_estado.dart';
+import 'devolucion_estado.dart';
 
 import 'devolucion_motivo.dart';
 

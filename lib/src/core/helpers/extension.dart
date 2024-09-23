@@ -77,7 +77,7 @@ final currencies = [
 
 extension MoneyParsing on String {
   Money parseMoney(String currencyId) {
-    final Currency currency = Currencies().find(currencyId) ?? currencies[0];
+    final currency = Currencies().find(currencyId) ?? currencies[0];
 
     try {
       return Money.parseWithCurrency(this, currency);
@@ -87,7 +87,7 @@ extension MoneyParsing on String {
   }
 
   Money parseMoneyWithoutDecimal(String currencyId) {
-    final Currency currency = Currencies().find(currencyId) ?? currencies[0];
+    final currency = Currencies().find(currencyId) ?? currencies[0];
 
     try {
       return Money.parseWithCurrency(this, currency);
@@ -97,7 +97,7 @@ extension MoneyParsing on String {
   }
 
   Money toMoneyWithoutDecimal(String currencyId) {
-    final Currency currency = Currencies().find(currencyId) ?? currencies[0];
+    final currency = Currencies().find(currencyId) ?? currencies[0];
 
     try {
       return Money.parseWithCurrency(this, currency);
@@ -109,7 +109,7 @@ extension MoneyParsing on String {
 
 extension MoneyParsingDouble on num {
   Money toMoney({String? currencyId}) {
-    final Currency currency =
+    final currency =
         Currencies().find(currencyId ?? 'EU') ?? currencies[0];
 
     // NumberFormat formatter =

@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/core/domain/pais.dart';
+import '../../../core/domain/pais.dart';
 import 'package:money2/money2.dart';
 
 part 'cliente_alrededor.freezed.dart';

@@ -2,11 +2,11 @@ import 'package:auto_route/auto_route.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
 import 'package:money2/money2.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/bar_data.dart';
+import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
@@ -156,7 +156,7 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
 
   List<DataRow> _createDataRows(
       {required List<ClienteVentasMes> clienteVentasMesList}) {
-    final List<DataRow> dataRows = [];
+    final dataRows = <DataRow>[];
 
     for (var i = 0; i < clienteVentasMesList.length; i++) {
       dataRows.add(
@@ -346,7 +346,7 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
       required List<ClienteVentasMes> clienteVentasMesList}) {
     final divisaId = clienteVentasMesList[0].importeAnyo.currency.isoCode;
 
-    Money totalAnyo = Money.fromInt(0, isoCode: divisaId);
+    var totalAnyo = Money.fromInt(0, isoCode: divisaId);
 
     for (var i = 0; i < clienteVentasMesList.length; i++) {
       if (anyo == 0) {
@@ -463,7 +463,7 @@ class _GraficaVentasMesState extends State<GraficaVentasMes> {
   }
 
   Widget getYTitles(List<ClienteVentasMes> clienteVentasMesList, double value) {
-    String valueString = '';
+    var valueString = '';
     if (value != 1 &&
         value % (getMaxYValue(clienteVentasMesList) / 9).round() == 0) {
       valueString = value.toStringAsFixed(0);
@@ -479,7 +479,7 @@ class _GraficaVentasMesState extends State<GraficaVentasMes> {
   }
 
   double getMaxYValue(List<ClienteVentasMes> clienteVentasMesList) {
-    double maxY = 0;
+    var maxY = 0.0;
     for (var i = 0; i < clienteVentasMesList.length; i++) {
       if (maxY <
           clienteVentasMesList[i].importeAnyo.amount.toDecimal().toDouble()) {
@@ -497,7 +497,7 @@ class _GraficaVentasMesState extends State<GraficaVentasMes> {
       if (maxY % (maxY / 9).round() == 0) {
         return maxY.roundToDouble();
       }
-      for (int i = maxY.round();; i++) {
+      for (var i = maxY.round();; i++) {
         if (i % (maxY / 9).round() == 0) {
           return i.toDouble();
         }

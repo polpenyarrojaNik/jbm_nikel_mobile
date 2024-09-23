@@ -6,17 +6,14 @@ import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/local_database.dart';
-import 'package:jbm_nikel_mobile/src/features/catalogos/infrastructure/catalogo_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/catalogos/infrastructure/catalogo_favorito_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/catalogos/infrastructure/tipo_catalogo_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/catalogos/infrastructure/tipo_catalogo_precio_dto.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
 
+import '../../../core/application/log_service.dart';
 import '../../../core/domain/adjunto_param.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/exceptions/get_api_error.dart';
+import '../../../core/infrastructure/local_database.dart';
 import '../../../core/presentation/app.dart';
 import '../../usuario/application/usuario_notifier.dart';
 import '../../usuario/domain/usuario.dart';
@@ -24,7 +21,13 @@ import '../domain/catalogo.dart';
 import '../domain/idioma_catalogo.dart';
 import '../domain/tipo_catalogo.dart';
 import '../domain/tipo_precio_catalogo.dart';
+import 'catalogo_dto.dart';
+import 'catalogo_favorito_dto.dart';
 import 'idioma_catalogo_dto.dart';
+import 'tipo_catalogo_dto.dart';
+import 'tipo_catalogo_precio_dto.dart';
+
+typedef Json = Map<String, dynamic>;
 
 final catalogoRepositoryProvider = Provider.autoDispose<CatalogoRepository>(
   (ref) {
@@ -97,7 +100,7 @@ class CatalogoRepository {
                 'api/v2/online/catalogo',
                 query,
               ),
-        jsonDataSelector: (json) => json['data'] as List<dynamic>,
+        jsonDataSelector: (json) => json['data'] as List<Json>,
         provisionalToken: _usuario.provisionalToken,
       );
 
@@ -126,7 +129,7 @@ class CatalogoRepository {
                 dotenv.get('URL', fallback: 'localhost:3001'),
                 'api/v1/online/catalogo/tipo',
               ),
-        jsonDataSelector: (json) => json['data'] as List<dynamic>,
+        jsonDataSelector: (json) => json['data'] as List<Json>,
         provisionalToken: _usuario.provisionalToken,
       );
 
@@ -148,7 +151,7 @@ class CatalogoRepository {
                 dotenv.get('URL', fallback: 'localhost:3001'),
                 'api/v1/online/catalogo/precio',
               ),
-        jsonDataSelector: (json) => json['data'] as List<dynamic>,
+        jsonDataSelector: (json) => json['data'] as List<Json>,
         provisionalToken: _usuario.provisionalToken,
       );
       return tipoPrecioCatalogoDTOList.map((e) => e.toDomain()).toList();
@@ -169,7 +172,7 @@ class CatalogoRepository {
                 dotenv.get('URL', fallback: 'localhost:3001'),
                 'api/v1/online/catalogo/idioma',
               ),
-        jsonDataSelector: (json) => json['data'] as List<dynamic>,
+        jsonDataSelector: (json) => json['data'] as List<Json>,
         provisionalToken: _usuario.provisionalToken,
       );
 
@@ -215,7 +218,7 @@ class CatalogoRepository {
               provisionalToken: provisionalToken);
 
           try {
-            final File file = await File(
+            final file = await File(
                     '${cahceDirectories.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}')
                 .create(recursive: true);
 
@@ -223,8 +226,7 @@ class CatalogoRepository {
             raf.writeFromSync(data);
             await raf.close();
 
-            final PdfDocument document =
-                PdfDocument(inputBytes: file.readAsBytesSync());
+            final document = PdfDocument(inputBytes: file.readAsBytesSync());
 
             for (var i = 0; i < document.pages.count; i++) {
               final pageSize = document.pages[i].size;
@@ -335,7 +337,7 @@ class CatalogoRepository {
 
   Future<List<CatalogoDTO>> _remoteCatalogosList(
       {required Uri requestUri,
-      required List Function(dynamic json) jsonDataSelector,
+      required List<Json> Function(dynamic json) jsonDataSelector,
       required String provisionalToken}) async {
     try {
       final response = await _dio.getUri(
@@ -358,7 +360,7 @@ class CatalogoRepository {
 
   Future<List<TipoCatalogoDTO>> _remoteTipoCatalogosList(
       {required Uri requestUri,
-      required List Function(dynamic json) jsonDataSelector,
+      required List<Json> Function(dynamic json) jsonDataSelector,
       required String provisionalToken}) async {
     try {
       final response = await _dio.getUri(
@@ -381,7 +383,7 @@ class CatalogoRepository {
 
   Future<List<TipoPrecioCatalogoDTO>> _remoteTipoPrecioCatalogosList(
       {required Uri requestUri,
-      required List Function(dynamic json) jsonDataSelector,
+      required List<Json> Function(dynamic json) jsonDataSelector,
       required String provisionalToken}) async {
     try {
       final response = await _dio.getUri(
@@ -404,7 +406,7 @@ class CatalogoRepository {
 
   Future<List<IdiomaCatalogoDTO>> _remoteIdiomaCatalogosList(
       {required Uri requestUri,
-      required List Function(dynamic json) jsonDataSelector,
+      required List<Json> Function(dynamic json) jsonDataSelector,
       required String provisionalToken}) async {
     try {
       final response = await _dio.getUri(
@@ -448,8 +450,8 @@ class CatalogoRepository {
     IdiomaCatalogo? idiomaCatalogo,
     String? searchText,
   }) {
-    print('Locale ${Intl.getCurrentLocale()}');
-    final Map<String, String> query = {
+    log.d('Locale ${Intl.getCurrentLocale()}');
+    final query = <String, String>{
       'idiomaDispositivo': Intl.getCurrentLocale().toUpperCase(),
       'usuarioId': _usuario.id,
     };
@@ -493,7 +495,7 @@ class CatalogoRepository {
         ),
       );
       if (response.statusCode == 200) {
-        return response.data;
+        return response.data as List<int>;
       } else {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');

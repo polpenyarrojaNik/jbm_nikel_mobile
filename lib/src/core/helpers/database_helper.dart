@@ -13,7 +13,7 @@ Future<void> deleteRemoteDatabase() async {
   const remoteDatabaseJournalName = 'jbm.sqlite-journal';
 
   try {
-    final Directory directory = await getApplicationDocumentsDirectory();
+    final directory = await getApplicationDocumentsDirectory();
     if (await _databaseFileExist(
         directory: directory, remoteDatabaseName: remoteDatabaseName)) {
       File((join(directory.path, remoteDatabaseName)))
@@ -34,5 +34,5 @@ Future<void> deleteRemoteDatabase() async {
 
 Future<bool> _databaseFileExist(
     {required Directory directory, required String remoteDatabaseName}) async {
-  return await File((join(directory.path, remoteDatabaseName))).exists();
+  return File((join(directory.path, remoteDatabaseName))).exists();
 }

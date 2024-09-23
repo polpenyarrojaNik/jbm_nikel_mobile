@@ -2,9 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/custom_search_app_bar.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
-import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/pedido_venta_edit_page_controller.dart';
+import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
+import '../../../../core/presentation/theme/app_sizes.dart';
+import '../../../pedido_venta/presentation/edit/pedido_venta_edit_page_controller.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/pais.dart';

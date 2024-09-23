@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
-import 'package:jbm_nikel_mobile/src/features/catalogos/domain/idioma_catalogo.dart';
+import '../domain/idioma_catalogo.dart';
 
 part 'idioma_catalogo_dto.freezed.dart';
 part 'idioma_catalogo_dto.g.dart';

@@ -1,6 +1,6 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/core/domain/pais.dart';
+import '../../../core/domain/pais.dart';
 
 import '../../../core/infrastructure/local_database.dart';
 import '../domain/cliente_direccion_imp.dart';

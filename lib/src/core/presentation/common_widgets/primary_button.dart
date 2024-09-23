@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_indicator_widget.dart';
+import 'progress_indicator_widget.dart';
 
 import '../theme/app_sizes.dart';
 

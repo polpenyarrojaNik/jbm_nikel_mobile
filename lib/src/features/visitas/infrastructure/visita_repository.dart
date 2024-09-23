@@ -7,24 +7,25 @@ import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:jbm_nikel_mobile/src/core/domain/pais.dart';
-import 'package:jbm_nikel_mobile/src/core/domain/provincia.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/provincia_dto.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/dio_extension.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
-import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita_competidor.dart';
-import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita_motivos_no_venta.dart';
-import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita_sector.dart';
-import 'package:jbm_nikel_mobile/src/features/visitas/infrastructure/visita_local_dto.dart';
 
+import '../../../core/application/log_service.dart';
+import '../../../core/domain/pais.dart';
+import '../../../core/domain/provincia.dart';
 import '../../../core/exceptions/app_exception.dart';
+import '../../../core/infrastructure/dio_extension.dart';
 import '../../../core/infrastructure/local_database.dart' as local;
 import '../../../core/infrastructure/pais_dto.dart';
+import '../../../core/infrastructure/provincia_dto.dart';
+import '../../../core/infrastructure/remote_database.dart';
 import '../../../core/presentation/app.dart';
+import '../../usuario/application/usuario_notifier.dart';
 import '../../usuario/domain/usuario.dart';
 import '../domain/visita.dart';
+import '../domain/visita_competidor.dart';
 import '../domain/visita_id_param.dart';
+import '../domain/visita_motivos_no_venta.dart';
+import '../domain/visita_sector.dart';
+import 'visita_local_dto.dart';
 
 final visitaRepositoryProvider = Provider.autoDispose<VisitaRepository>(
   (ref) {
@@ -65,7 +66,7 @@ class VisitaRepository {
     required String searchText,
   }) async {
     try {
-      final List<Visita> visitas = [];
+      final visitas = <Visita>[];
       if (page == 0) {
         final visitasLocal = await getVisitasLocal(
           searchText: searchText,
@@ -105,7 +106,7 @@ class VisitaRepository {
     required String clienteId,
   }) async {
     try {
-      final List<Visita> vistiasListByCliente = [];
+      final vistiasListByCliente = <Visita>[];
       final visitasLocal = await getVisitasLocal(
         searchText: '',
         usuarioId: _usuario!.id,
@@ -148,7 +149,7 @@ class VisitaRepository {
     try {
       final visitaLocalDto = VisitaLocalDTO.fromDomain(visitaLocal);
       final json = jsonEncode(visitaLocalDto.toJson());
-      print(json);
+      log.d(json);
       await insertVisitaInDb(visitaLocalDto);
 
       try {
@@ -157,7 +158,7 @@ class VisitaRepository {
         await updateVisitaInDB(visitaLocalDto: visitaLocalEnviada);
       } catch (e) {
         if (e is AppException) {
-          e.maybeWhen(
+          await e.maybeWhen(
               orElse: () {},
               notConnection: () =>
                   updateWithError(visitaLocalDto, e.details.message),
@@ -175,7 +176,7 @@ class VisitaRepository {
   Future<void> updateWithError(
       VisitaLocalDTO visitaLocalDto, String errorMessage) async {
     try {
-      (_localDb.update(_localDb.visitaLocalTable)
+      await (_localDb.update(_localDb.visitaLocalTable)
             ..where(
                 (tbl) => tbl.visitaAppId.equals(visitaLocalDto.visitaAppId!)))
           .write(local.VisitaLocalTableCompanion(
@@ -232,7 +233,7 @@ class VisitaRepository {
           ? e.response?.statusMessage
           : e.response?.data['detalle'] ?? e.response?.data['message'];
       if (responseErrorJson != null) {
-        errorDetalle = responseErrorJson;
+        errorDetalle = responseErrorJson as String?;
 
         throw AppException.restApiFailure(
             e.response?.statusCode ?? 400, errorDetalle ?? '');
@@ -259,7 +260,7 @@ class VisitaRepository {
       required String usuarioId,
       String? clienteId}) async {
     try {
-      final List<Visita> visitaLocalList = [];
+      final visitaLocalList = <Visita>[];
       final query = _localDb.select(_localDb.visitaLocalTable)..join([]);
 
       query.where((tbl) => tbl.tratada.equals('N'));
@@ -704,18 +705,18 @@ class VisitaRepository {
   Future<List<Pais>> getPaises(String searchText) async {
     final query = await _remoteDb.customSelect('''
           SELECT *
-          FROM PAISES 
+          FROM PAISES
           WHERE ${descripcionSegunLocale(searchText)}
           ORDER BY CASE
             WHEN  PAIS_ID = 'ES' THEN 0
             ELSE ${orderyBySegunLocal()}
           END
-          
+
 ''', readsFrom: {
       _remoteDb.paisTable,
     }).get();
 
-    return await Future.wait(query.map((row) async {
+    return Future.wait(query.map((row) async {
       final paisDTO = PaisDTO.fromJson(row.data);
       return paisDTO.toDomain();
     }).toList());
@@ -724,7 +725,7 @@ class VisitaRepository {
   Future<List<Provincia>> getProvincias(
       String? paisId, String searchText) async {
     var queryText = '''SELECT *
-          FROM PROVINCIAS 
+          FROM PROVINCIAS
           WHERE (PROVINCIA LIKE '%$searchText%' OR PROVINCIA_ID LIKE '%$searchText%') ''';
 
     if (paisId != null) {
@@ -736,7 +737,7 @@ class VisitaRepository {
       _remoteDb.paisTable,
     }).get();
 
-    return await Future.wait(query.map((row) async {
+    return Future.wait(query.map((row) async {
       final provinciaDTO = ProvinciaDTO.fromJson(row.data);
       return provinciaDTO.toDomain();
     }).toList());

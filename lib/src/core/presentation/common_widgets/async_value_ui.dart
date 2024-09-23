@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../exceptions/app_exception.dart';
 import 'alert_dialogs.dart';
 
-extension AsyncValueUI on AsyncValue {
+extension AsyncValueUI on AsyncValue<dynamic> {
   void showAlertDialogOnError(BuildContext context) {
     if (!isRefreshing && hasError) {
       final message = _errorMessage(error);

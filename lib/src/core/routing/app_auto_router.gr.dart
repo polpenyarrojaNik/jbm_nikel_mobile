@@ -9,505 +9,6 @@
 
 part of 'app_auto_router.dart';
 
-abstract class _$AppRouter extends RootStackRouter {
-  // ignore: unused_element
-  _$AppRouter({super.navigatorKey});
-
-  @override
-  final Map<String, PageFactory> pagesMap = {
-    ArticuloComponenteRoute.name: (routeData) {
-      final args = routeData.argsAs<ArticuloComponenteRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ArticuloComponentePage(
-          key: args.key,
-          articuloId: args.articuloId,
-          description: args.description,
-        ),
-      );
-    },
-    ArticuloDetalleRoute.name: (routeData) {
-      final args = routeData.argsAs<ArticuloDetalleRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ArticuloDetallePage(
-          key: args.key,
-          articuloId: args.articuloId,
-        ),
-      );
-    },
-    ArticuloDocumentoRoute.name: (routeData) {
-      final args = routeData.argsAs<ArticuloDocumentoRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ArticuloDocumentoPage(
-          key: args.key,
-          articuloId: args.articuloId,
-          description: args.description,
-        ),
-      );
-    },
-    ArticuloGrupoNetoRoute.name: (routeData) {
-      final args = routeData.argsAs<ArticuloGrupoNetoRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ArticuloGrupoNetoPage(
-          key: args.key,
-          articuloId: args.articuloId,
-          description: args.description,
-        ),
-      );
-    },
-    ArticuloListaRoute.name: (routeData) {
-      final args = routeData.argsAs<ArticuloListaRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ArticuloListaPage(
-          key: args.key,
-          isSearchArticuloForForm: args.isSearchArticuloForForm,
-        ),
-      );
-    },
-    ArticuloPedidoVentaRoute.name: (routeData) {
-      final args = routeData.argsAs<ArticuloPedidoVentaRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ArticuloPedidoVentaPage(
-          key: args.key,
-          articuloId: args.articuloId,
-          description: args.description,
-        ),
-      );
-    },
-    ArticuloPrecioTarifaRoute.name: (routeData) {
-      final args = routeData.argsAs<ArticuloPrecioTarifaRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ArticuloPrecioTarifaPage(
-          key: args.key,
-          articuloId: args.articuloId,
-          description: args.description,
-        ),
-      );
-    },
-    ArticuloRecambioRoute.name: (routeData) {
-      final args = routeData.argsAs<ArticuloRecambioRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ArticuloRecambioPage(
-          key: args.key,
-          articuloId: args.articuloId,
-          description: args.description,
-        ),
-      );
-    },
-    ArticuloSustitutivoRoute.name: (routeData) {
-      final args = routeData.argsAs<ArticuloSustitutivoRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ArticuloSustitutivoPage(
-          key: args.key,
-          articuloId: args.articuloId,
-          description: args.description,
-        ),
-      );
-    },
-    ArticuloUltimosPreciosRoute.name: (routeData) {
-      final args = routeData.argsAs<ArticuloUltimosPreciosRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ArticuloUltimosPreciosPage(
-          key: args.key,
-          articuloId: args.articuloId,
-          description: args.description,
-        ),
-      );
-    },
-    ArticuloVentasClienteRoute.name: (routeData) {
-      final args = routeData.argsAs<ArticuloVentasClienteRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ArticuloVentasClientePage(
-          key: args.key,
-          articuloId: args.articuloId,
-          description: args.description,
-        ),
-      );
-    },
-    ArticuloVentasMesRoute.name: (routeData) {
-      final args = routeData.argsAs<ArticuloVentasMesRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ArticuloVentasMesPage(
-          key: args.key,
-          articuloId: args.articuloId,
-          descripcion: args.descripcion,
-        ),
-      );
-    },
-    CatalogoListaRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const CatalogoListaPage(),
-      );
-    },
-    CatalogoPdfViewerRoute.name: (routeData) {
-      final args = routeData.argsAs<CatalogoPdfViewerRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: CatalogoPdfViewerPage(
-          key: args.key,
-          pdfFile: args.pdfFile,
-        ),
-      );
-    },
-    ClienteAdjuntoRoute.name: (routeData) {
-      final args = routeData.argsAs<ClienteAdjuntoRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ClienteAdjuntoPage(
-          key: args.key,
-          clienteId: args.clienteId,
-          nombreCliente: args.nombreCliente,
-        ),
-      );
-    },
-    ClienteArticulosTopListRoute.name: (routeData) {
-      final args = routeData.argsAs<ClienteArticulosTopListRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ClienteArticulosTopListPage(
-          key: args.key,
-          clienteId: args.clienteId,
-          nombreCliente: args.nombreCliente,
-        ),
-      );
-    },
-    ClienteContactoEditRoute.name: (routeData) {
-      final args = routeData.argsAs<ClienteContactoEditRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ClienteContactoEditPage(
-          key: args.key,
-          clienteImpParam: args.clienteImpParam,
-        ),
-      );
-    },
-    ClienteContactoListRoute.name: (routeData) {
-      final args = routeData.argsAs<ClienteContactoListRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ClienteContactoListPage(
-          key: args.key,
-          clienteId: args.clienteId,
-          nombreCliente: args.nombreCliente,
-        ),
-      );
-    },
-    ClienteDescuentoRoute.name: (routeData) {
-      final args = routeData.argsAs<ClienteDescuentoRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ClienteDescuentoPage(
-          key: args.key,
-          clienteId: args.clienteId,
-          nombreCliente: args.nombreCliente,
-        ),
-      );
-    },
-    ClienteDetalleRoute.name: (routeData) {
-      final args = routeData.argsAs<ClienteDetalleRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ClienteDetallePage(
-          key: args.key,
-          clienteId: args.clienteId,
-        ),
-      );
-    },
-    ClienteDevolucionDetalleRoute.name: (routeData) {
-      final args = routeData.argsAs<ClienteDevolucionDetalleRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ClienteDevolucionDetallePage(
-          key: args.key,
-          devolucion: args.devolucion,
-        ),
-      );
-    },
-    ClienteDevolucionRoute.name: (routeData) {
-      final args = routeData.argsAs<ClienteDevolucionRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ClienteDevolucionPage(
-          key: args.key,
-          clienteId: args.clienteId,
-          nombreCliente: args.nombreCliente,
-        ),
-      );
-    },
-    ClienteDireccionEditRoute.name: (routeData) {
-      final args = routeData.argsAs<ClienteDireccionEditRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ClienteDireccionEditPage(
-          key: args.key,
-          clienteImpParam: args.clienteImpParam,
-        ),
-      );
-    },
-    ClienteDireccionSeleccionarPaisRoute.name: (routeData) {
-      final args = routeData.argsAs<ClienteDireccionSeleccionarPaisRouteArgs>(
-          orElse: () => const ClienteDireccionSeleccionarPaisRouteArgs());
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ClienteDireccionSeleccionarPaisPage(key: args.key),
-      );
-    },
-    ClienteDireccionesListRoute.name: (routeData) {
-      final args = routeData.argsAs<ClienteDireccionesListRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ClienteDireccionesListPage(
-          key: args.key,
-          clienteId: args.clienteId,
-          paisCliente: args.paisCliente,
-          nombreCliente: args.nombreCliente,
-        ),
-      );
-    },
-    ClienteGrupoNetoRoute.name: (routeData) {
-      final args = routeData.argsAs<ClienteGrupoNetoRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ClienteGrupoNetoPage(
-          key: args.key,
-          clienteId: args.clienteId,
-          nombreCliente: args.nombreCliente,
-        ),
-      );
-    },
-    ClienteListaRoute.name: (routeData) {
-      final args = routeData.argsAs<ClienteListaRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ClienteListaPage(
-          key: args.key,
-          isSearchClienteForFrom: args.isSearchClienteForFrom,
-        ),
-      );
-    },
-    ClientePagoPendienteRoute.name: (routeData) {
-      final args = routeData.argsAs<ClientePagoPendienteRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ClientePagoPendientePage(
-          key: args.key,
-          clienteId: args.clienteId,
-          nombreCliente: args.nombreCliente,
-        ),
-      );
-    },
-    ClientePedidosRoute.name: (routeData) {
-      final args = routeData.argsAs<ClientePedidosRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ClientePedidosPage(
-          key: args.key,
-          clienteId: args.clienteId,
-          nombreCliente: args.nombreCliente,
-        ),
-      );
-    },
-    ClientePrecioNetoRoute.name: (routeData) {
-      final args = routeData.argsAs<ClientePrecioNetoRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ClientePrecioNetoPage(
-          key: args.key,
-          clienteId: args.clienteId,
-          nombreCliente: args.nombreCliente,
-        ),
-      );
-    },
-    ClienteRappelRoute.name: (routeData) {
-      final args = routeData.argsAs<ClienteRappelRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ClienteRappelPage(
-          key: args.key,
-          clienteId: args.clienteId,
-          nombreCliente: args.nombreCliente,
-        ),
-      );
-    },
-    ClienteUltimosPreciosRoute.name: (routeData) {
-      final args = routeData.argsAs<ClienteUltimosPreciosRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ClienteUltimosPreciosPage(
-          key: args.key,
-          clienteId: args.clienteId,
-          nombreCliente: args.nombreCliente,
-        ),
-      );
-    },
-    ClienteVentasArticuloRoute.name: (routeData) {
-      final args = routeData.argsAs<ClienteVentasArticuloRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ClienteVentasArticuloPage(
-          key: args.key,
-          clienteId: args.clienteId,
-          nombreCliente: args.nombreCliente,
-        ),
-      );
-    },
-    ClienteVentasMesRoute.name: (routeData) {
-      final args = routeData.argsAs<ClienteVentasMesRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ClienteVentasMesPage(
-          key: args.key,
-          clienteId: args.clienteId,
-          nombreCliente: args.nombreCliente,
-        ),
-      );
-    },
-    ClienteVisitasRoute.name: (routeData) {
-      final args = routeData.argsAs<ClienteVisitasRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ClienteVisitasPage(
-          key: args.key,
-          clienteId: args.clienteId,
-          nombreCliente: args.nombreCliente,
-        ),
-      );
-    },
-    ClientesAlrededorRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const ClientesAlrededorPage(),
-      );
-    },
-    ExpedicionListRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const ExpedicionListPage(),
-      );
-    },
-    LoginRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const LoginPage(),
-      );
-    },
-    NotificationDetailRoute.name: (routeData) {
-      final args = routeData.argsAs<NotificationDetailRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: NotificationDetailPage(
-          key: args.key,
-          notificationId: args.notificationId,
-        ),
-      );
-    },
-    NotificationIndexRoute.name: (routeData) {
-      final args = routeData.argsAs<NotificationIndexRouteArgs>(
-          orElse: () => const NotificationIndexRouteArgs());
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: NotificationIndexPage(key: args.key),
-      );
-    },
-    PedidoVentaDetalleRoute.name: (routeData) {
-      final args = routeData.argsAs<PedidoVentaDetalleRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: PedidoVentaDetallePage(
-          key: args.key,
-          pedidoLocalParam: args.pedidoLocalParam,
-        ),
-      );
-    },
-    PedidoVentaEditRoute.name: (routeData) {
-      final args = routeData.argsAs<PedidoVentaEditRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: PedidoVentaEditPage(
-          key: args.key,
-          pedidoAppId: args.pedidoAppId,
-          pedidoId: args.pedidoId,
-          empresaId: args.empresaId,
-          isLocal: args.isLocal,
-          createPedidoFromClienteId: args.createPedidoFromClienteId,
-          addLineaDesdeArticulo: args.addLineaDesdeArticulo,
-        ),
-      );
-    },
-    PedidoVentaListRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const PedidoVentaListPage(),
-      );
-    },
-    SeleccionarCantidadRoute.name: (routeData) {
-      final args = routeData.argsAs<SeleccionarCantidadRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: SeleccionarCantidadPage(
-          key: args.key,
-          seleccionarCantidadParam: args.seleccionarCantidadParam,
-        ),
-      );
-    },
-    SettingsRoute.name: (routeData) {
-      final args = routeData.argsAs<SettingsRouteArgs>(
-          orElse: () => const SettingsRouteArgs());
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: SettingsPage(key: args.key),
-      );
-    },
-    SplashRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const SplashPage(),
-      );
-    },
-    VisitaDetalleRoute.name: (routeData) {
-      final args = routeData.argsAs<VisitaDetalleRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: VisitaDetallePage(
-          key: args.key,
-          visitaIdIsLocalParam: args.visitaIdIsLocalParam,
-        ),
-      );
-    },
-    VisitaEditRoute.name: (routeData) {
-      final args = routeData.argsAs<VisitaEditRouteArgs>(
-          orElse: () => const VisitaEditRouteArgs());
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: VisitaEditPage(
-          key: args.key,
-          id: args.id,
-          isNew: args.isNew,
-          createVisitaFromClienteId: args.createVisitaFromClienteId,
-        ),
-      );
-    },
-    VisitaListaRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const VisitaListaPage(),
-      );
-    },
-  };
-}
-
 /// generated route for
 /// [ArticuloComponentePage]
 class ArticuloComponenteRoute
@@ -529,8 +30,17 @@ class ArticuloComponenteRoute
 
   static const String name = 'ArticuloComponenteRoute';
 
-  static const PageInfo<ArticuloComponenteRouteArgs> page =
-      PageInfo<ArticuloComponenteRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ArticuloComponenteRouteArgs>();
+      return ArticuloComponentePage(
+        key: args.key,
+        articuloId: args.articuloId,
+        description: args.description,
+      );
+    },
+  );
 }
 
 class ArticuloComponenteRouteArgs {
@@ -570,8 +80,16 @@ class ArticuloDetalleRoute extends PageRouteInfo<ArticuloDetalleRouteArgs> {
 
   static const String name = 'ArticuloDetalleRoute';
 
-  static const PageInfo<ArticuloDetalleRouteArgs> page =
-      PageInfo<ArticuloDetalleRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ArticuloDetalleRouteArgs>();
+      return ArticuloDetallePage(
+        key: args.key,
+        articuloId: args.articuloId,
+      );
+    },
+  );
 }
 
 class ArticuloDetalleRouteArgs {
@@ -610,8 +128,17 @@ class ArticuloDocumentoRoute extends PageRouteInfo<ArticuloDocumentoRouteArgs> {
 
   static const String name = 'ArticuloDocumentoRoute';
 
-  static const PageInfo<ArticuloDocumentoRouteArgs> page =
-      PageInfo<ArticuloDocumentoRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ArticuloDocumentoRouteArgs>();
+      return ArticuloDocumentoPage(
+        key: args.key,
+        articuloId: args.articuloId,
+        description: args.description,
+      );
+    },
+  );
 }
 
 class ArticuloDocumentoRouteArgs {
@@ -653,8 +180,17 @@ class ArticuloGrupoNetoRoute extends PageRouteInfo<ArticuloGrupoNetoRouteArgs> {
 
   static const String name = 'ArticuloGrupoNetoRoute';
 
-  static const PageInfo<ArticuloGrupoNetoRouteArgs> page =
-      PageInfo<ArticuloGrupoNetoRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ArticuloGrupoNetoRouteArgs>();
+      return ArticuloGrupoNetoPage(
+        key: args.key,
+        articuloId: args.articuloId,
+        description: args.description,
+      );
+    },
+  );
 }
 
 class ArticuloGrupoNetoRouteArgs {
@@ -694,8 +230,16 @@ class ArticuloListaRoute extends PageRouteInfo<ArticuloListaRouteArgs> {
 
   static const String name = 'ArticuloListaRoute';
 
-  static const PageInfo<ArticuloListaRouteArgs> page =
-      PageInfo<ArticuloListaRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ArticuloListaRouteArgs>();
+      return ArticuloListaPage(
+        key: args.key,
+        isSearchArticuloForForm: args.isSearchArticuloForForm,
+      );
+    },
+  );
 }
 
 class ArticuloListaRouteArgs {
@@ -735,8 +279,17 @@ class ArticuloPedidoVentaRoute
 
   static const String name = 'ArticuloPedidoVentaRoute';
 
-  static const PageInfo<ArticuloPedidoVentaRouteArgs> page =
-      PageInfo<ArticuloPedidoVentaRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ArticuloPedidoVentaRouteArgs>();
+      return ArticuloPedidoVentaPage(
+        key: args.key,
+        articuloId: args.articuloId,
+        description: args.description,
+      );
+    },
+  );
 }
 
 class ArticuloPedidoVentaRouteArgs {
@@ -779,8 +332,17 @@ class ArticuloPrecioTarifaRoute
 
   static const String name = 'ArticuloPrecioTarifaRoute';
 
-  static const PageInfo<ArticuloPrecioTarifaRouteArgs> page =
-      PageInfo<ArticuloPrecioTarifaRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ArticuloPrecioTarifaRouteArgs>();
+      return ArticuloPrecioTarifaPage(
+        key: args.key,
+        articuloId: args.articuloId,
+        description: args.description,
+      );
+    },
+  );
 }
 
 class ArticuloPrecioTarifaRouteArgs {
@@ -822,8 +384,17 @@ class ArticuloRecambioRoute extends PageRouteInfo<ArticuloRecambioRouteArgs> {
 
   static const String name = 'ArticuloRecambioRoute';
 
-  static const PageInfo<ArticuloRecambioRouteArgs> page =
-      PageInfo<ArticuloRecambioRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ArticuloRecambioRouteArgs>();
+      return ArticuloRecambioPage(
+        key: args.key,
+        articuloId: args.articuloId,
+        description: args.description,
+      );
+    },
+  );
 }
 
 class ArticuloRecambioRouteArgs {
@@ -866,8 +437,17 @@ class ArticuloSustitutivoRoute
 
   static const String name = 'ArticuloSustitutivoRoute';
 
-  static const PageInfo<ArticuloSustitutivoRouteArgs> page =
-      PageInfo<ArticuloSustitutivoRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ArticuloSustitutivoRouteArgs>();
+      return ArticuloSustitutivoPage(
+        key: args.key,
+        articuloId: args.articuloId,
+        description: args.description,
+      );
+    },
+  );
 }
 
 class ArticuloSustitutivoRouteArgs {
@@ -910,8 +490,17 @@ class ArticuloUltimosPreciosRoute
 
   static const String name = 'ArticuloUltimosPreciosRoute';
 
-  static const PageInfo<ArticuloUltimosPreciosRouteArgs> page =
-      PageInfo<ArticuloUltimosPreciosRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ArticuloUltimosPreciosRouteArgs>();
+      return ArticuloUltimosPreciosPage(
+        key: args.key,
+        articuloId: args.articuloId,
+        description: args.description,
+      );
+    },
+  );
 }
 
 class ArticuloUltimosPreciosRouteArgs {
@@ -954,8 +543,17 @@ class ArticuloVentasClienteRoute
 
   static const String name = 'ArticuloVentasClienteRoute';
 
-  static const PageInfo<ArticuloVentasClienteRouteArgs> page =
-      PageInfo<ArticuloVentasClienteRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ArticuloVentasClienteRouteArgs>();
+      return ArticuloVentasClientePage(
+        key: args.key,
+        articuloId: args.articuloId,
+        description: args.description,
+      );
+    },
+  );
 }
 
 class ArticuloVentasClienteRouteArgs {
@@ -997,8 +595,17 @@ class ArticuloVentasMesRoute extends PageRouteInfo<ArticuloVentasMesRouteArgs> {
 
   static const String name = 'ArticuloVentasMesRoute';
 
-  static const PageInfo<ArticuloVentasMesRouteArgs> page =
-      PageInfo<ArticuloVentasMesRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ArticuloVentasMesRouteArgs>();
+      return ArticuloVentasMesPage(
+        key: args.key,
+        articuloId: args.articuloId,
+        descripcion: args.descripcion,
+      );
+    },
+  );
 }
 
 class ArticuloVentasMesRouteArgs {
@@ -1031,7 +638,12 @@ class CatalogoListaRoute extends PageRouteInfo<void> {
 
   static const String name = 'CatalogoListaRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const CatalogoListaPage();
+    },
+  );
 }
 
 /// generated route for
@@ -1052,8 +664,16 @@ class CatalogoPdfViewerRoute extends PageRouteInfo<CatalogoPdfViewerRouteArgs> {
 
   static const String name = 'CatalogoPdfViewerRoute';
 
-  static const PageInfo<CatalogoPdfViewerRouteArgs> page =
-      PageInfo<CatalogoPdfViewerRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<CatalogoPdfViewerRouteArgs>();
+      return CatalogoPdfViewerPage(
+        key: args.key,
+        pdfFile: args.pdfFile,
+      );
+    },
+  );
 }
 
 class CatalogoPdfViewerRouteArgs {
@@ -1092,8 +712,17 @@ class ClienteAdjuntoRoute extends PageRouteInfo<ClienteAdjuntoRouteArgs> {
 
   static const String name = 'ClienteAdjuntoRoute';
 
-  static const PageInfo<ClienteAdjuntoRouteArgs> page =
-      PageInfo<ClienteAdjuntoRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ClienteAdjuntoRouteArgs>();
+      return ClienteAdjuntoPage(
+        key: args.key,
+        clienteId: args.clienteId,
+        nombreCliente: args.nombreCliente,
+      );
+    },
+  );
 }
 
 class ClienteAdjuntoRouteArgs {
@@ -1136,8 +765,17 @@ class ClienteArticulosTopListRoute
 
   static const String name = 'ClienteArticulosTopListRoute';
 
-  static const PageInfo<ClienteArticulosTopListRouteArgs> page =
-      PageInfo<ClienteArticulosTopListRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ClienteArticulosTopListRouteArgs>();
+      return ClienteArticulosTopListPage(
+        key: args.key,
+        clienteId: args.clienteId,
+        nombreCliente: args.nombreCliente,
+      );
+    },
+  );
 }
 
 class ClienteArticulosTopListRouteArgs {
@@ -1178,8 +816,16 @@ class ClienteContactoEditRoute
 
   static const String name = 'ClienteContactoEditRoute';
 
-  static const PageInfo<ClienteContactoEditRouteArgs> page =
-      PageInfo<ClienteContactoEditRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ClienteContactoEditRouteArgs>();
+      return ClienteContactoEditPage(
+        key: args.key,
+        clienteImpParam: args.clienteImpParam,
+      );
+    },
+  );
 }
 
 class ClienteContactoEditRouteArgs {
@@ -1219,8 +865,17 @@ class ClienteContactoListRoute
 
   static const String name = 'ClienteContactoListRoute';
 
-  static const PageInfo<ClienteContactoListRouteArgs> page =
-      PageInfo<ClienteContactoListRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ClienteContactoListRouteArgs>();
+      return ClienteContactoListPage(
+        key: args.key,
+        clienteId: args.clienteId,
+        nombreCliente: args.nombreCliente,
+      );
+    },
+  );
 }
 
 class ClienteContactoListRouteArgs {
@@ -1262,8 +917,17 @@ class ClienteDescuentoRoute extends PageRouteInfo<ClienteDescuentoRouteArgs> {
 
   static const String name = 'ClienteDescuentoRoute';
 
-  static const PageInfo<ClienteDescuentoRouteArgs> page =
-      PageInfo<ClienteDescuentoRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ClienteDescuentoRouteArgs>();
+      return ClienteDescuentoPage(
+        key: args.key,
+        clienteId: args.clienteId,
+        nombreCliente: args.nombreCliente,
+      );
+    },
+  );
 }
 
 class ClienteDescuentoRouteArgs {
@@ -1303,8 +967,16 @@ class ClienteDetalleRoute extends PageRouteInfo<ClienteDetalleRouteArgs> {
 
   static const String name = 'ClienteDetalleRoute';
 
-  static const PageInfo<ClienteDetalleRouteArgs> page =
-      PageInfo<ClienteDetalleRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ClienteDetalleRouteArgs>();
+      return ClienteDetallePage(
+        key: args.key,
+        clienteId: args.clienteId,
+      );
+    },
+  );
 }
 
 class ClienteDetalleRouteArgs {
@@ -1342,8 +1014,16 @@ class ClienteDevolucionDetalleRoute
 
   static const String name = 'ClienteDevolucionDetalleRoute';
 
-  static const PageInfo<ClienteDevolucionDetalleRouteArgs> page =
-      PageInfo<ClienteDevolucionDetalleRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ClienteDevolucionDetalleRouteArgs>();
+      return ClienteDevolucionDetallePage(
+        key: args.key,
+        devolucion: args.devolucion,
+      );
+    },
+  );
 }
 
 class ClienteDevolucionDetalleRouteArgs {
@@ -1382,8 +1062,17 @@ class ClienteDevolucionRoute extends PageRouteInfo<ClienteDevolucionRouteArgs> {
 
   static const String name = 'ClienteDevolucionRoute';
 
-  static const PageInfo<ClienteDevolucionRouteArgs> page =
-      PageInfo<ClienteDevolucionRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ClienteDevolucionRouteArgs>();
+      return ClienteDevolucionPage(
+        key: args.key,
+        clienteId: args.clienteId,
+        nombreCliente: args.nombreCliente,
+      );
+    },
+  );
 }
 
 class ClienteDevolucionRouteArgs {
@@ -1424,8 +1113,16 @@ class ClienteDireccionEditRoute
 
   static const String name = 'ClienteDireccionEditRoute';
 
-  static const PageInfo<ClienteDireccionEditRouteArgs> page =
-      PageInfo<ClienteDireccionEditRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ClienteDireccionEditRouteArgs>();
+      return ClienteDireccionEditPage(
+        key: args.key,
+        clienteImpParam: args.clienteImpParam,
+      );
+    },
+  );
 }
 
 class ClienteDireccionEditRouteArgs {
@@ -1459,8 +1156,14 @@ class ClienteDireccionSeleccionarPaisRoute
 
   static const String name = 'ClienteDireccionSeleccionarPaisRoute';
 
-  static const PageInfo<ClienteDireccionSeleccionarPaisRouteArgs> page =
-      PageInfo<ClienteDireccionSeleccionarPaisRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ClienteDireccionSeleccionarPaisRouteArgs>(
+          orElse: () => const ClienteDireccionSeleccionarPaisRouteArgs());
+      return ClienteDireccionSeleccionarPaisPage(key: args.key);
+    },
+  );
 }
 
 class ClienteDireccionSeleccionarPaisRouteArgs {
@@ -1497,8 +1200,18 @@ class ClienteDireccionesListRoute
 
   static const String name = 'ClienteDireccionesListRoute';
 
-  static const PageInfo<ClienteDireccionesListRouteArgs> page =
-      PageInfo<ClienteDireccionesListRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ClienteDireccionesListRouteArgs>();
+      return ClienteDireccionesListPage(
+        key: args.key,
+        clienteId: args.clienteId,
+        paisCliente: args.paisCliente,
+        nombreCliente: args.nombreCliente,
+      );
+    },
+  );
 }
 
 class ClienteDireccionesListRouteArgs {
@@ -1543,8 +1256,17 @@ class ClienteGrupoNetoRoute extends PageRouteInfo<ClienteGrupoNetoRouteArgs> {
 
   static const String name = 'ClienteGrupoNetoRoute';
 
-  static const PageInfo<ClienteGrupoNetoRouteArgs> page =
-      PageInfo<ClienteGrupoNetoRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ClienteGrupoNetoRouteArgs>();
+      return ClienteGrupoNetoPage(
+        key: args.key,
+        clienteId: args.clienteId,
+        nombreCliente: args.nombreCliente,
+      );
+    },
+  );
 }
 
 class ClienteGrupoNetoRouteArgs {
@@ -1584,8 +1306,16 @@ class ClienteListaRoute extends PageRouteInfo<ClienteListaRouteArgs> {
 
   static const String name = 'ClienteListaRoute';
 
-  static const PageInfo<ClienteListaRouteArgs> page =
-      PageInfo<ClienteListaRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ClienteListaRouteArgs>();
+      return ClienteListaPage(
+        key: args.key,
+        isSearchClienteForFrom: args.isSearchClienteForFrom,
+      );
+    },
+  );
 }
 
 class ClienteListaRouteArgs {
@@ -1625,8 +1355,17 @@ class ClientePagoPendienteRoute
 
   static const String name = 'ClientePagoPendienteRoute';
 
-  static const PageInfo<ClientePagoPendienteRouteArgs> page =
-      PageInfo<ClientePagoPendienteRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ClientePagoPendienteRouteArgs>();
+      return ClientePagoPendientePage(
+        key: args.key,
+        clienteId: args.clienteId,
+        nombreCliente: args.nombreCliente,
+      );
+    },
+  );
 }
 
 class ClientePagoPendienteRouteArgs {
@@ -1668,8 +1407,17 @@ class ClientePedidosRoute extends PageRouteInfo<ClientePedidosRouteArgs> {
 
   static const String name = 'ClientePedidosRoute';
 
-  static const PageInfo<ClientePedidosRouteArgs> page =
-      PageInfo<ClientePedidosRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ClientePedidosRouteArgs>();
+      return ClientePedidosPage(
+        key: args.key,
+        clienteId: args.clienteId,
+        nombreCliente: args.nombreCliente,
+      );
+    },
+  );
 }
 
 class ClientePedidosRouteArgs {
@@ -1711,8 +1459,17 @@ class ClientePrecioNetoRoute extends PageRouteInfo<ClientePrecioNetoRouteArgs> {
 
   static const String name = 'ClientePrecioNetoRoute';
 
-  static const PageInfo<ClientePrecioNetoRouteArgs> page =
-      PageInfo<ClientePrecioNetoRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ClientePrecioNetoRouteArgs>();
+      return ClientePrecioNetoPage(
+        key: args.key,
+        clienteId: args.clienteId,
+        nombreCliente: args.nombreCliente,
+      );
+    },
+  );
 }
 
 class ClientePrecioNetoRouteArgs {
@@ -1754,8 +1511,17 @@ class ClienteRappelRoute extends PageRouteInfo<ClienteRappelRouteArgs> {
 
   static const String name = 'ClienteRappelRoute';
 
-  static const PageInfo<ClienteRappelRouteArgs> page =
-      PageInfo<ClienteRappelRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ClienteRappelRouteArgs>();
+      return ClienteRappelPage(
+        key: args.key,
+        clienteId: args.clienteId,
+        nombreCliente: args.nombreCliente,
+      );
+    },
+  );
 }
 
 class ClienteRappelRouteArgs {
@@ -1798,8 +1564,17 @@ class ClienteUltimosPreciosRoute
 
   static const String name = 'ClienteUltimosPreciosRoute';
 
-  static const PageInfo<ClienteUltimosPreciosRouteArgs> page =
-      PageInfo<ClienteUltimosPreciosRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ClienteUltimosPreciosRouteArgs>();
+      return ClienteUltimosPreciosPage(
+        key: args.key,
+        clienteId: args.clienteId,
+        nombreCliente: args.nombreCliente,
+      );
+    },
+  );
 }
 
 class ClienteUltimosPreciosRouteArgs {
@@ -1842,8 +1617,17 @@ class ClienteVentasArticuloRoute
 
   static const String name = 'ClienteVentasArticuloRoute';
 
-  static const PageInfo<ClienteVentasArticuloRouteArgs> page =
-      PageInfo<ClienteVentasArticuloRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ClienteVentasArticuloRouteArgs>();
+      return ClienteVentasArticuloPage(
+        key: args.key,
+        clienteId: args.clienteId,
+        nombreCliente: args.nombreCliente,
+      );
+    },
+  );
 }
 
 class ClienteVentasArticuloRouteArgs {
@@ -1885,8 +1669,17 @@ class ClienteVentasMesRoute extends PageRouteInfo<ClienteVentasMesRouteArgs> {
 
   static const String name = 'ClienteVentasMesRoute';
 
-  static const PageInfo<ClienteVentasMesRouteArgs> page =
-      PageInfo<ClienteVentasMesRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ClienteVentasMesRouteArgs>();
+      return ClienteVentasMesPage(
+        key: args.key,
+        clienteId: args.clienteId,
+        nombreCliente: args.nombreCliente,
+      );
+    },
+  );
 }
 
 class ClienteVentasMesRouteArgs {
@@ -1928,8 +1721,17 @@ class ClienteVisitasRoute extends PageRouteInfo<ClienteVisitasRouteArgs> {
 
   static const String name = 'ClienteVisitasRoute';
 
-  static const PageInfo<ClienteVisitasRouteArgs> page =
-      PageInfo<ClienteVisitasRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ClienteVisitasRouteArgs>();
+      return ClienteVisitasPage(
+        key: args.key,
+        clienteId: args.clienteId,
+        nombreCliente: args.nombreCliente,
+      );
+    },
+  );
 }
 
 class ClienteVisitasRouteArgs {
@@ -1962,7 +1764,12 @@ class ClientesAlrededorRoute extends PageRouteInfo<void> {
 
   static const String name = 'ClientesAlrededorRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const ClientesAlrededorPage();
+    },
+  );
 }
 
 /// generated route for
@@ -1976,7 +1783,12 @@ class ExpedicionListRoute extends PageRouteInfo<void> {
 
   static const String name = 'ExpedicionListRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const ExpedicionListPage();
+    },
+  );
 }
 
 /// generated route for
@@ -1990,7 +1802,12 @@ class LoginRoute extends PageRouteInfo<void> {
 
   static const String name = 'LoginRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const LoginPage();
+    },
+  );
 }
 
 /// generated route for
@@ -2012,8 +1829,16 @@ class NotificationDetailRoute
 
   static const String name = 'NotificationDetailRoute';
 
-  static const PageInfo<NotificationDetailRouteArgs> page =
-      PageInfo<NotificationDetailRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<NotificationDetailRouteArgs>();
+      return NotificationDetailPage(
+        key: args.key,
+        notificationId: args.notificationId,
+      );
+    },
+  );
 }
 
 class NotificationDetailRouteArgs {
@@ -2046,8 +1871,14 @@ class NotificationIndexRoute extends PageRouteInfo<NotificationIndexRouteArgs> {
 
   static const String name = 'NotificationIndexRoute';
 
-  static const PageInfo<NotificationIndexRouteArgs> page =
-      PageInfo<NotificationIndexRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<NotificationIndexRouteArgs>(
+          orElse: () => const NotificationIndexRouteArgs());
+      return NotificationIndexPage(key: args.key);
+    },
+  );
 }
 
 class NotificationIndexRouteArgs {
@@ -2080,8 +1911,16 @@ class PedidoVentaDetalleRoute
 
   static const String name = 'PedidoVentaDetalleRoute';
 
-  static const PageInfo<PedidoVentaDetalleRouteArgs> page =
-      PageInfo<PedidoVentaDetalleRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<PedidoVentaDetalleRouteArgs>();
+      return PedidoVentaDetallePage(
+        key: args.key,
+        pedidoLocalParam: args.pedidoLocalParam,
+      );
+    },
+  );
 }
 
 class PedidoVentaDetalleRouteArgs {
@@ -2128,8 +1967,21 @@ class PedidoVentaEditRoute extends PageRouteInfo<PedidoVentaEditRouteArgs> {
 
   static const String name = 'PedidoVentaEditRoute';
 
-  static const PageInfo<PedidoVentaEditRouteArgs> page =
-      PageInfo<PedidoVentaEditRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<PedidoVentaEditRouteArgs>();
+      return PedidoVentaEditPage(
+        key: args.key,
+        pedidoAppId: args.pedidoAppId,
+        pedidoId: args.pedidoId,
+        empresaId: args.empresaId,
+        isLocal: args.isLocal,
+        createPedidoFromClienteId: args.createPedidoFromClienteId,
+        addLineaDesdeArticulo: args.addLineaDesdeArticulo,
+      );
+    },
+  );
 }
 
 class PedidoVentaEditRouteArgs {
@@ -2174,7 +2026,12 @@ class PedidoVentaListRoute extends PageRouteInfo<void> {
 
   static const String name = 'PedidoVentaListRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const PedidoVentaListPage();
+    },
+  );
 }
 
 /// generated route for
@@ -2196,8 +2053,16 @@ class SeleccionarCantidadRoute
 
   static const String name = 'SeleccionarCantidadRoute';
 
-  static const PageInfo<SeleccionarCantidadRouteArgs> page =
-      PageInfo<SeleccionarCantidadRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<SeleccionarCantidadRouteArgs>();
+      return SeleccionarCantidadPage(
+        key: args.key,
+        seleccionarCantidadParam: args.seleccionarCantidadParam,
+      );
+    },
+  );
 }
 
 class SeleccionarCantidadRouteArgs {
@@ -2230,8 +2095,14 @@ class SettingsRoute extends PageRouteInfo<SettingsRouteArgs> {
 
   static const String name = 'SettingsRoute';
 
-  static const PageInfo<SettingsRouteArgs> page =
-      PageInfo<SettingsRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<SettingsRouteArgs>(
+          orElse: () => const SettingsRouteArgs());
+      return SettingsPage(key: args.key);
+    },
+  );
 }
 
 class SettingsRouteArgs {
@@ -2256,7 +2127,12 @@ class SplashRoute extends PageRouteInfo<void> {
 
   static const String name = 'SplashRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const SplashPage();
+    },
+  );
 }
 
 /// generated route for
@@ -2277,8 +2153,16 @@ class VisitaDetalleRoute extends PageRouteInfo<VisitaDetalleRouteArgs> {
 
   static const String name = 'VisitaDetalleRoute';
 
-  static const PageInfo<VisitaDetalleRouteArgs> page =
-      PageInfo<VisitaDetalleRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<VisitaDetalleRouteArgs>();
+      return VisitaDetallePage(
+        key: args.key,
+        visitaIdIsLocalParam: args.visitaIdIsLocalParam,
+      );
+    },
+  );
 }
 
 class VisitaDetalleRouteArgs {
@@ -2319,8 +2203,19 @@ class VisitaEditRoute extends PageRouteInfo<VisitaEditRouteArgs> {
 
   static const String name = 'VisitaEditRoute';
 
-  static const PageInfo<VisitaEditRouteArgs> page =
-      PageInfo<VisitaEditRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<VisitaEditRouteArgs>(
+          orElse: () => const VisitaEditRouteArgs());
+      return VisitaEditPage(
+        key: args.key,
+        id: args.id,
+        isNew: args.isNew,
+        createVisitaFromClienteId: args.createVisitaFromClienteId,
+      );
+    },
+  );
 }
 
 class VisitaEditRouteArgs {
@@ -2356,5 +2251,10 @@ class VisitaListaRoute extends PageRouteInfo<void> {
 
   static const String name = 'VisitaListaRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const VisitaListaPage();
+    },
+  );
 }

@@ -38,6 +38,9 @@ class AppException with _$AppException {
   const factory AppException.notConnection() = NotConnectionFailure;
 
   const factory AppException.noSuchFileOrDirectory() = ArchivoNoEncontrado;
+
+  const factory AppException.unexpectedResponseFormat() =
+      UnexpectedResponseFormat;
 }
 
 class AppExceptionData {
@@ -102,6 +105,10 @@ extension AppExceptionDetalles on AppException {
       noSuchFileOrDirectory: () => AppExceptionData(
         'open-file--failure',
         'File not found.',
+      ),
+      unexpectedResponseFormat: () => AppExceptionData(
+        'unexpected-response-format',
+        'Unexpected response format.',
       ),
     );
   }

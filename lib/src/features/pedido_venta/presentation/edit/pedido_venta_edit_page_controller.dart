@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/features/pedido_venta/domain/pedido_venta.dart';
-import 'package:jbm_nikel_mobile/src/features/pedido_venta/domain/pedido_venta_linea.dart';
+import '../../domain/pedido_venta.dart';
+import '../../domain/pedido_venta_linea.dart';
 
 import '../../../../core/exceptions/app_exception.dart';
 import '../../../cliente/domain/cliente.dart';
@@ -477,7 +477,7 @@ class PedidoVentaEditPageController
   }
 
   List<PedidoVentaLinea> recalcularPedidoVentaLineaId() {
-    final List<PedidoVentaLinea> newPedidoVentaLineaList = [];
+    final newPedidoVentaLineaList = <PedidoVentaLinea>[];
 
     for (var i = 0; i < pedidoVentaLineaList.length; i++) {
       final newPedidoVentaLinea = PedidoVentaLinea(

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
-import 'package:jbm_nikel_mobile/src/core/domain/pais.dart';
-import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_componente.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
+import '../domain/pais.dart';
+import '../../features/articulos/domain/articulo_componente.dart';
+import '../../features/cliente/domain/cliente.dart';
 import 'package:money2/money2.dart';
 
 import '../../../generated/l10n.dart';
@@ -35,13 +35,13 @@ String getMonthFromInt(int month) {
 }
 
 String numberFormatDecimal(double number) {
-  NumberFormat formatter = NumberFormat('#,##0.00', Intl.getCurrentLocale());
+  final formatter = NumberFormat('#,##0.00', Intl.getCurrentLocale());
 
   return formatter.format(number);
 }
 
 String numberFormatCantidades(dynamic number) {
-  NumberFormat formatter = NumberFormat.decimalPattern(Intl.getCurrentLocale());
+  final formatter = NumberFormat.decimalPattern(Intl.getCurrentLocale());
 
   return formatter.format(number);
 }
@@ -53,7 +53,7 @@ String formatCustomerAddress(
   String? province,
   Pais? pais,
 ) {
-  String customerAddress = '';
+  var customerAddress = '';
   if (direccionFiscal != null) {
     customerAddress = direccionFiscal;
   }
@@ -75,7 +75,7 @@ String formatCodigoPostalAndPoblacion({
   String? codigoPostal,
   String? poblacion,
 }) {
-  String codigoPostalAndCity = '';
+  var codigoPostalAndCity = '';
   if (codigoPostal != null) {
     codigoPostalAndCity = codigoPostalAndCity + codigoPostal;
   }
@@ -90,7 +90,7 @@ String formatProvinciaAndPais({
   String? province,
   Pais? pais,
 }) {
-  String provinceAndPais = '';
+  var provinceAndPais = '';
   if (province != null) provinceAndPais = provinceAndPais + province;
   if (province != null && pais != null) {
     provinceAndPais = '$provinceAndPais ';
@@ -141,7 +141,7 @@ String formatPrecioYDescuento({
   required double descuento2,
   required double descuento3,
 }) {
-  String formatPrecioYDescuento =
+  var formatPrecioYDescuento =
       formatPrecios(precio: precio, tipoPrecio: tipoPrecio);
 
   if (descuento1 != 0 || descuento2 != 0 || descuento3 != 0) {
@@ -165,7 +165,7 @@ String dtoText(
   double descuento2,
   double descuento3,
 ) {
-  String dtoText = '';
+  var dtoText = '';
 
   if (descuento1 != 0) {
     dtoText += '${numberFormatCantidades(descuento1)}%';

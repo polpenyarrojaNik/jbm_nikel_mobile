@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_service.dart';
+import '../../../usuario/infrastructure/usuario_service.dart';
 
 import '../../../../core/domain/adjunto_param.dart';
 import '../../../../core/exceptions/app_exception.dart';

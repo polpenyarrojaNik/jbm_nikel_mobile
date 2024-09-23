@@ -2,24 +2,24 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
-import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/presentation/index/cliente_search_controller.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/debouncer.dart';
+import '../../../../core/infrastructure/sync_service.dart';
 import '../../../../core/presentation/common_widgets/app_drawer.dart';
+import '../../../../core/presentation/common_widgets/async_value_ui.dart';
 import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
 import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
+import '../../../../core/routing/app_auto_router.dart';
 import '../../../notifications/core/application/notification_provider.dart';
 import '../../../sync/application/sync_notifier_provider.dart';
+import '../../domain/cliente.dart';
 import '../../infrastructure/cliente_repository.dart';
 import 'cliente_list_shimmer.dart';
 import 'cliente_lista_tile.dart';
+import 'cliente_search_controller.dart';
 
 @RoutePage()
 class ClienteListaPage extends ConsumerStatefulWidget {
@@ -51,7 +51,7 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
   Widget build(BuildContext context) {
     final stateSync = ref.watch(syncNotifierProvider);
 
-    ref.listen<AsyncValue>(
+    ref.listen<AsyncValue<String?>>(
       notificationNotifierProvider,
       (_, state) => state.maybeWhen(
         orElse: () {},
@@ -64,7 +64,7 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
       ),
     );
 
-    ref.listen<AsyncValue>(
+    ref.listen<AsyncValue<void>>(
       clienteIndexScreenControllerProvider,
       (_, state) => state.showAlertDialogOnError(context),
     );
@@ -137,7 +137,7 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
       ref.invalidate(clienteIndexScreenControllerProvider);
     } catch (e) {
       if (mounted) {
-        context.showErrorBar(
+        await context.showErrorBar(
             content: Text(S.of(context).noSeHaPodidoSincronizar));
       }
     }

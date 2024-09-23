@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
+import '../../../../core/routing/app_auto_router.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';

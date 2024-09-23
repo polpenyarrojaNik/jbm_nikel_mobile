@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/core/domain/divisa.dart';
-import 'package:jbm_nikel_mobile/src/core/domain/pais.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/domain/plazo_cobro.dart';
+import '../../../core/domain/divisa.dart';
+import '../../../core/domain/pais.dart';
+import 'plazo_cobro.dart';
 import 'package:money2/money2.dart';
 
 import 'cliente_estado_potencial.dart';

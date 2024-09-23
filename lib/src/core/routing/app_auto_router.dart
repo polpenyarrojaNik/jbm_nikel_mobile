@@ -2,39 +2,36 @@ import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:jbm_nikel_mobile/src/features/articulos/presentation/index/articulo_lista_page.dart';
-import 'package:jbm_nikel_mobile/src/features/articulos/presentation/show/articulo_pedido_venta_page.dart';
-import 'package:jbm_nikel_mobile/src/features/articulos/presentation/show/articulo_precio_tarifa_page.dart';
-import 'package:jbm_nikel_mobile/src/features/articulos/presentation/show/articulo_sustitutivo_page.dart';
-import 'package:jbm_nikel_mobile/src/features/articulos/presentation/show/ultimos_precios/articulo_ultimos_precios_page.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/presentation/show/cliente_articulo_top_lista_page.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/presentation/show/cliente_detalle_page.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/presentation/show/cliente_factura_pendiente_page.dart';
-import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/select_quantity_page.dart';
-import 'package:jbm_nikel_mobile/src/features/expediciones/presentation/expedicion_lista_page.dart';
-import 'package:jbm_nikel_mobile/src/features/settings/presentation/settings_page.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/presentation/login/login_page.dart';
 
 import '../../features/app_initialization/presentation/splash_page.dart';
+import '../../features/articulos/presentation/index/articulo_lista_page.dart';
 import '../../features/articulos/presentation/show/articulo_componente_page.dart';
 import '../../features/articulos/presentation/show/articulo_detalle_page.dart';
 import '../../features/articulos/presentation/show/articulo_documento_page.dart';
 import '../../features/articulos/presentation/show/articulo_grupos_netos_page.dart';
+import '../../features/articulos/presentation/show/articulo_pedido_venta_page.dart';
+import '../../features/articulos/presentation/show/articulo_precio_tarifa_page.dart';
 import '../../features/articulos/presentation/show/articulo_recambio_page.dart';
+import '../../features/articulos/presentation/show/articulo_sustitutivo_page.dart';
 import '../../features/articulos/presentation/show/articulo_ventas_cliente_page.dart';
 import '../../features/articulos/presentation/show/articulo_ventas_mes_page.dart';
+import '../../features/articulos/presentation/show/ultimos_precios/articulo_ultimos_precios_page.dart';
 import '../../features/catalogos/presentation/catalogo_list_page.dart';
 import '../../features/catalogos/presentation/catalogo_pdf_viewer.dart';
+import '../../features/cliente/domain/cliente_imp_param.dart';
 import '../../features/cliente/presentation/index/cliente_lista_page.dart';
 import '../../features/cliente/presentation/show/cliente_adjunto_page.dart';
+import '../../features/cliente/presentation/show/cliente_articulo_top_lista_page.dart';
 import '../../features/cliente/presentation/show/cliente_contacto_edit_page.dart';
 import '../../features/cliente/presentation/show/cliente_contacto_list_page.dart';
 import '../../features/cliente/presentation/show/cliente_descuento_page.dart';
+import '../../features/cliente/presentation/show/cliente_detalle_page.dart';
 import '../../features/cliente/presentation/show/cliente_devolucion_detalle_page.dart';
 import '../../features/cliente/presentation/show/cliente_devolucion_page.dart';
 import '../../features/cliente/presentation/show/cliente_direccion_edit_page.dart';
 import '../../features/cliente/presentation/show/cliente_direccion_list_page.dart';
 import '../../features/cliente/presentation/show/cliente_direccion_seleccionar_pais_page.dart';
+import '../../features/cliente/presentation/show/cliente_factura_pendiente_page.dart';
 import '../../features/cliente/presentation/show/cliente_grupo_neto_page.dart';
 import '../../features/cliente/presentation/show/cliente_pedidos_page.dart';
 import '../../features/cliente/presentation/show/cliente_precio_neto_page.dart';
@@ -42,31 +39,33 @@ import '../../features/cliente/presentation/show/cliente_rappel_page.dart';
 import '../../features/cliente/presentation/show/cliente_ventas_articulo_page.dart';
 import '../../features/cliente/presentation/show/cliente_ventas_mes_page.dart';
 import '../../features/cliente/presentation/show/cliente_visita_page.dart';
-import '../../features/devoluciones/domain/devolucion.dart';
 import '../../features/cliente/presentation/show/ultimos_precios/cliente_ultimos_precios_page.dart';
 import '../../features/cliente_alrededor/presentation/clientes_alrededor_page.dart';
-import '../../features/pedido_venta/domain/seleccionar_cantidad_param.dart';
+import '../../features/devoluciones/domain/devolucion.dart';
+import '../../features/expediciones/presentation/expedicion_lista_page.dart';
+import '../../features/notifications/detail/notification_detail_page.dart';
+import '../../features/notifications/index/notification_list_page.dart';
+import '../../features/pedido_venta/domain/pedido_local_param.dart';
 import '../../features/pedido_venta/domain/pedido_venta_linea.dart';
-
+import '../../features/pedido_venta/domain/seleccionar_cantidad_param.dart';
 import '../../features/pedido_venta/presentation/edit/pedido_venta_edit_page.dart';
+import '../../features/pedido_venta/presentation/edit/select_quantity_page.dart';
 import '../../features/pedido_venta/presentation/index/pedido_venta_lista_page.dart';
 import '../../features/pedido_venta/presentation/show/pedido_venta_detalle_page.dart';
+import '../../features/settings/presentation/settings_page.dart';
+import '../../features/usuario/presentation/login/login_page.dart';
+import '../../features/visitas/domain/visita_id_param.dart';
 import '../../features/visitas/presentation/edit/visit_edit_page.dart';
 import '../../features/visitas/presentation/index/visita_lista_page.dart';
 import '../../features/visitas/presentation/show/visita_detalle_page.dart';
-import '../../features/cliente/domain/cliente_imp_param.dart';
 import '../domain/pais.dart';
-import '../../features/pedido_venta/domain/pedido_local_param.dart';
-import '../../features/visitas/domain/visita_id_param.dart';
-import '../../features/notifications/index/notification_list_page.dart';
-import '../../features/notifications/detail/notification_detail_page.dart';
 
 part 'app_auto_router.gr.dart';
 
 @AutoRouterConfig(
   replaceInRouteName: 'Page,Route',
 )
-class AppRouter extends _$AppRouter {
+class AppRouter extends RootStackRouter {
   // AppRouter({required super.routeGuard});
   @override
   RouteType get defaultRouteType => const RouteType.material();

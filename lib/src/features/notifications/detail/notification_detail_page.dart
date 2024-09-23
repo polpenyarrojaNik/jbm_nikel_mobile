@@ -2,14 +2,14 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_indicator_widget.dart';
-import 'package:jbm_nikel_mobile/src/features/notifications/core/application/notification_provider.dart';
-import 'package:jbm_nikel_mobile/src/features/notifications/detail/notification_detail_controller.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../../../generated/l10n.dart';
+import '../../../core/helpers/formatters.dart';
+import '../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../core/application/notification_provider.dart';
+import 'notification_detail_controller.dart';
 
 @RoutePage()
 class NotificationDetailPage extends ConsumerWidget {
@@ -23,9 +23,12 @@ class NotificationDetailPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state =
         ref.watch(notificationDetailScreenControllerProvider(notificationId));
+    // ignore: deprecated_member_use
     return WillPopScope(
       onWillPop: () async {
-        ref.read(notificationNotifierProvider.notifier).haveNotification();
+        await ref
+            .read(notificationNotifierProvider.notifier)
+            .haveNotification();
         return true;
       },
       child: Scaffold(

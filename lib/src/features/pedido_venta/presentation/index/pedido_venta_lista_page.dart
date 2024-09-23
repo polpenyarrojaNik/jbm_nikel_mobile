@@ -3,26 +3,26 @@ import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/sin_resultados_widget.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
-import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
-import 'package:jbm_nikel_mobile/src/features/pedido_venta/domain/pedido_venta_estado.dart';
-import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/index/pedido_search_controller.dart';
-import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/index/pedido_venta_lista_tile.dart';
-import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/index/pedido_venta_shimmer.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/debouncer.dart';
 import '../../../../core/infrastructure/sync_service.dart';
 import '../../../../core/presentation/common_widgets/app_drawer.dart';
+import '../../../../core/presentation/common_widgets/async_value_ui.dart';
 import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
+import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/presentation/common_widgets/sin_resultados_widget.dart';
+import '../../../../core/presentation/theme/app_sizes.dart';
+import '../../../../core/routing/app_auto_router.dart';
 import '../../../notifications/core/application/notification_provider.dart';
 import '../../../sync/application/sync_notifier_provider.dart';
+import '../../domain/pedido_venta_estado.dart';
 import '../../infrastructure/pedido_venta_repository.dart';
+import 'pedido_search_controller.dart';
+import 'pedido_venta_lista_tile.dart';
+import 'pedido_venta_shimmer.dart';
 
 @RoutePage()
 class PedidoVentaListPage extends ConsumerStatefulWidget {
@@ -55,7 +55,7 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
     final stateGetBorradorPendiente =
         ref.watch(getPedidoVentaBorradorPendiente);
 
-    ref.listen<AsyncValue>(
+    ref.listen<AsyncValue<String?>>(
       notificationNotifierProvider,
       (_, state) => state.maybeWhen(
         orElse: () {},
@@ -68,7 +68,7 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
       ),
     );
 
-    ref.listen<AsyncValue>(
+    ref.listen<AsyncValue<void>>(
       pedidoVentaIndexScreenControllerProvider,
       (_, state) => state.showAlertDialogOnError(context),
     );
@@ -128,7 +128,7 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
       ref.invalidate(pedidoVentaIndexScreenControllerProvider);
     } catch (e) {
       if (mounted) {
-        context.showErrorBar(
+        await context.showErrorBar(
             content: Text(S.of(context).noSeHaPodidoSincronizar));
       }
     }
@@ -142,7 +142,7 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
 
   void navigateToEditPedidoBorrador(
       BuildContext context, String pedidoVentaBorradorId) async {
-    context.router.push(
+    await context.router.push(
       PedidoVentaEditRoute(pedidoAppId: pedidoVentaBorradorId, isLocal: true),
     );
   }
@@ -285,7 +285,7 @@ class _PedidoVentaFilterDialogState
 
   List<FormBuilderFieldOption<Object>> showFieldOption(
       BuildContext context, List<PedidoVentaEstado> pedidoVentaEstadoList) {
-    final List<FormBuilderFieldOption<Object>> fieldOptions = [];
+    final fieldOptions = <FormBuilderFieldOption<Object>>[];
     for (final pedidoVentaEstado in pedidoVentaEstadoList) {
       fieldOptions.add(
         FormBuilderFieldOption(

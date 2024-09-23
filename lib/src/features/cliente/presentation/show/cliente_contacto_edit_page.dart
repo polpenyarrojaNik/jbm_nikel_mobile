@@ -4,21 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/common_app_bar.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_contacto.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_contacto_imp.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_contacto_imp_edit_page_data.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_repository.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/presentation/common_widgets/app_decoration.dart';
+import '../../../../core/presentation/common_widgets/common_app_bar.dart';
+import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
+import '../../../usuario/application/usuario_notifier.dart';
+import '../../domain/cliente_contacto.dart';
+import '../../domain/cliente_contacto_imp.dart';
+import '../../domain/cliente_contacto_imp_edit_page_data.dart';
 import '../../domain/cliente_imp_param.dart';
+import '../../infrastructure/cliente_repository.dart';
 import 'cliente_contacto_edit_page_controller.dart';
 import 'cliente_contacto_imp_list_tile.dart';
 
@@ -34,7 +34,7 @@ class ClienteContactoEditPage extends ConsumerWidget {
     final value =
         ref.watch(clienteContactoEditPageControllerProvider(clienteImpParam));
 
-    ref.listen<AsyncValue>(
+    ref.listen<AsyncValue<ClienteContactoImpEditPageData>>(
       clienteContactoEditPageControllerProvider(clienteImpParam),
       (_, state) => state.maybeWhen(
           orElse: () {},
@@ -51,8 +51,7 @@ class ClienteContactoEditPage extends ConsumerWidget {
             context.router.maybePop();
           },
           data: (contactoModificacionEditPageData) {
-            contactoModificacionEditPageData = contactoModificacionEditPageData
-                as ClienteContactoImpEditPageData;
+            contactoModificacionEditPageData = contactoModificacionEditPageData;
             if (contactoModificacionEditPageData.isSent) {
               if (contactoModificacionEditPageData.clienteContacto != null) {
                 context.showSuccessBar(

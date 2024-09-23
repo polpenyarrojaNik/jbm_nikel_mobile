@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:jbm_nikel_mobile/src/features/devoluciones/domain/devolucion.dart';
+import '../../../devoluciones/domain/devolucion.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
