@@ -7,7 +7,9 @@ import 'app_exception.dart';
 
 Error getApiError(Object e) {
   if (e is DioException) {
-    if (e.response != null && e.response!.data != null) {
+    if (e.isNoConnectionError) {
+      throw const AppException.notConnection();
+    } else if (e.response != null && e.response!.data != null) {
       final responseData = e.response!.data;
       try {
         Map<String, dynamic> responseJson;
@@ -37,8 +39,6 @@ Error getApiError(Object e) {
         throw AppException.restApiFailure(
             e.response!.statusCode ?? 500, e.response?.statusMessage ?? '');
       }
-    } else if (e.isNoConnectionError) {
-      throw const AppException.notConnection();
     } else {
       throw AppException.restApiFailure(
           e.response?.statusCode ?? 400, e.response?.statusMessage ?? '');
