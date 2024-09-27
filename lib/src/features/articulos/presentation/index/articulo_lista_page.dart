@@ -49,7 +49,7 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
     final stateSync = ref.watch(syncNotifierProvider);
 
     ref.listen<AsyncValue>(
-      articuloIndexScreenControllerProvider,
+      articuloIndexScreenControllerProvider(widget.isSearchArticuloForForm),
       (_, state) => state.showAlertDialogOnError(context),
     );
 
@@ -72,7 +72,7 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
       showReleaseNotes: true,
       child: Scaffold(
         key: scaffoldKey,
-        drawer: const AppDrawer(),
+        drawer: !widget.isSearchArticuloForForm ? const AppDrawer() : null,
         appBar: CustomSearchAppBar(
           scaffoldKey: scaffoldKey,
           isSearchingFirst: widget.isSearchArticuloForForm,
@@ -134,8 +134,8 @@ class ArticleListViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final stateArticuloListCount =
-        ref.watch(articuloIndexScreenControllerProvider);
+    final stateArticuloListCount = ref
+        .watch(articuloIndexScreenControllerProvider(isSearchArticuloForForm));
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
@@ -162,7 +162,8 @@ class ArticleListViewWidget extends StatelessWidget {
               itemCount: count,
               itemBuilder: (context, i) => ref
                   .watch(ArticuloIndexScreenPaginatedControllerProvider(
-                      page: i ~/ ArticuloRepository.pageSize))
+                      page: i ~/ ArticuloRepository.pageSize,
+                      isSearchArticuloForForm: isSearchArticuloForForm))
                   .maybeWhen(
                     data: (articuloList) => GestureDetector(
                       onTap: () => (!isSearchArticuloForForm)

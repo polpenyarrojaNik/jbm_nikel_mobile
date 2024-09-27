@@ -210,7 +210,9 @@ class ArticuloRepository {
   );
 
   Future<List<Articulo>> getArticuloLista(
-      {required int page, required String searchText}) async {
+      {required int page,
+      required bool isSearchArticuloForForm,
+      required String searchText}) async {
     try {
       final query = await _remoteDb.customSelect('''
           SELECT art.*
@@ -221,7 +223,9 @@ class ArticuloRepository {
           OR art.GS1_128_SUBCAJA LIKE '%$searchText%'
           OR art.GS1_128_CAJA LIKE '%$searchText%'
           OR art.GS1_128_PALET LIKE '%$searchText%'
-          ORDER BY CASE
+          ORDER BY 
+          ${isSearchArticuloForForm ? 'VENTAS_ORDEN,' : ''}
+          CASE
             WHEN art.ARTICULO_ID = '$searchText' OR art.ARTICULO_ID like'$searchText%' THEN 1
             ELSE 2
           END

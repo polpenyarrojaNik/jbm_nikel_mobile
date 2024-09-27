@@ -11073,6 +11073,12 @@ class $ArticuloTableTable extends ArticuloTable
   late final GeneratedColumn<String> gs1128Palet = GeneratedColumn<String>(
       'GS1_128_PALET', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _ventasOrdenMeta =
+      const VerificationMeta('ventasOrden');
+  @override
+  late final GeneratedColumn<int> ventasOrden = GeneratedColumn<int>(
+      'VENTAS_ORDEN', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
@@ -11155,6 +11161,7 @@ class $ArticuloTableTable extends ArticuloTable
         gs1128Subcaja,
         gs1128Caja,
         gs1128Palet,
+        ventasOrden,
         lastUpdated,
         deleted
       ];
@@ -11566,6 +11573,12 @@ class $ArticuloTableTable extends ArticuloTable
           gs1128Palet.isAcceptableOrUnknown(
               data['GS1_128_PALET']!, _gs1128PaletMeta));
     }
+    if (data.containsKey('VENTAS_ORDEN')) {
+      context.handle(
+          _ventasOrdenMeta,
+          ventasOrden.isAcceptableOrUnknown(
+              data['VENTAS_ORDEN']!, _ventasOrdenMeta));
+    }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
           _lastUpdatedMeta,
@@ -11729,6 +11742,8 @@ class $ArticuloTableTable extends ArticuloTable
           .read(DriftSqlType.string, data['${effectivePrefix}GS1_128_CAJA']),
       gs1128Palet: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}GS1_128_PALET']),
+      ventasOrden: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}VENTAS_ORDEN']),
       lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
       deleted: attachedDatabase.typeMapping
@@ -11809,6 +11824,7 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
   final Value<String?> gs1128Subcaja;
   final Value<String?> gs1128Caja;
   final Value<String?> gs1128Palet;
+  final Value<int?> ventasOrden;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
   final Value<int> rowid;
@@ -11879,6 +11895,7 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
     this.gs1128Subcaja = const Value.absent(),
     this.gs1128Caja = const Value.absent(),
     this.gs1128Palet = const Value.absent(),
+    this.ventasOrden = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -11950,6 +11967,7 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
     this.gs1128Subcaja = const Value.absent(),
     this.gs1128Caja = const Value.absent(),
     this.gs1128Palet = const Value.absent(),
+    this.ventasOrden = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -12043,6 +12061,7 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
     Expression<String>? gs1128Subcaja,
     Expression<String>? gs1128Caja,
     Expression<String>? gs1128Palet,
+    Expression<int>? ventasOrden,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
     Expression<int>? rowid,
@@ -12124,6 +12143,7 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
       if (gs1128Subcaja != null) 'GS1_128_SUBCAJA': gs1128Subcaja,
       if (gs1128Caja != null) 'GS1_128_CAJA': gs1128Caja,
       if (gs1128Palet != null) 'GS1_128_PALET': gs1128Palet,
+      if (ventasOrden != null) 'VENTAS_ORDEN': ventasOrden,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
       if (rowid != null) 'rowid': rowid,
@@ -12197,6 +12217,7 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
       Value<String?>? gs1128Subcaja,
       Value<String?>? gs1128Caja,
       Value<String?>? gs1128Palet,
+      Value<int?>? ventasOrden,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted,
       Value<int>? rowid}) {
@@ -12274,6 +12295,7 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
       gs1128Subcaja: gs1128Subcaja ?? this.gs1128Subcaja,
       gs1128Caja: gs1128Caja ?? this.gs1128Caja,
       gs1128Palet: gs1128Palet ?? this.gs1128Palet,
+      ventasOrden: ventasOrden ?? this.ventasOrden,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
       rowid: rowid ?? this.rowid,
@@ -12491,6 +12513,9 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
     if (gs1128Palet.present) {
       map['GS1_128_PALET'] = Variable<String>(gs1128Palet.value);
     }
+    if (ventasOrden.present) {
+      map['VENTAS_ORDEN'] = Variable<int>(ventasOrden.value);
+    }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
     }
@@ -12572,6 +12597,7 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
           ..write('gs1128Subcaja: $gs1128Subcaja, ')
           ..write('gs1128Caja: $gs1128Caja, ')
           ..write('gs1128Palet: $gs1128Palet, ')
+          ..write('ventasOrden: $ventasOrden, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted, ')
           ..write('rowid: $rowid')
@@ -29672,6 +29698,7 @@ typedef $$ArticuloTableTableCreateCompanionBuilder = ArticuloTableCompanion
   Value<String?> gs1128Subcaja,
   Value<String?> gs1128Caja,
   Value<String?> gs1128Palet,
+  Value<int?> ventasOrden,
   required DateTime lastUpdated,
   Value<String> deleted,
   Value<int> rowid,
@@ -29744,6 +29771,7 @@ typedef $$ArticuloTableTableUpdateCompanionBuilder = ArticuloTableCompanion
   Value<String?> gs1128Subcaja,
   Value<String?> gs1128Caja,
   Value<String?> gs1128Palet,
+  Value<int?> ventasOrden,
   Value<DateTime> lastUpdated,
   Value<String> deleted,
   Value<int> rowid,
@@ -30104,6 +30132,11 @@ class $$ArticuloTableTableFilterComposer
 
   ColumnFilters<String> get gs1128Palet => $state.composableBuilder(
       column: $state.table.gs1128Palet,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get ventasOrden => $state.composableBuilder(
+      column: $state.table.ventasOrden,
       builder: (column, joinBuilders) =>
           ColumnFilters(column, joinBuilders: joinBuilders));
 
@@ -30470,6 +30503,11 @@ class $$ArticuloTableTableOrderingComposer
       builder: (column, joinBuilders) =>
           ColumnOrderings(column, joinBuilders: joinBuilders));
 
+  ColumnOrderings<int> get ventasOrden => $state.composableBuilder(
+      column: $state.table.ventasOrden,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
   ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
       column: $state.table.lastUpdated,
       builder: (column, joinBuilders) =>
@@ -30593,6 +30631,7 @@ class $$ArticuloTableTableTableManager extends RootTableManager<
             Value<String?> gs1128Subcaja = const Value.absent(),
             Value<String?> gs1128Caja = const Value.absent(),
             Value<String?> gs1128Palet = const Value.absent(),
+            Value<int?> ventasOrden = const Value.absent(),
             Value<DateTime> lastUpdated = const Value.absent(),
             Value<String> deleted = const Value.absent(),
             Value<int> rowid = const Value.absent(),
@@ -30664,6 +30703,7 @@ class $$ArticuloTableTableTableManager extends RootTableManager<
             gs1128Subcaja: gs1128Subcaja,
             gs1128Caja: gs1128Caja,
             gs1128Palet: gs1128Palet,
+            ventasOrden: ventasOrden,
             lastUpdated: lastUpdated,
             deleted: deleted,
             rowid: rowid,
@@ -30735,6 +30775,7 @@ class $$ArticuloTableTableTableManager extends RootTableManager<
             Value<String?> gs1128Subcaja = const Value.absent(),
             Value<String?> gs1128Caja = const Value.absent(),
             Value<String?> gs1128Palet = const Value.absent(),
+            Value<int?> ventasOrden = const Value.absent(),
             required DateTime lastUpdated,
             Value<String> deleted = const Value.absent(),
             Value<int> rowid = const Value.absent(),
@@ -30806,6 +30847,7 @@ class $$ArticuloTableTableTableManager extends RootTableManager<
             gs1128Subcaja: gs1128Subcaja,
             gs1128Caja: gs1128Caja,
             gs1128Palet: gs1128Palet,
+            ventasOrden: ventasOrden,
             lastUpdated: lastUpdated,
             deleted: deleted,
             rowid: rowid,

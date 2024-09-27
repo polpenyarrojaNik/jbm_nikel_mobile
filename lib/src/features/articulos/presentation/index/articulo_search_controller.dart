@@ -21,8 +21,9 @@ class ArticuloIndexScreenController extends _$ArticuloIndexScreenController {
   ArticuloIndexScreenController();
 
   @override
-  Future<int> build() {
+  Future<int> build(bool isSearchArticuloForForm) {
     return ref.read(articuloRepositoryProvider).getArticuloCountList(
+   
         searchText: ref.watch(articulosSearchQueryStateProvider));
   }
 }
@@ -33,8 +34,11 @@ class ArticuloIndexScreenPaginatedController
   ArticuloIndexScreenPaginatedController();
 
   @override
-  Future<List<Articulo>> build({required int page}) {
+  Future<List<Articulo>> build(
+      {required int page, required bool isSearchArticuloForForm}) {
     return ref.read(articuloRepositoryProvider).getArticuloLista(
-        page: page, searchText: ref.watch(articulosSearchQueryStateProvider));
+        page: page,
+        isSearchArticuloForForm: isSearchArticuloForForm,
+        searchText: ref.watch(articulosSearchQueryStateProvider));
   }
 }

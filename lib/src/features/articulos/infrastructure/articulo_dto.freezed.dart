@@ -151,8 +151,9 @@ mixin _$ArticuloDTO {
   @JsonKey(name: 'GS1_128_CAJA')
   String? get gs1128Caja => throw _privateConstructorUsedError;
   @JsonKey(name: 'GS1_128_PALET')
-  String? get gs1128Palet =>
-      throw _privateConstructorUsedError; // @JsonKey(name: 'VENTAS_ORDEN') int? ventasOrden,
+  String? get gs1128Palet => throw _privateConstructorUsedError;
+  @JsonKey(name: 'VENTAS_ORDEN')
+  int? get ventasOrden => throw _privateConstructorUsedError;
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   @JsonKey(name: 'DELETED')
@@ -242,6 +243,7 @@ abstract class $ArticuloDTOCopyWith<$Res> {
       @JsonKey(name: 'GS1_128_SUBCAJA') String? gs1128Subcaja,
       @JsonKey(name: 'GS1_128_CAJA') String? gs1128Caja,
       @JsonKey(name: 'GS1_128_PALET') String? gs1128Palet,
+      @JsonKey(name: 'VENTAS_ORDEN') int? ventasOrden,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
 }
@@ -327,6 +329,7 @@ class _$ArticuloDTOCopyWithImpl<$Res, $Val extends ArticuloDTO>
     Object? gs1128Subcaja = freezed,
     Object? gs1128Caja = freezed,
     Object? gs1128Palet = freezed,
+    Object? ventasOrden = freezed,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -595,6 +598,10 @@ class _$ArticuloDTOCopyWithImpl<$Res, $Val extends ArticuloDTO>
           ? _value.gs1128Palet
           : gs1128Palet // ignore: cast_nullable_to_non_nullable
               as String?,
+      ventasOrden: freezed == ventasOrden
+          ? _value.ventasOrden
+          : ventasOrden // ignore: cast_nullable_to_non_nullable
+              as int?,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -683,6 +690,7 @@ abstract class _$$ArticuloDTOImplCopyWith<$Res>
       @JsonKey(name: 'GS1_128_SUBCAJA') String? gs1128Subcaja,
       @JsonKey(name: 'GS1_128_CAJA') String? gs1128Caja,
       @JsonKey(name: 'GS1_128_PALET') String? gs1128Palet,
+      @JsonKey(name: 'VENTAS_ORDEN') int? ventasOrden,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
 }
@@ -766,6 +774,7 @@ class __$$ArticuloDTOImplCopyWithImpl<$Res>
     Object? gs1128Subcaja = freezed,
     Object? gs1128Caja = freezed,
     Object? gs1128Palet = freezed,
+    Object? ventasOrden = freezed,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -1034,6 +1043,10 @@ class __$$ArticuloDTOImplCopyWithImpl<$Res>
           ? _value.gs1128Palet
           : gs1128Palet // ignore: cast_nullable_to_non_nullable
               as String?,
+      ventasOrden: freezed == ventasOrden
+          ? _value.ventasOrden
+          : ventasOrden // ignore: cast_nullable_to_non_nullable
+              as int?,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -1120,6 +1133,7 @@ class _$ArticuloDTOImpl extends _ArticuloDTO {
       @JsonKey(name: 'GS1_128_SUBCAJA') this.gs1128Subcaja,
       @JsonKey(name: 'GS1_128_CAJA') this.gs1128Caja,
       @JsonKey(name: 'GS1_128_PALET') this.gs1128Palet,
+      @JsonKey(name: 'VENTAS_ORDEN') this.ventasOrden,
       @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
@@ -1325,7 +1339,9 @@ class _$ArticuloDTOImpl extends _ArticuloDTO {
   @override
   @JsonKey(name: 'GS1_128_PALET')
   final String? gs1128Palet;
-// @JsonKey(name: 'VENTAS_ORDEN') int? ventasOrden,
+  @override
+  @JsonKey(name: 'VENTAS_ORDEN')
+  final int? ventasOrden;
   @override
   @JsonKey(name: 'LAST_UPDATED')
   final DateTime lastUpdated;
@@ -1335,7 +1351,7 @@ class _$ArticuloDTOImpl extends _ArticuloDTO {
 
   @override
   String toString() {
-    return 'ArticuloDTO(id: $id, descripcionES: $descripcionES, descripcionEN: $descripcionEN, descripcionFR: $descripcionFR, descripcionDE: $descripcionDE, descripcionCA: $descripcionCA, descripcionGB: $descripcionGB, descripcionHU: $descripcionHU, descripcionIT: $descripcionIT, descripcionNL: $descripcionNL, descripcionPL: $descripcionPL, descripcionPT: $descripcionPT, descripcionRO: $descripcionRO, descripcionRU: $descripcionRU, descripcionCN: $descripcionCN, descripcionEL: $descripcionEL, familiaId: $familiaId, subfamiliaId: $subfamiliaId, ventaMinimo: $ventaMinimo, ventaMultiplo: $ventaMultiplo, unidadesSubcaja: $unidadesSubcaja, unidadesCaja: $unidadesCaja, unidadesPalet: $unidadesPalet, activoWeb: $activoWeb, activoApp: $activoApp, enCatalogo: $enCatalogo, descatalogado: $descatalogado, paginaEnCatalgo: $paginaEnCatalgo, paginaEnCatalgo2: $paginaEnCatalgo2, pesoKg: $pesoKg, largoCm: $largoCm, anchoCm: $anchoCm, altoCm: $altoCm, resumenES: $resumenES, resumenEN: $resumenEN, resumenFR: $resumenFR, resumenDE: $resumenDE, resumenCA: $resumenCA, resumenGB: $resumenGB, resumenHU: $resumenHU, resumenIT: $resumenIT, resumenNL: $resumenNL, resumenPL: $resumenPL, resumenPT: $resumenPT, resumenRO: $resumenRO, resumenRU: $resumenRU, resumenCN: $resumenCN, resumenEL: $resumenEL, stockDisponible: $stockDisponible, ventasActual: $ventasActual, ventasAnterior: $ventasAnterior, comprasEntregaCantidad1: $comprasEntregaCantidad1, comprasEntregaCantidad2: $comprasEntregaCantidad2, comprasEntregaCantidad3: $comprasEntregaCantidad3, comprasEntregaCantidadMas3: $comprasEntregaCantidadMas3, comprasEntregaFecha1: $comprasEntregaFecha1, comprasEntregaFecha2: $comprasEntregaFecha2, comprasEntregaFecha3: $comprasEntregaFecha3, comprasEntregaEstado1: $comprasEntregaEstado1, comprasEntregaEstado2: $comprasEntregaEstado2, comprasEntregaEstado3: $comprasEntregaEstado3, imagenPrincipal: $imagenPrincipal, gtin13Unidad: $gtin13Unidad, gs1128Subcaja: $gs1128Subcaja, gs1128Caja: $gs1128Caja, gs1128Palet: $gs1128Palet, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ArticuloDTO(id: $id, descripcionES: $descripcionES, descripcionEN: $descripcionEN, descripcionFR: $descripcionFR, descripcionDE: $descripcionDE, descripcionCA: $descripcionCA, descripcionGB: $descripcionGB, descripcionHU: $descripcionHU, descripcionIT: $descripcionIT, descripcionNL: $descripcionNL, descripcionPL: $descripcionPL, descripcionPT: $descripcionPT, descripcionRO: $descripcionRO, descripcionRU: $descripcionRU, descripcionCN: $descripcionCN, descripcionEL: $descripcionEL, familiaId: $familiaId, subfamiliaId: $subfamiliaId, ventaMinimo: $ventaMinimo, ventaMultiplo: $ventaMultiplo, unidadesSubcaja: $unidadesSubcaja, unidadesCaja: $unidadesCaja, unidadesPalet: $unidadesPalet, activoWeb: $activoWeb, activoApp: $activoApp, enCatalogo: $enCatalogo, descatalogado: $descatalogado, paginaEnCatalgo: $paginaEnCatalgo, paginaEnCatalgo2: $paginaEnCatalgo2, pesoKg: $pesoKg, largoCm: $largoCm, anchoCm: $anchoCm, altoCm: $altoCm, resumenES: $resumenES, resumenEN: $resumenEN, resumenFR: $resumenFR, resumenDE: $resumenDE, resumenCA: $resumenCA, resumenGB: $resumenGB, resumenHU: $resumenHU, resumenIT: $resumenIT, resumenNL: $resumenNL, resumenPL: $resumenPL, resumenPT: $resumenPT, resumenRO: $resumenRO, resumenRU: $resumenRU, resumenCN: $resumenCN, resumenEL: $resumenEL, stockDisponible: $stockDisponible, ventasActual: $ventasActual, ventasAnterior: $ventasAnterior, comprasEntregaCantidad1: $comprasEntregaCantidad1, comprasEntregaCantidad2: $comprasEntregaCantidad2, comprasEntregaCantidad3: $comprasEntregaCantidad3, comprasEntregaCantidadMas3: $comprasEntregaCantidadMas3, comprasEntregaFecha1: $comprasEntregaFecha1, comprasEntregaFecha2: $comprasEntregaFecha2, comprasEntregaFecha3: $comprasEntregaFecha3, comprasEntregaEstado1: $comprasEntregaEstado1, comprasEntregaEstado2: $comprasEntregaEstado2, comprasEntregaEstado3: $comprasEntregaEstado3, imagenPrincipal: $imagenPrincipal, gtin13Unidad: $gtin13Unidad, gs1128Subcaja: $gs1128Subcaja, gs1128Caja: $gs1128Caja, gs1128Palet: $gs1128Palet, ventasOrden: $ventasOrden, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -1452,6 +1468,7 @@ class _$ArticuloDTOImpl extends _ArticuloDTO {
             (identical(other.gs1128Subcaja, gs1128Subcaja) || other.gs1128Subcaja == gs1128Subcaja) &&
             (identical(other.gs1128Caja, gs1128Caja) || other.gs1128Caja == gs1128Caja) &&
             (identical(other.gs1128Palet, gs1128Palet) || other.gs1128Palet == gs1128Palet) &&
+            (identical(other.ventasOrden, ventasOrden) || other.ventasOrden == ventasOrden) &&
             (identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated) &&
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
@@ -1526,6 +1543,7 @@ class _$ArticuloDTOImpl extends _ArticuloDTO {
         gs1128Subcaja,
         gs1128Caja,
         gs1128Palet,
+        ventasOrden,
         lastUpdated,
         deleted
       ]);
@@ -1624,6 +1642,7 @@ abstract class _ArticuloDTO extends ArticuloDTO {
       @JsonKey(name: 'GS1_128_SUBCAJA') final String? gs1128Subcaja,
       @JsonKey(name: 'GS1_128_CAJA') final String? gs1128Caja,
       @JsonKey(name: 'GS1_128_PALET') final String? gs1128Palet,
+      @JsonKey(name: 'VENTAS_ORDEN') final int? ventasOrden,
       @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
       @JsonKey(name: 'DELETED') final String deleted}) = _$ArticuloDTOImpl;
   const _ArticuloDTO._() : super._();
@@ -1828,7 +1847,10 @@ abstract class _ArticuloDTO extends ArticuloDTO {
   String? get gs1128Caja;
   @override
   @JsonKey(name: 'GS1_128_PALET')
-  String? get gs1128Palet; // @JsonKey(name: 'VENTAS_ORDEN') int? ventasOrden,
+  String? get gs1128Palet;
+  @override
+  @JsonKey(name: 'VENTAS_ORDEN')
+  int? get ventasOrden;
   @override
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated;

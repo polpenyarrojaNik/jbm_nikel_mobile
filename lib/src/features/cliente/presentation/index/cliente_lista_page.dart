@@ -71,7 +71,7 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
 
     return Scaffold(
       key: scaffoldKey,
-      drawer: const AppDrawer(),
+      drawer: !widget.isSearchClienteForFrom ? const AppDrawer() : null,
       appBar: CustomSearchAppBar(
         scaffoldKey: scaffoldKey,
         isSearchingFirst: widget.isSearchClienteForFrom,

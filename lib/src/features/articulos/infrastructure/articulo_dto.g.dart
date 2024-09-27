@@ -84,6 +84,7 @@ _$ArticuloDTOImpl _$$ArticuloDTOImplFromJson(Map<String, dynamic> json) =>
       gs1128Subcaja: json['GS1_128_SUBCAJA'] as String?,
       gs1128Caja: json['GS1_128_CAJA'] as String?,
       gs1128Palet: json['GS1_128_PALET'] as String?,
+      ventasOrden: (json['VENTAS_ORDEN'] as num?)?.toInt(),
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       deleted: json['DELETED'] as String? ?? 'N',
     );
@@ -159,6 +160,7 @@ Map<String, dynamic> _$$ArticuloDTOImplToJson(_$ArticuloDTOImpl instance) =>
       'GS1_128_SUBCAJA': instance.gs1128Subcaja,
       'GS1_128_CAJA': instance.gs1128Caja,
       'GS1_128_PALET': instance.gs1128Palet,
+      'VENTAS_ORDEN': instance.ventasOrden,
       'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
       'DELETED': instance.deleted,
     };
