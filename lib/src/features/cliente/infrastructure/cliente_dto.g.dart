@@ -68,6 +68,9 @@ _$ClienteDTOImpl _$$ClienteDTOImplFromJson(Map<String, dynamic> json) =>
       representante1Nombre: json['REPRESENTANTE1_NOMBRE'] as String?,
       representante2Id: json['REPRESENTANTE2_ID'] as String?,
       representante2Nombre: json['REPRESENTANTE2_NOMBRE'] as String?,
+      telefonoFijo: json['TELEFONO_FIJO'] as String?,
+      telefonoMovil: json['TELEFONO_MOVIL'] as String?,
+      email: json['E_MAIL'] as String?,
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       deleted: json['DELETED'] as String? ?? 'N',
     );
@@ -127,6 +130,9 @@ Map<String, dynamic> _$$ClienteDTOImplToJson(_$ClienteDTOImpl instance) =>
       'REPRESENTANTE1_NOMBRE': instance.representante1Nombre,
       'REPRESENTANTE2_ID': instance.representante2Id,
       'REPRESENTANTE2_NOMBRE': instance.representante2Nombre,
+      'TELEFONO_FIJO': instance.telefonoFijo,
+      'TELEFONO_MOVIL': instance.telefonoMovil,
+      'E_MAIL': instance.email,
       'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
       'DELETED': instance.deleted,
     };

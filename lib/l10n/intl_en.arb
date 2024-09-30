@@ -394,5 +394,7 @@
   "semanal": "Weekly",
   "mensual": "Monthly",
   "trimestral": "Quarterly",
-  "alto": "High"
+  "alto": "High",
+  "telefono": "Phone",
+  "esteNumeroTelefonoExisiteEnElCliente": "Existing number phone into customer"
 }

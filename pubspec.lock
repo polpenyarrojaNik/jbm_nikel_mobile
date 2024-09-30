@@ -1322,6 +1322,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.3"
+  riverpod_mutations:
+    dependency: "direct main"
+    description:
+      name: riverpod_mutations
+      sha256: "94eb8cdc7a752f58ce0f2e54857ddcdb97534ba669000b4da7edb2f620f0b6ce"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.0"
+  riverpod_mutations_annotation:
+    dependency: "direct main"
+    description:
+      name: riverpod_mutations_annotation
+      sha256: "14316070f5f38e07222dfb477b0d45d0f8bf54dbd1c2cca0fda5fa05cd873ccf"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.4"
+  riverpod_mutations_generator:
+    dependency: "direct dev"
+    description:
+      name: riverpod_mutations_generator
+      sha256: "4da047850034a990fc79c77002e278b97f7bcdbc68e01fe862da4d91e1e19826"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.9"
   rxdart:
     dependency: transitive
     description:

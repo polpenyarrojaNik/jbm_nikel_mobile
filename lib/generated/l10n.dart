@@ -4043,6 +4043,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Phone`
+  String get telefono {
+    return Intl.message(
+      'Phone',
+      name: 'telefono',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Existing number phone into customer`
+  String get esteNumeroTelefonoExisiteEnElCliente {
+    return Intl.message(
+      'Existing number phone into customer',
+      name: 'esteNumeroTelefonoExisiteEnElCliente',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

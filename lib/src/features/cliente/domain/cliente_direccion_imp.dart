@@ -19,6 +19,7 @@ class ClienteDireccionImp with _$ClienteDireccionImp {
     String? codigoPostal,
     String? poblacion,
     String? provincia,
+    String? telefono,
     Pais? pais,
     required bool enviada,
     required bool borrar,

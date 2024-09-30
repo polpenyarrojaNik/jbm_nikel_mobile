@@ -21,6 +21,7 @@ _$ClienteDireccionImpDTOImpl _$$ClienteDireccionImpDTOImplFromJson(
       poblacion: json['POBLACION'] as String?,
       provincia: json['PROVINCIA'] as String?,
       paisId: json['PAIS_ID'] as String?,
+      telefono: json['TELEFONO'] as String?,
       enviada: json['ENVIADA'] as String? ?? 'N',
       borrar: json['BORRAR'] as String? ?? 'N',
     );
@@ -40,6 +41,7 @@ Map<String, dynamic> _$$ClienteDireccionImpDTOImplToJson(
       'POBLACION': instance.poblacion,
       'PROVINCIA': instance.provincia,
       'PAIS_ID': instance.paisId,
+      'TELEFONO': instance.telefono,
       'ENVIADA': instance.enviada,
       'BORRAR': instance.borrar,
     };

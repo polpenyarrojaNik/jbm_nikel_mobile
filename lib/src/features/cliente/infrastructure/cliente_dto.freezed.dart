@@ -122,6 +122,12 @@ mixin _$ClienteDTO {
   String? get representante2Id => throw _privateConstructorUsedError;
   @JsonKey(name: 'REPRESENTANTE2_NOMBRE')
   String? get representante2Nombre => throw _privateConstructorUsedError;
+  @JsonKey(name: 'TELEFONO_FIJO')
+  String? get telefonoFijo => throw _privateConstructorUsedError;
+  @JsonKey(name: 'TELEFONO_MOVIL')
+  String? get telefonoMovil => throw _privateConstructorUsedError;
+  @JsonKey(name: 'E_MAIL')
+  String? get email => throw _privateConstructorUsedError;
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   @JsonKey(name: 'DELETED')
@@ -201,6 +207,9 @@ abstract class $ClienteDTOCopyWith<$Res> {
       @JsonKey(name: 'REPRESENTANTE1_NOMBRE') String? representante1Nombre,
       @JsonKey(name: 'REPRESENTANTE2_ID') String? representante2Id,
       @JsonKey(name: 'REPRESENTANTE2_NOMBRE') String? representante2Nombre,
+      @JsonKey(name: 'TELEFONO_FIJO') String? telefonoFijo,
+      @JsonKey(name: 'TELEFONO_MOVIL') String? telefonoMovil,
+      @JsonKey(name: 'E_MAIL') String? email,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
 }
@@ -270,6 +279,9 @@ class _$ClienteDTOCopyWithImpl<$Res, $Val extends ClienteDTO>
     Object? representante1Nombre = freezed,
     Object? representante2Id = freezed,
     Object? representante2Nombre = freezed,
+    Object? telefonoFijo = freezed,
+    Object? telefonoMovil = freezed,
+    Object? email = freezed,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -474,6 +486,18 @@ class _$ClienteDTOCopyWithImpl<$Res, $Val extends ClienteDTO>
           ? _value.representante2Nombre
           : representante2Nombre // ignore: cast_nullable_to_non_nullable
               as String?,
+      telefonoFijo: freezed == telefonoFijo
+          ? _value.telefonoFijo
+          : telefonoFijo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      telefonoMovil: freezed == telefonoMovil
+          ? _value.telefonoMovil
+          : telefonoMovil // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -552,6 +576,9 @@ abstract class _$$ClienteDTOImplCopyWith<$Res>
       @JsonKey(name: 'REPRESENTANTE1_NOMBRE') String? representante1Nombre,
       @JsonKey(name: 'REPRESENTANTE2_ID') String? representante2Id,
       @JsonKey(name: 'REPRESENTANTE2_NOMBRE') String? representante2Nombre,
+      @JsonKey(name: 'TELEFONO_FIJO') String? telefonoFijo,
+      @JsonKey(name: 'TELEFONO_MOVIL') String? telefonoMovil,
+      @JsonKey(name: 'E_MAIL') String? email,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
 }
@@ -619,6 +646,9 @@ class __$$ClienteDTOImplCopyWithImpl<$Res>
     Object? representante1Nombre = freezed,
     Object? representante2Id = freezed,
     Object? representante2Nombre = freezed,
+    Object? telefonoFijo = freezed,
+    Object? telefonoMovil = freezed,
+    Object? email = freezed,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -823,6 +853,18 @@ class __$$ClienteDTOImplCopyWithImpl<$Res>
           ? _value.representante2Nombre
           : representante2Nombre // ignore: cast_nullable_to_non_nullable
               as String?,
+      telefonoFijo: freezed == telefonoFijo
+          ? _value.telefonoFijo
+          : telefonoFijo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      telefonoMovil: freezed == telefonoMovil
+          ? _value.telefonoMovil
+          : telefonoMovil // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -897,6 +939,9 @@ class _$ClienteDTOImpl extends _ClienteDTO {
       @JsonKey(name: 'REPRESENTANTE1_NOMBRE') this.representante1Nombre,
       @JsonKey(name: 'REPRESENTANTE2_ID') this.representante2Id,
       @JsonKey(name: 'REPRESENTANTE2_NOMBRE') this.representante2Nombre,
+      @JsonKey(name: 'TELEFONO_FIJO') this.telefonoFijo,
+      @JsonKey(name: 'TELEFONO_MOVIL') this.telefonoMovil,
+      @JsonKey(name: 'E_MAIL') this.email,
       @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
@@ -1055,6 +1100,15 @@ class _$ClienteDTOImpl extends _ClienteDTO {
   @JsonKey(name: 'REPRESENTANTE2_NOMBRE')
   final String? representante2Nombre;
   @override
+  @JsonKey(name: 'TELEFONO_FIJO')
+  final String? telefonoFijo;
+  @override
+  @JsonKey(name: 'TELEFONO_MOVIL')
+  final String? telefonoMovil;
+  @override
+  @JsonKey(name: 'E_MAIL')
+  final String? email;
+  @override
   @JsonKey(name: 'LAST_UPDATED')
   final DateTime lastUpdated;
   @override
@@ -1063,7 +1117,7 @@ class _$ClienteDTOImpl extends _ClienteDTO {
 
   @override
   String toString() {
-    return 'ClienteDTO(id: $id, nombreCliente: $nombreCliente, nif: $nif, nombreFiscal: $nombreFiscal, direccionFiscal1: $direccionFiscal1, direccionFiscal2: $direccionFiscal2, codigoPostalFiscal: $codigoPostalFiscal, poblacionFiscal: $poblacionFiscal, paisFiscalId: $paisFiscalId, provinciaFiscal: $provinciaFiscal, latitudFiscal: $latitudFiscal, longitudFiscal: $longitudFiscal, empresaId: $empresaId, iva: $iva, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, porcentajeAbonos: $porcentajeAbonos, porcentajeGarantias: $porcentajeGarantias, centralCompras: $centralCompras, urlWeb: $urlWeb, divisaId: $divisaId, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, descuentoGeneralId: $descuentoGeneralId, descripcionDescuentoGeneral: $descripcionDescuentoGeneral, tipoCalculoPrecio: $tipoCalculoPrecio, plazoDeCobroId: $plazoDeCobroId, metodoDeCobroId: $metodoDeCobroId, descuentoProntoPago: $descuentoProntoPago, riesgoConcedidoInterno: $riesgoConcedidoInterno, riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, riesgoConcedidoCoafe: $riesgoConcedidoCoafe, riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, riesgoConcedido: $riesgoConcedido, riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, riesgoPendienteServir: $riesgoPendienteServir, riesgoPendienteFacturar: $riesgoPendienteFacturar, obvservacionesInternas: $obvservacionesInternas, clientePotencial: $clientePotencial, clienteEstadoPotencialId: $clienteEstadoPotencialId, clienteTipoPotencialId: $clienteTipoPotencialId, representante1Id: $representante1Id, representante1Nombre: $representante1Nombre, representante2Id: $representante2Id, representante2Nombre: $representante2Nombre, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ClienteDTO(id: $id, nombreCliente: $nombreCliente, nif: $nif, nombreFiscal: $nombreFiscal, direccionFiscal1: $direccionFiscal1, direccionFiscal2: $direccionFiscal2, codigoPostalFiscal: $codigoPostalFiscal, poblacionFiscal: $poblacionFiscal, paisFiscalId: $paisFiscalId, provinciaFiscal: $provinciaFiscal, latitudFiscal: $latitudFiscal, longitudFiscal: $longitudFiscal, empresaId: $empresaId, iva: $iva, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, porcentajeAbonos: $porcentajeAbonos, porcentajeGarantias: $porcentajeGarantias, centralCompras: $centralCompras, urlWeb: $urlWeb, divisaId: $divisaId, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, descuentoGeneralId: $descuentoGeneralId, descripcionDescuentoGeneral: $descripcionDescuentoGeneral, tipoCalculoPrecio: $tipoCalculoPrecio, plazoDeCobroId: $plazoDeCobroId, metodoDeCobroId: $metodoDeCobroId, descuentoProntoPago: $descuentoProntoPago, riesgoConcedidoInterno: $riesgoConcedidoInterno, riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, riesgoConcedidoCoafe: $riesgoConcedidoCoafe, riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, riesgoConcedido: $riesgoConcedido, riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, riesgoPendienteServir: $riesgoPendienteServir, riesgoPendienteFacturar: $riesgoPendienteFacturar, obvservacionesInternas: $obvservacionesInternas, clientePotencial: $clientePotencial, clienteEstadoPotencialId: $clienteEstadoPotencialId, clienteTipoPotencialId: $clienteTipoPotencialId, representante1Id: $representante1Id, representante1Nombre: $representante1Nombre, representante2Id: $representante2Id, representante2Nombre: $representante2Nombre, telefonoFijo: $telefonoFijo, telefonoMovil: $telefonoMovil, email: $email, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -1162,6 +1216,9 @@ class _$ClienteDTOImpl extends _ClienteDTO {
             (identical(other.representante1Nombre, representante1Nombre) || other.representante1Nombre == representante1Nombre) &&
             (identical(other.representante2Id, representante2Id) || other.representante2Id == representante2Id) &&
             (identical(other.representante2Nombre, representante2Nombre) || other.representante2Nombre == representante2Nombre) &&
+            (identical(other.telefonoFijo, telefonoFijo) || other.telefonoFijo == telefonoFijo) &&
+            (identical(other.telefonoMovil, telefonoMovil) || other.telefonoMovil == telefonoMovil) &&
+            (identical(other.email, email) || other.email == email) &&
             (identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated) &&
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
@@ -1220,6 +1277,9 @@ class _$ClienteDTOImpl extends _ClienteDTO {
         representante1Nombre,
         representante2Id,
         representante2Nombre,
+        telefonoFijo,
+        telefonoMovil,
+        email,
         lastUpdated,
         deleted
       ]);
@@ -1315,6 +1375,9 @@ abstract class _ClienteDTO extends ClienteDTO {
       @JsonKey(name: 'REPRESENTANTE2_ID') final String? representante2Id,
       @JsonKey(name: 'REPRESENTANTE2_NOMBRE')
       final String? representante2Nombre,
+      @JsonKey(name: 'TELEFONO_FIJO') final String? telefonoFijo,
+      @JsonKey(name: 'TELEFONO_MOVIL') final String? telefonoMovil,
+      @JsonKey(name: 'E_MAIL') final String? email,
       @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
       @JsonKey(name: 'DELETED') final String deleted}) = _$ClienteDTOImpl;
   const _ClienteDTO._() : super._();
@@ -1472,6 +1535,15 @@ abstract class _ClienteDTO extends ClienteDTO {
   @override
   @JsonKey(name: 'REPRESENTANTE2_NOMBRE')
   String? get representante2Nombre;
+  @override
+  @JsonKey(name: 'TELEFONO_FIJO')
+  String? get telefonoFijo;
+  @override
+  @JsonKey(name: 'TELEFONO_MOVIL')
+  String? get telefonoMovil;
+  @override
+  @JsonKey(name: 'E_MAIL')
+  String? get email;
   @override
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated;

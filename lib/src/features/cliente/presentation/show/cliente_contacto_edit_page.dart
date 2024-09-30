@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/common_app_bar.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/phone_text_form_field.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_contacto.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_contacto_imp.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_contacto_imp_edit_page_data.dart';
@@ -94,9 +95,11 @@ class ClienteContactoEditPage extends ConsumerWidget {
         child: value.when(
           data: (clienteContactoEditPageData) => Column(
             children: [
-              _ClienteContactoImpEditForm(
-                clienteContacto: clienteContactoEditPageData.clienteContacto,
-                formKey: formKey,
+              Expanded(
+                child: _ClienteContactoImpEditForm(
+                  clienteContacto: clienteContactoEditPageData.clienteContacto,
+                  formKey: formKey,
+                ),
               ),
               if (clienteImpParam.id != null)
                 _CambiosPendientesListView(
@@ -110,9 +113,12 @@ class ClienteContactoEditPage extends ConsumerWidget {
 
             return Column(
               children: [
-                _ClienteContactoImpEditForm(
-                  clienteContacto: clienteContactoEditPageData.clienteContacto,
-                  formKey: formKey,
+                Expanded(
+                  child: _ClienteContactoImpEditForm(
+                    clienteContacto:
+                        clienteContactoEditPageData.clienteContacto,
+                    formKey: formKey,
+                  ),
                 ),
                 if (clienteImpParam.id != null)
                   _CambiosPendientesListView(
@@ -214,13 +220,12 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: FormBuilderTextField(
+              child: PhoneTextFormField(
                 name: 'telefono1',
                 initialValue: clienteContacto?.telefono1,
-                keyboardType: TextInputType.phone,
-                decoration: AppDecoration.defaultFieldDecoration(S
+                labelText: S
                     .of(context)
-                    .cliente_show_clienteContacto_clienteContactoEditPage_telefono1),
+                    .cliente_show_clienteContacto_clienteContactoEditPage_telefono1,
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.numeric(),
                   FormBuilderValidators.maxLength(25),
@@ -229,13 +234,12 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: FormBuilderTextField(
+              child: PhoneTextFormField(
                 name: 'telefono2',
                 initialValue: clienteContacto?.telefono2,
-                keyboardType: TextInputType.phone,
-                decoration: AppDecoration.defaultFieldDecoration(S
+                labelText: S
                     .of(context)
-                    .cliente_show_clienteContacto_clienteContactoEditPage_telefono2),
+                    .cliente_show_clienteContacto_clienteContactoEditPage_telefono2,
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.numeric(),
                   FormBuilderValidators.maxLength(25),

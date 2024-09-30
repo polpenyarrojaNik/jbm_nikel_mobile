@@ -490,6 +490,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "estasSeguroQueQuieresReemplazarLaBaseDeDatos":
             MessageLookupByLibrary.simpleMessage(
                 "Êtes-vous sûr de vouloir remplacer la base de données ? Vous perdrez les données enregistrées localement."),
+        "esteNumeroTelefonoExisiteEnElCliente":
+            MessageLookupByLibrary.simpleMessage(
+                "Téléphone existant dans le client"),
         "familia": MessageLookupByLibrary.simpleMessage("Famille"),
         "frecuenciaPedido":
             MessageLookupByLibrary.simpleMessage("Fréquence des commandes"),
@@ -713,6 +716,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Synchronisation des visites…"),
         "stock": MessageLookupByLibrary.simpleMessage("Stock"),
         "subfamilia": MessageLookupByLibrary.simpleMessage("Sous-famille"),
+        "telefono": MessageLookupByLibrary.simpleMessage("Téléphone"),
         "trackId": MessageLookupByLibrary.simpleMessage("Track ID"),
         "trimestral": MessageLookupByLibrary.simpleMessage("Trimestriel"),
         "ultimosPrecios_buscarUltimosPrecios":

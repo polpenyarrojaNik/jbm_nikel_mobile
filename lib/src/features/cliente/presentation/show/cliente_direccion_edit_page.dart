@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/phone_text_form_field.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_direccion.dart';
 import 'package:uuid/uuid.dart';
 
@@ -172,6 +173,7 @@ class _ClienteDireccionEditPageState
         codigoPostal: formKey.currentState!.value['codigoPostal'] as String?,
         poblacion: formKey.currentState!.value['poblacion'] as String?,
         provincia: formKey.currentState!.value['provincia'] as String?,
+        telefono: formKey.currentState!.value['telefono'] as String?,
         pais: paisDireccion,
         enviada: false,
         borrar: false,
@@ -306,6 +308,18 @@ class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
                     .of(context)
                     .cliente_show_clienteDireccion_clienteDireccionEditPage_pais),
                 onTap: () => navigateToSelectPais(context),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: PhoneTextFormField(
+                name: 'telefono',
+                initialValue: widget.clienteDireccion?.telefono,
+                labelText: S.of(context).telefono,
+                validator: FormBuilderValidators.compose([
+                  FormBuilderValidators.numeric(),
+                  FormBuilderValidators.maxLength(25),
+                ]),
               ),
             ),
           ],

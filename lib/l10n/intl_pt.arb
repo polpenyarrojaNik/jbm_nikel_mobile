@@ -394,5 +394,7 @@
   "settings_reemplazarBaseDeDatosLocal": "Substituir banco de dados provisório",
   "trackId": "Track ID",
   "trimestral": "Trimestral",
-  "alto": "Alto"
+  "alto": "Alto",
+  "telefono": "Telefone",
+  "esteNumeroTelefonoExisiteEnElCliente": "Telefone existente para o cliente"
 }

@@ -41,8 +41,6 @@ class ClienteDireccionesListPage extends ConsumerStatefulWidget {
 
 class _ClienteDireccionesListPageState
     extends ConsumerState<ClienteDireccionesListPage> {
-  final scaffoldKey = GlobalKey<ScaffoldState>();
-
   final _debouncer = Debouncer(milliseconds: 500);
   FocusNode focusNode = FocusNode();
 
@@ -56,9 +54,7 @@ class _ClienteDireccionesListPageState
   Widget build(BuildContext context) {
     final state = ref.watch(clienteDireccionListProvider(widget.clienteId));
     return Scaffold(
-      key: scaffoldKey,
       appBar: CustomSearchAppBar(
-        scaffoldKey: scaffoldKey,
         isSearchingFirst: false,
         title: S.of(context).cliente_show_clienteDireccion_titulo,
         searchTitle: S.of(context).search,

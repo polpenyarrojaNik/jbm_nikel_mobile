@@ -74,6 +74,9 @@ class Cliente with _$Cliente {
       String? representante1Nombre,
       String? representante2Id,
       String? representante2Nombre,
+      String? telefonoMovil,
+      String? telefonoFijo,
+      String? email,
       DateTime? lastUpdated,
       required bool deleted}) = _Cliente;
 

@@ -44,6 +44,8 @@ mixin _$ClienteDireccionDTO {
   double get longitud => throw _privateConstructorUsedError;
   @JsonKey(name: 'PREDETERMINADA_SN')
   String? get predeterminada => throw _privateConstructorUsedError;
+  @JsonKey(name: 'TELEFONO')
+  String? get telefono => throw _privateConstructorUsedError;
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   @JsonKey(name: 'DELETED')
@@ -78,6 +80,7 @@ abstract class $ClienteDireccionDTOCopyWith<$Res> {
       @JsonKey(name: 'LATITUD') double latitud,
       @JsonKey(name: 'LONGITUD') double longitud,
       @JsonKey(name: 'PREDETERMINADA_SN') String? predeterminada,
+      @JsonKey(name: 'TELEFONO') String? telefono,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
 }
@@ -109,6 +112,7 @@ class _$ClienteDireccionDTOCopyWithImpl<$Res, $Val extends ClienteDireccionDTO>
     Object? latitud = null,
     Object? longitud = null,
     Object? predeterminada = freezed,
+    Object? telefono = freezed,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -161,6 +165,10 @@ class _$ClienteDireccionDTOCopyWithImpl<$Res, $Val extends ClienteDireccionDTO>
           ? _value.predeterminada
           : predeterminada // ignore: cast_nullable_to_non_nullable
               as String?,
+      telefono: freezed == telefono
+          ? _value.telefono
+          : telefono // ignore: cast_nullable_to_non_nullable
+              as String?,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -194,6 +202,7 @@ abstract class _$$ClienteDireccionDTOImplCopyWith<$Res>
       @JsonKey(name: 'LATITUD') double latitud,
       @JsonKey(name: 'LONGITUD') double longitud,
       @JsonKey(name: 'PREDETERMINADA_SN') String? predeterminada,
+      @JsonKey(name: 'TELEFONO') String? telefono,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
 }
@@ -223,6 +232,7 @@ class __$$ClienteDireccionDTOImplCopyWithImpl<$Res>
     Object? latitud = null,
     Object? longitud = null,
     Object? predeterminada = freezed,
+    Object? telefono = freezed,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -275,6 +285,10 @@ class __$$ClienteDireccionDTOImplCopyWithImpl<$Res>
           ? _value.predeterminada
           : predeterminada // ignore: cast_nullable_to_non_nullable
               as String?,
+      telefono: freezed == telefono
+          ? _value.telefono
+          : telefono // ignore: cast_nullable_to_non_nullable
+              as String?,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -303,6 +317,7 @@ class _$ClienteDireccionDTOImpl extends _ClienteDireccionDTO {
       @JsonKey(name: 'LATITUD') required this.latitud,
       @JsonKey(name: 'LONGITUD') required this.longitud,
       @JsonKey(name: 'PREDETERMINADA_SN') this.predeterminada,
+      @JsonKey(name: 'TELEFONO') this.telefono,
       @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
@@ -347,6 +362,9 @@ class _$ClienteDireccionDTOImpl extends _ClienteDireccionDTO {
   @JsonKey(name: 'PREDETERMINADA_SN')
   final String? predeterminada;
   @override
+  @JsonKey(name: 'TELEFONO')
+  final String? telefono;
+  @override
   @JsonKey(name: 'LAST_UPDATED')
   final DateTime lastUpdated;
   @override
@@ -355,7 +373,7 @@ class _$ClienteDireccionDTOImpl extends _ClienteDireccionDTO {
 
   @override
   String toString() {
-    return 'ClienteDireccionDTO(clienteId: $clienteId, direccionId: $direccionId, nombre: $nombre, direccion1: $direccion1, direccion2: $direccion2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, paisId: $paisId, latitud: $latitud, longitud: $longitud, predeterminada: $predeterminada, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ClienteDireccionDTO(clienteId: $clienteId, direccionId: $direccionId, nombre: $nombre, direccion1: $direccion1, direccion2: $direccion2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, paisId: $paisId, latitud: $latitud, longitud: $longitud, predeterminada: $predeterminada, telefono: $telefono, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -384,6 +402,8 @@ class _$ClienteDireccionDTOImpl extends _ClienteDireccionDTO {
                 other.longitud == longitud) &&
             (identical(other.predeterminada, predeterminada) ||
                 other.predeterminada == predeterminada) &&
+            (identical(other.telefono, telefono) ||
+                other.telefono == telefono) &&
             (identical(other.lastUpdated, lastUpdated) ||
                 other.lastUpdated == lastUpdated) &&
             (identical(other.deleted, deleted) || other.deleted == deleted));
@@ -405,6 +425,7 @@ class _$ClienteDireccionDTOImpl extends _ClienteDireccionDTO {
       latitud,
       longitud,
       predeterminada,
+      telefono,
       lastUpdated,
       deleted);
 
@@ -439,6 +460,7 @@ abstract class _ClienteDireccionDTO extends ClienteDireccionDTO {
           @JsonKey(name: 'LATITUD') required final double latitud,
           @JsonKey(name: 'LONGITUD') required final double longitud,
           @JsonKey(name: 'PREDETERMINADA_SN') final String? predeterminada,
+          @JsonKey(name: 'TELEFONO') final String? telefono,
           @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
           @JsonKey(name: 'DELETED') final String deleted}) =
       _$ClienteDireccionDTOImpl;
@@ -483,6 +505,9 @@ abstract class _ClienteDireccionDTO extends ClienteDireccionDTO {
   @override
   @JsonKey(name: 'PREDETERMINADA_SN')
   String? get predeterminada;
+  @override
+  @JsonKey(name: 'TELEFONO')
+  String? get telefono;
   @override
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated;

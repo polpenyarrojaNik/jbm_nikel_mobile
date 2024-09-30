@@ -26,6 +26,7 @@ mixin _$ClienteDireccion {
   String? get poblacion => throw _privateConstructorUsedError;
   String? get provincia => throw _privateConstructorUsedError;
   Pais? get pais => throw _privateConstructorUsedError;
+  String? get telefono => throw _privateConstructorUsedError;
   double get latitud => throw _privateConstructorUsedError;
   double get longitud => throw _privateConstructorUsedError;
   bool get predeterminada => throw _privateConstructorUsedError;
@@ -58,6 +59,7 @@ abstract class $ClienteDireccionCopyWith<$Res> {
       String? poblacion,
       String? provincia,
       Pais? pais,
+      String? telefono,
       double latitud,
       double longitud,
       bool predeterminada,
@@ -94,6 +96,7 @@ class _$ClienteDireccionCopyWithImpl<$Res, $Val extends ClienteDireccion>
     Object? poblacion = freezed,
     Object? provincia = freezed,
     Object? pais = freezed,
+    Object? telefono = freezed,
     Object? latitud = null,
     Object? longitud = null,
     Object? predeterminada = null,
@@ -143,6 +146,10 @@ class _$ClienteDireccionCopyWithImpl<$Res, $Val extends ClienteDireccion>
           ? _value.pais
           : pais // ignore: cast_nullable_to_non_nullable
               as Pais?,
+      telefono: freezed == telefono
+          ? _value.telefono
+          : telefono // ignore: cast_nullable_to_non_nullable
+              as String?,
       latitud: null == latitud
           ? _value.latitud
           : latitud // ignore: cast_nullable_to_non_nullable
@@ -208,6 +215,7 @@ abstract class _$$ClienteDireccionImplCopyWith<$Res>
       String? poblacion,
       String? provincia,
       Pais? pais,
+      String? telefono,
       double latitud,
       double longitud,
       bool predeterminada,
@@ -243,6 +251,7 @@ class __$$ClienteDireccionImplCopyWithImpl<$Res>
     Object? poblacion = freezed,
     Object? provincia = freezed,
     Object? pais = freezed,
+    Object? telefono = freezed,
     Object? latitud = null,
     Object? longitud = null,
     Object? predeterminada = null,
@@ -292,6 +301,10 @@ class __$$ClienteDireccionImplCopyWithImpl<$Res>
           ? _value.pais
           : pais // ignore: cast_nullable_to_non_nullable
               as Pais?,
+      telefono: freezed == telefono
+          ? _value.telefono
+          : telefono // ignore: cast_nullable_to_non_nullable
+              as String?,
       latitud: null == latitud
           ? _value.latitud
           : latitud // ignore: cast_nullable_to_non_nullable
@@ -338,6 +351,7 @@ class _$ClienteDireccionImpl extends _ClienteDireccion {
       this.poblacion,
       this.provincia,
       this.pais,
+      this.telefono,
       required this.latitud,
       required this.longitud,
       required this.predeterminada,
@@ -368,6 +382,8 @@ class _$ClienteDireccionImpl extends _ClienteDireccion {
   @override
   final Pais? pais;
   @override
+  final String? telefono;
+  @override
   final double latitud;
   @override
   final double longitud;
@@ -384,7 +400,7 @@ class _$ClienteDireccionImpl extends _ClienteDireccion {
 
   @override
   String toString() {
-    return 'ClienteDireccion(clienteId: $clienteId, direccionId: $direccionId, direccionImpGuid: $direccionImpGuid, nombre: $nombre, direccion1: $direccion1, direccion2: $direccion2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, latitud: $latitud, longitud: $longitud, predeterminada: $predeterminada, lastUpdated: $lastUpdated, enviada: $enviada, tratada: $tratada, deleted: $deleted)';
+    return 'ClienteDireccion(clienteId: $clienteId, direccionId: $direccionId, direccionImpGuid: $direccionImpGuid, nombre: $nombre, direccion1: $direccion1, direccion2: $direccion2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, telefono: $telefono, latitud: $latitud, longitud: $longitud, predeterminada: $predeterminada, lastUpdated: $lastUpdated, enviada: $enviada, tratada: $tratada, deleted: $deleted)';
   }
 
   @override
@@ -410,6 +426,8 @@ class _$ClienteDireccionImpl extends _ClienteDireccion {
             (identical(other.provincia, provincia) ||
                 other.provincia == provincia) &&
             (identical(other.pais, pais) || other.pais == pais) &&
+            (identical(other.telefono, telefono) ||
+                other.telefono == telefono) &&
             (identical(other.latitud, latitud) || other.latitud == latitud) &&
             (identical(other.longitud, longitud) ||
                 other.longitud == longitud) &&
@@ -435,6 +453,7 @@ class _$ClienteDireccionImpl extends _ClienteDireccion {
       poblacion,
       provincia,
       pais,
+      telefono,
       latitud,
       longitud,
       predeterminada,
@@ -465,6 +484,7 @@ abstract class _ClienteDireccion extends ClienteDireccion {
       final String? poblacion,
       final String? provincia,
       final Pais? pais,
+      final String? telefono,
       required final double latitud,
       required final double longitud,
       required final bool predeterminada,
@@ -494,6 +514,8 @@ abstract class _ClienteDireccion extends ClienteDireccion {
   String? get provincia;
   @override
   Pais? get pais;
+  @override
+  String? get telefono;
   @override
   double get latitud;
   @override

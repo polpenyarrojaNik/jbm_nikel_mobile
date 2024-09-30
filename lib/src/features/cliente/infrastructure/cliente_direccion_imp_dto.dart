@@ -28,6 +28,7 @@ class ClienteDireccionImpDTO
     @JsonKey(name: 'POBLACION') String? poblacion,
     @JsonKey(name: 'PROVINCIA') String? provincia,
     @JsonKey(name: 'PAIS_ID') String? paisId,
+    @JsonKey(name: 'TELEFONO') String? telefono,
     @JsonKey(name: 'ENVIADA', defaultValue: 'N') required String enviada,
     @JsonKey(name: 'BORRAR', defaultValue: 'N') required String borrar,
   }) = _ClienteDireccionImpDTO;
@@ -50,6 +51,7 @@ class ClienteDireccionImpDTO
         poblacion: clienteDireccionImp.poblacion,
         provincia: clienteDireccionImp.provincia,
         paisId: clienteDireccionImp.pais?.id,
+        telefono: clienteDireccionImp.telefono,
         enviada: clienteDireccionImp.enviada ? 'S' : 'N',
         borrar: clienteDireccionImp.borrar ? 'S' : 'N',
       );
@@ -68,6 +70,7 @@ class ClienteDireccionImpDTO
       poblacion: poblacion,
       provincia: provincia,
       pais: pais,
+      telefono: telefono,
       enviada: enviada == 'S',
       borrar: borrar == 'S',
     );
@@ -88,6 +91,7 @@ class ClienteDireccionImpDTO
       poblacion: Value(poblacion),
       provincia: Value(provincia),
       paisId: Value(paisId),
+      telefono: Value(telefono),
       enviada: Value(enviada),
       borrar: Value(borrar),
     ).toColumns(nullToAbsent);
@@ -114,6 +118,7 @@ class ClienteDireccionImpTable extends Table {
   TextColumn get poblacion => text().nullable().named('POBLACION')();
   TextColumn get provincia => text().nullable().named('PROVINCIA')();
   TextColumn get paisId => text().nullable().named('PAIS_ID')();
+  TextColumn get telefono => text().nullable().named('TELEFONO')();
   TextColumn get enviada =>
       text().withDefault(const Constant('N')).named('ENVIADA')();
   TextColumn get borrar =>

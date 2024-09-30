@@ -84,6 +84,9 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
     @JsonKey(name: 'REPRESENTANTE1_NOMBRE') String? representante1Nombre,
     @JsonKey(name: 'REPRESENTANTE2_ID') String? representante2Id,
     @JsonKey(name: 'REPRESENTANTE2_NOMBRE') String? representante2Nombre,
+    @JsonKey(name: 'TELEFONO_FIJO') String? telefonoFijo,
+    @JsonKey(name: 'TELEFONO_MOVIL') String? telefonoMovil,
+    @JsonKey(name: 'E_MAIL') String? email,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _ClienteDTO;
@@ -171,6 +174,9 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       representante1Nombre: representante1Nombre,
       representante2Id: representante2Id,
       representante2Nombre: representante2Nombre,
+      telefonoFijo: telefonoFijo,
+      telefonoMovil: telefonoMovil,
+      email: email,
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S') ? true : false,
     );
@@ -229,6 +235,9 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       representante1Nombre: Value(representante1Nombre),
       representante2Id: Value(representante2Id),
       representante2Nombre: Value(representante2Nombre),
+      telefonoMovil: Value(telefonoMovil),
+      telefonoFijo: Value(telefonoFijo),
+      email: Value(email),
       lastUpdated: Value(lastUpdated),
       deleted: Value(deleted),
     ).toColumns(nullToAbsent);
@@ -364,6 +373,9 @@ class ClienteTable extends Table {
       text().nullable().named('REPRESENTANTE2_ID')();
   TextColumn get representante2Nombre =>
       text().nullable().named('REPRESENTANTE2_NOMBRE')();
+  TextColumn get telefonoFijo => text().nullable().named('TELEFONO_FIJO')();
+  TextColumn get telefonoMovil => text().nullable().named('TELEFONO_MOVIL')();
+  TextColumn get email => text().nullable().named('E_MAIL')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('DELETED')();

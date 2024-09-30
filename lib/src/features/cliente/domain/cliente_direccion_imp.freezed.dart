@@ -27,6 +27,7 @@ mixin _$ClienteDireccionImp {
   String? get codigoPostal => throw _privateConstructorUsedError;
   String? get poblacion => throw _privateConstructorUsedError;
   String? get provincia => throw _privateConstructorUsedError;
+  String? get telefono => throw _privateConstructorUsedError;
   Pais? get pais => throw _privateConstructorUsedError;
   bool get enviada => throw _privateConstructorUsedError;
   bool get borrar => throw _privateConstructorUsedError;
@@ -56,6 +57,7 @@ abstract class $ClienteDireccionImpCopyWith<$Res> {
       String? codigoPostal,
       String? poblacion,
       String? provincia,
+      String? telefono,
       Pais? pais,
       bool enviada,
       bool borrar});
@@ -89,6 +91,7 @@ class _$ClienteDireccionImpCopyWithImpl<$Res, $Val extends ClienteDireccionImp>
     Object? codigoPostal = freezed,
     Object? poblacion = freezed,
     Object? provincia = freezed,
+    Object? telefono = freezed,
     Object? pais = freezed,
     Object? enviada = null,
     Object? borrar = null,
@@ -137,6 +140,10 @@ class _$ClienteDireccionImpCopyWithImpl<$Res, $Val extends ClienteDireccionImp>
       provincia: freezed == provincia
           ? _value.provincia
           : provincia // ignore: cast_nullable_to_non_nullable
+              as String?,
+      telefono: freezed == telefono
+          ? _value.telefono
+          : telefono // ignore: cast_nullable_to_non_nullable
               as String?,
       pais: freezed == pais
           ? _value.pais
@@ -188,6 +195,7 @@ abstract class _$$ClienteDireccionImpImplCopyWith<$Res>
       String? codigoPostal,
       String? poblacion,
       String? provincia,
+      String? telefono,
       Pais? pais,
       bool enviada,
       bool borrar});
@@ -220,6 +228,7 @@ class __$$ClienteDireccionImpImplCopyWithImpl<$Res>
     Object? codigoPostal = freezed,
     Object? poblacion = freezed,
     Object? provincia = freezed,
+    Object? telefono = freezed,
     Object? pais = freezed,
     Object? enviada = null,
     Object? borrar = null,
@@ -269,6 +278,10 @@ class __$$ClienteDireccionImpImplCopyWithImpl<$Res>
           ? _value.provincia
           : provincia // ignore: cast_nullable_to_non_nullable
               as String?,
+      telefono: freezed == telefono
+          ? _value.telefono
+          : telefono // ignore: cast_nullable_to_non_nullable
+              as String?,
       pais: freezed == pais
           ? _value.pais
           : pais // ignore: cast_nullable_to_non_nullable
@@ -300,6 +313,7 @@ class _$ClienteDireccionImpImpl extends _ClienteDireccionImp {
       this.codigoPostal,
       this.poblacion,
       this.provincia,
+      this.telefono,
       this.pais,
       required this.enviada,
       required this.borrar})
@@ -328,6 +342,8 @@ class _$ClienteDireccionImpImpl extends _ClienteDireccionImp {
   @override
   final String? provincia;
   @override
+  final String? telefono;
+  @override
   final Pais? pais;
   @override
   final bool enviada;
@@ -336,7 +352,7 @@ class _$ClienteDireccionImpImpl extends _ClienteDireccionImp {
 
   @override
   String toString() {
-    return 'ClienteDireccionImp(id: $id, fecha: $fecha, usuarioId: $usuarioId, clienteId: $clienteId, direccionId: $direccionId, nombre: $nombre, direccion1: $direccion1, direccion2: $direccion2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, enviada: $enviada, borrar: $borrar)';
+    return 'ClienteDireccionImp(id: $id, fecha: $fecha, usuarioId: $usuarioId, clienteId: $clienteId, direccionId: $direccionId, nombre: $nombre, direccion1: $direccion1, direccion2: $direccion2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, telefono: $telefono, pais: $pais, enviada: $enviada, borrar: $borrar)';
   }
 
   @override
@@ -363,6 +379,8 @@ class _$ClienteDireccionImpImpl extends _ClienteDireccionImp {
                 other.poblacion == poblacion) &&
             (identical(other.provincia, provincia) ||
                 other.provincia == provincia) &&
+            (identical(other.telefono, telefono) ||
+                other.telefono == telefono) &&
             (identical(other.pais, pais) || other.pais == pais) &&
             (identical(other.enviada, enviada) || other.enviada == enviada) &&
             (identical(other.borrar, borrar) || other.borrar == borrar));
@@ -382,6 +400,7 @@ class _$ClienteDireccionImpImpl extends _ClienteDireccionImp {
       codigoPostal,
       poblacion,
       provincia,
+      telefono,
       pais,
       enviada,
       borrar);
@@ -409,6 +428,7 @@ abstract class _ClienteDireccionImp extends ClienteDireccionImp {
       final String? codigoPostal,
       final String? poblacion,
       final String? provincia,
+      final String? telefono,
       final Pais? pais,
       required final bool enviada,
       required final bool borrar}) = _$ClienteDireccionImpImpl;
@@ -436,6 +456,8 @@ abstract class _ClienteDireccionImp extends ClienteDireccionImp {
   String? get poblacion;
   @override
   String? get provincia;
+  @override
+  String? get telefono;
   @override
   Pais? get pais;
   @override

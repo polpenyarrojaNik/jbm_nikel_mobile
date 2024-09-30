@@ -45,6 +45,8 @@ mixin _$ClienteDireccionImpDTO {
   String? get provincia => throw _privateConstructorUsedError;
   @JsonKey(name: 'PAIS_ID')
   String? get paisId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'TELEFONO')
+  String? get telefono => throw _privateConstructorUsedError;
   @JsonKey(name: 'ENVIADA', defaultValue: 'N')
   String get enviada => throw _privateConstructorUsedError;
   @JsonKey(name: 'BORRAR', defaultValue: 'N')
@@ -79,6 +81,7 @@ abstract class $ClienteDireccionImpDTOCopyWith<$Res> {
       @JsonKey(name: 'POBLACION') String? poblacion,
       @JsonKey(name: 'PROVINCIA') String? provincia,
       @JsonKey(name: 'PAIS_ID') String? paisId,
+      @JsonKey(name: 'TELEFONO') String? telefono,
       @JsonKey(name: 'ENVIADA', defaultValue: 'N') String enviada,
       @JsonKey(name: 'BORRAR', defaultValue: 'N') String borrar});
 }
@@ -111,6 +114,7 @@ class _$ClienteDireccionImpDTOCopyWithImpl<$Res,
     Object? poblacion = freezed,
     Object? provincia = freezed,
     Object? paisId = freezed,
+    Object? telefono = freezed,
     Object? enviada = null,
     Object? borrar = null,
   }) {
@@ -163,6 +167,10 @@ class _$ClienteDireccionImpDTOCopyWithImpl<$Res,
           ? _value.paisId
           : paisId // ignore: cast_nullable_to_non_nullable
               as String?,
+      telefono: freezed == telefono
+          ? _value.telefono
+          : telefono // ignore: cast_nullable_to_non_nullable
+              as String?,
       enviada: null == enviada
           ? _value.enviada
           : enviada // ignore: cast_nullable_to_non_nullable
@@ -197,6 +205,7 @@ abstract class _$$ClienteDireccionImpDTOImplCopyWith<$Res>
       @JsonKey(name: 'POBLACION') String? poblacion,
       @JsonKey(name: 'PROVINCIA') String? provincia,
       @JsonKey(name: 'PAIS_ID') String? paisId,
+      @JsonKey(name: 'TELEFONO') String? telefono,
       @JsonKey(name: 'ENVIADA', defaultValue: 'N') String enviada,
       @JsonKey(name: 'BORRAR', defaultValue: 'N') String borrar});
 }
@@ -228,6 +237,7 @@ class __$$ClienteDireccionImpDTOImplCopyWithImpl<$Res>
     Object? poblacion = freezed,
     Object? provincia = freezed,
     Object? paisId = freezed,
+    Object? telefono = freezed,
     Object? enviada = null,
     Object? borrar = null,
   }) {
@@ -280,6 +290,10 @@ class __$$ClienteDireccionImpDTOImplCopyWithImpl<$Res>
           ? _value.paisId
           : paisId // ignore: cast_nullable_to_non_nullable
               as String?,
+      telefono: freezed == telefono
+          ? _value.telefono
+          : telefono // ignore: cast_nullable_to_non_nullable
+              as String?,
       enviada: null == enviada
           ? _value.enviada
           : enviada // ignore: cast_nullable_to_non_nullable
@@ -308,6 +322,7 @@ class _$ClienteDireccionImpDTOImpl extends _ClienteDireccionImpDTO {
       @JsonKey(name: 'POBLACION') this.poblacion,
       @JsonKey(name: 'PROVINCIA') this.provincia,
       @JsonKey(name: 'PAIS_ID') this.paisId,
+      @JsonKey(name: 'TELEFONO') this.telefono,
       @JsonKey(name: 'ENVIADA', defaultValue: 'N') required this.enviada,
       @JsonKey(name: 'BORRAR', defaultValue: 'N') required this.borrar})
       : super._();
@@ -352,6 +367,9 @@ class _$ClienteDireccionImpDTOImpl extends _ClienteDireccionImpDTO {
   @JsonKey(name: 'PAIS_ID')
   final String? paisId;
   @override
+  @JsonKey(name: 'TELEFONO')
+  final String? telefono;
+  @override
   @JsonKey(name: 'ENVIADA', defaultValue: 'N')
   final String enviada;
   @override
@@ -360,7 +378,7 @@ class _$ClienteDireccionImpDTOImpl extends _ClienteDireccionImpDTO {
 
   @override
   String toString() {
-    return 'ClienteDireccionImpDTO(id: $id, fecha: $fecha, usuarioId: $usuarioId, clienteId: $clienteId, direccionId: $direccionId, nombre: $nombre, direccion1: $direccion1, direccion2: $direccion2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, paisId: $paisId, enviada: $enviada, borrar: $borrar)';
+    return 'ClienteDireccionImpDTO(id: $id, fecha: $fecha, usuarioId: $usuarioId, clienteId: $clienteId, direccionId: $direccionId, nombre: $nombre, direccion1: $direccion1, direccion2: $direccion2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, paisId: $paisId, telefono: $telefono, enviada: $enviada, borrar: $borrar)';
   }
 
   @override
@@ -388,6 +406,8 @@ class _$ClienteDireccionImpDTOImpl extends _ClienteDireccionImpDTO {
             (identical(other.provincia, provincia) ||
                 other.provincia == provincia) &&
             (identical(other.paisId, paisId) || other.paisId == paisId) &&
+            (identical(other.telefono, telefono) ||
+                other.telefono == telefono) &&
             (identical(other.enviada, enviada) || other.enviada == enviada) &&
             (identical(other.borrar, borrar) || other.borrar == borrar));
   }
@@ -408,6 +428,7 @@ class _$ClienteDireccionImpDTOImpl extends _ClienteDireccionImpDTO {
       poblacion,
       provincia,
       paisId,
+      telefono,
       enviada,
       borrar);
 
@@ -442,6 +463,7 @@ abstract class _ClienteDireccionImpDTO extends ClienteDireccionImpDTO {
       @JsonKey(name: 'POBLACION') final String? poblacion,
       @JsonKey(name: 'PROVINCIA') final String? provincia,
       @JsonKey(name: 'PAIS_ID') final String? paisId,
+      @JsonKey(name: 'TELEFONO') final String? telefono,
       @JsonKey(name: 'ENVIADA', defaultValue: 'N')
       required final String enviada,
       @JsonKey(name: 'BORRAR', defaultValue: 'N')
@@ -487,6 +509,9 @@ abstract class _ClienteDireccionImpDTO extends ClienteDireccionImpDTO {
   @override
   @JsonKey(name: 'PAIS_ID')
   String? get paisId;
+  @override
+  @JsonKey(name: 'TELEFONO')
+  String? get telefono;
   @override
   @JsonKey(name: 'ENVIADA', defaultValue: 'N')
   String get enviada;

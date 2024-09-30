@@ -11,6 +11,7 @@ import 'package:jbm_nikel_mobile/src/core/exceptions/get_api_error.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/app.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_contacto_imp.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_telefono.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_adjunto_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/pedido_venta_edit_page_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
@@ -1692,11 +1693,11 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       final requestUri = (usuario.test)
           ? Uri.http(
               dotenv.get('URL', fallback: 'localhost:3001'),
-              'api/v1/online/clientes/${clienteDireccionImpDTO.clienteId}/direccion',
+              'api/v2/online/clientes/${clienteDireccionImpDTO.clienteId}/direccion',
             )
           : Uri.https(
               dotenv.get('URL', fallback: 'localhost:3001'),
-              'api/v1/online/clientes/${clienteDireccionImpDTO.clienteId}/direccion',
+              'api/v2/online/clientes/${clienteDireccionImpDTO.clienteId}/direccion',
             );
 
       final response = await _dio.postUri(
@@ -1898,5 +1899,40 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     } else {
       return _remoteDb.articuloTable.descripcionES.contains(searchText);
     }
+  }
+
+  Future<ClienteTelefono?> verifyExistingPhone(String value) async {
+    final customerListDTO = await (_remoteDb.select(_remoteDb.clienteTable)
+          ..where((tbl) =>
+              tbl.telefonoFijo.equals(value) | tbl.telefonoMovil.equals(value)))
+        .get();
+
+    if (customerListDTO.isNotEmpty) {
+      return ClienteTelefono.fromClienteDTO(customerListDTO.first, value);
+    }
+
+    final clienteDireccionListDTO =
+        await (_remoteDb.select(_remoteDb.clienteDireccionTable)
+              ..where((tbl) => tbl.telefono.equals(value)))
+            .get();
+
+    if (clienteDireccionListDTO.isNotEmpty) {
+      return ClienteTelefono.fromClienteDireccionDTO(
+          clienteDireccionListDTO.first, value);
+    }
+
+    final clienteContactoListDTO =
+        await (_remoteDb.select(_remoteDb.clienteContactoTable)
+              ..where((tbl) =>
+                  tbl.telefono1.equals(value) | tbl.telefono2.equals(value)))
+            .get();
+
+    if (clienteContactoListDTO.isNotEmpty) {
+      final cliente = await getClienteById(
+          clienteId: clienteContactoListDTO.first.clienteId);
+      return ClienteTelefono.fromCliente(cliente, value);
+    }
+
+    return null;
   }
 }

@@ -80,6 +80,9 @@ mixin _$Cliente {
   String? get representante1Nombre => throw _privateConstructorUsedError;
   String? get representante2Id => throw _privateConstructorUsedError;
   String? get representante2Nombre => throw _privateConstructorUsedError;
+  String? get telefonoMovil => throw _privateConstructorUsedError;
+  String? get telefonoFijo => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
   DateTime? get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
@@ -155,6 +158,9 @@ abstract class $ClienteCopyWith<$Res> {
       String? representante1Nombre,
       String? representante2Id,
       String? representante2Nombre,
+      String? telefonoMovil,
+      String? telefonoFijo,
+      String? email,
       DateTime? lastUpdated,
       bool deleted});
 
@@ -242,6 +248,9 @@ class _$ClienteCopyWithImpl<$Res, $Val extends Cliente>
     Object? representante1Nombre = freezed,
     Object? representante2Id = freezed,
     Object? representante2Nombre = freezed,
+    Object? telefonoMovil = freezed,
+    Object? telefonoFijo = freezed,
+    Object? email = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = null,
   }) {
@@ -486,6 +495,18 @@ class _$ClienteCopyWithImpl<$Res, $Val extends Cliente>
           ? _value.representante2Nombre
           : representante2Nombre // ignore: cast_nullable_to_non_nullable
               as String?,
+      telefonoMovil: freezed == telefonoMovil
+          ? _value.telefonoMovil
+          : telefonoMovil // ignore: cast_nullable_to_non_nullable
+              as String?,
+      telefonoFijo: freezed == telefonoFijo
+          ? _value.telefonoFijo
+          : telefonoFijo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
       lastUpdated: freezed == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -666,6 +687,9 @@ abstract class _$$ClienteImplCopyWith<$Res> implements $ClienteCopyWith<$Res> {
       String? representante1Nombre,
       String? representante2Id,
       String? representante2Nombre,
+      String? telefonoMovil,
+      String? telefonoFijo,
+      String? email,
       DateTime? lastUpdated,
       bool deleted});
 
@@ -758,6 +782,9 @@ class __$$ClienteImplCopyWithImpl<$Res>
     Object? representante1Nombre = freezed,
     Object? representante2Id = freezed,
     Object? representante2Nombre = freezed,
+    Object? telefonoMovil = freezed,
+    Object? telefonoFijo = freezed,
+    Object? email = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = null,
   }) {
@@ -1002,6 +1029,18 @@ class __$$ClienteImplCopyWithImpl<$Res>
           ? _value.representante2Nombre
           : representante2Nombre // ignore: cast_nullable_to_non_nullable
               as String?,
+      telefonoMovil: freezed == telefonoMovil
+          ? _value.telefonoMovil
+          : telefonoMovil // ignore: cast_nullable_to_non_nullable
+              as String?,
+      telefonoFijo: freezed == telefonoFijo
+          ? _value.telefonoFijo
+          : telefonoFijo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
       lastUpdated: freezed == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -1078,6 +1117,9 @@ class _$ClienteImpl extends _Cliente {
       this.representante1Nombre,
       this.representante2Id,
       this.representante2Nombre,
+      this.telefonoMovil,
+      this.telefonoFijo,
+      this.email,
       this.lastUpdated,
       required this.deleted})
       : super._();
@@ -1203,13 +1245,19 @@ class _$ClienteImpl extends _Cliente {
   @override
   final String? representante2Nombre;
   @override
+  final String? telefonoMovil;
+  @override
+  final String? telefonoFijo;
+  @override
+  final String? email;
+  @override
   final DateTime? lastUpdated;
   @override
   final bool deleted;
 
   @override
   String toString() {
-    return 'Cliente(id: $id, nombreCliente: $nombreCliente, nombreFiscal: $nombreFiscal, nif: $nif, direccionFiscal1: $direccionFiscal1, direccionFiscal2: $direccionFiscal2, codigoPostalFiscal: $codigoPostalFiscal, poblacionFiscal: $poblacionFiscal, provinciaFiscal: $provinciaFiscal, paisFiscal: $paisFiscal, latitudFiscal: $latitudFiscal, longitudFiscal: $longitudFiscal, direccionPredeterminada1: $direccionPredeterminada1, direccionPredeterminada2: $direccionPredeterminada2, codigoPostalPredeterminada: $codigoPostalPredeterminada, poblacionPredeterminada: $poblacionPredeterminada, provinciaPredeterminada: $provinciaPredeterminada, paisPredeterminada: $paisPredeterminada, latitudPredeterminada: $latitudPredeterminada, longitudPredeterminada: $longitudPredeterminada, empresaId: $empresaId, iva: $iva, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, porcentajeAbonos: $porcentajeAbonos, porcentajeGarantias: $porcentajeGarantias, centralCompras: $centralCompras, urlWeb: $urlWeb, divisa: $divisa, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, descuentoGeneralId: $descuentoGeneralId, descripcionDescuentoGeneral: $descripcionDescuentoGeneral, tipoCalculoPrecio: $tipoCalculoPrecio, plazoDeCobro: $plazoDeCobro, metodoDeCobro: $metodoDeCobro, descuentoProntoPago: $descuentoProntoPago, riesgoConcedidoInterno: $riesgoConcedidoInterno, riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, riesgoConcedidoCoafe: $riesgoConcedidoCoafe, riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, riesgoActual: $riesgoActual, riesgoConcedido: $riesgoConcedido, riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, riesgoPendienteServir: $riesgoPendienteServir, riesgoPendienteFacturar: $riesgoPendienteFacturar, riesgoExcedido: $riesgoExcedido, obvservacionesInternas: $obvservacionesInternas, clientePotencial: $clientePotencial, clienteEstadoPotencial: $clienteEstadoPotencial, clienteTipoPotencial: $clienteTipoPotencial, representante1Id: $representante1Id, representante1Nombre: $representante1Nombre, representante2Id: $representante2Id, representante2Nombre: $representante2Nombre, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'Cliente(id: $id, nombreCliente: $nombreCliente, nombreFiscal: $nombreFiscal, nif: $nif, direccionFiscal1: $direccionFiscal1, direccionFiscal2: $direccionFiscal2, codigoPostalFiscal: $codigoPostalFiscal, poblacionFiscal: $poblacionFiscal, provinciaFiscal: $provinciaFiscal, paisFiscal: $paisFiscal, latitudFiscal: $latitudFiscal, longitudFiscal: $longitudFiscal, direccionPredeterminada1: $direccionPredeterminada1, direccionPredeterminada2: $direccionPredeterminada2, codigoPostalPredeterminada: $codigoPostalPredeterminada, poblacionPredeterminada: $poblacionPredeterminada, provinciaPredeterminada: $provinciaPredeterminada, paisPredeterminada: $paisPredeterminada, latitudPredeterminada: $latitudPredeterminada, longitudPredeterminada: $longitudPredeterminada, empresaId: $empresaId, iva: $iva, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, porcentajeAbonos: $porcentajeAbonos, porcentajeGarantias: $porcentajeGarantias, centralCompras: $centralCompras, urlWeb: $urlWeb, divisa: $divisa, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, descuentoGeneralId: $descuentoGeneralId, descripcionDescuentoGeneral: $descripcionDescuentoGeneral, tipoCalculoPrecio: $tipoCalculoPrecio, plazoDeCobro: $plazoDeCobro, metodoDeCobro: $metodoDeCobro, descuentoProntoPago: $descuentoProntoPago, riesgoConcedidoInterno: $riesgoConcedidoInterno, riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, riesgoConcedidoCoafe: $riesgoConcedidoCoafe, riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, riesgoActual: $riesgoActual, riesgoConcedido: $riesgoConcedido, riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, riesgoPendienteServir: $riesgoPendienteServir, riesgoPendienteFacturar: $riesgoPendienteFacturar, riesgoExcedido: $riesgoExcedido, obvservacionesInternas: $obvservacionesInternas, clientePotencial: $clientePotencial, clienteEstadoPotencial: $clienteEstadoPotencial, clienteTipoPotencial: $clienteTipoPotencial, representante1Id: $representante1Id, representante1Nombre: $representante1Nombre, representante2Id: $representante2Id, representante2Nombre: $representante2Nombre, telefonoMovil: $telefonoMovil, telefonoFijo: $telefonoFijo, email: $email, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -1305,6 +1353,9 @@ class _$ClienteImpl extends _Cliente {
             (identical(other.representante1Nombre, representante1Nombre) || other.representante1Nombre == representante1Nombre) &&
             (identical(other.representante2Id, representante2Id) || other.representante2Id == representante2Id) &&
             (identical(other.representante2Nombre, representante2Nombre) || other.representante2Nombre == representante2Nombre) &&
+            (identical(other.telefonoMovil, telefonoMovil) || other.telefonoMovil == telefonoMovil) &&
+            (identical(other.telefonoFijo, telefonoFijo) || other.telefonoFijo == telefonoFijo) &&
+            (identical(other.email, email) || other.email == email) &&
             (identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated) &&
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
@@ -1372,6 +1423,9 @@ class _$ClienteImpl extends _Cliente {
         representante1Nombre,
         representante2Id,
         representante2Nombre,
+        telefonoMovil,
+        telefonoFijo,
+        email,
         lastUpdated,
         deleted
       ]);
@@ -1447,6 +1501,9 @@ abstract class _Cliente extends Cliente {
       final String? representante1Nombre,
       final String? representante2Id,
       final String? representante2Nombre,
+      final String? telefonoMovil,
+      final String? telefonoFijo,
+      final String? email,
       final DateTime? lastUpdated,
       required final bool deleted}) = _$ClienteImpl;
   const _Cliente._() : super._();
@@ -1571,6 +1628,12 @@ abstract class _Cliente extends Cliente {
   String? get representante2Id;
   @override
   String? get representante2Nombre;
+  @override
+  String? get telefonoMovil;
+  @override
+  String? get telefonoFijo;
+  @override
+  String? get email;
   @override
   DateTime? get lastUpdated;
   @override

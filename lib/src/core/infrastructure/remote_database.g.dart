@@ -4471,6 +4471,23 @@ class $ClienteTableTable extends ClienteTable
   late final GeneratedColumn<String> representante2Nombre =
       GeneratedColumn<String>('REPRESENTANTE2_NOMBRE', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _telefonoFijoMeta =
+      const VerificationMeta('telefonoFijo');
+  @override
+  late final GeneratedColumn<String> telefonoFijo = GeneratedColumn<String>(
+      'TELEFONO_FIJO', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _telefonoMovilMeta =
+      const VerificationMeta('telefonoMovil');
+  @override
+  late final GeneratedColumn<String> telefonoMovil = GeneratedColumn<String>(
+      'TELEFONO_MOVIL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _emailMeta = const VerificationMeta('email');
+  @override
+  late final GeneratedColumn<String> email = GeneratedColumn<String>(
+      'E_MAIL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
@@ -4537,6 +4554,9 @@ class $ClienteTableTable extends ClienteTable
         representante1Nombre,
         representante2Id,
         representante2Nombre,
+        telefonoFijo,
+        telefonoMovil,
+        email,
         lastUpdated,
         deleted
       ];
@@ -4880,6 +4900,22 @@ class $ClienteTableTable extends ClienteTable
           representante2Nombre.isAcceptableOrUnknown(
               data['REPRESENTANTE2_NOMBRE']!, _representante2NombreMeta));
     }
+    if (data.containsKey('TELEFONO_FIJO')) {
+      context.handle(
+          _telefonoFijoMeta,
+          telefonoFijo.isAcceptableOrUnknown(
+              data['TELEFONO_FIJO']!, _telefonoFijoMeta));
+    }
+    if (data.containsKey('TELEFONO_MOVIL')) {
+      context.handle(
+          _telefonoMovilMeta,
+          telefonoMovil.isAcceptableOrUnknown(
+              data['TELEFONO_MOVIL']!, _telefonoMovilMeta));
+    }
+    if (data.containsKey('E_MAIL')) {
+      context.handle(
+          _emailMeta, email.isAcceptableOrUnknown(data['E_MAIL']!, _emailMeta));
+    }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
           _lastUpdatedMeta,
@@ -5012,6 +5048,12 @@ class $ClienteTableTable extends ClienteTable
           DriftSqlType.string, data['${effectivePrefix}REPRESENTANTE2_ID']),
       representante2Nombre: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}REPRESENTANTE2_NOMBRE']),
+      telefonoFijo: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}TELEFONO_FIJO']),
+      telefonoMovil: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}TELEFONO_MOVIL']),
+      email: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}E_MAIL']),
       lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
       deleted: attachedDatabase.typeMapping
@@ -5076,6 +5118,9 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
   final Value<String?> representante1Nombre;
   final Value<String?> representante2Id;
   final Value<String?> representante2Nombre;
+  final Value<String?> telefonoFijo;
+  final Value<String?> telefonoMovil;
+  final Value<String?> email;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
   final Value<int> rowid;
@@ -5130,6 +5175,9 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     this.representante1Nombre = const Value.absent(),
     this.representante2Id = const Value.absent(),
     this.representante2Nombre = const Value.absent(),
+    this.telefonoFijo = const Value.absent(),
+    this.telefonoMovil = const Value.absent(),
+    this.email = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -5185,6 +5233,9 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     this.representante1Nombre = const Value.absent(),
     this.representante2Id = const Value.absent(),
     this.representante2Nombre = const Value.absent(),
+    this.telefonoFijo = const Value.absent(),
+    this.telefonoMovil = const Value.absent(),
+    this.email = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -5259,6 +5310,9 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     Expression<String>? representante1Nombre,
     Expression<String>? representante2Id,
     Expression<String>? representante2Nombre,
+    Expression<String>? telefonoFijo,
+    Expression<String>? telefonoMovil,
+    Expression<String>? email,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
     Expression<int>? rowid,
@@ -5336,6 +5390,9 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
       if (representante2Id != null) 'REPRESENTANTE2_ID': representante2Id,
       if (representante2Nombre != null)
         'REPRESENTANTE2_NOMBRE': representante2Nombre,
+      if (telefonoFijo != null) 'TELEFONO_FIJO': telefonoFijo,
+      if (telefonoMovil != null) 'TELEFONO_MOVIL': telefonoMovil,
+      if (email != null) 'E_MAIL': email,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
       if (rowid != null) 'rowid': rowid,
@@ -5393,6 +5450,9 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
       Value<String?>? representante1Nombre,
       Value<String?>? representante2Id,
       Value<String?>? representante2Nombre,
+      Value<String?>? telefonoFijo,
+      Value<String?>? telefonoMovil,
+      Value<String?>? email,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted,
       Value<int>? rowid}) {
@@ -5458,6 +5518,9 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
       representante1Nombre: representante1Nombre ?? this.representante1Nombre,
       representante2Id: representante2Id ?? this.representante2Id,
       representante2Nombre: representante2Nombre ?? this.representante2Nombre,
+      telefonoFijo: telefonoFijo ?? this.telefonoFijo,
+      telefonoMovil: telefonoMovil ?? this.telefonoMovil,
+      email: email ?? this.email,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
       rowid: rowid ?? this.rowid,
@@ -5631,6 +5694,15 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
       map['REPRESENTANTE2_NOMBRE'] =
           Variable<String>(representante2Nombre.value);
     }
+    if (telefonoFijo.present) {
+      map['TELEFONO_FIJO'] = Variable<String>(telefonoFijo.value);
+    }
+    if (telefonoMovil.present) {
+      map['TELEFONO_MOVIL'] = Variable<String>(telefonoMovil.value);
+    }
+    if (email.present) {
+      map['E_MAIL'] = Variable<String>(email.value);
+    }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
     }
@@ -5697,6 +5769,9 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
           ..write('representante1Nombre: $representante1Nombre, ')
           ..write('representante2Id: $representante2Id, ')
           ..write('representante2Nombre: $representante2Nombre, ')
+          ..write('telefonoFijo: $telefonoFijo, ')
+          ..write('telefonoMovil: $telefonoMovil, ')
+          ..write('email: $email, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted, ')
           ..write('rowid: $rowid')
@@ -8012,6 +8087,12 @@ class $ClienteDireccionTableTable extends ClienteDireccionTable
   late final GeneratedColumn<String> predeterminada = GeneratedColumn<String>(
       'PREDETERMINADA_SN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _telefonoMeta =
+      const VerificationMeta('telefono');
+  @override
+  late final GeneratedColumn<String> telefono = GeneratedColumn<String>(
+      'TELEFONO', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
@@ -8040,6 +8121,7 @@ class $ClienteDireccionTableTable extends ClienteDireccionTable
         latitud,
         longitud,
         predeterminada,
+        telefono,
         lastUpdated,
         deleted
       ];
@@ -8120,6 +8202,10 @@ class $ClienteDireccionTableTable extends ClienteDireccionTable
           predeterminada.isAcceptableOrUnknown(
               data['PREDETERMINADA_SN']!, _predeterminadaMeta));
     }
+    if (data.containsKey('TELEFONO')) {
+      context.handle(_telefonoMeta,
+          telefono.isAcceptableOrUnknown(data['TELEFONO']!, _telefonoMeta));
+    }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
           _lastUpdatedMeta,
@@ -8165,6 +8251,8 @@ class $ClienteDireccionTableTable extends ClienteDireccionTable
           .read(DriftSqlType.double, data['${effectivePrefix}LONGITUD'])!,
       predeterminada: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}PREDETERMINADA_SN']),
+      telefono: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}TELEFONO']),
       lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
       deleted: attachedDatabase.typeMapping
@@ -8192,6 +8280,7 @@ class ClienteDireccionTableCompanion
   final Value<double> latitud;
   final Value<double> longitud;
   final Value<String?> predeterminada;
+  final Value<String?> telefono;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
   final Value<int> rowid;
@@ -8208,6 +8297,7 @@ class ClienteDireccionTableCompanion
     this.latitud = const Value.absent(),
     this.longitud = const Value.absent(),
     this.predeterminada = const Value.absent(),
+    this.telefono = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -8225,6 +8315,7 @@ class ClienteDireccionTableCompanion
     required double latitud,
     required double longitud,
     this.predeterminada = const Value.absent(),
+    this.telefono = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -8246,6 +8337,7 @@ class ClienteDireccionTableCompanion
     Expression<double>? latitud,
     Expression<double>? longitud,
     Expression<String>? predeterminada,
+    Expression<String>? telefono,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
     Expression<int>? rowid,
@@ -8263,6 +8355,7 @@ class ClienteDireccionTableCompanion
       if (latitud != null) 'LATITUD': latitud,
       if (longitud != null) 'LONGITUD': longitud,
       if (predeterminada != null) 'PREDETERMINADA_SN': predeterminada,
+      if (telefono != null) 'TELEFONO': telefono,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
       if (rowid != null) 'rowid': rowid,
@@ -8282,6 +8375,7 @@ class ClienteDireccionTableCompanion
       Value<double>? latitud,
       Value<double>? longitud,
       Value<String?>? predeterminada,
+      Value<String?>? telefono,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted,
       Value<int>? rowid}) {
@@ -8298,6 +8392,7 @@ class ClienteDireccionTableCompanion
       latitud: latitud ?? this.latitud,
       longitud: longitud ?? this.longitud,
       predeterminada: predeterminada ?? this.predeterminada,
+      telefono: telefono ?? this.telefono,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
       rowid: rowid ?? this.rowid,
@@ -8343,6 +8438,9 @@ class ClienteDireccionTableCompanion
     if (predeterminada.present) {
       map['PREDETERMINADA_SN'] = Variable<String>(predeterminada.value);
     }
+    if (telefono.present) {
+      map['TELEFONO'] = Variable<String>(telefono.value);
+    }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
     }
@@ -8370,6 +8468,7 @@ class ClienteDireccionTableCompanion
           ..write('latitud: $latitud, ')
           ..write('longitud: $longitud, ')
           ..write('predeterminada: $predeterminada, ')
+          ..write('telefono: $telefono, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted, ')
           ..write('rowid: $rowid')
@@ -24739,6 +24838,9 @@ typedef $$ClienteTableTableCreateCompanionBuilder = ClienteTableCompanion
   Value<String?> representante1Nombre,
   Value<String?> representante2Id,
   Value<String?> representante2Nombre,
+  Value<String?> telefonoFijo,
+  Value<String?> telefonoMovil,
+  Value<String?> email,
   required DateTime lastUpdated,
   Value<String> deleted,
   Value<int> rowid,
@@ -24795,6 +24897,9 @@ typedef $$ClienteTableTableUpdateCompanionBuilder = ClienteTableCompanion
   Value<String?> representante1Nombre,
   Value<String?> representante2Id,
   Value<String?> representante2Nombre,
+  Value<String?> telefonoFijo,
+  Value<String?> telefonoMovil,
+  Value<String?> email,
   Value<DateTime> lastUpdated,
   Value<String> deleted,
   Value<int> rowid,
@@ -25100,6 +25205,21 @@ class $$ClienteTableTableFilterComposer
 
   ColumnFilters<String> get representante2Nombre => $state.composableBuilder(
       column: $state.table.representante2Nombre,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get telefonoFijo => $state.composableBuilder(
+      column: $state.table.telefonoFijo,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get telefonoMovil => $state.composableBuilder(
+      column: $state.table.telefonoMovil,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get email => $state.composableBuilder(
+      column: $state.table.email,
       builder: (column, joinBuilders) =>
           ColumnFilters(column, joinBuilders: joinBuilders));
 
@@ -25413,6 +25533,21 @@ class $$ClienteTableTableOrderingComposer
       builder: (column, joinBuilders) =>
           ColumnOrderings(column, joinBuilders: joinBuilders));
 
+  ColumnOrderings<String> get telefonoFijo => $state.composableBuilder(
+      column: $state.table.telefonoFijo,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get telefonoMovil => $state.composableBuilder(
+      column: $state.table.telefonoMovil,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get email => $state.composableBuilder(
+      column: $state.table.email,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
   ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
       column: $state.table.lastUpdated,
       builder: (column, joinBuilders) =>
@@ -25555,6 +25690,9 @@ class $$ClienteTableTableTableManager extends RootTableManager<
             Value<String?> representante1Nombre = const Value.absent(),
             Value<String?> representante2Id = const Value.absent(),
             Value<String?> representante2Nombre = const Value.absent(),
+            Value<String?> telefonoFijo = const Value.absent(),
+            Value<String?> telefonoMovil = const Value.absent(),
+            Value<String?> email = const Value.absent(),
             Value<DateTime> lastUpdated = const Value.absent(),
             Value<String> deleted = const Value.absent(),
             Value<int> rowid = const Value.absent(),
@@ -25610,6 +25748,9 @@ class $$ClienteTableTableTableManager extends RootTableManager<
             representante1Nombre: representante1Nombre,
             representante2Id: representante2Id,
             representante2Nombre: representante2Nombre,
+            telefonoFijo: telefonoFijo,
+            telefonoMovil: telefonoMovil,
+            email: email,
             lastUpdated: lastUpdated,
             deleted: deleted,
             rowid: rowid,
@@ -25665,6 +25806,9 @@ class $$ClienteTableTableTableManager extends RootTableManager<
             Value<String?> representante1Nombre = const Value.absent(),
             Value<String?> representante2Id = const Value.absent(),
             Value<String?> representante2Nombre = const Value.absent(),
+            Value<String?> telefonoFijo = const Value.absent(),
+            Value<String?> telefonoMovil = const Value.absent(),
+            Value<String?> email = const Value.absent(),
             required DateTime lastUpdated,
             Value<String> deleted = const Value.absent(),
             Value<int> rowid = const Value.absent(),
@@ -25720,6 +25864,9 @@ class $$ClienteTableTableTableManager extends RootTableManager<
             representante1Nombre: representante1Nombre,
             representante2Id: representante2Id,
             representante2Nombre: representante2Nombre,
+            telefonoFijo: telefonoFijo,
+            telefonoMovil: telefonoMovil,
+            email: email,
             lastUpdated: lastUpdated,
             deleted: deleted,
             rowid: rowid,
@@ -27657,6 +27804,7 @@ typedef $$ClienteDireccionTableTableCreateCompanionBuilder
   required double latitud,
   required double longitud,
   Value<String?> predeterminada,
+  Value<String?> telefono,
   required DateTime lastUpdated,
   Value<String> deleted,
   Value<int> rowid,
@@ -27675,6 +27823,7 @@ typedef $$ClienteDireccionTableTableUpdateCompanionBuilder
   Value<double> latitud,
   Value<double> longitud,
   Value<String?> predeterminada,
+  Value<String?> telefono,
   Value<DateTime> lastUpdated,
   Value<String> deleted,
   Value<int> rowid,
@@ -27755,6 +27904,11 @@ class $$ClienteDireccionTableTableFilterComposer
 
   ColumnFilters<String> get predeterminada => $state.composableBuilder(
       column: $state.table.predeterminada,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get telefono => $state.composableBuilder(
+      column: $state.table.telefono,
       builder: (column, joinBuilders) =>
           ColumnFilters(column, joinBuilders: joinBuilders));
 
@@ -27839,6 +27993,11 @@ class $$ClienteDireccionTableTableOrderingComposer
       builder: (column, joinBuilders) =>
           ColumnOrderings(column, joinBuilders: joinBuilders));
 
+  ColumnOrderings<String> get telefono => $state.composableBuilder(
+      column: $state.table.telefono,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
   ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
       column: $state.table.lastUpdated,
       builder: (column, joinBuilders) =>
@@ -27895,6 +28054,7 @@ class $$ClienteDireccionTableTableTableManager extends RootTableManager<
             Value<double> latitud = const Value.absent(),
             Value<double> longitud = const Value.absent(),
             Value<String?> predeterminada = const Value.absent(),
+            Value<String?> telefono = const Value.absent(),
             Value<DateTime> lastUpdated = const Value.absent(),
             Value<String> deleted = const Value.absent(),
             Value<int> rowid = const Value.absent(),
@@ -27912,6 +28072,7 @@ class $$ClienteDireccionTableTableTableManager extends RootTableManager<
             latitud: latitud,
             longitud: longitud,
             predeterminada: predeterminada,
+            telefono: telefono,
             lastUpdated: lastUpdated,
             deleted: deleted,
             rowid: rowid,
@@ -27929,6 +28090,7 @@ class $$ClienteDireccionTableTableTableManager extends RootTableManager<
             required double latitud,
             required double longitud,
             Value<String?> predeterminada = const Value.absent(),
+            Value<String?> telefono = const Value.absent(),
             required DateTime lastUpdated,
             Value<String> deleted = const Value.absent(),
             Value<int> rowid = const Value.absent(),
@@ -27946,6 +28108,7 @@ class $$ClienteDireccionTableTableTableManager extends RootTableManager<
             latitud: latitud,
             longitud: longitud,
             predeterminada: predeterminada,
+            telefono: telefono,
             lastUpdated: lastUpdated,
             deleted: deleted,
             rowid: rowid,

@@ -3575,6 +3575,12 @@ class $ClienteDireccionImpTableTable extends ClienteDireccionImpTable
   late final GeneratedColumn<String> paisId = GeneratedColumn<String>(
       'PAIS_ID', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _telefonoMeta =
+      const VerificationMeta('telefono');
+  @override
+  late final GeneratedColumn<String> telefono = GeneratedColumn<String>(
+      'TELEFONO', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _enviadaMeta =
       const VerificationMeta('enviada');
   @override
@@ -3604,6 +3610,7 @@ class $ClienteDireccionImpTableTable extends ClienteDireccionImpTable
         poblacion,
         provincia,
         paisId,
+        telefono,
         enviada,
         borrar
       ];
@@ -3681,6 +3688,10 @@ class $ClienteDireccionImpTableTable extends ClienteDireccionImpTable
       context.handle(_paisIdMeta,
           paisId.isAcceptableOrUnknown(data['PAIS_ID']!, _paisIdMeta));
     }
+    if (data.containsKey('TELEFONO')) {
+      context.handle(_telefonoMeta,
+          telefono.isAcceptableOrUnknown(data['TELEFONO']!, _telefonoMeta));
+    }
     if (data.containsKey('ENVIADA')) {
       context.handle(_enviadaMeta,
           enviada.isAcceptableOrUnknown(data['ENVIADA']!, _enviadaMeta));
@@ -3722,6 +3733,8 @@ class $ClienteDireccionImpTableTable extends ClienteDireccionImpTable
           .read(DriftSqlType.string, data['${effectivePrefix}PROVINCIA']),
       paisId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}PAIS_ID']),
+      telefono: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}TELEFONO']),
       enviada: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}ENVIADA'])!,
       borrar: attachedDatabase.typeMapping
@@ -3749,6 +3762,7 @@ class ClienteDireccionImpTableCompanion
   final Value<String?> poblacion;
   final Value<String?> provincia;
   final Value<String?> paisId;
+  final Value<String?> telefono;
   final Value<String> enviada;
   final Value<String> borrar;
   final Value<int> rowid;
@@ -3765,6 +3779,7 @@ class ClienteDireccionImpTableCompanion
     this.poblacion = const Value.absent(),
     this.provincia = const Value.absent(),
     this.paisId = const Value.absent(),
+    this.telefono = const Value.absent(),
     this.enviada = const Value.absent(),
     this.borrar = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -3782,6 +3797,7 @@ class ClienteDireccionImpTableCompanion
     this.poblacion = const Value.absent(),
     this.provincia = const Value.absent(),
     this.paisId = const Value.absent(),
+    this.telefono = const Value.absent(),
     this.enviada = const Value.absent(),
     this.borrar = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -3802,6 +3818,7 @@ class ClienteDireccionImpTableCompanion
     Expression<String>? poblacion,
     Expression<String>? provincia,
     Expression<String>? paisId,
+    Expression<String>? telefono,
     Expression<String>? enviada,
     Expression<String>? borrar,
     Expression<int>? rowid,
@@ -3819,6 +3836,7 @@ class ClienteDireccionImpTableCompanion
       if (poblacion != null) 'POBLACION': poblacion,
       if (provincia != null) 'PROVINCIA': provincia,
       if (paisId != null) 'PAIS_ID': paisId,
+      if (telefono != null) 'TELEFONO': telefono,
       if (enviada != null) 'ENVIADA': enviada,
       if (borrar != null) 'BORRAR': borrar,
       if (rowid != null) 'rowid': rowid,
@@ -3838,6 +3856,7 @@ class ClienteDireccionImpTableCompanion
       Value<String?>? poblacion,
       Value<String?>? provincia,
       Value<String?>? paisId,
+      Value<String?>? telefono,
       Value<String>? enviada,
       Value<String>? borrar,
       Value<int>? rowid}) {
@@ -3854,6 +3873,7 @@ class ClienteDireccionImpTableCompanion
       poblacion: poblacion ?? this.poblacion,
       provincia: provincia ?? this.provincia,
       paisId: paisId ?? this.paisId,
+      telefono: telefono ?? this.telefono,
       enviada: enviada ?? this.enviada,
       borrar: borrar ?? this.borrar,
       rowid: rowid ?? this.rowid,
@@ -3899,6 +3919,9 @@ class ClienteDireccionImpTableCompanion
     if (paisId.present) {
       map['PAIS_ID'] = Variable<String>(paisId.value);
     }
+    if (telefono.present) {
+      map['TELEFONO'] = Variable<String>(telefono.value);
+    }
     if (enviada.present) {
       map['ENVIADA'] = Variable<String>(enviada.value);
     }
@@ -3926,6 +3949,7 @@ class ClienteDireccionImpTableCompanion
           ..write('poblacion: $poblacion, ')
           ..write('provincia: $provincia, ')
           ..write('paisId: $paisId, ')
+          ..write('telefono: $telefono, ')
           ..write('enviada: $enviada, ')
           ..write('borrar: $borrar, ')
           ..write('rowid: $rowid')
@@ -6283,6 +6307,7 @@ typedef $$ClienteDireccionImpTableTableCreateCompanionBuilder
   Value<String?> poblacion,
   Value<String?> provincia,
   Value<String?> paisId,
+  Value<String?> telefono,
   Value<String> enviada,
   Value<String> borrar,
   Value<int> rowid,
@@ -6301,6 +6326,7 @@ typedef $$ClienteDireccionImpTableTableUpdateCompanionBuilder
   Value<String?> poblacion,
   Value<String?> provincia,
   Value<String?> paisId,
+  Value<String?> telefono,
   Value<String> enviada,
   Value<String> borrar,
   Value<int> rowid,
@@ -6366,6 +6392,11 @@ class $$ClienteDireccionImpTableTableFilterComposer
 
   ColumnFilters<String> get paisId => $state.composableBuilder(
       column: $state.table.paisId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get telefono => $state.composableBuilder(
+      column: $state.table.telefono,
       builder: (column, joinBuilders) =>
           ColumnFilters(column, joinBuilders: joinBuilders));
 
@@ -6443,6 +6474,11 @@ class $$ClienteDireccionImpTableTableOrderingComposer extends OrderingComposer<
       builder: (column, joinBuilders) =>
           ColumnOrderings(column, joinBuilders: joinBuilders));
 
+  ColumnOrderings<String> get telefono => $state.composableBuilder(
+      column: $state.table.telefono,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
   ColumnOrderings<String> get enviada => $state.composableBuilder(
       column: $state.table.enviada,
       builder: (column, joinBuilders) =>
@@ -6491,6 +6527,7 @@ class $$ClienteDireccionImpTableTableTableManager extends RootTableManager<
             Value<String?> poblacion = const Value.absent(),
             Value<String?> provincia = const Value.absent(),
             Value<String?> paisId = const Value.absent(),
+            Value<String?> telefono = const Value.absent(),
             Value<String> enviada = const Value.absent(),
             Value<String> borrar = const Value.absent(),
             Value<int> rowid = const Value.absent(),
@@ -6508,6 +6545,7 @@ class $$ClienteDireccionImpTableTableTableManager extends RootTableManager<
             poblacion: poblacion,
             provincia: provincia,
             paisId: paisId,
+            telefono: telefono,
             enviada: enviada,
             borrar: borrar,
             rowid: rowid,
@@ -6525,6 +6563,7 @@ class $$ClienteDireccionImpTableTableTableManager extends RootTableManager<
             Value<String?> poblacion = const Value.absent(),
             Value<String?> provincia = const Value.absent(),
             Value<String?> paisId = const Value.absent(),
+            Value<String?> telefono = const Value.absent(),
             Value<String> enviada = const Value.absent(),
             Value<String> borrar = const Value.absent(),
             Value<int> rowid = const Value.absent(),
@@ -6542,6 +6581,7 @@ class $$ClienteDireccionImpTableTableTableManager extends RootTableManager<
             poblacion: poblacion,
             provincia: provincia,
             paisId: paisId,
+            telefono: telefono,
             enviada: enviada,
             borrar: borrar,
             rowid: rowid,
