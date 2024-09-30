@@ -526,8 +526,10 @@ class CatalogoRepository {
         .get();
   }
 
-  Future<void> saveCatalogoAbierto(int catalogoId) async {
-    await _localDb.into(_localDb.catalogoOrdenTable).insertOnConflictUpdate(
-        CatalogoOrdenDTO(catalogoId: catalogoId, fechaAbierto: DateTime.now()));
+  Future<int> saveCatalogoAbierto(int catalogoId) async {
+    return await _localDb
+        .into(_localDb.catalogoOrdenTable)
+        .insertOnConflictUpdate(CatalogoOrdenDTO(
+            catalogoId: catalogoId, fechaAbierto: DateTime.now()));
   }
 }

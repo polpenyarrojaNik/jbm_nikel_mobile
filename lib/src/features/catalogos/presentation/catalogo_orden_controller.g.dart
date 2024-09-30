@@ -7,7 +7,7 @@ part of 'catalogo_orden_controller.dart';
 // **************************************************************************
 
 String _$catalogoOrdenControllerHash() =>
-    r'46b950dfc801593f049cebc85884a99dfd80b96e';
+    r'8e0ab0d67036765d755a96b7dde17f7973f6b0b9';
 
 /// See also [CatalogoOrdenController].
 @ProviderFor(CatalogoOrdenController)

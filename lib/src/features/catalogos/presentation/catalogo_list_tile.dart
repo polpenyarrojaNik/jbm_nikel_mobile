@@ -5,7 +5,6 @@ import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_i
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/features/catalogos/presentation/catalogo_favorito_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/catalogos/presentation/catalogo_orden_controller.dart';
-import 'package:jbm_nikel_mobile/src/features/catalogos/presentation/catalogo_search_controller.dart';
 
 import '../../../core/domain/adjunto_param.dart';
 import '../domain/catalogo.dart';
@@ -20,11 +19,6 @@ class CatalogoListTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen(catalogoOrdenControllerProvider.saveCatalogoAbierto, (_, state) {
-      if (state is SaveCatalogoAbiertoMutationSuccess) {
-        ref.invalidate(catalogoIndexScreenControllerProvider);
-      }
-    });
     final stateFavorite =
         ref.watch(catalogoFavoritoControllerProvider(catalogo.catalogoId));
 

@@ -1,3 +1,4 @@
+import 'package:jbm_nikel_mobile/src/features/catalogos/presentation/catalogo_search_controller.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:riverpod_mutations_annotation/riverpod_mutations_annotation.dart';
 
@@ -14,6 +15,7 @@ class CatalogoOrdenController extends _$CatalogoOrdenController {
 
   @mutation
   Future<void> saveCatalogoAbierto(int catalogoId) async {
-    return ref.read(catalogoRepositoryProvider).saveCatalogoAbierto(catalogoId);
+    await ref.read(catalogoRepositoryProvider).saveCatalogoAbierto(catalogoId);
+    ref.invalidate(catalogoIndexScreenControllerProvider);
   }
 }
