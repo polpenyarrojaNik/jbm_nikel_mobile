@@ -2,23 +2,23 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/app_drawer.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/last_sync_date_widget.dart';
-import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
-import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
-import 'package:jbm_nikel_mobile/src/features/articulos/presentation/index/articulo_list_shimmer.dart';
-import 'package:jbm_nikel_mobile/src/features/sync/application/sync_notifier_provider.dart';
 import 'package:upgrader/upgrader.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/debouncer.dart';
+import '../../../../core/infrastructure/sync_service.dart';
+import '../../../../core/presentation/common_widgets/app_drawer.dart';
+import '../../../../core/presentation/common_widgets/async_value_ui.dart';
 import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
+import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
+import '../../../../core/routing/app_auto_router.dart';
 import '../../../notifications/core/application/notification_provider.dart';
+import '../../../sync/application/sync_notifier_provider.dart';
 import '../../domain/articulo.dart';
+import '../../infrastructure/articulo_repository.dart';
+import 'articulo_list_shimmer.dart';
 import 'articulo_lista_tile.dart';
 import 'articulo_search_controller.dart';
 
@@ -48,12 +48,12 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
   Widget build(BuildContext context) {
     final stateSync = ref.watch(syncNotifierProvider);
 
-    ref.listen<AsyncValue>(
+    ref.listen(
       articuloIndexScreenControllerProvider(widget.isSearchArticuloForForm),
       (_, state) => state.showAlertDialogOnError(context),
     );
 
-    ref.listen<AsyncValue>(
+    ref.listen<AsyncValue<String?>>(
       notificationNotifierProvider,
       (_, state) => state.maybeWhen(
         orElse: () {},
@@ -113,7 +113,7 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
       ref.invalidate(articuloIndexScreenControllerProvider);
     } catch (e) {
       if (mounted) {
-        context.showErrorBar(
+        await context.showErrorBar(
             content: Text(S.of(context).noSeHaPodidoSincronizar));
       }
     }

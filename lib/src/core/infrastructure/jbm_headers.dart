@@ -4,6 +4,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'jbm_headers.freezed.dart';
 part 'jbm_headers.g.dart';
 
+typedef Json = Map<String, dynamic>;
+
 @freezed
 class JBMHeaders with _$JBMHeaders {
   const JBMHeaders._();
@@ -13,7 +15,7 @@ class JBMHeaders with _$JBMHeaders {
     int? totalRows,
   }) = _JBMHeaders;
 
-  factory JBMHeaders.parse(Response response) {
+  factory JBMHeaders.parse(Response<dynamic> response) {
     final totalPages = response.headers.map['Total-Pages']?[0];
     final totalRows = response.headers.map['Total-Rows']?[0];
 
@@ -43,6 +45,6 @@ class JBMHeaders with _$JBMHeaders {
       }
       return map['ETag']?[0];
     }
-    return map[0] as String?;
+    return null;
   }
 }

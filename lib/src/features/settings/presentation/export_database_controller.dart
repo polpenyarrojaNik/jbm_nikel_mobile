@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/features/settings/infrastructure/settings_repository.dart';
+import '../infrastructure/settings_repository.dart';
 
 import '../../../core/exceptions/app_exception.dart';
 

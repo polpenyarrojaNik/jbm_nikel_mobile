@@ -1,6 +1,6 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_imagen.dart';
+import '../domain/articulo_imagen.dart';
 
 part 'articulo_imagen_dto.freezed.dart';
 part 'articulo_imagen_dto.g.dart';

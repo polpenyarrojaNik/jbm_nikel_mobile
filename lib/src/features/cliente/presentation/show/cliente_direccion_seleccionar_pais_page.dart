@@ -1,11 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/domain/pais.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
 
 import '../../../../../generated/l10n.dart';
+import '../../../../core/domain/pais.dart';
 import '../../../../core/helpers/debouncer.dart';
+import '../../../../core/presentation/common_widgets/async_value_ui.dart';
 import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import 'cliente_direccion_seleccionar_pais_search_controller.dart';
@@ -17,7 +17,7 @@ class ClienteDireccionSeleccionarPaisPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen<AsyncValue>(
+    ref.listen<AsyncValue<void>>(
       clienteDireccionSeleccionarPaisPageControllerProvider,
       (_, state) => state.showAlertDialogOnError(context),
     );

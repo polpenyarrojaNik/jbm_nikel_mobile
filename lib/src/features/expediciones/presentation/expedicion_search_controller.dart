@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/features/expediciones/domain/expedicion.dart';
+import '../domain/expedicion.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../infrastructure/expedicion_repository.dart';

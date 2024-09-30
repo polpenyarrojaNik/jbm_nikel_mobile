@@ -1,14 +1,16 @@
+import 'dart:async';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_indicator_widget.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
-import 'package:jbm_nikel_mobile/src/features/catalogos/presentation/catalogo_favorito_controller.dart';
-import 'package:jbm_nikel_mobile/src/features/catalogos/presentation/catalogo_orden_controller.dart';
 
 import '../../../core/domain/adjunto_param.dart';
+import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../core/presentation/theme/app_sizes.dart';
 import '../domain/catalogo.dart';
 import 'catalogo_adjunto_controller.dart';
+import 'catalogo_favorito_controller.dart';
+import 'catalogo_orden_controller.dart';
 
 class CatalogoListTile extends ConsumerWidget {
   const CatalogoListTile(
@@ -102,8 +104,10 @@ class CatalogoListTile extends ConsumerWidget {
 
   void downloadAttachment(
       WidgetRef ref, SaveCatalogoAbiertoMutation stateCatalogoOrden) async {
-    stateCatalogoOrden(catalogo.catalogoId);
-    ref.read(catalogoAdjuntoControllerProvider.notifier).getAttachmentFile(
+    unawaited(stateCatalogoOrden(catalogo.catalogoId));
+    await ref
+        .read(catalogoAdjuntoControllerProvider.notifier)
+        .getAttachmentFile(
           adjuntoParam: AdjuntoParam(
             id: catalogo.catalogoId.toString(),
             nombreArchivo: catalogo.nombreFicheroCatalogo,

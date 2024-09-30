@@ -4,28 +4,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
-import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
-import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
-import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_sustitutivo.dart';
-import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
-import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_repository.dart';
-import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/pedido_venta_edit_page_controller.dart';
-import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/select_cantidad_controller.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/articulo_precio.dart';
+import '../../../../core/helpers/extension.dart';
+import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/presentation/theme/app_sizes.dart';
+import '../../../../core/routing/app_auto_router.dart';
 import '../../../articulos/domain/articulo.dart';
+import '../../../articulos/domain/articulo_sustitutivo.dart';
+import '../../../articulos/infrastructure/articulo_repository.dart';
+import '../../../cliente/domain/cliente.dart';
 import '../../../cliente/infrastructure/cliente_repository.dart';
 import '../../../usuario/application/usuario_notifier.dart';
 import '../../domain/pedido_venta_linea.dart';
 import '../../domain/pedido_venta_linea_ultimos_precios_param.dart';
 import '../../domain/precio.dart';
 import '../../domain/seleccionar_cantidad_param.dart';
+import '../../infrastructure/pedido_venta_repository.dart';
+import 'pedido_venta_edit_page_controller.dart';
+import 'select_cantidad_controller.dart';
 
 @RoutePage()
 class SeleccionarCantidadPage extends ConsumerStatefulWidget {
@@ -352,7 +352,7 @@ class _SelecionarCantidadPageState
 
         if (!widget.seleccionarCantidadParam.addNewLineaDesdeArticulo) {
           if (widget.seleccionarCantidadParam.isUpdatingLinea()) {
-            ref
+            await ref
                 .read(pedidoVentaEditPageControllerProvider(
                         widget.seleccionarCantidadParam.pedidoVentaParam)
                     .notifier)
@@ -362,7 +362,7 @@ class _SelecionarCantidadPageState
                       widget.seleccionarCantidadParam.posicionLinea,
                 );
           } else {
-            ref
+            await ref
                 .read(pedidoVentaEditPageControllerProvider(
                         widget.seleccionarCantidadParam.pedidoVentaParam)
                     .notifier)
@@ -374,7 +374,7 @@ class _SelecionarCantidadPageState
 
         if (context.mounted &&
             widget.seleccionarCantidadParam.addNewLineaDesdeArticulo) {
-          context.router.pushAndPopUntil(
+          await context.router.pushAndPopUntil(
               PedidoVentaEditRoute(
                   pedidoAppId: linea.pedidoVentaAppId,
                   addLineaDesdeArticulo: linea,
@@ -385,12 +385,12 @@ class _SelecionarCantidadPageState
                   ArticuloListaRoute(isSearchArticuloForForm: false).routeName);
         } else {
           if (context.mounted) {
-            context.router.maybePop();
+            await context.router.maybePop();
           }
         }
       } else {
         if (context.mounted) {
-          context.showErrorBar(
+          await context.showErrorBar(
               content: Text(
                   '${S.of(context).precioNoPuedeSerMenorAlPrecioMinimo}: ${minimumPrice.precio.toString()}'),
               duration: const Duration(seconds: 5));
@@ -444,7 +444,7 @@ class _SelecionarCantidadPageState
     }
   }
 
-  setArticuloPrecioValue(ArticuloPrecio? newArticuloPrecio) {
+  void setArticuloPrecioValue(ArticuloPrecio? newArticuloPrecio) {
     if (newArticuloPrecio != null) {
       setState(() {
         articuloPrecio = newArticuloPrecio;
@@ -565,7 +565,7 @@ class _ArticuloInfo extends ConsumerWidget {
 
   String getStringArticulosSusitotutivos(
       List<ArticuloSustitutivo> articuloSustitutivoList) {
-    String sustitutivoStr = '';
+    var sustitutivoStr = '';
 
     for (var i = 0; i < articuloSustitutivoList.length; i++) {
       if (sustitutivoStr.isNotEmpty) {
@@ -756,8 +756,8 @@ class _UnitsFormField extends StatelessWidget {
   }
 
   int setMultiploMasCercano(int quantity, int ventaMultiplo) {
-    int nuevaCantidad = 0;
-    for (int i = 0; i < ventaMultiplo; i++) {
+    var nuevaCantidad = 0;
+    for (var i = 0; i < ventaMultiplo; i++) {
       if ((quantity + i) % ventaMultiplo == 0) {
         nuevaCantidad = quantity + i;
       }
@@ -805,7 +805,7 @@ class _CajaUnitsFormField extends StatelessWidget {
           validator: (value) => validateQuantityCaja(context, value),
           onChanged: (value) {
             if (value != null && value.isNotEmpty) {
-              int? totalQuantity = int.tryParse(value);
+              var totalQuantity = int.tryParse(value);
               if (totalQuantity != null) {
                 totalQuantity = totalQuantity * unidadesPorCaja;
                 setUnitCajaQuantity(totalQuantity);
@@ -844,8 +844,8 @@ class _CajaUnitsFormField extends StatelessWidget {
   }
 
   int setMultiploMasCercanoCaja(int quantity, int ventaMultiplo) {
-    int nuevaCantidad = 0;
-    for (int i = ventaMultiplo; i > 0; i--) {
+    var nuevaCantidad = 0;
+    for (var i = ventaMultiplo; i > 0; i--) {
       if ((i * unidadesPorCaja) % ventaMultiplo == 0) {
         nuevaCantidad = i;
       }
@@ -893,7 +893,7 @@ class _SubcajaUnitsFormField extends StatelessWidget {
           validator: (value) => validateQuantitySubcaja(context, value),
           onChanged: (value) {
             if (value != null && value.isNotEmpty) {
-              int? totalQuantity = int.tryParse(value);
+              var totalQuantity = int.tryParse(value);
               if (totalQuantity != null) {
                 totalQuantity = totalQuantity * unidadesPorSubcaja;
                 setUnitSubcajaQuantity(totalQuantity);
@@ -933,8 +933,8 @@ class _SubcajaUnitsFormField extends StatelessWidget {
   }
 
   int setMultiploMasCercanoSubcaja(int quantity, int ventaMultiplo) {
-    int nuevaCantidad = 0;
-    for (int i = ventaMultiplo; i > 0; i--) {
+    var nuevaCantidad = 0;
+    for (var i = ventaMultiplo; i > 0; i--) {
       if ((i * unidadesPorSubcaja) % ventaMultiplo == 0) {
         nuevaCantidad = i;
       }
@@ -982,7 +982,7 @@ class _PaletUnitsFormField extends StatelessWidget {
           validator: (value) => validateQuantityPalet(context, value),
           onChanged: (value) {
             if (value != null && value.isNotEmpty) {
-              int? quantity = int.tryParse(value);
+              var quantity = int.tryParse(value);
               if (quantity != null) {
                 quantity = quantity * unidadesPorPalet;
                 setUnitPaletQuantity(quantity);
@@ -1023,8 +1023,8 @@ class _PaletUnitsFormField extends StatelessWidget {
   }
 
   int setMultiploMasCercanoPalet(int quantity, int ventaMultiplo) {
-    int nuevaCantidad = 0;
-    for (int i = 0; i < ventaMultiplo; i++) {
+    var nuevaCantidad = 0;
+    for (var i = 0; i < ventaMultiplo; i++) {
       if ((quantity + i) % ventaMultiplo == 0) {
         nuevaCantidad = quantity + i;
       }

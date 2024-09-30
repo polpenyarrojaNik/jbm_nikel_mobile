@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_service.dart';
+import '../application/usuario_notifier.dart';
+import 'usuario_service.dart';
 
 import '../../../core/presentation/app.dart';
 

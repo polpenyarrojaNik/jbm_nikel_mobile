@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/generated/l10n.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/app_decoration.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_repository.dart';
+import '../../../../generated/l10n.dart';
+import 'app_decoration.dart';
+import '../../../features/cliente/infrastructure/cliente_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:riverpod_mutations_annotation/riverpod_mutations_annotation.dart';
 
@@ -20,7 +20,7 @@ class PhoneTextFormBuilderController extends _$PhoneTextFormBuilderController {
 
   @mutation
   Future<ClienteTelefono?> verifyExistingPhone(String value) async {
-    return await ref.read(clienteRepositoryProvider).verifyExistingPhone(value);
+    return ref.read(clienteRepositoryProvider).verifyExistingPhone(value);
   }
 }
 

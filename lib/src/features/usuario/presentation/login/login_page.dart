@@ -1,14 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/primary_button.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/presentation/common_widgets/app_decoration.dart';
+import '../../../../core/presentation/common_widgets/primary_button.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/presentation/toasts.dart';
 import 'login_page_controller.dart';
 
@@ -34,7 +34,7 @@ class LoginPageState extends ConsumerState<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    ref.listen<AsyncValue>(
+    ref.listen<AsyncValue<void>>(
         loginPageControllerProvider,
         (_, state) => state.maybeWhen(
               error: (error, stackTrace) {

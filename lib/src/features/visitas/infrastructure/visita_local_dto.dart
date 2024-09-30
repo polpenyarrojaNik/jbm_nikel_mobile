@@ -1,9 +1,9 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
-import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita_competidor.dart';
-import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita_motivos_no_venta.dart';
-import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita_sector.dart';
+import '../../../core/helpers/formatters.dart';
+import '../domain/visita_competidor.dart';
+import '../domain/visita_motivos_no_venta.dart';
+import '../domain/visita_sector.dart';
 
 import '../../../core/domain/pais.dart';
 import '../../../core/domain/provincia.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
-import 'package:jbm_nikel_mobile/src/features/settings/infrastructure/settings_repository.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
+import '../theme/app_sizes.dart';
+import '../../../features/settings/infrastructure/settings_repository.dart';
+import '../../../features/usuario/application/usuario_notifier.dart';
 
 import 'icon_menu_badge.dart';
 
@@ -112,7 +112,7 @@ class _CustomSearchAppBarState extends ConsumerState<CustomSearchAppBar> {
         icon: (isSearching) ? searchIcon : icon);
 
     if (actionButtons != null) {
-      List<IconButton> buttons = [searchIconButton];
+      final buttons = <IconButton>[searchIconButton];
 
       for (var i = 0; i < actionButtons.length; i++) {
         buttons.add(actionButtons[i]);

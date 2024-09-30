@@ -1,23 +1,23 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/chip_container.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/mobile_custom_separatos.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
 import 'package:map_launcher/map_launcher.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/async_value_widget.dart';
+import '../../../../core/presentation/common_widgets/chip_container.dart';
 import '../../../../core/presentation/common_widgets/column_field_text_detail.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/datos_extra_row.dart';
+import '../../../../core/presentation/common_widgets/mobile_custom_separatos.dart';
 import '../../../../core/presentation/common_widgets/selectable_text_widget.dart';
+import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../../pedido_venta/infrastructure/pedido_venta_repository.dart';
 import '../../../pedido_venta/presentation/edit/ask_pop_alert_dialog.dart';
+import '../../domain/cliente.dart';
 import '../../infrastructure/cliente_repository.dart';
 
 @RoutePage()
@@ -91,7 +91,7 @@ class ClienteDetallePage extends ConsumerWidget {
       if (result ?? false) {
         ref.read(deletePedidoVentaProvider(pedidoVentaBorradorId));
         if (context.mounted) {
-          context.router.push(
+          await context.router.push(
             PedidoVentaEditRoute(
                 createPedidoFromClienteId: clienteId, isLocal: true),
           );
@@ -99,14 +99,14 @@ class ClienteDetallePage extends ConsumerWidget {
       }
     } else if (pedidoVentaBorradorId != null &&
         clienteId == pedidoVentaClienteId) {
-      context.router.push(
+      await context.router.push(
         PedidoVentaEditRoute(
             pedidoAppId: pedidoVentaBorradorId,
             createPedidoFromClienteId: clienteId,
             isLocal: true),
       );
     } else {
-      context.router.push(
+      await context.router.push(
         PedidoVentaEditRoute(
             createPedidoFromClienteId: clienteId, isLocal: true),
       );

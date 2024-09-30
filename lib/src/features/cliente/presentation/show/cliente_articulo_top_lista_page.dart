@@ -126,7 +126,7 @@ class _ArticulosTopDataTableState extends State<ArticulosTopDataTable> {
   }
 
   List<DataRow> _createDataRows({required List<ArticuloTop> articulosTopList}) {
-    final List<DataRow> dataRows = [];
+    final dataRows = <DataRow>[];
 
     for (var i = 0; i < articulosTopList.length; i++) {
       dataRows.add(

@@ -1,4 +1,4 @@
-import 'package:jbm_nikel_mobile/src/features/catalogos/presentation/catalogo_search_controller.dart';
+import 'catalogo_search_controller.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:riverpod_mutations_annotation/riverpod_mutations_annotation.dart';
 

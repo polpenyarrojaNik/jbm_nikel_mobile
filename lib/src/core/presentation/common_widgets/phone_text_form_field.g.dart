@@ -7,7 +7,7 @@ part of 'phone_text_form_field.dart';
 // **************************************************************************
 
 String _$phoneTextFormBuilderControllerHash() =>
-    r'fac6aa5d6d88072df3582c9c847db7e20ffb0d2a';
+    r'1c15728ddafb7940c73b7520d163ce1056bcd10f';
 
 /// See also [PhoneTextFormBuilderController].
 @ProviderFor(PhoneTextFormBuilderController)

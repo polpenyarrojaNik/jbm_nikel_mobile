@@ -2,20 +2,23 @@ import 'package:auto_route/auto_route.dart';
 import 'package:better_open_file/better_open_file.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_indicator_widget.dart';
-import 'package:jbm_nikel_mobile/src/features/catalogos/infrastructure/catalogo_repository.dart';
-import 'package:jbm_nikel_mobile/src/features/catalogos/presentation/catalogo_fliter_dropdown_widget.dart';
-import 'package:jbm_nikel_mobile/src/features/catalogos/presentation/catalogo_list_tile.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../core/helpers/debouncer.dart';
 import '../../../core/presentation/common_widgets/app_drawer.dart';
+import '../../../core/presentation/common_widgets/async_value_ui.dart';
 import '../../../core/presentation/common_widgets/custom_search_app_bar.dart';
+import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../core/presentation/toasts.dart';
 import '../../../core/routing/app_auto_router.dart';
 import '../../notifications/core/application/notification_provider.dart';
+import '../domain/idioma_catalogo.dart';
+import '../domain/tipo_catalogo.dart';
+import '../domain/tipo_precio_catalogo.dart';
+import '../infrastructure/catalogo_repository.dart';
 import 'catalogo_adjunto_controller.dart';
+import 'catalogo_fliter_dropdown_widget.dart';
+import 'catalogo_list_tile.dart';
 import 'catalogo_search_controller.dart';
 
 @RoutePage()
@@ -38,12 +41,12 @@ class _CatalogoListaPageState extends ConsumerState<CatalogoListaPage> {
 
   @override
   Widget build(BuildContext context) {
-    ref.listen<AsyncValue>(
+    ref.listen<AsyncValue<void>>(
       catalogoIndexScreenControllerProvider,
       (_, state) => state.showAlertDialogOnError(context),
     );
 
-    ref.listen<AsyncValue>(
+    ref.listen<AsyncValue<String?>>(
       notificationNotifierProvider,
       (_, state) => state.maybeWhen(
         orElse: () {},
@@ -131,7 +134,7 @@ class TipoCatalogoFilterDropdown extends ConsumerWidget {
         labelString: S.of(context).catalogos_index_tipoCatalogo,
         setFilter: (filterValue) => ref
             .read(tipoCatalogoQueryStateProvider.notifier)
-            .state = filterValue,
+            .state = filterValue as TipoCatalogo,
       ),
     );
   }
@@ -151,7 +154,7 @@ class TipoPrecioCatalogoFilterDropdown extends ConsumerWidget {
         labelString: S.of(context).catalogos_index_precio,
         setFilter: (filterValue) => ref
             .read(tipoPrecioCatalogoQueryStateProvider.notifier)
-            .state = filterValue,
+            .state = filterValue as TipoPrecioCatalogo,
       ),
     );
   }
@@ -171,7 +174,7 @@ class IdiomaCatalogoFilterDropdown extends ConsumerWidget {
         labelString: S.of(context).catalogos_index_idioma,
         setFilter: (filterValue) => ref
             .read(idiomaCatalogoQueryStateProvider.notifier)
-            .state = filterValue,
+            .state = filterValue as IdiomaCatalogo,
         isIdioma: true,
       ),
     );

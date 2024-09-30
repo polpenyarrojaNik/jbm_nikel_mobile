@@ -1,11 +1,11 @@
 import 'package:drift/drift.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/pais_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_direccion_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/domain/usuario.dart';
+import '../../../core/infrastructure/pais_dto.dart';
+import '../../cliente/infrastructure/cliente_direccion_dto.dart';
+import '../../cliente/infrastructure/cliente_dto.dart';
+import '../../usuario/application/usuario_notifier.dart';
+import '../../usuario/domain/usuario.dart';
 
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/infrastructure/remote_database.dart';
@@ -55,7 +55,7 @@ class ClienteAlrededorRepository {
 
   Future<List<ClienteAlrededor>> getClienteAlrededoresLista(
       {required GetClienteAlrededorArg clienteAlrededorArg}) async {
-    final List<ClienteAlrededor> clienteAlrededorList = [];
+    final clienteAlrededorList = <ClienteAlrededor>[];
     try {
       final clienteDireccionesFiscalesAlrededorList =
           await _getClienteDireccionesFiscalesList(clienteAlrededorArg);
@@ -187,7 +187,7 @@ class ClienteAlrededorRepository {
   }
 
   Future<void> checkPermission() async {
-    LocationPermission permission = await Geolocator.checkPermission();
+    var permission = await Geolocator.checkPermission();
     try {
       if (permission == LocationPermission.denied) {
         permission = await Geolocator.requestPermission();

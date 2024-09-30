@@ -5,7 +5,7 @@ import '../../../usuario/domain/usuario.dart';
 import '../infrastructure/notification_repository.dart';
 
 final notificationNotifierProvider =
-    StateNotifierProvider<NotificationNotifier, AsyncValue>(
+    StateNotifierProvider<NotificationNotifier, AsyncValue<String?>>(
   (ref) {
     final user = ref.watch(usuarioNotifierProvider);
     final notificationRepository = ref.watch(notificationRepositoryProvider);
@@ -14,7 +14,7 @@ final notificationNotifierProvider =
   },
 );
 
-class NotificationNotifier extends StateNotifier<AsyncValue> {
+class NotificationNotifier extends StateNotifier<AsyncValue<String?>> {
   final Usuario? user;
   final NotificationRepository notificationRepository;
 

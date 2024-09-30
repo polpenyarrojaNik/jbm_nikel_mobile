@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
+import '../../../../core/helpers/formatters.dart';
+import '../../../../core/presentation/theme/app_sizes.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
@@ -364,7 +364,7 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
 
   List<DataRow> _createDataRows(
       {required List<ArticuloVentasCliente> articuloVentasClienteList}) {
-    final List<DataRow> dataRows = [];
+    final dataRows = <DataRow>[];
 
     for (var i = 0; i < articuloVentasClienteList.length; i++) {
       dataRows.add(

@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/phone_text_form_field.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_direccion.dart';
+import '../../../../core/presentation/common_widgets/phone_text_form_field.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../../../generated/l10n.dart';
@@ -18,6 +17,7 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../../usuario/application/usuario_notifier.dart';
+import '../../domain/cliente_direccion.dart';
 import '../../domain/cliente_direccion_edit_page_data.dart';
 import '../../domain/cliente_direccion_imp.dart';
 import '../../domain/cliente_imp_param.dart';
@@ -58,7 +58,7 @@ class _ClienteDireccionEditPageState
     final value = ref.watch(
         clienteDireccionEditPageControllerProvider(widget.clienteImpParam));
 
-    ref.listen<AsyncValue>(
+    ref.listen<AsyncValue<ClienteDireccionEditPageData>>(
       clienteDireccionEditPageControllerProvider(widget.clienteImpParam),
       (_, state) => state.maybeWhen(
           orElse: () {},
@@ -74,8 +74,7 @@ class _ClienteDireccionEditPageState
             context.router.maybePop();
           },
           data: (clienteDireccionEditPageData) {
-            clienteDireccionEditPageData =
-                clienteDireccionEditPageData as ClienteDireccionEditPageData;
+            clienteDireccionEditPageData = clienteDireccionEditPageData;
             if (clienteDireccionEditPageData.isSent) {
               if (clienteDireccionEditPageData.clienteDireccion != null) {
                 context.showSuccessBar(
@@ -117,11 +116,14 @@ class _ClienteDireccionEditPageState
         child: value.when(
           data: (clienteDireccionEditPageData) => Column(
             children: [
-              ClienteDireccionEditForm(
-                clienteDireccion: clienteDireccionEditPageData.clienteDireccion,
-                formKey: formKey,
-                paisCliente: widget.clienteImpParam.clientePais,
-                onPaisChanged: onPaisChanged,
+              Expanded(
+                child: ClienteDireccionEditForm(
+                  clienteDireccion:
+                      clienteDireccionEditPageData.clienteDireccion,
+                  formKey: formKey,
+                  paisCliente: widget.clienteImpParam.clientePais,
+                  onPaisChanged: onPaisChanged,
+                ),
               ),
               if (widget.clienteImpParam.id != null)
                 _CambiosPendientesListView(
@@ -135,12 +137,14 @@ class _ClienteDireccionEditPageState
 
             return Column(
               children: [
-                ClienteDireccionEditForm(
-                  clienteDireccion:
-                      clienteDireccionEditPageData.clienteDireccion,
-                  formKey: formKey,
-                  paisCliente: widget.clienteImpParam.clientePais,
-                  onPaisChanged: onPaisChanged,
+                Expanded(
+                  child: ClienteDireccionEditForm(
+                    clienteDireccion:
+                        clienteDireccionEditPageData.clienteDireccion,
+                    formKey: formKey,
+                    paisCliente: widget.clienteImpParam.clientePais,
+                    onPaisChanged: onPaisChanged,
+                  ),
                 ),
                 _CambiosPendientesListView(
                   clienteImpParam: widget.clienteImpParam,
@@ -253,7 +257,7 @@ class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
                     .of(context)
                     .cliente_show_clienteDireccion_clienteDireccionEditPage_direccion2),
                 validator: FormBuilderValidators.compose([
-                  FormBuilderValidators.maxLength(60),
+                  FormBuilderValidators.maxLength(60, checkNullOrEmpty: false),
                 ]),
               ),
             ),
@@ -266,7 +270,7 @@ class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
                     .of(context)
                     .cliente_show_clienteDireccion_clienteDireccionEditPage_codigoPostal),
                 validator: FormBuilderValidators.compose([
-                  FormBuilderValidators.maxLength(10),
+                  FormBuilderValidators.maxLength(10, checkNullOrEmpty: false),
                 ]),
               ),
             ),
@@ -293,7 +297,7 @@ class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
                     .of(context)
                     .cliente_show_clienteDireccion_clienteDireccionEditPage_provincia),
                 validator: FormBuilderValidators.compose([
-                  FormBuilderValidators.maxLength(50),
+                  FormBuilderValidators.maxLength(50, checkNullOrEmpty: false),
                 ]),
               ),
             ),
@@ -317,8 +321,8 @@ class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
                 initialValue: widget.clienteDireccion?.telefono,
                 labelText: S.of(context).telefono,
                 validator: FormBuilderValidators.compose([
-                  FormBuilderValidators.numeric(),
-                  FormBuilderValidators.maxLength(25),
+                  FormBuilderValidators.numeric(checkNullOrEmpty: false),
+                  FormBuilderValidators.maxLength(25, checkNullOrEmpty: false),
                 ]),
               ),
             ),

@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/features/expediciones/domain/tracking_estado.dart';
+import '../../expediciones/domain/tracking_estado.dart';
 
 part 'pedido_albaran.freezed.dart';
 

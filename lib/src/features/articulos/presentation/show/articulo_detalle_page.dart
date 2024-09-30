@@ -2,22 +2,22 @@ import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_widget.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/column_field_text_detail.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/datos_extra_row.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_indicator_widget.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
-import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
-import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo.dart';
-import 'package:jbm_nikel_mobile/src/features/pedido_venta/domain/seleccionar_cantidad_param.dart';
 
 import '../../../../../generated/l10n.dart';
+import '../../../../core/helpers/formatters.dart';
+import '../../../../core/presentation/common_widgets/async_value_widget.dart';
+import '../../../../core/presentation/common_widgets/column_field_text_detail.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
+import '../../../../core/presentation/common_widgets/datos_extra_row.dart';
 import '../../../../core/presentation/common_widgets/mobile_custom_separatos.dart';
+import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/common_widgets/selectable_text_widget.dart';
+import '../../../../core/presentation/theme/app_sizes.dart';
+import '../../../../core/routing/app_auto_router.dart';
 import '../../../pedido_venta/domain/pedido_local_param.dart';
+import '../../../pedido_venta/domain/seleccionar_cantidad_param.dart';
 import '../../../pedido_venta/infrastructure/pedido_venta_repository.dart';
+import '../../domain/articulo.dart';
 import '../../infrastructure/articulo_repository.dart';
 
 @RoutePage()
@@ -834,7 +834,7 @@ class _ArticuloImageCarrouselState
         loading: () => const ProgressIndicatorWidget());
   }
 
-  List<Widget> indicators(imagesLength, currentIndex) {
+  List<Widget> indicators(int imagesLength, currentIndex) {
     return List<Widget>.generate(
       imagesLength,
       (index) {

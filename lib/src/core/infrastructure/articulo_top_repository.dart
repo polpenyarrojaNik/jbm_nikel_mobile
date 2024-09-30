@@ -1,7 +1,7 @@
 import 'package:drift/drift.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/articulo_top_dto.dart';
+import 'remote_database.dart';
+import '../../features/cliente/infrastructure/articulo_top_dto.dart';
 
 import '../../features/articulos/domain/articulo.dart';
 import '../../features/cliente/domain/articulo_top.dart';

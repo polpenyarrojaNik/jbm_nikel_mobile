@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_indicator_widget.dart';
-import 'package:jbm_nikel_mobile/src/features/visitas/presentation/edit/provincia_search_page_controller.dart';
+import '../../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import 'provincia_search_page_controller.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/debouncer.dart';

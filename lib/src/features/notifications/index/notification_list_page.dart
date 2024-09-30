@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_indicator_widget.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
-import 'package:jbm_nikel_mobile/src/features/notifications/core/application/notification_provider.dart';
-import 'package:jbm_nikel_mobile/src/features/notifications/index/notification_list_controller.dart';
+import '../../../core/helpers/formatters.dart';
+import '../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../core/presentation/theme/app_sizes.dart';
+import '../core/application/notification_provider.dart';
+import 'notification_list_controller.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../core/presentation/common_widgets/app_drawer.dart';

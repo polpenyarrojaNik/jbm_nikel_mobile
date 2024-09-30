@@ -2,17 +2,17 @@ import 'package:auto_route/auto_route.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/bar_data.dart';
+import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/legend_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/presentation/theme/app_sizes.dart';
+import '../../../usuario/application/usuario_notifier.dart';
 import '../../domain/articulo_ventas_mes.dart';
 import '../../infrastructure/articulo_repository.dart';
 
@@ -169,7 +169,7 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
     required List<ArticuloVentasMes> articuloVentasMesList,
     required bool showTodos,
   }) {
-    final List<DataRow> dataRows = [];
+    final dataRows = <DataRow>[];
 
     for (var i = 0; i < articuloVentasMesList.length; i++) {
       dataRows.add(
@@ -399,8 +399,8 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
     required List<ArticuloVentasMes> articuloVentasMesList,
     required bool showTodos,
   }) {
-    int totalAnyo = 0;
-    int totalAnyoTodos = 0;
+    var totalAnyo = 0;
+    var totalAnyoTodos = 0;
 
     for (var i = 0; i < articuloVentasMesList.length; i++) {
       if (anyo == 0) {
@@ -524,7 +524,7 @@ class _GraficaVentasMesState extends State<GraficaVentasMes> {
 
   Widget getYTitles(
       List<ArticuloVentasMes> articuloVentasMesList, double value) {
-    String valueString = '';
+    var valueString = '';
     if (value != 1 &&
         value % (getMaxYValue(articuloVentasMesList) / 9).round() == 0) {
       valueString = value.toStringAsFixed(0);
@@ -540,7 +540,7 @@ class _GraficaVentasMesState extends State<GraficaVentasMes> {
   }
 
   double getMaxYValue(List<ArticuloVentasMes> articuloVentasMesList) {
-    double maxY = 0;
+    var maxY = 0.0;
     for (var i = 0; i < articuloVentasMesList.length; i++) {
       if (maxY < articuloVentasMesList[i].unidadesAnyo.toDouble()) {
         maxY = articuloVentasMesList[i].unidadesAnyo.toDouble();
@@ -554,7 +554,7 @@ class _GraficaVentasMesState extends State<GraficaVentasMes> {
       if (maxY % (maxY / 9).round() == 0) {
         return maxY.roundToDouble();
       }
-      for (int i = maxY.round();; i++) {
+      for (var i = maxY.round();; i++) {
         if (i % (maxY / 9).round() == 0) {
           return i.toDouble();
         }

@@ -5,15 +5,15 @@ import 'package:drift/drift.dart';
 import 'package:drift/isolate.dart';
 import 'package:drift/native.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/divisa_dto.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/pais_dto.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/provincia_dto.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/subfamilia_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/estadisticas/infrastructure/estadisticas_venta_cliente_usuario_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/expediciones/infrastructure/tracking_estado_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/visitas/infrastructure/visita_competidor_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/visitas/infrastructure/visita_motivos_no_venta_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/visitas/infrastructure/visita_sector_dto.dart';
+import 'divisa_dto.dart';
+import 'pais_dto.dart';
+import 'provincia_dto.dart';
+import 'subfamilia_dto.dart';
+import '../../features/estadisticas/infrastructure/estadisticas_venta_cliente_usuario_dto.dart';
+import '../../features/expediciones/infrastructure/tracking_estado_dto.dart';
+import '../../features/visitas/infrastructure/visita_competidor_dto.dart';
+import '../../features/visitas/infrastructure/visita_motivos_no_venta_dto.dart';
+import '../../features/visitas/infrastructure/visita_sector_dto.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 
@@ -61,7 +61,7 @@ SendPort? isolateRemoteDatabaseConnectPort;
 
 final appRemoteDatabaseProvider = Provider<RemoteAppDatabase>(
   (ref) {
-    DatabaseConnection connection = DatabaseConnection.delayed(() async {
+    final connection = DatabaseConnection.delayed(() async {
       late DriftIsolate isolate;
 
       if (isolateRemoteDatabaseConnectPort != null) {
@@ -72,10 +72,10 @@ final appRemoteDatabaseProvider = Provider<RemoteAppDatabase>(
 
         isolateRemoteDatabaseConnectPort = isolate.connectPort;
       }
-      return await isolate.connect();
+      return isolate.connect();
     }());
     final database = RemoteAppDatabase.connect(connection);
-    ref.onDispose(() async => await database.close());
+    ref.onDispose(() async => database.close());
     return database;
   },
 );

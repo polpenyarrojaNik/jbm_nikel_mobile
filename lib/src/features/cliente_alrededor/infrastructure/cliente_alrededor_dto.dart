@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/core/domain/pais.dart';
-import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
+import '../../../core/domain/pais.dart';
+import '../../../core/helpers/extension.dart';
 
 import '../../cliente/infrastructure/cliente_direccion_dto.dart';
 import '../../cliente/infrastructure/cliente_dto.dart';

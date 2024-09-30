@@ -4,13 +4,13 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/exceptions/get_api_error.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_aux_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_dto.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 import '../../../core/exceptions/app_exception.dart';
+import '../../../core/exceptions/get_api_error.dart';
 import '../../../core/presentation/app.dart';
+import 'usuario_aux_dto.dart';
+import 'usuario_dto.dart';
 
 typedef Json = Map<String, dynamic>;
 
@@ -57,15 +57,14 @@ class RemoteUsuarioRepository {
         },
       );
       if (response.statusCode == 200) {
-        final UsuarioDTO usuarioDTO =
-            UsuarioDTO.fromJson(response.data['data'] as Json);
+        final usuarioDTO = UsuarioDTO.fromJson(response.data['data'] as Json);
 
         return usuarioDTO;
       } else if (response.statusCode == 400) {
         throw AppException.restApiFailure(
           response.statusCode ?? 400,
-          response.data['error']['detail'] ??
-              response.data['message'] ??
+          response.data['error']['detail']?.toString() ??
+              response.data['message']?.toString() ??
               'Internet Error',
         );
       } else {
@@ -75,8 +74,8 @@ class RemoteUsuarioRepository {
     } on DioException catch (e) {
       throw AppException.restApiFailure(
         e.response?.statusCode ?? 400,
-        e.response?.data['error']['detail'] ??
-            e.response?.data['error']['message'] ??
+        e.response?.data['error']['detail']?.toString() ??
+            e.response?.data['error']['message']?.toString() ??
             'Internet Error',
       );
     }
@@ -92,7 +91,7 @@ class RemoteUsuarioRepository {
         final newToken = response.data['data']['PROVISIONAL_TOKEN'] as String;
 
         final packageInfo = await PackageInfo.fromPlatform();
-        final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
+        final deviceInfoPlugin = DeviceInfoPlugin();
 
         late String deviceInfoStr;
 
@@ -115,8 +114,8 @@ class RemoteUsuarioRepository {
       } else {
         throw AppException.restApiFailure(
           response.statusCode ?? 400,
-          response.data['detail'] ??
-              response.data['message'] ??
+          response.data['detail']?.toString() ??
+              response.data['message']?.toString() ??
               'Internet Error',
         );
       }

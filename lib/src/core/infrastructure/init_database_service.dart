@@ -4,9 +4,9 @@ import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_archive/flutter_archive.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/local_database.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
+
 import '../../features/usuario/application/usuario_notifier.dart';
 import '../../features/usuario/domain/usuario.dart';
 import '../application/log_service.dart';
@@ -14,6 +14,7 @@ import '../exceptions/app_exception.dart';
 import '../exceptions/get_api_error.dart';
 import '../helpers/database_helper.dart';
 import '../presentation/app.dart';
+import 'local_database.dart';
 import 'remote_database.dart';
 
 final initDatabaseServiceProvider =
@@ -55,9 +56,9 @@ class InitDatabaseService {
         await deleteRemoteDatabase();
       }
 
-      final Directory directory = await getApplicationDocumentsDirectory();
+      final directory = await getApplicationDocumentsDirectory();
 
-      if (!await _databaseFileExist(directory: directory)) {
+      if (!_databaseFileExist(directory: directory)) {
         await _getRemoteInitialDatabase(directory: directory);
 
         final zipFile = File('${directory.path}/jbm_sqlite.zip');
@@ -81,10 +82,10 @@ class InitDatabaseService {
 
   Future<bool> existDatabase() async {
     try {
-      final Directory directory = await getApplicationDocumentsDirectory();
+      final directory = await getApplicationDocumentsDirectory();
 
       if (await getSchemaVersionFromPreferences() == databaseRelease &&
-          await _databaseFileExist(directory: directory)) {
+          _databaseFileExist(directory: directory)) {
         return true;
       } else {
         return false;
@@ -97,8 +98,8 @@ class InitDatabaseService {
     }
   }
 
-  Future<bool> _databaseFileExist({required Directory directory}) async {
-    return await File((join(directory.path, remoteDatabaseName))).exists();
+  bool _databaseFileExist({required Directory directory}) {
+    return File((join(directory.path, remoteDatabaseName))).existsSync();
   }
 
   Future<void> _getRemoteInitialDatabase({
@@ -154,7 +155,7 @@ class InitDatabaseService {
       );
 
       if (response.statusCode == 200) {
-        return DateTime.parse(response.data['data']);
+        return DateTime.parse(response.data['data'] as String);
       } else {
         throw AppException.restApiFailure(
             response.statusCode ?? 500, response.toString());

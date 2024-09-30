@@ -1,8 +1,8 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
-import 'package:jbm_nikel_mobile/src/features/expediciones/domain/tracking_estado.dart';
+import '../../../core/infrastructure/remote_database.dart';
+import '../domain/tracking_estado.dart';
 
 part 'tracking_estado_dto.freezed.dart';
 part 'tracking_estado_dto.g.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/features/catalogos/domain/catalogo.dart';
-import 'package:jbm_nikel_mobile/src/features/catalogos/domain/tipo_catalogo.dart';
+import '../domain/catalogo.dart';
+import '../domain/tipo_catalogo.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../domain/idioma_catalogo.dart';

@@ -1,19 +1,20 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:jbm_nikel_mobile/src/core/exceptions/app_exception.dart';
-import 'package:jbm_nikel_mobile/src/core/exceptions/get_api_error.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/app.dart';
-import 'package:jbm_nikel_mobile/src/features/expediciones/domain/expedicion.dart';
-import 'package:jbm_nikel_mobile/src/features/expediciones/infrastructure/expedicion_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../core/exceptions/app_exception.dart';
+import '../../../core/exceptions/get_api_error.dart';
+import '../../../core/infrastructure/remote_database.dart';
+import '../../../core/presentation/app.dart';
+import '../../usuario/application/usuario_notifier.dart';
 import '../../usuario/domain/usuario.dart';
+import '../domain/expedicion.dart';
+import 'expedicion_dto.dart';
 
 part 'expedicion_repository.g.dart';
 
-@riverpod
+typedef Json = Map<String, dynamic>;
+
 @riverpod
 ExpedicionRepository expedicionRepository(ExpedicionRepositoryRef ref) =>
     ExpedicionRepository(
@@ -31,8 +32,7 @@ class ExpedicionRepository {
 
   Future<List<Expedicion>> getExpedicionDTOLista(
       {required String searchText}) async {
-    final Map<String, dynamic> query =
-        searchText.isNotEmpty ? {'busqueda': searchText} : {};
+    final query = searchText.isNotEmpty ? {'busqueda': searchText} : null;
 
     final expedicionDTOList = await _remoteExpedicionDTOList(
       requestUri: (usuario.test)
@@ -203,7 +203,7 @@ class ExpedicionRepository {
 
   Future<List<ExpedicionDTO>> _remoteExpedicionDTOList(
       {required Uri requestUri,
-      required List Function(dynamic json) jsonDataSelector,
+      required List<dynamic> Function(dynamic json) jsonDataSelector,
       required String provisionalToken}) async {
     try {
       final response = await dio.getUri(
@@ -214,7 +214,7 @@ class ExpedicionRepository {
       );
       if (response.statusCode == 200) {
         final data = jsonDataSelector(response.data);
-        return data.map((e) => ExpedicionDTO.fromJson(e)).toList();
+        return data.map((e) => ExpedicionDTO.fromJson(e as Json)).toList();
       } else {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');

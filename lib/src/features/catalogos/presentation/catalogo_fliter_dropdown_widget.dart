@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/features/catalogos/domain/idioma_catalogo.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 
 import '../../../core/presentation/common_widgets/app_decoration.dart';
+import '../../usuario/application/usuario_notifier.dart';
+import '../domain/idioma_catalogo.dart';
 
 class CatalogoFilterDropdownWidget extends ConsumerWidget {
   const CatalogoFilterDropdownWidget({
@@ -36,7 +36,7 @@ class CatalogoFilterDropdownWidget extends ConsumerWidget {
               (e) => DropdownMenuItem(
                 value: e,
                 child: Text(
-                  e.descripcion,
+                  e.descripcion as String,
                   style: Theme.of(context).textTheme.bodySmall,
                   textAlign: TextAlign.center,
                   overflow: TextOverflow.ellipsis,

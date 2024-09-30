@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
+
+import '../theme/app_sizes.dart';
 
 class ColumnFieldTextDetalle extends StatelessWidget {
   const ColumnFieldTextDetalle(
@@ -25,11 +26,11 @@ class ColumnFieldTextDetalle extends StatelessWidget {
               (value is String)
                   ? (selectable)
                       ? SelectableText(
-                          value,
+                          value as String,
                           selectionControls: MaterialTextSelectionControls(),
                         )
-                      : Text(value)
-                  : value,
+                      : Text(value as String)
+                  : value as Widget,
               gapH4,
             ],
           )

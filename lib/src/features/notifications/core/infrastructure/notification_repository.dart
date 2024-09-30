@@ -1,16 +1,19 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/features/notifications/core/domain/notificacion.dart';
 
+import '../../../../core/application/log_service.dart';
 import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/exceptions/get_api_error.dart';
 import '../../../../core/presentation/app.dart';
 import '../../../usuario/application/usuario_notifier.dart';
 import '../../../usuario/domain/usuario.dart';
+import '../domain/notificacion.dart';
 import '../domain/notification_list.dart';
-import 'notification_list_dto.dart';
 import 'notification_dto.dart';
+import 'notification_list_dto.dart';
+
+typedef Json = Map<String, dynamic>;
 
 final notificationRepositoryProvider = Provider<NotificationRepository>(
   (ref) {
@@ -94,14 +97,14 @@ class NotificationRepository {
 
       return notificationId;
     } catch (e) {
-      print(e);
+      log.e(e);
       return null;
     }
   }
 
   Future<List<NotificationListDto>> _remoteNotificationList(
       {required Uri requestUri,
-      required List Function(dynamic json) jsonDataSelector,
+      required List<dynamic> Function(dynamic json) jsonDataSelector,
       required String provisionalToken}) async {
     try {
       final response = await dio.getUri(
@@ -112,7 +115,9 @@ class NotificationRepository {
       );
       if (response.statusCode == 200) {
         final data = jsonDataSelector(response.data);
-        return data.map((e) => NotificationListDto.fromJson(e)).toList();
+        return data
+            .map((e) => NotificationListDto.fromJson(e as Json))
+            .toList();
       } else {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');
@@ -158,7 +163,7 @@ class NotificationRepository {
       );
       if (response.statusCode == 200) {
         final data = jsonDataSelector(response.data);
-        return data['notificacion_guid'];
+        return data['notificacion_guid'] as String?;
       } else {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');

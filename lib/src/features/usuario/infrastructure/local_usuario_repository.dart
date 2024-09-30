@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_dto.dart';
+import 'usuario_dto.dart';
 
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/presentation/app.dart';

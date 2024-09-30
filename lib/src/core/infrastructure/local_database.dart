@@ -5,9 +5,9 @@ import 'package:drift/drift.dart';
 import 'package:drift/isolate.dart';
 import 'package:drift/native.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/log_dto.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_datetime_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/catalogos/infrastructure/catalogo_favorito_dto.dart';
+import 'log_dto.dart';
+import 'sync_datetime_dto.dart';
+import '../../features/catalogos/infrastructure/catalogo_favorito_dto.dart';
 
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
@@ -26,7 +26,7 @@ SendPort? isolateLocalDatabaseConnectPort;
 
 final appLocalDatabaseProvider = Provider<LocalAppDatabase>(
   (ref) {
-    DatabaseConnection connection = DatabaseConnection.delayed(() async {
+    final connection = DatabaseConnection.delayed(() async {
       late DriftIsolate isolate;
       if (isolateLocalDatabaseConnectPort != null) {
         isolate =
@@ -36,7 +36,7 @@ final appLocalDatabaseProvider = Provider<LocalAppDatabase>(
 
         isolateLocalDatabaseConnectPort = isolate.connectPort;
       }
-      return await isolate.connect();
+      return isolate.connect();
     }());
     final database = LocalAppDatabase.connect(connection);
     ref.onDispose(

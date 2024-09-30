@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/features/notifications/core/domain/notificacion.dart';
+import '../domain/notificacion.dart';
 
 part 'notification_dto.freezed.dart';
 part 'notification_dto.g.dart';

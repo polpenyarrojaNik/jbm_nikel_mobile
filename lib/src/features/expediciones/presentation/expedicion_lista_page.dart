@@ -2,25 +2,25 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/sin_resultados_widget.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
-import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
-import 'package:jbm_nikel_mobile/src/features/expediciones/presentation/expedicion_search_controller.dart';
-import 'package:jbm_nikel_mobile/src/features/expediciones/presentation/expedicion_tile.dart';
-import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/index/pedido_search_controller.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../core/helpers/debouncer.dart';
 import '../../../core/infrastructure/sync_service.dart';
 import '../../../core/presentation/common_widgets/app_drawer.dart';
+import '../../../core/presentation/common_widgets/async_value_ui.dart';
 import '../../../core/presentation/common_widgets/custom_search_app_bar.dart';
+import '../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../core/presentation/common_widgets/sin_resultados_widget.dart';
+import '../../../core/presentation/theme/app_sizes.dart';
+import '../../../core/routing/app_auto_router.dart';
 import '../../notifications/core/application/notification_provider.dart';
-import '../../sync/application/sync_notifier_provider.dart';
 import '../../pedido_venta/infrastructure/pedido_venta_repository.dart';
+import '../../pedido_venta/presentation/index/pedido_search_controller.dart';
+import '../../sync/application/sync_notifier_provider.dart';
+import 'expedicion_search_controller.dart';
+import 'expedicion_tile.dart';
 
 @RoutePage()
 class ExpedicionListPage extends ConsumerStatefulWidget {
@@ -52,7 +52,7 @@ class _ExpedicionListPageListPageState
   Widget build(BuildContext context) {
     final stateSync = ref.watch(syncNotifierProvider);
 
-    ref.listen<AsyncValue>(
+    ref.listen<AsyncValue<String?>>(
       notificationNotifierProvider,
       (_, state) => state.maybeWhen(
         orElse: () {},
@@ -65,7 +65,7 @@ class _ExpedicionListPageListPageState
       ),
     );
 
-    ref.listen<AsyncValue>(
+    ref.listen<AsyncValue<void>>(
       pedidoVentaIndexScreenControllerProvider,
       (_, state) => state.showAlertDialogOnError(context),
     );
@@ -116,7 +116,7 @@ class _ExpedicionListPageListPageState
       ref.invalidate(pedidoVentaIndexScreenControllerProvider);
     } catch (e) {
       if (mounted) {
-        context.showErrorBar(
+        await context.showErrorBar(
             content: Text(S.of(context).noSeHaPodidoSincronizar));
       }
     }

@@ -5,11 +5,12 @@ import 'package:country_codes/country_codes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
 import 'package:money2/money2.dart';
+
 // import 'package:upgrader/upgrader.dart';
 
 import 'src/core/application/log_service.dart';
+import 'src/core/helpers/extension.dart';
 import 'src/core/presentation/app.dart';
 
 void main() async {
@@ -27,7 +28,7 @@ void main() async {
       runApp(
         ProviderScope(
           observers: [RiverpodLogger()],
-          child: App(),
+          child: const App(),
         ),
       );
 
@@ -49,6 +50,7 @@ void main() async {
       };
     },
     (Object error, StackTrace stack) {
+      // ignore: avoid_print
       print(error);
       exit(1);
     },
