@@ -9,6 +9,7 @@ import 'package:intl/intl.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/local_database.dart';
 import 'package:jbm_nikel_mobile/src/features/catalogos/infrastructure/catalogo_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/catalogos/infrastructure/catalogo_favorito_dto.dart';
+import 'package:jbm_nikel_mobile/src/features/catalogos/infrastructure/catalogo_orden_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/catalogos/infrastructure/tipo_catalogo_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/catalogos/infrastructure/tipo_catalogo_precio_dto.dart';
 import 'package:path_provider/path_provider.dart';
@@ -85,6 +86,8 @@ class CatalogoRepository {
         searchText: searchText,
       );
 
+      final catalogoOrdenList = await _getCatalogoOrdenDTOList();
+
       final catalogosDTOList = await _remoteCatalogosList(
         requestUri: (_usuario.test)
             ? Uri.http(
@@ -108,7 +111,10 @@ class CatalogoRepository {
           .toList();
 
       return _orderByCatalogos(
-          catalogosList: catalogosList, favoriteLocalList: favoriteLocalList);
+        catalogosList: catalogosList,
+        favoriteLocalList: favoriteLocalList,
+        catalogoOrdenList: catalogoOrdenList,
+      );
     } catch (error) {
       rethrow;
     }
@@ -427,7 +433,8 @@ class CatalogoRepository {
 
   List<Catalogo> _orderByCatalogos(
       {required List<Catalogo> catalogosList,
-      required List<CatalogoFavoritoDTO> favoriteLocalList}) {
+      required List<CatalogoFavoritoDTO> favoriteLocalList,
+      required List<CatalogoOrdenDTO> catalogoOrdenList}) {
     catalogosList.sort((a, b) => a.orden.compareTo(b.orden));
 
     for (var i = 0; i < catalogosList.length; i++) {
@@ -436,6 +443,16 @@ class CatalogoRepository {
           final favoriteCatalogo = catalogosList[i];
           catalogosList.remove(favoriteCatalogo);
           catalogosList.insert(0, favoriteCatalogo);
+        }
+      }
+    }
+
+    for (var k = 0; k < catalogoOrdenList.length; k++) {
+      for (var i = 0; i < catalogosList.length; i++) {
+        if (catalogosList[i].catalogoId == catalogoOrdenList[k].catalogoId) {
+          final catalagoAbierto = catalogosList[i];
+          catalogosList.remove(catalagoAbierto);
+          catalogosList.insert(0, catalagoAbierto);
         }
       }
     }
@@ -501,5 +518,16 @@ class CatalogoRepository {
     } catch (e) {
       throw getApiError(e);
     }
+  }
+
+  Future<List<CatalogoOrdenDTO>> _getCatalogoOrdenDTOList() async {
+    return await (_localDb.select(_localDb.catalogoOrdenTable)
+          ..orderBy([(tbl) => OrderingTerm.asc(tbl.fechaAbierto)]))
+        .get();
+  }
+
+  Future<void> saveCatalogoAbierto(int catalogoId) async {
+    await _localDb.into(_localDb.catalogoOrdenTable).insertOnConflictUpdate(
+        CatalogoOrdenDTO(catalogoId: catalogoId, fechaAbierto: DateTime.now()));
   }
 }

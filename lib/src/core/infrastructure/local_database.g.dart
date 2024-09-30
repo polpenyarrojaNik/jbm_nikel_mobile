@@ -3958,6 +3958,123 @@ class ClienteDireccionImpTableCompanion
   }
 }
 
+class $CatalogoOrdenTableTable extends CatalogoOrdenTable
+    with TableInfo<$CatalogoOrdenTableTable, CatalogoOrdenDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $CatalogoOrdenTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _catalogoIdMeta =
+      const VerificationMeta('catalogoId');
+  @override
+  late final GeneratedColumn<int> catalogoId = GeneratedColumn<int>(
+      'CATALOGO_ID', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: false);
+  static const VerificationMeta _fechaAbiertoMeta =
+      const VerificationMeta('fechaAbierto');
+  @override
+  late final GeneratedColumn<DateTime> fechaAbierto = GeneratedColumn<DateTime>(
+      'FECHA_ABIERTO', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [catalogoId, fechaAbierto];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'CATALOGO_ORDEN';
+  @override
+  VerificationContext validateIntegrity(Insertable<CatalogoOrdenDTO> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('CATALOGO_ID')) {
+      context.handle(
+          _catalogoIdMeta,
+          catalogoId.isAcceptableOrUnknown(
+              data['CATALOGO_ID']!, _catalogoIdMeta));
+    }
+    if (data.containsKey('FECHA_ABIERTO')) {
+      context.handle(
+          _fechaAbiertoMeta,
+          fechaAbierto.isAcceptableOrUnknown(
+              data['FECHA_ABIERTO']!, _fechaAbiertoMeta));
+    } else if (isInserting) {
+      context.missing(_fechaAbiertoMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {catalogoId};
+  @override
+  CatalogoOrdenDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return CatalogoOrdenDTO(
+      catalogoId: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}CATALOGO_ID'])!,
+      fechaAbierto: attachedDatabase.typeMapping.read(
+          DriftSqlType.dateTime, data['${effectivePrefix}FECHA_ABIERTO'])!,
+    );
+  }
+
+  @override
+  $CatalogoOrdenTableTable createAlias(String alias) {
+    return $CatalogoOrdenTableTable(attachedDatabase, alias);
+  }
+}
+
+class CatalogoOrdenTableCompanion extends UpdateCompanion<CatalogoOrdenDTO> {
+  final Value<int> catalogoId;
+  final Value<DateTime> fechaAbierto;
+  const CatalogoOrdenTableCompanion({
+    this.catalogoId = const Value.absent(),
+    this.fechaAbierto = const Value.absent(),
+  });
+  CatalogoOrdenTableCompanion.insert({
+    this.catalogoId = const Value.absent(),
+    required DateTime fechaAbierto,
+  }) : fechaAbierto = Value(fechaAbierto);
+  static Insertable<CatalogoOrdenDTO> custom({
+    Expression<int>? catalogoId,
+    Expression<DateTime>? fechaAbierto,
+  }) {
+    return RawValuesInsertable({
+      if (catalogoId != null) 'CATALOGO_ID': catalogoId,
+      if (fechaAbierto != null) 'FECHA_ABIERTO': fechaAbierto,
+    });
+  }
+
+  CatalogoOrdenTableCompanion copyWith(
+      {Value<int>? catalogoId, Value<DateTime>? fechaAbierto}) {
+    return CatalogoOrdenTableCompanion(
+      catalogoId: catalogoId ?? this.catalogoId,
+      fechaAbierto: fechaAbierto ?? this.fechaAbierto,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (catalogoId.present) {
+      map['CATALOGO_ID'] = Variable<int>(catalogoId.value);
+    }
+    if (fechaAbierto.present) {
+      map['FECHA_ABIERTO'] = Variable<DateTime>(fechaAbierto.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('CatalogoOrdenTableCompanion(')
+          ..write('catalogoId: $catalogoId, ')
+          ..write('fechaAbierto: $fechaAbierto')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$LocalAppDatabase extends GeneratedDatabase {
   _$LocalAppDatabase(QueryExecutor e) : super(e);
   _$LocalAppDatabase.connect(DatabaseConnection c) : super.connect(c);
@@ -3977,6 +4094,8 @@ abstract class _$LocalAppDatabase extends GeneratedDatabase {
       $ClienteContactoImpTableTable(this);
   late final $ClienteDireccionImpTableTable clienteDireccionImpTable =
       $ClienteDireccionImpTableTable(this);
+  late final $CatalogoOrdenTableTable catalogoOrdenTable =
+      $CatalogoOrdenTableTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -3989,7 +4108,8 @@ abstract class _$LocalAppDatabase extends GeneratedDatabase {
         logTable,
         catalogoFavoritoTable,
         clienteContactoImpTable,
-        clienteDireccionImpTable
+        clienteDireccionImpTable,
+        catalogoOrdenTable
       ];
   @override
   DriftDatabaseOptions get options =>
@@ -6609,6 +6729,107 @@ typedef $$ClienteDireccionImpTableTableProcessedTableManager
         ),
         ClienteDireccionImpDTO,
         PrefetchHooks Function()>;
+typedef $$CatalogoOrdenTableTableCreateCompanionBuilder
+    = CatalogoOrdenTableCompanion Function({
+  Value<int> catalogoId,
+  required DateTime fechaAbierto,
+});
+typedef $$CatalogoOrdenTableTableUpdateCompanionBuilder
+    = CatalogoOrdenTableCompanion Function({
+  Value<int> catalogoId,
+  Value<DateTime> fechaAbierto,
+});
+
+class $$CatalogoOrdenTableTableFilterComposer
+    extends FilterComposer<_$LocalAppDatabase, $CatalogoOrdenTableTable> {
+  $$CatalogoOrdenTableTableFilterComposer(super.$state);
+  ColumnFilters<int> get catalogoId => $state.composableBuilder(
+      column: $state.table.catalogoId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get fechaAbierto => $state.composableBuilder(
+      column: $state.table.fechaAbierto,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$CatalogoOrdenTableTableOrderingComposer
+    extends OrderingComposer<_$LocalAppDatabase, $CatalogoOrdenTableTable> {
+  $$CatalogoOrdenTableTableOrderingComposer(super.$state);
+  ColumnOrderings<int> get catalogoId => $state.composableBuilder(
+      column: $state.table.catalogoId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get fechaAbierto => $state.composableBuilder(
+      column: $state.table.fechaAbierto,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+class $$CatalogoOrdenTableTableTableManager extends RootTableManager<
+    _$LocalAppDatabase,
+    $CatalogoOrdenTableTable,
+    CatalogoOrdenDTO,
+    $$CatalogoOrdenTableTableFilterComposer,
+    $$CatalogoOrdenTableTableOrderingComposer,
+    $$CatalogoOrdenTableTableCreateCompanionBuilder,
+    $$CatalogoOrdenTableTableUpdateCompanionBuilder,
+    (
+      CatalogoOrdenDTO,
+      BaseReferences<_$LocalAppDatabase, $CatalogoOrdenTableTable,
+          CatalogoOrdenDTO>
+    ),
+    CatalogoOrdenDTO,
+    PrefetchHooks Function()> {
+  $$CatalogoOrdenTableTableTableManager(
+      _$LocalAppDatabase db, $CatalogoOrdenTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$CatalogoOrdenTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer: $$CatalogoOrdenTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<int> catalogoId = const Value.absent(),
+            Value<DateTime> fechaAbierto = const Value.absent(),
+          }) =>
+              CatalogoOrdenTableCompanion(
+            catalogoId: catalogoId,
+            fechaAbierto: fechaAbierto,
+          ),
+          createCompanionCallback: ({
+            Value<int> catalogoId = const Value.absent(),
+            required DateTime fechaAbierto,
+          }) =>
+              CatalogoOrdenTableCompanion.insert(
+            catalogoId: catalogoId,
+            fechaAbierto: fechaAbierto,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$CatalogoOrdenTableTableProcessedTableManager = ProcessedTableManager<
+    _$LocalAppDatabase,
+    $CatalogoOrdenTableTable,
+    CatalogoOrdenDTO,
+    $$CatalogoOrdenTableTableFilterComposer,
+    $$CatalogoOrdenTableTableOrderingComposer,
+    $$CatalogoOrdenTableTableCreateCompanionBuilder,
+    $$CatalogoOrdenTableTableUpdateCompanionBuilder,
+    (
+      CatalogoOrdenDTO,
+      BaseReferences<_$LocalAppDatabase, $CatalogoOrdenTableTable,
+          CatalogoOrdenDTO>
+    ),
+    CatalogoOrdenDTO,
+    PrefetchHooks Function()>;
 
 class $LocalAppDatabaseManager {
   final _$LocalAppDatabase _db;
@@ -6633,4 +6854,6 @@ class $LocalAppDatabaseManager {
   $$ClienteDireccionImpTableTableTableManager get clienteDireccionImpTable =>
       $$ClienteDireccionImpTableTableTableManager(
           _db, _db.clienteDireccionImpTable);
+  $$CatalogoOrdenTableTableTableManager get catalogoOrdenTable =>
+      $$CatalogoOrdenTableTableTableManager(_db, _db.catalogoOrdenTable);
 }

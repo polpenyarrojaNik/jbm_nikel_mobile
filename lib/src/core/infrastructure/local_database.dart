@@ -12,6 +12,7 @@ import 'package:jbm_nikel_mobile/src/features/catalogos/infrastructure/catalogo_
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 
+import '../../features/catalogos/infrastructure/catalogo_orden_dto.dart';
 import '../../features/cliente/infrastructure/cliente_contacto_imp_dto.dart';
 import '../../features/cliente/infrastructure/cliente_direccion_imp_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_linea_local_dto.dart';
@@ -55,6 +56,7 @@ const localDatabaseName = 'local_jbm.sqlite';
   CatalogoFavoritoTable,
   ClienteContactoImpTable,
   ClienteDireccionImpTable,
+  CatalogoOrdenTable,
 ])
 class LocalAppDatabase extends _$LocalAppDatabase {
   final bool test;
@@ -66,7 +68,7 @@ class LocalAppDatabase extends _$LocalAppDatabase {
       : test = true,
         super(NativeDatabase.memory());
   @override
-  int get schemaVersion => 9;
+  int get schemaVersion => 11;
 
   @override
   MigrationStrategy get migration {
@@ -156,6 +158,37 @@ class LocalAppDatabase extends _$LocalAppDatabase {
               ],
             ),
           );
+        } else if (to == 11) {
+          await m.alterTable(
+            TableMigration(visitaLocalTable, newColumns: [
+              visitaLocalTable.ofertaRealizada,
+              visitaLocalTable.interesCliente,
+              visitaLocalTable.pedidoRealizado,
+              visitaLocalTable.codigoMotivoNoInteres,
+              visitaLocalTable.codigoMotivoNoPedido,
+              visitaLocalTable.codigoSector,
+              visitaLocalTable.codigoCompetencia,
+              visitaLocalTable.almacenPropio,
+              visitaLocalTable.capacidad,
+              visitaLocalTable.frecuenciaPedido,
+            ], columnTransformer: {
+              visitaLocalTable.ofertaRealizada: const Constant('N'),
+              visitaLocalTable.interesCliente: const Constant('N'),
+              visitaLocalTable.pedidoRealizado: const Constant('N'),
+              visitaLocalTable.almacenPropio: const Constant('N'),
+              visitaLocalTable.capacidad: const Constant('M'),
+              visitaLocalTable.frecuenciaPedido: const Constant('M'),
+            }),
+          );
+          await m.alterTable(
+            TableMigration(
+              clienteDireccionImpTable,
+              newColumns: [
+                clienteDireccionImpTable.telefono,
+              ],
+            ),
+          );
+          await m.createTable(catalogoOrdenTable);
         }
       }),
     );

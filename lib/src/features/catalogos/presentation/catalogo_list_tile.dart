@@ -4,6 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_indicator_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/features/catalogos/presentation/catalogo_favorito_controller.dart';
+import 'package:jbm_nikel_mobile/src/features/catalogos/presentation/catalogo_orden_controller.dart';
+import 'package:jbm_nikel_mobile/src/features/catalogos/presentation/catalogo_search_controller.dart';
 
 import '../../../core/domain/adjunto_param.dart';
 import '../domain/catalogo.dart';
@@ -18,13 +20,22 @@ class CatalogoListTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.listen(catalogoOrdenControllerProvider.saveCatalogoAbierto, (_, state) {
+      if (state is SaveCatalogoAbiertoMutationSuccess) {
+        ref.invalidate(catalogoIndexScreenControllerProvider);
+      }
+    });
     final stateFavorite =
         ref.watch(catalogoFavoritoControllerProvider(catalogo.catalogoId));
 
+    final stateCatalogoOrden =
+        ref.watch(catalogoOrdenControllerProvider.saveCatalogoAbierto);
+
     final state = ref.watch(catalogoAdjuntoControllerProvider);
+
     return GestureDetector(
       onTap: state.maybeWhen(
-        orElse: () => () => downloadAttachment(ref),
+        orElse: () => () => downloadAttachment(ref, stateCatalogoOrden),
         loading: null,
       ),
       child: Card(
@@ -95,7 +106,9 @@ class CatalogoListTile extends ConsumerWidget {
     );
   }
 
-  void downloadAttachment(WidgetRef ref) async {
+  void downloadAttachment(
+      WidgetRef ref, SaveCatalogoAbiertoMutation stateCatalogoOrden) async {
+    stateCatalogoOrden(catalogo.catalogoId);
     ref.read(catalogoAdjuntoControllerProvider.notifier).getAttachmentFile(
           adjuntoParam: AdjuntoParam(
             id: catalogo.catalogoId.toString(),

@@ -74,6 +74,7 @@ class _CatalogoListaPageState extends ConsumerState<CatalogoListaPage> {
             initial: () => null);
       },
     );
+
     return Scaffold(
       key: scaffoldKey,
       drawer: const AppDrawer(),
