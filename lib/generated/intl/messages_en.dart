@@ -660,6 +660,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "precioNoPuedeSerMenorAlPrecioMinimo":
             MessageLookupByLibrary.simpleMessage(
                 "The price cannot be less than the minimum price"),
+        "reemplazarBaseDeDatosTextMesaje": MessageLookupByLibrary.simpleMessage(
+            "This field not match with Nikel key"),
         "search": MessageLookupByLibrary.simpleMessage("Search..."),
         "sector": MessageLookupByLibrary.simpleMessage("Sector"),
         "semanal": MessageLookupByLibrary.simpleMessage("Weekly"),

@@ -396,5 +396,6 @@
   "trimestral": "Quarterly",
   "alto": "High",
   "telefono": "Phone",
-  "esteNumeroTelefonoExisiteEnElCliente": "Existing number phone into customer"
+  "esteNumeroTelefonoExisiteEnElCliente": "Existing number phone into customer",
+  "reemplazarBaseDeDatosTextMesaje": "This field not match with Nikel key"
 }

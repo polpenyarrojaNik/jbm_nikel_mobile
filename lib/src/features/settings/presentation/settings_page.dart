@@ -155,11 +155,8 @@ class _ActualizarArchivoBaseDeDatosButton extends ConsumerWidget {
           data: (deleted) {
             if (deleted) {
               ref.invalidate(syncNotifierProvider);
-              ref.invalidate(appLocalDatabaseProvider);
               ref.invalidate(appRemoteDatabaseProvider);
-              isolateRemoteDatabaseConnectPort = null;
               ref.invalidate(syncServiceProvider);
-
               ref.read(usuarioNotifierProvider.notifier).signOut();
             }
           });
@@ -199,8 +196,7 @@ class _ReemplazarArchivoBaseDeDatosLocalButton extends ConsumerWidget {
             if (deleted) {
               ref.invalidate(syncNotifierProvider);
               ref.invalidate(appLocalDatabaseProvider);
-              ref.invalidate(appRemoteDatabaseProvider);
-              isolateLocalDatabaseConnectPort = null;
+              // ref.invalidate(appRemoteDatabaseProvider);
               ref.invalidate(syncServiceProvider);
               ref.read(usuarioNotifierProvider.notifier).signOut();
             }
@@ -288,8 +284,8 @@ class ReplaceDatabaseKeyAlertDialog extends StatelessWidget {
           decoration: InputDecoration(labelText: S.of(context).claveNikel),
           validator: FormBuilderValidators.compose([
             FormBuilderValidators.required(),
-            FormBuilderValidators.match('N1k3l' as RegExp,
-                checkNullOrEmpty: false)
+            FormBuilderValidators.equal('N1k3l',
+                errorText: S.of(context).reemplazarBaseDeDatosTextMesaje)
           ]),
         ),
       ),

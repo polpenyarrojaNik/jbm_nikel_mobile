@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:drift/isolate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/infrastructure/local_database.dart';
@@ -92,6 +93,10 @@ class SettingsRepository {
         File((join(directory.path, localDatabaseJournalName)))
             .deleteSync(recursive: true);
       }
+
+      await DriftIsolate.fromConnectPort(isolateLocalDatabaseConnectPort!)
+          .shutdownAll();
+      isolateLocalDatabaseConnectPort = null;
     } on AppException catch (e) {
       log.e(e.details);
       rethrow;

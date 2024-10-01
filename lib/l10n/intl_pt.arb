@@ -396,5 +396,6 @@
   "trimestral": "Trimestral",
   "alto": "Alto",
   "telefono": "Telefone",
-  "esteNumeroTelefonoExisiteEnElCliente": "Telefone existente para o cliente"
+  "esteNumeroTelefonoExisiteEnElCliente": "Telefone existente para o cliente",
+  "reemplazarBaseDeDatosTextMesaje": "Este campo não corresponde à chave Nikel"
 }

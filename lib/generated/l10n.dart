@@ -4063,6 +4063,16 @@ class S {
       args: [],
     );
   }
+
+  /// `This field not match with Nikel key`
+  String get reemplazarBaseDeDatosTextMesaje {
+    return Intl.message(
+      'This field not match with Nikel key',
+      name: 'reemplazarBaseDeDatosTextMesaje',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
