@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/core/helpers/database_helper.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/init_database_service.dart';
+import '../../../core/helpers/database_helper.dart';
+import '../../../core/infrastructure/init_database_service.dart';
 
 import '../../../core/exceptions/app_exception.dart';
 

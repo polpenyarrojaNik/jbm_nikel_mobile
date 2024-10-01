@@ -1,14 +1,16 @@
+import 'dart:async';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_indicator_widget.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/toasts.dart';
-import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
-import 'package:jbm_nikel_mobile/src/features/app_initialization/presentation/splash_page_controller.dart';
-import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_repository.dart';
-import 'package:jbm_nikel_mobile/src/features/sync/application/sync_notifier_provider.dart';
+import '../../../core/infrastructure/remote_database.dart';
+import '../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../core/presentation/toasts.dart';
+import '../../../core/routing/app_auto_router.dart';
+import 'splash_page_controller.dart';
+import '../../pedido_venta/infrastructure/pedido_venta_repository.dart';
+import '../../sync/application/sync_notifier_provider.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../core/exceptions/app_exception.dart';
@@ -43,11 +45,11 @@ class _SplashPageState extends ConsumerState<SplashPage> {
             // await ref
             //     .read(visitaRepositoryProvider)
             //     .deleteVisitasLocalAntiguas();
-            ref
+            unawaited(ref
                 .read(syncNotifierProvider.notifier)
-                .syncAllInCompute(initAppProcess: true);
+                .syncAllInCompute(initAppProcess: true));
             if (context.mounted) {
-              context.router.replace(
+              await context.router.replace(
                 ArticuloListaRoute(isSearchArticuloForForm: false),
               );
             }
