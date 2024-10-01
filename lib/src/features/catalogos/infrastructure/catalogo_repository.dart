@@ -89,7 +89,7 @@ class CatalogoRepository {
         searchText: searchText,
       );
 
-      final catalogoOrdenList = await _getCatalogoOrdenDTOList();
+      final catalogoOrdenAbiertoList = await _getCatalogoOrdenDTOList();
 
       final catalogosDTOList = await _remoteCatalogosList(
         requestUri: (_usuario.test)
@@ -113,11 +113,10 @@ class CatalogoRepository {
               tipoPrecioCatalogo: tipoPrecioCatalogo?.descripcion))
           .toList();
 
-      return _orderByCatalogos(
-        catalogosList: catalogosList,
-        favoriteLocalList: favoriteLocalList,
-        catalogoOrdenList: catalogoOrdenList,
-      );
+      catalogosList.sort((a, b) =>
+          _orderByCatalogos(a, b, favoriteLocalList, catalogoOrdenAbiertoList));
+
+      return catalogosList;
     } catch (error) {
       rethrow;
     }
@@ -435,32 +434,26 @@ class CatalogoRepository {
     }
   }
 
-  List<Catalogo> _orderByCatalogos(
-      {required List<Catalogo> catalogosList,
-      required List<CatalogoFavoritoDTO> favoriteLocalList,
-      required List<CatalogoOrdenDTO> catalogoOrdenList}) {
-    catalogosList.sort((a, b) => a.orden.compareTo(b.orden));
+  int _orderByCatalogos(
+      Catalogo a,
+      Catalogo b,
+      List<CatalogoFavoritoDTO> favoriteLocalList,
+      List<CatalogoOrdenDTO> catalogoOrdenList) {
+    final priorityA =
+        getPriority(a.catalogoId, favoriteLocalList, catalogoOrdenList);
+    final priorityB =
+        getPriority(b.catalogoId, favoriteLocalList, catalogoOrdenList);
 
-    for (var i = 0; i < catalogosList.length; i++) {
-      for (var j = 0; j < favoriteLocalList.length; j++) {
-        if (catalogosList[i].catalogoId == favoriteLocalList[j].catalogoId) {
-          final favoriteCatalogo = catalogosList[i];
-          catalogosList.remove(favoriteCatalogo);
-          catalogosList.insert(0, favoriteCatalogo);
-        }
+    if (priorityA.compareTo(priorityB) == 0) {
+      if (priorityA == 1 || priorityA == 3) {
+        return _getFechaAbierto(b.catalogoId, catalogoOrdenList)
+            .compareTo(_getFechaAbierto(a.catalogoId, catalogoOrdenList));
+      } else if (priorityA == 4 && priorityB == 4) {
+        return a.orden.compareTo(b.orden);
       }
     }
 
-    for (var k = 0; k < catalogoOrdenList.length; k++) {
-      for (var i = 0; i < catalogosList.length; i++) {
-        if (catalogosList[i].catalogoId == catalogoOrdenList[k].catalogoId) {
-          final catalagoAbierto = catalogosList[i];
-          catalogosList.remove(catalagoAbierto);
-          catalogosList.insert(0, catalagoAbierto);
-        }
-      }
-    }
-    return catalogosList;
+    return priorityA.compareTo(priorityB);
   }
 
   Map<String, String> _setCatalogoQueryParams({
@@ -533,5 +526,43 @@ class CatalogoRepository {
   Future<int> saveCatalogoAbierto(int catalogoId) async {
     return _localDb.into(_localDb.catalogoOrdenTable).insertOnConflictUpdate(
         CatalogoOrdenDTO(catalogoId: catalogoId, fechaAbierto: DateTime.now()));
+  }
+
+  int getPriority(
+      int catalogoId,
+      List<CatalogoFavoritoDTO> catalogoFavoritoDTOList,
+      List<CatalogoOrdenDTO> catalogoOrdenList) {
+    final isAbierto = _isCatalogoAbierto(catalogoId, catalogoOrdenList);
+    final isFavorito = _isCatalogoFavorito(catalogoId, catalogoFavoritoDTOList);
+
+    if (isAbierto && isFavorito) {
+      return 1;
+    } else if (isFavorito) {
+      return 2;
+    } else if (isAbierto) {
+      return 3;
+    } else {
+      return 4;
+    }
+  }
+
+  bool _isCatalogoFavorito(
+      int catalogoId, List<CatalogoFavoritoDTO> catalogoFavoritoDTOList) {
+    return catalogoFavoritoDTOList.any((f) => f.catalogoId == catalogoId);
+  }
+
+  bool _isCatalogoAbierto(
+      int catalogoId, List<CatalogoOrdenDTO> catalogoOrdenAbiertoList) {
+    return catalogoOrdenAbiertoList.any((f) => f.catalogoId == catalogoId);
+  }
+
+  DateTime _getFechaAbierto(
+      int catalogoId, List<CatalogoOrdenDTO> catalogoOrdenAbiertoList) {
+    return catalogoOrdenAbiertoList
+        .firstWhere(
+          (catalogoOrdenAbierto) =>
+              catalogoOrdenAbierto.catalogoId == catalogoId,
+        )
+        .fechaAbierto;
   }
 }
