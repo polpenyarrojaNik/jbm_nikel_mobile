@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../core/domain/adjunto_param.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../infrastructure/catalogo_repository.dart';
 import 'catalogo_search_controller.dart';
@@ -56,12 +57,13 @@ class CatalogoFavoritoController
     }
   }
 
-  Future<void> removeCatalogoFavorite() async {
+  Future<void> removeCatalogoFavorite(String nombreArchivo) async {
     try {
       if (state != const CatalogoFavoritoControllerState.checking()) {
         state = const CatalogoFavoritoControllerState.checking();
       }
-      await catalogoRepository.removeCatalogoFavorito(catalogoId: catalogoId);
+      await catalogoRepository.removeCatalogoFavorito(AdjuntoParam(
+          id: catalogoId.toString(), nombreArchivo: nombreArchivo));
       ref.invalidate(catalogoIndexScreenControllerProvider);
 
       await isModuleFavorite();
@@ -73,13 +75,14 @@ class CatalogoFavoritoController
     }
   }
 
-  Future<void> setCatalogoFavorite() async {
+  Future<void> setCatalogoFavorite(String nombreArchivo) async {
     try {
       if (state != const CatalogoFavoritoControllerState.checking()) {
         state = const CatalogoFavoritoControllerState.checking();
       }
 
-      await catalogoRepository.setCatalogoToFavorite(catalogoId: catalogoId);
+      await catalogoRepository.setCatalogoToFavorite(AdjuntoParam(
+          id: catalogoId.toString(), nombreArchivo: nombreArchivo));
       ref.invalidate(catalogoIndexScreenControllerProvider);
 
       await isModuleFavorite();

@@ -194,8 +194,20 @@ class CatalogoRepository {
     try {
       if (adjuntoParam.nombreArchivo != '') {
         final cahceDirectories = await getTemporaryDirectory();
+        final documentDirectories = await getApplicationDocumentsDirectory();
 
-        if (fileExistInLocal(adjuntoParam, cahceDirectories)) {
+        if (fileExistInLocal(adjuntoParam, documentDirectories)) {
+          try {
+            final filePath =
+                '${documentDirectories.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}';
+
+            final file = File(filePath);
+
+            return file;
+          } catch (e) {
+            throw AppException.createFileInCacheFailure(e.toString());
+          }
+        } else if (fileExistInLocal(adjuntoParam, cahceDirectories)) {
           try {
             final filePath =
                 '${cahceDirectories.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}';
@@ -222,35 +234,8 @@ class CatalogoRepository {
                     ),
               provisionalToken: provisionalToken);
 
-          try {
-            final file = await File(
-                    '${cahceDirectories.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}')
-                .create(recursive: true);
-
-            final raf = file.openSync(mode: FileMode.write);
-            raf.writeFromSync(data);
-            await raf.close();
-
-            final document = PdfDocument(inputBytes: file.readAsBytesSync());
-
-            for (var i = 0; i < document.pages.count; i++) {
-              final pageSize = document.pages[i].size;
-              document.pages[i].graphics.drawString(
-                _usuario.id,
-                PdfStandardFont(PdfFontFamily.helvetica, 9),
-                brush: PdfSolidBrush(PdfColor(105, 105, 105)),
-                bounds: Rect.fromLTWH(8, pageSize.height - 16, 50, 20),
-              );
-            }
-            final savedFile = await document.save();
-
-            await file.writeAsBytes(savedFile);
-            document.dispose();
-
-            return file;
-          } catch (e) {
-            throw AppException.createFileInCacheFailure(e.toString());
-          }
+          return await saveDocumentInLocal(
+              data, adjuntoParam, cahceDirectories);
         }
       }
 
@@ -260,36 +245,46 @@ class CatalogoRepository {
     }
   }
 
-  bool fileExistInLocal(AdjuntoParam adjuntoParam, Directory cahceDirectories) {
+  bool fileExistInLocal(AdjuntoParam adjuntoParam, Directory directory) {
     final filePath =
-        '${cahceDirectories.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}';
+        '${directory.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}';
 
     final file = File(filePath);
 
     return file.existsSync();
   }
 
-  Future<void> setCatalogoToFavorite({required int catalogoId}) async {
-    try {
-      await _localDb
-          .into(_localDb.catalogoFavoritoTable)
-          .insertOnConflictUpdate(
-            CatalogoFavoritoTableCompanion(
-              catalogoId: Value(catalogoId),
-            ),
-          );
-    } catch (e) {
-      AppException.insertDataFailure(e.toString());
+  Future<void> setCatalogoToFavorite(AdjuntoParam adjuntoParam) async {
+    await _localDb.into(_localDb.catalogoFavoritoTable).insertOnConflictUpdate(
+          CatalogoFavoritoTableCompanion(
+            catalogoId: Value(int.parse(adjuntoParam.id)),
+          ),
+        );
+
+    final documentDirectory = await getApplicationDocumentsDirectory();
+
+    if (!fileExistInLocal(adjuntoParam, documentDirectory)) {
+      final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
+      final data = await _remoteGetAttachment(
+          requestUri: Uri.http(
+            dotenv.get('URL', fallback: 'localhost:3001'),
+            'api/v1/online/adjunto/catalogo/${adjuntoParam.id}',
+            query,
+          ),
+          provisionalToken: _usuario.provisionalToken);
+      await saveDocumentInLocal(data, adjuntoParam, documentDirectory);
     }
   }
 
-  Future<void> removeCatalogoFavorito({required int catalogoId}) async {
+  Future<void> removeCatalogoFavorito(AdjuntoParam adjuntoParam) async {
     try {
       await (_localDb.delete(_localDb.catalogoFavoritoTable)
             ..where(
-              (tbl) => tbl.catalogoId.equals(catalogoId),
+              (tbl) => tbl.catalogoId.equals(int.parse(adjuntoParam.id)),
             ))
           .go();
+
+      await remoteFavoriteFileFromLocal(adjuntoParam);
     } catch (e) {
       AppException.insertDataFailure(e.toString());
     }
@@ -564,5 +559,49 @@ class CatalogoRepository {
               catalogoOrdenAbierto.catalogoId == catalogoId,
         )
         .fechaAbierto;
+  }
+
+  Future<File> saveDocumentInLocal(
+      List<int> data, AdjuntoParam adjuntoParam, Directory directory) async {
+    try {
+      final file = await File(
+              '${directory.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}')
+          .create(recursive: true);
+
+      final raf = file.openSync(mode: FileMode.write);
+      raf.writeFromSync(data);
+      await raf.close();
+
+      final document = PdfDocument(inputBytes: file.readAsBytesSync());
+
+      for (var i = 0; i < document.pages.count; i++) {
+        final pageSize = document.pages[i].size;
+        document.pages[i].graphics.drawString(
+          _usuario.id,
+          PdfStandardFont(PdfFontFamily.helvetica, 9),
+          brush: PdfSolidBrush(PdfColor(105, 105, 105)),
+          bounds: Rect.fromLTWH(8, pageSize.height - 16, 50, 20),
+        );
+      }
+      final savedFile = await document.save();
+
+      await file.writeAsBytes(savedFile);
+      document.dispose();
+
+      return file;
+    } catch (e) {
+      throw AppException.createFileInCacheFailure(e.toString());
+    }
+  }
+
+  Future<void> remoteFavoriteFileFromLocal(AdjuntoParam adjuntoParam) async {
+    final documentDirectory = await getApplicationDocumentsDirectory();
+
+    final file = File(
+        '${documentDirectory.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}');
+
+    if (file.existsSync()) {
+      file.deleteSync(recursive: true);
+    }
   }
 }

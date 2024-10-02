@@ -71,7 +71,7 @@ class CatalogoListTile extends ConsumerWidget {
                         favorite: () => IconButton(
                           onPressed: () => removeCatlalogoFavorite(
                             ref: ref,
-                            catalogoId: catalogo.catalogoId,
+                            catalogo: catalogo,
                           ),
                           icon: Icon(Icons.star,
                               color: Theme.of(context).colorScheme.primary),
@@ -79,7 +79,7 @@ class CatalogoListTile extends ConsumerWidget {
                         noFavorite: () => IconButton(
                           onPressed: () => setCatlalogoToFavorite(
                             ref: ref,
-                            catalogoId: catalogo.catalogoId,
+                            catalogo: catalogo,
                           ),
                           icon: Icon(Icons.star_outline,
                               color: Theme.of(context).colorScheme.primary),
@@ -131,16 +131,16 @@ class CatalogoListTile extends ConsumerWidget {
   }
 
   void setCatlalogoToFavorite(
-      {required WidgetRef ref, required int catalogoId}) {
+      {required WidgetRef ref, required Catalogo catalogo}) {
     ref
-        .read(catalogoFavoritoControllerProvider(catalogoId).notifier)
-        .setCatalogoFavorite();
+        .read(catalogoFavoritoControllerProvider(catalogo.catalogoId).notifier)
+        .setCatalogoFavorite(catalogo.nombreFicheroCatalogo);
   }
 
   void removeCatlalogoFavorite(
-      {required WidgetRef ref, required int catalogoId}) {
+      {required WidgetRef ref, required Catalogo catalogo}) {
     ref
-        .read(catalogoFavoritoControllerProvider(catalogoId).notifier)
-        .removeCatalogoFavorite();
+        .read(catalogoFavoritoControllerProvider(catalogo.catalogoId).notifier)
+        .removeCatalogoFavorite(catalogo.nombreFicheroCatalogo);
   }
 }
