@@ -23,7 +23,6 @@ class ArticuloIndexScreenController extends _$ArticuloIndexScreenController {
   @override
   Future<int> build(bool isSearchArticuloForForm) {
     return ref.read(articuloRepositoryProvider).getArticuloCountList(
-   
         searchText: ref.watch(articulosSearchQueryStateProvider));
   }
 }

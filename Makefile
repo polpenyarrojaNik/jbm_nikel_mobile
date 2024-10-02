@@ -65,9 +65,6 @@ bump_version: ## Bump version
 	@$(GIT) push origin main
 	@echo ":: Bump version number $(VERSION_NUMBER)"
 
-	@echo "╠  Building the macOS app"
-	@$(FLUTTER) build macos --release
-
 run_dependency_validator:
 	@$(DART) pub global run dependency_validator
 

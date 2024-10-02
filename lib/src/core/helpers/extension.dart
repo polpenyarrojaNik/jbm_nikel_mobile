@@ -109,8 +109,7 @@ extension MoneyParsing on String {
 
 extension MoneyParsingDouble on num {
   Money toMoney({String? currencyId}) {
-    final currency =
-        Currencies().find(currencyId ?? 'EU') ?? currencies[0];
+    final currency = Currencies().find(currencyId ?? 'EU') ?? currencies[0];
 
     // NumberFormat formatter =
     //     NumberFormat.decimalPattern(Intl.getCurrentLocale());

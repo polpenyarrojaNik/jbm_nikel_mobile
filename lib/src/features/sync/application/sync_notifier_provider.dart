@@ -141,8 +141,8 @@ Future<SyncProgress> syncInBackground(IsolateArgs isolateArgs) async {
 
     final dio = Dio();
 
-    final syncService = SyncService(remoteDb, localDb, dio,
-        isolateArgs.user, null, LogRepository(dio, localDb, isolateArgs.user));
+    final syncService = SyncService(remoteDb, localDb, dio, isolateArgs.user,
+        null, LogRepository(dio, localDb, isolateArgs.user));
 
     return await syncService.syncAllTable();
   } catch (e) {
