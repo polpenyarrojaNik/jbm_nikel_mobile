@@ -29,73 +29,87 @@ class CatalogoListTile extends ConsumerWidget {
 
     final state = ref.watch(catalogoAdjuntoControllerProvider);
 
-    return GestureDetector(
-      onTap: state.maybeWhen(
-        orElse: () => () => downloadAttachment(ref, stateCatalogoOrden),
-        loading: null,
-      ),
-      child: Card(
-        elevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4),
-          side: BorderSide(
-            color: Colors.grey.withOpacity(0.2),
-            width: 1,
+    return SizedBox(
+      height: 325,
+      child: ClipRRect(
+        child: GestureDetector(
+          onTap: state.maybeWhen(
+            orElse: () => () => downloadAttachment(ref, stateCatalogoOrden),
+            loading: null,
           ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: Card(
+            clipBehavior: Clip.hardEdge,
+            elevation: 0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(4),
+              side: BorderSide(
+                color: Colors.grey.withOpacity(0.2),
+                width: 1,
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Flexible(
-                    child: Text(
-                      catalogo.nombre,
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          color: Theme.of(context).colorScheme.primary),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          catalogo.nombre,
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge
+                              ?.copyWith(
+                                  color: Theme.of(context).colorScheme.primary),
+                        ),
+                      ),
+                      stateFavorite.maybeWhen(
+                        orElse: () => const ProgressIndicatorWidget(),
+                        favorite: () => IconButton(
+                          onPressed: () => removeCatlalogoFavorite(
+                            ref: ref,
+                            catalogoId: catalogo.catalogoId,
+                          ),
+                          icon: Icon(Icons.star,
+                              color: Theme.of(context).colorScheme.primary),
+                        ),
+                        noFavorite: () => IconButton(
+                          onPressed: () => setCatlalogoToFavorite(
+                            ref: ref,
+                            catalogoId: catalogo.catalogoId,
+                          ),
+                          icon: Icon(Icons.star_outline,
+                              color: Theme.of(context).colorScheme.primary),
+                        ),
+                      )
+                    ],
+                  ),
+                  gapH8,
+                  Expanded(
+                    child: ClipRRect(
+                      child: CachedNetworkImage(
+                        imageUrl: catalogo.urlFicherPortada,
+                        fit: BoxFit.contain,
+                        progressIndicatorBuilder: (context, url, progress) =>
+                            Image.asset(
+                          // width: 300,
+                          fit: BoxFit.contain,
+                          'assets/image-placeholder.png',
+                        ),
+                        errorWidget: (context, error, _) => Image.asset(
+                          // width: 300,
+                          fit: BoxFit.contain,
+                          'assets/image-placeholder.png',
+                        ),
+                      ),
                     ),
                   ),
-                  stateFavorite.maybeWhen(
-                    orElse: () => const ProgressIndicatorWidget(),
-                    favorite: () => IconButton(
-                      onPressed: () => removeCatlalogoFavorite(
-                        ref: ref,
-                        catalogoId: catalogo.catalogoId,
-                      ),
-                      icon: Icon(Icons.star,
-                          color: Theme.of(context).colorScheme.primary),
-                    ),
-                    noFavorite: () => IconButton(
-                      onPressed: () => setCatlalogoToFavorite(
-                        ref: ref,
-                        catalogoId: catalogo.catalogoId,
-                      ),
-                      icon: Icon(Icons.star_outline,
-                          color: Theme.of(context).colorScheme.primary),
-                    ),
-                  )
                 ],
               ),
-              gapH8,
-              CachedNetworkImage(
-                imageUrl: catalogo.urlFicherPortada,
-                fit: BoxFit.contain,
-                progressIndicatorBuilder: (context, url, progress) =>
-                    Image.asset(
-                  // width: 300,
-                  fit: BoxFit.contain,
-                  'assets/image-placeholder.png',
-                ),
-                errorWidget: (context, error, _) => Image.asset(
-                  // width: 300,
-                  fit: BoxFit.contain,
-                  'assets/image-placeholder.png',
-                ),
-              ),
-            ],
+            ),
           ),
         ),
       ),

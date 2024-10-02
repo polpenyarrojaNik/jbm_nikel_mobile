@@ -24,9 +24,9 @@ class AppTheme {
       fontFamily: _fontFamily,
       typography: Typography.material2021(platform: defaultTargetPlatform),
       inputDecorationTheme: InputDecorationTheme(
-        border: InputBorder.none,
+        border: const UnderlineInputBorder(),
         filled: true,
-        fillColor: myColorScheme.surfaceContainer,
+        fillColor: myColorScheme.surfaceContainerHighest,
       ),
     );
   }

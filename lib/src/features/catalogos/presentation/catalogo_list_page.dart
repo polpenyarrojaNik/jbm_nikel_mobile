@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:better_open_file/better_open_file.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../core/helpers/debouncer.dart';
@@ -197,23 +198,32 @@ class CatalogoListViewWidget extends ConsumerWidget {
         data: (catalgoList) => stateGetAttachment.maybeWhen(
           loading: () => const ProgressIndicatorWidget(),
           orElse: () => LayoutBuilder(
-            builder: (context, boxConstrains) => GridView.builder(
-              shrinkWrap: true,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                mainAxisSpacing: 8,
-                crossAxisSpacing: 8,
-                crossAxisCount: boxConstrains.maxWidth > 1080
-                    ? 5
-                    : boxConstrains.maxWidth > 560
-                        ? 3
-                        : 2,
-                childAspectRatio: 1 / 1.95,
-              ),
-              itemCount: catalgoList.length,
-              itemBuilder: (context, i) => CatalogoListTile(
-                catalogo: catalgoList[i],
-                boxConstrains: boxConstrains,
-              ),
+            builder: (context, boxConstrains) => ListView.separated(
+              itemBuilder: (context, i) {
+                return Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: CatalogoListTile(
+                        catalogo: catalgoList[i * 2],
+                        boxConstrains: boxConstrains,
+                      ),
+                    ),
+                    const Gap(8),
+                    if (i + 1 < catalgoList.length)
+                      Expanded(
+                        child: CatalogoListTile(
+                          catalogo: catalgoList[(i * 2) + 1],
+                          boxConstrains: boxConstrains,
+                        ),
+                      )
+                    else
+                      const Expanded(child: SizedBox()),
+                  ],
+                );
+              },
+              separatorBuilder: (context, i) => const Gap(8),
+              itemCount: (catalgoList.length / 2).ceil(),
             ),
           ),
         ),
