@@ -266,7 +266,7 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
           isBorrador: true,
         );
 
-    ref.invalidate(getPedidoVentaBorradorPendiente);
+    // ref.invalidate(getPedidoVentaBorradorPendiente);
     ref.invalidate(pedidoVentaProvider(pedidoLocalParam));
     ref.invalidate(pedidoVentaIndexScreenControllerProvider);
     ref.invalidate(pedidoVentaIndexScreenPaginatedControllerProvider);
@@ -288,7 +288,7 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
     }
     ref.invalidate(pedidoVentaIndexScreenPaginatedControllerProvider);
     ref.invalidate(pedidoVentaIndexScreenControllerProvider);
-    ref.invalidate(getPedidoVentaBorradorPendiente);
+    // ref.invalidate(getPedidoVentaBorradorPendiente);
 
     if (!pedidoLocalParam.isLocal) {
       context.router.popUntil(
@@ -361,19 +361,22 @@ class PedidoVentaEditForm extends ConsumerWidget {
       builder: (ctx) {
         return AskPopAlertDialog(
             contextEditPage: context,
-            text: (!isBorrador)
-                ? S.of(context).pedido_edit_askPopAlertDialog_seguroQuieresSales
-                : S
-                    .of(context)
-                    .pedido_edit_askPopAlertDialog_seguroQuieresSalesBorrador);
+            text:
+                // (!isBorrador)
+                //     ?
+                S.of(context).pedido_edit_askPopAlertDialog_seguroQuieresSales
+            // : S
+            //     .of(context)
+            //     .pedido_edit_askPopAlertDialog_seguroQuieresSalesBorrador
+            );
       },
     ) as bool?;
-    if (isBorrador && (result ?? false)) {
-      ref.read(deletePedidoVentaProvider(pedidoLocalParam.pedidoAppId!));
-      ref.invalidate(getPedidoVentaBorradorPendiente);
-      ref.invalidate(pedidoVentaIndexScreenPaginatedControllerProvider);
-      ref.invalidate(pedidoVentaIndexScreenControllerProvider);
-    }
+    // if (isBorrador && (result ?? false)) {
+    //   ref.read(deletePedidoVentaProvider(pedidoLocalParam.pedidoAppId!));
+    //   // ref.invalidate(getPedidoVentaBorradorPendiente);
+    //   ref.invalidate(pedidoVentaIndexScreenPaginatedControllerProvider);
+    //   ref.invalidate(pedidoVentaIndexScreenControllerProvider);
+    // }
     return result ?? false;
   }
 

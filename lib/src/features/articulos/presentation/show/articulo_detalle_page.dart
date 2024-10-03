@@ -29,38 +29,38 @@ class ArticuloDetallePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final params = {'articuloId': articuloId};
-    final stateBorradorPendiente = ref.watch(getPedidoVentaBorradorPendiente);
+    // final stateBorradorPendiente = ref.watch(getPedidoVentaBorradorPendiente);
     return Scaffold(
       appBar: CommonAppBar(
         titleText: (S.of(context).articulo_show_articuloDetalle_titulo),
-        actions: stateBorradorPendiente.maybeWhen(
-          orElse: () => null,
-          data: (pedidoBorrador) {
-            if (pedidoBorrador != null) {
-              final pedidoVentaIdIsLocalParam = PedidoLocalParam(
-                pedidoAppId: pedidoBorrador.pedidoVentaAppId!,
-                isEdit: false,
-                tratada: false,
-              );
-              final state = ref
-                  .watch(pedidoVentaLineaProvider(pedidoVentaIdIsLocalParam));
-              return state.maybeWhen(
-                  orElse: () => null,
-                  data: (pedidoVentaLinea) => [
-                        IconButton(
-                          onPressed: () => naviagateToSelectCantidad(
-                              context,
-                              pedidoVentaIdIsLocalParam,
-                              pedidoBorrador.clienteId!,
-                              pedidoVentaLinea.length),
-                          icon: const Icon(Icons.add_shopping_cart_outlined),
-                        )
-                      ]);
-            } else {
-              return null;
-            }
-          },
-        ),
+        // actions: stateBorradorPendiente.maybeWhen(
+        //   orElse: () => null,
+        //   data: (pedidoBorrador) {
+        //     if (pedidoBorrador != null) {
+        //       final pedidoVentaIdIsLocalParam = PedidoLocalParam(
+        //         pedidoAppId: pedidoBorrador.pedidoVentaAppId!,
+        //         isEdit: false,
+        //         tratada: false,
+        //       );
+        //       final state = ref
+        //           .watch(pedidoVentaLineaProvider(pedidoVentaIdIsLocalParam));
+        //       return state.maybeWhen(
+        //           orElse: () => null,
+        //           data: (pedidoVentaLinea) => [
+        //                 IconButton(
+        //                   onPressed: () => naviagateToSelectCantidad(
+        //                       context,
+        //                       pedidoVentaIdIsLocalParam,
+        //                       pedidoBorrador.clienteId!,
+        //                       pedidoVentaLinea.length),
+        //                   icon: const Icon(Icons.add_shopping_cart_outlined),
+        //                 )
+        //               ]);
+        //     } else {
+        //       return null;
+        //     }
+        //   },
+        // ),
       ),
       body: Consumer(
         builder: (context, ref, _) {

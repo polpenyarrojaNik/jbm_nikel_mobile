@@ -52,8 +52,6 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
   @override
   Widget build(BuildContext context) {
     final stateSync = ref.watch(syncNotifierProvider);
-    final stateGetBorradorPendiente =
-        ref.watch(getPedidoVentaBorradorPendiente);
 
     ref.listen<AsyncValue<String?>>(
       notificationNotifierProvider,
@@ -74,48 +72,41 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
     );
 
     return Scaffold(
-        key: scaffoldKey,
-        drawer: const AppDrawer(),
-        appBar: CustomSearchAppBar(
-          scaffoldKey: scaffoldKey,
-          isSearchingFirst: false,
-          title: S.of(context).pedido_index_titulo,
-          searchTitle: S.of(context).pedido_index_buscarPedidos,
-          onChanged: (searchText) => _debouncer.run(
-            () {
-              ref.read(pedidosSearchQueryStateProvider.notifier).state =
-                  searchText;
-            },
-          ),
-          actionButtons: [
-            IconButton(
-              onPressed: () => searchFilterByEstado(),
-              icon: Icon(Icons.filter_list,
-                  color: (filteredStatus != null)
-                      ? Theme.of(context).colorScheme.surfaceTint
-                      : null),
-            ),
-          ],
+      key: scaffoldKey,
+      drawer: const AppDrawer(),
+      appBar: CustomSearchAppBar(
+        scaffoldKey: scaffoldKey,
+        isSearchingFirst: false,
+        title: S.of(context).pedido_index_titulo,
+        searchTitle: S.of(context).pedido_index_buscarPedidos,
+        onChanged: (searchText) => _debouncer.run(
+          () {
+            ref.read(pedidosSearchQueryStateProvider.notifier).state =
+                searchText;
+          },
         ),
-        body: stateSync.maybeWhen(
-          orElse: () => PedidosListViewWidget(stateSync: stateSync, ref: ref),
-          synchronized: () => RefreshIndicator(
-            onRefresh: () => syncSalesOrderDB(ref),
-            child: PedidosListViewWidget(stateSync: stateSync, ref: ref),
+        actionButtons: [
+          IconButton(
+            onPressed: () => searchFilterByEstado(),
+            icon: Icon(Icons.filter_list,
+                color: (filteredStatus != null)
+                    ? Theme.of(context).colorScheme.surfaceTint
+                    : null),
           ),
+        ],
+      ),
+      body: stateSync.maybeWhen(
+        orElse: () => PedidosListViewWidget(stateSync: stateSync, ref: ref),
+        synchronized: () => RefreshIndicator(
+          onRefresh: () => syncSalesOrderDB(ref),
+          child: PedidosListViewWidget(stateSync: stateSync, ref: ref),
         ),
-        floatingActionButton: stateGetBorradorPendiente.maybeWhen(
-          orElse: () => const CircularProgressIndicator(),
-          data: (pedidoVentaBorrador) => FloatingActionButton(
-            onPressed: () => (pedidoVentaBorrador != null)
-                ? navigateToEditPedidoBorrador(
-                    context, pedidoVentaBorrador.pedidoVentaAppId!)
-                : navigateToCreatePedido(context),
-            child: (pedidoVentaBorrador != null)
-                ? const Icon(Icons.edit)
-                : const Icon(Icons.add),
-          ),
-        ));
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => navigateToCreatePedido(context),
+        child: const Icon(Icons.add),
+      ),
+    );
   }
 
   Future<void> syncSalesOrderDB(WidgetRef ref) async {
@@ -137,13 +128,6 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
   void navigateToCreatePedido(BuildContext context) {
     context.router.push(
       PedidoVentaEditRoute(isLocal: true),
-    );
-  }
-
-  void navigateToEditPedidoBorrador(
-      BuildContext context, String pedidoVentaBorradorId) async {
-    await context.router.push(
-      PedidoVentaEditRoute(pedidoAppId: pedidoVentaBorradorId, isLocal: true),
     );
   }
 
