@@ -503,23 +503,29 @@ class _VisitaFormState extends State<_VisitaForm> {
               initialValue: widget.visita?.motivoNoInteres,
               labelText: S.of(context).motivoNoInteres,
               formKey: widget.formKey,
-              enabled: !getFormInstantValue<bool>(
-                      widget.formKey, 'cliente_provisional') &&
-                  !getFormInstantValue<bool>(
-                      widget.formKey, 'pedidoRealizado') &&
-                  !getFormInstantValue<bool>(
-                      widget.formKey, 'ofertaRealizada')),
+              enabled: !(getFormInstantValue<bool?>(
+                          widget.formKey, 'cliente_provisional') ??
+                      false) &&
+                  !(getFormInstantValue<bool?>(
+                          widget.formKey, 'pedidoRealizado') ??
+                      false) &&
+                  !(getFormInstantValue<bool?>(
+                          widget.formKey, 'ofertaRealizada') ??
+                      false)),
           VisitaMotivoNoVentaFormDropdown(
               name: 'motivoNoPedido',
               initialValue: widget.visita?.motivoNoPedido,
               labelText: S.of(context).motivoNoPedido,
               formKey: widget.formKey,
-              enabled: !getFormInstantValue<bool>(
-                      widget.formKey, 'cliente_provisional') &&
-                  !getFormInstantValue<bool>(
-                      widget.formKey, 'pedidoRealizado') &&
-                  !getFormInstantValue<bool>(
-                      widget.formKey, 'ofertaRealizada')),
+              enabled: !(getFormInstantValue<bool?>(
+                          widget.formKey, 'cliente_provisional') ??
+                      false) &&
+                  !(getFormInstantValue<bool?>(
+                          widget.formKey, 'pedidoRealizado') ??
+                      false) &&
+                  !(getFormInstantValue<bool?>(
+                          widget.formKey, 'ofertaRealizada') ??
+                      false)),
           AppFormBuilderSearchableDropdown<Capacidad>(
             name: 'capacidad',
             decoration: InputDecoration(
@@ -944,9 +950,11 @@ class VisitaMotivoNoVentaFormDropdown extends ConsumerWidget {
       ),
       itemAsString: (item) => item.descripcion,
       compareFn: (i, s) => i.id == s.id,
-      validator: !getFormInstantValue<bool>(formKey, 'cliente_provisional') &&
-              !getFormInstantValue<bool>(formKey, 'pedidoRealizado') &&
-              !getFormInstantValue<bool>(formKey, 'ofertaRealizada')
+      validator: !(getFormInstantValue<bool?>(formKey, 'cliente_provisional') ??
+                  false) &&
+              !(getFormInstantValue<bool?>(formKey, 'pedidoRealizado') ??
+                  false) &&
+              !(getFormInstantValue<bool?>(formKey, 'ofertaRealizada') ?? false)
           ? FormBuilderValidators.compose([
               FormBuilderValidators.required(),
             ])
