@@ -918,9 +918,6 @@ class VisitaMotivoNoVentaFormDropdown extends ConsumerWidget {
       ),
       itemAsString: (item) => item.descripcion,
       compareFn: (i, s) => i.id == s.id,
-      validator: FormBuilderValidators.compose([
-        FormBuilderValidators.required(),
-      ]),
     );
   }
 }
