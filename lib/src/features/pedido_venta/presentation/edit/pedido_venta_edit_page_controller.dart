@@ -91,32 +91,50 @@ class PedidoVentaEditPageController
   Future<void> getPedidoVenta() async {
     state = const PedidoVentaEditPageControllerState.loading();
     try {
-      if (await pedidoVentaRepository.getBorradorPendiete() != null) {
-        _isBorrador = true;
-        final pedidoVentaBorrador =
-            await pedidoVentaRepository.getPedidoVentaBorrador();
-        pedidoVentaLineaList = await pedidoVentaRepository
-            .getPedidoVentaLineaListById(pedidoLocalParam: pedidoLocalParam);
+      // if (await pedidoVentaRepository.getBorradorPendiete() != null) {
+      //   _isBorrador = true;
+      //   final pedidoVentaBorrador =
+      //       await pedidoVentaRepository.getPedidoVentaBorrador();
+      //   pedidoVentaLineaList = await pedidoVentaRepository
+      //       .getPedidoVentaLineaListById(pedidoLocalParam: pedidoLocalParam);
 
-        _cliente = await clienteRepository.getClienteById(
-            clienteId: pedidoVentaBorrador.clienteId!);
+      //   _cliente = await clienteRepository.getClienteById(
+      //       clienteId: pedidoVentaBorrador.clienteId!);
 
-        _clienteDireccion =
-            await clienteRepository.getClienteDireccionByDireccionId(
-                clienteId: pedidoVentaBorrador.clienteId!,
-                direccionId: pedidoVentaBorrador.direccionId);
+      //   _clienteDireccion =
+      //       await clienteRepository.getClienteDireccionByDireccionId(
+      //           clienteId: pedidoVentaBorrador.clienteId!,
+      //           direccionId: pedidoVentaBorrador.direccionId);
 
-        _currentStep = 2;
+      //   _currentStep = 2;
 
-        _observaciones = pedidoVentaBorrador.observaciones;
+      //   _observaciones = pedidoVentaBorrador.observaciones;
 
-        _pedidoCliente = pedidoVentaBorrador.pedidoCliente;
+      //   _pedidoCliente = pedidoVentaBorrador.pedidoCliente;
 
-        _oferta =
-            pedidoVentaBorrador.oferta ?? _cliente?.clientePotencial ?? false;
+      //   _oferta =
+      //       pedidoVentaBorrador.oferta ?? _cliente?.clientePotencial ?? false;
 
-        _ofertaFechaHasta = pedidoVentaBorrador.ofertaFechaHasta;
+      //   _ofertaFechaHasta = pedidoVentaBorrador.ofertaFechaHasta;
 
+      //   state = PedidoVentaEditPageControllerState.data(
+      //     _cliente,
+      //     _clienteDireccion,
+      //     pedidoVentaLineaList,
+      //     _currentStep,
+      //     _observaciones,
+      //     _pedidoCliente,
+      //     _oferta,
+      //     _ofertaFechaHasta,
+      //     _isBorrador,
+      //   );
+      // } else {
+      //   _isBorrador = false;
+      if (!pedidoLocalParam.isEdit) {
+        if (pedidoLocalParam.createPedidoFromClienteId != null) {
+          _cliente = await clienteRepository.getClienteById(
+              clienteId: pedidoLocalParam.createPedidoFromClienteId!);
+        }
         state = PedidoVentaEditPageControllerState.data(
           _cliente,
           _clienteDireccion,
@@ -129,13 +147,34 @@ class PedidoVentaEditPageController
           _isBorrador,
         );
       } else {
-        _isBorrador = false;
-        if (!pedidoLocalParam.isEdit) {
-          if (pedidoLocalParam.createPedidoFromClienteId != null) {
-            _cliente = await clienteRepository.getClienteById(
-                clienteId: pedidoLocalParam.createPedidoFromClienteId!);
-          }
-          state = PedidoVentaEditPageControllerState.data(
+        final pedidoVenta = await pedidoVentaRepository.getPedidoVentaById(
+          pedidoVentaIdIsLocalParam: pedidoLocalParam,
+        );
+
+        pedidoVentaLineaList = await pedidoVentaRepository
+            .getPedidoVentaLineaListById(pedidoLocalParam: pedidoLocalParam);
+
+        _cliente = await clienteRepository.getClienteById(
+            clienteId: pedidoVenta.clienteId!);
+
+        _clienteDireccion =
+            await clienteRepository.getClienteDireccionByDireccionId(
+                clienteId: pedidoVenta.clienteId!,
+                direccionId: pedidoVenta.direccionId);
+
+        _currentStep = 2;
+
+        _observaciones = pedidoVenta.observaciones;
+
+        _pedidoCliente = pedidoVenta.pedidoCliente;
+
+        _oferta = pedidoVenta.oferta ?? _cliente?.clientePotencial ?? false;
+
+        _ofertaFechaHasta = pedidoVenta.ofertaFechaHasta;
+
+        _isBorrador = pedidoVenta.borrador;
+
+        state = PedidoVentaEditPageControllerState.data(
             _cliente,
             _clienteDireccion,
             pedidoVentaLineaList,
@@ -144,45 +183,8 @@ class PedidoVentaEditPageController
             _pedidoCliente,
             _oferta,
             _ofertaFechaHasta,
-            _isBorrador,
-          );
-        } else {
-          final pedidoVenta = await pedidoVentaRepository.getPedidoVentaById(
-            pedidoVentaIdIsLocalParam: pedidoLocalParam,
-          );
-
-          pedidoVentaLineaList = await pedidoVentaRepository
-              .getPedidoVentaLineaListById(pedidoLocalParam: pedidoLocalParam);
-
-          _cliente = await clienteRepository.getClienteById(
-              clienteId: pedidoVenta.clienteId!);
-
-          _clienteDireccion =
-              await clienteRepository.getClienteDireccionByDireccionId(
-                  clienteId: pedidoVenta.clienteId!,
-                  direccionId: pedidoVenta.direccionId);
-
-          _currentStep = 2;
-
-          _observaciones = pedidoVenta.observaciones;
-
-          _pedidoCliente = pedidoVenta.pedidoCliente;
-
-          _oferta = pedidoVenta.oferta ?? _cliente?.clientePotencial ?? false;
-
-          _ofertaFechaHasta = pedidoVenta.ofertaFechaHasta;
-
-          state = PedidoVentaEditPageControllerState.data(
-              _cliente,
-              _clienteDireccion,
-              pedidoVentaLineaList,
-              _currentStep,
-              _observaciones,
-              _pedidoCliente,
-              _oferta,
-              _ofertaFechaHasta,
-              _isBorrador);
-        }
+            _isBorrador);
+        // }
       }
     } catch (err, stack) {
       state = PedidoVentaEditPageControllerState.error(err, stackTrace: stack);

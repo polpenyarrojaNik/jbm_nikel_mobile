@@ -33,7 +33,7 @@ class PedidoVentaDetallePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(pedidoVentaProvider(pedidoLocalParam));
 
-    final statePedidoBorrador = ref.watch(getPedidoVentaBorradorPendiente);
+    // final statePedidoBorrador = ref.watch(getPedidoVentaBorradorPendiente);
 
     ref.listen<PedidoVentaAdjuntoState>(
       pedidoVentaAdjuntoControllerProvider,
@@ -52,44 +52,29 @@ class PedidoVentaDetallePage extends ConsumerWidget {
             ('${S.of(context).pedido_show_pedidoVentaDetalle_titulo} ${(pedidoLocalParam.isLocal) ? S.of(context).pedido_index_offline : pedidoLocalParam.pedidoId}'),
         actions: state.maybeWhen(
           orElse: () => null,
-          data: (pedidoVenta) => statePedidoBorrador.maybeWhen(
-            orElse: () => null,
-            data: (pedidoBorrador) {
-              if (pedidoLocalParam.pedidoId != null &&
-                  pedidoVenta.oferta != null &&
-                  pedidoVenta.oferta!) {
-                final ofertaAdjuntoValue = ref.watch(
-                    ofertaHaveAttachmentProvider(pedidoLocalParam.pedidoId!));
-                return ofertaAdjuntoValue.maybeWhen(
-                    orElse: () => [
-                          const SizedBox(
-                            height: 25,
-                            child: CircularProgressIndicator(
-                              strokeWidth: 2.5,
-                            ),
-                          )
-                        ],
-                    data: (ofertaHaveAttachment) => ofertaHaveAttachment
-                        ? [
-                            IconButton(
-                              onPressed: () => _donwloadOfertaAttachment(
-                                  ref, pedidoLocalParam.pedidoId!),
-                              icon: const Icon(Icons.picture_as_pdf),
-                            ),
-                            if (pedidoBorrador == null &&
-                                pedidoVenta.isEditable)
-                              IconButton(
-                                icon: const Icon(Icons.edit),
-                                onPressed: () => context.router.push(
-                                  PedidoVentaEditRoute(
-                                    pedidoId: pedidoVenta.pedidoVentaId,
-                                    empresaId: pedidoVenta.empresaId,
-                                    isLocal: false,
-                                  ),
-                                ),
-                              ),
-                          ]
-                        : [
+          data: (pedidoVenta) {
+            if (pedidoLocalParam.pedidoId != null &&
+                pedidoVenta.oferta != null &&
+                pedidoVenta.oferta!) {
+              final ofertaAdjuntoValue = ref.watch(
+                  ofertaHaveAttachmentProvider(pedidoLocalParam.pedidoId!));
+              return ofertaAdjuntoValue.maybeWhen(
+                  orElse: () => [
+                        const SizedBox(
+                          height: 25,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2.5,
+                          ),
+                        )
+                      ],
+                  data: (ofertaHaveAttachment) => ofertaHaveAttachment
+                      ? [
+                          IconButton(
+                            onPressed: () => _donwloadOfertaAttachment(
+                                ref, pedidoLocalParam.pedidoId!),
+                            icon: const Icon(Icons.picture_as_pdf),
+                          ),
+                          if (pedidoVenta.isEditable)
                             IconButton(
                               icon: const Icon(Icons.edit),
                               onPressed: () => context.router.push(
@@ -100,38 +85,48 @@ class PedidoVentaDetallePage extends ConsumerWidget {
                                 ),
                               ),
                             ),
-                          ]);
-              } else {
-                if (pedidoBorrador == null && pedidoVenta.isEditable) {
-                  return [
-                    IconButton(
-                      icon: const Icon(Icons.edit),
-                      onPressed: () => context.router.push(
-                        PedidoVentaEditRoute(
-                          pedidoAppId: pedidoVenta.pedidoVentaAppId,
-                          empresaId: pedidoVenta.empresaId,
-                          isLocal: true,
-                        ),
+                        ]
+                      : [
+                          IconButton(
+                            icon: const Icon(Icons.edit),
+                            onPressed: () => context.router.push(
+                              PedidoVentaEditRoute(
+                                pedidoId: pedidoVenta.pedidoVentaId,
+                                empresaId: pedidoVenta.empresaId,
+                                isLocal: false,
+                              ),
+                            ),
+                          ),
+                        ]);
+            } else {
+              if (pedidoVenta.isEditable) {
+                return [
+                  IconButton(
+                    icon: const Icon(Icons.edit),
+                    onPressed: () => context.router.push(
+                      PedidoVentaEditRoute(
+                        pedidoAppId: pedidoVenta.pedidoVentaAppId,
+                        empresaId: pedidoVenta.empresaId,
+                        isLocal: true,
                       ),
                     ),
-                    IconButton(
-                      icon: const Icon(Icons.delete),
-                      onPressed: () {
-                        ref.read(deletePedidoVentaProvider(
-                            pedidoLocalParam.pedidoAppId!));
-                        ref.invalidate(
-                            pedidoVentaIndexScreenPaginatedControllerProvider);
-                        ref.invalidate(
-                            pedidoVentaIndexScreenControllerProvider);
-                        context.router.maybePop();
-                      },
-                    ),
-                  ];
-                }
-                return null;
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.delete),
+                    onPressed: () {
+                      ref.read(deletePedidoVentaProvider(
+                          pedidoLocalParam.pedidoAppId!));
+                      ref.invalidate(
+                          pedidoVentaIndexScreenPaginatedControllerProvider);
+                      ref.invalidate(pedidoVentaIndexScreenControllerProvider);
+                      context.router.maybePop();
+                    },
+                  ),
+                ];
               }
-            },
-          ),
+              return null;
+            }
+          },
         ),
       ),
       body: AsyncValueWidget<PedidoVenta>(

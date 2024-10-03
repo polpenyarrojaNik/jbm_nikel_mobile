@@ -29,21 +29,22 @@ class ClienteDetallePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final params = {'clienteId': clienteId};
-    final statePedidoBorrador = ref.watch(getPedidoVentaBorradorPendiente);
+    // final statePedidoBorrador = ref.watch(getPedidoVentaBorradorPendiente);
 
     return Scaffold(
       appBar: CommonAppBar(
         titleText: (S.of(context).cliente_show_clienteDetalle_titulo),
         actions: [
-          statePedidoBorrador.maybeWhen(
-            orElse: () => Container(),
-            data: (pedidoVentaBorrador) => (pedidoVentaBorrador == null)
-                ? IconButton(
-                    onPressed: () => navigateToCreatePedido(
-                        context: context, ref: ref, clienteId: clienteId),
-                    icon: const Icon(Icons.shopping_cart_outlined),
-                  )
-                : Container(),
+          // statePedidoBorrador.maybeWhen(
+          //   orElse: () => Container(),
+          //   data: (pedidoVentaBorrador) => (pedidoVentaBorrador == null)
+          //       ?
+          IconButton(
+            onPressed: () => navigateToCreatePedido(
+                context: context, ref: ref, clienteId: clienteId),
+            icon: const Icon(Icons.shopping_cart_outlined),
+            // )
+            // : Container(),
           ),
           IconButton(
             onPressed: () => navigateToCreateVisita(context, clienteId),
@@ -71,46 +72,46 @@ class ClienteDetallePage extends ConsumerWidget {
     );
   }
 
-  void navigateToCreatePedido(
-      {required BuildContext context,
-      required WidgetRef ref,
-      required String clienteId,
-      String? pedidoVentaBorradorId,
-      String? pedidoVentaClienteId}) async {
-    if (pedidoVentaBorradorId != null && clienteId != pedidoVentaClienteId) {
-      final result = await showDialog(
-        context: context,
-        builder: (ctx) {
-          return AskPopAlertDialog(
-              contextEditPage: context,
-              text: S
-                  .of(context)
-                  .pedido_edit_askPopAlertDialog_seguroQuieresSalesBorrador);
-        },
-      ) as bool?;
-      if (result ?? false) {
-        ref.read(deletePedidoVentaProvider(pedidoVentaBorradorId));
-        if (context.mounted) {
-          await context.router.push(
-            PedidoVentaEditRoute(
-                createPedidoFromClienteId: clienteId, isLocal: true),
-          );
-        }
-      }
-    } else if (pedidoVentaBorradorId != null &&
-        clienteId == pedidoVentaClienteId) {
-      await context.router.push(
-        PedidoVentaEditRoute(
-            pedidoAppId: pedidoVentaBorradorId,
-            createPedidoFromClienteId: clienteId,
-            isLocal: true),
-      );
-    } else {
-      await context.router.push(
-        PedidoVentaEditRoute(
-            createPedidoFromClienteId: clienteId, isLocal: true),
-      );
-    }
+  void navigateToCreatePedido({
+    required BuildContext context,
+    required WidgetRef ref,
+    required String clienteId,
+    // String? pedidoVentaBorradorId,
+    // String? pedidoVentaClienteId
+  }) async {
+    // if (pedidoVentaBorradorId != null && clienteId != pedidoVentaClienteId) {
+    //   final result = await showDialog(
+    //     context: context,
+    //     builder: (ctx) {
+    //       return AskPopAlertDialog(
+    //           contextEditPage: context,
+    //           text: S
+    //               .of(context)
+    //               .pedido_edit_askPopAlertDialog_seguroQuieresSalesBorrador);
+    //     },
+    //   ) as bool?;
+    //   if (result ?? false) {
+    //     ref.read(deletePedidoVentaProvider(pedidoVentaBorradorId));
+    //     if (context.mounted) {
+    //       await context.router.push(
+    //         PedidoVentaEditRoute(
+    //             createPedidoFromClienteId: clienteId, isLocal: true),
+    //       );
+    //     }
+    //   }
+    // } else if (pedidoVentaBorradorId != null &&
+    //     clienteId == pedidoVentaClienteId) {
+    //   await context.router.push(
+    //     PedidoVentaEditRoute(
+    //         pedidoAppId: pedidoVentaBorradorId,
+    //         createPedidoFromClienteId: clienteId,
+    //         isLocal: true),
+    //   );
+    // } else {
+    await context.router.push(
+      PedidoVentaEditRoute(createPedidoFromClienteId: clienteId, isLocal: true),
+    );
+    // }
   }
 
   void navigateToCreateVisita(BuildContext context, String clienteId) {
