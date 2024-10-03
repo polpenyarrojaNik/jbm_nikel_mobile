@@ -68,7 +68,7 @@ class LocalAppDatabase extends _$LocalAppDatabase {
       : test = true,
         super(NativeDatabase.memory());
   @override
-  int get schemaVersion => 11;
+  int get schemaVersion => 12;
 
   @override
   MigrationStrategy get migration {
@@ -189,6 +189,15 @@ class LocalAppDatabase extends _$LocalAppDatabase {
             ),
           );
           await m.createTable(catalogoOrdenTable);
+        } else if (to == 12) {
+          await m.alterTable(
+            TableMigration(
+              catalogoFavoritoTable,
+              newColumns: [
+                catalogoFavoritoTable.nombreArchivo,
+              ],
+            ),
+          );
         }
       }),
     );

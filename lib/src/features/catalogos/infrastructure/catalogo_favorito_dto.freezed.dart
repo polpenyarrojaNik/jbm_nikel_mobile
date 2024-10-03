@@ -24,6 +24,8 @@ mixin _$CatalogoFavoritoDTO {
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'CATALOGO_ID')
   int get catalogoId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'NOMBRE_ARCHIVO')
+  String? get nombreArchivo => throw _privateConstructorUsedError;
 
   /// Serializes this CatalogoFavoritoDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,7 +45,8 @@ abstract class $CatalogoFavoritoDTOCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'ID') int id,
-      @JsonKey(name: 'CATALOGO_ID') int catalogoId});
+      @JsonKey(name: 'CATALOGO_ID') int catalogoId,
+      @JsonKey(name: 'NOMBRE_ARCHIVO') String? nombreArchivo});
 }
 
 /// @nodoc
@@ -63,6 +66,7 @@ class _$CatalogoFavoritoDTOCopyWithImpl<$Res, $Val extends CatalogoFavoritoDTO>
   $Res call({
     Object? id = null,
     Object? catalogoId = null,
+    Object? nombreArchivo = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -73,6 +77,10 @@ class _$CatalogoFavoritoDTOCopyWithImpl<$Res, $Val extends CatalogoFavoritoDTO>
           ? _value.catalogoId
           : catalogoId // ignore: cast_nullable_to_non_nullable
               as int,
+      nombreArchivo: freezed == nombreArchivo
+          ? _value.nombreArchivo
+          : nombreArchivo // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -87,7 +95,8 @@ abstract class _$$CatalogoFavoritoDTOImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'ID') int id,
-      @JsonKey(name: 'CATALOGO_ID') int catalogoId});
+      @JsonKey(name: 'CATALOGO_ID') int catalogoId,
+      @JsonKey(name: 'NOMBRE_ARCHIVO') String? nombreArchivo});
 }
 
 /// @nodoc
@@ -105,6 +114,7 @@ class __$$CatalogoFavoritoDTOImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? catalogoId = null,
+    Object? nombreArchivo = freezed,
   }) {
     return _then(_$CatalogoFavoritoDTOImpl(
       id: null == id
@@ -115,6 +125,10 @@ class __$$CatalogoFavoritoDTOImplCopyWithImpl<$Res>
           ? _value.catalogoId
           : catalogoId // ignore: cast_nullable_to_non_nullable
               as int,
+      nombreArchivo: freezed == nombreArchivo
+          ? _value.nombreArchivo
+          : nombreArchivo // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -124,7 +138,8 @@ class __$$CatalogoFavoritoDTOImplCopyWithImpl<$Res>
 class _$CatalogoFavoritoDTOImpl extends _CatalogoFavoritoDTO {
   const _$CatalogoFavoritoDTOImpl(
       {@JsonKey(name: 'ID') required this.id,
-      @JsonKey(name: 'CATALOGO_ID') required this.catalogoId})
+      @JsonKey(name: 'CATALOGO_ID') required this.catalogoId,
+      @JsonKey(name: 'NOMBRE_ARCHIVO') required this.nombreArchivo})
       : super._();
 
   factory _$CatalogoFavoritoDTOImpl.fromJson(Map<String, dynamic> json) =>
@@ -136,10 +151,13 @@ class _$CatalogoFavoritoDTOImpl extends _CatalogoFavoritoDTO {
   @override
   @JsonKey(name: 'CATALOGO_ID')
   final int catalogoId;
+  @override
+  @JsonKey(name: 'NOMBRE_ARCHIVO')
+  final String? nombreArchivo;
 
   @override
   String toString() {
-    return 'CatalogoFavoritoDTO(id: $id, catalogoId: $catalogoId)';
+    return 'CatalogoFavoritoDTO(id: $id, catalogoId: $catalogoId, nombreArchivo: $nombreArchivo)';
   }
 
   @override
@@ -149,12 +167,14 @@ class _$CatalogoFavoritoDTOImpl extends _CatalogoFavoritoDTO {
             other is _$CatalogoFavoritoDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.catalogoId, catalogoId) ||
-                other.catalogoId == catalogoId));
+                other.catalogoId == catalogoId) &&
+            (identical(other.nombreArchivo, nombreArchivo) ||
+                other.nombreArchivo == nombreArchivo));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, catalogoId);
+  int get hashCode => Object.hash(runtimeType, id, catalogoId, nombreArchivo);
 
   /// Create a copy of CatalogoFavoritoDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -175,9 +195,10 @@ class _$CatalogoFavoritoDTOImpl extends _CatalogoFavoritoDTO {
 
 abstract class _CatalogoFavoritoDTO extends CatalogoFavoritoDTO {
   const factory _CatalogoFavoritoDTO(
-          {@JsonKey(name: 'ID') required final int id,
-          @JsonKey(name: 'CATALOGO_ID') required final int catalogoId}) =
-      _$CatalogoFavoritoDTOImpl;
+      {@JsonKey(name: 'ID') required final int id,
+      @JsonKey(name: 'CATALOGO_ID') required final int catalogoId,
+      @JsonKey(name: 'NOMBRE_ARCHIVO')
+      required final String? nombreArchivo}) = _$CatalogoFavoritoDTOImpl;
   const _CatalogoFavoritoDTO._() : super._();
 
   factory _CatalogoFavoritoDTO.fromJson(Map<String, dynamic> json) =
@@ -189,6 +210,9 @@ abstract class _CatalogoFavoritoDTO extends CatalogoFavoritoDTO {
   @override
   @JsonKey(name: 'CATALOGO_ID')
   int get catalogoId;
+  @override
+  @JsonKey(name: 'NOMBRE_ARCHIVO')
+  String? get nombreArchivo;
 
   /// Create a copy of CatalogoFavoritoDTO
   /// with the given fields replaced by the non-null parameter values.

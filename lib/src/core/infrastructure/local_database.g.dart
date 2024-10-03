@@ -2974,8 +2974,14 @@ class $CatalogoFavoritoTableTable extends CatalogoFavoritoTable
   late final GeneratedColumn<int> catalogoId = GeneratedColumn<int>(
       'CATALOGO_ID', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
+  static const VerificationMeta _nombreArchivoMeta =
+      const VerificationMeta('nombreArchivo');
   @override
-  List<GeneratedColumn> get $columns => [id, catalogoId];
+  late final GeneratedColumn<String> nombreArchivo = GeneratedColumn<String>(
+      'NOMBRE_ARCHIVO', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  @override
+  List<GeneratedColumn> get $columns => [id, catalogoId, nombreArchivo];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -2998,6 +3004,12 @@ class $CatalogoFavoritoTableTable extends CatalogoFavoritoTable
     } else if (isInserting) {
       context.missing(_catalogoIdMeta);
     }
+    if (data.containsKey('NOMBRE_ARCHIVO')) {
+      context.handle(
+          _nombreArchivoMeta,
+          nombreArchivo.isAcceptableOrUnknown(
+              data['NOMBRE_ARCHIVO']!, _nombreArchivoMeta));
+    }
     return context;
   }
 
@@ -3011,6 +3023,8 @@ class $CatalogoFavoritoTableTable extends CatalogoFavoritoTable
           .read(DriftSqlType.int, data['${effectivePrefix}ID'])!,
       catalogoId: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}CATALOGO_ID'])!,
+      nombreArchivo: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}NOMBRE_ARCHIVO']),
     );
   }
 
@@ -3024,29 +3038,35 @@ class CatalogoFavoritoTableCompanion
     extends UpdateCompanion<CatalogoFavoritoDTO> {
   final Value<int> id;
   final Value<int> catalogoId;
+  final Value<String?> nombreArchivo;
   const CatalogoFavoritoTableCompanion({
     this.id = const Value.absent(),
     this.catalogoId = const Value.absent(),
+    this.nombreArchivo = const Value.absent(),
   });
   CatalogoFavoritoTableCompanion.insert({
     this.id = const Value.absent(),
     required int catalogoId,
+    this.nombreArchivo = const Value.absent(),
   }) : catalogoId = Value(catalogoId);
   static Insertable<CatalogoFavoritoDTO> custom({
     Expression<int>? id,
     Expression<int>? catalogoId,
+    Expression<String>? nombreArchivo,
   }) {
     return RawValuesInsertable({
       if (id != null) 'ID': id,
       if (catalogoId != null) 'CATALOGO_ID': catalogoId,
+      if (nombreArchivo != null) 'NOMBRE_ARCHIVO': nombreArchivo,
     });
   }
 
   CatalogoFavoritoTableCompanion copyWith(
-      {Value<int>? id, Value<int>? catalogoId}) {
+      {Value<int>? id, Value<int>? catalogoId, Value<String?>? nombreArchivo}) {
     return CatalogoFavoritoTableCompanion(
       id: id ?? this.id,
       catalogoId: catalogoId ?? this.catalogoId,
+      nombreArchivo: nombreArchivo ?? this.nombreArchivo,
     );
   }
 
@@ -3059,6 +3079,9 @@ class CatalogoFavoritoTableCompanion
     if (catalogoId.present) {
       map['CATALOGO_ID'] = Variable<int>(catalogoId.value);
     }
+    if (nombreArchivo.present) {
+      map['NOMBRE_ARCHIVO'] = Variable<String>(nombreArchivo.value);
+    }
     return map;
   }
 
@@ -3066,7 +3089,8 @@ class CatalogoFavoritoTableCompanion
   String toString() {
     return (StringBuffer('CatalogoFavoritoTableCompanion(')
           ..write('id: $id, ')
-          ..write('catalogoId: $catalogoId')
+          ..write('catalogoId: $catalogoId, ')
+          ..write('nombreArchivo: $nombreArchivo')
           ..write(')'))
         .toString();
   }
@@ -6015,11 +6039,13 @@ typedef $$CatalogoFavoritoTableTableCreateCompanionBuilder
     = CatalogoFavoritoTableCompanion Function({
   Value<int> id,
   required int catalogoId,
+  Value<String?> nombreArchivo,
 });
 typedef $$CatalogoFavoritoTableTableUpdateCompanionBuilder
     = CatalogoFavoritoTableCompanion Function({
   Value<int> id,
   Value<int> catalogoId,
+  Value<String?> nombreArchivo,
 });
 
 class $$CatalogoFavoritoTableTableFilterComposer
@@ -6034,6 +6060,11 @@ class $$CatalogoFavoritoTableTableFilterComposer
       column: $state.table.catalogoId,
       builder: (column, joinBuilders) =>
           ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get nombreArchivo => $state.composableBuilder(
+      column: $state.table.nombreArchivo,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
 }
 
 class $$CatalogoFavoritoTableTableOrderingComposer
@@ -6046,6 +6077,11 @@ class $$CatalogoFavoritoTableTableOrderingComposer
 
   ColumnOrderings<int> get catalogoId => $state.composableBuilder(
       column: $state.table.catalogoId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get nombreArchivo => $state.composableBuilder(
+      column: $state.table.nombreArchivo,
       builder: (column, joinBuilders) =>
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
@@ -6077,18 +6113,22 @@ class $$CatalogoFavoritoTableTableTableManager extends RootTableManager<
           updateCompanionCallback: ({
             Value<int> id = const Value.absent(),
             Value<int> catalogoId = const Value.absent(),
+            Value<String?> nombreArchivo = const Value.absent(),
           }) =>
               CatalogoFavoritoTableCompanion(
             id: id,
             catalogoId: catalogoId,
+            nombreArchivo: nombreArchivo,
           ),
           createCompanionCallback: ({
             Value<int> id = const Value.absent(),
             required int catalogoId,
+            Value<String?> nombreArchivo = const Value.absent(),
           }) =>
               CatalogoFavoritoTableCompanion.insert(
             id: id,
             catalogoId: catalogoId,
+            nombreArchivo: nombreArchivo,
           ),
           withReferenceMapper: (p0) => p0
               .map((e) => (e.readTable(table), BaseReferences(db, table, e)))

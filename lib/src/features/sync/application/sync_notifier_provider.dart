@@ -4,6 +4,7 @@ import 'package:drift/isolate.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:path_provider/path_provider.dart';
 import '../../../core/infrastructure/local_database.dart';
 import '../../../core/infrastructure/log_repository.dart';
 import '../../../core/infrastructure/sync_datetime_dto.dart';
@@ -43,14 +44,12 @@ class SyncNotifier extends StateNotifier<SyncControllerState> {
         state = const SyncControllerState.synchronizing();
 
         await usuarioService.syncUser();
+        final documentDirectory = await getApplicationDocumentsDirectory();
 
         final syncProgress = await compute(
             syncInBackground,
-            IsolateArgs(
-              user!,
-              isolateRemoteDatabaseConnectPort!,
-              isolateLocalDatabaseConnectPort!,
-            ));
+            IsolateArgs(user!, isolateRemoteDatabaseConnectPort!,
+                isolateLocalDatabaseConnectPort!, documentDirectory));
 
         await updateSyncDates(syncProgress);
 
@@ -141,8 +140,19 @@ Future<SyncProgress> syncInBackground(IsolateArgs isolateArgs) async {
 
     final dio = Dio();
 
-    final syncService = SyncService(remoteDb, localDb, dio, isolateArgs.user,
-        null, LogRepository(dio, localDb, isolateArgs.user));
+    final syncService = SyncService(
+      remoteDb,
+      localDb,
+      dio,
+      isolateArgs.user,
+      null,
+      LogRepository(
+        dio,
+        localDb,
+        isolateArgs.user,
+      ),
+      isolateArgs.documentDirectory,
+    );
 
     return await syncService.syncAllTable();
   } catch (e) {

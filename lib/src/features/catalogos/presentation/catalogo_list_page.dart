@@ -1,11 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:better_open_file/better_open_file.dart';
+import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../core/helpers/debouncer.dart';
+import '../../../core/infrastructure/sync_service.dart';
 import '../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../core/presentation/common_widgets/async_value_ui.dart';
 import '../../../core/presentation/common_widgets/custom_search_app_bar.dart';
@@ -92,16 +94,33 @@ class _CatalogoListaPageState extends ConsumerState<CatalogoListaPage> {
               searchText,
         ),
       ),
-      body: const Padding(
-        padding: EdgeInsets.all(16.0),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            FilterDropdownWidget(),
-            Expanded(child: CatalogoListViewWidget()),
+            const FilterDropdownWidget(),
+            Expanded(
+              child: RefreshIndicator(
+                  onRefresh: () async => syncCatalogs(context, ref),
+                  child: const CatalogoListViewWidget()),
+            ),
           ],
         ),
       ),
     );
+  }
+
+  Future<void> syncCatalogs(BuildContext context, WidgetRef ref) async {
+    try {
+      await ref.read(syncServiceProvider).syncCatalogos(isInMainThread: true);
+
+      ref.invalidate(catalogoIndexScreenControllerProvider);
+    } catch (e) {
+      if (context.mounted) {
+        await context.showErrorBar(
+            content: Text(S.of(context).noSeHaPodidoSincronizar));
+      }
+    }
   }
 }
 

@@ -1,9 +1,13 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
+import 'dart:ui';
 
 import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:syncfusion_flutter_pdf/pdf.dart';
 
 import '../../core/infrastructure/pais_dto.dart';
 import '../../core/infrastructure/subfamilia_dto.dart';
@@ -16,6 +20,7 @@ import '../../features/articulos/infrastructure/articulo_precio_tarifa_dto.dart'
 import '../../features/articulos/infrastructure/articulo_recambio_dto.dart';
 import '../../features/articulos/infrastructure/articulo_sustitutivo_dto.dart';
 import '../../features/articulos/infrastructure/descuento_general_dto.dart';
+import '../../features/catalogos/infrastructure/catalogo_favorito_dto.dart';
 import '../../features/cliente/infrastructure/cliente_contacto_dto.dart';
 import '../../features/cliente/infrastructure/cliente_descuento_dto.dart';
 import '../../features/cliente/infrastructure/cliente_direccion_dto.dart';
@@ -51,6 +56,7 @@ import '../../features/visitas/infrastructure/visita_local_dto.dart';
 import '../../features/visitas/infrastructure/visita_motivos_no_venta_dto.dart';
 import '../../features/visitas/infrastructure/visita_sector_dto.dart';
 import '../application/log_service.dart';
+import '../domain/adjunto_param.dart';
 import '../domain/log.dart';
 import '../exceptions/app_exception.dart';
 import '../exceptions/get_api_error.dart';
@@ -69,12 +75,14 @@ import 'remote_response.dart';
 typedef Json = Map<String, dynamic>;
 final syncServiceProvider = Provider.autoDispose<SyncService>(
   (ref) => SyncService(
-      ref.watch(appRemoteDatabaseProvider),
-      ref.watch(local.appLocalDatabaseProvider),
-      ref.watch(dioProvider),
-      ref.watch(usuarioNotifierProvider),
-      ref.watch(usuarioServiceProvider),
-      ref.watch(logRepositoryProvider)),
+    ref.watch(appRemoteDatabaseProvider),
+    ref.watch(local.appLocalDatabaseProvider),
+    ref.watch(dioProvider),
+    ref.watch(usuarioNotifierProvider),
+    ref.watch(usuarioServiceProvider),
+    ref.watch(logRepositoryProvider),
+    null,
+  ),
 );
 
 class SyncService {
@@ -84,6 +92,7 @@ class SyncService {
   final Usuario? _usuario;
   final UsuarioService? usuarioService;
   final LogRepository logRepository;
+  final Directory? documentDirectory;
 
   static final remoteDatabaseDateTimeEndpoint = Uri.http(
     'jbm-api.nikel.es',
@@ -110,6 +119,7 @@ class SyncService {
     this._usuario,
     this.usuarioService,
     this.logRepository,
+    this.documentDirectory,
   );
 
   Future<DateTime> getRemoteDatabaseDateTime() async {
@@ -1369,6 +1379,8 @@ class SyncService {
       splashProgress = SyncProgress.syncVisitas;
       await syncAllAuxiliares();
       splashProgress = SyncProgress.syncAuxiliar;
+      await syncCatalogos(isInMainThread: false);
+      splashProgress = SyncProgress.syncCatalogos;
 
       return splashProgress;
     } catch (e) {
@@ -1580,5 +1592,163 @@ class SyncService {
     await (_localDb.delete(_localDb.pedidoVentaLineaLocalTable)
           ..where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId)))
         .go();
+  }
+
+  Future<void> syncCatalogos({required bool isInMainThread}) async {
+    try {
+      await insetLog(level: 'I', message: 'Init catalogs sync');
+
+      final favoritesCatalogsDtoList = await _getFavoritesCatalogDtoList();
+
+      if (isInMainThread) {
+        await _removeAllCatalogsFiles(
+            documentDirectory ?? await getApplicationDocumentsDirectory());
+      }
+
+      if (favoritesCatalogsDtoList.isNotEmpty) {
+        await downloadFavoritesCatalogs(favoritesCatalogsDtoList,
+            documentDirectory ?? await getApplicationDocumentsDirectory());
+      }
+      if (!isInMainThread) {
+        await removeDeletedCatalogs(favoritesCatalogsDtoList,
+            documentDirectory ?? await getApplicationDocumentsDirectory());
+      }
+
+      await insetLog(level: 'I', message: 'End catalogs sync');
+    } catch (e) {
+      await insetLog(level: 'I', message: 'Error catalog sync');
+
+      rethrow;
+    }
+  }
+
+  Future<void> downloadFavoritesCatalogs(
+      List<CatalogoFavoritoDTO> favoritesCatalogsDtoList,
+      Directory documentDirectory) async {
+    for (var i = 0; i < favoritesCatalogsDtoList.length; i++) {
+      final adjuntoParam = AdjuntoParam(
+        id: favoritesCatalogsDtoList[i].catalogoId.toString(),
+        nombreArchivo: favoritesCatalogsDtoList[i].nombreArchivo,
+      );
+      if (adjuntoParam.nombreArchivo != null &&
+          !_fileExistInLocal(adjuntoParam, documentDirectory)) {
+        final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
+        final data = await _remoteGetAttachment(
+            requestUri: Uri.http(
+              'jbm-api.nikel.es',
+              'api/v1/online/adjunto/catalogo/${adjuntoParam.id}',
+              query,
+            ),
+            provisionalToken: _usuario!.provisionalToken);
+        await saveDocumentInLocal(data, adjuntoParam, documentDirectory);
+      }
+    }
+  }
+
+  Future<List<CatalogoFavoritoDTO>> _getFavoritesCatalogDtoList() async {
+    return _localDb.select(_localDb.catalogoFavoritoTable).get();
+  }
+
+  Future<File> saveDocumentInLocal(
+      List<int> data, AdjuntoParam adjuntoParam, Directory directory) async {
+    try {
+      final file = await File(
+              '${directory.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}')
+          .create(recursive: true);
+
+      final raf = file.openSync(mode: FileMode.write);
+      raf.writeFromSync(data);
+      await raf.close();
+
+      final document = PdfDocument(inputBytes: file.readAsBytesSync());
+
+      for (var i = 0; i < document.pages.count; i++) {
+        final pageSize = document.pages[i].size;
+        document.pages[i].graphics.drawString(
+          _usuario!.id,
+          PdfStandardFont(PdfFontFamily.helvetica, 9),
+          brush: PdfSolidBrush(PdfColor(105, 105, 105)),
+          bounds: Rect.fromLTWH(8, pageSize.height - 16, 50, 20),
+        );
+      }
+      final savedFile = await document.save();
+
+      await file.writeAsBytes(savedFile);
+      document.dispose();
+
+      return file;
+    } catch (e) {
+      throw AppException.createFileInCacheFailure(e.toString());
+    }
+  }
+
+  Future<void> removeDeletedCatalogs(
+      List<CatalogoFavoritoDTO> favoritesCatalogsDtoList,
+      Directory documentDirectory) async {
+    final getCatalogoDirectory =
+        Directory('${documentDirectory.path}/catalogos/');
+
+    final getFilesList = getCatalogoDirectory.listSync();
+
+    for (var i = 0; i < getFilesList.length; i++) {
+      final fileCatalogoId = getFilesList[i].path.split('/').last;
+      var existeEnFavoritos = false;
+      for (var j = 0; j < favoritesCatalogsDtoList.length; j++) {
+        if (fileCatalogoId ==
+            favoritesCatalogsDtoList[j].catalogoId.toString()) {
+          existeEnFavoritos = true;
+        }
+      }
+      if (!existeEnFavoritos && getFilesList[i] is Directory) {
+        getFilesList[i].deleteSync(recursive: true);
+      }
+    }
+  }
+
+  // Future<void> _remoteFavoriteFileFromLocal(
+  //     AdjuntoParam adjuntoParam, Directory documentDirectory) async {
+  //   final file = File(
+  //       '${documentDirectory.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}');
+
+  //   if (file.existsSync()) {
+  //     file.deleteSync(recursive: true);
+  //   }
+  // }
+
+  bool _fileExistInLocal(AdjuntoParam adjuntoParam, Directory directory) {
+    final filePath =
+        '${directory.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}';
+
+    final file = File(filePath);
+
+    return file.existsSync();
+  }
+
+  Future<List<int>> _remoteGetAttachment({
+    required Uri requestUri,
+    required String provisionalToken,
+  }) async {
+    try {
+      final response = await _dio.getUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer $provisionalToken'},
+          responseType: ResponseType.bytes,
+          receiveDataWhenStatusError: true,
+        ),
+      );
+      if (response.statusCode == 200) {
+        return response.data as List<int>;
+      } else {
+        throw AppException.restApiFailure(
+            response.statusCode ?? 400, response.statusMessage ?? '');
+      }
+    } catch (e) {
+      throw getApiError(e);
+    }
+  }
+
+  Future<void> _removeAllCatalogsFiles(Directory directory) async {
+    Directory('${directory.path}/catalogos').deleteSync(recursive: true);
   }
 }

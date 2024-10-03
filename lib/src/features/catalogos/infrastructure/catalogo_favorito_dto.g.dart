@@ -11,6 +11,7 @@ _$CatalogoFavoritoDTOImpl _$$CatalogoFavoritoDTOImplFromJson(
     _$CatalogoFavoritoDTOImpl(
       id: (json['ID'] as num).toInt(),
       catalogoId: (json['CATALOGO_ID'] as num).toInt(),
+      nombreArchivo: json['NOMBRE_ARCHIVO'] as String?,
     );
 
 Map<String, dynamic> _$$CatalogoFavoritoDTOImplToJson(
@@ -18,4 +19,5 @@ Map<String, dynamic> _$$CatalogoFavoritoDTOImplToJson(
     <String, dynamic>{
       'ID': instance.id,
       'CATALOGO_ID': instance.catalogoId,
+      'NOMBRE_ARCHIVO': instance.nombreArchivo,
     };

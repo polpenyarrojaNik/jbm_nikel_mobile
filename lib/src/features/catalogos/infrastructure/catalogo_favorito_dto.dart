@@ -16,6 +16,7 @@ class CatalogoFavoritoDTO
   const factory CatalogoFavoritoDTO({
     @JsonKey(name: 'ID') required int id,
     @JsonKey(name: 'CATALOGO_ID') required int catalogoId,
+    @JsonKey(name: 'NOMBRE_ARCHIVO') required String? nombreArchivo,
   }) = _CatalogoFavoritoDTO;
 
   factory CatalogoFavoritoDTO.fromJson(Map<String, dynamic> json) =>
@@ -26,6 +27,7 @@ class CatalogoFavoritoDTO
     return CatalogoFavoritoTableCompanion(
       id: Value(id),
       catalogoId: Value(catalogoId),
+      nombreArchivo: Value(nombreArchivo),
     ).toColumns(nullToAbsent);
   }
 }
@@ -37,4 +39,5 @@ class CatalogoFavoritoTable extends Table {
 
   IntColumn get id => integer().autoIncrement().named('ID')();
   IntColumn get catalogoId => integer().named('CATALOGO_ID')();
+  TextColumn get nombreArchivo => text().nullable().named('NOMBRE_ARCHIVO')();
 }

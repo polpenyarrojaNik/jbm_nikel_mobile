@@ -258,6 +258,7 @@ class CatalogoRepository {
     await _localDb.into(_localDb.catalogoFavoritoTable).insertOnConflictUpdate(
           CatalogoFavoritoTableCompanion(
             catalogoId: Value(int.parse(adjuntoParam.id)),
+            nombreArchivo: Value(adjuntoParam.nombreArchivo),
           ),
         );
 
