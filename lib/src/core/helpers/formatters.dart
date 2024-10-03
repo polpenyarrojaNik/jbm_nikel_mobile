@@ -441,6 +441,11 @@ T getFormValue<T>(GlobalKey<FormBuilderState> formKey, String fieldName) {
   return formKey.currentState?.value[fieldName] as T;
 }
 
+T getFormInstantValue<T>(
+    GlobalKey<FormBuilderState> formKey, String fieldName) {
+  return formKey.currentState?.instantValue[fieldName] as T;
+}
+
 FrecuenciaPedido getFrecuenciaPedidoFromId(String id) {
   switch (id) {
     case 'M':

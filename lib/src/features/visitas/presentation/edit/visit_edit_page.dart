@@ -320,7 +320,7 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
   }
 }
 
-class _VisitaForm extends StatelessWidget {
+class _VisitaForm extends StatefulWidget {
   const _VisitaForm({
     required this.formKey,
     required this.onSelectedCliente,
@@ -346,9 +346,14 @@ class _VisitaForm extends StatelessWidget {
   final String? paisId;
 
   @override
+  State<_VisitaForm> createState() => _VisitaFormState();
+}
+
+class _VisitaFormState extends State<_VisitaForm> {
+  @override
   Widget build(BuildContext context) {
     return FormBuilder(
-      key: formKey,
+      key: widget.formKey,
       autovalidateMode: AutovalidateMode.disabled,
       child: Column(
         children: [
@@ -356,30 +361,32 @@ class _VisitaForm extends StatelessWidget {
             name: 'cliente_provisional',
             title: Text(
                 S.of(context).visitas_edit_visitaEditar_clienteProvisional),
-            onChanged: (newValue) => onChangeClientePotencial(newValue!),
-            initialValue: visita?.isClienteProvisional ?? isClienteProvisional,
+            onChanged: (newValue) => widget.onChangeClientePotencial(newValue!),
+            initialValue: widget.visita?.isClienteProvisional ??
+                widget.isClienteProvisional,
           ),
-          if (isClienteProvisional)
+          if (widget.isClienteProvisional)
             _ClienteProvisionalContainer(
-              formKey: formKey,
-              visita: visita,
-              readOnly: readOnly,
-              onChangeClientePotencial: onChangeClientePotencial,
-              onSelectedPais: onSelectedPais,
-              onSelectedProvincia: onSelectedProvincia,
+              formKey: widget.formKey,
+              visita: widget.visita,
+              readOnly: widget.readOnly,
+              onChangeClientePotencial: widget.onChangeClientePotencial,
+              onSelectedPais: widget.onSelectedPais,
+              onSelectedProvincia: widget.onSelectedProvincia,
             ),
-          if (isClienteProvisional) const Divider(),
-          if (!isClienteProvisional)
+          if (widget.isClienteProvisional) const Divider(),
+          if (!widget.isClienteProvisional)
             _SelectClienteWidget(
-              visita: visita,
-              readOnly: readOnly,
-              onSelectedCliente: onSelectedCliente,
+              visita: widget.visita,
+              readOnly: widget.readOnly,
+              onSelectedCliente: widget.onSelectedCliente,
             ),
           FormBuilderDateTimePicker(
             name: 'fecha',
             inputType: InputType.date,
-            initialValue: visita?.fecha.toLocal() ?? DateTime.now().toLocal(),
-            enabled: !readOnly,
+            initialValue:
+                widget.visita?.fecha.toLocal() ?? DateTime.now().toLocal(),
+            enabled: !widget.readOnly,
             validator: FormBuilderValidators.compose([
               FormBuilderValidators.required(),
             ]),
@@ -389,8 +396,8 @@ class _VisitaForm extends StatelessWidget {
           ),
           FormBuilderTextField(
             name: 'contacto',
-            initialValue: visita?.contacto,
-            enabled: !readOnly,
+            initialValue: widget.visita?.contacto,
+            enabled: !widget.readOnly,
             validator: FormBuilderValidators.compose([
               FormBuilderValidators.required(),
               FormBuilderValidators.maxLength(255, checkNullOrEmpty: false),
@@ -402,8 +409,8 @@ class _VisitaForm extends StatelessWidget {
           ),
           FormBuilderTextField(
             name: 'atendidoPor',
-            initialValue: visita?.atendidoPor,
-            enabled: !readOnly,
+            initialValue: widget.visita?.atendidoPor,
+            enabled: !widget.readOnly,
             decoration: InputDecoration(
               labelText: S.of(context).visitas_edit_visitaEditar_atendidoPor,
             ),
@@ -413,10 +420,10 @@ class _VisitaForm extends StatelessWidget {
           ),
           FormBuilderTextField(
             name: 'resumen',
-            initialValue: visita?.resumen,
+            initialValue: widget.visita?.resumen,
             maxLines: null,
             minLines: 4,
-            enabled: !readOnly,
+            enabled: !widget.readOnly,
             validator: FormBuilderValidators.compose([
               FormBuilderValidators.required(),
               FormBuilderValidators.maxLength(4000),
@@ -427,10 +434,10 @@ class _VisitaForm extends StatelessWidget {
           ),
           FormBuilderTextField(
             name: 'marcasCompetencia',
-            initialValue: visita?.marcasCompetencia,
+            initialValue: widget.visita?.marcasCompetencia,
             maxLines: null,
             minLines: 4,
-            enabled: !readOnly,
+            enabled: !widget.readOnly,
             decoration: InputDecoration(
               labelText:
                   S.of(context).visitas_edit_visitaEditar_marcasCompetencia,
@@ -442,7 +449,8 @@ class _VisitaForm extends StatelessWidget {
           FormBuilderSwitch(
             name: 'ofertaRealizada',
             title: Text(S.of(context).ofertaRealziada),
-            initialValue: visita?.ofertaRealizada ?? false,
+            initialValue: widget.visita?.ofertaRealizada ?? false,
+            onChanged: (_) => setState(() {}),
             validator: FormBuilderValidators.compose([
               FormBuilderValidators.required(),
             ]),
@@ -450,7 +458,8 @@ class _VisitaForm extends StatelessWidget {
           FormBuilderSwitch(
             name: 'pedidoRealizado',
             title: Text(S.of(context).pedidoRealizado),
-            initialValue: visita?.pedidoRealizado ?? false,
+            initialValue: widget.visita?.pedidoRealizado ?? false,
+            onChanged: (_) => setState(() {}),
             validator: FormBuilderValidators.compose([
               FormBuilderValidators.required(),
             ]),
@@ -458,18 +467,18 @@ class _VisitaForm extends StatelessWidget {
           FormBuilderSwitch(
             name: 'almacenPropio',
             title: Text(S.of(context).almacenPropio),
-            initialValue: visita?.almacenPropio ?? false,
+            initialValue: widget.visita?.almacenPropio ?? false,
             validator: FormBuilderValidators.compose([
               FormBuilderValidators.required(),
             ]),
           ),
           VisitaSectorFormDropdown(
             name: 'sector',
-            initialValue: visita?.sector,
+            initialValue: widget.visita?.sector,
           ),
           VisitaCompetidorFormDropdown(
             name: 'competencia',
-            initialValue: visita?.competencia,
+            initialValue: widget.visita?.competencia,
           ),
           AppFormBuilderSearchableDropdown<InteresCliente>(
             name: 'interesCliente',
@@ -477,7 +486,7 @@ class _VisitaForm extends StatelessWidget {
               labelText: S.of(context).interesCliente,
               border: InputBorder.none,
             ),
-            initialValue: visita?.interesCliente,
+            initialValue: widget.visita?.interesCliente,
             items: const [
               InteresCliente.alto,
               InteresCliente.medio,
@@ -490,22 +499,34 @@ class _VisitaForm extends StatelessWidget {
             ]),
           ),
           VisitaMotivoNoVentaFormDropdown(
-            name: 'motivoNoInteres',
-            initialValue: visita?.motivoNoInteres,
-            labelText: S.of(context).motivoNoInteres,
-          ),
+              name: 'motivoNoInteres',
+              initialValue: widget.visita?.motivoNoInteres,
+              labelText: S.of(context).motivoNoInteres,
+              formKey: widget.formKey,
+              enabled: !getFormInstantValue<bool>(
+                      widget.formKey, 'cliente_provisional') &&
+                  !getFormInstantValue<bool>(
+                      widget.formKey, 'pedidoRealizado') &&
+                  !getFormInstantValue<bool>(
+                      widget.formKey, 'ofertaRealizada')),
           VisitaMotivoNoVentaFormDropdown(
-            name: 'motivoNoPedido',
-            initialValue: visita?.motivoNoPedido,
-            labelText: S.of(context).motivoNoPedido,
-          ),
+              name: 'motivoNoPedido',
+              initialValue: widget.visita?.motivoNoPedido,
+              labelText: S.of(context).motivoNoPedido,
+              formKey: widget.formKey,
+              enabled: !getFormInstantValue<bool>(
+                      widget.formKey, 'cliente_provisional') &&
+                  !getFormInstantValue<bool>(
+                      widget.formKey, 'pedidoRealizado') &&
+                  !getFormInstantValue<bool>(
+                      widget.formKey, 'ofertaRealizada')),
           AppFormBuilderSearchableDropdown<Capacidad>(
             name: 'capacidad',
             decoration: InputDecoration(
               labelText: S.of(context).capacidad,
               border: InputBorder.none,
             ),
-            initialValue: visita?.capacidad,
+            initialValue: widget.visita?.capacidad,
             items: const [
               Capacidad.grande,
               Capacidad.media,
@@ -523,7 +544,7 @@ class _VisitaForm extends StatelessWidget {
               labelText: S.of(context).frecuenciaPedido,
               border: InputBorder.none,
             ),
-            initialValue: visita?.frecuenciaPedido,
+            initialValue: widget.visita?.frecuenciaPedido,
             items: const [
               FrecuenciaPedido.semanal,
               FrecuenciaPedido.mensual,
@@ -894,11 +915,15 @@ class VisitaMotivoNoVentaFormDropdown extends ConsumerWidget {
     required this.initialValue,
     required this.name,
     required this.labelText,
+    required this.formKey,
+    required this.enabled,
   });
 
   final VisitaMotivoNoVenta? initialValue;
+  final GlobalKey<FormBuilderState> formKey;
   final String name;
   final String labelText;
+  final bool enabled;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -911,6 +936,7 @@ class VisitaMotivoNoVentaFormDropdown extends ConsumerWidget {
         labelText: labelText,
         border: InputBorder.none,
       ),
+      enabled: enabled,
       initialValue: initialValue,
       items: state.maybeWhen(
         orElse: () => [],
@@ -918,6 +944,13 @@ class VisitaMotivoNoVentaFormDropdown extends ConsumerWidget {
       ),
       itemAsString: (item) => item.descripcion,
       compareFn: (i, s) => i.id == s.id,
+      validator: !getFormInstantValue<bool>(formKey, 'cliente_provisional') &&
+              (!getFormInstantValue<bool>(formKey, 'pedidoRealizado') ||
+                  !getFormInstantValue<bool>(formKey, 'ofertaRealizada'))
+          ? FormBuilderValidators.compose([
+              FormBuilderValidators.required(),
+            ])
+          : null,
     );
   }
 }
