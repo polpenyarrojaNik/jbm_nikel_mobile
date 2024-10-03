@@ -44,6 +44,10 @@ class ClientePedidosPage extends ConsumerWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: PedidoVentaListaTile(
                           pedidoVenta: clientePedidoVentaList[i],
+                          onTap: () => navigateToPedidoVentaDetalle(
+                              context: context,
+                              pedidoVentaId:
+                                  clientePedidoVentaList[i].pedidoVentaId),
                         ),
                       ),
                       separatorBuilder: (context, i) => const Divider(),
@@ -63,5 +67,9 @@ class ClientePedidosPage extends ConsumerWidget {
   }
 
   void navigateToPedidoVentaDetalle(
-      {required BuildContext context, String? pedidoVentaId}) {}
+      {required BuildContext context, String? pedidoVentaId}) {
+    // context.router.push(PedidoVentaDetalleRoute(pedidoLocalParam: Pedid
+
+    //  pedidoVentaId));
+  }
 }

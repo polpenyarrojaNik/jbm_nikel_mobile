@@ -1,7 +1,12 @@
+import 'dart:async';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:riverpod_mutations_annotation/riverpod_mutations_annotation.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
@@ -15,10 +20,30 @@ import '../../../../core/presentation/common_widgets/selectable_text_widget.dart
 import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../../pedido_venta/domain/pedido_local_param.dart';
+import '../../../pedido_venta/domain/pedido_venta.dart';
 import '../../../pedido_venta/domain/seleccionar_cantidad_param.dart';
 import '../../../pedido_venta/infrastructure/pedido_venta_repository.dart';
+import '../../../pedido_venta/presentation/index/pedido_venta_lista_tile.dart';
 import '../../domain/articulo.dart';
 import '../../infrastructure/articulo_repository.dart';
+
+part 'articulo_detalle_page.g.dart';
+
+@riverpod
+class ArticuloDetalleAddArticuloABorradorButtonController
+    extends _$ArticuloDetalleAddArticuloABorradorButtonController {
+  @override
+  void build() {}
+
+  @mutation
+  Future<int> getPedidoVentaLinea(PedidoLocalParam pedidoLocalParam) async {
+    final pedidoVentaLineaList = await ref
+        .read(pedidoVentaRepositoryProvider)
+        .getPedidoVentaLineaListById(pedidoLocalParam: pedidoLocalParam);
+
+    return pedidoVentaLineaList.length;
+  }
+}
 
 @RoutePage()
 class ArticuloDetallePage extends ConsumerWidget {
@@ -29,38 +54,26 @@ class ArticuloDetallePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final params = {'articuloId': articuloId};
-    // final stateBorradorPendiente = ref.watch(getPedidoVentaBorradorPendiente);
+    final statePedidoVentaBorradoresList =
+        ref.watch(getPedidoVentaBorradoresList);
     return Scaffold(
       appBar: CommonAppBar(
         titleText: (S.of(context).articulo_show_articuloDetalle_titulo),
-        // actions: stateBorradorPendiente.maybeWhen(
-        //   orElse: () => null,
-        //   data: (pedidoBorrador) {
-        //     if (pedidoBorrador != null) {
-        //       final pedidoVentaIdIsLocalParam = PedidoLocalParam(
-        //         pedidoAppId: pedidoBorrador.pedidoVentaAppId!,
-        //         isEdit: false,
-        //         tratada: false,
-        //       );
-        //       final state = ref
-        //           .watch(pedidoVentaLineaProvider(pedidoVentaIdIsLocalParam));
-        //       return state.maybeWhen(
-        //           orElse: () => null,
-        //           data: (pedidoVentaLinea) => [
-        //                 IconButton(
-        //                   onPressed: () => naviagateToSelectCantidad(
-        //                       context,
-        //                       pedidoVentaIdIsLocalParam,
-        //                       pedidoBorrador.clienteId!,
-        //                       pedidoVentaLinea.length),
-        //                   icon: const Icon(Icons.add_shopping_cart_outlined),
-        //                 )
-        //               ]);
-        //     } else {
-        //       return null;
-        //     }
-        //   },
-        // ),
+        actions: statePedidoVentaBorradoresList.maybeWhen(
+          orElse: () => null,
+          data: (pedidoVentaBorradoresList) {
+            if (pedidoVentaBorradoresList.isNotEmpty) {
+              return [
+                AddArticleToBorradorButton(
+                  pedidoVentaBorradoresList: pedidoVentaBorradoresList,
+                  articuloId: articuloId,
+                )
+              ];
+            } else {
+              return null;
+            }
+          },
+        ),
       ),
       body: Consumer(
         builder: (context, ref, _) {
@@ -81,6 +94,74 @@ class ArticuloDetallePage extends ConsumerWidget {
       ),
     );
   }
+}
+
+class AddArticleToBorradorButton extends ConsumerWidget {
+  const AddArticleToBorradorButton({
+    super.key,
+    required this.pedidoVentaBorradoresList,
+    required this.articuloId,
+  });
+
+  final List<PedidoVenta> pedidoVentaBorradoresList;
+  final String articuloId;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.listen(
+        articuloDetalleAddArticuloABorradorButtonControllerProvider
+            .getPedidoVentaLinea, (_, state) {
+      if (state is GetPedidoVentaLineaMutationSuccess) {
+        naviagateToSelectCantidad(
+          context,
+          PedidoLocalParam(
+            pedidoAppId: pedidoVentaBorradoresList.first.pedidoVentaAppId!,
+            isEdit: false,
+          ),
+          pedidoVentaBorradoresList.first.clienteId!,
+          state.result,
+        );
+      }
+    });
+
+    final getPedidoVentaLineaState = ref.watch(
+        articuloDetalleAddArticuloABorradorButtonControllerProvider
+            .getPedidoVentaLinea);
+
+    return IconButton(
+      onPressed: getPedidoVentaLineaState is GetPedidoVentaLineaMutationLoading
+          ? null
+          : pedidoVentaBorradoresList.length == 1
+              ? () => getPedidoVentaLineaState(PedidoLocalParam(
+                    pedidoAppId:
+                        pedidoVentaBorradoresList.first.pedidoVentaAppId!,
+                    isEdit: false,
+                  ))
+              : () => selectBorradorToAddArticle(
+                  context, getPedidoVentaLineaState, pedidoVentaBorradoresList),
+      icon: const Icon(Icons.add_shopping_cart_outlined),
+    );
+  }
+
+  Future<void> selectBorradorToAddArticle(
+      BuildContext context,
+      GetPedidoVentaLineaMutation getPedidoVentaLineaState,
+      List<PedidoVenta> pedidoVentaBorradoresList) async {
+    final pedidoVentaBorrador = await showDialog<PedidoVenta?>(
+      context: context,
+      builder: (context) => SelectPedidoVentaBorradorAlertDialog(
+          pedidoVentaBorradoresList: pedidoVentaBorradoresList),
+    );
+
+    if (pedidoVentaBorrador != null) {
+      final pedidoLocalParam = PedidoLocalParam(
+        pedidoAppId: pedidoVentaBorrador.pedidoVentaAppId!,
+        isEdit: false,
+        tratada: false,
+      );
+      unawaited(getPedidoVentaLineaState(pedidoLocalParam));
+    }
+  }
 
   void naviagateToSelectCantidad(BuildContext context,
       PedidoLocalParam pedidoVentaParam, String clienteId, int posicionLinea) {
@@ -92,6 +173,40 @@ class ArticuloDetallePage extends ConsumerWidget {
             clienteId: clienteId,
             posicionLinea: posicionLinea,
             addNewLineaDesdeArticulo: true),
+      ),
+    );
+  }
+}
+
+class SelectPedidoVentaBorradorAlertDialog extends StatelessWidget {
+  const SelectPedidoVentaBorradorAlertDialog(
+      {super.key, required this.pedidoVentaBorradoresList});
+
+  final List<PedidoVenta> pedidoVentaBorradoresList;
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text(S.of(context).seleccionarBorrador),
+      // scrollable: true,
+      insetPadding: const EdgeInsets.symmetric(horizontal: 16),
+      content: SizedBox(
+        width: double.maxFinite,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ListView.separated(
+              shrinkWrap: true,
+              itemBuilder: (context, i) => PedidoVentaListaTile(
+                pedidoVenta: pedidoVentaBorradoresList[i],
+                onTap: () =>
+                    Navigator.pop(context, pedidoVentaBorradoresList[i]),
+              ),
+              separatorBuilder: (context, index) => const Gap(4),
+              itemCount: pedidoVentaBorradoresList.length,
+            ),
+          ],
+        ),
       ),
     );
   }

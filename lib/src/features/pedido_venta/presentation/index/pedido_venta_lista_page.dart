@@ -18,6 +18,7 @@ import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../../notifications/core/application/notification_provider.dart';
 import '../../../sync/application/sync_notifier_provider.dart';
+import '../../domain/pedido_local_param.dart';
 import '../../domain/pedido_venta_estado.dart';
 import '../../infrastructure/pedido_venta_repository.dart';
 import 'pedido_search_controller.dart';
@@ -194,6 +195,38 @@ class PedidosListViewWidget extends StatelessWidget {
                         ? PedidoVentaListaTile(
                             pedidoVenta: pedidoVentaList[
                                 i % PedidoVentaRepository.pageSize],
+                            onTap: () => (!pedidoVentaList[
+                                        i % PedidoVentaRepository.pageSize]
+                                    .borrador)
+                                ? context.router.push(
+                                    PedidoVentaDetalleRoute(
+                                      pedidoLocalParam: PedidoLocalParam(
+                                          pedidoId: pedidoVentaList[i %
+                                                  PedidoVentaRepository
+                                                      .pageSize]
+                                              .pedidoVentaId,
+                                          empresaId: pedidoVentaList[i %
+                                                  PedidoVentaRepository
+                                                      .pageSize]
+                                              .empresaId,
+                                          pedidoAppId: pedidoVentaList[i %
+                                                  PedidoVentaRepository
+                                                      .pageSize]
+                                              .pedidoVentaAppId,
+                                          isEdit: false,
+                                          tratada: pedidoVentaList[i %
+                                                  PedidoVentaRepository
+                                                      .pageSize]
+                                              .tratada),
+                                    ),
+                                  )
+                                : context.router.push(
+                                    PedidoVentaEditRoute(
+                                        pedidoAppId: pedidoVentaList[i %
+                                                PedidoVentaRepository.pageSize]
+                                            .pedidoVentaAppId,
+                                        isLocal: true),
+                                  ),
                           )
                         : const SinResultadosWidget(),
                   ),

@@ -90,11 +90,11 @@ final getStockDisponibleProvider =
   return pedidoVentaRepository.getStockActual(articuloId: articuloId);
 });
 
-// final getPedidoVentaBorradorPendiente =
-//     FutureProvider.autoDispose<PedidoVenta?>((ref) {
-//   final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
-//   return pedidoVentaRepository.getBorradorPendiete();
-// });
+final getPedidoVentaBorradoresList =
+    FutureProvider.autoDispose<List<PedidoVenta>>((ref) {
+  final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+  return pedidoVentaRepository.getPedidoVentaBorradoresList();
+});
 
 final ofertaHaveAttachmentProvider =
     FutureProvider.autoDispose.family<bool, String>((ref, pedidoVentaId) {
@@ -504,44 +504,44 @@ class PedidoVentaRepository {
     }
   }
 
-  // Future<PedidoVenta?> getBorradorPendiete() async {
-  //   try {
-  //     final pedidoVentaBorradorDTO = await (_localDb
-  //             .select(_localDb.pedidoVentaLocalTable)
-  //           ..where(
-  //               (tbl) => tbl.borrador.equals('S') & tbl.tratada.equals('N')))
-  //         .getSingleOrNull();
+  Future<List<PedidoVenta>> getPedidoVentaBorradoresList() async {
+    try {
+      final pedidoVentaBorradorListDTO = await (_localDb
+              .select(_localDb.pedidoVentaLocalTable)
+            ..where(
+                (tbl) => tbl.borrador.equals('S') & tbl.tratada.equals('N')))
+          .get();
 
-  //     if (pedidoVentaBorradorDTO != null) {
-  //       final divisaDTO = await (_remoteDb.select(_remoteDb.divisaTable)
-  //             ..where((tbl) => tbl.id.equals(pedidoVentaBorradorDTO.divisaId!)))
-  //           .getSingle();
-  //       final paisDTO = await (_remoteDb.select(_remoteDb.paisTable)
-  //             ..where((tbl) => tbl.id.equals(pedidoVentaBorradorDTO.paisId!)))
-  //           .getSingle();
+      final pedidoVentaBorradoresList =
+          await Future.wait(pedidoVentaBorradorListDTO.map((e) async {
+        final divisaDTO = await (_remoteDb.select(_remoteDb.divisaTable)
+              ..where((tbl) => tbl.id.equals(e.divisaId!)))
+            .getSingle();
+        final paisDTO = await (_remoteDb.select(_remoteDb.paisTable)
+              ..where((tbl) => tbl.id.equals(e.paisId!)))
+            .getSingle();
 
-  //       final pedidoVentaLineas = await getLocalPedidoVentaLineaList(
-  //           pedidoVentaAppId: pedidoVentaBorradorDTO.pedidoVentaAppId);
+        final pedidoVentaLineas = await getLocalPedidoVentaLineaList(
+            pedidoVentaAppId: e.pedidoVentaAppId);
 
-  //       final importeBaseImponible =
-  //           getBaseImponible(pedidoVentaLineas, divisaDTO.id);
-  //       final importeIva =
-  //           getImporteIva(importeBaseImponible, pedidoVentaBorradorDTO.iva);
+        final importeBaseImponible =
+            getBaseImponible(pedidoVentaLineas, divisaDTO.id);
+        final importeIva = getImporteIva(importeBaseImponible, e.iva);
 
-  //       return pedidoVentaBorradorDTO.toDomain(
-  //         pais: paisDTO.toDomain(),
-  //         divisa: divisaDTO.toDomain(),
-  //         baseImponible: importeBaseImponible,
-  //         importeIva: importeIva,
-  //         total: importeBaseImponible + importeIva,
-  //       );
-  //     }
+        return e.toDomain(
+          pais: paisDTO.toDomain(),
+          divisa: divisaDTO.toDomain(),
+          baseImponible: importeBaseImponible,
+          importeIva: importeIva,
+          total: importeBaseImponible + importeIva,
+        );
+      }));
 
-  //     return null;
-  //   } catch (e) {
-  //     throw AppException.fetchLocalDataFailure(e.toString());
-  //   }
-  // }
+      return pedidoVentaBorradoresList;
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
 
   // Future<PedidoVenta> getPedidoVentaBorrador() async {
   //   final pedidoVentaBorradorDTO = await (_localDb

@@ -4073,6 +4073,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Select draft`
+  String get seleccionarBorrador {
+    return Intl.message(
+      'Select draft',
+      name: 'seleccionarBorrador',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

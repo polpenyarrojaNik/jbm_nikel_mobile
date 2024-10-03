@@ -397,5 +397,6 @@
   "alto": "Haut",
   "telefono": "Téléphone",
   "esteNumeroTelefonoExisiteEnElCliente": "Téléphone existant dans le client",
-  "reemplazarBaseDeDatosTextMesaje": "Ce champ ne correspond pas à la clé Nikel"
+  "reemplazarBaseDeDatosTextMesaje": "Ce champ ne correspond pas à la clé Nikel",
+  "seleccionarBorrador": "Sélectionner un brouillon"
 }

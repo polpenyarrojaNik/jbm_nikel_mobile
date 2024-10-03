@@ -1,37 +1,22 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/routing/app_auto_router.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
-import '../../domain/pedido_local_param.dart';
 import '../../domain/pedido_venta.dart';
 
 class PedidoVentaListaTile extends StatelessWidget {
   const PedidoVentaListaTile({
     super.key,
     required this.pedidoVenta,
+    required this.onTap,
   });
 
   final PedidoVenta pedidoVenta;
+  final Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => (!pedidoVenta.borrador)
-          ? context.router.push(
-              PedidoVentaDetalleRoute(
-                pedidoLocalParam: PedidoLocalParam(
-                    pedidoId: pedidoVenta.pedidoVentaId,
-                    empresaId: pedidoVenta.empresaId,
-                    pedidoAppId: pedidoVenta.pedidoVentaAppId,
-                    isEdit: false,
-                    tratada: pedidoVenta.tratada),
-              ),
-            )
-          : context.router.push(
-              PedidoVentaEditRoute(
-                  pedidoAppId: pedidoVenta.pedidoVentaAppId, isLocal: true),
-            ),
+      onTap: onTap,
       child: IntrinsicHeight(
         child: Container(
           padding: const EdgeInsets.only(right: 16),

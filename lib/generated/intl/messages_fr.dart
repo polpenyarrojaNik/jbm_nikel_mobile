@@ -676,6 +676,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Ce champ ne correspond pas à la clé Nikel"),
         "search": MessageLookupByLibrary.simpleMessage("Rechercher ..."),
         "sector": MessageLookupByLibrary.simpleMessage("Secteur"),
+        "seleccionarBorrador":
+            MessageLookupByLibrary.simpleMessage("Sélectionner un brouillon"),
         "semanal": MessageLookupByLibrary.simpleMessage("Hebdomadaire"),
         "settings_cerrar_sesion":
             MessageLookupByLibrary.simpleMessage("Se déconnecter"),
