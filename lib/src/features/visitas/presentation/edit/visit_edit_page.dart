@@ -945,8 +945,8 @@ class VisitaMotivoNoVentaFormDropdown extends ConsumerWidget {
       itemAsString: (item) => item.descripcion,
       compareFn: (i, s) => i.id == s.id,
       validator: !getFormInstantValue<bool>(formKey, 'cliente_provisional') &&
-              (!getFormInstantValue<bool>(formKey, 'pedidoRealizado') ||
-                  !getFormInstantValue<bool>(formKey, 'ofertaRealizada'))
+              !getFormInstantValue<bool>(formKey, 'pedidoRealizado') &&
+              !getFormInstantValue<bool>(formKey, 'ofertaRealizada')
           ? FormBuilderValidators.compose([
               FormBuilderValidators.required(),
             ])
