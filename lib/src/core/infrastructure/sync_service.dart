@@ -789,7 +789,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v1/sync/visitas/motivos_no_venta',
-        tableInfo: _remoteDb.visitaSectorTable,
+        tableInfo: _remoteDb.visitaMotivoNoVentaTable,
         fromJson: (e) => VisitaMotivoNoVentaDTO.fromJson(e),
       );
     } on AppException catch (e) {
@@ -1688,19 +1688,21 @@ class SyncService {
     final getCatalogoDirectory =
         Directory('${documentDirectory.path}/catalogos/');
 
-    final getFilesList = getCatalogoDirectory.listSync();
+    if (getCatalogoDirectory.existsSync()) {
+      final getFilesList = getCatalogoDirectory.listSync();
 
-    for (var i = 0; i < getFilesList.length; i++) {
-      final fileCatalogoId = getFilesList[i].path.split('/').last;
-      var existeEnFavoritos = false;
-      for (var j = 0; j < favoritesCatalogsDtoList.length; j++) {
-        if (fileCatalogoId ==
-            favoritesCatalogsDtoList[j].catalogoId.toString()) {
-          existeEnFavoritos = true;
+      for (var i = 0; i < getFilesList.length; i++) {
+        final fileCatalogoId = getFilesList[i].path.split('/').last;
+        var existeEnFavoritos = false;
+        for (var j = 0; j < favoritesCatalogsDtoList.length; j++) {
+          if (fileCatalogoId ==
+              favoritesCatalogsDtoList[j].catalogoId.toString()) {
+            existeEnFavoritos = true;
+          }
         }
-      }
-      if (!existeEnFavoritos && getFilesList[i] is Directory) {
-        getFilesList[i].deleteSync(recursive: true);
+        if (!existeEnFavoritos && getFilesList[i] is Directory) {
+          getFilesList[i].deleteSync(recursive: true);
+        }
       }
     }
   }

@@ -526,9 +526,9 @@ class VisitaRepository {
 
     query.limit(pageSize, offset: page * pageSize);
 
-    // query.orderBy([
-    //   OrderingTerm.desc(_remoteDb.visitaTable.fecha),
-    // ]);
+    query.orderBy([
+      OrderingTerm.desc(_remoteDb.visitaTable.fecha),
+    ]);
 
     return query.asyncMap((row) async {
       final clienteDTO = row.readTableOrNull(_remoteDb.clienteTable);
