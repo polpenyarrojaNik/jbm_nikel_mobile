@@ -879,9 +879,9 @@ class VisitaRepository {
   }
 
   Future<List<OcrRecognizedText>> reconginzedImage(File imageFile) async {
-    final List<OcrRecognizedText> ocrReconginzedTextList = [];
+    final ocrReconginzedTextList = <OcrRecognizedText>[];
 
-    final List<String> recognizedLines = [];
+    final recognizedLines = <String>[];
 
     final visionImage = InputImage.fromFile(imageFile);
 

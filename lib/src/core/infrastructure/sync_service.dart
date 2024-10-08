@@ -1753,12 +1753,12 @@ class SyncService {
     }
   }
 
-  Future<void> _removeAllCatalogsFiles(Directory directory) async {
-    final directoryCatalogos = Directory('${directory.path}/catalogos');
-    if (directoryCatalogos.existsSync()) {
-      directoryCatalogos.deleteSync(recursive: true);
-    }
-  }
+  // Future<void> _removeAllCatalogsFiles(Directory directory) async {
+  //   final directoryCatalogos = Directory('${directory.path}/catalogos');
+  //   if (directoryCatalogos.existsSync()) {
+  //     directoryCatalogos.deleteSync(recursive: true);
+  //   }
+  // }
 
   Future<void> _removeCatalogsFilesById(
       Directory directory, int catalogoId) async {
