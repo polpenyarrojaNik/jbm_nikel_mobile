@@ -628,6 +628,25 @@ class ArticuloVentasMesRouteArgs {
 }
 
 /// generated route for
+/// [CameraPage]
+class CameraRoute extends PageRouteInfo<void> {
+  const CameraRoute({List<PageRouteInfo>? children})
+      : super(
+          CameraRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CameraRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const CameraPage();
+    },
+  );
+}
+
+/// generated route for
 /// [CatalogoListaPage]
 class CatalogoListaRoute extends PageRouteInfo<void> {
   const CatalogoListaRoute({List<PageRouteInfo>? children})
@@ -1789,6 +1808,52 @@ class ExpedicionListRoute extends PageRouteInfo<void> {
       return const ExpedicionListPage();
     },
   );
+}
+
+/// generated route for
+/// [ImageFormPage]
+class ImageFormRoute extends PageRouteInfo<ImageFormRouteArgs> {
+  ImageFormRoute({
+    Key? key,
+    required File imageFile,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ImageFormRoute.name,
+          args: ImageFormRouteArgs(
+            key: key,
+            imageFile: imageFile,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ImageFormRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ImageFormRouteArgs>();
+      return ImageFormPage(
+        key: args.key,
+        imageFile: args.imageFile,
+      );
+    },
+  );
+}
+
+class ImageFormRouteArgs {
+  const ImageFormRouteArgs({
+    this.key,
+    required this.imageFile,
+  });
+
+  final Key? key;
+
+  final File imageFile;
+
+  @override
+  String toString() {
+    return 'ImageFormRouteArgs{key: $key, imageFile: $imageFile}';
+  }
 }
 
 /// generated route for
