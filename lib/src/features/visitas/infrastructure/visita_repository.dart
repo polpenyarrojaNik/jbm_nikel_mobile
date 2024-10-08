@@ -1,12 +1,15 @@
 // ignore_for_file: prefer_single_quotes
 
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:google_mlkit_entity_extraction/google_mlkit_entity_extraction.dart';
+import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 
 import '../../../core/application/log_service.dart';
 import '../../../core/domain/pais.dart';
@@ -20,11 +23,16 @@ import '../../../core/infrastructure/remote_database.dart';
 import '../../../core/presentation/app.dart';
 import '../../usuario/application/usuario_notifier.dart';
 import '../../usuario/domain/usuario.dart';
+import '../domain/geolocation_entity.dart';
+import '../domain/image_form_data.dart';
+import '../domain/ocr_recognized_text.dart';
+import '../domain/recognized_text_type.dart';
 import '../domain/visita.dart';
 import '../domain/visita_competidor.dart';
 import '../domain/visita_id_param.dart';
 import '../domain/visita_motivos_no_venta.dart';
 import '../domain/visita_sector.dart';
+import 'geolocation_entity_dto.dart';
 import 'visita_local_dto.dart';
 
 final visitaRepositoryProvider = Provider.autoDispose<VisitaRepository>(
@@ -868,5 +876,202 @@ class VisitaRepository {
         await (_remoteDb.select(_remoteDb.visitaMotivoNoVentaTable)).get();
 
     return visitaMotivosNoVentaDTOList.map((e) => e.toDomain()).toList();
+  }
+
+  Future<List<OcrRecognizedText>> reconginzedImage(File imageFile) async {
+    final List<OcrRecognizedText> ocrReconginzedTextList = [];
+
+    final List<String> recognizedLines = [];
+
+    final visionImage = InputImage.fromFile(imageFile);
+
+    final textRecognizer = TextRecognizer(script: TextRecognitionScript.latin);
+
+    final reconizedText = await textRecognizer.processImage(visionImage);
+
+    final entityExtractor =
+        EntityExtractor(language: EntityExtractorLanguage.spanish);
+
+    for (var block in reconizedText.blocks) {
+      for (var line in block.lines) {
+        recognizedLines.add(line.text);
+      }
+    }
+
+    for (var i = 0; i < recognizedLines.length; i++) {
+      final annotations =
+          await entityExtractor.annotateText(recognizedLines[i]);
+
+      if (annotations.isNotEmpty) {
+        for (final annotation in annotations) {
+          for (final entity in annotation.entities) {
+            if (entity.type == EntityType.phone) {
+              ocrReconginzedTextList.add(
+                OcrRecognizedText(
+                  annotation.text,
+                  RecognizedTextType.telf,
+                  telfText: annotation.text,
+                ),
+              );
+            } else if (entity.type == EntityType.email) {
+              ocrReconginzedTextList.add(
+                OcrRecognizedText(
+                  annotation.text,
+                  RecognizedTextType.email,
+                  emailText: annotation.text,
+                ),
+              );
+            } else if (entity.type == EntityType.url) {
+              ocrReconginzedTextList.add(
+                OcrRecognizedText(
+                  annotation.text,
+                  RecognizedTextType.website,
+                  websiteText: annotation.text,
+                ),
+              );
+            } else if (entity.type == EntityType.address) {
+              ocrReconginzedTextList.add(
+                OcrRecognizedText(
+                  annotation.text,
+                  RecognizedTextType.address,
+                ),
+              );
+            } else {
+              ocrReconginzedTextList.add(
+                OcrRecognizedText(
+                  annotation.text,
+                  RecognizedTextType.unknown,
+                ),
+              );
+            }
+          }
+        }
+      } else {
+        ocrReconginzedTextList.add(
+          OcrRecognizedText(
+            recognizedLines[i],
+            RecognizedTextType.unknown,
+          ),
+        );
+      }
+    }
+
+    return ocrReconginzedTextList;
+  }
+
+  Future<ImageFormData> setImageFormData(
+    String? name,
+    String? company,
+    String? cargo,
+    List<String> address,
+    String? email,
+    List<String> phoneList,
+    // String? website,
+  ) async {
+    final addressString = _getAddressString(address);
+
+    var imageFormData = ImageFormData(
+      name: name,
+      company: company,
+      cargo: cargo,
+      phoneList: phoneList,
+      email: email,
+      referenceStreetAddress: addressString,
+    );
+
+    if (addressString != null) {
+      final geolocationEntity = await getAddress(addressString);
+
+      if (geolocationEntity != null) {
+        imageFormData = imageFormData.copyWith(
+          streetAddress1: geolocationEntity.streetAddress1,
+          zipCode: geolocationEntity.zipCode,
+          city: geolocationEntity.city,
+          state: geolocationEntity.state,
+          country: geolocationEntity.country,
+        );
+      }
+    }
+    return imageFormData;
+  }
+
+  Future<GeolocationEntity?> getAddress(String addressString) async {
+    try {
+      final geolocationEntityDTO =
+          await _remoteGetSuggestionAddress(addressString);
+
+      final paisDto = await (_remoteDb.select(_remoteDb.paisTable)
+            ..where((tbl) => tbl.id.equals(geolocationEntityDTO.countryCode)))
+          .getSingleOrNull();
+
+      final provinciaDto = await (_remoteDb.select(_remoteDb.provinciaTable)
+            ..where((tbl) =>
+                tbl.paisId.equals(geolocationEntityDTO.countryCode) &
+                tbl.provincia.equalsNullable(
+                    geolocationEntityDTO.advinistrativeLevels?.state)))
+          .getSingleOrNull();
+
+      return geolocationEntityDTO.toDomain(
+          provinciaDto?.toDomain(), paisDto?.toDomain());
+    } catch (e) {
+      return null;
+    }
+  }
+
+  Future<GeolocationEntityDTO> _remoteGetSuggestionAddress(
+      String addressString) async {
+    try {
+      final requestUri = Uri.http(
+        dotenv.get('URL', fallback: 'localhost:3001'),
+        'api/v1/online/geo/address',
+        {'addressString': addressString},
+      );
+
+      final response = await _dio.getUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer ${_usuario?.provisionalToken}'},
+        ),
+      );
+      if (response.statusCode == 200) {
+        final json = response.data['data'] as Map<String, dynamic>;
+
+        return GeolocationEntityDTO.fromJson(json);
+      } else {
+        throw AppException.restApiFailure(
+            response.statusCode ?? 400, response.statusMessage ?? '');
+      }
+    } on DioException catch (e) {
+      String? errorDetalle;
+      if (e.isNoConnectionError) {
+        throw const AppException.notConnection();
+      }
+      final responseErrorJson = (e.response?.data is List<int>)
+          ? e.response?.statusMessage
+          : e.response?.data['detalle'] ?? e.response?.data['message'];
+      if (responseErrorJson != null) {
+        errorDetalle = responseErrorJson as String?;
+
+        throw AppException.restApiFailure(
+            e.response?.statusCode ?? 400, errorDetalle ?? '');
+      } else {
+        throw AppException.restApiFailure(
+            e.response?.statusCode ?? 400, e.response?.statusMessage ?? '');
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  String? _getAddressString(List<String> addressList) {
+    var addressString = '';
+    for (var i = 0; i < addressList.length; i++) {
+      if (i == addressList.length - 1) {
+        addressString += addressList[i];
+      } else {
+        addressString += '${addressList[i]}, ';
+      }
+    }
+    return addressString.isNotEmpty ? addressString : null;
   }
 }

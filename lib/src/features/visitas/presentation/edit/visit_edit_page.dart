@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +22,7 @@ import '../../../../core/routing/app_auto_router.dart';
 import '../../../cliente/domain/cliente.dart';
 import '../../../cliente/presentation/index/cliente_search_controller.dart';
 import '../../../usuario/application/usuario_notifier.dart';
+import '../../domain/image_form_data.dart';
 import '../../domain/visita.dart';
 import '../../domain/visita_competidor.dart';
 import '../../domain/visita_id_param.dart';
@@ -632,6 +635,26 @@ class _ClienteProvisionalContainerState
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
+            Align(
+              alignment: Alignment.centerRight,
+              child: IconButton(
+                onPressed: () async {
+                  final imageFile =
+                      await context.router.push<File?>(const CameraRoute());
+
+                  if (imageFile != null && context.mounted) {
+                    final imageFormData = await context.router
+                        .push<ImageFormData?>(
+                            ImageFormRoute(imageFile: imageFile));
+
+                    if (imageFormData != null) {
+                      setPotentialValues(imageFormData);
+                    }
+                  }
+                },
+                icon: const Icon(Icons.qr_code_scanner),
+              ),
+            ),
             FormBuilderTextField(
               name: 'nombre',
               // onChanged: widget.olnChanged,
@@ -779,6 +802,20 @@ class _ClienteProvisionalContainerState
       widget.onSelectedProvincia(provincia);
       provinciaController.text = provincia.provincia ?? provincia.provinciaId;
     }
+  }
+
+  void setPotentialValues(ImageFormData imageFormData) {
+    widget.formKey.currentState?.patchValue({
+      'nombre': imageFormData.company,
+      'email': imageFormData.email,
+      'telefono': imageFormData.phoneList[0],
+      'direccion1': imageFormData.streetAddress1,
+      'codigo_postal': imageFormData.zipCode,
+      'poblacion': imageFormData.city,
+      'pais': imageFormData.country?.descripcion,
+      'provincia': imageFormData.state?.provincia,
+      'contacto': imageFormData.name,
+    });
   }
 }
 

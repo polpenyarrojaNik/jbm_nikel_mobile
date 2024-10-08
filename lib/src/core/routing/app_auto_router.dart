@@ -59,6 +59,8 @@ import '../../features/usuario/domain/usuario.dart';
 import '../../features/usuario/presentation/login/login_page.dart';
 import '../../features/visitas/domain/visita_id_param.dart';
 import '../../features/visitas/presentation/edit/visit_edit_page.dart';
+import '../../features/visitas/presentation/edit/camera_page.dart';
+import '../../features/visitas/presentation/edit/image_form_page.dart';
 import '../../features/visitas/presentation/index/visita_lista_page.dart';
 import '../../features/visitas/presentation/show/visita_detalle_page.dart';
 import '../application/log_service.dart';
@@ -183,6 +185,14 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: VisitaListaRoute.page, path: '/visita'),
     AutoRoute(page: VisitaDetalleRoute.page, path: '/visita/:id'),
     AutoRoute(page: VisitaEditRoute.page, path: '/visita/edit'),
+    AutoRoute(
+        page: CameraRoute.page,
+        path: '/visita/edit/camera',
+        fullscreenDialog: true),
+    AutoRoute(
+        page: ImageFormRoute.page,
+        path: '/visita/edit/image_form',
+        fullscreenDialog: true),
     AutoRoute(page: CatalogoListaRoute.page, path: '/catalogo'),
     AutoRoute(
         page: CatalogoPdfViewerRoute.page,
