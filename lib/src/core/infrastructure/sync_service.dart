@@ -1600,13 +1600,10 @@ class SyncService {
 
       final favoritesCatalogsDtoList = await _getFavoritesCatalogDtoList();
 
-      if (isInMainThread) {
-        await _removeAllCatalogsFiles(
-            documentDirectory ?? await getApplicationDocumentsDirectory());
-      }
-
       if (favoritesCatalogsDtoList.isNotEmpty) {
-        await downloadFavoritesCatalogs(favoritesCatalogsDtoList,
+        await downloadFavoritesCatalogs(
+            isInMainThread,
+            favoritesCatalogsDtoList,
             documentDirectory ?? await getApplicationDocumentsDirectory());
       }
       if (!isInMainThread) {
@@ -1623,6 +1620,7 @@ class SyncService {
   }
 
   Future<void> downloadFavoritesCatalogs(
+      bool isInMainThread,
       List<CatalogoDTO> favoritesCatalogsDtoList,
       Directory documentDirectory) async {
     for (var i = 0; i < favoritesCatalogsDtoList.length; i++) {
@@ -1630,8 +1628,9 @@ class SyncService {
         id: favoritesCatalogsDtoList[i].catalogoId.toString(),
         nombreArchivo: favoritesCatalogsDtoList[i].nombreFicheroCatalogo,
       );
-      if (adjuntoParam.nombreArchivo != null &&
-          !_fileExistInLocal(adjuntoParam, documentDirectory)) {
+      if (isInMainThread ||
+          (adjuntoParam.nombreArchivo != null &&
+              !_fileExistInLocal(adjuntoParam, documentDirectory))) {
         final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
         final data = await _remoteGetAttachment(
             requestUri: Uri.https(
@@ -1640,6 +1639,11 @@ class SyncService {
               query,
             ),
             provisionalToken: _usuario!.provisionalToken);
+
+        if (isInMainThread) {
+          await _removeCatalogsFilesById(
+              documentDirectory, favoritesCatalogsDtoList[i].catalogoId);
+        }
         await saveDocumentInLocal(data, adjuntoParam, documentDirectory);
       }
     }
@@ -1751,6 +1755,15 @@ class SyncService {
 
   Future<void> _removeAllCatalogsFiles(Directory directory) async {
     final directoryCatalogos = Directory('${directory.path}/catalogos');
+    if (directoryCatalogos.existsSync()) {
+      directoryCatalogos.deleteSync(recursive: true);
+    }
+  }
+
+  Future<void> _removeCatalogsFilesById(
+      Directory directory, int catalogoId) async {
+    final directoryCatalogos =
+        Directory('${directory.path}/catalogos/$catalogoId');
     if (directoryCatalogos.existsSync()) {
       directoryCatalogos.deleteSync(recursive: true);
     }
