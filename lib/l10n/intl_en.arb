@@ -400,7 +400,6 @@
   "reemplazarBaseDeDatosTextMesaje": "This field not match with Nikel key",
   "seleccionarBorrador": "Select draft",
   "camera": "Camera",
-  "imageForm": "Image form",
   "name": "Name",
   "company": "Company",
   "position": "Position",
@@ -408,5 +407,6 @@
   "email": "Email",
   "phones": "Phones",
   "empty": "Empty",
-  "unknown": "Unknown"
+  "unknown": "Unknown",
+  "formFromImage": "Form from image"
 }

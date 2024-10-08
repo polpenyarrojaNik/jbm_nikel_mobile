@@ -60,7 +60,7 @@ class _ImageFormPageState extends ConsumerState<ImageFormPage> {
     return state.when(
       loading: () => Scaffold(
         appBar: CommonAppBar(
-          titleText: S.of(context).imageForm,
+          titleText: S.of(context).formFromImage,
         ),
         body: const Center(
           child: CircularProgressIndicator(),
@@ -72,7 +72,7 @@ class _ImageFormPageState extends ConsumerState<ImageFormPage> {
       ),
       error: (error, stackTrace) => Scaffold(
         appBar: CommonAppBar(
-          titleText: S.of(context).imageForm,
+          titleText: S.of(context).formFromImage,
         ),
         body: Center(
           child: ErrorMessageWidget(error.toString()),
@@ -127,7 +127,7 @@ class _DraggableFormState extends ConsumerState<DraggableForm> {
 
     return Scaffold(
       appBar: CommonAppBar(
-        titleText: S.of(context).imageForm,
+        titleText: S.of(context).formFromImage,
         actions: [
           IconButton(
             onPressed: () => saveImageFormData(stateImageFormData, ref),

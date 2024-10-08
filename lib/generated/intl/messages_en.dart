@@ -488,12 +488,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "Existing number phone into customer"),
         "familia": MessageLookupByLibrary.simpleMessage("Family"),
+        "formFromImage":
+            MessageLookupByLibrary.simpleMessage("Form from image"),
         "frecuenciaPedido":
             MessageLookupByLibrary.simpleMessage("Order frequency"),
         "grande": MessageLookupByLibrary.simpleMessage("Big"),
         "haOcurridoUnError":
             MessageLookupByLibrary.simpleMessage("An error occurred"),
-        "imageForm": MessageLookupByLibrary.simpleMessage("Image form"),
         "interesCliente":
             MessageLookupByLibrary.simpleMessage("Customer interest"),
         "introduceClaveDeNikel":

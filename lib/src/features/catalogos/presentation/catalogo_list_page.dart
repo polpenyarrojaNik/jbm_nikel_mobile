@@ -232,7 +232,7 @@ class CatalogoListViewWidget extends ConsumerWidget {
                       ),
                     ),
                     const Gap(8),
-                    if (i + 1 < catalgoList.length)
+                    if ((i * 2) + 1 < catalgoList.length)
                       Expanded(
                         child: CatalogoListTile(
                           catalogo: catalgoList[(i * 2) + 1],

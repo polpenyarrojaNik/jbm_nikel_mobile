@@ -4094,16 +4094,6 @@ class S {
     );
   }
 
-  /// `Image form`
-  String get imageForm {
-    return Intl.message(
-      'Image form',
-      name: 'imageForm',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Name`
   String get name {
     return Intl.message(
@@ -4179,6 +4169,16 @@ class S {
     return Intl.message(
       'Unknown',
       name: 'unknown',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Form from image`
+  String get formFromImage {
+    return Intl.message(
+      'Form from image',
+      name: 'formFromImage',
       desc: '',
       args: [],
     );

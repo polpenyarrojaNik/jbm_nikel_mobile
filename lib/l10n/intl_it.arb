@@ -398,5 +398,15 @@
   "telefono": "Telefono",
   "esteNumeroTelefonoExisiteEnElCliente": "Telefono esistente nel cliente",
   "reemplazarBaseDeDatosTextMesaje": "Questo campo non corrisponde alla chiave Nikel",
-  "seleccionarBorrador": "Seleziona bozza"
+  "seleccionarBorrador": "Seleziona bozza",
+  "addresses": "Indirizzi",
+  "camera": "Telecamera",
+  "company": "Azienda",
+  "email": "E-mail",
+  "empty": "Vuoto",
+  "formFromImage": "Forma da immagine",
+  "name": "",
+  "phones": "Telefoni",
+  "position": "Posizione",
+  "unknown": "Sconosciuto"
 }

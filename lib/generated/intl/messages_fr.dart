@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aceptar": MessageLookupByLibrary.simpleMessage("Accepter"),
+        "addresses": MessageLookupByLibrary.simpleMessage("Adresses"),
         "almacenPropio":
             MessageLookupByLibrary.simpleMessage("Entrepôt propre"),
         "alto": MessageLookupByLibrary.simpleMessage("Haut"),
@@ -147,6 +148,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "auth_loginPage_usuario":
             MessageLookupByLibrary.simpleMessage("Identifiant"),
         "bajo": MessageLookupByLibrary.simpleMessage("Faible"),
+        "camera": MessageLookupByLibrary.simpleMessage("Caméra"),
         "cancelar": MessageLookupByLibrary.simpleMessage("Annuler"),
         "capacidad": MessageLookupByLibrary.simpleMessage("Capacité"),
         "catalogos_index_buscarCatalogo":
@@ -486,7 +488,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Dernière syncronisation"),
         "commonWidgets_visitDialogue_saving":
             MessageLookupByLibrary.simpleMessage("Sauver..."),
+        "company": MessageLookupByLibrary.simpleMessage("Entreprise"),
         "competencia": MessageLookupByLibrary.simpleMessage("Concurrent"),
+        "email": MessageLookupByLibrary.simpleMessage("E-mail"),
+        "empty": MessageLookupByLibrary.simpleMessage("Vide"),
         "estasSeguroQueQuieresReemplazarLaBaseDeDatos":
             MessageLookupByLibrary.simpleMessage(
                 "Êtes-vous sûr de vouloir remplacer la base de données ? Vous perdrez les données enregistrées localement."),
@@ -494,6 +499,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "Téléphone existant dans le client"),
         "familia": MessageLookupByLibrary.simpleMessage("Famille"),
+        "formFromImage": MessageLookupByLibrary.simpleMessage(
+            "Formulaire à partir d\'une image"),
         "frecuenciaPedido":
             MessageLookupByLibrary.simpleMessage("Fréquence des commandes"),
         "grande": MessageLookupByLibrary.simpleMessage("Grand"),
@@ -510,6 +517,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Raison ne pas intéressé"),
         "motivoNoPedido":
             MessageLookupByLibrary.simpleMessage("Raison non commandée"),
+        "name": MessageLookupByLibrary.simpleMessage(""),
         "no": MessageLookupByLibrary.simpleMessage("Non"),
         "noSeHaPodidoSincronizar": MessageLookupByLibrary.simpleMessage(
             "Ne peut pas se synchroniser correctement"),
@@ -669,6 +677,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Quantités en attente"),
         "pending": MessageLookupByLibrary.simpleMessage("En attente"),
         "pequena": MessageLookupByLibrary.simpleMessage("Petit"),
+        "phones": MessageLookupByLibrary.simpleMessage("Téléphones"),
+        "position": MessageLookupByLibrary.simpleMessage("Position"),
         "precioNoPuedeSerMenorAlPrecioMinimo":
             MessageLookupByLibrary.simpleMessage(
                 "Le prix ne peut être inférieur au prix minimum"),
@@ -729,6 +739,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "ultimosPrecios_titulo":
             MessageLookupByLibrary.simpleMessage("Derniers prix"),
         "unidad": MessageLookupByLibrary.simpleMessage("uté."),
+        "unknown": MessageLookupByLibrary.simpleMessage("Inconnu"),
         "visita_enviada": MessageLookupByLibrary.simpleMessage("Envoyé"),
         "visita_index_buscarVisitas":
             MessageLookupByLibrary.simpleMessage("Chercher des visites…"),
