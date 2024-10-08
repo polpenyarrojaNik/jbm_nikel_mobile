@@ -147,7 +147,8 @@ class TipoCatalogoFilterDropdown extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(tipoCatalogoListProvider);
     return state.maybeWhen(
-      orElse: () => const ProgressIndicatorWidget(),
+      orElse: () => Container(),
+      loading: () => const ProgressIndicatorWidget(),
       data: (tipoCatalogoList) => CatalogoFilterDropdownWidget(
         dropdownName: 'tipoCatalogo',
         filterList: tipoCatalogoList,
@@ -167,7 +168,8 @@ class TipoPrecioCatalogoFilterDropdown extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(tipoPrecioCatalogoListProvider);
     return state.maybeWhen(
-      orElse: () => const ProgressIndicatorWidget(),
+      orElse: () => Container(),
+      loading: () => const ProgressIndicatorWidget(),
       data: (tipoPrecioCatalogoList) => CatalogoFilterDropdownWidget(
         dropdownName: 'tipoPrecioCatalogo',
         filterList: tipoPrecioCatalogoList,
@@ -187,7 +189,8 @@ class IdiomaCatalogoFilterDropdown extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(idiomaCatalogoListProvider);
     return state.maybeWhen(
-      orElse: () => const ProgressIndicatorWidget(),
+      orElse: () => Container(),
+      loading: () => const ProgressIndicatorWidget(),
       data: (idiomaCatalogoList) => CatalogoFilterDropdownWidget(
         dropdownName: 'idiomaCatalogo',
         filterList: idiomaCatalogoList,

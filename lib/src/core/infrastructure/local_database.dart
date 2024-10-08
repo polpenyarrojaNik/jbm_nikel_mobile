@@ -5,9 +5,9 @@ import 'package:drift/drift.dart';
 import 'package:drift/isolate.dart';
 import 'package:drift/native.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../features/catalogos/infrastructure/catalogo_dto.dart';
 import 'log_dto.dart';
 import 'sync_datetime_dto.dart';
-import '../../features/catalogos/infrastructure/catalogo_favorito_dto.dart';
 
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
@@ -68,7 +68,7 @@ class LocalAppDatabase extends _$LocalAppDatabase {
       : test = true,
         super(NativeDatabase.memory());
   @override
-  int get schemaVersion => 12;
+  int get schemaVersion => 14;
 
   @override
   MigrationStrategy get migration {
@@ -190,14 +190,20 @@ class LocalAppDatabase extends _$LocalAppDatabase {
           );
           await m.createTable(catalogoOrdenTable);
         } else if (to == 12) {
-          await m.alterTable(
-            TableMigration(
-              catalogoFavoritoTable,
-              newColumns: [
-                catalogoFavoritoTable.nombreArchivo,
-              ],
-            ),
-          );
+          // await m.alterTable(
+          //   TableMigration(
+          //     catalogoFavoritoTable,
+          //     newColumns: [
+          //       catalogoFavoritoTable.nombreArchivo,
+          //     ],
+          //   ),
+          // );
+        } else if (to == 13) {
+          await m.deleteTable(catalogoFavoritoTable.tableName);
+          await m.createTable(catalogoFavoritoTable);
+        } else if (to == 14) {
+          await m.deleteTable(catalogoFavoritoTable.tableName);
+          await m.createTable(catalogoFavoritoTable);
         }
       }),
     );

@@ -24,7 +24,7 @@ mixin _$Catalogo {
   String get tipoCatalogoId => throw _privateConstructorUsedError;
   String get tagBusqueda => throw _privateConstructorUsedError;
   int get orden => throw _privateConstructorUsedError;
-  String get urlFicherPortada => throw _privateConstructorUsedError;
+  String get nombreFicheroPortada => throw _privateConstructorUsedError;
   String get nombreFicheroCatalogo => throw _privateConstructorUsedError;
   bool get descarga => throw _privateConstructorUsedError;
 
@@ -49,7 +49,7 @@ abstract class $CatalogoCopyWith<$Res> {
       String tipoCatalogoId,
       String tagBusqueda,
       int orden,
-      String urlFicherPortada,
+      String nombreFicheroPortada,
       String nombreFicheroCatalogo,
       bool descarga});
 }
@@ -77,7 +77,7 @@ class _$CatalogoCopyWithImpl<$Res, $Val extends Catalogo>
     Object? tipoCatalogoId = null,
     Object? tagBusqueda = null,
     Object? orden = null,
-    Object? urlFicherPortada = null,
+    Object? nombreFicheroPortada = null,
     Object? nombreFicheroCatalogo = null,
     Object? descarga = null,
   }) {
@@ -114,9 +114,9 @@ class _$CatalogoCopyWithImpl<$Res, $Val extends Catalogo>
           ? _value.orden
           : orden // ignore: cast_nullable_to_non_nullable
               as int,
-      urlFicherPortada: null == urlFicherPortada
-          ? _value.urlFicherPortada
-          : urlFicherPortada // ignore: cast_nullable_to_non_nullable
+      nombreFicheroPortada: null == nombreFicheroPortada
+          ? _value.nombreFicheroPortada
+          : nombreFicheroPortada // ignore: cast_nullable_to_non_nullable
               as String,
       nombreFicheroCatalogo: null == nombreFicheroCatalogo
           ? _value.nombreFicheroCatalogo
@@ -147,7 +147,7 @@ abstract class _$$CatalogoImplCopyWith<$Res>
       String tipoCatalogoId,
       String tagBusqueda,
       int orden,
-      String urlFicherPortada,
+      String nombreFicheroPortada,
       String nombreFicheroCatalogo,
       bool descarga});
 }
@@ -173,7 +173,7 @@ class __$$CatalogoImplCopyWithImpl<$Res>
     Object? tipoCatalogoId = null,
     Object? tagBusqueda = null,
     Object? orden = null,
-    Object? urlFicherPortada = null,
+    Object? nombreFicheroPortada = null,
     Object? nombreFicheroCatalogo = null,
     Object? descarga = null,
   }) {
@@ -210,9 +210,9 @@ class __$$CatalogoImplCopyWithImpl<$Res>
           ? _value.orden
           : orden // ignore: cast_nullable_to_non_nullable
               as int,
-      urlFicherPortada: null == urlFicherPortada
-          ? _value.urlFicherPortada
-          : urlFicherPortada // ignore: cast_nullable_to_non_nullable
+      nombreFicheroPortada: null == nombreFicheroPortada
+          ? _value.nombreFicheroPortada
+          : nombreFicheroPortada // ignore: cast_nullable_to_non_nullable
               as String,
       nombreFicheroCatalogo: null == nombreFicheroCatalogo
           ? _value.nombreFicheroCatalogo
@@ -238,7 +238,7 @@ class _$CatalogoImpl extends _Catalogo {
       required this.tipoCatalogoId,
       required this.tagBusqueda,
       required this.orden,
-      required this.urlFicherPortada,
+      required this.nombreFicheroPortada,
       required this.nombreFicheroCatalogo,
       required this.descarga})
       : super._();
@@ -260,7 +260,7 @@ class _$CatalogoImpl extends _Catalogo {
   @override
   final int orden;
   @override
-  final String urlFicherPortada;
+  final String nombreFicheroPortada;
   @override
   final String nombreFicheroCatalogo;
   @override
@@ -268,7 +268,7 @@ class _$CatalogoImpl extends _Catalogo {
 
   @override
   String toString() {
-    return 'Catalogo(catalogoId: $catalogoId, nombre: $nombre, idiomaId: $idiomaId, tipoPrecioCatalogoId: $tipoPrecioCatalogoId, tipoPrecioCatalogoNombre: $tipoPrecioCatalogoNombre, tipoCatalogoId: $tipoCatalogoId, tagBusqueda: $tagBusqueda, orden: $orden, urlFicherPortada: $urlFicherPortada, nombreFicheroCatalogo: $nombreFicheroCatalogo, descarga: $descarga)';
+    return 'Catalogo(catalogoId: $catalogoId, nombre: $nombre, idiomaId: $idiomaId, tipoPrecioCatalogoId: $tipoPrecioCatalogoId, tipoPrecioCatalogoNombre: $tipoPrecioCatalogoNombre, tipoCatalogoId: $tipoCatalogoId, tagBusqueda: $tagBusqueda, orden: $orden, nombreFicheroPortada: $nombreFicheroPortada, nombreFicheroCatalogo: $nombreFicheroCatalogo, descarga: $descarga)';
   }
 
   @override
@@ -291,8 +291,8 @@ class _$CatalogoImpl extends _Catalogo {
             (identical(other.tagBusqueda, tagBusqueda) ||
                 other.tagBusqueda == tagBusqueda) &&
             (identical(other.orden, orden) || other.orden == orden) &&
-            (identical(other.urlFicherPortada, urlFicherPortada) ||
-                other.urlFicherPortada == urlFicherPortada) &&
+            (identical(other.nombreFicheroPortada, nombreFicheroPortada) ||
+                other.nombreFicheroPortada == nombreFicheroPortada) &&
             (identical(other.nombreFicheroCatalogo, nombreFicheroCatalogo) ||
                 other.nombreFicheroCatalogo == nombreFicheroCatalogo) &&
             (identical(other.descarga, descarga) ||
@@ -310,7 +310,7 @@ class _$CatalogoImpl extends _Catalogo {
       tipoCatalogoId,
       tagBusqueda,
       orden,
-      urlFicherPortada,
+      nombreFicheroPortada,
       nombreFicheroCatalogo,
       descarga);
 
@@ -333,7 +333,7 @@ abstract class _Catalogo extends Catalogo {
       required final String tipoCatalogoId,
       required final String tagBusqueda,
       required final int orden,
-      required final String urlFicherPortada,
+      required final String nombreFicheroPortada,
       required final String nombreFicheroCatalogo,
       required final bool descarga}) = _$CatalogoImpl;
   const _Catalogo._() : super._();
@@ -355,7 +355,7 @@ abstract class _Catalogo extends Catalogo {
   @override
   int get orden;
   @override
-  String get urlFicherPortada;
+  String get nombreFicheroPortada;
   @override
   String get nombreFicheroCatalogo;
   @override

@@ -2954,77 +2954,213 @@ class LogTableCompanion extends UpdateCompanion<LogDTO> {
 }
 
 class $CatalogoFavoritoTableTable extends CatalogoFavoritoTable
-    with TableInfo<$CatalogoFavoritoTableTable, CatalogoFavoritoDTO> {
+    with TableInfo<$CatalogoFavoritoTableTable, CatalogoDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $CatalogoFavoritoTableTable(this.attachedDatabase, [this._alias]);
-  static const VerificationMeta _idMeta = const VerificationMeta('id');
-  @override
-  late final GeneratedColumn<int> id = GeneratedColumn<int>(
-      'ID', aliasedName, false,
-      hasAutoIncrement: true,
-      type: DriftSqlType.int,
-      requiredDuringInsert: false,
-      defaultConstraints:
-          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
   static const VerificationMeta _catalogoIdMeta =
       const VerificationMeta('catalogoId');
   @override
   late final GeneratedColumn<int> catalogoId = GeneratedColumn<int>(
       'CATALOGO_ID', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: false);
+  static const VerificationMeta _nombreMeta = const VerificationMeta('nombre');
+  @override
+  late final GeneratedColumn<String> nombre = GeneratedColumn<String>(
+      'NOMBRE', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _idiomaIdMeta =
+      const VerificationMeta('idiomaId');
+  @override
+  late final GeneratedColumn<String> idiomaId = GeneratedColumn<String>(
+      'IDIOMA_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _tipoPrecioCatalogoIdMeta =
+      const VerificationMeta('tipoPrecioCatalogoId');
+  @override
+  late final GeneratedColumn<String> tipoPrecioCatalogoId =
+      GeneratedColumn<String>('TIPO_PRECIO_CATALOGO_ID', aliasedName, false,
+          type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _tipoPrecioCatalogoNombreMeta =
+      const VerificationMeta('tipoPrecioCatalogoNombre');
+  @override
+  late final GeneratedColumn<String> tipoPrecioCatalogoNombre =
+      GeneratedColumn<String>('TIPO_PRECIO_CATALOGO_NOMBRE', aliasedName, false,
+          type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _tipoCatalogoIdMeta =
+      const VerificationMeta('tipoCatalogoId');
+  @override
+  late final GeneratedColumn<String> tipoCatalogoId = GeneratedColumn<String>(
+      'TIPO_CATALOGO_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _tagBusquedaMeta =
+      const VerificationMeta('tagBusqueda');
+  @override
+  late final GeneratedColumn<String> tagBusqueda = GeneratedColumn<String>(
+      'TAG_BUSQUEDA', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _ordenMeta = const VerificationMeta('orden');
+  @override
+  late final GeneratedColumn<int> orden = GeneratedColumn<int>(
+      'ORDEN', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
-  static const VerificationMeta _nombreArchivoMeta =
-      const VerificationMeta('nombreArchivo');
+  static const VerificationMeta _nombreFicheroPortadaMeta =
+      const VerificationMeta('nombreFicheroPortada');
   @override
-  late final GeneratedColumn<String> nombreArchivo = GeneratedColumn<String>(
-      'NOMBRE_ARCHIVO', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+  late final GeneratedColumn<String> nombreFicheroPortada =
+      GeneratedColumn<String>('NOMBRE_FICHERO_PORTADA', aliasedName, false,
+          type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _nombreFicheroCatalogoMeta =
+      const VerificationMeta('nombreFicheroCatalogo');
   @override
-  List<GeneratedColumn> get $columns => [id, catalogoId, nombreArchivo];
+  late final GeneratedColumn<String> nombreFicheroCatalogo =
+      GeneratedColumn<String>('NOMBRE_FICHERO_CATALOGO', aliasedName, false,
+          type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _descargaMeta =
+      const VerificationMeta('descarga');
+  @override
+  late final GeneratedColumn<String> descarga = GeneratedColumn<String>(
+      'DESCARGA_SN', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [
+        catalogoId,
+        nombre,
+        idiomaId,
+        tipoPrecioCatalogoId,
+        tipoPrecioCatalogoNombre,
+        tipoCatalogoId,
+        tagBusqueda,
+        orden,
+        nombreFicheroPortada,
+        nombreFicheroCatalogo,
+        descarga
+      ];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
   String get actualTableName => $name;
   static const String $name = 'CATALOGO_FAVORITO';
   @override
-  VerificationContext validateIntegrity(
-      Insertable<CatalogoFavoritoDTO> instance,
+  VerificationContext validateIntegrity(Insertable<CatalogoDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
-    if (data.containsKey('ID')) {
-      context.handle(_idMeta, id.isAcceptableOrUnknown(data['ID']!, _idMeta));
-    }
     if (data.containsKey('CATALOGO_ID')) {
       context.handle(
           _catalogoIdMeta,
           catalogoId.isAcceptableOrUnknown(
               data['CATALOGO_ID']!, _catalogoIdMeta));
-    } else if (isInserting) {
-      context.missing(_catalogoIdMeta);
     }
-    if (data.containsKey('NOMBRE_ARCHIVO')) {
+    if (data.containsKey('NOMBRE')) {
+      context.handle(_nombreMeta,
+          nombre.isAcceptableOrUnknown(data['NOMBRE']!, _nombreMeta));
+    } else if (isInserting) {
+      context.missing(_nombreMeta);
+    }
+    if (data.containsKey('IDIOMA_ID')) {
+      context.handle(_idiomaIdMeta,
+          idiomaId.isAcceptableOrUnknown(data['IDIOMA_ID']!, _idiomaIdMeta));
+    } else if (isInserting) {
+      context.missing(_idiomaIdMeta);
+    }
+    if (data.containsKey('TIPO_PRECIO_CATALOGO_ID')) {
       context.handle(
-          _nombreArchivoMeta,
-          nombreArchivo.isAcceptableOrUnknown(
-              data['NOMBRE_ARCHIVO']!, _nombreArchivoMeta));
+          _tipoPrecioCatalogoIdMeta,
+          tipoPrecioCatalogoId.isAcceptableOrUnknown(
+              data['TIPO_PRECIO_CATALOGO_ID']!, _tipoPrecioCatalogoIdMeta));
+    } else if (isInserting) {
+      context.missing(_tipoPrecioCatalogoIdMeta);
+    }
+    if (data.containsKey('TIPO_PRECIO_CATALOGO_NOMBRE')) {
+      context.handle(
+          _tipoPrecioCatalogoNombreMeta,
+          tipoPrecioCatalogoNombre.isAcceptableOrUnknown(
+              data['TIPO_PRECIO_CATALOGO_NOMBRE']!,
+              _tipoPrecioCatalogoNombreMeta));
+    } else if (isInserting) {
+      context.missing(_tipoPrecioCatalogoNombreMeta);
+    }
+    if (data.containsKey('TIPO_CATALOGO_ID')) {
+      context.handle(
+          _tipoCatalogoIdMeta,
+          tipoCatalogoId.isAcceptableOrUnknown(
+              data['TIPO_CATALOGO_ID']!, _tipoCatalogoIdMeta));
+    } else if (isInserting) {
+      context.missing(_tipoCatalogoIdMeta);
+    }
+    if (data.containsKey('TAG_BUSQUEDA')) {
+      context.handle(
+          _tagBusquedaMeta,
+          tagBusqueda.isAcceptableOrUnknown(
+              data['TAG_BUSQUEDA']!, _tagBusquedaMeta));
+    } else if (isInserting) {
+      context.missing(_tagBusquedaMeta);
+    }
+    if (data.containsKey('ORDEN')) {
+      context.handle(
+          _ordenMeta, orden.isAcceptableOrUnknown(data['ORDEN']!, _ordenMeta));
+    } else if (isInserting) {
+      context.missing(_ordenMeta);
+    }
+    if (data.containsKey('NOMBRE_FICHERO_PORTADA')) {
+      context.handle(
+          _nombreFicheroPortadaMeta,
+          nombreFicheroPortada.isAcceptableOrUnknown(
+              data['NOMBRE_FICHERO_PORTADA']!, _nombreFicheroPortadaMeta));
+    } else if (isInserting) {
+      context.missing(_nombreFicheroPortadaMeta);
+    }
+    if (data.containsKey('NOMBRE_FICHERO_CATALOGO')) {
+      context.handle(
+          _nombreFicheroCatalogoMeta,
+          nombreFicheroCatalogo.isAcceptableOrUnknown(
+              data['NOMBRE_FICHERO_CATALOGO']!, _nombreFicheroCatalogoMeta));
+    } else if (isInserting) {
+      context.missing(_nombreFicheroCatalogoMeta);
+    }
+    if (data.containsKey('DESCARGA_SN')) {
+      context.handle(_descargaMeta,
+          descarga.isAcceptableOrUnknown(data['DESCARGA_SN']!, _descargaMeta));
+    } else if (isInserting) {
+      context.missing(_descargaMeta);
     }
     return context;
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {id};
+  Set<GeneratedColumn> get $primaryKey => {catalogoId};
   @override
-  CatalogoFavoritoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+  CatalogoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return CatalogoFavoritoDTO(
-      id: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}ID'])!,
+    return CatalogoDTO(
       catalogoId: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}CATALOGO_ID'])!,
-      nombreArchivo: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}NOMBRE_ARCHIVO']),
+      nombre: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}NOMBRE'])!,
+      idiomaId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}IDIOMA_ID'])!,
+      tipoPrecioCatalogoId: attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}TIPO_PRECIO_CATALOGO_ID'])!,
+      tipoPrecioCatalogoNombre: attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}TIPO_PRECIO_CATALOGO_NOMBRE'])!,
+      tipoCatalogoId: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}TIPO_CATALOGO_ID'])!,
+      tagBusqueda: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}TAG_BUSQUEDA'])!,
+      orden: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}ORDEN'])!,
+      nombreFicheroPortada: attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}NOMBRE_FICHERO_PORTADA'])!,
+      nombreFicheroCatalogo: attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}NOMBRE_FICHERO_CATALOGO'])!,
+      descarga: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCARGA_SN'])!,
     );
   }
 
@@ -3034,53 +3170,153 @@ class $CatalogoFavoritoTableTable extends CatalogoFavoritoTable
   }
 }
 
-class CatalogoFavoritoTableCompanion
-    extends UpdateCompanion<CatalogoFavoritoDTO> {
-  final Value<int> id;
+class CatalogoFavoritoTableCompanion extends UpdateCompanion<CatalogoDTO> {
   final Value<int> catalogoId;
-  final Value<String?> nombreArchivo;
+  final Value<String> nombre;
+  final Value<String> idiomaId;
+  final Value<String> tipoPrecioCatalogoId;
+  final Value<String> tipoPrecioCatalogoNombre;
+  final Value<String> tipoCatalogoId;
+  final Value<String> tagBusqueda;
+  final Value<int> orden;
+  final Value<String> nombreFicheroPortada;
+  final Value<String> nombreFicheroCatalogo;
+  final Value<String> descarga;
   const CatalogoFavoritoTableCompanion({
-    this.id = const Value.absent(),
     this.catalogoId = const Value.absent(),
-    this.nombreArchivo = const Value.absent(),
+    this.nombre = const Value.absent(),
+    this.idiomaId = const Value.absent(),
+    this.tipoPrecioCatalogoId = const Value.absent(),
+    this.tipoPrecioCatalogoNombre = const Value.absent(),
+    this.tipoCatalogoId = const Value.absent(),
+    this.tagBusqueda = const Value.absent(),
+    this.orden = const Value.absent(),
+    this.nombreFicheroPortada = const Value.absent(),
+    this.nombreFicheroCatalogo = const Value.absent(),
+    this.descarga = const Value.absent(),
   });
   CatalogoFavoritoTableCompanion.insert({
-    this.id = const Value.absent(),
-    required int catalogoId,
-    this.nombreArchivo = const Value.absent(),
-  }) : catalogoId = Value(catalogoId);
-  static Insertable<CatalogoFavoritoDTO> custom({
-    Expression<int>? id,
+    this.catalogoId = const Value.absent(),
+    required String nombre,
+    required String idiomaId,
+    required String tipoPrecioCatalogoId,
+    required String tipoPrecioCatalogoNombre,
+    required String tipoCatalogoId,
+    required String tagBusqueda,
+    required int orden,
+    required String nombreFicheroPortada,
+    required String nombreFicheroCatalogo,
+    required String descarga,
+  })  : nombre = Value(nombre),
+        idiomaId = Value(idiomaId),
+        tipoPrecioCatalogoId = Value(tipoPrecioCatalogoId),
+        tipoPrecioCatalogoNombre = Value(tipoPrecioCatalogoNombre),
+        tipoCatalogoId = Value(tipoCatalogoId),
+        tagBusqueda = Value(tagBusqueda),
+        orden = Value(orden),
+        nombreFicheroPortada = Value(nombreFicheroPortada),
+        nombreFicheroCatalogo = Value(nombreFicheroCatalogo),
+        descarga = Value(descarga);
+  static Insertable<CatalogoDTO> custom({
     Expression<int>? catalogoId,
-    Expression<String>? nombreArchivo,
+    Expression<String>? nombre,
+    Expression<String>? idiomaId,
+    Expression<String>? tipoPrecioCatalogoId,
+    Expression<String>? tipoPrecioCatalogoNombre,
+    Expression<String>? tipoCatalogoId,
+    Expression<String>? tagBusqueda,
+    Expression<int>? orden,
+    Expression<String>? nombreFicheroPortada,
+    Expression<String>? nombreFicheroCatalogo,
+    Expression<String>? descarga,
   }) {
     return RawValuesInsertable({
-      if (id != null) 'ID': id,
       if (catalogoId != null) 'CATALOGO_ID': catalogoId,
-      if (nombreArchivo != null) 'NOMBRE_ARCHIVO': nombreArchivo,
+      if (nombre != null) 'NOMBRE': nombre,
+      if (idiomaId != null) 'IDIOMA_ID': idiomaId,
+      if (tipoPrecioCatalogoId != null)
+        'TIPO_PRECIO_CATALOGO_ID': tipoPrecioCatalogoId,
+      if (tipoPrecioCatalogoNombre != null)
+        'TIPO_PRECIO_CATALOGO_NOMBRE': tipoPrecioCatalogoNombre,
+      if (tipoCatalogoId != null) 'TIPO_CATALOGO_ID': tipoCatalogoId,
+      if (tagBusqueda != null) 'TAG_BUSQUEDA': tagBusqueda,
+      if (orden != null) 'ORDEN': orden,
+      if (nombreFicheroPortada != null)
+        'NOMBRE_FICHERO_PORTADA': nombreFicheroPortada,
+      if (nombreFicheroCatalogo != null)
+        'NOMBRE_FICHERO_CATALOGO': nombreFicheroCatalogo,
+      if (descarga != null) 'DESCARGA_SN': descarga,
     });
   }
 
   CatalogoFavoritoTableCompanion copyWith(
-      {Value<int>? id, Value<int>? catalogoId, Value<String?>? nombreArchivo}) {
+      {Value<int>? catalogoId,
+      Value<String>? nombre,
+      Value<String>? idiomaId,
+      Value<String>? tipoPrecioCatalogoId,
+      Value<String>? tipoPrecioCatalogoNombre,
+      Value<String>? tipoCatalogoId,
+      Value<String>? tagBusqueda,
+      Value<int>? orden,
+      Value<String>? nombreFicheroPortada,
+      Value<String>? nombreFicheroCatalogo,
+      Value<String>? descarga}) {
     return CatalogoFavoritoTableCompanion(
-      id: id ?? this.id,
       catalogoId: catalogoId ?? this.catalogoId,
-      nombreArchivo: nombreArchivo ?? this.nombreArchivo,
+      nombre: nombre ?? this.nombre,
+      idiomaId: idiomaId ?? this.idiomaId,
+      tipoPrecioCatalogoId: tipoPrecioCatalogoId ?? this.tipoPrecioCatalogoId,
+      tipoPrecioCatalogoNombre:
+          tipoPrecioCatalogoNombre ?? this.tipoPrecioCatalogoNombre,
+      tipoCatalogoId: tipoCatalogoId ?? this.tipoCatalogoId,
+      tagBusqueda: tagBusqueda ?? this.tagBusqueda,
+      orden: orden ?? this.orden,
+      nombreFicheroPortada: nombreFicheroPortada ?? this.nombreFicheroPortada,
+      nombreFicheroCatalogo:
+          nombreFicheroCatalogo ?? this.nombreFicheroCatalogo,
+      descarga: descarga ?? this.descarga,
     );
   }
 
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (id.present) {
-      map['ID'] = Variable<int>(id.value);
-    }
     if (catalogoId.present) {
       map['CATALOGO_ID'] = Variable<int>(catalogoId.value);
     }
-    if (nombreArchivo.present) {
-      map['NOMBRE_ARCHIVO'] = Variable<String>(nombreArchivo.value);
+    if (nombre.present) {
+      map['NOMBRE'] = Variable<String>(nombre.value);
+    }
+    if (idiomaId.present) {
+      map['IDIOMA_ID'] = Variable<String>(idiomaId.value);
+    }
+    if (tipoPrecioCatalogoId.present) {
+      map['TIPO_PRECIO_CATALOGO_ID'] =
+          Variable<String>(tipoPrecioCatalogoId.value);
+    }
+    if (tipoPrecioCatalogoNombre.present) {
+      map['TIPO_PRECIO_CATALOGO_NOMBRE'] =
+          Variable<String>(tipoPrecioCatalogoNombre.value);
+    }
+    if (tipoCatalogoId.present) {
+      map['TIPO_CATALOGO_ID'] = Variable<String>(tipoCatalogoId.value);
+    }
+    if (tagBusqueda.present) {
+      map['TAG_BUSQUEDA'] = Variable<String>(tagBusqueda.value);
+    }
+    if (orden.present) {
+      map['ORDEN'] = Variable<int>(orden.value);
+    }
+    if (nombreFicheroPortada.present) {
+      map['NOMBRE_FICHERO_PORTADA'] =
+          Variable<String>(nombreFicheroPortada.value);
+    }
+    if (nombreFicheroCatalogo.present) {
+      map['NOMBRE_FICHERO_CATALOGO'] =
+          Variable<String>(nombreFicheroCatalogo.value);
+    }
+    if (descarga.present) {
+      map['DESCARGA_SN'] = Variable<String>(descarga.value);
     }
     return map;
   }
@@ -3088,9 +3324,17 @@ class CatalogoFavoritoTableCompanion
   @override
   String toString() {
     return (StringBuffer('CatalogoFavoritoTableCompanion(')
-          ..write('id: $id, ')
           ..write('catalogoId: $catalogoId, ')
-          ..write('nombreArchivo: $nombreArchivo')
+          ..write('nombre: $nombre, ')
+          ..write('idiomaId: $idiomaId, ')
+          ..write('tipoPrecioCatalogoId: $tipoPrecioCatalogoId, ')
+          ..write('tipoPrecioCatalogoNombre: $tipoPrecioCatalogoNombre, ')
+          ..write('tipoCatalogoId: $tipoCatalogoId, ')
+          ..write('tagBusqueda: $tagBusqueda, ')
+          ..write('orden: $orden, ')
+          ..write('nombreFicheroPortada: $nombreFicheroPortada, ')
+          ..write('nombreFicheroCatalogo: $nombreFicheroCatalogo, ')
+          ..write('descarga: $descarga')
           ..write(')'))
         .toString();
   }
@@ -6037,32 +6281,89 @@ typedef $$LogTableTableProcessedTableManager = ProcessedTableManager<
     PrefetchHooks Function()>;
 typedef $$CatalogoFavoritoTableTableCreateCompanionBuilder
     = CatalogoFavoritoTableCompanion Function({
-  Value<int> id,
-  required int catalogoId,
-  Value<String?> nombreArchivo,
+  Value<int> catalogoId,
+  required String nombre,
+  required String idiomaId,
+  required String tipoPrecioCatalogoId,
+  required String tipoPrecioCatalogoNombre,
+  required String tipoCatalogoId,
+  required String tagBusqueda,
+  required int orden,
+  required String nombreFicheroPortada,
+  required String nombreFicheroCatalogo,
+  required String descarga,
 });
 typedef $$CatalogoFavoritoTableTableUpdateCompanionBuilder
     = CatalogoFavoritoTableCompanion Function({
-  Value<int> id,
   Value<int> catalogoId,
-  Value<String?> nombreArchivo,
+  Value<String> nombre,
+  Value<String> idiomaId,
+  Value<String> tipoPrecioCatalogoId,
+  Value<String> tipoPrecioCatalogoNombre,
+  Value<String> tipoCatalogoId,
+  Value<String> tagBusqueda,
+  Value<int> orden,
+  Value<String> nombreFicheroPortada,
+  Value<String> nombreFicheroCatalogo,
+  Value<String> descarga,
 });
 
 class $$CatalogoFavoritoTableTableFilterComposer
     extends FilterComposer<_$LocalAppDatabase, $CatalogoFavoritoTableTable> {
   $$CatalogoFavoritoTableTableFilterComposer(super.$state);
-  ColumnFilters<int> get id => $state.composableBuilder(
-      column: $state.table.id,
-      builder: (column, joinBuilders) =>
-          ColumnFilters(column, joinBuilders: joinBuilders));
-
   ColumnFilters<int> get catalogoId => $state.composableBuilder(
       column: $state.table.catalogoId,
       builder: (column, joinBuilders) =>
           ColumnFilters(column, joinBuilders: joinBuilders));
 
-  ColumnFilters<String> get nombreArchivo => $state.composableBuilder(
-      column: $state.table.nombreArchivo,
+  ColumnFilters<String> get nombre => $state.composableBuilder(
+      column: $state.table.nombre,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get idiomaId => $state.composableBuilder(
+      column: $state.table.idiomaId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get tipoPrecioCatalogoId => $state.composableBuilder(
+      column: $state.table.tipoPrecioCatalogoId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get tipoPrecioCatalogoNombre =>
+      $state.composableBuilder(
+          column: $state.table.tipoPrecioCatalogoNombre,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get tipoCatalogoId => $state.composableBuilder(
+      column: $state.table.tipoCatalogoId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get tagBusqueda => $state.composableBuilder(
+      column: $state.table.tagBusqueda,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get orden => $state.composableBuilder(
+      column: $state.table.orden,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get nombreFicheroPortada => $state.composableBuilder(
+      column: $state.table.nombreFicheroPortada,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get nombreFicheroCatalogo => $state.composableBuilder(
+      column: $state.table.nombreFicheroCatalogo,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descarga => $state.composableBuilder(
+      column: $state.table.descarga,
       builder: (column, joinBuilders) =>
           ColumnFilters(column, joinBuilders: joinBuilders));
 }
@@ -6070,18 +6371,59 @@ class $$CatalogoFavoritoTableTableFilterComposer
 class $$CatalogoFavoritoTableTableOrderingComposer
     extends OrderingComposer<_$LocalAppDatabase, $CatalogoFavoritoTableTable> {
   $$CatalogoFavoritoTableTableOrderingComposer(super.$state);
-  ColumnOrderings<int> get id => $state.composableBuilder(
-      column: $state.table.id,
-      builder: (column, joinBuilders) =>
-          ColumnOrderings(column, joinBuilders: joinBuilders));
-
   ColumnOrderings<int> get catalogoId => $state.composableBuilder(
       column: $state.table.catalogoId,
       builder: (column, joinBuilders) =>
           ColumnOrderings(column, joinBuilders: joinBuilders));
 
-  ColumnOrderings<String> get nombreArchivo => $state.composableBuilder(
-      column: $state.table.nombreArchivo,
+  ColumnOrderings<String> get nombre => $state.composableBuilder(
+      column: $state.table.nombre,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get idiomaId => $state.composableBuilder(
+      column: $state.table.idiomaId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get tipoPrecioCatalogoId => $state.composableBuilder(
+      column: $state.table.tipoPrecioCatalogoId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get tipoPrecioCatalogoNombre =>
+      $state.composableBuilder(
+          column: $state.table.tipoPrecioCatalogoNombre,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get tipoCatalogoId => $state.composableBuilder(
+      column: $state.table.tipoCatalogoId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get tagBusqueda => $state.composableBuilder(
+      column: $state.table.tagBusqueda,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get orden => $state.composableBuilder(
+      column: $state.table.orden,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get nombreFicheroPortada => $state.composableBuilder(
+      column: $state.table.nombreFicheroPortada,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get nombreFicheroCatalogo => $state.composableBuilder(
+      column: $state.table.nombreFicheroCatalogo,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descarga => $state.composableBuilder(
+      column: $state.table.descarga,
       builder: (column, joinBuilders) =>
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
@@ -6089,17 +6431,17 @@ class $$CatalogoFavoritoTableTableOrderingComposer
 class $$CatalogoFavoritoTableTableTableManager extends RootTableManager<
     _$LocalAppDatabase,
     $CatalogoFavoritoTableTable,
-    CatalogoFavoritoDTO,
+    CatalogoDTO,
     $$CatalogoFavoritoTableTableFilterComposer,
     $$CatalogoFavoritoTableTableOrderingComposer,
     $$CatalogoFavoritoTableTableCreateCompanionBuilder,
     $$CatalogoFavoritoTableTableUpdateCompanionBuilder,
     (
-      CatalogoFavoritoDTO,
+      CatalogoDTO,
       BaseReferences<_$LocalAppDatabase, $CatalogoFavoritoTableTable,
-          CatalogoFavoritoDTO>
+          CatalogoDTO>
     ),
-    CatalogoFavoritoDTO,
+    CatalogoDTO,
     PrefetchHooks Function()> {
   $$CatalogoFavoritoTableTableTableManager(
       _$LocalAppDatabase db, $CatalogoFavoritoTableTable table)
@@ -6111,24 +6453,56 @@ class $$CatalogoFavoritoTableTableTableManager extends RootTableManager<
           orderingComposer: $$CatalogoFavoritoTableTableOrderingComposer(
               ComposerState(db, table)),
           updateCompanionCallback: ({
-            Value<int> id = const Value.absent(),
             Value<int> catalogoId = const Value.absent(),
-            Value<String?> nombreArchivo = const Value.absent(),
+            Value<String> nombre = const Value.absent(),
+            Value<String> idiomaId = const Value.absent(),
+            Value<String> tipoPrecioCatalogoId = const Value.absent(),
+            Value<String> tipoPrecioCatalogoNombre = const Value.absent(),
+            Value<String> tipoCatalogoId = const Value.absent(),
+            Value<String> tagBusqueda = const Value.absent(),
+            Value<int> orden = const Value.absent(),
+            Value<String> nombreFicheroPortada = const Value.absent(),
+            Value<String> nombreFicheroCatalogo = const Value.absent(),
+            Value<String> descarga = const Value.absent(),
           }) =>
               CatalogoFavoritoTableCompanion(
-            id: id,
             catalogoId: catalogoId,
-            nombreArchivo: nombreArchivo,
+            nombre: nombre,
+            idiomaId: idiomaId,
+            tipoPrecioCatalogoId: tipoPrecioCatalogoId,
+            tipoPrecioCatalogoNombre: tipoPrecioCatalogoNombre,
+            tipoCatalogoId: tipoCatalogoId,
+            tagBusqueda: tagBusqueda,
+            orden: orden,
+            nombreFicheroPortada: nombreFicheroPortada,
+            nombreFicheroCatalogo: nombreFicheroCatalogo,
+            descarga: descarga,
           ),
           createCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            required int catalogoId,
-            Value<String?> nombreArchivo = const Value.absent(),
+            Value<int> catalogoId = const Value.absent(),
+            required String nombre,
+            required String idiomaId,
+            required String tipoPrecioCatalogoId,
+            required String tipoPrecioCatalogoNombre,
+            required String tipoCatalogoId,
+            required String tagBusqueda,
+            required int orden,
+            required String nombreFicheroPortada,
+            required String nombreFicheroCatalogo,
+            required String descarga,
           }) =>
               CatalogoFavoritoTableCompanion.insert(
-            id: id,
             catalogoId: catalogoId,
-            nombreArchivo: nombreArchivo,
+            nombre: nombre,
+            idiomaId: idiomaId,
+            tipoPrecioCatalogoId: tipoPrecioCatalogoId,
+            tipoPrecioCatalogoNombre: tipoPrecioCatalogoNombre,
+            tipoCatalogoId: tipoCatalogoId,
+            tagBusqueda: tagBusqueda,
+            orden: orden,
+            nombreFicheroPortada: nombreFicheroPortada,
+            nombreFicheroCatalogo: nombreFicheroCatalogo,
+            descarga: descarga,
           ),
           withReferenceMapper: (p0) => p0
               .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
@@ -6141,17 +6515,17 @@ typedef $$CatalogoFavoritoTableTableProcessedTableManager
     = ProcessedTableManager<
         _$LocalAppDatabase,
         $CatalogoFavoritoTableTable,
-        CatalogoFavoritoDTO,
+        CatalogoDTO,
         $$CatalogoFavoritoTableTableFilterComposer,
         $$CatalogoFavoritoTableTableOrderingComposer,
         $$CatalogoFavoritoTableTableCreateCompanionBuilder,
         $$CatalogoFavoritoTableTableUpdateCompanionBuilder,
         (
-          CatalogoFavoritoDTO,
+          CatalogoDTO,
           BaseReferences<_$LocalAppDatabase, $CatalogoFavoritoTableTable,
-              CatalogoFavoritoDTO>
+              CatalogoDTO>
         ),
-        CatalogoFavoritoDTO,
+        CatalogoDTO,
         PrefetchHooks Function()>;
 typedef $$ClienteContactoImpTableTableCreateCompanionBuilder
     = ClienteContactoImpTableCompanion Function({

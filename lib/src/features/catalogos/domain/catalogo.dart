@@ -1,3 +1,4 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'catalogo.freezed.dart';
@@ -14,9 +15,15 @@ class Catalogo with _$Catalogo {
     required String tipoCatalogoId,
     required String tagBusqueda,
     required int orden,
-    required String urlFicherPortada,
+    required String nombreFicheroPortada,
     required String nombreFicheroCatalogo,
     required bool descarga,
     // required bool isFavorite,
   }) = _Catalogo;
+
+  String get getImageUrl {
+    return 'https://${dotenv.get('URL', fallback: 'localhost:3001')}/api/v1/online/adjunto/catalogo/$catalogoId?NOMBRE_ARCHIVO=$nombreFicheroPortada';
+  }
+
+  String get nombreCompleto => '$nombre ($idiomaId) $tipoPrecioCatalogoNombre';
 }

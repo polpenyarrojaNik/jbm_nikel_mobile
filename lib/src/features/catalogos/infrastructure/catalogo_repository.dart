@@ -22,7 +22,6 @@ import '../domain/idioma_catalogo.dart';
 import '../domain/tipo_catalogo.dart';
 import '../domain/tipo_precio_catalogo.dart';
 import 'catalogo_dto.dart';
-import 'catalogo_favorito_dto.dart';
 import 'catalogo_orden_dto.dart';
 import 'idioma_catalogo_dto.dart';
 import 'tipo_catalogo_dto.dart';
@@ -82,15 +81,6 @@ class CatalogoRepository {
         searchText: searchText,
       );
 
-      final favoriteLocalList = await _getLocalFavoriteList(
-        tipoCatalogo: tipoCatalogo,
-        tipoPrecioCatalogo: tipoPrecioCatalogo,
-        idiomaCatalogo: idiomaCatalogo,
-        searchText: searchText,
-      );
-
-      final catalogoOrdenAbiertoList = await _getCatalogoOrdenDTOList();
-
       final catalogosDTOList = await _remoteCatalogosList(
         requestUri: (_usuario.test)
             ? Uri.http(
@@ -113,10 +103,36 @@ class CatalogoRepository {
               tipoPrecioCatalogo: tipoPrecioCatalogo?.descripcion))
           .toList();
 
+      final favoriteLocalList = await _getLocalFavoriteList(
+        tipoCatalogo: tipoCatalogo,
+        tipoPrecioCatalogo: tipoPrecioCatalogo,
+        idiomaCatalogo: idiomaCatalogo,
+        searchText: searchText,
+      );
+
+      final catalogoOrdenAbiertoList = await _getCatalogoOrdenDTOList();
+
       catalogosList.sort((a, b) =>
           _orderByCatalogos(a, b, favoriteLocalList, catalogoOrdenAbiertoList));
 
       return catalogosList;
+    } on AppException catch (e) {
+      return e.maybeWhen(
+        orElse: () => throw e,
+        notConnection: () async {
+          final favoriteLocalList = await _getLocalFavoriteList(
+            tipoCatalogo: tipoCatalogo,
+            tipoPrecioCatalogo: tipoPrecioCatalogo,
+            idiomaCatalogo: idiomaCatalogo,
+            searchText: searchText,
+          );
+          return favoriteLocalList
+              .map((e) => e.toDomain(
+                  test: false,
+                  tipoPrecioCatalogo: tipoPrecioCatalogo?.descripcion))
+              .toList();
+        },
+      );
     } catch (error) {
       rethrow;
     }
@@ -254,15 +270,18 @@ class CatalogoRepository {
     return file.existsSync();
   }
 
-  Future<void> setCatalogoToFavorite(AdjuntoParam adjuntoParam) async {
-    await _localDb.into(_localDb.catalogoFavoritoTable).insertOnConflictUpdate(
-          CatalogoFavoritoTableCompanion(
-            catalogoId: Value(int.parse(adjuntoParam.id)),
-            nombreArchivo: Value(adjuntoParam.nombreArchivo),
-          ),
-        );
+  Future<void> setCatalogoToFavorite(Catalogo catalogo) async {
+    await _localDb
+        .into(_localDb.catalogoFavoritoTable)
+        .insertOnConflictUpdate(CatalogoDTO.fromDomain(catalogo));
 
     final documentDirectory = await getApplicationDocumentsDirectory();
+
+    final adjuntoParam = AdjuntoParam(
+      id: catalogo.catalogoId.toString(),
+      nombreArchivo: catalogo.nombreFicheroCatalogo,
+      descarga: catalogo.descarga,
+    );
 
     if (!fileExistInLocal(adjuntoParam, documentDirectory)) {
       final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
@@ -303,7 +322,7 @@ class CatalogoRepository {
     }
   }
 
-  Future<List<CatalogoFavoritoDTO>> _getLocalFavoriteList({
+  Future<List<CatalogoDTO>> _getLocalFavoriteList({
     TipoCatalogo? tipoCatalogo,
     TipoPrecioCatalogo? tipoPrecioCatalogo,
     IdiomaCatalogo? idiomaCatalogo,
@@ -433,7 +452,7 @@ class CatalogoRepository {
   int _orderByCatalogos(
       Catalogo a,
       Catalogo b,
-      List<CatalogoFavoritoDTO> favoriteLocalList,
+      List<CatalogoDTO> favoriteLocalList,
       List<CatalogoOrdenDTO> catalogoOrdenList) {
     final priorityA =
         getPriority(a.catalogoId, favoriteLocalList, catalogoOrdenList);
@@ -524,9 +543,7 @@ class CatalogoRepository {
         CatalogoOrdenDTO(catalogoId: catalogoId, fechaAbierto: DateTime.now()));
   }
 
-  int getPriority(
-      int catalogoId,
-      List<CatalogoFavoritoDTO> catalogoFavoritoDTOList,
+  int getPriority(int catalogoId, List<CatalogoDTO> catalogoFavoritoDTOList,
       List<CatalogoOrdenDTO> catalogoOrdenList) {
     final isAbierto = _isCatalogoAbierto(catalogoId, catalogoOrdenList);
     final isFavorito = _isCatalogoFavorito(catalogoId, catalogoFavoritoDTOList);
@@ -543,7 +560,7 @@ class CatalogoRepository {
   }
 
   bool _isCatalogoFavorito(
-      int catalogoId, List<CatalogoFavoritoDTO> catalogoFavoritoDTOList) {
+      int catalogoId, List<CatalogoDTO> catalogoFavoritoDTOList) {
     return catalogoFavoritoDTOList.any((f) => f.catalogoId == catalogoId);
   }
 

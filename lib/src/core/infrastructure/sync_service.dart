@@ -20,7 +20,7 @@ import '../../features/articulos/infrastructure/articulo_precio_tarifa_dto.dart'
 import '../../features/articulos/infrastructure/articulo_recambio_dto.dart';
 import '../../features/articulos/infrastructure/articulo_sustitutivo_dto.dart';
 import '../../features/articulos/infrastructure/descuento_general_dto.dart';
-import '../../features/catalogos/infrastructure/catalogo_favorito_dto.dart';
+import '../../features/catalogos/infrastructure/catalogo_dto.dart';
 import '../../features/cliente/infrastructure/cliente_contacto_dto.dart';
 import '../../features/cliente/infrastructure/cliente_descuento_dto.dart';
 import '../../features/cliente/infrastructure/cliente_direccion_dto.dart';
@@ -1623,18 +1623,18 @@ class SyncService {
   }
 
   Future<void> downloadFavoritesCatalogs(
-      List<CatalogoFavoritoDTO> favoritesCatalogsDtoList,
+      List<CatalogoDTO> favoritesCatalogsDtoList,
       Directory documentDirectory) async {
     for (var i = 0; i < favoritesCatalogsDtoList.length; i++) {
       final adjuntoParam = AdjuntoParam(
         id: favoritesCatalogsDtoList[i].catalogoId.toString(),
-        nombreArchivo: favoritesCatalogsDtoList[i].nombreArchivo,
+        nombreArchivo: favoritesCatalogsDtoList[i].nombreFicheroCatalogo,
       );
       if (adjuntoParam.nombreArchivo != null &&
           !_fileExistInLocal(adjuntoParam, documentDirectory)) {
         final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
         final data = await _remoteGetAttachment(
-            requestUri: Uri.http(
+            requestUri: Uri.https(
               'jbm-api.nikel.es',
               'api/v1/online/adjunto/catalogo/${adjuntoParam.id}',
               query,
@@ -1645,7 +1645,7 @@ class SyncService {
     }
   }
 
-  Future<List<CatalogoFavoritoDTO>> _getFavoritesCatalogDtoList() async {
+  Future<List<CatalogoDTO>> _getFavoritesCatalogDtoList() async {
     return _localDb.select(_localDb.catalogoFavoritoTable).get();
   }
 
@@ -1682,8 +1682,7 @@ class SyncService {
     }
   }
 
-  Future<void> removeDeletedCatalogs(
-      List<CatalogoFavoritoDTO> favoritesCatalogsDtoList,
+  Future<void> removeDeletedCatalogs(List<CatalogoDTO> favoritesCatalogsDtoList,
       Directory documentDirectory) async {
     final getCatalogoDirectory =
         Directory('${documentDirectory.path}/catalogos/');
@@ -1751,6 +1750,9 @@ class SyncService {
   }
 
   Future<void> _removeAllCatalogsFiles(Directory directory) async {
-    Directory('${directory.path}/catalogos').deleteSync(recursive: true);
+    final directoryCatalogos = Directory('${directory.path}/catalogos');
+    if (directoryCatalogos.existsSync()) {
+      directoryCatalogos.deleteSync(recursive: true);
+    }
   }
 }

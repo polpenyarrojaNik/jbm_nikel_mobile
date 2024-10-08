@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../core/domain/adjunto_param.dart';
 import '../../../core/exceptions/app_exception.dart';
+import '../domain/catalogo.dart';
 import '../infrastructure/catalogo_repository.dart';
 import 'catalogo_search_controller.dart';
 
@@ -75,14 +76,13 @@ class CatalogoFavoritoController
     }
   }
 
-  Future<void> setCatalogoFavorite(String nombreArchivo) async {
+  Future<void> setCatalogoFavorite(Catalogo catalogo) async {
     try {
       if (state != const CatalogoFavoritoControllerState.checking()) {
         state = const CatalogoFavoritoControllerState.checking();
       }
 
-      await catalogoRepository.setCatalogoToFavorite(AdjuntoParam(
-          id: catalogoId.toString(), nombreArchivo: nombreArchivo));
+      await catalogoRepository.setCatalogoToFavorite(catalogo);
       ref.invalidate(catalogoIndexScreenControllerProvider);
 
       await isModuleFavorite();

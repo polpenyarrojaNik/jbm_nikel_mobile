@@ -58,7 +58,7 @@ class CatalogoListTile extends ConsumerWidget {
                     children: [
                       Flexible(
                         child: Text(
-                          catalogo.nombre,
+                          catalogo.nombreCompleto,
                           style: Theme.of(context)
                               .textTheme
                               .bodyLarge
@@ -68,6 +68,8 @@ class CatalogoListTile extends ConsumerWidget {
                       ),
                       stateFavorite.maybeWhen(
                         orElse: () => const ProgressIndicatorWidget(),
+                        error: (error, _) => const IconButton(
+                            onPressed: null, icon: Icon(Icons.error)),
                         favorite: () => IconButton(
                           onPressed: () => removeCatlalogoFavorite(
                             ref: ref,
@@ -91,7 +93,7 @@ class CatalogoListTile extends ConsumerWidget {
                   Expanded(
                     child: ClipRRect(
                       child: CachedNetworkImage(
-                        imageUrl: catalogo.urlFicherPortada,
+                        imageUrl: catalogo.getImageUrl,
                         fit: BoxFit.contain,
                         progressIndicatorBuilder: (context, url, progress) =>
                             Image.asset(
@@ -134,7 +136,7 @@ class CatalogoListTile extends ConsumerWidget {
       {required WidgetRef ref, required Catalogo catalogo}) {
     ref
         .read(catalogoFavoritoControllerProvider(catalogo.catalogoId).notifier)
-        .setCatalogoFavorite(catalogo.nombreFicheroCatalogo);
+        .setCatalogoFavorite(catalogo);
   }
 
   void removeCatlalogoFavorite(
