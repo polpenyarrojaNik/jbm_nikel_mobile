@@ -520,7 +520,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Motivo non interessato"),
         "motivoNoPedido":
             MessageLookupByLibrary.simpleMessage("Motivo non ordinato"),
-        "name": MessageLookupByLibrary.simpleMessage(""),
+        "name": MessageLookupByLibrary.simpleMessage("NOME"),
         "no": MessageLookupByLibrary.simpleMessage("Non"),
         "noSeHaPodidoSincronizar": MessageLookupByLibrary.simpleMessage(
             "Non è possibile sincronizzare correttamente"),

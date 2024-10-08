@@ -976,6 +976,7 @@ class VisitaRepository {
       cargo: cargo,
       phoneList: phoneList,
       email: email,
+      streetAddress1: addressString,
       referenceStreetAddress: addressString,
     );
 
