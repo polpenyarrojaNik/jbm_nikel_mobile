@@ -3,6 +3,9 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+
+import '../../../../../generated/l10n.dart';
 
 //   * mobile horizontal mode with adding/removing steps
 //   * alternative labeling
@@ -496,8 +499,19 @@ class _IconStepperState extends State<IconStepper>
                 shape: WidgetStateProperty.all<OutlinedBorder>(buttonShape),
               ),
               child: (widget.currentStep == widget.steps.length - 1)
-                  ? const Icon(
-                      Icons.save,
+                  ? Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(
+                            Icons.save,
+                          ),
+                          const Gap(8),
+                          Text(
+                            S.of(context).send,
+                          ),
+                        ],
+                      ),
                     )
                   : const Icon(Icons.navigate_next),
             ),
