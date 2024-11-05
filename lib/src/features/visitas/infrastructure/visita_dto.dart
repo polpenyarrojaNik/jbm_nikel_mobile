@@ -54,6 +54,8 @@ class VisitaDTO with _$VisitaDTO implements Insertable<VisitaDTO> {
 
   Visita toDomain({
     required String? nombreCliente,
+    required String? clienteEmail,
+    required String? clienteTelefono,
     required VisitaMotivoNoVenta? motivoNoInteres,
     required VisitaMotivoNoVenta? motivoNoPedido,
     required VisitaSector? sector,
@@ -66,6 +68,8 @@ class VisitaDTO with _$VisitaDTO implements Insertable<VisitaDTO> {
       fecha: fecha,
       clienteId: clienteId,
       nombreCliente: nombreCliente,
+      clienteEmail: clienteEmail,
+      clienteTelefono: clienteTelefono,
       isClienteProvisional: (isClienteProvisional == 'S') ? true : false,
       clienteProvisionalNombre: clienteProvisionalNombre,
       clienteProvisionalEmail: clienteProvisionalEmail,

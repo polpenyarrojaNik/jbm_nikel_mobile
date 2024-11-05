@@ -110,6 +110,8 @@ class VisitaLocalDTO
 
   Visita toDomain({
     required String? nombreCliente,
+    required String? clienteEmail,
+    required String? clienteTelefono,
     required Pais? pais,
     required Provincia? provincia,
     required VisitaMotivoNoVenta? motivoNoInteres,
@@ -122,6 +124,8 @@ class VisitaLocalDTO
         fecha: fecha,
         clienteId: clienteId,
         nombreCliente: nombreCliente,
+        clienteEmail: clienteEmail,
+        clienteTelefono: clienteTelefono,
         isClienteProvisional: (isClienteProvisional == 'S') ? true : false,
         clienteProvisionalNombre: clienteProvisionalNombre,
         clienteProvisionalEmail: clienteProvisionalEmail,

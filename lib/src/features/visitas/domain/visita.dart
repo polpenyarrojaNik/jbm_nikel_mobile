@@ -15,6 +15,8 @@ class Visita with _$Visita {
     String? id,
     String? clienteId,
     String? nombreCliente,
+    String? clienteEmail,
+    String? clienteTelefono,
     required bool isClienteProvisional,
     String? clienteProvisionalNombre,
     String? clienteProvisionalEmail,

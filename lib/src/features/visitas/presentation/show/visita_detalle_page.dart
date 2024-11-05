@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
+import '../../../../core/helpers/helpers.dart';
 import '../../../../core/presentation/common_widgets/async_value_widget.dart';
 import '../../../../core/presentation/common_widgets/column_field_text_detail.dart';
 
@@ -68,17 +70,55 @@ class VisitaDetallePage extends ConsumerWidget {
                   style: Theme.of(context).textTheme.titleSmall,
                 ),
               ),
-              if (visita.clienteProvisionalEmail != null)
-                ColumnFieldTextDetalle(
-                  fieldTitleValue:
-                      S.of(context).visitas_show_visitaDetalle_email,
-                  value: visita.clienteProvisionalEmail!,
+              if (visita.clienteEmail != null ||
+                  visita.clienteProvisionalEmail != null)
+                Row(
+                  children: [
+                    Expanded(
+                      child: ColumnFieldTextDetalle(
+                        fieldTitleValue:
+                            S.of(context).visitas_show_visitaDetalle_email,
+                        value: visita.clienteEmail ??
+                            visita.clienteProvisionalEmail!,
+                      ),
+                    ),
+                    const Gap(8),
+                    IconButton.filledTonal(
+                      onPressed: () => navigateToEmailApp(visita.clienteEmail ??
+                          visita.clienteProvisionalEmail!),
+                      visualDensity: VisualDensity.comfortable,
+                      icon: Icon(
+                        Icons.mail,
+                        color: Theme.of(context).colorScheme.secondary,
+                        size: 18,
+                      ),
+                    ),
+                  ],
                 ),
-              if (visita.clienteProvisionalTelefono != null)
-                ColumnFieldTextDetalle(
-                  fieldTitleValue:
-                      S.of(context).visitas_show_visitaDetalle_telefono,
-                  value: visita.clienteProvisionalTelefono!,
+              if (visita.clienteTelefono != null ||
+                  visita.clienteProvisionalTelefono != null)
+                Row(
+                  children: [
+                    Expanded(
+                      child: ColumnFieldTextDetalle(
+                        fieldTitleValue:
+                            S.of(context).visitas_show_visitaDetalle_telefono,
+                        value: visita.clienteTelefono ??
+                            visita.clienteProvisionalTelefono!,
+                      ),
+                    ),
+                    const Gap(8),
+                    IconButton.filledTonal(
+                      onPressed: () => openPhoneCall(visita.clienteTelefono ??
+                          visita.clienteProvisionalTelefono!),
+                      visualDensity: VisualDensity.comfortable,
+                      icon: Icon(
+                        Icons.phone,
+                        color: Theme.of(context).colorScheme.secondary,
+                        size: 18,
+                      ),
+                    ),
+                  ],
                 ),
               if (visita.clienteProvisionalPoblacion != null)
                 ColumnFieldTextDetalle(

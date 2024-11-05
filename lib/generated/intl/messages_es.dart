@@ -685,6 +685,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "seleccionarBorrador":
             MessageLookupByLibrary.simpleMessage("Seleccionar borrador"),
         "semanal": MessageLookupByLibrary.simpleMessage("Semanal"),
+        "send": MessageLookupByLibrary.simpleMessage("Enviar"),
         "settings_cerrar_sesion":
             MessageLookupByLibrary.simpleMessage("Cerrar sesión"),
         "settings_creandoArchivo":

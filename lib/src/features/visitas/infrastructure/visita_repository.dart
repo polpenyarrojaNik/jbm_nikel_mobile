@@ -372,6 +372,8 @@ class VisitaRepository {
 
           visitaLocalList.add(visitaLocalDTO.toDomain(
             nombreCliente: clienteDTO?.nombreCliente,
+            clienteEmail: clienteDTO?.email,
+            clienteTelefono: clienteDTO?.telefonoFijo,
             provincia: provinciaDTO?.toDomain(),
             pais: paisDTO?.toDomain(),
             motivoNoInteres: motivoNoInteresDTO?.toDomain(),
@@ -544,6 +546,8 @@ class VisitaRepository {
       final visitaDTO = row.readTable(_remoteDb.visitaTable);
       return visitaDTO.toDomain(
         nombreCliente: clienteDTO?.nombreCliente,
+        clienteEmail: clienteDTO?.email,
+        clienteTelefono: clienteDTO?.telefonoFijo,
         motivoNoInteres: null,
         motivoNoPedido: null,
         sector: null,
@@ -651,6 +655,8 @@ class VisitaRepository {
       final visitaDTO = row.readTable(_remoteDb.visitaTable);
       return visitaDTO.toDomain(
         nombreCliente: clienteDTO?.nombreCliente,
+        clienteEmail: clienteDTO?.email,
+        clienteTelefono: clienteDTO?.telefonoFijo,
         motivoNoInteres: null,
         motivoNoPedido: null,
         sector: null,
@@ -701,6 +707,8 @@ class VisitaRepository {
 
     return visitaDTO.toDomain(
       nombreCliente: clienteDTO?.nombreCliente,
+      clienteEmail: clienteDTO?.email,
+      clienteTelefono: clienteDTO?.telefonoFijo,
       provincia: provinciaDTO?.toDomain(),
       pais: paisDTO?.toDomain(),
       motivoNoInteres: motivoNoInteresDTO?.toDomain(),

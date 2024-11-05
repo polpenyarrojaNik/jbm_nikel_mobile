@@ -2,10 +2,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/exceptions/app_exception.dart';
+import '../../../../core/helpers/helpers.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
@@ -242,22 +242,6 @@ class _ClienteContactoTile extends StatelessWidget {
       ),
     );
   }
-
-  void openPhoneCall(String phone) async {
-    final params = Uri(
-      scheme: 'tel',
-      path: phone,
-    );
-    await launchUrl(params, mode: LaunchMode.externalApplication);
-  }
-
-  void navigateToEmailApp(String contactEmail) async {
-    final params = Uri(
-      scheme: 'mailto',
-      path: contactEmail,
-    );
-    await launchUrl(params, mode: LaunchMode.externalApplication);
-  }
 }
 
 class _ClienteContactoActionButtons extends ConsumerWidget {
@@ -356,22 +340,12 @@ class ContactButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 60,
-      child: ElevatedButton(
-        onPressed: () => onPressFunction(),
-        style: ButtonStyle(
-            backgroundColor: WidgetStateProperty.all<Color>(
-                Theme.of(context).colorScheme.primaryContainer)),
-        child: Column(
-          children: [
-            Icon(
-              icon,
-              color: Theme.of(context).colorScheme.secondary,
-              size: 18,
-            ),
-          ],
-        ),
+    return IconButton.filledTonal(
+      onPressed: () => onPressFunction(),
+      icon: Icon(
+        icon,
+        color: Theme.of(context).colorScheme.secondary,
+        size: 18,
       ),
     );
   }
