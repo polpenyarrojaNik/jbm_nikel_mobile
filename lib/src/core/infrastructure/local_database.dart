@@ -68,7 +68,7 @@ class LocalAppDatabase extends _$LocalAppDatabase {
       : test = true,
         super(NativeDatabase.memory());
   @override
-  int get schemaVersion => 14;
+  int get schemaVersion => 15;
 
   @override
   MigrationStrategy get migration {
@@ -106,7 +106,8 @@ class LocalAppDatabase extends _$LocalAppDatabase {
               ],
             ),
           );
-        } else if (to == 8) {
+        }
+        if (from < 8) {
           await m.alterTable(
             TableMigration(visitaLocalTable, newColumns: [
               visitaLocalTable.ofertaRealizada,
@@ -128,7 +129,8 @@ class LocalAppDatabase extends _$LocalAppDatabase {
               visitaLocalTable.frecuenciaPedido: const Constant('M'),
             }),
           );
-        } else if (to == 9) {
+        }
+        if (from < 9) {
           await m.alterTable(
             TableMigration(visitaLocalTable, newColumns: [
               visitaLocalTable.ofertaRealizada,
@@ -158,7 +160,8 @@ class LocalAppDatabase extends _$LocalAppDatabase {
               ],
             ),
           );
-        } else if (to == 11) {
+        }
+        if (from < 11) {
           await m.alterTable(
             TableMigration(visitaLocalTable, newColumns: [
               visitaLocalTable.ofertaRealizada,
@@ -189,7 +192,8 @@ class LocalAppDatabase extends _$LocalAppDatabase {
             ),
           );
           await m.createTable(catalogoOrdenTable);
-        } else if (to == 12) {
+        }
+        if (from < 12) {
           // await m.alterTable(
           //   TableMigration(
           //     catalogoFavoritoTable,
@@ -198,10 +202,22 @@ class LocalAppDatabase extends _$LocalAppDatabase {
           //     ],
           //   ),
           // );
-        } else if (to == 13) {
+        }
+        if (from < 13) {
           await m.deleteTable(catalogoFavoritoTable.tableName);
           await m.createTable(catalogoFavoritoTable);
-        } else if (to == 14) {
+        }
+        if (from < 14) {
+          await m.deleteTable(catalogoFavoritoTable.tableName);
+          await m.createTable(catalogoFavoritoTable);
+        }
+        if (from < 15) {
+          await m.deleteTable(catalogoOrdenTable.tableName);
+          await m.createTable(catalogoOrdenTable);
+          await m.deleteTable(visitaLocalTable.tableName);
+          await m.createTable(visitaLocalTable);
+          await m.deleteTable(clienteDireccionImpTable.tableName);
+          await m.createTable(clienteDireccionImpTable);
           await m.deleteTable(catalogoFavoritoTable.tableName);
           await m.createTable(catalogoFavoritoTable);
         }
