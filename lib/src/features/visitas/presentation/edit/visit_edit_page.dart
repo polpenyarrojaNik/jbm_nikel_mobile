@@ -20,7 +20,6 @@ import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../../cliente/domain/cliente.dart';
-import '../../../cliente/presentation/index/cliente_search_controller.dart';
 import '../../../usuario/application/usuario_notifier.dart';
 import '../../domain/image_form_data.dart';
 import '../../domain/visita.dart';
@@ -379,7 +378,7 @@ class _VisitaFormState extends State<_VisitaForm> {
             ),
           if (widget.isClienteProvisional) const Divider(),
           if (!widget.isClienteProvisional)
-            _SelectClienteWidget(
+            SelectClienteWidget(
               visita: widget.visita,
               readOnly: widget.readOnly,
               onSelectedCliente: widget.onSelectedCliente,
@@ -819,8 +818,9 @@ class _ClienteProvisionalContainerState
   }
 }
 
-class _SelectClienteWidget extends ConsumerStatefulWidget {
-  const _SelectClienteWidget({
+class SelectClienteWidget extends ConsumerStatefulWidget {
+  const SelectClienteWidget({
+    super.key,
     required this.visita,
     required this.readOnly,
     required this.onSelectedCliente,
@@ -831,11 +831,11 @@ class _SelectClienteWidget extends ConsumerStatefulWidget {
   final void Function(String clienteId) onSelectedCliente;
 
   @override
-  ConsumerState<_SelectClienteWidget> createState() =>
+  ConsumerState<SelectClienteWidget> createState() =>
       _SelectClienteWidgetState();
 }
 
-class _SelectClienteWidgetState extends ConsumerState<_SelectClienteWidget> {
+class _SelectClienteWidgetState extends ConsumerState<SelectClienteWidget> {
   final controller = TextEditingController();
 
   @override
@@ -851,12 +851,6 @@ class _SelectClienteWidgetState extends ConsumerState<_SelectClienteWidget> {
 
   @override
   Widget build(BuildContext context) {
-    ref.listen<Cliente?>(clienteForFromStateProvider, (_, state) {
-      if (state != null) {
-        controller.text = setClienteValue(state.id, state.nombreCliente);
-        widget.onSelectedCliente(state.id);
-      }
-    });
     return FormBuilderTextField(
       name: 'clienteId',
       controller: controller,
@@ -874,7 +868,12 @@ class _SelectClienteWidgetState extends ConsumerState<_SelectClienteWidget> {
   }
 
   void navigateToSearchClientes(BuildContext context) async {
-    await context.router.push(ClienteListaRoute(isSearchClienteForFrom: true));
+    final customer = await context.router
+        .push<Cliente?>(ClienteListaRoute(isSearchClienteForFrom: true));
+    if (customer != null) {
+      controller.text = setClienteValue(customer.id, customer.nombreCliente);
+      widget.onSelectedCliente(customer.id);
+    }
   }
 
   String setClienteValue(String clienteId, String? nombreCliente) {

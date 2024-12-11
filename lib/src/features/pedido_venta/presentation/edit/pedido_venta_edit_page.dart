@@ -33,7 +33,6 @@ import '../../../cliente/domain/cliente_direccion.dart';
 import '../../../cliente/domain/cliente_imp_param.dart';
 import '../../../cliente/infrastructure/cliente_repository.dart';
 import '../../../cliente/presentation/index/cliente_lista_tile.dart';
-import '../../../cliente/presentation/index/cliente_search_controller.dart';
 import '../../../cliente/presentation/show/cliente_direccion_list_page.dart';
 import '../../domain/pedido_local_param.dart';
 import '../../domain/pedido_venta_linea.dart';
@@ -331,15 +330,6 @@ class PedidoVentaEditForm extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen<Cliente?>(clienteForFromStateProvider, (_, state) {
-      if (state != null) {
-        ref
-            .read(pedidoVentaEditPageControllerProvider(pedidoLocalParam)
-                .notifier)
-            .selectCliente(cliente: state);
-      }
-    });
-
     // ignore: deprecated_member_use
     return WillPopScope(
       onWillPop: () async => _askIfUserPop(context, ref, isBorrador),
@@ -594,7 +584,8 @@ class _StepSelectClienteContentState
     if (widget.cliente == null) {
       Future.microtask(() {
         if (mounted) {
-          navigateToSelectCliente(context, widget.isEdit);
+          navigateToSelectCliente(
+              context, widget.pedidoLocalParam, widget.isEdit);
         }
       });
     }
@@ -609,8 +600,8 @@ class _StepSelectClienteContentState
             child: Padding(
               padding: const EdgeInsets.all(24.0),
               child: TextButton(
-                onPressed: () =>
-                    navigateToSelectCliente(context, widget.isEdit),
+                onPressed: () => navigateToSelectCliente(
+                    context, widget.pedidoLocalParam, widget.isEdit),
                 child: Text(
                   S.of(context).pedido_edit_pedidoEdit_seleccioneCliente,
                 ),
@@ -625,7 +616,8 @@ class _StepSelectClienteContentState
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: GestureDetector(
-              onTap: () => navigateToSelectCliente(context, widget.isEdit),
+              onTap: () => navigateToSelectCliente(
+                  context, widget.pedidoLocalParam, widget.isEdit),
               child: Card(
                 elevation: 0,
                 shape: RoundedRectangleBorder(
@@ -647,8 +639,8 @@ class _StepSelectClienteContentState
                         ),
                       ),
                       IconButton(
-                        onPressed: () =>
-                            navigateToSelectCliente(context, widget.isEdit),
+                        onPressed: () => navigateToSelectCliente(
+                            context, widget.pedidoLocalParam, widget.isEdit),
                         icon: const Icon(Icons.navigate_next_outlined),
                       )
                     ],
@@ -662,11 +654,19 @@ class _StepSelectClienteContentState
     }
   }
 
-  void navigateToSelectCliente(BuildContext context, bool isEdit) async {
+  void navigateToSelectCliente(BuildContext context,
+      PedidoLocalParam pedidoLocalParam, bool isEdit) async {
     if (!isEdit) {
-      await context.router.push(
+      final customer = await context.router.push<Cliente?>(
         ClienteListaRoute(isSearchClienteForFrom: true),
       );
+
+      if (customer != null) {
+        ref
+            .read(pedidoVentaEditPageControllerProvider(pedidoLocalParam)
+                .notifier)
+            .selectCliente(cliente: customer);
+      }
     } else {
       return showToast(
         S.of(context).pedido_edit_pedidoEdit_noPuedesCambiarCliente,
@@ -983,6 +983,7 @@ class _StepObservacionesContentState
   @override
   void dispose() {
     super.dispose();
+
     ofertaFechaHastaController.dispose();
   }
 

@@ -325,7 +325,7 @@ class PedidoVentaEditPageController
     );
   }
 
-  Future<void> selectCliente({required Cliente cliente}) async {
+  void selectCliente({required Cliente cliente}) {
     _cliente = cliente;
     _clienteDireccion = null;
     _oferta = cliente.clientePotencial ?? false;

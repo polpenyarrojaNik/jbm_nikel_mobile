@@ -79,8 +79,10 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
         searchTitle: S.of(context).cliente_index_buscarClientes,
         onChanged: (searchText) => _debouncer.run(
           () {
-            ref.read(clientesSearchQueryStateProvider.notifier).state =
-                searchText;
+            ref
+                .read(
+                    clienteIndexControllerSearchTextParameterProvider.notifier)
+                .setFilter(searchText);
           },
         ),
         actionButtons: [
@@ -108,9 +110,10 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
         synchronized: () => RefreshIndicator(
           onRefresh: () => syncCustomerDb(ref),
           child: ClientesListViewWidget(
-              stateSync: stateSync,
-              ref: ref,
-              isSearchClienteForFrom: widget.isSearchClienteForFrom),
+            stateSync: stateSync,
+            ref: ref,
+            isSearchClienteForFrom: widget.isSearchClienteForFrom,
+          ),
         ),
       ),
     );
@@ -219,7 +222,7 @@ class ClientesListViewWidget extends StatelessWidget {
 
   void selectClienteForFromPage(
       {required BuildContext context, required Cliente cliente}) {
-    ref.read(clienteForFromStateProvider.notifier).state = cliente;
-    context.router.maybePop();
+    // ref.read(clienteForFromStateProvider.notifier).state = cliente;
+    context.router.maybePop(cliente);
   }
 }

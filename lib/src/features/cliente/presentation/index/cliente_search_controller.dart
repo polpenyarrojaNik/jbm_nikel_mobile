@@ -6,18 +6,22 @@ import '../../infrastructure/cliente_repository.dart';
 
 part 'cliente_search_controller.g.dart';
 
-final clientesSearchQueryStateProvider =
-    StateProvider.autoDispose<String>((ref) {
-  return '';
-});
+@riverpod
+class ClienteIndexControllerSearchTextParameter
+    extends _$ClienteIndexControllerSearchTextParameter {
+  @override
+  String build() {
+    return '';
+  }
+
+  void setFilter(String searchText) {
+    state = searchText;
+  }
+}
 
 final clientesPotencialesQueryStateProvider =
     StateProvider.autoDispose<bool>((ref) {
   return false;
-});
-
-final clienteForFromStateProvider = StateProvider.autoDispose<Cliente?>((ref) {
-  return null;
 });
 
 @riverpod
@@ -28,7 +32,8 @@ class ClienteIndexScreenController extends _$ClienteIndexScreenController {
   Future<int> build() {
     return ref.read(clienteRepositoryProvider).getClienteCountList(
         searchPotenciales: ref.watch(clientesPotencialesQueryStateProvider),
-        searchText: ref.watch(clientesSearchQueryStateProvider));
+        searchText:
+            ref.watch(clienteIndexControllerSearchTextParameterProvider));
   }
 }
 
@@ -42,6 +47,7 @@ class ClienteIndexScreenPaginatedController
     return ref.read(clienteRepositoryProvider).getClienteLista(
         searchPotenciales: ref.watch(clientesPotencialesQueryStateProvider),
         page: page,
-        searchText: ref.watch(clientesSearchQueryStateProvider));
+        searchText:
+            ref.watch(clienteIndexControllerSearchTextParameterProvider));
   }
 }

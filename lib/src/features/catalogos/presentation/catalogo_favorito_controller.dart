@@ -36,8 +36,7 @@ class CatalogoFavoritoController
 
   final CatalogoRepository catalogoRepository;
   final int catalogoId;
-  final AutoDisposeStateNotifierProviderRef<StateNotifier<dynamic>, dynamic>
-      ref;
+  final Ref ref;
 
   Future<void> isModuleFavorite() async {
     try {

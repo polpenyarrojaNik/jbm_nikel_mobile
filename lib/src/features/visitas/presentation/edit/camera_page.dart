@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
@@ -90,7 +91,7 @@ class CameraPageState extends State<CameraPage> {
                     onPressed: () async {
                       final imageFile = await _takePicture();
                       if (context.mounted && imageFile != null) {
-                        context.router.maybePop(imageFile);
+                        unawaited(context.router.maybePop(imageFile));
                       }
                     },
                     child: const Icon(Icons.camera_alt),

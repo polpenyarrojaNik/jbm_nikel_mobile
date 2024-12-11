@@ -140,6 +140,7 @@ class SearchListTile extends ConsumerWidget {
       visualDensity: const VisualDensity(horizontal: -4),
       title: TextField(
         focusNode: focusNode,
+        autocorrect: false,
         decoration: InputDecoration(
           hintText: searchTitle,
           hintStyle: const TextStyle(

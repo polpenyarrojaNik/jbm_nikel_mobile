@@ -6,8 +6,27 @@ part of 'cliente_search_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+String _$clienteIndexControllerSearchTextParameterHash() =>
+    r'32ff9340ee059291b84608d81f052dc3a3fae6ae';
+
+/// See also [ClienteIndexControllerSearchTextParameter].
+@ProviderFor(ClienteIndexControllerSearchTextParameter)
+final clienteIndexControllerSearchTextParameterProvider =
+    AutoDisposeNotifierProvider<ClienteIndexControllerSearchTextParameter,
+        String>.internal(
+  ClienteIndexControllerSearchTextParameter.new,
+  name: r'clienteIndexControllerSearchTextParameterProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$clienteIndexControllerSearchTextParameterHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$ClienteIndexControllerSearchTextParameter
+    = AutoDisposeNotifier<String>;
 String _$clienteIndexScreenControllerHash() =>
-    r'9f7924fc492bbbcf99b44cb898e9579d000da373';
+    r'ac8f46e2e91e6c5ac2233a9276d0bd4cb8396139';
 
 /// See also [ClienteIndexScreenController].
 @ProviderFor(ClienteIndexScreenController)
@@ -24,7 +43,7 @@ final clienteIndexScreenControllerProvider = AutoDisposeAsyncNotifierProvider<
 
 typedef _$ClienteIndexScreenController = AutoDisposeAsyncNotifier<int>;
 String _$clienteIndexScreenPaginatedControllerHash() =>
-    r'7bd995c24a5638026dec0e2a9663e0c07f68a07e';
+    r'fe170ea50ebaa5455b4169b63835facac14d49c8';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -181,6 +200,8 @@ class ClienteIndexScreenPaginatedControllerProvider
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin ClienteIndexScreenPaginatedControllerRef
     on AutoDisposeAsyncNotifierProviderRef<List<Cliente>> {
   /// The parameter `page` of this provider.
@@ -198,4 +219,4 @@ class _ClienteIndexScreenPaginatedControllerProviderElement
       (origin as ClienteIndexScreenPaginatedControllerProvider).page;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

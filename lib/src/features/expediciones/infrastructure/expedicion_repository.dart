@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../core/exceptions/app_exception.dart';
@@ -16,11 +17,10 @@ part 'expedicion_repository.g.dart';
 typedef Json = Map<String, dynamic>;
 
 @riverpod
-ExpedicionRepository expedicionRepository(ExpedicionRepositoryRef ref) =>
-    ExpedicionRepository(
-        ref.watch(dioProvider),
-        ref.watch(usuarioNotifierProvider)!,
-        ref.watch(appRemoteDatabaseProvider));
+ExpedicionRepository expedicionRepository(Ref ref) => ExpedicionRepository(
+    ref.watch(dioProvider),
+    ref.watch(usuarioNotifierProvider)!,
+    ref.watch(appRemoteDatabaseProvider));
 
 class ExpedicionRepository {
   static const pageSize = 100;

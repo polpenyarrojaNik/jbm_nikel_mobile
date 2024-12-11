@@ -7,7 +7,7 @@ part of 'expedicion_repository.dart';
 // **************************************************************************
 
 String _$expedicionRepositoryHash() =>
-    r'89d1375eecf4c0f6ee67c92de094d0ec4c24849d';
+    r'15424967f858e4562193d49a5d933e2349a315c3';
 
 /// See also [expedicionRepository].
 @ProviderFor(expedicionRepository)
@@ -22,6 +22,8 @@ final expedicionRepositoryProvider =
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef ExpedicionRepositoryRef = AutoDisposeProviderRef<ExpedicionRepository>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../features/app_initialization/presentation/splash_page.dart';
@@ -71,7 +72,7 @@ part 'app_auto_router.gr.dart';
 
 @Riverpod(keepAlive: true)
 // ignore: unsupported_provider_value
-AppRouter appRouter(AppRouterRef ref) {
+AppRouter appRouter(Ref ref) {
   final usuario = ref.watch(usuarioNotifierProvider);
   final router = AppRouter(usuario: usuario);
   ref.onDispose(router.dispose);
