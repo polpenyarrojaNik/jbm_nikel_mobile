@@ -15,27 +15,33 @@
             </builds>
           </compositeBuild>
         </compositeConfiguration>
+        <option name="testRunner" value="CHOOSE_PER_TEST" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleJvm" value="jbr-17" />
+        <option name="gradleJvm" value="corretto-17" />
         <option name="modules">
           <set>
             <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/better_open_file-3.6.5/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/country_codes-2.2.0/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/device_info_plus-9.1.2/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/dynamic_color-1.7.0/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.19/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_secure_storage-9.2.1/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/geolocator_android-4.6.0/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/google_maps_flutter_android-2.8.0/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/map_launcher-3.3.0/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/package_info_plus-8.0.0/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/path_provider_android-2.2.4/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/share_plus-9.0.0/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/shared_preferences_android-2.2.2/android" />
+            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.9+2/android" />
+            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/country_codes-3.1.0+2/android" />
+            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/device_info_plus-10.1.2/android" />
+            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_archive-6.0.3/android" />
+            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_keyboard_visibility-6.0.0/android" />
+            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.22/android" />
+            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_secure_storage-9.2.2/android" />
+            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/geolocator_android-4.6.1/android" />
+            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/google_maps_flutter_android-2.14.6/android" />
+            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/google_mlkit_commons-0.8.1/android" />
+            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/google_mlkit_entity_extraction-0.13.1/android" />
+            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/google_mlkit_text_recognition-0.13.1/android" />
+            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/map_launcher-3.5.0/android" />
+            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/package_info_plus-8.0.2/android" />
+            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/android" />
+            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/share_plus-10.0.2/android" />
+            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/shared_preferences_android-2.3.2/android" />
             <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/sqflite-2.3.3+1/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/sqlite3_flutter_libs-0.5.21/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/syncfusion_flutter_pdfviewer-24.2.8/android" />
-            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.2/android" />
+            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/sqlite3_flutter_libs-0.5.24/android" />
+            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/syncfusion_flutter_pdfviewer-27.1.48/android" />
+            <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.10/android" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="/opt/homebrew/Caskroom/flutter/3.19.6/flutter/packages/flutter_tools/gradle" />
