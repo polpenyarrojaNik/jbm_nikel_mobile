@@ -1862,7 +1862,7 @@ GROUP BY ARTICULO_ID, DESCRIPCION
   Future<List<Sector>> getSectoresList() async {
     final sectoresDto = await (_remoteDb.select(_remoteDb.sectorTable)
           ..orderBy([
-            (tbl) => OrderingTerm(expression: tbl.altaSN.equals('S')),
+            (tbl) => OrderingTerm.desc(tbl.altaSN.equals('S')),
             (tbl) => OrderingTerm(expression: tbl.id),
           ]))
         .get();

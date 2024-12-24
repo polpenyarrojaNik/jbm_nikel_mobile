@@ -409,5 +409,8 @@
   "phones": "Teléfonos",
   "position": "Cargo",
   "unknown": "Desconocido",
-  "send": "Enviar"
+  "send": "Enviar",
+  "retry": "Reintentar",
+  "sectorUnsubscribededSectorMessage": "Sector dado de baja. Por favor, seleccione un nuevo sector",
+  "save": "Guardar"
 }

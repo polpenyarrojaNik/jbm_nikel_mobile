@@ -4193,6 +4193,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Retry`
+  String get retry {
+    return Intl.message(
+      'Retry',
+      name: 'retry',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sector unsubscribed. Please, select a new sector`
+  String get sectorUnsubscribededSectorMessage {
+    return Intl.message(
+      'Sector unsubscribed. Please, select a new sector',
+      name: 'sectorUnsubscribededSectorMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save`
+  String get save {
+    return Intl.message(
+      'Save',
+      name: 'save',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

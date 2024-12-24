@@ -409,5 +409,8 @@
   "empty": "Empty",
   "unknown": "Unknown",
   "formFromImage": "Form from image",
-  "send": "Send"
+  "send": "Send",
+  "retry": "Retry",
+  "sectorUnsubscribededSectorMessage": "Sector unsubscribed. Please, select a new sector",
+  "save": "Save"
 }

@@ -682,8 +682,13 @@ class MessageLookup extends MessageLookupByLibrary {
                 "O preço não pode ser inferior ao preço mínimo"),
         "reemplazarBaseDeDatosTextMesaje": MessageLookupByLibrary.simpleMessage(
             "Este campo não corresponde à chave Nikel"),
+        "retry": MessageLookupByLibrary.simpleMessage("Tentar novamente"),
+        "save": MessageLookupByLibrary.simpleMessage("Salvar"),
         "search": MessageLookupByLibrary.simpleMessage("Pesquisar ..."),
         "sector": MessageLookupByLibrary.simpleMessage("Setor"),
+        "sectorUnsubscribededSectorMessage":
+            MessageLookupByLibrary.simpleMessage(
+                "Setor não inscrito. Por favor, selecione um novo setor"),
         "seleccionarBorrador":
             MessageLookupByLibrary.simpleMessage("Selecionar rascunho"),
         "semanal": MessageLookupByLibrary.simpleMessage("Semanalmente"),

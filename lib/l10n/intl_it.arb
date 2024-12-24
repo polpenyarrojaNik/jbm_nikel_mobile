@@ -409,5 +409,8 @@
   "phones": "Telefoni",
   "position": "Posizione",
   "unknown": "Sconosciuto",
-  "send": "Inviare"
+  "send": "Inviare",
+  "retry": "Riprova",
+  "sectorUnsubscribededSectorMessage": "Settore annullato. Seleziona un nuovo settore",
+  "save": "Salva"
 }

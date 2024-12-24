@@ -409,5 +409,8 @@
   "phones": "Téléphones",
   "position": "Position",
   "unknown": "Inconnu",
-  "send": "Envoyer"
+  "send": "Envoyer",
+  "retry": "Réessayer",
+  "sectorUnsubscribededSectorMessage": "Secteur désabonné. Veuillez sélectionner un nouveau secteur",
+  "save": "Garder"
 }
