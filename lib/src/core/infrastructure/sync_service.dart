@@ -178,8 +178,8 @@ class SyncService {
     try {
       await insetLog(level: 'I', message: 'Init customer sync');
 
-      await syncClienteUpdate();
       await syncClientes();
+      await syncClienteUpdate();
       await syncTopArticulos();
       await syncClienteGruposNetos();
       await syncClienteContactos();
@@ -1815,39 +1815,48 @@ class SyncService {
     final clientesImp = await (_localDb.select(_localDb.clienteImpTable)).get();
 
     for (var i = 0; i < clientesImp.length; i++) {
-      await _remoteClienteUpdate(clientesImp[i]);
+      final clienteImpDto = await _remoteClienteUpdate(clientesImp[i]);
+      if (clienteImpDto != null) {
+        await _deleteClienteImpByClienteId(clientesImp[i].clienteId);
+      }
     }
   }
 
-  Future<void> _remoteClienteUpdate(ClienteImpDTO clienteImpDto) async {
+  Future<ClienteImpDTO?> _remoteClienteUpdate(
+      ClienteImpDTO clienteImpDto) async {
     try {
       final requestUri = (_usuario!.test)
           ? Uri.http(
               // dotenv.get('URL', fallback: 'localhost:3001')
               'jbm-api-test.nikel.es:8080',
-              'api/v1/online/clientes/${clienteImpDto.clienteId}',
+              'api/v1/online/clientes/${clienteImpDto.clienteId}/sectores',
             )
           : Uri.https(
               // dotenv.get('URL', fallback: 'localhost:3001')
               'jbm-api.nikel.es',
-              'api/v1/online/clientes/${clienteImpDto.clienteId}',
+              'api/v1/online/clientes/${clienteImpDto.clienteId}/sectores',
             );
 
       log.d('SYNC CLIENTE UPDATE: ${clienteImpDto.toJson()}');
 
-      final response = await _dio.postUri(
+      final response = await _dio.patchUri(
         requestUri,
         options: Options(
-          headers: {'authorization': 'Bearer ${_usuario.provisionalToken}}'},
+          headers: {'authorization': 'Bearer ${_usuario.provisionalToken}'},
         ),
         data: jsonEncode(clienteImpDto.toJson()),
       );
-      if (response.statusCode != 200) {
+      if (response.statusCode == 200) {
+        final data = response.data['data'] as Map<String, dynamic>;
+
+        return ClienteImpDTO.fromJson(data);
+      } else {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');
       }
     } catch (e) {
       log.e('ERROR SYNC CLIENTE ${clienteImpDto.toJson()}: ${e.toString()}');
+      return null;
     }
   }
 
@@ -1855,15 +1864,23 @@ class SyncService {
       List<ClienteDTO> clientesSync) async {
     final clientesImp = await (_localDb.select(_localDb.clienteImpTable)).get();
 
-    for (var i = 0; i < clientesImp.length; i++) {
-      for (var j = 0; j < clientesSync.length; j++) {
-        if (clientesSync[j].id == clientesImp[i].clienteId) {
-          await (_localDb.delete(_localDb.clienteImpTable)
-                ..where(
-                    (tbl) => tbl.clienteId.equals(clientesImp[i].clienteId)))
-              .go();
+    if (clientesImp.isNotEmpty) {
+      for (var i = 0; i < clientesImp.length; i++) {
+        for (var j = 0; j < clientesSync.length; j++) {
+          if (clientesSync[j].id == clientesImp[i].clienteId) {
+            await (_localDb.delete(_localDb.clienteImpTable)
+                  ..where(
+                      (tbl) => tbl.clienteId.equals(clientesImp[i].clienteId)))
+                .go();
+          }
         }
       }
     }
+  }
+
+  Future<void> _deleteClienteImpByClienteId(String clienteId) async {
+    await (_localDb.delete(_localDb.clienteImpTable)
+          ..where((tbl) => tbl.clienteId.equals(clienteId)))
+        .go();
   }
 }

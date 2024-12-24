@@ -230,7 +230,15 @@ class ClienteRepository {
         leftOuterJoin(
             _remoteDb.clienteEstadoPotencialTable,
             _remoteDb.clienteEstadoPotencialTable.id
-                .equalsExp(_remoteDb.clienteTable.clienteEstadoPotencialId))
+                .equalsExp(_remoteDb.clienteTable.clienteEstadoPotencialId)),
+        leftOuterJoin(
+            _remoteDb.sectorTable,
+            _remoteDb.sectorTable.id
+                .equalsExp(_remoteDb.clienteTable.sectorId)),
+        leftOuterJoin(
+            _remoteDb.subsectorTable,
+            _remoteDb.subsectorTable.subsectorId
+                .equalsExp(_remoteDb.clienteTable.subsectorId))
       ]);
 
       query.where(_remoteDb.clienteUsuarioTable.usuarioId.equals(usuario.id));
@@ -288,6 +296,8 @@ class ClienteRepository {
             row.readTableOrNull(_remoteDb.clienteEstadoPotencialTable);
         final clienteTipoPotencialDTO =
             row.readTableOrNull(_remoteDb.clienteTipoPotencialTable);
+        final sectorDTO = row.readTableOrNull(_remoteDb.sectorTable);
+        final subsectorDTO = row.readTableOrNull(_remoteDb.subsectorTable);
 
         final direccionesPredeterminada =
             await getClienteDireccionesListById(clienteId: clienteDTO.id);
@@ -307,6 +317,8 @@ class ClienteRepository {
           clienteEstadoPotencial: clienteEstadoPotencialDTO?.toDomain(),
           clienteTipoPotencial: clienteTipoPotencialDTO?.toDomain(),
           clienteDireccionPredeterminada: clienteDireccionPredeterminada,
+          sector: sectorDTO?.toDomain(),
+          subsector: subsectorDTO?.toDomain(sectorDTO!.toDomain()),
         );
       }).get();
       return clienteList;
@@ -419,7 +431,15 @@ class ClienteRepository {
         leftOuterJoin(
             _remoteDb.clienteEstadoPotencialTable,
             _remoteDb.clienteEstadoPotencialTable.id
-                .equalsExp(_remoteDb.clienteTable.clienteEstadoPotencialId))
+                .equalsExp(_remoteDb.clienteTable.clienteEstadoPotencialId)),
+        leftOuterJoin(
+            _remoteDb.sectorTable,
+            _remoteDb.sectorTable.id
+                .equalsExp(_remoteDb.clienteTable.sectorId)),
+        leftOuterJoin(
+            _remoteDb.subsectorTable,
+            _remoteDb.subsectorTable.subsectorId
+                .equalsExp(_remoteDb.clienteTable.subsectorId))
       ]);
 
       query.where(_remoteDb.clienteTable.id.equals(clienteId));
@@ -437,6 +457,9 @@ class ClienteRepository {
             row.readTableOrNull(_remoteDb.clienteEstadoPotencialTable);
         final clienteTipoPotencialDTO =
             row.readTableOrNull(_remoteDb.clienteTipoPotencialTable);
+
+        final sectorDTO = row.readTableOrNull(_remoteDb.sectorTable);
+        final subsectorDTO = row.readTableOrNull(_remoteDb.subsectorTable);
 
         final direccionesPredeterminada =
             await getClienteDireccionesListById(clienteId: clienteDTO.id);
@@ -456,6 +479,8 @@ class ClienteRepository {
           clienteEstadoPotencial: clienteEstadoPotencialDTO?.toDomain(),
           clienteTipoPotencial: clienteTipoPotencialDTO?.toDomain(),
           clienteDireccionPredeterminada: clienteDireccionPredeterminada,
+          sector: sectorDTO?.toDomain(),
+          subsector: subsectorDTO?.toDomain(sectorDTO!.toDomain()),
         );
       }).getSingle();
     } catch (e) {
