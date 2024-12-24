@@ -21,6 +21,7 @@ import '../../features/articulos/presentation/show/ultimos_precios/articulo_ulti
 import '../../features/catalogos/presentation/catalogo_list_page.dart';
 import '../../features/catalogos/presentation/catalogo_pdf_viewer.dart';
 import '../../features/cliente/domain/cliente_imp_param.dart';
+import '../../features/cliente/domain/cliente.dart';
 import '../../features/cliente/presentation/index/cliente_lista_page.dart';
 import '../../features/cliente/presentation/show/cliente_adjunto_page.dart';
 import '../../features/cliente/presentation/show/cliente_articulo_top_lista_page.dart';
@@ -66,6 +67,7 @@ import '../../features/visitas/presentation/index/visita_lista_page.dart';
 import '../../features/visitas/presentation/show/visita_detalle_page.dart';
 import '../application/log_service.dart';
 import '../domain/pais.dart';
+import '../presentation/common_widgets/cliente_sector_page.dart';
 
 part 'app_auto_router.g.dart';
 part 'app_auto_router.gr.dart';
@@ -98,7 +100,12 @@ class AppRouter extends RootStackRouter {
   final List<AutoRoute> routes = [
     AutoRoute(page: SplashRoute.page, path: '/', initial: true),
     AutoRoute(page: LoginRoute.page, path: '/login'),
-    AutoRoute(page: ClienteListaRoute.page, path: '/cliente'),
+    AutoRoute(
+      page: ClienteListaRoute.page,
+      path: '/cliente',
+      fullscreenDialog: true,
+    ),
+    AutoRoute(page: ClienteSectorRoute.page, path: '/cliente-sector'),
     AutoRoute(page: ClientesAlrededorRoute.page, path: '/cliente/alrededor'),
     AutoRoute(page: ClienteDetalleRoute.page, path: '/cliente/:id'),
     AutoRoute(

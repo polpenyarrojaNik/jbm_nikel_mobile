@@ -12,6 +12,7 @@ import 'package:uuid/uuid.dart';
 import '../../../core/application/log_service.dart';
 import '../../../core/domain/adjunto_param.dart';
 import '../../../core/domain/pais.dart';
+import '../../../core/domain/sector.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/exceptions/get_api_error.dart';
 import '../../../core/infrastructure/local_database.dart';
@@ -37,6 +38,7 @@ import '../domain/cliente_descuento.dart';
 import '../domain/cliente_direccion.dart';
 import '../domain/cliente_direccion_imp.dart';
 import '../domain/cliente_grupo_neto.dart';
+import '../domain/cliente_imp.dart';
 import '../domain/cliente_imp_param.dart';
 import '../domain/cliente_pago_pendiente.dart';
 import '../domain/cliente_precio_neto.dart';
@@ -49,6 +51,7 @@ import 'cliente_contacto_dto.dart';
 import 'cliente_contacto_imp_dto.dart';
 import 'cliente_direccion_dto.dart';
 import 'cliente_direccion_imp_dto.dart';
+import 'cliente_imp_dto.dart';
 import 'cliente_ventas_articulo_dto.dart';
 import 'cliente_ventas_mes_dto.dart';
 
@@ -1298,6 +1301,14 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     }
   }
 
+  Future<ClienteImp> upsertClienteImp(ClienteImp clienteImp) async {
+    final clienteImpDto = ClienteImpDTO.fromDomain(clienteImp);
+    await _insertClienteImpInLocalDB(clienteImpDto);
+    await _updateClienteSectorInLocalDB(clienteImpDto);
+
+    return clienteImp;
+  }
+
   Future<List<ClienteContacto>> _getClienteContactoSyncList(
       String clienteId, List<ClienteContacto> clienteContactoImpList) async {
     try {
@@ -1344,6 +1355,30 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       await _localDb
           .into(_localDb.clienteContactoImpTable)
           .insertOnConflictUpdate(clienteContactoImpDTO);
+    } catch (e) {
+      throw AppException.insertDataFailure(e.toString());
+    }
+  }
+
+  Future<void> _insertClienteImpInLocalDB(ClienteImpDTO clienteImpDTO) async {
+    try {
+      await _localDb
+          .into(_localDb.clienteImpTable)
+          .insertOnConflictUpdate(clienteImpDTO);
+    } catch (e) {
+      throw AppException.insertDataFailure(e.toString());
+    }
+  }
+
+  Future<void> _updateClienteSectorInLocalDB(
+      ClienteImpDTO clienteImpDTO) async {
+    try {
+      await (_remoteDb.update(_remoteDb.clienteTable)
+            ..where((tbl) => tbl.id.equals(clienteImpDTO.clienteId)))
+          .write(ClienteTableCompanion(
+        sectorId: Value(clienteImpDTO.sectorId),
+        subsectorId: const Value.absent(),
+      ));
     } catch (e) {
       throw AppException.insertDataFailure(e.toString());
     }
@@ -1797,6 +1832,17 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     final paisDtoList = await query.get();
 
     return paisDtoList.map((e) => e.toDomain()).toList();
+  }
+
+  Future<List<Sector>> getSectoresList() async {
+    final sectoresDto = await (_remoteDb.select(_remoteDb.sectorTable)
+          ..orderBy([
+            (tbl) => OrderingTerm(expression: tbl.altaSN.equals('S')),
+            (tbl) => OrderingTerm(expression: tbl.id),
+          ]))
+        .get();
+
+    return sectoresDto.map((e) => e.toDomain()).toList();
   }
 
   Expression<Object> _orderByPaisPorDescripcion() {

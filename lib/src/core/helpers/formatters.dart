@@ -396,26 +396,26 @@ Color pedidoVentaEstadoColor({
 }) {
   switch (pedidoVentaEstadoId) {
     case 0: // Introducido
-      return Colors.grey.withOpacity(opacidad ?? 1);
+      return Colors.grey.withValues(alpha: opacidad ?? 1);
     case 1: //Servido Parcial
-      return Colors.lightGreen.withOpacity(opacidad ?? 1);
+      return Colors.lightGreen.withValues(alpha: opacidad ?? 1);
     case 2: //  Servido
-      return Colors.green.withOpacity(opacidad ?? 1);
+      return Colors.green.withValues(alpha: opacidad ?? 1);
     case 3: //Anulado
-      return Colors.red.withOpacity(opacidad ?? 1);
+      return Colors.red.withValues(alpha: opacidad ?? 1);
     case 4: // Oferta
-      return Colors.orange.withOpacity(opacidad ?? 1);
+      return Colors.orange.withValues(alpha: opacidad ?? 1);
     case 90: //Abierto
-      return Colors.greenAccent.withOpacity(opacidad ?? 1);
+      return Colors.greenAccent.withValues(alpha: opacidad ?? 1);
     case 98: //En preparación
-      return Colors.yellow.shade300.withOpacity(opacidad ?? 1);
+      return Colors.yellow.shade300.withValues(alpha: opacidad ?? 1);
     case 99: //Liberado
-      return Colors.yellow.shade700.withOpacity(opacidad ?? 1);
+      return Colors.yellow.shade700.withValues(alpha: opacidad ?? 1);
     case null:
-      return Colors.grey.withOpacity(0.5);
+      return Colors.grey.withValues(alpha: 0.5);
 
     default:
-      return Colors.red.withOpacity(opacidad ?? 1);
+      return Colors.red.withValues(alpha: opacidad ?? 1);
   }
 }
 

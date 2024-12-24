@@ -1563,6 +1563,52 @@ class ClienteRappelRouteArgs {
 }
 
 /// generated route for
+/// [ClienteSectorPage]
+class ClienteSectorRoute extends PageRouteInfo<ClienteSectorRouteArgs> {
+  ClienteSectorRoute({
+    Key? key,
+    required Cliente cliente,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ClienteSectorRoute.name,
+          args: ClienteSectorRouteArgs(
+            key: key,
+            cliente: cliente,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ClienteSectorRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ClienteSectorRouteArgs>();
+      return ClienteSectorPage(
+        key: args.key,
+        cliente: args.cliente,
+      );
+    },
+  );
+}
+
+class ClienteSectorRouteArgs {
+  const ClienteSectorRouteArgs({
+    this.key,
+    required this.cliente,
+  });
+
+  final Key? key;
+
+  final Cliente cliente;
+
+  @override
+  String toString() {
+    return 'ClienteSectorRouteArgs{key: $key, cliente: $cliente}';
+  }
+}
+
+/// generated route for
 /// [ClienteUltimosPreciosPage]
 class ClienteUltimosPreciosRoute
     extends PageRouteInfo<ClienteUltimosPreciosRouteArgs> {

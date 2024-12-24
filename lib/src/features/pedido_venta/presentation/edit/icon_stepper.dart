@@ -356,7 +356,7 @@ class _IconStepperState extends State<IconStepper>
       }
     } else {
       return !_isDark()
-          ? colorScheme.onSurface.withOpacity(0.38)
+          ? colorScheme.onSurface.withValues(alpha: 0.38)
           : colorScheme.surface;
     }
   }

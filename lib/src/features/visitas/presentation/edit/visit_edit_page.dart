@@ -626,7 +626,7 @@ class _ClienteProvisionalContainerState
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(4),
         side: BorderSide(
-          color: Colors.grey.withOpacity(0.2),
+          color: Colors.grey.withValues(alpha: 0.2),
           width: 1,
         ),
       ),

@@ -8,6 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'divisa_dto.dart';
 import 'pais_dto.dart';
 import 'provincia_dto.dart';
+import 'sector_dto.dart';
 import 'subfamilia_dto.dart';
 import '../../features/estadisticas/infrastructure/estadisticas_venta_cliente_usuario_dto.dart';
 import '../../features/expediciones/infrastructure/tracking_estado_dto.dart';
@@ -54,6 +55,7 @@ import '../../features/visitas/infrastructure/visita_dto.dart';
 
 import '../domain/isolate_request.dart';
 import 'familia_dto.dart';
+import 'subsector_dto.dart';
 
 part 'remote_database.g.dart';
 
@@ -132,6 +134,8 @@ const remoteDatabaseName = 'jbm.sqlite';
   VisitaSectorTable,
   VisitaMotivoNoVentaTable,
   TrackingEstadoTable,
+  SectorTable,
+  SubsectorTable,
 ])
 class RemoteAppDatabase extends _$RemoteAppDatabase {
   final bool test;
@@ -143,7 +147,7 @@ class RemoteAppDatabase extends _$RemoteAppDatabase {
       : test = true,
         super(NativeDatabase.memory());
   @override
-  int get schemaVersion => 31;
+  int get schemaVersion => 32;
 }
 
 Future<DriftIsolate> _createDriftIsolate() async {

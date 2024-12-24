@@ -213,7 +213,7 @@ class _GoogleMapsContainerState extends ConsumerState<GoogleMapsContainer> {
       circleId: const CircleId('currentPosition'),
       center: latlng,
       radius: radiusInMeters,
-      fillColor: Colors.blue.withOpacity(0.25),
+      fillColor: Colors.blue.withValues(alpha: 0.25),
       strokeWidth: 1,
       strokeColor: Theme.of(context).colorScheme.onTertiaryContainer,
     );

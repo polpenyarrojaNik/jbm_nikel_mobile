@@ -4343,6 +4343,132 @@ class CatalogoOrdenTableCompanion extends UpdateCompanion<CatalogoOrdenDTO> {
   }
 }
 
+class $ClienteImpTableTable extends ClienteImpTable
+    with TableInfo<$ClienteImpTableTable, ClienteImpDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ClienteImpTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _clienteIdMeta =
+      const VerificationMeta('clienteId');
+  @override
+  late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
+      'CLIENTE_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _sectorIdMeta =
+      const VerificationMeta('sectorId');
+  @override
+  late final GeneratedColumn<String> sectorId = GeneratedColumn<String>(
+      'SECTOR_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [clienteId, sectorId];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'CLIENTES_IMP';
+  @override
+  VerificationContext validateIntegrity(Insertable<ClienteImpDTO> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('CLIENTE_ID')) {
+      context.handle(_clienteIdMeta,
+          clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta));
+    } else if (isInserting) {
+      context.missing(_clienteIdMeta);
+    }
+    if (data.containsKey('SECTOR_ID')) {
+      context.handle(_sectorIdMeta,
+          sectorId.isAcceptableOrUnknown(data['SECTOR_ID']!, _sectorIdMeta));
+    } else if (isInserting) {
+      context.missing(_sectorIdMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {clienteId};
+  @override
+  ClienteImpDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ClienteImpDTO(
+      clienteId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
+      sectorId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}SECTOR_ID'])!,
+    );
+  }
+
+  @override
+  $ClienteImpTableTable createAlias(String alias) {
+    return $ClienteImpTableTable(attachedDatabase, alias);
+  }
+}
+
+class ClienteImpTableCompanion extends UpdateCompanion<ClienteImpDTO> {
+  final Value<String> clienteId;
+  final Value<String> sectorId;
+  final Value<int> rowid;
+  const ClienteImpTableCompanion({
+    this.clienteId = const Value.absent(),
+    this.sectorId = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  ClienteImpTableCompanion.insert({
+    required String clienteId,
+    required String sectorId,
+    this.rowid = const Value.absent(),
+  })  : clienteId = Value(clienteId),
+        sectorId = Value(sectorId);
+  static Insertable<ClienteImpDTO> custom({
+    Expression<String>? clienteId,
+    Expression<String>? sectorId,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (clienteId != null) 'CLIENTE_ID': clienteId,
+      if (sectorId != null) 'SECTOR_ID': sectorId,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  ClienteImpTableCompanion copyWith(
+      {Value<String>? clienteId, Value<String>? sectorId, Value<int>? rowid}) {
+    return ClienteImpTableCompanion(
+      clienteId: clienteId ?? this.clienteId,
+      sectorId: sectorId ?? this.sectorId,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (clienteId.present) {
+      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
+    }
+    if (sectorId.present) {
+      map['SECTOR_ID'] = Variable<String>(sectorId.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ClienteImpTableCompanion(')
+          ..write('clienteId: $clienteId, ')
+          ..write('sectorId: $sectorId, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$LocalAppDatabase extends GeneratedDatabase {
   _$LocalAppDatabase(QueryExecutor e) : super(e);
   _$LocalAppDatabase.connect(DatabaseConnection c) : super.connect(c);
@@ -4364,6 +4490,8 @@ abstract class _$LocalAppDatabase extends GeneratedDatabase {
       $ClienteDireccionImpTableTable(this);
   late final $CatalogoOrdenTableTable catalogoOrdenTable =
       $CatalogoOrdenTableTable(this);
+  late final $ClienteImpTableTable clienteImpTable =
+      $ClienteImpTableTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -4377,7 +4505,8 @@ abstract class _$LocalAppDatabase extends GeneratedDatabase {
         catalogoFavoritoTable,
         clienteContactoImpTable,
         clienteDireccionImpTable,
-        catalogoOrdenTable
+        catalogoOrdenTable,
+        clienteImpTable
       ];
   @override
   DriftDatabaseOptions get options =>
@@ -7244,6 +7373,111 @@ typedef $$CatalogoOrdenTableTableProcessedTableManager = ProcessedTableManager<
     ),
     CatalogoOrdenDTO,
     PrefetchHooks Function()>;
+typedef $$ClienteImpTableTableCreateCompanionBuilder = ClienteImpTableCompanion
+    Function({
+  required String clienteId,
+  required String sectorId,
+  Value<int> rowid,
+});
+typedef $$ClienteImpTableTableUpdateCompanionBuilder = ClienteImpTableCompanion
+    Function({
+  Value<String> clienteId,
+  Value<String> sectorId,
+  Value<int> rowid,
+});
+
+class $$ClienteImpTableTableFilterComposer
+    extends FilterComposer<_$LocalAppDatabase, $ClienteImpTableTable> {
+  $$ClienteImpTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get clienteId => $state.composableBuilder(
+      column: $state.table.clienteId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get sectorId => $state.composableBuilder(
+      column: $state.table.sectorId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$ClienteImpTableTableOrderingComposer
+    extends OrderingComposer<_$LocalAppDatabase, $ClienteImpTableTable> {
+  $$ClienteImpTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get clienteId => $state.composableBuilder(
+      column: $state.table.clienteId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get sectorId => $state.composableBuilder(
+      column: $state.table.sectorId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+class $$ClienteImpTableTableTableManager extends RootTableManager<
+    _$LocalAppDatabase,
+    $ClienteImpTableTable,
+    ClienteImpDTO,
+    $$ClienteImpTableTableFilterComposer,
+    $$ClienteImpTableTableOrderingComposer,
+    $$ClienteImpTableTableCreateCompanionBuilder,
+    $$ClienteImpTableTableUpdateCompanionBuilder,
+    (
+      ClienteImpDTO,
+      BaseReferences<_$LocalAppDatabase, $ClienteImpTableTable, ClienteImpDTO>
+    ),
+    ClienteImpDTO,
+    PrefetchHooks Function()> {
+  $$ClienteImpTableTableTableManager(
+      _$LocalAppDatabase db, $ClienteImpTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$ClienteImpTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$ClienteImpTableTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> clienteId = const Value.absent(),
+            Value<String> sectorId = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteImpTableCompanion(
+            clienteId: clienteId,
+            sectorId: sectorId,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String clienteId,
+            required String sectorId,
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ClienteImpTableCompanion.insert(
+            clienteId: clienteId,
+            sectorId: sectorId,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$ClienteImpTableTableProcessedTableManager = ProcessedTableManager<
+    _$LocalAppDatabase,
+    $ClienteImpTableTable,
+    ClienteImpDTO,
+    $$ClienteImpTableTableFilterComposer,
+    $$ClienteImpTableTableOrderingComposer,
+    $$ClienteImpTableTableCreateCompanionBuilder,
+    $$ClienteImpTableTableUpdateCompanionBuilder,
+    (
+      ClienteImpDTO,
+      BaseReferences<_$LocalAppDatabase, $ClienteImpTableTable, ClienteImpDTO>
+    ),
+    ClienteImpDTO,
+    PrefetchHooks Function()>;
 
 class $LocalAppDatabaseManager {
   final _$LocalAppDatabase _db;
@@ -7270,4 +7504,6 @@ class $LocalAppDatabaseManager {
           _db, _db.clienteDireccionImpTable);
   $$CatalogoOrdenTableTableTableManager get catalogoOrdenTable =>
       $$CatalogoOrdenTableTableTableManager(_db, _db.catalogoOrdenTable);
+  $$ClienteImpTableTableTableManager get clienteImpTable =>
+      $$ClienteImpTableTableTableManager(_db, _db.clienteImpTable);
 }

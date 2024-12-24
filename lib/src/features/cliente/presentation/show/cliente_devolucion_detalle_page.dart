@@ -75,7 +75,7 @@ class ClienteInfoContainer extends StatelessWidget {
               ),
             ChipContainer(
               text: devolucion.devolucionEstado.descripcion,
-              color: Colors.grey.withOpacity(0.25),
+              color: Colors.grey.withValues(alpha: 0.25),
             )
           ],
         ),

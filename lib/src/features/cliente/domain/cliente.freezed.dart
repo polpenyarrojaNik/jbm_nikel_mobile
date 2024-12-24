@@ -83,6 +83,8 @@ mixin _$Cliente {
   String? get telefonoMovil => throw _privateConstructorUsedError;
   String? get telefonoFijo => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
+  Sector? get sector => throw _privateConstructorUsedError;
+  Subsector? get subsector => throw _privateConstructorUsedError;
   DateTime? get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
@@ -161,6 +163,8 @@ abstract class $ClienteCopyWith<$Res> {
       String? telefonoMovil,
       String? telefonoFijo,
       String? email,
+      Sector? sector,
+      Subsector? subsector,
       DateTime? lastUpdated,
       bool deleted});
 
@@ -171,6 +175,8 @@ abstract class $ClienteCopyWith<$Res> {
   $MetodoDeCobroCopyWith<$Res>? get metodoDeCobro;
   $ClienteEstadoPotencialCopyWith<$Res>? get clienteEstadoPotencial;
   $ClienteTipoPotencialCopyWith<$Res>? get clienteTipoPotencial;
+  $SectorCopyWith<$Res>? get sector;
+  $SubsectorCopyWith<$Res>? get subsector;
 }
 
 /// @nodoc
@@ -251,6 +257,8 @@ class _$ClienteCopyWithImpl<$Res, $Val extends Cliente>
     Object? telefonoMovil = freezed,
     Object? telefonoFijo = freezed,
     Object? email = freezed,
+    Object? sector = freezed,
+    Object? subsector = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = null,
   }) {
@@ -507,6 +515,14 @@ class _$ClienteCopyWithImpl<$Res, $Val extends Cliente>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
+      sector: freezed == sector
+          ? _value.sector
+          : sector // ignore: cast_nullable_to_non_nullable
+              as Sector?,
+      subsector: freezed == subsector
+          ? _value.subsector
+          : subsector // ignore: cast_nullable_to_non_nullable
+              as Subsector?,
       lastUpdated: freezed == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -617,6 +633,34 @@ class _$ClienteCopyWithImpl<$Res, $Val extends Cliente>
       return _then(_value.copyWith(clienteTipoPotencial: value) as $Val);
     });
   }
+
+  /// Create a copy of Cliente
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $SectorCopyWith<$Res>? get sector {
+    if (_value.sector == null) {
+      return null;
+    }
+
+    return $SectorCopyWith<$Res>(_value.sector!, (value) {
+      return _then(_value.copyWith(sector: value) as $Val);
+    });
+  }
+
+  /// Create a copy of Cliente
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $SubsectorCopyWith<$Res>? get subsector {
+    if (_value.subsector == null) {
+      return null;
+    }
+
+    return $SubsectorCopyWith<$Res>(_value.subsector!, (value) {
+      return _then(_value.copyWith(subsector: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -690,6 +734,8 @@ abstract class _$$ClienteImplCopyWith<$Res> implements $ClienteCopyWith<$Res> {
       String? telefonoMovil,
       String? telefonoFijo,
       String? email,
+      Sector? sector,
+      Subsector? subsector,
       DateTime? lastUpdated,
       bool deleted});
 
@@ -707,6 +753,10 @@ abstract class _$$ClienteImplCopyWith<$Res> implements $ClienteCopyWith<$Res> {
   $ClienteEstadoPotencialCopyWith<$Res>? get clienteEstadoPotencial;
   @override
   $ClienteTipoPotencialCopyWith<$Res>? get clienteTipoPotencial;
+  @override
+  $SectorCopyWith<$Res>? get sector;
+  @override
+  $SubsectorCopyWith<$Res>? get subsector;
 }
 
 /// @nodoc
@@ -785,6 +835,8 @@ class __$$ClienteImplCopyWithImpl<$Res>
     Object? telefonoMovil = freezed,
     Object? telefonoFijo = freezed,
     Object? email = freezed,
+    Object? sector = freezed,
+    Object? subsector = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = null,
   }) {
@@ -1041,6 +1093,14 @@ class __$$ClienteImplCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
+      sector: freezed == sector
+          ? _value.sector
+          : sector // ignore: cast_nullable_to_non_nullable
+              as Sector?,
+      subsector: freezed == subsector
+          ? _value.subsector
+          : subsector // ignore: cast_nullable_to_non_nullable
+              as Subsector?,
       lastUpdated: freezed == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -1120,6 +1180,8 @@ class _$ClienteImpl extends _Cliente {
       this.telefonoMovil,
       this.telefonoFijo,
       this.email,
+      this.sector,
+      this.subsector,
       this.lastUpdated,
       required this.deleted})
       : super._();
@@ -1251,13 +1313,17 @@ class _$ClienteImpl extends _Cliente {
   @override
   final String? email;
   @override
+  final Sector? sector;
+  @override
+  final Subsector? subsector;
+  @override
   final DateTime? lastUpdated;
   @override
   final bool deleted;
 
   @override
   String toString() {
-    return 'Cliente(id: $id, nombreCliente: $nombreCliente, nombreFiscal: $nombreFiscal, nif: $nif, direccionFiscal1: $direccionFiscal1, direccionFiscal2: $direccionFiscal2, codigoPostalFiscal: $codigoPostalFiscal, poblacionFiscal: $poblacionFiscal, provinciaFiscal: $provinciaFiscal, paisFiscal: $paisFiscal, latitudFiscal: $latitudFiscal, longitudFiscal: $longitudFiscal, direccionPredeterminada1: $direccionPredeterminada1, direccionPredeterminada2: $direccionPredeterminada2, codigoPostalPredeterminada: $codigoPostalPredeterminada, poblacionPredeterminada: $poblacionPredeterminada, provinciaPredeterminada: $provinciaPredeterminada, paisPredeterminada: $paisPredeterminada, latitudPredeterminada: $latitudPredeterminada, longitudPredeterminada: $longitudPredeterminada, empresaId: $empresaId, iva: $iva, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, porcentajeAbonos: $porcentajeAbonos, porcentajeGarantias: $porcentajeGarantias, centralCompras: $centralCompras, urlWeb: $urlWeb, divisa: $divisa, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, descuentoGeneralId: $descuentoGeneralId, descripcionDescuentoGeneral: $descripcionDescuentoGeneral, tipoCalculoPrecio: $tipoCalculoPrecio, plazoDeCobro: $plazoDeCobro, metodoDeCobro: $metodoDeCobro, descuentoProntoPago: $descuentoProntoPago, riesgoConcedidoInterno: $riesgoConcedidoInterno, riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, riesgoConcedidoCoafe: $riesgoConcedidoCoafe, riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, riesgoActual: $riesgoActual, riesgoConcedido: $riesgoConcedido, riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, riesgoPendienteServir: $riesgoPendienteServir, riesgoPendienteFacturar: $riesgoPendienteFacturar, riesgoExcedido: $riesgoExcedido, obvservacionesInternas: $obvservacionesInternas, clientePotencial: $clientePotencial, clienteEstadoPotencial: $clienteEstadoPotencial, clienteTipoPotencial: $clienteTipoPotencial, representante1Id: $representante1Id, representante1Nombre: $representante1Nombre, representante2Id: $representante2Id, representante2Nombre: $representante2Nombre, telefonoMovil: $telefonoMovil, telefonoFijo: $telefonoFijo, email: $email, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'Cliente(id: $id, nombreCliente: $nombreCliente, nombreFiscal: $nombreFiscal, nif: $nif, direccionFiscal1: $direccionFiscal1, direccionFiscal2: $direccionFiscal2, codigoPostalFiscal: $codigoPostalFiscal, poblacionFiscal: $poblacionFiscal, provinciaFiscal: $provinciaFiscal, paisFiscal: $paisFiscal, latitudFiscal: $latitudFiscal, longitudFiscal: $longitudFiscal, direccionPredeterminada1: $direccionPredeterminada1, direccionPredeterminada2: $direccionPredeterminada2, codigoPostalPredeterminada: $codigoPostalPredeterminada, poblacionPredeterminada: $poblacionPredeterminada, provinciaPredeterminada: $provinciaPredeterminada, paisPredeterminada: $paisPredeterminada, latitudPredeterminada: $latitudPredeterminada, longitudPredeterminada: $longitudPredeterminada, empresaId: $empresaId, iva: $iva, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, porcentajeAbonos: $porcentajeAbonos, porcentajeGarantias: $porcentajeGarantias, centralCompras: $centralCompras, urlWeb: $urlWeb, divisa: $divisa, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, descuentoGeneralId: $descuentoGeneralId, descripcionDescuentoGeneral: $descripcionDescuentoGeneral, tipoCalculoPrecio: $tipoCalculoPrecio, plazoDeCobro: $plazoDeCobro, metodoDeCobro: $metodoDeCobro, descuentoProntoPago: $descuentoProntoPago, riesgoConcedidoInterno: $riesgoConcedidoInterno, riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, riesgoConcedidoCoafe: $riesgoConcedidoCoafe, riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, riesgoActual: $riesgoActual, riesgoConcedido: $riesgoConcedido, riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, riesgoPendienteServir: $riesgoPendienteServir, riesgoPendienteFacturar: $riesgoPendienteFacturar, riesgoExcedido: $riesgoExcedido, obvservacionesInternas: $obvservacionesInternas, clientePotencial: $clientePotencial, clienteEstadoPotencial: $clienteEstadoPotencial, clienteTipoPotencial: $clienteTipoPotencial, representante1Id: $representante1Id, representante1Nombre: $representante1Nombre, representante2Id: $representante2Id, representante2Nombre: $representante2Nombre, telefonoMovil: $telefonoMovil, telefonoFijo: $telefonoFijo, email: $email, sector: $sector, subsector: $subsector, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -1356,6 +1422,8 @@ class _$ClienteImpl extends _Cliente {
             (identical(other.telefonoMovil, telefonoMovil) || other.telefonoMovil == telefonoMovil) &&
             (identical(other.telefonoFijo, telefonoFijo) || other.telefonoFijo == telefonoFijo) &&
             (identical(other.email, email) || other.email == email) &&
+            (identical(other.sector, sector) || other.sector == sector) &&
+            (identical(other.subsector, subsector) || other.subsector == subsector) &&
             (identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated) &&
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
@@ -1426,6 +1494,8 @@ class _$ClienteImpl extends _Cliente {
         telefonoMovil,
         telefonoFijo,
         email,
+        sector,
+        subsector,
         lastUpdated,
         deleted
       ]);
@@ -1504,6 +1574,8 @@ abstract class _Cliente extends Cliente {
       final String? telefonoMovil,
       final String? telefonoFijo,
       final String? email,
+      final Sector? sector,
+      final Subsector? subsector,
       final DateTime? lastUpdated,
       required final bool deleted}) = _$ClienteImpl;
   const _Cliente._() : super._();
@@ -1634,6 +1706,10 @@ abstract class _Cliente extends Cliente {
   String? get telefonoFijo;
   @override
   String? get email;
+  @override
+  Sector? get sector;
+  @override
+  Subsector? get subsector;
   @override
   DateTime? get lastUpdated;
   @override

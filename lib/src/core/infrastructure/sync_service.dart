@@ -26,6 +26,7 @@ import '../../features/cliente/infrastructure/cliente_descuento_dto.dart';
 import '../../features/cliente/infrastructure/cliente_direccion_dto.dart';
 import '../../features/cliente/infrastructure/cliente_dto.dart';
 import '../../features/cliente/infrastructure/cliente_grupo_neto_dto.dart';
+import '../../features/cliente/infrastructure/cliente_imp_dto.dart';
 import '../../features/cliente/infrastructure/cliente_pago_pendiente_dto.dart';
 import '../../features/cliente/infrastructure/cliente_precio_neto_dto.dart';
 import '../../features/cliente/infrastructure/cliente_rappel_dto.dart';
@@ -71,6 +72,8 @@ import 'log_repository.dart';
 import 'provincia_dto.dart';
 import 'remote_database.dart';
 import 'remote_response.dart';
+import 'sector_dto.dart';
+import 'subsector_dto.dart';
 
 typedef Json = Map<String, dynamic>;
 final syncServiceProvider = Provider.autoDispose<SyncService>(
@@ -175,6 +178,7 @@ class SyncService {
     try {
       await insetLog(level: 'I', message: 'Init customer sync');
 
+      await syncClienteUpdate();
       await syncClientes();
       await syncTopArticulos();
       await syncClienteGruposNetos();
@@ -268,6 +272,8 @@ class SyncService {
       await syncMetodoCobro();
       await syncPlazosCobro();
       await syncProvincias();
+      await syncSectores();
+      await syncSubsectores();
     } catch (e) {
       await insetLog(level: 'I', message: 'Error visits sync');
 
@@ -412,12 +418,14 @@ class SyncService {
 
   Future<void> syncClientes() async {
     try {
-      await _syncTable(
+      final clientesSync = await _syncTable<ClienteDTO>(
         apiPath: 'api/v2/sync/clientes',
         tableInfo: _remoteDb.clienteTable,
         fromJson: (e) => ClienteDTO.fromJson(e),
       );
-      // await saveLastSyncInSharedPreferences(clienteFechaUltimaSyncKey);
+      if (clientesSync.isNotEmpty) {
+        await _deleteClienteImpIfExistsSynced(clientesSync);
+      }
     } on AppException catch (e) {
       log.e(e.details);
       rethrow;
@@ -905,14 +913,46 @@ class SyncService {
     }
   }
 
-  Future<void> _syncTable({
+  Future<void> syncSectores() async {
+    try {
+      await _syncTable(
+        apiPath: 'api/v1/sync/sector',
+        tableInfo: _remoteDb.sectorTable,
+        fromJson: (e) => SectorDTO.fromJson(e),
+      );
+    } on AppException catch (e) {
+      log.e(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncSubsectores() async {
+    try {
+      await _syncTable(
+        apiPath: 'api/v1/sync/subsector',
+        tableInfo: _remoteDb.subsectorTable,
+        fromJson: (e) => SubsectorDTO.fromJson(e),
+      );
+    } on AppException catch (e) {
+      log.e(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<List<T>> _syncTable<T>({
     required String apiPath,
     required TableInfo<Table, dynamic> tableInfo,
-    required Function(Map<String, dynamic> e) fromJson,
+    required T Function(Map<String, dynamic> e) fromJson,
   }) async {
     var page = 1;
     var isNextPageAvailable = true;
     int? totalRows;
+
+    final syncValuesList = <T>[];
 
     try {
       final remoteDatabaseDateTime = await getRemoteDatabaseDateTime();
@@ -939,17 +979,17 @@ class SyncService {
             log.d('NUM VALUES ${tableInfo.actualTableName}: $totalRows');
             final tableValueDTOList = data.map((e) => fromJson(e)).toList();
 
-            for (var i = 0; i < tableValueDTOList.length; i++) {
-              final tableValue = tableValueDTOList[i];
+            syncValuesList.addAll(tableValueDTOList);
 
-              if (tableValue.deleted == 'S') {
+            for (var i = 0; i < tableValueDTOList.length; i++) {
+              final tableValue = tableValueDTOList[i] as dynamic;
+
+              if (tableValue?.deleted == 'S') {
                 await deleteTableValue(
-                    tableInfo: tableInfo,
-                    dto: tableValue as Insertable<dynamic>);
+                    tableInfo: tableInfo, dto: tableValue as Insertable<T>);
               } else {
                 await upsertTable(
-                    tableInfo: tableInfo,
-                    dto: tableValue as Insertable<dynamic>);
+                    tableInfo: tableInfo, dto: tableValue as Insertable<T>);
               }
             }
 
@@ -959,6 +999,8 @@ class SyncService {
           },
         );
       }
+
+      return syncValuesList;
     } on AppException catch (e) {
       log.e(e.details);
       rethrow;
@@ -1766,6 +1808,62 @@ class SyncService {
         Directory('${directory.path}/catalogos/$catalogoId');
     if (directoryCatalogos.existsSync()) {
       directoryCatalogos.deleteSync(recursive: true);
+    }
+  }
+
+  Future<void> syncClienteUpdate() async {
+    final clientesImp = await (_localDb.select(_localDb.clienteImpTable)).get();
+
+    for (var i = 0; i < clientesImp.length; i++) {
+      await _remoteClienteUpdate(clientesImp[i]);
+    }
+  }
+
+  Future<void> _remoteClienteUpdate(ClienteImpDTO clienteImpDto) async {
+    try {
+      final requestUri = (_usuario!.test)
+          ? Uri.http(
+              // dotenv.get('URL', fallback: 'localhost:3001')
+              'jbm-api-test.nikel.es:8080',
+              'api/v1/online/clientes/${clienteImpDto.clienteId}',
+            )
+          : Uri.https(
+              // dotenv.get('URL', fallback: 'localhost:3001')
+              'jbm-api.nikel.es',
+              'api/v1/online/clientes/${clienteImpDto.clienteId}',
+            );
+
+      log.d('SYNC CLIENTE UPDATE: ${clienteImpDto.toJson()}');
+
+      final response = await _dio.postUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer ${_usuario.provisionalToken}}'},
+        ),
+        data: jsonEncode(clienteImpDto.toJson()),
+      );
+      if (response.statusCode != 200) {
+        throw AppException.restApiFailure(
+            response.statusCode ?? 400, response.statusMessage ?? '');
+      }
+    } catch (e) {
+      log.e('ERROR SYNC CLIENTE ${clienteImpDto.toJson()}: ${e.toString()}');
+    }
+  }
+
+  Future<void> _deleteClienteImpIfExistsSynced(
+      List<ClienteDTO> clientesSync) async {
+    final clientesImp = await (_localDb.select(_localDb.clienteImpTable)).get();
+
+    for (var i = 0; i < clientesImp.length; i++) {
+      for (var j = 0; j < clientesSync.length; j++) {
+        if (clientesSync[j].id == clientesImp[i].clienteId) {
+          await (_localDb.delete(_localDb.clienteImpTable)
+                ..where(
+                    (tbl) => tbl.clienteId.equals(clientesImp[i].clienteId)))
+              .go();
+        }
+      }
     }
   }
 }
