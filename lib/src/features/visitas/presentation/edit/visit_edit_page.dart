@@ -626,7 +626,7 @@ class _ClienteProvisionalContainerState
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(4),
         side: BorderSide(
-          color: Colors.grey.withOpacity(0.2),
+          color: Colors.grey.withValues(alpha: 0.2),
           width: 1,
         ),
       ),
@@ -870,7 +870,11 @@ class _SelectClienteWidgetState extends ConsumerState<SelectClienteWidget> {
   void navigateToSearchClientes(BuildContext context) async {
     final customer = await context.router
         .push<Cliente?>(ClienteListaRoute(isSearchClienteForFrom: true));
-    if (customer != null) {
+    if (customer != null && context.mounted) {
+      if (customer.sector == null ||
+          (customer.sector != null && !customer.sector!.isAlta)) {
+        await context.router.push(ClienteSectorRoute(cliente: customer));
+      }
       controller.text = setClienteValue(customer.id, customer.nombreCliente);
       widget.onSelectedCliente(customer.id);
     }

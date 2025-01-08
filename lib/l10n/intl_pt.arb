@@ -409,5 +409,8 @@
   "phones": "Telefones",
   "position": "Posição",
   "unknown": "Desconhecido",
-  "send": "Enviar"
+  "send": "Enviar",
+  "retry": "Tentar novamente",
+  "sectorUnsubscribededSectorMessage": "Setor não inscrito. Por favor, selecione um novo setor",
+  "save": "Salvar"
 }

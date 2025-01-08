@@ -4,6 +4,8 @@ import 'package:money2/money2.dart';
 
 import '../../../core/domain/divisa.dart';
 import '../../../core/domain/pais.dart';
+import '../../../core/domain/sector.dart';
+import '../../../core/domain/subsector.dart';
 import '../../../core/helpers/extension.dart';
 import '../../../core/infrastructure/divisa_dto.dart';
 import '../../../core/infrastructure/pais_dto.dart';
@@ -87,6 +89,8 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
     @JsonKey(name: 'TELEFONO_FIJO') String? telefonoFijo,
     @JsonKey(name: 'TELEFONO_MOVIL') String? telefonoMovil,
     @JsonKey(name: 'E_MAIL') String? email,
+    @JsonKey(name: 'SECTOR_ID') String? sectorId,
+    @JsonKey(name: 'SUBSECTOR_ID') String? subsectorId,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _ClienteDTO;
@@ -102,6 +106,8 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
     ClienteTipoPotencial? clienteTipoPotencial,
     ClienteEstadoPotencial? clienteEstadoPotencial,
     required ClienteDireccion? clienteDireccionPredeterminada,
+    Sector? sector,
+    Subsector? subsector,
   }) {
     return Cliente(
       id: id,
@@ -177,6 +183,8 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       telefonoFijo: telefonoFijo,
       telefonoMovil: telefonoMovil,
       email: email,
+      sector: sector,
+      subsector: subsector,
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S') ? true : false,
     );
@@ -238,6 +246,8 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       telefonoMovil: Value(telefonoMovil),
       telefonoFijo: Value(telefonoFijo),
       email: Value(email),
+      sectorId: Value(sectorId),
+      subsectorId: Value(subsectorId),
       lastUpdated: Value(lastUpdated),
       deleted: Value(deleted),
     ).toColumns(nullToAbsent);
@@ -376,6 +386,8 @@ class ClienteTable extends Table {
   TextColumn get telefonoFijo => text().nullable().named('TELEFONO_FIJO')();
   TextColumn get telefonoMovil => text().nullable().named('TELEFONO_MOVIL')();
   TextColumn get email => text().nullable().named('E_MAIL')();
+  TextColumn get sectorId => text().nullable().named('SECTOR_ID')();
+  TextColumn get subsectorId => text().nullable().named('SUBSECTOR_ID')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('DELETED')();

@@ -71,6 +71,8 @@ _$ClienteDTOImpl _$$ClienteDTOImplFromJson(Map<String, dynamic> json) =>
       telefonoFijo: json['TELEFONO_FIJO'] as String?,
       telefonoMovil: json['TELEFONO_MOVIL'] as String?,
       email: json['E_MAIL'] as String?,
+      sectorId: json['SECTOR_ID'] as String?,
+      subsectorId: json['SUBSECTOR_ID'] as String?,
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       deleted: json['DELETED'] as String? ?? 'N',
     );
@@ -133,6 +135,8 @@ Map<String, dynamic> _$$ClienteDTOImplToJson(_$ClienteDTOImpl instance) =>
       'TELEFONO_FIJO': instance.telefonoFijo,
       'TELEFONO_MOVIL': instance.telefonoMovil,
       'E_MAIL': instance.email,
+      'SECTOR_ID': instance.sectorId,
+      'SUBSECTOR_ID': instance.subsectorId,
       'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
       'DELETED': instance.deleted,
     };

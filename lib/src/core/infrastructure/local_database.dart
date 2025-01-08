@@ -6,6 +6,7 @@ import 'package:drift/isolate.dart';
 import 'package:drift/native.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../features/catalogos/infrastructure/catalogo_dto.dart';
+import '../../features/cliente/infrastructure/cliente_imp_dto.dart';
 import 'log_dto.dart';
 import 'sync_datetime_dto.dart';
 
@@ -57,6 +58,7 @@ const localDatabaseName = 'local_jbm.sqlite';
   ClienteContactoImpTable,
   ClienteDireccionImpTable,
   CatalogoOrdenTable,
+  ClienteImpTable,
 ])
 class LocalAppDatabase extends _$LocalAppDatabase {
   final bool test;
@@ -68,7 +70,7 @@ class LocalAppDatabase extends _$LocalAppDatabase {
       : test = true,
         super(NativeDatabase.memory());
   @override
-  int get schemaVersion => 15;
+  int get schemaVersion => 16;
 
   @override
   MigrationStrategy get migration {
@@ -220,6 +222,9 @@ class LocalAppDatabase extends _$LocalAppDatabase {
           await m.createTable(clienteDireccionImpTable);
           await m.deleteTable(catalogoFavoritoTable.tableName);
           await m.createTable(catalogoFavoritoTable);
+        }
+        if (from < 16) {
+          await m.createTable(clienteImpTable);
         }
       }),
     );

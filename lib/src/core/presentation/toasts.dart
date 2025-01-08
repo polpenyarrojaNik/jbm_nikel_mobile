@@ -7,7 +7,7 @@ Future<void> showToast(String message, BuildContext context) async {
     duration: const Duration(seconds: 2),
     builder: (context, controller) => FlashBar(
       controller: controller,
-      backgroundColor: Colors.black.withOpacity(0.7),
+      backgroundColor: Colors.black.withValues(alpha: 0.7),
       margin: const EdgeInsets.all(8.0),
       content: Padding(
         padding: const EdgeInsets.all(8.0),

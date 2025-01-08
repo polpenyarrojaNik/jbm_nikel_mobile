@@ -28,7 +28,10 @@ class PedidoVentaLineaNuevoTile extends ConsumerWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       color: (pedidoVentaLinea.pedidoLineaIdComponente != null)
-          ? Theme.of(context).colorScheme.secondaryContainer.withOpacity(0.5)
+          ? Theme.of(context)
+              .colorScheme
+              .secondaryContainer
+              .withValues(alpha: 0.5)
           : Colors.transparent,
       child: IntrinsicHeight(
         child: Row(

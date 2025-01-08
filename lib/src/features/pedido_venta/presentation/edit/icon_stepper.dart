@@ -356,7 +356,7 @@ class _IconStepperState extends State<IconStepper>
       }
     } else {
       return !_isDark()
-          ? colorScheme.onSurface.withOpacity(0.38)
+          ? colorScheme.onSurface.withValues(alpha: 0.38)
           : colorScheme.surface;
     }
   }
@@ -462,6 +462,14 @@ class _IconStepperState extends State<IconStepper>
                           ? colorScheme.onSurface
                           : colorScheme.onPrimary);
                 }),
+                iconColor: WidgetStateProperty.resolveWith<Color?>(
+                    (Set<WidgetState> states) {
+                  return states.contains(WidgetState.disabled)
+                      ? null
+                      : _isDark()
+                          ? colorScheme.onSurface
+                          : colorScheme.onPrimary;
+                }),
                 backgroundColor: WidgetStateProperty.resolveWith<Color?>(
                     (Set<WidgetState> states) {
                   return states.contains(WidgetState.disabled)
@@ -481,6 +489,14 @@ class _IconStepperState extends State<IconStepper>
               onPressed: widget.onStepContinue,
               style: ButtonStyle(
                 foregroundColor: WidgetStateProperty.resolveWith<Color?>(
+                    (Set<WidgetState> states) {
+                  return states.contains(WidgetState.disabled)
+                      ? null
+                      : _isDark()
+                          ? colorScheme.onSurface
+                          : colorScheme.onPrimary;
+                }),
+                iconColor: WidgetStateProperty.resolveWith<Color?>(
                     (Set<WidgetState> states) {
                   return states.contains(WidgetState.disabled)
                       ? null

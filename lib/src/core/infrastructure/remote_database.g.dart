@@ -4488,6 +4488,18 @@ class $ClienteTableTable extends ClienteTable
   late final GeneratedColumn<String> email = GeneratedColumn<String>(
       'E_MAIL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _sectorIdMeta =
+      const VerificationMeta('sectorId');
+  @override
+  late final GeneratedColumn<String> sectorId = GeneratedColumn<String>(
+      'SECTOR_ID', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _subsectorIdMeta =
+      const VerificationMeta('subsectorId');
+  @override
+  late final GeneratedColumn<String> subsectorId = GeneratedColumn<String>(
+      'SUBSECTOR_ID', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
@@ -4557,6 +4569,8 @@ class $ClienteTableTable extends ClienteTable
         telefonoFijo,
         telefonoMovil,
         email,
+        sectorId,
+        subsectorId,
         lastUpdated,
         deleted
       ];
@@ -4916,6 +4930,16 @@ class $ClienteTableTable extends ClienteTable
       context.handle(
           _emailMeta, email.isAcceptableOrUnknown(data['E_MAIL']!, _emailMeta));
     }
+    if (data.containsKey('SECTOR_ID')) {
+      context.handle(_sectorIdMeta,
+          sectorId.isAcceptableOrUnknown(data['SECTOR_ID']!, _sectorIdMeta));
+    }
+    if (data.containsKey('SUBSECTOR_ID')) {
+      context.handle(
+          _subsectorIdMeta,
+          subsectorId.isAcceptableOrUnknown(
+              data['SUBSECTOR_ID']!, _subsectorIdMeta));
+    }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
           _lastUpdatedMeta,
@@ -5054,6 +5078,10 @@ class $ClienteTableTable extends ClienteTable
           .read(DriftSqlType.string, data['${effectivePrefix}TELEFONO_MOVIL']),
       email: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}E_MAIL']),
+      sectorId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}SECTOR_ID']),
+      subsectorId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}SUBSECTOR_ID']),
       lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
       deleted: attachedDatabase.typeMapping
@@ -5121,6 +5149,8 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
   final Value<String?> telefonoFijo;
   final Value<String?> telefonoMovil;
   final Value<String?> email;
+  final Value<String?> sectorId;
+  final Value<String?> subsectorId;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
   final Value<int> rowid;
@@ -5178,6 +5208,8 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     this.telefonoFijo = const Value.absent(),
     this.telefonoMovil = const Value.absent(),
     this.email = const Value.absent(),
+    this.sectorId = const Value.absent(),
+    this.subsectorId = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -5236,6 +5268,8 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     this.telefonoFijo = const Value.absent(),
     this.telefonoMovil = const Value.absent(),
     this.email = const Value.absent(),
+    this.sectorId = const Value.absent(),
+    this.subsectorId = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -5313,6 +5347,8 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     Expression<String>? telefonoFijo,
     Expression<String>? telefonoMovil,
     Expression<String>? email,
+    Expression<String>? sectorId,
+    Expression<String>? subsectorId,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
     Expression<int>? rowid,
@@ -5393,6 +5429,8 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
       if (telefonoFijo != null) 'TELEFONO_FIJO': telefonoFijo,
       if (telefonoMovil != null) 'TELEFONO_MOVIL': telefonoMovil,
       if (email != null) 'E_MAIL': email,
+      if (sectorId != null) 'SECTOR_ID': sectorId,
+      if (subsectorId != null) 'SUBSECTOR_ID': subsectorId,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
       if (rowid != null) 'rowid': rowid,
@@ -5453,6 +5491,8 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
       Value<String?>? telefonoFijo,
       Value<String?>? telefonoMovil,
       Value<String?>? email,
+      Value<String?>? sectorId,
+      Value<String?>? subsectorId,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted,
       Value<int>? rowid}) {
@@ -5521,6 +5561,8 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
       telefonoFijo: telefonoFijo ?? this.telefonoFijo,
       telefonoMovil: telefonoMovil ?? this.telefonoMovil,
       email: email ?? this.email,
+      sectorId: sectorId ?? this.sectorId,
+      subsectorId: subsectorId ?? this.subsectorId,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
       rowid: rowid ?? this.rowid,
@@ -5703,6 +5745,12 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     if (email.present) {
       map['E_MAIL'] = Variable<String>(email.value);
     }
+    if (sectorId.present) {
+      map['SECTOR_ID'] = Variable<String>(sectorId.value);
+    }
+    if (subsectorId.present) {
+      map['SUBSECTOR_ID'] = Variable<String>(subsectorId.value);
+    }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
     }
@@ -5772,6 +5820,8 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
           ..write('telefonoFijo: $telefonoFijo, ')
           ..write('telefonoMovil: $telefonoMovil, ')
           ..write('email: $email, ')
+          ..write('sectorId: $sectorId, ')
+          ..write('subsectorId: $subsectorId, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted, ')
           ..write('rowid: $rowid')
@@ -21346,6 +21396,904 @@ class TrackingEstadoTableCompanion extends UpdateCompanion<TrackingEstadoDTO> {
   }
 }
 
+class $SectorTableTable extends SectorTable
+    with TableInfo<$SectorTableTable, SectorDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $SectorTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+      'sector_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _altaSNMeta = const VerificationMeta('altaSN');
+  @override
+  late final GeneratedColumn<String> altaSN = GeneratedColumn<String>(
+      'alta_sn', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _descripcionESMeta =
+      const VerificationMeta('descripcionES');
+  @override
+  late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
+      'descripcion_es', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _descripcionENMeta =
+      const VerificationMeta('descripcionEN');
+  @override
+  late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
+      'descripcion_en', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionFRMeta =
+      const VerificationMeta('descripcionFR');
+  @override
+  late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
+      'descripcion_fr', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionDEMeta =
+      const VerificationMeta('descripcionDE');
+  @override
+  late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
+      'descripcion_de', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionCAMeta =
+      const VerificationMeta('descripcionCA');
+  @override
+  late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
+      'descripcion_ca', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionGBMeta =
+      const VerificationMeta('descripcionGB');
+  @override
+  late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
+      'descripcion_gb', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionHUMeta =
+      const VerificationMeta('descripcionHU');
+  @override
+  late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
+      'descripcion_hu', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionITMeta =
+      const VerificationMeta('descripcionIT');
+  @override
+  late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
+      'descripcion_it', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionNLMeta =
+      const VerificationMeta('descripcionNL');
+  @override
+  late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
+      'descripcion_nl', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionPLMeta =
+      const VerificationMeta('descripcionPL');
+  @override
+  late final GeneratedColumn<String> descripcionPL = GeneratedColumn<String>(
+      'descripcion_pl', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _lastUpdatedMeta =
+      const VerificationMeta('lastUpdated');
+  @override
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'last_updated', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
+  @override
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
+      'deleted', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('N'));
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        altaSN,
+        descripcionES,
+        descripcionEN,
+        descripcionFR,
+        descripcionDE,
+        descripcionCA,
+        descripcionGB,
+        descripcionHU,
+        descripcionIT,
+        descripcionNL,
+        descripcionPL,
+        lastUpdated,
+        deleted
+      ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'SECTORES';
+  @override
+  VerificationContext validateIntegrity(Insertable<SectorDTO> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('sector_id')) {
+      context.handle(
+          _idMeta, id.isAcceptableOrUnknown(data['sector_id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('alta_sn')) {
+      context.handle(_altaSNMeta,
+          altaSN.isAcceptableOrUnknown(data['alta_sn']!, _altaSNMeta));
+    } else if (isInserting) {
+      context.missing(_altaSNMeta);
+    }
+    if (data.containsKey('descripcion_es')) {
+      context.handle(
+          _descripcionESMeta,
+          descripcionES.isAcceptableOrUnknown(
+              data['descripcion_es']!, _descripcionESMeta));
+    } else if (isInserting) {
+      context.missing(_descripcionESMeta);
+    }
+    if (data.containsKey('descripcion_en')) {
+      context.handle(
+          _descripcionENMeta,
+          descripcionEN.isAcceptableOrUnknown(
+              data['descripcion_en']!, _descripcionENMeta));
+    }
+    if (data.containsKey('descripcion_fr')) {
+      context.handle(
+          _descripcionFRMeta,
+          descripcionFR.isAcceptableOrUnknown(
+              data['descripcion_fr']!, _descripcionFRMeta));
+    }
+    if (data.containsKey('descripcion_de')) {
+      context.handle(
+          _descripcionDEMeta,
+          descripcionDE.isAcceptableOrUnknown(
+              data['descripcion_de']!, _descripcionDEMeta));
+    }
+    if (data.containsKey('descripcion_ca')) {
+      context.handle(
+          _descripcionCAMeta,
+          descripcionCA.isAcceptableOrUnknown(
+              data['descripcion_ca']!, _descripcionCAMeta));
+    }
+    if (data.containsKey('descripcion_gb')) {
+      context.handle(
+          _descripcionGBMeta,
+          descripcionGB.isAcceptableOrUnknown(
+              data['descripcion_gb']!, _descripcionGBMeta));
+    }
+    if (data.containsKey('descripcion_hu')) {
+      context.handle(
+          _descripcionHUMeta,
+          descripcionHU.isAcceptableOrUnknown(
+              data['descripcion_hu']!, _descripcionHUMeta));
+    }
+    if (data.containsKey('descripcion_it')) {
+      context.handle(
+          _descripcionITMeta,
+          descripcionIT.isAcceptableOrUnknown(
+              data['descripcion_it']!, _descripcionITMeta));
+    }
+    if (data.containsKey('descripcion_nl')) {
+      context.handle(
+          _descripcionNLMeta,
+          descripcionNL.isAcceptableOrUnknown(
+              data['descripcion_nl']!, _descripcionNLMeta));
+    }
+    if (data.containsKey('descripcion_pl')) {
+      context.handle(
+          _descripcionPLMeta,
+          descripcionPL.isAcceptableOrUnknown(
+              data['descripcion_pl']!, _descripcionPLMeta));
+    }
+    if (data.containsKey('last_updated')) {
+      context.handle(
+          _lastUpdatedMeta,
+          lastUpdated.isAcceptableOrUnknown(
+              data['last_updated']!, _lastUpdatedMeta));
+    } else if (isInserting) {
+      context.missing(_lastUpdatedMeta);
+    }
+    if (data.containsKey('deleted')) {
+      context.handle(_deletedMeta,
+          deleted.isAcceptableOrUnknown(data['deleted']!, _deletedMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  SectorDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return SectorDTO(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}sector_id'])!,
+      altaSN: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}alta_sn'])!,
+      descripcionES: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}descripcion_es'])!,
+      descripcionEN: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}descripcion_en']),
+      descripcionFR: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}descripcion_fr']),
+      descripcionDE: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}descripcion_de']),
+      descripcionCA: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}descripcion_ca']),
+      descripcionGB: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}descripcion_gb']),
+      descripcionHU: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}descripcion_hu']),
+      descripcionIT: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}descripcion_it']),
+      descripcionNL: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}descripcion_nl']),
+      descripcionPL: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}descripcion_pl']),
+      lastUpdated: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}last_updated'])!,
+      deleted: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}deleted'])!,
+    );
+  }
+
+  @override
+  $SectorTableTable createAlias(String alias) {
+    return $SectorTableTable(attachedDatabase, alias);
+  }
+}
+
+class SectorTableCompanion extends UpdateCompanion<SectorDTO> {
+  final Value<String> id;
+  final Value<String> altaSN;
+  final Value<String> descripcionES;
+  final Value<String?> descripcionEN;
+  final Value<String?> descripcionFR;
+  final Value<String?> descripcionDE;
+  final Value<String?> descripcionCA;
+  final Value<String?> descripcionGB;
+  final Value<String?> descripcionHU;
+  final Value<String?> descripcionIT;
+  final Value<String?> descripcionNL;
+  final Value<String?> descripcionPL;
+  final Value<DateTime> lastUpdated;
+  final Value<String> deleted;
+  final Value<int> rowid;
+  const SectorTableCompanion({
+    this.id = const Value.absent(),
+    this.altaSN = const Value.absent(),
+    this.descripcionES = const Value.absent(),
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.lastUpdated = const Value.absent(),
+    this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  SectorTableCompanion.insert({
+    required String id,
+    required String altaSN,
+    required String descripcionES,
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    required DateTime lastUpdated,
+    this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
+  })  : id = Value(id),
+        altaSN = Value(altaSN),
+        descripcionES = Value(descripcionES),
+        lastUpdated = Value(lastUpdated);
+  static Insertable<SectorDTO> custom({
+    Expression<String>? id,
+    Expression<String>? altaSN,
+    Expression<String>? descripcionES,
+    Expression<String>? descripcionEN,
+    Expression<String>? descripcionFR,
+    Expression<String>? descripcionDE,
+    Expression<String>? descripcionCA,
+    Expression<String>? descripcionGB,
+    Expression<String>? descripcionHU,
+    Expression<String>? descripcionIT,
+    Expression<String>? descripcionNL,
+    Expression<String>? descripcionPL,
+    Expression<DateTime>? lastUpdated,
+    Expression<String>? deleted,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'sector_id': id,
+      if (altaSN != null) 'alta_sn': altaSN,
+      if (descripcionES != null) 'descripcion_es': descripcionES,
+      if (descripcionEN != null) 'descripcion_en': descripcionEN,
+      if (descripcionFR != null) 'descripcion_fr': descripcionFR,
+      if (descripcionDE != null) 'descripcion_de': descripcionDE,
+      if (descripcionCA != null) 'descripcion_ca': descripcionCA,
+      if (descripcionGB != null) 'descripcion_gb': descripcionGB,
+      if (descripcionHU != null) 'descripcion_hu': descripcionHU,
+      if (descripcionIT != null) 'descripcion_it': descripcionIT,
+      if (descripcionNL != null) 'descripcion_nl': descripcionNL,
+      if (descripcionPL != null) 'descripcion_pl': descripcionPL,
+      if (lastUpdated != null) 'last_updated': lastUpdated,
+      if (deleted != null) 'deleted': deleted,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  SectorTableCompanion copyWith(
+      {Value<String>? id,
+      Value<String>? altaSN,
+      Value<String>? descripcionES,
+      Value<String?>? descripcionEN,
+      Value<String?>? descripcionFR,
+      Value<String?>? descripcionDE,
+      Value<String?>? descripcionCA,
+      Value<String?>? descripcionGB,
+      Value<String?>? descripcionHU,
+      Value<String?>? descripcionIT,
+      Value<String?>? descripcionNL,
+      Value<String?>? descripcionPL,
+      Value<DateTime>? lastUpdated,
+      Value<String>? deleted,
+      Value<int>? rowid}) {
+    return SectorTableCompanion(
+      id: id ?? this.id,
+      altaSN: altaSN ?? this.altaSN,
+      descripcionES: descripcionES ?? this.descripcionES,
+      descripcionEN: descripcionEN ?? this.descripcionEN,
+      descripcionFR: descripcionFR ?? this.descripcionFR,
+      descripcionDE: descripcionDE ?? this.descripcionDE,
+      descripcionCA: descripcionCA ?? this.descripcionCA,
+      descripcionGB: descripcionGB ?? this.descripcionGB,
+      descripcionHU: descripcionHU ?? this.descripcionHU,
+      descripcionIT: descripcionIT ?? this.descripcionIT,
+      descripcionNL: descripcionNL ?? this.descripcionNL,
+      descripcionPL: descripcionPL ?? this.descripcionPL,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['sector_id'] = Variable<String>(id.value);
+    }
+    if (altaSN.present) {
+      map['alta_sn'] = Variable<String>(altaSN.value);
+    }
+    if (descripcionES.present) {
+      map['descripcion_es'] = Variable<String>(descripcionES.value);
+    }
+    if (descripcionEN.present) {
+      map['descripcion_en'] = Variable<String>(descripcionEN.value);
+    }
+    if (descripcionFR.present) {
+      map['descripcion_fr'] = Variable<String>(descripcionFR.value);
+    }
+    if (descripcionDE.present) {
+      map['descripcion_de'] = Variable<String>(descripcionDE.value);
+    }
+    if (descripcionCA.present) {
+      map['descripcion_ca'] = Variable<String>(descripcionCA.value);
+    }
+    if (descripcionGB.present) {
+      map['descripcion_gb'] = Variable<String>(descripcionGB.value);
+    }
+    if (descripcionHU.present) {
+      map['descripcion_hu'] = Variable<String>(descripcionHU.value);
+    }
+    if (descripcionIT.present) {
+      map['descripcion_it'] = Variable<String>(descripcionIT.value);
+    }
+    if (descripcionNL.present) {
+      map['descripcion_nl'] = Variable<String>(descripcionNL.value);
+    }
+    if (descripcionPL.present) {
+      map['descripcion_pl'] = Variable<String>(descripcionPL.value);
+    }
+    if (lastUpdated.present) {
+      map['last_updated'] = Variable<DateTime>(lastUpdated.value);
+    }
+    if (deleted.present) {
+      map['deleted'] = Variable<String>(deleted.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('SectorTableCompanion(')
+          ..write('id: $id, ')
+          ..write('altaSN: $altaSN, ')
+          ..write('descripcionES: $descripcionES, ')
+          ..write('descripcionEN: $descripcionEN, ')
+          ..write('descripcionFR: $descripcionFR, ')
+          ..write('descripcionDE: $descripcionDE, ')
+          ..write('descripcionCA: $descripcionCA, ')
+          ..write('descripcionGB: $descripcionGB, ')
+          ..write('descripcionHU: $descripcionHU, ')
+          ..write('descripcionIT: $descripcionIT, ')
+          ..write('descripcionNL: $descripcionNL, ')
+          ..write('descripcionPL: $descripcionPL, ')
+          ..write('lastUpdated: $lastUpdated, ')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $SubsectorTableTable extends SubsectorTable
+    with TableInfo<$SubsectorTableTable, SubsectorDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $SubsectorTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _sectorIdMeta =
+      const VerificationMeta('sectorId');
+  @override
+  late final GeneratedColumn<String> sectorId = GeneratedColumn<String>(
+      'SECTOR_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _subsectorIdMeta =
+      const VerificationMeta('subsectorId');
+  @override
+  late final GeneratedColumn<String> subsectorId = GeneratedColumn<String>(
+      'SUBSECTOR_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _descripcionESMeta =
+      const VerificationMeta('descripcionES');
+  @override
+  late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
+      'DESCRIPCION_ES', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _descripcionENMeta =
+      const VerificationMeta('descripcionEN');
+  @override
+  late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
+      'DESCRIPCION_EN', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionFRMeta =
+      const VerificationMeta('descripcionFR');
+  @override
+  late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
+      'DESCRIPCION_FR', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionDEMeta =
+      const VerificationMeta('descripcionDE');
+  @override
+  late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
+      'DESCRIPCION_DE', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionCAMeta =
+      const VerificationMeta('descripcionCA');
+  @override
+  late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
+      'DESCRIPCION_CA', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionGBMeta =
+      const VerificationMeta('descripcionGB');
+  @override
+  late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
+      'DESCRIPCION_GB', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionHUMeta =
+      const VerificationMeta('descripcionHU');
+  @override
+  late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
+      'DESCRIPCION_HU', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionITMeta =
+      const VerificationMeta('descripcionIT');
+  @override
+  late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
+      'DESCRIPCION_IT', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionNLMeta =
+      const VerificationMeta('descripcionNL');
+  @override
+  late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
+      'DESCRIPCION_NL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionPLMeta =
+      const VerificationMeta('descripcionPL');
+  @override
+  late final GeneratedColumn<String> descripcionPL = GeneratedColumn<String>(
+      'DESCRIPCION_PL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _lastUpdatedMeta =
+      const VerificationMeta('lastUpdated');
+  @override
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
+  @override
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
+      'DELETED', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('N'));
+  @override
+  List<GeneratedColumn> get $columns => [
+        sectorId,
+        subsectorId,
+        descripcionES,
+        descripcionEN,
+        descripcionFR,
+        descripcionDE,
+        descripcionCA,
+        descripcionGB,
+        descripcionHU,
+        descripcionIT,
+        descripcionNL,
+        descripcionPL,
+        lastUpdated,
+        deleted
+      ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'SUBSECTORES';
+  @override
+  VerificationContext validateIntegrity(Insertable<SubsectorDTO> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('SECTOR_ID')) {
+      context.handle(_sectorIdMeta,
+          sectorId.isAcceptableOrUnknown(data['SECTOR_ID']!, _sectorIdMeta));
+    } else if (isInserting) {
+      context.missing(_sectorIdMeta);
+    }
+    if (data.containsKey('SUBSECTOR_ID')) {
+      context.handle(
+          _subsectorIdMeta,
+          subsectorId.isAcceptableOrUnknown(
+              data['SUBSECTOR_ID']!, _subsectorIdMeta));
+    } else if (isInserting) {
+      context.missing(_subsectorIdMeta);
+    }
+    if (data.containsKey('DESCRIPCION_ES')) {
+      context.handle(
+          _descripcionESMeta,
+          descripcionES.isAcceptableOrUnknown(
+              data['DESCRIPCION_ES']!, _descripcionESMeta));
+    } else if (isInserting) {
+      context.missing(_descripcionESMeta);
+    }
+    if (data.containsKey('DESCRIPCION_EN')) {
+      context.handle(
+          _descripcionENMeta,
+          descripcionEN.isAcceptableOrUnknown(
+              data['DESCRIPCION_EN']!, _descripcionENMeta));
+    }
+    if (data.containsKey('DESCRIPCION_FR')) {
+      context.handle(
+          _descripcionFRMeta,
+          descripcionFR.isAcceptableOrUnknown(
+              data['DESCRIPCION_FR']!, _descripcionFRMeta));
+    }
+    if (data.containsKey('DESCRIPCION_DE')) {
+      context.handle(
+          _descripcionDEMeta,
+          descripcionDE.isAcceptableOrUnknown(
+              data['DESCRIPCION_DE']!, _descripcionDEMeta));
+    }
+    if (data.containsKey('DESCRIPCION_CA')) {
+      context.handle(
+          _descripcionCAMeta,
+          descripcionCA.isAcceptableOrUnknown(
+              data['DESCRIPCION_CA']!, _descripcionCAMeta));
+    }
+    if (data.containsKey('DESCRIPCION_GB')) {
+      context.handle(
+          _descripcionGBMeta,
+          descripcionGB.isAcceptableOrUnknown(
+              data['DESCRIPCION_GB']!, _descripcionGBMeta));
+    }
+    if (data.containsKey('DESCRIPCION_HU')) {
+      context.handle(
+          _descripcionHUMeta,
+          descripcionHU.isAcceptableOrUnknown(
+              data['DESCRIPCION_HU']!, _descripcionHUMeta));
+    }
+    if (data.containsKey('DESCRIPCION_IT')) {
+      context.handle(
+          _descripcionITMeta,
+          descripcionIT.isAcceptableOrUnknown(
+              data['DESCRIPCION_IT']!, _descripcionITMeta));
+    }
+    if (data.containsKey('DESCRIPCION_NL')) {
+      context.handle(
+          _descripcionNLMeta,
+          descripcionNL.isAcceptableOrUnknown(
+              data['DESCRIPCION_NL']!, _descripcionNLMeta));
+    }
+    if (data.containsKey('DESCRIPCION_PL')) {
+      context.handle(
+          _descripcionPLMeta,
+          descripcionPL.isAcceptableOrUnknown(
+              data['DESCRIPCION_PL']!, _descripcionPLMeta));
+    }
+    if (data.containsKey('LAST_UPDATED')) {
+      context.handle(
+          _lastUpdatedMeta,
+          lastUpdated.isAcceptableOrUnknown(
+              data['LAST_UPDATED']!, _lastUpdatedMeta));
+    } else if (isInserting) {
+      context.missing(_lastUpdatedMeta);
+    }
+    if (data.containsKey('DELETED')) {
+      context.handle(_deletedMeta,
+          deleted.isAcceptableOrUnknown(data['DELETED']!, _deletedMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {sectorId, subsectorId};
+  @override
+  SubsectorDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return SubsectorDTO(
+      sectorId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}SECTOR_ID'])!,
+      subsectorId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}SUBSECTOR_ID'])!,
+      descripcionES: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
+      descripcionEN: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
+      descripcionFR: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
+      descripcionDE: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
+      descripcionCA: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
+      descripcionGB: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
+      descripcionHU: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
+      descripcionIT: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
+      descripcionNL: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
+      descripcionPL: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
+      lastUpdated: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
+    );
+  }
+
+  @override
+  $SubsectorTableTable createAlias(String alias) {
+    return $SubsectorTableTable(attachedDatabase, alias);
+  }
+}
+
+class SubsectorTableCompanion extends UpdateCompanion<SubsectorDTO> {
+  final Value<String> sectorId;
+  final Value<String> subsectorId;
+  final Value<String> descripcionES;
+  final Value<String?> descripcionEN;
+  final Value<String?> descripcionFR;
+  final Value<String?> descripcionDE;
+  final Value<String?> descripcionCA;
+  final Value<String?> descripcionGB;
+  final Value<String?> descripcionHU;
+  final Value<String?> descripcionIT;
+  final Value<String?> descripcionNL;
+  final Value<String?> descripcionPL;
+  final Value<DateTime> lastUpdated;
+  final Value<String> deleted;
+  final Value<int> rowid;
+  const SubsectorTableCompanion({
+    this.sectorId = const Value.absent(),
+    this.subsectorId = const Value.absent(),
+    this.descripcionES = const Value.absent(),
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.lastUpdated = const Value.absent(),
+    this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  SubsectorTableCompanion.insert({
+    required String sectorId,
+    required String subsectorId,
+    required String descripcionES,
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    required DateTime lastUpdated,
+    this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
+  })  : sectorId = Value(sectorId),
+        subsectorId = Value(subsectorId),
+        descripcionES = Value(descripcionES),
+        lastUpdated = Value(lastUpdated);
+  static Insertable<SubsectorDTO> custom({
+    Expression<String>? sectorId,
+    Expression<String>? subsectorId,
+    Expression<String>? descripcionES,
+    Expression<String>? descripcionEN,
+    Expression<String>? descripcionFR,
+    Expression<String>? descripcionDE,
+    Expression<String>? descripcionCA,
+    Expression<String>? descripcionGB,
+    Expression<String>? descripcionHU,
+    Expression<String>? descripcionIT,
+    Expression<String>? descripcionNL,
+    Expression<String>? descripcionPL,
+    Expression<DateTime>? lastUpdated,
+    Expression<String>? deleted,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (sectorId != null) 'SECTOR_ID': sectorId,
+      if (subsectorId != null) 'SUBSECTOR_ID': subsectorId,
+      if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
+      if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
+      if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
+      if (descripcionDE != null) 'DESCRIPCION_DE': descripcionDE,
+      if (descripcionCA != null) 'DESCRIPCION_CA': descripcionCA,
+      if (descripcionGB != null) 'DESCRIPCION_GB': descripcionGB,
+      if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
+      if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
+      if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
+      if (descripcionPL != null) 'DESCRIPCION_PL': descripcionPL,
+      if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
+      if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  SubsectorTableCompanion copyWith(
+      {Value<String>? sectorId,
+      Value<String>? subsectorId,
+      Value<String>? descripcionES,
+      Value<String?>? descripcionEN,
+      Value<String?>? descripcionFR,
+      Value<String?>? descripcionDE,
+      Value<String?>? descripcionCA,
+      Value<String?>? descripcionGB,
+      Value<String?>? descripcionHU,
+      Value<String?>? descripcionIT,
+      Value<String?>? descripcionNL,
+      Value<String?>? descripcionPL,
+      Value<DateTime>? lastUpdated,
+      Value<String>? deleted,
+      Value<int>? rowid}) {
+    return SubsectorTableCompanion(
+      sectorId: sectorId ?? this.sectorId,
+      subsectorId: subsectorId ?? this.subsectorId,
+      descripcionES: descripcionES ?? this.descripcionES,
+      descripcionEN: descripcionEN ?? this.descripcionEN,
+      descripcionFR: descripcionFR ?? this.descripcionFR,
+      descripcionDE: descripcionDE ?? this.descripcionDE,
+      descripcionCA: descripcionCA ?? this.descripcionCA,
+      descripcionGB: descripcionGB ?? this.descripcionGB,
+      descripcionHU: descripcionHU ?? this.descripcionHU,
+      descripcionIT: descripcionIT ?? this.descripcionIT,
+      descripcionNL: descripcionNL ?? this.descripcionNL,
+      descripcionPL: descripcionPL ?? this.descripcionPL,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (sectorId.present) {
+      map['SECTOR_ID'] = Variable<String>(sectorId.value);
+    }
+    if (subsectorId.present) {
+      map['SUBSECTOR_ID'] = Variable<String>(subsectorId.value);
+    }
+    if (descripcionES.present) {
+      map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
+    }
+    if (descripcionEN.present) {
+      map['DESCRIPCION_EN'] = Variable<String>(descripcionEN.value);
+    }
+    if (descripcionFR.present) {
+      map['DESCRIPCION_FR'] = Variable<String>(descripcionFR.value);
+    }
+    if (descripcionDE.present) {
+      map['DESCRIPCION_DE'] = Variable<String>(descripcionDE.value);
+    }
+    if (descripcionCA.present) {
+      map['DESCRIPCION_CA'] = Variable<String>(descripcionCA.value);
+    }
+    if (descripcionGB.present) {
+      map['DESCRIPCION_GB'] = Variable<String>(descripcionGB.value);
+    }
+    if (descripcionHU.present) {
+      map['DESCRIPCION_HU'] = Variable<String>(descripcionHU.value);
+    }
+    if (descripcionIT.present) {
+      map['DESCRIPCION_IT'] = Variable<String>(descripcionIT.value);
+    }
+    if (descripcionNL.present) {
+      map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
+    }
+    if (descripcionPL.present) {
+      map['DESCRIPCION_PL'] = Variable<String>(descripcionPL.value);
+    }
+    if (lastUpdated.present) {
+      map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
+    }
+    if (deleted.present) {
+      map['DELETED'] = Variable<String>(deleted.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('SubsectorTableCompanion(')
+          ..write('sectorId: $sectorId, ')
+          ..write('subsectorId: $subsectorId, ')
+          ..write('descripcionES: $descripcionES, ')
+          ..write('descripcionEN: $descripcionEN, ')
+          ..write('descripcionFR: $descripcionFR, ')
+          ..write('descripcionDE: $descripcionDE, ')
+          ..write('descripcionCA: $descripcionCA, ')
+          ..write('descripcionGB: $descripcionGB, ')
+          ..write('descripcionHU: $descripcionHU, ')
+          ..write('descripcionIT: $descripcionIT, ')
+          ..write('descripcionNL: $descripcionNL, ')
+          ..write('descripcionPL: $descripcionPL, ')
+          ..write('lastUpdated: $lastUpdated, ')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$RemoteAppDatabase extends GeneratedDatabase {
   _$RemoteAppDatabase(QueryExecutor e) : super(e);
   _$RemoteAppDatabase.connect(DatabaseConnection c) : super.connect(c);
@@ -21431,6 +22379,8 @@ abstract class _$RemoteAppDatabase extends GeneratedDatabase {
       $VisitaMotivoNoVentaTableTable(this);
   late final $TrackingEstadoTableTable trackingEstadoTable =
       $TrackingEstadoTableTable(this);
+  late final $SectorTableTable sectorTable = $SectorTableTable(this);
+  late final $SubsectorTableTable subsectorTable = $SubsectorTableTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -21478,7 +22428,9 @@ abstract class _$RemoteAppDatabase extends GeneratedDatabase {
         visitaCompetidorTable,
         visitaSectorTable,
         visitaMotivoNoVentaTable,
-        trackingEstadoTable
+        trackingEstadoTable,
+        sectorTable,
+        subsectorTable
       ];
   @override
   DriftDatabaseOptions get options =>
@@ -24841,6 +25793,8 @@ typedef $$ClienteTableTableCreateCompanionBuilder = ClienteTableCompanion
   Value<String?> telefonoFijo,
   Value<String?> telefonoMovil,
   Value<String?> email,
+  Value<String?> sectorId,
+  Value<String?> subsectorId,
   required DateTime lastUpdated,
   Value<String> deleted,
   Value<int> rowid,
@@ -24900,6 +25854,8 @@ typedef $$ClienteTableTableUpdateCompanionBuilder = ClienteTableCompanion
   Value<String?> telefonoFijo,
   Value<String?> telefonoMovil,
   Value<String?> email,
+  Value<String?> sectorId,
+  Value<String?> subsectorId,
   Value<DateTime> lastUpdated,
   Value<String> deleted,
   Value<int> rowid,
@@ -25220,6 +26176,16 @@ class $$ClienteTableTableFilterComposer
 
   ColumnFilters<String> get email => $state.composableBuilder(
       column: $state.table.email,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get sectorId => $state.composableBuilder(
+      column: $state.table.sectorId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get subsectorId => $state.composableBuilder(
+      column: $state.table.subsectorId,
       builder: (column, joinBuilders) =>
           ColumnFilters(column, joinBuilders: joinBuilders));
 
@@ -25548,6 +26514,16 @@ class $$ClienteTableTableOrderingComposer
       builder: (column, joinBuilders) =>
           ColumnOrderings(column, joinBuilders: joinBuilders));
 
+  ColumnOrderings<String> get sectorId => $state.composableBuilder(
+      column: $state.table.sectorId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get subsectorId => $state.composableBuilder(
+      column: $state.table.subsectorId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
   ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
       column: $state.table.lastUpdated,
       builder: (column, joinBuilders) =>
@@ -25693,6 +26669,8 @@ class $$ClienteTableTableTableManager extends RootTableManager<
             Value<String?> telefonoFijo = const Value.absent(),
             Value<String?> telefonoMovil = const Value.absent(),
             Value<String?> email = const Value.absent(),
+            Value<String?> sectorId = const Value.absent(),
+            Value<String?> subsectorId = const Value.absent(),
             Value<DateTime> lastUpdated = const Value.absent(),
             Value<String> deleted = const Value.absent(),
             Value<int> rowid = const Value.absent(),
@@ -25751,6 +26729,8 @@ class $$ClienteTableTableTableManager extends RootTableManager<
             telefonoFijo: telefonoFijo,
             telefonoMovil: telefonoMovil,
             email: email,
+            sectorId: sectorId,
+            subsectorId: subsectorId,
             lastUpdated: lastUpdated,
             deleted: deleted,
             rowid: rowid,
@@ -25809,6 +26789,8 @@ class $$ClienteTableTableTableManager extends RootTableManager<
             Value<String?> telefonoFijo = const Value.absent(),
             Value<String?> telefonoMovil = const Value.absent(),
             Value<String?> email = const Value.absent(),
+            Value<String?> sectorId = const Value.absent(),
+            Value<String?> subsectorId = const Value.absent(),
             required DateTime lastUpdated,
             Value<String> deleted = const Value.absent(),
             Value<int> rowid = const Value.absent(),
@@ -25867,6 +26849,8 @@ class $$ClienteTableTableTableManager extends RootTableManager<
             telefonoFijo: telefonoFijo,
             telefonoMovil: telefonoMovil,
             email: email,
+            sectorId: sectorId,
+            subsectorId: subsectorId,
             lastUpdated: lastUpdated,
             deleted: deleted,
             rowid: rowid,
@@ -36862,6 +37846,600 @@ typedef $$TrackingEstadoTableTableProcessedTableManager = ProcessedTableManager<
     ),
     TrackingEstadoDTO,
     PrefetchHooks Function()>;
+typedef $$SectorTableTableCreateCompanionBuilder = SectorTableCompanion
+    Function({
+  required String id,
+  required String altaSN,
+  required String descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$SectorTableTableUpdateCompanionBuilder = SectorTableCompanion
+    Function({
+  Value<String> id,
+  Value<String> altaSN,
+  Value<String> descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$SectorTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $SectorTableTable> {
+  $$SectorTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get altaSN => $state.composableBuilder(
+      column: $state.table.altaSN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionPL => $state.composableBuilder(
+      column: $state.table.descripcionPL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$SectorTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $SectorTableTable> {
+  $$SectorTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get altaSN => $state.composableBuilder(
+      column: $state.table.altaSN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionPL => $state.composableBuilder(
+      column: $state.table.descripcionPL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+class $$SectorTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $SectorTableTable,
+    SectorDTO,
+    $$SectorTableTableFilterComposer,
+    $$SectorTableTableOrderingComposer,
+    $$SectorTableTableCreateCompanionBuilder,
+    $$SectorTableTableUpdateCompanionBuilder,
+    (
+      SectorDTO,
+      BaseReferences<_$RemoteAppDatabase, $SectorTableTable, SectorDTO>
+    ),
+    SectorDTO,
+    PrefetchHooks Function()> {
+  $$SectorTableTableTableManager(
+      _$RemoteAppDatabase db, $SectorTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$SectorTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$SectorTableTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> altaSN = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              SectorTableCompanion(
+            id: id,
+            altaSN: altaSN,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String altaSN,
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              SectorTableCompanion.insert(
+            id: id,
+            altaSN: altaSN,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$SectorTableTableProcessedTableManager = ProcessedTableManager<
+    _$RemoteAppDatabase,
+    $SectorTableTable,
+    SectorDTO,
+    $$SectorTableTableFilterComposer,
+    $$SectorTableTableOrderingComposer,
+    $$SectorTableTableCreateCompanionBuilder,
+    $$SectorTableTableUpdateCompanionBuilder,
+    (
+      SectorDTO,
+      BaseReferences<_$RemoteAppDatabase, $SectorTableTable, SectorDTO>
+    ),
+    SectorDTO,
+    PrefetchHooks Function()>;
+typedef $$SubsectorTableTableCreateCompanionBuilder = SubsectorTableCompanion
+    Function({
+  required String sectorId,
+  required String subsectorId,
+  required String descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$SubsectorTableTableUpdateCompanionBuilder = SubsectorTableCompanion
+    Function({
+  Value<String> sectorId,
+  Value<String> subsectorId,
+  Value<String> descripcionES,
+  Value<String?> descripcionEN,
+  Value<String?> descripcionFR,
+  Value<String?> descripcionDE,
+  Value<String?> descripcionCA,
+  Value<String?> descripcionGB,
+  Value<String?> descripcionHU,
+  Value<String?> descripcionIT,
+  Value<String?> descripcionNL,
+  Value<String?> descripcionPL,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$SubsectorTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $SubsectorTableTable> {
+  $$SubsectorTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get sectorId => $state.composableBuilder(
+      column: $state.table.sectorId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get subsectorId => $state.composableBuilder(
+      column: $state.table.subsectorId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get descripcionPL => $state.composableBuilder(
+      column: $state.table.descripcionPL,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$SubsectorTableTableOrderingComposer
+    extends OrderingComposer<_$RemoteAppDatabase, $SubsectorTableTable> {
+  $$SubsectorTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get sectorId => $state.composableBuilder(
+      column: $state.table.sectorId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get subsectorId => $state.composableBuilder(
+      column: $state.table.subsectorId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionES => $state.composableBuilder(
+      column: $state.table.descripcionES,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionEN => $state.composableBuilder(
+      column: $state.table.descripcionEN,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionFR => $state.composableBuilder(
+      column: $state.table.descripcionFR,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionDE => $state.composableBuilder(
+      column: $state.table.descripcionDE,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionCA => $state.composableBuilder(
+      column: $state.table.descripcionCA,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionGB => $state.composableBuilder(
+      column: $state.table.descripcionGB,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionHU => $state.composableBuilder(
+      column: $state.table.descripcionHU,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionIT => $state.composableBuilder(
+      column: $state.table.descripcionIT,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionNL => $state.composableBuilder(
+      column: $state.table.descripcionNL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get descripcionPL => $state.composableBuilder(
+      column: $state.table.descripcionPL,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+class $$SubsectorTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $SubsectorTableTable,
+    SubsectorDTO,
+    $$SubsectorTableTableFilterComposer,
+    $$SubsectorTableTableOrderingComposer,
+    $$SubsectorTableTableCreateCompanionBuilder,
+    $$SubsectorTableTableUpdateCompanionBuilder,
+    (
+      SubsectorDTO,
+      BaseReferences<_$RemoteAppDatabase, $SubsectorTableTable, SubsectorDTO>
+    ),
+    SubsectorDTO,
+    PrefetchHooks Function()> {
+  $$SubsectorTableTableTableManager(
+      _$RemoteAppDatabase db, $SubsectorTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$SubsectorTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$SubsectorTableTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> sectorId = const Value.absent(),
+            Value<String> subsectorId = const Value.absent(),
+            Value<String> descripcionES = const Value.absent(),
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              SubsectorTableCompanion(
+            sectorId: sectorId,
+            subsectorId: subsectorId,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String sectorId,
+            required String subsectorId,
+            required String descripcionES,
+            Value<String?> descripcionEN = const Value.absent(),
+            Value<String?> descripcionFR = const Value.absent(),
+            Value<String?> descripcionDE = const Value.absent(),
+            Value<String?> descripcionCA = const Value.absent(),
+            Value<String?> descripcionGB = const Value.absent(),
+            Value<String?> descripcionHU = const Value.absent(),
+            Value<String?> descripcionIT = const Value.absent(),
+            Value<String?> descripcionNL = const Value.absent(),
+            Value<String?> descripcionPL = const Value.absent(),
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              SubsectorTableCompanion.insert(
+            sectorId: sectorId,
+            subsectorId: subsectorId,
+            descripcionES: descripcionES,
+            descripcionEN: descripcionEN,
+            descripcionFR: descripcionFR,
+            descripcionDE: descripcionDE,
+            descripcionCA: descripcionCA,
+            descripcionGB: descripcionGB,
+            descripcionHU: descripcionHU,
+            descripcionIT: descripcionIT,
+            descripcionNL: descripcionNL,
+            descripcionPL: descripcionPL,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$SubsectorTableTableProcessedTableManager = ProcessedTableManager<
+    _$RemoteAppDatabase,
+    $SubsectorTableTable,
+    SubsectorDTO,
+    $$SubsectorTableTableFilterComposer,
+    $$SubsectorTableTableOrderingComposer,
+    $$SubsectorTableTableCreateCompanionBuilder,
+    $$SubsectorTableTableUpdateCompanionBuilder,
+    (
+      SubsectorDTO,
+      BaseReferences<_$RemoteAppDatabase, $SubsectorTableTable, SubsectorDTO>
+    ),
+    SubsectorDTO,
+    PrefetchHooks Function()>;
 
 class $RemoteAppDatabaseManager {
   final _$RemoteAppDatabase _db;
@@ -36970,4 +38548,8 @@ class $RemoteAppDatabaseManager {
           _db, _db.visitaMotivoNoVentaTable);
   $$TrackingEstadoTableTableTableManager get trackingEstadoTable =>
       $$TrackingEstadoTableTableTableManager(_db, _db.trackingEstadoTable);
+  $$SectorTableTableTableManager get sectorTable =>
+      $$SectorTableTableTableManager(_db, _db.sectorTable);
+  $$SubsectorTableTableTableManager get subsectorTable =>
+      $$SubsectorTableTableTableManager(_db, _db.subsectorTable);
 }

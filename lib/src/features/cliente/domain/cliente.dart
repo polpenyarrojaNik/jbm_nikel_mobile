@@ -1,6 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../core/domain/divisa.dart';
 import '../../../core/domain/pais.dart';
+import '../../../core/domain/sector.dart';
+import '../../../core/domain/subsector.dart';
 import 'plazo_cobro.dart';
 import 'package:money2/money2.dart';
 
@@ -77,6 +79,8 @@ class Cliente with _$Cliente {
       String? telefonoMovil,
       String? telefonoFijo,
       String? email,
+      Sector? sector,
+      Subsector? subsector,
       DateTime? lastUpdated,
       required bool deleted}) = _Cliente;
 
