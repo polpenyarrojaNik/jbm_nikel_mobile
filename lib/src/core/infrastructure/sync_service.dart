@@ -178,8 +178,8 @@ class SyncService {
     try {
       await insetLog(level: 'I', message: 'Init customer sync');
 
-      await syncClientes();
       await syncClienteUpdate();
+      await syncClientes();
       await syncTopArticulos();
       await syncClienteGruposNetos();
       await syncClienteContactos();
@@ -418,14 +418,11 @@ class SyncService {
 
   Future<void> syncClientes() async {
     try {
-      final clientesSync = await _syncTable<ClienteDTO>(
+      await _syncTable<ClienteDTO>(
         apiPath: 'api/v2/sync/clientes',
         tableInfo: _remoteDb.clienteTable,
         fromJson: (e) => ClienteDTO.fromJson(e),
       );
-      if (clientesSync.isNotEmpty) {
-        await _deleteClienteImpIfExistsSynced(clientesSync);
-      }
     } on AppException catch (e) {
       log.e(e.details);
       rethrow;
@@ -1857,24 +1854,6 @@ class SyncService {
     } catch (e) {
       log.e('ERROR SYNC CLIENTE ${clienteImpDto.toJson()}: ${e.toString()}');
       return null;
-    }
-  }
-
-  Future<void> _deleteClienteImpIfExistsSynced(
-      List<ClienteDTO> clientesSync) async {
-    final clientesImp = await (_localDb.select(_localDb.clienteImpTable)).get();
-
-    if (clientesImp.isNotEmpty) {
-      for (var i = 0; i < clientesImp.length; i++) {
-        for (var j = 0; j < clientesSync.length; j++) {
-          if (clientesSync[j].id == clientesImp[i].clienteId) {
-            await (_localDb.delete(_localDb.clienteImpTable)
-                  ..where(
-                      (tbl) => tbl.clienteId.equals(clientesImp[i].clienteId)))
-                .go();
-          }
-        }
-      }
     }
   }
 

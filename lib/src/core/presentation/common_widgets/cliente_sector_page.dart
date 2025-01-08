@@ -70,7 +70,13 @@ class ClienteSectorPage extends ConsumerWidget {
               data: (sectoresList) => (stateUpdateClienteSector
                       is! UpdateClienteSectorMutationLoading)
                   ? Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        Text(
+                          '${S.of(context).visitas_edit_visitaEditar_cliente}: #${cliente.id} ${cliente.nombreCliente}',
+                          style: Theme.of(context).textTheme.titleSmall,
+                        ),
+                        const Gap(16),
                         AppFormBuilderSearchableDropdown<Sector>(
                           name: 'sector',
                           initialValue: cliente.sector,

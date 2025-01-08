@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -17,6 +18,7 @@ import '../../../core/exceptions/app_exception.dart';
 import '../../../core/exceptions/get_api_error.dart';
 import '../../../core/infrastructure/local_database.dart';
 import '../../../core/infrastructure/remote_database.dart';
+import '../../../core/infrastructure/sync_service.dart';
 import '../../../core/presentation/app.dart';
 import '../../articulos/domain/articulo.dart';
 import '../../devoluciones/domain/devolucion.dart';
@@ -62,7 +64,7 @@ final clienteRepositoryProvider = Provider.autoDispose<ClienteRepository>(
 
     final dio = ref.watch(dioProvider);
     final usuario = ref.watch(usuarioNotifierProvider)!;
-    return ClienteRepository(remoteDb, localDb, dio, usuario);
+    return ClienteRepository(remoteDb, localDb, dio, usuario, ref);
   },
 );
 
@@ -194,8 +196,10 @@ class ClienteRepository {
   final LocalAppDatabase _localDb;
   final Dio _dio;
   final Usuario usuario;
+  final Ref ref;
 
-  ClienteRepository(this._remoteDb, this._localDb, this._dio, this.usuario);
+  ClienteRepository(
+      this._remoteDb, this._localDb, this._dio, this.usuario, this.ref);
 
   Future<List<Cliente>> getClienteLista(
       {required int page,
@@ -695,7 +699,9 @@ class ClienteRepository {
       );
       if (response.statusCode == 200) {
         final data = jsonDataSelector(response.data) as List<dynamic>;
-        return data.map((e) => ClienteAdjuntoDTO.fromJson(e as Json)).toList();
+        return data
+            .map((e) => ClienteAdjuntoDTO.fromJson(e as Map<String, dynamic>))
+            .toList();
       } else {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');
@@ -1310,8 +1316,8 @@ GROUP BY ARTICULO_ID, DESCRIPCION
         if (response.statusCode == 200) {
           final jsonData = response.data['data'] as List<dynamic>;
 
-          final clienteContactoDTOList =
-              jsonData.map((e) => ClienteContactoImpDTO.fromJson(e as Json));
+          final clienteContactoDTOList = jsonData.map(
+              (e) => ClienteContactoImpDTO.fromJson(e as Map<String, dynamic>));
 
           return clienteContactoDTOList.map((e) => e.toDomain()).toList();
         } else {
@@ -1330,6 +1336,12 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     final clienteImpDto = ClienteImpDTO.fromDomain(clienteImp);
     await _insertClienteImpInLocalDB(clienteImpDto);
     await _updateClienteSectorInLocalDB(clienteImpDto);
+
+    try {
+      unawaited(ref.read(syncServiceProvider).syncClienteUpdate());
+    } catch (e) {
+      log.e(e.toString());
+    }
 
     return clienteImp;
   }
@@ -1620,8 +1632,8 @@ GROUP BY ARTICULO_ID, DESCRIPCION
         if (response.statusCode == 200) {
           final jsonData = response.data['data'] as List<dynamic>;
 
-          final clienteDireccionDTOList =
-              jsonData.map((e) => ClienteDireccionImpDTO.fromJson(e as Json));
+          final clienteDireccionDTOList = jsonData.map((e) =>
+              ClienteDireccionImpDTO.fromJson(e as Map<String, dynamic>));
 
           return await Future.wait(clienteDireccionDTOList.map((e) async {
             final pais = await _getPaisCliente(clienteId: e.clienteId);
