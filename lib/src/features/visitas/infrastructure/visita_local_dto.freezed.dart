@@ -65,7 +65,7 @@ mixin _$VisitaLocalDTO {
   @JsonKey(name: 'OFERTA_REALIZADA')
   String get ofertaRealizada => throw _privateConstructorUsedError;
   @JsonKey(name: 'INTERES_CLIENTE')
-  String get interesCliente => throw _privateConstructorUsedError;
+  String? get interesCliente => throw _privateConstructorUsedError;
   @JsonKey(name: 'PEDIDO_REALIZADO')
   String get pedidoRealizado => throw _privateConstructorUsedError;
   @JsonKey(name: 'CODIGO_MOTIVO_NO_INTERES')
@@ -77,11 +77,11 @@ mixin _$VisitaLocalDTO {
   @JsonKey(name: 'CODIGO_COMPETENCIA')
   int? get codigoCompetencia => throw _privateConstructorUsedError;
   @JsonKey(name: 'ALMACEN_PROPIO')
-  String get almacenPropio => throw _privateConstructorUsedError;
+  String? get almacenPropio => throw _privateConstructorUsedError;
   @JsonKey(name: 'CAPACIDAD')
-  String get capacidad => throw _privateConstructorUsedError;
+  String? get capacidad => throw _privateConstructorUsedError;
   @JsonKey(name: 'FRECUENCIA_PEDIDO')
-  String get frecuenciaPedido => throw _privateConstructorUsedError;
+  String? get frecuenciaPedido => throw _privateConstructorUsedError;
   @JsonKey(name: 'LATITUD')
   double get latitud => throw _privateConstructorUsedError;
   @JsonKey(name: 'LONGITUD')
@@ -139,15 +139,15 @@ abstract class $VisitaLocalDTOCopyWith<$Res> {
       @JsonKey(name: 'RESUMEN') String? resumen,
       @JsonKey(name: 'MARCAS_COMPETENCIA') String? marcasCompetencia,
       @JsonKey(name: 'OFERTA_REALIZADA') String ofertaRealizada,
-      @JsonKey(name: 'INTERES_CLIENTE') String interesCliente,
+      @JsonKey(name: 'INTERES_CLIENTE') String? interesCliente,
       @JsonKey(name: 'PEDIDO_REALIZADO') String pedidoRealizado,
       @JsonKey(name: 'CODIGO_MOTIVO_NO_INTERES') int? codigoMotivoNoInteres,
       @JsonKey(name: 'CODIGO_MOTIVO_NO_PEDIDO') int? codigoMotivoNoPedido,
       @JsonKey(name: 'CODIGO_SECTOR') int? codigoSector,
       @JsonKey(name: 'CODIGO_COMPETENCIA') int? codigoCompetencia,
-      @JsonKey(name: 'ALMACEN_PROPIO') String almacenPropio,
-      @JsonKey(name: 'CAPACIDAD') String capacidad,
-      @JsonKey(name: 'FRECUENCIA_PEDIDO') String frecuenciaPedido,
+      @JsonKey(name: 'ALMACEN_PROPIO') String? almacenPropio,
+      @JsonKey(name: 'CAPACIDAD') String? capacidad,
+      @JsonKey(name: 'FRECUENCIA_PEDIDO') String? frecuenciaPedido,
       @JsonKey(name: 'LATITUD') double latitud,
       @JsonKey(name: 'LONGITUD') double longitud,
       @JsonKey(name: 'ENVIADA') String enviada,
@@ -190,15 +190,15 @@ class _$VisitaLocalDTOCopyWithImpl<$Res, $Val extends VisitaLocalDTO>
     Object? resumen = freezed,
     Object? marcasCompetencia = freezed,
     Object? ofertaRealizada = null,
-    Object? interesCliente = null,
+    Object? interesCliente = freezed,
     Object? pedidoRealizado = null,
     Object? codigoMotivoNoInteres = freezed,
     Object? codigoMotivoNoPedido = freezed,
     Object? codigoSector = freezed,
     Object? codigoCompetencia = freezed,
-    Object? almacenPropio = null,
-    Object? capacidad = null,
-    Object? frecuenciaPedido = null,
+    Object? almacenPropio = freezed,
+    Object? capacidad = freezed,
+    Object? frecuenciaPedido = freezed,
     Object? latitud = null,
     Object? longitud = null,
     Object? enviada = null,
@@ -286,10 +286,10 @@ class _$VisitaLocalDTOCopyWithImpl<$Res, $Val extends VisitaLocalDTO>
           ? _value.ofertaRealizada
           : ofertaRealizada // ignore: cast_nullable_to_non_nullable
               as String,
-      interesCliente: null == interesCliente
+      interesCliente: freezed == interesCliente
           ? _value.interesCliente
           : interesCliente // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       pedidoRealizado: null == pedidoRealizado
           ? _value.pedidoRealizado
           : pedidoRealizado // ignore: cast_nullable_to_non_nullable
@@ -310,18 +310,18 @@ class _$VisitaLocalDTOCopyWithImpl<$Res, $Val extends VisitaLocalDTO>
           ? _value.codigoCompetencia
           : codigoCompetencia // ignore: cast_nullable_to_non_nullable
               as int?,
-      almacenPropio: null == almacenPropio
+      almacenPropio: freezed == almacenPropio
           ? _value.almacenPropio
           : almacenPropio // ignore: cast_nullable_to_non_nullable
-              as String,
-      capacidad: null == capacidad
+              as String?,
+      capacidad: freezed == capacidad
           ? _value.capacidad
           : capacidad // ignore: cast_nullable_to_non_nullable
-              as String,
-      frecuenciaPedido: null == frecuenciaPedido
+              as String?,
+      frecuenciaPedido: freezed == frecuenciaPedido
           ? _value.frecuenciaPedido
           : frecuenciaPedido // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       latitud: null == latitud
           ? _value.latitud
           : latitud // ignore: cast_nullable_to_non_nullable
@@ -384,15 +384,15 @@ abstract class _$$VisitaLocalDTOImplCopyWith<$Res>
       @JsonKey(name: 'RESUMEN') String? resumen,
       @JsonKey(name: 'MARCAS_COMPETENCIA') String? marcasCompetencia,
       @JsonKey(name: 'OFERTA_REALIZADA') String ofertaRealizada,
-      @JsonKey(name: 'INTERES_CLIENTE') String interesCliente,
+      @JsonKey(name: 'INTERES_CLIENTE') String? interesCliente,
       @JsonKey(name: 'PEDIDO_REALIZADO') String pedidoRealizado,
       @JsonKey(name: 'CODIGO_MOTIVO_NO_INTERES') int? codigoMotivoNoInteres,
       @JsonKey(name: 'CODIGO_MOTIVO_NO_PEDIDO') int? codigoMotivoNoPedido,
       @JsonKey(name: 'CODIGO_SECTOR') int? codigoSector,
       @JsonKey(name: 'CODIGO_COMPETENCIA') int? codigoCompetencia,
-      @JsonKey(name: 'ALMACEN_PROPIO') String almacenPropio,
-      @JsonKey(name: 'CAPACIDAD') String capacidad,
-      @JsonKey(name: 'FRECUENCIA_PEDIDO') String frecuenciaPedido,
+      @JsonKey(name: 'ALMACEN_PROPIO') String? almacenPropio,
+      @JsonKey(name: 'CAPACIDAD') String? capacidad,
+      @JsonKey(name: 'FRECUENCIA_PEDIDO') String? frecuenciaPedido,
       @JsonKey(name: 'LATITUD') double latitud,
       @JsonKey(name: 'LONGITUD') double longitud,
       @JsonKey(name: 'ENVIADA') String enviada,
@@ -433,15 +433,15 @@ class __$$VisitaLocalDTOImplCopyWithImpl<$Res>
     Object? resumen = freezed,
     Object? marcasCompetencia = freezed,
     Object? ofertaRealizada = null,
-    Object? interesCliente = null,
+    Object? interesCliente = freezed,
     Object? pedidoRealizado = null,
     Object? codigoMotivoNoInteres = freezed,
     Object? codigoMotivoNoPedido = freezed,
     Object? codigoSector = freezed,
     Object? codigoCompetencia = freezed,
-    Object? almacenPropio = null,
-    Object? capacidad = null,
-    Object? frecuenciaPedido = null,
+    Object? almacenPropio = freezed,
+    Object? capacidad = freezed,
+    Object? frecuenciaPedido = freezed,
     Object? latitud = null,
     Object? longitud = null,
     Object? enviada = null,
@@ -529,10 +529,10 @@ class __$$VisitaLocalDTOImplCopyWithImpl<$Res>
           ? _value.ofertaRealizada
           : ofertaRealizada // ignore: cast_nullable_to_non_nullable
               as String,
-      interesCliente: null == interesCliente
+      interesCliente: freezed == interesCliente
           ? _value.interesCliente
           : interesCliente // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       pedidoRealizado: null == pedidoRealizado
           ? _value.pedidoRealizado
           : pedidoRealizado // ignore: cast_nullable_to_non_nullable
@@ -553,18 +553,18 @@ class __$$VisitaLocalDTOImplCopyWithImpl<$Res>
           ? _value.codigoCompetencia
           : codigoCompetencia // ignore: cast_nullable_to_non_nullable
               as int?,
-      almacenPropio: null == almacenPropio
+      almacenPropio: freezed == almacenPropio
           ? _value.almacenPropio
           : almacenPropio // ignore: cast_nullable_to_non_nullable
-              as String,
-      capacidad: null == capacidad
+              as String?,
+      capacidad: freezed == capacidad
           ? _value.capacidad
           : capacidad // ignore: cast_nullable_to_non_nullable
-              as String,
-      frecuenciaPedido: null == frecuenciaPedido
+              as String?,
+      frecuenciaPedido: freezed == frecuenciaPedido
           ? _value.frecuenciaPedido
           : frecuenciaPedido // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       latitud: null == latitud
           ? _value.latitud
           : latitud // ignore: cast_nullable_to_non_nullable
@@ -701,7 +701,7 @@ class _$VisitaLocalDTOImpl extends _VisitaLocalDTO {
   final String ofertaRealizada;
   @override
   @JsonKey(name: 'INTERES_CLIENTE')
-  final String interesCliente;
+  final String? interesCliente;
   @override
   @JsonKey(name: 'PEDIDO_REALIZADO')
   final String pedidoRealizado;
@@ -719,13 +719,13 @@ class _$VisitaLocalDTOImpl extends _VisitaLocalDTO {
   final int? codigoCompetencia;
   @override
   @JsonKey(name: 'ALMACEN_PROPIO')
-  final String almacenPropio;
+  final String? almacenPropio;
   @override
   @JsonKey(name: 'CAPACIDAD')
-  final String capacidad;
+  final String? capacidad;
   @override
   @JsonKey(name: 'FRECUENCIA_PEDIDO')
-  final String frecuenciaPedido;
+  final String? frecuenciaPedido;
   @override
   @JsonKey(name: 'LATITUD')
   final double latitud;
@@ -900,17 +900,17 @@ abstract class _VisitaLocalDTO extends VisitaLocalDTO {
       @JsonKey(name: 'RESUMEN') final String? resumen,
       @JsonKey(name: 'MARCAS_COMPETENCIA') final String? marcasCompetencia,
       @JsonKey(name: 'OFERTA_REALIZADA') required final String ofertaRealizada,
-      @JsonKey(name: 'INTERES_CLIENTE') required final String interesCliente,
+      @JsonKey(name: 'INTERES_CLIENTE') required final String? interesCliente,
       @JsonKey(name: 'PEDIDO_REALIZADO') required final String pedidoRealizado,
       @JsonKey(name: 'CODIGO_MOTIVO_NO_INTERES')
       final int? codigoMotivoNoInteres,
       @JsonKey(name: 'CODIGO_MOTIVO_NO_PEDIDO') final int? codigoMotivoNoPedido,
       @JsonKey(name: 'CODIGO_SECTOR') final int? codigoSector,
       @JsonKey(name: 'CODIGO_COMPETENCIA') final int? codigoCompetencia,
-      @JsonKey(name: 'ALMACEN_PROPIO') required final String almacenPropio,
-      @JsonKey(name: 'CAPACIDAD') required final String capacidad,
+      @JsonKey(name: 'ALMACEN_PROPIO') required final String? almacenPropio,
+      @JsonKey(name: 'CAPACIDAD') required final String? capacidad,
       @JsonKey(name: 'FRECUENCIA_PEDIDO')
-      required final String frecuenciaPedido,
+      required final String? frecuenciaPedido,
       @JsonKey(name: 'LATITUD') required final double latitud,
       @JsonKey(name: 'LONGITUD') required final double longitud,
       @JsonKey(name: 'ENVIADA') final String enviada,
@@ -984,7 +984,7 @@ abstract class _VisitaLocalDTO extends VisitaLocalDTO {
   String get ofertaRealizada;
   @override
   @JsonKey(name: 'INTERES_CLIENTE')
-  String get interesCliente;
+  String? get interesCliente;
   @override
   @JsonKey(name: 'PEDIDO_REALIZADO')
   String get pedidoRealizado;
@@ -1002,13 +1002,13 @@ abstract class _VisitaLocalDTO extends VisitaLocalDTO {
   int? get codigoCompetencia;
   @override
   @JsonKey(name: 'ALMACEN_PROPIO')
-  String get almacenPropio;
+  String? get almacenPropio;
   @override
   @JsonKey(name: 'CAPACIDAD')
-  String get capacidad;
+  String? get capacidad;
   @override
   @JsonKey(name: 'FRECUENCIA_PEDIDO')
-  String get frecuenciaPedido;
+  String? get frecuenciaPedido;
   @override
   @JsonKey(name: 'LATITUD')
   double get latitud;

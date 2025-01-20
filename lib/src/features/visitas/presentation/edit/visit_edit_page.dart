@@ -255,7 +255,7 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
                   formKey.currentState!.value['marcasCompetencia'] as String?,
               ofertaRealizada: getFormValue<bool>(formKey, 'ofertaRealizada'),
               interesCliente:
-                  getFormValue<InteresCliente>(formKey, 'interesCliente'),
+                  getFormValue<InteresCliente?>(formKey, 'interesCliente'),
               pedidoRealizado: getFormValue<bool>(formKey, 'pedidoRealizado'),
               sector: getFormValue<VisitaSector?>(formKey, 'sector'),
               competencia:
@@ -264,10 +264,10 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
                   formKey, 'motivoNoInteres'),
               motivoNoPedido:
                   getFormValue<VisitaMotivoNoVenta?>(formKey, 'motivoNoPedido'),
-              almacenPropio: getFormValue<bool>(formKey, 'almacenPropio'),
-              capacidad: getFormValue<Capacidad>(formKey, 'capacidad'),
+              almacenPropio: getFormValue<bool?>(formKey, 'almacenPropio'),
+              capacidad: getFormValue<Capacidad?>(formKey, 'capacidad'),
               frecuenciaPedido:
-                  getFormValue<FrecuenciaPedido>(formKey, 'frecuenciaPedido'),
+                  getFormValue<FrecuenciaPedido?>(formKey, 'frecuenciaPedido'),
               latitud: 0,
               longitud: 0,
               visitaAppId: widget.id,
@@ -434,20 +434,21 @@ class _VisitaFormState extends State<_VisitaForm> {
               labelText: '${S.of(context).visitas_edit_visitaEditar_resumen} *',
             ),
           ),
-          FormBuilderTextField(
-            name: 'marcasCompetencia',
-            initialValue: widget.visita?.marcasCompetencia,
-            maxLines: null,
-            minLines: 4,
-            enabled: !widget.readOnly,
-            decoration: InputDecoration(
-              labelText:
-                  S.of(context).visitas_edit_visitaEditar_marcasCompetencia,
+          if (widget.isClienteProvisional)
+            FormBuilderTextField(
+              name: 'marcasCompetencia',
+              initialValue: widget.visita?.marcasCompetencia,
+              maxLines: null,
+              minLines: 4,
+              enabled: !widget.readOnly,
+              decoration: InputDecoration(
+                labelText:
+                    S.of(context).visitas_edit_visitaEditar_marcasCompetencia,
+              ),
+              validator: FormBuilderValidators.compose([
+                FormBuilderValidators.maxLength(255, checkNullOrEmpty: false),
+              ]),
             ),
-            validator: FormBuilderValidators.compose([
-              FormBuilderValidators.maxLength(255, checkNullOrEmpty: false),
-            ]),
-          ),
           FormBuilderSwitch(
             name: 'ofertaRealizada',
             title: Text(S.of(context).ofertaRealziada),
@@ -466,104 +467,121 @@ class _VisitaFormState extends State<_VisitaForm> {
               FormBuilderValidators.required(),
             ]),
           ),
-          FormBuilderSwitch(
-            name: 'almacenPropio',
-            title: Text(S.of(context).almacenPropio),
-            initialValue: widget.visita?.almacenPropio ?? false,
-            validator: FormBuilderValidators.compose([
-              FormBuilderValidators.required(),
-            ]),
-          ),
-          VisitaSectorFormDropdown(
-            name: 'sector',
-            initialValue: widget.visita?.sector,
-          ),
-          VisitaCompetidorFormDropdown(
-            name: 'competencia',
-            initialValue: widget.visita?.competencia,
-          ),
-          AppFormBuilderSearchableDropdown<InteresCliente>(
-            name: 'interesCliente',
-            decoration: InputDecoration(
-              labelText: S.of(context).interesCliente,
-              border: InputBorder.none,
+          if (widget.isClienteProvisional) ...[
+            FormBuilderSwitch(
+              name: 'almacenPropio',
+              title: Text(S.of(context).almacenPropio),
+              initialValue: widget.visita?.almacenPropio ?? false,
+              validator: FormBuilderValidators.compose([
+                FormBuilderValidators.required(),
+              ]),
             ),
-            initialValue: widget.visita?.interesCliente,
-            items: const [
-              InteresCliente.alto,
-              InteresCliente.medio,
-              InteresCliente.bajo,
-            ],
-            itemAsString: (item) => getNameFromInteresCliente(item),
-            compareFn: (i, s) => i.index == s.index,
-            validator: FormBuilderValidators.compose([
-              FormBuilderValidators.required(),
-            ]),
-          ),
-          VisitaMotivoNoVentaFormDropdown(
-              name: 'motivoNoInteres',
-              initialValue: widget.visita?.motivoNoInteres,
-              labelText: S.of(context).motivoNoInteres,
-              formKey: widget.formKey,
-              enabled: !(getFormInstantValue<bool?>(
-                          widget.formKey, 'cliente_provisional') ??
-                      false) &&
-                  !(getFormInstantValue<bool?>(
-                          widget.formKey, 'pedidoRealizado') ??
-                      false) &&
-                  !(getFormInstantValue<bool?>(
-                          widget.formKey, 'ofertaRealizada') ??
-                      false)),
-          VisitaMotivoNoVentaFormDropdown(
-              name: 'motivoNoPedido',
-              initialValue: widget.visita?.motivoNoPedido,
-              labelText: S.of(context).motivoNoPedido,
-              formKey: widget.formKey,
-              enabled: !(getFormInstantValue<bool?>(
-                          widget.formKey, 'cliente_provisional') ??
-                      false) &&
-                  !(getFormInstantValue<bool?>(
-                          widget.formKey, 'pedidoRealizado') ??
-                      false) &&
-                  !(getFormInstantValue<bool?>(
-                          widget.formKey, 'ofertaRealizada') ??
-                      false)),
-          AppFormBuilderSearchableDropdown<Capacidad>(
-            name: 'capacidad',
-            decoration: InputDecoration(
-              labelText: S.of(context).capacidad,
-              border: InputBorder.none,
+            VisitaSectorFormDropdown(
+              name: 'sector',
+              initialValue: widget.visita?.sector,
             ),
-            initialValue: widget.visita?.capacidad,
-            items: const [
-              Capacidad.grande,
-              Capacidad.media,
-              Capacidad.pequena,
-            ],
-            itemAsString: (item) => getNameFromCapacidad(item),
-            compareFn: (i, s) => i.index == s.index,
-            validator: FormBuilderValidators.compose([
-              FormBuilderValidators.required(),
-            ]),
-          ),
-          AppFormBuilderSearchableDropdown<FrecuenciaPedido>(
-            name: 'frecuenciaPedido',
-            decoration: InputDecoration(
-              labelText: S.of(context).frecuenciaPedido,
-              border: InputBorder.none,
+            VisitaCompetidorFormDropdown(
+              name: 'competencia',
+              initialValue: widget.visita?.competencia,
             ),
-            initialValue: widget.visita?.frecuenciaPedido,
-            items: const [
-              FrecuenciaPedido.semanal,
-              FrecuenciaPedido.mensual,
-              FrecuenciaPedido.trimestral,
-            ],
-            itemAsString: (item) => getNameFromFrecuenciaPedido(item),
-            compareFn: (i, s) => i.index == s.index,
-            validator: FormBuilderValidators.compose([
-              FormBuilderValidators.required(),
-            ]),
-          ),
+            AppFormBuilderSearchableDropdown<InteresCliente>(
+              name: 'interesCliente',
+              decoration: InputDecoration(
+                labelText: S.of(context).interesCliente,
+                border: InputBorder.none,
+                suffixIcon: IconButton(
+                  onPressed: () => widget.formKey.currentState
+                      ?.patchValue({'interesCliente': null}),
+                  icon: const Icon(Icons.close),
+                ),
+              ),
+              initialValue: widget.visita?.interesCliente,
+              items: const [
+                InteresCliente.alto,
+                InteresCliente.medio,
+                InteresCliente.bajo,
+              ],
+              itemAsString: (item) => getNameFromInteresCliente(item),
+              compareFn: (i, s) => i.index == s.index,
+              validator: FormBuilderValidators.compose([
+                FormBuilderValidators.required(),
+              ]),
+            ),
+            VisitaMotivoNoVentaFormDropdown(
+                name: 'motivoNoInteres',
+                initialValue: widget.visita?.motivoNoInteres,
+                labelText: S.of(context).motivoNoInteres,
+                formKey: widget.formKey,
+                enabled: !(getFormInstantValue<bool?>(
+                            widget.formKey, 'cliente_provisional') ??
+                        false) &&
+                    !(getFormInstantValue<bool?>(
+                            widget.formKey, 'pedidoRealizado') ??
+                        false) &&
+                    !(getFormInstantValue<bool?>(
+                            widget.formKey, 'ofertaRealizada') ??
+                        false)),
+            VisitaMotivoNoVentaFormDropdown(
+                name: 'motivoNoPedido',
+                initialValue: widget.visita?.motivoNoPedido,
+                labelText: S.of(context).motivoNoPedido,
+                formKey: widget.formKey,
+                enabled: !(getFormInstantValue<bool?>(
+                            widget.formKey, 'cliente_provisional') ??
+                        false) &&
+                    !(getFormInstantValue<bool?>(
+                            widget.formKey, 'pedidoRealizado') ??
+                        false) &&
+                    !(getFormInstantValue<bool?>(
+                            widget.formKey, 'ofertaRealizada') ??
+                        false)),
+            AppFormBuilderSearchableDropdown<Capacidad>(
+              name: 'capacidad',
+              decoration: InputDecoration(
+                labelText: S.of(context).capacidad,
+                border: InputBorder.none,
+                suffixIcon: IconButton(
+                  onPressed: () => widget.formKey.currentState
+                      ?.patchValue({'capacidad': null}),
+                  icon: const Icon(Icons.close),
+                ),
+              ),
+              initialValue: widget.visita?.capacidad,
+              items: const [
+                Capacidad.grande,
+                Capacidad.media,
+                Capacidad.pequena,
+              ],
+              itemAsString: (item) => getNameFromCapacidad(item),
+              compareFn: (i, s) => i.index == s.index,
+              validator: FormBuilderValidators.compose([
+                FormBuilderValidators.required(),
+              ]),
+            ),
+            AppFormBuilderSearchableDropdown<FrecuenciaPedido>(
+              name: 'frecuenciaPedido',
+              decoration: InputDecoration(
+                labelText: S.of(context).frecuenciaPedido,
+                border: InputBorder.none,
+                suffixIcon: IconButton(
+                  onPressed: () => widget.formKey.currentState
+                      ?.patchValue({'frecuenciaPedido': null}),
+                  icon: const Icon(Icons.close),
+                ),
+              ),
+              initialValue: widget.visita?.frecuenciaPedido,
+              items: const [
+                FrecuenciaPedido.semanal,
+                FrecuenciaPedido.mensual,
+                FrecuenciaPedido.trimestral,
+              ],
+              itemAsString: (item) => getNameFromFrecuenciaPedido(item),
+              compareFn: (i, s) => i.index == s.index,
+              validator: FormBuilderValidators.compose([
+                FormBuilderValidators.required(),
+              ]),
+            ),
+          ],
         ],
       ),
     );

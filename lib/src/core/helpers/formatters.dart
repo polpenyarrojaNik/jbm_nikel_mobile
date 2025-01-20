@@ -446,7 +446,7 @@ T getFormInstantValue<T>(
   return formKey.currentState?.instantValue[fieldName] as T;
 }
 
-FrecuenciaPedido getFrecuenciaPedidoFromId(String id) {
+FrecuenciaPedido? getFrecuenciaPedidoFromId(String? id) {
   switch (id) {
     case 'M':
       return FrecuenciaPedido.semanal;
@@ -455,11 +455,13 @@ FrecuenciaPedido getFrecuenciaPedidoFromId(String id) {
     case 'T':
       return FrecuenciaPedido.trimestral;
     default:
-      return FrecuenciaPedido.mensual;
+      return null;
   }
 }
 
-String getIdFromFrecuenciaPedido(FrecuenciaPedido frecuenciaPedido) {
+String? getIdFromFrecuenciaPedido(FrecuenciaPedido? frecuenciaPedido) {
+  if (frecuenciaPedido == null) return null;
+
   return frecuenciaPedido == FrecuenciaPedido.mensual
       ? 'M'
       : frecuenciaPedido == FrecuenciaPedido.semanal
@@ -475,7 +477,7 @@ String getNameFromFrecuenciaPedido(FrecuenciaPedido frecuenciaPedido) {
           : S.current.trimestral;
 }
 
-InteresCliente getInteresClienteFromId(String id) {
+InteresCliente? getInteresClienteFromId(String? id) {
   switch (id) {
     case 'A':
       return InteresCliente.alto;
@@ -484,11 +486,13 @@ InteresCliente getInteresClienteFromId(String id) {
     case 'B':
       return InteresCliente.bajo;
     default:
-      return InteresCliente.medio;
+      return null;
   }
 }
 
-String getIdFromInteresCliente(InteresCliente interesCliente) {
+String? getIdFromInteresCliente(InteresCliente? interesCliente) {
+  if (interesCliente == null) return null;
+
   return interesCliente == InteresCliente.alto
       ? 'A'
       : interesCliente == InteresCliente.medio
@@ -504,7 +508,7 @@ String getNameFromInteresCliente(InteresCliente interesCliente) {
           : S.current.bajo;
 }
 
-Capacidad getCapacidadFromId(String id) {
+Capacidad? getCapacidadFromId(String? id) {
   switch (id) {
     case 'G':
       return Capacidad.grande;
@@ -513,11 +517,13 @@ Capacidad getCapacidadFromId(String id) {
     case 'P':
       return Capacidad.pequena;
     default:
-      return Capacidad.media;
+      return null;
   }
 }
 
-String getIdFromCapacidad(Capacidad capacidad) {
+String? getIdFromCapacidad(Capacidad? capacidad) {
+  if (capacidad == null) return null;
+
   return capacidad == Capacidad.grande
       ? 'G'
       : capacidad == Capacidad.media

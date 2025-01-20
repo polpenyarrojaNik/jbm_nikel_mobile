@@ -46,16 +46,16 @@ mixin _$Visita {
   double get longitud => throw _privateConstructorUsedError;
   String? get visitaAppId => throw _privateConstructorUsedError;
   bool get ofertaRealizada => throw _privateConstructorUsedError;
-  InteresCliente get interesCliente => throw _privateConstructorUsedError;
+  InteresCliente? get interesCliente => throw _privateConstructorUsedError;
   bool get pedidoRealizado => throw _privateConstructorUsedError;
   VisitaMotivoNoVenta? get motivoNoInteres =>
       throw _privateConstructorUsedError;
   VisitaMotivoNoVenta? get motivoNoPedido => throw _privateConstructorUsedError;
   VisitaSector? get sector => throw _privateConstructorUsedError;
   VisitaCompetidor? get competencia => throw _privateConstructorUsedError;
-  bool get almacenPropio => throw _privateConstructorUsedError;
-  Capacidad get capacidad => throw _privateConstructorUsedError;
-  FrecuenciaPedido get frecuenciaPedido => throw _privateConstructorUsedError;
+  bool? get almacenPropio => throw _privateConstructorUsedError;
+  Capacidad? get capacidad => throw _privateConstructorUsedError;
+  FrecuenciaPedido? get frecuenciaPedido => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
   bool get enviada => throw _privateConstructorUsedError;
@@ -100,15 +100,15 @@ abstract class $VisitaCopyWith<$Res> {
       double longitud,
       String? visitaAppId,
       bool ofertaRealizada,
-      InteresCliente interesCliente,
+      InteresCliente? interesCliente,
       bool pedidoRealizado,
       VisitaMotivoNoVenta? motivoNoInteres,
       VisitaMotivoNoVenta? motivoNoPedido,
       VisitaSector? sector,
       VisitaCompetidor? competencia,
-      bool almacenPropio,
-      Capacidad capacidad,
-      FrecuenciaPedido frecuenciaPedido,
+      bool? almacenPropio,
+      Capacidad? capacidad,
+      FrecuenciaPedido? frecuenciaPedido,
       DateTime lastUpdated,
       bool deleted,
       bool enviada,
@@ -164,15 +164,15 @@ class _$VisitaCopyWithImpl<$Res, $Val extends Visita>
     Object? longitud = null,
     Object? visitaAppId = freezed,
     Object? ofertaRealizada = null,
-    Object? interesCliente = null,
+    Object? interesCliente = freezed,
     Object? pedidoRealizado = null,
     Object? motivoNoInteres = freezed,
     Object? motivoNoPedido = freezed,
     Object? sector = freezed,
     Object? competencia = freezed,
-    Object? almacenPropio = null,
-    Object? capacidad = null,
-    Object? frecuenciaPedido = null,
+    Object? almacenPropio = freezed,
+    Object? capacidad = freezed,
+    Object? frecuenciaPedido = freezed,
     Object? lastUpdated = null,
     Object? deleted = null,
     Object? enviada = null,
@@ -284,10 +284,10 @@ class _$VisitaCopyWithImpl<$Res, $Val extends Visita>
           ? _value.ofertaRealizada
           : ofertaRealizada // ignore: cast_nullable_to_non_nullable
               as bool,
-      interesCliente: null == interesCliente
+      interesCliente: freezed == interesCliente
           ? _value.interesCliente
           : interesCliente // ignore: cast_nullable_to_non_nullable
-              as InteresCliente,
+              as InteresCliente?,
       pedidoRealizado: null == pedidoRealizado
           ? _value.pedidoRealizado
           : pedidoRealizado // ignore: cast_nullable_to_non_nullable
@@ -308,18 +308,18 @@ class _$VisitaCopyWithImpl<$Res, $Val extends Visita>
           ? _value.competencia
           : competencia // ignore: cast_nullable_to_non_nullable
               as VisitaCompetidor?,
-      almacenPropio: null == almacenPropio
+      almacenPropio: freezed == almacenPropio
           ? _value.almacenPropio
           : almacenPropio // ignore: cast_nullable_to_non_nullable
-              as bool,
-      capacidad: null == capacidad
+              as bool?,
+      capacidad: freezed == capacidad
           ? _value.capacidad
           : capacidad // ignore: cast_nullable_to_non_nullable
-              as Capacidad,
-      frecuenciaPedido: null == frecuenciaPedido
+              as Capacidad?,
+      frecuenciaPedido: freezed == frecuenciaPedido
           ? _value.frecuenciaPedido
           : frecuenciaPedido // ignore: cast_nullable_to_non_nullable
-              as FrecuenciaPedido,
+              as FrecuenciaPedido?,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -463,15 +463,15 @@ abstract class _$$VisitaImplCopyWith<$Res> implements $VisitaCopyWith<$Res> {
       double longitud,
       String? visitaAppId,
       bool ofertaRealizada,
-      InteresCliente interesCliente,
+      InteresCliente? interesCliente,
       bool pedidoRealizado,
       VisitaMotivoNoVenta? motivoNoInteres,
       VisitaMotivoNoVenta? motivoNoPedido,
       VisitaSector? sector,
       VisitaCompetidor? competencia,
-      bool almacenPropio,
-      Capacidad capacidad,
-      FrecuenciaPedido frecuenciaPedido,
+      bool? almacenPropio,
+      Capacidad? capacidad,
+      FrecuenciaPedido? frecuenciaPedido,
       DateTime lastUpdated,
       bool deleted,
       bool enviada,
@@ -531,15 +531,15 @@ class __$$VisitaImplCopyWithImpl<$Res>
     Object? longitud = null,
     Object? visitaAppId = freezed,
     Object? ofertaRealizada = null,
-    Object? interesCliente = null,
+    Object? interesCliente = freezed,
     Object? pedidoRealizado = null,
     Object? motivoNoInteres = freezed,
     Object? motivoNoPedido = freezed,
     Object? sector = freezed,
     Object? competencia = freezed,
-    Object? almacenPropio = null,
-    Object? capacidad = null,
-    Object? frecuenciaPedido = null,
+    Object? almacenPropio = freezed,
+    Object? capacidad = freezed,
+    Object? frecuenciaPedido = freezed,
     Object? lastUpdated = null,
     Object? deleted = null,
     Object? enviada = null,
@@ -651,10 +651,10 @@ class __$$VisitaImplCopyWithImpl<$Res>
           ? _value.ofertaRealizada
           : ofertaRealizada // ignore: cast_nullable_to_non_nullable
               as bool,
-      interesCliente: null == interesCliente
+      interesCliente: freezed == interesCliente
           ? _value.interesCliente
           : interesCliente // ignore: cast_nullable_to_non_nullable
-              as InteresCliente,
+              as InteresCliente?,
       pedidoRealizado: null == pedidoRealizado
           ? _value.pedidoRealizado
           : pedidoRealizado // ignore: cast_nullable_to_non_nullable
@@ -675,18 +675,18 @@ class __$$VisitaImplCopyWithImpl<$Res>
           ? _value.competencia
           : competencia // ignore: cast_nullable_to_non_nullable
               as VisitaCompetidor?,
-      almacenPropio: null == almacenPropio
+      almacenPropio: freezed == almacenPropio
           ? _value.almacenPropio
           : almacenPropio // ignore: cast_nullable_to_non_nullable
-              as bool,
-      capacidad: null == capacidad
+              as bool?,
+      capacidad: freezed == capacidad
           ? _value.capacidad
           : capacidad // ignore: cast_nullable_to_non_nullable
-              as Capacidad,
-      frecuenciaPedido: null == frecuenciaPedido
+              as Capacidad?,
+      frecuenciaPedido: freezed == frecuenciaPedido
           ? _value.frecuenciaPedido
           : frecuenciaPedido // ignore: cast_nullable_to_non_nullable
-              as FrecuenciaPedido,
+              as FrecuenciaPedido?,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -810,7 +810,7 @@ class _$VisitaImpl extends _Visita {
   @override
   final bool ofertaRealizada;
   @override
-  final InteresCliente interesCliente;
+  final InteresCliente? interesCliente;
   @override
   final bool pedidoRealizado;
   @override
@@ -822,11 +822,11 @@ class _$VisitaImpl extends _Visita {
   @override
   final VisitaCompetidor? competencia;
   @override
-  final bool almacenPropio;
+  final bool? almacenPropio;
   @override
-  final Capacidad capacidad;
+  final Capacidad? capacidad;
   @override
-  final FrecuenciaPedido frecuenciaPedido;
+  final FrecuenciaPedido? frecuenciaPedido;
   @override
   final DateTime lastUpdated;
   @override
@@ -996,15 +996,15 @@ abstract class _Visita extends Visita {
       required final double longitud,
       final String? visitaAppId,
       required final bool ofertaRealizada,
-      required final InteresCliente interesCliente,
+      required final InteresCliente? interesCliente,
       required final bool pedidoRealizado,
       final VisitaMotivoNoVenta? motivoNoInteres,
       final VisitaMotivoNoVenta? motivoNoPedido,
       final VisitaSector? sector,
       final VisitaCompetidor? competencia,
-      required final bool almacenPropio,
-      required final Capacidad capacidad,
-      required final FrecuenciaPedido frecuenciaPedido,
+      required final bool? almacenPropio,
+      required final Capacidad? capacidad,
+      required final FrecuenciaPedido? frecuenciaPedido,
       required final DateTime lastUpdated,
       required final bool deleted,
       required final bool enviada,
@@ -1065,7 +1065,7 @@ abstract class _Visita extends Visita {
   @override
   bool get ofertaRealizada;
   @override
-  InteresCliente get interesCliente;
+  InteresCliente? get interesCliente;
   @override
   bool get pedidoRealizado;
   @override
@@ -1077,11 +1077,11 @@ abstract class _Visita extends Visita {
   @override
   VisitaCompetidor? get competencia;
   @override
-  bool get almacenPropio;
+  bool? get almacenPropio;
   @override
-  Capacidad get capacidad;
+  Capacidad? get capacidad;
   @override
-  FrecuenciaPedido get frecuenciaPedido;
+  FrecuenciaPedido? get frecuenciaPedido;
   @override
   DateTime get lastUpdated;
   @override

@@ -70,7 +70,7 @@ class LocalAppDatabase extends _$LocalAppDatabase {
       : test = true,
         super(NativeDatabase.memory());
   @override
-  int get schemaVersion => 16;
+  int get schemaVersion => 17;
 
   @override
   MigrationStrategy get migration {
@@ -225,6 +225,11 @@ class LocalAppDatabase extends _$LocalAppDatabase {
         }
         if (from < 16) {
           await m.createTable(clienteImpTable);
+        }
+
+        if (from < 17) {
+          await m.deleteTable(visitaLocalTable.tableName);
+          await m.createTable(visitaLocalTable);
         }
       }),
     );

@@ -49,15 +49,15 @@ class VisitaLocalDTO
     @JsonKey(name: 'RESUMEN') String? resumen,
     @JsonKey(name: 'MARCAS_COMPETENCIA') String? marcasCompetencia,
     @JsonKey(name: 'OFERTA_REALIZADA') required String ofertaRealizada,
-    @JsonKey(name: 'INTERES_CLIENTE') required String interesCliente,
+    @JsonKey(name: 'INTERES_CLIENTE') required String? interesCliente,
     @JsonKey(name: 'PEDIDO_REALIZADO') required String pedidoRealizado,
     @JsonKey(name: 'CODIGO_MOTIVO_NO_INTERES') int? codigoMotivoNoInteres,
     @JsonKey(name: 'CODIGO_MOTIVO_NO_PEDIDO') int? codigoMotivoNoPedido,
     @JsonKey(name: 'CODIGO_SECTOR') int? codigoSector,
     @JsonKey(name: 'CODIGO_COMPETENCIA') int? codigoCompetencia,
-    @JsonKey(name: 'ALMACEN_PROPIO') required String almacenPropio,
-    @JsonKey(name: 'CAPACIDAD') required String capacidad,
-    @JsonKey(name: 'FRECUENCIA_PEDIDO') required String frecuenciaPedido,
+    @JsonKey(name: 'ALMACEN_PROPIO') required String? almacenPropio,
+    @JsonKey(name: 'CAPACIDAD') required String? capacidad,
+    @JsonKey(name: 'FRECUENCIA_PEDIDO') required String? frecuenciaPedido,
     @JsonKey(name: 'LATITUD') required double latitud,
     @JsonKey(name: 'LONGITUD') required double longitud,
     @JsonKey(name: 'ENVIADA') @Default('N') String enviada,
@@ -97,7 +97,11 @@ class VisitaLocalDTO
       codigoMotivoNoPedido: visita.motivoNoPedido?.id,
       codigoSector: visita.sector?.id,
       codigoCompetencia: visita.competencia?.id,
-      almacenPropio: visita.almacenPropio ? 'S' : 'N',
+      almacenPropio: visita.almacenPropio != null
+          ? visita.almacenPropio!
+              ? 'S'
+              : 'N'
+          : null,
       capacidad: getIdFromCapacidad(visita.capacidad),
       frecuenciaPedido: getIdFromFrecuenciaPedido(visita.frecuenciaPedido),
       latitud: visita.latitud,
@@ -243,8 +247,7 @@ class VisitaLocalTable extends Table {
       text().nullable().named('MARCAS_COMPETENCIA')();
   TextColumn get ofertaRealizada =>
       text().withDefault(const Constant('N')).named('OFERTA_REALIZADA')();
-  TextColumn get interesCliente =>
-      text().withDefault(const Constant('N')).named('INTERES_CLIENTE')();
+  TextColumn get interesCliente => text().nullable().named('INTERES_CLIENTE')();
   TextColumn get pedidoRealizado =>
       text().withDefault(const Constant('N')).named('PEDIDO_REALIZADO')();
   IntColumn get codigoMotivoNoInteres =>
@@ -254,12 +257,10 @@ class VisitaLocalTable extends Table {
   IntColumn get codigoSector => integer().nullable().named('CODIGO_SECTOR')();
   IntColumn get codigoCompetencia =>
       integer().nullable().named('CODIGO_COMPETENCIA')();
-  TextColumn get almacenPropio =>
-      text().withDefault(const Constant('N')).named('ALMACEN_PROPIO')();
-  TextColumn get capacidad =>
-      text().withDefault(const Constant('M')).named('CAPACIDAD')();
+  TextColumn get almacenPropio => text().nullable().named('ALMACEN_PROPIO')();
+  TextColumn get capacidad => text().nullable().named('CAPACIDAD')();
   TextColumn get frecuenciaPedido =>
-      text().withDefault(const Constant('M')).named('FRECUENCIA_PEDIDO')();
+      text().nullable().named('FRECUENCIA_PEDIDO')();
   RealColumn get latitud => real().named('LATITUD')();
   RealColumn get longitud => real().named('LONGITUD')();
   TextColumn get enviada =>

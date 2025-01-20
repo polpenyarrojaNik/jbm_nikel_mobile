@@ -209,12 +209,12 @@ class VisitaRepository {
     try {
       final requestUri = (test)
           ? Uri.http(
-              dotenv.get('URL', fallback: 'localhost:3001'),
-              'api/v5/online/visitas',
+              dotenv.get('URL_TEST', fallback: 'localhost:3001'),
+              'api/v6/online/visitas',
             )
           : Uri.https(
               dotenv.get('URL', fallback: 'localhost:3001'),
-              'api/v5/online/visitas',
+              'api/v6/online/visitas',
             );
 
       final response = await _dio.postUri(

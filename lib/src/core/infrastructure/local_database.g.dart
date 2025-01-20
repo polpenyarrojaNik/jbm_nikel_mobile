@@ -135,10 +135,8 @@ class $VisitaLocalTableTable extends VisitaLocalTable
       const VerificationMeta('interesCliente');
   @override
   late final GeneratedColumn<String> interesCliente = GeneratedColumn<String>(
-      'INTERES_CLIENTE', aliasedName, false,
-      type: DriftSqlType.string,
-      requiredDuringInsert: false,
-      defaultValue: const Constant('N'));
+      'INTERES_CLIENTE', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _pedidoRealizadoMeta =
       const VerificationMeta('pedidoRealizado');
   @override
@@ -175,26 +173,20 @@ class $VisitaLocalTableTable extends VisitaLocalTable
       const VerificationMeta('almacenPropio');
   @override
   late final GeneratedColumn<String> almacenPropio = GeneratedColumn<String>(
-      'ALMACEN_PROPIO', aliasedName, false,
-      type: DriftSqlType.string,
-      requiredDuringInsert: false,
-      defaultValue: const Constant('N'));
+      'ALMACEN_PROPIO', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _capacidadMeta =
       const VerificationMeta('capacidad');
   @override
   late final GeneratedColumn<String> capacidad = GeneratedColumn<String>(
-      'CAPACIDAD', aliasedName, false,
-      type: DriftSqlType.string,
-      requiredDuringInsert: false,
-      defaultValue: const Constant('M'));
+      'CAPACIDAD', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _frecuenciaPedidoMeta =
       const VerificationMeta('frecuenciaPedido');
   @override
   late final GeneratedColumn<String> frecuenciaPedido = GeneratedColumn<String>(
-      'FRECUENCIA_PEDIDO', aliasedName, false,
-      type: DriftSqlType.string,
-      requiredDuringInsert: false,
-      defaultValue: const Constant('M'));
+      'FRECUENCIA_PEDIDO', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _latitudMeta =
       const VerificationMeta('latitud');
   @override
@@ -542,8 +534,8 @@ class $VisitaLocalTableTable extends VisitaLocalTable
           DriftSqlType.string, data['${effectivePrefix}MARCAS_COMPETENCIA']),
       ofertaRealizada: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}OFERTA_REALIZADA'])!,
-      interesCliente: attachedDatabase.typeMapping.read(
-          DriftSqlType.string, data['${effectivePrefix}INTERES_CLIENTE'])!,
+      interesCliente: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}INTERES_CLIENTE']),
       pedidoRealizado: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}PEDIDO_REALIZADO'])!,
       codigoMotivoNoInteres: attachedDatabase.typeMapping.read(
@@ -555,11 +547,11 @@ class $VisitaLocalTableTable extends VisitaLocalTable
       codigoCompetencia: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}CODIGO_COMPETENCIA']),
       almacenPropio: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}ALMACEN_PROPIO'])!,
+          .read(DriftSqlType.string, data['${effectivePrefix}ALMACEN_PROPIO']),
       capacidad: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}CAPACIDAD'])!,
+          .read(DriftSqlType.string, data['${effectivePrefix}CAPACIDAD']),
       frecuenciaPedido: attachedDatabase.typeMapping.read(
-          DriftSqlType.string, data['${effectivePrefix}FRECUENCIA_PEDIDO'])!,
+          DriftSqlType.string, data['${effectivePrefix}FRECUENCIA_PEDIDO']),
       latitud: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}LATITUD'])!,
       longitud: attachedDatabase.typeMapping
@@ -600,15 +592,15 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
   final Value<String?> resumen;
   final Value<String?> marcasCompetencia;
   final Value<String> ofertaRealizada;
-  final Value<String> interesCliente;
+  final Value<String?> interesCliente;
   final Value<String> pedidoRealizado;
   final Value<int?> codigoMotivoNoInteres;
   final Value<int?> codigoMotivoNoPedido;
   final Value<int?> codigoSector;
   final Value<int?> codigoCompetencia;
-  final Value<String> almacenPropio;
-  final Value<String> capacidad;
-  final Value<String> frecuenciaPedido;
+  final Value<String?> almacenPropio;
+  final Value<String?> capacidad;
+  final Value<String?> frecuenciaPedido;
   final Value<double> latitud;
   final Value<double> longitud;
   final Value<String> enviada;
@@ -805,15 +797,15 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
       Value<String?>? resumen,
       Value<String?>? marcasCompetencia,
       Value<String>? ofertaRealizada,
-      Value<String>? interesCliente,
+      Value<String?>? interesCliente,
       Value<String>? pedidoRealizado,
       Value<int?>? codigoMotivoNoInteres,
       Value<int?>? codigoMotivoNoPedido,
       Value<int?>? codigoSector,
       Value<int?>? codigoCompetencia,
-      Value<String>? almacenPropio,
-      Value<String>? capacidad,
-      Value<String>? frecuenciaPedido,
+      Value<String?>? almacenPropio,
+      Value<String?>? capacidad,
+      Value<String?>? frecuenciaPedido,
       Value<double>? latitud,
       Value<double>? longitud,
       Value<String>? enviada,
@@ -4535,15 +4527,15 @@ typedef $$VisitaLocalTableTableCreateCompanionBuilder
   Value<String?> resumen,
   Value<String?> marcasCompetencia,
   Value<String> ofertaRealizada,
-  Value<String> interesCliente,
+  Value<String?> interesCliente,
   Value<String> pedidoRealizado,
   Value<int?> codigoMotivoNoInteres,
   Value<int?> codigoMotivoNoPedido,
   Value<int?> codigoSector,
   Value<int?> codigoCompetencia,
-  Value<String> almacenPropio,
-  Value<String> capacidad,
-  Value<String> frecuenciaPedido,
+  Value<String?> almacenPropio,
+  Value<String?> capacidad,
+  Value<String?> frecuenciaPedido,
   required double latitud,
   required double longitud,
   Value<String> enviada,
@@ -4573,15 +4565,15 @@ typedef $$VisitaLocalTableTableUpdateCompanionBuilder
   Value<String?> resumen,
   Value<String?> marcasCompetencia,
   Value<String> ofertaRealizada,
-  Value<String> interesCliente,
+  Value<String?> interesCliente,
   Value<String> pedidoRealizado,
   Value<int?> codigoMotivoNoInteres,
   Value<int?> codigoMotivoNoPedido,
   Value<int?> codigoSector,
   Value<int?> codigoCompetencia,
-  Value<String> almacenPropio,
-  Value<String> capacidad,
-  Value<String> frecuenciaPedido,
+  Value<String?> almacenPropio,
+  Value<String?> capacidad,
+  Value<String?> frecuenciaPedido,
   Value<double> latitud,
   Value<double> longitud,
   Value<String> enviada,
@@ -5002,15 +4994,15 @@ class $$VisitaLocalTableTableTableManager extends RootTableManager<
             Value<String?> resumen = const Value.absent(),
             Value<String?> marcasCompetencia = const Value.absent(),
             Value<String> ofertaRealizada = const Value.absent(),
-            Value<String> interesCliente = const Value.absent(),
+            Value<String?> interesCliente = const Value.absent(),
             Value<String> pedidoRealizado = const Value.absent(),
             Value<int?> codigoMotivoNoInteres = const Value.absent(),
             Value<int?> codigoMotivoNoPedido = const Value.absent(),
             Value<int?> codigoSector = const Value.absent(),
             Value<int?> codigoCompetencia = const Value.absent(),
-            Value<String> almacenPropio = const Value.absent(),
-            Value<String> capacidad = const Value.absent(),
-            Value<String> frecuenciaPedido = const Value.absent(),
+            Value<String?> almacenPropio = const Value.absent(),
+            Value<String?> capacidad = const Value.absent(),
+            Value<String?> frecuenciaPedido = const Value.absent(),
             Value<double> latitud = const Value.absent(),
             Value<double> longitud = const Value.absent(),
             Value<String> enviada = const Value.absent(),
@@ -5077,15 +5069,15 @@ class $$VisitaLocalTableTableTableManager extends RootTableManager<
             Value<String?> resumen = const Value.absent(),
             Value<String?> marcasCompetencia = const Value.absent(),
             Value<String> ofertaRealizada = const Value.absent(),
-            Value<String> interesCliente = const Value.absent(),
+            Value<String?> interesCliente = const Value.absent(),
             Value<String> pedidoRealizado = const Value.absent(),
             Value<int?> codigoMotivoNoInteres = const Value.absent(),
             Value<int?> codigoMotivoNoPedido = const Value.absent(),
             Value<int?> codigoSector = const Value.absent(),
             Value<int?> codigoCompetencia = const Value.absent(),
-            Value<String> almacenPropio = const Value.absent(),
-            Value<String> capacidad = const Value.absent(),
-            Value<String> frecuenciaPedido = const Value.absent(),
+            Value<String?> almacenPropio = const Value.absent(),
+            Value<String?> capacidad = const Value.absent(),
+            Value<String?> frecuenciaPedido = const Value.absent(),
             required double latitud,
             required double longitud,
             Value<String> enviada = const Value.absent(),
