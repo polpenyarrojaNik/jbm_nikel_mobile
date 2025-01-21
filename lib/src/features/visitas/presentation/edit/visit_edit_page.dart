@@ -434,21 +434,6 @@ class _VisitaFormState extends State<_VisitaForm> {
               labelText: '${S.of(context).visitas_edit_visitaEditar_resumen} *',
             ),
           ),
-          if (widget.isClienteProvisional)
-            FormBuilderTextField(
-              name: 'marcasCompetencia',
-              initialValue: widget.visita?.marcasCompetencia,
-              maxLines: null,
-              minLines: 4,
-              enabled: !widget.readOnly,
-              decoration: InputDecoration(
-                labelText:
-                    S.of(context).visitas_edit_visitaEditar_marcasCompetencia,
-              ),
-              validator: FormBuilderValidators.compose([
-                FormBuilderValidators.maxLength(255, checkNullOrEmpty: false),
-              ]),
-            ),
           FormBuilderSwitch(
             name: 'ofertaRealizada',
             title: Text(S.of(context).ofertaRealziada),
@@ -483,6 +468,20 @@ class _VisitaFormState extends State<_VisitaForm> {
             VisitaCompetidorFormDropdown(
               name: 'competencia',
               initialValue: widget.visita?.competencia,
+            ),
+            FormBuilderTextField(
+              name: 'marcasCompetencia',
+              initialValue: widget.visita?.marcasCompetencia,
+              maxLines: null,
+              minLines: 4,
+              enabled: !widget.readOnly,
+              decoration: InputDecoration(
+                labelText:
+                    S.of(context).visitas_edit_visitaEditar_marcasCompetencia,
+              ),
+              validator: FormBuilderValidators.compose([
+                FormBuilderValidators.maxLength(255, checkNullOrEmpty: false),
+              ]),
             ),
             AppFormBuilderSearchableDropdown<InteresCliente>(
               name: 'interesCliente',
