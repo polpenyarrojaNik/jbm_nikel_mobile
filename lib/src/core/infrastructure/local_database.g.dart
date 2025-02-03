@@ -4461,6 +4461,143 @@ class ClienteImpTableCompanion extends UpdateCompanion<ClienteImpDTO> {
   }
 }
 
+class $VisitaCompetenciaLocalTableTable extends VisitaCompetenciaLocalTable
+    with
+        TableInfo<$VisitaCompetenciaLocalTableTable,
+            VisitaCompetenciaLocalDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $VisitaCompetenciaLocalTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _visitaAppIdMeta =
+      const VerificationMeta('visitaAppId');
+  @override
+  late final GeneratedColumn<String> visitaAppId = GeneratedColumn<String>(
+      'COD_VISITA_APP', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _codigoCompetenciaMeta =
+      const VerificationMeta('codigoCompetencia');
+  @override
+  late final GeneratedColumn<int> codigoCompetencia = GeneratedColumn<int>(
+      'CODIGO_COMPETENCIA', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [visitaAppId, codigoCompetencia];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'VISITA_COMPETENCIAS_IMP';
+  @override
+  VerificationContext validateIntegrity(
+      Insertable<VisitaCompetenciaLocalDTO> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('COD_VISITA_APP')) {
+      context.handle(
+          _visitaAppIdMeta,
+          visitaAppId.isAcceptableOrUnknown(
+              data['COD_VISITA_APP']!, _visitaAppIdMeta));
+    } else if (isInserting) {
+      context.missing(_visitaAppIdMeta);
+    }
+    if (data.containsKey('CODIGO_COMPETENCIA')) {
+      context.handle(
+          _codigoCompetenciaMeta,
+          codigoCompetencia.isAcceptableOrUnknown(
+              data['CODIGO_COMPETENCIA']!, _codigoCompetenciaMeta));
+    } else if (isInserting) {
+      context.missing(_codigoCompetenciaMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {visitaAppId, codigoCompetencia};
+  @override
+  VisitaCompetenciaLocalDTO map(Map<String, dynamic> data,
+      {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return VisitaCompetenciaLocalDTO(
+      visitaAppId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}COD_VISITA_APP'])!,
+      codigoCompetencia: attachedDatabase.typeMapping.read(
+          DriftSqlType.int, data['${effectivePrefix}CODIGO_COMPETENCIA'])!,
+    );
+  }
+
+  @override
+  $VisitaCompetenciaLocalTableTable createAlias(String alias) {
+    return $VisitaCompetenciaLocalTableTable(attachedDatabase, alias);
+  }
+}
+
+class VisitaCompetenciaLocalTableCompanion
+    extends UpdateCompanion<VisitaCompetenciaLocalDTO> {
+  final Value<String> visitaAppId;
+  final Value<int> codigoCompetencia;
+  final Value<int> rowid;
+  const VisitaCompetenciaLocalTableCompanion({
+    this.visitaAppId = const Value.absent(),
+    this.codigoCompetencia = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  VisitaCompetenciaLocalTableCompanion.insert({
+    required String visitaAppId,
+    required int codigoCompetencia,
+    this.rowid = const Value.absent(),
+  })  : visitaAppId = Value(visitaAppId),
+        codigoCompetencia = Value(codigoCompetencia);
+  static Insertable<VisitaCompetenciaLocalDTO> custom({
+    Expression<String>? visitaAppId,
+    Expression<int>? codigoCompetencia,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (visitaAppId != null) 'COD_VISITA_APP': visitaAppId,
+      if (codigoCompetencia != null) 'CODIGO_COMPETENCIA': codigoCompetencia,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  VisitaCompetenciaLocalTableCompanion copyWith(
+      {Value<String>? visitaAppId,
+      Value<int>? codigoCompetencia,
+      Value<int>? rowid}) {
+    return VisitaCompetenciaLocalTableCompanion(
+      visitaAppId: visitaAppId ?? this.visitaAppId,
+      codigoCompetencia: codigoCompetencia ?? this.codigoCompetencia,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (visitaAppId.present) {
+      map['COD_VISITA_APP'] = Variable<String>(visitaAppId.value);
+    }
+    if (codigoCompetencia.present) {
+      map['CODIGO_COMPETENCIA'] = Variable<int>(codigoCompetencia.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('VisitaCompetenciaLocalTableCompanion(')
+          ..write('visitaAppId: $visitaAppId, ')
+          ..write('codigoCompetencia: $codigoCompetencia, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$LocalAppDatabase extends GeneratedDatabase {
   _$LocalAppDatabase(QueryExecutor e) : super(e);
   _$LocalAppDatabase.connect(DatabaseConnection c) : super.connect(c);
@@ -4484,6 +4621,8 @@ abstract class _$LocalAppDatabase extends GeneratedDatabase {
       $CatalogoOrdenTableTable(this);
   late final $ClienteImpTableTable clienteImpTable =
       $ClienteImpTableTable(this);
+  late final $VisitaCompetenciaLocalTableTable visitaCompetenciaLocalTable =
+      $VisitaCompetenciaLocalTableTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -4498,7 +4637,8 @@ abstract class _$LocalAppDatabase extends GeneratedDatabase {
         clienteContactoImpTable,
         clienteDireccionImpTable,
         catalogoOrdenTable,
-        clienteImpTable
+        clienteImpTable,
+        visitaCompetenciaLocalTable
       ];
   @override
   DriftDatabaseOptions get options =>
@@ -7470,6 +7610,115 @@ typedef $$ClienteImpTableTableProcessedTableManager = ProcessedTableManager<
     ),
     ClienteImpDTO,
     PrefetchHooks Function()>;
+typedef $$VisitaCompetenciaLocalTableTableCreateCompanionBuilder
+    = VisitaCompetenciaLocalTableCompanion Function({
+  required String visitaAppId,
+  required int codigoCompetencia,
+  Value<int> rowid,
+});
+typedef $$VisitaCompetenciaLocalTableTableUpdateCompanionBuilder
+    = VisitaCompetenciaLocalTableCompanion Function({
+  Value<String> visitaAppId,
+  Value<int> codigoCompetencia,
+  Value<int> rowid,
+});
+
+class $$VisitaCompetenciaLocalTableTableFilterComposer extends FilterComposer<
+    _$LocalAppDatabase, $VisitaCompetenciaLocalTableTable> {
+  $$VisitaCompetenciaLocalTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get visitaAppId => $state.composableBuilder(
+      column: $state.table.visitaAppId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get codigoCompetencia => $state.composableBuilder(
+      column: $state.table.codigoCompetencia,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$VisitaCompetenciaLocalTableTableOrderingComposer
+    extends OrderingComposer<_$LocalAppDatabase,
+        $VisitaCompetenciaLocalTableTable> {
+  $$VisitaCompetenciaLocalTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get visitaAppId => $state.composableBuilder(
+      column: $state.table.visitaAppId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get codigoCompetencia => $state.composableBuilder(
+      column: $state.table.codigoCompetencia,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+class $$VisitaCompetenciaLocalTableTableTableManager extends RootTableManager<
+    _$LocalAppDatabase,
+    $VisitaCompetenciaLocalTableTable,
+    VisitaCompetenciaLocalDTO,
+    $$VisitaCompetenciaLocalTableTableFilterComposer,
+    $$VisitaCompetenciaLocalTableTableOrderingComposer,
+    $$VisitaCompetenciaLocalTableTableCreateCompanionBuilder,
+    $$VisitaCompetenciaLocalTableTableUpdateCompanionBuilder,
+    (
+      VisitaCompetenciaLocalDTO,
+      BaseReferences<_$LocalAppDatabase, $VisitaCompetenciaLocalTableTable,
+          VisitaCompetenciaLocalDTO>
+    ),
+    VisitaCompetenciaLocalDTO,
+    PrefetchHooks Function()> {
+  $$VisitaCompetenciaLocalTableTableTableManager(
+      _$LocalAppDatabase db, $VisitaCompetenciaLocalTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$VisitaCompetenciaLocalTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$VisitaCompetenciaLocalTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> visitaAppId = const Value.absent(),
+            Value<int> codigoCompetencia = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              VisitaCompetenciaLocalTableCompanion(
+            visitaAppId: visitaAppId,
+            codigoCompetencia: codigoCompetencia,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String visitaAppId,
+            required int codigoCompetencia,
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              VisitaCompetenciaLocalTableCompanion.insert(
+            visitaAppId: visitaAppId,
+            codigoCompetencia: codigoCompetencia,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$VisitaCompetenciaLocalTableTableProcessedTableManager
+    = ProcessedTableManager<
+        _$LocalAppDatabase,
+        $VisitaCompetenciaLocalTableTable,
+        VisitaCompetenciaLocalDTO,
+        $$VisitaCompetenciaLocalTableTableFilterComposer,
+        $$VisitaCompetenciaLocalTableTableOrderingComposer,
+        $$VisitaCompetenciaLocalTableTableCreateCompanionBuilder,
+        $$VisitaCompetenciaLocalTableTableUpdateCompanionBuilder,
+        (
+          VisitaCompetenciaLocalDTO,
+          BaseReferences<_$LocalAppDatabase, $VisitaCompetenciaLocalTableTable,
+              VisitaCompetenciaLocalDTO>
+        ),
+        VisitaCompetenciaLocalDTO,
+        PrefetchHooks Function()>;
 
 class $LocalAppDatabaseManager {
   final _$LocalAppDatabase _db;
@@ -7498,4 +7747,8 @@ class $LocalAppDatabaseManager {
       $$CatalogoOrdenTableTableTableManager(_db, _db.catalogoOrdenTable);
   $$ClienteImpTableTableTableManager get clienteImpTable =>
       $$ClienteImpTableTableTableManager(_db, _db.clienteImpTable);
+  $$VisitaCompetenciaLocalTableTableTableManager
+      get visitaCompetenciaLocalTable =>
+          $$VisitaCompetenciaLocalTableTableTableManager(
+              _db, _db.visitaCompetenciaLocalTable);
 }

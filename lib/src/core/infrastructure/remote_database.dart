@@ -5,6 +5,7 @@ import 'package:drift/drift.dart';
 import 'package:drift/isolate.dart';
 import 'package:drift/native.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../features/visitas/infrastructure/visita_competencia_dto.dart';
 import 'divisa_dto.dart';
 import 'pais_dto.dart';
 import 'provincia_dto.dart';
@@ -133,6 +134,7 @@ const remoteDatabaseName = 'jbm.sqlite';
   VisitaCompetidorTable,
   VisitaSectorTable,
   VisitaMotivoNoVentaTable,
+  VisitaCompetenciaTable,
   TrackingEstadoTable,
   SectorTable,
   SubsectorTable,
@@ -147,7 +149,7 @@ class RemoteAppDatabase extends _$RemoteAppDatabase {
       : test = true,
         super(NativeDatabase.memory());
   @override
-  int get schemaVersion => 32;
+  int get schemaVersion => 33;
 }
 
 Future<DriftIsolate> _createDriftIsolate() async {

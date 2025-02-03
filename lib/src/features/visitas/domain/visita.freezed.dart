@@ -52,7 +52,8 @@ mixin _$Visita {
       throw _privateConstructorUsedError;
   VisitaMotivoNoVenta? get motivoNoPedido => throw _privateConstructorUsedError;
   VisitaSector? get sector => throw _privateConstructorUsedError;
-  VisitaCompetidor? get competencia => throw _privateConstructorUsedError;
+  List<VisitaCompetidor> get competenciaList =>
+      throw _privateConstructorUsedError;
   bool? get almacenPropio => throw _privateConstructorUsedError;
   Capacidad? get capacidad => throw _privateConstructorUsedError;
   FrecuenciaPedido? get frecuenciaPedido => throw _privateConstructorUsedError;
@@ -105,7 +106,7 @@ abstract class $VisitaCopyWith<$Res> {
       VisitaMotivoNoVenta? motivoNoInteres,
       VisitaMotivoNoVenta? motivoNoPedido,
       VisitaSector? sector,
-      VisitaCompetidor? competencia,
+      List<VisitaCompetidor> competenciaList,
       bool? almacenPropio,
       Capacidad? capacidad,
       FrecuenciaPedido? frecuenciaPedido,
@@ -120,7 +121,6 @@ abstract class $VisitaCopyWith<$Res> {
   $VisitaMotivoNoVentaCopyWith<$Res>? get motivoNoInteres;
   $VisitaMotivoNoVentaCopyWith<$Res>? get motivoNoPedido;
   $VisitaSectorCopyWith<$Res>? get sector;
-  $VisitaCompetidorCopyWith<$Res>? get competencia;
 }
 
 /// @nodoc
@@ -169,7 +169,7 @@ class _$VisitaCopyWithImpl<$Res, $Val extends Visita>
     Object? motivoNoInteres = freezed,
     Object? motivoNoPedido = freezed,
     Object? sector = freezed,
-    Object? competencia = freezed,
+    Object? competenciaList = null,
     Object? almacenPropio = freezed,
     Object? capacidad = freezed,
     Object? frecuenciaPedido = freezed,
@@ -304,10 +304,10 @@ class _$VisitaCopyWithImpl<$Res, $Val extends Visita>
           ? _value.sector
           : sector // ignore: cast_nullable_to_non_nullable
               as VisitaSector?,
-      competencia: freezed == competencia
-          ? _value.competencia
-          : competencia // ignore: cast_nullable_to_non_nullable
-              as VisitaCompetidor?,
+      competenciaList: null == competenciaList
+          ? _value.competenciaList
+          : competenciaList // ignore: cast_nullable_to_non_nullable
+              as List<VisitaCompetidor>,
       almacenPropio: freezed == almacenPropio
           ? _value.almacenPropio
           : almacenPropio // ignore: cast_nullable_to_non_nullable
@@ -413,20 +413,6 @@ class _$VisitaCopyWithImpl<$Res, $Val extends Visita>
       return _then(_value.copyWith(sector: value) as $Val);
     });
   }
-
-  /// Create a copy of Visita
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $VisitaCompetidorCopyWith<$Res>? get competencia {
-    if (_value.competencia == null) {
-      return null;
-    }
-
-    return $VisitaCompetidorCopyWith<$Res>(_value.competencia!, (value) {
-      return _then(_value.copyWith(competencia: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -468,7 +454,7 @@ abstract class _$$VisitaImplCopyWith<$Res> implements $VisitaCopyWith<$Res> {
       VisitaMotivoNoVenta? motivoNoInteres,
       VisitaMotivoNoVenta? motivoNoPedido,
       VisitaSector? sector,
-      VisitaCompetidor? competencia,
+      List<VisitaCompetidor> competenciaList,
       bool? almacenPropio,
       Capacidad? capacidad,
       FrecuenciaPedido? frecuenciaPedido,
@@ -488,8 +474,6 @@ abstract class _$$VisitaImplCopyWith<$Res> implements $VisitaCopyWith<$Res> {
   $VisitaMotivoNoVentaCopyWith<$Res>? get motivoNoPedido;
   @override
   $VisitaSectorCopyWith<$Res>? get sector;
-  @override
-  $VisitaCompetidorCopyWith<$Res>? get competencia;
 }
 
 /// @nodoc
@@ -536,7 +520,7 @@ class __$$VisitaImplCopyWithImpl<$Res>
     Object? motivoNoInteres = freezed,
     Object? motivoNoPedido = freezed,
     Object? sector = freezed,
-    Object? competencia = freezed,
+    Object? competenciaList = null,
     Object? almacenPropio = freezed,
     Object? capacidad = freezed,
     Object? frecuenciaPedido = freezed,
@@ -671,10 +655,10 @@ class __$$VisitaImplCopyWithImpl<$Res>
           ? _value.sector
           : sector // ignore: cast_nullable_to_non_nullable
               as VisitaSector?,
-      competencia: freezed == competencia
-          ? _value.competencia
-          : competencia // ignore: cast_nullable_to_non_nullable
-              as VisitaCompetidor?,
+      competenciaList: null == competenciaList
+          ? _value._competenciaList
+          : competenciaList // ignore: cast_nullable_to_non_nullable
+              as List<VisitaCompetidor>,
       almacenPropio: freezed == almacenPropio
           ? _value.almacenPropio
           : almacenPropio // ignore: cast_nullable_to_non_nullable
@@ -746,7 +730,7 @@ class _$VisitaImpl extends _Visita {
       this.motivoNoInteres,
       this.motivoNoPedido,
       this.sector,
-      this.competencia,
+      required final List<VisitaCompetidor> competenciaList,
       required this.almacenPropio,
       required this.capacidad,
       required this.frecuenciaPedido,
@@ -755,7 +739,8 @@ class _$VisitaImpl extends _Visita {
       required this.enviada,
       required this.tratada,
       this.errorSyncMessage})
-      : super._();
+      : _competenciaList = competenciaList,
+        super._();
 
   @override
   final String? id;
@@ -819,8 +804,14 @@ class _$VisitaImpl extends _Visita {
   final VisitaMotivoNoVenta? motivoNoPedido;
   @override
   final VisitaSector? sector;
+  final List<VisitaCompetidor> _competenciaList;
   @override
-  final VisitaCompetidor? competencia;
+  List<VisitaCompetidor> get competenciaList {
+    if (_competenciaList is EqualUnmodifiableListView) return _competenciaList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_competenciaList);
+  }
+
   @override
   final bool? almacenPropio;
   @override
@@ -840,7 +831,7 @@ class _$VisitaImpl extends _Visita {
 
   @override
   String toString() {
-    return 'Visita(id: $id, clienteId: $clienteId, nombreCliente: $nombreCliente, clienteEmail: $clienteEmail, clienteTelefono: $clienteTelefono, isClienteProvisional: $isClienteProvisional, clienteProvisionalNombre: $clienteProvisionalNombre, clienteProvisionalEmail: $clienteProvisionalEmail, clienteProvisionalTelefono: $clienteProvisionalTelefono, clienteProvisionalDireccion1: $clienteProvisionalDireccion1, clienteProvisionalDireccion2: $clienteProvisionalDireccion2, clienteProvisionalCodigoPostal: $clienteProvisionalCodigoPostal, clienteProvisionalPoblacion: $clienteProvisionalPoblacion, clienteProvisionalProvincia: $clienteProvisionalProvincia, clienteProvisionalRegionId: $clienteProvisionalRegionId, clienteProvisionalPais: $clienteProvisionalPais, fecha: $fecha, numEmpl: $numEmpl, contacto: $contacto, atendidoPor: $atendidoPor, resumen: $resumen, marcasCompetencia: $marcasCompetencia, latitud: $latitud, longitud: $longitud, visitaAppId: $visitaAppId, ofertaRealizada: $ofertaRealizada, interesCliente: $interesCliente, pedidoRealizado: $pedidoRealizado, motivoNoInteres: $motivoNoInteres, motivoNoPedido: $motivoNoPedido, sector: $sector, competencia: $competencia, almacenPropio: $almacenPropio, capacidad: $capacidad, frecuenciaPedido: $frecuenciaPedido, lastUpdated: $lastUpdated, deleted: $deleted, enviada: $enviada, tratada: $tratada, errorSyncMessage: $errorSyncMessage)';
+    return 'Visita(id: $id, clienteId: $clienteId, nombreCliente: $nombreCliente, clienteEmail: $clienteEmail, clienteTelefono: $clienteTelefono, isClienteProvisional: $isClienteProvisional, clienteProvisionalNombre: $clienteProvisionalNombre, clienteProvisionalEmail: $clienteProvisionalEmail, clienteProvisionalTelefono: $clienteProvisionalTelefono, clienteProvisionalDireccion1: $clienteProvisionalDireccion1, clienteProvisionalDireccion2: $clienteProvisionalDireccion2, clienteProvisionalCodigoPostal: $clienteProvisionalCodigoPostal, clienteProvisionalPoblacion: $clienteProvisionalPoblacion, clienteProvisionalProvincia: $clienteProvisionalProvincia, clienteProvisionalRegionId: $clienteProvisionalRegionId, clienteProvisionalPais: $clienteProvisionalPais, fecha: $fecha, numEmpl: $numEmpl, contacto: $contacto, atendidoPor: $atendidoPor, resumen: $resumen, marcasCompetencia: $marcasCompetencia, latitud: $latitud, longitud: $longitud, visitaAppId: $visitaAppId, ofertaRealizada: $ofertaRealizada, interesCliente: $interesCliente, pedidoRealizado: $pedidoRealizado, motivoNoInteres: $motivoNoInteres, motivoNoPedido: $motivoNoPedido, sector: $sector, competenciaList: $competenciaList, almacenPropio: $almacenPropio, capacidad: $capacidad, frecuenciaPedido: $frecuenciaPedido, lastUpdated: $lastUpdated, deleted: $deleted, enviada: $enviada, tratada: $tratada, errorSyncMessage: $errorSyncMessage)';
   }
 
   @override
@@ -903,7 +894,7 @@ class _$VisitaImpl extends _Visita {
             (identical(other.motivoNoInteres, motivoNoInteres) || other.motivoNoInteres == motivoNoInteres) &&
             (identical(other.motivoNoPedido, motivoNoPedido) || other.motivoNoPedido == motivoNoPedido) &&
             (identical(other.sector, sector) || other.sector == sector) &&
-            (identical(other.competencia, competencia) || other.competencia == competencia) &&
+            const DeepCollectionEquality().equals(other._competenciaList, _competenciaList) &&
             (identical(other.almacenPropio, almacenPropio) || other.almacenPropio == almacenPropio) &&
             (identical(other.capacidad, capacidad) || other.capacidad == capacidad) &&
             (identical(other.frecuenciaPedido, frecuenciaPedido) || other.frecuenciaPedido == frecuenciaPedido) &&
@@ -948,7 +939,7 @@ class _$VisitaImpl extends _Visita {
         motivoNoInteres,
         motivoNoPedido,
         sector,
-        competencia,
+        const DeepCollectionEquality().hash(_competenciaList),
         almacenPropio,
         capacidad,
         frecuenciaPedido,
@@ -1001,7 +992,7 @@ abstract class _Visita extends Visita {
       final VisitaMotivoNoVenta? motivoNoInteres,
       final VisitaMotivoNoVenta? motivoNoPedido,
       final VisitaSector? sector,
-      final VisitaCompetidor? competencia,
+      required final List<VisitaCompetidor> competenciaList,
       required final bool? almacenPropio,
       required final Capacidad? capacidad,
       required final FrecuenciaPedido? frecuenciaPedido,
@@ -1075,7 +1066,7 @@ abstract class _Visita extends Visita {
   @override
   VisitaSector? get sector;
   @override
-  VisitaCompetidor? get competencia;
+  List<VisitaCompetidor> get competenciaList;
   @override
   bool? get almacenPropio;
   @override

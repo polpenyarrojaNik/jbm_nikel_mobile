@@ -412,5 +412,7 @@
   "send": "Enviar",
   "retry": "Reintentar",
   "sectorUnsubscribededSectorMessage": "Sector dado de baja. Por favor, seleccione un nuevo sector",
-  "save": "Guardar"
+  "save": "Guardar",
+  "accept": "Aceptar",
+  "cancel": "Cancelar"
 }

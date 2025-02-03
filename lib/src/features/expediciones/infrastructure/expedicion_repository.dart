@@ -37,12 +37,12 @@ class ExpedicionRepository {
     final expedicionDTOList = await _remoteExpedicionDTOList(
       requestUri: (usuario.test)
           ? Uri.http(
-              dotenv.get('URL', fallback: 'localhost:3001'),
+              dotenv.get('URLTEST', fallback: 'localhost:3001'),
               'api/v1/online/expediciones',
               query,
             )
           : Uri.https(
-              dotenv.get('URL', fallback: 'localhost:3001'),
+              dotenv.get('URLTEST', fallback: 'localhost:3001'),
               'api/v1/online/expediciones',
               query,
             ),

@@ -412,5 +412,7 @@
   "send": "Envoyer",
   "retry": "Réessayer",
   "sectorUnsubscribededSectorMessage": "Secteur désabonné. Veuillez sélectionner un nouveau secteur",
-  "save": "Garder"
+  "save": "Garder",
+  "accept": "Accepter",
+  "cancel": "Annuler"
 }

@@ -6,7 +6,7 @@ import 'package:path_provider/path_provider.dart';
 import '../application/log_service.dart';
 import '../exceptions/app_exception.dart';
 
-const int databaseRelease = 32;
+const int databaseRelease = 33;
 
 Future<void> deleteRemoteDatabase() async {
   const remoteDatabaseName = 'jbm.sqlite';

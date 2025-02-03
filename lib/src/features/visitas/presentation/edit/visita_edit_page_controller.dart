@@ -93,6 +93,7 @@ class VisitaEditPageController
             deleted: false,
             enviada: false,
             tratada: false,
+            competenciaList: [],
           ),
         );
       } else {
@@ -116,6 +117,7 @@ class VisitaEditPageController
             deleted: false,
             enviada: false,
             tratada: false,
+            competenciaList: [],
           ),
         );
       }

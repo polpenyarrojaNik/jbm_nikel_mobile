@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "accept": MessageLookupByLibrary.simpleMessage("Aceitar"),
         "aceptar": MessageLookupByLibrary.simpleMessage("Aceitar"),
         "addresses": MessageLookupByLibrary.simpleMessage("Endereços"),
         "almacenPropio":
@@ -151,6 +152,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("usuário"),
         "bajo": MessageLookupByLibrary.simpleMessage("Baixo"),
         "camera": MessageLookupByLibrary.simpleMessage("Câmera"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Cancelar"),
         "cancelar": MessageLookupByLibrary.simpleMessage("Cancelar"),
         "capacidad": MessageLookupByLibrary.simpleMessage("Capacidade"),
         "catalogos_index_buscarCatalogo":

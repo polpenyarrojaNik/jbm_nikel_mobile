@@ -412,5 +412,7 @@
   "send": "Enviar",
   "retry": "Tentar novamente",
   "sectorUnsubscribededSectorMessage": "Setor não inscrito. Por favor, selecione um novo setor",
-  "save": "Salvar"
+  "save": "Salvar",
+  "accept": "Aceitar",
+  "cancel": "Cancelar"
 }

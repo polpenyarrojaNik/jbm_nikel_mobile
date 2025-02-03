@@ -43,7 +43,7 @@ class Visita with _$Visita {
     VisitaMotivoNoVenta? motivoNoInteres,
     VisitaMotivoNoVenta? motivoNoPedido,
     VisitaSector? sector,
-    VisitaCompetidor? competencia,
+    required List<VisitaCompetidor> competenciaList,
     required bool? almacenPropio,
     required Capacidad? capacidad,
     required FrecuenciaPedido? frecuenciaPedido,

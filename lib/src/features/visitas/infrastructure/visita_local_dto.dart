@@ -9,6 +9,7 @@ import '../../../core/domain/pais.dart';
 import '../../../core/domain/provincia.dart';
 import '../../../core/infrastructure/local_database.dart';
 import '../domain/visita.dart';
+import 'visita_competencia_local_dto.dart';
 
 part 'visita_local_dto.freezed.dart';
 part 'visita_local_dto.g.dart';
@@ -96,7 +97,7 @@ class VisitaLocalDTO
       codigoMotivoNoInteres: visita.motivoNoInteres?.id,
       codigoMotivoNoPedido: visita.motivoNoPedido?.id,
       codigoSector: visita.sector?.id,
-      codigoCompetencia: visita.competencia?.id,
+      codigoCompetencia: null,
       almacenPropio: visita.almacenPropio != null
           ? visita.almacenPropio!
               ? 'S'
@@ -121,7 +122,7 @@ class VisitaLocalDTO
     required VisitaMotivoNoVenta? motivoNoInteres,
     required VisitaMotivoNoVenta? motivoNoPedido,
     required VisitaSector? sector,
-    required VisitaCompetidor? competencia,
+    required List<VisitaCompetidor> competenciaList,
   }) {
     return Visita(
         id: null,
@@ -152,7 +153,7 @@ class VisitaLocalDTO
         motivoNoInteres: motivoNoInteres,
         motivoNoPedido: motivoNoPedido,
         sector: sector,
-        competencia: competencia,
+        competenciaList: competenciaList,
         almacenPropio: almacenPropio == 'S',
         capacidad: getCapacidadFromId(capacidad),
         frecuenciaPedido: getFrecuenciaPedidoFromId(frecuenciaPedido),
@@ -164,6 +165,16 @@ class VisitaLocalDTO
         enviada: (enviada == 'S') ? true : false,
         tratada: (tratada == 'S') ? true : false,
         errorSyncMessage: errorSyncMessage);
+  }
+
+  Map<String, dynamic> toApi(
+      List<VisitaCompetenciaLocalDTO> visitaCompenteciaLocalDtoList) {
+    final json = toJson();
+    json.addAll({
+      'VISITA_COMPETENCIA':
+          visitaCompenteciaLocalDtoList.map((e) => e.toJson()).toList()
+    });
+    return json;
   }
 
   @override

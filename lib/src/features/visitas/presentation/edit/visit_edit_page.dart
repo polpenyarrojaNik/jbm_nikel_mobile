@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:gap/gap.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../../../generated/l10n.dart';
@@ -258,8 +259,8 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
                   getFormValue<InteresCliente?>(formKey, 'interesCliente'),
               pedidoRealizado: getFormValue<bool>(formKey, 'pedidoRealizado'),
               sector: getFormValue<VisitaSector?>(formKey, 'sector'),
-              competencia:
-                  getFormValue<VisitaCompetidor?>(formKey, 'competencia'),
+              competenciaList:
+                  getFormValue<List<VisitaCompetidor>>(formKey, 'competencia'),
               motivoNoInteres: getFormValue<VisitaMotivoNoVenta?>(
                   formKey, 'motivoNoInteres'),
               motivoNoPedido:
@@ -322,7 +323,7 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
   }
 }
 
-class _VisitaForm extends StatefulWidget {
+class _VisitaForm extends ConsumerStatefulWidget {
   const _VisitaForm({
     required this.formKey,
     required this.onSelectedCliente,
@@ -348,12 +349,22 @@ class _VisitaForm extends StatefulWidget {
   final String? paisId;
 
   @override
-  State<_VisitaForm> createState() => _VisitaFormState();
+  ConsumerState<_VisitaForm> createState() => _VisitaFormState();
 }
 
-class _VisitaFormState extends State<_VisitaForm> {
+class _VisitaFormState extends ConsumerState<_VisitaForm> {
+  final List<VisitaCompetidor> competenciaFilterList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    competenciaFilterList.addAll(widget.visita?.competenciaList ?? []);
+  }
+
   @override
   Widget build(BuildContext context) {
+    final stateCompetencia =
+        ref.watch(visitaCompetidorListFormDropdownControllerProvider);
     return FormBuilder(
       key: widget.formKey,
       autovalidateMode: AutovalidateMode.disabled,
@@ -465,9 +476,32 @@ class _VisitaFormState extends State<_VisitaForm> {
               name: 'sector',
               initialValue: widget.visita?.sector,
             ),
-            VisitaCompetidorFormDropdown(
-              name: 'competencia',
-              initialValue: widget.visita?.competencia,
+            stateCompetencia.maybeWhen(
+              data: (competenciaList) =>
+                  FormBuilderField<List<VisitaCompetidor>>(
+                name: 'competencia',
+                builder: (competenciaListField) => InputDecorator(
+                  decoration: InputDecoration(
+                    labelText: S.of(context).competencia,
+                    suffixIcon: IconButton(
+                      onPressed: () => showVisitaCompetidorListDialog(
+                        context,
+                        competenciaFilterList,
+                        competenciaList,
+                      ),
+                      icon: const Icon(Icons.arrow_drop_down),
+                    ),
+                  ),
+                  child: competenciaListField.value != null &&
+                          competenciaListField.value!.isNotEmpty
+                      ? Text(competenciaListField.value!
+                          .map((e) => e.descripcion)
+                          .join(', '))
+                      : const Text(''),
+                ),
+                initialValue: widget.visita?.competenciaList,
+              ),
+              orElse: () => const Center(child: ProgressIndicatorWidget()),
             ),
             FormBuilderTextField(
               name: 'marcasCompetencia',
@@ -584,6 +618,24 @@ class _VisitaFormState extends State<_VisitaForm> {
         ],
       ),
     );
+  }
+
+  Future<void> showVisitaCompetidorListDialog(
+      BuildContext context,
+      List<VisitaCompetidor> competenciaFilterList,
+      List<VisitaCompetidor> competenciaList) async {
+    final newCompetenciaFilterList = await showDialog<List<VisitaCompetidor>?>(
+      context: context,
+      builder: (context) => VisitaCompetidorListFilterDialog(
+        visitCompetitorList: competenciaList,
+        currentVisitCompetitorList: competenciaFilterList,
+      ),
+    );
+
+    if (newCompetenciaFilterList != null) {
+      widget.formKey.currentState
+          ?.patchValue({'competencia': newCompetenciaFilterList});
+    }
   }
 }
 
@@ -1016,6 +1068,114 @@ class VisitaMotivoNoVentaFormDropdown extends ConsumerWidget {
               FormBuilderValidators.required(),
             ])
           : null,
+    );
+  }
+}
+
+class VisitaCompetidorListFilterDialog extends StatefulWidget {
+  VisitaCompetidorListFilterDialog(
+      {super.key,
+      required this.visitCompetitorList,
+      required this.currentVisitCompetitorList});
+
+  final List<VisitaCompetidor> currentVisitCompetitorList;
+  final List<VisitaCompetidor> visitCompetitorList;
+
+  final GlobalKey<FormBuilderState> formKey = GlobalKey<FormBuilderState>();
+
+  @override
+  State<VisitaCompetidorListFilterDialog> createState() =>
+      _UserAuxListFilterDialogState();
+}
+
+class _UserAuxListFilterDialogState
+    extends State<VisitaCompetidorListFilterDialog> {
+  List<VisitaCompetidor> competitorFilterList = [];
+  List<VisitaCompetidor> searchFilterList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    competitorFilterList.addAll(widget.currentVisitCompetitorList);
+    searchFilterList.addAll(widget.visitCompetitorList);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text(S.of(context).competencia),
+      content: SizedBox(
+        height: 500,
+        width: 300.0,
+        child: FormBuilder(
+          key: widget.formKey,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              FormBuilderTextField(
+                name: 'search_text',
+                decoration: InputDecoration(
+                  labelText: S.of(context).search,
+                  suffixIcon: IconButton(
+                    icon: const Icon(Icons.clear),
+                    onPressed: () => widget.formKey.currentState
+                        ?.patchValue({'search_text': null}),
+                  ),
+                ),
+                onChanged: (value) => setState(() {
+                  searchFilterList = widget.visitCompetitorList
+                      .where((e) => e.descripcion
+                          .toLowerCase()
+                          .contains(value?.toLowerCase() ?? ''))
+                      .toList();
+                }),
+              ),
+              const Gap(8),
+              Expanded(
+                child: ListView.separated(
+                  shrinkWrap: true,
+                  itemBuilder: (context, i) => Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(searchFilterList[i].descripcion),
+                      Checkbox(
+                        value:
+                            competitorFilterList.contains(searchFilterList[i]),
+                        onChanged: (value) {
+                          setState(() {
+                            if (value != null && value) {
+                              competitorFilterList.add(searchFilterList[i]);
+                            } else {
+                              competitorFilterList.remove(searchFilterList[i]);
+                            }
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                  separatorBuilder: (context, i) => const Divider(),
+                  itemCount: searchFilterList.length,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      actions: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text(S.of(context).cancel),
+            ),
+            TextButton(
+              onPressed: () => Navigator.pop(context, competitorFilterList),
+              child: Text(S.of(context).accept),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

@@ -7,6 +7,7 @@ import 'package:drift/native.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../features/catalogos/infrastructure/catalogo_dto.dart';
 import '../../features/cliente/infrastructure/cliente_imp_dto.dart';
+import '../../features/visitas/infrastructure/visita_competencia_local_dto.dart';
 import 'log_dto.dart';
 import 'sync_datetime_dto.dart';
 
@@ -59,6 +60,7 @@ const localDatabaseName = 'local_jbm.sqlite';
   ClienteDireccionImpTable,
   CatalogoOrdenTable,
   ClienteImpTable,
+  VisitaCompetenciaLocalTable,
 ])
 class LocalAppDatabase extends _$LocalAppDatabase {
   final bool test;
@@ -70,7 +72,7 @@ class LocalAppDatabase extends _$LocalAppDatabase {
       : test = true,
         super(NativeDatabase.memory());
   @override
-  int get schemaVersion => 17;
+  int get schemaVersion => 18;
 
   @override
   MigrationStrategy get migration {
@@ -230,6 +232,9 @@ class LocalAppDatabase extends _$LocalAppDatabase {
         if (from < 17) {
           await m.deleteTable(visitaLocalTable.tableName);
           await m.createTable(visitaLocalTable);
+        }
+        if (from < 18) {
+          await m.createTable(visitaCompetenciaLocalTable);
         }
       }),
     );

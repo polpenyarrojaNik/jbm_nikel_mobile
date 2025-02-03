@@ -59,7 +59,7 @@ class VisitaDTO with _$VisitaDTO implements Insertable<VisitaDTO> {
     required VisitaMotivoNoVenta? motivoNoInteres,
     required VisitaMotivoNoVenta? motivoNoPedido,
     required VisitaSector? sector,
-    required VisitaCompetidor? competencia,
+    required List<VisitaCompetidor> competenciaList,
     bool? enviada = true,
     bool? tratada = true,
   }) {
@@ -86,7 +86,7 @@ class VisitaDTO with _$VisitaDTO implements Insertable<VisitaDTO> {
       motivoNoInteres: motivoNoInteres,
       motivoNoPedido: motivoNoPedido,
       sector: sector,
-      competencia: competencia,
+      competenciaList: competenciaList,
       almacenPropio: almacenPropio == 'S',
       capacidad: getCapacidadFromId(capacidad),
       frecuenciaPedido: getFrecuenciaPedidoFromId(frecuenciaPedido),

@@ -51,6 +51,8 @@ import '../../features/pedido_venta/infrastructure/pedido_venta_local_dto.dart';
 import '../../features/usuario/application/usuario_notifier.dart';
 import '../../features/usuario/domain/usuario.dart';
 import '../../features/usuario/infrastructure/usuario_service.dart';
+import '../../features/visitas/infrastructure/visita_competencia_dto.dart';
+import '../../features/visitas/infrastructure/visita_competencia_local_dto.dart';
 import '../../features/visitas/infrastructure/visita_competidor_dto.dart';
 import '../../features/visitas/infrastructure/visita_dto.dart';
 import '../../features/visitas/infrastructure/visita_local_dto.dart';
@@ -252,6 +254,7 @@ class SyncService {
       await syncVisitasCompetidor();
       await syncVisitasMotivosNoVenta();
       await syncVisitasSectores();
+      await syncVisitasCompetencia();
       if (isInMainThread) {
         await syncAllAuxiliares();
       }
@@ -790,6 +793,21 @@ class SyncService {
     }
   }
 
+  Future<void> syncVisitasCompetencia() async {
+    try {
+      await _syncTable(
+        apiPath: 'api/v1/sync/visitas/competencia',
+        tableInfo: _remoteDb.visitaCompetenciaTable,
+        fromJson: (e) => VisitaCompetenciaDTO.fromJson(e),
+      );
+    } on AppException catch (e) {
+      log.e(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<void> syncVisitasMotivosNoVenta() async {
     try {
       await _syncTable(
@@ -1113,8 +1131,13 @@ class SyncService {
       final visitasNoEnviadas = await getVisitasNoEnviadas();
       for (var i = 0; i < visitasNoEnviadas.length; i++) {
         try {
+          final visitaCompetenciaDtoList =
+              await _getVisitaCompetenciaLocalDtoList(
+                  visitasNoEnviadas[i].visitaAppId);
           final visitaLocalEnviada = await _remoteCreateVisita(
-              visitasNoEnviadas[i], _usuario!.provisionalToken);
+              visitasNoEnviadas[i],
+              visitaCompetenciaDtoList,
+              _usuario!.provisionalToken);
           await updateVisitaInDB(visitaLocalDto: visitaLocalEnviada);
         } catch (e) {
           log.e(e);
@@ -1159,12 +1182,12 @@ class SyncService {
 
       final requestUri = (_usuario!.test)
           ? Uri.http(
-              // dotenv.get('URL', fallback: 'localhost:3001')
+              // dotenv.get('URLTEST', fallback: 'localhost:3001')
               'jbm-api-test.nikel.es:8080',
               'api/v4/online/pedidos',
             )
           : Uri.https(
-              // dotenv.get('URL', fallback: 'localhost:3001')
+              // dotenv.get('URLTEST', fallback: 'localhost:3001')
               'jbm-api.nikel.es',
               'api/v4/online/pedidos',
             );
@@ -1190,18 +1213,20 @@ class SyncService {
   }
 
   Future<VisitaLocalDTO> _remoteCreateVisita(
-      VisitaLocalDTO visitaLocalDto, String provisionalToken) async {
+      VisitaLocalDTO visitaLocalDto,
+      List<VisitaCompetenciaLocalDTO> visitaCompetenciaDtoList,
+      String provisionalToken) async {
     try {
       final requestUri = (_usuario!.test)
           ? Uri.http(
-              // dotenv.get('URL', fallback: 'localhost:3001')
+              // dotenv.get('URLTEST', fallback: 'localhost:3001')
               'jbm-api-test.nikel.es:8080',
-              'api/v5/online/visitas',
+              'api/v7/online/visitas',
             )
           : Uri.https(
-              // dotenv.get('URL', fallback: 'localhost:3001')
+              // dotenv.get('URLTEST', fallback: 'localhost:3001')
               'jbm-api.nikel.es',
-              'api/v5/online/visitas',
+              'api/v7/online/visitas',
             );
 
       final response = await _dio.postUri(
@@ -1209,7 +1234,7 @@ class SyncService {
         options: Options(
           headers: {'authorization': 'Bearer $provisionalToken'},
         ),
-        data: jsonEncode(visitaLocalDto.toJson()),
+        data: jsonEncode(visitaLocalDto.toApi(visitaCompetenciaDtoList)),
       );
       if (response.statusCode == 200) {
         final json = response.data['data'] as Map<String, dynamic>;
@@ -1289,6 +1314,10 @@ class SyncService {
         if (visitaNoTratadaExisitInVisitas != null) {
           await _localDb.update(_localDb.visitaLocalTable).write(
               const local.VisitaLocalTableCompanion(tratada: Value('S')));
+          await (_localDb.delete(_localDb.visitaCompetenciaLocalTable)
+                ..where((tbl) => tbl.visitaAppId
+                    .equalsNullable(visitaNoTratada.visitaAppId)))
+              .go();
         }
       }
     } catch (e) {
@@ -1432,12 +1461,12 @@ class SyncService {
     try {
       final requestUri = (_usuario!.test)
           ? Uri.http(
-              // dotenv.get('URL', fallback: 'localhost:3001'),
+              // dotenv.get('URLTEST', fallback: 'localhost:3001'),
               'jbm-api-test.nikel.es:8080',
               'api/v1/sync/clientes/$clienteId/contactos/$contactoImpGuid',
             )
           : Uri.https(
-              // dotenv.get('URL', fallback: 'localhost:3001'),
+              // dotenv.get('URLTEST', fallback: 'localhost:3001'),
               'jbm-api.nikel.es',
               'api/v1/sync/clientes/$clienteId/contactos/$contactoImpGuid',
             );
@@ -1466,12 +1495,12 @@ class SyncService {
     try {
       final requestUri = (_usuario!.test)
           ? Uri.http(
-              // dotenv.get('URL', fallback: 'localhost:3001'),
+              // dotenv.get('URLTEST', fallback: 'localhost:3001'),
               'jbm-api-test.nikel.es:8080',
               'api/v1/sync/clientes/$clienteId/direcciones/$direccionImpGuid',
             )
           : Uri.https(
-              // dotenv.get('URL', fallback: 'localhost:3001'),
+              // dotenv.get('URLTEST', fallback: 'localhost:3001'),
               'jbm-api.nikel.es',
               'api/v1/sync/clientes/$clienteId/direcciones/$direccionImpGuid',
             );
@@ -1512,12 +1541,12 @@ class SyncService {
     try {
       final requestUri = (_usuario!.test)
           ? Uri.http(
-              // dotenv.get('URL', fallback: 'localhost:3001'),
+              // dotenv.get('URLTEST', fallback: 'localhost:3001'),
               'jbm-api-test.nikel.es:8080',
               'api/v1/sync/pedidos/$pedidoVentaAppId/check',
             )
           : Uri.https(
-              // dotenv.get('URL', fallback: 'localhost:3001'),
+              // dotenv.get('URLTEST', fallback: 'localhost:3001'),
               'jbm-api.nikel.es',
               'api/v1/sync/pedidos/$pedidoVentaAppId/check',
             );
@@ -1824,12 +1853,12 @@ class SyncService {
     try {
       final requestUri = (_usuario!.test)
           ? Uri.http(
-              // dotenv.get('URL', fallback: 'localhost:3001')
+              // dotenv.get('URLTEST', fallback: 'localhost:3001')
               'jbm-api-test.nikel.es:8080',
               'api/v1/online/clientes/${clienteImpDto.clienteId}/sectores',
             )
           : Uri.https(
-              // dotenv.get('URL', fallback: 'localhost:3001')
+              // dotenv.get('URLTEST', fallback: 'localhost:3001')
               'jbm-api.nikel.es',
               'api/v1/online/clientes/${clienteImpDto.clienteId}/sectores',
             );
@@ -1861,5 +1890,19 @@ class SyncService {
     await (_localDb.delete(_localDb.clienteImpTable)
           ..where((tbl) => tbl.clienteId.equals(clienteId)))
         .go();
+  }
+
+  Future<List<VisitaCompetenciaLocalDTO>> _getVisitaCompetenciaLocalDtoList(
+      String? visitaAppId) async {
+    final visitaCompetenciaDtoList = <VisitaCompetenciaLocalDTO>[];
+
+    if (visitaAppId != null) {
+      visitaCompetenciaDtoList.addAll(
+          await (_localDb.select(_localDb.visitaCompetenciaLocalTable)
+                ..where((tbl) => tbl.visitaAppId.equalsNullable(visitaAppId)))
+              .get());
+    }
+
+    return visitaCompetenciaDtoList;
   }
 }

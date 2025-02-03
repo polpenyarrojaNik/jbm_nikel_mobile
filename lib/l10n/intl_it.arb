@@ -412,5 +412,7 @@
   "send": "Inviare",
   "retry": "Riprova",
   "sectorUnsubscribededSectorMessage": "Settore annullato. Seleziona un nuovo settore",
-  "save": "Salva"
+  "save": "Salva",
+  "accept": "Accettare",
+  "cancel": "Annulla"
 }

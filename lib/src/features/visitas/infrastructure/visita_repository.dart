@@ -33,6 +33,7 @@ import '../domain/visita_id_param.dart';
 import '../domain/visita_motivos_no_venta.dart';
 import '../domain/visita_sector.dart';
 import 'geolocation_entity_dto.dart';
+import 'visita_competencia_local_dto.dart';
 import 'visita_local_dto.dart';
 
 final visitaRepositoryProvider = Provider.autoDispose<VisitaRepository>(
@@ -156,13 +157,17 @@ class VisitaRepository {
   Future<void> upsertVisita(Visita visitaLocal) async {
     try {
       final visitaLocalDto = VisitaLocalDTO.fromDomain(visitaLocal);
+      final visitaCompetenciaLocalDTOList = visitaLocal.competenciaList
+          .map((e) =>
+              VisitaCompetenciaLocalDTO.fromDomain(visitaLocal.visitaAppId!, e))
+          .toList();
       final json = jsonEncode(visitaLocalDto.toJson());
       log.d(json);
-      await insertVisitaInDb(visitaLocalDto);
+      await insertVisitaInDb(visitaLocalDto, visitaCompetenciaLocalDTOList);
 
       try {
-        final visitaLocalEnviada =
-            await _remoteCreateVisita(visitaLocalDto, _usuario!.test);
+        final visitaLocalEnviada = await _remoteCreateVisita(
+            visitaLocalDto, visitaCompetenciaLocalDTOList, _usuario!.test);
         await updateVisitaInDB(visitaLocalDto: visitaLocalEnviada);
       } catch (e) {
         if (e is AppException) {
@@ -194,27 +199,36 @@ class VisitaRepository {
     }
   }
 
-  Future<void> insertVisitaInDb(VisitaLocalDTO visitaLocalDto) async {
+  Future<void> insertVisitaInDb(VisitaLocalDTO visitaLocalDto,
+      List<VisitaCompetenciaLocalDTO> visitaCompetenciaLocalDtoList) async {
     try {
       await _localDb
           .into(_localDb.visitaLocalTable)
           .insertOnConflictUpdate(visitaLocalDto);
+
+      for (final visitaCompetenciaLocalDto in visitaCompetenciaLocalDtoList) {
+        await _localDb
+            .into(_localDb.visitaCompetenciaLocalTable)
+            .insertOnConflictUpdate(visitaCompetenciaLocalDto);
+      }
     } catch (e) {
       throw AppException.insertDataFailure(e.toString());
     }
   }
 
   Future<VisitaLocalDTO> _remoteCreateVisita(
-      VisitaLocalDTO visitaLocalDto, bool test) async {
+      VisitaLocalDTO visitaLocalDto,
+      List<VisitaCompetenciaLocalDTO> visitaCompetenciaDtoList,
+      bool test) async {
     try {
       final requestUri = (test)
           ? Uri.http(
               dotenv.get('URL_TEST', fallback: 'localhost:3001'),
-              'api/v6/online/visitas',
+              'api/v7/online/visitas',
             )
           : Uri.https(
-              dotenv.get('URL', fallback: 'localhost:3001'),
-              'api/v6/online/visitas',
+              dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              'api/v7/online/visitas',
             );
 
       final response = await _dio.postUri(
@@ -222,7 +236,7 @@ class VisitaRepository {
         options: Options(
           headers: {'authorization': 'Bearer ${_usuario?.provisionalToken}'},
         ),
-        data: jsonEncode(visitaLocalDto.toJson()),
+        data: jsonEncode(visitaLocalDto.toApi(visitaCompetenciaDtoList)),
       );
       if (response.statusCode == 200) {
         final json = response.data['data'] as Map<String, dynamic>;
@@ -364,11 +378,15 @@ class VisitaRepository {
                         tbl.id.equalsNullable(visitaLocalDTO.codigoSector)))
                   .getSingleOrNull();
 
-          final visitaCompetenciaDTO = await (_remoteDb
-                  .select(_remoteDb.visitaCompetidorTable)
+          final visitaCompetenciaLocalListDTO = await (_localDb
+                  .select(_localDb.visitaCompetenciaLocalTable)
                 ..where((tbl) =>
-                    tbl.id.equalsNullable(visitaLocalDTO.codigoCompetencia)))
-              .getSingleOrNull();
+                    tbl.visitaAppId.equalsNullable(visitaLocalDTO.visitaAppId)))
+              .get();
+
+          final competenciaDtoList =
+              await _getCompetidorsFromVistasCompetenciaLocalDTOList(
+                  visitaCompetenciaLocalListDTO);
 
           visitaLocalList.add(visitaLocalDTO.toDomain(
             nombreCliente: clienteDTO?.nombreCliente,
@@ -379,7 +397,7 @@ class VisitaRepository {
             motivoNoInteres: motivoNoInteresDTO?.toDomain(),
             motivoNoPedido: motivoNoPedidoDTO?.toDomain(),
             sector: visitaSectorDTO?.toDomain(),
-            competencia: visitaCompetenciaDTO?.toDomain(),
+            competenciaList: competenciaDtoList,
           ));
         }
       }
@@ -551,7 +569,7 @@ class VisitaRepository {
         motivoNoInteres: null,
         motivoNoPedido: null,
         sector: null,
-        competencia: null,
+        competenciaList: [],
       );
     }).get();
   }
@@ -660,7 +678,7 @@ class VisitaRepository {
         motivoNoInteres: null,
         motivoNoPedido: null,
         sector: null,
-        competencia: null,
+        competenciaList: [],
       );
     }).getSingle();
   }
@@ -700,10 +718,15 @@ class VisitaRepository {
           ..where((tbl) => tbl.id.equalsNullable(visitaDTO.codigoSector)))
         .getSingleOrNull();
 
-    final visitaCompetenciaDTO = await (_remoteDb
-            .select(_remoteDb.visitaCompetidorTable)
-          ..where((tbl) => tbl.id.equalsNullable(visitaDTO.codigoCompetencia)))
-        .getSingleOrNull();
+    final visitaCompetenciaLocalListDTO = await (_localDb
+            .select(_localDb.visitaCompetenciaLocalTable)
+          ..where(
+              (tbl) => tbl.visitaAppId.equalsNullable(visitaDTO.visitaAppId)))
+        .get();
+
+    final competenciaDtoList =
+        await _getCompetidorsFromVistasCompetenciaLocalDTOList(
+            visitaCompetenciaLocalListDTO);
 
     return visitaDTO.toDomain(
       nombreCliente: clienteDTO?.nombreCliente,
@@ -714,7 +737,7 @@ class VisitaRepository {
       motivoNoInteres: motivoNoInteresDTO?.toDomain(),
       motivoNoPedido: motivoNoPedidoDTO?.toDomain(),
       sector: visitaSectorDTO?.toDomain(),
-      competencia: visitaCompetenciaDTO?.toDomain(),
+      competenciaList: competenciaDtoList,
     );
   }
 
@@ -1031,7 +1054,7 @@ class VisitaRepository {
       String addressString) async {
     try {
       final requestUri = Uri.http(
-        dotenv.get('URL', fallback: 'localhost:3001'),
+        dotenv.get('URLTEST', fallback: 'localhost:3001'),
         'api/v1/online/geo/address',
         {'addressString': addressString},
       );
@@ -1082,5 +1105,27 @@ class VisitaRepository {
       }
     }
     return addressString.isNotEmpty ? addressString : null;
+  }
+
+  Future<List<VisitaCompetidor>>
+      _getCompetidorsFromVistasCompetenciaLocalDTOList(
+          List<VisitaCompetenciaLocalDTO> visitaCompetenciaLocalListDTO) async {
+    final competidorList = <VisitaCompetidor>[];
+
+    for (var i = 0; i < visitaCompetenciaLocalListDTO.length; i++) {
+      final visitaComeptenciaLocalDto = visitaCompetenciaLocalListDTO[i];
+
+      final competidorDto =
+          await (_remoteDb.select(_remoteDb.visitaCompetidorTable)
+                ..where((tbl) =>
+                    tbl.id.equals(visitaComeptenciaLocalDto.codigoCompetencia)))
+              .getSingleOrNull();
+
+      if (competidorDto != null) {
+        competidorList.add(competidorDto.toDomain());
+      }
+    }
+
+    return competidorList;
   }
 }

@@ -1007,7 +1007,7 @@ class PedidoVentaRepository {
     try {
       final data = await _remoteGetAttachment(
           requestUri: Uri.https(
-            dotenv.get('URL', fallback: 'localhost:3001'),
+            dotenv.get('URLTEST', fallback: 'localhost:3001'),
             'api/v1/online/adjunto/pedido/$pedidoVentaId',
           ),
           provisionalToken: usuario.provisionalToken);
@@ -1147,11 +1147,11 @@ class PedidoVentaRepository {
 
       final requestUri = (test)
           ? Uri.http(
-              dotenv.get('URL', fallback: 'localhost:3001'),
+              dotenv.get('URLTEST', fallback: 'localhost:3001'),
               'api/v4/online/pedidos',
             )
           : Uri.https(
-              dotenv.get('URL', fallback: 'localhost:3001'),
+              dotenv.get('URLTEST', fallback: 'localhost:3001'),
               'api/v4/online/pedidos',
             );
 
@@ -2038,7 +2038,7 @@ class PedidoVentaRepository {
     try {
       try {
         final requestUri = Uri.https(
-          dotenv.get('URL', fallback: 'localhost:3001'),
+          dotenv.get('URLTEST', fallback: 'localhost:3001'),
           'api/v1/online/adjunto/pedido/$pedidoVentaId/exist',
         );
 

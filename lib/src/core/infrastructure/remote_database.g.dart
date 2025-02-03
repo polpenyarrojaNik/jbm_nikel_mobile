@@ -20871,6 +20871,192 @@ class VisitaMotivoNoVentaTableCompanion
   }
 }
 
+class $VisitaCompetenciaTableTable extends VisitaCompetenciaTable
+    with TableInfo<$VisitaCompetenciaTableTable, VisitaCompetenciaDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $VisitaCompetenciaTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _visitaIdMeta =
+      const VerificationMeta('visitaId');
+  @override
+  late final GeneratedColumn<String> visitaId = GeneratedColumn<String>(
+      'COD_VISITA', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _codigoCompetenciaMeta =
+      const VerificationMeta('codigoCompetencia');
+  @override
+  late final GeneratedColumn<int> codigoCompetencia = GeneratedColumn<int>(
+      'CODIGO_COMPETENCIA', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
+  static const VerificationMeta _lastUpdatedMeta =
+      const VerificationMeta('lastUpdated');
+  @override
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
+  @override
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
+      'DELETED', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('N'));
+  @override
+  List<GeneratedColumn> get $columns =>
+      [visitaId, codigoCompetencia, lastUpdated, deleted];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'VISITA_COMPETENCIAS';
+  @override
+  VerificationContext validateIntegrity(
+      Insertable<VisitaCompetenciaDTO> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('COD_VISITA')) {
+      context.handle(_visitaIdMeta,
+          visitaId.isAcceptableOrUnknown(data['COD_VISITA']!, _visitaIdMeta));
+    } else if (isInserting) {
+      context.missing(_visitaIdMeta);
+    }
+    if (data.containsKey('CODIGO_COMPETENCIA')) {
+      context.handle(
+          _codigoCompetenciaMeta,
+          codigoCompetencia.isAcceptableOrUnknown(
+              data['CODIGO_COMPETENCIA']!, _codigoCompetenciaMeta));
+    } else if (isInserting) {
+      context.missing(_codigoCompetenciaMeta);
+    }
+    if (data.containsKey('LAST_UPDATED')) {
+      context.handle(
+          _lastUpdatedMeta,
+          lastUpdated.isAcceptableOrUnknown(
+              data['LAST_UPDATED']!, _lastUpdatedMeta));
+    } else if (isInserting) {
+      context.missing(_lastUpdatedMeta);
+    }
+    if (data.containsKey('DELETED')) {
+      context.handle(_deletedMeta,
+          deleted.isAcceptableOrUnknown(data['DELETED']!, _deletedMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {visitaId, codigoCompetencia};
+  @override
+  VisitaCompetenciaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return VisitaCompetenciaDTO(
+      visitaId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}COD_VISITA'])!,
+      codigoCompetencia: attachedDatabase.typeMapping.read(
+          DriftSqlType.int, data['${effectivePrefix}CODIGO_COMPETENCIA'])!,
+      lastUpdated: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
+    );
+  }
+
+  @override
+  $VisitaCompetenciaTableTable createAlias(String alias) {
+    return $VisitaCompetenciaTableTable(attachedDatabase, alias);
+  }
+}
+
+class VisitaCompetenciaTableCompanion
+    extends UpdateCompanion<VisitaCompetenciaDTO> {
+  final Value<String> visitaId;
+  final Value<int> codigoCompetencia;
+  final Value<DateTime> lastUpdated;
+  final Value<String> deleted;
+  final Value<int> rowid;
+  const VisitaCompetenciaTableCompanion({
+    this.visitaId = const Value.absent(),
+    this.codigoCompetencia = const Value.absent(),
+    this.lastUpdated = const Value.absent(),
+    this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  VisitaCompetenciaTableCompanion.insert({
+    required String visitaId,
+    required int codigoCompetencia,
+    required DateTime lastUpdated,
+    this.deleted = const Value.absent(),
+    this.rowid = const Value.absent(),
+  })  : visitaId = Value(visitaId),
+        codigoCompetencia = Value(codigoCompetencia),
+        lastUpdated = Value(lastUpdated);
+  static Insertable<VisitaCompetenciaDTO> custom({
+    Expression<String>? visitaId,
+    Expression<int>? codigoCompetencia,
+    Expression<DateTime>? lastUpdated,
+    Expression<String>? deleted,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (visitaId != null) 'COD_VISITA': visitaId,
+      if (codigoCompetencia != null) 'CODIGO_COMPETENCIA': codigoCompetencia,
+      if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
+      if (deleted != null) 'DELETED': deleted,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  VisitaCompetenciaTableCompanion copyWith(
+      {Value<String>? visitaId,
+      Value<int>? codigoCompetencia,
+      Value<DateTime>? lastUpdated,
+      Value<String>? deleted,
+      Value<int>? rowid}) {
+    return VisitaCompetenciaTableCompanion(
+      visitaId: visitaId ?? this.visitaId,
+      codigoCompetencia: codigoCompetencia ?? this.codigoCompetencia,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      deleted: deleted ?? this.deleted,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (visitaId.present) {
+      map['COD_VISITA'] = Variable<String>(visitaId.value);
+    }
+    if (codigoCompetencia.present) {
+      map['CODIGO_COMPETENCIA'] = Variable<int>(codigoCompetencia.value);
+    }
+    if (lastUpdated.present) {
+      map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
+    }
+    if (deleted.present) {
+      map['DELETED'] = Variable<String>(deleted.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('VisitaCompetenciaTableCompanion(')
+          ..write('visitaId: $visitaId, ')
+          ..write('codigoCompetencia: $codigoCompetencia, ')
+          ..write('lastUpdated: $lastUpdated, ')
+          ..write('deleted: $deleted, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 class $TrackingEstadoTableTable extends TrackingEstadoTable
     with TableInfo<$TrackingEstadoTableTable, TrackingEstadoDTO> {
   @override
@@ -22377,6 +22563,8 @@ abstract class _$RemoteAppDatabase extends GeneratedDatabase {
       $VisitaSectorTableTable(this);
   late final $VisitaMotivoNoVentaTableTable visitaMotivoNoVentaTable =
       $VisitaMotivoNoVentaTableTable(this);
+  late final $VisitaCompetenciaTableTable visitaCompetenciaTable =
+      $VisitaCompetenciaTableTable(this);
   late final $TrackingEstadoTableTable trackingEstadoTable =
       $TrackingEstadoTableTable(this);
   late final $SectorTableTable sectorTable = $SectorTableTable(this);
@@ -22428,6 +22616,7 @@ abstract class _$RemoteAppDatabase extends GeneratedDatabase {
         visitaCompetidorTable,
         visitaSectorTable,
         visitaMotivoNoVentaTable,
+        visitaCompetenciaTable,
         trackingEstadoTable,
         sectorTable,
         subsectorTable
@@ -37499,6 +37688,146 @@ typedef $$VisitaMotivoNoVentaTableTableProcessedTableManager
         ),
         VisitaMotivoNoVentaDTO,
         PrefetchHooks Function()>;
+typedef $$VisitaCompetenciaTableTableCreateCompanionBuilder
+    = VisitaCompetenciaTableCompanion Function({
+  required String visitaId,
+  required int codigoCompetencia,
+  required DateTime lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+typedef $$VisitaCompetenciaTableTableUpdateCompanionBuilder
+    = VisitaCompetenciaTableCompanion Function({
+  Value<String> visitaId,
+  Value<int> codigoCompetencia,
+  Value<DateTime> lastUpdated,
+  Value<String> deleted,
+  Value<int> rowid,
+});
+
+class $$VisitaCompetenciaTableTableFilterComposer
+    extends FilterComposer<_$RemoteAppDatabase, $VisitaCompetenciaTableTable> {
+  $$VisitaCompetenciaTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get visitaId => $state.composableBuilder(
+      column: $state.table.visitaId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get codigoCompetencia => $state.composableBuilder(
+      column: $state.table.codigoCompetencia,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$VisitaCompetenciaTableTableOrderingComposer extends OrderingComposer<
+    _$RemoteAppDatabase, $VisitaCompetenciaTableTable> {
+  $$VisitaCompetenciaTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get visitaId => $state.composableBuilder(
+      column: $state.table.visitaId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get codigoCompetencia => $state.composableBuilder(
+      column: $state.table.codigoCompetencia,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get lastUpdated => $state.composableBuilder(
+      column: $state.table.lastUpdated,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get deleted => $state.composableBuilder(
+      column: $state.table.deleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+class $$VisitaCompetenciaTableTableTableManager extends RootTableManager<
+    _$RemoteAppDatabase,
+    $VisitaCompetenciaTableTable,
+    VisitaCompetenciaDTO,
+    $$VisitaCompetenciaTableTableFilterComposer,
+    $$VisitaCompetenciaTableTableOrderingComposer,
+    $$VisitaCompetenciaTableTableCreateCompanionBuilder,
+    $$VisitaCompetenciaTableTableUpdateCompanionBuilder,
+    (
+      VisitaCompetenciaDTO,
+      BaseReferences<_$RemoteAppDatabase, $VisitaCompetenciaTableTable,
+          VisitaCompetenciaDTO>
+    ),
+    VisitaCompetenciaDTO,
+    PrefetchHooks Function()> {
+  $$VisitaCompetenciaTableTableTableManager(
+      _$RemoteAppDatabase db, $VisitaCompetenciaTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$VisitaCompetenciaTableTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$VisitaCompetenciaTableTableOrderingComposer(
+              ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> visitaId = const Value.absent(),
+            Value<int> codigoCompetencia = const Value.absent(),
+            Value<DateTime> lastUpdated = const Value.absent(),
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              VisitaCompetenciaTableCompanion(
+            visitaId: visitaId,
+            codigoCompetencia: codigoCompetencia,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String visitaId,
+            required int codigoCompetencia,
+            required DateTime lastUpdated,
+            Value<String> deleted = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              VisitaCompetenciaTableCompanion.insert(
+            visitaId: visitaId,
+            codigoCompetencia: codigoCompetencia,
+            lastUpdated: lastUpdated,
+            deleted: deleted,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$VisitaCompetenciaTableTableProcessedTableManager
+    = ProcessedTableManager<
+        _$RemoteAppDatabase,
+        $VisitaCompetenciaTableTable,
+        VisitaCompetenciaDTO,
+        $$VisitaCompetenciaTableTableFilterComposer,
+        $$VisitaCompetenciaTableTableOrderingComposer,
+        $$VisitaCompetenciaTableTableCreateCompanionBuilder,
+        $$VisitaCompetenciaTableTableUpdateCompanionBuilder,
+        (
+          VisitaCompetenciaDTO,
+          BaseReferences<_$RemoteAppDatabase, $VisitaCompetenciaTableTable,
+              VisitaCompetenciaDTO>
+        ),
+        VisitaCompetenciaDTO,
+        PrefetchHooks Function()>;
 typedef $$TrackingEstadoTableTableCreateCompanionBuilder
     = TrackingEstadoTableCompanion Function({
   required String id,
@@ -38546,6 +38875,9 @@ class $RemoteAppDatabaseManager {
   $$VisitaMotivoNoVentaTableTableTableManager get visitaMotivoNoVentaTable =>
       $$VisitaMotivoNoVentaTableTableTableManager(
           _db, _db.visitaMotivoNoVentaTable);
+  $$VisitaCompetenciaTableTableTableManager get visitaCompetenciaTable =>
+      $$VisitaCompetenciaTableTableTableManager(
+          _db, _db.visitaCompetenciaTable);
   $$TrackingEstadoTableTableTableManager get trackingEstadoTable =>
       $$TrackingEstadoTableTableTableManager(_db, _db.trackingEstadoTable);
   $$SectorTableTableTableManager get sectorTable =>
