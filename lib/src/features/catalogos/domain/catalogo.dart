@@ -22,7 +22,7 @@ class Catalogo with _$Catalogo {
   }) = _Catalogo;
 
   String get getImageUrl {
-    return 'https://${dotenv.get('URLTEST', fallback: 'localhost:3001')}/api/v1/online/adjunto/catalogo/$catalogoId?NOMBRE_ARCHIVO=$nombreFicheroPortada';
+    return 'https://${dotenv.get('URL', fallback: 'localhost:3001')}/api/v1/online/adjunto/catalogo/$catalogoId?NOMBRE_ARCHIVO=$nombreFicheroPortada';
   }
 
   String get nombreCompleto => '$nombre ($idiomaId) $tipoPrecioCatalogoNombre';

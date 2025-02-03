@@ -668,12 +668,12 @@ class ClienteRepository {
       final clienteAdjuntoDTOList = await _remoteGetClienteAdjunto(
           requestUri: (test)
               ? Uri.http(
-                  dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                  dotenv.get('URL', fallback: 'localhost:3001'),
                   'api/v1/online/cliente/adjuntos',
                   query,
                 )
               : Uri.https(
-                  dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                  dotenv.get('URL', fallback: 'localhost:3001'),
                   'api/v1/online/cliente/adjuntos',
                   query,
                 ),
@@ -721,12 +721,12 @@ class ClienteRepository {
         final data = await _remoteGetAttachment(
             requestUri: (test)
                 ? Uri.http(
-                    dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                    dotenv.get('URL', fallback: 'localhost:3001'),
                     'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
                     query,
                   )
                 : Uri.https(
-                    dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                    dotenv.get('URL', fallback: 'localhost:3001'),
                     'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
                     query,
                   ),
@@ -763,12 +763,12 @@ class ClienteRepository {
         final data = await _remoteGetAttachment(
             requestUri: (test)
                 ? Uri.http(
-                    dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                    dotenv.get('URL', fallback: 'localhost:3001'),
                     'api/v1/online/adjunto/rappel/${adjuntoParam.id}',
                     query,
                   )
                 : Uri.https(
-                    dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                    dotenv.get('URL', fallback: 'localhost:3001'),
                     'api/v1/online/adjunto/rappel/${adjuntoParam.id}',
                     query,
                   ),
@@ -1299,11 +1299,11 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       try {
         final requestUri = (usuario.test)
             ? Uri.http(
-                dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                dotenv.get('URL', fallback: 'localhost:3001'),
                 'api/v1/online/clientes/${clienteContactoImpParam.clienteId}/contactos/${clienteContactoImpParam.id!}',
               )
             : Uri.https(
-                dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                dotenv.get('URL', fallback: 'localhost:3001'),
                 'api/v1/online/clientes/${clienteContactoImpParam.clienteId}/contactos/${clienteContactoImpParam.id!}',
               );
 
@@ -1430,11 +1430,11 @@ GROUP BY ARTICULO_ID, DESCRIPCION
 
       final requestUri = (usuario.test)
           ? Uri.http(
-              dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              dotenv.get('URL', fallback: 'localhost:3001'),
               'api/v1/online/clientes/${clienteContactoImpDTO.clienteId}/contacto',
             )
           : Uri.https(
-              dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              dotenv.get('URL', fallback: 'localhost:3001'),
               'api/v1/online/clientes/${clienteContactoImpDTO.clienteId}/contacto',
             );
 
@@ -1615,11 +1615,11 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       try {
         final requestUri = (usuario.test)
             ? Uri.http(
-                dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                dotenv.get('URL', fallback: 'localhost:3001'),
                 'api/v1/online/clientes/${clienteDireccionImpParam.clienteId}/direcciones/${clienteDireccionImpParam.id!}',
               )
             : Uri.https(
-                dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                dotenv.get('URL', fallback: 'localhost:3001'),
                 'api/v1/online/clientes/${clienteDireccionImpParam.clienteId}/direcciones/${clienteDireccionImpParam.id!}',
               );
 
@@ -1765,11 +1765,11 @@ GROUP BY ARTICULO_ID, DESCRIPCION
 
       final requestUri = (usuario.test)
           ? Uri.http(
-              dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              dotenv.get('URL', fallback: 'localhost:3001'),
               'api/v2/online/clientes/${clienteDireccionImpDTO.clienteId}/direccion',
             )
           : Uri.https(
-              dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              dotenv.get('URL', fallback: 'localhost:3001'),
               'api/v2/online/clientes/${clienteDireccionImpDTO.clienteId}/direccion',
             );
 

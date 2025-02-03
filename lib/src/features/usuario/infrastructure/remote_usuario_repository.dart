@@ -25,19 +25,19 @@ class RemoteUsuarioRepository {
   RemoteUsuarioRepository(this._dio);
 
   static final authorizationEndpoint = Uri.https(
-    dotenv.get('URLTEST', fallback: 'localhost:3001'),
+    dotenv.get('URL', fallback: 'localhost:3001'),
     '/api/v5/login',
   );
   static final authorizationTestEndpoint = Uri.http(
-    dotenv.get('URLTEST', fallback: 'localhost:3001'),
+    dotenv.get('URL', fallback: 'localhost:3001'),
     '/api/v5/login',
   );
   static final renewTokenEndpoint = Uri.https(
-    dotenv.get('URLTEST', fallback: 'localhost:3001'),
+    dotenv.get('URL', fallback: 'localhost:3001'),
     '/api/v4/renew-token',
   );
   static final renewTokenTestEndpoint = Uri.http(
-    dotenv.get('URLTEST', fallback: 'localhost:3001'),
+    dotenv.get('URL', fallback: 'localhost:3001'),
     '/api/v4/renew-token',
   );
 
@@ -128,12 +128,12 @@ class RemoteUsuarioRepository {
     try {
       final requestUri = (usuarioDto.isTest)
           ? Uri.http(
-              // dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              // dotenv.get('URL', fallback: 'localhost:3001'),
               'jbm-api-test.nikel.es:8080',
               'api/v1/sync/usuario/${usuarioDto.id}',
             )
           : Uri.https(
-              // dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              // dotenv.get('URL', fallback: 'localhost:3001'),
               'jbm-api.nikel.es',
               'api/v1/sync/usuario/${usuarioDto.id}',
             );

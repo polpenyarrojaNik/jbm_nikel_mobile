@@ -227,7 +227,7 @@ class VisitaRepository {
               'api/v7/online/visitas',
             )
           : Uri.https(
-              dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              dotenv.get('URL', fallback: 'localhost:3001'),
               'api/v7/online/visitas',
             );
 
@@ -1054,7 +1054,7 @@ class VisitaRepository {
       String addressString) async {
     try {
       final requestUri = Uri.http(
-        dotenv.get('URLTEST', fallback: 'localhost:3001'),
+        dotenv.get('URL', fallback: 'localhost:3001'),
         'api/v1/online/geo/address',
         {'addressString': addressString},
       );

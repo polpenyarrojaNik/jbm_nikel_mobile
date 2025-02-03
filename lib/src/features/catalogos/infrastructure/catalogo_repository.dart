@@ -84,12 +84,12 @@ class CatalogoRepository {
       final catalogosDTOList = await _remoteCatalogosList(
         requestUri: (_usuario.test)
             ? Uri.http(
-                dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                dotenv.get('URL', fallback: 'localhost:3001'),
                 'api/v2/online/catalogo',
                 query,
               )
             : Uri.https(
-                dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                dotenv.get('URL', fallback: 'localhost:3001'),
                 'api/v2/online/catalogo',
                 query,
               ),
@@ -143,11 +143,11 @@ class CatalogoRepository {
       final tipoCatalogoDTOList = await _remoteTipoCatalogosList(
         requestUri: (_usuario.test)
             ? Uri.http(
-                dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                dotenv.get('URL', fallback: 'localhost:3001'),
                 'api/v1/online/catalogo/tipo',
               )
             : Uri.https(
-                dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                dotenv.get('URL', fallback: 'localhost:3001'),
                 'api/v1/online/catalogo/tipo',
               ),
         jsonDataSelector: (json) => json['data'] as List<dynamic>,
@@ -165,11 +165,11 @@ class CatalogoRepository {
       final tipoPrecioCatalogoDTOList = await _remoteTipoPrecioCatalogosList(
         requestUri: (_usuario.test)
             ? Uri.http(
-                dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                dotenv.get('URL', fallback: 'localhost:3001'),
                 'api/v1/online/catalogo/precio',
               )
             : Uri.https(
-                dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                dotenv.get('URL', fallback: 'localhost:3001'),
                 'api/v1/online/catalogo/precio',
               ),
         jsonDataSelector: (json) => json['data'] as List<dynamic>,
@@ -186,11 +186,11 @@ class CatalogoRepository {
       final idiomaCatalogoDTOList = await _remoteIdiomaCatalogosList(
         requestUri: (_usuario.test)
             ? Uri.http(
-                dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                dotenv.get('URL', fallback: 'localhost:3001'),
                 'api/v1/online/catalogo/idioma',
               )
             : Uri.https(
-                dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                dotenv.get('URL', fallback: 'localhost:3001'),
                 'api/v1/online/catalogo/idioma',
               ),
         jsonDataSelector: (json) => json['data'] as List<dynamic>,
@@ -239,12 +239,12 @@ class CatalogoRepository {
           final data = await _remoteGetAttachment(
               requestUri: (test)
                   ? Uri.http(
-                      dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                      dotenv.get('URL', fallback: 'localhost:3001'),
                       'api/v1/online/adjunto/catalogo/${adjuntoParam.id}',
                       query,
                     )
                   : Uri.https(
-                      dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                      dotenv.get('URL', fallback: 'localhost:3001'),
                       'api/v1/online/adjunto/catalogo/${adjuntoParam.id}',
                       query,
                     ),
@@ -287,7 +287,7 @@ class CatalogoRepository {
       final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
       final data = await _remoteGetAttachment(
           requestUri: Uri.http(
-            dotenv.get('URLTEST', fallback: 'localhost:3001'),
+            dotenv.get('URL', fallback: 'localhost:3001'),
             'api/v1/online/adjunto/catalogo/${adjuntoParam.id}',
             query,
           ),

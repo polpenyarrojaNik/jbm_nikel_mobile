@@ -522,12 +522,12 @@ SELECT *
       final articuloImageDTOList = await _remoteGetArticuloImagen(
         requestUri: (test)
             ? Uri.http(
-                dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                dotenv.get('URL', fallback: 'localhost:3001'),
                 'api/v1/online/articulo/imagenes',
                 query,
               )
             : Uri.https(
-                dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                dotenv.get('URL', fallback: 'localhost:3001'),
                 'api/v1/online/articulo/imagenes',
                 query,
               ),
@@ -550,12 +550,12 @@ SELECT *
       final articuloDocumentoDTOList = await _remoteGetArticuloDocumentos(
         requestUri: (test)
             ? Uri.http(
-                dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                dotenv.get('URL', fallback: 'localhost:3001'),
                 'api/v1/online/articulo/documentos',
                 query,
               )
             : Uri.https(
-                dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                dotenv.get('URL', fallback: 'localhost:3001'),
                 'api/v1/online/articulo/documentos',
                 query,
               ),
@@ -579,12 +579,12 @@ SELECT *
         final dataImage = await _remoteGetAttachment(
             requestUri: (test)
                 ? Uri.http(
-                    dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                    dotenv.get('URL', fallback: 'localhost:3001'),
                     'api/v1/online/adjunto/articulo/${adjuntoParam.id}/img',
                     query,
                   )
                 : Uri.https(
-                    dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                    dotenv.get('URL', fallback: 'localhost:3001'),
                     'api/v1/online/adjunto/articulo/${adjuntoParam.id}/img',
                     query,
                   ),
@@ -609,12 +609,12 @@ SELECT *
         final data = await _remoteGetAttachment(
             requestUri: (test)
                 ? Uri.http(
-                    dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                    dotenv.get('URL', fallback: 'localhost:3001'),
                     'api/v1/online/adjunto/articulo/${adjuntoParam.id}/doc',
                     query,
                   )
                 : Uri.https(
-                    dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                    dotenv.get('URL', fallback: 'localhost:3001'),
                     'api/v1/online/adjunto/articulo/${adjuntoParam.id}/doc',
                     query,
                   ),
@@ -651,12 +651,12 @@ SELECT *
         final data = await _remoteGetAttachment(
             requestUri: (test)
                 ? Uri.http(
-                    dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                    dotenv.get('URL', fallback: 'localhost:3001'),
                     'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
                     query,
                   )
                 : Uri.https(
-                    dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                    dotenv.get('URL', fallback: 'localhost:3001'),
                     'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
                     query,
                   ),

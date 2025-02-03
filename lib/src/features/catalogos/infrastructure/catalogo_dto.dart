@@ -34,7 +34,7 @@ class CatalogoDTO with _$CatalogoDTO implements Insertable<CatalogoDTO> {
       _$CatalogoDTOFromJson(json);
 
   String get getImageUrl {
-    return 'https://${dotenv.get('URLTEST', fallback: 'localhost:3001')}/api/v1/online/adjunto/catalogo/$catalogoId?NOMBRE_ARCHIVO=$nombreFicheroPortada';
+    return 'https://${dotenv.get('URL', fallback: 'localhost:3001')}/api/v1/online/adjunto/catalogo/$catalogoId?NOMBRE_ARCHIVO=$nombreFicheroPortada';
   }
 
   factory CatalogoDTO.fromDomain(Catalogo catalogo) => CatalogoDTO(

@@ -259,8 +259,9 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
                   getFormValue<InteresCliente?>(formKey, 'interesCliente'),
               pedidoRealizado: getFormValue<bool>(formKey, 'pedidoRealizado'),
               sector: getFormValue<VisitaSector?>(formKey, 'sector'),
-              competenciaList:
-                  getFormValue<List<VisitaCompetidor>>(formKey, 'competencia'),
+              competenciaList: getFormValue<List<VisitaCompetidor>?>(
+                      formKey, 'competencia') ??
+                  [],
               motivoNoInteres: getFormValue<VisitaMotivoNoVenta?>(
                   formKey, 'motivoNoInteres'),
               motivoNoPedido:
