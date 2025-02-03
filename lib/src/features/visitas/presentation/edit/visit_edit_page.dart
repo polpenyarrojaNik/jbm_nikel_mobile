@@ -1114,6 +1114,7 @@ class _UserAuxListFilterDialogState
             children: [
               FormBuilderTextField(
                 name: 'search_text',
+                autocorrect: false,
                 decoration: InputDecoration(
                   labelText: S.of(context).search,
                   suffixIcon: IconButton(
@@ -1131,32 +1132,36 @@ class _UserAuxListFilterDialogState
                 }),
               ),
               const Gap(8),
-              Expanded(
-                child: ListView.separated(
-                  shrinkWrap: true,
-                  itemBuilder: (context, i) => Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(searchFilterList[i].descripcion),
-                      Checkbox(
-                        value:
-                            competitorFilterList.contains(searchFilterList[i]),
-                        onChanged: (value) {
-                          setState(() {
-                            if (value != null && value) {
-                              competitorFilterList.add(searchFilterList[i]);
-                            } else {
-                              competitorFilterList.remove(searchFilterList[i]);
-                            }
-                          });
-                        },
-                      ),
-                    ],
+              if (searchFilterList.isNotEmpty)
+                Expanded(
+                  child: ListView.separated(
+                    shrinkWrap: true,
+                    itemBuilder: (context, i) => Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(searchFilterList[i].descripcion),
+                        Checkbox(
+                          value: competitorFilterList
+                              .contains(searchFilterList[i]),
+                          onChanged: (value) {
+                            setState(() {
+                              if (value != null &&
+                                  value &&
+                                  searchFilterList.isNotEmpty) {
+                                competitorFilterList.add(searchFilterList[i]);
+                              } else {
+                                competitorFilterList
+                                    .remove(searchFilterList[i]);
+                              }
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                    separatorBuilder: (context, i) => const Divider(),
+                    itemCount: searchFilterList.length,
                   ),
-                  separatorBuilder: (context, i) => const Divider(),
-                  itemCount: searchFilterList.length,
                 ),
-              ),
             ],
           ),
         ),
