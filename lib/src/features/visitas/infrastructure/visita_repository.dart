@@ -497,7 +497,7 @@ class VisitaRepository {
       String? clienteId}) async {
     final query = _remoteDb.select(_remoteDb.visitaTable).join(
       [
-        innerJoin(
+        leftOuterJoin(
           _remoteDb.clienteTable,
           _remoteDb.clienteTable.id.equalsExp(_remoteDb.visitaTable.clienteId),
         ),
@@ -581,7 +581,7 @@ class VisitaRepository {
     final countExp = _remoteDb.visitaTable.id.count();
 
     final query = _remoteDb.selectOnly(_remoteDb.visitaTable).join([
-      innerJoin(
+      leftOuterJoin(
         _remoteDb.clienteTable,
         _remoteDb.clienteTable.id.equalsExp(_remoteDb.visitaTable.clienteId),
       ),
