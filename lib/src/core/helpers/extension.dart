@@ -46,7 +46,7 @@ final currencies = [
     pattern: 'S#,##0.##',
   ),
   Currency.create(
-    'USD',
+    'US',
     2,
     pattern: 'S#,##0.##',
   ),
