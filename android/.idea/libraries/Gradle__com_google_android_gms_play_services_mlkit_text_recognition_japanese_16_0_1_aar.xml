@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.android.gms:play-services-mlkit-text-recognition-japanese:16.0.1@aar" external-system-id="GRADLE">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/4725b3cb232985adbd513175f3ac71f5/transformed/jetified-play-services-mlkit-text-recognition-japanese-16.0.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/4725b3cb232985adbd513175f3ac71f5/transformed/jetified-play-services-mlkit-text-recognition-japanese-16.0.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/8.10.2/transforms/d7d39e287216df13e8d25561ee100a22/transformed/jetified-play-services-mlkit-text-recognition-japanese-16.0.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/8.10.2/transforms/d7d39e287216df13e8d25561ee100a22/transformed/jetified-play-services-mlkit-text-recognition-japanese-16.0.1/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.android.gms/play-services-mlkit-text-recognition-japanese/16.0.1/9b62c83ee66cd1c4a6cd3557efbbc922d0513e02/play-services-mlkit-text-recognition-japanese-16.0.1-javadoc.jar!/" />

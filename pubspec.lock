@@ -73,11 +73,12 @@ packages:
   better_open_file:
     dependency: "direct main"
     description:
-      name: better_open_file
-      sha256: "975d700240a1529105b32fb5ff3fe127719e6d980ad8bbf07a43fdc326d71413"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.6.5"
+      path: "."
+      ref: master
+      resolved-ref: "59ac27ef9e52fcb9084266093deb5a23466cd686"
+      url: "https://github.com/AndreLuizNogueira/better_open_file.git"
+    source: git
+    version: "3.6.6"
   boolean_selector:
     dependency: transitive
     description:
