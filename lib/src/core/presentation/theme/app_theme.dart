@@ -26,7 +26,7 @@ class AppTheme {
       inputDecorationTheme: InputDecorationTheme(
         border: const UnderlineInputBorder(),
         filled: true,
-        fillColor: myColorScheme.surfaceContainerHighest,
+        fillColor: myColorScheme.surfaceContainerLow,
       ),
     );
   }
