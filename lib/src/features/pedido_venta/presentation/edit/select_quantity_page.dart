@@ -391,8 +391,7 @@ class _SelecionarCantidadPageState
       } else {
         if (context.mounted) {
           await context.showErrorBar(
-              content: Text(
-                  '${S.of(context).precioNoPuedeSerMenorAlPrecioMinimo}: ${minimumPrice.precio.toString()}'),
+              content: Text(S.of(context).precioNoPuedeSerMenorAlPrecioMinimo),
               duration: const Duration(seconds: 5));
         }
       }
