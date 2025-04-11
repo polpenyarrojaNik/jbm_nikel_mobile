@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import '../../cliente/domain/cliente.dart';
 import 'visita_competidor.dart';
 import 'visita_motivos_no_venta.dart';
 import 'visita_sector.dart';
@@ -13,10 +14,7 @@ class Visita with _$Visita {
   const Visita._();
   const factory Visita({
     String? id,
-    String? clienteId,
-    String? nombreCliente,
-    String? clienteEmail,
-    String? clienteTelefono,
+    Cliente? cliente,
     required bool isClienteProvisional,
     String? clienteProvisionalNombre,
     String? clienteProvisionalEmail,
@@ -60,7 +58,7 @@ class Visita with _$Visita {
 
   String getNombreMostrar() => isClienteProvisional
       ? clienteProvisionalNombre!
-      : '#$clienteId ${(nombreCliente != null) ? nombreCliente : ''}';
+      : '#${cliente!.id} ${(cliente?.nombreCliente != null) ? cliente!.nombreCliente : ''}';
 }
 
 enum FrecuenciaPedido { semanal, mensual, trimestral }

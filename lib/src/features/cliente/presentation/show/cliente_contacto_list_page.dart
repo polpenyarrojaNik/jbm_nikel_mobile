@@ -48,7 +48,7 @@ class ClienteContactoListPage extends ConsumerWidget {
                 ? Expanded(
                     child: ListView.separated(
                       itemCount: clienteContactoList.length,
-                      itemBuilder: (context, i) => _ClienteContactoTile(
+                      itemBuilder: (context, i) => ClienteContactoTile(
                         clienteContacto: clienteContactoList[i],
                         clienteImpParam: ClienteImpParam(
                           clienteId,
@@ -84,9 +84,11 @@ class ClienteContactoListPage extends ConsumerWidget {
   }
 }
 
-class _ClienteContactoTile extends StatelessWidget {
-  const _ClienteContactoTile(
-      {required this.clienteContacto, required this.clienteImpParam});
+class ClienteContactoTile extends StatelessWidget {
+  const ClienteContactoTile(
+      {super.key,
+      required this.clienteContacto,
+      required this.clienteImpParam});
 
   final ClienteContacto clienteContacto;
   final ClienteImpParam clienteImpParam;

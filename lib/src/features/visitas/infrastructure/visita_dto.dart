@@ -2,6 +2,7 @@ import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../core/helpers/formatters.dart';
 import '../../../core/infrastructure/remote_database.dart';
+import '../../cliente/domain/cliente.dart';
 import '../domain/visita.dart';
 
 import '../domain/visita_competidor.dart';
@@ -53,9 +54,7 @@ class VisitaDTO with _$VisitaDTO implements Insertable<VisitaDTO> {
       _$VisitaDTOFromJson(json);
 
   Visita toDomain({
-    required String? nombreCliente,
-    required String? clienteEmail,
-    required String? clienteTelefono,
+    required Cliente? cliente,
     required VisitaMotivoNoVenta? motivoNoInteres,
     required VisitaMotivoNoVenta? motivoNoPedido,
     required VisitaSector? sector,
@@ -66,10 +65,7 @@ class VisitaDTO with _$VisitaDTO implements Insertable<VisitaDTO> {
     return Visita(
       id: id,
       fecha: fecha,
-      clienteId: clienteId,
-      nombreCliente: nombreCliente,
-      clienteEmail: clienteEmail,
-      clienteTelefono: clienteTelefono,
+      cliente: cliente,
       isClienteProvisional: (isClienteProvisional == 'S') ? true : false,
       clienteProvisionalNombre: clienteProvisionalNombre,
       clienteProvisionalEmail: clienteProvisionalEmail,

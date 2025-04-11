@@ -61,6 +61,7 @@ import '../../features/usuario/domain/usuario.dart';
 import '../../features/usuario/presentation/login/login_page.dart';
 import '../../features/visitas/domain/visita_id_param.dart';
 import '../../features/visitas/presentation/edit/visit_edit_page.dart';
+import '../../features/visitas/presentation/edit/visita_edit_select_contact_page.dart';
 import '../../features/visitas/presentation/edit/camera_page.dart';
 import '../../features/visitas/presentation/edit/image_form_page.dart';
 import '../../features/visitas/presentation/index/visita_lista_page.dart';
@@ -194,8 +195,13 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: VisitaDetalleRoute.page, path: '/visita/:id'),
     AutoRoute(page: VisitaEditRoute.page, path: '/visita/edit'),
     AutoRoute(
+        page: VisitaEditSelectContactRoute.page,
+        path: '/visita/edit/contacto',
+        fullscreenDialog: true),
+    CustomRoute(
         page: CameraRoute.page,
         path: '/visita/edit/camera',
+        transitionsBuilder: TransitionsBuilders.fadeIn,
         fullscreenDialog: true),
     AutoRoute(
         page: ImageFormRoute.page,

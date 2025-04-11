@@ -1,6 +1,7 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../core/helpers/formatters.dart';
+import '../../cliente/domain/cliente.dart';
 import '../domain/visita_competidor.dart';
 import '../domain/visita_motivos_no_venta.dart';
 import '../domain/visita_sector.dart';
@@ -72,7 +73,7 @@ class VisitaLocalDTO
   factory VisitaLocalDTO.fromDomain(Visita visita) {
     return VisitaLocalDTO(
       visitaAppId: visita.visitaAppId,
-      clienteId: visita.clienteId,
+      clienteId: visita.cliente?.id,
       fecha: visita.fecha,
       isClienteProvisional: (visita.isClienteProvisional) ? 'S' : 'N',
       clienteProvisionalNombre: visita.clienteProvisionalNombre,
@@ -114,9 +115,7 @@ class VisitaLocalDTO
   }
 
   Visita toDomain({
-    required String? nombreCliente,
-    required String? clienteEmail,
-    required String? clienteTelefono,
+    required Cliente? cliente,
     required Pais? pais,
     required Provincia? provincia,
     required VisitaMotivoNoVenta? motivoNoInteres,
@@ -127,10 +126,7 @@ class VisitaLocalDTO
     return Visita(
         id: null,
         fecha: fecha,
-        clienteId: clienteId,
-        nombreCliente: nombreCliente,
-        clienteEmail: clienteEmail,
-        clienteTelefono: clienteTelefono,
+        cliente: cliente,
         isClienteProvisional: (isClienteProvisional == 'S') ? true : false,
         clienteProvisionalNombre: clienteProvisionalNombre,
         clienteProvisionalEmail: clienteProvisionalEmail,

@@ -71,8 +71,7 @@ class VisitaListaTile extends StatelessWidget {
       required bool isLocal}) {
     context.router.push(
       VisitaDetalleRoute(
-        visitaIdIsLocalParam:
-            VisitaIdIsLocalParam(id: id, isLocal: isLocal, isNew: false),
+        visitaIdIsLocalParam: VisitaIdIsLocalParam(id: id, isLocal: isLocal),
       ),
     );
   }

@@ -67,7 +67,7 @@ class AppFormBuilderSearchableDropdown<T> extends StatelessWidget {
   final OnItemAdded<T>? popupOnItemAdded;
   final OnItemRemoved<T>? popupOnItemRemoved;
   final DropdownSearchPopupItemBuilder<T>? popupSelectionWidget;
-  final Future<List<T>> Function(String)? asyncItems;
+  final Future<List<T>> Function(String, LoadProps?)? asyncItems;
   final PopupProps<T> popupProps;
   final ClearButtonProps? clearButtonProps;
   final TextStyle? dropdownSearchTextStyle;

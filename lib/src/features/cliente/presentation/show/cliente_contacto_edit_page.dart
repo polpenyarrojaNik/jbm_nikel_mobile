@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +16,9 @@ import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/phone_text_form_field.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
+import '../../../../core/routing/app_auto_router.dart';
 import '../../../usuario/application/usuario_notifier.dart';
+import '../../../visitas/domain/image_form_data.dart';
 import '../../domain/cliente_contacto.dart';
 import '../../domain/cliente_contacto_imp.dart';
 import '../../domain/cliente_contacto_imp_edit_page_data.dart';
@@ -25,10 +29,13 @@ import 'cliente_contacto_imp_list_tile.dart';
 
 @RoutePage()
 class ClienteContactoEditPage extends ConsumerWidget {
-  ClienteContactoEditPage({super.key, required this.clienteImpParam});
+  ClienteContactoEditPage(
+      {super.key, required this.clienteImpParam, bool? popItemCreated})
+      : popItemCreated = popItemCreated ?? false;
 
   final ClienteImpParam clienteImpParam;
   final formKey = GlobalKey<FormBuilderState>();
+  final bool popItemCreated;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -73,7 +80,12 @@ class ClienteContactoEditPage extends ConsumerWidget {
                   clienteContactosListProvider(clienteImpParam.clienteId));
               ref.invalidate(clienteContactoImpListInSyncByClienteProvider(
                   clienteImpParam));
-              context.router.maybePop();
+              if (popItemCreated) {
+                context.router
+                    .maybePop(contactoModificacionEditPageData.clienteContacto);
+              } else {
+                context.router.maybePop();
+              }
             }
           }),
     );
@@ -177,6 +189,30 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
         autovalidateMode: AutovalidateMode.disabled,
         child: Column(
           children: [
+            Align(
+              alignment: Alignment.centerRight,
+              child: IconButton(
+                onPressed: () async {
+                  final imageFile =
+                      await context.router.push<File?>(CameraRoute());
+
+                  if (imageFile != null && context.mounted) {
+                    final imageFormData =
+                        await context.router.push<ImageFormData?>(
+                      ImageFormRoute(
+                        imageFile: imageFile,
+                        isFromCliente: true,
+                      ),
+                    );
+
+                    if (imageFormData != null) {
+                      setContactValues(imageFormData);
+                    }
+                  }
+                },
+                icon: const Icon(Icons.qr_code_scanner),
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: FormBuilderTextField(
@@ -287,6 +323,15 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void setContactValues(ImageFormData imageFormData) {
+    formKey.currentState?.patchValue({
+      'nombre': imageFormData.name,
+      'telefono': imageFormData.phoneList[0],
+      'telefono2': imageFormData.phoneList[1],
+      'email': imageFormData.email,
+    });
   }
 }
 

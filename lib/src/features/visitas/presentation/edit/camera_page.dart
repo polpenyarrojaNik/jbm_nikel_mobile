@@ -39,6 +39,8 @@ class CameraPageState extends State<CameraPage> {
 
     _controller = CameraController(cameras[0], ResolutionPreset.high);
 
+    print('Sensor orientation: ${cameras[0].sensorOrientation}');
+
     await _controller.initialize().catchError((e) {
       if (e is CameraException) {
         switch (e.code) {

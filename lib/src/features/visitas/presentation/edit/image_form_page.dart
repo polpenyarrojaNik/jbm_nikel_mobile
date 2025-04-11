@@ -44,19 +44,19 @@ class ImageFormPageController extends _$ImageFormPageController {
 }
 
 @RoutePage()
-class ImageFormPage extends ConsumerStatefulWidget {
-  const ImageFormPage({super.key, required this.imageFile});
+class ImageFormPage extends ConsumerWidget {
+  const ImageFormPage({
+    super.key,
+    required this.imageFile,
+    required this.isFromCliente,
+  });
 
   final File imageFile;
+  final bool isFromCliente;
 
   @override
-  ConsumerState<ImageFormPage> createState() => _ImageFormPageState();
-}
-
-class _ImageFormPageState extends ConsumerState<ImageFormPage> {
-  @override
-  Widget build(BuildContext context) {
-    final state = ref.watch(imageFormPageControllerProvider(widget.imageFile));
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(imageFormPageControllerProvider(imageFile));
     return state.when(
       loading: () => Scaffold(
         appBar: CommonAppBar(
@@ -68,7 +68,8 @@ class _ImageFormPageState extends ConsumerState<ImageFormPage> {
       ),
       data: (ocrRecognizedTextList) => DraggableForm(
         ocrRecognizedTextList: ocrRecognizedTextList,
-        imageFile: widget.imageFile,
+        imageFile: imageFile,
+        isFromCliente: isFromCliente,
       ),
       error: (error, stackTrace) => Scaffold(
         appBar: CommonAppBar(
@@ -83,13 +84,16 @@ class _ImageFormPageState extends ConsumerState<ImageFormPage> {
 }
 
 class DraggableForm extends ConsumerStatefulWidget {
-  const DraggableForm(
-      {super.key,
-      required this.imageFile,
-      required this.ocrRecognizedTextList});
+  const DraggableForm({
+    super.key,
+    required this.imageFile,
+    required this.ocrRecognizedTextList,
+    required this.isFromCliente,
+  });
 
   final File imageFile;
   final List<OcrRecognizedText> ocrRecognizedTextList;
+  final bool isFromCliente;
 
   @override
   ConsumerState<DraggableForm> createState() => _DraggableFormState();

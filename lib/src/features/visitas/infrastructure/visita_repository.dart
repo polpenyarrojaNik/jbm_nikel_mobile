@@ -53,13 +53,6 @@ final visitaLastSyncDateProvider =
   return visitaRepository.getLastSyncDate();
 });
 
-final visitaProvider = FutureProvider.autoDispose
-    .family<Visita, VisitaIdIsLocalParam>((ref, visitaIdIsLocalParam) {
-  final visitaRepository = ref.watch(visitaRepositoryProvider);
-  return visitaRepository.getVisitaById(
-      visitaIdIsLocalParam: visitaIdIsLocalParam);
-});
-
 class VisitaRepository {
   static const pageSize = 100;
   final RemoteAppDatabase _remoteDb;
@@ -389,9 +382,7 @@ class VisitaRepository {
                   visitaCompetenciaLocalListDTO);
 
           visitaLocalList.add(visitaLocalDTO.toDomain(
-            nombreCliente: clienteDTO?.nombreCliente,
-            clienteEmail: clienteDTO?.email,
-            clienteTelefono: clienteDTO?.telefonoFijo,
+            cliente: clienteDTO?.toDomain(clienteDireccionPredeterminada: null),
             provincia: provinciaDTO?.toDomain(),
             pais: paisDTO?.toDomain(),
             motivoNoInteres: motivoNoInteresDTO?.toDomain(),
@@ -563,9 +554,7 @@ class VisitaRepository {
 
       final visitaDTO = row.readTable(_remoteDb.visitaTable);
       return visitaDTO.toDomain(
-        nombreCliente: clienteDTO?.nombreCliente,
-        clienteEmail: clienteDTO?.email,
-        clienteTelefono: clienteDTO?.telefonoFijo,
+        cliente: clienteDTO?.toDomain(clienteDireccionPredeterminada: null),
         motivoNoInteres: null,
         motivoNoPedido: null,
         sector: null,
@@ -672,9 +661,7 @@ class VisitaRepository {
 
       final visitaDTO = row.readTable(_remoteDb.visitaTable);
       return visitaDTO.toDomain(
-        nombreCliente: clienteDTO?.nombreCliente,
-        clienteEmail: clienteDTO?.email,
-        clienteTelefono: clienteDTO?.telefonoFijo,
+        cliente: clienteDTO?.toDomain(clienteDireccionPredeterminada: null),
         motivoNoInteres: null,
         motivoNoPedido: null,
         sector: null,
@@ -729,9 +716,7 @@ class VisitaRepository {
             visitaCompetenciaLocalListDTO);
 
     return visitaDTO.toDomain(
-      nombreCliente: clienteDTO?.nombreCliente,
-      clienteEmail: clienteDTO?.email,
-      clienteTelefono: clienteDTO?.telefonoFijo,
+      cliente: clienteDTO?.toDomain(clienteDireccionPredeterminada: null),
       provincia: provinciaDTO?.toDomain(),
       pais: paisDTO?.toDomain(),
       motivoNoInteres: motivoNoInteresDTO?.toDomain(),

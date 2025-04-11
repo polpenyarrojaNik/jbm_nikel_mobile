@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$VisitaIdIsLocalParam {
   String get id => throw _privateConstructorUsedError;
   bool get isLocal => throw _privateConstructorUsedError;
-  bool get isNew => throw _privateConstructorUsedError;
   String? get createVisitaFromClienteId => throw _privateConstructorUsedError;
 
   /// Create a copy of VisitaIdIsLocalParam
@@ -34,8 +33,7 @@ abstract class $VisitaIdIsLocalParamCopyWith<$Res> {
           $Res Function(VisitaIdIsLocalParam) then) =
       _$VisitaIdIsLocalParamCopyWithImpl<$Res, VisitaIdIsLocalParam>;
   @useResult
-  $Res call(
-      {String id, bool isLocal, bool isNew, String? createVisitaFromClienteId});
+  $Res call({String id, bool isLocal, String? createVisitaFromClienteId});
 }
 
 /// @nodoc
@@ -56,7 +54,6 @@ class _$VisitaIdIsLocalParamCopyWithImpl<$Res,
   $Res call({
     Object? id = null,
     Object? isLocal = null,
-    Object? isNew = null,
     Object? createVisitaFromClienteId = freezed,
   }) {
     return _then(_value.copyWith(
@@ -67,10 +64,6 @@ class _$VisitaIdIsLocalParamCopyWithImpl<$Res,
       isLocal: null == isLocal
           ? _value.isLocal
           : isLocal // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isNew: null == isNew
-          ? _value.isNew
-          : isNew // ignore: cast_nullable_to_non_nullable
               as bool,
       createVisitaFromClienteId: freezed == createVisitaFromClienteId
           ? _value.createVisitaFromClienteId
@@ -88,8 +81,7 @@ abstract class _$$VisitaIdIsLocalParamImplCopyWith<$Res>
       __$$VisitaIdIsLocalParamImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id, bool isLocal, bool isNew, String? createVisitaFromClienteId});
+  $Res call({String id, bool isLocal, String? createVisitaFromClienteId});
 }
 
 /// @nodoc
@@ -107,7 +99,6 @@ class __$$VisitaIdIsLocalParamImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? isLocal = null,
-    Object? isNew = null,
     Object? createVisitaFromClienteId = freezed,
   }) {
     return _then(_$VisitaIdIsLocalParamImpl(
@@ -118,10 +109,6 @@ class __$$VisitaIdIsLocalParamImplCopyWithImpl<$Res>
       isLocal: null == isLocal
           ? _value.isLocal
           : isLocal // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isNew: null == isNew
-          ? _value.isNew
-          : isNew // ignore: cast_nullable_to_non_nullable
               as bool,
       createVisitaFromClienteId: freezed == createVisitaFromClienteId
           ? _value.createVisitaFromClienteId
@@ -135,10 +122,7 @@ class __$$VisitaIdIsLocalParamImplCopyWithImpl<$Res>
 
 class _$VisitaIdIsLocalParamImpl extends _VisitaIdIsLocalParam {
   const _$VisitaIdIsLocalParamImpl(
-      {required this.id,
-      required this.isLocal,
-      required this.isNew,
-      this.createVisitaFromClienteId})
+      {required this.id, required this.isLocal, this.createVisitaFromClienteId})
       : super._();
 
   @override
@@ -146,13 +130,11 @@ class _$VisitaIdIsLocalParamImpl extends _VisitaIdIsLocalParam {
   @override
   final bool isLocal;
   @override
-  final bool isNew;
-  @override
   final String? createVisitaFromClienteId;
 
   @override
   String toString() {
-    return 'VisitaIdIsLocalParam(id: $id, isLocal: $isLocal, isNew: $isNew, createVisitaFromClienteId: $createVisitaFromClienteId)';
+    return 'VisitaIdIsLocalParam(id: $id, isLocal: $isLocal, createVisitaFromClienteId: $createVisitaFromClienteId)';
   }
 
   @override
@@ -162,7 +144,6 @@ class _$VisitaIdIsLocalParamImpl extends _VisitaIdIsLocalParam {
             other is _$VisitaIdIsLocalParamImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.isLocal, isLocal) || other.isLocal == isLocal) &&
-            (identical(other.isNew, isNew) || other.isNew == isNew) &&
             (identical(other.createVisitaFromClienteId,
                     createVisitaFromClienteId) ||
                 other.createVisitaFromClienteId == createVisitaFromClienteId));
@@ -170,7 +151,7 @@ class _$VisitaIdIsLocalParamImpl extends _VisitaIdIsLocalParam {
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, isLocal, isNew, createVisitaFromClienteId);
+      Object.hash(runtimeType, id, isLocal, createVisitaFromClienteId);
 
   /// Create a copy of VisitaIdIsLocalParam
   /// with the given fields replaced by the non-null parameter values.
@@ -187,7 +168,6 @@ abstract class _VisitaIdIsLocalParam extends VisitaIdIsLocalParam {
   const factory _VisitaIdIsLocalParam(
       {required final String id,
       required final bool isLocal,
-      required final bool isNew,
       final String? createVisitaFromClienteId}) = _$VisitaIdIsLocalParamImpl;
   const _VisitaIdIsLocalParam._() : super._();
 
@@ -195,8 +175,6 @@ abstract class _VisitaIdIsLocalParam extends VisitaIdIsLocalParam {
   String get id;
   @override
   bool get isLocal;
-  @override
-  bool get isNew;
   @override
   String? get createVisitaFromClienteId;
 

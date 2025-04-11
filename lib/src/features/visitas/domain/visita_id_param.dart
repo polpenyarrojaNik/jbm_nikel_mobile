@@ -8,7 +8,6 @@ class VisitaIdIsLocalParam with _$VisitaIdIsLocalParam {
   const factory VisitaIdIsLocalParam({
     required String id,
     required bool isLocal,
-    required bool isNew,
     String? createVisitaFromClienteId,
   }) = _VisitaIdIsLocalParam;
 }

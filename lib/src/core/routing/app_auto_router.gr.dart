@@ -823,12 +823,14 @@ class ClienteContactoEditRoute
   ClienteContactoEditRoute({
     Key? key,
     required ClienteImpParam clienteImpParam,
+    bool? popItemCreated,
     List<PageRouteInfo>? children,
   }) : super(
           ClienteContactoEditRoute.name,
           args: ClienteContactoEditRouteArgs(
             key: key,
             clienteImpParam: clienteImpParam,
+            popItemCreated: popItemCreated,
           ),
           initialChildren: children,
         );
@@ -842,6 +844,7 @@ class ClienteContactoEditRoute
       return ClienteContactoEditPage(
         key: args.key,
         clienteImpParam: args.clienteImpParam,
+        popItemCreated: args.popItemCreated,
       );
     },
   );
@@ -851,15 +854,18 @@ class ClienteContactoEditRouteArgs {
   const ClienteContactoEditRouteArgs({
     this.key,
     required this.clienteImpParam,
+    this.popItemCreated,
   });
 
   final Key? key;
 
   final ClienteImpParam clienteImpParam;
 
+  final bool? popItemCreated;
+
   @override
   String toString() {
-    return 'ClienteContactoEditRouteArgs{key: $key, clienteImpParam: $clienteImpParam}';
+    return 'ClienteContactoEditRouteArgs{key: $key, clienteImpParam: $clienteImpParam, popItemCreated: $popItemCreated}';
   }
 }
 
@@ -1862,12 +1868,14 @@ class ImageFormRoute extends PageRouteInfo<ImageFormRouteArgs> {
   ImageFormRoute({
     Key? key,
     required File imageFile,
+    required bool isFromCliente,
     List<PageRouteInfo>? children,
   }) : super(
           ImageFormRoute.name,
           args: ImageFormRouteArgs(
             key: key,
             imageFile: imageFile,
+            isFromCliente: isFromCliente,
           ),
           initialChildren: children,
         );
@@ -1881,6 +1889,7 @@ class ImageFormRoute extends PageRouteInfo<ImageFormRouteArgs> {
       return ImageFormPage(
         key: args.key,
         imageFile: args.imageFile,
+        isFromCliente: args.isFromCliente,
       );
     },
   );
@@ -1890,15 +1899,18 @@ class ImageFormRouteArgs {
   const ImageFormRouteArgs({
     this.key,
     required this.imageFile,
+    required this.isFromCliente,
   });
 
   final Key? key;
 
   final File imageFile;
 
+  final bool isFromCliente;
+
   @override
   String toString() {
-    return 'ImageFormRouteArgs{key: $key, imageFile: $imageFile}';
+    return 'ImageFormRouteArgs{key: $key, imageFile: $imageFile, isFromCliente: $isFromCliente}';
   }
 }
 
@@ -2299,6 +2311,7 @@ class VisitaEditRoute extends PageRouteInfo<VisitaEditRouteArgs> {
     Key? key,
     String? id,
     bool? isNew,
+    bool? isLocal,
     String? createVisitaFromClienteId,
     List<PageRouteInfo>? children,
   }) : super(
@@ -2307,6 +2320,7 @@ class VisitaEditRoute extends PageRouteInfo<VisitaEditRouteArgs> {
             key: key,
             id: id,
             isNew: isNew,
+            isLocal: isLocal,
             createVisitaFromClienteId: createVisitaFromClienteId,
           ),
           initialChildren: children,
@@ -2323,6 +2337,7 @@ class VisitaEditRoute extends PageRouteInfo<VisitaEditRouteArgs> {
         key: args.key,
         id: args.id,
         isNew: args.isNew,
+        isLocal: args.isLocal,
         createVisitaFromClienteId: args.createVisitaFromClienteId,
       );
     },
@@ -2334,6 +2349,7 @@ class VisitaEditRouteArgs {
     this.key,
     this.id,
     this.isNew,
+    this.isLocal,
     this.createVisitaFromClienteId,
   });
 
@@ -2343,11 +2359,60 @@ class VisitaEditRouteArgs {
 
   final bool? isNew;
 
+  final bool? isLocal;
+
   final String? createVisitaFromClienteId;
 
   @override
   String toString() {
-    return 'VisitaEditRouteArgs{key: $key, id: $id, isNew: $isNew, createVisitaFromClienteId: $createVisitaFromClienteId}';
+    return 'VisitaEditRouteArgs{key: $key, id: $id, isNew: $isNew, isLocal: $isLocal, createVisitaFromClienteId: $createVisitaFromClienteId}';
+  }
+}
+
+/// generated route for
+/// [VisitaEditSelectContactPage]
+class VisitaEditSelectContactRoute
+    extends PageRouteInfo<VisitaEditSelectContactRouteArgs> {
+  VisitaEditSelectContactRoute({
+    Key? key,
+    required Cliente cliente,
+    List<PageRouteInfo>? children,
+  }) : super(
+          VisitaEditSelectContactRoute.name,
+          args: VisitaEditSelectContactRouteArgs(
+            key: key,
+            cliente: cliente,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'VisitaEditSelectContactRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<VisitaEditSelectContactRouteArgs>();
+      return VisitaEditSelectContactPage(
+        key: args.key,
+        cliente: args.cliente,
+      );
+    },
+  );
+}
+
+class VisitaEditSelectContactRouteArgs {
+  const VisitaEditSelectContactRouteArgs({
+    this.key,
+    required this.cliente,
+  });
+
+  final Key? key;
+
+  final Cliente cliente;
+
+  @override
+  String toString() {
+    return 'VisitaEditSelectContactRouteArgs{key: $key, cliente: $cliente}';
   }
 }
 

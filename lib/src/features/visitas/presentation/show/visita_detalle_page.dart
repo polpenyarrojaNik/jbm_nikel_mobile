@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../core/helpers/helpers.dart';
 import '../../../../core/presentation/common_widgets/async_value_widget.dart';
 import '../../../../core/presentation/common_widgets/column_field_text_detail.dart';
@@ -16,6 +17,24 @@ import '../../domain/visita.dart';
 import '../../domain/visita_id_param.dart';
 import '../../infrastructure/visita_repository.dart';
 
+part 'visita_detalle_page.g.dart';
+
+@riverpod
+class VisitaDetalleController extends _$VisitaDetalleController {
+  VisitaDetalleController();
+
+  @override
+  Future<Visita> build(
+      String id, bool isLocal, String? createVisitaFromClienteId) async {
+    return ref.watch(visitaRepositoryProvider).getVisitaById(
+          visitaIdIsLocalParam: VisitaIdIsLocalParam(
+              id: id,
+              isLocal: isLocal,
+              createVisitaFromClienteId: createVisitaFromClienteId),
+        );
+  }
+}
+
 @RoutePage()
 class VisitaDetallePage extends ConsumerWidget {
   const VisitaDetallePage({super.key, required this.visitaIdIsLocalParam});
@@ -24,7 +43,10 @@ class VisitaDetallePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(visitaProvider(visitaIdIsLocalParam));
+    final state = ref.watch(visitaDetalleControllerProvider(
+        visitaIdIsLocalParam.id,
+        visitaIdIsLocalParam.isLocal,
+        visitaIdIsLocalParam.createVisitaFromClienteId));
     return Scaffold(
       appBar: CommonAppBar(
         titleText: (S.of(context).visita_show_visitaDetalle_titulo),
@@ -34,7 +56,9 @@ class VisitaDetallePage extends ConsumerWidget {
                 ? [
                     IconButton(
                       onPressed: () => navigateToEditVisita(
-                          context, visitaIdIsLocalParam.id),
+                          context,
+                          visitaIdIsLocalParam.id,
+                          visitaIdIsLocalParam.isLocal),
                       icon: const Icon(Icons.edit),
                     )
                   ]
@@ -70,7 +94,7 @@ class VisitaDetallePage extends ConsumerWidget {
                   style: Theme.of(context).textTheme.titleSmall,
                 ),
               ),
-              if (visita.clienteEmail != null ||
+              if (visita.cliente?.email != null ||
                   visita.clienteProvisionalEmail != null)
                 Row(
                   children: [
@@ -78,14 +102,15 @@ class VisitaDetallePage extends ConsumerWidget {
                       child: ColumnFieldTextDetalle(
                         fieldTitleValue:
                             S.of(context).visitas_show_visitaDetalle_email,
-                        value: visita.clienteEmail ??
+                        value: visita.cliente?.email ??
                             visita.clienteProvisionalEmail!,
                       ),
                     ),
                     const Gap(8),
                     IconButton.filledTonal(
-                      onPressed: () => navigateToEmailApp(visita.clienteEmail ??
-                          visita.clienteProvisionalEmail!),
+                      onPressed: () => navigateToEmailApp(
+                          visita.cliente?.email ??
+                              visita.clienteProvisionalEmail!),
                       visualDensity: VisualDensity.comfortable,
                       icon: Icon(
                         Icons.mail,
@@ -95,7 +120,7 @@ class VisitaDetallePage extends ConsumerWidget {
                     ),
                   ],
                 ),
-              if (visita.clienteTelefono != null ||
+              if (visita.cliente?.telefonoFijo != null ||
                   visita.clienteProvisionalTelefono != null)
                 Row(
                   children: [
@@ -103,14 +128,15 @@ class VisitaDetallePage extends ConsumerWidget {
                       child: ColumnFieldTextDetalle(
                         fieldTitleValue:
                             S.of(context).visitas_show_visitaDetalle_telefono,
-                        value: visita.clienteTelefono ??
+                        value: visita.cliente?.telefonoFijo ??
                             visita.clienteProvisionalTelefono!,
                       ),
                     ),
                     const Gap(8),
                     IconButton.filledTonal(
-                      onPressed: () => openPhoneCall(visita.clienteTelefono ??
-                          visita.clienteProvisionalTelefono!),
+                      onPressed: () => openPhoneCall(
+                          visita.cliente?.telefonoFijo ??
+                              visita.clienteProvisionalTelefono!),
                       visualDensity: VisualDensity.comfortable,
                       icon: Icon(
                         Icons.phone,
@@ -167,7 +193,7 @@ class VisitaDetallePage extends ConsumerWidget {
     );
   }
 
-  void navigateToEditVisita(BuildContext context, String id) {
-    context.router.push(VisitaEditRoute(id: id));
+  void navigateToEditVisita(BuildContext context, String id, bool isLocal) {
+    context.router.push(VisitaEditRoute(id: id, isLocal: isLocal));
   }
 }
