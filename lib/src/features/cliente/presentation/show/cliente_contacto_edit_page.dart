@@ -262,7 +262,7 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
                     .of(context)
                     .cliente_show_clienteContacto_clienteContactoEditPage_telefono1,
                 validator: FormBuilderValidators.compose([
-                  FormBuilderValidators.numeric(checkNullOrEmpty: false),
+                  FormBuilderValidators.phoneNumber(checkNullOrEmpty: false),
                   FormBuilderValidators.maxLength(25, checkNullOrEmpty: false),
                 ]),
               ),
@@ -276,7 +276,7 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
                     .of(context)
                     .cliente_show_clienteContacto_clienteContactoEditPage_telefono2,
                 validator: FormBuilderValidators.compose([
-                  FormBuilderValidators.numeric(checkNullOrEmpty: false),
+                  FormBuilderValidators.phoneNumber(checkNullOrEmpty: false),
                   FormBuilderValidators.maxLength(25, checkNullOrEmpty: false),
                 ]),
               ),
