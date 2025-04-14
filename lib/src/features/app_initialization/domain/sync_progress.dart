@@ -5,6 +5,7 @@ enum SyncProgress {
   syncPedidos,
   syncVisitas,
   syncAuxiliar,
+  syncPromos,
   syncCatalogos,
 }
 
@@ -21,8 +22,10 @@ extension SplashProgressExtension on SyncProgress {
         return 3;
       case SyncProgress.syncVisitas:
         return 4;
-      case SyncProgress.syncCatalogos:
+      case SyncProgress.syncPromos:
         return 5;
+      case SyncProgress.syncCatalogos:
+        return 6;
       case SyncProgress.syncAuxiliar:
         return 99;
     }

@@ -8,6 +8,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../features/visitas/infrastructure/visita_competencia_dto.dart';
 import 'divisa_dto.dart';
 import 'pais_dto.dart';
+import 'promo_dto_cab_dto.dart';
+import 'promo_dto_cliente_dto.dart';
+import 'promo_dto_lin_dto.dart';
 import 'provincia_dto.dart';
 import 'sector_dto.dart';
 import 'subfamilia_dto.dart';
@@ -138,6 +141,9 @@ const remoteDatabaseName = 'jbm.sqlite';
   TrackingEstadoTable,
   SectorTable,
   SubsectorTable,
+  PromoDtoCabTable,
+  PromoDtoClienteTable,
+  PromoDtoLinTable,
 ])
 class RemoteAppDatabase extends _$RemoteAppDatabase {
   final bool test;
@@ -149,7 +155,7 @@ class RemoteAppDatabase extends _$RemoteAppDatabase {
       : test = true,
         super(NativeDatabase.memory());
   @override
-  int get schemaVersion => 33;
+  int get schemaVersion => 34;
 }
 
 Future<DriftIsolate> _createDriftIsolate() async {

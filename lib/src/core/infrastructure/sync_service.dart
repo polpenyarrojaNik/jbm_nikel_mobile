@@ -71,6 +71,9 @@ import 'local_database.dart' as local;
 import 'local_database.dart';
 import 'log_dto.dart';
 import 'log_repository.dart';
+import 'promo_dto_cab_dto.dart';
+import 'promo_dto_cliente_dto.dart';
+import 'promo_dto_lin_dto.dart';
 import 'provincia_dto.dart';
 import 'remote_database.dart';
 import 'remote_response.dart';
@@ -279,6 +282,18 @@ class SyncService {
       await syncSubsectores();
     } catch (e) {
       await insetLog(level: 'I', message: 'Error visits sync');
+
+      rethrow;
+    }
+  }
+
+  Future<void> syncAllPromos() async {
+    try {
+      await syncPromoDtoCab();
+      await syncPromoDtoCliente();
+      await syncPromoDtoLin();
+    } catch (e) {
+      await insetLog(level: 'I', message: 'Error promos sync');
 
       rethrow;
     }
@@ -1447,6 +1462,8 @@ class SyncService {
       splashProgress = SyncProgress.syncVisitas;
       await syncAllAuxiliares();
       splashProgress = SyncProgress.syncAuxiliar;
+      await syncAllPromos();
+      splashProgress = SyncProgress.syncPromos;
       await syncCatalogos(isInMainThread: false);
       splashProgress = SyncProgress.syncCatalogos;
 
@@ -1904,5 +1921,50 @@ class SyncService {
     }
 
     return visitaCompetenciaDtoList;
+  }
+
+  Future<void> syncPromoDtoCab() async {
+    try {
+      await _syncTable(
+        apiPath: 'api/v1/sync/promo_dto_cab',
+        tableInfo: _remoteDb.promoDtoCabTable,
+        fromJson: (e) => PromoDtoCabDTO.fromJson(e),
+      );
+    } on AppException catch (e) {
+      log.e(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncPromoDtoCliente() async {
+    try {
+      await _syncTable(
+        apiPath: 'api/v1/sync/promo_dto_cliente',
+        tableInfo: _remoteDb.promoDtoClienteTable,
+        fromJson: (e) => PromoDtoClienteDTO.fromJson(e),
+      );
+    } on AppException catch (e) {
+      log.e(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncPromoDtoLin() async {
+    try {
+      await _syncTable(
+        apiPath: 'api/v1/sync/promo_dto_lin',
+        tableInfo: _remoteDb.promoDtoLinTable,
+        fromJson: (e) => PromoDtoLineaDTO.fromJson(e),
+      );
+    } on AppException catch (e) {
+      log.e(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
   }
 }
