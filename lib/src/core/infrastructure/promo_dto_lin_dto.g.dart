@@ -14,7 +14,7 @@ _$PromoDtoLineaDTOImpl _$$PromoDtoLineaDTOImplFromJson(
       articuloId: json['ARTICULO_ID'] as String,
       cantidadDesde: (json['CANTIDAD_DESDE'] as num).toInt(),
       precio: (json['PRECIO'] as num).toDouble(),
-      tipoPrecio: (json['TIPO_PRECIO'] as num?)?.toDouble(),
+      tipoPrecio: (json['TIPO_PRECIO'] as num?)?.toInt(),
       dto: (json['DTO'] as num).toDouble(),
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       deleted: json['DELETED'] as String? ?? 'N',

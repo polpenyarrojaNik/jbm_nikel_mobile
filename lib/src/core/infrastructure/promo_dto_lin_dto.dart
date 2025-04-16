@@ -18,7 +18,7 @@ class PromoDtoLineaDTO
     @JsonKey(name: 'ARTICULO_ID') required String articuloId,
     @JsonKey(name: 'CANTIDAD_DESDE') required int cantidadDesde,
     @JsonKey(name: 'PRECIO') required double precio,
-    @JsonKey(name: 'TIPO_PRECIO') required double? tipoPrecio,
+    @JsonKey(name: 'TIPO_PRECIO') required int? tipoPrecio,
     @JsonKey(name: 'DTO') required double dto,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
@@ -57,7 +57,7 @@ class PromoDtoLinTable extends Table {
   TextColumn get articuloId => text().named('ARTICULO_ID')();
   IntColumn get cantidadDesde => integer().named('CANTIDAD_DESDE')();
   RealColumn get precio => real().named('PRECIO')();
-  RealColumn get tipoPrecio => real().nullable().named('TIPO_PRECIO')();
+  IntColumn get tipoPrecio => integer().nullable().named('TIPO_PRECIO')();
   RealColumn get dto => real().named('DTO')();
 
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();

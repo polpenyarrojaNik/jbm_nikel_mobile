@@ -30,6 +30,7 @@ import '../domain/pedido_venta.dart';
 import '../domain/pedido_venta_estado.dart';
 import '../domain/pedido_venta_linea.dart';
 import '../domain/precio.dart';
+import '../domain/precio_promocion.dart';
 import 'pedido_venta_linea_local_dto.dart';
 import 'pedido_venta_local_dto.dart';
 
@@ -955,15 +956,34 @@ class PedidoVentaRepository {
         precio: precioNeto.precio,
         tipoPrecio: precioNeto.tipoPrecio,
       );
+
+      //PROMOCIONES
+      final precioPromoDto = await _getPrecioPromoDto(
+          clienteId, divisaId, articuloId, cantidad, DateTime.now());
+
+      final promoDtoPrecioNeto =
+          precioPromoDto.precio * ((100 - precioPromoDto.dto) / 100);
+      final promoDtoPrecioNetoUnitario = _getPrecioUnitario(
+        precio: promoDtoPrecioNeto,
+        tipoPrecio: precioPromoDto.tipoPrecio,
+      );
+
       // Determinamos si cogemos precios netos o tarifa + descuento, pero comprobando si queremos que coja mejor precio cliente o precio neto cliente (cliente_t.tipo_calculo_precio)
       // N: Normal
       // M: Mejor
 
       if (tipoCalculoPrecio == 'N') {
         if (precioNetoUnitario.isZero) {
-          precio = precioTarifa.precio;
-          tipoPrecio = precioTarifa.tipoPrecio;
-          descuento1 = descuento;
+          // SI Promo es inferior a tarifa -> promo ini
+          if (promoDtoPrecioNetoUnitario < precioNetoTarifaUnitario) {
+            precio = precioPromoDto.precio;
+            tipoPrecio = precioPromoDto.tipoPrecio;
+            descuento1 = precioPromoDto.dto;
+          } else {
+            precio = precioTarifa.precio;
+            tipoPrecio = precioTarifa.tipoPrecio;
+            descuento1 = descuento;
+          }
         } else {
           precio = precioNeto.precio;
           tipoPrecio = precioNeto.tipoPrecio;
@@ -974,9 +994,17 @@ class PedidoVentaRepository {
             (precioNetoTarifaUnitario.isPositive &&
                 precioNetoUnitario.isPositive &&
                 precioNetoTarifaUnitario <= precioNetoUnitario)) {
-          precio = precioTarifa.precio;
-          tipoPrecio = precioTarifa.tipoPrecio;
-          descuento1 = descuento;
+          // SI Promo es inferior a tarifa -> promo ini
+          if (promoDtoPrecioNetoUnitario.isPositive &&
+              promoDtoPrecioNetoUnitario < precioNetoTarifaUnitario) {
+            precio = precioPromoDto.precio;
+            tipoPrecio = precioPromoDto.tipoPrecio;
+            descuento1 = precioPromoDto.dto;
+          } else {
+            precio = precioTarifa.precio;
+            tipoPrecio = precioTarifa.tipoPrecio;
+            descuento1 = descuento;
+          }
         } else {
           precio = precioNeto.precio;
           tipoPrecio = precioNeto.tipoPrecio;
@@ -2153,5 +2181,121 @@ class PedidoVentaRepository {
     }
 
     return null;
+  }
+
+  Future<PrecioPromocion> _getPrecioPromoDto(String clienteId, String divisaId,
+      String articuloId, int cantidad, DateTime fecha) async {
+    final queryResult =
+        await (_remoteDb.select(_remoteDb.promoDtoLinTable).join([
+      innerJoin(
+        _remoteDb.promoDtoCabTable,
+        _remoteDb.promoDtoLinTable.promoDtoId
+                .equalsExp(_remoteDb.promoDtoCabTable.promoDtoId) &
+            _remoteDb.promoDtoLinTable.empresaId
+                .equalsExp(_remoteDb.promoDtoCabTable.empresaId),
+      )
+    ])
+              ..where(_remoteDb.promoDtoCabTable.divisaId.equals(divisaId) &
+                  _remoteDb.promoDtoCabTable.fechaDesde
+                      .isSmallerOrEqualValue(fecha) &
+                  (_remoteDb.promoDtoCabTable.fechaHasta
+                          .isBiggerOrEqualValue(fecha) |
+                      _remoteDb.promoDtoCabTable.fechaHasta.isNull()) &
+                  _remoteDb.promoDtoLinTable.articuloId.equals(articuloId) &
+                  _remoteDb.promoDtoLinTable.cantidadDesde
+                      .isSmallerOrEqualValue(cantidad))
+              ..orderBy([
+                OrderingTerm(
+                    expression: _remoteDb.promoDtoCabTable.fechaHasta,
+                    mode: OrderingMode.desc),
+                OrderingTerm(
+                    expression: _remoteDb.promoDtoLinTable.cantidadDesde,
+                    mode: OrderingMode.desc)
+              ]))
+            .get();
+
+    final filterResult = <TypedResult>[];
+
+    for (var i = 0; i < queryResult.length; i++) {
+      final promoId =
+          queryResult[i].read(_remoteDb.promoDtoCabTable.promoDtoId);
+      final empresaId =
+          queryResult[i].read(_remoteDb.promoDtoCabTable.empresaId)!;
+      final activa =
+          await _getPromoDtoActivaCliente(empresaId, clienteId, promoId!);
+
+      if (activa) {
+        filterResult.add(queryResult[i]);
+      }
+    }
+
+    if (filterResult.isEmpty) {
+      return PrecioPromocion(
+        precio: 0.toMoney(currencyId: divisaId),
+        tipoPrecio: 1,
+        dto: 0,
+      );
+    } else {
+      final promo = filterResult[0];
+      return PrecioPromocion(
+        precio: Money.fromNum(promo.read(_remoteDb.promoDtoLinTable.precio)!,
+            isoCode: divisaId),
+        tipoPrecio: promo.read(_remoteDb.promoDtoLinTable.tipoPrecio) ?? 1,
+        dto: promo.read(_remoteDb.promoDtoLinTable.dto) ?? 0,
+      );
+    }
+  }
+
+  Future<bool> _getPromoDtoActivaCliente(
+      String empresaId, String clienteId, String promoDtoId) async {
+    final promoClienteIncluido = (await (_remoteDb.customSelect(
+      ''' SELECT * FROM promo_dto_cliente WHERE PROMO_DTO_ID = ? AND EMPRESA_ID = ? AND CLIENTE_ID = ? AND TIPO = ?''',
+      variables: [
+        Variable.withString(promoDtoId),
+        Variable.withString(empresaId),
+        Variable.withString(clienteId),
+        Variable.withString('I'),
+      ],
+    )).get())
+        .isNotEmpty;
+
+    final promoClienteExcluido = (await (_remoteDb.customSelect(
+      ''' SELECT * FROM promo_dto_cliente WHERE PROMO_DTO_ID = ? AND EMPRESA_ID = ? AND CLIENTE_ID = ? AND TIPO = ?''',
+      variables: [
+        Variable.withString(promoDtoId),
+        Variable.withString(empresaId),
+        Variable.withString(clienteId),
+        Variable.withString('E'),
+      ],
+    )).get())
+        .isNotEmpty;
+
+    final promoClienteTodosIncluido = (await (_remoteDb.customSelect(
+      ''' SELECT * FROM promo_dto_cliente WHERE PROMO_DTO_ID = ? AND EMPRESA_ID = ? AND CLIENTE_ID = ? AND TIPO = ?''',
+      variables: [
+        Variable.withString(promoDtoId),
+        Variable.withString(empresaId),
+        Variable.withString('*'),
+        Variable.withString('I'),
+      ],
+
+      // _remoteDb.promoDtoClienteTable)
+      //         ..where((promoCliente) =>
+      //             promoCliente.promoDtoId.equals(promoDtoId) &
+      //             promoCliente.empresaId.equalsNullable(empresaId) &
+      //             promoCliente.clienteId.equals('*'.trim()) &
+      //             promoCliente.tipo.equals('I'))
+    ).get()))
+        .isNotEmpty;
+
+    if (promoClienteIncluido) {
+      return true;
+    } else if (promoClienteTodosIncluido && promoClienteExcluido) {
+      return false;
+    } else if (promoClienteTodosIncluido && !promoClienteExcluido) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

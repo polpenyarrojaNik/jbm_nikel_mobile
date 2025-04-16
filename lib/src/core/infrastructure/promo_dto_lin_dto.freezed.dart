@@ -31,7 +31,7 @@ mixin _$PromoDtoLineaDTO {
   @JsonKey(name: 'PRECIO')
   double get precio => throw _privateConstructorUsedError;
   @JsonKey(name: 'TIPO_PRECIO')
-  double? get tipoPrecio => throw _privateConstructorUsedError;
+  int? get tipoPrecio => throw _privateConstructorUsedError;
   @JsonKey(name: 'DTO')
   double get dto => throw _privateConstructorUsedError;
   @JsonKey(name: 'LAST_UPDATED')
@@ -61,7 +61,7 @@ abstract class $PromoDtoLineaDTOCopyWith<$Res> {
       @JsonKey(name: 'ARTICULO_ID') String articuloId,
       @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
       @JsonKey(name: 'PRECIO') double precio,
-      @JsonKey(name: 'TIPO_PRECIO') double? tipoPrecio,
+      @JsonKey(name: 'TIPO_PRECIO') int? tipoPrecio,
       @JsonKey(name: 'DTO') double dto,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
@@ -116,7 +116,7 @@ class _$PromoDtoLineaDTOCopyWithImpl<$Res, $Val extends PromoDtoLineaDTO>
       tipoPrecio: freezed == tipoPrecio
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int?,
       dto: null == dto
           ? _value.dto
           : dto // ignore: cast_nullable_to_non_nullable
@@ -147,7 +147,7 @@ abstract class _$$PromoDtoLineaDTOImplCopyWith<$Res>
       @JsonKey(name: 'ARTICULO_ID') String articuloId,
       @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
       @JsonKey(name: 'PRECIO') double precio,
-      @JsonKey(name: 'TIPO_PRECIO') double? tipoPrecio,
+      @JsonKey(name: 'TIPO_PRECIO') int? tipoPrecio,
       @JsonKey(name: 'DTO') double dto,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
@@ -200,7 +200,7 @@ class __$$PromoDtoLineaDTOImplCopyWithImpl<$Res>
       tipoPrecio: freezed == tipoPrecio
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int?,
       dto: null == dto
           ? _value.dto
           : dto // ignore: cast_nullable_to_non_nullable
@@ -252,7 +252,7 @@ class _$PromoDtoLineaDTOImpl extends _PromoDtoLineaDTO {
   final double precio;
   @override
   @JsonKey(name: 'TIPO_PRECIO')
-  final double? tipoPrecio;
+  final int? tipoPrecio;
   @override
   @JsonKey(name: 'DTO')
   final double dto;
@@ -319,7 +319,7 @@ abstract class _PromoDtoLineaDTO extends PromoDtoLineaDTO {
       @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
       @JsonKey(name: 'CANTIDAD_DESDE') required final int cantidadDesde,
       @JsonKey(name: 'PRECIO') required final double precio,
-      @JsonKey(name: 'TIPO_PRECIO') required final double? tipoPrecio,
+      @JsonKey(name: 'TIPO_PRECIO') required final int? tipoPrecio,
       @JsonKey(name: 'DTO') required final double dto,
       @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
       @JsonKey(name: 'DELETED') final String deleted}) = _$PromoDtoLineaDTOImpl;
@@ -345,7 +345,7 @@ abstract class _PromoDtoLineaDTO extends PromoDtoLineaDTO {
   double get precio;
   @override
   @JsonKey(name: 'TIPO_PRECIO')
-  double? get tipoPrecio;
+  int? get tipoPrecio;
   @override
   @JsonKey(name: 'DTO')
   double get dto;

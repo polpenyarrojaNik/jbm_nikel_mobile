@@ -23050,9 +23050,9 @@ class $PromoDtoLinTableTable extends PromoDtoLinTable
   static const VerificationMeta _tipoPrecioMeta =
       const VerificationMeta('tipoPrecio');
   @override
-  late final GeneratedColumn<double> tipoPrecio = GeneratedColumn<double>(
+  late final GeneratedColumn<int> tipoPrecio = GeneratedColumn<int>(
       'TIPO_PRECIO', aliasedName, true,
-      type: DriftSqlType.double, requiredDuringInsert: false);
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _dtoMeta = const VerificationMeta('dto');
   @override
   late final GeneratedColumn<double> dto = GeneratedColumn<double>(
@@ -23175,7 +23175,7 @@ class $PromoDtoLinTableTable extends PromoDtoLinTable
       precio: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}PRECIO'])!,
       tipoPrecio: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}TIPO_PRECIO']),
+          .read(DriftSqlType.int, data['${effectivePrefix}TIPO_PRECIO']),
       dto: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}DTO'])!,
       lastUpdated: attachedDatabase.typeMapping
@@ -23197,7 +23197,7 @@ class PromoDtoLinTableCompanion extends UpdateCompanion<PromoDtoLineaDTO> {
   final Value<String> articuloId;
   final Value<int> cantidadDesde;
   final Value<double> precio;
-  final Value<double?> tipoPrecio;
+  final Value<int?> tipoPrecio;
   final Value<double> dto;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
@@ -23238,7 +23238,7 @@ class PromoDtoLinTableCompanion extends UpdateCompanion<PromoDtoLineaDTO> {
     Expression<String>? articuloId,
     Expression<int>? cantidadDesde,
     Expression<double>? precio,
-    Expression<double>? tipoPrecio,
+    Expression<int>? tipoPrecio,
     Expression<double>? dto,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
@@ -23264,7 +23264,7 @@ class PromoDtoLinTableCompanion extends UpdateCompanion<PromoDtoLineaDTO> {
       Value<String>? articuloId,
       Value<int>? cantidadDesde,
       Value<double>? precio,
-      Value<double?>? tipoPrecio,
+      Value<int?>? tipoPrecio,
       Value<double>? dto,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted,
@@ -23302,7 +23302,7 @@ class PromoDtoLinTableCompanion extends UpdateCompanion<PromoDtoLineaDTO> {
       map['PRECIO'] = Variable<double>(precio.value);
     }
     if (tipoPrecio.present) {
-      map['TIPO_PRECIO'] = Variable<double>(tipoPrecio.value);
+      map['TIPO_PRECIO'] = Variable<int>(tipoPrecio.value);
     }
     if (dto.present) {
       map['DTO'] = Variable<double>(dto.value);
@@ -41973,7 +41973,7 @@ typedef $$PromoDtoLinTableTableCreateCompanionBuilder
   required String articuloId,
   required int cantidadDesde,
   required double precio,
-  Value<double?> tipoPrecio,
+  Value<int?> tipoPrecio,
   required double dto,
   required DateTime lastUpdated,
   Value<String> deleted,
@@ -41986,7 +41986,7 @@ typedef $$PromoDtoLinTableTableUpdateCompanionBuilder
   Value<String> articuloId,
   Value<int> cantidadDesde,
   Value<double> precio,
-  Value<double?> tipoPrecio,
+  Value<int?> tipoPrecio,
   Value<double> dto,
   Value<DateTime> lastUpdated,
   Value<String> deleted,
@@ -42017,7 +42017,7 @@ class $$PromoDtoLinTableTableFilterComposer
   ColumnFilters<double> get precio => $composableBuilder(
       column: $table.precio, builder: (column) => ColumnFilters(column));
 
-  ColumnFilters<double> get tipoPrecio => $composableBuilder(
+  ColumnFilters<int> get tipoPrecio => $composableBuilder(
       column: $table.tipoPrecio, builder: (column) => ColumnFilters(column));
 
   ColumnFilters<double> get dto => $composableBuilder(
@@ -42055,7 +42055,7 @@ class $$PromoDtoLinTableTableOrderingComposer
   ColumnOrderings<double> get precio => $composableBuilder(
       column: $table.precio, builder: (column) => ColumnOrderings(column));
 
-  ColumnOrderings<double> get tipoPrecio => $composableBuilder(
+  ColumnOrderings<int> get tipoPrecio => $composableBuilder(
       column: $table.tipoPrecio, builder: (column) => ColumnOrderings(column));
 
   ColumnOrderings<double> get dto => $composableBuilder(
@@ -42092,7 +42092,7 @@ class $$PromoDtoLinTableTableAnnotationComposer
   GeneratedColumn<double> get precio =>
       $composableBuilder(column: $table.precio, builder: (column) => column);
 
-  GeneratedColumn<double> get tipoPrecio => $composableBuilder(
+  GeneratedColumn<int> get tipoPrecio => $composableBuilder(
       column: $table.tipoPrecio, builder: (column) => column);
 
   GeneratedColumn<double> get dto =>
@@ -42138,7 +42138,7 @@ class $$PromoDtoLinTableTableTableManager extends RootTableManager<
             Value<String> articuloId = const Value.absent(),
             Value<int> cantidadDesde = const Value.absent(),
             Value<double> precio = const Value.absent(),
-            Value<double?> tipoPrecio = const Value.absent(),
+            Value<int?> tipoPrecio = const Value.absent(),
             Value<double> dto = const Value.absent(),
             Value<DateTime> lastUpdated = const Value.absent(),
             Value<String> deleted = const Value.absent(),
@@ -42162,7 +42162,7 @@ class $$PromoDtoLinTableTableTableManager extends RootTableManager<
             required String articuloId,
             required int cantidadDesde,
             required double precio,
-            Value<double?> tipoPrecio = const Value.absent(),
+            Value<int?> tipoPrecio = const Value.absent(),
             required double dto,
             required DateTime lastUpdated,
             Value<String> deleted = const Value.absent(),
