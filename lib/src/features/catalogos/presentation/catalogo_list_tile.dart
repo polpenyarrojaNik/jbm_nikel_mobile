@@ -13,19 +13,24 @@ import 'catalogo_favorito_controller.dart';
 import 'catalogo_orden_controller.dart';
 
 class CatalogoListTile extends ConsumerWidget {
-  const CatalogoListTile(
-      {super.key, required this.catalogo, required this.boxConstrains});
+  const CatalogoListTile({
+    super.key,
+    required this.catalogo,
+    required this.boxConstrains,
+  });
 
   final Catalogo catalogo;
   final BoxConstraints boxConstrains;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final stateFavorite =
-        ref.watch(catalogoFavoritoControllerProvider(catalogo.catalogoId));
+    final stateFavorite = ref.watch(
+      catalogoFavoritoControllerProvider(catalogo.catalogoId),
+    );
 
-    final stateCatalogoOrden =
-        ref.watch(catalogoOrdenControllerProvider.saveCatalogoAbierto);
+    final stateCatalogoOrden = ref.watch(
+      catalogoOrdenControllerProvider.saveCatalogoAbierto,
+    );
 
     final state = ref.watch(catalogoAdjuntoControllerProvider);
 
@@ -59,34 +64,45 @@ class CatalogoListTile extends ConsumerWidget {
                       Flexible(
                         child: Text(
                           catalogo.nombreCompleto,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyLarge
-                              ?.copyWith(
-                                  color: Theme.of(context).colorScheme.primary),
+                          style: Theme.of(
+                            context,
+                          ).textTheme.bodyLarge?.copyWith(
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
                         ),
                       ),
                       stateFavorite.maybeWhen(
                         orElse: () => const ProgressIndicatorWidget(),
-                        error: (error, _) => const IconButton(
-                            onPressed: null, icon: Icon(Icons.error)),
-                        favorite: () => IconButton(
-                          onPressed: () => removeCatlalogoFavorite(
-                            ref: ref,
-                            catalogo: catalogo,
-                          ),
-                          icon: Icon(Icons.star,
-                              color: Theme.of(context).colorScheme.primary),
-                        ),
-                        noFavorite: () => IconButton(
-                          onPressed: () => setCatlalogoToFavorite(
-                            ref: ref,
-                            catalogo: catalogo,
-                          ),
-                          icon: Icon(Icons.star_outline,
-                              color: Theme.of(context).colorScheme.primary),
-                        ),
-                      )
+                        error:
+                            (error, _) => const IconButton(
+                              onPressed: null,
+                              icon: Icon(Icons.error),
+                            ),
+                        favorite:
+                            () => IconButton(
+                              onPressed:
+                                  () => removeCatlalogoFavorite(
+                                    ref: ref,
+                                    catalogo: catalogo,
+                                  ),
+                              icon: Icon(
+                                Icons.star,
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
+                            ),
+                        noFavorite:
+                            () => IconButton(
+                              onPressed:
+                                  () => setCatlalogoToFavorite(
+                                    ref: ref,
+                                    catalogo: catalogo,
+                                  ),
+                              icon: Icon(
+                                Icons.star_outline,
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
+                            ),
+                      ),
                     ],
                   ),
                   gapH8,
@@ -95,17 +111,18 @@ class CatalogoListTile extends ConsumerWidget {
                       child: CachedNetworkImage(
                         imageUrl: catalogo.getImageUrl,
                         fit: BoxFit.contain,
-                        progressIndicatorBuilder: (context, url, progress) =>
-                            Image.asset(
-                          // width: 300,
-                          fit: BoxFit.contain,
-                          'assets/image-placeholder.png',
-                        ),
-                        errorWidget: (context, error, _) => Image.asset(
-                          // width: 300,
-                          fit: BoxFit.contain,
-                          'assets/image-placeholder.png',
-                        ),
+                        progressIndicatorBuilder:
+                            (context, url, progress) => Image.asset(
+                              // width: 300,
+                              fit: BoxFit.contain,
+                              'assets/image-placeholder.png',
+                            ),
+                        errorWidget:
+                            (context, error, _) => Image.asset(
+                              // width: 300,
+                              fit: BoxFit.contain,
+                              'assets/image-placeholder.png',
+                            ),
                       ),
                     ),
                   ),
@@ -119,7 +136,9 @@ class CatalogoListTile extends ConsumerWidget {
   }
 
   void downloadAttachment(
-      WidgetRef ref, SaveCatalogoAbiertoMutation stateCatalogoOrden) async {
+    WidgetRef ref,
+    SaveCatalogoAbiertoMutation stateCatalogoOrden,
+  ) async {
     unawaited(stateCatalogoOrden(catalogo.catalogoId));
     await ref
         .read(catalogoAdjuntoControllerProvider.notifier)
@@ -132,15 +151,19 @@ class CatalogoListTile extends ConsumerWidget {
         );
   }
 
-  void setCatlalogoToFavorite(
-      {required WidgetRef ref, required Catalogo catalogo}) {
+  void setCatlalogoToFavorite({
+    required WidgetRef ref,
+    required Catalogo catalogo,
+  }) {
     ref
         .read(catalogoFavoritoControllerProvider(catalogo.catalogoId).notifier)
         .setCatalogoFavorite(catalogo);
   }
 
-  void removeCatlalogoFavorite(
-      {required WidgetRef ref, required Catalogo catalogo}) {
+  void removeCatlalogoFavorite({
+    required WidgetRef ref,
+    required Catalogo catalogo,
+  }) {
     ref
         .read(catalogoFavoritoControllerProvider(catalogo.catalogoId).notifier)
         .removeCatalogoFavorite(catalogo.nombreFicheroCatalogo);

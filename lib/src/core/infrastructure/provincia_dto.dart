@@ -26,12 +26,13 @@ class ProvinciaDTO with _$ProvinciaDTO implements Insertable<ProvinciaDTO> {
 
   Provincia toDomain() {
     return Provincia(
-        paisId: paisId!,
-        regionId: regionId!,
-        provinciaId: provinciaId,
-        provincia: provincia,
-        lastUpdate: lastUpdated,
-        deleted: (deleted == 'S') ? true : false);
+      paisId: paisId!,
+      regionId: regionId!,
+      provinciaId: provinciaId,
+      provincia: provincia,
+      lastUpdate: lastUpdated,
+      deleted: (deleted == 'S') ? true : false,
+    );
   }
 
   @override

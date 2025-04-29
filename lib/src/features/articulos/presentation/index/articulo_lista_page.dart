@@ -59,8 +59,9 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
         orElse: () {},
         data: (notificationId) {
           if (notificationId != null) {
-            context.router
-                .push(NotificationDetailRoute(notificationId: notificationId));
+            context.router.push(
+              NotificationDetailRoute(notificationId: notificationId),
+            );
           }
         },
       ),
@@ -78,25 +79,29 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
           isSearchingFirst: widget.isSearchArticuloForForm,
           title: S.of(context).articulo_index_titulo,
           searchTitle: S.of(context).articulo_index_buscarArticulos,
-          onChanged: (searchText) => _debouncer.run(
-            () => ref.read(articulosSearchQueryStateProvider.notifier).state =
-                searchText,
-          ),
+          onChanged:
+              (searchText) => _debouncer.run(
+                () =>
+                    ref.read(articulosSearchQueryStateProvider.notifier).state =
+                        searchText,
+              ),
         ),
         body: stateSync.maybeWhen(
-          orElse: () => ArticleListViewWidget(
-            stateSync: stateSync,
-            ref: ref,
-            isSearchArticuloForForm: widget.isSearchArticuloForForm,
-          ),
-          synchronized: () => RefreshIndicator(
-            onRefresh: () => refreshArticleDb(ref),
-            child: ArticleListViewWidget(
-              stateSync: stateSync,
-              ref: ref,
-              isSearchArticuloForForm: widget.isSearchArticuloForForm,
-            ),
-          ),
+          orElse:
+              () => ArticleListViewWidget(
+                stateSync: stateSync,
+                ref: ref,
+                isSearchArticuloForForm: widget.isSearchArticuloForForm,
+              ),
+          synchronized:
+              () => RefreshIndicator(
+                onRefresh: () => refreshArticleDb(ref),
+                child: ArticleListViewWidget(
+                  stateSync: stateSync,
+                  ref: ref,
+                  isSearchArticuloForForm: widget.isSearchArticuloForForm,
+                ),
+              ),
         ),
       ),
     );
@@ -114,7 +119,8 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
     } catch (e) {
       if (mounted) {
         await context.showErrorBar(
-            content: Text(S.of(context).noSeHaPodidoSincronizar));
+          content: Text(S.of(context).noSeHaPodidoSincronizar),
+        );
       }
     }
   }
@@ -134,8 +140,9 @@ class ArticleListViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final stateArticuloListCount = ref
-        .watch(articuloIndexScreenControllerProvider(isSearchArticuloForForm));
+    final stateArticuloListCount = ref.watch(
+      articuloIndexScreenControllerProvider(isSearchArticuloForForm),
+    );
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
@@ -146,38 +153,60 @@ class ArticleListViewWidget extends StatelessWidget {
             final stateLastSyncDate = ref.watch(articuloLastSyncDateProvider);
 
             return stateLastSyncDate.when(
-                data: (fechaUltimaSync) =>
-                    UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
-                error: (_, __) => Container(),
-                loading: () => const ProgressIndicatorWidget());
+              data:
+                  (fechaUltimaSync) =>
+                      UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
+              error: (_, __) => Container(),
+              loading: () => const ProgressIndicatorWidget(),
+            );
           },
         ),
         gapH8,
         Expanded(
           child: stateArticuloListCount.maybeWhen(
-            data: (count) => ListView.separated(
-              separatorBuilder: (context, i) => const Divider(),
-              shrinkWrap: true,
-              physics: const AlwaysScrollableScrollPhysics(),
-              itemCount: count,
-              itemBuilder: (context, i) => ref
-                  .watch(ArticuloIndexScreenPaginatedControllerProvider(
-                      page: i ~/ ArticuloRepository.pageSize,
-                      isSearchArticuloForForm: isSearchArticuloForForm))
-                  .maybeWhen(
-                    data: (articuloList) => GestureDetector(
-                      onTap: () => (!isSearchArticuloForForm)
-                          ? navigateToArticuloDetalPage(context,
-                              articuloList[i % ArticuloRepository.pageSize].id)
-                          : selectArticuloForFromPage(context, ref,
-                              articuloList[i % ArticuloRepository.pageSize]),
-                      child: ArticuloListaTile(
-                        articulo: articuloList[i % ArticuloRepository.pageSize],
-                      ),
-                    ),
-                    orElse: () => const ArticuloListShimmer(),
-                  ),
-            ),
+            data:
+                (count) => ListView.separated(
+                  separatorBuilder: (context, i) => const Divider(),
+                  shrinkWrap: true,
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  itemCount: count,
+                  itemBuilder:
+                      (context, i) => ref
+                          .watch(
+                            ArticuloIndexScreenPaginatedControllerProvider(
+                              page: i ~/ ArticuloRepository.pageSize,
+                              isSearchArticuloForForm: isSearchArticuloForForm,
+                            ),
+                          )
+                          .maybeWhen(
+                            data:
+                                (articuloList) => GestureDetector(
+                                  onTap:
+                                      () =>
+                                          (!isSearchArticuloForForm)
+                                              ? navigateToArticuloDetalPage(
+                                                context,
+                                                articuloList[i %
+                                                        ArticuloRepository
+                                                            .pageSize]
+                                                    .id,
+                                              )
+                                              : selectArticuloForFromPage(
+                                                context,
+                                                ref,
+                                                articuloList[i %
+                                                    ArticuloRepository
+                                                        .pageSize],
+                                              ),
+                                  child: ArticuloListaTile(
+                                    articulo:
+                                        articuloList[i %
+                                            ArticuloRepository.pageSize],
+                                  ),
+                                ),
+                            orElse: () => const ArticuloListShimmer(),
+                          ),
+                ),
             orElse: () => const ProgressIndicatorWidget(),
           ),
         ),
@@ -190,7 +219,10 @@ class ArticleListViewWidget extends StatelessWidget {
   }
 
   void selectArticuloForFromPage(
-      BuildContext context, WidgetRef ref, Articulo articulo) {
+    BuildContext context,
+    WidgetRef ref,
+    Articulo articulo,
+  ) {
     ref.read(articuloForFromStateProvider.notifier).state = articulo;
     context.router.maybePop();
   }

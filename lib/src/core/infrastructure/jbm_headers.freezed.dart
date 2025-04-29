@@ -12,7 +12,8 @@ part of 'jbm_headers.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 JBMHeaders _$JBMHeadersFromJson(Map<String, dynamic> json) {
   return _JBMHeaders.fromJson(json);
@@ -37,8 +38,9 @@ mixin _$JBMHeaders {
 /// @nodoc
 abstract class $JBMHeadersCopyWith<$Res> {
   factory $JBMHeadersCopyWith(
-          JBMHeaders value, $Res Function(JBMHeaders) then) =
-      _$JBMHeadersCopyWithImpl<$Res, JBMHeaders>;
+    JBMHeaders value,
+    $Res Function(JBMHeaders) then,
+  ) = _$JBMHeadersCopyWithImpl<$Res, JBMHeaders>;
   @useResult
   $Res call({String? etag, int? maxPage, int? totalRows});
 }
@@ -62,20 +64,26 @@ class _$JBMHeadersCopyWithImpl<$Res, $Val extends JBMHeaders>
     Object? maxPage = freezed,
     Object? totalRows = freezed,
   }) {
-    return _then(_value.copyWith(
-      etag: freezed == etag
-          ? _value.etag
-          : etag // ignore: cast_nullable_to_non_nullable
-              as String?,
-      maxPage: freezed == maxPage
-          ? _value.maxPage
-          : maxPage // ignore: cast_nullable_to_non_nullable
-              as int?,
-      totalRows: freezed == totalRows
-          ? _value.totalRows
-          : totalRows // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            etag:
+                freezed == etag
+                    ? _value.etag
+                    : etag // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            maxPage:
+                freezed == maxPage
+                    ? _value.maxPage
+                    : maxPage // ignore: cast_nullable_to_non_nullable
+                        as int?,
+            totalRows:
+                freezed == totalRows
+                    ? _value.totalRows
+                    : totalRows // ignore: cast_nullable_to_non_nullable
+                        as int?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -83,8 +91,9 @@ class _$JBMHeadersCopyWithImpl<$Res, $Val extends JBMHeaders>
 abstract class _$$JBMHeadersImplCopyWith<$Res>
     implements $JBMHeadersCopyWith<$Res> {
   factory _$$JBMHeadersImplCopyWith(
-          _$JBMHeadersImpl value, $Res Function(_$JBMHeadersImpl) then) =
-      __$$JBMHeadersImplCopyWithImpl<$Res>;
+    _$JBMHeadersImpl value,
+    $Res Function(_$JBMHeadersImpl) then,
+  ) = __$$JBMHeadersImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? etag, int? maxPage, int? totalRows});
@@ -95,8 +104,9 @@ class __$$JBMHeadersImplCopyWithImpl<$Res>
     extends _$JBMHeadersCopyWithImpl<$Res, _$JBMHeadersImpl>
     implements _$$JBMHeadersImplCopyWith<$Res> {
   __$$JBMHeadersImplCopyWithImpl(
-      _$JBMHeadersImpl _value, $Res Function(_$JBMHeadersImpl) _then)
-      : super(_value, _then);
+    _$JBMHeadersImpl _value,
+    $Res Function(_$JBMHeadersImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of JBMHeaders
   /// with the given fields replaced by the non-null parameter values.
@@ -107,20 +117,25 @@ class __$$JBMHeadersImplCopyWithImpl<$Res>
     Object? maxPage = freezed,
     Object? totalRows = freezed,
   }) {
-    return _then(_$JBMHeadersImpl(
-      etag: freezed == etag
-          ? _value.etag
-          : etag // ignore: cast_nullable_to_non_nullable
-              as String?,
-      maxPage: freezed == maxPage
-          ? _value.maxPage
-          : maxPage // ignore: cast_nullable_to_non_nullable
-              as int?,
-      totalRows: freezed == totalRows
-          ? _value.totalRows
-          : totalRows // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
+    return _then(
+      _$JBMHeadersImpl(
+        etag:
+            freezed == etag
+                ? _value.etag
+                : etag // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        maxPage:
+            freezed == maxPage
+                ? _value.maxPage
+                : maxPage // ignore: cast_nullable_to_non_nullable
+                    as int?,
+        totalRows:
+            freezed == totalRows
+                ? _value.totalRows
+                : totalRows // ignore: cast_nullable_to_non_nullable
+                    as int?,
+      ),
+    );
   }
 }
 
@@ -169,17 +184,16 @@ class _$JBMHeadersImpl extends _JBMHeaders {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$JBMHeadersImplToJson(
-      this,
-    );
+    return _$$JBMHeadersImplToJson(this);
   }
 }
 
 abstract class _JBMHeaders extends JBMHeaders {
-  const factory _JBMHeaders(
-      {final String? etag,
-      final int? maxPage,
-      final int? totalRows}) = _$JBMHeadersImpl;
+  const factory _JBMHeaders({
+    final String? etag,
+    final int? maxPage,
+    final int? totalRows,
+  }) = _$JBMHeadersImpl;
   const _JBMHeaders._() : super._();
 
   factory _JBMHeaders.fromJson(Map<String, dynamic> json) =

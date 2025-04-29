@@ -8,8 +8,8 @@ part 'cliente_direccion_seleccionar_pais_search_controller.g.dart';
 
 final clienteDireccionSeleccionarPaisSearchQueryStateProvider =
     StateProvider.autoDispose<String>((ref) {
-  return '';
-});
+      return '';
+    });
 
 @riverpod
 class ClienteDireccionSeleccionarPaisPageController
@@ -18,8 +18,12 @@ class ClienteDireccionSeleccionarPaisPageController
 
   @override
   Future<List<Pais>> build() {
-    return ref.read(clienteRepositoryProvider).getPaisList(
-        searchText:
-            ref.watch(clienteDireccionSeleccionarPaisSearchQueryStateProvider));
+    return ref
+        .read(clienteRepositoryProvider)
+        .getPaisList(
+          searchText: ref.watch(
+            clienteDireccionSeleccionarPaisSearchQueryStateProvider,
+          ),
+        );
   }
 }

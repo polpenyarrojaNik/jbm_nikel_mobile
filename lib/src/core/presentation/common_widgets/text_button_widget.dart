@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 class TextButtonWidget extends StatelessWidget {
-  const TextButtonWidget(
-      {super.key,
-      required this.titleText,
-      required this.entityId,
-      required this.navigateFunction,
-      required this.params});
+  const TextButtonWidget({
+    super.key,
+    required this.titleText,
+    required this.entityId,
+    required this.navigateFunction,
+    required this.params,
+  });
 
   final String titleText;
   final String entityId;

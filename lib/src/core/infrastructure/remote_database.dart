@@ -65,95 +65,91 @@ part 'remote_database.g.dart';
 
 SendPort? isolateRemoteDatabaseConnectPort;
 
-final appRemoteDatabaseProvider = Provider<RemoteAppDatabase>(
-  (ref) {
-    final connection = DatabaseConnection.delayed(() async {
-      late DriftIsolate isolate;
+final appRemoteDatabaseProvider = Provider<RemoteAppDatabase>((ref) {
+  final connection = DatabaseConnection.delayed(() async {
+    late DriftIsolate isolate;
 
-      if (isolateRemoteDatabaseConnectPort != null) {
-        isolate =
-            DriftIsolate.fromConnectPort(isolateRemoteDatabaseConnectPort!);
-      } else {
-        isolate = await _createDriftIsolate();
+    if (isolateRemoteDatabaseConnectPort != null) {
+      isolate = DriftIsolate.fromConnectPort(isolateRemoteDatabaseConnectPort!);
+    } else {
+      isolate = await _createDriftIsolate();
 
-        isolateRemoteDatabaseConnectPort = isolate.connectPort;
-      }
+      isolateRemoteDatabaseConnectPort = isolate.connectPort;
+    }
 
-      return isolate.connect();
-    }());
-    final database = RemoteAppDatabase.connect(connection);
+    return isolate.connect();
+  }());
+  final database = RemoteAppDatabase.connect(connection);
 
-    ref.onDispose(() async {
-      await DriftIsolate.fromConnectPort(isolateRemoteDatabaseConnectPort!)
-          .shutdownAll();
-      isolateRemoteDatabaseConnectPort = null;
-      await database.close();
-    });
-    return database;
-  },
-);
+  ref.onDispose(() async {
+    await DriftIsolate.fromConnectPort(
+      isolateRemoteDatabaseConnectPort!,
+    ).shutdownAll();
+    isolateRemoteDatabaseConnectPort = null;
+    await database.close();
+  });
+  return database;
+});
 const remoteDatabaseName = 'jbm.sqlite';
 
-@DriftDatabase(tables: [
-  PedidoVentaTable,
-  PedidoVentaEstadoTable,
-  PedidoVentaLineaTable,
-  ClienteTable,
-  ClienteUsuarioTable,
-  ClienteGrupoNetoTable,
-  ClienteDescuentoTable,
-  ClienteContactoTable,
-  ClienteDireccionTable,
-  ClientePagoPendienteTable,
-  ClientePrecioNetoTable,
-  ClienteRappelTable,
-  ClienteEstadoPotencialTable,
-  ClienteTipoPotencialTable,
-  EstadisticasArticulosTopTable,
-  ArticuloTable,
-  ArticuloComponenteTable,
-  ArticuloEmpresaIvaTable,
-  ArticuloRecambioTable,
-  ArticuloSustitutivoTable,
-  ArticuloPrecioTarifaTable,
-  ArticuloGrupoNetoTable,
-  EstadisticasClienteUsuarioVentasTable,
-  EstadisticasUltimosPreciosTable,
-  FamiliaTable,
-  SubfamiliaTable,
-  VisitaTable,
-  MetodoDeCobroTable,
-  PlazoDeCobroTable,
-  PaisTable,
-  DivisaTable,
-  PedidoAlbaranTable,
-  DescuentoGeneralTable,
-  DevolucionTipoTable,
-  DevolucionMotivoTable,
-  DevolucionEstadoTable,
-  DevolucionLineaTable,
-  DevolucionTable,
-  ProvinciaTable,
-  VisitaCompetidorTable,
-  VisitaSectorTable,
-  VisitaMotivoNoVentaTable,
-  VisitaCompetenciaTable,
-  TrackingEstadoTable,
-  SectorTable,
-  SubsectorTable,
-  PromoDtoCabTable,
-  PromoDtoClienteTable,
-  PromoDtoLinTable,
-])
+@DriftDatabase(
+  tables: [
+    PedidoVentaTable,
+    PedidoVentaEstadoTable,
+    PedidoVentaLineaTable,
+    ClienteTable,
+    ClienteUsuarioTable,
+    ClienteGrupoNetoTable,
+    ClienteDescuentoTable,
+    ClienteContactoTable,
+    ClienteDireccionTable,
+    ClientePagoPendienteTable,
+    ClientePrecioNetoTable,
+    ClienteRappelTable,
+    ClienteEstadoPotencialTable,
+    ClienteTipoPotencialTable,
+    EstadisticasArticulosTopTable,
+    ArticuloTable,
+    ArticuloComponenteTable,
+    ArticuloEmpresaIvaTable,
+    ArticuloRecambioTable,
+    ArticuloSustitutivoTable,
+    ArticuloPrecioTarifaTable,
+    ArticuloGrupoNetoTable,
+    EstadisticasClienteUsuarioVentasTable,
+    EstadisticasUltimosPreciosTable,
+    FamiliaTable,
+    SubfamiliaTable,
+    VisitaTable,
+    MetodoDeCobroTable,
+    PlazoDeCobroTable,
+    PaisTable,
+    DivisaTable,
+    PedidoAlbaranTable,
+    DescuentoGeneralTable,
+    DevolucionTipoTable,
+    DevolucionMotivoTable,
+    DevolucionEstadoTable,
+    DevolucionLineaTable,
+    DevolucionTable,
+    ProvinciaTable,
+    VisitaCompetidorTable,
+    VisitaSectorTable,
+    VisitaMotivoNoVentaTable,
+    VisitaCompetenciaTable,
+    TrackingEstadoTable,
+    SectorTable,
+    SubsectorTable,
+    PromoDtoCabTable,
+    PromoDtoClienteTable,
+    PromoDtoLinTable,
+  ],
+)
 class RemoteAppDatabase extends _$RemoteAppDatabase {
   final bool test;
 
-  RemoteAppDatabase.connect(super.connection)
-      : test = false,
-        super.connect();
-  RemoteAppDatabase.test()
-      : test = true,
-        super(NativeDatabase.memory());
+  RemoteAppDatabase.connect(super.connection) : test = false, super.connect();
+  RemoteAppDatabase.test() : test = true, super(NativeDatabase.memory());
   @override
   int get schemaVersion => 34;
 }
@@ -164,8 +160,10 @@ Future<DriftIsolate> _createDriftIsolate() async {
   final receivePort = ReceivePort();
 
   await Isolate.spawn(
-      _startBackground, IsolateRequest(receivePort.sendPort, path),
-      debugName: 'REMOTE DB Isolate');
+    _startBackground,
+    IsolateRequest(receivePort.sendPort, path),
+    debugName: 'REMOTE DB Isolate',
+  );
 
   // ReceivePort will receive the DriftIsolate from background isolate, send by _startBackground
   return await receivePort.first as DriftIsolate;

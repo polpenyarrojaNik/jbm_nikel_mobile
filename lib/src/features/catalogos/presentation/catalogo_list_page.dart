@@ -55,31 +55,35 @@ class _CatalogoListaPageState extends ConsumerState<CatalogoListaPage> {
         orElse: () {},
         data: (notificationId) {
           if (notificationId != null) {
-            context.router
-                .push(NotificationDetailRoute(notificationId: notificationId));
+            context.router.push(
+              NotificationDetailRoute(notificationId: notificationId),
+            );
           }
         },
       ),
     );
 
-    ref.listen<CatalogoAdjuntoState>(
-      catalogoAdjuntoControllerProvider,
-      (_, state) {
-        state.when(
-            data: (file, descarga) => (file != null && descarga)
-                ? OpenFile.open(file.path)
-                : (file != null)
-                    ? context.router.push(
-                        CatalogoPdfViewerRoute(pdfFile: file),
-                      )
+    ref.listen<CatalogoAdjuntoState>(catalogoAdjuntoControllerProvider, (
+      _,
+      state,
+    ) {
+      state.when(
+        data:
+            (file, descarga) =>
+                (file != null && descarga)
+                    ? OpenFile.open(file.path)
+                    : (file != null)
+                    ? context.router.push(CatalogoPdfViewerRoute(pdfFile: file))
                     : null,
-            error: (error) => showToast(error.toString(), context),
-            loading: () => showToast(
-                S.of(context).catalogos_index_catalogoAdjunto_abriendoArchivo,
-                context),
-            initial: () => null);
-      },
-    );
+        error: (error) => showToast(error.toString(), context),
+        loading:
+            () => showToast(
+              S.of(context).catalogos_index_catalogoAdjunto_abriendoArchivo,
+              context,
+            ),
+        initial: () => null,
+      );
+    });
 
     return Scaffold(
       key: scaffoldKey,
@@ -89,10 +93,12 @@ class _CatalogoListaPageState extends ConsumerState<CatalogoListaPage> {
         isSearchingFirst: false,
         title: S.of(context).catalogos_index_titulo,
         searchTitle: S.of(context).catalogos_index_buscarCatalogo,
-        onChanged: (searchText) => _debouncer.run(
-          () => ref.read(catalogoSearchQueryStateProvider.notifier).state =
-              searchText,
-        ),
+        onChanged:
+            (searchText) => _debouncer.run(
+              () =>
+                  ref.read(catalogoSearchQueryStateProvider.notifier).state =
+                      searchText,
+            ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -101,8 +107,9 @@ class _CatalogoListaPageState extends ConsumerState<CatalogoListaPage> {
             const FilterDropdownWidget(),
             Expanded(
               child: RefreshIndicator(
-                  onRefresh: () async => syncCatalogs(context, ref),
-                  child: const CatalogoListViewWidget()),
+                onRefresh: () async => syncCatalogs(context, ref),
+                child: const CatalogoListViewWidget(),
+              ),
             ),
           ],
         ),
@@ -118,7 +125,8 @@ class _CatalogoListaPageState extends ConsumerState<CatalogoListaPage> {
     } catch (e) {
       if (context.mounted) {
         await context.showErrorBar(
-            content: Text(S.of(context).noSeHaPodidoSincronizar));
+          content: Text(S.of(context).noSeHaPodidoSincronizar),
+        );
       }
     }
   }
@@ -149,14 +157,16 @@ class TipoCatalogoFilterDropdown extends ConsumerWidget {
     return state.maybeWhen(
       orElse: () => Container(),
       loading: () => const ProgressIndicatorWidget(),
-      data: (tipoCatalogoList) => CatalogoFilterDropdownWidget(
-        dropdownName: 'tipoCatalogo',
-        filterList: tipoCatalogoList,
-        labelString: S.of(context).catalogos_index_tipoCatalogo,
-        setFilter: (filterValue) => ref
-            .read(tipoCatalogoQueryStateProvider.notifier)
-            .state = filterValue as TipoCatalogo,
-      ),
+      data:
+          (tipoCatalogoList) => CatalogoFilterDropdownWidget(
+            dropdownName: 'tipoCatalogo',
+            filterList: tipoCatalogoList,
+            labelString: S.of(context).catalogos_index_tipoCatalogo,
+            setFilter:
+                (filterValue) =>
+                    ref.read(tipoCatalogoQueryStateProvider.notifier).state =
+                        filterValue as TipoCatalogo,
+          ),
     );
   }
 }
@@ -170,14 +180,17 @@ class TipoPrecioCatalogoFilterDropdown extends ConsumerWidget {
     return state.maybeWhen(
       orElse: () => Container(),
       loading: () => const ProgressIndicatorWidget(),
-      data: (tipoPrecioCatalogoList) => CatalogoFilterDropdownWidget(
-        dropdownName: 'tipoPrecioCatalogo',
-        filterList: tipoPrecioCatalogoList,
-        labelString: S.of(context).catalogos_index_precio,
-        setFilter: (filterValue) => ref
-            .read(tipoPrecioCatalogoQueryStateProvider.notifier)
-            .state = filterValue as TipoPrecioCatalogo,
-      ),
+      data:
+          (tipoPrecioCatalogoList) => CatalogoFilterDropdownWidget(
+            dropdownName: 'tipoPrecioCatalogo',
+            filterList: tipoPrecioCatalogoList,
+            labelString: S.of(context).catalogos_index_precio,
+            setFilter:
+                (filterValue) =>
+                    ref
+                        .read(tipoPrecioCatalogoQueryStateProvider.notifier)
+                        .state = filterValue as TipoPrecioCatalogo,
+          ),
     );
   }
 }
@@ -191,15 +204,17 @@ class IdiomaCatalogoFilterDropdown extends ConsumerWidget {
     return state.maybeWhen(
       orElse: () => Container(),
       loading: () => const ProgressIndicatorWidget(),
-      data: (idiomaCatalogoList) => CatalogoFilterDropdownWidget(
-        dropdownName: 'idiomaCatalogo',
-        filterList: idiomaCatalogoList,
-        labelString: S.of(context).catalogos_index_idioma,
-        setFilter: (filterValue) => ref
-            .read(idiomaCatalogoQueryStateProvider.notifier)
-            .state = filterValue as IdiomaCatalogo,
-        isIdioma: true,
-      ),
+      data:
+          (idiomaCatalogoList) => CatalogoFilterDropdownWidget(
+            dropdownName: 'idiomaCatalogo',
+            filterList: idiomaCatalogoList,
+            labelString: S.of(context).catalogos_index_idioma,
+            setFilter:
+                (filterValue) =>
+                    ref.read(idiomaCatalogoQueryStateProvider.notifier).state =
+                        filterValue as IdiomaCatalogo,
+            isIdioma: true,
+          ),
     );
   }
 }
@@ -217,38 +232,41 @@ class CatalogoListViewWidget extends ConsumerWidget {
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: stateCatalogoList.maybeWhen(
         orElse: () => const ProgressIndicatorWidget(),
-        data: (catalgoList) => stateGetAttachment.maybeWhen(
-          loading: () => const ProgressIndicatorWidget(),
-          orElse: () => LayoutBuilder(
-            builder: (context, boxConstrains) => ListView.separated(
-              itemBuilder: (context, i) {
-                return Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: CatalogoListTile(
-                        catalogo: catalgoList[i * 2],
-                        boxConstrains: boxConstrains,
-                      ),
-                    ),
-                    const Gap(8),
-                    if ((i * 2) + 1 < catalgoList.length)
-                      Expanded(
-                        child: CatalogoListTile(
-                          catalogo: catalgoList[(i * 2) + 1],
-                          boxConstrains: boxConstrains,
+        data:
+            (catalgoList) => stateGetAttachment.maybeWhen(
+              loading: () => const ProgressIndicatorWidget(),
+              orElse:
+                  () => LayoutBuilder(
+                    builder:
+                        (context, boxConstrains) => ListView.separated(
+                          itemBuilder: (context, i) {
+                            return Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  child: CatalogoListTile(
+                                    catalogo: catalgoList[i * 2],
+                                    boxConstrains: boxConstrains,
+                                  ),
+                                ),
+                                const Gap(8),
+                                if ((i * 2) + 1 < catalgoList.length)
+                                  Expanded(
+                                    child: CatalogoListTile(
+                                      catalogo: catalgoList[(i * 2) + 1],
+                                      boxConstrains: boxConstrains,
+                                    ),
+                                  )
+                                else
+                                  const Expanded(child: SizedBox()),
+                              ],
+                            );
+                          },
+                          separatorBuilder: (context, i) => const Gap(8),
+                          itemCount: (catalgoList.length / 2).ceil(),
                         ),
-                      )
-                    else
-                      const Expanded(child: SizedBox()),
-                  ],
-                );
-              },
-              separatorBuilder: (context, i) => const Gap(8),
-              itemCount: (catalgoList.length / 2).ceil(),
+                  ),
             ),
-          ),
-        ),
       ),
     );
   }

@@ -39,7 +39,8 @@ class ClienteDireccionDTO
       _$ClienteDireccionDTOFromJson(json);
 
   factory ClienteDireccionDTO.fromDireccionImp(
-      ClienteDireccionImpDTO clienteDireccionImpDTO) {
+    ClienteDireccionImpDTO clienteDireccionImpDTO,
+  ) {
     return ClienteDireccionDTO(
       clienteId: clienteDireccionImpDTO.clienteId,
       direccionId: clienteDireccionImpDTO.direccionId,
@@ -59,8 +60,12 @@ class ClienteDireccionDTO
     );
   }
 
-  ClienteDireccion toDomain(Pais? pais,
-      {bool enviada = true, bool tratada = true, String? direccionImpGuid}) {
+  ClienteDireccion toDomain(
+    Pais? pais, {
+    bool enviada = true,
+    bool tratada = true,
+    String? direccionImpGuid,
+  }) {
     return ClienteDireccion(
       clienteId: clienteId,
       direccionId: direccionId,

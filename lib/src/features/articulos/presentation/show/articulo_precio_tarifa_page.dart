@@ -14,8 +14,11 @@ import '../../../../core/presentation/theme/app_sizes.dart';
 
 @RoutePage()
 class ArticuloPrecioTarifaPage extends ConsumerWidget {
-  const ArticuloPrecioTarifaPage(
-      {super.key, required this.articuloId, required this.description});
+  const ArticuloPrecioTarifaPage({
+    super.key,
+    required this.articuloId,
+    required this.description,
+  });
 
   final String articuloId;
   final String description;
@@ -29,31 +32,29 @@ class ArticuloPrecioTarifaPage extends ConsumerWidget {
       ),
       body: Column(
         children: [
-          HeaderDatosRelacionados(
-            entityId: articuloId,
-            subtitle: description,
-          ),
+          HeaderDatosRelacionados(entityId: articuloId, subtitle: description),
           gapH8,
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data: (articuloPrecioTarifaList) =>
-                (articuloPrecioTarifaList.isNotEmpty)
-                    ? Expanded(
-                        child: ListView.separated(
-                          itemCount: articuloPrecioTarifaList.length,
-                          itemBuilder: (context, i) => ArticuloPrecioTarifaTile(
-                            articuloPrecioTarifa: articuloPrecioTarifaList[i],
+            data:
+                (articuloPrecioTarifaList) =>
+                    (articuloPrecioTarifaList.isNotEmpty)
+                        ? Expanded(
+                          child: ListView.separated(
+                            itemCount: articuloPrecioTarifaList.length,
+                            itemBuilder:
+                                (context, i) => ArticuloPrecioTarifaTile(
+                                  articuloPrecioTarifa:
+                                      articuloPrecioTarifaList[i],
+                                ),
+                            separatorBuilder: (context, i) => const Divider(),
                           ),
-                          separatorBuilder: (context, i) => const Divider(),
+                        )
+                        : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [Text(S.of(context).sinResultados)],
                         ),
-                      )
-                    : Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(S.of(context).sinResultados),
-                        ],
-                      ),
           ),
         ],
       ),
@@ -62,8 +63,10 @@ class ArticuloPrecioTarifaPage extends ConsumerWidget {
 }
 
 class ArticuloPrecioTarifaTile extends StatelessWidget {
-  const ArticuloPrecioTarifaTile(
-      {super.key, required this.articuloPrecioTarifa});
+  const ArticuloPrecioTarifaTile({
+    super.key,
+    required this.articuloPrecioTarifa,
+  });
 
   final ArticuloPrecioTarifa articuloPrecioTarifa;
 
@@ -79,26 +82,25 @@ class ArticuloPrecioTarifaTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 if (articuloPrecioTarifa.tarifaDescripcion != null)
-                  Text(
-                    articuloPrecioTarifa.tarifaDescripcion!,
-                  ),
+                  Text(articuloPrecioTarifa.tarifaDescripcion!),
                 if (articuloPrecioTarifa.cantidadDesde != 1)
                   Text(
                     '≥ ${numberFormatCantidades(articuloPrecioTarifa.cantidadDesde)} ${S.of(context).unidad}',
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Theme.of(context).textTheme.bodySmall?.color),
+                      color: Theme.of(context).textTheme.bodySmall?.color,
+                    ),
                   ),
               ],
             ),
           ),
           Text(
             formatPrecios(
-                precio: articuloPrecioTarifa.precio,
-                tipoPrecio: articuloPrecioTarifa.tipoPrecio),
-            style: Theme.of(context)
-                .textTheme
-                .bodyMedium
-                ?.copyWith(color: Theme.of(context).textTheme.bodySmall?.color),
+              precio: articuloPrecioTarifa.precio,
+              tipoPrecio: articuloPrecioTarifa.tipoPrecio,
+            ),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Theme.of(context).textTheme.bodySmall?.color,
+            ),
           ),
         ],
       ),

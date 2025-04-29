@@ -18,23 +18,31 @@ import '../../infrastructure/cliente_repository.dart';
 
 @RoutePage()
 class ClienteRappelPage extends ConsumerWidget {
-  const ClienteRappelPage(
-      {super.key, required this.clienteId, required this.nombreCliente});
+  const ClienteRappelPage({
+    super.key,
+    required this.clienteId,
+    required this.nombreCliente,
+  });
 
   final String clienteId;
   final String? nombreCliente;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen<ClienteRappelControllerState>(clienteRappelControllerProvider,
-        (_, state) {
+    ref.listen<ClienteRappelControllerState>(clienteRappelControllerProvider, (
+      _,
+      state,
+    ) {
       state.when(
-          data: (file) => (file != null) ? OpenFile.open(file.path) : null,
-          error: (error) => showToast(error.toString(), context),
-          loading: () => showToast(
+        data: (file) => (file != null) ? OpenFile.open(file.path) : null,
+        error: (error) => showToast(error.toString(), context),
+        loading:
+            () => showToast(
               S.of(context).cliente_show_clienteAdjunto_abriendoArchivo,
-              context),
-          initial: () => null);
+              context,
+            ),
+        initial: () => null,
+      );
     });
     final state = ref.watch(clienteRappelProvider(clienteId));
     return Scaffold(
@@ -51,22 +59,23 @@ class ClienteRappelPage extends ConsumerWidget {
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data: (clienteRappelList) => (clienteRappelList.isNotEmpty)
-                ? Expanded(
-                    child: ListView.separated(
-                      itemCount: clienteRappelList.length,
-                      itemBuilder: (context, i) => ClienteRappelTile(
-                        clienteRappel: clienteRappelList[i],
-                      ),
-                      separatorBuilder: (context, i) => const Divider(),
-                    ),
-                  )
-                : Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(S.of(context).sinResultados),
-                    ],
-                  ),
+            data:
+                (clienteRappelList) =>
+                    (clienteRappelList.isNotEmpty)
+                        ? Expanded(
+                          child: ListView.separated(
+                            itemCount: clienteRappelList.length,
+                            itemBuilder:
+                                (context, i) => ClienteRappelTile(
+                                  clienteRappel: clienteRappelList[i],
+                                ),
+                            separatorBuilder: (context, i) => const Divider(),
+                          ),
+                        )
+                        : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [Text(S.of(context).sinResultados)],
+                        ),
           ),
         ],
       ),
@@ -82,12 +91,15 @@ class ClienteRappelTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
-      onTap: () => (clienteRappel.nombreArchivo != null)
-          ? openFile(
-              rappelId: clienteRappel.rappelId,
-              nombreArchivo: clienteRappel.nombreArchivo!,
-              ref: ref)
-          : null,
+      onTap:
+          () =>
+              (clienteRappel.nombreArchivo != null)
+                  ? openFile(
+                    rappelId: clienteRappel.rappelId,
+                    nombreArchivo: clienteRappel.nombreArchivo!,
+                    ref: ref,
+                  )
+                  : null,
       child: Padding(
         padding: listPadding,
         child: IntrinsicHeight(
@@ -99,53 +111,56 @@ class ClienteRappelTile extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                        dateFormatter(clienteRappel.fechaDesDe
-                            .toLocal()
-                            .toIso8601String()),
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color:
-                                Theme.of(context).textTheme.bodySmall?.color)),
+                      dateFormatter(
+                        clienteRappel.fechaDesDe.toLocal().toIso8601String(),
+                      ),
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: Theme.of(context).textTheme.bodySmall?.color,
+                      ),
+                    ),
                     if (clienteRappel.fechaHasta != null) const Spacer(),
                     if (clienteRappel.fechaHasta != null)
                       Text(
-                          dateFormatter(clienteRappel.fechaHasta!
-                              .toLocal()
-                              .toIso8601String()),
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium
-                              ?.copyWith(
-                                  color: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall
-                                      ?.color)),
+                        dateFormatter(
+                          clienteRappel.fechaHasta!.toLocal().toIso8601String(),
+                        ),
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Theme.of(context).textTheme.bodySmall?.color,
+                        ),
+                      ),
                   ],
                 ),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(clienteRappel.descripcion,
-                      style: Theme.of(context).textTheme.titleSmall),
-                  Text(clienteRappel.firmado ? 'Firmado' : 'Sin firmar',
-                      style: Theme.of(context).textTheme.bodySmall),
+                  Text(
+                    clienteRappel.descripcion,
+                    style: Theme.of(context).textTheme.titleSmall,
+                  ),
+                  Text(
+                    clienteRappel.firmado ? 'Firmado' : 'Sin firmar',
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
                 ],
               ),
               const Spacer(),
               IconButton(
-                visualDensity:
-                    const VisualDensity(horizontal: -4, vertical: -4),
-                onPressed: () => (clienteRappel.nombreArchivo != null)
-                    ? openFile(
-                        rappelId: clienteRappel.rappelId,
-                        nombreArchivo: clienteRappel.nombreArchivo!,
-                        ref: ref)
-                    : null,
-                icon: const Icon(
-                  Icons.navigate_next_outlined,
-                  size: 16,
+                visualDensity: const VisualDensity(
+                  horizontal: -4,
+                  vertical: -4,
                 ),
-              )
+                onPressed:
+                    () =>
+                        (clienteRappel.nombreArchivo != null)
+                            ? openFile(
+                              rappelId: clienteRappel.rappelId,
+                              nombreArchivo: clienteRappel.nombreArchivo!,
+                              ref: ref,
+                            )
+                            : null,
+                icon: const Icon(Icons.navigate_next_outlined, size: 16),
+              ),
             ],
           ),
         ),
@@ -153,11 +168,18 @@ class ClienteRappelTile extends ConsumerWidget {
     );
   }
 
-  void openFile(
-      {required String rappelId,
-      required String nombreArchivo,
-      required WidgetRef ref}) {
-    ref.read(clienteRappelControllerProvider.notifier).getRappelDocumentFile(
-        adjuntoParam: AdjuntoParam(id: rappelId, nombreArchivo: nombreArchivo));
+  void openFile({
+    required String rappelId,
+    required String nombreArchivo,
+    required WidgetRef ref,
+  }) {
+    ref
+        .read(clienteRappelControllerProvider.notifier)
+        .getRappelDocumentFile(
+          adjuntoParam: AdjuntoParam(
+            id: rappelId,
+            nombreArchivo: nombreArchivo,
+          ),
+        );
   }
 }

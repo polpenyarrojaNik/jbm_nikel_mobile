@@ -39,10 +39,11 @@ class FamiliaDTO with _$FamiliaDTO implements Insertable<FamiliaDTO> {
 
   Familia toDomain() {
     return Familia(
-        id: id,
-        descripcion: getDescriptionInLocalLanguage(),
-        lastUpdate: lastUpdated,
-        deleted: (deleted == 'S') ? true : false);
+      id: id,
+      descripcion: getDescriptionInLocalLanguage(),
+      lastUpdate: lastUpdated,
+      deleted: (deleted == 'S') ? true : false,
+    );
   }
 
   String getDescriptionInLocalLanguage() {

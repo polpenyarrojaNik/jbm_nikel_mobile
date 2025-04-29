@@ -14,8 +14,8 @@ part 'pedido_venta_edit_page_controller.freezed.dart';
 
 final customerAddressSearchQueryStateProvider =
     StateProvider.autoDispose<String>((ref) {
-  return '';
-});
+      return '';
+    });
 
 @freezed
 class PedidoVentaEditPageControllerState
@@ -34,35 +34,43 @@ class PedidoVentaEditPageControllerState
     DateTime? ofertaFechaHasta,
     bool isBorrador,
   ) = _data;
-  const factory PedidoVentaEditPageControllerState.error(Object error,
-      {StackTrace? stackTrace}) = _error;
+  const factory PedidoVentaEditPageControllerState.error(
+    Object error, {
+    StackTrace? stackTrace,
+  }) = _error;
   const factory PedidoVentaEditPageControllerState.deleted() = _deleted;
   const factory PedidoVentaEditPageControllerState.saved(
-      String pedidoVentaAppId, bool isBorrador) = _saved;
+    String pedidoVentaAppId,
+    bool isBorrador,
+  ) = _saved;
 
   const factory PedidoVentaEditPageControllerState.savedError(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-      Object error,
-      {StackTrace? stackTrace}) = _savedError;
+    Cliente? cliente,
+    ClienteDireccion? clienteDireccion,
+    List<PedidoVentaLinea> pedidoVentaLinea,
+    int currentStep,
+    String? observaciones,
+    String? pedidoCliente,
+    bool oferta,
+    DateTime? ofertaFechaHasta,
+    bool isBorrador,
+    Object error, {
+    StackTrace? stackTrace,
+  }) = _savedError;
 }
 
 final pedidoVentaEditPageControllerProvider = StateNotifierProvider.autoDispose
-    .family<PedidoVentaEditPageController, PedidoVentaEditPageControllerState,
-        PedidoLocalParam>((ref, pedidoVentaIdIsLocalParam) {
-  return PedidoVentaEditPageController(
-    pedidoVentaRepository: ref.watch(pedidoVentaRepositoryProvider),
-    clienteRepository: ref.watch(clienteRepositoryProvider),
-    pedidoLocalParam: pedidoVentaIdIsLocalParam,
-  );
-});
+    .family<
+      PedidoVentaEditPageController,
+      PedidoVentaEditPageControllerState,
+      PedidoLocalParam
+    >((ref, pedidoVentaIdIsLocalParam) {
+      return PedidoVentaEditPageController(
+        pedidoVentaRepository: ref.watch(pedidoVentaRepositoryProvider),
+        clienteRepository: ref.watch(clienteRepositoryProvider),
+        pedidoLocalParam: pedidoVentaIdIsLocalParam,
+      );
+    });
 
 class PedidoVentaEditPageController
     extends StateNotifier<PedidoVentaEditPageControllerState> {
@@ -133,7 +141,8 @@ class PedidoVentaEditPageController
       if (!pedidoLocalParam.isEdit) {
         if (pedidoLocalParam.createPedidoFromClienteId != null) {
           _cliente = await clienteRepository.getClienteById(
-              clienteId: pedidoLocalParam.createPedidoFromClienteId!);
+            clienteId: pedidoLocalParam.createPedidoFromClienteId!,
+          );
         }
         state = PedidoVentaEditPageControllerState.data(
           _cliente,
@@ -155,12 +164,14 @@ class PedidoVentaEditPageController
             .getPedidoVentaLineaListById(pedidoLocalParam: pedidoLocalParam);
 
         _cliente = await clienteRepository.getClienteById(
-            clienteId: pedidoVenta.clienteId!);
+          clienteId: pedidoVenta.clienteId!,
+        );
 
-        _clienteDireccion =
-            await clienteRepository.getClienteDireccionByDireccionId(
-                clienteId: pedidoVenta.clienteId!,
-                direccionId: pedidoVenta.direccionId);
+        _clienteDireccion = await clienteRepository
+            .getClienteDireccionByDireccionId(
+              clienteId: pedidoVenta.clienteId!,
+              direccionId: pedidoVenta.direccionId,
+            );
 
         _currentStep = 2;
 
@@ -175,15 +186,16 @@ class PedidoVentaEditPageController
         _isBorrador = pedidoVenta.borrador;
 
         state = PedidoVentaEditPageControllerState.data(
-            _cliente,
-            _clienteDireccion,
-            pedidoVentaLineaList,
-            _currentStep,
-            _observaciones,
-            _pedidoCliente,
-            _oferta,
-            _ofertaFechaHasta,
-            _isBorrador);
+          _cliente,
+          _clienteDireccion,
+          pedidoVentaLineaList,
+          _currentStep,
+          _observaciones,
+          _pedidoCliente,
+          _oferta,
+          _ofertaFechaHasta,
+          _isBorrador,
+        );
         // }
       }
     } catch (err, stack) {
@@ -221,39 +233,43 @@ class PedidoVentaEditPageController
         isBorrador: isBorrador,
       );
       state = PedidoVentaEditPageControllerState.saved(
-          pedidoVentaAppId, isBorrador);
+        pedidoVentaAppId,
+        isBorrador,
+      );
     } catch (e, stack) {
       if (e is AppException) {
         e.maybeWhen(
           orElse: () {},
-          notConnection: () =>
-              state = PedidoVentaEditPageControllerState.savedError(
-            _cliente,
-            _clienteDireccion,
-            pedidoVentaLineaList,
-            _currentStep,
-            _observaciones,
-            _pedidoCliente,
-            _oferta,
-            _ofertaFechaHasta,
-            _isBorrador,
-            e,
-            stackTrace: stack,
-          ),
-          restApiFailure: (error, _) =>
-              state = PedidoVentaEditPageControllerState.savedError(
-            _cliente,
-            _clienteDireccion,
-            pedidoVentaLineaList,
-            _currentStep,
-            _observaciones,
-            _pedidoCliente,
-            _oferta,
-            _ofertaFechaHasta,
-            _isBorrador,
-            e,
-            stackTrace: stack,
-          ),
+          notConnection:
+              () =>
+                  state = PedidoVentaEditPageControllerState.savedError(
+                    _cliente,
+                    _clienteDireccion,
+                    pedidoVentaLineaList,
+                    _currentStep,
+                    _observaciones,
+                    _pedidoCliente,
+                    _oferta,
+                    _ofertaFechaHasta,
+                    _isBorrador,
+                    e,
+                    stackTrace: stack,
+                  ),
+          restApiFailure:
+              (error, _) =>
+                  state = PedidoVentaEditPageControllerState.savedError(
+                    _cliente,
+                    _clienteDireccion,
+                    pedidoVentaLineaList,
+                    _currentStep,
+                    _observaciones,
+                    _pedidoCliente,
+                    _oferta,
+                    _ofertaFechaHasta,
+                    _isBorrador,
+                    e,
+                    stackTrace: stack,
+                  ),
         );
       }
       state = PedidoVentaEditPageControllerState.error(
@@ -270,7 +286,8 @@ class PedidoVentaEditPageController
 
     try {
       await pedidoVentaRepository.deletePedidoVenta(
-          pedidoVentaAppId: pedidoVentaLocal.pedidoVentaAppId!);
+        pedidoVentaAppId: pedidoVentaLocal.pedidoVentaAppId!,
+      );
       state = const PedidoVentaEditPageControllerState.deleted();
     } catch (err, stack) {
       state = PedidoVentaEditPageControllerState.error(err, stackTrace: stack);
@@ -308,9 +325,10 @@ class PedidoVentaEditPageController
   }
 
   Future<void> navigateToTappedStep({required int tappedStep}) async {
-    _currentStep = (_currentStep > 0)
-        ? _currentStep -= (_currentStep - tappedStep)
-        : _currentStep;
+    _currentStep =
+        (_currentStep > 0)
+            ? _currentStep -= (_currentStep - tappedStep)
+            : _currentStep;
 
     state = PedidoVentaEditPageControllerState.data(
       _cliente,
@@ -344,8 +362,9 @@ class PedidoVentaEditPageController
     );
   }
 
-  Future<void> selectDireccion(
-      {required ClienteDireccion? clienteDireccion}) async {
+  Future<void> selectDireccion({
+    required ClienteDireccion? clienteDireccion,
+  }) async {
     _clienteDireccion = clienteDireccion;
     state = PedidoVentaEditPageControllerState.data(
       _cliente,
@@ -360,9 +379,7 @@ class PedidoVentaEditPageController
     );
   }
 
-  Future<void> addPedidoVentaLinea({
-    required PedidoVentaLinea newLinea,
-  }) async {
+  Future<void> addPedidoVentaLinea({required PedidoVentaLinea newLinea}) async {
     pedidoVentaLineaList.add(newLinea);
 
     state = PedidoVentaEditPageControllerState.data(
@@ -378,9 +395,10 @@ class PedidoVentaEditPageController
     );
   }
 
-  Future<void> updatePedidoVentaLinea(
-      {required PedidoVentaLinea pedidoVentaLinea,
-      required int posicionActualizar}) async {
+  Future<void> updatePedidoVentaLinea({
+    required PedidoVentaLinea pedidoVentaLinea,
+    required int posicionActualizar,
+  }) async {
     pedidoVentaLineaList[posicionActualizar] = pedidoVentaLinea;
 
     state = PedidoVentaEditPageControllerState.data(
@@ -396,8 +414,9 @@ class PedidoVentaEditPageController
     );
   }
 
-  Future<void> deletePedidoVentaLinea(
-      {required PedidoVentaLinea pedidoVentaLineaToDelete}) async {
+  Future<void> deletePedidoVentaLinea({
+    required PedidoVentaLinea pedidoVentaLineaToDelete,
+  }) async {
     pedidoVentaLineaList.remove(pedidoVentaLineaToDelete);
 
     pedidoVentaLineaList = recalcularPedidoVentaLineaId();

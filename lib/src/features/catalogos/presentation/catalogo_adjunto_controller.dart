@@ -16,21 +16,19 @@ class CatalogoAdjuntoState with _$CatalogoAdjuntoState {
   const factory CatalogoAdjuntoState.initial() = _Initial;
   const factory CatalogoAdjuntoState.loading() = _Loading;
   const factory CatalogoAdjuntoState.data(File? file, bool descarga) = _Data;
-  const factory CatalogoAdjuntoState.error(
-    String failure,
-  ) = _Error;
+  const factory CatalogoAdjuntoState.error(String failure) = _Error;
 }
 
 final catalogoAdjuntoControllerProvider = StateNotifierProvider.autoDispose<
-    CatalogoAdjuntoController, CatalogoAdjuntoState>(
-  (ref) => CatalogoAdjuntoController(ref),
-);
+  CatalogoAdjuntoController,
+  CatalogoAdjuntoState
+>((ref) => CatalogoAdjuntoController(ref));
 
 class CatalogoAdjuntoController extends StateNotifier<CatalogoAdjuntoState> {
   final Ref _ref;
 
   CatalogoAdjuntoController(this._ref)
-      : super(const CatalogoAdjuntoState.initial());
+    : super(const CatalogoAdjuntoState.initial());
 
   Future<void> getAttachmentFile({required AdjuntoParam adjuntoParam}) async {
     state = const CatalogoAdjuntoState.loading();
@@ -38,7 +36,9 @@ class CatalogoAdjuntoController extends StateNotifier<CatalogoAdjuntoState> {
     try {
       final user = await _ref.read(usuarioServiceProvider).getSignedInUsuario();
 
-      final file = await _ref.read(catalogoRepositoryProvider).getDocumentFile(
+      final file = await _ref
+          .read(catalogoRepositoryProvider)
+          .getDocumentFile(
             adjuntoParam: adjuntoParam,
             provisionalToken: user!.provisionalToken,
             test: user.test,

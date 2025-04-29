@@ -49,8 +49,12 @@ class PromoDtoLinTable extends Table {
   String get tableName => 'promo_dto_lin';
 
   @override
-  Set<Column> get primaryKey =>
-      {empresaId, promoDtoId, articuloId, cantidadDesde};
+  Set<Column> get primaryKey => {
+    empresaId,
+    promoDtoId,
+    articuloId,
+    cantidadDesde,
+  };
 
   TextColumn get empresaId => text().named('EMPRESA_ID')();
   TextColumn get promoDtoId => text().named('PROMO_DTO_ID')();

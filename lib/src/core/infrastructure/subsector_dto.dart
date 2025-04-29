@@ -36,11 +36,12 @@ class SubsectorDTO with _$SubsectorDTO implements Insertable<SubsectorDTO> {
 
   Subsector toDomain(Sector sector) {
     return Subsector(
-        subsectorId: subsectorId,
-        sector: sector,
-        descripcion: getDescriptionInLocalLanguage(),
-        lastUpdate: lastUpdated,
-        deleted: (deleted == 'S') ? true : false);
+      subsectorId: subsectorId,
+      sector: sector,
+      descripcion: getDescriptionInLocalLanguage(),
+      lastUpdate: lastUpdated,
+      deleted: (deleted == 'S') ? true : false,
+    );
   }
 
   String getDescriptionInLocalLanguage() {

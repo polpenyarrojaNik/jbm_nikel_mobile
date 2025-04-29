@@ -32,10 +32,11 @@ class ClienteDescuentoDTO
   factory ClienteDescuentoDTO.fromJson(Map<String, dynamic> json) =>
       _$ClienteDescuentoDTOFromJson(json);
 
-  ClienteDescuento toDomain(
-      {required Familia familia,
-      required Subfamilia subfamilia,
-      required String? descripcion}) {
+  ClienteDescuento toDomain({
+    required Familia familia,
+    required Subfamilia subfamilia,
+    required String? descripcion,
+  }) {
     return ClienteDescuento(
       clienteId: clienteId,
       articuloId: articuloId,
@@ -70,8 +71,13 @@ class ClienteDescuentoTable extends Table {
   String get tableName => 'CLIENTES_DESCUENTOS';
 
   @override
-  Set<Column> get primaryKey =>
-      {clienteId, articuloId, familiaId, subfamiliaId, cantidadDesde};
+  Set<Column> get primaryKey => {
+    clienteId,
+    articuloId,
+    familiaId,
+    subfamiliaId,
+    cantidadDesde,
+  };
 
   TextColumn get clienteId => text().named('CLIENTE_ID')();
   TextColumn get articuloId => text().named('ARTICULO_ID')();

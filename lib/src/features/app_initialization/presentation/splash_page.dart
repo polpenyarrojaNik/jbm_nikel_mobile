@@ -28,69 +28,69 @@ class SplashPage extends ConsumerStatefulWidget {
 class _SplashPageState extends ConsumerState<SplashPage> {
   @override
   Widget build(BuildContext context) {
-    ref.listen<SplashControllerState>(
-      splashPageControllerProvider,
-      (_, state) {
-        state.maybeWhen(
-          orElse: () {},
-          data: () async {
-            ref.read(appRemoteDatabaseProvider);
-            await ref
-                .read(logRepositoryProvider)
-                .insetLog(level: 'I', message: 'Initialize App');
-            await ref
-                .read(pedidoVentaRepositoryProvider)
-                .deletePedidoVentaLocalAntiguos();
-            // await ref
-            //     .read(visitaRepositoryProvider)
-            //     .deleteVisitasLocalAntiguas();
-            unawaited(ref
+    ref.listen<SplashControllerState>(splashPageControllerProvider, (_, state) {
+      state.maybeWhen(
+        orElse: () {},
+        data: () async {
+          ref.read(appRemoteDatabaseProvider);
+          await ref
+              .read(logRepositoryProvider)
+              .insetLog(level: 'I', message: 'Initialize App');
+          await ref
+              .read(pedidoVentaRepositoryProvider)
+              .deletePedidoVentaLocalAntiguos();
+          // await ref
+          //     .read(visitaRepositoryProvider)
+          //     .deleteVisitasLocalAntiguas();
+          unawaited(
+            ref
                 .read(syncNotifierProvider.notifier)
-                .syncAllInCompute(initAppProcess: true));
-            if (context.mounted) {
-              await context.router.replace(
-                ArticuloListaRoute(isSearchArticuloForForm: false),
-              );
-            }
-          },
-          error: (e, _) {
-            if (e is AppException) {
-              e.maybeWhen(
-                orElse: () => context.router.replace(
-                  const LoginRoute(),
-                ),
-              );
-            }
-            showToast(e.toString(), context);
-          },
-        );
-      },
-    );
+                .syncAllInCompute(initAppProcess: true),
+          );
+          if (context.mounted) {
+            await context.router.replace(
+              ArticuloListaRoute(isSearchArticuloForForm: false),
+            );
+          }
+        },
+        error: (e, _) {
+          if (e is AppException) {
+            e.maybeWhen(
+              orElse: () => context.router.replace(const LoginRoute()),
+            );
+          }
+          showToast(e.toString(), context);
+        },
+      );
+    });
     final state = ref.watch(splashPageControllerProvider);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: state.maybeWhen(
-          downloadDatabase: (lastSchemaDatabase, newSchemaDatabase) => Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const ProgressIndicatorWidget(),
-              gapH32,
-              Text(
-                  '${S.of(context).splash_descargandoBaseDeDatos}\n${S.of(context).splash_actualizandoBaseDeDatosDe} $lastSchemaDatabase ${S.of(context).splash_a} $newSchemaDatabase...'),
-            ],
-          ),
+          downloadDatabase:
+              (lastSchemaDatabase, newSchemaDatabase) => Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const ProgressIndicatorWidget(),
+                  gapH32,
+                  Text(
+                    '${S.of(context).splash_descargandoBaseDeDatos}\n${S.of(context).splash_actualizandoBaseDeDatosDe} $lastSchemaDatabase ${S.of(context).splash_a} $newSchemaDatabase...',
+                  ),
+                ],
+              ),
           orElse: () => Container(),
           loading: () => const Center(child: CircularProgressIndicator()),
-          error: (e, _) => Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(child: ErrorMessageWidget(e.toString())),
-              const _ReintentarSyncButton(),
-            ],
-          ),
+          error:
+              (e, _) => Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(child: ErrorMessageWidget(e.toString())),
+                  const _ReintentarSyncButton(),
+                ],
+              ),
           data: () => Container(),
         ),
       ),
@@ -110,9 +110,7 @@ class _ReintentarSyncButton extends ConsumerWidget {
         children: [
           const Icon(Icons.refresh),
           const SizedBox(width: 5),
-          Text(
-            S.of(context).settings_reemplazarBaseDeDatos,
-          )
+          Text(S.of(context).settings_reemplazarBaseDeDatos),
         ],
       ),
     );

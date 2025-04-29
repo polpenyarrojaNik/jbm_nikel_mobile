@@ -29,9 +29,11 @@ import 'cliente_contacto_imp_list_tile.dart';
 
 @RoutePage()
 class ClienteContactoEditPage extends ConsumerWidget {
-  ClienteContactoEditPage(
-      {super.key, required this.clienteImpParam, bool? popItemCreated})
-      : popItemCreated = popItemCreated ?? false;
+  ClienteContactoEditPage({
+    super.key,
+    required this.clienteImpParam,
+    bool? popItemCreated,
+  }) : popItemCreated = popItemCreated ?? false;
 
   final ClienteImpParam clienteImpParam;
   final formKey = GlobalKey<FormBuilderState>();
@@ -39,85 +41,99 @@ class ClienteContactoEditPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final value =
-        ref.watch(clienteContactoEditPageControllerProvider(clienteImpParam));
+    final value = ref.watch(
+      clienteContactoEditPageControllerProvider(clienteImpParam),
+    );
 
     ref.listen<AsyncValue<ClienteContactoImpEditPageData>>(
       clienteContactoEditPageControllerProvider(clienteImpParam),
       (_, state) => state.maybeWhen(
-          orElse: () {},
-          error: (error, _) {
-            final errorMessage = (error is AppException)
-                ? error.details.message
-                : error.toString();
+        orElse: () {},
+        error: (error, _) {
+          final errorMessage =
+              (error is AppException)
+                  ? error.details.message
+                  : error.toString();
 
-            context.showErrorBar(
-                content: Text(errorMessage),
-                duration: const Duration(seconds: 5));
-            ref.invalidate(
-                clienteContactosListProvider(clienteImpParam.clienteId));
-            context.router.maybePop();
-          },
-          data: (contactoModificacionEditPageData) {
-            contactoModificacionEditPageData = contactoModificacionEditPageData;
-            if (contactoModificacionEditPageData.isSent) {
-              if (contactoModificacionEditPageData.clienteContacto != null) {
-                context.showSuccessBar(
-                  content: Text(S
+          context.showErrorBar(
+            content: Text(errorMessage),
+            duration: const Duration(seconds: 5),
+          );
+          ref.invalidate(
+            clienteContactosListProvider(clienteImpParam.clienteId),
+          );
+          context.router.maybePop();
+        },
+        data: (contactoModificacionEditPageData) {
+          contactoModificacionEditPageData = contactoModificacionEditPageData;
+          if (contactoModificacionEditPageData.isSent) {
+            if (contactoModificacionEditPageData.clienteContacto != null) {
+              context.showSuccessBar(
+                content: Text(
+                  S
                       .of(context)
-                      .cliente_show_clienteContacto_clienteContactoEditPage_contactoGuardadoConExito),
-                );
-              } else {
-                context.showErrorBar(
-                  content: Text(
-                    S
-                        .of(context)
-                        .cliente_show_clienteContacto_clienteContactoEditPage_contactoNoGuardado,
-                  ),
-                );
-              }
-              ref.invalidate(
-                  clienteContactosListProvider(clienteImpParam.clienteId));
-              ref.invalidate(clienteContactoImpListInSyncByClienteProvider(
-                  clienteImpParam));
-              if (popItemCreated) {
-                context.router
-                    .maybePop(contactoModificacionEditPageData.clienteContacto);
-              } else {
-                context.router.maybePop();
-              }
+                      .cliente_show_clienteContacto_clienteContactoEditPage_contactoGuardadoConExito,
+                ),
+              );
+            } else {
+              context.showErrorBar(
+                content: Text(
+                  S
+                      .of(context)
+                      .cliente_show_clienteContacto_clienteContactoEditPage_contactoNoGuardado,
+                ),
+              );
             }
-          }),
+            ref.invalidate(
+              clienteContactosListProvider(clienteImpParam.clienteId),
+            );
+            ref.invalidate(
+              clienteContactoImpListInSyncByClienteProvider(clienteImpParam),
+            );
+            if (popItemCreated) {
+              context.router.maybePop(
+                contactoModificacionEditPageData.clienteContacto,
+              );
+            } else {
+              context.router.maybePop();
+            }
+          }
+        },
+      ),
     );
 
     return Scaffold(
       appBar: CommonAppBar(
-        titleText: S
-            .of(context)
-            .cliente_show_clienteContacto_clienteContactoEditPage_editarContacto,
+        titleText:
+            S
+                .of(context)
+                .cliente_show_clienteContacto_clienteContactoEditPage_editarContacto,
         actions: [
           IconButton(
-              onPressed: () => _saveClienteContactoImp(context, ref, formKey),
-              icon: const Icon(Icons.save)),
+            onPressed: () => _saveClienteContactoImp(context, ref, formKey),
+            icon: const Icon(Icons.save),
+          ),
         ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: value.when(
-          data: (clienteContactoEditPageData) => Column(
-            children: [
-              Expanded(
-                child: _ClienteContactoImpEditForm(
-                  clienteContacto: clienteContactoEditPageData.clienteContacto,
-                  formKey: formKey,
-                ),
+          data:
+              (clienteContactoEditPageData) => Column(
+                children: [
+                  Expanded(
+                    child: _ClienteContactoImpEditForm(
+                      clienteContacto:
+                          clienteContactoEditPageData.clienteContacto,
+                      formKey: formKey,
+                    ),
+                  ),
+                  if (clienteImpParam.id != null)
+                    _CambiosPendientesListView(
+                      clienteImpParam: clienteImpParam,
+                    ),
+                ],
               ),
-              if (clienteImpParam.id != null)
-                _CambiosPendientesListView(
-                  clienteImpParam: clienteImpParam,
-                ),
-            ],
-          ),
           error: (error, _) {
             final clienteContactoEditPageData =
                 error as ClienteContactoImpEditPageData;
@@ -132,22 +148,21 @@ class ClienteContactoEditPage extends ConsumerWidget {
                   ),
                 ),
                 if (clienteImpParam.id != null)
-                  _CambiosPendientesListView(
-                    clienteImpParam: clienteImpParam,
-                  ),
+                  _CambiosPendientesListView(clienteImpParam: clienteImpParam),
               ],
             );
           },
-          loading: () => const Center(
-            child: ProgressIndicatorWidget(),
-          ),
+          loading: () => const Center(child: ProgressIndicatorWidget()),
         ),
       ),
     );
   }
 
-  void _saveClienteContactoImp(BuildContext context, WidgetRef ref,
-      GlobalKey<FormBuilderState> formKey) async {
+  void _saveClienteContactoImp(
+    BuildContext context,
+    WidgetRef ref,
+    GlobalKey<FormBuilderState> formKey,
+  ) async {
     if (formKey.currentState!.saveAndValidate()) {
       final usuario = ref.watch(usuarioNotifierProvider)!;
       final clienteContactoImp = ClienteContactoImp(
@@ -167,16 +182,19 @@ class ClienteContactoEditPage extends ConsumerWidget {
         borrar: false,
       );
       await ref
-          .read(clienteContactoEditPageControllerProvider(clienteImpParam)
-              .notifier)
+          .read(
+            clienteContactoEditPageControllerProvider(clienteImpParam).notifier,
+          )
           .upsertClienteContactoImp(clienteContactoImp);
     }
   }
 }
 
 class _ClienteContactoImpEditForm extends StatelessWidget {
-  const _ClienteContactoImpEditForm(
-      {required this.clienteContacto, required this.formKey});
+  const _ClienteContactoImpEditForm({
+    required this.clienteContacto,
+    required this.formKey,
+  });
 
   final ClienteContacto? clienteContacto;
   final GlobalKey<FormBuilderState> formKey;
@@ -193,17 +211,18 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
               alignment: Alignment.centerRight,
               child: IconButton(
                 onPressed: () async {
-                  final imageFile =
-                      await context.router.push<File?>(CameraRoute());
+                  final imageFile = await context.router.push<File?>(
+                    CameraRoute(),
+                  );
 
                   if (imageFile != null && context.mounted) {
-                    final imageFormData =
-                        await context.router.push<ImageFormData?>(
-                      ImageFormRoute(
-                        imageFile: imageFile,
-                        isFromCliente: true,
-                      ),
-                    );
+                    final imageFormData = await context.router
+                        .push<ImageFormData?>(
+                          ImageFormRoute(
+                            imageFile: imageFile,
+                            isFromCliente: true,
+                          ),
+                        );
 
                     if (imageFormData != null) {
                       setContactValues(imageFormData);
@@ -218,9 +237,11 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
               child: FormBuilderTextField(
                 name: 'nombre',
                 initialValue: clienteContacto?.nombre,
-                decoration: AppDecoration.defaultFieldDecoration(S
-                    .of(context)
-                    .cliente_show_clienteContacto_clienteContactoEditPage_nombre),
+                decoration: AppDecoration.defaultFieldDecoration(
+                  S
+                      .of(context)
+                      .cliente_show_clienteContacto_clienteContactoEditPage_nombre,
+                ),
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.required(),
                   FormBuilderValidators.maxLength(60),
@@ -232,9 +253,11 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
               child: FormBuilderTextField(
                 name: 'apellido1',
                 initialValue: clienteContacto?.apellido1,
-                decoration: AppDecoration.defaultFieldDecoration(S
-                    .of(context)
-                    .cliente_show_clienteContacto_clienteContactoEditPage_apellido),
+                decoration: AppDecoration.defaultFieldDecoration(
+                  S
+                      .of(context)
+                      .cliente_show_clienteContacto_clienteContactoEditPage_apellido,
+                ),
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.maxLength(60, checkNullOrEmpty: false),
                 ]),
@@ -245,9 +268,11 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
               child: FormBuilderTextField(
                 name: 'apellido2',
                 initialValue: clienteContacto?.apellido2,
-                decoration: AppDecoration.defaultFieldDecoration(S
-                    .of(context)
-                    .cliente_show_clienteContacto_clienteContactoEditPage_segundoApellido),
+                decoration: AppDecoration.defaultFieldDecoration(
+                  S
+                      .of(context)
+                      .cliente_show_clienteContacto_clienteContactoEditPage_segundoApellido,
+                ),
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.maxLength(60, checkNullOrEmpty: false),
                 ]),
@@ -258,9 +283,10 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
               child: PhoneTextFormField(
                 name: 'telefono1',
                 initialValue: clienteContacto?.telefono1,
-                labelText: S
-                    .of(context)
-                    .cliente_show_clienteContacto_clienteContactoEditPage_telefono1,
+                labelText:
+                    S
+                        .of(context)
+                        .cliente_show_clienteContacto_clienteContactoEditPage_telefono1,
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.phoneNumber(checkNullOrEmpty: false),
                   FormBuilderValidators.maxLength(25, checkNullOrEmpty: false),
@@ -272,9 +298,10 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
               child: PhoneTextFormField(
                 name: 'telefono2',
                 initialValue: clienteContacto?.telefono2,
-                labelText: S
-                    .of(context)
-                    .cliente_show_clienteContacto_clienteContactoEditPage_telefono2,
+                labelText:
+                    S
+                        .of(context)
+                        .cliente_show_clienteContacto_clienteContactoEditPage_telefono2,
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.phoneNumber(checkNullOrEmpty: false),
                   FormBuilderValidators.maxLength(25, checkNullOrEmpty: false),
@@ -287,9 +314,11 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
                 name: 'email',
                 initialValue: clienteContacto?.email,
                 keyboardType: TextInputType.emailAddress,
-                decoration: AppDecoration.defaultFieldDecoration(S
-                    .of(context)
-                    .cliente_show_clienteContacto_clienteContactoEditPage_email),
+                decoration: AppDecoration.defaultFieldDecoration(
+                  S
+                      .of(context)
+                      .cliente_show_clienteContacto_clienteContactoEditPage_email,
+                ),
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.email(checkNullOrEmpty: false),
                   FormBuilderValidators.maxLength(255, checkNullOrEmpty: false),
@@ -308,14 +337,18 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
                       .of(context)
                       .cliente_show_clienteContacto_clienteContactoEditPage_observaciones,
                   suffixButton: IconButton(
-                    onPressed: () =>
-                        formKey.currentState?.fields['observaciones']?.reset(),
+                    onPressed:
+                        () =>
+                            formKey.currentState?.fields['observaciones']
+                                ?.reset(),
                     icon: const Icon(Icons.cancel_outlined),
                   ),
                 ),
                 validator: FormBuilderValidators.compose([
-                  FormBuilderValidators.maxLength(4000,
-                      checkNullOrEmpty: false),
+                  FormBuilderValidators.maxLength(
+                    4000,
+                    checkNullOrEmpty: false,
+                  ),
                 ]),
               ),
             ),
@@ -342,34 +375,43 @@ class _CambiosPendientesListView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final clienteConatctoImpValue = ref
-        .watch(clienteContactoImpListInSyncByClienteProvider(clienteImpParam));
+    final clienteConatctoImpValue = ref.watch(
+      clienteContactoImpListInSyncByClienteProvider(clienteImpParam),
+    );
     return clienteConatctoImpValue.when(
-        data: (clienteContactoImpList) => clienteContactoImpList.isEmpty
-            ? Container()
-            : Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                        S
-                            .of(context)
-                            .cliente_show_clienteContacto_clienteContactoEditPage_cambiosPendientesDeTramitar,
-                        style: Theme.of(context).textTheme.titleSmall),
-                    gapH4,
-                    ListView.separated(
-                      shrinkWrap: true,
-                      itemBuilder: (context, i) => ClienteContactoImpListTile(
-                          clienteContactoImp: clienteContactoImpList[i]),
-                      separatorBuilder: (context, i) => const Divider(),
-                      itemCount: clienteContactoImpList.length,
+      data:
+          (clienteContactoImpList) =>
+              clienteContactoImpList.isEmpty
+                  ? Container()
+                  : Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          S
+                              .of(context)
+                              .cliente_show_clienteContacto_clienteContactoEditPage_cambiosPendientesDeTramitar,
+                          style: Theme.of(context).textTheme.titleSmall,
+                        ),
+                        gapH4,
+                        ListView.separated(
+                          shrinkWrap: true,
+                          itemBuilder:
+                              (context, i) => ClienteContactoImpListTile(
+                                clienteContactoImp: clienteContactoImpList[i],
+                              ),
+                          separatorBuilder: (context, i) => const Divider(),
+                          itemCount: clienteContactoImpList.length,
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-              ),
-        error: (error, _) => ErrorMessageWidget(
-            (error is AppException) ? error.details.message : error.toString()),
-        loading: () => const Center(child: CircularProgressIndicator()));
+                  ),
+      error:
+          (error, _) => ErrorMessageWidget(
+            (error is AppException) ? error.details.message : error.toString(),
+          ),
+      loading: () => const Center(child: CircularProgressIndicator()),
+    );
   }
 }

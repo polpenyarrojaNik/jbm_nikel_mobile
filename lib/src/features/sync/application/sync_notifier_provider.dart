@@ -20,15 +20,13 @@ import '../../usuario/domain/usuario.dart';
 part 'sync_notifier_provider.freezed.dart';
 
 final syncNotifierProvider =
-    StateNotifierProvider<SyncNotifier, SyncControllerState>(
-  (ref) {
-    final user = ref.watch(usuarioNotifierProvider);
-    final localDb = ref.watch(appLocalDatabaseProvider);
-    final usuarioService = ref.watch(usuarioServiceProvider);
+    StateNotifierProvider<SyncNotifier, SyncControllerState>((ref) {
+      final user = ref.watch(usuarioNotifierProvider);
+      final localDb = ref.watch(appLocalDatabaseProvider);
+      final usuarioService = ref.watch(usuarioServiceProvider);
 
-    return SyncNotifier(user, localDb, usuarioService);
-  },
-);
+      return SyncNotifier(user, localDb, usuarioService);
+    });
 
 class SyncNotifier extends StateNotifier<SyncControllerState> {
   final Usuario? user;
@@ -36,7 +34,7 @@ class SyncNotifier extends StateNotifier<SyncControllerState> {
   final UsuarioService usuarioService;
 
   SyncNotifier(this.user, this._localDb, this.usuarioService)
-      : super(const SyncControllerState.initial());
+    : super(const SyncControllerState.initial());
 
   Future<void> syncAllInCompute({required bool initAppProcess}) async {
     if (state != const SyncControllerState.synchronizing()) {
@@ -47,9 +45,14 @@ class SyncNotifier extends StateNotifier<SyncControllerState> {
         final documentDirectory = await getApplicationDocumentsDirectory();
 
         final syncProgress = await compute(
-            syncInBackground,
-            IsolateArgs(user!, isolateRemoteDatabaseConnectPort!,
-                isolateLocalDatabaseConnectPort!, documentDirectory));
+          syncInBackground,
+          IsolateArgs(
+            user!,
+            isolateRemoteDatabaseConnectPort!,
+            isolateLocalDatabaseConnectPort!,
+            documentDirectory,
+          ),
+        );
 
         await updateSyncDates(syncProgress);
 
@@ -62,25 +65,45 @@ class SyncNotifier extends StateNotifier<SyncControllerState> {
     final finishSyncDate = DateTime.now().toUtc();
 
     if (syncProgress.index > 0) {
-      await _localDb.update(_localDb.syncDateTimeTable).write(
-          SyncDateTimeTableCompanion(
-              id: const Value(1), articuloUltimaSync: Value(finishSyncDate)));
+      await _localDb
+          .update(_localDb.syncDateTimeTable)
+          .write(
+            SyncDateTimeTableCompanion(
+              id: const Value(1),
+              articuloUltimaSync: Value(finishSyncDate),
+            ),
+          );
 
       if (syncProgress.index > 1) {
-        await _localDb.update(_localDb.syncDateTimeTable).write(
-            SyncDateTimeTableCompanion(
-                id: const Value(1), clienteUltimaSync: Value(finishSyncDate)));
+        await _localDb
+            .update(_localDb.syncDateTimeTable)
+            .write(
+              SyncDateTimeTableCompanion(
+                id: const Value(1),
+                clienteUltimaSync: Value(finishSyncDate),
+              ),
+            );
       }
 
       if (syncProgress.index > 2) {
-        await _localDb.update(_localDb.syncDateTimeTable).write(
-            SyncDateTimeTableCompanion(
-                id: const Value(1), pedidoUltimaSync: Value(finishSyncDate)));
+        await _localDb
+            .update(_localDb.syncDateTimeTable)
+            .write(
+              SyncDateTimeTableCompanion(
+                id: const Value(1),
+                pedidoUltimaSync: Value(finishSyncDate),
+              ),
+            );
       }
       if (syncProgress.index > 3) {
-        await _localDb.update(_localDb.syncDateTimeTable).write(
-            SyncDateTimeTableCompanion(
-                id: const Value(1), visitaUltimaSync: Value(finishSyncDate)));
+        await _localDb
+            .update(_localDb.syncDateTimeTable)
+            .write(
+              SyncDateTimeTableCompanion(
+                id: const Value(1),
+                visitaUltimaSync: Value(finishSyncDate),
+              ),
+            );
       }
     }
   }
@@ -146,11 +169,7 @@ Future<SyncProgress> syncInBackground(IsolateArgs isolateArgs) async {
       dio,
       isolateArgs.user,
       null,
-      LogRepository(
-        dio,
-        localDb,
-        isolateArgs.user,
-      ),
+      LogRepository(dio, localDb, isolateArgs.user),
       isolateArgs.documentDirectory,
     );
 
@@ -161,7 +180,8 @@ Future<SyncProgress> syncInBackground(IsolateArgs isolateArgs) async {
 }
 
 Future<RemoteAppDatabase> createRemoteDatabaseConnection(
-    IsolateArgs isolateArgs) async {
+  IsolateArgs isolateArgs,
+) async {
   final isolateRemoteSendPort = isolateArgs.isolateRemoteSendPort;
   final isolate = DriftIsolate.fromConnectPort(isolateRemoteSendPort);
   isolateRemoteSendPort.send(isolate.connectPort);
@@ -170,7 +190,8 @@ Future<RemoteAppDatabase> createRemoteDatabaseConnection(
 }
 
 Future<LocalAppDatabase> createLocalDatabaseConnection(
-    IsolateArgs isolateArgs) async {
+  IsolateArgs isolateArgs,
+) async {
   final isolateLocalSendPort = isolateArgs.isolateLocalSendPort;
   final isolate = DriftIsolate.fromConnectPort(isolateLocalSendPort);
   isolateLocalSendPort.send(isolate.connectPort);
@@ -185,6 +206,8 @@ class SyncControllerState with _$SyncControllerState {
 
   const factory SyncControllerState.synchronizing() = _shinchronizing;
   const factory SyncControllerState.synchronized() = _synchronized;
-  const factory SyncControllerState.error(Object error,
-      {StackTrace? stackTrace}) = _error;
+  const factory SyncControllerState.error(
+    Object error, {
+    StackTrace? stackTrace,
+  }) = _error;
 }

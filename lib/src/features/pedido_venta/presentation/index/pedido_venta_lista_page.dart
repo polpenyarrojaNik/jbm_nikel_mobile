@@ -60,8 +60,9 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
         orElse: () {},
         data: (notificationId) {
           if (notificationId != null) {
-            context.router
-                .push(NotificationDetailRoute(notificationId: notificationId));
+            context.router.push(
+              NotificationDetailRoute(notificationId: notificationId),
+            );
           }
         },
       ),
@@ -80,28 +81,31 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
         isSearchingFirst: false,
         title: S.of(context).pedido_index_titulo,
         searchTitle: S.of(context).pedido_index_buscarPedidos,
-        onChanged: (searchText) => _debouncer.run(
-          () {
-            ref.read(pedidosSearchQueryStateProvider.notifier).state =
-                searchText;
-          },
-        ),
+        onChanged:
+            (searchText) => _debouncer.run(() {
+              ref.read(pedidosSearchQueryStateProvider.notifier).state =
+                  searchText;
+            }),
         actionButtons: [
           IconButton(
             onPressed: () => searchFilterByEstado(),
-            icon: Icon(Icons.filter_list,
-                color: (filteredStatus != null)
-                    ? Theme.of(context).colorScheme.surfaceTint
-                    : null),
+            icon: Icon(
+              Icons.filter_list,
+              color:
+                  (filteredStatus != null)
+                      ? Theme.of(context).colorScheme.surfaceTint
+                      : null,
+            ),
           ),
         ],
       ),
       body: stateSync.maybeWhen(
         orElse: () => PedidosListViewWidget(stateSync: stateSync, ref: ref),
-        synchronized: () => RefreshIndicator(
-          onRefresh: () => syncSalesOrderDB(ref),
-          child: PedidosListViewWidget(stateSync: stateSync, ref: ref),
-        ),
+        synchronized:
+            () => RefreshIndicator(
+              onRefresh: () => syncSalesOrderDB(ref),
+              child: PedidosListViewWidget(stateSync: stateSync, ref: ref),
+            ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => navigateToCreatePedido(context),
@@ -121,24 +125,25 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
     } catch (e) {
       if (mounted) {
         await context.showErrorBar(
-            content: Text(S.of(context).noSeHaPodidoSincronizar));
+          content: Text(S.of(context).noSeHaPodidoSincronizar),
+        );
       }
     }
   }
 
   void navigateToCreatePedido(BuildContext context) {
-    context.router.push(
-      PedidoVentaEditRoute(isLocal: true),
-    );
+    context.router.push(PedidoVentaEditRoute(isLocal: true));
   }
 
   void searchFilterByEstado() async {
-    final filterEstado = await showDialog(
-      context: context,
-      builder: (context) => PedidoVentaFilterDialog(
-        filteredStatus: filteredStatus,
-      ),
-    ) as PedidoVentaEstado?;
+    final filterEstado =
+        await showDialog(
+              context: context,
+              builder:
+                  (context) =>
+                      PedidoVentaFilterDialog(filteredStatus: filteredStatus),
+            )
+            as PedidoVentaEstado?;
 
     filteredStatus = filterEstado;
 
@@ -158,8 +163,9 @@ class PedidosListViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final statePedidoVentaCount =
-        ref.watch(pedidoVentaIndexScreenControllerProvider);
+    final statePedidoVentaCount = ref.watch(
+      pedidoVentaIndexScreenControllerProvider,
+    );
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
@@ -167,70 +173,93 @@ class PedidosListViewWidget extends StatelessWidget {
         stateSync.maybeWhen(
           orElse: () => const LinearProgressIndicator(),
           synchronized: () {
-            final stateLastSyncDate =
-                ref.watch(pedidoVentaLastSyncDateProvider);
+            final stateLastSyncDate = ref.watch(
+              pedidoVentaLastSyncDateProvider,
+            );
 
             return stateLastSyncDate.when(
-                data: (fechaUltimaSync) =>
-                    UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
-                error: (_, __) => Container(),
-                loading: () => const ProgressIndicatorWidget());
+              data:
+                  (fechaUltimaSync) =>
+                      UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
+              error: (_, __) => Container(),
+              loading: () => const ProgressIndicatorWidget(),
+            );
           },
         ),
         gapH8,
         Expanded(
           child: statePedidoVentaCount.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
-            data: (count) => ListView.separated(
-              separatorBuilder: (context, i) => const Divider(),
-              physics: const AlwaysScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: count,
-              itemBuilder: (context, i) => ref
-                  .watch(PedidoVentaIndexScreenPaginatedControllerProvider(
-                      page: (i ~/ PedidoVentaRepository.pageSize)))
-                  .maybeWhen(
-                    orElse: () => const PedidoVentaShimmer(),
-                    data: (pedidoVentaList) => pedidoVentaList.isNotEmpty
-                        ? PedidoVentaListaTile(
-                            pedidoVenta: pedidoVentaList[
-                                i % PedidoVentaRepository.pageSize],
-                            onTap: () => (!pedidoVentaList[
-                                        i % PedidoVentaRepository.pageSize]
-                                    .borrador)
-                                ? context.router.push(
-                                    PedidoVentaDetalleRoute(
-                                      pedidoLocalParam: PedidoLocalParam(
-                                          pedidoId: pedidoVentaList[i %
-                                                  PedidoVentaRepository
-                                                      .pageSize]
-                                              .pedidoVentaId,
-                                          empresaId: pedidoVentaList[i %
-                                                  PedidoVentaRepository
-                                                      .pageSize]
-                                              .empresaId,
-                                          pedidoAppId: pedidoVentaList[i %
-                                                  PedidoVentaRepository
-                                                      .pageSize]
-                                              .pedidoVentaAppId,
-                                          isEdit: false,
-                                          tratada: pedidoVentaList[i %
-                                                  PedidoVentaRepository
-                                                      .pageSize]
-                                              .tratada),
-                                    ),
-                                  )
-                                : context.router.push(
-                                    PedidoVentaEditRoute(
-                                        pedidoAppId: pedidoVentaList[i %
-                                                PedidoVentaRepository.pageSize]
-                                            .pedidoVentaAppId,
-                                        isLocal: true),
-                                  ),
+            data:
+                (count) => ListView.separated(
+                  separatorBuilder: (context, i) => const Divider(),
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: count,
+                  itemBuilder:
+                      (context, i) => ref
+                          .watch(
+                            PedidoVentaIndexScreenPaginatedControllerProvider(
+                              page: (i ~/ PedidoVentaRepository.pageSize),
+                            ),
                           )
-                        : const SinResultadosWidget(),
-                  ),
-            ),
+                          .maybeWhen(
+                            orElse: () => const PedidoVentaShimmer(),
+                            data:
+                                (pedidoVentaList) =>
+                                    pedidoVentaList.isNotEmpty
+                                        ? PedidoVentaListaTile(
+                                          pedidoVenta:
+                                              pedidoVentaList[i %
+                                                  PedidoVentaRepository
+                                                      .pageSize],
+                                          onTap:
+                                              () =>
+                                                  (!pedidoVentaList[i %
+                                                              PedidoVentaRepository
+                                                                  .pageSize]
+                                                          .borrador)
+                                                      ? context.router.push(
+                                                        PedidoVentaDetalleRoute(
+                                                          pedidoLocalParam: PedidoLocalParam(
+                                                            pedidoId:
+                                                                pedidoVentaList[i %
+                                                                        PedidoVentaRepository
+                                                                            .pageSize]
+                                                                    .pedidoVentaId,
+                                                            empresaId:
+                                                                pedidoVentaList[i %
+                                                                        PedidoVentaRepository
+                                                                            .pageSize]
+                                                                    .empresaId,
+                                                            pedidoAppId:
+                                                                pedidoVentaList[i %
+                                                                        PedidoVentaRepository
+                                                                            .pageSize]
+                                                                    .pedidoVentaAppId,
+                                                            isEdit: false,
+                                                            tratada:
+                                                                pedidoVentaList[i %
+                                                                        PedidoVentaRepository
+                                                                            .pageSize]
+                                                                    .tratada,
+                                                          ),
+                                                        ),
+                                                      )
+                                                      : context.router.push(
+                                                        PedidoVentaEditRoute(
+                                                          pedidoAppId:
+                                                              pedidoVentaList[i %
+                                                                      PedidoVentaRepository
+                                                                          .pageSize]
+                                                                  .pedidoVentaAppId,
+                                                          isLocal: true,
+                                                        ),
+                                                      ),
+                                        )
+                                        : const SinResultadosWidget(),
+                          ),
+                ),
           ),
         ),
       ],
@@ -262,23 +291,24 @@ class _PedidoVentaFilterDialogState
   Widget build(BuildContext context) {
     final state = ref.watch(pedidoVentaEstadoProvider);
     return AlertDialog(
-      title: Center(
-        child: Text(S.of(context).pedido_index_filtros),
-      ),
+      title: Center(child: Text(S.of(context).pedido_index_filtros)),
       content: state.when(
-          data: (pedidoVentaEstadoList) => FormBuilderRadioGroup(
-                decoration: InputDecoration(
-                  labelText: S.of(context).pedido_index_estados,
-                  border: InputBorder.none,
-                ),
-                name: 'filter_estados',
-                options: showFieldOption(context, pedidoVentaEstadoList),
-                initialValue: widget.filteredStatus ?? pedidoVentaEstadoList[0],
-                onChanged: (newFilterValue) =>
-                    changeFilterValue(filterValue: newFilterValue),
+        data:
+            (pedidoVentaEstadoList) => FormBuilderRadioGroup(
+              decoration: InputDecoration(
+                labelText: S.of(context).pedido_index_estados,
+                border: InputBorder.none,
               ),
-          error: (err, _) => ErrorMessageWidget(err.toString()),
-          loading: () => const ProgressIndicatorWidget()),
+              name: 'filter_estados',
+              options: showFieldOption(context, pedidoVentaEstadoList),
+              initialValue: widget.filteredStatus ?? pedidoVentaEstadoList[0],
+              onChanged:
+                  (newFilterValue) =>
+                      changeFilterValue(filterValue: newFilterValue),
+            ),
+        error: (err, _) => ErrorMessageWidget(err.toString()),
+        loading: () => const ProgressIndicatorWidget(),
+      ),
       actions: [
         MaterialButton(
           color: Theme.of(context).colorScheme.secondary,
@@ -301,7 +331,9 @@ class _PedidoVentaFilterDialogState
   }
 
   List<FormBuilderFieldOption<Object>> showFieldOption(
-      BuildContext context, List<PedidoVentaEstado> pedidoVentaEstadoList) {
+    BuildContext context,
+    List<PedidoVentaEstado> pedidoVentaEstadoList,
+  ) {
     final fieldOptions = <FormBuilderFieldOption<Object>>[];
     for (final pedidoVentaEstado in pedidoVentaEstadoList) {
       fieldOptions.add(

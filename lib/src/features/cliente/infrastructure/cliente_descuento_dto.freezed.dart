@@ -12,7 +12,8 @@ part of 'cliente_descuento_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ClienteDescuentoDTO _$ClienteDescuentoDTOFromJson(Map<String, dynamic> json) {
   return _ClienteDescuentoDTO.fromJson(json);
@@ -50,18 +51,20 @@ mixin _$ClienteDescuentoDTO {
 /// @nodoc
 abstract class $ClienteDescuentoDTOCopyWith<$Res> {
   factory $ClienteDescuentoDTOCopyWith(
-          ClienteDescuentoDTO value, $Res Function(ClienteDescuentoDTO) then) =
-      _$ClienteDescuentoDTOCopyWithImpl<$Res, ClienteDescuentoDTO>;
+    ClienteDescuentoDTO value,
+    $Res Function(ClienteDescuentoDTO) then,
+  ) = _$ClienteDescuentoDTOCopyWithImpl<$Res, ClienteDescuentoDTO>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'CLIENTE_ID') String clienteId,
-      @JsonKey(name: 'ARTICULO_ID') String articuloId,
-      @JsonKey(name: 'FAMILIA_ID') String familiaId,
-      @JsonKey(name: 'SUBFAMILIA_ID') String subfamiliaId,
-      @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
-      @JsonKey(name: 'DESCUENTO') double descuento,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+  $Res call({
+    @JsonKey(name: 'CLIENTE_ID') String clienteId,
+    @JsonKey(name: 'ARTICULO_ID') String articuloId,
+    @JsonKey(name: 'FAMILIA_ID') String familiaId,
+    @JsonKey(name: 'SUBFAMILIA_ID') String subfamiliaId,
+    @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
+    @JsonKey(name: 'DESCUENTO') double descuento,
+    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') String deleted,
+  });
 }
 
 /// @nodoc
@@ -88,69 +91,83 @@ class _$ClienteDescuentoDTOCopyWithImpl<$Res, $Val extends ClienteDescuentoDTO>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_value.copyWith(
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      familiaId: null == familiaId
-          ? _value.familiaId
-          : familiaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      subfamiliaId: null == subfamiliaId
-          ? _value.subfamiliaId
-          : subfamiliaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      cantidadDesde: null == cantidadDesde
-          ? _value.cantidadDesde
-          : cantidadDesde // ignore: cast_nullable_to_non_nullable
-              as int,
-      descuento: null == descuento
-          ? _value.descuento
-          : descuento // ignore: cast_nullable_to_non_nullable
-              as double,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            clienteId:
+                null == clienteId
+                    ? _value.clienteId
+                    : clienteId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            articuloId:
+                null == articuloId
+                    ? _value.articuloId
+                    : articuloId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            familiaId:
+                null == familiaId
+                    ? _value.familiaId
+                    : familiaId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            subfamiliaId:
+                null == subfamiliaId
+                    ? _value.subfamiliaId
+                    : subfamiliaId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            cantidadDesde:
+                null == cantidadDesde
+                    ? _value.cantidadDesde
+                    : cantidadDesde // ignore: cast_nullable_to_non_nullable
+                        as int,
+            descuento:
+                null == descuento
+                    ? _value.descuento
+                    : descuento // ignore: cast_nullable_to_non_nullable
+                        as double,
+            lastUpdated:
+                null == lastUpdated
+                    ? _value.lastUpdated
+                    : lastUpdated // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            deleted:
+                null == deleted
+                    ? _value.deleted
+                    : deleted // ignore: cast_nullable_to_non_nullable
+                        as String,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$ClienteDescuentoDTOImplCopyWith<$Res>
     implements $ClienteDescuentoDTOCopyWith<$Res> {
-  factory _$$ClienteDescuentoDTOImplCopyWith(_$ClienteDescuentoDTOImpl value,
-          $Res Function(_$ClienteDescuentoDTOImpl) then) =
-      __$$ClienteDescuentoDTOImplCopyWithImpl<$Res>;
+  factory _$$ClienteDescuentoDTOImplCopyWith(
+    _$ClienteDescuentoDTOImpl value,
+    $Res Function(_$ClienteDescuentoDTOImpl) then,
+  ) = __$$ClienteDescuentoDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'CLIENTE_ID') String clienteId,
-      @JsonKey(name: 'ARTICULO_ID') String articuloId,
-      @JsonKey(name: 'FAMILIA_ID') String familiaId,
-      @JsonKey(name: 'SUBFAMILIA_ID') String subfamiliaId,
-      @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
-      @JsonKey(name: 'DESCUENTO') double descuento,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+  $Res call({
+    @JsonKey(name: 'CLIENTE_ID') String clienteId,
+    @JsonKey(name: 'ARTICULO_ID') String articuloId,
+    @JsonKey(name: 'FAMILIA_ID') String familiaId,
+    @JsonKey(name: 'SUBFAMILIA_ID') String subfamiliaId,
+    @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
+    @JsonKey(name: 'DESCUENTO') double descuento,
+    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') String deleted,
+  });
 }
 
 /// @nodoc
 class __$$ClienteDescuentoDTOImplCopyWithImpl<$Res>
     extends _$ClienteDescuentoDTOCopyWithImpl<$Res, _$ClienteDescuentoDTOImpl>
     implements _$$ClienteDescuentoDTOImplCopyWith<$Res> {
-  __$$ClienteDescuentoDTOImplCopyWithImpl(_$ClienteDescuentoDTOImpl _value,
-      $Res Function(_$ClienteDescuentoDTOImpl) _then)
-      : super(_value, _then);
+  __$$ClienteDescuentoDTOImplCopyWithImpl(
+    _$ClienteDescuentoDTOImpl _value,
+    $Res Function(_$ClienteDescuentoDTOImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ClienteDescuentoDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -166,56 +183,66 @@ class __$$ClienteDescuentoDTOImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$ClienteDescuentoDTOImpl(
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      familiaId: null == familiaId
-          ? _value.familiaId
-          : familiaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      subfamiliaId: null == subfamiliaId
-          ? _value.subfamiliaId
-          : subfamiliaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      cantidadDesde: null == cantidadDesde
-          ? _value.cantidadDesde
-          : cantidadDesde // ignore: cast_nullable_to_non_nullable
-              as int,
-      descuento: null == descuento
-          ? _value.descuento
-          : descuento // ignore: cast_nullable_to_non_nullable
-              as double,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$ClienteDescuentoDTOImpl(
+        clienteId:
+            null == clienteId
+                ? _value.clienteId
+                : clienteId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        articuloId:
+            null == articuloId
+                ? _value.articuloId
+                : articuloId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        familiaId:
+            null == familiaId
+                ? _value.familiaId
+                : familiaId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        subfamiliaId:
+            null == subfamiliaId
+                ? _value.subfamiliaId
+                : subfamiliaId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        cantidadDesde:
+            null == cantidadDesde
+                ? _value.cantidadDesde
+                : cantidadDesde // ignore: cast_nullable_to_non_nullable
+                    as int,
+        descuento:
+            null == descuento
+                ? _value.descuento
+                : descuento // ignore: cast_nullable_to_non_nullable
+                    as double,
+        lastUpdated:
+            null == lastUpdated
+                ? _value.lastUpdated
+                : lastUpdated // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        deleted:
+            null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ClienteDescuentoDTOImpl extends _ClienteDescuentoDTO {
-  const _$ClienteDescuentoDTOImpl(
-      {@JsonKey(name: 'CLIENTE_ID') required this.clienteId,
-      @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
-      @JsonKey(name: 'FAMILIA_ID') required this.familiaId,
-      @JsonKey(name: 'SUBFAMILIA_ID') required this.subfamiliaId,
-      @JsonKey(name: 'CANTIDAD_DESDE') required this.cantidadDesde,
-      @JsonKey(name: 'DESCUENTO') required this.descuento,
-      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-      @JsonKey(name: 'DELETED') this.deleted = 'N'})
-      : super._();
+  const _$ClienteDescuentoDTOImpl({
+    @JsonKey(name: 'CLIENTE_ID') required this.clienteId,
+    @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
+    @JsonKey(name: 'FAMILIA_ID') required this.familiaId,
+    @JsonKey(name: 'SUBFAMILIA_ID') required this.subfamiliaId,
+    @JsonKey(name: 'CANTIDAD_DESDE') required this.cantidadDesde,
+    @JsonKey(name: 'DESCUENTO') required this.descuento,
+    @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+    @JsonKey(name: 'DELETED') this.deleted = 'N',
+  }) : super._();
 
   factory _$ClienteDescuentoDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ClienteDescuentoDTOImplFromJson(json);
@@ -274,8 +301,17 @@ class _$ClienteDescuentoDTOImpl extends _ClienteDescuentoDTO {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, clienteId, articuloId, familiaId,
-      subfamiliaId, cantidadDesde, descuento, lastUpdated, deleted);
+  int get hashCode => Object.hash(
+    runtimeType,
+    clienteId,
+    articuloId,
+    familiaId,
+    subfamiliaId,
+    cantidadDesde,
+    descuento,
+    lastUpdated,
+    deleted,
+  );
 
   /// Create a copy of ClienteDescuentoDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -284,27 +320,27 @@ class _$ClienteDescuentoDTOImpl extends _ClienteDescuentoDTO {
   @pragma('vm:prefer-inline')
   _$$ClienteDescuentoDTOImplCopyWith<_$ClienteDescuentoDTOImpl> get copyWith =>
       __$$ClienteDescuentoDTOImplCopyWithImpl<_$ClienteDescuentoDTOImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ClienteDescuentoDTOImplToJson(
-      this,
-    );
+    return _$$ClienteDescuentoDTOImplToJson(this);
   }
 }
 
 abstract class _ClienteDescuentoDTO extends ClienteDescuentoDTO {
-  const factory _ClienteDescuentoDTO(
-          {@JsonKey(name: 'CLIENTE_ID') required final String clienteId,
-          @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
-          @JsonKey(name: 'FAMILIA_ID') required final String familiaId,
-          @JsonKey(name: 'SUBFAMILIA_ID') required final String subfamiliaId,
-          @JsonKey(name: 'CANTIDAD_DESDE') required final int cantidadDesde,
-          @JsonKey(name: 'DESCUENTO') required final double descuento,
-          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-          @JsonKey(name: 'DELETED') final String deleted}) =
-      _$ClienteDescuentoDTOImpl;
+  const factory _ClienteDescuentoDTO({
+    @JsonKey(name: 'CLIENTE_ID') required final String clienteId,
+    @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
+    @JsonKey(name: 'FAMILIA_ID') required final String familiaId,
+    @JsonKey(name: 'SUBFAMILIA_ID') required final String subfamiliaId,
+    @JsonKey(name: 'CANTIDAD_DESDE') required final int cantidadDesde,
+    @JsonKey(name: 'DESCUENTO') required final double descuento,
+    @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') final String deleted,
+  }) = _$ClienteDescuentoDTOImpl;
   const _ClienteDescuentoDTO._() : super._();
 
   factory _ClienteDescuentoDTO.fromJson(Map<String, dynamic> json) =

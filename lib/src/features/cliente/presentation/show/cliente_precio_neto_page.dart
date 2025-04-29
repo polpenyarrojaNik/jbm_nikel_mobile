@@ -14,8 +14,11 @@ import '../../infrastructure/cliente_repository.dart';
 
 @RoutePage()
 class ClientePrecioNetoPage extends ConsumerWidget {
-  const ClientePrecioNetoPage(
-      {super.key, required this.clienteId, required this.nombreCliente});
+  const ClientePrecioNetoPage({
+    super.key,
+    required this.clienteId,
+    required this.nombreCliente,
+  });
 
   final String clienteId;
 
@@ -37,22 +40,23 @@ class ClientePrecioNetoPage extends ConsumerWidget {
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data: (clientePrecioNetoList) => (clientePrecioNetoList.isNotEmpty)
-                ? Expanded(
-                    child: ListView.separated(
-                      itemCount: clientePrecioNetoList.length,
-                      itemBuilder: (context, i) => ClientePrecioNetoTile(
-                        clientePrecioNeto: clientePrecioNetoList[i],
-                      ),
-                      separatorBuilder: (context, i) => const Divider(),
-                    ),
-                  )
-                : Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(S.of(context).sinResultados),
-                    ],
-                  ),
+            data:
+                (clientePrecioNetoList) =>
+                    (clientePrecioNetoList.isNotEmpty)
+                        ? Expanded(
+                          child: ListView.separated(
+                            itemCount: clientePrecioNetoList.length,
+                            itemBuilder:
+                                (context, i) => ClientePrecioNetoTile(
+                                  clientePrecioNeto: clientePrecioNetoList[i],
+                                ),
+                            separatorBuilder: (context, i) => const Divider(),
+                          ),
+                        )
+                        : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [Text(S.of(context).sinResultados)],
+                        ),
           ),
         ],
       ),
@@ -75,17 +79,16 @@ class ClientePrecioNetoTile extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                clientePrecioNeto.articuloId,
-              ),
+              Text(clientePrecioNeto.articuloId),
               const Spacer(),
               Text(
                 formatPrecios(
-                    precio: clientePrecioNeto.precio,
-                    tipoPrecio: clientePrecioNeto.tipoPrecio),
+                  precio: clientePrecioNeto.precio,
+                  tipoPrecio: clientePrecioNeto.tipoPrecio,
+                ),
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Theme.of(context).textTheme.bodySmall?.color,
-                    ),
+                  color: Theme.of(context).textTheme.bodySmall?.color,
+                ),
               ),
             ],
           ),
@@ -104,7 +107,8 @@ class ClientePrecioNetoTile extends StatelessWidget {
                 Text(
                   '≥ ${numberFormatCantidades(clientePrecioNeto.cantidadDesde)} ${S.of(context).unidad}',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Theme.of(context).textTheme.bodySmall?.color),
+                    color: Theme.of(context).textTheme.bodySmall?.color,
+                  ),
                 ),
             ],
           ),

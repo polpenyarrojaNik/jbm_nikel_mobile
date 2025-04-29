@@ -37,24 +37,24 @@ class ClienteDireccionImpDTO
       _$ClienteDireccionImpDTOFromJson(json);
 
   factory ClienteDireccionImpDTO.fromDomain(
-          ClienteDireccionImp clienteDireccionImp) =>
-      ClienteDireccionImpDTO(
-        id: clienteDireccionImp.id,
-        fecha: clienteDireccionImp.fecha,
-        usuarioId: clienteDireccionImp.usuarioId,
-        clienteId: clienteDireccionImp.clienteId,
-        direccionId: clienteDireccionImp.direccionId,
-        nombre: clienteDireccionImp.nombre,
-        direccion1: clienteDireccionImp.direccion1,
-        direccion2: clienteDireccionImp.direccion2,
-        codigoPostal: clienteDireccionImp.codigoPostal,
-        poblacion: clienteDireccionImp.poblacion,
-        provincia: clienteDireccionImp.provincia,
-        paisId: clienteDireccionImp.pais?.id,
-        telefono: clienteDireccionImp.telefono,
-        enviada: clienteDireccionImp.enviada ? 'S' : 'N',
-        borrar: clienteDireccionImp.borrar ? 'S' : 'N',
-      );
+    ClienteDireccionImp clienteDireccionImp,
+  ) => ClienteDireccionImpDTO(
+    id: clienteDireccionImp.id,
+    fecha: clienteDireccionImp.fecha,
+    usuarioId: clienteDireccionImp.usuarioId,
+    clienteId: clienteDireccionImp.clienteId,
+    direccionId: clienteDireccionImp.direccionId,
+    nombre: clienteDireccionImp.nombre,
+    direccion1: clienteDireccionImp.direccion1,
+    direccion2: clienteDireccionImp.direccion2,
+    codigoPostal: clienteDireccionImp.codigoPostal,
+    poblacion: clienteDireccionImp.poblacion,
+    provincia: clienteDireccionImp.provincia,
+    paisId: clienteDireccionImp.pais?.id,
+    telefono: clienteDireccionImp.telefono,
+    enviada: clienteDireccionImp.enviada ? 'S' : 'N',
+    borrar: clienteDireccionImp.borrar ? 'S' : 'N',
+  );
 
   ClienteDireccionImp toDomain(Pais? pais) {
     return ClienteDireccionImp(

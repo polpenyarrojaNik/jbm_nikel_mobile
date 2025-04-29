@@ -12,7 +12,8 @@ part of 'log_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 LogDTO _$LogDTOFromJson(Map<String, dynamic> json) {
   return _LogDTO.fromJson(json);
@@ -59,19 +60,20 @@ abstract class $LogDTOCopyWith<$Res> {
   factory $LogDTOCopyWith(LogDTO value, $Res Function(LogDTO) then) =
       _$LogDTOCopyWithImpl<$Res, LogDTO>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'ID') int? id,
-      @JsonKey(name: 'LOG_LEVEL') String level,
-      @JsonKey(name: 'LOG_MESSAGE') String message,
-      @JsonKey(name: 'LOG_ERROR') String? error,
-      @JsonKey(name: 'APP_ID') String appId,
-      @JsonKey(name: 'APP_BUILD') String appBuild,
-      @JsonKey(name: 'APP_BUILD_NAME') String appBuildName,
-      @JsonKey(name: 'DEVICE') String device,
-      @JsonKey(name: 'USER_ID') String userId,
-      @JsonKey(name: 'USER_EMAIL') String? userEmail,
-      @JsonKey(name: 'USER_NAME') String? userName,
-      @JsonKey(name: 'TIMESTAMP') DateTime timestamp});
+  $Res call({
+    @JsonKey(name: 'ID') int? id,
+    @JsonKey(name: 'LOG_LEVEL') String level,
+    @JsonKey(name: 'LOG_MESSAGE') String message,
+    @JsonKey(name: 'LOG_ERROR') String? error,
+    @JsonKey(name: 'APP_ID') String appId,
+    @JsonKey(name: 'APP_BUILD') String appBuild,
+    @JsonKey(name: 'APP_BUILD_NAME') String appBuildName,
+    @JsonKey(name: 'DEVICE') String device,
+    @JsonKey(name: 'USER_ID') String userId,
+    @JsonKey(name: 'USER_EMAIL') String? userEmail,
+    @JsonKey(name: 'USER_NAME') String? userName,
+    @JsonKey(name: 'TIMESTAMP') DateTime timestamp,
+  });
 }
 
 /// @nodoc
@@ -102,79 +104,96 @@ class _$LogDTOCopyWithImpl<$Res, $Val extends LogDTO>
     Object? userName = freezed,
     Object? timestamp = null,
   }) {
-    return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      level: null == level
-          ? _value.level
-          : level // ignore: cast_nullable_to_non_nullable
-              as String,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      error: freezed == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String?,
-      appId: null == appId
-          ? _value.appId
-          : appId // ignore: cast_nullable_to_non_nullable
-              as String,
-      appBuild: null == appBuild
-          ? _value.appBuild
-          : appBuild // ignore: cast_nullable_to_non_nullable
-              as String,
-      appBuildName: null == appBuildName
-          ? _value.appBuildName
-          : appBuildName // ignore: cast_nullable_to_non_nullable
-              as String,
-      device: null == device
-          ? _value.device
-          : device // ignore: cast_nullable_to_non_nullable
-              as String,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      userEmail: freezed == userEmail
-          ? _value.userEmail
-          : userEmail // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userName: freezed == userName
-          ? _value.userName
-          : userName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      timestamp: null == timestamp
-          ? _value.timestamp
-          : timestamp // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id:
+                freezed == id
+                    ? _value.id
+                    : id // ignore: cast_nullable_to_non_nullable
+                        as int?,
+            level:
+                null == level
+                    ? _value.level
+                    : level // ignore: cast_nullable_to_non_nullable
+                        as String,
+            message:
+                null == message
+                    ? _value.message
+                    : message // ignore: cast_nullable_to_non_nullable
+                        as String,
+            error:
+                freezed == error
+                    ? _value.error
+                    : error // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            appId:
+                null == appId
+                    ? _value.appId
+                    : appId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            appBuild:
+                null == appBuild
+                    ? _value.appBuild
+                    : appBuild // ignore: cast_nullable_to_non_nullable
+                        as String,
+            appBuildName:
+                null == appBuildName
+                    ? _value.appBuildName
+                    : appBuildName // ignore: cast_nullable_to_non_nullable
+                        as String,
+            device:
+                null == device
+                    ? _value.device
+                    : device // ignore: cast_nullable_to_non_nullable
+                        as String,
+            userId:
+                null == userId
+                    ? _value.userId
+                    : userId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            userEmail:
+                freezed == userEmail
+                    ? _value.userEmail
+                    : userEmail // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            userName:
+                freezed == userName
+                    ? _value.userName
+                    : userName // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            timestamp:
+                null == timestamp
+                    ? _value.timestamp
+                    : timestamp // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$LogDTOImplCopyWith<$Res> implements $LogDTOCopyWith<$Res> {
   factory _$$LogDTOImplCopyWith(
-          _$LogDTOImpl value, $Res Function(_$LogDTOImpl) then) =
-      __$$LogDTOImplCopyWithImpl<$Res>;
+    _$LogDTOImpl value,
+    $Res Function(_$LogDTOImpl) then,
+  ) = __$$LogDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'ID') int? id,
-      @JsonKey(name: 'LOG_LEVEL') String level,
-      @JsonKey(name: 'LOG_MESSAGE') String message,
-      @JsonKey(name: 'LOG_ERROR') String? error,
-      @JsonKey(name: 'APP_ID') String appId,
-      @JsonKey(name: 'APP_BUILD') String appBuild,
-      @JsonKey(name: 'APP_BUILD_NAME') String appBuildName,
-      @JsonKey(name: 'DEVICE') String device,
-      @JsonKey(name: 'USER_ID') String userId,
-      @JsonKey(name: 'USER_EMAIL') String? userEmail,
-      @JsonKey(name: 'USER_NAME') String? userName,
-      @JsonKey(name: 'TIMESTAMP') DateTime timestamp});
+  $Res call({
+    @JsonKey(name: 'ID') int? id,
+    @JsonKey(name: 'LOG_LEVEL') String level,
+    @JsonKey(name: 'LOG_MESSAGE') String message,
+    @JsonKey(name: 'LOG_ERROR') String? error,
+    @JsonKey(name: 'APP_ID') String appId,
+    @JsonKey(name: 'APP_BUILD') String appBuild,
+    @JsonKey(name: 'APP_BUILD_NAME') String appBuildName,
+    @JsonKey(name: 'DEVICE') String device,
+    @JsonKey(name: 'USER_ID') String userId,
+    @JsonKey(name: 'USER_EMAIL') String? userEmail,
+    @JsonKey(name: 'USER_NAME') String? userName,
+    @JsonKey(name: 'TIMESTAMP') DateTime timestamp,
+  });
 }
 
 /// @nodoc
@@ -182,8 +201,9 @@ class __$$LogDTOImplCopyWithImpl<$Res>
     extends _$LogDTOCopyWithImpl<$Res, _$LogDTOImpl>
     implements _$$LogDTOImplCopyWith<$Res> {
   __$$LogDTOImplCopyWithImpl(
-      _$LogDTOImpl _value, $Res Function(_$LogDTOImpl) _then)
-      : super(_value, _then);
+    _$LogDTOImpl _value,
+    $Res Function(_$LogDTOImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of LogDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -203,76 +223,90 @@ class __$$LogDTOImplCopyWithImpl<$Res>
     Object? userName = freezed,
     Object? timestamp = null,
   }) {
-    return _then(_$LogDTOImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      level: null == level
-          ? _value.level
-          : level // ignore: cast_nullable_to_non_nullable
-              as String,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      error: freezed == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String?,
-      appId: null == appId
-          ? _value.appId
-          : appId // ignore: cast_nullable_to_non_nullable
-              as String,
-      appBuild: null == appBuild
-          ? _value.appBuild
-          : appBuild // ignore: cast_nullable_to_non_nullable
-              as String,
-      appBuildName: null == appBuildName
-          ? _value.appBuildName
-          : appBuildName // ignore: cast_nullable_to_non_nullable
-              as String,
-      device: null == device
-          ? _value.device
-          : device // ignore: cast_nullable_to_non_nullable
-              as String,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      userEmail: freezed == userEmail
-          ? _value.userEmail
-          : userEmail // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userName: freezed == userName
-          ? _value.userName
-          : userName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      timestamp: null == timestamp
-          ? _value.timestamp
-          : timestamp // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ));
+    return _then(
+      _$LogDTOImpl(
+        id:
+            freezed == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                    as int?,
+        level:
+            null == level
+                ? _value.level
+                : level // ignore: cast_nullable_to_non_nullable
+                    as String,
+        message:
+            null == message
+                ? _value.message
+                : message // ignore: cast_nullable_to_non_nullable
+                    as String,
+        error:
+            freezed == error
+                ? _value.error
+                : error // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        appId:
+            null == appId
+                ? _value.appId
+                : appId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        appBuild:
+            null == appBuild
+                ? _value.appBuild
+                : appBuild // ignore: cast_nullable_to_non_nullable
+                    as String,
+        appBuildName:
+            null == appBuildName
+                ? _value.appBuildName
+                : appBuildName // ignore: cast_nullable_to_non_nullable
+                    as String,
+        device:
+            null == device
+                ? _value.device
+                : device // ignore: cast_nullable_to_non_nullable
+                    as String,
+        userId:
+            null == userId
+                ? _value.userId
+                : userId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        userEmail:
+            freezed == userEmail
+                ? _value.userEmail
+                : userEmail // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        userName:
+            freezed == userName
+                ? _value.userName
+                : userName // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        timestamp:
+            null == timestamp
+                ? _value.timestamp
+                : timestamp // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$LogDTOImpl extends _LogDTO {
-  const _$LogDTOImpl(
-      {@JsonKey(name: 'ID') required this.id,
-      @JsonKey(name: 'LOG_LEVEL') required this.level,
-      @JsonKey(name: 'LOG_MESSAGE') required this.message,
-      @JsonKey(name: 'LOG_ERROR') this.error,
-      @JsonKey(name: 'APP_ID') required this.appId,
-      @JsonKey(name: 'APP_BUILD') required this.appBuild,
-      @JsonKey(name: 'APP_BUILD_NAME') required this.appBuildName,
-      @JsonKey(name: 'DEVICE') required this.device,
-      @JsonKey(name: 'USER_ID') required this.userId,
-      @JsonKey(name: 'USER_EMAIL') this.userEmail,
-      @JsonKey(name: 'USER_NAME') this.userName,
-      @JsonKey(name: 'TIMESTAMP') required this.timestamp})
-      : super._();
+  const _$LogDTOImpl({
+    @JsonKey(name: 'ID') required this.id,
+    @JsonKey(name: 'LOG_LEVEL') required this.level,
+    @JsonKey(name: 'LOG_MESSAGE') required this.message,
+    @JsonKey(name: 'LOG_ERROR') this.error,
+    @JsonKey(name: 'APP_ID') required this.appId,
+    @JsonKey(name: 'APP_BUILD') required this.appBuild,
+    @JsonKey(name: 'APP_BUILD_NAME') required this.appBuildName,
+    @JsonKey(name: 'DEVICE') required this.device,
+    @JsonKey(name: 'USER_ID') required this.userId,
+    @JsonKey(name: 'USER_EMAIL') this.userEmail,
+    @JsonKey(name: 'USER_NAME') this.userName,
+    @JsonKey(name: 'TIMESTAMP') required this.timestamp,
+  }) : super._();
 
   factory _$LogDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$LogDTOImplFromJson(json);
@@ -345,8 +379,21 @@ class _$LogDTOImpl extends _LogDTO {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, level, message, error, appId,
-      appBuild, appBuildName, device, userId, userEmail, userName, timestamp);
+  int get hashCode => Object.hash(
+    runtimeType,
+    id,
+    level,
+    message,
+    error,
+    appId,
+    appBuild,
+    appBuildName,
+    device,
+    userId,
+    userEmail,
+    userName,
+    timestamp,
+  );
 
   /// Create a copy of LogDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -358,27 +405,25 @@ class _$LogDTOImpl extends _LogDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$LogDTOImplToJson(
-      this,
-    );
+    return _$$LogDTOImplToJson(this);
   }
 }
 
 abstract class _LogDTO extends LogDTO {
-  const factory _LogDTO(
-          {@JsonKey(name: 'ID') required final int? id,
-          @JsonKey(name: 'LOG_LEVEL') required final String level,
-          @JsonKey(name: 'LOG_MESSAGE') required final String message,
-          @JsonKey(name: 'LOG_ERROR') final String? error,
-          @JsonKey(name: 'APP_ID') required final String appId,
-          @JsonKey(name: 'APP_BUILD') required final String appBuild,
-          @JsonKey(name: 'APP_BUILD_NAME') required final String appBuildName,
-          @JsonKey(name: 'DEVICE') required final String device,
-          @JsonKey(name: 'USER_ID') required final String userId,
-          @JsonKey(name: 'USER_EMAIL') final String? userEmail,
-          @JsonKey(name: 'USER_NAME') final String? userName,
-          @JsonKey(name: 'TIMESTAMP') required final DateTime timestamp}) =
-      _$LogDTOImpl;
+  const factory _LogDTO({
+    @JsonKey(name: 'ID') required final int? id,
+    @JsonKey(name: 'LOG_LEVEL') required final String level,
+    @JsonKey(name: 'LOG_MESSAGE') required final String message,
+    @JsonKey(name: 'LOG_ERROR') final String? error,
+    @JsonKey(name: 'APP_ID') required final String appId,
+    @JsonKey(name: 'APP_BUILD') required final String appBuild,
+    @JsonKey(name: 'APP_BUILD_NAME') required final String appBuildName,
+    @JsonKey(name: 'DEVICE') required final String device,
+    @JsonKey(name: 'USER_ID') required final String userId,
+    @JsonKey(name: 'USER_EMAIL') final String? userEmail,
+    @JsonKey(name: 'USER_NAME') final String? userName,
+    @JsonKey(name: 'TIMESTAMP') required final DateTime timestamp,
+  }) = _$LogDTOImpl;
   const _LogDTO._() : super._();
 
   factory _LogDTO.fromJson(Map<String, dynamic> json) = _$LogDTOImpl.fromJson;

@@ -23,9 +23,12 @@ class VisitaCompetenciaLocalDTO
       _$VisitaCompetenciaLocalDTOFromJson(json);
 
   factory VisitaCompetenciaLocalDTO.fromDomain(
-          String visitaAppId, VisitaCompetidor visitaCompetidor) =>
-      VisitaCompetenciaLocalDTO(
-          visitaAppId: visitaAppId, codigoCompetencia: visitaCompetidor.id);
+    String visitaAppId,
+    VisitaCompetidor visitaCompetidor,
+  ) => VisitaCompetenciaLocalDTO(
+    visitaAppId: visitaAppId,
+    codigoCompetencia: visitaCompetidor.id,
+  );
 
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {

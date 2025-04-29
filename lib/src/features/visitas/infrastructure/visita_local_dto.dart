@@ -99,11 +99,12 @@ class VisitaLocalDTO
       codigoMotivoNoPedido: visita.motivoNoPedido?.id,
       codigoSector: visita.sector?.id,
       codigoCompetencia: null,
-      almacenPropio: visita.almacenPropio != null
-          ? visita.almacenPropio!
-              ? 'S'
-              : 'N'
-          : null,
+      almacenPropio:
+          visita.almacenPropio != null
+              ? visita.almacenPropio!
+                  ? 'S'
+                  : 'N'
+              : null,
       capacidad: getIdFromCapacidad(visita.capacidad),
       frecuenciaPedido: getIdFromFrecuenciaPedido(visita.frecuenciaPedido),
       latitud: visita.latitud,
@@ -124,51 +125,53 @@ class VisitaLocalDTO
     required List<VisitaCompetidor> competenciaList,
   }) {
     return Visita(
-        id: null,
-        fecha: fecha,
-        cliente: cliente,
-        isClienteProvisional: (isClienteProvisional == 'S') ? true : false,
-        clienteProvisionalNombre: clienteProvisionalNombre,
-        clienteProvisionalEmail: clienteProvisionalEmail,
-        clienteProvisionalTelefono: clienteProvisionalTelefono,
-        clienteProvisionalDireccion1: clienteProvisionalDireccion1,
-        clienteProvisionalDireccion2: clienteProvisionalDireccion2,
-        clienteProvisionalCodigoPostal: clienteProvisionalCodigoPostal,
-        clienteProvisionalPoblacion: clienteProvisionalPoblacion,
-        clienteProvisionalProvincia: provincia,
-        clienteProvisionalRegionId: clienteProvisionalRegionId,
-        clienteProvisionalPais: pais,
-        numEmpl: numEmpl,
-        contacto: contacto,
-        atendidoPor: atendidoPor,
-        resumen: resumen,
-        marcasCompetencia: marcasCompetencia,
-        ofertaRealizada: ofertaRealizada == 'S',
-        interesCliente: getInteresClienteFromId(interesCliente),
-        pedidoRealizado: pedidoRealizado == 'S',
-        motivoNoInteres: motivoNoInteres,
-        motivoNoPedido: motivoNoPedido,
-        sector: sector,
-        competenciaList: competenciaList,
-        almacenPropio: almacenPropio == 'S',
-        capacidad: getCapacidadFromId(capacidad),
-        frecuenciaPedido: getFrecuenciaPedidoFromId(frecuenciaPedido),
-        latitud: latitud,
-        longitud: longitud,
-        visitaAppId: visitaAppId,
-        lastUpdated: DateTime.now().toUtc(),
-        deleted: false,
-        enviada: (enviada == 'S') ? true : false,
-        tratada: (tratada == 'S') ? true : false,
-        errorSyncMessage: errorSyncMessage);
+      id: null,
+      fecha: fecha,
+      cliente: cliente,
+      isClienteProvisional: (isClienteProvisional == 'S') ? true : false,
+      clienteProvisionalNombre: clienteProvisionalNombre,
+      clienteProvisionalEmail: clienteProvisionalEmail,
+      clienteProvisionalTelefono: clienteProvisionalTelefono,
+      clienteProvisionalDireccion1: clienteProvisionalDireccion1,
+      clienteProvisionalDireccion2: clienteProvisionalDireccion2,
+      clienteProvisionalCodigoPostal: clienteProvisionalCodigoPostal,
+      clienteProvisionalPoblacion: clienteProvisionalPoblacion,
+      clienteProvisionalProvincia: provincia,
+      clienteProvisionalRegionId: clienteProvisionalRegionId,
+      clienteProvisionalPais: pais,
+      numEmpl: numEmpl,
+      contacto: contacto,
+      atendidoPor: atendidoPor,
+      resumen: resumen,
+      marcasCompetencia: marcasCompetencia,
+      ofertaRealizada: ofertaRealizada == 'S',
+      interesCliente: getInteresClienteFromId(interesCliente),
+      pedidoRealizado: pedidoRealizado == 'S',
+      motivoNoInteres: motivoNoInteres,
+      motivoNoPedido: motivoNoPedido,
+      sector: sector,
+      competenciaList: competenciaList,
+      almacenPropio: almacenPropio == 'S',
+      capacidad: getCapacidadFromId(capacidad),
+      frecuenciaPedido: getFrecuenciaPedidoFromId(frecuenciaPedido),
+      latitud: latitud,
+      longitud: longitud,
+      visitaAppId: visitaAppId,
+      lastUpdated: DateTime.now().toUtc(),
+      deleted: false,
+      enviada: (enviada == 'S') ? true : false,
+      tratada: (tratada == 'S') ? true : false,
+      errorSyncMessage: errorSyncMessage,
+    );
   }
 
   Map<String, dynamic> toApi(
-      List<VisitaCompetenciaLocalDTO> visitaCompenteciaLocalDtoList) {
+    List<VisitaCompetenciaLocalDTO> visitaCompenteciaLocalDtoList,
+  ) {
     final json = toJson();
     json.addAll({
       'VISITA_COMPETENCIA':
-          visitaCompenteciaLocalDtoList.map((e) => e.toJson()).toList()
+          visitaCompenteciaLocalDtoList.map((e) => e.toJson()).toList(),
     });
     return json;
   }

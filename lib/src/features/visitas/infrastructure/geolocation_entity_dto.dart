@@ -31,12 +31,13 @@ abstract class GeolocationEntityDTO with _$GeolocationEntityDTO {
 
   GeolocationEntity toDomain(Provincia? state, Pais? country) {
     return GeolocationEntity(
-        streetAddress1: formatAddress,
-        streetAddress2: null,
-        zipCode: zipCode,
-        city: city,
-        state: state,
-        country: country);
+      streetAddress1: formatAddress,
+      streetAddress2: null,
+      zipCode: zipCode,
+      city: city,
+      state: state,
+      country: country,
+    );
   }
 
   String get formatAddress {
@@ -50,9 +51,9 @@ abstract class GeolocationEntityDTO with _$GeolocationEntityDTO {
 @freezed
 abstract class AdministrativeLevelsDTO with _$AdministrativeLevelsDTO {
   @JsonSerializable(explicitToJson: true)
-  factory AdministrativeLevelsDTO(
-          {@JsonKey(name: 'level2long') required String? state}) =
-      _AdministrativeLevelsDTO;
+  factory AdministrativeLevelsDTO({
+    @JsonKey(name: 'level2long') required String? state,
+  }) = _AdministrativeLevelsDTO;
 
   const AdministrativeLevelsDTO._();
 
@@ -63,9 +64,8 @@ abstract class AdministrativeLevelsDTO with _$AdministrativeLevelsDTO {
 @freezed
 abstract class ExtraDTO with _$ExtraDTO {
   @JsonSerializable(explicitToJson: true)
-  factory ExtraDTO({
-    @JsonKey(name: 'subpremise') required String? subpremise,
-  }) = _ExtraDTO;
+  factory ExtraDTO({@JsonKey(name: 'subpremise') required String? subpremise}) =
+      _ExtraDTO;
 
   const ExtraDTO._();
 

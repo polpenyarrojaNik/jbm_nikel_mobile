@@ -12,7 +12,8 @@ part of 'sector.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$Sector {
@@ -33,12 +34,13 @@ abstract class $SectorCopyWith<$Res> {
   factory $SectorCopyWith(Sector value, $Res Function(Sector) then) =
       _$SectorCopyWithImpl<$Res, Sector>;
   @useResult
-  $Res call(
-      {String id,
-      bool isAlta,
-      String descripcion,
-      DateTime lastUpdate,
-      bool deleted});
+  $Res call({
+    String id,
+    bool isAlta,
+    String descripcion,
+    DateTime lastUpdate,
+    bool deleted,
+  });
 }
 
 /// @nodoc
@@ -62,44 +64,54 @@ class _$SectorCopyWithImpl<$Res, $Val extends Sector>
     Object? lastUpdate = null,
     Object? deleted = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      isAlta: null == isAlta
-          ? _value.isAlta
-          : isAlta // ignore: cast_nullable_to_non_nullable
-              as bool,
-      descripcion: null == descripcion
-          ? _value.descripcion
-          : descripcion // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastUpdate: null == lastUpdate
-          ? _value.lastUpdate
-          : lastUpdate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id:
+                null == id
+                    ? _value.id
+                    : id // ignore: cast_nullable_to_non_nullable
+                        as String,
+            isAlta:
+                null == isAlta
+                    ? _value.isAlta
+                    : isAlta // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            descripcion:
+                null == descripcion
+                    ? _value.descripcion
+                    : descripcion // ignore: cast_nullable_to_non_nullable
+                        as String,
+            lastUpdate:
+                null == lastUpdate
+                    ? _value.lastUpdate
+                    : lastUpdate // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            deleted:
+                null == deleted
+                    ? _value.deleted
+                    : deleted // ignore: cast_nullable_to_non_nullable
+                        as bool,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$SectorImplCopyWith<$Res> implements $SectorCopyWith<$Res> {
   factory _$$SectorImplCopyWith(
-          _$SectorImpl value, $Res Function(_$SectorImpl) then) =
-      __$$SectorImplCopyWithImpl<$Res>;
+    _$SectorImpl value,
+    $Res Function(_$SectorImpl) then,
+  ) = __$$SectorImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      bool isAlta,
-      String descripcion,
-      DateTime lastUpdate,
-      bool deleted});
+  $Res call({
+    String id,
+    bool isAlta,
+    String descripcion,
+    DateTime lastUpdate,
+    bool deleted,
+  });
 }
 
 /// @nodoc
@@ -107,8 +119,9 @@ class __$$SectorImplCopyWithImpl<$Res>
     extends _$SectorCopyWithImpl<$Res, _$SectorImpl>
     implements _$$SectorImplCopyWith<$Res> {
   __$$SectorImplCopyWithImpl(
-      _$SectorImpl _value, $Res Function(_$SectorImpl) _then)
-      : super(_value, _then);
+    _$SectorImpl _value,
+    $Res Function(_$SectorImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of Sector
   /// with the given fields replaced by the non-null parameter values.
@@ -121,41 +134,48 @@ class __$$SectorImplCopyWithImpl<$Res>
     Object? lastUpdate = null,
     Object? deleted = null,
   }) {
-    return _then(_$SectorImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      isAlta: null == isAlta
-          ? _value.isAlta
-          : isAlta // ignore: cast_nullable_to_non_nullable
-              as bool,
-      descripcion: null == descripcion
-          ? _value.descripcion
-          : descripcion // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastUpdate: null == lastUpdate
-          ? _value.lastUpdate
-          : lastUpdate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$SectorImpl(
+        id:
+            null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                    as String,
+        isAlta:
+            null == isAlta
+                ? _value.isAlta
+                : isAlta // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        descripcion:
+            null == descripcion
+                ? _value.descripcion
+                : descripcion // ignore: cast_nullable_to_non_nullable
+                    as String,
+        lastUpdate:
+            null == lastUpdate
+                ? _value.lastUpdate
+                : lastUpdate // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        deleted:
+            null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                    as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$SectorImpl extends _Sector {
-  const _$SectorImpl(
-      {required this.id,
-      required this.isAlta,
-      required this.descripcion,
-      required this.lastUpdate,
-      required this.deleted})
-      : super._();
+  const _$SectorImpl({
+    required this.id,
+    required this.isAlta,
+    required this.descripcion,
+    required this.lastUpdate,
+    required this.deleted,
+  }) : super._();
 
   @override
   final String id;
@@ -201,12 +221,13 @@ class _$SectorImpl extends _Sector {
 }
 
 abstract class _Sector extends Sector {
-  const factory _Sector(
-      {required final String id,
-      required final bool isAlta,
-      required final String descripcion,
-      required final DateTime lastUpdate,
-      required final bool deleted}) = _$SectorImpl;
+  const factory _Sector({
+    required final String id,
+    required final bool isAlta,
+    required final String descripcion,
+    required final DateTime lastUpdate,
+    required final bool deleted,
+  }) = _$SectorImpl;
   const _Sector._() : super._();
 
   @override

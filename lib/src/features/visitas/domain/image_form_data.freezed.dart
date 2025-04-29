@@ -12,7 +12,8 @@ part of 'image_form_data.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ImageFormData {
@@ -38,21 +39,23 @@ mixin _$ImageFormData {
 /// @nodoc
 abstract class $ImageFormDataCopyWith<$Res> {
   factory $ImageFormDataCopyWith(
-          ImageFormData value, $Res Function(ImageFormData) then) =
-      _$ImageFormDataCopyWithImpl<$Res, ImageFormData>;
+    ImageFormData value,
+    $Res Function(ImageFormData) then,
+  ) = _$ImageFormDataCopyWithImpl<$Res, ImageFormData>;
   @useResult
-  $Res call(
-      {String? name,
-      String? company,
-      String? cargo,
-      List<String> phoneList,
-      String? email,
-      String? streetAddress1,
-      String? zipCode,
-      String? city,
-      Provincia? state,
-      Pais? country,
-      String? referenceStreetAddress});
+  $Res call({
+    String? name,
+    String? company,
+    String? cargo,
+    List<String> phoneList,
+    String? email,
+    String? streetAddress1,
+    String? zipCode,
+    String? city,
+    Provincia? state,
+    Pais? country,
+    String? referenceStreetAddress,
+  });
 
   $ProvinciaCopyWith<$Res>? get state;
   $PaisCopyWith<$Res>? get country;
@@ -85,52 +88,66 @@ class _$ImageFormDataCopyWithImpl<$Res, $Val extends ImageFormData>
     Object? country = freezed,
     Object? referenceStreetAddress = freezed,
   }) {
-    return _then(_value.copyWith(
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      company: freezed == company
-          ? _value.company
-          : company // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cargo: freezed == cargo
-          ? _value.cargo
-          : cargo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      phoneList: null == phoneList
-          ? _value.phoneList
-          : phoneList // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      streetAddress1: freezed == streetAddress1
-          ? _value.streetAddress1
-          : streetAddress1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      zipCode: freezed == zipCode
-          ? _value.zipCode
-          : zipCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      city: freezed == city
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
-              as String?,
-      state: freezed == state
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as Provincia?,
-      country: freezed == country
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
-              as Pais?,
-      referenceStreetAddress: freezed == referenceStreetAddress
-          ? _value.referenceStreetAddress
-          : referenceStreetAddress // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            name:
+                freezed == name
+                    ? _value.name
+                    : name // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            company:
+                freezed == company
+                    ? _value.company
+                    : company // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            cargo:
+                freezed == cargo
+                    ? _value.cargo
+                    : cargo // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            phoneList:
+                null == phoneList
+                    ? _value.phoneList
+                    : phoneList // ignore: cast_nullable_to_non_nullable
+                        as List<String>,
+            email:
+                freezed == email
+                    ? _value.email
+                    : email // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            streetAddress1:
+                freezed == streetAddress1
+                    ? _value.streetAddress1
+                    : streetAddress1 // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            zipCode:
+                freezed == zipCode
+                    ? _value.zipCode
+                    : zipCode // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            city:
+                freezed == city
+                    ? _value.city
+                    : city // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            state:
+                freezed == state
+                    ? _value.state
+                    : state // ignore: cast_nullable_to_non_nullable
+                        as Provincia?,
+            country:
+                freezed == country
+                    ? _value.country
+                    : country // ignore: cast_nullable_to_non_nullable
+                        as Pais?,
+            referenceStreetAddress:
+                freezed == referenceStreetAddress
+                    ? _value.referenceStreetAddress
+                    : referenceStreetAddress // ignore: cast_nullable_to_non_nullable
+                        as String?,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of ImageFormData
@@ -166,22 +183,24 @@ class _$ImageFormDataCopyWithImpl<$Res, $Val extends ImageFormData>
 abstract class _$$ImageFormDataImplCopyWith<$Res>
     implements $ImageFormDataCopyWith<$Res> {
   factory _$$ImageFormDataImplCopyWith(
-          _$ImageFormDataImpl value, $Res Function(_$ImageFormDataImpl) then) =
-      __$$ImageFormDataImplCopyWithImpl<$Res>;
+    _$ImageFormDataImpl value,
+    $Res Function(_$ImageFormDataImpl) then,
+  ) = __$$ImageFormDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? name,
-      String? company,
-      String? cargo,
-      List<String> phoneList,
-      String? email,
-      String? streetAddress1,
-      String? zipCode,
-      String? city,
-      Provincia? state,
-      Pais? country,
-      String? referenceStreetAddress});
+  $Res call({
+    String? name,
+    String? company,
+    String? cargo,
+    List<String> phoneList,
+    String? email,
+    String? streetAddress1,
+    String? zipCode,
+    String? city,
+    Provincia? state,
+    Pais? country,
+    String? referenceStreetAddress,
+  });
 
   @override
   $ProvinciaCopyWith<$Res>? get state;
@@ -194,8 +213,9 @@ class __$$ImageFormDataImplCopyWithImpl<$Res>
     extends _$ImageFormDataCopyWithImpl<$Res, _$ImageFormDataImpl>
     implements _$$ImageFormDataImplCopyWith<$Res> {
   __$$ImageFormDataImplCopyWithImpl(
-      _$ImageFormDataImpl _value, $Res Function(_$ImageFormDataImpl) _then)
-      : super(_value, _then);
+    _$ImageFormDataImpl _value,
+    $Res Function(_$ImageFormDataImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ImageFormData
   /// with the given fields replaced by the non-null parameter values.
@@ -214,71 +234,84 @@ class __$$ImageFormDataImplCopyWithImpl<$Res>
     Object? country = freezed,
     Object? referenceStreetAddress = freezed,
   }) {
-    return _then(_$ImageFormDataImpl(
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      company: freezed == company
-          ? _value.company
-          : company // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cargo: freezed == cargo
-          ? _value.cargo
-          : cargo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      phoneList: null == phoneList
-          ? _value._phoneList
-          : phoneList // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      streetAddress1: freezed == streetAddress1
-          ? _value.streetAddress1
-          : streetAddress1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      zipCode: freezed == zipCode
-          ? _value.zipCode
-          : zipCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      city: freezed == city
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
-              as String?,
-      state: freezed == state
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as Provincia?,
-      country: freezed == country
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
-              as Pais?,
-      referenceStreetAddress: freezed == referenceStreetAddress
-          ? _value.referenceStreetAddress
-          : referenceStreetAddress // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$ImageFormDataImpl(
+        name:
+            freezed == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        company:
+            freezed == company
+                ? _value.company
+                : company // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        cargo:
+            freezed == cargo
+                ? _value.cargo
+                : cargo // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        phoneList:
+            null == phoneList
+                ? _value._phoneList
+                : phoneList // ignore: cast_nullable_to_non_nullable
+                    as List<String>,
+        email:
+            freezed == email
+                ? _value.email
+                : email // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        streetAddress1:
+            freezed == streetAddress1
+                ? _value.streetAddress1
+                : streetAddress1 // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        zipCode:
+            freezed == zipCode
+                ? _value.zipCode
+                : zipCode // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        city:
+            freezed == city
+                ? _value.city
+                : city // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        state:
+            freezed == state
+                ? _value.state
+                : state // ignore: cast_nullable_to_non_nullable
+                    as Provincia?,
+        country:
+            freezed == country
+                ? _value.country
+                : country // ignore: cast_nullable_to_non_nullable
+                    as Pais?,
+        referenceStreetAddress:
+            freezed == referenceStreetAddress
+                ? _value.referenceStreetAddress
+                : referenceStreetAddress // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ImageFormDataImpl implements _ImageFormData {
-  _$ImageFormDataImpl(
-      {this.name,
-      this.company,
-      this.cargo,
-      required final List<String> phoneList,
-      this.email,
-      this.streetAddress1,
-      this.zipCode,
-      this.city,
-      this.state,
-      this.country,
-      this.referenceStreetAddress})
-      : _phoneList = phoneList;
+  _$ImageFormDataImpl({
+    this.name,
+    this.company,
+    this.cargo,
+    required final List<String> phoneList,
+    this.email,
+    this.streetAddress1,
+    this.zipCode,
+    this.city,
+    this.state,
+    this.country,
+    this.referenceStreetAddress,
+  }) : _phoneList = phoneList;
 
   @override
   final String? name;
@@ -296,7 +329,7 @@ class _$ImageFormDataImpl implements _ImageFormData {
 
   @override
   final String? email;
-// String? website,
+  // String? website,
   @override
   final String? streetAddress1;
   @override
@@ -323,8 +356,10 @@ class _$ImageFormDataImpl implements _ImageFormData {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.company, company) || other.company == company) &&
             (identical(other.cargo, cargo) || other.cargo == cargo) &&
-            const DeepCollectionEquality()
-                .equals(other._phoneList, _phoneList) &&
+            const DeepCollectionEquality().equals(
+              other._phoneList,
+              _phoneList,
+            ) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.streetAddress1, streetAddress1) ||
                 other.streetAddress1 == streetAddress1) &&
@@ -338,18 +373,19 @@ class _$ImageFormDataImpl implements _ImageFormData {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      name,
-      company,
-      cargo,
-      const DeepCollectionEquality().hash(_phoneList),
-      email,
-      streetAddress1,
-      zipCode,
-      city,
-      state,
-      country,
-      referenceStreetAddress);
+    runtimeType,
+    name,
+    company,
+    cargo,
+    const DeepCollectionEquality().hash(_phoneList),
+    email,
+    streetAddress1,
+    zipCode,
+    city,
+    state,
+    country,
+    referenceStreetAddress,
+  );
 
   /// Create a copy of ImageFormData
   /// with the given fields replaced by the non-null parameter values.
@@ -361,18 +397,19 @@ class _$ImageFormDataImpl implements _ImageFormData {
 }
 
 abstract class _ImageFormData implements ImageFormData {
-  factory _ImageFormData(
-      {final String? name,
-      final String? company,
-      final String? cargo,
-      required final List<String> phoneList,
-      final String? email,
-      final String? streetAddress1,
-      final String? zipCode,
-      final String? city,
-      final Provincia? state,
-      final Pais? country,
-      final String? referenceStreetAddress}) = _$ImageFormDataImpl;
+  factory _ImageFormData({
+    final String? name,
+    final String? company,
+    final String? cargo,
+    required final List<String> phoneList,
+    final String? email,
+    final String? streetAddress1,
+    final String? zipCode,
+    final String? city,
+    final Provincia? state,
+    final Pais? country,
+    final String? referenceStreetAddress,
+  }) = _$ImageFormDataImpl;
 
   @override
   String? get name;

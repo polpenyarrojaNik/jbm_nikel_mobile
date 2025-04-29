@@ -12,7 +12,8 @@ part of 'cliente_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ClienteDTO _$ClienteDTOFromJson(Map<String, dynamic> json) {
   return _ClienteDTO.fromJson(json);
@@ -150,74 +151,75 @@ mixin _$ClienteDTO {
 /// @nodoc
 abstract class $ClienteDTOCopyWith<$Res> {
   factory $ClienteDTOCopyWith(
-          ClienteDTO value, $Res Function(ClienteDTO) then) =
-      _$ClienteDTOCopyWithImpl<$Res, ClienteDTO>;
+    ClienteDTO value,
+    $Res Function(ClienteDTO) then,
+  ) = _$ClienteDTOCopyWithImpl<$Res, ClienteDTO>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'CLIENTE_ID') String id,
-      @JsonKey(name: 'NOMBRE') String nombreCliente,
-      @JsonKey(name: 'NIF') String? nif,
-      @JsonKey(name: 'NOMBRE_FISCAL') String nombreFiscal,
-      @JsonKey(name: 'DIRECCION_FISCAL1') String? direccionFiscal1,
-      @JsonKey(name: 'DIRECCION_FISCAL2') String? direccionFiscal2,
-      @JsonKey(name: 'CODIGO_POSTAL_FISCAL') String? codigoPostalFiscal,
-      @JsonKey(name: 'POBLACION_FISCAL') String? poblacionFiscal,
-      @JsonKey(name: 'PAIS_ID_FISCAL') String? paisFiscalId,
-      @JsonKey(name: 'PROVINCIA_FISCAL') String? provinciaFiscal,
-      @JsonKey(name: 'LATITUD_FISCAL') double latitudFiscal,
-      @JsonKey(name: 'LONGITUD_FISCAL') double longitudFiscal,
-      @JsonKey(name: 'EMPRESA_ID') String empresaId,
-      @JsonKey(name: 'IVA') double iva,
-      @JsonKey(name: 'VENTAS_ANYO_ACTUAL') double ventasAnyoActual,
-      @JsonKey(name: 'VENTAS_ANYO_ANTERIOR') double ventasAnyoAnterior,
-      @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS') double ventasHaceDosAnyos,
-      @JsonKey(name: 'MARGEN_ANYO_ACTUAL') double margenAnyoActual,
-      @JsonKey(name: 'MARGEN_ANYO_ANTERIOR') double margenAnyoAnterior,
-      @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS') double margenHaceDosAnyos,
-      @JsonKey(name: 'PORCENTAJE_ABONOS') double porcentajeAbonos,
-      @JsonKey(name: 'PORCENTAJE_GARANTIAS') double porcentajeGarantias,
-      @JsonKey(name: 'CENTRAL_COMPRAS_NOMBRE') String? centralCompras,
-      @JsonKey(name: 'URL_WEB') String? urlWeb,
-      @JsonKey(name: 'DIVISA_ID') String? divisaId,
-      @JsonKey(name: 'TARIFA_ID') String? tarifaId,
-      @JsonKey(name: 'TARIFA_DESCRIPCION') String? tarifaDescripcion,
-      @JsonKey(name: 'DESCUENTO_GENERAL_ID') String? descuentoGeneralId,
-      @JsonKey(name: 'DESCUENTO_GENERAL_DESCRIPCION')
-      String? descripcionDescuentoGeneral,
-      @JsonKey(name: 'TIPO_CALCULO_PRECIO') String tipoCalculoPrecio,
-      @JsonKey(name: 'PLAZO_COBRO_ID') String? plazoDeCobroId,
-      @JsonKey(name: 'METODO_COBRO_ID') String? metodoDeCobroId,
-      @JsonKey(name: 'DESCUENTO_PRONTO_PAGO') double descuentoProntoPago,
-      @JsonKey(name: 'RIESGO_CONCEDIDO_INTERNO') double riesgoConcedidoInterno,
-      @JsonKey(name: 'RIESGO_CONCEDIDO_INTERNO_FECHA')
-      DateTime? riesgoConcedidoInternoDate,
-      @JsonKey(name: 'RIESGO_CONCEDIDO_COFACE') double riesgoConcedidoCoafe,
-      @JsonKey(name: 'RIESGO_CONCEDIDO_COFACE_FECHA')
-      DateTime? riesgoConcedidoCoafeFecha,
-      @JsonKey(name: 'RIESGO_CONCEDIDO') double? riesgoConcedido,
-      @JsonKey(name: 'RIESGO_PDTE_COBRO_VENCIDO_CLIENTE')
-      double? riesgoPendienteCobroVencido,
-      @JsonKey(name: 'RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE')
-      double? riesgoPendienteCobroNoVencido,
-      @JsonKey(name: 'RIESGO_PDTE_SERVIR_CLIENTE')
-      double? riesgoPendienteServir,
-      @JsonKey(name: 'RIESGO_PDTE_FACTURAR_CLIENTE')
-      double? riesgoPendienteFacturar,
-      @JsonKey(name: 'OBSERVACIONES_INTERNAS') String? obvservacionesInternas,
-      @JsonKey(name: 'CLIENTE_POTENCIAL') String? clientePotencial,
-      @JsonKey(name: 'ESTADO_POTENCIAL_ID') String? clienteEstadoPotencialId,
-      @JsonKey(name: 'TIPO_POTENCIAL_ID') String? clienteTipoPotencialId,
-      @JsonKey(name: 'REPRESENTANTE1_ID') String? representante1Id,
-      @JsonKey(name: 'REPRESENTANTE1_NOMBRE') String? representante1Nombre,
-      @JsonKey(name: 'REPRESENTANTE2_ID') String? representante2Id,
-      @JsonKey(name: 'REPRESENTANTE2_NOMBRE') String? representante2Nombre,
-      @JsonKey(name: 'TELEFONO_FIJO') String? telefonoFijo,
-      @JsonKey(name: 'TELEFONO_MOVIL') String? telefonoMovil,
-      @JsonKey(name: 'E_MAIL') String? email,
-      @JsonKey(name: 'SECTOR_ID') String? sectorId,
-      @JsonKey(name: 'SUBSECTOR_ID') String? subsectorId,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+  $Res call({
+    @JsonKey(name: 'CLIENTE_ID') String id,
+    @JsonKey(name: 'NOMBRE') String nombreCliente,
+    @JsonKey(name: 'NIF') String? nif,
+    @JsonKey(name: 'NOMBRE_FISCAL') String nombreFiscal,
+    @JsonKey(name: 'DIRECCION_FISCAL1') String? direccionFiscal1,
+    @JsonKey(name: 'DIRECCION_FISCAL2') String? direccionFiscal2,
+    @JsonKey(name: 'CODIGO_POSTAL_FISCAL') String? codigoPostalFiscal,
+    @JsonKey(name: 'POBLACION_FISCAL') String? poblacionFiscal,
+    @JsonKey(name: 'PAIS_ID_FISCAL') String? paisFiscalId,
+    @JsonKey(name: 'PROVINCIA_FISCAL') String? provinciaFiscal,
+    @JsonKey(name: 'LATITUD_FISCAL') double latitudFiscal,
+    @JsonKey(name: 'LONGITUD_FISCAL') double longitudFiscal,
+    @JsonKey(name: 'EMPRESA_ID') String empresaId,
+    @JsonKey(name: 'IVA') double iva,
+    @JsonKey(name: 'VENTAS_ANYO_ACTUAL') double ventasAnyoActual,
+    @JsonKey(name: 'VENTAS_ANYO_ANTERIOR') double ventasAnyoAnterior,
+    @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS') double ventasHaceDosAnyos,
+    @JsonKey(name: 'MARGEN_ANYO_ACTUAL') double margenAnyoActual,
+    @JsonKey(name: 'MARGEN_ANYO_ANTERIOR') double margenAnyoAnterior,
+    @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS') double margenHaceDosAnyos,
+    @JsonKey(name: 'PORCENTAJE_ABONOS') double porcentajeAbonos,
+    @JsonKey(name: 'PORCENTAJE_GARANTIAS') double porcentajeGarantias,
+    @JsonKey(name: 'CENTRAL_COMPRAS_NOMBRE') String? centralCompras,
+    @JsonKey(name: 'URL_WEB') String? urlWeb,
+    @JsonKey(name: 'DIVISA_ID') String? divisaId,
+    @JsonKey(name: 'TARIFA_ID') String? tarifaId,
+    @JsonKey(name: 'TARIFA_DESCRIPCION') String? tarifaDescripcion,
+    @JsonKey(name: 'DESCUENTO_GENERAL_ID') String? descuentoGeneralId,
+    @JsonKey(name: 'DESCUENTO_GENERAL_DESCRIPCION')
+    String? descripcionDescuentoGeneral,
+    @JsonKey(name: 'TIPO_CALCULO_PRECIO') String tipoCalculoPrecio,
+    @JsonKey(name: 'PLAZO_COBRO_ID') String? plazoDeCobroId,
+    @JsonKey(name: 'METODO_COBRO_ID') String? metodoDeCobroId,
+    @JsonKey(name: 'DESCUENTO_PRONTO_PAGO') double descuentoProntoPago,
+    @JsonKey(name: 'RIESGO_CONCEDIDO_INTERNO') double riesgoConcedidoInterno,
+    @JsonKey(name: 'RIESGO_CONCEDIDO_INTERNO_FECHA')
+    DateTime? riesgoConcedidoInternoDate,
+    @JsonKey(name: 'RIESGO_CONCEDIDO_COFACE') double riesgoConcedidoCoafe,
+    @JsonKey(name: 'RIESGO_CONCEDIDO_COFACE_FECHA')
+    DateTime? riesgoConcedidoCoafeFecha,
+    @JsonKey(name: 'RIESGO_CONCEDIDO') double? riesgoConcedido,
+    @JsonKey(name: 'RIESGO_PDTE_COBRO_VENCIDO_CLIENTE')
+    double? riesgoPendienteCobroVencido,
+    @JsonKey(name: 'RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE')
+    double? riesgoPendienteCobroNoVencido,
+    @JsonKey(name: 'RIESGO_PDTE_SERVIR_CLIENTE') double? riesgoPendienteServir,
+    @JsonKey(name: 'RIESGO_PDTE_FACTURAR_CLIENTE')
+    double? riesgoPendienteFacturar,
+    @JsonKey(name: 'OBSERVACIONES_INTERNAS') String? obvservacionesInternas,
+    @JsonKey(name: 'CLIENTE_POTENCIAL') String? clientePotencial,
+    @JsonKey(name: 'ESTADO_POTENCIAL_ID') String? clienteEstadoPotencialId,
+    @JsonKey(name: 'TIPO_POTENCIAL_ID') String? clienteTipoPotencialId,
+    @JsonKey(name: 'REPRESENTANTE1_ID') String? representante1Id,
+    @JsonKey(name: 'REPRESENTANTE1_NOMBRE') String? representante1Nombre,
+    @JsonKey(name: 'REPRESENTANTE2_ID') String? representante2Id,
+    @JsonKey(name: 'REPRESENTANTE2_NOMBRE') String? representante2Nombre,
+    @JsonKey(name: 'TELEFONO_FIJO') String? telefonoFijo,
+    @JsonKey(name: 'TELEFONO_MOVIL') String? telefonoMovil,
+    @JsonKey(name: 'E_MAIL') String? email,
+    @JsonKey(name: 'SECTOR_ID') String? sectorId,
+    @JsonKey(name: 'SUBSECTOR_ID') String? subsectorId,
+    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') String deleted,
+  });
 }
 
 /// @nodoc
@@ -293,236 +295,296 @@ class _$ClienteDTOCopyWithImpl<$Res, $Val extends ClienteDTO>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      nombreCliente: null == nombreCliente
-          ? _value.nombreCliente
-          : nombreCliente // ignore: cast_nullable_to_non_nullable
-              as String,
-      nif: freezed == nif
-          ? _value.nif
-          : nif // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nombreFiscal: null == nombreFiscal
-          ? _value.nombreFiscal
-          : nombreFiscal // ignore: cast_nullable_to_non_nullable
-              as String,
-      direccionFiscal1: freezed == direccionFiscal1
-          ? _value.direccionFiscal1
-          : direccionFiscal1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      direccionFiscal2: freezed == direccionFiscal2
-          ? _value.direccionFiscal2
-          : direccionFiscal2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      codigoPostalFiscal: freezed == codigoPostalFiscal
-          ? _value.codigoPostalFiscal
-          : codigoPostalFiscal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      poblacionFiscal: freezed == poblacionFiscal
-          ? _value.poblacionFiscal
-          : poblacionFiscal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      paisFiscalId: freezed == paisFiscalId
-          ? _value.paisFiscalId
-          : paisFiscalId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      provinciaFiscal: freezed == provinciaFiscal
-          ? _value.provinciaFiscal
-          : provinciaFiscal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      latitudFiscal: null == latitudFiscal
-          ? _value.latitudFiscal
-          : latitudFiscal // ignore: cast_nullable_to_non_nullable
-              as double,
-      longitudFiscal: null == longitudFiscal
-          ? _value.longitudFiscal
-          : longitudFiscal // ignore: cast_nullable_to_non_nullable
-              as double,
-      empresaId: null == empresaId
-          ? _value.empresaId
-          : empresaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      iva: null == iva
-          ? _value.iva
-          : iva // ignore: cast_nullable_to_non_nullable
-              as double,
-      ventasAnyoActual: null == ventasAnyoActual
-          ? _value.ventasAnyoActual
-          : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
-              as double,
-      ventasAnyoAnterior: null == ventasAnyoAnterior
-          ? _value.ventasAnyoAnterior
-          : ventasAnyoAnterior // ignore: cast_nullable_to_non_nullable
-              as double,
-      ventasHaceDosAnyos: null == ventasHaceDosAnyos
-          ? _value.ventasHaceDosAnyos
-          : ventasHaceDosAnyos // ignore: cast_nullable_to_non_nullable
-              as double,
-      margenAnyoActual: null == margenAnyoActual
-          ? _value.margenAnyoActual
-          : margenAnyoActual // ignore: cast_nullable_to_non_nullable
-              as double,
-      margenAnyoAnterior: null == margenAnyoAnterior
-          ? _value.margenAnyoAnterior
-          : margenAnyoAnterior // ignore: cast_nullable_to_non_nullable
-              as double,
-      margenHaceDosAnyos: null == margenHaceDosAnyos
-          ? _value.margenHaceDosAnyos
-          : margenHaceDosAnyos // ignore: cast_nullable_to_non_nullable
-              as double,
-      porcentajeAbonos: null == porcentajeAbonos
-          ? _value.porcentajeAbonos
-          : porcentajeAbonos // ignore: cast_nullable_to_non_nullable
-              as double,
-      porcentajeGarantias: null == porcentajeGarantias
-          ? _value.porcentajeGarantias
-          : porcentajeGarantias // ignore: cast_nullable_to_non_nullable
-              as double,
-      centralCompras: freezed == centralCompras
-          ? _value.centralCompras
-          : centralCompras // ignore: cast_nullable_to_non_nullable
-              as String?,
-      urlWeb: freezed == urlWeb
-          ? _value.urlWeb
-          : urlWeb // ignore: cast_nullable_to_non_nullable
-              as String?,
-      divisaId: freezed == divisaId
-          ? _value.divisaId
-          : divisaId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tarifaId: freezed == tarifaId
-          ? _value.tarifaId
-          : tarifaId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tarifaDescripcion: freezed == tarifaDescripcion
-          ? _value.tarifaDescripcion
-          : tarifaDescripcion // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descuentoGeneralId: freezed == descuentoGeneralId
-          ? _value.descuentoGeneralId
-          : descuentoGeneralId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionDescuentoGeneral: freezed == descripcionDescuentoGeneral
-          ? _value.descripcionDescuentoGeneral
-          : descripcionDescuentoGeneral // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tipoCalculoPrecio: null == tipoCalculoPrecio
-          ? _value.tipoCalculoPrecio
-          : tipoCalculoPrecio // ignore: cast_nullable_to_non_nullable
-              as String,
-      plazoDeCobroId: freezed == plazoDeCobroId
-          ? _value.plazoDeCobroId
-          : plazoDeCobroId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      metodoDeCobroId: freezed == metodoDeCobroId
-          ? _value.metodoDeCobroId
-          : metodoDeCobroId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descuentoProntoPago: null == descuentoProntoPago
-          ? _value.descuentoProntoPago
-          : descuentoProntoPago // ignore: cast_nullable_to_non_nullable
-              as double,
-      riesgoConcedidoInterno: null == riesgoConcedidoInterno
-          ? _value.riesgoConcedidoInterno
-          : riesgoConcedidoInterno // ignore: cast_nullable_to_non_nullable
-              as double,
-      riesgoConcedidoInternoDate: freezed == riesgoConcedidoInternoDate
-          ? _value.riesgoConcedidoInternoDate
-          : riesgoConcedidoInternoDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      riesgoConcedidoCoafe: null == riesgoConcedidoCoafe
-          ? _value.riesgoConcedidoCoafe
-          : riesgoConcedidoCoafe // ignore: cast_nullable_to_non_nullable
-              as double,
-      riesgoConcedidoCoafeFecha: freezed == riesgoConcedidoCoafeFecha
-          ? _value.riesgoConcedidoCoafeFecha
-          : riesgoConcedidoCoafeFecha // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      riesgoConcedido: freezed == riesgoConcedido
-          ? _value.riesgoConcedido
-          : riesgoConcedido // ignore: cast_nullable_to_non_nullable
-              as double?,
-      riesgoPendienteCobroVencido: freezed == riesgoPendienteCobroVencido
-          ? _value.riesgoPendienteCobroVencido
-          : riesgoPendienteCobroVencido // ignore: cast_nullable_to_non_nullable
-              as double?,
-      riesgoPendienteCobroNoVencido: freezed == riesgoPendienteCobroNoVencido
-          ? _value.riesgoPendienteCobroNoVencido
-          : riesgoPendienteCobroNoVencido // ignore: cast_nullable_to_non_nullable
-              as double?,
-      riesgoPendienteServir: freezed == riesgoPendienteServir
-          ? _value.riesgoPendienteServir
-          : riesgoPendienteServir // ignore: cast_nullable_to_non_nullable
-              as double?,
-      riesgoPendienteFacturar: freezed == riesgoPendienteFacturar
-          ? _value.riesgoPendienteFacturar
-          : riesgoPendienteFacturar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      obvservacionesInternas: freezed == obvservacionesInternas
-          ? _value.obvservacionesInternas
-          : obvservacionesInternas // ignore: cast_nullable_to_non_nullable
-              as String?,
-      clientePotencial: freezed == clientePotencial
-          ? _value.clientePotencial
-          : clientePotencial // ignore: cast_nullable_to_non_nullable
-              as String?,
-      clienteEstadoPotencialId: freezed == clienteEstadoPotencialId
-          ? _value.clienteEstadoPotencialId
-          : clienteEstadoPotencialId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      clienteTipoPotencialId: freezed == clienteTipoPotencialId
-          ? _value.clienteTipoPotencialId
-          : clienteTipoPotencialId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      representante1Id: freezed == representante1Id
-          ? _value.representante1Id
-          : representante1Id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      representante1Nombre: freezed == representante1Nombre
-          ? _value.representante1Nombre
-          : representante1Nombre // ignore: cast_nullable_to_non_nullable
-              as String?,
-      representante2Id: freezed == representante2Id
-          ? _value.representante2Id
-          : representante2Id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      representante2Nombre: freezed == representante2Nombre
-          ? _value.representante2Nombre
-          : representante2Nombre // ignore: cast_nullable_to_non_nullable
-              as String?,
-      telefonoFijo: freezed == telefonoFijo
-          ? _value.telefonoFijo
-          : telefonoFijo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      telefonoMovil: freezed == telefonoMovil
-          ? _value.telefonoMovil
-          : telefonoMovil // ignore: cast_nullable_to_non_nullable
-              as String?,
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sectorId: freezed == sectorId
-          ? _value.sectorId
-          : sectorId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      subsectorId: freezed == subsectorId
-          ? _value.subsectorId
-          : subsectorId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id:
+                null == id
+                    ? _value.id
+                    : id // ignore: cast_nullable_to_non_nullable
+                        as String,
+            nombreCliente:
+                null == nombreCliente
+                    ? _value.nombreCliente
+                    : nombreCliente // ignore: cast_nullable_to_non_nullable
+                        as String,
+            nif:
+                freezed == nif
+                    ? _value.nif
+                    : nif // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            nombreFiscal:
+                null == nombreFiscal
+                    ? _value.nombreFiscal
+                    : nombreFiscal // ignore: cast_nullable_to_non_nullable
+                        as String,
+            direccionFiscal1:
+                freezed == direccionFiscal1
+                    ? _value.direccionFiscal1
+                    : direccionFiscal1 // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            direccionFiscal2:
+                freezed == direccionFiscal2
+                    ? _value.direccionFiscal2
+                    : direccionFiscal2 // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            codigoPostalFiscal:
+                freezed == codigoPostalFiscal
+                    ? _value.codigoPostalFiscal
+                    : codigoPostalFiscal // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            poblacionFiscal:
+                freezed == poblacionFiscal
+                    ? _value.poblacionFiscal
+                    : poblacionFiscal // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            paisFiscalId:
+                freezed == paisFiscalId
+                    ? _value.paisFiscalId
+                    : paisFiscalId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            provinciaFiscal:
+                freezed == provinciaFiscal
+                    ? _value.provinciaFiscal
+                    : provinciaFiscal // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            latitudFiscal:
+                null == latitudFiscal
+                    ? _value.latitudFiscal
+                    : latitudFiscal // ignore: cast_nullable_to_non_nullable
+                        as double,
+            longitudFiscal:
+                null == longitudFiscal
+                    ? _value.longitudFiscal
+                    : longitudFiscal // ignore: cast_nullable_to_non_nullable
+                        as double,
+            empresaId:
+                null == empresaId
+                    ? _value.empresaId
+                    : empresaId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            iva:
+                null == iva
+                    ? _value.iva
+                    : iva // ignore: cast_nullable_to_non_nullable
+                        as double,
+            ventasAnyoActual:
+                null == ventasAnyoActual
+                    ? _value.ventasAnyoActual
+                    : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
+                        as double,
+            ventasAnyoAnterior:
+                null == ventasAnyoAnterior
+                    ? _value.ventasAnyoAnterior
+                    : ventasAnyoAnterior // ignore: cast_nullable_to_non_nullable
+                        as double,
+            ventasHaceDosAnyos:
+                null == ventasHaceDosAnyos
+                    ? _value.ventasHaceDosAnyos
+                    : ventasHaceDosAnyos // ignore: cast_nullable_to_non_nullable
+                        as double,
+            margenAnyoActual:
+                null == margenAnyoActual
+                    ? _value.margenAnyoActual
+                    : margenAnyoActual // ignore: cast_nullable_to_non_nullable
+                        as double,
+            margenAnyoAnterior:
+                null == margenAnyoAnterior
+                    ? _value.margenAnyoAnterior
+                    : margenAnyoAnterior // ignore: cast_nullable_to_non_nullable
+                        as double,
+            margenHaceDosAnyos:
+                null == margenHaceDosAnyos
+                    ? _value.margenHaceDosAnyos
+                    : margenHaceDosAnyos // ignore: cast_nullable_to_non_nullable
+                        as double,
+            porcentajeAbonos:
+                null == porcentajeAbonos
+                    ? _value.porcentajeAbonos
+                    : porcentajeAbonos // ignore: cast_nullable_to_non_nullable
+                        as double,
+            porcentajeGarantias:
+                null == porcentajeGarantias
+                    ? _value.porcentajeGarantias
+                    : porcentajeGarantias // ignore: cast_nullable_to_non_nullable
+                        as double,
+            centralCompras:
+                freezed == centralCompras
+                    ? _value.centralCompras
+                    : centralCompras // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            urlWeb:
+                freezed == urlWeb
+                    ? _value.urlWeb
+                    : urlWeb // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            divisaId:
+                freezed == divisaId
+                    ? _value.divisaId
+                    : divisaId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            tarifaId:
+                freezed == tarifaId
+                    ? _value.tarifaId
+                    : tarifaId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            tarifaDescripcion:
+                freezed == tarifaDescripcion
+                    ? _value.tarifaDescripcion
+                    : tarifaDescripcion // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descuentoGeneralId:
+                freezed == descuentoGeneralId
+                    ? _value.descuentoGeneralId
+                    : descuentoGeneralId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionDescuentoGeneral:
+                freezed == descripcionDescuentoGeneral
+                    ? _value.descripcionDescuentoGeneral
+                    : descripcionDescuentoGeneral // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            tipoCalculoPrecio:
+                null == tipoCalculoPrecio
+                    ? _value.tipoCalculoPrecio
+                    : tipoCalculoPrecio // ignore: cast_nullable_to_non_nullable
+                        as String,
+            plazoDeCobroId:
+                freezed == plazoDeCobroId
+                    ? _value.plazoDeCobroId
+                    : plazoDeCobroId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            metodoDeCobroId:
+                freezed == metodoDeCobroId
+                    ? _value.metodoDeCobroId
+                    : metodoDeCobroId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descuentoProntoPago:
+                null == descuentoProntoPago
+                    ? _value.descuentoProntoPago
+                    : descuentoProntoPago // ignore: cast_nullable_to_non_nullable
+                        as double,
+            riesgoConcedidoInterno:
+                null == riesgoConcedidoInterno
+                    ? _value.riesgoConcedidoInterno
+                    : riesgoConcedidoInterno // ignore: cast_nullable_to_non_nullable
+                        as double,
+            riesgoConcedidoInternoDate:
+                freezed == riesgoConcedidoInternoDate
+                    ? _value.riesgoConcedidoInternoDate
+                    : riesgoConcedidoInternoDate // ignore: cast_nullable_to_non_nullable
+                        as DateTime?,
+            riesgoConcedidoCoafe:
+                null == riesgoConcedidoCoafe
+                    ? _value.riesgoConcedidoCoafe
+                    : riesgoConcedidoCoafe // ignore: cast_nullable_to_non_nullable
+                        as double,
+            riesgoConcedidoCoafeFecha:
+                freezed == riesgoConcedidoCoafeFecha
+                    ? _value.riesgoConcedidoCoafeFecha
+                    : riesgoConcedidoCoafeFecha // ignore: cast_nullable_to_non_nullable
+                        as DateTime?,
+            riesgoConcedido:
+                freezed == riesgoConcedido
+                    ? _value.riesgoConcedido
+                    : riesgoConcedido // ignore: cast_nullable_to_non_nullable
+                        as double?,
+            riesgoPendienteCobroVencido:
+                freezed == riesgoPendienteCobroVencido
+                    ? _value.riesgoPendienteCobroVencido
+                    : riesgoPendienteCobroVencido // ignore: cast_nullable_to_non_nullable
+                        as double?,
+            riesgoPendienteCobroNoVencido:
+                freezed == riesgoPendienteCobroNoVencido
+                    ? _value.riesgoPendienteCobroNoVencido
+                    : riesgoPendienteCobroNoVencido // ignore: cast_nullable_to_non_nullable
+                        as double?,
+            riesgoPendienteServir:
+                freezed == riesgoPendienteServir
+                    ? _value.riesgoPendienteServir
+                    : riesgoPendienteServir // ignore: cast_nullable_to_non_nullable
+                        as double?,
+            riesgoPendienteFacturar:
+                freezed == riesgoPendienteFacturar
+                    ? _value.riesgoPendienteFacturar
+                    : riesgoPendienteFacturar // ignore: cast_nullable_to_non_nullable
+                        as double?,
+            obvservacionesInternas:
+                freezed == obvservacionesInternas
+                    ? _value.obvservacionesInternas
+                    : obvservacionesInternas // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            clientePotencial:
+                freezed == clientePotencial
+                    ? _value.clientePotencial
+                    : clientePotencial // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            clienteEstadoPotencialId:
+                freezed == clienteEstadoPotencialId
+                    ? _value.clienteEstadoPotencialId
+                    : clienteEstadoPotencialId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            clienteTipoPotencialId:
+                freezed == clienteTipoPotencialId
+                    ? _value.clienteTipoPotencialId
+                    : clienteTipoPotencialId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            representante1Id:
+                freezed == representante1Id
+                    ? _value.representante1Id
+                    : representante1Id // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            representante1Nombre:
+                freezed == representante1Nombre
+                    ? _value.representante1Nombre
+                    : representante1Nombre // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            representante2Id:
+                freezed == representante2Id
+                    ? _value.representante2Id
+                    : representante2Id // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            representante2Nombre:
+                freezed == representante2Nombre
+                    ? _value.representante2Nombre
+                    : representante2Nombre // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            telefonoFijo:
+                freezed == telefonoFijo
+                    ? _value.telefonoFijo
+                    : telefonoFijo // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            telefonoMovil:
+                freezed == telefonoMovil
+                    ? _value.telefonoMovil
+                    : telefonoMovil // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            email:
+                freezed == email
+                    ? _value.email
+                    : email // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            sectorId:
+                freezed == sectorId
+                    ? _value.sectorId
+                    : sectorId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            subsectorId:
+                freezed == subsectorId
+                    ? _value.subsectorId
+                    : subsectorId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            lastUpdated:
+                null == lastUpdated
+                    ? _value.lastUpdated
+                    : lastUpdated // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            deleted:
+                null == deleted
+                    ? _value.deleted
+                    : deleted // ignore: cast_nullable_to_non_nullable
+                        as String,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -530,75 +592,76 @@ class _$ClienteDTOCopyWithImpl<$Res, $Val extends ClienteDTO>
 abstract class _$$ClienteDTOImplCopyWith<$Res>
     implements $ClienteDTOCopyWith<$Res> {
   factory _$$ClienteDTOImplCopyWith(
-          _$ClienteDTOImpl value, $Res Function(_$ClienteDTOImpl) then) =
-      __$$ClienteDTOImplCopyWithImpl<$Res>;
+    _$ClienteDTOImpl value,
+    $Res Function(_$ClienteDTOImpl) then,
+  ) = __$$ClienteDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'CLIENTE_ID') String id,
-      @JsonKey(name: 'NOMBRE') String nombreCliente,
-      @JsonKey(name: 'NIF') String? nif,
-      @JsonKey(name: 'NOMBRE_FISCAL') String nombreFiscal,
-      @JsonKey(name: 'DIRECCION_FISCAL1') String? direccionFiscal1,
-      @JsonKey(name: 'DIRECCION_FISCAL2') String? direccionFiscal2,
-      @JsonKey(name: 'CODIGO_POSTAL_FISCAL') String? codigoPostalFiscal,
-      @JsonKey(name: 'POBLACION_FISCAL') String? poblacionFiscal,
-      @JsonKey(name: 'PAIS_ID_FISCAL') String? paisFiscalId,
-      @JsonKey(name: 'PROVINCIA_FISCAL') String? provinciaFiscal,
-      @JsonKey(name: 'LATITUD_FISCAL') double latitudFiscal,
-      @JsonKey(name: 'LONGITUD_FISCAL') double longitudFiscal,
-      @JsonKey(name: 'EMPRESA_ID') String empresaId,
-      @JsonKey(name: 'IVA') double iva,
-      @JsonKey(name: 'VENTAS_ANYO_ACTUAL') double ventasAnyoActual,
-      @JsonKey(name: 'VENTAS_ANYO_ANTERIOR') double ventasAnyoAnterior,
-      @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS') double ventasHaceDosAnyos,
-      @JsonKey(name: 'MARGEN_ANYO_ACTUAL') double margenAnyoActual,
-      @JsonKey(name: 'MARGEN_ANYO_ANTERIOR') double margenAnyoAnterior,
-      @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS') double margenHaceDosAnyos,
-      @JsonKey(name: 'PORCENTAJE_ABONOS') double porcentajeAbonos,
-      @JsonKey(name: 'PORCENTAJE_GARANTIAS') double porcentajeGarantias,
-      @JsonKey(name: 'CENTRAL_COMPRAS_NOMBRE') String? centralCompras,
-      @JsonKey(name: 'URL_WEB') String? urlWeb,
-      @JsonKey(name: 'DIVISA_ID') String? divisaId,
-      @JsonKey(name: 'TARIFA_ID') String? tarifaId,
-      @JsonKey(name: 'TARIFA_DESCRIPCION') String? tarifaDescripcion,
-      @JsonKey(name: 'DESCUENTO_GENERAL_ID') String? descuentoGeneralId,
-      @JsonKey(name: 'DESCUENTO_GENERAL_DESCRIPCION')
-      String? descripcionDescuentoGeneral,
-      @JsonKey(name: 'TIPO_CALCULO_PRECIO') String tipoCalculoPrecio,
-      @JsonKey(name: 'PLAZO_COBRO_ID') String? plazoDeCobroId,
-      @JsonKey(name: 'METODO_COBRO_ID') String? metodoDeCobroId,
-      @JsonKey(name: 'DESCUENTO_PRONTO_PAGO') double descuentoProntoPago,
-      @JsonKey(name: 'RIESGO_CONCEDIDO_INTERNO') double riesgoConcedidoInterno,
-      @JsonKey(name: 'RIESGO_CONCEDIDO_INTERNO_FECHA')
-      DateTime? riesgoConcedidoInternoDate,
-      @JsonKey(name: 'RIESGO_CONCEDIDO_COFACE') double riesgoConcedidoCoafe,
-      @JsonKey(name: 'RIESGO_CONCEDIDO_COFACE_FECHA')
-      DateTime? riesgoConcedidoCoafeFecha,
-      @JsonKey(name: 'RIESGO_CONCEDIDO') double? riesgoConcedido,
-      @JsonKey(name: 'RIESGO_PDTE_COBRO_VENCIDO_CLIENTE')
-      double? riesgoPendienteCobroVencido,
-      @JsonKey(name: 'RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE')
-      double? riesgoPendienteCobroNoVencido,
-      @JsonKey(name: 'RIESGO_PDTE_SERVIR_CLIENTE')
-      double? riesgoPendienteServir,
-      @JsonKey(name: 'RIESGO_PDTE_FACTURAR_CLIENTE')
-      double? riesgoPendienteFacturar,
-      @JsonKey(name: 'OBSERVACIONES_INTERNAS') String? obvservacionesInternas,
-      @JsonKey(name: 'CLIENTE_POTENCIAL') String? clientePotencial,
-      @JsonKey(name: 'ESTADO_POTENCIAL_ID') String? clienteEstadoPotencialId,
-      @JsonKey(name: 'TIPO_POTENCIAL_ID') String? clienteTipoPotencialId,
-      @JsonKey(name: 'REPRESENTANTE1_ID') String? representante1Id,
-      @JsonKey(name: 'REPRESENTANTE1_NOMBRE') String? representante1Nombre,
-      @JsonKey(name: 'REPRESENTANTE2_ID') String? representante2Id,
-      @JsonKey(name: 'REPRESENTANTE2_NOMBRE') String? representante2Nombre,
-      @JsonKey(name: 'TELEFONO_FIJO') String? telefonoFijo,
-      @JsonKey(name: 'TELEFONO_MOVIL') String? telefonoMovil,
-      @JsonKey(name: 'E_MAIL') String? email,
-      @JsonKey(name: 'SECTOR_ID') String? sectorId,
-      @JsonKey(name: 'SUBSECTOR_ID') String? subsectorId,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+  $Res call({
+    @JsonKey(name: 'CLIENTE_ID') String id,
+    @JsonKey(name: 'NOMBRE') String nombreCliente,
+    @JsonKey(name: 'NIF') String? nif,
+    @JsonKey(name: 'NOMBRE_FISCAL') String nombreFiscal,
+    @JsonKey(name: 'DIRECCION_FISCAL1') String? direccionFiscal1,
+    @JsonKey(name: 'DIRECCION_FISCAL2') String? direccionFiscal2,
+    @JsonKey(name: 'CODIGO_POSTAL_FISCAL') String? codigoPostalFiscal,
+    @JsonKey(name: 'POBLACION_FISCAL') String? poblacionFiscal,
+    @JsonKey(name: 'PAIS_ID_FISCAL') String? paisFiscalId,
+    @JsonKey(name: 'PROVINCIA_FISCAL') String? provinciaFiscal,
+    @JsonKey(name: 'LATITUD_FISCAL') double latitudFiscal,
+    @JsonKey(name: 'LONGITUD_FISCAL') double longitudFiscal,
+    @JsonKey(name: 'EMPRESA_ID') String empresaId,
+    @JsonKey(name: 'IVA') double iva,
+    @JsonKey(name: 'VENTAS_ANYO_ACTUAL') double ventasAnyoActual,
+    @JsonKey(name: 'VENTAS_ANYO_ANTERIOR') double ventasAnyoAnterior,
+    @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS') double ventasHaceDosAnyos,
+    @JsonKey(name: 'MARGEN_ANYO_ACTUAL') double margenAnyoActual,
+    @JsonKey(name: 'MARGEN_ANYO_ANTERIOR') double margenAnyoAnterior,
+    @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS') double margenHaceDosAnyos,
+    @JsonKey(name: 'PORCENTAJE_ABONOS') double porcentajeAbonos,
+    @JsonKey(name: 'PORCENTAJE_GARANTIAS') double porcentajeGarantias,
+    @JsonKey(name: 'CENTRAL_COMPRAS_NOMBRE') String? centralCompras,
+    @JsonKey(name: 'URL_WEB') String? urlWeb,
+    @JsonKey(name: 'DIVISA_ID') String? divisaId,
+    @JsonKey(name: 'TARIFA_ID') String? tarifaId,
+    @JsonKey(name: 'TARIFA_DESCRIPCION') String? tarifaDescripcion,
+    @JsonKey(name: 'DESCUENTO_GENERAL_ID') String? descuentoGeneralId,
+    @JsonKey(name: 'DESCUENTO_GENERAL_DESCRIPCION')
+    String? descripcionDescuentoGeneral,
+    @JsonKey(name: 'TIPO_CALCULO_PRECIO') String tipoCalculoPrecio,
+    @JsonKey(name: 'PLAZO_COBRO_ID') String? plazoDeCobroId,
+    @JsonKey(name: 'METODO_COBRO_ID') String? metodoDeCobroId,
+    @JsonKey(name: 'DESCUENTO_PRONTO_PAGO') double descuentoProntoPago,
+    @JsonKey(name: 'RIESGO_CONCEDIDO_INTERNO') double riesgoConcedidoInterno,
+    @JsonKey(name: 'RIESGO_CONCEDIDO_INTERNO_FECHA')
+    DateTime? riesgoConcedidoInternoDate,
+    @JsonKey(name: 'RIESGO_CONCEDIDO_COFACE') double riesgoConcedidoCoafe,
+    @JsonKey(name: 'RIESGO_CONCEDIDO_COFACE_FECHA')
+    DateTime? riesgoConcedidoCoafeFecha,
+    @JsonKey(name: 'RIESGO_CONCEDIDO') double? riesgoConcedido,
+    @JsonKey(name: 'RIESGO_PDTE_COBRO_VENCIDO_CLIENTE')
+    double? riesgoPendienteCobroVencido,
+    @JsonKey(name: 'RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE')
+    double? riesgoPendienteCobroNoVencido,
+    @JsonKey(name: 'RIESGO_PDTE_SERVIR_CLIENTE') double? riesgoPendienteServir,
+    @JsonKey(name: 'RIESGO_PDTE_FACTURAR_CLIENTE')
+    double? riesgoPendienteFacturar,
+    @JsonKey(name: 'OBSERVACIONES_INTERNAS') String? obvservacionesInternas,
+    @JsonKey(name: 'CLIENTE_POTENCIAL') String? clientePotencial,
+    @JsonKey(name: 'ESTADO_POTENCIAL_ID') String? clienteEstadoPotencialId,
+    @JsonKey(name: 'TIPO_POTENCIAL_ID') String? clienteTipoPotencialId,
+    @JsonKey(name: 'REPRESENTANTE1_ID') String? representante1Id,
+    @JsonKey(name: 'REPRESENTANTE1_NOMBRE') String? representante1Nombre,
+    @JsonKey(name: 'REPRESENTANTE2_ID') String? representante2Id,
+    @JsonKey(name: 'REPRESENTANTE2_NOMBRE') String? representante2Nombre,
+    @JsonKey(name: 'TELEFONO_FIJO') String? telefonoFijo,
+    @JsonKey(name: 'TELEFONO_MOVIL') String? telefonoMovil,
+    @JsonKey(name: 'E_MAIL') String? email,
+    @JsonKey(name: 'SECTOR_ID') String? sectorId,
+    @JsonKey(name: 'SUBSECTOR_ID') String? subsectorId,
+    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') String deleted,
+  });
 }
 
 /// @nodoc
@@ -606,8 +669,9 @@ class __$$ClienteDTOImplCopyWithImpl<$Res>
     extends _$ClienteDTOCopyWithImpl<$Res, _$ClienteDTOImpl>
     implements _$$ClienteDTOImplCopyWith<$Res> {
   __$$ClienteDTOImplCopyWithImpl(
-      _$ClienteDTOImpl _value, $Res Function(_$ClienteDTOImpl) _then)
-      : super(_value, _then);
+    _$ClienteDTOImpl _value,
+    $Res Function(_$ClienteDTOImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ClienteDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -672,309 +736,367 @@ class __$$ClienteDTOImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$ClienteDTOImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      nombreCliente: null == nombreCliente
-          ? _value.nombreCliente
-          : nombreCliente // ignore: cast_nullable_to_non_nullable
-              as String,
-      nif: freezed == nif
-          ? _value.nif
-          : nif // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nombreFiscal: null == nombreFiscal
-          ? _value.nombreFiscal
-          : nombreFiscal // ignore: cast_nullable_to_non_nullable
-              as String,
-      direccionFiscal1: freezed == direccionFiscal1
-          ? _value.direccionFiscal1
-          : direccionFiscal1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      direccionFiscal2: freezed == direccionFiscal2
-          ? _value.direccionFiscal2
-          : direccionFiscal2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      codigoPostalFiscal: freezed == codigoPostalFiscal
-          ? _value.codigoPostalFiscal
-          : codigoPostalFiscal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      poblacionFiscal: freezed == poblacionFiscal
-          ? _value.poblacionFiscal
-          : poblacionFiscal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      paisFiscalId: freezed == paisFiscalId
-          ? _value.paisFiscalId
-          : paisFiscalId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      provinciaFiscal: freezed == provinciaFiscal
-          ? _value.provinciaFiscal
-          : provinciaFiscal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      latitudFiscal: null == latitudFiscal
-          ? _value.latitudFiscal
-          : latitudFiscal // ignore: cast_nullable_to_non_nullable
-              as double,
-      longitudFiscal: null == longitudFiscal
-          ? _value.longitudFiscal
-          : longitudFiscal // ignore: cast_nullable_to_non_nullable
-              as double,
-      empresaId: null == empresaId
-          ? _value.empresaId
-          : empresaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      iva: null == iva
-          ? _value.iva
-          : iva // ignore: cast_nullable_to_non_nullable
-              as double,
-      ventasAnyoActual: null == ventasAnyoActual
-          ? _value.ventasAnyoActual
-          : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
-              as double,
-      ventasAnyoAnterior: null == ventasAnyoAnterior
-          ? _value.ventasAnyoAnterior
-          : ventasAnyoAnterior // ignore: cast_nullable_to_non_nullable
-              as double,
-      ventasHaceDosAnyos: null == ventasHaceDosAnyos
-          ? _value.ventasHaceDosAnyos
-          : ventasHaceDosAnyos // ignore: cast_nullable_to_non_nullable
-              as double,
-      margenAnyoActual: null == margenAnyoActual
-          ? _value.margenAnyoActual
-          : margenAnyoActual // ignore: cast_nullable_to_non_nullable
-              as double,
-      margenAnyoAnterior: null == margenAnyoAnterior
-          ? _value.margenAnyoAnterior
-          : margenAnyoAnterior // ignore: cast_nullable_to_non_nullable
-              as double,
-      margenHaceDosAnyos: null == margenHaceDosAnyos
-          ? _value.margenHaceDosAnyos
-          : margenHaceDosAnyos // ignore: cast_nullable_to_non_nullable
-              as double,
-      porcentajeAbonos: null == porcentajeAbonos
-          ? _value.porcentajeAbonos
-          : porcentajeAbonos // ignore: cast_nullable_to_non_nullable
-              as double,
-      porcentajeGarantias: null == porcentajeGarantias
-          ? _value.porcentajeGarantias
-          : porcentajeGarantias // ignore: cast_nullable_to_non_nullable
-              as double,
-      centralCompras: freezed == centralCompras
-          ? _value.centralCompras
-          : centralCompras // ignore: cast_nullable_to_non_nullable
-              as String?,
-      urlWeb: freezed == urlWeb
-          ? _value.urlWeb
-          : urlWeb // ignore: cast_nullable_to_non_nullable
-              as String?,
-      divisaId: freezed == divisaId
-          ? _value.divisaId
-          : divisaId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tarifaId: freezed == tarifaId
-          ? _value.tarifaId
-          : tarifaId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tarifaDescripcion: freezed == tarifaDescripcion
-          ? _value.tarifaDescripcion
-          : tarifaDescripcion // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descuentoGeneralId: freezed == descuentoGeneralId
-          ? _value.descuentoGeneralId
-          : descuentoGeneralId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionDescuentoGeneral: freezed == descripcionDescuentoGeneral
-          ? _value.descripcionDescuentoGeneral
-          : descripcionDescuentoGeneral // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tipoCalculoPrecio: null == tipoCalculoPrecio
-          ? _value.tipoCalculoPrecio
-          : tipoCalculoPrecio // ignore: cast_nullable_to_non_nullable
-              as String,
-      plazoDeCobroId: freezed == plazoDeCobroId
-          ? _value.plazoDeCobroId
-          : plazoDeCobroId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      metodoDeCobroId: freezed == metodoDeCobroId
-          ? _value.metodoDeCobroId
-          : metodoDeCobroId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descuentoProntoPago: null == descuentoProntoPago
-          ? _value.descuentoProntoPago
-          : descuentoProntoPago // ignore: cast_nullable_to_non_nullable
-              as double,
-      riesgoConcedidoInterno: null == riesgoConcedidoInterno
-          ? _value.riesgoConcedidoInterno
-          : riesgoConcedidoInterno // ignore: cast_nullable_to_non_nullable
-              as double,
-      riesgoConcedidoInternoDate: freezed == riesgoConcedidoInternoDate
-          ? _value.riesgoConcedidoInternoDate
-          : riesgoConcedidoInternoDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      riesgoConcedidoCoafe: null == riesgoConcedidoCoafe
-          ? _value.riesgoConcedidoCoafe
-          : riesgoConcedidoCoafe // ignore: cast_nullable_to_non_nullable
-              as double,
-      riesgoConcedidoCoafeFecha: freezed == riesgoConcedidoCoafeFecha
-          ? _value.riesgoConcedidoCoafeFecha
-          : riesgoConcedidoCoafeFecha // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      riesgoConcedido: freezed == riesgoConcedido
-          ? _value.riesgoConcedido
-          : riesgoConcedido // ignore: cast_nullable_to_non_nullable
-              as double?,
-      riesgoPendienteCobroVencido: freezed == riesgoPendienteCobroVencido
-          ? _value.riesgoPendienteCobroVencido
-          : riesgoPendienteCobroVencido // ignore: cast_nullable_to_non_nullable
-              as double?,
-      riesgoPendienteCobroNoVencido: freezed == riesgoPendienteCobroNoVencido
-          ? _value.riesgoPendienteCobroNoVencido
-          : riesgoPendienteCobroNoVencido // ignore: cast_nullable_to_non_nullable
-              as double?,
-      riesgoPendienteServir: freezed == riesgoPendienteServir
-          ? _value.riesgoPendienteServir
-          : riesgoPendienteServir // ignore: cast_nullable_to_non_nullable
-              as double?,
-      riesgoPendienteFacturar: freezed == riesgoPendienteFacturar
-          ? _value.riesgoPendienteFacturar
-          : riesgoPendienteFacturar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      obvservacionesInternas: freezed == obvservacionesInternas
-          ? _value.obvservacionesInternas
-          : obvservacionesInternas // ignore: cast_nullable_to_non_nullable
-              as String?,
-      clientePotencial: freezed == clientePotencial
-          ? _value.clientePotencial
-          : clientePotencial // ignore: cast_nullable_to_non_nullable
-              as String?,
-      clienteEstadoPotencialId: freezed == clienteEstadoPotencialId
-          ? _value.clienteEstadoPotencialId
-          : clienteEstadoPotencialId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      clienteTipoPotencialId: freezed == clienteTipoPotencialId
-          ? _value.clienteTipoPotencialId
-          : clienteTipoPotencialId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      representante1Id: freezed == representante1Id
-          ? _value.representante1Id
-          : representante1Id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      representante1Nombre: freezed == representante1Nombre
-          ? _value.representante1Nombre
-          : representante1Nombre // ignore: cast_nullable_to_non_nullable
-              as String?,
-      representante2Id: freezed == representante2Id
-          ? _value.representante2Id
-          : representante2Id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      representante2Nombre: freezed == representante2Nombre
-          ? _value.representante2Nombre
-          : representante2Nombre // ignore: cast_nullable_to_non_nullable
-              as String?,
-      telefonoFijo: freezed == telefonoFijo
-          ? _value.telefonoFijo
-          : telefonoFijo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      telefonoMovil: freezed == telefonoMovil
-          ? _value.telefonoMovil
-          : telefonoMovil // ignore: cast_nullable_to_non_nullable
-              as String?,
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sectorId: freezed == sectorId
-          ? _value.sectorId
-          : sectorId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      subsectorId: freezed == subsectorId
-          ? _value.subsectorId
-          : subsectorId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$ClienteDTOImpl(
+        id:
+            null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                    as String,
+        nombreCliente:
+            null == nombreCliente
+                ? _value.nombreCliente
+                : nombreCliente // ignore: cast_nullable_to_non_nullable
+                    as String,
+        nif:
+            freezed == nif
+                ? _value.nif
+                : nif // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        nombreFiscal:
+            null == nombreFiscal
+                ? _value.nombreFiscal
+                : nombreFiscal // ignore: cast_nullable_to_non_nullable
+                    as String,
+        direccionFiscal1:
+            freezed == direccionFiscal1
+                ? _value.direccionFiscal1
+                : direccionFiscal1 // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        direccionFiscal2:
+            freezed == direccionFiscal2
+                ? _value.direccionFiscal2
+                : direccionFiscal2 // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        codigoPostalFiscal:
+            freezed == codigoPostalFiscal
+                ? _value.codigoPostalFiscal
+                : codigoPostalFiscal // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        poblacionFiscal:
+            freezed == poblacionFiscal
+                ? _value.poblacionFiscal
+                : poblacionFiscal // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        paisFiscalId:
+            freezed == paisFiscalId
+                ? _value.paisFiscalId
+                : paisFiscalId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        provinciaFiscal:
+            freezed == provinciaFiscal
+                ? _value.provinciaFiscal
+                : provinciaFiscal // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        latitudFiscal:
+            null == latitudFiscal
+                ? _value.latitudFiscal
+                : latitudFiscal // ignore: cast_nullable_to_non_nullable
+                    as double,
+        longitudFiscal:
+            null == longitudFiscal
+                ? _value.longitudFiscal
+                : longitudFiscal // ignore: cast_nullable_to_non_nullable
+                    as double,
+        empresaId:
+            null == empresaId
+                ? _value.empresaId
+                : empresaId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        iva:
+            null == iva
+                ? _value.iva
+                : iva // ignore: cast_nullable_to_non_nullable
+                    as double,
+        ventasAnyoActual:
+            null == ventasAnyoActual
+                ? _value.ventasAnyoActual
+                : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
+                    as double,
+        ventasAnyoAnterior:
+            null == ventasAnyoAnterior
+                ? _value.ventasAnyoAnterior
+                : ventasAnyoAnterior // ignore: cast_nullable_to_non_nullable
+                    as double,
+        ventasHaceDosAnyos:
+            null == ventasHaceDosAnyos
+                ? _value.ventasHaceDosAnyos
+                : ventasHaceDosAnyos // ignore: cast_nullable_to_non_nullable
+                    as double,
+        margenAnyoActual:
+            null == margenAnyoActual
+                ? _value.margenAnyoActual
+                : margenAnyoActual // ignore: cast_nullable_to_non_nullable
+                    as double,
+        margenAnyoAnterior:
+            null == margenAnyoAnterior
+                ? _value.margenAnyoAnterior
+                : margenAnyoAnterior // ignore: cast_nullable_to_non_nullable
+                    as double,
+        margenHaceDosAnyos:
+            null == margenHaceDosAnyos
+                ? _value.margenHaceDosAnyos
+                : margenHaceDosAnyos // ignore: cast_nullable_to_non_nullable
+                    as double,
+        porcentajeAbonos:
+            null == porcentajeAbonos
+                ? _value.porcentajeAbonos
+                : porcentajeAbonos // ignore: cast_nullable_to_non_nullable
+                    as double,
+        porcentajeGarantias:
+            null == porcentajeGarantias
+                ? _value.porcentajeGarantias
+                : porcentajeGarantias // ignore: cast_nullable_to_non_nullable
+                    as double,
+        centralCompras:
+            freezed == centralCompras
+                ? _value.centralCompras
+                : centralCompras // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        urlWeb:
+            freezed == urlWeb
+                ? _value.urlWeb
+                : urlWeb // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        divisaId:
+            freezed == divisaId
+                ? _value.divisaId
+                : divisaId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        tarifaId:
+            freezed == tarifaId
+                ? _value.tarifaId
+                : tarifaId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        tarifaDescripcion:
+            freezed == tarifaDescripcion
+                ? _value.tarifaDescripcion
+                : tarifaDescripcion // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descuentoGeneralId:
+            freezed == descuentoGeneralId
+                ? _value.descuentoGeneralId
+                : descuentoGeneralId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionDescuentoGeneral:
+            freezed == descripcionDescuentoGeneral
+                ? _value.descripcionDescuentoGeneral
+                : descripcionDescuentoGeneral // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        tipoCalculoPrecio:
+            null == tipoCalculoPrecio
+                ? _value.tipoCalculoPrecio
+                : tipoCalculoPrecio // ignore: cast_nullable_to_non_nullable
+                    as String,
+        plazoDeCobroId:
+            freezed == plazoDeCobroId
+                ? _value.plazoDeCobroId
+                : plazoDeCobroId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        metodoDeCobroId:
+            freezed == metodoDeCobroId
+                ? _value.metodoDeCobroId
+                : metodoDeCobroId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descuentoProntoPago:
+            null == descuentoProntoPago
+                ? _value.descuentoProntoPago
+                : descuentoProntoPago // ignore: cast_nullable_to_non_nullable
+                    as double,
+        riesgoConcedidoInterno:
+            null == riesgoConcedidoInterno
+                ? _value.riesgoConcedidoInterno
+                : riesgoConcedidoInterno // ignore: cast_nullable_to_non_nullable
+                    as double,
+        riesgoConcedidoInternoDate:
+            freezed == riesgoConcedidoInternoDate
+                ? _value.riesgoConcedidoInternoDate
+                : riesgoConcedidoInternoDate // ignore: cast_nullable_to_non_nullable
+                    as DateTime?,
+        riesgoConcedidoCoafe:
+            null == riesgoConcedidoCoafe
+                ? _value.riesgoConcedidoCoafe
+                : riesgoConcedidoCoafe // ignore: cast_nullable_to_non_nullable
+                    as double,
+        riesgoConcedidoCoafeFecha:
+            freezed == riesgoConcedidoCoafeFecha
+                ? _value.riesgoConcedidoCoafeFecha
+                : riesgoConcedidoCoafeFecha // ignore: cast_nullable_to_non_nullable
+                    as DateTime?,
+        riesgoConcedido:
+            freezed == riesgoConcedido
+                ? _value.riesgoConcedido
+                : riesgoConcedido // ignore: cast_nullable_to_non_nullable
+                    as double?,
+        riesgoPendienteCobroVencido:
+            freezed == riesgoPendienteCobroVencido
+                ? _value.riesgoPendienteCobroVencido
+                : riesgoPendienteCobroVencido // ignore: cast_nullable_to_non_nullable
+                    as double?,
+        riesgoPendienteCobroNoVencido:
+            freezed == riesgoPendienteCobroNoVencido
+                ? _value.riesgoPendienteCobroNoVencido
+                : riesgoPendienteCobroNoVencido // ignore: cast_nullable_to_non_nullable
+                    as double?,
+        riesgoPendienteServir:
+            freezed == riesgoPendienteServir
+                ? _value.riesgoPendienteServir
+                : riesgoPendienteServir // ignore: cast_nullable_to_non_nullable
+                    as double?,
+        riesgoPendienteFacturar:
+            freezed == riesgoPendienteFacturar
+                ? _value.riesgoPendienteFacturar
+                : riesgoPendienteFacturar // ignore: cast_nullable_to_non_nullable
+                    as double?,
+        obvservacionesInternas:
+            freezed == obvservacionesInternas
+                ? _value.obvservacionesInternas
+                : obvservacionesInternas // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        clientePotencial:
+            freezed == clientePotencial
+                ? _value.clientePotencial
+                : clientePotencial // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        clienteEstadoPotencialId:
+            freezed == clienteEstadoPotencialId
+                ? _value.clienteEstadoPotencialId
+                : clienteEstadoPotencialId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        clienteTipoPotencialId:
+            freezed == clienteTipoPotencialId
+                ? _value.clienteTipoPotencialId
+                : clienteTipoPotencialId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        representante1Id:
+            freezed == representante1Id
+                ? _value.representante1Id
+                : representante1Id // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        representante1Nombre:
+            freezed == representante1Nombre
+                ? _value.representante1Nombre
+                : representante1Nombre // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        representante2Id:
+            freezed == representante2Id
+                ? _value.representante2Id
+                : representante2Id // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        representante2Nombre:
+            freezed == representante2Nombre
+                ? _value.representante2Nombre
+                : representante2Nombre // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        telefonoFijo:
+            freezed == telefonoFijo
+                ? _value.telefonoFijo
+                : telefonoFijo // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        telefonoMovil:
+            freezed == telefonoMovil
+                ? _value.telefonoMovil
+                : telefonoMovil // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        email:
+            freezed == email
+                ? _value.email
+                : email // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        sectorId:
+            freezed == sectorId
+                ? _value.sectorId
+                : sectorId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        subsectorId:
+            freezed == subsectorId
+                ? _value.subsectorId
+                : subsectorId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        lastUpdated:
+            null == lastUpdated
+                ? _value.lastUpdated
+                : lastUpdated // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        deleted:
+            null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ClienteDTOImpl extends _ClienteDTO {
-  const _$ClienteDTOImpl(
-      {@JsonKey(name: 'CLIENTE_ID') required this.id,
-      @JsonKey(name: 'NOMBRE') required this.nombreCliente,
-      @JsonKey(name: 'NIF') this.nif,
-      @JsonKey(name: 'NOMBRE_FISCAL') required this.nombreFiscal,
-      @JsonKey(name: 'DIRECCION_FISCAL1') this.direccionFiscal1,
-      @JsonKey(name: 'DIRECCION_FISCAL2') this.direccionFiscal2,
-      @JsonKey(name: 'CODIGO_POSTAL_FISCAL') this.codigoPostalFiscal,
-      @JsonKey(name: 'POBLACION_FISCAL') this.poblacionFiscal,
-      @JsonKey(name: 'PAIS_ID_FISCAL') this.paisFiscalId,
-      @JsonKey(name: 'PROVINCIA_FISCAL') this.provinciaFiscal,
-      @JsonKey(name: 'LATITUD_FISCAL') required this.latitudFiscal,
-      @JsonKey(name: 'LONGITUD_FISCAL') required this.longitudFiscal,
-      @JsonKey(name: 'EMPRESA_ID') required this.empresaId,
-      @JsonKey(name: 'IVA') required this.iva,
-      @JsonKey(name: 'VENTAS_ANYO_ACTUAL') required this.ventasAnyoActual,
-      @JsonKey(name: 'VENTAS_ANYO_ANTERIOR') required this.ventasAnyoAnterior,
-      @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS') required this.ventasHaceDosAnyos,
-      @JsonKey(name: 'MARGEN_ANYO_ACTUAL') required this.margenAnyoActual,
-      @JsonKey(name: 'MARGEN_ANYO_ANTERIOR') required this.margenAnyoAnterior,
-      @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS') required this.margenHaceDosAnyos,
-      @JsonKey(name: 'PORCENTAJE_ABONOS') required this.porcentajeAbonos,
-      @JsonKey(name: 'PORCENTAJE_GARANTIAS') required this.porcentajeGarantias,
-      @JsonKey(name: 'CENTRAL_COMPRAS_NOMBRE') this.centralCompras,
-      @JsonKey(name: 'URL_WEB') this.urlWeb,
-      @JsonKey(name: 'DIVISA_ID') this.divisaId,
-      @JsonKey(name: 'TARIFA_ID') this.tarifaId,
-      @JsonKey(name: 'TARIFA_DESCRIPCION') this.tarifaDescripcion,
-      @JsonKey(name: 'DESCUENTO_GENERAL_ID') this.descuentoGeneralId,
-      @JsonKey(name: 'DESCUENTO_GENERAL_DESCRIPCION')
-      this.descripcionDescuentoGeneral,
-      @JsonKey(name: 'TIPO_CALCULO_PRECIO') required this.tipoCalculoPrecio,
-      @JsonKey(name: 'PLAZO_COBRO_ID') this.plazoDeCobroId,
-      @JsonKey(name: 'METODO_COBRO_ID') this.metodoDeCobroId,
-      @JsonKey(name: 'DESCUENTO_PRONTO_PAGO') required this.descuentoProntoPago,
-      @JsonKey(name: 'RIESGO_CONCEDIDO_INTERNO')
-      required this.riesgoConcedidoInterno,
-      @JsonKey(name: 'RIESGO_CONCEDIDO_INTERNO_FECHA')
-      this.riesgoConcedidoInternoDate,
-      @JsonKey(name: 'RIESGO_CONCEDIDO_COFACE')
-      required this.riesgoConcedidoCoafe,
-      @JsonKey(name: 'RIESGO_CONCEDIDO_COFACE_FECHA')
-      this.riesgoConcedidoCoafeFecha,
-      @JsonKey(name: 'RIESGO_CONCEDIDO') this.riesgoConcedido,
-      @JsonKey(name: 'RIESGO_PDTE_COBRO_VENCIDO_CLIENTE')
-      this.riesgoPendienteCobroVencido,
-      @JsonKey(name: 'RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE')
-      this.riesgoPendienteCobroNoVencido,
-      @JsonKey(name: 'RIESGO_PDTE_SERVIR_CLIENTE') this.riesgoPendienteServir,
-      @JsonKey(name: 'RIESGO_PDTE_FACTURAR_CLIENTE')
-      this.riesgoPendienteFacturar,
-      @JsonKey(name: 'OBSERVACIONES_INTERNAS') this.obvservacionesInternas,
-      @JsonKey(name: 'CLIENTE_POTENCIAL') this.clientePotencial,
-      @JsonKey(name: 'ESTADO_POTENCIAL_ID') this.clienteEstadoPotencialId,
-      @JsonKey(name: 'TIPO_POTENCIAL_ID') this.clienteTipoPotencialId,
-      @JsonKey(name: 'REPRESENTANTE1_ID') this.representante1Id,
-      @JsonKey(name: 'REPRESENTANTE1_NOMBRE') this.representante1Nombre,
-      @JsonKey(name: 'REPRESENTANTE2_ID') this.representante2Id,
-      @JsonKey(name: 'REPRESENTANTE2_NOMBRE') this.representante2Nombre,
-      @JsonKey(name: 'TELEFONO_FIJO') this.telefonoFijo,
-      @JsonKey(name: 'TELEFONO_MOVIL') this.telefonoMovil,
-      @JsonKey(name: 'E_MAIL') this.email,
-      @JsonKey(name: 'SECTOR_ID') this.sectorId,
-      @JsonKey(name: 'SUBSECTOR_ID') this.subsectorId,
-      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-      @JsonKey(name: 'DELETED') this.deleted = 'N'})
-      : super._();
+  const _$ClienteDTOImpl({
+    @JsonKey(name: 'CLIENTE_ID') required this.id,
+    @JsonKey(name: 'NOMBRE') required this.nombreCliente,
+    @JsonKey(name: 'NIF') this.nif,
+    @JsonKey(name: 'NOMBRE_FISCAL') required this.nombreFiscal,
+    @JsonKey(name: 'DIRECCION_FISCAL1') this.direccionFiscal1,
+    @JsonKey(name: 'DIRECCION_FISCAL2') this.direccionFiscal2,
+    @JsonKey(name: 'CODIGO_POSTAL_FISCAL') this.codigoPostalFiscal,
+    @JsonKey(name: 'POBLACION_FISCAL') this.poblacionFiscal,
+    @JsonKey(name: 'PAIS_ID_FISCAL') this.paisFiscalId,
+    @JsonKey(name: 'PROVINCIA_FISCAL') this.provinciaFiscal,
+    @JsonKey(name: 'LATITUD_FISCAL') required this.latitudFiscal,
+    @JsonKey(name: 'LONGITUD_FISCAL') required this.longitudFiscal,
+    @JsonKey(name: 'EMPRESA_ID') required this.empresaId,
+    @JsonKey(name: 'IVA') required this.iva,
+    @JsonKey(name: 'VENTAS_ANYO_ACTUAL') required this.ventasAnyoActual,
+    @JsonKey(name: 'VENTAS_ANYO_ANTERIOR') required this.ventasAnyoAnterior,
+    @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS') required this.ventasHaceDosAnyos,
+    @JsonKey(name: 'MARGEN_ANYO_ACTUAL') required this.margenAnyoActual,
+    @JsonKey(name: 'MARGEN_ANYO_ANTERIOR') required this.margenAnyoAnterior,
+    @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS') required this.margenHaceDosAnyos,
+    @JsonKey(name: 'PORCENTAJE_ABONOS') required this.porcentajeAbonos,
+    @JsonKey(name: 'PORCENTAJE_GARANTIAS') required this.porcentajeGarantias,
+    @JsonKey(name: 'CENTRAL_COMPRAS_NOMBRE') this.centralCompras,
+    @JsonKey(name: 'URL_WEB') this.urlWeb,
+    @JsonKey(name: 'DIVISA_ID') this.divisaId,
+    @JsonKey(name: 'TARIFA_ID') this.tarifaId,
+    @JsonKey(name: 'TARIFA_DESCRIPCION') this.tarifaDescripcion,
+    @JsonKey(name: 'DESCUENTO_GENERAL_ID') this.descuentoGeneralId,
+    @JsonKey(name: 'DESCUENTO_GENERAL_DESCRIPCION')
+    this.descripcionDescuentoGeneral,
+    @JsonKey(name: 'TIPO_CALCULO_PRECIO') required this.tipoCalculoPrecio,
+    @JsonKey(name: 'PLAZO_COBRO_ID') this.plazoDeCobroId,
+    @JsonKey(name: 'METODO_COBRO_ID') this.metodoDeCobroId,
+    @JsonKey(name: 'DESCUENTO_PRONTO_PAGO') required this.descuentoProntoPago,
+    @JsonKey(name: 'RIESGO_CONCEDIDO_INTERNO')
+    required this.riesgoConcedidoInterno,
+    @JsonKey(name: 'RIESGO_CONCEDIDO_INTERNO_FECHA')
+    this.riesgoConcedidoInternoDate,
+    @JsonKey(name: 'RIESGO_CONCEDIDO_COFACE')
+    required this.riesgoConcedidoCoafe,
+    @JsonKey(name: 'RIESGO_CONCEDIDO_COFACE_FECHA')
+    this.riesgoConcedidoCoafeFecha,
+    @JsonKey(name: 'RIESGO_CONCEDIDO') this.riesgoConcedido,
+    @JsonKey(name: 'RIESGO_PDTE_COBRO_VENCIDO_CLIENTE')
+    this.riesgoPendienteCobroVencido,
+    @JsonKey(name: 'RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE')
+    this.riesgoPendienteCobroNoVencido,
+    @JsonKey(name: 'RIESGO_PDTE_SERVIR_CLIENTE') this.riesgoPendienteServir,
+    @JsonKey(name: 'RIESGO_PDTE_FACTURAR_CLIENTE') this.riesgoPendienteFacturar,
+    @JsonKey(name: 'OBSERVACIONES_INTERNAS') this.obvservacionesInternas,
+    @JsonKey(name: 'CLIENTE_POTENCIAL') this.clientePotencial,
+    @JsonKey(name: 'ESTADO_POTENCIAL_ID') this.clienteEstadoPotencialId,
+    @JsonKey(name: 'TIPO_POTENCIAL_ID') this.clienteTipoPotencialId,
+    @JsonKey(name: 'REPRESENTANTE1_ID') this.representante1Id,
+    @JsonKey(name: 'REPRESENTANTE1_NOMBRE') this.representante1Nombre,
+    @JsonKey(name: 'REPRESENTANTE2_ID') this.representante2Id,
+    @JsonKey(name: 'REPRESENTANTE2_NOMBRE') this.representante2Nombre,
+    @JsonKey(name: 'TELEFONO_FIJO') this.telefonoFijo,
+    @JsonKey(name: 'TELEFONO_MOVIL') this.telefonoMovil,
+    @JsonKey(name: 'E_MAIL') this.email,
+    @JsonKey(name: 'SECTOR_ID') this.sectorId,
+    @JsonKey(name: 'SUBSECTOR_ID') this.subsectorId,
+    @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+    @JsonKey(name: 'DELETED') this.deleted = 'N',
+  }) : super._();
 
   factory _$ClienteDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ClienteDTOImplFromJson(json);
@@ -1213,7 +1335,10 @@ class _$ClienteDTOImpl extends _ClienteDTO {
                 other.tarifaDescripcion == tarifaDescripcion) &&
             (identical(other.descuentoGeneralId, descuentoGeneralId) ||
                 other.descuentoGeneralId == descuentoGeneralId) &&
-            (identical(other.descripcionDescuentoGeneral, descripcionDescuentoGeneral) ||
+            (identical(
+                  other.descripcionDescuentoGeneral,
+                  descripcionDescuentoGeneral,
+                ) ||
                 other.descripcionDescuentoGeneral ==
                     descripcionDescuentoGeneral) &&
             (identical(other.tipoCalculoPrecio, tipoCalculoPrecio) ||
@@ -1226,103 +1351,135 @@ class _$ClienteDTOImpl extends _ClienteDTO {
                 other.descuentoProntoPago == descuentoProntoPago) &&
             (identical(other.riesgoConcedidoInterno, riesgoConcedidoInterno) ||
                 other.riesgoConcedidoInterno == riesgoConcedidoInterno) &&
-            (identical(other.riesgoConcedidoInternoDate, riesgoConcedidoInternoDate) ||
+            (identical(
+                  other.riesgoConcedidoInternoDate,
+                  riesgoConcedidoInternoDate,
+                ) ||
                 other.riesgoConcedidoInternoDate ==
                     riesgoConcedidoInternoDate) &&
             (identical(other.riesgoConcedidoCoafe, riesgoConcedidoCoafe) ||
                 other.riesgoConcedidoCoafe == riesgoConcedidoCoafe) &&
-            (identical(other.riesgoConcedidoCoafeFecha, riesgoConcedidoCoafeFecha) ||
+            (identical(
+                  other.riesgoConcedidoCoafeFecha,
+                  riesgoConcedidoCoafeFecha,
+                ) ||
                 other.riesgoConcedidoCoafeFecha == riesgoConcedidoCoafeFecha) &&
             (identical(other.riesgoConcedido, riesgoConcedido) ||
                 other.riesgoConcedido == riesgoConcedido) &&
-            (identical(other.riesgoPendienteCobroVencido, riesgoPendienteCobroVencido) ||
+            (identical(
+                  other.riesgoPendienteCobroVencido,
+                  riesgoPendienteCobroVencido,
+                ) ||
                 other.riesgoPendienteCobroVencido ==
                     riesgoPendienteCobroVencido) &&
-            (identical(other.riesgoPendienteCobroNoVencido, riesgoPendienteCobroNoVencido) ||
+            (identical(
+                  other.riesgoPendienteCobroNoVencido,
+                  riesgoPendienteCobroNoVencido,
+                ) ||
                 other.riesgoPendienteCobroNoVencido ==
                     riesgoPendienteCobroNoVencido) &&
             (identical(other.riesgoPendienteServir, riesgoPendienteServir) ||
                 other.riesgoPendienteServir == riesgoPendienteServir) &&
-            (identical(other.riesgoPendienteFacturar, riesgoPendienteFacturar) || other.riesgoPendienteFacturar == riesgoPendienteFacturar) &&
-            (identical(other.obvservacionesInternas, obvservacionesInternas) || other.obvservacionesInternas == obvservacionesInternas) &&
-            (identical(other.clientePotencial, clientePotencial) || other.clientePotencial == clientePotencial) &&
-            (identical(other.clienteEstadoPotencialId, clienteEstadoPotencialId) || other.clienteEstadoPotencialId == clienteEstadoPotencialId) &&
-            (identical(other.clienteTipoPotencialId, clienteTipoPotencialId) || other.clienteTipoPotencialId == clienteTipoPotencialId) &&
-            (identical(other.representante1Id, representante1Id) || other.representante1Id == representante1Id) &&
-            (identical(other.representante1Nombre, representante1Nombre) || other.representante1Nombre == representante1Nombre) &&
-            (identical(other.representante2Id, representante2Id) || other.representante2Id == representante2Id) &&
-            (identical(other.representante2Nombre, representante2Nombre) || other.representante2Nombre == representante2Nombre) &&
-            (identical(other.telefonoFijo, telefonoFijo) || other.telefonoFijo == telefonoFijo) &&
-            (identical(other.telefonoMovil, telefonoMovil) || other.telefonoMovil == telefonoMovil) &&
+            (identical(
+                  other.riesgoPendienteFacturar,
+                  riesgoPendienteFacturar,
+                ) ||
+                other.riesgoPendienteFacturar == riesgoPendienteFacturar) &&
+            (identical(other.obvservacionesInternas, obvservacionesInternas) ||
+                other.obvservacionesInternas == obvservacionesInternas) &&
+            (identical(other.clientePotencial, clientePotencial) ||
+                other.clientePotencial == clientePotencial) &&
+            (identical(
+                  other.clienteEstadoPotencialId,
+                  clienteEstadoPotencialId,
+                ) ||
+                other.clienteEstadoPotencialId == clienteEstadoPotencialId) &&
+            (identical(other.clienteTipoPotencialId, clienteTipoPotencialId) ||
+                other.clienteTipoPotencialId == clienteTipoPotencialId) &&
+            (identical(other.representante1Id, representante1Id) ||
+                other.representante1Id == representante1Id) &&
+            (identical(other.representante1Nombre, representante1Nombre) ||
+                other.representante1Nombre == representante1Nombre) &&
+            (identical(other.representante2Id, representante2Id) ||
+                other.representante2Id == representante2Id) &&
+            (identical(other.representante2Nombre, representante2Nombre) ||
+                other.representante2Nombre == representante2Nombre) &&
+            (identical(other.telefonoFijo, telefonoFijo) ||
+                other.telefonoFijo == telefonoFijo) &&
+            (identical(other.telefonoMovil, telefonoMovil) ||
+                other.telefonoMovil == telefonoMovil) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.sectorId, sectorId) || other.sectorId == sectorId) &&
-            (identical(other.subsectorId, subsectorId) || other.subsectorId == subsectorId) &&
-            (identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated) &&
+            (identical(other.sectorId, sectorId) ||
+                other.sectorId == sectorId) &&
+            (identical(other.subsectorId, subsectorId) ||
+                other.subsectorId == subsectorId) &&
+            (identical(other.lastUpdated, lastUpdated) ||
+                other.lastUpdated == lastUpdated) &&
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
-        runtimeType,
-        id,
-        nombreCliente,
-        nif,
-        nombreFiscal,
-        direccionFiscal1,
-        direccionFiscal2,
-        codigoPostalFiscal,
-        poblacionFiscal,
-        paisFiscalId,
-        provinciaFiscal,
-        latitudFiscal,
-        longitudFiscal,
-        empresaId,
-        iva,
-        ventasAnyoActual,
-        ventasAnyoAnterior,
-        ventasHaceDosAnyos,
-        margenAnyoActual,
-        margenAnyoAnterior,
-        margenHaceDosAnyos,
-        porcentajeAbonos,
-        porcentajeGarantias,
-        centralCompras,
-        urlWeb,
-        divisaId,
-        tarifaId,
-        tarifaDescripcion,
-        descuentoGeneralId,
-        descripcionDescuentoGeneral,
-        tipoCalculoPrecio,
-        plazoDeCobroId,
-        metodoDeCobroId,
-        descuentoProntoPago,
-        riesgoConcedidoInterno,
-        riesgoConcedidoInternoDate,
-        riesgoConcedidoCoafe,
-        riesgoConcedidoCoafeFecha,
-        riesgoConcedido,
-        riesgoPendienteCobroVencido,
-        riesgoPendienteCobroNoVencido,
-        riesgoPendienteServir,
-        riesgoPendienteFacturar,
-        obvservacionesInternas,
-        clientePotencial,
-        clienteEstadoPotencialId,
-        clienteTipoPotencialId,
-        representante1Id,
-        representante1Nombre,
-        representante2Id,
-        representante2Nombre,
-        telefonoFijo,
-        telefonoMovil,
-        email,
-        sectorId,
-        subsectorId,
-        lastUpdated,
-        deleted
-      ]);
+    runtimeType,
+    id,
+    nombreCliente,
+    nif,
+    nombreFiscal,
+    direccionFiscal1,
+    direccionFiscal2,
+    codigoPostalFiscal,
+    poblacionFiscal,
+    paisFiscalId,
+    provinciaFiscal,
+    latitudFiscal,
+    longitudFiscal,
+    empresaId,
+    iva,
+    ventasAnyoActual,
+    ventasAnyoAnterior,
+    ventasHaceDosAnyos,
+    margenAnyoActual,
+    margenAnyoAnterior,
+    margenHaceDosAnyos,
+    porcentajeAbonos,
+    porcentajeGarantias,
+    centralCompras,
+    urlWeb,
+    divisaId,
+    tarifaId,
+    tarifaDescripcion,
+    descuentoGeneralId,
+    descripcionDescuentoGeneral,
+    tipoCalculoPrecio,
+    plazoDeCobroId,
+    metodoDeCobroId,
+    descuentoProntoPago,
+    riesgoConcedidoInterno,
+    riesgoConcedidoInternoDate,
+    riesgoConcedidoCoafe,
+    riesgoConcedidoCoafeFecha,
+    riesgoConcedido,
+    riesgoPendienteCobroVencido,
+    riesgoPendienteCobroNoVencido,
+    riesgoPendienteServir,
+    riesgoPendienteFacturar,
+    obvservacionesInternas,
+    clientePotencial,
+    clienteEstadoPotencialId,
+    clienteTipoPotencialId,
+    representante1Id,
+    representante1Nombre,
+    representante2Id,
+    representante2Nombre,
+    telefonoFijo,
+    telefonoMovil,
+    email,
+    sectorId,
+    subsectorId,
+    lastUpdated,
+    deleted,
+  ]);
 
   /// Create a copy of ClienteDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -1334,94 +1491,88 @@ class _$ClienteDTOImpl extends _ClienteDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ClienteDTOImplToJson(
-      this,
-    );
+    return _$$ClienteDTOImplToJson(this);
   }
 }
 
 abstract class _ClienteDTO extends ClienteDTO {
-  const factory _ClienteDTO(
-      {@JsonKey(name: 'CLIENTE_ID') required final String id,
-      @JsonKey(name: 'NOMBRE') required final String nombreCliente,
-      @JsonKey(name: 'NIF') final String? nif,
-      @JsonKey(name: 'NOMBRE_FISCAL') required final String nombreFiscal,
-      @JsonKey(name: 'DIRECCION_FISCAL1') final String? direccionFiscal1,
-      @JsonKey(name: 'DIRECCION_FISCAL2') final String? direccionFiscal2,
-      @JsonKey(name: 'CODIGO_POSTAL_FISCAL') final String? codigoPostalFiscal,
-      @JsonKey(name: 'POBLACION_FISCAL') final String? poblacionFiscal,
-      @JsonKey(name: 'PAIS_ID_FISCAL') final String? paisFiscalId,
-      @JsonKey(name: 'PROVINCIA_FISCAL') final String? provinciaFiscal,
-      @JsonKey(name: 'LATITUD_FISCAL') required final double latitudFiscal,
-      @JsonKey(name: 'LONGITUD_FISCAL') required final double longitudFiscal,
-      @JsonKey(name: 'EMPRESA_ID') required final String empresaId,
-      @JsonKey(name: 'IVA') required final double iva,
-      @JsonKey(name: 'VENTAS_ANYO_ACTUAL')
-      required final double ventasAnyoActual,
-      @JsonKey(name: 'VENTAS_ANYO_ANTERIOR')
-      required final double ventasAnyoAnterior,
-      @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS')
-      required final double ventasHaceDosAnyos,
-      @JsonKey(name: 'MARGEN_ANYO_ACTUAL')
-      required final double margenAnyoActual,
-      @JsonKey(name: 'MARGEN_ANYO_ANTERIOR')
-      required final double margenAnyoAnterior,
-      @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS')
-      required final double margenHaceDosAnyos,
-      @JsonKey(name: 'PORCENTAJE_ABONOS')
-      required final double porcentajeAbonos,
-      @JsonKey(name: 'PORCENTAJE_GARANTIAS')
-      required final double porcentajeGarantias,
-      @JsonKey(name: 'CENTRAL_COMPRAS_NOMBRE') final String? centralCompras,
-      @JsonKey(name: 'URL_WEB') final String? urlWeb,
-      @JsonKey(name: 'DIVISA_ID') final String? divisaId,
-      @JsonKey(name: 'TARIFA_ID') final String? tarifaId,
-      @JsonKey(name: 'TARIFA_DESCRIPCION') final String? tarifaDescripcion,
-      @JsonKey(name: 'DESCUENTO_GENERAL_ID') final String? descuentoGeneralId,
-      @JsonKey(name: 'DESCUENTO_GENERAL_DESCRIPCION')
-      final String? descripcionDescuentoGeneral,
-      @JsonKey(name: 'TIPO_CALCULO_PRECIO')
-      required final String tipoCalculoPrecio,
-      @JsonKey(name: 'PLAZO_COBRO_ID') final String? plazoDeCobroId,
-      @JsonKey(name: 'METODO_COBRO_ID') final String? metodoDeCobroId,
-      @JsonKey(name: 'DESCUENTO_PRONTO_PAGO')
-      required final double descuentoProntoPago,
-      @JsonKey(name: 'RIESGO_CONCEDIDO_INTERNO')
-      required final double riesgoConcedidoInterno,
-      @JsonKey(name: 'RIESGO_CONCEDIDO_INTERNO_FECHA')
-      final DateTime? riesgoConcedidoInternoDate,
-      @JsonKey(name: 'RIESGO_CONCEDIDO_COFACE')
-      required final double riesgoConcedidoCoafe,
-      @JsonKey(name: 'RIESGO_CONCEDIDO_COFACE_FECHA')
-      final DateTime? riesgoConcedidoCoafeFecha,
-      @JsonKey(name: 'RIESGO_CONCEDIDO') final double? riesgoConcedido,
-      @JsonKey(name: 'RIESGO_PDTE_COBRO_VENCIDO_CLIENTE')
-      final double? riesgoPendienteCobroVencido,
-      @JsonKey(name: 'RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE')
-      final double? riesgoPendienteCobroNoVencido,
-      @JsonKey(name: 'RIESGO_PDTE_SERVIR_CLIENTE')
-      final double? riesgoPendienteServir,
-      @JsonKey(name: 'RIESGO_PDTE_FACTURAR_CLIENTE')
-      final double? riesgoPendienteFacturar,
-      @JsonKey(name: 'OBSERVACIONES_INTERNAS')
-      final String? obvservacionesInternas,
-      @JsonKey(name: 'CLIENTE_POTENCIAL') final String? clientePotencial,
-      @JsonKey(name: 'ESTADO_POTENCIAL_ID')
-      final String? clienteEstadoPotencialId,
-      @JsonKey(name: 'TIPO_POTENCIAL_ID') final String? clienteTipoPotencialId,
-      @JsonKey(name: 'REPRESENTANTE1_ID') final String? representante1Id,
-      @JsonKey(name: 'REPRESENTANTE1_NOMBRE')
-      final String? representante1Nombre,
-      @JsonKey(name: 'REPRESENTANTE2_ID') final String? representante2Id,
-      @JsonKey(name: 'REPRESENTANTE2_NOMBRE')
-      final String? representante2Nombre,
-      @JsonKey(name: 'TELEFONO_FIJO') final String? telefonoFijo,
-      @JsonKey(name: 'TELEFONO_MOVIL') final String? telefonoMovil,
-      @JsonKey(name: 'E_MAIL') final String? email,
-      @JsonKey(name: 'SECTOR_ID') final String? sectorId,
-      @JsonKey(name: 'SUBSECTOR_ID') final String? subsectorId,
-      @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') final String deleted}) = _$ClienteDTOImpl;
+  const factory _ClienteDTO({
+    @JsonKey(name: 'CLIENTE_ID') required final String id,
+    @JsonKey(name: 'NOMBRE') required final String nombreCliente,
+    @JsonKey(name: 'NIF') final String? nif,
+    @JsonKey(name: 'NOMBRE_FISCAL') required final String nombreFiscal,
+    @JsonKey(name: 'DIRECCION_FISCAL1') final String? direccionFiscal1,
+    @JsonKey(name: 'DIRECCION_FISCAL2') final String? direccionFiscal2,
+    @JsonKey(name: 'CODIGO_POSTAL_FISCAL') final String? codigoPostalFiscal,
+    @JsonKey(name: 'POBLACION_FISCAL') final String? poblacionFiscal,
+    @JsonKey(name: 'PAIS_ID_FISCAL') final String? paisFiscalId,
+    @JsonKey(name: 'PROVINCIA_FISCAL') final String? provinciaFiscal,
+    @JsonKey(name: 'LATITUD_FISCAL') required final double latitudFiscal,
+    @JsonKey(name: 'LONGITUD_FISCAL') required final double longitudFiscal,
+    @JsonKey(name: 'EMPRESA_ID') required final String empresaId,
+    @JsonKey(name: 'IVA') required final double iva,
+    @JsonKey(name: 'VENTAS_ANYO_ACTUAL') required final double ventasAnyoActual,
+    @JsonKey(name: 'VENTAS_ANYO_ANTERIOR')
+    required final double ventasAnyoAnterior,
+    @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS')
+    required final double ventasHaceDosAnyos,
+    @JsonKey(name: 'MARGEN_ANYO_ACTUAL') required final double margenAnyoActual,
+    @JsonKey(name: 'MARGEN_ANYO_ANTERIOR')
+    required final double margenAnyoAnterior,
+    @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS')
+    required final double margenHaceDosAnyos,
+    @JsonKey(name: 'PORCENTAJE_ABONOS') required final double porcentajeAbonos,
+    @JsonKey(name: 'PORCENTAJE_GARANTIAS')
+    required final double porcentajeGarantias,
+    @JsonKey(name: 'CENTRAL_COMPRAS_NOMBRE') final String? centralCompras,
+    @JsonKey(name: 'URL_WEB') final String? urlWeb,
+    @JsonKey(name: 'DIVISA_ID') final String? divisaId,
+    @JsonKey(name: 'TARIFA_ID') final String? tarifaId,
+    @JsonKey(name: 'TARIFA_DESCRIPCION') final String? tarifaDescripcion,
+    @JsonKey(name: 'DESCUENTO_GENERAL_ID') final String? descuentoGeneralId,
+    @JsonKey(name: 'DESCUENTO_GENERAL_DESCRIPCION')
+    final String? descripcionDescuentoGeneral,
+    @JsonKey(name: 'TIPO_CALCULO_PRECIO')
+    required final String tipoCalculoPrecio,
+    @JsonKey(name: 'PLAZO_COBRO_ID') final String? plazoDeCobroId,
+    @JsonKey(name: 'METODO_COBRO_ID') final String? metodoDeCobroId,
+    @JsonKey(name: 'DESCUENTO_PRONTO_PAGO')
+    required final double descuentoProntoPago,
+    @JsonKey(name: 'RIESGO_CONCEDIDO_INTERNO')
+    required final double riesgoConcedidoInterno,
+    @JsonKey(name: 'RIESGO_CONCEDIDO_INTERNO_FECHA')
+    final DateTime? riesgoConcedidoInternoDate,
+    @JsonKey(name: 'RIESGO_CONCEDIDO_COFACE')
+    required final double riesgoConcedidoCoafe,
+    @JsonKey(name: 'RIESGO_CONCEDIDO_COFACE_FECHA')
+    final DateTime? riesgoConcedidoCoafeFecha,
+    @JsonKey(name: 'RIESGO_CONCEDIDO') final double? riesgoConcedido,
+    @JsonKey(name: 'RIESGO_PDTE_COBRO_VENCIDO_CLIENTE')
+    final double? riesgoPendienteCobroVencido,
+    @JsonKey(name: 'RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE')
+    final double? riesgoPendienteCobroNoVencido,
+    @JsonKey(name: 'RIESGO_PDTE_SERVIR_CLIENTE')
+    final double? riesgoPendienteServir,
+    @JsonKey(name: 'RIESGO_PDTE_FACTURAR_CLIENTE')
+    final double? riesgoPendienteFacturar,
+    @JsonKey(name: 'OBSERVACIONES_INTERNAS')
+    final String? obvservacionesInternas,
+    @JsonKey(name: 'CLIENTE_POTENCIAL') final String? clientePotencial,
+    @JsonKey(name: 'ESTADO_POTENCIAL_ID')
+    final String? clienteEstadoPotencialId,
+    @JsonKey(name: 'TIPO_POTENCIAL_ID') final String? clienteTipoPotencialId,
+    @JsonKey(name: 'REPRESENTANTE1_ID') final String? representante1Id,
+    @JsonKey(name: 'REPRESENTANTE1_NOMBRE') final String? representante1Nombre,
+    @JsonKey(name: 'REPRESENTANTE2_ID') final String? representante2Id,
+    @JsonKey(name: 'REPRESENTANTE2_NOMBRE') final String? representante2Nombre,
+    @JsonKey(name: 'TELEFONO_FIJO') final String? telefonoFijo,
+    @JsonKey(name: 'TELEFONO_MOVIL') final String? telefonoMovil,
+    @JsonKey(name: 'E_MAIL') final String? email,
+    @JsonKey(name: 'SECTOR_ID') final String? sectorId,
+    @JsonKey(name: 'SUBSECTOR_ID') final String? subsectorId,
+    @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') final String deleted,
+  }) = _$ClienteDTOImpl;
   const _ClienteDTO._() : super._();
 
   factory _ClienteDTO.fromJson(Map<String, dynamic> json) =

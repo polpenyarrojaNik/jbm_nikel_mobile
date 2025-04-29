@@ -5,9 +5,10 @@ part 'pedido_venta_estado.freezed.dart';
 @freezed
 class PedidoVentaEstado with _$PedidoVentaEstado {
   const PedidoVentaEstado._();
-  const factory PedidoVentaEstado(
-      {required int id,
-      required String descripcion,
-      required DateTime lastUpdate,
-      required bool deleted}) = _PedidoVentaEstado;
+  const factory PedidoVentaEstado({
+    required int id,
+    required String descripcion,
+    required DateTime lastUpdate,
+    required bool deleted,
+  }) = _PedidoVentaEstado;
 }

@@ -14,8 +14,11 @@ import '../../infrastructure/cliente_repository.dart';
 
 @RoutePage()
 class ClienteDescuentoPage extends ConsumerWidget {
-  const ClienteDescuentoPage(
-      {super.key, required this.clienteId, required this.nombreCliente});
+  const ClienteDescuentoPage({
+    super.key,
+    required this.clienteId,
+    required this.nombreCliente,
+  });
 
   final String clienteId;
   final String? nombreCliente;
@@ -37,22 +40,23 @@ class ClienteDescuentoPage extends ConsumerWidget {
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data: (clienteDescuentoList) => (clienteDescuentoList.isNotEmpty)
-                ? Expanded(
-                    child: ListView.separated(
-                      itemCount: clienteDescuentoList.length,
-                      itemBuilder: (context, i) => ClienteDescuentoTile(
-                        clienteDescuento: clienteDescuentoList[i],
-                      ),
-                      separatorBuilder: (context, i) => const Divider(),
-                    ),
-                  )
-                : Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(S.of(context).sinResultados),
-                    ],
-                  ),
+            data:
+                (clienteDescuentoList) =>
+                    (clienteDescuentoList.isNotEmpty)
+                        ? Expanded(
+                          child: ListView.separated(
+                            itemCount: clienteDescuentoList.length,
+                            itemBuilder:
+                                (context, i) => ClienteDescuentoTile(
+                                  clienteDescuento: clienteDescuentoList[i],
+                                ),
+                            separatorBuilder: (context, i) => const Divider(),
+                          ),
+                        )
+                        : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [Text(S.of(context).sinResultados)],
+                        ),
           ),
         ],
       ),
@@ -82,9 +86,7 @@ class ClienteDescuentoTile extends StatelessWidget {
                 ),
               ),
               gapW16,
-              Text(
-                '${numberFormatCantidades(clienteDescuento.descuento)}%',
-              ),
+              Text('${numberFormatCantidades(clienteDescuento.descuento)}%'),
             ],
           ),
           Row(
@@ -100,7 +102,8 @@ class ClienteDescuentoTile extends StatelessWidget {
                 Text(
                   '≥ ${numberFormatCantidades(clienteDescuento.cantidadDesde)} ${S.of(context).unidad}',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Theme.of(context).textTheme.bodySmall?.color),
+                    color: Theme.of(context).textTheme.bodySmall?.color,
+                  ),
                 ),
             ],
           ),

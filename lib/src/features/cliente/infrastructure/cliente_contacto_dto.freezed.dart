@@ -12,7 +12,8 @@ part of 'cliente_contacto_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ClienteContactoDTO _$ClienteContactoDTOFromJson(Map<String, dynamic> json) {
   return _ClienteContactoDTO.fromJson(json);
@@ -56,21 +57,23 @@ mixin _$ClienteContactoDTO {
 /// @nodoc
 abstract class $ClienteContactoDTOCopyWith<$Res> {
   factory $ClienteContactoDTOCopyWith(
-          ClienteContactoDTO value, $Res Function(ClienteContactoDTO) then) =
-      _$ClienteContactoDTOCopyWithImpl<$Res, ClienteContactoDTO>;
+    ClienteContactoDTO value,
+    $Res Function(ClienteContactoDTO) then,
+  ) = _$ClienteContactoDTOCopyWithImpl<$Res, ClienteContactoDTO>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'CLIENTE_ID') String clienteId,
-      @JsonKey(name: 'CONTACTO_ID') String? contactoId,
-      @JsonKey(name: 'OBSERVACIONES') String? observaciones,
-      @JsonKey(name: 'NOMBRE') String? nombre,
-      @JsonKey(name: 'APELLIDO1') String? apellido1,
-      @JsonKey(name: 'APELLIDO2') String? apellido2,
-      @JsonKey(name: 'TELEFONO1') String? telefono1,
-      @JsonKey(name: 'TELEFONO2') String? telefono2,
-      @JsonKey(name: 'EMAIL') String? email,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+  $Res call({
+    @JsonKey(name: 'CLIENTE_ID') String clienteId,
+    @JsonKey(name: 'CONTACTO_ID') String? contactoId,
+    @JsonKey(name: 'OBSERVACIONES') String? observaciones,
+    @JsonKey(name: 'NOMBRE') String? nombre,
+    @JsonKey(name: 'APELLIDO1') String? apellido1,
+    @JsonKey(name: 'APELLIDO2') String? apellido2,
+    @JsonKey(name: 'TELEFONO1') String? telefono1,
+    @JsonKey(name: 'TELEFONO2') String? telefono2,
+    @JsonKey(name: 'EMAIL') String? email,
+    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') String deleted,
+  });
 }
 
 /// @nodoc
@@ -100,84 +103,101 @@ class _$ClienteContactoDTOCopyWithImpl<$Res, $Val extends ClienteContactoDTO>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_value.copyWith(
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      contactoId: freezed == contactoId
-          ? _value.contactoId
-          : contactoId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      observaciones: freezed == observaciones
-          ? _value.observaciones
-          : observaciones // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nombre: freezed == nombre
-          ? _value.nombre
-          : nombre // ignore: cast_nullable_to_non_nullable
-              as String?,
-      apellido1: freezed == apellido1
-          ? _value.apellido1
-          : apellido1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      apellido2: freezed == apellido2
-          ? _value.apellido2
-          : apellido2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      telefono1: freezed == telefono1
-          ? _value.telefono1
-          : telefono1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      telefono2: freezed == telefono2
-          ? _value.telefono2
-          : telefono2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            clienteId:
+                null == clienteId
+                    ? _value.clienteId
+                    : clienteId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            contactoId:
+                freezed == contactoId
+                    ? _value.contactoId
+                    : contactoId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            observaciones:
+                freezed == observaciones
+                    ? _value.observaciones
+                    : observaciones // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            nombre:
+                freezed == nombre
+                    ? _value.nombre
+                    : nombre // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            apellido1:
+                freezed == apellido1
+                    ? _value.apellido1
+                    : apellido1 // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            apellido2:
+                freezed == apellido2
+                    ? _value.apellido2
+                    : apellido2 // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            telefono1:
+                freezed == telefono1
+                    ? _value.telefono1
+                    : telefono1 // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            telefono2:
+                freezed == telefono2
+                    ? _value.telefono2
+                    : telefono2 // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            email:
+                freezed == email
+                    ? _value.email
+                    : email // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            lastUpdated:
+                null == lastUpdated
+                    ? _value.lastUpdated
+                    : lastUpdated // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            deleted:
+                null == deleted
+                    ? _value.deleted
+                    : deleted // ignore: cast_nullable_to_non_nullable
+                        as String,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$ClienteContactoDTOImplCopyWith<$Res>
     implements $ClienteContactoDTOCopyWith<$Res> {
-  factory _$$ClienteContactoDTOImplCopyWith(_$ClienteContactoDTOImpl value,
-          $Res Function(_$ClienteContactoDTOImpl) then) =
-      __$$ClienteContactoDTOImplCopyWithImpl<$Res>;
+  factory _$$ClienteContactoDTOImplCopyWith(
+    _$ClienteContactoDTOImpl value,
+    $Res Function(_$ClienteContactoDTOImpl) then,
+  ) = __$$ClienteContactoDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'CLIENTE_ID') String clienteId,
-      @JsonKey(name: 'CONTACTO_ID') String? contactoId,
-      @JsonKey(name: 'OBSERVACIONES') String? observaciones,
-      @JsonKey(name: 'NOMBRE') String? nombre,
-      @JsonKey(name: 'APELLIDO1') String? apellido1,
-      @JsonKey(name: 'APELLIDO2') String? apellido2,
-      @JsonKey(name: 'TELEFONO1') String? telefono1,
-      @JsonKey(name: 'TELEFONO2') String? telefono2,
-      @JsonKey(name: 'EMAIL') String? email,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+  $Res call({
+    @JsonKey(name: 'CLIENTE_ID') String clienteId,
+    @JsonKey(name: 'CONTACTO_ID') String? contactoId,
+    @JsonKey(name: 'OBSERVACIONES') String? observaciones,
+    @JsonKey(name: 'NOMBRE') String? nombre,
+    @JsonKey(name: 'APELLIDO1') String? apellido1,
+    @JsonKey(name: 'APELLIDO2') String? apellido2,
+    @JsonKey(name: 'TELEFONO1') String? telefono1,
+    @JsonKey(name: 'TELEFONO2') String? telefono2,
+    @JsonKey(name: 'EMAIL') String? email,
+    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') String deleted,
+  });
 }
 
 /// @nodoc
 class __$$ClienteContactoDTOImplCopyWithImpl<$Res>
     extends _$ClienteContactoDTOCopyWithImpl<$Res, _$ClienteContactoDTOImpl>
     implements _$$ClienteContactoDTOImplCopyWith<$Res> {
-  __$$ClienteContactoDTOImplCopyWithImpl(_$ClienteContactoDTOImpl _value,
-      $Res Function(_$ClienteContactoDTOImpl) _then)
-      : super(_value, _then);
+  __$$ClienteContactoDTOImplCopyWithImpl(
+    _$ClienteContactoDTOImpl _value,
+    $Res Function(_$ClienteContactoDTOImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ClienteContactoDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -196,71 +216,84 @@ class __$$ClienteContactoDTOImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$ClienteContactoDTOImpl(
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      contactoId: freezed == contactoId
-          ? _value.contactoId
-          : contactoId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      observaciones: freezed == observaciones
-          ? _value.observaciones
-          : observaciones // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nombre: freezed == nombre
-          ? _value.nombre
-          : nombre // ignore: cast_nullable_to_non_nullable
-              as String?,
-      apellido1: freezed == apellido1
-          ? _value.apellido1
-          : apellido1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      apellido2: freezed == apellido2
-          ? _value.apellido2
-          : apellido2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      telefono1: freezed == telefono1
-          ? _value.telefono1
-          : telefono1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      telefono2: freezed == telefono2
-          ? _value.telefono2
-          : telefono2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$ClienteContactoDTOImpl(
+        clienteId:
+            null == clienteId
+                ? _value.clienteId
+                : clienteId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        contactoId:
+            freezed == contactoId
+                ? _value.contactoId
+                : contactoId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        observaciones:
+            freezed == observaciones
+                ? _value.observaciones
+                : observaciones // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        nombre:
+            freezed == nombre
+                ? _value.nombre
+                : nombre // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        apellido1:
+            freezed == apellido1
+                ? _value.apellido1
+                : apellido1 // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        apellido2:
+            freezed == apellido2
+                ? _value.apellido2
+                : apellido2 // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        telefono1:
+            freezed == telefono1
+                ? _value.telefono1
+                : telefono1 // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        telefono2:
+            freezed == telefono2
+                ? _value.telefono2
+                : telefono2 // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        email:
+            freezed == email
+                ? _value.email
+                : email // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        lastUpdated:
+            null == lastUpdated
+                ? _value.lastUpdated
+                : lastUpdated // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        deleted:
+            null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ClienteContactoDTOImpl extends _ClienteContactoDTO {
-  const _$ClienteContactoDTOImpl(
-      {@JsonKey(name: 'CLIENTE_ID') required this.clienteId,
-      @JsonKey(name: 'CONTACTO_ID') required this.contactoId,
-      @JsonKey(name: 'OBSERVACIONES') this.observaciones,
-      @JsonKey(name: 'NOMBRE') this.nombre,
-      @JsonKey(name: 'APELLIDO1') this.apellido1,
-      @JsonKey(name: 'APELLIDO2') this.apellido2,
-      @JsonKey(name: 'TELEFONO1') this.telefono1,
-      @JsonKey(name: 'TELEFONO2') this.telefono2,
-      @JsonKey(name: 'EMAIL') this.email,
-      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-      @JsonKey(name: 'DELETED') this.deleted = 'N'})
-      : super._();
+  const _$ClienteContactoDTOImpl({
+    @JsonKey(name: 'CLIENTE_ID') required this.clienteId,
+    @JsonKey(name: 'CONTACTO_ID') required this.contactoId,
+    @JsonKey(name: 'OBSERVACIONES') this.observaciones,
+    @JsonKey(name: 'NOMBRE') this.nombre,
+    @JsonKey(name: 'APELLIDO1') this.apellido1,
+    @JsonKey(name: 'APELLIDO2') this.apellido2,
+    @JsonKey(name: 'TELEFONO1') this.telefono1,
+    @JsonKey(name: 'TELEFONO2') this.telefono2,
+    @JsonKey(name: 'EMAIL') this.email,
+    @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+    @JsonKey(name: 'DELETED') this.deleted = 'N',
+  }) : super._();
 
   factory _$ClienteContactoDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ClienteContactoDTOImplFromJson(json);
@@ -333,18 +366,19 @@ class _$ClienteContactoDTOImpl extends _ClienteContactoDTO {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      clienteId,
-      contactoId,
-      observaciones,
-      nombre,
-      apellido1,
-      apellido2,
-      telefono1,
-      telefono2,
-      email,
-      lastUpdated,
-      deleted);
+    runtimeType,
+    clienteId,
+    contactoId,
+    observaciones,
+    nombre,
+    apellido1,
+    apellido2,
+    telefono1,
+    telefono2,
+    email,
+    lastUpdated,
+    deleted,
+  );
 
   /// Create a copy of ClienteContactoDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -353,30 +387,30 @@ class _$ClienteContactoDTOImpl extends _ClienteContactoDTO {
   @pragma('vm:prefer-inline')
   _$$ClienteContactoDTOImplCopyWith<_$ClienteContactoDTOImpl> get copyWith =>
       __$$ClienteContactoDTOImplCopyWithImpl<_$ClienteContactoDTOImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ClienteContactoDTOImplToJson(
-      this,
-    );
+    return _$$ClienteContactoDTOImplToJson(this);
   }
 }
 
 abstract class _ClienteContactoDTO extends ClienteContactoDTO {
-  const factory _ClienteContactoDTO(
-          {@JsonKey(name: 'CLIENTE_ID') required final String clienteId,
-          @JsonKey(name: 'CONTACTO_ID') required final String? contactoId,
-          @JsonKey(name: 'OBSERVACIONES') final String? observaciones,
-          @JsonKey(name: 'NOMBRE') final String? nombre,
-          @JsonKey(name: 'APELLIDO1') final String? apellido1,
-          @JsonKey(name: 'APELLIDO2') final String? apellido2,
-          @JsonKey(name: 'TELEFONO1') final String? telefono1,
-          @JsonKey(name: 'TELEFONO2') final String? telefono2,
-          @JsonKey(name: 'EMAIL') final String? email,
-          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-          @JsonKey(name: 'DELETED') final String deleted}) =
-      _$ClienteContactoDTOImpl;
+  const factory _ClienteContactoDTO({
+    @JsonKey(name: 'CLIENTE_ID') required final String clienteId,
+    @JsonKey(name: 'CONTACTO_ID') required final String? contactoId,
+    @JsonKey(name: 'OBSERVACIONES') final String? observaciones,
+    @JsonKey(name: 'NOMBRE') final String? nombre,
+    @JsonKey(name: 'APELLIDO1') final String? apellido1,
+    @JsonKey(name: 'APELLIDO2') final String? apellido2,
+    @JsonKey(name: 'TELEFONO1') final String? telefono1,
+    @JsonKey(name: 'TELEFONO2') final String? telefono2,
+    @JsonKey(name: 'EMAIL') final String? email,
+    @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') final String deleted,
+  }) = _$ClienteContactoDTOImpl;
   const _ClienteContactoDTO._() : super._();
 
   factory _ClienteContactoDTO.fromJson(Map<String, dynamic> json) =

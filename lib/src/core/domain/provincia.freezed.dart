@@ -12,7 +12,8 @@ part of 'provincia.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$Provincia {
@@ -35,13 +36,14 @@ abstract class $ProvinciaCopyWith<$Res> {
   factory $ProvinciaCopyWith(Provincia value, $Res Function(Provincia) then) =
       _$ProvinciaCopyWithImpl<$Res, Provincia>;
   @useResult
-  $Res call(
-      {String paisId,
-      String regionId,
-      String provinciaId,
-      String? provincia,
-      DateTime lastUpdate,
-      bool deleted});
+  $Res call({
+    String paisId,
+    String regionId,
+    String provinciaId,
+    String? provincia,
+    DateTime lastUpdate,
+    bool deleted,
+  });
 }
 
 /// @nodoc
@@ -66,32 +68,41 @@ class _$ProvinciaCopyWithImpl<$Res, $Val extends Provincia>
     Object? lastUpdate = null,
     Object? deleted = null,
   }) {
-    return _then(_value.copyWith(
-      paisId: null == paisId
-          ? _value.paisId
-          : paisId // ignore: cast_nullable_to_non_nullable
-              as String,
-      regionId: null == regionId
-          ? _value.regionId
-          : regionId // ignore: cast_nullable_to_non_nullable
-              as String,
-      provinciaId: null == provinciaId
-          ? _value.provinciaId
-          : provinciaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      provincia: freezed == provincia
-          ? _value.provincia
-          : provincia // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastUpdate: null == lastUpdate
-          ? _value.lastUpdate
-          : lastUpdate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            paisId:
+                null == paisId
+                    ? _value.paisId
+                    : paisId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            regionId:
+                null == regionId
+                    ? _value.regionId
+                    : regionId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            provinciaId:
+                null == provinciaId
+                    ? _value.provinciaId
+                    : provinciaId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            provincia:
+                freezed == provincia
+                    ? _value.provincia
+                    : provincia // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            lastUpdate:
+                null == lastUpdate
+                    ? _value.lastUpdate
+                    : lastUpdate // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            deleted:
+                null == deleted
+                    ? _value.deleted
+                    : deleted // ignore: cast_nullable_to_non_nullable
+                        as bool,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -99,17 +110,19 @@ class _$ProvinciaCopyWithImpl<$Res, $Val extends Provincia>
 abstract class _$$ProvinciaImplCopyWith<$Res>
     implements $ProvinciaCopyWith<$Res> {
   factory _$$ProvinciaImplCopyWith(
-          _$ProvinciaImpl value, $Res Function(_$ProvinciaImpl) then) =
-      __$$ProvinciaImplCopyWithImpl<$Res>;
+    _$ProvinciaImpl value,
+    $Res Function(_$ProvinciaImpl) then,
+  ) = __$$ProvinciaImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String paisId,
-      String regionId,
-      String provinciaId,
-      String? provincia,
-      DateTime lastUpdate,
-      bool deleted});
+  $Res call({
+    String paisId,
+    String regionId,
+    String provinciaId,
+    String? provincia,
+    DateTime lastUpdate,
+    bool deleted,
+  });
 }
 
 /// @nodoc
@@ -117,8 +130,9 @@ class __$$ProvinciaImplCopyWithImpl<$Res>
     extends _$ProvinciaCopyWithImpl<$Res, _$ProvinciaImpl>
     implements _$$ProvinciaImplCopyWith<$Res> {
   __$$ProvinciaImplCopyWithImpl(
-      _$ProvinciaImpl _value, $Res Function(_$ProvinciaImpl) _then)
-      : super(_value, _then);
+    _$ProvinciaImpl _value,
+    $Res Function(_$ProvinciaImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of Provincia
   /// with the given fields replaced by the non-null parameter values.
@@ -132,46 +146,54 @@ class __$$ProvinciaImplCopyWithImpl<$Res>
     Object? lastUpdate = null,
     Object? deleted = null,
   }) {
-    return _then(_$ProvinciaImpl(
-      paisId: null == paisId
-          ? _value.paisId
-          : paisId // ignore: cast_nullable_to_non_nullable
-              as String,
-      regionId: null == regionId
-          ? _value.regionId
-          : regionId // ignore: cast_nullable_to_non_nullable
-              as String,
-      provinciaId: null == provinciaId
-          ? _value.provinciaId
-          : provinciaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      provincia: freezed == provincia
-          ? _value.provincia
-          : provincia // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastUpdate: null == lastUpdate
-          ? _value.lastUpdate
-          : lastUpdate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$ProvinciaImpl(
+        paisId:
+            null == paisId
+                ? _value.paisId
+                : paisId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        regionId:
+            null == regionId
+                ? _value.regionId
+                : regionId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        provinciaId:
+            null == provinciaId
+                ? _value.provinciaId
+                : provinciaId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        provincia:
+            freezed == provincia
+                ? _value.provincia
+                : provincia // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        lastUpdate:
+            null == lastUpdate
+                ? _value.lastUpdate
+                : lastUpdate // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        deleted:
+            null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                    as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ProvinciaImpl extends _Provincia {
-  const _$ProvinciaImpl(
-      {required this.paisId,
-      required this.regionId,
-      required this.provinciaId,
-      this.provincia,
-      required this.lastUpdate,
-      required this.deleted})
-      : super._();
+  const _$ProvinciaImpl({
+    required this.paisId,
+    required this.regionId,
+    required this.provinciaId,
+    this.provincia,
+    required this.lastUpdate,
+    required this.deleted,
+  }) : super._();
 
   @override
   final String paisId;
@@ -209,8 +231,15 @@ class _$ProvinciaImpl extends _Provincia {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, paisId, regionId, provinciaId,
-      provincia, lastUpdate, deleted);
+  int get hashCode => Object.hash(
+    runtimeType,
+    paisId,
+    regionId,
+    provinciaId,
+    provincia,
+    lastUpdate,
+    deleted,
+  );
 
   /// Create a copy of Provincia
   /// with the given fields replaced by the non-null parameter values.
@@ -222,13 +251,14 @@ class _$ProvinciaImpl extends _Provincia {
 }
 
 abstract class _Provincia extends Provincia {
-  const factory _Provincia(
-      {required final String paisId,
-      required final String regionId,
-      required final String provinciaId,
-      final String? provincia,
-      required final DateTime lastUpdate,
-      required final bool deleted}) = _$ProvinciaImpl;
+  const factory _Provincia({
+    required final String paisId,
+    required final String regionId,
+    required final String provinciaId,
+    final String? provincia,
+    required final DateTime lastUpdate,
+    required final bool deleted,
+  }) = _$ProvinciaImpl;
   const _Provincia._() : super._();
 
   @override

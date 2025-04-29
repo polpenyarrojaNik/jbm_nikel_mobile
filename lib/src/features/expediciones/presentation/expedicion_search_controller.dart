@@ -6,8 +6,9 @@ import '../infrastructure/expedicion_repository.dart';
 
 part 'expedicion_search_controller.g.dart';
 
-final expedicionSearchQueryStateProvider =
-    StateProvider.autoDispose<String>((ref) {
+final expedicionSearchQueryStateProvider = StateProvider.autoDispose<String>((
+  ref,
+) {
   return '';
 });
 
@@ -18,7 +19,9 @@ class ExpedicionIndexScreenController
 
   @override
   Future<List<Expedicion>> build() {
-    return ref.read(expedicionRepositoryProvider).getExpedicionDTOLista(
+    return ref
+        .read(expedicionRepositoryProvider)
+        .getExpedicionDTOLista(
           searchText: ref.watch(expedicionSearchQueryStateProvider),
         );
   }

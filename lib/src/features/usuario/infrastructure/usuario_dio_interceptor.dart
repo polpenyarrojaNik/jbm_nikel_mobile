@@ -18,11 +18,7 @@ class UsuarioDioInterceptor extends Interceptor {
   final UsuarioNotifier _usuarioNotifier;
   final Dio _dio;
 
-  UsuarioDioInterceptor(
-    this._usuarioService,
-    this._usuarioNotifier,
-    this._dio,
-  );
+  UsuarioDioInterceptor(this._usuarioService, this._usuarioNotifier, this._dio);
 
   @override
   Future<void> onRequest(
@@ -30,18 +26,21 @@ class UsuarioDioInterceptor extends Interceptor {
     RequestInterceptorHandler handler,
   ) async {
     final usuario = await _usuarioService.getSignedInUsuario();
-    final modifiedOptions = options
-      ..headers.addAll(
-        usuario == null
-            ? {}
-            : {'Authorization': 'Bearer ${usuario.provisionalToken}'},
-      );
+    final modifiedOptions =
+        options
+          ..headers.addAll(
+            usuario == null
+                ? {}
+                : {'Authorization': 'Bearer ${usuario.provisionalToken}'},
+          );
     handler.next(modifiedOptions);
   }
 
   @override
   Future<void> onError(
-      DioException err, ErrorInterceptorHandler handler) async {
+    DioException err,
+    ErrorInterceptorHandler handler,
+  ) async {
     final errorResponse = err.response;
     if (errorResponse != null && errorResponse.statusCode == 401) {
       final usuario = await _usuarioService.getSignedInUsuario();

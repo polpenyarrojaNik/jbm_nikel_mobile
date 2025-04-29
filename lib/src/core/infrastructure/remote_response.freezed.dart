@@ -12,7 +12,8 @@ part of 'remote_response.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$RemoteResponse<T> {
@@ -21,52 +22,47 @@ mixin _$RemoteResponse<T> {
     required TResult Function() noConnection,
     required TResult Function(int maxPage) notModified,
     required TResult Function(T data, int maxPage, int totalRows) withNewData,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? noConnection,
     TResult? Function(int maxPage)? notModified,
     TResult? Function(T data, int maxPage, int totalRows)? withNewData,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? noConnection,
     TResult Function(int maxPage)? notModified,
     TResult Function(T data, int maxPage, int totalRows)? withNewData,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_NoConnection<T> value) noConnection,
     required TResult Function(_NotModified<T> value) notModified,
     required TResult Function(_WithNewData<T> value) withNewData,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_NoConnection<T> value)? noConnection,
     TResult? Function(_NotModified<T> value)? notModified,
     TResult? Function(_WithNewData<T> value)? withNewData,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_NoConnection<T> value)? noConnection,
     TResult Function(_NotModified<T> value)? notModified,
     TResult Function(_WithNewData<T> value)? withNewData,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $RemoteResponseCopyWith<T, $Res> {
   factory $RemoteResponseCopyWith(
-          RemoteResponse<T> value, $Res Function(RemoteResponse<T>) then) =
-      _$RemoteResponseCopyWithImpl<T, $Res, RemoteResponse<T>>;
+    RemoteResponse<T> value,
+    $Res Function(RemoteResponse<T>) then,
+  ) = _$RemoteResponseCopyWithImpl<T, $Res, RemoteResponse<T>>;
 }
 
 /// @nodoc
@@ -85,9 +81,10 @@ class _$RemoteResponseCopyWithImpl<T, $Res, $Val extends RemoteResponse<T>>
 
 /// @nodoc
 abstract class _$$NoConnectionImplCopyWith<T, $Res> {
-  factory _$$NoConnectionImplCopyWith(_$NoConnectionImpl<T> value,
-          $Res Function(_$NoConnectionImpl<T>) then) =
-      __$$NoConnectionImplCopyWithImpl<T, $Res>;
+  factory _$$NoConnectionImplCopyWith(
+    _$NoConnectionImpl<T> value,
+    $Res Function(_$NoConnectionImpl<T>) then,
+  ) = __$$NoConnectionImplCopyWithImpl<T, $Res>;
 }
 
 /// @nodoc
@@ -95,8 +92,9 @@ class __$$NoConnectionImplCopyWithImpl<T, $Res>
     extends _$RemoteResponseCopyWithImpl<T, $Res, _$NoConnectionImpl<T>>
     implements _$$NoConnectionImplCopyWith<T, $Res> {
   __$$NoConnectionImplCopyWithImpl(
-      _$NoConnectionImpl<T> _value, $Res Function(_$NoConnectionImpl<T>) _then)
-      : super(_value, _then);
+    _$NoConnectionImpl<T> _value,
+    $Res Function(_$NoConnectionImpl<T>) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of RemoteResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -197,9 +195,10 @@ abstract class _NoConnection<T> extends RemoteResponse<T> {
 
 /// @nodoc
 abstract class _$$NotModifiedImplCopyWith<T, $Res> {
-  factory _$$NotModifiedImplCopyWith(_$NotModifiedImpl<T> value,
-          $Res Function(_$NotModifiedImpl<T>) then) =
-      __$$NotModifiedImplCopyWithImpl<T, $Res>;
+  factory _$$NotModifiedImplCopyWith(
+    _$NotModifiedImpl<T> value,
+    $Res Function(_$NotModifiedImpl<T>) then,
+  ) = __$$NotModifiedImplCopyWithImpl<T, $Res>;
   @useResult
   $Res call({int maxPage});
 }
@@ -209,22 +208,24 @@ class __$$NotModifiedImplCopyWithImpl<T, $Res>
     extends _$RemoteResponseCopyWithImpl<T, $Res, _$NotModifiedImpl<T>>
     implements _$$NotModifiedImplCopyWith<T, $Res> {
   __$$NotModifiedImplCopyWithImpl(
-      _$NotModifiedImpl<T> _value, $Res Function(_$NotModifiedImpl<T>) _then)
-      : super(_value, _then);
+    _$NotModifiedImpl<T> _value,
+    $Res Function(_$NotModifiedImpl<T>) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of RemoteResponse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? maxPage = null,
-  }) {
-    return _then(_$NotModifiedImpl<T>(
-      maxPage: null == maxPage
-          ? _value.maxPage
-          : maxPage // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+  $Res call({Object? maxPage = null}) {
+    return _then(
+      _$NotModifiedImpl<T>(
+        maxPage:
+            null == maxPage
+                ? _value.maxPage
+                : maxPage // ignore: cast_nullable_to_non_nullable
+                    as int,
+      ),
+    );
   }
 }
 
@@ -259,7 +260,9 @@ class _$NotModifiedImpl<T> extends _NotModified<T> {
   @pragma('vm:prefer-inline')
   _$$NotModifiedImplCopyWith<T, _$NotModifiedImpl<T>> get copyWith =>
       __$$NotModifiedImplCopyWithImpl<T, _$NotModifiedImpl<T>>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -346,9 +349,10 @@ abstract class _NotModified<T> extends RemoteResponse<T> {
 
 /// @nodoc
 abstract class _$$WithNewDataImplCopyWith<T, $Res> {
-  factory _$$WithNewDataImplCopyWith(_$WithNewDataImpl<T> value,
-          $Res Function(_$WithNewDataImpl<T>) then) =
-      __$$WithNewDataImplCopyWithImpl<T, $Res>;
+  factory _$$WithNewDataImplCopyWith(
+    _$WithNewDataImpl<T> value,
+    $Res Function(_$WithNewDataImpl<T>) then,
+  ) = __$$WithNewDataImplCopyWithImpl<T, $Res>;
   @useResult
   $Res call({T data, int maxPage, int totalRows});
 }
@@ -358,8 +362,9 @@ class __$$WithNewDataImplCopyWithImpl<T, $Res>
     extends _$RemoteResponseCopyWithImpl<T, $Res, _$WithNewDataImpl<T>>
     implements _$$WithNewDataImplCopyWith<T, $Res> {
   __$$WithNewDataImplCopyWithImpl(
-      _$WithNewDataImpl<T> _value, $Res Function(_$WithNewDataImpl<T>) _then)
-      : super(_value, _then);
+    _$WithNewDataImpl<T> _value,
+    $Res Function(_$WithNewDataImpl<T>) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of RemoteResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -370,29 +375,35 @@ class __$$WithNewDataImplCopyWithImpl<T, $Res>
     Object? maxPage = null,
     Object? totalRows = null,
   }) {
-    return _then(_$WithNewDataImpl<T>(
-      freezed == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as T,
-      maxPage: null == maxPage
-          ? _value.maxPage
-          : maxPage // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalRows: null == totalRows
-          ? _value.totalRows
-          : totalRows // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _$WithNewDataImpl<T>(
+        freezed == data
+            ? _value.data
+            : data // ignore: cast_nullable_to_non_nullable
+                as T,
+        maxPage:
+            null == maxPage
+                ? _value.maxPage
+                : maxPage // ignore: cast_nullable_to_non_nullable
+                    as int,
+        totalRows:
+            null == totalRows
+                ? _value.totalRows
+                : totalRows // ignore: cast_nullable_to_non_nullable
+                    as int,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$WithNewDataImpl<T> extends _WithNewData<T> {
-  const _$WithNewDataImpl(this.data,
-      {required this.maxPage, required this.totalRows})
-      : super._();
+  const _$WithNewDataImpl(
+    this.data, {
+    required this.maxPage,
+    required this.totalRows,
+  }) : super._();
 
   @override
   final T data;
@@ -418,8 +429,12 @@ class _$WithNewDataImpl<T> extends _WithNewData<T> {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(data), maxPage, totalRows);
+  int get hashCode => Object.hash(
+    runtimeType,
+    const DeepCollectionEquality().hash(data),
+    maxPage,
+    totalRows,
+  );
 
   /// Create a copy of RemoteResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -428,7 +443,9 @@ class _$WithNewDataImpl<T> extends _WithNewData<T> {
   @pragma('vm:prefer-inline')
   _$$WithNewDataImplCopyWith<T, _$WithNewDataImpl<T>> get copyWith =>
       __$$WithNewDataImplCopyWithImpl<T, _$WithNewDataImpl<T>>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -500,9 +517,11 @@ class _$WithNewDataImpl<T> extends _WithNewData<T> {
 }
 
 abstract class _WithNewData<T> extends RemoteResponse<T> {
-  const factory _WithNewData(final T data,
-      {required final int maxPage,
-      required final int totalRows}) = _$WithNewDataImpl<T>;
+  const factory _WithNewData(
+    final T data, {
+    required final int maxPage,
+    required final int totalRows,
+  }) = _$WithNewDataImpl<T>;
   const _WithNewData._() : super._();
 
   T get data;

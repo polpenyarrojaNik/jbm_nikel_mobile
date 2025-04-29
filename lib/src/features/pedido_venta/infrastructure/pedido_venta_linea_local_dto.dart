@@ -40,7 +40,8 @@ class PedidoVentaLineaLocalDTO
       _$PedidoVentaLineaLocalDTOFromJson(json);
 
   factory PedidoVentaLineaLocalDTO.fromDomain(
-      PedidoVentaLinea pedidoVentaLinea) {
+    PedidoVentaLinea pedidoVentaLinea,
+  ) {
     return _PedidoVentaLineaLocalDTO(
       pedidoVentaAppId: pedidoVentaLinea.pedidoVentaAppId!,
       pedidoId: pedidoVentaLinea.pedidoId,
@@ -62,10 +63,7 @@ class PedidoVentaLineaLocalDTO
     );
   }
 
-  PedidoVentaLinea toDomain({
-    required String divisaId,
-    Money? importeLinea,
-  }) {
+  PedidoVentaLinea toDomain({required String divisaId, Money? importeLinea}) {
     return PedidoVentaLinea(
       empresaId: empresaId,
       pedidoId: pedidoId,
@@ -138,10 +136,7 @@ class PedidoVentaLineaLocalTable extends Table {
   TextColumn get pedidoLineaIdComponente =>
       text().nullable().named('PEDIDO_LINEA_ID_COMPONENTE')();
   @override
-  Set<Column> get primaryKey => {
-        pedidoVentaAppId,
-        pedidoVentaLineaAppId,
-      };
+  Set<Column> get primaryKey => {pedidoVentaAppId, pedidoVentaLineaAppId};
 
   @override
   String get tableName => 'PEDIDOS_LINEAS_LOCAL_IMP';

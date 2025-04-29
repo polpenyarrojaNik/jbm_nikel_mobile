@@ -18,8 +18,11 @@ import '../../infrastructure/cliente_repository.dart';
 
 @RoutePage()
 class ClienteVentasMesPage extends ConsumerWidget {
-  const ClienteVentasMesPage(
-      {super.key, required this.clienteId, required this.nombreCliente});
+  const ClienteVentasMesPage({
+    super.key,
+    required this.clienteId,
+    required this.nombreCliente,
+  });
 
   final String clienteId;
   final String? nombreCliente;
@@ -41,34 +44,37 @@ class ClienteVentasMesPage extends ConsumerWidget {
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data: (clienteVentasMesList) => (clienteVentasMesList.isNotEmpty)
-                ? Expanded(
-                    child: ListView(
-                      children: [
-                        VentasMesDataTable(
-                          clienteVentasMesList: clienteVentasMesList,
+            data:
+                (clienteVentasMesList) =>
+                    (clienteVentasMesList.isNotEmpty)
+                        ? Expanded(
+                          child: ListView(
+                            children: [
+                              VentasMesDataTable(
+                                clienteVentasMesList: clienteVentasMesList,
+                              ),
+                              gapH16,
+                              Container(
+                                height: 420,
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                ),
+                                child: GraficaVentasMes(
+                                  clienteVentasMesList: clienteVentasMesList,
+                                ),
+                              ),
+                              gapH8,
+                              const LeyendaWidget(),
+                            ],
+                          ),
+                        )
+                        : Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [Text(S.of(context).sinResultados)],
+                          ),
                         ),
-                        gapH16,
-                        Container(
-                          height: 420,
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: GraficaVentasMes(
-                              clienteVentasMesList: clienteVentasMesList),
-                        ),
-                        gapH8,
-                        const LeyendaWidget(),
-                      ],
-                    ),
-                  )
-                : Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(S.of(context).sinResultados),
-                      ],
-                    ),
-                  ),
           ),
         ],
       ),
@@ -100,7 +106,8 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
           columnSpacing: 16,
           columns: _createColumns(),
           rows: _createDataRows(
-              clienteVentasMesList: widget.clienteVentasMesList),
+            clienteVentasMesList: widget.clienteVentasMesList,
+          ),
         ),
       ),
     );
@@ -110,15 +117,20 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
     return [
       DataColumn(
         label: Expanded(
-          child: Text(S.of(context).cliente_show_clienteVentasMes_mes,
-              textAlign: TextAlign.left),
+          child: Text(
+            S.of(context).cliente_show_clienteVentasMes_mes,
+            textAlign: TextAlign.left,
+          ),
         ),
         numeric: true,
       ),
       DataColumn(
         label: Expanded(
-            child: Text(DateTime.now().year.toString(),
-                textAlign: TextAlign.right)),
+          child: Text(
+            DateTime.now().year.toString(),
+            textAlign: TextAlign.right,
+          ),
+        ),
         numeric: false,
       ),
       DataColumn(
@@ -132,38 +144,46 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
       ),
       DataColumn(
         label: Expanded(
-          child: Text((DateTime.now().year - 2).toString(),
-              textAlign: TextAlign.right),
+          child: Text(
+            (DateTime.now().year - 2).toString(),
+            textAlign: TextAlign.right,
+          ),
         ),
         numeric: false,
       ),
       DataColumn(
         label: Expanded(
-          child: Text((DateTime.now().year - 3).toString(),
-              textAlign: TextAlign.right),
+          child: Text(
+            (DateTime.now().year - 3).toString(),
+            textAlign: TextAlign.right,
+          ),
         ),
         numeric: false,
       ),
       DataColumn(
         label: Expanded(
-          child: Text((DateTime.now().year - 4).toString(),
-              textAlign: TextAlign.right),
+          child: Text(
+            (DateTime.now().year - 4).toString(),
+            textAlign: TextAlign.right,
+          ),
         ),
         numeric: false,
       ),
     ];
   }
 
-  List<DataRow> _createDataRows(
-      {required List<ClienteVentasMes> clienteVentasMesList}) {
+  List<DataRow> _createDataRows({
+    required List<ClienteVentasMes> clienteVentasMesList,
+  }) {
     final dataRows = <DataRow>[];
 
     for (var i = 0; i < clienteVentasMesList.length; i++) {
       dataRows.add(
         DataRow(
-          onLongPress: () => setState(() {
-            selectedRow = i;
-          }),
+          onLongPress:
+              () => setState(() {
+                selectedRow = i;
+              }),
           selected: selectedRow == i,
           cells: [
             DataCell(
@@ -171,8 +191,21 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Center(
+                    child: Text(getMonthFromInt(clienteVentasMesList[i].mes)),
+                  ),
+                ],
+              ),
+            ),
+            DataCell(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Center(
                     child: Text(
-                      getMonthFromInt(clienteVentasMesList[i].mes),
+                      formatPrecios(
+                        precio: clienteVentasMesList[i].importeAnyo,
+                        tipoPrecio: null,
+                      ),
                     ),
                   ),
                 ],
@@ -185,8 +218,10 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
                   Center(
                     child: Text(
                       formatPrecios(
-                          precio: clienteVentasMesList[i].importeAnyo,
-                          tipoPrecio: null),
+                        precio: clienteVentasMesList[i].importeAnyo_1,
+                        tipoPrecio: null,
+                      ),
+                      textAlign: TextAlign.right,
                     ),
                   ),
                 ],
@@ -198,10 +233,12 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
                 children: [
                   Center(
                     child: Text(
-                        formatPrecios(
-                            precio: clienteVentasMesList[i].importeAnyo_1,
-                            tipoPrecio: null),
-                        textAlign: TextAlign.right),
+                      formatPrecios(
+                        precio: clienteVentasMesList[i].importeAnyo_2,
+                        tipoPrecio: null,
+                      ),
+                      textAlign: TextAlign.right,
+                    ),
                   ),
                 ],
               ),
@@ -212,10 +249,12 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
                 children: [
                   Center(
                     child: Text(
-                        formatPrecios(
-                            precio: clienteVentasMesList[i].importeAnyo_2,
-                            tipoPrecio: null),
-                        textAlign: TextAlign.right),
+                      formatPrecios(
+                        precio: clienteVentasMesList[i].importeAnyo_3,
+                        tipoPrecio: null,
+                      ),
+                      textAlign: TextAlign.right,
+                    ),
                   ),
                 ],
               ),
@@ -226,24 +265,12 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
                 children: [
                   Center(
                     child: Text(
-                        formatPrecios(
-                            precio: clienteVentasMesList[i].importeAnyo_3,
-                            tipoPrecio: null),
-                        textAlign: TextAlign.right),
-                  ),
-                ],
-              ),
-            ),
-            DataCell(
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Center(
-                    child: Text(
-                        formatPrecios(
-                            precio: clienteVentasMesList[i].importeAnyo_4,
-                            tipoPrecio: null),
-                        textAlign: TextAlign.right),
+                      formatPrecios(
+                        precio: clienteVentasMesList[i].importeAnyo_4,
+                        tipoPrecio: null,
+                      ),
+                      textAlign: TextAlign.right,
+                    ),
                   ),
                 ],
               ),
@@ -254,96 +281,111 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
     }
 
     dataRows.add(
-      DataRow(cells: [
-        DataCell(
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Center(
-                child: Text(S.of(context).cliente_show_clienteVentasMes_total,
-                    style: Theme.of(context).textTheme.titleSmall),
-              ),
-            ],
-          ),
-        ),
-        DataCell(
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Center(
-                child: Text(
-                  calcularTotalAnyo(
-                      anyo: 0, clienteVentasMesList: clienteVentasMesList),
-                  textAlign: TextAlign.right,
+      DataRow(
+        cells: [
+          DataCell(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Center(
+                  child: Text(
+                    S.of(context).cliente_show_clienteVentasMes_total,
+                    style: Theme.of(context).textTheme.titleSmall,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-        DataCell(
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Center(
-                child: Text(
-                  calcularTotalAnyo(
-                      anyo: -1, clienteVentasMesList: clienteVentasMesList),
-                  textAlign: TextAlign.right,
+          DataCell(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Center(
+                  child: Text(
+                    calcularTotalAnyo(
+                      anyo: 0,
+                      clienteVentasMesList: clienteVentasMesList,
+                    ),
+                    textAlign: TextAlign.right,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-        DataCell(
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Center(
-                child: Text(
-                  calcularTotalAnyo(
-                      anyo: -2, clienteVentasMesList: clienteVentasMesList),
-                  textAlign: TextAlign.right,
+          DataCell(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Center(
+                  child: Text(
+                    calcularTotalAnyo(
+                      anyo: -1,
+                      clienteVentasMesList: clienteVentasMesList,
+                    ),
+                    textAlign: TextAlign.right,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-        DataCell(
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Center(
-                child: Text(
-                  calcularTotalAnyo(
-                      anyo: -3, clienteVentasMesList: clienteVentasMesList),
-                  textAlign: TextAlign.right,
+          DataCell(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Center(
+                  child: Text(
+                    calcularTotalAnyo(
+                      anyo: -2,
+                      clienteVentasMesList: clienteVentasMesList,
+                    ),
+                    textAlign: TextAlign.right,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-        DataCell(
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Center(
-                child: Text(
-                  calcularTotalAnyo(
-                      anyo: -4, clienteVentasMesList: clienteVentasMesList),
-                  textAlign: TextAlign.right,
+          DataCell(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Center(
+                  child: Text(
+                    calcularTotalAnyo(
+                      anyo: -3,
+                      clienteVentasMesList: clienteVentasMesList,
+                    ),
+                    textAlign: TextAlign.right,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      ]),
+          DataCell(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Center(
+                  child: Text(
+                    calcularTotalAnyo(
+                      anyo: -4,
+                      clienteVentasMesList: clienteVentasMesList,
+                    ),
+                    textAlign: TextAlign.right,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
     return dataRows;
   }
 
-  String calcularTotalAnyo(
-      {required int anyo,
-      required List<ClienteVentasMes> clienteVentasMesList}) {
+  String calcularTotalAnyo({
+    required int anyo,
+    required List<ClienteVentasMes> clienteVentasMesList,
+  }) {
     final divisaId = clienteVentasMesList[0].importeAnyo.currency.isoCode;
 
     var totalAnyo = Money.fromInt(0, isoCode: divisaId);
@@ -397,46 +439,53 @@ class _GraficaVentasMesState extends State<GraficaVentasMes> {
                   borderData: FlBorderData(
                     show: true,
                     border: const Border.symmetric(
-                      horizontal: BorderSide(
-                        color: Color(0xFFececec),
-                      ),
+                      horizontal: BorderSide(color: Color(0xFFececec)),
                     ),
                   ),
                   titlesData: FlTitlesData(
                     leftTitles: const AxisTitles(
-                      sideTitles:
-                          SideTitles(showTitles: true, reservedSize: 50),
+                      sideTitles: SideTitles(
+                        showTitles: true,
+                        reservedSize: 50,
+                      ),
                     ),
                     topTitles: const AxisTitles(
-                        sideTitles: SideTitles(showTitles: false)),
+                      sideTitles: SideTitles(showTitles: false),
+                    ),
                     rightTitles: const AxisTitles(
-                        sideTitles: SideTitles(showTitles: false)),
+                      sideTitles: SideTitles(showTitles: false),
+                    ),
                     bottomTitles: AxisTitles(
                       sideTitles: SideTitles(
                         showTitles: true,
-                        getTitlesWidget: (value, meta) =>
-                            getTiltlesMeses(widget.clienteVentasMesList, value),
+                        getTitlesWidget:
+                            (value, meta) => getTiltlesMeses(
+                              widget.clienteVentasMesList,
+                              value,
+                            ),
                       ),
                     ),
                   ),
                   gridData: FlGridData(
                     show: true,
                     drawVerticalLine: false,
-                    getDrawingHorizontalLine: (value) => const FlLine(
-                      color: Color(0xFFececec),
-                      strokeWidth: 1,
-                    ),
+                    getDrawingHorizontalLine:
+                        (value) => const FlLine(
+                          color: Color(0xFFececec),
+                          strokeWidth: 1,
+                        ),
                   ),
-                  barGroups: dataList.asMap().entries.map((e) {
-                    final index = e.key;
-                    final data = e.value;
-                    return generateBarGroup(
-                      index,
-                      data.color,
-                      data.value,
-                      data.shadowValue,
-                    );
-                  }).toList(),
+                  barGroups:
+                      dataList.asMap().entries.map((e) {
+                        final index = e.key;
+                        final data = e.value;
+                        return generateBarGroup(
+                          index,
+                          data.color,
+                          data.value,
+                          data.shadowValue,
+                        );
+                      }).toList(),
                   maxY: getMaxYValue(widget.clienteVentasMesList),
                   minY: 0,
                 ),
@@ -450,15 +499,20 @@ class _GraficaVentasMesState extends State<GraficaVentasMes> {
 
   void setDataListFromVentasMes(List<ClienteVentasMes> clienteVentasMesList) {
     for (var i = 0; i < clienteVentasMesList.length; i++) {
-      dataList.add(BarDataClientesMes(
+      dataList.add(
+        BarDataClientesMes(
           Colors.green,
           clienteVentasMesList[i].importeAnyo,
-          clienteVentasMesList[i].importeAnyo_1));
+          clienteVentasMesList[i].importeAnyo_1,
+        ),
+      );
     }
   }
 
   Widget getTiltlesMeses(
-      List<ClienteVentasMes> clienteVentasMesList, double value) {
+    List<ClienteVentasMes> clienteVentasMesList,
+    double value,
+  ) {
     return Text(clienteVentasMesList[value.toInt()].mes.toString());
   }
 
@@ -473,7 +527,8 @@ class _GraficaVentasMesState extends State<GraficaVentasMes> {
       child: Text(
         valueString,
         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            fontSize: Theme.of(context).textTheme.bodySmall?.fontSize),
+          fontSize: Theme.of(context).textTheme.bodySmall?.fontSize,
+        ),
       ),
     );
   }
@@ -497,7 +552,7 @@ class _GraficaVentasMesState extends State<GraficaVentasMes> {
       if (maxY % (maxY / 9).round() == 0) {
         return maxY.roundToDouble();
       }
-      for (var i = maxY.round();; i++) {
+      for (var i = maxY.round(); ; i++) {
         if (i % (maxY / 9).round() == 0) {
           return i.toDouble();
         }

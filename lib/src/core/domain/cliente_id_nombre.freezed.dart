@@ -12,7 +12,8 @@ part of 'cliente_id_nombre.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ClienteIdNombre {
@@ -29,8 +30,9 @@ mixin _$ClienteIdNombre {
 /// @nodoc
 abstract class $ClienteIdNombreCopyWith<$Res> {
   factory $ClienteIdNombreCopyWith(
-          ClienteIdNombre value, $Res Function(ClienteIdNombre) then) =
-      _$ClienteIdNombreCopyWithImpl<$Res, ClienteIdNombre>;
+    ClienteIdNombre value,
+    $Res Function(ClienteIdNombre) then,
+  ) = _$ClienteIdNombreCopyWithImpl<$Res, ClienteIdNombre>;
   @useResult
   $Res call({String id, String? nombreCliente});
 }
@@ -49,29 +51,32 @@ class _$ClienteIdNombreCopyWithImpl<$Res, $Val extends ClienteIdNombre>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? id = null,
-    Object? nombreCliente = freezed,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      nombreCliente: freezed == nombreCliente
-          ? _value.nombreCliente
-          : nombreCliente // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+  $Res call({Object? id = null, Object? nombreCliente = freezed}) {
+    return _then(
+      _value.copyWith(
+            id:
+                null == id
+                    ? _value.id
+                    : id // ignore: cast_nullable_to_non_nullable
+                        as String,
+            nombreCliente:
+                freezed == nombreCliente
+                    ? _value.nombreCliente
+                    : nombreCliente // ignore: cast_nullable_to_non_nullable
+                        as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$ClienteIdNombreImplCopyWith<$Res>
     implements $ClienteIdNombreCopyWith<$Res> {
-  factory _$$ClienteIdNombreImplCopyWith(_$ClienteIdNombreImpl value,
-          $Res Function(_$ClienteIdNombreImpl) then) =
-      __$$ClienteIdNombreImplCopyWithImpl<$Res>;
+  factory _$$ClienteIdNombreImplCopyWith(
+    _$ClienteIdNombreImpl value,
+    $Res Function(_$ClienteIdNombreImpl) then,
+  ) = __$$ClienteIdNombreImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id, String? nombreCliente});
@@ -82,27 +87,29 @@ class __$$ClienteIdNombreImplCopyWithImpl<$Res>
     extends _$ClienteIdNombreCopyWithImpl<$Res, _$ClienteIdNombreImpl>
     implements _$$ClienteIdNombreImplCopyWith<$Res> {
   __$$ClienteIdNombreImplCopyWithImpl(
-      _$ClienteIdNombreImpl _value, $Res Function(_$ClienteIdNombreImpl) _then)
-      : super(_value, _then);
+    _$ClienteIdNombreImpl _value,
+    $Res Function(_$ClienteIdNombreImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ClienteIdNombre
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? id = null,
-    Object? nombreCliente = freezed,
-  }) {
-    return _then(_$ClienteIdNombreImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      nombreCliente: freezed == nombreCliente
-          ? _value.nombreCliente
-          : nombreCliente // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+  $Res call({Object? id = null, Object? nombreCliente = freezed}) {
+    return _then(
+      _$ClienteIdNombreImpl(
+        id:
+            null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                    as String,
+        nombreCliente:
+            freezed == nombreCliente
+                ? _value.nombreCliente
+                : nombreCliente // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
+    );
   }
 }
 
@@ -110,7 +117,7 @@ class __$$ClienteIdNombreImplCopyWithImpl<$Res>
 
 class _$ClienteIdNombreImpl extends _ClienteIdNombre {
   const _$ClienteIdNombreImpl({required this.id, required this.nombreCliente})
-      : super._();
+    : super._();
 
   @override
   final String id;
@@ -142,13 +149,16 @@ class _$ClienteIdNombreImpl extends _ClienteIdNombre {
   @pragma('vm:prefer-inline')
   _$$ClienteIdNombreImplCopyWith<_$ClienteIdNombreImpl> get copyWith =>
       __$$ClienteIdNombreImplCopyWithImpl<_$ClienteIdNombreImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _ClienteIdNombre extends ClienteIdNombre {
-  const factory _ClienteIdNombre(
-      {required final String id,
-      required final String? nombreCliente}) = _$ClienteIdNombreImpl;
+  const factory _ClienteIdNombre({
+    required final String id,
+    required final String? nombreCliente,
+  }) = _$ClienteIdNombreImpl;
   const _ClienteIdNombre._() : super._();
 
   @override

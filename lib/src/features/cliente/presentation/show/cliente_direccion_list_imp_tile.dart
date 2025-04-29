@@ -6,8 +6,10 @@ import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/cliente_direccion_imp.dart';
 
 class ClienteDireccionImpListTile extends StatelessWidget {
-  const ClienteDireccionImpListTile(
-      {super.key, required this.clienteDireccionImp});
+  const ClienteDireccionImpListTile({
+    super.key,
+    required this.clienteDireccionImp,
+  });
 
   final ClienteDireccionImp clienteDireccionImp;
 
@@ -22,8 +24,9 @@ class ClienteDireccionImpListTile extends StatelessWidget {
             children: [
               Text(
                 dateFormatter(
-                    clienteDireccionImp.fecha.toLocal().toIso8601String(),
-                    allDay: true),
+                  clienteDireccionImp.fecha.toLocal().toIso8601String(),
+                  allDay: true,
+                ),
                 style: Theme.of(context).textTheme.bodySmall,
               ),
               Text(
@@ -38,13 +41,14 @@ class ClienteDireccionImpListTile extends StatelessWidget {
             children: [
               SizedBox(
                 width: 50,
-                child: (clienteDireccionImp.direccionId != null)
-                    ? Text(
-                        (clienteDireccionImp.direccionId!.length > 3)
-                            ? 'PRV'
-                            : clienteDireccionImp.direccionId!,
-                      )
-                    : null,
+                child:
+                    (clienteDireccionImp.direccionId != null)
+                        ? Text(
+                          (clienteDireccionImp.direccionId!.length > 3)
+                              ? 'PRV'
+                              : clienteDireccionImp.direccionId!,
+                        )
+                        : null,
               ),
               Expanded(
                 child: Column(
@@ -73,7 +77,8 @@ class ClienteDireccionImpListTile extends StatelessWidget {
                             .of(context)
                             .cliente_show_clienteDireccion_clienteDireccionImpListTile_direccionEliminada,
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: Theme.of(context).colorScheme.error),
+                          color: Theme.of(context).colorScheme.error,
+                        ),
                       ),
                   ],
                 ),

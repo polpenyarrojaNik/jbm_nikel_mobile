@@ -40,8 +40,9 @@ class PhoneTextFormField extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final verifyExisitingPhoneState =
-        ref.watch(phoneTextFormBuilderControllerProvider.verifyExistingPhone);
+    final verifyExisitingPhoneState = ref.watch(
+      phoneTextFormBuilderControllerProvider.verifyExistingPhone,
+    );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -61,11 +62,11 @@ class PhoneTextFormField extends ConsumerWidget {
         if (verifyExisitingPhoneState is VerifyExistingPhoneMutationSuccess &&
             verifyExisitingPhoneState.result != null)
           Text(
-              '${S.of(context).esteNumeroTelefonoExisiteEnElCliente} #${verifyExisitingPhoneState.result!.clienteId} ${verifyExisitingPhoneState.result!.nombre}',
-              style: Theme.of(context)
-                  .textTheme
-                  .labelSmall
-                  ?.copyWith(color: Colors.orange))
+            '${S.of(context).esteNumeroTelefonoExisiteEnElCliente} #${verifyExisitingPhoneState.result!.clienteId} ${verifyExisitingPhoneState.result!.nombre}',
+            style: Theme.of(
+              context,
+            ).textTheme.labelSmall?.copyWith(color: Colors.orange),
+          )
         else if (verifyExisitingPhoneState
             is VerifyExistingPhoneMutationLoading)
           const LinearProgressIndicator()

@@ -23,29 +23,34 @@ class ProvinciaSearchDialog extends ConsumerWidget {
         isSearchingFirst: true,
         title: S.of(context).search,
         searchTitle: S.of(context).search,
-        onChanged: (searchText) => _debouncer.run(
-          () => ref.read(provinciasSearchQueryStateProvider.notifier).state =
-              searchText,
-        ),
+        onChanged:
+            (searchText) => _debouncer.run(
+              () =>
+                  ref.read(provinciasSearchQueryStateProvider.notifier).state =
+                      searchText,
+            ),
       ),
       content: SizedBox(
         height: double.maxFinite,
         width: double.maxFinite,
         child: state.when(
-          data: (provinciaList) => ListView.separated(
-            shrinkWrap: true,
-            itemBuilder: (context, i) => GestureDetector(
-                onTap: () => context.router.maybePop(provinciaList[i]),
-                child: Text(provinciaList[i].provincia ??
-                    provinciaList[i].provinciaId)),
-            separatorBuilder: (context, i) => const Divider(),
-            itemCount: provinciaList.length,
-          ),
-          error: (error, _) =>
-              Center(child: ErrorMessageWidget(error.toString())),
-          loading: () => const Center(
-            child: ProgressIndicatorWidget(),
-          ),
+          data:
+              (provinciaList) => ListView.separated(
+                shrinkWrap: true,
+                itemBuilder:
+                    (context, i) => GestureDetector(
+                      onTap: () => context.router.maybePop(provinciaList[i]),
+                      child: Text(
+                        provinciaList[i].provincia ??
+                            provinciaList[i].provinciaId,
+                      ),
+                    ),
+                separatorBuilder: (context, i) => const Divider(),
+                itemCount: provinciaList.length,
+              ),
+          error:
+              (error, _) => Center(child: ErrorMessageWidget(error.toString())),
+          loading: () => const Center(child: ProgressIndicatorWidget()),
         ),
       ),
     );

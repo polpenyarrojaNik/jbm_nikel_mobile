@@ -37,8 +37,11 @@ class CustomPrinter extends LogPrinter {
     final timeStr = getTime();
 
     return [
-      truncate('$emoji[$timeStr] > ${event.message}',
-          length: 120, rightLength: 20)
+      truncate(
+        '$emoji[$timeStr] > ${event.message}',
+        length: 120,
+        rightLength: 20,
+      ),
     ];
   }
 

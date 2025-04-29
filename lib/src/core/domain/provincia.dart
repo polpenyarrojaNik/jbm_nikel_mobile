@@ -5,11 +5,12 @@ part 'provincia.freezed.dart';
 @freezed
 class Provincia with _$Provincia {
   const Provincia._();
-  const factory Provincia(
-      {required String paisId,
-      required String regionId,
-      required String provinciaId,
-      String? provincia,
-      required DateTime lastUpdate,
-      required bool deleted}) = _Provincia;
+  const factory Provincia({
+    required String paisId,
+    required String regionId,
+    required String provinciaId,
+    String? provincia,
+    required DateTime lastUpdate,
+    required bool deleted,
+  }) = _Provincia;
 }

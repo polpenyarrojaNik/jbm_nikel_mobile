@@ -12,7 +12,8 @@ part of 'articulo_imagen_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ArticuloImagenDTO _$ArticuloImagenDTOFromJson(Map<String, dynamic> json) {
   return _ArticuloImagenDTO.fromJson(json);
@@ -38,12 +39,14 @@ mixin _$ArticuloImagenDTO {
 /// @nodoc
 abstract class $ArticuloImagenDTOCopyWith<$Res> {
   factory $ArticuloImagenDTOCopyWith(
-          ArticuloImagenDTO value, $Res Function(ArticuloImagenDTO) then) =
-      _$ArticuloImagenDTOCopyWithImpl<$Res, ArticuloImagenDTO>;
+    ArticuloImagenDTO value,
+    $Res Function(ArticuloImagenDTO) then,
+  ) = _$ArticuloImagenDTOCopyWithImpl<$Res, ArticuloImagenDTO>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'ARTICULO_ID') String articuloId,
-      @JsonKey(name: 'NOMBRE_ARCHIVO') String nombreArchivo});
+  $Res call({
+    @JsonKey(name: 'ARTICULO_ID') String articuloId,
+    @JsonKey(name: 'NOMBRE_ARCHIVO') String nombreArchivo,
+  });
 }
 
 /// @nodoc
@@ -60,72 +63,78 @@ class _$ArticuloImagenDTOCopyWithImpl<$Res, $Val extends ArticuloImagenDTO>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? articuloId = null,
-    Object? nombreArchivo = null,
-  }) {
-    return _then(_value.copyWith(
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      nombreArchivo: null == nombreArchivo
-          ? _value.nombreArchivo
-          : nombreArchivo // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  $Res call({Object? articuloId = null, Object? nombreArchivo = null}) {
+    return _then(
+      _value.copyWith(
+            articuloId:
+                null == articuloId
+                    ? _value.articuloId
+                    : articuloId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            nombreArchivo:
+                null == nombreArchivo
+                    ? _value.nombreArchivo
+                    : nombreArchivo // ignore: cast_nullable_to_non_nullable
+                        as String,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$ArticuloImagenDTOImplCopyWith<$Res>
     implements $ArticuloImagenDTOCopyWith<$Res> {
-  factory _$$ArticuloImagenDTOImplCopyWith(_$ArticuloImagenDTOImpl value,
-          $Res Function(_$ArticuloImagenDTOImpl) then) =
-      __$$ArticuloImagenDTOImplCopyWithImpl<$Res>;
+  factory _$$ArticuloImagenDTOImplCopyWith(
+    _$ArticuloImagenDTOImpl value,
+    $Res Function(_$ArticuloImagenDTOImpl) then,
+  ) = __$$ArticuloImagenDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'ARTICULO_ID') String articuloId,
-      @JsonKey(name: 'NOMBRE_ARCHIVO') String nombreArchivo});
+  $Res call({
+    @JsonKey(name: 'ARTICULO_ID') String articuloId,
+    @JsonKey(name: 'NOMBRE_ARCHIVO') String nombreArchivo,
+  });
 }
 
 /// @nodoc
 class __$$ArticuloImagenDTOImplCopyWithImpl<$Res>
     extends _$ArticuloImagenDTOCopyWithImpl<$Res, _$ArticuloImagenDTOImpl>
     implements _$$ArticuloImagenDTOImplCopyWith<$Res> {
-  __$$ArticuloImagenDTOImplCopyWithImpl(_$ArticuloImagenDTOImpl _value,
-      $Res Function(_$ArticuloImagenDTOImpl) _then)
-      : super(_value, _then);
+  __$$ArticuloImagenDTOImplCopyWithImpl(
+    _$ArticuloImagenDTOImpl _value,
+    $Res Function(_$ArticuloImagenDTOImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ArticuloImagenDTO
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? articuloId = null,
-    Object? nombreArchivo = null,
-  }) {
-    return _then(_$ArticuloImagenDTOImpl(
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      nombreArchivo: null == nombreArchivo
-          ? _value.nombreArchivo
-          : nombreArchivo // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? articuloId = null, Object? nombreArchivo = null}) {
+    return _then(
+      _$ArticuloImagenDTOImpl(
+        articuloId:
+            null == articuloId
+                ? _value.articuloId
+                : articuloId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        nombreArchivo:
+            null == nombreArchivo
+                ? _value.nombreArchivo
+                : nombreArchivo // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ArticuloImagenDTOImpl extends _ArticuloImagenDTO {
-  const _$ArticuloImagenDTOImpl(
-      {@JsonKey(name: 'ARTICULO_ID') required this.articuloId,
-      @JsonKey(name: 'NOMBRE_ARCHIVO') required this.nombreArchivo})
-      : super._();
+  const _$ArticuloImagenDTOImpl({
+    @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
+    @JsonKey(name: 'NOMBRE_ARCHIVO') required this.nombreArchivo,
+  }) : super._();
 
   factory _$ArticuloImagenDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ArticuloImagenDTOImplFromJson(json);
@@ -164,21 +173,21 @@ class _$ArticuloImagenDTOImpl extends _ArticuloImagenDTO {
   @pragma('vm:prefer-inline')
   _$$ArticuloImagenDTOImplCopyWith<_$ArticuloImagenDTOImpl> get copyWith =>
       __$$ArticuloImagenDTOImplCopyWithImpl<_$ArticuloImagenDTOImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ArticuloImagenDTOImplToJson(
-      this,
-    );
+    return _$$ArticuloImagenDTOImplToJson(this);
   }
 }
 
 abstract class _ArticuloImagenDTO extends ArticuloImagenDTO {
-  const factory _ArticuloImagenDTO(
-      {@JsonKey(name: 'ARTICULO_ID') required final String articuloId,
-      @JsonKey(name: 'NOMBRE_ARCHIVO')
-      required final String nombreArchivo}) = _$ArticuloImagenDTOImpl;
+  const factory _ArticuloImagenDTO({
+    @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
+    @JsonKey(name: 'NOMBRE_ARCHIVO') required final String nombreArchivo,
+  }) = _$ArticuloImagenDTOImpl;
   const _ArticuloImagenDTO._() : super._();
 
   factory _ArticuloImagenDTO.fromJson(Map<String, dynamic> json) =

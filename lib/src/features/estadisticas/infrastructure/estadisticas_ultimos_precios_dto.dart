@@ -83,11 +83,7 @@ class EstadisticasUltimosPreciosTable extends Table {
   String get tableName => 'ULTIMOS_PRECIOS';
 
   @override
-  Set<Column> get primaryKey => {
-        clienteId,
-        articuloId,
-        linea,
-      };
+  Set<Column> get primaryKey => {clienteId, articuloId, linea};
 
   TextColumn get clienteId => text().named('CLIENTE_ID')();
   TextColumn get articuloId => text().named('ARTICULO_ID')();

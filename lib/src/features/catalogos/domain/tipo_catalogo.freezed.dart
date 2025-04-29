@@ -12,7 +12,8 @@ part of 'tipo_catalogo.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$TipoCatalogo {
@@ -29,8 +30,9 @@ mixin _$TipoCatalogo {
 /// @nodoc
 abstract class $TipoCatalogoCopyWith<$Res> {
   factory $TipoCatalogoCopyWith(
-          TipoCatalogo value, $Res Function(TipoCatalogo) then) =
-      _$TipoCatalogoCopyWithImpl<$Res, TipoCatalogo>;
+    TipoCatalogo value,
+    $Res Function(TipoCatalogo) then,
+  ) = _$TipoCatalogoCopyWithImpl<$Res, TipoCatalogo>;
   @useResult
   $Res call({String tipoCatalogoId, String descripcion});
 }
@@ -49,20 +51,22 @@ class _$TipoCatalogoCopyWithImpl<$Res, $Val extends TipoCatalogo>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? tipoCatalogoId = null,
-    Object? descripcion = null,
-  }) {
-    return _then(_value.copyWith(
-      tipoCatalogoId: null == tipoCatalogoId
-          ? _value.tipoCatalogoId
-          : tipoCatalogoId // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcion: null == descripcion
-          ? _value.descripcion
-          : descripcion // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  $Res call({Object? tipoCatalogoId = null, Object? descripcion = null}) {
+    return _then(
+      _value.copyWith(
+            tipoCatalogoId:
+                null == tipoCatalogoId
+                    ? _value.tipoCatalogoId
+                    : tipoCatalogoId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            descripcion:
+                null == descripcion
+                    ? _value.descripcion
+                    : descripcion // ignore: cast_nullable_to_non_nullable
+                        as String,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -70,8 +74,9 @@ class _$TipoCatalogoCopyWithImpl<$Res, $Val extends TipoCatalogo>
 abstract class _$$TipoCatalogoImplCopyWith<$Res>
     implements $TipoCatalogoCopyWith<$Res> {
   factory _$$TipoCatalogoImplCopyWith(
-          _$TipoCatalogoImpl value, $Res Function(_$TipoCatalogoImpl) then) =
-      __$$TipoCatalogoImplCopyWithImpl<$Res>;
+    _$TipoCatalogoImpl value,
+    $Res Function(_$TipoCatalogoImpl) then,
+  ) = __$$TipoCatalogoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String tipoCatalogoId, String descripcion});
@@ -82,36 +87,39 @@ class __$$TipoCatalogoImplCopyWithImpl<$Res>
     extends _$TipoCatalogoCopyWithImpl<$Res, _$TipoCatalogoImpl>
     implements _$$TipoCatalogoImplCopyWith<$Res> {
   __$$TipoCatalogoImplCopyWithImpl(
-      _$TipoCatalogoImpl _value, $Res Function(_$TipoCatalogoImpl) _then)
-      : super(_value, _then);
+    _$TipoCatalogoImpl _value,
+    $Res Function(_$TipoCatalogoImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of TipoCatalogo
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? tipoCatalogoId = null,
-    Object? descripcion = null,
-  }) {
-    return _then(_$TipoCatalogoImpl(
-      tipoCatalogoId: null == tipoCatalogoId
-          ? _value.tipoCatalogoId
-          : tipoCatalogoId // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcion: null == descripcion
-          ? _value.descripcion
-          : descripcion // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? tipoCatalogoId = null, Object? descripcion = null}) {
+    return _then(
+      _$TipoCatalogoImpl(
+        tipoCatalogoId:
+            null == tipoCatalogoId
+                ? _value.tipoCatalogoId
+                : tipoCatalogoId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        descripcion:
+            null == descripcion
+                ? _value.descripcion
+                : descripcion // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$TipoCatalogoImpl extends _TipoCatalogo {
-  const _$TipoCatalogoImpl(
-      {required this.tipoCatalogoId, required this.descripcion})
-      : super._();
+  const _$TipoCatalogoImpl({
+    required this.tipoCatalogoId,
+    required this.descripcion,
+  }) : super._();
 
   @override
   final String tipoCatalogoId;
@@ -147,9 +155,10 @@ class _$TipoCatalogoImpl extends _TipoCatalogo {
 }
 
 abstract class _TipoCatalogo extends TipoCatalogo {
-  const factory _TipoCatalogo(
-      {required final String tipoCatalogoId,
-      required final String descripcion}) = _$TipoCatalogoImpl;
+  const factory _TipoCatalogo({
+    required final String tipoCatalogoId,
+    required final String descripcion,
+  }) = _$TipoCatalogoImpl;
   const _TipoCatalogo._() : super._();
 
   @override

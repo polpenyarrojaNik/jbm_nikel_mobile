@@ -12,7 +12,8 @@ part of 'promo_dto_cliente_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 PromoDtoClienteDTO _$PromoDtoClienteDTOFromJson(Map<String, dynamic> json) {
   return _PromoDtoClienteDTO.fromJson(json);
@@ -46,16 +47,18 @@ mixin _$PromoDtoClienteDTO {
 /// @nodoc
 abstract class $PromoDtoClienteDTOCopyWith<$Res> {
   factory $PromoDtoClienteDTOCopyWith(
-          PromoDtoClienteDTO value, $Res Function(PromoDtoClienteDTO) then) =
-      _$PromoDtoClienteDTOCopyWithImpl<$Res, PromoDtoClienteDTO>;
+    PromoDtoClienteDTO value,
+    $Res Function(PromoDtoClienteDTO) then,
+  ) = _$PromoDtoClienteDTOCopyWithImpl<$Res, PromoDtoClienteDTO>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'EMPRESA_ID') String empresaId,
-      @JsonKey(name: 'PROMO_DTO_ID') String promoDtoId,
-      @JsonKey(name: 'CLIENTE_ID') String clienteId,
-      @JsonKey(name: 'TIPO') String tipo,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+  $Res call({
+    @JsonKey(name: 'EMPRESA_ID') String empresaId,
+    @JsonKey(name: 'PROMO_DTO_ID') String promoDtoId,
+    @JsonKey(name: 'CLIENTE_ID') String clienteId,
+    @JsonKey(name: 'TIPO') String tipo,
+    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') String deleted,
+  });
 }
 
 /// @nodoc
@@ -80,59 +83,71 @@ class _$PromoDtoClienteDTOCopyWithImpl<$Res, $Val extends PromoDtoClienteDTO>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_value.copyWith(
-      empresaId: null == empresaId
-          ? _value.empresaId
-          : empresaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      promoDtoId: null == promoDtoId
-          ? _value.promoDtoId
-          : promoDtoId // ignore: cast_nullable_to_non_nullable
-              as String,
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      tipo: null == tipo
-          ? _value.tipo
-          : tipo // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            empresaId:
+                null == empresaId
+                    ? _value.empresaId
+                    : empresaId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            promoDtoId:
+                null == promoDtoId
+                    ? _value.promoDtoId
+                    : promoDtoId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            clienteId:
+                null == clienteId
+                    ? _value.clienteId
+                    : clienteId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            tipo:
+                null == tipo
+                    ? _value.tipo
+                    : tipo // ignore: cast_nullable_to_non_nullable
+                        as String,
+            lastUpdated:
+                null == lastUpdated
+                    ? _value.lastUpdated
+                    : lastUpdated // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            deleted:
+                null == deleted
+                    ? _value.deleted
+                    : deleted // ignore: cast_nullable_to_non_nullable
+                        as String,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$PromoDtoClienteDTOImplCopyWith<$Res>
     implements $PromoDtoClienteDTOCopyWith<$Res> {
-  factory _$$PromoDtoClienteDTOImplCopyWith(_$PromoDtoClienteDTOImpl value,
-          $Res Function(_$PromoDtoClienteDTOImpl) then) =
-      __$$PromoDtoClienteDTOImplCopyWithImpl<$Res>;
+  factory _$$PromoDtoClienteDTOImplCopyWith(
+    _$PromoDtoClienteDTOImpl value,
+    $Res Function(_$PromoDtoClienteDTOImpl) then,
+  ) = __$$PromoDtoClienteDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'EMPRESA_ID') String empresaId,
-      @JsonKey(name: 'PROMO_DTO_ID') String promoDtoId,
-      @JsonKey(name: 'CLIENTE_ID') String clienteId,
-      @JsonKey(name: 'TIPO') String tipo,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+  $Res call({
+    @JsonKey(name: 'EMPRESA_ID') String empresaId,
+    @JsonKey(name: 'PROMO_DTO_ID') String promoDtoId,
+    @JsonKey(name: 'CLIENTE_ID') String clienteId,
+    @JsonKey(name: 'TIPO') String tipo,
+    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') String deleted,
+  });
 }
 
 /// @nodoc
 class __$$PromoDtoClienteDTOImplCopyWithImpl<$Res>
     extends _$PromoDtoClienteDTOCopyWithImpl<$Res, _$PromoDtoClienteDTOImpl>
     implements _$$PromoDtoClienteDTOImplCopyWith<$Res> {
-  __$$PromoDtoClienteDTOImplCopyWithImpl(_$PromoDtoClienteDTOImpl _value,
-      $Res Function(_$PromoDtoClienteDTOImpl) _then)
-      : super(_value, _then);
+  __$$PromoDtoClienteDTOImplCopyWithImpl(
+    _$PromoDtoClienteDTOImpl _value,
+    $Res Function(_$PromoDtoClienteDTOImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of PromoDtoClienteDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -146,46 +161,54 @@ class __$$PromoDtoClienteDTOImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$PromoDtoClienteDTOImpl(
-      empresaId: null == empresaId
-          ? _value.empresaId
-          : empresaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      promoDtoId: null == promoDtoId
-          ? _value.promoDtoId
-          : promoDtoId // ignore: cast_nullable_to_non_nullable
-              as String,
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      tipo: null == tipo
-          ? _value.tipo
-          : tipo // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$PromoDtoClienteDTOImpl(
+        empresaId:
+            null == empresaId
+                ? _value.empresaId
+                : empresaId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        promoDtoId:
+            null == promoDtoId
+                ? _value.promoDtoId
+                : promoDtoId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        clienteId:
+            null == clienteId
+                ? _value.clienteId
+                : clienteId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        tipo:
+            null == tipo
+                ? _value.tipo
+                : tipo // ignore: cast_nullable_to_non_nullable
+                    as String,
+        lastUpdated:
+            null == lastUpdated
+                ? _value.lastUpdated
+                : lastUpdated // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        deleted:
+            null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$PromoDtoClienteDTOImpl extends _PromoDtoClienteDTO {
-  const _$PromoDtoClienteDTOImpl(
-      {@JsonKey(name: 'EMPRESA_ID') required this.empresaId,
-      @JsonKey(name: 'PROMO_DTO_ID') required this.promoDtoId,
-      @JsonKey(name: 'CLIENTE_ID') required this.clienteId,
-      @JsonKey(name: 'TIPO') required this.tipo,
-      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-      @JsonKey(name: 'DELETED') this.deleted = 'N'})
-      : super._();
+  const _$PromoDtoClienteDTOImpl({
+    @JsonKey(name: 'EMPRESA_ID') required this.empresaId,
+    @JsonKey(name: 'PROMO_DTO_ID') required this.promoDtoId,
+    @JsonKey(name: 'CLIENTE_ID') required this.clienteId,
+    @JsonKey(name: 'TIPO') required this.tipo,
+    @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+    @JsonKey(name: 'DELETED') this.deleted = 'N',
+  }) : super._();
 
   factory _$PromoDtoClienteDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$PromoDtoClienteDTOImplFromJson(json);
@@ -233,8 +256,15 @@ class _$PromoDtoClienteDTOImpl extends _PromoDtoClienteDTO {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, empresaId, promoDtoId, clienteId,
-      tipo, lastUpdated, deleted);
+  int get hashCode => Object.hash(
+    runtimeType,
+    empresaId,
+    promoDtoId,
+    clienteId,
+    tipo,
+    lastUpdated,
+    deleted,
+  );
 
   /// Create a copy of PromoDtoClienteDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -243,25 +273,25 @@ class _$PromoDtoClienteDTOImpl extends _PromoDtoClienteDTO {
   @pragma('vm:prefer-inline')
   _$$PromoDtoClienteDTOImplCopyWith<_$PromoDtoClienteDTOImpl> get copyWith =>
       __$$PromoDtoClienteDTOImplCopyWithImpl<_$PromoDtoClienteDTOImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PromoDtoClienteDTOImplToJson(
-      this,
-    );
+    return _$$PromoDtoClienteDTOImplToJson(this);
   }
 }
 
 abstract class _PromoDtoClienteDTO extends PromoDtoClienteDTO {
-  const factory _PromoDtoClienteDTO(
-          {@JsonKey(name: 'EMPRESA_ID') required final String empresaId,
-          @JsonKey(name: 'PROMO_DTO_ID') required final String promoDtoId,
-          @JsonKey(name: 'CLIENTE_ID') required final String clienteId,
-          @JsonKey(name: 'TIPO') required final String tipo,
-          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-          @JsonKey(name: 'DELETED') final String deleted}) =
-      _$PromoDtoClienteDTOImpl;
+  const factory _PromoDtoClienteDTO({
+    @JsonKey(name: 'EMPRESA_ID') required final String empresaId,
+    @JsonKey(name: 'PROMO_DTO_ID') required final String promoDtoId,
+    @JsonKey(name: 'CLIENTE_ID') required final String clienteId,
+    @JsonKey(name: 'TIPO') required final String tipo,
+    @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') final String deleted,
+  }) = _$PromoDtoClienteDTOImpl;
   const _PromoDtoClienteDTO._() : super._();
 
   factory _PromoDtoClienteDTO.fromJson(Map<String, dynamic> json) =

@@ -13,14 +13,15 @@ String _$expedicionRepositoryHash() =>
 @ProviderFor(expedicionRepository)
 final expedicionRepositoryProvider =
     AutoDisposeProvider<ExpedicionRepository>.internal(
-  expedicionRepository,
-  name: r'expedicionRepositoryProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$expedicionRepositoryHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      expedicionRepository,
+      name: r'expedicionRepositoryProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$expedicionRepositoryHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element

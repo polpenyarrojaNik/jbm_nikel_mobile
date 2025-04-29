@@ -12,7 +12,8 @@ part of 'cliente_direccion_edit_page_data.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ClienteDireccionEditPageData {
@@ -24,16 +25,19 @@ mixin _$ClienteDireccionEditPageData {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   $ClienteDireccionEditPageDataCopyWith<ClienteDireccionEditPageData>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ClienteDireccionEditPageDataCopyWith<$Res> {
   factory $ClienteDireccionEditPageDataCopyWith(
-          ClienteDireccionEditPageData value,
-          $Res Function(ClienteDireccionEditPageData) then) =
-      _$ClienteDireccionEditPageDataCopyWithImpl<$Res,
-          ClienteDireccionEditPageData>;
+    ClienteDireccionEditPageData value,
+    $Res Function(ClienteDireccionEditPageData) then,
+  ) =
+      _$ClienteDireccionEditPageDataCopyWithImpl<
+        $Res,
+        ClienteDireccionEditPageData
+      >;
   @useResult
   $Res call({ClienteDireccion? clienteDireccion, bool isSent, Object? error});
 
@@ -41,8 +45,10 @@ abstract class $ClienteDireccionEditPageDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ClienteDireccionEditPageDataCopyWithImpl<$Res,
-        $Val extends ClienteDireccionEditPageData>
+class _$ClienteDireccionEditPageDataCopyWithImpl<
+  $Res,
+  $Val extends ClienteDireccionEditPageData
+>
     implements $ClienteDireccionEditPageDataCopyWith<$Res> {
   _$ClienteDireccionEditPageDataCopyWithImpl(this._value, this._then);
 
@@ -60,17 +66,22 @@ class _$ClienteDireccionEditPageDataCopyWithImpl<$Res,
     Object? isSent = null,
     Object? error = freezed,
   }) {
-    return _then(_value.copyWith(
-      clienteDireccion: freezed == clienteDireccion
-          ? _value.clienteDireccion
-          : clienteDireccion // ignore: cast_nullable_to_non_nullable
-              as ClienteDireccion?,
-      isSent: null == isSent
-          ? _value.isSent
-          : isSent // ignore: cast_nullable_to_non_nullable
-              as bool,
-      error: freezed == error ? _value.error : error,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            clienteDireccion:
+                freezed == clienteDireccion
+                    ? _value.clienteDireccion
+                    : clienteDireccion // ignore: cast_nullable_to_non_nullable
+                        as ClienteDireccion?,
+            isSent:
+                null == isSent
+                    ? _value.isSent
+                    : isSent // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            error: freezed == error ? _value.error : error,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of ClienteDireccionEditPageData
@@ -92,9 +103,9 @@ class _$ClienteDireccionEditPageDataCopyWithImpl<$Res,
 abstract class _$$ClienteDireccionEditPageDataImplCopyWith<$Res>
     implements $ClienteDireccionEditPageDataCopyWith<$Res> {
   factory _$$ClienteDireccionEditPageDataImplCopyWith(
-          _$ClienteDireccionEditPageDataImpl value,
-          $Res Function(_$ClienteDireccionEditPageDataImpl) then) =
-      __$$ClienteDireccionEditPageDataImplCopyWithImpl<$Res>;
+    _$ClienteDireccionEditPageDataImpl value,
+    $Res Function(_$ClienteDireccionEditPageDataImpl) then,
+  ) = __$$ClienteDireccionEditPageDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({ClienteDireccion? clienteDireccion, bool isSent, Object? error});
@@ -105,13 +116,16 @@ abstract class _$$ClienteDireccionEditPageDataImplCopyWith<$Res>
 
 /// @nodoc
 class __$$ClienteDireccionEditPageDataImplCopyWithImpl<$Res>
-    extends _$ClienteDireccionEditPageDataCopyWithImpl<$Res,
-        _$ClienteDireccionEditPageDataImpl>
+    extends
+        _$ClienteDireccionEditPageDataCopyWithImpl<
+          $Res,
+          _$ClienteDireccionEditPageDataImpl
+        >
     implements _$$ClienteDireccionEditPageDataImplCopyWith<$Res> {
   __$$ClienteDireccionEditPageDataImplCopyWithImpl(
-      _$ClienteDireccionEditPageDataImpl _value,
-      $Res Function(_$ClienteDireccionEditPageDataImpl) _then)
-      : super(_value, _then);
+    _$ClienteDireccionEditPageDataImpl _value,
+    $Res Function(_$ClienteDireccionEditPageDataImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ClienteDireccionEditPageData
   /// with the given fields replaced by the non-null parameter values.
@@ -122,26 +136,32 @@ class __$$ClienteDireccionEditPageDataImplCopyWithImpl<$Res>
     Object? isSent = null,
     Object? error = freezed,
   }) {
-    return _then(_$ClienteDireccionEditPageDataImpl(
-      clienteDireccion: freezed == clienteDireccion
-          ? _value.clienteDireccion
-          : clienteDireccion // ignore: cast_nullable_to_non_nullable
-              as ClienteDireccion?,
-      isSent: null == isSent
-          ? _value.isSent
-          : isSent // ignore: cast_nullable_to_non_nullable
-              as bool,
-      error: freezed == error ? _value.error : error,
-    ));
+    return _then(
+      _$ClienteDireccionEditPageDataImpl(
+        clienteDireccion:
+            freezed == clienteDireccion
+                ? _value.clienteDireccion
+                : clienteDireccion // ignore: cast_nullable_to_non_nullable
+                    as ClienteDireccion?,
+        isSent:
+            null == isSent
+                ? _value.isSent
+                : isSent // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        error: freezed == error ? _value.error : error,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ClienteDireccionEditPageDataImpl extends _ClienteDireccionEditPageData {
-  const _$ClienteDireccionEditPageDataImpl(
-      {required this.clienteDireccion, required this.isSent, this.error})
-      : super._();
+  const _$ClienteDireccionEditPageDataImpl({
+    required this.clienteDireccion,
+    required this.isSent,
+    this.error,
+  }) : super._();
 
   @override
   final ClienteDireccion? clienteDireccion;
@@ -167,8 +187,12 @@ class _$ClienteDireccionEditPageDataImpl extends _ClienteDireccionEditPageData {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, clienteDireccion, isSent,
-      const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(
+    runtimeType,
+    clienteDireccion,
+    isSent,
+    const DeepCollectionEquality().hash(error),
+  );
 
   /// Create a copy of ClienteDireccionEditPageData
   /// with the given fields replaced by the non-null parameter values.
@@ -176,17 +200,20 @@ class _$ClienteDireccionEditPageDataImpl extends _ClienteDireccionEditPageData {
   @override
   @pragma('vm:prefer-inline')
   _$$ClienteDireccionEditPageDataImplCopyWith<
-          _$ClienteDireccionEditPageDataImpl>
-      get copyWith => __$$ClienteDireccionEditPageDataImplCopyWithImpl<
-          _$ClienteDireccionEditPageDataImpl>(this, _$identity);
+    _$ClienteDireccionEditPageDataImpl
+  >
+  get copyWith => __$$ClienteDireccionEditPageDataImplCopyWithImpl<
+    _$ClienteDireccionEditPageDataImpl
+  >(this, _$identity);
 }
 
 abstract class _ClienteDireccionEditPageData
     extends ClienteDireccionEditPageData {
-  const factory _ClienteDireccionEditPageData(
-      {required final ClienteDireccion? clienteDireccion,
-      required final bool isSent,
-      final Object? error}) = _$ClienteDireccionEditPageDataImpl;
+  const factory _ClienteDireccionEditPageData({
+    required final ClienteDireccion? clienteDireccion,
+    required final bool isSent,
+    final Object? error,
+  }) = _$ClienteDireccionEditPageDataImpl;
   const _ClienteDireccionEditPageData._() : super._();
 
   @override
@@ -201,6 +228,7 @@ abstract class _ClienteDireccionEditPageData
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClienteDireccionEditPageDataImplCopyWith<
-          _$ClienteDireccionEditPageDataImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$ClienteDireccionEditPageDataImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }

@@ -43,9 +43,7 @@ class ClienteDevolucionDetallePage extends StatelessWidget {
                 ],
               ),
             ),
-            DevolucionLineaContainer(
-              devolucionId: devolucion.id,
-            ),
+            DevolucionLineaContainer(devolucionId: devolucion.id),
           ],
         ),
       ),
@@ -76,7 +74,7 @@ class ClienteInfoContainer extends StatelessWidget {
             ChipContainer(
               text: devolucion.devolucionEstado.descripcion,
               color: Colors.grey.withValues(alpha: 0.25),
-            )
+            ),
           ],
         ),
         gapH4,
@@ -99,11 +97,12 @@ class ClienteInfoContainer extends StatelessWidget {
         ),
         Text(
           formatCustomerAddress(
-              devolucion.direccionRecogida1,
-              devolucion.codigoPostal,
-              devolucion.poblacion,
-              null,
-              devolucion.pais),
+            devolucion.direccionRecogida1,
+            devolucion.codigoPostal,
+            devolucion.poblacion,
+            null,
+            devolucion.pais,
+          ),
           style: Theme.of(context).textTheme.bodySmall,
         ),
       ],
@@ -160,21 +159,24 @@ class DevolucionLineaContainer extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         MobileCustomSeparators(
-            separatorTitle:
-                S.of(context).pedido_show_pedidoVentaDetalle_lineas),
+          separatorTitle: S.of(context).pedido_show_pedidoVentaDetalle_lineas,
+        ),
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: state.when(
-            data: (devolucionLineasList) => ListView.separated(
-                shrinkWrap: true,
-                itemBuilder: (context, i) => ClienteDevolucionLineaListTile(
-                      devolucionLinea: devolucionLineasList[i],
-                    ),
-                separatorBuilder: (context, i) => const Divider(),
-                itemCount: devolucionLineasList.length),
-            error: (error, _) => Center(
-              child: ErrorMessageWidget(error.toString()),
-            ),
+            data:
+                (devolucionLineasList) => ListView.separated(
+                  shrinkWrap: true,
+                  itemBuilder:
+                      (context, i) => ClienteDevolucionLineaListTile(
+                        devolucionLinea: devolucionLineasList[i],
+                      ),
+                  separatorBuilder: (context, i) => const Divider(),
+                  itemCount: devolucionLineasList.length,
+                ),
+            error:
+                (error, _) =>
+                    Center(child: ErrorMessageWidget(error.toString())),
             loading: () => const Center(child: ProgressIndicatorWidget()),
           ),
         ),

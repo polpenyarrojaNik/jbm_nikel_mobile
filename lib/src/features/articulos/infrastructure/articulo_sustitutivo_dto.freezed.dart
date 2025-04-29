@@ -12,10 +12,12 @@ part of 'articulo_sustitutivo_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ArticuloSustitutivoDTO _$ArticuloSustitutivoDTOFromJson(
-    Map<String, dynamic> json) {
+  Map<String, dynamic> json,
+) {
   return _ArticuloSustitutivoDTO.fromJson(json);
 }
 
@@ -44,21 +46,25 @@ mixin _$ArticuloSustitutivoDTO {
 
 /// @nodoc
 abstract class $ArticuloSustitutivoDTOCopyWith<$Res> {
-  factory $ArticuloSustitutivoDTOCopyWith(ArticuloSustitutivoDTO value,
-          $Res Function(ArticuloSustitutivoDTO) then) =
-      _$ArticuloSustitutivoDTOCopyWithImpl<$Res, ArticuloSustitutivoDTO>;
+  factory $ArticuloSustitutivoDTOCopyWith(
+    ArticuloSustitutivoDTO value,
+    $Res Function(ArticuloSustitutivoDTO) then,
+  ) = _$ArticuloSustitutivoDTOCopyWithImpl<$Res, ArticuloSustitutivoDTO>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'ARTICULO_ID') String articuloId,
-      @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO') String articuloSustitutivoId,
-      @JsonKey(name: 'ORDEN') int orden,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+  $Res call({
+    @JsonKey(name: 'ARTICULO_ID') String articuloId,
+    @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO') String articuloSustitutivoId,
+    @JsonKey(name: 'ORDEN') int orden,
+    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') String deleted,
+  });
 }
 
 /// @nodoc
-class _$ArticuloSustitutivoDTOCopyWithImpl<$Res,
-        $Val extends ArticuloSustitutivoDTO>
+class _$ArticuloSustitutivoDTOCopyWithImpl<
+  $Res,
+  $Val extends ArticuloSustitutivoDTO
+>
     implements $ArticuloSustitutivoDTOCopyWith<$Res> {
   _$ArticuloSustitutivoDTOCopyWithImpl(this._value, this._then);
 
@@ -78,28 +84,36 @@ class _$ArticuloSustitutivoDTOCopyWithImpl<$Res,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_value.copyWith(
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articuloSustitutivoId: null == articuloSustitutivoId
-          ? _value.articuloSustitutivoId
-          : articuloSustitutivoId // ignore: cast_nullable_to_non_nullable
-              as String,
-      orden: null == orden
-          ? _value.orden
-          : orden // ignore: cast_nullable_to_non_nullable
-              as int,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            articuloId:
+                null == articuloId
+                    ? _value.articuloId
+                    : articuloId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            articuloSustitutivoId:
+                null == articuloSustitutivoId
+                    ? _value.articuloSustitutivoId
+                    : articuloSustitutivoId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            orden:
+                null == orden
+                    ? _value.orden
+                    : orden // ignore: cast_nullable_to_non_nullable
+                        as int,
+            lastUpdated:
+                null == lastUpdated
+                    ? _value.lastUpdated
+                    : lastUpdated // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            deleted:
+                null == deleted
+                    ? _value.deleted
+                    : deleted // ignore: cast_nullable_to_non_nullable
+                        as String,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -107,28 +121,29 @@ class _$ArticuloSustitutivoDTOCopyWithImpl<$Res,
 abstract class _$$ArticuloSustitutivoDTOImplCopyWith<$Res>
     implements $ArticuloSustitutivoDTOCopyWith<$Res> {
   factory _$$ArticuloSustitutivoDTOImplCopyWith(
-          _$ArticuloSustitutivoDTOImpl value,
-          $Res Function(_$ArticuloSustitutivoDTOImpl) then) =
-      __$$ArticuloSustitutivoDTOImplCopyWithImpl<$Res>;
+    _$ArticuloSustitutivoDTOImpl value,
+    $Res Function(_$ArticuloSustitutivoDTOImpl) then,
+  ) = __$$ArticuloSustitutivoDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'ARTICULO_ID') String articuloId,
-      @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO') String articuloSustitutivoId,
-      @JsonKey(name: 'ORDEN') int orden,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+  $Res call({
+    @JsonKey(name: 'ARTICULO_ID') String articuloId,
+    @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO') String articuloSustitutivoId,
+    @JsonKey(name: 'ORDEN') int orden,
+    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') String deleted,
+  });
 }
 
 /// @nodoc
 class __$$ArticuloSustitutivoDTOImplCopyWithImpl<$Res>
-    extends _$ArticuloSustitutivoDTOCopyWithImpl<$Res,
-        _$ArticuloSustitutivoDTOImpl>
+    extends
+        _$ArticuloSustitutivoDTOCopyWithImpl<$Res, _$ArticuloSustitutivoDTOImpl>
     implements _$$ArticuloSustitutivoDTOImplCopyWith<$Res> {
   __$$ArticuloSustitutivoDTOImplCopyWithImpl(
-      _$ArticuloSustitutivoDTOImpl _value,
-      $Res Function(_$ArticuloSustitutivoDTOImpl) _then)
-      : super(_value, _then);
+    _$ArticuloSustitutivoDTOImpl _value,
+    $Res Function(_$ArticuloSustitutivoDTOImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ArticuloSustitutivoDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -141,42 +156,49 @@ class __$$ArticuloSustitutivoDTOImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$ArticuloSustitutivoDTOImpl(
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articuloSustitutivoId: null == articuloSustitutivoId
-          ? _value.articuloSustitutivoId
-          : articuloSustitutivoId // ignore: cast_nullable_to_non_nullable
-              as String,
-      orden: null == orden
-          ? _value.orden
-          : orden // ignore: cast_nullable_to_non_nullable
-              as int,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$ArticuloSustitutivoDTOImpl(
+        articuloId:
+            null == articuloId
+                ? _value.articuloId
+                : articuloId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        articuloSustitutivoId:
+            null == articuloSustitutivoId
+                ? _value.articuloSustitutivoId
+                : articuloSustitutivoId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        orden:
+            null == orden
+                ? _value.orden
+                : orden // ignore: cast_nullable_to_non_nullable
+                    as int,
+        lastUpdated:
+            null == lastUpdated
+                ? _value.lastUpdated
+                : lastUpdated // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        deleted:
+            null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ArticuloSustitutivoDTOImpl extends _ArticuloSustitutivoDTO {
-  const _$ArticuloSustitutivoDTOImpl(
-      {@JsonKey(name: 'ARTICULO_ID') required this.articuloId,
-      @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO')
-      required this.articuloSustitutivoId,
-      @JsonKey(name: 'ORDEN') required this.orden,
-      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-      @JsonKey(name: 'DELETED') this.deleted = 'N'})
-      : super._();
+  const _$ArticuloSustitutivoDTOImpl({
+    @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
+    @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO')
+    required this.articuloSustitutivoId,
+    @JsonKey(name: 'ORDEN') required this.orden,
+    @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+    @JsonKey(name: 'DELETED') this.deleted = 'N',
+  }) : super._();
 
   factory _$ArticuloSustitutivoDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ArticuloSustitutivoDTOImplFromJson(json);
@@ -219,8 +241,14 @@ class _$ArticuloSustitutivoDTOImpl extends _ArticuloSustitutivoDTO {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, articuloId,
-      articuloSustitutivoId, orden, lastUpdated, deleted);
+  int get hashCode => Object.hash(
+    runtimeType,
+    articuloId,
+    articuloSustitutivoId,
+    orden,
+    lastUpdated,
+    deleted,
+  );
 
   /// Create a copy of ArticuloSustitutivoDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -228,26 +256,27 @@ class _$ArticuloSustitutivoDTOImpl extends _ArticuloSustitutivoDTO {
   @override
   @pragma('vm:prefer-inline')
   _$$ArticuloSustitutivoDTOImplCopyWith<_$ArticuloSustitutivoDTOImpl>
-      get copyWith => __$$ArticuloSustitutivoDTOImplCopyWithImpl<
-          _$ArticuloSustitutivoDTOImpl>(this, _$identity);
+  get copyWith =>
+      __$$ArticuloSustitutivoDTOImplCopyWithImpl<_$ArticuloSustitutivoDTOImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ArticuloSustitutivoDTOImplToJson(
-      this,
-    );
+    return _$$ArticuloSustitutivoDTOImplToJson(this);
   }
 }
 
 abstract class _ArticuloSustitutivoDTO extends ArticuloSustitutivoDTO {
-  const factory _ArticuloSustitutivoDTO(
-          {@JsonKey(name: 'ARTICULO_ID') required final String articuloId,
-          @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO')
-          required final String articuloSustitutivoId,
-          @JsonKey(name: 'ORDEN') required final int orden,
-          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-          @JsonKey(name: 'DELETED') final String deleted}) =
-      _$ArticuloSustitutivoDTOImpl;
+  const factory _ArticuloSustitutivoDTO({
+    @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
+    @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO')
+    required final String articuloSustitutivoId,
+    @JsonKey(name: 'ORDEN') required final int orden,
+    @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') final String deleted,
+  }) = _$ArticuloSustitutivoDTOImpl;
   const _ArticuloSustitutivoDTO._() : super._();
 
   factory _ArticuloSustitutivoDTO.fromJson(Map<String, dynamic> json) =
@@ -274,5 +303,5 @@ abstract class _ArticuloSustitutivoDTO extends ArticuloSustitutivoDTO {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ArticuloSustitutivoDTOImplCopyWith<_$ArticuloSustitutivoDTOImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }

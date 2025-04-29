@@ -4,12 +4,13 @@ import '../../domain/pais.dart';
 import '../../helpers/formatters.dart';
 
 class AddressTextWidget extends StatelessWidget {
-  const AddressTextWidget(
-      {super.key,
-      required this.codigoPostal,
-      required this.poblacion,
-      required this.provincia,
-      required this.pais});
+  const AddressTextWidget({
+    super.key,
+    required this.codigoPostal,
+    required this.poblacion,
+    required this.provincia,
+    required this.pais,
+  });
 
   final String? codigoPostal;
   final String? poblacion;
@@ -29,19 +30,16 @@ class AddressTextWidget extends StatelessWidget {
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
           style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                color: Theme.of(context).textTheme.bodySmall!.color,
-              ),
+            color: Theme.of(context).textTheme.bodySmall!.color,
+          ),
         ),
         Text(
-          formatProvinciaAndPais(
-            province: provincia,
-            pais: pais,
-          ),
+          formatProvinciaAndPais(province: provincia, pais: pais),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
           style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                color: Theme.of(context).textTheme.bodySmall!.color,
-              ),
+            color: Theme.of(context).textTheme.bodySmall!.color,
+          ),
         ),
       ],
     );

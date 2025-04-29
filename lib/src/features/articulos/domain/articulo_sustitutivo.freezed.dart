@@ -12,7 +12,8 @@ part of 'articulo_sustitutivo.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ArticuloSustitutivo {
@@ -35,17 +36,19 @@ mixin _$ArticuloSustitutivo {
 /// @nodoc
 abstract class $ArticuloSustitutivoCopyWith<$Res> {
   factory $ArticuloSustitutivoCopyWith(
-          ArticuloSustitutivo value, $Res Function(ArticuloSustitutivo) then) =
-      _$ArticuloSustitutivoCopyWithImpl<$Res, ArticuloSustitutivo>;
+    ArticuloSustitutivo value,
+    $Res Function(ArticuloSustitutivo) then,
+  ) = _$ArticuloSustitutivoCopyWithImpl<$Res, ArticuloSustitutivo>;
   @useResult
-  $Res call(
-      {String articuloId,
-      String articuloSustitutivoId,
-      String articuloSustitutivoDescription,
-      int orden,
-      int stockDisponible,
-      DateTime lastUpdated,
-      bool deleted});
+  $Res call({
+    String articuloId,
+    String articuloSustitutivoId,
+    String articuloSustitutivoDescription,
+    int orden,
+    int stockDisponible,
+    DateTime lastUpdated,
+    bool deleted,
+  });
 }
 
 /// @nodoc
@@ -71,64 +74,77 @@ class _$ArticuloSustitutivoCopyWithImpl<$Res, $Val extends ArticuloSustitutivo>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_value.copyWith(
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articuloSustitutivoId: null == articuloSustitutivoId
-          ? _value.articuloSustitutivoId
-          : articuloSustitutivoId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articuloSustitutivoDescription: null == articuloSustitutivoDescription
-          ? _value.articuloSustitutivoDescription
-          : articuloSustitutivoDescription // ignore: cast_nullable_to_non_nullable
-              as String,
-      orden: null == orden
-          ? _value.orden
-          : orden // ignore: cast_nullable_to_non_nullable
-              as int,
-      stockDisponible: null == stockDisponible
-          ? _value.stockDisponible
-          : stockDisponible // ignore: cast_nullable_to_non_nullable
-              as int,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            articuloId:
+                null == articuloId
+                    ? _value.articuloId
+                    : articuloId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            articuloSustitutivoId:
+                null == articuloSustitutivoId
+                    ? _value.articuloSustitutivoId
+                    : articuloSustitutivoId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            articuloSustitutivoDescription:
+                null == articuloSustitutivoDescription
+                    ? _value.articuloSustitutivoDescription
+                    : articuloSustitutivoDescription // ignore: cast_nullable_to_non_nullable
+                        as String,
+            orden:
+                null == orden
+                    ? _value.orden
+                    : orden // ignore: cast_nullable_to_non_nullable
+                        as int,
+            stockDisponible:
+                null == stockDisponible
+                    ? _value.stockDisponible
+                    : stockDisponible // ignore: cast_nullable_to_non_nullable
+                        as int,
+            lastUpdated:
+                null == lastUpdated
+                    ? _value.lastUpdated
+                    : lastUpdated // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            deleted:
+                null == deleted
+                    ? _value.deleted
+                    : deleted // ignore: cast_nullable_to_non_nullable
+                        as bool,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$ArticuloSustitutivoImplCopyWith<$Res>
     implements $ArticuloSustitutivoCopyWith<$Res> {
-  factory _$$ArticuloSustitutivoImplCopyWith(_$ArticuloSustitutivoImpl value,
-          $Res Function(_$ArticuloSustitutivoImpl) then) =
-      __$$ArticuloSustitutivoImplCopyWithImpl<$Res>;
+  factory _$$ArticuloSustitutivoImplCopyWith(
+    _$ArticuloSustitutivoImpl value,
+    $Res Function(_$ArticuloSustitutivoImpl) then,
+  ) = __$$ArticuloSustitutivoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String articuloId,
-      String articuloSustitutivoId,
-      String articuloSustitutivoDescription,
-      int orden,
-      int stockDisponible,
-      DateTime lastUpdated,
-      bool deleted});
+  $Res call({
+    String articuloId,
+    String articuloSustitutivoId,
+    String articuloSustitutivoDescription,
+    int orden,
+    int stockDisponible,
+    DateTime lastUpdated,
+    bool deleted,
+  });
 }
 
 /// @nodoc
 class __$$ArticuloSustitutivoImplCopyWithImpl<$Res>
     extends _$ArticuloSustitutivoCopyWithImpl<$Res, _$ArticuloSustitutivoImpl>
     implements _$$ArticuloSustitutivoImplCopyWith<$Res> {
-  __$$ArticuloSustitutivoImplCopyWithImpl(_$ArticuloSustitutivoImpl _value,
-      $Res Function(_$ArticuloSustitutivoImpl) _then)
-      : super(_value, _then);
+  __$$ArticuloSustitutivoImplCopyWithImpl(
+    _$ArticuloSustitutivoImpl _value,
+    $Res Function(_$ArticuloSustitutivoImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ArticuloSustitutivo
   /// with the given fields replaced by the non-null parameter values.
@@ -143,51 +159,60 @@ class __$$ArticuloSustitutivoImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$ArticuloSustitutivoImpl(
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articuloSustitutivoId: null == articuloSustitutivoId
-          ? _value.articuloSustitutivoId
-          : articuloSustitutivoId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articuloSustitutivoDescription: null == articuloSustitutivoDescription
-          ? _value.articuloSustitutivoDescription
-          : articuloSustitutivoDescription // ignore: cast_nullable_to_non_nullable
-              as String,
-      orden: null == orden
-          ? _value.orden
-          : orden // ignore: cast_nullable_to_non_nullable
-              as int,
-      stockDisponible: null == stockDisponible
-          ? _value.stockDisponible
-          : stockDisponible // ignore: cast_nullable_to_non_nullable
-              as int,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$ArticuloSustitutivoImpl(
+        articuloId:
+            null == articuloId
+                ? _value.articuloId
+                : articuloId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        articuloSustitutivoId:
+            null == articuloSustitutivoId
+                ? _value.articuloSustitutivoId
+                : articuloSustitutivoId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        articuloSustitutivoDescription:
+            null == articuloSustitutivoDescription
+                ? _value.articuloSustitutivoDescription
+                : articuloSustitutivoDescription // ignore: cast_nullable_to_non_nullable
+                    as String,
+        orden:
+            null == orden
+                ? _value.orden
+                : orden // ignore: cast_nullable_to_non_nullable
+                    as int,
+        stockDisponible:
+            null == stockDisponible
+                ? _value.stockDisponible
+                : stockDisponible // ignore: cast_nullable_to_non_nullable
+                    as int,
+        lastUpdated:
+            null == lastUpdated
+                ? _value.lastUpdated
+                : lastUpdated // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        deleted:
+            null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                    as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ArticuloSustitutivoImpl extends _ArticuloSustitutivo {
-  const _$ArticuloSustitutivoImpl(
-      {required this.articuloId,
-      required this.articuloSustitutivoId,
-      required this.articuloSustitutivoDescription,
-      required this.orden,
-      required this.stockDisponible,
-      required this.lastUpdated,
-      required this.deleted})
-      : super._();
+  const _$ArticuloSustitutivoImpl({
+    required this.articuloId,
+    required this.articuloSustitutivoId,
+    required this.articuloSustitutivoDescription,
+    required this.orden,
+    required this.stockDisponible,
+    required this.lastUpdated,
+    required this.deleted,
+  }) : super._();
 
   @override
   final String articuloId;
@@ -218,8 +243,10 @@ class _$ArticuloSustitutivoImpl extends _ArticuloSustitutivo {
                 other.articuloId == articuloId) &&
             (identical(other.articuloSustitutivoId, articuloSustitutivoId) ||
                 other.articuloSustitutivoId == articuloSustitutivoId) &&
-            (identical(other.articuloSustitutivoDescription,
-                    articuloSustitutivoDescription) ||
+            (identical(
+                  other.articuloSustitutivoDescription,
+                  articuloSustitutivoDescription,
+                ) ||
                 other.articuloSustitutivoDescription ==
                     articuloSustitutivoDescription) &&
             (identical(other.orden, orden) || other.orden == orden) &&
@@ -232,14 +259,15 @@ class _$ArticuloSustitutivoImpl extends _ArticuloSustitutivo {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      articuloId,
-      articuloSustitutivoId,
-      articuloSustitutivoDescription,
-      orden,
-      stockDisponible,
-      lastUpdated,
-      deleted);
+    runtimeType,
+    articuloId,
+    articuloSustitutivoId,
+    articuloSustitutivoDescription,
+    orden,
+    stockDisponible,
+    lastUpdated,
+    deleted,
+  );
 
   /// Create a copy of ArticuloSustitutivo
   /// with the given fields replaced by the non-null parameter values.
@@ -248,18 +276,21 @@ class _$ArticuloSustitutivoImpl extends _ArticuloSustitutivo {
   @pragma('vm:prefer-inline')
   _$$ArticuloSustitutivoImplCopyWith<_$ArticuloSustitutivoImpl> get copyWith =>
       __$$ArticuloSustitutivoImplCopyWithImpl<_$ArticuloSustitutivoImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _ArticuloSustitutivo extends ArticuloSustitutivo {
-  const factory _ArticuloSustitutivo(
-      {required final String articuloId,
-      required final String articuloSustitutivoId,
-      required final String articuloSustitutivoDescription,
-      required final int orden,
-      required final int stockDisponible,
-      required final DateTime lastUpdated,
-      required final bool deleted}) = _$ArticuloSustitutivoImpl;
+  const factory _ArticuloSustitutivo({
+    required final String articuloId,
+    required final String articuloSustitutivoId,
+    required final String articuloSustitutivoDescription,
+    required final int orden,
+    required final int stockDisponible,
+    required final DateTime lastUpdated,
+    required final bool deleted,
+  }) = _$ArticuloSustitutivoImpl;
   const _ArticuloSustitutivo._() : super._();
 
   @override

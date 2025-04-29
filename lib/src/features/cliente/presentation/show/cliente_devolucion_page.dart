@@ -13,8 +13,11 @@ import 'cliente_devolucion_list_tile.dart';
 
 @RoutePage()
 class ClienteDevolucionPage extends ConsumerWidget {
-  const ClienteDevolucionPage(
-      {super.key, required this.clienteId, required this.nombreCliente});
+  const ClienteDevolucionPage({
+    super.key,
+    required this.clienteId,
+    required this.nombreCliente,
+  });
 
   final String clienteId;
   final String? nombreCliente;
@@ -36,25 +39,28 @@ class ClienteDevolucionPage extends ConsumerWidget {
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data: (clienteDevolucionList) => (clienteDevolucionList.isNotEmpty)
-                ? Expanded(
-                    child: ListView.separated(
-                      itemBuilder: (context, i) => Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                        child: ClienteDevolucionListTile(
-                          devolucion: clienteDevolucionList[i],
+            data:
+                (clienteDevolucionList) =>
+                    (clienteDevolucionList.isNotEmpty)
+                        ? Expanded(
+                          child: ListView.separated(
+                            itemBuilder:
+                                (context, i) => Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 16.0,
+                                  ),
+                                  child: ClienteDevolucionListTile(
+                                    devolucion: clienteDevolucionList[i],
+                                  ),
+                                ),
+                            separatorBuilder: (context, i) => const Divider(),
+                            itemCount: clienteDevolucionList.length,
+                          ),
+                        )
+                        : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [Text(S.of(context).sinResultados)],
                         ),
-                      ),
-                      separatorBuilder: (context, i) => const Divider(),
-                      itemCount: clienteDevolucionList.length,
-                    ),
-                  )
-                : Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(S.of(context).sinResultados),
-                    ],
-                  ),
           ),
         ],
       ),

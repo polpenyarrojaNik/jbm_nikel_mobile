@@ -22,32 +22,31 @@ class PaisSearchDialog extends ConsumerWidget {
         isSearchingFirst: true,
         title: S.of(context).search,
         searchTitle: S.of(context).search,
-        onChanged: (searchText) => _debouncer.run(
-          () => ref.read(paisesSearchQueryStateProvider.notifier).state =
-              searchText,
-        ),
+        onChanged:
+            (searchText) => _debouncer.run(
+              () =>
+                  ref.read(paisesSearchQueryStateProvider.notifier).state =
+                      searchText,
+            ),
       ),
       content: SizedBox(
         height: double.maxFinite,
         width: double.maxFinite,
         child: state.when(
-          data: (paisList) => ListView.separated(
-            shrinkWrap: true,
-            itemBuilder: (context, i) => GestureDetector(
-              onTap: () => context.router.maybePop(
-                paisList[i],
+          data:
+              (paisList) => ListView.separated(
+                shrinkWrap: true,
+                itemBuilder:
+                    (context, i) => GestureDetector(
+                      onTap: () => context.router.maybePop(paisList[i]),
+                      child: Text(paisList[i].descripcion),
+                    ),
+                separatorBuilder: (context, i) => const Divider(),
+                itemCount: paisList.length,
               ),
-              child: Text(paisList[i].descripcion),
-            ),
-            separatorBuilder: (context, i) => const Divider(),
-            itemCount: paisList.length,
-          ),
-          error: (error, _) => Center(
-            child: ErrorMessageWidget(error.toString()),
-          ),
-          loading: () => const Center(
-            child: ProgressIndicatorWidget(),
-          ),
+          error:
+              (error, _) => Center(child: ErrorMessageWidget(error.toString())),
+          loading: () => const Center(child: ProgressIndicatorWidget()),
         ),
       ),
     );

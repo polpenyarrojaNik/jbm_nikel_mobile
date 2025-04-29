@@ -12,7 +12,8 @@ part of 'cliente_imp_param.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ClienteImpParam {
@@ -31,8 +32,9 @@ mixin _$ClienteImpParam {
 /// @nodoc
 abstract class $ClienteImpParamCopyWith<$Res> {
   factory $ClienteImpParamCopyWith(
-          ClienteImpParam value, $Res Function(ClienteImpParam) then) =
-      _$ClienteImpParamCopyWithImpl<$Res, ClienteImpParam>;
+    ClienteImpParam value,
+    $Res Function(ClienteImpParam) then,
+  ) = _$ClienteImpParamCopyWithImpl<$Res, ClienteImpParam>;
   @useResult
   $Res call({String clienteId, String? id, String? impId, Pais? clientePais});
 
@@ -59,24 +61,31 @@ class _$ClienteImpParamCopyWithImpl<$Res, $Val extends ClienteImpParam>
     Object? impId = freezed,
     Object? clientePais = freezed,
   }) {
-    return _then(_value.copyWith(
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      impId: freezed == impId
-          ? _value.impId
-          : impId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      clientePais: freezed == clientePais
-          ? _value.clientePais
-          : clientePais // ignore: cast_nullable_to_non_nullable
-              as Pais?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            clienteId:
+                null == clienteId
+                    ? _value.clienteId
+                    : clienteId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            id:
+                freezed == id
+                    ? _value.id
+                    : id // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            impId:
+                freezed == impId
+                    ? _value.impId
+                    : impId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            clientePais:
+                freezed == clientePais
+                    ? _value.clientePais
+                    : clientePais // ignore: cast_nullable_to_non_nullable
+                        as Pais?,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of ClienteImpParam
@@ -97,9 +106,10 @@ class _$ClienteImpParamCopyWithImpl<$Res, $Val extends ClienteImpParam>
 /// @nodoc
 abstract class _$$ClienteImpParamImplCopyWith<$Res>
     implements $ClienteImpParamCopyWith<$Res> {
-  factory _$$ClienteImpParamImplCopyWith(_$ClienteImpParamImpl value,
-          $Res Function(_$ClienteImpParamImpl) then) =
-      __$$ClienteImpParamImplCopyWithImpl<$Res>;
+  factory _$$ClienteImpParamImplCopyWith(
+    _$ClienteImpParamImpl value,
+    $Res Function(_$ClienteImpParamImpl) then,
+  ) = __$$ClienteImpParamImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String clienteId, String? id, String? impId, Pais? clientePais});
@@ -113,8 +123,9 @@ class __$$ClienteImpParamImplCopyWithImpl<$Res>
     extends _$ClienteImpParamCopyWithImpl<$Res, _$ClienteImpParamImpl>
     implements _$$ClienteImpParamImplCopyWith<$Res> {
   __$$ClienteImpParamImplCopyWithImpl(
-      _$ClienteImpParamImpl _value, $Res Function(_$ClienteImpParamImpl) _then)
-      : super(_value, _then);
+    _$ClienteImpParamImpl _value,
+    $Res Function(_$ClienteImpParamImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ClienteImpParam
   /// with the given fields replaced by the non-null parameter values.
@@ -126,33 +137,41 @@ class __$$ClienteImpParamImplCopyWithImpl<$Res>
     Object? impId = freezed,
     Object? clientePais = freezed,
   }) {
-    return _then(_$ClienteImpParamImpl(
-      null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      impId: freezed == impId
-          ? _value.impId
-          : impId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      clientePais: freezed == clientePais
-          ? _value.clientePais
-          : clientePais // ignore: cast_nullable_to_non_nullable
-              as Pais?,
-    ));
+    return _then(
+      _$ClienteImpParamImpl(
+        null == clienteId
+            ? _value.clienteId
+            : clienteId // ignore: cast_nullable_to_non_nullable
+                as String,
+        id:
+            freezed == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        impId:
+            freezed == impId
+                ? _value.impId
+                : impId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        clientePais:
+            freezed == clientePais
+                ? _value.clientePais
+                : clientePais // ignore: cast_nullable_to_non_nullable
+                    as Pais?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ClienteImpParamImpl extends _ClienteImpParam {
-  const _$ClienteImpParamImpl(this.clienteId,
-      {this.id, this.impId, this.clientePais})
-      : super._();
+  const _$ClienteImpParamImpl(
+    this.clienteId, {
+    this.id,
+    this.impId,
+    this.clientePais,
+  }) : super._();
 
   @override
   final String clienteId;
@@ -192,14 +211,18 @@ class _$ClienteImpParamImpl extends _ClienteImpParam {
   @pragma('vm:prefer-inline')
   _$$ClienteImpParamImplCopyWith<_$ClienteImpParamImpl> get copyWith =>
       __$$ClienteImpParamImplCopyWithImpl<_$ClienteImpParamImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _ClienteImpParam extends ClienteImpParam {
-  const factory _ClienteImpParam(final String clienteId,
-      {final String? id,
-      final String? impId,
-      final Pais? clientePais}) = _$ClienteImpParamImpl;
+  const factory _ClienteImpParam(
+    final String clienteId, {
+    final String? id,
+    final String? impId,
+    final Pais? clientePais,
+  }) = _$ClienteImpParamImpl;
   const _ClienteImpParam._() : super._();
 
   @override

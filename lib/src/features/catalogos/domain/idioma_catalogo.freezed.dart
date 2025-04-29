@@ -12,7 +12,8 @@ part of 'idioma_catalogo.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$IdiomaCatalogo {
@@ -29,8 +30,9 @@ mixin _$IdiomaCatalogo {
 /// @nodoc
 abstract class $IdiomaCatalogoCopyWith<$Res> {
   factory $IdiomaCatalogoCopyWith(
-          IdiomaCatalogo value, $Res Function(IdiomaCatalogo) then) =
-      _$IdiomaCatalogoCopyWithImpl<$Res, IdiomaCatalogo>;
+    IdiomaCatalogo value,
+    $Res Function(IdiomaCatalogo) then,
+  ) = _$IdiomaCatalogoCopyWithImpl<$Res, IdiomaCatalogo>;
   @useResult
   $Res call({String idiomaId, String descripcion});
 }
@@ -49,29 +51,32 @@ class _$IdiomaCatalogoCopyWithImpl<$Res, $Val extends IdiomaCatalogo>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? idiomaId = null,
-    Object? descripcion = null,
-  }) {
-    return _then(_value.copyWith(
-      idiomaId: null == idiomaId
-          ? _value.idiomaId
-          : idiomaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcion: null == descripcion
-          ? _value.descripcion
-          : descripcion // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  $Res call({Object? idiomaId = null, Object? descripcion = null}) {
+    return _then(
+      _value.copyWith(
+            idiomaId:
+                null == idiomaId
+                    ? _value.idiomaId
+                    : idiomaId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            descripcion:
+                null == descripcion
+                    ? _value.descripcion
+                    : descripcion // ignore: cast_nullable_to_non_nullable
+                        as String,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$IdiomaCatalogoImplCopyWith<$Res>
     implements $IdiomaCatalogoCopyWith<$Res> {
-  factory _$$IdiomaCatalogoImplCopyWith(_$IdiomaCatalogoImpl value,
-          $Res Function(_$IdiomaCatalogoImpl) then) =
-      __$$IdiomaCatalogoImplCopyWithImpl<$Res>;
+  factory _$$IdiomaCatalogoImplCopyWith(
+    _$IdiomaCatalogoImpl value,
+    $Res Function(_$IdiomaCatalogoImpl) then,
+  ) = __$$IdiomaCatalogoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String idiomaId, String descripcion});
@@ -82,36 +87,39 @@ class __$$IdiomaCatalogoImplCopyWithImpl<$Res>
     extends _$IdiomaCatalogoCopyWithImpl<$Res, _$IdiomaCatalogoImpl>
     implements _$$IdiomaCatalogoImplCopyWith<$Res> {
   __$$IdiomaCatalogoImplCopyWithImpl(
-      _$IdiomaCatalogoImpl _value, $Res Function(_$IdiomaCatalogoImpl) _then)
-      : super(_value, _then);
+    _$IdiomaCatalogoImpl _value,
+    $Res Function(_$IdiomaCatalogoImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of IdiomaCatalogo
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? idiomaId = null,
-    Object? descripcion = null,
-  }) {
-    return _then(_$IdiomaCatalogoImpl(
-      idiomaId: null == idiomaId
-          ? _value.idiomaId
-          : idiomaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcion: null == descripcion
-          ? _value.descripcion
-          : descripcion // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? idiomaId = null, Object? descripcion = null}) {
+    return _then(
+      _$IdiomaCatalogoImpl(
+        idiomaId:
+            null == idiomaId
+                ? _value.idiomaId
+                : idiomaId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        descripcion:
+            null == descripcion
+                ? _value.descripcion
+                : descripcion // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$IdiomaCatalogoImpl extends _IdiomaCatalogo {
-  const _$IdiomaCatalogoImpl(
-      {required this.idiomaId, required this.descripcion})
-      : super._();
+  const _$IdiomaCatalogoImpl({
+    required this.idiomaId,
+    required this.descripcion,
+  }) : super._();
 
   @override
   final String idiomaId;
@@ -144,13 +152,16 @@ class _$IdiomaCatalogoImpl extends _IdiomaCatalogo {
   @pragma('vm:prefer-inline')
   _$$IdiomaCatalogoImplCopyWith<_$IdiomaCatalogoImpl> get copyWith =>
       __$$IdiomaCatalogoImplCopyWithImpl<_$IdiomaCatalogoImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _IdiomaCatalogo extends IdiomaCatalogo {
-  const factory _IdiomaCatalogo(
-      {required final String idiomaId,
-      required final String descripcion}) = _$IdiomaCatalogoImpl;
+  const factory _IdiomaCatalogo({
+    required final String idiomaId,
+    required final String descripcion,
+  }) = _$IdiomaCatalogoImpl;
   const _IdiomaCatalogo._() : super._();
 
   @override

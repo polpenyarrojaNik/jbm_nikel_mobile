@@ -56,81 +56,94 @@ class _ClienteDireccionEditPageState
   @override
   Widget build(BuildContext context) {
     final value = ref.watch(
-        clienteDireccionEditPageControllerProvider(widget.clienteImpParam));
+      clienteDireccionEditPageControllerProvider(widget.clienteImpParam),
+    );
 
     ref.listen<AsyncValue<ClienteDireccionEditPageData>>(
       clienteDireccionEditPageControllerProvider(widget.clienteImpParam),
       (_, state) => state.maybeWhen(
-          orElse: () {},
-          error: (error, _) {
-            final errorMessage = (error is AppException)
-                ? error.details.message
-                : error.toString();
+        orElse: () {},
+        error: (error, _) {
+          final errorMessage =
+              (error is AppException)
+                  ? error.details.message
+                  : error.toString();
 
-            context.showErrorBar(content: Text(errorMessage));
+          context.showErrorBar(content: Text(errorMessage));
 
-            ref.invalidate(
-                clienteDireccionListProvider(widget.clienteImpParam.clienteId));
-            context.router.maybePop();
-          },
-          data: (clienteDireccionEditPageData) {
-            clienteDireccionEditPageData = clienteDireccionEditPageData;
-            if (clienteDireccionEditPageData.isSent) {
-              if (clienteDireccionEditPageData.clienteDireccion != null) {
-                context.showSuccessBar(
-                  content: Text(S
+          ref.invalidate(
+            clienteDireccionListProvider(widget.clienteImpParam.clienteId),
+          );
+          context.router.maybePop();
+        },
+        data: (clienteDireccionEditPageData) {
+          clienteDireccionEditPageData = clienteDireccionEditPageData;
+          if (clienteDireccionEditPageData.isSent) {
+            if (clienteDireccionEditPageData.clienteDireccion != null) {
+              context.showSuccessBar(
+                content: Text(
+                  S
                       .of(context)
-                      .cliente_show_clienteDireccion_clienteDireccionEditPage_direccionGuardadaConExito),
-                );
-              } else {
-                context.showErrorBar(
-                  content: Text(
-                    S
-                        .of(context)
-                        .cliente_show_clienteDireccion_clienteDireccionEditPage_direccionNoGuardada,
-                  ),
-                );
-              }
-              ref.invalidate(clienteDireccionListProvider(
-                  widget.clienteImpParam.clienteId));
-              ref.invalidate(clienteDireccionImpListInSyncByClienteProvider(
-                  widget.clienteImpParam));
-              context.router.maybePop();
+                      .cliente_show_clienteDireccion_clienteDireccionEditPage_direccionGuardadaConExito,
+                ),
+              );
+            } else {
+              context.showErrorBar(
+                content: Text(
+                  S
+                      .of(context)
+                      .cliente_show_clienteDireccion_clienteDireccionEditPage_direccionNoGuardada,
+                ),
+              );
             }
-          }),
+            ref.invalidate(
+              clienteDireccionListProvider(widget.clienteImpParam.clienteId),
+            );
+            ref.invalidate(
+              clienteDireccionImpListInSyncByClienteProvider(
+                widget.clienteImpParam,
+              ),
+            );
+            context.router.maybePop();
+          }
+        },
+      ),
     );
 
     return Scaffold(
       appBar: CommonAppBar(
-          titleText: S
-              .of(context)
-              .cliente_show_clienteDireccion_clienteDireccionEditPage_editarDireccion,
-          actions: [
-            IconButton(
-              onPressed: () => saveClienteDireccion(context, ref, formKey),
-              icon: const Icon(Icons.save),
-            ),
-          ]),
+        titleText:
+            S
+                .of(context)
+                .cliente_show_clienteDireccion_clienteDireccionEditPage_editarDireccion,
+        actions: [
+          IconButton(
+            onPressed: () => saveClienteDireccion(context, ref, formKey),
+            icon: const Icon(Icons.save),
+          ),
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: value.when(
-          data: (clienteDireccionEditPageData) => Column(
-            children: [
-              Expanded(
-                child: ClienteDireccionEditForm(
-                  clienteDireccion:
-                      clienteDireccionEditPageData.clienteDireccion,
-                  formKey: formKey,
-                  paisCliente: widget.clienteImpParam.clientePais,
-                  onPaisChanged: onPaisChanged,
-                ),
+          data:
+              (clienteDireccionEditPageData) => Column(
+                children: [
+                  Expanded(
+                    child: ClienteDireccionEditForm(
+                      clienteDireccion:
+                          clienteDireccionEditPageData.clienteDireccion,
+                      formKey: formKey,
+                      paisCliente: widget.clienteImpParam.clientePais,
+                      onPaisChanged: onPaisChanged,
+                    ),
+                  ),
+                  if (widget.clienteImpParam.id != null)
+                    _CambiosPendientesListView(
+                      clienteImpParam: widget.clienteImpParam,
+                    ),
+                ],
               ),
-              if (widget.clienteImpParam.id != null)
-                _CambiosPendientesListView(
-                  clienteImpParam: widget.clienteImpParam,
-                )
-            ],
-          ),
           error: (error, _) {
             final clienteDireccionEditPageData =
                 error as ClienteDireccionEditPageData;
@@ -148,20 +161,21 @@ class _ClienteDireccionEditPageState
                 ),
                 _CambiosPendientesListView(
                   clienteImpParam: widget.clienteImpParam,
-                )
+                ),
               ],
             );
           },
-          loading: () => const Center(
-            child: ProgressIndicatorWidget(),
-          ),
+          loading: () => const Center(child: ProgressIndicatorWidget()),
         ),
       ),
     );
   }
 
-  void saveClienteDireccion(BuildContext context, WidgetRef ref,
-      GlobalKey<FormBuilderState> formKey) async {
+  void saveClienteDireccion(
+    BuildContext context,
+    WidgetRef ref,
+    GlobalKey<FormBuilderState> formKey,
+  ) async {
     if (formKey.currentState!.saveAndValidate()) {
       final usuario = ref.watch(usuarioNotifierProvider)!;
 
@@ -184,20 +198,23 @@ class _ClienteDireccionEditPageState
       );
       await ref
           .read(
-              clienteDireccionEditPageControllerProvider(widget.clienteImpParam)
-                  .notifier)
+            clienteDireccionEditPageControllerProvider(
+              widget.clienteImpParam,
+            ).notifier,
+          )
           .upsertClienteDireccionImp(clienteDireccionToUpsert);
     }
   }
 }
 
 class ClienteDireccionEditForm extends StatefulWidget {
-  const ClienteDireccionEditForm(
-      {super.key,
-      required this.clienteDireccion,
-      required this.formKey,
-      required this.paisCliente,
-      required this.onPaisChanged});
+  const ClienteDireccionEditForm({
+    super.key,
+    required this.clienteDireccion,
+    required this.formKey,
+    required this.paisCliente,
+    required this.onPaisChanged,
+  });
 
   final ClienteDireccion? clienteDireccion;
   final GlobalKey<FormBuilderState> formKey;
@@ -223,9 +240,11 @@ class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
               child: FormBuilderTextField(
                 name: 'nombre',
                 initialValue: widget.clienteDireccion?.nombre,
-                decoration: AppDecoration.defaultFieldDecoration(S
-                    .of(context)
-                    .cliente_show_clienteDireccion_clienteDireccionEditPage_nombre),
+                decoration: AppDecoration.defaultFieldDecoration(
+                  S
+                      .of(context)
+                      .cliente_show_clienteDireccion_clienteDireccionEditPage_nombre,
+                ),
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.required(),
                   FormBuilderValidators.maxLength(100),
@@ -238,9 +257,11 @@ class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
                 name: 'direccion1',
                 initialValue: widget.clienteDireccion?.direccion1,
                 keyboardType: TextInputType.streetAddress,
-                decoration: AppDecoration.defaultFieldDecoration(S
-                    .of(context)
-                    .cliente_show_clienteDireccion_clienteDireccionEditPage_direccion1),
+                decoration: AppDecoration.defaultFieldDecoration(
+                  S
+                      .of(context)
+                      .cliente_show_clienteDireccion_clienteDireccionEditPage_direccion1,
+                ),
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.required(),
                   FormBuilderValidators.maxLength(60),
@@ -253,9 +274,11 @@ class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
                 name: 'direccion2',
                 initialValue: widget.clienteDireccion?.direccion2,
                 keyboardType: TextInputType.streetAddress,
-                decoration: AppDecoration.defaultFieldDecoration(S
-                    .of(context)
-                    .cliente_show_clienteDireccion_clienteDireccionEditPage_direccion2),
+                decoration: AppDecoration.defaultFieldDecoration(
+                  S
+                      .of(context)
+                      .cliente_show_clienteDireccion_clienteDireccionEditPage_direccion2,
+                ),
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.maxLength(60, checkNullOrEmpty: false),
                 ]),
@@ -266,9 +289,11 @@ class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
               child: FormBuilderTextField(
                 name: 'codigoPostal',
                 initialValue: widget.clienteDireccion?.codigoPostal,
-                decoration: AppDecoration.defaultFieldDecoration(S
-                    .of(context)
-                    .cliente_show_clienteDireccion_clienteDireccionEditPage_codigoPostal),
+                decoration: AppDecoration.defaultFieldDecoration(
+                  S
+                      .of(context)
+                      .cliente_show_clienteDireccion_clienteDireccionEditPage_codigoPostal,
+                ),
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.maxLength(10, checkNullOrEmpty: false),
                 ]),
@@ -279,9 +304,11 @@ class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
               child: FormBuilderTextField(
                 name: 'poblacion',
                 initialValue: widget.clienteDireccion?.poblacion,
-                decoration: AppDecoration.defaultFieldDecoration(S
-                    .of(context)
-                    .cliente_show_clienteDireccion_clienteDireccionEditPage_poblacion),
+                decoration: AppDecoration.defaultFieldDecoration(
+                  S
+                      .of(context)
+                      .cliente_show_clienteDireccion_clienteDireccionEditPage_poblacion,
+                ),
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.required(),
                   FormBuilderValidators.maxLength(60),
@@ -293,9 +320,11 @@ class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
               child: FormBuilderTextField(
                 name: 'provincia',
                 initialValue: widget.clienteDireccion?.provincia,
-                decoration: AppDecoration.defaultFieldDecoration(S
-                    .of(context)
-                    .cliente_show_clienteDireccion_clienteDireccionEditPage_provincia),
+                decoration: AppDecoration.defaultFieldDecoration(
+                  S
+                      .of(context)
+                      .cliente_show_clienteDireccion_clienteDireccionEditPage_provincia,
+                ),
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.maxLength(50, checkNullOrEmpty: false),
                 ]),
@@ -306,11 +335,14 @@ class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
               child: FormBuilderTextField(
                 name: 'pais',
                 readOnly: true,
-                initialValue: widget.clienteDireccion?.pais?.descripcion ??
+                initialValue:
+                    widget.clienteDireccion?.pais?.descripcion ??
                     widget.paisCliente?.descripcion,
-                decoration: AppDecoration.defaultFieldDecoration(S
-                    .of(context)
-                    .cliente_show_clienteDireccion_clienteDireccionEditPage_pais),
+                decoration: AppDecoration.defaultFieldDecoration(
+                  S
+                      .of(context)
+                      .cliente_show_clienteDireccion_clienteDireccionEditPage_pais,
+                ),
                 onTap: () => navigateToSelectPais(context),
               ),
             ),
@@ -333,13 +365,15 @@ class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
   }
 
   void navigateToSelectPais(BuildContext context) async {
-    final newPaisValue = await context.router
-        .push(ClienteDireccionSeleccionarPaisRoute()) as Pais?;
+    final newPaisValue =
+        await context.router.push(ClienteDireccionSeleccionarPaisRoute())
+            as Pais?;
 
     if (newPaisValue != null) {
       widget.onPaisChanged(newPaisValue);
-      widget.formKey.currentState?.fields['pais']
-          ?.didChange(newPaisValue.descripcion);
+      widget.formKey.currentState?.fields['pais']?.didChange(
+        newPaisValue.descripcion,
+      );
     }
   }
 }
@@ -351,34 +385,43 @@ class _CambiosPendientesListView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final clienteDireccionImpValue = ref
-        .watch(clienteDireccionImpListInSyncByClienteProvider(clienteImpParam));
+    final clienteDireccionImpValue = ref.watch(
+      clienteDireccionImpListInSyncByClienteProvider(clienteImpParam),
+    );
     return clienteDireccionImpValue.when(
-        data: (clienteDireccionImpList) => clienteDireccionImpList.isEmpty
-            ? Container()
-            : Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                        S
-                            .of(context)
-                            .cliente_show_clienteDireccion_clienteDireccionEditPage_cambiosPendientesDeTramitar,
-                        style: Theme.of(context).textTheme.titleSmall),
-                    gapH4,
-                    ListView.separated(
-                      shrinkWrap: true,
-                      itemBuilder: (context, i) => ClienteDireccionImpListTile(
-                          clienteDireccionImp: clienteDireccionImpList[i]),
-                      separatorBuilder: (context, i) => const Divider(),
-                      itemCount: clienteDireccionImpList.length,
+      data:
+          (clienteDireccionImpList) =>
+              clienteDireccionImpList.isEmpty
+                  ? Container()
+                  : Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          S
+                              .of(context)
+                              .cliente_show_clienteDireccion_clienteDireccionEditPage_cambiosPendientesDeTramitar,
+                          style: Theme.of(context).textTheme.titleSmall,
+                        ),
+                        gapH4,
+                        ListView.separated(
+                          shrinkWrap: true,
+                          itemBuilder:
+                              (context, i) => ClienteDireccionImpListTile(
+                                clienteDireccionImp: clienteDireccionImpList[i],
+                              ),
+                          separatorBuilder: (context, i) => const Divider(),
+                          itemCount: clienteDireccionImpList.length,
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-              ),
-        error: (error, _) => ErrorMessageWidget(
-            (error is AppException) ? error.details.message : error.toString()),
-        loading: () => const Center(child: CircularProgressIndicator()));
+                  ),
+      error:
+          (error, _) => ErrorMessageWidget(
+            (error is AppException) ? error.details.message : error.toString(),
+          ),
+      loading: () => const Center(child: CircularProgressIndicator()),
+    );
   }
 }

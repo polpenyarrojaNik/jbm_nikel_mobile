@@ -14,7 +14,8 @@ class ClienteContactoEditPageController
     extends _$ClienteContactoEditPageController {
   @override
   Future<ClienteContactoImpEditPageData> build(
-      ClienteImpParam clienteImpParam) async {
+    ClienteImpParam clienteImpParam,
+  ) async {
     ClienteContacto? clienteContacto;
 
     if (clienteImpParam.impId != null) {
@@ -28,22 +29,28 @@ class ClienteContactoEditPageController
     }
 
     return ClienteContactoImpEditPageData(
-        isSent: false, clienteContacto: clienteContacto);
+      isSent: false,
+      clienteContacto: clienteContacto,
+    );
   }
 
   Future<void> upsertClienteContactoImp(
-      ClienteContactoImp clienteContactoImp) async {
+    ClienteContactoImp clienteContactoImp,
+  ) async {
     state = const AsyncLoading();
     try {
-      final clienteContacto =
-          await ref.read(clienteRepositoryProvider).upsertClienteContactoImp(
-                clienteContactoImp,
-                clienteImpParam.id == null,
-              );
+      final clienteContacto = await ref
+          .read(clienteRepositoryProvider)
+          .upsertClienteContactoImp(
+            clienteContactoImp,
+            clienteImpParam.id == null,
+          );
 
       state = AsyncData(
         ClienteContactoImpEditPageData(
-            isSent: true, clienteContacto: clienteContacto),
+          isSent: true,
+          clienteContacto: clienteContacto,
+        ),
       );
     } on AppException catch (e, stackTrace) {
       state = AsyncError(

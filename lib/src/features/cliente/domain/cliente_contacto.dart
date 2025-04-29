@@ -25,7 +25,8 @@ class ClienteContacto with _$ClienteContacto {
   }) = _ClienteContacto;
 
   factory ClienteContacto.fromClienteContactoImp(
-      ClienteContactoImp clienteContactoImp) {
+    ClienteContactoImp clienteContactoImp,
+  ) {
     return ClienteContacto(
       clienteId: clienteContactoImp.clienteId,
       contactoId: clienteContactoImp.contactoId,

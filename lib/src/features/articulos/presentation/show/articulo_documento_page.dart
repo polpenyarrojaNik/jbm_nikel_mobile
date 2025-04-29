@@ -19,27 +19,32 @@ import '../../domain/articulo_documento.dart';
 
 @RoutePage()
 class ArticuloDocumentoPage extends ConsumerWidget {
-  const ArticuloDocumentoPage(
-      {super.key, required this.articuloId, required this.description});
+  const ArticuloDocumentoPage({
+    super.key,
+    required this.articuloId,
+    required this.description,
+  });
 
   final String articuloId;
   final String description;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen<ArticuloDocumentoState>(
-      articuloDocumentoControllerProvider,
-      (_, state) {
-        state.when(
-          data: (file) => (file != null) ? OpenFile.open(file.path) : null,
-          error: (error) => showToast(error.toString(), context),
-          loading: () => showToast(
+    ref.listen<ArticuloDocumentoState>(articuloDocumentoControllerProvider, (
+      _,
+      state,
+    ) {
+      state.when(
+        data: (file) => (file != null) ? OpenFile.open(file.path) : null,
+        error: (error) => showToast(error.toString(), context),
+        loading:
+            () => showToast(
               S.of(context).cliente_show_clienteAdjunto_abriendoArchivo,
-              context),
-          initial: () => null,
-        );
-      },
-    );
+              context,
+            ),
+        initial: () => null,
+      );
+    });
     final state = ref.watch(articuloDocumentListProvider(articuloId));
 
     return Scaffold(
@@ -48,41 +53,36 @@ class ArticuloDocumentoPage extends ConsumerWidget {
       ),
       body: Column(
         children: [
-          HeaderDatosRelacionados(
-            entityId: articuloId,
-            subtitle: description,
-          ),
+          HeaderDatosRelacionados(entityId: articuloId, subtitle: description),
           gapH8,
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) {
               if (e is AppException) {
                 return e.maybeWhen(
-                  orElse: () => ErrorMessageWidget(
-                    e.toString(),
-                  ),
-                  notConnection: () => Center(
-                    child: Text(S.of(context).sincConexion),
-                  ),
+                  orElse: () => ErrorMessageWidget(e.toString()),
+                  notConnection:
+                      () => Center(child: Text(S.of(context).sincConexion)),
                 );
               }
               return ErrorMessageWidget(e.toString());
             },
-            data: (articuloDocumentoList) => (articuloDocumentoList.isNotEmpty)
-                ? Expanded(
-                    child: ListView.builder(
-                      itemCount: articuloDocumentoList.length,
-                      itemBuilder: (context, i) => ArticuloDocumentoTile(
-                        articuloDocumento: articuloDocumentoList[i],
-                      ),
-                    ),
-                  )
-                : Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(S.of(context).sinResultados),
-                    ],
-                  ),
+            data:
+                (articuloDocumentoList) =>
+                    (articuloDocumentoList.isNotEmpty)
+                        ? Expanded(
+                          child: ListView.builder(
+                            itemCount: articuloDocumentoList.length,
+                            itemBuilder:
+                                (context, i) => ArticuloDocumentoTile(
+                                  articuloDocumento: articuloDocumentoList[i],
+                                ),
+                          ),
+                        )
+                        : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [Text(S.of(context).sinResultados)],
+                        ),
           ),
         ],
       ),
@@ -100,10 +100,12 @@ class ArticuloDocumentoTile extends ConsumerWidget {
     return Padding(
       padding: listPadding,
       child: GestureDetector(
-        onTap: () => openFile(
-            articuloId: articuloDocumento.articuloId,
-            nombreArchivo: articuloDocumento.nombreArchivo,
-            ref: ref),
+        onTap:
+            () => openFile(
+              articuloId: articuloDocumento.articuloId,
+              nombreArchivo: articuloDocumento.nombreArchivo,
+              ref: ref,
+            ),
         child: Card(
           elevation: 0,
           shape: RoundedRectangleBorder(
@@ -122,9 +124,7 @@ class ArticuloDocumentoTile extends ConsumerWidget {
                   color: Theme.of(context).textTheme.bodySmall!.color,
                 ),
                 gapW8,
-                Flexible(
-                  child: Text(articuloDocumento.nombreArchivo ?? ''),
-                ),
+                Flexible(child: Text(articuloDocumento.nombreArchivo ?? '')),
               ],
             ),
           ),
@@ -138,8 +138,13 @@ class ArticuloDocumentoTile extends ConsumerWidget {
     required String? nombreArchivo,
     required WidgetRef ref,
   }) {
-    ref.read(articuloDocumentoControllerProvider.notifier).getDocumentFile(
-        adjuntoParam:
-            AdjuntoParam(id: articuloId, nombreArchivo: nombreArchivo));
+    ref
+        .read(articuloDocumentoControllerProvider.notifier)
+        .getDocumentFile(
+          adjuntoParam: AdjuntoParam(
+            id: articuloId,
+            nombreArchivo: nombreArchivo,
+          ),
+        );
   }
 }

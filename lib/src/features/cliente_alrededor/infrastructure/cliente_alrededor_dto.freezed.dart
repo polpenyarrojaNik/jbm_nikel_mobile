@@ -12,7 +12,8 @@ part of 'cliente_alrededor_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ClienteAlrededorDTO _$ClienteAlrededorDTOFromJson(Map<String, dynamic> json) {
   return _ClienteAlrededorDTO.fromJson(json);
@@ -51,27 +52,29 @@ mixin _$ClienteAlrededorDTO {
 /// @nodoc
 abstract class $ClienteAlrededorDTOCopyWith<$Res> {
   factory $ClienteAlrededorDTOCopyWith(
-          ClienteAlrededorDTO value, $Res Function(ClienteAlrededorDTO) then) =
-      _$ClienteAlrededorDTOCopyWithImpl<$Res, ClienteAlrededorDTO>;
+    ClienteAlrededorDTO value,
+    $Res Function(ClienteAlrededorDTO) then,
+  ) = _$ClienteAlrededorDTOCopyWithImpl<$Res, ClienteAlrededorDTO>;
   @useResult
-  $Res call(
-      {String markerId,
-      String clienteId,
-      String nombre,
-      String isDireccionFiscal,
-      String? direccion,
-      String? codigoPostal,
-      String? poblacion,
-      String? provincia,
-      String? paisId,
-      String? isClientePotencial,
-      double latitud,
-      double longitud,
-      String? nombreRepresentante1,
-      String? nombreRepresentante2,
-      double ventasAnyoActual,
-      double ventasAnyoAnterior,
-      double porcentajeAbonos});
+  $Res call({
+    String markerId,
+    String clienteId,
+    String nombre,
+    String isDireccionFiscal,
+    String? direccion,
+    String? codigoPostal,
+    String? poblacion,
+    String? provincia,
+    String? paisId,
+    String? isClientePotencial,
+    double latitud,
+    double longitud,
+    String? nombreRepresentante1,
+    String? nombreRepresentante2,
+    double ventasAnyoActual,
+    double ventasAnyoAnterior,
+    double porcentajeAbonos,
+  });
 }
 
 /// @nodoc
@@ -107,114 +110,137 @@ class _$ClienteAlrededorDTOCopyWithImpl<$Res, $Val extends ClienteAlrededorDTO>
     Object? ventasAnyoAnterior = null,
     Object? porcentajeAbonos = null,
   }) {
-    return _then(_value.copyWith(
-      markerId: null == markerId
-          ? _value.markerId
-          : markerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      nombre: null == nombre
-          ? _value.nombre
-          : nombre // ignore: cast_nullable_to_non_nullable
-              as String,
-      isDireccionFiscal: null == isDireccionFiscal
-          ? _value.isDireccionFiscal
-          : isDireccionFiscal // ignore: cast_nullable_to_non_nullable
-              as String,
-      direccion: freezed == direccion
-          ? _value.direccion
-          : direccion // ignore: cast_nullable_to_non_nullable
-              as String?,
-      codigoPostal: freezed == codigoPostal
-          ? _value.codigoPostal
-          : codigoPostal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      poblacion: freezed == poblacion
-          ? _value.poblacion
-          : poblacion // ignore: cast_nullable_to_non_nullable
-              as String?,
-      provincia: freezed == provincia
-          ? _value.provincia
-          : provincia // ignore: cast_nullable_to_non_nullable
-              as String?,
-      paisId: freezed == paisId
-          ? _value.paisId
-          : paisId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isClientePotencial: freezed == isClientePotencial
-          ? _value.isClientePotencial
-          : isClientePotencial // ignore: cast_nullable_to_non_nullable
-              as String?,
-      latitud: null == latitud
-          ? _value.latitud
-          : latitud // ignore: cast_nullable_to_non_nullable
-              as double,
-      longitud: null == longitud
-          ? _value.longitud
-          : longitud // ignore: cast_nullable_to_non_nullable
-              as double,
-      nombreRepresentante1: freezed == nombreRepresentante1
-          ? _value.nombreRepresentante1
-          : nombreRepresentante1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nombreRepresentante2: freezed == nombreRepresentante2
-          ? _value.nombreRepresentante2
-          : nombreRepresentante2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ventasAnyoActual: null == ventasAnyoActual
-          ? _value.ventasAnyoActual
-          : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
-              as double,
-      ventasAnyoAnterior: null == ventasAnyoAnterior
-          ? _value.ventasAnyoAnterior
-          : ventasAnyoAnterior // ignore: cast_nullable_to_non_nullable
-              as double,
-      porcentajeAbonos: null == porcentajeAbonos
-          ? _value.porcentajeAbonos
-          : porcentajeAbonos // ignore: cast_nullable_to_non_nullable
-              as double,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            markerId:
+                null == markerId
+                    ? _value.markerId
+                    : markerId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            clienteId:
+                null == clienteId
+                    ? _value.clienteId
+                    : clienteId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            nombre:
+                null == nombre
+                    ? _value.nombre
+                    : nombre // ignore: cast_nullable_to_non_nullable
+                        as String,
+            isDireccionFiscal:
+                null == isDireccionFiscal
+                    ? _value.isDireccionFiscal
+                    : isDireccionFiscal // ignore: cast_nullable_to_non_nullable
+                        as String,
+            direccion:
+                freezed == direccion
+                    ? _value.direccion
+                    : direccion // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            codigoPostal:
+                freezed == codigoPostal
+                    ? _value.codigoPostal
+                    : codigoPostal // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            poblacion:
+                freezed == poblacion
+                    ? _value.poblacion
+                    : poblacion // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            provincia:
+                freezed == provincia
+                    ? _value.provincia
+                    : provincia // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            paisId:
+                freezed == paisId
+                    ? _value.paisId
+                    : paisId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            isClientePotencial:
+                freezed == isClientePotencial
+                    ? _value.isClientePotencial
+                    : isClientePotencial // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            latitud:
+                null == latitud
+                    ? _value.latitud
+                    : latitud // ignore: cast_nullable_to_non_nullable
+                        as double,
+            longitud:
+                null == longitud
+                    ? _value.longitud
+                    : longitud // ignore: cast_nullable_to_non_nullable
+                        as double,
+            nombreRepresentante1:
+                freezed == nombreRepresentante1
+                    ? _value.nombreRepresentante1
+                    : nombreRepresentante1 // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            nombreRepresentante2:
+                freezed == nombreRepresentante2
+                    ? _value.nombreRepresentante2
+                    : nombreRepresentante2 // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            ventasAnyoActual:
+                null == ventasAnyoActual
+                    ? _value.ventasAnyoActual
+                    : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
+                        as double,
+            ventasAnyoAnterior:
+                null == ventasAnyoAnterior
+                    ? _value.ventasAnyoAnterior
+                    : ventasAnyoAnterior // ignore: cast_nullable_to_non_nullable
+                        as double,
+            porcentajeAbonos:
+                null == porcentajeAbonos
+                    ? _value.porcentajeAbonos
+                    : porcentajeAbonos // ignore: cast_nullable_to_non_nullable
+                        as double,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$ClienteAlrededorDTOImplCopyWith<$Res>
     implements $ClienteAlrededorDTOCopyWith<$Res> {
-  factory _$$ClienteAlrededorDTOImplCopyWith(_$ClienteAlrededorDTOImpl value,
-          $Res Function(_$ClienteAlrededorDTOImpl) then) =
-      __$$ClienteAlrededorDTOImplCopyWithImpl<$Res>;
+  factory _$$ClienteAlrededorDTOImplCopyWith(
+    _$ClienteAlrededorDTOImpl value,
+    $Res Function(_$ClienteAlrededorDTOImpl) then,
+  ) = __$$ClienteAlrededorDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String markerId,
-      String clienteId,
-      String nombre,
-      String isDireccionFiscal,
-      String? direccion,
-      String? codigoPostal,
-      String? poblacion,
-      String? provincia,
-      String? paisId,
-      String? isClientePotencial,
-      double latitud,
-      double longitud,
-      String? nombreRepresentante1,
-      String? nombreRepresentante2,
-      double ventasAnyoActual,
-      double ventasAnyoAnterior,
-      double porcentajeAbonos});
+  $Res call({
+    String markerId,
+    String clienteId,
+    String nombre,
+    String isDireccionFiscal,
+    String? direccion,
+    String? codigoPostal,
+    String? poblacion,
+    String? provincia,
+    String? paisId,
+    String? isClientePotencial,
+    double latitud,
+    double longitud,
+    String? nombreRepresentante1,
+    String? nombreRepresentante2,
+    double ventasAnyoActual,
+    double ventasAnyoAnterior,
+    double porcentajeAbonos,
+  });
 }
 
 /// @nodoc
 class __$$ClienteAlrededorDTOImplCopyWithImpl<$Res>
     extends _$ClienteAlrededorDTOCopyWithImpl<$Res, _$ClienteAlrededorDTOImpl>
     implements _$$ClienteAlrededorDTOImplCopyWith<$Res> {
-  __$$ClienteAlrededorDTOImplCopyWithImpl(_$ClienteAlrededorDTOImpl _value,
-      $Res Function(_$ClienteAlrededorDTOImpl) _then)
-      : super(_value, _then);
+  __$$ClienteAlrededorDTOImplCopyWithImpl(
+    _$ClienteAlrededorDTOImpl _value,
+    $Res Function(_$ClienteAlrededorDTOImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ClienteAlrededorDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -239,101 +265,120 @@ class __$$ClienteAlrededorDTOImplCopyWithImpl<$Res>
     Object? ventasAnyoAnterior = null,
     Object? porcentajeAbonos = null,
   }) {
-    return _then(_$ClienteAlrededorDTOImpl(
-      markerId: null == markerId
-          ? _value.markerId
-          : markerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      nombre: null == nombre
-          ? _value.nombre
-          : nombre // ignore: cast_nullable_to_non_nullable
-              as String,
-      isDireccionFiscal: null == isDireccionFiscal
-          ? _value.isDireccionFiscal
-          : isDireccionFiscal // ignore: cast_nullable_to_non_nullable
-              as String,
-      direccion: freezed == direccion
-          ? _value.direccion
-          : direccion // ignore: cast_nullable_to_non_nullable
-              as String?,
-      codigoPostal: freezed == codigoPostal
-          ? _value.codigoPostal
-          : codigoPostal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      poblacion: freezed == poblacion
-          ? _value.poblacion
-          : poblacion // ignore: cast_nullable_to_non_nullable
-              as String?,
-      provincia: freezed == provincia
-          ? _value.provincia
-          : provincia // ignore: cast_nullable_to_non_nullable
-              as String?,
-      paisId: freezed == paisId
-          ? _value.paisId
-          : paisId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isClientePotencial: freezed == isClientePotencial
-          ? _value.isClientePotencial
-          : isClientePotencial // ignore: cast_nullable_to_non_nullable
-              as String?,
-      latitud: null == latitud
-          ? _value.latitud
-          : latitud // ignore: cast_nullable_to_non_nullable
-              as double,
-      longitud: null == longitud
-          ? _value.longitud
-          : longitud // ignore: cast_nullable_to_non_nullable
-              as double,
-      nombreRepresentante1: freezed == nombreRepresentante1
-          ? _value.nombreRepresentante1
-          : nombreRepresentante1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nombreRepresentante2: freezed == nombreRepresentante2
-          ? _value.nombreRepresentante2
-          : nombreRepresentante2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ventasAnyoActual: null == ventasAnyoActual
-          ? _value.ventasAnyoActual
-          : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
-              as double,
-      ventasAnyoAnterior: null == ventasAnyoAnterior
-          ? _value.ventasAnyoAnterior
-          : ventasAnyoAnterior // ignore: cast_nullable_to_non_nullable
-              as double,
-      porcentajeAbonos: null == porcentajeAbonos
-          ? _value.porcentajeAbonos
-          : porcentajeAbonos // ignore: cast_nullable_to_non_nullable
-              as double,
-    ));
+    return _then(
+      _$ClienteAlrededorDTOImpl(
+        markerId:
+            null == markerId
+                ? _value.markerId
+                : markerId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        clienteId:
+            null == clienteId
+                ? _value.clienteId
+                : clienteId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        nombre:
+            null == nombre
+                ? _value.nombre
+                : nombre // ignore: cast_nullable_to_non_nullable
+                    as String,
+        isDireccionFiscal:
+            null == isDireccionFiscal
+                ? _value.isDireccionFiscal
+                : isDireccionFiscal // ignore: cast_nullable_to_non_nullable
+                    as String,
+        direccion:
+            freezed == direccion
+                ? _value.direccion
+                : direccion // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        codigoPostal:
+            freezed == codigoPostal
+                ? _value.codigoPostal
+                : codigoPostal // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        poblacion:
+            freezed == poblacion
+                ? _value.poblacion
+                : poblacion // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        provincia:
+            freezed == provincia
+                ? _value.provincia
+                : provincia // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        paisId:
+            freezed == paisId
+                ? _value.paisId
+                : paisId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        isClientePotencial:
+            freezed == isClientePotencial
+                ? _value.isClientePotencial
+                : isClientePotencial // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        latitud:
+            null == latitud
+                ? _value.latitud
+                : latitud // ignore: cast_nullable_to_non_nullable
+                    as double,
+        longitud:
+            null == longitud
+                ? _value.longitud
+                : longitud // ignore: cast_nullable_to_non_nullable
+                    as double,
+        nombreRepresentante1:
+            freezed == nombreRepresentante1
+                ? _value.nombreRepresentante1
+                : nombreRepresentante1 // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        nombreRepresentante2:
+            freezed == nombreRepresentante2
+                ? _value.nombreRepresentante2
+                : nombreRepresentante2 // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        ventasAnyoActual:
+            null == ventasAnyoActual
+                ? _value.ventasAnyoActual
+                : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
+                    as double,
+        ventasAnyoAnterior:
+            null == ventasAnyoAnterior
+                ? _value.ventasAnyoAnterior
+                : ventasAnyoAnterior // ignore: cast_nullable_to_non_nullable
+                    as double,
+        porcentajeAbonos:
+            null == porcentajeAbonos
+                ? _value.porcentajeAbonos
+                : porcentajeAbonos // ignore: cast_nullable_to_non_nullable
+                    as double,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ClienteAlrededorDTOImpl extends _ClienteAlrededorDTO {
-  const _$ClienteAlrededorDTOImpl(
-      {required this.markerId,
-      required this.clienteId,
-      required this.nombre,
-      required this.isDireccionFiscal,
-      this.direccion,
-      this.codigoPostal,
-      this.poblacion,
-      this.provincia,
-      this.paisId,
-      this.isClientePotencial,
-      required this.latitud,
-      required this.longitud,
-      this.nombreRepresentante1,
-      this.nombreRepresentante2,
-      required this.ventasAnyoActual,
-      required this.ventasAnyoAnterior,
-      required this.porcentajeAbonos})
-      : super._();
+  const _$ClienteAlrededorDTOImpl({
+    required this.markerId,
+    required this.clienteId,
+    required this.nombre,
+    required this.isDireccionFiscal,
+    this.direccion,
+    this.codigoPostal,
+    this.poblacion,
+    this.provincia,
+    this.paisId,
+    this.isClientePotencial,
+    required this.latitud,
+    required this.longitud,
+    this.nombreRepresentante1,
+    this.nombreRepresentante2,
+    required this.ventasAnyoActual,
+    required this.ventasAnyoAnterior,
+    required this.porcentajeAbonos,
+  }) : super._();
 
   factory _$ClienteAlrededorDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ClienteAlrededorDTOImplFromJson(json);
@@ -419,24 +464,25 @@ class _$ClienteAlrededorDTOImpl extends _ClienteAlrededorDTO {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      markerId,
-      clienteId,
-      nombre,
-      isDireccionFiscal,
-      direccion,
-      codigoPostal,
-      poblacion,
-      provincia,
-      paisId,
-      isClientePotencial,
-      latitud,
-      longitud,
-      nombreRepresentante1,
-      nombreRepresentante2,
-      ventasAnyoActual,
-      ventasAnyoAnterior,
-      porcentajeAbonos);
+    runtimeType,
+    markerId,
+    clienteId,
+    nombre,
+    isDireccionFiscal,
+    direccion,
+    codigoPostal,
+    poblacion,
+    provincia,
+    paisId,
+    isClientePotencial,
+    latitud,
+    longitud,
+    nombreRepresentante1,
+    nombreRepresentante2,
+    ventasAnyoActual,
+    ventasAnyoAnterior,
+    porcentajeAbonos,
+  );
 
   /// Create a copy of ClienteAlrededorDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -445,35 +491,36 @@ class _$ClienteAlrededorDTOImpl extends _ClienteAlrededorDTO {
   @pragma('vm:prefer-inline')
   _$$ClienteAlrededorDTOImplCopyWith<_$ClienteAlrededorDTOImpl> get copyWith =>
       __$$ClienteAlrededorDTOImplCopyWithImpl<_$ClienteAlrededorDTOImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ClienteAlrededorDTOImplToJson(
-      this,
-    );
+    return _$$ClienteAlrededorDTOImplToJson(this);
   }
 }
 
 abstract class _ClienteAlrededorDTO extends ClienteAlrededorDTO {
-  const factory _ClienteAlrededorDTO(
-      {required final String markerId,
-      required final String clienteId,
-      required final String nombre,
-      required final String isDireccionFiscal,
-      final String? direccion,
-      final String? codigoPostal,
-      final String? poblacion,
-      final String? provincia,
-      final String? paisId,
-      final String? isClientePotencial,
-      required final double latitud,
-      required final double longitud,
-      final String? nombreRepresentante1,
-      final String? nombreRepresentante2,
-      required final double ventasAnyoActual,
-      required final double ventasAnyoAnterior,
-      required final double porcentajeAbonos}) = _$ClienteAlrededorDTOImpl;
+  const factory _ClienteAlrededorDTO({
+    required final String markerId,
+    required final String clienteId,
+    required final String nombre,
+    required final String isDireccionFiscal,
+    final String? direccion,
+    final String? codigoPostal,
+    final String? poblacion,
+    final String? provincia,
+    final String? paisId,
+    final String? isClientePotencial,
+    required final double latitud,
+    required final double longitud,
+    final String? nombreRepresentante1,
+    final String? nombreRepresentante2,
+    required final double ventasAnyoActual,
+    required final double ventasAnyoAnterior,
+    required final double porcentajeAbonos,
+  }) = _$ClienteAlrededorDTOImpl;
   const _ClienteAlrededorDTO._() : super._();
 
   factory _ClienteAlrededorDTO.fromJson(Map<String, dynamic> json) =

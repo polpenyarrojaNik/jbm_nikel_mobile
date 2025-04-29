@@ -28,7 +28,8 @@ class LeyendaWidget extends StatelessWidget {
                     height: 4,
                     width: 15,
                     decoration: AppDecoration.kpiLegend(
-                        Theme.of(context).colorScheme.primary),
+                      Theme.of(context).colorScheme.primary,
+                    ),
                   ),
                   gapW4,
                   Text(
@@ -48,7 +49,8 @@ class LeyendaWidget extends StatelessWidget {
                     height: 4,
                     width: 15,
                     decoration: AppDecoration.kpiLegend(
-                        Theme.of(context).colorScheme.outline),
+                      Theme.of(context).colorScheme.outline,
+                    ),
                   ),
                   gapW4,
                   Text(

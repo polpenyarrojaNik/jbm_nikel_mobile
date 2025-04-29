@@ -19,8 +19,9 @@ class ClienteIndexControllerSearchTextParameter
   }
 }
 
-final clientesPotencialesQueryStateProvider =
-    StateProvider.autoDispose<bool>((ref) {
+final clientesPotencialesQueryStateProvider = StateProvider.autoDispose<bool>((
+  ref,
+) {
   return false;
 });
 
@@ -30,10 +31,14 @@ class ClienteIndexScreenController extends _$ClienteIndexScreenController {
 
   @override
   Future<int> build() {
-    return ref.read(clienteRepositoryProvider).getClienteCountList(
-        searchPotenciales: ref.watch(clientesPotencialesQueryStateProvider),
-        searchText:
-            ref.watch(clienteIndexControllerSearchTextParameterProvider));
+    return ref
+        .read(clienteRepositoryProvider)
+        .getClienteCountList(
+          searchPotenciales: ref.watch(clientesPotencialesQueryStateProvider),
+          searchText: ref.watch(
+            clienteIndexControllerSearchTextParameterProvider,
+          ),
+        );
   }
 }
 
@@ -44,10 +49,14 @@ class ClienteIndexScreenPaginatedController
 
   @override
   Future<List<Cliente>> build({required int page}) {
-    return ref.read(clienteRepositoryProvider).getClienteLista(
-        searchPotenciales: ref.watch(clientesPotencialesQueryStateProvider),
-        page: page,
-        searchText:
-            ref.watch(clienteIndexControllerSearchTextParameterProvider));
+    return ref
+        .read(clienteRepositoryProvider)
+        .getClienteLista(
+          searchPotenciales: ref.watch(clientesPotencialesQueryStateProvider),
+          page: page,
+          searchText: ref.watch(
+            clienteIndexControllerSearchTextParameterProvider,
+          ),
+        );
   }
 }

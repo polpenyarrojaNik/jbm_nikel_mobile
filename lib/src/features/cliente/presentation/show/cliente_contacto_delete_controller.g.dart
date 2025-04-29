@@ -34,9 +34,7 @@ abstract class _$ClienteContactoDeleteController
     extends BuildlessAutoDisposeAsyncNotifier<bool> {
   late final ClienteImpParam clienteImpParam;
 
-  FutureOr<bool> build(
-    ClienteImpParam clienteImpParam,
-  );
+  FutureOr<bool> build(ClienteImpParam clienteImpParam);
 }
 
 /// See also [ClienteContactoDeleteController].
@@ -53,18 +51,14 @@ class ClienteContactoDeleteControllerFamily extends Family<AsyncValue<bool>> {
   ClienteContactoDeleteControllerProvider call(
     ClienteImpParam clienteImpParam,
   ) {
-    return ClienteContactoDeleteControllerProvider(
-      clienteImpParam,
-    );
+    return ClienteContactoDeleteControllerProvider(clienteImpParam);
   }
 
   @override
   ClienteContactoDeleteControllerProvider getProviderOverride(
     covariant ClienteContactoDeleteControllerProvider provider,
   ) {
-    return call(
-      provider.clienteImpParam,
-    );
+    return call(provider.clienteImpParam);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -84,25 +78,28 @@ class ClienteContactoDeleteControllerFamily extends Family<AsyncValue<bool>> {
 
 /// See also [ClienteContactoDeleteController].
 class ClienteContactoDeleteControllerProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<
-        ClienteContactoDeleteController, bool> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          ClienteContactoDeleteController,
+          bool
+        > {
   /// See also [ClienteContactoDeleteController].
-  ClienteContactoDeleteControllerProvider(
-    ClienteImpParam clienteImpParam,
-  ) : this._internal(
-          () => ClienteContactoDeleteController()
-            ..clienteImpParam = clienteImpParam,
-          from: clienteContactoDeleteControllerProvider,
-          name: r'clienteContactoDeleteControllerProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$clienteContactoDeleteControllerHash,
-          dependencies: ClienteContactoDeleteControllerFamily._dependencies,
-          allTransitiveDependencies:
-              ClienteContactoDeleteControllerFamily._allTransitiveDependencies,
-          clienteImpParam: clienteImpParam,
-        );
+  ClienteContactoDeleteControllerProvider(ClienteImpParam clienteImpParam)
+    : this._internal(
+        () =>
+            ClienteContactoDeleteController()
+              ..clienteImpParam = clienteImpParam,
+        from: clienteContactoDeleteControllerProvider,
+        name: r'clienteContactoDeleteControllerProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$clienteContactoDeleteControllerHash,
+        dependencies: ClienteContactoDeleteControllerFamily._dependencies,
+        allTransitiveDependencies:
+            ClienteContactoDeleteControllerFamily._allTransitiveDependencies,
+        clienteImpParam: clienteImpParam,
+      );
 
   ClienteContactoDeleteControllerProvider._internal(
     super._createNotifier, {
@@ -120,9 +117,7 @@ class ClienteContactoDeleteControllerProvider
   FutureOr<bool> runNotifierBuild(
     covariant ClienteContactoDeleteController notifier,
   ) {
-    return notifier.build(
-      clienteImpParam,
-    );
+    return notifier.build(clienteImpParam);
   }
 
   @override
@@ -143,7 +138,7 @@ class ClienteContactoDeleteControllerProvider
 
   @override
   AutoDisposeAsyncNotifierProviderElement<ClienteContactoDeleteController, bool>
-      createElement() {
+  createElement() {
     return _ClienteContactoDeleteControllerProviderElement(this);
   }
 
@@ -171,14 +166,18 @@ mixin ClienteContactoDeleteControllerRef
 }
 
 class _ClienteContactoDeleteControllerProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<
-        ClienteContactoDeleteController,
-        bool> with ClienteContactoDeleteControllerRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          ClienteContactoDeleteController,
+          bool
+        >
+    with ClienteContactoDeleteControllerRef {
   _ClienteContactoDeleteControllerProviderElement(super.provider);
 
   @override
   ClienteImpParam get clienteImpParam =>
       (origin as ClienteContactoDeleteControllerProvider).clienteImpParam;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

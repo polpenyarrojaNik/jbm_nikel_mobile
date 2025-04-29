@@ -6,8 +6,9 @@ import '../../infrastructure/visita_repository.dart';
 
 part 'visita_search_controller.g.dart';
 
-final visitasSearchQueryStateProvider =
-    StateProvider.autoDispose<String>((ref) {
+final visitasSearchQueryStateProvider = StateProvider.autoDispose<String>((
+  ref,
+) {
   return '';
 });
 
@@ -17,8 +18,11 @@ class VisitaIndexScreenController extends _$VisitaIndexScreenController {
 
   @override
   Future<int> build() {
-    return ref.read(visitaRepositoryProvider).getVisitasCountList(
-        searchText: ref.watch(visitasSearchQueryStateProvider));
+    return ref
+        .read(visitaRepositoryProvider)
+        .getVisitasCountList(
+          searchText: ref.watch(visitasSearchQueryStateProvider),
+        );
   }
 }
 
@@ -29,7 +33,11 @@ class VisitaIndexScreenPaginatedController
 
   @override
   Future<List<Visita>> build({required int page}) {
-    return ref.read(visitaRepositoryProvider).getVisitaList(
-        page: page, searchText: ref.watch(visitasSearchQueryStateProvider));
+    return ref
+        .read(visitaRepositoryProvider)
+        .getVisitaList(
+          page: page,
+          searchText: ref.watch(visitasSearchQueryStateProvider),
+        );
   }
 }

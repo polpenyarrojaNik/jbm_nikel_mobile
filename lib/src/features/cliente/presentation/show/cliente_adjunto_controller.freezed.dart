@@ -12,7 +12,8 @@ part of 'cliente_adjunto_controller.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ClienteAdjuntoState {
@@ -22,16 +23,14 @@ mixin _$ClienteAdjuntoState {
     required TResult Function() loading,
     required TResult Function(File? file) data,
     required TResult Function(String failure) error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(File? file)? data,
     TResult? Function(String failure)? error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
@@ -39,24 +38,21 @@ mixin _$ClienteAdjuntoState {
     TResult Function(File? file)? data,
     TResult Function(String failure)? error,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Data value) data,
     required TResult Function(_Error value) error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Data value)? data,
     TResult? Function(_Error value)? error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
@@ -64,15 +60,15 @@ mixin _$ClienteAdjuntoState {
     TResult Function(_Data value)? data,
     TResult Function(_Error value)? error,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ClienteAdjuntoStateCopyWith<$Res> {
   factory $ClienteAdjuntoStateCopyWith(
-          ClienteAdjuntoState value, $Res Function(ClienteAdjuntoState) then) =
-      _$ClienteAdjuntoStateCopyWithImpl<$Res, ClienteAdjuntoState>;
+    ClienteAdjuntoState value,
+    $Res Function(ClienteAdjuntoState) then,
+  ) = _$ClienteAdjuntoStateCopyWithImpl<$Res, ClienteAdjuntoState>;
 }
 
 /// @nodoc
@@ -92,8 +88,9 @@ class _$ClienteAdjuntoStateCopyWithImpl<$Res, $Val extends ClienteAdjuntoState>
 /// @nodoc
 abstract class _$$InitialImplCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+    _$InitialImpl value,
+    $Res Function(_$InitialImpl) then,
+  ) = __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -101,8 +98,9 @@ class __$$InitialImplCopyWithImpl<$Res>
     extends _$ClienteAdjuntoStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
-      : super(_value, _then);
+    _$InitialImpl _value,
+    $Res Function(_$InitialImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ClienteAdjuntoState
   /// with the given fields replaced by the non-null parameter values.
@@ -210,8 +208,9 @@ abstract class _Initial extends ClienteAdjuntoState {
 /// @nodoc
 abstract class _$$LoadingImplCopyWith<$Res> {
   factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
+    _$LoadingImpl value,
+    $Res Function(_$LoadingImpl) then,
+  ) = __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -219,8 +218,9 @@ class __$$LoadingImplCopyWithImpl<$Res>
     extends _$ClienteAdjuntoStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
-      : super(_value, _then);
+    _$LoadingImpl _value,
+    $Res Function(_$LoadingImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ClienteAdjuntoState
   /// with the given fields replaced by the non-null parameter values.
@@ -328,8 +328,9 @@ abstract class _Loading extends ClienteAdjuntoState {
 /// @nodoc
 abstract class _$$DataImplCopyWith<$Res> {
   factory _$$DataImplCopyWith(
-          _$DataImpl value, $Res Function(_$DataImpl) then) =
-      __$$DataImplCopyWithImpl<$Res>;
+    _$DataImpl value,
+    $Res Function(_$DataImpl) then,
+  ) = __$$DataImplCopyWithImpl<$Res>;
   @useResult
   $Res call({File? file});
 }
@@ -339,21 +340,21 @@ class __$$DataImplCopyWithImpl<$Res>
     extends _$ClienteAdjuntoStateCopyWithImpl<$Res, _$DataImpl>
     implements _$$DataImplCopyWith<$Res> {
   __$$DataImplCopyWithImpl(_$DataImpl _value, $Res Function(_$DataImpl) _then)
-      : super(_value, _then);
+    : super(_value, _then);
 
   /// Create a copy of ClienteAdjuntoState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? file = freezed,
-  }) {
-    return _then(_$DataImpl(
-      freezed == file
-          ? _value.file
-          : file // ignore: cast_nullable_to_non_nullable
-              as File?,
-    ));
+  $Res call({Object? file = freezed}) {
+    return _then(
+      _$DataImpl(
+        freezed == file
+            ? _value.file
+            : file // ignore: cast_nullable_to_non_nullable
+                as File?,
+      ),
+    );
   }
 }
 
@@ -480,8 +481,9 @@ abstract class _Data extends ClienteAdjuntoState {
 /// @nodoc
 abstract class _$$ErrorImplCopyWith<$Res> {
   factory _$$ErrorImplCopyWith(
-          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
-      __$$ErrorImplCopyWithImpl<$Res>;
+    _$ErrorImpl value,
+    $Res Function(_$ErrorImpl) then,
+  ) = __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String failure});
 }
@@ -491,22 +493,23 @@ class __$$ErrorImplCopyWithImpl<$Res>
     extends _$ClienteAdjuntoStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
-      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
-      : super(_value, _then);
+    _$ErrorImpl _value,
+    $Res Function(_$ErrorImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ClienteAdjuntoState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? failure = null,
-  }) {
-    return _then(_$ErrorImpl(
-      null == failure
-          ? _value.failure
-          : failure // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? failure = null}) {
+    return _then(
+      _$ErrorImpl(
+        null == failure
+            ? _value.failure
+            : failure // ignore: cast_nullable_to_non_nullable
+                as String,
+      ),
+    );
   }
 }
 

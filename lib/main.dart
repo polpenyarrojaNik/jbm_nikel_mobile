@@ -25,12 +25,7 @@ void main() async {
       //TODO REMOVE this for release builds
       // await Upgrader.clearSavedSettings();
 
-      runApp(
-        ProviderScope(
-          observers: [RiverpodLogger()],
-          child: const App(),
-        ),
-      );
+      runApp(ProviderScope(observers: [RiverpodLogger()], child: const App()));
 
       FlutterError.onError = (FlutterErrorDetails detalles) {
         FlutterError.presentError(detalles);
@@ -41,11 +36,7 @@ void main() async {
             backgroundColor: Colors.red,
             title: const Text('Ha ocurrido un error'),
           ),
-          body: Center(
-            child: Text(
-              detalles.toString(),
-            ),
-          ),
+          body: Center(child: Text(detalles.toString())),
         );
       };
     },

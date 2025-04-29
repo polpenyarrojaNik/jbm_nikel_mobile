@@ -12,7 +12,8 @@ part of 'cliente_alrededor.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ClienteAlrededor {
@@ -44,27 +45,29 @@ mixin _$ClienteAlrededor {
 /// @nodoc
 abstract class $ClienteAlrededorCopyWith<$Res> {
   factory $ClienteAlrededorCopyWith(
-          ClienteAlrededor value, $Res Function(ClienteAlrededor) then) =
-      _$ClienteAlrededorCopyWithImpl<$Res, ClienteAlrededor>;
+    ClienteAlrededor value,
+    $Res Function(ClienteAlrededor) then,
+  ) = _$ClienteAlrededorCopyWithImpl<$Res, ClienteAlrededor>;
   @useResult
-  $Res call(
-      {String clienteId,
-      String markerId,
-      String nombre,
-      bool isDireccionFiscal,
-      String? direccion,
-      String? codigoPostal,
-      String? poblacion,
-      String? provincia,
-      Pais? pais,
-      bool? isClientePotencial,
-      double latitud,
-      double longitud,
-      Money ventasAnyoActual,
-      Money ventasAnyoAnterior,
-      double porcentajeAbonos,
-      String? nombreRepresentante1,
-      String? nombreRepresentante2});
+  $Res call({
+    String clienteId,
+    String markerId,
+    String nombre,
+    bool isDireccionFiscal,
+    String? direccion,
+    String? codigoPostal,
+    String? poblacion,
+    String? provincia,
+    Pais? pais,
+    bool? isClientePotencial,
+    double latitud,
+    double longitud,
+    Money ventasAnyoActual,
+    Money ventasAnyoAnterior,
+    double porcentajeAbonos,
+    String? nombreRepresentante1,
+    String? nombreRepresentante2,
+  });
 
   $PaisCopyWith<$Res>? get pais;
 }
@@ -102,76 +105,96 @@ class _$ClienteAlrededorCopyWithImpl<$Res, $Val extends ClienteAlrededor>
     Object? nombreRepresentante1 = freezed,
     Object? nombreRepresentante2 = freezed,
   }) {
-    return _then(_value.copyWith(
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      markerId: null == markerId
-          ? _value.markerId
-          : markerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      nombre: null == nombre
-          ? _value.nombre
-          : nombre // ignore: cast_nullable_to_non_nullable
-              as String,
-      isDireccionFiscal: null == isDireccionFiscal
-          ? _value.isDireccionFiscal
-          : isDireccionFiscal // ignore: cast_nullable_to_non_nullable
-              as bool,
-      direccion: freezed == direccion
-          ? _value.direccion
-          : direccion // ignore: cast_nullable_to_non_nullable
-              as String?,
-      codigoPostal: freezed == codigoPostal
-          ? _value.codigoPostal
-          : codigoPostal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      poblacion: freezed == poblacion
-          ? _value.poblacion
-          : poblacion // ignore: cast_nullable_to_non_nullable
-              as String?,
-      provincia: freezed == provincia
-          ? _value.provincia
-          : provincia // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pais: freezed == pais
-          ? _value.pais
-          : pais // ignore: cast_nullable_to_non_nullable
-              as Pais?,
-      isClientePotencial: freezed == isClientePotencial
-          ? _value.isClientePotencial
-          : isClientePotencial // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      latitud: null == latitud
-          ? _value.latitud
-          : latitud // ignore: cast_nullable_to_non_nullable
-              as double,
-      longitud: null == longitud
-          ? _value.longitud
-          : longitud // ignore: cast_nullable_to_non_nullable
-              as double,
-      ventasAnyoActual: null == ventasAnyoActual
-          ? _value.ventasAnyoActual
-          : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
-              as Money,
-      ventasAnyoAnterior: null == ventasAnyoAnterior
-          ? _value.ventasAnyoAnterior
-          : ventasAnyoAnterior // ignore: cast_nullable_to_non_nullable
-              as Money,
-      porcentajeAbonos: null == porcentajeAbonos
-          ? _value.porcentajeAbonos
-          : porcentajeAbonos // ignore: cast_nullable_to_non_nullable
-              as double,
-      nombreRepresentante1: freezed == nombreRepresentante1
-          ? _value.nombreRepresentante1
-          : nombreRepresentante1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nombreRepresentante2: freezed == nombreRepresentante2
-          ? _value.nombreRepresentante2
-          : nombreRepresentante2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            clienteId:
+                null == clienteId
+                    ? _value.clienteId
+                    : clienteId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            markerId:
+                null == markerId
+                    ? _value.markerId
+                    : markerId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            nombre:
+                null == nombre
+                    ? _value.nombre
+                    : nombre // ignore: cast_nullable_to_non_nullable
+                        as String,
+            isDireccionFiscal:
+                null == isDireccionFiscal
+                    ? _value.isDireccionFiscal
+                    : isDireccionFiscal // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            direccion:
+                freezed == direccion
+                    ? _value.direccion
+                    : direccion // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            codigoPostal:
+                freezed == codigoPostal
+                    ? _value.codigoPostal
+                    : codigoPostal // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            poblacion:
+                freezed == poblacion
+                    ? _value.poblacion
+                    : poblacion // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            provincia:
+                freezed == provincia
+                    ? _value.provincia
+                    : provincia // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            pais:
+                freezed == pais
+                    ? _value.pais
+                    : pais // ignore: cast_nullable_to_non_nullable
+                        as Pais?,
+            isClientePotencial:
+                freezed == isClientePotencial
+                    ? _value.isClientePotencial
+                    : isClientePotencial // ignore: cast_nullable_to_non_nullable
+                        as bool?,
+            latitud:
+                null == latitud
+                    ? _value.latitud
+                    : latitud // ignore: cast_nullable_to_non_nullable
+                        as double,
+            longitud:
+                null == longitud
+                    ? _value.longitud
+                    : longitud // ignore: cast_nullable_to_non_nullable
+                        as double,
+            ventasAnyoActual:
+                null == ventasAnyoActual
+                    ? _value.ventasAnyoActual
+                    : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
+                        as Money,
+            ventasAnyoAnterior:
+                null == ventasAnyoAnterior
+                    ? _value.ventasAnyoAnterior
+                    : ventasAnyoAnterior // ignore: cast_nullable_to_non_nullable
+                        as Money,
+            porcentajeAbonos:
+                null == porcentajeAbonos
+                    ? _value.porcentajeAbonos
+                    : porcentajeAbonos // ignore: cast_nullable_to_non_nullable
+                        as double,
+            nombreRepresentante1:
+                freezed == nombreRepresentante1
+                    ? _value.nombreRepresentante1
+                    : nombreRepresentante1 // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            nombreRepresentante2:
+                freezed == nombreRepresentante2
+                    ? _value.nombreRepresentante2
+                    : nombreRepresentante2 // ignore: cast_nullable_to_non_nullable
+                        as String?,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of ClienteAlrededor
@@ -192,29 +215,31 @@ class _$ClienteAlrededorCopyWithImpl<$Res, $Val extends ClienteAlrededor>
 /// @nodoc
 abstract class _$$ClienteAlrededorImplCopyWith<$Res>
     implements $ClienteAlrededorCopyWith<$Res> {
-  factory _$$ClienteAlrededorImplCopyWith(_$ClienteAlrededorImpl value,
-          $Res Function(_$ClienteAlrededorImpl) then) =
-      __$$ClienteAlrededorImplCopyWithImpl<$Res>;
+  factory _$$ClienteAlrededorImplCopyWith(
+    _$ClienteAlrededorImpl value,
+    $Res Function(_$ClienteAlrededorImpl) then,
+  ) = __$$ClienteAlrededorImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String clienteId,
-      String markerId,
-      String nombre,
-      bool isDireccionFiscal,
-      String? direccion,
-      String? codigoPostal,
-      String? poblacion,
-      String? provincia,
-      Pais? pais,
-      bool? isClientePotencial,
-      double latitud,
-      double longitud,
-      Money ventasAnyoActual,
-      Money ventasAnyoAnterior,
-      double porcentajeAbonos,
-      String? nombreRepresentante1,
-      String? nombreRepresentante2});
+  $Res call({
+    String clienteId,
+    String markerId,
+    String nombre,
+    bool isDireccionFiscal,
+    String? direccion,
+    String? codigoPostal,
+    String? poblacion,
+    String? provincia,
+    Pais? pais,
+    bool? isClientePotencial,
+    double latitud,
+    double longitud,
+    Money ventasAnyoActual,
+    Money ventasAnyoAnterior,
+    double porcentajeAbonos,
+    String? nombreRepresentante1,
+    String? nombreRepresentante2,
+  });
 
   @override
   $PaisCopyWith<$Res>? get pais;
@@ -224,9 +249,10 @@ abstract class _$$ClienteAlrededorImplCopyWith<$Res>
 class __$$ClienteAlrededorImplCopyWithImpl<$Res>
     extends _$ClienteAlrededorCopyWithImpl<$Res, _$ClienteAlrededorImpl>
     implements _$$ClienteAlrededorImplCopyWith<$Res> {
-  __$$ClienteAlrededorImplCopyWithImpl(_$ClienteAlrededorImpl _value,
-      $Res Function(_$ClienteAlrededorImpl) _then)
-      : super(_value, _then);
+  __$$ClienteAlrededorImplCopyWithImpl(
+    _$ClienteAlrededorImpl _value,
+    $Res Function(_$ClienteAlrededorImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ClienteAlrededor
   /// with the given fields replaced by the non-null parameter values.
@@ -251,101 +277,120 @@ class __$$ClienteAlrededorImplCopyWithImpl<$Res>
     Object? nombreRepresentante1 = freezed,
     Object? nombreRepresentante2 = freezed,
   }) {
-    return _then(_$ClienteAlrededorImpl(
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      markerId: null == markerId
-          ? _value.markerId
-          : markerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      nombre: null == nombre
-          ? _value.nombre
-          : nombre // ignore: cast_nullable_to_non_nullable
-              as String,
-      isDireccionFiscal: null == isDireccionFiscal
-          ? _value.isDireccionFiscal
-          : isDireccionFiscal // ignore: cast_nullable_to_non_nullable
-              as bool,
-      direccion: freezed == direccion
-          ? _value.direccion
-          : direccion // ignore: cast_nullable_to_non_nullable
-              as String?,
-      codigoPostal: freezed == codigoPostal
-          ? _value.codigoPostal
-          : codigoPostal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      poblacion: freezed == poblacion
-          ? _value.poblacion
-          : poblacion // ignore: cast_nullable_to_non_nullable
-              as String?,
-      provincia: freezed == provincia
-          ? _value.provincia
-          : provincia // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pais: freezed == pais
-          ? _value.pais
-          : pais // ignore: cast_nullable_to_non_nullable
-              as Pais?,
-      isClientePotencial: freezed == isClientePotencial
-          ? _value.isClientePotencial
-          : isClientePotencial // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      latitud: null == latitud
-          ? _value.latitud
-          : latitud // ignore: cast_nullable_to_non_nullable
-              as double,
-      longitud: null == longitud
-          ? _value.longitud
-          : longitud // ignore: cast_nullable_to_non_nullable
-              as double,
-      ventasAnyoActual: null == ventasAnyoActual
-          ? _value.ventasAnyoActual
-          : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
-              as Money,
-      ventasAnyoAnterior: null == ventasAnyoAnterior
-          ? _value.ventasAnyoAnterior
-          : ventasAnyoAnterior // ignore: cast_nullable_to_non_nullable
-              as Money,
-      porcentajeAbonos: null == porcentajeAbonos
-          ? _value.porcentajeAbonos
-          : porcentajeAbonos // ignore: cast_nullable_to_non_nullable
-              as double,
-      nombreRepresentante1: freezed == nombreRepresentante1
-          ? _value.nombreRepresentante1
-          : nombreRepresentante1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nombreRepresentante2: freezed == nombreRepresentante2
-          ? _value.nombreRepresentante2
-          : nombreRepresentante2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$ClienteAlrededorImpl(
+        clienteId:
+            null == clienteId
+                ? _value.clienteId
+                : clienteId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        markerId:
+            null == markerId
+                ? _value.markerId
+                : markerId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        nombre:
+            null == nombre
+                ? _value.nombre
+                : nombre // ignore: cast_nullable_to_non_nullable
+                    as String,
+        isDireccionFiscal:
+            null == isDireccionFiscal
+                ? _value.isDireccionFiscal
+                : isDireccionFiscal // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        direccion:
+            freezed == direccion
+                ? _value.direccion
+                : direccion // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        codigoPostal:
+            freezed == codigoPostal
+                ? _value.codigoPostal
+                : codigoPostal // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        poblacion:
+            freezed == poblacion
+                ? _value.poblacion
+                : poblacion // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        provincia:
+            freezed == provincia
+                ? _value.provincia
+                : provincia // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        pais:
+            freezed == pais
+                ? _value.pais
+                : pais // ignore: cast_nullable_to_non_nullable
+                    as Pais?,
+        isClientePotencial:
+            freezed == isClientePotencial
+                ? _value.isClientePotencial
+                : isClientePotencial // ignore: cast_nullable_to_non_nullable
+                    as bool?,
+        latitud:
+            null == latitud
+                ? _value.latitud
+                : latitud // ignore: cast_nullable_to_non_nullable
+                    as double,
+        longitud:
+            null == longitud
+                ? _value.longitud
+                : longitud // ignore: cast_nullable_to_non_nullable
+                    as double,
+        ventasAnyoActual:
+            null == ventasAnyoActual
+                ? _value.ventasAnyoActual
+                : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
+                    as Money,
+        ventasAnyoAnterior:
+            null == ventasAnyoAnterior
+                ? _value.ventasAnyoAnterior
+                : ventasAnyoAnterior // ignore: cast_nullable_to_non_nullable
+                    as Money,
+        porcentajeAbonos:
+            null == porcentajeAbonos
+                ? _value.porcentajeAbonos
+                : porcentajeAbonos // ignore: cast_nullable_to_non_nullable
+                    as double,
+        nombreRepresentante1:
+            freezed == nombreRepresentante1
+                ? _value.nombreRepresentante1
+                : nombreRepresentante1 // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        nombreRepresentante2:
+            freezed == nombreRepresentante2
+                ? _value.nombreRepresentante2
+                : nombreRepresentante2 // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ClienteAlrededorImpl extends _ClienteAlrededor {
-  const _$ClienteAlrededorImpl(
-      {required this.clienteId,
-      required this.markerId,
-      required this.nombre,
-      required this.isDireccionFiscal,
-      this.direccion,
-      this.codigoPostal,
-      this.poblacion,
-      this.provincia,
-      this.pais,
-      this.isClientePotencial,
-      required this.latitud,
-      required this.longitud,
-      required this.ventasAnyoActual,
-      required this.ventasAnyoAnterior,
-      required this.porcentajeAbonos,
-      this.nombreRepresentante1,
-      this.nombreRepresentante2})
-      : super._();
+  const _$ClienteAlrededorImpl({
+    required this.clienteId,
+    required this.markerId,
+    required this.nombre,
+    required this.isDireccionFiscal,
+    this.direccion,
+    this.codigoPostal,
+    this.poblacion,
+    this.provincia,
+    this.pais,
+    this.isClientePotencial,
+    required this.latitud,
+    required this.longitud,
+    required this.ventasAnyoActual,
+    required this.ventasAnyoAnterior,
+    required this.porcentajeAbonos,
+    this.nombreRepresentante1,
+    this.nombreRepresentante2,
+  }) : super._();
 
   @override
   final String clienteId;
@@ -427,24 +472,25 @@ class _$ClienteAlrededorImpl extends _ClienteAlrededor {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      clienteId,
-      markerId,
-      nombre,
-      isDireccionFiscal,
-      direccion,
-      codigoPostal,
-      poblacion,
-      provincia,
-      pais,
-      isClientePotencial,
-      latitud,
-      longitud,
-      ventasAnyoActual,
-      ventasAnyoAnterior,
-      porcentajeAbonos,
-      nombreRepresentante1,
-      nombreRepresentante2);
+    runtimeType,
+    clienteId,
+    markerId,
+    nombre,
+    isDireccionFiscal,
+    direccion,
+    codigoPostal,
+    poblacion,
+    provincia,
+    pais,
+    isClientePotencial,
+    latitud,
+    longitud,
+    ventasAnyoActual,
+    ventasAnyoAnterior,
+    porcentajeAbonos,
+    nombreRepresentante1,
+    nombreRepresentante2,
+  );
 
   /// Create a copy of ClienteAlrededor
   /// with the given fields replaced by the non-null parameter values.
@@ -453,28 +499,31 @@ class _$ClienteAlrededorImpl extends _ClienteAlrededor {
   @pragma('vm:prefer-inline')
   _$$ClienteAlrededorImplCopyWith<_$ClienteAlrededorImpl> get copyWith =>
       __$$ClienteAlrededorImplCopyWithImpl<_$ClienteAlrededorImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _ClienteAlrededor extends ClienteAlrededor {
-  const factory _ClienteAlrededor(
-      {required final String clienteId,
-      required final String markerId,
-      required final String nombre,
-      required final bool isDireccionFiscal,
-      final String? direccion,
-      final String? codigoPostal,
-      final String? poblacion,
-      final String? provincia,
-      final Pais? pais,
-      final bool? isClientePotencial,
-      required final double latitud,
-      required final double longitud,
-      required final Money ventasAnyoActual,
-      required final Money ventasAnyoAnterior,
-      required final double porcentajeAbonos,
-      final String? nombreRepresentante1,
-      final String? nombreRepresentante2}) = _$ClienteAlrededorImpl;
+  const factory _ClienteAlrededor({
+    required final String clienteId,
+    required final String markerId,
+    required final String nombre,
+    required final bool isDireccionFiscal,
+    final String? direccion,
+    final String? codigoPostal,
+    final String? poblacion,
+    final String? provincia,
+    final Pais? pais,
+    final bool? isClientePotencial,
+    required final double latitud,
+    required final double longitud,
+    required final Money ventasAnyoActual,
+    required final Money ventasAnyoAnterior,
+    required final double porcentajeAbonos,
+    final String? nombreRepresentante1,
+    final String? nombreRepresentante2,
+  }) = _$ClienteAlrededorImpl;
   const _ClienteAlrededor._() : super._();
 
   @override

@@ -12,10 +12,12 @@ part of 'tipo_catalogo_precio_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 TipoPrecioCatalogoDTO _$TipoPrecioCatalogoDTOFromJson(
-    Map<String, dynamic> json) {
+  Map<String, dynamic> json,
+) {
   return _TipoCatalogoDTO.fromJson(json);
 }
 
@@ -56,27 +58,31 @@ mixin _$TipoPrecioCatalogoDTO {
 
 /// @nodoc
 abstract class $TipoPrecioCatalogoDTOCopyWith<$Res> {
-  factory $TipoPrecioCatalogoDTOCopyWith(TipoPrecioCatalogoDTO value,
-          $Res Function(TipoPrecioCatalogoDTO) then) =
-      _$TipoPrecioCatalogoDTOCopyWithImpl<$Res, TipoPrecioCatalogoDTO>;
+  factory $TipoPrecioCatalogoDTOCopyWith(
+    TipoPrecioCatalogoDTO value,
+    $Res Function(TipoPrecioCatalogoDTO) then,
+  ) = _$TipoPrecioCatalogoDTOCopyWithImpl<$Res, TipoPrecioCatalogoDTO>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID') String tipoPrecioCatalogoId,
-      @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
-      @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
-      @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
-      @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
-      @JsonKey(name: 'DESCRIPCION_CA') String? descripcionCA,
-      @JsonKey(name: 'DESCRIPCION_GB') String? descripcionGB,
-      @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
-      @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
-      @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
-      @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL});
+  $Res call({
+    @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID') String tipoPrecioCatalogoId,
+    @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
+    @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
+    @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
+    @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
+    @JsonKey(name: 'DESCRIPCION_CA') String? descripcionCA,
+    @JsonKey(name: 'DESCRIPCION_GB') String? descripcionGB,
+    @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
+    @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
+    @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
+    @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
+  });
 }
 
 /// @nodoc
-class _$TipoPrecioCatalogoDTOCopyWithImpl<$Res,
-        $Val extends TipoPrecioCatalogoDTO>
+class _$TipoPrecioCatalogoDTOCopyWithImpl<
+  $Res,
+  $Val extends TipoPrecioCatalogoDTO
+>
     implements $TipoPrecioCatalogoDTOCopyWith<$Res> {
   _$TipoPrecioCatalogoDTOCopyWithImpl(this._value, this._then);
 
@@ -102,75 +108,91 @@ class _$TipoPrecioCatalogoDTOCopyWithImpl<$Res,
     Object? descripcionNL = freezed,
     Object? descripcionPL = freezed,
   }) {
-    return _then(_value.copyWith(
-      tipoPrecioCatalogoId: null == tipoPrecioCatalogoId
-          ? _value.tipoPrecioCatalogoId
-          : tipoPrecioCatalogoId // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcionES: null == descripcionES
-          ? _value.descripcionES
-          : descripcionES // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcionEN: freezed == descripcionEN
-          ? _value.descripcionEN
-          : descripcionEN // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionFR: freezed == descripcionFR
-          ? _value.descripcionFR
-          : descripcionFR // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionDE: freezed == descripcionDE
-          ? _value.descripcionDE
-          : descripcionDE // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionCA: freezed == descripcionCA
-          ? _value.descripcionCA
-          : descripcionCA // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionGB: freezed == descripcionGB
-          ? _value.descripcionGB
-          : descripcionGB // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionHU: freezed == descripcionHU
-          ? _value.descripcionHU
-          : descripcionHU // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionIT: freezed == descripcionIT
-          ? _value.descripcionIT
-          : descripcionIT // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionNL: freezed == descripcionNL
-          ? _value.descripcionNL
-          : descripcionNL // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionPL: freezed == descripcionPL
-          ? _value.descripcionPL
-          : descripcionPL // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            tipoPrecioCatalogoId:
+                null == tipoPrecioCatalogoId
+                    ? _value.tipoPrecioCatalogoId
+                    : tipoPrecioCatalogoId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            descripcionES:
+                null == descripcionES
+                    ? _value.descripcionES
+                    : descripcionES // ignore: cast_nullable_to_non_nullable
+                        as String,
+            descripcionEN:
+                freezed == descripcionEN
+                    ? _value.descripcionEN
+                    : descripcionEN // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionFR:
+                freezed == descripcionFR
+                    ? _value.descripcionFR
+                    : descripcionFR // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionDE:
+                freezed == descripcionDE
+                    ? _value.descripcionDE
+                    : descripcionDE // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionCA:
+                freezed == descripcionCA
+                    ? _value.descripcionCA
+                    : descripcionCA // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionGB:
+                freezed == descripcionGB
+                    ? _value.descripcionGB
+                    : descripcionGB // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionHU:
+                freezed == descripcionHU
+                    ? _value.descripcionHU
+                    : descripcionHU // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionIT:
+                freezed == descripcionIT
+                    ? _value.descripcionIT
+                    : descripcionIT // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionNL:
+                freezed == descripcionNL
+                    ? _value.descripcionNL
+                    : descripcionNL // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionPL:
+                freezed == descripcionPL
+                    ? _value.descripcionPL
+                    : descripcionPL // ignore: cast_nullable_to_non_nullable
+                        as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$TipoCatalogoDTOImplCopyWith<$Res>
     implements $TipoPrecioCatalogoDTOCopyWith<$Res> {
-  factory _$$TipoCatalogoDTOImplCopyWith(_$TipoCatalogoDTOImpl value,
-          $Res Function(_$TipoCatalogoDTOImpl) then) =
-      __$$TipoCatalogoDTOImplCopyWithImpl<$Res>;
+  factory _$$TipoCatalogoDTOImplCopyWith(
+    _$TipoCatalogoDTOImpl value,
+    $Res Function(_$TipoCatalogoDTOImpl) then,
+  ) = __$$TipoCatalogoDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID') String tipoPrecioCatalogoId,
-      @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
-      @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
-      @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
-      @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
-      @JsonKey(name: 'DESCRIPCION_CA') String? descripcionCA,
-      @JsonKey(name: 'DESCRIPCION_GB') String? descripcionGB,
-      @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
-      @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
-      @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
-      @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL});
+  $Res call({
+    @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID') String tipoPrecioCatalogoId,
+    @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
+    @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
+    @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
+    @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
+    @JsonKey(name: 'DESCRIPCION_CA') String? descripcionCA,
+    @JsonKey(name: 'DESCRIPCION_GB') String? descripcionGB,
+    @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
+    @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
+    @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
+    @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
+  });
 }
 
 /// @nodoc
@@ -178,8 +200,9 @@ class __$$TipoCatalogoDTOImplCopyWithImpl<$Res>
     extends _$TipoPrecioCatalogoDTOCopyWithImpl<$Res, _$TipoCatalogoDTOImpl>
     implements _$$TipoCatalogoDTOImplCopyWith<$Res> {
   __$$TipoCatalogoDTOImplCopyWithImpl(
-      _$TipoCatalogoDTOImpl _value, $Res Function(_$TipoCatalogoDTOImpl) _then)
-      : super(_value, _then);
+    _$TipoCatalogoDTOImpl _value,
+    $Res Function(_$TipoCatalogoDTOImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of TipoPrecioCatalogoDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -198,72 +221,85 @@ class __$$TipoCatalogoDTOImplCopyWithImpl<$Res>
     Object? descripcionNL = freezed,
     Object? descripcionPL = freezed,
   }) {
-    return _then(_$TipoCatalogoDTOImpl(
-      tipoPrecioCatalogoId: null == tipoPrecioCatalogoId
-          ? _value.tipoPrecioCatalogoId
-          : tipoPrecioCatalogoId // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcionES: null == descripcionES
-          ? _value.descripcionES
-          : descripcionES // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcionEN: freezed == descripcionEN
-          ? _value.descripcionEN
-          : descripcionEN // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionFR: freezed == descripcionFR
-          ? _value.descripcionFR
-          : descripcionFR // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionDE: freezed == descripcionDE
-          ? _value.descripcionDE
-          : descripcionDE // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionCA: freezed == descripcionCA
-          ? _value.descripcionCA
-          : descripcionCA // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionGB: freezed == descripcionGB
-          ? _value.descripcionGB
-          : descripcionGB // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionHU: freezed == descripcionHU
-          ? _value.descripcionHU
-          : descripcionHU // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionIT: freezed == descripcionIT
-          ? _value.descripcionIT
-          : descripcionIT // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionNL: freezed == descripcionNL
-          ? _value.descripcionNL
-          : descripcionNL // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionPL: freezed == descripcionPL
-          ? _value.descripcionPL
-          : descripcionPL // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$TipoCatalogoDTOImpl(
+        tipoPrecioCatalogoId:
+            null == tipoPrecioCatalogoId
+                ? _value.tipoPrecioCatalogoId
+                : tipoPrecioCatalogoId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        descripcionES:
+            null == descripcionES
+                ? _value.descripcionES
+                : descripcionES // ignore: cast_nullable_to_non_nullable
+                    as String,
+        descripcionEN:
+            freezed == descripcionEN
+                ? _value.descripcionEN
+                : descripcionEN // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionFR:
+            freezed == descripcionFR
+                ? _value.descripcionFR
+                : descripcionFR // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionDE:
+            freezed == descripcionDE
+                ? _value.descripcionDE
+                : descripcionDE // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionCA:
+            freezed == descripcionCA
+                ? _value.descripcionCA
+                : descripcionCA // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionGB:
+            freezed == descripcionGB
+                ? _value.descripcionGB
+                : descripcionGB // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionHU:
+            freezed == descripcionHU
+                ? _value.descripcionHU
+                : descripcionHU // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionIT:
+            freezed == descripcionIT
+                ? _value.descripcionIT
+                : descripcionIT // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionNL:
+            freezed == descripcionNL
+                ? _value.descripcionNL
+                : descripcionNL // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionPL:
+            freezed == descripcionPL
+                ? _value.descripcionPL
+                : descripcionPL // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$TipoCatalogoDTOImpl extends _TipoCatalogoDTO {
-  const _$TipoCatalogoDTOImpl(
-      {@JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID')
-      required this.tipoPrecioCatalogoId,
-      @JsonKey(name: 'DESCRIPCION_ES') required this.descripcionES,
-      @JsonKey(name: 'DESCRIPCION_EN') this.descripcionEN,
-      @JsonKey(name: 'DESCRIPCION_FR') this.descripcionFR,
-      @JsonKey(name: 'DESCRIPCION_DE') this.descripcionDE,
-      @JsonKey(name: 'DESCRIPCION_CA') this.descripcionCA,
-      @JsonKey(name: 'DESCRIPCION_GB') this.descripcionGB,
-      @JsonKey(name: 'DESCRIPCION_HU') this.descripcionHU,
-      @JsonKey(name: 'DESCRIPCION_IT') this.descripcionIT,
-      @JsonKey(name: 'DESCRIPCION_NL') this.descripcionNL,
-      @JsonKey(name: 'DESCRIPCION_PL') this.descripcionPL})
-      : super._();
+  const _$TipoCatalogoDTOImpl({
+    @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID')
+    required this.tipoPrecioCatalogoId,
+    @JsonKey(name: 'DESCRIPCION_ES') required this.descripcionES,
+    @JsonKey(name: 'DESCRIPCION_EN') this.descripcionEN,
+    @JsonKey(name: 'DESCRIPCION_FR') this.descripcionFR,
+    @JsonKey(name: 'DESCRIPCION_DE') this.descripcionDE,
+    @JsonKey(name: 'DESCRIPCION_CA') this.descripcionCA,
+    @JsonKey(name: 'DESCRIPCION_GB') this.descripcionGB,
+    @JsonKey(name: 'DESCRIPCION_HU') this.descripcionHU,
+    @JsonKey(name: 'DESCRIPCION_IT') this.descripcionIT,
+    @JsonKey(name: 'DESCRIPCION_NL') this.descripcionNL,
+    @JsonKey(name: 'DESCRIPCION_PL') this.descripcionPL,
+  }) : super._();
 
   factory _$TipoCatalogoDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$TipoCatalogoDTOImplFromJson(json);
@@ -339,18 +375,19 @@ class _$TipoCatalogoDTOImpl extends _TipoCatalogoDTO {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      tipoPrecioCatalogoId,
-      descripcionES,
-      descripcionEN,
-      descripcionFR,
-      descripcionDE,
-      descripcionCA,
-      descripcionGB,
-      descripcionHU,
-      descripcionIT,
-      descripcionNL,
-      descripcionPL);
+    runtimeType,
+    tipoPrecioCatalogoId,
+    descripcionES,
+    descripcionEN,
+    descripcionFR,
+    descripcionDE,
+    descripcionCA,
+    descripcionGB,
+    descripcionHU,
+    descripcionIT,
+    descripcionNL,
+    descripcionPL,
+  );
 
   /// Create a copy of TipoPrecioCatalogoDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -359,31 +396,31 @@ class _$TipoCatalogoDTOImpl extends _TipoCatalogoDTO {
   @pragma('vm:prefer-inline')
   _$$TipoCatalogoDTOImplCopyWith<_$TipoCatalogoDTOImpl> get copyWith =>
       __$$TipoCatalogoDTOImplCopyWithImpl<_$TipoCatalogoDTOImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TipoCatalogoDTOImplToJson(
-      this,
-    );
+    return _$$TipoCatalogoDTOImplToJson(this);
   }
 }
 
 abstract class _TipoCatalogoDTO extends TipoPrecioCatalogoDTO {
-  const factory _TipoCatalogoDTO(
-          {@JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID')
-          required final String tipoPrecioCatalogoId,
-          @JsonKey(name: 'DESCRIPCION_ES') required final String descripcionES,
-          @JsonKey(name: 'DESCRIPCION_EN') final String? descripcionEN,
-          @JsonKey(name: 'DESCRIPCION_FR') final String? descripcionFR,
-          @JsonKey(name: 'DESCRIPCION_DE') final String? descripcionDE,
-          @JsonKey(name: 'DESCRIPCION_CA') final String? descripcionCA,
-          @JsonKey(name: 'DESCRIPCION_GB') final String? descripcionGB,
-          @JsonKey(name: 'DESCRIPCION_HU') final String? descripcionHU,
-          @JsonKey(name: 'DESCRIPCION_IT') final String? descripcionIT,
-          @JsonKey(name: 'DESCRIPCION_NL') final String? descripcionNL,
-          @JsonKey(name: 'DESCRIPCION_PL') final String? descripcionPL}) =
-      _$TipoCatalogoDTOImpl;
+  const factory _TipoCatalogoDTO({
+    @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID')
+    required final String tipoPrecioCatalogoId,
+    @JsonKey(name: 'DESCRIPCION_ES') required final String descripcionES,
+    @JsonKey(name: 'DESCRIPCION_EN') final String? descripcionEN,
+    @JsonKey(name: 'DESCRIPCION_FR') final String? descripcionFR,
+    @JsonKey(name: 'DESCRIPCION_DE') final String? descripcionDE,
+    @JsonKey(name: 'DESCRIPCION_CA') final String? descripcionCA,
+    @JsonKey(name: 'DESCRIPCION_GB') final String? descripcionGB,
+    @JsonKey(name: 'DESCRIPCION_HU') final String? descripcionHU,
+    @JsonKey(name: 'DESCRIPCION_IT') final String? descripcionIT,
+    @JsonKey(name: 'DESCRIPCION_NL') final String? descripcionNL,
+    @JsonKey(name: 'DESCRIPCION_PL') final String? descripcionPL,
+  }) = _$TipoCatalogoDTOImpl;
   const _TipoCatalogoDTO._() : super._();
 
   factory _TipoCatalogoDTO.fromJson(Map<String, dynamic> json) =

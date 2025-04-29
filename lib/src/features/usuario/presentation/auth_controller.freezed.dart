@@ -12,7 +12,8 @@ part of 'auth_controller.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods',
+);
 
 /// @nodoc
 mixin _$AuthState {
@@ -22,16 +23,14 @@ mixin _$AuthState {
     required TResult Function() authenticating,
     required TResult Function() authenticated,
     required TResult Function(String e) failure,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unauthenticated,
     TResult Function()? authenticating,
     TResult Function()? authenticated,
     TResult Function(String e)? failure,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unauthenticated,
@@ -39,24 +38,21 @@ mixin _$AuthState {
     TResult Function()? authenticated,
     TResult Function(String e)? failure,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unauthenticated value) unauthenticated,
     required TResult Function(_Authenticating value) authenticating,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Failure value) failure,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Authenticating value)? authenticating,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Failure value)? failure,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unauthenticated value)? unauthenticated,
@@ -64,8 +60,7 @@ mixin _$AuthState {
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -86,8 +81,9 @@ class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
 /// @nodoc
 abstract class _$$_UnauthenticatedCopyWith<$Res> {
   factory _$$_UnauthenticatedCopyWith(
-          _$_Unauthenticated value, $Res Function(_$_Unauthenticated) then) =
-      __$$_UnauthenticatedCopyWithImpl<$Res>;
+    _$_Unauthenticated value,
+    $Res Function(_$_Unauthenticated) then,
+  ) = __$$_UnauthenticatedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -95,8 +91,9 @@ class __$$_UnauthenticatedCopyWithImpl<$Res>
     extends _$AuthStateCopyWithImpl<$Res>
     implements _$$_UnauthenticatedCopyWith<$Res> {
   __$$_UnauthenticatedCopyWithImpl(
-      _$_Unauthenticated _value, $Res Function(_$_Unauthenticated) _then)
-      : super(_value, (v) => _then(v as _$_Unauthenticated));
+    _$_Unauthenticated _value,
+    $Res Function(_$_Unauthenticated) _then,
+  ) : super(_value, (v) => _then(v as _$_Unauthenticated));
 
   @override
   _$_Unauthenticated get _value => super._value as _$_Unauthenticated;
@@ -204,8 +201,9 @@ abstract class _Unauthenticated extends AuthState {
 /// @nodoc
 abstract class _$$_AuthenticatingCopyWith<$Res> {
   factory _$$_AuthenticatingCopyWith(
-          _$_Authenticating value, $Res Function(_$_Authenticating) then) =
-      __$$_AuthenticatingCopyWithImpl<$Res>;
+    _$_Authenticating value,
+    $Res Function(_$_Authenticating) then,
+  ) = __$$_AuthenticatingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -213,8 +211,9 @@ class __$$_AuthenticatingCopyWithImpl<$Res>
     extends _$AuthStateCopyWithImpl<$Res>
     implements _$$_AuthenticatingCopyWith<$Res> {
   __$$_AuthenticatingCopyWithImpl(
-      _$_Authenticating _value, $Res Function(_$_Authenticating) _then)
-      : super(_value, (v) => _then(v as _$_Authenticating));
+    _$_Authenticating _value,
+    $Res Function(_$_Authenticating) _then,
+  ) : super(_value, (v) => _then(v as _$_Authenticating));
 
   @override
   _$_Authenticating get _value => super._value as _$_Authenticating;
@@ -322,16 +321,18 @@ abstract class _Authenticating extends AuthState {
 /// @nodoc
 abstract class _$$_AuthenticatedCopyWith<$Res> {
   factory _$$_AuthenticatedCopyWith(
-          _$_Authenticated value, $Res Function(_$_Authenticated) then) =
-      __$$_AuthenticatedCopyWithImpl<$Res>;
+    _$_Authenticated value,
+    $Res Function(_$_Authenticated) then,
+  ) = __$$_AuthenticatedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$_AuthenticatedCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
     implements _$$_AuthenticatedCopyWith<$Res> {
   __$$_AuthenticatedCopyWithImpl(
-      _$_Authenticated _value, $Res Function(_$_Authenticated) _then)
-      : super(_value, (v) => _then(v as _$_Authenticated));
+    _$_Authenticated _value,
+    $Res Function(_$_Authenticated) _then,
+  ) : super(_value, (v) => _then(v as _$_Authenticated));
 
   @override
   _$_Authenticated get _value => super._value as _$_Authenticated;
@@ -439,8 +440,9 @@ abstract class _Authenticated extends AuthState {
 /// @nodoc
 abstract class _$$_FailureCopyWith<$Res> {
   factory _$$_FailureCopyWith(
-          _$_Failure value, $Res Function(_$_Failure) then) =
-      __$$_FailureCopyWithImpl<$Res>;
+    _$_Failure value,
+    $Res Function(_$_Failure) then,
+  ) = __$$_FailureCopyWithImpl<$Res>;
   $Res call({String e});
 }
 
@@ -448,21 +450,21 @@ abstract class _$$_FailureCopyWith<$Res> {
 class __$$_FailureCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
     implements _$$_FailureCopyWith<$Res> {
   __$$_FailureCopyWithImpl(_$_Failure _value, $Res Function(_$_Failure) _then)
-      : super(_value, (v) => _then(v as _$_Failure));
+    : super(_value, (v) => _then(v as _$_Failure));
 
   @override
   _$_Failure get _value => super._value as _$_Failure;
 
   @override
-  $Res call({
-    Object? e = freezed,
-  }) {
-    return _then(_$_Failure(
-      e == freezed
-          ? _value.e
-          : e // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? e = freezed}) {
+    return _then(
+      _$_Failure(
+        e == freezed
+            ? _value.e
+            : e // ignore: cast_nullable_to_non_nullable
+                as String,
+      ),
+    );
   }
 }
 

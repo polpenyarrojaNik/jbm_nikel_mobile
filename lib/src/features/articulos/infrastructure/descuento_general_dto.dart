@@ -68,8 +68,12 @@ class DescuentoGeneralTable extends Table {
       text().withDefault(const Constant('N')).named('DELETED')();
 
   @override
-  Set<Column> get primaryKey =>
-      {descuentoGeneralId, articuloId, familiaId, subfamiliaId};
+  Set<Column> get primaryKey => {
+    descuentoGeneralId,
+    articuloId,
+    familiaId,
+    subfamiliaId,
+  };
 
   @override
   String get tableName => 'DESCUENTO_GENERAL';

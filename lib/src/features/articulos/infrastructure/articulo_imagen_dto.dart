@@ -20,9 +20,10 @@ class ArticuloImagenDTO with _$ArticuloImagenDTO {
 
   ArticuloImagen toDomain({required bool test}) {
     return ArticuloImagen(
-        articuloId: articuloId,
-        nombreArchivo: nombreArchivo,
-        url: getImageUrl(articuloId, nombreArchivo, test));
+      articuloId: articuloId,
+      nombreArchivo: nombreArchivo,
+      url: getImageUrl(articuloId, nombreArchivo, test),
+    );
   }
 
   String getImageUrl(String articuloId, String nombreArchivo, bool test) {

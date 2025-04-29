@@ -14,7 +14,8 @@ class ClienteDireccionEditPageController
     extends _$ClienteDireccionEditPageController {
   @override
   Future<ClienteDireccionEditPageData> build(
-      ClienteImpParam clienteImpParam) async {
+    ClienteImpParam clienteImpParam,
+  ) async {
     ClienteDireccion? clienteDireccion;
 
     if (clienteImpParam.impId != null) {
@@ -25,7 +26,9 @@ class ClienteDireccionEditPageController
       clienteDireccion = await ref
           .read(clienteRepositoryProvider)
           .getClienteDireccionSyncById(
-              clienteImpParam.clienteId, clienteImpParam.id!);
+            clienteImpParam.clienteId,
+            clienteImpParam.id!,
+          );
     }
     return ClienteDireccionEditPageData(
       isSent: false,
@@ -34,27 +37,32 @@ class ClienteDireccionEditPageController
   }
 
   Future<void> upsertClienteDireccionImp(
-      ClienteDireccionImp clienteDireccionImp) async {
+    ClienteDireccionImp clienteDireccionImp,
+  ) async {
     state = const AsyncLoading();
     try {
-      final clienteDireccion =
-          await ref.read(clienteRepositoryProvider).upsertClienteDireccionImp(
-                clienteDireccionImp,
-                clienteImpParam.id == null,
-              );
+      final clienteDireccion = await ref
+          .read(clienteRepositoryProvider)
+          .upsertClienteDireccionImp(
+            clienteDireccionImp,
+            clienteImpParam.id == null,
+          );
 
       state = AsyncData(
         ClienteDireccionEditPageData(
-            isSent: true, clienteDireccion: clienteDireccion),
+          isSent: true,
+          clienteDireccion: clienteDireccion,
+        ),
       );
     } on AppException catch (e, stackTrace) {
       state = AsyncError(
         ClienteDireccionEditPageData(
-            clienteDireccion: ClienteDireccion.fromClienteDireccionImp(
-              clienteDireccionImp,
-            ),
-            isSent: true,
-            error: e),
+          clienteDireccion: ClienteDireccion.fromClienteDireccionImp(
+            clienteDireccionImp,
+          ),
+          isSent: true,
+          error: e,
+        ),
         stackTrace,
       );
     } catch (e) {

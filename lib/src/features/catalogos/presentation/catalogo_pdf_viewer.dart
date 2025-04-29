@@ -13,15 +13,10 @@ class CatalogoPdfViewerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(getPdfFileName(pdfFile.path)),
-      ),
+      appBar: AppBar(title: Text(getPdfFileName(pdfFile.path))),
       body: Padding(
         padding: const EdgeInsets.all(16),
-        child: SfPdfViewer.file(
-          pdfFile,
-          pageSpacing: 8,
-        ),
+        child: SfPdfViewer.file(pdfFile, pageSpacing: 8),
       ),
     );
   }

@@ -40,10 +40,11 @@ class DevolucionEstadoDTO
 
   DevolucionEstado toDomain() {
     return DevolucionEstado(
-        id: id,
-        descripcion: getDescriptionInLocalLanguage(),
-        lastUpdated: lastUpdated,
-        deleted: (deleted == 'S') ? true : false);
+      id: id,
+      descripcion: getDescriptionInLocalLanguage(),
+      lastUpdated: lastUpdated,
+      deleted: (deleted == 'S') ? true : false,
+    );
   }
 
   String getDescriptionInLocalLanguage() {

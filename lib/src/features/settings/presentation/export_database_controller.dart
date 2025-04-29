@@ -9,8 +9,9 @@ import '../../../core/exceptions/app_exception.dart';
 part 'export_database_controller.freezed.dart';
 
 final exportDatabaseControllerProvider = StateNotifierProvider.autoDispose<
-        ExportDatabaseController, ExportDatabaseControllerState>(
-    (ref) => ExportDatabaseController(ref.watch(settingsRepositoryProvider)));
+  ExportDatabaseController,
+  ExportDatabaseControllerState
+>((ref) => ExportDatabaseController(ref.watch(settingsRepositoryProvider)));
 
 @freezed
 class ExportDatabaseControllerState with _$ExportDatabaseControllerState {
@@ -19,8 +20,10 @@ class ExportDatabaseControllerState with _$ExportDatabaseControllerState {
 
   const factory ExportDatabaseControllerState.initial() = _initial;
 
-  const factory ExportDatabaseControllerState.error(Object error,
-      {StackTrace? stackTrace}) = _error;
+  const factory ExportDatabaseControllerState.error(
+    Object error, {
+    StackTrace? stackTrace,
+  }) = _error;
   const factory ExportDatabaseControllerState.data(File file) = _data;
 }
 
@@ -29,7 +32,7 @@ class ExportDatabaseController
   final SettingsRepository _settingsRepository;
 
   ExportDatabaseController(this._settingsRepository)
-      : super(const ExportDatabaseControllerState.initial());
+    : super(const ExportDatabaseControllerState.initial());
 
   Future<void> exportDatabaseIntoFile() async {
     try {

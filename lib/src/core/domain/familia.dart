@@ -5,9 +5,10 @@ part 'familia.freezed.dart';
 @freezed
 class Familia with _$Familia {
   const Familia._();
-  const factory Familia(
-      {required String id,
-      required String descripcion,
-      required DateTime lastUpdate,
-      required bool deleted}) = _Familia;
+  const factory Familia({
+    required String id,
+    required String descripcion,
+    required DateTime lastUpdate,
+    required bool deleted,
+  }) = _Familia;
 }

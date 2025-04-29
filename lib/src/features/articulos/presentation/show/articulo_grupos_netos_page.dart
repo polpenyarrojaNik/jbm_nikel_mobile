@@ -14,8 +14,11 @@ import '../../infrastructure/articulo_repository.dart';
 
 @RoutePage()
 class ArticuloGrupoNetoPage extends ConsumerWidget {
-  const ArticuloGrupoNetoPage(
-      {super.key, required this.articuloId, required this.description});
+  const ArticuloGrupoNetoPage({
+    super.key,
+    required this.articuloId,
+    required this.description,
+  });
 
   final String articuloId;
   final String description;
@@ -29,30 +32,28 @@ class ArticuloGrupoNetoPage extends ConsumerWidget {
       ),
       body: Column(
         children: [
-          HeaderDatosRelacionados(
-            entityId: articuloId,
-            subtitle: description,
-          ),
+          HeaderDatosRelacionados(entityId: articuloId, subtitle: description),
           gapH8,
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data: (articuloGrupoNetoList) => (articuloGrupoNetoList.isNotEmpty)
-                ? Expanded(
-                    child: ListView.separated(
-                      itemCount: articuloGrupoNetoList.length,
-                      itemBuilder: (context, i) => ArticuloGrupoNetoTile(
-                        articuloGrupoNeto: articuloGrupoNetoList[i],
-                      ),
-                      separatorBuilder: (context, i) => const Divider(),
-                    ),
-                  )
-                : Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(S.of(context).sinResultados),
-                    ],
-                  ),
+            data:
+                (articuloGrupoNetoList) =>
+                    (articuloGrupoNetoList.isNotEmpty)
+                        ? Expanded(
+                          child: ListView.separated(
+                            itemCount: articuloGrupoNetoList.length,
+                            itemBuilder:
+                                (context, i) => ArticuloGrupoNetoTile(
+                                  articuloGrupoNeto: articuloGrupoNetoList[i],
+                                ),
+                            separatorBuilder: (context, i) => const Divider(),
+                          ),
+                        )
+                        : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [Text(S.of(context).sinResultados)],
+                        ),
           ),
         ],
       ),
@@ -75,16 +76,15 @@ class ArticuloGrupoNetoTile extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                articuloGrupoNeto.grupoNetoId,
-              ),
+              Text(articuloGrupoNeto.grupoNetoId),
               Text(
                 formatPrecios(
-                    precio: articuloGrupoNeto.precio,
-                    tipoPrecio: articuloGrupoNeto.tipoPrecio),
+                  precio: articuloGrupoNeto.precio,
+                  tipoPrecio: articuloGrupoNeto.tipoPrecio,
+                ),
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Theme.of(context).textTheme.bodySmall?.color,
-                    ),
+                  color: Theme.of(context).textTheme.bodySmall?.color,
+                ),
               ),
             ],
           ),
@@ -100,7 +100,8 @@ class ArticuloGrupoNetoTile extends StatelessWidget {
                 Text(
                   '≥ ${numberFormatCantidades(articuloGrupoNeto.cantidadDesde)} ${S.of(context).unidad}',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Theme.of(context).textTheme.bodySmall?.color),
+                    color: Theme.of(context).textTheme.bodySmall?.color,
+                  ),
                 ),
             ],
           ),

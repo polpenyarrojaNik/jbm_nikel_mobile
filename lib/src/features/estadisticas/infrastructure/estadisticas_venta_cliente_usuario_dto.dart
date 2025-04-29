@@ -25,8 +25,8 @@ class EstadisticasVentaClienteUsuarioDTO
   }) = _EstadisticasVentaClienteUsuarioDTO;
 
   factory EstadisticasVentaClienteUsuarioDTO.fromJson(
-          Map<String, dynamic> json) =>
-      _$EstadisticasVentaClienteUsuarioDTOFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$EstadisticasVentaClienteUsuarioDTOFromJson(json);
 
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {

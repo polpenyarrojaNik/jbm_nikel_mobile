@@ -12,7 +12,8 @@ part of 'cliente_rappel_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ClienteRappelDTO _$ClienteRappelDTOFromJson(Map<String, dynamic> json) {
   return _ClienteRappelDTO.fromJson(json);
@@ -52,19 +53,21 @@ mixin _$ClienteRappelDTO {
 /// @nodoc
 abstract class $ClienteRappelDTOCopyWith<$Res> {
   factory $ClienteRappelDTOCopyWith(
-          ClienteRappelDTO value, $Res Function(ClienteRappelDTO) then) =
-      _$ClienteRappelDTOCopyWithImpl<$Res, ClienteRappelDTO>;
+    ClienteRappelDTO value,
+    $Res Function(ClienteRappelDTO) then,
+  ) = _$ClienteRappelDTOCopyWithImpl<$Res, ClienteRappelDTO>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'CLIENTE_ID') String clienteId,
-      @JsonKey(name: 'RAPPEL_ID') String rappelId,
-      @JsonKey(name: 'DESCRIPCION') String descripcion,
-      @JsonKey(name: 'FECHA_DESDE') DateTime fechaDesDe,
-      @JsonKey(name: 'FECHA_HASTA') DateTime? fechaHasta,
-      @JsonKey(name: 'NOMBRE_ARCHIVO') String? nombreArchivo,
-      @JsonKey(name: 'FIRMADO') String? firmado,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+  $Res call({
+    @JsonKey(name: 'CLIENTE_ID') String clienteId,
+    @JsonKey(name: 'RAPPEL_ID') String rappelId,
+    @JsonKey(name: 'DESCRIPCION') String descripcion,
+    @JsonKey(name: 'FECHA_DESDE') DateTime fechaDesDe,
+    @JsonKey(name: 'FECHA_HASTA') DateTime? fechaHasta,
+    @JsonKey(name: 'NOMBRE_ARCHIVO') String? nombreArchivo,
+    @JsonKey(name: 'FIRMADO') String? firmado,
+    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') String deleted,
+  });
 }
 
 /// @nodoc
@@ -92,74 +95,89 @@ class _$ClienteRappelDTOCopyWithImpl<$Res, $Val extends ClienteRappelDTO>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_value.copyWith(
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      rappelId: null == rappelId
-          ? _value.rappelId
-          : rappelId // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcion: null == descripcion
-          ? _value.descripcion
-          : descripcion // ignore: cast_nullable_to_non_nullable
-              as String,
-      fechaDesDe: null == fechaDesDe
-          ? _value.fechaDesDe
-          : fechaDesDe // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      fechaHasta: freezed == fechaHasta
-          ? _value.fechaHasta
-          : fechaHasta // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      nombreArchivo: freezed == nombreArchivo
-          ? _value.nombreArchivo
-          : nombreArchivo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      firmado: freezed == firmado
-          ? _value.firmado
-          : firmado // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            clienteId:
+                null == clienteId
+                    ? _value.clienteId
+                    : clienteId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            rappelId:
+                null == rappelId
+                    ? _value.rappelId
+                    : rappelId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            descripcion:
+                null == descripcion
+                    ? _value.descripcion
+                    : descripcion // ignore: cast_nullable_to_non_nullable
+                        as String,
+            fechaDesDe:
+                null == fechaDesDe
+                    ? _value.fechaDesDe
+                    : fechaDesDe // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            fechaHasta:
+                freezed == fechaHasta
+                    ? _value.fechaHasta
+                    : fechaHasta // ignore: cast_nullable_to_non_nullable
+                        as DateTime?,
+            nombreArchivo:
+                freezed == nombreArchivo
+                    ? _value.nombreArchivo
+                    : nombreArchivo // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            firmado:
+                freezed == firmado
+                    ? _value.firmado
+                    : firmado // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            lastUpdated:
+                null == lastUpdated
+                    ? _value.lastUpdated
+                    : lastUpdated // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            deleted:
+                null == deleted
+                    ? _value.deleted
+                    : deleted // ignore: cast_nullable_to_non_nullable
+                        as String,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$ClienteRappelDTOImplCopyWith<$Res>
     implements $ClienteRappelDTOCopyWith<$Res> {
-  factory _$$ClienteRappelDTOImplCopyWith(_$ClienteRappelDTOImpl value,
-          $Res Function(_$ClienteRappelDTOImpl) then) =
-      __$$ClienteRappelDTOImplCopyWithImpl<$Res>;
+  factory _$$ClienteRappelDTOImplCopyWith(
+    _$ClienteRappelDTOImpl value,
+    $Res Function(_$ClienteRappelDTOImpl) then,
+  ) = __$$ClienteRappelDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'CLIENTE_ID') String clienteId,
-      @JsonKey(name: 'RAPPEL_ID') String rappelId,
-      @JsonKey(name: 'DESCRIPCION') String descripcion,
-      @JsonKey(name: 'FECHA_DESDE') DateTime fechaDesDe,
-      @JsonKey(name: 'FECHA_HASTA') DateTime? fechaHasta,
-      @JsonKey(name: 'NOMBRE_ARCHIVO') String? nombreArchivo,
-      @JsonKey(name: 'FIRMADO') String? firmado,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+  $Res call({
+    @JsonKey(name: 'CLIENTE_ID') String clienteId,
+    @JsonKey(name: 'RAPPEL_ID') String rappelId,
+    @JsonKey(name: 'DESCRIPCION') String descripcion,
+    @JsonKey(name: 'FECHA_DESDE') DateTime fechaDesDe,
+    @JsonKey(name: 'FECHA_HASTA') DateTime? fechaHasta,
+    @JsonKey(name: 'NOMBRE_ARCHIVO') String? nombreArchivo,
+    @JsonKey(name: 'FIRMADO') String? firmado,
+    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') String deleted,
+  });
 }
 
 /// @nodoc
 class __$$ClienteRappelDTOImplCopyWithImpl<$Res>
     extends _$ClienteRappelDTOCopyWithImpl<$Res, _$ClienteRappelDTOImpl>
     implements _$$ClienteRappelDTOImplCopyWith<$Res> {
-  __$$ClienteRappelDTOImplCopyWithImpl(_$ClienteRappelDTOImpl _value,
-      $Res Function(_$ClienteRappelDTOImpl) _then)
-      : super(_value, _then);
+  __$$ClienteRappelDTOImplCopyWithImpl(
+    _$ClienteRappelDTOImpl _value,
+    $Res Function(_$ClienteRappelDTOImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ClienteRappelDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -176,61 +194,72 @@ class __$$ClienteRappelDTOImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$ClienteRappelDTOImpl(
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      rappelId: null == rappelId
-          ? _value.rappelId
-          : rappelId // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcion: null == descripcion
-          ? _value.descripcion
-          : descripcion // ignore: cast_nullable_to_non_nullable
-              as String,
-      fechaDesDe: null == fechaDesDe
-          ? _value.fechaDesDe
-          : fechaDesDe // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      fechaHasta: freezed == fechaHasta
-          ? _value.fechaHasta
-          : fechaHasta // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      nombreArchivo: freezed == nombreArchivo
-          ? _value.nombreArchivo
-          : nombreArchivo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      firmado: freezed == firmado
-          ? _value.firmado
-          : firmado // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$ClienteRappelDTOImpl(
+        clienteId:
+            null == clienteId
+                ? _value.clienteId
+                : clienteId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        rappelId:
+            null == rappelId
+                ? _value.rappelId
+                : rappelId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        descripcion:
+            null == descripcion
+                ? _value.descripcion
+                : descripcion // ignore: cast_nullable_to_non_nullable
+                    as String,
+        fechaDesDe:
+            null == fechaDesDe
+                ? _value.fechaDesDe
+                : fechaDesDe // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        fechaHasta:
+            freezed == fechaHasta
+                ? _value.fechaHasta
+                : fechaHasta // ignore: cast_nullable_to_non_nullable
+                    as DateTime?,
+        nombreArchivo:
+            freezed == nombreArchivo
+                ? _value.nombreArchivo
+                : nombreArchivo // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        firmado:
+            freezed == firmado
+                ? _value.firmado
+                : firmado // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        lastUpdated:
+            null == lastUpdated
+                ? _value.lastUpdated
+                : lastUpdated // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        deleted:
+            null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ClienteRappelDTOImpl extends _ClienteRappelDTO {
-  const _$ClienteRappelDTOImpl(
-      {@JsonKey(name: 'CLIENTE_ID') required this.clienteId,
-      @JsonKey(name: 'RAPPEL_ID') required this.rappelId,
-      @JsonKey(name: 'DESCRIPCION') required this.descripcion,
-      @JsonKey(name: 'FECHA_DESDE') required this.fechaDesDe,
-      @JsonKey(name: 'FECHA_HASTA') required this.fechaHasta,
-      @JsonKey(name: 'NOMBRE_ARCHIVO') this.nombreArchivo,
-      @JsonKey(name: 'FIRMADO') this.firmado,
-      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-      @JsonKey(name: 'DELETED') this.deleted = 'N'})
-      : super._();
+  const _$ClienteRappelDTOImpl({
+    @JsonKey(name: 'CLIENTE_ID') required this.clienteId,
+    @JsonKey(name: 'RAPPEL_ID') required this.rappelId,
+    @JsonKey(name: 'DESCRIPCION') required this.descripcion,
+    @JsonKey(name: 'FECHA_DESDE') required this.fechaDesDe,
+    @JsonKey(name: 'FECHA_HASTA') required this.fechaHasta,
+    @JsonKey(name: 'NOMBRE_ARCHIVO') this.nombreArchivo,
+    @JsonKey(name: 'FIRMADO') this.firmado,
+    @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+    @JsonKey(name: 'DELETED') this.deleted = 'N',
+  }) : super._();
 
   factory _$ClienteRappelDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ClienteRappelDTOImplFromJson(json);
@@ -293,8 +322,18 @@ class _$ClienteRappelDTOImpl extends _ClienteRappelDTO {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, clienteId, rappelId, descripcion,
-      fechaDesDe, fechaHasta, nombreArchivo, firmado, lastUpdated, deleted);
+  int get hashCode => Object.hash(
+    runtimeType,
+    clienteId,
+    rappelId,
+    descripcion,
+    fechaDesDe,
+    fechaHasta,
+    nombreArchivo,
+    firmado,
+    lastUpdated,
+    deleted,
+  );
 
   /// Create a copy of ClienteRappelDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -303,27 +342,28 @@ class _$ClienteRappelDTOImpl extends _ClienteRappelDTO {
   @pragma('vm:prefer-inline')
   _$$ClienteRappelDTOImplCopyWith<_$ClienteRappelDTOImpl> get copyWith =>
       __$$ClienteRappelDTOImplCopyWithImpl<_$ClienteRappelDTOImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ClienteRappelDTOImplToJson(
-      this,
-    );
+    return _$$ClienteRappelDTOImplToJson(this);
   }
 }
 
 abstract class _ClienteRappelDTO extends ClienteRappelDTO {
-  const factory _ClienteRappelDTO(
-      {@JsonKey(name: 'CLIENTE_ID') required final String clienteId,
-      @JsonKey(name: 'RAPPEL_ID') required final String rappelId,
-      @JsonKey(name: 'DESCRIPCION') required final String descripcion,
-      @JsonKey(name: 'FECHA_DESDE') required final DateTime fechaDesDe,
-      @JsonKey(name: 'FECHA_HASTA') required final DateTime? fechaHasta,
-      @JsonKey(name: 'NOMBRE_ARCHIVO') final String? nombreArchivo,
-      @JsonKey(name: 'FIRMADO') final String? firmado,
-      @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') final String deleted}) = _$ClienteRappelDTOImpl;
+  const factory _ClienteRappelDTO({
+    @JsonKey(name: 'CLIENTE_ID') required final String clienteId,
+    @JsonKey(name: 'RAPPEL_ID') required final String rappelId,
+    @JsonKey(name: 'DESCRIPCION') required final String descripcion,
+    @JsonKey(name: 'FECHA_DESDE') required final DateTime fechaDesDe,
+    @JsonKey(name: 'FECHA_HASTA') required final DateTime? fechaHasta,
+    @JsonKey(name: 'NOMBRE_ARCHIVO') final String? nombreArchivo,
+    @JsonKey(name: 'FIRMADO') final String? firmado,
+    @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') final String deleted,
+  }) = _$ClienteRappelDTOImpl;
   const _ClienteRappelDTO._() : super._();
 
   factory _ClienteRappelDTO.fromJson(Map<String, dynamic> json) =

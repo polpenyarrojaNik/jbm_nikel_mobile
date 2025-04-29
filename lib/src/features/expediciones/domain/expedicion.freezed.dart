@@ -12,7 +12,8 @@ part of 'expedicion.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$Expedicion {
@@ -54,36 +55,38 @@ mixin _$Expedicion {
 /// @nodoc
 abstract class $ExpedicionCopyWith<$Res> {
   factory $ExpedicionCopyWith(
-          Expedicion value, $Res Function(Expedicion) then) =
-      _$ExpedicionCopyWithImpl<$Res, Expedicion>;
+    Expedicion value,
+    $Res Function(Expedicion) then,
+  ) = _$ExpedicionCopyWithImpl<$Res, Expedicion>;
   @useResult
-  $Res call(
-      {String? empresaId,
-      String? pedidoVentaId,
-      String? usuarioId,
-      DateTime pedidoVentaDate,
-      String? clienteId,
-      String? direccionId,
-      String nombreCliente,
-      String? codigoPostal,
-      String? poblacion,
-      String? provincia,
-      Pais? pais,
-      Divisa divisa,
-      Money? baseImponible,
-      PedidoVentaEstado? pedidoVentaEstado,
-      bool? oferta,
-      String? pedidoAppId,
-      int numLineas,
-      TrackingEstado trackingEstado,
-      String albaranId,
-      String? trackId,
-      String? agencia,
-      DateTime fechaAlbaran,
-      bool enviada,
-      bool tratada,
-      DateTime lastUpdated,
-      bool deleted});
+  $Res call({
+    String? empresaId,
+    String? pedidoVentaId,
+    String? usuarioId,
+    DateTime pedidoVentaDate,
+    String? clienteId,
+    String? direccionId,
+    String nombreCliente,
+    String? codigoPostal,
+    String? poblacion,
+    String? provincia,
+    Pais? pais,
+    Divisa divisa,
+    Money? baseImponible,
+    PedidoVentaEstado? pedidoVentaEstado,
+    bool? oferta,
+    String? pedidoAppId,
+    int numLineas,
+    TrackingEstado trackingEstado,
+    String albaranId,
+    String? trackId,
+    String? agencia,
+    DateTime fechaAlbaran,
+    bool enviada,
+    bool tratada,
+    DateTime lastUpdated,
+    bool deleted,
+  });
 
   $PaisCopyWith<$Res>? get pais;
   $DivisaCopyWith<$Res> get divisa;
@@ -133,112 +136,141 @@ class _$ExpedicionCopyWithImpl<$Res, $Val extends Expedicion>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_value.copyWith(
-      empresaId: freezed == empresaId
-          ? _value.empresaId
-          : empresaId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pedidoVentaId: freezed == pedidoVentaId
-          ? _value.pedidoVentaId
-          : pedidoVentaId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      usuarioId: freezed == usuarioId
-          ? _value.usuarioId
-          : usuarioId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pedidoVentaDate: null == pedidoVentaDate
-          ? _value.pedidoVentaDate
-          : pedidoVentaDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      clienteId: freezed == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      direccionId: freezed == direccionId
-          ? _value.direccionId
-          : direccionId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nombreCliente: null == nombreCliente
-          ? _value.nombreCliente
-          : nombreCliente // ignore: cast_nullable_to_non_nullable
-              as String,
-      codigoPostal: freezed == codigoPostal
-          ? _value.codigoPostal
-          : codigoPostal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      poblacion: freezed == poblacion
-          ? _value.poblacion
-          : poblacion // ignore: cast_nullable_to_non_nullable
-              as String?,
-      provincia: freezed == provincia
-          ? _value.provincia
-          : provincia // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pais: freezed == pais
-          ? _value.pais
-          : pais // ignore: cast_nullable_to_non_nullable
-              as Pais?,
-      divisa: null == divisa
-          ? _value.divisa
-          : divisa // ignore: cast_nullable_to_non_nullable
-              as Divisa,
-      baseImponible: freezed == baseImponible
-          ? _value.baseImponible
-          : baseImponible // ignore: cast_nullable_to_non_nullable
-              as Money?,
-      pedidoVentaEstado: freezed == pedidoVentaEstado
-          ? _value.pedidoVentaEstado
-          : pedidoVentaEstado // ignore: cast_nullable_to_non_nullable
-              as PedidoVentaEstado?,
-      oferta: freezed == oferta
-          ? _value.oferta
-          : oferta // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      pedidoAppId: freezed == pedidoAppId
-          ? _value.pedidoAppId
-          : pedidoAppId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      numLineas: null == numLineas
-          ? _value.numLineas
-          : numLineas // ignore: cast_nullable_to_non_nullable
-              as int,
-      trackingEstado: null == trackingEstado
-          ? _value.trackingEstado
-          : trackingEstado // ignore: cast_nullable_to_non_nullable
-              as TrackingEstado,
-      albaranId: null == albaranId
-          ? _value.albaranId
-          : albaranId // ignore: cast_nullable_to_non_nullable
-              as String,
-      trackId: freezed == trackId
-          ? _value.trackId
-          : trackId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      agencia: freezed == agencia
-          ? _value.agencia
-          : agencia // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fechaAlbaran: null == fechaAlbaran
-          ? _value.fechaAlbaran
-          : fechaAlbaran // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      enviada: null == enviada
-          ? _value.enviada
-          : enviada // ignore: cast_nullable_to_non_nullable
-              as bool,
-      tratada: null == tratada
-          ? _value.tratada
-          : tratada // ignore: cast_nullable_to_non_nullable
-              as bool,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            empresaId:
+                freezed == empresaId
+                    ? _value.empresaId
+                    : empresaId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            pedidoVentaId:
+                freezed == pedidoVentaId
+                    ? _value.pedidoVentaId
+                    : pedidoVentaId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            usuarioId:
+                freezed == usuarioId
+                    ? _value.usuarioId
+                    : usuarioId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            pedidoVentaDate:
+                null == pedidoVentaDate
+                    ? _value.pedidoVentaDate
+                    : pedidoVentaDate // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            clienteId:
+                freezed == clienteId
+                    ? _value.clienteId
+                    : clienteId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            direccionId:
+                freezed == direccionId
+                    ? _value.direccionId
+                    : direccionId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            nombreCliente:
+                null == nombreCliente
+                    ? _value.nombreCliente
+                    : nombreCliente // ignore: cast_nullable_to_non_nullable
+                        as String,
+            codigoPostal:
+                freezed == codigoPostal
+                    ? _value.codigoPostal
+                    : codigoPostal // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            poblacion:
+                freezed == poblacion
+                    ? _value.poblacion
+                    : poblacion // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            provincia:
+                freezed == provincia
+                    ? _value.provincia
+                    : provincia // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            pais:
+                freezed == pais
+                    ? _value.pais
+                    : pais // ignore: cast_nullable_to_non_nullable
+                        as Pais?,
+            divisa:
+                null == divisa
+                    ? _value.divisa
+                    : divisa // ignore: cast_nullable_to_non_nullable
+                        as Divisa,
+            baseImponible:
+                freezed == baseImponible
+                    ? _value.baseImponible
+                    : baseImponible // ignore: cast_nullable_to_non_nullable
+                        as Money?,
+            pedidoVentaEstado:
+                freezed == pedidoVentaEstado
+                    ? _value.pedidoVentaEstado
+                    : pedidoVentaEstado // ignore: cast_nullable_to_non_nullable
+                        as PedidoVentaEstado?,
+            oferta:
+                freezed == oferta
+                    ? _value.oferta
+                    : oferta // ignore: cast_nullable_to_non_nullable
+                        as bool?,
+            pedidoAppId:
+                freezed == pedidoAppId
+                    ? _value.pedidoAppId
+                    : pedidoAppId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            numLineas:
+                null == numLineas
+                    ? _value.numLineas
+                    : numLineas // ignore: cast_nullable_to_non_nullable
+                        as int,
+            trackingEstado:
+                null == trackingEstado
+                    ? _value.trackingEstado
+                    : trackingEstado // ignore: cast_nullable_to_non_nullable
+                        as TrackingEstado,
+            albaranId:
+                null == albaranId
+                    ? _value.albaranId
+                    : albaranId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            trackId:
+                freezed == trackId
+                    ? _value.trackId
+                    : trackId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            agencia:
+                freezed == agencia
+                    ? _value.agencia
+                    : agencia // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            fechaAlbaran:
+                null == fechaAlbaran
+                    ? _value.fechaAlbaran
+                    : fechaAlbaran // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            enviada:
+                null == enviada
+                    ? _value.enviada
+                    : enviada // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            tratada:
+                null == tratada
+                    ? _value.tratada
+                    : tratada // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            lastUpdated:
+                null == lastUpdated
+                    ? _value.lastUpdated
+                    : lastUpdated // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            deleted:
+                null == deleted
+                    ? _value.deleted
+                    : deleted // ignore: cast_nullable_to_non_nullable
+                        as bool,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of Expedicion
@@ -294,37 +326,39 @@ class _$ExpedicionCopyWithImpl<$Res, $Val extends Expedicion>
 abstract class _$$ExpedicionImplCopyWith<$Res>
     implements $ExpedicionCopyWith<$Res> {
   factory _$$ExpedicionImplCopyWith(
-          _$ExpedicionImpl value, $Res Function(_$ExpedicionImpl) then) =
-      __$$ExpedicionImplCopyWithImpl<$Res>;
+    _$ExpedicionImpl value,
+    $Res Function(_$ExpedicionImpl) then,
+  ) = __$$ExpedicionImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? empresaId,
-      String? pedidoVentaId,
-      String? usuarioId,
-      DateTime pedidoVentaDate,
-      String? clienteId,
-      String? direccionId,
-      String nombreCliente,
-      String? codigoPostal,
-      String? poblacion,
-      String? provincia,
-      Pais? pais,
-      Divisa divisa,
-      Money? baseImponible,
-      PedidoVentaEstado? pedidoVentaEstado,
-      bool? oferta,
-      String? pedidoAppId,
-      int numLineas,
-      TrackingEstado trackingEstado,
-      String albaranId,
-      String? trackId,
-      String? agencia,
-      DateTime fechaAlbaran,
-      bool enviada,
-      bool tratada,
-      DateTime lastUpdated,
-      bool deleted});
+  $Res call({
+    String? empresaId,
+    String? pedidoVentaId,
+    String? usuarioId,
+    DateTime pedidoVentaDate,
+    String? clienteId,
+    String? direccionId,
+    String nombreCliente,
+    String? codigoPostal,
+    String? poblacion,
+    String? provincia,
+    Pais? pais,
+    Divisa divisa,
+    Money? baseImponible,
+    PedidoVentaEstado? pedidoVentaEstado,
+    bool? oferta,
+    String? pedidoAppId,
+    int numLineas,
+    TrackingEstado trackingEstado,
+    String albaranId,
+    String? trackId,
+    String? agencia,
+    DateTime fechaAlbaran,
+    bool enviada,
+    bool tratada,
+    DateTime lastUpdated,
+    bool deleted,
+  });
 
   @override
   $PaisCopyWith<$Res>? get pais;
@@ -341,8 +375,9 @@ class __$$ExpedicionImplCopyWithImpl<$Res>
     extends _$ExpedicionCopyWithImpl<$Res, _$ExpedicionImpl>
     implements _$$ExpedicionImplCopyWith<$Res> {
   __$$ExpedicionImplCopyWithImpl(
-      _$ExpedicionImpl _value, $Res Function(_$ExpedicionImpl) _then)
-      : super(_value, _then);
+    _$ExpedicionImpl _value,
+    $Res Function(_$ExpedicionImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of Expedicion
   /// with the given fields replaced by the non-null parameter values.
@@ -376,146 +411,174 @@ class __$$ExpedicionImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$ExpedicionImpl(
-      empresaId: freezed == empresaId
-          ? _value.empresaId
-          : empresaId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pedidoVentaId: freezed == pedidoVentaId
-          ? _value.pedidoVentaId
-          : pedidoVentaId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      usuarioId: freezed == usuarioId
-          ? _value.usuarioId
-          : usuarioId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pedidoVentaDate: null == pedidoVentaDate
-          ? _value.pedidoVentaDate
-          : pedidoVentaDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      clienteId: freezed == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      direccionId: freezed == direccionId
-          ? _value.direccionId
-          : direccionId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nombreCliente: null == nombreCliente
-          ? _value.nombreCliente
-          : nombreCliente // ignore: cast_nullable_to_non_nullable
-              as String,
-      codigoPostal: freezed == codigoPostal
-          ? _value.codigoPostal
-          : codigoPostal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      poblacion: freezed == poblacion
-          ? _value.poblacion
-          : poblacion // ignore: cast_nullable_to_non_nullable
-              as String?,
-      provincia: freezed == provincia
-          ? _value.provincia
-          : provincia // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pais: freezed == pais
-          ? _value.pais
-          : pais // ignore: cast_nullable_to_non_nullable
-              as Pais?,
-      divisa: null == divisa
-          ? _value.divisa
-          : divisa // ignore: cast_nullable_to_non_nullable
-              as Divisa,
-      baseImponible: freezed == baseImponible
-          ? _value.baseImponible
-          : baseImponible // ignore: cast_nullable_to_non_nullable
-              as Money?,
-      pedidoVentaEstado: freezed == pedidoVentaEstado
-          ? _value.pedidoVentaEstado
-          : pedidoVentaEstado // ignore: cast_nullable_to_non_nullable
-              as PedidoVentaEstado?,
-      oferta: freezed == oferta
-          ? _value.oferta
-          : oferta // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      pedidoAppId: freezed == pedidoAppId
-          ? _value.pedidoAppId
-          : pedidoAppId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      numLineas: null == numLineas
-          ? _value.numLineas
-          : numLineas // ignore: cast_nullable_to_non_nullable
-              as int,
-      trackingEstado: null == trackingEstado
-          ? _value.trackingEstado
-          : trackingEstado // ignore: cast_nullable_to_non_nullable
-              as TrackingEstado,
-      albaranId: null == albaranId
-          ? _value.albaranId
-          : albaranId // ignore: cast_nullable_to_non_nullable
-              as String,
-      trackId: freezed == trackId
-          ? _value.trackId
-          : trackId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      agencia: freezed == agencia
-          ? _value.agencia
-          : agencia // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fechaAlbaran: null == fechaAlbaran
-          ? _value.fechaAlbaran
-          : fechaAlbaran // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      enviada: null == enviada
-          ? _value.enviada
-          : enviada // ignore: cast_nullable_to_non_nullable
-              as bool,
-      tratada: null == tratada
-          ? _value.tratada
-          : tratada // ignore: cast_nullable_to_non_nullable
-              as bool,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$ExpedicionImpl(
+        empresaId:
+            freezed == empresaId
+                ? _value.empresaId
+                : empresaId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        pedidoVentaId:
+            freezed == pedidoVentaId
+                ? _value.pedidoVentaId
+                : pedidoVentaId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        usuarioId:
+            freezed == usuarioId
+                ? _value.usuarioId
+                : usuarioId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        pedidoVentaDate:
+            null == pedidoVentaDate
+                ? _value.pedidoVentaDate
+                : pedidoVentaDate // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        clienteId:
+            freezed == clienteId
+                ? _value.clienteId
+                : clienteId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        direccionId:
+            freezed == direccionId
+                ? _value.direccionId
+                : direccionId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        nombreCliente:
+            null == nombreCliente
+                ? _value.nombreCliente
+                : nombreCliente // ignore: cast_nullable_to_non_nullable
+                    as String,
+        codigoPostal:
+            freezed == codigoPostal
+                ? _value.codigoPostal
+                : codigoPostal // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        poblacion:
+            freezed == poblacion
+                ? _value.poblacion
+                : poblacion // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        provincia:
+            freezed == provincia
+                ? _value.provincia
+                : provincia // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        pais:
+            freezed == pais
+                ? _value.pais
+                : pais // ignore: cast_nullable_to_non_nullable
+                    as Pais?,
+        divisa:
+            null == divisa
+                ? _value.divisa
+                : divisa // ignore: cast_nullable_to_non_nullable
+                    as Divisa,
+        baseImponible:
+            freezed == baseImponible
+                ? _value.baseImponible
+                : baseImponible // ignore: cast_nullable_to_non_nullable
+                    as Money?,
+        pedidoVentaEstado:
+            freezed == pedidoVentaEstado
+                ? _value.pedidoVentaEstado
+                : pedidoVentaEstado // ignore: cast_nullable_to_non_nullable
+                    as PedidoVentaEstado?,
+        oferta:
+            freezed == oferta
+                ? _value.oferta
+                : oferta // ignore: cast_nullable_to_non_nullable
+                    as bool?,
+        pedidoAppId:
+            freezed == pedidoAppId
+                ? _value.pedidoAppId
+                : pedidoAppId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        numLineas:
+            null == numLineas
+                ? _value.numLineas
+                : numLineas // ignore: cast_nullable_to_non_nullable
+                    as int,
+        trackingEstado:
+            null == trackingEstado
+                ? _value.trackingEstado
+                : trackingEstado // ignore: cast_nullable_to_non_nullable
+                    as TrackingEstado,
+        albaranId:
+            null == albaranId
+                ? _value.albaranId
+                : albaranId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        trackId:
+            freezed == trackId
+                ? _value.trackId
+                : trackId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        agencia:
+            freezed == agencia
+                ? _value.agencia
+                : agencia // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        fechaAlbaran:
+            null == fechaAlbaran
+                ? _value.fechaAlbaran
+                : fechaAlbaran // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        enviada:
+            null == enviada
+                ? _value.enviada
+                : enviada // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        tratada:
+            null == tratada
+                ? _value.tratada
+                : tratada // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        lastUpdated:
+            null == lastUpdated
+                ? _value.lastUpdated
+                : lastUpdated // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        deleted:
+            null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                    as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ExpedicionImpl extends _Expedicion {
-  const _$ExpedicionImpl(
-      {this.empresaId,
-      this.pedidoVentaId,
-      this.usuarioId,
-      required this.pedidoVentaDate,
-      this.clienteId,
-      this.direccionId,
-      required this.nombreCliente,
-      this.codigoPostal,
-      this.poblacion,
-      this.provincia,
-      this.pais,
-      required this.divisa,
-      this.baseImponible,
-      this.pedidoVentaEstado,
-      this.oferta,
-      this.pedidoAppId,
-      required this.numLineas,
-      required this.trackingEstado,
-      required this.albaranId,
-      required this.trackId,
-      this.agencia,
-      required this.fechaAlbaran,
-      required this.enviada,
-      required this.tratada,
-      required this.lastUpdated,
-      required this.deleted})
-      : super._();
+  const _$ExpedicionImpl({
+    this.empresaId,
+    this.pedidoVentaId,
+    this.usuarioId,
+    required this.pedidoVentaDate,
+    this.clienteId,
+    this.direccionId,
+    required this.nombreCliente,
+    this.codigoPostal,
+    this.poblacion,
+    this.provincia,
+    this.pais,
+    required this.divisa,
+    this.baseImponible,
+    this.pedidoVentaEstado,
+    this.oferta,
+    this.pedidoAppId,
+    required this.numLineas,
+    required this.trackingEstado,
+    required this.albaranId,
+    required this.trackId,
+    this.agencia,
+    required this.fechaAlbaran,
+    required this.enviada,
+    required this.tratada,
+    required this.lastUpdated,
+    required this.deleted,
+  }) : super._();
 
   @override
   final String? empresaId;
@@ -628,34 +691,34 @@ class _$ExpedicionImpl extends _Expedicion {
 
   @override
   int get hashCode => Object.hashAll([
-        runtimeType,
-        empresaId,
-        pedidoVentaId,
-        usuarioId,
-        pedidoVentaDate,
-        clienteId,
-        direccionId,
-        nombreCliente,
-        codigoPostal,
-        poblacion,
-        provincia,
-        pais,
-        divisa,
-        baseImponible,
-        pedidoVentaEstado,
-        oferta,
-        pedidoAppId,
-        numLineas,
-        trackingEstado,
-        albaranId,
-        trackId,
-        agencia,
-        fechaAlbaran,
-        enviada,
-        tratada,
-        lastUpdated,
-        deleted
-      ]);
+    runtimeType,
+    empresaId,
+    pedidoVentaId,
+    usuarioId,
+    pedidoVentaDate,
+    clienteId,
+    direccionId,
+    nombreCliente,
+    codigoPostal,
+    poblacion,
+    provincia,
+    pais,
+    divisa,
+    baseImponible,
+    pedidoVentaEstado,
+    oferta,
+    pedidoAppId,
+    numLineas,
+    trackingEstado,
+    albaranId,
+    trackId,
+    agencia,
+    fechaAlbaran,
+    enviada,
+    tratada,
+    lastUpdated,
+    deleted,
+  ]);
 
   /// Create a copy of Expedicion
   /// with the given fields replaced by the non-null parameter values.
@@ -667,33 +730,34 @@ class _$ExpedicionImpl extends _Expedicion {
 }
 
 abstract class _Expedicion extends Expedicion {
-  const factory _Expedicion(
-      {final String? empresaId,
-      final String? pedidoVentaId,
-      final String? usuarioId,
-      required final DateTime pedidoVentaDate,
-      final String? clienteId,
-      final String? direccionId,
-      required final String nombreCliente,
-      final String? codigoPostal,
-      final String? poblacion,
-      final String? provincia,
-      final Pais? pais,
-      required final Divisa divisa,
-      final Money? baseImponible,
-      final PedidoVentaEstado? pedidoVentaEstado,
-      final bool? oferta,
-      final String? pedidoAppId,
-      required final int numLineas,
-      required final TrackingEstado trackingEstado,
-      required final String albaranId,
-      required final String? trackId,
-      final String? agencia,
-      required final DateTime fechaAlbaran,
-      required final bool enviada,
-      required final bool tratada,
-      required final DateTime lastUpdated,
-      required final bool deleted}) = _$ExpedicionImpl;
+  const factory _Expedicion({
+    final String? empresaId,
+    final String? pedidoVentaId,
+    final String? usuarioId,
+    required final DateTime pedidoVentaDate,
+    final String? clienteId,
+    final String? direccionId,
+    required final String nombreCliente,
+    final String? codigoPostal,
+    final String? poblacion,
+    final String? provincia,
+    final Pais? pais,
+    required final Divisa divisa,
+    final Money? baseImponible,
+    final PedidoVentaEstado? pedidoVentaEstado,
+    final bool? oferta,
+    final String? pedidoAppId,
+    required final int numLineas,
+    required final TrackingEstado trackingEstado,
+    required final String albaranId,
+    required final String? trackId,
+    final String? agencia,
+    required final DateTime fechaAlbaran,
+    required final bool enviada,
+    required final bool tratada,
+    required final DateTime lastUpdated,
+    required final bool deleted,
+  }) = _$ExpedicionImpl;
   const _Expedicion._() : super._();
 
   @override

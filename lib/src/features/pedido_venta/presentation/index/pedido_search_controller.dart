@@ -7,15 +7,16 @@ import '../../infrastructure/pedido_venta_repository.dart';
 
 part 'pedido_search_controller.g.dart';
 
-final pedidosSearchQueryStateProvider =
-    StateProvider.autoDispose<String>((ref) {
+final pedidosSearchQueryStateProvider = StateProvider.autoDispose<String>((
+  ref,
+) {
   return '';
 });
 
 final pedidoVentaEstadoQueryStateProvider =
     StateProvider.autoDispose<PedidoVentaEstado?>((ref) {
-  return null;
-});
+      return null;
+    });
 
 @riverpod
 class PedidoVentaIndexScreenController
@@ -24,9 +25,12 @@ class PedidoVentaIndexScreenController
 
   @override
   Future<int> build() {
-    return ref.read(pedidoVentaRepositoryProvider).getPedidoVentaCountList(
-        pedidoVentaEstado: ref.watch(pedidoVentaEstadoQueryStateProvider),
-        searchText: ref.watch(pedidosSearchQueryStateProvider));
+    return ref
+        .read(pedidoVentaRepositoryProvider)
+        .getPedidoVentaCountList(
+          pedidoVentaEstado: ref.watch(pedidoVentaEstadoQueryStateProvider),
+          searchText: ref.watch(pedidosSearchQueryStateProvider),
+        );
   }
 }
 
@@ -37,7 +41,9 @@ class PedidoVentaIndexScreenPaginatedController
 
   @override
   Future<List<PedidoVenta>> build({required int page}) {
-    return ref.read(pedidoVentaRepositoryProvider).getPedidoVentaLista(
+    return ref
+        .read(pedidoVentaRepositoryProvider)
+        .getPedidoVentaLista(
           page: page,
           searchText: ref.watch(pedidosSearchQueryStateProvider),
           pedidoVentaEstado: ref.watch(pedidoVentaEstadoQueryStateProvider),

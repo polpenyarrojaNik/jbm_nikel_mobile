@@ -12,7 +12,8 @@ part of 'articulo_top_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ArticuloTopDTO _$ArticuloTopDTOFromJson(Map<String, dynamic> json) {
   return _ArticuloTopDTO.fromJson(json);
@@ -44,15 +45,17 @@ mixin _$ArticuloTopDTO {
 /// @nodoc
 abstract class $ArticuloTopDTOCopyWith<$Res> {
   factory $ArticuloTopDTOCopyWith(
-          ArticuloTopDTO value, $Res Function(ArticuloTopDTO) then) =
-      _$ArticuloTopDTOCopyWithImpl<$Res, ArticuloTopDTO>;
+    ArticuloTopDTO value,
+    $Res Function(ArticuloTopDTO) then,
+  ) = _$ArticuloTopDTOCopyWithImpl<$Res, ArticuloTopDTO>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'ARTICULO_ID') String articuloId,
-      @JsonKey(name: 'DESCRIPCION_ES') String descripcion,
-      @JsonKey(name: 'VENTAS_TOTAL') double ventasTotal,
-      @JsonKey(name: 'VENTAS_CLIENTE') double ventasCliente,
-      @JsonKey(name: 'DIVISA_ID') String divisaId});
+  $Res call({
+    @JsonKey(name: 'ARTICULO_ID') String articuloId,
+    @JsonKey(name: 'DESCRIPCION_ES') String descripcion,
+    @JsonKey(name: 'VENTAS_TOTAL') double ventasTotal,
+    @JsonKey(name: 'VENTAS_CLIENTE') double ventasCliente,
+    @JsonKey(name: 'DIVISA_ID') String divisaId,
+  });
 }
 
 /// @nodoc
@@ -76,45 +79,55 @@ class _$ArticuloTopDTOCopyWithImpl<$Res, $Val extends ArticuloTopDTO>
     Object? ventasCliente = null,
     Object? divisaId = null,
   }) {
-    return _then(_value.copyWith(
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcion: null == descripcion
-          ? _value.descripcion
-          : descripcion // ignore: cast_nullable_to_non_nullable
-              as String,
-      ventasTotal: null == ventasTotal
-          ? _value.ventasTotal
-          : ventasTotal // ignore: cast_nullable_to_non_nullable
-              as double,
-      ventasCliente: null == ventasCliente
-          ? _value.ventasCliente
-          : ventasCliente // ignore: cast_nullable_to_non_nullable
-              as double,
-      divisaId: null == divisaId
-          ? _value.divisaId
-          : divisaId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            articuloId:
+                null == articuloId
+                    ? _value.articuloId
+                    : articuloId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            descripcion:
+                null == descripcion
+                    ? _value.descripcion
+                    : descripcion // ignore: cast_nullable_to_non_nullable
+                        as String,
+            ventasTotal:
+                null == ventasTotal
+                    ? _value.ventasTotal
+                    : ventasTotal // ignore: cast_nullable_to_non_nullable
+                        as double,
+            ventasCliente:
+                null == ventasCliente
+                    ? _value.ventasCliente
+                    : ventasCliente // ignore: cast_nullable_to_non_nullable
+                        as double,
+            divisaId:
+                null == divisaId
+                    ? _value.divisaId
+                    : divisaId // ignore: cast_nullable_to_non_nullable
+                        as String,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$ArticuloTopDTOImplCopyWith<$Res>
     implements $ArticuloTopDTOCopyWith<$Res> {
-  factory _$$ArticuloTopDTOImplCopyWith(_$ArticuloTopDTOImpl value,
-          $Res Function(_$ArticuloTopDTOImpl) then) =
-      __$$ArticuloTopDTOImplCopyWithImpl<$Res>;
+  factory _$$ArticuloTopDTOImplCopyWith(
+    _$ArticuloTopDTOImpl value,
+    $Res Function(_$ArticuloTopDTOImpl) then,
+  ) = __$$ArticuloTopDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'ARTICULO_ID') String articuloId,
-      @JsonKey(name: 'DESCRIPCION_ES') String descripcion,
-      @JsonKey(name: 'VENTAS_TOTAL') double ventasTotal,
-      @JsonKey(name: 'VENTAS_CLIENTE') double ventasCliente,
-      @JsonKey(name: 'DIVISA_ID') String divisaId});
+  $Res call({
+    @JsonKey(name: 'ARTICULO_ID') String articuloId,
+    @JsonKey(name: 'DESCRIPCION_ES') String descripcion,
+    @JsonKey(name: 'VENTAS_TOTAL') double ventasTotal,
+    @JsonKey(name: 'VENTAS_CLIENTE') double ventasCliente,
+    @JsonKey(name: 'DIVISA_ID') String divisaId,
+  });
 }
 
 /// @nodoc
@@ -122,8 +135,9 @@ class __$$ArticuloTopDTOImplCopyWithImpl<$Res>
     extends _$ArticuloTopDTOCopyWithImpl<$Res, _$ArticuloTopDTOImpl>
     implements _$$ArticuloTopDTOImplCopyWith<$Res> {
   __$$ArticuloTopDTOImplCopyWithImpl(
-      _$ArticuloTopDTOImpl _value, $Res Function(_$ArticuloTopDTOImpl) _then)
-      : super(_value, _then);
+    _$ArticuloTopDTOImpl _value,
+    $Res Function(_$ArticuloTopDTOImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ArticuloTopDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -136,41 +150,48 @@ class __$$ArticuloTopDTOImplCopyWithImpl<$Res>
     Object? ventasCliente = null,
     Object? divisaId = null,
   }) {
-    return _then(_$ArticuloTopDTOImpl(
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcion: null == descripcion
-          ? _value.descripcion
-          : descripcion // ignore: cast_nullable_to_non_nullable
-              as String,
-      ventasTotal: null == ventasTotal
-          ? _value.ventasTotal
-          : ventasTotal // ignore: cast_nullable_to_non_nullable
-              as double,
-      ventasCliente: null == ventasCliente
-          ? _value.ventasCliente
-          : ventasCliente // ignore: cast_nullable_to_non_nullable
-              as double,
-      divisaId: null == divisaId
-          ? _value.divisaId
-          : divisaId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$ArticuloTopDTOImpl(
+        articuloId:
+            null == articuloId
+                ? _value.articuloId
+                : articuloId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        descripcion:
+            null == descripcion
+                ? _value.descripcion
+                : descripcion // ignore: cast_nullable_to_non_nullable
+                    as String,
+        ventasTotal:
+            null == ventasTotal
+                ? _value.ventasTotal
+                : ventasTotal // ignore: cast_nullable_to_non_nullable
+                    as double,
+        ventasCliente:
+            null == ventasCliente
+                ? _value.ventasCliente
+                : ventasCliente // ignore: cast_nullable_to_non_nullable
+                    as double,
+        divisaId:
+            null == divisaId
+                ? _value.divisaId
+                : divisaId // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ArticuloTopDTOImpl extends _ArticuloTopDTO {
-  const _$ArticuloTopDTOImpl(
-      {@JsonKey(name: 'ARTICULO_ID') required this.articuloId,
-      @JsonKey(name: 'DESCRIPCION_ES') required this.descripcion,
-      @JsonKey(name: 'VENTAS_TOTAL') required this.ventasTotal,
-      @JsonKey(name: 'VENTAS_CLIENTE') required this.ventasCliente,
-      @JsonKey(name: 'DIVISA_ID') required this.divisaId})
-      : super._();
+  const _$ArticuloTopDTOImpl({
+    @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
+    @JsonKey(name: 'DESCRIPCION_ES') required this.descripcion,
+    @JsonKey(name: 'VENTAS_TOTAL') required this.ventasTotal,
+    @JsonKey(name: 'VENTAS_CLIENTE') required this.ventasCliente,
+    @JsonKey(name: 'DIVISA_ID') required this.divisaId,
+  }) : super._();
 
   factory _$ArticuloTopDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ArticuloTopDTOImplFromJson(json);
@@ -215,8 +236,14 @@ class _$ArticuloTopDTOImpl extends _ArticuloTopDTO {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, articuloId, descripcion,
-      ventasTotal, ventasCliente, divisaId);
+  int get hashCode => Object.hash(
+    runtimeType,
+    articuloId,
+    descripcion,
+    ventasTotal,
+    ventasCliente,
+    divisaId,
+  );
 
   /// Create a copy of ArticuloTopDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -225,24 +252,24 @@ class _$ArticuloTopDTOImpl extends _ArticuloTopDTO {
   @pragma('vm:prefer-inline')
   _$$ArticuloTopDTOImplCopyWith<_$ArticuloTopDTOImpl> get copyWith =>
       __$$ArticuloTopDTOImplCopyWithImpl<_$ArticuloTopDTOImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ArticuloTopDTOImplToJson(
-      this,
-    );
+    return _$$ArticuloTopDTOImplToJson(this);
   }
 }
 
 abstract class _ArticuloTopDTO extends ArticuloTopDTO {
-  const factory _ArticuloTopDTO(
-          {@JsonKey(name: 'ARTICULO_ID') required final String articuloId,
-          @JsonKey(name: 'DESCRIPCION_ES') required final String descripcion,
-          @JsonKey(name: 'VENTAS_TOTAL') required final double ventasTotal,
-          @JsonKey(name: 'VENTAS_CLIENTE') required final double ventasCliente,
-          @JsonKey(name: 'DIVISA_ID') required final String divisaId}) =
-      _$ArticuloTopDTOImpl;
+  const factory _ArticuloTopDTO({
+    @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
+    @JsonKey(name: 'DESCRIPCION_ES') required final String descripcion,
+    @JsonKey(name: 'VENTAS_TOTAL') required final double ventasTotal,
+    @JsonKey(name: 'VENTAS_CLIENTE') required final double ventasCliente,
+    @JsonKey(name: 'DIVISA_ID') required final String divisaId,
+  }) = _$ArticuloTopDTOImpl;
   const _ArticuloTopDTO._() : super._();
 
   factory _ArticuloTopDTO.fromJson(Map<String, dynamic> json) =

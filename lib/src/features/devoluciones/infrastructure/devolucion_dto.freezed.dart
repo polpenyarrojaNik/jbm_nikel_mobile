@@ -12,7 +12,8 @@ part of 'devolucion_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 DevolucionDTO _$DevolucionDTOFromJson(Map<String, dynamic> json) {
   return _DevolucionDTO.fromJson(json);
@@ -70,28 +71,30 @@ mixin _$DevolucionDTO {
 /// @nodoc
 abstract class $DevolucionDTOCopyWith<$Res> {
   factory $DevolucionDTOCopyWith(
-          DevolucionDTO value, $Res Function(DevolucionDTO) then) =
-      _$DevolucionDTOCopyWithImpl<$Res, DevolucionDTO>;
+    DevolucionDTO value,
+    $Res Function(DevolucionDTO) then,
+  ) = _$DevolucionDTOCopyWithImpl<$Res, DevolucionDTO>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'EMPRESA_ID') String empresaId,
-      @JsonKey(name: 'DEVOLUCION_ID') String id,
-      @JsonKey(name: 'FECHA_DEVOLUCION') DateTime fechaDevolucion,
-      @JsonKey(name: 'CLIENTE_ID') String? clienteId,
-      @JsonKey(name: 'DIRECCION_ID') String? direccionId,
-      @JsonKey(name: 'NOMBRE') String? nombre,
-      @JsonKey(name: 'DIRECCION_RECOGIDA1') String? direccionRecogida1,
-      @JsonKey(name: 'DIRECCION_RECOGIDA2') String? direccionRecogida2,
-      @JsonKey(name: 'CODIGO_POSTAL') String? codigoPostal,
-      @JsonKey(name: 'POBLACION') String? poblacion,
-      @JsonKey(name: 'PAIS_ID') String? paisId,
-      @JsonKey(name: 'ALMACEN_DESTINO') String? almacenDestino,
-      @JsonKey(name: 'AGENCIA_TRANSPORTE') String? agenciaTransporte,
-      @JsonKey(name: 'DEVOLUCION_ESTADO_ID') String devolucionEstadoId,
-      @JsonKey(name: 'KILOS_DEVOLUCION') double kilosDevolucion,
-      @JsonKey(name: 'BULTOS') double bultos,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+  $Res call({
+    @JsonKey(name: 'EMPRESA_ID') String empresaId,
+    @JsonKey(name: 'DEVOLUCION_ID') String id,
+    @JsonKey(name: 'FECHA_DEVOLUCION') DateTime fechaDevolucion,
+    @JsonKey(name: 'CLIENTE_ID') String? clienteId,
+    @JsonKey(name: 'DIRECCION_ID') String? direccionId,
+    @JsonKey(name: 'NOMBRE') String? nombre,
+    @JsonKey(name: 'DIRECCION_RECOGIDA1') String? direccionRecogida1,
+    @JsonKey(name: 'DIRECCION_RECOGIDA2') String? direccionRecogida2,
+    @JsonKey(name: 'CODIGO_POSTAL') String? codigoPostal,
+    @JsonKey(name: 'POBLACION') String? poblacion,
+    @JsonKey(name: 'PAIS_ID') String? paisId,
+    @JsonKey(name: 'ALMACEN_DESTINO') String? almacenDestino,
+    @JsonKey(name: 'AGENCIA_TRANSPORTE') String? agenciaTransporte,
+    @JsonKey(name: 'DEVOLUCION_ESTADO_ID') String devolucionEstadoId,
+    @JsonKey(name: 'KILOS_DEVOLUCION') double kilosDevolucion,
+    @JsonKey(name: 'BULTOS') double bultos,
+    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') String deleted,
+  });
 }
 
 /// @nodoc
@@ -128,80 +131,101 @@ class _$DevolucionDTOCopyWithImpl<$Res, $Val extends DevolucionDTO>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_value.copyWith(
-      empresaId: null == empresaId
-          ? _value.empresaId
-          : empresaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      fechaDevolucion: null == fechaDevolucion
-          ? _value.fechaDevolucion
-          : fechaDevolucion // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      clienteId: freezed == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      direccionId: freezed == direccionId
-          ? _value.direccionId
-          : direccionId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nombre: freezed == nombre
-          ? _value.nombre
-          : nombre // ignore: cast_nullable_to_non_nullable
-              as String?,
-      direccionRecogida1: freezed == direccionRecogida1
-          ? _value.direccionRecogida1
-          : direccionRecogida1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      direccionRecogida2: freezed == direccionRecogida2
-          ? _value.direccionRecogida2
-          : direccionRecogida2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      codigoPostal: freezed == codigoPostal
-          ? _value.codigoPostal
-          : codigoPostal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      poblacion: freezed == poblacion
-          ? _value.poblacion
-          : poblacion // ignore: cast_nullable_to_non_nullable
-              as String?,
-      paisId: freezed == paisId
-          ? _value.paisId
-          : paisId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      almacenDestino: freezed == almacenDestino
-          ? _value.almacenDestino
-          : almacenDestino // ignore: cast_nullable_to_non_nullable
-              as String?,
-      agenciaTransporte: freezed == agenciaTransporte
-          ? _value.agenciaTransporte
-          : agenciaTransporte // ignore: cast_nullable_to_non_nullable
-              as String?,
-      devolucionEstadoId: null == devolucionEstadoId
-          ? _value.devolucionEstadoId
-          : devolucionEstadoId // ignore: cast_nullable_to_non_nullable
-              as String,
-      kilosDevolucion: null == kilosDevolucion
-          ? _value.kilosDevolucion
-          : kilosDevolucion // ignore: cast_nullable_to_non_nullable
-              as double,
-      bultos: null == bultos
-          ? _value.bultos
-          : bultos // ignore: cast_nullable_to_non_nullable
-              as double,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            empresaId:
+                null == empresaId
+                    ? _value.empresaId
+                    : empresaId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            id:
+                null == id
+                    ? _value.id
+                    : id // ignore: cast_nullable_to_non_nullable
+                        as String,
+            fechaDevolucion:
+                null == fechaDevolucion
+                    ? _value.fechaDevolucion
+                    : fechaDevolucion // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            clienteId:
+                freezed == clienteId
+                    ? _value.clienteId
+                    : clienteId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            direccionId:
+                freezed == direccionId
+                    ? _value.direccionId
+                    : direccionId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            nombre:
+                freezed == nombre
+                    ? _value.nombre
+                    : nombre // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            direccionRecogida1:
+                freezed == direccionRecogida1
+                    ? _value.direccionRecogida1
+                    : direccionRecogida1 // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            direccionRecogida2:
+                freezed == direccionRecogida2
+                    ? _value.direccionRecogida2
+                    : direccionRecogida2 // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            codigoPostal:
+                freezed == codigoPostal
+                    ? _value.codigoPostal
+                    : codigoPostal // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            poblacion:
+                freezed == poblacion
+                    ? _value.poblacion
+                    : poblacion // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            paisId:
+                freezed == paisId
+                    ? _value.paisId
+                    : paisId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            almacenDestino:
+                freezed == almacenDestino
+                    ? _value.almacenDestino
+                    : almacenDestino // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            agenciaTransporte:
+                freezed == agenciaTransporte
+                    ? _value.agenciaTransporte
+                    : agenciaTransporte // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            devolucionEstadoId:
+                null == devolucionEstadoId
+                    ? _value.devolucionEstadoId
+                    : devolucionEstadoId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            kilosDevolucion:
+                null == kilosDevolucion
+                    ? _value.kilosDevolucion
+                    : kilosDevolucion // ignore: cast_nullable_to_non_nullable
+                        as double,
+            bultos:
+                null == bultos
+                    ? _value.bultos
+                    : bultos // ignore: cast_nullable_to_non_nullable
+                        as double,
+            lastUpdated:
+                null == lastUpdated
+                    ? _value.lastUpdated
+                    : lastUpdated // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            deleted:
+                null == deleted
+                    ? _value.deleted
+                    : deleted // ignore: cast_nullable_to_non_nullable
+                        as String,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -209,29 +233,31 @@ class _$DevolucionDTOCopyWithImpl<$Res, $Val extends DevolucionDTO>
 abstract class _$$DevolucionDTOImplCopyWith<$Res>
     implements $DevolucionDTOCopyWith<$Res> {
   factory _$$DevolucionDTOImplCopyWith(
-          _$DevolucionDTOImpl value, $Res Function(_$DevolucionDTOImpl) then) =
-      __$$DevolucionDTOImplCopyWithImpl<$Res>;
+    _$DevolucionDTOImpl value,
+    $Res Function(_$DevolucionDTOImpl) then,
+  ) = __$$DevolucionDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'EMPRESA_ID') String empresaId,
-      @JsonKey(name: 'DEVOLUCION_ID') String id,
-      @JsonKey(name: 'FECHA_DEVOLUCION') DateTime fechaDevolucion,
-      @JsonKey(name: 'CLIENTE_ID') String? clienteId,
-      @JsonKey(name: 'DIRECCION_ID') String? direccionId,
-      @JsonKey(name: 'NOMBRE') String? nombre,
-      @JsonKey(name: 'DIRECCION_RECOGIDA1') String? direccionRecogida1,
-      @JsonKey(name: 'DIRECCION_RECOGIDA2') String? direccionRecogida2,
-      @JsonKey(name: 'CODIGO_POSTAL') String? codigoPostal,
-      @JsonKey(name: 'POBLACION') String? poblacion,
-      @JsonKey(name: 'PAIS_ID') String? paisId,
-      @JsonKey(name: 'ALMACEN_DESTINO') String? almacenDestino,
-      @JsonKey(name: 'AGENCIA_TRANSPORTE') String? agenciaTransporte,
-      @JsonKey(name: 'DEVOLUCION_ESTADO_ID') String devolucionEstadoId,
-      @JsonKey(name: 'KILOS_DEVOLUCION') double kilosDevolucion,
-      @JsonKey(name: 'BULTOS') double bultos,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+  $Res call({
+    @JsonKey(name: 'EMPRESA_ID') String empresaId,
+    @JsonKey(name: 'DEVOLUCION_ID') String id,
+    @JsonKey(name: 'FECHA_DEVOLUCION') DateTime fechaDevolucion,
+    @JsonKey(name: 'CLIENTE_ID') String? clienteId,
+    @JsonKey(name: 'DIRECCION_ID') String? direccionId,
+    @JsonKey(name: 'NOMBRE') String? nombre,
+    @JsonKey(name: 'DIRECCION_RECOGIDA1') String? direccionRecogida1,
+    @JsonKey(name: 'DIRECCION_RECOGIDA2') String? direccionRecogida2,
+    @JsonKey(name: 'CODIGO_POSTAL') String? codigoPostal,
+    @JsonKey(name: 'POBLACION') String? poblacion,
+    @JsonKey(name: 'PAIS_ID') String? paisId,
+    @JsonKey(name: 'ALMACEN_DESTINO') String? almacenDestino,
+    @JsonKey(name: 'AGENCIA_TRANSPORTE') String? agenciaTransporte,
+    @JsonKey(name: 'DEVOLUCION_ESTADO_ID') String devolucionEstadoId,
+    @JsonKey(name: 'KILOS_DEVOLUCION') double kilosDevolucion,
+    @JsonKey(name: 'BULTOS') double bultos,
+    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') String deleted,
+  });
 }
 
 /// @nodoc
@@ -239,8 +265,9 @@ class __$$DevolucionDTOImplCopyWithImpl<$Res>
     extends _$DevolucionDTOCopyWithImpl<$Res, _$DevolucionDTOImpl>
     implements _$$DevolucionDTOImplCopyWith<$Res> {
   __$$DevolucionDTOImplCopyWithImpl(
-      _$DevolucionDTOImpl _value, $Res Function(_$DevolucionDTOImpl) _then)
-      : super(_value, _then);
+    _$DevolucionDTOImpl _value,
+    $Res Function(_$DevolucionDTOImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DevolucionDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -266,106 +293,126 @@ class __$$DevolucionDTOImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$DevolucionDTOImpl(
-      empresaId: null == empresaId
-          ? _value.empresaId
-          : empresaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      fechaDevolucion: null == fechaDevolucion
-          ? _value.fechaDevolucion
-          : fechaDevolucion // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      clienteId: freezed == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      direccionId: freezed == direccionId
-          ? _value.direccionId
-          : direccionId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nombre: freezed == nombre
-          ? _value.nombre
-          : nombre // ignore: cast_nullable_to_non_nullable
-              as String?,
-      direccionRecogida1: freezed == direccionRecogida1
-          ? _value.direccionRecogida1
-          : direccionRecogida1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      direccionRecogida2: freezed == direccionRecogida2
-          ? _value.direccionRecogida2
-          : direccionRecogida2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      codigoPostal: freezed == codigoPostal
-          ? _value.codigoPostal
-          : codigoPostal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      poblacion: freezed == poblacion
-          ? _value.poblacion
-          : poblacion // ignore: cast_nullable_to_non_nullable
-              as String?,
-      paisId: freezed == paisId
-          ? _value.paisId
-          : paisId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      almacenDestino: freezed == almacenDestino
-          ? _value.almacenDestino
-          : almacenDestino // ignore: cast_nullable_to_non_nullable
-              as String?,
-      agenciaTransporte: freezed == agenciaTransporte
-          ? _value.agenciaTransporte
-          : agenciaTransporte // ignore: cast_nullable_to_non_nullable
-              as String?,
-      devolucionEstadoId: null == devolucionEstadoId
-          ? _value.devolucionEstadoId
-          : devolucionEstadoId // ignore: cast_nullable_to_non_nullable
-              as String,
-      kilosDevolucion: null == kilosDevolucion
-          ? _value.kilosDevolucion
-          : kilosDevolucion // ignore: cast_nullable_to_non_nullable
-              as double,
-      bultos: null == bultos
-          ? _value.bultos
-          : bultos // ignore: cast_nullable_to_non_nullable
-              as double,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$DevolucionDTOImpl(
+        empresaId:
+            null == empresaId
+                ? _value.empresaId
+                : empresaId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        id:
+            null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                    as String,
+        fechaDevolucion:
+            null == fechaDevolucion
+                ? _value.fechaDevolucion
+                : fechaDevolucion // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        clienteId:
+            freezed == clienteId
+                ? _value.clienteId
+                : clienteId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        direccionId:
+            freezed == direccionId
+                ? _value.direccionId
+                : direccionId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        nombre:
+            freezed == nombre
+                ? _value.nombre
+                : nombre // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        direccionRecogida1:
+            freezed == direccionRecogida1
+                ? _value.direccionRecogida1
+                : direccionRecogida1 // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        direccionRecogida2:
+            freezed == direccionRecogida2
+                ? _value.direccionRecogida2
+                : direccionRecogida2 // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        codigoPostal:
+            freezed == codigoPostal
+                ? _value.codigoPostal
+                : codigoPostal // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        poblacion:
+            freezed == poblacion
+                ? _value.poblacion
+                : poblacion // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        paisId:
+            freezed == paisId
+                ? _value.paisId
+                : paisId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        almacenDestino:
+            freezed == almacenDestino
+                ? _value.almacenDestino
+                : almacenDestino // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        agenciaTransporte:
+            freezed == agenciaTransporte
+                ? _value.agenciaTransporte
+                : agenciaTransporte // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        devolucionEstadoId:
+            null == devolucionEstadoId
+                ? _value.devolucionEstadoId
+                : devolucionEstadoId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        kilosDevolucion:
+            null == kilosDevolucion
+                ? _value.kilosDevolucion
+                : kilosDevolucion // ignore: cast_nullable_to_non_nullable
+                    as double,
+        bultos:
+            null == bultos
+                ? _value.bultos
+                : bultos // ignore: cast_nullable_to_non_nullable
+                    as double,
+        lastUpdated:
+            null == lastUpdated
+                ? _value.lastUpdated
+                : lastUpdated // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        deleted:
+            null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$DevolucionDTOImpl extends _DevolucionDTO {
-  const _$DevolucionDTOImpl(
-      {@JsonKey(name: 'EMPRESA_ID') required this.empresaId,
-      @JsonKey(name: 'DEVOLUCION_ID') required this.id,
-      @JsonKey(name: 'FECHA_DEVOLUCION') required this.fechaDevolucion,
-      @JsonKey(name: 'CLIENTE_ID') this.clienteId,
-      @JsonKey(name: 'DIRECCION_ID') this.direccionId,
-      @JsonKey(name: 'NOMBRE') this.nombre,
-      @JsonKey(name: 'DIRECCION_RECOGIDA1') this.direccionRecogida1,
-      @JsonKey(name: 'DIRECCION_RECOGIDA2') this.direccionRecogida2,
-      @JsonKey(name: 'CODIGO_POSTAL') this.codigoPostal,
-      @JsonKey(name: 'POBLACION') this.poblacion,
-      @JsonKey(name: 'PAIS_ID') this.paisId,
-      @JsonKey(name: 'ALMACEN_DESTINO') this.almacenDestino,
-      @JsonKey(name: 'AGENCIA_TRANSPORTE') this.agenciaTransporte,
-      @JsonKey(name: 'DEVOLUCION_ESTADO_ID') required this.devolucionEstadoId,
-      @JsonKey(name: 'KILOS_DEVOLUCION') required this.kilosDevolucion,
-      @JsonKey(name: 'BULTOS') required this.bultos,
-      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-      @JsonKey(name: 'DELETED') required this.deleted})
-      : super._();
+  const _$DevolucionDTOImpl({
+    @JsonKey(name: 'EMPRESA_ID') required this.empresaId,
+    @JsonKey(name: 'DEVOLUCION_ID') required this.id,
+    @JsonKey(name: 'FECHA_DEVOLUCION') required this.fechaDevolucion,
+    @JsonKey(name: 'CLIENTE_ID') this.clienteId,
+    @JsonKey(name: 'DIRECCION_ID') this.direccionId,
+    @JsonKey(name: 'NOMBRE') this.nombre,
+    @JsonKey(name: 'DIRECCION_RECOGIDA1') this.direccionRecogida1,
+    @JsonKey(name: 'DIRECCION_RECOGIDA2') this.direccionRecogida2,
+    @JsonKey(name: 'CODIGO_POSTAL') this.codigoPostal,
+    @JsonKey(name: 'POBLACION') this.poblacion,
+    @JsonKey(name: 'PAIS_ID') this.paisId,
+    @JsonKey(name: 'ALMACEN_DESTINO') this.almacenDestino,
+    @JsonKey(name: 'AGENCIA_TRANSPORTE') this.agenciaTransporte,
+    @JsonKey(name: 'DEVOLUCION_ESTADO_ID') required this.devolucionEstadoId,
+    @JsonKey(name: 'KILOS_DEVOLUCION') required this.kilosDevolucion,
+    @JsonKey(name: 'BULTOS') required this.bultos,
+    @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+    @JsonKey(name: 'DELETED') required this.deleted,
+  }) : super._();
 
   factory _$DevolucionDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$DevolucionDTOImplFromJson(json);
@@ -471,25 +518,26 @@ class _$DevolucionDTOImpl extends _DevolucionDTO {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      empresaId,
-      id,
-      fechaDevolucion,
-      clienteId,
-      direccionId,
-      nombre,
-      direccionRecogida1,
-      direccionRecogida2,
-      codigoPostal,
-      poblacion,
-      paisId,
-      almacenDestino,
-      agenciaTransporte,
-      devolucionEstadoId,
-      kilosDevolucion,
-      bultos,
-      lastUpdated,
-      deleted);
+    runtimeType,
+    empresaId,
+    id,
+    fechaDevolucion,
+    clienteId,
+    direccionId,
+    nombre,
+    direccionRecogida1,
+    direccionRecogida2,
+    codigoPostal,
+    poblacion,
+    paisId,
+    almacenDestino,
+    agenciaTransporte,
+    devolucionEstadoId,
+    kilosDevolucion,
+    bultos,
+    lastUpdated,
+    deleted,
+  );
 
   /// Create a copy of DevolucionDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -501,35 +549,32 @@ class _$DevolucionDTOImpl extends _DevolucionDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DevolucionDTOImplToJson(
-      this,
-    );
+    return _$$DevolucionDTOImplToJson(this);
   }
 }
 
 abstract class _DevolucionDTO extends DevolucionDTO {
-  const factory _DevolucionDTO(
-      {@JsonKey(name: 'EMPRESA_ID') required final String empresaId,
-      @JsonKey(name: 'DEVOLUCION_ID') required final String id,
-      @JsonKey(name: 'FECHA_DEVOLUCION')
-      required final DateTime fechaDevolucion,
-      @JsonKey(name: 'CLIENTE_ID') final String? clienteId,
-      @JsonKey(name: 'DIRECCION_ID') final String? direccionId,
-      @JsonKey(name: 'NOMBRE') final String? nombre,
-      @JsonKey(name: 'DIRECCION_RECOGIDA1') final String? direccionRecogida1,
-      @JsonKey(name: 'DIRECCION_RECOGIDA2') final String? direccionRecogida2,
-      @JsonKey(name: 'CODIGO_POSTAL') final String? codigoPostal,
-      @JsonKey(name: 'POBLACION') final String? poblacion,
-      @JsonKey(name: 'PAIS_ID') final String? paisId,
-      @JsonKey(name: 'ALMACEN_DESTINO') final String? almacenDestino,
-      @JsonKey(name: 'AGENCIA_TRANSPORTE') final String? agenciaTransporte,
-      @JsonKey(name: 'DEVOLUCION_ESTADO_ID')
-      required final String devolucionEstadoId,
-      @JsonKey(name: 'KILOS_DEVOLUCION') required final double kilosDevolucion,
-      @JsonKey(name: 'BULTOS') required final double bultos,
-      @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED')
-      required final String deleted}) = _$DevolucionDTOImpl;
+  const factory _DevolucionDTO({
+    @JsonKey(name: 'EMPRESA_ID') required final String empresaId,
+    @JsonKey(name: 'DEVOLUCION_ID') required final String id,
+    @JsonKey(name: 'FECHA_DEVOLUCION') required final DateTime fechaDevolucion,
+    @JsonKey(name: 'CLIENTE_ID') final String? clienteId,
+    @JsonKey(name: 'DIRECCION_ID') final String? direccionId,
+    @JsonKey(name: 'NOMBRE') final String? nombre,
+    @JsonKey(name: 'DIRECCION_RECOGIDA1') final String? direccionRecogida1,
+    @JsonKey(name: 'DIRECCION_RECOGIDA2') final String? direccionRecogida2,
+    @JsonKey(name: 'CODIGO_POSTAL') final String? codigoPostal,
+    @JsonKey(name: 'POBLACION') final String? poblacion,
+    @JsonKey(name: 'PAIS_ID') final String? paisId,
+    @JsonKey(name: 'ALMACEN_DESTINO') final String? almacenDestino,
+    @JsonKey(name: 'AGENCIA_TRANSPORTE') final String? agenciaTransporte,
+    @JsonKey(name: 'DEVOLUCION_ESTADO_ID')
+    required final String devolucionEstadoId,
+    @JsonKey(name: 'KILOS_DEVOLUCION') required final double kilosDevolucion,
+    @JsonKey(name: 'BULTOS') required final double bultos,
+    @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') required final String deleted,
+  }) = _$DevolucionDTOImpl;
   const _DevolucionDTO._() : super._();
 
   factory _DevolucionDTO.fromJson(Map<String, dynamic> json) =

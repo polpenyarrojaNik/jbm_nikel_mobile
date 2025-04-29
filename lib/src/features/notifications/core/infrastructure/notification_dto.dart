@@ -22,10 +22,11 @@ class NotificationDto with _$NotificationDto {
 
   Notificacion toDomain() {
     return Notificacion(
-        notificationId: notificacionId,
-        fecha: fecha,
-        usuarioId: usuarioId,
-        leidoSN: leidoSN == 'S',
-        mensaje: mensaje);
+      notificationId: notificacionId,
+      fecha: fecha,
+      usuarioId: usuarioId,
+      leidoSN: leidoSN == 'S',
+      mensaje: mensaje,
+    );
   }
 }

@@ -6,14 +6,15 @@ part 'pedido_albaran.freezed.dart';
 @freezed
 class PedidoAlbaran with _$PedidoAlbaran {
   const PedidoAlbaran._();
-  const factory PedidoAlbaran(
-      {required String empresaId,
-      required String pedidoVentaId,
-      required String albaranId,
-      required DateTime fechaAlbaran,
-      String? agencia,
-      String? trackId,
-      TrackingEstado? trackingEstado,
-      required DateTime lastUpdated,
-      required bool deleted}) = _PedidoAlbaran;
+  const factory PedidoAlbaran({
+    required String empresaId,
+    required String pedidoVentaId,
+    required String albaranId,
+    required DateTime fechaAlbaran,
+    String? agencia,
+    String? trackId,
+    TrackingEstado? trackingEstado,
+    required DateTime lastUpdated,
+    required bool deleted,
+  }) = _PedidoAlbaran;
 }

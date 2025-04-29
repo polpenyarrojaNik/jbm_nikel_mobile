@@ -12,7 +12,8 @@ part of 'devolucion_linea_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 DevolucionLineaDTO _$DevolucionLineaDTOFromJson(Map<String, dynamic> json) {
   return _DevolucionLineaDTO.fromJson(json);
@@ -56,21 +57,23 @@ mixin _$DevolucionLineaDTO {
 /// @nodoc
 abstract class $DevolucionLineaDTOCopyWith<$Res> {
   factory $DevolucionLineaDTOCopyWith(
-          DevolucionLineaDTO value, $Res Function(DevolucionLineaDTO) then) =
-      _$DevolucionLineaDTOCopyWithImpl<$Res, DevolucionLineaDTO>;
+    DevolucionLineaDTO value,
+    $Res Function(DevolucionLineaDTO) then,
+  ) = _$DevolucionLineaDTOCopyWithImpl<$Res, DevolucionLineaDTO>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'EMPRESA_ID') String empresaId,
-      @JsonKey(name: 'DEVOLUCION_ID') String devolucionId,
-      @JsonKey(name: 'ARTICULO_ID') String articuloId,
-      @JsonKey(name: 'ARTICULO_DESCRIPCION') String articuloDescription,
-      @JsonKey(name: 'CANTIDAD_DEVOLUCION') double? cantidadDevolucion,
-      @JsonKey(name: 'CANTIDAD_RECIBIDA') double? cantidadRecibida,
-      @JsonKey(name: 'DEVOLUCION_MOTIVO_ID') String? devolucionMotivoId,
-      @JsonKey(name: 'DEVOLUCION_ESTADO_ID') String? devolucionEstadoId,
-      @JsonKey(name: 'OBSERVACIONES') String? observaciones,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+  $Res call({
+    @JsonKey(name: 'EMPRESA_ID') String empresaId,
+    @JsonKey(name: 'DEVOLUCION_ID') String devolucionId,
+    @JsonKey(name: 'ARTICULO_ID') String articuloId,
+    @JsonKey(name: 'ARTICULO_DESCRIPCION') String articuloDescription,
+    @JsonKey(name: 'CANTIDAD_DEVOLUCION') double? cantidadDevolucion,
+    @JsonKey(name: 'CANTIDAD_RECIBIDA') double? cantidadRecibida,
+    @JsonKey(name: 'DEVOLUCION_MOTIVO_ID') String? devolucionMotivoId,
+    @JsonKey(name: 'DEVOLUCION_ESTADO_ID') String? devolucionEstadoId,
+    @JsonKey(name: 'OBSERVACIONES') String? observaciones,
+    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') String deleted,
+  });
 }
 
 /// @nodoc
@@ -100,84 +103,101 @@ class _$DevolucionLineaDTOCopyWithImpl<$Res, $Val extends DevolucionLineaDTO>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_value.copyWith(
-      empresaId: null == empresaId
-          ? _value.empresaId
-          : empresaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      devolucionId: null == devolucionId
-          ? _value.devolucionId
-          : devolucionId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articuloDescription: null == articuloDescription
-          ? _value.articuloDescription
-          : articuloDescription // ignore: cast_nullable_to_non_nullable
-              as String,
-      cantidadDevolucion: freezed == cantidadDevolucion
-          ? _value.cantidadDevolucion
-          : cantidadDevolucion // ignore: cast_nullable_to_non_nullable
-              as double?,
-      cantidadRecibida: freezed == cantidadRecibida
-          ? _value.cantidadRecibida
-          : cantidadRecibida // ignore: cast_nullable_to_non_nullable
-              as double?,
-      devolucionMotivoId: freezed == devolucionMotivoId
-          ? _value.devolucionMotivoId
-          : devolucionMotivoId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      devolucionEstadoId: freezed == devolucionEstadoId
-          ? _value.devolucionEstadoId
-          : devolucionEstadoId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      observaciones: freezed == observaciones
-          ? _value.observaciones
-          : observaciones // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            empresaId:
+                null == empresaId
+                    ? _value.empresaId
+                    : empresaId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            devolucionId:
+                null == devolucionId
+                    ? _value.devolucionId
+                    : devolucionId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            articuloId:
+                null == articuloId
+                    ? _value.articuloId
+                    : articuloId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            articuloDescription:
+                null == articuloDescription
+                    ? _value.articuloDescription
+                    : articuloDescription // ignore: cast_nullable_to_non_nullable
+                        as String,
+            cantidadDevolucion:
+                freezed == cantidadDevolucion
+                    ? _value.cantidadDevolucion
+                    : cantidadDevolucion // ignore: cast_nullable_to_non_nullable
+                        as double?,
+            cantidadRecibida:
+                freezed == cantidadRecibida
+                    ? _value.cantidadRecibida
+                    : cantidadRecibida // ignore: cast_nullable_to_non_nullable
+                        as double?,
+            devolucionMotivoId:
+                freezed == devolucionMotivoId
+                    ? _value.devolucionMotivoId
+                    : devolucionMotivoId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            devolucionEstadoId:
+                freezed == devolucionEstadoId
+                    ? _value.devolucionEstadoId
+                    : devolucionEstadoId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            observaciones:
+                freezed == observaciones
+                    ? _value.observaciones
+                    : observaciones // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            lastUpdated:
+                null == lastUpdated
+                    ? _value.lastUpdated
+                    : lastUpdated // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            deleted:
+                null == deleted
+                    ? _value.deleted
+                    : deleted // ignore: cast_nullable_to_non_nullable
+                        as String,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$DevolucionLineaDTOImplCopyWith<$Res>
     implements $DevolucionLineaDTOCopyWith<$Res> {
-  factory _$$DevolucionLineaDTOImplCopyWith(_$DevolucionLineaDTOImpl value,
-          $Res Function(_$DevolucionLineaDTOImpl) then) =
-      __$$DevolucionLineaDTOImplCopyWithImpl<$Res>;
+  factory _$$DevolucionLineaDTOImplCopyWith(
+    _$DevolucionLineaDTOImpl value,
+    $Res Function(_$DevolucionLineaDTOImpl) then,
+  ) = __$$DevolucionLineaDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'EMPRESA_ID') String empresaId,
-      @JsonKey(name: 'DEVOLUCION_ID') String devolucionId,
-      @JsonKey(name: 'ARTICULO_ID') String articuloId,
-      @JsonKey(name: 'ARTICULO_DESCRIPCION') String articuloDescription,
-      @JsonKey(name: 'CANTIDAD_DEVOLUCION') double? cantidadDevolucion,
-      @JsonKey(name: 'CANTIDAD_RECIBIDA') double? cantidadRecibida,
-      @JsonKey(name: 'DEVOLUCION_MOTIVO_ID') String? devolucionMotivoId,
-      @JsonKey(name: 'DEVOLUCION_ESTADO_ID') String? devolucionEstadoId,
-      @JsonKey(name: 'OBSERVACIONES') String? observaciones,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+  $Res call({
+    @JsonKey(name: 'EMPRESA_ID') String empresaId,
+    @JsonKey(name: 'DEVOLUCION_ID') String devolucionId,
+    @JsonKey(name: 'ARTICULO_ID') String articuloId,
+    @JsonKey(name: 'ARTICULO_DESCRIPCION') String articuloDescription,
+    @JsonKey(name: 'CANTIDAD_DEVOLUCION') double? cantidadDevolucion,
+    @JsonKey(name: 'CANTIDAD_RECIBIDA') double? cantidadRecibida,
+    @JsonKey(name: 'DEVOLUCION_MOTIVO_ID') String? devolucionMotivoId,
+    @JsonKey(name: 'DEVOLUCION_ESTADO_ID') String? devolucionEstadoId,
+    @JsonKey(name: 'OBSERVACIONES') String? observaciones,
+    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') String deleted,
+  });
 }
 
 /// @nodoc
 class __$$DevolucionLineaDTOImplCopyWithImpl<$Res>
     extends _$DevolucionLineaDTOCopyWithImpl<$Res, _$DevolucionLineaDTOImpl>
     implements _$$DevolucionLineaDTOImplCopyWith<$Res> {
-  __$$DevolucionLineaDTOImplCopyWithImpl(_$DevolucionLineaDTOImpl _value,
-      $Res Function(_$DevolucionLineaDTOImpl) _then)
-      : super(_value, _then);
+  __$$DevolucionLineaDTOImplCopyWithImpl(
+    _$DevolucionLineaDTOImpl _value,
+    $Res Function(_$DevolucionLineaDTOImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DevolucionLineaDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -196,71 +216,84 @@ class __$$DevolucionLineaDTOImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$DevolucionLineaDTOImpl(
-      empresaId: null == empresaId
-          ? _value.empresaId
-          : empresaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      devolucionId: null == devolucionId
-          ? _value.devolucionId
-          : devolucionId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articuloDescription: null == articuloDescription
-          ? _value.articuloDescription
-          : articuloDescription // ignore: cast_nullable_to_non_nullable
-              as String,
-      cantidadDevolucion: freezed == cantidadDevolucion
-          ? _value.cantidadDevolucion
-          : cantidadDevolucion // ignore: cast_nullable_to_non_nullable
-              as double?,
-      cantidadRecibida: freezed == cantidadRecibida
-          ? _value.cantidadRecibida
-          : cantidadRecibida // ignore: cast_nullable_to_non_nullable
-              as double?,
-      devolucionMotivoId: freezed == devolucionMotivoId
-          ? _value.devolucionMotivoId
-          : devolucionMotivoId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      devolucionEstadoId: freezed == devolucionEstadoId
-          ? _value.devolucionEstadoId
-          : devolucionEstadoId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      observaciones: freezed == observaciones
-          ? _value.observaciones
-          : observaciones // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$DevolucionLineaDTOImpl(
+        empresaId:
+            null == empresaId
+                ? _value.empresaId
+                : empresaId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        devolucionId:
+            null == devolucionId
+                ? _value.devolucionId
+                : devolucionId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        articuloId:
+            null == articuloId
+                ? _value.articuloId
+                : articuloId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        articuloDescription:
+            null == articuloDescription
+                ? _value.articuloDescription
+                : articuloDescription // ignore: cast_nullable_to_non_nullable
+                    as String,
+        cantidadDevolucion:
+            freezed == cantidadDevolucion
+                ? _value.cantidadDevolucion
+                : cantidadDevolucion // ignore: cast_nullable_to_non_nullable
+                    as double?,
+        cantidadRecibida:
+            freezed == cantidadRecibida
+                ? _value.cantidadRecibida
+                : cantidadRecibida // ignore: cast_nullable_to_non_nullable
+                    as double?,
+        devolucionMotivoId:
+            freezed == devolucionMotivoId
+                ? _value.devolucionMotivoId
+                : devolucionMotivoId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        devolucionEstadoId:
+            freezed == devolucionEstadoId
+                ? _value.devolucionEstadoId
+                : devolucionEstadoId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        observaciones:
+            freezed == observaciones
+                ? _value.observaciones
+                : observaciones // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        lastUpdated:
+            null == lastUpdated
+                ? _value.lastUpdated
+                : lastUpdated // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        deleted:
+            null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$DevolucionLineaDTOImpl extends _DevolucionLineaDTO {
-  const _$DevolucionLineaDTOImpl(
-      {@JsonKey(name: 'EMPRESA_ID') required this.empresaId,
-      @JsonKey(name: 'DEVOLUCION_ID') required this.devolucionId,
-      @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
-      @JsonKey(name: 'ARTICULO_DESCRIPCION') required this.articuloDescription,
-      @JsonKey(name: 'CANTIDAD_DEVOLUCION') this.cantidadDevolucion,
-      @JsonKey(name: 'CANTIDAD_RECIBIDA') this.cantidadRecibida,
-      @JsonKey(name: 'DEVOLUCION_MOTIVO_ID') this.devolucionMotivoId,
-      @JsonKey(name: 'DEVOLUCION_ESTADO_ID') this.devolucionEstadoId,
-      @JsonKey(name: 'OBSERVACIONES') this.observaciones,
-      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-      @JsonKey(name: 'DELETED') required this.deleted})
-      : super._();
+  const _$DevolucionLineaDTOImpl({
+    @JsonKey(name: 'EMPRESA_ID') required this.empresaId,
+    @JsonKey(name: 'DEVOLUCION_ID') required this.devolucionId,
+    @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
+    @JsonKey(name: 'ARTICULO_DESCRIPCION') required this.articuloDescription,
+    @JsonKey(name: 'CANTIDAD_DEVOLUCION') this.cantidadDevolucion,
+    @JsonKey(name: 'CANTIDAD_RECIBIDA') this.cantidadRecibida,
+    @JsonKey(name: 'DEVOLUCION_MOTIVO_ID') this.devolucionMotivoId,
+    @JsonKey(name: 'DEVOLUCION_ESTADO_ID') this.devolucionEstadoId,
+    @JsonKey(name: 'OBSERVACIONES') this.observaciones,
+    @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+    @JsonKey(name: 'DELETED') required this.deleted,
+  }) : super._();
 
   factory _$DevolucionLineaDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$DevolucionLineaDTOImplFromJson(json);
@@ -335,18 +368,19 @@ class _$DevolucionLineaDTOImpl extends _DevolucionLineaDTO {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      empresaId,
-      devolucionId,
-      articuloId,
-      articuloDescription,
-      cantidadDevolucion,
-      cantidadRecibida,
-      devolucionMotivoId,
-      devolucionEstadoId,
-      observaciones,
-      lastUpdated,
-      deleted);
+    runtimeType,
+    empresaId,
+    devolucionId,
+    articuloId,
+    articuloDescription,
+    cantidadDevolucion,
+    cantidadRecibida,
+    devolucionMotivoId,
+    devolucionEstadoId,
+    observaciones,
+    lastUpdated,
+    deleted,
+  );
 
   /// Create a copy of DevolucionLineaDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -355,31 +389,31 @@ class _$DevolucionLineaDTOImpl extends _DevolucionLineaDTO {
   @pragma('vm:prefer-inline')
   _$$DevolucionLineaDTOImplCopyWith<_$DevolucionLineaDTOImpl> get copyWith =>
       __$$DevolucionLineaDTOImplCopyWithImpl<_$DevolucionLineaDTOImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DevolucionLineaDTOImplToJson(
-      this,
-    );
+    return _$$DevolucionLineaDTOImplToJson(this);
   }
 }
 
 abstract class _DevolucionLineaDTO extends DevolucionLineaDTO {
-  const factory _DevolucionLineaDTO(
-      {@JsonKey(name: 'EMPRESA_ID') required final String empresaId,
-      @JsonKey(name: 'DEVOLUCION_ID') required final String devolucionId,
-      @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
-      @JsonKey(name: 'ARTICULO_DESCRIPCION')
-      required final String articuloDescription,
-      @JsonKey(name: 'CANTIDAD_DEVOLUCION') final double? cantidadDevolucion,
-      @JsonKey(name: 'CANTIDAD_RECIBIDA') final double? cantidadRecibida,
-      @JsonKey(name: 'DEVOLUCION_MOTIVO_ID') final String? devolucionMotivoId,
-      @JsonKey(name: 'DEVOLUCION_ESTADO_ID') final String? devolucionEstadoId,
-      @JsonKey(name: 'OBSERVACIONES') final String? observaciones,
-      @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED')
-      required final String deleted}) = _$DevolucionLineaDTOImpl;
+  const factory _DevolucionLineaDTO({
+    @JsonKey(name: 'EMPRESA_ID') required final String empresaId,
+    @JsonKey(name: 'DEVOLUCION_ID') required final String devolucionId,
+    @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
+    @JsonKey(name: 'ARTICULO_DESCRIPCION')
+    required final String articuloDescription,
+    @JsonKey(name: 'CANTIDAD_DEVOLUCION') final double? cantidadDevolucion,
+    @JsonKey(name: 'CANTIDAD_RECIBIDA') final double? cantidadRecibida,
+    @JsonKey(name: 'DEVOLUCION_MOTIVO_ID') final String? devolucionMotivoId,
+    @JsonKey(name: 'DEVOLUCION_ESTADO_ID') final String? devolucionEstadoId,
+    @JsonKey(name: 'OBSERVACIONES') final String? observaciones,
+    @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') required final String deleted,
+  }) = _$DevolucionLineaDTOImpl;
   const _DevolucionLineaDTO._() : super._();
 
   factory _DevolucionLineaDTO.fromJson(Map<String, dynamic> json) =

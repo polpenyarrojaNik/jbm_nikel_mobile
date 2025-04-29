@@ -40,10 +40,11 @@ class VisitaMotivoNoVentaDTO
 
   VisitaMotivoNoVenta toDomain() {
     return VisitaMotivoNoVenta(
-        id: id,
-        descripcion: getDescriptionInLocalLanguage(),
-        lastUpdate: lastUpdated,
-        deleted: (deleted == 'S') ? true : false);
+      id: id,
+      descripcion: getDescriptionInLocalLanguage(),
+      lastUpdate: lastUpdated,
+      deleted: (deleted == 'S') ? true : false,
+    );
   }
 
   String getDescriptionInLocalLanguage() {

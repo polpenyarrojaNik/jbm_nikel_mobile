@@ -12,7 +12,8 @@ part of 'cliente_precio_neto_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ClientePrecioNetoDTO _$ClientePrecioNetoDTOFromJson(Map<String, dynamic> json) {
   return _ClientePrecioNetoDTO.fromJson(json);
@@ -49,24 +50,28 @@ mixin _$ClientePrecioNetoDTO {
 
 /// @nodoc
 abstract class $ClientePrecioNetoDTOCopyWith<$Res> {
-  factory $ClientePrecioNetoDTOCopyWith(ClientePrecioNetoDTO value,
-          $Res Function(ClientePrecioNetoDTO) then) =
-      _$ClientePrecioNetoDTOCopyWithImpl<$Res, ClientePrecioNetoDTO>;
+  factory $ClientePrecioNetoDTOCopyWith(
+    ClientePrecioNetoDTO value,
+    $Res Function(ClientePrecioNetoDTO) then,
+  ) = _$ClientePrecioNetoDTOCopyWithImpl<$Res, ClientePrecioNetoDTO>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'CLIENTE_ID') String clienteId,
-      @JsonKey(name: 'ARTICULO_ID') String articuloId,
-      @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
-      @JsonKey(name: 'PRECIO') double precio,
-      @JsonKey(name: 'TIPO_PRECIO') int? tipoPrecio,
-      @JsonKey(name: 'DTO_ADICIONAL') double? dtoAdicional,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+  $Res call({
+    @JsonKey(name: 'CLIENTE_ID') String clienteId,
+    @JsonKey(name: 'ARTICULO_ID') String articuloId,
+    @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
+    @JsonKey(name: 'PRECIO') double precio,
+    @JsonKey(name: 'TIPO_PRECIO') int? tipoPrecio,
+    @JsonKey(name: 'DTO_ADICIONAL') double? dtoAdicional,
+    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') String deleted,
+  });
 }
 
 /// @nodoc
-class _$ClientePrecioNetoDTOCopyWithImpl<$Res,
-        $Val extends ClientePrecioNetoDTO>
+class _$ClientePrecioNetoDTOCopyWithImpl<
+  $Res,
+  $Val extends ClientePrecioNetoDTO
+>
     implements $ClientePrecioNetoDTOCopyWith<$Res> {
   _$ClientePrecioNetoDTOCopyWithImpl(this._value, this._then);
 
@@ -89,69 +94,83 @@ class _$ClientePrecioNetoDTOCopyWithImpl<$Res,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_value.copyWith(
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      cantidadDesde: null == cantidadDesde
-          ? _value.cantidadDesde
-          : cantidadDesde // ignore: cast_nullable_to_non_nullable
-              as int,
-      precio: null == precio
-          ? _value.precio
-          : precio // ignore: cast_nullable_to_non_nullable
-              as double,
-      tipoPrecio: freezed == tipoPrecio
-          ? _value.tipoPrecio
-          : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as int?,
-      dtoAdicional: freezed == dtoAdicional
-          ? _value.dtoAdicional
-          : dtoAdicional // ignore: cast_nullable_to_non_nullable
-              as double?,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            clienteId:
+                null == clienteId
+                    ? _value.clienteId
+                    : clienteId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            articuloId:
+                null == articuloId
+                    ? _value.articuloId
+                    : articuloId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            cantidadDesde:
+                null == cantidadDesde
+                    ? _value.cantidadDesde
+                    : cantidadDesde // ignore: cast_nullable_to_non_nullable
+                        as int,
+            precio:
+                null == precio
+                    ? _value.precio
+                    : precio // ignore: cast_nullable_to_non_nullable
+                        as double,
+            tipoPrecio:
+                freezed == tipoPrecio
+                    ? _value.tipoPrecio
+                    : tipoPrecio // ignore: cast_nullable_to_non_nullable
+                        as int?,
+            dtoAdicional:
+                freezed == dtoAdicional
+                    ? _value.dtoAdicional
+                    : dtoAdicional // ignore: cast_nullable_to_non_nullable
+                        as double?,
+            lastUpdated:
+                null == lastUpdated
+                    ? _value.lastUpdated
+                    : lastUpdated // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            deleted:
+                null == deleted
+                    ? _value.deleted
+                    : deleted // ignore: cast_nullable_to_non_nullable
+                        as String,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$ClientePrecioNetoDTOImplCopyWith<$Res>
     implements $ClientePrecioNetoDTOCopyWith<$Res> {
-  factory _$$ClientePrecioNetoDTOImplCopyWith(_$ClientePrecioNetoDTOImpl value,
-          $Res Function(_$ClientePrecioNetoDTOImpl) then) =
-      __$$ClientePrecioNetoDTOImplCopyWithImpl<$Res>;
+  factory _$$ClientePrecioNetoDTOImplCopyWith(
+    _$ClientePrecioNetoDTOImpl value,
+    $Res Function(_$ClientePrecioNetoDTOImpl) then,
+  ) = __$$ClientePrecioNetoDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'CLIENTE_ID') String clienteId,
-      @JsonKey(name: 'ARTICULO_ID') String articuloId,
-      @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
-      @JsonKey(name: 'PRECIO') double precio,
-      @JsonKey(name: 'TIPO_PRECIO') int? tipoPrecio,
-      @JsonKey(name: 'DTO_ADICIONAL') double? dtoAdicional,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+  $Res call({
+    @JsonKey(name: 'CLIENTE_ID') String clienteId,
+    @JsonKey(name: 'ARTICULO_ID') String articuloId,
+    @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
+    @JsonKey(name: 'PRECIO') double precio,
+    @JsonKey(name: 'TIPO_PRECIO') int? tipoPrecio,
+    @JsonKey(name: 'DTO_ADICIONAL') double? dtoAdicional,
+    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') String deleted,
+  });
 }
 
 /// @nodoc
 class __$$ClientePrecioNetoDTOImplCopyWithImpl<$Res>
     extends _$ClientePrecioNetoDTOCopyWithImpl<$Res, _$ClientePrecioNetoDTOImpl>
     implements _$$ClientePrecioNetoDTOImplCopyWith<$Res> {
-  __$$ClientePrecioNetoDTOImplCopyWithImpl(_$ClientePrecioNetoDTOImpl _value,
-      $Res Function(_$ClientePrecioNetoDTOImpl) _then)
-      : super(_value, _then);
+  __$$ClientePrecioNetoDTOImplCopyWithImpl(
+    _$ClientePrecioNetoDTOImpl _value,
+    $Res Function(_$ClientePrecioNetoDTOImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ClientePrecioNetoDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -167,56 +186,66 @@ class __$$ClientePrecioNetoDTOImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$ClientePrecioNetoDTOImpl(
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      cantidadDesde: null == cantidadDesde
-          ? _value.cantidadDesde
-          : cantidadDesde // ignore: cast_nullable_to_non_nullable
-              as int,
-      precio: null == precio
-          ? _value.precio
-          : precio // ignore: cast_nullable_to_non_nullable
-              as double,
-      tipoPrecio: freezed == tipoPrecio
-          ? _value.tipoPrecio
-          : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as int?,
-      dtoAdicional: freezed == dtoAdicional
-          ? _value.dtoAdicional
-          : dtoAdicional // ignore: cast_nullable_to_non_nullable
-              as double?,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$ClientePrecioNetoDTOImpl(
+        clienteId:
+            null == clienteId
+                ? _value.clienteId
+                : clienteId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        articuloId:
+            null == articuloId
+                ? _value.articuloId
+                : articuloId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        cantidadDesde:
+            null == cantidadDesde
+                ? _value.cantidadDesde
+                : cantidadDesde // ignore: cast_nullable_to_non_nullable
+                    as int,
+        precio:
+            null == precio
+                ? _value.precio
+                : precio // ignore: cast_nullable_to_non_nullable
+                    as double,
+        tipoPrecio:
+            freezed == tipoPrecio
+                ? _value.tipoPrecio
+                : tipoPrecio // ignore: cast_nullable_to_non_nullable
+                    as int?,
+        dtoAdicional:
+            freezed == dtoAdicional
+                ? _value.dtoAdicional
+                : dtoAdicional // ignore: cast_nullable_to_non_nullable
+                    as double?,
+        lastUpdated:
+            null == lastUpdated
+                ? _value.lastUpdated
+                : lastUpdated // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        deleted:
+            null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ClientePrecioNetoDTOImpl extends _ClientePrecioNetoDTO {
-  const _$ClientePrecioNetoDTOImpl(
-      {@JsonKey(name: 'CLIENTE_ID') required this.clienteId,
-      @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
-      @JsonKey(name: 'CANTIDAD_DESDE') required this.cantidadDesde,
-      @JsonKey(name: 'PRECIO') required this.precio,
-      @JsonKey(name: 'TIPO_PRECIO') this.tipoPrecio,
-      @JsonKey(name: 'DTO_ADICIONAL') this.dtoAdicional,
-      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-      @JsonKey(name: 'DELETED') this.deleted = 'N'})
-      : super._();
+  const _$ClientePrecioNetoDTOImpl({
+    @JsonKey(name: 'CLIENTE_ID') required this.clienteId,
+    @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
+    @JsonKey(name: 'CANTIDAD_DESDE') required this.cantidadDesde,
+    @JsonKey(name: 'PRECIO') required this.precio,
+    @JsonKey(name: 'TIPO_PRECIO') this.tipoPrecio,
+    @JsonKey(name: 'DTO_ADICIONAL') this.dtoAdicional,
+    @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+    @JsonKey(name: 'DELETED') this.deleted = 'N',
+  }) : super._();
 
   factory _$ClientePrecioNetoDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ClientePrecioNetoDTOImplFromJson(json);
@@ -274,8 +303,17 @@ class _$ClientePrecioNetoDTOImpl extends _ClientePrecioNetoDTO {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, clienteId, articuloId,
-      cantidadDesde, precio, tipoPrecio, dtoAdicional, lastUpdated, deleted);
+  int get hashCode => Object.hash(
+    runtimeType,
+    clienteId,
+    articuloId,
+    cantidadDesde,
+    precio,
+    tipoPrecio,
+    dtoAdicional,
+    lastUpdated,
+    deleted,
+  );
 
   /// Create a copy of ClientePrecioNetoDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -283,29 +321,29 @@ class _$ClientePrecioNetoDTOImpl extends _ClientePrecioNetoDTO {
   @override
   @pragma('vm:prefer-inline')
   _$$ClientePrecioNetoDTOImplCopyWith<_$ClientePrecioNetoDTOImpl>
-      get copyWith =>
-          __$$ClientePrecioNetoDTOImplCopyWithImpl<_$ClientePrecioNetoDTOImpl>(
-              this, _$identity);
+  get copyWith =>
+      __$$ClientePrecioNetoDTOImplCopyWithImpl<_$ClientePrecioNetoDTOImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ClientePrecioNetoDTOImplToJson(
-      this,
-    );
+    return _$$ClientePrecioNetoDTOImplToJson(this);
   }
 }
 
 abstract class _ClientePrecioNetoDTO extends ClientePrecioNetoDTO {
-  const factory _ClientePrecioNetoDTO(
-          {@JsonKey(name: 'CLIENTE_ID') required final String clienteId,
-          @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
-          @JsonKey(name: 'CANTIDAD_DESDE') required final int cantidadDesde,
-          @JsonKey(name: 'PRECIO') required final double precio,
-          @JsonKey(name: 'TIPO_PRECIO') final int? tipoPrecio,
-          @JsonKey(name: 'DTO_ADICIONAL') final double? dtoAdicional,
-          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-          @JsonKey(name: 'DELETED') final String deleted}) =
-      _$ClientePrecioNetoDTOImpl;
+  const factory _ClientePrecioNetoDTO({
+    @JsonKey(name: 'CLIENTE_ID') required final String clienteId,
+    @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
+    @JsonKey(name: 'CANTIDAD_DESDE') required final int cantidadDesde,
+    @JsonKey(name: 'PRECIO') required final double precio,
+    @JsonKey(name: 'TIPO_PRECIO') final int? tipoPrecio,
+    @JsonKey(name: 'DTO_ADICIONAL') final double? dtoAdicional,
+    @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') final String deleted,
+  }) = _$ClientePrecioNetoDTOImpl;
   const _ClientePrecioNetoDTO._() : super._();
 
   factory _ClientePrecioNetoDTO.fromJson(Map<String, dynamic> json) =
@@ -341,5 +379,5 @@ abstract class _ClientePrecioNetoDTO extends ClientePrecioNetoDTO {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClientePrecioNetoDTOImplCopyWith<_$ClientePrecioNetoDTOImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }

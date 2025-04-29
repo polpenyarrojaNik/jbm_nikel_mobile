@@ -51,8 +51,9 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
         orElse: () {},
         data: (notificationId) {
           if (notificationId != null) {
-            context.router
-                .push(NotificationDetailRoute(notificationId: notificationId));
+            context.router.push(
+              NotificationDetailRoute(notificationId: notificationId),
+            );
           }
         },
       ),
@@ -71,19 +72,19 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
         isSearchingFirst: false,
         title: S.of(context).visita_index_titulo,
         searchTitle: S.of(context).visita_index_buscarVisitas,
-        onChanged: (searchText) => _debouncer.run(
-          () {
-            ref.read(visitasSearchQueryStateProvider.notifier).state =
-                searchText;
-          },
-        ),
+        onChanged:
+            (searchText) => _debouncer.run(() {
+              ref.read(visitasSearchQueryStateProvider.notifier).state =
+                  searchText;
+            }),
       ),
       body: stateSync.maybeWhen(
         orElse: () => VisitaListViewWidget(stateSync: stateSync, ref: ref),
-        synchronized: () => RefreshIndicator(
-          onRefresh: () => refreshVisitsDB(ref),
-          child: VisitaListViewWidget(stateSync: stateSync, ref: ref),
-        ),
+        synchronized:
+            () => RefreshIndicator(
+              onRefresh: () => refreshVisitsDB(ref),
+              child: VisitaListViewWidget(stateSync: stateSync, ref: ref),
+            ),
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
@@ -105,7 +106,8 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
     } catch (e) {
       if (mounted) {
         await context.showErrorBar(
-            content: Text(S.of(context).noSeHaPodidoSincronizar));
+          content: Text(S.of(context).noSeHaPodidoSincronizar),
+        );
       }
     }
   }
@@ -137,31 +139,41 @@ class VisitaListViewWidget extends StatelessWidget {
             final stateLastSyncDate = ref.watch(visitaLastSyncDateProvider);
 
             return stateLastSyncDate.when(
-                data: (fechaUltimaSync) =>
-                    UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
-                error: (_, __) => Container(),
-                loading: () => const ProgressIndicatorWidget());
+              data:
+                  (fechaUltimaSync) =>
+                      UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
+              error: (_, __) => Container(),
+              loading: () => const ProgressIndicatorWidget(),
+            );
           },
         ),
         gapH8,
         Expanded(
           child: stateVisitaListCount.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
-            data: (count) => ListView.separated(
-              separatorBuilder: (context, i) => const Divider(),
-              physics: const AlwaysScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: count,
-              itemBuilder: (context, i) => ref
-                  .watch(VisitaIndexScreenPaginatedControllerProvider(
-                      page: (i ~/ VisitaRepository.pageSize)))
-                  .maybeWhen(
-                    orElse: () => const VisitaListShimmer(),
-                    data: (visitaList) => VisitaListaTile(
-                        visita: visitaList[i % VisitaRepository.pageSize],
-                        navigatedFromCliente: false),
-                  ),
-            ),
+            data:
+                (count) => ListView.separated(
+                  separatorBuilder: (context, i) => const Divider(),
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: count,
+                  itemBuilder:
+                      (context, i) => ref
+                          .watch(
+                            VisitaIndexScreenPaginatedControllerProvider(
+                              page: (i ~/ VisitaRepository.pageSize),
+                            ),
+                          )
+                          .maybeWhen(
+                            orElse: () => const VisitaListShimmer(),
+                            data:
+                                (visitaList) => VisitaListaTile(
+                                  visita:
+                                      visitaList[i % VisitaRepository.pageSize],
+                                  navigatedFromCliente: false,
+                                ),
+                          ),
+                ),
           ),
         ),
       ],

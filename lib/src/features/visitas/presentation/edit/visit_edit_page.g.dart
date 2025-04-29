@@ -35,10 +35,7 @@ abstract class _$VisitEditPageController
   late final String visitaId;
   late final bool isNew;
 
-  FutureOr<VisitEditScreenData> build(
-    String visitaId,
-    bool isNew,
-  );
+  FutureOr<VisitEditScreenData> build(String visitaId, bool isNew);
 }
 
 /// See also [VisitEditPageController].
@@ -52,24 +49,15 @@ class VisitEditPageControllerFamily
   const VisitEditPageControllerFamily();
 
   /// See also [VisitEditPageController].
-  VisitEditPageControllerProvider call(
-    String visitaId,
-    bool isNew,
-  ) {
-    return VisitEditPageControllerProvider(
-      visitaId,
-      isNew,
-    );
+  VisitEditPageControllerProvider call(String visitaId, bool isNew) {
+    return VisitEditPageControllerProvider(visitaId, isNew);
   }
 
   @override
   VisitEditPageControllerProvider getProviderOverride(
     covariant VisitEditPageControllerProvider provider,
   ) {
-    return call(
-      provider.visitaId,
-      provider.isNew,
-    );
+    return call(provider.visitaId, provider.isNew);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -89,28 +77,30 @@ class VisitEditPageControllerFamily
 
 /// See also [VisitEditPageController].
 class VisitEditPageControllerProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<VisitEditPageController,
-        VisitEditScreenData> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          VisitEditPageController,
+          VisitEditScreenData
+        > {
   /// See also [VisitEditPageController].
-  VisitEditPageControllerProvider(
-    String visitaId,
-    bool isNew,
-  ) : this._internal(
-          () => VisitEditPageController()
-            ..visitaId = visitaId
-            ..isNew = isNew,
-          from: visitEditPageControllerProvider,
-          name: r'visitEditPageControllerProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$visitEditPageControllerHash,
-          dependencies: VisitEditPageControllerFamily._dependencies,
-          allTransitiveDependencies:
-              VisitEditPageControllerFamily._allTransitiveDependencies,
-          visitaId: visitaId,
-          isNew: isNew,
-        );
+  VisitEditPageControllerProvider(String visitaId, bool isNew)
+    : this._internal(
+        () =>
+            VisitEditPageController()
+              ..visitaId = visitaId
+              ..isNew = isNew,
+        from: visitEditPageControllerProvider,
+        name: r'visitEditPageControllerProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$visitEditPageControllerHash,
+        dependencies: VisitEditPageControllerFamily._dependencies,
+        allTransitiveDependencies:
+            VisitEditPageControllerFamily._allTransitiveDependencies,
+        visitaId: visitaId,
+        isNew: isNew,
+      );
 
   VisitEditPageControllerProvider._internal(
     super._createNotifier, {
@@ -130,10 +120,7 @@ class VisitEditPageControllerProvider
   FutureOr<VisitEditScreenData> runNotifierBuild(
     covariant VisitEditPageController notifier,
   ) {
-    return notifier.build(
-      visitaId,
-      isNew,
-    );
+    return notifier.build(visitaId, isNew);
   }
 
   @override
@@ -141,9 +128,10 @@ class VisitEditPageControllerProvider
     return ProviderOverride(
       origin: this,
       override: VisitEditPageControllerProvider._internal(
-        () => create()
-          ..visitaId = visitaId
-          ..isNew = isNew,
+        () =>
+            create()
+              ..visitaId = visitaId
+              ..isNew = isNew,
         from: from,
         name: null,
         dependencies: null,
@@ -156,8 +144,11 @@ class VisitEditPageControllerProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<VisitEditPageController,
-      VisitEditScreenData> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    VisitEditPageController,
+    VisitEditScreenData
+  >
+  createElement() {
     return _VisitEditPageControllerProviderElement(this);
   }
 
@@ -190,8 +181,12 @@ mixin VisitEditPageControllerRef
 }
 
 class _VisitEditPageControllerProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<VisitEditPageController,
-        VisitEditScreenData> with VisitEditPageControllerRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          VisitEditPageController,
+          VisitEditScreenData
+        >
+    with VisitEditPageControllerRef {
   _VisitEditPageControllerProviderElement(super.provider);
 
   @override
@@ -206,33 +201,28 @@ class _VisitEditPageControllerProviderElement
 // RiverpodMutationsGenerator
 // **************************************************************************
 
-typedef VisitEditPageControllerFamilyParams = (
-  String visitaId,
-  bool isNew,
-);
+typedef VisitEditPageControllerFamilyParams = (String visitaId, bool isNew);
 
 extension VisitEditPageControllerMutationExtension
     on VisitEditPageControllerProvider {
   VisitEditPageControllerFamilyParams get _params => (
-        this.visitaId,
-        this.isNew,
-      );
+    this.visitaId,
+    this.isNew,
+  );
 
   Refreshable<SaveFormMutation> get saveForm => _saveFormProvider(_params);
 }
 
 // Could have extras in the future when @mutationKey gets added. for now identical to the class one.
-typedef _SaveFormFamilyParameters = (
-  String visitaId,
-  bool isNew,
-);
+typedef _SaveFormFamilyParameters = (String visitaId, bool isNew);
 
-final _saveFormProvider =
-    Provider.autoDispose.family((ref, _SaveFormFamilyParameters _params) {
-  final notifier = ref.watch(visitEditPageControllerProvider(
-    _params.$1,
-    _params.$2,
-  ).notifier);
+final _saveFormProvider = Provider.autoDispose.family((
+  ref,
+  _SaveFormFamilyParameters _params,
+) {
+  final notifier = ref.watch(
+    visitEditPageControllerProvider(_params.$1, _params.$2).notifier,
+  );
   return SaveFormMutation(
     (newState) => ref.state = newState,
     notifier.saveForm,
@@ -369,14 +359,13 @@ final class SaveFormMutationFailure extends SaveFormMutation
     SaveFormMutation other, {
     required Object error,
     required StackTrace stackTrace,
-  }) =>
-      SaveFormMutationFailure._(
-        other._updateState,
-        other._fn,
-        error: error,
-        stackTrace: stackTrace,
-        result: other.result,
-      );
+  }) => SaveFormMutationFailure._(
+    other._updateState,
+    other._fn,
+    error: error,
+    stackTrace: stackTrace,
+    result: other.result,
+  );
 
   @override
   final Object error;

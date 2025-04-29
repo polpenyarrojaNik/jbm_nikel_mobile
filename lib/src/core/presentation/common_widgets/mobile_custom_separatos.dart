@@ -17,8 +17,9 @@ class MobileCustomSeparators extends StatelessWidget {
           Text(
             separatorTitle,
             style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                color: Theme.of(context).colorScheme.onSurfaceVariant),
-          )
+              color: Theme.of(context).colorScheme.onSurfaceVariant,
+            ),
+          ),
         ],
       ),
     );

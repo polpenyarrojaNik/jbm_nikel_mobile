@@ -40,11 +40,12 @@ class PaisDTO with _$PaisDTO implements Insertable<PaisDTO> {
 
   Pais toDomain() {
     return Pais(
-        id: id,
-        isoCode: isoCode,
-        descripcion: getDescriptionInLocalLanguage(),
-        lastUpdate: lastUpdated,
-        deleted: (deleted == 'S') ? true : false);
+      id: id,
+      isoCode: isoCode,
+      descripcion: getDescriptionInLocalLanguage(),
+      lastUpdate: lastUpdated,
+      deleted: (deleted == 'S') ? true : false,
+    );
   }
 
   String getDescriptionInLocalLanguage() {

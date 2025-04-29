@@ -12,7 +12,8 @@ part of 'visita.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$Visita {
@@ -71,44 +72,45 @@ abstract class $VisitaCopyWith<$Res> {
   factory $VisitaCopyWith(Visita value, $Res Function(Visita) then) =
       _$VisitaCopyWithImpl<$Res, Visita>;
   @useResult
-  $Res call(
-      {String? id,
-      Cliente? cliente,
-      bool isClienteProvisional,
-      String? clienteProvisionalNombre,
-      String? clienteProvisionalEmail,
-      String? clienteProvisionalTelefono,
-      String? clienteProvisionalDireccion1,
-      String? clienteProvisionalDireccion2,
-      String? clienteProvisionalCodigoPostal,
-      String? clienteProvisionalPoblacion,
-      Provincia? clienteProvisionalProvincia,
-      String? clienteProvisionalRegionId,
-      Pais? clienteProvisionalPais,
-      DateTime fecha,
-      String numEmpl,
-      String? contacto,
-      String? atendidoPor,
-      String? resumen,
-      String? marcasCompetencia,
-      double latitud,
-      double longitud,
-      String? visitaAppId,
-      bool ofertaRealizada,
-      InteresCliente? interesCliente,
-      bool pedidoRealizado,
-      VisitaMotivoNoVenta? motivoNoInteres,
-      VisitaMotivoNoVenta? motivoNoPedido,
-      VisitaSector? sector,
-      List<VisitaCompetidor> competenciaList,
-      bool? almacenPropio,
-      Capacidad? capacidad,
-      FrecuenciaPedido? frecuenciaPedido,
-      DateTime lastUpdated,
-      bool deleted,
-      bool enviada,
-      bool tratada,
-      String? errorSyncMessage});
+  $Res call({
+    String? id,
+    Cliente? cliente,
+    bool isClienteProvisional,
+    String? clienteProvisionalNombre,
+    String? clienteProvisionalEmail,
+    String? clienteProvisionalTelefono,
+    String? clienteProvisionalDireccion1,
+    String? clienteProvisionalDireccion2,
+    String? clienteProvisionalCodigoPostal,
+    String? clienteProvisionalPoblacion,
+    Provincia? clienteProvisionalProvincia,
+    String? clienteProvisionalRegionId,
+    Pais? clienteProvisionalPais,
+    DateTime fecha,
+    String numEmpl,
+    String? contacto,
+    String? atendidoPor,
+    String? resumen,
+    String? marcasCompetencia,
+    double latitud,
+    double longitud,
+    String? visitaAppId,
+    bool ofertaRealizada,
+    InteresCliente? interesCliente,
+    bool pedidoRealizado,
+    VisitaMotivoNoVenta? motivoNoInteres,
+    VisitaMotivoNoVenta? motivoNoPedido,
+    VisitaSector? sector,
+    List<VisitaCompetidor> competenciaList,
+    bool? almacenPropio,
+    Capacidad? capacidad,
+    FrecuenciaPedido? frecuenciaPedido,
+    DateTime lastUpdated,
+    bool deleted,
+    bool enviada,
+    bool tratada,
+    String? errorSyncMessage,
+  });
 
   $ClienteCopyWith<$Res>? get cliente;
   $ProvinciaCopyWith<$Res>? get clienteProvisionalProvincia;
@@ -171,156 +173,196 @@ class _$VisitaCopyWithImpl<$Res, $Val extends Visita>
     Object? tratada = null,
     Object? errorSyncMessage = freezed,
   }) {
-    return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cliente: freezed == cliente
-          ? _value.cliente
-          : cliente // ignore: cast_nullable_to_non_nullable
-              as Cliente?,
-      isClienteProvisional: null == isClienteProvisional
-          ? _value.isClienteProvisional
-          : isClienteProvisional // ignore: cast_nullable_to_non_nullable
-              as bool,
-      clienteProvisionalNombre: freezed == clienteProvisionalNombre
-          ? _value.clienteProvisionalNombre
-          : clienteProvisionalNombre // ignore: cast_nullable_to_non_nullable
-              as String?,
-      clienteProvisionalEmail: freezed == clienteProvisionalEmail
-          ? _value.clienteProvisionalEmail
-          : clienteProvisionalEmail // ignore: cast_nullable_to_non_nullable
-              as String?,
-      clienteProvisionalTelefono: freezed == clienteProvisionalTelefono
-          ? _value.clienteProvisionalTelefono
-          : clienteProvisionalTelefono // ignore: cast_nullable_to_non_nullable
-              as String?,
-      clienteProvisionalDireccion1: freezed == clienteProvisionalDireccion1
-          ? _value.clienteProvisionalDireccion1
-          : clienteProvisionalDireccion1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      clienteProvisionalDireccion2: freezed == clienteProvisionalDireccion2
-          ? _value.clienteProvisionalDireccion2
-          : clienteProvisionalDireccion2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      clienteProvisionalCodigoPostal: freezed == clienteProvisionalCodigoPostal
-          ? _value.clienteProvisionalCodigoPostal
-          : clienteProvisionalCodigoPostal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      clienteProvisionalPoblacion: freezed == clienteProvisionalPoblacion
-          ? _value.clienteProvisionalPoblacion
-          : clienteProvisionalPoblacion // ignore: cast_nullable_to_non_nullable
-              as String?,
-      clienteProvisionalProvincia: freezed == clienteProvisionalProvincia
-          ? _value.clienteProvisionalProvincia
-          : clienteProvisionalProvincia // ignore: cast_nullable_to_non_nullable
-              as Provincia?,
-      clienteProvisionalRegionId: freezed == clienteProvisionalRegionId
-          ? _value.clienteProvisionalRegionId
-          : clienteProvisionalRegionId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      clienteProvisionalPais: freezed == clienteProvisionalPais
-          ? _value.clienteProvisionalPais
-          : clienteProvisionalPais // ignore: cast_nullable_to_non_nullable
-              as Pais?,
-      fecha: null == fecha
-          ? _value.fecha
-          : fecha // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      numEmpl: null == numEmpl
-          ? _value.numEmpl
-          : numEmpl // ignore: cast_nullable_to_non_nullable
-              as String,
-      contacto: freezed == contacto
-          ? _value.contacto
-          : contacto // ignore: cast_nullable_to_non_nullable
-              as String?,
-      atendidoPor: freezed == atendidoPor
-          ? _value.atendidoPor
-          : atendidoPor // ignore: cast_nullable_to_non_nullable
-              as String?,
-      resumen: freezed == resumen
-          ? _value.resumen
-          : resumen // ignore: cast_nullable_to_non_nullable
-              as String?,
-      marcasCompetencia: freezed == marcasCompetencia
-          ? _value.marcasCompetencia
-          : marcasCompetencia // ignore: cast_nullable_to_non_nullable
-              as String?,
-      latitud: null == latitud
-          ? _value.latitud
-          : latitud // ignore: cast_nullable_to_non_nullable
-              as double,
-      longitud: null == longitud
-          ? _value.longitud
-          : longitud // ignore: cast_nullable_to_non_nullable
-              as double,
-      visitaAppId: freezed == visitaAppId
-          ? _value.visitaAppId
-          : visitaAppId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ofertaRealizada: null == ofertaRealizada
-          ? _value.ofertaRealizada
-          : ofertaRealizada // ignore: cast_nullable_to_non_nullable
-              as bool,
-      interesCliente: freezed == interesCliente
-          ? _value.interesCliente
-          : interesCliente // ignore: cast_nullable_to_non_nullable
-              as InteresCliente?,
-      pedidoRealizado: null == pedidoRealizado
-          ? _value.pedidoRealizado
-          : pedidoRealizado // ignore: cast_nullable_to_non_nullable
-              as bool,
-      motivoNoInteres: freezed == motivoNoInteres
-          ? _value.motivoNoInteres
-          : motivoNoInteres // ignore: cast_nullable_to_non_nullable
-              as VisitaMotivoNoVenta?,
-      motivoNoPedido: freezed == motivoNoPedido
-          ? _value.motivoNoPedido
-          : motivoNoPedido // ignore: cast_nullable_to_non_nullable
-              as VisitaMotivoNoVenta?,
-      sector: freezed == sector
-          ? _value.sector
-          : sector // ignore: cast_nullable_to_non_nullable
-              as VisitaSector?,
-      competenciaList: null == competenciaList
-          ? _value.competenciaList
-          : competenciaList // ignore: cast_nullable_to_non_nullable
-              as List<VisitaCompetidor>,
-      almacenPropio: freezed == almacenPropio
-          ? _value.almacenPropio
-          : almacenPropio // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      capacidad: freezed == capacidad
-          ? _value.capacidad
-          : capacidad // ignore: cast_nullable_to_non_nullable
-              as Capacidad?,
-      frecuenciaPedido: freezed == frecuenciaPedido
-          ? _value.frecuenciaPedido
-          : frecuenciaPedido // ignore: cast_nullable_to_non_nullable
-              as FrecuenciaPedido?,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enviada: null == enviada
-          ? _value.enviada
-          : enviada // ignore: cast_nullable_to_non_nullable
-              as bool,
-      tratada: null == tratada
-          ? _value.tratada
-          : tratada // ignore: cast_nullable_to_non_nullable
-              as bool,
-      errorSyncMessage: freezed == errorSyncMessage
-          ? _value.errorSyncMessage
-          : errorSyncMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id:
+                freezed == id
+                    ? _value.id
+                    : id // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            cliente:
+                freezed == cliente
+                    ? _value.cliente
+                    : cliente // ignore: cast_nullable_to_non_nullable
+                        as Cliente?,
+            isClienteProvisional:
+                null == isClienteProvisional
+                    ? _value.isClienteProvisional
+                    : isClienteProvisional // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            clienteProvisionalNombre:
+                freezed == clienteProvisionalNombre
+                    ? _value.clienteProvisionalNombre
+                    : clienteProvisionalNombre // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            clienteProvisionalEmail:
+                freezed == clienteProvisionalEmail
+                    ? _value.clienteProvisionalEmail
+                    : clienteProvisionalEmail // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            clienteProvisionalTelefono:
+                freezed == clienteProvisionalTelefono
+                    ? _value.clienteProvisionalTelefono
+                    : clienteProvisionalTelefono // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            clienteProvisionalDireccion1:
+                freezed == clienteProvisionalDireccion1
+                    ? _value.clienteProvisionalDireccion1
+                    : clienteProvisionalDireccion1 // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            clienteProvisionalDireccion2:
+                freezed == clienteProvisionalDireccion2
+                    ? _value.clienteProvisionalDireccion2
+                    : clienteProvisionalDireccion2 // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            clienteProvisionalCodigoPostal:
+                freezed == clienteProvisionalCodigoPostal
+                    ? _value.clienteProvisionalCodigoPostal
+                    : clienteProvisionalCodigoPostal // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            clienteProvisionalPoblacion:
+                freezed == clienteProvisionalPoblacion
+                    ? _value.clienteProvisionalPoblacion
+                    : clienteProvisionalPoblacion // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            clienteProvisionalProvincia:
+                freezed == clienteProvisionalProvincia
+                    ? _value.clienteProvisionalProvincia
+                    : clienteProvisionalProvincia // ignore: cast_nullable_to_non_nullable
+                        as Provincia?,
+            clienteProvisionalRegionId:
+                freezed == clienteProvisionalRegionId
+                    ? _value.clienteProvisionalRegionId
+                    : clienteProvisionalRegionId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            clienteProvisionalPais:
+                freezed == clienteProvisionalPais
+                    ? _value.clienteProvisionalPais
+                    : clienteProvisionalPais // ignore: cast_nullable_to_non_nullable
+                        as Pais?,
+            fecha:
+                null == fecha
+                    ? _value.fecha
+                    : fecha // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            numEmpl:
+                null == numEmpl
+                    ? _value.numEmpl
+                    : numEmpl // ignore: cast_nullable_to_non_nullable
+                        as String,
+            contacto:
+                freezed == contacto
+                    ? _value.contacto
+                    : contacto // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            atendidoPor:
+                freezed == atendidoPor
+                    ? _value.atendidoPor
+                    : atendidoPor // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            resumen:
+                freezed == resumen
+                    ? _value.resumen
+                    : resumen // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            marcasCompetencia:
+                freezed == marcasCompetencia
+                    ? _value.marcasCompetencia
+                    : marcasCompetencia // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            latitud:
+                null == latitud
+                    ? _value.latitud
+                    : latitud // ignore: cast_nullable_to_non_nullable
+                        as double,
+            longitud:
+                null == longitud
+                    ? _value.longitud
+                    : longitud // ignore: cast_nullable_to_non_nullable
+                        as double,
+            visitaAppId:
+                freezed == visitaAppId
+                    ? _value.visitaAppId
+                    : visitaAppId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            ofertaRealizada:
+                null == ofertaRealizada
+                    ? _value.ofertaRealizada
+                    : ofertaRealizada // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            interesCliente:
+                freezed == interesCliente
+                    ? _value.interesCliente
+                    : interesCliente // ignore: cast_nullable_to_non_nullable
+                        as InteresCliente?,
+            pedidoRealizado:
+                null == pedidoRealizado
+                    ? _value.pedidoRealizado
+                    : pedidoRealizado // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            motivoNoInteres:
+                freezed == motivoNoInteres
+                    ? _value.motivoNoInteres
+                    : motivoNoInteres // ignore: cast_nullable_to_non_nullable
+                        as VisitaMotivoNoVenta?,
+            motivoNoPedido:
+                freezed == motivoNoPedido
+                    ? _value.motivoNoPedido
+                    : motivoNoPedido // ignore: cast_nullable_to_non_nullable
+                        as VisitaMotivoNoVenta?,
+            sector:
+                freezed == sector
+                    ? _value.sector
+                    : sector // ignore: cast_nullable_to_non_nullable
+                        as VisitaSector?,
+            competenciaList:
+                null == competenciaList
+                    ? _value.competenciaList
+                    : competenciaList // ignore: cast_nullable_to_non_nullable
+                        as List<VisitaCompetidor>,
+            almacenPropio:
+                freezed == almacenPropio
+                    ? _value.almacenPropio
+                    : almacenPropio // ignore: cast_nullable_to_non_nullable
+                        as bool?,
+            capacidad:
+                freezed == capacidad
+                    ? _value.capacidad
+                    : capacidad // ignore: cast_nullable_to_non_nullable
+                        as Capacidad?,
+            frecuenciaPedido:
+                freezed == frecuenciaPedido
+                    ? _value.frecuenciaPedido
+                    : frecuenciaPedido // ignore: cast_nullable_to_non_nullable
+                        as FrecuenciaPedido?,
+            lastUpdated:
+                null == lastUpdated
+                    ? _value.lastUpdated
+                    : lastUpdated // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            deleted:
+                null == deleted
+                    ? _value.deleted
+                    : deleted // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            enviada:
+                null == enviada
+                    ? _value.enviada
+                    : enviada // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            tratada:
+                null == tratada
+                    ? _value.tratada
+                    : tratada // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            errorSyncMessage:
+                freezed == errorSyncMessage
+                    ? _value.errorSyncMessage
+                    : errorSyncMessage // ignore: cast_nullable_to_non_nullable
+                        as String?,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of Visita
@@ -346,8 +388,9 @@ class _$VisitaCopyWithImpl<$Res, $Val extends Visita>
       return null;
     }
 
-    return $ProvinciaCopyWith<$Res>(_value.clienteProvisionalProvincia!,
-        (value) {
+    return $ProvinciaCopyWith<$Res>(_value.clienteProvisionalProvincia!, (
+      value,
+    ) {
       return _then(_value.copyWith(clienteProvisionalProvincia: value) as $Val);
     });
   }
@@ -412,48 +455,50 @@ class _$VisitaCopyWithImpl<$Res, $Val extends Visita>
 /// @nodoc
 abstract class _$$VisitaImplCopyWith<$Res> implements $VisitaCopyWith<$Res> {
   factory _$$VisitaImplCopyWith(
-          _$VisitaImpl value, $Res Function(_$VisitaImpl) then) =
-      __$$VisitaImplCopyWithImpl<$Res>;
+    _$VisitaImpl value,
+    $Res Function(_$VisitaImpl) then,
+  ) = __$$VisitaImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? id,
-      Cliente? cliente,
-      bool isClienteProvisional,
-      String? clienteProvisionalNombre,
-      String? clienteProvisionalEmail,
-      String? clienteProvisionalTelefono,
-      String? clienteProvisionalDireccion1,
-      String? clienteProvisionalDireccion2,
-      String? clienteProvisionalCodigoPostal,
-      String? clienteProvisionalPoblacion,
-      Provincia? clienteProvisionalProvincia,
-      String? clienteProvisionalRegionId,
-      Pais? clienteProvisionalPais,
-      DateTime fecha,
-      String numEmpl,
-      String? contacto,
-      String? atendidoPor,
-      String? resumen,
-      String? marcasCompetencia,
-      double latitud,
-      double longitud,
-      String? visitaAppId,
-      bool ofertaRealizada,
-      InteresCliente? interesCliente,
-      bool pedidoRealizado,
-      VisitaMotivoNoVenta? motivoNoInteres,
-      VisitaMotivoNoVenta? motivoNoPedido,
-      VisitaSector? sector,
-      List<VisitaCompetidor> competenciaList,
-      bool? almacenPropio,
-      Capacidad? capacidad,
-      FrecuenciaPedido? frecuenciaPedido,
-      DateTime lastUpdated,
-      bool deleted,
-      bool enviada,
-      bool tratada,
-      String? errorSyncMessage});
+  $Res call({
+    String? id,
+    Cliente? cliente,
+    bool isClienteProvisional,
+    String? clienteProvisionalNombre,
+    String? clienteProvisionalEmail,
+    String? clienteProvisionalTelefono,
+    String? clienteProvisionalDireccion1,
+    String? clienteProvisionalDireccion2,
+    String? clienteProvisionalCodigoPostal,
+    String? clienteProvisionalPoblacion,
+    Provincia? clienteProvisionalProvincia,
+    String? clienteProvisionalRegionId,
+    Pais? clienteProvisionalPais,
+    DateTime fecha,
+    String numEmpl,
+    String? contacto,
+    String? atendidoPor,
+    String? resumen,
+    String? marcasCompetencia,
+    double latitud,
+    double longitud,
+    String? visitaAppId,
+    bool ofertaRealizada,
+    InteresCliente? interesCliente,
+    bool pedidoRealizado,
+    VisitaMotivoNoVenta? motivoNoInteres,
+    VisitaMotivoNoVenta? motivoNoPedido,
+    VisitaSector? sector,
+    List<VisitaCompetidor> competenciaList,
+    bool? almacenPropio,
+    Capacidad? capacidad,
+    FrecuenciaPedido? frecuenciaPedido,
+    DateTime lastUpdated,
+    bool deleted,
+    bool enviada,
+    bool tratada,
+    String? errorSyncMessage,
+  });
 
   @override
   $ClienteCopyWith<$Res>? get cliente;
@@ -474,8 +519,9 @@ class __$$VisitaImplCopyWithImpl<$Res>
     extends _$VisitaCopyWithImpl<$Res, _$VisitaImpl>
     implements _$$VisitaImplCopyWith<$Res> {
   __$$VisitaImplCopyWithImpl(
-      _$VisitaImpl _value, $Res Function(_$VisitaImpl) _then)
-      : super(_value, _then);
+    _$VisitaImpl _value,
+    $Res Function(_$VisitaImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of Visita
   /// with the given fields replaced by the non-null parameter values.
@@ -520,202 +566,241 @@ class __$$VisitaImplCopyWithImpl<$Res>
     Object? tratada = null,
     Object? errorSyncMessage = freezed,
   }) {
-    return _then(_$VisitaImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cliente: freezed == cliente
-          ? _value.cliente
-          : cliente // ignore: cast_nullable_to_non_nullable
-              as Cliente?,
-      isClienteProvisional: null == isClienteProvisional
-          ? _value.isClienteProvisional
-          : isClienteProvisional // ignore: cast_nullable_to_non_nullable
-              as bool,
-      clienteProvisionalNombre: freezed == clienteProvisionalNombre
-          ? _value.clienteProvisionalNombre
-          : clienteProvisionalNombre // ignore: cast_nullable_to_non_nullable
-              as String?,
-      clienteProvisionalEmail: freezed == clienteProvisionalEmail
-          ? _value.clienteProvisionalEmail
-          : clienteProvisionalEmail // ignore: cast_nullable_to_non_nullable
-              as String?,
-      clienteProvisionalTelefono: freezed == clienteProvisionalTelefono
-          ? _value.clienteProvisionalTelefono
-          : clienteProvisionalTelefono // ignore: cast_nullable_to_non_nullable
-              as String?,
-      clienteProvisionalDireccion1: freezed == clienteProvisionalDireccion1
-          ? _value.clienteProvisionalDireccion1
-          : clienteProvisionalDireccion1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      clienteProvisionalDireccion2: freezed == clienteProvisionalDireccion2
-          ? _value.clienteProvisionalDireccion2
-          : clienteProvisionalDireccion2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      clienteProvisionalCodigoPostal: freezed == clienteProvisionalCodigoPostal
-          ? _value.clienteProvisionalCodigoPostal
-          : clienteProvisionalCodigoPostal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      clienteProvisionalPoblacion: freezed == clienteProvisionalPoblacion
-          ? _value.clienteProvisionalPoblacion
-          : clienteProvisionalPoblacion // ignore: cast_nullable_to_non_nullable
-              as String?,
-      clienteProvisionalProvincia: freezed == clienteProvisionalProvincia
-          ? _value.clienteProvisionalProvincia
-          : clienteProvisionalProvincia // ignore: cast_nullable_to_non_nullable
-              as Provincia?,
-      clienteProvisionalRegionId: freezed == clienteProvisionalRegionId
-          ? _value.clienteProvisionalRegionId
-          : clienteProvisionalRegionId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      clienteProvisionalPais: freezed == clienteProvisionalPais
-          ? _value.clienteProvisionalPais
-          : clienteProvisionalPais // ignore: cast_nullable_to_non_nullable
-              as Pais?,
-      fecha: null == fecha
-          ? _value.fecha
-          : fecha // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      numEmpl: null == numEmpl
-          ? _value.numEmpl
-          : numEmpl // ignore: cast_nullable_to_non_nullable
-              as String,
-      contacto: freezed == contacto
-          ? _value.contacto
-          : contacto // ignore: cast_nullable_to_non_nullable
-              as String?,
-      atendidoPor: freezed == atendidoPor
-          ? _value.atendidoPor
-          : atendidoPor // ignore: cast_nullable_to_non_nullable
-              as String?,
-      resumen: freezed == resumen
-          ? _value.resumen
-          : resumen // ignore: cast_nullable_to_non_nullable
-              as String?,
-      marcasCompetencia: freezed == marcasCompetencia
-          ? _value.marcasCompetencia
-          : marcasCompetencia // ignore: cast_nullable_to_non_nullable
-              as String?,
-      latitud: null == latitud
-          ? _value.latitud
-          : latitud // ignore: cast_nullable_to_non_nullable
-              as double,
-      longitud: null == longitud
-          ? _value.longitud
-          : longitud // ignore: cast_nullable_to_non_nullable
-              as double,
-      visitaAppId: freezed == visitaAppId
-          ? _value.visitaAppId
-          : visitaAppId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ofertaRealizada: null == ofertaRealizada
-          ? _value.ofertaRealizada
-          : ofertaRealizada // ignore: cast_nullable_to_non_nullable
-              as bool,
-      interesCliente: freezed == interesCliente
-          ? _value.interesCliente
-          : interesCliente // ignore: cast_nullable_to_non_nullable
-              as InteresCliente?,
-      pedidoRealizado: null == pedidoRealizado
-          ? _value.pedidoRealizado
-          : pedidoRealizado // ignore: cast_nullable_to_non_nullable
-              as bool,
-      motivoNoInteres: freezed == motivoNoInteres
-          ? _value.motivoNoInteres
-          : motivoNoInteres // ignore: cast_nullable_to_non_nullable
-              as VisitaMotivoNoVenta?,
-      motivoNoPedido: freezed == motivoNoPedido
-          ? _value.motivoNoPedido
-          : motivoNoPedido // ignore: cast_nullable_to_non_nullable
-              as VisitaMotivoNoVenta?,
-      sector: freezed == sector
-          ? _value.sector
-          : sector // ignore: cast_nullable_to_non_nullable
-              as VisitaSector?,
-      competenciaList: null == competenciaList
-          ? _value._competenciaList
-          : competenciaList // ignore: cast_nullable_to_non_nullable
-              as List<VisitaCompetidor>,
-      almacenPropio: freezed == almacenPropio
-          ? _value.almacenPropio
-          : almacenPropio // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      capacidad: freezed == capacidad
-          ? _value.capacidad
-          : capacidad // ignore: cast_nullable_to_non_nullable
-              as Capacidad?,
-      frecuenciaPedido: freezed == frecuenciaPedido
-          ? _value.frecuenciaPedido
-          : frecuenciaPedido // ignore: cast_nullable_to_non_nullable
-              as FrecuenciaPedido?,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enviada: null == enviada
-          ? _value.enviada
-          : enviada // ignore: cast_nullable_to_non_nullable
-              as bool,
-      tratada: null == tratada
-          ? _value.tratada
-          : tratada // ignore: cast_nullable_to_non_nullable
-              as bool,
-      errorSyncMessage: freezed == errorSyncMessage
-          ? _value.errorSyncMessage
-          : errorSyncMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$VisitaImpl(
+        id:
+            freezed == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        cliente:
+            freezed == cliente
+                ? _value.cliente
+                : cliente // ignore: cast_nullable_to_non_nullable
+                    as Cliente?,
+        isClienteProvisional:
+            null == isClienteProvisional
+                ? _value.isClienteProvisional
+                : isClienteProvisional // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        clienteProvisionalNombre:
+            freezed == clienteProvisionalNombre
+                ? _value.clienteProvisionalNombre
+                : clienteProvisionalNombre // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        clienteProvisionalEmail:
+            freezed == clienteProvisionalEmail
+                ? _value.clienteProvisionalEmail
+                : clienteProvisionalEmail // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        clienteProvisionalTelefono:
+            freezed == clienteProvisionalTelefono
+                ? _value.clienteProvisionalTelefono
+                : clienteProvisionalTelefono // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        clienteProvisionalDireccion1:
+            freezed == clienteProvisionalDireccion1
+                ? _value.clienteProvisionalDireccion1
+                : clienteProvisionalDireccion1 // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        clienteProvisionalDireccion2:
+            freezed == clienteProvisionalDireccion2
+                ? _value.clienteProvisionalDireccion2
+                : clienteProvisionalDireccion2 // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        clienteProvisionalCodigoPostal:
+            freezed == clienteProvisionalCodigoPostal
+                ? _value.clienteProvisionalCodigoPostal
+                : clienteProvisionalCodigoPostal // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        clienteProvisionalPoblacion:
+            freezed == clienteProvisionalPoblacion
+                ? _value.clienteProvisionalPoblacion
+                : clienteProvisionalPoblacion // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        clienteProvisionalProvincia:
+            freezed == clienteProvisionalProvincia
+                ? _value.clienteProvisionalProvincia
+                : clienteProvisionalProvincia // ignore: cast_nullable_to_non_nullable
+                    as Provincia?,
+        clienteProvisionalRegionId:
+            freezed == clienteProvisionalRegionId
+                ? _value.clienteProvisionalRegionId
+                : clienteProvisionalRegionId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        clienteProvisionalPais:
+            freezed == clienteProvisionalPais
+                ? _value.clienteProvisionalPais
+                : clienteProvisionalPais // ignore: cast_nullable_to_non_nullable
+                    as Pais?,
+        fecha:
+            null == fecha
+                ? _value.fecha
+                : fecha // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        numEmpl:
+            null == numEmpl
+                ? _value.numEmpl
+                : numEmpl // ignore: cast_nullable_to_non_nullable
+                    as String,
+        contacto:
+            freezed == contacto
+                ? _value.contacto
+                : contacto // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        atendidoPor:
+            freezed == atendidoPor
+                ? _value.atendidoPor
+                : atendidoPor // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        resumen:
+            freezed == resumen
+                ? _value.resumen
+                : resumen // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        marcasCompetencia:
+            freezed == marcasCompetencia
+                ? _value.marcasCompetencia
+                : marcasCompetencia // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        latitud:
+            null == latitud
+                ? _value.latitud
+                : latitud // ignore: cast_nullable_to_non_nullable
+                    as double,
+        longitud:
+            null == longitud
+                ? _value.longitud
+                : longitud // ignore: cast_nullable_to_non_nullable
+                    as double,
+        visitaAppId:
+            freezed == visitaAppId
+                ? _value.visitaAppId
+                : visitaAppId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        ofertaRealizada:
+            null == ofertaRealizada
+                ? _value.ofertaRealizada
+                : ofertaRealizada // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        interesCliente:
+            freezed == interesCliente
+                ? _value.interesCliente
+                : interesCliente // ignore: cast_nullable_to_non_nullable
+                    as InteresCliente?,
+        pedidoRealizado:
+            null == pedidoRealizado
+                ? _value.pedidoRealizado
+                : pedidoRealizado // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        motivoNoInteres:
+            freezed == motivoNoInteres
+                ? _value.motivoNoInteres
+                : motivoNoInteres // ignore: cast_nullable_to_non_nullable
+                    as VisitaMotivoNoVenta?,
+        motivoNoPedido:
+            freezed == motivoNoPedido
+                ? _value.motivoNoPedido
+                : motivoNoPedido // ignore: cast_nullable_to_non_nullable
+                    as VisitaMotivoNoVenta?,
+        sector:
+            freezed == sector
+                ? _value.sector
+                : sector // ignore: cast_nullable_to_non_nullable
+                    as VisitaSector?,
+        competenciaList:
+            null == competenciaList
+                ? _value._competenciaList
+                : competenciaList // ignore: cast_nullable_to_non_nullable
+                    as List<VisitaCompetidor>,
+        almacenPropio:
+            freezed == almacenPropio
+                ? _value.almacenPropio
+                : almacenPropio // ignore: cast_nullable_to_non_nullable
+                    as bool?,
+        capacidad:
+            freezed == capacidad
+                ? _value.capacidad
+                : capacidad // ignore: cast_nullable_to_non_nullable
+                    as Capacidad?,
+        frecuenciaPedido:
+            freezed == frecuenciaPedido
+                ? _value.frecuenciaPedido
+                : frecuenciaPedido // ignore: cast_nullable_to_non_nullable
+                    as FrecuenciaPedido?,
+        lastUpdated:
+            null == lastUpdated
+                ? _value.lastUpdated
+                : lastUpdated // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        deleted:
+            null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        enviada:
+            null == enviada
+                ? _value.enviada
+                : enviada // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        tratada:
+            null == tratada
+                ? _value.tratada
+                : tratada // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        errorSyncMessage:
+            freezed == errorSyncMessage
+                ? _value.errorSyncMessage
+                : errorSyncMessage // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$VisitaImpl extends _Visita {
-  const _$VisitaImpl(
-      {this.id,
-      this.cliente,
-      required this.isClienteProvisional,
-      this.clienteProvisionalNombre,
-      this.clienteProvisionalEmail,
-      this.clienteProvisionalTelefono,
-      this.clienteProvisionalDireccion1,
-      this.clienteProvisionalDireccion2,
-      this.clienteProvisionalCodigoPostal,
-      this.clienteProvisionalPoblacion,
-      this.clienteProvisionalProvincia,
-      this.clienteProvisionalRegionId,
-      this.clienteProvisionalPais,
-      required this.fecha,
-      required this.numEmpl,
-      this.contacto,
-      this.atendidoPor,
-      this.resumen,
-      this.marcasCompetencia,
-      required this.latitud,
-      required this.longitud,
-      this.visitaAppId,
-      required this.ofertaRealizada,
-      required this.interesCliente,
-      required this.pedidoRealizado,
-      this.motivoNoInteres,
-      this.motivoNoPedido,
-      this.sector,
-      required final List<VisitaCompetidor> competenciaList,
-      required this.almacenPropio,
-      required this.capacidad,
-      required this.frecuenciaPedido,
-      required this.lastUpdated,
-      required this.deleted,
-      required this.enviada,
-      required this.tratada,
-      this.errorSyncMessage})
-      : _competenciaList = competenciaList,
-        super._();
+  const _$VisitaImpl({
+    this.id,
+    this.cliente,
+    required this.isClienteProvisional,
+    this.clienteProvisionalNombre,
+    this.clienteProvisionalEmail,
+    this.clienteProvisionalTelefono,
+    this.clienteProvisionalDireccion1,
+    this.clienteProvisionalDireccion2,
+    this.clienteProvisionalCodigoPostal,
+    this.clienteProvisionalPoblacion,
+    this.clienteProvisionalProvincia,
+    this.clienteProvisionalRegionId,
+    this.clienteProvisionalPais,
+    required this.fecha,
+    required this.numEmpl,
+    this.contacto,
+    this.atendidoPor,
+    this.resumen,
+    this.marcasCompetencia,
+    required this.latitud,
+    required this.longitud,
+    this.visitaAppId,
+    required this.ofertaRealizada,
+    required this.interesCliente,
+    required this.pedidoRealizado,
+    this.motivoNoInteres,
+    this.motivoNoPedido,
+    this.sector,
+    required final List<VisitaCompetidor> competenciaList,
+    required this.almacenPropio,
+    required this.capacidad,
+    required this.frecuenciaPedido,
+    required this.lastUpdated,
+    required this.deleted,
+    required this.enviada,
+    required this.tratada,
+    this.errorSyncMessage,
+  }) : _competenciaList = competenciaList,
+       super._();
 
   @override
   final String? id;
@@ -812,29 +897,56 @@ class _$VisitaImpl extends _Visita {
             (identical(other.cliente, cliente) || other.cliente == cliente) &&
             (identical(other.isClienteProvisional, isClienteProvisional) ||
                 other.isClienteProvisional == isClienteProvisional) &&
-            (identical(other.clienteProvisionalNombre, clienteProvisionalNombre) ||
+            (identical(
+                  other.clienteProvisionalNombre,
+                  clienteProvisionalNombre,
+                ) ||
                 other.clienteProvisionalNombre == clienteProvisionalNombre) &&
-            (identical(other.clienteProvisionalEmail, clienteProvisionalEmail) ||
+            (identical(
+                  other.clienteProvisionalEmail,
+                  clienteProvisionalEmail,
+                ) ||
                 other.clienteProvisionalEmail == clienteProvisionalEmail) &&
-            (identical(other.clienteProvisionalTelefono, clienteProvisionalTelefono) ||
+            (identical(
+                  other.clienteProvisionalTelefono,
+                  clienteProvisionalTelefono,
+                ) ||
                 other.clienteProvisionalTelefono ==
                     clienteProvisionalTelefono) &&
-            (identical(other.clienteProvisionalDireccion1, clienteProvisionalDireccion1) ||
+            (identical(
+                  other.clienteProvisionalDireccion1,
+                  clienteProvisionalDireccion1,
+                ) ||
                 other.clienteProvisionalDireccion1 ==
                     clienteProvisionalDireccion1) &&
-            (identical(other.clienteProvisionalDireccion2, clienteProvisionalDireccion2) ||
+            (identical(
+                  other.clienteProvisionalDireccion2,
+                  clienteProvisionalDireccion2,
+                ) ||
                 other.clienteProvisionalDireccion2 ==
                     clienteProvisionalDireccion2) &&
-            (identical(other.clienteProvisionalCodigoPostal, clienteProvisionalCodigoPostal) ||
+            (identical(
+                  other.clienteProvisionalCodigoPostal,
+                  clienteProvisionalCodigoPostal,
+                ) ||
                 other.clienteProvisionalCodigoPostal ==
                     clienteProvisionalCodigoPostal) &&
-            (identical(other.clienteProvisionalPoblacion, clienteProvisionalPoblacion) ||
+            (identical(
+                  other.clienteProvisionalPoblacion,
+                  clienteProvisionalPoblacion,
+                ) ||
                 other.clienteProvisionalPoblacion ==
                     clienteProvisionalPoblacion) &&
-            (identical(other.clienteProvisionalProvincia, clienteProvisionalProvincia) ||
+            (identical(
+                  other.clienteProvisionalProvincia,
+                  clienteProvisionalProvincia,
+                ) ||
                 other.clienteProvisionalProvincia ==
                     clienteProvisionalProvincia) &&
-            (identical(other.clienteProvisionalRegionId, clienteProvisionalRegionId) ||
+            (identical(
+                  other.clienteProvisionalRegionId,
+                  clienteProvisionalRegionId,
+                ) ||
                 other.clienteProvisionalRegionId ==
                     clienteProvisionalRegionId) &&
             (identical(other.clienteProvisionalPais, clienteProvisionalPais) ||
@@ -849,66 +961,81 @@ class _$VisitaImpl extends _Visita {
             (identical(other.marcasCompetencia, marcasCompetencia) ||
                 other.marcasCompetencia == marcasCompetencia) &&
             (identical(other.latitud, latitud) || other.latitud == latitud) &&
-            (identical(other.longitud, longitud) || other.longitud == longitud) &&
-            (identical(other.visitaAppId, visitaAppId) || other.visitaAppId == visitaAppId) &&
-            (identical(other.ofertaRealizada, ofertaRealizada) || other.ofertaRealizada == ofertaRealizada) &&
-            (identical(other.interesCliente, interesCliente) || other.interesCliente == interesCliente) &&
-            (identical(other.pedidoRealizado, pedidoRealizado) || other.pedidoRealizado == pedidoRealizado) &&
-            (identical(other.motivoNoInteres, motivoNoInteres) || other.motivoNoInteres == motivoNoInteres) &&
-            (identical(other.motivoNoPedido, motivoNoPedido) || other.motivoNoPedido == motivoNoPedido) &&
+            (identical(other.longitud, longitud) ||
+                other.longitud == longitud) &&
+            (identical(other.visitaAppId, visitaAppId) ||
+                other.visitaAppId == visitaAppId) &&
+            (identical(other.ofertaRealizada, ofertaRealizada) ||
+                other.ofertaRealizada == ofertaRealizada) &&
+            (identical(other.interesCliente, interesCliente) ||
+                other.interesCliente == interesCliente) &&
+            (identical(other.pedidoRealizado, pedidoRealizado) ||
+                other.pedidoRealizado == pedidoRealizado) &&
+            (identical(other.motivoNoInteres, motivoNoInteres) ||
+                other.motivoNoInteres == motivoNoInteres) &&
+            (identical(other.motivoNoPedido, motivoNoPedido) ||
+                other.motivoNoPedido == motivoNoPedido) &&
             (identical(other.sector, sector) || other.sector == sector) &&
-            const DeepCollectionEquality().equals(other._competenciaList, _competenciaList) &&
-            (identical(other.almacenPropio, almacenPropio) || other.almacenPropio == almacenPropio) &&
-            (identical(other.capacidad, capacidad) || other.capacidad == capacidad) &&
-            (identical(other.frecuenciaPedido, frecuenciaPedido) || other.frecuenciaPedido == frecuenciaPedido) &&
-            (identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated) &&
+            const DeepCollectionEquality().equals(
+              other._competenciaList,
+              _competenciaList,
+            ) &&
+            (identical(other.almacenPropio, almacenPropio) ||
+                other.almacenPropio == almacenPropio) &&
+            (identical(other.capacidad, capacidad) ||
+                other.capacidad == capacidad) &&
+            (identical(other.frecuenciaPedido, frecuenciaPedido) ||
+                other.frecuenciaPedido == frecuenciaPedido) &&
+            (identical(other.lastUpdated, lastUpdated) ||
+                other.lastUpdated == lastUpdated) &&
             (identical(other.deleted, deleted) || other.deleted == deleted) &&
             (identical(other.enviada, enviada) || other.enviada == enviada) &&
             (identical(other.tratada, tratada) || other.tratada == tratada) &&
-            (identical(other.errorSyncMessage, errorSyncMessage) || other.errorSyncMessage == errorSyncMessage));
+            (identical(other.errorSyncMessage, errorSyncMessage) ||
+                other.errorSyncMessage == errorSyncMessage));
   }
 
   @override
   int get hashCode => Object.hashAll([
-        runtimeType,
-        id,
-        cliente,
-        isClienteProvisional,
-        clienteProvisionalNombre,
-        clienteProvisionalEmail,
-        clienteProvisionalTelefono,
-        clienteProvisionalDireccion1,
-        clienteProvisionalDireccion2,
-        clienteProvisionalCodigoPostal,
-        clienteProvisionalPoblacion,
-        clienteProvisionalProvincia,
-        clienteProvisionalRegionId,
-        clienteProvisionalPais,
-        fecha,
-        numEmpl,
-        contacto,
-        atendidoPor,
-        resumen,
-        marcasCompetencia,
-        latitud,
-        longitud,
-        visitaAppId,
-        ofertaRealizada,
-        interesCliente,
-        pedidoRealizado,
-        motivoNoInteres,
-        motivoNoPedido,
-        sector,
-        const DeepCollectionEquality().hash(_competenciaList),
-        almacenPropio,
-        capacidad,
-        frecuenciaPedido,
-        lastUpdated,
-        deleted,
-        enviada,
-        tratada,
-        errorSyncMessage
-      ]);
+    runtimeType,
+    id,
+    cliente,
+    isClienteProvisional,
+    clienteProvisionalNombre,
+    clienteProvisionalEmail,
+    clienteProvisionalTelefono,
+    clienteProvisionalDireccion1,
+    clienteProvisionalDireccion2,
+    clienteProvisionalCodigoPostal,
+    clienteProvisionalPoblacion,
+    clienteProvisionalProvincia,
+    clienteProvisionalRegionId,
+    clienteProvisionalPais,
+    fecha,
+    numEmpl,
+    contacto,
+    atendidoPor,
+    resumen,
+    marcasCompetencia,
+    latitud,
+    longitud,
+    visitaAppId,
+    ofertaRealizada,
+    interesCliente,
+    pedidoRealizado,
+    motivoNoInteres,
+    motivoNoPedido,
+    sector,
+    const DeepCollectionEquality().hash(_competenciaList),
+    almacenPropio,
+    capacidad,
+    frecuenciaPedido,
+    lastUpdated,
+    deleted,
+    enviada,
+    tratada,
+    errorSyncMessage,
+  ]);
 
   /// Create a copy of Visita
   /// with the given fields replaced by the non-null parameter values.
@@ -920,44 +1047,45 @@ class _$VisitaImpl extends _Visita {
 }
 
 abstract class _Visita extends Visita {
-  const factory _Visita(
-      {final String? id,
-      final Cliente? cliente,
-      required final bool isClienteProvisional,
-      final String? clienteProvisionalNombre,
-      final String? clienteProvisionalEmail,
-      final String? clienteProvisionalTelefono,
-      final String? clienteProvisionalDireccion1,
-      final String? clienteProvisionalDireccion2,
-      final String? clienteProvisionalCodigoPostal,
-      final String? clienteProvisionalPoblacion,
-      final Provincia? clienteProvisionalProvincia,
-      final String? clienteProvisionalRegionId,
-      final Pais? clienteProvisionalPais,
-      required final DateTime fecha,
-      required final String numEmpl,
-      final String? contacto,
-      final String? atendidoPor,
-      final String? resumen,
-      final String? marcasCompetencia,
-      required final double latitud,
-      required final double longitud,
-      final String? visitaAppId,
-      required final bool ofertaRealizada,
-      required final InteresCliente? interesCliente,
-      required final bool pedidoRealizado,
-      final VisitaMotivoNoVenta? motivoNoInteres,
-      final VisitaMotivoNoVenta? motivoNoPedido,
-      final VisitaSector? sector,
-      required final List<VisitaCompetidor> competenciaList,
-      required final bool? almacenPropio,
-      required final Capacidad? capacidad,
-      required final FrecuenciaPedido? frecuenciaPedido,
-      required final DateTime lastUpdated,
-      required final bool deleted,
-      required final bool enviada,
-      required final bool tratada,
-      final String? errorSyncMessage}) = _$VisitaImpl;
+  const factory _Visita({
+    final String? id,
+    final Cliente? cliente,
+    required final bool isClienteProvisional,
+    final String? clienteProvisionalNombre,
+    final String? clienteProvisionalEmail,
+    final String? clienteProvisionalTelefono,
+    final String? clienteProvisionalDireccion1,
+    final String? clienteProvisionalDireccion2,
+    final String? clienteProvisionalCodigoPostal,
+    final String? clienteProvisionalPoblacion,
+    final Provincia? clienteProvisionalProvincia,
+    final String? clienteProvisionalRegionId,
+    final Pais? clienteProvisionalPais,
+    required final DateTime fecha,
+    required final String numEmpl,
+    final String? contacto,
+    final String? atendidoPor,
+    final String? resumen,
+    final String? marcasCompetencia,
+    required final double latitud,
+    required final double longitud,
+    final String? visitaAppId,
+    required final bool ofertaRealizada,
+    required final InteresCliente? interesCliente,
+    required final bool pedidoRealizado,
+    final VisitaMotivoNoVenta? motivoNoInteres,
+    final VisitaMotivoNoVenta? motivoNoPedido,
+    final VisitaSector? sector,
+    required final List<VisitaCompetidor> competenciaList,
+    required final bool? almacenPropio,
+    required final Capacidad? capacidad,
+    required final FrecuenciaPedido? frecuenciaPedido,
+    required final DateTime lastUpdated,
+    required final bool deleted,
+    required final bool enviada,
+    required final bool tratada,
+    final String? errorSyncMessage,
+  }) = _$VisitaImpl;
   const _Visita._() : super._();
 
   @override

@@ -9,12 +9,7 @@ final currencies = [
     groupSeparator: '.',
     pattern: 'S#,##0.##',
   ),
-  Currency.create(
-    'RMB',
-    2,
-    symbol: '¥',
-    pattern: 'S#,##0.##',
-  ),
+  Currency.create('RMB', 2, symbol: '¥', pattern: 'S#,##0.##'),
   Currency.create(
     'HUF',
     2,
@@ -45,11 +40,7 @@ final currencies = [
     groupSeparator: '.',
     pattern: 'S#,##0.##',
   ),
-  Currency.create(
-    'US',
-    2,
-    pattern: 'S#,##0.##',
-  ),
+  Currency.create('US', 2, pattern: 'S#,##0.##'),
   Currency.create(
     'CLP',
     2,

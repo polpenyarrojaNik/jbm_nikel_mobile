@@ -29,36 +29,37 @@ import 'tipo_catalogo_precio_dto.dart';
 
 typedef Json = Map<String, dynamic>;
 
-final catalogoRepositoryProvider = Provider.autoDispose<CatalogoRepository>(
-  (ref) {
-    final localDb = ref.watch(appLocalDatabaseProvider);
-    final dio = ref.watch(dioProvider);
-    final usuario = ref.watch(usuarioNotifierProvider)!;
+final catalogoRepositoryProvider = Provider.autoDispose<CatalogoRepository>((
+  ref,
+) {
+  final localDb = ref.watch(appLocalDatabaseProvider);
+  final dio = ref.watch(dioProvider);
+  final usuario = ref.watch(usuarioNotifierProvider)!;
 
-    return CatalogoRepository(dio, localDb, usuario);
+  return CatalogoRepository(dio, localDb, usuario);
+});
+
+final tipoCatalogoListProvider = FutureProvider.autoDispose<List<TipoCatalogo>>(
+  (ref) async {
+    final catalogoRepsitory = ref.watch(catalogoRepositoryProvider);
+
+    return catalogoRepsitory.getTipoCatalogoList();
   },
 );
 
-final tipoCatalogoListProvider =
-    FutureProvider.autoDispose<List<TipoCatalogo>>((ref) async {
-  final catalogoRepsitory = ref.watch(catalogoRepositoryProvider);
-
-  return catalogoRepsitory.getTipoCatalogoList();
-});
-
 final tipoPrecioCatalogoListProvider =
     FutureProvider.autoDispose<List<TipoPrecioCatalogo>>((ref) async {
-  final catalogoRepsitory = ref.watch(catalogoRepositoryProvider);
+      final catalogoRepsitory = ref.watch(catalogoRepositoryProvider);
 
-  return catalogoRepsitory.getTipoPrecioCatalogoList();
-});
+      return catalogoRepsitory.getTipoPrecioCatalogoList();
+    });
 
 final idiomaCatalogoListProvider =
     FutureProvider.autoDispose<List<IdiomaCatalogo>>((ref) async {
-  final catalogoRepsitory = ref.watch(catalogoRepositoryProvider);
+      final catalogoRepsitory = ref.watch(catalogoRepositoryProvider);
 
-  return catalogoRepsitory.getIdiomaCatalogoList();
-});
+      return catalogoRepsitory.getIdiomaCatalogoList();
+    });
 
 class CatalogoRepository {
   final Dio _dio;
@@ -82,26 +83,31 @@ class CatalogoRepository {
       );
 
       final catalogosDTOList = await _remoteCatalogosList(
-        requestUri: (_usuario.test)
-            ? Uri.http(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v2/online/catalogo',
-                query,
-              )
-            : Uri.https(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v2/online/catalogo',
-                query,
-              ),
+        requestUri:
+            (_usuario.test)
+                ? Uri.http(
+                  dotenv.get('URL', fallback: 'localhost:3001'),
+                  'api/v2/online/catalogo',
+                  query,
+                )
+                : Uri.https(
+                  dotenv.get('URL', fallback: 'localhost:3001'),
+                  'api/v2/online/catalogo',
+                  query,
+                ),
         jsonDataSelector: (json) => json['data'] as List<dynamic>,
         provisionalToken: _usuario.provisionalToken,
       );
 
-      final catalogosList = catalogosDTOList
-          .map((e) => e.toDomain(
-              test: _usuario.test,
-              tipoPrecioCatalogo: tipoPrecioCatalogo?.descripcion))
-          .toList();
+      final catalogosList =
+          catalogosDTOList
+              .map(
+                (e) => e.toDomain(
+                  test: _usuario.test,
+                  tipoPrecioCatalogo: tipoPrecioCatalogo?.descripcion,
+                ),
+              )
+              .toList();
 
       final favoriteLocalList = await _getLocalFavoriteList(
         tipoCatalogo: tipoCatalogo,
@@ -112,8 +118,14 @@ class CatalogoRepository {
 
       final catalogoOrdenAbiertoList = await _getCatalogoOrdenDTOList();
 
-      catalogosList.sort((a, b) =>
-          _orderByCatalogos(a, b, favoriteLocalList, catalogoOrdenAbiertoList));
+      catalogosList.sort(
+        (a, b) => _orderByCatalogos(
+          a,
+          b,
+          favoriteLocalList,
+          catalogoOrdenAbiertoList,
+        ),
+      );
 
       return catalogosList;
     } on AppException catch (e) {
@@ -127,9 +139,12 @@ class CatalogoRepository {
             searchText: searchText,
           );
           return favoriteLocalList
-              .map((e) => e.toDomain(
+              .map(
+                (e) => e.toDomain(
                   test: false,
-                  tipoPrecioCatalogo: tipoPrecioCatalogo?.descripcion))
+                  tipoPrecioCatalogo: tipoPrecioCatalogo?.descripcion,
+                ),
+              )
               .toList();
         },
       );
@@ -141,15 +156,16 @@ class CatalogoRepository {
   Future<List<TipoCatalogo>> getTipoCatalogoList() async {
     try {
       final tipoCatalogoDTOList = await _remoteTipoCatalogosList(
-        requestUri: (_usuario.test)
-            ? Uri.http(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/catalogo/tipo',
-              )
-            : Uri.https(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/catalogo/tipo',
-              ),
+        requestUri:
+            (_usuario.test)
+                ? Uri.http(
+                  dotenv.get('URL', fallback: 'localhost:3001'),
+                  'api/v1/online/catalogo/tipo',
+                )
+                : Uri.https(
+                  dotenv.get('URL', fallback: 'localhost:3001'),
+                  'api/v1/online/catalogo/tipo',
+                ),
         jsonDataSelector: (json) => json['data'] as List<dynamic>,
         provisionalToken: _usuario.provisionalToken,
       );
@@ -163,15 +179,16 @@ class CatalogoRepository {
   Future<List<TipoPrecioCatalogo>> getTipoPrecioCatalogoList() async {
     try {
       final tipoPrecioCatalogoDTOList = await _remoteTipoPrecioCatalogosList(
-        requestUri: (_usuario.test)
-            ? Uri.http(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/catalogo/precio',
-              )
-            : Uri.https(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/catalogo/precio',
-              ),
+        requestUri:
+            (_usuario.test)
+                ? Uri.http(
+                  dotenv.get('URL', fallback: 'localhost:3001'),
+                  'api/v1/online/catalogo/precio',
+                )
+                : Uri.https(
+                  dotenv.get('URL', fallback: 'localhost:3001'),
+                  'api/v1/online/catalogo/precio',
+                ),
         jsonDataSelector: (json) => json['data'] as List<dynamic>,
         provisionalToken: _usuario.provisionalToken,
       );
@@ -184,15 +201,16 @@ class CatalogoRepository {
   Future<List<IdiomaCatalogo>> getIdiomaCatalogoList() async {
     try {
       final idiomaCatalogoDTOList = await _remoteIdiomaCatalogosList(
-        requestUri: (_usuario.test)
-            ? Uri.http(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/catalogo/idioma',
-              )
-            : Uri.https(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/catalogo/idioma',
-              ),
+        requestUri:
+            (_usuario.test)
+                ? Uri.http(
+                  dotenv.get('URL', fallback: 'localhost:3001'),
+                  'api/v1/online/catalogo/idioma',
+                )
+                : Uri.https(
+                  dotenv.get('URL', fallback: 'localhost:3001'),
+                  'api/v1/online/catalogo/idioma',
+                ),
         jsonDataSelector: (json) => json['data'] as List<dynamic>,
         provisionalToken: _usuario.provisionalToken,
       );
@@ -203,10 +221,11 @@ class CatalogoRepository {
     }
   }
 
-  Future<File?> getDocumentFile(
-      {required AdjuntoParam adjuntoParam,
-      required String provisionalToken,
-      required bool test}) async {
+  Future<File?> getDocumentFile({
+    required AdjuntoParam adjuntoParam,
+    required String provisionalToken,
+    required bool test,
+  }) async {
     try {
       if (adjuntoParam.nombreArchivo != '') {
         final cahceDirectories = await getTemporaryDirectory();
@@ -237,21 +256,26 @@ class CatalogoRepository {
         } else {
           final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
           final data = await _remoteGetAttachment(
-              requestUri: (test)
-                  ? Uri.http(
+            requestUri:
+                (test)
+                    ? Uri.http(
                       dotenv.get('URL', fallback: 'localhost:3001'),
                       'api/v1/online/adjunto/catalogo/${adjuntoParam.id}',
                       query,
                     )
-                  : Uri.https(
+                    : Uri.https(
                       dotenv.get('URL', fallback: 'localhost:3001'),
                       'api/v1/online/adjunto/catalogo/${adjuntoParam.id}',
                       query,
                     ),
-              provisionalToken: provisionalToken);
+            provisionalToken: provisionalToken,
+          );
 
           return await saveDocumentInLocal(
-              data, adjuntoParam, cahceDirectories);
+            data,
+            adjuntoParam,
+            cahceDirectories,
+          );
         }
       }
 
@@ -286,23 +310,22 @@ class CatalogoRepository {
     if (!fileExistInLocal(adjuntoParam, documentDirectory)) {
       final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
       final data = await _remoteGetAttachment(
-          requestUri: Uri.http(
-            dotenv.get('URL', fallback: 'localhost:3001'),
-            'api/v1/online/adjunto/catalogo/${adjuntoParam.id}',
-            query,
-          ),
-          provisionalToken: _usuario.provisionalToken);
+        requestUri: Uri.http(
+          dotenv.get('URL', fallback: 'localhost:3001'),
+          'api/v1/online/adjunto/catalogo/${adjuntoParam.id}',
+          query,
+        ),
+        provisionalToken: _usuario.provisionalToken,
+      );
       await saveDocumentInLocal(data, adjuntoParam, documentDirectory);
     }
   }
 
   Future<void> removeCatalogoFavorito(AdjuntoParam adjuntoParam) async {
     try {
-      await (_localDb.delete(_localDb.catalogoFavoritoTable)
-            ..where(
-              (tbl) => tbl.catalogoId.equals(int.parse(adjuntoParam.id)),
-            ))
-          .go();
+      await (_localDb.delete(_localDb.catalogoFavoritoTable)..where(
+        (tbl) => tbl.catalogoId.equals(int.parse(adjuntoParam.id)),
+      )).go();
 
       await remoteFavoriteFileFromLocal(adjuntoParam);
     } catch (e) {
@@ -312,9 +335,9 @@ class CatalogoRepository {
 
   Future<bool> isCatalogoFavorite({required int catalogoId}) async {
     try {
-      final query = await (_localDb.select(_localDb.catalogoFavoritoTable)
-            ..where((tbl) => tbl.catalogoId.equals(catalogoId)))
-          .get();
+      final query =
+          await (_localDb.select(_localDb.catalogoFavoritoTable)
+            ..where((tbl) => tbl.catalogoId.equals(catalogoId))).get();
 
       return query.isNotEmpty;
     } catch (e) {
@@ -355,10 +378,11 @@ class CatalogoRepository {
     }
   }
 
-  Future<List<CatalogoDTO>> _remoteCatalogosList(
-      {required Uri requestUri,
-      required List<dynamic> Function(dynamic json) jsonDataSelector,
-      required String provisionalToken}) async {
+  Future<List<CatalogoDTO>> _remoteCatalogosList({
+    required Uri requestUri,
+    required List<dynamic> Function(dynamic json) jsonDataSelector,
+    required String provisionalToken,
+  }) async {
     try {
       final response = await _dio.getUri(
         requestUri,
@@ -371,17 +395,20 @@ class CatalogoRepository {
         return data.map((e) => CatalogoDTO.fromJson(e as Json)).toList();
       } else {
         throw AppException.restApiFailure(
-            response.statusCode ?? 400, response.statusMessage ?? '');
+          response.statusCode ?? 400,
+          response.statusMessage ?? '',
+        );
       }
     } catch (e) {
       throw getApiError(e);
     }
   }
 
-  Future<List<TipoCatalogoDTO>> _remoteTipoCatalogosList(
-      {required Uri requestUri,
-      required List<dynamic> Function(dynamic json) jsonDataSelector,
-      required String provisionalToken}) async {
+  Future<List<TipoCatalogoDTO>> _remoteTipoCatalogosList({
+    required Uri requestUri,
+    required List<dynamic> Function(dynamic json) jsonDataSelector,
+    required String provisionalToken,
+  }) async {
     try {
       final response = await _dio.getUri(
         requestUri,
@@ -394,17 +421,20 @@ class CatalogoRepository {
         return data.map((e) => TipoCatalogoDTO.fromJson(e as Json)).toList();
       } else {
         throw AppException.restApiFailure(
-            response.statusCode ?? 400, response.statusMessage ?? '');
+          response.statusCode ?? 400,
+          response.statusMessage ?? '',
+        );
       }
     } catch (e) {
       throw getApiError(e);
     }
   }
 
-  Future<List<TipoPrecioCatalogoDTO>> _remoteTipoPrecioCatalogosList(
-      {required Uri requestUri,
-      required List<dynamic> Function(dynamic json) jsonDataSelector,
-      required String provisionalToken}) async {
+  Future<List<TipoPrecioCatalogoDTO>> _remoteTipoPrecioCatalogosList({
+    required Uri requestUri,
+    required List<dynamic> Function(dynamic json) jsonDataSelector,
+    required String provisionalToken,
+  }) async {
     try {
       final response = await _dio.getUri(
         requestUri,
@@ -419,17 +449,20 @@ class CatalogoRepository {
             .toList();
       } else {
         throw AppException.restApiFailure(
-            response.statusCode ?? 400, response.statusMessage ?? '');
+          response.statusCode ?? 400,
+          response.statusMessage ?? '',
+        );
       }
     } catch (e) {
       throw getApiError(e);
     }
   }
 
-  Future<List<IdiomaCatalogoDTO>> _remoteIdiomaCatalogosList(
-      {required Uri requestUri,
-      required List<dynamic> Function(dynamic json) jsonDataSelector,
-      required String provisionalToken}) async {
+  Future<List<IdiomaCatalogoDTO>> _remoteIdiomaCatalogosList({
+    required Uri requestUri,
+    required List<dynamic> Function(dynamic json) jsonDataSelector,
+    required String provisionalToken,
+  }) async {
     try {
       final response = await _dio.getUri(
         requestUri,
@@ -442,7 +475,9 @@ class CatalogoRepository {
         return data.map((e) => IdiomaCatalogoDTO.fromJson(e as Json)).toList();
       } else {
         throw AppException.restApiFailure(
-            response.statusCode ?? 400, response.statusMessage ?? '');
+          response.statusCode ?? 400,
+          response.statusMessage ?? '',
+        );
       }
     } catch (e) {
       throw getApiError(e);
@@ -450,19 +485,28 @@ class CatalogoRepository {
   }
 
   int _orderByCatalogos(
-      Catalogo a,
-      Catalogo b,
-      List<CatalogoDTO> favoriteLocalList,
-      List<CatalogoOrdenDTO> catalogoOrdenList) {
-    final priorityA =
-        getPriority(a.catalogoId, favoriteLocalList, catalogoOrdenList);
-    final priorityB =
-        getPriority(b.catalogoId, favoriteLocalList, catalogoOrdenList);
+    Catalogo a,
+    Catalogo b,
+    List<CatalogoDTO> favoriteLocalList,
+    List<CatalogoOrdenDTO> catalogoOrdenList,
+  ) {
+    final priorityA = getPriority(
+      a.catalogoId,
+      favoriteLocalList,
+      catalogoOrdenList,
+    );
+    final priorityB = getPriority(
+      b.catalogoId,
+      favoriteLocalList,
+      catalogoOrdenList,
+    );
 
     if (priorityA.compareTo(priorityB) == 0) {
       if (priorityA == 1 || priorityA == 3) {
-        return _getFechaAbierto(b.catalogoId, catalogoOrdenList)
-            .compareTo(_getFechaAbierto(a.catalogoId, catalogoOrdenList));
+        return _getFechaAbierto(
+          b.catalogoId,
+          catalogoOrdenList,
+        ).compareTo(_getFechaAbierto(a.catalogoId, catalogoOrdenList));
       } else if (priorityA == 4 && priorityB == 4) {
         return a.orden.compareTo(b.orden);
       }
@@ -489,8 +533,9 @@ class CatalogoRepository {
 
     if (tipoPrecioCatalogo != null &&
         tipoPrecioCatalogo.tipoPrecioCatalogoId != '00') {
-      query.addAll(
-          {'tipoPrecioCatalogo': tipoPrecioCatalogo.tipoPrecioCatalogoId});
+      query.addAll({
+        'tipoPrecioCatalogo': tipoPrecioCatalogo.tipoPrecioCatalogoId,
+      });
     }
 
     if (idiomaCatalogo != null && idiomaCatalogo.idiomaId != '00') {
@@ -525,7 +570,9 @@ class CatalogoRepository {
         return response.data as List<int>;
       } else {
         throw AppException.restApiFailure(
-            response.statusCode ?? 400, response.statusMessage ?? '');
+          response.statusCode ?? 400,
+          response.statusMessage ?? '',
+        );
       }
     } catch (e) {
       throw getApiError(e);
@@ -534,17 +581,25 @@ class CatalogoRepository {
 
   Future<List<CatalogoOrdenDTO>> _getCatalogoOrdenDTOList() async {
     return (_localDb.select(_localDb.catalogoOrdenTable)
-          ..orderBy([(tbl) => OrderingTerm.asc(tbl.fechaAbierto)]))
-        .get();
+      ..orderBy([(tbl) => OrderingTerm.asc(tbl.fechaAbierto)])).get();
   }
 
   Future<int> saveCatalogoAbierto(int catalogoId) async {
-    return _localDb.into(_localDb.catalogoOrdenTable).insertOnConflictUpdate(
-        CatalogoOrdenDTO(catalogoId: catalogoId, fechaAbierto: DateTime.now()));
+    return _localDb
+        .into(_localDb.catalogoOrdenTable)
+        .insertOnConflictUpdate(
+          CatalogoOrdenDTO(
+            catalogoId: catalogoId,
+            fechaAbierto: DateTime.now(),
+          ),
+        );
   }
 
-  int getPriority(int catalogoId, List<CatalogoDTO> catalogoFavoritoDTOList,
-      List<CatalogoOrdenDTO> catalogoOrdenList) {
+  int getPriority(
+    int catalogoId,
+    List<CatalogoDTO> catalogoFavoritoDTOList,
+    List<CatalogoOrdenDTO> catalogoOrdenList,
+  ) {
     final isAbierto = _isCatalogoAbierto(catalogoId, catalogoOrdenList);
     final isFavorito = _isCatalogoFavorito(catalogoId, catalogoFavoritoDTOList);
 
@@ -560,17 +615,23 @@ class CatalogoRepository {
   }
 
   bool _isCatalogoFavorito(
-      int catalogoId, List<CatalogoDTO> catalogoFavoritoDTOList) {
+    int catalogoId,
+    List<CatalogoDTO> catalogoFavoritoDTOList,
+  ) {
     return catalogoFavoritoDTOList.any((f) => f.catalogoId == catalogoId);
   }
 
   bool _isCatalogoAbierto(
-      int catalogoId, List<CatalogoOrdenDTO> catalogoOrdenAbiertoList) {
+    int catalogoId,
+    List<CatalogoOrdenDTO> catalogoOrdenAbiertoList,
+  ) {
     return catalogoOrdenAbiertoList.any((f) => f.catalogoId == catalogoId);
   }
 
   DateTime _getFechaAbierto(
-      int catalogoId, List<CatalogoOrdenDTO> catalogoOrdenAbiertoList) {
+    int catalogoId,
+    List<CatalogoOrdenDTO> catalogoOrdenAbiertoList,
+  ) {
     return catalogoOrdenAbiertoList
         .firstWhere(
           (catalogoOrdenAbierto) =>
@@ -580,11 +641,14 @@ class CatalogoRepository {
   }
 
   Future<File> saveDocumentInLocal(
-      List<int> data, AdjuntoParam adjuntoParam, Directory directory) async {
+    List<int> data,
+    AdjuntoParam adjuntoParam,
+    Directory directory,
+  ) async {
     try {
       final file = await File(
-              '${directory.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}')
-          .create(recursive: true);
+        '${directory.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}',
+      ).create(recursive: true);
 
       final raf = file.openSync(mode: FileMode.write);
       raf.writeFromSync(data);
@@ -616,7 +680,8 @@ class CatalogoRepository {
     final documentDirectory = await getApplicationDocumentsDirectory();
 
     final file = File(
-        '${documentDirectory.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}');
+      '${documentDirectory.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}',
+    );
 
     if (file.existsSync()) {
       file.deleteSync(recursive: true);

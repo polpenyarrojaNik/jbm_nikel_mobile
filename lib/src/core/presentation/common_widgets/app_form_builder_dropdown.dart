@@ -23,10 +23,7 @@ class AppFormBuilderDropdown<T> extends ConsumerWidget {
     return FormBuilderDropdown<T>(
       isExpanded: true,
       name: name,
-      decoration: InputDecoration(
-        labelText: title,
-        border: InputBorder.none,
-      ),
+      decoration: InputDecoration(labelText: title, border: InputBorder.none),
       initialValue: initialValue,
       items: items,
       validator: validators,

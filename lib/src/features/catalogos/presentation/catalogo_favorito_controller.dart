@@ -16,21 +16,26 @@ class CatalogoFavoritoControllerState with _$CatalogoFavoritoControllerState {
   const factory CatalogoFavoritoControllerState.checking() = _loading;
   const factory CatalogoFavoritoControllerState.favorite() = _favorite;
 
-  const factory CatalogoFavoritoControllerState.error(Object error,
-      {StackTrace? stackTrace}) = _error;
+  const factory CatalogoFavoritoControllerState.error(
+    Object error, {
+    StackTrace? stackTrace,
+  }) = _error;
   const factory CatalogoFavoritoControllerState.noFavorite() = _noFavorite;
 }
 
 final catalogoFavoritoControllerProvider = StateNotifierProvider.autoDispose
     .family<CatalogoFavoritoController, CatalogoFavoritoControllerState, int>(
-  (ref, catalogoId) => CatalogoFavoritoController(
-      ref.watch(catalogoRepositoryProvider), catalogoId, ref),
-);
+      (ref, catalogoId) => CatalogoFavoritoController(
+        ref.watch(catalogoRepositoryProvider),
+        catalogoId,
+        ref,
+      ),
+    );
 
 class CatalogoFavoritoController
     extends StateNotifier<CatalogoFavoritoControllerState> {
   CatalogoFavoritoController(this.catalogoRepository, this.catalogoId, this.ref)
-      : super(const CatalogoFavoritoControllerState.checking()) {
+    : super(const CatalogoFavoritoControllerState.checking()) {
     isModuleFavorite();
   }
 
@@ -43,15 +48,19 @@ class CatalogoFavoritoController
       if (state != const CatalogoFavoritoControllerState.checking()) {
         state = const CatalogoFavoritoControllerState.checking();
       }
-      final isFavorite =
-          await catalogoRepository.isCatalogoFavorite(catalogoId: catalogoId);
+      final isFavorite = await catalogoRepository.isCatalogoFavorite(
+        catalogoId: catalogoId,
+      );
 
-      state = isFavorite
-          ? const CatalogoFavoritoControllerState.favorite()
-          : const CatalogoFavoritoControllerState.noFavorite();
+      state =
+          isFavorite
+              ? const CatalogoFavoritoControllerState.favorite()
+              : const CatalogoFavoritoControllerState.noFavorite();
     } on AppException catch (e, stackTrace) {
-      state = CatalogoFavoritoControllerState.error(e.details.message,
-          stackTrace: stackTrace);
+      state = CatalogoFavoritoControllerState.error(
+        e.details.message,
+        stackTrace: stackTrace,
+      );
     } catch (e) {
       rethrow;
     }
@@ -62,14 +71,17 @@ class CatalogoFavoritoController
       if (state != const CatalogoFavoritoControllerState.checking()) {
         state = const CatalogoFavoritoControllerState.checking();
       }
-      await catalogoRepository.removeCatalogoFavorito(AdjuntoParam(
-          id: catalogoId.toString(), nombreArchivo: nombreArchivo));
+      await catalogoRepository.removeCatalogoFavorito(
+        AdjuntoParam(id: catalogoId.toString(), nombreArchivo: nombreArchivo),
+      );
       ref.invalidate(catalogoIndexScreenControllerProvider);
 
       await isModuleFavorite();
     } on AppException catch (e, stackTrace) {
-      state = CatalogoFavoritoControllerState.error(e.details.message,
-          stackTrace: stackTrace);
+      state = CatalogoFavoritoControllerState.error(
+        e.details.message,
+        stackTrace: stackTrace,
+      );
     } catch (e) {
       rethrow;
     }
@@ -86,8 +98,10 @@ class CatalogoFavoritoController
 
       await isModuleFavorite();
     } on AppException catch (e, stackTrace) {
-      state = CatalogoFavoritoControllerState.error(e.details.message,
-          stackTrace: stackTrace);
+      state = CatalogoFavoritoControllerState.error(
+        e.details.message,
+        stackTrace: stackTrace,
+      );
     } catch (e) {
       rethrow;
     }

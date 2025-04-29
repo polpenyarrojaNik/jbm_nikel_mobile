@@ -5,12 +5,13 @@ part 'articulo_sustitutivo.freezed.dart';
 @freezed
 class ArticuloSustitutivo with _$ArticuloSustitutivo {
   const ArticuloSustitutivo._();
-  const factory ArticuloSustitutivo(
-      {required String articuloId,
-      required String articuloSustitutivoId,
-      required String articuloSustitutivoDescription,
-      required int orden,
-      required int stockDisponible,
-      required DateTime lastUpdated,
-      required bool deleted}) = _ArticuloSustitutivo;
+  const factory ArticuloSustitutivo({
+    required String articuloId,
+    required String articuloSustitutivoId,
+    required String articuloSustitutivoDescription,
+    required int orden,
+    required int stockDisponible,
+    required DateTime lastUpdated,
+    required bool deleted,
+  }) = _ArticuloSustitutivo;
 }

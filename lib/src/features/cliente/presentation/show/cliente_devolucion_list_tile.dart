@@ -14,11 +14,10 @@ class ClienteDevolucionListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.router.push(
-        ClienteDevolucionDetalleRoute(
-          devolucion: devolucion,
-        ),
-      ),
+      onTap:
+          () => context.router.push(
+            ClienteDevolucionDetalleRoute(devolucion: devolucion),
+          ),
       child: IntrinsicHeight(
         child: Container(
           padding: const EdgeInsets.only(right: 16),
@@ -31,21 +30,21 @@ class ClienteDevolucionListTile extends StatelessWidget {
                 Expanded(
                   flex: 5,
                   child: Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 8,
+                      horizontal: 8,
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           devolucion.id,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodySmall
-                              ?.copyWith(
-                                  color: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium
-                                      ?.color),
+                          style: Theme.of(
+                            context,
+                          ).textTheme.bodySmall?.copyWith(
+                            color:
+                                Theme.of(context).textTheme.bodyMedium?.color,
+                          ),
                         ),
                         Text(
                           dateFormatter(
@@ -104,7 +103,8 @@ class ClienteDevolucionListTile extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
-                            '${numberFormatCantidades(devolucion.bultos)} ${S.of(context).cliente_show_clienteDevolucion_bultos}'),
+                          '${numberFormatCantidades(devolucion.bultos)} ${S.of(context).cliente_show_clienteDevolucion_bultos}',
+                        ),
                       ],
                     ),
                   ),

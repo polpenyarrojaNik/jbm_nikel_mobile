@@ -87,10 +87,7 @@ String formatCodigoPostalAndPoblacion({
   return codigoPostalAndCity;
 }
 
-String formatProvinciaAndPais({
-  String? province,
-  Pais? pais,
-}) {
+String formatProvinciaAndPais({String? province, Pais? pais}) {
   var provinceAndPais = '';
   if (province != null) provinceAndPais = provinceAndPais + province;
   if (province != null && pais != null) {
@@ -142,8 +139,10 @@ String formatPrecioYDescuento({
   required double descuento2,
   required double descuento3,
 }) {
-  var formatPrecioYDescuento =
-      formatPrecios(precio: precio, tipoPrecio: tipoPrecio);
+  var formatPrecioYDescuento = formatPrecios(
+    precio: precio,
+    tipoPrecio: tipoPrecio,
+  );
 
   if (descuento1 != 0 || descuento2 != 0 || descuento3 != 0) {
     formatPrecioYDescuento +=
@@ -159,25 +158,23 @@ String formatPrecios({required Money precio, required int? tipoPrecio}) {
       : '${precio.toString()} (x${tipoPrecio.round().toString()})';
 }
 
-String dtoText(
-  double descuento1,
-  double descuento2,
-  double descuento3,
-) {
+String dtoText(double descuento1, double descuento2, double descuento3) {
   var dtoText = '';
 
   if (descuento1 != 0) {
     dtoText += '${numberFormatCantidades(descuento1)}%';
   }
   if (descuento2 != 0) {
-    dtoText += (dtoText.isNotEmpty)
-        ? ' -${numberFormatCantidades(descuento2)}%'
-        : '${numberFormatCantidades(descuento2)}%';
+    dtoText +=
+        (dtoText.isNotEmpty)
+            ? ' -${numberFormatCantidades(descuento2)}%'
+            : '${numberFormatCantidades(descuento2)}%';
   }
   if (descuento3 != 0) {
-    dtoText += (dtoText.isNotEmpty)
-        ? ' -${numberFormatCantidades(descuento3)}%'
-        : '${numberFormatCantidades(descuento3)}%';
+    dtoText +=
+        (dtoText.isNotEmpty)
+            ? ' -${numberFormatCantidades(descuento3)}%'
+            : '${numberFormatCantidades(descuento3)}%';
   }
   return dtoText;
 }
@@ -200,8 +197,9 @@ String getDescriptionArticuloInLocalLanguage({required Articulo articulo}) {
   return articulo.descripcionES;
 }
 
-String getDescriptionArticuloComponenteInLocalLanguage(
-    {required ArticuloComponente articulo}) {
+String getDescriptionArticuloComponenteInLocalLanguage({
+  required ArticuloComponente articulo,
+}) {
   final currentLocale = Intl.getCurrentLocale();
 
   if (currentLocale == 'es') {
@@ -271,8 +269,10 @@ String? getMetodoCobroInLocalLanguage({required MetodoDeCobro metodoDeCobro}) {
   return null;
 }
 
-String getEstadoCobroFactura(
-    {required BuildContext context, required String estadoCobro}) {
+String getEstadoCobroFactura({
+  required BuildContext context,
+  required String estadoCobro,
+}) {
   switch (estadoCobro) {
     case 'P':
       return S
@@ -297,8 +297,9 @@ String getEstadoCobroFactura(
   }
 }
 
-String getClienteEstadoPotencialInLocalLanguage(
-    {required ClienteEstadoPotencial? estadoPotencial}) {
+String getClienteEstadoPotencialInLocalLanguage({
+  required ClienteEstadoPotencial? estadoPotencial,
+}) {
   final currentLocale = Intl.getCurrentLocale();
 
   if (estadoPotencial != null) {
@@ -318,8 +319,9 @@ String getClienteEstadoPotencialInLocalLanguage(
   return 'Potencial';
 }
 
-String? getClienteTipoPotencialInLocalLanguage(
-    {required ClienteTipoPotencial? tipoPotencial}) {
+String? getClienteTipoPotencialInLocalLanguage({
+  required ClienteTipoPotencial? tipoPotencial,
+}) {
   final currentLocale = Intl.getCurrentLocale();
 
   if (tipoPotencial != null) {
@@ -340,7 +342,10 @@ String? getClienteTipoPotencialInLocalLanguage(
 }
 
 Color? getColorEstadoVisitaLocal(
-    BuildContext context, bool enviada, bool tratada) {
+  BuildContext context,
+  bool enviada,
+  bool tratada,
+) {
   if (tratada) {
     return null;
   } else if (enviada) {
@@ -361,7 +366,11 @@ String? getEstadoVisitaLocal(BuildContext context, bool enviada, bool tratada) {
 }
 
 String? getEstadoPedidoLocal(
-    BuildContext context, bool borrador, bool enviada, bool tratada) {
+  BuildContext context,
+  bool borrador,
+  bool enviada,
+  bool tratada,
+) {
   if (tratada) {
     return null;
   } else if (enviada) {
@@ -373,8 +382,10 @@ String? getEstadoPedidoLocal(
   }
 }
 
-TextStyle? getTextStyleFechaEntregaByEstado(
-    {required BuildContext context, String? estado}) {
+TextStyle? getTextStyleFechaEntregaByEstado({
+  required BuildContext context,
+  String? estado,
+}) {
   final defaultTextTheme = Theme.of(context).textTheme.bodyMedium;
   switch (estado) {
     case 'E':
@@ -440,7 +451,9 @@ T getFormValue<T>(GlobalKey<FormBuilderState> formKey, String fieldName) {
 }
 
 T getFormInstantValue<T>(
-    GlobalKey<FormBuilderState> formKey, String fieldName) {
+  GlobalKey<FormBuilderState> formKey,
+  String fieldName,
+) {
   return formKey.currentState?.instantValue[fieldName] as T;
 }
 
@@ -463,16 +476,16 @@ String? getIdFromFrecuenciaPedido(FrecuenciaPedido? frecuenciaPedido) {
   return frecuenciaPedido == FrecuenciaPedido.mensual
       ? 'M'
       : frecuenciaPedido == FrecuenciaPedido.semanal
-          ? 'S'
-          : 'T';
+      ? 'S'
+      : 'T';
 }
 
 String getNameFromFrecuenciaPedido(FrecuenciaPedido frecuenciaPedido) {
   return frecuenciaPedido == FrecuenciaPedido.mensual
       ? S.current.mensual
       : frecuenciaPedido == FrecuenciaPedido.semanal
-          ? S.current.semanal
-          : S.current.trimestral;
+      ? S.current.semanal
+      : S.current.trimestral;
 }
 
 InteresCliente? getInteresClienteFromId(String? id) {
@@ -494,16 +507,16 @@ String? getIdFromInteresCliente(InteresCliente? interesCliente) {
   return interesCliente == InteresCliente.alto
       ? 'A'
       : interesCliente == InteresCliente.medio
-          ? 'M'
-          : 'B';
+      ? 'M'
+      : 'B';
 }
 
 String getNameFromInteresCliente(InteresCliente interesCliente) {
   return interesCliente == InteresCliente.alto
       ? S.current.alto
       : interesCliente == InteresCliente.medio
-          ? S.current.medio
-          : S.current.bajo;
+      ? S.current.medio
+      : S.current.bajo;
 }
 
 Capacidad? getCapacidadFromId(String? id) {
@@ -525,14 +538,14 @@ String? getIdFromCapacidad(Capacidad? capacidad) {
   return capacidad == Capacidad.grande
       ? 'G'
       : capacidad == Capacidad.media
-          ? 'M'
-          : 'P';
+      ? 'M'
+      : 'P';
 }
 
 String getNameFromCapacidad(Capacidad capacidad) {
   return capacidad == Capacidad.grande
       ? S.current.grande
       : capacidad == Capacidad.media
-          ? S.current.media
-          : S.current.pequena;
+      ? S.current.media
+      : S.current.pequena;
 }

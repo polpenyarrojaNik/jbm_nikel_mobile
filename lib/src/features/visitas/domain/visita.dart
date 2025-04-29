@@ -56,9 +56,10 @@ class Visita with _$Visita {
 
   bool isEditable() => (!tratada && !enviada);
 
-  String getNombreMostrar() => isClienteProvisional
-      ? clienteProvisionalNombre!
-      : '#${cliente!.id} ${(cliente?.nombreCliente != null) ? cliente!.nombreCliente : ''}';
+  String getNombreMostrar() =>
+      isClienteProvisional
+          ? clienteProvisionalNombre!
+          : '#${cliente!.id} ${(cliente?.nombreCliente != null) ? cliente!.nombreCliente : ''}';
 }
 
 enum FrecuenciaPedido { semanal, mensual, trimestral }

@@ -12,7 +12,8 @@ part of 'promo_dto_lin_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 PromoDtoLineaDTO _$PromoDtoLineaDTOFromJson(Map<String, dynamic> json) {
   return _PromoDtoLineaDTO.fromJson(json);
@@ -52,19 +53,21 @@ mixin _$PromoDtoLineaDTO {
 /// @nodoc
 abstract class $PromoDtoLineaDTOCopyWith<$Res> {
   factory $PromoDtoLineaDTOCopyWith(
-          PromoDtoLineaDTO value, $Res Function(PromoDtoLineaDTO) then) =
-      _$PromoDtoLineaDTOCopyWithImpl<$Res, PromoDtoLineaDTO>;
+    PromoDtoLineaDTO value,
+    $Res Function(PromoDtoLineaDTO) then,
+  ) = _$PromoDtoLineaDTOCopyWithImpl<$Res, PromoDtoLineaDTO>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'EMPRESA_ID') String empresaId,
-      @JsonKey(name: 'PROMO_DTO_ID') String promoDtoId,
-      @JsonKey(name: 'ARTICULO_ID') String articuloId,
-      @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
-      @JsonKey(name: 'PRECIO') double precio,
-      @JsonKey(name: 'TIPO_PRECIO') int? tipoPrecio,
-      @JsonKey(name: 'DTO') double dto,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+  $Res call({
+    @JsonKey(name: 'EMPRESA_ID') String empresaId,
+    @JsonKey(name: 'PROMO_DTO_ID') String promoDtoId,
+    @JsonKey(name: 'ARTICULO_ID') String articuloId,
+    @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
+    @JsonKey(name: 'PRECIO') double precio,
+    @JsonKey(name: 'TIPO_PRECIO') int? tipoPrecio,
+    @JsonKey(name: 'DTO') double dto,
+    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') String deleted,
+  });
 }
 
 /// @nodoc
@@ -92,74 +95,89 @@ class _$PromoDtoLineaDTOCopyWithImpl<$Res, $Val extends PromoDtoLineaDTO>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_value.copyWith(
-      empresaId: null == empresaId
-          ? _value.empresaId
-          : empresaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      promoDtoId: null == promoDtoId
-          ? _value.promoDtoId
-          : promoDtoId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      cantidadDesde: null == cantidadDesde
-          ? _value.cantidadDesde
-          : cantidadDesde // ignore: cast_nullable_to_non_nullable
-              as int,
-      precio: null == precio
-          ? _value.precio
-          : precio // ignore: cast_nullable_to_non_nullable
-              as double,
-      tipoPrecio: freezed == tipoPrecio
-          ? _value.tipoPrecio
-          : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as int?,
-      dto: null == dto
-          ? _value.dto
-          : dto // ignore: cast_nullable_to_non_nullable
-              as double,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            empresaId:
+                null == empresaId
+                    ? _value.empresaId
+                    : empresaId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            promoDtoId:
+                null == promoDtoId
+                    ? _value.promoDtoId
+                    : promoDtoId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            articuloId:
+                null == articuloId
+                    ? _value.articuloId
+                    : articuloId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            cantidadDesde:
+                null == cantidadDesde
+                    ? _value.cantidadDesde
+                    : cantidadDesde // ignore: cast_nullable_to_non_nullable
+                        as int,
+            precio:
+                null == precio
+                    ? _value.precio
+                    : precio // ignore: cast_nullable_to_non_nullable
+                        as double,
+            tipoPrecio:
+                freezed == tipoPrecio
+                    ? _value.tipoPrecio
+                    : tipoPrecio // ignore: cast_nullable_to_non_nullable
+                        as int?,
+            dto:
+                null == dto
+                    ? _value.dto
+                    : dto // ignore: cast_nullable_to_non_nullable
+                        as double,
+            lastUpdated:
+                null == lastUpdated
+                    ? _value.lastUpdated
+                    : lastUpdated // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            deleted:
+                null == deleted
+                    ? _value.deleted
+                    : deleted // ignore: cast_nullable_to_non_nullable
+                        as String,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$PromoDtoLineaDTOImplCopyWith<$Res>
     implements $PromoDtoLineaDTOCopyWith<$Res> {
-  factory _$$PromoDtoLineaDTOImplCopyWith(_$PromoDtoLineaDTOImpl value,
-          $Res Function(_$PromoDtoLineaDTOImpl) then) =
-      __$$PromoDtoLineaDTOImplCopyWithImpl<$Res>;
+  factory _$$PromoDtoLineaDTOImplCopyWith(
+    _$PromoDtoLineaDTOImpl value,
+    $Res Function(_$PromoDtoLineaDTOImpl) then,
+  ) = __$$PromoDtoLineaDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'EMPRESA_ID') String empresaId,
-      @JsonKey(name: 'PROMO_DTO_ID') String promoDtoId,
-      @JsonKey(name: 'ARTICULO_ID') String articuloId,
-      @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
-      @JsonKey(name: 'PRECIO') double precio,
-      @JsonKey(name: 'TIPO_PRECIO') int? tipoPrecio,
-      @JsonKey(name: 'DTO') double dto,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+  $Res call({
+    @JsonKey(name: 'EMPRESA_ID') String empresaId,
+    @JsonKey(name: 'PROMO_DTO_ID') String promoDtoId,
+    @JsonKey(name: 'ARTICULO_ID') String articuloId,
+    @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
+    @JsonKey(name: 'PRECIO') double precio,
+    @JsonKey(name: 'TIPO_PRECIO') int? tipoPrecio,
+    @JsonKey(name: 'DTO') double dto,
+    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') String deleted,
+  });
 }
 
 /// @nodoc
 class __$$PromoDtoLineaDTOImplCopyWithImpl<$Res>
     extends _$PromoDtoLineaDTOCopyWithImpl<$Res, _$PromoDtoLineaDTOImpl>
     implements _$$PromoDtoLineaDTOImplCopyWith<$Res> {
-  __$$PromoDtoLineaDTOImplCopyWithImpl(_$PromoDtoLineaDTOImpl _value,
-      $Res Function(_$PromoDtoLineaDTOImpl) _then)
-      : super(_value, _then);
+  __$$PromoDtoLineaDTOImplCopyWithImpl(
+    _$PromoDtoLineaDTOImpl _value,
+    $Res Function(_$PromoDtoLineaDTOImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of PromoDtoLineaDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -176,61 +194,72 @@ class __$$PromoDtoLineaDTOImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$PromoDtoLineaDTOImpl(
-      empresaId: null == empresaId
-          ? _value.empresaId
-          : empresaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      promoDtoId: null == promoDtoId
-          ? _value.promoDtoId
-          : promoDtoId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      cantidadDesde: null == cantidadDesde
-          ? _value.cantidadDesde
-          : cantidadDesde // ignore: cast_nullable_to_non_nullable
-              as int,
-      precio: null == precio
-          ? _value.precio
-          : precio // ignore: cast_nullable_to_non_nullable
-              as double,
-      tipoPrecio: freezed == tipoPrecio
-          ? _value.tipoPrecio
-          : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as int?,
-      dto: null == dto
-          ? _value.dto
-          : dto // ignore: cast_nullable_to_non_nullable
-              as double,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$PromoDtoLineaDTOImpl(
+        empresaId:
+            null == empresaId
+                ? _value.empresaId
+                : empresaId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        promoDtoId:
+            null == promoDtoId
+                ? _value.promoDtoId
+                : promoDtoId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        articuloId:
+            null == articuloId
+                ? _value.articuloId
+                : articuloId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        cantidadDesde:
+            null == cantidadDesde
+                ? _value.cantidadDesde
+                : cantidadDesde // ignore: cast_nullable_to_non_nullable
+                    as int,
+        precio:
+            null == precio
+                ? _value.precio
+                : precio // ignore: cast_nullable_to_non_nullable
+                    as double,
+        tipoPrecio:
+            freezed == tipoPrecio
+                ? _value.tipoPrecio
+                : tipoPrecio // ignore: cast_nullable_to_non_nullable
+                    as int?,
+        dto:
+            null == dto
+                ? _value.dto
+                : dto // ignore: cast_nullable_to_non_nullable
+                    as double,
+        lastUpdated:
+            null == lastUpdated
+                ? _value.lastUpdated
+                : lastUpdated // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        deleted:
+            null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$PromoDtoLineaDTOImpl extends _PromoDtoLineaDTO {
-  const _$PromoDtoLineaDTOImpl(
-      {@JsonKey(name: 'EMPRESA_ID') required this.empresaId,
-      @JsonKey(name: 'PROMO_DTO_ID') required this.promoDtoId,
-      @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
-      @JsonKey(name: 'CANTIDAD_DESDE') required this.cantidadDesde,
-      @JsonKey(name: 'PRECIO') required this.precio,
-      @JsonKey(name: 'TIPO_PRECIO') required this.tipoPrecio,
-      @JsonKey(name: 'DTO') required this.dto,
-      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-      @JsonKey(name: 'DELETED') this.deleted = 'N'})
-      : super._();
+  const _$PromoDtoLineaDTOImpl({
+    @JsonKey(name: 'EMPRESA_ID') required this.empresaId,
+    @JsonKey(name: 'PROMO_DTO_ID') required this.promoDtoId,
+    @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
+    @JsonKey(name: 'CANTIDAD_DESDE') required this.cantidadDesde,
+    @JsonKey(name: 'PRECIO') required this.precio,
+    @JsonKey(name: 'TIPO_PRECIO') required this.tipoPrecio,
+    @JsonKey(name: 'DTO') required this.dto,
+    @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+    @JsonKey(name: 'DELETED') this.deleted = 'N',
+  }) : super._();
 
   factory _$PromoDtoLineaDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$PromoDtoLineaDTOImplFromJson(json);
@@ -292,8 +321,18 @@ class _$PromoDtoLineaDTOImpl extends _PromoDtoLineaDTO {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, empresaId, promoDtoId,
-      articuloId, cantidadDesde, precio, tipoPrecio, dto, lastUpdated, deleted);
+  int get hashCode => Object.hash(
+    runtimeType,
+    empresaId,
+    promoDtoId,
+    articuloId,
+    cantidadDesde,
+    precio,
+    tipoPrecio,
+    dto,
+    lastUpdated,
+    deleted,
+  );
 
   /// Create a copy of PromoDtoLineaDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -302,27 +341,28 @@ class _$PromoDtoLineaDTOImpl extends _PromoDtoLineaDTO {
   @pragma('vm:prefer-inline')
   _$$PromoDtoLineaDTOImplCopyWith<_$PromoDtoLineaDTOImpl> get copyWith =>
       __$$PromoDtoLineaDTOImplCopyWithImpl<_$PromoDtoLineaDTOImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PromoDtoLineaDTOImplToJson(
-      this,
-    );
+    return _$$PromoDtoLineaDTOImplToJson(this);
   }
 }
 
 abstract class _PromoDtoLineaDTO extends PromoDtoLineaDTO {
-  const factory _PromoDtoLineaDTO(
-      {@JsonKey(name: 'EMPRESA_ID') required final String empresaId,
-      @JsonKey(name: 'PROMO_DTO_ID') required final String promoDtoId,
-      @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
-      @JsonKey(name: 'CANTIDAD_DESDE') required final int cantidadDesde,
-      @JsonKey(name: 'PRECIO') required final double precio,
-      @JsonKey(name: 'TIPO_PRECIO') required final int? tipoPrecio,
-      @JsonKey(name: 'DTO') required final double dto,
-      @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') final String deleted}) = _$PromoDtoLineaDTOImpl;
+  const factory _PromoDtoLineaDTO({
+    @JsonKey(name: 'EMPRESA_ID') required final String empresaId,
+    @JsonKey(name: 'PROMO_DTO_ID') required final String promoDtoId,
+    @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
+    @JsonKey(name: 'CANTIDAD_DESDE') required final int cantidadDesde,
+    @JsonKey(name: 'PRECIO') required final double precio,
+    @JsonKey(name: 'TIPO_PRECIO') required final int? tipoPrecio,
+    @JsonKey(name: 'DTO') required final double dto,
+    @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') final String deleted,
+  }) = _$PromoDtoLineaDTOImpl;
   const _PromoDtoLineaDTO._() : super._();
 
   factory _PromoDtoLineaDTO.fromJson(Map<String, dynamic> json) =

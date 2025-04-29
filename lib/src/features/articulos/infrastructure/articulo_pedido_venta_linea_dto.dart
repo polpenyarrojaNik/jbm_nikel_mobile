@@ -32,47 +32,52 @@ class ArticuloPedidoVentaLineaDTO with _$ArticuloPedidoVentaLineaDTO {
   factory ArticuloPedidoVentaLineaDTO.fromJson(Map<String, dynamic> json) =>
       _$ArticuloPedidoVentaLineaDTOFromJson(json);
 
-  ArticuloPedidoVentaLinea toDomain(
-      {required String divisaId, required DateTime fechaPedido}) {
+  ArticuloPedidoVentaLinea toDomain({
+    required String divisaId,
+    required DateTime fechaPedido,
+  }) {
     return ArticuloPedidoVentaLinea(
-        empresaId: empresaId,
-        pedidoVentaId: pedidoVentaId,
-        id: id,
-        articuloId: articuloId,
-        articuloDescription: articuloDescription,
-        clienteId: clienteId,
-        nombreCliente: nombreCliente,
-        cantidad: cantidad,
-        precioDivisa: precioDivisa.toMoney(currencyId: divisaId),
-        divisaId: divisaId,
-        tipoPrecio: tipoPrecio,
-        descuento1: descuento1,
-        descuento2: descuento2,
-        descuento3: descuento3,
-        fechaPedido: fechaPedido,
-        lastUpdated: lastUpdated,
-        deleted: (deleted == 'S') ? true : false);
+      empresaId: empresaId,
+      pedidoVentaId: pedidoVentaId,
+      id: id,
+      articuloId: articuloId,
+      articuloDescription: articuloDescription,
+      clienteId: clienteId,
+      nombreCliente: nombreCliente,
+      cantidad: cantidad,
+      precioDivisa: precioDivisa.toMoney(currencyId: divisaId),
+      divisaId: divisaId,
+      tipoPrecio: tipoPrecio,
+      descuento1: descuento1,
+      descuento2: descuento2,
+      descuento3: descuento3,
+      fechaPedido: fechaPedido,
+      lastUpdated: lastUpdated,
+      deleted: (deleted == 'S') ? true : false,
+    );
   }
 
-  factory ArticuloPedidoVentaLineaDTO.fromDB(
-      {required PedidoVentaLineaDTO pedidoVentaLineaDto,
-      required String clienteId,
-      required String nombreCliente}) {
+  factory ArticuloPedidoVentaLineaDTO.fromDB({
+    required PedidoVentaLineaDTO pedidoVentaLineaDto,
+    required String clienteId,
+    required String nombreCliente,
+  }) {
     return ArticuloPedidoVentaLineaDTO(
-        empresaId: pedidoVentaLineaDto.empresaId,
-        pedidoVentaId: pedidoVentaLineaDto.pedidoId,
-        id: pedidoVentaLineaDto.pedidoVentaLineaId,
-        articuloId: pedidoVentaLineaDto.articuloId,
-        articuloDescription: pedidoVentaLineaDto.articuloDescription,
-        clienteId: clienteId,
-        nombreCliente: nombreCliente,
-        cantidad: pedidoVentaLineaDto.cantidad,
-        precioDivisa: pedidoVentaLineaDto.precioDivisa,
-        tipoPrecio: pedidoVentaLineaDto.tipoPrecio,
-        descuento1: pedidoVentaLineaDto.descuento1,
-        descuento2: pedidoVentaLineaDto.descuento2,
-        descuento3: pedidoVentaLineaDto.descuento3,
-        lastUpdated: pedidoVentaLineaDto.lastUpdated,
-        deleted: pedidoVentaLineaDto.deleted);
+      empresaId: pedidoVentaLineaDto.empresaId,
+      pedidoVentaId: pedidoVentaLineaDto.pedidoId,
+      id: pedidoVentaLineaDto.pedidoVentaLineaId,
+      articuloId: pedidoVentaLineaDto.articuloId,
+      articuloDescription: pedidoVentaLineaDto.articuloDescription,
+      clienteId: clienteId,
+      nombreCliente: nombreCliente,
+      cantidad: pedidoVentaLineaDto.cantidad,
+      precioDivisa: pedidoVentaLineaDto.precioDivisa,
+      tipoPrecio: pedidoVentaLineaDto.tipoPrecio,
+      descuento1: pedidoVentaLineaDto.descuento1,
+      descuento2: pedidoVentaLineaDto.descuento2,
+      descuento3: pedidoVentaLineaDto.descuento3,
+      lastUpdated: pedidoVentaLineaDto.lastUpdated,
+      deleted: pedidoVentaLineaDto.deleted,
+    );
   }
 }

@@ -8,8 +8,8 @@ part 'cliente_ventas_articulo_controller.g.dart';
 
 final clienteVentasArticuloSearchQueryStateProvider =
     StateProvider.autoDispose<String>((ref) {
-  return '';
-});
+      return '';
+    });
 
 @riverpod
 class ClienteVentasArticuloIndexScreenPaginatedController
@@ -18,8 +18,11 @@ class ClienteVentasArticuloIndexScreenPaginatedController
 
   @override
   Future<List<ClienteVentasArticulo>> build({required String clienteId}) {
-    return ref.read(clienteRepositoryProvider).getClienteVentasArticuloList(
-        clienteId: clienteId,
-        searchText: ref.watch(clienteVentasArticuloSearchQueryStateProvider));
+    return ref
+        .read(clienteRepositoryProvider)
+        .getClienteVentasArticuloList(
+          clienteId: clienteId,
+          searchText: ref.watch(clienteVentasArticuloSearchQueryStateProvider),
+        );
   }
 }

@@ -35,11 +35,12 @@ class SectorDTO with _$SectorDTO implements Insertable<SectorDTO> {
 
   Sector toDomain() {
     return Sector(
-        id: id,
-        isAlta: altaSN == 'S',
-        descripcion: getDescriptionInLocalLanguage(),
-        lastUpdate: lastUpdated,
-        deleted: (deleted == 'S') ? true : false);
+      id: id,
+      isAlta: altaSN == 'S',
+      descripcion: getDescriptionInLocalLanguage(),
+      lastUpdate: lastUpdated,
+      deleted: (deleted == 'S') ? true : false,
+    );
   }
 
   String getDescriptionInLocalLanguage() {

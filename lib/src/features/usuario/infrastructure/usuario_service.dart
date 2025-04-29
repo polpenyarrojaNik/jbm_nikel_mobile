@@ -77,8 +77,9 @@ class UsuarioService {
 
       try {
         if (storedCredentials != null && storedCredentials.canRefresh) {
-          final refreshedUsuarioDTO =
-              await _remoteUsuarioRepository.refresh(storedCredentials);
+          final refreshedUsuarioDTO = await _remoteUsuarioRepository.refresh(
+            storedCredentials,
+          );
           await _localUsuarioRepository.save(refreshedUsuarioDTO);
           return refreshedUsuarioDTO.toDomain();
         }
@@ -100,8 +101,9 @@ class UsuarioService {
       final storedCredentials = await _localUsuarioRepository.read();
 
       if (storedCredentials != null) {
-        final userDto =
-            await _remoteUsuarioRepository.remoteSyncUser(storedCredentials);
+        final userDto = await _remoteUsuarioRepository.remoteSyncUser(
+          storedCredentials,
+        );
 
         final packageInfo = await PackageInfo.fromPlatform();
         final deviceInfoPlugin = DeviceInfoPlugin();

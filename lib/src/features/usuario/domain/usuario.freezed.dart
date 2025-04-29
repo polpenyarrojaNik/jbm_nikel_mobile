@@ -12,7 +12,8 @@ part of 'usuario.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$Usuario {
@@ -43,22 +44,23 @@ abstract class $UsuarioCopyWith<$Res> {
   factory $UsuarioCopyWith(Usuario value, $Res Function(Usuario) then) =
       _$UsuarioCopyWithImpl<$Res, Usuario>;
   @useResult
-  $Res call(
-      {String id,
-      String usuario,
-      String contrasenya,
-      String? nombreUsuario,
-      String? refreshToken,
-      String provisionalToken,
-      bool test,
-      String idiomaId,
-      bool modificarPedido,
-      bool verTotalVentas,
-      double margenComercial,
-      String packageName,
-      String version,
-      String buildNumber,
-      String deviceInfo});
+  $Res call({
+    String id,
+    String usuario,
+    String contrasenya,
+    String? nombreUsuario,
+    String? refreshToken,
+    String provisionalToken,
+    bool test,
+    String idiomaId,
+    bool modificarPedido,
+    bool verTotalVentas,
+    double margenComercial,
+    String packageName,
+    String version,
+    String buildNumber,
+    String deviceInfo,
+  });
 }
 
 /// @nodoc
@@ -92,94 +94,114 @@ class _$UsuarioCopyWithImpl<$Res, $Val extends Usuario>
     Object? buildNumber = null,
     Object? deviceInfo = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      usuario: null == usuario
-          ? _value.usuario
-          : usuario // ignore: cast_nullable_to_non_nullable
-              as String,
-      contrasenya: null == contrasenya
-          ? _value.contrasenya
-          : contrasenya // ignore: cast_nullable_to_non_nullable
-              as String,
-      nombreUsuario: freezed == nombreUsuario
-          ? _value.nombreUsuario
-          : nombreUsuario // ignore: cast_nullable_to_non_nullable
-              as String?,
-      refreshToken: freezed == refreshToken
-          ? _value.refreshToken
-          : refreshToken // ignore: cast_nullable_to_non_nullable
-              as String?,
-      provisionalToken: null == provisionalToken
-          ? _value.provisionalToken
-          : provisionalToken // ignore: cast_nullable_to_non_nullable
-              as String,
-      test: null == test
-          ? _value.test
-          : test // ignore: cast_nullable_to_non_nullable
-              as bool,
-      idiomaId: null == idiomaId
-          ? _value.idiomaId
-          : idiomaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      modificarPedido: null == modificarPedido
-          ? _value.modificarPedido
-          : modificarPedido // ignore: cast_nullable_to_non_nullable
-              as bool,
-      verTotalVentas: null == verTotalVentas
-          ? _value.verTotalVentas
-          : verTotalVentas // ignore: cast_nullable_to_non_nullable
-              as bool,
-      margenComercial: null == margenComercial
-          ? _value.margenComercial
-          : margenComercial // ignore: cast_nullable_to_non_nullable
-              as double,
-      packageName: null == packageName
-          ? _value.packageName
-          : packageName // ignore: cast_nullable_to_non_nullable
-              as String,
-      version: null == version
-          ? _value.version
-          : version // ignore: cast_nullable_to_non_nullable
-              as String,
-      buildNumber: null == buildNumber
-          ? _value.buildNumber
-          : buildNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      deviceInfo: null == deviceInfo
-          ? _value.deviceInfo
-          : deviceInfo // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id:
+                null == id
+                    ? _value.id
+                    : id // ignore: cast_nullable_to_non_nullable
+                        as String,
+            usuario:
+                null == usuario
+                    ? _value.usuario
+                    : usuario // ignore: cast_nullable_to_non_nullable
+                        as String,
+            contrasenya:
+                null == contrasenya
+                    ? _value.contrasenya
+                    : contrasenya // ignore: cast_nullable_to_non_nullable
+                        as String,
+            nombreUsuario:
+                freezed == nombreUsuario
+                    ? _value.nombreUsuario
+                    : nombreUsuario // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            refreshToken:
+                freezed == refreshToken
+                    ? _value.refreshToken
+                    : refreshToken // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            provisionalToken:
+                null == provisionalToken
+                    ? _value.provisionalToken
+                    : provisionalToken // ignore: cast_nullable_to_non_nullable
+                        as String,
+            test:
+                null == test
+                    ? _value.test
+                    : test // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            idiomaId:
+                null == idiomaId
+                    ? _value.idiomaId
+                    : idiomaId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            modificarPedido:
+                null == modificarPedido
+                    ? _value.modificarPedido
+                    : modificarPedido // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            verTotalVentas:
+                null == verTotalVentas
+                    ? _value.verTotalVentas
+                    : verTotalVentas // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            margenComercial:
+                null == margenComercial
+                    ? _value.margenComercial
+                    : margenComercial // ignore: cast_nullable_to_non_nullable
+                        as double,
+            packageName:
+                null == packageName
+                    ? _value.packageName
+                    : packageName // ignore: cast_nullable_to_non_nullable
+                        as String,
+            version:
+                null == version
+                    ? _value.version
+                    : version // ignore: cast_nullable_to_non_nullable
+                        as String,
+            buildNumber:
+                null == buildNumber
+                    ? _value.buildNumber
+                    : buildNumber // ignore: cast_nullable_to_non_nullable
+                        as String,
+            deviceInfo:
+                null == deviceInfo
+                    ? _value.deviceInfo
+                    : deviceInfo // ignore: cast_nullable_to_non_nullable
+                        as String,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$UsuarioImplCopyWith<$Res> implements $UsuarioCopyWith<$Res> {
   factory _$$UsuarioImplCopyWith(
-          _$UsuarioImpl value, $Res Function(_$UsuarioImpl) then) =
-      __$$UsuarioImplCopyWithImpl<$Res>;
+    _$UsuarioImpl value,
+    $Res Function(_$UsuarioImpl) then,
+  ) = __$$UsuarioImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String usuario,
-      String contrasenya,
-      String? nombreUsuario,
-      String? refreshToken,
-      String provisionalToken,
-      bool test,
-      String idiomaId,
-      bool modificarPedido,
-      bool verTotalVentas,
-      double margenComercial,
-      String packageName,
-      String version,
-      String buildNumber,
-      String deviceInfo});
+  $Res call({
+    String id,
+    String usuario,
+    String contrasenya,
+    String? nombreUsuario,
+    String? refreshToken,
+    String provisionalToken,
+    bool test,
+    String idiomaId,
+    bool modificarPedido,
+    bool verTotalVentas,
+    double margenComercial,
+    String packageName,
+    String version,
+    String buildNumber,
+    String deviceInfo,
+  });
 }
 
 /// @nodoc
@@ -187,8 +209,9 @@ class __$$UsuarioImplCopyWithImpl<$Res>
     extends _$UsuarioCopyWithImpl<$Res, _$UsuarioImpl>
     implements _$$UsuarioImplCopyWith<$Res> {
   __$$UsuarioImplCopyWithImpl(
-      _$UsuarioImpl _value, $Res Function(_$UsuarioImpl) _then)
-      : super(_value, _then);
+    _$UsuarioImpl _value,
+    $Res Function(_$UsuarioImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of Usuario
   /// with the given fields replaced by the non-null parameter values.
@@ -211,91 +234,108 @@ class __$$UsuarioImplCopyWithImpl<$Res>
     Object? buildNumber = null,
     Object? deviceInfo = null,
   }) {
-    return _then(_$UsuarioImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      usuario: null == usuario
-          ? _value.usuario
-          : usuario // ignore: cast_nullable_to_non_nullable
-              as String,
-      contrasenya: null == contrasenya
-          ? _value.contrasenya
-          : contrasenya // ignore: cast_nullable_to_non_nullable
-              as String,
-      nombreUsuario: freezed == nombreUsuario
-          ? _value.nombreUsuario
-          : nombreUsuario // ignore: cast_nullable_to_non_nullable
-              as String?,
-      refreshToken: freezed == refreshToken
-          ? _value.refreshToken
-          : refreshToken // ignore: cast_nullable_to_non_nullable
-              as String?,
-      provisionalToken: null == provisionalToken
-          ? _value.provisionalToken
-          : provisionalToken // ignore: cast_nullable_to_non_nullable
-              as String,
-      test: null == test
-          ? _value.test
-          : test // ignore: cast_nullable_to_non_nullable
-              as bool,
-      idiomaId: null == idiomaId
-          ? _value.idiomaId
-          : idiomaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      modificarPedido: null == modificarPedido
-          ? _value.modificarPedido
-          : modificarPedido // ignore: cast_nullable_to_non_nullable
-              as bool,
-      verTotalVentas: null == verTotalVentas
-          ? _value.verTotalVentas
-          : verTotalVentas // ignore: cast_nullable_to_non_nullable
-              as bool,
-      margenComercial: null == margenComercial
-          ? _value.margenComercial
-          : margenComercial // ignore: cast_nullable_to_non_nullable
-              as double,
-      packageName: null == packageName
-          ? _value.packageName
-          : packageName // ignore: cast_nullable_to_non_nullable
-              as String,
-      version: null == version
-          ? _value.version
-          : version // ignore: cast_nullable_to_non_nullable
-              as String,
-      buildNumber: null == buildNumber
-          ? _value.buildNumber
-          : buildNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      deviceInfo: null == deviceInfo
-          ? _value.deviceInfo
-          : deviceInfo // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$UsuarioImpl(
+        id:
+            null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                    as String,
+        usuario:
+            null == usuario
+                ? _value.usuario
+                : usuario // ignore: cast_nullable_to_non_nullable
+                    as String,
+        contrasenya:
+            null == contrasenya
+                ? _value.contrasenya
+                : contrasenya // ignore: cast_nullable_to_non_nullable
+                    as String,
+        nombreUsuario:
+            freezed == nombreUsuario
+                ? _value.nombreUsuario
+                : nombreUsuario // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        refreshToken:
+            freezed == refreshToken
+                ? _value.refreshToken
+                : refreshToken // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        provisionalToken:
+            null == provisionalToken
+                ? _value.provisionalToken
+                : provisionalToken // ignore: cast_nullable_to_non_nullable
+                    as String,
+        test:
+            null == test
+                ? _value.test
+                : test // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        idiomaId:
+            null == idiomaId
+                ? _value.idiomaId
+                : idiomaId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        modificarPedido:
+            null == modificarPedido
+                ? _value.modificarPedido
+                : modificarPedido // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        verTotalVentas:
+            null == verTotalVentas
+                ? _value.verTotalVentas
+                : verTotalVentas // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        margenComercial:
+            null == margenComercial
+                ? _value.margenComercial
+                : margenComercial // ignore: cast_nullable_to_non_nullable
+                    as double,
+        packageName:
+            null == packageName
+                ? _value.packageName
+                : packageName // ignore: cast_nullable_to_non_nullable
+                    as String,
+        version:
+            null == version
+                ? _value.version
+                : version // ignore: cast_nullable_to_non_nullable
+                    as String,
+        buildNumber:
+            null == buildNumber
+                ? _value.buildNumber
+                : buildNumber // ignore: cast_nullable_to_non_nullable
+                    as String,
+        deviceInfo:
+            null == deviceInfo
+                ? _value.deviceInfo
+                : deviceInfo // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$UsuarioImpl extends _Usuario {
-  const _$UsuarioImpl(
-      {required this.id,
-      required this.usuario,
-      required this.contrasenya,
-      this.nombreUsuario,
-      this.refreshToken,
-      required this.provisionalToken,
-      required this.test,
-      required this.idiomaId,
-      required this.modificarPedido,
-      required this.verTotalVentas,
-      required this.margenComercial,
-      required this.packageName,
-      required this.version,
-      required this.buildNumber,
-      required this.deviceInfo})
-      : super._();
+  const _$UsuarioImpl({
+    required this.id,
+    required this.usuario,
+    required this.contrasenya,
+    this.nombreUsuario,
+    this.refreshToken,
+    required this.provisionalToken,
+    required this.test,
+    required this.idiomaId,
+    required this.modificarPedido,
+    required this.verTotalVentas,
+    required this.margenComercial,
+    required this.packageName,
+    required this.version,
+    required this.buildNumber,
+    required this.deviceInfo,
+  }) : super._();
 
   @override
   final String id;
@@ -368,22 +408,23 @@ class _$UsuarioImpl extends _Usuario {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      usuario,
-      contrasenya,
-      nombreUsuario,
-      refreshToken,
-      provisionalToken,
-      test,
-      idiomaId,
-      modificarPedido,
-      verTotalVentas,
-      margenComercial,
-      packageName,
-      version,
-      buildNumber,
-      deviceInfo);
+    runtimeType,
+    id,
+    usuario,
+    contrasenya,
+    nombreUsuario,
+    refreshToken,
+    provisionalToken,
+    test,
+    idiomaId,
+    modificarPedido,
+    verTotalVentas,
+    margenComercial,
+    packageName,
+    version,
+    buildNumber,
+    deviceInfo,
+  );
 
   /// Create a copy of Usuario
   /// with the given fields replaced by the non-null parameter values.
@@ -395,22 +436,23 @@ class _$UsuarioImpl extends _Usuario {
 }
 
 abstract class _Usuario extends Usuario {
-  const factory _Usuario(
-      {required final String id,
-      required final String usuario,
-      required final String contrasenya,
-      final String? nombreUsuario,
-      final String? refreshToken,
-      required final String provisionalToken,
-      required final bool test,
-      required final String idiomaId,
-      required final bool modificarPedido,
-      required final bool verTotalVentas,
-      required final double margenComercial,
-      required final String packageName,
-      required final String version,
-      required final String buildNumber,
-      required final String deviceInfo}) = _$UsuarioImpl;
+  const factory _Usuario({
+    required final String id,
+    required final String usuario,
+    required final String contrasenya,
+    final String? nombreUsuario,
+    final String? refreshToken,
+    required final String provisionalToken,
+    required final bool test,
+    required final String idiomaId,
+    required final bool modificarPedido,
+    required final bool verTotalVentas,
+    required final double margenComercial,
+    required final String packageName,
+    required final String version,
+    required final String buildNumber,
+    required final String deviceInfo,
+  }) = _$UsuarioImpl;
   const _Usuario._() : super._();
 
   @override

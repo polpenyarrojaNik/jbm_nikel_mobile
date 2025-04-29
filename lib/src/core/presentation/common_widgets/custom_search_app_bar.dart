@@ -8,14 +8,15 @@ import 'icon_menu_badge.dart';
 
 class CustomSearchAppBar extends ConsumerStatefulWidget
     implements PreferredSizeWidget {
-  const CustomSearchAppBar(
-      {super.key,
-      required this.title,
-      this.scaffoldKey,
-      required this.searchTitle,
-      required this.isSearchingFirst,
-      required this.onChanged,
-      this.actionButtons});
+  const CustomSearchAppBar({
+    super.key,
+    required this.title,
+    this.scaffoldKey,
+    required this.searchTitle,
+    required this.isSearchingFirst,
+    required this.onChanged,
+    this.actionButtons,
+  });
 
   final String title;
   final GlobalKey<ScaffoldState>? scaffoldKey;
@@ -59,39 +60,42 @@ class _CustomSearchAppBarState extends ConsumerState<CustomSearchAppBar> {
     final state = ref.watch(packageInfoProvider);
 
     return AppBar(
-      leading: !widget.isSearchingFirst && widget.scaffoldKey != null
-          ? IconMenuBadge(widget.scaffoldKey!)
-          : null,
-      title: (isSearching)
-          ? SearchListTile(
-              searchTitle: widget.searchTitle,
-              onChanged: widget.onChanged,
-              focusNode: focusNode,
-            )
-          : Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(widget.title),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    state.maybeWhen(
-                      orElse: () => Container(),
-                      data: (packageInfo) => Text(
-                        packageInfo.version,
+      leading:
+          !widget.isSearchingFirst && widget.scaffoldKey != null
+              ? IconMenuBadge(widget.scaffoldKey!)
+              : null,
+      title:
+          (isSearching)
+              ? SearchListTile(
+                searchTitle: widget.searchTitle,
+                onChanged: widget.onChanged,
+                focusNode: focusNode,
+              )
+              : Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(widget.title),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      state.maybeWhen(
+                        orElse: () => Container(),
+                        data:
+                            (packageInfo) => Text(
+                              packageInfo.version,
+                              style: Theme.of(context).textTheme.bodySmall,
+                            ),
+                      ),
+                      gapW8,
+                      Text(
+                        ref.watch(usuarioNotifierProvider)!.id,
                         style: Theme.of(context).textTheme.bodySmall,
                       ),
-                    ),
-                    gapW8,
-                    Text(
-                      ref.watch(usuarioNotifierProvider)!.id,
-                      style: Theme.of(context).textTheme.bodySmall,
-                    )
-                  ],
-                )
-              ],
-            ),
+                    ],
+                  ),
+                ],
+              ),
       actions: getListActionButtons(widget.actionButtons),
     );
   }
@@ -108,8 +112,9 @@ class _CustomSearchAppBarState extends ConsumerState<CustomSearchAppBar> {
 
   List<IconButton> getListActionButtons(List<IconButton>? actionButtons) {
     final searchIconButton = IconButton(
-        onPressed: () => changeSearchValue(),
-        icon: (isSearching) ? searchIcon : icon);
+      onPressed: () => changeSearchValue(),
+      icon: (isSearching) ? searchIcon : icon,
+    );
 
     if (actionButtons != null) {
       final buttons = <IconButton>[searchIconButton];
@@ -124,11 +129,12 @@ class _CustomSearchAppBarState extends ConsumerState<CustomSearchAppBar> {
 }
 
 class SearchListTile extends ConsumerWidget {
-  const SearchListTile(
-      {super.key,
-      required this.searchTitle,
-      required this.onChanged,
-      required this.focusNode});
+  const SearchListTile({
+    super.key,
+    required this.searchTitle,
+    required this.onChanged,
+    required this.focusNode,
+  });
 
   final String searchTitle;
   final Function(String searchText) onChanged;
@@ -143,10 +149,7 @@ class SearchListTile extends ConsumerWidget {
         autocorrect: false,
         decoration: InputDecoration(
           hintText: searchTitle,
-          hintStyle: const TextStyle(
-            fontSize: 18,
-            fontStyle: FontStyle.italic,
-          ),
+          hintStyle: const TextStyle(fontSize: 18, fontStyle: FontStyle.italic),
           border: InputBorder.none,
         ),
         onChanged: (value) => onChanged(value),

@@ -8,8 +8,8 @@ part 'cliente_ultimos_precios_search_controller.g.dart';
 
 final clienteUltimosPreciosSearchQueryStateProvider =
     StateProvider.autoDispose<String>((ref) {
-  return '';
-});
+      return '';
+    });
 
 @riverpod
 class ClienteUltimosPreciosIndexScreenController
@@ -21,9 +21,9 @@ class ClienteUltimosPreciosIndexScreenController
     return ref
         .read(clienteRepositoryProvider)
         .getClienteUltimosPreciosCountList(
-            clienteId: clienteId,
-            searchText:
-                ref.watch(clienteUltimosPreciosSearchQueryStateProvider));
+          clienteId: clienteId,
+          searchText: ref.watch(clienteUltimosPreciosSearchQueryStateProvider),
+        );
   }
 }
 
@@ -33,11 +33,16 @@ class ClienteUltimosPreciosIndexScreenPaginatedController
   ClienteUltimosPreciosIndexScreenPaginatedController();
 
   @override
-  Future<List<EstadisticasUltimosPrecios>> build(
-      {required int page, required String clienteId}) {
-    return ref.read(clienteRepositoryProvider).getClienteUltimosPreciosList(
-        clienteId: clienteId,
-        page: page,
-        searchText: ref.watch(clienteUltimosPreciosSearchQueryStateProvider));
+  Future<List<EstadisticasUltimosPrecios>> build({
+    required int page,
+    required String clienteId,
+  }) {
+    return ref
+        .read(clienteRepositoryProvider)
+        .getClienteUltimosPreciosList(
+          clienteId: clienteId,
+          page: page,
+          searchText: ref.watch(clienteUltimosPreciosSearchQueryStateProvider),
+        );
   }
 }

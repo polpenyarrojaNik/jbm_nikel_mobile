@@ -14,8 +14,11 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 
 @RoutePage()
 class ArticuloComponentePage extends ConsumerWidget {
-  const ArticuloComponentePage(
-      {super.key, required this.articuloId, required this.description});
+  const ArticuloComponentePage({
+    super.key,
+    required this.articuloId,
+    required this.description,
+  });
 
   final String articuloId;
   final String description;
@@ -29,32 +32,25 @@ class ArticuloComponentePage extends ConsumerWidget {
       ),
       body: Column(
         children: [
-          HeaderDatosRelacionados(
-            entityId: articuloId,
-            subtitle: description,
-          ),
+          HeaderDatosRelacionados(entityId: articuloId, subtitle: description),
           gapH8,
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
-            error: (e, st) => ErrorMessageWidget(
-              e.toString(),
-            ),
-            data: (articuloComponenteList) =>
-                (articuloComponenteList.isNotEmpty)
-                    ? Expanded(
-                        child: ListView.separated(
-                          separatorBuilder: (context, i) => const Divider(),
-                          itemBuilder: (context, i) => ArticuloComponenteTile(
-                            articuloComponente: articuloComponenteList[i],
+            error: (e, st) => ErrorMessageWidget(e.toString()),
+            data:
+                (articuloComponenteList) =>
+                    (articuloComponenteList.isNotEmpty)
+                        ? Expanded(
+                          child: ListView.separated(
+                            separatorBuilder: (context, i) => const Divider(),
+                            itemBuilder:
+                                (context, i) => ArticuloComponenteTile(
+                                  articuloComponente: articuloComponenteList[i],
+                                ),
+                            itemCount: articuloComponenteList.length,
                           ),
-                          itemCount: articuloComponenteList.length,
-                        ),
-                      )
-                    : Column(
-                        children: [
-                          Text(S.of(context).sinResultados),
-                        ],
-                      ),
+                        )
+                        : Column(children: [Text(S.of(context).sinResultados)]),
           ),
         ],
       ),
@@ -77,16 +73,23 @@ class ArticuloComponenteTile extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(articuloComponente.articuloComponenteId,
-                  style: Theme.of(context).textTheme.titleSmall),
               Text(
-                  '${numberFormatCantidades(articuloComponente.cantidad)} ${S.of(context).unidad}',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Theme.of(context).textTheme.bodySmall?.color)),
+                articuloComponente.articuloComponenteId,
+                style: Theme.of(context).textTheme.titleSmall,
+              ),
+              Text(
+                '${numberFormatCantidades(articuloComponente.cantidad)} ${S.of(context).unidad}',
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: Theme.of(context).textTheme.bodySmall?.color,
+                ),
+              ),
             ],
           ),
-          Text(getDescriptionArticuloComponenteInLocalLanguage(
-              articulo: articuloComponente)),
+          Text(
+            getDescriptionArticuloComponenteInLocalLanguage(
+              articulo: articuloComponente,
+            ),
+          ),
         ],
       ),
     );

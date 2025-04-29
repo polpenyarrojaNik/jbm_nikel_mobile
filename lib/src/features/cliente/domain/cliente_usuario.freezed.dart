@@ -12,7 +12,8 @@ part of 'cliente_usuario.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ClienteUsuario {
@@ -31,11 +32,16 @@ mixin _$ClienteUsuario {
 /// @nodoc
 abstract class $ClienteUsuarioCopyWith<$Res> {
   factory $ClienteUsuarioCopyWith(
-          ClienteUsuario value, $Res Function(ClienteUsuario) then) =
-      _$ClienteUsuarioCopyWithImpl<$Res, ClienteUsuario>;
+    ClienteUsuario value,
+    $Res Function(ClienteUsuario) then,
+  ) = _$ClienteUsuarioCopyWithImpl<$Res, ClienteUsuario>;
   @useResult
-  $Res call(
-      {String clienteId, String usuarioId, DateTime lastUpdated, bool deleted});
+  $Res call({
+    String clienteId,
+    String usuarioId,
+    DateTime lastUpdated,
+    bool deleted,
+  });
 }
 
 /// @nodoc
@@ -58,37 +64,49 @@ class _$ClienteUsuarioCopyWithImpl<$Res, $Val extends ClienteUsuario>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_value.copyWith(
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      usuarioId: null == usuarioId
-          ? _value.usuarioId
-          : usuarioId // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            clienteId:
+                null == clienteId
+                    ? _value.clienteId
+                    : clienteId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            usuarioId:
+                null == usuarioId
+                    ? _value.usuarioId
+                    : usuarioId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            lastUpdated:
+                null == lastUpdated
+                    ? _value.lastUpdated
+                    : lastUpdated // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            deleted:
+                null == deleted
+                    ? _value.deleted
+                    : deleted // ignore: cast_nullable_to_non_nullable
+                        as bool,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$ClienteUsuarioImplCopyWith<$Res>
     implements $ClienteUsuarioCopyWith<$Res> {
-  factory _$$ClienteUsuarioImplCopyWith(_$ClienteUsuarioImpl value,
-          $Res Function(_$ClienteUsuarioImpl) then) =
-      __$$ClienteUsuarioImplCopyWithImpl<$Res>;
+  factory _$$ClienteUsuarioImplCopyWith(
+    _$ClienteUsuarioImpl value,
+    $Res Function(_$ClienteUsuarioImpl) then,
+  ) = __$$ClienteUsuarioImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String clienteId, String usuarioId, DateTime lastUpdated, bool deleted});
+  $Res call({
+    String clienteId,
+    String usuarioId,
+    DateTime lastUpdated,
+    bool deleted,
+  });
 }
 
 /// @nodoc
@@ -96,8 +114,9 @@ class __$$ClienteUsuarioImplCopyWithImpl<$Res>
     extends _$ClienteUsuarioCopyWithImpl<$Res, _$ClienteUsuarioImpl>
     implements _$$ClienteUsuarioImplCopyWith<$Res> {
   __$$ClienteUsuarioImplCopyWithImpl(
-      _$ClienteUsuarioImpl _value, $Res Function(_$ClienteUsuarioImpl) _then)
-      : super(_value, _then);
+    _$ClienteUsuarioImpl _value,
+    $Res Function(_$ClienteUsuarioImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ClienteUsuario
   /// with the given fields replaced by the non-null parameter values.
@@ -109,36 +128,42 @@ class __$$ClienteUsuarioImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$ClienteUsuarioImpl(
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      usuarioId: null == usuarioId
-          ? _value.usuarioId
-          : usuarioId // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$ClienteUsuarioImpl(
+        clienteId:
+            null == clienteId
+                ? _value.clienteId
+                : clienteId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        usuarioId:
+            null == usuarioId
+                ? _value.usuarioId
+                : usuarioId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        lastUpdated:
+            null == lastUpdated
+                ? _value.lastUpdated
+                : lastUpdated // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        deleted:
+            null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                    as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ClienteUsuarioImpl extends _ClienteUsuario {
-  const _$ClienteUsuarioImpl(
-      {required this.clienteId,
-      required this.usuarioId,
-      required this.lastUpdated,
-      required this.deleted})
-      : super._();
+  const _$ClienteUsuarioImpl({
+    required this.clienteId,
+    required this.usuarioId,
+    required this.lastUpdated,
+    required this.deleted,
+  }) : super._();
 
   @override
   final String clienteId;
@@ -179,15 +204,18 @@ class _$ClienteUsuarioImpl extends _ClienteUsuario {
   @pragma('vm:prefer-inline')
   _$$ClienteUsuarioImplCopyWith<_$ClienteUsuarioImpl> get copyWith =>
       __$$ClienteUsuarioImplCopyWithImpl<_$ClienteUsuarioImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _ClienteUsuario extends ClienteUsuario {
-  const factory _ClienteUsuario(
-      {required final String clienteId,
-      required final String usuarioId,
-      required final DateTime lastUpdated,
-      required final bool deleted}) = _$ClienteUsuarioImpl;
+  const factory _ClienteUsuario({
+    required final String clienteId,
+    required final String usuarioId,
+    required final DateTime lastUpdated,
+    required final bool deleted,
+  }) = _$ClienteUsuarioImpl;
   const _ClienteUsuario._() : super._();
 
   @override

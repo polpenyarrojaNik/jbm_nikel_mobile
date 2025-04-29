@@ -12,7 +12,8 @@ part of 'sync_notifier_provider.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$SyncControllerState {
@@ -22,16 +23,14 @@ mixin _$SyncControllerState {
     required TResult Function() synchronizing,
     required TResult Function() synchronized,
     required TResult Function(Object error, StackTrace? stackTrace) error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? synchronizing,
     TResult? Function()? synchronized,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
@@ -39,24 +38,21 @@ mixin _$SyncControllerState {
     TResult Function()? synchronized,
     TResult Function(Object error, StackTrace? stackTrace)? error,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_initial value) initial,
     required TResult Function(_shinchronizing value) synchronizing,
     required TResult Function(_synchronized value) synchronized,
     required TResult Function(_error value) error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_initial value)? initial,
     TResult? Function(_shinchronizing value)? synchronizing,
     TResult? Function(_synchronized value)? synchronized,
     TResult? Function(_error value)? error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_initial value)? initial,
@@ -64,15 +60,15 @@ mixin _$SyncControllerState {
     TResult Function(_synchronized value)? synchronized,
     TResult Function(_error value)? error,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SyncControllerStateCopyWith<$Res> {
   factory $SyncControllerStateCopyWith(
-          SyncControllerState value, $Res Function(SyncControllerState) then) =
-      _$SyncControllerStateCopyWithImpl<$Res, SyncControllerState>;
+    SyncControllerState value,
+    $Res Function(SyncControllerState) then,
+  ) = _$SyncControllerStateCopyWithImpl<$Res, SyncControllerState>;
 }
 
 /// @nodoc
@@ -92,8 +88,9 @@ class _$SyncControllerStateCopyWithImpl<$Res, $Val extends SyncControllerState>
 /// @nodoc
 abstract class _$$initialImplCopyWith<$Res> {
   factory _$$initialImplCopyWith(
-          _$initialImpl value, $Res Function(_$initialImpl) then) =
-      __$$initialImplCopyWithImpl<$Res>;
+    _$initialImpl value,
+    $Res Function(_$initialImpl) then,
+  ) = __$$initialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -101,8 +98,9 @@ class __$$initialImplCopyWithImpl<$Res>
     extends _$SyncControllerStateCopyWithImpl<$Res, _$initialImpl>
     implements _$$initialImplCopyWith<$Res> {
   __$$initialImplCopyWithImpl(
-      _$initialImpl _value, $Res Function(_$initialImpl) _then)
-      : super(_value, _then);
+    _$initialImpl _value,
+    $Res Function(_$initialImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SyncControllerState
   /// with the given fields replaced by the non-null parameter values.
@@ -215,9 +213,10 @@ abstract class _initial extends SyncControllerState {
 
 /// @nodoc
 abstract class _$$shinchronizingImplCopyWith<$Res> {
-  factory _$$shinchronizingImplCopyWith(_$shinchronizingImpl value,
-          $Res Function(_$shinchronizingImpl) then) =
-      __$$shinchronizingImplCopyWithImpl<$Res>;
+  factory _$$shinchronizingImplCopyWith(
+    _$shinchronizingImpl value,
+    $Res Function(_$shinchronizingImpl) then,
+  ) = __$$shinchronizingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -225,8 +224,9 @@ class __$$shinchronizingImplCopyWithImpl<$Res>
     extends _$SyncControllerStateCopyWithImpl<$Res, _$shinchronizingImpl>
     implements _$$shinchronizingImplCopyWith<$Res> {
   __$$shinchronizingImplCopyWithImpl(
-      _$shinchronizingImpl _value, $Res Function(_$shinchronizingImpl) _then)
-      : super(_value, _then);
+    _$shinchronizingImpl _value,
+    $Res Function(_$shinchronizingImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SyncControllerState
   /// with the given fields replaced by the non-null parameter values.
@@ -246,8 +246,9 @@ class _$shinchronizingImpl extends _shinchronizing
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-        .add(DiagnosticsProperty('type', 'SyncControllerState.synchronizing'));
+    properties.add(
+      DiagnosticsProperty('type', 'SyncControllerState.synchronizing'),
+    );
   }
 
   @override
@@ -342,8 +343,9 @@ abstract class _shinchronizing extends SyncControllerState {
 /// @nodoc
 abstract class _$$synchronizedImplCopyWith<$Res> {
   factory _$$synchronizedImplCopyWith(
-          _$synchronizedImpl value, $Res Function(_$synchronizedImpl) then) =
-      __$$synchronizedImplCopyWithImpl<$Res>;
+    _$synchronizedImpl value,
+    $Res Function(_$synchronizedImpl) then,
+  ) = __$$synchronizedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -351,8 +353,9 @@ class __$$synchronizedImplCopyWithImpl<$Res>
     extends _$SyncControllerStateCopyWithImpl<$Res, _$synchronizedImpl>
     implements _$$synchronizedImplCopyWith<$Res> {
   __$$synchronizedImplCopyWithImpl(
-      _$synchronizedImpl _value, $Res Function(_$synchronizedImpl) _then)
-      : super(_value, _then);
+    _$synchronizedImpl _value,
+    $Res Function(_$synchronizedImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SyncControllerState
   /// with the given fields replaced by the non-null parameter values.
@@ -371,8 +374,9 @@ class _$synchronizedImpl extends _synchronized with DiagnosticableTreeMixin {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-        .add(DiagnosticsProperty('type', 'SyncControllerState.synchronized'));
+    properties.add(
+      DiagnosticsProperty('type', 'SyncControllerState.synchronized'),
+    );
   }
 
   @override
@@ -467,8 +471,9 @@ abstract class _synchronized extends SyncControllerState {
 /// @nodoc
 abstract class _$$errorImplCopyWith<$Res> {
   factory _$$errorImplCopyWith(
-          _$errorImpl value, $Res Function(_$errorImpl) then) =
-      __$$errorImplCopyWithImpl<$Res>;
+    _$errorImpl value,
+    $Res Function(_$errorImpl) then,
+  ) = __$$errorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Object error, StackTrace? stackTrace});
 }
@@ -478,24 +483,25 @@ class __$$errorImplCopyWithImpl<$Res>
     extends _$SyncControllerStateCopyWithImpl<$Res, _$errorImpl>
     implements _$$errorImplCopyWith<$Res> {
   __$$errorImplCopyWithImpl(
-      _$errorImpl _value, $Res Function(_$errorImpl) _then)
-      : super(_value, _then);
+    _$errorImpl _value,
+    $Res Function(_$errorImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SyncControllerState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? error = null,
-    Object? stackTrace = freezed,
-  }) {
-    return _then(_$errorImpl(
-      null == error ? _value.error : error,
-      stackTrace: freezed == stackTrace
-          ? _value.stackTrace
-          : stackTrace // ignore: cast_nullable_to_non_nullable
-              as StackTrace?,
-    ));
+  $Res call({Object? error = null, Object? stackTrace = freezed}) {
+    return _then(
+      _$errorImpl(
+        null == error ? _value.error : error,
+        stackTrace:
+            freezed == stackTrace
+                ? _value.stackTrace
+                : stackTrace // ignore: cast_nullable_to_non_nullable
+                    as StackTrace?,
+      ),
+    );
   }
 }
 
@@ -535,7 +541,10 @@ class _$errorImpl extends _error with DiagnosticableTreeMixin {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(error), stackTrace);
+    runtimeType,
+    const DeepCollectionEquality().hash(error),
+    stackTrace,
+  );
 
   /// Create a copy of SyncControllerState
   /// with the given fields replaced by the non-null parameter values.

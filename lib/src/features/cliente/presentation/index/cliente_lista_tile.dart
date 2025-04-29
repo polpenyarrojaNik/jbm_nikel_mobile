@@ -32,9 +32,10 @@ class ClienteListaTile extends StatelessWidget {
               if (cliente.clientePotencial ?? false)
                 ChipContainer(
                   text: getClienteEstadoPotencialInLocalLanguage(
-                      estadoPotencial: cliente.clienteEstadoPotencial),
+                    estadoPotencial: cliente.clienteEstadoPotencial,
+                  ),
                   color: Theme.of(context).colorScheme.errorContainer,
-                )
+                ),
             ],
           ),
           if (!isSameName(cliente))
@@ -47,7 +48,7 @@ class ClienteListaTile extends StatelessWidget {
             poblacion: cliente.poblacionPredeterminada,
             provincia: cliente.provinciaPredeterminada,
             pais: cliente.paisPredeterminada,
-          )
+          ),
         ],
       ),
     );

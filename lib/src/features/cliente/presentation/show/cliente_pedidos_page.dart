@@ -13,8 +13,11 @@ import '../../infrastructure/cliente_repository.dart';
 
 @RoutePage()
 class ClientePedidosPage extends ConsumerWidget {
-  const ClientePedidosPage(
-      {super.key, required this.clienteId, required this.nombreCliente});
+  const ClientePedidosPage({
+    super.key,
+    required this.clienteId,
+    required this.nombreCliente,
+  });
 
   final String clienteId;
   final String? nombreCliente;
@@ -36,38 +39,45 @@ class ClientePedidosPage extends ConsumerWidget {
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data: (clientePedidoVentaList) => (clientePedidoVentaList
-                    .isNotEmpty)
-                ? Expanded(
-                    child: ListView.separated(
-                      itemBuilder: (context, i) => Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                        child: PedidoVentaListaTile(
-                          pedidoVenta: clientePedidoVentaList[i],
-                          onTap: () => navigateToPedidoVentaDetalle(
-                              context: context,
-                              pedidoVentaId:
-                                  clientePedidoVentaList[i].pedidoVentaId),
+            data:
+                (clientePedidoVentaList) =>
+                    (clientePedidoVentaList.isNotEmpty)
+                        ? Expanded(
+                          child: ListView.separated(
+                            itemBuilder:
+                                (context, i) => Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 16.0,
+                                  ),
+                                  child: PedidoVentaListaTile(
+                                    pedidoVenta: clientePedidoVentaList[i],
+                                    onTap:
+                                        () => navigateToPedidoVentaDetalle(
+                                          context: context,
+                                          pedidoVentaId:
+                                              clientePedidoVentaList[i]
+                                                  .pedidoVentaId,
+                                        ),
+                                  ),
+                                ),
+                            separatorBuilder: (context, i) => const Divider(),
+                            itemCount: clientePedidoVentaList.length,
+                          ),
+                        )
+                        : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [Text(S.of(context).sinResultados)],
                         ),
-                      ),
-                      separatorBuilder: (context, i) => const Divider(),
-                      itemCount: clientePedidoVentaList.length,
-                    ),
-                  )
-                : Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(S.of(context).sinResultados),
-                    ],
-                  ),
           ),
         ],
       ),
     );
   }
 
-  void navigateToPedidoVentaDetalle(
-      {required BuildContext context, String? pedidoVentaId}) {
+  void navigateToPedidoVentaDetalle({
+    required BuildContext context,
+    String? pedidoVentaId,
+  }) {
     // context.router.push(PedidoVentaDetalleRoute(pedidoLocalParam: Pedid
 
     //  pedidoVentaId));

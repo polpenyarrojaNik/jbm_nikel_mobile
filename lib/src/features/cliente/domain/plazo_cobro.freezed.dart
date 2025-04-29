@@ -12,7 +12,8 @@ part of 'plazo_cobro.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$PlazoDeCobro {
@@ -45,28 +46,30 @@ mixin _$PlazoDeCobro {
 /// @nodoc
 abstract class $PlazoDeCobroCopyWith<$Res> {
   factory $PlazoDeCobroCopyWith(
-          PlazoDeCobro value, $Res Function(PlazoDeCobro) then) =
-      _$PlazoDeCobroCopyWithImpl<$Res, PlazoDeCobro>;
+    PlazoDeCobro value,
+    $Res Function(PlazoDeCobro) then,
+  ) = _$PlazoDeCobroCopyWithImpl<$Res, PlazoDeCobro>;
   @useResult
-  $Res call(
-      {String id,
-      String descripcionES,
-      String? descripcionEN,
-      String? descripcionFR,
-      String? descripcionDE,
-      String? descripcionCA,
-      String? descripcionGB,
-      String? descripcionHU,
-      String? descripcionIT,
-      String? descripcionNL,
-      String? descripcionPL,
-      String? descripcionPT,
-      String? descripcionRO,
-      String? descripcionRU,
-      String? descripcionCN,
-      String? descripcionEL,
-      DateTime lastUpdate,
-      bool deleted});
+  $Res call({
+    String id,
+    String descripcionES,
+    String? descripcionEN,
+    String? descripcionFR,
+    String? descripcionDE,
+    String? descripcionCA,
+    String? descripcionGB,
+    String? descripcionHU,
+    String? descripcionIT,
+    String? descripcionNL,
+    String? descripcionPL,
+    String? descripcionPT,
+    String? descripcionRO,
+    String? descripcionRU,
+    String? descripcionCN,
+    String? descripcionEL,
+    DateTime lastUpdate,
+    bool deleted,
+  });
 }
 
 /// @nodoc
@@ -103,80 +106,101 @@ class _$PlazoDeCobroCopyWithImpl<$Res, $Val extends PlazoDeCobro>
     Object? lastUpdate = null,
     Object? deleted = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcionES: null == descripcionES
-          ? _value.descripcionES
-          : descripcionES // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcionEN: freezed == descripcionEN
-          ? _value.descripcionEN
-          : descripcionEN // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionFR: freezed == descripcionFR
-          ? _value.descripcionFR
-          : descripcionFR // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionDE: freezed == descripcionDE
-          ? _value.descripcionDE
-          : descripcionDE // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionCA: freezed == descripcionCA
-          ? _value.descripcionCA
-          : descripcionCA // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionGB: freezed == descripcionGB
-          ? _value.descripcionGB
-          : descripcionGB // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionHU: freezed == descripcionHU
-          ? _value.descripcionHU
-          : descripcionHU // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionIT: freezed == descripcionIT
-          ? _value.descripcionIT
-          : descripcionIT // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionNL: freezed == descripcionNL
-          ? _value.descripcionNL
-          : descripcionNL // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionPL: freezed == descripcionPL
-          ? _value.descripcionPL
-          : descripcionPL // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionPT: freezed == descripcionPT
-          ? _value.descripcionPT
-          : descripcionPT // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionRO: freezed == descripcionRO
-          ? _value.descripcionRO
-          : descripcionRO // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionRU: freezed == descripcionRU
-          ? _value.descripcionRU
-          : descripcionRU // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionCN: freezed == descripcionCN
-          ? _value.descripcionCN
-          : descripcionCN // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionEL: freezed == descripcionEL
-          ? _value.descripcionEL
-          : descripcionEL // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastUpdate: null == lastUpdate
-          ? _value.lastUpdate
-          : lastUpdate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id:
+                null == id
+                    ? _value.id
+                    : id // ignore: cast_nullable_to_non_nullable
+                        as String,
+            descripcionES:
+                null == descripcionES
+                    ? _value.descripcionES
+                    : descripcionES // ignore: cast_nullable_to_non_nullable
+                        as String,
+            descripcionEN:
+                freezed == descripcionEN
+                    ? _value.descripcionEN
+                    : descripcionEN // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionFR:
+                freezed == descripcionFR
+                    ? _value.descripcionFR
+                    : descripcionFR // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionDE:
+                freezed == descripcionDE
+                    ? _value.descripcionDE
+                    : descripcionDE // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionCA:
+                freezed == descripcionCA
+                    ? _value.descripcionCA
+                    : descripcionCA // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionGB:
+                freezed == descripcionGB
+                    ? _value.descripcionGB
+                    : descripcionGB // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionHU:
+                freezed == descripcionHU
+                    ? _value.descripcionHU
+                    : descripcionHU // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionIT:
+                freezed == descripcionIT
+                    ? _value.descripcionIT
+                    : descripcionIT // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionNL:
+                freezed == descripcionNL
+                    ? _value.descripcionNL
+                    : descripcionNL // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionPL:
+                freezed == descripcionPL
+                    ? _value.descripcionPL
+                    : descripcionPL // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionPT:
+                freezed == descripcionPT
+                    ? _value.descripcionPT
+                    : descripcionPT // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionRO:
+                freezed == descripcionRO
+                    ? _value.descripcionRO
+                    : descripcionRO // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionRU:
+                freezed == descripcionRU
+                    ? _value.descripcionRU
+                    : descripcionRU // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionCN:
+                freezed == descripcionCN
+                    ? _value.descripcionCN
+                    : descripcionCN // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionEL:
+                freezed == descripcionEL
+                    ? _value.descripcionEL
+                    : descripcionEL // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            lastUpdate:
+                null == lastUpdate
+                    ? _value.lastUpdate
+                    : lastUpdate // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            deleted:
+                null == deleted
+                    ? _value.deleted
+                    : deleted // ignore: cast_nullable_to_non_nullable
+                        as bool,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -184,29 +208,31 @@ class _$PlazoDeCobroCopyWithImpl<$Res, $Val extends PlazoDeCobro>
 abstract class _$$PlazoDeCobroImplCopyWith<$Res>
     implements $PlazoDeCobroCopyWith<$Res> {
   factory _$$PlazoDeCobroImplCopyWith(
-          _$PlazoDeCobroImpl value, $Res Function(_$PlazoDeCobroImpl) then) =
-      __$$PlazoDeCobroImplCopyWithImpl<$Res>;
+    _$PlazoDeCobroImpl value,
+    $Res Function(_$PlazoDeCobroImpl) then,
+  ) = __$$PlazoDeCobroImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String descripcionES,
-      String? descripcionEN,
-      String? descripcionFR,
-      String? descripcionDE,
-      String? descripcionCA,
-      String? descripcionGB,
-      String? descripcionHU,
-      String? descripcionIT,
-      String? descripcionNL,
-      String? descripcionPL,
-      String? descripcionPT,
-      String? descripcionRO,
-      String? descripcionRU,
-      String? descripcionCN,
-      String? descripcionEL,
-      DateTime lastUpdate,
-      bool deleted});
+  $Res call({
+    String id,
+    String descripcionES,
+    String? descripcionEN,
+    String? descripcionFR,
+    String? descripcionDE,
+    String? descripcionCA,
+    String? descripcionGB,
+    String? descripcionHU,
+    String? descripcionIT,
+    String? descripcionNL,
+    String? descripcionPL,
+    String? descripcionPT,
+    String? descripcionRO,
+    String? descripcionRU,
+    String? descripcionCN,
+    String? descripcionEL,
+    DateTime lastUpdate,
+    bool deleted,
+  });
 }
 
 /// @nodoc
@@ -214,8 +240,9 @@ class __$$PlazoDeCobroImplCopyWithImpl<$Res>
     extends _$PlazoDeCobroCopyWithImpl<$Res, _$PlazoDeCobroImpl>
     implements _$$PlazoDeCobroImplCopyWith<$Res> {
   __$$PlazoDeCobroImplCopyWithImpl(
-      _$PlazoDeCobroImpl _value, $Res Function(_$PlazoDeCobroImpl) _then)
-      : super(_value, _then);
+    _$PlazoDeCobroImpl _value,
+    $Res Function(_$PlazoDeCobroImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of PlazoDeCobro
   /// with the given fields replaced by the non-null parameter values.
@@ -241,106 +268,126 @@ class __$$PlazoDeCobroImplCopyWithImpl<$Res>
     Object? lastUpdate = null,
     Object? deleted = null,
   }) {
-    return _then(_$PlazoDeCobroImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcionES: null == descripcionES
-          ? _value.descripcionES
-          : descripcionES // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcionEN: freezed == descripcionEN
-          ? _value.descripcionEN
-          : descripcionEN // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionFR: freezed == descripcionFR
-          ? _value.descripcionFR
-          : descripcionFR // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionDE: freezed == descripcionDE
-          ? _value.descripcionDE
-          : descripcionDE // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionCA: freezed == descripcionCA
-          ? _value.descripcionCA
-          : descripcionCA // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionGB: freezed == descripcionGB
-          ? _value.descripcionGB
-          : descripcionGB // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionHU: freezed == descripcionHU
-          ? _value.descripcionHU
-          : descripcionHU // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionIT: freezed == descripcionIT
-          ? _value.descripcionIT
-          : descripcionIT // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionNL: freezed == descripcionNL
-          ? _value.descripcionNL
-          : descripcionNL // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionPL: freezed == descripcionPL
-          ? _value.descripcionPL
-          : descripcionPL // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionPT: freezed == descripcionPT
-          ? _value.descripcionPT
-          : descripcionPT // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionRO: freezed == descripcionRO
-          ? _value.descripcionRO
-          : descripcionRO // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionRU: freezed == descripcionRU
-          ? _value.descripcionRU
-          : descripcionRU // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionCN: freezed == descripcionCN
-          ? _value.descripcionCN
-          : descripcionCN // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionEL: freezed == descripcionEL
-          ? _value.descripcionEL
-          : descripcionEL // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastUpdate: null == lastUpdate
-          ? _value.lastUpdate
-          : lastUpdate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$PlazoDeCobroImpl(
+        id:
+            null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                    as String,
+        descripcionES:
+            null == descripcionES
+                ? _value.descripcionES
+                : descripcionES // ignore: cast_nullable_to_non_nullable
+                    as String,
+        descripcionEN:
+            freezed == descripcionEN
+                ? _value.descripcionEN
+                : descripcionEN // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionFR:
+            freezed == descripcionFR
+                ? _value.descripcionFR
+                : descripcionFR // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionDE:
+            freezed == descripcionDE
+                ? _value.descripcionDE
+                : descripcionDE // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionCA:
+            freezed == descripcionCA
+                ? _value.descripcionCA
+                : descripcionCA // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionGB:
+            freezed == descripcionGB
+                ? _value.descripcionGB
+                : descripcionGB // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionHU:
+            freezed == descripcionHU
+                ? _value.descripcionHU
+                : descripcionHU // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionIT:
+            freezed == descripcionIT
+                ? _value.descripcionIT
+                : descripcionIT // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionNL:
+            freezed == descripcionNL
+                ? _value.descripcionNL
+                : descripcionNL // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionPL:
+            freezed == descripcionPL
+                ? _value.descripcionPL
+                : descripcionPL // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionPT:
+            freezed == descripcionPT
+                ? _value.descripcionPT
+                : descripcionPT // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionRO:
+            freezed == descripcionRO
+                ? _value.descripcionRO
+                : descripcionRO // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionRU:
+            freezed == descripcionRU
+                ? _value.descripcionRU
+                : descripcionRU // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionCN:
+            freezed == descripcionCN
+                ? _value.descripcionCN
+                : descripcionCN // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionEL:
+            freezed == descripcionEL
+                ? _value.descripcionEL
+                : descripcionEL // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        lastUpdate:
+            null == lastUpdate
+                ? _value.lastUpdate
+                : lastUpdate // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        deleted:
+            null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                    as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$PlazoDeCobroImpl extends _PlazoDeCobro {
-  const _$PlazoDeCobroImpl(
-      {required this.id,
-      required this.descripcionES,
-      this.descripcionEN,
-      this.descripcionFR,
-      this.descripcionDE,
-      this.descripcionCA,
-      this.descripcionGB,
-      this.descripcionHU,
-      this.descripcionIT,
-      this.descripcionNL,
-      this.descripcionPL,
-      this.descripcionPT,
-      this.descripcionRO,
-      this.descripcionRU,
-      this.descripcionCN,
-      this.descripcionEL,
-      required this.lastUpdate,
-      required this.deleted})
-      : super._();
+  const _$PlazoDeCobroImpl({
+    required this.id,
+    required this.descripcionES,
+    this.descripcionEN,
+    this.descripcionFR,
+    this.descripcionDE,
+    this.descripcionCA,
+    this.descripcionGB,
+    this.descripcionHU,
+    this.descripcionIT,
+    this.descripcionNL,
+    this.descripcionPL,
+    this.descripcionPT,
+    this.descripcionRO,
+    this.descripcionRU,
+    this.descripcionCN,
+    this.descripcionEL,
+    required this.lastUpdate,
+    required this.deleted,
+  }) : super._();
 
   @override
   final String id;
@@ -427,25 +474,26 @@ class _$PlazoDeCobroImpl extends _PlazoDeCobro {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      descripcionES,
-      descripcionEN,
-      descripcionFR,
-      descripcionDE,
-      descripcionCA,
-      descripcionGB,
-      descripcionHU,
-      descripcionIT,
-      descripcionNL,
-      descripcionPL,
-      descripcionPT,
-      descripcionRO,
-      descripcionRU,
-      descripcionCN,
-      descripcionEL,
-      lastUpdate,
-      deleted);
+    runtimeType,
+    id,
+    descripcionES,
+    descripcionEN,
+    descripcionFR,
+    descripcionDE,
+    descripcionCA,
+    descripcionGB,
+    descripcionHU,
+    descripcionIT,
+    descripcionNL,
+    descripcionPL,
+    descripcionPT,
+    descripcionRO,
+    descripcionRU,
+    descripcionCN,
+    descripcionEL,
+    lastUpdate,
+    deleted,
+  );
 
   /// Create a copy of PlazoDeCobro
   /// with the given fields replaced by the non-null parameter values.
@@ -457,25 +505,26 @@ class _$PlazoDeCobroImpl extends _PlazoDeCobro {
 }
 
 abstract class _PlazoDeCobro extends PlazoDeCobro {
-  const factory _PlazoDeCobro(
-      {required final String id,
-      required final String descripcionES,
-      final String? descripcionEN,
-      final String? descripcionFR,
-      final String? descripcionDE,
-      final String? descripcionCA,
-      final String? descripcionGB,
-      final String? descripcionHU,
-      final String? descripcionIT,
-      final String? descripcionNL,
-      final String? descripcionPL,
-      final String? descripcionPT,
-      final String? descripcionRO,
-      final String? descripcionRU,
-      final String? descripcionCN,
-      final String? descripcionEL,
-      required final DateTime lastUpdate,
-      required final bool deleted}) = _$PlazoDeCobroImpl;
+  const factory _PlazoDeCobro({
+    required final String id,
+    required final String descripcionES,
+    final String? descripcionEN,
+    final String? descripcionFR,
+    final String? descripcionDE,
+    final String? descripcionCA,
+    final String? descripcionGB,
+    final String? descripcionHU,
+    final String? descripcionIT,
+    final String? descripcionNL,
+    final String? descripcionPL,
+    final String? descripcionPT,
+    final String? descripcionRO,
+    final String? descripcionRU,
+    final String? descripcionCN,
+    final String? descripcionEL,
+    required final DateTime lastUpdate,
+    required final bool deleted,
+  }) = _$PlazoDeCobroImpl;
   const _PlazoDeCobro._() : super._();
 
   @override
