@@ -2,12 +2,12 @@ import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/exceptions/app_exception.dart';
-import 'local_usuario_repository.dart';
-import 'remote_usuario_repository.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
+import '../../../core/exceptions/app_exception.dart';
 import '../domain/usuario.dart';
+import 'local_usuario_repository.dart';
+import 'remote_usuario_repository.dart';
 
 typedef Json = Map<String, dynamic>;
 
@@ -84,11 +84,9 @@ class UsuarioService {
         }
         return null;
       } on AppException catch (e) {
-        if (e.details.statusCode == 400) {
-          return null;
-        } else {
-          return storedCredentials?.toDomain();
-        }
+        return e.details.statusCode == 400
+            ? null
+            : storedCredentials?.toDomain();
       } catch (e) {
         return storedCredentials?.toDomain();
       }

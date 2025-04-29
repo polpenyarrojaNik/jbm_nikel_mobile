@@ -84,12 +84,8 @@ class InitDatabaseService {
     try {
       final directory = await getApplicationDocumentsDirectory();
 
-      if (await getSchemaVersionFromPreferences() == databaseRelease &&
-          _databaseFileExist(directory: directory)) {
-        return true;
-      } else {
-        return false;
-      }
+      return await getSchemaVersionFromPreferences() == databaseRelease &&
+          _databaseFileExist(directory: directory);
     } on AppException catch (e) {
       log.e(e.details);
       rethrow;

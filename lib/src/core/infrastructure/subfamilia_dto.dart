@@ -1,9 +1,9 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
-import 'remote_database.dart';
 
 import '../domain/subfamilia.dart';
+import 'remote_database.dart';
 
 part 'subfamilia_dto.freezed.dart';
 part 'subfamilia_dto.g.dart';
@@ -49,8 +49,7 @@ class SubfamiliaDTO with _$SubfamiliaDTO implements Insertable<SubfamiliaDTO> {
 
   String getDescriptionInLocalLanguage() {
     final currentLocale = Intl.getCurrentLocale();
-    if (currentLocale == 'es') {
-    } else if (currentLocale == 'en' && descripcionEN != null) {
+    if (currentLocale == 'en' && descripcionEN != null) {
       return descripcionEN!;
     } else if (currentLocale == 'fr' && descripcionFR != null) {
       return descripcionFR!;

@@ -216,34 +216,33 @@ class PedidoVentaRepository {
       final busqueda = searchText.toUpperCase().split(' ');
       Expression<bool>? predicate;
       for (var i = 0; i < busqueda.length; i++) {
-        if (predicate == null) {
-          predicate = (_remoteDb.pedidoVentaTable.pedidoVentaId
-                  .like('%${busqueda[i]}%') |
-              _remoteDb.pedidoVentaTable.nombreCliente
-                  .like('%${busqueda[i]}%') |
-              _remoteDb.pedidoVentaTable.clienteId.like('%${busqueda[i]}%') |
-              _remoteDb.pedidoVentaTable.pedidoVentaId
-                  .like('%${busqueda[i]}%') |
-              _remoteDb.pedidoVentaTable.poblacion.like('%${busqueda[i]}%') |
-              _remoteDb.pedidoVentaTable.codigoPostal.like('%${busqueda[i]}%') |
-              _remoteDb.pedidoVentaTable.provincia.like('%${busqueda[i]}%'));
-        } else {
-          predicate = predicate &
-              (_remoteDb.pedidoVentaTable.pedidoVentaId
-                      .like('%${busqueda[i]}%') |
-                  (_remoteDb.pedidoVentaTable.nombreCliente
-                          .like('%${busqueda[i]}%') |
-                      _remoteDb.pedidoVentaTable.pedidoVentaId
-                          .like('%${busqueda[i]}%') |
-                      _remoteDb.pedidoVentaTable.clienteId
-                          .like('%${busqueda[i]}%') |
-                      _remoteDb.pedidoVentaTable.poblacion
-                          .like('%${busqueda[i]}%') |
-                      _remoteDb.pedidoVentaTable.codigoPostal
-                          .like('%${busqueda[i]}%') |
-                      _remoteDb.pedidoVentaTable.provincia
-                          .like('%${busqueda[i]}%')));
-        }
+        predicate = predicate == null
+            ? (_remoteDb.pedidoVentaTable.pedidoVentaId
+                    .like('%${busqueda[i]}%') |
+                _remoteDb.pedidoVentaTable.nombreCliente
+                    .like('%${busqueda[i]}%') |
+                _remoteDb.pedidoVentaTable.clienteId.like('%${busqueda[i]}%') |
+                _remoteDb.pedidoVentaTable.pedidoVentaId
+                    .like('%${busqueda[i]}%') |
+                _remoteDb.pedidoVentaTable.poblacion.like('%${busqueda[i]}%') |
+                _remoteDb.pedidoVentaTable.codigoPostal
+                    .like('%${busqueda[i]}%') |
+                _remoteDb.pedidoVentaTable.provincia.like('%${busqueda[i]}%'))
+            : predicate &
+                (_remoteDb.pedidoVentaTable.pedidoVentaId
+                        .like('%${busqueda[i]}%') |
+                    (_remoteDb.pedidoVentaTable.nombreCliente
+                            .like('%${busqueda[i]}%') |
+                        _remoteDb.pedidoVentaTable.pedidoVentaId
+                            .like('%${busqueda[i]}%') |
+                        _remoteDb.pedidoVentaTable.clienteId
+                            .like('%${busqueda[i]}%') |
+                        _remoteDb.pedidoVentaTable.poblacion
+                            .like('%${busqueda[i]}%') |
+                        _remoteDb.pedidoVentaTable.codigoPostal
+                            .like('%${busqueda[i]}%') |
+                        _remoteDb.pedidoVentaTable.provincia
+                            .like('%${busqueda[i]}%')));
       }
       query.where(predicate!);
     }
@@ -307,30 +306,29 @@ class PedidoVentaRepository {
       final busqueda = searchText.toUpperCase().split(' ');
       Expression<bool>? predicate;
       for (var i = 0; i < busqueda.length; i++) {
-        if (predicate == null) {
-          predicate = (_remoteDb.pedidoVentaTable.pedidoVentaId
-                  .like('%${busqueda[i]}%') |
-              _remoteDb.pedidoVentaTable.nombreCliente
-                  .like('%${busqueda[i]}%') |
-              _remoteDb.pedidoVentaTable.clienteId.like('%${busqueda[i]}%') |
-              _remoteDb.pedidoVentaTable.poblacion.like('%${busqueda[i]}%') |
-              _remoteDb.pedidoVentaTable.codigoPostal.like('%${busqueda[i]}%') |
-              _remoteDb.pedidoVentaTable.provincia.like('%${busqueda[i]}%'));
-        } else {
-          predicate = predicate &
-              ((_remoteDb.pedidoVentaTable.pedidoVentaId
-                      .like('%${busqueda[i]}%') |
-                  _remoteDb.pedidoVentaTable.nombreCliente
-                      .like('%${busqueda[i]}%') |
-                  _remoteDb.pedidoVentaTable.clienteId
-                      .like('%${busqueda[i]}%') |
-                  _remoteDb.pedidoVentaTable.poblacion
-                      .like('%${busqueda[i]}%') |
-                  _remoteDb.pedidoVentaTable.codigoPostal
-                      .like('%${busqueda[i]}%') |
-                  _remoteDb.pedidoVentaTable.provincia
-                      .like('%${busqueda[i]}%')));
-        }
+        predicate = predicate == null
+            ? (_remoteDb.pedidoVentaTable.pedidoVentaId
+                    .like('%${busqueda[i]}%') |
+                _remoteDb.pedidoVentaTable.nombreCliente
+                    .like('%${busqueda[i]}%') |
+                _remoteDb.pedidoVentaTable.clienteId.like('%${busqueda[i]}%') |
+                _remoteDb.pedidoVentaTable.poblacion.like('%${busqueda[i]}%') |
+                _remoteDb.pedidoVentaTable.codigoPostal
+                    .like('%${busqueda[i]}%') |
+                _remoteDb.pedidoVentaTable.provincia.like('%${busqueda[i]}%'))
+            : predicate &
+                ((_remoteDb.pedidoVentaTable.pedidoVentaId
+                        .like('%${busqueda[i]}%') |
+                    _remoteDb.pedidoVentaTable.nombreCliente
+                        .like('%${busqueda[i]}%') |
+                    _remoteDb.pedidoVentaTable.clienteId
+                        .like('%${busqueda[i]}%') |
+                    _remoteDb.pedidoVentaTable.poblacion
+                        .like('%${busqueda[i]}%') |
+                    _remoteDb.pedidoVentaTable.codigoPostal
+                        .like('%${busqueda[i]}%') |
+                    _remoteDb.pedidoVentaTable.provincia
+                        .like('%${busqueda[i]}%')));
       }
       query.where(predicate!);
     }
@@ -358,30 +356,28 @@ class PedidoVentaRepository {
       final busqueda = searchText.toUpperCase().split(' ');
       Expression<bool>? predicate;
       for (var i = 0; i < busqueda.length; i++) {
-        if (predicate == null) {
-          predicate = (_localDb.pedidoVentaLocalTable.nombreCliente
-                  .like('%${busqueda[i]}%') |
-              _localDb.pedidoVentaLocalTable.clienteId
-                  .like('%${busqueda[i]}%') |
-              _localDb.pedidoVentaLocalTable.poblacion
-                  .like('%${busqueda[i]}%') |
-              _localDb.pedidoVentaLocalTable.codigoPostal
-                  .like('%${busqueda[i]}%') |
-              _localDb.pedidoVentaLocalTable.provincia
-                  .like('%${busqueda[i]}%'));
-        } else {
-          predicate = predicate &
-              (_localDb.pedidoVentaLocalTable.nombreCliente
-                      .like('%${busqueda[i]}%') |
-                  _localDb.pedidoVentaLocalTable.clienteId
-                      .like('%${busqueda[i]}%') |
-                  _localDb.pedidoVentaLocalTable.poblacion
-                      .like('%${busqueda[i]}%') |
-                  _localDb.pedidoVentaLocalTable.codigoPostal
-                      .like('%${busqueda[i]}%') |
-                  _localDb.pedidoVentaLocalTable.provincia
-                      .like('%${busqueda[i]}%'));
-        }
+        predicate = predicate == null
+            ? (_localDb.pedidoVentaLocalTable.nombreCliente
+                    .like('%${busqueda[i]}%') |
+                _localDb.pedidoVentaLocalTable.clienteId
+                    .like('%${busqueda[i]}%') |
+                _localDb.pedidoVentaLocalTable.poblacion
+                    .like('%${busqueda[i]}%') |
+                _localDb.pedidoVentaLocalTable.codigoPostal
+                    .like('%${busqueda[i]}%') |
+                _localDb.pedidoVentaLocalTable.provincia
+                    .like('%${busqueda[i]}%'))
+            : predicate &
+                (_localDb.pedidoVentaLocalTable.nombreCliente
+                        .like('%${busqueda[i]}%') |
+                    _localDb.pedidoVentaLocalTable.clienteId
+                        .like('%${busqueda[i]}%') |
+                    _localDb.pedidoVentaLocalTable.poblacion
+                        .like('%${busqueda[i]}%') |
+                    _localDb.pedidoVentaLocalTable.codigoPostal
+                        .like('%${busqueda[i]}%') |
+                    _localDb.pedidoVentaLocalTable.provincia
+                        .like('%${busqueda[i]}%'));
       }
       query.where((tbl) => predicate!);
     }
@@ -493,13 +489,11 @@ class PedidoVentaRepository {
   Future<PedidoVenta> getPedidoVentaById(
       {required PedidoLocalParam pedidoVentaIdIsLocalParam}) async {
     try {
-      if (!pedidoVentaIdIsLocalParam.isLocal) {
-        return await getSyncPedidoVentaById(
-            pedidoVentaId: pedidoVentaIdIsLocalParam.pedidoId!);
-      } else {
-        return await getPedidoVentaLocalById(
-            pedidoVentaAppId: pedidoVentaIdIsLocalParam.pedidoAppId!);
-      }
+      return !pedidoVentaIdIsLocalParam.isLocal
+          ? await getSyncPedidoVentaById(
+              pedidoVentaId: pedidoVentaIdIsLocalParam.pedidoId!)
+          : await getPedidoVentaLocalById(
+              pedidoVentaAppId: pedidoVentaIdIsLocalParam.pedidoAppId!);
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
@@ -644,16 +638,14 @@ class PedidoVentaRepository {
   Future<List<PedidoVentaLinea>> getPedidoVentaLineaListById(
       {required PedidoLocalParam pedidoLocalParam}) async {
     try {
-      if (!pedidoLocalParam.isLocal) {
-        return await getSyncPedidoVentaLineaList(
-          pedidoVentaId: pedidoLocalParam.pedidoId!,
-          pedidoAppId: pedidoLocalParam.pedidoAppId,
-        );
-      } else {
-        return await getLocalPedidoVentaLineaList(
-            pedidoVentaAppId: pedidoLocalParam.pedidoAppId!,
-            addLineaDesdeArticulo: pedidoLocalParam.addLineaDesdeArticulo);
-      }
+      return !pedidoLocalParam.isLocal
+          ? await getSyncPedidoVentaLineaList(
+              pedidoVentaId: pedidoLocalParam.pedidoId!,
+              pedidoAppId: pedidoLocalParam.pedidoAppId,
+            )
+          : await getLocalPedidoVentaLineaList(
+              pedidoVentaAppId: pedidoLocalParam.pedidoAppId!,
+              addLineaDesdeArticulo: pedidoLocalParam.addLineaDesdeArticulo);
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
@@ -1086,11 +1078,7 @@ class PedidoVentaRepository {
           ?.read(_remoteDb.clienteTable.iva);
 
       late double iva;
-      if (ivaArticulo != null) {
-        iva = ivaArticulo;
-      } else {
-        iva = ivaCliente ?? 0;
-      }
+      iva = ivaArticulo ?? ivaCliente ?? 0;
       return iva;
     }
   }
@@ -1937,7 +1925,7 @@ class PedidoVentaRepository {
   }) {
     return tipoPrecio != 0
         ? Money.fromFixedWithCurrency(
-            precio.amount / Fixed.fromNum(tipoPrecio, scale: 0),
+            precio.amount / Fixed.fromNum(tipoPrecio, decimalDigits: 0),
             precio.currency)
         : 0.toMoney(
             currencyId: precio.currency.isoCode,
@@ -1961,7 +1949,7 @@ class PedidoVentaRepository {
                     (1 - (descuento2 / 100)) *
                     (1 - (descuento3 / 100))),
             6),
-        scale: 6);
+        decimalDigits: 6);
   }
 
   Money getTotalLinea({
@@ -2016,8 +2004,8 @@ class PedidoVentaRepository {
 
   Money getImporteIva(Money importeBaseImponible, double iva) {
     final importeIve =
-        (importeBaseImponible.amount * Fixed.fromNum(iva, scale: 2)) /
-            Fixed.fromNum(100, scale: 2);
+        (importeBaseImponible.amount * Fixed.fromNum(iva, decimalDigits: 2)) /
+            Fixed.fromNum(100, decimalDigits: 2);
 
     return Money.fromFixedWithCurrency(
       importeIve,

@@ -251,27 +251,26 @@ class ClienteRepository {
         final busqueda = searchText.toUpperCase().split(' ');
         Expression<bool>? predicate;
         for (var i = 0; i < busqueda.length; i++) {
-          if (predicate == null) {
-            predicate = ((_remoteDb.clienteTable.id.like('%${busqueda[i]}%') |
-                (_remoteDb.clienteTable.nombreCliente.like('%${busqueda[i]}%') |
-                    _remoteDb.clienteTable.nombreFiscal
-                        .like('%${busqueda[i]}%') |
-                    _remoteDb.clienteTable.poblacionFiscal
-                        .like('%${busqueda[i]}%') |
-                    _remoteDb.clienteTable.provinciaFiscal
-                        .like('%${busqueda[i]}%'))));
-          } else {
-            predicate = predicate &
-                ((_remoteDb.clienteTable.id.like('%${busqueda[i]}%') |
-                    (_remoteDb.clienteTable.nombreCliente
-                            .like('%${busqueda[i]}%') |
-                        _remoteDb.clienteTable.nombreFiscal
-                            .like('%${busqueda[i]}%') |
-                        _remoteDb.clienteTable.poblacionFiscal
-                            .like('%${busqueda[i]}%') |
-                        _remoteDb.clienteTable.provinciaFiscal
-                            .like('%${busqueda[i]}%'))));
-          }
+          predicate = predicate == null
+              ? ((_remoteDb.clienteTable.id.like('%${busqueda[i]}%') |
+                  (_remoteDb.clienteTable.nombreCliente
+                          .like('%${busqueda[i]}%') |
+                      _remoteDb.clienteTable.nombreFiscal
+                          .like('%${busqueda[i]}%') |
+                      _remoteDb.clienteTable.poblacionFiscal
+                          .like('%${busqueda[i]}%') |
+                      _remoteDb.clienteTable.provinciaFiscal
+                          .like('%${busqueda[i]}%'))))
+              : predicate &
+                  ((_remoteDb.clienteTable.id.like('%${busqueda[i]}%') |
+                      (_remoteDb.clienteTable.nombreCliente
+                              .like('%${busqueda[i]}%') |
+                          _remoteDb.clienteTable.nombreFiscal
+                              .like('%${busqueda[i]}%') |
+                          _remoteDb.clienteTable.poblacionFiscal
+                              .like('%${busqueda[i]}%') |
+                          _remoteDb.clienteTable.provinciaFiscal
+                              .like('%${busqueda[i]}%'))));
         }
         query.where(predicate!);
       }
@@ -373,27 +372,26 @@ class ClienteRepository {
         final busqueda = searchText.toUpperCase().split(' ');
         Expression<bool>? predicate;
         for (var i = 0; i < busqueda.length; i++) {
-          if (predicate == null) {
-            predicate = ((_remoteDb.clienteTable.id.like('%${busqueda[i]}%') |
-                (_remoteDb.clienteTable.nombreCliente.like('%${busqueda[i]}%') |
-                    _remoteDb.clienteTable.nombreFiscal
-                        .like('%${busqueda[i]}%') |
-                    _remoteDb.clienteTable.poblacionFiscal
-                        .like('%${busqueda[i]}%') |
-                    _remoteDb.clienteTable.provinciaFiscal
-                        .like('%${busqueda[i]}%'))));
-          } else {
-            predicate = predicate &
-                ((_remoteDb.clienteTable.id.like('%${busqueda[i]}%') |
-                    (_remoteDb.clienteTable.nombreCliente
-                            .like('%${busqueda[i]}%') |
-                        _remoteDb.clienteTable.nombreFiscal
-                            .like('%${busqueda[i]}%') |
-                        _remoteDb.clienteTable.poblacionFiscal
-                            .like('%${busqueda[i]}%') |
-                        _remoteDb.clienteTable.provinciaFiscal
-                            .like('%${busqueda[i]}%'))));
-          }
+          predicate = predicate == null
+              ? ((_remoteDb.clienteTable.id.like('%${busqueda[i]}%') |
+                  (_remoteDb.clienteTable.nombreCliente
+                          .like('%${busqueda[i]}%') |
+                      _remoteDb.clienteTable.nombreFiscal
+                          .like('%${busqueda[i]}%') |
+                      _remoteDb.clienteTable.poblacionFiscal
+                          .like('%${busqueda[i]}%') |
+                      _remoteDb.clienteTable.provinciaFiscal
+                          .like('%${busqueda[i]}%'))))
+              : predicate &
+                  ((_remoteDb.clienteTable.id.like('%${busqueda[i]}%') |
+                      (_remoteDb.clienteTable.nombreCliente
+                              .like('%${busqueda[i]}%') |
+                          _remoteDb.clienteTable.nombreFiscal
+                              .like('%${busqueda[i]}%') |
+                          _remoteDb.clienteTable.poblacionFiscal
+                              .like('%${busqueda[i]}%') |
+                          _remoteDb.clienteTable.provinciaFiscal
+                              .like('%${busqueda[i]}%'))));
         }
         query.where(predicate!);
       }

@@ -1131,11 +1131,9 @@ class SyncService {
           ''' SELECT MAX(LAST_UPDATED) as MAX_DATE FROM ${tableInfo.actualTableName}
           ''').getSingle();
 
-      if (query.data['MAX_DATE'] != null) {
-        return DateTime.parse(query.data['MAX_DATE'] as String);
-      } else {
-        return null;
-      }
+      return query.data['MAX_DATE'] != null
+          ? DateTime.parse(query.data['MAX_DATE'] as String)
+          : null;
     } catch (e) {
       rethrow;
     }

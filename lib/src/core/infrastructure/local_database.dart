@@ -5,22 +5,21 @@ import 'package:drift/drift.dart';
 import 'package:drift/isolate.dart';
 import 'package:drift/native.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../features/catalogos/infrastructure/catalogo_dto.dart';
-import '../../features/cliente/infrastructure/cliente_imp_dto.dart';
-import '../../features/visitas/infrastructure/visita_competencia_local_dto.dart';
-import 'log_dto.dart';
-import 'sync_datetime_dto.dart';
-
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 
+import '../../features/catalogos/infrastructure/catalogo_dto.dart';
 import '../../features/catalogos/infrastructure/catalogo_orden_dto.dart';
 import '../../features/cliente/infrastructure/cliente_contacto_imp_dto.dart';
 import '../../features/cliente/infrastructure/cliente_direccion_imp_dto.dart';
+import '../../features/cliente/infrastructure/cliente_imp_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_linea_local_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_local_dto.dart';
+import '../../features/visitas/infrastructure/visita_competencia_local_dto.dart';
 import '../../features/visitas/infrastructure/visita_local_dto.dart';
 import '../domain/isolate_request.dart';
+import 'log_dto.dart';
+import 'sync_datetime_dto.dart';
 
 part 'local_database.g.dart';
 
@@ -197,16 +196,7 @@ class LocalAppDatabase extends _$LocalAppDatabase {
           );
           await m.createTable(catalogoOrdenTable);
         }
-        if (from < 12) {
-          // await m.alterTable(
-          //   TableMigration(
-          //     catalogoFavoritoTable,
-          //     newColumns: [
-          //       catalogoFavoritoTable.nombreArchivo,
-          //     ],
-          //   ),
-          // );
-        }
+
         if (from < 13) {
           await m.deleteTable(catalogoFavoritoTable.tableName);
           await m.createTable(catalogoFavoritoTable);

@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
-import '../../features/visitas/domain/visita.dart';
-import '../domain/pais.dart';
-import '../../features/articulos/domain/articulo_componente.dart';
-import '../../features/cliente/domain/cliente.dart';
 import 'package:money2/money2.dart';
 
 import '../../../generated/l10n.dart';
 import '../../features/articulos/domain/articulo.dart';
+import '../../features/articulos/domain/articulo_componente.dart';
+import '../../features/cliente/domain/cliente.dart';
 import '../../features/cliente/domain/cliente_estado_potencial.dart';
 import '../../features/cliente/domain/cliente_tipo_potencial.dart';
 import '../../features/cliente/domain/metodo_cobro.dart';
 import '../../features/cliente/domain/plazo_cobro.dart';
+import '../../features/visitas/domain/visita.dart';
+import '../domain/pais.dart';
 
 String dateFormatter(String dateStr, {bool allDay = false}) {
   DateTime date;
@@ -154,11 +154,9 @@ String formatPrecioYDescuento({
 }
 
 String formatPrecios({required Money precio, required int? tipoPrecio}) {
-  if (tipoPrecio == 1 || tipoPrecio == 0 || tipoPrecio == null) {
-    return precio.toString();
-  } else {
-    return '${precio.toString()} (x${tipoPrecio.round().toString()})';
-  }
+  return (tipoPrecio == 1 || tipoPrecio == 0 || tipoPrecio == null)
+      ? precio.toString()
+      : '${precio.toString()} (x${tipoPrecio.round().toString()})';
 }
 
 String dtoText(

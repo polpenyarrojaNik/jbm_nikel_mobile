@@ -1,6 +1,7 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
+
 import '../domain/pais.dart';
 import 'remote_database.dart';
 
@@ -48,8 +49,7 @@ class PaisDTO with _$PaisDTO implements Insertable<PaisDTO> {
 
   String getDescriptionInLocalLanguage() {
     final currentLocale = Intl.getCurrentLocale();
-    if (currentLocale == 'es') {
-    } else if (currentLocale == 'en' && descripcionEN != null) {
+    if (currentLocale == 'en' && descripcionEN != null) {
       return descripcionEN!;
     } else if (currentLocale == 'fr' && descripcionFR != null) {
       return descripcionFR!;

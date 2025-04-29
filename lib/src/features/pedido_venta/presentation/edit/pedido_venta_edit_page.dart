@@ -593,65 +593,63 @@ class _StepSelectClienteContentState
 
   @override
   Widget build(BuildContext context) {
-    if (widget.cliente == null) {
-      return Column(
-        children: [
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: TextButton(
-                onPressed: () => navigateToSelectCliente(
-                    context, widget.pedidoLocalParam, widget.isEdit),
-                child: Text(
-                  S.of(context).pedido_edit_pedidoEdit_seleccioneCliente,
-                ),
-              ),
-            ),
-          ),
-        ],
-      );
-    } else {
-      return ListView(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: GestureDetector(
-              onTap: () => navigateToSelectCliente(
-                  context, widget.pedidoLocalParam, widget.isEdit),
-              child: Card(
-                elevation: 0,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(4),
-                  side: BorderSide(
-                    color: Colors.grey.withValues(
-                      alpha: 0.2,
-                    ),
-                    width: 1,
-                  ),
-                ),
+    return widget.cliente == null
+        ? Column(
+            children: [
+              Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      Flexible(
-                        child: ClienteListaTile(
-                          cliente: widget.cliente!,
-                        ),
-                      ),
-                      IconButton(
-                        onPressed: () => navigateToSelectCliente(
-                            context, widget.pedidoLocalParam, widget.isEdit),
-                        icon: const Icon(Icons.navigate_next_outlined),
-                      )
-                    ],
+                  padding: const EdgeInsets.all(24.0),
+                  child: TextButton(
+                    onPressed: () => navigateToSelectCliente(
+                        context, widget.pedidoLocalParam, widget.isEdit),
+                    child: Text(
+                      S.of(context).pedido_edit_pedidoEdit_seleccioneCliente,
+                    ),
                   ),
                 ),
               ),
-            ),
-          ),
-        ],
-      );
-    }
+            ],
+          )
+        : ListView(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: GestureDetector(
+                  onTap: () => navigateToSelectCliente(
+                      context, widget.pedidoLocalParam, widget.isEdit),
+                  child: Card(
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4),
+                      side: BorderSide(
+                        color: Colors.grey.withValues(
+                          alpha: 0.2,
+                        ),
+                        width: 1,
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Flexible(
+                            child: ClienteListaTile(
+                              cliente: widget.cliente!,
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () => navigateToSelectCliente(context,
+                                widget.pedidoLocalParam, widget.isEdit),
+                            icon: const Icon(Icons.navigate_next_outlined),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          );
   }
 
   void navigateToSelectCliente(BuildContext context,

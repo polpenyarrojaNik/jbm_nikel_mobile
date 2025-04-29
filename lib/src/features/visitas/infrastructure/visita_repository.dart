@@ -7,9 +7,9 @@ import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intl/intl.dart';
 import 'package:google_mlkit_entity_extraction/google_mlkit_entity_extraction.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
+import 'package:intl/intl.dart';
 
 import '../../../core/application/log_service.dart';
 import '../../../core/domain/pais.dart';
@@ -132,11 +132,9 @@ class VisitaRepository {
   Future<Visita> getVisitaById(
       {required VisitaIdIsLocalParam visitaIdIsLocalParam}) async {
     try {
-      if (!visitaIdIsLocalParam.isLocal) {
-        return await getVisita(visitaId: visitaIdIsLocalParam.id);
-      } else {
-        return await getVisitaLocal(visitaAppId: visitaIdIsLocalParam.id);
-      }
+      return !visitaIdIsLocalParam.isLocal
+          ? await getVisita(visitaId: visitaIdIsLocalParam.id)
+          : await getVisitaLocal(visitaAppId: visitaIdIsLocalParam.id);
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
@@ -284,33 +282,31 @@ class VisitaRepository {
         final busqueda = searchText.toUpperCase().split(' ');
         Expression<bool>? predicate;
         for (var i = 0; i < busqueda.length; i++) {
-          if (predicate == null) {
-            predicate =
-                (_localDb.visitaLocalTable.resumen.like('%$searchText%') |
-                    _localDb.visitaLocalTable.clienteId.like('%$searchText%') |
-                    _localDb.visitaLocalTable.clienteProvisionalNombre
-                        .like('%$searchText%') |
-                    _localDb.visitaLocalTable.clienteProvisionalEmail
-                        .like('%$searchText%') |
-                    _localDb.visitaLocalTable.clienteProvisionalTelefono
-                        .like('%$searchText%') |
-                    _localDb.visitaLocalTable.clienteProvisionalPoblacion
-                        .like('%$searchText%') |
-                    _localDb.visitaLocalTable.contacto.like('%$searchText%'));
-          } else {
-            predicate = predicate &
-                (_localDb.visitaLocalTable.resumen.like('%$searchText%') |
-                    _localDb.visitaLocalTable.clienteId.like('%$searchText%') |
-                    _localDb.visitaLocalTable.clienteProvisionalNombre
-                        .like('%$searchText%') |
-                    _localDb.visitaLocalTable.clienteProvisionalEmail
-                        .like('%$searchText%') |
-                    _localDb.visitaLocalTable.clienteProvisionalTelefono
-                        .like('%$searchText%') |
-                    _localDb.visitaLocalTable.clienteProvisionalPoblacion
-                        .like('%$searchText%') |
-                    _localDb.visitaLocalTable.contacto.like('%$searchText%'));
-          }
+          predicate = predicate == null
+              ? (_localDb.visitaLocalTable.resumen.like('%$searchText%') |
+                  _localDb.visitaLocalTable.clienteId.like('%$searchText%') |
+                  _localDb.visitaLocalTable.clienteProvisionalNombre
+                      .like('%$searchText%') |
+                  _localDb.visitaLocalTable.clienteProvisionalEmail
+                      .like('%$searchText%') |
+                  _localDb.visitaLocalTable.clienteProvisionalTelefono
+                      .like('%$searchText%') |
+                  _localDb.visitaLocalTable.clienteProvisionalPoblacion
+                      .like('%$searchText%') |
+                  _localDb.visitaLocalTable.contacto.like('%$searchText%'))
+              : predicate &
+                  (_localDb.visitaLocalTable.resumen.like('%$searchText%') |
+                      _localDb.visitaLocalTable.clienteId
+                          .like('%$searchText%') |
+                      _localDb.visitaLocalTable.clienteProvisionalNombre
+                          .like('%$searchText%') |
+                      _localDb.visitaLocalTable.clienteProvisionalEmail
+                          .like('%$searchText%') |
+                      _localDb.visitaLocalTable.clienteProvisionalTelefono
+                          .like('%$searchText%') |
+                      _localDb.visitaLocalTable.clienteProvisionalPoblacion
+                          .like('%$searchText%') |
+                      _localDb.visitaLocalTable.contacto.like('%$searchText%'));
         }
         query.where((tbl) => predicate!);
       }
@@ -505,36 +501,34 @@ class VisitaRepository {
       final busqueda = searchText.toUpperCase().split(' ');
       Expression<bool>? predicate;
       for (var i = 0; i < busqueda.length; i++) {
-        if (predicate == null) {
-          predicate = (_remoteDb.visitaTable.resumen.like('%$searchText%') |
-              _remoteDb.visitaTable.clienteId.like('%$searchText%') |
-              _remoteDb.clienteTable.nombreCliente.like('%$searchText%') |
-              _remoteDb.clienteTable.nombreFiscal.like('%$searchText%') |
-              _remoteDb.visitaTable.clienteProvisionalNombre
-                  .like('%$searchText%') |
-              _remoteDb.visitaTable.clienteProvisionalEmail
-                  .like('%$searchText%') |
-              _remoteDb.visitaTable.clienteProvisionalTelefono
-                  .like('%$searchText%') |
-              _remoteDb.visitaTable.clienteProvisionalPoblacion
-                  .like('%$searchText%') |
-              _remoteDb.visitaTable.contacto.like('%$searchText%'));
-        } else {
-          predicate = predicate &
-              (_remoteDb.visitaTable.resumen.like('%$searchText%') |
-                  _remoteDb.visitaTable.clienteId.like('%$searchText%') |
-                  _remoteDb.clienteTable.nombreCliente.like('%$searchText%') |
-                  _remoteDb.clienteTable.nombreFiscal.like('%$searchText%') |
-                  _remoteDb.visitaTable.clienteProvisionalNombre
-                      .like('%$searchText%') |
-                  _remoteDb.visitaTable.clienteProvisionalEmail
-                      .like('%$searchText%') |
-                  _remoteDb.visitaTable.clienteProvisionalTelefono
-                      .like('%$searchText%') |
-                  _remoteDb.visitaTable.clienteProvisionalPoblacion
-                      .like('%$searchText%') |
-                  _remoteDb.visitaTable.contacto.like('%$searchText%'));
-        }
+        predicate = predicate == null
+            ? (_remoteDb.visitaTable.resumen.like('%$searchText%') |
+                _remoteDb.visitaTable.clienteId.like('%$searchText%') |
+                _remoteDb.clienteTable.nombreCliente.like('%$searchText%') |
+                _remoteDb.clienteTable.nombreFiscal.like('%$searchText%') |
+                _remoteDb.visitaTable.clienteProvisionalNombre
+                    .like('%$searchText%') |
+                _remoteDb.visitaTable.clienteProvisionalEmail
+                    .like('%$searchText%') |
+                _remoteDb.visitaTable.clienteProvisionalTelefono
+                    .like('%$searchText%') |
+                _remoteDb.visitaTable.clienteProvisionalPoblacion
+                    .like('%$searchText%') |
+                _remoteDb.visitaTable.contacto.like('%$searchText%'))
+            : predicate &
+                (_remoteDb.visitaTable.resumen.like('%$searchText%') |
+                    _remoteDb.visitaTable.clienteId.like('%$searchText%') |
+                    _remoteDb.clienteTable.nombreCliente.like('%$searchText%') |
+                    _remoteDb.clienteTable.nombreFiscal.like('%$searchText%') |
+                    _remoteDb.visitaTable.clienteProvisionalNombre
+                        .like('%$searchText%') |
+                    _remoteDb.visitaTable.clienteProvisionalEmail
+                        .like('%$searchText%') |
+                    _remoteDb.visitaTable.clienteProvisionalTelefono
+                        .like('%$searchText%') |
+                    _remoteDb.visitaTable.clienteProvisionalPoblacion
+                        .like('%$searchText%') |
+                    _remoteDb.visitaTable.contacto.like('%$searchText%'));
       }
       query.where(predicate!);
     }
@@ -586,36 +580,34 @@ class VisitaRepository {
       final busqueda = searchText.toUpperCase().split(' ');
       Expression<bool>? predicate;
       for (var i = 0; i < busqueda.length; i++) {
-        if (predicate == null) {
-          predicate = (_remoteDb.visitaTable.resumen.like('%$searchText%') |
-              _remoteDb.visitaTable.clienteId.like('%$searchText%') |
-              _remoteDb.clienteTable.nombreCliente.like('%$searchText%') |
-              _remoteDb.clienteTable.nombreFiscal.like('%$searchText%') |
-              _remoteDb.visitaTable.clienteProvisionalNombre
-                  .like('%$searchText%') |
-              _remoteDb.visitaTable.clienteProvisionalEmail
-                  .like('%$searchText%') |
-              _remoteDb.visitaTable.clienteProvisionalTelefono
-                  .like('%$searchText%') |
-              _remoteDb.visitaTable.clienteProvisionalPoblacion
-                  .like('%$searchText%') |
-              _remoteDb.visitaTable.contacto.like('%$searchText%'));
-        } else {
-          predicate = predicate &
-              (_remoteDb.visitaTable.resumen.like('%$searchText%') |
-                  _remoteDb.visitaTable.clienteId.like('%$searchText%') |
-                  _remoteDb.clienteTable.nombreCliente.like('%$searchText%') |
-                  _remoteDb.clienteTable.nombreFiscal.like('%$searchText%') |
-                  _remoteDb.visitaTable.clienteProvisionalNombre
-                      .like('%$searchText%') |
-                  _remoteDb.visitaTable.clienteProvisionalEmail
-                      .like('%$searchText%') |
-                  _remoteDb.visitaTable.clienteProvisionalTelefono
-                      .like('%$searchText%') |
-                  _remoteDb.visitaTable.clienteProvisionalPoblacion
-                      .like('%$searchText%') |
-                  _remoteDb.visitaTable.contacto.like('%$searchText%'));
-        }
+        predicate = predicate == null
+            ? (_remoteDb.visitaTable.resumen.like('%$searchText%') |
+                _remoteDb.visitaTable.clienteId.like('%$searchText%') |
+                _remoteDb.clienteTable.nombreCliente.like('%$searchText%') |
+                _remoteDb.clienteTable.nombreFiscal.like('%$searchText%') |
+                _remoteDb.visitaTable.clienteProvisionalNombre
+                    .like('%$searchText%') |
+                _remoteDb.visitaTable.clienteProvisionalEmail
+                    .like('%$searchText%') |
+                _remoteDb.visitaTable.clienteProvisionalTelefono
+                    .like('%$searchText%') |
+                _remoteDb.visitaTable.clienteProvisionalPoblacion
+                    .like('%$searchText%') |
+                _remoteDb.visitaTable.contacto.like('%$searchText%'))
+            : predicate &
+                (_remoteDb.visitaTable.resumen.like('%$searchText%') |
+                    _remoteDb.visitaTable.clienteId.like('%$searchText%') |
+                    _remoteDb.clienteTable.nombreCliente.like('%$searchText%') |
+                    _remoteDb.clienteTable.nombreFiscal.like('%$searchText%') |
+                    _remoteDb.visitaTable.clienteProvisionalNombre
+                        .like('%$searchText%') |
+                    _remoteDb.visitaTable.clienteProvisionalEmail
+                        .like('%$searchText%') |
+                    _remoteDb.visitaTable.clienteProvisionalTelefono
+                        .like('%$searchText%') |
+                    _remoteDb.visitaTable.clienteProvisionalPoblacion
+                        .like('%$searchText%') |
+                    _remoteDb.visitaTable.contacto.like('%$searchText%'));
       }
       query.where(predicate!);
     }
@@ -1083,11 +1075,9 @@ class VisitaRepository {
   String? _getAddressString(List<String> addressList) {
     var addressString = '';
     for (var i = 0; i < addressList.length; i++) {
-      if (i == addressList.length - 1) {
-        addressString += addressList[i];
-      } else {
-        addressString += '${addressList[i]}, ';
-      }
+      addressString += (i == addressList.length - 1)
+          ? addressList[i]
+          : '${addressList[i]}, ';
     }
     return addressString.isNotEmpty ? addressString : null;
   }

@@ -1,6 +1,7 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
+
 import '../domain/divisa.dart';
 import 'remote_database.dart';
 
@@ -52,8 +53,7 @@ class DivisaDTO with _$DivisaDTO implements Insertable<DivisaDTO> {
 
   String getDescriptionInLocalLanguage() {
     final currentLocale = Intl.getCurrentLocale();
-    if (currentLocale == 'es') {
-    } else if (currentLocale == 'en' && descripcionEN != null) {
+    if (currentLocale == 'en' && descripcionEN != null) {
       return descripcionEN!;
     } else if (currentLocale == 'fr' && descripcionFR != null) {
       return descripcionFR!;
@@ -62,29 +62,6 @@ class DivisaDTO with _$DivisaDTO implements Insertable<DivisaDTO> {
     } else if (currentLocale == 'pt' && descripcionPT != null) {
       return descripcionPT!;
     }
-    //else if (currentLocale == 'de' && descripcionDE != null) {
-    //   return descripcionDE!;
-    // } else if (currentLocale == 'ca' && descripcionCA != null) {
-    //   return descripcionCA!;
-    // } else if (currentLocale == 'gb' && descripcionGB != null) {
-    //   return descripcionGB!;
-    // } else if (currentLocale == 'hu' && descripcionHU != null) {
-    //   return descripcionHU!;
-    // }
-    //else if (currentLocale == 'nl' && descripcionNL != null) {
-    //   return descripcionNL!;
-    // } else if (currentLocale == 'pl' && descripcionPL != null) {
-    //   return descripcionPL!;
-    // }
-    //else if (currentLocale == 'ro' && descripcionRO != null) {
-    //   return descripcionRO!;
-    // } else if (currentLocale == 'ru' && descripcionRU != null) {
-    //   return descripcionRU!;
-    // } else if (currentLocale == 'cn' && descripcionCN != null) {
-    //   return descripcionCN!;
-    // } else if (currentLocale == 'el' && descripcionEL != null) {
-    //   return descripcionEL!;
-    // }
 
     return descripcionES;
   }

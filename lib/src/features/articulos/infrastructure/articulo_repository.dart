@@ -224,7 +224,7 @@ class ArticuloRepository {
           OR art.GS1_128_SUBCAJA LIKE '%$searchText%'
           OR art.GS1_128_CAJA LIKE '%$searchText%'
           OR art.GS1_128_PALET LIKE '%$searchText%'
-          ORDER BY 
+          ORDER BY
           CASE
             WHEN art.ARTICULO_ID = '$searchText' OR art.ARTICULO_ID like'$searchText%' THEN 1
             ELSE 2
@@ -1340,44 +1340,36 @@ ORDER  BY IMPORTE_ANYO DESC
       case 'es':
         var sqlWhere = '';
         for (var i = 0; i < stringList.length; i++) {
-          if (i > 0 && i < stringList.length) {
-            sqlWhere += " OR art.DESCRIPCION_ES LIKE '%${stringList[i]}%'";
-          } else {
-            sqlWhere += "art.DESCRIPCION_ES LIKE '%${stringList[i]}%'";
-          }
+          sqlWhere += (i > 0 && i < stringList.length)
+              ? " OR art.DESCRIPCION_ES LIKE '%${stringList[i]}%'"
+              : "art.DESCRIPCION_ES LIKE '%${stringList[i]}%'";
         }
 
         return sqlWhere;
       case 'en':
         var sqlWhere = '';
         for (var i = 0; i < stringList.length; i++) {
-          if (i > 0 && i < stringList.length) {
-            sqlWhere += " OR art.DESCRIPCION_EN LIKE '%${stringList[i]}%'";
-          } else {
-            sqlWhere += "art.DESCRIPCION_EN LIKE '%${stringList[i]}%'";
-          }
+          sqlWhere += (i > 0 && i < stringList.length)
+              ? " OR art.DESCRIPCION_EN LIKE '%${stringList[i]}%'"
+              : "art.DESCRIPCION_EN LIKE '%${stringList[i]}%'";
         }
 
         return sqlWhere;
       case 'fr':
         var sqlWhere = '';
         for (var i = 0; i < stringList.length; i++) {
-          if (i > 0 && i < stringList.length) {
-            sqlWhere += " OR art.DESCRIPCION_FR LIKE '%${stringList[i]}%'";
-          } else {
-            sqlWhere += "art.DESCRIPCION_FR LIKE '%${stringList[i]}%'";
-          }
+          sqlWhere += (i > 0 && i < stringList.length)
+              ? " OR art.DESCRIPCION_FR LIKE '%${stringList[i]}%'"
+              : "art.DESCRIPCION_FR LIKE '%${stringList[i]}%'";
         }
 
         return sqlWhere;
       case 'de':
         var sqlWhere = '';
         for (var i = 0; i < stringList.length; i++) {
-          if (i > 0 && i < stringList.length) {
-            sqlWhere += " OR art.DESCRIPCION_EN LIKE '%${stringList[i]}%'";
-          } else {
-            sqlWhere += "art.DESCRIPCION_EN LIKE '%${stringList[i]}%'";
-          }
+          sqlWhere += (i > 0 && i < stringList.length)
+              ? " OR art.DESCRIPCION_DE LIKE '%${stringList[i]}%'"
+              : "art.DESCRIPCION_DE LIKE '%${stringList[i]}%'";
         }
 
         return sqlWhere;
@@ -1385,11 +1377,9 @@ ORDER  BY IMPORTE_ANYO DESC
       case 'it':
         var sqlWhere = '';
         for (var i = 0; i < stringList.length; i++) {
-          if (i > 0 && i < stringList.length) {
-            sqlWhere += " OR art.DESCRIPCION_IT LIKE '%${stringList[i]}%'";
-          } else {
-            sqlWhere += "art.DESCRIPCION_IT LIKE '%${stringList[i]}%'";
-          }
+          sqlWhere += (i > 0 && i < stringList.length)
+              ? " OR art.DESCRIPCION_IT LIKE '%${stringList[i]}%'"
+              : "art.DESCRIPCION_IT LIKE '%${stringList[i]}%'";
         }
 
         return sqlWhere;
@@ -1397,11 +1387,9 @@ ORDER  BY IMPORTE_ANYO DESC
       default:
         var sqlWhere = '';
         for (var i = 0; i < stringList.length; i++) {
-          if (i > 0 && i < stringList.length) {
-            sqlWhere += " OR art.DESCRIPCION_ES LIKE '%${stringList[i]}%'";
-          } else {
-            sqlWhere += "art.DESCRIPCION_ES LIKE '%${stringList[i]}%'";
-          }
+          sqlWhere += (i > 0 && i < stringList.length)
+              ? " OR art.DESCRIPCION_ES LIKE '%${stringList[i]}%'"
+              : "art.DESCRIPCION_ES LIKE '%${stringList[i]}%'";
         }
 
         return sqlWhere;

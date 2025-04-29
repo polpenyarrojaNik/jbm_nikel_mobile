@@ -1,14 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../core/helpers/formatters.dart';
-import '../../../../core/presentation/theme/app_sizes.dart';
 
 import '../../../../../generated/l10n.dart';
+import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/articulo_ventas_cliente.dart';
 import '../../infrastructure/articulo_repository.dart';
 
@@ -131,7 +131,7 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
         onSort: (i, sortAscending) {
           setState(() {
             _currentSortColumn = i;
-            if (_sortAsc == false) {
+            if (!_sortAsc) {
               _sortAsc = true;
               isCantAnyoAsc = _sortAsc;
               articuloVentasClienteList
@@ -156,7 +156,7 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
         onSort: (i, sortAscending) {
           setState(() {
             _currentSortColumn = i;
-            if (_sortAsc == false) {
+            if (!_sortAsc) {
               _sortAsc = true;
               isCantAnyo1Asc = _sortAsc;
               articuloVentasClienteList
@@ -179,7 +179,7 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
         onSort: (i, sortAscending) {
           setState(() {
             _currentSortColumn = i;
-            if (_sortAsc == false) {
+            if (!_sortAsc) {
               _sortAsc = true;
               isCantAnyo2Asc = _sortAsc;
               articuloVentasClienteList
@@ -202,7 +202,7 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
         onSort: (i, sortAscending) {
           setState(() {
             _currentSortColumn = i;
-            if (_sortAsc == false) {
+            if (!_sortAsc) {
               _sortAsc = true;
               isCantAnyo3Asc = _sortAsc;
               articuloVentasClienteList
@@ -226,7 +226,7 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
         onSort: (i, sortAscending) {
           setState(() {
             _currentSortColumn = i;
-            if (_sortAsc == false) {
+            if (!_sortAsc) {
               _sortAsc = true;
               isCantAnyo4Asc = _sortAsc;
               articuloVentasClienteList
@@ -250,7 +250,7 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
         onSort: (i, sortAscending) {
           setState(() {
             _currentSortColumn = i;
-            if (_sortAsc == false) {
+            if (!_sortAsc) {
               _sortAsc = true;
               isImporteAnyoAsc = _sortAsc;
               articuloVentasClienteList
@@ -275,7 +275,7 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
         onSort: (i, sortAscending) {
           setState(() {
             _currentSortColumn = i;
-            if (_sortAsc == false) {
+            if (!_sortAsc) {
               _sortAsc = true;
               isImporteAnyo1Asc = _sortAsc;
               articuloVentasClienteList
@@ -297,7 +297,7 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
         onSort: (i, sortAscending) {
           setState(() {
             _currentSortColumn = i;
-            if (_sortAsc == false) {
+            if (!_sortAsc) {
               _sortAsc = true;
               isImporteAnyo2Asc = _sortAsc;
               articuloVentasClienteList
@@ -321,7 +321,7 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
         onSort: (i, sortAscending) {
           setState(() {
             _currentSortColumn = i;
-            if (_sortAsc == false) {
+            if (!_sortAsc) {
               _sortAsc = true;
               isImporteAnyo3Asc = _sortAsc;
               articuloVentasClienteList
@@ -345,7 +345,7 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
         onSort: (i, sortAscending) {
           setState(() {
             _currentSortColumn = i;
-            if (_sortAsc == false) {
+            if (!_sortAsc) {
               _sortAsc = true;
               isImporteAnyo4Asc = _sortAsc;
               articuloVentasClienteList

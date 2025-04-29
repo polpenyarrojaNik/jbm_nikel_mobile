@@ -62,16 +62,14 @@ class ArticuloDetallePage extends ConsumerWidget {
         actions: statePedidoVentaBorradoresList.maybeWhen(
           orElse: () => null,
           data: (pedidoVentaBorradoresList) {
-            if (pedidoVentaBorradoresList.isNotEmpty) {
-              return [
-                AddArticleToBorradorButton(
-                  pedidoVentaBorradoresList: pedidoVentaBorradoresList,
-                  articuloId: articuloId,
-                )
-              ];
-            } else {
-              return null;
-            }
+            return pedidoVentaBorradoresList.isNotEmpty
+                ? [
+                    AddArticleToBorradorButton(
+                      pedidoVentaBorradoresList: pedidoVentaBorradoresList,
+                      articuloId: articuloId,
+                    )
+                  ]
+                : null;
           },
         ),
       ),

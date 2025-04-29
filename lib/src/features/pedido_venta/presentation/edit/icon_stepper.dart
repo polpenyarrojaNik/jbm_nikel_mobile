@@ -321,20 +321,18 @@ class _IconStepperState extends State<IconStepper>
   Widget _buildCircleChild(int index, bool oldState) {
     final isDarkActive = _isDark() && widget.steps[index].isActive;
 
-    if (widget.steps[index].icon == null) {
-      return Text(
-        '${index + 1}',
-        style: isDarkActive
-            ? _kStepStyle.copyWith(color: Colors.black87)
-            : _kStepStyle,
-      );
-    } else {
-      return Icon(
-        widget.steps[index].icon,
-        color: isDarkActive ? _kCircleActiveDark : _kCircleActiveLight,
-        size: 18.0,
-      );
-    }
+    return widget.steps[index].icon == null
+        ? Text(
+            '${index + 1}',
+            style: isDarkActive
+                ? _kStepStyle.copyWith(color: Colors.black87)
+                : _kStepStyle,
+          )
+        : Icon(
+            widget.steps[index].icon,
+            color: isDarkActive ? _kCircleActiveDark : _kCircleActiveLight,
+            size: 18.0,
+          );
   }
 
   Color _circleColor(int index) {
@@ -408,25 +406,21 @@ class _IconStepperState extends State<IconStepper>
   }
 
   Widget _buildIcon(int index) {
-    if (widget.steps[index].state != _oldStates[index]) {
-      return AnimatedCrossFade(
-        firstChild: _buildCircle(index, true),
-        secondChild: _buildTriangle(index, true),
-        firstCurve: const Interval(0.0, 0.6, curve: Curves.fastOutSlowIn),
-        secondCurve: const Interval(0.4, 1.0, curve: Curves.fastOutSlowIn),
-        sizeCurve: Curves.fastOutSlowIn,
-        crossFadeState: widget.steps[index].state == IconStepState.error
-            ? CrossFadeState.showSecond
-            : CrossFadeState.showFirst,
-        duration: kThemeAnimationDuration,
-      );
-    } else {
-      if (widget.steps[index].state != IconStepState.error) {
-        return _buildCircle(index, false);
-      } else {
-        return _buildTriangle(index, false);
-      }
-    }
+    return widget.steps[index].state != _oldStates[index]
+        ? AnimatedCrossFade(
+            firstChild: _buildCircle(index, true),
+            secondChild: _buildTriangle(index, true),
+            firstCurve: const Interval(0.0, 0.6, curve: Curves.fastOutSlowIn),
+            secondCurve: const Interval(0.4, 1.0, curve: Curves.fastOutSlowIn),
+            sizeCurve: Curves.fastOutSlowIn,
+            crossFadeState: widget.steps[index].state == IconStepState.error
+                ? CrossFadeState.showSecond
+                : CrossFadeState.showFirst,
+            duration: kThemeAnimationDuration,
+          )
+        : widget.steps[index].state != IconStepState.error
+            ? _buildCircle(index, false)
+            : _buildTriangle(index, false);
   }
 
   Widget _buildVerticalControls() {

@@ -279,12 +279,10 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       final riesgoExcedidoFixed =
           Fixed.parse(riesgoConcedido?.toString() ?? '0') - riesgoActual.amount;
 
-      if (riesgoExcedidoFixed.isNegative) {
-        return Money.fromFixedWithCurrency(
-            riesgoExcedidoFixed.abs, Currencies().find(divisaId)!);
-      } else {
-        return Money.parseWithCurrency('0', Currencies().find(divisaId)!);
-      }
+      return riesgoExcedidoFixed.isNegative
+          ? Money.fromFixedWithCurrency(
+              riesgoExcedidoFixed.abs, Currencies().find(divisaId)!)
+          : Money.parseWithCurrency('0', Currencies().find(divisaId)!);
     } catch (e) {
       rethrow;
     }

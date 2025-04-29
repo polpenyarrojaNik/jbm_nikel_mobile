@@ -28,3 +28,33 @@ linter:
     prefer_single_quotes: true
     unawaited_futures: true
     unnecessary_await_in_return: true
+
+dart_code_metrics:
+  metrics:
+    cyclomatic-complexity: 20
+    number-of-parameters: 4
+    maximum-nesting-level: 5
+  exclude:
+    metrics:
+      - test/**
+  rules:
+    - avoid-passing-async-when-sync-expected
+    - avoid-redundant-async
+    - avoid-unnecessary-type-assertions
+    - avoid-unnecessary-type-casts
+    - avoid-unrelated-type-assertions
+    - avoid-unused-parameters
+    - avoid-nested-conditional-expressions
+    - no-boolean-literal-compare
+    - prefer-trailing-comma
+    - prefer-conditional-expressions
+    - no-equal-then-else
+    - prefer-moving-to-variable
+    - avoid-collapsible-if
+    - avoid-redundant-else
+    - avoid-incomplete-copy-with
+    - avoid-self-compare
+    - avoid-self-assignment
+    - avoid-unnecessary-nullable-return-type
+    - avoid-unrelated-type-casts
+    - prefer-declaring-const-constructor

@@ -17,10 +17,6 @@ extension AsyncValueUI on AsyncValue<dynamic> {
   }
 
   String _errorMessage(Object? error) {
-    if (error is AppException) {
-      return error.details.message;
-    } else {
-      return error.toString();
-    }
+    return error is AppException ? error.details.message : error.toString();
   }
 }

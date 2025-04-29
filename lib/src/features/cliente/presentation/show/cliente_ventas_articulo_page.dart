@@ -2,15 +2,15 @@ import 'package:auto_route/auto_route.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../core/helpers/debouncer.dart';
-import '../../../../core/helpers/formatters.dart';
-import '../../../../core/presentation/common_widgets/error_message_widget.dart';
-import '../../../../core/presentation/theme/app_sizes.dart';
 
 import '../../../../../generated/l10n.dart';
+import '../../../../core/helpers/debouncer.dart';
+import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
+import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/cliente_ventas_articulo.dart';
 import 'cliente_ventas_articulo_controller.dart';
 
@@ -141,7 +141,7 @@ class _VentasArticuloDataTableState
         onSort: (i, sortAscending) {
           setState(() {
             _currentSortColumn = i;
-            if (_sortAsc == false) {
+            if (!_sortAsc) {
               _sortAsc = true;
               isCantAnyoAsc = _sortAsc;
               clienteVentasArticuloList
@@ -165,7 +165,7 @@ class _VentasArticuloDataTableState
         onSort: (i, sortAscending) {
           setState(() {
             _currentSortColumn = i;
-            if (_sortAsc == false) {
+            if (!_sortAsc) {
               _sortAsc = true;
               isCantAnyo1Asc = _sortAsc;
               clienteVentasArticuloList
@@ -188,7 +188,7 @@ class _VentasArticuloDataTableState
         onSort: (i, sortAscending) {
           setState(() {
             _currentSortColumn = i;
-            if (_sortAsc == false) {
+            if (!_sortAsc) {
               _sortAsc = true;
               isCantAnyo2Asc = _sortAsc;
               clienteVentasArticuloList
@@ -211,7 +211,7 @@ class _VentasArticuloDataTableState
         onSort: (i, sortAscending) {
           setState(() {
             _currentSortColumn = i;
-            if (_sortAsc == false) {
+            if (!_sortAsc) {
               _sortAsc = true;
               isCantAnyo3Asc = _sortAsc;
               clienteVentasArticuloList
@@ -234,7 +234,7 @@ class _VentasArticuloDataTableState
         onSort: (i, sortAscending) {
           setState(() {
             _currentSortColumn = i;
-            if (_sortAsc == false) {
+            if (!_sortAsc) {
               _sortAsc = true;
               isCantAnyo4Asc = _sortAsc;
               clienteVentasArticuloList
@@ -257,7 +257,7 @@ class _VentasArticuloDataTableState
         onSort: (i, sortAscending) {
           setState(() {
             _currentSortColumn = i;
-            if (_sortAsc == false) {
+            if (!_sortAsc) {
               _sortAsc = true;
               isImporteAnyoAsc = _sortAsc;
               clienteVentasArticuloList
@@ -281,7 +281,7 @@ class _VentasArticuloDataTableState
         onSort: (i, sortAscending) {
           setState(() {
             _currentSortColumn = i;
-            if (_sortAsc == false) {
+            if (!_sortAsc) {
               _sortAsc = true;
               isImporteAnyo1Asc = _sortAsc;
               clienteVentasArticuloList
@@ -304,7 +304,7 @@ class _VentasArticuloDataTableState
         onSort: (i, sortAscending) {
           setState(() {
             _currentSortColumn = i;
-            if (_sortAsc == false) {
+            if (!_sortAsc) {
               _sortAsc = true;
               isImporteAnyo2Asc = _sortAsc;
               clienteVentasArticuloList
@@ -327,7 +327,7 @@ class _VentasArticuloDataTableState
         onSort: (i, sortAscending) {
           setState(() {
             _currentSortColumn = i;
-            if (_sortAsc == false) {
+            if (!_sortAsc) {
               _sortAsc = true;
               isImporteAnyo3Asc = _sortAsc;
               clienteVentasArticuloList
@@ -350,7 +350,7 @@ class _VentasArticuloDataTableState
         onSort: (i, sortAscending) {
           setState(() {
             _currentSortColumn = i;
-            if (_sortAsc == false) {
+            if (!_sortAsc) {
               _sortAsc = true;
               isImporteAnyo4Asc = _sortAsc;
               clienteVentasArticuloList

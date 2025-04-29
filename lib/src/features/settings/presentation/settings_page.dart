@@ -137,9 +137,12 @@ class SettingsPage extends ConsumerWidget {
     final size = MediaQuery.of(context).size;
     final directory = await getApplicationDocumentsDirectory();
     final file = XFile('${directory.path}/$localDatabaseName');
-    await Share.shareXFiles([file],
-        subject: 'Base de datos local #$usuarioId',
-        sharePositionOrigin: Rect.fromLTWH(0, 0, size.width, size.height / 2));
+    final params = ShareParams(
+      files: [XFile(file.path)],
+      subject: 'Base de datos local #$usuarioId',
+      sharePositionOrigin: Rect.fromLTWH(0, 0, size.width, size.height / 2),
+    );
+    await SharePlus.instance.share(params);
   }
 }
 
