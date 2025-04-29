@@ -12,7 +12,8 @@ part of 'seleccionar_cantidad_param.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$SeleccionarCantidadParam {
@@ -36,28 +37,32 @@ mixin _$SeleccionarCantidadParam {
 
 /// @nodoc
 abstract class $SeleccionarCantidadParamCopyWith<$Res> {
-  factory $SeleccionarCantidadParamCopyWith(SeleccionarCantidadParam value,
-          $Res Function(SeleccionarCantidadParam) then) =
-      _$SeleccionarCantidadParamCopyWithImpl<$Res, SeleccionarCantidadParam>;
+  factory $SeleccionarCantidadParamCopyWith(
+    SeleccionarCantidadParam value,
+    $Res Function(SeleccionarCantidadParam) then,
+  ) = _$SeleccionarCantidadParamCopyWithImpl<$Res, SeleccionarCantidadParam>;
   @useResult
-  $Res call(
-      {PedidoLocalParam pedidoVentaParam,
-      String clienteId,
-      String articuloId,
-      int? cantidad,
-      double? precio,
-      double? descuento1,
-      double? descuento2,
-      bool? createdFromCliente,
-      int posicionLinea,
-      bool addNewLineaDesdeArticulo});
+  $Res call({
+    PedidoLocalParam pedidoVentaParam,
+    String clienteId,
+    String articuloId,
+    int? cantidad,
+    double? precio,
+    double? descuento1,
+    double? descuento2,
+    bool? createdFromCliente,
+    int posicionLinea,
+    bool addNewLineaDesdeArticulo,
+  });
 
   $PedidoLocalParamCopyWith<$Res> get pedidoVentaParam;
 }
 
 /// @nodoc
-class _$SeleccionarCantidadParamCopyWithImpl<$Res,
-        $Val extends SeleccionarCantidadParam>
+class _$SeleccionarCantidadParamCopyWithImpl<
+  $Res,
+  $Val extends SeleccionarCantidadParam
+>
     implements $SeleccionarCantidadParamCopyWith<$Res> {
   _$SeleccionarCantidadParamCopyWithImpl(this._value, this._then);
 
@@ -82,48 +87,61 @@ class _$SeleccionarCantidadParamCopyWithImpl<$Res,
     Object? posicionLinea = null,
     Object? addNewLineaDesdeArticulo = null,
   }) {
-    return _then(_value.copyWith(
-      pedidoVentaParam: null == pedidoVentaParam
-          ? _value.pedidoVentaParam
-          : pedidoVentaParam // ignore: cast_nullable_to_non_nullable
-              as PedidoLocalParam,
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      cantidad: freezed == cantidad
-          ? _value.cantidad
-          : cantidad // ignore: cast_nullable_to_non_nullable
-              as int?,
-      precio: freezed == precio
-          ? _value.precio
-          : precio // ignore: cast_nullable_to_non_nullable
-              as double?,
-      descuento1: freezed == descuento1
-          ? _value.descuento1
-          : descuento1 // ignore: cast_nullable_to_non_nullable
-              as double?,
-      descuento2: freezed == descuento2
-          ? _value.descuento2
-          : descuento2 // ignore: cast_nullable_to_non_nullable
-              as double?,
-      createdFromCliente: freezed == createdFromCliente
-          ? _value.createdFromCliente
-          : createdFromCliente // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      posicionLinea: null == posicionLinea
-          ? _value.posicionLinea
-          : posicionLinea // ignore: cast_nullable_to_non_nullable
-              as int,
-      addNewLineaDesdeArticulo: null == addNewLineaDesdeArticulo
-          ? _value.addNewLineaDesdeArticulo
-          : addNewLineaDesdeArticulo // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            pedidoVentaParam:
+                null == pedidoVentaParam
+                    ? _value.pedidoVentaParam
+                    : pedidoVentaParam // ignore: cast_nullable_to_non_nullable
+                        as PedidoLocalParam,
+            clienteId:
+                null == clienteId
+                    ? _value.clienteId
+                    : clienteId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            articuloId:
+                null == articuloId
+                    ? _value.articuloId
+                    : articuloId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            cantidad:
+                freezed == cantidad
+                    ? _value.cantidad
+                    : cantidad // ignore: cast_nullable_to_non_nullable
+                        as int?,
+            precio:
+                freezed == precio
+                    ? _value.precio
+                    : precio // ignore: cast_nullable_to_non_nullable
+                        as double?,
+            descuento1:
+                freezed == descuento1
+                    ? _value.descuento1
+                    : descuento1 // ignore: cast_nullable_to_non_nullable
+                        as double?,
+            descuento2:
+                freezed == descuento2
+                    ? _value.descuento2
+                    : descuento2 // ignore: cast_nullable_to_non_nullable
+                        as double?,
+            createdFromCliente:
+                freezed == createdFromCliente
+                    ? _value.createdFromCliente
+                    : createdFromCliente // ignore: cast_nullable_to_non_nullable
+                        as bool?,
+            posicionLinea:
+                null == posicionLinea
+                    ? _value.posicionLinea
+                    : posicionLinea // ignore: cast_nullable_to_non_nullable
+                        as int,
+            addNewLineaDesdeArticulo:
+                null == addNewLineaDesdeArticulo
+                    ? _value.addNewLineaDesdeArticulo
+                    : addNewLineaDesdeArticulo // ignore: cast_nullable_to_non_nullable
+                        as bool,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of SeleccionarCantidadParam
@@ -141,22 +159,23 @@ class _$SeleccionarCantidadParamCopyWithImpl<$Res,
 abstract class _$$SeleccionarCantidadParamImplCopyWith<$Res>
     implements $SeleccionarCantidadParamCopyWith<$Res> {
   factory _$$SeleccionarCantidadParamImplCopyWith(
-          _$SeleccionarCantidadParamImpl value,
-          $Res Function(_$SeleccionarCantidadParamImpl) then) =
-      __$$SeleccionarCantidadParamImplCopyWithImpl<$Res>;
+    _$SeleccionarCantidadParamImpl value,
+    $Res Function(_$SeleccionarCantidadParamImpl) then,
+  ) = __$$SeleccionarCantidadParamImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {PedidoLocalParam pedidoVentaParam,
-      String clienteId,
-      String articuloId,
-      int? cantidad,
-      double? precio,
-      double? descuento1,
-      double? descuento2,
-      bool? createdFromCliente,
-      int posicionLinea,
-      bool addNewLineaDesdeArticulo});
+  $Res call({
+    PedidoLocalParam pedidoVentaParam,
+    String clienteId,
+    String articuloId,
+    int? cantidad,
+    double? precio,
+    double? descuento1,
+    double? descuento2,
+    bool? createdFromCliente,
+    int posicionLinea,
+    bool addNewLineaDesdeArticulo,
+  });
 
   @override
   $PedidoLocalParamCopyWith<$Res> get pedidoVentaParam;
@@ -164,13 +183,16 @@ abstract class _$$SeleccionarCantidadParamImplCopyWith<$Res>
 
 /// @nodoc
 class __$$SeleccionarCantidadParamImplCopyWithImpl<$Res>
-    extends _$SeleccionarCantidadParamCopyWithImpl<$Res,
-        _$SeleccionarCantidadParamImpl>
+    extends
+        _$SeleccionarCantidadParamCopyWithImpl<
+          $Res,
+          _$SeleccionarCantidadParamImpl
+        >
     implements _$$SeleccionarCantidadParamImplCopyWith<$Res> {
   __$$SeleccionarCantidadParamImplCopyWithImpl(
-      _$SeleccionarCantidadParamImpl _value,
-      $Res Function(_$SeleccionarCantidadParamImpl) _then)
-      : super(_value, _then);
+    _$SeleccionarCantidadParamImpl _value,
+    $Res Function(_$SeleccionarCantidadParamImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SeleccionarCantidadParam
   /// with the given fields replaced by the non-null parameter values.
@@ -188,66 +210,78 @@ class __$$SeleccionarCantidadParamImplCopyWithImpl<$Res>
     Object? posicionLinea = null,
     Object? addNewLineaDesdeArticulo = null,
   }) {
-    return _then(_$SeleccionarCantidadParamImpl(
-      pedidoVentaParam: null == pedidoVentaParam
-          ? _value.pedidoVentaParam
-          : pedidoVentaParam // ignore: cast_nullable_to_non_nullable
-              as PedidoLocalParam,
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      cantidad: freezed == cantidad
-          ? _value.cantidad
-          : cantidad // ignore: cast_nullable_to_non_nullable
-              as int?,
-      precio: freezed == precio
-          ? _value.precio
-          : precio // ignore: cast_nullable_to_non_nullable
-              as double?,
-      descuento1: freezed == descuento1
-          ? _value.descuento1
-          : descuento1 // ignore: cast_nullable_to_non_nullable
-              as double?,
-      descuento2: freezed == descuento2
-          ? _value.descuento2
-          : descuento2 // ignore: cast_nullable_to_non_nullable
-              as double?,
-      createdFromCliente: freezed == createdFromCliente
-          ? _value.createdFromCliente
-          : createdFromCliente // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      posicionLinea: null == posicionLinea
-          ? _value.posicionLinea
-          : posicionLinea // ignore: cast_nullable_to_non_nullable
-              as int,
-      addNewLineaDesdeArticulo: null == addNewLineaDesdeArticulo
-          ? _value.addNewLineaDesdeArticulo
-          : addNewLineaDesdeArticulo // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$SeleccionarCantidadParamImpl(
+        pedidoVentaParam:
+            null == pedidoVentaParam
+                ? _value.pedidoVentaParam
+                : pedidoVentaParam // ignore: cast_nullable_to_non_nullable
+                    as PedidoLocalParam,
+        clienteId:
+            null == clienteId
+                ? _value.clienteId
+                : clienteId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        articuloId:
+            null == articuloId
+                ? _value.articuloId
+                : articuloId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        cantidad:
+            freezed == cantidad
+                ? _value.cantidad
+                : cantidad // ignore: cast_nullable_to_non_nullable
+                    as int?,
+        precio:
+            freezed == precio
+                ? _value.precio
+                : precio // ignore: cast_nullable_to_non_nullable
+                    as double?,
+        descuento1:
+            freezed == descuento1
+                ? _value.descuento1
+                : descuento1 // ignore: cast_nullable_to_non_nullable
+                    as double?,
+        descuento2:
+            freezed == descuento2
+                ? _value.descuento2
+                : descuento2 // ignore: cast_nullable_to_non_nullable
+                    as double?,
+        createdFromCliente:
+            freezed == createdFromCliente
+                ? _value.createdFromCliente
+                : createdFromCliente // ignore: cast_nullable_to_non_nullable
+                    as bool?,
+        posicionLinea:
+            null == posicionLinea
+                ? _value.posicionLinea
+                : posicionLinea // ignore: cast_nullable_to_non_nullable
+                    as int,
+        addNewLineaDesdeArticulo:
+            null == addNewLineaDesdeArticulo
+                ? _value.addNewLineaDesdeArticulo
+                : addNewLineaDesdeArticulo // ignore: cast_nullable_to_non_nullable
+                    as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$SeleccionarCantidadParamImpl extends _SeleccionarCantidadParam {
-  const _$SeleccionarCantidadParamImpl(
-      {required this.pedidoVentaParam,
-      required this.clienteId,
-      required this.articuloId,
-      this.cantidad,
-      this.precio,
-      this.descuento1,
-      this.descuento2,
-      this.createdFromCliente,
-      required this.posicionLinea,
-      required this.addNewLineaDesdeArticulo})
-      : super._();
+  const _$SeleccionarCantidadParamImpl({
+    required this.pedidoVentaParam,
+    required this.clienteId,
+    required this.articuloId,
+    this.cantidad,
+    this.precio,
+    this.descuento1,
+    this.descuento2,
+    this.createdFromCliente,
+    required this.posicionLinea,
+    required this.addNewLineaDesdeArticulo,
+  }) : super._();
 
   @override
   final PedidoLocalParam pedidoVentaParam;
@@ -298,23 +332,26 @@ class _$SeleccionarCantidadParamImpl extends _SeleccionarCantidadParam {
             (identical(other.posicionLinea, posicionLinea) ||
                 other.posicionLinea == posicionLinea) &&
             (identical(
-                    other.addNewLineaDesdeArticulo, addNewLineaDesdeArticulo) ||
+                  other.addNewLineaDesdeArticulo,
+                  addNewLineaDesdeArticulo,
+                ) ||
                 other.addNewLineaDesdeArticulo == addNewLineaDesdeArticulo));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      pedidoVentaParam,
-      clienteId,
-      articuloId,
-      cantidad,
-      precio,
-      descuento1,
-      descuento2,
-      createdFromCliente,
-      posicionLinea,
-      addNewLineaDesdeArticulo);
+    runtimeType,
+    pedidoVentaParam,
+    clienteId,
+    articuloId,
+    cantidad,
+    precio,
+    descuento1,
+    descuento2,
+    createdFromCliente,
+    posicionLinea,
+    addNewLineaDesdeArticulo,
+  );
 
   /// Create a copy of SeleccionarCantidadParam
   /// with the given fields replaced by the non-null parameter values.
@@ -322,23 +359,24 @@ class _$SeleccionarCantidadParamImpl extends _SeleccionarCantidadParam {
   @override
   @pragma('vm:prefer-inline')
   _$$SeleccionarCantidadParamImplCopyWith<_$SeleccionarCantidadParamImpl>
-      get copyWith => __$$SeleccionarCantidadParamImplCopyWithImpl<
-          _$SeleccionarCantidadParamImpl>(this, _$identity);
+  get copyWith => __$$SeleccionarCantidadParamImplCopyWithImpl<
+    _$SeleccionarCantidadParamImpl
+  >(this, _$identity);
 }
 
 abstract class _SeleccionarCantidadParam extends SeleccionarCantidadParam {
-  const factory _SeleccionarCantidadParam(
-          {required final PedidoLocalParam pedidoVentaParam,
-          required final String clienteId,
-          required final String articuloId,
-          final int? cantidad,
-          final double? precio,
-          final double? descuento1,
-          final double? descuento2,
-          final bool? createdFromCliente,
-          required final int posicionLinea,
-          required final bool addNewLineaDesdeArticulo}) =
-      _$SeleccionarCantidadParamImpl;
+  const factory _SeleccionarCantidadParam({
+    required final PedidoLocalParam pedidoVentaParam,
+    required final String clienteId,
+    required final String articuloId,
+    final int? cantidad,
+    final double? precio,
+    final double? descuento1,
+    final double? descuento2,
+    final bool? createdFromCliente,
+    required final int posicionLinea,
+    required final bool addNewLineaDesdeArticulo,
+  }) = _$SeleccionarCantidadParamImpl;
   const _SeleccionarCantidadParam._() : super._();
 
   @override
@@ -367,5 +405,5 @@ abstract class _SeleccionarCantidadParam extends SeleccionarCantidadParam {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SeleccionarCantidadParamImplCopyWith<_$SeleccionarCantidadParamImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }

@@ -6,76 +6,77 @@ part of 'cliente_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ClienteDTOImpl _$$ClienteDTOImplFromJson(Map<String, dynamic> json) =>
-    _$ClienteDTOImpl(
-      id: json['CLIENTE_ID'] as String,
-      nombreCliente: json['NOMBRE'] as String,
-      nif: json['NIF'] as String?,
-      nombreFiscal: json['NOMBRE_FISCAL'] as String,
-      direccionFiscal1: json['DIRECCION_FISCAL1'] as String?,
-      direccionFiscal2: json['DIRECCION_FISCAL2'] as String?,
-      codigoPostalFiscal: json['CODIGO_POSTAL_FISCAL'] as String?,
-      poblacionFiscal: json['POBLACION_FISCAL'] as String?,
-      paisFiscalId: json['PAIS_ID_FISCAL'] as String?,
-      provinciaFiscal: json['PROVINCIA_FISCAL'] as String?,
-      latitudFiscal: (json['LATITUD_FISCAL'] as num).toDouble(),
-      longitudFiscal: (json['LONGITUD_FISCAL'] as num).toDouble(),
-      empresaId: json['EMPRESA_ID'] as String,
-      iva: (json['IVA'] as num).toDouble(),
-      ventasAnyoActual: (json['VENTAS_ANYO_ACTUAL'] as num).toDouble(),
-      ventasAnyoAnterior: (json['VENTAS_ANYO_ANTERIOR'] as num).toDouble(),
-      ventasHaceDosAnyos: (json['VENTAS_HACE_DOS_ANYOS'] as num).toDouble(),
-      margenAnyoActual: (json['MARGEN_ANYO_ACTUAL'] as num).toDouble(),
-      margenAnyoAnterior: (json['MARGEN_ANYO_ANTERIOR'] as num).toDouble(),
-      margenHaceDosAnyos: (json['MARGEN_HACE_DOS_ANYOS'] as num).toDouble(),
-      porcentajeAbonos: (json['PORCENTAJE_ABONOS'] as num).toDouble(),
-      porcentajeGarantias: (json['PORCENTAJE_GARANTIAS'] as num).toDouble(),
-      centralCompras: json['CENTRAL_COMPRAS_NOMBRE'] as String?,
-      urlWeb: json['URL_WEB'] as String?,
-      divisaId: json['DIVISA_ID'] as String?,
-      tarifaId: json['TARIFA_ID'] as String?,
-      tarifaDescripcion: json['TARIFA_DESCRIPCION'] as String?,
-      descuentoGeneralId: json['DESCUENTO_GENERAL_ID'] as String?,
-      descripcionDescuentoGeneral:
-          json['DESCUENTO_GENERAL_DESCRIPCION'] as String?,
-      tipoCalculoPrecio: json['TIPO_CALCULO_PRECIO'] as String,
-      plazoDeCobroId: json['PLAZO_COBRO_ID'] as String?,
-      metodoDeCobroId: json['METODO_COBRO_ID'] as String?,
-      descuentoProntoPago: (json['DESCUENTO_PRONTO_PAGO'] as num).toDouble(),
-      riesgoConcedidoInterno:
-          (json['RIESGO_CONCEDIDO_INTERNO'] as num).toDouble(),
-      riesgoConcedidoInternoDate: json['RIESGO_CONCEDIDO_INTERNO_FECHA'] == null
+_$ClienteDTOImpl _$$ClienteDTOImplFromJson(
+  Map<String, dynamic> json,
+) => _$ClienteDTOImpl(
+  id: json['CLIENTE_ID'] as String,
+  nombreCliente: json['NOMBRE'] as String,
+  nif: json['NIF'] as String?,
+  nombreFiscal: json['NOMBRE_FISCAL'] as String,
+  direccionFiscal1: json['DIRECCION_FISCAL1'] as String?,
+  direccionFiscal2: json['DIRECCION_FISCAL2'] as String?,
+  codigoPostalFiscal: json['CODIGO_POSTAL_FISCAL'] as String?,
+  poblacionFiscal: json['POBLACION_FISCAL'] as String?,
+  paisFiscalId: json['PAIS_ID_FISCAL'] as String?,
+  provinciaFiscal: json['PROVINCIA_FISCAL'] as String?,
+  latitudFiscal: (json['LATITUD_FISCAL'] as num).toDouble(),
+  longitudFiscal: (json['LONGITUD_FISCAL'] as num).toDouble(),
+  empresaId: json['EMPRESA_ID'] as String,
+  iva: (json['IVA'] as num).toDouble(),
+  ventasAnyoActual: (json['VENTAS_ANYO_ACTUAL'] as num).toDouble(),
+  ventasAnyoAnterior: (json['VENTAS_ANYO_ANTERIOR'] as num).toDouble(),
+  ventasHaceDosAnyos: (json['VENTAS_HACE_DOS_ANYOS'] as num).toDouble(),
+  margenAnyoActual: (json['MARGEN_ANYO_ACTUAL'] as num).toDouble(),
+  margenAnyoAnterior: (json['MARGEN_ANYO_ANTERIOR'] as num).toDouble(),
+  margenHaceDosAnyos: (json['MARGEN_HACE_DOS_ANYOS'] as num).toDouble(),
+  porcentajeAbonos: (json['PORCENTAJE_ABONOS'] as num).toDouble(),
+  porcentajeGarantias: (json['PORCENTAJE_GARANTIAS'] as num).toDouble(),
+  centralCompras: json['CENTRAL_COMPRAS_NOMBRE'] as String?,
+  urlWeb: json['URL_WEB'] as String?,
+  divisaId: json['DIVISA_ID'] as String?,
+  tarifaId: json['TARIFA_ID'] as String?,
+  tarifaDescripcion: json['TARIFA_DESCRIPCION'] as String?,
+  descuentoGeneralId: json['DESCUENTO_GENERAL_ID'] as String?,
+  descripcionDescuentoGeneral: json['DESCUENTO_GENERAL_DESCRIPCION'] as String?,
+  tipoCalculoPrecio: json['TIPO_CALCULO_PRECIO'] as String,
+  plazoDeCobroId: json['PLAZO_COBRO_ID'] as String?,
+  metodoDeCobroId: json['METODO_COBRO_ID'] as String?,
+  descuentoProntoPago: (json['DESCUENTO_PRONTO_PAGO'] as num).toDouble(),
+  riesgoConcedidoInterno: (json['RIESGO_CONCEDIDO_INTERNO'] as num).toDouble(),
+  riesgoConcedidoInternoDate:
+      json['RIESGO_CONCEDIDO_INTERNO_FECHA'] == null
           ? null
           : DateTime.parse(json['RIESGO_CONCEDIDO_INTERNO_FECHA'] as String),
-      riesgoConcedidoCoafe: (json['RIESGO_CONCEDIDO_COFACE'] as num).toDouble(),
-      riesgoConcedidoCoafeFecha: json['RIESGO_CONCEDIDO_COFACE_FECHA'] == null
+  riesgoConcedidoCoafe: (json['RIESGO_CONCEDIDO_COFACE'] as num).toDouble(),
+  riesgoConcedidoCoafeFecha:
+      json['RIESGO_CONCEDIDO_COFACE_FECHA'] == null
           ? null
           : DateTime.parse(json['RIESGO_CONCEDIDO_COFACE_FECHA'] as String),
-      riesgoConcedido: (json['RIESGO_CONCEDIDO'] as num?)?.toDouble(),
-      riesgoPendienteCobroVencido:
-          (json['RIESGO_PDTE_COBRO_VENCIDO_CLIENTE'] as num?)?.toDouble(),
-      riesgoPendienteCobroNoVencido:
-          (json['RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE'] as num?)?.toDouble(),
-      riesgoPendienteServir:
-          (json['RIESGO_PDTE_SERVIR_CLIENTE'] as num?)?.toDouble(),
-      riesgoPendienteFacturar:
-          (json['RIESGO_PDTE_FACTURAR_CLIENTE'] as num?)?.toDouble(),
-      obvservacionesInternas: json['OBSERVACIONES_INTERNAS'] as String?,
-      clientePotencial: json['CLIENTE_POTENCIAL'] as String?,
-      clienteEstadoPotencialId: json['ESTADO_POTENCIAL_ID'] as String?,
-      clienteTipoPotencialId: json['TIPO_POTENCIAL_ID'] as String?,
-      representante1Id: json['REPRESENTANTE1_ID'] as String?,
-      representante1Nombre: json['REPRESENTANTE1_NOMBRE'] as String?,
-      representante2Id: json['REPRESENTANTE2_ID'] as String?,
-      representante2Nombre: json['REPRESENTANTE2_NOMBRE'] as String?,
-      telefonoFijo: json['TELEFONO_FIJO'] as String?,
-      telefonoMovil: json['TELEFONO_MOVIL'] as String?,
-      email: json['E_MAIL'] as String?,
-      sectorId: json['SECTOR_ID'] as String?,
-      subsectorId: json['SUBSECTOR_ID'] as String?,
-      lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
-      deleted: json['DELETED'] as String? ?? 'N',
-    );
+  riesgoConcedido: (json['RIESGO_CONCEDIDO'] as num?)?.toDouble(),
+  riesgoPendienteCobroVencido:
+      (json['RIESGO_PDTE_COBRO_VENCIDO_CLIENTE'] as num?)?.toDouble(),
+  riesgoPendienteCobroNoVencido:
+      (json['RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE'] as num?)?.toDouble(),
+  riesgoPendienteServir:
+      (json['RIESGO_PDTE_SERVIR_CLIENTE'] as num?)?.toDouble(),
+  riesgoPendienteFacturar:
+      (json['RIESGO_PDTE_FACTURAR_CLIENTE'] as num?)?.toDouble(),
+  obvservacionesInternas: json['OBSERVACIONES_INTERNAS'] as String?,
+  clientePotencial: json['CLIENTE_POTENCIAL'] as String?,
+  clienteEstadoPotencialId: json['ESTADO_POTENCIAL_ID'] as String?,
+  clienteTipoPotencialId: json['TIPO_POTENCIAL_ID'] as String?,
+  representante1Id: json['REPRESENTANTE1_ID'] as String?,
+  representante1Nombre: json['REPRESENTANTE1_NOMBRE'] as String?,
+  representante2Id: json['REPRESENTANTE2_ID'] as String?,
+  representante2Nombre: json['REPRESENTANTE2_NOMBRE'] as String?,
+  telefonoFijo: json['TELEFONO_FIJO'] as String?,
+  telefonoMovil: json['TELEFONO_MOVIL'] as String?,
+  email: json['E_MAIL'] as String?,
+  sectorId: json['SECTOR_ID'] as String?,
+  subsectorId: json['SUBSECTOR_ID'] as String?,
+  lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
+  deleted: json['DELETED'] as String? ?? 'N',
+);
 
 Map<String, dynamic> _$$ClienteDTOImplToJson(_$ClienteDTOImpl instance) =>
     <String, dynamic>{

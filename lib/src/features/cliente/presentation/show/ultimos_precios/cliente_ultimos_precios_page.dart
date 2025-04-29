@@ -18,8 +18,11 @@ import 'cliente_ultimos_precios_search_controller.dart';
 
 @RoutePage()
 class ClienteUltimosPreciosPage extends ConsumerWidget {
-  ClienteUltimosPreciosPage(
-      {super.key, required this.clienteId, required this.nombreCliente});
+  ClienteUltimosPreciosPage({
+    super.key,
+    required this.clienteId,
+    required this.nombreCliente,
+  });
 
   final String clienteId;
   final String? nombreCliente;
@@ -29,8 +32,8 @@ class ClienteUltimosPreciosPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final stateClienteUltimosPreciosListCount = ref.watch(
-        clienteUltimosPreciosIndexScreenControllerProvider(
-            clienteId: clienteId));
+      clienteUltimosPreciosIndexScreenControllerProvider(clienteId: clienteId),
+    );
 
     ref.listen<AsyncValue<void>>(
       clienteUltimosPreciosIndexScreenControllerProvider(clienteId: clienteId),
@@ -60,26 +63,30 @@ class ClienteUltimosPreciosPage extends ConsumerWidget {
           gapH8,
           stateClienteUltimosPreciosListCount.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
-            data: (count) => Expanded(
-              child: ListView.separated(
-                itemCount: count,
-                itemBuilder: (context, i) => ref
-                    .watch(
-                      ClienteUltimosPreciosIndexScreenPaginatedControllerProvider(
-                        clienteId: clienteId,
-                        page: (i ~/ ClienteRepository.pageSize),
-                      ),
-                    )
-                    .maybeWhen(
-                      orElse: () => const ArticuloListShimmer(),
-                      data: (ultimosPreciosList) => _UltimosPreciosTile(
-                        ultimosPrecios:
-                            ultimosPreciosList[i % ClienteRepository.pageSize],
-                      ),
-                    ),
-                separatorBuilder: (context, i) => const Divider(),
-              ),
-            ),
+            data:
+                (count) => Expanded(
+                  child: ListView.separated(
+                    itemCount: count,
+                    itemBuilder:
+                        (context, i) => ref
+                            .watch(
+                              ClienteUltimosPreciosIndexScreenPaginatedControllerProvider(
+                                clienteId: clienteId,
+                                page: (i ~/ ClienteRepository.pageSize),
+                              ),
+                            )
+                            .maybeWhen(
+                              orElse: () => const ArticuloListShimmer(),
+                              data:
+                                  (ultimosPreciosList) => _UltimosPreciosTile(
+                                    ultimosPrecios:
+                                        ultimosPreciosList[i %
+                                            ClienteRepository.pageSize],
+                                  ),
+                            ),
+                    separatorBuilder: (context, i) => const Divider(),
+                  ),
+                ),
             error: (e, _) => ErrorMessageWidget(e.toString()),
             loading: () => const ProgressIndicatorWidget(),
           ),
@@ -124,11 +131,13 @@ class _UltimosPreciosTile extends StatelessWidget {
               children: [
                 Text(
                   dateFormatter(
-                      ultimosPrecios.fecha.toLocal().toIso8601String()),
+                    ultimosPrecios.fecha.toLocal().toIso8601String(),
+                  ),
                 ),
                 gapW16,
                 Text(
-                    '${numberFormatCantidades(ultimosPrecios.cantidad.toDouble())} ${S.of(context).unidad}'),
+                  '${numberFormatCantidades(ultimosPrecios.cantidad.toDouble())} ${S.of(context).unidad}',
+                ),
               ],
             ),
             Row(

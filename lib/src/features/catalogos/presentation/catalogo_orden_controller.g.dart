@@ -13,14 +13,15 @@ String _$catalogoOrdenControllerHash() =>
 @ProviderFor(CatalogoOrdenController)
 final catalogoOrdenControllerProvider =
     AutoDisposeNotifierProvider<CatalogoOrdenController, void>.internal(
-  CatalogoOrdenController.new,
-  name: r'catalogoOrdenControllerProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$catalogoOrdenControllerHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      CatalogoOrdenController.new,
+      name: r'catalogoOrdenControllerProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$catalogoOrdenControllerHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$CatalogoOrdenController = AutoDisposeNotifier<void>;
 // ignore_for_file: type=lint
@@ -45,8 +46,8 @@ final _saveCatalogoAbiertoProvider = Provider.autoDispose((ref) {
 }, dependencies: [catalogoOrdenControllerProvider]);
 
 typedef SaveCatalogoAbiertoSignature = Future<void> Function(int catalogoId);
-typedef SaveCatalogoAbiertoStateSetter = void Function(
-    SaveCatalogoAbiertoMutation newState);
+typedef SaveCatalogoAbiertoStateSetter =
+    void Function(SaveCatalogoAbiertoMutation newState);
 
 sealed class SaveCatalogoAbiertoMutation with AsyncMutation {
   factory SaveCatalogoAbiertoMutation(
@@ -68,8 +69,9 @@ sealed class SaveCatalogoAbiertoMutation with AsyncMutation {
       await _fn(catalogoId);
       _updateState(SaveCatalogoAbiertoMutationSuccess.from(this));
     } catch (e, s) {
-      _updateState(SaveCatalogoAbiertoMutationFailure.from(this,
-          error: e, stackTrace: s));
+      _updateState(
+        SaveCatalogoAbiertoMutationFailure.from(this, error: e, stackTrace: s),
+      );
     }
   }
 }
@@ -84,13 +86,13 @@ final class SaveCatalogoAbiertoMutationIdle extends SaveCatalogoAbiertoMutation
   }) : super._();
 
   factory SaveCatalogoAbiertoMutationIdle.from(
-          SaveCatalogoAbiertoMutation other) =>
-      SaveCatalogoAbiertoMutationIdle._(
-        other._updateState,
-        other._fn,
-        error: other.error,
-        stackTrace: other.stackTrace,
-      );
+    SaveCatalogoAbiertoMutation other,
+  ) => SaveCatalogoAbiertoMutationIdle._(
+    other._updateState,
+    other._fn,
+    error: other.error,
+    stackTrace: other.stackTrace,
+  );
 
   @override
   final Object? error;
@@ -100,7 +102,8 @@ final class SaveCatalogoAbiertoMutationIdle extends SaveCatalogoAbiertoMutation
 }
 
 final class SaveCatalogoAbiertoMutationLoading
-    extends SaveCatalogoAbiertoMutation with MutationLoading {
+    extends SaveCatalogoAbiertoMutation
+    with MutationLoading {
   SaveCatalogoAbiertoMutationLoading._(
     super._updateState,
     super._fn, {
@@ -109,13 +112,13 @@ final class SaveCatalogoAbiertoMutationLoading
   }) : super._();
 
   factory SaveCatalogoAbiertoMutationLoading.from(
-          SaveCatalogoAbiertoMutation other) =>
-      SaveCatalogoAbiertoMutationLoading._(
-        other._updateState,
-        other._fn,
-        error: other.error,
-        stackTrace: other.stackTrace,
-      );
+    SaveCatalogoAbiertoMutation other,
+  ) => SaveCatalogoAbiertoMutationLoading._(
+    other._updateState,
+    other._fn,
+    error: other.error,
+    stackTrace: other.stackTrace,
+  );
 
   @override
   final Object? error;
@@ -125,7 +128,8 @@ final class SaveCatalogoAbiertoMutationLoading
 }
 
 final class SaveCatalogoAbiertoMutationSuccess
-    extends SaveCatalogoAbiertoMutation with MutationSuccess {
+    extends SaveCatalogoAbiertoMutation
+    with MutationSuccess {
   SaveCatalogoAbiertoMutationSuccess._(
     super._updateState,
     super._fn, {
@@ -134,13 +138,13 @@ final class SaveCatalogoAbiertoMutationSuccess
   }) : super._();
 
   factory SaveCatalogoAbiertoMutationSuccess.from(
-          SaveCatalogoAbiertoMutation other) =>
-      SaveCatalogoAbiertoMutationSuccess._(
-        other._updateState,
-        other._fn,
-        error: other.error,
-        stackTrace: other.stackTrace,
-      );
+    SaveCatalogoAbiertoMutation other,
+  ) => SaveCatalogoAbiertoMutationSuccess._(
+    other._updateState,
+    other._fn,
+    error: other.error,
+    stackTrace: other.stackTrace,
+  );
 
   @override
   final Object? error;
@@ -150,7 +154,8 @@ final class SaveCatalogoAbiertoMutationSuccess
 }
 
 final class SaveCatalogoAbiertoMutationFailure
-    extends SaveCatalogoAbiertoMutation with MutationFailure {
+    extends SaveCatalogoAbiertoMutation
+    with MutationFailure {
   SaveCatalogoAbiertoMutationFailure._(
     super._updateState,
     super._fn, {
@@ -162,13 +167,12 @@ final class SaveCatalogoAbiertoMutationFailure
     SaveCatalogoAbiertoMutation other, {
     required Object error,
     required StackTrace stackTrace,
-  }) =>
-      SaveCatalogoAbiertoMutationFailure._(
-        other._updateState,
-        other._fn,
-        error: error,
-        stackTrace: stackTrace,
-      );
+  }) => SaveCatalogoAbiertoMutationFailure._(
+    other._updateState,
+    other._fn,
+    error: error,
+    stackTrace: stackTrace,
+  );
 
   @override
   final Object error;

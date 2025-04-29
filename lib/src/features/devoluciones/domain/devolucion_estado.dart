@@ -5,9 +5,10 @@ part 'devolucion_estado.freezed.dart';
 @freezed
 class DevolucionEstado with _$DevolucionEstado {
   const DevolucionEstado._();
-  const factory DevolucionEstado(
-      {required String id,
-      required String descripcion,
-      required DateTime lastUpdated,
-      required bool deleted}) = _DevolucionEstado;
+  const factory DevolucionEstado({
+    required String id,
+    required String descripcion,
+    required DateTime lastUpdated,
+    required bool deleted,
+  }) = _DevolucionEstado;
 }

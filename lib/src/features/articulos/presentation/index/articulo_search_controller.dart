@@ -6,13 +6,15 @@ import '../../infrastructure/articulo_repository.dart';
 
 part 'articulo_search_controller.g.dart';
 
-final articulosSearchQueryStateProvider =
-    StateProvider.autoDispose<String>((ref) {
+final articulosSearchQueryStateProvider = StateProvider.autoDispose<String>((
+  ref,
+) {
   return '';
 });
 
-final articuloForFromStateProvider =
-    StateProvider.autoDispose<Articulo?>((ref) {
+final articuloForFromStateProvider = StateProvider.autoDispose<Articulo?>((
+  ref,
+) {
   return null;
 });
 
@@ -22,8 +24,11 @@ class ArticuloIndexScreenController extends _$ArticuloIndexScreenController {
 
   @override
   Future<int> build(bool isSearchArticuloForForm) {
-    return ref.read(articuloRepositoryProvider).getArticuloCountList(
-        searchText: ref.watch(articulosSearchQueryStateProvider));
+    return ref
+        .read(articuloRepositoryProvider)
+        .getArticuloCountList(
+          searchText: ref.watch(articulosSearchQueryStateProvider),
+        );
   }
 }
 
@@ -33,11 +38,16 @@ class ArticuloIndexScreenPaginatedController
   ArticuloIndexScreenPaginatedController();
 
   @override
-  Future<List<Articulo>> build(
-      {required int page, required bool isSearchArticuloForForm}) {
-    return ref.read(articuloRepositoryProvider).getArticuloLista(
-        page: page,
-        isSearchArticuloForForm: isSearchArticuloForForm,
-        searchText: ref.watch(articulosSearchQueryStateProvider));
+  Future<List<Articulo>> build({
+    required int page,
+    required bool isSearchArticuloForForm,
+  }) {
+    return ref
+        .read(articuloRepositoryProvider)
+        .getArticuloLista(
+          page: page,
+          isSearchArticuloForForm: isSearchArticuloForForm,
+          searchText: ref.watch(articulosSearchQueryStateProvider),
+        );
   }
 }

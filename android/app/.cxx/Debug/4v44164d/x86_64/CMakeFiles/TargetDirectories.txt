@@ -1,0 +1,2 @@
+C:/proyectos/mobile/jbm_nikel_mobile/android/app/.cxx/Debug/4v44164d/x86_64/CMakeFiles/edit_cache.dir
+C:/proyectos/mobile/jbm_nikel_mobile/android/app/.cxx/Debug/4v44164d/x86_64/CMakeFiles/rebuild_cache.dir

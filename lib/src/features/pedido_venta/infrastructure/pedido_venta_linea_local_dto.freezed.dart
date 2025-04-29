@@ -12,10 +12,12 @@ part of 'pedido_venta_linea_local_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 PedidoVentaLineaLocalDTO _$PedidoVentaLineaLocalDTOFromJson(
-    Map<String, dynamic> json) {
+  Map<String, dynamic> json,
+) {
   return _PedidoVentaLineaLocalDTO.fromJson(json);
 }
 
@@ -68,34 +70,38 @@ mixin _$PedidoVentaLineaLocalDTO {
 
 /// @nodoc
 abstract class $PedidoVentaLineaLocalDTOCopyWith<$Res> {
-  factory $PedidoVentaLineaLocalDTOCopyWith(PedidoVentaLineaLocalDTO value,
-          $Res Function(PedidoVentaLineaLocalDTO) then) =
-      _$PedidoVentaLineaLocalDTOCopyWithImpl<$Res, PedidoVentaLineaLocalDTO>;
+  factory $PedidoVentaLineaLocalDTOCopyWith(
+    PedidoVentaLineaLocalDTO value,
+    $Res Function(PedidoVentaLineaLocalDTO) then,
+  ) = _$PedidoVentaLineaLocalDTOCopyWithImpl<$Res, PedidoVentaLineaLocalDTO>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'PEDIDO_APP_ID') String pedidoVentaAppId,
-      @JsonKey(name: 'EMPRESA_ID') String? empresaId,
-      @JsonKey(name: 'PEDIDO_ID') String? pedidoId,
-      @JsonKey(name: 'LIN_APP_ID') String pedidoVentaLineaAppId,
-      @JsonKey(name: 'PRODUCTO_ID') String articuloId,
-      @JsonKey(name: 'DENOMINACION') String articuloDescription,
-      @JsonKey(name: 'CANTIDAD') int cantidad,
-      @JsonKey(name: 'PRECIO_DIVISA') double precioDivisa,
-      @JsonKey(name: 'TPRECIO') int tipoPrecio,
-      @JsonKey(name: 'DTO1') double descuento1,
-      @JsonKey(name: 'DTO2') double descuento2,
-      @JsonKey(name: 'DTO3') double descuento3,
-      @JsonKey(name: 'DTO_PP') double descuentoProntoPago,
-      @JsonKey(name: 'STOCK_DISPONIBLE_SN') String stockDisponibleSN,
-      @JsonKey(name: 'F_DISPONIBLE') DateTime? fechaDisponible,
-      @JsonKey(name: 'IVA') double iva,
-      @JsonKey(name: 'PEDIDO_LINEA_ID_COMPONENTE')
-      String? pedidoLineaComponenteId});
+  $Res call({
+    @JsonKey(name: 'PEDIDO_APP_ID') String pedidoVentaAppId,
+    @JsonKey(name: 'EMPRESA_ID') String? empresaId,
+    @JsonKey(name: 'PEDIDO_ID') String? pedidoId,
+    @JsonKey(name: 'LIN_APP_ID') String pedidoVentaLineaAppId,
+    @JsonKey(name: 'PRODUCTO_ID') String articuloId,
+    @JsonKey(name: 'DENOMINACION') String articuloDescription,
+    @JsonKey(name: 'CANTIDAD') int cantidad,
+    @JsonKey(name: 'PRECIO_DIVISA') double precioDivisa,
+    @JsonKey(name: 'TPRECIO') int tipoPrecio,
+    @JsonKey(name: 'DTO1') double descuento1,
+    @JsonKey(name: 'DTO2') double descuento2,
+    @JsonKey(name: 'DTO3') double descuento3,
+    @JsonKey(name: 'DTO_PP') double descuentoProntoPago,
+    @JsonKey(name: 'STOCK_DISPONIBLE_SN') String stockDisponibleSN,
+    @JsonKey(name: 'F_DISPONIBLE') DateTime? fechaDisponible,
+    @JsonKey(name: 'IVA') double iva,
+    @JsonKey(name: 'PEDIDO_LINEA_ID_COMPONENTE')
+    String? pedidoLineaComponenteId,
+  });
 }
 
 /// @nodoc
-class _$PedidoVentaLineaLocalDTOCopyWithImpl<$Res,
-        $Val extends PedidoVentaLineaLocalDTO>
+class _$PedidoVentaLineaLocalDTOCopyWithImpl<
+  $Res,
+  $Val extends PedidoVentaLineaLocalDTO
+>
     implements $PedidoVentaLineaLocalDTOCopyWith<$Res> {
   _$PedidoVentaLineaLocalDTOCopyWithImpl(this._value, this._then);
 
@@ -127,76 +133,96 @@ class _$PedidoVentaLineaLocalDTOCopyWithImpl<$Res,
     Object? iva = null,
     Object? pedidoLineaComponenteId = freezed,
   }) {
-    return _then(_value.copyWith(
-      pedidoVentaAppId: null == pedidoVentaAppId
-          ? _value.pedidoVentaAppId
-          : pedidoVentaAppId // ignore: cast_nullable_to_non_nullable
-              as String,
-      empresaId: freezed == empresaId
-          ? _value.empresaId
-          : empresaId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pedidoId: freezed == pedidoId
-          ? _value.pedidoId
-          : pedidoId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pedidoVentaLineaAppId: null == pedidoVentaLineaAppId
-          ? _value.pedidoVentaLineaAppId
-          : pedidoVentaLineaAppId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articuloDescription: null == articuloDescription
-          ? _value.articuloDescription
-          : articuloDescription // ignore: cast_nullable_to_non_nullable
-              as String,
-      cantidad: null == cantidad
-          ? _value.cantidad
-          : cantidad // ignore: cast_nullable_to_non_nullable
-              as int,
-      precioDivisa: null == precioDivisa
-          ? _value.precioDivisa
-          : precioDivisa // ignore: cast_nullable_to_non_nullable
-              as double,
-      tipoPrecio: null == tipoPrecio
-          ? _value.tipoPrecio
-          : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as int,
-      descuento1: null == descuento1
-          ? _value.descuento1
-          : descuento1 // ignore: cast_nullable_to_non_nullable
-              as double,
-      descuento2: null == descuento2
-          ? _value.descuento2
-          : descuento2 // ignore: cast_nullable_to_non_nullable
-              as double,
-      descuento3: null == descuento3
-          ? _value.descuento3
-          : descuento3 // ignore: cast_nullable_to_non_nullable
-              as double,
-      descuentoProntoPago: null == descuentoProntoPago
-          ? _value.descuentoProntoPago
-          : descuentoProntoPago // ignore: cast_nullable_to_non_nullable
-              as double,
-      stockDisponibleSN: null == stockDisponibleSN
-          ? _value.stockDisponibleSN
-          : stockDisponibleSN // ignore: cast_nullable_to_non_nullable
-              as String,
-      fechaDisponible: freezed == fechaDisponible
-          ? _value.fechaDisponible
-          : fechaDisponible // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      iva: null == iva
-          ? _value.iva
-          : iva // ignore: cast_nullable_to_non_nullable
-              as double,
-      pedidoLineaComponenteId: freezed == pedidoLineaComponenteId
-          ? _value.pedidoLineaComponenteId
-          : pedidoLineaComponenteId // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            pedidoVentaAppId:
+                null == pedidoVentaAppId
+                    ? _value.pedidoVentaAppId
+                    : pedidoVentaAppId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            empresaId:
+                freezed == empresaId
+                    ? _value.empresaId
+                    : empresaId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            pedidoId:
+                freezed == pedidoId
+                    ? _value.pedidoId
+                    : pedidoId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            pedidoVentaLineaAppId:
+                null == pedidoVentaLineaAppId
+                    ? _value.pedidoVentaLineaAppId
+                    : pedidoVentaLineaAppId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            articuloId:
+                null == articuloId
+                    ? _value.articuloId
+                    : articuloId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            articuloDescription:
+                null == articuloDescription
+                    ? _value.articuloDescription
+                    : articuloDescription // ignore: cast_nullable_to_non_nullable
+                        as String,
+            cantidad:
+                null == cantidad
+                    ? _value.cantidad
+                    : cantidad // ignore: cast_nullable_to_non_nullable
+                        as int,
+            precioDivisa:
+                null == precioDivisa
+                    ? _value.precioDivisa
+                    : precioDivisa // ignore: cast_nullable_to_non_nullable
+                        as double,
+            tipoPrecio:
+                null == tipoPrecio
+                    ? _value.tipoPrecio
+                    : tipoPrecio // ignore: cast_nullable_to_non_nullable
+                        as int,
+            descuento1:
+                null == descuento1
+                    ? _value.descuento1
+                    : descuento1 // ignore: cast_nullable_to_non_nullable
+                        as double,
+            descuento2:
+                null == descuento2
+                    ? _value.descuento2
+                    : descuento2 // ignore: cast_nullable_to_non_nullable
+                        as double,
+            descuento3:
+                null == descuento3
+                    ? _value.descuento3
+                    : descuento3 // ignore: cast_nullable_to_non_nullable
+                        as double,
+            descuentoProntoPago:
+                null == descuentoProntoPago
+                    ? _value.descuentoProntoPago
+                    : descuentoProntoPago // ignore: cast_nullable_to_non_nullable
+                        as double,
+            stockDisponibleSN:
+                null == stockDisponibleSN
+                    ? _value.stockDisponibleSN
+                    : stockDisponibleSN // ignore: cast_nullable_to_non_nullable
+                        as String,
+            fechaDisponible:
+                freezed == fechaDisponible
+                    ? _value.fechaDisponible
+                    : fechaDisponible // ignore: cast_nullable_to_non_nullable
+                        as DateTime?,
+            iva:
+                null == iva
+                    ? _value.iva
+                    : iva // ignore: cast_nullable_to_non_nullable
+                        as double,
+            pedidoLineaComponenteId:
+                freezed == pedidoLineaComponenteId
+                    ? _value.pedidoLineaComponenteId
+                    : pedidoLineaComponenteId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -204,41 +230,45 @@ class _$PedidoVentaLineaLocalDTOCopyWithImpl<$Res,
 abstract class _$$PedidoVentaLineaLocalDTOImplCopyWith<$Res>
     implements $PedidoVentaLineaLocalDTOCopyWith<$Res> {
   factory _$$PedidoVentaLineaLocalDTOImplCopyWith(
-          _$PedidoVentaLineaLocalDTOImpl value,
-          $Res Function(_$PedidoVentaLineaLocalDTOImpl) then) =
-      __$$PedidoVentaLineaLocalDTOImplCopyWithImpl<$Res>;
+    _$PedidoVentaLineaLocalDTOImpl value,
+    $Res Function(_$PedidoVentaLineaLocalDTOImpl) then,
+  ) = __$$PedidoVentaLineaLocalDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'PEDIDO_APP_ID') String pedidoVentaAppId,
-      @JsonKey(name: 'EMPRESA_ID') String? empresaId,
-      @JsonKey(name: 'PEDIDO_ID') String? pedidoId,
-      @JsonKey(name: 'LIN_APP_ID') String pedidoVentaLineaAppId,
-      @JsonKey(name: 'PRODUCTO_ID') String articuloId,
-      @JsonKey(name: 'DENOMINACION') String articuloDescription,
-      @JsonKey(name: 'CANTIDAD') int cantidad,
-      @JsonKey(name: 'PRECIO_DIVISA') double precioDivisa,
-      @JsonKey(name: 'TPRECIO') int tipoPrecio,
-      @JsonKey(name: 'DTO1') double descuento1,
-      @JsonKey(name: 'DTO2') double descuento2,
-      @JsonKey(name: 'DTO3') double descuento3,
-      @JsonKey(name: 'DTO_PP') double descuentoProntoPago,
-      @JsonKey(name: 'STOCK_DISPONIBLE_SN') String stockDisponibleSN,
-      @JsonKey(name: 'F_DISPONIBLE') DateTime? fechaDisponible,
-      @JsonKey(name: 'IVA') double iva,
-      @JsonKey(name: 'PEDIDO_LINEA_ID_COMPONENTE')
-      String? pedidoLineaComponenteId});
+  $Res call({
+    @JsonKey(name: 'PEDIDO_APP_ID') String pedidoVentaAppId,
+    @JsonKey(name: 'EMPRESA_ID') String? empresaId,
+    @JsonKey(name: 'PEDIDO_ID') String? pedidoId,
+    @JsonKey(name: 'LIN_APP_ID') String pedidoVentaLineaAppId,
+    @JsonKey(name: 'PRODUCTO_ID') String articuloId,
+    @JsonKey(name: 'DENOMINACION') String articuloDescription,
+    @JsonKey(name: 'CANTIDAD') int cantidad,
+    @JsonKey(name: 'PRECIO_DIVISA') double precioDivisa,
+    @JsonKey(name: 'TPRECIO') int tipoPrecio,
+    @JsonKey(name: 'DTO1') double descuento1,
+    @JsonKey(name: 'DTO2') double descuento2,
+    @JsonKey(name: 'DTO3') double descuento3,
+    @JsonKey(name: 'DTO_PP') double descuentoProntoPago,
+    @JsonKey(name: 'STOCK_DISPONIBLE_SN') String stockDisponibleSN,
+    @JsonKey(name: 'F_DISPONIBLE') DateTime? fechaDisponible,
+    @JsonKey(name: 'IVA') double iva,
+    @JsonKey(name: 'PEDIDO_LINEA_ID_COMPONENTE')
+    String? pedidoLineaComponenteId,
+  });
 }
 
 /// @nodoc
 class __$$PedidoVentaLineaLocalDTOImplCopyWithImpl<$Res>
-    extends _$PedidoVentaLineaLocalDTOCopyWithImpl<$Res,
-        _$PedidoVentaLineaLocalDTOImpl>
+    extends
+        _$PedidoVentaLineaLocalDTOCopyWithImpl<
+          $Res,
+          _$PedidoVentaLineaLocalDTOImpl
+        >
     implements _$$PedidoVentaLineaLocalDTOImplCopyWith<$Res> {
   __$$PedidoVentaLineaLocalDTOImplCopyWithImpl(
-      _$PedidoVentaLineaLocalDTOImpl _value,
-      $Res Function(_$PedidoVentaLineaLocalDTOImpl) _then)
-      : super(_value, _then);
+    _$PedidoVentaLineaLocalDTOImpl _value,
+    $Res Function(_$PedidoVentaLineaLocalDTOImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of PedidoVentaLineaLocalDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -263,102 +293,120 @@ class __$$PedidoVentaLineaLocalDTOImplCopyWithImpl<$Res>
     Object? iva = null,
     Object? pedidoLineaComponenteId = freezed,
   }) {
-    return _then(_$PedidoVentaLineaLocalDTOImpl(
-      pedidoVentaAppId: null == pedidoVentaAppId
-          ? _value.pedidoVentaAppId
-          : pedidoVentaAppId // ignore: cast_nullable_to_non_nullable
-              as String,
-      empresaId: freezed == empresaId
-          ? _value.empresaId
-          : empresaId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pedidoId: freezed == pedidoId
-          ? _value.pedidoId
-          : pedidoId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pedidoVentaLineaAppId: null == pedidoVentaLineaAppId
-          ? _value.pedidoVentaLineaAppId
-          : pedidoVentaLineaAppId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articuloDescription: null == articuloDescription
-          ? _value.articuloDescription
-          : articuloDescription // ignore: cast_nullable_to_non_nullable
-              as String,
-      cantidad: null == cantidad
-          ? _value.cantidad
-          : cantidad // ignore: cast_nullable_to_non_nullable
-              as int,
-      precioDivisa: null == precioDivisa
-          ? _value.precioDivisa
-          : precioDivisa // ignore: cast_nullable_to_non_nullable
-              as double,
-      tipoPrecio: null == tipoPrecio
-          ? _value.tipoPrecio
-          : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as int,
-      descuento1: null == descuento1
-          ? _value.descuento1
-          : descuento1 // ignore: cast_nullable_to_non_nullable
-              as double,
-      descuento2: null == descuento2
-          ? _value.descuento2
-          : descuento2 // ignore: cast_nullable_to_non_nullable
-              as double,
-      descuento3: null == descuento3
-          ? _value.descuento3
-          : descuento3 // ignore: cast_nullable_to_non_nullable
-              as double,
-      descuentoProntoPago: null == descuentoProntoPago
-          ? _value.descuentoProntoPago
-          : descuentoProntoPago // ignore: cast_nullable_to_non_nullable
-              as double,
-      stockDisponibleSN: null == stockDisponibleSN
-          ? _value.stockDisponibleSN
-          : stockDisponibleSN // ignore: cast_nullable_to_non_nullable
-              as String,
-      fechaDisponible: freezed == fechaDisponible
-          ? _value.fechaDisponible
-          : fechaDisponible // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      iva: null == iva
-          ? _value.iva
-          : iva // ignore: cast_nullable_to_non_nullable
-              as double,
-      pedidoLineaComponenteId: freezed == pedidoLineaComponenteId
-          ? _value.pedidoLineaComponenteId
-          : pedidoLineaComponenteId // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$PedidoVentaLineaLocalDTOImpl(
+        pedidoVentaAppId:
+            null == pedidoVentaAppId
+                ? _value.pedidoVentaAppId
+                : pedidoVentaAppId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        empresaId:
+            freezed == empresaId
+                ? _value.empresaId
+                : empresaId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        pedidoId:
+            freezed == pedidoId
+                ? _value.pedidoId
+                : pedidoId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        pedidoVentaLineaAppId:
+            null == pedidoVentaLineaAppId
+                ? _value.pedidoVentaLineaAppId
+                : pedidoVentaLineaAppId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        articuloId:
+            null == articuloId
+                ? _value.articuloId
+                : articuloId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        articuloDescription:
+            null == articuloDescription
+                ? _value.articuloDescription
+                : articuloDescription // ignore: cast_nullable_to_non_nullable
+                    as String,
+        cantidad:
+            null == cantidad
+                ? _value.cantidad
+                : cantidad // ignore: cast_nullable_to_non_nullable
+                    as int,
+        precioDivisa:
+            null == precioDivisa
+                ? _value.precioDivisa
+                : precioDivisa // ignore: cast_nullable_to_non_nullable
+                    as double,
+        tipoPrecio:
+            null == tipoPrecio
+                ? _value.tipoPrecio
+                : tipoPrecio // ignore: cast_nullable_to_non_nullable
+                    as int,
+        descuento1:
+            null == descuento1
+                ? _value.descuento1
+                : descuento1 // ignore: cast_nullable_to_non_nullable
+                    as double,
+        descuento2:
+            null == descuento2
+                ? _value.descuento2
+                : descuento2 // ignore: cast_nullable_to_non_nullable
+                    as double,
+        descuento3:
+            null == descuento3
+                ? _value.descuento3
+                : descuento3 // ignore: cast_nullable_to_non_nullable
+                    as double,
+        descuentoProntoPago:
+            null == descuentoProntoPago
+                ? _value.descuentoProntoPago
+                : descuentoProntoPago // ignore: cast_nullable_to_non_nullable
+                    as double,
+        stockDisponibleSN:
+            null == stockDisponibleSN
+                ? _value.stockDisponibleSN
+                : stockDisponibleSN // ignore: cast_nullable_to_non_nullable
+                    as String,
+        fechaDisponible:
+            freezed == fechaDisponible
+                ? _value.fechaDisponible
+                : fechaDisponible // ignore: cast_nullable_to_non_nullable
+                    as DateTime?,
+        iva:
+            null == iva
+                ? _value.iva
+                : iva // ignore: cast_nullable_to_non_nullable
+                    as double,
+        pedidoLineaComponenteId:
+            freezed == pedidoLineaComponenteId
+                ? _value.pedidoLineaComponenteId
+                : pedidoLineaComponenteId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$PedidoVentaLineaLocalDTOImpl extends _PedidoVentaLineaLocalDTO {
-  const _$PedidoVentaLineaLocalDTOImpl(
-      {@JsonKey(name: 'PEDIDO_APP_ID') required this.pedidoVentaAppId,
-      @JsonKey(name: 'EMPRESA_ID') this.empresaId,
-      @JsonKey(name: 'PEDIDO_ID') this.pedidoId,
-      @JsonKey(name: 'LIN_APP_ID') required this.pedidoVentaLineaAppId,
-      @JsonKey(name: 'PRODUCTO_ID') required this.articuloId,
-      @JsonKey(name: 'DENOMINACION') required this.articuloDescription,
-      @JsonKey(name: 'CANTIDAD') required this.cantidad,
-      @JsonKey(name: 'PRECIO_DIVISA') required this.precioDivisa,
-      @JsonKey(name: 'TPRECIO') required this.tipoPrecio,
-      @JsonKey(name: 'DTO1') required this.descuento1,
-      @JsonKey(name: 'DTO2') required this.descuento2,
-      @JsonKey(name: 'DTO3') required this.descuento3,
-      @JsonKey(name: 'DTO_PP') required this.descuentoProntoPago,
-      @JsonKey(name: 'STOCK_DISPONIBLE_SN') required this.stockDisponibleSN,
-      @JsonKey(name: 'F_DISPONIBLE') this.fechaDisponible,
-      @JsonKey(name: 'IVA') required this.iva,
-      @JsonKey(name: 'PEDIDO_LINEA_ID_COMPONENTE')
-      this.pedidoLineaComponenteId})
-      : super._();
+  const _$PedidoVentaLineaLocalDTOImpl({
+    @JsonKey(name: 'PEDIDO_APP_ID') required this.pedidoVentaAppId,
+    @JsonKey(name: 'EMPRESA_ID') this.empresaId,
+    @JsonKey(name: 'PEDIDO_ID') this.pedidoId,
+    @JsonKey(name: 'LIN_APP_ID') required this.pedidoVentaLineaAppId,
+    @JsonKey(name: 'PRODUCTO_ID') required this.articuloId,
+    @JsonKey(name: 'DENOMINACION') required this.articuloDescription,
+    @JsonKey(name: 'CANTIDAD') required this.cantidad,
+    @JsonKey(name: 'PRECIO_DIVISA') required this.precioDivisa,
+    @JsonKey(name: 'TPRECIO') required this.tipoPrecio,
+    @JsonKey(name: 'DTO1') required this.descuento1,
+    @JsonKey(name: 'DTO2') required this.descuento2,
+    @JsonKey(name: 'DTO3') required this.descuento3,
+    @JsonKey(name: 'DTO_PP') required this.descuentoProntoPago,
+    @JsonKey(name: 'STOCK_DISPONIBLE_SN') required this.stockDisponibleSN,
+    @JsonKey(name: 'F_DISPONIBLE') this.fechaDisponible,
+    @JsonKey(name: 'IVA') required this.iva,
+    @JsonKey(name: 'PEDIDO_LINEA_ID_COMPONENTE') this.pedidoLineaComponenteId,
+  }) : super._();
 
   factory _$PedidoVentaLineaLocalDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$PedidoVentaLineaLocalDTOImplFromJson(json);
@@ -457,31 +505,34 @@ class _$PedidoVentaLineaLocalDTOImpl extends _PedidoVentaLineaLocalDTO {
                 other.fechaDisponible == fechaDisponible) &&
             (identical(other.iva, iva) || other.iva == iva) &&
             (identical(
-                    other.pedidoLineaComponenteId, pedidoLineaComponenteId) ||
+                  other.pedidoLineaComponenteId,
+                  pedidoLineaComponenteId,
+                ) ||
                 other.pedidoLineaComponenteId == pedidoLineaComponenteId));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      pedidoVentaAppId,
-      empresaId,
-      pedidoId,
-      pedidoVentaLineaAppId,
-      articuloId,
-      articuloDescription,
-      cantidad,
-      precioDivisa,
-      tipoPrecio,
-      descuento1,
-      descuento2,
-      descuento3,
-      descuentoProntoPago,
-      stockDisponibleSN,
-      fechaDisponible,
-      iva,
-      pedidoLineaComponenteId);
+    runtimeType,
+    pedidoVentaAppId,
+    empresaId,
+    pedidoId,
+    pedidoVentaLineaAppId,
+    articuloId,
+    articuloDescription,
+    cantidad,
+    precioDivisa,
+    tipoPrecio,
+    descuento1,
+    descuento2,
+    descuento3,
+    descuentoProntoPago,
+    stockDisponibleSN,
+    fechaDisponible,
+    iva,
+    pedidoLineaComponenteId,
+  );
 
   /// Create a copy of PedidoVentaLineaLocalDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -489,38 +540,38 @@ class _$PedidoVentaLineaLocalDTOImpl extends _PedidoVentaLineaLocalDTO {
   @override
   @pragma('vm:prefer-inline')
   _$$PedidoVentaLineaLocalDTOImplCopyWith<_$PedidoVentaLineaLocalDTOImpl>
-      get copyWith => __$$PedidoVentaLineaLocalDTOImplCopyWithImpl<
-          _$PedidoVentaLineaLocalDTOImpl>(this, _$identity);
+  get copyWith => __$$PedidoVentaLineaLocalDTOImplCopyWithImpl<
+    _$PedidoVentaLineaLocalDTOImpl
+  >(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PedidoVentaLineaLocalDTOImplToJson(
-      this,
-    );
+    return _$$PedidoVentaLineaLocalDTOImplToJson(this);
   }
 }
 
 abstract class _PedidoVentaLineaLocalDTO extends PedidoVentaLineaLocalDTO {
-  const factory _PedidoVentaLineaLocalDTO(
-      {@JsonKey(name: 'PEDIDO_APP_ID') required final String pedidoVentaAppId,
-      @JsonKey(name: 'EMPRESA_ID') final String? empresaId,
-      @JsonKey(name: 'PEDIDO_ID') final String? pedidoId,
-      @JsonKey(name: 'LIN_APP_ID') required final String pedidoVentaLineaAppId,
-      @JsonKey(name: 'PRODUCTO_ID') required final String articuloId,
-      @JsonKey(name: 'DENOMINACION') required final String articuloDescription,
-      @JsonKey(name: 'CANTIDAD') required final int cantidad,
-      @JsonKey(name: 'PRECIO_DIVISA') required final double precioDivisa,
-      @JsonKey(name: 'TPRECIO') required final int tipoPrecio,
-      @JsonKey(name: 'DTO1') required final double descuento1,
-      @JsonKey(name: 'DTO2') required final double descuento2,
-      @JsonKey(name: 'DTO3') required final double descuento3,
-      @JsonKey(name: 'DTO_PP') required final double descuentoProntoPago,
-      @JsonKey(name: 'STOCK_DISPONIBLE_SN')
-      required final String stockDisponibleSN,
-      @JsonKey(name: 'F_DISPONIBLE') final DateTime? fechaDisponible,
-      @JsonKey(name: 'IVA') required final double iva,
-      @JsonKey(name: 'PEDIDO_LINEA_ID_COMPONENTE')
-      final String? pedidoLineaComponenteId}) = _$PedidoVentaLineaLocalDTOImpl;
+  const factory _PedidoVentaLineaLocalDTO({
+    @JsonKey(name: 'PEDIDO_APP_ID') required final String pedidoVentaAppId,
+    @JsonKey(name: 'EMPRESA_ID') final String? empresaId,
+    @JsonKey(name: 'PEDIDO_ID') final String? pedidoId,
+    @JsonKey(name: 'LIN_APP_ID') required final String pedidoVentaLineaAppId,
+    @JsonKey(name: 'PRODUCTO_ID') required final String articuloId,
+    @JsonKey(name: 'DENOMINACION') required final String articuloDescription,
+    @JsonKey(name: 'CANTIDAD') required final int cantidad,
+    @JsonKey(name: 'PRECIO_DIVISA') required final double precioDivisa,
+    @JsonKey(name: 'TPRECIO') required final int tipoPrecio,
+    @JsonKey(name: 'DTO1') required final double descuento1,
+    @JsonKey(name: 'DTO2') required final double descuento2,
+    @JsonKey(name: 'DTO3') required final double descuento3,
+    @JsonKey(name: 'DTO_PP') required final double descuentoProntoPago,
+    @JsonKey(name: 'STOCK_DISPONIBLE_SN')
+    required final String stockDisponibleSN,
+    @JsonKey(name: 'F_DISPONIBLE') final DateTime? fechaDisponible,
+    @JsonKey(name: 'IVA') required final double iva,
+    @JsonKey(name: 'PEDIDO_LINEA_ID_COMPONENTE')
+    final String? pedidoLineaComponenteId,
+  }) = _$PedidoVentaLineaLocalDTOImpl;
   const _PedidoVentaLineaLocalDTO._() : super._();
 
   factory _PedidoVentaLineaLocalDTO.fromJson(Map<String, dynamic> json) =
@@ -583,5 +634,5 @@ abstract class _PedidoVentaLineaLocalDTO extends PedidoVentaLineaLocalDTO {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PedidoVentaLineaLocalDTOImplCopyWith<_$PedidoVentaLineaLocalDTOImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }

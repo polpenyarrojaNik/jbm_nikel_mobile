@@ -12,7 +12,8 @@ part of 'promo_dto_cab_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 PromoDtoCabDTO _$PromoDtoCabDTOFromJson(Map<String, dynamic> json) {
   return _PromoDtoCabDTO.fromJson(json);
@@ -50,18 +51,20 @@ mixin _$PromoDtoCabDTO {
 /// @nodoc
 abstract class $PromoDtoCabDTOCopyWith<$Res> {
   factory $PromoDtoCabDTOCopyWith(
-          PromoDtoCabDTO value, $Res Function(PromoDtoCabDTO) then) =
-      _$PromoDtoCabDTOCopyWithImpl<$Res, PromoDtoCabDTO>;
+    PromoDtoCabDTO value,
+    $Res Function(PromoDtoCabDTO) then,
+  ) = _$PromoDtoCabDTOCopyWithImpl<$Res, PromoDtoCabDTO>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'EMPRESA_ID') String empresaId,
-      @JsonKey(name: 'PROMO_DTO_ID') String promoDtoId,
-      @JsonKey(name: 'NOMBRE') String nombre,
-      @JsonKey(name: 'FECHA_DESDE') DateTime fechaDesde,
-      @JsonKey(name: 'FECHA_HASTA') DateTime? fechaHasta,
-      @JsonKey(name: 'DIVISA_ID') String divisaId,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+  $Res call({
+    @JsonKey(name: 'EMPRESA_ID') String empresaId,
+    @JsonKey(name: 'PROMO_DTO_ID') String promoDtoId,
+    @JsonKey(name: 'NOMBRE') String nombre,
+    @JsonKey(name: 'FECHA_DESDE') DateTime fechaDesde,
+    @JsonKey(name: 'FECHA_HASTA') DateTime? fechaHasta,
+    @JsonKey(name: 'DIVISA_ID') String divisaId,
+    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') String deleted,
+  });
 }
 
 /// @nodoc
@@ -88,60 +91,73 @@ class _$PromoDtoCabDTOCopyWithImpl<$Res, $Val extends PromoDtoCabDTO>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_value.copyWith(
-      empresaId: null == empresaId
-          ? _value.empresaId
-          : empresaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      promoDtoId: null == promoDtoId
-          ? _value.promoDtoId
-          : promoDtoId // ignore: cast_nullable_to_non_nullable
-              as String,
-      nombre: null == nombre
-          ? _value.nombre
-          : nombre // ignore: cast_nullable_to_non_nullable
-              as String,
-      fechaDesde: null == fechaDesde
-          ? _value.fechaDesde
-          : fechaDesde // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      fechaHasta: freezed == fechaHasta
-          ? _value.fechaHasta
-          : fechaHasta // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      divisaId: null == divisaId
-          ? _value.divisaId
-          : divisaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            empresaId:
+                null == empresaId
+                    ? _value.empresaId
+                    : empresaId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            promoDtoId:
+                null == promoDtoId
+                    ? _value.promoDtoId
+                    : promoDtoId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            nombre:
+                null == nombre
+                    ? _value.nombre
+                    : nombre // ignore: cast_nullable_to_non_nullable
+                        as String,
+            fechaDesde:
+                null == fechaDesde
+                    ? _value.fechaDesde
+                    : fechaDesde // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            fechaHasta:
+                freezed == fechaHasta
+                    ? _value.fechaHasta
+                    : fechaHasta // ignore: cast_nullable_to_non_nullable
+                        as DateTime?,
+            divisaId:
+                null == divisaId
+                    ? _value.divisaId
+                    : divisaId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            lastUpdated:
+                null == lastUpdated
+                    ? _value.lastUpdated
+                    : lastUpdated // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            deleted:
+                null == deleted
+                    ? _value.deleted
+                    : deleted // ignore: cast_nullable_to_non_nullable
+                        as String,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$PromoDtoCabDTOImplCopyWith<$Res>
     implements $PromoDtoCabDTOCopyWith<$Res> {
-  factory _$$PromoDtoCabDTOImplCopyWith(_$PromoDtoCabDTOImpl value,
-          $Res Function(_$PromoDtoCabDTOImpl) then) =
-      __$$PromoDtoCabDTOImplCopyWithImpl<$Res>;
+  factory _$$PromoDtoCabDTOImplCopyWith(
+    _$PromoDtoCabDTOImpl value,
+    $Res Function(_$PromoDtoCabDTOImpl) then,
+  ) = __$$PromoDtoCabDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'EMPRESA_ID') String empresaId,
-      @JsonKey(name: 'PROMO_DTO_ID') String promoDtoId,
-      @JsonKey(name: 'NOMBRE') String nombre,
-      @JsonKey(name: 'FECHA_DESDE') DateTime fechaDesde,
-      @JsonKey(name: 'FECHA_HASTA') DateTime? fechaHasta,
-      @JsonKey(name: 'DIVISA_ID') String divisaId,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+  $Res call({
+    @JsonKey(name: 'EMPRESA_ID') String empresaId,
+    @JsonKey(name: 'PROMO_DTO_ID') String promoDtoId,
+    @JsonKey(name: 'NOMBRE') String nombre,
+    @JsonKey(name: 'FECHA_DESDE') DateTime fechaDesde,
+    @JsonKey(name: 'FECHA_HASTA') DateTime? fechaHasta,
+    @JsonKey(name: 'DIVISA_ID') String divisaId,
+    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') String deleted,
+  });
 }
 
 /// @nodoc
@@ -149,8 +165,9 @@ class __$$PromoDtoCabDTOImplCopyWithImpl<$Res>
     extends _$PromoDtoCabDTOCopyWithImpl<$Res, _$PromoDtoCabDTOImpl>
     implements _$$PromoDtoCabDTOImplCopyWith<$Res> {
   __$$PromoDtoCabDTOImplCopyWithImpl(
-      _$PromoDtoCabDTOImpl _value, $Res Function(_$PromoDtoCabDTOImpl) _then)
-      : super(_value, _then);
+    _$PromoDtoCabDTOImpl _value,
+    $Res Function(_$PromoDtoCabDTOImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of PromoDtoCabDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -166,56 +183,66 @@ class __$$PromoDtoCabDTOImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$PromoDtoCabDTOImpl(
-      empresaId: null == empresaId
-          ? _value.empresaId
-          : empresaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      promoDtoId: null == promoDtoId
-          ? _value.promoDtoId
-          : promoDtoId // ignore: cast_nullable_to_non_nullable
-              as String,
-      nombre: null == nombre
-          ? _value.nombre
-          : nombre // ignore: cast_nullable_to_non_nullable
-              as String,
-      fechaDesde: null == fechaDesde
-          ? _value.fechaDesde
-          : fechaDesde // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      fechaHasta: freezed == fechaHasta
-          ? _value.fechaHasta
-          : fechaHasta // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      divisaId: null == divisaId
-          ? _value.divisaId
-          : divisaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$PromoDtoCabDTOImpl(
+        empresaId:
+            null == empresaId
+                ? _value.empresaId
+                : empresaId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        promoDtoId:
+            null == promoDtoId
+                ? _value.promoDtoId
+                : promoDtoId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        nombre:
+            null == nombre
+                ? _value.nombre
+                : nombre // ignore: cast_nullable_to_non_nullable
+                    as String,
+        fechaDesde:
+            null == fechaDesde
+                ? _value.fechaDesde
+                : fechaDesde // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        fechaHasta:
+            freezed == fechaHasta
+                ? _value.fechaHasta
+                : fechaHasta // ignore: cast_nullable_to_non_nullable
+                    as DateTime?,
+        divisaId:
+            null == divisaId
+                ? _value.divisaId
+                : divisaId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        lastUpdated:
+            null == lastUpdated
+                ? _value.lastUpdated
+                : lastUpdated // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        deleted:
+            null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$PromoDtoCabDTOImpl extends _PromoDtoCabDTO {
-  const _$PromoDtoCabDTOImpl(
-      {@JsonKey(name: 'EMPRESA_ID') required this.empresaId,
-      @JsonKey(name: 'PROMO_DTO_ID') required this.promoDtoId,
-      @JsonKey(name: 'NOMBRE') required this.nombre,
-      @JsonKey(name: 'FECHA_DESDE') required this.fechaDesde,
-      @JsonKey(name: 'FECHA_HASTA') this.fechaHasta,
-      @JsonKey(name: 'DIVISA_ID') required this.divisaId,
-      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-      @JsonKey(name: 'DELETED') this.deleted = 'N'})
-      : super._();
+  const _$PromoDtoCabDTOImpl({
+    @JsonKey(name: 'EMPRESA_ID') required this.empresaId,
+    @JsonKey(name: 'PROMO_DTO_ID') required this.promoDtoId,
+    @JsonKey(name: 'NOMBRE') required this.nombre,
+    @JsonKey(name: 'FECHA_DESDE') required this.fechaDesde,
+    @JsonKey(name: 'FECHA_HASTA') this.fechaHasta,
+    @JsonKey(name: 'DIVISA_ID') required this.divisaId,
+    @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+    @JsonKey(name: 'DELETED') this.deleted = 'N',
+  }) : super._();
 
   factory _$PromoDtoCabDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$PromoDtoCabDTOImplFromJson(json);
@@ -273,8 +300,17 @@ class _$PromoDtoCabDTOImpl extends _PromoDtoCabDTO {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, empresaId, promoDtoId, nombre,
-      fechaDesde, fechaHasta, divisaId, lastUpdated, deleted);
+  int get hashCode => Object.hash(
+    runtimeType,
+    empresaId,
+    promoDtoId,
+    nombre,
+    fechaDesde,
+    fechaHasta,
+    divisaId,
+    lastUpdated,
+    deleted,
+  );
 
   /// Create a copy of PromoDtoCabDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -283,26 +319,27 @@ class _$PromoDtoCabDTOImpl extends _PromoDtoCabDTO {
   @pragma('vm:prefer-inline')
   _$$PromoDtoCabDTOImplCopyWith<_$PromoDtoCabDTOImpl> get copyWith =>
       __$$PromoDtoCabDTOImplCopyWithImpl<_$PromoDtoCabDTOImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PromoDtoCabDTOImplToJson(
-      this,
-    );
+    return _$$PromoDtoCabDTOImplToJson(this);
   }
 }
 
 abstract class _PromoDtoCabDTO extends PromoDtoCabDTO {
-  const factory _PromoDtoCabDTO(
-      {@JsonKey(name: 'EMPRESA_ID') required final String empresaId,
-      @JsonKey(name: 'PROMO_DTO_ID') required final String promoDtoId,
-      @JsonKey(name: 'NOMBRE') required final String nombre,
-      @JsonKey(name: 'FECHA_DESDE') required final DateTime fechaDesde,
-      @JsonKey(name: 'FECHA_HASTA') final DateTime? fechaHasta,
-      @JsonKey(name: 'DIVISA_ID') required final String divisaId,
-      @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') final String deleted}) = _$PromoDtoCabDTOImpl;
+  const factory _PromoDtoCabDTO({
+    @JsonKey(name: 'EMPRESA_ID') required final String empresaId,
+    @JsonKey(name: 'PROMO_DTO_ID') required final String promoDtoId,
+    @JsonKey(name: 'NOMBRE') required final String nombre,
+    @JsonKey(name: 'FECHA_DESDE') required final DateTime fechaDesde,
+    @JsonKey(name: 'FECHA_HASTA') final DateTime? fechaHasta,
+    @JsonKey(name: 'DIVISA_ID') required final String divisaId,
+    @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') final String deleted,
+  }) = _$PromoDtoCabDTOImpl;
   const _PromoDtoCabDTO._() : super._();
 
   factory _PromoDtoCabDTO.fromJson(Map<String, dynamic> json) =

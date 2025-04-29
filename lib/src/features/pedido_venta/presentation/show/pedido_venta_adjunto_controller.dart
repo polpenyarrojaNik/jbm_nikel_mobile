@@ -13,31 +13,28 @@ class PedidoVentaAdjuntoState with _$PedidoVentaAdjuntoState {
   const factory PedidoVentaAdjuntoState.initial() = _Initial;
   const factory PedidoVentaAdjuntoState.loading() = _Loading;
   const factory PedidoVentaAdjuntoState.data(File? file) = _Data;
-  const factory PedidoVentaAdjuntoState.error(
-    String failure,
-  ) = _Error;
+  const factory PedidoVentaAdjuntoState.error(String failure) = _Error;
 }
 
 final pedidoVentaAdjuntoControllerProvider = StateNotifierProvider.autoDispose<
-    PedidoVentaAdjuntoController, PedidoVentaAdjuntoState>(
-  (ref) => PedidoVentaAdjuntoController(ref),
-);
+  PedidoVentaAdjuntoController,
+  PedidoVentaAdjuntoState
+>((ref) => PedidoVentaAdjuntoController(ref));
 
 class PedidoVentaAdjuntoController
     extends StateNotifier<PedidoVentaAdjuntoState> {
   final Ref _ref;
 
   PedidoVentaAdjuntoController(this._ref)
-      : super(const PedidoVentaAdjuntoState.initial());
+    : super(const PedidoVentaAdjuntoState.initial());
 
   Future<void> getAttachmentFile({required String pedidoVentaId}) async {
     try {
       state = const PedidoVentaAdjuntoState.loading();
 
-      final file =
-          await _ref.read(pedidoVentaRepositoryProvider).getDocumentFile(
-                pedidoVentaId: pedidoVentaId,
-              );
+      final file = await _ref
+          .read(pedidoVentaRepositoryProvider)
+          .getDocumentFile(pedidoVentaId: pedidoVentaId);
       state = PedidoVentaAdjuntoState.data(file);
     } on AppException catch (e) {
       state = PedidoVentaAdjuntoState.error(e.details.message);

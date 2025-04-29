@@ -142,16 +142,19 @@ class SyncService {
         final dateStr = response.data['data'] as String;
         return DateTime.parse(dateStr);
       } else {
-        throw AppException.restApiFailure(response.statusCode ?? 500,
-            response.statusMessage ?? 'Internet Error');
+        throw AppException.restApiFailure(
+          response.statusCode ?? 500,
+          response.statusMessage ?? 'Internet Error',
+        );
       }
     } catch (e) {
       throw getApiError(e);
     }
   }
 
-  Future<void> syncAllArticulosRelacionados(
-      {required bool isInMainThread}) async {
+  Future<void> syncAllArticulosRelacionados({
+    required bool isInMainThread,
+  }) async {
     try {
       await insetLog(level: 'I', message: 'Init article sync');
       await syncArticulos();
@@ -178,8 +181,9 @@ class SyncService {
     }
   }
 
-  Future<void> syncAllClientesRelacionados(
-      {required bool isInMainThread}) async {
+  Future<void> syncAllClientesRelacionados({
+    required bool isInMainThread,
+  }) async {
     try {
       await insetLog(level: 'I', message: 'Init customer sync');
 
@@ -217,8 +221,9 @@ class SyncService {
     }
   }
 
-  Future<void> syncAllPedidosRelacionados(
-      {required bool isInMainThread}) async {
+  Future<void> syncAllPedidosRelacionados({
+    required bool isInMainThread,
+  }) async {
     try {
       await insetLog(level: 'I', message: 'Init sales order sync');
 
@@ -245,8 +250,9 @@ class SyncService {
     }
   }
 
-  Future<void> syncAllVisitasRelacionados(
-      {required bool isInMainThread}) async {
+  Future<void> syncAllVisitasRelacionados({
+    required bool isInMainThread,
+  }) async {
     try {
       await insetLog(level: 'I', message: 'Init visits sync');
 
@@ -664,14 +670,16 @@ class SyncService {
       final pedidosNoEnviados = await getPedidosNoEnviados();
       for (var i = 0; i < pedidosNoEnviados.length; i++) {
         final pedidoVentaLineaDTOList = await getLocalPedidoVentaLineaList(
-            pedidoVentaAppId: pedidosNoEnviados[i].pedidoVentaAppId);
+          pedidoVentaAppId: pedidosNoEnviados[i].pedidoVentaAppId,
+        );
         try {
           final pedidoLocalEnviado = await _remoteCreatePedidos(
-              pedidosNoEnviados[i],
-              pedidoVentaLineaDTOList
-                  .map((e) => PedidoVentaLineaLocalDTO.fromDomain(e))
-                  .toList(),
-              _usuario!.provisionalToken);
+            pedidosNoEnviados[i],
+            pedidoVentaLineaDTOList
+                .map((e) => PedidoVentaLineaLocalDTO.fromDomain(e))
+                .toList(),
+            _usuario!.provisionalToken,
+          );
           await updatePedidoVentaInDB(pedidoVentaLocalDto: pedidoLocalEnviado);
         } catch (e) {
           log.e(e);
@@ -682,18 +690,19 @@ class SyncService {
     }
   }
 
-  Future<List<PedidoVentaLinea>> getLocalPedidoVentaLineaList(
-      {required String pedidoVentaAppId}) async {
+  Future<List<PedidoVentaLinea>> getLocalPedidoVentaLineaList({
+    required String pedidoVentaAppId,
+  }) async {
     try {
       final pedidoVentaLineaLocalListDTO =
-          await (_localDb.select(_localDb.pedidoVentaLineaLocalTable)
-                ..where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId)))
-              .get();
+          await (_localDb.select(_localDb.pedidoVentaLineaLocalTable)..where(
+            (tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId),
+          )).get();
 
       final pedidoVentaLocalDTO =
-          await (_localDb.select(_localDb.pedidoVentaLocalTable)
-                ..where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId)))
-              .getSingle();
+          await (_localDb.select(_localDb.pedidoVentaLocalTable)..where(
+            (tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId),
+          )).getSingle();
 
       return pedidoVentaLineaLocalListDTO
           .map((e) => e.toDomain(divisaId: pedidoVentaLocalDTO.divisaId!))
@@ -993,10 +1002,11 @@ class SyncService {
 
       while (isNextPageAvailable) {
         final query = _getAPIQuery(
-            page: page,
-            dateFrom: ultimaFechaSync?.toUtc(),
-            dateTo: remoteDatabaseDateTime.toUtc(),
-            totalRows: totalRows);
+          page: page,
+          dateFrom: ultimaFechaSync?.toUtc(),
+          dateTo: remoteDatabaseDateTime.toUtc(),
+          totalRows: totalRows,
+        );
 
         final remotePageItems = await _getRemoteData(
           apiPath: apiPath,
@@ -1016,10 +1026,14 @@ class SyncService {
 
               if (tableValue?.deleted == 'S') {
                 await deleteTableValue(
-                    tableInfo: tableInfo, dto: tableValue as Insertable<T>);
+                  tableInfo: tableInfo,
+                  dto: tableValue as Insertable<T>,
+                );
               } else {
                 await upsertTable(
-                    tableInfo: tableInfo, dto: tableValue as Insertable<T>);
+                  tableInfo: tableInfo,
+                  dto: tableValue as Insertable<T>,
+                );
               }
             }
 
@@ -1039,9 +1053,10 @@ class SyncService {
     }
   }
 
-  Future<void> upsertTable(
-      {required TableInfo<Table, dynamic> tableInfo,
-      required Insertable<dynamic> dto}) async {
+  Future<void> upsertTable({
+    required TableInfo<Table, dynamic> tableInfo,
+    required Insertable<dynamic> dto,
+  }) async {
     try {
       await _remoteDb.into(tableInfo).insertOnConflictUpdate(dto);
     } catch (e) {
@@ -1049,9 +1064,10 @@ class SyncService {
     }
   }
 
-  Future<void> deleteTableValue(
-      {required TableInfo<Table, dynamic> tableInfo,
-      required Insertable<dynamic> dto}) async {
+  Future<void> deleteTableValue({
+    required TableInfo<Table, dynamic> tableInfo,
+    required Insertable<dynamic> dto,
+  }) async {
     try {
       await _remoteDb.delete(tableInfo).delete(dto);
     } catch (e) {
@@ -1059,15 +1075,16 @@ class SyncService {
     }
   }
 
-  Map<String, String> _getAPIQuery(
-      {required int page,
-      DateTime? dateFrom,
-      required DateTime dateTo,
-      required int? totalRows}) {
+  Map<String, String> _getAPIQuery({
+    required int page,
+    DateTime? dateFrom,
+    required DateTime dateTo,
+    required int? totalRows,
+  }) {
     final query = {
       'page': '$page',
       'pageSize': '5000',
-      'dateTo': dateTo.toIso8601String()
+      'dateTo': dateTo.toIso8601String(),
     };
 
     if (dateFrom != null) {
@@ -1085,28 +1102,23 @@ class SyncService {
     Map<String, String>? query,
   }) async {
     try {
-      final uri = Uri.https(
-        'jbm-api.nikel.es',
-        apiPath,
-        query,
-      );
-      final testUri = Uri.http(
-        'jbm-api-test.nikel.es:8080',
-        apiPath,
-        query,
-      );
+      final uri = Uri.https('jbm-api.nikel.es', apiPath, query);
+      final testUri = Uri.http('jbm-api-test.nikel.es:8080', apiPath, query);
 
-      final response = await _dio.getUri(!(_usuario!.test) ? uri : testUri,
-          options: Options(
-            headers: {'authorization': 'Bearer ${_usuario.provisionalToken}'},
-          ));
+      final response = await _dio.getUri(
+        !(_usuario!.test) ? uri : testUri,
+        options: Options(
+          headers: {'authorization': 'Bearer ${_usuario.provisionalToken}'},
+        ),
+      );
 
       if (response.statusCode == 200) {
         final data = response.data as Json;
 
-        final convertedDate = (data['data'] as List)
-            .map((pedidoVentaMap) => pedidoVentaMap as Json)
-            .toList();
+        final convertedDate =
+            (data['data'] as List)
+                .map((pedidoVentaMap) => pedidoVentaMap as Json)
+                .toList();
 
         final headers = JBMHeaders.parse(response);
 
@@ -1117,19 +1129,24 @@ class SyncService {
         );
       } else {
         throw AppException.restApiFailure(
-            response.statusCode ?? 500, response.toString());
+          response.statusCode ?? 500,
+          response.toString(),
+        );
       }
     } catch (e) {
       throw getApiError(e);
     }
   }
 
-  Future<DateTime?> getLastUpdatedDate(
-      {required TableInfo<Table, dynamic> tableInfo}) async {
+  Future<DateTime?> getLastUpdatedDate({
+    required TableInfo<Table, dynamic> tableInfo,
+  }) async {
     try {
-      final query = await _remoteDb.customSelect(
-          ''' SELECT MAX(LAST_UPDATED) as MAX_DATE FROM ${tableInfo.actualTableName}
-          ''').getSingle();
+      final query =
+          await _remoteDb.customSelect(
+            ''' SELECT MAX(LAST_UPDATED) as MAX_DATE FROM ${tableInfo.actualTableName}
+          ''',
+          ).getSingle();
 
       return query.data['MAX_DATE'] != null
           ? DateTime.parse(query.data['MAX_DATE'] as String)
@@ -1146,11 +1163,13 @@ class SyncService {
         try {
           final visitaCompetenciaDtoList =
               await _getVisitaCompetenciaLocalDtoList(
-                  visitasNoEnviadas[i].visitaAppId);
+                visitasNoEnviadas[i].visitaAppId,
+              );
           final visitaLocalEnviada = await _remoteCreateVisita(
-              visitasNoEnviadas[i],
-              visitaCompetenciaDtoList,
-              _usuario!.provisionalToken);
+            visitasNoEnviadas[i],
+            visitaCompetenciaDtoList,
+            _usuario!.provisionalToken,
+          );
           await updateVisitaInDB(visitaLocalDto: visitaLocalEnviada);
         } catch (e) {
           log.e(e);
@@ -1164,8 +1183,7 @@ class SyncService {
   Future<List<VisitaLocalDTO>> getVisitasNoEnviadas() async {
     try {
       return (_localDb.select(_localDb.visitaLocalTable)
-            ..where((tbl) => tbl.enviada.equals('N')))
-          .get();
+        ..where((tbl) => tbl.enviada.equals('N'))).get();
     } catch (e) {
       rethrow;
     }
@@ -1173,37 +1191,39 @@ class SyncService {
 
   Future<List<PedidoVentaLocalDTO>> getPedidosNoEnviados() async {
     try {
-      return (_localDb.select(_localDb.pedidoVentaLocalTable)
-            ..where(
-                (tbl) => tbl.enviada.equals('N') & tbl.borrador.equals('N')))
-          .get();
+      return (_localDb.select(_localDb.pedidoVentaLocalTable)..where(
+        (tbl) => tbl.enviada.equals('N') & tbl.borrador.equals('N'),
+      )).get();
     } catch (e) {
       rethrow;
     }
   }
 
   Future<PedidoVentaLocalDTO> _remoteCreatePedidos(
-      PedidoVentaLocalDTO pedidoVentaLocalDto,
-      List<PedidoVentaLineaLocalDTO> pedidoVentaLineaDTOList,
-      String provisionalToken) async {
+    PedidoVentaLocalDTO pedidoVentaLocalDto,
+    List<PedidoVentaLineaLocalDTO> pedidoVentaLineaDTOList,
+    String provisionalToken,
+  ) async {
     try {
       final pedidoVentaLocalToJson = pedidoVentaLocalDto.toJson();
       final pedidoVentaLineasLocalListToJson =
           pedidoVentaLineaDTOList.map((e) => e.toJson()).toList();
-      pedidoVentaLocalToJson
-          .addAll({'PEDIDO_VENTA_LINEAS': pedidoVentaLineasLocalListToJson});
+      pedidoVentaLocalToJson.addAll({
+        'PEDIDO_VENTA_LINEAS': pedidoVentaLineasLocalListToJson,
+      });
 
-      final requestUri = (_usuario!.test)
-          ? Uri.http(
-              // dotenv.get('URL', fallback: 'localhost:3001')
-              'jbm-api-test.nikel.es:8080',
-              'api/v4/online/pedidos',
-            )
-          : Uri.https(
-              // dotenv.get('URL', fallback: 'localhost:3001')
-              'jbm-api.nikel.es',
-              'api/v4/online/pedidos',
-            );
+      final requestUri =
+          (_usuario!.test)
+              ? Uri.http(
+                // dotenv.get('URL', fallback: 'localhost:3001')
+                'jbm-api-test.nikel.es:8080',
+                'api/v4/online/pedidos',
+              )
+              : Uri.https(
+                // dotenv.get('URL', fallback: 'localhost:3001')
+                'jbm-api.nikel.es',
+                'api/v4/online/pedidos',
+              );
 
       final response = await _dio.postUri(
         requestUri,
@@ -1218,7 +1238,9 @@ class SyncService {
         return PedidoVentaLocalDTO.fromJson(json);
       } else {
         throw AppException.restApiFailure(
-            response.statusCode ?? 400, response.statusMessage ?? '');
+          response.statusCode ?? 400,
+          response.statusMessage ?? '',
+        );
       }
     } catch (e) {
       throw getApiError(e);
@@ -1226,21 +1248,23 @@ class SyncService {
   }
 
   Future<VisitaLocalDTO> _remoteCreateVisita(
-      VisitaLocalDTO visitaLocalDto,
-      List<VisitaCompetenciaLocalDTO> visitaCompetenciaDtoList,
-      String provisionalToken) async {
+    VisitaLocalDTO visitaLocalDto,
+    List<VisitaCompetenciaLocalDTO> visitaCompetenciaDtoList,
+    String provisionalToken,
+  ) async {
     try {
-      final requestUri = (_usuario!.test)
-          ? Uri.http(
-              // dotenv.get('URL', fallback: 'localhost:3001')
-              'jbm-api-test.nikel.es:8080',
-              'api/v7/online/visitas',
-            )
-          : Uri.https(
-              // dotenv.get('URL', fallback: 'localhost:3001')
-              'jbm-api.nikel.es',
-              'api/v7/online/visitas',
-            );
+      final requestUri =
+          (_usuario!.test)
+              ? Uri.http(
+                // dotenv.get('URL', fallback: 'localhost:3001')
+                'jbm-api-test.nikel.es:8080',
+                'api/v7/online/visitas',
+              )
+              : Uri.https(
+                // dotenv.get('URL', fallback: 'localhost:3001')
+                'jbm-api.nikel.es',
+                'api/v7/online/visitas',
+              );
 
       final response = await _dio.postUri(
         requestUri,
@@ -1255,15 +1279,18 @@ class SyncService {
         return VisitaLocalDTO.fromJson(json);
       } else {
         throw AppException.restApiFailure(
-            response.statusCode ?? 400, response.statusMessage ?? '');
+          response.statusCode ?? 400,
+          response.statusMessage ?? '',
+        );
       }
     } catch (e) {
       throw getApiError(e);
     }
   }
 
-  Future<void> updatePedidoVentaInDB(
-      {required PedidoVentaLocalDTO pedidoVentaLocalDto}) async {
+  Future<void> updatePedidoVentaInDB({
+    required PedidoVentaLocalDTO pedidoVentaLocalDto,
+  }) async {
     try {
       await _localDb
           .update(_localDb.pedidoVentaLocalTable)
@@ -1273,8 +1300,9 @@ class SyncService {
     }
   }
 
-  Future<void> updateVisitaInDB(
-      {required VisitaLocalDTO visitaLocalDto}) async {
+  Future<void> updateVisitaInDB({
+    required VisitaLocalDTO visitaLocalDto,
+  }) async {
     try {
       await _localDb.update(_localDb.visitaLocalTable).replace(visitaLocalDto);
     } catch (e) {
@@ -1284,18 +1312,18 @@ class SyncService {
 
   Future<void> checkPedidoVentaTratados() async {
     try {
-      final pedidosNoTratadosDTO = await (_localDb
-              .select(_localDb.pedidoVentaLocalTable)
-            ..where(
-                (tbl) => tbl.tratada.equals('N') & tbl.borrador.equals('N')))
-          .get();
+      final pedidosNoTratadosDTO =
+          await (_localDb.select(_localDb.pedidoVentaLocalTable)..where(
+            (tbl) => tbl.tratada.equals('N') & tbl.borrador.equals('N'),
+          )).get();
 
       for (var i = 0; i < pedidosNoTratadosDTO.length; i++) {
         final pedidoNoTratado = pedidosNoTratadosDTO[i];
 
         final pedidoNoTratadoExisitInPedidos =
             await checkIfPedidosHaSidoImportado(
-                pedidoNoTratado.pedidoVentaAppId);
+              pedidoNoTratado.pedidoVentaAppId,
+            );
 
         if (pedidoNoTratadoExisitInPedidos) {
           await _localDb
@@ -1312,25 +1340,27 @@ class SyncService {
     try {
       final visitasNoTratadasDTO =
           await (_localDb.select(_localDb.visitaLocalTable)
-                ..where((tbl) => tbl.tratada.equals('N')))
-              .get();
+            ..where((tbl) => tbl.tratada.equals('N'))).get();
 
       for (var i = 0; i < visitasNoTratadasDTO.length; i++) {
         final visitaNoTratada = visitasNoTratadasDTO[i];
 
-        final visitaNoTratadaExisitInVisitas = await (_remoteDb
-                .select(_remoteDb.visitaTable)
-              ..where((tbl) =>
-                  tbl.visitaAppId.equalsNullable(visitaNoTratada.visitaAppId)))
-            .getSingleOrNull();
+        final visitaNoTratadaExisitInVisitas =
+            await (_remoteDb.select(_remoteDb.visitaTable)..where(
+              (tbl) =>
+                  tbl.visitaAppId.equalsNullable(visitaNoTratada.visitaAppId),
+            )).getSingleOrNull();
 
         if (visitaNoTratadaExisitInVisitas != null) {
-          await _localDb.update(_localDb.visitaLocalTable).write(
-              const local.VisitaLocalTableCompanion(tratada: Value('S')));
-          await (_localDb.delete(_localDb.visitaCompetenciaLocalTable)
-                ..where((tbl) => tbl.visitaAppId
-                    .equalsNullable(visitaNoTratada.visitaAppId)))
-              .go();
+          await _localDb
+              .update(_localDb.visitaLocalTable)
+              .write(
+                const local.VisitaLocalTableCompanion(tratada: Value('S')),
+              );
+          await (_localDb.delete(_localDb.visitaCompetenciaLocalTable)..where(
+            (tbl) =>
+                tbl.visitaAppId.equalsNullable(visitaNoTratada.visitaAppId),
+          )).go();
         }
       }
     } catch (e) {
@@ -1342,19 +1372,18 @@ class SyncService {
     try {
       final clienteContactoImpListDTO =
           await (_localDb.select(_localDb.clienteContactoImpTable)
-                ..where((tbl) => tbl.enviado.equals('S')))
-              .get();
+            ..where((tbl) => tbl.enviado.equals('S'))).get();
 
       for (var i = 0; i < clienteContactoImpListDTO.length; i++) {
         final haveBeenTratado = await _checkIfClienteContactoImpHaveBeenTratado(
-            clienteContactoImpListDTO[i].clienteId,
-            clienteContactoImpListDTO[i].id);
+          clienteContactoImpListDTO[i].clienteId,
+          clienteContactoImpListDTO[i].id,
+        );
 
         if (haveBeenTratado) {
-          await (_localDb.delete(_localDb.clienteContactoImpTable)
-                ..where(
-                    (tbl) => tbl.id.equals(clienteContactoImpListDTO[i].id)))
-              .go();
+          await (_localDb.delete(_localDb.clienteContactoImpTable)..where(
+            (tbl) => tbl.id.equals(clienteContactoImpListDTO[i].id),
+          )).go();
         }
       }
     } catch (e) {
@@ -1366,20 +1395,19 @@ class SyncService {
     try {
       final clienteDireccionImpListDTO =
           await (_localDb.select(_localDb.clienteDireccionImpTable)
-                ..where((tbl) => tbl.enviada.equals('S')))
-              .get();
+            ..where((tbl) => tbl.enviada.equals('S'))).get();
 
       for (var i = 0; i < clienteDireccionImpListDTO.length; i++) {
         final haveBeenTratado =
             await _checkIfClienteDireccionImpHaveBeenTratada(
-                clienteDireccionImpListDTO[i].clienteId,
-                clienteDireccionImpListDTO[i].id);
+              clienteDireccionImpListDTO[i].clienteId,
+              clienteDireccionImpListDTO[i].id,
+            );
 
         if (haveBeenTratado) {
-          await (_localDb.delete(_localDb.clienteDireccionImpTable)
-                ..where(
-                    (tbl) => tbl.id.equals(clienteDireccionImpListDTO[i].id)))
-              .go();
+          await (_localDb.delete(_localDb.clienteDireccionImpTable)..where(
+            (tbl) => tbl.id.equals(clienteDireccionImpListDTO[i].id),
+          )).go();
         }
       }
     } catch (e) {
@@ -1404,10 +1432,14 @@ class SyncService {
 
   Future<void> saveLastSyncDateTimeInArticulos() async {
     try {
-      await _localDb.update(_localDb.syncDateTimeTable).write(
-          local.SyncDateTimeTableCompanion(
+      await _localDb
+          .update(_localDb.syncDateTimeTable)
+          .write(
+            local.SyncDateTimeTableCompanion(
               id: const Value(1),
-              articuloUltimaSync: Value(DateTime.now().toUtc())));
+              articuloUltimaSync: Value(DateTime.now().toUtc()),
+            ),
+          );
     } catch (e) {
       rethrow;
     }
@@ -1415,10 +1447,14 @@ class SyncService {
 
   Future<void> saveLastSyncDateTimeInClientes() async {
     try {
-      await _localDb.update(_localDb.syncDateTimeTable).write(
-          local.SyncDateTimeTableCompanion(
+      await _localDb
+          .update(_localDb.syncDateTimeTable)
+          .write(
+            local.SyncDateTimeTableCompanion(
               id: const Value(1),
-              clienteUltimaSync: Value(DateTime.now().toUtc())));
+              clienteUltimaSync: Value(DateTime.now().toUtc()),
+            ),
+          );
     } catch (e) {
       rethrow;
     }
@@ -1426,10 +1462,14 @@ class SyncService {
 
   Future<void> saveLastSyncDateTimeInPedidos() async {
     try {
-      await _localDb.update(_localDb.syncDateTimeTable).write(
-          local.SyncDateTimeTableCompanion(
+      await _localDb
+          .update(_localDb.syncDateTimeTable)
+          .write(
+            local.SyncDateTimeTableCompanion(
               id: const Value(1),
-              pedidoUltimaSync: Value(DateTime.now().toUtc())));
+              pedidoUltimaSync: Value(DateTime.now().toUtc()),
+            ),
+          );
     } catch (e) {
       rethrow;
     }
@@ -1437,10 +1477,14 @@ class SyncService {
 
   Future<void> saveLastSyncDateTimeInVisitas() async {
     try {
-      await _localDb.update(_localDb.syncDateTimeTable).write(
-          local.SyncDateTimeTableCompanion(
+      await _localDb
+          .update(_localDb.syncDateTimeTable)
+          .write(
+            local.SyncDateTimeTableCompanion(
               id: const Value(1),
-              visitaUltimaSync: Value(DateTime.now().toUtc())));
+              visitaUltimaSync: Value(DateTime.now().toUtc()),
+            ),
+          );
     } catch (e) {
       rethrow;
     }
@@ -1472,19 +1516,22 @@ class SyncService {
   }
 
   Future<bool> _checkIfClienteContactoImpHaveBeenTratado(
-      String clienteId, String contactoImpGuid) async {
+    String clienteId,
+    String contactoImpGuid,
+  ) async {
     try {
-      final requestUri = (_usuario!.test)
-          ? Uri.http(
-              // dotenv.get('URL', fallback: 'localhost:3001'),
-              'jbm-api-test.nikel.es:8080',
-              'api/v1/sync/clientes/$clienteId/contactos/$contactoImpGuid',
-            )
-          : Uri.https(
-              // dotenv.get('URL', fallback: 'localhost:3001'),
-              'jbm-api.nikel.es',
-              'api/v1/sync/clientes/$clienteId/contactos/$contactoImpGuid',
-            );
+      final requestUri =
+          (_usuario!.test)
+              ? Uri.http(
+                // dotenv.get('URL', fallback: 'localhost:3001'),
+                'jbm-api-test.nikel.es:8080',
+                'api/v1/sync/clientes/$clienteId/contactos/$contactoImpGuid',
+              )
+              : Uri.https(
+                // dotenv.get('URL', fallback: 'localhost:3001'),
+                'jbm-api.nikel.es',
+                'api/v1/sync/clientes/$clienteId/contactos/$contactoImpGuid',
+              );
 
       final response = await _dio.getUri(
         requestUri,
@@ -1498,7 +1545,9 @@ class SyncService {
         return clienteContactoHaveBeenTratado;
       } else {
         throw AppException.restApiFailure(
-            response.statusCode ?? 400, response.statusMessage ?? '');
+          response.statusCode ?? 400,
+          response.statusMessage ?? '',
+        );
       }
     } catch (e) {
       throw getApiError(e);
@@ -1506,19 +1555,22 @@ class SyncService {
   }
 
   Future<bool> _checkIfClienteDireccionImpHaveBeenTratada(
-      String clienteId, String direccionImpGuid) async {
+    String clienteId,
+    String direccionImpGuid,
+  ) async {
     try {
-      final requestUri = (_usuario!.test)
-          ? Uri.http(
-              // dotenv.get('URL', fallback: 'localhost:3001'),
-              'jbm-api-test.nikel.es:8080',
-              'api/v1/sync/clientes/$clienteId/direcciones/$direccionImpGuid',
-            )
-          : Uri.https(
-              // dotenv.get('URL', fallback: 'localhost:3001'),
-              'jbm-api.nikel.es',
-              'api/v1/sync/clientes/$clienteId/direcciones/$direccionImpGuid',
-            );
+      final requestUri =
+          (_usuario!.test)
+              ? Uri.http(
+                // dotenv.get('URL', fallback: 'localhost:3001'),
+                'jbm-api-test.nikel.es:8080',
+                'api/v1/sync/clientes/$clienteId/direcciones/$direccionImpGuid',
+              )
+              : Uri.https(
+                // dotenv.get('URL', fallback: 'localhost:3001'),
+                'jbm-api.nikel.es',
+                'api/v1/sync/clientes/$clienteId/direcciones/$direccionImpGuid',
+              );
 
       final response = await _dio.getUri(
         requestUri,
@@ -1532,7 +1584,9 @@ class SyncService {
         return clienteDireccionHaveBeenTratada;
       } else {
         throw AppException.restApiFailure(
-            response.statusCode ?? 400, response.statusMessage ?? '');
+          response.statusCode ?? 400,
+          response.statusMessage ?? '',
+        );
       }
     } catch (e) {
       throw getApiError(e);
@@ -1541,9 +1595,9 @@ class SyncService {
 
   Future<bool> checkIfPedidosHaSidoImportado(String pedidoVentaAppId) async {
     final pedidoExistInSyncTable =
-        await (_remoteDb.select(_remoteDb.pedidoVentaTable)
-              ..where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId)))
-            .getSingleOrNull();
+        await (_remoteDb.select(_remoteDb.pedidoVentaTable)..where(
+          (tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId),
+        )).getSingleOrNull();
 
     if (pedidoExistInSyncTable == null) {
       return checkPedidoImportado(pedidoVentaAppId);
@@ -1554,17 +1608,18 @@ class SyncService {
 
   Future<bool> checkPedidoImportado(String pedidoVentaAppId) async {
     try {
-      final requestUri = (_usuario!.test)
-          ? Uri.http(
-              // dotenv.get('URL', fallback: 'localhost:3001'),
-              'jbm-api-test.nikel.es:8080',
-              'api/v1/sync/pedidos/$pedidoVentaAppId/check',
-            )
-          : Uri.https(
-              // dotenv.get('URL', fallback: 'localhost:3001'),
-              'jbm-api.nikel.es',
-              'api/v1/sync/pedidos/$pedidoVentaAppId/check',
-            );
+      final requestUri =
+          (_usuario!.test)
+              ? Uri.http(
+                // dotenv.get('URL', fallback: 'localhost:3001'),
+                'jbm-api-test.nikel.es:8080',
+                'api/v1/sync/pedidos/$pedidoVentaAppId/check',
+              )
+              : Uri.https(
+                // dotenv.get('URL', fallback: 'localhost:3001'),
+                'jbm-api.nikel.es',
+                'api/v1/sync/pedidos/$pedidoVentaAppId/check',
+              );
 
       final response = await _dio.getUri(
         requestUri,
@@ -1578,7 +1633,9 @@ class SyncService {
         return pedidoHaSidoImportado;
       } else {
         throw AppException.restApiFailure(
-            response.statusCode ?? 400, response.statusMessage ?? '');
+          response.statusCode ?? 400,
+          response.statusMessage ?? '',
+        );
       }
     } catch (e) {
       throw getApiError(e);
@@ -1586,9 +1643,9 @@ class SyncService {
   }
 
   Future<void> checkBorradores() async {
-    final borradores = await (_localDb.select(_localDb.pedidoVentaLocalTable)
-          ..where((tbl) => tbl.borrador.equals('S')))
-        .get();
+    final borradores =
+        await (_localDb.select(_localDb.pedidoVentaLocalTable)
+          ..where((tbl) => tbl.borrador.equals('S'))).get();
 
     for (var i = 0; i < borradores.length; i++) {
       if (borradores[i].enviada == 'S' || borradores[i].tratada == 'S') {
@@ -1599,8 +1656,11 @@ class SyncService {
     }
   }
 
-  Future<void> insetLog(
-      {required String level, required String message, String? error}) async {
+  Future<void> insetLog({
+    required String level,
+    required String message,
+    String? error,
+  }) async {
     final appLog = Log(
       level: level,
       message: message,
@@ -1620,8 +1680,7 @@ class SyncService {
       for (var i = 0; i < logsDtoList.length; i++) {
         final responseLogDto = await remotePostLogs(logDto: logsDtoList[i]);
         await (_localDb.delete(_localDb.logTable)
-              ..where((tbl) => tbl.id.equals(responseLogDto.id!)))
-            .go();
+          ..where((tbl) => tbl.id.equals(responseLogDto.id!))).go();
       }
     } catch (e) {
       log.e(e);
@@ -1646,7 +1705,9 @@ class SyncService {
         return LogDTO.fromJson(json);
       } else {
         throw AppException.restApiFailure(
-            response.statusCode ?? 400, response.statusMessage ?? '');
+          response.statusCode ?? 400,
+          response.statusMessage ?? '',
+        );
       }
     } catch (e) {
       rethrow;
@@ -1656,25 +1717,26 @@ class SyncService {
   Future<void> deletePedidosAntiguos() async {
     final monthBeforeDate = DateTime.now().add(const Duration(days: -30));
 
-    final pedidosAntiguosLista = await (_localDb
-            .select(_localDb.pedidoVentaLocalTable)
-          ..where((tbl) => tbl.fechaAlta.isSmallerThanValue(monthBeforeDate)))
-        .get();
+    final pedidosAntiguosLista =
+        await (_localDb.select(_localDb.pedidoVentaLocalTable)..where(
+          (tbl) => tbl.fechaAlta.isSmallerThanValue(monthBeforeDate),
+        )).get();
 
     for (var i = 0; i < pedidosAntiguosLista.length; i++) {
       await deletePedidoVentaLineasAntiguas(
-          pedidosAntiguosLista[i].pedidoVentaAppId);
-      await (_localDb.delete(_localDb.pedidoVentaLocalTable)
-            ..where((tbl) => tbl.pedidoVentaAppId
-                .equals(pedidosAntiguosLista[i].pedidoVentaAppId)))
-          .go();
+        pedidosAntiguosLista[i].pedidoVentaAppId,
+      );
+      await (_localDb.delete(_localDb.pedidoVentaLocalTable)..where(
+        (tbl) => tbl.pedidoVentaAppId.equals(
+          pedidosAntiguosLista[i].pedidoVentaAppId,
+        ),
+      )).go();
     }
   }
 
   Future<void> deletePedidoVentaLineasAntiguas(String pedidoVentaAppId) async {
     await (_localDb.delete(_localDb.pedidoVentaLineaLocalTable)
-          ..where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId)))
-        .go();
+      ..where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId))).go();
   }
 
   Future<void> syncCatalogos({required bool isInMainThread}) async {
@@ -1685,13 +1747,16 @@ class SyncService {
 
       if (favoritesCatalogsDtoList.isNotEmpty) {
         await downloadFavoritesCatalogs(
-            isInMainThread,
-            favoritesCatalogsDtoList,
-            documentDirectory ?? await getApplicationDocumentsDirectory());
+          isInMainThread,
+          favoritesCatalogsDtoList,
+          documentDirectory ?? await getApplicationDocumentsDirectory(),
+        );
       }
       if (!isInMainThread) {
-        await removeDeletedCatalogs(favoritesCatalogsDtoList,
-            documentDirectory ?? await getApplicationDocumentsDirectory());
+        await removeDeletedCatalogs(
+          favoritesCatalogsDtoList,
+          documentDirectory ?? await getApplicationDocumentsDirectory(),
+        );
       }
 
       await insetLog(level: 'I', message: 'End catalogs sync');
@@ -1703,9 +1768,10 @@ class SyncService {
   }
 
   Future<void> downloadFavoritesCatalogs(
-      bool isInMainThread,
-      List<CatalogoDTO> favoritesCatalogsDtoList,
-      Directory documentDirectory) async {
+    bool isInMainThread,
+    List<CatalogoDTO> favoritesCatalogsDtoList,
+    Directory documentDirectory,
+  ) async {
     for (var i = 0; i < favoritesCatalogsDtoList.length; i++) {
       final adjuntoParam = AdjuntoParam(
         id: favoritesCatalogsDtoList[i].catalogoId.toString(),
@@ -1716,16 +1782,19 @@ class SyncService {
               !_fileExistInLocal(adjuntoParam, documentDirectory))) {
         final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
         final data = await _remoteGetAttachment(
-            requestUri: Uri.https(
-              'jbm-api.nikel.es',
-              'api/v1/online/adjunto/catalogo/${adjuntoParam.id}',
-              query,
-            ),
-            provisionalToken: _usuario!.provisionalToken);
+          requestUri: Uri.https(
+            'jbm-api.nikel.es',
+            'api/v1/online/adjunto/catalogo/${adjuntoParam.id}',
+            query,
+          ),
+          provisionalToken: _usuario!.provisionalToken,
+        );
 
         if (isInMainThread) {
           await _removeCatalogsFilesById(
-              documentDirectory, favoritesCatalogsDtoList[i].catalogoId);
+            documentDirectory,
+            favoritesCatalogsDtoList[i].catalogoId,
+          );
         }
         await saveDocumentInLocal(data, adjuntoParam, documentDirectory);
       }
@@ -1737,11 +1806,14 @@ class SyncService {
   }
 
   Future<File> saveDocumentInLocal(
-      List<int> data, AdjuntoParam adjuntoParam, Directory directory) async {
+    List<int> data,
+    AdjuntoParam adjuntoParam,
+    Directory directory,
+  ) async {
     try {
       final file = await File(
-              '${directory.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}')
-          .create(recursive: true);
+        '${directory.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}',
+      ).create(recursive: true);
 
       final raf = file.openSync(mode: FileMode.write);
       raf.writeFromSync(data);
@@ -1769,10 +1841,13 @@ class SyncService {
     }
   }
 
-  Future<void> removeDeletedCatalogs(List<CatalogoDTO> favoritesCatalogsDtoList,
-      Directory documentDirectory) async {
-    final getCatalogoDirectory =
-        Directory('${documentDirectory.path}/catalogos/');
+  Future<void> removeDeletedCatalogs(
+    List<CatalogoDTO> favoritesCatalogsDtoList,
+    Directory documentDirectory,
+  ) async {
+    final getCatalogoDirectory = Directory(
+      '${documentDirectory.path}/catalogos/',
+    );
 
     if (getCatalogoDirectory.existsSync()) {
       final getFilesList = getCatalogoDirectory.listSync();
@@ -1829,7 +1904,9 @@ class SyncService {
         return response.data as List<int>;
       } else {
         throw AppException.restApiFailure(
-            response.statusCode ?? 400, response.statusMessage ?? '');
+          response.statusCode ?? 400,
+          response.statusMessage ?? '',
+        );
       }
     } catch (e) {
       throw getApiError(e);
@@ -1844,9 +1921,12 @@ class SyncService {
   // }
 
   Future<void> _removeCatalogsFilesById(
-      Directory directory, int catalogoId) async {
-    final directoryCatalogos =
-        Directory('${directory.path}/catalogos/$catalogoId');
+    Directory directory,
+    int catalogoId,
+  ) async {
+    final directoryCatalogos = Directory(
+      '${directory.path}/catalogos/$catalogoId',
+    );
     if (directoryCatalogos.existsSync()) {
       directoryCatalogos.deleteSync(recursive: true);
     }
@@ -1864,19 +1944,21 @@ class SyncService {
   }
 
   Future<ClienteImpDTO?> _remoteClienteUpdate(
-      ClienteImpDTO clienteImpDto) async {
+    ClienteImpDTO clienteImpDto,
+  ) async {
     try {
-      final requestUri = (_usuario!.test)
-          ? Uri.http(
-              // dotenv.get('URL', fallback: 'localhost:3001')
-              'jbm-api-test.nikel.es:8080',
-              'api/v1/online/clientes/${clienteImpDto.clienteId}/sectores',
-            )
-          : Uri.https(
-              // dotenv.get('URL', fallback: 'localhost:3001')
-              'jbm-api.nikel.es',
-              'api/v1/online/clientes/${clienteImpDto.clienteId}/sectores',
-            );
+      final requestUri =
+          (_usuario!.test)
+              ? Uri.http(
+                // dotenv.get('URL', fallback: 'localhost:3001')
+                'jbm-api-test.nikel.es:8080',
+                'api/v1/online/clientes/${clienteImpDto.clienteId}/sectores',
+              )
+              : Uri.https(
+                // dotenv.get('URL', fallback: 'localhost:3001')
+                'jbm-api.nikel.es',
+                'api/v1/online/clientes/${clienteImpDto.clienteId}/sectores',
+              );
 
       log.d('SYNC CLIENTE UPDATE: ${clienteImpDto.toJson()}');
 
@@ -1893,7 +1975,9 @@ class SyncService {
         return ClienteImpDTO.fromJson(data);
       } else {
         throw AppException.restApiFailure(
-            response.statusCode ?? 400, response.statusMessage ?? '');
+          response.statusCode ?? 400,
+          response.statusMessage ?? '',
+        );
       }
     } catch (e) {
       log.e('ERROR SYNC CLIENTE ${clienteImpDto.toJson()}: ${e.toString()}');
@@ -1903,19 +1987,19 @@ class SyncService {
 
   Future<void> _deleteClienteImpByClienteId(String clienteId) async {
     await (_localDb.delete(_localDb.clienteImpTable)
-          ..where((tbl) => tbl.clienteId.equals(clienteId)))
-        .go();
+      ..where((tbl) => tbl.clienteId.equals(clienteId))).go();
   }
 
   Future<List<VisitaCompetenciaLocalDTO>> _getVisitaCompetenciaLocalDtoList(
-      String? visitaAppId) async {
+    String? visitaAppId,
+  ) async {
     final visitaCompetenciaDtoList = <VisitaCompetenciaLocalDTO>[];
 
     if (visitaAppId != null) {
       visitaCompetenciaDtoList.addAll(
-          await (_localDb.select(_localDb.visitaCompetenciaLocalTable)
-                ..where((tbl) => tbl.visitaAppId.equalsNullable(visitaAppId)))
-              .get());
+        await (_localDb.select(_localDb.visitaCompetenciaLocalTable)
+          ..where((tbl) => tbl.visitaAppId.equalsNullable(visitaAppId))).get(),
+      );
     }
 
     return visitaCompetenciaDtoList;

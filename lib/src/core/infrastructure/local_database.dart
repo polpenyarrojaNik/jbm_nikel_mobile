@@ -25,51 +25,44 @@ part 'local_database.g.dart';
 
 SendPort? isolateLocalDatabaseConnectPort;
 
-final appLocalDatabaseProvider = Provider<LocalAppDatabase>(
-  (ref) {
-    final connection = DatabaseConnection.delayed(() async {
-      late DriftIsolate isolate;
-      if (isolateLocalDatabaseConnectPort != null) {
-        isolate =
-            DriftIsolate.fromConnectPort(isolateLocalDatabaseConnectPort!);
-      } else {
-        isolate = await _createDriftIsolate();
+final appLocalDatabaseProvider = Provider<LocalAppDatabase>((ref) {
+  final connection = DatabaseConnection.delayed(() async {
+    late DriftIsolate isolate;
+    if (isolateLocalDatabaseConnectPort != null) {
+      isolate = DriftIsolate.fromConnectPort(isolateLocalDatabaseConnectPort!);
+    } else {
+      isolate = await _createDriftIsolate();
 
-        isolateLocalDatabaseConnectPort = isolate.connectPort;
-      }
-      return isolate.connect();
-    }());
-    final database = LocalAppDatabase.connect(connection);
-    ref.onDispose(
-      () => database.close(),
-    );
-    return database;
-  },
-);
+      isolateLocalDatabaseConnectPort = isolate.connectPort;
+    }
+    return isolate.connect();
+  }());
+  final database = LocalAppDatabase.connect(connection);
+  ref.onDispose(() => database.close());
+  return database;
+});
 const localDatabaseName = 'local_jbm.sqlite';
 
-@DriftDatabase(tables: [
-  VisitaLocalTable,
-  PedidoVentaLineaLocalTable,
-  PedidoVentaLocalTable,
-  SyncDateTimeTable,
-  LogTable,
-  CatalogoFavoritoTable,
-  ClienteContactoImpTable,
-  ClienteDireccionImpTable,
-  CatalogoOrdenTable,
-  ClienteImpTable,
-  VisitaCompetenciaLocalTable,
-])
+@DriftDatabase(
+  tables: [
+    VisitaLocalTable,
+    PedidoVentaLineaLocalTable,
+    PedidoVentaLocalTable,
+    SyncDateTimeTable,
+    LogTable,
+    CatalogoFavoritoTable,
+    ClienteContactoImpTable,
+    ClienteDireccionImpTable,
+    CatalogoOrdenTable,
+    ClienteImpTable,
+    VisitaCompetenciaLocalTable,
+  ],
+)
 class LocalAppDatabase extends _$LocalAppDatabase {
   final bool test;
 
-  LocalAppDatabase.connect(super.connection)
-      : test = false,
-        super.connect();
-  LocalAppDatabase.test()
-      : test = true,
-        super(NativeDatabase.memory());
+  LocalAppDatabase.connect(super.connection) : test = false, super.connect();
+  LocalAppDatabase.test() : test = true, super(NativeDatabase.memory());
   @override
   int get schemaVersion => 18;
 
@@ -104,94 +97,100 @@ class LocalAppDatabase extends _$LocalAppDatabase {
           await m.alterTable(
             TableMigration(
               pedidoVentaLineaLocalTable,
-              newColumns: [
-                pedidoVentaLineaLocalTable.pedidoLineaIdComponente,
-              ],
+              newColumns: [pedidoVentaLineaLocalTable.pedidoLineaIdComponente],
             ),
           );
         }
         if (from < 8) {
           await m.alterTable(
-            TableMigration(visitaLocalTable, newColumns: [
-              visitaLocalTable.ofertaRealizada,
-              visitaLocalTable.interesCliente,
-              visitaLocalTable.pedidoRealizado,
-              visitaLocalTable.codigoMotivoNoInteres,
-              visitaLocalTable.codigoMotivoNoPedido,
-              visitaLocalTable.codigoSector,
-              visitaLocalTable.codigoCompetencia,
-              visitaLocalTable.almacenPropio,
-              visitaLocalTable.capacidad,
-              visitaLocalTable.frecuenciaPedido,
-            ], columnTransformer: {
-              visitaLocalTable.ofertaRealizada: const Constant('N'),
-              visitaLocalTable.interesCliente: const Constant('N'),
-              visitaLocalTable.pedidoRealizado: const Constant('N'),
-              visitaLocalTable.almacenPropio: const Constant('N'),
-              visitaLocalTable.capacidad: const Constant('M'),
-              visitaLocalTable.frecuenciaPedido: const Constant('M'),
-            }),
+            TableMigration(
+              visitaLocalTable,
+              newColumns: [
+                visitaLocalTable.ofertaRealizada,
+                visitaLocalTable.interesCliente,
+                visitaLocalTable.pedidoRealizado,
+                visitaLocalTable.codigoMotivoNoInteres,
+                visitaLocalTable.codigoMotivoNoPedido,
+                visitaLocalTable.codigoSector,
+                visitaLocalTable.codigoCompetencia,
+                visitaLocalTable.almacenPropio,
+                visitaLocalTable.capacidad,
+                visitaLocalTable.frecuenciaPedido,
+              ],
+              columnTransformer: {
+                visitaLocalTable.ofertaRealizada: const Constant('N'),
+                visitaLocalTable.interesCliente: const Constant('N'),
+                visitaLocalTable.pedidoRealizado: const Constant('N'),
+                visitaLocalTable.almacenPropio: const Constant('N'),
+                visitaLocalTable.capacidad: const Constant('M'),
+                visitaLocalTable.frecuenciaPedido: const Constant('M'),
+              },
+            ),
           );
         }
         if (from < 9) {
           await m.alterTable(
-            TableMigration(visitaLocalTable, newColumns: [
-              visitaLocalTable.ofertaRealizada,
-              visitaLocalTable.interesCliente,
-              visitaLocalTable.pedidoRealizado,
-              visitaLocalTable.codigoMotivoNoInteres,
-              visitaLocalTable.codigoMotivoNoPedido,
-              visitaLocalTable.codigoSector,
-              visitaLocalTable.codigoCompetencia,
-              visitaLocalTable.almacenPropio,
-              visitaLocalTable.capacidad,
-              visitaLocalTable.frecuenciaPedido,
-            ], columnTransformer: {
-              visitaLocalTable.ofertaRealizada: const Constant('N'),
-              visitaLocalTable.interesCliente: const Constant('N'),
-              visitaLocalTable.pedidoRealizado: const Constant('N'),
-              visitaLocalTable.almacenPropio: const Constant('N'),
-              visitaLocalTable.capacidad: const Constant('M'),
-              visitaLocalTable.frecuenciaPedido: const Constant('M'),
-            }),
+            TableMigration(
+              visitaLocalTable,
+              newColumns: [
+                visitaLocalTable.ofertaRealizada,
+                visitaLocalTable.interesCliente,
+                visitaLocalTable.pedidoRealizado,
+                visitaLocalTable.codigoMotivoNoInteres,
+                visitaLocalTable.codigoMotivoNoPedido,
+                visitaLocalTable.codigoSector,
+                visitaLocalTable.codigoCompetencia,
+                visitaLocalTable.almacenPropio,
+                visitaLocalTable.capacidad,
+                visitaLocalTable.frecuenciaPedido,
+              ],
+              columnTransformer: {
+                visitaLocalTable.ofertaRealizada: const Constant('N'),
+                visitaLocalTable.interesCliente: const Constant('N'),
+                visitaLocalTable.pedidoRealizado: const Constant('N'),
+                visitaLocalTable.almacenPropio: const Constant('N'),
+                visitaLocalTable.capacidad: const Constant('M'),
+                visitaLocalTable.frecuenciaPedido: const Constant('M'),
+              },
+            ),
           );
           await m.alterTable(
             TableMigration(
               clienteDireccionImpTable,
-              newColumns: [
-                clienteDireccionImpTable.telefono,
-              ],
+              newColumns: [clienteDireccionImpTable.telefono],
             ),
           );
         }
         if (from < 11) {
           await m.alterTable(
-            TableMigration(visitaLocalTable, newColumns: [
-              visitaLocalTable.ofertaRealizada,
-              visitaLocalTable.interesCliente,
-              visitaLocalTable.pedidoRealizado,
-              visitaLocalTable.codigoMotivoNoInteres,
-              visitaLocalTable.codigoMotivoNoPedido,
-              visitaLocalTable.codigoSector,
-              visitaLocalTable.codigoCompetencia,
-              visitaLocalTable.almacenPropio,
-              visitaLocalTable.capacidad,
-              visitaLocalTable.frecuenciaPedido,
-            ], columnTransformer: {
-              visitaLocalTable.ofertaRealizada: const Constant('N'),
-              visitaLocalTable.interesCliente: const Constant('N'),
-              visitaLocalTable.pedidoRealizado: const Constant('N'),
-              visitaLocalTable.almacenPropio: const Constant('N'),
-              visitaLocalTable.capacidad: const Constant('M'),
-              visitaLocalTable.frecuenciaPedido: const Constant('M'),
-            }),
+            TableMigration(
+              visitaLocalTable,
+              newColumns: [
+                visitaLocalTable.ofertaRealizada,
+                visitaLocalTable.interesCliente,
+                visitaLocalTable.pedidoRealizado,
+                visitaLocalTable.codigoMotivoNoInteres,
+                visitaLocalTable.codigoMotivoNoPedido,
+                visitaLocalTable.codigoSector,
+                visitaLocalTable.codigoCompetencia,
+                visitaLocalTable.almacenPropio,
+                visitaLocalTable.capacidad,
+                visitaLocalTable.frecuenciaPedido,
+              ],
+              columnTransformer: {
+                visitaLocalTable.ofertaRealizada: const Constant('N'),
+                visitaLocalTable.interesCliente: const Constant('N'),
+                visitaLocalTable.pedidoRealizado: const Constant('N'),
+                visitaLocalTable.almacenPropio: const Constant('N'),
+                visitaLocalTable.capacidad: const Constant('M'),
+                visitaLocalTable.frecuenciaPedido: const Constant('M'),
+              },
+            ),
           );
           await m.alterTable(
             TableMigration(
               clienteDireccionImpTable,
-              newColumns: [
-                clienteDireccionImpTable.telefono,
-              ],
+              newColumns: [clienteDireccionImpTable.telefono],
             ),
           );
           await m.createTable(catalogoOrdenTable);
@@ -237,8 +236,10 @@ Future<DriftIsolate> _createDriftIsolate() async {
   final receivePort = ReceivePort();
 
   await Isolate.spawn(
-      _startBackground, IsolateRequest(receivePort.sendPort, path),
-      debugName: 'LOCAL DB Isolate');
+    _startBackground,
+    IsolateRequest(receivePort.sendPort, path),
+    debugName: 'LOCAL DB Isolate',
+  );
 
   // ReceivePort will receive the DriftIsolate from background isolate, send by _startBackground
   return await receivePort.first as DriftIsolate;

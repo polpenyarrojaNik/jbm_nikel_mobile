@@ -35,73 +35,76 @@ import 'pedido_venta_linea_local_dto.dart';
 import 'pedido_venta_local_dto.dart';
 
 final pedidoVentaRepositoryProvider =
-    Provider.autoDispose<PedidoVentaRepository>(
-  (ref) {
-    final remoteDb = ref.watch(appRemoteDatabaseProvider);
-    final localDb = ref.watch(local.appLocalDatabaseProvider);
-    final dio = ref.watch(dioProvider);
-    final usuario = ref.watch(usuarioNotifierProvider)!;
-    return PedidoVentaRepository(remoteDb, localDb, dio, usuario);
-  },
-);
+    Provider.autoDispose<PedidoVentaRepository>((ref) {
+      final remoteDb = ref.watch(appRemoteDatabaseProvider);
+      final localDb = ref.watch(local.appLocalDatabaseProvider);
+      final dio = ref.watch(dioProvider);
+      final usuario = ref.watch(usuarioNotifierProvider)!;
+      return PedidoVentaRepository(remoteDb, localDb, dio, usuario);
+    });
 
 final pedidoVentaProvider = FutureProvider.autoDispose
     .family<PedidoVenta, PedidoLocalParam>((ref, pedidoLocalParam) {
-  final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
-  return pedidoVentaRepository.getPedidoVentaById(
-      pedidoVentaIdIsLocalParam: pedidoLocalParam);
-});
+      final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+      return pedidoVentaRepository.getPedidoVentaById(
+        pedidoVentaIdIsLocalParam: pedidoLocalParam,
+      );
+    });
 
 final pedidoVentaAlbaranProvider = FutureProvider.autoDispose
     .family<List<PedidoAlbaran>, String>((ref, pedidoVentaId) {
-  final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
-  return pedidoVentaRepository.getPedidoVentaAlbaranListById(
-      pedidoVentaId: pedidoVentaId);
-});
+      final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+      return pedidoVentaRepository.getPedidoVentaAlbaranListById(
+        pedidoVentaId: pedidoVentaId,
+      );
+    });
 
 final pedidoVentaEstadoProvider =
     FutureProvider.autoDispose<List<PedidoVentaEstado>>((ref) {
-  final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
-  return pedidoVentaRepository.getPedidoVentaEstadoList();
-});
+      final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+      return pedidoVentaRepository.getPedidoVentaEstadoList();
+    });
 
-final deletePedidoVentaProvider =
-    FutureProvider.autoDispose.family<void, String>((ref, pedidoVentaAppId) {
-  final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
-  return pedidoVentaRepository.deletePedidoVenta(
-      pedidoVentaAppId: pedidoVentaAppId);
-});
+final deletePedidoVentaProvider = FutureProvider.autoDispose
+    .family<void, String>((ref, pedidoVentaAppId) {
+      final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+      return pedidoVentaRepository.deletePedidoVenta(
+        pedidoVentaAppId: pedidoVentaAppId,
+      );
+    });
 
-final pedidoVentaLastSyncDateProvider =
-    FutureProvider.autoDispose<DateTime>((ref) async {
+final pedidoVentaLastSyncDateProvider = FutureProvider.autoDispose<DateTime>((
+  ref,
+) async {
   final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
   return pedidoVentaRepository.getLastSyncDate();
 });
 
 final pedidoVentaLineaProvider = FutureProvider.autoDispose
     .family<List<PedidoVentaLinea>, PedidoLocalParam>((ref, pedidoLocalParam) {
-  final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
-  return pedidoVentaRepository.getPedidoVentaLineaListById(
-      pedidoLocalParam: pedidoLocalParam);
-});
+      final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+      return pedidoVentaRepository.getPedidoVentaLineaListById(
+        pedidoLocalParam: pedidoLocalParam,
+      );
+    });
 
-final getStockDisponibleProvider =
-    FutureProvider.autoDispose.family<int, String>((ref, articuloId) {
-  final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
-  return pedidoVentaRepository.getStockActual(articuloId: articuloId);
-});
+final getStockDisponibleProvider = FutureProvider.autoDispose
+    .family<int, String>((ref, articuloId) {
+      final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+      return pedidoVentaRepository.getStockActual(articuloId: articuloId);
+    });
 
 final getPedidoVentaBorradoresList =
     FutureProvider.autoDispose<List<PedidoVenta>>((ref) {
-  final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
-  return pedidoVentaRepository.getPedidoVentaBorradoresList();
-});
+      final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+      return pedidoVentaRepository.getPedidoVentaBorradoresList();
+    });
 
-final ofertaHaveAttachmentProvider =
-    FutureProvider.autoDispose.family<bool, String>((ref, pedidoVentaId) {
-  final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
-  return pedidoVentaRepository.ofertaHaveAttachment(pedidoVentaId);
-});
+final ofertaHaveAttachmentProvider = FutureProvider.autoDispose
+    .family<bool, String>((ref, pedidoVentaId) {
+      final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+      return pedidoVentaRepository.ofertaHaveAttachment(pedidoVentaId);
+    });
 
 class PedidoVentaRepository {
   static const pageSize = 100;
@@ -114,28 +117,31 @@ class PedidoVentaRepository {
 
   PedidoVentaRepository(this._remoteDb, this._localDb, this._dio, this.usuario);
 
-  Future<List<PedidoVenta>> getPedidoVentaLista(
-      {required int page,
-      required String searchText,
-      required PedidoVentaEstado? pedidoVentaEstado,
-      String? clienteId}) async {
+  Future<List<PedidoVenta>> getPedidoVentaLista({
+    required int page,
+    required String searchText,
+    required PedidoVentaEstado? pedidoVentaEstado,
+    String? clienteId,
+  }) async {
     try {
       final pedidoVentaList = <PedidoVenta>[];
 
       if (page == 0) {
         final pedidoVentaLocalList = await getPedidosVentaLocal(
-            searchText: searchText,
-            clienteId: clienteId,
-            pedidoVentaEstado: pedidoVentaEstado);
+          searchText: searchText,
+          clienteId: clienteId,
+          pedidoVentaEstado: pedidoVentaEstado,
+        );
 
         pedidoVentaList.addAll(pedidoVentaLocalList);
       }
 
       final syncPedidosVentaList = await getSyncPedidoVentaList(
-          page: page,
-          searchText: searchText,
-          clienteId: clienteId,
-          pedidoVentaEstado: pedidoVentaEstado);
+        page: page,
+        searchText: searchText,
+        clienteId: clienteId,
+        pedidoVentaEstado: pedidoVentaEstado,
+      );
       pedidoVentaList.addAll(syncPedidosVentaList);
       return pedidoVentaList;
     } catch (e) {
@@ -143,39 +149,47 @@ class PedidoVentaRepository {
     }
   }
 
-  Future<int> getPedidoVentaCountList(
-      {required String searchText,
-      required PedidoVentaEstado? pedidoVentaEstado,
-      String? clienteId}) async {
+  Future<int> getPedidoVentaCountList({
+    required String searchText,
+    required PedidoVentaEstado? pedidoVentaEstado,
+    String? clienteId,
+  }) async {
     try {
       final pedidoVentaLocalCountList = await getPedidosVentaLocalCountList(
-          searchText: searchText,
-          clienteId: clienteId,
-          pedidoVentaEstado: pedidoVentaEstado);
+        searchText: searchText,
+        clienteId: clienteId,
+        pedidoVentaEstado: pedidoVentaEstado,
+      );
 
       final syncPedidosVentaCountList = await getSyncPedidoVentaCountList(
-          searchText: searchText,
-          clienteId: clienteId,
-          pedidoVentaEstado: pedidoVentaEstado);
+        searchText: searchText,
+        clienteId: clienteId,
+        pedidoVentaEstado: pedidoVentaEstado,
+      );
       return pedidoVentaLocalCountList + syncPedidosVentaCountList;
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
   }
 
-  Future<List<PedidoVenta>> getPedidoVentaListaByCliente(
-      {required String clienteId}) async {
+  Future<List<PedidoVenta>> getPedidoVentaListaByCliente({
+    required String clienteId,
+  }) async {
     try {
       final pedidoVentaListByCliente = <PedidoVenta>[];
       final pedidoVentaLocalList = await getPedidosVentaLocal(
-          searchText: '', clienteId: clienteId, pedidoVentaEstado: null);
+        searchText: '',
+        clienteId: clienteId,
+        pedidoVentaEstado: null,
+      );
       pedidoVentaListByCliente.addAll(pedidoVentaLocalList);
 
       final syncPedidosVentaList = await getSyncPedidoVentaList(
-          page: 0,
-          searchText: '',
-          clienteId: clienteId,
-          pedidoVentaEstado: null);
+        page: 0,
+        searchText: '',
+        clienteId: clienteId,
+        pedidoVentaEstado: null,
+      );
       pedidoVentaListByCliente.addAll(syncPedidosVentaList);
       return pedidoVentaListByCliente;
     } catch (e) {
@@ -183,66 +197,94 @@ class PedidoVentaRepository {
     }
   }
 
-  Future<List<PedidoVenta>> getSyncPedidoVentaList(
-      {required int page,
-      required String searchText,
-      PedidoVentaEstado? pedidoVentaEstado,
-      String? clienteId}) async {
+  Future<List<PedidoVenta>> getSyncPedidoVentaList({
+    required int page,
+    required String searchText,
+    PedidoVentaEstado? pedidoVentaEstado,
+    String? clienteId,
+  }) async {
     final query = _remoteDb.select(_remoteDb.pedidoVentaTable).join([
       innerJoin(
-          _remoteDb.clienteUsuarioTable,
-          _remoteDb.clienteUsuarioTable.clienteId
-              .equalsExp(_remoteDb.pedidoVentaTable.clienteId)),
-      leftOuterJoin(_remoteDb.paisTable,
-          _remoteDb.paisTable.id.equalsExp(_remoteDb.pedidoVentaTable.paisId)),
+        _remoteDb.clienteUsuarioTable,
+        _remoteDb.clienteUsuarioTable.clienteId.equalsExp(
+          _remoteDb.pedidoVentaTable.clienteId,
+        ),
+      ),
       leftOuterJoin(
-          _remoteDb.divisaTable,
-          _remoteDb.divisaTable.id
-              .equalsExp(_remoteDb.pedidoVentaTable.divisaId)),
+        _remoteDb.paisTable,
+        _remoteDb.paisTable.id.equalsExp(_remoteDb.pedidoVentaTable.paisId),
+      ),
+      leftOuterJoin(
+        _remoteDb.divisaTable,
+        _remoteDb.divisaTable.id.equalsExp(_remoteDb.pedidoVentaTable.divisaId),
+      ),
       innerJoin(
-          _remoteDb.pedidoVentaEstadoTable,
-          _remoteDb.pedidoVentaEstadoTable.id
-              .equalsExp(_remoteDb.pedidoVentaTable.pedidoVentaEstadoId)),
+        _remoteDb.pedidoVentaEstadoTable,
+        _remoteDb.pedidoVentaEstadoTable.id.equalsExp(
+          _remoteDb.pedidoVentaTable.pedidoVentaEstadoId,
+        ),
+      ),
     ]);
 
     query.where(_remoteDb.clienteUsuarioTable.usuarioId.equals(usuario.id));
 
     if (pedidoVentaEstado != null) {
-      query.where(_remoteDb.pedidoVentaTable.pedidoVentaEstadoId
-          .equals(pedidoVentaEstado.id));
+      query.where(
+        _remoteDb.pedidoVentaTable.pedidoVentaEstadoId.equals(
+          pedidoVentaEstado.id,
+        ),
+      );
     }
 
     if (searchText != '') {
       final busqueda = searchText.toUpperCase().split(' ');
       Expression<bool>? predicate;
       for (var i = 0; i < busqueda.length; i++) {
-        predicate = predicate == null
-            ? (_remoteDb.pedidoVentaTable.pedidoVentaId
-                    .like('%${busqueda[i]}%') |
-                _remoteDb.pedidoVentaTable.nombreCliente
-                    .like('%${busqueda[i]}%') |
-                _remoteDb.pedidoVentaTable.clienteId.like('%${busqueda[i]}%') |
-                _remoteDb.pedidoVentaTable.pedidoVentaId
-                    .like('%${busqueda[i]}%') |
-                _remoteDb.pedidoVentaTable.poblacion.like('%${busqueda[i]}%') |
-                _remoteDb.pedidoVentaTable.codigoPostal
-                    .like('%${busqueda[i]}%') |
-                _remoteDb.pedidoVentaTable.provincia.like('%${busqueda[i]}%'))
-            : predicate &
-                (_remoteDb.pedidoVentaTable.pedidoVentaId
-                        .like('%${busqueda[i]}%') |
-                    (_remoteDb.pedidoVentaTable.nombreCliente
-                            .like('%${busqueda[i]}%') |
-                        _remoteDb.pedidoVentaTable.pedidoVentaId
-                            .like('%${busqueda[i]}%') |
-                        _remoteDb.pedidoVentaTable.clienteId
-                            .like('%${busqueda[i]}%') |
-                        _remoteDb.pedidoVentaTable.poblacion
-                            .like('%${busqueda[i]}%') |
-                        _remoteDb.pedidoVentaTable.codigoPostal
-                            .like('%${busqueda[i]}%') |
-                        _remoteDb.pedidoVentaTable.provincia
-                            .like('%${busqueda[i]}%')));
+        predicate =
+            predicate == null
+                ? (_remoteDb.pedidoVentaTable.pedidoVentaId.like(
+                      '%${busqueda[i]}%',
+                    ) |
+                    _remoteDb.pedidoVentaTable.nombreCliente.like(
+                      '%${busqueda[i]}%',
+                    ) |
+                    _remoteDb.pedidoVentaTable.clienteId.like(
+                      '%${busqueda[i]}%',
+                    ) |
+                    _remoteDb.pedidoVentaTable.pedidoVentaId.like(
+                      '%${busqueda[i]}%',
+                    ) |
+                    _remoteDb.pedidoVentaTable.poblacion.like(
+                      '%${busqueda[i]}%',
+                    ) |
+                    _remoteDb.pedidoVentaTable.codigoPostal.like(
+                      '%${busqueda[i]}%',
+                    ) |
+                    _remoteDb.pedidoVentaTable.provincia.like(
+                      '%${busqueda[i]}%',
+                    ))
+                : predicate &
+                    (_remoteDb.pedidoVentaTable.pedidoVentaId.like(
+                          '%${busqueda[i]}%',
+                        ) |
+                        (_remoteDb.pedidoVentaTable.nombreCliente.like(
+                              '%${busqueda[i]}%',
+                            ) |
+                            _remoteDb.pedidoVentaTable.pedidoVentaId.like(
+                              '%${busqueda[i]}%',
+                            ) |
+                            _remoteDb.pedidoVentaTable.clienteId.like(
+                              '%${busqueda[i]}%',
+                            ) |
+                            _remoteDb.pedidoVentaTable.poblacion.like(
+                              '%${busqueda[i]}%',
+                            ) |
+                            _remoteDb.pedidoVentaTable.codigoPostal.like(
+                              '%${busqueda[i]}%',
+                            ) |
+                            _remoteDb.pedidoVentaTable.provincia.like(
+                              '%${busqueda[i]}%',
+                            )));
       }
       query.where(predicate!);
     }
@@ -255,80 +297,108 @@ class PedidoVentaRepository {
 
     query.orderBy([
       OrderingTerm.desc(_remoteDb.pedidoVentaTable.pedidoVentaDate),
-      OrderingTerm.asc(_remoteDb.pedidoVentaTable.pedidoVentaId)
+      OrderingTerm.asc(_remoteDb.pedidoVentaTable.pedidoVentaId),
     ]);
 
     return query.asyncMap((row) async {
       final pedidoVentaDTO = row.readTable(_remoteDb.pedidoVentaTable);
       final paisDTO = row.readTableOrNull(_remoteDb.paisTable);
       final divisaDTO = row.readTable(_remoteDb.divisaTable);
-      final pedidoVentaEstadoDTO =
-          row.readTable(_remoteDb.pedidoVentaEstadoTable);
+      final pedidoVentaEstadoDTO = row.readTable(
+        _remoteDb.pedidoVentaEstadoTable,
+      );
 
       return pedidoVentaDTO.toDomain(
-          pais: paisDTO?.toDomain(),
-          divisa: divisaDTO.toDomain(),
-          pedidoVentaEstado: pedidoVentaEstadoDTO.toDomain());
+        pais: paisDTO?.toDomain(),
+        divisa: divisaDTO.toDomain(),
+        pedidoVentaEstado: pedidoVentaEstadoDTO.toDomain(),
+      );
     }).get();
   }
 
-  Future<int> getSyncPedidoVentaCountList(
-      {required String searchText,
-      required PedidoVentaEstado? pedidoVentaEstado,
-      String? clienteId}) async {
+  Future<int> getSyncPedidoVentaCountList({
+    required String searchText,
+    required PedidoVentaEstado? pedidoVentaEstado,
+    String? clienteId,
+  }) async {
     final countExp = _remoteDb.pedidoVentaTable.pedidoVentaId.count();
 
     final query = _remoteDb.selectOnly(_remoteDb.pedidoVentaTable).join([
       innerJoin(
-          _remoteDb.clienteUsuarioTable,
-          _remoteDb.clienteUsuarioTable.clienteId
-              .equalsExp(_remoteDb.pedidoVentaTable.clienteId)),
-      leftOuterJoin(_remoteDb.paisTable,
-          _remoteDb.paisTable.id.equalsExp(_remoteDb.pedidoVentaTable.paisId)),
+        _remoteDb.clienteUsuarioTable,
+        _remoteDb.clienteUsuarioTable.clienteId.equalsExp(
+          _remoteDb.pedidoVentaTable.clienteId,
+        ),
+      ),
       leftOuterJoin(
-          _remoteDb.divisaTable,
-          _remoteDb.divisaTable.id
-              .equalsExp(_remoteDb.pedidoVentaTable.divisaId)),
+        _remoteDb.paisTable,
+        _remoteDb.paisTable.id.equalsExp(_remoteDb.pedidoVentaTable.paisId),
+      ),
+      leftOuterJoin(
+        _remoteDb.divisaTable,
+        _remoteDb.divisaTable.id.equalsExp(_remoteDb.pedidoVentaTable.divisaId),
+      ),
       innerJoin(
-          _remoteDb.pedidoVentaEstadoTable,
-          _remoteDb.pedidoVentaEstadoTable.id
-              .equalsExp(_remoteDb.pedidoVentaTable.pedidoVentaEstadoId)),
+        _remoteDb.pedidoVentaEstadoTable,
+        _remoteDb.pedidoVentaEstadoTable.id.equalsExp(
+          _remoteDb.pedidoVentaTable.pedidoVentaEstadoId,
+        ),
+      ),
     ]);
 
     query.where(_remoteDb.clienteUsuarioTable.usuarioId.equals(usuario.id));
 
     if (pedidoVentaEstado != null) {
-      query.where(_remoteDb.pedidoVentaTable.pedidoVentaEstadoId
-          .equals(pedidoVentaEstado.id));
+      query.where(
+        _remoteDb.pedidoVentaTable.pedidoVentaEstadoId.equals(
+          pedidoVentaEstado.id,
+        ),
+      );
     }
 
     if (searchText != '') {
       final busqueda = searchText.toUpperCase().split(' ');
       Expression<bool>? predicate;
       for (var i = 0; i < busqueda.length; i++) {
-        predicate = predicate == null
-            ? (_remoteDb.pedidoVentaTable.pedidoVentaId
-                    .like('%${busqueda[i]}%') |
-                _remoteDb.pedidoVentaTable.nombreCliente
-                    .like('%${busqueda[i]}%') |
-                _remoteDb.pedidoVentaTable.clienteId.like('%${busqueda[i]}%') |
-                _remoteDb.pedidoVentaTable.poblacion.like('%${busqueda[i]}%') |
-                _remoteDb.pedidoVentaTable.codigoPostal
-                    .like('%${busqueda[i]}%') |
-                _remoteDb.pedidoVentaTable.provincia.like('%${busqueda[i]}%'))
-            : predicate &
-                ((_remoteDb.pedidoVentaTable.pedidoVentaId
-                        .like('%${busqueda[i]}%') |
-                    _remoteDb.pedidoVentaTable.nombreCliente
-                        .like('%${busqueda[i]}%') |
-                    _remoteDb.pedidoVentaTable.clienteId
-                        .like('%${busqueda[i]}%') |
-                    _remoteDb.pedidoVentaTable.poblacion
-                        .like('%${busqueda[i]}%') |
-                    _remoteDb.pedidoVentaTable.codigoPostal
-                        .like('%${busqueda[i]}%') |
-                    _remoteDb.pedidoVentaTable.provincia
-                        .like('%${busqueda[i]}%')));
+        predicate =
+            predicate == null
+                ? (_remoteDb.pedidoVentaTable.pedidoVentaId.like(
+                      '%${busqueda[i]}%',
+                    ) |
+                    _remoteDb.pedidoVentaTable.nombreCliente.like(
+                      '%${busqueda[i]}%',
+                    ) |
+                    _remoteDb.pedidoVentaTable.clienteId.like(
+                      '%${busqueda[i]}%',
+                    ) |
+                    _remoteDb.pedidoVentaTable.poblacion.like(
+                      '%${busqueda[i]}%',
+                    ) |
+                    _remoteDb.pedidoVentaTable.codigoPostal.like(
+                      '%${busqueda[i]}%',
+                    ) |
+                    _remoteDb.pedidoVentaTable.provincia.like(
+                      '%${busqueda[i]}%',
+                    ))
+                : predicate &
+                    ((_remoteDb.pedidoVentaTable.pedidoVentaId.like(
+                          '%${busqueda[i]}%',
+                        ) |
+                        _remoteDb.pedidoVentaTable.nombreCliente.like(
+                          '%${busqueda[i]}%',
+                        ) |
+                        _remoteDb.pedidoVentaTable.clienteId.like(
+                          '%${busqueda[i]}%',
+                        ) |
+                        _remoteDb.pedidoVentaTable.poblacion.like(
+                          '%${busqueda[i]}%',
+                        ) |
+                        _remoteDb.pedidoVentaTable.codigoPostal.like(
+                          '%${busqueda[i]}%',
+                        ) |
+                        _remoteDb.pedidoVentaTable.provincia.like(
+                          '%${busqueda[i]}%',
+                        )));
       }
       query.where(predicate!);
     }
@@ -356,28 +426,39 @@ class PedidoVentaRepository {
       final busqueda = searchText.toUpperCase().split(' ');
       Expression<bool>? predicate;
       for (var i = 0; i < busqueda.length; i++) {
-        predicate = predicate == null
-            ? (_localDb.pedidoVentaLocalTable.nombreCliente
-                    .like('%${busqueda[i]}%') |
-                _localDb.pedidoVentaLocalTable.clienteId
-                    .like('%${busqueda[i]}%') |
-                _localDb.pedidoVentaLocalTable.poblacion
-                    .like('%${busqueda[i]}%') |
-                _localDb.pedidoVentaLocalTable.codigoPostal
-                    .like('%${busqueda[i]}%') |
-                _localDb.pedidoVentaLocalTable.provincia
-                    .like('%${busqueda[i]}%'))
-            : predicate &
-                (_localDb.pedidoVentaLocalTable.nombreCliente
-                        .like('%${busqueda[i]}%') |
-                    _localDb.pedidoVentaLocalTable.clienteId
-                        .like('%${busqueda[i]}%') |
-                    _localDb.pedidoVentaLocalTable.poblacion
-                        .like('%${busqueda[i]}%') |
-                    _localDb.pedidoVentaLocalTable.codigoPostal
-                        .like('%${busqueda[i]}%') |
-                    _localDb.pedidoVentaLocalTable.provincia
-                        .like('%${busqueda[i]}%'));
+        predicate =
+            predicate == null
+                ? (_localDb.pedidoVentaLocalTable.nombreCliente.like(
+                      '%${busqueda[i]}%',
+                    ) |
+                    _localDb.pedidoVentaLocalTable.clienteId.like(
+                      '%${busqueda[i]}%',
+                    ) |
+                    _localDb.pedidoVentaLocalTable.poblacion.like(
+                      '%${busqueda[i]}%',
+                    ) |
+                    _localDb.pedidoVentaLocalTable.codigoPostal.like(
+                      '%${busqueda[i]}%',
+                    ) |
+                    _localDb.pedidoVentaLocalTable.provincia.like(
+                      '%${busqueda[i]}%',
+                    ))
+                : predicate &
+                    (_localDb.pedidoVentaLocalTable.nombreCliente.like(
+                          '%${busqueda[i]}%',
+                        ) |
+                        _localDb.pedidoVentaLocalTable.clienteId.like(
+                          '%${busqueda[i]}%',
+                        ) |
+                        _localDb.pedidoVentaLocalTable.poblacion.like(
+                          '%${busqueda[i]}%',
+                        ) |
+                        _localDb.pedidoVentaLocalTable.codigoPostal.like(
+                          '%${busqueda[i]}%',
+                        ) |
+                        _localDb.pedidoVentaLocalTable.provincia.like(
+                          '%${busqueda[i]}%',
+                        ));
       }
       query.where((tbl) => predicate!);
     }
@@ -397,28 +478,33 @@ class PedidoVentaRepository {
       final pedidoVentaLocalDTO = pedidoVentaLocalDTOList[i];
 
       final clienteUsuarioDTO =
-          await (_remoteDb.select(_remoteDb.clienteUsuarioTable)
-                ..where((tbl) =>
-                    tbl.clienteId.equals(pedidoVentaLocalDTO.clienteId) &
-                    tbl.usuarioId.equals(usuario.id)))
-              .getSingleOrNull();
+          await (_remoteDb.select(_remoteDb.clienteUsuarioTable)..where(
+            (tbl) =>
+                tbl.clienteId.equals(pedidoVentaLocalDTO.clienteId) &
+                tbl.usuarioId.equals(usuario.id),
+          )).getSingleOrNull();
 
       if (clienteUsuarioDTO != null) {
-        final divisaDTO = await (_remoteDb.select(_remoteDb.divisaTable)
-              ..where((tbl) => tbl.id.equals(pedidoVentaLocalDTO.divisaId!)))
-            .getSingle();
-        final paisDTO = await (_remoteDb.select(_remoteDb.paisTable)
-              ..where((tbl) => tbl.id.equals(pedidoVentaLocalDTO.paisId!)))
-            .getSingle();
+        final divisaDTO =
+            await (_remoteDb.select(_remoteDb.divisaTable)..where(
+              (tbl) => tbl.id.equals(pedidoVentaLocalDTO.divisaId!),
+            )).getSingle();
+        final paisDTO =
+            await (_remoteDb.select(_remoteDb.paisTable)..where(
+              (tbl) => tbl.id.equals(pedidoVentaLocalDTO.paisId!),
+            )).getSingle();
 
         final pedidoVentaLineaList = await getLocalPedidoVentaLineaList(
-            pedidoVentaAppId: pedidoVentaLocalDTO.pedidoVentaAppId);
+          pedidoVentaAppId: pedidoVentaLocalDTO.pedidoVentaAppId,
+        );
 
-        pedidoVentaList.add(pedidoVentaLocalDTO.toDomain(
-          pais: paisDTO.toDomain(),
-          divisa: divisaDTO.toDomain(),
-          baseImponible: getBaseImponible(pedidoVentaLineaList, divisaDTO.id),
-        ));
+        pedidoVentaList.add(
+          pedidoVentaLocalDTO.toDomain(
+            pais: paisDTO.toDomain(),
+            divisa: divisaDTO.toDomain(),
+            baseImponible: getBaseImponible(pedidoVentaLineaList, divisaDTO.id),
+          ),
+        );
       }
     }
 
@@ -480,20 +566,24 @@ class PedidoVentaRepository {
     // return count ?? 0;
 
     final pedidoLocalList = await getPedidosVentaLocal(
-        searchText: searchText,
-        clienteId: clienteId,
-        pedidoVentaEstado: pedidoVentaEstado);
+      searchText: searchText,
+      clienteId: clienteId,
+      pedidoVentaEstado: pedidoVentaEstado,
+    );
     return pedidoLocalList.length;
   }
 
-  Future<PedidoVenta> getPedidoVentaById(
-      {required PedidoLocalParam pedidoVentaIdIsLocalParam}) async {
+  Future<PedidoVenta> getPedidoVentaById({
+    required PedidoLocalParam pedidoVentaIdIsLocalParam,
+  }) async {
     try {
       return !pedidoVentaIdIsLocalParam.isLocal
           ? await getSyncPedidoVentaById(
-              pedidoVentaId: pedidoVentaIdIsLocalParam.pedidoId!)
+            pedidoVentaId: pedidoVentaIdIsLocalParam.pedidoId!,
+          )
           : await getPedidoVentaLocalById(
-              pedidoVentaAppId: pedidoVentaIdIsLocalParam.pedidoAppId!);
+            pedidoVentaAppId: pedidoVentaIdIsLocalParam.pedidoAppId!,
+          );
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
@@ -501,36 +591,39 @@ class PedidoVentaRepository {
 
   Future<List<PedidoVenta>> getPedidoVentaBorradoresList() async {
     try {
-      final pedidoVentaBorradorListDTO = await (_localDb
-              .select(_localDb.pedidoVentaLocalTable)
-            ..where(
-                (tbl) => tbl.borrador.equals('S') & tbl.tratada.equals('N')))
-          .get();
+      final pedidoVentaBorradorListDTO =
+          await (_localDb.select(_localDb.pedidoVentaLocalTable)..where(
+            (tbl) => tbl.borrador.equals('S') & tbl.tratada.equals('N'),
+          )).get();
 
-      final pedidoVentaBorradoresList =
-          await Future.wait(pedidoVentaBorradorListDTO.map((e) async {
-        final divisaDTO = await (_remoteDb.select(_remoteDb.divisaTable)
-              ..where((tbl) => tbl.id.equals(e.divisaId!)))
-            .getSingle();
-        final paisDTO = await (_remoteDb.select(_remoteDb.paisTable)
-              ..where((tbl) => tbl.id.equals(e.paisId!)))
-            .getSingle();
+      final pedidoVentaBorradoresList = await Future.wait(
+        pedidoVentaBorradorListDTO.map((e) async {
+          final divisaDTO =
+              await (_remoteDb.select(_remoteDb.divisaTable)
+                ..where((tbl) => tbl.id.equals(e.divisaId!))).getSingle();
+          final paisDTO =
+              await (_remoteDb.select(_remoteDb.paisTable)
+                ..where((tbl) => tbl.id.equals(e.paisId!))).getSingle();
 
-        final pedidoVentaLineas = await getLocalPedidoVentaLineaList(
-            pedidoVentaAppId: e.pedidoVentaAppId);
+          final pedidoVentaLineas = await getLocalPedidoVentaLineaList(
+            pedidoVentaAppId: e.pedidoVentaAppId,
+          );
 
-        final importeBaseImponible =
-            getBaseImponible(pedidoVentaLineas, divisaDTO.id);
-        final importeIva = getImporteIva(importeBaseImponible, e.iva);
+          final importeBaseImponible = getBaseImponible(
+            pedidoVentaLineas,
+            divisaDTO.id,
+          );
+          final importeIva = getImporteIva(importeBaseImponible, e.iva);
 
-        return e.toDomain(
-          pais: paisDTO.toDomain(),
-          divisa: divisaDTO.toDomain(),
-          baseImponible: importeBaseImponible,
-          importeIva: importeIva,
-          total: importeBaseImponible + importeIva,
-        );
-      }));
+          return e.toDomain(
+            pais: paisDTO.toDomain(),
+            divisa: divisaDTO.toDomain(),
+            baseImponible: importeBaseImponible,
+            importeIva: importeIva,
+            total: importeBaseImponible + importeIva,
+          );
+        }),
+      );
 
       return pedidoVentaBorradoresList;
     } catch (e) {
@@ -568,19 +661,24 @@ class PedidoVentaRepository {
   //   );
   // }
 
-  Future<PedidoVenta> getSyncPedidoVentaById(
-      {required String pedidoVentaId}) async {
+  Future<PedidoVenta> getSyncPedidoVentaById({
+    required String pedidoVentaId,
+  }) async {
     final query = _remoteDb.select(_remoteDb.pedidoVentaTable).join([
-      leftOuterJoin(_remoteDb.paisTable,
-          _remoteDb.paisTable.id.equalsExp(_remoteDb.pedidoVentaTable.paisId)),
       leftOuterJoin(
-          _remoteDb.divisaTable,
-          _remoteDb.divisaTable.id
-              .equalsExp(_remoteDb.pedidoVentaTable.divisaId)),
+        _remoteDb.paisTable,
+        _remoteDb.paisTable.id.equalsExp(_remoteDb.pedidoVentaTable.paisId),
+      ),
       leftOuterJoin(
-          _remoteDb.pedidoVentaEstadoTable,
-          _remoteDb.pedidoVentaEstadoTable.id
-              .equalsExp(_remoteDb.pedidoVentaTable.pedidoVentaEstadoId))
+        _remoteDb.divisaTable,
+        _remoteDb.divisaTable.id.equalsExp(_remoteDb.pedidoVentaTable.divisaId),
+      ),
+      leftOuterJoin(
+        _remoteDb.pedidoVentaEstadoTable,
+        _remoteDb.pedidoVentaEstadoTable.id.equalsExp(
+          _remoteDb.pedidoVentaTable.pedidoVentaEstadoId,
+        ),
+      ),
     ]);
 
     query.where(_remoteDb.pedidoVentaTable.pedidoVentaId.equals(pedidoVentaId));
@@ -588,8 +686,9 @@ class PedidoVentaRepository {
     return query.asyncMap((row) async {
       final paisDTO = row.readTableOrNull(_remoteDb.paisTable);
       final divisaDTO = row.readTable(_remoteDb.divisaTable);
-      final pedidoVentaEstadoDTO =
-          row.readTable(_remoteDb.pedidoVentaEstadoTable);
+      final pedidoVentaEstadoDTO = row.readTable(
+        _remoteDb.pedidoVentaEstadoTable,
+      );
       final pedidoVentaDTO = row.readTable(_remoteDb.pedidoVentaTable);
 
       return pedidoVentaDTO.toDomain(
@@ -600,79 +699,98 @@ class PedidoVentaRepository {
     }).getSingle();
   }
 
-  Future<List<PedidoAlbaran>> getPedidoVentaAlbaranListById(
-      {required String pedidoVentaId}) async {
+  Future<List<PedidoAlbaran>> getPedidoVentaAlbaranListById({
+    required String pedidoVentaId,
+  }) async {
     try {
       final query = _remoteDb.select(_remoteDb.pedidoAlbaranTable).join([
         innerJoin(
-            _remoteDb.pedidoVentaTable,
-            _remoteDb.pedidoVentaTable.pedidoVentaId
-                .equalsExp(_remoteDb.pedidoAlbaranTable.pedidoVentaId)),
+          _remoteDb.pedidoVentaTable,
+          _remoteDb.pedidoVentaTable.pedidoVentaId.equalsExp(
+            _remoteDb.pedidoAlbaranTable.pedidoVentaId,
+          ),
+        ),
         leftOuterJoin(
-            _remoteDb.trackingEstadoTable,
-            _remoteDb.trackingEstadoTable.id
-                .equalsExp(_remoteDb.pedidoAlbaranTable.trackingEstadoId))
+          _remoteDb.trackingEstadoTable,
+          _remoteDb.trackingEstadoTable.id.equalsExp(
+            _remoteDb.pedidoAlbaranTable.trackingEstadoId,
+          ),
+        ),
       ]);
 
       query.where(
-          _remoteDb.pedidoAlbaranTable.pedidoVentaId.equals(pedidoVentaId));
+        _remoteDb.pedidoAlbaranTable.pedidoVentaId.equals(pedidoVentaId),
+      );
 
       query.orderBy([
         OrderingTerm.desc(_remoteDb.pedidoAlbaranTable.fechaAlbaran),
       ]);
 
       return query.map((row) {
-        final pedidoVentaAlbaranDTO =
-            row.readTable(_remoteDb.pedidoAlbaranTable);
+        final pedidoVentaAlbaranDTO = row.readTable(
+          _remoteDb.pedidoAlbaranTable,
+        );
 
-        final trackingEstadoDTO =
-            row.readTableOrNull(_remoteDb.trackingEstadoTable);
+        final trackingEstadoDTO = row.readTableOrNull(
+          _remoteDb.trackingEstadoTable,
+        );
         return pedidoVentaAlbaranDTO.toDomain(
-            trackingEstado: trackingEstadoDTO?.toDomain());
+          trackingEstado: trackingEstadoDTO?.toDomain(),
+        );
       }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
   }
 
-  Future<List<PedidoVentaLinea>> getPedidoVentaLineaListById(
-      {required PedidoLocalParam pedidoLocalParam}) async {
+  Future<List<PedidoVentaLinea>> getPedidoVentaLineaListById({
+    required PedidoLocalParam pedidoLocalParam,
+  }) async {
     try {
       return !pedidoLocalParam.isLocal
           ? await getSyncPedidoVentaLineaList(
-              pedidoVentaId: pedidoLocalParam.pedidoId!,
-              pedidoAppId: pedidoLocalParam.pedidoAppId,
-            )
+            pedidoVentaId: pedidoLocalParam.pedidoId!,
+            pedidoAppId: pedidoLocalParam.pedidoAppId,
+          )
           : await getLocalPedidoVentaLineaList(
-              pedidoVentaAppId: pedidoLocalParam.pedidoAppId!,
-              addLineaDesdeArticulo: pedidoLocalParam.addLineaDesdeArticulo);
+            pedidoVentaAppId: pedidoLocalParam.pedidoAppId!,
+            addLineaDesdeArticulo: pedidoLocalParam.addLineaDesdeArticulo,
+          );
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
   }
 
-  Future<List<PedidoVentaLinea>> getSyncPedidoVentaLineaList(
-      {required String pedidoVentaId, String? pedidoAppId}) async {
+  Future<List<PedidoVentaLinea>> getSyncPedidoVentaLineaList({
+    required String pedidoVentaId,
+    String? pedidoAppId,
+  }) async {
     try {
       final query = _remoteDb.select(_remoteDb.pedidoVentaLineaTable).join([
         innerJoin(
-            _remoteDb.pedidoVentaTable,
-            _remoteDb.pedidoVentaTable.pedidoVentaId
-                .equalsExp(_remoteDb.pedidoVentaLineaTable.pedidoId))
+          _remoteDb.pedidoVentaTable,
+          _remoteDb.pedidoVentaTable.pedidoVentaId.equalsExp(
+            _remoteDb.pedidoVentaLineaTable.pedidoId,
+          ),
+        ),
       ]);
 
       query.where(
-          _remoteDb.pedidoVentaLineaTable.pedidoId.equals(pedidoVentaId));
+        _remoteDb.pedidoVentaLineaTable.pedidoId.equals(pedidoVentaId),
+      );
 
       return query.asyncMap((row) async {
         final pedidoVentaDTO = row.readTable(_remoteDb.pedidoVentaTable);
-        final pedidoVentaLineaDTO =
-            row.readTable(_remoteDb.pedidoVentaLineaTable);
+        final pedidoVentaLineaDTO = row.readTable(
+          _remoteDb.pedidoVentaLineaTable,
+        );
 
-        final stockDisponible =
-            await _getStockDisponible(pedidoVentaLineaDTO.articuloId);
-        final descuentoProntoPago =
-            await _getDescuentoProntoPago(pedidoVentaDTO.clienteId);
+        final stockDisponible = await _getStockDisponible(
+          pedidoVentaLineaDTO.articuloId,
+        );
+        final descuentoProntoPago = await _getDescuentoProntoPago(
+          pedidoVentaDTO.clienteId,
+        );
         return pedidoVentaLineaDTO.toDomain(
           pedidoVentaAppId: pedidoAppId,
           iva: pedidoVentaDTO.iva,
@@ -686,40 +804,50 @@ class PedidoVentaRepository {
     }
   }
 
-  Future<List<PedidoVentaLinea>> getLocalPedidoVentaLineaList(
-      {required String pedidoVentaAppId,
-      PedidoVentaLinea? addLineaDesdeArticulo}) async {
+  Future<List<PedidoVentaLinea>> getLocalPedidoVentaLineaList({
+    required String pedidoVentaAppId,
+    PedidoVentaLinea? addLineaDesdeArticulo,
+  }) async {
     try {
       final query = _localDb.select(_localDb.pedidoVentaLineaLocalTable).join([
         innerJoin(
-            _localDb.pedidoVentaLocalTable,
-            _localDb.pedidoVentaLocalTable.pedidoVentaAppId.equalsExp(
-                _localDb.pedidoVentaLineaLocalTable.pedidoVentaAppId))
+          _localDb.pedidoVentaLocalTable,
+          _localDb.pedidoVentaLocalTable.pedidoVentaAppId.equalsExp(
+            _localDb.pedidoVentaLineaLocalTable.pedidoVentaAppId,
+          ),
+        ),
       ]);
 
-      query.where(_localDb.pedidoVentaLineaLocalTable.pedidoVentaAppId
-          .equals(pedidoVentaAppId));
+      query.where(
+        _localDb.pedidoVentaLineaLocalTable.pedidoVentaAppId.equals(
+          pedidoVentaAppId,
+        ),
+      );
 
-      final pedidoVentaLineaList = await query.map((row) {
-        final pedidoVentaLocalDTO =
-            row.readTable(_localDb.pedidoVentaLocalTable);
-        final pedidoVentaLineaDTO =
-            row.readTable(_localDb.pedidoVentaLineaLocalTable);
-        return pedidoVentaLineaDTO.toDomain(
-          divisaId: pedidoVentaLocalDTO.divisaId!,
-          importeLinea: getTotalLinea(
-            precio: Precio(
-              precio: pedidoVentaLineaDTO.precioDivisa
-                  .toMoney(currencyId: pedidoVentaLocalDTO.divisaId!),
-              tipoPrecio: pedidoVentaLineaDTO.tipoPrecio,
-            ),
-            cantidad: pedidoVentaLineaDTO.cantidad,
-            descuento1: pedidoVentaLineaDTO.descuento1,
-            descuento2: pedidoVentaLineaDTO.descuento2,
-            descuento3: pedidoVentaLineaDTO.descuento3,
-          ),
-        );
-      }).get();
+      final pedidoVentaLineaList =
+          await query.map((row) {
+            final pedidoVentaLocalDTO = row.readTable(
+              _localDb.pedidoVentaLocalTable,
+            );
+            final pedidoVentaLineaDTO = row.readTable(
+              _localDb.pedidoVentaLineaLocalTable,
+            );
+            return pedidoVentaLineaDTO.toDomain(
+              divisaId: pedidoVentaLocalDTO.divisaId!,
+              importeLinea: getTotalLinea(
+                precio: Precio(
+                  precio: pedidoVentaLineaDTO.precioDivisa.toMoney(
+                    currencyId: pedidoVentaLocalDTO.divisaId!,
+                  ),
+                  tipoPrecio: pedidoVentaLineaDTO.tipoPrecio,
+                ),
+                cantidad: pedidoVentaLineaDTO.cantidad,
+                descuento1: pedidoVentaLineaDTO.descuento1,
+                descuento2: pedidoVentaLineaDTO.descuento2,
+                descuento3: pedidoVentaLineaDTO.descuento3,
+              ),
+            );
+          }).get();
 
       if (addLineaDesdeArticulo != null) {
         pedidoVentaLineaList.add(addLineaDesdeArticulo);
@@ -744,9 +872,9 @@ class PedidoVentaRepository {
 
   Future<int> getStockActual({required String articuloId}) async {
     try {
-      final query = await (_remoteDb.select(_remoteDb.articuloTable)
-            ..where((tbl) => tbl.id.equals(articuloId)))
-          .getSingle();
+      final query =
+          await (_remoteDb.select(_remoteDb.articuloTable)
+            ..where((tbl) => tbl.id.equals(articuloId))).getSingle();
 
       return query.stockDisponible;
     } catch (e) {
@@ -782,9 +910,10 @@ class PedidoVentaRepository {
         isBorrador,
       );
 
-      final pedidoVentaLineaLocalDTOList = pedidoVentaLineaList
-          .map((e) => PedidoVentaLineaLocalDTO.fromDomain(e))
-          .toList();
+      final pedidoVentaLineaLocalDTOList =
+          pedidoVentaLineaList
+              .map((e) => PedidoVentaLineaLocalDTO.fromDomain(e))
+              .toList();
 
       await insertPedidoInDB(pedidoVentaLocalDTO, pedidoVentaLineaLocalDTOList);
 
@@ -794,18 +923,24 @@ class PedidoVentaRepository {
             await _removePedidoSyncDatabase(pedidoId);
           }
           final pedidoVentaLocalDTOEnviado = await _remoteCreatePedidoVenta(
-              pedidoVentaLocalDTO, pedidoVentaLineaLocalDTOList, usuario.test);
+            pedidoVentaLocalDTO,
+            pedidoVentaLineaLocalDTOList,
+            usuario.test,
+          );
 
           await updatePedidoInDB(
-              pedidoVentaLocalDTO: pedidoVentaLocalDTOEnviado);
+            pedidoVentaLocalDTO: pedidoVentaLocalDTOEnviado,
+          );
         } catch (e) {
           if (e is AppException) {
             await e.maybeWhen(
-                orElse: () {},
-                notConnection: () =>
-                    updateWithError(pedidoVentaLocalDTO, e.details.message),
-                restApiFailure: (error, _) =>
-                    updateWithError(pedidoVentaLocalDTO, e.details.message));
+              orElse: () {},
+              notConnection:
+                  () => updateWithError(pedidoVentaLocalDTO, e.details.message),
+              restApiFailure:
+                  (error, _) =>
+                      updateWithError(pedidoVentaLocalDTO, e.details.message),
+            );
           }
           rethrow;
         }
@@ -816,13 +951,18 @@ class PedidoVentaRepository {
   }
 
   Future<void> updateWithError(
-      PedidoVentaLocalDTO pedidoVentaLocalDTO, String errorMessage) async {
+    PedidoVentaLocalDTO pedidoVentaLocalDTO,
+    String errorMessage,
+  ) async {
     try {
-      await (_localDb.update(_localDb.pedidoVentaLocalTable)
-            ..where((tbl) => tbl.pedidoVentaAppId
-                .equals(pedidoVentaLocalDTO.pedidoVentaAppId)))
-          .write(local.PedidoVentaLocalTableCompanion(
-              errorSyncMessage: Value(errorMessage)));
+      await (_localDb.update(_localDb.pedidoVentaLocalTable)..where(
+        (tbl) =>
+            tbl.pedidoVentaAppId.equals(pedidoVentaLocalDTO.pedidoVentaAppId),
+      )).write(
+        local.PedidoVentaLocalTableCompanion(
+          errorSyncMessage: Value(errorMessage),
+        ),
+      );
     } catch (e) {
       rethrow;
     }
@@ -831,25 +971,21 @@ class PedidoVentaRepository {
   Future<void> deletePedidoVenta({required String pedidoVentaAppId}) async {
     try {
       await (_localDb.delete(_localDb.pedidoVentaLocalTable)
-            ..where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId)))
-          .go();
+        ..where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId))).go();
       await (_localDb.delete(_localDb.pedidoVentaLineaLocalTable)
-            ..where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId)))
-          .go();
+        ..where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId))).go();
     } catch (e) {
       throw AppException.insertDataFailure(e.toString());
     }
   }
 
-  Future<ArticuloPrecio> getArticuloPrecio(
-      {required String articuloId,
-      required String clienteId,
-      required int cantidad}) async {
+  Future<ArticuloPrecio> getArticuloPrecio({
+    required String articuloId,
+    required String clienteId,
+    required int cantidad,
+  }) async {
     var precio = 0.toMoney();
-    var precioNeto = Precio(
-      precio: 0.toMoney(),
-      tipoPrecio: 1,
-    );
+    var precioNeto = Precio(precio: 0.toMoney(), tipoPrecio: 1);
     var divisaId = 'EU';
     var descuento1 = 0.0;
     const descuento2 = 0.0;
@@ -859,9 +995,9 @@ class PedidoVentaRepository {
     var tipoPrecio = 1;
     var iva = 0.0;
 
-    final clienteDto = await (_remoteDb.select(_remoteDb.clienteTable)
-          ..where((t) => t.id.equals(clienteId)))
-        .getSingleOrNull();
+    final clienteDto =
+        await (_remoteDb.select(_remoteDb.clienteTable)
+          ..where((t) => t.id.equals(clienteId))).getSingleOrNull();
 
     if (clienteDto != null) {
       divisaId = clienteDto.divisaId ?? 'EU';
@@ -874,14 +1010,15 @@ class PedidoVentaRepository {
       final descuentoGeneralId = clienteDto.descuentoGeneralId;
       final tipoCalculoPrecio = clienteDto.tipoCalculoPrecio;
 
-      final precioTarifa = (tarifaId != null)
-          ? await _getPrecioTarifa(
-              tarifaId: tarifaId,
-              articuloId: articuloId,
-              cantidad: cantidad,
-              divisaId: divisaId,
-            )
-          : Precio(precio: 0.toMoney(currencyId: divisaId), tipoPrecio: 1);
+      final precioTarifa =
+          (tarifaId != null)
+              ? await _getPrecioTarifa(
+                tarifaId: tarifaId,
+                articuloId: articuloId,
+                cantidad: cantidad,
+                divisaId: divisaId,
+              )
+              : Precio(precio: 0.toMoney(currencyId: divisaId), tipoPrecio: 1);
 
       final precioNetoCliente = await _getPrecioClienteNeto(
         clienteId: clienteId,
@@ -897,22 +1034,24 @@ class PedidoVentaRepository {
         divisaId: divisaId,
       );
 
-      final descuentoGeneral = descuentoGeneralId != null
-          ? await _getDescuentoGeneral(
-              articuloId: articuloId,
-              descuentoGeneralId: descuentoGeneralId,
-              cantidad: cantidad,
-            )
-          : 0.0;
+      final descuentoGeneral =
+          descuentoGeneralId != null
+              ? await _getDescuentoGeneral(
+                articuloId: articuloId,
+                descuentoGeneralId: descuentoGeneralId,
+                cantidad: cantidad,
+              )
+              : 0.0;
       final descuentoCliente = await _getDescuentoCliente(
         articuloId: articuloId,
         clienteId: clienteId,
         cantidad: cantidad,
       );
 
-      descuento = (descuentoGeneral > descuentoCliente)
-          ? descuentoGeneral
-          : descuentoCliente;
+      descuento =
+          (descuentoGeneral > descuentoCliente)
+              ? descuentoGeneral
+              : descuentoCliente;
 
       // Precio Neto Tarifa
       final precioNetoTarifa = Precio(
@@ -938,11 +1077,12 @@ class PedidoVentaRepository {
       );
 
       // Cálculo precio neto
-      precioNeto = (precioGrupoNetosUnitario.isZero ||
-              (!precioNetoClienteUnitario.isZero &&
-                  precioNetoClienteUnitario <= precioGrupoNetosUnitario))
-          ? precioNetoCliente
-          : precioGrupoNetos;
+      precioNeto =
+          (precioGrupoNetosUnitario.isZero ||
+                  (!precioNetoClienteUnitario.isZero &&
+                      precioNetoClienteUnitario <= precioGrupoNetosUnitario))
+              ? precioNetoCliente
+              : precioGrupoNetos;
 
       final precioNetoUnitario = _getPrecioUnitario(
         precio: precioNeto.precio,
@@ -951,7 +1091,12 @@ class PedidoVentaRepository {
 
       //PROMOCIONES
       final precioPromoDto = await _getPrecioPromoDto(
-          clienteId, divisaId, articuloId, cantidad, DateTime.now());
+        clienteId,
+        divisaId,
+        articuloId,
+        cantidad,
+        DateTime.now(),
+      );
 
       final promoDtoPrecioNeto =
           precioPromoDto.precio * ((100 - precioPromoDto.dto) / 100);
@@ -1026,18 +1171,19 @@ class PedidoVentaRepository {
   Future<File?> getDocumentFile({required String pedidoVentaId}) async {
     try {
       final data = await _remoteGetAttachment(
-          requestUri: Uri.https(
-            dotenv.get('URL', fallback: 'localhost:3001'),
-            'api/v1/online/adjunto/pedido/$pedidoVentaId',
-          ),
-          provisionalToken: usuario.provisionalToken);
+        requestUri: Uri.https(
+          dotenv.get('URL', fallback: 'localhost:3001'),
+          'api/v1/online/adjunto/pedido/$pedidoVentaId',
+        ),
+        provisionalToken: usuario.provisionalToken,
+      );
 
       try {
         final cahceDirectories = await getTemporaryDirectory();
 
         final file = await File(
-                '${cahceDirectories.path}/pedido/$pedidoVentaId/PV$pedidoVentaId.PDF')
-            .create(recursive: true);
+          '${cahceDirectories.path}/pedido/$pedidoVentaId/PV$pedidoVentaId.PDF',
+        ).create(recursive: true);
         final raf = file.openSync(mode: FileMode.write);
         raf.writeFromSync(data);
         await raf.close();
@@ -1057,25 +1203,29 @@ class PedidoVentaRepository {
     if (clienteDto.iva == 0) {
       return 0;
     } else {
-      final ivaArticuloQuery = _remoteDb
-          .selectOnly(_remoteDb.articuloEmpresaIvaTable)
-        ..addColumns([_remoteDb.articuloEmpresaIvaTable.iva])
-        ..where(
-          _remoteDb.articuloEmpresaIvaTable.empresaId
-                  .equals(clienteDto.empresaId) &
-              _remoteDb.articuloEmpresaIvaTable.articuloId.equals(articuloId),
-        );
+      final ivaArticuloQuery =
+          _remoteDb.selectOnly(_remoteDb.articuloEmpresaIvaTable)
+            ..addColumns([_remoteDb.articuloEmpresaIvaTable.iva])
+            ..where(
+              _remoteDb.articuloEmpresaIvaTable.empresaId.equals(
+                    clienteDto.empresaId,
+                  ) &
+                  _remoteDb.articuloEmpresaIvaTable.articuloId.equals(
+                    articuloId,
+                  ),
+            );
 
-      final ivaClienteQuery = _remoteDb.selectOnly(_remoteDb.clienteTable)
-        ..addColumns([_remoteDb.clienteTable.iva])
-        ..where(
-          _remoteDb.clienteTable.id.equals(clienteDto.id),
-        );
+      final ivaClienteQuery =
+          _remoteDb.selectOnly(_remoteDb.clienteTable)
+            ..addColumns([_remoteDb.clienteTable.iva])
+            ..where(_remoteDb.clienteTable.id.equals(clienteDto.id));
 
-      final ivaArticulo = (await ivaArticuloQuery.getSingleOrNull())
-          ?.read(_remoteDb.articuloEmpresaIvaTable.iva);
-      final ivaCliente = (await ivaClienteQuery.getSingleOrNull())
-          ?.read(_remoteDb.clienteTable.iva);
+      final ivaArticulo = (await ivaArticuloQuery.getSingleOrNull())?.read(
+        _remoteDb.articuloEmpresaIvaTable.iva,
+      );
+      final ivaCliente = (await ivaClienteQuery.getSingleOrNull())?.read(
+        _remoteDb.clienteTable.iva,
+      );
 
       late double iva;
       iva = ivaArticulo ?? ivaCliente ?? 0;
@@ -1083,8 +1233,10 @@ class PedidoVentaRepository {
     }
   }
 
-  Future<void> insertPedidoInDB(PedidoVentaLocalDTO pedidoVentaLocalDTO,
-      List<PedidoVentaLineaLocalDTO> pedidoVentaLineaLocalDTOList) async {
+  Future<void> insertPedidoInDB(
+    PedidoVentaLocalDTO pedidoVentaLocalDTO,
+    List<PedidoVentaLineaLocalDTO> pedidoVentaLineaLocalDTOList,
+  ) async {
     try {
       // if (pedidoVentaLocalDTO.borrador == 'S') {
       //   await (_localDb.delete(_localDb.pedidoVentaLocalTable)
@@ -1107,8 +1259,9 @@ class PedidoVentaRepository {
     }
   }
 
-  Future<void> updatePedidoInDB(
-      {required PedidoVentaLocalDTO pedidoVentaLocalDTO}) async {
+  Future<void> updatePedidoInDB({
+    required PedidoVentaLocalDTO pedidoVentaLocalDTO,
+  }) async {
     try {
       await _localDb
           .update(_localDb.pedidoVentaLocalTable)
@@ -1118,15 +1271,18 @@ class PedidoVentaRepository {
     }
   }
 
-  Future<File> createPedidoVentaLineasCSV(
-      {required String pedidoVentaAppId,
-      required List<PedidoVentaLinea> pedidoVentaLineaList}) async {
+  Future<File> createPedidoVentaLineasCSV({
+    required String pedidoVentaAppId,
+    required List<PedidoVentaLinea> pedidoVentaLineaList,
+  }) async {
     try {
       final getTempDirectory = await getTemporaryDirectory();
       final fileName = '$pedidoVentaAppId.csv';
 
       if (!await _csvFileExists(
-          directory: getTempDirectory, fileName: fileName)) {
+        directory: getTempDirectory,
+        fileName: fileName,
+      )) {
         final rows = <List<dynamic>>[];
         _addNombreDeLosCampos(rows);
         for (var i = 0; i < pedidoVentaLineaList.length; i++) {
@@ -1137,8 +1293,9 @@ class PedidoVentaRepository {
         final res = const ListToCsvConverter(fieldDelimiter: ';').convert(rows);
         log.d(res);
 
-        final csvFile = await File(join(getTempDirectory.path, fileName))
-            .create(recursive: true);
+        final csvFile = await File(
+          join(getTempDirectory.path, fileName),
+        ).create(recursive: true);
         await csvFile.writeAsString(res);
 
         return csvFile;
@@ -1151,25 +1308,28 @@ class PedidoVentaRepository {
   }
 
   Future<PedidoVentaLocalDTO> _remoteCreatePedidoVenta(
-      PedidoVentaLocalDTO pedidoVentaLocalDTO,
-      List<PedidoVentaLineaLocalDTO> pedidoVentaLineaDTOList,
-      bool test) async {
+    PedidoVentaLocalDTO pedidoVentaLocalDTO,
+    List<PedidoVentaLineaLocalDTO> pedidoVentaLineaDTOList,
+    bool test,
+  ) async {
     try {
       final pedidoVentaLocalToJson = pedidoVentaLocalDTO.toJson();
       final pedidoVentaLineasLocalListToJson =
           pedidoVentaLineaDTOList.map((e) => e.toJson()).toList();
-      pedidoVentaLocalToJson
-          .addAll({'PEDIDO_VENTA_LINEAS': pedidoVentaLineasLocalListToJson});
+      pedidoVentaLocalToJson.addAll({
+        'PEDIDO_VENTA_LINEAS': pedidoVentaLineasLocalListToJson,
+      });
 
-      final requestUri = (test)
-          ? Uri.http(
-              dotenv.get('URL', fallback: 'localhost:3001'),
-              'api/v4/online/pedidos',
-            )
-          : Uri.https(
-              dotenv.get('URL', fallback: 'localhost:3001'),
-              'api/v4/online/pedidos',
-            );
+      final requestUri =
+          (test)
+              ? Uri.http(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v4/online/pedidos',
+              )
+              : Uri.https(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v4/online/pedidos',
+              );
 
       final response = await _dio.postUri(
         requestUri,
@@ -1184,78 +1344,94 @@ class PedidoVentaRepository {
         return PedidoVentaLocalDTO.fromJson(json);
       } else {
         throw AppException.restApiFailure(
-            response.statusCode ?? 400, response.statusMessage ?? '');
+          response.statusCode ?? 400,
+          response.statusMessage ?? '',
+        );
       }
     } catch (e) {
       throw getApiError(e);
     }
   }
 
-  Future<PedidoVenta> getPedidoVentaLocalById(
-      {required String pedidoVentaAppId}) async {
+  Future<PedidoVenta> getPedidoVentaLocalById({
+    required String pedidoVentaAppId,
+  }) async {
     final pedidoVentaLocalDTO =
-        await (_localDb.select(_localDb.pedidoVentaLocalTable)
-              ..where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId)))
-            .getSingle();
+        await (_localDb.select(_localDb.pedidoVentaLocalTable)..where(
+          (tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId),
+        )).getSingle();
 
-    final divisaDTO = await (_remoteDb.select(_remoteDb.divisaTable)
-          ..where((tbl) => tbl.id.equals(pedidoVentaLocalDTO.divisaId!)))
-        .getSingle();
-    final paisDTO = await (_remoteDb.select(_remoteDb.paisTable)
-          ..where((tbl) => tbl.id.equals(pedidoVentaLocalDTO.paisId!)))
-        .getSingle();
+    final divisaDTO =
+        await (_remoteDb.select(_remoteDb.divisaTable)..where(
+          (tbl) => tbl.id.equals(pedidoVentaLocalDTO.divisaId!),
+        )).getSingle();
+    final paisDTO =
+        await (_remoteDb.select(_remoteDb.paisTable)..where(
+          (tbl) => tbl.id.equals(pedidoVentaLocalDTO.paisId!),
+        )).getSingle();
 
-    final pedidoVentaLineas =
-        await getLocalPedidoVentaLineaList(pedidoVentaAppId: pedidoVentaAppId);
+    final pedidoVentaLineas = await getLocalPedidoVentaLineaList(
+      pedidoVentaAppId: pedidoVentaAppId,
+    );
 
-    final importeBaseImponible =
-        getBaseImponible(pedidoVentaLineas, divisaDTO.id);
-    final importeIva =
-        getImporteIva(importeBaseImponible, pedidoVentaLocalDTO.iva);
+    final importeBaseImponible = getBaseImponible(
+      pedidoVentaLineas,
+      divisaDTO.id,
+    );
+    final importeIva = getImporteIva(
+      importeBaseImponible,
+      pedidoVentaLocalDTO.iva,
+    );
 
     return pedidoVentaLocalDTO.toDomain(
-        pais: paisDTO.toDomain(),
-        divisa: divisaDTO.toDomain(),
-        baseImponible: importeBaseImponible,
-        importeIva: importeIva,
-        total: importeBaseImponible + importeIva);
+      pais: paisDTO.toDomain(),
+      divisa: divisaDTO.toDomain(),
+      baseImponible: importeBaseImponible,
+      importeIva: importeIva,
+      total: importeBaseImponible + importeIva,
+    );
   }
 
-  Future<Precio> _getPrecioTarifa(
-      {required String tarifaId,
-      required String articuloId,
-      required int cantidad,
-      String? divisaId}) async {
-    final articuloPrecioTarifaDTO = await (_remoteDb
-            .select(_remoteDb.articuloPrecioTarifaTable)
-          ..where(
-            (precioTarifa) => divisaId != null
-                ? precioTarifa.tarifaId.equals(tarifaId) &
-                    precioTarifa.articuloId.equals(articuloId) &
-                    precioTarifa.cantidadDesde.isSmallerOrEqualValue(cantidad) &
-                    precioTarifa.divisaId.equals(divisaId)
-                : precioTarifa.tarifaId.equals(tarifaId) &
-                    precioTarifa.articuloId.equals(articuloId) &
-                    precioTarifa.cantidadDesde.isSmallerOrEqualValue(cantidad),
-          )
-          ..orderBy([
-            (precioTarifa) => OrderingTerm(
-                expression: precioTarifa.cantidadDesde,
-                mode: OrderingMode.desc),
-          ])
-          ..limit(1))
-        .getSingleOrNull();
+  Future<Precio> _getPrecioTarifa({
+    required String tarifaId,
+    required String articuloId,
+    required int cantidad,
+    String? divisaId,
+  }) async {
+    final articuloPrecioTarifaDTO =
+        await (_remoteDb.select(_remoteDb.articuloPrecioTarifaTable)
+              ..where(
+                (precioTarifa) =>
+                    divisaId != null
+                        ? precioTarifa.tarifaId.equals(tarifaId) &
+                            precioTarifa.articuloId.equals(articuloId) &
+                            precioTarifa.cantidadDesde.isSmallerOrEqualValue(
+                              cantidad,
+                            ) &
+                            precioTarifa.divisaId.equals(divisaId)
+                        : precioTarifa.tarifaId.equals(tarifaId) &
+                            precioTarifa.articuloId.equals(articuloId) &
+                            precioTarifa.cantidadDesde.isSmallerOrEqualValue(
+                              cantidad,
+                            ),
+              )
+              ..orderBy([
+                (precioTarifa) => OrderingTerm(
+                  expression: precioTarifa.cantidadDesde,
+                  mode: OrderingMode.desc,
+                ),
+              ])
+              ..limit(1))
+            .getSingleOrNull();
 
     return (articuloPrecioTarifaDTO != null)
         ? Precio(
-            precio: articuloPrecioTarifaDTO.precio
-                .toMoney(currencyId: articuloPrecioTarifaDTO.divisaId),
-            tipoPrecio: articuloPrecioTarifaDTO.tipoPrecio,
-          )
-        : Precio(
-            precio: 0.toMoney(currencyId: divisaId),
-            tipoPrecio: 1,
-          );
+          precio: articuloPrecioTarifaDTO.precio.toMoney(
+            currencyId: articuloPrecioTarifaDTO.divisaId,
+          ),
+          tipoPrecio: articuloPrecioTarifaDTO.tipoPrecio,
+        )
+        : Precio(precio: 0.toMoney(currencyId: divisaId), tipoPrecio: 1);
   }
 
   Future<Precio> _getPrecioGrupoNeto({
@@ -1267,23 +1443,21 @@ class PedidoVentaRepository {
     final query = _remoteDb.select(_remoteDb.clienteGrupoNetoTable).join([
       innerJoin(
         _remoteDb.articuloGrupoNetoTable,
-        _remoteDb.articuloGrupoNetoTable.grupoNetoId
-            .equalsExp(_remoteDb.clienteGrupoNetoTable.grupoNetoId),
-      )
-    ])
-      ..where(
-        _remoteDb.clienteGrupoNetoTable.clienteId.equals(clienteId) &
-            _remoteDb.articuloGrupoNetoTable.articuloId.equals(articuloId) &
-            _remoteDb.articuloGrupoNetoTable.cantidadDesde
-                .isSmallerOrEqualValue(cantidad),
-      );
+        _remoteDb.articuloGrupoNetoTable.grupoNetoId.equalsExp(
+          _remoteDb.clienteGrupoNetoTable.grupoNetoId,
+        ),
+      ),
+    ])..where(
+      _remoteDb.clienteGrupoNetoTable.clienteId.equals(clienteId) &
+          _remoteDb.articuloGrupoNetoTable.articuloId.equals(articuloId) &
+          _remoteDb.articuloGrupoNetoTable.cantidadDesde.isSmallerOrEqualValue(
+            cantidad,
+          ),
+    );
 
     final queryResult = await query.get();
     if (queryResult.isEmpty) {
-      return Precio(
-        precio: 0.toMoney(currencyId: divisaId),
-        tipoPrecio: 1,
-      );
+      return Precio(precio: 0.toMoney(currencyId: divisaId), tipoPrecio: 1);
     }
     final minResult = queryResult.reduce((a, b) {
       final precioA = a.read(_remoteDb.articuloGrupoNetoTable.precio)!;
@@ -1306,8 +1480,10 @@ class PedidoVentaRepository {
     return Precio(
       precio: (minResult.read(_remoteDb.articuloGrupoNetoTable.precio) ?? 0)
           .toMoney(
-              currencyId:
-                  minResult.read(_remoteDb.articuloGrupoNetoTable.divisaId)),
+            currencyId: minResult.read(
+              _remoteDb.articuloGrupoNetoTable.divisaId,
+            ),
+          ),
       tipoPrecio:
           (minResult.read(_remoteDb.articuloGrupoNetoTable.tipoPrecio) ?? 1),
     );
@@ -1319,45 +1495,43 @@ class PedidoVentaRepository {
     required int cantidad,
     String? divisaId,
   }) async {
-    final queryResult = await (_remoteDb
-            .select(_remoteDb.clientePrecioNetoTable)
-            .join(
-      [
-        innerJoin(
-          _remoteDb.clienteTable,
-          _remoteDb.clienteTable.id
-              .equalsExp(_remoteDb.clientePrecioNetoTable.clienteId),
-        ),
-      ],
-    )
-          ..where(_remoteDb.clientePrecioNetoTable.clienteId.equals(clienteId) &
-              _remoteDb.clientePrecioNetoTable.articuloId.equals(articuloId) &
-              _remoteDb.clientePrecioNetoTable.cantidadDesde
-                  .isSmallerOrEqualValue(cantidad))
-          ..orderBy(
-            [
-              OrderingTerm(
+    final queryResult =
+        await (_remoteDb.select(_remoteDb.clientePrecioNetoTable).join([
+                innerJoin(
+                  _remoteDb.clienteTable,
+                  _remoteDb.clienteTable.id.equalsExp(
+                    _remoteDb.clientePrecioNetoTable.clienteId,
+                  ),
+                ),
+              ])
+              ..where(
+                _remoteDb.clientePrecioNetoTable.clienteId.equals(clienteId) &
+                    _remoteDb.clientePrecioNetoTable.articuloId.equals(
+                      articuloId,
+                    ) &
+                    _remoteDb.clientePrecioNetoTable.cantidadDesde
+                        .isSmallerOrEqualValue(cantidad),
+              )
+              ..orderBy([
+                OrderingTerm(
                   expression: _remoteDb.clientePrecioNetoTable.cantidadDesde,
-                  mode: OrderingMode.desc)
-            ],
-          )
-          ..limit(1))
-        .getSingleOrNull();
+                  mode: OrderingMode.desc,
+                ),
+              ])
+              ..limit(1))
+            .getSingleOrNull();
 
     return (queryResult != null)
         ? Precio(
-            precio: queryResult
-                .read(_remoteDb.clientePrecioNetoTable.precio)!
-                .toMoney(
-                    currencyId:
-                        queryResult.read(_remoteDb.clienteTable.divisaId)),
-            tipoPrecio:
-                queryResult.read(_remoteDb.clientePrecioNetoTable.tipoPrecio)!,
-          )
-        : Precio(
-            precio: 0.toMoney(currencyId: divisaId),
-            tipoPrecio: 1,
-          );
+          precio: queryResult
+              .read(_remoteDb.clientePrecioNetoTable.precio)!
+              .toMoney(
+                currencyId: queryResult.read(_remoteDb.clienteTable.divisaId),
+              ),
+          tipoPrecio:
+              queryResult.read(_remoteDb.clientePrecioNetoTable.tipoPrecio)!,
+        )
+        : Precio(precio: 0.toMoney(currencyId: divisaId), tipoPrecio: 1);
   }
 
   Future<double> _getDescuentoCliente({
@@ -1368,32 +1542,34 @@ class PedidoVentaRepository {
     TypedResult? queryResult;
 
     // Coincide articulo, familia y subfamilia
-    queryResult = await (_remoteDb.select(_remoteDb.clienteDescuentoTable).join(
-      [
-        innerJoin(
-            _remoteDb.articuloTable,
-            _remoteDb.articuloTable.id
-                    .equalsExp(_remoteDb.clienteDescuentoTable.articuloId) &
-                _remoteDb.articuloTable.familiaId
-                    .equalsExp(_remoteDb.clienteDescuentoTable.familiaId) &
-                _remoteDb.articuloTable.subfamiliaId
-                    .equalsExp(_remoteDb.clienteDescuentoTable.subfamiliaId),
-            useColumns: false),
-      ],
-    )
-          ..where(
-            _remoteDb.clienteDescuentoTable.clienteId.equals(clienteId) &
-                _remoteDb.articuloTable.id.equals(articuloId),
-          )
-          ..orderBy(
-            [
-              OrderingTerm(
+    queryResult =
+        await (_remoteDb.select(_remoteDb.clienteDescuentoTable).join([
+                innerJoin(
+                  _remoteDb.articuloTable,
+                  _remoteDb.articuloTable.id.equalsExp(
+                        _remoteDb.clienteDescuentoTable.articuloId,
+                      ) &
+                      _remoteDb.articuloTable.familiaId.equalsExp(
+                        _remoteDb.clienteDescuentoTable.familiaId,
+                      ) &
+                      _remoteDb.articuloTable.subfamiliaId.equalsExp(
+                        _remoteDb.clienteDescuentoTable.subfamiliaId,
+                      ),
+                  useColumns: false,
+                ),
+              ])
+              ..where(
+                _remoteDb.clienteDescuentoTable.clienteId.equals(clienteId) &
+                    _remoteDb.articuloTable.id.equals(articuloId),
+              )
+              ..orderBy([
+                OrderingTerm(
                   expression: _remoteDb.clienteDescuentoTable.cantidadDesde,
-                  mode: OrderingMode.desc)
-            ],
-          )
-          ..limit(1))
-        .getSingleOrNull();
+                  mode: OrderingMode.desc,
+                ),
+              ])
+              ..limit(1))
+            .getSingleOrNull();
 
     if (queryResult != null) {
       final descuento =
@@ -1401,33 +1577,35 @@ class PedidoVentaRepository {
       return descuento;
     }
 
-// Coincide articulo, familia y subfamilia
-    queryResult = await (_remoteDb.select(_remoteDb.clienteDescuentoTable).join(
-      [
-        innerJoin(
-            _remoteDb.articuloTable,
-            _remoteDb.articuloTable.id
-                    .equalsExp(_remoteDb.clienteDescuentoTable.articuloId) &
-                _remoteDb.articuloTable.familiaId
-                    .equalsExp(_remoteDb.clienteDescuentoTable.familiaId) &
-                _remoteDb.articuloTable.subfamiliaId
-                    .equalsExp(_remoteDb.clienteDescuentoTable.subfamiliaId),
-            useColumns: false),
-      ],
-    )
-          ..where(
-            _remoteDb.clienteDescuentoTable.clienteId.equals(clienteId) &
-                _remoteDb.articuloTable.id.equals(articuloId),
-          )
-          ..orderBy(
-            [
-              OrderingTerm(
+    // Coincide articulo, familia y subfamilia
+    queryResult =
+        await (_remoteDb.select(_remoteDb.clienteDescuentoTable).join([
+                innerJoin(
+                  _remoteDb.articuloTable,
+                  _remoteDb.articuloTable.id.equalsExp(
+                        _remoteDb.clienteDescuentoTable.articuloId,
+                      ) &
+                      _remoteDb.articuloTable.familiaId.equalsExp(
+                        _remoteDb.clienteDescuentoTable.familiaId,
+                      ) &
+                      _remoteDb.articuloTable.subfamiliaId.equalsExp(
+                        _remoteDb.clienteDescuentoTable.subfamiliaId,
+                      ),
+                  useColumns: false,
+                ),
+              ])
+              ..where(
+                _remoteDb.clienteDescuentoTable.clienteId.equals(clienteId) &
+                    _remoteDb.articuloTable.id.equals(articuloId),
+              )
+              ..orderBy([
+                OrderingTerm(
                   expression: _remoteDb.clienteDescuentoTable.cantidadDesde,
-                  mode: OrderingMode.desc)
-            ],
-          )
-          ..limit(1))
-        .getSingleOrNull();
+                  mode: OrderingMode.desc,
+                ),
+              ])
+              ..limit(1))
+            .getSingleOrNull();
 
     if (queryResult != null) {
       final descuento =
@@ -1436,31 +1614,31 @@ class PedidoVentaRepository {
     }
 
     // Coincide articulo, familia
-    queryResult = await (_remoteDb.select(_remoteDb.clienteDescuentoTable).join(
-      [
-        innerJoin(
-          _remoteDb.articuloTable,
-          _remoteDb.articuloTable.id
-                  .equalsExp(_remoteDb.clienteDescuentoTable.articuloId) &
-              _remoteDb.articuloTable.familiaId
-                  .equalsExp(_remoteDb.clienteDescuentoTable.familiaId),
-        ),
-      ],
-    )
-          ..where(
-            _remoteDb.clienteDescuentoTable.clienteId.equals(clienteId) &
-                _remoteDb.articuloTable.id.equals(articuloId) &
-                _remoteDb.clienteDescuentoTable.subfamiliaId.equals('*'),
-          )
-          ..orderBy(
-            [
-              OrderingTerm(
+    queryResult =
+        await (_remoteDb.select(_remoteDb.clienteDescuentoTable).join([
+                innerJoin(
+                  _remoteDb.articuloTable,
+                  _remoteDb.articuloTable.id.equalsExp(
+                        _remoteDb.clienteDescuentoTable.articuloId,
+                      ) &
+                      _remoteDb.articuloTable.familiaId.equalsExp(
+                        _remoteDb.clienteDescuentoTable.familiaId,
+                      ),
+                ),
+              ])
+              ..where(
+                _remoteDb.clienteDescuentoTable.clienteId.equals(clienteId) &
+                    _remoteDb.articuloTable.id.equals(articuloId) &
+                    _remoteDb.clienteDescuentoTable.subfamiliaId.equals('*'),
+              )
+              ..orderBy([
+                OrderingTerm(
                   expression: _remoteDb.clienteDescuentoTable.cantidadDesde,
-                  mode: OrderingMode.desc)
-            ],
-          )
-          ..limit(1))
-        .getSingleOrNull();
+                  mode: OrderingMode.desc,
+                ),
+              ])
+              ..limit(1))
+            .getSingleOrNull();
 
     if (queryResult != null) {
       final descuento =
@@ -1469,31 +1647,31 @@ class PedidoVentaRepository {
     }
 
     // Coincide familia, subfamilia
-    queryResult = await (_remoteDb.select(_remoteDb.clienteDescuentoTable).join(
-      [
-        innerJoin(
-          _remoteDb.articuloTable,
-          _remoteDb.articuloTable.familiaId
-                  .equalsExp(_remoteDb.clienteDescuentoTable.familiaId) &
-              _remoteDb.articuloTable.subfamiliaId
-                  .equalsExp(_remoteDb.clienteDescuentoTable.subfamiliaId),
-        ),
-      ],
-    )
-          ..where(
-            _remoteDb.clienteDescuentoTable.clienteId.equals(clienteId) &
-                _remoteDb.articuloTable.id.equals(articuloId) &
-                _remoteDb.clienteDescuentoTable.articuloId.equals('*'),
-          )
-          ..orderBy(
-            [
-              OrderingTerm(
+    queryResult =
+        await (_remoteDb.select(_remoteDb.clienteDescuentoTable).join([
+                innerJoin(
+                  _remoteDb.articuloTable,
+                  _remoteDb.articuloTable.familiaId.equalsExp(
+                        _remoteDb.clienteDescuentoTable.familiaId,
+                      ) &
+                      _remoteDb.articuloTable.subfamiliaId.equalsExp(
+                        _remoteDb.clienteDescuentoTable.subfamiliaId,
+                      ),
+                ),
+              ])
+              ..where(
+                _remoteDb.clienteDescuentoTable.clienteId.equals(clienteId) &
+                    _remoteDb.articuloTable.id.equals(articuloId) &
+                    _remoteDb.clienteDescuentoTable.articuloId.equals('*'),
+              )
+              ..orderBy([
+                OrderingTerm(
                   expression: _remoteDb.clienteDescuentoTable.cantidadDesde,
-                  mode: OrderingMode.desc)
-            ],
-          )
-          ..limit(1))
-        .getSingleOrNull();
+                  mode: OrderingMode.desc,
+                ),
+              ])
+              ..limit(1))
+            .getSingleOrNull();
 
     if (queryResult != null) {
       final descuento =
@@ -1502,31 +1680,31 @@ class PedidoVentaRepository {
     }
 
     // Coincide articulo, subfamilia
-    queryResult = await (_remoteDb.select(_remoteDb.clienteDescuentoTable).join(
-      [
-        innerJoin(
-          _remoteDb.articuloTable,
-          _remoteDb.articuloTable.id
-                  .equalsExp(_remoteDb.clienteDescuentoTable.articuloId) &
-              _remoteDb.articuloTable.subfamiliaId
-                  .equalsExp(_remoteDb.clienteDescuentoTable.subfamiliaId),
-        ),
-      ],
-    )
-          ..where(
-            _remoteDb.clienteDescuentoTable.clienteId.equals(clienteId) &
-                _remoteDb.articuloTable.id.equals(articuloId) &
-                _remoteDb.clienteDescuentoTable.familiaId.equals('*'),
-          )
-          ..orderBy(
-            [
-              OrderingTerm(
+    queryResult =
+        await (_remoteDb.select(_remoteDb.clienteDescuentoTable).join([
+                innerJoin(
+                  _remoteDb.articuloTable,
+                  _remoteDb.articuloTable.id.equalsExp(
+                        _remoteDb.clienteDescuentoTable.articuloId,
+                      ) &
+                      _remoteDb.articuloTable.subfamiliaId.equalsExp(
+                        _remoteDb.clienteDescuentoTable.subfamiliaId,
+                      ),
+                ),
+              ])
+              ..where(
+                _remoteDb.clienteDescuentoTable.clienteId.equals(clienteId) &
+                    _remoteDb.articuloTable.id.equals(articuloId) &
+                    _remoteDb.clienteDescuentoTable.familiaId.equals('*'),
+              )
+              ..orderBy([
+                OrderingTerm(
                   expression: _remoteDb.clienteDescuentoTable.cantidadDesde,
-                  mode: OrderingMode.desc)
-            ],
-          )
-          ..limit(1))
-        .getSingleOrNull();
+                  mode: OrderingMode.desc,
+                ),
+              ])
+              ..limit(1))
+            .getSingleOrNull();
 
     if (queryResult != null) {
       final descuento =
@@ -1535,29 +1713,29 @@ class PedidoVentaRepository {
     }
 
     // Coincide articulo
-    queryResult = await (_remoteDb.select(_remoteDb.clienteDescuentoTable).join(
-      [
-        innerJoin(
-            _remoteDb.articuloTable,
-            _remoteDb.articuloTable.id
-                .equalsExp(_remoteDb.clienteDescuentoTable.articuloId)),
-      ],
-    )
-          ..where(
-            _remoteDb.clienteDescuentoTable.clienteId.equals(clienteId) &
-                _remoteDb.articuloTable.id.equals(articuloId) &
-                _remoteDb.clienteDescuentoTable.familiaId.equals('*') &
-                _remoteDb.clienteDescuentoTable.subfamiliaId.equals('*'),
-          )
-          ..orderBy(
-            [
-              OrderingTerm(
+    queryResult =
+        await (_remoteDb.select(_remoteDb.clienteDescuentoTable).join([
+                innerJoin(
+                  _remoteDb.articuloTable,
+                  _remoteDb.articuloTable.id.equalsExp(
+                    _remoteDb.clienteDescuentoTable.articuloId,
+                  ),
+                ),
+              ])
+              ..where(
+                _remoteDb.clienteDescuentoTable.clienteId.equals(clienteId) &
+                    _remoteDb.articuloTable.id.equals(articuloId) &
+                    _remoteDb.clienteDescuentoTable.familiaId.equals('*') &
+                    _remoteDb.clienteDescuentoTable.subfamiliaId.equals('*'),
+              )
+              ..orderBy([
+                OrderingTerm(
                   expression: _remoteDb.clienteDescuentoTable.cantidadDesde,
-                  mode: OrderingMode.desc)
-            ],
-          )
-          ..limit(1))
-        .getSingleOrNull();
+                  mode: OrderingMode.desc,
+                ),
+              ])
+              ..limit(1))
+            .getSingleOrNull();
 
     if (queryResult != null) {
       final descuento =
@@ -1566,29 +1744,29 @@ class PedidoVentaRepository {
     }
 
     // Coincide subfamilia
-    queryResult = await (_remoteDb.select(_remoteDb.clienteDescuentoTable).join(
-      [
-        innerJoin(
-            _remoteDb.articuloTable,
-            _remoteDb.articuloTable.subfamiliaId
-                .equalsExp(_remoteDb.clienteDescuentoTable.subfamiliaId)),
-      ],
-    )
-          ..where(
-            _remoteDb.clienteDescuentoTable.clienteId.equals(clienteId) &
-                _remoteDb.articuloTable.id.equals(articuloId) &
-                _remoteDb.clienteDescuentoTable.articuloId.equals('*') &
-                _remoteDb.clienteDescuentoTable.familiaId.equals('*'),
-          )
-          ..orderBy(
-            [
-              OrderingTerm(
+    queryResult =
+        await (_remoteDb.select(_remoteDb.clienteDescuentoTable).join([
+                innerJoin(
+                  _remoteDb.articuloTable,
+                  _remoteDb.articuloTable.subfamiliaId.equalsExp(
+                    _remoteDb.clienteDescuentoTable.subfamiliaId,
+                  ),
+                ),
+              ])
+              ..where(
+                _remoteDb.clienteDescuentoTable.clienteId.equals(clienteId) &
+                    _remoteDb.articuloTable.id.equals(articuloId) &
+                    _remoteDb.clienteDescuentoTable.articuloId.equals('*') &
+                    _remoteDb.clienteDescuentoTable.familiaId.equals('*'),
+              )
+              ..orderBy([
+                OrderingTerm(
                   expression: _remoteDb.clienteDescuentoTable.cantidadDesde,
-                  mode: OrderingMode.desc)
-            ],
-          )
-          ..limit(1))
-        .getSingleOrNull();
+                  mode: OrderingMode.desc,
+                ),
+              ])
+              ..limit(1))
+            .getSingleOrNull();
 
     if (queryResult != null) {
       final descuento =
@@ -1597,29 +1775,29 @@ class PedidoVentaRepository {
     }
 
     // Coincide familia
-    queryResult = await (_remoteDb.select(_remoteDb.clienteDescuentoTable).join(
-      [
-        innerJoin(
-            _remoteDb.articuloTable,
-            _remoteDb.articuloTable.familiaId
-                .equalsExp(_remoteDb.clienteDescuentoTable.familiaId)),
-      ],
-    )
-          ..where(
-            _remoteDb.clienteDescuentoTable.clienteId.equals(clienteId) &
-                _remoteDb.articuloTable.id.equals(articuloId) &
-                _remoteDb.clienteDescuentoTable.articuloId.equals('*') &
-                _remoteDb.clienteDescuentoTable.subfamiliaId.equals('*'),
-          )
-          ..orderBy(
-            [
-              OrderingTerm(
+    queryResult =
+        await (_remoteDb.select(_remoteDb.clienteDescuentoTable).join([
+                innerJoin(
+                  _remoteDb.articuloTable,
+                  _remoteDb.articuloTable.familiaId.equalsExp(
+                    _remoteDb.clienteDescuentoTable.familiaId,
+                  ),
+                ),
+              ])
+              ..where(
+                _remoteDb.clienteDescuentoTable.clienteId.equals(clienteId) &
+                    _remoteDb.articuloTable.id.equals(articuloId) &
+                    _remoteDb.clienteDescuentoTable.articuloId.equals('*') &
+                    _remoteDb.clienteDescuentoTable.subfamiliaId.equals('*'),
+              )
+              ..orderBy([
+                OrderingTerm(
                   expression: _remoteDb.clienteDescuentoTable.cantidadDesde,
-                  mode: OrderingMode.desc)
-            ],
-          )
-          ..limit(1))
-        .getSingleOrNull();
+                  mode: OrderingMode.desc,
+                ),
+              ])
+              ..limit(1))
+            .getSingleOrNull();
 
     if (queryResult != null) {
       final descuento =
@@ -1637,12 +1815,12 @@ class PedidoVentaRepository {
                     tbl.familiaId.equals('*') &
                     tbl.subfamiliaId.equals('*'),
               )
-              ..orderBy(
-                [
-                  (tbl) => OrderingTerm(
-                      expression: tbl.cantidadDesde, mode: OrderingMode.desc)
-                ],
-              )
+              ..orderBy([
+                (tbl) => OrderingTerm(
+                  expression: tbl.cantidadDesde,
+                  mode: OrderingMode.desc,
+                ),
+              ])
               ..limit(1))
             .getSingleOrNull();
 
@@ -1661,33 +1839,36 @@ class PedidoVentaRepository {
   }) async {
     TypedResult? queryResult;
     // Coincide articulo, familia y subfamilia
-    queryResult = await (_remoteDb.select(_remoteDb.descuentoGeneralTable).join(
-      [
-        innerJoin(
-            _remoteDb.articuloTable,
-            _remoteDb.articuloTable.id
-                    .equalsExp(_remoteDb.descuentoGeneralTable.articuloId) &
-                _remoteDb.articuloTable.familiaId
-                    .equalsExp(_remoteDb.descuentoGeneralTable.familiaId) &
-                _remoteDb.articuloTable.subfamiliaId
-                    .equalsExp(_remoteDb.descuentoGeneralTable.subfamiliaId),
-            useColumns: false),
-      ],
-    )
-          ..where(
-            _remoteDb.descuentoGeneralTable.descuentoGeneralId
-                    .equals(descuentoGeneralId) &
-                _remoteDb.articuloTable.id.equals(articuloId),
-          )
-          ..orderBy(
-            [
-              OrderingTerm(
+    queryResult =
+        await (_remoteDb.select(_remoteDb.descuentoGeneralTable).join([
+                innerJoin(
+                  _remoteDb.articuloTable,
+                  _remoteDb.articuloTable.id.equalsExp(
+                        _remoteDb.descuentoGeneralTable.articuloId,
+                      ) &
+                      _remoteDb.articuloTable.familiaId.equalsExp(
+                        _remoteDb.descuentoGeneralTable.familiaId,
+                      ) &
+                      _remoteDb.articuloTable.subfamiliaId.equalsExp(
+                        _remoteDb.descuentoGeneralTable.subfamiliaId,
+                      ),
+                  useColumns: false,
+                ),
+              ])
+              ..where(
+                _remoteDb.descuentoGeneralTable.descuentoGeneralId.equals(
+                      descuentoGeneralId,
+                    ) &
+                    _remoteDb.articuloTable.id.equals(articuloId),
+              )
+              ..orderBy([
+                OrderingTerm(
                   expression: _remoteDb.descuentoGeneralTable.cantidadDesde,
-                  mode: OrderingMode.desc)
-            ],
-          )
-          ..limit(1))
-        .getSingleOrNull();
+                  mode: OrderingMode.desc,
+                ),
+              ])
+              ..limit(1))
+            .getSingleOrNull();
 
     if (queryResult != null) {
       final descuento =
@@ -1695,32 +1876,33 @@ class PedidoVentaRepository {
       return descuento;
     }
     // Coincide articulo, familia
-    queryResult = await (_remoteDb.select(_remoteDb.descuentoGeneralTable).join(
-      [
-        innerJoin(
-          _remoteDb.articuloTable,
-          _remoteDb.articuloTable.id
-                  .equalsExp(_remoteDb.descuentoGeneralTable.articuloId) &
-              _remoteDb.articuloTable.familiaId
-                  .equalsExp(_remoteDb.descuentoGeneralTable.familiaId),
-        ),
-      ],
-    )
-          ..where(
-            _remoteDb.descuentoGeneralTable.descuentoGeneralId
-                    .equals(descuentoGeneralId) &
-                _remoteDb.articuloTable.id.equals(articuloId) &
-                _remoteDb.descuentoGeneralTable.subfamiliaId.equals('*'),
-          )
-          ..orderBy(
-            [
-              OrderingTerm(
+    queryResult =
+        await (_remoteDb.select(_remoteDb.descuentoGeneralTable).join([
+                innerJoin(
+                  _remoteDb.articuloTable,
+                  _remoteDb.articuloTable.id.equalsExp(
+                        _remoteDb.descuentoGeneralTable.articuloId,
+                      ) &
+                      _remoteDb.articuloTable.familiaId.equalsExp(
+                        _remoteDb.descuentoGeneralTable.familiaId,
+                      ),
+                ),
+              ])
+              ..where(
+                _remoteDb.descuentoGeneralTable.descuentoGeneralId.equals(
+                      descuentoGeneralId,
+                    ) &
+                    _remoteDb.articuloTable.id.equals(articuloId) &
+                    _remoteDb.descuentoGeneralTable.subfamiliaId.equals('*'),
+              )
+              ..orderBy([
+                OrderingTerm(
                   expression: _remoteDb.descuentoGeneralTable.cantidadDesde,
-                  mode: OrderingMode.desc)
-            ],
-          )
-          ..limit(1))
-        .getSingleOrNull();
+                  mode: OrderingMode.desc,
+                ),
+              ])
+              ..limit(1))
+            .getSingleOrNull();
 
     if (queryResult != null) {
       final descuento =
@@ -1729,32 +1911,33 @@ class PedidoVentaRepository {
     }
 
     // Coincide familia, subfamilia
-    queryResult = await (_remoteDb.select(_remoteDb.descuentoGeneralTable).join(
-      [
-        innerJoin(
-          _remoteDb.articuloTable,
-          _remoteDb.articuloTable.familiaId
-                  .equalsExp(_remoteDb.descuentoGeneralTable.familiaId) &
-              _remoteDb.articuloTable.subfamiliaId
-                  .equalsExp(_remoteDb.descuentoGeneralTable.subfamiliaId),
-        ),
-      ],
-    )
-          ..where(
-            _remoteDb.descuentoGeneralTable.descuentoGeneralId
-                    .equals(descuentoGeneralId) &
-                _remoteDb.articuloTable.id.equals(articuloId) &
-                _remoteDb.descuentoGeneralTable.articuloId.equals('*'),
-          )
-          ..orderBy(
-            [
-              OrderingTerm(
+    queryResult =
+        await (_remoteDb.select(_remoteDb.descuentoGeneralTable).join([
+                innerJoin(
+                  _remoteDb.articuloTable,
+                  _remoteDb.articuloTable.familiaId.equalsExp(
+                        _remoteDb.descuentoGeneralTable.familiaId,
+                      ) &
+                      _remoteDb.articuloTable.subfamiliaId.equalsExp(
+                        _remoteDb.descuentoGeneralTable.subfamiliaId,
+                      ),
+                ),
+              ])
+              ..where(
+                _remoteDb.descuentoGeneralTable.descuentoGeneralId.equals(
+                      descuentoGeneralId,
+                    ) &
+                    _remoteDb.articuloTable.id.equals(articuloId) &
+                    _remoteDb.descuentoGeneralTable.articuloId.equals('*'),
+              )
+              ..orderBy([
+                OrderingTerm(
                   expression: _remoteDb.descuentoGeneralTable.cantidadDesde,
-                  mode: OrderingMode.desc)
-            ],
-          )
-          ..limit(1))
-        .getSingleOrNull();
+                  mode: OrderingMode.desc,
+                ),
+              ])
+              ..limit(1))
+            .getSingleOrNull();
 
     if (queryResult != null) {
       final descuento =
@@ -1763,32 +1946,33 @@ class PedidoVentaRepository {
     }
 
     // Coincide articulo, subfamilia
-    queryResult = await (_remoteDb.select(_remoteDb.descuentoGeneralTable).join(
-      [
-        innerJoin(
-          _remoteDb.articuloTable,
-          _remoteDb.articuloTable.id
-                  .equalsExp(_remoteDb.descuentoGeneralTable.articuloId) &
-              _remoteDb.articuloTable.subfamiliaId
-                  .equalsExp(_remoteDb.descuentoGeneralTable.subfamiliaId),
-        ),
-      ],
-    )
-          ..where(
-            _remoteDb.descuentoGeneralTable.descuentoGeneralId
-                    .equals(descuentoGeneralId) &
-                _remoteDb.articuloTable.id.equals(articuloId) &
-                _remoteDb.descuentoGeneralTable.familiaId.equals('*'),
-          )
-          ..orderBy(
-            [
-              OrderingTerm(
+    queryResult =
+        await (_remoteDb.select(_remoteDb.descuentoGeneralTable).join([
+                innerJoin(
+                  _remoteDb.articuloTable,
+                  _remoteDb.articuloTable.id.equalsExp(
+                        _remoteDb.descuentoGeneralTable.articuloId,
+                      ) &
+                      _remoteDb.articuloTable.subfamiliaId.equalsExp(
+                        _remoteDb.descuentoGeneralTable.subfamiliaId,
+                      ),
+                ),
+              ])
+              ..where(
+                _remoteDb.descuentoGeneralTable.descuentoGeneralId.equals(
+                      descuentoGeneralId,
+                    ) &
+                    _remoteDb.articuloTable.id.equals(articuloId) &
+                    _remoteDb.descuentoGeneralTable.familiaId.equals('*'),
+              )
+              ..orderBy([
+                OrderingTerm(
                   expression: _remoteDb.descuentoGeneralTable.cantidadDesde,
-                  mode: OrderingMode.desc)
-            ],
-          )
-          ..limit(1))
-        .getSingleOrNull();
+                  mode: OrderingMode.desc,
+                ),
+              ])
+              ..limit(1))
+            .getSingleOrNull();
 
     if (queryResult != null) {
       final descuento =
@@ -1797,30 +1981,31 @@ class PedidoVentaRepository {
     }
 
     // Coincide articulo
-    queryResult = await (_remoteDb.select(_remoteDb.descuentoGeneralTable).join(
-      [
-        innerJoin(
-            _remoteDb.articuloTable,
-            _remoteDb.articuloTable.id
-                .equalsExp(_remoteDb.descuentoGeneralTable.articuloId)),
-      ],
-    )
-          ..where(
-            _remoteDb.descuentoGeneralTable.descuentoGeneralId
-                    .equals(descuentoGeneralId) &
-                _remoteDb.articuloTable.id.equals(articuloId) &
-                _remoteDb.descuentoGeneralTable.familiaId.equals('*') &
-                _remoteDb.descuentoGeneralTable.subfamiliaId.equals('*'),
-          )
-          ..orderBy(
-            [
-              OrderingTerm(
+    queryResult =
+        await (_remoteDb.select(_remoteDb.descuentoGeneralTable).join([
+                innerJoin(
+                  _remoteDb.articuloTable,
+                  _remoteDb.articuloTable.id.equalsExp(
+                    _remoteDb.descuentoGeneralTable.articuloId,
+                  ),
+                ),
+              ])
+              ..where(
+                _remoteDb.descuentoGeneralTable.descuentoGeneralId.equals(
+                      descuentoGeneralId,
+                    ) &
+                    _remoteDb.articuloTable.id.equals(articuloId) &
+                    _remoteDb.descuentoGeneralTable.familiaId.equals('*') &
+                    _remoteDb.descuentoGeneralTable.subfamiliaId.equals('*'),
+              )
+              ..orderBy([
+                OrderingTerm(
                   expression: _remoteDb.descuentoGeneralTable.cantidadDesde,
-                  mode: OrderingMode.desc)
-            ],
-          )
-          ..limit(1))
-        .getSingleOrNull();
+                  mode: OrderingMode.desc,
+                ),
+              ])
+              ..limit(1))
+            .getSingleOrNull();
 
     if (queryResult != null) {
       final descuento =
@@ -1829,30 +2014,31 @@ class PedidoVentaRepository {
     }
 
     // Coincide subfamilia
-    queryResult = await (_remoteDb.select(_remoteDb.descuentoGeneralTable).join(
-      [
-        innerJoin(
-            _remoteDb.articuloTable,
-            _remoteDb.articuloTable.subfamiliaId
-                .equalsExp(_remoteDb.descuentoGeneralTable.subfamiliaId)),
-      ],
-    )
-          ..where(
-            _remoteDb.descuentoGeneralTable.descuentoGeneralId
-                    .equals(descuentoGeneralId) &
-                _remoteDb.articuloTable.id.equals(articuloId) &
-                _remoteDb.descuentoGeneralTable.articuloId.equals('*') &
-                _remoteDb.descuentoGeneralTable.familiaId.equals('*'),
-          )
-          ..orderBy(
-            [
-              OrderingTerm(
+    queryResult =
+        await (_remoteDb.select(_remoteDb.descuentoGeneralTable).join([
+                innerJoin(
+                  _remoteDb.articuloTable,
+                  _remoteDb.articuloTable.subfamiliaId.equalsExp(
+                    _remoteDb.descuentoGeneralTable.subfamiliaId,
+                  ),
+                ),
+              ])
+              ..where(
+                _remoteDb.descuentoGeneralTable.descuentoGeneralId.equals(
+                      descuentoGeneralId,
+                    ) &
+                    _remoteDb.articuloTable.id.equals(articuloId) &
+                    _remoteDb.descuentoGeneralTable.articuloId.equals('*') &
+                    _remoteDb.descuentoGeneralTable.familiaId.equals('*'),
+              )
+              ..orderBy([
+                OrderingTerm(
                   expression: _remoteDb.descuentoGeneralTable.cantidadDesde,
-                  mode: OrderingMode.desc)
-            ],
-          )
-          ..limit(1))
-        .getSingleOrNull();
+                  mode: OrderingMode.desc,
+                ),
+              ])
+              ..limit(1))
+            .getSingleOrNull();
 
     if (queryResult != null) {
       final descuento =
@@ -1861,30 +2047,31 @@ class PedidoVentaRepository {
     }
 
     // Coincide familia
-    queryResult = await (_remoteDb.select(_remoteDb.descuentoGeneralTable).join(
-      [
-        innerJoin(
-            _remoteDb.articuloTable,
-            _remoteDb.articuloTable.familiaId
-                .equalsExp(_remoteDb.descuentoGeneralTable.familiaId)),
-      ],
-    )
-          ..where(
-            _remoteDb.descuentoGeneralTable.descuentoGeneralId
-                    .equals(descuentoGeneralId) &
-                _remoteDb.articuloTable.id.equals(articuloId) &
-                _remoteDb.descuentoGeneralTable.articuloId.equals('*') &
-                _remoteDb.descuentoGeneralTable.subfamiliaId.equals('*'),
-          )
-          ..orderBy(
-            [
-              OrderingTerm(
+    queryResult =
+        await (_remoteDb.select(_remoteDb.descuentoGeneralTable).join([
+                innerJoin(
+                  _remoteDb.articuloTable,
+                  _remoteDb.articuloTable.familiaId.equalsExp(
+                    _remoteDb.descuentoGeneralTable.familiaId,
+                  ),
+                ),
+              ])
+              ..where(
+                _remoteDb.descuentoGeneralTable.descuentoGeneralId.equals(
+                      descuentoGeneralId,
+                    ) &
+                    _remoteDb.articuloTable.id.equals(articuloId) &
+                    _remoteDb.descuentoGeneralTable.articuloId.equals('*') &
+                    _remoteDb.descuentoGeneralTable.subfamiliaId.equals('*'),
+              )
+              ..orderBy([
+                OrderingTerm(
                   expression: _remoteDb.descuentoGeneralTable.cantidadDesde,
-                  mode: OrderingMode.desc)
-            ],
-          )
-          ..limit(1))
-        .getSingleOrNull();
+                  mode: OrderingMode.desc,
+                ),
+              ])
+              ..limit(1))
+            .getSingleOrNull();
 
     if (queryResult != null) {
       final descuento =
@@ -1902,12 +2089,12 @@ class PedidoVentaRepository {
                     tbl.familiaId.equals('*') &
                     tbl.subfamiliaId.equals('*'),
               )
-              ..orderBy(
-                [
-                  (tbl) => OrderingTerm(
-                      expression: tbl.cantidadDesde, mode: OrderingMode.desc)
-                ],
-              )
+              ..orderBy([
+                (tbl) => OrderingTerm(
+                  expression: tbl.cantidadDesde,
+                  mode: OrderingMode.desc,
+                ),
+              ])
               ..limit(1))
             .getSingleOrNull();
 
@@ -1919,17 +2106,13 @@ class PedidoVentaRepository {
     return 0.0;
   }
 
-  Money _getPrecioUnitario({
-    required Money precio,
-    required int tipoPrecio,
-  }) {
+  Money _getPrecioUnitario({required Money precio, required int tipoPrecio}) {
     return tipoPrecio != 0
         ? Money.fromFixedWithCurrency(
-            precio.amount / Fixed.fromNum(tipoPrecio, decimalDigits: 0),
-            precio.currency)
-        : 0.toMoney(
-            currencyId: precio.currency.isoCode,
-          );
+          precio.amount / Fixed.fromNum(tipoPrecio, decimalDigits: 0),
+          precio.currency,
+        )
+        : 0.toMoney(currencyId: precio.currency.isoCode);
   }
 
   double _roundDouble(double value, int places) {
@@ -1943,13 +2126,15 @@ class PedidoVentaRepository {
     double descuento3 = 0,
   }) {
     return Fixed.fromNum(
-        _roundDouble(
-            1 -
-                ((1 - (descuento1 / 100)) *
-                    (1 - (descuento2 / 100)) *
-                    (1 - (descuento3 / 100))),
-            6),
-        decimalDigits: 6);
+      _roundDouble(
+        1 -
+            ((1 - (descuento1 / 100)) *
+                (1 - (descuento2 / 100)) *
+                (1 - (descuento3 / 100))),
+        6,
+      ),
+      decimalDigits: 6,
+    );
   }
 
   Money getTotalLinea({
@@ -1981,7 +2166,9 @@ class PedidoVentaRepository {
   }
 
   Money getBaseImponible(
-      List<PedidoVentaLinea> pedidoVentaLineaList, String divisaId) {
+    List<PedidoVentaLinea> pedidoVentaLineaList,
+    String divisaId,
+  ) {
     var total = Money.parse('0', isoCode: divisaId);
     for (var i = 0; i < pedidoVentaLineaList.length; i++) {
       if (pedidoVentaLineaList[i].importeLinea != null) {
@@ -2005,7 +2192,7 @@ class PedidoVentaRepository {
   Money getImporteIva(Money importeBaseImponible, double iva) {
     final importeIve =
         (importeBaseImponible.amount * Fixed.fromNum(iva, decimalDigits: 2)) /
-            Fixed.fromNum(100, decimalDigits: 2);
+        Fixed.fromNum(100, decimalDigits: 2);
 
     return Money.fromFixedWithCurrency(
       importeIve,
@@ -2025,7 +2212,7 @@ class PedidoVentaRepository {
       'DESCUENTO1',
       'DESCUENTO2',
       'DESCUENTO3',
-      'TOTAL_LINEA'
+      'TOTAL_LINEA',
     ]);
   }
 
@@ -2041,12 +2228,14 @@ class PedidoVentaRepository {
       pedidoVentaLinea.descuento1,
       pedidoVentaLinea.descuento2,
       pedidoVentaLinea.descuento3,
-      pedidoVentaLinea.importeLinea?.amount.toDecimal().toDouble() ?? ''
+      pedidoVentaLinea.importeLinea?.amount.toDecimal().toDouble() ?? '',
     ];
   }
 
-  Future<bool> _csvFileExists(
-      {required Directory directory, required String fileName}) async {
+  Future<bool> _csvFileExists({
+    required Directory directory,
+    required String fileName,
+  }) async {
     return (File((join(directory.path, fileName))).exists());
   }
 
@@ -2070,7 +2259,9 @@ class PedidoVentaRepository {
           return responsaData;
         } else {
           throw AppException.restApiFailure(
-              response.statusCode ?? 400, response.statusMessage ?? '');
+            response.statusCode ?? 400,
+            response.statusMessage ?? '',
+          );
         }
       } catch (e) {
         throw getApiError(e);
@@ -2097,7 +2288,9 @@ class PedidoVentaRepository {
         return response.data as List<int>;
       } else {
         throw AppException.restApiFailure(
-            response.statusCode ?? 400, response.statusMessage ?? '');
+          response.statusCode ?? 400,
+          response.statusMessage ?? '',
+        );
       }
     } catch (e) {
       throw getApiError(e);
@@ -2105,28 +2298,26 @@ class PedidoVentaRepository {
   }
 
   Future<int?> _getStockDisponible(String articuloId) async {
-    final articuloDto = await (_remoteDb.select(_remoteDb.articuloTable)
-          ..where((tbl) => tbl.id.equals(articuloId)))
-        .getSingleOrNull();
+    final articuloDto =
+        await (_remoteDb.select(_remoteDb.articuloTable)
+          ..where((tbl) => tbl.id.equals(articuloId))).getSingleOrNull();
 
     return articuloDto?.stockDisponible;
   }
 
   Future<double> _getDescuentoProntoPago(String clienteId) async {
-    final clienteDto = await (_remoteDb.select(_remoteDb.clienteTable)
-          ..where((tbl) => tbl.id.equals(clienteId)))
-        .getSingle();
+    final clienteDto =
+        await (_remoteDb.select(_remoteDb.clienteTable)
+          ..where((tbl) => tbl.id.equals(clienteId))).getSingle();
 
     return clienteDto.descuentoProntoPago;
   }
 
   Future<void> _removePedidoSyncDatabase(String pedidoId) async {
     await (_remoteDb.delete(_remoteDb.pedidoVentaTable)
-          ..where((tbl) => tbl.pedidoVentaId.equals(pedidoId)))
-        .go();
+      ..where((tbl) => tbl.pedidoVentaId.equals(pedidoId))).go();
     await (_remoteDb.delete(_remoteDb.pedidoVentaLineaTable)
-          ..where((tbl) => tbl.pedidoId.equals(pedidoId)))
-        .go();
+      ..where((tbl) => tbl.pedidoId.equals(pedidoId))).go();
   }
 
   Future<void> deletePedidoVentaLocalAntiguos() async {
@@ -2136,32 +2327,38 @@ class PedidoVentaRepository {
 
     for (var i = 0; i < pedidosVentaLocalList.length; i++) {
       if (pedidosVentaLocalList[i].tratada == 'S' &&
-          pedidosVentaLocalList[i]
-              .fechaAlta
+          pedidosVentaLocalList[i].fechaAlta
               .add(const Duration(days: 30))
               .isBefore(currentDate)) {
-        await (_localDb.delete(_localDb.pedidoVentaLineaLocalTable)
-              ..where((tbl) => tbl.pedidoVentaAppId
-                  .equals(pedidosVentaLocalList[i].pedidoVentaAppId)))
-            .go();
-        await (_localDb.delete(_localDb.pedidoVentaLocalTable)
-              ..where((tbl) => tbl.pedidoVentaAppId
-                  .equals(pedidosVentaLocalList[i].pedidoVentaAppId)))
-            .go();
+        await (_localDb.delete(_localDb.pedidoVentaLineaLocalTable)..where(
+          (tbl) => tbl.pedidoVentaAppId.equals(
+            pedidosVentaLocalList[i].pedidoVentaAppId,
+          ),
+        )).go();
+        await (_localDb.delete(_localDb.pedidoVentaLocalTable)..where(
+          (tbl) => tbl.pedidoVentaAppId.equals(
+            pedidosVentaLocalList[i].pedidoVentaAppId,
+          ),
+        )).go();
       }
     }
   }
 
-  Future<Precio?> checkMinimumPrice(String articuloId, Money importeLinea,
-      int totalQuantity, String divisaId) async {
+  Future<Precio?> checkMinimumPrice(
+    String articuloId,
+    Money importeLinea,
+    int totalQuantity,
+    String divisaId,
+  ) async {
     if (usuario.modificarPedido) {
       final unitPrice = importeLinea / totalQuantity;
 
       final precioTarifa = await _getPrecioTarifa(
-          tarifaId: 'MAX',
-          articuloId: articuloId,
-          cantidad: totalQuantity,
-          divisaId: divisaId);
+        tarifaId: 'MAX',
+        articuloId: articuloId,
+        cantidad: totalQuantity,
+        divisaId: divisaId,
+      );
 
       if (unitPrice < precioTarifa.precio) {
         return precioTarifa;
@@ -2171,46 +2368,63 @@ class PedidoVentaRepository {
     return null;
   }
 
-  Future<PrecioPromocion> _getPrecioPromoDto(String clienteId, String divisaId,
-      String articuloId, int cantidad, DateTime fecha) async {
+  Future<PrecioPromocion> _getPrecioPromoDto(
+    String clienteId,
+    String divisaId,
+    String articuloId,
+    int cantidad,
+    DateTime fecha,
+  ) async {
     final queryResult =
         await (_remoteDb.select(_remoteDb.promoDtoLinTable).join([
-      innerJoin(
-        _remoteDb.promoDtoCabTable,
-        _remoteDb.promoDtoLinTable.promoDtoId
-                .equalsExp(_remoteDb.promoDtoCabTable.promoDtoId) &
-            _remoteDb.promoDtoLinTable.empresaId
-                .equalsExp(_remoteDb.promoDtoCabTable.empresaId),
-      )
-    ])
-              ..where(_remoteDb.promoDtoCabTable.divisaId.equals(divisaId) &
-                  _remoteDb.promoDtoCabTable.fechaDesde
-                      .isSmallerOrEqualValue(fecha) &
-                  (_remoteDb.promoDtoCabTable.fechaHasta
-                          .isBiggerOrEqualValue(fecha) |
-                      _remoteDb.promoDtoCabTable.fechaHasta.isNull()) &
-                  _remoteDb.promoDtoLinTable.articuloId.equals(articuloId) &
-                  _remoteDb.promoDtoLinTable.cantidadDesde
-                      .isSmallerOrEqualValue(cantidad))
+                innerJoin(
+                  _remoteDb.promoDtoCabTable,
+                  _remoteDb.promoDtoLinTable.promoDtoId.equalsExp(
+                        _remoteDb.promoDtoCabTable.promoDtoId,
+                      ) &
+                      _remoteDb.promoDtoLinTable.empresaId.equalsExp(
+                        _remoteDb.promoDtoCabTable.empresaId,
+                      ),
+                ),
+              ])
+              ..where(
+                _remoteDb.promoDtoCabTable.divisaId.equals(divisaId) &
+                    _remoteDb.promoDtoCabTable.fechaDesde.isSmallerOrEqualValue(
+                      fecha,
+                    ) &
+                    (_remoteDb.promoDtoCabTable.fechaHasta.isBiggerOrEqualValue(
+                          fecha,
+                        ) |
+                        _remoteDb.promoDtoCabTable.fechaHasta.isNull()) &
+                    _remoteDb.promoDtoLinTable.articuloId.equals(articuloId) &
+                    _remoteDb.promoDtoLinTable.cantidadDesde
+                        .isSmallerOrEqualValue(cantidad),
+              )
               ..orderBy([
                 OrderingTerm(
-                    expression: _remoteDb.promoDtoCabTable.fechaHasta,
-                    mode: OrderingMode.desc),
+                  expression: _remoteDb.promoDtoCabTable.fechaHasta,
+                  mode: OrderingMode.desc,
+                ),
                 OrderingTerm(
-                    expression: _remoteDb.promoDtoLinTable.cantidadDesde,
-                    mode: OrderingMode.desc)
+                  expression: _remoteDb.promoDtoLinTable.cantidadDesde,
+                  mode: OrderingMode.desc,
+                ),
               ]))
             .get();
 
     final filterResult = <TypedResult>[];
 
     for (var i = 0; i < queryResult.length; i++) {
-      final promoId =
-          queryResult[i].read(_remoteDb.promoDtoCabTable.promoDtoId);
+      final promoId = queryResult[i].read(
+        _remoteDb.promoDtoCabTable.promoDtoId,
+      );
       final empresaId =
           queryResult[i].read(_remoteDb.promoDtoCabTable.empresaId)!;
-      final activa =
-          await _getPromoDtoActivaCliente(empresaId, clienteId, promoId!);
+      final activa = await _getPromoDtoActivaCliente(
+        empresaId,
+        clienteId,
+        promoId!,
+      );
 
       if (activa) {
         filterResult.add(queryResult[i]);
@@ -2226,8 +2440,10 @@ class PedidoVentaRepository {
     } else {
       final promo = filterResult[0];
       return PrecioPromocion(
-        precio: Money.fromNum(promo.read(_remoteDb.promoDtoLinTable.precio)!,
-            isoCode: divisaId),
+        precio: Money.fromNum(
+          promo.read(_remoteDb.promoDtoLinTable.precio)!,
+          isoCode: divisaId,
+        ),
         tipoPrecio: promo.read(_remoteDb.promoDtoLinTable.tipoPrecio) ?? 1,
         dto: promo.read(_remoteDb.promoDtoLinTable.dto) ?? 0,
       );
@@ -2235,46 +2451,54 @@ class PedidoVentaRepository {
   }
 
   Future<bool> _getPromoDtoActivaCliente(
-      String empresaId, String clienteId, String promoDtoId) async {
-    final promoClienteIncluido = (await (_remoteDb.customSelect(
-      ''' SELECT * FROM promo_dto_cliente WHERE PROMO_DTO_ID = ? AND EMPRESA_ID = ? AND CLIENTE_ID = ? AND TIPO = ?''',
-      variables: [
-        Variable.withString(promoDtoId),
-        Variable.withString(empresaId),
-        Variable.withString(clienteId),
-        Variable.withString('I'),
-      ],
-    )).get())
-        .isNotEmpty;
+    String empresaId,
+    String clienteId,
+    String promoDtoId,
+  ) async {
+    final promoClienteIncluido =
+        (await (_remoteDb.customSelect(
+              ''' SELECT * FROM promo_dto_cliente WHERE PROMO_DTO_ID = ? AND EMPRESA_ID = ? AND CLIENTE_ID = ? AND TIPO = ?''',
+              variables: [
+                Variable.withString(promoDtoId),
+                Variable.withString(empresaId),
+                Variable.withString(clienteId),
+                Variable.withString('I'),
+              ],
+            )).get())
+            .isNotEmpty;
 
-    final promoClienteExcluido = (await (_remoteDb.customSelect(
-      ''' SELECT * FROM promo_dto_cliente WHERE PROMO_DTO_ID = ? AND EMPRESA_ID = ? AND CLIENTE_ID = ? AND TIPO = ?''',
-      variables: [
-        Variable.withString(promoDtoId),
-        Variable.withString(empresaId),
-        Variable.withString(clienteId),
-        Variable.withString('E'),
-      ],
-    )).get())
-        .isNotEmpty;
+    final promoClienteExcluido =
+        (await (_remoteDb.customSelect(
+              ''' SELECT * FROM promo_dto_cliente WHERE PROMO_DTO_ID = ? AND EMPRESA_ID = ? AND CLIENTE_ID = ? AND TIPO = ?''',
+              variables: [
+                Variable.withString(promoDtoId),
+                Variable.withString(empresaId),
+                Variable.withString(clienteId),
+                Variable.withString('E'),
+              ],
+            )).get())
+            .isNotEmpty;
 
-    final promoClienteTodosIncluido = (await (_remoteDb.customSelect(
-      ''' SELECT * FROM promo_dto_cliente WHERE PROMO_DTO_ID = ? AND EMPRESA_ID = ? AND CLIENTE_ID = ? AND TIPO = ?''',
-      variables: [
-        Variable.withString(promoDtoId),
-        Variable.withString(empresaId),
-        Variable.withString('*'),
-        Variable.withString('I'),
-      ],
+    final promoClienteTodosIncluido =
+        (await (_remoteDb
+                .customSelect(
+                  ''' SELECT * FROM promo_dto_cliente WHERE PROMO_DTO_ID = ? AND EMPRESA_ID = ? AND CLIENTE_ID = ? AND TIPO = ?''',
+                  variables: [
+                    Variable.withString(promoDtoId),
+                    Variable.withString(empresaId),
+                    Variable.withString('*'),
+                    Variable.withString('I'),
+                  ],
 
-      // _remoteDb.promoDtoClienteTable)
-      //         ..where((promoCliente) =>
-      //             promoCliente.promoDtoId.equals(promoDtoId) &
-      //             promoCliente.empresaId.equalsNullable(empresaId) &
-      //             promoCliente.clienteId.equals('*'.trim()) &
-      //             promoCliente.tipo.equals('I'))
-    ).get()))
-        .isNotEmpty;
+                  // _remoteDb.promoDtoClienteTable)
+                  //         ..where((promoCliente) =>
+                  //             promoCliente.promoDtoId.equals(promoDtoId) &
+                  //             promoCliente.empresaId.equalsNullable(empresaId) &
+                  //             promoCliente.clienteId.equals('*'.trim()) &
+                  //             promoCliente.tipo.equals('I'))
+                )
+                .get()))
+            .isNotEmpty;
 
     if (promoClienteIncluido) {
       return true;

@@ -40,11 +40,12 @@ class SubfamiliaDTO with _$SubfamiliaDTO implements Insertable<SubfamiliaDTO> {
 
   Subfamilia toDomain() {
     return Subfamilia(
-        id: id,
-        familiaId: familiaId,
-        descripcion: getDescriptionInLocalLanguage(),
-        lastUpdate: lastUpdated,
-        deleted: (deleted == 'S') ? true : false);
+      id: id,
+      familiaId: familiaId,
+      descripcion: getDescriptionInLocalLanguage(),
+      lastUpdate: lastUpdated,
+      deleted: (deleted == 'S') ? true : false,
+    );
   }
 
   String getDescriptionInLocalLanguage() {

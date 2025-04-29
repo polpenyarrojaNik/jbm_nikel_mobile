@@ -5,10 +5,11 @@ part 'subfamilia.freezed.dart';
 @freezed
 class Subfamilia with _$Subfamilia {
   const Subfamilia._();
-  const factory Subfamilia(
-      {required String id,
-      required String familiaId,
-      required String descripcion,
-      required DateTime lastUpdate,
-      required bool deleted}) = _Subfamilia;
+  const factory Subfamilia({
+    required String id,
+    required String familiaId,
+    required String descripcion,
+    required DateTime lastUpdate,
+    required bool deleted,
+  }) = _Subfamilia;
 }

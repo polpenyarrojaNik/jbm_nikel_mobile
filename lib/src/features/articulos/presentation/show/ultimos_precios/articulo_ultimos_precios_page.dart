@@ -18,8 +18,11 @@ import 'articulo_ultimos_precios_search_controller.dart';
 
 @RoutePage()
 class ArticuloUltimosPreciosPage extends ConsumerWidget {
-  ArticuloUltimosPreciosPage(
-      {super.key, required this.articuloId, required this.description});
+  ArticuloUltimosPreciosPage({
+    super.key,
+    required this.articuloId,
+    required this.description,
+  });
 
   final String articuloId;
   final String description;
@@ -29,12 +32,15 @@ class ArticuloUltimosPreciosPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final stateClienteUltimosPreciosListCount = ref.watch(
-        articuloUltimosPreciosIndexScreenControllerProvider(
-            articuloId: articuloId));
+      articuloUltimosPreciosIndexScreenControllerProvider(
+        articuloId: articuloId,
+      ),
+    );
 
     ref.listen<AsyncValue<void>>(
       articuloUltimosPreciosIndexScreenControllerProvider(
-          articuloId: articuloId),
+        articuloId: articuloId,
+      ),
       (_, state) => state.showAlertDialogOnError(context),
     );
 
@@ -53,33 +59,34 @@ class ArticuloUltimosPreciosPage extends ConsumerWidget {
       ),
       body: Column(
         children: [
-          HeaderDatosRelacionados(
-            entityId: articuloId,
-            subtitle: description,
-          ),
+          HeaderDatosRelacionados(entityId: articuloId, subtitle: description),
           gapH8,
           stateClienteUltimosPreciosListCount.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
-            data: (count) => Expanded(
-              child: ListView.separated(
-                itemCount: count,
-                itemBuilder: (context, i) => ref
-                    .watch(
-                      ArticuloUltimosPreciosIndexScreenPaginatedControllerProvider(
-                        articuloId: articuloId,
-                        page: (i ~/ ArticuloRepository.pageSize),
-                      ),
-                    )
-                    .maybeWhen(
-                      orElse: () => const ArticuloListShimmer(),
-                      data: (ultimosPreciosList) => _UltimosPreciosTile(
-                        ultimosPrecios:
-                            ultimosPreciosList[i % ArticuloRepository.pageSize],
-                      ),
-                    ),
-                separatorBuilder: (context, i) => const Divider(),
-              ),
-            ),
+            data:
+                (count) => Expanded(
+                  child: ListView.separated(
+                    itemCount: count,
+                    itemBuilder:
+                        (context, i) => ref
+                            .watch(
+                              ArticuloUltimosPreciosIndexScreenPaginatedControllerProvider(
+                                articuloId: articuloId,
+                                page: (i ~/ ArticuloRepository.pageSize),
+                              ),
+                            )
+                            .maybeWhen(
+                              orElse: () => const ArticuloListShimmer(),
+                              data:
+                                  (ultimosPreciosList) => _UltimosPreciosTile(
+                                    ultimosPrecios:
+                                        ultimosPreciosList[i %
+                                            ArticuloRepository.pageSize],
+                                  ),
+                            ),
+                    separatorBuilder: (context, i) => const Divider(),
+                  ),
+                ),
             error: (e, _) => ErrorMessageWidget(e.toString()),
             loading: () => const ProgressIndicatorWidget(),
           ),
@@ -126,7 +133,8 @@ class _UltimosPreciosTile extends StatelessWidget {
               ),
               gapW16,
               Text(
-                  '${numberFormatCantidades(ultimosPrecios.cantidad.toDouble())} ${S.of(context).unidad}'),
+                '${numberFormatCantidades(ultimosPrecios.cantidad.toDouble())} ${S.of(context).unidad}',
+              ),
             ],
           ),
           Row(

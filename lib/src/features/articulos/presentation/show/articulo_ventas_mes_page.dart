@@ -18,8 +18,11 @@ import '../../infrastructure/articulo_repository.dart';
 
 @RoutePage()
 class ArticuloVentasMesPage extends ConsumerWidget {
-  const ArticuloVentasMesPage(
-      {super.key, required this.articuloId, required this.descripcion});
+  const ArticuloVentasMesPage({
+    super.key,
+    required this.articuloId,
+    required this.descripcion,
+  });
 
   final String articuloId;
   final String descripcion;
@@ -35,39 +38,39 @@ class ArticuloVentasMesPage extends ConsumerWidget {
       ),
       body: Column(
         children: [
-          HeaderDatosRelacionados(
-            entityId: articuloId,
-            subtitle: descripcion,
-          ),
+          HeaderDatosRelacionados(entityId: articuloId, subtitle: descripcion),
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data: (articuloVentasMesList) => (articuloVentasMesList.isNotEmpty)
-                ? Expanded(
-                    child: ListView(
-                      children: [
-                        VentasMesDataTable(
-                          articuloVentasMesList: articuloVentasMesList,
-                          showTodos: user?.verTotalVentas ?? false,
+            data:
+                (articuloVentasMesList) =>
+                    (articuloVentasMesList.isNotEmpty)
+                        ? Expanded(
+                          child: ListView(
+                            children: [
+                              VentasMesDataTable(
+                                articuloVentasMesList: articuloVentasMesList,
+                                showTodos: user?.verTotalVentas ?? false,
+                              ),
+                              gapH16,
+                              Container(
+                                height: 420,
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                ),
+                                child: GraficaVentasMes(
+                                  articuloVentasMesList: articuloVentasMesList,
+                                ),
+                              ),
+                              gapH16,
+                              const LeyendaWidget(),
+                            ],
+                          ),
+                        )
+                        : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [Text(S.of(context).sinResultados)],
                         ),
-                        gapH16,
-                        Container(
-                          height: 420,
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: GraficaVentasMes(
-                              articuloVentasMesList: articuloVentasMesList),
-                        ),
-                        gapH16,
-                        const LeyendaWidget(),
-                      ],
-                    ),
-                  )
-                : Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(S.of(context).sinResultados),
-                    ],
-                  ),
           ),
         ],
       ),
@@ -76,10 +79,11 @@ class ArticuloVentasMesPage extends ConsumerWidget {
 }
 
 class VentasMesDataTable extends StatefulWidget {
-  const VentasMesDataTable(
-      {super.key,
-      required this.articuloVentasMesList,
-      required this.showTodos});
+  const VentasMesDataTable({
+    super.key,
+    required this.articuloVentasMesList,
+    required this.showTodos,
+  });
 
   final List<ArticuloVentasMes> articuloVentasMesList;
   final bool showTodos;
@@ -115,50 +119,65 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
     return [
       DataColumn(
         label: Expanded(
-          child: Text(S.of(context).articulo_show_articuloVentasMes_mes,
-              textAlign: TextAlign.left),
+          child: Text(
+            S.of(context).articulo_show_articuloVentasMes_mes,
+            textAlign: TextAlign.left,
+          ),
         ),
         numeric: true,
       ),
       DataColumn(
         label: Expanded(
           child: Center(
-              child: Text(DateTime.now().year.toString(),
-                  textAlign: TextAlign.right)),
+            child: Text(
+              DateTime.now().year.toString(),
+              textAlign: TextAlign.right,
+            ),
+          ),
         ),
         numeric: false,
       ),
       DataColumn(
         label: Expanded(
           child: Center(
-              child: Text(
-            (DateTime.now().year - 1).toString(),
-            textAlign: TextAlign.right,
-          )),
+            child: Text(
+              (DateTime.now().year - 1).toString(),
+              textAlign: TextAlign.right,
+            ),
+          ),
         ),
         numeric: false,
       ),
       DataColumn(
         label: Expanded(
           child: Center(
-              child: Text((DateTime.now().year - 2).toString(),
-                  textAlign: TextAlign.right)),
+            child: Text(
+              (DateTime.now().year - 2).toString(),
+              textAlign: TextAlign.right,
+            ),
+          ),
         ),
         numeric: false,
       ),
       DataColumn(
         label: Expanded(
           child: Center(
-              child: Text((DateTime.now().year - 3).toString(),
-                  textAlign: TextAlign.right)),
+            child: Text(
+              (DateTime.now().year - 3).toString(),
+              textAlign: TextAlign.right,
+            ),
+          ),
         ),
         numeric: false,
       ),
       DataColumn(
         label: Expanded(
           child: Center(
-              child: Text((DateTime.now().year - 4).toString(),
-                  textAlign: TextAlign.right)),
+            child: Text(
+              (DateTime.now().year - 4).toString(),
+              textAlign: TextAlign.right,
+            ),
+          ),
         ),
         numeric: false,
       ),
@@ -174,9 +193,10 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
     for (var i = 0; i < articuloVentasMesList.length; i++) {
       dataRows.add(
         DataRow(
-          onLongPress: () => setState(() {
-            selectedRow = i;
-          }),
+          onLongPress:
+              () => setState(() {
+                selectedRow = i;
+              }),
           selected: selectedRow == i,
           cells: [
             DataCell(
@@ -184,8 +204,22 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Center(
+                    child: Text(getMonthFromInt(articuloVentasMesList[i].mes)),
+                  ),
+                ],
+              ),
+            ),
+            DataCell(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Center(
                     child: Text(
-                      getMonthFromInt(articuloVentasMesList[i].mes),
+                      showTodos
+                          ? '${numberFormatCantidades(articuloVentasMesList[i].unidadesAnyo)} (${numberFormatCantidades(articuloVentasMesList[i].unidadesAnyoTodos)})'
+                          : numberFormatCantidades(
+                            articuloVentasMesList[i].unidadesAnyo,
+                          ),
                     ),
                   ),
                 ],
@@ -198,14 +232,11 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
                   Center(
                     child: Text(
                       showTodos
-                          ? '${numberFormatCantidades(
-                              articuloVentasMesList[i].unidadesAnyo,
-                            )} (${numberFormatCantidades(
-                              articuloVentasMesList[i].unidadesAnyoTodos,
-                            )})'
+                          ? '${numberFormatCantidades(articuloVentasMesList[i].unidadesAnyo_1)} (${numberFormatCantidades(articuloVentasMesList[i].unidadesAnyoTodos_1)})'
                           : numberFormatCantidades(
-                              articuloVentasMesList[i].unidadesAnyo,
-                            ),
+                            articuloVentasMesList[i].unidadesAnyo_1,
+                          ),
+                      textAlign: TextAlign.right,
                     ),
                   ),
                 ],
@@ -217,16 +248,13 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
                 children: [
                   Center(
                     child: Text(
-                        showTodos
-                            ? '${numberFormatCantidades(
-                                articuloVentasMesList[i].unidadesAnyo_1,
-                              )} (${numberFormatCantidades(
-                                articuloVentasMesList[i].unidadesAnyoTodos_1,
-                              )})'
-                            : numberFormatCantidades(
-                                articuloVentasMesList[i].unidadesAnyo_1,
-                              ),
-                        textAlign: TextAlign.right),
+                      showTodos
+                          ? '${numberFormatCantidades(articuloVentasMesList[i].unidadesAnyo_2)} (${numberFormatCantidades(articuloVentasMesList[i].unidadesAnyoTodos_2)})'
+                          : numberFormatCantidades(
+                            articuloVentasMesList[i].unidadesAnyo_2,
+                          ),
+                      textAlign: TextAlign.right,
+                    ),
                   ),
                 ],
               ),
@@ -237,16 +265,13 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
                 children: [
                   Center(
                     child: Text(
-                        showTodos
-                            ? '${numberFormatCantidades(
-                                articuloVentasMesList[i].unidadesAnyo_2,
-                              )} (${numberFormatCantidades(
-                                articuloVentasMesList[i].unidadesAnyoTodos_2,
-                              )})'
-                            : numberFormatCantidades(
-                                articuloVentasMesList[i].unidadesAnyo_2,
-                              ),
-                        textAlign: TextAlign.right),
+                      showTodos
+                          ? '${numberFormatCantidades(articuloVentasMesList[i].unidadesAnyo_3)} (${numberFormatCantidades(articuloVentasMesList[i].unidadesAnyoTodos_3)})'
+                          : numberFormatCantidades(
+                            articuloVentasMesList[i].unidadesAnyo_3,
+                          ),
+                      textAlign: TextAlign.right,
+                    ),
                   ),
                 ],
               ),
@@ -257,36 +282,13 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
                 children: [
                   Center(
                     child: Text(
-                        showTodos
-                            ? '${numberFormatCantidades(
-                                articuloVentasMesList[i].unidadesAnyo_3,
-                              )} (${numberFormatCantidades(
-                                articuloVentasMesList[i].unidadesAnyoTodos_3,
-                              )})'
-                            : numberFormatCantidades(
-                                articuloVentasMesList[i].unidadesAnyo_3,
-                              ),
-                        textAlign: TextAlign.right),
-                  ),
-                ],
-              ),
-            ),
-            DataCell(
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Center(
-                    child: Text(
-                        showTodos
-                            ? '${numberFormatCantidades(
-                                articuloVentasMesList[i].unidadesAnyo_4,
-                              )} (${numberFormatCantidades(
-                                articuloVentasMesList[i].unidadesAnyoTodos_4,
-                              )})'
-                            : numberFormatCantidades(
-                                articuloVentasMesList[i].unidadesAnyo_4,
-                              ),
-                        textAlign: TextAlign.right),
+                      showTodos
+                          ? '${numberFormatCantidades(articuloVentasMesList[i].unidadesAnyo_4)} (${numberFormatCantidades(articuloVentasMesList[i].unidadesAnyoTodos_4)})'
+                          : numberFormatCantidades(
+                            articuloVentasMesList[i].unidadesAnyo_4,
+                          ),
+                      textAlign: TextAlign.right,
+                    ),
                   ),
                 ],
               ),
@@ -297,99 +299,108 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
     }
 
     dataRows.add(
-      DataRow(cells: [
-        DataCell(
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Center(
-                child: Text(S.of(context).articulo_show_articuloVentasMes_total,
-                    style: Theme.of(context).textTheme.titleSmall),
-              ),
-            ],
+      DataRow(
+        cells: [
+          DataCell(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Center(
+                  child: Text(
+                    S.of(context).articulo_show_articuloVentasMes_total,
+                    style: Theme.of(context).textTheme.titleSmall,
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-        DataCell(
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Center(
-                child: Text(
-                  calcularTotalAnyo(
+          DataCell(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Center(
+                  child: Text(
+                    calcularTotalAnyo(
                       anyo: 0,
                       articuloVentasMesList: articuloVentasMesList,
-                      showTodos: showTodos),
-                  textAlign: TextAlign.right,
+                      showTodos: showTodos,
+                    ),
+                    textAlign: TextAlign.right,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-        DataCell(
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Center(
-                child: Text(
-                  calcularTotalAnyo(
+          DataCell(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Center(
+                  child: Text(
+                    calcularTotalAnyo(
                       anyo: -1,
                       articuloVentasMesList: articuloVentasMesList,
-                      showTodos: showTodos),
-                  textAlign: TextAlign.right,
+                      showTodos: showTodos,
+                    ),
+                    textAlign: TextAlign.right,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-        DataCell(
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Center(
-                child: Text(
-                  calcularTotalAnyo(
+          DataCell(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Center(
+                  child: Text(
+                    calcularTotalAnyo(
                       anyo: -2,
                       articuloVentasMesList: articuloVentasMesList,
-                      showTodos: showTodos),
-                  textAlign: TextAlign.right,
+                      showTodos: showTodos,
+                    ),
+                    textAlign: TextAlign.right,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-        DataCell(
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Center(
-                child: Text(
-                  calcularTotalAnyo(
+          DataCell(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Center(
+                  child: Text(
+                    calcularTotalAnyo(
                       anyo: -3,
                       articuloVentasMesList: articuloVentasMesList,
-                      showTodos: showTodos),
-                  textAlign: TextAlign.right,
+                      showTodos: showTodos,
+                    ),
+                    textAlign: TextAlign.right,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-        DataCell(
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Center(
-                child: Text(
-                  calcularTotalAnyo(
+          DataCell(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Center(
+                  child: Text(
+                    calcularTotalAnyo(
                       anyo: -4,
                       articuloVentasMesList: articuloVentasMesList,
-                      showTodos: showTodos),
-                  textAlign: TextAlign.right,
+                      showTodos: showTodos,
+                    ),
+                    textAlign: TextAlign.right,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      ]),
+        ],
+      ),
     );
     return dataRows;
   }
@@ -457,46 +468,53 @@ class _GraficaVentasMesState extends State<GraficaVentasMes> {
                   alignment: BarChartAlignment.spaceBetween,
                   borderData: FlBorderData(
                     border: const Border.symmetric(
-                      horizontal: BorderSide(
-                        color: Color(0xFFececec),
-                      ),
+                      horizontal: BorderSide(color: Color(0xFFececec)),
                     ),
                   ),
                   titlesData: FlTitlesData(
                     topTitles: const AxisTitles(
-                        sideTitles: SideTitles(showTitles: false)),
+                      sideTitles: SideTitles(showTitles: false),
+                    ),
                     rightTitles: const AxisTitles(
-                        sideTitles: SideTitles(showTitles: false)),
+                      sideTitles: SideTitles(showTitles: false),
+                    ),
                     leftTitles: const AxisTitles(
-                      sideTitles:
-                          SideTitles(showTitles: true, reservedSize: 50),
+                      sideTitles: SideTitles(
+                        showTitles: true,
+                        reservedSize: 50,
+                      ),
                     ),
                     bottomTitles: AxisTitles(
                       sideTitles: SideTitles(
                         showTitles: true,
-                        getTitlesWidget: (value, meta) => getTiltlesMeses(
-                            widget.articuloVentasMesList, value),
+                        getTitlesWidget:
+                            (value, meta) => getTiltlesMeses(
+                              widget.articuloVentasMesList,
+                              value,
+                            ),
                       ),
                     ),
                   ),
                   gridData: FlGridData(
                     show: true,
                     drawVerticalLine: false,
-                    getDrawingHorizontalLine: (value) => const FlLine(
-                      color: Color(0xFFececec),
-                      strokeWidth: 1,
-                    ),
+                    getDrawingHorizontalLine:
+                        (value) => const FlLine(
+                          color: Color(0xFFececec),
+                          strokeWidth: 1,
+                        ),
                   ),
-                  barGroups: dataList.asMap().entries.map((e) {
-                    final index = e.key;
-                    final data = e.value;
-                    return generateBarGroup(
-                      index,
-                      data.color,
-                      data.value,
-                      data.shadowValue,
-                    );
-                  }).toList(),
+                  barGroups:
+                      dataList.asMap().entries.map((e) {
+                        final index = e.key;
+                        final data = e.value;
+                        return generateBarGroup(
+                          index,
+                          data.color,
+                          data.value,
+                          data.shadowValue,
+                        );
+                      }).toList(),
                   maxY: getMaxYValue(widget.articuloVentasMesList),
                   minY: 0,
                 ),
@@ -510,20 +528,27 @@ class _GraficaVentasMesState extends State<GraficaVentasMes> {
 
   void setDataListFromVentasMes(List<ArticuloVentasMes> articuloVentasMesList) {
     for (var i = 0; i < articuloVentasMesList.length; i++) {
-      dataList.add(BarDataArticulosMes(
+      dataList.add(
+        BarDataArticulosMes(
           Colors.green,
           articuloVentasMesList[i].unidadesAnyo,
-          articuloVentasMesList[i].unidadesAnyo_1));
+          articuloVentasMesList[i].unidadesAnyo_1,
+        ),
+      );
     }
   }
 
   Widget getTiltlesMeses(
-      List<ArticuloVentasMes> articuloVentasMesList, double value) {
+    List<ArticuloVentasMes> articuloVentasMesList,
+    double value,
+  ) {
     return Text(articuloVentasMesList[value.toInt()].mes.toString());
   }
 
   Widget getYTitles(
-      List<ArticuloVentasMes> articuloVentasMesList, double value) {
+    List<ArticuloVentasMes> articuloVentasMesList,
+    double value,
+  ) {
     var valueString = '';
     if (value != 1 &&
         value % (getMaxYValue(articuloVentasMesList) / 9).round() == 0) {
@@ -534,7 +559,8 @@ class _GraficaVentasMesState extends State<GraficaVentasMes> {
       child: Text(
         valueString,
         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            fontSize: Theme.of(context).textTheme.bodySmall?.fontSize),
+          fontSize: Theme.of(context).textTheme.bodySmall?.fontSize,
+        ),
       ),
     );
   }
@@ -554,7 +580,7 @@ class _GraficaVentasMesState extends State<GraficaVentasMes> {
       if (maxY % (maxY / 9).round() == 0) {
         return maxY.roundToDouble();
       }
-      for (var i = maxY.round();; i++) {
+      for (var i = maxY.round(); ; i++) {
         if (i % (maxY / 9).round() == 0) {
           return i.toDouble();
         }
@@ -572,11 +598,7 @@ class _GraficaVentasMesState extends State<GraficaVentasMes> {
     return BarChartGroupData(
       x: x,
       barRods: [
-        BarChartRodData(
-          toY: value.toDouble(),
-          color: color,
-          width: 6,
-        ),
+        BarChartRodData(toY: value.toDouble(), color: color, width: 6),
         BarChartRodData(
           toY: shadowValue.toDouble(),
           color: const Color(0xFFCCCCCC),

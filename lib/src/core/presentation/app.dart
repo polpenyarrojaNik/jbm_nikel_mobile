@@ -28,12 +28,10 @@ class App extends ConsumerWidget {
 
     ref.read(dioProvider)
       ..options = BaseOptions(
-        validateStatus: (status) =>
-            status != null && status >= 200 && status < 400,
+        validateStatus:
+            (status) => status != null && status >= 200 && status < 400,
       )
-      ..interceptors.add(
-        ref.read(usuarioDioInterceptorProvider),
-      );
+      ..interceptors.add(ref.read(usuarioDioInterceptorProvider));
 
     // ref.listen<Usuario?>(usuarioNotifierProvider, (_, state) {
     //   if (state == null) {

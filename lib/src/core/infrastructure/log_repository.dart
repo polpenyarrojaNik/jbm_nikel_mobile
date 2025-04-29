@@ -37,8 +37,11 @@ class LogRepository {
 
   LogRepository(this.dio, this.localDb, this.usuario);
 
-  Future<void> insetLog(
-      {required String level, required String message, String? error}) async {
+  Future<void> insetLog({
+    required String level,
+    required String message,
+    String? error,
+  }) async {
     final appLog = Log(
       level: level,
       message: message,
@@ -100,7 +103,9 @@ class LogRepository {
         return LogDTO.fromJson(json);
       } else {
         throw AppException.restApiFailure(
-            response.statusCode ?? 400, response.statusMessage ?? '');
+          response.statusCode ?? 400,
+          response.statusMessage ?? '',
+        );
       }
     } catch (e) {
       rethrow;
@@ -110,8 +115,7 @@ class LogRepository {
   Future<void> deleteLogInLocalDb({required int logId}) async {
     try {
       await (localDb.delete(localDb.logTable)
-            ..where((tbl) => tbl.id.equals(logId)))
-          .go();
+        ..where((tbl) => tbl.id.equals(logId))).go();
     } catch (e) {
       rethrow;
     }

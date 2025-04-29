@@ -34,21 +34,24 @@ String _$ClienteContactoModificacionEditPageControllerHash() =>
 
 /// See also [ClienteContactoModificacionEditPageController].
 class ClienteContactoModificacionEditPageControllerProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<
-        ClienteContactoModificacionEditPageController,
-        ContactoModificacionEditPageData> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          ClienteContactoModificacionEditPageController,
+          ContactoModificacionEditPageData
+        > {
   ClienteContactoModificacionEditPageControllerProvider(
     this.clienteModificacionParam,
   ) : super(
-          () => ClienteContactoModificacionEditPageController()
-            ..clienteModificacionParam = clienteModificacionParam,
-          from: clienteContactoModificacionEditPageControllerProvider,
-          name: r'clienteContactoModificacionEditPageControllerProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$ClienteContactoModificacionEditPageControllerHash,
-        );
+        () =>
+            ClienteContactoModificacionEditPageController()
+              ..clienteModificacionParam = clienteModificacionParam,
+        from: clienteContactoModificacionEditPageControllerProvider,
+        name: r'clienteContactoModificacionEditPageControllerProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$ClienteContactoModificacionEditPageControllerHash,
+      );
 
   final ClienteModificacionParam clienteModificacionParam;
 
@@ -70,14 +73,12 @@ class ClienteContactoModificacionEditPageControllerProvider
   FutureOr<ContactoModificacionEditPageData> runNotifierBuild(
     covariant _$ClienteContactoModificacionEditPageController notifier,
   ) {
-    return notifier.build(
-      clienteModificacionParam,
-    );
+    return notifier.build(clienteModificacionParam);
   }
 }
 
-typedef ClienteContactoModificacionEditPageControllerRef
-    = AutoDisposeAsyncNotifierProviderRef<ContactoModificacionEditPageData>;
+typedef ClienteContactoModificacionEditPageControllerRef =
+    AutoDisposeAsyncNotifierProviderRef<ContactoModificacionEditPageData>;
 
 /// See also [ClienteContactoModificacionEditPageController].
 final clienteContactoModificacionEditPageControllerProvider =
@@ -97,13 +98,13 @@ class ClienteContactoModificacionEditPageControllerFamily
 
   @override
   AutoDisposeAsyncNotifierProviderImpl<
-      ClienteContactoModificacionEditPageController,
-      ContactoModificacionEditPageData> getProviderOverride(
+    ClienteContactoModificacionEditPageController,
+    ContactoModificacionEditPageData
+  >
+  getProviderOverride(
     covariant ClienteContactoModificacionEditPageControllerProvider provider,
   ) {
-    return call(
-      provider.clienteModificacionParam,
-    );
+    return call(provider.clienteModificacionParam);
   }
 
   @override
@@ -117,8 +118,8 @@ class ClienteContactoModificacionEditPageControllerFamily
 }
 
 abstract class _$ClienteContactoModificacionEditPageController
-    extends BuildlessAutoDisposeAsyncNotifier<
-        ContactoModificacionEditPageData> {
+    extends
+        BuildlessAutoDisposeAsyncNotifier<ContactoModificacionEditPageData> {
   late final ClienteModificacionParam clienteModificacionParam;
 
   FutureOr<ContactoModificacionEditPageData> build(

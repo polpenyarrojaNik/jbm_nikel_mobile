@@ -19,24 +19,27 @@ class IconMenuBadge extends ConsumerWidget {
           icon: const Icon(Icons.menu),
         ),
         state.maybeWhen(
-            orElse: () => Container(),
-            data: (data) => data != null
-                ? Positioned(
-                    right: 18,
-                    top: 14,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      constraints: const BoxConstraints(
-                        minWidth: 8,
-                        minHeight: 8,
-                      ),
-                      child: Container(),
-                    ),
-                  )
-                : Container()),
+          orElse: () => Container(),
+          data:
+              (data) =>
+                  data != null
+                      ? Positioned(
+                        right: 18,
+                        top: 14,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          constraints: const BoxConstraints(
+                            minWidth: 8,
+                            minHeight: 8,
+                          ),
+                          child: Container(),
+                        ),
+                      )
+                      : Container(),
+        ),
       ],
     );
   }

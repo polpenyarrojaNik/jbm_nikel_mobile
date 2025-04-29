@@ -21,8 +21,9 @@ class NotificationDetailPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state =
-        ref.watch(notificationDetailScreenControllerProvider(notificationId));
+    final state = ref.watch(
+      notificationDetailScreenControllerProvider(notificationId),
+    );
     // ignore: deprecated_member_use
     return WillPopScope(
       onWillPop: () async {
@@ -32,47 +33,43 @@ class NotificationDetailPage extends ConsumerWidget {
         return true;
       },
       child: Scaffold(
-        appBar: AppBar(
-          title: Text(S.of(context).notification_detail),
-        ),
+        appBar: AppBar(title: Text(S.of(context).notification_detail)),
         body: state.when(
-          data: (notification) => SingleChildScrollView(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        dateFormatter(notification.fecha.toIso8601String(),
-                            allDay: true),
-                        style: Theme.of(context).textTheme.bodySmall,
+          data:
+              (notification) => SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            dateFormatter(
+                              notification.fecha.toIso8601String(),
+                              allDay: true,
+                            ),
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                    Markdown(
+                      onTapLink: (_, link, ___) {
+                        if (link != null) {
+                          launchUrlString(link);
+                        }
+                      },
+                      shrinkWrap: true,
+                      controller: scrollController,
+                      data: notification.mensaje,
+                    ),
+                  ],
                 ),
-                Markdown(
-                  onTapLink: (_, link, ___) {
-                    if (link != null) {
-                      launchUrlString(link);
-                    }
-                  },
-                  shrinkWrap: true,
-                  controller: scrollController,
-                  data: notification.mensaje,
-                ),
-              ],
-            ),
-          ),
-          error: (error, _) => Center(
-            child: ErrorMessageWidget(
-              error.toString(),
-            ),
-          ),
-          loading: () => const Center(
-            child: ProgressIndicatorWidget(),
-          ),
+              ),
+          error:
+              (error, _) => Center(child: ErrorMessageWidget(error.toString())),
+          loading: () => const Center(child: ProgressIndicatorWidget()),
         ),
       ),
     );

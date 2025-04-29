@@ -15,14 +15,20 @@ Future<void> deleteRemoteDatabase() async {
   try {
     final directory = await getApplicationDocumentsDirectory();
     if (await _databaseFileExist(
-        directory: directory, remoteDatabaseName: remoteDatabaseName)) {
-      File((join(directory.path, remoteDatabaseName)))
-          .deleteSync(recursive: true);
+      directory: directory,
+      remoteDatabaseName: remoteDatabaseName,
+    )) {
+      File(
+        (join(directory.path, remoteDatabaseName)),
+      ).deleteSync(recursive: true);
     }
     if (await _databaseFileExist(
-        directory: directory, remoteDatabaseName: remoteDatabaseJournalName)) {
-      File((join(directory.path, remoteDatabaseJournalName)))
-          .deleteSync(recursive: true);
+      directory: directory,
+      remoteDatabaseName: remoteDatabaseJournalName,
+    )) {
+      File(
+        (join(directory.path, remoteDatabaseJournalName)),
+      ).deleteSync(recursive: true);
     }
   } on AppException catch (e) {
     log.e(e.details);
@@ -32,7 +38,9 @@ Future<void> deleteRemoteDatabase() async {
   }
 }
 
-Future<bool> _databaseFileExist(
-    {required Directory directory, required String remoteDatabaseName}) async {
+Future<bool> _databaseFileExist({
+  required Directory directory,
+  required String remoteDatabaseName,
+}) async {
   return File((join(directory.path, remoteDatabaseName))).exists();
 }

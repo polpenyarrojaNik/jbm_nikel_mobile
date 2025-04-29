@@ -58,8 +58,9 @@ class _ExpedicionListPageListPageState
         orElse: () {},
         data: (notificationId) {
           if (notificationId != null) {
-            context.router
-                .push(NotificationDetailRoute(notificationId: notificationId));
+            context.router.push(
+              NotificationDetailRoute(notificationId: notificationId),
+            );
           }
         },
       ),
@@ -78,12 +79,11 @@ class _ExpedicionListPageListPageState
         isSearchingFirst: false,
         title: S.of(context).commonWidgets_appDrawer_expediciones,
         searchTitle: S.of(context).pedido_index_buscarPedidos,
-        onChanged: (searchText) => _debouncer.run(
-          () {
-            ref.read(expedicionSearchQueryStateProvider.notifier).state =
-                searchText;
-          },
-        ),
+        onChanged:
+            (searchText) => _debouncer.run(() {
+              ref.read(expedicionSearchQueryStateProvider.notifier).state =
+                  searchText;
+            }),
         // actionButtons: [
         //   IconButton(
         //     onPressed: () => searchFilterByEstado(),
@@ -96,12 +96,17 @@ class _ExpedicionListPageListPageState
         // ],
       ),
       body: stateSync.maybeWhen(
-        orElse: () =>
-            PedidoExpedicionListViewWidget(stateSync: stateSync, ref: ref),
-        synchronized: () => RefreshIndicator(
-          onRefresh: () => syncSalesOrderDB(ref),
-          child: PedidoExpedicionListViewWidget(stateSync: stateSync, ref: ref),
-        ),
+        orElse:
+            () =>
+                PedidoExpedicionListViewWidget(stateSync: stateSync, ref: ref),
+        synchronized:
+            () => RefreshIndicator(
+              onRefresh: () => syncSalesOrderDB(ref),
+              child: PedidoExpedicionListViewWidget(
+                stateSync: stateSync,
+                ref: ref,
+              ),
+            ),
       ),
     );
   }
@@ -117,7 +122,8 @@ class _ExpedicionListPageListPageState
     } catch (e) {
       if (mounted) {
         await context.showErrorBar(
-            content: Text(S.of(context).noSeHaPodidoSincronizar));
+          content: Text(S.of(context).noSeHaPodidoSincronizar),
+        );
       }
     }
   }
@@ -148,20 +154,23 @@ class PedidoExpedicionListViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final statePedidoVentaList =
-        ref.watch(expedicionIndexScreenControllerProvider);
+    final statePedidoVentaList = ref.watch(
+      expedicionIndexScreenControllerProvider,
+    );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         stateSync.maybeWhen(
           orElse: () => const LinearProgressIndicator(),
           synchronized: () {
-            final stateLastSyncDate =
-                ref.watch(pedidoVentaLastSyncDateProvider);
+            final stateLastSyncDate = ref.watch(
+              pedidoVentaLastSyncDateProvider,
+            );
 
             return stateLastSyncDate.when(
-              data: (fechaUltimaSync) =>
-                  UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
+              data:
+                  (fechaUltimaSync) =>
+                      UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
               error: (_, __) => Container(),
               loading: () => const ProgressIndicatorWidget(),
             );
@@ -171,19 +180,23 @@ class PedidoExpedicionListViewWidget extends StatelessWidget {
         Expanded(
           child: statePedidoVentaList.when(
             loading: () => const Center(child: ProgressIndicatorWidget()),
-            error: (error, _) =>
-                Center(child: ErrorMessageWidget(error.toString())),
-            data: (expedicionList) => expedicionList.isNotEmpty
-                ? ListView.separated(
-                    separatorBuilder: (context, i) => const Divider(),
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: expedicionList.length,
-                    itemBuilder: (context, i) => ExpedicionListaTile(
-                      expedicion: expedicionList[i],
-                    ),
-                  )
-                : const SinResultadosWidget(),
+            error:
+                (error, _) =>
+                    Center(child: ErrorMessageWidget(error.toString())),
+            data:
+                (expedicionList) =>
+                    expedicionList.isNotEmpty
+                        ? ListView.separated(
+                          separatorBuilder: (context, i) => const Divider(),
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: expedicionList.length,
+                          itemBuilder:
+                              (context, i) => ExpedicionListaTile(
+                                expedicion: expedicionList[i],
+                              ),
+                        )
+                        : const SinResultadosWidget(),
           ),
         ),
       ],

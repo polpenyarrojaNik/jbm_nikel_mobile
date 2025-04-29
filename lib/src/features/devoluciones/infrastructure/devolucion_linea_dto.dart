@@ -33,19 +33,22 @@ class DevolucionLineaDTO
       _$DevolucionLineaDTOFromJson(json);
 
   DevolucionLinea toDomain(
-      DevolucionMotivo? devolucionMotivo, DevolucionEstado? devolucionEstado) {
+    DevolucionMotivo? devolucionMotivo,
+    DevolucionEstado? devolucionEstado,
+  ) {
     return DevolucionLinea(
-        empresaId: empresaId,
-        devolucionId: devolucionId,
-        articuloId: articuloId,
-        articuloDescription: articuloDescription,
-        cantidadDevolucion: cantidadDevolucion,
-        cantidadRecibida: cantidadRecibida,
-        devolucionMotivo: devolucionMotivo,
-        devolucionEstado: devolucionEstado,
-        observaciones: observaciones,
-        lastUpdated: lastUpdated,
-        deleted: (deleted == 'S') ? true : false);
+      empresaId: empresaId,
+      devolucionId: devolucionId,
+      articuloId: articuloId,
+      articuloDescription: articuloDescription,
+      cantidadDevolucion: cantidadDevolucion,
+      cantidadRecibida: cantidadRecibida,
+      devolucionMotivo: devolucionMotivo,
+      devolucionEstado: devolucionEstado,
+      observaciones: observaciones,
+      lastUpdated: lastUpdated,
+      deleted: (deleted == 'S') ? true : false,
+    );
   }
 
   @override

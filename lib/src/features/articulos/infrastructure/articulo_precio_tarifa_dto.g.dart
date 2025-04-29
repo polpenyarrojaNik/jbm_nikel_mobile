@@ -7,29 +7,29 @@ part of 'articulo_precio_tarifa_dto.dart';
 // **************************************************************************
 
 _$ArticuloPrecioTarifaDTOImpl _$$ArticuloPrecioTarifaDTOImplFromJson(
-        Map<String, dynamic> json) =>
-    _$ArticuloPrecioTarifaDTOImpl(
-      articuloId: json['ARTICULO_ID'] as String,
-      tarifaId: json['TARIFA_ID'] as String,
-      tarifaDescripcion: json['TARIFA_DESCRIPCION'] as String?,
-      cantidadDesde: (json['CANTIDAD_DESDE'] as num).toInt(),
-      precio: (json['PRECIO'] as num).toDouble(),
-      divisaId: json['DIVISA_ID'] as String,
-      tipoPrecio: (json['TIPO_PRECIO'] as num).toInt(),
-      lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
-      deleted: json['DELETED'] as String? ?? 'N',
-    );
+  Map<String, dynamic> json,
+) => _$ArticuloPrecioTarifaDTOImpl(
+  articuloId: json['ARTICULO_ID'] as String,
+  tarifaId: json['TARIFA_ID'] as String,
+  tarifaDescripcion: json['TARIFA_DESCRIPCION'] as String?,
+  cantidadDesde: (json['CANTIDAD_DESDE'] as num).toInt(),
+  precio: (json['PRECIO'] as num).toDouble(),
+  divisaId: json['DIVISA_ID'] as String,
+  tipoPrecio: (json['TIPO_PRECIO'] as num).toInt(),
+  lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
+  deleted: json['DELETED'] as String? ?? 'N',
+);
 
 Map<String, dynamic> _$$ArticuloPrecioTarifaDTOImplToJson(
-        _$ArticuloPrecioTarifaDTOImpl instance) =>
-    <String, dynamic>{
-      'ARTICULO_ID': instance.articuloId,
-      'TARIFA_ID': instance.tarifaId,
-      'TARIFA_DESCRIPCION': instance.tarifaDescripcion,
-      'CANTIDAD_DESDE': instance.cantidadDesde,
-      'PRECIO': instance.precio,
-      'DIVISA_ID': instance.divisaId,
-      'TIPO_PRECIO': instance.tipoPrecio,
-      'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
-      'DELETED': instance.deleted,
-    };
+  _$ArticuloPrecioTarifaDTOImpl instance,
+) => <String, dynamic>{
+  'ARTICULO_ID': instance.articuloId,
+  'TARIFA_ID': instance.tarifaId,
+  'TARIFA_DESCRIPCION': instance.tarifaDescripcion,
+  'CANTIDAD_DESDE': instance.cantidadDesde,
+  'PRECIO': instance.precio,
+  'DIVISA_ID': instance.divisaId,
+  'TIPO_PRECIO': instance.tipoPrecio,
+  'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
+  'DELETED': instance.deleted,
+};

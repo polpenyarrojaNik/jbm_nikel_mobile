@@ -12,7 +12,8 @@ part of 'visita_competidor.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$VisitaCompetidor {
@@ -31,8 +32,9 @@ mixin _$VisitaCompetidor {
 /// @nodoc
 abstract class $VisitaCompetidorCopyWith<$Res> {
   factory $VisitaCompetidorCopyWith(
-          VisitaCompetidor value, $Res Function(VisitaCompetidor) then) =
-      _$VisitaCompetidorCopyWithImpl<$Res, VisitaCompetidor>;
+    VisitaCompetidor value,
+    $Res Function(VisitaCompetidor) then,
+  ) = _$VisitaCompetidorCopyWithImpl<$Res, VisitaCompetidor>;
   @useResult
   $Res call({int id, String descripcion, DateTime lastUpdate, bool deleted});
 }
@@ -57,33 +59,41 @@ class _$VisitaCompetidorCopyWithImpl<$Res, $Val extends VisitaCompetidor>
     Object? lastUpdate = null,
     Object? deleted = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      descripcion: null == descripcion
-          ? _value.descripcion
-          : descripcion // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastUpdate: null == lastUpdate
-          ? _value.lastUpdate
-          : lastUpdate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id:
+                null == id
+                    ? _value.id
+                    : id // ignore: cast_nullable_to_non_nullable
+                        as int,
+            descripcion:
+                null == descripcion
+                    ? _value.descripcion
+                    : descripcion // ignore: cast_nullable_to_non_nullable
+                        as String,
+            lastUpdate:
+                null == lastUpdate
+                    ? _value.lastUpdate
+                    : lastUpdate // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            deleted:
+                null == deleted
+                    ? _value.deleted
+                    : deleted // ignore: cast_nullable_to_non_nullable
+                        as bool,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$VisitaCompetidorImplCopyWith<$Res>
     implements $VisitaCompetidorCopyWith<$Res> {
-  factory _$$VisitaCompetidorImplCopyWith(_$VisitaCompetidorImpl value,
-          $Res Function(_$VisitaCompetidorImpl) then) =
-      __$$VisitaCompetidorImplCopyWithImpl<$Res>;
+  factory _$$VisitaCompetidorImplCopyWith(
+    _$VisitaCompetidorImpl value,
+    $Res Function(_$VisitaCompetidorImpl) then,
+  ) = __$$VisitaCompetidorImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, String descripcion, DateTime lastUpdate, bool deleted});
@@ -93,9 +103,10 @@ abstract class _$$VisitaCompetidorImplCopyWith<$Res>
 class __$$VisitaCompetidorImplCopyWithImpl<$Res>
     extends _$VisitaCompetidorCopyWithImpl<$Res, _$VisitaCompetidorImpl>
     implements _$$VisitaCompetidorImplCopyWith<$Res> {
-  __$$VisitaCompetidorImplCopyWithImpl(_$VisitaCompetidorImpl _value,
-      $Res Function(_$VisitaCompetidorImpl) _then)
-      : super(_value, _then);
+  __$$VisitaCompetidorImplCopyWithImpl(
+    _$VisitaCompetidorImpl _value,
+    $Res Function(_$VisitaCompetidorImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of VisitaCompetidor
   /// with the given fields replaced by the non-null parameter values.
@@ -107,36 +118,42 @@ class __$$VisitaCompetidorImplCopyWithImpl<$Res>
     Object? lastUpdate = null,
     Object? deleted = null,
   }) {
-    return _then(_$VisitaCompetidorImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      descripcion: null == descripcion
-          ? _value.descripcion
-          : descripcion // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastUpdate: null == lastUpdate
-          ? _value.lastUpdate
-          : lastUpdate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$VisitaCompetidorImpl(
+        id:
+            null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                    as int,
+        descripcion:
+            null == descripcion
+                ? _value.descripcion
+                : descripcion // ignore: cast_nullable_to_non_nullable
+                    as String,
+        lastUpdate:
+            null == lastUpdate
+                ? _value.lastUpdate
+                : lastUpdate // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        deleted:
+            null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                    as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$VisitaCompetidorImpl extends _VisitaCompetidor {
-  const _$VisitaCompetidorImpl(
-      {required this.id,
-      required this.descripcion,
-      required this.lastUpdate,
-      required this.deleted})
-      : super._();
+  const _$VisitaCompetidorImpl({
+    required this.id,
+    required this.descripcion,
+    required this.lastUpdate,
+    required this.deleted,
+  }) : super._();
 
   @override
   final int id;
@@ -176,15 +193,18 @@ class _$VisitaCompetidorImpl extends _VisitaCompetidor {
   @pragma('vm:prefer-inline')
   _$$VisitaCompetidorImplCopyWith<_$VisitaCompetidorImpl> get copyWith =>
       __$$VisitaCompetidorImplCopyWithImpl<_$VisitaCompetidorImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _VisitaCompetidor extends VisitaCompetidor {
-  const factory _VisitaCompetidor(
-      {required final int id,
-      required final String descripcion,
-      required final DateTime lastUpdate,
-      required final bool deleted}) = _$VisitaCompetidorImpl;
+  const factory _VisitaCompetidor({
+    required final int id,
+    required final String descripcion,
+    required final DateTime lastUpdate,
+    required final bool deleted,
+  }) = _$VisitaCompetidorImpl;
   const _VisitaCompetidor._() : super._();
 
   @override

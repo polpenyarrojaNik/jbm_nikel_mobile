@@ -9,23 +9,25 @@ import '../infrastructure/catalogo_repository.dart';
 
 part 'catalogo_search_controller.g.dart';
 
-final catalogoSearchQueryStateProvider =
-    StateProvider.autoDispose<String>((ref) {
+final catalogoSearchQueryStateProvider = StateProvider.autoDispose<String>((
+  ref,
+) {
   return '';
 });
 
-final tipoCatalogoQueryStateProvider =
-    StateProvider.autoDispose<TipoCatalogo?>((ref) {
-  return null;
-});
+final tipoCatalogoQueryStateProvider = StateProvider.autoDispose<TipoCatalogo?>(
+  (ref) {
+    return null;
+  },
+);
 final tipoPrecioCatalogoQueryStateProvider =
     StateProvider.autoDispose<TipoPrecioCatalogo?>((ref) {
-  return null;
-});
+      return null;
+    });
 final idiomaCatalogoQueryStateProvider =
     StateProvider.autoDispose<IdiomaCatalogo?>((ref) {
-  return null;
-});
+      return null;
+    });
 
 @riverpod
 class CatalogoIndexScreenController extends _$CatalogoIndexScreenController {
@@ -33,7 +35,9 @@ class CatalogoIndexScreenController extends _$CatalogoIndexScreenController {
 
   @override
   Future<List<Catalogo>> build() {
-    return ref.read(catalogoRepositoryProvider).getCatalogoList(
+    return ref
+        .read(catalogoRepositoryProvider)
+        .getCatalogoList(
           tipoCatalogo: ref.watch(tipoCatalogoQueryStateProvider),
           tipoPrecioCatalogo: ref.watch(tipoPrecioCatalogoQueryStateProvider),
           idiomaCatalogo: ref.watch(idiomaCatalogoQueryStateProvider),

@@ -15,13 +15,11 @@ import 'notification_list_dto.dart';
 
 typedef Json = Map<String, dynamic>;
 
-final notificationRepositoryProvider = Provider<NotificationRepository>(
-  (ref) {
-    final dio = ref.watch(dioProvider);
-    final user = ref.watch(usuarioNotifierProvider);
-    return NotificationRepository(dio, user);
-  },
-);
+final notificationRepositoryProvider = Provider<NotificationRepository>((ref) {
+  final dio = ref.watch(dioProvider);
+  final user = ref.watch(usuarioNotifierProvider);
+  return NotificationRepository(dio, user);
+});
 
 class NotificationRepository {
   final Dio dio;
@@ -32,17 +30,18 @@ class NotificationRepository {
   Future<List<NotificationList>> getNotificationList() async {
     try {
       final notificationList = await _remoteNotificationList(
-        requestUri: (user!.test)
-            ? Uri.http(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/notificacion',
-                {'USER_ID': user!.id},
-              )
-            : Uri.https(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/notificacion',
-                {'USER_ID': user!.id},
-              ),
+        requestUri:
+            (user!.test)
+                ? Uri.http(
+                  dotenv.get('URL', fallback: 'localhost:3001'),
+                  'api/v1/online/notificacion',
+                  {'USER_ID': user!.id},
+                )
+                : Uri.https(
+                  dotenv.get('URL', fallback: 'localhost:3001'),
+                  'api/v1/online/notificacion',
+                  {'USER_ID': user!.id},
+                ),
         jsonDataSelector: (json) => json['data'] as List<dynamic>,
         provisionalToken: user!.provisionalToken,
       );
@@ -56,17 +55,18 @@ class NotificationRepository {
   Future<Notificacion> getNotificationById(String id) async {
     try {
       final notificationDto = await _remoteNotificationById(
-        requestUri: (user!.test)
-            ? Uri.http(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/notificacion/$id',
-                {'USER_ID': user!.id},
-              )
-            : Uri.https(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/notificacion/$id',
-                {'USER_ID': user!.id},
-              ),
+        requestUri:
+            (user!.test)
+                ? Uri.http(
+                  dotenv.get('URL', fallback: 'localhost:3001'),
+                  'api/v1/online/notificacion/$id',
+                  {'USER_ID': user!.id},
+                )
+                : Uri.https(
+                  dotenv.get('URL', fallback: 'localhost:3001'),
+                  'api/v1/online/notificacion/$id',
+                  {'USER_ID': user!.id},
+                ),
         jsonDataSelector: (json) => json['data'] as Map<String, dynamic>,
         provisionalToken: user!.provisionalToken,
       );
@@ -80,17 +80,18 @@ class NotificationRepository {
   Future<String?> haveNotification(String id) async {
     try {
       final notificationId = await _remoteHaveNotification(
-        requestUri: (user!.test)
-            ? Uri.http(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/check_notificacion',
-                {'USER_ID': user!.id},
-              )
-            : Uri.https(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/check_notificacion',
-                {'USER_ID': user!.id},
-              ),
+        requestUri:
+            (user!.test)
+                ? Uri.http(
+                  dotenv.get('URL', fallback: 'localhost:3001'),
+                  'api/v1/online/check_notificacion',
+                  {'USER_ID': user!.id},
+                )
+                : Uri.https(
+                  dotenv.get('URL', fallback: 'localhost:3001'),
+                  'api/v1/online/check_notificacion',
+                  {'USER_ID': user!.id},
+                ),
         jsonDataSelector: (json) => json['data'] as Map<String, dynamic>,
         provisionalToken: user!.provisionalToken,
       );
@@ -102,10 +103,11 @@ class NotificationRepository {
     }
   }
 
-  Future<List<NotificationListDto>> _remoteNotificationList(
-      {required Uri requestUri,
-      required List<dynamic> Function(dynamic json) jsonDataSelector,
-      required String provisionalToken}) async {
+  Future<List<NotificationListDto>> _remoteNotificationList({
+    required Uri requestUri,
+    required List<dynamic> Function(dynamic json) jsonDataSelector,
+    required String provisionalToken,
+  }) async {
     try {
       final response = await dio.getUri(
         requestUri,
@@ -120,17 +122,20 @@ class NotificationRepository {
             .toList();
       } else {
         throw AppException.restApiFailure(
-            response.statusCode ?? 400, response.statusMessage ?? '');
+          response.statusCode ?? 400,
+          response.statusMessage ?? '',
+        );
       }
     } catch (e) {
       throw getApiError(e);
     }
   }
 
-  Future<NotificationDto> _remoteNotificationById(
-      {required Uri requestUri,
-      required Map<String, dynamic> Function(dynamic json) jsonDataSelector,
-      required String provisionalToken}) async {
+  Future<NotificationDto> _remoteNotificationById({
+    required Uri requestUri,
+    required Map<String, dynamic> Function(dynamic json) jsonDataSelector,
+    required String provisionalToken,
+  }) async {
     try {
       final response = await dio.getUri(
         requestUri,
@@ -143,17 +148,20 @@ class NotificationRepository {
         return NotificationDto.fromJson(data);
       } else {
         throw AppException.restApiFailure(
-            response.statusCode ?? 400, response.statusMessage ?? '');
+          response.statusCode ?? 400,
+          response.statusMessage ?? '',
+        );
       }
     } catch (e) {
       throw getApiError(e);
     }
   }
 
-  Future<String?> _remoteHaveNotification(
-      {required Uri requestUri,
-      required Map<String, dynamic> Function(dynamic json) jsonDataSelector,
-      required String provisionalToken}) async {
+  Future<String?> _remoteHaveNotification({
+    required Uri requestUri,
+    required Map<String, dynamic> Function(dynamic json) jsonDataSelector,
+    required String provisionalToken,
+  }) async {
     try {
       final response = await dio.getUri(
         requestUri,
@@ -166,7 +174,9 @@ class NotificationRepository {
         return data['notificacion_guid'] as String?;
       } else {
         throw AppException.restApiFailure(
-            response.statusCode ?? 400, response.statusMessage ?? '');
+          response.statusCode ?? 400,
+          response.statusMessage ?? '',
+        );
       }
     } catch (e) {
       throw getApiError(e);

@@ -6,8 +6,9 @@ import '../../infrastructure/visita_repository.dart';
 
 part 'provincia_search_page_controller.g.dart';
 
-final provinciasSearchQueryStateProvider =
-    StateProvider.autoDispose<String>((ref) {
+final provinciasSearchQueryStateProvider = StateProvider.autoDispose<String>((
+  ref,
+) {
   return '';
 });
 

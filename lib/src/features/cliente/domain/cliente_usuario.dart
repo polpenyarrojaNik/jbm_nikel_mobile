@@ -5,9 +5,10 @@ part 'cliente_usuario.freezed.dart';
 @freezed
 class ClienteUsuario with _$ClienteUsuario {
   const ClienteUsuario._();
-  const factory ClienteUsuario(
-      {required String clienteId,
-      required String usuarioId,
-      required DateTime lastUpdated,
-      required bool deleted}) = _ClienteUsuario;
+  const factory ClienteUsuario({
+    required String clienteId,
+    required String usuarioId,
+    required DateTime lastUpdated,
+    required bool deleted,
+  }) = _ClienteUsuario;
 }

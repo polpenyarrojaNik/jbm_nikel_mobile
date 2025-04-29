@@ -22,48 +22,52 @@ class ClienteDireccionSeleccionarPaisPage extends ConsumerWidget {
       (_, state) => state.showAlertDialogOnError(context),
     );
 
-    final value =
-        ref.watch(clienteDireccionSeleccionarPaisPageControllerProvider);
+    final value = ref.watch(
+      clienteDireccionSeleccionarPaisPageControllerProvider,
+    );
 
     return Scaffold(
       appBar: CustomSearchAppBar(
         isSearchingFirst: true,
         title: S.of(context).cliente_index_titulo,
         searchTitle: S.of(context).cliente_index_buscarClientes,
-        onChanged: (searchText) => _debouncer.run(
-          () {
-            ref
-                .read(clienteDireccionSeleccionarPaisSearchQueryStateProvider
-                    .notifier)
-                .state = searchText;
-          },
-        ),
+        onChanged:
+            (searchText) => _debouncer.run(() {
+              ref
+                  .read(
+                    clienteDireccionSeleccionarPaisSearchQueryStateProvider
+                        .notifier,
+                  )
+                  .state = searchText;
+            }),
       ),
       body: value.maybeWhen(
         orElse: () => const ProgressIndicatorWidget(),
-        data: (paisList) => ListView.separated(
-          separatorBuilder: (context, i) => const Divider(),
-          shrinkWrap: true,
-          padding: const EdgeInsets.all(16),
-          physics: const AlwaysScrollableScrollPhysics(),
-          itemCount: paisList.length,
-          itemBuilder: (context, i) => GestureDetector(
-            onTap: () => onSelectedPais(context, paisList[i]),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: Text(paisList[i].descripcion),
-                ),
-                IconButton(
-                  onPressed: () => onSelectedPais(context, paisList[i]),
-                  icon: const Icon(Icons.navigate_next),
-                )
-              ],
+        data:
+            (paisList) => ListView.separated(
+              separatorBuilder: (context, i) => const Divider(),
+              shrinkWrap: true,
+              padding: const EdgeInsets.all(16),
+              physics: const AlwaysScrollableScrollPhysics(),
+              itemCount: paisList.length,
+              itemBuilder:
+                  (context, i) => GestureDetector(
+                    onTap: () => onSelectedPais(context, paisList[i]),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: Text(paisList[i].descripcion),
+                        ),
+                        IconButton(
+                          onPressed: () => onSelectedPais(context, paisList[i]),
+                          icon: const Icon(Icons.navigate_next),
+                        ),
+                      ],
+                    ),
+                  ),
             ),
-          ),
-        ),
       ),
     );
   }

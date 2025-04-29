@@ -15,9 +15,10 @@ class AppTheme {
   }
 
   static ThemeData _createTheme(Brightness brightness) {
-    final myColorScheme = brightness == Brightness.light
-        ? AppColors().lightColorScheme
-        : AppColors().darkColorScheme;
+    final myColorScheme =
+        brightness == Brightness.light
+            ? AppColors().lightColorScheme
+            : AppColors().darkColorScheme;
     return ThemeData(
       useMaterial3: true,
       colorScheme: myColorScheme,
@@ -35,16 +36,16 @@ class AppTheme {
 class AppColors {
   static const brandColor = Color(0xFF51d126);
   ColorScheme get lightColorScheme => SeedColorScheme.fromSeeds(
-        primary: brandColor,
-        primaryKey: brandColor,
-        brightness: Brightness.light,
-        tones: FlexTones.vivid(Brightness.light),
-      );
+    primary: brandColor,
+    primaryKey: brandColor,
+    brightness: Brightness.light,
+    tones: FlexTones.vivid(Brightness.light),
+  );
 
   ColorScheme get darkColorScheme => SeedColorScheme.fromSeeds(
-        primaryContainer: brandColor,
-        primaryKey: brandColor,
-        brightness: Brightness.dark,
-        tones: FlexTones.vivid(Brightness.dark),
-      );
+    primaryContainer: brandColor,
+    primaryKey: brandColor,
+    brightness: Brightness.dark,
+    tones: FlexTones.vivid(Brightness.dark),
+  );
 }

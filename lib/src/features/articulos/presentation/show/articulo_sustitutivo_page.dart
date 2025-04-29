@@ -13,8 +13,11 @@ import '../../infrastructure/articulo_repository.dart';
 
 @RoutePage()
 class ArticuloSustitutivoPage extends ConsumerWidget {
-  const ArticuloSustitutivoPage(
-      {super.key, required this.articuloId, required this.description});
+  const ArticuloSustitutivoPage({
+    super.key,
+    required this.articuloId,
+    required this.description,
+  });
 
   final String articuloId;
   final String description;
@@ -28,31 +31,29 @@ class ArticuloSustitutivoPage extends ConsumerWidget {
       ),
       body: Column(
         children: [
-          HeaderDatosRelacionados(
-            entityId: articuloId,
-            subtitle: description,
-          ),
+          HeaderDatosRelacionados(entityId: articuloId, subtitle: description),
           gapH8,
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data: (articuloSustitutivoList) =>
-                (articuloSustitutivoList.isNotEmpty)
-                    ? Expanded(
-                        child: ListView.separated(
-                          itemCount: articuloSustitutivoList.length,
-                          itemBuilder: (context, i) => ArticuloSustitutivoTile(
-                            articuloSustitutivo: articuloSustitutivoList[i],
+            data:
+                (articuloSustitutivoList) =>
+                    (articuloSustitutivoList.isNotEmpty)
+                        ? Expanded(
+                          child: ListView.separated(
+                            itemCount: articuloSustitutivoList.length,
+                            itemBuilder:
+                                (context, i) => ArticuloSustitutivoTile(
+                                  articuloSustitutivo:
+                                      articuloSustitutivoList[i],
+                                ),
+                            separatorBuilder: (context, i) => const Divider(),
                           ),
-                          separatorBuilder: (context, i) => const Divider(),
+                        )
+                        : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [Text(S.of(context).sinResultados)],
                         ),
-                      )
-                    : Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(S.of(context).sinResultados),
-                        ],
-                      ),
           ),
         ],
       ),

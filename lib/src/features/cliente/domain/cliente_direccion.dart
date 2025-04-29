@@ -30,7 +30,8 @@ class ClienteDireccion with _$ClienteDireccion {
   }) = _ClienteDireccion;
 
   factory ClienteDireccion.fromClienteDireccionImp(
-      ClienteDireccionImp clienteDireccionImp) {
+    ClienteDireccionImp clienteDireccionImp,
+  ) {
     return ClienteDireccion(
       clienteId: clienteDireccionImp.clienteId,
       direccionId: clienteDireccionImp.direccionId,

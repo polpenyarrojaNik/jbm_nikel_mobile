@@ -9,21 +9,26 @@ import '../../../core/exceptions/app_exception.dart';
 part 'splash_page_controller.freezed.dart';
 
 final splashPageControllerProvider = StateNotifierProvider.autoDispose<
-        SplashPageController, SplashControllerState>(
-    (ref) => SplashPageController(ref.watch(initDatabaseServiceProvider)));
+  SplashPageController,
+  SplashControllerState
+>((ref) => SplashPageController(ref.watch(initDatabaseServiceProvider)));
 
 @freezed
 class SplashControllerState with _$SplashControllerState {
   const SplashControllerState._();
   const factory SplashControllerState.downloadDatabase(
-      int lastScehmaVersion, int newScehmaVersion) = _downloadDatabase;
+    int lastScehmaVersion,
+    int newScehmaVersion,
+  ) = _downloadDatabase;
   const factory SplashControllerState.loading() = _loading;
 
   const factory SplashControllerState.initial() = _initial;
   const factory SplashControllerState.notDownloaded() = _notDownloaded;
 
-  const factory SplashControllerState.error(Object error,
-      {StackTrace? stackTrace}) = _error;
+  const factory SplashControllerState.error(
+    Object error, {
+    StackTrace? stackTrace,
+  }) = _error;
   const factory SplashControllerState.data() = _data;
 }
 
@@ -31,7 +36,7 @@ class SplashPageController extends StateNotifier<SplashControllerState> {
   final InitDatabaseService _initDatabaseService;
 
   SplashPageController(this._initDatabaseService)
-      : super(const SplashControllerState.initial()) {
+    : super(const SplashControllerState.initial()) {
     initializeApp();
   }
 
@@ -46,7 +51,9 @@ class SplashPageController extends StateNotifier<SplashControllerState> {
           final getLastDatabaseSchema =
               await _initDatabaseService.getSchemaVersionFromPreferences();
           state = SplashControllerState.downloadDatabase(
-              getLastDatabaseSchema, databaseRelease);
+            getLastDatabaseSchema,
+            databaseRelease,
+          );
 
           await _initDatabaseService.downloadInitDatabase();
         }

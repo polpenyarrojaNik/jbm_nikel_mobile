@@ -7,9 +7,11 @@ import '../../../core/exceptions/app_exception.dart';
 part 'delete_local_database_controller.freezed.dart';
 
 final deleteLocalDatabaseControllerProvider = StateNotifierProvider.autoDispose<
-        DeleteLocalDatabaseController, DeleteLocalDatabaseControllerState>(
-    (ref) =>
-        DeleteLocalDatabaseController(ref.watch(settingsRepositoryProvider)));
+  DeleteLocalDatabaseController,
+  DeleteLocalDatabaseControllerState
+>(
+  (ref) => DeleteLocalDatabaseController(ref.watch(settingsRepositoryProvider)),
+);
 
 @freezed
 class DeleteLocalDatabaseControllerState
@@ -19,8 +21,10 @@ class DeleteLocalDatabaseControllerState
 
   const factory DeleteLocalDatabaseControllerState.initial() = _initial;
 
-  const factory DeleteLocalDatabaseControllerState.error(Object error,
-      {StackTrace? stackTrace}) = _error;
+  const factory DeleteLocalDatabaseControllerState.error(
+    Object error, {
+    StackTrace? stackTrace,
+  }) = _error;
   const factory DeleteLocalDatabaseControllerState.data(bool deleted) = _data;
 }
 
@@ -29,7 +33,7 @@ class DeleteLocalDatabaseController
   final SettingsRepository _settingsRepository;
 
   DeleteLocalDatabaseController(this._settingsRepository)
-      : super(const DeleteLocalDatabaseControllerState.initial());
+    : super(const DeleteLocalDatabaseControllerState.initial());
 
   Future<void> deleteLocalDatabase() async {
     try {
@@ -39,8 +43,10 @@ class DeleteLocalDatabaseController
 
       state = const DeleteLocalDatabaseControllerState.data(true);
     } on AppException catch (e, stackTrace) {
-      state =
-          DeleteLocalDatabaseControllerState.error(e, stackTrace: stackTrace);
+      state = DeleteLocalDatabaseControllerState.error(
+        e,
+        stackTrace: stackTrace,
+      );
     } catch (e) {
       rethrow;
     }

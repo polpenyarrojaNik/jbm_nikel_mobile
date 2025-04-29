@@ -78,52 +78,56 @@ class _SelecionarCantidadPageState
 
     descuento1Controller.text = numberFormatCantidades(descuento1);
     // descuento2Controller.text = numberFormatCantidades(descuento2);
-    unitsController.selection =
-        TextSelection(baseOffset: 0, extentOffset: unitsController.text.length);
+    unitsController.selection = TextSelection(
+      baseOffset: 0,
+      extentOffset: unitsController.text.length,
+    );
 
     if (widget.seleccionarCantidadParam.addNewLineaDesdeArticulo) {
-      Future.microtask(() => ref.invalidate(
-          articuloProvider(widget.seleccionarCantidadParam.articuloId)));
+      Future.microtask(
+        () => ref.invalidate(
+          articuloProvider(widget.seleccionarCantidadParam.articuloId),
+        ),
+      );
     }
   }
 
   @override
   Widget build(BuildContext context) {
     if (widget.seleccionarCantidadParam.createdFromCliente ?? false) {
-      final clienteState =
-          ref.watch(clienteProvider(widget.seleccionarCantidadParam.clienteId));
+      final clienteState = ref.watch(
+        clienteProvider(widget.seleccionarCantidadParam.clienteId),
+      );
       clienteState.whenData((value) => setClienteValue(newClienteValue: value));
     } else {
       ref.listen<AsyncValue<Cliente>>(
         clienteProvider(widget.seleccionarCantidadParam.clienteId),
-        (_, state) => state.whenData(
-          (value) => setClienteValue(newClienteValue: value),
-        ),
+        (_, state) =>
+            state.whenData((value) => setClienteValue(newClienteValue: value)),
       );
     }
 
     ref.listen<AsyncValue<Articulo>>(
       articuloProvider(articuloId!),
-      (_, state) => state.whenData(
-        (value) => setArtiucloValue(newArticuloValue: value),
-      ),
+      (_, state) =>
+          state.whenData((value) => setArtiucloValue(newArticuloValue: value)),
     );
 
-    ref.listen<ArticuloPrecioControllerState>(
-      articuloPrecioProvider,
-      (_, state) {
-        state.maybeWhen(
-          orElse: () => null,
-          data: (newArticuloPrecio) =>
-              setArticuloPrecioValue(newArticuloPrecio),
-        );
-      },
-    );
+    ref.listen<ArticuloPrecioControllerState>(articuloPrecioProvider, (
+      _,
+      state,
+    ) {
+      state.maybeWhen(
+        orElse: () => null,
+        data: (newArticuloPrecio) => setArticuloPrecioValue(newArticuloPrecio),
+      );
+    });
     final state = ref.watch(articuloPrecioProvider);
     return Scaffold(
       appBar: AppBar(
-        title:
-            Text(S.of(context).pedido_edit_selectQuantity_seleccionarCantidad),
+        title: Text(
+          S.of(context).pedido_edit_selectQuantity_seleccionarCantidad,
+        ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -131,9 +135,9 @@ class _SelecionarCantidadPageState
           if (articulo != null)
             _ArticuloInfo(
               articulo: articulo!,
-              setArticuloSustitutivo: (articuloSusititutivoId) => setState(
-                () => articuloId = articuloSusititutivoId,
-              ),
+              setArticuloSustitutivo:
+                  (articuloSusititutivoId) =>
+                      setState(() => articuloId = articuloSusititutivoId),
             ),
           if (articuloPrecio != null)
             TotalQuantityWidget(
@@ -150,7 +154,9 @@ class _SelecionarCantidadPageState
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 8),
+                        horizontal: 16,
+                        vertical: 8,
+                      ),
                       child: FormBuilder(
                         key: formKeyCantidad,
                         autovalidateMode: AutovalidateMode.disabled,
@@ -251,34 +257,48 @@ class _SelecionarCantidadPageState
                     if (articuloPrecio != null)
                       state.when(
                         initial: () => Container(),
-                        error: (error, _) => Center(
-                          child: ErrorMessageWidget(
-                            error.toString(),
-                          ),
-                        ),
-                        loading: () =>
-                            const Center(child: CircularProgressIndicator()),
-                        data: (_) => (articuloPrecio != null)
-                            ? _ArticuloPrecioContainer(
-                                articuloId:
-                                    widget.seleccionarCantidadParam.articuloId,
-                                clienteId:
-                                    widget.seleccionarCantidadParam.clienteId,
-                                formKey: formKeyArticuloPrecio,
-                                precio: precio,
-                                tipoPrecio: articuloPrecio!.precio.tipoPrecio,
-                                precioController: precioController,
-                                descuento1Controller: descuento1Controller,
-                                descuento2: descuento2,
-                                descuento3: articuloPrecio!.descuento3,
-                                setPrecio: (value) =>
-                                    setState(() => precio = value),
-                                setDescuento1: (value) =>
-                                    setState(() => descuento1 = value),
-                                setDescuento2: (value) =>
-                                    setState(() => descuento2 = value),
-                              )
-                            : Container(),
+                        error:
+                            (error, _) => Center(
+                              child: ErrorMessageWidget(error.toString()),
+                            ),
+                        loading:
+                            () => const Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                        data:
+                            (_) =>
+                                (articuloPrecio != null)
+                                    ? _ArticuloPrecioContainer(
+                                      articuloId:
+                                          widget
+                                              .seleccionarCantidadParam
+                                              .articuloId,
+                                      clienteId:
+                                          widget
+                                              .seleccionarCantidadParam
+                                              .clienteId,
+                                      formKey: formKeyArticuloPrecio,
+                                      precio: precio,
+                                      tipoPrecio:
+                                          articuloPrecio!.precio.tipoPrecio,
+                                      precioController: precioController,
+                                      descuento1Controller:
+                                          descuento1Controller,
+                                      descuento2: descuento2,
+                                      descuento3: articuloPrecio!.descuento3,
+                                      setPrecio:
+                                          (value) =>
+                                              setState(() => precio = value),
+                                      setDescuento1:
+                                          (value) => setState(
+                                            () => descuento1 = value,
+                                          ),
+                                      setDescuento2:
+                                          (value) => setState(
+                                            () => descuento2 = value,
+                                          ),
+                                    )
+                                    : Container(),
                       ),
                   ],
                 ),
@@ -287,10 +307,16 @@ class _SelecionarCantidadPageState
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => (articulo != null && cliente != null)
-            ? navigateToCrearPedido(
-                context, articuloPrecio!, articulo!, cliente!)
-            : null,
+        onPressed:
+            () =>
+                (articulo != null && cliente != null)
+                    ? navigateToCrearPedido(
+                      context,
+                      articuloPrecio!,
+                      articulo!,
+                      cliente!,
+                    )
+                    : null,
         child: const Icon(Icons.check),
       ),
     );
@@ -305,34 +331,41 @@ class _SelecionarCantidadPageState
     if (context.mounted &&
         formKeyCantidad.currentState!.saveAndValidate() &&
         formKeyArticuloPrecio.currentState!.saveAndValidate()) {
-      final importeLinea =
-          ref.read(pedidoVentaRepositoryProvider).getTotalLinea(
-                precio: Precio(
-                    precio: precio.toMoney(currencyId: articuloPrecio.divisaId),
-                    tipoPrecio: articuloPrecio.precio.tipoPrecio),
-                cantidad: totalQuantity,
-                descuento1: descuento1,
-                descuento2: articuloPrecio.descuento2,
-                descuento3: articuloPrecio.descuento3,
-              );
+      final importeLinea = ref
+          .read(pedidoVentaRepositoryProvider)
+          .getTotalLinea(
+            precio: Precio(
+              precio: precio.toMoney(currencyId: articuloPrecio.divisaId),
+              tipoPrecio: articuloPrecio.precio.tipoPrecio,
+            ),
+            cantidad: totalQuantity,
+            descuento1: descuento1,
+            descuento2: articuloPrecio.descuento2,
+            descuento3: articuloPrecio.descuento3,
+          );
 
       final minimumPrice = await ref
           .read(pedidoVentaRepositoryProvider)
-          .checkMinimumPrice(articulo.id, importeLinea, totalQuantity,
-              articuloPrecio.divisaId);
+          .checkMinimumPrice(
+            articulo.id,
+            importeLinea,
+            totalQuantity,
+            articuloPrecio.divisaId,
+          );
       if (minimumPrice == null) {
         final linea = PedidoVentaLinea(
           empresaId: widget.seleccionarCantidadParam.pedidoVentaParam.empresaId,
           pedidoId: widget.seleccionarCantidadParam.pedidoVentaParam.pedidoId,
-          pedidoVentaLineaId:
-              (widget.seleccionarCantidadParam.posicionLinea + 1)
-                  .toString()
-                  .padLeft(3, '0'),
+          pedidoVentaLineaId: (widget.seleccionarCantidadParam.posicionLinea +
+                  1)
+              .toString()
+              .padLeft(3, '0'),
           pedidoVentaAppId:
               widget.seleccionarCantidadParam.pedidoVentaParam.pedidoAppId,
           articuloId: articulo.id,
-          articuloDescription:
-              getDescriptionArticuloInLocalLanguage(articulo: articulo),
+          articuloDescription: getDescriptionArticuloInLocalLanguage(
+            articulo: articulo,
+          ),
           cantidad: totalQuantity,
           precioDivisa: precio.toMoney(currencyId: articuloPrecio.divisaId),
           divisaId: articuloPrecio.divisaId,
@@ -353,9 +386,11 @@ class _SelecionarCantidadPageState
         if (!widget.seleccionarCantidadParam.addNewLineaDesdeArticulo) {
           if (widget.seleccionarCantidadParam.isUpdatingLinea()) {
             await ref
-                .read(pedidoVentaEditPageControllerProvider(
-                        widget.seleccionarCantidadParam.pedidoVentaParam)
-                    .notifier)
+                .read(
+                  pedidoVentaEditPageControllerProvider(
+                    widget.seleccionarCantidadParam.pedidoVentaParam,
+                  ).notifier,
+                )
                 .updatePedidoVentaLinea(
                   pedidoVentaLinea: linea,
                   posicionActualizar:
@@ -363,26 +398,30 @@ class _SelecionarCantidadPageState
                 );
           } else {
             await ref
-                .read(pedidoVentaEditPageControllerProvider(
-                        widget.seleccionarCantidadParam.pedidoVentaParam)
-                    .notifier)
-                .addPedidoVentaLinea(
-                  newLinea: linea,
-                );
+                .read(
+                  pedidoVentaEditPageControllerProvider(
+                    widget.seleccionarCantidadParam.pedidoVentaParam,
+                  ).notifier,
+                )
+                .addPedidoVentaLinea(newLinea: linea);
           }
         }
 
         if (context.mounted &&
             widget.seleccionarCantidadParam.addNewLineaDesdeArticulo) {
           await context.router.pushAndPopUntil(
-              PedidoVentaEditRoute(
-                  pedidoAppId: linea.pedidoVentaAppId,
-                  addLineaDesdeArticulo: linea,
-                  isLocal:
-                      widget.seleccionarCantidadParam.pedidoVentaParam.isLocal),
-              predicate: (route) =>
-                  route.settings.name ==
-                  ArticuloListaRoute(isSearchArticuloForForm: false).routeName);
+            PedidoVentaEditRoute(
+              pedidoAppId: linea.pedidoVentaAppId,
+              addLineaDesdeArticulo: linea,
+              isLocal: widget.seleccionarCantidadParam.pedidoVentaParam.isLocal,
+            ),
+            predicate:
+                (route) =>
+                    route.settings.name ==
+                    ArticuloListaRoute(
+                      isSearchArticuloForForm: false,
+                    ).routeName,
+          );
         } else {
           if (context.mounted) {
             await context.router.maybePop();
@@ -391,8 +430,9 @@ class _SelecionarCantidadPageState
       } else {
         if (context.mounted) {
           await context.showErrorBar(
-              content: Text(S.of(context).precioNoPuedeSerMenorAlPrecioMinimo),
-              duration: const Duration(seconds: 5));
+            content: Text(S.of(context).precioNoPuedeSerMenorAlPrecioMinimo),
+            duration: const Duration(seconds: 5),
+          );
         }
       }
     }
@@ -400,20 +440,22 @@ class _SelecionarCantidadPageState
 
   void setArtiucloValue({Articulo? newArticuloValue}) {
     if (newArticuloValue != null) {
-      setState(
-        () {
-          articulo = newArticuloValue;
-          if (!widget.seleccionarCantidadParam.isUpdatingLinea()) {
-            totalQuantity = newArticuloValue.ventaMinimo;
-            units = newArticuloValue.ventaMinimo;
-            unitsController.text = units.toString();
-            unitsController.selection = TextSelection(
-                baseOffset: 0, extentOffset: unitsController.text.length);
-          }
-        },
-      );
+      setState(() {
+        articulo = newArticuloValue;
+        if (!widget.seleccionarCantidadParam.isUpdatingLinea()) {
+          totalQuantity = newArticuloValue.ventaMinimo;
+          units = newArticuloValue.ventaMinimo;
+          unitsController.text = units.toString();
+          unitsController.selection = TextSelection(
+            baseOffset: 0,
+            extentOffset: unitsController.text.length,
+          );
+        }
+      });
 
-      ref.read(articuloPrecioProvider.notifier).getArticuloPrecio(
+      ref
+          .read(articuloPrecioProvider.notifier)
+          .getArticuloPrecio(
             articuloId: articulo!.id,
             clienteId: widget.seleccionarCantidadParam.clienteId,
             cantidad: totalQuantity,
@@ -423,11 +465,9 @@ class _SelecionarCantidadPageState
 
   void setClienteValue({Cliente? newClienteValue}) {
     if (newClienteValue != null) {
-      setState(
-        () {
-          cliente = newClienteValue;
-        },
-      );
+      setState(() {
+        cliente = newClienteValue;
+      });
     }
   }
 
@@ -453,7 +493,8 @@ class _SelecionarCantidadPageState
           precio =
               newArticuloPrecio.precio.precio.amount.toDecimal().toDouble();
           precioController.text = numberFormatDecimal(
-              newArticuloPrecio.precio.precio.amount.toDecimal().toDouble());
+            newArticuloPrecio.precio.precio.amount.toDecimal().toDouble(),
+          );
 
           descuento1 = newArticuloPrecio.descuento1;
           descuento1Controller.text = numberFormatCantidades(descuento1);
@@ -468,7 +509,9 @@ class _SelecionarCantidadPageState
   void setTotalQuantity() {
     final quantity = units + unitsCaja + unitsSubcaja + unitsPalet;
     setState(() => totalQuantity = quantity);
-    ref.read(articuloPrecioProvider.notifier).getArticuloPrecio(
+    ref
+        .read(articuloPrecioProvider.notifier)
+        .getArticuloPrecio(
           articuloId: articulo!.id,
           clienteId: widget.seleccionarCantidadParam.clienteId,
           cantidad: totalQuantity,
@@ -477,8 +520,10 @@ class _SelecionarCantidadPageState
 }
 
 class _ArticuloInfo extends ConsumerWidget {
-  const _ArticuloInfo(
-      {required this.articulo, required this.setArticuloSustitutivo});
+  const _ArticuloInfo({
+    required this.articulo,
+    required this.setArticuloSustitutivo,
+  });
 
   final Articulo articulo;
   final Function(String articuloSusititutivoId) setArticuloSustitutivo;
@@ -509,51 +554,56 @@ class _ArticuloInfo extends ConsumerWidget {
                     ),
                   ],
                 ),
-                Text(
-                  getDescriptionArticuloInLocalLanguage(articulo: articulo),
-                ),
+                Text(getDescriptionArticuloInLocalLanguage(articulo: articulo)),
                 state.when(
-                  data: (articuloSustitutivoList) => (articuloSustitutivoList
-                          .isNotEmpty)
-                      ? Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(S
-                                .of(context)
-                                .pedido_edit_selectQuantity_artiuclosSustitutivos),
-                            gapH4,
-                            SizedBox(
-                              height: 20,
-                              child: ListView.separated(
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                scrollDirection: Axis.horizontal,
-                                itemBuilder: (context, i) => GestureDetector(
-                                  onTap: () => setArticuloSustitutivo(
-                                      articuloSustitutivoList[i]
-                                          .articuloSustitutivoId),
-                                  child: Text(
-                                    articuloSustitutivoList[i]
-                                        .articuloSustitutivoId,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyMedium
-                                        ?.copyWith(
-                                          decoration: TextDecoration.underline,
-                                        ),
+                  data:
+                      (articuloSustitutivoList) =>
+                          (articuloSustitutivoList.isNotEmpty)
+                              ? Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    S
+                                        .of(context)
+                                        .pedido_edit_selectQuantity_artiuclosSustitutivos,
                                   ),
-                                ),
-                                separatorBuilder: (context, i) =>
-                                    const Text(','),
-                                itemCount: articuloSustitutivoList.length,
-                              ),
-                            ),
-                          ],
-                        )
-                      : Container(),
+                                  gapH4,
+                                  SizedBox(
+                                    height: 20,
+                                    child: ListView.separated(
+                                      shrinkWrap: true,
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
+                                      scrollDirection: Axis.horizontal,
+                                      itemBuilder:
+                                          (context, i) => GestureDetector(
+                                            onTap:
+                                                () => setArticuloSustitutivo(
+                                                  articuloSustitutivoList[i]
+                                                      .articuloSustitutivoId,
+                                                ),
+                                            child: Text(
+                                              articuloSustitutivoList[i]
+                                                  .articuloSustitutivoId,
+                                              style: Theme.of(
+                                                context,
+                                              ).textTheme.bodyMedium?.copyWith(
+                                                decoration:
+                                                    TextDecoration.underline,
+                                              ),
+                                            ),
+                                          ),
+                                      separatorBuilder:
+                                          (context, i) => const Text(','),
+                                      itemCount: articuloSustitutivoList.length,
+                                    ),
+                                  ),
+                                ],
+                              )
+                              : Container(),
                   error: (error, _) => ErrorMessageWidget(error.toString()),
                   loading: () => const ProgressIndicatorWidget(),
-                )
+                ),
               ],
             ),
           ),
@@ -563,7 +613,8 @@ class _ArticuloInfo extends ConsumerWidget {
   }
 
   String getStringArticulosSusitotutivos(
-      List<ArticuloSustitutivo> articuloSustitutivoList) {
+    List<ArticuloSustitutivo> articuloSustitutivoList,
+  ) {
     var sustitutivoStr = '';
 
     for (var i = 0; i < articuloSustitutivoList.length; i++) {
@@ -611,18 +662,16 @@ class TotalQuantityWidget extends ConsumerWidget {
                     Text(
                       S.of(context).pedido_edit_selectQuantity_cantidad,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color:
-                              Theme.of(context).colorScheme.onPrimaryContainer),
+                        color: Theme.of(context).colorScheme.onPrimaryContainer,
+                      ),
                     ),
                     gapH8,
                     Text(
                       '${numberFormatCantidades(totalQuantity)} ${S.of(context).unidad}',
                       style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                            color: Theme.of(context)
-                                .colorScheme
-                                .onPrimaryContainer,
-                          ),
-                    )
+                        color: Theme.of(context).colorScheme.onPrimaryContainer,
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -638,10 +687,8 @@ class TotalQuantityWidget extends ConsumerWidget {
                     Text(
                       S.of(context).pedido_edit_selectQuantity_importe,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: Theme.of(context)
-                                .colorScheme
-                                .onPrimaryContainer,
-                          ),
+                        color: Theme.of(context).colorScheme.onPrimaryContainer,
+                      ),
                     ),
                     gapH8,
                     Text(
@@ -649,9 +696,11 @@ class TotalQuantityWidget extends ConsumerWidget {
                           .read(pedidoVentaRepositoryProvider)
                           .getTotalLinea(
                             precio: Precio(
-                                precio: precio.toMoney(
-                                    currencyId: articuloPrecio.divisaId),
-                                tipoPrecio: articuloPrecio.precio.tipoPrecio),
+                              precio: precio.toMoney(
+                                currencyId: articuloPrecio.divisaId,
+                              ),
+                              tipoPrecio: articuloPrecio.precio.tipoPrecio,
+                            ),
                             cantidad: totalQuantity,
                             descuento1: descuento1,
                             descuento2: descuento2,
@@ -659,11 +708,9 @@ class TotalQuantityWidget extends ConsumerWidget {
                           )
                           .toString(),
                       style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                            color: Theme.of(context)
-                                .colorScheme
-                                .onPrimaryContainer,
-                          ),
-                    )
+                        color: Theme.of(context).colorScheme.onPrimaryContainer,
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -704,10 +751,9 @@ class _UnitsFormField extends StatelessWidget {
           controller: unitsController,
           decoration: InputDecoration(
             labelText: S.of(context).pedido_edit_selectQuantity_unidades,
-            labelStyle: Theme.of(context)
-                .inputDecorationTheme
-                .labelStyle
-                ?.copyWith(fontSize: 9),
+            labelStyle: Theme.of(
+              context,
+            ).inputDecorationTheme.labelStyle?.copyWith(fontSize: 9),
           ),
           validator: (value) => validateQuantity(context, value),
           onChanged: (value) {
@@ -720,14 +766,18 @@ class _UnitsFormField extends StatelessWidget {
               setUnitsQuantity(0);
             }
           },
-          onTap: () => unitsController.selection = TextSelection(
-              baseOffset: 0, extentOffset: unitsController.text.length),
+          onTap:
+              () =>
+                  unitsController.selection = TextSelection(
+                    baseOffset: 0,
+                    extentOffset: unitsController.text.length,
+                  ),
         ),
         gapH4,
         Text(
-            'x${numberFormatCantidades(ventaMultiplo)} ${S.of(context).unidad}',
-            style:
-                Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 9)),
+          'x${numberFormatCantidades(ventaMultiplo)} ${S.of(context).unidad}',
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 9),
+        ),
       ],
     );
   }
@@ -739,8 +789,10 @@ class _UnitsFormField extends StatelessWidget {
         setUnitsQuantity(ventaMinimo);
         return '${S.of(context).pedido_edit_selectQuantity_minimo} $ventaMinimo ${S.of(context).unidad}';
       } else if (quantity % ventaMultiplo != 0) {
-        final multiploMasCercano =
-            setMultiploMasCercano(quantity, ventaMultiplo);
+        final multiploMasCercano = setMultiploMasCercano(
+          quantity,
+          ventaMultiplo,
+        );
 
         unitsController.text = multiploMasCercano.toString();
 
@@ -795,10 +847,9 @@ class _CajaUnitsFormField extends StatelessWidget {
           controller: cajaController,
           decoration: InputDecoration(
             labelText: S.of(context).pedido_edit_selectQuantity_cajas,
-            labelStyle: Theme.of(context)
-                .inputDecorationTheme
-                .labelStyle
-                ?.copyWith(fontSize: 9),
+            labelStyle: Theme.of(
+              context,
+            ).inputDecorationTheme.labelStyle?.copyWith(fontSize: 9),
           ),
           textAlign: TextAlign.right,
           validator: (value) => validateQuantityCaja(context, value),
@@ -813,13 +864,18 @@ class _CajaUnitsFormField extends StatelessWidget {
               setUnitCajaQuantity(0);
             }
           },
-          onTap: () => cajaController.selection = TextSelection(
-              baseOffset: 0, extentOffset: cajaController.text.length),
+          onTap:
+              () =>
+                  cajaController.selection = TextSelection(
+                    baseOffset: 0,
+                    extentOffset: cajaController.text.length,
+                  ),
         ),
         gapH4,
         Text(
-            'x${numberFormatCantidades(unidadesPorCaja)} ${S.of(context).unidad}',
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 9))
+          'x${numberFormatCantidades(unidadesPorCaja)} ${S.of(context).unidad}',
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 9),
+        ),
       ],
     );
   }
@@ -831,8 +887,10 @@ class _CajaUnitsFormField extends StatelessWidget {
         setUnitCajaQuantity(ventaMinimo % unidadesPorCaja);
         return '${S.of(context).pedido_edit_selectQuantity_minimo} $ventaMinimo ${S.of(context).unidad}';
       } else if ((quantity * unidadesPorCaja) % ventaMultiplo != 0) {
-        final multiploMasCercano =
-            setMultiploMasCercanoCaja(quantity, ventaMultiplo);
+        final multiploMasCercano = setMultiploMasCercanoCaja(
+          quantity,
+          ventaMultiplo,
+        );
         cajaController.text = multiploMasCercano.toString();
 
         setUnitCajaQuantity(multiploMasCercano * unidadesPorCaja);
@@ -883,10 +941,9 @@ class _SubcajaUnitsFormField extends StatelessWidget {
           controller: subcajaController,
           decoration: InputDecoration(
             labelText: S.of(context).pedido_edit_selectQuantity_subcajas,
-            labelStyle: Theme.of(context)
-                .inputDecorationTheme
-                .labelStyle
-                ?.copyWith(fontSize: 9),
+            labelStyle: Theme.of(
+              context,
+            ).inputDecorationTheme.labelStyle?.copyWith(fontSize: 9),
           ),
           textAlign: TextAlign.right,
           validator: (value) => validateQuantitySubcaja(context, value),
@@ -901,14 +958,18 @@ class _SubcajaUnitsFormField extends StatelessWidget {
               setUnitSubcajaQuantity(0);
             }
           },
-          onTap: () => subcajaController.selection = TextSelection(
-              baseOffset: 0, extentOffset: subcajaController.text.length),
+          onTap:
+              () =>
+                  subcajaController.selection = TextSelection(
+                    baseOffset: 0,
+                    extentOffset: subcajaController.text.length,
+                  ),
         ),
         gapH4,
         Text(
           'x${numberFormatCantidades(unidadesPorSubcaja)} ${S.of(context).unidad}',
           style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 9),
-        )
+        ),
       ],
     );
   }
@@ -920,8 +981,10 @@ class _SubcajaUnitsFormField extends StatelessWidget {
         setUnitSubcajaQuantity(ventaMinimo % unidadesPorSubcaja);
         return '${S.of(context).pedido_edit_selectQuantity_minimo} $ventaMinimo ${S.of(context).unidad}';
       } else if ((quantity * unidadesPorSubcaja) % ventaMultiplo != 0) {
-        final multiploMasCercano =
-            setMultiploMasCercanoSubcaja(quantity, ventaMultiplo);
+        final multiploMasCercano = setMultiploMasCercanoSubcaja(
+          quantity,
+          ventaMultiplo,
+        );
         subcajaController.text = multiploMasCercano.toString();
 
         setUnitSubcajaQuantity(multiploMasCercano * unidadesPorSubcaja);
@@ -973,10 +1036,9 @@ class _PaletUnitsFormField extends StatelessWidget {
           controller: paletController,
           decoration: InputDecoration(
             labelText: S.of(context).pedido_edit_selectQuantity_pallets,
-            labelStyle: Theme.of(context)
-                .inputDecorationTheme
-                .labelStyle
-                ?.copyWith(fontSize: 9),
+            labelStyle: Theme.of(
+              context,
+            ).inputDecorationTheme.labelStyle?.copyWith(fontSize: 9),
           ),
           validator: (value) => validateQuantityPalet(context, value),
           onChanged: (value) {
@@ -990,14 +1052,18 @@ class _PaletUnitsFormField extends StatelessWidget {
               setUnitPaletQuantity(0);
             }
           },
-          onTap: () => paletController.selection = TextSelection(
-              baseOffset: 0, extentOffset: paletController.text.length),
+          onTap:
+              () =>
+                  paletController.selection = TextSelection(
+                    baseOffset: 0,
+                    extentOffset: paletController.text.length,
+                  ),
         ),
         gapH4,
         Text(
           'x${numberFormatCantidades(unidadesPorPalet)} ${S.of(context).unidad}',
           style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 9),
-        )
+        ),
       ],
     );
   }
@@ -1009,8 +1075,10 @@ class _PaletUnitsFormField extends StatelessWidget {
         setUnitPaletQuantity(ventaMinimo);
         return '${S.of(context).pedido_edit_selectQuantity_minimo} $ventaMinimo ${S.of(context).unidad}';
       } else if ((quantity * unidadesPorPalet) % ventaMultiplo != 0) {
-        final multiploMasCercano =
-            setMultiploMasCercanoPalet(quantity, ventaMultiplo);
+        final multiploMasCercano = setMultiploMasCercanoPalet(
+          quantity,
+          ventaMultiplo,
+        );
         paletController.text = multiploMasCercano.toString();
 
         setUnitPaletQuantity(multiploMasCercano);
@@ -1063,8 +1131,11 @@ class _ArticuloPrecioContainer extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final articuloPrecioValue = ref.watch(articuloUltimosPreciosProvider(
-        UltimosPreciosParam(clienteId: clienteId, articuloId: articuloId)));
+    final articuloPrecioValue = ref.watch(
+      articuloUltimosPreciosProvider(
+        UltimosPreciosParam(clienteId: clienteId, articuloId: articuloId),
+      ),
+    );
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
       child: FormBuilder(
@@ -1080,8 +1151,9 @@ class _ArticuloPrecioContainer extends ConsumerWidget {
                     child: FormBuilderTextField(
                       name: 'precio',
                       controller: precioController,
-                      keyboardType:
-                          const TextInputType.numberWithOptions(decimal: true),
+                      keyboardType: const TextInputType.numberWithOptions(
+                        decimal: true,
+                      ),
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         labelText:
@@ -1096,11 +1168,12 @@ class _ArticuloPrecioContainer extends ConsumerWidget {
                       ]),
                       enabled:
                           ref.watch(usuarioNotifierProvider)?.modificarPedido ??
-                              false,
+                          false,
                       onChanged: (value) {
                         if (value != null && value.isNotEmpty) {
-                          final precioValue =
-                              double.tryParse(value.replaceAll(',', '.'));
+                          final precioValue = double.tryParse(
+                            value.replaceAll(',', '.'),
+                          );
 
                           if (precioValue != null) {
                             setPrecio(precioValue);
@@ -1109,10 +1182,12 @@ class _ArticuloPrecioContainer extends ConsumerWidget {
                           setPrecio(0);
                         }
                       },
-                      onTap: () => precioController.selection = TextSelection(
-                        baseOffset: 0,
-                        extentOffset: precioController.text.length,
-                      ),
+                      onTap:
+                          () =>
+                              precioController.selection = TextSelection(
+                                baseOffset: 0,
+                                extentOffset: precioController.text.length,
+                              ),
                     ),
                   ),
                   gapW16,
@@ -1126,20 +1201,23 @@ class _ArticuloPrecioContainer extends ConsumerWidget {
                       decoration: InputDecoration(
                         labelText:
                             S.of(context).pedido_edit_selectQuantity_descuneto1,
-                        suffix: Text('%',
-                            style: Theme.of(context).textTheme.bodySmall),
+                        suffix: Text(
+                          '%',
+                          style: Theme.of(context).textTheme.bodySmall,
+                        ),
                       ),
                       textAlign: TextAlign.right,
                       enabled:
                           ref.watch(usuarioNotifierProvider)?.modificarPedido ??
-                              false,
+                          false,
                       validator: FormBuilderValidators.compose([
                         FormBuilderValidators.required(),
                       ]),
                       onChanged: (value) {
                         if (value != null && value.isNotEmpty) {
-                          final dto1Value =
-                              double.tryParse(value.replaceAll(',', '.'));
+                          final dto1Value = double.tryParse(
+                            value.replaceAll(',', '.'),
+                          );
 
                           if (dto1Value != null) {
                             setDescuento1(dto1Value);
@@ -1148,11 +1226,12 @@ class _ArticuloPrecioContainer extends ConsumerWidget {
                           setDescuento1(0);
                         }
                       },
-                      onTap: () =>
-                          descuento1Controller.selection = TextSelection(
-                        baseOffset: 0,
-                        extentOffset: descuento1Controller.text.length,
-                      ),
+                      onTap:
+                          () =>
+                              descuento1Controller.selection = TextSelection(
+                                baseOffset: 0,
+                                extentOffset: descuento1Controller.text.length,
+                              ),
                     ),
                   ),
                 ],
@@ -1161,18 +1240,14 @@ class _ArticuloPrecioContainer extends ConsumerWidget {
             gapH4,
             articuloPrecioValue.maybeWhen(
               orElse: () => Container(),
-              data: (ultimosPrecios) => ultimosPrecios != null
-                  ? Text(
-                      '${S.of(context).pedido_edit_pedidoEdit_ultimoPrecioDeCompra}:  ${formatPrecioYDescuento(
-                        precio: ultimosPrecios.precioDivisa,
-                        tipoPrecio: ultimosPrecios.tipoPrecio,
-                        descuento1: ultimosPrecios.descuento1,
-                        descuento2: ultimosPrecios.descuento2,
-                        descuento3: ultimosPrecios.descuento3,
-                      )} (${numberFormatCantidades(ultimosPrecios.cantidad)} ${S.of(context).unidad})',
-                      style: Theme.of(context).textTheme.bodySmall,
-                    )
-                  : Container(),
+              data:
+                  (ultimosPrecios) =>
+                      ultimosPrecios != null
+                          ? Text(
+                            '${S.of(context).pedido_edit_pedidoEdit_ultimoPrecioDeCompra}:  ${formatPrecioYDescuento(precio: ultimosPrecios.precioDivisa, tipoPrecio: ultimosPrecios.tipoPrecio, descuento1: ultimosPrecios.descuento1, descuento2: ultimosPrecios.descuento2, descuento3: ultimosPrecios.descuento3)} (${numberFormatCantidades(ultimosPrecios.cantidad)} ${S.of(context).unidad})',
+                            style: Theme.of(context).textTheme.bodySmall,
+                          )
+                          : Container(),
             ),
           ],
         ),

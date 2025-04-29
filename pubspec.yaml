@@ -4,8 +4,8 @@ publish_to: "none"
 version: 1.2.95+164
 
 environment:
-  sdk: ">=3.3.0 <4.0.0"
-  flutter: ^3.22.0
+  sdk: ">=3.7.0 <4.0.0"
+  flutter: ^3.29.0
 
 dependencies:
   flutter_localizations:
@@ -81,12 +81,6 @@ dev_dependencies:
   json_serializable: ^6.8.0
   riverpod_generator: ^2.6.3
   riverpod_mutations_generator: ^1.0.9
-
-dependency_overrides:
-  better_open_file:
-    git:
-      url: https://github.com/AndreLuizNogueira/better_open_file.git
-      ref: master
 
 flutter_icons:
   android: true

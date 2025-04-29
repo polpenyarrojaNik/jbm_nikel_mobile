@@ -12,7 +12,8 @@ part of 'precio_promocion.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$PrecioPromocion {
@@ -30,8 +31,9 @@ mixin _$PrecioPromocion {
 /// @nodoc
 abstract class $PrecioPromocionCopyWith<$Res> {
   factory $PrecioPromocionCopyWith(
-          PrecioPromocion value, $Res Function(PrecioPromocion) then) =
-      _$PrecioPromocionCopyWithImpl<$Res, PrecioPromocion>;
+    PrecioPromocion value,
+    $Res Function(PrecioPromocion) then,
+  ) = _$PrecioPromocionCopyWithImpl<$Res, PrecioPromocion>;
   @useResult
   $Res call({Money precio, int tipoPrecio, double dto});
 }
@@ -55,29 +57,36 @@ class _$PrecioPromocionCopyWithImpl<$Res, $Val extends PrecioPromocion>
     Object? tipoPrecio = null,
     Object? dto = null,
   }) {
-    return _then(_value.copyWith(
-      precio: null == precio
-          ? _value.precio
-          : precio // ignore: cast_nullable_to_non_nullable
-              as Money,
-      tipoPrecio: null == tipoPrecio
-          ? _value.tipoPrecio
-          : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as int,
-      dto: null == dto
-          ? _value.dto
-          : dto // ignore: cast_nullable_to_non_nullable
-              as double,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            precio:
+                null == precio
+                    ? _value.precio
+                    : precio // ignore: cast_nullable_to_non_nullable
+                        as Money,
+            tipoPrecio:
+                null == tipoPrecio
+                    ? _value.tipoPrecio
+                    : tipoPrecio // ignore: cast_nullable_to_non_nullable
+                        as int,
+            dto:
+                null == dto
+                    ? _value.dto
+                    : dto // ignore: cast_nullable_to_non_nullable
+                        as double,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$PrecioPromocionImplCopyWith<$Res>
     implements $PrecioPromocionCopyWith<$Res> {
-  factory _$$PrecioPromocionImplCopyWith(_$PrecioPromocionImpl value,
-          $Res Function(_$PrecioPromocionImpl) then) =
-      __$$PrecioPromocionImplCopyWithImpl<$Res>;
+  factory _$$PrecioPromocionImplCopyWith(
+    _$PrecioPromocionImpl value,
+    $Res Function(_$PrecioPromocionImpl) then,
+  ) = __$$PrecioPromocionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Money precio, int tipoPrecio, double dto});
@@ -88,8 +97,9 @@ class __$$PrecioPromocionImplCopyWithImpl<$Res>
     extends _$PrecioPromocionCopyWithImpl<$Res, _$PrecioPromocionImpl>
     implements _$$PrecioPromocionImplCopyWith<$Res> {
   __$$PrecioPromocionImplCopyWithImpl(
-      _$PrecioPromocionImpl _value, $Res Function(_$PrecioPromocionImpl) _then)
-      : super(_value, _then);
+    _$PrecioPromocionImpl _value,
+    $Res Function(_$PrecioPromocionImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of PrecioPromocion
   /// with the given fields replaced by the non-null parameter values.
@@ -100,29 +110,36 @@ class __$$PrecioPromocionImplCopyWithImpl<$Res>
     Object? tipoPrecio = null,
     Object? dto = null,
   }) {
-    return _then(_$PrecioPromocionImpl(
-      precio: null == precio
-          ? _value.precio
-          : precio // ignore: cast_nullable_to_non_nullable
-              as Money,
-      tipoPrecio: null == tipoPrecio
-          ? _value.tipoPrecio
-          : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as int,
-      dto: null == dto
-          ? _value.dto
-          : dto // ignore: cast_nullable_to_non_nullable
-              as double,
-    ));
+    return _then(
+      _$PrecioPromocionImpl(
+        precio:
+            null == precio
+                ? _value.precio
+                : precio // ignore: cast_nullable_to_non_nullable
+                    as Money,
+        tipoPrecio:
+            null == tipoPrecio
+                ? _value.tipoPrecio
+                : tipoPrecio // ignore: cast_nullable_to_non_nullable
+                    as int,
+        dto:
+            null == dto
+                ? _value.dto
+                : dto // ignore: cast_nullable_to_non_nullable
+                    as double,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$PrecioPromocionImpl extends _PrecioPromocion {
-  const _$PrecioPromocionImpl(
-      {required this.precio, required this.tipoPrecio, required this.dto})
-      : super._();
+  const _$PrecioPromocionImpl({
+    required this.precio,
+    required this.tipoPrecio,
+    required this.dto,
+  }) : super._();
 
   @override
   final Money precio;
@@ -157,14 +174,17 @@ class _$PrecioPromocionImpl extends _PrecioPromocion {
   @pragma('vm:prefer-inline')
   _$$PrecioPromocionImplCopyWith<_$PrecioPromocionImpl> get copyWith =>
       __$$PrecioPromocionImplCopyWithImpl<_$PrecioPromocionImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _PrecioPromocion extends PrecioPromocion {
-  const factory _PrecioPromocion(
-      {required final Money precio,
-      required final int tipoPrecio,
-      required final double dto}) = _$PrecioPromocionImpl;
+  const factory _PrecioPromocion({
+    required final Money precio,
+    required final int tipoPrecio,
+    required final double dto,
+  }) = _$PrecioPromocionImpl;
   const _PrecioPromocion._() : super._();
 
   @override

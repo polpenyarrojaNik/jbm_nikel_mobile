@@ -17,11 +17,15 @@ import '../presentation/app.dart';
 import 'local_database.dart';
 import 'remote_database.dart';
 
-final initDatabaseServiceProvider =
-    Provider.autoDispose<InitDatabaseService>((ref) {
+final initDatabaseServiceProvider = Provider.autoDispose<InitDatabaseService>((
+  ref,
+) {
   ref.read(appRemoteDatabaseProvider);
-  return InitDatabaseService(ref.watch(dioProvider),
-      ref.watch(appLocalDatabaseProvider), ref.watch(usuarioNotifierProvider));
+  return InitDatabaseService(
+    ref.watch(dioProvider),
+    ref.watch(appLocalDatabaseProvider),
+    ref.watch(usuarioNotifierProvider),
+  );
 });
 
 class InitDatabaseService {
@@ -98,9 +102,7 @@ class InitDatabaseService {
     return File((join(directory.path, remoteDatabaseName))).existsSync();
   }
 
-  Future<void> _getRemoteInitialDatabase({
-    required Directory directory,
-  }) async {
+  Future<void> _getRemoteInitialDatabase({required Directory directory}) async {
     try {
       final response = await dio.downloadUri(
         (usuario!.test)
@@ -116,7 +118,9 @@ class InitDatabaseService {
 
       if (response.statusCode != 200) {
         throw AppException.restApiFailure(
-            response.statusCode ?? 500, response.toString());
+          response.statusCode ?? 500,
+          response.toString(),
+        );
       }
     } catch (e) {
       throw getApiError(e);
@@ -129,14 +133,16 @@ class InitDatabaseService {
 
       await localDb
           .into(localDb.syncDateTimeTable)
-          .insertOnConflictUpdate(SyncDateTimeTableCompanion(
-            id: const Value(1),
-            dbSchemaVersion: const Value(databaseRelease),
-            articuloUltimaSync: Value(initialDatabaseDate),
-            clienteUltimaSync: Value(initialDatabaseDate),
-            pedidoUltimaSync: Value(initialDatabaseDate),
-            visitaUltimaSync: Value(initialDatabaseDate),
-          ));
+          .insertOnConflictUpdate(
+            SyncDateTimeTableCompanion(
+              id: const Value(1),
+              dbSchemaVersion: const Value(databaseRelease),
+              articuloUltimaSync: Value(initialDatabaseDate),
+              clienteUltimaSync: Value(initialDatabaseDate),
+              pedidoUltimaSync: Value(initialDatabaseDate),
+              visitaUltimaSync: Value(initialDatabaseDate),
+            ),
+          );
     } catch (e) {
       rethrow;
     }
@@ -154,7 +160,9 @@ class InitDatabaseService {
         return DateTime.parse(response.data['data'] as String);
       } else {
         throw AppException.restApiFailure(
-            response.statusCode ?? 500, response.toString());
+          response.statusCode ?? 500,
+          response.toString(),
+        );
       }
     } catch (e) {
       throw getApiError(e);

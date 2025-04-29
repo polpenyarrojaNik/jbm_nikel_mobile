@@ -21,19 +21,14 @@ class ArticuloListaTile extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                articulo.id,
-                style: Theme.of(context).textTheme.titleSmall,
-              ),
+              Text(articulo.id, style: Theme.of(context).textTheme.titleSmall),
               Text(
                 '${numberFormatCantidades(articulo.stockDisponible)} ${S.of(context).unidad}',
                 style: Theme.of(context).textTheme.titleSmall,
               ),
             ],
           ),
-          Text(
-            getDescriptionArticuloInLocalLanguage(articulo: articulo),
-          ),
+          Text(getDescriptionArticuloInLocalLanguage(articulo: articulo)),
           Text(
             (articulo.subfamilia != null)
                 ? '${articulo.familia?.descripcion}/${articulo.subfamilia?.descripcion}'

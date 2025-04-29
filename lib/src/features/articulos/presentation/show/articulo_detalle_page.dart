@@ -54,8 +54,9 @@ class ArticuloDetallePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final params = {'articuloId': articuloId};
-    final statePedidoVentaBorradoresList =
-        ref.watch(getPedidoVentaBorradoresList);
+    final statePedidoVentaBorradoresList = ref.watch(
+      getPedidoVentaBorradoresList,
+    );
     return Scaffold(
       appBar: CommonAppBar(
         titleText: (S.of(context).articulo_show_articuloDetalle_titulo),
@@ -64,11 +65,11 @@ class ArticuloDetallePage extends ConsumerWidget {
           data: (pedidoVentaBorradoresList) {
             return pedidoVentaBorradoresList.isNotEmpty
                 ? [
-                    AddArticleToBorradorButton(
-                      pedidoVentaBorradoresList: pedidoVentaBorradoresList,
-                      articuloId: articuloId,
-                    )
-                  ]
+                  AddArticleToBorradorButton(
+                    pedidoVentaBorradoresList: pedidoVentaBorradoresList,
+                    articuloId: articuloId,
+                  ),
+                ]
                 : null;
           },
         ),
@@ -78,15 +79,16 @@ class ArticuloDetallePage extends ConsumerWidget {
           final articuloValue = ref.watch(articuloProvider(articuloId));
           return AsyncValueWidget<Articulo>(
             value: articuloValue,
-            data: (articulo) => ListView(
-              shrinkWrap: true,
-              physics: const BouncingScrollPhysics(),
-              children: [
-                _ArticuloInfoContainer(articulo: articulo),
-                _DatosRelacionados(articulo: articulo, params: params),
-                _Consultas(articulo: articulo, params: params),
-              ],
-            ),
+            data:
+                (articulo) => ListView(
+                  shrinkWrap: true,
+                  physics: const BouncingScrollPhysics(),
+                  children: [
+                    _ArticuloInfoContainer(articulo: articulo),
+                    _DatosRelacionados(articulo: articulo, params: params),
+                    _Consultas(articulo: articulo, params: params),
+                  ],
+                ),
           );
         },
       ),
@@ -107,48 +109,60 @@ class AddArticleToBorradorButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(
-        articuloDetalleAddArticuloABorradorButtonControllerProvider
-            .getPedidoVentaLinea, (_, state) {
-      if (state is GetPedidoVentaLineaMutationSuccess) {
-        naviagateToSelectCantidad(
-          context,
-          PedidoLocalParam(
-            pedidoAppId: pedidoVentaBorradoresList.first.pedidoVentaAppId!,
-            isEdit: false,
-          ),
-          pedidoVentaBorradoresList.first.clienteId!,
-          state.result,
-        );
-      }
-    });
+      articuloDetalleAddArticuloABorradorButtonControllerProvider
+          .getPedidoVentaLinea,
+      (_, state) {
+        if (state is GetPedidoVentaLineaMutationSuccess) {
+          naviagateToSelectCantidad(
+            context,
+            PedidoLocalParam(
+              pedidoAppId: pedidoVentaBorradoresList.first.pedidoVentaAppId!,
+              isEdit: false,
+            ),
+            pedidoVentaBorradoresList.first.clienteId!,
+            state.result,
+          );
+        }
+      },
+    );
 
     final getPedidoVentaLineaState = ref.watch(
-        articuloDetalleAddArticuloABorradorButtonControllerProvider
-            .getPedidoVentaLinea);
+      articuloDetalleAddArticuloABorradorButtonControllerProvider
+          .getPedidoVentaLinea,
+    );
 
     return IconButton(
-      onPressed: getPedidoVentaLineaState is GetPedidoVentaLineaMutationLoading
-          ? null
-          : pedidoVentaBorradoresList.length == 1
-              ? () => getPedidoVentaLineaState(PedidoLocalParam(
-                    pedidoAppId:
-                        pedidoVentaBorradoresList.first.pedidoVentaAppId!,
-                    isEdit: false,
-                  ))
+      onPressed:
+          getPedidoVentaLineaState is GetPedidoVentaLineaMutationLoading
+              ? null
+              : pedidoVentaBorradoresList.length == 1
+              ? () => getPedidoVentaLineaState(
+                PedidoLocalParam(
+                  pedidoAppId:
+                      pedidoVentaBorradoresList.first.pedidoVentaAppId!,
+                  isEdit: false,
+                ),
+              )
               : () => selectBorradorToAddArticle(
-                  context, getPedidoVentaLineaState, pedidoVentaBorradoresList),
+                context,
+                getPedidoVentaLineaState,
+                pedidoVentaBorradoresList,
+              ),
       icon: const Icon(Icons.add_shopping_cart_outlined),
     );
   }
 
   Future<void> selectBorradorToAddArticle(
-      BuildContext context,
-      GetPedidoVentaLineaMutation getPedidoVentaLineaState,
-      List<PedidoVenta> pedidoVentaBorradoresList) async {
+    BuildContext context,
+    GetPedidoVentaLineaMutation getPedidoVentaLineaState,
+    List<PedidoVenta> pedidoVentaBorradoresList,
+  ) async {
     final pedidoVentaBorrador = await showDialog<PedidoVenta?>(
       context: context,
-      builder: (context) => SelectPedidoVentaBorradorAlertDialog(
-          pedidoVentaBorradoresList: pedidoVentaBorradoresList),
+      builder:
+          (context) => SelectPedidoVentaBorradorAlertDialog(
+            pedidoVentaBorradoresList: pedidoVentaBorradoresList,
+          ),
     );
 
     if (pedidoVentaBorrador != null) {
@@ -161,24 +175,31 @@ class AddArticleToBorradorButton extends ConsumerWidget {
     }
   }
 
-  void naviagateToSelectCantidad(BuildContext context,
-      PedidoLocalParam pedidoVentaParam, String clienteId, int posicionLinea) {
+  void naviagateToSelectCantidad(
+    BuildContext context,
+    PedidoLocalParam pedidoVentaParam,
+    String clienteId,
+    int posicionLinea,
+  ) {
     context.router.push(
       SeleccionarCantidadRoute(
         seleccionarCantidadParam: SeleccionarCantidadParam(
-            pedidoVentaParam: pedidoVentaParam,
-            articuloId: articuloId,
-            clienteId: clienteId,
-            posicionLinea: posicionLinea,
-            addNewLineaDesdeArticulo: true),
+          pedidoVentaParam: pedidoVentaParam,
+          articuloId: articuloId,
+          clienteId: clienteId,
+          posicionLinea: posicionLinea,
+          addNewLineaDesdeArticulo: true,
+        ),
       ),
     );
   }
 }
 
 class SelectPedidoVentaBorradorAlertDialog extends StatelessWidget {
-  const SelectPedidoVentaBorradorAlertDialog(
-      {super.key, required this.pedidoVentaBorradoresList});
+  const SelectPedidoVentaBorradorAlertDialog({
+    super.key,
+    required this.pedidoVentaBorradoresList,
+  });
 
   final List<PedidoVenta> pedidoVentaBorradoresList;
 
@@ -195,11 +216,15 @@ class SelectPedidoVentaBorradorAlertDialog extends StatelessWidget {
           children: [
             ListView.separated(
               shrinkWrap: true,
-              itemBuilder: (context, i) => PedidoVentaListaTile(
-                pedidoVenta: pedidoVentaBorradoresList[i],
-                onTap: () =>
-                    Navigator.pop(context, pedidoVentaBorradoresList[i]),
-              ),
+              itemBuilder:
+                  (context, i) => PedidoVentaListaTile(
+                    pedidoVenta: pedidoVentaBorradoresList[i],
+                    onTap:
+                        () => Navigator.pop(
+                          context,
+                          pedidoVentaBorradoresList[i],
+                        ),
+                  ),
               separatorBuilder: (context, index) => const Gap(4),
               itemCount: pedidoVentaBorradoresList.length,
             ),
@@ -228,8 +253,10 @@ class _ArticuloInfoContainer extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(8),
                 color: Theme.of(context).colorScheme.secondaryContainer,
-                child: Text(articulo.id,
-                    style: Theme.of(context).textTheme.titleSmall),
+                child: Text(
+                  articulo.id,
+                  style: Theme.of(context).textTheme.titleSmall,
+                ),
               ),
               const Spacer(),
             ],
@@ -256,12 +283,17 @@ class _ArticuloInfoContainer extends StatelessWidget {
                 ),
               ),
               IconButton(
-                onPressed: () =>
-                    showAllDescriptions(context: context, articulo: articulo),
+                onPressed:
+                    () => showAllDescriptions(
+                      context: context,
+                      articulo: articulo,
+                    ),
                 icon: const Icon(Icons.info),
-                visualDensity:
-                    const VisualDensity(vertical: -4, horizontal: -4),
-              )
+                visualDensity: const VisualDensity(
+                  vertical: -4,
+                  horizontal: -4,
+                ),
+              ),
             ],
           ),
         ),
@@ -309,14 +341,12 @@ class _ArticuloInfoContainer extends StatelessWidget {
                             S
                                 .of(context)
                                 .articulo_show_articuloDetalle_entrega1,
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleSmall!
-                                .copyWith(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .bodySmall!
-                                        .color),
+                            style: Theme.of(
+                              context,
+                            ).textTheme.titleSmall!.copyWith(
+                              color:
+                                  Theme.of(context).textTheme.bodySmall!.color,
+                            ),
                           ),
                           if (articulo.comprasEntregaCantidad1 != 0) gapH8,
                           if (articulo.comprasEntregaCantidad2 != 0)
@@ -324,14 +354,14 @@ class _ArticuloInfoContainer extends StatelessWidget {
                               S
                                   .of(context)
                                   .articulo_show_articuloDetalle_entrega2,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleSmall!
-                                  .copyWith(
-                                      color: Theme.of(context)
-                                          .textTheme
-                                          .bodySmall!
-                                          .color),
+                              style: Theme.of(
+                                context,
+                              ).textTheme.titleSmall!.copyWith(
+                                color:
+                                    Theme.of(
+                                      context,
+                                    ).textTheme.bodySmall!.color,
+                              ),
                             ),
                           if (articulo.comprasEntregaCantidad2 != 0) gapH8,
                           if (articulo.comprasEntregaCantidad3 != 0)
@@ -339,27 +369,27 @@ class _ArticuloInfoContainer extends StatelessWidget {
                               S
                                   .of(context)
                                   .articulo_show_articuloDetalle_entrega3,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleSmall!
-                                  .copyWith(
-                                      color: Theme.of(context)
-                                          .textTheme
-                                          .bodySmall!
-                                          .color),
+                              style: Theme.of(
+                                context,
+                              ).textTheme.titleSmall!.copyWith(
+                                color:
+                                    Theme.of(
+                                      context,
+                                    ).textTheme.bodySmall!.color,
+                              ),
                             ),
                           if (articulo.comprasEntregaCantidad3 != 0) gapH8,
                           if (articulo.comprasEntregaCantidadMas3 != 0)
                             Text(
                               S.of(context).articulo_show_articuloDetalle_mas,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleSmall!
-                                  .copyWith(
-                                      color: Theme.of(context)
-                                          .textTheme
-                                          .bodySmall!
-                                          .color),
+                              style: Theme.of(
+                                context,
+                              ).textTheme.titleSmall!.copyWith(
+                                color:
+                                    Theme.of(
+                                      context,
+                                    ).textTheme.bodySmall!.color,
+                              ),
                             ),
                         ],
                       ),
@@ -373,15 +403,18 @@ class _ArticuloInfoContainer extends StatelessWidget {
                         if (articulo.comprasEntregaCantidad1 != 0) gapH8,
                         if (articulo.comprasEntregaCantidad2 != 0)
                           SelectableTextWidget(
-                              '${numberFormatCantidades(articulo.comprasEntregaCantidad2)}  ${S.of(context).unidad}'),
+                            '${numberFormatCantidades(articulo.comprasEntregaCantidad2)}  ${S.of(context).unidad}',
+                          ),
                         if (articulo.comprasEntregaCantidad2 != 0) gapH8,
                         if (articulo.comprasEntregaCantidad3 != 0)
                           SelectableTextWidget(
-                              '${numberFormatCantidades(articulo.comprasEntregaCantidad3)}  ${S.of(context).unidad}'),
+                            '${numberFormatCantidades(articulo.comprasEntregaCantidad3)}  ${S.of(context).unidad}',
+                          ),
                         if (articulo.comprasEntregaCantidad3 != 0) gapH8,
                         if (articulo.comprasEntregaCantidadMas3 != 0)
                           SelectableTextWidget(
-                              '${numberFormatCantidades(articulo.comprasEntregaCantidadMas3)}  ${S.of(context).unidad}'),
+                            '${numberFormatCantidades(articulo.comprasEntregaCantidadMas3)}  ${S.of(context).unidad}',
+                          ),
                       ],
                     ),
                     const Spacer(),
@@ -395,8 +428,9 @@ class _ArticuloInfoContainer extends StatelessWidget {
                                   .toIso8601String(),
                             ),
                             style: getTextStyleFechaEntregaByEstado(
-                                estado: articulo.comprasEntregaEstado1,
-                                context: context),
+                              estado: articulo.comprasEntregaEstado1,
+                              context: context,
+                            ),
                           ),
                         if (articulo.comprasEntregaFecha1 != null) gapH8,
                         if (articulo.comprasEntregaFecha2 != null)
@@ -407,8 +441,9 @@ class _ArticuloInfoContainer extends StatelessWidget {
                                   .toIso8601String(),
                             ),
                             style: getTextStyleFechaEntregaByEstado(
-                                estado: articulo.comprasEntregaEstado2,
-                                context: context),
+                              estado: articulo.comprasEntregaEstado2,
+                              context: context,
+                            ),
                           ),
                         if (articulo.comprasEntregaFecha2 != null) gapH8,
                         if (articulo.comprasEntregaFecha3 != null)
@@ -419,14 +454,13 @@ class _ArticuloInfoContainer extends StatelessWidget {
                                   .toIso8601String(),
                             ),
                             style: getTextStyleFechaEntregaByEstado(
-                                estado: articulo.comprasEntregaEstado3,
-                                context: context),
+                              estado: articulo.comprasEntregaEstado3,
+                              context: context,
+                            ),
                           ),
                         if (articulo.comprasEntregaFecha3 != null) gapH8,
                         if (articulo.comprasEntregaCantidadMas3 != 0)
-                          const Text(
-                            '',
-                          ),
+                          const Text(''),
                       ],
                     ),
                     const Spacer(),
@@ -495,8 +529,9 @@ class _ArticuloInfoContainer extends StatelessWidget {
         ),
         _ArticuloAnalisis(articulo: articulo),
         MobileCustomSeparators(
-            separatorTitle:
-                S.of(context).articulo_show_articuloDetalle_otrosDatos),
+          separatorTitle:
+              S.of(context).articulo_show_articuloDetalle_otrosDatos,
+        ),
         Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
@@ -508,9 +543,10 @@ class _ArticuloInfoContainer extends StatelessWidget {
                   if (articulo.paginaEnCatalgo != null)
                     Expanded(
                       child: ColumnFieldTextDetalle(
-                        fieldTitleValue: S
-                            .of(context)
-                            .articulo_show_articuloDetalle_paginaEnCatalogo,
+                        fieldTitleValue:
+                            S
+                                .of(context)
+                                .articulo_show_articuloDetalle_paginaEnCatalogo,
                         value: Text(articulo.paginaEnCatalgo!),
                         selectable: true,
                       ),
@@ -518,12 +554,11 @@ class _ArticuloInfoContainer extends StatelessWidget {
                   if (articulo.paginaEnCatalgo2 != null)
                     Expanded(
                       child: ColumnFieldTextDetalle(
-                        fieldTitleValue: S
-                            .of(context)
-                            .articulo_show_articuloDetalle_pagina2Edicion,
-                        value: Text(
-                          articulo.paginaEnCatalgo2!,
-                        ),
+                        fieldTitleValue:
+                            S
+                                .of(context)
+                                .articulo_show_articuloDetalle_pagina2Edicion,
+                        value: Text(articulo.paginaEnCatalgo2!),
                         selectable: true,
                       ),
                     ),
@@ -540,15 +575,20 @@ class _ArticuloInfoContainer extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Flexible(
-                            child: Text(S
+                          child: Text(
+                            S
                                 .of(context)
-                                .articulo_show_articuloDetalle_enCatalogo)),
+                                .articulo_show_articuloDetalle_enCatalogo,
+                          ),
+                        ),
                         Checkbox(
-                          visualDensity:
-                              const VisualDensity(vertical: -4, horizontal: -4),
+                          visualDensity: const VisualDensity(
+                            vertical: -4,
+                            horizontal: -4,
+                          ),
                           value: articulo.enCatalogo,
                           onChanged: null,
-                        )
+                        ),
                       ],
                     ),
                   ),
@@ -558,15 +598,20 @@ class _ArticuloInfoContainer extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Flexible(
-                            child: Text(S
+                          child: Text(
+                            S
                                 .of(context)
-                                .articulo_show_articuloDetalle_descatalogadoCompras)),
+                                .articulo_show_articuloDetalle_descatalogadoCompras,
+                          ),
+                        ),
                         Checkbox(
-                          visualDensity:
-                              const VisualDensity(vertical: -4, horizontal: -4),
+                          visualDensity: const VisualDensity(
+                            vertical: -4,
+                            horizontal: -4,
+                          ),
                           value: articulo.descatalogado,
                           onChanged: null,
-                        )
+                        ),
                       ],
                     ),
                   ),
@@ -580,15 +625,20 @@ class _ArticuloInfoContainer extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Flexible(
-                            child: Text(S
+                          child: Text(
+                            S
                                 .of(context)
-                                .articulo_show_articuloDetalle_activoWeb)),
+                                .articulo_show_articuloDetalle_activoWeb,
+                          ),
+                        ),
                         Checkbox(
-                          visualDensity:
-                              const VisualDensity(vertical: -4, horizontal: -4),
+                          visualDensity: const VisualDensity(
+                            vertical: -4,
+                            horizontal: -4,
+                          ),
                           value: articulo.activoWeb,
                           onChanged: null,
-                        )
+                        ),
                       ],
                     ),
                   ),
@@ -598,13 +648,15 @@ class _ArticuloInfoContainer extends StatelessWidget {
               ),
             ],
           ),
-        )
+        ),
       ],
     );
   }
 
-  void showAllDescriptions(
-      {required BuildContext context, required Articulo articulo}) {
+  void showAllDescriptions({
+    required BuildContext context,
+    required Articulo articulo,
+  }) {
     showDialog(
       context: context,
       builder: (context) => _ArticleDescriptionDialog(articulo: articulo),
@@ -613,20 +665,14 @@ class _ArticuloInfoContainer extends StatelessWidget {
 }
 
 class _ArticleDescriptionDialog extends StatelessWidget {
-  const _ArticleDescriptionDialog({
-    required this.articulo,
-  });
+  const _ArticleDescriptionDialog({required this.articulo});
 
   final Articulo articulo;
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Center(
-        child: Text(
-          articulo.id,
-        ),
-      ),
+      title: Center(child: Text(articulo.id)),
       content: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -728,20 +774,14 @@ class _ArticleDescriptionDialog extends StatelessWidget {
 }
 
 class _ArticluloResumenDialog extends StatelessWidget {
-  const _ArticluloResumenDialog({
-    required this.articulo,
-  });
+  const _ArticluloResumenDialog({required this.articulo});
 
   final Articulo articulo;
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Center(
-        child: Text(
-          articulo.id,
-        ),
-      ),
+      title: Center(child: Text(articulo.id)),
       content: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -857,17 +897,17 @@ class _DescriptionResumenRow extends StatelessWidget {
       children: [
         Text(
           title,
-          style: Theme.of(context)
-              .textTheme
-              .bodySmall
-              ?.copyWith(color: Theme.of(context).textTheme.bodyMedium?.color),
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+            color: Theme.of(context).textTheme.bodyMedium?.color,
+          ),
         ),
         gapW4,
         Flexible(
           child: SelectableText(
-              selectionControls: MaterialTextSelectionControls(),
-              description!,
-              style: Theme.of(context).textTheme.bodySmall),
+            selectionControls: MaterialTextSelectionControls(),
+            description!,
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
         ),
       ],
     );
@@ -875,8 +915,10 @@ class _DescriptionResumenRow extends StatelessWidget {
 }
 
 class _ArticuloImageCarrousel extends ConsumerStatefulWidget {
-  const _ArticuloImageCarrousel(
-      {required this.articuloId, required this.imagenPrincipal});
+  const _ArticuloImageCarrousel({
+    required this.articuloId,
+    required this.imagenPrincipal,
+  });
 
   final String articuloId;
   final String imagenPrincipal;
@@ -888,8 +930,10 @@ class _ArticuloImageCarrousel extends ConsumerStatefulWidget {
 
 class _ArticuloImageCarrouselState
     extends ConsumerState<_ArticuloImageCarrousel> {
-  PageController _pageController =
-      PageController(viewportFraction: 0.8, initialPage: 0);
+  PageController _pageController = PageController(
+    viewportFraction: 0.8,
+    initialPage: 0,
+  );
 
   int activePage = 0;
 
@@ -903,70 +947,75 @@ class _ArticuloImageCarrouselState
   Widget build(BuildContext context) {
     final state = ref.watch(articuloImageListProvider(widget.articuloId));
     return state.when(
-        data: (articuloImagenes) => Column(
-              children: [
-                SizedBox(
-                  height: 175,
-                  width: 400,
-                  child: PageView.builder(
-                    itemCount: articuloImagenes.length,
-                    pageSnapping: true,
-                    controller: _pageController,
-                    onPageChanged: (page) {
-                      setState(() {
-                        activePage = page;
-                      });
-                    },
-                    itemBuilder: (context, i) => CachedNetworkImage(
-                      imageUrl: articuloImagenes[i].url,
-                      progressIndicatorBuilder: (context, url, progress) =>
-                          Image.asset(
+      data:
+          (articuloImagenes) => Column(
+            children: [
+              SizedBox(
+                height: 175,
+                width: 400,
+                child: PageView.builder(
+                  itemCount: articuloImagenes.length,
+                  pageSnapping: true,
+                  controller: _pageController,
+                  onPageChanged: (page) {
+                    setState(() {
+                      activePage = page;
+                    });
+                  },
+                  itemBuilder:
+                      (context, i) => CachedNetworkImage(
+                        imageUrl: articuloImagenes[i].url,
+                        progressIndicatorBuilder:
+                            (context, url, progress) => Image.asset(
+                              height: 175,
+                              width: 400,
+                              fit: BoxFit.contain,
+                              'assets/image-placeholder.png',
+                            ),
+                        errorWidget:
+                            (context, error, _) => Center(
+                              child: Text(
+                                S
+                                    .of(context)
+                                    .articulo_show_articuloDetalle_noDisponible,
+                              ),
+                            ),
                         height: 175,
                         width: 400,
                         fit: BoxFit.contain,
-                        'assets/image-placeholder.png',
                       ),
-                      errorWidget: (context, error, _) => Center(
-                        child: Text(S
-                            .of(context)
-                            .articulo_show_articuloDetalle_noDisponible),
-                      ),
-                      height: 175,
-                      width: 400,
-                      fit: BoxFit.contain,
-                    ),
-                  ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: indicators(articuloImagenes.length, activePage),
-                )
-              ],
-            ),
-        error: (error, _) => Container(),
-        loading: () => const ProgressIndicatorWidget());
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: indicators(articuloImagenes.length, activePage),
+              ),
+            ],
+          ),
+      error: (error, _) => Container(),
+      loading: () => const ProgressIndicatorWidget(),
+    );
   }
 
   List<Widget> indicators(int imagesLength, currentIndex) {
-    return List<Widget>.generate(
-      imagesLength,
-      (index) {
-        return Container(
-          margin: const EdgeInsets.all(3),
-          width: 10,
-          height: 10,
-          decoration: BoxDecoration(
-              color: currentIndex == index
+    return List<Widget>.generate(imagesLength, (index) {
+      return Container(
+        margin: const EdgeInsets.all(3),
+        width: 10,
+        height: 10,
+        decoration: BoxDecoration(
+          color:
+              currentIndex == index
                   ? _isDark()
                       ? Colors.white
                       : Colors.black
                   : _isDark()
-                      ? Colors.white54
-                      : Colors.black26,
-              shape: BoxShape.circle),
-        );
-      },
-    );
+                  ? Colors.white54
+                  : Colors.black26,
+          shape: BoxShape.circle,
+        ),
+      );
+    });
   }
 
   bool _isDark() {
@@ -985,62 +1034,73 @@ class _DatosRelacionados extends StatelessWidget {
     return Column(
       children: [
         MobileCustomSeparators(
-            separatorTitle:
-                S.of(context).articulo_show_articuloDetalle_datosRelacionados),
+          separatorTitle:
+              S.of(context).articulo_show_articuloDetalle_datosRelacionados,
+        ),
         gapH8,
         DatosExtraRow(
           title: S.of(context).articulo_show_articuloPreciosTarifa_titulo,
-          navigationTo: () => context.router.push(
-            ArticuloPrecioTarifaRoute(
-              articuloId: articulo.id,
-              description:
-                  getDescriptionArticuloInLocalLanguage(articulo: articulo),
-            ),
-          ),
+          navigationTo:
+              () => context.router.push(
+                ArticuloPrecioTarifaRoute(
+                  articuloId: articulo.id,
+                  description: getDescriptionArticuloInLocalLanguage(
+                    articulo: articulo,
+                  ),
+                ),
+              ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).articulo_show_articuloGruposNetos_titulo,
-          navigationTo: () => context.router.push(
-            ArticuloGrupoNetoRoute(
-              articuloId: articulo.id,
-              description:
-                  getDescriptionArticuloInLocalLanguage(articulo: articulo),
-            ),
-          ),
+          navigationTo:
+              () => context.router.push(
+                ArticuloGrupoNetoRoute(
+                  articuloId: articulo.id,
+                  description: getDescriptionArticuloInLocalLanguage(
+                    articulo: articulo,
+                  ),
+                ),
+              ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).articulo_show_articuloComponentes_titulo,
-          navigationTo: () => context.router.push(
-            ArticuloComponenteRoute(
-              articuloId: articulo.id,
-              description:
-                  getDescriptionArticuloInLocalLanguage(articulo: articulo),
-            ),
-          ),
+          navigationTo:
+              () => context.router.push(
+                ArticuloComponenteRoute(
+                  articuloId: articulo.id,
+                  description: getDescriptionArticuloInLocalLanguage(
+                    articulo: articulo,
+                  ),
+                ),
+              ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).articulo_show_articuloRecambio_titulo,
-          navigationTo: () => context.router.push(
-            ArticuloRecambioRoute(
-              articuloId: articulo.id,
-              description:
-                  getDescriptionArticuloInLocalLanguage(articulo: articulo),
-            ),
-          ),
+          navigationTo:
+              () => context.router.push(
+                ArticuloRecambioRoute(
+                  articuloId: articulo.id,
+                  description: getDescriptionArticuloInLocalLanguage(
+                    articulo: articulo,
+                  ),
+                ),
+              ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).articulo_show_articuloSustitutivo_titulo,
-          navigationTo: () => context.router.push(
-            ArticuloSustitutivoRoute(
-              articuloId: articulo.id,
-              description:
-                  getDescriptionArticuloInLocalLanguage(articulo: articulo),
-            ),
-          ),
+          navigationTo:
+              () => context.router.push(
+                ArticuloSustitutivoRoute(
+                  articuloId: articulo.id,
+                  description: getDescriptionArticuloInLocalLanguage(
+                    articulo: articulo,
+                  ),
+                ),
+              ),
         ),
         gapH8,
       ],
@@ -1056,66 +1116,78 @@ class _Consultas extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      MobileCustomSeparators(
-          separatorTitle:
-              S.of(context).articulo_show_articuloDetalle_consultas),
-      gapH8,
-      DatosExtraRow(
-        title: S.of(context).articulo_show_articuloPedidoVenta_titulo,
-        navigationTo: () => context.router.push(
-          ArticuloPedidoVentaRoute(
-            articuloId: articulo.id,
-            description:
-                getDescriptionArticuloInLocalLanguage(articulo: articulo),
-          ),
+    return Column(
+      children: [
+        MobileCustomSeparators(
+          separatorTitle: S.of(context).articulo_show_articuloDetalle_consultas,
         ),
-      ),
-      const Divider(),
-      DatosExtraRow(
-        title: S.of(context).articulo_show_articuloVentasMes_titulo,
-        navigationTo: () => context.router.push(
-          ArticuloVentasMesRoute(
-            articuloId: articulo.id,
-            descripcion:
-                getDescriptionArticuloInLocalLanguage(articulo: articulo),
-          ),
+        gapH8,
+        DatosExtraRow(
+          title: S.of(context).articulo_show_articuloPedidoVenta_titulo,
+          navigationTo:
+              () => context.router.push(
+                ArticuloPedidoVentaRoute(
+                  articuloId: articulo.id,
+                  description: getDescriptionArticuloInLocalLanguage(
+                    articulo: articulo,
+                  ),
+                ),
+              ),
         ),
-      ),
-      const Divider(),
-      DatosExtraRow(
-        title: S.of(context).articulo_show_articuloVentasCliente_titulo,
-        navigationTo: () => context.router.push(
-          ArticuloVentasClienteRoute(
-            articuloId: articulo.id,
-            description:
-                getDescriptionArticuloInLocalLanguage(articulo: articulo),
-          ),
+        const Divider(),
+        DatosExtraRow(
+          title: S.of(context).articulo_show_articuloVentasMes_titulo,
+          navigationTo:
+              () => context.router.push(
+                ArticuloVentasMesRoute(
+                  articuloId: articulo.id,
+                  descripcion: getDescriptionArticuloInLocalLanguage(
+                    articulo: articulo,
+                  ),
+                ),
+              ),
         ),
-      ),
-      const Divider(),
-      DatosExtraRow(
-        title: S.of(context).ultimosPrecios_titulo,
-        navigationTo: () => context.router.push(
-          ArticuloUltimosPreciosRoute(
-            articuloId: articulo.id,
-            description:
-                getDescriptionArticuloInLocalLanguage(articulo: articulo),
-          ),
+        const Divider(),
+        DatosExtraRow(
+          title: S.of(context).articulo_show_articuloVentasCliente_titulo,
+          navigationTo:
+              () => context.router.push(
+                ArticuloVentasClienteRoute(
+                  articuloId: articulo.id,
+                  description: getDescriptionArticuloInLocalLanguage(
+                    articulo: articulo,
+                  ),
+                ),
+              ),
         ),
-      ),
-      const Divider(),
-      DatosExtraRow(
-        title: S.of(context).articulo_show_articuloDocumentos_titulo,
-        navigationTo: () => context.router.push(
-          ArticuloDocumentoRoute(
-            articuloId: articulo.id,
-            description:
-                getDescriptionArticuloInLocalLanguage(articulo: articulo),
-          ),
+        const Divider(),
+        DatosExtraRow(
+          title: S.of(context).ultimosPrecios_titulo,
+          navigationTo:
+              () => context.router.push(
+                ArticuloUltimosPreciosRoute(
+                  articuloId: articulo.id,
+                  description: getDescriptionArticuloInLocalLanguage(
+                    articulo: articulo,
+                  ),
+                ),
+              ),
         ),
-      ),
-    ]);
+        const Divider(),
+        DatosExtraRow(
+          title: S.of(context).articulo_show_articuloDocumentos_titulo,
+          navigationTo:
+              () => context.router.push(
+                ArticuloDocumentoRoute(
+                  articuloId: articulo.id,
+                  description: getDescriptionArticuloInLocalLanguage(
+                    articulo: articulo,
+                  ),
+                ),
+              ),
+        ),
+      ],
+    );
   }
 }
 
@@ -1139,11 +1211,7 @@ class _SummaryTextWidgetState extends State<SummaryTextWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(
-        left: 16.0,
-        right: 16.0,
-        top: 16,
-      ),
+      padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 16),
       child: Column(
         children: [
           Row(
@@ -1154,25 +1222,32 @@ class _SummaryTextWidgetState extends State<SummaryTextWidget> {
                   selectionControls: MaterialTextSelectionControls(),
                   getSummaryInLocalLanguage(articulo: widget.articulo)!,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      overflow: (showAllText) ? null : TextOverflow.ellipsis),
+                    overflow: (showAllText) ? null : TextOverflow.ellipsis,
+                  ),
                   maxLines: (showAllText) ? null : 3,
                 ),
               ),
               gapW8,
               IconButton(
-                onPressed: () => showAllResumenes(
-                    context: context, articulo: widget.articulo),
+                onPressed:
+                    () => showAllResumenes(
+                      context: context,
+                      articulo: widget.articulo,
+                    ),
                 icon: const Icon(Icons.info),
-                visualDensity:
-                    const VisualDensity(vertical: -4, horizontal: -4),
-              )
+                visualDensity: const VisualDensity(
+                  vertical: -4,
+                  horizontal: -4,
+                ),
+              ),
             ],
           ),
           IconButton(
             onPressed: () => showAllSummaryText(),
-            icon: (showAllText)
-                ? const Icon(Icons.arrow_drop_up)
-                : const Icon(Icons.arrow_drop_down),
+            icon:
+                (showAllText)
+                    ? const Icon(Icons.arrow_drop_up)
+                    : const Icon(Icons.arrow_drop_down),
           ),
         ],
       ),
@@ -1185,8 +1260,10 @@ class _SummaryTextWidgetState extends State<SummaryTextWidget> {
     });
   }
 
-  void showAllResumenes(
-      {required BuildContext context, required Articulo articulo}) {
+  void showAllResumenes({
+    required BuildContext context,
+    required Articulo articulo,
+  }) {
     showDialog(
       context: context,
       builder: (context) => _ArticluloResumenDialog(articulo: articulo),
@@ -1205,8 +1282,8 @@ class _ArticuloAnalisis extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         MobileCustomSeparators(
-            separatorTitle:
-                S.of(context).articulo_show_articuloDetalle_analisis),
+          separatorTitle: S.of(context).articulo_show_articuloDetalle_analisis,
+        ),
         gapH8,
         Padding(
           padding: const EdgeInsets.all(16),
@@ -1215,9 +1292,7 @@ class _ArticuloAnalisis extends StatelessWidget {
             children: [
               _VentasRowWidget(articulo: articulo),
               gapH8,
-              _MargenRowWidget(
-                articulo: articulo,
-              ),
+              _MargenRowWidget(articulo: articulo),
             ],
           ),
         ),
@@ -1227,9 +1302,7 @@ class _ArticuloAnalisis extends StatelessWidget {
 }
 
 class _VentasRowWidget extends StatelessWidget {
-  const _VentasRowWidget({
-    required this.articulo,
-  });
+  const _VentasRowWidget({required this.articulo});
 
   final Articulo articulo;
 
@@ -1240,10 +1313,9 @@ class _VentasRowWidget extends StatelessWidget {
       children: [
         Text(
           S.of(context).articulo_show_articuloDetalle_ventas,
-          style: Theme.of(context)
-              .textTheme
-              .titleSmall!
-              .copyWith(color: Theme.of(context).textTheme.bodySmall!.color),
+          style: Theme.of(context).textTheme.titleSmall!.copyWith(
+            color: Theme.of(context).textTheme.bodySmall!.color,
+          ),
         ),
         gapH4,
         Row(
@@ -1252,9 +1324,12 @@ class _VentasRowWidget extends StatelessWidget {
             Expanded(
               child: Column(
                 children: [
-                  Text(S.of(context).articulo_show_articuloDetalle_anoActual,
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: Theme.of(context).textTheme.bodySmall!.color)),
+                  Text(
+                    S.of(context).articulo_show_articuloDetalle_anoActual,
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      color: Theme.of(context).textTheme.bodySmall!.color,
+                    ),
+                  ),
                   SelectableTextWidget(
                     formatPrecios(
                       precio: articulo.ventasAnyoActual,
@@ -1267,9 +1342,12 @@ class _VentasRowWidget extends StatelessWidget {
             Expanded(
               child: Column(
                 children: [
-                  Text(S.of(context).articulo_show_articuloDetalle_anoAnterior,
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: Theme.of(context).textTheme.bodySmall!.color)),
+                  Text(
+                    S.of(context).articulo_show_articuloDetalle_anoAnterior,
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      color: Theme.of(context).textTheme.bodySmall!.color,
+                    ),
+                  ),
                   SelectableTextWidget(
                     formatPrecios(
                       precio: articulo.ventasAnyoAnterior,
@@ -1282,9 +1360,12 @@ class _VentasRowWidget extends StatelessWidget {
             Expanded(
               child: Column(
                 children: [
-                  Text(S.of(context).articulo_show_articuloDetalle_hace2Anos,
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: Theme.of(context).textTheme.bodySmall!.color)),
+                  Text(
+                    S.of(context).articulo_show_articuloDetalle_hace2Anos,
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      color: Theme.of(context).textTheme.bodySmall!.color,
+                    ),
+                  ),
                   SelectableTextWidget(
                     formatPrecios(
                       precio: articulo.ventasHaceDosAnyos,
@@ -1302,9 +1383,7 @@ class _VentasRowWidget extends StatelessWidget {
 }
 
 class _MargenRowWidget extends StatelessWidget {
-  const _MargenRowWidget({
-    required this.articulo,
-  });
+  const _MargenRowWidget({required this.articulo});
 
   final Articulo articulo;
 
@@ -1315,10 +1394,9 @@ class _MargenRowWidget extends StatelessWidget {
       children: [
         Text(
           S.of(context).articulo_show_articuloDetalle_margen,
-          style: Theme.of(context)
-              .textTheme
-              .titleSmall!
-              .copyWith(color: Theme.of(context).textTheme.bodySmall!.color),
+          style: Theme.of(context).textTheme.titleSmall!.copyWith(
+            color: Theme.of(context).textTheme.bodySmall!.color,
+          ),
         ),
         gapH4,
         Row(
@@ -1327,9 +1405,12 @@ class _MargenRowWidget extends StatelessWidget {
             Expanded(
               child: Column(
                 children: [
-                  Text(S.of(context).articulo_show_articuloDetalle_anoActual,
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: Theme.of(context).textTheme.bodySmall!.color)),
+                  Text(
+                    S.of(context).articulo_show_articuloDetalle_anoActual,
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      color: Theme.of(context).textTheme.bodySmall!.color,
+                    ),
+                  ),
                   SelectableTextWidget(
                     '${numberFormatDecimal(articulo.margenAnyoActual)}%',
                   ),
@@ -1339,9 +1420,12 @@ class _MargenRowWidget extends StatelessWidget {
             Expanded(
               child: Column(
                 children: [
-                  Text(S.of(context).articulo_show_articuloDetalle_anoAnterior,
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: Theme.of(context).textTheme.bodySmall!.color)),
+                  Text(
+                    S.of(context).articulo_show_articuloDetalle_anoAnterior,
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      color: Theme.of(context).textTheme.bodySmall!.color,
+                    ),
+                  ),
                   SelectableTextWidget(
                     '${numberFormatDecimal(articulo.margenAnyoAnterior)}%',
                   ),
@@ -1351,9 +1435,12 @@ class _MargenRowWidget extends StatelessWidget {
             Expanded(
               child: Column(
                 children: [
-                  Text(S.of(context).articulo_show_articuloDetalle_hace2Anos,
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: Theme.of(context).textTheme.bodySmall!.color)),
+                  Text(
+                    S.of(context).articulo_show_articuloDetalle_hace2Anos,
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      color: Theme.of(context).textTheme.bodySmall!.color,
+                    ),
+                  ),
                   SelectableTextWidget(
                     '${numberFormatDecimal(articulo.margenHaceDosAnyos)}%',
                   ),

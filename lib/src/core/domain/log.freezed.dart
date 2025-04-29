@@ -12,7 +12,8 @@ part of 'log.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$Log {
@@ -40,19 +41,20 @@ abstract class $LogCopyWith<$Res> {
   factory $LogCopyWith(Log value, $Res Function(Log) then) =
       _$LogCopyWithImpl<$Res, Log>;
   @useResult
-  $Res call(
-      {int? id,
-      String level,
-      String message,
-      String? error,
-      String appId,
-      String appBuild,
-      String appBuildName,
-      String userId,
-      String device,
-      String? userEmail,
-      String? userName,
-      DateTime timestamp});
+  $Res call({
+    int? id,
+    String level,
+    String message,
+    String? error,
+    String appId,
+    String appBuild,
+    String appBuildName,
+    String userId,
+    String device,
+    String? userEmail,
+    String? userName,
+    DateTime timestamp,
+  });
 }
 
 /// @nodoc
@@ -82,56 +84,71 @@ class _$LogCopyWithImpl<$Res, $Val extends Log> implements $LogCopyWith<$Res> {
     Object? userName = freezed,
     Object? timestamp = null,
   }) {
-    return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      level: null == level
-          ? _value.level
-          : level // ignore: cast_nullable_to_non_nullable
-              as String,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      error: freezed == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String?,
-      appId: null == appId
-          ? _value.appId
-          : appId // ignore: cast_nullable_to_non_nullable
-              as String,
-      appBuild: null == appBuild
-          ? _value.appBuild
-          : appBuild // ignore: cast_nullable_to_non_nullable
-              as String,
-      appBuildName: null == appBuildName
-          ? _value.appBuildName
-          : appBuildName // ignore: cast_nullable_to_non_nullable
-              as String,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      device: null == device
-          ? _value.device
-          : device // ignore: cast_nullable_to_non_nullable
-              as String,
-      userEmail: freezed == userEmail
-          ? _value.userEmail
-          : userEmail // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userName: freezed == userName
-          ? _value.userName
-          : userName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      timestamp: null == timestamp
-          ? _value.timestamp
-          : timestamp // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id:
+                freezed == id
+                    ? _value.id
+                    : id // ignore: cast_nullable_to_non_nullable
+                        as int?,
+            level:
+                null == level
+                    ? _value.level
+                    : level // ignore: cast_nullable_to_non_nullable
+                        as String,
+            message:
+                null == message
+                    ? _value.message
+                    : message // ignore: cast_nullable_to_non_nullable
+                        as String,
+            error:
+                freezed == error
+                    ? _value.error
+                    : error // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            appId:
+                null == appId
+                    ? _value.appId
+                    : appId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            appBuild:
+                null == appBuild
+                    ? _value.appBuild
+                    : appBuild // ignore: cast_nullable_to_non_nullable
+                        as String,
+            appBuildName:
+                null == appBuildName
+                    ? _value.appBuildName
+                    : appBuildName // ignore: cast_nullable_to_non_nullable
+                        as String,
+            userId:
+                null == userId
+                    ? _value.userId
+                    : userId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            device:
+                null == device
+                    ? _value.device
+                    : device // ignore: cast_nullable_to_non_nullable
+                        as String,
+            userEmail:
+                freezed == userEmail
+                    ? _value.userEmail
+                    : userEmail // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            userName:
+                freezed == userName
+                    ? _value.userName
+                    : userName // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            timestamp:
+                null == timestamp
+                    ? _value.timestamp
+                    : timestamp // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -141,26 +158,27 @@ abstract class _$$LogImplCopyWith<$Res> implements $LogCopyWith<$Res> {
       __$$LogImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int? id,
-      String level,
-      String message,
-      String? error,
-      String appId,
-      String appBuild,
-      String appBuildName,
-      String userId,
-      String device,
-      String? userEmail,
-      String? userName,
-      DateTime timestamp});
+  $Res call({
+    int? id,
+    String level,
+    String message,
+    String? error,
+    String appId,
+    String appBuild,
+    String appBuildName,
+    String userId,
+    String device,
+    String? userEmail,
+    String? userName,
+    DateTime timestamp,
+  });
 }
 
 /// @nodoc
 class __$$LogImplCopyWithImpl<$Res> extends _$LogCopyWithImpl<$Res, _$LogImpl>
     implements _$$LogImplCopyWith<$Res> {
   __$$LogImplCopyWithImpl(_$LogImpl _value, $Res Function(_$LogImpl) _then)
-      : super(_value, _then);
+    : super(_value, _then);
 
   /// Create a copy of Log
   /// with the given fields replaced by the non-null parameter values.
@@ -180,76 +198,90 @@ class __$$LogImplCopyWithImpl<$Res> extends _$LogCopyWithImpl<$Res, _$LogImpl>
     Object? userName = freezed,
     Object? timestamp = null,
   }) {
-    return _then(_$LogImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      level: null == level
-          ? _value.level
-          : level // ignore: cast_nullable_to_non_nullable
-              as String,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      error: freezed == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String?,
-      appId: null == appId
-          ? _value.appId
-          : appId // ignore: cast_nullable_to_non_nullable
-              as String,
-      appBuild: null == appBuild
-          ? _value.appBuild
-          : appBuild // ignore: cast_nullable_to_non_nullable
-              as String,
-      appBuildName: null == appBuildName
-          ? _value.appBuildName
-          : appBuildName // ignore: cast_nullable_to_non_nullable
-              as String,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      device: null == device
-          ? _value.device
-          : device // ignore: cast_nullable_to_non_nullable
-              as String,
-      userEmail: freezed == userEmail
-          ? _value.userEmail
-          : userEmail // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userName: freezed == userName
-          ? _value.userName
-          : userName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      timestamp: null == timestamp
-          ? _value.timestamp
-          : timestamp // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ));
+    return _then(
+      _$LogImpl(
+        id:
+            freezed == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                    as int?,
+        level:
+            null == level
+                ? _value.level
+                : level // ignore: cast_nullable_to_non_nullable
+                    as String,
+        message:
+            null == message
+                ? _value.message
+                : message // ignore: cast_nullable_to_non_nullable
+                    as String,
+        error:
+            freezed == error
+                ? _value.error
+                : error // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        appId:
+            null == appId
+                ? _value.appId
+                : appId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        appBuild:
+            null == appBuild
+                ? _value.appBuild
+                : appBuild // ignore: cast_nullable_to_non_nullable
+                    as String,
+        appBuildName:
+            null == appBuildName
+                ? _value.appBuildName
+                : appBuildName // ignore: cast_nullable_to_non_nullable
+                    as String,
+        userId:
+            null == userId
+                ? _value.userId
+                : userId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        device:
+            null == device
+                ? _value.device
+                : device // ignore: cast_nullable_to_non_nullable
+                    as String,
+        userEmail:
+            freezed == userEmail
+                ? _value.userEmail
+                : userEmail // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        userName:
+            freezed == userName
+                ? _value.userName
+                : userName // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        timestamp:
+            null == timestamp
+                ? _value.timestamp
+                : timestamp // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$LogImpl extends _Log {
-  const _$LogImpl(
-      {this.id,
-      required this.level,
-      required this.message,
-      this.error,
-      required this.appId,
-      required this.appBuild,
-      required this.appBuildName,
-      required this.userId,
-      required this.device,
-      this.userEmail,
-      this.userName,
-      required this.timestamp})
-      : super._();
+  const _$LogImpl({
+    this.id,
+    required this.level,
+    required this.message,
+    this.error,
+    required this.appId,
+    required this.appBuild,
+    required this.appBuildName,
+    required this.userId,
+    required this.device,
+    this.userEmail,
+    this.userName,
+    required this.timestamp,
+  }) : super._();
 
   @override
   final int? id;
@@ -306,8 +338,21 @@ class _$LogImpl extends _Log {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, level, message, error, appId,
-      appBuild, appBuildName, userId, device, userEmail, userName, timestamp);
+  int get hashCode => Object.hash(
+    runtimeType,
+    id,
+    level,
+    message,
+    error,
+    appId,
+    appBuild,
+    appBuildName,
+    userId,
+    device,
+    userEmail,
+    userName,
+    timestamp,
+  );
 
   /// Create a copy of Log
   /// with the given fields replaced by the non-null parameter values.
@@ -319,19 +364,20 @@ class _$LogImpl extends _Log {
 }
 
 abstract class _Log extends Log {
-  const factory _Log(
-      {final int? id,
-      required final String level,
-      required final String message,
-      final String? error,
-      required final String appId,
-      required final String appBuild,
-      required final String appBuildName,
-      required final String userId,
-      required final String device,
-      final String? userEmail,
-      final String? userName,
-      required final DateTime timestamp}) = _$LogImpl;
+  const factory _Log({
+    final int? id,
+    required final String level,
+    required final String message,
+    final String? error,
+    required final String appId,
+    required final String appBuild,
+    required final String appBuildName,
+    required final String userId,
+    required final String device,
+    final String? userEmail,
+    final String? userName,
+    required final DateTime timestamp,
+  }) = _$LogImpl;
   const _Log._() : super._();
 
   @override

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class DatosExtraRow extends StatelessWidget {
-  const DatosExtraRow(
-      {super.key, required this.title, required this.navigationTo});
+  const DatosExtraRow({
+    super.key,
+    required this.title,
+    required this.navigationTo,
+  });
   final String title;
 
   final Function() navigationTo;
@@ -19,14 +22,12 @@ class DatosExtraRow extends StatelessWidget {
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(title),
-              ],
+              children: [Text(title)],
             ),
             IconButton(
               icon: const Icon(Icons.navigate_next),
               onPressed: () => navigationTo(),
-            )
+            ),
           ],
         ),
       ),

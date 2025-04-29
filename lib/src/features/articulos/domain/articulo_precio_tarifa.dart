@@ -6,14 +6,15 @@ part 'articulo_precio_tarifa.freezed.dart';
 @freezed
 class ArticuloPrecioTarifa with _$ArticuloPrecioTarifa {
   const ArticuloPrecioTarifa._();
-  const factory ArticuloPrecioTarifa(
-      {required String articuloId,
-      required String tarifaId,
-      String? tarifaDescripcion,
-      required int cantidadDesde,
-      required Money precio,
-      required String divisaId,
-      required int tipoPrecio,
-      required DateTime lastUpdated,
-      required bool deleted}) = _ArticuloPrecioTarifa;
+  const factory ArticuloPrecioTarifa({
+    required String articuloId,
+    required String tarifaId,
+    String? tarifaDescripcion,
+    required int cantidadDesde,
+    required Money precio,
+    required String divisaId,
+    required int tipoPrecio,
+    required DateTime lastUpdated,
+    required bool deleted,
+  }) = _ArticuloPrecioTarifa;
 }

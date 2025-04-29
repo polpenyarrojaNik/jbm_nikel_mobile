@@ -12,7 +12,8 @@ part of 'articulo_imagen.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ArticuloImagen {
@@ -30,8 +31,9 @@ mixin _$ArticuloImagen {
 /// @nodoc
 abstract class $ArticuloImagenCopyWith<$Res> {
   factory $ArticuloImagenCopyWith(
-          ArticuloImagen value, $Res Function(ArticuloImagen) then) =
-      _$ArticuloImagenCopyWithImpl<$Res, ArticuloImagen>;
+    ArticuloImagen value,
+    $Res Function(ArticuloImagen) then,
+  ) = _$ArticuloImagenCopyWithImpl<$Res, ArticuloImagen>;
   @useResult
   $Res call({String articuloId, String nombreArchivo, String url});
 }
@@ -55,29 +57,36 @@ class _$ArticuloImagenCopyWithImpl<$Res, $Val extends ArticuloImagen>
     Object? nombreArchivo = null,
     Object? url = null,
   }) {
-    return _then(_value.copyWith(
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      nombreArchivo: null == nombreArchivo
-          ? _value.nombreArchivo
-          : nombreArchivo // ignore: cast_nullable_to_non_nullable
-              as String,
-      url: null == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            articuloId:
+                null == articuloId
+                    ? _value.articuloId
+                    : articuloId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            nombreArchivo:
+                null == nombreArchivo
+                    ? _value.nombreArchivo
+                    : nombreArchivo // ignore: cast_nullable_to_non_nullable
+                        as String,
+            url:
+                null == url
+                    ? _value.url
+                    : url // ignore: cast_nullable_to_non_nullable
+                        as String,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$ArticuloImagenImplCopyWith<$Res>
     implements $ArticuloImagenCopyWith<$Res> {
-  factory _$$ArticuloImagenImplCopyWith(_$ArticuloImagenImpl value,
-          $Res Function(_$ArticuloImagenImpl) then) =
-      __$$ArticuloImagenImplCopyWithImpl<$Res>;
+  factory _$$ArticuloImagenImplCopyWith(
+    _$ArticuloImagenImpl value,
+    $Res Function(_$ArticuloImagenImpl) then,
+  ) = __$$ArticuloImagenImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String articuloId, String nombreArchivo, String url});
@@ -88,8 +97,9 @@ class __$$ArticuloImagenImplCopyWithImpl<$Res>
     extends _$ArticuloImagenCopyWithImpl<$Res, _$ArticuloImagenImpl>
     implements _$$ArticuloImagenImplCopyWith<$Res> {
   __$$ArticuloImagenImplCopyWithImpl(
-      _$ArticuloImagenImpl _value, $Res Function(_$ArticuloImagenImpl) _then)
-      : super(_value, _then);
+    _$ArticuloImagenImpl _value,
+    $Res Function(_$ArticuloImagenImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ArticuloImagen
   /// with the given fields replaced by the non-null parameter values.
@@ -100,31 +110,36 @@ class __$$ArticuloImagenImplCopyWithImpl<$Res>
     Object? nombreArchivo = null,
     Object? url = null,
   }) {
-    return _then(_$ArticuloImagenImpl(
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      nombreArchivo: null == nombreArchivo
-          ? _value.nombreArchivo
-          : nombreArchivo // ignore: cast_nullable_to_non_nullable
-              as String,
-      url: null == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$ArticuloImagenImpl(
+        articuloId:
+            null == articuloId
+                ? _value.articuloId
+                : articuloId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        nombreArchivo:
+            null == nombreArchivo
+                ? _value.nombreArchivo
+                : nombreArchivo // ignore: cast_nullable_to_non_nullable
+                    as String,
+        url:
+            null == url
+                ? _value.url
+                : url // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ArticuloImagenImpl extends _ArticuloImagen {
-  const _$ArticuloImagenImpl(
-      {required this.articuloId,
-      required this.nombreArchivo,
-      required this.url})
-      : super._();
+  const _$ArticuloImagenImpl({
+    required this.articuloId,
+    required this.nombreArchivo,
+    required this.url,
+  }) : super._();
 
   @override
   final String articuloId;
@@ -160,14 +175,17 @@ class _$ArticuloImagenImpl extends _ArticuloImagen {
   @pragma('vm:prefer-inline')
   _$$ArticuloImagenImplCopyWith<_$ArticuloImagenImpl> get copyWith =>
       __$$ArticuloImagenImplCopyWithImpl<_$ArticuloImagenImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _ArticuloImagen extends ArticuloImagen {
-  const factory _ArticuloImagen(
-      {required final String articuloId,
-      required final String nombreArchivo,
-      required final String url}) = _$ArticuloImagenImpl;
+  const factory _ArticuloImagen({
+    required final String articuloId,
+    required final String nombreArchivo,
+    required final String url,
+  }) = _$ArticuloImagenImpl;
   const _ArticuloImagen._() : super._();
 
   @override

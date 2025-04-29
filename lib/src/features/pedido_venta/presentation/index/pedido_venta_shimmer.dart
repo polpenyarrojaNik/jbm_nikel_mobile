@@ -17,20 +17,14 @@ class PedidoVentaShimmer extends StatelessWidget {
         color: Colors.transparent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(4), // if you need this
-          side: BorderSide(
-            color: Colors.grey.withValues(alpha: 0.2),
-            width: 1,
-          ),
+          side: BorderSide(color: Colors.grey.withValues(alpha: 0.2), width: 1),
         ),
         child: SizedBox(
           height: 90,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Container(
-                width: 8,
-                color: Colors.grey,
-              ),
+              Container(width: 8, color: Colors.grey),
               Expanded(
                 flex: 2,
                 child: Container(
@@ -117,7 +111,7 @@ class PedidoVentaShimmer extends StatelessWidget {
                     ],
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),

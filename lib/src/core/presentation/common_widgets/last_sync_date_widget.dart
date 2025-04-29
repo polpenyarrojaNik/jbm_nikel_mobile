@@ -12,9 +12,10 @@ class UltimaSyncDateWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 4, right: 16, left: 16, bottom: 8),
       child: Text(
-          '${S.of(context).commonWidgets_ultimaSincronizacion}: ${dateFormatter(ultimaSyncDate.toLocal().toIso8601String(), allDay: true)}',
-          textAlign: TextAlign.end,
-          style: Theme.of(context).textTheme.bodySmall),
+        '${S.of(context).commonWidgets_ultimaSincronizacion}: ${dateFormatter(ultimaSyncDate.toLocal().toIso8601String(), allDay: true)}',
+        textAlign: TextAlign.end,
+        style: Theme.of(context).textTheme.bodySmall,
+      ),
     );
   }
 }

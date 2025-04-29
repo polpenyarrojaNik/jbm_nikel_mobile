@@ -32,7 +32,8 @@ class ClienteContactoDTO
       _$ClienteContactoDTOFromJson(json);
 
   factory ClienteContactoDTO.fromContactoImp(
-      ClienteContactoImpDTO clienteContactoImpDto) {
+    ClienteContactoImpDTO clienteContactoImpDto,
+  ) {
     return ClienteContactoDTO(
       clienteId: clienteContactoImpDto.clienteId,
       contactoId: clienteContactoImpDto.contactoId,
@@ -48,8 +49,11 @@ class ClienteContactoDTO
     );
   }
 
-  ClienteContacto toDomain(
-      {bool enviado = true, bool tratado = true, String? contactoImpGuid}) {
+  ClienteContacto toDomain({
+    bool enviado = true,
+    bool tratado = true,
+    String? contactoImpGuid,
+  }) {
     return ClienteContacto(
       clienteId: clienteId,
       contactoId: contactoId,

@@ -13,8 +13,11 @@ import '../../domain/articulo_top.dart';
 
 @RoutePage()
 class ClienteArticulosTopListPage extends ConsumerWidget {
-  const ClienteArticulosTopListPage(
-      {super.key, required this.clienteId, required this.nombreCliente});
+  const ClienteArticulosTopListPage({
+    super.key,
+    required this.clienteId,
+    required this.nombreCliente,
+  });
 
   final String clienteId;
   final String? nombreCliente;
@@ -37,14 +40,16 @@ class ClienteArticulosTopListPage extends ConsumerWidget {
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data: (articulosTopList) => (articulosTopList.isNotEmpty)
-                ? ArticulosTopDataTable(articulosTopList: articulosTopList)
-                : Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(S.of(context).sinResultados),
-                    ],
-                  ),
+            data:
+                (articulosTopList) =>
+                    (articulosTopList.isNotEmpty)
+                        ? ArticulosTopDataTable(
+                          articulosTopList: articulosTopList,
+                        )
+                        : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [Text(S.of(context).sinResultados)],
+                        ),
           ),
         ],
       ),
@@ -88,37 +93,44 @@ class _ArticulosTopDataTableState extends State<ArticulosTopDataTable> {
     return [
       DataColumn(
         label: Expanded(
-          child: Text(S.of(context).cliente_show_clienteArticulosTop_num,
-              textAlign: TextAlign.center),
+          child: Text(
+            S.of(context).cliente_show_clienteArticulosTop_num,
+            textAlign: TextAlign.center,
+          ),
         ),
         numeric: true,
       ),
       DataColumn(
-        label: Text(S.of(context).cliente_show_clienteArticulosTop_articulo,
-            textAlign: TextAlign.left),
-        numeric: false,
-      ),
-      DataColumn(
-        label: Expanded(
-          child: Text(
-              S.of(context).cliente_show_clienteArticulosTop_descripcion,
-              textAlign: TextAlign.left),
+        label: Text(
+          S.of(context).cliente_show_clienteArticulosTop_articulo,
+          textAlign: TextAlign.left,
         ),
         numeric: false,
       ),
       DataColumn(
         label: Expanded(
           child: Text(
-              S.of(context).cliente_show_clienteArticulosTop_ventasTotal,
-              textAlign: TextAlign.right),
+            S.of(context).cliente_show_clienteArticulosTop_descripcion,
+            textAlign: TextAlign.left,
+          ),
         ),
         numeric: false,
       ),
       DataColumn(
         label: Expanded(
           child: Text(
-              S.of(context).cliente_show_clienteArticulosTop_ventasCliente,
-              textAlign: TextAlign.right),
+            S.of(context).cliente_show_clienteArticulosTop_ventasTotal,
+            textAlign: TextAlign.right,
+          ),
+        ),
+        numeric: false,
+      ),
+      DataColumn(
+        label: Expanded(
+          child: Text(
+            S.of(context).cliente_show_clienteArticulosTop_ventasCliente,
+            textAlign: TextAlign.right,
+          ),
         ),
         numeric: false,
       ),
@@ -131,16 +143,13 @@ class _ArticulosTopDataTableState extends State<ArticulosTopDataTable> {
     for (var i = 0; i < articulosTopList.length; i++) {
       dataRows.add(
         DataRow(
-          onLongPress: () => setState(() {
-            selectedRow = i;
-          }),
+          onLongPress:
+              () => setState(() {
+                selectedRow = i;
+              }),
           selected: selectedRow == i,
           cells: [
-            DataCell(
-              Center(
-                child: Text((i + 1).toString()),
-              ),
-            ),
+            DataCell(Center(child: Text((i + 1).toString()))),
             DataCell(
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,

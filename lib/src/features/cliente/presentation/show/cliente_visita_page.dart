@@ -15,8 +15,11 @@ import '../../infrastructure/cliente_repository.dart';
 
 @RoutePage()
 class ClienteVisitasPage extends ConsumerWidget {
-  const ClienteVisitasPage(
-      {super.key, required this.clienteId, required this.nombreCliente});
+  const ClienteVisitasPage({
+    super.key,
+    required this.clienteId,
+    required this.nombreCliente,
+  });
 
   final String clienteId;
   final String? nombreCliente;
@@ -38,22 +41,24 @@ class ClienteVisitasPage extends ConsumerWidget {
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data: (clienteVisitasList) => (clienteVisitasList.isNotEmpty)
-                ? Expanded(
-                    child: ListView.separated(
-                      itemBuilder: (context, i) => ClienteVisitaListaTile(
-                          visita: clienteVisitasList[i],
-                          navigatedFromCliente: true),
-                      separatorBuilder: (context, i) => const Divider(),
-                      itemCount: clienteVisitasList.length,
-                    ),
-                  )
-                : Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(S.of(context).sinResultados),
-                    ],
-                  ),
+            data:
+                (clienteVisitasList) =>
+                    (clienteVisitasList.isNotEmpty)
+                        ? Expanded(
+                          child: ListView.separated(
+                            itemBuilder:
+                                (context, i) => ClienteVisitaListaTile(
+                                  visita: clienteVisitasList[i],
+                                  navigatedFromCliente: true,
+                                ),
+                            separatorBuilder: (context, i) => const Divider(),
+                            itemCount: clienteVisitasList.length,
+                          ),
+                        )
+                        : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [Text(S.of(context).sinResultados)],
+                        ),
           ),
         ],
       ),
@@ -62,8 +67,11 @@ class ClienteVisitasPage extends ConsumerWidget {
 }
 
 class ClienteVisitaListaTile extends StatelessWidget {
-  const ClienteVisitaListaTile(
-      {super.key, required this.visita, required this.navigatedFromCliente});
+  const ClienteVisitaListaTile({
+    super.key,
+    required this.visita,
+    required this.navigatedFromCliente,
+  });
 
   final Visita visita;
   final bool navigatedFromCliente;
@@ -79,17 +87,25 @@ class ClienteVisitaListaTile extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                dateFormatter(visita.fecha.toLocal().toIso8601String()),
-              ),
+              Text(dateFormatter(visita.fecha.toLocal().toIso8601String())),
               if (getEstadoVisitaLocal(
-                      context, visita.enviada, visita.tratada) !=
+                    context,
+                    visita.enviada,
+                    visita.tratada,
+                  ) !=
                   null)
                 ChipContainer(
-                  text: getEstadoVisitaLocal(
-                      context, visita.enviada, visita.tratada)!,
+                  text:
+                      getEstadoVisitaLocal(
+                        context,
+                        visita.enviada,
+                        visita.tratada,
+                      )!,
                   color: getColorEstadoVisitaLocal(
-                      context, visita.enviada, visita.tratada),
+                    context,
+                    visita.enviada,
+                    visita.tratada,
+                  ),
                 ),
             ],
           ),

@@ -12,7 +12,8 @@ part of 'usuario_aux_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 UsuarioAuxDTO _$UsuarioAuxDTOFromJson(Map<String, dynamic> json) {
   return _UsuarioAuxDTO.fromJson(json);
@@ -48,17 +49,19 @@ mixin _$UsuarioAuxDTO {
 /// @nodoc
 abstract class $UsuarioAuxDTOCopyWith<$Res> {
   factory $UsuarioAuxDTOCopyWith(
-          UsuarioAuxDTO value, $Res Function(UsuarioAuxDTO) then) =
-      _$UsuarioAuxDTOCopyWithImpl<$Res, UsuarioAuxDTO>;
+    UsuarioAuxDTO value,
+    $Res Function(UsuarioAuxDTO) then,
+  ) = _$UsuarioAuxDTOCopyWithImpl<$Res, UsuarioAuxDTO>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'USUARIO_ID') String id,
-      @JsonKey(name: 'USUARIO') String usuario,
-      @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') String? nombreUsuario,
-      @JsonKey(name: 'IDIOMA_ID') String idiomaId,
-      @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') String modificarPedido,
-      @JsonKey(name: 'APP_VER_TOTAL_VENTAS') String verTotalVentas,
-      @JsonKey(name: 'MARGEN_COMERCIAL') double margenComercial});
+  $Res call({
+    @JsonKey(name: 'USUARIO_ID') String id,
+    @JsonKey(name: 'USUARIO') String usuario,
+    @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') String? nombreUsuario,
+    @JsonKey(name: 'IDIOMA_ID') String idiomaId,
+    @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') String modificarPedido,
+    @JsonKey(name: 'APP_VER_TOTAL_VENTAS') String verTotalVentas,
+    @JsonKey(name: 'MARGEN_COMERCIAL') double margenComercial,
+  });
 }
 
 /// @nodoc
@@ -84,36 +87,46 @@ class _$UsuarioAuxDTOCopyWithImpl<$Res, $Val extends UsuarioAuxDTO>
     Object? verTotalVentas = null,
     Object? margenComercial = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      usuario: null == usuario
-          ? _value.usuario
-          : usuario // ignore: cast_nullable_to_non_nullable
-              as String,
-      nombreUsuario: freezed == nombreUsuario
-          ? _value.nombreUsuario
-          : nombreUsuario // ignore: cast_nullable_to_non_nullable
-              as String?,
-      idiomaId: null == idiomaId
-          ? _value.idiomaId
-          : idiomaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      modificarPedido: null == modificarPedido
-          ? _value.modificarPedido
-          : modificarPedido // ignore: cast_nullable_to_non_nullable
-              as String,
-      verTotalVentas: null == verTotalVentas
-          ? _value.verTotalVentas
-          : verTotalVentas // ignore: cast_nullable_to_non_nullable
-              as String,
-      margenComercial: null == margenComercial
-          ? _value.margenComercial
-          : margenComercial // ignore: cast_nullable_to_non_nullable
-              as double,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id:
+                null == id
+                    ? _value.id
+                    : id // ignore: cast_nullable_to_non_nullable
+                        as String,
+            usuario:
+                null == usuario
+                    ? _value.usuario
+                    : usuario // ignore: cast_nullable_to_non_nullable
+                        as String,
+            nombreUsuario:
+                freezed == nombreUsuario
+                    ? _value.nombreUsuario
+                    : nombreUsuario // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            idiomaId:
+                null == idiomaId
+                    ? _value.idiomaId
+                    : idiomaId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            modificarPedido:
+                null == modificarPedido
+                    ? _value.modificarPedido
+                    : modificarPedido // ignore: cast_nullable_to_non_nullable
+                        as String,
+            verTotalVentas:
+                null == verTotalVentas
+                    ? _value.verTotalVentas
+                    : verTotalVentas // ignore: cast_nullable_to_non_nullable
+                        as String,
+            margenComercial:
+                null == margenComercial
+                    ? _value.margenComercial
+                    : margenComercial // ignore: cast_nullable_to_non_nullable
+                        as double,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -121,18 +134,20 @@ class _$UsuarioAuxDTOCopyWithImpl<$Res, $Val extends UsuarioAuxDTO>
 abstract class _$$UsuarioAuxDTOImplCopyWith<$Res>
     implements $UsuarioAuxDTOCopyWith<$Res> {
   factory _$$UsuarioAuxDTOImplCopyWith(
-          _$UsuarioAuxDTOImpl value, $Res Function(_$UsuarioAuxDTOImpl) then) =
-      __$$UsuarioAuxDTOImplCopyWithImpl<$Res>;
+    _$UsuarioAuxDTOImpl value,
+    $Res Function(_$UsuarioAuxDTOImpl) then,
+  ) = __$$UsuarioAuxDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'USUARIO_ID') String id,
-      @JsonKey(name: 'USUARIO') String usuario,
-      @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') String? nombreUsuario,
-      @JsonKey(name: 'IDIOMA_ID') String idiomaId,
-      @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') String modificarPedido,
-      @JsonKey(name: 'APP_VER_TOTAL_VENTAS') String verTotalVentas,
-      @JsonKey(name: 'MARGEN_COMERCIAL') double margenComercial});
+  $Res call({
+    @JsonKey(name: 'USUARIO_ID') String id,
+    @JsonKey(name: 'USUARIO') String usuario,
+    @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') String? nombreUsuario,
+    @JsonKey(name: 'IDIOMA_ID') String idiomaId,
+    @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') String modificarPedido,
+    @JsonKey(name: 'APP_VER_TOTAL_VENTAS') String verTotalVentas,
+    @JsonKey(name: 'MARGEN_COMERCIAL') double margenComercial,
+  });
 }
 
 /// @nodoc
@@ -140,8 +155,9 @@ class __$$UsuarioAuxDTOImplCopyWithImpl<$Res>
     extends _$UsuarioAuxDTOCopyWithImpl<$Res, _$UsuarioAuxDTOImpl>
     implements _$$UsuarioAuxDTOImplCopyWith<$Res> {
   __$$UsuarioAuxDTOImplCopyWithImpl(
-      _$UsuarioAuxDTOImpl _value, $Res Function(_$UsuarioAuxDTOImpl) _then)
-      : super(_value, _then);
+    _$UsuarioAuxDTOImpl _value,
+    $Res Function(_$UsuarioAuxDTOImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of UsuarioAuxDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -156,53 +172,61 @@ class __$$UsuarioAuxDTOImplCopyWithImpl<$Res>
     Object? verTotalVentas = null,
     Object? margenComercial = null,
   }) {
-    return _then(_$UsuarioAuxDTOImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      usuario: null == usuario
-          ? _value.usuario
-          : usuario // ignore: cast_nullable_to_non_nullable
-              as String,
-      nombreUsuario: freezed == nombreUsuario
-          ? _value.nombreUsuario
-          : nombreUsuario // ignore: cast_nullable_to_non_nullable
-              as String?,
-      idiomaId: null == idiomaId
-          ? _value.idiomaId
-          : idiomaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      modificarPedido: null == modificarPedido
-          ? _value.modificarPedido
-          : modificarPedido // ignore: cast_nullable_to_non_nullable
-              as String,
-      verTotalVentas: null == verTotalVentas
-          ? _value.verTotalVentas
-          : verTotalVentas // ignore: cast_nullable_to_non_nullable
-              as String,
-      margenComercial: null == margenComercial
-          ? _value.margenComercial
-          : margenComercial // ignore: cast_nullable_to_non_nullable
-              as double,
-    ));
+    return _then(
+      _$UsuarioAuxDTOImpl(
+        id:
+            null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                    as String,
+        usuario:
+            null == usuario
+                ? _value.usuario
+                : usuario // ignore: cast_nullable_to_non_nullable
+                    as String,
+        nombreUsuario:
+            freezed == nombreUsuario
+                ? _value.nombreUsuario
+                : nombreUsuario // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        idiomaId:
+            null == idiomaId
+                ? _value.idiomaId
+                : idiomaId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        modificarPedido:
+            null == modificarPedido
+                ? _value.modificarPedido
+                : modificarPedido // ignore: cast_nullable_to_non_nullable
+                    as String,
+        verTotalVentas:
+            null == verTotalVentas
+                ? _value.verTotalVentas
+                : verTotalVentas // ignore: cast_nullable_to_non_nullable
+                    as String,
+        margenComercial:
+            null == margenComercial
+                ? _value.margenComercial
+                : margenComercial // ignore: cast_nullable_to_non_nullable
+                    as double,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$UsuarioAuxDTOImpl extends _UsuarioAuxDTO {
-  const _$UsuarioAuxDTOImpl(
-      {@JsonKey(name: 'USUARIO_ID') required this.id,
-      @JsonKey(name: 'USUARIO') required this.usuario,
-      @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')
-      required this.nombreUsuario,
-      @JsonKey(name: 'IDIOMA_ID') required this.idiomaId,
-      @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')
-      required this.modificarPedido,
-      @JsonKey(name: 'APP_VER_TOTAL_VENTAS') required this.verTotalVentas,
-      @JsonKey(name: 'MARGEN_COMERCIAL') required this.margenComercial})
-      : super._();
+  const _$UsuarioAuxDTOImpl({
+    @JsonKey(name: 'USUARIO_ID') required this.id,
+    @JsonKey(name: 'USUARIO') required this.usuario,
+    @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')
+    required this.nombreUsuario,
+    @JsonKey(name: 'IDIOMA_ID') required this.idiomaId,
+    @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') required this.modificarPedido,
+    @JsonKey(name: 'APP_VER_TOTAL_VENTAS') required this.verTotalVentas,
+    @JsonKey(name: 'MARGEN_COMERCIAL') required this.margenComercial,
+  }) : super._();
 
   factory _$UsuarioAuxDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$UsuarioAuxDTOImplFromJson(json);
@@ -255,8 +279,16 @@ class _$UsuarioAuxDTOImpl extends _UsuarioAuxDTO {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, usuario, nombreUsuario,
-      idiomaId, modificarPedido, verTotalVentas, margenComercial);
+  int get hashCode => Object.hash(
+    runtimeType,
+    id,
+    usuario,
+    nombreUsuario,
+    idiomaId,
+    modificarPedido,
+    verTotalVentas,
+    margenComercial,
+  );
 
   /// Create a copy of UsuarioAuxDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -268,25 +300,22 @@ class _$UsuarioAuxDTOImpl extends _UsuarioAuxDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$UsuarioAuxDTOImplToJson(
-      this,
-    );
+    return _$$UsuarioAuxDTOImplToJson(this);
   }
 }
 
 abstract class _UsuarioAuxDTO extends UsuarioAuxDTO {
-  const factory _UsuarioAuxDTO(
-      {@JsonKey(name: 'USUARIO_ID') required final String id,
-      @JsonKey(name: 'USUARIO') required final String usuario,
-      @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')
-      required final String? nombreUsuario,
-      @JsonKey(name: 'IDIOMA_ID') required final String idiomaId,
-      @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')
-      required final String modificarPedido,
-      @JsonKey(name: 'APP_VER_TOTAL_VENTAS')
-      required final String verTotalVentas,
-      @JsonKey(name: 'MARGEN_COMERCIAL')
-      required final double margenComercial}) = _$UsuarioAuxDTOImpl;
+  const factory _UsuarioAuxDTO({
+    @JsonKey(name: 'USUARIO_ID') required final String id,
+    @JsonKey(name: 'USUARIO') required final String usuario,
+    @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')
+    required final String? nombreUsuario,
+    @JsonKey(name: 'IDIOMA_ID') required final String idiomaId,
+    @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')
+    required final String modificarPedido,
+    @JsonKey(name: 'APP_VER_TOTAL_VENTAS') required final String verTotalVentas,
+    @JsonKey(name: 'MARGEN_COMERCIAL') required final double margenComercial,
+  }) = _$UsuarioAuxDTOImpl;
   const _UsuarioAuxDTO._() : super._();
 
   factory _UsuarioAuxDTO.fromJson(Map<String, dynamic> json) =

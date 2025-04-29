@@ -9,6 +9,10 @@ class IsolateArgs {
   final SendPort isolateLocalSendPort;
   final Directory documentDirectory;
 
-  IsolateArgs(this.user, this.isolateRemoteSendPort, this.isolateLocalSendPort,
-      this.documentDirectory);
+  IsolateArgs(
+    this.user,
+    this.isolateRemoteSendPort,
+    this.isolateLocalSendPort,
+    this.documentDirectory,
+  );
 }

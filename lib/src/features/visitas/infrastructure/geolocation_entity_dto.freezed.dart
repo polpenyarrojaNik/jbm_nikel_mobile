@@ -12,7 +12,8 @@ part of 'geolocation_entity_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 GeolocationEntityDTO _$GeolocationEntityDTOFromJson(Map<String, dynamic> json) {
   return _GeolocationEntityDTO.fromJson(json);
@@ -50,28 +51,32 @@ mixin _$GeolocationEntityDTO {
 
 /// @nodoc
 abstract class $GeolocationEntityDTOCopyWith<$Res> {
-  factory $GeolocationEntityDTOCopyWith(GeolocationEntityDTO value,
-          $Res Function(GeolocationEntityDTO) then) =
-      _$GeolocationEntityDTOCopyWithImpl<$Res, GeolocationEntityDTO>;
+  factory $GeolocationEntityDTOCopyWith(
+    GeolocationEntityDTO value,
+    $Res Function(GeolocationEntityDTO) then,
+  ) = _$GeolocationEntityDTOCopyWithImpl<$Res, GeolocationEntityDTO>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'formattedAddress') String formattedAddress,
-      @JsonKey(name: 'streetName') String streetName,
-      @JsonKey(name: 'streetNumber') String? streetNumber,
-      @JsonKey(name: 'city') String? city,
-      @JsonKey(name: 'countryCode') String countryCode,
-      @JsonKey(name: 'zipcode') String zipCode,
-      @JsonKey(name: 'administrativeLevels')
-      AdministrativeLevelsDTO? advinistrativeLevels,
-      @JsonKey(name: 'extra') ExtraDTO? extra});
+  $Res call({
+    @JsonKey(name: 'formattedAddress') String formattedAddress,
+    @JsonKey(name: 'streetName') String streetName,
+    @JsonKey(name: 'streetNumber') String? streetNumber,
+    @JsonKey(name: 'city') String? city,
+    @JsonKey(name: 'countryCode') String countryCode,
+    @JsonKey(name: 'zipcode') String zipCode,
+    @JsonKey(name: 'administrativeLevels')
+    AdministrativeLevelsDTO? advinistrativeLevels,
+    @JsonKey(name: 'extra') ExtraDTO? extra,
+  });
 
   $AdministrativeLevelsDTOCopyWith<$Res>? get advinistrativeLevels;
   $ExtraDTOCopyWith<$Res>? get extra;
 }
 
 /// @nodoc
-class _$GeolocationEntityDTOCopyWithImpl<$Res,
-        $Val extends GeolocationEntityDTO>
+class _$GeolocationEntityDTOCopyWithImpl<
+  $Res,
+  $Val extends GeolocationEntityDTO
+>
     implements $GeolocationEntityDTOCopyWith<$Res> {
   _$GeolocationEntityDTOCopyWithImpl(this._value, this._then);
 
@@ -94,40 +99,51 @@ class _$GeolocationEntityDTOCopyWithImpl<$Res,
     Object? advinistrativeLevels = freezed,
     Object? extra = freezed,
   }) {
-    return _then(_value.copyWith(
-      formattedAddress: null == formattedAddress
-          ? _value.formattedAddress
-          : formattedAddress // ignore: cast_nullable_to_non_nullable
-              as String,
-      streetName: null == streetName
-          ? _value.streetName
-          : streetName // ignore: cast_nullable_to_non_nullable
-              as String,
-      streetNumber: freezed == streetNumber
-          ? _value.streetNumber
-          : streetNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      city: freezed == city
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
-              as String?,
-      countryCode: null == countryCode
-          ? _value.countryCode
-          : countryCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      zipCode: null == zipCode
-          ? _value.zipCode
-          : zipCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      advinistrativeLevels: freezed == advinistrativeLevels
-          ? _value.advinistrativeLevels
-          : advinistrativeLevels // ignore: cast_nullable_to_non_nullable
-              as AdministrativeLevelsDTO?,
-      extra: freezed == extra
-          ? _value.extra
-          : extra // ignore: cast_nullable_to_non_nullable
-              as ExtraDTO?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            formattedAddress:
+                null == formattedAddress
+                    ? _value.formattedAddress
+                    : formattedAddress // ignore: cast_nullable_to_non_nullable
+                        as String,
+            streetName:
+                null == streetName
+                    ? _value.streetName
+                    : streetName // ignore: cast_nullable_to_non_nullable
+                        as String,
+            streetNumber:
+                freezed == streetNumber
+                    ? _value.streetNumber
+                    : streetNumber // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            city:
+                freezed == city
+                    ? _value.city
+                    : city // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            countryCode:
+                null == countryCode
+                    ? _value.countryCode
+                    : countryCode // ignore: cast_nullable_to_non_nullable
+                        as String,
+            zipCode:
+                null == zipCode
+                    ? _value.zipCode
+                    : zipCode // ignore: cast_nullable_to_non_nullable
+                        as String,
+            advinistrativeLevels:
+                freezed == advinistrativeLevels
+                    ? _value.advinistrativeLevels
+                    : advinistrativeLevels // ignore: cast_nullable_to_non_nullable
+                        as AdministrativeLevelsDTO?,
+            extra:
+                freezed == extra
+                    ? _value.extra
+                    : extra // ignore: cast_nullable_to_non_nullable
+                        as ExtraDTO?,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of GeolocationEntityDTO
@@ -139,10 +155,12 @@ class _$GeolocationEntityDTOCopyWithImpl<$Res,
       return null;
     }
 
-    return $AdministrativeLevelsDTOCopyWith<$Res>(_value.advinistrativeLevels!,
-        (value) {
-      return _then(_value.copyWith(advinistrativeLevels: value) as $Val);
-    });
+    return $AdministrativeLevelsDTOCopyWith<$Res>(
+      _value.advinistrativeLevels!,
+      (value) {
+        return _then(_value.copyWith(advinistrativeLevels: value) as $Val);
+      },
+    );
   }
 
   /// Create a copy of GeolocationEntityDTO
@@ -163,21 +181,23 @@ class _$GeolocationEntityDTOCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$GeolocationEntityDTOImplCopyWith<$Res>
     implements $GeolocationEntityDTOCopyWith<$Res> {
-  factory _$$GeolocationEntityDTOImplCopyWith(_$GeolocationEntityDTOImpl value,
-          $Res Function(_$GeolocationEntityDTOImpl) then) =
-      __$$GeolocationEntityDTOImplCopyWithImpl<$Res>;
+  factory _$$GeolocationEntityDTOImplCopyWith(
+    _$GeolocationEntityDTOImpl value,
+    $Res Function(_$GeolocationEntityDTOImpl) then,
+  ) = __$$GeolocationEntityDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'formattedAddress') String formattedAddress,
-      @JsonKey(name: 'streetName') String streetName,
-      @JsonKey(name: 'streetNumber') String? streetNumber,
-      @JsonKey(name: 'city') String? city,
-      @JsonKey(name: 'countryCode') String countryCode,
-      @JsonKey(name: 'zipcode') String zipCode,
-      @JsonKey(name: 'administrativeLevels')
-      AdministrativeLevelsDTO? advinistrativeLevels,
-      @JsonKey(name: 'extra') ExtraDTO? extra});
+  $Res call({
+    @JsonKey(name: 'formattedAddress') String formattedAddress,
+    @JsonKey(name: 'streetName') String streetName,
+    @JsonKey(name: 'streetNumber') String? streetNumber,
+    @JsonKey(name: 'city') String? city,
+    @JsonKey(name: 'countryCode') String countryCode,
+    @JsonKey(name: 'zipcode') String zipCode,
+    @JsonKey(name: 'administrativeLevels')
+    AdministrativeLevelsDTO? advinistrativeLevels,
+    @JsonKey(name: 'extra') ExtraDTO? extra,
+  });
 
   @override
   $AdministrativeLevelsDTOCopyWith<$Res>? get advinistrativeLevels;
@@ -189,9 +209,10 @@ abstract class _$$GeolocationEntityDTOImplCopyWith<$Res>
 class __$$GeolocationEntityDTOImplCopyWithImpl<$Res>
     extends _$GeolocationEntityDTOCopyWithImpl<$Res, _$GeolocationEntityDTOImpl>
     implements _$$GeolocationEntityDTOImplCopyWith<$Res> {
-  __$$GeolocationEntityDTOImplCopyWithImpl(_$GeolocationEntityDTOImpl _value,
-      $Res Function(_$GeolocationEntityDTOImpl) _then)
-      : super(_value, _then);
+  __$$GeolocationEntityDTOImplCopyWithImpl(
+    _$GeolocationEntityDTOImpl _value,
+    $Res Function(_$GeolocationEntityDTOImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of GeolocationEntityDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -207,40 +228,50 @@ class __$$GeolocationEntityDTOImplCopyWithImpl<$Res>
     Object? advinistrativeLevels = freezed,
     Object? extra = freezed,
   }) {
-    return _then(_$GeolocationEntityDTOImpl(
-      formattedAddress: null == formattedAddress
-          ? _value.formattedAddress
-          : formattedAddress // ignore: cast_nullable_to_non_nullable
-              as String,
-      streetName: null == streetName
-          ? _value.streetName
-          : streetName // ignore: cast_nullable_to_non_nullable
-              as String,
-      streetNumber: freezed == streetNumber
-          ? _value.streetNumber
-          : streetNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      city: freezed == city
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
-              as String?,
-      countryCode: null == countryCode
-          ? _value.countryCode
-          : countryCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      zipCode: null == zipCode
-          ? _value.zipCode
-          : zipCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      advinistrativeLevels: freezed == advinistrativeLevels
-          ? _value.advinistrativeLevels
-          : advinistrativeLevels // ignore: cast_nullable_to_non_nullable
-              as AdministrativeLevelsDTO?,
-      extra: freezed == extra
-          ? _value.extra
-          : extra // ignore: cast_nullable_to_non_nullable
-              as ExtraDTO?,
-    ));
+    return _then(
+      _$GeolocationEntityDTOImpl(
+        formattedAddress:
+            null == formattedAddress
+                ? _value.formattedAddress
+                : formattedAddress // ignore: cast_nullable_to_non_nullable
+                    as String,
+        streetName:
+            null == streetName
+                ? _value.streetName
+                : streetName // ignore: cast_nullable_to_non_nullable
+                    as String,
+        streetNumber:
+            freezed == streetNumber
+                ? _value.streetNumber
+                : streetNumber // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        city:
+            freezed == city
+                ? _value.city
+                : city // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        countryCode:
+            null == countryCode
+                ? _value.countryCode
+                : countryCode // ignore: cast_nullable_to_non_nullable
+                    as String,
+        zipCode:
+            null == zipCode
+                ? _value.zipCode
+                : zipCode // ignore: cast_nullable_to_non_nullable
+                    as String,
+        advinistrativeLevels:
+            freezed == advinistrativeLevels
+                ? _value.advinistrativeLevels
+                : advinistrativeLevels // ignore: cast_nullable_to_non_nullable
+                    as AdministrativeLevelsDTO?,
+        extra:
+            freezed == extra
+                ? _value.extra
+                : extra // ignore: cast_nullable_to_non_nullable
+                    as ExtraDTO?,
+      ),
+    );
   }
 }
 
@@ -248,16 +279,16 @@ class __$$GeolocationEntityDTOImplCopyWithImpl<$Res>
 
 @JsonSerializable(explicitToJson: true)
 class _$GeolocationEntityDTOImpl extends _GeolocationEntityDTO {
-  _$GeolocationEntityDTOImpl(
-      {@JsonKey(name: 'formattedAddress') required this.formattedAddress,
-      @JsonKey(name: 'streetName') required this.streetName,
-      @JsonKey(name: 'streetNumber') required this.streetNumber,
-      @JsonKey(name: 'city') required this.city,
-      @JsonKey(name: 'countryCode') required this.countryCode,
-      @JsonKey(name: 'zipcode') required this.zipCode,
-      @JsonKey(name: 'administrativeLevels') required this.advinistrativeLevels,
-      @JsonKey(name: 'extra') required this.extra})
-      : super._();
+  _$GeolocationEntityDTOImpl({
+    @JsonKey(name: 'formattedAddress') required this.formattedAddress,
+    @JsonKey(name: 'streetName') required this.streetName,
+    @JsonKey(name: 'streetNumber') required this.streetNumber,
+    @JsonKey(name: 'city') required this.city,
+    @JsonKey(name: 'countryCode') required this.countryCode,
+    @JsonKey(name: 'zipcode') required this.zipCode,
+    @JsonKey(name: 'administrativeLevels') required this.advinistrativeLevels,
+    @JsonKey(name: 'extra') required this.extra,
+  }) : super._();
 
   factory _$GeolocationEntityDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$GeolocationEntityDTOImplFromJson(json);
@@ -314,8 +345,17 @@ class _$GeolocationEntityDTOImpl extends _GeolocationEntityDTO {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, formattedAddress, streetName,
-      streetNumber, city, countryCode, zipCode, advinistrativeLevels, extra);
+  int get hashCode => Object.hash(
+    runtimeType,
+    formattedAddress,
+    streetName,
+    streetNumber,
+    city,
+    countryCode,
+    zipCode,
+    advinistrativeLevels,
+    extra,
+  );
 
   /// Create a copy of GeolocationEntityDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -323,31 +363,30 @@ class _$GeolocationEntityDTOImpl extends _GeolocationEntityDTO {
   @override
   @pragma('vm:prefer-inline')
   _$$GeolocationEntityDTOImplCopyWith<_$GeolocationEntityDTOImpl>
-      get copyWith =>
-          __$$GeolocationEntityDTOImplCopyWithImpl<_$GeolocationEntityDTOImpl>(
-              this, _$identity);
+  get copyWith =>
+      __$$GeolocationEntityDTOImplCopyWithImpl<_$GeolocationEntityDTOImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$GeolocationEntityDTOImplToJson(
-      this,
-    );
+    return _$$GeolocationEntityDTOImplToJson(this);
   }
 }
 
 abstract class _GeolocationEntityDTO extends GeolocationEntityDTO {
-  factory _GeolocationEntityDTO(
-          {@JsonKey(name: 'formattedAddress')
-          required final String formattedAddress,
-          @JsonKey(name: 'streetName') required final String streetName,
-          @JsonKey(name: 'streetNumber') required final String? streetNumber,
-          @JsonKey(name: 'city') required final String? city,
-          @JsonKey(name: 'countryCode') required final String countryCode,
-          @JsonKey(name: 'zipcode') required final String zipCode,
-          @JsonKey(name: 'administrativeLevels')
-          required final AdministrativeLevelsDTO? advinistrativeLevels,
-          @JsonKey(name: 'extra') required final ExtraDTO? extra}) =
-      _$GeolocationEntityDTOImpl;
+  factory _GeolocationEntityDTO({
+    @JsonKey(name: 'formattedAddress') required final String formattedAddress,
+    @JsonKey(name: 'streetName') required final String streetName,
+    @JsonKey(name: 'streetNumber') required final String? streetNumber,
+    @JsonKey(name: 'city') required final String? city,
+    @JsonKey(name: 'countryCode') required final String countryCode,
+    @JsonKey(name: 'zipcode') required final String zipCode,
+    @JsonKey(name: 'administrativeLevels')
+    required final AdministrativeLevelsDTO? advinistrativeLevels,
+    @JsonKey(name: 'extra') required final ExtraDTO? extra,
+  }) = _$GeolocationEntityDTOImpl;
   _GeolocationEntityDTO._() : super._();
 
   factory _GeolocationEntityDTO.fromJson(Map<String, dynamic> json) =
@@ -383,11 +422,12 @@ abstract class _GeolocationEntityDTO extends GeolocationEntityDTO {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GeolocationEntityDTOImplCopyWith<_$GeolocationEntityDTOImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 AdministrativeLevelsDTO _$AdministrativeLevelsDTOFromJson(
-    Map<String, dynamic> json) {
+  Map<String, dynamic> json,
+) {
   return _AdministrativeLevelsDTO.fromJson(json);
 }
 
@@ -408,16 +448,19 @@ mixin _$AdministrativeLevelsDTO {
 
 /// @nodoc
 abstract class $AdministrativeLevelsDTOCopyWith<$Res> {
-  factory $AdministrativeLevelsDTOCopyWith(AdministrativeLevelsDTO value,
-          $Res Function(AdministrativeLevelsDTO) then) =
-      _$AdministrativeLevelsDTOCopyWithImpl<$Res, AdministrativeLevelsDTO>;
+  factory $AdministrativeLevelsDTOCopyWith(
+    AdministrativeLevelsDTO value,
+    $Res Function(AdministrativeLevelsDTO) then,
+  ) = _$AdministrativeLevelsDTOCopyWithImpl<$Res, AdministrativeLevelsDTO>;
   @useResult
   $Res call({@JsonKey(name: 'level2long') String? state});
 }
 
 /// @nodoc
-class _$AdministrativeLevelsDTOCopyWithImpl<$Res,
-        $Val extends AdministrativeLevelsDTO>
+class _$AdministrativeLevelsDTOCopyWithImpl<
+  $Res,
+  $Val extends AdministrativeLevelsDTO
+>
     implements $AdministrativeLevelsDTOCopyWith<$Res> {
   _$AdministrativeLevelsDTOCopyWithImpl(this._value, this._then);
 
@@ -430,15 +473,17 @@ class _$AdministrativeLevelsDTOCopyWithImpl<$Res,
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? state = freezed,
-  }) {
-    return _then(_value.copyWith(
-      state: freezed == state
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+  $Res call({Object? state = freezed}) {
+    return _then(
+      _value.copyWith(
+            state:
+                freezed == state
+                    ? _value.state
+                    : state // ignore: cast_nullable_to_non_nullable
+                        as String?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -446,9 +491,9 @@ class _$AdministrativeLevelsDTOCopyWithImpl<$Res,
 abstract class _$$AdministrativeLevelsDTOImplCopyWith<$Res>
     implements $AdministrativeLevelsDTOCopyWith<$Res> {
   factory _$$AdministrativeLevelsDTOImplCopyWith(
-          _$AdministrativeLevelsDTOImpl value,
-          $Res Function(_$AdministrativeLevelsDTOImpl) then) =
-      __$$AdministrativeLevelsDTOImplCopyWithImpl<$Res>;
+    _$AdministrativeLevelsDTOImpl value,
+    $Res Function(_$AdministrativeLevelsDTOImpl) then,
+  ) = __$$AdministrativeLevelsDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: 'level2long') String? state});
@@ -456,27 +501,31 @@ abstract class _$$AdministrativeLevelsDTOImplCopyWith<$Res>
 
 /// @nodoc
 class __$$AdministrativeLevelsDTOImplCopyWithImpl<$Res>
-    extends _$AdministrativeLevelsDTOCopyWithImpl<$Res,
-        _$AdministrativeLevelsDTOImpl>
+    extends
+        _$AdministrativeLevelsDTOCopyWithImpl<
+          $Res,
+          _$AdministrativeLevelsDTOImpl
+        >
     implements _$$AdministrativeLevelsDTOImplCopyWith<$Res> {
   __$$AdministrativeLevelsDTOImplCopyWithImpl(
-      _$AdministrativeLevelsDTOImpl _value,
-      $Res Function(_$AdministrativeLevelsDTOImpl) _then)
-      : super(_value, _then);
+    _$AdministrativeLevelsDTOImpl _value,
+    $Res Function(_$AdministrativeLevelsDTOImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AdministrativeLevelsDTO
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? state = freezed,
-  }) {
-    return _then(_$AdministrativeLevelsDTOImpl(
-      state: freezed == state
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+  $Res call({Object? state = freezed}) {
+    return _then(
+      _$AdministrativeLevelsDTOImpl(
+        state:
+            freezed == state
+                ? _value.state
+                : state // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
+    );
   }
 }
 
@@ -484,9 +533,9 @@ class __$$AdministrativeLevelsDTOImplCopyWithImpl<$Res>
 
 @JsonSerializable(explicitToJson: true)
 class _$AdministrativeLevelsDTOImpl extends _AdministrativeLevelsDTO {
-  _$AdministrativeLevelsDTOImpl(
-      {@JsonKey(name: 'level2long') required this.state})
-      : super._();
+  _$AdministrativeLevelsDTOImpl({
+    @JsonKey(name: 'level2long') required this.state,
+  }) : super._();
 
   factory _$AdministrativeLevelsDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$AdministrativeLevelsDTOImplFromJson(json);
@@ -518,21 +567,20 @@ class _$AdministrativeLevelsDTOImpl extends _AdministrativeLevelsDTO {
   @override
   @pragma('vm:prefer-inline')
   _$$AdministrativeLevelsDTOImplCopyWith<_$AdministrativeLevelsDTOImpl>
-      get copyWith => __$$AdministrativeLevelsDTOImplCopyWithImpl<
-          _$AdministrativeLevelsDTOImpl>(this, _$identity);
+  get copyWith => __$$AdministrativeLevelsDTOImplCopyWithImpl<
+    _$AdministrativeLevelsDTOImpl
+  >(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$AdministrativeLevelsDTOImplToJson(
-      this,
-    );
+    return _$$AdministrativeLevelsDTOImplToJson(this);
   }
 }
 
 abstract class _AdministrativeLevelsDTO extends AdministrativeLevelsDTO {
-  factory _AdministrativeLevelsDTO(
-          {@JsonKey(name: 'level2long') required final String? state}) =
-      _$AdministrativeLevelsDTOImpl;
+  factory _AdministrativeLevelsDTO({
+    @JsonKey(name: 'level2long') required final String? state,
+  }) = _$AdministrativeLevelsDTOImpl;
   _AdministrativeLevelsDTO._() : super._();
 
   factory _AdministrativeLevelsDTO.fromJson(Map<String, dynamic> json) =
@@ -547,7 +595,7 @@ abstract class _AdministrativeLevelsDTO extends AdministrativeLevelsDTO {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AdministrativeLevelsDTOImplCopyWith<_$AdministrativeLevelsDTOImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 ExtraDTO _$ExtraDTOFromJson(Map<String, dynamic> json) {
@@ -591,15 +639,17 @@ class _$ExtraDTOCopyWithImpl<$Res, $Val extends ExtraDTO>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? subpremise = freezed,
-  }) {
-    return _then(_value.copyWith(
-      subpremise: freezed == subpremise
-          ? _value.subpremise
-          : subpremise // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+  $Res call({Object? subpremise = freezed}) {
+    return _then(
+      _value.copyWith(
+            subpremise:
+                freezed == subpremise
+                    ? _value.subpremise
+                    : subpremise // ignore: cast_nullable_to_non_nullable
+                        as String?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -607,8 +657,9 @@ class _$ExtraDTOCopyWithImpl<$Res, $Val extends ExtraDTO>
 abstract class _$$ExtraDTOImplCopyWith<$Res>
     implements $ExtraDTOCopyWith<$Res> {
   factory _$$ExtraDTOImplCopyWith(
-          _$ExtraDTOImpl value, $Res Function(_$ExtraDTOImpl) then) =
-      __$$ExtraDTOImplCopyWithImpl<$Res>;
+    _$ExtraDTOImpl value,
+    $Res Function(_$ExtraDTOImpl) then,
+  ) = __$$ExtraDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: 'subpremise') String? subpremise});
@@ -619,22 +670,24 @@ class __$$ExtraDTOImplCopyWithImpl<$Res>
     extends _$ExtraDTOCopyWithImpl<$Res, _$ExtraDTOImpl>
     implements _$$ExtraDTOImplCopyWith<$Res> {
   __$$ExtraDTOImplCopyWithImpl(
-      _$ExtraDTOImpl _value, $Res Function(_$ExtraDTOImpl) _then)
-      : super(_value, _then);
+    _$ExtraDTOImpl _value,
+    $Res Function(_$ExtraDTOImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ExtraDTO
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? subpremise = freezed,
-  }) {
-    return _then(_$ExtraDTOImpl(
-      subpremise: freezed == subpremise
-          ? _value.subpremise
-          : subpremise // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+  $Res call({Object? subpremise = freezed}) {
+    return _then(
+      _$ExtraDTOImpl(
+        subpremise:
+            freezed == subpremise
+                ? _value.subpremise
+                : subpremise // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
+    );
   }
 }
 
@@ -643,7 +696,7 @@ class __$$ExtraDTOImplCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$ExtraDTOImpl extends _ExtraDTO {
   _$ExtraDTOImpl({@JsonKey(name: 'subpremise') required this.subpremise})
-      : super._();
+    : super._();
 
   factory _$ExtraDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ExtraDTOImplFromJson(json);
@@ -680,16 +733,14 @@ class _$ExtraDTOImpl extends _ExtraDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ExtraDTOImplToJson(
-      this,
-    );
+    return _$$ExtraDTOImplToJson(this);
   }
 }
 
 abstract class _ExtraDTO extends ExtraDTO {
-  factory _ExtraDTO(
-          {@JsonKey(name: 'subpremise') required final String? subpremise}) =
-      _$ExtraDTOImpl;
+  factory _ExtraDTO({
+    @JsonKey(name: 'subpremise') required final String? subpremise,
+  }) = _$ExtraDTOImpl;
   _ExtraDTO._() : super._();
 
   factory _ExtraDTO.fromJson(Map<String, dynamic> json) =

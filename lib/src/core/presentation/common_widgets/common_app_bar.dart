@@ -7,8 +7,12 @@ import '../theme/app_sizes.dart';
 import 'icon_menu_badge.dart';
 
 class CommonAppBar extends ConsumerWidget implements PreferredSizeWidget {
-  const CommonAppBar(
-      {super.key, required this.titleText, this.scaffoldKey, this.actions});
+  const CommonAppBar({
+    super.key,
+    required this.titleText,
+    this.scaffoldKey,
+    this.actions,
+  });
 
   final String titleText;
   final GlobalKey<ScaffoldState>? scaffoldKey;
@@ -34,18 +38,19 @@ class CommonAppBar extends ConsumerWidget implements PreferredSizeWidget {
             children: [
               state.maybeWhen(
                 orElse: () => Container(),
-                data: (packageInfo) => Text(
-                  packageInfo.version,
-                  style: Theme.of(context).textTheme.bodySmall,
-                ),
+                data:
+                    (packageInfo) => Text(
+                      packageInfo.version,
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
               ),
               gapW8,
               Text(
                 ref.watch(usuarioNotifierProvider)?.id ?? '',
                 style: Theme.of(context).textTheme.bodySmall,
-              )
+              ),
             ],
-          )
+          ),
         ],
       ),
       actions: actions,

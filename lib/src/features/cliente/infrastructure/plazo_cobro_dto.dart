@@ -39,24 +39,25 @@ class PlazoDeCobroDTO
 
   PlazoDeCobro toDomain() {
     return PlazoDeCobro(
-        id: id,
-        descripcionES: descripcionES,
-        descripcionEN: descripcionEN,
-        descripcionFR: descripcionFR,
-        descripcionDE: descripcionDE,
-        descripcionCA: descripcionCA,
-        descripcionGB: descripcionGB,
-        descripcionHU: descripcionHU,
-        descripcionIT: descripcionIT,
-        descripcionNL: descripcionNL,
-        descripcionPL: descripcionPL,
-        descripcionPT: descripcionPT,
-        descripcionRO: descripcionRO,
-        descripcionRU: descripcionRU,
-        descripcionCN: descripcionCN,
-        descripcionEL: descripcionEL,
-        lastUpdate: lastUpdated,
-        deleted: (deleted == 'S') ? true : false);
+      id: id,
+      descripcionES: descripcionES,
+      descripcionEN: descripcionEN,
+      descripcionFR: descripcionFR,
+      descripcionDE: descripcionDE,
+      descripcionCA: descripcionCA,
+      descripcionGB: descripcionGB,
+      descripcionHU: descripcionHU,
+      descripcionIT: descripcionIT,
+      descripcionNL: descripcionNL,
+      descripcionPL: descripcionPL,
+      descripcionPT: descripcionPT,
+      descripcionRO: descripcionRO,
+      descripcionRU: descripcionRU,
+      descripcionCN: descripcionCN,
+      descripcionEL: descripcionEL,
+      lastUpdate: lastUpdated,
+      deleted: (deleted == 'S') ? true : false,
+    );
   }
 
   @override

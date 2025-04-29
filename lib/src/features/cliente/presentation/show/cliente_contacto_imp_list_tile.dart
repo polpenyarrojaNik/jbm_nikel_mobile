@@ -7,8 +7,10 @@ import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
 
 class ClienteContactoImpListTile extends ConsumerWidget {
-  const ClienteContactoImpListTile(
-      {super.key, required this.clienteContactoImp});
+  const ClienteContactoImpListTile({
+    super.key,
+    required this.clienteContactoImp,
+  });
 
   final ClienteContactoImp clienteContactoImp;
 
@@ -28,8 +30,9 @@ class ClienteContactoImpListTile extends ConsumerWidget {
                   children: [
                     Text(
                       dateFormatter(
-                          clienteContactoImp.fecha.toLocal().toIso8601String(),
-                          allDay: true),
+                        clienteContactoImp.fecha.toLocal().toIso8601String(),
+                        allDay: true,
+                      ),
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                     Text(
@@ -40,28 +43,30 @@ class ClienteContactoImpListTile extends ConsumerWidget {
                 ),
                 gapH4,
                 if (clienteContactoImp.nombre != null)
-                  Text(clienteContactoImp.getName(
+                  Text(
+                    clienteContactoImp.getName(
                       clienteContactoImp.nombre,
                       clienteContactoImp.apellido1,
-                      clienteContactoImp.apellido2)!),
+                      clienteContactoImp.apellido2,
+                    )!,
+                  ),
                 if (clienteContactoImp.email != null)
                   Row(
                     children: [
-                      Icon(Icons.email,
-                          color: Theme.of(context).textTheme.bodySmall?.color,
-                          size: 14),
+                      Icon(
+                        Icons.email,
+                        color: Theme.of(context).textTheme.bodySmall?.color,
+                        size: 14,
+                      ),
                       gapW4,
                       Flexible(
                         child: Text(
                           clienteContactoImp.email!,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium
-                              ?.copyWith(
-                                  color: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall
-                                      ?.color),
+                          style: Theme.of(
+                            context,
+                          ).textTheme.bodyMedium?.copyWith(
+                            color: Theme.of(context).textTheme.bodySmall?.color,
+                          ),
                         ),
                       ),
                     ],
@@ -69,21 +74,20 @@ class ClienteContactoImpListTile extends ConsumerWidget {
                 if (clienteContactoImp.telefono1 != null)
                   Row(
                     children: [
-                      Icon(Icons.phone,
-                          color: Theme.of(context).textTheme.bodySmall?.color,
-                          size: 14),
+                      Icon(
+                        Icons.phone,
+                        color: Theme.of(context).textTheme.bodySmall?.color,
+                        size: 14,
+                      ),
                       gapW4,
                       Flexible(
                         child: Text(
                           clienteContactoImp.telefono1!,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium
-                              ?.copyWith(
-                                  color: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall
-                                      ?.color),
+                          style: Theme.of(
+                            context,
+                          ).textTheme.bodyMedium?.copyWith(
+                            color: Theme.of(context).textTheme.bodySmall?.color,
+                          ),
                         ),
                       ),
                     ],
@@ -100,8 +104,8 @@ class ClienteContactoImpListTile extends ConsumerWidget {
                       Text(
                         clienteContactoImp.telefono2!,
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color:
-                                Theme.of(context).textTheme.bodySmall?.color),
+                          color: Theme.of(context).textTheme.bodySmall?.color,
+                        ),
                       ),
                     ],
                   ),
@@ -110,11 +114,10 @@ class ClienteContactoImpListTile extends ConsumerWidget {
                     S
                         .of(context)
                         .cliente_show_clienteContacto_clienteContactoImpListTile_contactoEliminado,
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodySmall
-                        ?.copyWith(color: Theme.of(context).colorScheme.error),
-                  )
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: Theme.of(context).colorScheme.error,
+                    ),
+                  ),
               ],
             ),
           ),

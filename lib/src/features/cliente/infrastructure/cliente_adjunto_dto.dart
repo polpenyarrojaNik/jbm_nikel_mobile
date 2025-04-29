@@ -19,9 +19,6 @@ class ClienteAdjuntoDTO with _$ClienteAdjuntoDTO {
       _$ClienteAdjuntoDTOFromJson(json);
 
   ClienteAdjunto toDomain() {
-    return ClienteAdjunto(
-      clienteId: clienteId,
-      nombreAdjunto: nombreAdjunto,
-    );
+    return ClienteAdjunto(clienteId: clienteId, nombreAdjunto: nombreAdjunto);
   }
 }

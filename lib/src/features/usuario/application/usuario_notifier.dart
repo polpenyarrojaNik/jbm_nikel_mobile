@@ -3,13 +3,13 @@ import '../domain/usuario.dart';
 import '../infrastructure/usuario_service.dart';
 
 final usuarioNotifierProvider =
-    StateNotifierProvider<UsuarioNotifier, Usuario?>(
-  (ref) {
-    final usuarioNotifier = UsuarioNotifier(ref.watch(usuarioServiceProvider));
-    usuarioNotifier.checkAndUpdateUsuario();
-    return usuarioNotifier;
-  },
-);
+    StateNotifierProvider<UsuarioNotifier, Usuario?>((ref) {
+      final usuarioNotifier = UsuarioNotifier(
+        ref.watch(usuarioServiceProvider),
+      );
+      usuarioNotifier.checkAndUpdateUsuario();
+      return usuarioNotifier;
+    });
 
 class UsuarioNotifier extends StateNotifier<Usuario?> {
   final UsuarioService _usuarioService;

@@ -12,7 +12,8 @@ part of 'cliente_descuento.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ClienteDescuento {
@@ -36,19 +37,21 @@ mixin _$ClienteDescuento {
 /// @nodoc
 abstract class $ClienteDescuentoCopyWith<$Res> {
   factory $ClienteDescuentoCopyWith(
-          ClienteDescuento value, $Res Function(ClienteDescuento) then) =
-      _$ClienteDescuentoCopyWithImpl<$Res, ClienteDescuento>;
+    ClienteDescuento value,
+    $Res Function(ClienteDescuento) then,
+  ) = _$ClienteDescuentoCopyWithImpl<$Res, ClienteDescuento>;
   @useResult
-  $Res call(
-      {String clienteId,
-      String articuloId,
-      String? descripcion,
-      Familia familia,
-      Subfamilia subfamilia,
-      int cantidadDesde,
-      double descuento,
-      DateTime lastUpdated,
-      bool deleted});
+  $Res call({
+    String clienteId,
+    String articuloId,
+    String? descripcion,
+    Familia familia,
+    Subfamilia subfamilia,
+    int cantidadDesde,
+    double descuento,
+    DateTime lastUpdated,
+    bool deleted,
+  });
 
   $FamiliaCopyWith<$Res> get familia;
   $SubfamiliaCopyWith<$Res> get subfamilia;
@@ -79,44 +82,56 @@ class _$ClienteDescuentoCopyWithImpl<$Res, $Val extends ClienteDescuento>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_value.copyWith(
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcion: freezed == descripcion
-          ? _value.descripcion
-          : descripcion // ignore: cast_nullable_to_non_nullable
-              as String?,
-      familia: null == familia
-          ? _value.familia
-          : familia // ignore: cast_nullable_to_non_nullable
-              as Familia,
-      subfamilia: null == subfamilia
-          ? _value.subfamilia
-          : subfamilia // ignore: cast_nullable_to_non_nullable
-              as Subfamilia,
-      cantidadDesde: null == cantidadDesde
-          ? _value.cantidadDesde
-          : cantidadDesde // ignore: cast_nullable_to_non_nullable
-              as int,
-      descuento: null == descuento
-          ? _value.descuento
-          : descuento // ignore: cast_nullable_to_non_nullable
-              as double,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            clienteId:
+                null == clienteId
+                    ? _value.clienteId
+                    : clienteId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            articuloId:
+                null == articuloId
+                    ? _value.articuloId
+                    : articuloId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            descripcion:
+                freezed == descripcion
+                    ? _value.descripcion
+                    : descripcion // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            familia:
+                null == familia
+                    ? _value.familia
+                    : familia // ignore: cast_nullable_to_non_nullable
+                        as Familia,
+            subfamilia:
+                null == subfamilia
+                    ? _value.subfamilia
+                    : subfamilia // ignore: cast_nullable_to_non_nullable
+                        as Subfamilia,
+            cantidadDesde:
+                null == cantidadDesde
+                    ? _value.cantidadDesde
+                    : cantidadDesde // ignore: cast_nullable_to_non_nullable
+                        as int,
+            descuento:
+                null == descuento
+                    ? _value.descuento
+                    : descuento // ignore: cast_nullable_to_non_nullable
+                        as double,
+            lastUpdated:
+                null == lastUpdated
+                    ? _value.lastUpdated
+                    : lastUpdated // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            deleted:
+                null == deleted
+                    ? _value.deleted
+                    : deleted // ignore: cast_nullable_to_non_nullable
+                        as bool,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of ClienteDescuento
@@ -143,21 +158,23 @@ class _$ClienteDescuentoCopyWithImpl<$Res, $Val extends ClienteDescuento>
 /// @nodoc
 abstract class _$$ClienteDescuentoImplCopyWith<$Res>
     implements $ClienteDescuentoCopyWith<$Res> {
-  factory _$$ClienteDescuentoImplCopyWith(_$ClienteDescuentoImpl value,
-          $Res Function(_$ClienteDescuentoImpl) then) =
-      __$$ClienteDescuentoImplCopyWithImpl<$Res>;
+  factory _$$ClienteDescuentoImplCopyWith(
+    _$ClienteDescuentoImpl value,
+    $Res Function(_$ClienteDescuentoImpl) then,
+  ) = __$$ClienteDescuentoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String clienteId,
-      String articuloId,
-      String? descripcion,
-      Familia familia,
-      Subfamilia subfamilia,
-      int cantidadDesde,
-      double descuento,
-      DateTime lastUpdated,
-      bool deleted});
+  $Res call({
+    String clienteId,
+    String articuloId,
+    String? descripcion,
+    Familia familia,
+    Subfamilia subfamilia,
+    int cantidadDesde,
+    double descuento,
+    DateTime lastUpdated,
+    bool deleted,
+  });
 
   @override
   $FamiliaCopyWith<$Res> get familia;
@@ -169,9 +186,10 @@ abstract class _$$ClienteDescuentoImplCopyWith<$Res>
 class __$$ClienteDescuentoImplCopyWithImpl<$Res>
     extends _$ClienteDescuentoCopyWithImpl<$Res, _$ClienteDescuentoImpl>
     implements _$$ClienteDescuentoImplCopyWith<$Res> {
-  __$$ClienteDescuentoImplCopyWithImpl(_$ClienteDescuentoImpl _value,
-      $Res Function(_$ClienteDescuentoImpl) _then)
-      : super(_value, _then);
+  __$$ClienteDescuentoImplCopyWithImpl(
+    _$ClienteDescuentoImpl _value,
+    $Res Function(_$ClienteDescuentoImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ClienteDescuento
   /// with the given fields replaced by the non-null parameter values.
@@ -188,61 +206,72 @@ class __$$ClienteDescuentoImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$ClienteDescuentoImpl(
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcion: freezed == descripcion
-          ? _value.descripcion
-          : descripcion // ignore: cast_nullable_to_non_nullable
-              as String?,
-      familia: null == familia
-          ? _value.familia
-          : familia // ignore: cast_nullable_to_non_nullable
-              as Familia,
-      subfamilia: null == subfamilia
-          ? _value.subfamilia
-          : subfamilia // ignore: cast_nullable_to_non_nullable
-              as Subfamilia,
-      cantidadDesde: null == cantidadDesde
-          ? _value.cantidadDesde
-          : cantidadDesde // ignore: cast_nullable_to_non_nullable
-              as int,
-      descuento: null == descuento
-          ? _value.descuento
-          : descuento // ignore: cast_nullable_to_non_nullable
-              as double,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$ClienteDescuentoImpl(
+        clienteId:
+            null == clienteId
+                ? _value.clienteId
+                : clienteId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        articuloId:
+            null == articuloId
+                ? _value.articuloId
+                : articuloId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        descripcion:
+            freezed == descripcion
+                ? _value.descripcion
+                : descripcion // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        familia:
+            null == familia
+                ? _value.familia
+                : familia // ignore: cast_nullable_to_non_nullable
+                    as Familia,
+        subfamilia:
+            null == subfamilia
+                ? _value.subfamilia
+                : subfamilia // ignore: cast_nullable_to_non_nullable
+                    as Subfamilia,
+        cantidadDesde:
+            null == cantidadDesde
+                ? _value.cantidadDesde
+                : cantidadDesde // ignore: cast_nullable_to_non_nullable
+                    as int,
+        descuento:
+            null == descuento
+                ? _value.descuento
+                : descuento // ignore: cast_nullable_to_non_nullable
+                    as double,
+        lastUpdated:
+            null == lastUpdated
+                ? _value.lastUpdated
+                : lastUpdated // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        deleted:
+            null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                    as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ClienteDescuentoImpl extends _ClienteDescuento {
-  const _$ClienteDescuentoImpl(
-      {required this.clienteId,
-      required this.articuloId,
-      required this.descripcion,
-      required this.familia,
-      required this.subfamilia,
-      required this.cantidadDesde,
-      required this.descuento,
-      required this.lastUpdated,
-      required this.deleted})
-      : super._();
+  const _$ClienteDescuentoImpl({
+    required this.clienteId,
+    required this.articuloId,
+    required this.descripcion,
+    required this.familia,
+    required this.subfamilia,
+    required this.cantidadDesde,
+    required this.descuento,
+    required this.lastUpdated,
+    required this.deleted,
+  }) : super._();
 
   @override
   final String clienteId;
@@ -293,16 +322,17 @@ class _$ClienteDescuentoImpl extends _ClienteDescuento {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      clienteId,
-      articuloId,
-      descripcion,
-      familia,
-      subfamilia,
-      cantidadDesde,
-      descuento,
-      lastUpdated,
-      deleted);
+    runtimeType,
+    clienteId,
+    articuloId,
+    descripcion,
+    familia,
+    subfamilia,
+    cantidadDesde,
+    descuento,
+    lastUpdated,
+    deleted,
+  );
 
   /// Create a copy of ClienteDescuento
   /// with the given fields replaced by the non-null parameter values.
@@ -311,20 +341,23 @@ class _$ClienteDescuentoImpl extends _ClienteDescuento {
   @pragma('vm:prefer-inline')
   _$$ClienteDescuentoImplCopyWith<_$ClienteDescuentoImpl> get copyWith =>
       __$$ClienteDescuentoImplCopyWithImpl<_$ClienteDescuentoImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _ClienteDescuento extends ClienteDescuento {
-  const factory _ClienteDescuento(
-      {required final String clienteId,
-      required final String articuloId,
-      required final String? descripcion,
-      required final Familia familia,
-      required final Subfamilia subfamilia,
-      required final int cantidadDesde,
-      required final double descuento,
-      required final DateTime lastUpdated,
-      required final bool deleted}) = _$ClienteDescuentoImpl;
+  const factory _ClienteDescuento({
+    required final String clienteId,
+    required final String articuloId,
+    required final String? descripcion,
+    required final Familia familia,
+    required final Subfamilia subfamilia,
+    required final int cantidadDesde,
+    required final double descuento,
+    required final DateTime lastUpdated,
+    required final bool deleted,
+  }) = _$ClienteDescuentoImpl;
   const _ClienteDescuento._() : super._();
 
   @override

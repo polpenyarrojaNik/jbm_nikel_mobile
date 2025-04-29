@@ -22,15 +22,12 @@ class ClienteImpDTO with _$ClienteImpDTO implements Insertable<ClienteImpDTO> {
       _$ClienteImpDTOFromJson(json);
 
   factory ClienteImpDTO.fromDomain(ClienteImp clienteImp) => ClienteImpDTO(
-        clienteId: clienteImp.clienteId,
-        sectorId: clienteImp.sector.id,
-      );
+    clienteId: clienteImp.clienteId,
+    sectorId: clienteImp.sector.id,
+  );
 
   ClienteImp toDomain(Sector sector) {
-    return ClienteImp(
-      clienteId: clienteId,
-      sector: sector,
-    );
+    return ClienteImp(clienteId: clienteId, sector: sector);
   }
 
   @override

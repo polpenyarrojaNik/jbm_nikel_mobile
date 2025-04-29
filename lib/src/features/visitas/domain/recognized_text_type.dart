@@ -6,5 +6,5 @@ enum RecognizedTextType {
   telf,
   email,
   website,
-  unknown
+  unknown,
 }

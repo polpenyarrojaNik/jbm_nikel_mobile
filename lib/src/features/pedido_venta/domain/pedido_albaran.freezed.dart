@@ -12,7 +12,8 @@ part of 'pedido_albaran.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$PedidoAlbaran {
@@ -36,19 +37,21 @@ mixin _$PedidoAlbaran {
 /// @nodoc
 abstract class $PedidoAlbaranCopyWith<$Res> {
   factory $PedidoAlbaranCopyWith(
-          PedidoAlbaran value, $Res Function(PedidoAlbaran) then) =
-      _$PedidoAlbaranCopyWithImpl<$Res, PedidoAlbaran>;
+    PedidoAlbaran value,
+    $Res Function(PedidoAlbaran) then,
+  ) = _$PedidoAlbaranCopyWithImpl<$Res, PedidoAlbaran>;
   @useResult
-  $Res call(
-      {String empresaId,
-      String pedidoVentaId,
-      String albaranId,
-      DateTime fechaAlbaran,
-      String? agencia,
-      String? trackId,
-      TrackingEstado? trackingEstado,
-      DateTime lastUpdated,
-      bool deleted});
+  $Res call({
+    String empresaId,
+    String pedidoVentaId,
+    String albaranId,
+    DateTime fechaAlbaran,
+    String? agencia,
+    String? trackId,
+    TrackingEstado? trackingEstado,
+    DateTime lastUpdated,
+    bool deleted,
+  });
 
   $TrackingEstadoCopyWith<$Res>? get trackingEstado;
 }
@@ -78,44 +81,56 @@ class _$PedidoAlbaranCopyWithImpl<$Res, $Val extends PedidoAlbaran>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_value.copyWith(
-      empresaId: null == empresaId
-          ? _value.empresaId
-          : empresaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      pedidoVentaId: null == pedidoVentaId
-          ? _value.pedidoVentaId
-          : pedidoVentaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      albaranId: null == albaranId
-          ? _value.albaranId
-          : albaranId // ignore: cast_nullable_to_non_nullable
-              as String,
-      fechaAlbaran: null == fechaAlbaran
-          ? _value.fechaAlbaran
-          : fechaAlbaran // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      agencia: freezed == agencia
-          ? _value.agencia
-          : agencia // ignore: cast_nullable_to_non_nullable
-              as String?,
-      trackId: freezed == trackId
-          ? _value.trackId
-          : trackId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      trackingEstado: freezed == trackingEstado
-          ? _value.trackingEstado
-          : trackingEstado // ignore: cast_nullable_to_non_nullable
-              as TrackingEstado?,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            empresaId:
+                null == empresaId
+                    ? _value.empresaId
+                    : empresaId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            pedidoVentaId:
+                null == pedidoVentaId
+                    ? _value.pedidoVentaId
+                    : pedidoVentaId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            albaranId:
+                null == albaranId
+                    ? _value.albaranId
+                    : albaranId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            fechaAlbaran:
+                null == fechaAlbaran
+                    ? _value.fechaAlbaran
+                    : fechaAlbaran // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            agencia:
+                freezed == agencia
+                    ? _value.agencia
+                    : agencia // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            trackId:
+                freezed == trackId
+                    ? _value.trackId
+                    : trackId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            trackingEstado:
+                freezed == trackingEstado
+                    ? _value.trackingEstado
+                    : trackingEstado // ignore: cast_nullable_to_non_nullable
+                        as TrackingEstado?,
+            lastUpdated:
+                null == lastUpdated
+                    ? _value.lastUpdated
+                    : lastUpdated // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            deleted:
+                null == deleted
+                    ? _value.deleted
+                    : deleted // ignore: cast_nullable_to_non_nullable
+                        as bool,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of PedidoAlbaran
@@ -137,20 +152,22 @@ class _$PedidoAlbaranCopyWithImpl<$Res, $Val extends PedidoAlbaran>
 abstract class _$$PedidoAlbaranImplCopyWith<$Res>
     implements $PedidoAlbaranCopyWith<$Res> {
   factory _$$PedidoAlbaranImplCopyWith(
-          _$PedidoAlbaranImpl value, $Res Function(_$PedidoAlbaranImpl) then) =
-      __$$PedidoAlbaranImplCopyWithImpl<$Res>;
+    _$PedidoAlbaranImpl value,
+    $Res Function(_$PedidoAlbaranImpl) then,
+  ) = __$$PedidoAlbaranImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String empresaId,
-      String pedidoVentaId,
-      String albaranId,
-      DateTime fechaAlbaran,
-      String? agencia,
-      String? trackId,
-      TrackingEstado? trackingEstado,
-      DateTime lastUpdated,
-      bool deleted});
+  $Res call({
+    String empresaId,
+    String pedidoVentaId,
+    String albaranId,
+    DateTime fechaAlbaran,
+    String? agencia,
+    String? trackId,
+    TrackingEstado? trackingEstado,
+    DateTime lastUpdated,
+    bool deleted,
+  });
 
   @override
   $TrackingEstadoCopyWith<$Res>? get trackingEstado;
@@ -161,8 +178,9 @@ class __$$PedidoAlbaranImplCopyWithImpl<$Res>
     extends _$PedidoAlbaranCopyWithImpl<$Res, _$PedidoAlbaranImpl>
     implements _$$PedidoAlbaranImplCopyWith<$Res> {
   __$$PedidoAlbaranImplCopyWithImpl(
-      _$PedidoAlbaranImpl _value, $Res Function(_$PedidoAlbaranImpl) _then)
-      : super(_value, _then);
+    _$PedidoAlbaranImpl _value,
+    $Res Function(_$PedidoAlbaranImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of PedidoAlbaran
   /// with the given fields replaced by the non-null parameter values.
@@ -179,61 +197,72 @@ class __$$PedidoAlbaranImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$PedidoAlbaranImpl(
-      empresaId: null == empresaId
-          ? _value.empresaId
-          : empresaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      pedidoVentaId: null == pedidoVentaId
-          ? _value.pedidoVentaId
-          : pedidoVentaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      albaranId: null == albaranId
-          ? _value.albaranId
-          : albaranId // ignore: cast_nullable_to_non_nullable
-              as String,
-      fechaAlbaran: null == fechaAlbaran
-          ? _value.fechaAlbaran
-          : fechaAlbaran // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      agencia: freezed == agencia
-          ? _value.agencia
-          : agencia // ignore: cast_nullable_to_non_nullable
-              as String?,
-      trackId: freezed == trackId
-          ? _value.trackId
-          : trackId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      trackingEstado: freezed == trackingEstado
-          ? _value.trackingEstado
-          : trackingEstado // ignore: cast_nullable_to_non_nullable
-              as TrackingEstado?,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$PedidoAlbaranImpl(
+        empresaId:
+            null == empresaId
+                ? _value.empresaId
+                : empresaId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        pedidoVentaId:
+            null == pedidoVentaId
+                ? _value.pedidoVentaId
+                : pedidoVentaId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        albaranId:
+            null == albaranId
+                ? _value.albaranId
+                : albaranId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        fechaAlbaran:
+            null == fechaAlbaran
+                ? _value.fechaAlbaran
+                : fechaAlbaran // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        agencia:
+            freezed == agencia
+                ? _value.agencia
+                : agencia // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        trackId:
+            freezed == trackId
+                ? _value.trackId
+                : trackId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        trackingEstado:
+            freezed == trackingEstado
+                ? _value.trackingEstado
+                : trackingEstado // ignore: cast_nullable_to_non_nullable
+                    as TrackingEstado?,
+        lastUpdated:
+            null == lastUpdated
+                ? _value.lastUpdated
+                : lastUpdated // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        deleted:
+            null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                    as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$PedidoAlbaranImpl extends _PedidoAlbaran {
-  const _$PedidoAlbaranImpl(
-      {required this.empresaId,
-      required this.pedidoVentaId,
-      required this.albaranId,
-      required this.fechaAlbaran,
-      this.agencia,
-      this.trackId,
-      this.trackingEstado,
-      required this.lastUpdated,
-      required this.deleted})
-      : super._();
+  const _$PedidoAlbaranImpl({
+    required this.empresaId,
+    required this.pedidoVentaId,
+    required this.albaranId,
+    required this.fechaAlbaran,
+    this.agencia,
+    this.trackId,
+    this.trackingEstado,
+    required this.lastUpdated,
+    required this.deleted,
+  }) : super._();
 
   @override
   final String empresaId;
@@ -283,16 +312,17 @@ class _$PedidoAlbaranImpl extends _PedidoAlbaran {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      empresaId,
-      pedidoVentaId,
-      albaranId,
-      fechaAlbaran,
-      agencia,
-      trackId,
-      trackingEstado,
-      lastUpdated,
-      deleted);
+    runtimeType,
+    empresaId,
+    pedidoVentaId,
+    albaranId,
+    fechaAlbaran,
+    agencia,
+    trackId,
+    trackingEstado,
+    lastUpdated,
+    deleted,
+  );
 
   /// Create a copy of PedidoAlbaran
   /// with the given fields replaced by the non-null parameter values.
@@ -304,16 +334,17 @@ class _$PedidoAlbaranImpl extends _PedidoAlbaran {
 }
 
 abstract class _PedidoAlbaran extends PedidoAlbaran {
-  const factory _PedidoAlbaran(
-      {required final String empresaId,
-      required final String pedidoVentaId,
-      required final String albaranId,
-      required final DateTime fechaAlbaran,
-      final String? agencia,
-      final String? trackId,
-      final TrackingEstado? trackingEstado,
-      required final DateTime lastUpdated,
-      required final bool deleted}) = _$PedidoAlbaranImpl;
+  const factory _PedidoAlbaran({
+    required final String empresaId,
+    required final String pedidoVentaId,
+    required final String albaranId,
+    required final DateTime fechaAlbaran,
+    final String? agencia,
+    final String? trackId,
+    final TrackingEstado? trackingEstado,
+    required final DateTime lastUpdated,
+    required final bool deleted,
+  }) = _$PedidoAlbaranImpl;
   const _PedidoAlbaran._() : super._();
 
   @override

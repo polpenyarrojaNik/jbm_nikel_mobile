@@ -42,8 +42,10 @@ class ClienteSectorPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen(clienteSectorPageControllerProvider.updateClienteSector,
-        (_, state) {
+    ref.listen(clienteSectorPageControllerProvider.updateClienteSector, (
+      _,
+      state,
+    ) {
       if (state is UpdateClienteSectorMutationSuccess) {
         context.maybePop();
       } else if (state is UpdateClienteSectorMutationFailure) {
@@ -51,8 +53,9 @@ class ClienteSectorPage extends ConsumerWidget {
       }
     });
 
-    final stateUpdateClienteSector =
-        ref.watch(clienteSectorPageControllerProvider.updateClienteSector);
+    final stateUpdateClienteSector = ref.watch(
+      clienteSectorPageControllerProvider.updateClienteSector,
+    );
 
     final state = ref.watch(clienteSectorPageControllerProvider);
 
@@ -64,95 +67,104 @@ class ClienteSectorPage extends ConsumerWidget {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: FormBuilder(
-            key: _formKey,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            child: state.when(
-              data: (sectoresList) => (stateUpdateClienteSector
-                      is! UpdateClienteSectorMutationLoading)
-                  ? Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          '${S.of(context).visitas_edit_visitaEditar_cliente}: #${cliente.id} ${cliente.nombreCliente}',
-                          style: Theme.of(context).textTheme.titleSmall,
-                        ),
-                        const Gap(16),
-                        AppFormBuilderSearchableDropdown<Sector>(
-                          name: 'sector',
-                          initialValue: cliente.sector,
-                          items: sectoresList,
-                          itemAsString: (item) => item.descripcion,
-                          compareFn: (i, s) => i.id == s.id,
-                          decoration: InputDecoration(
-                            labelText: S.of(context).sector,
-                            border: const OutlineInputBorder(),
-                          ),
-                          // dropdownBuilder: (context, sector) =>
-                          //     Text(sector!.descripcion, style: sector.,),
-
-                          validator: FormBuilderValidators.compose(
-                            [
-                              FormBuilderValidators.required(),
-                              (sector) => sector != null && sector.isAlta
-                                  ? null
-                                  : S
-                                      .of(context)
-                                      .sectorUnsubscribededSectorMessage,
-                            ],
-                          ),
-                          popupProps: PopupProps.menu(
-                            showSearchBox: true,
-                            fit: FlexFit.loose,
-                            searchFieldProps:
-                                const TextFieldProps(autofocus: true),
-                            disabledItemFn: (item) => !item.isAlta,
-                          ),
-                        ),
-                        const Gap(16),
-                        TextButton(
-                            onPressed: () =>
-                                setNewSector(stateUpdateClienteSector),
-                            style: ButtonStyle(
-                              backgroundColor: WidgetStateProperty.all(
-                                  Theme.of(context).colorScheme.primary),
-                              foregroundColor: WidgetStateProperty.all(
-                                  Theme.of(context).colorScheme.onPrimary),
-                              iconColor: WidgetStateProperty.all(
-                                  Theme.of(context).colorScheme.onPrimary),
+          key: _formKey,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          child: state.when(
+            data:
+                (sectoresList) =>
+                    (stateUpdateClienteSector
+                            is! UpdateClienteSectorMutationLoading)
+                        ? Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '${S.of(context).visitas_edit_visitaEditar_cliente}: #${cliente.id} ${cliente.nombreCliente}',
+                              style: Theme.of(context).textTheme.titleSmall,
                             ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Icon(Icons.save),
-                                const Gap(8),
-                                Text(S.of(context).save),
-                              ],
-                            )),
-                      ],
-                    )
-                  : const Center(child: CircularProgressIndicator()),
-              error: (error, stackTrace) => Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ErrorMessageWidget(error.toString()),
-                  const Gap(24),
-                  IconButton(
-                    onPressed: () =>
-                        ref.refresh(clienteSectorPageControllerProvider),
-                    icon: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(Icons.refresh),
-                        const Gap(8),
-                        Text(S.of(context).retry),
-                      ],
+                            const Gap(16),
+                            AppFormBuilderSearchableDropdown<Sector>(
+                              name: 'sector',
+                              initialValue: cliente.sector,
+                              items: sectoresList,
+                              itemAsString: (item) => item.descripcion,
+                              compareFn: (i, s) => i.id == s.id,
+                              decoration: InputDecoration(
+                                labelText: S.of(context).sector,
+                                border: const OutlineInputBorder(),
+                              ),
+
+                              // dropdownBuilder: (context, sector) =>
+                              //     Text(sector!.descripcion, style: sector.,),
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(),
+                                (sector) =>
+                                    sector != null && sector.isAlta
+                                        ? null
+                                        : S
+                                            .of(context)
+                                            .sectorUnsubscribededSectorMessage,
+                              ]),
+                              popupProps: PopupProps.menu(
+                                showSearchBox: true,
+                                fit: FlexFit.loose,
+                                searchFieldProps: const TextFieldProps(
+                                  autofocus: true,
+                                ),
+                                disabledItemFn: (item) => !item.isAlta,
+                              ),
+                            ),
+                            const Gap(16),
+                            TextButton(
+                              onPressed:
+                                  () => setNewSector(stateUpdateClienteSector),
+                              style: ButtonStyle(
+                                backgroundColor: WidgetStateProperty.all(
+                                  Theme.of(context).colorScheme.primary,
+                                ),
+                                foregroundColor: WidgetStateProperty.all(
+                                  Theme.of(context).colorScheme.onPrimary,
+                                ),
+                                iconColor: WidgetStateProperty.all(
+                                  Theme.of(context).colorScheme.onPrimary,
+                                ),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Icon(Icons.save),
+                                  const Gap(8),
+                                  Text(S.of(context).save),
+                                ],
+                              ),
+                            ),
+                          ],
+                        )
+                        : const Center(child: CircularProgressIndicator()),
+            error:
+                (error, stackTrace) => Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    ErrorMessageWidget(error.toString()),
+                    const Gap(24),
+                    IconButton(
+                      onPressed:
+                          () =>
+                              ref.refresh(clienteSectorPageControllerProvider),
+                      icon: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(Icons.refresh),
+                          const Gap(8),
+                          Text(S.of(context).retry),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              loading: () => const Center(child: CircularProgressIndicator()),
-            )),
+                  ],
+                ),
+            loading: () => const Center(child: CircularProgressIndicator()),
+          ),
+        ),
       ),
     );
   }
@@ -161,7 +173,8 @@ class ClienteSectorPage extends ConsumerWidget {
     if (_formKey.currentState!.saveAndValidate()) {
       final sector = _formKey.currentState!.value['sector'] as Sector;
       stateUpdateClienteSector(
-          ClienteImp(clienteId: cliente.id, sector: sector));
+        ClienteImp(clienteId: cliente.id, sector: sector),
+      );
     }
   }
 }

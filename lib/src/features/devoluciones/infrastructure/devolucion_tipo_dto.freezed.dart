@@ -12,7 +12,8 @@ part of 'devolucion_tipo_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 DevolucionTipoDTO _$DevolucionTipoDTOFromJson(Map<String, dynamic> json) {
   return _DevolucionTipoDTO.fromJson(json);
@@ -68,27 +69,29 @@ mixin _$DevolucionTipoDTO {
 /// @nodoc
 abstract class $DevolucionTipoDTOCopyWith<$Res> {
   factory $DevolucionTipoDTOCopyWith(
-          DevolucionTipoDTO value, $Res Function(DevolucionTipoDTO) then) =
-      _$DevolucionTipoDTOCopyWithImpl<$Res, DevolucionTipoDTO>;
+    DevolucionTipoDTO value,
+    $Res Function(DevolucionTipoDTO) then,
+  ) = _$DevolucionTipoDTOCopyWithImpl<$Res, DevolucionTipoDTO>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'DEVOLUCION_TIPO_ID') String id,
-      @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
-      @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
-      @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
-      @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
-      @JsonKey(name: 'DESCRIPCION_CA') String? descripcionCA,
-      @JsonKey(name: 'DESCRIPCION_GB') String? descripcionGB,
-      @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
-      @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
-      @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
-      @JsonKey(name: 'DESCRIPCION_PT') String? descripcionPT,
-      @JsonKey(name: 'DESCRIPCION_RO') String? descripcionRO,
-      @JsonKey(name: 'DESCRIPCION_RU') String? descripcionRU,
-      @JsonKey(name: 'DESCRIPCION_CN') String? descripcionCN,
-      @JsonKey(name: 'DESCRIPCION_EL') String? descripcionEL,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+  $Res call({
+    @JsonKey(name: 'DEVOLUCION_TIPO_ID') String id,
+    @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
+    @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
+    @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
+    @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
+    @JsonKey(name: 'DESCRIPCION_CA') String? descripcionCA,
+    @JsonKey(name: 'DESCRIPCION_GB') String? descripcionGB,
+    @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
+    @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
+    @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
+    @JsonKey(name: 'DESCRIPCION_PT') String? descripcionPT,
+    @JsonKey(name: 'DESCRIPCION_RO') String? descripcionRO,
+    @JsonKey(name: 'DESCRIPCION_RU') String? descripcionRU,
+    @JsonKey(name: 'DESCRIPCION_CN') String? descripcionCN,
+    @JsonKey(name: 'DESCRIPCION_EL') String? descripcionEL,
+    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') String deleted,
+  });
 }
 
 /// @nodoc
@@ -124,114 +127,137 @@ class _$DevolucionTipoDTOCopyWithImpl<$Res, $Val extends DevolucionTipoDTO>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcionES: null == descripcionES
-          ? _value.descripcionES
-          : descripcionES // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcionEN: freezed == descripcionEN
-          ? _value.descripcionEN
-          : descripcionEN // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionFR: freezed == descripcionFR
-          ? _value.descripcionFR
-          : descripcionFR // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionDE: freezed == descripcionDE
-          ? _value.descripcionDE
-          : descripcionDE // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionCA: freezed == descripcionCA
-          ? _value.descripcionCA
-          : descripcionCA // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionGB: freezed == descripcionGB
-          ? _value.descripcionGB
-          : descripcionGB // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionHU: freezed == descripcionHU
-          ? _value.descripcionHU
-          : descripcionHU // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionIT: freezed == descripcionIT
-          ? _value.descripcionIT
-          : descripcionIT // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionNL: freezed == descripcionNL
-          ? _value.descripcionNL
-          : descripcionNL // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionPT: freezed == descripcionPT
-          ? _value.descripcionPT
-          : descripcionPT // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionRO: freezed == descripcionRO
-          ? _value.descripcionRO
-          : descripcionRO // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionRU: freezed == descripcionRU
-          ? _value.descripcionRU
-          : descripcionRU // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionCN: freezed == descripcionCN
-          ? _value.descripcionCN
-          : descripcionCN // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionEL: freezed == descripcionEL
-          ? _value.descripcionEL
-          : descripcionEL // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id:
+                null == id
+                    ? _value.id
+                    : id // ignore: cast_nullable_to_non_nullable
+                        as String,
+            descripcionES:
+                null == descripcionES
+                    ? _value.descripcionES
+                    : descripcionES // ignore: cast_nullable_to_non_nullable
+                        as String,
+            descripcionEN:
+                freezed == descripcionEN
+                    ? _value.descripcionEN
+                    : descripcionEN // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionFR:
+                freezed == descripcionFR
+                    ? _value.descripcionFR
+                    : descripcionFR // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionDE:
+                freezed == descripcionDE
+                    ? _value.descripcionDE
+                    : descripcionDE // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionCA:
+                freezed == descripcionCA
+                    ? _value.descripcionCA
+                    : descripcionCA // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionGB:
+                freezed == descripcionGB
+                    ? _value.descripcionGB
+                    : descripcionGB // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionHU:
+                freezed == descripcionHU
+                    ? _value.descripcionHU
+                    : descripcionHU // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionIT:
+                freezed == descripcionIT
+                    ? _value.descripcionIT
+                    : descripcionIT // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionNL:
+                freezed == descripcionNL
+                    ? _value.descripcionNL
+                    : descripcionNL // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionPT:
+                freezed == descripcionPT
+                    ? _value.descripcionPT
+                    : descripcionPT // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionRO:
+                freezed == descripcionRO
+                    ? _value.descripcionRO
+                    : descripcionRO // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionRU:
+                freezed == descripcionRU
+                    ? _value.descripcionRU
+                    : descripcionRU // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionCN:
+                freezed == descripcionCN
+                    ? _value.descripcionCN
+                    : descripcionCN // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            descripcionEL:
+                freezed == descripcionEL
+                    ? _value.descripcionEL
+                    : descripcionEL // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            lastUpdated:
+                null == lastUpdated
+                    ? _value.lastUpdated
+                    : lastUpdated // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            deleted:
+                null == deleted
+                    ? _value.deleted
+                    : deleted // ignore: cast_nullable_to_non_nullable
+                        as String,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$DevolucionTipoDTOImplCopyWith<$Res>
     implements $DevolucionTipoDTOCopyWith<$Res> {
-  factory _$$DevolucionTipoDTOImplCopyWith(_$DevolucionTipoDTOImpl value,
-          $Res Function(_$DevolucionTipoDTOImpl) then) =
-      __$$DevolucionTipoDTOImplCopyWithImpl<$Res>;
+  factory _$$DevolucionTipoDTOImplCopyWith(
+    _$DevolucionTipoDTOImpl value,
+    $Res Function(_$DevolucionTipoDTOImpl) then,
+  ) = __$$DevolucionTipoDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'DEVOLUCION_TIPO_ID') String id,
-      @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
-      @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
-      @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
-      @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
-      @JsonKey(name: 'DESCRIPCION_CA') String? descripcionCA,
-      @JsonKey(name: 'DESCRIPCION_GB') String? descripcionGB,
-      @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
-      @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
-      @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
-      @JsonKey(name: 'DESCRIPCION_PT') String? descripcionPT,
-      @JsonKey(name: 'DESCRIPCION_RO') String? descripcionRO,
-      @JsonKey(name: 'DESCRIPCION_RU') String? descripcionRU,
-      @JsonKey(name: 'DESCRIPCION_CN') String? descripcionCN,
-      @JsonKey(name: 'DESCRIPCION_EL') String? descripcionEL,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+  $Res call({
+    @JsonKey(name: 'DEVOLUCION_TIPO_ID') String id,
+    @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
+    @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
+    @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
+    @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
+    @JsonKey(name: 'DESCRIPCION_CA') String? descripcionCA,
+    @JsonKey(name: 'DESCRIPCION_GB') String? descripcionGB,
+    @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
+    @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
+    @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
+    @JsonKey(name: 'DESCRIPCION_PT') String? descripcionPT,
+    @JsonKey(name: 'DESCRIPCION_RO') String? descripcionRO,
+    @JsonKey(name: 'DESCRIPCION_RU') String? descripcionRU,
+    @JsonKey(name: 'DESCRIPCION_CN') String? descripcionCN,
+    @JsonKey(name: 'DESCRIPCION_EL') String? descripcionEL,
+    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') String deleted,
+  });
 }
 
 /// @nodoc
 class __$$DevolucionTipoDTOImplCopyWithImpl<$Res>
     extends _$DevolucionTipoDTOCopyWithImpl<$Res, _$DevolucionTipoDTOImpl>
     implements _$$DevolucionTipoDTOImplCopyWith<$Res> {
-  __$$DevolucionTipoDTOImplCopyWithImpl(_$DevolucionTipoDTOImpl _value,
-      $Res Function(_$DevolucionTipoDTOImpl) _then)
-      : super(_value, _then);
+  __$$DevolucionTipoDTOImplCopyWithImpl(
+    _$DevolucionTipoDTOImpl _value,
+    $Res Function(_$DevolucionTipoDTOImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DevolucionTipoDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -256,101 +282,120 @@ class __$$DevolucionTipoDTOImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$DevolucionTipoDTOImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcionES: null == descripcionES
-          ? _value.descripcionES
-          : descripcionES // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcionEN: freezed == descripcionEN
-          ? _value.descripcionEN
-          : descripcionEN // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionFR: freezed == descripcionFR
-          ? _value.descripcionFR
-          : descripcionFR // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionDE: freezed == descripcionDE
-          ? _value.descripcionDE
-          : descripcionDE // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionCA: freezed == descripcionCA
-          ? _value.descripcionCA
-          : descripcionCA // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionGB: freezed == descripcionGB
-          ? _value.descripcionGB
-          : descripcionGB // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionHU: freezed == descripcionHU
-          ? _value.descripcionHU
-          : descripcionHU // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionIT: freezed == descripcionIT
-          ? _value.descripcionIT
-          : descripcionIT // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionNL: freezed == descripcionNL
-          ? _value.descripcionNL
-          : descripcionNL // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionPT: freezed == descripcionPT
-          ? _value.descripcionPT
-          : descripcionPT // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionRO: freezed == descripcionRO
-          ? _value.descripcionRO
-          : descripcionRO // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionRU: freezed == descripcionRU
-          ? _value.descripcionRU
-          : descripcionRU // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionCN: freezed == descripcionCN
-          ? _value.descripcionCN
-          : descripcionCN // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionEL: freezed == descripcionEL
-          ? _value.descripcionEL
-          : descripcionEL // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$DevolucionTipoDTOImpl(
+        id:
+            null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                    as String,
+        descripcionES:
+            null == descripcionES
+                ? _value.descripcionES
+                : descripcionES // ignore: cast_nullable_to_non_nullable
+                    as String,
+        descripcionEN:
+            freezed == descripcionEN
+                ? _value.descripcionEN
+                : descripcionEN // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionFR:
+            freezed == descripcionFR
+                ? _value.descripcionFR
+                : descripcionFR // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionDE:
+            freezed == descripcionDE
+                ? _value.descripcionDE
+                : descripcionDE // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionCA:
+            freezed == descripcionCA
+                ? _value.descripcionCA
+                : descripcionCA // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionGB:
+            freezed == descripcionGB
+                ? _value.descripcionGB
+                : descripcionGB // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionHU:
+            freezed == descripcionHU
+                ? _value.descripcionHU
+                : descripcionHU // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionIT:
+            freezed == descripcionIT
+                ? _value.descripcionIT
+                : descripcionIT // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionNL:
+            freezed == descripcionNL
+                ? _value.descripcionNL
+                : descripcionNL // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionPT:
+            freezed == descripcionPT
+                ? _value.descripcionPT
+                : descripcionPT // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionRO:
+            freezed == descripcionRO
+                ? _value.descripcionRO
+                : descripcionRO // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionRU:
+            freezed == descripcionRU
+                ? _value.descripcionRU
+                : descripcionRU // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionCN:
+            freezed == descripcionCN
+                ? _value.descripcionCN
+                : descripcionCN // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        descripcionEL:
+            freezed == descripcionEL
+                ? _value.descripcionEL
+                : descripcionEL // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        lastUpdated:
+            null == lastUpdated
+                ? _value.lastUpdated
+                : lastUpdated // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        deleted:
+            null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$DevolucionTipoDTOImpl extends _DevolucionTipoDTO {
-  const _$DevolucionTipoDTOImpl(
-      {@JsonKey(name: 'DEVOLUCION_TIPO_ID') required this.id,
-      @JsonKey(name: 'DESCRIPCION_ES') required this.descripcionES,
-      @JsonKey(name: 'DESCRIPCION_EN') this.descripcionEN,
-      @JsonKey(name: 'DESCRIPCION_FR') this.descripcionFR,
-      @JsonKey(name: 'DESCRIPCION_DE') this.descripcionDE,
-      @JsonKey(name: 'DESCRIPCION_CA') this.descripcionCA,
-      @JsonKey(name: 'DESCRIPCION_GB') this.descripcionGB,
-      @JsonKey(name: 'DESCRIPCION_HU') this.descripcionHU,
-      @JsonKey(name: 'DESCRIPCION_IT') this.descripcionIT,
-      @JsonKey(name: 'DESCRIPCION_NL') this.descripcionNL,
-      @JsonKey(name: 'DESCRIPCION_PT') this.descripcionPT,
-      @JsonKey(name: 'DESCRIPCION_RO') this.descripcionRO,
-      @JsonKey(name: 'DESCRIPCION_RU') this.descripcionRU,
-      @JsonKey(name: 'DESCRIPCION_CN') this.descripcionCN,
-      @JsonKey(name: 'DESCRIPCION_EL') this.descripcionEL,
-      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-      @JsonKey(name: 'DELETED') this.deleted = 'N'})
-      : super._();
+  const _$DevolucionTipoDTOImpl({
+    @JsonKey(name: 'DEVOLUCION_TIPO_ID') required this.id,
+    @JsonKey(name: 'DESCRIPCION_ES') required this.descripcionES,
+    @JsonKey(name: 'DESCRIPCION_EN') this.descripcionEN,
+    @JsonKey(name: 'DESCRIPCION_FR') this.descripcionFR,
+    @JsonKey(name: 'DESCRIPCION_DE') this.descripcionDE,
+    @JsonKey(name: 'DESCRIPCION_CA') this.descripcionCA,
+    @JsonKey(name: 'DESCRIPCION_GB') this.descripcionGB,
+    @JsonKey(name: 'DESCRIPCION_HU') this.descripcionHU,
+    @JsonKey(name: 'DESCRIPCION_IT') this.descripcionIT,
+    @JsonKey(name: 'DESCRIPCION_NL') this.descripcionNL,
+    @JsonKey(name: 'DESCRIPCION_PT') this.descripcionPT,
+    @JsonKey(name: 'DESCRIPCION_RO') this.descripcionRO,
+    @JsonKey(name: 'DESCRIPCION_RU') this.descripcionRU,
+    @JsonKey(name: 'DESCRIPCION_CN') this.descripcionCN,
+    @JsonKey(name: 'DESCRIPCION_EL') this.descripcionEL,
+    @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+    @JsonKey(name: 'DELETED') this.deleted = 'N',
+  }) : super._();
 
   factory _$DevolucionTipoDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$DevolucionTipoDTOImplFromJson(json);
@@ -454,24 +499,25 @@ class _$DevolucionTipoDTOImpl extends _DevolucionTipoDTO {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      descripcionES,
-      descripcionEN,
-      descripcionFR,
-      descripcionDE,
-      descripcionCA,
-      descripcionGB,
-      descripcionHU,
-      descripcionIT,
-      descripcionNL,
-      descripcionPT,
-      descripcionRO,
-      descripcionRU,
-      descripcionCN,
-      descripcionEL,
-      lastUpdated,
-      deleted);
+    runtimeType,
+    id,
+    descripcionES,
+    descripcionEN,
+    descripcionFR,
+    descripcionDE,
+    descripcionCA,
+    descripcionGB,
+    descripcionHU,
+    descripcionIT,
+    descripcionNL,
+    descripcionPT,
+    descripcionRO,
+    descripcionRU,
+    descripcionCN,
+    descripcionEL,
+    lastUpdated,
+    deleted,
+  );
 
   /// Create a copy of DevolucionTipoDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -480,36 +526,36 @@ class _$DevolucionTipoDTOImpl extends _DevolucionTipoDTO {
   @pragma('vm:prefer-inline')
   _$$DevolucionTipoDTOImplCopyWith<_$DevolucionTipoDTOImpl> get copyWith =>
       __$$DevolucionTipoDTOImplCopyWithImpl<_$DevolucionTipoDTOImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DevolucionTipoDTOImplToJson(
-      this,
-    );
+    return _$$DevolucionTipoDTOImplToJson(this);
   }
 }
 
 abstract class _DevolucionTipoDTO extends DevolucionTipoDTO {
-  const factory _DevolucionTipoDTO(
-          {@JsonKey(name: 'DEVOLUCION_TIPO_ID') required final String id,
-          @JsonKey(name: 'DESCRIPCION_ES') required final String descripcionES,
-          @JsonKey(name: 'DESCRIPCION_EN') final String? descripcionEN,
-          @JsonKey(name: 'DESCRIPCION_FR') final String? descripcionFR,
-          @JsonKey(name: 'DESCRIPCION_DE') final String? descripcionDE,
-          @JsonKey(name: 'DESCRIPCION_CA') final String? descripcionCA,
-          @JsonKey(name: 'DESCRIPCION_GB') final String? descripcionGB,
-          @JsonKey(name: 'DESCRIPCION_HU') final String? descripcionHU,
-          @JsonKey(name: 'DESCRIPCION_IT') final String? descripcionIT,
-          @JsonKey(name: 'DESCRIPCION_NL') final String? descripcionNL,
-          @JsonKey(name: 'DESCRIPCION_PT') final String? descripcionPT,
-          @JsonKey(name: 'DESCRIPCION_RO') final String? descripcionRO,
-          @JsonKey(name: 'DESCRIPCION_RU') final String? descripcionRU,
-          @JsonKey(name: 'DESCRIPCION_CN') final String? descripcionCN,
-          @JsonKey(name: 'DESCRIPCION_EL') final String? descripcionEL,
-          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-          @JsonKey(name: 'DELETED') final String deleted}) =
-      _$DevolucionTipoDTOImpl;
+  const factory _DevolucionTipoDTO({
+    @JsonKey(name: 'DEVOLUCION_TIPO_ID') required final String id,
+    @JsonKey(name: 'DESCRIPCION_ES') required final String descripcionES,
+    @JsonKey(name: 'DESCRIPCION_EN') final String? descripcionEN,
+    @JsonKey(name: 'DESCRIPCION_FR') final String? descripcionFR,
+    @JsonKey(name: 'DESCRIPCION_DE') final String? descripcionDE,
+    @JsonKey(name: 'DESCRIPCION_CA') final String? descripcionCA,
+    @JsonKey(name: 'DESCRIPCION_GB') final String? descripcionGB,
+    @JsonKey(name: 'DESCRIPCION_HU') final String? descripcionHU,
+    @JsonKey(name: 'DESCRIPCION_IT') final String? descripcionIT,
+    @JsonKey(name: 'DESCRIPCION_NL') final String? descripcionNL,
+    @JsonKey(name: 'DESCRIPCION_PT') final String? descripcionPT,
+    @JsonKey(name: 'DESCRIPCION_RO') final String? descripcionRO,
+    @JsonKey(name: 'DESCRIPCION_RU') final String? descripcionRU,
+    @JsonKey(name: 'DESCRIPCION_CN') final String? descripcionCN,
+    @JsonKey(name: 'DESCRIPCION_EL') final String? descripcionEL,
+    @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') final String deleted,
+  }) = _$DevolucionTipoDTOImpl;
   const _DevolucionTipoDTO._() : super._();
 
   factory _DevolucionTipoDTO.fromJson(Map<String, dynamic> json) =

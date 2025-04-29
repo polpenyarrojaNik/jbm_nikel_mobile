@@ -38,19 +38,19 @@ class CatalogoDTO with _$CatalogoDTO implements Insertable<CatalogoDTO> {
   }
 
   factory CatalogoDTO.fromDomain(Catalogo catalogo) => CatalogoDTO(
-        catalogoId: catalogo.catalogoId,
-        nombre: catalogo.nombre,
-        idiomaId: catalogo.idiomaId,
-        tipoPrecioCatalogoId: catalogo.tipoPrecioCatalogoId,
-        tipoPrecioCatalogoNombre: catalogo.tipoPrecioCatalogoNombre,
-        tipoCatalogoId: catalogo.tipoCatalogoId,
-        tagBusqueda: catalogo.tagBusqueda,
-        orden: catalogo.orden,
-        nombreFicheroPortada: catalogo.nombreFicheroPortada,
-        nombreFicheroCatalogo: catalogo.nombreFicheroCatalogo,
-        descarga: catalogo.descarga ? 'S' : 'N',
-        // isFavorite: checkIsFavorite(favoriteList),
-      );
+    catalogoId: catalogo.catalogoId,
+    nombre: catalogo.nombre,
+    idiomaId: catalogo.idiomaId,
+    tipoPrecioCatalogoId: catalogo.tipoPrecioCatalogoId,
+    tipoPrecioCatalogoNombre: catalogo.tipoPrecioCatalogoNombre,
+    tipoCatalogoId: catalogo.tipoCatalogoId,
+    tagBusqueda: catalogo.tagBusqueda,
+    orden: catalogo.orden,
+    nombreFicheroPortada: catalogo.nombreFicheroPortada,
+    nombreFicheroCatalogo: catalogo.nombreFicheroCatalogo,
+    descarga: catalogo.descarga ? 'S' : 'N',
+    // isFavorite: checkIsFavorite(favoriteList),
+  );
 
   Catalogo toDomain({required bool test, required String? tipoPrecioCatalogo}) {
     return Catalogo(

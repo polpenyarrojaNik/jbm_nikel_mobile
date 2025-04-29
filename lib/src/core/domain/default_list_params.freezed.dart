@@ -12,7 +12,8 @@ part of 'default_list_params.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$DefaultListParams {
@@ -31,11 +32,16 @@ mixin _$DefaultListParams {
 /// @nodoc
 abstract class $DefaultListParamsCopyWith<$Res> {
   factory $DefaultListParamsCopyWith(
-          DefaultListParams value, $Res Function(DefaultListParams) then) =
-      _$DefaultListParamsCopyWithImpl<$Res, DefaultListParams>;
+    DefaultListParams value,
+    $Res Function(DefaultListParams) then,
+  ) = _$DefaultListParamsCopyWithImpl<$Res, DefaultListParams>;
   @useResult
-  $Res call(
-      {int page, String searchText, bool? searchPotenciales, String? entityId});
+  $Res call({
+    int page,
+    String searchText,
+    bool? searchPotenciales,
+    String? entityId,
+  });
 }
 
 /// @nodoc
@@ -58,46 +64,59 @@ class _$DefaultListParamsCopyWithImpl<$Res, $Val extends DefaultListParams>
     Object? searchPotenciales = freezed,
     Object? entityId = freezed,
   }) {
-    return _then(_value.copyWith(
-      page: null == page
-          ? _value.page
-          : page // ignore: cast_nullable_to_non_nullable
-              as int,
-      searchText: null == searchText
-          ? _value.searchText
-          : searchText // ignore: cast_nullable_to_non_nullable
-              as String,
-      searchPotenciales: freezed == searchPotenciales
-          ? _value.searchPotenciales
-          : searchPotenciales // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      entityId: freezed == entityId
-          ? _value.entityId
-          : entityId // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            page:
+                null == page
+                    ? _value.page
+                    : page // ignore: cast_nullable_to_non_nullable
+                        as int,
+            searchText:
+                null == searchText
+                    ? _value.searchText
+                    : searchText // ignore: cast_nullable_to_non_nullable
+                        as String,
+            searchPotenciales:
+                freezed == searchPotenciales
+                    ? _value.searchPotenciales
+                    : searchPotenciales // ignore: cast_nullable_to_non_nullable
+                        as bool?,
+            entityId:
+                freezed == entityId
+                    ? _value.entityId
+                    : entityId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$DefaultListParamsImplCopyWith<$Res>
     implements $DefaultListParamsCopyWith<$Res> {
-  factory _$$DefaultListParamsImplCopyWith(_$DefaultListParamsImpl value,
-          $Res Function(_$DefaultListParamsImpl) then) =
-      __$$DefaultListParamsImplCopyWithImpl<$Res>;
+  factory _$$DefaultListParamsImplCopyWith(
+    _$DefaultListParamsImpl value,
+    $Res Function(_$DefaultListParamsImpl) then,
+  ) = __$$DefaultListParamsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int page, String searchText, bool? searchPotenciales, String? entityId});
+  $Res call({
+    int page,
+    String searchText,
+    bool? searchPotenciales,
+    String? entityId,
+  });
 }
 
 /// @nodoc
 class __$$DefaultListParamsImplCopyWithImpl<$Res>
     extends _$DefaultListParamsCopyWithImpl<$Res, _$DefaultListParamsImpl>
     implements _$$DefaultListParamsImplCopyWith<$Res> {
-  __$$DefaultListParamsImplCopyWithImpl(_$DefaultListParamsImpl _value,
-      $Res Function(_$DefaultListParamsImpl) _then)
-      : super(_value, _then);
+  __$$DefaultListParamsImplCopyWithImpl(
+    _$DefaultListParamsImpl _value,
+    $Res Function(_$DefaultListParamsImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DefaultListParams
   /// with the given fields replaced by the non-null parameter values.
@@ -109,36 +128,42 @@ class __$$DefaultListParamsImplCopyWithImpl<$Res>
     Object? searchPotenciales = freezed,
     Object? entityId = freezed,
   }) {
-    return _then(_$DefaultListParamsImpl(
-      page: null == page
-          ? _value.page
-          : page // ignore: cast_nullable_to_non_nullable
-              as int,
-      searchText: null == searchText
-          ? _value.searchText
-          : searchText // ignore: cast_nullable_to_non_nullable
-              as String,
-      searchPotenciales: freezed == searchPotenciales
-          ? _value.searchPotenciales
-          : searchPotenciales // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      entityId: freezed == entityId
-          ? _value.entityId
-          : entityId // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$DefaultListParamsImpl(
+        page:
+            null == page
+                ? _value.page
+                : page // ignore: cast_nullable_to_non_nullable
+                    as int,
+        searchText:
+            null == searchText
+                ? _value.searchText
+                : searchText // ignore: cast_nullable_to_non_nullable
+                    as String,
+        searchPotenciales:
+            freezed == searchPotenciales
+                ? _value.searchPotenciales
+                : searchPotenciales // ignore: cast_nullable_to_non_nullable
+                    as bool?,
+        entityId:
+            freezed == entityId
+                ? _value.entityId
+                : entityId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$DefaultListParamsImpl extends _DefaultListParams {
-  const _$DefaultListParamsImpl(
-      {required this.page,
-      required this.searchText,
-      this.searchPotenciales,
-      this.entityId})
-      : super._();
+  const _$DefaultListParamsImpl({
+    required this.page,
+    required this.searchText,
+    this.searchPotenciales,
+    this.entityId,
+  }) : super._();
 
   @override
   final int page;
@@ -179,15 +204,18 @@ class _$DefaultListParamsImpl extends _DefaultListParams {
   @pragma('vm:prefer-inline')
   _$$DefaultListParamsImplCopyWith<_$DefaultListParamsImpl> get copyWith =>
       __$$DefaultListParamsImplCopyWithImpl<_$DefaultListParamsImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _DefaultListParams extends DefaultListParams {
-  const factory _DefaultListParams(
-      {required final int page,
-      required final String searchText,
-      final bool? searchPotenciales,
-      final String? entityId}) = _$DefaultListParamsImpl;
+  const factory _DefaultListParams({
+    required final int page,
+    required final String searchText,
+    final bool? searchPotenciales,
+    final String? entityId,
+  }) = _$DefaultListParamsImpl;
   const _DefaultListParams._() : super._();
 
   @override

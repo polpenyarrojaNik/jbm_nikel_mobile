@@ -12,7 +12,8 @@ part of 'notification_list_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 NotificationListDto _$NotificationListDtoFromJson(Map<String, dynamic> json) {
   return _NotificationListDto.fromJson(json);
@@ -42,14 +43,16 @@ mixin _$NotificationListDto {
 /// @nodoc
 abstract class $NotificationListDtoCopyWith<$Res> {
   factory $NotificationListDtoCopyWith(
-          NotificationListDto value, $Res Function(NotificationListDto) then) =
-      _$NotificationListDtoCopyWithImpl<$Res, NotificationListDto>;
+    NotificationListDto value,
+    $Res Function(NotificationListDto) then,
+  ) = _$NotificationListDtoCopyWithImpl<$Res, NotificationListDto>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'NOTIFICACION_GUID') String notificacionId,
-      @JsonKey(name: 'F_ALTA') DateTime fecha,
-      @JsonKey(name: 'LEIDO_SN') String leidoSN,
-      @JsonKey(name: 'MENSAJE_MARKDOWN') String mensaje});
+  $Res call({
+    @JsonKey(name: 'NOTIFICACION_GUID') String notificacionId,
+    @JsonKey(name: 'F_ALTA') DateTime fecha,
+    @JsonKey(name: 'LEIDO_SN') String leidoSN,
+    @JsonKey(name: 'MENSAJE_MARKDOWN') String mensaje,
+  });
 }
 
 /// @nodoc
@@ -72,49 +75,59 @@ class _$NotificationListDtoCopyWithImpl<$Res, $Val extends NotificationListDto>
     Object? leidoSN = null,
     Object? mensaje = null,
   }) {
-    return _then(_value.copyWith(
-      notificacionId: null == notificacionId
-          ? _value.notificacionId
-          : notificacionId // ignore: cast_nullable_to_non_nullable
-              as String,
-      fecha: null == fecha
-          ? _value.fecha
-          : fecha // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      leidoSN: null == leidoSN
-          ? _value.leidoSN
-          : leidoSN // ignore: cast_nullable_to_non_nullable
-              as String,
-      mensaje: null == mensaje
-          ? _value.mensaje
-          : mensaje // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            notificacionId:
+                null == notificacionId
+                    ? _value.notificacionId
+                    : notificacionId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            fecha:
+                null == fecha
+                    ? _value.fecha
+                    : fecha // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            leidoSN:
+                null == leidoSN
+                    ? _value.leidoSN
+                    : leidoSN // ignore: cast_nullable_to_non_nullable
+                        as String,
+            mensaje:
+                null == mensaje
+                    ? _value.mensaje
+                    : mensaje // ignore: cast_nullable_to_non_nullable
+                        as String,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$NotificationListDtoImplCopyWith<$Res>
     implements $NotificationListDtoCopyWith<$Res> {
-  factory _$$NotificationListDtoImplCopyWith(_$NotificationListDtoImpl value,
-          $Res Function(_$NotificationListDtoImpl) then) =
-      __$$NotificationListDtoImplCopyWithImpl<$Res>;
+  factory _$$NotificationListDtoImplCopyWith(
+    _$NotificationListDtoImpl value,
+    $Res Function(_$NotificationListDtoImpl) then,
+  ) = __$$NotificationListDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'NOTIFICACION_GUID') String notificacionId,
-      @JsonKey(name: 'F_ALTA') DateTime fecha,
-      @JsonKey(name: 'LEIDO_SN') String leidoSN,
-      @JsonKey(name: 'MENSAJE_MARKDOWN') String mensaje});
+  $Res call({
+    @JsonKey(name: 'NOTIFICACION_GUID') String notificacionId,
+    @JsonKey(name: 'F_ALTA') DateTime fecha,
+    @JsonKey(name: 'LEIDO_SN') String leidoSN,
+    @JsonKey(name: 'MENSAJE_MARKDOWN') String mensaje,
+  });
 }
 
 /// @nodoc
 class __$$NotificationListDtoImplCopyWithImpl<$Res>
     extends _$NotificationListDtoCopyWithImpl<$Res, _$NotificationListDtoImpl>
     implements _$$NotificationListDtoImplCopyWith<$Res> {
-  __$$NotificationListDtoImplCopyWithImpl(_$NotificationListDtoImpl _value,
-      $Res Function(_$NotificationListDtoImpl) _then)
-      : super(_value, _then);
+  __$$NotificationListDtoImplCopyWithImpl(
+    _$NotificationListDtoImpl _value,
+    $Res Function(_$NotificationListDtoImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of NotificationListDto
   /// with the given fields replaced by the non-null parameter values.
@@ -126,36 +139,42 @@ class __$$NotificationListDtoImplCopyWithImpl<$Res>
     Object? leidoSN = null,
     Object? mensaje = null,
   }) {
-    return _then(_$NotificationListDtoImpl(
-      notificacionId: null == notificacionId
-          ? _value.notificacionId
-          : notificacionId // ignore: cast_nullable_to_non_nullable
-              as String,
-      fecha: null == fecha
-          ? _value.fecha
-          : fecha // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      leidoSN: null == leidoSN
-          ? _value.leidoSN
-          : leidoSN // ignore: cast_nullable_to_non_nullable
-              as String,
-      mensaje: null == mensaje
-          ? _value.mensaje
-          : mensaje // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$NotificationListDtoImpl(
+        notificacionId:
+            null == notificacionId
+                ? _value.notificacionId
+                : notificacionId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        fecha:
+            null == fecha
+                ? _value.fecha
+                : fecha // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        leidoSN:
+            null == leidoSN
+                ? _value.leidoSN
+                : leidoSN // ignore: cast_nullable_to_non_nullable
+                    as String,
+        mensaje:
+            null == mensaje
+                ? _value.mensaje
+                : mensaje // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$NotificationListDtoImpl extends _NotificationListDto {
-  const _$NotificationListDtoImpl(
-      {@JsonKey(name: 'NOTIFICACION_GUID') required this.notificacionId,
-      @JsonKey(name: 'F_ALTA') required this.fecha,
-      @JsonKey(name: 'LEIDO_SN') required this.leidoSN,
-      @JsonKey(name: 'MENSAJE_MARKDOWN') required this.mensaje})
-      : super._();
+  const _$NotificationListDtoImpl({
+    @JsonKey(name: 'NOTIFICACION_GUID') required this.notificacionId,
+    @JsonKey(name: 'F_ALTA') required this.fecha,
+    @JsonKey(name: 'LEIDO_SN') required this.leidoSN,
+    @JsonKey(name: 'MENSAJE_MARKDOWN') required this.mensaje,
+  }) : super._();
 
   factory _$NotificationListDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$NotificationListDtoImplFromJson(json);
@@ -202,23 +221,23 @@ class _$NotificationListDtoImpl extends _NotificationListDto {
   @pragma('vm:prefer-inline')
   _$$NotificationListDtoImplCopyWith<_$NotificationListDtoImpl> get copyWith =>
       __$$NotificationListDtoImplCopyWithImpl<_$NotificationListDtoImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$NotificationListDtoImplToJson(
-      this,
-    );
+    return _$$NotificationListDtoImplToJson(this);
   }
 }
 
 abstract class _NotificationListDto extends NotificationListDto {
-  const factory _NotificationListDto(
-      {@JsonKey(name: 'NOTIFICACION_GUID') required final String notificacionId,
-      @JsonKey(name: 'F_ALTA') required final DateTime fecha,
-      @JsonKey(name: 'LEIDO_SN') required final String leidoSN,
-      @JsonKey(name: 'MENSAJE_MARKDOWN')
-      required final String mensaje}) = _$NotificationListDtoImpl;
+  const factory _NotificationListDto({
+    @JsonKey(name: 'NOTIFICACION_GUID') required final String notificacionId,
+    @JsonKey(name: 'F_ALTA') required final DateTime fecha,
+    @JsonKey(name: 'LEIDO_SN') required final String leidoSN,
+    @JsonKey(name: 'MENSAJE_MARKDOWN') required final String mensaje,
+  }) = _$NotificationListDtoImpl;
   const _NotificationListDto._() : super._();
 
   factory _NotificationListDto.fromJson(Map<String, dynamic> json) =

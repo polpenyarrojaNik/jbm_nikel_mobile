@@ -42,13 +42,14 @@ class DivisaDTO with _$DivisaDTO implements Insertable<DivisaDTO> {
 
   Divisa toDomain() {
     return Divisa(
-        id: id,
-        abv: abv,
-        simbolo: simbolo,
-        redondeo: redondeo,
-        descripcion: getDescriptionInLocalLanguage(),
-        lastUpdate: lastUpdated,
-        deleted: (deleted == 'S') ? true : false);
+      id: id,
+      abv: abv,
+      simbolo: simbolo,
+      redondeo: redondeo,
+      descripcion: getDescriptionInLocalLanguage(),
+      lastUpdate: lastUpdated,
+      deleted: (deleted == 'S') ? true : false,
+    );
   }
 
   String getDescriptionInLocalLanguage() {

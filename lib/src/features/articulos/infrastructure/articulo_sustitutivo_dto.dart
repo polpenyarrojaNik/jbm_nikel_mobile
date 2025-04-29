@@ -26,9 +26,10 @@ class ArticuloSustitutivoDTO
   factory ArticuloSustitutivoDTO.fromJson(Map<String, dynamic> json) =>
       _$ArticuloSustitutivoDTOFromJson(json);
 
-  ArticuloSustitutivo toDomain(
-      {required String articuloSustitutivoDescripcion,
-      required int stockDisponible}) {
+  ArticuloSustitutivo toDomain({
+    required String articuloSustitutivoDescripcion,
+    required int stockDisponible,
+  }) {
     return ArticuloSustitutivo(
       articuloId: articuloId,
       articuloSustitutivoId: articuloSustitutivoId,

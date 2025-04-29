@@ -12,7 +12,8 @@ part of 'articulo_grupo_neto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ArticuloGrupoNeto {
@@ -36,19 +37,21 @@ mixin _$ArticuloGrupoNeto {
 /// @nodoc
 abstract class $ArticuloGrupoNetoCopyWith<$Res> {
   factory $ArticuloGrupoNetoCopyWith(
-          ArticuloGrupoNeto value, $Res Function(ArticuloGrupoNeto) then) =
-      _$ArticuloGrupoNetoCopyWithImpl<$Res, ArticuloGrupoNeto>;
+    ArticuloGrupoNeto value,
+    $Res Function(ArticuloGrupoNeto) then,
+  ) = _$ArticuloGrupoNetoCopyWithImpl<$Res, ArticuloGrupoNeto>;
   @useResult
-  $Res call(
-      {String articuloId,
-      String grupoNetoId,
-      String grupoNetoDescripcion,
-      int cantidadDesde,
-      Money precio,
-      String divisaId,
-      int tipoPrecio,
-      DateTime lastUpdated,
-      bool deleted});
+  $Res call({
+    String articuloId,
+    String grupoNetoId,
+    String grupoNetoDescripcion,
+    int cantidadDesde,
+    Money precio,
+    String divisaId,
+    int tipoPrecio,
+    DateTime lastUpdated,
+    bool deleted,
+  });
 }
 
 /// @nodoc
@@ -76,74 +79,89 @@ class _$ArticuloGrupoNetoCopyWithImpl<$Res, $Val extends ArticuloGrupoNeto>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_value.copyWith(
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      grupoNetoId: null == grupoNetoId
-          ? _value.grupoNetoId
-          : grupoNetoId // ignore: cast_nullable_to_non_nullable
-              as String,
-      grupoNetoDescripcion: null == grupoNetoDescripcion
-          ? _value.grupoNetoDescripcion
-          : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
-              as String,
-      cantidadDesde: null == cantidadDesde
-          ? _value.cantidadDesde
-          : cantidadDesde // ignore: cast_nullable_to_non_nullable
-              as int,
-      precio: null == precio
-          ? _value.precio
-          : precio // ignore: cast_nullable_to_non_nullable
-              as Money,
-      divisaId: null == divisaId
-          ? _value.divisaId
-          : divisaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      tipoPrecio: null == tipoPrecio
-          ? _value.tipoPrecio
-          : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as int,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            articuloId:
+                null == articuloId
+                    ? _value.articuloId
+                    : articuloId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            grupoNetoId:
+                null == grupoNetoId
+                    ? _value.grupoNetoId
+                    : grupoNetoId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            grupoNetoDescripcion:
+                null == grupoNetoDescripcion
+                    ? _value.grupoNetoDescripcion
+                    : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
+                        as String,
+            cantidadDesde:
+                null == cantidadDesde
+                    ? _value.cantidadDesde
+                    : cantidadDesde // ignore: cast_nullable_to_non_nullable
+                        as int,
+            precio:
+                null == precio
+                    ? _value.precio
+                    : precio // ignore: cast_nullable_to_non_nullable
+                        as Money,
+            divisaId:
+                null == divisaId
+                    ? _value.divisaId
+                    : divisaId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            tipoPrecio:
+                null == tipoPrecio
+                    ? _value.tipoPrecio
+                    : tipoPrecio // ignore: cast_nullable_to_non_nullable
+                        as int,
+            lastUpdated:
+                null == lastUpdated
+                    ? _value.lastUpdated
+                    : lastUpdated // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            deleted:
+                null == deleted
+                    ? _value.deleted
+                    : deleted // ignore: cast_nullable_to_non_nullable
+                        as bool,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$ArticuloGrupoNetoImplCopyWith<$Res>
     implements $ArticuloGrupoNetoCopyWith<$Res> {
-  factory _$$ArticuloGrupoNetoImplCopyWith(_$ArticuloGrupoNetoImpl value,
-          $Res Function(_$ArticuloGrupoNetoImpl) then) =
-      __$$ArticuloGrupoNetoImplCopyWithImpl<$Res>;
+  factory _$$ArticuloGrupoNetoImplCopyWith(
+    _$ArticuloGrupoNetoImpl value,
+    $Res Function(_$ArticuloGrupoNetoImpl) then,
+  ) = __$$ArticuloGrupoNetoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String articuloId,
-      String grupoNetoId,
-      String grupoNetoDescripcion,
-      int cantidadDesde,
-      Money precio,
-      String divisaId,
-      int tipoPrecio,
-      DateTime lastUpdated,
-      bool deleted});
+  $Res call({
+    String articuloId,
+    String grupoNetoId,
+    String grupoNetoDescripcion,
+    int cantidadDesde,
+    Money precio,
+    String divisaId,
+    int tipoPrecio,
+    DateTime lastUpdated,
+    bool deleted,
+  });
 }
 
 /// @nodoc
 class __$$ArticuloGrupoNetoImplCopyWithImpl<$Res>
     extends _$ArticuloGrupoNetoCopyWithImpl<$Res, _$ArticuloGrupoNetoImpl>
     implements _$$ArticuloGrupoNetoImplCopyWith<$Res> {
-  __$$ArticuloGrupoNetoImplCopyWithImpl(_$ArticuloGrupoNetoImpl _value,
-      $Res Function(_$ArticuloGrupoNetoImpl) _then)
-      : super(_value, _then);
+  __$$ArticuloGrupoNetoImplCopyWithImpl(
+    _$ArticuloGrupoNetoImpl _value,
+    $Res Function(_$ArticuloGrupoNetoImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ArticuloGrupoNeto
   /// with the given fields replaced by the non-null parameter values.
@@ -160,61 +178,72 @@ class __$$ArticuloGrupoNetoImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$ArticuloGrupoNetoImpl(
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      grupoNetoId: null == grupoNetoId
-          ? _value.grupoNetoId
-          : grupoNetoId // ignore: cast_nullable_to_non_nullable
-              as String,
-      grupoNetoDescripcion: null == grupoNetoDescripcion
-          ? _value.grupoNetoDescripcion
-          : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
-              as String,
-      cantidadDesde: null == cantidadDesde
-          ? _value.cantidadDesde
-          : cantidadDesde // ignore: cast_nullable_to_non_nullable
-              as int,
-      precio: null == precio
-          ? _value.precio
-          : precio // ignore: cast_nullable_to_non_nullable
-              as Money,
-      divisaId: null == divisaId
-          ? _value.divisaId
-          : divisaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      tipoPrecio: null == tipoPrecio
-          ? _value.tipoPrecio
-          : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as int,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$ArticuloGrupoNetoImpl(
+        articuloId:
+            null == articuloId
+                ? _value.articuloId
+                : articuloId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        grupoNetoId:
+            null == grupoNetoId
+                ? _value.grupoNetoId
+                : grupoNetoId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        grupoNetoDescripcion:
+            null == grupoNetoDescripcion
+                ? _value.grupoNetoDescripcion
+                : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
+                    as String,
+        cantidadDesde:
+            null == cantidadDesde
+                ? _value.cantidadDesde
+                : cantidadDesde // ignore: cast_nullable_to_non_nullable
+                    as int,
+        precio:
+            null == precio
+                ? _value.precio
+                : precio // ignore: cast_nullable_to_non_nullable
+                    as Money,
+        divisaId:
+            null == divisaId
+                ? _value.divisaId
+                : divisaId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        tipoPrecio:
+            null == tipoPrecio
+                ? _value.tipoPrecio
+                : tipoPrecio // ignore: cast_nullable_to_non_nullable
+                    as int,
+        lastUpdated:
+            null == lastUpdated
+                ? _value.lastUpdated
+                : lastUpdated // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        deleted:
+            null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                    as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ArticuloGrupoNetoImpl extends _ArticuloGrupoNeto {
-  const _$ArticuloGrupoNetoImpl(
-      {required this.articuloId,
-      required this.grupoNetoId,
-      required this.grupoNetoDescripcion,
-      required this.cantidadDesde,
-      required this.precio,
-      required this.divisaId,
-      required this.tipoPrecio,
-      required this.lastUpdated,
-      required this.deleted})
-      : super._();
+  const _$ArticuloGrupoNetoImpl({
+    required this.articuloId,
+    required this.grupoNetoId,
+    required this.grupoNetoDescripcion,
+    required this.cantidadDesde,
+    required this.precio,
+    required this.divisaId,
+    required this.tipoPrecio,
+    required this.lastUpdated,
+    required this.deleted,
+  }) : super._();
 
   @override
   final String articuloId;
@@ -265,16 +294,17 @@ class _$ArticuloGrupoNetoImpl extends _ArticuloGrupoNeto {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      articuloId,
-      grupoNetoId,
-      grupoNetoDescripcion,
-      cantidadDesde,
-      precio,
-      divisaId,
-      tipoPrecio,
-      lastUpdated,
-      deleted);
+    runtimeType,
+    articuloId,
+    grupoNetoId,
+    grupoNetoDescripcion,
+    cantidadDesde,
+    precio,
+    divisaId,
+    tipoPrecio,
+    lastUpdated,
+    deleted,
+  );
 
   /// Create a copy of ArticuloGrupoNeto
   /// with the given fields replaced by the non-null parameter values.
@@ -283,20 +313,23 @@ class _$ArticuloGrupoNetoImpl extends _ArticuloGrupoNeto {
   @pragma('vm:prefer-inline')
   _$$ArticuloGrupoNetoImplCopyWith<_$ArticuloGrupoNetoImpl> get copyWith =>
       __$$ArticuloGrupoNetoImplCopyWithImpl<_$ArticuloGrupoNetoImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _ArticuloGrupoNeto extends ArticuloGrupoNeto {
-  const factory _ArticuloGrupoNeto(
-      {required final String articuloId,
-      required final String grupoNetoId,
-      required final String grupoNetoDescripcion,
-      required final int cantidadDesde,
-      required final Money precio,
-      required final String divisaId,
-      required final int tipoPrecio,
-      required final DateTime lastUpdated,
-      required final bool deleted}) = _$ArticuloGrupoNetoImpl;
+  const factory _ArticuloGrupoNeto({
+    required final String articuloId,
+    required final String grupoNetoId,
+    required final String grupoNetoDescripcion,
+    required final int cantidadDesde,
+    required final Money precio,
+    required final String divisaId,
+    required final int tipoPrecio,
+    required final DateTime lastUpdated,
+    required final bool deleted,
+  }) = _$ArticuloGrupoNetoImpl;
   const _ArticuloGrupoNeto._() : super._();
 
   @override

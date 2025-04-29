@@ -46,23 +46,31 @@ class SettingsPage extends ConsumerWidget {
         orElse: () {},
         data: (notificationId) {
           if (notificationId != null) {
-            context.router
-                .push(NotificationDetailRoute(notificationId: notificationId));
+            context.router.push(
+              NotificationDetailRoute(notificationId: notificationId),
+            );
           }
         },
       ),
     );
 
-    ref.listen<ExportDatabaseControllerState>(exportDatabaseControllerProvider,
-        (_, state) {
-      state.maybeWhen(
+    ref.listen<ExportDatabaseControllerState>(
+      exportDatabaseControllerProvider,
+      (_, state) {
+        state.maybeWhen(
           orElse: () => null,
-          loading: () =>
-              showToast(S.of(context).settings_creandoArchivo, context),
-          data: (file) => enviarDatabase(
-              file: file, context: context, usuarioId: usuario!.id),
-          error: (error, _) => showToast(error.toString(), context));
-    });
+          loading:
+              () => showToast(S.of(context).settings_creandoArchivo, context),
+          data:
+              (file) => enviarDatabase(
+                file: file,
+                context: context,
+                usuarioId: usuario!.id,
+              ),
+          error: (error, _) => showToast(error.toString(), context),
+        );
+      },
+    );
 
     return Scaffold(
       key: scaffoldKey,
@@ -81,27 +89,32 @@ class SettingsPage extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ColumnFieldTextDetalle(
-                      fieldTitleValue: S.of(context).settings_user,
-                      value: usuario.id),
+                    fieldTitleValue: S.of(context).settings_user,
+                    value: usuario.id,
+                  ),
                   ColumnFieldTextDetalle(
-                      fieldTitleValue: S.of(context).settings_nombre_usuario,
-                      value: usuario.nombreUsuario),
+                    fieldTitleValue: S.of(context).settings_nombre_usuario,
+                    value: usuario.nombreUsuario,
+                  ),
                   if (usuario.test)
                     ColumnFieldTextDetalle(
-                        fieldTitleValue: 'Test',
-                        value: usuario.test.toString()),
+                      fieldTitleValue: 'Test',
+                      value: usuario.test.toString(),
+                    ),
                 ],
               ),
             statePackageInfo.when(
-              data: (packageInfo) => Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ColumnFieldTextDetalle(
-                      fieldTitleValue: S.of(context).settings_version,
-                      value:
-                          '${packageInfo.version} (${packageInfo.buildNumber})')
-                ],
-              ),
+              data:
+                  (packageInfo) => Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ColumnFieldTextDetalle(
+                        fieldTitleValue: S.of(context).settings_version,
+                        value:
+                            '${packageInfo.version} (${packageInfo.buildNumber})',
+                      ),
+                    ],
+                  ),
               error: (e, _) => ErrorMessageWidget(e.toString()),
               loading: () => const ProgressIndicatorWidget(),
             ),
@@ -112,13 +125,13 @@ class SettingsPage extends ConsumerWidget {
             ),
             stateSync.maybeWhen(
               orElse: () => Container(),
-              synchronized: () =>
-                  const _ReemplazarArchivoBaseDeDatosLocalButton(),
+              synchronized:
+                  () => const _ReemplazarArchivoBaseDeDatosLocalButton(),
             ),
             stateSync.maybeWhen(
               orElse: () => Container(),
-              synchronized: () =>
-                  _EnviarBaseDeDatosLocalButton(usuarioId: usuario!.id),
+              synchronized:
+                  () => _EnviarBaseDeDatosLocalButton(usuarioId: usuario!.id),
             ),
             stateSync.maybeWhen(
               orElse: () => Container(),
@@ -130,10 +143,11 @@ class SettingsPage extends ConsumerWidget {
     );
   }
 
-  void enviarDatabase(
-      {required BuildContext context,
-      required File file,
-      required String usuarioId}) async {
+  void enviarDatabase({
+    required BuildContext context,
+    required File file,
+    required String usuarioId,
+  }) async {
     final size = MediaQuery.of(context).size;
     final directory = await getApplicationDocumentsDirectory();
     final file = XFile('${directory.path}/$localDatabaseName');
@@ -151,9 +165,10 @@ class _ActualizarArchivoBaseDeDatosButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen<DeleteDatabaseControllerState>(deleteDatabaseControllerProvider,
-        (_, state) {
-      state.maybeWhen(
+    ref.listen<DeleteDatabaseControllerState>(
+      deleteDatabaseControllerProvider,
+      (_, state) {
+        state.maybeWhen(
           orElse: () {},
           data: (deleted) {
             if (deleted) {
@@ -162,8 +177,10 @@ class _ActualizarArchivoBaseDeDatosButton extends ConsumerWidget {
               ref.invalidate(syncServiceProvider);
               ref.read(usuarioNotifierProvider.notifier).signOut();
             }
-          });
-    });
+          },
+        );
+      },
+    );
     return ElevatedButton(
       onPressed: () => deleteDatabase(ref),
       child: Row(
@@ -171,9 +188,7 @@ class _ActualizarArchivoBaseDeDatosButton extends ConsumerWidget {
         children: [
           const Icon(Icons.refresh),
           const SizedBox(width: 5),
-          Text(
-            S.of(context).settings_reemplazarBaseDeDatos,
-          )
+          Text(S.of(context).settings_reemplazarBaseDeDatos),
         ],
       ),
     );
@@ -192,8 +207,9 @@ class _ReemplazarArchivoBaseDeDatosLocalButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen<DeleteLocalDatabaseControllerState>(
-        deleteLocalDatabaseControllerProvider, (_, state) {
-      state.maybeWhen(
+      deleteLocalDatabaseControllerProvider,
+      (_, state) {
+        state.maybeWhen(
           orElse: () {},
           data: (deleted) {
             if (deleted) {
@@ -203,25 +219,24 @@ class _ReemplazarArchivoBaseDeDatosLocalButton extends ConsumerWidget {
               ref.invalidate(syncServiceProvider);
               ref.read(usuarioNotifierProvider.notifier).signOut();
             }
-          });
-    });
+          },
+        );
+      },
+    );
     return ElevatedButton(
       onPressed: () => replaceLocalDatabase(context, ref),
       style: ButtonStyle(backgroundColor: WidgetStateProperty.all(Colors.red)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.refresh,
-            color: Theme.of(context).colorScheme.onError,
-          ),
+          Icon(Icons.refresh, color: Theme.of(context).colorScheme.onError),
           const SizedBox(width: 5),
           Flexible(
             child: Text(
               S.of(context).settings_reemplazarBaseDeDatosLocal,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Theme.of(context).colorScheme.onError,
-                  ),
+                color: Theme.of(context).colorScheme.onError,
+              ),
             ),
           ),
         ],
@@ -231,8 +246,9 @@ class _ReemplazarArchivoBaseDeDatosLocalButton extends ConsumerWidget {
 
   void replaceLocalDatabase(BuildContext context, WidgetRef ref) async {
     final replaceDatabase = await showDialog<bool?>(
-        context: context,
-        builder: (context) => const ReplaceDatabaseAlertDialog());
+      context: context,
+      builder: (context) => const ReplaceDatabaseAlertDialog(),
+    );
 
     if (replaceDatabase != null && replaceDatabase && context.mounted) {
       final correctKey = await showDialog<bool?>(
@@ -287,8 +303,10 @@ class ReplaceDatabaseKeyAlertDialog extends StatelessWidget {
           decoration: InputDecoration(labelText: S.of(context).claveNikel),
           validator: FormBuilderValidators.compose([
             FormBuilderValidators.required(),
-            FormBuilderValidators.equal('N1k3l',
-                errorText: S.of(context).reemplazarBaseDeDatosTextMesaje)
+            FormBuilderValidators.equal(
+              'N1k3l',
+              errorText: S.of(context).reemplazarBaseDeDatosTextMesaje,
+            ),
           ]),
         ),
       ),
@@ -325,9 +343,7 @@ class _EnviarBaseDeDatosLocalButton extends ConsumerWidget {
         children: [
           const Icon(Icons.email),
           const SizedBox(width: 5),
-          Text(
-            S.of(context).settings_enviarBaseDeDatos,
-          )
+          Text(S.of(context).settings_enviarBaseDeDatos),
         ],
       ),
     );
@@ -352,9 +368,7 @@ class _SignoutButton extends ConsumerWidget {
         children: [
           const Icon(Icons.logout),
           const SizedBox(width: 5),
-          Text(
-            S.of(context).settings_cerrar_sesion,
-          )
+          Text(S.of(context).settings_cerrar_sesion),
         ],
       ),
     );

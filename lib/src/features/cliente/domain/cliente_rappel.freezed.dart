@@ -12,7 +12,8 @@ part of 'cliente_rappel.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ClienteRappel {
@@ -36,19 +37,21 @@ mixin _$ClienteRappel {
 /// @nodoc
 abstract class $ClienteRappelCopyWith<$Res> {
   factory $ClienteRappelCopyWith(
-          ClienteRappel value, $Res Function(ClienteRappel) then) =
-      _$ClienteRappelCopyWithImpl<$Res, ClienteRappel>;
+    ClienteRappel value,
+    $Res Function(ClienteRappel) then,
+  ) = _$ClienteRappelCopyWithImpl<$Res, ClienteRappel>;
   @useResult
-  $Res call(
-      {String clienteId,
-      String rappelId,
-      String descripcion,
-      DateTime fechaDesDe,
-      DateTime? fechaHasta,
-      String? nombreArchivo,
-      bool firmado,
-      DateTime lastUpdated,
-      bool deleted});
+  $Res call({
+    String clienteId,
+    String rappelId,
+    String descripcion,
+    DateTime fechaDesDe,
+    DateTime? fechaHasta,
+    String? nombreArchivo,
+    bool firmado,
+    DateTime lastUpdated,
+    bool deleted,
+  });
 }
 
 /// @nodoc
@@ -76,44 +79,56 @@ class _$ClienteRappelCopyWithImpl<$Res, $Val extends ClienteRappel>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_value.copyWith(
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      rappelId: null == rappelId
-          ? _value.rappelId
-          : rappelId // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcion: null == descripcion
-          ? _value.descripcion
-          : descripcion // ignore: cast_nullable_to_non_nullable
-              as String,
-      fechaDesDe: null == fechaDesDe
-          ? _value.fechaDesDe
-          : fechaDesDe // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      fechaHasta: freezed == fechaHasta
-          ? _value.fechaHasta
-          : fechaHasta // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      nombreArchivo: freezed == nombreArchivo
-          ? _value.nombreArchivo
-          : nombreArchivo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      firmado: null == firmado
-          ? _value.firmado
-          : firmado // ignore: cast_nullable_to_non_nullable
-              as bool,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            clienteId:
+                null == clienteId
+                    ? _value.clienteId
+                    : clienteId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            rappelId:
+                null == rappelId
+                    ? _value.rappelId
+                    : rappelId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            descripcion:
+                null == descripcion
+                    ? _value.descripcion
+                    : descripcion // ignore: cast_nullable_to_non_nullable
+                        as String,
+            fechaDesDe:
+                null == fechaDesDe
+                    ? _value.fechaDesDe
+                    : fechaDesDe // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            fechaHasta:
+                freezed == fechaHasta
+                    ? _value.fechaHasta
+                    : fechaHasta // ignore: cast_nullable_to_non_nullable
+                        as DateTime?,
+            nombreArchivo:
+                freezed == nombreArchivo
+                    ? _value.nombreArchivo
+                    : nombreArchivo // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            firmado:
+                null == firmado
+                    ? _value.firmado
+                    : firmado // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            lastUpdated:
+                null == lastUpdated
+                    ? _value.lastUpdated
+                    : lastUpdated // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            deleted:
+                null == deleted
+                    ? _value.deleted
+                    : deleted // ignore: cast_nullable_to_non_nullable
+                        as bool,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -121,20 +136,22 @@ class _$ClienteRappelCopyWithImpl<$Res, $Val extends ClienteRappel>
 abstract class _$$ClienteRappelImplCopyWith<$Res>
     implements $ClienteRappelCopyWith<$Res> {
   factory _$$ClienteRappelImplCopyWith(
-          _$ClienteRappelImpl value, $Res Function(_$ClienteRappelImpl) then) =
-      __$$ClienteRappelImplCopyWithImpl<$Res>;
+    _$ClienteRappelImpl value,
+    $Res Function(_$ClienteRappelImpl) then,
+  ) = __$$ClienteRappelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String clienteId,
-      String rappelId,
-      String descripcion,
-      DateTime fechaDesDe,
-      DateTime? fechaHasta,
-      String? nombreArchivo,
-      bool firmado,
-      DateTime lastUpdated,
-      bool deleted});
+  $Res call({
+    String clienteId,
+    String rappelId,
+    String descripcion,
+    DateTime fechaDesDe,
+    DateTime? fechaHasta,
+    String? nombreArchivo,
+    bool firmado,
+    DateTime lastUpdated,
+    bool deleted,
+  });
 }
 
 /// @nodoc
@@ -142,8 +159,9 @@ class __$$ClienteRappelImplCopyWithImpl<$Res>
     extends _$ClienteRappelCopyWithImpl<$Res, _$ClienteRappelImpl>
     implements _$$ClienteRappelImplCopyWith<$Res> {
   __$$ClienteRappelImplCopyWithImpl(
-      _$ClienteRappelImpl _value, $Res Function(_$ClienteRappelImpl) _then)
-      : super(_value, _then);
+    _$ClienteRappelImpl _value,
+    $Res Function(_$ClienteRappelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ClienteRappel
   /// with the given fields replaced by the non-null parameter values.
@@ -160,61 +178,72 @@ class __$$ClienteRappelImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$ClienteRappelImpl(
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      rappelId: null == rappelId
-          ? _value.rappelId
-          : rappelId // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcion: null == descripcion
-          ? _value.descripcion
-          : descripcion // ignore: cast_nullable_to_non_nullable
-              as String,
-      fechaDesDe: null == fechaDesDe
-          ? _value.fechaDesDe
-          : fechaDesDe // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      fechaHasta: freezed == fechaHasta
-          ? _value.fechaHasta
-          : fechaHasta // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      nombreArchivo: freezed == nombreArchivo
-          ? _value.nombreArchivo
-          : nombreArchivo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      firmado: null == firmado
-          ? _value.firmado
-          : firmado // ignore: cast_nullable_to_non_nullable
-              as bool,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$ClienteRappelImpl(
+        clienteId:
+            null == clienteId
+                ? _value.clienteId
+                : clienteId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        rappelId:
+            null == rappelId
+                ? _value.rappelId
+                : rappelId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        descripcion:
+            null == descripcion
+                ? _value.descripcion
+                : descripcion // ignore: cast_nullable_to_non_nullable
+                    as String,
+        fechaDesDe:
+            null == fechaDesDe
+                ? _value.fechaDesDe
+                : fechaDesDe // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        fechaHasta:
+            freezed == fechaHasta
+                ? _value.fechaHasta
+                : fechaHasta // ignore: cast_nullable_to_non_nullable
+                    as DateTime?,
+        nombreArchivo:
+            freezed == nombreArchivo
+                ? _value.nombreArchivo
+                : nombreArchivo // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        firmado:
+            null == firmado
+                ? _value.firmado
+                : firmado // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        lastUpdated:
+            null == lastUpdated
+                ? _value.lastUpdated
+                : lastUpdated // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        deleted:
+            null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                    as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ClienteRappelImpl extends _ClienteRappel {
-  const _$ClienteRappelImpl(
-      {required this.clienteId,
-      required this.rappelId,
-      required this.descripcion,
-      required this.fechaDesDe,
-      this.fechaHasta,
-      this.nombreArchivo,
-      required this.firmado,
-      required this.lastUpdated,
-      required this.deleted})
-      : super._();
+  const _$ClienteRappelImpl({
+    required this.clienteId,
+    required this.rappelId,
+    required this.descripcion,
+    required this.fechaDesDe,
+    this.fechaHasta,
+    this.nombreArchivo,
+    required this.firmado,
+    required this.lastUpdated,
+    required this.deleted,
+  }) : super._();
 
   @override
   final String clienteId;
@@ -264,8 +293,18 @@ class _$ClienteRappelImpl extends _ClienteRappel {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, clienteId, rappelId, descripcion,
-      fechaDesDe, fechaHasta, nombreArchivo, firmado, lastUpdated, deleted);
+  int get hashCode => Object.hash(
+    runtimeType,
+    clienteId,
+    rappelId,
+    descripcion,
+    fechaDesDe,
+    fechaHasta,
+    nombreArchivo,
+    firmado,
+    lastUpdated,
+    deleted,
+  );
 
   /// Create a copy of ClienteRappel
   /// with the given fields replaced by the non-null parameter values.
@@ -277,16 +316,17 @@ class _$ClienteRappelImpl extends _ClienteRappel {
 }
 
 abstract class _ClienteRappel extends ClienteRappel {
-  const factory _ClienteRappel(
-      {required final String clienteId,
-      required final String rappelId,
-      required final String descripcion,
-      required final DateTime fechaDesDe,
-      final DateTime? fechaHasta,
-      final String? nombreArchivo,
-      required final bool firmado,
-      required final DateTime lastUpdated,
-      required final bool deleted}) = _$ClienteRappelImpl;
+  const factory _ClienteRappel({
+    required final String clienteId,
+    required final String rappelId,
+    required final String descripcion,
+    required final DateTime fechaDesDe,
+    final DateTime? fechaHasta,
+    final String? nombreArchivo,
+    required final bool firmado,
+    required final DateTime lastUpdated,
+    required final bool deleted,
+  }) = _$ClienteRappelImpl;
   const _ClienteRappel._() : super._();
 
   @override

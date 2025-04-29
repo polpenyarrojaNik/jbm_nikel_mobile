@@ -36,8 +36,10 @@ class ClientePagoPendienteDTO
   factory ClientePagoPendienteDTO.fromJson(Map<String, dynamic> json) =>
       _$ClientePagoPendienteDTOFromJson(json);
 
-  ClientePagoPendiente toDomain(
-      {required MetodoDeCobro? metodoDeCobro, required String? divisaId}) {
+  ClientePagoPendiente toDomain({
+    required MetodoDeCobro? metodoDeCobro,
+    required String? divisaId,
+  }) {
     return ClientePagoPendiente(
       clienteId: clienteId,
       efectoId: efectoId,
@@ -88,10 +90,11 @@ class ClientePagoPendienteTable extends Table {
       dateTime().nullable().named('FECHA_FACTURA')();
   DateTimeColumn get fechaExpiracion =>
       dateTime().nullable().named('FECHA_VENCIMIENTO')();
-  TextColumn get metodoDeCobroId => text()
-      .nullable()
-      .references(MetodoDeCobroTable, #id)
-      .named('METODO_COBRO_ID')();
+  TextColumn get metodoDeCobroId =>
+      text()
+          .nullable()
+          .references(MetodoDeCobroTable, #id)
+          .named('METODO_COBRO_ID')();
   TextColumn get estadoCobroId => text().nullable().named('ESTADO_COBRO_ID')();
   RealColumn get importe => real().nullable().named('IMPORTE')();
   DateTimeColumn get fechaExpiracionInicial =>

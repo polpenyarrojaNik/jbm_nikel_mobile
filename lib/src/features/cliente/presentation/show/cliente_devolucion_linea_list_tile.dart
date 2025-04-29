@@ -5,8 +5,10 @@ import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
 
 class ClienteDevolucionLineaListTile extends StatelessWidget {
-  const ClienteDevolucionLineaListTile(
-      {super.key, required this.devolucionLinea});
+  const ClienteDevolucionLineaListTile({
+    super.key,
+    required this.devolucionLinea,
+  });
 
   final DevolucionLinea devolucionLinea;
 
@@ -22,11 +24,7 @@ class ClienteDevolucionLineaListTile extends StatelessWidget {
               width: 50,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    devolucionLinea.devolucionId,
-                  ),
-                ],
+                children: [Text(devolucionLinea.devolucionId)],
               ),
             ),
             Flexible(
@@ -34,20 +32,22 @@ class ClienteDevolucionLineaListTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          devolucionLinea.articuloId,
-                          style: Theme.of(context).textTheme.titleSmall,
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                                '${numberFormatCantidades(devolucionLinea.cantidadDevolucion)} ${S.of(context).unidad}',
-                                style: Theme.of(context).textTheme.titleSmall),
-                          ],
-                        ),
-                      ]),
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        devolucionLinea.articuloId,
+                        style: Theme.of(context).textTheme.titleSmall,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            '${numberFormatCantidades(devolucionLinea.cantidadDevolucion)} ${S.of(context).unidad}',
+                            style: Theme.of(context).textTheme.titleSmall,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                   Text(
                     devolucionLinea.articuloDescription,
                     maxLines: 2,

@@ -12,7 +12,8 @@ part of 'articulo_empresa_iva.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ArticuloEmpresaIva {
@@ -32,15 +33,17 @@ mixin _$ArticuloEmpresaIva {
 /// @nodoc
 abstract class $ArticuloEmpresaIvaCopyWith<$Res> {
   factory $ArticuloEmpresaIvaCopyWith(
-          ArticuloEmpresaIva value, $Res Function(ArticuloEmpresaIva) then) =
-      _$ArticuloEmpresaIvaCopyWithImpl<$Res, ArticuloEmpresaIva>;
+    ArticuloEmpresaIva value,
+    $Res Function(ArticuloEmpresaIva) then,
+  ) = _$ArticuloEmpresaIvaCopyWithImpl<$Res, ArticuloEmpresaIva>;
   @useResult
-  $Res call(
-      {String articuloId,
-      String empresaId,
-      double iva,
-      DateTime lastUpdated,
-      bool deleted});
+  $Res call({
+    String articuloId,
+    String empresaId,
+    double iva,
+    DateTime lastUpdated,
+    bool deleted,
+  });
 }
 
 /// @nodoc
@@ -64,54 +67,65 @@ class _$ArticuloEmpresaIvaCopyWithImpl<$Res, $Val extends ArticuloEmpresaIva>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_value.copyWith(
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      empresaId: null == empresaId
-          ? _value.empresaId
-          : empresaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      iva: null == iva
-          ? _value.iva
-          : iva // ignore: cast_nullable_to_non_nullable
-              as double,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            articuloId:
+                null == articuloId
+                    ? _value.articuloId
+                    : articuloId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            empresaId:
+                null == empresaId
+                    ? _value.empresaId
+                    : empresaId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            iva:
+                null == iva
+                    ? _value.iva
+                    : iva // ignore: cast_nullable_to_non_nullable
+                        as double,
+            lastUpdated:
+                null == lastUpdated
+                    ? _value.lastUpdated
+                    : lastUpdated // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            deleted:
+                null == deleted
+                    ? _value.deleted
+                    : deleted // ignore: cast_nullable_to_non_nullable
+                        as bool,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$ArticuloEmpresaIvaImplCopyWith<$Res>
     implements $ArticuloEmpresaIvaCopyWith<$Res> {
-  factory _$$ArticuloEmpresaIvaImplCopyWith(_$ArticuloEmpresaIvaImpl value,
-          $Res Function(_$ArticuloEmpresaIvaImpl) then) =
-      __$$ArticuloEmpresaIvaImplCopyWithImpl<$Res>;
+  factory _$$ArticuloEmpresaIvaImplCopyWith(
+    _$ArticuloEmpresaIvaImpl value,
+    $Res Function(_$ArticuloEmpresaIvaImpl) then,
+  ) = __$$ArticuloEmpresaIvaImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String articuloId,
-      String empresaId,
-      double iva,
-      DateTime lastUpdated,
-      bool deleted});
+  $Res call({
+    String articuloId,
+    String empresaId,
+    double iva,
+    DateTime lastUpdated,
+    bool deleted,
+  });
 }
 
 /// @nodoc
 class __$$ArticuloEmpresaIvaImplCopyWithImpl<$Res>
     extends _$ArticuloEmpresaIvaCopyWithImpl<$Res, _$ArticuloEmpresaIvaImpl>
     implements _$$ArticuloEmpresaIvaImplCopyWith<$Res> {
-  __$$ArticuloEmpresaIvaImplCopyWithImpl(_$ArticuloEmpresaIvaImpl _value,
-      $Res Function(_$ArticuloEmpresaIvaImpl) _then)
-      : super(_value, _then);
+  __$$ArticuloEmpresaIvaImplCopyWithImpl(
+    _$ArticuloEmpresaIvaImpl _value,
+    $Res Function(_$ArticuloEmpresaIvaImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ArticuloEmpresaIva
   /// with the given fields replaced by the non-null parameter values.
@@ -124,41 +138,48 @@ class __$$ArticuloEmpresaIvaImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$ArticuloEmpresaIvaImpl(
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      empresaId: null == empresaId
-          ? _value.empresaId
-          : empresaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      iva: null == iva
-          ? _value.iva
-          : iva // ignore: cast_nullable_to_non_nullable
-              as double,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$ArticuloEmpresaIvaImpl(
+        articuloId:
+            null == articuloId
+                ? _value.articuloId
+                : articuloId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        empresaId:
+            null == empresaId
+                ? _value.empresaId
+                : empresaId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        iva:
+            null == iva
+                ? _value.iva
+                : iva // ignore: cast_nullable_to_non_nullable
+                    as double,
+        lastUpdated:
+            null == lastUpdated
+                ? _value.lastUpdated
+                : lastUpdated // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        deleted:
+            null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                    as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ArticuloEmpresaIvaImpl extends _ArticuloEmpresaIva {
-  const _$ArticuloEmpresaIvaImpl(
-      {required this.articuloId,
-      required this.empresaId,
-      required this.iva,
-      required this.lastUpdated,
-      required this.deleted})
-      : super._();
+  const _$ArticuloEmpresaIvaImpl({
+    required this.articuloId,
+    required this.empresaId,
+    required this.iva,
+    required this.lastUpdated,
+    required this.deleted,
+  }) : super._();
 
   @override
   final String articuloId;
@@ -193,7 +214,13 @@ class _$ArticuloEmpresaIvaImpl extends _ArticuloEmpresaIva {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, articuloId, empresaId, iva, lastUpdated, deleted);
+    runtimeType,
+    articuloId,
+    empresaId,
+    iva,
+    lastUpdated,
+    deleted,
+  );
 
   /// Create a copy of ArticuloEmpresaIva
   /// with the given fields replaced by the non-null parameter values.
@@ -202,16 +229,19 @@ class _$ArticuloEmpresaIvaImpl extends _ArticuloEmpresaIva {
   @pragma('vm:prefer-inline')
   _$$ArticuloEmpresaIvaImplCopyWith<_$ArticuloEmpresaIvaImpl> get copyWith =>
       __$$ArticuloEmpresaIvaImplCopyWithImpl<_$ArticuloEmpresaIvaImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _ArticuloEmpresaIva extends ArticuloEmpresaIva {
-  const factory _ArticuloEmpresaIva(
-      {required final String articuloId,
-      required final String empresaId,
-      required final double iva,
-      required final DateTime lastUpdated,
-      required final bool deleted}) = _$ArticuloEmpresaIvaImpl;
+  const factory _ArticuloEmpresaIva({
+    required final String articuloId,
+    required final String empresaId,
+    required final double iva,
+    required final DateTime lastUpdated,
+    required final bool deleted,
+  }) = _$ArticuloEmpresaIvaImpl;
   const _ArticuloEmpresaIva._() : super._();
 
   @override

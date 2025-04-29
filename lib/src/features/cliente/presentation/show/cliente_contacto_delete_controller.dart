@@ -18,7 +18,9 @@ class ClienteContactoDeleteController
     state = const AsyncLoading();
 
     try {
-      await ref.read(clienteRepositoryProvider).deleteClienteContacto(
+      await ref
+          .read(clienteRepositoryProvider)
+          .deleteClienteContacto(
             clienteImpParam.clienteId,
             contactoId: clienteImpParam.id,
             contactoImpGuid: clienteImpParam.impId,
@@ -26,10 +28,7 @@ class ClienteContactoDeleteController
 
       state = const AsyncData(true);
     } on AppException catch (e, stackTrace) {
-      state = AsyncError(
-        false,
-        stackTrace,
-      );
+      state = AsyncError(false, stackTrace);
     } catch (e) {
       rethrow;
     }

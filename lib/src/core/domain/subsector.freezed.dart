@@ -12,7 +12,8 @@ part of 'subsector.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$Subsector {
@@ -34,12 +35,13 @@ abstract class $SubsectorCopyWith<$Res> {
   factory $SubsectorCopyWith(Subsector value, $Res Function(Subsector) then) =
       _$SubsectorCopyWithImpl<$Res, Subsector>;
   @useResult
-  $Res call(
-      {String subsectorId,
-      Sector sector,
-      String descripcion,
-      DateTime lastUpdate,
-      bool deleted});
+  $Res call({
+    String subsectorId,
+    Sector sector,
+    String descripcion,
+    DateTime lastUpdate,
+    bool deleted,
+  });
 
   $SectorCopyWith<$Res> get sector;
 }
@@ -65,28 +67,36 @@ class _$SubsectorCopyWithImpl<$Res, $Val extends Subsector>
     Object? lastUpdate = null,
     Object? deleted = null,
   }) {
-    return _then(_value.copyWith(
-      subsectorId: null == subsectorId
-          ? _value.subsectorId
-          : subsectorId // ignore: cast_nullable_to_non_nullable
-              as String,
-      sector: null == sector
-          ? _value.sector
-          : sector // ignore: cast_nullable_to_non_nullable
-              as Sector,
-      descripcion: null == descripcion
-          ? _value.descripcion
-          : descripcion // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastUpdate: null == lastUpdate
-          ? _value.lastUpdate
-          : lastUpdate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            subsectorId:
+                null == subsectorId
+                    ? _value.subsectorId
+                    : subsectorId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            sector:
+                null == sector
+                    ? _value.sector
+                    : sector // ignore: cast_nullable_to_non_nullable
+                        as Sector,
+            descripcion:
+                null == descripcion
+                    ? _value.descripcion
+                    : descripcion // ignore: cast_nullable_to_non_nullable
+                        as String,
+            lastUpdate:
+                null == lastUpdate
+                    ? _value.lastUpdate
+                    : lastUpdate // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            deleted:
+                null == deleted
+                    ? _value.deleted
+                    : deleted // ignore: cast_nullable_to_non_nullable
+                        as bool,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of Subsector
@@ -104,16 +114,18 @@ class _$SubsectorCopyWithImpl<$Res, $Val extends Subsector>
 abstract class _$$SubsectorImplCopyWith<$Res>
     implements $SubsectorCopyWith<$Res> {
   factory _$$SubsectorImplCopyWith(
-          _$SubsectorImpl value, $Res Function(_$SubsectorImpl) then) =
-      __$$SubsectorImplCopyWithImpl<$Res>;
+    _$SubsectorImpl value,
+    $Res Function(_$SubsectorImpl) then,
+  ) = __$$SubsectorImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String subsectorId,
-      Sector sector,
-      String descripcion,
-      DateTime lastUpdate,
-      bool deleted});
+  $Res call({
+    String subsectorId,
+    Sector sector,
+    String descripcion,
+    DateTime lastUpdate,
+    bool deleted,
+  });
 
   @override
   $SectorCopyWith<$Res> get sector;
@@ -124,8 +136,9 @@ class __$$SubsectorImplCopyWithImpl<$Res>
     extends _$SubsectorCopyWithImpl<$Res, _$SubsectorImpl>
     implements _$$SubsectorImplCopyWith<$Res> {
   __$$SubsectorImplCopyWithImpl(
-      _$SubsectorImpl _value, $Res Function(_$SubsectorImpl) _then)
-      : super(_value, _then);
+    _$SubsectorImpl _value,
+    $Res Function(_$SubsectorImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of Subsector
   /// with the given fields replaced by the non-null parameter values.
@@ -138,41 +151,48 @@ class __$$SubsectorImplCopyWithImpl<$Res>
     Object? lastUpdate = null,
     Object? deleted = null,
   }) {
-    return _then(_$SubsectorImpl(
-      subsectorId: null == subsectorId
-          ? _value.subsectorId
-          : subsectorId // ignore: cast_nullable_to_non_nullable
-              as String,
-      sector: null == sector
-          ? _value.sector
-          : sector // ignore: cast_nullable_to_non_nullable
-              as Sector,
-      descripcion: null == descripcion
-          ? _value.descripcion
-          : descripcion // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastUpdate: null == lastUpdate
-          ? _value.lastUpdate
-          : lastUpdate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$SubsectorImpl(
+        subsectorId:
+            null == subsectorId
+                ? _value.subsectorId
+                : subsectorId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        sector:
+            null == sector
+                ? _value.sector
+                : sector // ignore: cast_nullable_to_non_nullable
+                    as Sector,
+        descripcion:
+            null == descripcion
+                ? _value.descripcion
+                : descripcion // ignore: cast_nullable_to_non_nullable
+                    as String,
+        lastUpdate:
+            null == lastUpdate
+                ? _value.lastUpdate
+                : lastUpdate // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        deleted:
+            null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                    as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$SubsectorImpl extends _Subsector {
-  const _$SubsectorImpl(
-      {required this.subsectorId,
-      required this.sector,
-      required this.descripcion,
-      required this.lastUpdate,
-      required this.deleted})
-      : super._();
+  const _$SubsectorImpl({
+    required this.subsectorId,
+    required this.sector,
+    required this.descripcion,
+    required this.lastUpdate,
+    required this.deleted,
+  }) : super._();
 
   @override
   final String subsectorId;
@@ -207,7 +227,13 @@ class _$SubsectorImpl extends _Subsector {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, subsectorId, sector, descripcion, lastUpdate, deleted);
+    runtimeType,
+    subsectorId,
+    sector,
+    descripcion,
+    lastUpdate,
+    deleted,
+  );
 
   /// Create a copy of Subsector
   /// with the given fields replaced by the non-null parameter values.
@@ -219,12 +245,13 @@ class _$SubsectorImpl extends _Subsector {
 }
 
 abstract class _Subsector extends Subsector {
-  const factory _Subsector(
-      {required final String subsectorId,
-      required final Sector sector,
-      required final String descripcion,
-      required final DateTime lastUpdate,
-      required final bool deleted}) = _$SubsectorImpl;
+  const factory _Subsector({
+    required final String subsectorId,
+    required final Sector sector,
+    required final String descripcion,
+    required final DateTime lastUpdate,
+    required final bool deleted,
+  }) = _$SubsectorImpl;
   const _Subsector._() : super._();
 
   @override

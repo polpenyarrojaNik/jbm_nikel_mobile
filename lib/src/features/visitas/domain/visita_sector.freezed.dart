@@ -12,7 +12,8 @@ part of 'visita_sector.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$VisitaSector {
@@ -31,8 +32,9 @@ mixin _$VisitaSector {
 /// @nodoc
 abstract class $VisitaSectorCopyWith<$Res> {
   factory $VisitaSectorCopyWith(
-          VisitaSector value, $Res Function(VisitaSector) then) =
-      _$VisitaSectorCopyWithImpl<$Res, VisitaSector>;
+    VisitaSector value,
+    $Res Function(VisitaSector) then,
+  ) = _$VisitaSectorCopyWithImpl<$Res, VisitaSector>;
   @useResult
   $Res call({int id, String descripcion, DateTime lastUpdate, bool deleted});
 }
@@ -57,24 +59,31 @@ class _$VisitaSectorCopyWithImpl<$Res, $Val extends VisitaSector>
     Object? lastUpdate = null,
     Object? deleted = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      descripcion: null == descripcion
-          ? _value.descripcion
-          : descripcion // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastUpdate: null == lastUpdate
-          ? _value.lastUpdate
-          : lastUpdate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id:
+                null == id
+                    ? _value.id
+                    : id // ignore: cast_nullable_to_non_nullable
+                        as int,
+            descripcion:
+                null == descripcion
+                    ? _value.descripcion
+                    : descripcion // ignore: cast_nullable_to_non_nullable
+                        as String,
+            lastUpdate:
+                null == lastUpdate
+                    ? _value.lastUpdate
+                    : lastUpdate // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            deleted:
+                null == deleted
+                    ? _value.deleted
+                    : deleted // ignore: cast_nullable_to_non_nullable
+                        as bool,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -82,8 +91,9 @@ class _$VisitaSectorCopyWithImpl<$Res, $Val extends VisitaSector>
 abstract class _$$VisitaSectorImplCopyWith<$Res>
     implements $VisitaSectorCopyWith<$Res> {
   factory _$$VisitaSectorImplCopyWith(
-          _$VisitaSectorImpl value, $Res Function(_$VisitaSectorImpl) then) =
-      __$$VisitaSectorImplCopyWithImpl<$Res>;
+    _$VisitaSectorImpl value,
+    $Res Function(_$VisitaSectorImpl) then,
+  ) = __$$VisitaSectorImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, String descripcion, DateTime lastUpdate, bool deleted});
@@ -94,8 +104,9 @@ class __$$VisitaSectorImplCopyWithImpl<$Res>
     extends _$VisitaSectorCopyWithImpl<$Res, _$VisitaSectorImpl>
     implements _$$VisitaSectorImplCopyWith<$Res> {
   __$$VisitaSectorImplCopyWithImpl(
-      _$VisitaSectorImpl _value, $Res Function(_$VisitaSectorImpl) _then)
-      : super(_value, _then);
+    _$VisitaSectorImpl _value,
+    $Res Function(_$VisitaSectorImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of VisitaSector
   /// with the given fields replaced by the non-null parameter values.
@@ -107,36 +118,42 @@ class __$$VisitaSectorImplCopyWithImpl<$Res>
     Object? lastUpdate = null,
     Object? deleted = null,
   }) {
-    return _then(_$VisitaSectorImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      descripcion: null == descripcion
-          ? _value.descripcion
-          : descripcion // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastUpdate: null == lastUpdate
-          ? _value.lastUpdate
-          : lastUpdate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$VisitaSectorImpl(
+        id:
+            null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                    as int,
+        descripcion:
+            null == descripcion
+                ? _value.descripcion
+                : descripcion // ignore: cast_nullable_to_non_nullable
+                    as String,
+        lastUpdate:
+            null == lastUpdate
+                ? _value.lastUpdate
+                : lastUpdate // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        deleted:
+            null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                    as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$VisitaSectorImpl extends _VisitaSector {
-  const _$VisitaSectorImpl(
-      {required this.id,
-      required this.descripcion,
-      required this.lastUpdate,
-      required this.deleted})
-      : super._();
+  const _$VisitaSectorImpl({
+    required this.id,
+    required this.descripcion,
+    required this.lastUpdate,
+    required this.deleted,
+  }) : super._();
 
   @override
   final int id;
@@ -179,11 +196,12 @@ class _$VisitaSectorImpl extends _VisitaSector {
 }
 
 abstract class _VisitaSector extends VisitaSector {
-  const factory _VisitaSector(
-      {required final int id,
-      required final String descripcion,
-      required final DateTime lastUpdate,
-      required final bool deleted}) = _$VisitaSectorImpl;
+  const factory _VisitaSector({
+    required final int id,
+    required final String descripcion,
+    required final DateTime lastUpdate,
+    required final bool deleted,
+  }) = _$VisitaSectorImpl;
   const _VisitaSector._() : super._();
 
   @override

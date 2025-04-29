@@ -58,27 +58,22 @@ class ImageFormPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(imageFormPageControllerProvider(imageFile));
     return state.when(
-      loading: () => Scaffold(
-        appBar: CommonAppBar(
-          titleText: S.of(context).formFromImage,
-        ),
-        body: const Center(
-          child: CircularProgressIndicator(),
-        ),
-      ),
-      data: (ocrRecognizedTextList) => DraggableForm(
-        ocrRecognizedTextList: ocrRecognizedTextList,
-        imageFile: imageFile,
-        isFromCliente: isFromCliente,
-      ),
-      error: (error, stackTrace) => Scaffold(
-        appBar: CommonAppBar(
-          titleText: S.of(context).formFromImage,
-        ),
-        body: Center(
-          child: ErrorMessageWidget(error.toString()),
-        ),
-      ),
+      loading:
+          () => Scaffold(
+            appBar: CommonAppBar(titleText: S.of(context).formFromImage),
+            body: const Center(child: CircularProgressIndicator()),
+          ),
+      data:
+          (ocrRecognizedTextList) => DraggableForm(
+            ocrRecognizedTextList: ocrRecognizedTextList,
+            imageFile: imageFile,
+            isFromCliente: isFromCliente,
+          ),
+      error:
+          (error, stackTrace) => Scaffold(
+            appBar: CommonAppBar(titleText: S.of(context).formFromImage),
+            body: Center(child: ErrorMessageWidget(error.toString())),
+          ),
     );
   }
 }
@@ -117,17 +112,19 @@ class _DraggableFormState extends ConsumerState<DraggableForm> {
   @override
   Widget build(BuildContext context) {
     ref.listen(
-        imageFormPageControllerProvider(widget.imageFile).setImageFromData,
-        (_, state) {
-      if (state is SetImageFromDataMutationSuccess) {
-        context.router.maybePop(state.result);
-      } else if (state is SetImageFromDataMutationFailure) {
-        context.showErrorBar(content: Text(state.error.toString()));
-      }
-    });
+      imageFormPageControllerProvider(widget.imageFile).setImageFromData,
+      (_, state) {
+        if (state is SetImageFromDataMutationSuccess) {
+          context.router.maybePop(state.result);
+        } else if (state is SetImageFromDataMutationFailure) {
+          context.showErrorBar(content: Text(state.error.toString()));
+        }
+      },
+    );
 
     final stateImageFormData = ref.watch(
-        imageFormPageControllerProvider(widget.imageFile).setImageFromData);
+      imageFormPageControllerProvider(widget.imageFile).setImageFromData,
+    );
 
     return Scaffold(
       appBar: CommonAppBar(
@@ -241,44 +238,52 @@ class _DraggableFormState extends ConsumerState<DraggableForm> {
                       dashPattern: const [5, 5],
                       child: SizedBox(
                         width: double.infinity,
-                        child: unreconizedList.isNotEmpty
-                            ? Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: unreconizedList
-                                    .map(
-                                      (unreconizedText) => GestureDetector(
-                                        onTap: () => openSelectedTextTypeDialog(
-                                          context,
-                                          unreconizedText,
-                                          removeTextFromList:
-                                              (selectedRecognizedTextType) {
-                                            if (selectedRecognizedTextType !=
-                                                RecognizedTextType.unknown) {
-                                              unreconizedList
-                                                  .remove(unreconizedText);
-                                              setState(() {});
-                                            }
-                                          },
-                                        ),
-                                        child: Chip(
-                                          label: Text(unreconizedText),
-                                        ),
-                                      ),
-                                    )
-                                    .toList(),
-                              )
-                            : Center(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(16.0),
-                                  child: Text(
-                                    S.of(context).empty,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodySmall
-                                        ?.copyWith(color: Colors.grey),
+                        child:
+                            unreconizedList.isNotEmpty
+                                ? Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children:
+                                      unreconizedList
+                                          .map(
+                                            (
+                                              unreconizedText,
+                                            ) => GestureDetector(
+                                              onTap:
+                                                  () => openSelectedTextTypeDialog(
+                                                    context,
+                                                    unreconizedText,
+                                                    removeTextFromList: (
+                                                      selectedRecognizedTextType,
+                                                    ) {
+                                                      if (selectedRecognizedTextType !=
+                                                          RecognizedTextType
+                                                              .unknown) {
+                                                        unreconizedList.remove(
+                                                          unreconizedText,
+                                                        );
+                                                        setState(() {});
+                                                      }
+                                                    },
+                                                  ),
+                                              child: Chip(
+                                                label: Text(unreconizedText),
+                                              ),
+                                            ),
+                                          )
+                                          .toList(),
+                                )
+                                : Center(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(16.0),
+                                    child: Text(
+                                      S.of(context).empty,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodySmall
+                                          ?.copyWith(color: Colors.grey),
+                                    ),
                                   ),
                                 ),
-                              ),
                       ),
                     ),
                     const SizedBox(height: 16),
@@ -293,7 +298,9 @@ class _DraggableFormState extends ConsumerState<DraggableForm> {
   }
 
   void saveImageFormData(
-      SetImageFromDataMutation stateImageFormData, WidgetRef ref) {
+    SetImageFromDataMutation stateImageFormData,
+    WidgetRef ref,
+  ) {
     stateImageFormData(name, company, cargo, address, email, phones);
   }
 
@@ -333,13 +340,17 @@ class _DraggableFormState extends ConsumerState<DraggableForm> {
   }
 
   Future<void> openSelectedTextTypeDialog(
-      BuildContext context, String selectedText,
-      {required Function(RecognizedTextType) removeTextFromList}) async {
-    final recognizedTexType = await showDialog(
-            context: context,
-            builder: (context) =>
-                SelectTextTypeDialog(selectedText: selectedText))
-        as RecognizedTextType?;
+    BuildContext context,
+    String selectedText, {
+    required Function(RecognizedTextType) removeTextFromList,
+  }) async {
+    final recognizedTexType =
+        await showDialog(
+              context: context,
+              builder:
+                  (context) => SelectTextTypeDialog(selectedText: selectedText),
+            )
+            as RecognizedTextType?;
 
     if (recognizedTexType != null) {
       removeTextFromList(recognizedTexType);
@@ -396,14 +407,12 @@ class TargetTextField extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        SizedBox(
-          width: 100,
-          child: Text(title),
-        ),
+        SizedBox(width: 100, child: Text(title)),
         const SizedBox(width: 8),
         Expanded(
-            child: value != null
-                ? GestureDetector(
+          child:
+              value != null
+                  ? GestureDetector(
                     onTap: () => openSelectedTextTypeDialog(context, value),
                     child: DottedBorder(
                       padding: const EdgeInsets.all(10),
@@ -412,14 +421,11 @@ class TargetTextField extends StatelessWidget {
                       strokeWidth: 0.5,
                       dashPattern: const [5, 5],
                       child: Chip(
-                        label: Text(
-                          value!,
-                          textAlign: TextAlign.center,
-                        ),
+                        label: Text(value!, textAlign: TextAlign.center),
                       ),
                     ),
                   )
-                : DottedBorder(
+                  : DottedBorder(
                     padding: const EdgeInsets.all(10),
                     color: Colors.grey,
                     radius: const Radius.circular(5),
@@ -428,22 +434,29 @@ class TargetTextField extends StatelessWidget {
                     child: Center(
                       child: Text(
                         S.of(context).empty,
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              color: Colors.grey,
-                            ),
+                        style: Theme.of(
+                          context,
+                        ).textTheme.bodySmall?.copyWith(color: Colors.grey),
                       ),
                     ),
-                  )),
+                  ),
+        ),
       ],
     );
   }
 
   Future<void> openSelectedTextTypeDialog(
-      BuildContext context, String? selectedText) async {
-    final recognizedTexType = await showDialog(
-      context: context,
-      builder: (context) => SelectTextTypeDialog(selectedText: selectedText!),
-    ) as RecognizedTextType?;
+    BuildContext context,
+    String? selectedText,
+  ) async {
+    final recognizedTexType =
+        await showDialog(
+              context: context,
+              builder:
+                  (context) =>
+                      SelectTextTypeDialog(selectedText: selectedText!),
+            )
+            as RecognizedTextType?;
 
     if (recognizedTexType != null) {
       updateDataValue(recognizedTexType);
@@ -462,19 +475,14 @@ class TargetListView extends StatelessWidget {
   final List<String> dataList;
   final String title;
   final Function(RecognizedTextType recognizedTextType, String text)
-      updateDataListValue;
+  updateDataListValue;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        SizedBox(
-          width: 100,
-          child: Text(
-            title,
-          ),
-        ),
+        SizedBox(width: 100, child: Text(title)),
         const SizedBox(width: 8),
         Expanded(
           child: DottedBorder(
@@ -485,37 +493,42 @@ class TargetListView extends StatelessWidget {
             dashPattern: const [5, 5],
             child: SizedBox(
               width: double.infinity,
-              child: dataList.isNotEmpty
-                  ? Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: dataList
-                          .map((data) => GestureDetector(
-                                    onTap: () => openSelectedTextTypeDialog(
-                                        context, data),
+              child:
+                  dataList.isNotEmpty
+                      ? Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children:
+                            dataList
+                                .map(
+                                  (data) => GestureDetector(
+                                    onTap:
+                                        () => openSelectedTextTypeDialog(
+                                          context,
+                                          data,
+                                        ),
                                     child: Chip(label: Text(data)),
-                                  )
+                                  ),
 
-                              // Card(
-                              //   child: Padding(
-                              //     padding: const EdgeInsets.all(4.0),
-                              //     child: ,
-                              //   ),
-                              // ),
-                              )
-                          .toList(),
-                    )
-                  : Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Text(
-                          S.of(context).empty,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodySmall
-                              ?.copyWith(color: Colors.grey),
+                                  // Card(
+                                  //   child: Padding(
+                                  //     padding: const EdgeInsets.all(4.0),
+                                  //     child: ,
+                                  //   ),
+                                  // ),
+                                )
+                                .toList(),
+                      )
+                      : Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Text(
+                            S.of(context).empty,
+                            style: Theme.of(
+                              context,
+                            ).textTheme.bodySmall?.copyWith(color: Colors.grey),
+                          ),
                         ),
                       ),
-                    ),
             ),
           ),
         ),
@@ -524,11 +537,16 @@ class TargetListView extends StatelessWidget {
   }
 
   Future<void> openSelectedTextTypeDialog(
-      BuildContext context, String selectedText) async {
-    final recognizedTexType = await showDialog(
-      context: context,
-      builder: (context) => SelectTextTypeDialog(selectedText: selectedText),
-    ) as RecognizedTextType?;
+    BuildContext context,
+    String selectedText,
+  ) async {
+    final recognizedTexType =
+        await showDialog(
+              context: context,
+              builder:
+                  (context) => SelectTextTypeDialog(selectedText: selectedText),
+            )
+            as RecognizedTextType?;
 
     if (recognizedTexType != null) {
       updateDataListValue(recognizedTexType, selectedText);
@@ -578,15 +596,14 @@ class SelectTextTypeDialog extends StatelessWidget {
         child: ListView.separated(
           shrinkWrap: true,
           padding: const EdgeInsets.all(16),
-          itemBuilder: (context, i) => GestureDetector(
-            onTap: () => context.router.maybePop(regognizedTypeList[i]),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Text(
-                _getRecognizedTextName(regognizedTypeList[i]),
+          itemBuilder:
+              (context, i) => GestureDetector(
+                onTap: () => context.router.maybePop(regognizedTypeList[i]),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: Text(_getRecognizedTextName(regognizedTypeList[i])),
+                ),
               ),
-            ),
-          ),
           separatorBuilder: (context, i) => const Divider(),
           itemCount: regognizedTypeList.length,
         ),

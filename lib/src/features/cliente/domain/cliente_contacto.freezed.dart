@@ -12,7 +12,8 @@ part of 'cliente_contacto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ClienteContacto {
@@ -41,24 +42,26 @@ mixin _$ClienteContacto {
 /// @nodoc
 abstract class $ClienteContactoCopyWith<$Res> {
   factory $ClienteContactoCopyWith(
-          ClienteContacto value, $Res Function(ClienteContacto) then) =
-      _$ClienteContactoCopyWithImpl<$Res, ClienteContacto>;
+    ClienteContacto value,
+    $Res Function(ClienteContacto) then,
+  ) = _$ClienteContactoCopyWithImpl<$Res, ClienteContacto>;
   @useResult
-  $Res call(
-      {String clienteId,
-      String? contactoId,
-      String? contactoImpGuid,
-      String? observaciones,
-      String? nombre,
-      String? apellido1,
-      String? apellido2,
-      String? telefono1,
-      String? telefono2,
-      String? email,
-      DateTime lastUpdated,
-      bool enviado,
-      bool tratado,
-      bool deleted});
+  $Res call({
+    String clienteId,
+    String? contactoId,
+    String? contactoImpGuid,
+    String? observaciones,
+    String? nombre,
+    String? apellido1,
+    String? apellido2,
+    String? telefono1,
+    String? telefono2,
+    String? email,
+    DateTime lastUpdated,
+    bool enviado,
+    bool tratado,
+    bool deleted,
+  });
 }
 
 /// @nodoc
@@ -91,90 +94,109 @@ class _$ClienteContactoCopyWithImpl<$Res, $Val extends ClienteContacto>
     Object? tratado = null,
     Object? deleted = null,
   }) {
-    return _then(_value.copyWith(
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      contactoId: freezed == contactoId
-          ? _value.contactoId
-          : contactoId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      contactoImpGuid: freezed == contactoImpGuid
-          ? _value.contactoImpGuid
-          : contactoImpGuid // ignore: cast_nullable_to_non_nullable
-              as String?,
-      observaciones: freezed == observaciones
-          ? _value.observaciones
-          : observaciones // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nombre: freezed == nombre
-          ? _value.nombre
-          : nombre // ignore: cast_nullable_to_non_nullable
-              as String?,
-      apellido1: freezed == apellido1
-          ? _value.apellido1
-          : apellido1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      apellido2: freezed == apellido2
-          ? _value.apellido2
-          : apellido2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      telefono1: freezed == telefono1
-          ? _value.telefono1
-          : telefono1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      telefono2: freezed == telefono2
-          ? _value.telefono2
-          : telefono2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      enviado: null == enviado
-          ? _value.enviado
-          : enviado // ignore: cast_nullable_to_non_nullable
-              as bool,
-      tratado: null == tratado
-          ? _value.tratado
-          : tratado // ignore: cast_nullable_to_non_nullable
-              as bool,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            clienteId:
+                null == clienteId
+                    ? _value.clienteId
+                    : clienteId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            contactoId:
+                freezed == contactoId
+                    ? _value.contactoId
+                    : contactoId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            contactoImpGuid:
+                freezed == contactoImpGuid
+                    ? _value.contactoImpGuid
+                    : contactoImpGuid // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            observaciones:
+                freezed == observaciones
+                    ? _value.observaciones
+                    : observaciones // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            nombre:
+                freezed == nombre
+                    ? _value.nombre
+                    : nombre // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            apellido1:
+                freezed == apellido1
+                    ? _value.apellido1
+                    : apellido1 // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            apellido2:
+                freezed == apellido2
+                    ? _value.apellido2
+                    : apellido2 // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            telefono1:
+                freezed == telefono1
+                    ? _value.telefono1
+                    : telefono1 // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            telefono2:
+                freezed == telefono2
+                    ? _value.telefono2
+                    : telefono2 // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            email:
+                freezed == email
+                    ? _value.email
+                    : email // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            lastUpdated:
+                null == lastUpdated
+                    ? _value.lastUpdated
+                    : lastUpdated // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            enviado:
+                null == enviado
+                    ? _value.enviado
+                    : enviado // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            tratado:
+                null == tratado
+                    ? _value.tratado
+                    : tratado // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            deleted:
+                null == deleted
+                    ? _value.deleted
+                    : deleted // ignore: cast_nullable_to_non_nullable
+                        as bool,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$ClienteContactoImplCopyWith<$Res>
     implements $ClienteContactoCopyWith<$Res> {
-  factory _$$ClienteContactoImplCopyWith(_$ClienteContactoImpl value,
-          $Res Function(_$ClienteContactoImpl) then) =
-      __$$ClienteContactoImplCopyWithImpl<$Res>;
+  factory _$$ClienteContactoImplCopyWith(
+    _$ClienteContactoImpl value,
+    $Res Function(_$ClienteContactoImpl) then,
+  ) = __$$ClienteContactoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String clienteId,
-      String? contactoId,
-      String? contactoImpGuid,
-      String? observaciones,
-      String? nombre,
-      String? apellido1,
-      String? apellido2,
-      String? telefono1,
-      String? telefono2,
-      String? email,
-      DateTime lastUpdated,
-      bool enviado,
-      bool tratado,
-      bool deleted});
+  $Res call({
+    String clienteId,
+    String? contactoId,
+    String? contactoImpGuid,
+    String? observaciones,
+    String? nombre,
+    String? apellido1,
+    String? apellido2,
+    String? telefono1,
+    String? telefono2,
+    String? email,
+    DateTime lastUpdated,
+    bool enviado,
+    bool tratado,
+    bool deleted,
+  });
 }
 
 /// @nodoc
@@ -182,8 +204,9 @@ class __$$ClienteContactoImplCopyWithImpl<$Res>
     extends _$ClienteContactoCopyWithImpl<$Res, _$ClienteContactoImpl>
     implements _$$ClienteContactoImplCopyWith<$Res> {
   __$$ClienteContactoImplCopyWithImpl(
-      _$ClienteContactoImpl _value, $Res Function(_$ClienteContactoImpl) _then)
-      : super(_value, _then);
+    _$ClienteContactoImpl _value,
+    $Res Function(_$ClienteContactoImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ClienteContacto
   /// with the given fields replaced by the non-null parameter values.
@@ -205,86 +228,102 @@ class __$$ClienteContactoImplCopyWithImpl<$Res>
     Object? tratado = null,
     Object? deleted = null,
   }) {
-    return _then(_$ClienteContactoImpl(
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      contactoId: freezed == contactoId
-          ? _value.contactoId
-          : contactoId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      contactoImpGuid: freezed == contactoImpGuid
-          ? _value.contactoImpGuid
-          : contactoImpGuid // ignore: cast_nullable_to_non_nullable
-              as String?,
-      observaciones: freezed == observaciones
-          ? _value.observaciones
-          : observaciones // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nombre: freezed == nombre
-          ? _value.nombre
-          : nombre // ignore: cast_nullable_to_non_nullable
-              as String?,
-      apellido1: freezed == apellido1
-          ? _value.apellido1
-          : apellido1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      apellido2: freezed == apellido2
-          ? _value.apellido2
-          : apellido2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      telefono1: freezed == telefono1
-          ? _value.telefono1
-          : telefono1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      telefono2: freezed == telefono2
-          ? _value.telefono2
-          : telefono2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      enviado: null == enviado
-          ? _value.enviado
-          : enviado // ignore: cast_nullable_to_non_nullable
-              as bool,
-      tratado: null == tratado
-          ? _value.tratado
-          : tratado // ignore: cast_nullable_to_non_nullable
-              as bool,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$ClienteContactoImpl(
+        clienteId:
+            null == clienteId
+                ? _value.clienteId
+                : clienteId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        contactoId:
+            freezed == contactoId
+                ? _value.contactoId
+                : contactoId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        contactoImpGuid:
+            freezed == contactoImpGuid
+                ? _value.contactoImpGuid
+                : contactoImpGuid // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        observaciones:
+            freezed == observaciones
+                ? _value.observaciones
+                : observaciones // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        nombre:
+            freezed == nombre
+                ? _value.nombre
+                : nombre // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        apellido1:
+            freezed == apellido1
+                ? _value.apellido1
+                : apellido1 // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        apellido2:
+            freezed == apellido2
+                ? _value.apellido2
+                : apellido2 // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        telefono1:
+            freezed == telefono1
+                ? _value.telefono1
+                : telefono1 // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        telefono2:
+            freezed == telefono2
+                ? _value.telefono2
+                : telefono2 // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        email:
+            freezed == email
+                ? _value.email
+                : email // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        lastUpdated:
+            null == lastUpdated
+                ? _value.lastUpdated
+                : lastUpdated // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        enviado:
+            null == enviado
+                ? _value.enviado
+                : enviado // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        tratado:
+            null == tratado
+                ? _value.tratado
+                : tratado // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        deleted:
+            null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                    as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ClienteContactoImpl extends _ClienteContacto {
-  const _$ClienteContactoImpl(
-      {required this.clienteId,
-      required this.contactoId,
-      required this.contactoImpGuid,
-      this.observaciones,
-      this.nombre,
-      this.apellido1,
-      this.apellido2,
-      this.telefono1,
-      this.telefono2,
-      this.email,
-      required this.lastUpdated,
-      required this.enviado,
-      required this.tratado,
-      required this.deleted})
-      : super._();
+  const _$ClienteContactoImpl({
+    required this.clienteId,
+    required this.contactoId,
+    required this.contactoImpGuid,
+    this.observaciones,
+    this.nombre,
+    this.apellido1,
+    this.apellido2,
+    this.telefono1,
+    this.telefono2,
+    this.email,
+    required this.lastUpdated,
+    required this.enviado,
+    required this.tratado,
+    required this.deleted,
+  }) : super._();
 
   @override
   final String clienteId;
@@ -352,21 +391,22 @@ class _$ClienteContactoImpl extends _ClienteContacto {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      clienteId,
-      contactoId,
-      contactoImpGuid,
-      observaciones,
-      nombre,
-      apellido1,
-      apellido2,
-      telefono1,
-      telefono2,
-      email,
-      lastUpdated,
-      enviado,
-      tratado,
-      deleted);
+    runtimeType,
+    clienteId,
+    contactoId,
+    contactoImpGuid,
+    observaciones,
+    nombre,
+    apellido1,
+    apellido2,
+    telefono1,
+    telefono2,
+    email,
+    lastUpdated,
+    enviado,
+    tratado,
+    deleted,
+  );
 
   /// Create a copy of ClienteContacto
   /// with the given fields replaced by the non-null parameter values.
@@ -375,25 +415,28 @@ class _$ClienteContactoImpl extends _ClienteContacto {
   @pragma('vm:prefer-inline')
   _$$ClienteContactoImplCopyWith<_$ClienteContactoImpl> get copyWith =>
       __$$ClienteContactoImplCopyWithImpl<_$ClienteContactoImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _ClienteContacto extends ClienteContacto {
-  const factory _ClienteContacto(
-      {required final String clienteId,
-      required final String? contactoId,
-      required final String? contactoImpGuid,
-      final String? observaciones,
-      final String? nombre,
-      final String? apellido1,
-      final String? apellido2,
-      final String? telefono1,
-      final String? telefono2,
-      final String? email,
-      required final DateTime lastUpdated,
-      required final bool enviado,
-      required final bool tratado,
-      required final bool deleted}) = _$ClienteContactoImpl;
+  const factory _ClienteContacto({
+    required final String clienteId,
+    required final String? contactoId,
+    required final String? contactoImpGuid,
+    final String? observaciones,
+    final String? nombre,
+    final String? apellido1,
+    final String? apellido2,
+    final String? telefono1,
+    final String? telefono2,
+    final String? email,
+    required final DateTime lastUpdated,
+    required final bool enviado,
+    required final bool tratado,
+    required final bool deleted,
+  }) = _$ClienteContactoImpl;
   const _ClienteContacto._() : super._();
 
   @override

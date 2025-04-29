@@ -46,56 +46,57 @@ class _ClientesAlrededorPageState extends ConsumerState<ClientesAlrededorPage> {
     return Scaffold(
       appBar: AppBar(title: Text(S.of(context).cliente_alrededor_titulo)),
       body: state.when(
-        data: (position) => Stack(
-          fit: StackFit.expand,
-          alignment: AlignmentDirectional.bottomCenter,
-          children: [
-            GoogleMapsContainer(
-              radiusKm: radiusKm,
-              currentLatLng: LatLng(
-                position.latitude,
-                position.longitude,
-              ),
-              showDireccionesEnvio: showDireccionesEnvio,
-              showPotenciales: showPotenciales,
+        data:
+            (position) => Stack(
+              fit: StackFit.expand,
+              alignment: AlignmentDirectional.bottomCenter,
+              children: [
+                GoogleMapsContainer(
+                  radiusKm: radiusKm,
+                  currentLatLng: LatLng(position.latitude, position.longitude),
+                  showDireccionesEnvio: showDireccionesEnvio,
+                  showPotenciales: showPotenciales,
+                ),
+                Positioned(
+                  top: 8,
+                  right: 8,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      _CheckboxDireccionesEnvio(
+                        onShowDireccionesEnvioChanged:
+                            (_) => onChangeDireccionesEnvio(),
+                        showDireccionesEnvio: showDireccionesEnvio,
+                      ),
+                      gapH4,
+                      _CheckboxPotenciales(
+                        onShowPotencialesChanged: (_) => onChangePotenciales(),
+                        showPotenciales: showPotenciales,
+                      ),
+                    ],
+                  ),
+                ),
+                _SliderKm(
+                  onSliderChanged: (radiusKm) => onSliderChanged(radiusKm),
+                  radiusKm: radiusKm,
+                ),
+              ],
             ),
-            Positioned(
-              top: 8,
-              right: 8,
+        loading:
+            () => Center(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  _CheckboxDireccionesEnvio(
-                    onShowDireccionesEnvioChanged: (_) =>
-                        onChangeDireccionesEnvio(),
-                    showDireccionesEnvio: showDireccionesEnvio,
-                  ),
-                  gapH4,
-                  _CheckboxPotenciales(
-                    onShowPotencialesChanged: (_) => onChangePotenciales(),
-                    showPotenciales: showPotenciales,
-                  ),
+                  const CircularProgressIndicator(),
+                  Text(S.of(context).cliente_alrededor_cargandoMapa),
                 ],
               ),
             ),
-            _SliderKm(
-              onSliderChanged: (radiusKm) => onSliderChanged(radiusKm),
-              radiusKm: radiusKm,
-            )
-          ],
-        ),
-        loading: () => Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const CircularProgressIndicator(),
-              Text(S.of(context).cliente_alrededor_cargandoMapa),
-            ],
-          ),
-        ),
-        error: (e, _) => ErrorMessageWidget(
-            (e is AppException) ? e.details.message : e.toString()),
+        error:
+            (e, _) => ErrorMessageWidget(
+              (e is AppException) ? e.details.message : e.toString(),
+            ),
       ),
     );
   }
@@ -121,12 +122,13 @@ class _ClientesAlrededorPageState extends ConsumerState<ClientesAlrededorPage> {
 }
 
 class GoogleMapsContainer extends ConsumerStatefulWidget {
-  const GoogleMapsContainer(
-      {super.key,
-      required this.radiusKm,
-      required this.currentLatLng,
-      required this.showDireccionesEnvio,
-      required this.showPotenciales});
+  const GoogleMapsContainer({
+    super.key,
+    required this.radiusKm,
+    required this.currentLatLng,
+    required this.showDireccionesEnvio,
+    required this.showPotenciales,
+  });
 
   final double radiusKm;
   final LatLng currentLatLng;
@@ -165,14 +167,14 @@ class _GoogleMapsContainerState extends ConsumerState<GoogleMapsContainer> {
       ),
     );
     final circle = createCircleInCurrentPosition(
-        context: context, latlng: mapLatLng!, radiusInMeters: widget.radiusKm);
+      context: context,
+      latlng: mapLatLng!,
+      radiusInMeters: widget.radiusKm,
+    );
 
     if (mapController != null) {
       mapController!.animateCamera(
-        CameraUpdate.newLatLngZoom(
-          mapLatLng!,
-          getZoomLevel(circle),
-        ),
+        CameraUpdate.newLatLngZoom(mapLatLng!, getZoomLevel(circle)),
       );
     }
 
@@ -182,13 +184,15 @@ class _GoogleMapsContainerState extends ConsumerState<GoogleMapsContainer> {
       myLocationEnabled: true,
       markers: stateMarkers.maybeWhen(
         orElse: () => const <Marker>{},
-        data: (clientesAlrededorList) =>
-            setMarkerList(clientesAlrededorList: clientesAlrededorList),
+        data:
+            (clientesAlrededorList) =>
+                setMarkerList(clientesAlrededorList: clientesAlrededorList),
       ),
       circles: <Circle>{circle},
-      onLongPress: (newLatLng) => setState(() {
-        mapLatLng = newLatLng;
-      }),
+      onLongPress:
+          (newLatLng) => setState(() {
+            mapLatLng = newLatLng;
+          }),
       onCameraMove: (cameraPosition) => isMyCurrentPosition(cameraPosition),
       initialCameraPosition: CameraPosition(
         target: widget.currentLatLng,
@@ -205,10 +209,11 @@ class _GoogleMapsContainerState extends ConsumerState<GoogleMapsContainer> {
     return double.parse(zoomLevel.toStringAsFixed(2));
   }
 
-  Circle createCircleInCurrentPosition(
-      {required BuildContext context,
-      required LatLng latlng,
-      required double radiusInMeters}) {
+  Circle createCircleInCurrentPosition({
+    required BuildContext context,
+    required LatLng latlng,
+    required double radiusInMeters,
+  }) {
     return Circle(
       circleId: const CircleId('currentPosition'),
       center: latlng,
@@ -229,13 +234,15 @@ class _GoogleMapsContainerState extends ConsumerState<GoogleMapsContainer> {
               (c.isClientePotencial ?? false)
                   ? BitmapDescriptor.hueYellow
                   : (c.isDireccionFiscal)
-                      ? BitmapDescriptor.hueGreen
-                      : BitmapDescriptor.hueCyan,
+                  ? BitmapDescriptor.hueGreen
+                  : BitmapDescriptor.hueCyan,
             ),
-            onTap: () => showDialog(
-              context: context,
-              builder: (ctx) => _ClienteAlrededorDialog(clienteAlrededor: c),
-            ),
+            onTap:
+                () => showDialog(
+                  context: context,
+                  builder:
+                      (ctx) => _ClienteAlrededorDialog(clienteAlrededor: c),
+                ),
           ),
         )
         .toSet();
@@ -252,8 +259,9 @@ class _GoogleMapsContainerState extends ConsumerState<GoogleMapsContainer> {
     }
   }
 
-  Set<Marker> setMarkerList(
-      {required List<ClienteAlrededor> clientesAlrededorList}) {
+  Set<Marker> setMarkerList({
+    required List<ClienteAlrededor> clientesAlrededorList,
+  }) {
     final markerList = createMarkerSet(clientesAlrededorList);
 
     if (mapLatLng!.latitude.toStringAsFixed(4) !=
@@ -286,9 +294,10 @@ class _SliderKm extends StatelessWidget {
       child: Column(
         children: [
           Slider(
-            activeColor: _isDark(context)
-                ? Theme.of(context).colorScheme.primaryContainer
-                : Theme.of(context).colorScheme.primary,
+            activeColor:
+                _isDark(context)
+                    ? Theme.of(context).colorScheme.primaryContainer
+                    : Theme.of(context).colorScheme.primary,
             value: radiusKm / 1000,
             min: 0,
             max: 100,
@@ -301,17 +310,18 @@ class _SliderKm extends StatelessWidget {
               border: Border.all(width: 0.5),
             ),
             child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 8.0,
+              ),
               child: Text(
                 '${(radiusKm / 1000).round().toString()} Km',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyMedium
-                    ?.copyWith(color: Theme.of(context).colorScheme.onSurface),
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: Theme.of(context).colorScheme.onSurface,
+                ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
@@ -323,9 +333,10 @@ class _SliderKm extends StatelessWidget {
 }
 
 class _CheckboxDireccionesEnvio extends StatelessWidget {
-  const _CheckboxDireccionesEnvio(
-      {required this.showDireccionesEnvio,
-      required this.onShowDireccionesEnvioChanged});
+  const _CheckboxDireccionesEnvio({
+    required this.showDireccionesEnvio,
+    required this.onShowDireccionesEnvioChanged,
+  });
 
   final bool showDireccionesEnvio;
   final Function(bool value) onShowDireccionesEnvioChanged;
@@ -357,8 +368,10 @@ class _CheckboxDireccionesEnvio extends StatelessWidget {
 }
 
 class _CheckboxPotenciales extends StatelessWidget {
-  const _CheckboxPotenciales(
-      {required this.showPotenciales, required this.onShowPotencialesChanged});
+  const _CheckboxPotenciales({
+    required this.showPotenciales,
+    required this.onShowPotencialesChanged,
+  });
 
   final bool showPotenciales;
   final Function(bool value) onShowPotencialesChanged;
@@ -399,17 +412,15 @@ class _ClienteAlrededorDialog extends StatelessWidget {
     return AlertDialog(
       title: Row(
         children: [
-          Flexible(
-            child: Text(
-              clienteAlrededor.nombre,
-            ),
-          ),
+          Flexible(child: Text(clienteAlrededor.nombre)),
           gapW4,
           IconButton(
-            onPressed: () => context.router.push(
-                ClienteDetalleRoute(clienteId: clienteAlrededor.clienteId)),
+            onPressed:
+                () => context.router.push(
+                  ClienteDetalleRoute(clienteId: clienteAlrededor.clienteId),
+                ),
             icon: const Icon(Icons.info),
-          )
+          ),
         ],
       ),
       content: Column(
@@ -421,43 +432,50 @@ class _ClienteAlrededorDialog extends StatelessWidget {
           Text(
             clienteAlrededor.direccion ?? '',
             style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                  color: Theme.of(context).textTheme.bodySmall!.color,
-                ),
+              color: Theme.of(context).textTheme.bodySmall!.color,
+            ),
           ),
           gapH2,
           AddressTextWidget(
-              codigoPostal: clienteAlrededor.codigoPostal,
-              poblacion: clienteAlrededor.poblacion,
-              provincia: clienteAlrededor.provincia,
-              pais: clienteAlrededor.pais),
+            codigoPostal: clienteAlrededor.codigoPostal,
+            poblacion: clienteAlrededor.poblacion,
+            provincia: clienteAlrededor.provincia,
+            pais: clienteAlrededor.pais,
+          ),
           if (clienteAlrededor.nombreRepresentante1 != null) gapH2,
           if (clienteAlrededor.nombreRepresentante1 != null)
             RowFieldTextDetalle(
-                fieldTitleValue:
-                    S.of(context).cliente_show_clienteDetalle_comercial1,
-                value: clienteAlrededor.nombreRepresentante1!),
+              fieldTitleValue:
+                  S.of(context).cliente_show_clienteDetalle_comercial1,
+              value: clienteAlrededor.nombreRepresentante1!,
+            ),
           if (clienteAlrededor.nombreRepresentante1 != null) gapH2,
           if (clienteAlrededor.nombreRepresentante2 != null)
             RowFieldTextDetalle(
-                fieldTitleValue:
-                    S.of(context).cliente_show_clienteDetalle_comercial2,
-                value: clienteAlrededor.nombreRepresentante2),
+              fieldTitleValue:
+                  S.of(context).cliente_show_clienteDetalle_comercial2,
+              value: clienteAlrededor.nombreRepresentante2,
+            ),
           const Divider(),
           RowFieldTextDetalle(
-              fieldTitleValue: S.of(context).cliente_alrededor_ventasAnoActual,
-              value: formatPrecios(
-                  precio: clienteAlrededor.ventasAnyoActual, tipoPrecio: null)),
+            fieldTitleValue: S.of(context).cliente_alrededor_ventasAnoActual,
+            value: formatPrecios(
+              precio: clienteAlrededor.ventasAnyoActual,
+              tipoPrecio: null,
+            ),
+          ),
           RowFieldTextDetalle(
-              fieldTitleValue:
-                  S.of(context).cliente_alrededor_ventasAnoAnterior,
-              value: formatPrecios(
-                  precio: clienteAlrededor.ventasAnyoAnterior,
-                  tipoPrecio: null)),
+            fieldTitleValue: S.of(context).cliente_alrededor_ventasAnoAnterior,
+            value: formatPrecios(
+              precio: clienteAlrededor.ventasAnyoAnterior,
+              tipoPrecio: null,
+            ),
+          ),
           gapH2,
           RowFieldTextDetalle(
-              fieldTitleValue: S.of(context).cliente_alrededor_porcentajeAbonos,
-              value:
-                  '${numberFormatDecimal(clienteAlrededor.porcentajeAbonos)}%'),
+            fieldTitleValue: S.of(context).cliente_alrededor_porcentajeAbonos,
+            value: '${numberFormatDecimal(clienteAlrededor.porcentajeAbonos)}%',
+          ),
         ],
       ),
     );

@@ -35,23 +35,23 @@ class ClienteContactoImpDTO
       _$ClienteContactoImpDTOFromJson(json);
 
   factory ClienteContactoImpDTO.fromDomain(
-          ClienteContactoImp clienteContactoImp) =>
-      ClienteContactoImpDTO(
-        id: clienteContactoImp.id,
-        fecha: clienteContactoImp.fecha,
-        usuarioId: clienteContactoImp.usuarioId,
-        clienteId: clienteContactoImp.clienteId,
-        contactoId: clienteContactoImp.contactoId,
-        observaciones: clienteContactoImp.observaciones,
-        nombre: clienteContactoImp.nombre,
-        apellido1: clienteContactoImp.apellido1,
-        apellido2: clienteContactoImp.apellido2,
-        telefono1: clienteContactoImp.telefono1,
-        telefono2: clienteContactoImp.telefono2,
-        email: clienteContactoImp.email,
-        enviado: clienteContactoImp.enviado ? 'S' : 'N',
-        borrar: clienteContactoImp.borrar ? 'S' : 'N',
-      );
+    ClienteContactoImp clienteContactoImp,
+  ) => ClienteContactoImpDTO(
+    id: clienteContactoImp.id,
+    fecha: clienteContactoImp.fecha,
+    usuarioId: clienteContactoImp.usuarioId,
+    clienteId: clienteContactoImp.clienteId,
+    contactoId: clienteContactoImp.contactoId,
+    observaciones: clienteContactoImp.observaciones,
+    nombre: clienteContactoImp.nombre,
+    apellido1: clienteContactoImp.apellido1,
+    apellido2: clienteContactoImp.apellido2,
+    telefono1: clienteContactoImp.telefono1,
+    telefono2: clienteContactoImp.telefono2,
+    email: clienteContactoImp.email,
+    enviado: clienteContactoImp.enviado ? 'S' : 'N',
+    borrar: clienteContactoImp.borrar ? 'S' : 'N',
+  );
 
   ClienteContactoImp toDomain() {
     return ClienteContactoImp(

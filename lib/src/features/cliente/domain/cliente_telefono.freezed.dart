@@ -12,7 +12,8 @@ part of 'cliente_telefono.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ClienteTelefono {
@@ -30,8 +31,9 @@ mixin _$ClienteTelefono {
 /// @nodoc
 abstract class $ClienteTelefonoCopyWith<$Res> {
   factory $ClienteTelefonoCopyWith(
-          ClienteTelefono value, $Res Function(ClienteTelefono) then) =
-      _$ClienteTelefonoCopyWithImpl<$Res, ClienteTelefono>;
+    ClienteTelefono value,
+    $Res Function(ClienteTelefono) then,
+  ) = _$ClienteTelefonoCopyWithImpl<$Res, ClienteTelefono>;
   @useResult
   $Res call({String clienteId, String nombre, String telefono});
 }
@@ -55,29 +57,36 @@ class _$ClienteTelefonoCopyWithImpl<$Res, $Val extends ClienteTelefono>
     Object? nombre = null,
     Object? telefono = null,
   }) {
-    return _then(_value.copyWith(
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      nombre: null == nombre
-          ? _value.nombre
-          : nombre // ignore: cast_nullable_to_non_nullable
-              as String,
-      telefono: null == telefono
-          ? _value.telefono
-          : telefono // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            clienteId:
+                null == clienteId
+                    ? _value.clienteId
+                    : clienteId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            nombre:
+                null == nombre
+                    ? _value.nombre
+                    : nombre // ignore: cast_nullable_to_non_nullable
+                        as String,
+            telefono:
+                null == telefono
+                    ? _value.telefono
+                    : telefono // ignore: cast_nullable_to_non_nullable
+                        as String,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$ClienteTelefonoImplCopyWith<$Res>
     implements $ClienteTelefonoCopyWith<$Res> {
-  factory _$$ClienteTelefonoImplCopyWith(_$ClienteTelefonoImpl value,
-          $Res Function(_$ClienteTelefonoImpl) then) =
-      __$$ClienteTelefonoImplCopyWithImpl<$Res>;
+  factory _$$ClienteTelefonoImplCopyWith(
+    _$ClienteTelefonoImpl value,
+    $Res Function(_$ClienteTelefonoImpl) then,
+  ) = __$$ClienteTelefonoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String clienteId, String nombre, String telefono});
@@ -88,8 +97,9 @@ class __$$ClienteTelefonoImplCopyWithImpl<$Res>
     extends _$ClienteTelefonoCopyWithImpl<$Res, _$ClienteTelefonoImpl>
     implements _$$ClienteTelefonoImplCopyWith<$Res> {
   __$$ClienteTelefonoImplCopyWithImpl(
-      _$ClienteTelefonoImpl _value, $Res Function(_$ClienteTelefonoImpl) _then)
-      : super(_value, _then);
+    _$ClienteTelefonoImpl _value,
+    $Res Function(_$ClienteTelefonoImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ClienteTelefono
   /// with the given fields replaced by the non-null parameter values.
@@ -100,29 +110,36 @@ class __$$ClienteTelefonoImplCopyWithImpl<$Res>
     Object? nombre = null,
     Object? telefono = null,
   }) {
-    return _then(_$ClienteTelefonoImpl(
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      nombre: null == nombre
-          ? _value.nombre
-          : nombre // ignore: cast_nullable_to_non_nullable
-              as String,
-      telefono: null == telefono
-          ? _value.telefono
-          : telefono // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$ClienteTelefonoImpl(
+        clienteId:
+            null == clienteId
+                ? _value.clienteId
+                : clienteId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        nombre:
+            null == nombre
+                ? _value.nombre
+                : nombre // ignore: cast_nullable_to_non_nullable
+                    as String,
+        telefono:
+            null == telefono
+                ? _value.telefono
+                : telefono // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ClienteTelefonoImpl extends _ClienteTelefono {
-  const _$ClienteTelefonoImpl(
-      {required this.clienteId, required this.nombre, required this.telefono})
-      : super._();
+  const _$ClienteTelefonoImpl({
+    required this.clienteId,
+    required this.nombre,
+    required this.telefono,
+  }) : super._();
 
   @override
   final String clienteId;
@@ -158,14 +175,17 @@ class _$ClienteTelefonoImpl extends _ClienteTelefono {
   @pragma('vm:prefer-inline')
   _$$ClienteTelefonoImplCopyWith<_$ClienteTelefonoImpl> get copyWith =>
       __$$ClienteTelefonoImplCopyWithImpl<_$ClienteTelefonoImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _ClienteTelefono extends ClienteTelefono {
-  const factory _ClienteTelefono(
-      {required final String clienteId,
-      required final String nombre,
-      required final String telefono}) = _$ClienteTelefonoImpl;
+  const factory _ClienteTelefono({
+    required final String clienteId,
+    required final String nombre,
+    required final String telefono,
+  }) = _$ClienteTelefonoImpl;
   const _ClienteTelefono._() : super._();
 
   @override

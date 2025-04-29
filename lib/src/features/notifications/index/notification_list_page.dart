@@ -33,32 +33,33 @@ class NotificationIndexPage extends ConsumerWidget {
           icon: Icon(
             stateNotification.maybeWhen(
               orElse: () => Icons.menu,
-              data: (notificationId) =>
-                  notificationId != null ? Icons.notification_add : Icons.menu,
+              data:
+                  (notificationId) =>
+                      notificationId != null
+                          ? Icons.notification_add
+                          : Icons.menu,
             ),
           ),
         ),
         title: Text(S.of(context).notifications),
       ),
       body: RefreshIndicator(
-        onRefresh: () async =>
-            ref.invalidate(notificationIndexScreenControllerProvider),
+        onRefresh:
+            () async =>
+                ref.invalidate(notificationIndexScreenControllerProvider),
         child: state.when(
-          data: (notificationList) => ListView.separated(
-            itemBuilder: (context, i) => _NotificationListTile(
-              notificationList: notificationList[i],
-            ),
-            separatorBuilder: (context, i) => const Divider(),
-            itemCount: notificationList.length,
-          ),
-          error: (error, _) => Center(
-            child: ErrorMessageWidget(
-              error.toString(),
-            ),
-          ),
-          loading: () => const Center(
-            child: ProgressIndicatorWidget(),
-          ),
+          data:
+              (notificationList) => ListView.separated(
+                itemBuilder:
+                    (context, i) => _NotificationListTile(
+                      notificationList: notificationList[i],
+                    ),
+                separatorBuilder: (context, i) => const Divider(),
+                itemCount: notificationList.length,
+              ),
+          error:
+              (error, _) => Center(child: ErrorMessageWidget(error.toString())),
+          loading: () => const Center(child: ProgressIndicatorWidget()),
         ),
       ),
     );
@@ -73,8 +74,12 @@ class _NotificationListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.router.push(NotificationDetailRoute(
-          notificationId: notificationList.notificationId)),
+      onTap:
+          () => context.router.push(
+            NotificationDetailRoute(
+              notificationId: notificationList.notificationId,
+            ),
+          ),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Row(

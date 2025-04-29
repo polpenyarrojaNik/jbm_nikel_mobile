@@ -33,8 +33,12 @@ class ClienteDetallePage extends ConsumerWidget {
         titleText: (S.of(context).cliente_show_clienteDetalle_titulo),
         actions: [
           IconButton(
-            onPressed: () => navigateToCreatePedido(
-                context: context, ref: ref, clienteId: clienteId),
+            onPressed:
+                () => navigateToCreatePedido(
+                  context: context,
+                  ref: ref,
+                  clienteId: clienteId,
+                ),
             icon: const Icon(Icons.shopping_cart_outlined),
           ),
           IconButton(
@@ -48,15 +52,16 @@ class ClienteDetallePage extends ConsumerWidget {
           final articuloValue = ref.watch(clienteProvider(clienteId));
           return AsyncValueWidget<Cliente>(
             value: articuloValue,
-            data: (cliente) => ListView(
-              shrinkWrap: true,
-              physics: const BouncingScrollPhysics(),
-              children: [
-                _ClienteInfoContainer(cliente: cliente),
-                _DatosRelacionados(cliente: cliente, params: params),
-                _Consultas(cliente: cliente, params: params),
-              ],
-            ),
+            data:
+                (cliente) => ListView(
+                  shrinkWrap: true,
+                  physics: const BouncingScrollPhysics(),
+                  children: [
+                    _ClienteInfoContainer(cliente: cliente),
+                    _DatosRelacionados(cliente: cliente, params: params),
+                    _Consultas(cliente: cliente, params: params),
+                  ],
+                ),
           );
         },
       ),
@@ -75,7 +80,8 @@ class ClienteDetallePage extends ConsumerWidget {
 
   void navigateToCreateVisita(BuildContext context, String clienteId) {
     context.router.push(
-        VisitaEditRoute(isNew: true, createVisitaFromClienteId: clienteId));
+      VisitaEditRoute(isNew: true, createVisitaFromClienteId: clienteId),
+    );
   }
 }
 
@@ -123,9 +129,11 @@ class _ClienteHeader extends StatelessWidget {
               if (cliente.clientePotencial ?? false) gapW8,
               if (cliente.clientePotencial ?? false)
                 ChipContainer(
-                    text: getClienteEstadoPotencialInLocalLanguage(
-                        estadoPotencial: cliente.clienteEstadoPotencial),
-                    color: Theme.of(context).colorScheme.errorContainer),
+                  text: getClienteEstadoPotencialInLocalLanguage(
+                    estadoPotencial: cliente.clienteEstadoPotencial,
+                  ),
+                  color: Theme.of(context).colorScheme.errorContainer,
+                ),
             ],
           ),
           gapH8,
@@ -143,17 +151,19 @@ class _ClienteHeader extends StatelessWidget {
                     cliente.paisPredeterminada,
                   ),
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Theme.of(context).textTheme.bodySmall?.color),
+                    color: Theme.of(context).textTheme.bodySmall?.color,
+                  ),
                 ),
               ),
               IconButton(
-                onPressed: () => navigateToGoogleMapsAddress(
-                  cliente.nombreCliente,
-                  cliente.latitudPredeterminada,
-                  cliente.longitudPredeterminada,
-                ),
+                onPressed:
+                    () => navigateToGoogleMapsAddress(
+                      cliente.nombreCliente,
+                      cliente.latitudPredeterminada,
+                      cliente.longitudPredeterminada,
+                    ),
                 icon: Icon(MdiIcons.googleMaps),
-              )
+              ),
             ],
           ),
           gapH8,
@@ -163,7 +173,8 @@ class _ClienteHeader extends StatelessWidget {
               Text(
                 S.of(context).cliente_show_clienteDetalle_fiscalData,
                 style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                    color: Theme.of(context).textTheme.bodySmall?.color),
+                  color: Theme.of(context).textTheme.bodySmall?.color,
+                ),
               ),
               SelectableText(
                 cliente.nombreFiscal,
@@ -185,18 +196,19 @@ class _ClienteHeader extends StatelessWidget {
                           cliente.paisFiscal,
                         ),
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color:
-                                Theme.of(context).textTheme.bodySmall?.color),
+                          color: Theme.of(context).textTheme.bodySmall?.color,
+                        ),
                       ),
                     ),
                     IconButton(
-                      onPressed: () => navigateToGoogleMapsAddress(
-                        cliente.nombreFiscal,
-                        cliente.latitudFiscal,
-                        cliente.longitudFiscal,
-                      ),
+                      onPressed:
+                          () => navigateToGoogleMapsAddress(
+                            cliente.nombreFiscal,
+                            cliente.latitudFiscal,
+                            cliente.longitudFiscal,
+                          ),
                       icon: Icon(MdiIcons.googleMaps),
-                    )
+                    ),
                   ],
                 ),
             ],
@@ -235,7 +247,10 @@ class _ClienteHeader extends StatelessWidget {
   }
 
   void navigateToGoogleMapsAddress(
-      String? nombre, double? latitude, double? longitude) async {
+    String? nombre,
+    double? latitude,
+    double? longitude,
+  ) async {
     if (latitude != null && longitude != null) {
       final isAvailable = await MapLauncher.isMapAvailable(MapType.google);
       if (isAvailable ?? false) {
@@ -269,7 +284,8 @@ class _ClienteAnalisis extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         MobileCustomSeparators(
-            separatorTitle: S.of(context).cliente_show_clienteDetalle_analisis),
+          separatorTitle: S.of(context).cliente_show_clienteDetalle_analisis,
+        ),
         gapH8,
         Padding(
           padding: const EdgeInsets.all(16),
@@ -278,18 +294,17 @@ class _ClienteAnalisis extends StatelessWidget {
             children: [
               _VentasRowWidget(cliente: cliente),
               gapH8,
-              _MargenRowWidget(
-                cliente: cliente,
-              ),
+              _MargenRowWidget(cliente: cliente),
               gapH8,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
                     child: ColumnFieldTextDetalle(
-                      fieldTitleValue: S
-                          .of(context)
-                          .cliente_show_clienteDetalle_porcentajeGarantias,
+                      fieldTitleValue:
+                          S
+                              .of(context)
+                              .cliente_show_clienteDetalle_porcentajeGarantias,
                       value:
                           '${numberFormatDecimal(cliente.porcentajeGarantias)}%',
                       selectable: true,
@@ -297,9 +312,10 @@ class _ClienteAnalisis extends StatelessWidget {
                   ),
                   Expanded(
                     child: ColumnFieldTextDetalle(
-                      fieldTitleValue: S
-                          .of(context)
-                          .cliente_show_clienteDetalle_porcentajeAbonos,
+                      fieldTitleValue:
+                          S
+                              .of(context)
+                              .cliente_show_clienteDetalle_porcentajeAbonos,
                       value:
                           '${numberFormatDecimal(cliente.porcentajeAbonos)}%',
                       selectable: true,
@@ -316,9 +332,7 @@ class _ClienteAnalisis extends StatelessWidget {
 }
 
 class _VentasRowWidget extends StatelessWidget {
-  const _VentasRowWidget({
-    required this.cliente,
-  });
+  const _VentasRowWidget({required this.cliente});
 
   final Cliente cliente;
 
@@ -329,10 +343,9 @@ class _VentasRowWidget extends StatelessWidget {
       children: [
         Text(
           S.of(context).cliente_show_clienteDetalle_ventas,
-          style: Theme.of(context)
-              .textTheme
-              .titleSmall!
-              .copyWith(color: Theme.of(context).textTheme.bodySmall!.color),
+          style: Theme.of(context).textTheme.titleSmall!.copyWith(
+            color: Theme.of(context).textTheme.bodySmall!.color,
+          ),
         ),
         gapH4,
         Row(
@@ -341,12 +354,17 @@ class _VentasRowWidget extends StatelessWidget {
             Expanded(
               child: Column(
                 children: [
-                  Text(S.of(context).cliente_show_clienteDetalle_anoActual,
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: Theme.of(context).textTheme.bodySmall!.color)),
+                  Text(
+                    S.of(context).cliente_show_clienteDetalle_anoActual,
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      color: Theme.of(context).textTheme.bodySmall!.color,
+                    ),
+                  ),
                   SelectableTextWidget(
                     formatPrecios(
-                        precio: cliente.ventasAnyoActual, tipoPrecio: null),
+                      precio: cliente.ventasAnyoActual,
+                      tipoPrecio: null,
+                    ),
                   ),
                 ],
               ),
@@ -354,12 +372,17 @@ class _VentasRowWidget extends StatelessWidget {
             Expanded(
               child: Column(
                 children: [
-                  Text(S.of(context).cliente_show_clienteDetalle_anoAnterior,
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: Theme.of(context).textTheme.bodySmall!.color)),
+                  Text(
+                    S.of(context).cliente_show_clienteDetalle_anoAnterior,
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      color: Theme.of(context).textTheme.bodySmall!.color,
+                    ),
+                  ),
                   SelectableTextWidget(
                     formatPrecios(
-                        precio: cliente.ventasAnyoAnterior, tipoPrecio: null),
+                      precio: cliente.ventasAnyoAnterior,
+                      tipoPrecio: null,
+                    ),
                   ),
                 ],
               ),
@@ -367,12 +390,17 @@ class _VentasRowWidget extends StatelessWidget {
             Expanded(
               child: Column(
                 children: [
-                  Text(S.of(context).cliente_show_clienteDetalle_hace2Anos,
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: Theme.of(context).textTheme.bodySmall!.color)),
+                  Text(
+                    S.of(context).cliente_show_clienteDetalle_hace2Anos,
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      color: Theme.of(context).textTheme.bodySmall!.color,
+                    ),
+                  ),
                   SelectableTextWidget(
                     formatPrecios(
-                        precio: cliente.ventasHaceDosAnyos, tipoPrecio: null),
+                      precio: cliente.ventasHaceDosAnyos,
+                      tipoPrecio: null,
+                    ),
                   ),
                 ],
               ),
@@ -385,9 +413,7 @@ class _VentasRowWidget extends StatelessWidget {
 }
 
 class _MargenRowWidget extends StatelessWidget {
-  const _MargenRowWidget({
-    required this.cliente,
-  });
+  const _MargenRowWidget({required this.cliente});
 
   final Cliente cliente;
 
@@ -398,10 +424,9 @@ class _MargenRowWidget extends StatelessWidget {
       children: [
         Text(
           S.of(context).cliente_show_clienteDetalle_margen,
-          style: Theme.of(context)
-              .textTheme
-              .titleSmall!
-              .copyWith(color: Theme.of(context).textTheme.bodySmall!.color),
+          style: Theme.of(context).textTheme.titleSmall!.copyWith(
+            color: Theme.of(context).textTheme.bodySmall!.color,
+          ),
         ),
         gapH4,
         Row(
@@ -410,9 +435,12 @@ class _MargenRowWidget extends StatelessWidget {
             Expanded(
               child: Column(
                 children: [
-                  Text(S.of(context).cliente_show_clienteDetalle_anoActual,
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: Theme.of(context).textTheme.bodySmall!.color)),
+                  Text(
+                    S.of(context).cliente_show_clienteDetalle_anoActual,
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      color: Theme.of(context).textTheme.bodySmall!.color,
+                    ),
+                  ),
                   SelectableTextWidget(
                     '${numberFormatDecimal(cliente.margenAnyoActual)}%',
                   ),
@@ -422,9 +450,12 @@ class _MargenRowWidget extends StatelessWidget {
             Expanded(
               child: Column(
                 children: [
-                  Text(S.of(context).cliente_show_clienteDetalle_anoAnterior,
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: Theme.of(context).textTheme.bodySmall!.color)),
+                  Text(
+                    S.of(context).cliente_show_clienteDetalle_anoAnterior,
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      color: Theme.of(context).textTheme.bodySmall!.color,
+                    ),
+                  ),
                   SelectableTextWidget(
                     '${numberFormatDecimal(cliente.margenAnyoAnterior)}%',
                   ),
@@ -434,9 +465,12 @@ class _MargenRowWidget extends StatelessWidget {
             Expanded(
               child: Column(
                 children: [
-                  Text(S.of(context).cliente_show_clienteDetalle_hace2Anos,
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: Theme.of(context).textTheme.bodySmall!.color)),
+                  Text(
+                    S.of(context).cliente_show_clienteDetalle_hace2Anos,
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      color: Theme.of(context).textTheme.bodySmall!.color,
+                    ),
+                  ),
                   SelectableTextWidget(
                     '${numberFormatDecimal(cliente.margenHaceDosAnyos)}%',
                   ),
@@ -461,8 +495,9 @@ class _ClientePreciosAndFormaDePago extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         MobileCustomSeparators(
-            separatorTitle:
-                S.of(context).cliente_show_clienteDetalle_preciosYFormaDePago),
+          separatorTitle:
+              S.of(context).cliente_show_clienteDetalle_preciosYFormaDePago,
+        ),
         Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
@@ -486,9 +521,10 @@ class _ClientePreciosAndFormaDePago extends StatelessWidget {
               if (cliente.descripcionDescuentoGeneral != null) gapH4,
               if (cliente.descripcionDescuentoGeneral != null)
                 ColumnFieldTextDetalle(
-                  fieldTitleValue: S
-                      .of(context)
-                      .cliente_show_clienteDetalle_descuentoGeneral,
+                  fieldTitleValue:
+                      S
+                          .of(context)
+                          .cliente_show_clienteDetalle_descuentoGeneral,
                   value: cliente.descripcionDescuentoGeneral!,
                   selectable: true,
                 ),
@@ -506,22 +542,26 @@ class _ClientePreciosAndFormaDePago extends StatelessWidget {
                   if (cliente.plazoDeCobro != null)
                     Expanded(
                       child: ColumnFieldTextDetalle(
-                        fieldTitleValue: S
-                            .of(context)
-                            .cliente_show_clienteDetalle_plazoDeCobro,
+                        fieldTitleValue:
+                            S
+                                .of(context)
+                                .cliente_show_clienteDetalle_plazoDeCobro,
                         value: getPlazoCorboInLocalLanguage(
-                            plazoDeCobro: cliente.plazoDeCobro!),
+                          plazoDeCobro: cliente.plazoDeCobro!,
+                        ),
                         selectable: true,
                       ),
                     ),
                   if (cliente.metodoDeCobro != null)
                     Expanded(
                       child: ColumnFieldTextDetalle(
-                        fieldTitleValue: S
-                            .of(context)
-                            .cliente_show_clienteDetalle_metodoDeCobro,
+                        fieldTitleValue:
+                            S
+                                .of(context)
+                                .cliente_show_clienteDetalle_metodoDeCobro,
                         value: getMetodoCobroInLocalLanguage(
-                            metodoDeCobro: cliente.metodoDeCobro!),
+                          metodoDeCobro: cliente.metodoDeCobro!,
+                        ),
                         selectable: true,
                       ),
                     ),
@@ -546,7 +586,8 @@ class _ClienteRiesgosContainer extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         MobileCustomSeparators(
-            separatorTitle: S.of(context).cliente_show_clienteDetalle_riesgos),
+          separatorTitle: S.of(context).cliente_show_clienteDetalle_riesgos,
+        ),
         Padding(
           padding: const EdgeInsets.all(16),
           child: IntrinsicHeight(
@@ -562,18 +603,18 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                             S
                                 .of(context)
                                 .cliente_show_clienteDetalle_riesgoActual,
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleSmall!
-                                .copyWith(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .bodySmall!
-                                        .color),
+                            style: Theme.of(
+                              context,
+                            ).textTheme.titleSmall!.copyWith(
+                              color:
+                                  Theme.of(context).textTheme.bodySmall!.color,
+                            ),
                           ),
                           SelectableTextWidget(
                             formatPrecios(
-                                precio: cliente.riesgoActual, tipoPrecio: null),
+                              precio: cliente.riesgoActual,
+                              tipoPrecio: null,
+                            ),
                           ),
                         ],
                       ),
@@ -585,26 +626,25 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                               S
                                   .of(context)
                                   .cliente_show_clienteDetalle_riesgoExcedido,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleSmall!
-                                  .copyWith(
-                                      color: Theme.of(context)
-                                          .textTheme
-                                          .bodySmall!
-                                          .color),
+                              style: Theme.of(
+                                context,
+                              ).textTheme.titleSmall!.copyWith(
+                                color:
+                                    Theme.of(
+                                      context,
+                                    ).textTheme.bodySmall!.color,
+                              ),
                             ),
                             SelectableTextWidget(
                               formatPrecios(
                                 precio: cliente.riesgoExcedido,
                                 tipoPrecio: null,
                               ),
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium!
-                                  .copyWith(
-                                    color: Theme.of(context).colorScheme.error,
-                                  ),
+                              style: Theme.of(
+                                context,
+                              ).textTheme.bodyMedium!.copyWith(
+                                color: Theme.of(context).colorScheme.error,
+                              ),
                             ),
                           ],
                         ),
@@ -615,30 +655,27 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                             S
                                 .of(context)
                                 .cliente_show_clienteDetalle_pdteCobroVencido,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium!
-                                .copyWith(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .bodySmall!
-                                        .color),
+                            style: Theme.of(
+                              context,
+                            ).textTheme.bodyMedium!.copyWith(
+                              color:
+                                  Theme.of(context).textTheme.bodySmall!.color,
+                            ),
                           ),
                           SelectableTextWidget(
                             formatPrecios(
                               precio: cliente.riesgoPendienteCobroVencido!,
                               tipoPrecio: null,
                             ),
-                            style: (!cliente
-                                    .riesgoPendienteCobroVencido!.isZero)
-                                ? Theme.of(context)
-                                    .textTheme
-                                    .bodyMedium!
-                                    .copyWith(
+                            style:
+                                (!cliente.riesgoPendienteCobroVencido!.isZero)
+                                    ? Theme.of(
+                                      context,
+                                    ).textTheme.bodyMedium!.copyWith(
                                       color:
                                           Theme.of(context).colorScheme.error,
                                     )
-                                : Theme.of(context).textTheme.bodyMedium,
+                                    : Theme.of(context).textTheme.bodyMedium,
                           ),
                         ],
                       ),
@@ -646,21 +683,21 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                       Column(
                         children: [
                           Text(
-                              S
-                                  .of(context)
-                                  .cliente_show_clienteDetalle_pdteCobroNoVencido,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium!
-                                  .copyWith(
-                                      color: Theme.of(context)
-                                          .textTheme
-                                          .bodySmall!
-                                          .color)),
+                            S
+                                .of(context)
+                                .cliente_show_clienteDetalle_pdteCobroNoVencido,
+                            style: Theme.of(
+                              context,
+                            ).textTheme.bodyMedium!.copyWith(
+                              color:
+                                  Theme.of(context).textTheme.bodySmall!.color,
+                            ),
+                          ),
                           SelectableTextWidget(
                             formatPrecios(
-                                precio: cliente.riesgoPendienteCobroNoVencido!,
-                                tipoPrecio: null),
+                              precio: cliente.riesgoPendienteCobroNoVencido!,
+                              tipoPrecio: null,
+                            ),
                           ),
                         ],
                       ),
@@ -668,21 +705,21 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                       Column(
                         children: [
                           Text(
-                              S
-                                  .of(context)
-                                  .cliente_show_clienteDetalle_pdteServir,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium!
-                                  .copyWith(
-                                      color: Theme.of(context)
-                                          .textTheme
-                                          .bodySmall!
-                                          .color)),
+                            S
+                                .of(context)
+                                .cliente_show_clienteDetalle_pdteServir,
+                            style: Theme.of(
+                              context,
+                            ).textTheme.bodyMedium!.copyWith(
+                              color:
+                                  Theme.of(context).textTheme.bodySmall!.color,
+                            ),
+                          ),
                           SelectableTextWidget(
                             formatPrecios(
-                                precio: cliente.riesgoPendienteServir!,
-                                tipoPrecio: null),
+                              precio: cliente.riesgoPendienteServir!,
+                              tipoPrecio: null,
+                            ),
                           ),
                         ],
                       ),
@@ -690,21 +727,21 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                       Column(
                         children: [
                           Text(
-                              S
-                                  .of(context)
-                                  .cliente_show_clienteDetalle_pdteFacturar,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium!
-                                  .copyWith(
-                                      color: Theme.of(context)
-                                          .textTheme
-                                          .bodySmall!
-                                          .color)),
+                            S
+                                .of(context)
+                                .cliente_show_clienteDetalle_pdteFacturar,
+                            style: Theme.of(
+                              context,
+                            ).textTheme.bodyMedium!.copyWith(
+                              color:
+                                  Theme.of(context).textTheme.bodySmall!.color,
+                            ),
+                          ),
                           SelectableTextWidget(
                             formatPrecios(
-                                precio: cliente.riesgoPendienteFacturar!,
-                                tipoPrecio: null),
+                              precio: cliente.riesgoPendienteFacturar!,
+                              tipoPrecio: null,
+                            ),
                           ),
                         ],
                       ),
@@ -719,46 +756,51 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                         Column(
                           children: [
                             Text(
-                                S
-                                    .of(context)
-                                    .cliente_show_clienteDetalle_riesgoConcedido,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleSmall!
-                                    .copyWith(
-                                        color: Theme.of(context)
-                                            .textTheme
-                                            .bodySmall!
-                                            .color)),
+                              S
+                                  .of(context)
+                                  .cliente_show_clienteDetalle_riesgoConcedido,
+                              style: Theme.of(
+                                context,
+                              ).textTheme.titleSmall!.copyWith(
+                                color:
+                                    Theme.of(
+                                      context,
+                                    ).textTheme.bodySmall!.color,
+                              ),
+                            ),
                             SelectableTextWidget(
                               formatPrecios(
-                                  precio: cliente.riesgoConcedido!,
-                                  tipoPrecio: null),
+                                precio: cliente.riesgoConcedido!,
+                                tipoPrecio: null,
+                              ),
                             ),
                           ],
                         ),
                       gapH12,
                       Column(
                         children: [
-                          Text('JBM',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium!
-                                  .copyWith(
-                                      color: Theme.of(context)
-                                          .textTheme
-                                          .bodySmall!
-                                          .color)),
+                          Text(
+                            'JBM',
+                            style: Theme.of(
+                              context,
+                            ).textTheme.bodyMedium!.copyWith(
+                              color:
+                                  Theme.of(context).textTheme.bodySmall!.color,
+                            ),
+                          ),
                           SelectableTextWidget(
                             formatPrecios(
-                                precio: cliente.riesgoConcedidoInterno,
-                                tipoPrecio: null),
+                              precio: cliente.riesgoConcedidoInterno,
+                              tipoPrecio: null,
+                            ),
                           ),
                           if (cliente.riesgoConcedidoInternoDate != null)
                             SelectableTextWidget(
-                              dateFormatter(cliente.riesgoConcedidoInternoDate!
-                                  .toLocal()
-                                  .toIso8601String()),
+                              dateFormatter(
+                                cliente.riesgoConcedidoInternoDate!
+                                    .toLocal()
+                                    .toIso8601String(),
+                              ),
                               style: Theme.of(context).textTheme.bodySmall,
                             ),
                         ],
@@ -766,25 +808,28 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                       gapH8,
                       Column(
                         children: [
-                          Text('COFACE',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium!
-                                  .copyWith(
-                                      color: Theme.of(context)
-                                          .textTheme
-                                          .bodySmall!
-                                          .color)),
+                          Text(
+                            'COFACE',
+                            style: Theme.of(
+                              context,
+                            ).textTheme.bodyMedium!.copyWith(
+                              color:
+                                  Theme.of(context).textTheme.bodySmall!.color,
+                            ),
+                          ),
                           SelectableTextWidget(
                             formatPrecios(
-                                precio: cliente.riesgoConcedidoCoafe,
-                                tipoPrecio: null),
+                              precio: cliente.riesgoConcedidoCoafe,
+                              tipoPrecio: null,
+                            ),
                           ),
                           if (cliente.riesgoConcedidoCoafeFecha != null)
                             SelectableTextWidget(
-                              dateFormatter(cliente.riesgoConcedidoCoafeFecha!
-                                  .toLocal()
-                                  .toIso8601String()),
+                              dateFormatter(
+                                cliente.riesgoConcedidoCoafeFecha!
+                                    .toLocal()
+                                    .toIso8601String(),
+                              ),
                               style: Theme.of(context).textTheme.bodySmall,
                             ),
                         ],
@@ -795,7 +840,7 @@ class _ClienteRiesgosContainer extends StatelessWidget {
               ],
             ),
           ),
-        )
+        ),
       ],
     );
   }
@@ -812,78 +857,86 @@ class _DatosRelacionados extends StatelessWidget {
     return Column(
       children: [
         MobileCustomSeparators(
-            separatorTitle:
-                S.of(context).cliente_show_clienteDetalle_datosRelacionados),
+          separatorTitle:
+              S.of(context).cliente_show_clienteDetalle_datosRelacionados,
+        ),
         gapH8,
         DatosExtraRow(
           title: S.of(context).cliente_show_clienteDireccion_titulo,
-          navigationTo: () => context.router.push(
-            ClienteDireccionesListRoute(
-              clienteId: cliente.id,
-              paisCliente: cliente.paisFiscal,
-              nombreCliente: cliente.nombreCliente,
-            ),
-          ),
+          navigationTo:
+              () => context.router.push(
+                ClienteDireccionesListRoute(
+                  clienteId: cliente.id,
+                  paisCliente: cliente.paisFiscal,
+                  nombreCliente: cliente.nombreCliente,
+                ),
+              ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).cliente_show_clienteContacto_titulo,
-          navigationTo: () => context.router.push(
-            ClienteContactoListRoute(
-              clienteId: cliente.id,
-              nombreCliente: cliente.nombreCliente,
-            ),
-          ),
+          navigationTo:
+              () => context.router.push(
+                ClienteContactoListRoute(
+                  clienteId: cliente.id,
+                  nombreCliente: cliente.nombreCliente,
+                ),
+              ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).cliente_show_clientePrecioNeto_titulo,
-          navigationTo: () => context.router.push(
-            ClientePrecioNetoRoute(
-              clienteId: cliente.id,
-              nombreCliente: cliente.nombreCliente,
-            ),
-          ),
+          navigationTo:
+              () => context.router.push(
+                ClientePrecioNetoRoute(
+                  clienteId: cliente.id,
+                  nombreCliente: cliente.nombreCliente,
+                ),
+              ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).cliente_show_clienteGrupoNeto_titulo,
-          navigationTo: () => context.router.push(
-            ClienteGrupoNetoRoute(
-              clienteId: cliente.id,
-              nombreCliente: cliente.nombreCliente,
-            ),
-          ),
+          navigationTo:
+              () => context.router.push(
+                ClienteGrupoNetoRoute(
+                  clienteId: cliente.id,
+                  nombreCliente: cliente.nombreCliente,
+                ),
+              ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).cliente_show_clienteDescuento_titulo,
-          navigationTo: () => context.router.push(
-            ClienteDescuentoRoute(
-              clienteId: cliente.id,
-              nombreCliente: cliente.nombreCliente,
-            ),
-          ),
+          navigationTo:
+              () => context.router.push(
+                ClienteDescuentoRoute(
+                  clienteId: cliente.id,
+                  nombreCliente: cliente.nombreCliente,
+                ),
+              ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).cliente_show_clienteRappel_titulo,
-          navigationTo: () => context.router.push(
-            ClienteRappelRoute(
-              clienteId: cliente.id,
-              nombreCliente: cliente.nombreCliente,
-            ),
-          ),
+          navigationTo:
+              () => context.router.push(
+                ClienteRappelRoute(
+                  clienteId: cliente.id,
+                  nombreCliente: cliente.nombreCliente,
+                ),
+              ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).cliente_show_clienteAdjunto_titulo,
-          navigationTo: () => context.router.push(
-            ClienteAdjuntoRoute(
-              clienteId: cliente.id,
-              nombreCliente: cliente.nombreCliente,
-            ),
-          ),
+          navigationTo:
+              () => context.router.push(
+                ClienteAdjuntoRoute(
+                  clienteId: cliente.id,
+                  nombreCliente: cliente.nombreCliente,
+                ),
+              ),
         ),
         gapH8,
       ],
@@ -902,87 +955,95 @@ class _Consultas extends StatelessWidget {
     return Column(
       children: [
         MobileCustomSeparators(
-            separatorTitle:
-                S.of(context).cliente_show_clienteDetalle_consultas),
+          separatorTitle: S.of(context).cliente_show_clienteDetalle_consultas,
+        ),
         gapH8,
         DatosExtraRow(
           title: S.of(context).cliente_show_clienteVentasMes_titulo,
-          navigationTo: () => context.router.push(
-            ClienteVentasMesRoute(
-              clienteId: cliente.id,
-              nombreCliente: cliente.nombreCliente,
-            ),
-          ),
+          navigationTo:
+              () => context.router.push(
+                ClienteVentasMesRoute(
+                  clienteId: cliente.id,
+                  nombreCliente: cliente.nombreCliente,
+                ),
+              ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).cliente_show_clienteVentasArticulo_titulo,
-          navigationTo: () => context.router.push(
-            ClienteVentasArticuloRoute(
-              clienteId: cliente.id,
-              nombreCliente: cliente.nombreCliente,
-            ),
-          ),
+          navigationTo:
+              () => context.router.push(
+                ClienteVentasArticuloRoute(
+                  clienteId: cliente.id,
+                  nombreCliente: cliente.nombreCliente,
+                ),
+              ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).cliente_show_clienteFacturasPendientes_titulo,
-          navigationTo: () => context.router.push(
-            ClientePagoPendienteRoute(
-              clienteId: cliente.id,
-              nombreCliente: cliente.nombreCliente,
-            ),
-          ),
+          navigationTo:
+              () => context.router.push(
+                ClientePagoPendienteRoute(
+                  clienteId: cliente.id,
+                  nombreCliente: cliente.nombreCliente,
+                ),
+              ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).cliente_show_clientePedidos_titulo,
-          navigationTo: () => context.router.push(
-            ClientePedidosRoute(
-              clienteId: cliente.id,
-              nombreCliente: cliente.nombreCliente,
-            ),
-          ),
+          navigationTo:
+              () => context.router.push(
+                ClientePedidosRoute(
+                  clienteId: cliente.id,
+                  nombreCliente: cliente.nombreCliente,
+                ),
+              ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).cliente_show_clienteDevolucion_titulo,
-          navigationTo: () => context.router.push(
-            ClienteDevolucionRoute(
-              clienteId: cliente.id,
-              nombreCliente: cliente.nombreCliente,
-            ),
-          ),
+          navigationTo:
+              () => context.router.push(
+                ClienteDevolucionRoute(
+                  clienteId: cliente.id,
+                  nombreCliente: cliente.nombreCliente,
+                ),
+              ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).cliente_show_clienteVisitas_titulo,
-          navigationTo: () => context.router.push(
-            ClienteVisitasRoute(
-              clienteId: cliente.id,
-              nombreCliente: cliente.nombreCliente,
-            ),
-          ),
+          navigationTo:
+              () => context.router.push(
+                ClienteVisitasRoute(
+                  clienteId: cliente.id,
+                  nombreCliente: cliente.nombreCliente,
+                ),
+              ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).ultimosPrecios_titulo,
-          navigationTo: () => context.router.push(
-            ClienteUltimosPreciosRoute(
-              clienteId: cliente.id,
-              nombreCliente: cliente.nombreCliente,
-            ),
-          ),
+          navigationTo:
+              () => context.router.push(
+                ClienteUltimosPreciosRoute(
+                  clienteId: cliente.id,
+                  nombreCliente: cliente.nombreCliente,
+                ),
+              ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).cliente_show_clienteArticulosTop_titulo,
-          navigationTo: () => context.router.push(
-            ClienteArticulosTopListRoute(
-              clienteId: cliente.id,
-              nombreCliente: cliente.nombreCliente,
-            ),
-          ),
+          navigationTo:
+              () => context.router.push(
+                ClienteArticulosTopListRoute(
+                  clienteId: cliente.id,
+                  nombreCliente: cliente.nombreCliente,
+                ),
+              ),
         ),
       ],
     );

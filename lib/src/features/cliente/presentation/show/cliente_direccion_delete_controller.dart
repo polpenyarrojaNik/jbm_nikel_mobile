@@ -18,7 +18,9 @@ class ClienteDireccionDeleteController
     state = const AsyncLoading();
 
     try {
-      await ref.read(clienteRepositoryProvider).deleteClienteDireccion(
+      await ref
+          .read(clienteRepositoryProvider)
+          .deleteClienteDireccion(
             clienteImpParam.clienteId,
             direccionId: clienteImpParam.id,
             direccionImpGuid: clienteImpParam.impId,
@@ -26,10 +28,7 @@ class ClienteDireccionDeleteController
 
       state = const AsyncData(true);
     } on AppException catch (e, stackTrace) {
-      state = AsyncError(
-        false,
-        stackTrace,
-      );
+      state = AsyncError(false, stackTrace);
     } catch (e) {
       rethrow;
     }

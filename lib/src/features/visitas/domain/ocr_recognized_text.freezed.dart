@@ -12,7 +12,8 @@ part of 'ocr_recognized_text.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 OcrRecognizedText _$OcrRecognizedTextFromJson(Map<String, dynamic> json) {
   return _OcrRecognizedText.fromJson(json);
@@ -46,16 +47,18 @@ mixin _$OcrRecognizedText {
 /// @nodoc
 abstract class $OcrRecognizedTextCopyWith<$Res> {
   factory $OcrRecognizedTextCopyWith(
-          OcrRecognizedText value, $Res Function(OcrRecognizedText) then) =
-      _$OcrRecognizedTextCopyWithImpl<$Res, OcrRecognizedText>;
+    OcrRecognizedText value,
+    $Res Function(OcrRecognizedText) then,
+  ) = _$OcrRecognizedTextCopyWithImpl<$Res, OcrRecognizedText>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'TEXT') String text,
-      @JsonKey(name: 'TIPO') RecognizedTextType type,
-      @JsonKey(name: 'ORDEN_TIPO') DateTime? dischargeDate,
-      @JsonKey(name: 'TELF_TEXT') String? telfText,
-      @JsonKey(name: 'EMAIL_TEXT') String? emailText,
-      @JsonKey(name: 'WEBSITE_TEXT') String? websiteText});
+  $Res call({
+    @JsonKey(name: 'TEXT') String text,
+    @JsonKey(name: 'TIPO') RecognizedTextType type,
+    @JsonKey(name: 'ORDEN_TIPO') DateTime? dischargeDate,
+    @JsonKey(name: 'TELF_TEXT') String? telfText,
+    @JsonKey(name: 'EMAIL_TEXT') String? emailText,
+    @JsonKey(name: 'WEBSITE_TEXT') String? websiteText,
+  });
 }
 
 /// @nodoc
@@ -80,59 +83,71 @@ class _$OcrRecognizedTextCopyWithImpl<$Res, $Val extends OcrRecognizedText>
     Object? emailText = freezed,
     Object? websiteText = freezed,
   }) {
-    return _then(_value.copyWith(
-      text: null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as RecognizedTextType,
-      dischargeDate: freezed == dischargeDate
-          ? _value.dischargeDate
-          : dischargeDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      telfText: freezed == telfText
-          ? _value.telfText
-          : telfText // ignore: cast_nullable_to_non_nullable
-              as String?,
-      emailText: freezed == emailText
-          ? _value.emailText
-          : emailText // ignore: cast_nullable_to_non_nullable
-              as String?,
-      websiteText: freezed == websiteText
-          ? _value.websiteText
-          : websiteText // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            text:
+                null == text
+                    ? _value.text
+                    : text // ignore: cast_nullable_to_non_nullable
+                        as String,
+            type:
+                null == type
+                    ? _value.type
+                    : type // ignore: cast_nullable_to_non_nullable
+                        as RecognizedTextType,
+            dischargeDate:
+                freezed == dischargeDate
+                    ? _value.dischargeDate
+                    : dischargeDate // ignore: cast_nullable_to_non_nullable
+                        as DateTime?,
+            telfText:
+                freezed == telfText
+                    ? _value.telfText
+                    : telfText // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            emailText:
+                freezed == emailText
+                    ? _value.emailText
+                    : emailText // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            websiteText:
+                freezed == websiteText
+                    ? _value.websiteText
+                    : websiteText // ignore: cast_nullable_to_non_nullable
+                        as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$OcrRecognizedTextImplCopyWith<$Res>
     implements $OcrRecognizedTextCopyWith<$Res> {
-  factory _$$OcrRecognizedTextImplCopyWith(_$OcrRecognizedTextImpl value,
-          $Res Function(_$OcrRecognizedTextImpl) then) =
-      __$$OcrRecognizedTextImplCopyWithImpl<$Res>;
+  factory _$$OcrRecognizedTextImplCopyWith(
+    _$OcrRecognizedTextImpl value,
+    $Res Function(_$OcrRecognizedTextImpl) then,
+  ) = __$$OcrRecognizedTextImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'TEXT') String text,
-      @JsonKey(name: 'TIPO') RecognizedTextType type,
-      @JsonKey(name: 'ORDEN_TIPO') DateTime? dischargeDate,
-      @JsonKey(name: 'TELF_TEXT') String? telfText,
-      @JsonKey(name: 'EMAIL_TEXT') String? emailText,
-      @JsonKey(name: 'WEBSITE_TEXT') String? websiteText});
+  $Res call({
+    @JsonKey(name: 'TEXT') String text,
+    @JsonKey(name: 'TIPO') RecognizedTextType type,
+    @JsonKey(name: 'ORDEN_TIPO') DateTime? dischargeDate,
+    @JsonKey(name: 'TELF_TEXT') String? telfText,
+    @JsonKey(name: 'EMAIL_TEXT') String? emailText,
+    @JsonKey(name: 'WEBSITE_TEXT') String? websiteText,
+  });
 }
 
 /// @nodoc
 class __$$OcrRecognizedTextImplCopyWithImpl<$Res>
     extends _$OcrRecognizedTextCopyWithImpl<$Res, _$OcrRecognizedTextImpl>
     implements _$$OcrRecognizedTextImplCopyWith<$Res> {
-  __$$OcrRecognizedTextImplCopyWithImpl(_$OcrRecognizedTextImpl _value,
-      $Res Function(_$OcrRecognizedTextImpl) _then)
-      : super(_value, _then);
+  __$$OcrRecognizedTextImplCopyWithImpl(
+    _$OcrRecognizedTextImpl _value,
+    $Res Function(_$OcrRecognizedTextImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of OcrRecognizedText
   /// with the given fields replaced by the non-null parameter values.
@@ -146,32 +161,38 @@ class __$$OcrRecognizedTextImplCopyWithImpl<$Res>
     Object? emailText = freezed,
     Object? websiteText = freezed,
   }) {
-    return _then(_$OcrRecognizedTextImpl(
-      null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
-      null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as RecognizedTextType,
-      dischargeDate: freezed == dischargeDate
-          ? _value.dischargeDate
-          : dischargeDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      telfText: freezed == telfText
-          ? _value.telfText
-          : telfText // ignore: cast_nullable_to_non_nullable
-              as String?,
-      emailText: freezed == emailText
-          ? _value.emailText
-          : emailText // ignore: cast_nullable_to_non_nullable
-              as String?,
-      websiteText: freezed == websiteText
-          ? _value.websiteText
-          : websiteText // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$OcrRecognizedTextImpl(
+        null == text
+            ? _value.text
+            : text // ignore: cast_nullable_to_non_nullable
+                as String,
+        null == type
+            ? _value.type
+            : type // ignore: cast_nullable_to_non_nullable
+                as RecognizedTextType,
+        dischargeDate:
+            freezed == dischargeDate
+                ? _value.dischargeDate
+                : dischargeDate // ignore: cast_nullable_to_non_nullable
+                    as DateTime?,
+        telfText:
+            freezed == telfText
+                ? _value.telfText
+                : telfText // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        emailText:
+            freezed == emailText
+                ? _value.emailText
+                : emailText // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        websiteText:
+            freezed == websiteText
+                ? _value.websiteText
+                : websiteText // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
+    );
   }
 }
 
@@ -180,12 +201,13 @@ class __$$OcrRecognizedTextImplCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$OcrRecognizedTextImpl extends _OcrRecognizedText {
   _$OcrRecognizedTextImpl(
-      @JsonKey(name: 'TEXT') this.text, @JsonKey(name: 'TIPO') this.type,
-      {@JsonKey(name: 'ORDEN_TIPO') this.dischargeDate,
-      @JsonKey(name: 'TELF_TEXT') this.telfText,
-      @JsonKey(name: 'EMAIL_TEXT') this.emailText,
-      @JsonKey(name: 'WEBSITE_TEXT') this.websiteText})
-      : super._();
+    @JsonKey(name: 'TEXT') this.text,
+    @JsonKey(name: 'TIPO') this.type, {
+    @JsonKey(name: 'ORDEN_TIPO') this.dischargeDate,
+    @JsonKey(name: 'TELF_TEXT') this.telfText,
+    @JsonKey(name: 'EMAIL_TEXT') this.emailText,
+    @JsonKey(name: 'WEBSITE_TEXT') this.websiteText,
+  }) : super._();
 
   factory _$OcrRecognizedTextImpl.fromJson(Map<String, dynamic> json) =>
       _$$OcrRecognizedTextImplFromJson(json);
@@ -234,7 +256,14 @@ class _$OcrRecognizedTextImpl extends _OcrRecognizedText {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, text, type, dischargeDate, telfText, emailText, websiteText);
+    runtimeType,
+    text,
+    type,
+    dischargeDate,
+    telfText,
+    emailText,
+    websiteText,
+  );
 
   /// Create a copy of OcrRecognizedText
   /// with the given fields replaced by the non-null parameter values.
@@ -243,24 +272,25 @@ class _$OcrRecognizedTextImpl extends _OcrRecognizedText {
   @pragma('vm:prefer-inline')
   _$$OcrRecognizedTextImplCopyWith<_$OcrRecognizedTextImpl> get copyWith =>
       __$$OcrRecognizedTextImplCopyWithImpl<_$OcrRecognizedTextImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$OcrRecognizedTextImplToJson(
-      this,
-    );
+    return _$$OcrRecognizedTextImplToJson(this);
   }
 }
 
 abstract class _OcrRecognizedText extends OcrRecognizedText {
-  factory _OcrRecognizedText(@JsonKey(name: 'TEXT') final String text,
-          @JsonKey(name: 'TIPO') final RecognizedTextType type,
-          {@JsonKey(name: 'ORDEN_TIPO') final DateTime? dischargeDate,
-          @JsonKey(name: 'TELF_TEXT') final String? telfText,
-          @JsonKey(name: 'EMAIL_TEXT') final String? emailText,
-          @JsonKey(name: 'WEBSITE_TEXT') final String? websiteText}) =
-      _$OcrRecognizedTextImpl;
+  factory _OcrRecognizedText(
+    @JsonKey(name: 'TEXT') final String text,
+    @JsonKey(name: 'TIPO') final RecognizedTextType type, {
+    @JsonKey(name: 'ORDEN_TIPO') final DateTime? dischargeDate,
+    @JsonKey(name: 'TELF_TEXT') final String? telfText,
+    @JsonKey(name: 'EMAIL_TEXT') final String? emailText,
+    @JsonKey(name: 'WEBSITE_TEXT') final String? websiteText,
+  }) = _$OcrRecognizedTextImpl;
   _OcrRecognizedText._() : super._();
 
   factory _OcrRecognizedText.fromJson(Map<String, dynamic> json) =

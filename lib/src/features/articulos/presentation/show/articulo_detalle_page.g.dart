@@ -13,18 +13,21 @@ String _$articuloDetalleAddArticuloABorradorButtonControllerHash() =>
 @ProviderFor(ArticuloDetalleAddArticuloABorradorButtonController)
 final articuloDetalleAddArticuloABorradorButtonControllerProvider =
     AutoDisposeNotifierProvider<
-        ArticuloDetalleAddArticuloABorradorButtonController, void>.internal(
-  ArticuloDetalleAddArticuloABorradorButtonController.new,
-  name: r'articuloDetalleAddArticuloABorradorButtonControllerProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$articuloDetalleAddArticuloABorradorButtonControllerHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      ArticuloDetalleAddArticuloABorradorButtonController,
+      void
+    >.internal(
+      ArticuloDetalleAddArticuloABorradorButtonController.new,
+      name: r'articuloDetalleAddArticuloABorradorButtonControllerProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$articuloDetalleAddArticuloABorradorButtonControllerHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
-typedef _$ArticuloDetalleAddArticuloABorradorButtonController
-    = AutoDisposeNotifier<void>;
+typedef _$ArticuloDetalleAddArticuloABorradorButtonController =
+    AutoDisposeNotifier<void>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
 
@@ -33,25 +36,29 @@ typedef _$ArticuloDetalleAddArticuloABorradorButtonController
 // **************************************************************************
 
 extension ArticuloDetalleAddArticuloABorradorButtonControllerMutationExtension
-    on AutoDisposeNotifierProvider<
-        ArticuloDetalleAddArticuloABorradorButtonController, void> {
+    on
+        AutoDisposeNotifierProvider<
+          ArticuloDetalleAddArticuloABorradorButtonController,
+          void
+        > {
   Refreshable<GetPedidoVentaLineaMutation> get getPedidoVentaLinea =>
       _getPedidoVentaLineaProvider;
 }
 
 final _getPedidoVentaLineaProvider = Provider.autoDispose((ref) {
   final notifier = ref.watch(
-      articuloDetalleAddArticuloABorradorButtonControllerProvider.notifier);
+    articuloDetalleAddArticuloABorradorButtonControllerProvider.notifier,
+  );
   return GetPedidoVentaLineaMutation(
     (newState) => ref.state = newState,
     notifier.getPedidoVentaLinea,
   );
 }, dependencies: [articuloDetalleAddArticuloABorradorButtonControllerProvider]);
 
-typedef GetPedidoVentaLineaSignature = Future<int> Function(
-    PedidoLocalParam pedidoLocalParam);
-typedef GetPedidoVentaLineaStateSetter = void Function(
-    GetPedidoVentaLineaMutation newState);
+typedef GetPedidoVentaLineaSignature =
+    Future<int> Function(PedidoLocalParam pedidoLocalParam);
+typedef GetPedidoVentaLineaStateSetter =
+    void Function(GetPedidoVentaLineaMutation newState);
 
 sealed class GetPedidoVentaLineaMutation
     with AsyncMutation, MutationResult<int> {
@@ -74,8 +81,9 @@ sealed class GetPedidoVentaLineaMutation
       final res = await _fn(pedidoLocalParam);
       _updateState(GetPedidoVentaLineaMutationSuccess.from(this, res));
     } catch (e, s) {
-      _updateState(GetPedidoVentaLineaMutationFailure.from(this,
-          error: e, stackTrace: s));
+      _updateState(
+        GetPedidoVentaLineaMutationFailure.from(this, error: e, stackTrace: s),
+      );
     }
   }
 }
@@ -91,14 +99,14 @@ final class GetPedidoVentaLineaMutationIdle extends GetPedidoVentaLineaMutation
   }) : super._();
 
   factory GetPedidoVentaLineaMutationIdle.from(
-          GetPedidoVentaLineaMutation other) =>
-      GetPedidoVentaLineaMutationIdle._(
-        other._updateState,
-        other._fn,
-        error: other.error,
-        stackTrace: other.stackTrace,
-        result: other.result,
-      );
+    GetPedidoVentaLineaMutation other,
+  ) => GetPedidoVentaLineaMutationIdle._(
+    other._updateState,
+    other._fn,
+    error: other.error,
+    stackTrace: other.stackTrace,
+    result: other.result,
+  );
 
   @override
   final Object? error;
@@ -112,7 +120,8 @@ final class GetPedidoVentaLineaMutationIdle extends GetPedidoVentaLineaMutation
 }
 
 final class GetPedidoVentaLineaMutationLoading
-    extends GetPedidoVentaLineaMutation with MutationLoading {
+    extends GetPedidoVentaLineaMutation
+    with MutationLoading {
   GetPedidoVentaLineaMutationLoading._(
     super._updateState,
     super._fn, {
@@ -122,14 +131,14 @@ final class GetPedidoVentaLineaMutationLoading
   }) : super._();
 
   factory GetPedidoVentaLineaMutationLoading.from(
-          GetPedidoVentaLineaMutation other) =>
-      GetPedidoVentaLineaMutationLoading._(
-        other._updateState,
-        other._fn,
-        error: other.error,
-        stackTrace: other.stackTrace,
-        result: other.result,
-      );
+    GetPedidoVentaLineaMutation other,
+  ) => GetPedidoVentaLineaMutationLoading._(
+    other._updateState,
+    other._fn,
+    error: other.error,
+    stackTrace: other.stackTrace,
+    result: other.result,
+  );
 
   @override
   final Object? error;
@@ -143,7 +152,8 @@ final class GetPedidoVentaLineaMutationLoading
 }
 
 final class GetPedidoVentaLineaMutationSuccess
-    extends GetPedidoVentaLineaMutation with MutationSuccessResult<int> {
+    extends GetPedidoVentaLineaMutation
+    with MutationSuccessResult<int> {
   GetPedidoVentaLineaMutationSuccess._(
     super._updateState,
     super._fn, {
@@ -153,14 +163,15 @@ final class GetPedidoVentaLineaMutationSuccess
   }) : super._();
 
   factory GetPedidoVentaLineaMutationSuccess.from(
-          GetPedidoVentaLineaMutation other, int result) =>
-      GetPedidoVentaLineaMutationSuccess._(
-        other._updateState,
-        other._fn,
-        error: other.error,
-        stackTrace: other.stackTrace,
-        result: result,
-      );
+    GetPedidoVentaLineaMutation other,
+    int result,
+  ) => GetPedidoVentaLineaMutationSuccess._(
+    other._updateState,
+    other._fn,
+    error: other.error,
+    stackTrace: other.stackTrace,
+    result: result,
+  );
 
   @override
   final Object? error;
@@ -173,7 +184,8 @@ final class GetPedidoVentaLineaMutationSuccess
 }
 
 final class GetPedidoVentaLineaMutationFailure
-    extends GetPedidoVentaLineaMutation with MutationFailure {
+    extends GetPedidoVentaLineaMutation
+    with MutationFailure {
   GetPedidoVentaLineaMutationFailure._(
     super._updateState,
     super._fn, {
@@ -186,14 +198,13 @@ final class GetPedidoVentaLineaMutationFailure
     GetPedidoVentaLineaMutation other, {
     required Object error,
     required StackTrace stackTrace,
-  }) =>
-      GetPedidoVentaLineaMutationFailure._(
-        other._updateState,
-        other._fn,
-        error: error,
-        stackTrace: stackTrace,
-        result: other.result,
-      );
+  }) => GetPedidoVentaLineaMutationFailure._(
+    other._updateState,
+    other._fn,
+    error: error,
+    stackTrace: stackTrace,
+    result: other.result,
+  );
 
   @override
   final Object error;

@@ -12,7 +12,8 @@ part of 'estadisticas_venta_cliente_usuario.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$EstadisticasVentaClienteUsuario {
@@ -30,32 +31,38 @@ mixin _$EstadisticasVentaClienteUsuario {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   $EstadisticasVentaClienteUsuarioCopyWith<EstadisticasVentaClienteUsuario>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $EstadisticasVentaClienteUsuarioCopyWith<$Res> {
   factory $EstadisticasVentaClienteUsuarioCopyWith(
-          EstadisticasVentaClienteUsuario value,
-          $Res Function(EstadisticasVentaClienteUsuario) then) =
-      _$EstadisticasVentaClienteUsuarioCopyWithImpl<$Res,
-          EstadisticasVentaClienteUsuario>;
+    EstadisticasVentaClienteUsuario value,
+    $Res Function(EstadisticasVentaClienteUsuario) then,
+  ) =
+      _$EstadisticasVentaClienteUsuarioCopyWithImpl<
+        $Res,
+        EstadisticasVentaClienteUsuario
+      >;
   @useResult
-  $Res call(
-      {double anyo,
-      double mes,
-      String clienteId,
-      String articuloId,
-      double? unidades,
-      Money? importe,
-      Money? coste,
-      DateTime lastUpdated,
-      bool deleted});
+  $Res call({
+    double anyo,
+    double mes,
+    String clienteId,
+    String articuloId,
+    double? unidades,
+    Money? importe,
+    Money? coste,
+    DateTime lastUpdated,
+    bool deleted,
+  });
 }
 
 /// @nodoc
-class _$EstadisticasVentaClienteUsuarioCopyWithImpl<$Res,
-        $Val extends EstadisticasVentaClienteUsuario>
+class _$EstadisticasVentaClienteUsuarioCopyWithImpl<
+  $Res,
+  $Val extends EstadisticasVentaClienteUsuario
+>
     implements $EstadisticasVentaClienteUsuarioCopyWith<$Res> {
   _$EstadisticasVentaClienteUsuarioCopyWithImpl(this._value, this._then);
 
@@ -79,44 +86,56 @@ class _$EstadisticasVentaClienteUsuarioCopyWithImpl<$Res,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_value.copyWith(
-      anyo: null == anyo
-          ? _value.anyo
-          : anyo // ignore: cast_nullable_to_non_nullable
-              as double,
-      mes: null == mes
-          ? _value.mes
-          : mes // ignore: cast_nullable_to_non_nullable
-              as double,
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      unidades: freezed == unidades
-          ? _value.unidades
-          : unidades // ignore: cast_nullable_to_non_nullable
-              as double?,
-      importe: freezed == importe
-          ? _value.importe
-          : importe // ignore: cast_nullable_to_non_nullable
-              as Money?,
-      coste: freezed == coste
-          ? _value.coste
-          : coste // ignore: cast_nullable_to_non_nullable
-              as Money?,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            anyo:
+                null == anyo
+                    ? _value.anyo
+                    : anyo // ignore: cast_nullable_to_non_nullable
+                        as double,
+            mes:
+                null == mes
+                    ? _value.mes
+                    : mes // ignore: cast_nullable_to_non_nullable
+                        as double,
+            clienteId:
+                null == clienteId
+                    ? _value.clienteId
+                    : clienteId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            articuloId:
+                null == articuloId
+                    ? _value.articuloId
+                    : articuloId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            unidades:
+                freezed == unidades
+                    ? _value.unidades
+                    : unidades // ignore: cast_nullable_to_non_nullable
+                        as double?,
+            importe:
+                freezed == importe
+                    ? _value.importe
+                    : importe // ignore: cast_nullable_to_non_nullable
+                        as Money?,
+            coste:
+                freezed == coste
+                    ? _value.coste
+                    : coste // ignore: cast_nullable_to_non_nullable
+                        as Money?,
+            lastUpdated:
+                null == lastUpdated
+                    ? _value.lastUpdated
+                    : lastUpdated // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+            deleted:
+                null == deleted
+                    ? _value.deleted
+                    : deleted // ignore: cast_nullable_to_non_nullable
+                        as bool,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -124,32 +143,36 @@ class _$EstadisticasVentaClienteUsuarioCopyWithImpl<$Res,
 abstract class _$$EstadisticasVentaClienteUsuarioImplCopyWith<$Res>
     implements $EstadisticasVentaClienteUsuarioCopyWith<$Res> {
   factory _$$EstadisticasVentaClienteUsuarioImplCopyWith(
-          _$EstadisticasVentaClienteUsuarioImpl value,
-          $Res Function(_$EstadisticasVentaClienteUsuarioImpl) then) =
-      __$$EstadisticasVentaClienteUsuarioImplCopyWithImpl<$Res>;
+    _$EstadisticasVentaClienteUsuarioImpl value,
+    $Res Function(_$EstadisticasVentaClienteUsuarioImpl) then,
+  ) = __$$EstadisticasVentaClienteUsuarioImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {double anyo,
-      double mes,
-      String clienteId,
-      String articuloId,
-      double? unidades,
-      Money? importe,
-      Money? coste,
-      DateTime lastUpdated,
-      bool deleted});
+  $Res call({
+    double anyo,
+    double mes,
+    String clienteId,
+    String articuloId,
+    double? unidades,
+    Money? importe,
+    Money? coste,
+    DateTime lastUpdated,
+    bool deleted,
+  });
 }
 
 /// @nodoc
 class __$$EstadisticasVentaClienteUsuarioImplCopyWithImpl<$Res>
-    extends _$EstadisticasVentaClienteUsuarioCopyWithImpl<$Res,
-        _$EstadisticasVentaClienteUsuarioImpl>
+    extends
+        _$EstadisticasVentaClienteUsuarioCopyWithImpl<
+          $Res,
+          _$EstadisticasVentaClienteUsuarioImpl
+        >
     implements _$$EstadisticasVentaClienteUsuarioImplCopyWith<$Res> {
   __$$EstadisticasVentaClienteUsuarioImplCopyWithImpl(
-      _$EstadisticasVentaClienteUsuarioImpl _value,
-      $Res Function(_$EstadisticasVentaClienteUsuarioImpl) _then)
-      : super(_value, _then);
+    _$EstadisticasVentaClienteUsuarioImpl _value,
+    $Res Function(_$EstadisticasVentaClienteUsuarioImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of EstadisticasVentaClienteUsuario
   /// with the given fields replaced by the non-null parameter values.
@@ -166,44 +189,55 @@ class __$$EstadisticasVentaClienteUsuarioImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(_$EstadisticasVentaClienteUsuarioImpl(
-      anyo: null == anyo
-          ? _value.anyo
-          : anyo // ignore: cast_nullable_to_non_nullable
-              as double,
-      mes: null == mes
-          ? _value.mes
-          : mes // ignore: cast_nullable_to_non_nullable
-              as double,
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      unidades: freezed == unidades
-          ? _value.unidades
-          : unidades // ignore: cast_nullable_to_non_nullable
-              as double?,
-      importe: freezed == importe
-          ? _value.importe
-          : importe // ignore: cast_nullable_to_non_nullable
-              as Money?,
-      coste: freezed == coste
-          ? _value.coste
-          : coste // ignore: cast_nullable_to_non_nullable
-              as Money?,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$EstadisticasVentaClienteUsuarioImpl(
+        anyo:
+            null == anyo
+                ? _value.anyo
+                : anyo // ignore: cast_nullable_to_non_nullable
+                    as double,
+        mes:
+            null == mes
+                ? _value.mes
+                : mes // ignore: cast_nullable_to_non_nullable
+                    as double,
+        clienteId:
+            null == clienteId
+                ? _value.clienteId
+                : clienteId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        articuloId:
+            null == articuloId
+                ? _value.articuloId
+                : articuloId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        unidades:
+            freezed == unidades
+                ? _value.unidades
+                : unidades // ignore: cast_nullable_to_non_nullable
+                    as double?,
+        importe:
+            freezed == importe
+                ? _value.importe
+                : importe // ignore: cast_nullable_to_non_nullable
+                    as Money?,
+        coste:
+            freezed == coste
+                ? _value.coste
+                : coste // ignore: cast_nullable_to_non_nullable
+                    as Money?,
+        lastUpdated:
+            null == lastUpdated
+                ? _value.lastUpdated
+                : lastUpdated // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        deleted:
+            null == deleted
+                ? _value.deleted
+                : deleted // ignore: cast_nullable_to_non_nullable
+                    as bool,
+      ),
+    );
   }
 }
 
@@ -211,17 +245,17 @@ class __$$EstadisticasVentaClienteUsuarioImplCopyWithImpl<$Res>
 
 class _$EstadisticasVentaClienteUsuarioImpl
     extends _EstadisticasVentaClienteUsuario {
-  const _$EstadisticasVentaClienteUsuarioImpl(
-      {required this.anyo,
-      required this.mes,
-      required this.clienteId,
-      required this.articuloId,
-      this.unidades,
-      this.importe,
-      this.coste,
-      required this.lastUpdated,
-      required this.deleted})
-      : super._();
+  const _$EstadisticasVentaClienteUsuarioImpl({
+    required this.anyo,
+    required this.mes,
+    required this.clienteId,
+    required this.articuloId,
+    this.unidades,
+    this.importe,
+    this.coste,
+    required this.lastUpdated,
+    required this.deleted,
+  }) : super._();
 
   @override
   final double anyo;
@@ -268,8 +302,18 @@ class _$EstadisticasVentaClienteUsuarioImpl
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, anyo, mes, clienteId, articuloId,
-      unidades, importe, coste, lastUpdated, deleted);
+  int get hashCode => Object.hash(
+    runtimeType,
+    anyo,
+    mes,
+    clienteId,
+    articuloId,
+    unidades,
+    importe,
+    coste,
+    lastUpdated,
+    deleted,
+  );
 
   /// Create a copy of EstadisticasVentaClienteUsuario
   /// with the given fields replaced by the non-null parameter values.
@@ -277,23 +321,26 @@ class _$EstadisticasVentaClienteUsuarioImpl
   @override
   @pragma('vm:prefer-inline')
   _$$EstadisticasVentaClienteUsuarioImplCopyWith<
-          _$EstadisticasVentaClienteUsuarioImpl>
-      get copyWith => __$$EstadisticasVentaClienteUsuarioImplCopyWithImpl<
-          _$EstadisticasVentaClienteUsuarioImpl>(this, _$identity);
+    _$EstadisticasVentaClienteUsuarioImpl
+  >
+  get copyWith => __$$EstadisticasVentaClienteUsuarioImplCopyWithImpl<
+    _$EstadisticasVentaClienteUsuarioImpl
+  >(this, _$identity);
 }
 
 abstract class _EstadisticasVentaClienteUsuario
     extends EstadisticasVentaClienteUsuario {
-  const factory _EstadisticasVentaClienteUsuario(
-      {required final double anyo,
-      required final double mes,
-      required final String clienteId,
-      required final String articuloId,
-      final double? unidades,
-      final Money? importe,
-      final Money? coste,
-      required final DateTime lastUpdated,
-      required final bool deleted}) = _$EstadisticasVentaClienteUsuarioImpl;
+  const factory _EstadisticasVentaClienteUsuario({
+    required final double anyo,
+    required final double mes,
+    required final String clienteId,
+    required final String articuloId,
+    final double? unidades,
+    final Money? importe,
+    final Money? coste,
+    required final DateTime lastUpdated,
+    required final bool deleted,
+  }) = _$EstadisticasVentaClienteUsuarioImpl;
   const _EstadisticasVentaClienteUsuario._() : super._();
 
   @override
@@ -320,6 +367,7 @@ abstract class _EstadisticasVentaClienteUsuario
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EstadisticasVentaClienteUsuarioImplCopyWith<
-          _$EstadisticasVentaClienteUsuarioImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$EstadisticasVentaClienteUsuarioImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }

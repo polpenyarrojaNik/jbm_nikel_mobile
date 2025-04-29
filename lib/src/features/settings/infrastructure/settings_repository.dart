@@ -10,12 +10,12 @@ import 'package:path_provider/path_provider.dart';
 
 import '../../../core/application/log_service.dart';
 
-final settingsRepositoryProvider = Provider.autoDispose<SettingsRepository>(
-  (ref) {
-    final localDatabase = ref.watch(appLocalDatabaseProvider);
-    return SettingsRepository(localDatabase);
-  },
-);
+final settingsRepositoryProvider = Provider.autoDispose<SettingsRepository>((
+  ref,
+) {
+  final localDatabase = ref.watch(appLocalDatabaseProvider);
+  return SettingsRepository(localDatabase);
+});
 
 final packageInfoProvider = FutureProvider.autoDispose<PackageInfo>((ref) {
   final settingsRepository = ref.watch(settingsRepositoryProvider);
@@ -57,15 +57,20 @@ class SettingsRepository {
     try {
       final directory = await getApplicationDocumentsDirectory();
       if (await _databaseFileExist(
-          directory: directory, remoteDatabaseName: remoteDatabaseName)) {
-        File((join(directory.path, remoteDatabaseName)))
-            .deleteSync(recursive: true);
+        directory: directory,
+        remoteDatabaseName: remoteDatabaseName,
+      )) {
+        File(
+          (join(directory.path, remoteDatabaseName)),
+        ).deleteSync(recursive: true);
       }
       if (await _databaseFileExist(
-          directory: directory,
-          remoteDatabaseName: remoteDatabaseJournalName)) {
-        File((join(directory.path, remoteDatabaseJournalName)))
-            .deleteSync(recursive: true);
+        directory: directory,
+        remoteDatabaseName: remoteDatabaseJournalName,
+      )) {
+        File(
+          (join(directory.path, remoteDatabaseJournalName)),
+        ).deleteSync(recursive: true);
       }
 
       await localDb.delete(localDb.syncDateTimeTable).go();
@@ -84,18 +89,25 @@ class SettingsRepository {
     try {
       final directory = await getApplicationDocumentsDirectory();
       if (await _databaseFileExist(
-          directory: directory, remoteDatabaseName: localDatabaseName)) {
-        File((join(directory.path, localDatabaseName)))
-            .deleteSync(recursive: true);
+        directory: directory,
+        remoteDatabaseName: localDatabaseName,
+      )) {
+        File(
+          (join(directory.path, localDatabaseName)),
+        ).deleteSync(recursive: true);
       }
       if (await _databaseFileExist(
-          directory: directory, remoteDatabaseName: localDatabaseJournalName)) {
-        File((join(directory.path, localDatabaseJournalName)))
-            .deleteSync(recursive: true);
+        directory: directory,
+        remoteDatabaseName: localDatabaseJournalName,
+      )) {
+        File(
+          (join(directory.path, localDatabaseJournalName)),
+        ).deleteSync(recursive: true);
       }
 
-      await DriftIsolate.fromConnectPort(isolateLocalDatabaseConnectPort!)
-          .shutdownAll();
+      await DriftIsolate.fromConnectPort(
+        isolateLocalDatabaseConnectPort!,
+      ).shutdownAll();
       isolateLocalDatabaseConnectPort = null;
     } on AppException catch (e) {
       log.e(e.details);
@@ -105,9 +117,10 @@ class SettingsRepository {
     }
   }
 
-  Future<bool> _databaseFileExist(
-      {required Directory directory,
-      required String remoteDatabaseName}) async {
+  Future<bool> _databaseFileExist({
+    required Directory directory,
+    required String remoteDatabaseName,
+  }) async {
     return File((join(directory.path, remoteDatabaseName))).exists();
   }
 }

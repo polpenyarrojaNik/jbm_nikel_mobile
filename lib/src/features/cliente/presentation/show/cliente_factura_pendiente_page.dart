@@ -13,8 +13,11 @@ import '../../domain/cliente_pago_pendiente.dart';
 
 @RoutePage()
 class ClientePagoPendientePage extends ConsumerWidget {
-  const ClientePagoPendientePage(
-      {super.key, required this.clienteId, required this.nombreCliente});
+  const ClientePagoPendientePage({
+    super.key,
+    required this.clienteId,
+    required this.nombreCliente,
+  });
 
   final String clienteId;
   final String? nombreCliente;
@@ -25,8 +28,9 @@ class ClientePagoPendientePage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title:
-            Text(S.of(context).cliente_show_clienteFacturasPendientes_titulo),
+        title: Text(
+          S.of(context).cliente_show_clienteFacturasPendientes_titulo,
+        ),
       ),
       body: Column(
         children: [
@@ -38,23 +42,24 @@ class ClientePagoPendientePage extends ConsumerWidget {
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data: (clientePagosPendientesList) =>
-                (clientePagosPendientesList.isNotEmpty)
-                    ? Expanded(
-                        child: ListView.separated(
-                          itemCount: clientePagosPendientesList.length,
-                          itemBuilder: (context, i) => ClientePagoPendienteTile(
-                            clientePagoPendiente: clientePagosPendientesList[i],
+            data:
+                (clientePagosPendientesList) =>
+                    (clientePagosPendientesList.isNotEmpty)
+                        ? Expanded(
+                          child: ListView.separated(
+                            itemCount: clientePagosPendientesList.length,
+                            itemBuilder:
+                                (context, i) => ClientePagoPendienteTile(
+                                  clientePagoPendiente:
+                                      clientePagosPendientesList[i],
+                                ),
+                            separatorBuilder: (context, i) => const Divider(),
                           ),
-                          separatorBuilder: (context, i) => const Divider(),
+                        )
+                        : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [Text(S.of(context).sinResultados)],
                         ),
-                      )
-                    : Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(S.of(context).sinResultados),
-                        ],
-                      ),
           ),
         ],
       ),
@@ -63,8 +68,10 @@ class ClientePagoPendientePage extends ConsumerWidget {
 }
 
 class ClientePagoPendienteTile extends StatelessWidget {
-  const ClientePagoPendienteTile(
-      {super.key, required this.clientePagoPendiente});
+  const ClientePagoPendienteTile({
+    super.key,
+    required this.clientePagoPendiente,
+  });
 
   final ClientePagoPendiente clientePagoPendiente;
 
@@ -74,9 +81,10 @@ class ClientePagoPendienteTile extends StatelessWidget {
       child: Container(
         padding: listPadding,
         decoration: BoxDecoration(
-          color: (clientePagoPendiente.vencidoJBM ?? false)
-              ? Theme.of(context).colorScheme.errorContainer
-              : null,
+          color:
+              (clientePagoPendiente.vencidoJBM ?? false)
+                  ? Theme.of(context).colorScheme.errorContainer
+                  : null,
           borderRadius: BorderRadius.circular(4),
         ),
         child: Row(
@@ -90,15 +98,18 @@ class ClientePagoPendienteTile extends StatelessWidget {
                   Text(
                     clientePagoPendiente.facutaId!,
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: Theme.of(context).textTheme.bodyMedium?.color),
+                      color: Theme.of(context).textTheme.bodyMedium?.color,
+                    ),
                   ),
                 const Spacer(),
                 if (clientePagoPendiente.estadoCobroId != null)
                   Text(
-                      getEstadoCobroFactura(
-                          context: context,
-                          estadoCobro: clientePagoPendiente.estadoCobroId!),
-                      style: Theme.of(context).textTheme.bodySmall),
+                    getEstadoCobroFactura(
+                      context: context,
+                      estadoCobro: clientePagoPendiente.estadoCobroId!,
+                    ),
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
               ],
             ),
             const VerticalDivider(),
@@ -110,13 +121,15 @@ class ClientePagoPendienteTile extends StatelessWidget {
                     Text(
                       '${S.of(context).cliente_show_clienteFacturasPendientes_fvcto} ${dateFormatter(clientePagoPendiente.fechaExpiracion!.toLocal().toIso8601String())}',
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: Theme.of(context).textTheme.bodyMedium?.color),
+                        color: Theme.of(context).textTheme.bodyMedium?.color,
+                      ),
                     ),
                   if (clientePagoPendiente.fechaFactura != null) gapH4,
                   if (clientePagoPendiente.fechaFactura != null)
                     Text(
-                        '${S.of(context).cliente_show_clienteFacturasPendientes_fFactura} ${dateFormatter(clientePagoPendiente.fechaFactura!.toLocal().toIso8601String())}',
-                        style: Theme.of(context).textTheme.bodySmall),
+                      '${S.of(context).cliente_show_clienteFacturasPendientes_fFactura} ${dateFormatter(clientePagoPendiente.fechaFactura!.toLocal().toIso8601String())}',
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
                   if (clientePagoPendiente.fechaExpiracionInicial != null)
                     gapH4,
                   if (clientePagoPendiente.fechaExpiracionInicial != null)

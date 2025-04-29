@@ -9,8 +9,11 @@ import '../../domain/visita.dart';
 import '../../domain/visita_id_param.dart';
 
 class VisitaListaTile extends StatelessWidget {
-  const VisitaListaTile(
-      {super.key, required this.visita, required this.navigatedFromCliente});
+  const VisitaListaTile({
+    super.key,
+    required this.visita,
+    required this.navigatedFromCliente,
+  });
 
   final Visita visita;
   final bool navigatedFromCliente;
@@ -18,13 +21,15 @@ class VisitaListaTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => (!navigatedFromCliente)
-          ? navigateToVisitaDetalle(
-              context: context,
-              id: visita.id ?? visita.visitaAppId!,
-              isLocal: !visita.tratada,
-            )
-          : null,
+      onTap:
+          () =>
+              (!navigatedFromCliente)
+                  ? navigateToVisitaDetalle(
+                    context: context,
+                    id: visita.id ?? visita.visitaAppId!,
+                    isLocal: !visita.tratada,
+                  )
+                  : null,
       child: Container(
         padding: listPadding,
         color: Colors.transparent,
@@ -34,17 +39,25 @@ class VisitaListaTile extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  dateFormatter(visita.fecha.toLocal().toIso8601String()),
-                ),
+                Text(dateFormatter(visita.fecha.toLocal().toIso8601String())),
                 if (getEstadoVisitaLocal(
-                        context, visita.enviada, visita.tratada) !=
+                      context,
+                      visita.enviada,
+                      visita.tratada,
+                    ) !=
                     null)
                   ChipContainer(
-                    text: getEstadoVisitaLocal(
-                        context, visita.enviada, visita.tratada)!,
+                    text:
+                        getEstadoVisitaLocal(
+                          context,
+                          visita.enviada,
+                          visita.tratada,
+                        )!,
                     color: getColorEstadoVisitaLocal(
-                        context, visita.enviada, visita.tratada),
+                      context,
+                      visita.enviada,
+                      visita.tratada,
+                    ),
                   ),
               ],
             ),
@@ -65,10 +78,11 @@ class VisitaListaTile extends StatelessWidget {
     );
   }
 
-  void navigateToVisitaDetalle(
-      {required BuildContext context,
-      required String id,
-      required bool isLocal}) {
+  void navigateToVisitaDetalle({
+    required BuildContext context,
+    required String id,
+    required bool isLocal,
+  }) {
     context.router.push(
       VisitaDetalleRoute(
         visitaIdIsLocalParam: VisitaIdIsLocalParam(id: id, isLocal: isLocal),

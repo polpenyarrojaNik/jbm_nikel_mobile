@@ -12,7 +12,8 @@ part of 'articulo_precio.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ArticuloPrecio {
@@ -33,16 +34,18 @@ mixin _$ArticuloPrecio {
 /// @nodoc
 abstract class $ArticuloPrecioCopyWith<$Res> {
   factory $ArticuloPrecioCopyWith(
-          ArticuloPrecio value, $Res Function(ArticuloPrecio) then) =
-      _$ArticuloPrecioCopyWithImpl<$Res, ArticuloPrecio>;
+    ArticuloPrecio value,
+    $Res Function(ArticuloPrecio) then,
+  ) = _$ArticuloPrecioCopyWithImpl<$Res, ArticuloPrecio>;
   @useResult
-  $Res call(
-      {Precio precio,
-      String divisaId,
-      double descuento1,
-      double descuento2,
-      double descuento3,
-      double iva});
+  $Res call({
+    Precio precio,
+    String divisaId,
+    double descuento1,
+    double descuento2,
+    double descuento3,
+    double iva,
+  });
 
   $PrecioCopyWith<$Res> get precio;
 }
@@ -69,32 +72,41 @@ class _$ArticuloPrecioCopyWithImpl<$Res, $Val extends ArticuloPrecio>
     Object? descuento3 = null,
     Object? iva = null,
   }) {
-    return _then(_value.copyWith(
-      precio: null == precio
-          ? _value.precio
-          : precio // ignore: cast_nullable_to_non_nullable
-              as Precio,
-      divisaId: null == divisaId
-          ? _value.divisaId
-          : divisaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      descuento1: null == descuento1
-          ? _value.descuento1
-          : descuento1 // ignore: cast_nullable_to_non_nullable
-              as double,
-      descuento2: null == descuento2
-          ? _value.descuento2
-          : descuento2 // ignore: cast_nullable_to_non_nullable
-              as double,
-      descuento3: null == descuento3
-          ? _value.descuento3
-          : descuento3 // ignore: cast_nullable_to_non_nullable
-              as double,
-      iva: null == iva
-          ? _value.iva
-          : iva // ignore: cast_nullable_to_non_nullable
-              as double,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            precio:
+                null == precio
+                    ? _value.precio
+                    : precio // ignore: cast_nullable_to_non_nullable
+                        as Precio,
+            divisaId:
+                null == divisaId
+                    ? _value.divisaId
+                    : divisaId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            descuento1:
+                null == descuento1
+                    ? _value.descuento1
+                    : descuento1 // ignore: cast_nullable_to_non_nullable
+                        as double,
+            descuento2:
+                null == descuento2
+                    ? _value.descuento2
+                    : descuento2 // ignore: cast_nullable_to_non_nullable
+                        as double,
+            descuento3:
+                null == descuento3
+                    ? _value.descuento3
+                    : descuento3 // ignore: cast_nullable_to_non_nullable
+                        as double,
+            iva:
+                null == iva
+                    ? _value.iva
+                    : iva // ignore: cast_nullable_to_non_nullable
+                        as double,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of ArticuloPrecio
@@ -111,18 +123,20 @@ class _$ArticuloPrecioCopyWithImpl<$Res, $Val extends ArticuloPrecio>
 /// @nodoc
 abstract class _$$ArticuloPrecioImplCopyWith<$Res>
     implements $ArticuloPrecioCopyWith<$Res> {
-  factory _$$ArticuloPrecioImplCopyWith(_$ArticuloPrecioImpl value,
-          $Res Function(_$ArticuloPrecioImpl) then) =
-      __$$ArticuloPrecioImplCopyWithImpl<$Res>;
+  factory _$$ArticuloPrecioImplCopyWith(
+    _$ArticuloPrecioImpl value,
+    $Res Function(_$ArticuloPrecioImpl) then,
+  ) = __$$ArticuloPrecioImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {Precio precio,
-      String divisaId,
-      double descuento1,
-      double descuento2,
-      double descuento3,
-      double iva});
+  $Res call({
+    Precio precio,
+    String divisaId,
+    double descuento1,
+    double descuento2,
+    double descuento3,
+    double iva,
+  });
 
   @override
   $PrecioCopyWith<$Res> get precio;
@@ -133,8 +147,9 @@ class __$$ArticuloPrecioImplCopyWithImpl<$Res>
     extends _$ArticuloPrecioCopyWithImpl<$Res, _$ArticuloPrecioImpl>
     implements _$$ArticuloPrecioImplCopyWith<$Res> {
   __$$ArticuloPrecioImplCopyWithImpl(
-      _$ArticuloPrecioImpl _value, $Res Function(_$ArticuloPrecioImpl) _then)
-      : super(_value, _then);
+    _$ArticuloPrecioImpl _value,
+    $Res Function(_$ArticuloPrecioImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ArticuloPrecio
   /// with the given fields replaced by the non-null parameter values.
@@ -148,46 +163,54 @@ class __$$ArticuloPrecioImplCopyWithImpl<$Res>
     Object? descuento3 = null,
     Object? iva = null,
   }) {
-    return _then(_$ArticuloPrecioImpl(
-      precio: null == precio
-          ? _value.precio
-          : precio // ignore: cast_nullable_to_non_nullable
-              as Precio,
-      divisaId: null == divisaId
-          ? _value.divisaId
-          : divisaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      descuento1: null == descuento1
-          ? _value.descuento1
-          : descuento1 // ignore: cast_nullable_to_non_nullable
-              as double,
-      descuento2: null == descuento2
-          ? _value.descuento2
-          : descuento2 // ignore: cast_nullable_to_non_nullable
-              as double,
-      descuento3: null == descuento3
-          ? _value.descuento3
-          : descuento3 // ignore: cast_nullable_to_non_nullable
-              as double,
-      iva: null == iva
-          ? _value.iva
-          : iva // ignore: cast_nullable_to_non_nullable
-              as double,
-    ));
+    return _then(
+      _$ArticuloPrecioImpl(
+        precio:
+            null == precio
+                ? _value.precio
+                : precio // ignore: cast_nullable_to_non_nullable
+                    as Precio,
+        divisaId:
+            null == divisaId
+                ? _value.divisaId
+                : divisaId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        descuento1:
+            null == descuento1
+                ? _value.descuento1
+                : descuento1 // ignore: cast_nullable_to_non_nullable
+                    as double,
+        descuento2:
+            null == descuento2
+                ? _value.descuento2
+                : descuento2 // ignore: cast_nullable_to_non_nullable
+                    as double,
+        descuento3:
+            null == descuento3
+                ? _value.descuento3
+                : descuento3 // ignore: cast_nullable_to_non_nullable
+                    as double,
+        iva:
+            null == iva
+                ? _value.iva
+                : iva // ignore: cast_nullable_to_non_nullable
+                    as double,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ArticuloPrecioImpl extends _ArticuloPrecio {
-  const _$ArticuloPrecioImpl(
-      {required this.precio,
-      required this.divisaId,
-      required this.descuento1,
-      required this.descuento2,
-      required this.descuento3,
-      required this.iva})
-      : super._();
+  const _$ArticuloPrecioImpl({
+    required this.precio,
+    required this.divisaId,
+    required this.descuento1,
+    required this.descuento2,
+    required this.descuento3,
+    required this.iva,
+  }) : super._();
 
   @override
   final Precio precio;
@@ -226,7 +249,14 @@ class _$ArticuloPrecioImpl extends _ArticuloPrecio {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, precio, divisaId, descuento1, descuento2, descuento3, iva);
+    runtimeType,
+    precio,
+    divisaId,
+    descuento1,
+    descuento2,
+    descuento3,
+    iva,
+  );
 
   /// Create a copy of ArticuloPrecio
   /// with the given fields replaced by the non-null parameter values.
@@ -235,17 +265,20 @@ class _$ArticuloPrecioImpl extends _ArticuloPrecio {
   @pragma('vm:prefer-inline')
   _$$ArticuloPrecioImplCopyWith<_$ArticuloPrecioImpl> get copyWith =>
       __$$ArticuloPrecioImplCopyWithImpl<_$ArticuloPrecioImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _ArticuloPrecio extends ArticuloPrecio {
-  const factory _ArticuloPrecio(
-      {required final Precio precio,
-      required final String divisaId,
-      required final double descuento1,
-      required final double descuento2,
-      required final double descuento3,
-      required final double iva}) = _$ArticuloPrecioImpl;
+  const factory _ArticuloPrecio({
+    required final Precio precio,
+    required final String divisaId,
+    required final double descuento1,
+    required final double descuento2,
+    required final double descuento3,
+    required final double iva,
+  }) = _$ArticuloPrecioImpl;
   const _ArticuloPrecio._() : super._();
 
   @override

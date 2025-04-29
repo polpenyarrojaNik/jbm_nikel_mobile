@@ -14,8 +14,11 @@ import '../../domain/articulo_pedido_venta_linea.dart';
 
 @RoutePage()
 class ArticuloPedidoVentaPage extends ConsumerWidget {
-  const ArticuloPedidoVentaPage(
-      {super.key, required this.articuloId, required this.description});
+  const ArticuloPedidoVentaPage({
+    super.key,
+    required this.articuloId,
+    required this.description,
+  });
 
   final String articuloId;
   final String description;
@@ -29,34 +32,29 @@ class ArticuloPedidoVentaPage extends ConsumerWidget {
       ),
       body: Column(
         children: [
-          HeaderDatosRelacionados(
-            entityId: articuloId,
-            subtitle: description,
-          ),
+          HeaderDatosRelacionados(entityId: articuloId, subtitle: description),
           gapH8,
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
-            error: (e, st) => ErrorMessageWidget(
-              e.toString(),
-            ),
-            data: (articuloPedidoVentaLineaList) =>
-                (articuloPedidoVentaLineaList.isNotEmpty)
-                    ? Expanded(
-                        child: ListView.separated(
-                          itemCount: articuloPedidoVentaLineaList.length,
-                          itemBuilder: (context, i) =>
-                              ArticuloPedidoVentaLineaTile(
-                            pedidoVentaLinea: articuloPedidoVentaLineaList[i],
+            error: (e, st) => ErrorMessageWidget(e.toString()),
+            data:
+                (articuloPedidoVentaLineaList) =>
+                    (articuloPedidoVentaLineaList.isNotEmpty)
+                        ? Expanded(
+                          child: ListView.separated(
+                            itemCount: articuloPedidoVentaLineaList.length,
+                            itemBuilder:
+                                (context, i) => ArticuloPedidoVentaLineaTile(
+                                  pedidoVentaLinea:
+                                      articuloPedidoVentaLineaList[i],
+                                ),
+                            separatorBuilder: (context, i) => const Divider(),
                           ),
-                          separatorBuilder: (context, i) => const Divider(),
+                        )
+                        : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [Text(S.of(context).sinResultados)],
                         ),
-                      )
-                    : Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(S.of(context).sinResultados),
-                        ],
-                      ),
           ),
         ],
       ),
@@ -85,11 +83,11 @@ class ArticuloPedidoVentaLineaTile extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Text(pedidoVentaLinea.pedidoVentaId),
                   Text(
-                    pedidoVentaLinea.pedidoVentaId,
+                    pedidoVentaLinea.id,
+                    style: Theme.of(context).textTheme.bodySmall,
                   ),
-                  Text(pedidoVentaLinea.id,
-                      style: Theme.of(context).textTheme.bodySmall),
                 ],
               ),
             ),
@@ -121,9 +119,11 @@ class ArticuloPedidoVentaLineaTile extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
-                        dateFormatter(pedidoVentaLinea.fechaPedido
-                            .toLocal()
-                            .toIso8601String()),
+                        dateFormatter(
+                          pedidoVentaLinea.fechaPedido
+                              .toLocal()
+                              .toIso8601String(),
+                        ),
                       ),
                       Text(
                         formatPrecioYDescuento(

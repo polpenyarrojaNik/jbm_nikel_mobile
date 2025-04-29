@@ -21,8 +21,11 @@ import 'cliente_contacto_imp_list_tile.dart';
 
 @RoutePage()
 class ClienteContactoListPage extends ConsumerWidget {
-  const ClienteContactoListPage(
-      {super.key, required this.clienteId, required this.nombreCliente});
+  const ClienteContactoListPage({
+    super.key,
+    required this.clienteId,
+    required this.nombreCliente,
+  });
 
   final String clienteId;
   final String? nombreCliente;
@@ -44,27 +47,29 @@ class ClienteContactoListPage extends ConsumerWidget {
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data: (clienteContactoList) => (clienteContactoList.isNotEmpty)
-                ? Expanded(
-                    child: ListView.separated(
-                      itemCount: clienteContactoList.length,
-                      itemBuilder: (context, i) => ClienteContactoTile(
-                        clienteContacto: clienteContactoList[i],
-                        clienteImpParam: ClienteImpParam(
-                          clienteId,
-                          id: clienteContactoList[i].contactoId,
-                          impId: clienteContactoList[i].contactoImpGuid,
+            data:
+                (clienteContactoList) =>
+                    (clienteContactoList.isNotEmpty)
+                        ? Expanded(
+                          child: ListView.separated(
+                            itemCount: clienteContactoList.length,
+                            itemBuilder:
+                                (context, i) => ClienteContactoTile(
+                                  clienteContacto: clienteContactoList[i],
+                                  clienteImpParam: ClienteImpParam(
+                                    clienteId,
+                                    id: clienteContactoList[i].contactoId,
+                                    impId:
+                                        clienteContactoList[i].contactoImpGuid,
+                                  ),
+                                ),
+                            separatorBuilder: (context, i) => const Divider(),
+                          ),
+                        )
+                        : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [Text(S.of(context).sinResultados)],
                         ),
-                      ),
-                      separatorBuilder: (context, i) => const Divider(),
-                    ),
-                  )
-                : Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(S.of(context).sinResultados),
-                    ],
-                  ),
           ),
         ],
       ),
@@ -77,18 +82,17 @@ class ClienteContactoListPage extends ConsumerWidget {
 
   void navigateToCreateClienteContacto(BuildContext context) {
     context.router.push(
-      ClienteContactoEditRoute(
-        clienteImpParam: ClienteImpParam(clienteId),
-      ),
+      ClienteContactoEditRoute(clienteImpParam: ClienteImpParam(clienteId)),
     );
   }
 }
 
 class ClienteContactoTile extends StatelessWidget {
-  const ClienteContactoTile(
-      {super.key,
-      required this.clienteContacto,
-      required this.clienteImpParam});
+  const ClienteContactoTile({
+    super.key,
+    required this.clienteContacto,
+    required this.clienteImpParam,
+  });
 
   final ClienteContacto clienteContacto;
   final ClienteImpParam clienteImpParam;
@@ -107,29 +111,33 @@ class ClienteContactoTile extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     if (clienteContacto.nombre != null)
-                      Text(clienteContacto.getName(
+                      Text(
+                        clienteContacto.getName(
                           clienteContacto.nombre,
                           clienteContacto.apellido1,
-                          clienteContacto.apellido2)!),
+                          clienteContacto.apellido2,
+                        )!,
+                      ),
                     if (clienteContacto.email != null)
                       Row(
                         children: [
-                          Icon(Icons.email,
-                              color:
-                                  Theme.of(context).textTheme.bodySmall?.color,
-                              size: 14),
+                          Icon(
+                            Icons.email,
+                            color: Theme.of(context).textTheme.bodySmall?.color,
+                            size: 14,
+                          ),
                           gapW4,
                           Flexible(
                             child: Text(
                               clienteContacto.email!,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
-                                  ?.copyWith(
-                                      color: Theme.of(context)
-                                          .textTheme
-                                          .bodySmall
-                                          ?.color),
+                              style: Theme.of(
+                                context,
+                              ).textTheme.bodyMedium?.copyWith(
+                                color:
+                                    Theme.of(
+                                      context,
+                                    ).textTheme.bodySmall?.color,
+                              ),
                             ),
                           ),
                         ],
@@ -146,14 +154,14 @@ class ClienteContactoTile extends StatelessWidget {
                           Flexible(
                             child: Text(
                               clienteContacto.telefono1!,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
-                                  ?.copyWith(
-                                      color: Theme.of(context)
-                                          .textTheme
-                                          .bodySmall
-                                          ?.color),
+                              style: Theme.of(
+                                context,
+                              ).textTheme.bodyMedium?.copyWith(
+                                color:
+                                    Theme.of(
+                                      context,
+                                    ).textTheme.bodySmall?.color,
+                              ),
                             ),
                           ),
                         ],
@@ -169,14 +177,12 @@ class ClienteContactoTile extends StatelessWidget {
                           gapW4,
                           Text(
                             clienteContacto.telefono2!,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .bodySmall
-                                        ?.color),
+                            style: Theme.of(
+                              context,
+                            ).textTheme.bodyMedium?.copyWith(
+                              color:
+                                  Theme.of(context).textTheme.bodySmall?.color,
+                            ),
                           ),
                         ],
                       ),
@@ -191,22 +197,22 @@ class ClienteContactoTile extends StatelessWidget {
                   if (clienteContacto.email != null)
                     ContactButtons(
                       icon: Icons.email,
-                      onPressFunction: () =>
-                          navigateToEmailApp(clienteContacto.email!),
+                      onPressFunction:
+                          () => navigateToEmailApp(clienteContacto.email!),
                     ),
                   if (clienteContacto.telefono1 != null) gapW12,
                   if (clienteContacto.telefono1 != null)
                     ContactButtons(
                       icon: Icons.phone,
-                      onPressFunction: () =>
-                          openPhoneCall(clienteContacto.telefono1!),
+                      onPressFunction:
+                          () => openPhoneCall(clienteContacto.telefono1!),
                     ),
                   if (clienteContacto.telefono2 != null) gapW12,
                   if (clienteContacto.telefono2 != null)
                     ContactButtons(
                       icon: Icons.phone,
-                      onPressFunction: () =>
-                          openPhoneCall(clienteContacto.telefono2!),
+                      onPressFunction:
+                          () => openPhoneCall(clienteContacto.telefono2!),
                     ),
                 ],
               ),
@@ -229,17 +235,15 @@ class ClienteContactoTile extends StatelessWidget {
                           .of(context)
                           .cliente_show_clienteContacto_hayCambiosDeEnviar,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: Theme.of(context).colorScheme.error,
-                          ),
+                        color: Theme.of(context).colorScheme.error,
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
           if (clienteContacto.tratado)
-            _CambiosPendientesDeTramitarListView(
-              clienteImpParam,
-            ),
+            _CambiosPendientesDeTramitarListView(clienteImpParam),
         ],
       ),
     );
@@ -254,57 +258,62 @@ class _ClienteContactoActionButtons extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen<AsyncValue<bool>>(
-        clienteContactoDeleteControllerProvider(clienteImpParam), (_, state) {
-      state.maybeWhen(
-        orElse: () {},
-        error: (error, _) {
-          final errorMessage = (error is AppException)
-              ? error.details.message
-              : error.toString();
+      clienteContactoDeleteControllerProvider(clienteImpParam),
+      (_, state) {
+        state.maybeWhen(
+          orElse: () {},
+          error: (error, _) {
+            final errorMessage =
+                (error is AppException)
+                    ? error.details.message
+                    : error.toString();
 
-          context.showErrorBar(
+            context.showErrorBar(
               content: Text(errorMessage),
-              duration: const Duration(seconds: 5));
-        },
-        data: (isDeleted) {
-          if (isDeleted) {
-            ref.invalidate(
-              clienteContactosListProvider(clienteImpParam.clienteId),
+              duration: const Duration(seconds: 5),
             );
-            ref.invalidate(
-                clienteContactoImpListInSyncByClienteProvider(clienteImpParam));
-          }
-        },
-      );
-    });
+          },
+          data: (isDeleted) {
+            if (isDeleted) {
+              ref.invalidate(
+                clienteContactosListProvider(clienteImpParam.clienteId),
+              );
+              ref.invalidate(
+                clienteContactoImpListInSyncByClienteProvider(clienteImpParam),
+              );
+            }
+          },
+        );
+      },
+    );
 
-    final deleteContactoValue =
-        ref.watch(clienteContactoDeleteControllerProvider(clienteImpParam));
+    final deleteContactoValue = ref.watch(
+      clienteContactoDeleteControllerProvider(clienteImpParam),
+    );
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
         children: [
           IconButton(
             visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
-            onPressed: () => navigateToEditClienteContacto(
-              context,
-              clienteImpParam,
-            ),
+            onPressed:
+                () => navigateToEditClienteContacto(context, clienteImpParam),
             icon: const Icon(Icons.edit),
           ),
           gapW4,
           deleteContactoValue.maybeWhen(
-            loading: () => const CircularProgressIndicator(
-              strokeWidth: 2.5,
-            ),
-            orElse: () => IconButton(
-              visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
-              onPressed: () => navigateToDeleteClienteContacto(
-                ref,
-                clienteImpParam,
-              ),
-              icon: const Icon(Icons.delete_outline),
-            ),
+            loading: () => const CircularProgressIndicator(strokeWidth: 2.5),
+            orElse:
+                () => IconButton(
+                  visualDensity: const VisualDensity(
+                    horizontal: -4,
+                    vertical: -4,
+                  ),
+                  onPressed:
+                      () =>
+                          navigateToDeleteClienteContacto(ref, clienteImpParam),
+                  icon: const Icon(Icons.delete_outline),
+                ),
           ),
         ],
       ),
@@ -312,16 +321,18 @@ class _ClienteContactoActionButtons extends ConsumerWidget {
   }
 
   void navigateToEditClienteContacto(
-      BuildContext context, ClienteImpParam clienteImpParam) {
+    BuildContext context,
+    ClienteImpParam clienteImpParam,
+  ) {
     context.router.push(
-      ClienteContactoEditRoute(
-        clienteImpParam: clienteImpParam,
-      ),
+      ClienteContactoEditRoute(clienteImpParam: clienteImpParam),
     );
   }
 
   void navigateToDeleteClienteContacto(
-      WidgetRef ref, ClienteImpParam clienteImpEditParam) {
+    WidgetRef ref,
+    ClienteImpParam clienteImpEditParam,
+  ) {
     ref
         .read(
           clienteContactoDeleteControllerProvider(clienteImpEditParam).notifier,
@@ -360,68 +371,82 @@ class _CambiosPendientesDeTramitarListView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final cambiosPendientesDeTramitarValue = ref
-        .watch(clienteContactoImpListInSyncByClienteProvider(clienteImpParam));
+    final cambiosPendientesDeTramitarValue = ref.watch(
+      clienteContactoImpListInSyncByClienteProvider(clienteImpParam),
+    );
     return cambiosPendientesDeTramitarValue.when(
-      data: (contactoImpList) => contactoImpList.isEmpty
-          ? Container()
-          : GestureDetector(
-              onTap: () => showCambiosPendietesDeTramitarAlertDialog(
-                  context, contactoImpList),
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.error,
-                    color: Theme.of(context).colorScheme.error,
-                    size: 14,
-                  ),
-                  gapW4,
-                  Flexible(
-                    child: Text(
-                      S
-                          .of(context)
-                          .cliente_show_clienteContacto_hayCambiosSinTramitar,
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: Theme.of(context).colorScheme.error,
+      data:
+          (contactoImpList) =>
+              contactoImpList.isEmpty
+                  ? Container()
+                  : GestureDetector(
+                    onTap:
+                        () => showCambiosPendietesDeTramitarAlertDialog(
+                          context,
+                          contactoImpList,
+                        ),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.error,
+                          color: Theme.of(context).colorScheme.error,
+                          size: 14,
+                        ),
+                        gapW4,
+                        Flexible(
+                          child: Text(
+                            S
+                                .of(context)
+                                .cliente_show_clienteContacto_hayCambiosSinTramitar,
+                            style: Theme.of(
+                              context,
+                            ).textTheme.bodyMedium?.copyWith(
+                              color: Theme.of(context).colorScheme.error,
+                            ),
                           ),
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              ),
-            ),
-      error: (error, _) => Text(
-        (error is AppException) ? error.details.message : error.toString(),
-      ),
-      loading: () => const SizedBox(
-        height: 16,
-        width: 16,
-        child: CircularProgressIndicator(
-          strokeWidth: 2.5,
-        ),
-      ),
+      error:
+          (error, _) => Text(
+            (error is AppException) ? error.details.message : error.toString(),
+          ),
+      loading:
+          () => const SizedBox(
+            height: 16,
+            width: 16,
+            child: CircularProgressIndicator(strokeWidth: 2.5),
+          ),
     );
   }
 
   void showCambiosPendietesDeTramitarAlertDialog(
-      BuildContext context, List<ClienteContactoImp> clienteContactoImpList) {
+    BuildContext context,
+    List<ClienteContactoImp> clienteContactoImpList,
+  ) {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: Text(S
-            .of(context)
-            .cliente_show_clienteContacto_clienteContactoListPage_cambiosPendientesDeTramitar),
-        content: SizedBox(
-          width: double.maxFinite,
-          child: ListView.separated(
-            shrinkWrap: true,
-            itemBuilder: (context, i) => ClienteContactoImpListTile(
-              clienteContactoImp: clienteContactoImpList[i],
+      builder:
+          (context) => AlertDialog(
+            title: Text(
+              S
+                  .of(context)
+                  .cliente_show_clienteContacto_clienteContactoListPage_cambiosPendientesDeTramitar,
             ),
-            separatorBuilder: (context, i) => const Divider(),
-            itemCount: clienteContactoImpList.length,
+            content: SizedBox(
+              width: double.maxFinite,
+              child: ListView.separated(
+                shrinkWrap: true,
+                itemBuilder:
+                    (context, i) => ClienteContactoImpListTile(
+                      clienteContactoImp: clienteContactoImpList[i],
+                    ),
+                separatorBuilder: (context, i) => const Divider(),
+                itemCount: clienteContactoImpList.length,
+              ),
+            ),
           ),
-        ),
-      ),
     );
   }
 }

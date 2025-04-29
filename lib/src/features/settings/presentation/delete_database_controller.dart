@@ -7,8 +7,9 @@ import '../../../core/exceptions/app_exception.dart';
 part 'delete_database_controller.freezed.dart';
 
 final deleteDatabaseControllerProvider = StateNotifierProvider.autoDispose<
-        DeleteDatabaseController, DeleteDatabaseControllerState>(
-    (ref) => DeleteDatabaseController(ref.watch(settingsRepositoryProvider)));
+  DeleteDatabaseController,
+  DeleteDatabaseControllerState
+>((ref) => DeleteDatabaseController(ref.watch(settingsRepositoryProvider)));
 
 @freezed
 class DeleteDatabaseControllerState with _$DeleteDatabaseControllerState {
@@ -17,8 +18,10 @@ class DeleteDatabaseControllerState with _$DeleteDatabaseControllerState {
 
   const factory DeleteDatabaseControllerState.initial() = _initial;
 
-  const factory DeleteDatabaseControllerState.error(Object error,
-      {StackTrace? stackTrace}) = _error;
+  const factory DeleteDatabaseControllerState.error(
+    Object error, {
+    StackTrace? stackTrace,
+  }) = _error;
   const factory DeleteDatabaseControllerState.data(bool deleted) = _data;
 }
 
@@ -27,7 +30,7 @@ class DeleteDatabaseController
   final SettingsRepository _settingsRepository;
 
   DeleteDatabaseController(this._settingsRepository)
-      : super(const DeleteDatabaseControllerState.initial());
+    : super(const DeleteDatabaseControllerState.initial());
 
   Future<void> deleteRemoteDatabase() async {
     try {

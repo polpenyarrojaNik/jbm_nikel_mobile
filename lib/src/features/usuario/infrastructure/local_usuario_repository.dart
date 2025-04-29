@@ -13,9 +13,7 @@ typedef Json = Map<String, dynamic>;
 const _preferenceKey = 'auth_credentials';
 
 final localUsuarioRepositoryProvider = Provider<LocalUsuarioRepository>((ref) {
-  return LocalUsuarioRepository(
-    ref.watch(flutterSecureStorage),
-  );
+  return LocalUsuarioRepository(ref.watch(flutterSecureStorage));
 });
 
 class LocalUsuarioRepository {
@@ -28,10 +26,7 @@ class LocalUsuarioRepository {
   Future<void> save(UsuarioDTO usuarioDTO) async {
     _cachedUsuarioDTO = usuarioDTO;
     try {
-      await storage.write(
-        key: _preferenceKey,
-        value: jsonEncode(usuarioDTO),
-      );
+      await storage.write(key: _preferenceKey, value: jsonEncode(usuarioDTO));
     } on PlatformException catch (e) {
       throw AppException.authLocalFailure(e.toString());
     }
@@ -48,8 +43,9 @@ class LocalUsuarioRepository {
         return null;
       }
       try {
-        return _cachedUsuarioDTO =
-            UsuarioDTO.fromJson(jsonDecode(jsonString) as Json);
+        return _cachedUsuarioDTO = UsuarioDTO.fromJson(
+          jsonDecode(jsonString) as Json,
+        );
       } on FormatException {
         return null;
       }

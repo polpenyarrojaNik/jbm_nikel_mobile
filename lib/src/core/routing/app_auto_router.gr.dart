@@ -19,14 +19,14 @@ class ArticuloComponenteRoute
     required String description,
     List<PageRouteInfo>? children,
   }) : super(
-          ArticuloComponenteRoute.name,
-          args: ArticuloComponenteRouteArgs(
-            key: key,
-            articuloId: articuloId,
-            description: description,
-          ),
-          initialChildren: children,
-        );
+         ArticuloComponenteRoute.name,
+         args: ArticuloComponenteRouteArgs(
+           key: key,
+           articuloId: articuloId,
+           description: description,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ArticuloComponenteRoute';
 
@@ -70,13 +70,10 @@ class ArticuloDetalleRoute extends PageRouteInfo<ArticuloDetalleRouteArgs> {
     required String articuloId,
     List<PageRouteInfo>? children,
   }) : super(
-          ArticuloDetalleRoute.name,
-          args: ArticuloDetalleRouteArgs(
-            key: key,
-            articuloId: articuloId,
-          ),
-          initialChildren: children,
-        );
+         ArticuloDetalleRoute.name,
+         args: ArticuloDetalleRouteArgs(key: key, articuloId: articuloId),
+         initialChildren: children,
+       );
 
   static const String name = 'ArticuloDetalleRoute';
 
@@ -84,19 +81,13 @@ class ArticuloDetalleRoute extends PageRouteInfo<ArticuloDetalleRouteArgs> {
     name,
     builder: (data) {
       final args = data.argsAs<ArticuloDetalleRouteArgs>();
-      return ArticuloDetallePage(
-        key: args.key,
-        articuloId: args.articuloId,
-      );
+      return ArticuloDetallePage(key: args.key, articuloId: args.articuloId);
     },
   );
 }
 
 class ArticuloDetalleRouteArgs {
-  const ArticuloDetalleRouteArgs({
-    this.key,
-    required this.articuloId,
-  });
+  const ArticuloDetalleRouteArgs({this.key, required this.articuloId});
 
   final Key? key;
 
@@ -117,14 +108,14 @@ class ArticuloDocumentoRoute extends PageRouteInfo<ArticuloDocumentoRouteArgs> {
     required String description,
     List<PageRouteInfo>? children,
   }) : super(
-          ArticuloDocumentoRoute.name,
-          args: ArticuloDocumentoRouteArgs(
-            key: key,
-            articuloId: articuloId,
-            description: description,
-          ),
-          initialChildren: children,
-        );
+         ArticuloDocumentoRoute.name,
+         args: ArticuloDocumentoRouteArgs(
+           key: key,
+           articuloId: articuloId,
+           description: description,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ArticuloDocumentoRoute';
 
@@ -169,14 +160,14 @@ class ArticuloGrupoNetoRoute extends PageRouteInfo<ArticuloGrupoNetoRouteArgs> {
     required String description,
     List<PageRouteInfo>? children,
   }) : super(
-          ArticuloGrupoNetoRoute.name,
-          args: ArticuloGrupoNetoRouteArgs(
-            key: key,
-            articuloId: articuloId,
-            description: description,
-          ),
-          initialChildren: children,
-        );
+         ArticuloGrupoNetoRoute.name,
+         args: ArticuloGrupoNetoRouteArgs(
+           key: key,
+           articuloId: articuloId,
+           description: description,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ArticuloGrupoNetoRoute';
 
@@ -220,13 +211,13 @@ class ArticuloListaRoute extends PageRouteInfo<ArticuloListaRouteArgs> {
     required bool isSearchArticuloForForm,
     List<PageRouteInfo>? children,
   }) : super(
-          ArticuloListaRoute.name,
-          args: ArticuloListaRouteArgs(
-            key: key,
-            isSearchArticuloForForm: isSearchArticuloForForm,
-          ),
-          initialChildren: children,
-        );
+         ArticuloListaRoute.name,
+         args: ArticuloListaRouteArgs(
+           key: key,
+           isSearchArticuloForForm: isSearchArticuloForForm,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ArticuloListaRoute';
 
@@ -268,14 +259,14 @@ class ArticuloPedidoVentaRoute
     required String description,
     List<PageRouteInfo>? children,
   }) : super(
-          ArticuloPedidoVentaRoute.name,
-          args: ArticuloPedidoVentaRouteArgs(
-            key: key,
-            articuloId: articuloId,
-            description: description,
-          ),
-          initialChildren: children,
-        );
+         ArticuloPedidoVentaRoute.name,
+         args: ArticuloPedidoVentaRouteArgs(
+           key: key,
+           articuloId: articuloId,
+           description: description,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ArticuloPedidoVentaRoute';
 
@@ -321,14 +312,14 @@ class ArticuloPrecioTarifaRoute
     required String description,
     List<PageRouteInfo>? children,
   }) : super(
-          ArticuloPrecioTarifaRoute.name,
-          args: ArticuloPrecioTarifaRouteArgs(
-            key: key,
-            articuloId: articuloId,
-            description: description,
-          ),
-          initialChildren: children,
-        );
+         ArticuloPrecioTarifaRoute.name,
+         args: ArticuloPrecioTarifaRouteArgs(
+           key: key,
+           articuloId: articuloId,
+           description: description,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ArticuloPrecioTarifaRoute';
 
@@ -373,14 +364,14 @@ class ArticuloRecambioRoute extends PageRouteInfo<ArticuloRecambioRouteArgs> {
     required String description,
     List<PageRouteInfo>? children,
   }) : super(
-          ArticuloRecambioRoute.name,
-          args: ArticuloRecambioRouteArgs(
-            key: key,
-            articuloId: articuloId,
-            description: description,
-          ),
-          initialChildren: children,
-        );
+         ArticuloRecambioRoute.name,
+         args: ArticuloRecambioRouteArgs(
+           key: key,
+           articuloId: articuloId,
+           description: description,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ArticuloRecambioRoute';
 
@@ -426,14 +417,14 @@ class ArticuloSustitutivoRoute
     required String description,
     List<PageRouteInfo>? children,
   }) : super(
-          ArticuloSustitutivoRoute.name,
-          args: ArticuloSustitutivoRouteArgs(
-            key: key,
-            articuloId: articuloId,
-            description: description,
-          ),
-          initialChildren: children,
-        );
+         ArticuloSustitutivoRoute.name,
+         args: ArticuloSustitutivoRouteArgs(
+           key: key,
+           articuloId: articuloId,
+           description: description,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ArticuloSustitutivoRoute';
 
@@ -479,14 +470,14 @@ class ArticuloUltimosPreciosRoute
     required String description,
     List<PageRouteInfo>? children,
   }) : super(
-          ArticuloUltimosPreciosRoute.name,
-          args: ArticuloUltimosPreciosRouteArgs(
-            key: key,
-            articuloId: articuloId,
-            description: description,
-          ),
-          initialChildren: children,
-        );
+         ArticuloUltimosPreciosRoute.name,
+         args: ArticuloUltimosPreciosRouteArgs(
+           key: key,
+           articuloId: articuloId,
+           description: description,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ArticuloUltimosPreciosRoute';
 
@@ -532,14 +523,14 @@ class ArticuloVentasClienteRoute
     required String description,
     List<PageRouteInfo>? children,
   }) : super(
-          ArticuloVentasClienteRoute.name,
-          args: ArticuloVentasClienteRouteArgs(
-            key: key,
-            articuloId: articuloId,
-            description: description,
-          ),
-          initialChildren: children,
-        );
+         ArticuloVentasClienteRoute.name,
+         args: ArticuloVentasClienteRouteArgs(
+           key: key,
+           articuloId: articuloId,
+           description: description,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ArticuloVentasClienteRoute';
 
@@ -584,14 +575,14 @@ class ArticuloVentasMesRoute extends PageRouteInfo<ArticuloVentasMesRouteArgs> {
     required String descripcion,
     List<PageRouteInfo>? children,
   }) : super(
-          ArticuloVentasMesRoute.name,
-          args: ArticuloVentasMesRouteArgs(
-            key: key,
-            articuloId: articuloId,
-            descripcion: descripcion,
-          ),
-          initialChildren: children,
-        );
+         ArticuloVentasMesRoute.name,
+         args: ArticuloVentasMesRouteArgs(
+           key: key,
+           articuloId: articuloId,
+           descripcion: descripcion,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ArticuloVentasMesRoute';
 
@@ -631,10 +622,7 @@ class ArticuloVentasMesRouteArgs {
 /// [CameraPage]
 class CameraRoute extends PageRouteInfo<void> {
   const CameraRoute({List<PageRouteInfo>? children})
-      : super(
-          CameraRoute.name,
-          initialChildren: children,
-        );
+    : super(CameraRoute.name, initialChildren: children);
 
   static const String name = 'CameraRoute';
 
@@ -650,10 +638,7 @@ class CameraRoute extends PageRouteInfo<void> {
 /// [CatalogoListaPage]
 class CatalogoListaRoute extends PageRouteInfo<void> {
   const CatalogoListaRoute({List<PageRouteInfo>? children})
-      : super(
-          CatalogoListaRoute.name,
-          initialChildren: children,
-        );
+    : super(CatalogoListaRoute.name, initialChildren: children);
 
   static const String name = 'CatalogoListaRoute';
 
@@ -673,13 +658,10 @@ class CatalogoPdfViewerRoute extends PageRouteInfo<CatalogoPdfViewerRouteArgs> {
     required File pdfFile,
     List<PageRouteInfo>? children,
   }) : super(
-          CatalogoPdfViewerRoute.name,
-          args: CatalogoPdfViewerRouteArgs(
-            key: key,
-            pdfFile: pdfFile,
-          ),
-          initialChildren: children,
-        );
+         CatalogoPdfViewerRoute.name,
+         args: CatalogoPdfViewerRouteArgs(key: key, pdfFile: pdfFile),
+         initialChildren: children,
+       );
 
   static const String name = 'CatalogoPdfViewerRoute';
 
@@ -687,19 +669,13 @@ class CatalogoPdfViewerRoute extends PageRouteInfo<CatalogoPdfViewerRouteArgs> {
     name,
     builder: (data) {
       final args = data.argsAs<CatalogoPdfViewerRouteArgs>();
-      return CatalogoPdfViewerPage(
-        key: args.key,
-        pdfFile: args.pdfFile,
-      );
+      return CatalogoPdfViewerPage(key: args.key, pdfFile: args.pdfFile);
     },
   );
 }
 
 class CatalogoPdfViewerRouteArgs {
-  const CatalogoPdfViewerRouteArgs({
-    this.key,
-    required this.pdfFile,
-  });
+  const CatalogoPdfViewerRouteArgs({this.key, required this.pdfFile});
 
   final Key? key;
 
@@ -720,14 +696,14 @@ class ClienteAdjuntoRoute extends PageRouteInfo<ClienteAdjuntoRouteArgs> {
     required String? nombreCliente,
     List<PageRouteInfo>? children,
   }) : super(
-          ClienteAdjuntoRoute.name,
-          args: ClienteAdjuntoRouteArgs(
-            key: key,
-            clienteId: clienteId,
-            nombreCliente: nombreCliente,
-          ),
-          initialChildren: children,
-        );
+         ClienteAdjuntoRoute.name,
+         args: ClienteAdjuntoRouteArgs(
+           key: key,
+           clienteId: clienteId,
+           nombreCliente: nombreCliente,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ClienteAdjuntoRoute';
 
@@ -773,14 +749,14 @@ class ClienteArticulosTopListRoute
     required String? nombreCliente,
     List<PageRouteInfo>? children,
   }) : super(
-          ClienteArticulosTopListRoute.name,
-          args: ClienteArticulosTopListRouteArgs(
-            key: key,
-            clienteId: clienteId,
-            nombreCliente: nombreCliente,
-          ),
-          initialChildren: children,
-        );
+         ClienteArticulosTopListRoute.name,
+         args: ClienteArticulosTopListRouteArgs(
+           key: key,
+           clienteId: clienteId,
+           nombreCliente: nombreCliente,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ClienteArticulosTopListRoute';
 
@@ -826,14 +802,14 @@ class ClienteContactoEditRoute
     bool? popItemCreated,
     List<PageRouteInfo>? children,
   }) : super(
-          ClienteContactoEditRoute.name,
-          args: ClienteContactoEditRouteArgs(
-            key: key,
-            clienteImpParam: clienteImpParam,
-            popItemCreated: popItemCreated,
-          ),
-          initialChildren: children,
-        );
+         ClienteContactoEditRoute.name,
+         args: ClienteContactoEditRouteArgs(
+           key: key,
+           clienteImpParam: clienteImpParam,
+           popItemCreated: popItemCreated,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ClienteContactoEditRoute';
 
@@ -879,14 +855,14 @@ class ClienteContactoListRoute
     required String? nombreCliente,
     List<PageRouteInfo>? children,
   }) : super(
-          ClienteContactoListRoute.name,
-          args: ClienteContactoListRouteArgs(
-            key: key,
-            clienteId: clienteId,
-            nombreCliente: nombreCliente,
-          ),
-          initialChildren: children,
-        );
+         ClienteContactoListRoute.name,
+         args: ClienteContactoListRouteArgs(
+           key: key,
+           clienteId: clienteId,
+           nombreCliente: nombreCliente,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ClienteContactoListRoute';
 
@@ -931,14 +907,14 @@ class ClienteDescuentoRoute extends PageRouteInfo<ClienteDescuentoRouteArgs> {
     required String? nombreCliente,
     List<PageRouteInfo>? children,
   }) : super(
-          ClienteDescuentoRoute.name,
-          args: ClienteDescuentoRouteArgs(
-            key: key,
-            clienteId: clienteId,
-            nombreCliente: nombreCliente,
-          ),
-          initialChildren: children,
-        );
+         ClienteDescuentoRoute.name,
+         args: ClienteDescuentoRouteArgs(
+           key: key,
+           clienteId: clienteId,
+           nombreCliente: nombreCliente,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ClienteDescuentoRoute';
 
@@ -982,13 +958,10 @@ class ClienteDetalleRoute extends PageRouteInfo<ClienteDetalleRouteArgs> {
     required String clienteId,
     List<PageRouteInfo>? children,
   }) : super(
-          ClienteDetalleRoute.name,
-          args: ClienteDetalleRouteArgs(
-            key: key,
-            clienteId: clienteId,
-          ),
-          initialChildren: children,
-        );
+         ClienteDetalleRoute.name,
+         args: ClienteDetalleRouteArgs(key: key, clienteId: clienteId),
+         initialChildren: children,
+       );
 
   static const String name = 'ClienteDetalleRoute';
 
@@ -996,19 +969,13 @@ class ClienteDetalleRoute extends PageRouteInfo<ClienteDetalleRouteArgs> {
     name,
     builder: (data) {
       final args = data.argsAs<ClienteDetalleRouteArgs>();
-      return ClienteDetallePage(
-        key: args.key,
-        clienteId: args.clienteId,
-      );
+      return ClienteDetallePage(key: args.key, clienteId: args.clienteId);
     },
   );
 }
 
 class ClienteDetalleRouteArgs {
-  const ClienteDetalleRouteArgs({
-    this.key,
-    required this.clienteId,
-  });
+  const ClienteDetalleRouteArgs({this.key, required this.clienteId});
 
   final Key? key;
 
@@ -1029,13 +996,13 @@ class ClienteDevolucionDetalleRoute
     required Devolucion devolucion,
     List<PageRouteInfo>? children,
   }) : super(
-          ClienteDevolucionDetalleRoute.name,
-          args: ClienteDevolucionDetalleRouteArgs(
-            key: key,
-            devolucion: devolucion,
-          ),
-          initialChildren: children,
-        );
+         ClienteDevolucionDetalleRoute.name,
+         args: ClienteDevolucionDetalleRouteArgs(
+           key: key,
+           devolucion: devolucion,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ClienteDevolucionDetalleRoute';
 
@@ -1052,10 +1019,7 @@ class ClienteDevolucionDetalleRoute
 }
 
 class ClienteDevolucionDetalleRouteArgs {
-  const ClienteDevolucionDetalleRouteArgs({
-    this.key,
-    required this.devolucion,
-  });
+  const ClienteDevolucionDetalleRouteArgs({this.key, required this.devolucion});
 
   final Key? key;
 
@@ -1076,14 +1040,14 @@ class ClienteDevolucionRoute extends PageRouteInfo<ClienteDevolucionRouteArgs> {
     required String? nombreCliente,
     List<PageRouteInfo>? children,
   }) : super(
-          ClienteDevolucionRoute.name,
-          args: ClienteDevolucionRouteArgs(
-            key: key,
-            clienteId: clienteId,
-            nombreCliente: nombreCliente,
-          ),
-          initialChildren: children,
-        );
+         ClienteDevolucionRoute.name,
+         args: ClienteDevolucionRouteArgs(
+           key: key,
+           clienteId: clienteId,
+           nombreCliente: nombreCliente,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ClienteDevolucionRoute';
 
@@ -1128,13 +1092,13 @@ class ClienteDireccionEditRoute
     required ClienteImpParam clienteImpParam,
     List<PageRouteInfo>? children,
   }) : super(
-          ClienteDireccionEditRoute.name,
-          args: ClienteDireccionEditRouteArgs(
-            key: key,
-            clienteImpParam: clienteImpParam,
-          ),
-          initialChildren: children,
-        );
+         ClienteDireccionEditRoute.name,
+         args: ClienteDireccionEditRouteArgs(
+           key: key,
+           clienteImpParam: clienteImpParam,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ClienteDireccionEditRoute';
 
@@ -1174,10 +1138,10 @@ class ClienteDireccionSeleccionarPaisRoute
     Key? key,
     List<PageRouteInfo>? children,
   }) : super(
-          ClienteDireccionSeleccionarPaisRoute.name,
-          args: ClienteDireccionSeleccionarPaisRouteArgs(key: key),
-          initialChildren: children,
-        );
+         ClienteDireccionSeleccionarPaisRoute.name,
+         args: ClienteDireccionSeleccionarPaisRouteArgs(key: key),
+         initialChildren: children,
+       );
 
   static const String name = 'ClienteDireccionSeleccionarPaisRoute';
 
@@ -1185,7 +1149,8 @@ class ClienteDireccionSeleccionarPaisRoute
     name,
     builder: (data) {
       final args = data.argsAs<ClienteDireccionSeleccionarPaisRouteArgs>(
-          orElse: () => const ClienteDireccionSeleccionarPaisRouteArgs());
+        orElse: () => const ClienteDireccionSeleccionarPaisRouteArgs(),
+      );
       return ClienteDireccionSeleccionarPaisPage(key: args.key);
     },
   );
@@ -1213,15 +1178,15 @@ class ClienteDireccionesListRoute
     required String? nombreCliente,
     List<PageRouteInfo>? children,
   }) : super(
-          ClienteDireccionesListRoute.name,
-          args: ClienteDireccionesListRouteArgs(
-            key: key,
-            clienteId: clienteId,
-            paisCliente: paisCliente,
-            nombreCliente: nombreCliente,
-          ),
-          initialChildren: children,
-        );
+         ClienteDireccionesListRoute.name,
+         args: ClienteDireccionesListRouteArgs(
+           key: key,
+           clienteId: clienteId,
+           paisCliente: paisCliente,
+           nombreCliente: nombreCliente,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ClienteDireccionesListRoute';
 
@@ -1270,14 +1235,14 @@ class ClienteGrupoNetoRoute extends PageRouteInfo<ClienteGrupoNetoRouteArgs> {
     required String? nombreCliente,
     List<PageRouteInfo>? children,
   }) : super(
-          ClienteGrupoNetoRoute.name,
-          args: ClienteGrupoNetoRouteArgs(
-            key: key,
-            clienteId: clienteId,
-            nombreCliente: nombreCliente,
-          ),
-          initialChildren: children,
-        );
+         ClienteGrupoNetoRoute.name,
+         args: ClienteGrupoNetoRouteArgs(
+           key: key,
+           clienteId: clienteId,
+           nombreCliente: nombreCliente,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ClienteGrupoNetoRoute';
 
@@ -1321,13 +1286,13 @@ class ClienteListaRoute extends PageRouteInfo<ClienteListaRouteArgs> {
     required bool isSearchClienteForFrom,
     List<PageRouteInfo>? children,
   }) : super(
-          ClienteListaRoute.name,
-          args: ClienteListaRouteArgs(
-            key: key,
-            isSearchClienteForFrom: isSearchClienteForFrom,
-          ),
-          initialChildren: children,
-        );
+         ClienteListaRoute.name,
+         args: ClienteListaRouteArgs(
+           key: key,
+           isSearchClienteForFrom: isSearchClienteForFrom,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ClienteListaRoute';
 
@@ -1344,10 +1309,7 @@ class ClienteListaRoute extends PageRouteInfo<ClienteListaRouteArgs> {
 }
 
 class ClienteListaRouteArgs {
-  const ClienteListaRouteArgs({
-    this.key,
-    required this.isSearchClienteForFrom,
-  });
+  const ClienteListaRouteArgs({this.key, required this.isSearchClienteForFrom});
 
   final Key? key;
 
@@ -1369,14 +1331,14 @@ class ClientePagoPendienteRoute
     required String? nombreCliente,
     List<PageRouteInfo>? children,
   }) : super(
-          ClientePagoPendienteRoute.name,
-          args: ClientePagoPendienteRouteArgs(
-            key: key,
-            clienteId: clienteId,
-            nombreCliente: nombreCliente,
-          ),
-          initialChildren: children,
-        );
+         ClientePagoPendienteRoute.name,
+         args: ClientePagoPendienteRouteArgs(
+           key: key,
+           clienteId: clienteId,
+           nombreCliente: nombreCliente,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ClientePagoPendienteRoute';
 
@@ -1421,14 +1383,14 @@ class ClientePedidosRoute extends PageRouteInfo<ClientePedidosRouteArgs> {
     required String? nombreCliente,
     List<PageRouteInfo>? children,
   }) : super(
-          ClientePedidosRoute.name,
-          args: ClientePedidosRouteArgs(
-            key: key,
-            clienteId: clienteId,
-            nombreCliente: nombreCliente,
-          ),
-          initialChildren: children,
-        );
+         ClientePedidosRoute.name,
+         args: ClientePedidosRouteArgs(
+           key: key,
+           clienteId: clienteId,
+           nombreCliente: nombreCliente,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ClientePedidosRoute';
 
@@ -1473,14 +1435,14 @@ class ClientePrecioNetoRoute extends PageRouteInfo<ClientePrecioNetoRouteArgs> {
     required String? nombreCliente,
     List<PageRouteInfo>? children,
   }) : super(
-          ClientePrecioNetoRoute.name,
-          args: ClientePrecioNetoRouteArgs(
-            key: key,
-            clienteId: clienteId,
-            nombreCliente: nombreCliente,
-          ),
-          initialChildren: children,
-        );
+         ClientePrecioNetoRoute.name,
+         args: ClientePrecioNetoRouteArgs(
+           key: key,
+           clienteId: clienteId,
+           nombreCliente: nombreCliente,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ClientePrecioNetoRoute';
 
@@ -1525,14 +1487,14 @@ class ClienteRappelRoute extends PageRouteInfo<ClienteRappelRouteArgs> {
     required String? nombreCliente,
     List<PageRouteInfo>? children,
   }) : super(
-          ClienteRappelRoute.name,
-          args: ClienteRappelRouteArgs(
-            key: key,
-            clienteId: clienteId,
-            nombreCliente: nombreCliente,
-          ),
-          initialChildren: children,
-        );
+         ClienteRappelRoute.name,
+         args: ClienteRappelRouteArgs(
+           key: key,
+           clienteId: clienteId,
+           nombreCliente: nombreCliente,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ClienteRappelRoute';
 
@@ -1576,13 +1538,10 @@ class ClienteSectorRoute extends PageRouteInfo<ClienteSectorRouteArgs> {
     required Cliente cliente,
     List<PageRouteInfo>? children,
   }) : super(
-          ClienteSectorRoute.name,
-          args: ClienteSectorRouteArgs(
-            key: key,
-            cliente: cliente,
-          ),
-          initialChildren: children,
-        );
+         ClienteSectorRoute.name,
+         args: ClienteSectorRouteArgs(key: key, cliente: cliente),
+         initialChildren: children,
+       );
 
   static const String name = 'ClienteSectorRoute';
 
@@ -1590,19 +1549,13 @@ class ClienteSectorRoute extends PageRouteInfo<ClienteSectorRouteArgs> {
     name,
     builder: (data) {
       final args = data.argsAs<ClienteSectorRouteArgs>();
-      return ClienteSectorPage(
-        key: args.key,
-        cliente: args.cliente,
-      );
+      return ClienteSectorPage(key: args.key, cliente: args.cliente);
     },
   );
 }
 
 class ClienteSectorRouteArgs {
-  const ClienteSectorRouteArgs({
-    this.key,
-    required this.cliente,
-  });
+  const ClienteSectorRouteArgs({this.key, required this.cliente});
 
   final Key? key;
 
@@ -1624,14 +1577,14 @@ class ClienteUltimosPreciosRoute
     required String? nombreCliente,
     List<PageRouteInfo>? children,
   }) : super(
-          ClienteUltimosPreciosRoute.name,
-          args: ClienteUltimosPreciosRouteArgs(
-            key: key,
-            clienteId: clienteId,
-            nombreCliente: nombreCliente,
-          ),
-          initialChildren: children,
-        );
+         ClienteUltimosPreciosRoute.name,
+         args: ClienteUltimosPreciosRouteArgs(
+           key: key,
+           clienteId: clienteId,
+           nombreCliente: nombreCliente,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ClienteUltimosPreciosRoute';
 
@@ -1677,14 +1630,14 @@ class ClienteVentasArticuloRoute
     required String? nombreCliente,
     List<PageRouteInfo>? children,
   }) : super(
-          ClienteVentasArticuloRoute.name,
-          args: ClienteVentasArticuloRouteArgs(
-            key: key,
-            clienteId: clienteId,
-            nombreCliente: nombreCliente,
-          ),
-          initialChildren: children,
-        );
+         ClienteVentasArticuloRoute.name,
+         args: ClienteVentasArticuloRouteArgs(
+           key: key,
+           clienteId: clienteId,
+           nombreCliente: nombreCliente,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ClienteVentasArticuloRoute';
 
@@ -1729,14 +1682,14 @@ class ClienteVentasMesRoute extends PageRouteInfo<ClienteVentasMesRouteArgs> {
     required String? nombreCliente,
     List<PageRouteInfo>? children,
   }) : super(
-          ClienteVentasMesRoute.name,
-          args: ClienteVentasMesRouteArgs(
-            key: key,
-            clienteId: clienteId,
-            nombreCliente: nombreCliente,
-          ),
-          initialChildren: children,
-        );
+         ClienteVentasMesRoute.name,
+         args: ClienteVentasMesRouteArgs(
+           key: key,
+           clienteId: clienteId,
+           nombreCliente: nombreCliente,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ClienteVentasMesRoute';
 
@@ -1781,14 +1734,14 @@ class ClienteVisitasRoute extends PageRouteInfo<ClienteVisitasRouteArgs> {
     required String? nombreCliente,
     List<PageRouteInfo>? children,
   }) : super(
-          ClienteVisitasRoute.name,
-          args: ClienteVisitasRouteArgs(
-            key: key,
-            clienteId: clienteId,
-            nombreCliente: nombreCliente,
-          ),
-          initialChildren: children,
-        );
+         ClienteVisitasRoute.name,
+         args: ClienteVisitasRouteArgs(
+           key: key,
+           clienteId: clienteId,
+           nombreCliente: nombreCliente,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ClienteVisitasRoute';
 
@@ -1828,10 +1781,7 @@ class ClienteVisitasRouteArgs {
 /// [ClientesAlrededorPage]
 class ClientesAlrededorRoute extends PageRouteInfo<void> {
   const ClientesAlrededorRoute({List<PageRouteInfo>? children})
-      : super(
-          ClientesAlrededorRoute.name,
-          initialChildren: children,
-        );
+    : super(ClientesAlrededorRoute.name, initialChildren: children);
 
   static const String name = 'ClientesAlrededorRoute';
 
@@ -1847,10 +1797,7 @@ class ClientesAlrededorRoute extends PageRouteInfo<void> {
 /// [ExpedicionListPage]
 class ExpedicionListRoute extends PageRouteInfo<void> {
   const ExpedicionListRoute({List<PageRouteInfo>? children})
-      : super(
-          ExpedicionListRoute.name,
-          initialChildren: children,
-        );
+    : super(ExpedicionListRoute.name, initialChildren: children);
 
   static const String name = 'ExpedicionListRoute';
 
@@ -1871,14 +1818,14 @@ class ImageFormRoute extends PageRouteInfo<ImageFormRouteArgs> {
     required bool isFromCliente,
     List<PageRouteInfo>? children,
   }) : super(
-          ImageFormRoute.name,
-          args: ImageFormRouteArgs(
-            key: key,
-            imageFile: imageFile,
-            isFromCliente: isFromCliente,
-          ),
-          initialChildren: children,
-        );
+         ImageFormRoute.name,
+         args: ImageFormRouteArgs(
+           key: key,
+           imageFile: imageFile,
+           isFromCliente: isFromCliente,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'ImageFormRoute';
 
@@ -1918,10 +1865,7 @@ class ImageFormRouteArgs {
 /// [LoginPage]
 class LoginRoute extends PageRouteInfo<void> {
   const LoginRoute({List<PageRouteInfo>? children})
-      : super(
-          LoginRoute.name,
-          initialChildren: children,
-        );
+    : super(LoginRoute.name, initialChildren: children);
 
   static const String name = 'LoginRoute';
 
@@ -1942,13 +1886,13 @@ class NotificationDetailRoute
     required String notificationId,
     List<PageRouteInfo>? children,
   }) : super(
-          NotificationDetailRoute.name,
-          args: NotificationDetailRouteArgs(
-            key: key,
-            notificationId: notificationId,
-          ),
-          initialChildren: children,
-        );
+         NotificationDetailRoute.name,
+         args: NotificationDetailRouteArgs(
+           key: key,
+           notificationId: notificationId,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'NotificationDetailRoute';
 
@@ -1965,10 +1909,7 @@ class NotificationDetailRoute
 }
 
 class NotificationDetailRouteArgs {
-  const NotificationDetailRouteArgs({
-    this.key,
-    required this.notificationId,
-  });
+  const NotificationDetailRouteArgs({this.key, required this.notificationId});
 
   final Key? key;
 
@@ -1983,14 +1924,12 @@ class NotificationDetailRouteArgs {
 /// generated route for
 /// [NotificationIndexPage]
 class NotificationIndexRoute extends PageRouteInfo<NotificationIndexRouteArgs> {
-  NotificationIndexRoute({
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
-          NotificationIndexRoute.name,
-          args: NotificationIndexRouteArgs(key: key),
-          initialChildren: children,
-        );
+  NotificationIndexRoute({Key? key, List<PageRouteInfo>? children})
+    : super(
+        NotificationIndexRoute.name,
+        args: NotificationIndexRouteArgs(key: key),
+        initialChildren: children,
+      );
 
   static const String name = 'NotificationIndexRoute';
 
@@ -1998,7 +1937,8 @@ class NotificationIndexRoute extends PageRouteInfo<NotificationIndexRouteArgs> {
     name,
     builder: (data) {
       final args = data.argsAs<NotificationIndexRouteArgs>(
-          orElse: () => const NotificationIndexRouteArgs());
+        orElse: () => const NotificationIndexRouteArgs(),
+      );
       return NotificationIndexPage(key: args.key);
     },
   );
@@ -2024,13 +1964,13 @@ class PedidoVentaDetalleRoute
     required PedidoLocalParam pedidoLocalParam,
     List<PageRouteInfo>? children,
   }) : super(
-          PedidoVentaDetalleRoute.name,
-          args: PedidoVentaDetalleRouteArgs(
-            key: key,
-            pedidoLocalParam: pedidoLocalParam,
-          ),
-          initialChildren: children,
-        );
+         PedidoVentaDetalleRoute.name,
+         args: PedidoVentaDetalleRouteArgs(
+           key: key,
+           pedidoLocalParam: pedidoLocalParam,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'PedidoVentaDetalleRoute';
 
@@ -2047,10 +1987,7 @@ class PedidoVentaDetalleRoute
 }
 
 class PedidoVentaDetalleRouteArgs {
-  const PedidoVentaDetalleRouteArgs({
-    this.key,
-    required this.pedidoLocalParam,
-  });
+  const PedidoVentaDetalleRouteArgs({this.key, required this.pedidoLocalParam});
 
   final Key? key;
 
@@ -2075,18 +2012,18 @@ class PedidoVentaEditRoute extends PageRouteInfo<PedidoVentaEditRouteArgs> {
     PedidoVentaLinea? addLineaDesdeArticulo,
     List<PageRouteInfo>? children,
   }) : super(
-          PedidoVentaEditRoute.name,
-          args: PedidoVentaEditRouteArgs(
-            key: key,
-            pedidoAppId: pedidoAppId,
-            pedidoId: pedidoId,
-            empresaId: empresaId,
-            isLocal: isLocal,
-            createPedidoFromClienteId: createPedidoFromClienteId,
-            addLineaDesdeArticulo: addLineaDesdeArticulo,
-          ),
-          initialChildren: children,
-        );
+         PedidoVentaEditRoute.name,
+         args: PedidoVentaEditRouteArgs(
+           key: key,
+           pedidoAppId: pedidoAppId,
+           pedidoId: pedidoId,
+           empresaId: empresaId,
+           isLocal: isLocal,
+           createPedidoFromClienteId: createPedidoFromClienteId,
+           addLineaDesdeArticulo: addLineaDesdeArticulo,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'PedidoVentaEditRoute';
 
@@ -2142,10 +2079,7 @@ class PedidoVentaEditRouteArgs {
 /// [PedidoVentaListPage]
 class PedidoVentaListRoute extends PageRouteInfo<void> {
   const PedidoVentaListRoute({List<PageRouteInfo>? children})
-      : super(
-          PedidoVentaListRoute.name,
-          initialChildren: children,
-        );
+    : super(PedidoVentaListRoute.name, initialChildren: children);
 
   static const String name = 'PedidoVentaListRoute';
 
@@ -2166,13 +2100,13 @@ class SeleccionarCantidadRoute
     required SeleccionarCantidadParam seleccionarCantidadParam,
     List<PageRouteInfo>? children,
   }) : super(
-          SeleccionarCantidadRoute.name,
-          args: SeleccionarCantidadRouteArgs(
-            key: key,
-            seleccionarCantidadParam: seleccionarCantidadParam,
-          ),
-          initialChildren: children,
-        );
+         SeleccionarCantidadRoute.name,
+         args: SeleccionarCantidadRouteArgs(
+           key: key,
+           seleccionarCantidadParam: seleccionarCantidadParam,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'SeleccionarCantidadRoute';
 
@@ -2207,14 +2141,12 @@ class SeleccionarCantidadRouteArgs {
 /// generated route for
 /// [SettingsPage]
 class SettingsRoute extends PageRouteInfo<SettingsRouteArgs> {
-  SettingsRoute({
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
-          SettingsRoute.name,
-          args: SettingsRouteArgs(key: key),
-          initialChildren: children,
-        );
+  SettingsRoute({Key? key, List<PageRouteInfo>? children})
+    : super(
+        SettingsRoute.name,
+        args: SettingsRouteArgs(key: key),
+        initialChildren: children,
+      );
 
   static const String name = 'SettingsRoute';
 
@@ -2222,7 +2154,8 @@ class SettingsRoute extends PageRouteInfo<SettingsRouteArgs> {
     name,
     builder: (data) {
       final args = data.argsAs<SettingsRouteArgs>(
-          orElse: () => const SettingsRouteArgs());
+        orElse: () => const SettingsRouteArgs(),
+      );
       return SettingsPage(key: args.key);
     },
   );
@@ -2243,10 +2176,7 @@ class SettingsRouteArgs {
 /// [SplashPage]
 class SplashRoute extends PageRouteInfo<void> {
   const SplashRoute({List<PageRouteInfo>? children})
-      : super(
-          SplashRoute.name,
-          initialChildren: children,
-        );
+    : super(SplashRoute.name, initialChildren: children);
 
   static const String name = 'SplashRoute';
 
@@ -2266,13 +2196,13 @@ class VisitaDetalleRoute extends PageRouteInfo<VisitaDetalleRouteArgs> {
     required VisitaIdIsLocalParam visitaIdIsLocalParam,
     List<PageRouteInfo>? children,
   }) : super(
-          VisitaDetalleRoute.name,
-          args: VisitaDetalleRouteArgs(
-            key: key,
-            visitaIdIsLocalParam: visitaIdIsLocalParam,
-          ),
-          initialChildren: children,
-        );
+         VisitaDetalleRoute.name,
+         args: VisitaDetalleRouteArgs(
+           key: key,
+           visitaIdIsLocalParam: visitaIdIsLocalParam,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'VisitaDetalleRoute';
 
@@ -2289,10 +2219,7 @@ class VisitaDetalleRoute extends PageRouteInfo<VisitaDetalleRouteArgs> {
 }
 
 class VisitaDetalleRouteArgs {
-  const VisitaDetalleRouteArgs({
-    this.key,
-    required this.visitaIdIsLocalParam,
-  });
+  const VisitaDetalleRouteArgs({this.key, required this.visitaIdIsLocalParam});
 
   final Key? key;
 
@@ -2315,16 +2242,16 @@ class VisitaEditRoute extends PageRouteInfo<VisitaEditRouteArgs> {
     String? createVisitaFromClienteId,
     List<PageRouteInfo>? children,
   }) : super(
-          VisitaEditRoute.name,
-          args: VisitaEditRouteArgs(
-            key: key,
-            id: id,
-            isNew: isNew,
-            isLocal: isLocal,
-            createVisitaFromClienteId: createVisitaFromClienteId,
-          ),
-          initialChildren: children,
-        );
+         VisitaEditRoute.name,
+         args: VisitaEditRouteArgs(
+           key: key,
+           id: id,
+           isNew: isNew,
+           isLocal: isLocal,
+           createVisitaFromClienteId: createVisitaFromClienteId,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'VisitaEditRoute';
 
@@ -2332,7 +2259,8 @@ class VisitaEditRoute extends PageRouteInfo<VisitaEditRouteArgs> {
     name,
     builder: (data) {
       final args = data.argsAs<VisitaEditRouteArgs>(
-          orElse: () => const VisitaEditRouteArgs());
+        orElse: () => const VisitaEditRouteArgs(),
+      );
       return VisitaEditPage(
         key: args.key,
         id: args.id,
@@ -2378,13 +2306,10 @@ class VisitaEditSelectContactRoute
     required Cliente cliente,
     List<PageRouteInfo>? children,
   }) : super(
-          VisitaEditSelectContactRoute.name,
-          args: VisitaEditSelectContactRouteArgs(
-            key: key,
-            cliente: cliente,
-          ),
-          initialChildren: children,
-        );
+         VisitaEditSelectContactRoute.name,
+         args: VisitaEditSelectContactRouteArgs(key: key, cliente: cliente),
+         initialChildren: children,
+       );
 
   static const String name = 'VisitaEditSelectContactRoute';
 
@@ -2392,19 +2317,13 @@ class VisitaEditSelectContactRoute
     name,
     builder: (data) {
       final args = data.argsAs<VisitaEditSelectContactRouteArgs>();
-      return VisitaEditSelectContactPage(
-        key: args.key,
-        cliente: args.cliente,
-      );
+      return VisitaEditSelectContactPage(key: args.key, cliente: args.cliente);
     },
   );
 }
 
 class VisitaEditSelectContactRouteArgs {
-  const VisitaEditSelectContactRouteArgs({
-    this.key,
-    required this.cliente,
-  });
+  const VisitaEditSelectContactRouteArgs({this.key, required this.cliente});
 
   final Key? key;
 
@@ -2420,10 +2339,7 @@ class VisitaEditSelectContactRouteArgs {
 /// [VisitaListaPage]
 class VisitaListaRoute extends PageRouteInfo<void> {
   const VisitaListaRoute({List<PageRouteInfo>? children})
-      : super(
-          VisitaListaRoute.name,
-          initialChildren: children,
-        );
+    : super(VisitaListaRoute.name, initialChildren: children);
 
   static const String name = 'VisitaListaRoute';
 

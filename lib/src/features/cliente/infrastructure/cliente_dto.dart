@@ -151,26 +151,32 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       plazoDeCobro: plazoDeCobro,
       metodoDeCobro: metodoDeCobro,
       descuentoProntoPago: descuentoProntoPago,
-      riesgoConcedidoInterno:
-          riesgoConcedidoInterno.toMoney(currencyId: divisaId),
+      riesgoConcedidoInterno: riesgoConcedidoInterno.toMoney(
+        currencyId: divisaId,
+      ),
       riesgoConcedidoInternoDate: riesgoConcedidoInternoDate,
       riesgoConcedidoCoafe: riesgoConcedidoCoafe.toMoney(currencyId: divisaId),
       riesgoConcedidoCoafeFecha: riesgoConcedidoCoafeFecha,
       riesgoActual: calculateRiesgoActual(
-          riesgoPendienteCobroVencido,
-          riesgoPendienteCobroNoVencido,
-          riesgoPendienteServir,
-          riesgoPendienteFacturar,
-          divisaId),
+        riesgoPendienteCobroVencido,
+        riesgoPendienteCobroNoVencido,
+        riesgoPendienteServir,
+        riesgoPendienteFacturar,
+        divisaId,
+      ),
       riesgoConcedido: riesgoConcedido?.toMoney(currencyId: divisaId),
-      riesgoPendienteCobroVencido:
-          riesgoPendienteCobroVencido?.toMoney(currencyId: divisaId),
-      riesgoPendienteCobroNoVencido:
-          riesgoPendienteCobroNoVencido?.toMoney(currencyId: divisaId),
-      riesgoPendienteServir:
-          riesgoPendienteServir?.toMoney(currencyId: divisaId),
-      riesgoPendienteFacturar:
-          riesgoPendienteFacturar?.toMoney(currencyId: divisaId),
+      riesgoPendienteCobroVencido: riesgoPendienteCobroVencido?.toMoney(
+        currencyId: divisaId,
+      ),
+      riesgoPendienteCobroNoVencido: riesgoPendienteCobroNoVencido?.toMoney(
+        currencyId: divisaId,
+      ),
+      riesgoPendienteServir: riesgoPendienteServir?.toMoney(
+        currencyId: divisaId,
+      ),
+      riesgoPendienteFacturar: riesgoPendienteFacturar?.toMoney(
+        currencyId: divisaId,
+      ),
       riesgoExcedido: calculateRiesgoExcedido(riesgoConcedido, divisaId!),
       obvservacionesInternas: obvservacionesInternas,
       clientePotencial: (clientePotencial == 'S') ? true : false,
@@ -254,13 +260,15 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
   }
 
   Money calculateRiesgoActual(
-      double? riesgoPendienteCobroVencido,
-      double? riesgoPendienteCobroNoVencido,
-      double? riesgoPendienteServir,
-      double? riesgoPendienteFacturar,
-      String? divisaId) {
+    double? riesgoPendienteCobroVencido,
+    double? riesgoPendienteCobroNoVencido,
+    double? riesgoPendienteServir,
+    double? riesgoPendienteFacturar,
+    String? divisaId,
+  ) {
     var amount = 0.0;
-    amount += (riesgoPendienteCobroVencido ?? 0) +
+    amount +=
+        (riesgoPendienteCobroVencido ?? 0) +
         (riesgoPendienteCobroNoVencido ?? 0) +
         (riesgoPendienteServir ?? 0) +
         (riesgoPendienteFacturar ?? 0);
@@ -270,18 +278,21 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
   Money calculateRiesgoExcedido(double? riesgoConcedido, String divisaId) {
     try {
       final riesgoActual = calculateRiesgoActual(
-          riesgoPendienteCobroVencido,
-          riesgoPendienteCobroNoVencido,
-          riesgoPendienteServir,
-          riesgoPendienteFacturar,
-          divisaId);
+        riesgoPendienteCobroVencido,
+        riesgoPendienteCobroNoVencido,
+        riesgoPendienteServir,
+        riesgoPendienteFacturar,
+        divisaId,
+      );
 
       final riesgoExcedidoFixed =
           Fixed.parse(riesgoConcedido?.toString() ?? '0') - riesgoActual.amount;
 
       return riesgoExcedidoFixed.isNegative
           ? Money.fromFixedWithCurrency(
-              riesgoExcedidoFixed.abs, Currencies().find(divisaId)!)
+            riesgoExcedidoFixed.abs,
+            Currencies().find(divisaId)!,
+          )
           : Money.parseWithCurrency('0', Currencies().find(divisaId)!);
     } catch (e) {
       rethrow;
@@ -338,14 +349,16 @@ class ClienteTable extends Table {
   TextColumn get descripcionDescuentoGeneral =>
       text().nullable().named('DESCUENTO_GENERAL_DESCRIPCION')();
   TextColumn get tipoCalculoPrecio => text().named('TIPO_CALCULO_PRECIO')();
-  TextColumn get plazoDeCobroId => text()
-      .references(PlazoDeCobroTable, #id)
-      .nullable()
-      .named('PLAZO_COBRO_ID')();
-  TextColumn get metodoDeCobroId => text()
-      .references(MetodoDeCobroTable, #id)
-      .nullable()
-      .named('METODO_COBRO_ID')();
+  TextColumn get plazoDeCobroId =>
+      text()
+          .references(PlazoDeCobroTable, #id)
+          .nullable()
+          .named('PLAZO_COBRO_ID')();
+  TextColumn get metodoDeCobroId =>
+      text()
+          .references(MetodoDeCobroTable, #id)
+          .nullable()
+          .named('METODO_COBRO_ID')();
   RealColumn get descuentoProntoPago => real().named('DESCUENTO_PRONTO_PAGO')();
   RealColumn get riesgoConcedidoInterno =>
       real().named('RIESGO_CONCEDIDO_INTERNO')();

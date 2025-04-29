@@ -29,8 +29,10 @@ class ClientePrecioNetoDTO
   factory ClientePrecioNetoDTO.fromJson(Map<String, dynamic> json) =>
       _$ClientePrecioNetoDTOFromJson(json);
 
-  ClientePrecioNeto toDomain(
-      {required String? divisaId, required String descripcion}) {
+  ClientePrecioNeto toDomain({
+    required String? divisaId,
+    required String descripcion,
+  }) {
     return ClientePrecioNeto(
       clienteId: clienteId,
       articuloId: articuloId,

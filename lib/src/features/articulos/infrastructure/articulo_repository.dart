@@ -41,153 +41,175 @@ import 'articulo_ventas_cliente_dto.dart';
 import 'articulo_ventas_mes_dto.dart';
 import 'articulo_ventas_mes_todos_dto.dart';
 
-final articuloRepositoryProvider = Provider.autoDispose<ArticuloRepository>(
-  (ref) {
-    final remoteDb = ref.watch(appRemoteDatabaseProvider);
-    final localDb = ref.watch(appLocalDatabaseProvider);
-    final usuarioService = ref.watch(usuarioServiceProvider);
+final articuloRepositoryProvider = Provider.autoDispose<ArticuloRepository>((
+  ref,
+) {
+  final remoteDb = ref.watch(appRemoteDatabaseProvider);
+  final localDb = ref.watch(appLocalDatabaseProvider);
+  final usuarioService = ref.watch(usuarioServiceProvider);
 
-    final dio = ref.watch(dioProvider);
-    return ArticuloRepository(
-      remoteDb,
-      localDb,
-      dio,
-      usuarioService,
-    );
-  },
-);
+  final dio = ref.watch(dioProvider);
+  return ArticuloRepository(remoteDb, localDb, dio, usuarioService);
+});
 
-final articuloLastSyncDateProvider =
-    FutureProvider.autoDispose<DateTime>((ref) async {
+final articuloLastSyncDateProvider = FutureProvider.autoDispose<DateTime>((
+  ref,
+) async {
   final articuloRepository = ref.watch(articuloRepositoryProvider);
   return articuloRepository.getLastSyncDate();
 });
 
-final articuloProvider =
-    FutureProvider.autoDispose.family<Articulo, String>((ref, articuloId) {
+final articuloProvider = FutureProvider.autoDispose.family<Articulo, String>((
+  ref,
+  articuloId,
+) {
   final articuloRepository = ref.watch(articuloRepositoryProvider);
   return articuloRepository.getArticuloById(articuloId: articuloId);
 });
 
 final articuloComponenteListProvider = FutureProvider.autoDispose
     .family<List<ArticuloComponente>, String>((ref, articuloId) {
-  final articuloRepository = ref.watch(articuloRepositoryProvider);
-  return articuloRepository.getArticuloComponenteListaById(
-      articuloId: articuloId);
-});
+      final articuloRepository = ref.watch(articuloRepositoryProvider);
+      return articuloRepository.getArticuloComponenteListaById(
+        articuloId: articuloId,
+      );
+    });
 
 final articuloPrecioTarifaListProvider = FutureProvider.autoDispose
     .family<List<ArticuloPrecioTarifa>, String>((ref, articuloId) async {
-  final articuloRepository = ref.watch(articuloRepositoryProvider);
-  final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
+      final articuloRepository = ref.watch(articuloRepositoryProvider);
+      final usuario =
+          await ref.watch(usuarioServiceProvider).getSignedInUsuario();
 
-  return articuloRepository.getArticuloPrecioTarifaListaById(
-      articuloId: articuloId, usuarioId: usuario!.id);
-});
+      return articuloRepository.getArticuloPrecioTarifaListaById(
+        articuloId: articuloId,
+        usuarioId: usuario!.id,
+      );
+    });
 
 final articuloGrupoNetoPriceListProvider = FutureProvider.autoDispose
     .family<List<ArticuloGrupoNeto>, String>((ref, articuloId) async {
-  final articuloRepository = ref.watch(articuloRepositoryProvider);
-  final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
+      final articuloRepository = ref.watch(articuloRepositoryProvider);
+      final usuario =
+          await ref.watch(usuarioServiceProvider).getSignedInUsuario();
 
-  return articuloRepository.getArticuloGrupoNetoListaById(
-      articuloId: articuloId, usuarioId: usuario!.id);
-});
+      return articuloRepository.getArticuloGrupoNetoListaById(
+        articuloId: articuloId,
+        usuarioId: usuario!.id,
+      );
+    });
 
 final articuloSustitutivoListProvider = FutureProvider.autoDispose
     .family<List<ArticuloSustitutivo>, String>((ref, articuloId) {
-  final articuloRepository = ref.watch(articuloRepositoryProvider);
-  return articuloRepository.getArticuloSustitutivoListaById(
-      articuloId: articuloId);
-});
+      final articuloRepository = ref.watch(articuloRepositoryProvider);
+      return articuloRepository.getArticuloSustitutivoListaById(
+        articuloId: articuloId,
+      );
+    });
 
 final articuloRecambioListProvider = FutureProvider.autoDispose
     .family<List<ArticuloRecambio>, String>((ref, articuloId) {
-  final articuloRepository = ref.watch(articuloRepositoryProvider);
-  return articuloRepository.getArticuloRecambioListaById(
-      articuloId: articuloId);
-});
+      final articuloRepository = ref.watch(articuloRepositoryProvider);
+      return articuloRepository.getArticuloRecambioListaById(
+        articuloId: articuloId,
+      );
+    });
 
 final articuloImageListProvider = FutureProvider.autoDispose
     .family<List<ArticuloImagen>, String>((ref, articuloId) async {
-  final articuloRepository = ref.watch(articuloRepositoryProvider);
-  final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
-  return articuloRepository.getArticuloImagenesListaById(
-      articuloId: articuloId,
-      provisionalToken: usuario!.provisionalToken,
-      test: usuario.test);
-});
+      final articuloRepository = ref.watch(articuloRepositoryProvider);
+      final usuario =
+          await ref.watch(usuarioServiceProvider).getSignedInUsuario();
+      return articuloRepository.getArticuloImagenesListaById(
+        articuloId: articuloId,
+        provisionalToken: usuario!.provisionalToken,
+        test: usuario.test,
+      );
+    });
 
 final articuloDocumentListProvider = FutureProvider.autoDispose
     .family<List<ArticuloDocumento>, String>((ref, articuloId) async {
-  final articuloRepository = ref.watch(articuloRepositoryProvider);
-  final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
-  return articuloRepository.getArticuloDocumentoListById(
-      articuloId: articuloId,
-      provisionalToken: usuario!.provisionalToken,
-      test: usuario.test);
-});
+      final articuloRepository = ref.watch(articuloRepositoryProvider);
+      final usuario =
+          await ref.watch(usuarioServiceProvider).getSignedInUsuario();
+      return articuloRepository.getArticuloDocumentoListById(
+        articuloId: articuloId,
+        provisionalToken: usuario!.provisionalToken,
+        test: usuario.test,
+      );
+    });
 
 final articuloDocumentFileProvider = FutureProvider.autoDispose
     .family<File?, AdjuntoParam>((ref, adjuntoParam) async {
-  final articuloRepository = ref.watch(articuloRepositoryProvider);
-  final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
-  return articuloRepository.getArticuloDocumentFile(
-      adjuntoParam: adjuntoParam,
-      provisionalToken: usuario!.provisionalToken,
-      test: usuario.test);
-});
+      final articuloRepository = ref.watch(articuloRepositoryProvider);
+      final usuario =
+          await ref.watch(usuarioServiceProvider).getSignedInUsuario();
+      return articuloRepository.getArticuloDocumentFile(
+        adjuntoParam: adjuntoParam,
+        provisionalToken: usuario!.provisionalToken,
+        test: usuario.test,
+      );
+    });
 
 final articuloImageFileProvider = FutureProvider.autoDispose
     .family<Uint8List?, AdjuntoParam>((ref, adjuntoParam) async {
-  final articuloRepository = ref.watch(articuloRepositoryProvider);
+      final articuloRepository = ref.watch(articuloRepositoryProvider);
 
-  final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
-  return articuloRepository.getImageFile(
-      adjuntoParam: adjuntoParam,
-      provisionalToken: usuario!.provisionalToken,
-      test: usuario.test);
-});
+      final usuario =
+          await ref.watch(usuarioServiceProvider).getSignedInUsuario();
+      return articuloRepository.getImageFile(
+        adjuntoParam: adjuntoParam,
+        provisionalToken: usuario!.provisionalToken,
+        test: usuario.test,
+      );
+    });
 
 final articuloPedidoVentaLineaListProvider = FutureProvider.autoDispose
     .family<List<ArticuloPedidoVentaLinea>, String>((ref, articuloId) async {
-  final articuloRepository = ref.watch(articuloRepositoryProvider);
+      final articuloRepository = ref.watch(articuloRepositoryProvider);
 
-  final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
-  return articuloRepository.getArticuloPedidoVentaById(
-      articuloId: articuloId, usuarioId: usuario!.id);
-});
+      final usuario =
+          await ref.watch(usuarioServiceProvider).getSignedInUsuario();
+      return articuloRepository.getArticuloPedidoVentaById(
+        articuloId: articuloId,
+        usuarioId: usuario!.id,
+      );
+    });
 
 final articuloVentasMesProvider = FutureProvider.autoDispose
     .family<List<ArticuloVentasMes>, String>((ref, articuloId) async {
-  final articuloRepository = ref.watch(articuloRepositoryProvider);
-  final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
-  return articuloRepository.getVentasMesById(
-    articuloId: articuloId,
-    usuarioId: usuario!.id,
-    verTotalVentas: usuario.verTotalVentas,
-  );
-});
+      final articuloRepository = ref.watch(articuloRepositoryProvider);
+      final usuario =
+          await ref.watch(usuarioServiceProvider).getSignedInUsuario();
+      return articuloRepository.getVentasMesById(
+        articuloId: articuloId,
+        usuarioId: usuario!.id,
+        verTotalVentas: usuario.verTotalVentas,
+      );
+    });
 
 final articuloVentasClienteProvider = FutureProvider.autoDispose
     .family<List<ArticuloVentasCliente>, String>((ref, articuloId) async {
-  final articuloRepository = ref.watch(articuloRepositoryProvider);
-  final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
-  return articuloRepository.getVentasClienteById(
-    articuloId: articuloId,
-    usuarioId: usuario!.id,
-  );
-});
+      final articuloRepository = ref.watch(articuloRepositoryProvider);
+      final usuario =
+          await ref.watch(usuarioServiceProvider).getSignedInUsuario();
+      return articuloRepository.getVentasClienteById(
+        articuloId: articuloId,
+        usuarioId: usuario!.id,
+      );
+    });
 
 final articuloUltimosPreciosProvider = FutureProvider.autoDispose
-    .family<EstadisticasUltimosPrecios?, UltimosPreciosParam>(
-        (ref, ultimosPreciosParam) async {
-  final articuloRepository = ref.watch(articuloRepositoryProvider);
-  return articuloRepository.getArticuloUltimosPrecios(
-    articuloId: ultimosPreciosParam.articuloId,
-    clienteId: ultimosPreciosParam.clienteId,
-  );
-});
+    .family<EstadisticasUltimosPrecios?, UltimosPreciosParam>((
+      ref,
+      ultimosPreciosParam,
+    ) async {
+      final articuloRepository = ref.watch(articuloRepositoryProvider);
+      return articuloRepository.getArticuloUltimosPrecios(
+        articuloId: ultimosPreciosParam.articuloId,
+        clienteId: ultimosPreciosParam.clienteId,
+      );
+    });
 
 final syncAllArticuloDb = FutureProvider.autoDispose<void>((ref) async {
   final syncRepository = ref.watch(syncServiceProvider);
@@ -203,19 +225,18 @@ class ArticuloRepository {
 
   final Dio _dio;
 
-  ArticuloRepository(
-    this._remoteDb,
-    this._localDb,
-    this._dio,
-    this._usuario,
-  );
+  ArticuloRepository(this._remoteDb, this._localDb, this._dio, this._usuario);
 
-  Future<List<Articulo>> getArticuloLista(
-      {required int page,
-      required bool isSearchArticuloForForm,
-      required String searchText}) async {
+  Future<List<Articulo>> getArticuloLista({
+    required int page,
+    required bool isSearchArticuloForForm,
+    required String searchText,
+  }) async {
     try {
-      final query = await _remoteDb.customSelect('''
+      final query =
+          await _remoteDb
+              .customSelect(
+                '''
           SELECT art.*
           FROM ARTICULOS art
           WHERE ${descripcionSegunLocale(searchText)}
@@ -232,27 +253,32 @@ class ArticuloRepository {
           ,${isSearchArticuloForForm ? 'VENTAS_ORDEN DESC NULLS LAST,' : ''}
            art.ARTICULO_ID
           LIMIT :limit OFFSET :offset
-''', variables: [
-        const Variable(pageSize),
-        Variable(page * pageSize),
-      ], readsFrom: {
-        _remoteDb.articuloTable,
-      }).get();
+''',
+                variables: [
+                  const Variable(pageSize),
+                  Variable(page * pageSize),
+                ],
+                readsFrom: {_remoteDb.articuloTable},
+              )
+              .get();
 
-      return await Future.wait(query.map((row) async {
-        final articuloDTO = ArticuloDTO.fromJson(row.data);
-        final familiaDTO = await (_remoteDb.select(_remoteDb.familiaTable)
-              ..where(
-                  (t) => t.id.equals(row.data['FAMILIA_ID'] as String? ?? '')))
-            .getSingleOrNull();
-        final subfamiliaDTO = await (_remoteDb.select(_remoteDb.subfamiliaTable)
-              ..where((t) =>
-                  t.id.equals(row.data['SUBFAMILIA_ID'] as String? ?? '')))
-            .getSingleOrNull();
-        return articuloDTO.toDomain(
+      return await Future.wait(
+        query.map((row) async {
+          final articuloDTO = ArticuloDTO.fromJson(row.data);
+          final familiaDTO =
+              await (_remoteDb.select(_remoteDb.familiaTable)..where(
+                (t) => t.id.equals(row.data['FAMILIA_ID'] as String? ?? ''),
+              )).getSingleOrNull();
+          final subfamiliaDTO =
+              await (_remoteDb.select(_remoteDb.subfamiliaTable)..where(
+                (t) => t.id.equals(row.data['SUBFAMILIA_ID'] as String? ?? ''),
+              )).getSingleOrNull();
+          return articuloDTO.toDomain(
             familia: familiaDTO?.toDomain(),
-            subfamilia: subfamiliaDTO?.toDomain());
-      }).toList());
+            subfamilia: subfamiliaDTO?.toDomain(),
+          );
+        }).toList(),
+      );
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
@@ -260,7 +286,10 @@ class ArticuloRepository {
 
   Future<int> getArticuloCountList({required String searchText}) async {
     try {
-      final query = await _remoteDb.customSelect('''
+      final query =
+          await _remoteDb
+              .customSelect(
+                '''
           SELECT COUNT(*) as COUNT
           FROM ARTICULOS art
           WHERE ${descripcionSegunLocale(searchText)}
@@ -269,9 +298,10 @@ class ArticuloRepository {
           OR art.GS1_128_SUBCAJA LIKE '%$searchText%'
           OR art.GS1_128_CAJA LIKE '%$searchText%'
           OR art.GS1_128_PALET LIKE '%$searchText%'
-''', readsFrom: {
-        _remoteDb.articuloTable,
-      }).getSingle();
+''',
+                readsFrom: {_remoteDb.articuloTable},
+              )
+              .getSingle();
 
       final count = query.data['COUNT'] as int?;
 
@@ -291,40 +321,63 @@ class ArticuloRepository {
         ..where((t) => t.id.equals(articuloId)));
 
       return query.asyncMap((row) async {
-        final familiaDTO = await (_remoteDb.select(_remoteDb.familiaTable)
-              ..where((t) => t.id.equals(row.familiaId ?? '')))
-            .getSingleOrNull();
-        final subfamiliaDTO = await (_remoteDb.select(_remoteDb.subfamiliaTable)
-              ..where((t) => t.id.equals(row.subfamiliaId ?? '')))
-            .getSingleOrNull();
+        final familiaDTO =
+            await (_remoteDb.select(_remoteDb.familiaTable)..where(
+              (t) => t.id.equals(row.familiaId ?? ''),
+            )).getSingleOrNull();
+        final subfamiliaDTO =
+            await (_remoteDb.select(_remoteDb.subfamiliaTable)..where(
+              (t) => t.id.equals(row.subfamiliaId ?? ''),
+            )).getSingleOrNull();
 
-        final ventasAnyoActual =
-            await _getSalesForYear(DateTime.now().year, articuloId, usuarioId);
+        final ventasAnyoActual = await _getSalesForYear(
+          DateTime.now().year,
+          articuloId,
+          usuarioId,
+        );
         final ventasAnyoAnterior = await _getSalesForYear(
-            DateTime.now().year - 1, articuloId, usuarioId);
+          DateTime.now().year - 1,
+          articuloId,
+          usuarioId,
+        );
         final ventasHaceDosAnyos = await _getSalesForYear(
-            DateTime.now().year - 2, articuloId, usuarioId);
+          DateTime.now().year - 2,
+          articuloId,
+          usuarioId,
+        );
 
-        final costeAnyoActual =
-            await _getCostForYear(DateTime.now().year, articuloId, usuarioId);
+        final costeAnyoActual = await _getCostForYear(
+          DateTime.now().year,
+          articuloId,
+          usuarioId,
+        );
         // margenComercial
         final costeAnyoAnterior = await _getCostForYear(
-            DateTime.now().year - 1, articuloId, usuarioId);
+          DateTime.now().year - 1,
+          articuloId,
+          usuarioId,
+        );
         final costeHaceDosAnyos = await _getCostForYear(
-            DateTime.now().year - 2, articuloId, usuarioId);
+          DateTime.now().year - 2,
+          articuloId,
+          usuarioId,
+        );
 
-        final margenAnyoActual = ventasAnyoActual == 0
-            ? 0.0
-            : ((1 - (costeAnyoActual / ventasAnyoActual)) * 100) -
-                margenComercial;
-        final margenAnyoAnterior = ventasAnyoAnterior == 0
-            ? 0.0
-            : ((1 - (costeAnyoAnterior / ventasAnyoAnterior)) * 100) -
-                margenComercial;
-        final margenHaceDosAnyos = ventasHaceDosAnyos == 0
-            ? 0.0
-            : ((1 - (costeHaceDosAnyos / ventasHaceDosAnyos)) * 100) -
-                margenComercial;
+        final margenAnyoActual =
+            ventasAnyoActual == 0
+                ? 0.0
+                : ((1 - (costeAnyoActual / ventasAnyoActual)) * 100) -
+                    margenComercial;
+        final margenAnyoAnterior =
+            ventasAnyoAnterior == 0
+                ? 0.0
+                : ((1 - (costeAnyoAnterior / ventasAnyoAnterior)) * 100) -
+                    margenComercial;
+        final margenHaceDosAnyos =
+            ventasHaceDosAnyos == 0
+                ? 0.0
+                : ((1 - (costeHaceDosAnyos / ventasHaceDosAnyos)) * 100) -
+                    margenComercial;
 
         return row
             .toDomain(
@@ -333,10 +386,14 @@ class ArticuloRepository {
             )
             .copyWith(
               ventasAnyoActual: Money.fromNum(ventasAnyoActual, isoCode: 'EU'),
-              ventasAnyoAnterior:
-                  Money.fromNum(ventasAnyoAnterior, isoCode: 'EU'),
-              ventasHaceDosAnyos:
-                  Money.fromNum(ventasHaceDosAnyos, isoCode: 'EU'),
+              ventasAnyoAnterior: Money.fromNum(
+                ventasAnyoAnterior,
+                isoCode: 'EU',
+              ),
+              ventasHaceDosAnyos: Money.fromNum(
+                ventasHaceDosAnyos,
+                isoCode: 'EU',
+              ),
               margenAnyoActual: margenAnyoActual,
               margenAnyoAnterior: margenAnyoAnterior,
               margenHaceDosAnyos: margenHaceDosAnyos,
@@ -348,8 +405,12 @@ class ArticuloRepository {
   }
 
   Future<double> _getSalesForYear(
-      int year, String articuloId, String usuarioId) async {
-    final ventas = await _remoteDb
+    int year,
+    String articuloId,
+    String usuarioId,
+  ) async {
+    final ventas =
+        await _remoteDb
             .customSelect(
               '''SELECT SUM(estadisticas_venta.importe) AS ventas
 FROM estadisticas_venta
@@ -361,11 +422,9 @@ AND estadisticas_venta.cliente_id IN (SELECT clientes_usuario.cliente_id
               variables: [
                 Variable.withInt(year),
                 Variable.withString(articuloId),
-                Variable.withString(usuarioId)
+                Variable.withString(usuarioId),
               ],
-              readsFrom: {
-                _remoteDb.estadisticasClienteUsuarioVentasTable,
-              },
+              readsFrom: {_remoteDb.estadisticasClienteUsuarioVentasTable},
             )
             .map((row) => row.read<double?>('ventas'))
             .getSingleOrNull() ??
@@ -375,8 +434,12 @@ AND estadisticas_venta.cliente_id IN (SELECT clientes_usuario.cliente_id
   }
 
   Future<double> _getCostForYear(
-      int year, String articuloId, String usuarioId) async {
-    final coste = await _remoteDb
+    int year,
+    String articuloId,
+    String usuarioId,
+  ) async {
+    final coste =
+        await _remoteDb
             .customSelect(
               '''SELECT SUM(estadisticas_venta.coste) AS coste
 FROM estadisticas_venta
@@ -388,11 +451,9 @@ AND estadisticas_venta.cliente_id IN (SELECT clientes_usuario.cliente_id
               variables: [
                 Variable.withInt(year),
                 Variable.withString(articuloId),
-                Variable.withString(usuarioId)
+                Variable.withString(usuarioId),
               ],
-              readsFrom: {
-                _remoteDb.estadisticasClienteUsuarioVentasTable,
-              },
+              readsFrom: {_remoteDb.estadisticasClienteUsuarioVentasTable},
             )
             .map((row) => row.read<double?>('coste'))
             .getSingleOrNull() ??
@@ -401,8 +462,9 @@ AND estadisticas_venta.cliente_id IN (SELECT clientes_usuario.cliente_id
     return coste;
   }
 
-  Future<List<ArticuloComponente>> getArticuloComponenteListaById(
-      {required String articuloId}) async {
+  Future<List<ArticuloComponente>> getArticuloComponenteListaById({
+    required String articuloId,
+  }) async {
     try {
       final query = (_remoteDb.select(_remoteDb.articuloComponenteTable)
         ..where((t) => t.articuloId.equals(articuloId)));
@@ -420,7 +482,10 @@ AND estadisticas_venta.cliente_id IN (SELECT clientes_usuario.cliente_id
     required String usuarioId,
   }) async {
     try {
-      final query = await _remoteDb.customSelect('''
+      final query =
+          await _remoteDb
+              .customSelect(
+                '''
 SELECT *
   FROM ARTICULOS_TARIFA_PRECIO
  WHERE ARTICULOS_TARIFA_PRECIO.TARIFA_ID
@@ -430,13 +495,14 @@ SELECT *
                         ON CLIENTES_USUARIO.CLIENTE_ID = CLIENTES.CLIENTE_ID
                        AND CLIENTES_USUARIO.USUARIO_ID = :usuarioId)
        AND ARTICULOS_TARIFA_PRECIO.ARTICULO_ID = :articuloId;
-''', variables: [
-        Variable(usuarioId),
-        Variable(articuloId),
-      ], readsFrom: {
-        _remoteDb.articuloGrupoNetoTable,
-        _remoteDb.clienteGrupoNetoTable
-      }).get();
+''',
+                variables: [Variable(usuarioId), Variable(articuloId)],
+                readsFrom: {
+                  _remoteDb.articuloGrupoNetoTable,
+                  _remoteDb.clienteGrupoNetoTable,
+                },
+              )
+              .get();
 
       return query
           .map((row) => ArticuloPrecioTarifaDTO.fromJson(row.data).toDomain())
@@ -446,10 +512,15 @@ SELECT *
     }
   }
 
-  Future<List<ArticuloGrupoNeto>> getArticuloGrupoNetoListaById(
-      {required String articuloId, required String usuarioId}) async {
+  Future<List<ArticuloGrupoNeto>> getArticuloGrupoNetoListaById({
+    required String articuloId,
+    required String usuarioId,
+  }) async {
     try {
-      final query = await _remoteDb.customSelect('''
+      final query =
+          await _remoteDb
+              .customSelect(
+                '''
       SELECT *
   FROM ${_remoteDb.articuloGrupoNetoTable.tableName}
  WHERE EXISTS
@@ -459,13 +530,14 @@ SELECT *
            WHERE clientes_grupos_netos.grupo_neto_id = articulos_grupos_netos_precio.grupo_neto_id
              AND clientes_usuario.usuario_id = :usuarioId)
    AND articulos_grupos_netos_precio.articulo_id = :articuloId
-''', variables: [
-        Variable(usuarioId),
-        Variable(articuloId),
-      ], readsFrom: {
-        _remoteDb.articuloGrupoNetoTable,
-        _remoteDb.clienteGrupoNetoTable
-      }).get();
+''',
+                variables: [Variable(usuarioId), Variable(articuloId)],
+                readsFrom: {
+                  _remoteDb.articuloGrupoNetoTable,
+                  _remoteDb.clienteGrupoNetoTable,
+                },
+              )
+              .get();
 
       return query
           .map((row) => ArticuloGrupoNetoDTO.fromJson(row.data).toDomain())
@@ -475,8 +547,9 @@ SELECT *
     }
   }
 
-  Future<List<ArticuloRecambio>> getArticuloRecambioListaById(
-      {required String articuloId}) async {
+  Future<List<ArticuloRecambio>> getArticuloRecambioListaById({
+    required String articuloId,
+  }) async {
     try {
       final query = (_remoteDb.select(_remoteDb.articuloRecambioTable)
         ..where((t) => t.articuloId.equals(articuloId)));
@@ -489,22 +562,25 @@ SELECT *
     }
   }
 
-  Future<List<ArticuloSustitutivo>> getArticuloSustitutivoListaById(
-      {required String articuloId}) async {
+  Future<List<ArticuloSustitutivo>> getArticuloSustitutivoListaById({
+    required String articuloId,
+  }) async {
     try {
-      final query =
-          (_remoteDb.select(_remoteDb.articuloSustitutivoTable)..where((t) => t.articuloId.equals(articuloId)))
-            ..orderBy([
-              (t) => OrderingTerm(expression: t.orden),
-              (t) => OrderingTerm(expression: t.articuloSustitutivoId)
-            ]);
+      final query = (_remoteDb.select(_remoteDb.articuloSustitutivoTable)
+          ..where((t) => t.articuloId.equals(articuloId)))
+        ..orderBy([
+          (t) => OrderingTerm(expression: t.orden),
+          (t) => OrderingTerm(expression: t.articuloSustitutivoId),
+        ]);
 
       return query.asyncMap((row) async {
-        final articuloSustitutivo =
-            await getArticuloById(articuloId: row.articuloSustitutivoId);
+        final articuloSustitutivo = await getArticuloById(
+          articuloId: row.articuloSustitutivoId,
+        );
         return row.toDomain(
           articuloSustitutivoDescripcion: getDescriptionArticuloInLocalLanguage(
-              articulo: articuloSustitutivo),
+            articulo: articuloSustitutivo,
+          ),
           stockDisponible: articuloSustitutivo.stockDisponible,
         );
       }).get();
@@ -513,24 +589,26 @@ SELECT *
     }
   }
 
-  Future<List<ArticuloImagen>> getArticuloImagenesListaById(
-      {required String articuloId,
-      required String provisionalToken,
-      required bool test}) async {
+  Future<List<ArticuloImagen>> getArticuloImagenesListaById({
+    required String articuloId,
+    required String provisionalToken,
+    required bool test,
+  }) async {
     try {
       final query = {'ARTICULO_ID': articuloId};
       final articuloImageDTOList = await _remoteGetArticuloImagen(
-        requestUri: (test)
-            ? Uri.http(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/articulo/imagenes',
-                query,
-              )
-            : Uri.https(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/articulo/imagenes',
-                query,
-              ),
+        requestUri:
+            (test)
+                ? Uri.http(
+                  dotenv.get('URL', fallback: 'localhost:3001'),
+                  'api/v1/online/articulo/imagenes',
+                  query,
+                )
+                : Uri.https(
+                  dotenv.get('URL', fallback: 'localhost:3001'),
+                  'api/v1/online/articulo/imagenes',
+                  query,
+                ),
         jsonDataSelector: (json) => json['data'] as List<dynamic>,
         provisionalToken: provisionalToken,
       );
@@ -541,24 +619,26 @@ SELECT *
     }
   }
 
-  Future<List<ArticuloDocumento>> getArticuloDocumentoListById(
-      {required String articuloId,
-      required String provisionalToken,
-      required bool test}) async {
+  Future<List<ArticuloDocumento>> getArticuloDocumentoListById({
+    required String articuloId,
+    required String provisionalToken,
+    required bool test,
+  }) async {
     try {
       final query = {'ARTICULO_ID': articuloId};
       final articuloDocumentoDTOList = await _remoteGetArticuloDocumentos(
-        requestUri: (test)
-            ? Uri.http(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/articulo/documentos',
-                query,
-              )
-            : Uri.https(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/articulo/documentos',
-                query,
-              ),
+        requestUri:
+            (test)
+                ? Uri.http(
+                  dotenv.get('URL', fallback: 'localhost:3001'),
+                  'api/v1/online/articulo/documentos',
+                  query,
+                )
+                : Uri.https(
+                  dotenv.get('URL', fallback: 'localhost:3001'),
+                  'api/v1/online/articulo/documentos',
+                  query,
+                ),
         jsonDataSelector: (json) => json['data'] as List<dynamic>,
         provisionalToken: provisionalToken,
       );
@@ -569,26 +649,29 @@ SELECT *
     }
   }
 
-  Future<Uint8List?> getImageFile(
-      {required AdjuntoParam adjuntoParam,
-      required String provisionalToken,
-      required bool test}) async {
+  Future<Uint8List?> getImageFile({
+    required AdjuntoParam adjuntoParam,
+    required String provisionalToken,
+    required bool test,
+  }) async {
     try {
       if (adjuntoParam.nombreArchivo != '') {
         final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
         final dataImage = await _remoteGetAttachment(
-            requestUri: (test)
-                ? Uri.http(
+          requestUri:
+              (test)
+                  ? Uri.http(
                     dotenv.get('URL', fallback: 'localhost:3001'),
                     'api/v1/online/adjunto/articulo/${adjuntoParam.id}/img',
                     query,
                   )
-                : Uri.https(
+                  : Uri.https(
                     dotenv.get('URL', fallback: 'localhost:3001'),
                     'api/v1/online/adjunto/articulo/${adjuntoParam.id}/img',
                     query,
                   ),
-            provisionalToken: provisionalToken);
+          provisionalToken: provisionalToken,
+        );
 
         return Uint8List.fromList((dataImage));
       }
@@ -599,33 +682,36 @@ SELECT *
     }
   }
 
-  Future<File?> getArticuloDocumentFile(
-      {required AdjuntoParam adjuntoParam,
-      required String provisionalToken,
-      required bool test}) async {
+  Future<File?> getArticuloDocumentFile({
+    required AdjuntoParam adjuntoParam,
+    required String provisionalToken,
+    required bool test,
+  }) async {
     try {
       if (adjuntoParam.nombreArchivo != '') {
         final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
         final data = await _remoteGetAttachment(
-            requestUri: (test)
-                ? Uri.http(
+          requestUri:
+              (test)
+                  ? Uri.http(
                     dotenv.get('URL', fallback: 'localhost:3001'),
                     'api/v1/online/adjunto/articulo/${adjuntoParam.id}/doc',
                     query,
                   )
-                : Uri.https(
+                  : Uri.https(
                     dotenv.get('URL', fallback: 'localhost:3001'),
                     'api/v1/online/adjunto/articulo/${adjuntoParam.id}/doc',
                     query,
                   ),
-            provisionalToken: provisionalToken);
+          provisionalToken: provisionalToken,
+        );
 
         try {
           final cahceDirectories = await getTemporaryDirectory();
 
           final file = await File(
-                  '${cahceDirectories.path}/articulo/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}')
-              .create(recursive: true);
+            '${cahceDirectories.path}/articulo/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}',
+          ).create(recursive: true);
           final raf = file.openSync(mode: FileMode.write);
           raf.writeFromSync(data);
           await raf.close();
@@ -641,33 +727,36 @@ SELECT *
     }
   }
 
-  Future<File?> getClientesDocumentFile(
-      {required AdjuntoParam adjuntoParam,
-      required String provisionalToken,
-      required bool test}) async {
+  Future<File?> getClientesDocumentFile({
+    required AdjuntoParam adjuntoParam,
+    required String provisionalToken,
+    required bool test,
+  }) async {
     try {
       if (adjuntoParam.nombreArchivo != '') {
         final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
         final data = await _remoteGetAttachment(
-            requestUri: (test)
-                ? Uri.http(
+          requestUri:
+              (test)
+                  ? Uri.http(
                     dotenv.get('URL', fallback: 'localhost:3001'),
                     'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
                     query,
                   )
-                : Uri.https(
+                  : Uri.https(
                     dotenv.get('URL', fallback: 'localhost:3001'),
                     'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
                     query,
                   ),
-            provisionalToken: provisionalToken);
+          provisionalToken: provisionalToken,
+        );
 
         try {
           final cahceDirectories = await getTemporaryDirectory();
 
           final file = await File(
-                  '${cahceDirectories.path}/clientes/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}')
-              .create(recursive: true);
+            '${cahceDirectories.path}/clientes/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}',
+          ).create(recursive: true);
           final raf = file.openSync(mode: FileMode.write);
           raf.writeFromSync(data);
           await raf.close();
@@ -683,93 +772,117 @@ SELECT *
     }
   }
 
-  Future<List<ArticuloPedidoVentaLinea>> getArticuloPedidoVentaById(
-      {required String articuloId, required String usuarioId}) async {
+  Future<List<ArticuloPedidoVentaLinea>> getArticuloPedidoVentaById({
+    required String articuloId,
+    required String usuarioId,
+  }) async {
     try {
       final query = _remoteDb.select(_remoteDb.pedidoVentaLineaTable).join([
         innerJoin(
-            _remoteDb.pedidoVentaTable,
-            (_remoteDb.pedidoVentaTable.pedidoVentaId
-                    .equalsExp(_remoteDb.pedidoVentaLineaTable.pedidoId) &
-                _remoteDb.pedidoVentaTable.empresaId
-                    .equalsExp(_remoteDb.pedidoVentaLineaTable.empresaId))),
+          _remoteDb.pedidoVentaTable,
+          (_remoteDb.pedidoVentaTable.pedidoVentaId.equalsExp(
+                _remoteDb.pedidoVentaLineaTable.pedidoId,
+              ) &
+              _remoteDb.pedidoVentaTable.empresaId.equalsExp(
+                _remoteDb.pedidoVentaLineaTable.empresaId,
+              )),
+        ),
         innerJoin(
-            _remoteDb.clienteUsuarioTable,
-            _remoteDb.clienteUsuarioTable.clienteId
-                .equalsExp(_remoteDb.pedidoVentaTable.clienteId)),
+          _remoteDb.clienteUsuarioTable,
+          _remoteDb.clienteUsuarioTable.clienteId.equalsExp(
+            _remoteDb.pedidoVentaTable.clienteId,
+          ),
+        ),
         innerJoin(
-            _remoteDb.pedidoVentaEstadoTable,
-            _remoteDb.pedidoVentaEstadoTable.id
-                .equalsExp(_remoteDb.pedidoVentaTable.pedidoVentaEstadoId)),
+          _remoteDb.pedidoVentaEstadoTable,
+          _remoteDb.pedidoVentaEstadoTable.id.equalsExp(
+            _remoteDb.pedidoVentaTable.pedidoVentaEstadoId,
+          ),
+        ),
       ]);
 
       query.where(
-          (_remoteDb.pedidoVentaLineaTable.articuloId.equals(articuloId) &
-              _remoteDb.clienteUsuarioTable.usuarioId.equals(usuarioId) &
-              (_remoteDb.pedidoVentaLineaTable.cantidad -
-                      _remoteDb.pedidoVentaLineaTable.cantidadServida)
-                  .isBiggerThanValue(0) &
-              _remoteDb.pedidoVentaEstadoTable.id.isIn([0, 1, 98, 99])));
+        (_remoteDb.pedidoVentaLineaTable.articuloId.equals(articuloId) &
+            _remoteDb.clienteUsuarioTable.usuarioId.equals(usuarioId) &
+            (_remoteDb.pedidoVentaLineaTable.cantidad -
+                    _remoteDb.pedidoVentaLineaTable.cantidadServida)
+                .isBiggerThanValue(0) &
+            _remoteDb.pedidoVentaEstadoTable.id.isIn([0, 1, 98, 99])),
+      );
 
       query.orderBy([
         OrderingTerm.asc(_remoteDb.pedidoVentaTable.pedidoVentaDate),
         OrderingTerm.asc(_remoteDb.pedidoVentaTable.pedidoVentaId),
-        OrderingTerm.asc(_remoteDb.pedidoVentaLineaTable.pedidoVentaLineaId)
+        OrderingTerm.asc(_remoteDb.pedidoVentaLineaTable.pedidoVentaLineaId),
       ]);
 
       return query.asyncMap((row) async {
-        final pedidoVentaLineaDTO =
-            row.readTable(_remoteDb.pedidoVentaLineaTable);
+        final pedidoVentaLineaDTO = row.readTable(
+          _remoteDb.pedidoVentaLineaTable,
+        );
         final pedidoVentaDTO = row.readTable(_remoteDb.pedidoVentaTable);
         return ArticuloPedidoVentaLineaDTO.fromDB(
           pedidoVentaLineaDto: pedidoVentaLineaDTO,
           clienteId: pedidoVentaDTO.clienteId,
           nombreCliente: pedidoVentaDTO.nombreCliente,
         ).toDomain(
-            divisaId: pedidoVentaDTO.divisaId,
-            fechaPedido: pedidoVentaDTO.pedidoVentaDate);
+          divisaId: pedidoVentaDTO.divisaId,
+          fechaPedido: pedidoVentaDTO.pedidoVentaDate,
+        );
       }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
   }
 
-  Future<List<EstadisticasUltimosPrecios>> getArticuloUltimosPreciosList(
-      {required String articuloId,
-      required String usuarioId,
-      required int page,
-      required String searchText}) async {
+  Future<List<EstadisticasUltimosPrecios>> getArticuloUltimosPreciosList({
+    required String articuloId,
+    required String usuarioId,
+    required int page,
+    required String searchText,
+  }) async {
     try {
-      final query =
-          _remoteDb.select(_remoteDb.estadisticasUltimosPreciosTable).join([
-        innerJoin(
-            _remoteDb.clienteUsuarioTable,
-            _remoteDb.clienteUsuarioTable.clienteId.equalsExp(
-                _remoteDb.estadisticasUltimosPreciosTable.clienteId)),
-        leftOuterJoin(
-            _remoteDb.clienteTable,
-            _remoteDb.clienteTable.id.equalsExp(
-                _remoteDb.estadisticasUltimosPreciosTable.clienteId)),
-      ]);
-      query.where((_remoteDb.estadisticasUltimosPreciosTable.articuloId
-                  .equals(articuloId) &
-              _remoteDb.clienteUsuarioTable.usuarioId.equals(usuarioId)) &
-          (_remoteDb.clienteTable.nombreCliente.like('%$searchText%') |
-              _remoteDb.clienteTable.nombreCliente
-                  .like('%${searchText.toUpperCase()}%') |
-              _remoteDb.clienteTable.id.like('%$searchText%') |
-              _remoteDb.clienteTable.nombreFiscal.like('%$searchText%') |
-              _remoteDb.clienteTable.nombreFiscal
-                  .like('%${searchText.toUpperCase()}%')));
+      final query = _remoteDb
+          .select(_remoteDb.estadisticasUltimosPreciosTable)
+          .join([
+            innerJoin(
+              _remoteDb.clienteUsuarioTable,
+              _remoteDb.clienteUsuarioTable.clienteId.equalsExp(
+                _remoteDb.estadisticasUltimosPreciosTable.clienteId,
+              ),
+            ),
+            leftOuterJoin(
+              _remoteDb.clienteTable,
+              _remoteDb.clienteTable.id.equalsExp(
+                _remoteDb.estadisticasUltimosPreciosTable.clienteId,
+              ),
+            ),
+          ]);
+      query.where(
+        (_remoteDb.estadisticasUltimosPreciosTable.articuloId.equals(
+                  articuloId,
+                ) &
+                _remoteDb.clienteUsuarioTable.usuarioId.equals(usuarioId)) &
+            (_remoteDb.clienteTable.nombreCliente.like('%$searchText%') |
+                _remoteDb.clienteTable.nombreCliente.like(
+                  '%${searchText.toUpperCase()}%',
+                ) |
+                _remoteDb.clienteTable.id.like('%$searchText%') |
+                _remoteDb.clienteTable.nombreFiscal.like('%$searchText%') |
+                _remoteDb.clienteTable.nombreFiscal.like(
+                  '%${searchText.toUpperCase()}%',
+                )),
+      );
       query.limit(pageSize, offset: page * pageSize);
 
-      query.orderBy(
-        [OrderingTerm.desc(_remoteDb.estadisticasUltimosPreciosTable.fecha)],
-      );
+      query.orderBy([
+        OrderingTerm.desc(_remoteDb.estadisticasUltimosPreciosTable.fecha),
+      ]);
 
       return query.asyncMap((row) async {
-        final lastPriceArticuloDTO =
-            row.readTable(_remoteDb.estadisticasUltimosPreciosTable);
+        final lastPriceArticuloDTO = row.readTable(
+          _remoteDb.estadisticasUltimosPreciosTable,
+        );
         final clienteDTO = row.readTableOrNull(_remoteDb.clienteTable);
         return lastPriceArticuloDTO.toDomain(
           nombreCliente: clienteDTO!.nombreCliente,
@@ -781,33 +894,44 @@ SELECT *
     }
   }
 
-  Future<EstadisticasUltimosPrecios?> getArticuloUltimosPrecios(
-      {required String articuloId, required String clienteId}) async {
+  Future<EstadisticasUltimosPrecios?> getArticuloUltimosPrecios({
+    required String articuloId,
+    required String clienteId,
+  }) async {
     try {
-      final query =
-          _remoteDb.select(_remoteDb.estadisticasUltimosPreciosTable).join([
-        innerJoin(
-            _remoteDb.clienteUsuarioTable,
-            _remoteDb.clienteUsuarioTable.clienteId.equalsExp(
-                _remoteDb.estadisticasUltimosPreciosTable.clienteId)),
-        leftOuterJoin(
-            _remoteDb.clienteTable,
-            _remoteDb.clienteTable.id.equalsExp(
-                _remoteDb.estadisticasUltimosPreciosTable.clienteId)),
-      ]);
-      query.where((_remoteDb.estadisticasUltimosPreciosTable.articuloId
-              .equals(articuloId) &
-          _remoteDb.clienteTable.id.equals(clienteId)));
-
-      query.orderBy(
-        [OrderingTerm.desc(_remoteDb.estadisticasUltimosPreciosTable.fecha)],
+      final query = _remoteDb
+          .select(_remoteDb.estadisticasUltimosPreciosTable)
+          .join([
+            innerJoin(
+              _remoteDb.clienteUsuarioTable,
+              _remoteDb.clienteUsuarioTable.clienteId.equalsExp(
+                _remoteDb.estadisticasUltimosPreciosTable.clienteId,
+              ),
+            ),
+            leftOuterJoin(
+              _remoteDb.clienteTable,
+              _remoteDb.clienteTable.id.equalsExp(
+                _remoteDb.estadisticasUltimosPreciosTable.clienteId,
+              ),
+            ),
+          ]);
+      query.where(
+        (_remoteDb.estadisticasUltimosPreciosTable.articuloId.equals(
+              articuloId,
+            ) &
+            _remoteDb.clienteTable.id.equals(clienteId)),
       );
+
+      query.orderBy([
+        OrderingTerm.desc(_remoteDb.estadisticasUltimosPreciosTable.fecha),
+      ]);
 
       query.limit(1);
 
       return query.asyncMap((row) async {
-        final lastPriceArticuloDTO =
-            row.readTable(_remoteDb.estadisticasUltimosPreciosTable);
+        final lastPriceArticuloDTO = row.readTable(
+          _remoteDb.estadisticasUltimosPreciosTable,
+        );
         final clienteDTO = row.readTableOrNull(_remoteDb.clienteTable);
         return lastPriceArticuloDTO.toDomain(
           nombreCliente: clienteDTO!.nombreCliente,
@@ -819,35 +943,46 @@ SELECT *
     }
   }
 
-  Future<int> getArticuloUltimosPreciosCountList(
-      {required String articuloId,
-      required String usuarioId,
-      required String searchText}) async {
+  Future<int> getArticuloUltimosPreciosCountList({
+    required String articuloId,
+    required String usuarioId,
+    required String searchText,
+  }) async {
     try {
       final countExp =
           _remoteDb.estadisticasUltimosPreciosTable.articuloId.count();
 
-      final query =
-          _remoteDb.select(_remoteDb.estadisticasUltimosPreciosTable).join([
-        innerJoin(
-            _remoteDb.clienteUsuarioTable,
-            _remoteDb.clienteUsuarioTable.clienteId.equalsExp(
-                _remoteDb.estadisticasUltimosPreciosTable.clienteId)),
-        leftOuterJoin(
-            _remoteDb.clienteTable,
-            _remoteDb.clienteTable.id.equalsExp(
-                _remoteDb.estadisticasUltimosPreciosTable.clienteId)),
-      ]);
-      query.where((_remoteDb.estadisticasUltimosPreciosTable.articuloId
-                  .equals(articuloId) &
-              _remoteDb.clienteUsuarioTable.usuarioId.equals(usuarioId)) &
-          (_remoteDb.clienteTable.nombreCliente.like('%$searchText%') |
-              _remoteDb.clienteTable.nombreCliente
-                  .like('%${searchText.toUpperCase()}%') |
-              _remoteDb.clienteTable.id.like('%$searchText%') |
-              _remoteDb.clienteTable.nombreFiscal.like('%$searchText%') |
-              _remoteDb.clienteTable.nombreFiscal
-                  .like('%${searchText.toUpperCase()}%')));
+      final query = _remoteDb
+          .select(_remoteDb.estadisticasUltimosPreciosTable)
+          .join([
+            innerJoin(
+              _remoteDb.clienteUsuarioTable,
+              _remoteDb.clienteUsuarioTable.clienteId.equalsExp(
+                _remoteDb.estadisticasUltimosPreciosTable.clienteId,
+              ),
+            ),
+            leftOuterJoin(
+              _remoteDb.clienteTable,
+              _remoteDb.clienteTable.id.equalsExp(
+                _remoteDb.estadisticasUltimosPreciosTable.clienteId,
+              ),
+            ),
+          ]);
+      query.where(
+        (_remoteDb.estadisticasUltimosPreciosTable.articuloId.equals(
+                  articuloId,
+                ) &
+                _remoteDb.clienteUsuarioTable.usuarioId.equals(usuarioId)) &
+            (_remoteDb.clienteTable.nombreCliente.like('%$searchText%') |
+                _remoteDb.clienteTable.nombreCliente.like(
+                  '%${searchText.toUpperCase()}%',
+                ) |
+                _remoteDb.clienteTable.id.like('%$searchText%') |
+                _remoteDb.clienteTable.nombreFiscal.like('%$searchText%') |
+                _remoteDb.clienteTable.nombreFiscal.like(
+                  '%${searchText.toUpperCase()}%',
+                )),
+      );
 
       query.addColumns([countExp]);
 
@@ -865,32 +1000,37 @@ SELECT *
   }) async {
     try {
       final queryVentasMes =
-          await _remoteDb.customSelect(_getVentasMesCustomSelect(), variables: [
-        Variable(articuloId),
-        Variable(usuarioId),
-      ], readsFrom: {
-        _remoteDb.estadisticasClienteUsuarioVentasTable,
-      }).get();
+          await _remoteDb
+              .customSelect(
+                _getVentasMesCustomSelect(),
+                variables: [Variable(articuloId), Variable(usuarioId)],
+                readsFrom: {_remoteDb.estadisticasClienteUsuarioVentasTable},
+              )
+              .get();
 
       if (verTotalVentas) {
         final articuloVentaMesList = <ArticuloVentasMes>[];
 
-        final queryVentasMesTodos = await _remoteDb
-            .customSelect(_getVentasMesAllCustomSelect(), variables: [
-          Variable(articuloId),
-          Variable(usuarioId),
-        ], readsFrom: {
-          _remoteDb.estadisticasClienteUsuarioVentasTable,
-        }).get();
+        final queryVentasMesTodos =
+            await _remoteDb
+                .customSelect(
+                  _getVentasMesAllCustomSelect(),
+                  variables: [Variable(articuloId), Variable(usuarioId)],
+                  readsFrom: {_remoteDb.estadisticasClienteUsuarioVentasTable},
+                )
+                .get();
 
-        final ventasMesTodos = queryVentasMesTodos.map((row) {
-          return ArticuloVentasMesTodosDTO.fromJson(row.data).toDomain();
-        }).toList();
+        final ventasMesTodos =
+            queryVentasMesTodos.map((row) {
+              return ArticuloVentasMesTodosDTO.fromJson(row.data).toDomain();
+            }).toList();
 
         for (var i = 0; i < queryVentasMes.length; i++) {
           articuloVentaMesList.add(
-              ArticuloVentasMesDTO.fromJson(queryVentasMes[i].data)
-                  .toDomain(articulosVentasMesTodos: ventasMesTodos[i]));
+            ArticuloVentasMesDTO.fromJson(
+              queryVentasMes[i].data,
+            ).toDomain(articulosVentasMesTodos: ventasMesTodos[i]),
+          );
         }
 
         return articuloVentaMesList;
@@ -909,13 +1049,14 @@ SELECT *
     required String usuarioId,
   }) async {
     try {
-      final query = await _remoteDb
-          .customSelect(_getVentasClienteCustomSelect(), variables: [
-        Variable(articuloId),
-        Variable(usuarioId)
-      ], readsFrom: {
-        _remoteDb.estadisticasClienteUsuarioVentasTable,
-      }).get();
+      final query =
+          await _remoteDb
+              .customSelect(
+                _getVentasClienteCustomSelect(),
+                variables: [Variable(articuloId), Variable(usuarioId)],
+                readsFrom: {_remoteDb.estadisticasClienteUsuarioVentasTable},
+              )
+              .get();
 
       return query
           .map((row) => ArticuloVentasClienteDTO.fromJson(row.data).toDomain())
@@ -1273,7 +1414,9 @@ ORDER  BY IMPORTE_ANYO DESC
             .toList();
       } else {
         throw AppException.restApiFailure(
-            response.statusCode ?? 400, response.statusMessage ?? '');
+          response.statusCode ?? 400,
+          response.statusMessage ?? '',
+        );
       }
     } catch (e) {
       throw getApiError(e);
@@ -1296,11 +1439,14 @@ ORDER  BY IMPORTE_ANYO DESC
         final data = jsonDataSelector(response.data) as List<dynamic>;
         return data
             .map(
-                (e) => ArticuloDocumentoDTO.fromJson(e as Map<String, dynamic>))
+              (e) => ArticuloDocumentoDTO.fromJson(e as Map<String, dynamic>),
+            )
             .toList();
       } else {
         throw AppException.restApiFailure(
-            response.statusCode ?? 400, response.statusMessage ?? '');
+          response.statusCode ?? 400,
+          response.statusMessage ?? '',
+        );
       }
     } catch (e) {
       throw getApiError(e);
@@ -1324,7 +1470,9 @@ ORDER  BY IMPORTE_ANYO DESC
         return response.data as List<int>;
       } else {
         throw AppException.restApiFailure(
-            response.statusCode ?? 400, response.statusMessage ?? '');
+          response.statusCode ?? 400,
+          response.statusMessage ?? '',
+        );
       }
     } catch (e) {
       throw getApiError(e);
@@ -1340,36 +1488,40 @@ ORDER  BY IMPORTE_ANYO DESC
       case 'es':
         var sqlWhere = '';
         for (var i = 0; i < stringList.length; i++) {
-          sqlWhere += (i > 0 && i < stringList.length)
-              ? " OR art.DESCRIPCION_ES LIKE '%${stringList[i]}%'"
-              : "art.DESCRIPCION_ES LIKE '%${stringList[i]}%'";
+          sqlWhere +=
+              (i > 0 && i < stringList.length)
+                  ? " OR art.DESCRIPCION_ES LIKE '%${stringList[i]}%'"
+                  : "art.DESCRIPCION_ES LIKE '%${stringList[i]}%'";
         }
 
         return sqlWhere;
       case 'en':
         var sqlWhere = '';
         for (var i = 0; i < stringList.length; i++) {
-          sqlWhere += (i > 0 && i < stringList.length)
-              ? " OR art.DESCRIPCION_EN LIKE '%${stringList[i]}%'"
-              : "art.DESCRIPCION_EN LIKE '%${stringList[i]}%'";
+          sqlWhere +=
+              (i > 0 && i < stringList.length)
+                  ? " OR art.DESCRIPCION_EN LIKE '%${stringList[i]}%'"
+                  : "art.DESCRIPCION_EN LIKE '%${stringList[i]}%'";
         }
 
         return sqlWhere;
       case 'fr':
         var sqlWhere = '';
         for (var i = 0; i < stringList.length; i++) {
-          sqlWhere += (i > 0 && i < stringList.length)
-              ? " OR art.DESCRIPCION_FR LIKE '%${stringList[i]}%'"
-              : "art.DESCRIPCION_FR LIKE '%${stringList[i]}%'";
+          sqlWhere +=
+              (i > 0 && i < stringList.length)
+                  ? " OR art.DESCRIPCION_FR LIKE '%${stringList[i]}%'"
+                  : "art.DESCRIPCION_FR LIKE '%${stringList[i]}%'";
         }
 
         return sqlWhere;
       case 'de':
         var sqlWhere = '';
         for (var i = 0; i < stringList.length; i++) {
-          sqlWhere += (i > 0 && i < stringList.length)
-              ? " OR art.DESCRIPCION_DE LIKE '%${stringList[i]}%'"
-              : "art.DESCRIPCION_DE LIKE '%${stringList[i]}%'";
+          sqlWhere +=
+              (i > 0 && i < stringList.length)
+                  ? " OR art.DESCRIPCION_DE LIKE '%${stringList[i]}%'"
+                  : "art.DESCRIPCION_DE LIKE '%${stringList[i]}%'";
         }
 
         return sqlWhere;
@@ -1377,9 +1529,10 @@ ORDER  BY IMPORTE_ANYO DESC
       case 'it':
         var sqlWhere = '';
         for (var i = 0; i < stringList.length; i++) {
-          sqlWhere += (i > 0 && i < stringList.length)
-              ? " OR art.DESCRIPCION_IT LIKE '%${stringList[i]}%'"
-              : "art.DESCRIPCION_IT LIKE '%${stringList[i]}%'";
+          sqlWhere +=
+              (i > 0 && i < stringList.length)
+                  ? " OR art.DESCRIPCION_IT LIKE '%${stringList[i]}%'"
+                  : "art.DESCRIPCION_IT LIKE '%${stringList[i]}%'";
         }
 
         return sqlWhere;
@@ -1387,9 +1540,10 @@ ORDER  BY IMPORTE_ANYO DESC
       default:
         var sqlWhere = '';
         for (var i = 0; i < stringList.length; i++) {
-          sqlWhere += (i > 0 && i < stringList.length)
-              ? " OR art.DESCRIPCION_ES LIKE '%${stringList[i]}%'"
-              : "art.DESCRIPCION_ES LIKE '%${stringList[i]}%'";
+          sqlWhere +=
+              (i > 0 && i < stringList.length)
+                  ? " OR art.DESCRIPCION_ES LIKE '%${stringList[i]}%'"
+                  : "art.DESCRIPCION_ES LIKE '%${stringList[i]}%'";
         }
 
         return sqlWhere;

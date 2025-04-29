@@ -25,18 +25,22 @@ class PedidoVentaListaTile extends ConsumerWidget {
         child: Dismissible(
           key: UniqueKey(),
           background: const SliderBackround(),
-          direction: pedidoVenta.borrador
-              ? DismissDirection.horizontal
-              : DismissDirection.none,
-          onDismissed: pedidoVenta.borrador
-              ? (direction) {
-                  ref.read(
-                      deletePedidoVentaProvider(pedidoVenta.pedidoVentaAppId!));
-                  ref.invalidate(
-                      pedidoVentaIndexScreenPaginatedControllerProvider);
-                  ref.invalidate(pedidoVentaIndexScreenControllerProvider);
-                }
-              : null,
+          direction:
+              pedidoVenta.borrador
+                  ? DismissDirection.horizontal
+                  : DismissDirection.none,
+          onDismissed:
+              pedidoVenta.borrador
+                  ? (direction) {
+                    ref.read(
+                      deletePedidoVentaProvider(pedidoVenta.pedidoVentaAppId!),
+                    );
+                    ref.invalidate(
+                      pedidoVentaIndexScreenPaginatedControllerProvider,
+                    );
+                    ref.invalidate(pedidoVentaIndexScreenControllerProvider);
+                  }
+                  : null,
           child: Container(
             padding: const EdgeInsets.only(right: 16),
             color: Colors.transparent,
@@ -56,7 +60,9 @@ class PedidoVentaListaTile extends ConsumerWidget {
                     flex: 5,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                          vertical: 8, horizontal: 8),
+                        vertical: 8,
+                        horizontal: 8,
+                      ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -65,14 +71,12 @@ class PedidoVentaListaTile extends ConsumerWidget {
                                 (pedidoVenta.enviada
                                     ? S.of(context).pending
                                     : S.of(context).pedido_index_offline),
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodySmall
-                                ?.copyWith(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .bodyMedium
-                                        ?.color),
+                            style: Theme.of(
+                              context,
+                            ).textTheme.bodySmall?.copyWith(
+                              color:
+                                  Theme.of(context).textTheme.bodyMedium?.color,
+                            ),
                           ),
                           Text(
                             dateFormatter(
@@ -87,10 +91,11 @@ class PedidoVentaListaTile extends ConsumerWidget {
                             ((pedidoVenta.pedidoVentaEstado != null))
                                 ? pedidoVenta.pedidoVentaEstado!.descripcion
                                 : getEstadoPedidoLocal(
-                                    context,
-                                    pedidoVenta.borrador,
-                                    pedidoVenta.enviada,
-                                    pedidoVenta.tratada)!,
+                                  context,
+                                  pedidoVenta.borrador,
+                                  pedidoVenta.enviada,
+                                  pedidoVenta.tratada,
+                                )!,
                             style: Theme.of(context).textTheme.bodySmall,
                           ),
                         ],
@@ -115,23 +120,23 @@ class PedidoVentaListaTile extends ConsumerWidget {
                             children: [
                               Text(
                                 formatCodigoPostalAndPoblacion(
-                                    codigoPostal: pedidoVenta.codigoPostal,
-                                    poblacion: pedidoVenta.poblacion),
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall
-                                    ?.copyWith(fontSize: 10),
+                                  codigoPostal: pedidoVenta.codigoPostal,
+                                  poblacion: pedidoVenta.poblacion,
+                                ),
+                                style: Theme.of(
+                                  context,
+                                ).textTheme.bodySmall?.copyWith(fontSize: 10),
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                               ),
                               Text(
                                 formatProvinciaAndPais(
-                                    province: pedidoVenta.provincia,
-                                    pais: pedidoVenta.pais),
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall
-                                    ?.copyWith(fontSize: 10),
+                                  province: pedidoVenta.provincia,
+                                  pais: pedidoVenta.pais,
+                                ),
+                                style: Theme.of(
+                                  context,
+                                ).textTheme.bodySmall?.copyWith(fontSize: 10),
                               ),
                             ],
                           ),
@@ -145,9 +150,7 @@ class PedidoVentaListaTile extends ConsumerWidget {
                       padding: const EdgeInsets.symmetric(vertical: 8),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text(pedidoVenta.baseImponible.toString()),
-                        ],
+                        children: [Text(pedidoVenta.baseImponible.toString())],
                       ),
                     ),
                   ),

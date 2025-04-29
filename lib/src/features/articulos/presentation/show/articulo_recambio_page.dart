@@ -14,8 +14,11 @@ import '../../infrastructure/articulo_repository.dart';
 
 @RoutePage()
 class ArticuloRecambioPage extends ConsumerWidget {
-  const ArticuloRecambioPage(
-      {super.key, required this.articuloId, required this.description});
+  const ArticuloRecambioPage({
+    super.key,
+    required this.articuloId,
+    required this.description,
+  });
 
   final String articuloId;
   final String description;
@@ -29,30 +32,28 @@ class ArticuloRecambioPage extends ConsumerWidget {
       ),
       body: Column(
         children: [
-          HeaderDatosRelacionados(
-            entityId: articuloId,
-            subtitle: description,
-          ),
+          HeaderDatosRelacionados(entityId: articuloId, subtitle: description),
           gapH8,
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
-            data: (articuloRecambioList) => (articuloRecambioList.isNotEmpty)
-                ? Expanded(
-                    child: ListView.separated(
-                      itemCount: articuloRecambioList.length,
-                      itemBuilder: (context, i) => ArticuloRecambioTile(
-                        articuloRecambio: articuloRecambioList[i],
-                      ),
-                      separatorBuilder: (context, i) => const Divider(),
-                    ),
-                  )
-                : Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(S.of(context).sinResultados),
-                    ],
-                  ),
+            data:
+                (articuloRecambioList) =>
+                    (articuloRecambioList.isNotEmpty)
+                        ? Expanded(
+                          child: ListView.separated(
+                            itemCount: articuloRecambioList.length,
+                            itemBuilder:
+                                (context, i) => ArticuloRecambioTile(
+                                  articuloRecambio: articuloRecambioList[i],
+                                ),
+                            separatorBuilder: (context, i) => const Divider(),
+                          ),
+                        )
+                        : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [Text(S.of(context).sinResultados)],
+                        ),
           ),
         ],
       ),
@@ -75,12 +76,15 @@ class ArticuloRecambioTile extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(articuloRecambio.id,
-                  style: Theme.of(context).textTheme.titleSmall),
+              Text(
+                articuloRecambio.id,
+                style: Theme.of(context).textTheme.titleSmall,
+              ),
               Text(
                 '${numberFormatCantidades(articuloRecambio.cantidad)} ${S.of(context).unidad}',
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Theme.of(context).textTheme.bodySmall?.color),
+                  color: Theme.of(context).textTheme.bodySmall?.color,
+                ),
               ),
             ],
           ),

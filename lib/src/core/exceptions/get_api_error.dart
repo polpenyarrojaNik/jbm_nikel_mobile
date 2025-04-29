@@ -16,17 +16,23 @@ Error getApiError(Object e) {
         final responseErrorJson = _extractErrorMessage(responseJson);
 
         throw AppException.restApiFailure(
-            e.response?.statusCode ?? 400, responseErrorJson);
+          e.response?.statusCode ?? 400,
+          responseErrorJson,
+        );
       } catch (decodeError) {
         if (decodeError is AppException) {
           rethrow;
         }
         throw AppException.restApiFailure(
-            e.response!.statusCode ?? 500, e.response?.statusMessage ?? '');
+          e.response!.statusCode ?? 500,
+          e.response?.statusMessage ?? '',
+        );
       }
     } else {
       throw AppException.restApiFailure(
-          e.response?.statusCode ?? 400, e.response?.statusMessage ?? '');
+        e.response?.statusCode ?? 400,
+        e.response?.statusMessage ?? '',
+      );
     }
   } else {
     throw e;

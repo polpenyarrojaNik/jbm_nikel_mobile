@@ -22,9 +22,10 @@ class NotificationListDto with _$NotificationListDto {
 
   NotificationList toDomain() {
     return NotificationList(
-        notificationId: notificacionId,
-        fecha: fecha,
-        leidoSN: leidoSN == 'S',
-        mensaje: mensaje);
+      notificationId: notificacionId,
+      fecha: fecha,
+      leidoSN: leidoSN == 'S',
+      mensaje: mensaje,
+    );
   }
 }

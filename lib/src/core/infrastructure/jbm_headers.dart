@@ -9,11 +9,8 @@ typedef Json = Map<String, dynamic>;
 @freezed
 class JBMHeaders with _$JBMHeaders {
   const JBMHeaders._();
-  const factory JBMHeaders({
-    String? etag,
-    int? maxPage,
-    int? totalRows,
-  }) = _JBMHeaders;
+  const factory JBMHeaders({String? etag, int? maxPage, int? totalRows}) =
+      _JBMHeaders;
 
   factory JBMHeaders.parse(Response<dynamic> response) {
     final totalPages = response.headers.map['Total-Pages']?[0];
@@ -21,16 +18,8 @@ class JBMHeaders with _$JBMHeaders {
 
     return JBMHeaders(
       etag: getEtag(response.headers.map),
-      maxPage: totalPages == null
-          ? null
-          : int.tryParse(
-              totalPages,
-            ),
-      totalRows: totalRows == null
-          ? null
-          : int.tryParse(
-              totalRows,
-            ),
+      maxPage: totalPages == null ? null : int.tryParse(totalPages),
+      totalRows: totalRows == null ? null : int.tryParse(totalRows),
     );
   }
 

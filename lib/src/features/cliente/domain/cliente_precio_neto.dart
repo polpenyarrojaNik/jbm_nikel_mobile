@@ -6,14 +6,15 @@ part 'cliente_precio_neto.freezed.dart';
 @freezed
 class ClientePrecioNeto with _$ClientePrecioNeto {
   const ClientePrecioNeto._();
-  const factory ClientePrecioNeto(
-      {required String clienteId,
-      required String articuloId,
-      required String descripcion,
-      required int cantidadDesde,
-      required Money precio,
-      int? tipoPrecio,
-      double? dtoAdicional,
-      required DateTime lastUpdated,
-      required bool deleted}) = _ClientePrecioNeto;
+  const factory ClientePrecioNeto({
+    required String clienteId,
+    required String articuloId,
+    required String descripcion,
+    required int cantidadDesde,
+    required Money precio,
+    int? tipoPrecio,
+    double? dtoAdicional,
+    required DateTime lastUpdated,
+    required bool deleted,
+  }) = _ClientePrecioNeto;
 }

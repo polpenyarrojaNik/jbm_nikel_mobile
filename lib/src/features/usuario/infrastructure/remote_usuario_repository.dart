@@ -14,8 +14,9 @@ import 'usuario_dto.dart';
 
 typedef Json = Map<String, dynamic>;
 
-final remoteUsuarioRepositoryProvider =
-    Provider<RemoteUsuarioRepository>((ref) {
+final remoteUsuarioRepositoryProvider = Provider<RemoteUsuarioRepository>((
+  ref,
+) {
   return RemoteUsuarioRepository(ref.watch(dioForAuthProvider));
 });
 
@@ -43,8 +44,8 @@ class RemoteUsuarioRepository {
 
   Future<UsuarioDTO> signIn(String username, String password, bool test) async {
     _dio.options = BaseOptions(
-      validateStatus: (status) =>
-          status != null && status >= 200 && status < 400,
+      validateStatus:
+          (status) => status != null && status >= 200 && status < 400,
     );
 
     try {
@@ -53,7 +54,7 @@ class RemoteUsuarioRepository {
         data: {
           'USUARIO': username.replaceAll('@', ''),
           'CLAVE': password,
-          'TEST': (test) ? 'S' : 'N'
+          'TEST': (test) ? 'S' : 'N',
         },
       );
       if (response.statusCode == 200) {
@@ -68,8 +69,10 @@ class RemoteUsuarioRepository {
               'Internet Error',
         );
       } else {
-        throw AppException.restApiFailure(response.statusCode ?? 400,
-            response.statusMessage ?? 'Internet Error');
+        throw AppException.restApiFailure(
+          response.statusCode ?? 400,
+          response.statusMessage ?? 'Internet Error',
+        );
       }
     } on DioException catch (e) {
       throw AppException.restApiFailure(
@@ -126,17 +129,18 @@ class RemoteUsuarioRepository {
 
   Future<UsuarioAuxDTO> remoteSyncUser(UsuarioDTO usuarioDto) async {
     try {
-      final requestUri = (usuarioDto.isTest)
-          ? Uri.http(
-              // dotenv.get('URL', fallback: 'localhost:3001'),
-              'jbm-api-test.nikel.es:8080',
-              'api/v1/sync/usuario/${usuarioDto.id}',
-            )
-          : Uri.https(
-              // dotenv.get('URL', fallback: 'localhost:3001'),
-              'jbm-api.nikel.es',
-              'api/v1/sync/usuario/${usuarioDto.id}',
-            );
+      final requestUri =
+          (usuarioDto.isTest)
+              ? Uri.http(
+                // dotenv.get('URL', fallback: 'localhost:3001'),
+                'jbm-api-test.nikel.es:8080',
+                'api/v1/sync/usuario/${usuarioDto.id}',
+              )
+              : Uri.https(
+                // dotenv.get('URL', fallback: 'localhost:3001'),
+                'jbm-api.nikel.es',
+                'api/v1/sync/usuario/${usuarioDto.id}',
+              );
 
       final response = await _dio.getUri(
         requestUri,
@@ -151,7 +155,9 @@ class RemoteUsuarioRepository {
         return UsuarioAuxDTO.fromJson(jsonData);
       } else {
         throw AppException.restApiFailure(
-            response.statusCode ?? 400, response.statusMessage ?? '');
+          response.statusCode ?? 400,
+          response.statusMessage ?? '',
+        );
       }
     } catch (e) {
       throw getApiError(e);

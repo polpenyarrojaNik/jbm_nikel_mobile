@@ -45,30 +45,32 @@ class PedidoVentaLineaDTO
     int? stockDisponible,
   }) {
     return PedidoVentaLinea(
-        empresaId: empresaId,
-        pedidoId: pedidoId,
-        pedidoVentaAppId: pedidoVentaAppId,
-        pedidoVentaLineaId: pedidoVentaLineaId,
-        articuloId: articuloId,
-        articuloDescription: articuloDescription,
-        cantidad: cantidad,
-        precioDivisa: precioDivisa.toMoney(currencyId: divisaId),
-        divisaId: divisaId,
-        tipoPrecio: tipoPrecio,
-        descuento1: descuento1,
-        descuento2: descuento2,
-        descuento3: descuento3,
-        descuentoProntoPago: descuentoProntoPago,
-        pedidoLineaIdComponente: pedidoLineaIdComponente,
-        importeLinea: (importeLinea != null)
-            ? importeLinea!.toMoney(currencyId: divisaId)
-            : null,
-        iva: iva,
-        cantidadPendiente: cantidad - cantidadServida,
-        stockDisponible: stockDisponible,
-        stockDisponibleSN: stockDisponible != null && stockDisponible > 0,
-        lastUpdated: lastUpdated,
-        deleted: (deleted == 'S') ? true : false);
+      empresaId: empresaId,
+      pedidoId: pedidoId,
+      pedidoVentaAppId: pedidoVentaAppId,
+      pedidoVentaLineaId: pedidoVentaLineaId,
+      articuloId: articuloId,
+      articuloDescription: articuloDescription,
+      cantidad: cantidad,
+      precioDivisa: precioDivisa.toMoney(currencyId: divisaId),
+      divisaId: divisaId,
+      tipoPrecio: tipoPrecio,
+      descuento1: descuento1,
+      descuento2: descuento2,
+      descuento3: descuento3,
+      descuentoProntoPago: descuentoProntoPago,
+      pedidoLineaIdComponente: pedidoLineaIdComponente,
+      importeLinea:
+          (importeLinea != null)
+              ? importeLinea!.toMoney(currencyId: divisaId)
+              : null,
+      iva: iva,
+      cantidadPendiente: cantidad - cantidadServida,
+      stockDisponible: stockDisponible,
+      stockDisponibleSN: stockDisponible != null && stockDisponible > 0,
+      lastUpdated: lastUpdated,
+      deleted: (deleted == 'S') ? true : false,
+    );
   }
 
   @override
