@@ -12,8 +12,7 @@ part of 'descuento_general.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$DescuentoGeneral {
@@ -36,20 +35,18 @@ mixin _$DescuentoGeneral {
 /// @nodoc
 abstract class $DescuentoGeneralCopyWith<$Res> {
   factory $DescuentoGeneralCopyWith(
-    DescuentoGeneral value,
-    $Res Function(DescuentoGeneral) then,
-  ) = _$DescuentoGeneralCopyWithImpl<$Res, DescuentoGeneral>;
+          DescuentoGeneral value, $Res Function(DescuentoGeneral) then) =
+      _$DescuentoGeneralCopyWithImpl<$Res, DescuentoGeneral>;
   @useResult
-  $Res call({
-    String descuentoGeneralId,
-    String articuloId,
-    String familiaId,
-    String subfamiliaId,
-    int cantidadDesde,
-    double descuento,
-    DateTime lastUpdated,
-    bool deleted,
-  });
+  $Res call(
+      {String descuentoGeneralId,
+      String articuloId,
+      String familiaId,
+      String subfamiliaId,
+      int cantidadDesde,
+      double descuento,
+      DateTime lastUpdated,
+      bool deleted});
 }
 
 /// @nodoc
@@ -76,83 +73,69 @@ class _$DescuentoGeneralCopyWithImpl<$Res, $Val extends DescuentoGeneral>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            descuentoGeneralId:
-                null == descuentoGeneralId
-                    ? _value.descuentoGeneralId
-                    : descuentoGeneralId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            articuloId:
-                null == articuloId
-                    ? _value.articuloId
-                    : articuloId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            familiaId:
-                null == familiaId
-                    ? _value.familiaId
-                    : familiaId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            subfamiliaId:
-                null == subfamiliaId
-                    ? _value.subfamiliaId
-                    : subfamiliaId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            cantidadDesde:
-                null == cantidadDesde
-                    ? _value.cantidadDesde
-                    : cantidadDesde // ignore: cast_nullable_to_non_nullable
-                        as int,
-            descuento:
-                null == descuento
-                    ? _value.descuento
-                    : descuento // ignore: cast_nullable_to_non_nullable
-                        as double,
-            lastUpdated:
-                null == lastUpdated
-                    ? _value.lastUpdated
-                    : lastUpdated // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as bool,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      descuentoGeneralId: null == descuentoGeneralId
+          ? _value.descuentoGeneralId
+          : descuentoGeneralId // ignore: cast_nullable_to_non_nullable
+              as String,
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      familiaId: null == familiaId
+          ? _value.familiaId
+          : familiaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      subfamiliaId: null == subfamiliaId
+          ? _value.subfamiliaId
+          : subfamiliaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      cantidadDesde: null == cantidadDesde
+          ? _value.cantidadDesde
+          : cantidadDesde // ignore: cast_nullable_to_non_nullable
+              as int,
+      descuento: null == descuento
+          ? _value.descuento
+          : descuento // ignore: cast_nullable_to_non_nullable
+              as double,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$DescuentoGeneralImplCopyWith<$Res>
     implements $DescuentoGeneralCopyWith<$Res> {
-  factory _$$DescuentoGeneralImplCopyWith(
-    _$DescuentoGeneralImpl value,
-    $Res Function(_$DescuentoGeneralImpl) then,
-  ) = __$$DescuentoGeneralImplCopyWithImpl<$Res>;
+  factory _$$DescuentoGeneralImplCopyWith(_$DescuentoGeneralImpl value,
+          $Res Function(_$DescuentoGeneralImpl) then) =
+      __$$DescuentoGeneralImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String descuentoGeneralId,
-    String articuloId,
-    String familiaId,
-    String subfamiliaId,
-    int cantidadDesde,
-    double descuento,
-    DateTime lastUpdated,
-    bool deleted,
-  });
+  $Res call(
+      {String descuentoGeneralId,
+      String articuloId,
+      String familiaId,
+      String subfamiliaId,
+      int cantidadDesde,
+      double descuento,
+      DateTime lastUpdated,
+      bool deleted});
 }
 
 /// @nodoc
 class __$$DescuentoGeneralImplCopyWithImpl<$Res>
     extends _$DescuentoGeneralCopyWithImpl<$Res, _$DescuentoGeneralImpl>
     implements _$$DescuentoGeneralImplCopyWith<$Res> {
-  __$$DescuentoGeneralImplCopyWithImpl(
-    _$DescuentoGeneralImpl _value,
-    $Res Function(_$DescuentoGeneralImpl) _then,
-  ) : super(_value, _then);
+  __$$DescuentoGeneralImplCopyWithImpl(_$DescuentoGeneralImpl _value,
+      $Res Function(_$DescuentoGeneralImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of DescuentoGeneral
   /// with the given fields replaced by the non-null parameter values.
@@ -168,66 +151,56 @@ class __$$DescuentoGeneralImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$DescuentoGeneralImpl(
-        descuentoGeneralId:
-            null == descuentoGeneralId
-                ? _value.descuentoGeneralId
-                : descuentoGeneralId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        articuloId:
-            null == articuloId
-                ? _value.articuloId
-                : articuloId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        familiaId:
-            null == familiaId
-                ? _value.familiaId
-                : familiaId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        subfamiliaId:
-            null == subfamiliaId
-                ? _value.subfamiliaId
-                : subfamiliaId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        cantidadDesde:
-            null == cantidadDesde
-                ? _value.cantidadDesde
-                : cantidadDesde // ignore: cast_nullable_to_non_nullable
-                    as int,
-        descuento:
-            null == descuento
-                ? _value.descuento
-                : descuento // ignore: cast_nullable_to_non_nullable
-                    as double,
-        lastUpdated:
-            null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as bool,
-      ),
-    );
+    return _then(_$DescuentoGeneralImpl(
+      descuentoGeneralId: null == descuentoGeneralId
+          ? _value.descuentoGeneralId
+          : descuentoGeneralId // ignore: cast_nullable_to_non_nullable
+              as String,
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      familiaId: null == familiaId
+          ? _value.familiaId
+          : familiaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      subfamiliaId: null == subfamiliaId
+          ? _value.subfamiliaId
+          : subfamiliaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      cantidadDesde: null == cantidadDesde
+          ? _value.cantidadDesde
+          : cantidadDesde // ignore: cast_nullable_to_non_nullable
+              as int,
+      descuento: null == descuento
+          ? _value.descuento
+          : descuento // ignore: cast_nullable_to_non_nullable
+              as double,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$DescuentoGeneralImpl extends _DescuentoGeneral {
-  const _$DescuentoGeneralImpl({
-    required this.descuentoGeneralId,
-    required this.articuloId,
-    required this.familiaId,
-    required this.subfamiliaId,
-    required this.cantidadDesde,
-    required this.descuento,
-    required this.lastUpdated,
-    required this.deleted,
-  }) : super._();
+  const _$DescuentoGeneralImpl(
+      {required this.descuentoGeneralId,
+      required this.articuloId,
+      required this.familiaId,
+      required this.subfamiliaId,
+      required this.cantidadDesde,
+      required this.descuento,
+      required this.lastUpdated,
+      required this.deleted})
+      : super._();
 
   @override
   final String descuentoGeneralId;
@@ -274,17 +247,8 @@ class _$DescuentoGeneralImpl extends _DescuentoGeneral {
   }
 
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    descuentoGeneralId,
-    articuloId,
-    familiaId,
-    subfamiliaId,
-    cantidadDesde,
-    descuento,
-    lastUpdated,
-    deleted,
-  );
+  int get hashCode => Object.hash(runtimeType, descuentoGeneralId, articuloId,
+      familiaId, subfamiliaId, cantidadDesde, descuento, lastUpdated, deleted);
 
   /// Create a copy of DescuentoGeneral
   /// with the given fields replaced by the non-null parameter values.
@@ -293,22 +257,19 @@ class _$DescuentoGeneralImpl extends _DescuentoGeneral {
   @pragma('vm:prefer-inline')
   _$$DescuentoGeneralImplCopyWith<_$DescuentoGeneralImpl> get copyWith =>
       __$$DescuentoGeneralImplCopyWithImpl<_$DescuentoGeneralImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 }
 
 abstract class _DescuentoGeneral extends DescuentoGeneral {
-  const factory _DescuentoGeneral({
-    required final String descuentoGeneralId,
-    required final String articuloId,
-    required final String familiaId,
-    required final String subfamiliaId,
-    required final int cantidadDesde,
-    required final double descuento,
-    required final DateTime lastUpdated,
-    required final bool deleted,
-  }) = _$DescuentoGeneralImpl;
+  const factory _DescuentoGeneral(
+      {required final String descuentoGeneralId,
+      required final String articuloId,
+      required final String familiaId,
+      required final String subfamiliaId,
+      required final int cantidadDesde,
+      required final double descuento,
+      required final DateTime lastUpdated,
+      required final bool deleted}) = _$DescuentoGeneralImpl;
   const _DescuentoGeneral._() : super._();
 
   @override

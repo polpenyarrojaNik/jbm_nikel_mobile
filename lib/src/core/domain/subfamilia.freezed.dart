@@ -12,8 +12,7 @@ part of 'subfamilia.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$Subfamilia {
@@ -33,17 +32,15 @@ mixin _$Subfamilia {
 /// @nodoc
 abstract class $SubfamiliaCopyWith<$Res> {
   factory $SubfamiliaCopyWith(
-    Subfamilia value,
-    $Res Function(Subfamilia) then,
-  ) = _$SubfamiliaCopyWithImpl<$Res, Subfamilia>;
+          Subfamilia value, $Res Function(Subfamilia) then) =
+      _$SubfamiliaCopyWithImpl<$Res, Subfamilia>;
   @useResult
-  $Res call({
-    String id,
-    String familiaId,
-    String descripcion,
-    DateTime lastUpdate,
-    bool deleted,
-  });
+  $Res call(
+      {String id,
+      String familiaId,
+      String descripcion,
+      DateTime lastUpdate,
+      bool deleted});
 }
 
 /// @nodoc
@@ -67,36 +64,28 @@ class _$SubfamiliaCopyWithImpl<$Res, $Val extends Subfamilia>
     Object? lastUpdate = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            id:
-                null == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as String,
-            familiaId:
-                null == familiaId
-                    ? _value.familiaId
-                    : familiaId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            descripcion:
-                null == descripcion
-                    ? _value.descripcion
-                    : descripcion // ignore: cast_nullable_to_non_nullable
-                        as String,
-            lastUpdate:
-                null == lastUpdate
-                    ? _value.lastUpdate
-                    : lastUpdate // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as bool,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      familiaId: null == familiaId
+          ? _value.familiaId
+          : familiaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcion: null == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastUpdate: null == lastUpdate
+          ? _value.lastUpdate
+          : lastUpdate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
   }
 }
 
@@ -104,18 +93,16 @@ class _$SubfamiliaCopyWithImpl<$Res, $Val extends Subfamilia>
 abstract class _$$SubfamiliaImplCopyWith<$Res>
     implements $SubfamiliaCopyWith<$Res> {
   factory _$$SubfamiliaImplCopyWith(
-    _$SubfamiliaImpl value,
-    $Res Function(_$SubfamiliaImpl) then,
-  ) = __$$SubfamiliaImplCopyWithImpl<$Res>;
+          _$SubfamiliaImpl value, $Res Function(_$SubfamiliaImpl) then) =
+      __$$SubfamiliaImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String familiaId,
-    String descripcion,
-    DateTime lastUpdate,
-    bool deleted,
-  });
+  $Res call(
+      {String id,
+      String familiaId,
+      String descripcion,
+      DateTime lastUpdate,
+      bool deleted});
 }
 
 /// @nodoc
@@ -123,9 +110,8 @@ class __$$SubfamiliaImplCopyWithImpl<$Res>
     extends _$SubfamiliaCopyWithImpl<$Res, _$SubfamiliaImpl>
     implements _$$SubfamiliaImplCopyWith<$Res> {
   __$$SubfamiliaImplCopyWithImpl(
-    _$SubfamiliaImpl _value,
-    $Res Function(_$SubfamiliaImpl) _then,
-  ) : super(_value, _then);
+      _$SubfamiliaImpl _value, $Res Function(_$SubfamiliaImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of Subfamilia
   /// with the given fields replaced by the non-null parameter values.
@@ -138,48 +124,41 @@ class __$$SubfamiliaImplCopyWithImpl<$Res>
     Object? lastUpdate = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$SubfamiliaImpl(
-        id:
-            null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as String,
-        familiaId:
-            null == familiaId
-                ? _value.familiaId
-                : familiaId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        descripcion:
-            null == descripcion
-                ? _value.descripcion
-                : descripcion // ignore: cast_nullable_to_non_nullable
-                    as String,
-        lastUpdate:
-            null == lastUpdate
-                ? _value.lastUpdate
-                : lastUpdate // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as bool,
-      ),
-    );
+    return _then(_$SubfamiliaImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      familiaId: null == familiaId
+          ? _value.familiaId
+          : familiaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcion: null == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastUpdate: null == lastUpdate
+          ? _value.lastUpdate
+          : lastUpdate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$SubfamiliaImpl extends _Subfamilia {
-  const _$SubfamiliaImpl({
-    required this.id,
-    required this.familiaId,
-    required this.descripcion,
-    required this.lastUpdate,
-    required this.deleted,
-  }) : super._();
+  const _$SubfamiliaImpl(
+      {required this.id,
+      required this.familiaId,
+      required this.descripcion,
+      required this.lastUpdate,
+      required this.deleted})
+      : super._();
 
   @override
   final String id;
@@ -226,13 +205,12 @@ class _$SubfamiliaImpl extends _Subfamilia {
 }
 
 abstract class _Subfamilia extends Subfamilia {
-  const factory _Subfamilia({
-    required final String id,
-    required final String familiaId,
-    required final String descripcion,
-    required final DateTime lastUpdate,
-    required final bool deleted,
-  }) = _$SubfamiliaImpl;
+  const factory _Subfamilia(
+      {required final String id,
+      required final String familiaId,
+      required final String descripcion,
+      required final DateTime lastUpdate,
+      required final bool deleted}) = _$SubfamiliaImpl;
   const _Subfamilia._() : super._();
 
   @override

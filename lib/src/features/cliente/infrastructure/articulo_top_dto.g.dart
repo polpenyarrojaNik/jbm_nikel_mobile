@@ -16,11 +16,11 @@ _$ArticuloTopDTOImpl _$$ArticuloTopDTOImplFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$$ArticuloTopDTOImplToJson(
-  _$ArticuloTopDTOImpl instance,
-) => <String, dynamic>{
-  'ARTICULO_ID': instance.articuloId,
-  'DESCRIPCION_ES': instance.descripcion,
-  'VENTAS_TOTAL': instance.ventasTotal,
-  'VENTAS_CLIENTE': instance.ventasCliente,
-  'DIVISA_ID': instance.divisaId,
-};
+        _$ArticuloTopDTOImpl instance) =>
+    <String, dynamic>{
+      'ARTICULO_ID': instance.articuloId,
+      'DESCRIPCION_ES': instance.descripcion,
+      'VENTAS_TOTAL': instance.ventasTotal,
+      'VENTAS_CLIENTE': instance.ventasCliente,
+      'DIVISA_ID': instance.divisaId,
+    };

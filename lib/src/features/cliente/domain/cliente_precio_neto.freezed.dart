@@ -12,8 +12,7 @@ part of 'cliente_precio_neto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ClientePrecioNeto {
@@ -37,21 +36,19 @@ mixin _$ClientePrecioNeto {
 /// @nodoc
 abstract class $ClientePrecioNetoCopyWith<$Res> {
   factory $ClientePrecioNetoCopyWith(
-    ClientePrecioNeto value,
-    $Res Function(ClientePrecioNeto) then,
-  ) = _$ClientePrecioNetoCopyWithImpl<$Res, ClientePrecioNeto>;
+          ClientePrecioNeto value, $Res Function(ClientePrecioNeto) then) =
+      _$ClientePrecioNetoCopyWithImpl<$Res, ClientePrecioNeto>;
   @useResult
-  $Res call({
-    String clienteId,
-    String articuloId,
-    String descripcion,
-    int cantidadDesde,
-    Money precio,
-    int? tipoPrecio,
-    double? dtoAdicional,
-    DateTime lastUpdated,
-    bool deleted,
-  });
+  $Res call(
+      {String clienteId,
+      String articuloId,
+      String descripcion,
+      int cantidadDesde,
+      Money precio,
+      int? tipoPrecio,
+      double? dtoAdicional,
+      DateTime lastUpdated,
+      bool deleted});
 }
 
 /// @nodoc
@@ -79,89 +76,74 @@ class _$ClientePrecioNetoCopyWithImpl<$Res, $Val extends ClientePrecioNeto>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            clienteId:
-                null == clienteId
-                    ? _value.clienteId
-                    : clienteId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            articuloId:
-                null == articuloId
-                    ? _value.articuloId
-                    : articuloId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            descripcion:
-                null == descripcion
-                    ? _value.descripcion
-                    : descripcion // ignore: cast_nullable_to_non_nullable
-                        as String,
-            cantidadDesde:
-                null == cantidadDesde
-                    ? _value.cantidadDesde
-                    : cantidadDesde // ignore: cast_nullable_to_non_nullable
-                        as int,
-            precio:
-                null == precio
-                    ? _value.precio
-                    : precio // ignore: cast_nullable_to_non_nullable
-                        as Money,
-            tipoPrecio:
-                freezed == tipoPrecio
-                    ? _value.tipoPrecio
-                    : tipoPrecio // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            dtoAdicional:
-                freezed == dtoAdicional
-                    ? _value.dtoAdicional
-                    : dtoAdicional // ignore: cast_nullable_to_non_nullable
-                        as double?,
-            lastUpdated:
-                null == lastUpdated
-                    ? _value.lastUpdated
-                    : lastUpdated // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as bool,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcion: null == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
+              as String,
+      cantidadDesde: null == cantidadDesde
+          ? _value.cantidadDesde
+          : cantidadDesde // ignore: cast_nullable_to_non_nullable
+              as int,
+      precio: null == precio
+          ? _value.precio
+          : precio // ignore: cast_nullable_to_non_nullable
+              as Money,
+      tipoPrecio: freezed == tipoPrecio
+          ? _value.tipoPrecio
+          : tipoPrecio // ignore: cast_nullable_to_non_nullable
+              as int?,
+      dtoAdicional: freezed == dtoAdicional
+          ? _value.dtoAdicional
+          : dtoAdicional // ignore: cast_nullable_to_non_nullable
+              as double?,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$ClientePrecioNetoImplCopyWith<$Res>
     implements $ClientePrecioNetoCopyWith<$Res> {
-  factory _$$ClientePrecioNetoImplCopyWith(
-    _$ClientePrecioNetoImpl value,
-    $Res Function(_$ClientePrecioNetoImpl) then,
-  ) = __$$ClientePrecioNetoImplCopyWithImpl<$Res>;
+  factory _$$ClientePrecioNetoImplCopyWith(_$ClientePrecioNetoImpl value,
+          $Res Function(_$ClientePrecioNetoImpl) then) =
+      __$$ClientePrecioNetoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String clienteId,
-    String articuloId,
-    String descripcion,
-    int cantidadDesde,
-    Money precio,
-    int? tipoPrecio,
-    double? dtoAdicional,
-    DateTime lastUpdated,
-    bool deleted,
-  });
+  $Res call(
+      {String clienteId,
+      String articuloId,
+      String descripcion,
+      int cantidadDesde,
+      Money precio,
+      int? tipoPrecio,
+      double? dtoAdicional,
+      DateTime lastUpdated,
+      bool deleted});
 }
 
 /// @nodoc
 class __$$ClientePrecioNetoImplCopyWithImpl<$Res>
     extends _$ClientePrecioNetoCopyWithImpl<$Res, _$ClientePrecioNetoImpl>
     implements _$$ClientePrecioNetoImplCopyWith<$Res> {
-  __$$ClientePrecioNetoImplCopyWithImpl(
-    _$ClientePrecioNetoImpl _value,
-    $Res Function(_$ClientePrecioNetoImpl) _then,
-  ) : super(_value, _then);
+  __$$ClientePrecioNetoImplCopyWithImpl(_$ClientePrecioNetoImpl _value,
+      $Res Function(_$ClientePrecioNetoImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of ClientePrecioNeto
   /// with the given fields replaced by the non-null parameter values.
@@ -178,72 +160,61 @@ class __$$ClientePrecioNetoImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$ClientePrecioNetoImpl(
-        clienteId:
-            null == clienteId
-                ? _value.clienteId
-                : clienteId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        articuloId:
-            null == articuloId
-                ? _value.articuloId
-                : articuloId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        descripcion:
-            null == descripcion
-                ? _value.descripcion
-                : descripcion // ignore: cast_nullable_to_non_nullable
-                    as String,
-        cantidadDesde:
-            null == cantidadDesde
-                ? _value.cantidadDesde
-                : cantidadDesde // ignore: cast_nullable_to_non_nullable
-                    as int,
-        precio:
-            null == precio
-                ? _value.precio
-                : precio // ignore: cast_nullable_to_non_nullable
-                    as Money,
-        tipoPrecio:
-            freezed == tipoPrecio
-                ? _value.tipoPrecio
-                : tipoPrecio // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        dtoAdicional:
-            freezed == dtoAdicional
-                ? _value.dtoAdicional
-                : dtoAdicional // ignore: cast_nullable_to_non_nullable
-                    as double?,
-        lastUpdated:
-            null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as bool,
-      ),
-    );
+    return _then(_$ClientePrecioNetoImpl(
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcion: null == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
+              as String,
+      cantidadDesde: null == cantidadDesde
+          ? _value.cantidadDesde
+          : cantidadDesde // ignore: cast_nullable_to_non_nullable
+              as int,
+      precio: null == precio
+          ? _value.precio
+          : precio // ignore: cast_nullable_to_non_nullable
+              as Money,
+      tipoPrecio: freezed == tipoPrecio
+          ? _value.tipoPrecio
+          : tipoPrecio // ignore: cast_nullable_to_non_nullable
+              as int?,
+      dtoAdicional: freezed == dtoAdicional
+          ? _value.dtoAdicional
+          : dtoAdicional // ignore: cast_nullable_to_non_nullable
+              as double?,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$ClientePrecioNetoImpl extends _ClientePrecioNeto {
-  const _$ClientePrecioNetoImpl({
-    required this.clienteId,
-    required this.articuloId,
-    required this.descripcion,
-    required this.cantidadDesde,
-    required this.precio,
-    this.tipoPrecio,
-    this.dtoAdicional,
-    required this.lastUpdated,
-    required this.deleted,
-  }) : super._();
+  const _$ClientePrecioNetoImpl(
+      {required this.clienteId,
+      required this.articuloId,
+      required this.descripcion,
+      required this.cantidadDesde,
+      required this.precio,
+      this.tipoPrecio,
+      this.dtoAdicional,
+      required this.lastUpdated,
+      required this.deleted})
+      : super._();
 
   @override
   final String clienteId;
@@ -294,17 +265,16 @@ class _$ClientePrecioNetoImpl extends _ClientePrecioNeto {
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    clienteId,
-    articuloId,
-    descripcion,
-    cantidadDesde,
-    precio,
-    tipoPrecio,
-    dtoAdicional,
-    lastUpdated,
-    deleted,
-  );
+      runtimeType,
+      clienteId,
+      articuloId,
+      descripcion,
+      cantidadDesde,
+      precio,
+      tipoPrecio,
+      dtoAdicional,
+      lastUpdated,
+      deleted);
 
   /// Create a copy of ClientePrecioNeto
   /// with the given fields replaced by the non-null parameter values.
@@ -313,23 +283,20 @@ class _$ClientePrecioNetoImpl extends _ClientePrecioNeto {
   @pragma('vm:prefer-inline')
   _$$ClientePrecioNetoImplCopyWith<_$ClientePrecioNetoImpl> get copyWith =>
       __$$ClientePrecioNetoImplCopyWithImpl<_$ClientePrecioNetoImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 }
 
 abstract class _ClientePrecioNeto extends ClientePrecioNeto {
-  const factory _ClientePrecioNeto({
-    required final String clienteId,
-    required final String articuloId,
-    required final String descripcion,
-    required final int cantidadDesde,
-    required final Money precio,
-    final int? tipoPrecio,
-    final double? dtoAdicional,
-    required final DateTime lastUpdated,
-    required final bool deleted,
-  }) = _$ClientePrecioNetoImpl;
+  const factory _ClientePrecioNeto(
+      {required final String clienteId,
+      required final String articuloId,
+      required final String descripcion,
+      required final int cantidadDesde,
+      required final Money precio,
+      final int? tipoPrecio,
+      final double? dtoAdicional,
+      required final DateTime lastUpdated,
+      required final bool deleted}) = _$ClientePrecioNetoImpl;
   const _ClientePrecioNeto._() : super._();
 
   @override

@@ -12,8 +12,7 @@ part of 'cliente_pago_pendiente.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ClientePagoPendiente {
@@ -39,34 +38,30 @@ mixin _$ClientePagoPendiente {
 
 /// @nodoc
 abstract class $ClientePagoPendienteCopyWith<$Res> {
-  factory $ClientePagoPendienteCopyWith(
-    ClientePagoPendiente value,
-    $Res Function(ClientePagoPendiente) then,
-  ) = _$ClientePagoPendienteCopyWithImpl<$Res, ClientePagoPendiente>;
+  factory $ClientePagoPendienteCopyWith(ClientePagoPendiente value,
+          $Res Function(ClientePagoPendiente) then) =
+      _$ClientePagoPendienteCopyWithImpl<$Res, ClientePagoPendiente>;
   @useResult
-  $Res call({
-    String clienteId,
-    String efectoId,
-    String? facutaId,
-    DateTime? fechaFactura,
-    DateTime? fechaExpiracion,
-    MetodoDeCobro? metodoDeCobro,
-    String? estadoCobroId,
-    Money? importe,
-    DateTime? fechaExpiracionInicial,
-    bool? vencidoJBM,
-    DateTime lastUpdated,
-    bool deleted,
-  });
+  $Res call(
+      {String clienteId,
+      String efectoId,
+      String? facutaId,
+      DateTime? fechaFactura,
+      DateTime? fechaExpiracion,
+      MetodoDeCobro? metodoDeCobro,
+      String? estadoCobroId,
+      Money? importe,
+      DateTime? fechaExpiracionInicial,
+      bool? vencidoJBM,
+      DateTime lastUpdated,
+      bool deleted});
 
   $MetodoDeCobroCopyWith<$Res>? get metodoDeCobro;
 }
 
 /// @nodoc
-class _$ClientePagoPendienteCopyWithImpl<
-  $Res,
-  $Val extends ClientePagoPendiente
->
+class _$ClientePagoPendienteCopyWithImpl<$Res,
+        $Val extends ClientePagoPendiente>
     implements $ClientePagoPendienteCopyWith<$Res> {
   _$ClientePagoPendienteCopyWithImpl(this._value, this._then);
 
@@ -93,71 +88,56 @@ class _$ClientePagoPendienteCopyWithImpl<
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            clienteId:
-                null == clienteId
-                    ? _value.clienteId
-                    : clienteId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            efectoId:
-                null == efectoId
-                    ? _value.efectoId
-                    : efectoId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            facutaId:
-                freezed == facutaId
-                    ? _value.facutaId
-                    : facutaId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            fechaFactura:
-                freezed == fechaFactura
-                    ? _value.fechaFactura
-                    : fechaFactura // ignore: cast_nullable_to_non_nullable
-                        as DateTime?,
-            fechaExpiracion:
-                freezed == fechaExpiracion
-                    ? _value.fechaExpiracion
-                    : fechaExpiracion // ignore: cast_nullable_to_non_nullable
-                        as DateTime?,
-            metodoDeCobro:
-                freezed == metodoDeCobro
-                    ? _value.metodoDeCobro
-                    : metodoDeCobro // ignore: cast_nullable_to_non_nullable
-                        as MetodoDeCobro?,
-            estadoCobroId:
-                freezed == estadoCobroId
-                    ? _value.estadoCobroId
-                    : estadoCobroId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            importe:
-                freezed == importe
-                    ? _value.importe
-                    : importe // ignore: cast_nullable_to_non_nullable
-                        as Money?,
-            fechaExpiracionInicial:
-                freezed == fechaExpiracionInicial
-                    ? _value.fechaExpiracionInicial
-                    : fechaExpiracionInicial // ignore: cast_nullable_to_non_nullable
-                        as DateTime?,
-            vencidoJBM:
-                freezed == vencidoJBM
-                    ? _value.vencidoJBM
-                    : vencidoJBM // ignore: cast_nullable_to_non_nullable
-                        as bool?,
-            lastUpdated:
-                null == lastUpdated
-                    ? _value.lastUpdated
-                    : lastUpdated // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as bool,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      efectoId: null == efectoId
+          ? _value.efectoId
+          : efectoId // ignore: cast_nullable_to_non_nullable
+              as String,
+      facutaId: freezed == facutaId
+          ? _value.facutaId
+          : facutaId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fechaFactura: freezed == fechaFactura
+          ? _value.fechaFactura
+          : fechaFactura // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      fechaExpiracion: freezed == fechaExpiracion
+          ? _value.fechaExpiracion
+          : fechaExpiracion // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      metodoDeCobro: freezed == metodoDeCobro
+          ? _value.metodoDeCobro
+          : metodoDeCobro // ignore: cast_nullable_to_non_nullable
+              as MetodoDeCobro?,
+      estadoCobroId: freezed == estadoCobroId
+          ? _value.estadoCobroId
+          : estadoCobroId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      importe: freezed == importe
+          ? _value.importe
+          : importe // ignore: cast_nullable_to_non_nullable
+              as Money?,
+      fechaExpiracionInicial: freezed == fechaExpiracionInicial
+          ? _value.fechaExpiracionInicial
+          : fechaExpiracionInicial // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      vencidoJBM: freezed == vencidoJBM
+          ? _value.vencidoJBM
+          : vencidoJBM // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
   }
 
   /// Create a copy of ClientePagoPendiente
@@ -178,26 +158,24 @@ class _$ClientePagoPendienteCopyWithImpl<
 /// @nodoc
 abstract class _$$ClientePagoPendienteImplCopyWith<$Res>
     implements $ClientePagoPendienteCopyWith<$Res> {
-  factory _$$ClientePagoPendienteImplCopyWith(
-    _$ClientePagoPendienteImpl value,
-    $Res Function(_$ClientePagoPendienteImpl) then,
-  ) = __$$ClientePagoPendienteImplCopyWithImpl<$Res>;
+  factory _$$ClientePagoPendienteImplCopyWith(_$ClientePagoPendienteImpl value,
+          $Res Function(_$ClientePagoPendienteImpl) then) =
+      __$$ClientePagoPendienteImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String clienteId,
-    String efectoId,
-    String? facutaId,
-    DateTime? fechaFactura,
-    DateTime? fechaExpiracion,
-    MetodoDeCobro? metodoDeCobro,
-    String? estadoCobroId,
-    Money? importe,
-    DateTime? fechaExpiracionInicial,
-    bool? vencidoJBM,
-    DateTime lastUpdated,
-    bool deleted,
-  });
+  $Res call(
+      {String clienteId,
+      String efectoId,
+      String? facutaId,
+      DateTime? fechaFactura,
+      DateTime? fechaExpiracion,
+      MetodoDeCobro? metodoDeCobro,
+      String? estadoCobroId,
+      Money? importe,
+      DateTime? fechaExpiracionInicial,
+      bool? vencidoJBM,
+      DateTime lastUpdated,
+      bool deleted});
 
   @override
   $MetodoDeCobroCopyWith<$Res>? get metodoDeCobro;
@@ -207,10 +185,9 @@ abstract class _$$ClientePagoPendienteImplCopyWith<$Res>
 class __$$ClientePagoPendienteImplCopyWithImpl<$Res>
     extends _$ClientePagoPendienteCopyWithImpl<$Res, _$ClientePagoPendienteImpl>
     implements _$$ClientePagoPendienteImplCopyWith<$Res> {
-  __$$ClientePagoPendienteImplCopyWithImpl(
-    _$ClientePagoPendienteImpl _value,
-    $Res Function(_$ClientePagoPendienteImpl) _then,
-  ) : super(_value, _then);
+  __$$ClientePagoPendienteImplCopyWithImpl(_$ClientePagoPendienteImpl _value,
+      $Res Function(_$ClientePagoPendienteImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of ClientePagoPendiente
   /// with the given fields replaced by the non-null parameter values.
@@ -230,90 +207,76 @@ class __$$ClientePagoPendienteImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$ClientePagoPendienteImpl(
-        clienteId:
-            null == clienteId
-                ? _value.clienteId
-                : clienteId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        efectoId:
-            null == efectoId
-                ? _value.efectoId
-                : efectoId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        facutaId:
-            freezed == facutaId
-                ? _value.facutaId
-                : facutaId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        fechaFactura:
-            freezed == fechaFactura
-                ? _value.fechaFactura
-                : fechaFactura // ignore: cast_nullable_to_non_nullable
-                    as DateTime?,
-        fechaExpiracion:
-            freezed == fechaExpiracion
-                ? _value.fechaExpiracion
-                : fechaExpiracion // ignore: cast_nullable_to_non_nullable
-                    as DateTime?,
-        metodoDeCobro:
-            freezed == metodoDeCobro
-                ? _value.metodoDeCobro
-                : metodoDeCobro // ignore: cast_nullable_to_non_nullable
-                    as MetodoDeCobro?,
-        estadoCobroId:
-            freezed == estadoCobroId
-                ? _value.estadoCobroId
-                : estadoCobroId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        importe:
-            freezed == importe
-                ? _value.importe
-                : importe // ignore: cast_nullable_to_non_nullable
-                    as Money?,
-        fechaExpiracionInicial:
-            freezed == fechaExpiracionInicial
-                ? _value.fechaExpiracionInicial
-                : fechaExpiracionInicial // ignore: cast_nullable_to_non_nullable
-                    as DateTime?,
-        vencidoJBM:
-            freezed == vencidoJBM
-                ? _value.vencidoJBM
-                : vencidoJBM // ignore: cast_nullable_to_non_nullable
-                    as bool?,
-        lastUpdated:
-            null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as bool,
-      ),
-    );
+    return _then(_$ClientePagoPendienteImpl(
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      efectoId: null == efectoId
+          ? _value.efectoId
+          : efectoId // ignore: cast_nullable_to_non_nullable
+              as String,
+      facutaId: freezed == facutaId
+          ? _value.facutaId
+          : facutaId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fechaFactura: freezed == fechaFactura
+          ? _value.fechaFactura
+          : fechaFactura // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      fechaExpiracion: freezed == fechaExpiracion
+          ? _value.fechaExpiracion
+          : fechaExpiracion // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      metodoDeCobro: freezed == metodoDeCobro
+          ? _value.metodoDeCobro
+          : metodoDeCobro // ignore: cast_nullable_to_non_nullable
+              as MetodoDeCobro?,
+      estadoCobroId: freezed == estadoCobroId
+          ? _value.estadoCobroId
+          : estadoCobroId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      importe: freezed == importe
+          ? _value.importe
+          : importe // ignore: cast_nullable_to_non_nullable
+              as Money?,
+      fechaExpiracionInicial: freezed == fechaExpiracionInicial
+          ? _value.fechaExpiracionInicial
+          : fechaExpiracionInicial // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      vencidoJBM: freezed == vencidoJBM
+          ? _value.vencidoJBM
+          : vencidoJBM // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$ClientePagoPendienteImpl extends _ClientePagoPendiente {
-  const _$ClientePagoPendienteImpl({
-    required this.clienteId,
-    required this.efectoId,
-    this.facutaId,
-    this.fechaFactura,
-    this.fechaExpiracion,
-    this.metodoDeCobro,
-    this.estadoCobroId,
-    this.importe,
-    this.fechaExpiracionInicial,
-    this.vencidoJBM,
-    required this.lastUpdated,
-    required this.deleted,
-  }) : super._();
+  const _$ClientePagoPendienteImpl(
+      {required this.clienteId,
+      required this.efectoId,
+      this.facutaId,
+      this.fechaFactura,
+      this.fechaExpiracion,
+      this.metodoDeCobro,
+      this.estadoCobroId,
+      this.importe,
+      this.fechaExpiracionInicial,
+      this.vencidoJBM,
+      required this.lastUpdated,
+      required this.deleted})
+      : super._();
 
   @override
   final String clienteId;
@@ -376,20 +339,19 @@ class _$ClientePagoPendienteImpl extends _ClientePagoPendiente {
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    clienteId,
-    efectoId,
-    facutaId,
-    fechaFactura,
-    fechaExpiracion,
-    metodoDeCobro,
-    estadoCobroId,
-    importe,
-    fechaExpiracionInicial,
-    vencidoJBM,
-    lastUpdated,
-    deleted,
-  );
+      runtimeType,
+      clienteId,
+      efectoId,
+      facutaId,
+      fechaFactura,
+      fechaExpiracion,
+      metodoDeCobro,
+      estadoCobroId,
+      importe,
+      fechaExpiracionInicial,
+      vencidoJBM,
+      lastUpdated,
+      deleted);
 
   /// Create a copy of ClientePagoPendiente
   /// with the given fields replaced by the non-null parameter values.
@@ -397,28 +359,25 @@ class _$ClientePagoPendienteImpl extends _ClientePagoPendiente {
   @override
   @pragma('vm:prefer-inline')
   _$$ClientePagoPendienteImplCopyWith<_$ClientePagoPendienteImpl>
-  get copyWith =>
-      __$$ClientePagoPendienteImplCopyWithImpl<_$ClientePagoPendienteImpl>(
-        this,
-        _$identity,
-      );
+      get copyWith =>
+          __$$ClientePagoPendienteImplCopyWithImpl<_$ClientePagoPendienteImpl>(
+              this, _$identity);
 }
 
 abstract class _ClientePagoPendiente extends ClientePagoPendiente {
-  const factory _ClientePagoPendiente({
-    required final String clienteId,
-    required final String efectoId,
-    final String? facutaId,
-    final DateTime? fechaFactura,
-    final DateTime? fechaExpiracion,
-    final MetodoDeCobro? metodoDeCobro,
-    final String? estadoCobroId,
-    final Money? importe,
-    final DateTime? fechaExpiracionInicial,
-    final bool? vencidoJBM,
-    required final DateTime lastUpdated,
-    required final bool deleted,
-  }) = _$ClientePagoPendienteImpl;
+  const factory _ClientePagoPendiente(
+      {required final String clienteId,
+      required final String efectoId,
+      final String? facutaId,
+      final DateTime? fechaFactura,
+      final DateTime? fechaExpiracion,
+      final MetodoDeCobro? metodoDeCobro,
+      final String? estadoCobroId,
+      final Money? importe,
+      final DateTime? fechaExpiracionInicial,
+      final bool? vencidoJBM,
+      required final DateTime lastUpdated,
+      required final bool deleted}) = _$ClientePagoPendienteImpl;
   const _ClientePagoPendiente._() : super._();
 
   @override
@@ -451,5 +410,5 @@ abstract class _ClientePagoPendiente extends ClientePagoPendiente {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClientePagoPendienteImplCopyWith<_$ClientePagoPendienteImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }

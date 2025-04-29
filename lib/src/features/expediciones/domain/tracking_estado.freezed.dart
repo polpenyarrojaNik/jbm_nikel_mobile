@@ -12,8 +12,7 @@ part of 'tracking_estado.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$TrackingEstado {
@@ -32,9 +31,8 @@ mixin _$TrackingEstado {
 /// @nodoc
 abstract class $TrackingEstadoCopyWith<$Res> {
   factory $TrackingEstadoCopyWith(
-    TrackingEstado value,
-    $Res Function(TrackingEstado) then,
-  ) = _$TrackingEstadoCopyWithImpl<$Res, TrackingEstado>;
+          TrackingEstado value, $Res Function(TrackingEstado) then) =
+      _$TrackingEstadoCopyWithImpl<$Res, TrackingEstado>;
   @useResult
   $Res call({String id, String descripcion, DateTime lastUpdate, bool deleted});
 }
@@ -59,41 +57,33 @@ class _$TrackingEstadoCopyWithImpl<$Res, $Val extends TrackingEstado>
     Object? lastUpdate = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            id:
-                null == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as String,
-            descripcion:
-                null == descripcion
-                    ? _value.descripcion
-                    : descripcion // ignore: cast_nullable_to_non_nullable
-                        as String,
-            lastUpdate:
-                null == lastUpdate
-                    ? _value.lastUpdate
-                    : lastUpdate // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as bool,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcion: null == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastUpdate: null == lastUpdate
+          ? _value.lastUpdate
+          : lastUpdate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$TrackingEstadoImplCopyWith<$Res>
     implements $TrackingEstadoCopyWith<$Res> {
-  factory _$$TrackingEstadoImplCopyWith(
-    _$TrackingEstadoImpl value,
-    $Res Function(_$TrackingEstadoImpl) then,
-  ) = __$$TrackingEstadoImplCopyWithImpl<$Res>;
+  factory _$$TrackingEstadoImplCopyWith(_$TrackingEstadoImpl value,
+          $Res Function(_$TrackingEstadoImpl) then) =
+      __$$TrackingEstadoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id, String descripcion, DateTime lastUpdate, bool deleted});
@@ -104,9 +94,8 @@ class __$$TrackingEstadoImplCopyWithImpl<$Res>
     extends _$TrackingEstadoCopyWithImpl<$Res, _$TrackingEstadoImpl>
     implements _$$TrackingEstadoImplCopyWith<$Res> {
   __$$TrackingEstadoImplCopyWithImpl(
-    _$TrackingEstadoImpl _value,
-    $Res Function(_$TrackingEstadoImpl) _then,
-  ) : super(_value, _then);
+      _$TrackingEstadoImpl _value, $Res Function(_$TrackingEstadoImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of TrackingEstado
   /// with the given fields replaced by the non-null parameter values.
@@ -118,42 +107,36 @@ class __$$TrackingEstadoImplCopyWithImpl<$Res>
     Object? lastUpdate = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$TrackingEstadoImpl(
-        id:
-            null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as String,
-        descripcion:
-            null == descripcion
-                ? _value.descripcion
-                : descripcion // ignore: cast_nullable_to_non_nullable
-                    as String,
-        lastUpdate:
-            null == lastUpdate
-                ? _value.lastUpdate
-                : lastUpdate // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as bool,
-      ),
-    );
+    return _then(_$TrackingEstadoImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcion: null == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastUpdate: null == lastUpdate
+          ? _value.lastUpdate
+          : lastUpdate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$TrackingEstadoImpl extends _TrackingEstado {
-  const _$TrackingEstadoImpl({
-    required this.id,
-    required this.descripcion,
-    required this.lastUpdate,
-    required this.deleted,
-  }) : super._();
+  const _$TrackingEstadoImpl(
+      {required this.id,
+      required this.descripcion,
+      required this.lastUpdate,
+      required this.deleted})
+      : super._();
 
   @override
   final String id;
@@ -193,18 +176,15 @@ class _$TrackingEstadoImpl extends _TrackingEstado {
   @pragma('vm:prefer-inline')
   _$$TrackingEstadoImplCopyWith<_$TrackingEstadoImpl> get copyWith =>
       __$$TrackingEstadoImplCopyWithImpl<_$TrackingEstadoImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 }
 
 abstract class _TrackingEstado extends TrackingEstado {
-  const factory _TrackingEstado({
-    required final String id,
-    required final String descripcion,
-    required final DateTime lastUpdate,
-    required final bool deleted,
-  }) = _$TrackingEstadoImpl;
+  const factory _TrackingEstado(
+      {required final String id,
+      required final String descripcion,
+      required final DateTime lastUpdate,
+      required final bool deleted}) = _$TrackingEstadoImpl;
   const _TrackingEstado._() : super._();
 
   @override

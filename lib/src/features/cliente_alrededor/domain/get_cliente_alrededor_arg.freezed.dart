@@ -12,8 +12,7 @@ part of 'get_cliente_alrededor_arg.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$GetClienteAlrededorArg {
@@ -31,24 +30,20 @@ mixin _$GetClienteAlrededorArg {
 
 /// @nodoc
 abstract class $GetClienteAlrededorArgCopyWith<$Res> {
-  factory $GetClienteAlrededorArgCopyWith(
-    GetClienteAlrededorArg value,
-    $Res Function(GetClienteAlrededorArg) then,
-  ) = _$GetClienteAlrededorArgCopyWithImpl<$Res, GetClienteAlrededorArg>;
+  factory $GetClienteAlrededorArgCopyWith(GetClienteAlrededorArg value,
+          $Res Function(GetClienteAlrededorArg) then) =
+      _$GetClienteAlrededorArgCopyWithImpl<$Res, GetClienteAlrededorArg>;
   @useResult
-  $Res call({
-    LatLng latLng,
-    double radiusDistance,
-    bool showDireccionesEnvio,
-    bool showPotenciales,
-  });
+  $Res call(
+      {LatLng latLng,
+      double radiusDistance,
+      bool showDireccionesEnvio,
+      bool showPotenciales});
 }
 
 /// @nodoc
-class _$GetClienteAlrededorArgCopyWithImpl<
-  $Res,
-  $Val extends GetClienteAlrededorArg
->
+class _$GetClienteAlrededorArgCopyWithImpl<$Res,
+        $Val extends GetClienteAlrededorArg>
     implements $GetClienteAlrededorArgCopyWith<$Res> {
   _$GetClienteAlrededorArgCopyWithImpl(this._value, this._then);
 
@@ -67,31 +62,24 @@ class _$GetClienteAlrededorArgCopyWithImpl<
     Object? showDireccionesEnvio = null,
     Object? showPotenciales = null,
   }) {
-    return _then(
-      _value.copyWith(
-            latLng:
-                null == latLng
-                    ? _value.latLng
-                    : latLng // ignore: cast_nullable_to_non_nullable
-                        as LatLng,
-            radiusDistance:
-                null == radiusDistance
-                    ? _value.radiusDistance
-                    : radiusDistance // ignore: cast_nullable_to_non_nullable
-                        as double,
-            showDireccionesEnvio:
-                null == showDireccionesEnvio
-                    ? _value.showDireccionesEnvio
-                    : showDireccionesEnvio // ignore: cast_nullable_to_non_nullable
-                        as bool,
-            showPotenciales:
-                null == showPotenciales
-                    ? _value.showPotenciales
-                    : showPotenciales // ignore: cast_nullable_to_non_nullable
-                        as bool,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      latLng: null == latLng
+          ? _value.latLng
+          : latLng // ignore: cast_nullable_to_non_nullable
+              as LatLng,
+      radiusDistance: null == radiusDistance
+          ? _value.radiusDistance
+          : radiusDistance // ignore: cast_nullable_to_non_nullable
+              as double,
+      showDireccionesEnvio: null == showDireccionesEnvio
+          ? _value.showDireccionesEnvio
+          : showDireccionesEnvio // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showPotenciales: null == showPotenciales
+          ? _value.showPotenciales
+          : showPotenciales // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
   }
 }
 
@@ -99,28 +87,27 @@ class _$GetClienteAlrededorArgCopyWithImpl<
 abstract class _$$GetClienteAlrededorArgImplCopyWith<$Res>
     implements $GetClienteAlrededorArgCopyWith<$Res> {
   factory _$$GetClienteAlrededorArgImplCopyWith(
-    _$GetClienteAlrededorArgImpl value,
-    $Res Function(_$GetClienteAlrededorArgImpl) then,
-  ) = __$$GetClienteAlrededorArgImplCopyWithImpl<$Res>;
+          _$GetClienteAlrededorArgImpl value,
+          $Res Function(_$GetClienteAlrededorArgImpl) then) =
+      __$$GetClienteAlrededorArgImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    LatLng latLng,
-    double radiusDistance,
-    bool showDireccionesEnvio,
-    bool showPotenciales,
-  });
+  $Res call(
+      {LatLng latLng,
+      double radiusDistance,
+      bool showDireccionesEnvio,
+      bool showPotenciales});
 }
 
 /// @nodoc
 class __$$GetClienteAlrededorArgImplCopyWithImpl<$Res>
-    extends
-        _$GetClienteAlrededorArgCopyWithImpl<$Res, _$GetClienteAlrededorArgImpl>
+    extends _$GetClienteAlrededorArgCopyWithImpl<$Res,
+        _$GetClienteAlrededorArgImpl>
     implements _$$GetClienteAlrededorArgImplCopyWith<$Res> {
   __$$GetClienteAlrededorArgImplCopyWithImpl(
-    _$GetClienteAlrededorArgImpl _value,
-    $Res Function(_$GetClienteAlrededorArgImpl) _then,
-  ) : super(_value, _then);
+      _$GetClienteAlrededorArgImpl _value,
+      $Res Function(_$GetClienteAlrededorArgImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of GetClienteAlrededorArg
   /// with the given fields replaced by the non-null parameter values.
@@ -132,42 +119,36 @@ class __$$GetClienteAlrededorArgImplCopyWithImpl<$Res>
     Object? showDireccionesEnvio = null,
     Object? showPotenciales = null,
   }) {
-    return _then(
-      _$GetClienteAlrededorArgImpl(
-        latLng:
-            null == latLng
-                ? _value.latLng
-                : latLng // ignore: cast_nullable_to_non_nullable
-                    as LatLng,
-        radiusDistance:
-            null == radiusDistance
-                ? _value.radiusDistance
-                : radiusDistance // ignore: cast_nullable_to_non_nullable
-                    as double,
-        showDireccionesEnvio:
-            null == showDireccionesEnvio
-                ? _value.showDireccionesEnvio
-                : showDireccionesEnvio // ignore: cast_nullable_to_non_nullable
-                    as bool,
-        showPotenciales:
-            null == showPotenciales
-                ? _value.showPotenciales
-                : showPotenciales // ignore: cast_nullable_to_non_nullable
-                    as bool,
-      ),
-    );
+    return _then(_$GetClienteAlrededorArgImpl(
+      latLng: null == latLng
+          ? _value.latLng
+          : latLng // ignore: cast_nullable_to_non_nullable
+              as LatLng,
+      radiusDistance: null == radiusDistance
+          ? _value.radiusDistance
+          : radiusDistance // ignore: cast_nullable_to_non_nullable
+              as double,
+      showDireccionesEnvio: null == showDireccionesEnvio
+          ? _value.showDireccionesEnvio
+          : showDireccionesEnvio // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showPotenciales: null == showPotenciales
+          ? _value.showPotenciales
+          : showPotenciales // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$GetClienteAlrededorArgImpl extends _GetClienteAlrededorArg {
-  const _$GetClienteAlrededorArgImpl({
-    required this.latLng,
-    required this.radiusDistance,
-    required this.showDireccionesEnvio,
-    required this.showPotenciales,
-  }) : super._();
+  const _$GetClienteAlrededorArgImpl(
+      {required this.latLng,
+      required this.radiusDistance,
+      required this.showDireccionesEnvio,
+      required this.showPotenciales})
+      : super._();
 
   @override
   final LatLng latLng;
@@ -198,13 +179,8 @@ class _$GetClienteAlrededorArgImpl extends _GetClienteAlrededorArg {
   }
 
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    latLng,
-    radiusDistance,
-    showDireccionesEnvio,
-    showPotenciales,
-  );
+  int get hashCode => Object.hash(runtimeType, latLng, radiusDistance,
+      showDireccionesEnvio, showPotenciales);
 
   /// Create a copy of GetClienteAlrededorArg
   /// with the given fields replaced by the non-null parameter values.
@@ -212,20 +188,16 @@ class _$GetClienteAlrededorArgImpl extends _GetClienteAlrededorArg {
   @override
   @pragma('vm:prefer-inline')
   _$$GetClienteAlrededorArgImplCopyWith<_$GetClienteAlrededorArgImpl>
-  get copyWith =>
-      __$$GetClienteAlrededorArgImplCopyWithImpl<_$GetClienteAlrededorArgImpl>(
-        this,
-        _$identity,
-      );
+      get copyWith => __$$GetClienteAlrededorArgImplCopyWithImpl<
+          _$GetClienteAlrededorArgImpl>(this, _$identity);
 }
 
 abstract class _GetClienteAlrededorArg extends GetClienteAlrededorArg {
-  const factory _GetClienteAlrededorArg({
-    required final LatLng latLng,
-    required final double radiusDistance,
-    required final bool showDireccionesEnvio,
-    required final bool showPotenciales,
-  }) = _$GetClienteAlrededorArgImpl;
+  const factory _GetClienteAlrededorArg(
+      {required final LatLng latLng,
+      required final double radiusDistance,
+      required final bool showDireccionesEnvio,
+      required final bool showPotenciales}) = _$GetClienteAlrededorArgImpl;
   const _GetClienteAlrededorArg._() : super._();
 
   @override
@@ -242,5 +214,5 @@ abstract class _GetClienteAlrededorArg extends GetClienteAlrededorArg {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetClienteAlrededorArgImplCopyWith<_$GetClienteAlrededorArgImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }

@@ -12,8 +12,7 @@ part of 'articulo_ventas_cliente.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ArticuloVentasCliente {
@@ -39,32 +38,28 @@ mixin _$ArticuloVentasCliente {
 
 /// @nodoc
 abstract class $ArticuloVentasClienteCopyWith<$Res> {
-  factory $ArticuloVentasClienteCopyWith(
-    ArticuloVentasCliente value,
-    $Res Function(ArticuloVentasCliente) then,
-  ) = _$ArticuloVentasClienteCopyWithImpl<$Res, ArticuloVentasCliente>;
+  factory $ArticuloVentasClienteCopyWith(ArticuloVentasCliente value,
+          $Res Function(ArticuloVentasCliente) then) =
+      _$ArticuloVentasClienteCopyWithImpl<$Res, ArticuloVentasCliente>;
   @useResult
-  $Res call({
-    String clienteId,
-    String nombreCliente,
-    Money importeAnyo,
-    Money importeAnyo_1,
-    Money importeAnyo_2,
-    Money importeAnyo_3,
-    Money importeAnyo_4,
-    int cantidadAnyo,
-    int cantidadAnyo_1,
-    int cantidadAnyo_2,
-    int cantidadAnyo_3,
-    int cantidadAnyo_4,
-  });
+  $Res call(
+      {String clienteId,
+      String nombreCliente,
+      Money importeAnyo,
+      Money importeAnyo_1,
+      Money importeAnyo_2,
+      Money importeAnyo_3,
+      Money importeAnyo_4,
+      int cantidadAnyo,
+      int cantidadAnyo_1,
+      int cantidadAnyo_2,
+      int cantidadAnyo_3,
+      int cantidadAnyo_4});
 }
 
 /// @nodoc
-class _$ArticuloVentasClienteCopyWithImpl<
-  $Res,
-  $Val extends ArticuloVentasCliente
->
+class _$ArticuloVentasClienteCopyWithImpl<$Res,
+        $Val extends ArticuloVentasCliente>
     implements $ArticuloVentasClienteCopyWith<$Res> {
   _$ArticuloVentasClienteCopyWithImpl(this._value, this._then);
 
@@ -91,71 +86,56 @@ class _$ArticuloVentasClienteCopyWithImpl<
     Object? cantidadAnyo_3 = null,
     Object? cantidadAnyo_4 = null,
   }) {
-    return _then(
-      _value.copyWith(
-            clienteId:
-                null == clienteId
-                    ? _value.clienteId
-                    : clienteId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            nombreCliente:
-                null == nombreCliente
-                    ? _value.nombreCliente
-                    : nombreCliente // ignore: cast_nullable_to_non_nullable
-                        as String,
-            importeAnyo:
-                null == importeAnyo
-                    ? _value.importeAnyo
-                    : importeAnyo // ignore: cast_nullable_to_non_nullable
-                        as Money,
-            importeAnyo_1:
-                null == importeAnyo_1
-                    ? _value.importeAnyo_1
-                    : importeAnyo_1 // ignore: cast_nullable_to_non_nullable
-                        as Money,
-            importeAnyo_2:
-                null == importeAnyo_2
-                    ? _value.importeAnyo_2
-                    : importeAnyo_2 // ignore: cast_nullable_to_non_nullable
-                        as Money,
-            importeAnyo_3:
-                null == importeAnyo_3
-                    ? _value.importeAnyo_3
-                    : importeAnyo_3 // ignore: cast_nullable_to_non_nullable
-                        as Money,
-            importeAnyo_4:
-                null == importeAnyo_4
-                    ? _value.importeAnyo_4
-                    : importeAnyo_4 // ignore: cast_nullable_to_non_nullable
-                        as Money,
-            cantidadAnyo:
-                null == cantidadAnyo
-                    ? _value.cantidadAnyo
-                    : cantidadAnyo // ignore: cast_nullable_to_non_nullable
-                        as int,
-            cantidadAnyo_1:
-                null == cantidadAnyo_1
-                    ? _value.cantidadAnyo_1
-                    : cantidadAnyo_1 // ignore: cast_nullable_to_non_nullable
-                        as int,
-            cantidadAnyo_2:
-                null == cantidadAnyo_2
-                    ? _value.cantidadAnyo_2
-                    : cantidadAnyo_2 // ignore: cast_nullable_to_non_nullable
-                        as int,
-            cantidadAnyo_3:
-                null == cantidadAnyo_3
-                    ? _value.cantidadAnyo_3
-                    : cantidadAnyo_3 // ignore: cast_nullable_to_non_nullable
-                        as int,
-            cantidadAnyo_4:
-                null == cantidadAnyo_4
-                    ? _value.cantidadAnyo_4
-                    : cantidadAnyo_4 // ignore: cast_nullable_to_non_nullable
-                        as int,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      nombreCliente: null == nombreCliente
+          ? _value.nombreCliente
+          : nombreCliente // ignore: cast_nullable_to_non_nullable
+              as String,
+      importeAnyo: null == importeAnyo
+          ? _value.importeAnyo
+          : importeAnyo // ignore: cast_nullable_to_non_nullable
+              as Money,
+      importeAnyo_1: null == importeAnyo_1
+          ? _value.importeAnyo_1
+          : importeAnyo_1 // ignore: cast_nullable_to_non_nullable
+              as Money,
+      importeAnyo_2: null == importeAnyo_2
+          ? _value.importeAnyo_2
+          : importeAnyo_2 // ignore: cast_nullable_to_non_nullable
+              as Money,
+      importeAnyo_3: null == importeAnyo_3
+          ? _value.importeAnyo_3
+          : importeAnyo_3 // ignore: cast_nullable_to_non_nullable
+              as Money,
+      importeAnyo_4: null == importeAnyo_4
+          ? _value.importeAnyo_4
+          : importeAnyo_4 // ignore: cast_nullable_to_non_nullable
+              as Money,
+      cantidadAnyo: null == cantidadAnyo
+          ? _value.cantidadAnyo
+          : cantidadAnyo // ignore: cast_nullable_to_non_nullable
+              as int,
+      cantidadAnyo_1: null == cantidadAnyo_1
+          ? _value.cantidadAnyo_1
+          : cantidadAnyo_1 // ignore: cast_nullable_to_non_nullable
+              as int,
+      cantidadAnyo_2: null == cantidadAnyo_2
+          ? _value.cantidadAnyo_2
+          : cantidadAnyo_2 // ignore: cast_nullable_to_non_nullable
+              as int,
+      cantidadAnyo_3: null == cantidadAnyo_3
+          ? _value.cantidadAnyo_3
+          : cantidadAnyo_3 // ignore: cast_nullable_to_non_nullable
+              as int,
+      cantidadAnyo_4: null == cantidadAnyo_4
+          ? _value.cantidadAnyo_4
+          : cantidadAnyo_4 // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
   }
 }
 
@@ -163,36 +143,34 @@ class _$ArticuloVentasClienteCopyWithImpl<
 abstract class _$$ArticuloVentasClienteImplCopyWith<$Res>
     implements $ArticuloVentasClienteCopyWith<$Res> {
   factory _$$ArticuloVentasClienteImplCopyWith(
-    _$ArticuloVentasClienteImpl value,
-    $Res Function(_$ArticuloVentasClienteImpl) then,
-  ) = __$$ArticuloVentasClienteImplCopyWithImpl<$Res>;
+          _$ArticuloVentasClienteImpl value,
+          $Res Function(_$ArticuloVentasClienteImpl) then) =
+      __$$ArticuloVentasClienteImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String clienteId,
-    String nombreCliente,
-    Money importeAnyo,
-    Money importeAnyo_1,
-    Money importeAnyo_2,
-    Money importeAnyo_3,
-    Money importeAnyo_4,
-    int cantidadAnyo,
-    int cantidadAnyo_1,
-    int cantidadAnyo_2,
-    int cantidadAnyo_3,
-    int cantidadAnyo_4,
-  });
+  $Res call(
+      {String clienteId,
+      String nombreCliente,
+      Money importeAnyo,
+      Money importeAnyo_1,
+      Money importeAnyo_2,
+      Money importeAnyo_3,
+      Money importeAnyo_4,
+      int cantidadAnyo,
+      int cantidadAnyo_1,
+      int cantidadAnyo_2,
+      int cantidadAnyo_3,
+      int cantidadAnyo_4});
 }
 
 /// @nodoc
 class __$$ArticuloVentasClienteImplCopyWithImpl<$Res>
-    extends
-        _$ArticuloVentasClienteCopyWithImpl<$Res, _$ArticuloVentasClienteImpl>
+    extends _$ArticuloVentasClienteCopyWithImpl<$Res,
+        _$ArticuloVentasClienteImpl>
     implements _$$ArticuloVentasClienteImplCopyWith<$Res> {
-  __$$ArticuloVentasClienteImplCopyWithImpl(
-    _$ArticuloVentasClienteImpl _value,
-    $Res Function(_$ArticuloVentasClienteImpl) _then,
-  ) : super(_value, _then);
+  __$$ArticuloVentasClienteImplCopyWithImpl(_$ArticuloVentasClienteImpl _value,
+      $Res Function(_$ArticuloVentasClienteImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of ArticuloVentasCliente
   /// with the given fields replaced by the non-null parameter values.
@@ -212,90 +190,76 @@ class __$$ArticuloVentasClienteImplCopyWithImpl<$Res>
     Object? cantidadAnyo_3 = null,
     Object? cantidadAnyo_4 = null,
   }) {
-    return _then(
-      _$ArticuloVentasClienteImpl(
-        clienteId:
-            null == clienteId
-                ? _value.clienteId
-                : clienteId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        nombreCliente:
-            null == nombreCliente
-                ? _value.nombreCliente
-                : nombreCliente // ignore: cast_nullable_to_non_nullable
-                    as String,
-        importeAnyo:
-            null == importeAnyo
-                ? _value.importeAnyo
-                : importeAnyo // ignore: cast_nullable_to_non_nullable
-                    as Money,
-        importeAnyo_1:
-            null == importeAnyo_1
-                ? _value.importeAnyo_1
-                : importeAnyo_1 // ignore: cast_nullable_to_non_nullable
-                    as Money,
-        importeAnyo_2:
-            null == importeAnyo_2
-                ? _value.importeAnyo_2
-                : importeAnyo_2 // ignore: cast_nullable_to_non_nullable
-                    as Money,
-        importeAnyo_3:
-            null == importeAnyo_3
-                ? _value.importeAnyo_3
-                : importeAnyo_3 // ignore: cast_nullable_to_non_nullable
-                    as Money,
-        importeAnyo_4:
-            null == importeAnyo_4
-                ? _value.importeAnyo_4
-                : importeAnyo_4 // ignore: cast_nullable_to_non_nullable
-                    as Money,
-        cantidadAnyo:
-            null == cantidadAnyo
-                ? _value.cantidadAnyo
-                : cantidadAnyo // ignore: cast_nullable_to_non_nullable
-                    as int,
-        cantidadAnyo_1:
-            null == cantidadAnyo_1
-                ? _value.cantidadAnyo_1
-                : cantidadAnyo_1 // ignore: cast_nullable_to_non_nullable
-                    as int,
-        cantidadAnyo_2:
-            null == cantidadAnyo_2
-                ? _value.cantidadAnyo_2
-                : cantidadAnyo_2 // ignore: cast_nullable_to_non_nullable
-                    as int,
-        cantidadAnyo_3:
-            null == cantidadAnyo_3
-                ? _value.cantidadAnyo_3
-                : cantidadAnyo_3 // ignore: cast_nullable_to_non_nullable
-                    as int,
-        cantidadAnyo_4:
-            null == cantidadAnyo_4
-                ? _value.cantidadAnyo_4
-                : cantidadAnyo_4 // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
+    return _then(_$ArticuloVentasClienteImpl(
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      nombreCliente: null == nombreCliente
+          ? _value.nombreCliente
+          : nombreCliente // ignore: cast_nullable_to_non_nullable
+              as String,
+      importeAnyo: null == importeAnyo
+          ? _value.importeAnyo
+          : importeAnyo // ignore: cast_nullable_to_non_nullable
+              as Money,
+      importeAnyo_1: null == importeAnyo_1
+          ? _value.importeAnyo_1
+          : importeAnyo_1 // ignore: cast_nullable_to_non_nullable
+              as Money,
+      importeAnyo_2: null == importeAnyo_2
+          ? _value.importeAnyo_2
+          : importeAnyo_2 // ignore: cast_nullable_to_non_nullable
+              as Money,
+      importeAnyo_3: null == importeAnyo_3
+          ? _value.importeAnyo_3
+          : importeAnyo_3 // ignore: cast_nullable_to_non_nullable
+              as Money,
+      importeAnyo_4: null == importeAnyo_4
+          ? _value.importeAnyo_4
+          : importeAnyo_4 // ignore: cast_nullable_to_non_nullable
+              as Money,
+      cantidadAnyo: null == cantidadAnyo
+          ? _value.cantidadAnyo
+          : cantidadAnyo // ignore: cast_nullable_to_non_nullable
+              as int,
+      cantidadAnyo_1: null == cantidadAnyo_1
+          ? _value.cantidadAnyo_1
+          : cantidadAnyo_1 // ignore: cast_nullable_to_non_nullable
+              as int,
+      cantidadAnyo_2: null == cantidadAnyo_2
+          ? _value.cantidadAnyo_2
+          : cantidadAnyo_2 // ignore: cast_nullable_to_non_nullable
+              as int,
+      cantidadAnyo_3: null == cantidadAnyo_3
+          ? _value.cantidadAnyo_3
+          : cantidadAnyo_3 // ignore: cast_nullable_to_non_nullable
+              as int,
+      cantidadAnyo_4: null == cantidadAnyo_4
+          ? _value.cantidadAnyo_4
+          : cantidadAnyo_4 // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$ArticuloVentasClienteImpl extends _ArticuloVentasCliente {
-  const _$ArticuloVentasClienteImpl({
-    required this.clienteId,
-    required this.nombreCliente,
-    required this.importeAnyo,
-    required this.importeAnyo_1,
-    required this.importeAnyo_2,
-    required this.importeAnyo_3,
-    required this.importeAnyo_4,
-    required this.cantidadAnyo,
-    required this.cantidadAnyo_1,
-    required this.cantidadAnyo_2,
-    required this.cantidadAnyo_3,
-    required this.cantidadAnyo_4,
-  }) : super._();
+  const _$ArticuloVentasClienteImpl(
+      {required this.clienteId,
+      required this.nombreCliente,
+      required this.importeAnyo,
+      required this.importeAnyo_1,
+      required this.importeAnyo_2,
+      required this.importeAnyo_3,
+      required this.importeAnyo_4,
+      required this.cantidadAnyo,
+      required this.cantidadAnyo_1,
+      required this.cantidadAnyo_2,
+      required this.cantidadAnyo_3,
+      required this.cantidadAnyo_4})
+      : super._();
 
   @override
   final String clienteId;
@@ -360,20 +324,19 @@ class _$ArticuloVentasClienteImpl extends _ArticuloVentasCliente {
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    clienteId,
-    nombreCliente,
-    importeAnyo,
-    importeAnyo_1,
-    importeAnyo_2,
-    importeAnyo_3,
-    importeAnyo_4,
-    cantidadAnyo,
-    cantidadAnyo_1,
-    cantidadAnyo_2,
-    cantidadAnyo_3,
-    cantidadAnyo_4,
-  );
+      runtimeType,
+      clienteId,
+      nombreCliente,
+      importeAnyo,
+      importeAnyo_1,
+      importeAnyo_2,
+      importeAnyo_3,
+      importeAnyo_4,
+      cantidadAnyo,
+      cantidadAnyo_1,
+      cantidadAnyo_2,
+      cantidadAnyo_3,
+      cantidadAnyo_4);
 
   /// Create a copy of ArticuloVentasCliente
   /// with the given fields replaced by the non-null parameter values.
@@ -381,28 +344,24 @@ class _$ArticuloVentasClienteImpl extends _ArticuloVentasCliente {
   @override
   @pragma('vm:prefer-inline')
   _$$ArticuloVentasClienteImplCopyWith<_$ArticuloVentasClienteImpl>
-  get copyWith =>
-      __$$ArticuloVentasClienteImplCopyWithImpl<_$ArticuloVentasClienteImpl>(
-        this,
-        _$identity,
-      );
+      get copyWith => __$$ArticuloVentasClienteImplCopyWithImpl<
+          _$ArticuloVentasClienteImpl>(this, _$identity);
 }
 
 abstract class _ArticuloVentasCliente extends ArticuloVentasCliente {
-  const factory _ArticuloVentasCliente({
-    required final String clienteId,
-    required final String nombreCliente,
-    required final Money importeAnyo,
-    required final Money importeAnyo_1,
-    required final Money importeAnyo_2,
-    required final Money importeAnyo_3,
-    required final Money importeAnyo_4,
-    required final int cantidadAnyo,
-    required final int cantidadAnyo_1,
-    required final int cantidadAnyo_2,
-    required final int cantidadAnyo_3,
-    required final int cantidadAnyo_4,
-  }) = _$ArticuloVentasClienteImpl;
+  const factory _ArticuloVentasCliente(
+      {required final String clienteId,
+      required final String nombreCliente,
+      required final Money importeAnyo,
+      required final Money importeAnyo_1,
+      required final Money importeAnyo_2,
+      required final Money importeAnyo_3,
+      required final Money importeAnyo_4,
+      required final int cantidadAnyo,
+      required final int cantidadAnyo_1,
+      required final int cantidadAnyo_2,
+      required final int cantidadAnyo_3,
+      required final int cantidadAnyo_4}) = _$ArticuloVentasClienteImpl;
   const _ArticuloVentasCliente._() : super._();
 
   @override
@@ -435,5 +394,5 @@ abstract class _ArticuloVentasCliente extends ArticuloVentasCliente {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ArticuloVentasClienteImplCopyWith<_$ArticuloVentasClienteImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }

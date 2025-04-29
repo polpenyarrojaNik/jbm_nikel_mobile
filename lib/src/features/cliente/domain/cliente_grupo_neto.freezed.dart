@@ -12,8 +12,7 @@ part of 'cliente_grupo_neto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ClienteGrupoNeto {
@@ -34,18 +33,16 @@ mixin _$ClienteGrupoNeto {
 /// @nodoc
 abstract class $ClienteGrupoNetoCopyWith<$Res> {
   factory $ClienteGrupoNetoCopyWith(
-    ClienteGrupoNeto value,
-    $Res Function(ClienteGrupoNeto) then,
-  ) = _$ClienteGrupoNetoCopyWithImpl<$Res, ClienteGrupoNeto>;
+          ClienteGrupoNeto value, $Res Function(ClienteGrupoNeto) then) =
+      _$ClienteGrupoNetoCopyWithImpl<$Res, ClienteGrupoNeto>;
   @useResult
-  $Res call({
-    String clienteId,
-    String grupoNetoId,
-    String grupoNetoDescripcion,
-    double dtoAdicional,
-    DateTime lastUpdated,
-    bool deleted,
-  });
+  $Res call(
+      {String clienteId,
+      String grupoNetoId,
+      String grupoNetoDescripcion,
+      double dtoAdicional,
+      DateTime lastUpdated,
+      bool deleted});
 }
 
 /// @nodoc
@@ -70,71 +67,59 @@ class _$ClienteGrupoNetoCopyWithImpl<$Res, $Val extends ClienteGrupoNeto>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            clienteId:
-                null == clienteId
-                    ? _value.clienteId
-                    : clienteId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            grupoNetoId:
-                null == grupoNetoId
-                    ? _value.grupoNetoId
-                    : grupoNetoId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            grupoNetoDescripcion:
-                null == grupoNetoDescripcion
-                    ? _value.grupoNetoDescripcion
-                    : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
-                        as String,
-            dtoAdicional:
-                null == dtoAdicional
-                    ? _value.dtoAdicional
-                    : dtoAdicional // ignore: cast_nullable_to_non_nullable
-                        as double,
-            lastUpdated:
-                null == lastUpdated
-                    ? _value.lastUpdated
-                    : lastUpdated // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as bool,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      grupoNetoId: null == grupoNetoId
+          ? _value.grupoNetoId
+          : grupoNetoId // ignore: cast_nullable_to_non_nullable
+              as String,
+      grupoNetoDescripcion: null == grupoNetoDescripcion
+          ? _value.grupoNetoDescripcion
+          : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
+              as String,
+      dtoAdicional: null == dtoAdicional
+          ? _value.dtoAdicional
+          : dtoAdicional // ignore: cast_nullable_to_non_nullable
+              as double,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$ClienteGrupoNetoImplCopyWith<$Res>
     implements $ClienteGrupoNetoCopyWith<$Res> {
-  factory _$$ClienteGrupoNetoImplCopyWith(
-    _$ClienteGrupoNetoImpl value,
-    $Res Function(_$ClienteGrupoNetoImpl) then,
-  ) = __$$ClienteGrupoNetoImplCopyWithImpl<$Res>;
+  factory _$$ClienteGrupoNetoImplCopyWith(_$ClienteGrupoNetoImpl value,
+          $Res Function(_$ClienteGrupoNetoImpl) then) =
+      __$$ClienteGrupoNetoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String clienteId,
-    String grupoNetoId,
-    String grupoNetoDescripcion,
-    double dtoAdicional,
-    DateTime lastUpdated,
-    bool deleted,
-  });
+  $Res call(
+      {String clienteId,
+      String grupoNetoId,
+      String grupoNetoDescripcion,
+      double dtoAdicional,
+      DateTime lastUpdated,
+      bool deleted});
 }
 
 /// @nodoc
 class __$$ClienteGrupoNetoImplCopyWithImpl<$Res>
     extends _$ClienteGrupoNetoCopyWithImpl<$Res, _$ClienteGrupoNetoImpl>
     implements _$$ClienteGrupoNetoImplCopyWith<$Res> {
-  __$$ClienteGrupoNetoImplCopyWithImpl(
-    _$ClienteGrupoNetoImpl _value,
-    $Res Function(_$ClienteGrupoNetoImpl) _then,
-  ) : super(_value, _then);
+  __$$ClienteGrupoNetoImplCopyWithImpl(_$ClienteGrupoNetoImpl _value,
+      $Res Function(_$ClienteGrupoNetoImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of ClienteGrupoNeto
   /// with the given fields replaced by the non-null parameter values.
@@ -148,54 +133,46 @@ class __$$ClienteGrupoNetoImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$ClienteGrupoNetoImpl(
-        clienteId:
-            null == clienteId
-                ? _value.clienteId
-                : clienteId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        grupoNetoId:
-            null == grupoNetoId
-                ? _value.grupoNetoId
-                : grupoNetoId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        grupoNetoDescripcion:
-            null == grupoNetoDescripcion
-                ? _value.grupoNetoDescripcion
-                : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
-                    as String,
-        dtoAdicional:
-            null == dtoAdicional
-                ? _value.dtoAdicional
-                : dtoAdicional // ignore: cast_nullable_to_non_nullable
-                    as double,
-        lastUpdated:
-            null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as bool,
-      ),
-    );
+    return _then(_$ClienteGrupoNetoImpl(
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      grupoNetoId: null == grupoNetoId
+          ? _value.grupoNetoId
+          : grupoNetoId // ignore: cast_nullable_to_non_nullable
+              as String,
+      grupoNetoDescripcion: null == grupoNetoDescripcion
+          ? _value.grupoNetoDescripcion
+          : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
+              as String,
+      dtoAdicional: null == dtoAdicional
+          ? _value.dtoAdicional
+          : dtoAdicional // ignore: cast_nullable_to_non_nullable
+              as double,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$ClienteGrupoNetoImpl extends _ClienteGrupoNeto {
-  const _$ClienteGrupoNetoImpl({
-    required this.clienteId,
-    required this.grupoNetoId,
-    required this.grupoNetoDescripcion,
-    required this.dtoAdicional,
-    required this.lastUpdated,
-    required this.deleted,
-  }) : super._();
+  const _$ClienteGrupoNetoImpl(
+      {required this.clienteId,
+      required this.grupoNetoId,
+      required this.grupoNetoDescripcion,
+      required this.dtoAdicional,
+      required this.lastUpdated,
+      required this.deleted})
+      : super._();
 
   @override
   final String clienteId;
@@ -234,15 +211,8 @@ class _$ClienteGrupoNetoImpl extends _ClienteGrupoNeto {
   }
 
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    clienteId,
-    grupoNetoId,
-    grupoNetoDescripcion,
-    dtoAdicional,
-    lastUpdated,
-    deleted,
-  );
+  int get hashCode => Object.hash(runtimeType, clienteId, grupoNetoId,
+      grupoNetoDescripcion, dtoAdicional, lastUpdated, deleted);
 
   /// Create a copy of ClienteGrupoNeto
   /// with the given fields replaced by the non-null parameter values.
@@ -251,20 +221,17 @@ class _$ClienteGrupoNetoImpl extends _ClienteGrupoNeto {
   @pragma('vm:prefer-inline')
   _$$ClienteGrupoNetoImplCopyWith<_$ClienteGrupoNetoImpl> get copyWith =>
       __$$ClienteGrupoNetoImplCopyWithImpl<_$ClienteGrupoNetoImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 }
 
 abstract class _ClienteGrupoNeto extends ClienteGrupoNeto {
-  const factory _ClienteGrupoNeto({
-    required final String clienteId,
-    required final String grupoNetoId,
-    required final String grupoNetoDescripcion,
-    required final double dtoAdicional,
-    required final DateTime lastUpdated,
-    required final bool deleted,
-  }) = _$ClienteGrupoNetoImpl;
+  const factory _ClienteGrupoNeto(
+      {required final String clienteId,
+      required final String grupoNetoId,
+      required final String grupoNetoDescripcion,
+      required final double dtoAdicional,
+      required final DateTime lastUpdated,
+      required final bool deleted}) = _$ClienteGrupoNetoImpl;
   const _ClienteGrupoNeto._() : super._();
 
   @override

@@ -12,12 +12,10 @@ part of 'visita_competencia_local_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 VisitaCompetenciaLocalDTO _$VisitaCompetenciaLocalDTOFromJson(
-  Map<String, dynamic> json,
-) {
+    Map<String, dynamic> json) {
   return _VisitaCompetenciaLocalDTO.fromJson(json);
 }
 
@@ -40,22 +38,18 @@ mixin _$VisitaCompetenciaLocalDTO {
 
 /// @nodoc
 abstract class $VisitaCompetenciaLocalDTOCopyWith<$Res> {
-  factory $VisitaCompetenciaLocalDTOCopyWith(
-    VisitaCompetenciaLocalDTO value,
-    $Res Function(VisitaCompetenciaLocalDTO) then,
-  ) = _$VisitaCompetenciaLocalDTOCopyWithImpl<$Res, VisitaCompetenciaLocalDTO>;
+  factory $VisitaCompetenciaLocalDTOCopyWith(VisitaCompetenciaLocalDTO value,
+          $Res Function(VisitaCompetenciaLocalDTO) then) =
+      _$VisitaCompetenciaLocalDTOCopyWithImpl<$Res, VisitaCompetenciaLocalDTO>;
   @useResult
-  $Res call({
-    @JsonKey(name: 'COD_VISITA_APP') String visitaAppId,
-    @JsonKey(name: 'CODIGO_COMPETENCIA') int codigoCompetencia,
-  });
+  $Res call(
+      {@JsonKey(name: 'COD_VISITA_APP') String visitaAppId,
+      @JsonKey(name: 'CODIGO_COMPETENCIA') int codigoCompetencia});
 }
 
 /// @nodoc
-class _$VisitaCompetenciaLocalDTOCopyWithImpl<
-  $Res,
-  $Val extends VisitaCompetenciaLocalDTO
->
+class _$VisitaCompetenciaLocalDTOCopyWithImpl<$Res,
+        $Val extends VisitaCompetenciaLocalDTO>
     implements $VisitaCompetenciaLocalDTOCopyWith<$Res> {
   _$VisitaCompetenciaLocalDTOCopyWithImpl(this._value, this._then);
 
@@ -68,22 +62,20 @@ class _$VisitaCompetenciaLocalDTOCopyWithImpl<
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? visitaAppId = null, Object? codigoCompetencia = null}) {
-    return _then(
-      _value.copyWith(
-            visitaAppId:
-                null == visitaAppId
-                    ? _value.visitaAppId
-                    : visitaAppId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            codigoCompetencia:
-                null == codigoCompetencia
-                    ? _value.codigoCompetencia
-                    : codigoCompetencia // ignore: cast_nullable_to_non_nullable
-                        as int,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? visitaAppId = null,
+    Object? codigoCompetencia = null,
+  }) {
+    return _then(_value.copyWith(
+      visitaAppId: null == visitaAppId
+          ? _value.visitaAppId
+          : visitaAppId // ignore: cast_nullable_to_non_nullable
+              as String,
+      codigoCompetencia: null == codigoCompetencia
+          ? _value.codigoCompetencia
+          : codigoCompetencia // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
   }
 }
 
@@ -91,59 +83,54 @@ class _$VisitaCompetenciaLocalDTOCopyWithImpl<
 abstract class _$$VisitaCompetenciaLocalDTOImplCopyWith<$Res>
     implements $VisitaCompetenciaLocalDTOCopyWith<$Res> {
   factory _$$VisitaCompetenciaLocalDTOImplCopyWith(
-    _$VisitaCompetenciaLocalDTOImpl value,
-    $Res Function(_$VisitaCompetenciaLocalDTOImpl) then,
-  ) = __$$VisitaCompetenciaLocalDTOImplCopyWithImpl<$Res>;
+          _$VisitaCompetenciaLocalDTOImpl value,
+          $Res Function(_$VisitaCompetenciaLocalDTOImpl) then) =
+      __$$VisitaCompetenciaLocalDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'COD_VISITA_APP') String visitaAppId,
-    @JsonKey(name: 'CODIGO_COMPETENCIA') int codigoCompetencia,
-  });
+  $Res call(
+      {@JsonKey(name: 'COD_VISITA_APP') String visitaAppId,
+      @JsonKey(name: 'CODIGO_COMPETENCIA') int codigoCompetencia});
 }
 
 /// @nodoc
 class __$$VisitaCompetenciaLocalDTOImplCopyWithImpl<$Res>
-    extends
-        _$VisitaCompetenciaLocalDTOCopyWithImpl<
-          $Res,
-          _$VisitaCompetenciaLocalDTOImpl
-        >
+    extends _$VisitaCompetenciaLocalDTOCopyWithImpl<$Res,
+        _$VisitaCompetenciaLocalDTOImpl>
     implements _$$VisitaCompetenciaLocalDTOImplCopyWith<$Res> {
   __$$VisitaCompetenciaLocalDTOImplCopyWithImpl(
-    _$VisitaCompetenciaLocalDTOImpl _value,
-    $Res Function(_$VisitaCompetenciaLocalDTOImpl) _then,
-  ) : super(_value, _then);
+      _$VisitaCompetenciaLocalDTOImpl _value,
+      $Res Function(_$VisitaCompetenciaLocalDTOImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of VisitaCompetenciaLocalDTO
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? visitaAppId = null, Object? codigoCompetencia = null}) {
-    return _then(
-      _$VisitaCompetenciaLocalDTOImpl(
-        visitaAppId:
-            null == visitaAppId
-                ? _value.visitaAppId
-                : visitaAppId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        codigoCompetencia:
-            null == codigoCompetencia
-                ? _value.codigoCompetencia
-                : codigoCompetencia // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
+  $Res call({
+    Object? visitaAppId = null,
+    Object? codigoCompetencia = null,
+  }) {
+    return _then(_$VisitaCompetenciaLocalDTOImpl(
+      visitaAppId: null == visitaAppId
+          ? _value.visitaAppId
+          : visitaAppId // ignore: cast_nullable_to_non_nullable
+              as String,
+      codigoCompetencia: null == codigoCompetencia
+          ? _value.codigoCompetencia
+          : codigoCompetencia // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$VisitaCompetenciaLocalDTOImpl extends _VisitaCompetenciaLocalDTO {
-  const _$VisitaCompetenciaLocalDTOImpl({
-    @JsonKey(name: 'COD_VISITA_APP') required this.visitaAppId,
-    @JsonKey(name: 'CODIGO_COMPETENCIA') required this.codigoCompetencia,
-  }) : super._();
+  const _$VisitaCompetenciaLocalDTOImpl(
+      {@JsonKey(name: 'COD_VISITA_APP') required this.visitaAppId,
+      @JsonKey(name: 'CODIGO_COMPETENCIA') required this.codigoCompetencia})
+      : super._();
 
   factory _$VisitaCompetenciaLocalDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$VisitaCompetenciaLocalDTOImplFromJson(json);
@@ -181,21 +168,22 @@ class _$VisitaCompetenciaLocalDTOImpl extends _VisitaCompetenciaLocalDTO {
   @override
   @pragma('vm:prefer-inline')
   _$$VisitaCompetenciaLocalDTOImplCopyWith<_$VisitaCompetenciaLocalDTOImpl>
-  get copyWith => __$$VisitaCompetenciaLocalDTOImplCopyWithImpl<
-    _$VisitaCompetenciaLocalDTOImpl
-  >(this, _$identity);
+      get copyWith => __$$VisitaCompetenciaLocalDTOImplCopyWithImpl<
+          _$VisitaCompetenciaLocalDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$VisitaCompetenciaLocalDTOImplToJson(this);
+    return _$$VisitaCompetenciaLocalDTOImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _VisitaCompetenciaLocalDTO extends VisitaCompetenciaLocalDTO {
-  const factory _VisitaCompetenciaLocalDTO({
-    @JsonKey(name: 'COD_VISITA_APP') required final String visitaAppId,
-    @JsonKey(name: 'CODIGO_COMPETENCIA') required final int codigoCompetencia,
-  }) = _$VisitaCompetenciaLocalDTOImpl;
+  const factory _VisitaCompetenciaLocalDTO(
+      {@JsonKey(name: 'COD_VISITA_APP') required final String visitaAppId,
+      @JsonKey(name: 'CODIGO_COMPETENCIA')
+      required final int codigoCompetencia}) = _$VisitaCompetenciaLocalDTOImpl;
   const _VisitaCompetenciaLocalDTO._() : super._();
 
   factory _VisitaCompetenciaLocalDTO.fromJson(Map<String, dynamic> json) =
@@ -213,5 +201,5 @@ abstract class _VisitaCompetenciaLocalDTO extends VisitaCompetenciaLocalDTO {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$VisitaCompetenciaLocalDTOImplCopyWith<_$VisitaCompetenciaLocalDTOImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }

@@ -12,8 +12,7 @@ part of 'cliente_direccion_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ClienteDireccionDTO _$ClienteDireccionDTOFromJson(Map<String, dynamic> json) {
   return _ClienteDireccionDTO.fromJson(json);
@@ -65,27 +64,25 @@ mixin _$ClienteDireccionDTO {
 /// @nodoc
 abstract class $ClienteDireccionDTOCopyWith<$Res> {
   factory $ClienteDireccionDTOCopyWith(
-    ClienteDireccionDTO value,
-    $Res Function(ClienteDireccionDTO) then,
-  ) = _$ClienteDireccionDTOCopyWithImpl<$Res, ClienteDireccionDTO>;
+          ClienteDireccionDTO value, $Res Function(ClienteDireccionDTO) then) =
+      _$ClienteDireccionDTOCopyWithImpl<$Res, ClienteDireccionDTO>;
   @useResult
-  $Res call({
-    @JsonKey(name: 'CLIENTE_ID') String clienteId,
-    @JsonKey(name: 'DIRECCION_ID') String? direccionId,
-    @JsonKey(name: 'NOMBRE') String? nombre,
-    @JsonKey(name: 'DIRECCION1') String? direccion1,
-    @JsonKey(name: 'DIRECCION2') String? direccion2,
-    @JsonKey(name: 'CODIGO_POSTAL') String? codigoPostal,
-    @JsonKey(name: 'POBLACION') String? poblacion,
-    @JsonKey(name: 'PROVINCIA') String? provincia,
-    @JsonKey(name: 'PAIS_ID') String? paisId,
-    @JsonKey(name: 'LATITUD') double latitud,
-    @JsonKey(name: 'LONGITUD') double longitud,
-    @JsonKey(name: 'PREDETERMINADA_SN') String? predeterminada,
-    @JsonKey(name: 'TELEFONO') String? telefono,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'CLIENTE_ID') String clienteId,
+      @JsonKey(name: 'DIRECCION_ID') String? direccionId,
+      @JsonKey(name: 'NOMBRE') String? nombre,
+      @JsonKey(name: 'DIRECCION1') String? direccion1,
+      @JsonKey(name: 'DIRECCION2') String? direccion2,
+      @JsonKey(name: 'CODIGO_POSTAL') String? codigoPostal,
+      @JsonKey(name: 'POBLACION') String? poblacion,
+      @JsonKey(name: 'PROVINCIA') String? provincia,
+      @JsonKey(name: 'PAIS_ID') String? paisId,
+      @JsonKey(name: 'LATITUD') double latitud,
+      @JsonKey(name: 'LONGITUD') double longitud,
+      @JsonKey(name: 'PREDETERMINADA_SN') String? predeterminada,
+      @JsonKey(name: 'TELEFONO') String? telefono,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
@@ -119,125 +116,104 @@ class _$ClienteDireccionDTOCopyWithImpl<$Res, $Val extends ClienteDireccionDTO>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            clienteId:
-                null == clienteId
-                    ? _value.clienteId
-                    : clienteId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            direccionId:
-                freezed == direccionId
-                    ? _value.direccionId
-                    : direccionId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            nombre:
-                freezed == nombre
-                    ? _value.nombre
-                    : nombre // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            direccion1:
-                freezed == direccion1
-                    ? _value.direccion1
-                    : direccion1 // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            direccion2:
-                freezed == direccion2
-                    ? _value.direccion2
-                    : direccion2 // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            codigoPostal:
-                freezed == codigoPostal
-                    ? _value.codigoPostal
-                    : codigoPostal // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            poblacion:
-                freezed == poblacion
-                    ? _value.poblacion
-                    : poblacion // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            provincia:
-                freezed == provincia
-                    ? _value.provincia
-                    : provincia // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            paisId:
-                freezed == paisId
-                    ? _value.paisId
-                    : paisId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            latitud:
-                null == latitud
-                    ? _value.latitud
-                    : latitud // ignore: cast_nullable_to_non_nullable
-                        as double,
-            longitud:
-                null == longitud
-                    ? _value.longitud
-                    : longitud // ignore: cast_nullable_to_non_nullable
-                        as double,
-            predeterminada:
-                freezed == predeterminada
-                    ? _value.predeterminada
-                    : predeterminada // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            telefono:
-                freezed == telefono
-                    ? _value.telefono
-                    : telefono // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            lastUpdated:
-                null == lastUpdated
-                    ? _value.lastUpdated
-                    : lastUpdated // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      direccionId: freezed == direccionId
+          ? _value.direccionId
+          : direccionId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nombre: freezed == nombre
+          ? _value.nombre
+          : nombre // ignore: cast_nullable_to_non_nullable
+              as String?,
+      direccion1: freezed == direccion1
+          ? _value.direccion1
+          : direccion1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      direccion2: freezed == direccion2
+          ? _value.direccion2
+          : direccion2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      codigoPostal: freezed == codigoPostal
+          ? _value.codigoPostal
+          : codigoPostal // ignore: cast_nullable_to_non_nullable
+              as String?,
+      poblacion: freezed == poblacion
+          ? _value.poblacion
+          : poblacion // ignore: cast_nullable_to_non_nullable
+              as String?,
+      provincia: freezed == provincia
+          ? _value.provincia
+          : provincia // ignore: cast_nullable_to_non_nullable
+              as String?,
+      paisId: freezed == paisId
+          ? _value.paisId
+          : paisId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      latitud: null == latitud
+          ? _value.latitud
+          : latitud // ignore: cast_nullable_to_non_nullable
+              as double,
+      longitud: null == longitud
+          ? _value.longitud
+          : longitud // ignore: cast_nullable_to_non_nullable
+              as double,
+      predeterminada: freezed == predeterminada
+          ? _value.predeterminada
+          : predeterminada // ignore: cast_nullable_to_non_nullable
+              as String?,
+      telefono: freezed == telefono
+          ? _value.telefono
+          : telefono // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$ClienteDireccionDTOImplCopyWith<$Res>
     implements $ClienteDireccionDTOCopyWith<$Res> {
-  factory _$$ClienteDireccionDTOImplCopyWith(
-    _$ClienteDireccionDTOImpl value,
-    $Res Function(_$ClienteDireccionDTOImpl) then,
-  ) = __$$ClienteDireccionDTOImplCopyWithImpl<$Res>;
+  factory _$$ClienteDireccionDTOImplCopyWith(_$ClienteDireccionDTOImpl value,
+          $Res Function(_$ClienteDireccionDTOImpl) then) =
+      __$$ClienteDireccionDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'CLIENTE_ID') String clienteId,
-    @JsonKey(name: 'DIRECCION_ID') String? direccionId,
-    @JsonKey(name: 'NOMBRE') String? nombre,
-    @JsonKey(name: 'DIRECCION1') String? direccion1,
-    @JsonKey(name: 'DIRECCION2') String? direccion2,
-    @JsonKey(name: 'CODIGO_POSTAL') String? codigoPostal,
-    @JsonKey(name: 'POBLACION') String? poblacion,
-    @JsonKey(name: 'PROVINCIA') String? provincia,
-    @JsonKey(name: 'PAIS_ID') String? paisId,
-    @JsonKey(name: 'LATITUD') double latitud,
-    @JsonKey(name: 'LONGITUD') double longitud,
-    @JsonKey(name: 'PREDETERMINADA_SN') String? predeterminada,
-    @JsonKey(name: 'TELEFONO') String? telefono,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'CLIENTE_ID') String clienteId,
+      @JsonKey(name: 'DIRECCION_ID') String? direccionId,
+      @JsonKey(name: 'NOMBRE') String? nombre,
+      @JsonKey(name: 'DIRECCION1') String? direccion1,
+      @JsonKey(name: 'DIRECCION2') String? direccion2,
+      @JsonKey(name: 'CODIGO_POSTAL') String? codigoPostal,
+      @JsonKey(name: 'POBLACION') String? poblacion,
+      @JsonKey(name: 'PROVINCIA') String? provincia,
+      @JsonKey(name: 'PAIS_ID') String? paisId,
+      @JsonKey(name: 'LATITUD') double latitud,
+      @JsonKey(name: 'LONGITUD') double longitud,
+      @JsonKey(name: 'PREDETERMINADA_SN') String? predeterminada,
+      @JsonKey(name: 'TELEFONO') String? telefono,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
 class __$$ClienteDireccionDTOImplCopyWithImpl<$Res>
     extends _$ClienteDireccionDTOCopyWithImpl<$Res, _$ClienteDireccionDTOImpl>
     implements _$$ClienteDireccionDTOImplCopyWith<$Res> {
-  __$$ClienteDireccionDTOImplCopyWithImpl(
-    _$ClienteDireccionDTOImpl _value,
-    $Res Function(_$ClienteDireccionDTOImpl) _then,
-  ) : super(_value, _then);
+  __$$ClienteDireccionDTOImplCopyWithImpl(_$ClienteDireccionDTOImpl _value,
+      $Res Function(_$ClienteDireccionDTOImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of ClienteDireccionDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -260,108 +236,91 @@ class __$$ClienteDireccionDTOImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$ClienteDireccionDTOImpl(
-        clienteId:
-            null == clienteId
-                ? _value.clienteId
-                : clienteId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        direccionId:
-            freezed == direccionId
-                ? _value.direccionId
-                : direccionId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        nombre:
-            freezed == nombre
-                ? _value.nombre
-                : nombre // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        direccion1:
-            freezed == direccion1
-                ? _value.direccion1
-                : direccion1 // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        direccion2:
-            freezed == direccion2
-                ? _value.direccion2
-                : direccion2 // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        codigoPostal:
-            freezed == codigoPostal
-                ? _value.codigoPostal
-                : codigoPostal // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        poblacion:
-            freezed == poblacion
-                ? _value.poblacion
-                : poblacion // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        provincia:
-            freezed == provincia
-                ? _value.provincia
-                : provincia // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        paisId:
-            freezed == paisId
-                ? _value.paisId
-                : paisId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        latitud:
-            null == latitud
-                ? _value.latitud
-                : latitud // ignore: cast_nullable_to_non_nullable
-                    as double,
-        longitud:
-            null == longitud
-                ? _value.longitud
-                : longitud // ignore: cast_nullable_to_non_nullable
-                    as double,
-        predeterminada:
-            freezed == predeterminada
-                ? _value.predeterminada
-                : predeterminada // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        telefono:
-            freezed == telefono
-                ? _value.telefono
-                : telefono // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        lastUpdated:
-            null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+    return _then(_$ClienteDireccionDTOImpl(
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      direccionId: freezed == direccionId
+          ? _value.direccionId
+          : direccionId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nombre: freezed == nombre
+          ? _value.nombre
+          : nombre // ignore: cast_nullable_to_non_nullable
+              as String?,
+      direccion1: freezed == direccion1
+          ? _value.direccion1
+          : direccion1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      direccion2: freezed == direccion2
+          ? _value.direccion2
+          : direccion2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      codigoPostal: freezed == codigoPostal
+          ? _value.codigoPostal
+          : codigoPostal // ignore: cast_nullable_to_non_nullable
+              as String?,
+      poblacion: freezed == poblacion
+          ? _value.poblacion
+          : poblacion // ignore: cast_nullable_to_non_nullable
+              as String?,
+      provincia: freezed == provincia
+          ? _value.provincia
+          : provincia // ignore: cast_nullable_to_non_nullable
+              as String?,
+      paisId: freezed == paisId
+          ? _value.paisId
+          : paisId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      latitud: null == latitud
+          ? _value.latitud
+          : latitud // ignore: cast_nullable_to_non_nullable
+              as double,
+      longitud: null == longitud
+          ? _value.longitud
+          : longitud // ignore: cast_nullable_to_non_nullable
+              as double,
+      predeterminada: freezed == predeterminada
+          ? _value.predeterminada
+          : predeterminada // ignore: cast_nullable_to_non_nullable
+              as String?,
+      telefono: freezed == telefono
+          ? _value.telefono
+          : telefono // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ClienteDireccionDTOImpl extends _ClienteDireccionDTO {
-  const _$ClienteDireccionDTOImpl({
-    @JsonKey(name: 'CLIENTE_ID') required this.clienteId,
-    @JsonKey(name: 'DIRECCION_ID') required this.direccionId,
-    @JsonKey(name: 'NOMBRE') this.nombre,
-    @JsonKey(name: 'DIRECCION1') this.direccion1,
-    @JsonKey(name: 'DIRECCION2') this.direccion2,
-    @JsonKey(name: 'CODIGO_POSTAL') this.codigoPostal,
-    @JsonKey(name: 'POBLACION') this.poblacion,
-    @JsonKey(name: 'PROVINCIA') this.provincia,
-    @JsonKey(name: 'PAIS_ID') this.paisId,
-    @JsonKey(name: 'LATITUD') required this.latitud,
-    @JsonKey(name: 'LONGITUD') required this.longitud,
-    @JsonKey(name: 'PREDETERMINADA_SN') this.predeterminada,
-    @JsonKey(name: 'TELEFONO') this.telefono,
-    @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-    @JsonKey(name: 'DELETED') this.deleted = 'N',
-  }) : super._();
+  const _$ClienteDireccionDTOImpl(
+      {@JsonKey(name: 'CLIENTE_ID') required this.clienteId,
+      @JsonKey(name: 'DIRECCION_ID') required this.direccionId,
+      @JsonKey(name: 'NOMBRE') this.nombre,
+      @JsonKey(name: 'DIRECCION1') this.direccion1,
+      @JsonKey(name: 'DIRECCION2') this.direccion2,
+      @JsonKey(name: 'CODIGO_POSTAL') this.codigoPostal,
+      @JsonKey(name: 'POBLACION') this.poblacion,
+      @JsonKey(name: 'PROVINCIA') this.provincia,
+      @JsonKey(name: 'PAIS_ID') this.paisId,
+      @JsonKey(name: 'LATITUD') required this.latitud,
+      @JsonKey(name: 'LONGITUD') required this.longitud,
+      @JsonKey(name: 'PREDETERMINADA_SN') this.predeterminada,
+      @JsonKey(name: 'TELEFONO') this.telefono,
+      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+      @JsonKey(name: 'DELETED') this.deleted = 'N'})
+      : super._();
 
   factory _$ClienteDireccionDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ClienteDireccionDTOImplFromJson(json);
@@ -453,23 +412,22 @@ class _$ClienteDireccionDTOImpl extends _ClienteDireccionDTO {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    clienteId,
-    direccionId,
-    nombre,
-    direccion1,
-    direccion2,
-    codigoPostal,
-    poblacion,
-    provincia,
-    paisId,
-    latitud,
-    longitud,
-    predeterminada,
-    telefono,
-    lastUpdated,
-    deleted,
-  );
+      runtimeType,
+      clienteId,
+      direccionId,
+      nombre,
+      direccion1,
+      direccion2,
+      codigoPostal,
+      poblacion,
+      provincia,
+      paisId,
+      latitud,
+      longitud,
+      predeterminada,
+      telefono,
+      lastUpdated,
+      deleted);
 
   /// Create a copy of ClienteDireccionDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -478,34 +436,34 @@ class _$ClienteDireccionDTOImpl extends _ClienteDireccionDTO {
   @pragma('vm:prefer-inline')
   _$$ClienteDireccionDTOImplCopyWith<_$ClienteDireccionDTOImpl> get copyWith =>
       __$$ClienteDireccionDTOImplCopyWithImpl<_$ClienteDireccionDTOImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ClienteDireccionDTOImplToJson(this);
+    return _$$ClienteDireccionDTOImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _ClienteDireccionDTO extends ClienteDireccionDTO {
-  const factory _ClienteDireccionDTO({
-    @JsonKey(name: 'CLIENTE_ID') required final String clienteId,
-    @JsonKey(name: 'DIRECCION_ID') required final String? direccionId,
-    @JsonKey(name: 'NOMBRE') final String? nombre,
-    @JsonKey(name: 'DIRECCION1') final String? direccion1,
-    @JsonKey(name: 'DIRECCION2') final String? direccion2,
-    @JsonKey(name: 'CODIGO_POSTAL') final String? codigoPostal,
-    @JsonKey(name: 'POBLACION') final String? poblacion,
-    @JsonKey(name: 'PROVINCIA') final String? provincia,
-    @JsonKey(name: 'PAIS_ID') final String? paisId,
-    @JsonKey(name: 'LATITUD') required final double latitud,
-    @JsonKey(name: 'LONGITUD') required final double longitud,
-    @JsonKey(name: 'PREDETERMINADA_SN') final String? predeterminada,
-    @JsonKey(name: 'TELEFONO') final String? telefono,
-    @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') final String deleted,
-  }) = _$ClienteDireccionDTOImpl;
+  const factory _ClienteDireccionDTO(
+          {@JsonKey(name: 'CLIENTE_ID') required final String clienteId,
+          @JsonKey(name: 'DIRECCION_ID') required final String? direccionId,
+          @JsonKey(name: 'NOMBRE') final String? nombre,
+          @JsonKey(name: 'DIRECCION1') final String? direccion1,
+          @JsonKey(name: 'DIRECCION2') final String? direccion2,
+          @JsonKey(name: 'CODIGO_POSTAL') final String? codigoPostal,
+          @JsonKey(name: 'POBLACION') final String? poblacion,
+          @JsonKey(name: 'PROVINCIA') final String? provincia,
+          @JsonKey(name: 'PAIS_ID') final String? paisId,
+          @JsonKey(name: 'LATITUD') required final double latitud,
+          @JsonKey(name: 'LONGITUD') required final double longitud,
+          @JsonKey(name: 'PREDETERMINADA_SN') final String? predeterminada,
+          @JsonKey(name: 'TELEFONO') final String? telefono,
+          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+          @JsonKey(name: 'DELETED') final String deleted}) =
+      _$ClienteDireccionDTOImpl;
   const _ClienteDireccionDTO._() : super._();
 
   factory _ClienteDireccionDTO.fromJson(Map<String, dynamic> json) =

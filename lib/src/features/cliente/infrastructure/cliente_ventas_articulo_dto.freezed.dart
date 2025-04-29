@@ -12,12 +12,10 @@ part of 'cliente_ventas_articulo_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ClienteVentasArticuloDTO _$ClienteVentasArticuloDTOFromJson(
-  Map<String, dynamic> json,
-) {
+    Map<String, dynamic> json) {
   return _ClienteVentasArticuloDTO.fromJson(json);
 }
 
@@ -60,32 +58,28 @@ mixin _$ClienteVentasArticuloDTO {
 
 /// @nodoc
 abstract class $ClienteVentasArticuloDTOCopyWith<$Res> {
-  factory $ClienteVentasArticuloDTOCopyWith(
-    ClienteVentasArticuloDTO value,
-    $Res Function(ClienteVentasArticuloDTO) then,
-  ) = _$ClienteVentasArticuloDTOCopyWithImpl<$Res, ClienteVentasArticuloDTO>;
+  factory $ClienteVentasArticuloDTOCopyWith(ClienteVentasArticuloDTO value,
+          $Res Function(ClienteVentasArticuloDTO) then) =
+      _$ClienteVentasArticuloDTOCopyWithImpl<$Res, ClienteVentasArticuloDTO>;
   @useResult
-  $Res call({
-    @JsonKey(name: 'ARTICULO_ID') String articuloId,
-    @JsonKey(name: 'DESCRIPCION') String descripcion,
-    @JsonKey(name: 'IMPORTE_ANYO') double importeAnyo,
-    @JsonKey(name: 'IMPORTE_ANYO_1') double importeAnyo_1,
-    @JsonKey(name: 'IMPORTE_ANYO_2') double importeAnyo_2,
-    @JsonKey(name: 'IMPORTE_ANYO_3') double importeAnyo_3,
-    @JsonKey(name: 'IMPORTE_ANYO_4') double importeAnyo_4,
-    @JsonKey(name: 'CANTIDAD_ANYO') int cantidadAnyo,
-    @JsonKey(name: 'CANTIDAD_ANYO_1') int cantidadAnyo_1,
-    @JsonKey(name: 'CANTIDAD_ANYO_2') int cantidadAnyo_2,
-    @JsonKey(name: 'CANTIDAD_ANYO_3') int cantidadAnyo_3,
-    @JsonKey(name: 'CANTIDAD_ANYO_4') int cantidadAnyo_4,
-  });
+  $Res call(
+      {@JsonKey(name: 'ARTICULO_ID') String articuloId,
+      @JsonKey(name: 'DESCRIPCION') String descripcion,
+      @JsonKey(name: 'IMPORTE_ANYO') double importeAnyo,
+      @JsonKey(name: 'IMPORTE_ANYO_1') double importeAnyo_1,
+      @JsonKey(name: 'IMPORTE_ANYO_2') double importeAnyo_2,
+      @JsonKey(name: 'IMPORTE_ANYO_3') double importeAnyo_3,
+      @JsonKey(name: 'IMPORTE_ANYO_4') double importeAnyo_4,
+      @JsonKey(name: 'CANTIDAD_ANYO') int cantidadAnyo,
+      @JsonKey(name: 'CANTIDAD_ANYO_1') int cantidadAnyo_1,
+      @JsonKey(name: 'CANTIDAD_ANYO_2') int cantidadAnyo_2,
+      @JsonKey(name: 'CANTIDAD_ANYO_3') int cantidadAnyo_3,
+      @JsonKey(name: 'CANTIDAD_ANYO_4') int cantidadAnyo_4});
 }
 
 /// @nodoc
-class _$ClienteVentasArticuloDTOCopyWithImpl<
-  $Res,
-  $Val extends ClienteVentasArticuloDTO
->
+class _$ClienteVentasArticuloDTOCopyWithImpl<$Res,
+        $Val extends ClienteVentasArticuloDTO>
     implements $ClienteVentasArticuloDTOCopyWith<$Res> {
   _$ClienteVentasArticuloDTOCopyWithImpl(this._value, this._then);
 
@@ -112,71 +106,56 @@ class _$ClienteVentasArticuloDTOCopyWithImpl<
     Object? cantidadAnyo_3 = null,
     Object? cantidadAnyo_4 = null,
   }) {
-    return _then(
-      _value.copyWith(
-            articuloId:
-                null == articuloId
-                    ? _value.articuloId
-                    : articuloId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            descripcion:
-                null == descripcion
-                    ? _value.descripcion
-                    : descripcion // ignore: cast_nullable_to_non_nullable
-                        as String,
-            importeAnyo:
-                null == importeAnyo
-                    ? _value.importeAnyo
-                    : importeAnyo // ignore: cast_nullable_to_non_nullable
-                        as double,
-            importeAnyo_1:
-                null == importeAnyo_1
-                    ? _value.importeAnyo_1
-                    : importeAnyo_1 // ignore: cast_nullable_to_non_nullable
-                        as double,
-            importeAnyo_2:
-                null == importeAnyo_2
-                    ? _value.importeAnyo_2
-                    : importeAnyo_2 // ignore: cast_nullable_to_non_nullable
-                        as double,
-            importeAnyo_3:
-                null == importeAnyo_3
-                    ? _value.importeAnyo_3
-                    : importeAnyo_3 // ignore: cast_nullable_to_non_nullable
-                        as double,
-            importeAnyo_4:
-                null == importeAnyo_4
-                    ? _value.importeAnyo_4
-                    : importeAnyo_4 // ignore: cast_nullable_to_non_nullable
-                        as double,
-            cantidadAnyo:
-                null == cantidadAnyo
-                    ? _value.cantidadAnyo
-                    : cantidadAnyo // ignore: cast_nullable_to_non_nullable
-                        as int,
-            cantidadAnyo_1:
-                null == cantidadAnyo_1
-                    ? _value.cantidadAnyo_1
-                    : cantidadAnyo_1 // ignore: cast_nullable_to_non_nullable
-                        as int,
-            cantidadAnyo_2:
-                null == cantidadAnyo_2
-                    ? _value.cantidadAnyo_2
-                    : cantidadAnyo_2 // ignore: cast_nullable_to_non_nullable
-                        as int,
-            cantidadAnyo_3:
-                null == cantidadAnyo_3
-                    ? _value.cantidadAnyo_3
-                    : cantidadAnyo_3 // ignore: cast_nullable_to_non_nullable
-                        as int,
-            cantidadAnyo_4:
-                null == cantidadAnyo_4
-                    ? _value.cantidadAnyo_4
-                    : cantidadAnyo_4 // ignore: cast_nullable_to_non_nullable
-                        as int,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcion: null == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
+              as String,
+      importeAnyo: null == importeAnyo
+          ? _value.importeAnyo
+          : importeAnyo // ignore: cast_nullable_to_non_nullable
+              as double,
+      importeAnyo_1: null == importeAnyo_1
+          ? _value.importeAnyo_1
+          : importeAnyo_1 // ignore: cast_nullable_to_non_nullable
+              as double,
+      importeAnyo_2: null == importeAnyo_2
+          ? _value.importeAnyo_2
+          : importeAnyo_2 // ignore: cast_nullable_to_non_nullable
+              as double,
+      importeAnyo_3: null == importeAnyo_3
+          ? _value.importeAnyo_3
+          : importeAnyo_3 // ignore: cast_nullable_to_non_nullable
+              as double,
+      importeAnyo_4: null == importeAnyo_4
+          ? _value.importeAnyo_4
+          : importeAnyo_4 // ignore: cast_nullable_to_non_nullable
+              as double,
+      cantidadAnyo: null == cantidadAnyo
+          ? _value.cantidadAnyo
+          : cantidadAnyo // ignore: cast_nullable_to_non_nullable
+              as int,
+      cantidadAnyo_1: null == cantidadAnyo_1
+          ? _value.cantidadAnyo_1
+          : cantidadAnyo_1 // ignore: cast_nullable_to_non_nullable
+              as int,
+      cantidadAnyo_2: null == cantidadAnyo_2
+          ? _value.cantidadAnyo_2
+          : cantidadAnyo_2 // ignore: cast_nullable_to_non_nullable
+              as int,
+      cantidadAnyo_3: null == cantidadAnyo_3
+          ? _value.cantidadAnyo_3
+          : cantidadAnyo_3 // ignore: cast_nullable_to_non_nullable
+              as int,
+      cantidadAnyo_4: null == cantidadAnyo_4
+          ? _value.cantidadAnyo_4
+          : cantidadAnyo_4 // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
   }
 }
 
@@ -184,39 +163,35 @@ class _$ClienteVentasArticuloDTOCopyWithImpl<
 abstract class _$$ClienteVentasArticuloDTOImplCopyWith<$Res>
     implements $ClienteVentasArticuloDTOCopyWith<$Res> {
   factory _$$ClienteVentasArticuloDTOImplCopyWith(
-    _$ClienteVentasArticuloDTOImpl value,
-    $Res Function(_$ClienteVentasArticuloDTOImpl) then,
-  ) = __$$ClienteVentasArticuloDTOImplCopyWithImpl<$Res>;
+          _$ClienteVentasArticuloDTOImpl value,
+          $Res Function(_$ClienteVentasArticuloDTOImpl) then) =
+      __$$ClienteVentasArticuloDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'ARTICULO_ID') String articuloId,
-    @JsonKey(name: 'DESCRIPCION') String descripcion,
-    @JsonKey(name: 'IMPORTE_ANYO') double importeAnyo,
-    @JsonKey(name: 'IMPORTE_ANYO_1') double importeAnyo_1,
-    @JsonKey(name: 'IMPORTE_ANYO_2') double importeAnyo_2,
-    @JsonKey(name: 'IMPORTE_ANYO_3') double importeAnyo_3,
-    @JsonKey(name: 'IMPORTE_ANYO_4') double importeAnyo_4,
-    @JsonKey(name: 'CANTIDAD_ANYO') int cantidadAnyo,
-    @JsonKey(name: 'CANTIDAD_ANYO_1') int cantidadAnyo_1,
-    @JsonKey(name: 'CANTIDAD_ANYO_2') int cantidadAnyo_2,
-    @JsonKey(name: 'CANTIDAD_ANYO_3') int cantidadAnyo_3,
-    @JsonKey(name: 'CANTIDAD_ANYO_4') int cantidadAnyo_4,
-  });
+  $Res call(
+      {@JsonKey(name: 'ARTICULO_ID') String articuloId,
+      @JsonKey(name: 'DESCRIPCION') String descripcion,
+      @JsonKey(name: 'IMPORTE_ANYO') double importeAnyo,
+      @JsonKey(name: 'IMPORTE_ANYO_1') double importeAnyo_1,
+      @JsonKey(name: 'IMPORTE_ANYO_2') double importeAnyo_2,
+      @JsonKey(name: 'IMPORTE_ANYO_3') double importeAnyo_3,
+      @JsonKey(name: 'IMPORTE_ANYO_4') double importeAnyo_4,
+      @JsonKey(name: 'CANTIDAD_ANYO') int cantidadAnyo,
+      @JsonKey(name: 'CANTIDAD_ANYO_1') int cantidadAnyo_1,
+      @JsonKey(name: 'CANTIDAD_ANYO_2') int cantidadAnyo_2,
+      @JsonKey(name: 'CANTIDAD_ANYO_3') int cantidadAnyo_3,
+      @JsonKey(name: 'CANTIDAD_ANYO_4') int cantidadAnyo_4});
 }
 
 /// @nodoc
 class __$$ClienteVentasArticuloDTOImplCopyWithImpl<$Res>
-    extends
-        _$ClienteVentasArticuloDTOCopyWithImpl<
-          $Res,
-          _$ClienteVentasArticuloDTOImpl
-        >
+    extends _$ClienteVentasArticuloDTOCopyWithImpl<$Res,
+        _$ClienteVentasArticuloDTOImpl>
     implements _$$ClienteVentasArticuloDTOImplCopyWith<$Res> {
   __$$ClienteVentasArticuloDTOImplCopyWithImpl(
-    _$ClienteVentasArticuloDTOImpl _value,
-    $Res Function(_$ClienteVentasArticuloDTOImpl) _then,
-  ) : super(_value, _then);
+      _$ClienteVentasArticuloDTOImpl _value,
+      $Res Function(_$ClienteVentasArticuloDTOImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of ClienteVentasArticuloDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -236,90 +211,76 @@ class __$$ClienteVentasArticuloDTOImplCopyWithImpl<$Res>
     Object? cantidadAnyo_3 = null,
     Object? cantidadAnyo_4 = null,
   }) {
-    return _then(
-      _$ClienteVentasArticuloDTOImpl(
-        articuloId:
-            null == articuloId
-                ? _value.articuloId
-                : articuloId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        descripcion:
-            null == descripcion
-                ? _value.descripcion
-                : descripcion // ignore: cast_nullable_to_non_nullable
-                    as String,
-        importeAnyo:
-            null == importeAnyo
-                ? _value.importeAnyo
-                : importeAnyo // ignore: cast_nullable_to_non_nullable
-                    as double,
-        importeAnyo_1:
-            null == importeAnyo_1
-                ? _value.importeAnyo_1
-                : importeAnyo_1 // ignore: cast_nullable_to_non_nullable
-                    as double,
-        importeAnyo_2:
-            null == importeAnyo_2
-                ? _value.importeAnyo_2
-                : importeAnyo_2 // ignore: cast_nullable_to_non_nullable
-                    as double,
-        importeAnyo_3:
-            null == importeAnyo_3
-                ? _value.importeAnyo_3
-                : importeAnyo_3 // ignore: cast_nullable_to_non_nullable
-                    as double,
-        importeAnyo_4:
-            null == importeAnyo_4
-                ? _value.importeAnyo_4
-                : importeAnyo_4 // ignore: cast_nullable_to_non_nullable
-                    as double,
-        cantidadAnyo:
-            null == cantidadAnyo
-                ? _value.cantidadAnyo
-                : cantidadAnyo // ignore: cast_nullable_to_non_nullable
-                    as int,
-        cantidadAnyo_1:
-            null == cantidadAnyo_1
-                ? _value.cantidadAnyo_1
-                : cantidadAnyo_1 // ignore: cast_nullable_to_non_nullable
-                    as int,
-        cantidadAnyo_2:
-            null == cantidadAnyo_2
-                ? _value.cantidadAnyo_2
-                : cantidadAnyo_2 // ignore: cast_nullable_to_non_nullable
-                    as int,
-        cantidadAnyo_3:
-            null == cantidadAnyo_3
-                ? _value.cantidadAnyo_3
-                : cantidadAnyo_3 // ignore: cast_nullable_to_non_nullable
-                    as int,
-        cantidadAnyo_4:
-            null == cantidadAnyo_4
-                ? _value.cantidadAnyo_4
-                : cantidadAnyo_4 // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
+    return _then(_$ClienteVentasArticuloDTOImpl(
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcion: null == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
+              as String,
+      importeAnyo: null == importeAnyo
+          ? _value.importeAnyo
+          : importeAnyo // ignore: cast_nullable_to_non_nullable
+              as double,
+      importeAnyo_1: null == importeAnyo_1
+          ? _value.importeAnyo_1
+          : importeAnyo_1 // ignore: cast_nullable_to_non_nullable
+              as double,
+      importeAnyo_2: null == importeAnyo_2
+          ? _value.importeAnyo_2
+          : importeAnyo_2 // ignore: cast_nullable_to_non_nullable
+              as double,
+      importeAnyo_3: null == importeAnyo_3
+          ? _value.importeAnyo_3
+          : importeAnyo_3 // ignore: cast_nullable_to_non_nullable
+              as double,
+      importeAnyo_4: null == importeAnyo_4
+          ? _value.importeAnyo_4
+          : importeAnyo_4 // ignore: cast_nullable_to_non_nullable
+              as double,
+      cantidadAnyo: null == cantidadAnyo
+          ? _value.cantidadAnyo
+          : cantidadAnyo // ignore: cast_nullable_to_non_nullable
+              as int,
+      cantidadAnyo_1: null == cantidadAnyo_1
+          ? _value.cantidadAnyo_1
+          : cantidadAnyo_1 // ignore: cast_nullable_to_non_nullable
+              as int,
+      cantidadAnyo_2: null == cantidadAnyo_2
+          ? _value.cantidadAnyo_2
+          : cantidadAnyo_2 // ignore: cast_nullable_to_non_nullable
+              as int,
+      cantidadAnyo_3: null == cantidadAnyo_3
+          ? _value.cantidadAnyo_3
+          : cantidadAnyo_3 // ignore: cast_nullable_to_non_nullable
+              as int,
+      cantidadAnyo_4: null == cantidadAnyo_4
+          ? _value.cantidadAnyo_4
+          : cantidadAnyo_4 // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ClienteVentasArticuloDTOImpl extends _ClienteVentasArticuloDTO {
-  const _$ClienteVentasArticuloDTOImpl({
-    @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
-    @JsonKey(name: 'DESCRIPCION') required this.descripcion,
-    @JsonKey(name: 'IMPORTE_ANYO') required this.importeAnyo,
-    @JsonKey(name: 'IMPORTE_ANYO_1') required this.importeAnyo_1,
-    @JsonKey(name: 'IMPORTE_ANYO_2') required this.importeAnyo_2,
-    @JsonKey(name: 'IMPORTE_ANYO_3') required this.importeAnyo_3,
-    @JsonKey(name: 'IMPORTE_ANYO_4') required this.importeAnyo_4,
-    @JsonKey(name: 'CANTIDAD_ANYO') required this.cantidadAnyo,
-    @JsonKey(name: 'CANTIDAD_ANYO_1') required this.cantidadAnyo_1,
-    @JsonKey(name: 'CANTIDAD_ANYO_2') required this.cantidadAnyo_2,
-    @JsonKey(name: 'CANTIDAD_ANYO_3') required this.cantidadAnyo_3,
-    @JsonKey(name: 'CANTIDAD_ANYO_4') required this.cantidadAnyo_4,
-  }) : super._();
+  const _$ClienteVentasArticuloDTOImpl(
+      {@JsonKey(name: 'ARTICULO_ID') required this.articuloId,
+      @JsonKey(name: 'DESCRIPCION') required this.descripcion,
+      @JsonKey(name: 'IMPORTE_ANYO') required this.importeAnyo,
+      @JsonKey(name: 'IMPORTE_ANYO_1') required this.importeAnyo_1,
+      @JsonKey(name: 'IMPORTE_ANYO_2') required this.importeAnyo_2,
+      @JsonKey(name: 'IMPORTE_ANYO_3') required this.importeAnyo_3,
+      @JsonKey(name: 'IMPORTE_ANYO_4') required this.importeAnyo_4,
+      @JsonKey(name: 'CANTIDAD_ANYO') required this.cantidadAnyo,
+      @JsonKey(name: 'CANTIDAD_ANYO_1') required this.cantidadAnyo_1,
+      @JsonKey(name: 'CANTIDAD_ANYO_2') required this.cantidadAnyo_2,
+      @JsonKey(name: 'CANTIDAD_ANYO_3') required this.cantidadAnyo_3,
+      @JsonKey(name: 'CANTIDAD_ANYO_4') required this.cantidadAnyo_4})
+      : super._();
 
   factory _$ClienteVentasArticuloDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ClienteVentasArticuloDTOImplFromJson(json);
@@ -400,20 +361,19 @@ class _$ClienteVentasArticuloDTOImpl extends _ClienteVentasArticuloDTO {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    articuloId,
-    descripcion,
-    importeAnyo,
-    importeAnyo_1,
-    importeAnyo_2,
-    importeAnyo_3,
-    importeAnyo_4,
-    cantidadAnyo,
-    cantidadAnyo_1,
-    cantidadAnyo_2,
-    cantidadAnyo_3,
-    cantidadAnyo_4,
-  );
+      runtimeType,
+      articuloId,
+      descripcion,
+      importeAnyo,
+      importeAnyo_1,
+      importeAnyo_2,
+      importeAnyo_3,
+      importeAnyo_4,
+      cantidadAnyo,
+      cantidadAnyo_1,
+      cantidadAnyo_2,
+      cantidadAnyo_3,
+      cantidadAnyo_4);
 
   /// Create a copy of ClienteVentasArticuloDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -421,31 +381,32 @@ class _$ClienteVentasArticuloDTOImpl extends _ClienteVentasArticuloDTO {
   @override
   @pragma('vm:prefer-inline')
   _$$ClienteVentasArticuloDTOImplCopyWith<_$ClienteVentasArticuloDTOImpl>
-  get copyWith => __$$ClienteVentasArticuloDTOImplCopyWithImpl<
-    _$ClienteVentasArticuloDTOImpl
-  >(this, _$identity);
+      get copyWith => __$$ClienteVentasArticuloDTOImplCopyWithImpl<
+          _$ClienteVentasArticuloDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ClienteVentasArticuloDTOImplToJson(this);
+    return _$$ClienteVentasArticuloDTOImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _ClienteVentasArticuloDTO extends ClienteVentasArticuloDTO {
-  const factory _ClienteVentasArticuloDTO({
-    @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
-    @JsonKey(name: 'DESCRIPCION') required final String descripcion,
-    @JsonKey(name: 'IMPORTE_ANYO') required final double importeAnyo,
-    @JsonKey(name: 'IMPORTE_ANYO_1') required final double importeAnyo_1,
-    @JsonKey(name: 'IMPORTE_ANYO_2') required final double importeAnyo_2,
-    @JsonKey(name: 'IMPORTE_ANYO_3') required final double importeAnyo_3,
-    @JsonKey(name: 'IMPORTE_ANYO_4') required final double importeAnyo_4,
-    @JsonKey(name: 'CANTIDAD_ANYO') required final int cantidadAnyo,
-    @JsonKey(name: 'CANTIDAD_ANYO_1') required final int cantidadAnyo_1,
-    @JsonKey(name: 'CANTIDAD_ANYO_2') required final int cantidadAnyo_2,
-    @JsonKey(name: 'CANTIDAD_ANYO_3') required final int cantidadAnyo_3,
-    @JsonKey(name: 'CANTIDAD_ANYO_4') required final int cantidadAnyo_4,
-  }) = _$ClienteVentasArticuloDTOImpl;
+  const factory _ClienteVentasArticuloDTO(
+      {@JsonKey(name: 'ARTICULO_ID') required final String articuloId,
+      @JsonKey(name: 'DESCRIPCION') required final String descripcion,
+      @JsonKey(name: 'IMPORTE_ANYO') required final double importeAnyo,
+      @JsonKey(name: 'IMPORTE_ANYO_1') required final double importeAnyo_1,
+      @JsonKey(name: 'IMPORTE_ANYO_2') required final double importeAnyo_2,
+      @JsonKey(name: 'IMPORTE_ANYO_3') required final double importeAnyo_3,
+      @JsonKey(name: 'IMPORTE_ANYO_4') required final double importeAnyo_4,
+      @JsonKey(name: 'CANTIDAD_ANYO') required final int cantidadAnyo,
+      @JsonKey(name: 'CANTIDAD_ANYO_1') required final int cantidadAnyo_1,
+      @JsonKey(name: 'CANTIDAD_ANYO_2') required final int cantidadAnyo_2,
+      @JsonKey(name: 'CANTIDAD_ANYO_3') required final int cantidadAnyo_3,
+      @JsonKey(name: 'CANTIDAD_ANYO_4')
+      required final int cantidadAnyo_4}) = _$ClienteVentasArticuloDTOImpl;
   const _ClienteVentasArticuloDTO._() : super._();
 
   factory _ClienteVentasArticuloDTO.fromJson(Map<String, dynamic> json) =
@@ -493,5 +454,5 @@ abstract class _ClienteVentasArticuloDTO extends ClienteVentasArticuloDTO {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClienteVentasArticuloDTOImplCopyWith<_$ClienteVentasArticuloDTOImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }

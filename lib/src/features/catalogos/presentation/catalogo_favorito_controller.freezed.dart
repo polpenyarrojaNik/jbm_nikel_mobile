@@ -12,8 +12,7 @@ part of 'catalogo_favorito_controller.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$CatalogoFavoritoControllerState {
@@ -23,14 +22,16 @@ mixin _$CatalogoFavoritoControllerState {
     required TResult Function() favorite,
     required TResult Function(Object error, StackTrace? stackTrace) error,
     required TResult Function() noFavorite,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? checking,
     TResult? Function()? favorite,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
     TResult? Function()? noFavorite,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? checking,
@@ -38,21 +39,24 @@ mixin _$CatalogoFavoritoControllerState {
     TResult Function(Object error, StackTrace? stackTrace)? error,
     TResult Function()? noFavorite,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_loading value) checking,
     required TResult Function(_favorite value) favorite,
     required TResult Function(_error value) error,
     required TResult Function(_noFavorite value) noFavorite,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_loading value)? checking,
     TResult? Function(_favorite value)? favorite,
     TResult? Function(_error value)? error,
     TResult? Function(_noFavorite value)? noFavorite,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_loading value)? checking,
@@ -60,26 +64,22 @@ mixin _$CatalogoFavoritoControllerState {
     TResult Function(_error value)? error,
     TResult Function(_noFavorite value)? noFavorite,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CatalogoFavoritoControllerStateCopyWith<$Res> {
   factory $CatalogoFavoritoControllerStateCopyWith(
-    CatalogoFavoritoControllerState value,
-    $Res Function(CatalogoFavoritoControllerState) then,
-  ) =
-      _$CatalogoFavoritoControllerStateCopyWithImpl<
-        $Res,
-        CatalogoFavoritoControllerState
-      >;
+          CatalogoFavoritoControllerState value,
+          $Res Function(CatalogoFavoritoControllerState) then) =
+      _$CatalogoFavoritoControllerStateCopyWithImpl<$Res,
+          CatalogoFavoritoControllerState>;
 }
 
 /// @nodoc
-class _$CatalogoFavoritoControllerStateCopyWithImpl<
-  $Res,
-  $Val extends CatalogoFavoritoControllerState
->
+class _$CatalogoFavoritoControllerStateCopyWithImpl<$Res,
+        $Val extends CatalogoFavoritoControllerState>
     implements $CatalogoFavoritoControllerStateCopyWith<$Res> {
   _$CatalogoFavoritoControllerStateCopyWithImpl(this._value, this._then);
 
@@ -95,9 +95,8 @@ class _$CatalogoFavoritoControllerStateCopyWithImpl<
 /// @nodoc
 abstract class _$$loadingImplCopyWith<$Res> {
   factory _$$loadingImplCopyWith(
-    _$loadingImpl value,
-    $Res Function(_$loadingImpl) then,
-  ) = __$$loadingImplCopyWithImpl<$Res>;
+          _$loadingImpl value, $Res Function(_$loadingImpl) then) =
+      __$$loadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -105,9 +104,8 @@ class __$$loadingImplCopyWithImpl<$Res>
     extends _$CatalogoFavoritoControllerStateCopyWithImpl<$Res, _$loadingImpl>
     implements _$$loadingImplCopyWith<$Res> {
   __$$loadingImplCopyWithImpl(
-    _$loadingImpl _value,
-    $Res Function(_$loadingImpl) _then,
-  ) : super(_value, _then);
+      _$loadingImpl _value, $Res Function(_$loadingImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of CatalogoFavoritoControllerState
   /// with the given fields replaced by the non-null parameter values.
@@ -215,9 +213,8 @@ abstract class _loading extends CatalogoFavoritoControllerState {
 /// @nodoc
 abstract class _$$favoriteImplCopyWith<$Res> {
   factory _$$favoriteImplCopyWith(
-    _$favoriteImpl value,
-    $Res Function(_$favoriteImpl) then,
-  ) = __$$favoriteImplCopyWithImpl<$Res>;
+          _$favoriteImpl value, $Res Function(_$favoriteImpl) then) =
+      __$$favoriteImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -225,9 +222,8 @@ class __$$favoriteImplCopyWithImpl<$Res>
     extends _$CatalogoFavoritoControllerStateCopyWithImpl<$Res, _$favoriteImpl>
     implements _$$favoriteImplCopyWith<$Res> {
   __$$favoriteImplCopyWithImpl(
-    _$favoriteImpl _value,
-    $Res Function(_$favoriteImpl) _then,
-  ) : super(_value, _then);
+      _$favoriteImpl _value, $Res Function(_$favoriteImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of CatalogoFavoritoControllerState
   /// with the given fields replaced by the non-null parameter values.
@@ -335,9 +331,8 @@ abstract class _favorite extends CatalogoFavoritoControllerState {
 /// @nodoc
 abstract class _$$errorImplCopyWith<$Res> {
   factory _$$errorImplCopyWith(
-    _$errorImpl value,
-    $Res Function(_$errorImpl) then,
-  ) = __$$errorImplCopyWithImpl<$Res>;
+          _$errorImpl value, $Res Function(_$errorImpl) then) =
+      __$$errorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Object error, StackTrace? stackTrace});
 }
@@ -347,25 +342,24 @@ class __$$errorImplCopyWithImpl<$Res>
     extends _$CatalogoFavoritoControllerStateCopyWithImpl<$Res, _$errorImpl>
     implements _$$errorImplCopyWith<$Res> {
   __$$errorImplCopyWithImpl(
-    _$errorImpl _value,
-    $Res Function(_$errorImpl) _then,
-  ) : super(_value, _then);
+      _$errorImpl _value, $Res Function(_$errorImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of CatalogoFavoritoControllerState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? error = null, Object? stackTrace = freezed}) {
-    return _then(
-      _$errorImpl(
-        null == error ? _value.error : error,
-        stackTrace:
-            freezed == stackTrace
-                ? _value.stackTrace
-                : stackTrace // ignore: cast_nullable_to_non_nullable
-                    as StackTrace?,
-      ),
-    );
+  $Res call({
+    Object? error = null,
+    Object? stackTrace = freezed,
+  }) {
+    return _then(_$errorImpl(
+      null == error ? _value.error : error,
+      stackTrace: freezed == stackTrace
+          ? _value.stackTrace
+          : stackTrace // ignore: cast_nullable_to_non_nullable
+              as StackTrace?,
+    ));
   }
 }
 
@@ -396,10 +390,7 @@ class _$errorImpl extends _error {
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(error),
-    stackTrace,
-  );
+      runtimeType, const DeepCollectionEquality().hash(error), stackTrace);
 
   /// Create a copy of CatalogoFavoritoControllerState
   /// with the given fields replaced by the non-null parameter values.
@@ -502,20 +493,17 @@ abstract class _error extends CatalogoFavoritoControllerState {
 /// @nodoc
 abstract class _$$noFavoriteImplCopyWith<$Res> {
   factory _$$noFavoriteImplCopyWith(
-    _$noFavoriteImpl value,
-    $Res Function(_$noFavoriteImpl) then,
-  ) = __$$noFavoriteImplCopyWithImpl<$Res>;
+          _$noFavoriteImpl value, $Res Function(_$noFavoriteImpl) then) =
+      __$$noFavoriteImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$noFavoriteImplCopyWithImpl<$Res>
-    extends
-        _$CatalogoFavoritoControllerStateCopyWithImpl<$Res, _$noFavoriteImpl>
-    implements _$$noFavoriteImplCopyWith<$Res> {
+    extends _$CatalogoFavoritoControllerStateCopyWithImpl<$Res,
+        _$noFavoriteImpl> implements _$$noFavoriteImplCopyWith<$Res> {
   __$$noFavoriteImplCopyWithImpl(
-    _$noFavoriteImpl _value,
-    $Res Function(_$noFavoriteImpl) _then,
-  ) : super(_value, _then);
+      _$noFavoriteImpl _value, $Res Function(_$noFavoriteImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of CatalogoFavoritoControllerState
   /// with the given fields replaced by the non-null parameter values.

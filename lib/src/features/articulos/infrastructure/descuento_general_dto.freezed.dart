@@ -12,8 +12,7 @@ part of 'descuento_general_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 DescuentoGeneralDTO _$DescuentoGeneralDTOFromJson(Map<String, dynamic> json) {
   return _DescuentoGeneralDTO.fromJson(json);
@@ -51,20 +50,18 @@ mixin _$DescuentoGeneralDTO {
 /// @nodoc
 abstract class $DescuentoGeneralDTOCopyWith<$Res> {
   factory $DescuentoGeneralDTOCopyWith(
-    DescuentoGeneralDTO value,
-    $Res Function(DescuentoGeneralDTO) then,
-  ) = _$DescuentoGeneralDTOCopyWithImpl<$Res, DescuentoGeneralDTO>;
+          DescuentoGeneralDTO value, $Res Function(DescuentoGeneralDTO) then) =
+      _$DescuentoGeneralDTOCopyWithImpl<$Res, DescuentoGeneralDTO>;
   @useResult
-  $Res call({
-    @JsonKey(name: 'DESCUENTO_GENERAL_ID') String descuentoGeneralId,
-    @JsonKey(name: 'ARTICULO_ID') String articuloId,
-    @JsonKey(name: 'FAMILIA_ID') String familiaId,
-    @JsonKey(name: 'SUBFAMILIA_ID') String subfamiliaId,
-    @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
-    @JsonKey(name: 'DESCUENTO') double descuento,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'DESCUENTO_GENERAL_ID') String descuentoGeneralId,
+      @JsonKey(name: 'ARTICULO_ID') String articuloId,
+      @JsonKey(name: 'FAMILIA_ID') String familiaId,
+      @JsonKey(name: 'SUBFAMILIA_ID') String subfamiliaId,
+      @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
+      @JsonKey(name: 'DESCUENTO') double descuento,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
@@ -91,83 +88,69 @@ class _$DescuentoGeneralDTOCopyWithImpl<$Res, $Val extends DescuentoGeneralDTO>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            descuentoGeneralId:
-                null == descuentoGeneralId
-                    ? _value.descuentoGeneralId
-                    : descuentoGeneralId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            articuloId:
-                null == articuloId
-                    ? _value.articuloId
-                    : articuloId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            familiaId:
-                null == familiaId
-                    ? _value.familiaId
-                    : familiaId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            subfamiliaId:
-                null == subfamiliaId
-                    ? _value.subfamiliaId
-                    : subfamiliaId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            cantidadDesde:
-                null == cantidadDesde
-                    ? _value.cantidadDesde
-                    : cantidadDesde // ignore: cast_nullable_to_non_nullable
-                        as int,
-            descuento:
-                null == descuento
-                    ? _value.descuento
-                    : descuento // ignore: cast_nullable_to_non_nullable
-                        as double,
-            lastUpdated:
-                null == lastUpdated
-                    ? _value.lastUpdated
-                    : lastUpdated // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      descuentoGeneralId: null == descuentoGeneralId
+          ? _value.descuentoGeneralId
+          : descuentoGeneralId // ignore: cast_nullable_to_non_nullable
+              as String,
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      familiaId: null == familiaId
+          ? _value.familiaId
+          : familiaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      subfamiliaId: null == subfamiliaId
+          ? _value.subfamiliaId
+          : subfamiliaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      cantidadDesde: null == cantidadDesde
+          ? _value.cantidadDesde
+          : cantidadDesde // ignore: cast_nullable_to_non_nullable
+              as int,
+      descuento: null == descuento
+          ? _value.descuento
+          : descuento // ignore: cast_nullable_to_non_nullable
+              as double,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$DescuentoGeneralDTOImplCopyWith<$Res>
     implements $DescuentoGeneralDTOCopyWith<$Res> {
-  factory _$$DescuentoGeneralDTOImplCopyWith(
-    _$DescuentoGeneralDTOImpl value,
-    $Res Function(_$DescuentoGeneralDTOImpl) then,
-  ) = __$$DescuentoGeneralDTOImplCopyWithImpl<$Res>;
+  factory _$$DescuentoGeneralDTOImplCopyWith(_$DescuentoGeneralDTOImpl value,
+          $Res Function(_$DescuentoGeneralDTOImpl) then) =
+      __$$DescuentoGeneralDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'DESCUENTO_GENERAL_ID') String descuentoGeneralId,
-    @JsonKey(name: 'ARTICULO_ID') String articuloId,
-    @JsonKey(name: 'FAMILIA_ID') String familiaId,
-    @JsonKey(name: 'SUBFAMILIA_ID') String subfamiliaId,
-    @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
-    @JsonKey(name: 'DESCUENTO') double descuento,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'DESCUENTO_GENERAL_ID') String descuentoGeneralId,
+      @JsonKey(name: 'ARTICULO_ID') String articuloId,
+      @JsonKey(name: 'FAMILIA_ID') String familiaId,
+      @JsonKey(name: 'SUBFAMILIA_ID') String subfamiliaId,
+      @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
+      @JsonKey(name: 'DESCUENTO') double descuento,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
 class __$$DescuentoGeneralDTOImplCopyWithImpl<$Res>
     extends _$DescuentoGeneralDTOCopyWithImpl<$Res, _$DescuentoGeneralDTOImpl>
     implements _$$DescuentoGeneralDTOImplCopyWith<$Res> {
-  __$$DescuentoGeneralDTOImplCopyWithImpl(
-    _$DescuentoGeneralDTOImpl _value,
-    $Res Function(_$DescuentoGeneralDTOImpl) _then,
-  ) : super(_value, _then);
+  __$$DescuentoGeneralDTOImplCopyWithImpl(_$DescuentoGeneralDTOImpl _value,
+      $Res Function(_$DescuentoGeneralDTOImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of DescuentoGeneralDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -183,66 +166,56 @@ class __$$DescuentoGeneralDTOImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$DescuentoGeneralDTOImpl(
-        descuentoGeneralId:
-            null == descuentoGeneralId
-                ? _value.descuentoGeneralId
-                : descuentoGeneralId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        articuloId:
-            null == articuloId
-                ? _value.articuloId
-                : articuloId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        familiaId:
-            null == familiaId
-                ? _value.familiaId
-                : familiaId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        subfamiliaId:
-            null == subfamiliaId
-                ? _value.subfamiliaId
-                : subfamiliaId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        cantidadDesde:
-            null == cantidadDesde
-                ? _value.cantidadDesde
-                : cantidadDesde // ignore: cast_nullable_to_non_nullable
-                    as int,
-        descuento:
-            null == descuento
-                ? _value.descuento
-                : descuento // ignore: cast_nullable_to_non_nullable
-                    as double,
-        lastUpdated:
-            null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+    return _then(_$DescuentoGeneralDTOImpl(
+      descuentoGeneralId: null == descuentoGeneralId
+          ? _value.descuentoGeneralId
+          : descuentoGeneralId // ignore: cast_nullable_to_non_nullable
+              as String,
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      familiaId: null == familiaId
+          ? _value.familiaId
+          : familiaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      subfamiliaId: null == subfamiliaId
+          ? _value.subfamiliaId
+          : subfamiliaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      cantidadDesde: null == cantidadDesde
+          ? _value.cantidadDesde
+          : cantidadDesde // ignore: cast_nullable_to_non_nullable
+              as int,
+      descuento: null == descuento
+          ? _value.descuento
+          : descuento // ignore: cast_nullable_to_non_nullable
+              as double,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$DescuentoGeneralDTOImpl extends _DescuentoGeneralDTO {
-  const _$DescuentoGeneralDTOImpl({
-    @JsonKey(name: 'DESCUENTO_GENERAL_ID') required this.descuentoGeneralId,
-    @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
-    @JsonKey(name: 'FAMILIA_ID') required this.familiaId,
-    @JsonKey(name: 'SUBFAMILIA_ID') required this.subfamiliaId,
-    @JsonKey(name: 'CANTIDAD_DESDE') required this.cantidadDesde,
-    @JsonKey(name: 'DESCUENTO') required this.descuento,
-    @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-    @JsonKey(name: 'DELETED') this.deleted = 'N',
-  }) : super._();
+  const _$DescuentoGeneralDTOImpl(
+      {@JsonKey(name: 'DESCUENTO_GENERAL_ID') required this.descuentoGeneralId,
+      @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
+      @JsonKey(name: 'FAMILIA_ID') required this.familiaId,
+      @JsonKey(name: 'SUBFAMILIA_ID') required this.subfamiliaId,
+      @JsonKey(name: 'CANTIDAD_DESDE') required this.cantidadDesde,
+      @JsonKey(name: 'DESCUENTO') required this.descuento,
+      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+      @JsonKey(name: 'DELETED') this.deleted = 'N'})
+      : super._();
 
   factory _$DescuentoGeneralDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$DescuentoGeneralDTOImplFromJson(json);
@@ -301,17 +274,8 @@ class _$DescuentoGeneralDTOImpl extends _DescuentoGeneralDTO {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    descuentoGeneralId,
-    articuloId,
-    familiaId,
-    subfamiliaId,
-    cantidadDesde,
-    descuento,
-    lastUpdated,
-    deleted,
-  );
+  int get hashCode => Object.hash(runtimeType, descuentoGeneralId, articuloId,
+      familiaId, subfamiliaId, cantidadDesde, descuento, lastUpdated, deleted);
 
   /// Create a copy of DescuentoGeneralDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -320,28 +284,28 @@ class _$DescuentoGeneralDTOImpl extends _DescuentoGeneralDTO {
   @pragma('vm:prefer-inline')
   _$$DescuentoGeneralDTOImplCopyWith<_$DescuentoGeneralDTOImpl> get copyWith =>
       __$$DescuentoGeneralDTOImplCopyWithImpl<_$DescuentoGeneralDTOImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DescuentoGeneralDTOImplToJson(this);
+    return _$$DescuentoGeneralDTOImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _DescuentoGeneralDTO extends DescuentoGeneralDTO {
-  const factory _DescuentoGeneralDTO({
-    @JsonKey(name: 'DESCUENTO_GENERAL_ID')
-    required final String descuentoGeneralId,
-    @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
-    @JsonKey(name: 'FAMILIA_ID') required final String familiaId,
-    @JsonKey(name: 'SUBFAMILIA_ID') required final String subfamiliaId,
-    @JsonKey(name: 'CANTIDAD_DESDE') required final int cantidadDesde,
-    @JsonKey(name: 'DESCUENTO') required final double descuento,
-    @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') final String deleted,
-  }) = _$DescuentoGeneralDTOImpl;
+  const factory _DescuentoGeneralDTO(
+          {@JsonKey(name: 'DESCUENTO_GENERAL_ID')
+          required final String descuentoGeneralId,
+          @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
+          @JsonKey(name: 'FAMILIA_ID') required final String familiaId,
+          @JsonKey(name: 'SUBFAMILIA_ID') required final String subfamiliaId,
+          @JsonKey(name: 'CANTIDAD_DESDE') required final int cantidadDesde,
+          @JsonKey(name: 'DESCUENTO') required final double descuento,
+          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+          @JsonKey(name: 'DELETED') final String deleted}) =
+      _$DescuentoGeneralDTOImpl;
   const _DescuentoGeneralDTO._() : super._();
 
   factory _DescuentoGeneralDTO.fromJson(Map<String, dynamic> json) =

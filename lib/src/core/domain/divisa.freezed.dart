@@ -12,8 +12,7 @@ part of 'divisa.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$Divisa {
@@ -36,15 +35,14 @@ abstract class $DivisaCopyWith<$Res> {
   factory $DivisaCopyWith(Divisa value, $Res Function(Divisa) then) =
       _$DivisaCopyWithImpl<$Res, Divisa>;
   @useResult
-  $Res call({
-    String id,
-    String abv,
-    String? simbolo,
-    double? redondeo,
-    String descripcion,
-    DateTime lastUpdate,
-    bool deleted,
-  });
+  $Res call(
+      {String id,
+      String abv,
+      String? simbolo,
+      double? redondeo,
+      String descripcion,
+      DateTime lastUpdate,
+      bool deleted});
 }
 
 /// @nodoc
@@ -70,66 +68,54 @@ class _$DivisaCopyWithImpl<$Res, $Val extends Divisa>
     Object? lastUpdate = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            id:
-                null == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as String,
-            abv:
-                null == abv
-                    ? _value.abv
-                    : abv // ignore: cast_nullable_to_non_nullable
-                        as String,
-            simbolo:
-                freezed == simbolo
-                    ? _value.simbolo
-                    : simbolo // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            redondeo:
-                freezed == redondeo
-                    ? _value.redondeo
-                    : redondeo // ignore: cast_nullable_to_non_nullable
-                        as double?,
-            descripcion:
-                null == descripcion
-                    ? _value.descripcion
-                    : descripcion // ignore: cast_nullable_to_non_nullable
-                        as String,
-            lastUpdate:
-                null == lastUpdate
-                    ? _value.lastUpdate
-                    : lastUpdate // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as bool,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      abv: null == abv
+          ? _value.abv
+          : abv // ignore: cast_nullable_to_non_nullable
+              as String,
+      simbolo: freezed == simbolo
+          ? _value.simbolo
+          : simbolo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      redondeo: freezed == redondeo
+          ? _value.redondeo
+          : redondeo // ignore: cast_nullable_to_non_nullable
+              as double?,
+      descripcion: null == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastUpdate: null == lastUpdate
+          ? _value.lastUpdate
+          : lastUpdate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$DivisaImplCopyWith<$Res> implements $DivisaCopyWith<$Res> {
   factory _$$DivisaImplCopyWith(
-    _$DivisaImpl value,
-    $Res Function(_$DivisaImpl) then,
-  ) = __$$DivisaImplCopyWithImpl<$Res>;
+          _$DivisaImpl value, $Res Function(_$DivisaImpl) then) =
+      __$$DivisaImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String abv,
-    String? simbolo,
-    double? redondeo,
-    String descripcion,
-    DateTime lastUpdate,
-    bool deleted,
-  });
+  $Res call(
+      {String id,
+      String abv,
+      String? simbolo,
+      double? redondeo,
+      String descripcion,
+      DateTime lastUpdate,
+      bool deleted});
 }
 
 /// @nodoc
@@ -137,9 +123,8 @@ class __$$DivisaImplCopyWithImpl<$Res>
     extends _$DivisaCopyWithImpl<$Res, _$DivisaImpl>
     implements _$$DivisaImplCopyWith<$Res> {
   __$$DivisaImplCopyWithImpl(
-    _$DivisaImpl _value,
-    $Res Function(_$DivisaImpl) _then,
-  ) : super(_value, _then);
+      _$DivisaImpl _value, $Res Function(_$DivisaImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of Divisa
   /// with the given fields replaced by the non-null parameter values.
@@ -154,60 +139,51 @@ class __$$DivisaImplCopyWithImpl<$Res>
     Object? lastUpdate = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$DivisaImpl(
-        id:
-            null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as String,
-        abv:
-            null == abv
-                ? _value.abv
-                : abv // ignore: cast_nullable_to_non_nullable
-                    as String,
-        simbolo:
-            freezed == simbolo
-                ? _value.simbolo
-                : simbolo // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        redondeo:
-            freezed == redondeo
-                ? _value.redondeo
-                : redondeo // ignore: cast_nullable_to_non_nullable
-                    as double?,
-        descripcion:
-            null == descripcion
-                ? _value.descripcion
-                : descripcion // ignore: cast_nullable_to_non_nullable
-                    as String,
-        lastUpdate:
-            null == lastUpdate
-                ? _value.lastUpdate
-                : lastUpdate // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as bool,
-      ),
-    );
+    return _then(_$DivisaImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      abv: null == abv
+          ? _value.abv
+          : abv // ignore: cast_nullable_to_non_nullable
+              as String,
+      simbolo: freezed == simbolo
+          ? _value.simbolo
+          : simbolo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      redondeo: freezed == redondeo
+          ? _value.redondeo
+          : redondeo // ignore: cast_nullable_to_non_nullable
+              as double?,
+      descripcion: null == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastUpdate: null == lastUpdate
+          ? _value.lastUpdate
+          : lastUpdate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$DivisaImpl extends _Divisa {
-  const _$DivisaImpl({
-    required this.id,
-    required this.abv,
-    required this.simbolo,
-    required this.redondeo,
-    required this.descripcion,
-    required this.lastUpdate,
-    required this.deleted,
-  }) : super._();
+  const _$DivisaImpl(
+      {required this.id,
+      required this.abv,
+      required this.simbolo,
+      required this.redondeo,
+      required this.descripcion,
+      required this.lastUpdate,
+      required this.deleted})
+      : super._();
 
   @override
   final String id;
@@ -247,16 +223,8 @@ class _$DivisaImpl extends _Divisa {
   }
 
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    abv,
-    simbolo,
-    redondeo,
-    descripcion,
-    lastUpdate,
-    deleted,
-  );
+  int get hashCode => Object.hash(runtimeType, id, abv, simbolo, redondeo,
+      descripcion, lastUpdate, deleted);
 
   /// Create a copy of Divisa
   /// with the given fields replaced by the non-null parameter values.
@@ -268,15 +236,14 @@ class _$DivisaImpl extends _Divisa {
 }
 
 abstract class _Divisa extends Divisa {
-  const factory _Divisa({
-    required final String id,
-    required final String abv,
-    required final String? simbolo,
-    required final double? redondeo,
-    required final String descripcion,
-    required final DateTime lastUpdate,
-    required final bool deleted,
-  }) = _$DivisaImpl;
+  const factory _Divisa(
+      {required final String id,
+      required final String abv,
+      required final String? simbolo,
+      required final double? redondeo,
+      required final String descripcion,
+      required final DateTime lastUpdate,
+      required final bool deleted}) = _$DivisaImpl;
   const _Divisa._() : super._();
 
   @override

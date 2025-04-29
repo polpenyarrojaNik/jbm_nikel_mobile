@@ -12,20 +12,19 @@ part of 'app_exception.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AppException {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int errorCode, String errorMessage)
-    restApiFailure,
+        restApiFailure,
     required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
     required TResult Function(String errorMessage) createFileInCacheFailure,
     required TResult Function(String tableToSync, String errorMessage)
-    syncFailure,
+        syncFailure,
     required TResult Function() clienteNotFound,
     required TResult Function() articuloNotFound,
     required TResult Function() pedidoVentaNotFound,
@@ -34,7 +33,8 @@ mixin _$AppException {
     required TResult Function() notConnection,
     required TResult Function() noSuchFileOrDirectory,
     required TResult Function() unexpectedResponseFormat,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int errorCode, String errorMessage)? restApiFailure,
@@ -50,7 +50,8 @@ mixin _$AppException {
     TResult? Function()? notConnection,
     TResult? Function()? noSuchFileOrDirectory,
     TResult? Function()? unexpectedResponseFormat,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
@@ -67,28 +68,30 @@ mixin _$AppException {
     TResult Function()? noSuchFileOrDirectory,
     TResult Function()? unexpectedResponseFormat,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(RestApiFailure value) restApiFailure,
     required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
-    fetchLocalDataFailure,
+        fetchLocalDataFailure,
     required TResult Function(CreateFileInCahceFailure value)
-    createFileInCacheFailure,
+        createFileInCacheFailure,
     required TResult Function(SyncFailure value) syncFailure,
     required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
     required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
     required TResult Function(PedidoVentaNotFoundFailure value)
-    pedidoVentaNotFound,
+        pedidoVentaNotFound,
     required TResult Function(PedidoVentaDeleteFailure value)
-    pedidoVentaDeleteFailure,
+        pedidoVentaDeleteFailure,
     required TResult Function(InsertDataFailure value) insertDataFailure,
     required TResult Function(NotConnectionFailure value) notConnection,
     required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
     required TResult Function(UnexpectedResponseFormat value)
-    unexpectedResponseFormat,
-  }) => throw _privateConstructorUsedError;
+        unexpectedResponseFormat,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(RestApiFailure value)? restApiFailure,
@@ -104,7 +107,8 @@ mixin _$AppException {
     TResult? Function(NotConnectionFailure value)? notConnection,
     TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
     TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(RestApiFailure value)? restApiFailure,
@@ -121,15 +125,15 @@ mixin _$AppException {
     TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
     TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $AppExceptionCopyWith<$Res> {
   factory $AppExceptionCopyWith(
-    AppException value,
-    $Res Function(AppException) then,
-  ) = _$AppExceptionCopyWithImpl<$Res, AppException>;
+          AppException value, $Res Function(AppException) then) =
+      _$AppExceptionCopyWithImpl<$Res, AppException>;
 }
 
 /// @nodoc
@@ -148,10 +152,9 @@ class _$AppExceptionCopyWithImpl<$Res, $Val extends AppException>
 
 /// @nodoc
 abstract class _$$RestApiFailureImplCopyWith<$Res> {
-  factory _$$RestApiFailureImplCopyWith(
-    _$RestApiFailureImpl value,
-    $Res Function(_$RestApiFailureImpl) then,
-  ) = __$$RestApiFailureImplCopyWithImpl<$Res>;
+  factory _$$RestApiFailureImplCopyWith(_$RestApiFailureImpl value,
+          $Res Function(_$RestApiFailureImpl) then) =
+      __$$RestApiFailureImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int errorCode, String errorMessage});
 }
@@ -161,27 +164,27 @@ class __$$RestApiFailureImplCopyWithImpl<$Res>
     extends _$AppExceptionCopyWithImpl<$Res, _$RestApiFailureImpl>
     implements _$$RestApiFailureImplCopyWith<$Res> {
   __$$RestApiFailureImplCopyWithImpl(
-    _$RestApiFailureImpl _value,
-    $Res Function(_$RestApiFailureImpl) _then,
-  ) : super(_value, _then);
+      _$RestApiFailureImpl _value, $Res Function(_$RestApiFailureImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AppException
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? errorCode = null, Object? errorMessage = null}) {
-    return _then(
-      _$RestApiFailureImpl(
-        null == errorCode
-            ? _value.errorCode
-            : errorCode // ignore: cast_nullable_to_non_nullable
-                as int,
-        null == errorMessage
-            ? _value.errorMessage
-            : errorMessage // ignore: cast_nullable_to_non_nullable
-                as String,
-      ),
-    );
+  $Res call({
+    Object? errorCode = null,
+    Object? errorMessage = null,
+  }) {
+    return _then(_$RestApiFailureImpl(
+      null == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as int,
+      null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -221,20 +224,18 @@ class _$RestApiFailureImpl implements RestApiFailure {
   @pragma('vm:prefer-inline')
   _$$RestApiFailureImplCopyWith<_$RestApiFailureImpl> get copyWith =>
       __$$RestApiFailureImplCopyWithImpl<_$RestApiFailureImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int errorCode, String errorMessage)
-    restApiFailure,
+        restApiFailure,
     required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
     required TResult Function(String errorMessage) createFileInCacheFailure,
     required TResult Function(String tableToSync, String errorMessage)
-    syncFailure,
+        syncFailure,
     required TResult Function() clienteNotFound,
     required TResult Function() articuloNotFound,
     required TResult Function() pedidoVentaNotFound,
@@ -297,21 +298,21 @@ class _$RestApiFailureImpl implements RestApiFailure {
     required TResult Function(RestApiFailure value) restApiFailure,
     required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
-    fetchLocalDataFailure,
+        fetchLocalDataFailure,
     required TResult Function(CreateFileInCahceFailure value)
-    createFileInCacheFailure,
+        createFileInCacheFailure,
     required TResult Function(SyncFailure value) syncFailure,
     required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
     required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
     required TResult Function(PedidoVentaNotFoundFailure value)
-    pedidoVentaNotFound,
+        pedidoVentaNotFound,
     required TResult Function(PedidoVentaDeleteFailure value)
-    pedidoVentaDeleteFailure,
+        pedidoVentaDeleteFailure,
     required TResult Function(InsertDataFailure value) insertDataFailure,
     required TResult Function(NotConnectionFailure value) notConnection,
     required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
     required TResult Function(UnexpectedResponseFormat value)
-    unexpectedResponseFormat,
+        unexpectedResponseFormat,
   }) {
     return restApiFailure(this);
   }
@@ -377,10 +378,9 @@ abstract class RestApiFailure implements AppException {
 
 /// @nodoc
 abstract class _$$AuthLocalFailureImplCopyWith<$Res> {
-  factory _$$AuthLocalFailureImplCopyWith(
-    _$AuthLocalFailureImpl value,
-    $Res Function(_$AuthLocalFailureImpl) then,
-  ) = __$$AuthLocalFailureImplCopyWithImpl<$Res>;
+  factory _$$AuthLocalFailureImplCopyWith(_$AuthLocalFailureImpl value,
+          $Res Function(_$AuthLocalFailureImpl) then) =
+      __$$AuthLocalFailureImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String errorMessage});
 }
@@ -389,24 +389,23 @@ abstract class _$$AuthLocalFailureImplCopyWith<$Res> {
 class __$$AuthLocalFailureImplCopyWithImpl<$Res>
     extends _$AppExceptionCopyWithImpl<$Res, _$AuthLocalFailureImpl>
     implements _$$AuthLocalFailureImplCopyWith<$Res> {
-  __$$AuthLocalFailureImplCopyWithImpl(
-    _$AuthLocalFailureImpl _value,
-    $Res Function(_$AuthLocalFailureImpl) _then,
-  ) : super(_value, _then);
+  __$$AuthLocalFailureImplCopyWithImpl(_$AuthLocalFailureImpl _value,
+      $Res Function(_$AuthLocalFailureImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AppException
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? errorMessage = null}) {
-    return _then(
-      _$AuthLocalFailureImpl(
-        null == errorMessage
-            ? _value.errorMessage
-            : errorMessage // ignore: cast_nullable_to_non_nullable
-                as String,
-      ),
-    );
+  $Res call({
+    Object? errorMessage = null,
+  }) {
+    return _then(_$AuthLocalFailureImpl(
+      null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -442,20 +441,18 @@ class _$AuthLocalFailureImpl implements AuthLocalFailure {
   @pragma('vm:prefer-inline')
   _$$AuthLocalFailureImplCopyWith<_$AuthLocalFailureImpl> get copyWith =>
       __$$AuthLocalFailureImplCopyWithImpl<_$AuthLocalFailureImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int errorCode, String errorMessage)
-    restApiFailure,
+        restApiFailure,
     required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
     required TResult Function(String errorMessage) createFileInCacheFailure,
     required TResult Function(String tableToSync, String errorMessage)
-    syncFailure,
+        syncFailure,
     required TResult Function() clienteNotFound,
     required TResult Function() articuloNotFound,
     required TResult Function() pedidoVentaNotFound,
@@ -518,21 +515,21 @@ class _$AuthLocalFailureImpl implements AuthLocalFailure {
     required TResult Function(RestApiFailure value) restApiFailure,
     required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
-    fetchLocalDataFailure,
+        fetchLocalDataFailure,
     required TResult Function(CreateFileInCahceFailure value)
-    createFileInCacheFailure,
+        createFileInCacheFailure,
     required TResult Function(SyncFailure value) syncFailure,
     required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
     required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
     required TResult Function(PedidoVentaNotFoundFailure value)
-    pedidoVentaNotFound,
+        pedidoVentaNotFound,
     required TResult Function(PedidoVentaDeleteFailure value)
-    pedidoVentaDeleteFailure,
+        pedidoVentaDeleteFailure,
     required TResult Function(InsertDataFailure value) insertDataFailure,
     required TResult Function(NotConnectionFailure value) notConnection,
     required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
     required TResult Function(UnexpectedResponseFormat value)
-    unexpectedResponseFormat,
+        unexpectedResponseFormat,
   }) {
     return authLocalFailure(this);
   }
@@ -598,9 +595,9 @@ abstract class AuthLocalFailure implements AppException {
 /// @nodoc
 abstract class _$$FetchLocalDataFailureImplCopyWith<$Res> {
   factory _$$FetchLocalDataFailureImplCopyWith(
-    _$FetchLocalDataFailureImpl value,
-    $Res Function(_$FetchLocalDataFailureImpl) then,
-  ) = __$$FetchLocalDataFailureImplCopyWithImpl<$Res>;
+          _$FetchLocalDataFailureImpl value,
+          $Res Function(_$FetchLocalDataFailureImpl) then) =
+      __$$FetchLocalDataFailureImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String errorMessage});
 }
@@ -609,24 +606,23 @@ abstract class _$$FetchLocalDataFailureImplCopyWith<$Res> {
 class __$$FetchLocalDataFailureImplCopyWithImpl<$Res>
     extends _$AppExceptionCopyWithImpl<$Res, _$FetchLocalDataFailureImpl>
     implements _$$FetchLocalDataFailureImplCopyWith<$Res> {
-  __$$FetchLocalDataFailureImplCopyWithImpl(
-    _$FetchLocalDataFailureImpl _value,
-    $Res Function(_$FetchLocalDataFailureImpl) _then,
-  ) : super(_value, _then);
+  __$$FetchLocalDataFailureImplCopyWithImpl(_$FetchLocalDataFailureImpl _value,
+      $Res Function(_$FetchLocalDataFailureImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AppException
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? errorMessage = null}) {
-    return _then(
-      _$FetchLocalDataFailureImpl(
-        null == errorMessage
-            ? _value.errorMessage
-            : errorMessage // ignore: cast_nullable_to_non_nullable
-                as String,
-      ),
-    );
+  $Res call({
+    Object? errorMessage = null,
+  }) {
+    return _then(_$FetchLocalDataFailureImpl(
+      null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -661,22 +657,19 @@ class _$FetchLocalDataFailureImpl implements FetchLocalDataFailure {
   @override
   @pragma('vm:prefer-inline')
   _$$FetchLocalDataFailureImplCopyWith<_$FetchLocalDataFailureImpl>
-  get copyWith =>
-      __$$FetchLocalDataFailureImplCopyWithImpl<_$FetchLocalDataFailureImpl>(
-        this,
-        _$identity,
-      );
+      get copyWith => __$$FetchLocalDataFailureImplCopyWithImpl<
+          _$FetchLocalDataFailureImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int errorCode, String errorMessage)
-    restApiFailure,
+        restApiFailure,
     required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
     required TResult Function(String errorMessage) createFileInCacheFailure,
     required TResult Function(String tableToSync, String errorMessage)
-    syncFailure,
+        syncFailure,
     required TResult Function() clienteNotFound,
     required TResult Function() articuloNotFound,
     required TResult Function() pedidoVentaNotFound,
@@ -739,21 +732,21 @@ class _$FetchLocalDataFailureImpl implements FetchLocalDataFailure {
     required TResult Function(RestApiFailure value) restApiFailure,
     required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
-    fetchLocalDataFailure,
+        fetchLocalDataFailure,
     required TResult Function(CreateFileInCahceFailure value)
-    createFileInCacheFailure,
+        createFileInCacheFailure,
     required TResult Function(SyncFailure value) syncFailure,
     required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
     required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
     required TResult Function(PedidoVentaNotFoundFailure value)
-    pedidoVentaNotFound,
+        pedidoVentaNotFound,
     required TResult Function(PedidoVentaDeleteFailure value)
-    pedidoVentaDeleteFailure,
+        pedidoVentaDeleteFailure,
     required TResult Function(InsertDataFailure value) insertDataFailure,
     required TResult Function(NotConnectionFailure value) notConnection,
     required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
     required TResult Function(UnexpectedResponseFormat value)
-    unexpectedResponseFormat,
+        unexpectedResponseFormat,
   }) {
     return fetchLocalDataFailure(this);
   }
@@ -813,15 +806,15 @@ abstract class FetchLocalDataFailure implements AppException {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FetchLocalDataFailureImplCopyWith<_$FetchLocalDataFailureImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$CreateFileInCahceFailureImplCopyWith<$Res> {
   factory _$$CreateFileInCahceFailureImplCopyWith(
-    _$CreateFileInCahceFailureImpl value,
-    $Res Function(_$CreateFileInCahceFailureImpl) then,
-  ) = __$$CreateFileInCahceFailureImplCopyWithImpl<$Res>;
+          _$CreateFileInCahceFailureImpl value,
+          $Res Function(_$CreateFileInCahceFailureImpl) then) =
+      __$$CreateFileInCahceFailureImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String errorMessage});
 }
@@ -831,23 +824,23 @@ class __$$CreateFileInCahceFailureImplCopyWithImpl<$Res>
     extends _$AppExceptionCopyWithImpl<$Res, _$CreateFileInCahceFailureImpl>
     implements _$$CreateFileInCahceFailureImplCopyWith<$Res> {
   __$$CreateFileInCahceFailureImplCopyWithImpl(
-    _$CreateFileInCahceFailureImpl _value,
-    $Res Function(_$CreateFileInCahceFailureImpl) _then,
-  ) : super(_value, _then);
+      _$CreateFileInCahceFailureImpl _value,
+      $Res Function(_$CreateFileInCahceFailureImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AppException
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? errorMessage = null}) {
-    return _then(
-      _$CreateFileInCahceFailureImpl(
-        null == errorMessage
-            ? _value.errorMessage
-            : errorMessage // ignore: cast_nullable_to_non_nullable
-                as String,
-      ),
-    );
+  $Res call({
+    Object? errorMessage = null,
+  }) {
+    return _then(_$CreateFileInCahceFailureImpl(
+      null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -882,20 +875,19 @@ class _$CreateFileInCahceFailureImpl implements CreateFileInCahceFailure {
   @override
   @pragma('vm:prefer-inline')
   _$$CreateFileInCahceFailureImplCopyWith<_$CreateFileInCahceFailureImpl>
-  get copyWith => __$$CreateFileInCahceFailureImplCopyWithImpl<
-    _$CreateFileInCahceFailureImpl
-  >(this, _$identity);
+      get copyWith => __$$CreateFileInCahceFailureImplCopyWithImpl<
+          _$CreateFileInCahceFailureImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int errorCode, String errorMessage)
-    restApiFailure,
+        restApiFailure,
     required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
     required TResult Function(String errorMessage) createFileInCacheFailure,
     required TResult Function(String tableToSync, String errorMessage)
-    syncFailure,
+        syncFailure,
     required TResult Function() clienteNotFound,
     required TResult Function() articuloNotFound,
     required TResult Function() pedidoVentaNotFound,
@@ -958,21 +950,21 @@ class _$CreateFileInCahceFailureImpl implements CreateFileInCahceFailure {
     required TResult Function(RestApiFailure value) restApiFailure,
     required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
-    fetchLocalDataFailure,
+        fetchLocalDataFailure,
     required TResult Function(CreateFileInCahceFailure value)
-    createFileInCacheFailure,
+        createFileInCacheFailure,
     required TResult Function(SyncFailure value) syncFailure,
     required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
     required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
     required TResult Function(PedidoVentaNotFoundFailure value)
-    pedidoVentaNotFound,
+        pedidoVentaNotFound,
     required TResult Function(PedidoVentaDeleteFailure value)
-    pedidoVentaDeleteFailure,
+        pedidoVentaDeleteFailure,
     required TResult Function(InsertDataFailure value) insertDataFailure,
     required TResult Function(NotConnectionFailure value) notConnection,
     required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
     required TResult Function(UnexpectedResponseFormat value)
-    unexpectedResponseFormat,
+        unexpectedResponseFormat,
   }) {
     return createFileInCacheFailure(this);
   }
@@ -1032,15 +1024,14 @@ abstract class CreateFileInCahceFailure implements AppException {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreateFileInCahceFailureImplCopyWith<_$CreateFileInCahceFailureImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$SyncFailureImplCopyWith<$Res> {
   factory _$$SyncFailureImplCopyWith(
-    _$SyncFailureImpl value,
-    $Res Function(_$SyncFailureImpl) then,
-  ) = __$$SyncFailureImplCopyWithImpl<$Res>;
+          _$SyncFailureImpl value, $Res Function(_$SyncFailureImpl) then) =
+      __$$SyncFailureImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String tableToSync, String errorMessage});
 }
@@ -1050,27 +1041,27 @@ class __$$SyncFailureImplCopyWithImpl<$Res>
     extends _$AppExceptionCopyWithImpl<$Res, _$SyncFailureImpl>
     implements _$$SyncFailureImplCopyWith<$Res> {
   __$$SyncFailureImplCopyWithImpl(
-    _$SyncFailureImpl _value,
-    $Res Function(_$SyncFailureImpl) _then,
-  ) : super(_value, _then);
+      _$SyncFailureImpl _value, $Res Function(_$SyncFailureImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AppException
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? tableToSync = null, Object? errorMessage = null}) {
-    return _then(
-      _$SyncFailureImpl(
-        null == tableToSync
-            ? _value.tableToSync
-            : tableToSync // ignore: cast_nullable_to_non_nullable
-                as String,
-        null == errorMessage
-            ? _value.errorMessage
-            : errorMessage // ignore: cast_nullable_to_non_nullable
-                as String,
-      ),
-    );
+  $Res call({
+    Object? tableToSync = null,
+    Object? errorMessage = null,
+  }) {
+    return _then(_$SyncFailureImpl(
+      null == tableToSync
+          ? _value.tableToSync
+          : tableToSync // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -1115,12 +1106,12 @@ class _$SyncFailureImpl implements SyncFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int errorCode, String errorMessage)
-    restApiFailure,
+        restApiFailure,
     required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
     required TResult Function(String errorMessage) createFileInCacheFailure,
     required TResult Function(String tableToSync, String errorMessage)
-    syncFailure,
+        syncFailure,
     required TResult Function() clienteNotFound,
     required TResult Function() articuloNotFound,
     required TResult Function() pedidoVentaNotFound,
@@ -1183,21 +1174,21 @@ class _$SyncFailureImpl implements SyncFailure {
     required TResult Function(RestApiFailure value) restApiFailure,
     required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
-    fetchLocalDataFailure,
+        fetchLocalDataFailure,
     required TResult Function(CreateFileInCahceFailure value)
-    createFileInCacheFailure,
+        createFileInCacheFailure,
     required TResult Function(SyncFailure value) syncFailure,
     required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
     required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
     required TResult Function(PedidoVentaNotFoundFailure value)
-    pedidoVentaNotFound,
+        pedidoVentaNotFound,
     required TResult Function(PedidoVentaDeleteFailure value)
-    pedidoVentaDeleteFailure,
+        pedidoVentaDeleteFailure,
     required TResult Function(InsertDataFailure value) insertDataFailure,
     required TResult Function(NotConnectionFailure value) notConnection,
     required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
     required TResult Function(UnexpectedResponseFormat value)
-    unexpectedResponseFormat,
+        unexpectedResponseFormat,
   }) {
     return syncFailure(this);
   }
@@ -1249,9 +1240,7 @@ class _$SyncFailureImpl implements SyncFailure {
 
 abstract class SyncFailure implements AppException {
   const factory SyncFailure(
-    final String tableToSync,
-    final String errorMessage,
-  ) = _$SyncFailureImpl;
+      final String tableToSync, final String errorMessage) = _$SyncFailureImpl;
 
   String get tableToSync;
   String get errorMessage;
@@ -1266,9 +1255,9 @@ abstract class SyncFailure implements AppException {
 /// @nodoc
 abstract class _$$ClienteNotFoundFailureImplCopyWith<$Res> {
   factory _$$ClienteNotFoundFailureImplCopyWith(
-    _$ClienteNotFoundFailureImpl value,
-    $Res Function(_$ClienteNotFoundFailureImpl) then,
-  ) = __$$ClienteNotFoundFailureImplCopyWithImpl<$Res>;
+          _$ClienteNotFoundFailureImpl value,
+          $Res Function(_$ClienteNotFoundFailureImpl) then) =
+      __$$ClienteNotFoundFailureImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -1276,9 +1265,9 @@ class __$$ClienteNotFoundFailureImplCopyWithImpl<$Res>
     extends _$AppExceptionCopyWithImpl<$Res, _$ClienteNotFoundFailureImpl>
     implements _$$ClienteNotFoundFailureImplCopyWith<$Res> {
   __$$ClienteNotFoundFailureImplCopyWithImpl(
-    _$ClienteNotFoundFailureImpl _value,
-    $Res Function(_$ClienteNotFoundFailureImpl) _then,
-  ) : super(_value, _then);
+      _$ClienteNotFoundFailureImpl _value,
+      $Res Function(_$ClienteNotFoundFailureImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AppException
   /// with the given fields replaced by the non-null parameter values.
@@ -1308,12 +1297,12 @@ class _$ClienteNotFoundFailureImpl implements ClienteNotFoundFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int errorCode, String errorMessage)
-    restApiFailure,
+        restApiFailure,
     required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
     required TResult Function(String errorMessage) createFileInCacheFailure,
     required TResult Function(String tableToSync, String errorMessage)
-    syncFailure,
+        syncFailure,
     required TResult Function() clienteNotFound,
     required TResult Function() articuloNotFound,
     required TResult Function() pedidoVentaNotFound,
@@ -1376,21 +1365,21 @@ class _$ClienteNotFoundFailureImpl implements ClienteNotFoundFailure {
     required TResult Function(RestApiFailure value) restApiFailure,
     required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
-    fetchLocalDataFailure,
+        fetchLocalDataFailure,
     required TResult Function(CreateFileInCahceFailure value)
-    createFileInCacheFailure,
+        createFileInCacheFailure,
     required TResult Function(SyncFailure value) syncFailure,
     required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
     required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
     required TResult Function(PedidoVentaNotFoundFailure value)
-    pedidoVentaNotFound,
+        pedidoVentaNotFound,
     required TResult Function(PedidoVentaDeleteFailure value)
-    pedidoVentaDeleteFailure,
+        pedidoVentaDeleteFailure,
     required TResult Function(InsertDataFailure value) insertDataFailure,
     required TResult Function(NotConnectionFailure value) notConnection,
     required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
     required TResult Function(UnexpectedResponseFormat value)
-    unexpectedResponseFormat,
+        unexpectedResponseFormat,
   }) {
     return clienteNotFound(this);
   }
@@ -1447,9 +1436,9 @@ abstract class ClienteNotFoundFailure implements AppException {
 /// @nodoc
 abstract class _$$ArticuloNotFoundFailureImplCopyWith<$Res> {
   factory _$$ArticuloNotFoundFailureImplCopyWith(
-    _$ArticuloNotFoundFailureImpl value,
-    $Res Function(_$ArticuloNotFoundFailureImpl) then,
-  ) = __$$ArticuloNotFoundFailureImplCopyWithImpl<$Res>;
+          _$ArticuloNotFoundFailureImpl value,
+          $Res Function(_$ArticuloNotFoundFailureImpl) then) =
+      __$$ArticuloNotFoundFailureImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -1457,9 +1446,9 @@ class __$$ArticuloNotFoundFailureImplCopyWithImpl<$Res>
     extends _$AppExceptionCopyWithImpl<$Res, _$ArticuloNotFoundFailureImpl>
     implements _$$ArticuloNotFoundFailureImplCopyWith<$Res> {
   __$$ArticuloNotFoundFailureImplCopyWithImpl(
-    _$ArticuloNotFoundFailureImpl _value,
-    $Res Function(_$ArticuloNotFoundFailureImpl) _then,
-  ) : super(_value, _then);
+      _$ArticuloNotFoundFailureImpl _value,
+      $Res Function(_$ArticuloNotFoundFailureImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AppException
   /// with the given fields replaced by the non-null parameter values.
@@ -1489,12 +1478,12 @@ class _$ArticuloNotFoundFailureImpl implements ArticuloNotFoundFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int errorCode, String errorMessage)
-    restApiFailure,
+        restApiFailure,
     required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
     required TResult Function(String errorMessage) createFileInCacheFailure,
     required TResult Function(String tableToSync, String errorMessage)
-    syncFailure,
+        syncFailure,
     required TResult Function() clienteNotFound,
     required TResult Function() articuloNotFound,
     required TResult Function() pedidoVentaNotFound,
@@ -1557,21 +1546,21 @@ class _$ArticuloNotFoundFailureImpl implements ArticuloNotFoundFailure {
     required TResult Function(RestApiFailure value) restApiFailure,
     required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
-    fetchLocalDataFailure,
+        fetchLocalDataFailure,
     required TResult Function(CreateFileInCahceFailure value)
-    createFileInCacheFailure,
+        createFileInCacheFailure,
     required TResult Function(SyncFailure value) syncFailure,
     required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
     required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
     required TResult Function(PedidoVentaNotFoundFailure value)
-    pedidoVentaNotFound,
+        pedidoVentaNotFound,
     required TResult Function(PedidoVentaDeleteFailure value)
-    pedidoVentaDeleteFailure,
+        pedidoVentaDeleteFailure,
     required TResult Function(InsertDataFailure value) insertDataFailure,
     required TResult Function(NotConnectionFailure value) notConnection,
     required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
     required TResult Function(UnexpectedResponseFormat value)
-    unexpectedResponseFormat,
+        unexpectedResponseFormat,
   }) {
     return articuloNotFound(this);
   }
@@ -1628,9 +1617,9 @@ abstract class ArticuloNotFoundFailure implements AppException {
 /// @nodoc
 abstract class _$$PedidoVentaNotFoundFailureImplCopyWith<$Res> {
   factory _$$PedidoVentaNotFoundFailureImplCopyWith(
-    _$PedidoVentaNotFoundFailureImpl value,
-    $Res Function(_$PedidoVentaNotFoundFailureImpl) then,
-  ) = __$$PedidoVentaNotFoundFailureImplCopyWithImpl<$Res>;
+          _$PedidoVentaNotFoundFailureImpl value,
+          $Res Function(_$PedidoVentaNotFoundFailureImpl) then) =
+      __$$PedidoVentaNotFoundFailureImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -1638,9 +1627,9 @@ class __$$PedidoVentaNotFoundFailureImplCopyWithImpl<$Res>
     extends _$AppExceptionCopyWithImpl<$Res, _$PedidoVentaNotFoundFailureImpl>
     implements _$$PedidoVentaNotFoundFailureImplCopyWith<$Res> {
   __$$PedidoVentaNotFoundFailureImplCopyWithImpl(
-    _$PedidoVentaNotFoundFailureImpl _value,
-    $Res Function(_$PedidoVentaNotFoundFailureImpl) _then,
-  ) : super(_value, _then);
+      _$PedidoVentaNotFoundFailureImpl _value,
+      $Res Function(_$PedidoVentaNotFoundFailureImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AppException
   /// with the given fields replaced by the non-null parameter values.
@@ -1670,12 +1659,12 @@ class _$PedidoVentaNotFoundFailureImpl implements PedidoVentaNotFoundFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int errorCode, String errorMessage)
-    restApiFailure,
+        restApiFailure,
     required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
     required TResult Function(String errorMessage) createFileInCacheFailure,
     required TResult Function(String tableToSync, String errorMessage)
-    syncFailure,
+        syncFailure,
     required TResult Function() clienteNotFound,
     required TResult Function() articuloNotFound,
     required TResult Function() pedidoVentaNotFound,
@@ -1738,21 +1727,21 @@ class _$PedidoVentaNotFoundFailureImpl implements PedidoVentaNotFoundFailure {
     required TResult Function(RestApiFailure value) restApiFailure,
     required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
-    fetchLocalDataFailure,
+        fetchLocalDataFailure,
     required TResult Function(CreateFileInCahceFailure value)
-    createFileInCacheFailure,
+        createFileInCacheFailure,
     required TResult Function(SyncFailure value) syncFailure,
     required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
     required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
     required TResult Function(PedidoVentaNotFoundFailure value)
-    pedidoVentaNotFound,
+        pedidoVentaNotFound,
     required TResult Function(PedidoVentaDeleteFailure value)
-    pedidoVentaDeleteFailure,
+        pedidoVentaDeleteFailure,
     required TResult Function(InsertDataFailure value) insertDataFailure,
     required TResult Function(NotConnectionFailure value) notConnection,
     required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
     required TResult Function(UnexpectedResponseFormat value)
-    unexpectedResponseFormat,
+        unexpectedResponseFormat,
   }) {
     return pedidoVentaNotFound(this);
   }
@@ -1809,9 +1798,9 @@ abstract class PedidoVentaNotFoundFailure implements AppException {
 /// @nodoc
 abstract class _$$PedidoVentaDeleteFailureImplCopyWith<$Res> {
   factory _$$PedidoVentaDeleteFailureImplCopyWith(
-    _$PedidoVentaDeleteFailureImpl value,
-    $Res Function(_$PedidoVentaDeleteFailureImpl) then,
-  ) = __$$PedidoVentaDeleteFailureImplCopyWithImpl<$Res>;
+          _$PedidoVentaDeleteFailureImpl value,
+          $Res Function(_$PedidoVentaDeleteFailureImpl) then) =
+      __$$PedidoVentaDeleteFailureImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String errorMessage});
 }
@@ -1821,23 +1810,23 @@ class __$$PedidoVentaDeleteFailureImplCopyWithImpl<$Res>
     extends _$AppExceptionCopyWithImpl<$Res, _$PedidoVentaDeleteFailureImpl>
     implements _$$PedidoVentaDeleteFailureImplCopyWith<$Res> {
   __$$PedidoVentaDeleteFailureImplCopyWithImpl(
-    _$PedidoVentaDeleteFailureImpl _value,
-    $Res Function(_$PedidoVentaDeleteFailureImpl) _then,
-  ) : super(_value, _then);
+      _$PedidoVentaDeleteFailureImpl _value,
+      $Res Function(_$PedidoVentaDeleteFailureImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AppException
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? errorMessage = null}) {
-    return _then(
-      _$PedidoVentaDeleteFailureImpl(
-        null == errorMessage
-            ? _value.errorMessage
-            : errorMessage // ignore: cast_nullable_to_non_nullable
-                as String,
-      ),
-    );
+  $Res call({
+    Object? errorMessage = null,
+  }) {
+    return _then(_$PedidoVentaDeleteFailureImpl(
+      null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -1872,20 +1861,19 @@ class _$PedidoVentaDeleteFailureImpl implements PedidoVentaDeleteFailure {
   @override
   @pragma('vm:prefer-inline')
   _$$PedidoVentaDeleteFailureImplCopyWith<_$PedidoVentaDeleteFailureImpl>
-  get copyWith => __$$PedidoVentaDeleteFailureImplCopyWithImpl<
-    _$PedidoVentaDeleteFailureImpl
-  >(this, _$identity);
+      get copyWith => __$$PedidoVentaDeleteFailureImplCopyWithImpl<
+          _$PedidoVentaDeleteFailureImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int errorCode, String errorMessage)
-    restApiFailure,
+        restApiFailure,
     required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
     required TResult Function(String errorMessage) createFileInCacheFailure,
     required TResult Function(String tableToSync, String errorMessage)
-    syncFailure,
+        syncFailure,
     required TResult Function() clienteNotFound,
     required TResult Function() articuloNotFound,
     required TResult Function() pedidoVentaNotFound,
@@ -1948,21 +1936,21 @@ class _$PedidoVentaDeleteFailureImpl implements PedidoVentaDeleteFailure {
     required TResult Function(RestApiFailure value) restApiFailure,
     required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
-    fetchLocalDataFailure,
+        fetchLocalDataFailure,
     required TResult Function(CreateFileInCahceFailure value)
-    createFileInCacheFailure,
+        createFileInCacheFailure,
     required TResult Function(SyncFailure value) syncFailure,
     required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
     required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
     required TResult Function(PedidoVentaNotFoundFailure value)
-    pedidoVentaNotFound,
+        pedidoVentaNotFound,
     required TResult Function(PedidoVentaDeleteFailure value)
-    pedidoVentaDeleteFailure,
+        pedidoVentaDeleteFailure,
     required TResult Function(InsertDataFailure value) insertDataFailure,
     required TResult Function(NotConnectionFailure value) notConnection,
     required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
     required TResult Function(UnexpectedResponseFormat value)
-    unexpectedResponseFormat,
+        unexpectedResponseFormat,
   }) {
     return pedidoVentaDeleteFailure(this);
   }
@@ -2022,15 +2010,14 @@ abstract class PedidoVentaDeleteFailure implements AppException {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PedidoVentaDeleteFailureImplCopyWith<_$PedidoVentaDeleteFailureImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$InsertDataFailureImplCopyWith<$Res> {
-  factory _$$InsertDataFailureImplCopyWith(
-    _$InsertDataFailureImpl value,
-    $Res Function(_$InsertDataFailureImpl) then,
-  ) = __$$InsertDataFailureImplCopyWithImpl<$Res>;
+  factory _$$InsertDataFailureImplCopyWith(_$InsertDataFailureImpl value,
+          $Res Function(_$InsertDataFailureImpl) then) =
+      __$$InsertDataFailureImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String errorMessage});
 }
@@ -2039,24 +2026,23 @@ abstract class _$$InsertDataFailureImplCopyWith<$Res> {
 class __$$InsertDataFailureImplCopyWithImpl<$Res>
     extends _$AppExceptionCopyWithImpl<$Res, _$InsertDataFailureImpl>
     implements _$$InsertDataFailureImplCopyWith<$Res> {
-  __$$InsertDataFailureImplCopyWithImpl(
-    _$InsertDataFailureImpl _value,
-    $Res Function(_$InsertDataFailureImpl) _then,
-  ) : super(_value, _then);
+  __$$InsertDataFailureImplCopyWithImpl(_$InsertDataFailureImpl _value,
+      $Res Function(_$InsertDataFailureImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AppException
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? errorMessage = null}) {
-    return _then(
-      _$InsertDataFailureImpl(
-        null == errorMessage
-            ? _value.errorMessage
-            : errorMessage // ignore: cast_nullable_to_non_nullable
-                as String,
-      ),
-    );
+  $Res call({
+    Object? errorMessage = null,
+  }) {
+    return _then(_$InsertDataFailureImpl(
+      null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -2092,20 +2078,18 @@ class _$InsertDataFailureImpl implements InsertDataFailure {
   @pragma('vm:prefer-inline')
   _$$InsertDataFailureImplCopyWith<_$InsertDataFailureImpl> get copyWith =>
       __$$InsertDataFailureImplCopyWithImpl<_$InsertDataFailureImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int errorCode, String errorMessage)
-    restApiFailure,
+        restApiFailure,
     required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
     required TResult Function(String errorMessage) createFileInCacheFailure,
     required TResult Function(String tableToSync, String errorMessage)
-    syncFailure,
+        syncFailure,
     required TResult Function() clienteNotFound,
     required TResult Function() articuloNotFound,
     required TResult Function() pedidoVentaNotFound,
@@ -2168,21 +2152,21 @@ class _$InsertDataFailureImpl implements InsertDataFailure {
     required TResult Function(RestApiFailure value) restApiFailure,
     required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
-    fetchLocalDataFailure,
+        fetchLocalDataFailure,
     required TResult Function(CreateFileInCahceFailure value)
-    createFileInCacheFailure,
+        createFileInCacheFailure,
     required TResult Function(SyncFailure value) syncFailure,
     required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
     required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
     required TResult Function(PedidoVentaNotFoundFailure value)
-    pedidoVentaNotFound,
+        pedidoVentaNotFound,
     required TResult Function(PedidoVentaDeleteFailure value)
-    pedidoVentaDeleteFailure,
+        pedidoVentaDeleteFailure,
     required TResult Function(InsertDataFailure value) insertDataFailure,
     required TResult Function(NotConnectionFailure value) notConnection,
     required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
     required TResult Function(UnexpectedResponseFormat value)
-    unexpectedResponseFormat,
+        unexpectedResponseFormat,
   }) {
     return insertDataFailure(this);
   }
@@ -2247,20 +2231,18 @@ abstract class InsertDataFailure implements AppException {
 
 /// @nodoc
 abstract class _$$NotConnectionFailureImplCopyWith<$Res> {
-  factory _$$NotConnectionFailureImplCopyWith(
-    _$NotConnectionFailureImpl value,
-    $Res Function(_$NotConnectionFailureImpl) then,
-  ) = __$$NotConnectionFailureImplCopyWithImpl<$Res>;
+  factory _$$NotConnectionFailureImplCopyWith(_$NotConnectionFailureImpl value,
+          $Res Function(_$NotConnectionFailureImpl) then) =
+      __$$NotConnectionFailureImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$NotConnectionFailureImplCopyWithImpl<$Res>
     extends _$AppExceptionCopyWithImpl<$Res, _$NotConnectionFailureImpl>
     implements _$$NotConnectionFailureImplCopyWith<$Res> {
-  __$$NotConnectionFailureImplCopyWithImpl(
-    _$NotConnectionFailureImpl _value,
-    $Res Function(_$NotConnectionFailureImpl) _then,
-  ) : super(_value, _then);
+  __$$NotConnectionFailureImplCopyWithImpl(_$NotConnectionFailureImpl _value,
+      $Res Function(_$NotConnectionFailureImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AppException
   /// with the given fields replaced by the non-null parameter values.
@@ -2290,12 +2272,12 @@ class _$NotConnectionFailureImpl implements NotConnectionFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int errorCode, String errorMessage)
-    restApiFailure,
+        restApiFailure,
     required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
     required TResult Function(String errorMessage) createFileInCacheFailure,
     required TResult Function(String tableToSync, String errorMessage)
-    syncFailure,
+        syncFailure,
     required TResult Function() clienteNotFound,
     required TResult Function() articuloNotFound,
     required TResult Function() pedidoVentaNotFound,
@@ -2358,21 +2340,21 @@ class _$NotConnectionFailureImpl implements NotConnectionFailure {
     required TResult Function(RestApiFailure value) restApiFailure,
     required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
-    fetchLocalDataFailure,
+        fetchLocalDataFailure,
     required TResult Function(CreateFileInCahceFailure value)
-    createFileInCacheFailure,
+        createFileInCacheFailure,
     required TResult Function(SyncFailure value) syncFailure,
     required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
     required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
     required TResult Function(PedidoVentaNotFoundFailure value)
-    pedidoVentaNotFound,
+        pedidoVentaNotFound,
     required TResult Function(PedidoVentaDeleteFailure value)
-    pedidoVentaDeleteFailure,
+        pedidoVentaDeleteFailure,
     required TResult Function(InsertDataFailure value) insertDataFailure,
     required TResult Function(NotConnectionFailure value) notConnection,
     required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
     required TResult Function(UnexpectedResponseFormat value)
-    unexpectedResponseFormat,
+        unexpectedResponseFormat,
   }) {
     return notConnection(this);
   }
@@ -2428,20 +2410,18 @@ abstract class NotConnectionFailure implements AppException {
 
 /// @nodoc
 abstract class _$$ArchivoNoEncontradoImplCopyWith<$Res> {
-  factory _$$ArchivoNoEncontradoImplCopyWith(
-    _$ArchivoNoEncontradoImpl value,
-    $Res Function(_$ArchivoNoEncontradoImpl) then,
-  ) = __$$ArchivoNoEncontradoImplCopyWithImpl<$Res>;
+  factory _$$ArchivoNoEncontradoImplCopyWith(_$ArchivoNoEncontradoImpl value,
+          $Res Function(_$ArchivoNoEncontradoImpl) then) =
+      __$$ArchivoNoEncontradoImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$ArchivoNoEncontradoImplCopyWithImpl<$Res>
     extends _$AppExceptionCopyWithImpl<$Res, _$ArchivoNoEncontradoImpl>
     implements _$$ArchivoNoEncontradoImplCopyWith<$Res> {
-  __$$ArchivoNoEncontradoImplCopyWithImpl(
-    _$ArchivoNoEncontradoImpl _value,
-    $Res Function(_$ArchivoNoEncontradoImpl) _then,
-  ) : super(_value, _then);
+  __$$ArchivoNoEncontradoImplCopyWithImpl(_$ArchivoNoEncontradoImpl _value,
+      $Res Function(_$ArchivoNoEncontradoImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AppException
   /// with the given fields replaced by the non-null parameter values.
@@ -2471,12 +2451,12 @@ class _$ArchivoNoEncontradoImpl implements ArchivoNoEncontrado {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int errorCode, String errorMessage)
-    restApiFailure,
+        restApiFailure,
     required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
     required TResult Function(String errorMessage) createFileInCacheFailure,
     required TResult Function(String tableToSync, String errorMessage)
-    syncFailure,
+        syncFailure,
     required TResult Function() clienteNotFound,
     required TResult Function() articuloNotFound,
     required TResult Function() pedidoVentaNotFound,
@@ -2539,21 +2519,21 @@ class _$ArchivoNoEncontradoImpl implements ArchivoNoEncontrado {
     required TResult Function(RestApiFailure value) restApiFailure,
     required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
-    fetchLocalDataFailure,
+        fetchLocalDataFailure,
     required TResult Function(CreateFileInCahceFailure value)
-    createFileInCacheFailure,
+        createFileInCacheFailure,
     required TResult Function(SyncFailure value) syncFailure,
     required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
     required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
     required TResult Function(PedidoVentaNotFoundFailure value)
-    pedidoVentaNotFound,
+        pedidoVentaNotFound,
     required TResult Function(PedidoVentaDeleteFailure value)
-    pedidoVentaDeleteFailure,
+        pedidoVentaDeleteFailure,
     required TResult Function(InsertDataFailure value) insertDataFailure,
     required TResult Function(NotConnectionFailure value) notConnection,
     required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
     required TResult Function(UnexpectedResponseFormat value)
-    unexpectedResponseFormat,
+        unexpectedResponseFormat,
   }) {
     return noSuchFileOrDirectory(this);
   }
@@ -2610,9 +2590,9 @@ abstract class ArchivoNoEncontrado implements AppException {
 /// @nodoc
 abstract class _$$UnexpectedResponseFormatImplCopyWith<$Res> {
   factory _$$UnexpectedResponseFormatImplCopyWith(
-    _$UnexpectedResponseFormatImpl value,
-    $Res Function(_$UnexpectedResponseFormatImpl) then,
-  ) = __$$UnexpectedResponseFormatImplCopyWithImpl<$Res>;
+          _$UnexpectedResponseFormatImpl value,
+          $Res Function(_$UnexpectedResponseFormatImpl) then) =
+      __$$UnexpectedResponseFormatImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -2620,9 +2600,9 @@ class __$$UnexpectedResponseFormatImplCopyWithImpl<$Res>
     extends _$AppExceptionCopyWithImpl<$Res, _$UnexpectedResponseFormatImpl>
     implements _$$UnexpectedResponseFormatImplCopyWith<$Res> {
   __$$UnexpectedResponseFormatImplCopyWithImpl(
-    _$UnexpectedResponseFormatImpl _value,
-    $Res Function(_$UnexpectedResponseFormatImpl) _then,
-  ) : super(_value, _then);
+      _$UnexpectedResponseFormatImpl _value,
+      $Res Function(_$UnexpectedResponseFormatImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AppException
   /// with the given fields replaced by the non-null parameter values.
@@ -2652,12 +2632,12 @@ class _$UnexpectedResponseFormatImpl implements UnexpectedResponseFormat {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int errorCode, String errorMessage)
-    restApiFailure,
+        restApiFailure,
     required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
     required TResult Function(String errorMessage) createFileInCacheFailure,
     required TResult Function(String tableToSync, String errorMessage)
-    syncFailure,
+        syncFailure,
     required TResult Function() clienteNotFound,
     required TResult Function() articuloNotFound,
     required TResult Function() pedidoVentaNotFound,
@@ -2720,21 +2700,21 @@ class _$UnexpectedResponseFormatImpl implements UnexpectedResponseFormat {
     required TResult Function(RestApiFailure value) restApiFailure,
     required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
-    fetchLocalDataFailure,
+        fetchLocalDataFailure,
     required TResult Function(CreateFileInCahceFailure value)
-    createFileInCacheFailure,
+        createFileInCacheFailure,
     required TResult Function(SyncFailure value) syncFailure,
     required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
     required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
     required TResult Function(PedidoVentaNotFoundFailure value)
-    pedidoVentaNotFound,
+        pedidoVentaNotFound,
     required TResult Function(PedidoVentaDeleteFailure value)
-    pedidoVentaDeleteFailure,
+        pedidoVentaDeleteFailure,
     required TResult Function(InsertDataFailure value) insertDataFailure,
     required TResult Function(NotConnectionFailure value) notConnection,
     required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
     required TResult Function(UnexpectedResponseFormat value)
-    unexpectedResponseFormat,
+        unexpectedResponseFormat,
   }) {
     return unexpectedResponseFormat(this);
   }

@@ -12,8 +12,7 @@ part of 'catalogo.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$Catalogo {
@@ -41,19 +40,18 @@ abstract class $CatalogoCopyWith<$Res> {
   factory $CatalogoCopyWith(Catalogo value, $Res Function(Catalogo) then) =
       _$CatalogoCopyWithImpl<$Res, Catalogo>;
   @useResult
-  $Res call({
-    int catalogoId,
-    String nombre,
-    String idiomaId,
-    String tipoPrecioCatalogoId,
-    String tipoPrecioCatalogoNombre,
-    String tipoCatalogoId,
-    String tagBusqueda,
-    int orden,
-    String nombreFicheroPortada,
-    String nombreFicheroCatalogo,
-    bool descarga,
-  });
+  $Res call(
+      {int catalogoId,
+      String nombre,
+      String idiomaId,
+      String tipoPrecioCatalogoId,
+      String tipoPrecioCatalogoNombre,
+      String tipoCatalogoId,
+      String tagBusqueda,
+      int orden,
+      String nombreFicheroPortada,
+      String nombreFicheroCatalogo,
+      bool descarga});
 }
 
 /// @nodoc
@@ -83,66 +81,52 @@ class _$CatalogoCopyWithImpl<$Res, $Val extends Catalogo>
     Object? nombreFicheroCatalogo = null,
     Object? descarga = null,
   }) {
-    return _then(
-      _value.copyWith(
-            catalogoId:
-                null == catalogoId
-                    ? _value.catalogoId
-                    : catalogoId // ignore: cast_nullable_to_non_nullable
-                        as int,
-            nombre:
-                null == nombre
-                    ? _value.nombre
-                    : nombre // ignore: cast_nullable_to_non_nullable
-                        as String,
-            idiomaId:
-                null == idiomaId
-                    ? _value.idiomaId
-                    : idiomaId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            tipoPrecioCatalogoId:
-                null == tipoPrecioCatalogoId
-                    ? _value.tipoPrecioCatalogoId
-                    : tipoPrecioCatalogoId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            tipoPrecioCatalogoNombre:
-                null == tipoPrecioCatalogoNombre
-                    ? _value.tipoPrecioCatalogoNombre
-                    : tipoPrecioCatalogoNombre // ignore: cast_nullable_to_non_nullable
-                        as String,
-            tipoCatalogoId:
-                null == tipoCatalogoId
-                    ? _value.tipoCatalogoId
-                    : tipoCatalogoId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            tagBusqueda:
-                null == tagBusqueda
-                    ? _value.tagBusqueda
-                    : tagBusqueda // ignore: cast_nullable_to_non_nullable
-                        as String,
-            orden:
-                null == orden
-                    ? _value.orden
-                    : orden // ignore: cast_nullable_to_non_nullable
-                        as int,
-            nombreFicheroPortada:
-                null == nombreFicheroPortada
-                    ? _value.nombreFicheroPortada
-                    : nombreFicheroPortada // ignore: cast_nullable_to_non_nullable
-                        as String,
-            nombreFicheroCatalogo:
-                null == nombreFicheroCatalogo
-                    ? _value.nombreFicheroCatalogo
-                    : nombreFicheroCatalogo // ignore: cast_nullable_to_non_nullable
-                        as String,
-            descarga:
-                null == descarga
-                    ? _value.descarga
-                    : descarga // ignore: cast_nullable_to_non_nullable
-                        as bool,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      catalogoId: null == catalogoId
+          ? _value.catalogoId
+          : catalogoId // ignore: cast_nullable_to_non_nullable
+              as int,
+      nombre: null == nombre
+          ? _value.nombre
+          : nombre // ignore: cast_nullable_to_non_nullable
+              as String,
+      idiomaId: null == idiomaId
+          ? _value.idiomaId
+          : idiomaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      tipoPrecioCatalogoId: null == tipoPrecioCatalogoId
+          ? _value.tipoPrecioCatalogoId
+          : tipoPrecioCatalogoId // ignore: cast_nullable_to_non_nullable
+              as String,
+      tipoPrecioCatalogoNombre: null == tipoPrecioCatalogoNombre
+          ? _value.tipoPrecioCatalogoNombre
+          : tipoPrecioCatalogoNombre // ignore: cast_nullable_to_non_nullable
+              as String,
+      tipoCatalogoId: null == tipoCatalogoId
+          ? _value.tipoCatalogoId
+          : tipoCatalogoId // ignore: cast_nullable_to_non_nullable
+              as String,
+      tagBusqueda: null == tagBusqueda
+          ? _value.tagBusqueda
+          : tagBusqueda // ignore: cast_nullable_to_non_nullable
+              as String,
+      orden: null == orden
+          ? _value.orden
+          : orden // ignore: cast_nullable_to_non_nullable
+              as int,
+      nombreFicheroPortada: null == nombreFicheroPortada
+          ? _value.nombreFicheroPortada
+          : nombreFicheroPortada // ignore: cast_nullable_to_non_nullable
+              as String,
+      nombreFicheroCatalogo: null == nombreFicheroCatalogo
+          ? _value.nombreFicheroCatalogo
+          : nombreFicheroCatalogo // ignore: cast_nullable_to_non_nullable
+              as String,
+      descarga: null == descarga
+          ? _value.descarga
+          : descarga // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
   }
 }
 
@@ -150,24 +134,22 @@ class _$CatalogoCopyWithImpl<$Res, $Val extends Catalogo>
 abstract class _$$CatalogoImplCopyWith<$Res>
     implements $CatalogoCopyWith<$Res> {
   factory _$$CatalogoImplCopyWith(
-    _$CatalogoImpl value,
-    $Res Function(_$CatalogoImpl) then,
-  ) = __$$CatalogoImplCopyWithImpl<$Res>;
+          _$CatalogoImpl value, $Res Function(_$CatalogoImpl) then) =
+      __$$CatalogoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    int catalogoId,
-    String nombre,
-    String idiomaId,
-    String tipoPrecioCatalogoId,
-    String tipoPrecioCatalogoNombre,
-    String tipoCatalogoId,
-    String tagBusqueda,
-    int orden,
-    String nombreFicheroPortada,
-    String nombreFicheroCatalogo,
-    bool descarga,
-  });
+  $Res call(
+      {int catalogoId,
+      String nombre,
+      String idiomaId,
+      String tipoPrecioCatalogoId,
+      String tipoPrecioCatalogoNombre,
+      String tipoCatalogoId,
+      String tagBusqueda,
+      int orden,
+      String nombreFicheroPortada,
+      String nombreFicheroCatalogo,
+      bool descarga});
 }
 
 /// @nodoc
@@ -175,9 +157,8 @@ class __$$CatalogoImplCopyWithImpl<$Res>
     extends _$CatalogoCopyWithImpl<$Res, _$CatalogoImpl>
     implements _$$CatalogoImplCopyWith<$Res> {
   __$$CatalogoImplCopyWithImpl(
-    _$CatalogoImpl _value,
-    $Res Function(_$CatalogoImpl) _then,
-  ) : super(_value, _then);
+      _$CatalogoImpl _value, $Res Function(_$CatalogoImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of Catalogo
   /// with the given fields replaced by the non-null parameter values.
@@ -196,84 +177,71 @@ class __$$CatalogoImplCopyWithImpl<$Res>
     Object? nombreFicheroCatalogo = null,
     Object? descarga = null,
   }) {
-    return _then(
-      _$CatalogoImpl(
-        catalogoId:
-            null == catalogoId
-                ? _value.catalogoId
-                : catalogoId // ignore: cast_nullable_to_non_nullable
-                    as int,
-        nombre:
-            null == nombre
-                ? _value.nombre
-                : nombre // ignore: cast_nullable_to_non_nullable
-                    as String,
-        idiomaId:
-            null == idiomaId
-                ? _value.idiomaId
-                : idiomaId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        tipoPrecioCatalogoId:
-            null == tipoPrecioCatalogoId
-                ? _value.tipoPrecioCatalogoId
-                : tipoPrecioCatalogoId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        tipoPrecioCatalogoNombre:
-            null == tipoPrecioCatalogoNombre
-                ? _value.tipoPrecioCatalogoNombre
-                : tipoPrecioCatalogoNombre // ignore: cast_nullable_to_non_nullable
-                    as String,
-        tipoCatalogoId:
-            null == tipoCatalogoId
-                ? _value.tipoCatalogoId
-                : tipoCatalogoId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        tagBusqueda:
-            null == tagBusqueda
-                ? _value.tagBusqueda
-                : tagBusqueda // ignore: cast_nullable_to_non_nullable
-                    as String,
-        orden:
-            null == orden
-                ? _value.orden
-                : orden // ignore: cast_nullable_to_non_nullable
-                    as int,
-        nombreFicheroPortada:
-            null == nombreFicheroPortada
-                ? _value.nombreFicheroPortada
-                : nombreFicheroPortada // ignore: cast_nullable_to_non_nullable
-                    as String,
-        nombreFicheroCatalogo:
-            null == nombreFicheroCatalogo
-                ? _value.nombreFicheroCatalogo
-                : nombreFicheroCatalogo // ignore: cast_nullable_to_non_nullable
-                    as String,
-        descarga:
-            null == descarga
-                ? _value.descarga
-                : descarga // ignore: cast_nullable_to_non_nullable
-                    as bool,
-      ),
-    );
+    return _then(_$CatalogoImpl(
+      catalogoId: null == catalogoId
+          ? _value.catalogoId
+          : catalogoId // ignore: cast_nullable_to_non_nullable
+              as int,
+      nombre: null == nombre
+          ? _value.nombre
+          : nombre // ignore: cast_nullable_to_non_nullable
+              as String,
+      idiomaId: null == idiomaId
+          ? _value.idiomaId
+          : idiomaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      tipoPrecioCatalogoId: null == tipoPrecioCatalogoId
+          ? _value.tipoPrecioCatalogoId
+          : tipoPrecioCatalogoId // ignore: cast_nullable_to_non_nullable
+              as String,
+      tipoPrecioCatalogoNombre: null == tipoPrecioCatalogoNombre
+          ? _value.tipoPrecioCatalogoNombre
+          : tipoPrecioCatalogoNombre // ignore: cast_nullable_to_non_nullable
+              as String,
+      tipoCatalogoId: null == tipoCatalogoId
+          ? _value.tipoCatalogoId
+          : tipoCatalogoId // ignore: cast_nullable_to_non_nullable
+              as String,
+      tagBusqueda: null == tagBusqueda
+          ? _value.tagBusqueda
+          : tagBusqueda // ignore: cast_nullable_to_non_nullable
+              as String,
+      orden: null == orden
+          ? _value.orden
+          : orden // ignore: cast_nullable_to_non_nullable
+              as int,
+      nombreFicheroPortada: null == nombreFicheroPortada
+          ? _value.nombreFicheroPortada
+          : nombreFicheroPortada // ignore: cast_nullable_to_non_nullable
+              as String,
+      nombreFicheroCatalogo: null == nombreFicheroCatalogo
+          ? _value.nombreFicheroCatalogo
+          : nombreFicheroCatalogo // ignore: cast_nullable_to_non_nullable
+              as String,
+      descarga: null == descarga
+          ? _value.descarga
+          : descarga // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$CatalogoImpl extends _Catalogo {
-  const _$CatalogoImpl({
-    required this.catalogoId,
-    required this.nombre,
-    required this.idiomaId,
-    required this.tipoPrecioCatalogoId,
-    required this.tipoPrecioCatalogoNombre,
-    required this.tipoCatalogoId,
-    required this.tagBusqueda,
-    required this.orden,
-    required this.nombreFicheroPortada,
-    required this.nombreFicheroCatalogo,
-    required this.descarga,
-  }) : super._();
+  const _$CatalogoImpl(
+      {required this.catalogoId,
+      required this.nombre,
+      required this.idiomaId,
+      required this.tipoPrecioCatalogoId,
+      required this.tipoPrecioCatalogoNombre,
+      required this.tipoCatalogoId,
+      required this.tagBusqueda,
+      required this.orden,
+      required this.nombreFicheroPortada,
+      required this.nombreFicheroCatalogo,
+      required this.descarga})
+      : super._();
 
   @override
   final int catalogoId;
@@ -316,9 +284,7 @@ class _$CatalogoImpl extends _Catalogo {
             (identical(other.tipoPrecioCatalogoId, tipoPrecioCatalogoId) ||
                 other.tipoPrecioCatalogoId == tipoPrecioCatalogoId) &&
             (identical(
-                  other.tipoPrecioCatalogoNombre,
-                  tipoPrecioCatalogoNombre,
-                ) ||
+                    other.tipoPrecioCatalogoNombre, tipoPrecioCatalogoNombre) ||
                 other.tipoPrecioCatalogoNombre == tipoPrecioCatalogoNombre) &&
             (identical(other.tipoCatalogoId, tipoCatalogoId) ||
                 other.tipoCatalogoId == tipoCatalogoId) &&
@@ -335,19 +301,18 @@ class _$CatalogoImpl extends _Catalogo {
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    catalogoId,
-    nombre,
-    idiomaId,
-    tipoPrecioCatalogoId,
-    tipoPrecioCatalogoNombre,
-    tipoCatalogoId,
-    tagBusqueda,
-    orden,
-    nombreFicheroPortada,
-    nombreFicheroCatalogo,
-    descarga,
-  );
+      runtimeType,
+      catalogoId,
+      nombre,
+      idiomaId,
+      tipoPrecioCatalogoId,
+      tipoPrecioCatalogoNombre,
+      tipoCatalogoId,
+      tagBusqueda,
+      orden,
+      nombreFicheroPortada,
+      nombreFicheroCatalogo,
+      descarga);
 
   /// Create a copy of Catalogo
   /// with the given fields replaced by the non-null parameter values.
@@ -359,19 +324,18 @@ class _$CatalogoImpl extends _Catalogo {
 }
 
 abstract class _Catalogo extends Catalogo {
-  const factory _Catalogo({
-    required final int catalogoId,
-    required final String nombre,
-    required final String idiomaId,
-    required final String tipoPrecioCatalogoId,
-    required final String tipoPrecioCatalogoNombre,
-    required final String tipoCatalogoId,
-    required final String tagBusqueda,
-    required final int orden,
-    required final String nombreFicheroPortada,
-    required final String nombreFicheroCatalogo,
-    required final bool descarga,
-  }) = _$CatalogoImpl;
+  const factory _Catalogo(
+      {required final int catalogoId,
+      required final String nombre,
+      required final String idiomaId,
+      required final String tipoPrecioCatalogoId,
+      required final String tipoPrecioCatalogoNombre,
+      required final String tipoCatalogoId,
+      required final String tagBusqueda,
+      required final int orden,
+      required final String nombreFicheroPortada,
+      required final String nombreFicheroCatalogo,
+      required final bool descarga}) = _$CatalogoImpl;
   const _Catalogo._() : super._();
 
   @override

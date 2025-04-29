@@ -12,8 +12,7 @@ part of 'articulo_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ArticuloDTO _$ArticuloDTOFromJson(Map<String, dynamic> json) {
   return _ArticuloDTO.fromJson(json);
@@ -173,82 +172,80 @@ mixin _$ArticuloDTO {
 /// @nodoc
 abstract class $ArticuloDTOCopyWith<$Res> {
   factory $ArticuloDTOCopyWith(
-    ArticuloDTO value,
-    $Res Function(ArticuloDTO) then,
-  ) = _$ArticuloDTOCopyWithImpl<$Res, ArticuloDTO>;
+          ArticuloDTO value, $Res Function(ArticuloDTO) then) =
+      _$ArticuloDTOCopyWithImpl<$Res, ArticuloDTO>;
   @useResult
-  $Res call({
-    @JsonKey(name: 'ARTICULO_ID') String id,
-    @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
-    @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
-    @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
-    @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
-    @JsonKey(name: 'DESCRIPCION_CA') String? descripcionCA,
-    @JsonKey(name: 'DESCRIPCION_GB') String? descripcionGB,
-    @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
-    @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
-    @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
-    @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
-    @JsonKey(name: 'DESCRIPCION_PT') String? descripcionPT,
-    @JsonKey(name: 'DESCRIPCION_RO') String? descripcionRO,
-    @JsonKey(name: 'DESCRIPCION_RU') String? descripcionRU,
-    @JsonKey(name: 'DESCRIPCION_CN') String? descripcionCN,
-    @JsonKey(name: 'DESCRIPCION_EL') String? descripcionEL,
-    @JsonKey(name: 'FAMILIA_ID') String? familiaId,
-    @JsonKey(name: 'SUBFAMILIA_ID') String? subfamiliaId,
-    @JsonKey(name: 'VENTA_MINIMO') int ventaMinimo,
-    @JsonKey(name: 'VENTA_MULTIPLO') int ventaMultiplo,
-    @JsonKey(name: 'UNIDADES_SUBCAJA') int unidadesSubcaja,
-    @JsonKey(name: 'UNIDADES_CAJA') int unidadesCaja,
-    @JsonKey(name: 'UNIDADES_PALET') int unidadesPalet,
-    @JsonKey(name: 'ACTIVO_WEB') String activoWeb,
-    @JsonKey(name: 'ACTIVO_APP') String activoApp,
-    @JsonKey(name: 'EN_CATALOGO') String enCatalogo,
-    @JsonKey(name: 'DESCATALOGADO') String descatalogado,
-    @JsonKey(name: 'PAGINA_EN_CATALOGO') String? paginaEnCatalgo,
-    @JsonKey(name: 'PAGINA_EN_CATALOGO2') String? paginaEnCatalgo2,
-    @JsonKey(name: 'PESO_KG') double pesoKg,
-    @JsonKey(name: 'LARGO_CM') double largoCm,
-    @JsonKey(name: 'ANCHO_CM') double anchoCm,
-    @JsonKey(name: 'ALTO_CM') double altoCm,
-    @JsonKey(name: 'RESUMEN_ES') String? resumenES,
-    @JsonKey(name: 'RESUMEN_EN') String? resumenEN,
-    @JsonKey(name: 'RESUMEN_FR') String? resumenFR,
-    @JsonKey(name: 'RESUMEN_DE') String? resumenDE,
-    @JsonKey(name: 'RESUMEN_CA') String? resumenCA,
-    @JsonKey(name: 'RESUMEN_GB') String? resumenGB,
-    @JsonKey(name: 'RESUMEN_HU') String? resumenHU,
-    @JsonKey(name: 'RESUMEN_IT') String? resumenIT,
-    @JsonKey(name: 'RESUMEN_NL') String? resumenNL,
-    @JsonKey(name: 'RESUMEN_PL') String? resumenPL,
-    @JsonKey(name: 'RESUMEN_PT') String? resumenPT,
-    @JsonKey(name: 'RESUMEN_RO') String? resumenRO,
-    @JsonKey(name: 'RESUMEN_RU') String? resumenRU,
-    @JsonKey(name: 'RESUMEN_CN') String? resumenCN,
-    @JsonKey(name: 'RESUMEN_EL') String? resumenEL,
-    @JsonKey(name: 'STOCK_DISPONIBLE') int stockDisponible,
-    @JsonKey(name: 'VENTAS_ACTUAL') double ventasActual,
-    @JsonKey(name: 'VENTAS_ANTERIOR') double ventasAnterior,
-    @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_1') int comprasEntregaCantidad1,
-    @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_2') int comprasEntregaCantidad2,
-    @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_3') int comprasEntregaCantidad3,
-    @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_MAS_3')
-    int comprasEntregaCantidadMas3,
-    @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_1') DateTime? comprasEntregaFecha1,
-    @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_2') DateTime? comprasEntregaFecha2,
-    @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_3') DateTime? comprasEntregaFecha3,
-    @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_1') String? comprasEntregaEstado1,
-    @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_2') String? comprasEntregaEstado2,
-    @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_') String? comprasEntregaEstado3,
-    @JsonKey(name: 'IMAGEN_PRINCIPAL') String? imagenPrincipal,
-    @JsonKey(name: 'GTIN_13_UNIDAD') String? gtin13Unidad,
-    @JsonKey(name: 'GS1_128_SUBCAJA') String? gs1128Subcaja,
-    @JsonKey(name: 'GS1_128_CAJA') String? gs1128Caja,
-    @JsonKey(name: 'GS1_128_PALET') String? gs1128Palet,
-    @JsonKey(name: 'VENTAS_ORDEN') int? ventasOrden,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'ARTICULO_ID') String id,
+      @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
+      @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
+      @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
+      @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
+      @JsonKey(name: 'DESCRIPCION_CA') String? descripcionCA,
+      @JsonKey(name: 'DESCRIPCION_GB') String? descripcionGB,
+      @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
+      @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
+      @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
+      @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
+      @JsonKey(name: 'DESCRIPCION_PT') String? descripcionPT,
+      @JsonKey(name: 'DESCRIPCION_RO') String? descripcionRO,
+      @JsonKey(name: 'DESCRIPCION_RU') String? descripcionRU,
+      @JsonKey(name: 'DESCRIPCION_CN') String? descripcionCN,
+      @JsonKey(name: 'DESCRIPCION_EL') String? descripcionEL,
+      @JsonKey(name: 'FAMILIA_ID') String? familiaId,
+      @JsonKey(name: 'SUBFAMILIA_ID') String? subfamiliaId,
+      @JsonKey(name: 'VENTA_MINIMO') int ventaMinimo,
+      @JsonKey(name: 'VENTA_MULTIPLO') int ventaMultiplo,
+      @JsonKey(name: 'UNIDADES_SUBCAJA') int unidadesSubcaja,
+      @JsonKey(name: 'UNIDADES_CAJA') int unidadesCaja,
+      @JsonKey(name: 'UNIDADES_PALET') int unidadesPalet,
+      @JsonKey(name: 'ACTIVO_WEB') String activoWeb,
+      @JsonKey(name: 'ACTIVO_APP') String activoApp,
+      @JsonKey(name: 'EN_CATALOGO') String enCatalogo,
+      @JsonKey(name: 'DESCATALOGADO') String descatalogado,
+      @JsonKey(name: 'PAGINA_EN_CATALOGO') String? paginaEnCatalgo,
+      @JsonKey(name: 'PAGINA_EN_CATALOGO2') String? paginaEnCatalgo2,
+      @JsonKey(name: 'PESO_KG') double pesoKg,
+      @JsonKey(name: 'LARGO_CM') double largoCm,
+      @JsonKey(name: 'ANCHO_CM') double anchoCm,
+      @JsonKey(name: 'ALTO_CM') double altoCm,
+      @JsonKey(name: 'RESUMEN_ES') String? resumenES,
+      @JsonKey(name: 'RESUMEN_EN') String? resumenEN,
+      @JsonKey(name: 'RESUMEN_FR') String? resumenFR,
+      @JsonKey(name: 'RESUMEN_DE') String? resumenDE,
+      @JsonKey(name: 'RESUMEN_CA') String? resumenCA,
+      @JsonKey(name: 'RESUMEN_GB') String? resumenGB,
+      @JsonKey(name: 'RESUMEN_HU') String? resumenHU,
+      @JsonKey(name: 'RESUMEN_IT') String? resumenIT,
+      @JsonKey(name: 'RESUMEN_NL') String? resumenNL,
+      @JsonKey(name: 'RESUMEN_PL') String? resumenPL,
+      @JsonKey(name: 'RESUMEN_PT') String? resumenPT,
+      @JsonKey(name: 'RESUMEN_RO') String? resumenRO,
+      @JsonKey(name: 'RESUMEN_RU') String? resumenRU,
+      @JsonKey(name: 'RESUMEN_CN') String? resumenCN,
+      @JsonKey(name: 'RESUMEN_EL') String? resumenEL,
+      @JsonKey(name: 'STOCK_DISPONIBLE') int stockDisponible,
+      @JsonKey(name: 'VENTAS_ACTUAL') double ventasActual,
+      @JsonKey(name: 'VENTAS_ANTERIOR') double ventasAnterior,
+      @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_1') int comprasEntregaCantidad1,
+      @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_2') int comprasEntregaCantidad2,
+      @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_3') int comprasEntregaCantidad3,
+      @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_MAS_3')
+      int comprasEntregaCantidadMas3,
+      @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_1') DateTime? comprasEntregaFecha1,
+      @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_2') DateTime? comprasEntregaFecha2,
+      @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_3') DateTime? comprasEntregaFecha3,
+      @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_1') String? comprasEntregaEstado1,
+      @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_2') String? comprasEntregaEstado2,
+      @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_') String? comprasEntregaEstado3,
+      @JsonKey(name: 'IMAGEN_PRINCIPAL') String? imagenPrincipal,
+      @JsonKey(name: 'GTIN_13_UNIDAD') String? gtin13Unidad,
+      @JsonKey(name: 'GS1_128_SUBCAJA') String? gs1128Subcaja,
+      @JsonKey(name: 'GS1_128_CAJA') String? gs1128Caja,
+      @JsonKey(name: 'GS1_128_PALET') String? gs1128Palet,
+      @JsonKey(name: 'VENTAS_ORDEN') int? ventasOrden,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
@@ -336,356 +333,284 @@ class _$ArticuloDTOCopyWithImpl<$Res, $Val extends ArticuloDTO>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            id:
-                null == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as String,
-            descripcionES:
-                null == descripcionES
-                    ? _value.descripcionES
-                    : descripcionES // ignore: cast_nullable_to_non_nullable
-                        as String,
-            descripcionEN:
-                freezed == descripcionEN
-                    ? _value.descripcionEN
-                    : descripcionEN // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionFR:
-                freezed == descripcionFR
-                    ? _value.descripcionFR
-                    : descripcionFR // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionDE:
-                freezed == descripcionDE
-                    ? _value.descripcionDE
-                    : descripcionDE // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionCA:
-                freezed == descripcionCA
-                    ? _value.descripcionCA
-                    : descripcionCA // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionGB:
-                freezed == descripcionGB
-                    ? _value.descripcionGB
-                    : descripcionGB // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionHU:
-                freezed == descripcionHU
-                    ? _value.descripcionHU
-                    : descripcionHU // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionIT:
-                freezed == descripcionIT
-                    ? _value.descripcionIT
-                    : descripcionIT // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionNL:
-                freezed == descripcionNL
-                    ? _value.descripcionNL
-                    : descripcionNL // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionPL:
-                freezed == descripcionPL
-                    ? _value.descripcionPL
-                    : descripcionPL // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionPT:
-                freezed == descripcionPT
-                    ? _value.descripcionPT
-                    : descripcionPT // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionRO:
-                freezed == descripcionRO
-                    ? _value.descripcionRO
-                    : descripcionRO // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionRU:
-                freezed == descripcionRU
-                    ? _value.descripcionRU
-                    : descripcionRU // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionCN:
-                freezed == descripcionCN
-                    ? _value.descripcionCN
-                    : descripcionCN // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionEL:
-                freezed == descripcionEL
-                    ? _value.descripcionEL
-                    : descripcionEL // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            familiaId:
-                freezed == familiaId
-                    ? _value.familiaId
-                    : familiaId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            subfamiliaId:
-                freezed == subfamiliaId
-                    ? _value.subfamiliaId
-                    : subfamiliaId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            ventaMinimo:
-                null == ventaMinimo
-                    ? _value.ventaMinimo
-                    : ventaMinimo // ignore: cast_nullable_to_non_nullable
-                        as int,
-            ventaMultiplo:
-                null == ventaMultiplo
-                    ? _value.ventaMultiplo
-                    : ventaMultiplo // ignore: cast_nullable_to_non_nullable
-                        as int,
-            unidadesSubcaja:
-                null == unidadesSubcaja
-                    ? _value.unidadesSubcaja
-                    : unidadesSubcaja // ignore: cast_nullable_to_non_nullable
-                        as int,
-            unidadesCaja:
-                null == unidadesCaja
-                    ? _value.unidadesCaja
-                    : unidadesCaja // ignore: cast_nullable_to_non_nullable
-                        as int,
-            unidadesPalet:
-                null == unidadesPalet
-                    ? _value.unidadesPalet
-                    : unidadesPalet // ignore: cast_nullable_to_non_nullable
-                        as int,
-            activoWeb:
-                null == activoWeb
-                    ? _value.activoWeb
-                    : activoWeb // ignore: cast_nullable_to_non_nullable
-                        as String,
-            activoApp:
-                null == activoApp
-                    ? _value.activoApp
-                    : activoApp // ignore: cast_nullable_to_non_nullable
-                        as String,
-            enCatalogo:
-                null == enCatalogo
-                    ? _value.enCatalogo
-                    : enCatalogo // ignore: cast_nullable_to_non_nullable
-                        as String,
-            descatalogado:
-                null == descatalogado
-                    ? _value.descatalogado
-                    : descatalogado // ignore: cast_nullable_to_non_nullable
-                        as String,
-            paginaEnCatalgo:
-                freezed == paginaEnCatalgo
-                    ? _value.paginaEnCatalgo
-                    : paginaEnCatalgo // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            paginaEnCatalgo2:
-                freezed == paginaEnCatalgo2
-                    ? _value.paginaEnCatalgo2
-                    : paginaEnCatalgo2 // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            pesoKg:
-                null == pesoKg
-                    ? _value.pesoKg
-                    : pesoKg // ignore: cast_nullable_to_non_nullable
-                        as double,
-            largoCm:
-                null == largoCm
-                    ? _value.largoCm
-                    : largoCm // ignore: cast_nullable_to_non_nullable
-                        as double,
-            anchoCm:
-                null == anchoCm
-                    ? _value.anchoCm
-                    : anchoCm // ignore: cast_nullable_to_non_nullable
-                        as double,
-            altoCm:
-                null == altoCm
-                    ? _value.altoCm
-                    : altoCm // ignore: cast_nullable_to_non_nullable
-                        as double,
-            resumenES:
-                freezed == resumenES
-                    ? _value.resumenES
-                    : resumenES // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            resumenEN:
-                freezed == resumenEN
-                    ? _value.resumenEN
-                    : resumenEN // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            resumenFR:
-                freezed == resumenFR
-                    ? _value.resumenFR
-                    : resumenFR // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            resumenDE:
-                freezed == resumenDE
-                    ? _value.resumenDE
-                    : resumenDE // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            resumenCA:
-                freezed == resumenCA
-                    ? _value.resumenCA
-                    : resumenCA // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            resumenGB:
-                freezed == resumenGB
-                    ? _value.resumenGB
-                    : resumenGB // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            resumenHU:
-                freezed == resumenHU
-                    ? _value.resumenHU
-                    : resumenHU // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            resumenIT:
-                freezed == resumenIT
-                    ? _value.resumenIT
-                    : resumenIT // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            resumenNL:
-                freezed == resumenNL
-                    ? _value.resumenNL
-                    : resumenNL // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            resumenPL:
-                freezed == resumenPL
-                    ? _value.resumenPL
-                    : resumenPL // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            resumenPT:
-                freezed == resumenPT
-                    ? _value.resumenPT
-                    : resumenPT // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            resumenRO:
-                freezed == resumenRO
-                    ? _value.resumenRO
-                    : resumenRO // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            resumenRU:
-                freezed == resumenRU
-                    ? _value.resumenRU
-                    : resumenRU // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            resumenCN:
-                freezed == resumenCN
-                    ? _value.resumenCN
-                    : resumenCN // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            resumenEL:
-                freezed == resumenEL
-                    ? _value.resumenEL
-                    : resumenEL // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            stockDisponible:
-                null == stockDisponible
-                    ? _value.stockDisponible
-                    : stockDisponible // ignore: cast_nullable_to_non_nullable
-                        as int,
-            ventasActual:
-                null == ventasActual
-                    ? _value.ventasActual
-                    : ventasActual // ignore: cast_nullable_to_non_nullable
-                        as double,
-            ventasAnterior:
-                null == ventasAnterior
-                    ? _value.ventasAnterior
-                    : ventasAnterior // ignore: cast_nullable_to_non_nullable
-                        as double,
-            comprasEntregaCantidad1:
-                null == comprasEntregaCantidad1
-                    ? _value.comprasEntregaCantidad1
-                    : comprasEntregaCantidad1 // ignore: cast_nullable_to_non_nullable
-                        as int,
-            comprasEntregaCantidad2:
-                null == comprasEntregaCantidad2
-                    ? _value.comprasEntregaCantidad2
-                    : comprasEntregaCantidad2 // ignore: cast_nullable_to_non_nullable
-                        as int,
-            comprasEntregaCantidad3:
-                null == comprasEntregaCantidad3
-                    ? _value.comprasEntregaCantidad3
-                    : comprasEntregaCantidad3 // ignore: cast_nullable_to_non_nullable
-                        as int,
-            comprasEntregaCantidadMas3:
-                null == comprasEntregaCantidadMas3
-                    ? _value.comprasEntregaCantidadMas3
-                    : comprasEntregaCantidadMas3 // ignore: cast_nullable_to_non_nullable
-                        as int,
-            comprasEntregaFecha1:
-                freezed == comprasEntregaFecha1
-                    ? _value.comprasEntregaFecha1
-                    : comprasEntregaFecha1 // ignore: cast_nullable_to_non_nullable
-                        as DateTime?,
-            comprasEntregaFecha2:
-                freezed == comprasEntregaFecha2
-                    ? _value.comprasEntregaFecha2
-                    : comprasEntregaFecha2 // ignore: cast_nullable_to_non_nullable
-                        as DateTime?,
-            comprasEntregaFecha3:
-                freezed == comprasEntregaFecha3
-                    ? _value.comprasEntregaFecha3
-                    : comprasEntregaFecha3 // ignore: cast_nullable_to_non_nullable
-                        as DateTime?,
-            comprasEntregaEstado1:
-                freezed == comprasEntregaEstado1
-                    ? _value.comprasEntregaEstado1
-                    : comprasEntregaEstado1 // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            comprasEntregaEstado2:
-                freezed == comprasEntregaEstado2
-                    ? _value.comprasEntregaEstado2
-                    : comprasEntregaEstado2 // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            comprasEntregaEstado3:
-                freezed == comprasEntregaEstado3
-                    ? _value.comprasEntregaEstado3
-                    : comprasEntregaEstado3 // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            imagenPrincipal:
-                freezed == imagenPrincipal
-                    ? _value.imagenPrincipal
-                    : imagenPrincipal // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            gtin13Unidad:
-                freezed == gtin13Unidad
-                    ? _value.gtin13Unidad
-                    : gtin13Unidad // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            gs1128Subcaja:
-                freezed == gs1128Subcaja
-                    ? _value.gs1128Subcaja
-                    : gs1128Subcaja // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            gs1128Caja:
-                freezed == gs1128Caja
-                    ? _value.gs1128Caja
-                    : gs1128Caja // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            gs1128Palet:
-                freezed == gs1128Palet
-                    ? _value.gs1128Palet
-                    : gs1128Palet // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            ventasOrden:
-                freezed == ventasOrden
-                    ? _value.ventasOrden
-                    : ventasOrden // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            lastUpdated:
-                null == lastUpdated
-                    ? _value.lastUpdated
-                    : lastUpdated // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcionES: null == descripcionES
+          ? _value.descripcionES
+          : descripcionES // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcionEN: freezed == descripcionEN
+          ? _value.descripcionEN
+          : descripcionEN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionFR: freezed == descripcionFR
+          ? _value.descripcionFR
+          : descripcionFR // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionDE: freezed == descripcionDE
+          ? _value.descripcionDE
+          : descripcionDE // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCA: freezed == descripcionCA
+          ? _value.descripcionCA
+          : descripcionCA // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionGB: freezed == descripcionGB
+          ? _value.descripcionGB
+          : descripcionGB // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionHU: freezed == descripcionHU
+          ? _value.descripcionHU
+          : descripcionHU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionIT: freezed == descripcionIT
+          ? _value.descripcionIT
+          : descripcionIT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionNL: freezed == descripcionNL
+          ? _value.descripcionNL
+          : descripcionNL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPL: freezed == descripcionPL
+          ? _value.descripcionPL
+          : descripcionPL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPT: freezed == descripcionPT
+          ? _value.descripcionPT
+          : descripcionPT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRO: freezed == descripcionRO
+          ? _value.descripcionRO
+          : descripcionRO // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRU: freezed == descripcionRU
+          ? _value.descripcionRU
+          : descripcionRU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCN: freezed == descripcionCN
+          ? _value.descripcionCN
+          : descripcionCN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionEL: freezed == descripcionEL
+          ? _value.descripcionEL
+          : descripcionEL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      familiaId: freezed == familiaId
+          ? _value.familiaId
+          : familiaId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      subfamiliaId: freezed == subfamiliaId
+          ? _value.subfamiliaId
+          : subfamiliaId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ventaMinimo: null == ventaMinimo
+          ? _value.ventaMinimo
+          : ventaMinimo // ignore: cast_nullable_to_non_nullable
+              as int,
+      ventaMultiplo: null == ventaMultiplo
+          ? _value.ventaMultiplo
+          : ventaMultiplo // ignore: cast_nullable_to_non_nullable
+              as int,
+      unidadesSubcaja: null == unidadesSubcaja
+          ? _value.unidadesSubcaja
+          : unidadesSubcaja // ignore: cast_nullable_to_non_nullable
+              as int,
+      unidadesCaja: null == unidadesCaja
+          ? _value.unidadesCaja
+          : unidadesCaja // ignore: cast_nullable_to_non_nullable
+              as int,
+      unidadesPalet: null == unidadesPalet
+          ? _value.unidadesPalet
+          : unidadesPalet // ignore: cast_nullable_to_non_nullable
+              as int,
+      activoWeb: null == activoWeb
+          ? _value.activoWeb
+          : activoWeb // ignore: cast_nullable_to_non_nullable
+              as String,
+      activoApp: null == activoApp
+          ? _value.activoApp
+          : activoApp // ignore: cast_nullable_to_non_nullable
+              as String,
+      enCatalogo: null == enCatalogo
+          ? _value.enCatalogo
+          : enCatalogo // ignore: cast_nullable_to_non_nullable
+              as String,
+      descatalogado: null == descatalogado
+          ? _value.descatalogado
+          : descatalogado // ignore: cast_nullable_to_non_nullable
+              as String,
+      paginaEnCatalgo: freezed == paginaEnCatalgo
+          ? _value.paginaEnCatalgo
+          : paginaEnCatalgo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      paginaEnCatalgo2: freezed == paginaEnCatalgo2
+          ? _value.paginaEnCatalgo2
+          : paginaEnCatalgo2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pesoKg: null == pesoKg
+          ? _value.pesoKg
+          : pesoKg // ignore: cast_nullable_to_non_nullable
+              as double,
+      largoCm: null == largoCm
+          ? _value.largoCm
+          : largoCm // ignore: cast_nullable_to_non_nullable
+              as double,
+      anchoCm: null == anchoCm
+          ? _value.anchoCm
+          : anchoCm // ignore: cast_nullable_to_non_nullable
+              as double,
+      altoCm: null == altoCm
+          ? _value.altoCm
+          : altoCm // ignore: cast_nullable_to_non_nullable
+              as double,
+      resumenES: freezed == resumenES
+          ? _value.resumenES
+          : resumenES // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenEN: freezed == resumenEN
+          ? _value.resumenEN
+          : resumenEN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenFR: freezed == resumenFR
+          ? _value.resumenFR
+          : resumenFR // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenDE: freezed == resumenDE
+          ? _value.resumenDE
+          : resumenDE // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenCA: freezed == resumenCA
+          ? _value.resumenCA
+          : resumenCA // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenGB: freezed == resumenGB
+          ? _value.resumenGB
+          : resumenGB // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenHU: freezed == resumenHU
+          ? _value.resumenHU
+          : resumenHU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenIT: freezed == resumenIT
+          ? _value.resumenIT
+          : resumenIT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenNL: freezed == resumenNL
+          ? _value.resumenNL
+          : resumenNL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenPL: freezed == resumenPL
+          ? _value.resumenPL
+          : resumenPL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenPT: freezed == resumenPT
+          ? _value.resumenPT
+          : resumenPT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenRO: freezed == resumenRO
+          ? _value.resumenRO
+          : resumenRO // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenRU: freezed == resumenRU
+          ? _value.resumenRU
+          : resumenRU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenCN: freezed == resumenCN
+          ? _value.resumenCN
+          : resumenCN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenEL: freezed == resumenEL
+          ? _value.resumenEL
+          : resumenEL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stockDisponible: null == stockDisponible
+          ? _value.stockDisponible
+          : stockDisponible // ignore: cast_nullable_to_non_nullable
+              as int,
+      ventasActual: null == ventasActual
+          ? _value.ventasActual
+          : ventasActual // ignore: cast_nullable_to_non_nullable
+              as double,
+      ventasAnterior: null == ventasAnterior
+          ? _value.ventasAnterior
+          : ventasAnterior // ignore: cast_nullable_to_non_nullable
+              as double,
+      comprasEntregaCantidad1: null == comprasEntregaCantidad1
+          ? _value.comprasEntregaCantidad1
+          : comprasEntregaCantidad1 // ignore: cast_nullable_to_non_nullable
+              as int,
+      comprasEntregaCantidad2: null == comprasEntregaCantidad2
+          ? _value.comprasEntregaCantidad2
+          : comprasEntregaCantidad2 // ignore: cast_nullable_to_non_nullable
+              as int,
+      comprasEntregaCantidad3: null == comprasEntregaCantidad3
+          ? _value.comprasEntregaCantidad3
+          : comprasEntregaCantidad3 // ignore: cast_nullable_to_non_nullable
+              as int,
+      comprasEntregaCantidadMas3: null == comprasEntregaCantidadMas3
+          ? _value.comprasEntregaCantidadMas3
+          : comprasEntregaCantidadMas3 // ignore: cast_nullable_to_non_nullable
+              as int,
+      comprasEntregaFecha1: freezed == comprasEntregaFecha1
+          ? _value.comprasEntregaFecha1
+          : comprasEntregaFecha1 // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      comprasEntregaFecha2: freezed == comprasEntregaFecha2
+          ? _value.comprasEntregaFecha2
+          : comprasEntregaFecha2 // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      comprasEntregaFecha3: freezed == comprasEntregaFecha3
+          ? _value.comprasEntregaFecha3
+          : comprasEntregaFecha3 // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      comprasEntregaEstado1: freezed == comprasEntregaEstado1
+          ? _value.comprasEntregaEstado1
+          : comprasEntregaEstado1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      comprasEntregaEstado2: freezed == comprasEntregaEstado2
+          ? _value.comprasEntregaEstado2
+          : comprasEntregaEstado2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      comprasEntregaEstado3: freezed == comprasEntregaEstado3
+          ? _value.comprasEntregaEstado3
+          : comprasEntregaEstado3 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      imagenPrincipal: freezed == imagenPrincipal
+          ? _value.imagenPrincipal
+          : imagenPrincipal // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gtin13Unidad: freezed == gtin13Unidad
+          ? _value.gtin13Unidad
+          : gtin13Unidad // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gs1128Subcaja: freezed == gs1128Subcaja
+          ? _value.gs1128Subcaja
+          : gs1128Subcaja // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gs1128Caja: freezed == gs1128Caja
+          ? _value.gs1128Caja
+          : gs1128Caja // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gs1128Palet: freezed == gs1128Palet
+          ? _value.gs1128Palet
+          : gs1128Palet // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ventasOrden: freezed == ventasOrden
+          ? _value.ventasOrden
+          : ventasOrden // ignore: cast_nullable_to_non_nullable
+              as int?,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
@@ -693,83 +618,81 @@ class _$ArticuloDTOCopyWithImpl<$Res, $Val extends ArticuloDTO>
 abstract class _$$ArticuloDTOImplCopyWith<$Res>
     implements $ArticuloDTOCopyWith<$Res> {
   factory _$$ArticuloDTOImplCopyWith(
-    _$ArticuloDTOImpl value,
-    $Res Function(_$ArticuloDTOImpl) then,
-  ) = __$$ArticuloDTOImplCopyWithImpl<$Res>;
+          _$ArticuloDTOImpl value, $Res Function(_$ArticuloDTOImpl) then) =
+      __$$ArticuloDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'ARTICULO_ID') String id,
-    @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
-    @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
-    @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
-    @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
-    @JsonKey(name: 'DESCRIPCION_CA') String? descripcionCA,
-    @JsonKey(name: 'DESCRIPCION_GB') String? descripcionGB,
-    @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
-    @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
-    @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
-    @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
-    @JsonKey(name: 'DESCRIPCION_PT') String? descripcionPT,
-    @JsonKey(name: 'DESCRIPCION_RO') String? descripcionRO,
-    @JsonKey(name: 'DESCRIPCION_RU') String? descripcionRU,
-    @JsonKey(name: 'DESCRIPCION_CN') String? descripcionCN,
-    @JsonKey(name: 'DESCRIPCION_EL') String? descripcionEL,
-    @JsonKey(name: 'FAMILIA_ID') String? familiaId,
-    @JsonKey(name: 'SUBFAMILIA_ID') String? subfamiliaId,
-    @JsonKey(name: 'VENTA_MINIMO') int ventaMinimo,
-    @JsonKey(name: 'VENTA_MULTIPLO') int ventaMultiplo,
-    @JsonKey(name: 'UNIDADES_SUBCAJA') int unidadesSubcaja,
-    @JsonKey(name: 'UNIDADES_CAJA') int unidadesCaja,
-    @JsonKey(name: 'UNIDADES_PALET') int unidadesPalet,
-    @JsonKey(name: 'ACTIVO_WEB') String activoWeb,
-    @JsonKey(name: 'ACTIVO_APP') String activoApp,
-    @JsonKey(name: 'EN_CATALOGO') String enCatalogo,
-    @JsonKey(name: 'DESCATALOGADO') String descatalogado,
-    @JsonKey(name: 'PAGINA_EN_CATALOGO') String? paginaEnCatalgo,
-    @JsonKey(name: 'PAGINA_EN_CATALOGO2') String? paginaEnCatalgo2,
-    @JsonKey(name: 'PESO_KG') double pesoKg,
-    @JsonKey(name: 'LARGO_CM') double largoCm,
-    @JsonKey(name: 'ANCHO_CM') double anchoCm,
-    @JsonKey(name: 'ALTO_CM') double altoCm,
-    @JsonKey(name: 'RESUMEN_ES') String? resumenES,
-    @JsonKey(name: 'RESUMEN_EN') String? resumenEN,
-    @JsonKey(name: 'RESUMEN_FR') String? resumenFR,
-    @JsonKey(name: 'RESUMEN_DE') String? resumenDE,
-    @JsonKey(name: 'RESUMEN_CA') String? resumenCA,
-    @JsonKey(name: 'RESUMEN_GB') String? resumenGB,
-    @JsonKey(name: 'RESUMEN_HU') String? resumenHU,
-    @JsonKey(name: 'RESUMEN_IT') String? resumenIT,
-    @JsonKey(name: 'RESUMEN_NL') String? resumenNL,
-    @JsonKey(name: 'RESUMEN_PL') String? resumenPL,
-    @JsonKey(name: 'RESUMEN_PT') String? resumenPT,
-    @JsonKey(name: 'RESUMEN_RO') String? resumenRO,
-    @JsonKey(name: 'RESUMEN_RU') String? resumenRU,
-    @JsonKey(name: 'RESUMEN_CN') String? resumenCN,
-    @JsonKey(name: 'RESUMEN_EL') String? resumenEL,
-    @JsonKey(name: 'STOCK_DISPONIBLE') int stockDisponible,
-    @JsonKey(name: 'VENTAS_ACTUAL') double ventasActual,
-    @JsonKey(name: 'VENTAS_ANTERIOR') double ventasAnterior,
-    @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_1') int comprasEntregaCantidad1,
-    @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_2') int comprasEntregaCantidad2,
-    @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_3') int comprasEntregaCantidad3,
-    @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_MAS_3')
-    int comprasEntregaCantidadMas3,
-    @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_1') DateTime? comprasEntregaFecha1,
-    @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_2') DateTime? comprasEntregaFecha2,
-    @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_3') DateTime? comprasEntregaFecha3,
-    @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_1') String? comprasEntregaEstado1,
-    @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_2') String? comprasEntregaEstado2,
-    @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_') String? comprasEntregaEstado3,
-    @JsonKey(name: 'IMAGEN_PRINCIPAL') String? imagenPrincipal,
-    @JsonKey(name: 'GTIN_13_UNIDAD') String? gtin13Unidad,
-    @JsonKey(name: 'GS1_128_SUBCAJA') String? gs1128Subcaja,
-    @JsonKey(name: 'GS1_128_CAJA') String? gs1128Caja,
-    @JsonKey(name: 'GS1_128_PALET') String? gs1128Palet,
-    @JsonKey(name: 'VENTAS_ORDEN') int? ventasOrden,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'ARTICULO_ID') String id,
+      @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
+      @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
+      @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
+      @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
+      @JsonKey(name: 'DESCRIPCION_CA') String? descripcionCA,
+      @JsonKey(name: 'DESCRIPCION_GB') String? descripcionGB,
+      @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
+      @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
+      @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
+      @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
+      @JsonKey(name: 'DESCRIPCION_PT') String? descripcionPT,
+      @JsonKey(name: 'DESCRIPCION_RO') String? descripcionRO,
+      @JsonKey(name: 'DESCRIPCION_RU') String? descripcionRU,
+      @JsonKey(name: 'DESCRIPCION_CN') String? descripcionCN,
+      @JsonKey(name: 'DESCRIPCION_EL') String? descripcionEL,
+      @JsonKey(name: 'FAMILIA_ID') String? familiaId,
+      @JsonKey(name: 'SUBFAMILIA_ID') String? subfamiliaId,
+      @JsonKey(name: 'VENTA_MINIMO') int ventaMinimo,
+      @JsonKey(name: 'VENTA_MULTIPLO') int ventaMultiplo,
+      @JsonKey(name: 'UNIDADES_SUBCAJA') int unidadesSubcaja,
+      @JsonKey(name: 'UNIDADES_CAJA') int unidadesCaja,
+      @JsonKey(name: 'UNIDADES_PALET') int unidadesPalet,
+      @JsonKey(name: 'ACTIVO_WEB') String activoWeb,
+      @JsonKey(name: 'ACTIVO_APP') String activoApp,
+      @JsonKey(name: 'EN_CATALOGO') String enCatalogo,
+      @JsonKey(name: 'DESCATALOGADO') String descatalogado,
+      @JsonKey(name: 'PAGINA_EN_CATALOGO') String? paginaEnCatalgo,
+      @JsonKey(name: 'PAGINA_EN_CATALOGO2') String? paginaEnCatalgo2,
+      @JsonKey(name: 'PESO_KG') double pesoKg,
+      @JsonKey(name: 'LARGO_CM') double largoCm,
+      @JsonKey(name: 'ANCHO_CM') double anchoCm,
+      @JsonKey(name: 'ALTO_CM') double altoCm,
+      @JsonKey(name: 'RESUMEN_ES') String? resumenES,
+      @JsonKey(name: 'RESUMEN_EN') String? resumenEN,
+      @JsonKey(name: 'RESUMEN_FR') String? resumenFR,
+      @JsonKey(name: 'RESUMEN_DE') String? resumenDE,
+      @JsonKey(name: 'RESUMEN_CA') String? resumenCA,
+      @JsonKey(name: 'RESUMEN_GB') String? resumenGB,
+      @JsonKey(name: 'RESUMEN_HU') String? resumenHU,
+      @JsonKey(name: 'RESUMEN_IT') String? resumenIT,
+      @JsonKey(name: 'RESUMEN_NL') String? resumenNL,
+      @JsonKey(name: 'RESUMEN_PL') String? resumenPL,
+      @JsonKey(name: 'RESUMEN_PT') String? resumenPT,
+      @JsonKey(name: 'RESUMEN_RO') String? resumenRO,
+      @JsonKey(name: 'RESUMEN_RU') String? resumenRU,
+      @JsonKey(name: 'RESUMEN_CN') String? resumenCN,
+      @JsonKey(name: 'RESUMEN_EL') String? resumenEL,
+      @JsonKey(name: 'STOCK_DISPONIBLE') int stockDisponible,
+      @JsonKey(name: 'VENTAS_ACTUAL') double ventasActual,
+      @JsonKey(name: 'VENTAS_ANTERIOR') double ventasAnterior,
+      @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_1') int comprasEntregaCantidad1,
+      @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_2') int comprasEntregaCantidad2,
+      @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_3') int comprasEntregaCantidad3,
+      @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_MAS_3')
+      int comprasEntregaCantidadMas3,
+      @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_1') DateTime? comprasEntregaFecha1,
+      @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_2') DateTime? comprasEntregaFecha2,
+      @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_3') DateTime? comprasEntregaFecha3,
+      @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_1') String? comprasEntregaEstado1,
+      @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_2') String? comprasEntregaEstado2,
+      @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_') String? comprasEntregaEstado3,
+      @JsonKey(name: 'IMAGEN_PRINCIPAL') String? imagenPrincipal,
+      @JsonKey(name: 'GTIN_13_UNIDAD') String? gtin13Unidad,
+      @JsonKey(name: 'GS1_128_SUBCAJA') String? gs1128Subcaja,
+      @JsonKey(name: 'GS1_128_CAJA') String? gs1128Caja,
+      @JsonKey(name: 'GS1_128_PALET') String? gs1128Palet,
+      @JsonKey(name: 'VENTAS_ORDEN') int? ventasOrden,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
@@ -777,9 +700,8 @@ class __$$ArticuloDTOImplCopyWithImpl<$Res>
     extends _$ArticuloDTOCopyWithImpl<$Res, _$ArticuloDTOImpl>
     implements _$$ArticuloDTOImplCopyWith<$Res> {
   __$$ArticuloDTOImplCopyWithImpl(
-    _$ArticuloDTOImpl _value,
-    $Res Function(_$ArticuloDTOImpl) _then,
-  ) : super(_value, _then);
+      _$ArticuloDTOImpl _value, $Res Function(_$ArticuloDTOImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of ArticuloDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -856,436 +778,365 @@ class __$$ArticuloDTOImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$ArticuloDTOImpl(
-        id:
-            null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as String,
-        descripcionES:
-            null == descripcionES
-                ? _value.descripcionES
-                : descripcionES // ignore: cast_nullable_to_non_nullable
-                    as String,
-        descripcionEN:
-            freezed == descripcionEN
-                ? _value.descripcionEN
-                : descripcionEN // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionFR:
-            freezed == descripcionFR
-                ? _value.descripcionFR
-                : descripcionFR // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionDE:
-            freezed == descripcionDE
-                ? _value.descripcionDE
-                : descripcionDE // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionCA:
-            freezed == descripcionCA
-                ? _value.descripcionCA
-                : descripcionCA // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionGB:
-            freezed == descripcionGB
-                ? _value.descripcionGB
-                : descripcionGB // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionHU:
-            freezed == descripcionHU
-                ? _value.descripcionHU
-                : descripcionHU // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionIT:
-            freezed == descripcionIT
-                ? _value.descripcionIT
-                : descripcionIT // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionNL:
-            freezed == descripcionNL
-                ? _value.descripcionNL
-                : descripcionNL // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionPL:
-            freezed == descripcionPL
-                ? _value.descripcionPL
-                : descripcionPL // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionPT:
-            freezed == descripcionPT
-                ? _value.descripcionPT
-                : descripcionPT // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionRO:
-            freezed == descripcionRO
-                ? _value.descripcionRO
-                : descripcionRO // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionRU:
-            freezed == descripcionRU
-                ? _value.descripcionRU
-                : descripcionRU // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionCN:
-            freezed == descripcionCN
-                ? _value.descripcionCN
-                : descripcionCN // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionEL:
-            freezed == descripcionEL
-                ? _value.descripcionEL
-                : descripcionEL // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        familiaId:
-            freezed == familiaId
-                ? _value.familiaId
-                : familiaId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        subfamiliaId:
-            freezed == subfamiliaId
-                ? _value.subfamiliaId
-                : subfamiliaId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        ventaMinimo:
-            null == ventaMinimo
-                ? _value.ventaMinimo
-                : ventaMinimo // ignore: cast_nullable_to_non_nullable
-                    as int,
-        ventaMultiplo:
-            null == ventaMultiplo
-                ? _value.ventaMultiplo
-                : ventaMultiplo // ignore: cast_nullable_to_non_nullable
-                    as int,
-        unidadesSubcaja:
-            null == unidadesSubcaja
-                ? _value.unidadesSubcaja
-                : unidadesSubcaja // ignore: cast_nullable_to_non_nullable
-                    as int,
-        unidadesCaja:
-            null == unidadesCaja
-                ? _value.unidadesCaja
-                : unidadesCaja // ignore: cast_nullable_to_non_nullable
-                    as int,
-        unidadesPalet:
-            null == unidadesPalet
-                ? _value.unidadesPalet
-                : unidadesPalet // ignore: cast_nullable_to_non_nullable
-                    as int,
-        activoWeb:
-            null == activoWeb
-                ? _value.activoWeb
-                : activoWeb // ignore: cast_nullable_to_non_nullable
-                    as String,
-        activoApp:
-            null == activoApp
-                ? _value.activoApp
-                : activoApp // ignore: cast_nullable_to_non_nullable
-                    as String,
-        enCatalogo:
-            null == enCatalogo
-                ? _value.enCatalogo
-                : enCatalogo // ignore: cast_nullable_to_non_nullable
-                    as String,
-        descatalogado:
-            null == descatalogado
-                ? _value.descatalogado
-                : descatalogado // ignore: cast_nullable_to_non_nullable
-                    as String,
-        paginaEnCatalgo:
-            freezed == paginaEnCatalgo
-                ? _value.paginaEnCatalgo
-                : paginaEnCatalgo // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        paginaEnCatalgo2:
-            freezed == paginaEnCatalgo2
-                ? _value.paginaEnCatalgo2
-                : paginaEnCatalgo2 // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        pesoKg:
-            null == pesoKg
-                ? _value.pesoKg
-                : pesoKg // ignore: cast_nullable_to_non_nullable
-                    as double,
-        largoCm:
-            null == largoCm
-                ? _value.largoCm
-                : largoCm // ignore: cast_nullable_to_non_nullable
-                    as double,
-        anchoCm:
-            null == anchoCm
-                ? _value.anchoCm
-                : anchoCm // ignore: cast_nullable_to_non_nullable
-                    as double,
-        altoCm:
-            null == altoCm
-                ? _value.altoCm
-                : altoCm // ignore: cast_nullable_to_non_nullable
-                    as double,
-        resumenES:
-            freezed == resumenES
-                ? _value.resumenES
-                : resumenES // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        resumenEN:
-            freezed == resumenEN
-                ? _value.resumenEN
-                : resumenEN // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        resumenFR:
-            freezed == resumenFR
-                ? _value.resumenFR
-                : resumenFR // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        resumenDE:
-            freezed == resumenDE
-                ? _value.resumenDE
-                : resumenDE // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        resumenCA:
-            freezed == resumenCA
-                ? _value.resumenCA
-                : resumenCA // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        resumenGB:
-            freezed == resumenGB
-                ? _value.resumenGB
-                : resumenGB // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        resumenHU:
-            freezed == resumenHU
-                ? _value.resumenHU
-                : resumenHU // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        resumenIT:
-            freezed == resumenIT
-                ? _value.resumenIT
-                : resumenIT // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        resumenNL:
-            freezed == resumenNL
-                ? _value.resumenNL
-                : resumenNL // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        resumenPL:
-            freezed == resumenPL
-                ? _value.resumenPL
-                : resumenPL // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        resumenPT:
-            freezed == resumenPT
-                ? _value.resumenPT
-                : resumenPT // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        resumenRO:
-            freezed == resumenRO
-                ? _value.resumenRO
-                : resumenRO // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        resumenRU:
-            freezed == resumenRU
-                ? _value.resumenRU
-                : resumenRU // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        resumenCN:
-            freezed == resumenCN
-                ? _value.resumenCN
-                : resumenCN // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        resumenEL:
-            freezed == resumenEL
-                ? _value.resumenEL
-                : resumenEL // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        stockDisponible:
-            null == stockDisponible
-                ? _value.stockDisponible
-                : stockDisponible // ignore: cast_nullable_to_non_nullable
-                    as int,
-        ventasActual:
-            null == ventasActual
-                ? _value.ventasActual
-                : ventasActual // ignore: cast_nullable_to_non_nullable
-                    as double,
-        ventasAnterior:
-            null == ventasAnterior
-                ? _value.ventasAnterior
-                : ventasAnterior // ignore: cast_nullable_to_non_nullable
-                    as double,
-        comprasEntregaCantidad1:
-            null == comprasEntregaCantidad1
-                ? _value.comprasEntregaCantidad1
-                : comprasEntregaCantidad1 // ignore: cast_nullable_to_non_nullable
-                    as int,
-        comprasEntregaCantidad2:
-            null == comprasEntregaCantidad2
-                ? _value.comprasEntregaCantidad2
-                : comprasEntregaCantidad2 // ignore: cast_nullable_to_non_nullable
-                    as int,
-        comprasEntregaCantidad3:
-            null == comprasEntregaCantidad3
-                ? _value.comprasEntregaCantidad3
-                : comprasEntregaCantidad3 // ignore: cast_nullable_to_non_nullable
-                    as int,
-        comprasEntregaCantidadMas3:
-            null == comprasEntregaCantidadMas3
-                ? _value.comprasEntregaCantidadMas3
-                : comprasEntregaCantidadMas3 // ignore: cast_nullable_to_non_nullable
-                    as int,
-        comprasEntregaFecha1:
-            freezed == comprasEntregaFecha1
-                ? _value.comprasEntregaFecha1
-                : comprasEntregaFecha1 // ignore: cast_nullable_to_non_nullable
-                    as DateTime?,
-        comprasEntregaFecha2:
-            freezed == comprasEntregaFecha2
-                ? _value.comprasEntregaFecha2
-                : comprasEntregaFecha2 // ignore: cast_nullable_to_non_nullable
-                    as DateTime?,
-        comprasEntregaFecha3:
-            freezed == comprasEntregaFecha3
-                ? _value.comprasEntregaFecha3
-                : comprasEntregaFecha3 // ignore: cast_nullable_to_non_nullable
-                    as DateTime?,
-        comprasEntregaEstado1:
-            freezed == comprasEntregaEstado1
-                ? _value.comprasEntregaEstado1
-                : comprasEntregaEstado1 // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        comprasEntregaEstado2:
-            freezed == comprasEntregaEstado2
-                ? _value.comprasEntregaEstado2
-                : comprasEntregaEstado2 // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        comprasEntregaEstado3:
-            freezed == comprasEntregaEstado3
-                ? _value.comprasEntregaEstado3
-                : comprasEntregaEstado3 // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        imagenPrincipal:
-            freezed == imagenPrincipal
-                ? _value.imagenPrincipal
-                : imagenPrincipal // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        gtin13Unidad:
-            freezed == gtin13Unidad
-                ? _value.gtin13Unidad
-                : gtin13Unidad // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        gs1128Subcaja:
-            freezed == gs1128Subcaja
-                ? _value.gs1128Subcaja
-                : gs1128Subcaja // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        gs1128Caja:
-            freezed == gs1128Caja
-                ? _value.gs1128Caja
-                : gs1128Caja // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        gs1128Palet:
-            freezed == gs1128Palet
-                ? _value.gs1128Palet
-                : gs1128Palet // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        ventasOrden:
-            freezed == ventasOrden
-                ? _value.ventasOrden
-                : ventasOrden // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        lastUpdated:
-            null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+    return _then(_$ArticuloDTOImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcionES: null == descripcionES
+          ? _value.descripcionES
+          : descripcionES // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcionEN: freezed == descripcionEN
+          ? _value.descripcionEN
+          : descripcionEN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionFR: freezed == descripcionFR
+          ? _value.descripcionFR
+          : descripcionFR // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionDE: freezed == descripcionDE
+          ? _value.descripcionDE
+          : descripcionDE // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCA: freezed == descripcionCA
+          ? _value.descripcionCA
+          : descripcionCA // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionGB: freezed == descripcionGB
+          ? _value.descripcionGB
+          : descripcionGB // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionHU: freezed == descripcionHU
+          ? _value.descripcionHU
+          : descripcionHU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionIT: freezed == descripcionIT
+          ? _value.descripcionIT
+          : descripcionIT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionNL: freezed == descripcionNL
+          ? _value.descripcionNL
+          : descripcionNL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPL: freezed == descripcionPL
+          ? _value.descripcionPL
+          : descripcionPL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPT: freezed == descripcionPT
+          ? _value.descripcionPT
+          : descripcionPT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRO: freezed == descripcionRO
+          ? _value.descripcionRO
+          : descripcionRO // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRU: freezed == descripcionRU
+          ? _value.descripcionRU
+          : descripcionRU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCN: freezed == descripcionCN
+          ? _value.descripcionCN
+          : descripcionCN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionEL: freezed == descripcionEL
+          ? _value.descripcionEL
+          : descripcionEL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      familiaId: freezed == familiaId
+          ? _value.familiaId
+          : familiaId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      subfamiliaId: freezed == subfamiliaId
+          ? _value.subfamiliaId
+          : subfamiliaId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ventaMinimo: null == ventaMinimo
+          ? _value.ventaMinimo
+          : ventaMinimo // ignore: cast_nullable_to_non_nullable
+              as int,
+      ventaMultiplo: null == ventaMultiplo
+          ? _value.ventaMultiplo
+          : ventaMultiplo // ignore: cast_nullable_to_non_nullable
+              as int,
+      unidadesSubcaja: null == unidadesSubcaja
+          ? _value.unidadesSubcaja
+          : unidadesSubcaja // ignore: cast_nullable_to_non_nullable
+              as int,
+      unidadesCaja: null == unidadesCaja
+          ? _value.unidadesCaja
+          : unidadesCaja // ignore: cast_nullable_to_non_nullable
+              as int,
+      unidadesPalet: null == unidadesPalet
+          ? _value.unidadesPalet
+          : unidadesPalet // ignore: cast_nullable_to_non_nullable
+              as int,
+      activoWeb: null == activoWeb
+          ? _value.activoWeb
+          : activoWeb // ignore: cast_nullable_to_non_nullable
+              as String,
+      activoApp: null == activoApp
+          ? _value.activoApp
+          : activoApp // ignore: cast_nullable_to_non_nullable
+              as String,
+      enCatalogo: null == enCatalogo
+          ? _value.enCatalogo
+          : enCatalogo // ignore: cast_nullable_to_non_nullable
+              as String,
+      descatalogado: null == descatalogado
+          ? _value.descatalogado
+          : descatalogado // ignore: cast_nullable_to_non_nullable
+              as String,
+      paginaEnCatalgo: freezed == paginaEnCatalgo
+          ? _value.paginaEnCatalgo
+          : paginaEnCatalgo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      paginaEnCatalgo2: freezed == paginaEnCatalgo2
+          ? _value.paginaEnCatalgo2
+          : paginaEnCatalgo2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pesoKg: null == pesoKg
+          ? _value.pesoKg
+          : pesoKg // ignore: cast_nullable_to_non_nullable
+              as double,
+      largoCm: null == largoCm
+          ? _value.largoCm
+          : largoCm // ignore: cast_nullable_to_non_nullable
+              as double,
+      anchoCm: null == anchoCm
+          ? _value.anchoCm
+          : anchoCm // ignore: cast_nullable_to_non_nullable
+              as double,
+      altoCm: null == altoCm
+          ? _value.altoCm
+          : altoCm // ignore: cast_nullable_to_non_nullable
+              as double,
+      resumenES: freezed == resumenES
+          ? _value.resumenES
+          : resumenES // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenEN: freezed == resumenEN
+          ? _value.resumenEN
+          : resumenEN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenFR: freezed == resumenFR
+          ? _value.resumenFR
+          : resumenFR // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenDE: freezed == resumenDE
+          ? _value.resumenDE
+          : resumenDE // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenCA: freezed == resumenCA
+          ? _value.resumenCA
+          : resumenCA // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenGB: freezed == resumenGB
+          ? _value.resumenGB
+          : resumenGB // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenHU: freezed == resumenHU
+          ? _value.resumenHU
+          : resumenHU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenIT: freezed == resumenIT
+          ? _value.resumenIT
+          : resumenIT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenNL: freezed == resumenNL
+          ? _value.resumenNL
+          : resumenNL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenPL: freezed == resumenPL
+          ? _value.resumenPL
+          : resumenPL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenPT: freezed == resumenPT
+          ? _value.resumenPT
+          : resumenPT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenRO: freezed == resumenRO
+          ? _value.resumenRO
+          : resumenRO // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenRU: freezed == resumenRU
+          ? _value.resumenRU
+          : resumenRU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenCN: freezed == resumenCN
+          ? _value.resumenCN
+          : resumenCN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenEL: freezed == resumenEL
+          ? _value.resumenEL
+          : resumenEL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stockDisponible: null == stockDisponible
+          ? _value.stockDisponible
+          : stockDisponible // ignore: cast_nullable_to_non_nullable
+              as int,
+      ventasActual: null == ventasActual
+          ? _value.ventasActual
+          : ventasActual // ignore: cast_nullable_to_non_nullable
+              as double,
+      ventasAnterior: null == ventasAnterior
+          ? _value.ventasAnterior
+          : ventasAnterior // ignore: cast_nullable_to_non_nullable
+              as double,
+      comprasEntregaCantidad1: null == comprasEntregaCantidad1
+          ? _value.comprasEntregaCantidad1
+          : comprasEntregaCantidad1 // ignore: cast_nullable_to_non_nullable
+              as int,
+      comprasEntregaCantidad2: null == comprasEntregaCantidad2
+          ? _value.comprasEntregaCantidad2
+          : comprasEntregaCantidad2 // ignore: cast_nullable_to_non_nullable
+              as int,
+      comprasEntregaCantidad3: null == comprasEntregaCantidad3
+          ? _value.comprasEntregaCantidad3
+          : comprasEntregaCantidad3 // ignore: cast_nullable_to_non_nullable
+              as int,
+      comprasEntregaCantidadMas3: null == comprasEntregaCantidadMas3
+          ? _value.comprasEntregaCantidadMas3
+          : comprasEntregaCantidadMas3 // ignore: cast_nullable_to_non_nullable
+              as int,
+      comprasEntregaFecha1: freezed == comprasEntregaFecha1
+          ? _value.comprasEntregaFecha1
+          : comprasEntregaFecha1 // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      comprasEntregaFecha2: freezed == comprasEntregaFecha2
+          ? _value.comprasEntregaFecha2
+          : comprasEntregaFecha2 // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      comprasEntregaFecha3: freezed == comprasEntregaFecha3
+          ? _value.comprasEntregaFecha3
+          : comprasEntregaFecha3 // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      comprasEntregaEstado1: freezed == comprasEntregaEstado1
+          ? _value.comprasEntregaEstado1
+          : comprasEntregaEstado1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      comprasEntregaEstado2: freezed == comprasEntregaEstado2
+          ? _value.comprasEntregaEstado2
+          : comprasEntregaEstado2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      comprasEntregaEstado3: freezed == comprasEntregaEstado3
+          ? _value.comprasEntregaEstado3
+          : comprasEntregaEstado3 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      imagenPrincipal: freezed == imagenPrincipal
+          ? _value.imagenPrincipal
+          : imagenPrincipal // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gtin13Unidad: freezed == gtin13Unidad
+          ? _value.gtin13Unidad
+          : gtin13Unidad // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gs1128Subcaja: freezed == gs1128Subcaja
+          ? _value.gs1128Subcaja
+          : gs1128Subcaja // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gs1128Caja: freezed == gs1128Caja
+          ? _value.gs1128Caja
+          : gs1128Caja // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gs1128Palet: freezed == gs1128Palet
+          ? _value.gs1128Palet
+          : gs1128Palet // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ventasOrden: freezed == ventasOrden
+          ? _value.ventasOrden
+          : ventasOrden // ignore: cast_nullable_to_non_nullable
+              as int?,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ArticuloDTOImpl extends _ArticuloDTO {
-  const _$ArticuloDTOImpl({
-    @JsonKey(name: 'ARTICULO_ID') required this.id,
-    @JsonKey(name: 'DESCRIPCION_ES') required this.descripcionES,
-    @JsonKey(name: 'DESCRIPCION_EN') this.descripcionEN,
-    @JsonKey(name: 'DESCRIPCION_FR') this.descripcionFR,
-    @JsonKey(name: 'DESCRIPCION_DE') this.descripcionDE,
-    @JsonKey(name: 'DESCRIPCION_CA') this.descripcionCA,
-    @JsonKey(name: 'DESCRIPCION_GB') this.descripcionGB,
-    @JsonKey(name: 'DESCRIPCION_HU') this.descripcionHU,
-    @JsonKey(name: 'DESCRIPCION_IT') this.descripcionIT,
-    @JsonKey(name: 'DESCRIPCION_NL') this.descripcionNL,
-    @JsonKey(name: 'DESCRIPCION_PL') this.descripcionPL,
-    @JsonKey(name: 'DESCRIPCION_PT') this.descripcionPT,
-    @JsonKey(name: 'DESCRIPCION_RO') this.descripcionRO,
-    @JsonKey(name: 'DESCRIPCION_RU') this.descripcionRU,
-    @JsonKey(name: 'DESCRIPCION_CN') this.descripcionCN,
-    @JsonKey(name: 'DESCRIPCION_EL') this.descripcionEL,
-    @JsonKey(name: 'FAMILIA_ID') this.familiaId,
-    @JsonKey(name: 'SUBFAMILIA_ID') this.subfamiliaId,
-    @JsonKey(name: 'VENTA_MINIMO') required this.ventaMinimo,
-    @JsonKey(name: 'VENTA_MULTIPLO') required this.ventaMultiplo,
-    @JsonKey(name: 'UNIDADES_SUBCAJA') required this.unidadesSubcaja,
-    @JsonKey(name: 'UNIDADES_CAJA') required this.unidadesCaja,
-    @JsonKey(name: 'UNIDADES_PALET') required this.unidadesPalet,
-    @JsonKey(name: 'ACTIVO_WEB') required this.activoWeb,
-    @JsonKey(name: 'ACTIVO_APP') required this.activoApp,
-    @JsonKey(name: 'EN_CATALOGO') required this.enCatalogo,
-    @JsonKey(name: 'DESCATALOGADO') required this.descatalogado,
-    @JsonKey(name: 'PAGINA_EN_CATALOGO') this.paginaEnCatalgo,
-    @JsonKey(name: 'PAGINA_EN_CATALOGO2') this.paginaEnCatalgo2,
-    @JsonKey(name: 'PESO_KG') required this.pesoKg,
-    @JsonKey(name: 'LARGO_CM') required this.largoCm,
-    @JsonKey(name: 'ANCHO_CM') required this.anchoCm,
-    @JsonKey(name: 'ALTO_CM') required this.altoCm,
-    @JsonKey(name: 'RESUMEN_ES') this.resumenES,
-    @JsonKey(name: 'RESUMEN_EN') this.resumenEN,
-    @JsonKey(name: 'RESUMEN_FR') this.resumenFR,
-    @JsonKey(name: 'RESUMEN_DE') this.resumenDE,
-    @JsonKey(name: 'RESUMEN_CA') this.resumenCA,
-    @JsonKey(name: 'RESUMEN_GB') this.resumenGB,
-    @JsonKey(name: 'RESUMEN_HU') this.resumenHU,
-    @JsonKey(name: 'RESUMEN_IT') this.resumenIT,
-    @JsonKey(name: 'RESUMEN_NL') this.resumenNL,
-    @JsonKey(name: 'RESUMEN_PL') this.resumenPL,
-    @JsonKey(name: 'RESUMEN_PT') this.resumenPT,
-    @JsonKey(name: 'RESUMEN_RO') this.resumenRO,
-    @JsonKey(name: 'RESUMEN_RU') this.resumenRU,
-    @JsonKey(name: 'RESUMEN_CN') this.resumenCN,
-    @JsonKey(name: 'RESUMEN_EL') this.resumenEL,
-    @JsonKey(name: 'STOCK_DISPONIBLE') required this.stockDisponible,
-    @JsonKey(name: 'VENTAS_ACTUAL') required this.ventasActual,
-    @JsonKey(name: 'VENTAS_ANTERIOR') required this.ventasAnterior,
-    @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_1')
-    required this.comprasEntregaCantidad1,
-    @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_2')
-    required this.comprasEntregaCantidad2,
-    @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_3')
-    required this.comprasEntregaCantidad3,
-    @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_MAS_3')
-    required this.comprasEntregaCantidadMas3,
-    @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_1') this.comprasEntregaFecha1,
-    @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_2') this.comprasEntregaFecha2,
-    @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_3') this.comprasEntregaFecha3,
-    @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_1') this.comprasEntregaEstado1,
-    @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_2') this.comprasEntregaEstado2,
-    @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_') this.comprasEntregaEstado3,
-    @JsonKey(name: 'IMAGEN_PRINCIPAL') this.imagenPrincipal,
-    @JsonKey(name: 'GTIN_13_UNIDAD') this.gtin13Unidad,
-    @JsonKey(name: 'GS1_128_SUBCAJA') this.gs1128Subcaja,
-    @JsonKey(name: 'GS1_128_CAJA') this.gs1128Caja,
-    @JsonKey(name: 'GS1_128_PALET') this.gs1128Palet,
-    @JsonKey(name: 'VENTAS_ORDEN') this.ventasOrden,
-    @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-    @JsonKey(name: 'DELETED') this.deleted = 'N',
-  }) : super._();
+  const _$ArticuloDTOImpl(
+      {@JsonKey(name: 'ARTICULO_ID') required this.id,
+      @JsonKey(name: 'DESCRIPCION_ES') required this.descripcionES,
+      @JsonKey(name: 'DESCRIPCION_EN') this.descripcionEN,
+      @JsonKey(name: 'DESCRIPCION_FR') this.descripcionFR,
+      @JsonKey(name: 'DESCRIPCION_DE') this.descripcionDE,
+      @JsonKey(name: 'DESCRIPCION_CA') this.descripcionCA,
+      @JsonKey(name: 'DESCRIPCION_GB') this.descripcionGB,
+      @JsonKey(name: 'DESCRIPCION_HU') this.descripcionHU,
+      @JsonKey(name: 'DESCRIPCION_IT') this.descripcionIT,
+      @JsonKey(name: 'DESCRIPCION_NL') this.descripcionNL,
+      @JsonKey(name: 'DESCRIPCION_PL') this.descripcionPL,
+      @JsonKey(name: 'DESCRIPCION_PT') this.descripcionPT,
+      @JsonKey(name: 'DESCRIPCION_RO') this.descripcionRO,
+      @JsonKey(name: 'DESCRIPCION_RU') this.descripcionRU,
+      @JsonKey(name: 'DESCRIPCION_CN') this.descripcionCN,
+      @JsonKey(name: 'DESCRIPCION_EL') this.descripcionEL,
+      @JsonKey(name: 'FAMILIA_ID') this.familiaId,
+      @JsonKey(name: 'SUBFAMILIA_ID') this.subfamiliaId,
+      @JsonKey(name: 'VENTA_MINIMO') required this.ventaMinimo,
+      @JsonKey(name: 'VENTA_MULTIPLO') required this.ventaMultiplo,
+      @JsonKey(name: 'UNIDADES_SUBCAJA') required this.unidadesSubcaja,
+      @JsonKey(name: 'UNIDADES_CAJA') required this.unidadesCaja,
+      @JsonKey(name: 'UNIDADES_PALET') required this.unidadesPalet,
+      @JsonKey(name: 'ACTIVO_WEB') required this.activoWeb,
+      @JsonKey(name: 'ACTIVO_APP') required this.activoApp,
+      @JsonKey(name: 'EN_CATALOGO') required this.enCatalogo,
+      @JsonKey(name: 'DESCATALOGADO') required this.descatalogado,
+      @JsonKey(name: 'PAGINA_EN_CATALOGO') this.paginaEnCatalgo,
+      @JsonKey(name: 'PAGINA_EN_CATALOGO2') this.paginaEnCatalgo2,
+      @JsonKey(name: 'PESO_KG') required this.pesoKg,
+      @JsonKey(name: 'LARGO_CM') required this.largoCm,
+      @JsonKey(name: 'ANCHO_CM') required this.anchoCm,
+      @JsonKey(name: 'ALTO_CM') required this.altoCm,
+      @JsonKey(name: 'RESUMEN_ES') this.resumenES,
+      @JsonKey(name: 'RESUMEN_EN') this.resumenEN,
+      @JsonKey(name: 'RESUMEN_FR') this.resumenFR,
+      @JsonKey(name: 'RESUMEN_DE') this.resumenDE,
+      @JsonKey(name: 'RESUMEN_CA') this.resumenCA,
+      @JsonKey(name: 'RESUMEN_GB') this.resumenGB,
+      @JsonKey(name: 'RESUMEN_HU') this.resumenHU,
+      @JsonKey(name: 'RESUMEN_IT') this.resumenIT,
+      @JsonKey(name: 'RESUMEN_NL') this.resumenNL,
+      @JsonKey(name: 'RESUMEN_PL') this.resumenPL,
+      @JsonKey(name: 'RESUMEN_PT') this.resumenPT,
+      @JsonKey(name: 'RESUMEN_RO') this.resumenRO,
+      @JsonKey(name: 'RESUMEN_RU') this.resumenRU,
+      @JsonKey(name: 'RESUMEN_CN') this.resumenCN,
+      @JsonKey(name: 'RESUMEN_EL') this.resumenEL,
+      @JsonKey(name: 'STOCK_DISPONIBLE') required this.stockDisponible,
+      @JsonKey(name: 'VENTAS_ACTUAL') required this.ventasActual,
+      @JsonKey(name: 'VENTAS_ANTERIOR') required this.ventasAnterior,
+      @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_1')
+      required this.comprasEntregaCantidad1,
+      @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_2')
+      required this.comprasEntregaCantidad2,
+      @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_3')
+      required this.comprasEntregaCantidad3,
+      @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_MAS_3')
+      required this.comprasEntregaCantidadMas3,
+      @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_1') this.comprasEntregaFecha1,
+      @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_2') this.comprasEntregaFecha2,
+      @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_3') this.comprasEntregaFecha3,
+      @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_1') this.comprasEntregaEstado1,
+      @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_2') this.comprasEntregaEstado2,
+      @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_') this.comprasEntregaEstado3,
+      @JsonKey(name: 'IMAGEN_PRINCIPAL') this.imagenPrincipal,
+      @JsonKey(name: 'GTIN_13_UNIDAD') this.gtin13Unidad,
+      @JsonKey(name: 'GS1_128_SUBCAJA') this.gs1128Subcaja,
+      @JsonKey(name: 'GS1_128_CAJA') this.gs1128Caja,
+      @JsonKey(name: 'GS1_128_PALET') this.gs1128Palet,
+      @JsonKey(name: 'VENTAS_ORDEN') this.ventasOrden,
+      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+      @JsonKey(name: 'DELETED') this.deleted = 'N'})
+      : super._();
 
   factory _$ArticuloDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ArticuloDTOImplFromJson(json);
@@ -1599,136 +1450,103 @@ class _$ArticuloDTOImpl extends _ArticuloDTO {
                 other.resumenCN == resumenCN) &&
             (identical(other.resumenEL, resumenEL) ||
                 other.resumenEL == resumenEL) &&
-            (identical(other.stockDisponible, stockDisponible) ||
-                other.stockDisponible == stockDisponible) &&
-            (identical(other.ventasActual, ventasActual) ||
-                other.ventasActual == ventasActual) &&
-            (identical(other.ventasAnterior, ventasAnterior) ||
-                other.ventasAnterior == ventasAnterior) &&
-            (identical(
-                  other.comprasEntregaCantidad1,
-                  comprasEntregaCantidad1,
-                ) ||
-                other.comprasEntregaCantidad1 == comprasEntregaCantidad1) &&
-            (identical(
-                  other.comprasEntregaCantidad2,
-                  comprasEntregaCantidad2,
-                ) ||
-                other.comprasEntregaCantidad2 == comprasEntregaCantidad2) &&
-            (identical(
-                  other.comprasEntregaCantidad3,
-                  comprasEntregaCantidad3,
-                ) ||
-                other.comprasEntregaCantidad3 == comprasEntregaCantidad3) &&
-            (identical(
-                  other.comprasEntregaCantidadMas3,
-                  comprasEntregaCantidadMas3,
-                ) ||
-                other.comprasEntregaCantidadMas3 ==
-                    comprasEntregaCantidadMas3) &&
-            (identical(other.comprasEntregaFecha1, comprasEntregaFecha1) ||
-                other.comprasEntregaFecha1 == comprasEntregaFecha1) &&
-            (identical(other.comprasEntregaFecha2, comprasEntregaFecha2) ||
-                other.comprasEntregaFecha2 == comprasEntregaFecha2) &&
-            (identical(other.comprasEntregaFecha3, comprasEntregaFecha3) ||
-                other.comprasEntregaFecha3 == comprasEntregaFecha3) &&
-            (identical(other.comprasEntregaEstado1, comprasEntregaEstado1) ||
-                other.comprasEntregaEstado1 == comprasEntregaEstado1) &&
-            (identical(other.comprasEntregaEstado2, comprasEntregaEstado2) ||
-                other.comprasEntregaEstado2 == comprasEntregaEstado2) &&
-            (identical(other.comprasEntregaEstado3, comprasEntregaEstado3) ||
-                other.comprasEntregaEstado3 == comprasEntregaEstado3) &&
-            (identical(other.imagenPrincipal, imagenPrincipal) ||
-                other.imagenPrincipal == imagenPrincipal) &&
-            (identical(other.gtin13Unidad, gtin13Unidad) ||
-                other.gtin13Unidad == gtin13Unidad) &&
-            (identical(other.gs1128Subcaja, gs1128Subcaja) ||
-                other.gs1128Subcaja == gs1128Subcaja) &&
-            (identical(other.gs1128Caja, gs1128Caja) ||
-                other.gs1128Caja == gs1128Caja) &&
-            (identical(other.gs1128Palet, gs1128Palet) ||
-                other.gs1128Palet == gs1128Palet) &&
-            (identical(other.ventasOrden, ventasOrden) ||
-                other.ventasOrden == ventasOrden) &&
-            (identical(other.lastUpdated, lastUpdated) ||
-                other.lastUpdated == lastUpdated) &&
+            (identical(other.stockDisponible, stockDisponible) || other.stockDisponible == stockDisponible) &&
+            (identical(other.ventasActual, ventasActual) || other.ventasActual == ventasActual) &&
+            (identical(other.ventasAnterior, ventasAnterior) || other.ventasAnterior == ventasAnterior) &&
+            (identical(other.comprasEntregaCantidad1, comprasEntregaCantidad1) || other.comprasEntregaCantidad1 == comprasEntregaCantidad1) &&
+            (identical(other.comprasEntregaCantidad2, comprasEntregaCantidad2) || other.comprasEntregaCantidad2 == comprasEntregaCantidad2) &&
+            (identical(other.comprasEntregaCantidad3, comprasEntregaCantidad3) || other.comprasEntregaCantidad3 == comprasEntregaCantidad3) &&
+            (identical(other.comprasEntregaCantidadMas3, comprasEntregaCantidadMas3) || other.comprasEntregaCantidadMas3 == comprasEntregaCantidadMas3) &&
+            (identical(other.comprasEntregaFecha1, comprasEntregaFecha1) || other.comprasEntregaFecha1 == comprasEntregaFecha1) &&
+            (identical(other.comprasEntregaFecha2, comprasEntregaFecha2) || other.comprasEntregaFecha2 == comprasEntregaFecha2) &&
+            (identical(other.comprasEntregaFecha3, comprasEntregaFecha3) || other.comprasEntregaFecha3 == comprasEntregaFecha3) &&
+            (identical(other.comprasEntregaEstado1, comprasEntregaEstado1) || other.comprasEntregaEstado1 == comprasEntregaEstado1) &&
+            (identical(other.comprasEntregaEstado2, comprasEntregaEstado2) || other.comprasEntregaEstado2 == comprasEntregaEstado2) &&
+            (identical(other.comprasEntregaEstado3, comprasEntregaEstado3) || other.comprasEntregaEstado3 == comprasEntregaEstado3) &&
+            (identical(other.imagenPrincipal, imagenPrincipal) || other.imagenPrincipal == imagenPrincipal) &&
+            (identical(other.gtin13Unidad, gtin13Unidad) || other.gtin13Unidad == gtin13Unidad) &&
+            (identical(other.gs1128Subcaja, gs1128Subcaja) || other.gs1128Subcaja == gs1128Subcaja) &&
+            (identical(other.gs1128Caja, gs1128Caja) || other.gs1128Caja == gs1128Caja) &&
+            (identical(other.gs1128Palet, gs1128Palet) || other.gs1128Palet == gs1128Palet) &&
+            (identical(other.ventasOrden, ventasOrden) || other.ventasOrden == ventasOrden) &&
+            (identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated) &&
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
-    runtimeType,
-    id,
-    descripcionES,
-    descripcionEN,
-    descripcionFR,
-    descripcionDE,
-    descripcionCA,
-    descripcionGB,
-    descripcionHU,
-    descripcionIT,
-    descripcionNL,
-    descripcionPL,
-    descripcionPT,
-    descripcionRO,
-    descripcionRU,
-    descripcionCN,
-    descripcionEL,
-    familiaId,
-    subfamiliaId,
-    ventaMinimo,
-    ventaMultiplo,
-    unidadesSubcaja,
-    unidadesCaja,
-    unidadesPalet,
-    activoWeb,
-    activoApp,
-    enCatalogo,
-    descatalogado,
-    paginaEnCatalgo,
-    paginaEnCatalgo2,
-    pesoKg,
-    largoCm,
-    anchoCm,
-    altoCm,
-    resumenES,
-    resumenEN,
-    resumenFR,
-    resumenDE,
-    resumenCA,
-    resumenGB,
-    resumenHU,
-    resumenIT,
-    resumenNL,
-    resumenPL,
-    resumenPT,
-    resumenRO,
-    resumenRU,
-    resumenCN,
-    resumenEL,
-    stockDisponible,
-    ventasActual,
-    ventasAnterior,
-    comprasEntregaCantidad1,
-    comprasEntregaCantidad2,
-    comprasEntregaCantidad3,
-    comprasEntregaCantidadMas3,
-    comprasEntregaFecha1,
-    comprasEntregaFecha2,
-    comprasEntregaFecha3,
-    comprasEntregaEstado1,
-    comprasEntregaEstado2,
-    comprasEntregaEstado3,
-    imagenPrincipal,
-    gtin13Unidad,
-    gs1128Subcaja,
-    gs1128Caja,
-    gs1128Palet,
-    ventasOrden,
-    lastUpdated,
-    deleted,
-  ]);
+        runtimeType,
+        id,
+        descripcionES,
+        descripcionEN,
+        descripcionFR,
+        descripcionDE,
+        descripcionCA,
+        descripcionGB,
+        descripcionHU,
+        descripcionIT,
+        descripcionNL,
+        descripcionPL,
+        descripcionPT,
+        descripcionRO,
+        descripcionRU,
+        descripcionCN,
+        descripcionEL,
+        familiaId,
+        subfamiliaId,
+        ventaMinimo,
+        ventaMultiplo,
+        unidadesSubcaja,
+        unidadesCaja,
+        unidadesPalet,
+        activoWeb,
+        activoApp,
+        enCatalogo,
+        descatalogado,
+        paginaEnCatalgo,
+        paginaEnCatalgo2,
+        pesoKg,
+        largoCm,
+        anchoCm,
+        altoCm,
+        resumenES,
+        resumenEN,
+        resumenFR,
+        resumenDE,
+        resumenCA,
+        resumenGB,
+        resumenHU,
+        resumenIT,
+        resumenNL,
+        resumenPL,
+        resumenPT,
+        resumenRO,
+        resumenRU,
+        resumenCN,
+        resumenEL,
+        stockDisponible,
+        ventasActual,
+        ventasAnterior,
+        comprasEntregaCantidad1,
+        comprasEntregaCantidad2,
+        comprasEntregaCantidad3,
+        comprasEntregaCantidadMas3,
+        comprasEntregaFecha1,
+        comprasEntregaFecha2,
+        comprasEntregaFecha3,
+        comprasEntregaEstado1,
+        comprasEntregaEstado2,
+        comprasEntregaEstado3,
+        imagenPrincipal,
+        gtin13Unidad,
+        gs1128Subcaja,
+        gs1128Caja,
+        gs1128Palet,
+        ventasOrden,
+        lastUpdated,
+        deleted
+      ]);
 
   /// Create a copy of ArticuloDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -1740,92 +1558,93 @@ class _$ArticuloDTOImpl extends _ArticuloDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ArticuloDTOImplToJson(this);
+    return _$$ArticuloDTOImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _ArticuloDTO extends ArticuloDTO {
-  const factory _ArticuloDTO({
-    @JsonKey(name: 'ARTICULO_ID') required final String id,
-    @JsonKey(name: 'DESCRIPCION_ES') required final String descripcionES,
-    @JsonKey(name: 'DESCRIPCION_EN') final String? descripcionEN,
-    @JsonKey(name: 'DESCRIPCION_FR') final String? descripcionFR,
-    @JsonKey(name: 'DESCRIPCION_DE') final String? descripcionDE,
-    @JsonKey(name: 'DESCRIPCION_CA') final String? descripcionCA,
-    @JsonKey(name: 'DESCRIPCION_GB') final String? descripcionGB,
-    @JsonKey(name: 'DESCRIPCION_HU') final String? descripcionHU,
-    @JsonKey(name: 'DESCRIPCION_IT') final String? descripcionIT,
-    @JsonKey(name: 'DESCRIPCION_NL') final String? descripcionNL,
-    @JsonKey(name: 'DESCRIPCION_PL') final String? descripcionPL,
-    @JsonKey(name: 'DESCRIPCION_PT') final String? descripcionPT,
-    @JsonKey(name: 'DESCRIPCION_RO') final String? descripcionRO,
-    @JsonKey(name: 'DESCRIPCION_RU') final String? descripcionRU,
-    @JsonKey(name: 'DESCRIPCION_CN') final String? descripcionCN,
-    @JsonKey(name: 'DESCRIPCION_EL') final String? descripcionEL,
-    @JsonKey(name: 'FAMILIA_ID') final String? familiaId,
-    @JsonKey(name: 'SUBFAMILIA_ID') final String? subfamiliaId,
-    @JsonKey(name: 'VENTA_MINIMO') required final int ventaMinimo,
-    @JsonKey(name: 'VENTA_MULTIPLO') required final int ventaMultiplo,
-    @JsonKey(name: 'UNIDADES_SUBCAJA') required final int unidadesSubcaja,
-    @JsonKey(name: 'UNIDADES_CAJA') required final int unidadesCaja,
-    @JsonKey(name: 'UNIDADES_PALET') required final int unidadesPalet,
-    @JsonKey(name: 'ACTIVO_WEB') required final String activoWeb,
-    @JsonKey(name: 'ACTIVO_APP') required final String activoApp,
-    @JsonKey(name: 'EN_CATALOGO') required final String enCatalogo,
-    @JsonKey(name: 'DESCATALOGADO') required final String descatalogado,
-    @JsonKey(name: 'PAGINA_EN_CATALOGO') final String? paginaEnCatalgo,
-    @JsonKey(name: 'PAGINA_EN_CATALOGO2') final String? paginaEnCatalgo2,
-    @JsonKey(name: 'PESO_KG') required final double pesoKg,
-    @JsonKey(name: 'LARGO_CM') required final double largoCm,
-    @JsonKey(name: 'ANCHO_CM') required final double anchoCm,
-    @JsonKey(name: 'ALTO_CM') required final double altoCm,
-    @JsonKey(name: 'RESUMEN_ES') final String? resumenES,
-    @JsonKey(name: 'RESUMEN_EN') final String? resumenEN,
-    @JsonKey(name: 'RESUMEN_FR') final String? resumenFR,
-    @JsonKey(name: 'RESUMEN_DE') final String? resumenDE,
-    @JsonKey(name: 'RESUMEN_CA') final String? resumenCA,
-    @JsonKey(name: 'RESUMEN_GB') final String? resumenGB,
-    @JsonKey(name: 'RESUMEN_HU') final String? resumenHU,
-    @JsonKey(name: 'RESUMEN_IT') final String? resumenIT,
-    @JsonKey(name: 'RESUMEN_NL') final String? resumenNL,
-    @JsonKey(name: 'RESUMEN_PL') final String? resumenPL,
-    @JsonKey(name: 'RESUMEN_PT') final String? resumenPT,
-    @JsonKey(name: 'RESUMEN_RO') final String? resumenRO,
-    @JsonKey(name: 'RESUMEN_RU') final String? resumenRU,
-    @JsonKey(name: 'RESUMEN_CN') final String? resumenCN,
-    @JsonKey(name: 'RESUMEN_EL') final String? resumenEL,
-    @JsonKey(name: 'STOCK_DISPONIBLE') required final int stockDisponible,
-    @JsonKey(name: 'VENTAS_ACTUAL') required final double ventasActual,
-    @JsonKey(name: 'VENTAS_ANTERIOR') required final double ventasAnterior,
-    @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_1')
-    required final int comprasEntregaCantidad1,
-    @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_2')
-    required final int comprasEntregaCantidad2,
-    @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_3')
-    required final int comprasEntregaCantidad3,
-    @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_MAS_3')
-    required final int comprasEntregaCantidadMas3,
-    @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_1')
-    final DateTime? comprasEntregaFecha1,
-    @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_2')
-    final DateTime? comprasEntregaFecha2,
-    @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_3')
-    final DateTime? comprasEntregaFecha3,
-    @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_1')
-    final String? comprasEntregaEstado1,
-    @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_2')
-    final String? comprasEntregaEstado2,
-    @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_')
-    final String? comprasEntregaEstado3,
-    @JsonKey(name: 'IMAGEN_PRINCIPAL') final String? imagenPrincipal,
-    @JsonKey(name: 'GTIN_13_UNIDAD') final String? gtin13Unidad,
-    @JsonKey(name: 'GS1_128_SUBCAJA') final String? gs1128Subcaja,
-    @JsonKey(name: 'GS1_128_CAJA') final String? gs1128Caja,
-    @JsonKey(name: 'GS1_128_PALET') final String? gs1128Palet,
-    @JsonKey(name: 'VENTAS_ORDEN') final int? ventasOrden,
-    @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') final String deleted,
-  }) = _$ArticuloDTOImpl;
+  const factory _ArticuloDTO(
+      {@JsonKey(name: 'ARTICULO_ID') required final String id,
+      @JsonKey(name: 'DESCRIPCION_ES') required final String descripcionES,
+      @JsonKey(name: 'DESCRIPCION_EN') final String? descripcionEN,
+      @JsonKey(name: 'DESCRIPCION_FR') final String? descripcionFR,
+      @JsonKey(name: 'DESCRIPCION_DE') final String? descripcionDE,
+      @JsonKey(name: 'DESCRIPCION_CA') final String? descripcionCA,
+      @JsonKey(name: 'DESCRIPCION_GB') final String? descripcionGB,
+      @JsonKey(name: 'DESCRIPCION_HU') final String? descripcionHU,
+      @JsonKey(name: 'DESCRIPCION_IT') final String? descripcionIT,
+      @JsonKey(name: 'DESCRIPCION_NL') final String? descripcionNL,
+      @JsonKey(name: 'DESCRIPCION_PL') final String? descripcionPL,
+      @JsonKey(name: 'DESCRIPCION_PT') final String? descripcionPT,
+      @JsonKey(name: 'DESCRIPCION_RO') final String? descripcionRO,
+      @JsonKey(name: 'DESCRIPCION_RU') final String? descripcionRU,
+      @JsonKey(name: 'DESCRIPCION_CN') final String? descripcionCN,
+      @JsonKey(name: 'DESCRIPCION_EL') final String? descripcionEL,
+      @JsonKey(name: 'FAMILIA_ID') final String? familiaId,
+      @JsonKey(name: 'SUBFAMILIA_ID') final String? subfamiliaId,
+      @JsonKey(name: 'VENTA_MINIMO') required final int ventaMinimo,
+      @JsonKey(name: 'VENTA_MULTIPLO') required final int ventaMultiplo,
+      @JsonKey(name: 'UNIDADES_SUBCAJA') required final int unidadesSubcaja,
+      @JsonKey(name: 'UNIDADES_CAJA') required final int unidadesCaja,
+      @JsonKey(name: 'UNIDADES_PALET') required final int unidadesPalet,
+      @JsonKey(name: 'ACTIVO_WEB') required final String activoWeb,
+      @JsonKey(name: 'ACTIVO_APP') required final String activoApp,
+      @JsonKey(name: 'EN_CATALOGO') required final String enCatalogo,
+      @JsonKey(name: 'DESCATALOGADO') required final String descatalogado,
+      @JsonKey(name: 'PAGINA_EN_CATALOGO') final String? paginaEnCatalgo,
+      @JsonKey(name: 'PAGINA_EN_CATALOGO2') final String? paginaEnCatalgo2,
+      @JsonKey(name: 'PESO_KG') required final double pesoKg,
+      @JsonKey(name: 'LARGO_CM') required final double largoCm,
+      @JsonKey(name: 'ANCHO_CM') required final double anchoCm,
+      @JsonKey(name: 'ALTO_CM') required final double altoCm,
+      @JsonKey(name: 'RESUMEN_ES') final String? resumenES,
+      @JsonKey(name: 'RESUMEN_EN') final String? resumenEN,
+      @JsonKey(name: 'RESUMEN_FR') final String? resumenFR,
+      @JsonKey(name: 'RESUMEN_DE') final String? resumenDE,
+      @JsonKey(name: 'RESUMEN_CA') final String? resumenCA,
+      @JsonKey(name: 'RESUMEN_GB') final String? resumenGB,
+      @JsonKey(name: 'RESUMEN_HU') final String? resumenHU,
+      @JsonKey(name: 'RESUMEN_IT') final String? resumenIT,
+      @JsonKey(name: 'RESUMEN_NL') final String? resumenNL,
+      @JsonKey(name: 'RESUMEN_PL') final String? resumenPL,
+      @JsonKey(name: 'RESUMEN_PT') final String? resumenPT,
+      @JsonKey(name: 'RESUMEN_RO') final String? resumenRO,
+      @JsonKey(name: 'RESUMEN_RU') final String? resumenRU,
+      @JsonKey(name: 'RESUMEN_CN') final String? resumenCN,
+      @JsonKey(name: 'RESUMEN_EL') final String? resumenEL,
+      @JsonKey(name: 'STOCK_DISPONIBLE') required final int stockDisponible,
+      @JsonKey(name: 'VENTAS_ACTUAL') required final double ventasActual,
+      @JsonKey(name: 'VENTAS_ANTERIOR') required final double ventasAnterior,
+      @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_1')
+      required final int comprasEntregaCantidad1,
+      @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_2')
+      required final int comprasEntregaCantidad2,
+      @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_3')
+      required final int comprasEntregaCantidad3,
+      @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_MAS_3')
+      required final int comprasEntregaCantidadMas3,
+      @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_1')
+      final DateTime? comprasEntregaFecha1,
+      @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_2')
+      final DateTime? comprasEntregaFecha2,
+      @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_3')
+      final DateTime? comprasEntregaFecha3,
+      @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_1')
+      final String? comprasEntregaEstado1,
+      @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_2')
+      final String? comprasEntregaEstado2,
+      @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_')
+      final String? comprasEntregaEstado3,
+      @JsonKey(name: 'IMAGEN_PRINCIPAL') final String? imagenPrincipal,
+      @JsonKey(name: 'GTIN_13_UNIDAD') final String? gtin13Unidad,
+      @JsonKey(name: 'GS1_128_SUBCAJA') final String? gs1128Subcaja,
+      @JsonKey(name: 'GS1_128_CAJA') final String? gs1128Caja,
+      @JsonKey(name: 'GS1_128_PALET') final String? gs1128Palet,
+      @JsonKey(name: 'VENTAS_ORDEN') final int? ventasOrden,
+      @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') final String deleted}) = _$ArticuloDTOImpl;
   const _ArticuloDTO._() : super._();
 
   factory _ArticuloDTO.fromJson(Map<String, dynamic> json) =

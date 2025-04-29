@@ -12,8 +12,7 @@ part of 'articulo_componente.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ArticuloComponente {
@@ -48,32 +47,30 @@ mixin _$ArticuloComponente {
 /// @nodoc
 abstract class $ArticuloComponenteCopyWith<$Res> {
   factory $ArticuloComponenteCopyWith(
-    ArticuloComponente value,
-    $Res Function(ArticuloComponente) then,
-  ) = _$ArticuloComponenteCopyWithImpl<$Res, ArticuloComponente>;
+          ArticuloComponente value, $Res Function(ArticuloComponente) then) =
+      _$ArticuloComponenteCopyWithImpl<$Res, ArticuloComponente>;
   @useResult
-  $Res call({
-    String articuloId,
-    String articuloComponenteId,
-    String descripcionES,
-    String? descripcionEN,
-    String? descripcionFR,
-    String? descripcionDE,
-    String? descripcionCA,
-    String? descripcionGB,
-    String? descripcionHU,
-    String? descripcionIT,
-    String? descripcionNL,
-    String? descripcionPL,
-    String? descripcionPT,
-    String? descripcionRO,
-    String? descripcionRU,
-    String? descripcionCN,
-    String? descripcionEL,
-    int cantidad,
-    DateTime lastUpdated,
-    bool deleted,
-  });
+  $Res call(
+      {String articuloId,
+      String articuloComponenteId,
+      String descripcionES,
+      String? descripcionEN,
+      String? descripcionFR,
+      String? descripcionDE,
+      String? descripcionCA,
+      String? descripcionGB,
+      String? descripcionHU,
+      String? descripcionIT,
+      String? descripcionNL,
+      String? descripcionPL,
+      String? descripcionPT,
+      String? descripcionRO,
+      String? descripcionRU,
+      String? descripcionCN,
+      String? descripcionEL,
+      int cantidad,
+      DateTime lastUpdated,
+      bool deleted});
 }
 
 /// @nodoc
@@ -112,155 +109,129 @@ class _$ArticuloComponenteCopyWithImpl<$Res, $Val extends ArticuloComponente>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            articuloId:
-                null == articuloId
-                    ? _value.articuloId
-                    : articuloId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            articuloComponenteId:
-                null == articuloComponenteId
-                    ? _value.articuloComponenteId
-                    : articuloComponenteId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            descripcionES:
-                null == descripcionES
-                    ? _value.descripcionES
-                    : descripcionES // ignore: cast_nullable_to_non_nullable
-                        as String,
-            descripcionEN:
-                freezed == descripcionEN
-                    ? _value.descripcionEN
-                    : descripcionEN // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionFR:
-                freezed == descripcionFR
-                    ? _value.descripcionFR
-                    : descripcionFR // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionDE:
-                freezed == descripcionDE
-                    ? _value.descripcionDE
-                    : descripcionDE // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionCA:
-                freezed == descripcionCA
-                    ? _value.descripcionCA
-                    : descripcionCA // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionGB:
-                freezed == descripcionGB
-                    ? _value.descripcionGB
-                    : descripcionGB // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionHU:
-                freezed == descripcionHU
-                    ? _value.descripcionHU
-                    : descripcionHU // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionIT:
-                freezed == descripcionIT
-                    ? _value.descripcionIT
-                    : descripcionIT // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionNL:
-                freezed == descripcionNL
-                    ? _value.descripcionNL
-                    : descripcionNL // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionPL:
-                freezed == descripcionPL
-                    ? _value.descripcionPL
-                    : descripcionPL // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionPT:
-                freezed == descripcionPT
-                    ? _value.descripcionPT
-                    : descripcionPT // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionRO:
-                freezed == descripcionRO
-                    ? _value.descripcionRO
-                    : descripcionRO // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionRU:
-                freezed == descripcionRU
-                    ? _value.descripcionRU
-                    : descripcionRU // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionCN:
-                freezed == descripcionCN
-                    ? _value.descripcionCN
-                    : descripcionCN // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionEL:
-                freezed == descripcionEL
-                    ? _value.descripcionEL
-                    : descripcionEL // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            cantidad:
-                null == cantidad
-                    ? _value.cantidad
-                    : cantidad // ignore: cast_nullable_to_non_nullable
-                        as int,
-            lastUpdated:
-                null == lastUpdated
-                    ? _value.lastUpdated
-                    : lastUpdated // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as bool,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      articuloComponenteId: null == articuloComponenteId
+          ? _value.articuloComponenteId
+          : articuloComponenteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcionES: null == descripcionES
+          ? _value.descripcionES
+          : descripcionES // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcionEN: freezed == descripcionEN
+          ? _value.descripcionEN
+          : descripcionEN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionFR: freezed == descripcionFR
+          ? _value.descripcionFR
+          : descripcionFR // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionDE: freezed == descripcionDE
+          ? _value.descripcionDE
+          : descripcionDE // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCA: freezed == descripcionCA
+          ? _value.descripcionCA
+          : descripcionCA // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionGB: freezed == descripcionGB
+          ? _value.descripcionGB
+          : descripcionGB // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionHU: freezed == descripcionHU
+          ? _value.descripcionHU
+          : descripcionHU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionIT: freezed == descripcionIT
+          ? _value.descripcionIT
+          : descripcionIT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionNL: freezed == descripcionNL
+          ? _value.descripcionNL
+          : descripcionNL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPL: freezed == descripcionPL
+          ? _value.descripcionPL
+          : descripcionPL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPT: freezed == descripcionPT
+          ? _value.descripcionPT
+          : descripcionPT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRO: freezed == descripcionRO
+          ? _value.descripcionRO
+          : descripcionRO // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRU: freezed == descripcionRU
+          ? _value.descripcionRU
+          : descripcionRU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCN: freezed == descripcionCN
+          ? _value.descripcionCN
+          : descripcionCN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionEL: freezed == descripcionEL
+          ? _value.descripcionEL
+          : descripcionEL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cantidad: null == cantidad
+          ? _value.cantidad
+          : cantidad // ignore: cast_nullable_to_non_nullable
+              as int,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$ArticuloComponenteImplCopyWith<$Res>
     implements $ArticuloComponenteCopyWith<$Res> {
-  factory _$$ArticuloComponenteImplCopyWith(
-    _$ArticuloComponenteImpl value,
-    $Res Function(_$ArticuloComponenteImpl) then,
-  ) = __$$ArticuloComponenteImplCopyWithImpl<$Res>;
+  factory _$$ArticuloComponenteImplCopyWith(_$ArticuloComponenteImpl value,
+          $Res Function(_$ArticuloComponenteImpl) then) =
+      __$$ArticuloComponenteImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String articuloId,
-    String articuloComponenteId,
-    String descripcionES,
-    String? descripcionEN,
-    String? descripcionFR,
-    String? descripcionDE,
-    String? descripcionCA,
-    String? descripcionGB,
-    String? descripcionHU,
-    String? descripcionIT,
-    String? descripcionNL,
-    String? descripcionPL,
-    String? descripcionPT,
-    String? descripcionRO,
-    String? descripcionRU,
-    String? descripcionCN,
-    String? descripcionEL,
-    int cantidad,
-    DateTime lastUpdated,
-    bool deleted,
-  });
+  $Res call(
+      {String articuloId,
+      String articuloComponenteId,
+      String descripcionES,
+      String? descripcionEN,
+      String? descripcionFR,
+      String? descripcionDE,
+      String? descripcionCA,
+      String? descripcionGB,
+      String? descripcionHU,
+      String? descripcionIT,
+      String? descripcionNL,
+      String? descripcionPL,
+      String? descripcionPT,
+      String? descripcionRO,
+      String? descripcionRU,
+      String? descripcionCN,
+      String? descripcionEL,
+      int cantidad,
+      DateTime lastUpdated,
+      bool deleted});
 }
 
 /// @nodoc
 class __$$ArticuloComponenteImplCopyWithImpl<$Res>
     extends _$ArticuloComponenteCopyWithImpl<$Res, _$ArticuloComponenteImpl>
     implements _$$ArticuloComponenteImplCopyWith<$Res> {
-  __$$ArticuloComponenteImplCopyWithImpl(
-    _$ArticuloComponenteImpl _value,
-    $Res Function(_$ArticuloComponenteImpl) _then,
-  ) : super(_value, _then);
+  __$$ArticuloComponenteImplCopyWithImpl(_$ArticuloComponenteImpl _value,
+      $Res Function(_$ArticuloComponenteImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of ArticuloComponente
   /// with the given fields replaced by the non-null parameter values.
@@ -288,138 +259,116 @@ class __$$ArticuloComponenteImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$ArticuloComponenteImpl(
-        articuloId:
-            null == articuloId
-                ? _value.articuloId
-                : articuloId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        articuloComponenteId:
-            null == articuloComponenteId
-                ? _value.articuloComponenteId
-                : articuloComponenteId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        descripcionES:
-            null == descripcionES
-                ? _value.descripcionES
-                : descripcionES // ignore: cast_nullable_to_non_nullable
-                    as String,
-        descripcionEN:
-            freezed == descripcionEN
-                ? _value.descripcionEN
-                : descripcionEN // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionFR:
-            freezed == descripcionFR
-                ? _value.descripcionFR
-                : descripcionFR // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionDE:
-            freezed == descripcionDE
-                ? _value.descripcionDE
-                : descripcionDE // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionCA:
-            freezed == descripcionCA
-                ? _value.descripcionCA
-                : descripcionCA // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionGB:
-            freezed == descripcionGB
-                ? _value.descripcionGB
-                : descripcionGB // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionHU:
-            freezed == descripcionHU
-                ? _value.descripcionHU
-                : descripcionHU // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionIT:
-            freezed == descripcionIT
-                ? _value.descripcionIT
-                : descripcionIT // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionNL:
-            freezed == descripcionNL
-                ? _value.descripcionNL
-                : descripcionNL // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionPL:
-            freezed == descripcionPL
-                ? _value.descripcionPL
-                : descripcionPL // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionPT:
-            freezed == descripcionPT
-                ? _value.descripcionPT
-                : descripcionPT // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionRO:
-            freezed == descripcionRO
-                ? _value.descripcionRO
-                : descripcionRO // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionRU:
-            freezed == descripcionRU
-                ? _value.descripcionRU
-                : descripcionRU // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionCN:
-            freezed == descripcionCN
-                ? _value.descripcionCN
-                : descripcionCN // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionEL:
-            freezed == descripcionEL
-                ? _value.descripcionEL
-                : descripcionEL // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        cantidad:
-            null == cantidad
-                ? _value.cantidad
-                : cantidad // ignore: cast_nullable_to_non_nullable
-                    as int,
-        lastUpdated:
-            null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as bool,
-      ),
-    );
+    return _then(_$ArticuloComponenteImpl(
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      articuloComponenteId: null == articuloComponenteId
+          ? _value.articuloComponenteId
+          : articuloComponenteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcionES: null == descripcionES
+          ? _value.descripcionES
+          : descripcionES // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcionEN: freezed == descripcionEN
+          ? _value.descripcionEN
+          : descripcionEN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionFR: freezed == descripcionFR
+          ? _value.descripcionFR
+          : descripcionFR // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionDE: freezed == descripcionDE
+          ? _value.descripcionDE
+          : descripcionDE // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCA: freezed == descripcionCA
+          ? _value.descripcionCA
+          : descripcionCA // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionGB: freezed == descripcionGB
+          ? _value.descripcionGB
+          : descripcionGB // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionHU: freezed == descripcionHU
+          ? _value.descripcionHU
+          : descripcionHU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionIT: freezed == descripcionIT
+          ? _value.descripcionIT
+          : descripcionIT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionNL: freezed == descripcionNL
+          ? _value.descripcionNL
+          : descripcionNL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPL: freezed == descripcionPL
+          ? _value.descripcionPL
+          : descripcionPL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPT: freezed == descripcionPT
+          ? _value.descripcionPT
+          : descripcionPT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRO: freezed == descripcionRO
+          ? _value.descripcionRO
+          : descripcionRO // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRU: freezed == descripcionRU
+          ? _value.descripcionRU
+          : descripcionRU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCN: freezed == descripcionCN
+          ? _value.descripcionCN
+          : descripcionCN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionEL: freezed == descripcionEL
+          ? _value.descripcionEL
+          : descripcionEL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cantidad: null == cantidad
+          ? _value.cantidad
+          : cantidad // ignore: cast_nullable_to_non_nullable
+              as int,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$ArticuloComponenteImpl extends _ArticuloComponente {
-  const _$ArticuloComponenteImpl({
-    required this.articuloId,
-    required this.articuloComponenteId,
-    required this.descripcionES,
-    this.descripcionEN,
-    this.descripcionFR,
-    this.descripcionDE,
-    this.descripcionCA,
-    this.descripcionGB,
-    this.descripcionHU,
-    this.descripcionIT,
-    this.descripcionNL,
-    this.descripcionPL,
-    this.descripcionPT,
-    this.descripcionRO,
-    this.descripcionRU,
-    this.descripcionCN,
-    this.descripcionEL,
-    required this.cantidad,
-    required this.lastUpdated,
-    required this.deleted,
-  }) : super._();
+  const _$ArticuloComponenteImpl(
+      {required this.articuloId,
+      required this.articuloComponenteId,
+      required this.descripcionES,
+      this.descripcionEN,
+      this.descripcionFR,
+      this.descripcionDE,
+      this.descripcionCA,
+      this.descripcionGB,
+      this.descripcionHU,
+      this.descripcionIT,
+      this.descripcionNL,
+      this.descripcionPL,
+      this.descripcionPT,
+      this.descripcionRO,
+      this.descripcionRU,
+      this.descripcionCN,
+      this.descripcionEL,
+      required this.cantidad,
+      required this.lastUpdated,
+      required this.deleted})
+      : super._();
 
   @override
   final String articuloId;
@@ -515,28 +464,28 @@ class _$ArticuloComponenteImpl extends _ArticuloComponente {
 
   @override
   int get hashCode => Object.hashAll([
-    runtimeType,
-    articuloId,
-    articuloComponenteId,
-    descripcionES,
-    descripcionEN,
-    descripcionFR,
-    descripcionDE,
-    descripcionCA,
-    descripcionGB,
-    descripcionHU,
-    descripcionIT,
-    descripcionNL,
-    descripcionPL,
-    descripcionPT,
-    descripcionRO,
-    descripcionRU,
-    descripcionCN,
-    descripcionEL,
-    cantidad,
-    lastUpdated,
-    deleted,
-  ]);
+        runtimeType,
+        articuloId,
+        articuloComponenteId,
+        descripcionES,
+        descripcionEN,
+        descripcionFR,
+        descripcionDE,
+        descripcionCA,
+        descripcionGB,
+        descripcionHU,
+        descripcionIT,
+        descripcionNL,
+        descripcionPL,
+        descripcionPT,
+        descripcionRO,
+        descripcionRU,
+        descripcionCN,
+        descripcionEL,
+        cantidad,
+        lastUpdated,
+        deleted
+      ]);
 
   /// Create a copy of ArticuloComponente
   /// with the given fields replaced by the non-null parameter values.
@@ -545,34 +494,31 @@ class _$ArticuloComponenteImpl extends _ArticuloComponente {
   @pragma('vm:prefer-inline')
   _$$ArticuloComponenteImplCopyWith<_$ArticuloComponenteImpl> get copyWith =>
       __$$ArticuloComponenteImplCopyWithImpl<_$ArticuloComponenteImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 }
 
 abstract class _ArticuloComponente extends ArticuloComponente {
-  const factory _ArticuloComponente({
-    required final String articuloId,
-    required final String articuloComponenteId,
-    required final String descripcionES,
-    final String? descripcionEN,
-    final String? descripcionFR,
-    final String? descripcionDE,
-    final String? descripcionCA,
-    final String? descripcionGB,
-    final String? descripcionHU,
-    final String? descripcionIT,
-    final String? descripcionNL,
-    final String? descripcionPL,
-    final String? descripcionPT,
-    final String? descripcionRO,
-    final String? descripcionRU,
-    final String? descripcionCN,
-    final String? descripcionEL,
-    required final int cantidad,
-    required final DateTime lastUpdated,
-    required final bool deleted,
-  }) = _$ArticuloComponenteImpl;
+  const factory _ArticuloComponente(
+      {required final String articuloId,
+      required final String articuloComponenteId,
+      required final String descripcionES,
+      final String? descripcionEN,
+      final String? descripcionFR,
+      final String? descripcionDE,
+      final String? descripcionCA,
+      final String? descripcionGB,
+      final String? descripcionHU,
+      final String? descripcionIT,
+      final String? descripcionNL,
+      final String? descripcionPL,
+      final String? descripcionPT,
+      final String? descripcionRO,
+      final String? descripcionRU,
+      final String? descripcionCN,
+      final String? descripcionEL,
+      required final int cantidad,
+      required final DateTime lastUpdated,
+      required final bool deleted}) = _$ArticuloComponenteImpl;
   const _ArticuloComponente._() : super._();
 
   @override

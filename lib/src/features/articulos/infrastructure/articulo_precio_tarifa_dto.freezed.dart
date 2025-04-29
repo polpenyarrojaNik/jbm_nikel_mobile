@@ -12,12 +12,10 @@ part of 'articulo_precio_tarifa_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ArticuloPrecioTarifaDTO _$ArticuloPrecioTarifaDTOFromJson(
-  Map<String, dynamic> json,
-) {
+    Map<String, dynamic> json) {
   return _ArticuloPrecioTarifaDTO.fromJson(json);
 }
 
@@ -54,29 +52,25 @@ mixin _$ArticuloPrecioTarifaDTO {
 
 /// @nodoc
 abstract class $ArticuloPrecioTarifaDTOCopyWith<$Res> {
-  factory $ArticuloPrecioTarifaDTOCopyWith(
-    ArticuloPrecioTarifaDTO value,
-    $Res Function(ArticuloPrecioTarifaDTO) then,
-  ) = _$ArticuloPrecioTarifaDTOCopyWithImpl<$Res, ArticuloPrecioTarifaDTO>;
+  factory $ArticuloPrecioTarifaDTOCopyWith(ArticuloPrecioTarifaDTO value,
+          $Res Function(ArticuloPrecioTarifaDTO) then) =
+      _$ArticuloPrecioTarifaDTOCopyWithImpl<$Res, ArticuloPrecioTarifaDTO>;
   @useResult
-  $Res call({
-    @JsonKey(name: 'ARTICULO_ID') String articuloId,
-    @JsonKey(name: 'TARIFA_ID') String tarifaId,
-    @JsonKey(name: 'TARIFA_DESCRIPCION') String? tarifaDescripcion,
-    @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
-    @JsonKey(name: 'PRECIO') double precio,
-    @JsonKey(name: 'DIVISA_ID') String divisaId,
-    @JsonKey(name: 'TIPO_PRECIO') int tipoPrecio,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'ARTICULO_ID') String articuloId,
+      @JsonKey(name: 'TARIFA_ID') String tarifaId,
+      @JsonKey(name: 'TARIFA_DESCRIPCION') String? tarifaDescripcion,
+      @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
+      @JsonKey(name: 'PRECIO') double precio,
+      @JsonKey(name: 'DIVISA_ID') String divisaId,
+      @JsonKey(name: 'TIPO_PRECIO') int tipoPrecio,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
-class _$ArticuloPrecioTarifaDTOCopyWithImpl<
-  $Res,
-  $Val extends ArticuloPrecioTarifaDTO
->
+class _$ArticuloPrecioTarifaDTOCopyWithImpl<$Res,
+        $Val extends ArticuloPrecioTarifaDTO>
     implements $ArticuloPrecioTarifaDTOCopyWith<$Res> {
   _$ArticuloPrecioTarifaDTOCopyWithImpl(this._value, this._then);
 
@@ -100,56 +94,44 @@ class _$ArticuloPrecioTarifaDTOCopyWithImpl<
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            articuloId:
-                null == articuloId
-                    ? _value.articuloId
-                    : articuloId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            tarifaId:
-                null == tarifaId
-                    ? _value.tarifaId
-                    : tarifaId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            tarifaDescripcion:
-                freezed == tarifaDescripcion
-                    ? _value.tarifaDescripcion
-                    : tarifaDescripcion // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            cantidadDesde:
-                null == cantidadDesde
-                    ? _value.cantidadDesde
-                    : cantidadDesde // ignore: cast_nullable_to_non_nullable
-                        as int,
-            precio:
-                null == precio
-                    ? _value.precio
-                    : precio // ignore: cast_nullable_to_non_nullable
-                        as double,
-            divisaId:
-                null == divisaId
-                    ? _value.divisaId
-                    : divisaId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            tipoPrecio:
-                null == tipoPrecio
-                    ? _value.tipoPrecio
-                    : tipoPrecio // ignore: cast_nullable_to_non_nullable
-                        as int,
-            lastUpdated:
-                null == lastUpdated
-                    ? _value.lastUpdated
-                    : lastUpdated // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      tarifaId: null == tarifaId
+          ? _value.tarifaId
+          : tarifaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      tarifaDescripcion: freezed == tarifaDescripcion
+          ? _value.tarifaDescripcion
+          : tarifaDescripcion // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cantidadDesde: null == cantidadDesde
+          ? _value.cantidadDesde
+          : cantidadDesde // ignore: cast_nullable_to_non_nullable
+              as int,
+      precio: null == precio
+          ? _value.precio
+          : precio // ignore: cast_nullable_to_non_nullable
+              as double,
+      divisaId: null == divisaId
+          ? _value.divisaId
+          : divisaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      tipoPrecio: null == tipoPrecio
+          ? _value.tipoPrecio
+          : tipoPrecio // ignore: cast_nullable_to_non_nullable
+              as int,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
@@ -157,36 +139,32 @@ class _$ArticuloPrecioTarifaDTOCopyWithImpl<
 abstract class _$$ArticuloPrecioTarifaDTOImplCopyWith<$Res>
     implements $ArticuloPrecioTarifaDTOCopyWith<$Res> {
   factory _$$ArticuloPrecioTarifaDTOImplCopyWith(
-    _$ArticuloPrecioTarifaDTOImpl value,
-    $Res Function(_$ArticuloPrecioTarifaDTOImpl) then,
-  ) = __$$ArticuloPrecioTarifaDTOImplCopyWithImpl<$Res>;
+          _$ArticuloPrecioTarifaDTOImpl value,
+          $Res Function(_$ArticuloPrecioTarifaDTOImpl) then) =
+      __$$ArticuloPrecioTarifaDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'ARTICULO_ID') String articuloId,
-    @JsonKey(name: 'TARIFA_ID') String tarifaId,
-    @JsonKey(name: 'TARIFA_DESCRIPCION') String? tarifaDescripcion,
-    @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
-    @JsonKey(name: 'PRECIO') double precio,
-    @JsonKey(name: 'DIVISA_ID') String divisaId,
-    @JsonKey(name: 'TIPO_PRECIO') int tipoPrecio,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'ARTICULO_ID') String articuloId,
+      @JsonKey(name: 'TARIFA_ID') String tarifaId,
+      @JsonKey(name: 'TARIFA_DESCRIPCION') String? tarifaDescripcion,
+      @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
+      @JsonKey(name: 'PRECIO') double precio,
+      @JsonKey(name: 'DIVISA_ID') String divisaId,
+      @JsonKey(name: 'TIPO_PRECIO') int tipoPrecio,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
 class __$$ArticuloPrecioTarifaDTOImplCopyWithImpl<$Res>
-    extends
-        _$ArticuloPrecioTarifaDTOCopyWithImpl<
-          $Res,
-          _$ArticuloPrecioTarifaDTOImpl
-        >
+    extends _$ArticuloPrecioTarifaDTOCopyWithImpl<$Res,
+        _$ArticuloPrecioTarifaDTOImpl>
     implements _$$ArticuloPrecioTarifaDTOImplCopyWith<$Res> {
   __$$ArticuloPrecioTarifaDTOImplCopyWithImpl(
-    _$ArticuloPrecioTarifaDTOImpl _value,
-    $Res Function(_$ArticuloPrecioTarifaDTOImpl) _then,
-  ) : super(_value, _then);
+      _$ArticuloPrecioTarifaDTOImpl _value,
+      $Res Function(_$ArticuloPrecioTarifaDTOImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of ArticuloPrecioTarifaDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -203,72 +181,61 @@ class __$$ArticuloPrecioTarifaDTOImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$ArticuloPrecioTarifaDTOImpl(
-        articuloId:
-            null == articuloId
-                ? _value.articuloId
-                : articuloId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        tarifaId:
-            null == tarifaId
-                ? _value.tarifaId
-                : tarifaId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        tarifaDescripcion:
-            freezed == tarifaDescripcion
-                ? _value.tarifaDescripcion
-                : tarifaDescripcion // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        cantidadDesde:
-            null == cantidadDesde
-                ? _value.cantidadDesde
-                : cantidadDesde // ignore: cast_nullable_to_non_nullable
-                    as int,
-        precio:
-            null == precio
-                ? _value.precio
-                : precio // ignore: cast_nullable_to_non_nullable
-                    as double,
-        divisaId:
-            null == divisaId
-                ? _value.divisaId
-                : divisaId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        tipoPrecio:
-            null == tipoPrecio
-                ? _value.tipoPrecio
-                : tipoPrecio // ignore: cast_nullable_to_non_nullable
-                    as int,
-        lastUpdated:
-            null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+    return _then(_$ArticuloPrecioTarifaDTOImpl(
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      tarifaId: null == tarifaId
+          ? _value.tarifaId
+          : tarifaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      tarifaDescripcion: freezed == tarifaDescripcion
+          ? _value.tarifaDescripcion
+          : tarifaDescripcion // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cantidadDesde: null == cantidadDesde
+          ? _value.cantidadDesde
+          : cantidadDesde // ignore: cast_nullable_to_non_nullable
+              as int,
+      precio: null == precio
+          ? _value.precio
+          : precio // ignore: cast_nullable_to_non_nullable
+              as double,
+      divisaId: null == divisaId
+          ? _value.divisaId
+          : divisaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      tipoPrecio: null == tipoPrecio
+          ? _value.tipoPrecio
+          : tipoPrecio // ignore: cast_nullable_to_non_nullable
+              as int,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ArticuloPrecioTarifaDTOImpl extends _ArticuloPrecioTarifaDTO {
-  const _$ArticuloPrecioTarifaDTOImpl({
-    @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
-    @JsonKey(name: 'TARIFA_ID') required this.tarifaId,
-    @JsonKey(name: 'TARIFA_DESCRIPCION') this.tarifaDescripcion,
-    @JsonKey(name: 'CANTIDAD_DESDE') required this.cantidadDesde,
-    @JsonKey(name: 'PRECIO') required this.precio,
-    @JsonKey(name: 'DIVISA_ID') required this.divisaId,
-    @JsonKey(name: 'TIPO_PRECIO') required this.tipoPrecio,
-    @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-    @JsonKey(name: 'DELETED') this.deleted = 'N',
-  }) : super._();
+  const _$ArticuloPrecioTarifaDTOImpl(
+      {@JsonKey(name: 'ARTICULO_ID') required this.articuloId,
+      @JsonKey(name: 'TARIFA_ID') required this.tarifaId,
+      @JsonKey(name: 'TARIFA_DESCRIPCION') this.tarifaDescripcion,
+      @JsonKey(name: 'CANTIDAD_DESDE') required this.cantidadDesde,
+      @JsonKey(name: 'PRECIO') required this.precio,
+      @JsonKey(name: 'DIVISA_ID') required this.divisaId,
+      @JsonKey(name: 'TIPO_PRECIO') required this.tipoPrecio,
+      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+      @JsonKey(name: 'DELETED') this.deleted = 'N'})
+      : super._();
 
   factory _$ArticuloPrecioTarifaDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ArticuloPrecioTarifaDTOImplFromJson(json);
@@ -332,17 +299,16 @@ class _$ArticuloPrecioTarifaDTOImpl extends _ArticuloPrecioTarifaDTO {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    articuloId,
-    tarifaId,
-    tarifaDescripcion,
-    cantidadDesde,
-    precio,
-    divisaId,
-    tipoPrecio,
-    lastUpdated,
-    deleted,
-  );
+      runtimeType,
+      articuloId,
+      tarifaId,
+      tarifaDescripcion,
+      cantidadDesde,
+      precio,
+      divisaId,
+      tipoPrecio,
+      lastUpdated,
+      deleted);
 
   /// Create a copy of ArticuloPrecioTarifaDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -350,28 +316,29 @@ class _$ArticuloPrecioTarifaDTOImpl extends _ArticuloPrecioTarifaDTO {
   @override
   @pragma('vm:prefer-inline')
   _$$ArticuloPrecioTarifaDTOImplCopyWith<_$ArticuloPrecioTarifaDTOImpl>
-  get copyWith => __$$ArticuloPrecioTarifaDTOImplCopyWithImpl<
-    _$ArticuloPrecioTarifaDTOImpl
-  >(this, _$identity);
+      get copyWith => __$$ArticuloPrecioTarifaDTOImplCopyWithImpl<
+          _$ArticuloPrecioTarifaDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ArticuloPrecioTarifaDTOImplToJson(this);
+    return _$$ArticuloPrecioTarifaDTOImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _ArticuloPrecioTarifaDTO extends ArticuloPrecioTarifaDTO {
-  const factory _ArticuloPrecioTarifaDTO({
-    @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
-    @JsonKey(name: 'TARIFA_ID') required final String tarifaId,
-    @JsonKey(name: 'TARIFA_DESCRIPCION') final String? tarifaDescripcion,
-    @JsonKey(name: 'CANTIDAD_DESDE') required final int cantidadDesde,
-    @JsonKey(name: 'PRECIO') required final double precio,
-    @JsonKey(name: 'DIVISA_ID') required final String divisaId,
-    @JsonKey(name: 'TIPO_PRECIO') required final int tipoPrecio,
-    @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') final String deleted,
-  }) = _$ArticuloPrecioTarifaDTOImpl;
+  const factory _ArticuloPrecioTarifaDTO(
+          {@JsonKey(name: 'ARTICULO_ID') required final String articuloId,
+          @JsonKey(name: 'TARIFA_ID') required final String tarifaId,
+          @JsonKey(name: 'TARIFA_DESCRIPCION') final String? tarifaDescripcion,
+          @JsonKey(name: 'CANTIDAD_DESDE') required final int cantidadDesde,
+          @JsonKey(name: 'PRECIO') required final double precio,
+          @JsonKey(name: 'DIVISA_ID') required final String divisaId,
+          @JsonKey(name: 'TIPO_PRECIO') required final int tipoPrecio,
+          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+          @JsonKey(name: 'DELETED') final String deleted}) =
+      _$ArticuloPrecioTarifaDTOImpl;
   const _ArticuloPrecioTarifaDTO._() : super._();
 
   factory _ArticuloPrecioTarifaDTO.fromJson(Map<String, dynamic> json) =
@@ -410,5 +377,5 @@ abstract class _ArticuloPrecioTarifaDTO extends ArticuloPrecioTarifaDTO {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ArticuloPrecioTarifaDTOImplCopyWith<_$ArticuloPrecioTarifaDTOImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }

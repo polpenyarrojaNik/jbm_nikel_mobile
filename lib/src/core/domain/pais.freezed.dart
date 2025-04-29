@@ -12,8 +12,7 @@ part of 'pais.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$Pais {
@@ -34,13 +33,12 @@ abstract class $PaisCopyWith<$Res> {
   factory $PaisCopyWith(Pais value, $Res Function(Pais) then) =
       _$PaisCopyWithImpl<$Res, Pais>;
   @useResult
-  $Res call({
-    String id,
-    String? isoCode,
-    String descripcion,
-    DateTime lastUpdate,
-    bool deleted,
-  });
+  $Res call(
+      {String id,
+      String? isoCode,
+      String descripcion,
+      DateTime lastUpdate,
+      bool deleted});
 }
 
 /// @nodoc
@@ -64,54 +62,44 @@ class _$PaisCopyWithImpl<$Res, $Val extends Pais>
     Object? lastUpdate = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            id:
-                null == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as String,
-            isoCode:
-                freezed == isoCode
-                    ? _value.isoCode
-                    : isoCode // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcion:
-                null == descripcion
-                    ? _value.descripcion
-                    : descripcion // ignore: cast_nullable_to_non_nullable
-                        as String,
-            lastUpdate:
-                null == lastUpdate
-                    ? _value.lastUpdate
-                    : lastUpdate // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as bool,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      isoCode: freezed == isoCode
+          ? _value.isoCode
+          : isoCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcion: null == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastUpdate: null == lastUpdate
+          ? _value.lastUpdate
+          : lastUpdate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$PaisImplCopyWith<$Res> implements $PaisCopyWith<$Res> {
   factory _$$PaisImplCopyWith(
-    _$PaisImpl value,
-    $Res Function(_$PaisImpl) then,
-  ) = __$$PaisImplCopyWithImpl<$Res>;
+          _$PaisImpl value, $Res Function(_$PaisImpl) then) =
+      __$$PaisImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String? isoCode,
-    String descripcion,
-    DateTime lastUpdate,
-    bool deleted,
-  });
+  $Res call(
+      {String id,
+      String? isoCode,
+      String descripcion,
+      DateTime lastUpdate,
+      bool deleted});
 }
 
 /// @nodoc
@@ -119,7 +107,7 @@ class __$$PaisImplCopyWithImpl<$Res>
     extends _$PaisCopyWithImpl<$Res, _$PaisImpl>
     implements _$$PaisImplCopyWith<$Res> {
   __$$PaisImplCopyWithImpl(_$PaisImpl _value, $Res Function(_$PaisImpl) _then)
-    : super(_value, _then);
+      : super(_value, _then);
 
   /// Create a copy of Pais
   /// with the given fields replaced by the non-null parameter values.
@@ -132,48 +120,41 @@ class __$$PaisImplCopyWithImpl<$Res>
     Object? lastUpdate = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$PaisImpl(
-        id:
-            null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as String,
-        isoCode:
-            freezed == isoCode
-                ? _value.isoCode
-                : isoCode // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcion:
-            null == descripcion
-                ? _value.descripcion
-                : descripcion // ignore: cast_nullable_to_non_nullable
-                    as String,
-        lastUpdate:
-            null == lastUpdate
-                ? _value.lastUpdate
-                : lastUpdate // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as bool,
-      ),
-    );
+    return _then(_$PaisImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      isoCode: freezed == isoCode
+          ? _value.isoCode
+          : isoCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcion: null == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastUpdate: null == lastUpdate
+          ? _value.lastUpdate
+          : lastUpdate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$PaisImpl extends _Pais {
-  const _$PaisImpl({
-    required this.id,
-    required this.isoCode,
-    required this.descripcion,
-    required this.lastUpdate,
-    required this.deleted,
-  }) : super._();
+  const _$PaisImpl(
+      {required this.id,
+      required this.isoCode,
+      required this.descripcion,
+      required this.lastUpdate,
+      required this.deleted})
+      : super._();
 
   @override
   final String id;
@@ -219,13 +200,12 @@ class _$PaisImpl extends _Pais {
 }
 
 abstract class _Pais extends Pais {
-  const factory _Pais({
-    required final String id,
-    required final String? isoCode,
-    required final String descripcion,
-    required final DateTime lastUpdate,
-    required final bool deleted,
-  }) = _$PaisImpl;
+  const factory _Pais(
+      {required final String id,
+      required final String? isoCode,
+      required final String descripcion,
+      required final DateTime lastUpdate,
+      required final bool deleted}) = _$PaisImpl;
   const _Pais._() : super._();
 
   @override

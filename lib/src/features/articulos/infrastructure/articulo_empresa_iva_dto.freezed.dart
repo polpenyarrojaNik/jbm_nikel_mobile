@@ -12,12 +12,10 @@ part of 'articulo_empresa_iva_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ArticuloEmpresaIvaDTO _$ArticuloEmpresaIvaDTOFromJson(
-  Map<String, dynamic> json,
-) {
+    Map<String, dynamic> json) {
   return _ArticuloEmpresaIvaDTO.fromJson(json);
 }
 
@@ -46,25 +44,21 @@ mixin _$ArticuloEmpresaIvaDTO {
 
 /// @nodoc
 abstract class $ArticuloEmpresaIvaDTOCopyWith<$Res> {
-  factory $ArticuloEmpresaIvaDTOCopyWith(
-    ArticuloEmpresaIvaDTO value,
-    $Res Function(ArticuloEmpresaIvaDTO) then,
-  ) = _$ArticuloEmpresaIvaDTOCopyWithImpl<$Res, ArticuloEmpresaIvaDTO>;
+  factory $ArticuloEmpresaIvaDTOCopyWith(ArticuloEmpresaIvaDTO value,
+          $Res Function(ArticuloEmpresaIvaDTO) then) =
+      _$ArticuloEmpresaIvaDTOCopyWithImpl<$Res, ArticuloEmpresaIvaDTO>;
   @useResult
-  $Res call({
-    @JsonKey(name: 'ARTICULO_ID') String articuloId,
-    @JsonKey(name: 'EMPRESA_ID') String empresaId,
-    @JsonKey(name: 'IVA') double iva,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'ARTICULO_ID') String articuloId,
+      @JsonKey(name: 'EMPRESA_ID') String empresaId,
+      @JsonKey(name: 'IVA') double iva,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
-class _$ArticuloEmpresaIvaDTOCopyWithImpl<
-  $Res,
-  $Val extends ArticuloEmpresaIvaDTO
->
+class _$ArticuloEmpresaIvaDTOCopyWithImpl<$Res,
+        $Val extends ArticuloEmpresaIvaDTO>
     implements $ArticuloEmpresaIvaDTOCopyWith<$Res> {
   _$ArticuloEmpresaIvaDTOCopyWithImpl(this._value, this._then);
 
@@ -84,36 +78,28 @@ class _$ArticuloEmpresaIvaDTOCopyWithImpl<
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            articuloId:
-                null == articuloId
-                    ? _value.articuloId
-                    : articuloId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            empresaId:
-                null == empresaId
-                    ? _value.empresaId
-                    : empresaId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            iva:
-                null == iva
-                    ? _value.iva
-                    : iva // ignore: cast_nullable_to_non_nullable
-                        as double,
-            lastUpdated:
-                null == lastUpdated
-                    ? _value.lastUpdated
-                    : lastUpdated // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      empresaId: null == empresaId
+          ? _value.empresaId
+          : empresaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      iva: null == iva
+          ? _value.iva
+          : iva // ignore: cast_nullable_to_non_nullable
+              as double,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
@@ -121,29 +107,27 @@ class _$ArticuloEmpresaIvaDTOCopyWithImpl<
 abstract class _$$ArticuloEmpresaIvaDTOImplCopyWith<$Res>
     implements $ArticuloEmpresaIvaDTOCopyWith<$Res> {
   factory _$$ArticuloEmpresaIvaDTOImplCopyWith(
-    _$ArticuloEmpresaIvaDTOImpl value,
-    $Res Function(_$ArticuloEmpresaIvaDTOImpl) then,
-  ) = __$$ArticuloEmpresaIvaDTOImplCopyWithImpl<$Res>;
+          _$ArticuloEmpresaIvaDTOImpl value,
+          $Res Function(_$ArticuloEmpresaIvaDTOImpl) then) =
+      __$$ArticuloEmpresaIvaDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'ARTICULO_ID') String articuloId,
-    @JsonKey(name: 'EMPRESA_ID') String empresaId,
-    @JsonKey(name: 'IVA') double iva,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'ARTICULO_ID') String articuloId,
+      @JsonKey(name: 'EMPRESA_ID') String empresaId,
+      @JsonKey(name: 'IVA') double iva,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
 class __$$ArticuloEmpresaIvaDTOImplCopyWithImpl<$Res>
-    extends
-        _$ArticuloEmpresaIvaDTOCopyWithImpl<$Res, _$ArticuloEmpresaIvaDTOImpl>
+    extends _$ArticuloEmpresaIvaDTOCopyWithImpl<$Res,
+        _$ArticuloEmpresaIvaDTOImpl>
     implements _$$ArticuloEmpresaIvaDTOImplCopyWith<$Res> {
-  __$$ArticuloEmpresaIvaDTOImplCopyWithImpl(
-    _$ArticuloEmpresaIvaDTOImpl _value,
-    $Res Function(_$ArticuloEmpresaIvaDTOImpl) _then,
-  ) : super(_value, _then);
+  __$$ArticuloEmpresaIvaDTOImplCopyWithImpl(_$ArticuloEmpresaIvaDTOImpl _value,
+      $Res Function(_$ArticuloEmpresaIvaDTOImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of ArticuloEmpresaIvaDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -156,48 +140,41 @@ class __$$ArticuloEmpresaIvaDTOImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$ArticuloEmpresaIvaDTOImpl(
-        articuloId:
-            null == articuloId
-                ? _value.articuloId
-                : articuloId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        empresaId:
-            null == empresaId
-                ? _value.empresaId
-                : empresaId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        iva:
-            null == iva
-                ? _value.iva
-                : iva // ignore: cast_nullable_to_non_nullable
-                    as double,
-        lastUpdated:
-            null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+    return _then(_$ArticuloEmpresaIvaDTOImpl(
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      empresaId: null == empresaId
+          ? _value.empresaId
+          : empresaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      iva: null == iva
+          ? _value.iva
+          : iva // ignore: cast_nullable_to_non_nullable
+              as double,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ArticuloEmpresaIvaDTOImpl extends _ArticuloEmpresaIvaDTO {
-  const _$ArticuloEmpresaIvaDTOImpl({
-    @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
-    @JsonKey(name: 'EMPRESA_ID') required this.empresaId,
-    @JsonKey(name: 'IVA') required this.iva,
-    @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-    @JsonKey(name: 'DELETED') this.deleted = 'N',
-  }) : super._();
+  const _$ArticuloEmpresaIvaDTOImpl(
+      {@JsonKey(name: 'ARTICULO_ID') required this.articuloId,
+      @JsonKey(name: 'EMPRESA_ID') required this.empresaId,
+      @JsonKey(name: 'IVA') required this.iva,
+      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+      @JsonKey(name: 'DELETED') this.deleted = 'N'})
+      : super._();
 
   factory _$ArticuloEmpresaIvaDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ArticuloEmpresaIvaDTOImplFromJson(json);
@@ -241,13 +218,7 @@ class _$ArticuloEmpresaIvaDTOImpl extends _ArticuloEmpresaIvaDTO {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    articuloId,
-    empresaId,
-    iva,
-    lastUpdated,
-    deleted,
-  );
+      runtimeType, articuloId, empresaId, iva, lastUpdated, deleted);
 
   /// Create a copy of ArticuloEmpresaIvaDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -255,26 +226,25 @@ class _$ArticuloEmpresaIvaDTOImpl extends _ArticuloEmpresaIvaDTO {
   @override
   @pragma('vm:prefer-inline')
   _$$ArticuloEmpresaIvaDTOImplCopyWith<_$ArticuloEmpresaIvaDTOImpl>
-  get copyWith =>
-      __$$ArticuloEmpresaIvaDTOImplCopyWithImpl<_$ArticuloEmpresaIvaDTOImpl>(
-        this,
-        _$identity,
-      );
+      get copyWith => __$$ArticuloEmpresaIvaDTOImplCopyWithImpl<
+          _$ArticuloEmpresaIvaDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ArticuloEmpresaIvaDTOImplToJson(this);
+    return _$$ArticuloEmpresaIvaDTOImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _ArticuloEmpresaIvaDTO extends ArticuloEmpresaIvaDTO {
-  const factory _ArticuloEmpresaIvaDTO({
-    @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
-    @JsonKey(name: 'EMPRESA_ID') required final String empresaId,
-    @JsonKey(name: 'IVA') required final double iva,
-    @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') final String deleted,
-  }) = _$ArticuloEmpresaIvaDTOImpl;
+  const factory _ArticuloEmpresaIvaDTO(
+          {@JsonKey(name: 'ARTICULO_ID') required final String articuloId,
+          @JsonKey(name: 'EMPRESA_ID') required final String empresaId,
+          @JsonKey(name: 'IVA') required final double iva,
+          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+          @JsonKey(name: 'DELETED') final String deleted}) =
+      _$ArticuloEmpresaIvaDTOImpl;
   const _ArticuloEmpresaIvaDTO._() : super._();
 
   factory _ArticuloEmpresaIvaDTO.fromJson(Map<String, dynamic> json) =
@@ -301,5 +271,5 @@ abstract class _ArticuloEmpresaIvaDTO extends ArticuloEmpresaIvaDTO {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ArticuloEmpresaIvaDTOImplCopyWith<_$ArticuloEmpresaIvaDTOImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }

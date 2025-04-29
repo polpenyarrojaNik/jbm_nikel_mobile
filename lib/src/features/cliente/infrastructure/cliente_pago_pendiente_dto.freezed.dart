@@ -12,12 +12,10 @@ part of 'cliente_pago_pendiente_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ClientePagoPendienteDTO _$ClientePagoPendienteDTOFromJson(
-  Map<String, dynamic> json,
-) {
+    Map<String, dynamic> json) {
   return _ClientePagoPendienteDTO.fromJson(json);
 }
 
@@ -60,33 +58,29 @@ mixin _$ClientePagoPendienteDTO {
 
 /// @nodoc
 abstract class $ClientePagoPendienteDTOCopyWith<$Res> {
-  factory $ClientePagoPendienteDTOCopyWith(
-    ClientePagoPendienteDTO value,
-    $Res Function(ClientePagoPendienteDTO) then,
-  ) = _$ClientePagoPendienteDTOCopyWithImpl<$Res, ClientePagoPendienteDTO>;
+  factory $ClientePagoPendienteDTOCopyWith(ClientePagoPendienteDTO value,
+          $Res Function(ClientePagoPendienteDTO) then) =
+      _$ClientePagoPendienteDTOCopyWithImpl<$Res, ClientePagoPendienteDTO>;
   @useResult
-  $Res call({
-    @JsonKey(name: 'CLIENTE_ID') String clienteId,
-    @JsonKey(name: 'EFECTO_ID') String efectoId,
-    @JsonKey(name: 'FACTURA_ID') String? facutaId,
-    @JsonKey(name: 'FECHA_FACUTRA') DateTime? fechaFactura,
-    @JsonKey(name: 'FECHA_VENCIMIENTO') DateTime? fechaExpiracion,
-    @JsonKey(name: 'METODO_COBRO_ID') String? metodoDeCobroId,
-    @JsonKey(name: 'ESTADO_COBRO_ID') String? estadoCobroId,
-    @JsonKey(name: 'IMPORTE') double? importe,
-    @JsonKey(name: 'FECHA_VENCIMIENTO_INICIAL')
-    DateTime? fechaExpiracionInicial,
-    @JsonKey(name: 'VENCIDO_JBM') String? vencidoJBM,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'CLIENTE_ID') String clienteId,
+      @JsonKey(name: 'EFECTO_ID') String efectoId,
+      @JsonKey(name: 'FACTURA_ID') String? facutaId,
+      @JsonKey(name: 'FECHA_FACUTRA') DateTime? fechaFactura,
+      @JsonKey(name: 'FECHA_VENCIMIENTO') DateTime? fechaExpiracion,
+      @JsonKey(name: 'METODO_COBRO_ID') String? metodoDeCobroId,
+      @JsonKey(name: 'ESTADO_COBRO_ID') String? estadoCobroId,
+      @JsonKey(name: 'IMPORTE') double? importe,
+      @JsonKey(name: 'FECHA_VENCIMIENTO_INICIAL')
+      DateTime? fechaExpiracionInicial,
+      @JsonKey(name: 'VENCIDO_JBM') String? vencidoJBM,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
-class _$ClientePagoPendienteDTOCopyWithImpl<
-  $Res,
-  $Val extends ClientePagoPendienteDTO
->
+class _$ClientePagoPendienteDTOCopyWithImpl<$Res,
+        $Val extends ClientePagoPendienteDTO>
     implements $ClientePagoPendienteDTOCopyWith<$Res> {
   _$ClientePagoPendienteDTOCopyWithImpl(this._value, this._then);
 
@@ -113,71 +107,56 @@ class _$ClientePagoPendienteDTOCopyWithImpl<
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            clienteId:
-                null == clienteId
-                    ? _value.clienteId
-                    : clienteId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            efectoId:
-                null == efectoId
-                    ? _value.efectoId
-                    : efectoId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            facutaId:
-                freezed == facutaId
-                    ? _value.facutaId
-                    : facutaId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            fechaFactura:
-                freezed == fechaFactura
-                    ? _value.fechaFactura
-                    : fechaFactura // ignore: cast_nullable_to_non_nullable
-                        as DateTime?,
-            fechaExpiracion:
-                freezed == fechaExpiracion
-                    ? _value.fechaExpiracion
-                    : fechaExpiracion // ignore: cast_nullable_to_non_nullable
-                        as DateTime?,
-            metodoDeCobroId:
-                freezed == metodoDeCobroId
-                    ? _value.metodoDeCobroId
-                    : metodoDeCobroId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            estadoCobroId:
-                freezed == estadoCobroId
-                    ? _value.estadoCobroId
-                    : estadoCobroId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            importe:
-                freezed == importe
-                    ? _value.importe
-                    : importe // ignore: cast_nullable_to_non_nullable
-                        as double?,
-            fechaExpiracionInicial:
-                freezed == fechaExpiracionInicial
-                    ? _value.fechaExpiracionInicial
-                    : fechaExpiracionInicial // ignore: cast_nullable_to_non_nullable
-                        as DateTime?,
-            vencidoJBM:
-                freezed == vencidoJBM
-                    ? _value.vencidoJBM
-                    : vencidoJBM // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            lastUpdated:
-                null == lastUpdated
-                    ? _value.lastUpdated
-                    : lastUpdated // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      efectoId: null == efectoId
+          ? _value.efectoId
+          : efectoId // ignore: cast_nullable_to_non_nullable
+              as String,
+      facutaId: freezed == facutaId
+          ? _value.facutaId
+          : facutaId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fechaFactura: freezed == fechaFactura
+          ? _value.fechaFactura
+          : fechaFactura // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      fechaExpiracion: freezed == fechaExpiracion
+          ? _value.fechaExpiracion
+          : fechaExpiracion // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      metodoDeCobroId: freezed == metodoDeCobroId
+          ? _value.metodoDeCobroId
+          : metodoDeCobroId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      estadoCobroId: freezed == estadoCobroId
+          ? _value.estadoCobroId
+          : estadoCobroId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      importe: freezed == importe
+          ? _value.importe
+          : importe // ignore: cast_nullable_to_non_nullable
+              as double?,
+      fechaExpiracionInicial: freezed == fechaExpiracionInicial
+          ? _value.fechaExpiracionInicial
+          : fechaExpiracionInicial // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      vencidoJBM: freezed == vencidoJBM
+          ? _value.vencidoJBM
+          : vencidoJBM // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
@@ -185,40 +164,36 @@ class _$ClientePagoPendienteDTOCopyWithImpl<
 abstract class _$$ClientePagoPendienteDTOImplCopyWith<$Res>
     implements $ClientePagoPendienteDTOCopyWith<$Res> {
   factory _$$ClientePagoPendienteDTOImplCopyWith(
-    _$ClientePagoPendienteDTOImpl value,
-    $Res Function(_$ClientePagoPendienteDTOImpl) then,
-  ) = __$$ClientePagoPendienteDTOImplCopyWithImpl<$Res>;
+          _$ClientePagoPendienteDTOImpl value,
+          $Res Function(_$ClientePagoPendienteDTOImpl) then) =
+      __$$ClientePagoPendienteDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'CLIENTE_ID') String clienteId,
-    @JsonKey(name: 'EFECTO_ID') String efectoId,
-    @JsonKey(name: 'FACTURA_ID') String? facutaId,
-    @JsonKey(name: 'FECHA_FACUTRA') DateTime? fechaFactura,
-    @JsonKey(name: 'FECHA_VENCIMIENTO') DateTime? fechaExpiracion,
-    @JsonKey(name: 'METODO_COBRO_ID') String? metodoDeCobroId,
-    @JsonKey(name: 'ESTADO_COBRO_ID') String? estadoCobroId,
-    @JsonKey(name: 'IMPORTE') double? importe,
-    @JsonKey(name: 'FECHA_VENCIMIENTO_INICIAL')
-    DateTime? fechaExpiracionInicial,
-    @JsonKey(name: 'VENCIDO_JBM') String? vencidoJBM,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'CLIENTE_ID') String clienteId,
+      @JsonKey(name: 'EFECTO_ID') String efectoId,
+      @JsonKey(name: 'FACTURA_ID') String? facutaId,
+      @JsonKey(name: 'FECHA_FACUTRA') DateTime? fechaFactura,
+      @JsonKey(name: 'FECHA_VENCIMIENTO') DateTime? fechaExpiracion,
+      @JsonKey(name: 'METODO_COBRO_ID') String? metodoDeCobroId,
+      @JsonKey(name: 'ESTADO_COBRO_ID') String? estadoCobroId,
+      @JsonKey(name: 'IMPORTE') double? importe,
+      @JsonKey(name: 'FECHA_VENCIMIENTO_INICIAL')
+      DateTime? fechaExpiracionInicial,
+      @JsonKey(name: 'VENCIDO_JBM') String? vencidoJBM,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
 class __$$ClientePagoPendienteDTOImplCopyWithImpl<$Res>
-    extends
-        _$ClientePagoPendienteDTOCopyWithImpl<
-          $Res,
-          _$ClientePagoPendienteDTOImpl
-        >
+    extends _$ClientePagoPendienteDTOCopyWithImpl<$Res,
+        _$ClientePagoPendienteDTOImpl>
     implements _$$ClientePagoPendienteDTOImplCopyWith<$Res> {
   __$$ClientePagoPendienteDTOImplCopyWithImpl(
-    _$ClientePagoPendienteDTOImpl _value,
-    $Res Function(_$ClientePagoPendienteDTOImpl) _then,
-  ) : super(_value, _then);
+      _$ClientePagoPendienteDTOImpl _value,
+      $Res Function(_$ClientePagoPendienteDTOImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of ClientePagoPendienteDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -238,90 +213,76 @@ class __$$ClientePagoPendienteDTOImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$ClientePagoPendienteDTOImpl(
-        clienteId:
-            null == clienteId
-                ? _value.clienteId
-                : clienteId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        efectoId:
-            null == efectoId
-                ? _value.efectoId
-                : efectoId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        facutaId:
-            freezed == facutaId
-                ? _value.facutaId
-                : facutaId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        fechaFactura:
-            freezed == fechaFactura
-                ? _value.fechaFactura
-                : fechaFactura // ignore: cast_nullable_to_non_nullable
-                    as DateTime?,
-        fechaExpiracion:
-            freezed == fechaExpiracion
-                ? _value.fechaExpiracion
-                : fechaExpiracion // ignore: cast_nullable_to_non_nullable
-                    as DateTime?,
-        metodoDeCobroId:
-            freezed == metodoDeCobroId
-                ? _value.metodoDeCobroId
-                : metodoDeCobroId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        estadoCobroId:
-            freezed == estadoCobroId
-                ? _value.estadoCobroId
-                : estadoCobroId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        importe:
-            freezed == importe
-                ? _value.importe
-                : importe // ignore: cast_nullable_to_non_nullable
-                    as double?,
-        fechaExpiracionInicial:
-            freezed == fechaExpiracionInicial
-                ? _value.fechaExpiracionInicial
-                : fechaExpiracionInicial // ignore: cast_nullable_to_non_nullable
-                    as DateTime?,
-        vencidoJBM:
-            freezed == vencidoJBM
-                ? _value.vencidoJBM
-                : vencidoJBM // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        lastUpdated:
-            null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+    return _then(_$ClientePagoPendienteDTOImpl(
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      efectoId: null == efectoId
+          ? _value.efectoId
+          : efectoId // ignore: cast_nullable_to_non_nullable
+              as String,
+      facutaId: freezed == facutaId
+          ? _value.facutaId
+          : facutaId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fechaFactura: freezed == fechaFactura
+          ? _value.fechaFactura
+          : fechaFactura // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      fechaExpiracion: freezed == fechaExpiracion
+          ? _value.fechaExpiracion
+          : fechaExpiracion // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      metodoDeCobroId: freezed == metodoDeCobroId
+          ? _value.metodoDeCobroId
+          : metodoDeCobroId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      estadoCobroId: freezed == estadoCobroId
+          ? _value.estadoCobroId
+          : estadoCobroId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      importe: freezed == importe
+          ? _value.importe
+          : importe // ignore: cast_nullable_to_non_nullable
+              as double?,
+      fechaExpiracionInicial: freezed == fechaExpiracionInicial
+          ? _value.fechaExpiracionInicial
+          : fechaExpiracionInicial // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      vencidoJBM: freezed == vencidoJBM
+          ? _value.vencidoJBM
+          : vencidoJBM // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ClientePagoPendienteDTOImpl extends _ClientePagoPendienteDTO {
-  const _$ClientePagoPendienteDTOImpl({
-    @JsonKey(name: 'CLIENTE_ID') required this.clienteId,
-    @JsonKey(name: 'EFECTO_ID') required this.efectoId,
-    @JsonKey(name: 'FACTURA_ID') this.facutaId,
-    @JsonKey(name: 'FECHA_FACUTRA') this.fechaFactura,
-    @JsonKey(name: 'FECHA_VENCIMIENTO') this.fechaExpiracion,
-    @JsonKey(name: 'METODO_COBRO_ID') this.metodoDeCobroId,
-    @JsonKey(name: 'ESTADO_COBRO_ID') this.estadoCobroId,
-    @JsonKey(name: 'IMPORTE') this.importe,
-    @JsonKey(name: 'FECHA_VENCIMIENTO_INICIAL') this.fechaExpiracionInicial,
-    @JsonKey(name: 'VENCIDO_JBM') this.vencidoJBM,
-    @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-    @JsonKey(name: 'DELETED') this.deleted = 'N',
-  }) : super._();
+  const _$ClientePagoPendienteDTOImpl(
+      {@JsonKey(name: 'CLIENTE_ID') required this.clienteId,
+      @JsonKey(name: 'EFECTO_ID') required this.efectoId,
+      @JsonKey(name: 'FACTURA_ID') this.facutaId,
+      @JsonKey(name: 'FECHA_FACUTRA') this.fechaFactura,
+      @JsonKey(name: 'FECHA_VENCIMIENTO') this.fechaExpiracion,
+      @JsonKey(name: 'METODO_COBRO_ID') this.metodoDeCobroId,
+      @JsonKey(name: 'ESTADO_COBRO_ID') this.estadoCobroId,
+      @JsonKey(name: 'IMPORTE') this.importe,
+      @JsonKey(name: 'FECHA_VENCIMIENTO_INICIAL') this.fechaExpiracionInicial,
+      @JsonKey(name: 'VENCIDO_JBM') this.vencidoJBM,
+      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+      @JsonKey(name: 'DELETED') this.deleted = 'N'})
+      : super._();
 
   factory _$ClientePagoPendienteDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ClientePagoPendienteDTOImplFromJson(json);
@@ -400,20 +361,19 @@ class _$ClientePagoPendienteDTOImpl extends _ClientePagoPendienteDTO {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    clienteId,
-    efectoId,
-    facutaId,
-    fechaFactura,
-    fechaExpiracion,
-    metodoDeCobroId,
-    estadoCobroId,
-    importe,
-    fechaExpiracionInicial,
-    vencidoJBM,
-    lastUpdated,
-    deleted,
-  );
+      runtimeType,
+      clienteId,
+      efectoId,
+      facutaId,
+      fechaFactura,
+      fechaExpiracion,
+      metodoDeCobroId,
+      estadoCobroId,
+      importe,
+      fechaExpiracionInicial,
+      vencidoJBM,
+      lastUpdated,
+      deleted);
 
   /// Create a copy of ClientePagoPendienteDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -421,32 +381,33 @@ class _$ClientePagoPendienteDTOImpl extends _ClientePagoPendienteDTO {
   @override
   @pragma('vm:prefer-inline')
   _$$ClientePagoPendienteDTOImplCopyWith<_$ClientePagoPendienteDTOImpl>
-  get copyWith => __$$ClientePagoPendienteDTOImplCopyWithImpl<
-    _$ClientePagoPendienteDTOImpl
-  >(this, _$identity);
+      get copyWith => __$$ClientePagoPendienteDTOImplCopyWithImpl<
+          _$ClientePagoPendienteDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ClientePagoPendienteDTOImplToJson(this);
+    return _$$ClientePagoPendienteDTOImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _ClientePagoPendienteDTO extends ClientePagoPendienteDTO {
-  const factory _ClientePagoPendienteDTO({
-    @JsonKey(name: 'CLIENTE_ID') required final String clienteId,
-    @JsonKey(name: 'EFECTO_ID') required final String efectoId,
-    @JsonKey(name: 'FACTURA_ID') final String? facutaId,
-    @JsonKey(name: 'FECHA_FACUTRA') final DateTime? fechaFactura,
-    @JsonKey(name: 'FECHA_VENCIMIENTO') final DateTime? fechaExpiracion,
-    @JsonKey(name: 'METODO_COBRO_ID') final String? metodoDeCobroId,
-    @JsonKey(name: 'ESTADO_COBRO_ID') final String? estadoCobroId,
-    @JsonKey(name: 'IMPORTE') final double? importe,
-    @JsonKey(name: 'FECHA_VENCIMIENTO_INICIAL')
-    final DateTime? fechaExpiracionInicial,
-    @JsonKey(name: 'VENCIDO_JBM') final String? vencidoJBM,
-    @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') final String deleted,
-  }) = _$ClientePagoPendienteDTOImpl;
+  const factory _ClientePagoPendienteDTO(
+          {@JsonKey(name: 'CLIENTE_ID') required final String clienteId,
+          @JsonKey(name: 'EFECTO_ID') required final String efectoId,
+          @JsonKey(name: 'FACTURA_ID') final String? facutaId,
+          @JsonKey(name: 'FECHA_FACUTRA') final DateTime? fechaFactura,
+          @JsonKey(name: 'FECHA_VENCIMIENTO') final DateTime? fechaExpiracion,
+          @JsonKey(name: 'METODO_COBRO_ID') final String? metodoDeCobroId,
+          @JsonKey(name: 'ESTADO_COBRO_ID') final String? estadoCobroId,
+          @JsonKey(name: 'IMPORTE') final double? importe,
+          @JsonKey(name: 'FECHA_VENCIMIENTO_INICIAL')
+          final DateTime? fechaExpiracionInicial,
+          @JsonKey(name: 'VENCIDO_JBM') final String? vencidoJBM,
+          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+          @JsonKey(name: 'DELETED') final String deleted}) =
+      _$ClientePagoPendienteDTOImpl;
   const _ClientePagoPendienteDTO._() : super._();
 
   factory _ClientePagoPendienteDTO.fromJson(Map<String, dynamic> json) =
@@ -494,5 +455,5 @@ abstract class _ClientePagoPendienteDTO extends ClientePagoPendienteDTO {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClientePagoPendienteDTOImplCopyWith<_$ClientePagoPendienteDTOImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }

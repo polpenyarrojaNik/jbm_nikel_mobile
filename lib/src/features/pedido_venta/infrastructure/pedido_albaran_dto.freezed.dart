@@ -12,8 +12,7 @@ part of 'pedido_albaran_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 PedidoAlbaranDTO _$PedidoAlbaranDTOFromJson(Map<String, dynamic> json) {
   return _PedidoAlbaranDTO.fromJson(json);
@@ -53,21 +52,19 @@ mixin _$PedidoAlbaranDTO {
 /// @nodoc
 abstract class $PedidoAlbaranDTOCopyWith<$Res> {
   factory $PedidoAlbaranDTOCopyWith(
-    PedidoAlbaranDTO value,
-    $Res Function(PedidoAlbaranDTO) then,
-  ) = _$PedidoAlbaranDTOCopyWithImpl<$Res, PedidoAlbaranDTO>;
+          PedidoAlbaranDTO value, $Res Function(PedidoAlbaranDTO) then) =
+      _$PedidoAlbaranDTOCopyWithImpl<$Res, PedidoAlbaranDTO>;
   @useResult
-  $Res call({
-    @JsonKey(name: 'EMPRESA_ID') String empresaId,
-    @JsonKey(name: 'PEDIDO_ID') String pedidoVentaId,
-    @JsonKey(name: 'ALBARAN_ID') String albaranId,
-    @JsonKey(name: 'FECHA_ALBARAN') DateTime fechaAlbaran,
-    @JsonKey(name: 'AGENCIA') String? agencia,
-    @JsonKey(name: 'TRACK_ID') String? trackId,
-    @JsonKey(name: 'TRACKING_ESTADO') String? trackingEstadoId,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'EMPRESA_ID') String empresaId,
+      @JsonKey(name: 'PEDIDO_ID') String pedidoVentaId,
+      @JsonKey(name: 'ALBARAN_ID') String albaranId,
+      @JsonKey(name: 'FECHA_ALBARAN') DateTime fechaAlbaran,
+      @JsonKey(name: 'AGENCIA') String? agencia,
+      @JsonKey(name: 'TRACK_ID') String? trackId,
+      @JsonKey(name: 'TRACKING_ESTADO') String? trackingEstadoId,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
@@ -95,89 +92,74 @@ class _$PedidoAlbaranDTOCopyWithImpl<$Res, $Val extends PedidoAlbaranDTO>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            empresaId:
-                null == empresaId
-                    ? _value.empresaId
-                    : empresaId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            pedidoVentaId:
-                null == pedidoVentaId
-                    ? _value.pedidoVentaId
-                    : pedidoVentaId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            albaranId:
-                null == albaranId
-                    ? _value.albaranId
-                    : albaranId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            fechaAlbaran:
-                null == fechaAlbaran
-                    ? _value.fechaAlbaran
-                    : fechaAlbaran // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            agencia:
-                freezed == agencia
-                    ? _value.agencia
-                    : agencia // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            trackId:
-                freezed == trackId
-                    ? _value.trackId
-                    : trackId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            trackingEstadoId:
-                freezed == trackingEstadoId
-                    ? _value.trackingEstadoId
-                    : trackingEstadoId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            lastUpdated:
-                null == lastUpdated
-                    ? _value.lastUpdated
-                    : lastUpdated // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      empresaId: null == empresaId
+          ? _value.empresaId
+          : empresaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      pedidoVentaId: null == pedidoVentaId
+          ? _value.pedidoVentaId
+          : pedidoVentaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      albaranId: null == albaranId
+          ? _value.albaranId
+          : albaranId // ignore: cast_nullable_to_non_nullable
+              as String,
+      fechaAlbaran: null == fechaAlbaran
+          ? _value.fechaAlbaran
+          : fechaAlbaran // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      agencia: freezed == agencia
+          ? _value.agencia
+          : agencia // ignore: cast_nullable_to_non_nullable
+              as String?,
+      trackId: freezed == trackId
+          ? _value.trackId
+          : trackId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      trackingEstadoId: freezed == trackingEstadoId
+          ? _value.trackingEstadoId
+          : trackingEstadoId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$PedidoAlbaranDTOImplCopyWith<$Res>
     implements $PedidoAlbaranDTOCopyWith<$Res> {
-  factory _$$PedidoAlbaranDTOImplCopyWith(
-    _$PedidoAlbaranDTOImpl value,
-    $Res Function(_$PedidoAlbaranDTOImpl) then,
-  ) = __$$PedidoAlbaranDTOImplCopyWithImpl<$Res>;
+  factory _$$PedidoAlbaranDTOImplCopyWith(_$PedidoAlbaranDTOImpl value,
+          $Res Function(_$PedidoAlbaranDTOImpl) then) =
+      __$$PedidoAlbaranDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'EMPRESA_ID') String empresaId,
-    @JsonKey(name: 'PEDIDO_ID') String pedidoVentaId,
-    @JsonKey(name: 'ALBARAN_ID') String albaranId,
-    @JsonKey(name: 'FECHA_ALBARAN') DateTime fechaAlbaran,
-    @JsonKey(name: 'AGENCIA') String? agencia,
-    @JsonKey(name: 'TRACK_ID') String? trackId,
-    @JsonKey(name: 'TRACKING_ESTADO') String? trackingEstadoId,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'EMPRESA_ID') String empresaId,
+      @JsonKey(name: 'PEDIDO_ID') String pedidoVentaId,
+      @JsonKey(name: 'ALBARAN_ID') String albaranId,
+      @JsonKey(name: 'FECHA_ALBARAN') DateTime fechaAlbaran,
+      @JsonKey(name: 'AGENCIA') String? agencia,
+      @JsonKey(name: 'TRACK_ID') String? trackId,
+      @JsonKey(name: 'TRACKING_ESTADO') String? trackingEstadoId,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
 class __$$PedidoAlbaranDTOImplCopyWithImpl<$Res>
     extends _$PedidoAlbaranDTOCopyWithImpl<$Res, _$PedidoAlbaranDTOImpl>
     implements _$$PedidoAlbaranDTOImplCopyWith<$Res> {
-  __$$PedidoAlbaranDTOImplCopyWithImpl(
-    _$PedidoAlbaranDTOImpl _value,
-    $Res Function(_$PedidoAlbaranDTOImpl) _then,
-  ) : super(_value, _then);
+  __$$PedidoAlbaranDTOImplCopyWithImpl(_$PedidoAlbaranDTOImpl _value,
+      $Res Function(_$PedidoAlbaranDTOImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of PedidoAlbaranDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -194,72 +176,61 @@ class __$$PedidoAlbaranDTOImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$PedidoAlbaranDTOImpl(
-        empresaId:
-            null == empresaId
-                ? _value.empresaId
-                : empresaId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        pedidoVentaId:
-            null == pedidoVentaId
-                ? _value.pedidoVentaId
-                : pedidoVentaId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        albaranId:
-            null == albaranId
-                ? _value.albaranId
-                : albaranId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        fechaAlbaran:
-            null == fechaAlbaran
-                ? _value.fechaAlbaran
-                : fechaAlbaran // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        agencia:
-            freezed == agencia
-                ? _value.agencia
-                : agencia // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        trackId:
-            freezed == trackId
-                ? _value.trackId
-                : trackId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        trackingEstadoId:
-            freezed == trackingEstadoId
-                ? _value.trackingEstadoId
-                : trackingEstadoId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        lastUpdated:
-            null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+    return _then(_$PedidoAlbaranDTOImpl(
+      empresaId: null == empresaId
+          ? _value.empresaId
+          : empresaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      pedidoVentaId: null == pedidoVentaId
+          ? _value.pedidoVentaId
+          : pedidoVentaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      albaranId: null == albaranId
+          ? _value.albaranId
+          : albaranId // ignore: cast_nullable_to_non_nullable
+              as String,
+      fechaAlbaran: null == fechaAlbaran
+          ? _value.fechaAlbaran
+          : fechaAlbaran // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      agencia: freezed == agencia
+          ? _value.agencia
+          : agencia // ignore: cast_nullable_to_non_nullable
+              as String?,
+      trackId: freezed == trackId
+          ? _value.trackId
+          : trackId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      trackingEstadoId: freezed == trackingEstadoId
+          ? _value.trackingEstadoId
+          : trackingEstadoId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$PedidoAlbaranDTOImpl extends _PedidoAlbaranDTO {
-  const _$PedidoAlbaranDTOImpl({
-    @JsonKey(name: 'EMPRESA_ID') required this.empresaId,
-    @JsonKey(name: 'PEDIDO_ID') required this.pedidoVentaId,
-    @JsonKey(name: 'ALBARAN_ID') required this.albaranId,
-    @JsonKey(name: 'FECHA_ALBARAN') required this.fechaAlbaran,
-    @JsonKey(name: 'AGENCIA') this.agencia,
-    @JsonKey(name: 'TRACK_ID') this.trackId,
-    @JsonKey(name: 'TRACKING_ESTADO') this.trackingEstadoId,
-    @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-    @JsonKey(name: 'DELETED') required this.deleted,
-  }) : super._();
+  const _$PedidoAlbaranDTOImpl(
+      {@JsonKey(name: 'EMPRESA_ID') required this.empresaId,
+      @JsonKey(name: 'PEDIDO_ID') required this.pedidoVentaId,
+      @JsonKey(name: 'ALBARAN_ID') required this.albaranId,
+      @JsonKey(name: 'FECHA_ALBARAN') required this.fechaAlbaran,
+      @JsonKey(name: 'AGENCIA') this.agencia,
+      @JsonKey(name: 'TRACK_ID') this.trackId,
+      @JsonKey(name: 'TRACKING_ESTADO') this.trackingEstadoId,
+      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+      @JsonKey(name: 'DELETED') required this.deleted})
+      : super._();
 
   factory _$PedidoAlbaranDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$PedidoAlbaranDTOImplFromJson(json);
@@ -322,17 +293,16 @@ class _$PedidoAlbaranDTOImpl extends _PedidoAlbaranDTO {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    empresaId,
-    pedidoVentaId,
-    albaranId,
-    fechaAlbaran,
-    agencia,
-    trackId,
-    trackingEstadoId,
-    lastUpdated,
-    deleted,
-  );
+      runtimeType,
+      empresaId,
+      pedidoVentaId,
+      albaranId,
+      fechaAlbaran,
+      agencia,
+      trackId,
+      trackingEstadoId,
+      lastUpdated,
+      deleted);
 
   /// Create a copy of PedidoAlbaranDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -341,28 +311,28 @@ class _$PedidoAlbaranDTOImpl extends _PedidoAlbaranDTO {
   @pragma('vm:prefer-inline')
   _$$PedidoAlbaranDTOImplCopyWith<_$PedidoAlbaranDTOImpl> get copyWith =>
       __$$PedidoAlbaranDTOImplCopyWithImpl<_$PedidoAlbaranDTOImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PedidoAlbaranDTOImplToJson(this);
+    return _$$PedidoAlbaranDTOImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _PedidoAlbaranDTO extends PedidoAlbaranDTO {
-  const factory _PedidoAlbaranDTO({
-    @JsonKey(name: 'EMPRESA_ID') required final String empresaId,
-    @JsonKey(name: 'PEDIDO_ID') required final String pedidoVentaId,
-    @JsonKey(name: 'ALBARAN_ID') required final String albaranId,
-    @JsonKey(name: 'FECHA_ALBARAN') required final DateTime fechaAlbaran,
-    @JsonKey(name: 'AGENCIA') final String? agencia,
-    @JsonKey(name: 'TRACK_ID') final String? trackId,
-    @JsonKey(name: 'TRACKING_ESTADO') final String? trackingEstadoId,
-    @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') required final String deleted,
-  }) = _$PedidoAlbaranDTOImpl;
+  const factory _PedidoAlbaranDTO(
+          {@JsonKey(name: 'EMPRESA_ID') required final String empresaId,
+          @JsonKey(name: 'PEDIDO_ID') required final String pedidoVentaId,
+          @JsonKey(name: 'ALBARAN_ID') required final String albaranId,
+          @JsonKey(name: 'FECHA_ALBARAN') required final DateTime fechaAlbaran,
+          @JsonKey(name: 'AGENCIA') final String? agencia,
+          @JsonKey(name: 'TRACK_ID') final String? trackId,
+          @JsonKey(name: 'TRACKING_ESTADO') final String? trackingEstadoId,
+          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+          @JsonKey(name: 'DELETED') required final String deleted}) =
+      _$PedidoAlbaranDTOImpl;
   const _PedidoAlbaranDTO._() : super._();
 
   factory _PedidoAlbaranDTO.fromJson(Map<String, dynamic> json) =

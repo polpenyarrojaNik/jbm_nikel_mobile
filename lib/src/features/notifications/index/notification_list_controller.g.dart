@@ -12,21 +12,18 @@ String _$notificationIndexScreenControllerHash() =>
 /// See also [NotificationIndexScreenController].
 @ProviderFor(NotificationIndexScreenController)
 final notificationIndexScreenControllerProvider =
-    AutoDisposeAsyncNotifierProvider<
-      NotificationIndexScreenController,
-      List<NotificationList>
-    >.internal(
-      NotificationIndexScreenController.new,
-      name: r'notificationIndexScreenControllerProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$notificationIndexScreenControllerHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+    AutoDisposeAsyncNotifierProvider<NotificationIndexScreenController,
+        List<NotificationList>>.internal(
+  NotificationIndexScreenController.new,
+  name: r'notificationIndexScreenControllerProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$notificationIndexScreenControllerHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
-typedef _$NotificationIndexScreenController =
-    AutoDisposeAsyncNotifier<List<NotificationList>>;
+typedef _$NotificationIndexScreenController
+    = AutoDisposeAsyncNotifier<List<NotificationList>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

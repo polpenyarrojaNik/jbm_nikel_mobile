@@ -12,8 +12,7 @@ part of 'geolocation_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$GeolocationEntity {
@@ -34,18 +33,16 @@ mixin _$GeolocationEntity {
 /// @nodoc
 abstract class $GeolocationEntityCopyWith<$Res> {
   factory $GeolocationEntityCopyWith(
-    GeolocationEntity value,
-    $Res Function(GeolocationEntity) then,
-  ) = _$GeolocationEntityCopyWithImpl<$Res, GeolocationEntity>;
+          GeolocationEntity value, $Res Function(GeolocationEntity) then) =
+      _$GeolocationEntityCopyWithImpl<$Res, GeolocationEntity>;
   @useResult
-  $Res call({
-    String streetAddress1,
-    String? streetAddress2,
-    String? zipCode,
-    String? city,
-    Provincia? state,
-    Pais? country,
-  });
+  $Res call(
+      {String streetAddress1,
+      String? streetAddress2,
+      String? zipCode,
+      String? city,
+      Provincia? state,
+      Pais? country});
 
   $ProvinciaCopyWith<$Res>? get state;
   $PaisCopyWith<$Res>? get country;
@@ -73,41 +70,32 @@ class _$GeolocationEntityCopyWithImpl<$Res, $Val extends GeolocationEntity>
     Object? state = freezed,
     Object? country = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            streetAddress1:
-                null == streetAddress1
-                    ? _value.streetAddress1
-                    : streetAddress1 // ignore: cast_nullable_to_non_nullable
-                        as String,
-            streetAddress2:
-                freezed == streetAddress2
-                    ? _value.streetAddress2
-                    : streetAddress2 // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            zipCode:
-                freezed == zipCode
-                    ? _value.zipCode
-                    : zipCode // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            city:
-                freezed == city
-                    ? _value.city
-                    : city // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            state:
-                freezed == state
-                    ? _value.state
-                    : state // ignore: cast_nullable_to_non_nullable
-                        as Provincia?,
-            country:
-                freezed == country
-                    ? _value.country
-                    : country // ignore: cast_nullable_to_non_nullable
-                        as Pais?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      streetAddress1: null == streetAddress1
+          ? _value.streetAddress1
+          : streetAddress1 // ignore: cast_nullable_to_non_nullable
+              as String,
+      streetAddress2: freezed == streetAddress2
+          ? _value.streetAddress2
+          : streetAddress2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      zipCode: freezed == zipCode
+          ? _value.zipCode
+          : zipCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      city: freezed == city
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String?,
+      state: freezed == state
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as Provincia?,
+      country: freezed == country
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
+              as Pais?,
+    ) as $Val);
   }
 
   /// Create a copy of GeolocationEntity
@@ -142,20 +130,18 @@ class _$GeolocationEntityCopyWithImpl<$Res, $Val extends GeolocationEntity>
 /// @nodoc
 abstract class _$$GeolocationEntityImplCopyWith<$Res>
     implements $GeolocationEntityCopyWith<$Res> {
-  factory _$$GeolocationEntityImplCopyWith(
-    _$GeolocationEntityImpl value,
-    $Res Function(_$GeolocationEntityImpl) then,
-  ) = __$$GeolocationEntityImplCopyWithImpl<$Res>;
+  factory _$$GeolocationEntityImplCopyWith(_$GeolocationEntityImpl value,
+          $Res Function(_$GeolocationEntityImpl) then) =
+      __$$GeolocationEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String streetAddress1,
-    String? streetAddress2,
-    String? zipCode,
-    String? city,
-    Provincia? state,
-    Pais? country,
-  });
+  $Res call(
+      {String streetAddress1,
+      String? streetAddress2,
+      String? zipCode,
+      String? city,
+      Provincia? state,
+      Pais? country});
 
   @override
   $ProvinciaCopyWith<$Res>? get state;
@@ -167,10 +153,9 @@ abstract class _$$GeolocationEntityImplCopyWith<$Res>
 class __$$GeolocationEntityImplCopyWithImpl<$Res>
     extends _$GeolocationEntityCopyWithImpl<$Res, _$GeolocationEntityImpl>
     implements _$$GeolocationEntityImplCopyWith<$Res> {
-  __$$GeolocationEntityImplCopyWithImpl(
-    _$GeolocationEntityImpl _value,
-    $Res Function(_$GeolocationEntityImpl) _then,
-  ) : super(_value, _then);
+  __$$GeolocationEntityImplCopyWithImpl(_$GeolocationEntityImpl _value,
+      $Res Function(_$GeolocationEntityImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of GeolocationEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -184,54 +169,46 @@ class __$$GeolocationEntityImplCopyWithImpl<$Res>
     Object? state = freezed,
     Object? country = freezed,
   }) {
-    return _then(
-      _$GeolocationEntityImpl(
-        streetAddress1:
-            null == streetAddress1
-                ? _value.streetAddress1
-                : streetAddress1 // ignore: cast_nullable_to_non_nullable
-                    as String,
-        streetAddress2:
-            freezed == streetAddress2
-                ? _value.streetAddress2
-                : streetAddress2 // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        zipCode:
-            freezed == zipCode
-                ? _value.zipCode
-                : zipCode // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        city:
-            freezed == city
-                ? _value.city
-                : city // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        state:
-            freezed == state
-                ? _value.state
-                : state // ignore: cast_nullable_to_non_nullable
-                    as Provincia?,
-        country:
-            freezed == country
-                ? _value.country
-                : country // ignore: cast_nullable_to_non_nullable
-                    as Pais?,
-      ),
-    );
+    return _then(_$GeolocationEntityImpl(
+      streetAddress1: null == streetAddress1
+          ? _value.streetAddress1
+          : streetAddress1 // ignore: cast_nullable_to_non_nullable
+              as String,
+      streetAddress2: freezed == streetAddress2
+          ? _value.streetAddress2
+          : streetAddress2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      zipCode: freezed == zipCode
+          ? _value.zipCode
+          : zipCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      city: freezed == city
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String?,
+      state: freezed == state
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as Provincia?,
+      country: freezed == country
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
+              as Pais?,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$GeolocationEntityImpl extends _GeolocationEntity {
-  _$GeolocationEntityImpl({
-    required this.streetAddress1,
-    required this.streetAddress2,
-    required this.zipCode,
-    required this.city,
-    required this.state,
-    required this.country,
-  }) : super._();
+  _$GeolocationEntityImpl(
+      {required this.streetAddress1,
+      required this.streetAddress2,
+      required this.zipCode,
+      required this.city,
+      required this.state,
+      required this.country})
+      : super._();
 
   @override
   final String streetAddress1;
@@ -267,15 +244,8 @@ class _$GeolocationEntityImpl extends _GeolocationEntity {
   }
 
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    streetAddress1,
-    streetAddress2,
-    zipCode,
-    city,
-    state,
-    country,
-  );
+  int get hashCode => Object.hash(runtimeType, streetAddress1, streetAddress2,
+      zipCode, city, state, country);
 
   /// Create a copy of GeolocationEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -284,20 +254,17 @@ class _$GeolocationEntityImpl extends _GeolocationEntity {
   @pragma('vm:prefer-inline')
   _$$GeolocationEntityImplCopyWith<_$GeolocationEntityImpl> get copyWith =>
       __$$GeolocationEntityImplCopyWithImpl<_$GeolocationEntityImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 }
 
 abstract class _GeolocationEntity extends GeolocationEntity {
-  factory _GeolocationEntity({
-    required final String streetAddress1,
-    required final String? streetAddress2,
-    required final String? zipCode,
-    required final String? city,
-    required final Provincia? state,
-    required final Pais? country,
-  }) = _$GeolocationEntityImpl;
+  factory _GeolocationEntity(
+      {required final String streetAddress1,
+      required final String? streetAddress2,
+      required final String? zipCode,
+      required final String? city,
+      required final Provincia? state,
+      required final Pais? country}) = _$GeolocationEntityImpl;
   _GeolocationEntity._() : super._();
 
   @override

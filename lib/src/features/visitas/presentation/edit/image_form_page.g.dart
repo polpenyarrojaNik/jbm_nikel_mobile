@@ -34,7 +34,9 @@ abstract class _$ImageFormPageController
     extends BuildlessAutoDisposeAsyncNotifier<List<OcrRecognizedText>> {
   late final File imageFile;
 
-  FutureOr<List<OcrRecognizedText>> build(File imageFile);
+  FutureOr<List<OcrRecognizedText>> build(
+    File imageFile,
+  );
 }
 
 /// See also [ImageFormPageController].
@@ -48,15 +50,21 @@ class ImageFormPageControllerFamily
   const ImageFormPageControllerFamily();
 
   /// See also [ImageFormPageController].
-  ImageFormPageControllerProvider call(File imageFile) {
-    return ImageFormPageControllerProvider(imageFile);
+  ImageFormPageControllerProvider call(
+    File imageFile,
+  ) {
+    return ImageFormPageControllerProvider(
+      imageFile,
+    );
   }
 
   @override
   ImageFormPageControllerProvider getProviderOverride(
     covariant ImageFormPageControllerProvider provider,
   ) {
-    return call(provider.imageFile);
+    return call(
+      provider.imageFile,
+    );
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -76,26 +84,24 @@ class ImageFormPageControllerFamily
 
 /// See also [ImageFormPageController].
 class ImageFormPageControllerProvider
-    extends
-        AutoDisposeAsyncNotifierProviderImpl<
-          ImageFormPageController,
-          List<OcrRecognizedText>
-        > {
+    extends AutoDisposeAsyncNotifierProviderImpl<ImageFormPageController,
+        List<OcrRecognizedText>> {
   /// See also [ImageFormPageController].
-  ImageFormPageControllerProvider(File imageFile)
-    : this._internal(
-        () => ImageFormPageController()..imageFile = imageFile,
-        from: imageFormPageControllerProvider,
-        name: r'imageFormPageControllerProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$imageFormPageControllerHash,
-        dependencies: ImageFormPageControllerFamily._dependencies,
-        allTransitiveDependencies:
-            ImageFormPageControllerFamily._allTransitiveDependencies,
-        imageFile: imageFile,
-      );
+  ImageFormPageControllerProvider(
+    File imageFile,
+  ) : this._internal(
+          () => ImageFormPageController()..imageFile = imageFile,
+          from: imageFormPageControllerProvider,
+          name: r'imageFormPageControllerProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$imageFormPageControllerHash,
+          dependencies: ImageFormPageControllerFamily._dependencies,
+          allTransitiveDependencies:
+              ImageFormPageControllerFamily._allTransitiveDependencies,
+          imageFile: imageFile,
+        );
 
   ImageFormPageControllerProvider._internal(
     super._createNotifier, {
@@ -113,7 +119,9 @@ class ImageFormPageControllerProvider
   FutureOr<List<OcrRecognizedText>> runNotifierBuild(
     covariant ImageFormPageController notifier,
   ) {
-    return notifier.build(imageFile);
+    return notifier.build(
+      imageFile,
+    );
   }
 
   @override
@@ -133,11 +141,8 @@ class ImageFormPageControllerProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
-    ImageFormPageController,
-    List<OcrRecognizedText>
-  >
-  createElement() {
+  AutoDisposeAsyncNotifierProviderElement<ImageFormPageController,
+      List<OcrRecognizedText>> createElement() {
     return _ImageFormPageControllerProviderElement(this);
   }
 
@@ -165,12 +170,8 @@ mixin ImageFormPageControllerRef
 }
 
 class _ImageFormPageControllerProviderElement
-    extends
-        AutoDisposeAsyncNotifierProviderElement<
-          ImageFormPageController,
-          List<OcrRecognizedText>
-        >
-    with ImageFormPageControllerRef {
+    extends AutoDisposeAsyncNotifierProviderElement<ImageFormPageController,
+        List<OcrRecognizedText>> with ImageFormPageControllerRef {
   _ImageFormPageControllerProviderElement(super.provider);
 
   @override
@@ -196,30 +197,26 @@ extension ImageFormPageControllerMutationExtension
 // Could have extras in the future when @mutationKey gets added. for now identical to the class one.
 typedef _SetImageFromDataFamilyParameters = (File imageFile,);
 
-final _setImageFromDataProvider = Provider.autoDispose.family((
-  ref,
-  _SetImageFromDataFamilyParameters _params,
-) {
-  final notifier = ref.watch(
-    imageFormPageControllerProvider(_params.$1).notifier,
-  );
+final _setImageFromDataProvider = Provider.autoDispose.family(
+    (ref, _SetImageFromDataFamilyParameters _params) {
+  final notifier = ref.watch(imageFormPageControllerProvider(
+    _params.$1,
+  ).notifier);
   return SetImageFromDataMutation(
     (newState) => ref.state = newState,
     notifier.setImageFromData,
   );
 }, dependencies: [imageFormPageControllerProvider]);
 
-typedef SetImageFromDataSignature =
-    Future<ImageFormData> Function(
-      String? name,
-      String? company,
-      String? cargo,
-      List<String> address,
-      String? email,
-      List<String> phoneList,
-    );
-typedef SetImageFromDataStateSetter =
-    void Function(SetImageFromDataMutation newState);
+typedef SetImageFromDataSignature = Future<ImageFormData> Function(
+    String? name,
+    String? company,
+    String? cargo,
+    List<String> address,
+    String? email,
+    List<String> phoneList);
+typedef SetImageFromDataStateSetter = void Function(
+    SetImageFromDataMutation newState);
 
 sealed class SetImageFromDataMutation
     with AsyncMutation, MutationResult<ImageFormData> {
@@ -236,22 +233,15 @@ sealed class SetImageFromDataMutation
   Object? get error;
   StackTrace? get stackTrace;
 
-  Future<void> call(
-    String? name,
-    String? company,
-    String? cargo,
-    List<String> address,
-    String? email,
-    List<String> phoneList,
-  ) async {
+  Future<void> call(String? name, String? company, String? cargo,
+      List<String> address, String? email, List<String> phoneList) async {
     try {
       _updateState(SetImageFromDataMutationLoading.from(this));
       final res = await _fn(name, company, cargo, address, email, phoneList);
       _updateState(SetImageFromDataMutationSuccess.from(this, res));
     } catch (e, s) {
       _updateState(
-        SetImageFromDataMutationFailure.from(this, error: e, stackTrace: s),
-      );
+          SetImageFromDataMutationFailure.from(this, error: e, stackTrace: s));
     }
   }
 }
@@ -297,14 +287,14 @@ final class SetImageFromDataMutationLoading extends SetImageFromDataMutation
   }) : super._();
 
   factory SetImageFromDataMutationLoading.from(
-    SetImageFromDataMutation other,
-  ) => SetImageFromDataMutationLoading._(
-    other._updateState,
-    other._fn,
-    error: other.error,
-    stackTrace: other.stackTrace,
-    result: other.result,
-  );
+          SetImageFromDataMutation other) =>
+      SetImageFromDataMutationLoading._(
+        other._updateState,
+        other._fn,
+        error: other.error,
+        stackTrace: other.stackTrace,
+        result: other.result,
+      );
 
   @override
   final Object? error;
@@ -328,15 +318,14 @@ final class SetImageFromDataMutationSuccess extends SetImageFromDataMutation
   }) : super._();
 
   factory SetImageFromDataMutationSuccess.from(
-    SetImageFromDataMutation other,
-    ImageFormData result,
-  ) => SetImageFromDataMutationSuccess._(
-    other._updateState,
-    other._fn,
-    error: other.error,
-    stackTrace: other.stackTrace,
-    result: result,
-  );
+          SetImageFromDataMutation other, ImageFormData result) =>
+      SetImageFromDataMutationSuccess._(
+        other._updateState,
+        other._fn,
+        error: other.error,
+        stackTrace: other.stackTrace,
+        result: result,
+      );
 
   @override
   final Object? error;
@@ -362,13 +351,14 @@ final class SetImageFromDataMutationFailure extends SetImageFromDataMutation
     SetImageFromDataMutation other, {
     required Object error,
     required StackTrace stackTrace,
-  }) => SetImageFromDataMutationFailure._(
-    other._updateState,
-    other._fn,
-    error: error,
-    stackTrace: stackTrace,
-    result: other.result,
-  );
+  }) =>
+      SetImageFromDataMutationFailure._(
+        other._updateState,
+        other._fn,
+        error: error,
+        stackTrace: stackTrace,
+        result: other.result,
+      );
 
   @override
   final Object error;

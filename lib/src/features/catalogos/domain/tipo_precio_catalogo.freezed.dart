@@ -12,8 +12,7 @@ part of 'tipo_precio_catalogo.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$TipoPrecioCatalogo {
@@ -30,9 +29,8 @@ mixin _$TipoPrecioCatalogo {
 /// @nodoc
 abstract class $TipoPrecioCatalogoCopyWith<$Res> {
   factory $TipoPrecioCatalogoCopyWith(
-    TipoPrecioCatalogo value,
-    $Res Function(TipoPrecioCatalogo) then,
-  ) = _$TipoPrecioCatalogoCopyWithImpl<$Res, TipoPrecioCatalogo>;
+          TipoPrecioCatalogo value, $Res Function(TipoPrecioCatalogo) then) =
+      _$TipoPrecioCatalogoCopyWithImpl<$Res, TipoPrecioCatalogo>;
   @useResult
   $Res call({String tipoPrecioCatalogoId, String descripcion});
 }
@@ -51,32 +49,29 @@ class _$TipoPrecioCatalogoCopyWithImpl<$Res, $Val extends TipoPrecioCatalogo>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? tipoPrecioCatalogoId = null, Object? descripcion = null}) {
-    return _then(
-      _value.copyWith(
-            tipoPrecioCatalogoId:
-                null == tipoPrecioCatalogoId
-                    ? _value.tipoPrecioCatalogoId
-                    : tipoPrecioCatalogoId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            descripcion:
-                null == descripcion
-                    ? _value.descripcion
-                    : descripcion // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? tipoPrecioCatalogoId = null,
+    Object? descripcion = null,
+  }) {
+    return _then(_value.copyWith(
+      tipoPrecioCatalogoId: null == tipoPrecioCatalogoId
+          ? _value.tipoPrecioCatalogoId
+          : tipoPrecioCatalogoId // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcion: null == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$TipoPrecioCatalogoImplCopyWith<$Res>
     implements $TipoPrecioCatalogoCopyWith<$Res> {
-  factory _$$TipoPrecioCatalogoImplCopyWith(
-    _$TipoPrecioCatalogoImpl value,
-    $Res Function(_$TipoPrecioCatalogoImpl) then,
-  ) = __$$TipoPrecioCatalogoImplCopyWithImpl<$Res>;
+  factory _$$TipoPrecioCatalogoImplCopyWith(_$TipoPrecioCatalogoImpl value,
+          $Res Function(_$TipoPrecioCatalogoImpl) then) =
+      __$$TipoPrecioCatalogoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String tipoPrecioCatalogoId, String descripcion});
@@ -86,40 +81,37 @@ abstract class _$$TipoPrecioCatalogoImplCopyWith<$Res>
 class __$$TipoPrecioCatalogoImplCopyWithImpl<$Res>
     extends _$TipoPrecioCatalogoCopyWithImpl<$Res, _$TipoPrecioCatalogoImpl>
     implements _$$TipoPrecioCatalogoImplCopyWith<$Res> {
-  __$$TipoPrecioCatalogoImplCopyWithImpl(
-    _$TipoPrecioCatalogoImpl _value,
-    $Res Function(_$TipoPrecioCatalogoImpl) _then,
-  ) : super(_value, _then);
+  __$$TipoPrecioCatalogoImplCopyWithImpl(_$TipoPrecioCatalogoImpl _value,
+      $Res Function(_$TipoPrecioCatalogoImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of TipoPrecioCatalogo
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? tipoPrecioCatalogoId = null, Object? descripcion = null}) {
-    return _then(
-      _$TipoPrecioCatalogoImpl(
-        tipoPrecioCatalogoId:
-            null == tipoPrecioCatalogoId
-                ? _value.tipoPrecioCatalogoId
-                : tipoPrecioCatalogoId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        descripcion:
-            null == descripcion
-                ? _value.descripcion
-                : descripcion // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? tipoPrecioCatalogoId = null,
+    Object? descripcion = null,
+  }) {
+    return _then(_$TipoPrecioCatalogoImpl(
+      tipoPrecioCatalogoId: null == tipoPrecioCatalogoId
+          ? _value.tipoPrecioCatalogoId
+          : tipoPrecioCatalogoId // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcion: null == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$TipoPrecioCatalogoImpl extends _TipoPrecioCatalogo {
-  const _$TipoPrecioCatalogoImpl({
-    required this.tipoPrecioCatalogoId,
-    required this.descripcion,
-  }) : super._();
+  const _$TipoPrecioCatalogoImpl(
+      {required this.tipoPrecioCatalogoId, required this.descripcion})
+      : super._();
 
   @override
   final String tipoPrecioCatalogoId;
@@ -153,16 +145,13 @@ class _$TipoPrecioCatalogoImpl extends _TipoPrecioCatalogo {
   @pragma('vm:prefer-inline')
   _$$TipoPrecioCatalogoImplCopyWith<_$TipoPrecioCatalogoImpl> get copyWith =>
       __$$TipoPrecioCatalogoImplCopyWithImpl<_$TipoPrecioCatalogoImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 }
 
 abstract class _TipoPrecioCatalogo extends TipoPrecioCatalogo {
-  const factory _TipoPrecioCatalogo({
-    required final String tipoPrecioCatalogoId,
-    required final String descripcion,
-  }) = _$TipoPrecioCatalogoImpl;
+  const factory _TipoPrecioCatalogo(
+      {required final String tipoPrecioCatalogoId,
+      required final String descripcion}) = _$TipoPrecioCatalogoImpl;
   const _TipoPrecioCatalogo._() : super._();
 
   @override

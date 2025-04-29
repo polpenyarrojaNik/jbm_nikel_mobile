@@ -12,8 +12,7 @@ part of 'devolucion_linea.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$DevolucionLinea {
@@ -39,23 +38,21 @@ mixin _$DevolucionLinea {
 /// @nodoc
 abstract class $DevolucionLineaCopyWith<$Res> {
   factory $DevolucionLineaCopyWith(
-    DevolucionLinea value,
-    $Res Function(DevolucionLinea) then,
-  ) = _$DevolucionLineaCopyWithImpl<$Res, DevolucionLinea>;
+          DevolucionLinea value, $Res Function(DevolucionLinea) then) =
+      _$DevolucionLineaCopyWithImpl<$Res, DevolucionLinea>;
   @useResult
-  $Res call({
-    String empresaId,
-    String devolucionId,
-    String articuloId,
-    String articuloDescription,
-    double? cantidadDevolucion,
-    double? cantidadRecibida,
-    DevolucionMotivo? devolucionMotivo,
-    DevolucionEstado? devolucionEstado,
-    String? observaciones,
-    DateTime lastUpdated,
-    bool deleted,
-  });
+  $Res call(
+      {String empresaId,
+      String devolucionId,
+      String articuloId,
+      String articuloDescription,
+      double? cantidadDevolucion,
+      double? cantidadRecibida,
+      DevolucionMotivo? devolucionMotivo,
+      DevolucionEstado? devolucionEstado,
+      String? observaciones,
+      DateTime lastUpdated,
+      bool deleted});
 
   $DevolucionMotivoCopyWith<$Res>? get devolucionMotivo;
   $DevolucionEstadoCopyWith<$Res>? get devolucionEstado;
@@ -88,66 +85,52 @@ class _$DevolucionLineaCopyWithImpl<$Res, $Val extends DevolucionLinea>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            empresaId:
-                null == empresaId
-                    ? _value.empresaId
-                    : empresaId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            devolucionId:
-                null == devolucionId
-                    ? _value.devolucionId
-                    : devolucionId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            articuloId:
-                null == articuloId
-                    ? _value.articuloId
-                    : articuloId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            articuloDescription:
-                null == articuloDescription
-                    ? _value.articuloDescription
-                    : articuloDescription // ignore: cast_nullable_to_non_nullable
-                        as String,
-            cantidadDevolucion:
-                freezed == cantidadDevolucion
-                    ? _value.cantidadDevolucion
-                    : cantidadDevolucion // ignore: cast_nullable_to_non_nullable
-                        as double?,
-            cantidadRecibida:
-                freezed == cantidadRecibida
-                    ? _value.cantidadRecibida
-                    : cantidadRecibida // ignore: cast_nullable_to_non_nullable
-                        as double?,
-            devolucionMotivo:
-                freezed == devolucionMotivo
-                    ? _value.devolucionMotivo
-                    : devolucionMotivo // ignore: cast_nullable_to_non_nullable
-                        as DevolucionMotivo?,
-            devolucionEstado:
-                freezed == devolucionEstado
-                    ? _value.devolucionEstado
-                    : devolucionEstado // ignore: cast_nullable_to_non_nullable
-                        as DevolucionEstado?,
-            observaciones:
-                freezed == observaciones
-                    ? _value.observaciones
-                    : observaciones // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            lastUpdated:
-                null == lastUpdated
-                    ? _value.lastUpdated
-                    : lastUpdated // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as bool,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      empresaId: null == empresaId
+          ? _value.empresaId
+          : empresaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      devolucionId: null == devolucionId
+          ? _value.devolucionId
+          : devolucionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      articuloDescription: null == articuloDescription
+          ? _value.articuloDescription
+          : articuloDescription // ignore: cast_nullable_to_non_nullable
+              as String,
+      cantidadDevolucion: freezed == cantidadDevolucion
+          ? _value.cantidadDevolucion
+          : cantidadDevolucion // ignore: cast_nullable_to_non_nullable
+              as double?,
+      cantidadRecibida: freezed == cantidadRecibida
+          ? _value.cantidadRecibida
+          : cantidadRecibida // ignore: cast_nullable_to_non_nullable
+              as double?,
+      devolucionMotivo: freezed == devolucionMotivo
+          ? _value.devolucionMotivo
+          : devolucionMotivo // ignore: cast_nullable_to_non_nullable
+              as DevolucionMotivo?,
+      devolucionEstado: freezed == devolucionEstado
+          ? _value.devolucionEstado
+          : devolucionEstado // ignore: cast_nullable_to_non_nullable
+              as DevolucionEstado?,
+      observaciones: freezed == observaciones
+          ? _value.observaciones
+          : observaciones // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
   }
 
   /// Create a copy of DevolucionLinea
@@ -182,25 +165,23 @@ class _$DevolucionLineaCopyWithImpl<$Res, $Val extends DevolucionLinea>
 /// @nodoc
 abstract class _$$DevolucionLineaImplCopyWith<$Res>
     implements $DevolucionLineaCopyWith<$Res> {
-  factory _$$DevolucionLineaImplCopyWith(
-    _$DevolucionLineaImpl value,
-    $Res Function(_$DevolucionLineaImpl) then,
-  ) = __$$DevolucionLineaImplCopyWithImpl<$Res>;
+  factory _$$DevolucionLineaImplCopyWith(_$DevolucionLineaImpl value,
+          $Res Function(_$DevolucionLineaImpl) then) =
+      __$$DevolucionLineaImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String empresaId,
-    String devolucionId,
-    String articuloId,
-    String articuloDescription,
-    double? cantidadDevolucion,
-    double? cantidadRecibida,
-    DevolucionMotivo? devolucionMotivo,
-    DevolucionEstado? devolucionEstado,
-    String? observaciones,
-    DateTime lastUpdated,
-    bool deleted,
-  });
+  $Res call(
+      {String empresaId,
+      String devolucionId,
+      String articuloId,
+      String articuloDescription,
+      double? cantidadDevolucion,
+      double? cantidadRecibida,
+      DevolucionMotivo? devolucionMotivo,
+      DevolucionEstado? devolucionEstado,
+      String? observaciones,
+      DateTime lastUpdated,
+      bool deleted});
 
   @override
   $DevolucionMotivoCopyWith<$Res>? get devolucionMotivo;
@@ -213,9 +194,8 @@ class __$$DevolucionLineaImplCopyWithImpl<$Res>
     extends _$DevolucionLineaCopyWithImpl<$Res, _$DevolucionLineaImpl>
     implements _$$DevolucionLineaImplCopyWith<$Res> {
   __$$DevolucionLineaImplCopyWithImpl(
-    _$DevolucionLineaImpl _value,
-    $Res Function(_$DevolucionLineaImpl) _then,
-  ) : super(_value, _then);
+      _$DevolucionLineaImpl _value, $Res Function(_$DevolucionLineaImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of DevolucionLinea
   /// with the given fields replaced by the non-null parameter values.
@@ -234,84 +214,71 @@ class __$$DevolucionLineaImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$DevolucionLineaImpl(
-        empresaId:
-            null == empresaId
-                ? _value.empresaId
-                : empresaId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        devolucionId:
-            null == devolucionId
-                ? _value.devolucionId
-                : devolucionId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        articuloId:
-            null == articuloId
-                ? _value.articuloId
-                : articuloId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        articuloDescription:
-            null == articuloDescription
-                ? _value.articuloDescription
-                : articuloDescription // ignore: cast_nullable_to_non_nullable
-                    as String,
-        cantidadDevolucion:
-            freezed == cantidadDevolucion
-                ? _value.cantidadDevolucion
-                : cantidadDevolucion // ignore: cast_nullable_to_non_nullable
-                    as double?,
-        cantidadRecibida:
-            freezed == cantidadRecibida
-                ? _value.cantidadRecibida
-                : cantidadRecibida // ignore: cast_nullable_to_non_nullable
-                    as double?,
-        devolucionMotivo:
-            freezed == devolucionMotivo
-                ? _value.devolucionMotivo
-                : devolucionMotivo // ignore: cast_nullable_to_non_nullable
-                    as DevolucionMotivo?,
-        devolucionEstado:
-            freezed == devolucionEstado
-                ? _value.devolucionEstado
-                : devolucionEstado // ignore: cast_nullable_to_non_nullable
-                    as DevolucionEstado?,
-        observaciones:
-            freezed == observaciones
-                ? _value.observaciones
-                : observaciones // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        lastUpdated:
-            null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as bool,
-      ),
-    );
+    return _then(_$DevolucionLineaImpl(
+      empresaId: null == empresaId
+          ? _value.empresaId
+          : empresaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      devolucionId: null == devolucionId
+          ? _value.devolucionId
+          : devolucionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      articuloDescription: null == articuloDescription
+          ? _value.articuloDescription
+          : articuloDescription // ignore: cast_nullable_to_non_nullable
+              as String,
+      cantidadDevolucion: freezed == cantidadDevolucion
+          ? _value.cantidadDevolucion
+          : cantidadDevolucion // ignore: cast_nullable_to_non_nullable
+              as double?,
+      cantidadRecibida: freezed == cantidadRecibida
+          ? _value.cantidadRecibida
+          : cantidadRecibida // ignore: cast_nullable_to_non_nullable
+              as double?,
+      devolucionMotivo: freezed == devolucionMotivo
+          ? _value.devolucionMotivo
+          : devolucionMotivo // ignore: cast_nullable_to_non_nullable
+              as DevolucionMotivo?,
+      devolucionEstado: freezed == devolucionEstado
+          ? _value.devolucionEstado
+          : devolucionEstado // ignore: cast_nullable_to_non_nullable
+              as DevolucionEstado?,
+      observaciones: freezed == observaciones
+          ? _value.observaciones
+          : observaciones // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$DevolucionLineaImpl extends _DevolucionLinea {
-  const _$DevolucionLineaImpl({
-    required this.empresaId,
-    required this.devolucionId,
-    required this.articuloId,
-    required this.articuloDescription,
-    this.cantidadDevolucion,
-    this.cantidadRecibida,
-    this.devolucionMotivo,
-    this.devolucionEstado,
-    this.observaciones,
-    required this.lastUpdated,
-    required this.deleted,
-  }) : super._();
+  const _$DevolucionLineaImpl(
+      {required this.empresaId,
+      required this.devolucionId,
+      required this.articuloId,
+      required this.articuloDescription,
+      this.cantidadDevolucion,
+      this.cantidadRecibida,
+      this.devolucionMotivo,
+      this.devolucionEstado,
+      this.observaciones,
+      required this.lastUpdated,
+      required this.deleted})
+      : super._();
 
   @override
   final String empresaId;
@@ -371,19 +338,18 @@ class _$DevolucionLineaImpl extends _DevolucionLinea {
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    empresaId,
-    devolucionId,
-    articuloId,
-    articuloDescription,
-    cantidadDevolucion,
-    cantidadRecibida,
-    devolucionMotivo,
-    devolucionEstado,
-    observaciones,
-    lastUpdated,
-    deleted,
-  );
+      runtimeType,
+      empresaId,
+      devolucionId,
+      articuloId,
+      articuloDescription,
+      cantidadDevolucion,
+      cantidadRecibida,
+      devolucionMotivo,
+      devolucionEstado,
+      observaciones,
+      lastUpdated,
+      deleted);
 
   /// Create a copy of DevolucionLinea
   /// with the given fields replaced by the non-null parameter values.
@@ -392,25 +358,22 @@ class _$DevolucionLineaImpl extends _DevolucionLinea {
   @pragma('vm:prefer-inline')
   _$$DevolucionLineaImplCopyWith<_$DevolucionLineaImpl> get copyWith =>
       __$$DevolucionLineaImplCopyWithImpl<_$DevolucionLineaImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 }
 
 abstract class _DevolucionLinea extends DevolucionLinea {
-  const factory _DevolucionLinea({
-    required final String empresaId,
-    required final String devolucionId,
-    required final String articuloId,
-    required final String articuloDescription,
-    final double? cantidadDevolucion,
-    final double? cantidadRecibida,
-    final DevolucionMotivo? devolucionMotivo,
-    final DevolucionEstado? devolucionEstado,
-    final String? observaciones,
-    required final DateTime lastUpdated,
-    required final bool deleted,
-  }) = _$DevolucionLineaImpl;
+  const factory _DevolucionLinea(
+      {required final String empresaId,
+      required final String devolucionId,
+      required final String articuloId,
+      required final String articuloDescription,
+      final double? cantidadDevolucion,
+      final double? cantidadRecibida,
+      final DevolucionMotivo? devolucionMotivo,
+      final DevolucionEstado? devolucionEstado,
+      final String? observaciones,
+      required final DateTime lastUpdated,
+      required final bool deleted}) = _$DevolucionLineaImpl;
   const _DevolucionLinea._() : super._();
 
   @override

@@ -12,8 +12,7 @@ part of 'pedido_venta_edit_page_controller.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$PedidoVentaEditPageControllerState {
@@ -21,102 +20,99 @@ mixin _$PedidoVentaEditPageControllerState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-    )
-    data,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)
+        data,
     required TResult Function(Object error, StackTrace? stackTrace) error,
     required TResult Function() deleted,
     required TResult Function(String pedidoVentaAppId, bool isBorrador) saved,
     required TResult Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-      Object error,
-      StackTrace? stackTrace,
-    )
-    savedError,
-  }) => throw _privateConstructorUsedError;
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador,
+            Object error,
+            StackTrace? stackTrace)
+        savedError,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-    )?
-    data,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)?
+        data,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
     TResult? Function()? deleted,
     TResult? Function(String pedidoVentaAppId, bool isBorrador)? saved,
     TResult? Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-      Object error,
-      StackTrace? stackTrace,
-    )?
-    savedError,
-  }) => throw _privateConstructorUsedError;
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador,
+            Object error,
+            StackTrace? stackTrace)?
+        savedError,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-    )?
-    data,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)?
+        data,
     TResult Function(Object error, StackTrace? stackTrace)? error,
     TResult Function()? deleted,
     TResult Function(String pedidoVentaAppId, bool isBorrador)? saved,
     TResult Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-      Object error,
-      StackTrace? stackTrace,
-    )?
-    savedError,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador,
+            Object error,
+            StackTrace? stackTrace)?
+        savedError,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_loading value) loading,
@@ -125,7 +121,8 @@ mixin _$PedidoVentaEditPageControllerState {
     required TResult Function(_deleted value) deleted,
     required TResult Function(_saved value) saved,
     required TResult Function(_savedError value) savedError,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_loading value)? loading,
@@ -134,7 +131,8 @@ mixin _$PedidoVentaEditPageControllerState {
     TResult? Function(_deleted value)? deleted,
     TResult? Function(_saved value)? saved,
     TResult? Function(_savedError value)? savedError,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_loading value)? loading,
@@ -144,26 +142,22 @@ mixin _$PedidoVentaEditPageControllerState {
     TResult Function(_saved value)? saved,
     TResult Function(_savedError value)? savedError,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $PedidoVentaEditPageControllerStateCopyWith<$Res> {
   factory $PedidoVentaEditPageControllerStateCopyWith(
-    PedidoVentaEditPageControllerState value,
-    $Res Function(PedidoVentaEditPageControllerState) then,
-  ) =
-      _$PedidoVentaEditPageControllerStateCopyWithImpl<
-        $Res,
-        PedidoVentaEditPageControllerState
-      >;
+          PedidoVentaEditPageControllerState value,
+          $Res Function(PedidoVentaEditPageControllerState) then) =
+      _$PedidoVentaEditPageControllerStateCopyWithImpl<$Res,
+          PedidoVentaEditPageControllerState>;
 }
 
 /// @nodoc
-class _$PedidoVentaEditPageControllerStateCopyWithImpl<
-  $Res,
-  $Val extends PedidoVentaEditPageControllerState
->
+class _$PedidoVentaEditPageControllerStateCopyWithImpl<$Res,
+        $Val extends PedidoVentaEditPageControllerState>
     implements $PedidoVentaEditPageControllerStateCopyWith<$Res> {
   _$PedidoVentaEditPageControllerStateCopyWithImpl(this._value, this._then);
 
@@ -179,20 +173,17 @@ class _$PedidoVentaEditPageControllerStateCopyWithImpl<
 /// @nodoc
 abstract class _$$loadingImplCopyWith<$Res> {
   factory _$$loadingImplCopyWith(
-    _$loadingImpl value,
-    $Res Function(_$loadingImpl) then,
-  ) = __$$loadingImplCopyWithImpl<$Res>;
+          _$loadingImpl value, $Res Function(_$loadingImpl) then) =
+      __$$loadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$loadingImplCopyWithImpl<$Res>
-    extends
-        _$PedidoVentaEditPageControllerStateCopyWithImpl<$Res, _$loadingImpl>
-    implements _$$loadingImplCopyWith<$Res> {
+    extends _$PedidoVentaEditPageControllerStateCopyWithImpl<$Res,
+        _$loadingImpl> implements _$$loadingImplCopyWith<$Res> {
   __$$loadingImplCopyWithImpl(
-    _$loadingImpl _value,
-    $Res Function(_$loadingImpl) _then,
-  ) : super(_value, _then);
+      _$loadingImpl _value, $Res Function(_$loadingImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of PedidoVentaEditPageControllerState
   /// with the given fields replaced by the non-null parameter values.
@@ -222,34 +213,32 @@ class _$loadingImpl extends _loading {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-    )
-    data,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)
+        data,
     required TResult Function(Object error, StackTrace? stackTrace) error,
     required TResult Function() deleted,
     required TResult Function(String pedidoVentaAppId, bool isBorrador) saved,
     required TResult Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-      Object error,
-      StackTrace? stackTrace,
-    )
-    savedError,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador,
+            Object error,
+            StackTrace? stackTrace)
+        savedError,
   }) {
     return loading();
   }
@@ -259,34 +248,32 @@ class _$loadingImpl extends _loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-    )?
-    data,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)?
+        data,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
     TResult? Function()? deleted,
     TResult? Function(String pedidoVentaAppId, bool isBorrador)? saved,
     TResult? Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-      Object error,
-      StackTrace? stackTrace,
-    )?
-    savedError,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador,
+            Object error,
+            StackTrace? stackTrace)?
+        savedError,
   }) {
     return loading?.call();
   }
@@ -296,34 +283,32 @@ class _$loadingImpl extends _loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-    )?
-    data,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)?
+        data,
     TResult Function(Object error, StackTrace? stackTrace)? error,
     TResult Function()? deleted,
     TResult Function(String pedidoVentaAppId, bool isBorrador)? saved,
     TResult Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-      Object error,
-      StackTrace? stackTrace,
-    )?
-    savedError,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador,
+            Object error,
+            StackTrace? stackTrace)?
+        savedError,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -384,21 +369,19 @@ abstract class _loading extends PedidoVentaEditPageControllerState {
 /// @nodoc
 abstract class _$$dataImplCopyWith<$Res> {
   factory _$$dataImplCopyWith(
-    _$dataImpl value,
-    $Res Function(_$dataImpl) then,
-  ) = __$$dataImplCopyWithImpl<$Res>;
+          _$dataImpl value, $Res Function(_$dataImpl) then) =
+      __$$dataImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({
-    Cliente? cliente,
-    ClienteDireccion? clienteDireccion,
-    List<PedidoVentaLinea> pedidoVentaLinea,
-    int currentStep,
-    String? observaciones,
-    String? pedidoCliente,
-    bool oferta,
-    DateTime? ofertaFechaHasta,
-    bool isBorrador,
-  });
+  $Res call(
+      {Cliente? cliente,
+      ClienteDireccion? clienteDireccion,
+      List<PedidoVentaLinea> pedidoVentaLinea,
+      int currentStep,
+      String? observaciones,
+      String? pedidoCliente,
+      bool oferta,
+      DateTime? ofertaFechaHasta,
+      bool isBorrador});
 
   $ClienteCopyWith<$Res>? get cliente;
   $ClienteDireccionCopyWith<$Res>? get clienteDireccion;
@@ -409,7 +392,7 @@ class __$$dataImplCopyWithImpl<$Res>
     extends _$PedidoVentaEditPageControllerStateCopyWithImpl<$Res, _$dataImpl>
     implements _$$dataImplCopyWith<$Res> {
   __$$dataImplCopyWithImpl(_$dataImpl _value, $Res Function(_$dataImpl) _then)
-    : super(_value, _then);
+      : super(_value, _then);
 
   /// Create a copy of PedidoVentaEditPageControllerState
   /// with the given fields replaced by the non-null parameter values.
@@ -426,46 +409,44 @@ class __$$dataImplCopyWithImpl<$Res>
     Object? ofertaFechaHasta = freezed,
     Object? isBorrador = null,
   }) {
-    return _then(
-      _$dataImpl(
-        freezed == cliente
-            ? _value.cliente
-            : cliente // ignore: cast_nullable_to_non_nullable
-                as Cliente?,
-        freezed == clienteDireccion
-            ? _value.clienteDireccion
-            : clienteDireccion // ignore: cast_nullable_to_non_nullable
-                as ClienteDireccion?,
-        null == pedidoVentaLinea
-            ? _value._pedidoVentaLinea
-            : pedidoVentaLinea // ignore: cast_nullable_to_non_nullable
-                as List<PedidoVentaLinea>,
-        null == currentStep
-            ? _value.currentStep
-            : currentStep // ignore: cast_nullable_to_non_nullable
-                as int,
-        freezed == observaciones
-            ? _value.observaciones
-            : observaciones // ignore: cast_nullable_to_non_nullable
-                as String?,
-        freezed == pedidoCliente
-            ? _value.pedidoCliente
-            : pedidoCliente // ignore: cast_nullable_to_non_nullable
-                as String?,
-        null == oferta
-            ? _value.oferta
-            : oferta // ignore: cast_nullable_to_non_nullable
-                as bool,
-        freezed == ofertaFechaHasta
-            ? _value.ofertaFechaHasta
-            : ofertaFechaHasta // ignore: cast_nullable_to_non_nullable
-                as DateTime?,
-        null == isBorrador
-            ? _value.isBorrador
-            : isBorrador // ignore: cast_nullable_to_non_nullable
-                as bool,
-      ),
-    );
+    return _then(_$dataImpl(
+      freezed == cliente
+          ? _value.cliente
+          : cliente // ignore: cast_nullable_to_non_nullable
+              as Cliente?,
+      freezed == clienteDireccion
+          ? _value.clienteDireccion
+          : clienteDireccion // ignore: cast_nullable_to_non_nullable
+              as ClienteDireccion?,
+      null == pedidoVentaLinea
+          ? _value._pedidoVentaLinea
+          : pedidoVentaLinea // ignore: cast_nullable_to_non_nullable
+              as List<PedidoVentaLinea>,
+      null == currentStep
+          ? _value.currentStep
+          : currentStep // ignore: cast_nullable_to_non_nullable
+              as int,
+      freezed == observaciones
+          ? _value.observaciones
+          : observaciones // ignore: cast_nullable_to_non_nullable
+              as String?,
+      freezed == pedidoCliente
+          ? _value.pedidoCliente
+          : pedidoCliente // ignore: cast_nullable_to_non_nullable
+              as String?,
+      null == oferta
+          ? _value.oferta
+          : oferta // ignore: cast_nullable_to_non_nullable
+              as bool,
+      freezed == ofertaFechaHasta
+          ? _value.ofertaFechaHasta
+          : ofertaFechaHasta // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      null == isBorrador
+          ? _value.isBorrador
+          : isBorrador // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 
   /// Create a copy of PedidoVentaEditPageControllerState
@@ -501,17 +482,17 @@ class __$$dataImplCopyWithImpl<$Res>
 
 class _$dataImpl extends _data {
   const _$dataImpl(
-    this.cliente,
-    this.clienteDireccion,
-    final List<PedidoVentaLinea> pedidoVentaLinea,
-    this.currentStep,
-    this.observaciones,
-    this.pedidoCliente,
-    this.oferta,
-    this.ofertaFechaHasta,
-    this.isBorrador,
-  ) : _pedidoVentaLinea = pedidoVentaLinea,
-      super._();
+      this.cliente,
+      this.clienteDireccion,
+      final List<PedidoVentaLinea> pedidoVentaLinea,
+      this.currentStep,
+      this.observaciones,
+      this.pedidoCliente,
+      this.oferta,
+      this.ofertaFechaHasta,
+      this.isBorrador)
+      : _pedidoVentaLinea = pedidoVentaLinea,
+        super._();
 
   @override
   final Cliente? cliente;
@@ -552,10 +533,8 @@ class _$dataImpl extends _data {
             (identical(other.cliente, cliente) || other.cliente == cliente) &&
             (identical(other.clienteDireccion, clienteDireccion) ||
                 other.clienteDireccion == clienteDireccion) &&
-            const DeepCollectionEquality().equals(
-              other._pedidoVentaLinea,
-              _pedidoVentaLinea,
-            ) &&
+            const DeepCollectionEquality()
+                .equals(other._pedidoVentaLinea, _pedidoVentaLinea) &&
             (identical(other.currentStep, currentStep) ||
                 other.currentStep == currentStep) &&
             (identical(other.observaciones, observaciones) ||
@@ -571,17 +550,16 @@ class _$dataImpl extends _data {
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    cliente,
-    clienteDireccion,
-    const DeepCollectionEquality().hash(_pedidoVentaLinea),
-    currentStep,
-    observaciones,
-    pedidoCliente,
-    oferta,
-    ofertaFechaHasta,
-    isBorrador,
-  );
+      runtimeType,
+      cliente,
+      clienteDireccion,
+      const DeepCollectionEquality().hash(_pedidoVentaLinea),
+      currentStep,
+      observaciones,
+      pedidoCliente,
+      oferta,
+      ofertaFechaHasta,
+      isBorrador);
 
   /// Create a copy of PedidoVentaEditPageControllerState
   /// with the given fields replaced by the non-null parameter values.
@@ -596,46 +574,35 @@ class _$dataImpl extends _data {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-    )
-    data,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)
+        data,
     required TResult Function(Object error, StackTrace? stackTrace) error,
     required TResult Function() deleted,
     required TResult Function(String pedidoVentaAppId, bool isBorrador) saved,
     required TResult Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-      Object error,
-      StackTrace? stackTrace,
-    )
-    savedError,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador,
+            Object error,
+            StackTrace? stackTrace)
+        savedError,
   }) {
-    return data(
-      cliente,
-      clienteDireccion,
-      pedidoVentaLinea,
-      currentStep,
-      observaciones,
-      pedidoCliente,
-      oferta,
-      ofertaFechaHasta,
-      isBorrador,
-    );
+    return data(cliente, clienteDireccion, pedidoVentaLinea, currentStep,
+        observaciones, pedidoCliente, oferta, ofertaFechaHasta, isBorrador);
   }
 
   @override
@@ -643,46 +610,35 @@ class _$dataImpl extends _data {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-    )?
-    data,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)?
+        data,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
     TResult? Function()? deleted,
     TResult? Function(String pedidoVentaAppId, bool isBorrador)? saved,
     TResult? Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-      Object error,
-      StackTrace? stackTrace,
-    )?
-    savedError,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador,
+            Object error,
+            StackTrace? stackTrace)?
+        savedError,
   }) {
-    return data?.call(
-      cliente,
-      clienteDireccion,
-      pedidoVentaLinea,
-      currentStep,
-      observaciones,
-      pedidoCliente,
-      oferta,
-      ofertaFechaHasta,
-      isBorrador,
-    );
+    return data?.call(cliente, clienteDireccion, pedidoVentaLinea, currentStep,
+        observaciones, pedidoCliente, oferta, ofertaFechaHasta, isBorrador);
   }
 
   @override
@@ -690,48 +646,37 @@ class _$dataImpl extends _data {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-    )?
-    data,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)?
+        data,
     TResult Function(Object error, StackTrace? stackTrace)? error,
     TResult Function()? deleted,
     TResult Function(String pedidoVentaAppId, bool isBorrador)? saved,
     TResult Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-      Object error,
-      StackTrace? stackTrace,
-    )?
-    savedError,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador,
+            Object error,
+            StackTrace? stackTrace)?
+        savedError,
     required TResult orElse(),
   }) {
     if (data != null) {
-      return data(
-        cliente,
-        clienteDireccion,
-        pedidoVentaLinea,
-        currentStep,
-        observaciones,
-        pedidoCliente,
-        oferta,
-        ofertaFechaHasta,
-        isBorrador,
-      );
+      return data(cliente, clienteDireccion, pedidoVentaLinea, currentStep,
+          observaciones, pedidoCliente, oferta, ofertaFechaHasta, isBorrador);
     }
     return orElse();
   }
@@ -782,16 +727,15 @@ class _$dataImpl extends _data {
 
 abstract class _data extends PedidoVentaEditPageControllerState {
   const factory _data(
-    final Cliente? cliente,
-    final ClienteDireccion? clienteDireccion,
-    final List<PedidoVentaLinea> pedidoVentaLinea,
-    final int currentStep,
-    final String? observaciones,
-    final String? pedidoCliente,
-    final bool oferta,
-    final DateTime? ofertaFechaHasta,
-    final bool isBorrador,
-  ) = _$dataImpl;
+      final Cliente? cliente,
+      final ClienteDireccion? clienteDireccion,
+      final List<PedidoVentaLinea> pedidoVentaLinea,
+      final int currentStep,
+      final String? observaciones,
+      final String? pedidoCliente,
+      final bool oferta,
+      final DateTime? ofertaFechaHasta,
+      final bool isBorrador) = _$dataImpl;
   const _data._() : super._();
 
   Cliente? get cliente;
@@ -814,9 +758,8 @@ abstract class _data extends PedidoVentaEditPageControllerState {
 /// @nodoc
 abstract class _$$errorImplCopyWith<$Res> {
   factory _$$errorImplCopyWith(
-    _$errorImpl value,
-    $Res Function(_$errorImpl) then,
-  ) = __$$errorImplCopyWithImpl<$Res>;
+          _$errorImpl value, $Res Function(_$errorImpl) then) =
+      __$$errorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Object error, StackTrace? stackTrace});
 }
@@ -826,25 +769,24 @@ class __$$errorImplCopyWithImpl<$Res>
     extends _$PedidoVentaEditPageControllerStateCopyWithImpl<$Res, _$errorImpl>
     implements _$$errorImplCopyWith<$Res> {
   __$$errorImplCopyWithImpl(
-    _$errorImpl _value,
-    $Res Function(_$errorImpl) _then,
-  ) : super(_value, _then);
+      _$errorImpl _value, $Res Function(_$errorImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of PedidoVentaEditPageControllerState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? error = null, Object? stackTrace = freezed}) {
-    return _then(
-      _$errorImpl(
-        null == error ? _value.error : error,
-        stackTrace:
-            freezed == stackTrace
-                ? _value.stackTrace
-                : stackTrace // ignore: cast_nullable_to_non_nullable
-                    as StackTrace?,
-      ),
-    );
+  $Res call({
+    Object? error = null,
+    Object? stackTrace = freezed,
+  }) {
+    return _then(_$errorImpl(
+      null == error ? _value.error : error,
+      stackTrace: freezed == stackTrace
+          ? _value.stackTrace
+          : stackTrace // ignore: cast_nullable_to_non_nullable
+              as StackTrace?,
+    ));
   }
 }
 
@@ -875,10 +817,7 @@ class _$errorImpl extends _error {
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(error),
-    stackTrace,
-  );
+      runtimeType, const DeepCollectionEquality().hash(error), stackTrace);
 
   /// Create a copy of PedidoVentaEditPageControllerState
   /// with the given fields replaced by the non-null parameter values.
@@ -893,34 +832,32 @@ class _$errorImpl extends _error {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-    )
-    data,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)
+        data,
     required TResult Function(Object error, StackTrace? stackTrace) error,
     required TResult Function() deleted,
     required TResult Function(String pedidoVentaAppId, bool isBorrador) saved,
     required TResult Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-      Object error,
-      StackTrace? stackTrace,
-    )
-    savedError,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador,
+            Object error,
+            StackTrace? stackTrace)
+        savedError,
   }) {
     return error(this.error, stackTrace);
   }
@@ -930,34 +867,32 @@ class _$errorImpl extends _error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-    )?
-    data,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)?
+        data,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
     TResult? Function()? deleted,
     TResult? Function(String pedidoVentaAppId, bool isBorrador)? saved,
     TResult? Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-      Object error,
-      StackTrace? stackTrace,
-    )?
-    savedError,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador,
+            Object error,
+            StackTrace? stackTrace)?
+        savedError,
   }) {
     return error?.call(this.error, stackTrace);
   }
@@ -967,34 +902,32 @@ class _$errorImpl extends _error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-    )?
-    data,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)?
+        data,
     TResult Function(Object error, StackTrace? stackTrace)? error,
     TResult Function()? deleted,
     TResult Function(String pedidoVentaAppId, bool isBorrador)? saved,
     TResult Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-      Object error,
-      StackTrace? stackTrace,
-    )?
-    savedError,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador,
+            Object error,
+            StackTrace? stackTrace)?
+        savedError,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1065,20 +998,17 @@ abstract class _error extends PedidoVentaEditPageControllerState {
 /// @nodoc
 abstract class _$$deletedImplCopyWith<$Res> {
   factory _$$deletedImplCopyWith(
-    _$deletedImpl value,
-    $Res Function(_$deletedImpl) then,
-  ) = __$$deletedImplCopyWithImpl<$Res>;
+          _$deletedImpl value, $Res Function(_$deletedImpl) then) =
+      __$$deletedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$deletedImplCopyWithImpl<$Res>
-    extends
-        _$PedidoVentaEditPageControllerStateCopyWithImpl<$Res, _$deletedImpl>
-    implements _$$deletedImplCopyWith<$Res> {
+    extends _$PedidoVentaEditPageControllerStateCopyWithImpl<$Res,
+        _$deletedImpl> implements _$$deletedImplCopyWith<$Res> {
   __$$deletedImplCopyWithImpl(
-    _$deletedImpl _value,
-    $Res Function(_$deletedImpl) _then,
-  ) : super(_value, _then);
+      _$deletedImpl _value, $Res Function(_$deletedImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of PedidoVentaEditPageControllerState
   /// with the given fields replaced by the non-null parameter values.
@@ -1108,34 +1038,32 @@ class _$deletedImpl extends _deleted {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-    )
-    data,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)
+        data,
     required TResult Function(Object error, StackTrace? stackTrace) error,
     required TResult Function() deleted,
     required TResult Function(String pedidoVentaAppId, bool isBorrador) saved,
     required TResult Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-      Object error,
-      StackTrace? stackTrace,
-    )
-    savedError,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador,
+            Object error,
+            StackTrace? stackTrace)
+        savedError,
   }) {
     return deleted();
   }
@@ -1145,34 +1073,32 @@ class _$deletedImpl extends _deleted {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-    )?
-    data,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)?
+        data,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
     TResult? Function()? deleted,
     TResult? Function(String pedidoVentaAppId, bool isBorrador)? saved,
     TResult? Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-      Object error,
-      StackTrace? stackTrace,
-    )?
-    savedError,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador,
+            Object error,
+            StackTrace? stackTrace)?
+        savedError,
   }) {
     return deleted?.call();
   }
@@ -1182,34 +1108,32 @@ class _$deletedImpl extends _deleted {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-    )?
-    data,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)?
+        data,
     TResult Function(Object error, StackTrace? stackTrace)? error,
     TResult Function()? deleted,
     TResult Function(String pedidoVentaAppId, bool isBorrador)? saved,
     TResult Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-      Object error,
-      StackTrace? stackTrace,
-    )?
-    savedError,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador,
+            Object error,
+            StackTrace? stackTrace)?
+        savedError,
     required TResult orElse(),
   }) {
     if (deleted != null) {
@@ -1270,9 +1194,8 @@ abstract class _deleted extends PedidoVentaEditPageControllerState {
 /// @nodoc
 abstract class _$$savedImplCopyWith<$Res> {
   factory _$$savedImplCopyWith(
-    _$savedImpl value,
-    $Res Function(_$savedImpl) then,
-  ) = __$$savedImplCopyWithImpl<$Res>;
+          _$savedImpl value, $Res Function(_$savedImpl) then) =
+      __$$savedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String pedidoVentaAppId, bool isBorrador});
 }
@@ -1282,27 +1205,27 @@ class __$$savedImplCopyWithImpl<$Res>
     extends _$PedidoVentaEditPageControllerStateCopyWithImpl<$Res, _$savedImpl>
     implements _$$savedImplCopyWith<$Res> {
   __$$savedImplCopyWithImpl(
-    _$savedImpl _value,
-    $Res Function(_$savedImpl) _then,
-  ) : super(_value, _then);
+      _$savedImpl _value, $Res Function(_$savedImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of PedidoVentaEditPageControllerState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? pedidoVentaAppId = null, Object? isBorrador = null}) {
-    return _then(
-      _$savedImpl(
-        null == pedidoVentaAppId
-            ? _value.pedidoVentaAppId
-            : pedidoVentaAppId // ignore: cast_nullable_to_non_nullable
-                as String,
-        null == isBorrador
-            ? _value.isBorrador
-            : isBorrador // ignore: cast_nullable_to_non_nullable
-                as bool,
-      ),
-    );
+  $Res call({
+    Object? pedidoVentaAppId = null,
+    Object? isBorrador = null,
+  }) {
+    return _then(_$savedImpl(
+      null == pedidoVentaAppId
+          ? _value.pedidoVentaAppId
+          : pedidoVentaAppId // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == isBorrador
+          ? _value.isBorrador
+          : isBorrador // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
@@ -1348,34 +1271,32 @@ class _$savedImpl extends _saved {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-    )
-    data,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)
+        data,
     required TResult Function(Object error, StackTrace? stackTrace) error,
     required TResult Function() deleted,
     required TResult Function(String pedidoVentaAppId, bool isBorrador) saved,
     required TResult Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-      Object error,
-      StackTrace? stackTrace,
-    )
-    savedError,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador,
+            Object error,
+            StackTrace? stackTrace)
+        savedError,
   }) {
     return saved(pedidoVentaAppId, isBorrador);
   }
@@ -1385,34 +1306,32 @@ class _$savedImpl extends _saved {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-    )?
-    data,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)?
+        data,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
     TResult? Function()? deleted,
     TResult? Function(String pedidoVentaAppId, bool isBorrador)? saved,
     TResult? Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-      Object error,
-      StackTrace? stackTrace,
-    )?
-    savedError,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador,
+            Object error,
+            StackTrace? stackTrace)?
+        savedError,
   }) {
     return saved?.call(pedidoVentaAppId, isBorrador);
   }
@@ -1422,34 +1341,32 @@ class _$savedImpl extends _saved {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-    )?
-    data,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)?
+        data,
     TResult Function(Object error, StackTrace? stackTrace)? error,
     TResult Function()? deleted,
     TResult Function(String pedidoVentaAppId, bool isBorrador)? saved,
     TResult Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-      Object error,
-      StackTrace? stackTrace,
-    )?
-    savedError,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador,
+            Object error,
+            StackTrace? stackTrace)?
+        savedError,
     required TResult orElse(),
   }) {
     if (saved != null) {
@@ -1520,23 +1437,21 @@ abstract class _saved extends PedidoVentaEditPageControllerState {
 /// @nodoc
 abstract class _$$savedErrorImplCopyWith<$Res> {
   factory _$$savedErrorImplCopyWith(
-    _$savedErrorImpl value,
-    $Res Function(_$savedErrorImpl) then,
-  ) = __$$savedErrorImplCopyWithImpl<$Res>;
+          _$savedErrorImpl value, $Res Function(_$savedErrorImpl) then) =
+      __$$savedErrorImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({
-    Cliente? cliente,
-    ClienteDireccion? clienteDireccion,
-    List<PedidoVentaLinea> pedidoVentaLinea,
-    int currentStep,
-    String? observaciones,
-    String? pedidoCliente,
-    bool oferta,
-    DateTime? ofertaFechaHasta,
-    bool isBorrador,
-    Object error,
-    StackTrace? stackTrace,
-  });
+  $Res call(
+      {Cliente? cliente,
+      ClienteDireccion? clienteDireccion,
+      List<PedidoVentaLinea> pedidoVentaLinea,
+      int currentStep,
+      String? observaciones,
+      String? pedidoCliente,
+      bool oferta,
+      DateTime? ofertaFechaHasta,
+      bool isBorrador,
+      Object error,
+      StackTrace? stackTrace});
 
   $ClienteCopyWith<$Res>? get cliente;
   $ClienteDireccionCopyWith<$Res>? get clienteDireccion;
@@ -1544,13 +1459,11 @@ abstract class _$$savedErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$savedErrorImplCopyWithImpl<$Res>
-    extends
-        _$PedidoVentaEditPageControllerStateCopyWithImpl<$Res, _$savedErrorImpl>
-    implements _$$savedErrorImplCopyWith<$Res> {
+    extends _$PedidoVentaEditPageControllerStateCopyWithImpl<$Res,
+        _$savedErrorImpl> implements _$$savedErrorImplCopyWith<$Res> {
   __$$savedErrorImplCopyWithImpl(
-    _$savedErrorImpl _value,
-    $Res Function(_$savedErrorImpl) _then,
-  ) : super(_value, _then);
+      _$savedErrorImpl _value, $Res Function(_$savedErrorImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of PedidoVentaEditPageControllerState
   /// with the given fields replaced by the non-null parameter values.
@@ -1569,52 +1482,49 @@ class __$$savedErrorImplCopyWithImpl<$Res>
     Object? error = null,
     Object? stackTrace = freezed,
   }) {
-    return _then(
-      _$savedErrorImpl(
-        freezed == cliente
-            ? _value.cliente
-            : cliente // ignore: cast_nullable_to_non_nullable
-                as Cliente?,
-        freezed == clienteDireccion
-            ? _value.clienteDireccion
-            : clienteDireccion // ignore: cast_nullable_to_non_nullable
-                as ClienteDireccion?,
-        null == pedidoVentaLinea
-            ? _value._pedidoVentaLinea
-            : pedidoVentaLinea // ignore: cast_nullable_to_non_nullable
-                as List<PedidoVentaLinea>,
-        null == currentStep
-            ? _value.currentStep
-            : currentStep // ignore: cast_nullable_to_non_nullable
-                as int,
-        freezed == observaciones
-            ? _value.observaciones
-            : observaciones // ignore: cast_nullable_to_non_nullable
-                as String?,
-        freezed == pedidoCliente
-            ? _value.pedidoCliente
-            : pedidoCliente // ignore: cast_nullable_to_non_nullable
-                as String?,
-        null == oferta
-            ? _value.oferta
-            : oferta // ignore: cast_nullable_to_non_nullable
-                as bool,
-        freezed == ofertaFechaHasta
-            ? _value.ofertaFechaHasta
-            : ofertaFechaHasta // ignore: cast_nullable_to_non_nullable
-                as DateTime?,
-        null == isBorrador
-            ? _value.isBorrador
-            : isBorrador // ignore: cast_nullable_to_non_nullable
-                as bool,
-        null == error ? _value.error : error,
-        stackTrace:
-            freezed == stackTrace
-                ? _value.stackTrace
-                : stackTrace // ignore: cast_nullable_to_non_nullable
-                    as StackTrace?,
-      ),
-    );
+    return _then(_$savedErrorImpl(
+      freezed == cliente
+          ? _value.cliente
+          : cliente // ignore: cast_nullable_to_non_nullable
+              as Cliente?,
+      freezed == clienteDireccion
+          ? _value.clienteDireccion
+          : clienteDireccion // ignore: cast_nullable_to_non_nullable
+              as ClienteDireccion?,
+      null == pedidoVentaLinea
+          ? _value._pedidoVentaLinea
+          : pedidoVentaLinea // ignore: cast_nullable_to_non_nullable
+              as List<PedidoVentaLinea>,
+      null == currentStep
+          ? _value.currentStep
+          : currentStep // ignore: cast_nullable_to_non_nullable
+              as int,
+      freezed == observaciones
+          ? _value.observaciones
+          : observaciones // ignore: cast_nullable_to_non_nullable
+              as String?,
+      freezed == pedidoCliente
+          ? _value.pedidoCliente
+          : pedidoCliente // ignore: cast_nullable_to_non_nullable
+              as String?,
+      null == oferta
+          ? _value.oferta
+          : oferta // ignore: cast_nullable_to_non_nullable
+              as bool,
+      freezed == ofertaFechaHasta
+          ? _value.ofertaFechaHasta
+          : ofertaFechaHasta // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      null == isBorrador
+          ? _value.isBorrador
+          : isBorrador // ignore: cast_nullable_to_non_nullable
+              as bool,
+      null == error ? _value.error : error,
+      stackTrace: freezed == stackTrace
+          ? _value.stackTrace
+          : stackTrace // ignore: cast_nullable_to_non_nullable
+              as StackTrace?,
+    ));
   }
 
   /// Create a copy of PedidoVentaEditPageControllerState
@@ -1650,19 +1560,19 @@ class __$$savedErrorImplCopyWithImpl<$Res>
 
 class _$savedErrorImpl extends _savedError {
   const _$savedErrorImpl(
-    this.cliente,
-    this.clienteDireccion,
-    final List<PedidoVentaLinea> pedidoVentaLinea,
-    this.currentStep,
-    this.observaciones,
-    this.pedidoCliente,
-    this.oferta,
-    this.ofertaFechaHasta,
-    this.isBorrador,
-    this.error, {
-    this.stackTrace,
-  }) : _pedidoVentaLinea = pedidoVentaLinea,
-       super._();
+      this.cliente,
+      this.clienteDireccion,
+      final List<PedidoVentaLinea> pedidoVentaLinea,
+      this.currentStep,
+      this.observaciones,
+      this.pedidoCliente,
+      this.oferta,
+      this.ofertaFechaHasta,
+      this.isBorrador,
+      this.error,
+      {this.stackTrace})
+      : _pedidoVentaLinea = pedidoVentaLinea,
+        super._();
 
   @override
   final Cliente? cliente;
@@ -1707,10 +1617,8 @@ class _$savedErrorImpl extends _savedError {
             (identical(other.cliente, cliente) || other.cliente == cliente) &&
             (identical(other.clienteDireccion, clienteDireccion) ||
                 other.clienteDireccion == clienteDireccion) &&
-            const DeepCollectionEquality().equals(
-              other._pedidoVentaLinea,
-              _pedidoVentaLinea,
-            ) &&
+            const DeepCollectionEquality()
+                .equals(other._pedidoVentaLinea, _pedidoVentaLinea) &&
             (identical(other.currentStep, currentStep) ||
                 other.currentStep == currentStep) &&
             (identical(other.observaciones, observaciones) ||
@@ -1729,19 +1637,18 @@ class _$savedErrorImpl extends _savedError {
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    cliente,
-    clienteDireccion,
-    const DeepCollectionEquality().hash(_pedidoVentaLinea),
-    currentStep,
-    observaciones,
-    pedidoCliente,
-    oferta,
-    ofertaFechaHasta,
-    isBorrador,
-    const DeepCollectionEquality().hash(error),
-    stackTrace,
-  );
+      runtimeType,
+      cliente,
+      clienteDireccion,
+      const DeepCollectionEquality().hash(_pedidoVentaLinea),
+      currentStep,
+      observaciones,
+      pedidoCliente,
+      oferta,
+      ofertaFechaHasta,
+      isBorrador,
+      const DeepCollectionEquality().hash(error),
+      stackTrace);
 
   /// Create a copy of PedidoVentaEditPageControllerState
   /// with the given fields replaced by the non-null parameter values.
@@ -1756,136 +1663,34 @@ class _$savedErrorImpl extends _savedError {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-    )
-    data,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)
+        data,
     required TResult Function(Object error, StackTrace? stackTrace) error,
     required TResult Function() deleted,
     required TResult Function(String pedidoVentaAppId, bool isBorrador) saved,
     required TResult Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-      Object error,
-      StackTrace? stackTrace,
-    )
-    savedError,
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador,
+            Object error,
+            StackTrace? stackTrace)
+        savedError,
   }) {
     return savedError(
-      cliente,
-      clienteDireccion,
-      pedidoVentaLinea,
-      currentStep,
-      observaciones,
-      pedidoCliente,
-      oferta,
-      ofertaFechaHasta,
-      isBorrador,
-      this.error,
-      stackTrace,
-    );
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-    )?
-    data,
-    TResult? Function(Object error, StackTrace? stackTrace)? error,
-    TResult? Function()? deleted,
-    TResult? Function(String pedidoVentaAppId, bool isBorrador)? saved,
-    TResult? Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-      Object error,
-      StackTrace? stackTrace,
-    )?
-    savedError,
-  }) {
-    return savedError?.call(
-      cliente,
-      clienteDireccion,
-      pedidoVentaLinea,
-      currentStep,
-      observaciones,
-      pedidoCliente,
-      oferta,
-      ofertaFechaHasta,
-      isBorrador,
-      this.error,
-      stackTrace,
-    );
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-    )?
-    data,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function()? deleted,
-    TResult Function(String pedidoVentaAppId, bool isBorrador)? saved,
-    TResult Function(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente,
-      bool oferta,
-      DateTime? ofertaFechaHasta,
-      bool isBorrador,
-      Object error,
-      StackTrace? stackTrace,
-    )?
-    savedError,
-    required TResult orElse(),
-  }) {
-    if (savedError != null) {
-      return savedError(
         cliente,
         clienteDireccion,
         pedidoVentaLinea,
@@ -1896,8 +1701,101 @@ class _$savedErrorImpl extends _savedError {
         ofertaFechaHasta,
         isBorrador,
         this.error,
-        stackTrace,
-      );
+        stackTrace);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)?
+        data,
+    TResult? Function(Object error, StackTrace? stackTrace)? error,
+    TResult? Function()? deleted,
+    TResult? Function(String pedidoVentaAppId, bool isBorrador)? saved,
+    TResult? Function(
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador,
+            Object error,
+            StackTrace? stackTrace)?
+        savedError,
+  }) {
+    return savedError?.call(
+        cliente,
+        clienteDireccion,
+        pedidoVentaLinea,
+        currentStep,
+        observaciones,
+        pedidoCliente,
+        oferta,
+        ofertaFechaHasta,
+        isBorrador,
+        this.error,
+        stackTrace);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)?
+        data,
+    TResult Function(Object error, StackTrace? stackTrace)? error,
+    TResult Function()? deleted,
+    TResult Function(String pedidoVentaAppId, bool isBorrador)? saved,
+    TResult Function(
+            Cliente? cliente,
+            ClienteDireccion? clienteDireccion,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones,
+            String? pedidoCliente,
+            bool oferta,
+            DateTime? ofertaFechaHasta,
+            bool isBorrador,
+            Object error,
+            StackTrace? stackTrace)?
+        savedError,
+    required TResult orElse(),
+  }) {
+    if (savedError != null) {
+      return savedError(
+          cliente,
+          clienteDireccion,
+          pedidoVentaLinea,
+          currentStep,
+          observaciones,
+          pedidoCliente,
+          oferta,
+          ofertaFechaHasta,
+          isBorrador,
+          this.error,
+          stackTrace);
     }
     return orElse();
   }
@@ -1948,18 +1846,17 @@ class _$savedErrorImpl extends _savedError {
 
 abstract class _savedError extends PedidoVentaEditPageControllerState {
   const factory _savedError(
-    final Cliente? cliente,
-    final ClienteDireccion? clienteDireccion,
-    final List<PedidoVentaLinea> pedidoVentaLinea,
-    final int currentStep,
-    final String? observaciones,
-    final String? pedidoCliente,
-    final bool oferta,
-    final DateTime? ofertaFechaHasta,
-    final bool isBorrador,
-    final Object error, {
-    final StackTrace? stackTrace,
-  }) = _$savedErrorImpl;
+      final Cliente? cliente,
+      final ClienteDireccion? clienteDireccion,
+      final List<PedidoVentaLinea> pedidoVentaLinea,
+      final int currentStep,
+      final String? observaciones,
+      final String? pedidoCliente,
+      final bool oferta,
+      final DateTime? ofertaFechaHasta,
+      final bool isBorrador,
+      final Object error,
+      {final StackTrace? stackTrace}) = _$savedErrorImpl;
   const _savedError._() : super._();
 
   Cliente? get cliente;

@@ -12,8 +12,7 @@ part of 'subsector_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 SubsectorDTO _$SubsectorDTOFromJson(Map<String, dynamic> json) {
   return _PaisDTO.fromJson(json);
@@ -63,26 +62,24 @@ mixin _$SubsectorDTO {
 /// @nodoc
 abstract class $SubsectorDTOCopyWith<$Res> {
   factory $SubsectorDTOCopyWith(
-    SubsectorDTO value,
-    $Res Function(SubsectorDTO) then,
-  ) = _$SubsectorDTOCopyWithImpl<$Res, SubsectorDTO>;
+          SubsectorDTO value, $Res Function(SubsectorDTO) then) =
+      _$SubsectorDTOCopyWithImpl<$Res, SubsectorDTO>;
   @useResult
-  $Res call({
-    @JsonKey(name: 'SECTOR_ID') String sectorId,
-    @JsonKey(name: 'SUBSECTOR_ID') String subsectorId,
-    @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
-    @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
-    @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
-    @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
-    @JsonKey(name: 'DESCRIPCION_CA') String? descripcionCA,
-    @JsonKey(name: 'DESCRIPCION_GB') String? descripcionGB,
-    @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
-    @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
-    @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
-    @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'SECTOR_ID') String sectorId,
+      @JsonKey(name: 'SUBSECTOR_ID') String subsectorId,
+      @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
+      @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
+      @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
+      @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
+      @JsonKey(name: 'DESCRIPCION_CA') String? descripcionCA,
+      @JsonKey(name: 'DESCRIPCION_GB') String? descripcionGB,
+      @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
+      @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
+      @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
+      @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
@@ -115,81 +112,64 @@ class _$SubsectorDTOCopyWithImpl<$Res, $Val extends SubsectorDTO>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            sectorId:
-                null == sectorId
-                    ? _value.sectorId
-                    : sectorId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            subsectorId:
-                null == subsectorId
-                    ? _value.subsectorId
-                    : subsectorId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            descripcionES:
-                null == descripcionES
-                    ? _value.descripcionES
-                    : descripcionES // ignore: cast_nullable_to_non_nullable
-                        as String,
-            descripcionEN:
-                freezed == descripcionEN
-                    ? _value.descripcionEN
-                    : descripcionEN // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionFR:
-                freezed == descripcionFR
-                    ? _value.descripcionFR
-                    : descripcionFR // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionDE:
-                freezed == descripcionDE
-                    ? _value.descripcionDE
-                    : descripcionDE // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionCA:
-                freezed == descripcionCA
-                    ? _value.descripcionCA
-                    : descripcionCA // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionGB:
-                freezed == descripcionGB
-                    ? _value.descripcionGB
-                    : descripcionGB // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionHU:
-                freezed == descripcionHU
-                    ? _value.descripcionHU
-                    : descripcionHU // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionIT:
-                freezed == descripcionIT
-                    ? _value.descripcionIT
-                    : descripcionIT // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionNL:
-                freezed == descripcionNL
-                    ? _value.descripcionNL
-                    : descripcionNL // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionPL:
-                freezed == descripcionPL
-                    ? _value.descripcionPL
-                    : descripcionPL // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            lastUpdated:
-                null == lastUpdated
-                    ? _value.lastUpdated
-                    : lastUpdated // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      sectorId: null == sectorId
+          ? _value.sectorId
+          : sectorId // ignore: cast_nullable_to_non_nullable
+              as String,
+      subsectorId: null == subsectorId
+          ? _value.subsectorId
+          : subsectorId // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcionES: null == descripcionES
+          ? _value.descripcionES
+          : descripcionES // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcionEN: freezed == descripcionEN
+          ? _value.descripcionEN
+          : descripcionEN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionFR: freezed == descripcionFR
+          ? _value.descripcionFR
+          : descripcionFR // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionDE: freezed == descripcionDE
+          ? _value.descripcionDE
+          : descripcionDE // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCA: freezed == descripcionCA
+          ? _value.descripcionCA
+          : descripcionCA // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionGB: freezed == descripcionGB
+          ? _value.descripcionGB
+          : descripcionGB // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionHU: freezed == descripcionHU
+          ? _value.descripcionHU
+          : descripcionHU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionIT: freezed == descripcionIT
+          ? _value.descripcionIT
+          : descripcionIT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionNL: freezed == descripcionNL
+          ? _value.descripcionNL
+          : descripcionNL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPL: freezed == descripcionPL
+          ? _value.descripcionPL
+          : descripcionPL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
@@ -197,27 +177,25 @@ class _$SubsectorDTOCopyWithImpl<$Res, $Val extends SubsectorDTO>
 abstract class _$$PaisDTOImplCopyWith<$Res>
     implements $SubsectorDTOCopyWith<$Res> {
   factory _$$PaisDTOImplCopyWith(
-    _$PaisDTOImpl value,
-    $Res Function(_$PaisDTOImpl) then,
-  ) = __$$PaisDTOImplCopyWithImpl<$Res>;
+          _$PaisDTOImpl value, $Res Function(_$PaisDTOImpl) then) =
+      __$$PaisDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'SECTOR_ID') String sectorId,
-    @JsonKey(name: 'SUBSECTOR_ID') String subsectorId,
-    @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
-    @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
-    @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
-    @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
-    @JsonKey(name: 'DESCRIPCION_CA') String? descripcionCA,
-    @JsonKey(name: 'DESCRIPCION_GB') String? descripcionGB,
-    @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
-    @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
-    @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
-    @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'SECTOR_ID') String sectorId,
+      @JsonKey(name: 'SUBSECTOR_ID') String subsectorId,
+      @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
+      @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
+      @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
+      @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
+      @JsonKey(name: 'DESCRIPCION_CA') String? descripcionCA,
+      @JsonKey(name: 'DESCRIPCION_GB') String? descripcionGB,
+      @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
+      @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
+      @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
+      @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
@@ -225,9 +203,8 @@ class __$$PaisDTOImplCopyWithImpl<$Res>
     extends _$SubsectorDTOCopyWithImpl<$Res, _$PaisDTOImpl>
     implements _$$PaisDTOImplCopyWith<$Res> {
   __$$PaisDTOImplCopyWithImpl(
-    _$PaisDTOImpl _value,
-    $Res Function(_$PaisDTOImpl) _then,
-  ) : super(_value, _then);
+      _$PaisDTOImpl _value, $Res Function(_$PaisDTOImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of SubsectorDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -249,102 +226,86 @@ class __$$PaisDTOImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$PaisDTOImpl(
-        sectorId:
-            null == sectorId
-                ? _value.sectorId
-                : sectorId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        subsectorId:
-            null == subsectorId
-                ? _value.subsectorId
-                : subsectorId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        descripcionES:
-            null == descripcionES
-                ? _value.descripcionES
-                : descripcionES // ignore: cast_nullable_to_non_nullable
-                    as String,
-        descripcionEN:
-            freezed == descripcionEN
-                ? _value.descripcionEN
-                : descripcionEN // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionFR:
-            freezed == descripcionFR
-                ? _value.descripcionFR
-                : descripcionFR // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionDE:
-            freezed == descripcionDE
-                ? _value.descripcionDE
-                : descripcionDE // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionCA:
-            freezed == descripcionCA
-                ? _value.descripcionCA
-                : descripcionCA // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionGB:
-            freezed == descripcionGB
-                ? _value.descripcionGB
-                : descripcionGB // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionHU:
-            freezed == descripcionHU
-                ? _value.descripcionHU
-                : descripcionHU // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionIT:
-            freezed == descripcionIT
-                ? _value.descripcionIT
-                : descripcionIT // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionNL:
-            freezed == descripcionNL
-                ? _value.descripcionNL
-                : descripcionNL // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionPL:
-            freezed == descripcionPL
-                ? _value.descripcionPL
-                : descripcionPL // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        lastUpdated:
-            null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+    return _then(_$PaisDTOImpl(
+      sectorId: null == sectorId
+          ? _value.sectorId
+          : sectorId // ignore: cast_nullable_to_non_nullable
+              as String,
+      subsectorId: null == subsectorId
+          ? _value.subsectorId
+          : subsectorId // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcionES: null == descripcionES
+          ? _value.descripcionES
+          : descripcionES // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcionEN: freezed == descripcionEN
+          ? _value.descripcionEN
+          : descripcionEN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionFR: freezed == descripcionFR
+          ? _value.descripcionFR
+          : descripcionFR // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionDE: freezed == descripcionDE
+          ? _value.descripcionDE
+          : descripcionDE // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCA: freezed == descripcionCA
+          ? _value.descripcionCA
+          : descripcionCA // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionGB: freezed == descripcionGB
+          ? _value.descripcionGB
+          : descripcionGB // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionHU: freezed == descripcionHU
+          ? _value.descripcionHU
+          : descripcionHU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionIT: freezed == descripcionIT
+          ? _value.descripcionIT
+          : descripcionIT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionNL: freezed == descripcionNL
+          ? _value.descripcionNL
+          : descripcionNL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPL: freezed == descripcionPL
+          ? _value.descripcionPL
+          : descripcionPL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$PaisDTOImpl extends _PaisDTO {
-  const _$PaisDTOImpl({
-    @JsonKey(name: 'SECTOR_ID') required this.sectorId,
-    @JsonKey(name: 'SUBSECTOR_ID') required this.subsectorId,
-    @JsonKey(name: 'DESCRIPCION_ES') required this.descripcionES,
-    @JsonKey(name: 'DESCRIPCION_EN') this.descripcionEN,
-    @JsonKey(name: 'DESCRIPCION_FR') this.descripcionFR,
-    @JsonKey(name: 'DESCRIPCION_DE') this.descripcionDE,
-    @JsonKey(name: 'DESCRIPCION_CA') this.descripcionCA,
-    @JsonKey(name: 'DESCRIPCION_GB') this.descripcionGB,
-    @JsonKey(name: 'DESCRIPCION_HU') this.descripcionHU,
-    @JsonKey(name: 'DESCRIPCION_IT') this.descripcionIT,
-    @JsonKey(name: 'DESCRIPCION_NL') this.descripcionNL,
-    @JsonKey(name: 'DESCRIPCION_PL') this.descripcionPL,
-    @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-    @JsonKey(name: 'DELETED') this.deleted = 'N',
-  }) : super._();
+  const _$PaisDTOImpl(
+      {@JsonKey(name: 'SECTOR_ID') required this.sectorId,
+      @JsonKey(name: 'SUBSECTOR_ID') required this.subsectorId,
+      @JsonKey(name: 'DESCRIPCION_ES') required this.descripcionES,
+      @JsonKey(name: 'DESCRIPCION_EN') this.descripcionEN,
+      @JsonKey(name: 'DESCRIPCION_FR') this.descripcionFR,
+      @JsonKey(name: 'DESCRIPCION_DE') this.descripcionDE,
+      @JsonKey(name: 'DESCRIPCION_CA') this.descripcionCA,
+      @JsonKey(name: 'DESCRIPCION_GB') this.descripcionGB,
+      @JsonKey(name: 'DESCRIPCION_HU') this.descripcionHU,
+      @JsonKey(name: 'DESCRIPCION_IT') this.descripcionIT,
+      @JsonKey(name: 'DESCRIPCION_NL') this.descripcionNL,
+      @JsonKey(name: 'DESCRIPCION_PL') this.descripcionPL,
+      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+      @JsonKey(name: 'DELETED') this.deleted = 'N'})
+      : super._();
 
   factory _$PaisDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$PaisDTOImplFromJson(json);
@@ -434,22 +395,21 @@ class _$PaisDTOImpl extends _PaisDTO {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    sectorId,
-    subsectorId,
-    descripcionES,
-    descripcionEN,
-    descripcionFR,
-    descripcionDE,
-    descripcionCA,
-    descripcionGB,
-    descripcionHU,
-    descripcionIT,
-    descripcionNL,
-    descripcionPL,
-    lastUpdated,
-    deleted,
-  );
+      runtimeType,
+      sectorId,
+      subsectorId,
+      descripcionES,
+      descripcionEN,
+      descripcionFR,
+      descripcionDE,
+      descripcionCA,
+      descripcionGB,
+      descripcionHU,
+      descripcionIT,
+      descripcionNL,
+      descripcionPL,
+      lastUpdated,
+      deleted);
 
   /// Create a copy of SubsectorDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -461,27 +421,28 @@ class _$PaisDTOImpl extends _PaisDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PaisDTOImplToJson(this);
+    return _$$PaisDTOImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _PaisDTO extends SubsectorDTO {
-  const factory _PaisDTO({
-    @JsonKey(name: 'SECTOR_ID') required final String sectorId,
-    @JsonKey(name: 'SUBSECTOR_ID') required final String subsectorId,
-    @JsonKey(name: 'DESCRIPCION_ES') required final String descripcionES,
-    @JsonKey(name: 'DESCRIPCION_EN') final String? descripcionEN,
-    @JsonKey(name: 'DESCRIPCION_FR') final String? descripcionFR,
-    @JsonKey(name: 'DESCRIPCION_DE') final String? descripcionDE,
-    @JsonKey(name: 'DESCRIPCION_CA') final String? descripcionCA,
-    @JsonKey(name: 'DESCRIPCION_GB') final String? descripcionGB,
-    @JsonKey(name: 'DESCRIPCION_HU') final String? descripcionHU,
-    @JsonKey(name: 'DESCRIPCION_IT') final String? descripcionIT,
-    @JsonKey(name: 'DESCRIPCION_NL') final String? descripcionNL,
-    @JsonKey(name: 'DESCRIPCION_PL') final String? descripcionPL,
-    @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') final String deleted,
-  }) = _$PaisDTOImpl;
+  const factory _PaisDTO(
+      {@JsonKey(name: 'SECTOR_ID') required final String sectorId,
+      @JsonKey(name: 'SUBSECTOR_ID') required final String subsectorId,
+      @JsonKey(name: 'DESCRIPCION_ES') required final String descripcionES,
+      @JsonKey(name: 'DESCRIPCION_EN') final String? descripcionEN,
+      @JsonKey(name: 'DESCRIPCION_FR') final String? descripcionFR,
+      @JsonKey(name: 'DESCRIPCION_DE') final String? descripcionDE,
+      @JsonKey(name: 'DESCRIPCION_CA') final String? descripcionCA,
+      @JsonKey(name: 'DESCRIPCION_GB') final String? descripcionGB,
+      @JsonKey(name: 'DESCRIPCION_HU') final String? descripcionHU,
+      @JsonKey(name: 'DESCRIPCION_IT') final String? descripcionIT,
+      @JsonKey(name: 'DESCRIPCION_NL') final String? descripcionNL,
+      @JsonKey(name: 'DESCRIPCION_PL') final String? descripcionPL,
+      @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') final String deleted}) = _$PaisDTOImpl;
   const _PaisDTO._() : super._();
 
   factory _PaisDTO.fromJson(Map<String, dynamic> json) = _$PaisDTOImpl.fromJson;

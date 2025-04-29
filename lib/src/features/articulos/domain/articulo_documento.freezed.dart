@@ -12,8 +12,7 @@ part of 'articulo_documento.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ArticuloDocumento {
@@ -32,16 +31,14 @@ mixin _$ArticuloDocumento {
 /// @nodoc
 abstract class $ArticuloDocumentoCopyWith<$Res> {
   factory $ArticuloDocumentoCopyWith(
-    ArticuloDocumento value,
-    $Res Function(ArticuloDocumento) then,
-  ) = _$ArticuloDocumentoCopyWithImpl<$Res, ArticuloDocumento>;
+          ArticuloDocumento value, $Res Function(ArticuloDocumento) then) =
+      _$ArticuloDocumentoCopyWithImpl<$Res, ArticuloDocumento>;
   @useResult
-  $Res call({
-    String articuloId,
-    String? nombreArchivo,
-    String idiomaId,
-    String? observaciones,
-  });
+  $Res call(
+      {String articuloId,
+      String? nombreArchivo,
+      String idiomaId,
+      String? observaciones});
 }
 
 /// @nodoc
@@ -64,59 +61,49 @@ class _$ArticuloDocumentoCopyWithImpl<$Res, $Val extends ArticuloDocumento>
     Object? idiomaId = null,
     Object? observaciones = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            articuloId:
-                null == articuloId
-                    ? _value.articuloId
-                    : articuloId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            nombreArchivo:
-                freezed == nombreArchivo
-                    ? _value.nombreArchivo
-                    : nombreArchivo // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            idiomaId:
-                null == idiomaId
-                    ? _value.idiomaId
-                    : idiomaId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            observaciones:
-                freezed == observaciones
-                    ? _value.observaciones
-                    : observaciones // ignore: cast_nullable_to_non_nullable
-                        as String?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      nombreArchivo: freezed == nombreArchivo
+          ? _value.nombreArchivo
+          : nombreArchivo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      idiomaId: null == idiomaId
+          ? _value.idiomaId
+          : idiomaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      observaciones: freezed == observaciones
+          ? _value.observaciones
+          : observaciones // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$ArticuloDocumentoImplCopyWith<$Res>
     implements $ArticuloDocumentoCopyWith<$Res> {
-  factory _$$ArticuloDocumentoImplCopyWith(
-    _$ArticuloDocumentoImpl value,
-    $Res Function(_$ArticuloDocumentoImpl) then,
-  ) = __$$ArticuloDocumentoImplCopyWithImpl<$Res>;
+  factory _$$ArticuloDocumentoImplCopyWith(_$ArticuloDocumentoImpl value,
+          $Res Function(_$ArticuloDocumentoImpl) then) =
+      __$$ArticuloDocumentoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String articuloId,
-    String? nombreArchivo,
-    String idiomaId,
-    String? observaciones,
-  });
+  $Res call(
+      {String articuloId,
+      String? nombreArchivo,
+      String idiomaId,
+      String? observaciones});
 }
 
 /// @nodoc
 class __$$ArticuloDocumentoImplCopyWithImpl<$Res>
     extends _$ArticuloDocumentoCopyWithImpl<$Res, _$ArticuloDocumentoImpl>
     implements _$$ArticuloDocumentoImplCopyWith<$Res> {
-  __$$ArticuloDocumentoImplCopyWithImpl(
-    _$ArticuloDocumentoImpl _value,
-    $Res Function(_$ArticuloDocumentoImpl) _then,
-  ) : super(_value, _then);
+  __$$ArticuloDocumentoImplCopyWithImpl(_$ArticuloDocumentoImpl _value,
+      $Res Function(_$ArticuloDocumentoImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of ArticuloDocumento
   /// with the given fields replaced by the non-null parameter values.
@@ -128,42 +115,36 @@ class __$$ArticuloDocumentoImplCopyWithImpl<$Res>
     Object? idiomaId = null,
     Object? observaciones = freezed,
   }) {
-    return _then(
-      _$ArticuloDocumentoImpl(
-        articuloId:
-            null == articuloId
-                ? _value.articuloId
-                : articuloId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        nombreArchivo:
-            freezed == nombreArchivo
-                ? _value.nombreArchivo
-                : nombreArchivo // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        idiomaId:
-            null == idiomaId
-                ? _value.idiomaId
-                : idiomaId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        observaciones:
-            freezed == observaciones
-                ? _value.observaciones
-                : observaciones // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+    return _then(_$ArticuloDocumentoImpl(
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      nombreArchivo: freezed == nombreArchivo
+          ? _value.nombreArchivo
+          : nombreArchivo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      idiomaId: null == idiomaId
+          ? _value.idiomaId
+          : idiomaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      observaciones: freezed == observaciones
+          ? _value.observaciones
+          : observaciones // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$ArticuloDocumentoImpl extends _ArticuloDocumento {
-  const _$ArticuloDocumentoImpl({
-    required this.articuloId,
-    this.nombreArchivo,
-    required this.idiomaId,
-    this.observaciones,
-  }) : super._();
+  const _$ArticuloDocumentoImpl(
+      {required this.articuloId,
+      this.nombreArchivo,
+      required this.idiomaId,
+      this.observaciones})
+      : super._();
 
   @override
   final String articuloId;
@@ -196,12 +177,7 @@ class _$ArticuloDocumentoImpl extends _ArticuloDocumento {
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    articuloId,
-    nombreArchivo,
-    idiomaId,
-    observaciones,
-  );
+      runtimeType, articuloId, nombreArchivo, idiomaId, observaciones);
 
   /// Create a copy of ArticuloDocumento
   /// with the given fields replaced by the non-null parameter values.
@@ -210,18 +186,15 @@ class _$ArticuloDocumentoImpl extends _ArticuloDocumento {
   @pragma('vm:prefer-inline')
   _$$ArticuloDocumentoImplCopyWith<_$ArticuloDocumentoImpl> get copyWith =>
       __$$ArticuloDocumentoImplCopyWithImpl<_$ArticuloDocumentoImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 }
 
 abstract class _ArticuloDocumento extends ArticuloDocumento {
-  const factory _ArticuloDocumento({
-    required final String articuloId,
-    final String? nombreArchivo,
-    required final String idiomaId,
-    final String? observaciones,
-  }) = _$ArticuloDocumentoImpl;
+  const factory _ArticuloDocumento(
+      {required final String articuloId,
+      final String? nombreArchivo,
+      required final String idiomaId,
+      final String? observaciones}) = _$ArticuloDocumentoImpl;
   const _ArticuloDocumento._() : super._();
 
   @override

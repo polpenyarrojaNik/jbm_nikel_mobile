@@ -12,8 +12,7 @@ part of 'cliente_imp_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ClienteImpDTO _$ClienteImpDTOFromJson(Map<String, dynamic> json) {
   return _ClienteImpDTO.fromJson(json);
@@ -39,14 +38,12 @@ mixin _$ClienteImpDTO {
 /// @nodoc
 abstract class $ClienteImpDTOCopyWith<$Res> {
   factory $ClienteImpDTOCopyWith(
-    ClienteImpDTO value,
-    $Res Function(ClienteImpDTO) then,
-  ) = _$ClienteImpDTOCopyWithImpl<$Res, ClienteImpDTO>;
+          ClienteImpDTO value, $Res Function(ClienteImpDTO) then) =
+      _$ClienteImpDTOCopyWithImpl<$Res, ClienteImpDTO>;
   @useResult
-  $Res call({
-    @JsonKey(name: 'CLIENTE_ID') String clienteId,
-    @JsonKey(name: 'SECTOR_ID') String sectorId,
-  });
+  $Res call(
+      {@JsonKey(name: 'CLIENTE_ID') String clienteId,
+      @JsonKey(name: 'SECTOR_ID') String sectorId});
 }
 
 /// @nodoc
@@ -63,22 +60,20 @@ class _$ClienteImpDTOCopyWithImpl<$Res, $Val extends ClienteImpDTO>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? clienteId = null, Object? sectorId = null}) {
-    return _then(
-      _value.copyWith(
-            clienteId:
-                null == clienteId
-                    ? _value.clienteId
-                    : clienteId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            sectorId:
-                null == sectorId
-                    ? _value.sectorId
-                    : sectorId // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? clienteId = null,
+    Object? sectorId = null,
+  }) {
+    return _then(_value.copyWith(
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      sectorId: null == sectorId
+          ? _value.sectorId
+          : sectorId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
@@ -86,15 +81,13 @@ class _$ClienteImpDTOCopyWithImpl<$Res, $Val extends ClienteImpDTO>
 abstract class _$$ClienteImpDTOImplCopyWith<$Res>
     implements $ClienteImpDTOCopyWith<$Res> {
   factory _$$ClienteImpDTOImplCopyWith(
-    _$ClienteImpDTOImpl value,
-    $Res Function(_$ClienteImpDTOImpl) then,
-  ) = __$$ClienteImpDTOImplCopyWithImpl<$Res>;
+          _$ClienteImpDTOImpl value, $Res Function(_$ClienteImpDTOImpl) then) =
+      __$$ClienteImpDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'CLIENTE_ID') String clienteId,
-    @JsonKey(name: 'SECTOR_ID') String sectorId,
-  });
+  $Res call(
+      {@JsonKey(name: 'CLIENTE_ID') String clienteId,
+      @JsonKey(name: 'SECTOR_ID') String sectorId});
 }
 
 /// @nodoc
@@ -102,39 +95,37 @@ class __$$ClienteImpDTOImplCopyWithImpl<$Res>
     extends _$ClienteImpDTOCopyWithImpl<$Res, _$ClienteImpDTOImpl>
     implements _$$ClienteImpDTOImplCopyWith<$Res> {
   __$$ClienteImpDTOImplCopyWithImpl(
-    _$ClienteImpDTOImpl _value,
-    $Res Function(_$ClienteImpDTOImpl) _then,
-  ) : super(_value, _then);
+      _$ClienteImpDTOImpl _value, $Res Function(_$ClienteImpDTOImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of ClienteImpDTO
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? clienteId = null, Object? sectorId = null}) {
-    return _then(
-      _$ClienteImpDTOImpl(
-        clienteId:
-            null == clienteId
-                ? _value.clienteId
-                : clienteId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        sectorId:
-            null == sectorId
-                ? _value.sectorId
-                : sectorId // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? clienteId = null,
+    Object? sectorId = null,
+  }) {
+    return _then(_$ClienteImpDTOImpl(
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      sectorId: null == sectorId
+          ? _value.sectorId
+          : sectorId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ClienteImpDTOImpl extends _ClienteImpDTO {
-  const _$ClienteImpDTOImpl({
-    @JsonKey(name: 'CLIENTE_ID') required this.clienteId,
-    @JsonKey(name: 'SECTOR_ID') required this.sectorId,
-  }) : super._();
+  const _$ClienteImpDTOImpl(
+      {@JsonKey(name: 'CLIENTE_ID') required this.clienteId,
+      @JsonKey(name: 'SECTOR_ID') required this.sectorId})
+      : super._();
 
   factory _$ClienteImpDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ClienteImpDTOImplFromJson(json);
@@ -176,15 +167,17 @@ class _$ClienteImpDTOImpl extends _ClienteImpDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ClienteImpDTOImplToJson(this);
+    return _$$ClienteImpDTOImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _ClienteImpDTO extends ClienteImpDTO {
-  const factory _ClienteImpDTO({
-    @JsonKey(name: 'CLIENTE_ID') required final String clienteId,
-    @JsonKey(name: 'SECTOR_ID') required final String sectorId,
-  }) = _$ClienteImpDTOImpl;
+  const factory _ClienteImpDTO(
+          {@JsonKey(name: 'CLIENTE_ID') required final String clienteId,
+          @JsonKey(name: 'SECTOR_ID') required final String sectorId}) =
+      _$ClienteImpDTOImpl;
   const _ClienteImpDTO._() : super._();
 
   factory _ClienteImpDTO.fromJson(Map<String, dynamic> json) =

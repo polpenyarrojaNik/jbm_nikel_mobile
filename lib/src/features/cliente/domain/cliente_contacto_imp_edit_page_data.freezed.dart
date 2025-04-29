@@ -12,8 +12,7 @@ part of 'cliente_contacto_imp_edit_page_data.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ClienteContactoImpEditPageData {
@@ -25,19 +24,16 @@ mixin _$ClienteContactoImpEditPageData {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   $ClienteContactoImpEditPageDataCopyWith<ClienteContactoImpEditPageData>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ClienteContactoImpEditPageDataCopyWith<$Res> {
   factory $ClienteContactoImpEditPageDataCopyWith(
-    ClienteContactoImpEditPageData value,
-    $Res Function(ClienteContactoImpEditPageData) then,
-  ) =
-      _$ClienteContactoImpEditPageDataCopyWithImpl<
-        $Res,
-        ClienteContactoImpEditPageData
-      >;
+          ClienteContactoImpEditPageData value,
+          $Res Function(ClienteContactoImpEditPageData) then) =
+      _$ClienteContactoImpEditPageDataCopyWithImpl<$Res,
+          ClienteContactoImpEditPageData>;
   @useResult
   $Res call({ClienteContacto? clienteContacto, bool isSent, Object? error});
 
@@ -45,10 +41,8 @@ abstract class $ClienteContactoImpEditPageDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ClienteContactoImpEditPageDataCopyWithImpl<
-  $Res,
-  $Val extends ClienteContactoImpEditPageData
->
+class _$ClienteContactoImpEditPageDataCopyWithImpl<$Res,
+        $Val extends ClienteContactoImpEditPageData>
     implements $ClienteContactoImpEditPageDataCopyWith<$Res> {
   _$ClienteContactoImpEditPageDataCopyWithImpl(this._value, this._then);
 
@@ -66,22 +60,17 @@ class _$ClienteContactoImpEditPageDataCopyWithImpl<
     Object? isSent = null,
     Object? error = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            clienteContacto:
-                freezed == clienteContacto
-                    ? _value.clienteContacto
-                    : clienteContacto // ignore: cast_nullable_to_non_nullable
-                        as ClienteContacto?,
-            isSent:
-                null == isSent
-                    ? _value.isSent
-                    : isSent // ignore: cast_nullable_to_non_nullable
-                        as bool,
-            error: freezed == error ? _value.error : error,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      clienteContacto: freezed == clienteContacto
+          ? _value.clienteContacto
+          : clienteContacto // ignore: cast_nullable_to_non_nullable
+              as ClienteContacto?,
+      isSent: null == isSent
+          ? _value.isSent
+          : isSent // ignore: cast_nullable_to_non_nullable
+              as bool,
+      error: freezed == error ? _value.error : error,
+    ) as $Val);
   }
 
   /// Create a copy of ClienteContactoImpEditPageData
@@ -103,9 +92,9 @@ class _$ClienteContactoImpEditPageDataCopyWithImpl<
 abstract class _$$ClienteContactoImpEditPageDataImplCopyWith<$Res>
     implements $ClienteContactoImpEditPageDataCopyWith<$Res> {
   factory _$$ClienteContactoImpEditPageDataImplCopyWith(
-    _$ClienteContactoImpEditPageDataImpl value,
-    $Res Function(_$ClienteContactoImpEditPageDataImpl) then,
-  ) = __$$ClienteContactoImpEditPageDataImplCopyWithImpl<$Res>;
+          _$ClienteContactoImpEditPageDataImpl value,
+          $Res Function(_$ClienteContactoImpEditPageDataImpl) then) =
+      __$$ClienteContactoImpEditPageDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({ClienteContacto? clienteContacto, bool isSent, Object? error});
@@ -116,16 +105,13 @@ abstract class _$$ClienteContactoImpEditPageDataImplCopyWith<$Res>
 
 /// @nodoc
 class __$$ClienteContactoImpEditPageDataImplCopyWithImpl<$Res>
-    extends
-        _$ClienteContactoImpEditPageDataCopyWithImpl<
-          $Res,
-          _$ClienteContactoImpEditPageDataImpl
-        >
+    extends _$ClienteContactoImpEditPageDataCopyWithImpl<$Res,
+        _$ClienteContactoImpEditPageDataImpl>
     implements _$$ClienteContactoImpEditPageDataImplCopyWith<$Res> {
   __$$ClienteContactoImpEditPageDataImplCopyWithImpl(
-    _$ClienteContactoImpEditPageDataImpl _value,
-    $Res Function(_$ClienteContactoImpEditPageDataImpl) _then,
-  ) : super(_value, _then);
+      _$ClienteContactoImpEditPageDataImpl _value,
+      $Res Function(_$ClienteContactoImpEditPageDataImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of ClienteContactoImpEditPageData
   /// with the given fields replaced by the non-null parameter values.
@@ -136,21 +122,17 @@ class __$$ClienteContactoImpEditPageDataImplCopyWithImpl<$Res>
     Object? isSent = null,
     Object? error = freezed,
   }) {
-    return _then(
-      _$ClienteContactoImpEditPageDataImpl(
-        clienteContacto:
-            freezed == clienteContacto
-                ? _value.clienteContacto
-                : clienteContacto // ignore: cast_nullable_to_non_nullable
-                    as ClienteContacto?,
-        isSent:
-            null == isSent
-                ? _value.isSent
-                : isSent // ignore: cast_nullable_to_non_nullable
-                    as bool,
-        error: freezed == error ? _value.error : error,
-      ),
-    );
+    return _then(_$ClienteContactoImpEditPageDataImpl(
+      clienteContacto: freezed == clienteContacto
+          ? _value.clienteContacto
+          : clienteContacto // ignore: cast_nullable_to_non_nullable
+              as ClienteContacto?,
+      isSent: null == isSent
+          ? _value.isSent
+          : isSent // ignore: cast_nullable_to_non_nullable
+              as bool,
+      error: freezed == error ? _value.error : error,
+    ));
   }
 }
 
@@ -158,11 +140,9 @@ class __$$ClienteContactoImpEditPageDataImplCopyWithImpl<$Res>
 
 class _$ClienteContactoImpEditPageDataImpl
     extends _ClienteContactoImpEditPageData {
-  const _$ClienteContactoImpEditPageDataImpl({
-    required this.clienteContacto,
-    required this.isSent,
-    this.error,
-  }) : super._();
+  const _$ClienteContactoImpEditPageDataImpl(
+      {required this.clienteContacto, required this.isSent, this.error})
+      : super._();
 
   @override
   final ClienteContacto? clienteContacto;
@@ -188,12 +168,8 @@ class _$ClienteContactoImpEditPageDataImpl
   }
 
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    clienteContacto,
-    isSent,
-    const DeepCollectionEquality().hash(error),
-  );
+  int get hashCode => Object.hash(runtimeType, clienteContacto, isSent,
+      const DeepCollectionEquality().hash(error));
 
   /// Create a copy of ClienteContactoImpEditPageData
   /// with the given fields replaced by the non-null parameter values.
@@ -201,20 +177,17 @@ class _$ClienteContactoImpEditPageDataImpl
   @override
   @pragma('vm:prefer-inline')
   _$$ClienteContactoImpEditPageDataImplCopyWith<
-    _$ClienteContactoImpEditPageDataImpl
-  >
-  get copyWith => __$$ClienteContactoImpEditPageDataImplCopyWithImpl<
-    _$ClienteContactoImpEditPageDataImpl
-  >(this, _$identity);
+          _$ClienteContactoImpEditPageDataImpl>
+      get copyWith => __$$ClienteContactoImpEditPageDataImplCopyWithImpl<
+          _$ClienteContactoImpEditPageDataImpl>(this, _$identity);
 }
 
 abstract class _ClienteContactoImpEditPageData
     extends ClienteContactoImpEditPageData {
-  const factory _ClienteContactoImpEditPageData({
-    required final ClienteContacto? clienteContacto,
-    required final bool isSent,
-    final Object? error,
-  }) = _$ClienteContactoImpEditPageDataImpl;
+  const factory _ClienteContactoImpEditPageData(
+      {required final ClienteContacto? clienteContacto,
+      required final bool isSent,
+      final Object? error}) = _$ClienteContactoImpEditPageDataImpl;
   const _ClienteContactoImpEditPageData._() : super._();
 
   @override
@@ -229,7 +202,6 @@ abstract class _ClienteContactoImpEditPageData
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClienteContactoImpEditPageDataImplCopyWith<
-    _$ClienteContactoImpEditPageDataImpl
-  >
-  get copyWith => throw _privateConstructorUsedError;
+          _$ClienteContactoImpEditPageDataImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

@@ -12,8 +12,7 @@ part of 'cliente_adjunto_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ClienteAdjuntoDTO _$ClienteAdjuntoDTOFromJson(Map<String, dynamic> json) {
   return _ClienteAdjuntoDTO.fromJson(json);
@@ -39,14 +38,12 @@ mixin _$ClienteAdjuntoDTO {
 /// @nodoc
 abstract class $ClienteAdjuntoDTOCopyWith<$Res> {
   factory $ClienteAdjuntoDTOCopyWith(
-    ClienteAdjuntoDTO value,
-    $Res Function(ClienteAdjuntoDTO) then,
-  ) = _$ClienteAdjuntoDTOCopyWithImpl<$Res, ClienteAdjuntoDTO>;
+          ClienteAdjuntoDTO value, $Res Function(ClienteAdjuntoDTO) then) =
+      _$ClienteAdjuntoDTOCopyWithImpl<$Res, ClienteAdjuntoDTO>;
   @useResult
-  $Res call({
-    @JsonKey(name: 'CLIENTE_ID') String clienteId,
-    @JsonKey(name: 'NOMBRE_ARCHIVO') String nombreAdjunto,
-  });
+  $Res call(
+      {@JsonKey(name: 'CLIENTE_ID') String clienteId,
+      @JsonKey(name: 'NOMBRE_ARCHIVO') String nombreAdjunto});
 }
 
 /// @nodoc
@@ -63,78 +60,72 @@ class _$ClienteAdjuntoDTOCopyWithImpl<$Res, $Val extends ClienteAdjuntoDTO>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? clienteId = null, Object? nombreAdjunto = null}) {
-    return _then(
-      _value.copyWith(
-            clienteId:
-                null == clienteId
-                    ? _value.clienteId
-                    : clienteId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            nombreAdjunto:
-                null == nombreAdjunto
-                    ? _value.nombreAdjunto
-                    : nombreAdjunto // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? clienteId = null,
+    Object? nombreAdjunto = null,
+  }) {
+    return _then(_value.copyWith(
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      nombreAdjunto: null == nombreAdjunto
+          ? _value.nombreAdjunto
+          : nombreAdjunto // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$ClienteAdjuntoDTOImplCopyWith<$Res>
     implements $ClienteAdjuntoDTOCopyWith<$Res> {
-  factory _$$ClienteAdjuntoDTOImplCopyWith(
-    _$ClienteAdjuntoDTOImpl value,
-    $Res Function(_$ClienteAdjuntoDTOImpl) then,
-  ) = __$$ClienteAdjuntoDTOImplCopyWithImpl<$Res>;
+  factory _$$ClienteAdjuntoDTOImplCopyWith(_$ClienteAdjuntoDTOImpl value,
+          $Res Function(_$ClienteAdjuntoDTOImpl) then) =
+      __$$ClienteAdjuntoDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'CLIENTE_ID') String clienteId,
-    @JsonKey(name: 'NOMBRE_ARCHIVO') String nombreAdjunto,
-  });
+  $Res call(
+      {@JsonKey(name: 'CLIENTE_ID') String clienteId,
+      @JsonKey(name: 'NOMBRE_ARCHIVO') String nombreAdjunto});
 }
 
 /// @nodoc
 class __$$ClienteAdjuntoDTOImplCopyWithImpl<$Res>
     extends _$ClienteAdjuntoDTOCopyWithImpl<$Res, _$ClienteAdjuntoDTOImpl>
     implements _$$ClienteAdjuntoDTOImplCopyWith<$Res> {
-  __$$ClienteAdjuntoDTOImplCopyWithImpl(
-    _$ClienteAdjuntoDTOImpl _value,
-    $Res Function(_$ClienteAdjuntoDTOImpl) _then,
-  ) : super(_value, _then);
+  __$$ClienteAdjuntoDTOImplCopyWithImpl(_$ClienteAdjuntoDTOImpl _value,
+      $Res Function(_$ClienteAdjuntoDTOImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of ClienteAdjuntoDTO
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? clienteId = null, Object? nombreAdjunto = null}) {
-    return _then(
-      _$ClienteAdjuntoDTOImpl(
-        clienteId:
-            null == clienteId
-                ? _value.clienteId
-                : clienteId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        nombreAdjunto:
-            null == nombreAdjunto
-                ? _value.nombreAdjunto
-                : nombreAdjunto // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? clienteId = null,
+    Object? nombreAdjunto = null,
+  }) {
+    return _then(_$ClienteAdjuntoDTOImpl(
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      nombreAdjunto: null == nombreAdjunto
+          ? _value.nombreAdjunto
+          : nombreAdjunto // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ClienteAdjuntoDTOImpl extends _ClienteAdjuntoDTO {
-  const _$ClienteAdjuntoDTOImpl({
-    @JsonKey(name: 'CLIENTE_ID') required this.clienteId,
-    @JsonKey(name: 'NOMBRE_ARCHIVO') required this.nombreAdjunto,
-  }) : super._();
+  const _$ClienteAdjuntoDTOImpl(
+      {@JsonKey(name: 'CLIENTE_ID') required this.clienteId,
+      @JsonKey(name: 'NOMBRE_ARCHIVO') required this.nombreAdjunto})
+      : super._();
 
   factory _$ClienteAdjuntoDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ClienteAdjuntoDTOImplFromJson(json);
@@ -173,21 +164,21 @@ class _$ClienteAdjuntoDTOImpl extends _ClienteAdjuntoDTO {
   @pragma('vm:prefer-inline')
   _$$ClienteAdjuntoDTOImplCopyWith<_$ClienteAdjuntoDTOImpl> get copyWith =>
       __$$ClienteAdjuntoDTOImplCopyWithImpl<_$ClienteAdjuntoDTOImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ClienteAdjuntoDTOImplToJson(this);
+    return _$$ClienteAdjuntoDTOImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _ClienteAdjuntoDTO extends ClienteAdjuntoDTO {
-  const factory _ClienteAdjuntoDTO({
-    @JsonKey(name: 'CLIENTE_ID') required final String clienteId,
-    @JsonKey(name: 'NOMBRE_ARCHIVO') required final String nombreAdjunto,
-  }) = _$ClienteAdjuntoDTOImpl;
+  const factory _ClienteAdjuntoDTO(
+      {@JsonKey(name: 'CLIENTE_ID') required final String clienteId,
+      @JsonKey(name: 'NOMBRE_ARCHIVO')
+      required final String nombreAdjunto}) = _$ClienteAdjuntoDTOImpl;
   const _ClienteAdjuntoDTO._() : super._();
 
   factory _ClienteAdjuntoDTO.fromJson(Map<String, dynamic> json) =

@@ -12,8 +12,7 @@ part of 'pedido_venta_linea_ultimos_precios_param.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$UltimosPreciosParam {
@@ -30,9 +29,8 @@ mixin _$UltimosPreciosParam {
 /// @nodoc
 abstract class $UltimosPreciosParamCopyWith<$Res> {
   factory $UltimosPreciosParamCopyWith(
-    UltimosPreciosParam value,
-    $Res Function(UltimosPreciosParam) then,
-  ) = _$UltimosPreciosParamCopyWithImpl<$Res, UltimosPreciosParam>;
+          UltimosPreciosParam value, $Res Function(UltimosPreciosParam) then) =
+      _$UltimosPreciosParamCopyWithImpl<$Res, UltimosPreciosParam>;
   @useResult
   $Res call({String clienteId, String articuloId});
 }
@@ -51,32 +49,29 @@ class _$UltimosPreciosParamCopyWithImpl<$Res, $Val extends UltimosPreciosParam>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? clienteId = null, Object? articuloId = null}) {
-    return _then(
-      _value.copyWith(
-            clienteId:
-                null == clienteId
-                    ? _value.clienteId
-                    : clienteId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            articuloId:
-                null == articuloId
-                    ? _value.articuloId
-                    : articuloId // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? clienteId = null,
+    Object? articuloId = null,
+  }) {
+    return _then(_value.copyWith(
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$UltimosPreciosParamImplCopyWith<$Res>
     implements $UltimosPreciosParamCopyWith<$Res> {
-  factory _$$UltimosPreciosParamImplCopyWith(
-    _$UltimosPreciosParamImpl value,
-    $Res Function(_$UltimosPreciosParamImpl) then,
-  ) = __$$UltimosPreciosParamImplCopyWithImpl<$Res>;
+  factory _$$UltimosPreciosParamImplCopyWith(_$UltimosPreciosParamImpl value,
+          $Res Function(_$UltimosPreciosParamImpl) then) =
+      __$$UltimosPreciosParamImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String clienteId, String articuloId});
@@ -86,40 +81,37 @@ abstract class _$$UltimosPreciosParamImplCopyWith<$Res>
 class __$$UltimosPreciosParamImplCopyWithImpl<$Res>
     extends _$UltimosPreciosParamCopyWithImpl<$Res, _$UltimosPreciosParamImpl>
     implements _$$UltimosPreciosParamImplCopyWith<$Res> {
-  __$$UltimosPreciosParamImplCopyWithImpl(
-    _$UltimosPreciosParamImpl _value,
-    $Res Function(_$UltimosPreciosParamImpl) _then,
-  ) : super(_value, _then);
+  __$$UltimosPreciosParamImplCopyWithImpl(_$UltimosPreciosParamImpl _value,
+      $Res Function(_$UltimosPreciosParamImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of UltimosPreciosParam
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? clienteId = null, Object? articuloId = null}) {
-    return _then(
-      _$UltimosPreciosParamImpl(
-        clienteId:
-            null == clienteId
-                ? _value.clienteId
-                : clienteId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        articuloId:
-            null == articuloId
-                ? _value.articuloId
-                : articuloId // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? clienteId = null,
+    Object? articuloId = null,
+  }) {
+    return _then(_$UltimosPreciosParamImpl(
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$UltimosPreciosParamImpl extends _UltimosPreciosParam {
-  const _$UltimosPreciosParamImpl({
-    required this.clienteId,
-    required this.articuloId,
-  }) : super._();
+  const _$UltimosPreciosParamImpl(
+      {required this.clienteId, required this.articuloId})
+      : super._();
 
   @override
   final String clienteId;
@@ -152,16 +144,13 @@ class _$UltimosPreciosParamImpl extends _UltimosPreciosParam {
   @pragma('vm:prefer-inline')
   _$$UltimosPreciosParamImplCopyWith<_$UltimosPreciosParamImpl> get copyWith =>
       __$$UltimosPreciosParamImplCopyWithImpl<_$UltimosPreciosParamImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 }
 
 abstract class _UltimosPreciosParam extends UltimosPreciosParam {
-  const factory _UltimosPreciosParam({
-    required final String clienteId,
-    required final String articuloId,
-  }) = _$UltimosPreciosParamImpl;
+  const factory _UltimosPreciosParam(
+      {required final String clienteId,
+      required final String articuloId}) = _$UltimosPreciosParamImpl;
   const _UltimosPreciosParam._() : super._();
 
   @override

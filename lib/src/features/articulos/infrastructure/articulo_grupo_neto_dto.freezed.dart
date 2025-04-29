@@ -12,8 +12,7 @@ part of 'articulo_grupo_neto_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ArticuloGrupoNetoDTO _$ArticuloGrupoNetoDTOFromJson(Map<String, dynamic> json) {
   return _ArticuloGrupoNetoDTO.fromJson(json);
@@ -52,29 +51,25 @@ mixin _$ArticuloGrupoNetoDTO {
 
 /// @nodoc
 abstract class $ArticuloGrupoNetoDTOCopyWith<$Res> {
-  factory $ArticuloGrupoNetoDTOCopyWith(
-    ArticuloGrupoNetoDTO value,
-    $Res Function(ArticuloGrupoNetoDTO) then,
-  ) = _$ArticuloGrupoNetoDTOCopyWithImpl<$Res, ArticuloGrupoNetoDTO>;
+  factory $ArticuloGrupoNetoDTOCopyWith(ArticuloGrupoNetoDTO value,
+          $Res Function(ArticuloGrupoNetoDTO) then) =
+      _$ArticuloGrupoNetoDTOCopyWithImpl<$Res, ArticuloGrupoNetoDTO>;
   @useResult
-  $Res call({
-    @JsonKey(name: 'ARTICULO_ID') String articuloId,
-    @JsonKey(name: 'GRUPO_NETO_ID') String grupoNetoId,
-    @JsonKey(name: 'GRUPO_NETO_DESCRIPCION') String grupoNetoDescripcion,
-    @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
-    @JsonKey(name: 'PRECIO') double precio,
-    @JsonKey(name: 'DIVISA_ID') String divisaId,
-    @JsonKey(name: 'TIPO_PRECIO') int tipoPrecio,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'ARTICULO_ID') String articuloId,
+      @JsonKey(name: 'GRUPO_NETO_ID') String grupoNetoId,
+      @JsonKey(name: 'GRUPO_NETO_DESCRIPCION') String grupoNetoDescripcion,
+      @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
+      @JsonKey(name: 'PRECIO') double precio,
+      @JsonKey(name: 'DIVISA_ID') String divisaId,
+      @JsonKey(name: 'TIPO_PRECIO') int tipoPrecio,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
-class _$ArticuloGrupoNetoDTOCopyWithImpl<
-  $Res,
-  $Val extends ArticuloGrupoNetoDTO
->
+class _$ArticuloGrupoNetoDTOCopyWithImpl<$Res,
+        $Val extends ArticuloGrupoNetoDTO>
     implements $ArticuloGrupoNetoDTOCopyWith<$Res> {
   _$ArticuloGrupoNetoDTOCopyWithImpl(this._value, this._then);
 
@@ -98,89 +93,74 @@ class _$ArticuloGrupoNetoDTOCopyWithImpl<
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            articuloId:
-                null == articuloId
-                    ? _value.articuloId
-                    : articuloId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            grupoNetoId:
-                null == grupoNetoId
-                    ? _value.grupoNetoId
-                    : grupoNetoId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            grupoNetoDescripcion:
-                null == grupoNetoDescripcion
-                    ? _value.grupoNetoDescripcion
-                    : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
-                        as String,
-            cantidadDesde:
-                null == cantidadDesde
-                    ? _value.cantidadDesde
-                    : cantidadDesde // ignore: cast_nullable_to_non_nullable
-                        as int,
-            precio:
-                null == precio
-                    ? _value.precio
-                    : precio // ignore: cast_nullable_to_non_nullable
-                        as double,
-            divisaId:
-                null == divisaId
-                    ? _value.divisaId
-                    : divisaId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            tipoPrecio:
-                null == tipoPrecio
-                    ? _value.tipoPrecio
-                    : tipoPrecio // ignore: cast_nullable_to_non_nullable
-                        as int,
-            lastUpdated:
-                null == lastUpdated
-                    ? _value.lastUpdated
-                    : lastUpdated // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      grupoNetoId: null == grupoNetoId
+          ? _value.grupoNetoId
+          : grupoNetoId // ignore: cast_nullable_to_non_nullable
+              as String,
+      grupoNetoDescripcion: null == grupoNetoDescripcion
+          ? _value.grupoNetoDescripcion
+          : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
+              as String,
+      cantidadDesde: null == cantidadDesde
+          ? _value.cantidadDesde
+          : cantidadDesde // ignore: cast_nullable_to_non_nullable
+              as int,
+      precio: null == precio
+          ? _value.precio
+          : precio // ignore: cast_nullable_to_non_nullable
+              as double,
+      divisaId: null == divisaId
+          ? _value.divisaId
+          : divisaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      tipoPrecio: null == tipoPrecio
+          ? _value.tipoPrecio
+          : tipoPrecio // ignore: cast_nullable_to_non_nullable
+              as int,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$ArticuloGrupoNetoDTOImplCopyWith<$Res>
     implements $ArticuloGrupoNetoDTOCopyWith<$Res> {
-  factory _$$ArticuloGrupoNetoDTOImplCopyWith(
-    _$ArticuloGrupoNetoDTOImpl value,
-    $Res Function(_$ArticuloGrupoNetoDTOImpl) then,
-  ) = __$$ArticuloGrupoNetoDTOImplCopyWithImpl<$Res>;
+  factory _$$ArticuloGrupoNetoDTOImplCopyWith(_$ArticuloGrupoNetoDTOImpl value,
+          $Res Function(_$ArticuloGrupoNetoDTOImpl) then) =
+      __$$ArticuloGrupoNetoDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'ARTICULO_ID') String articuloId,
-    @JsonKey(name: 'GRUPO_NETO_ID') String grupoNetoId,
-    @JsonKey(name: 'GRUPO_NETO_DESCRIPCION') String grupoNetoDescripcion,
-    @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
-    @JsonKey(name: 'PRECIO') double precio,
-    @JsonKey(name: 'DIVISA_ID') String divisaId,
-    @JsonKey(name: 'TIPO_PRECIO') int tipoPrecio,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'ARTICULO_ID') String articuloId,
+      @JsonKey(name: 'GRUPO_NETO_ID') String grupoNetoId,
+      @JsonKey(name: 'GRUPO_NETO_DESCRIPCION') String grupoNetoDescripcion,
+      @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
+      @JsonKey(name: 'PRECIO') double precio,
+      @JsonKey(name: 'DIVISA_ID') String divisaId,
+      @JsonKey(name: 'TIPO_PRECIO') int tipoPrecio,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
 class __$$ArticuloGrupoNetoDTOImplCopyWithImpl<$Res>
     extends _$ArticuloGrupoNetoDTOCopyWithImpl<$Res, _$ArticuloGrupoNetoDTOImpl>
     implements _$$ArticuloGrupoNetoDTOImplCopyWith<$Res> {
-  __$$ArticuloGrupoNetoDTOImplCopyWithImpl(
-    _$ArticuloGrupoNetoDTOImpl _value,
-    $Res Function(_$ArticuloGrupoNetoDTOImpl) _then,
-  ) : super(_value, _then);
+  __$$ArticuloGrupoNetoDTOImplCopyWithImpl(_$ArticuloGrupoNetoDTOImpl _value,
+      $Res Function(_$ArticuloGrupoNetoDTOImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of ArticuloGrupoNetoDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -197,72 +177,62 @@ class __$$ArticuloGrupoNetoDTOImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$ArticuloGrupoNetoDTOImpl(
-        articuloId:
-            null == articuloId
-                ? _value.articuloId
-                : articuloId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        grupoNetoId:
-            null == grupoNetoId
-                ? _value.grupoNetoId
-                : grupoNetoId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        grupoNetoDescripcion:
-            null == grupoNetoDescripcion
-                ? _value.grupoNetoDescripcion
-                : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
-                    as String,
-        cantidadDesde:
-            null == cantidadDesde
-                ? _value.cantidadDesde
-                : cantidadDesde // ignore: cast_nullable_to_non_nullable
-                    as int,
-        precio:
-            null == precio
-                ? _value.precio
-                : precio // ignore: cast_nullable_to_non_nullable
-                    as double,
-        divisaId:
-            null == divisaId
-                ? _value.divisaId
-                : divisaId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        tipoPrecio:
-            null == tipoPrecio
-                ? _value.tipoPrecio
-                : tipoPrecio // ignore: cast_nullable_to_non_nullable
-                    as int,
-        lastUpdated:
-            null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+    return _then(_$ArticuloGrupoNetoDTOImpl(
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      grupoNetoId: null == grupoNetoId
+          ? _value.grupoNetoId
+          : grupoNetoId // ignore: cast_nullable_to_non_nullable
+              as String,
+      grupoNetoDescripcion: null == grupoNetoDescripcion
+          ? _value.grupoNetoDescripcion
+          : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
+              as String,
+      cantidadDesde: null == cantidadDesde
+          ? _value.cantidadDesde
+          : cantidadDesde // ignore: cast_nullable_to_non_nullable
+              as int,
+      precio: null == precio
+          ? _value.precio
+          : precio // ignore: cast_nullable_to_non_nullable
+              as double,
+      divisaId: null == divisaId
+          ? _value.divisaId
+          : divisaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      tipoPrecio: null == tipoPrecio
+          ? _value.tipoPrecio
+          : tipoPrecio // ignore: cast_nullable_to_non_nullable
+              as int,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ArticuloGrupoNetoDTOImpl extends _ArticuloGrupoNetoDTO {
-  const _$ArticuloGrupoNetoDTOImpl({
-    @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
-    @JsonKey(name: 'GRUPO_NETO_ID') required this.grupoNetoId,
-    @JsonKey(name: 'GRUPO_NETO_DESCRIPCION') required this.grupoNetoDescripcion,
-    @JsonKey(name: 'CANTIDAD_DESDE') required this.cantidadDesde,
-    @JsonKey(name: 'PRECIO') required this.precio,
-    @JsonKey(name: 'DIVISA_ID') required this.divisaId,
-    @JsonKey(name: 'TIPO_PRECIO') required this.tipoPrecio,
-    @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-    @JsonKey(name: 'DELETED') this.deleted = 'N',
-  }) : super._();
+  const _$ArticuloGrupoNetoDTOImpl(
+      {@JsonKey(name: 'ARTICULO_ID') required this.articuloId,
+      @JsonKey(name: 'GRUPO_NETO_ID') required this.grupoNetoId,
+      @JsonKey(name: 'GRUPO_NETO_DESCRIPCION')
+      required this.grupoNetoDescripcion,
+      @JsonKey(name: 'CANTIDAD_DESDE') required this.cantidadDesde,
+      @JsonKey(name: 'PRECIO') required this.precio,
+      @JsonKey(name: 'DIVISA_ID') required this.divisaId,
+      @JsonKey(name: 'TIPO_PRECIO') required this.tipoPrecio,
+      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+      @JsonKey(name: 'DELETED') this.deleted = 'N'})
+      : super._();
 
   factory _$ArticuloGrupoNetoDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ArticuloGrupoNetoDTOImplFromJson(json);
@@ -326,17 +296,16 @@ class _$ArticuloGrupoNetoDTOImpl extends _ArticuloGrupoNetoDTO {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    articuloId,
-    grupoNetoId,
-    grupoNetoDescripcion,
-    cantidadDesde,
-    precio,
-    divisaId,
-    tipoPrecio,
-    lastUpdated,
-    deleted,
-  );
+      runtimeType,
+      articuloId,
+      grupoNetoId,
+      grupoNetoDescripcion,
+      cantidadDesde,
+      precio,
+      divisaId,
+      tipoPrecio,
+      lastUpdated,
+      deleted);
 
   /// Create a copy of ArticuloGrupoNetoDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -344,31 +313,31 @@ class _$ArticuloGrupoNetoDTOImpl extends _ArticuloGrupoNetoDTO {
   @override
   @pragma('vm:prefer-inline')
   _$$ArticuloGrupoNetoDTOImplCopyWith<_$ArticuloGrupoNetoDTOImpl>
-  get copyWith =>
-      __$$ArticuloGrupoNetoDTOImplCopyWithImpl<_$ArticuloGrupoNetoDTOImpl>(
-        this,
-        _$identity,
-      );
+      get copyWith =>
+          __$$ArticuloGrupoNetoDTOImplCopyWithImpl<_$ArticuloGrupoNetoDTOImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ArticuloGrupoNetoDTOImplToJson(this);
+    return _$$ArticuloGrupoNetoDTOImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _ArticuloGrupoNetoDTO extends ArticuloGrupoNetoDTO {
-  const factory _ArticuloGrupoNetoDTO({
-    @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
-    @JsonKey(name: 'GRUPO_NETO_ID') required final String grupoNetoId,
-    @JsonKey(name: 'GRUPO_NETO_DESCRIPCION')
-    required final String grupoNetoDescripcion,
-    @JsonKey(name: 'CANTIDAD_DESDE') required final int cantidadDesde,
-    @JsonKey(name: 'PRECIO') required final double precio,
-    @JsonKey(name: 'DIVISA_ID') required final String divisaId,
-    @JsonKey(name: 'TIPO_PRECIO') required final int tipoPrecio,
-    @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') final String deleted,
-  }) = _$ArticuloGrupoNetoDTOImpl;
+  const factory _ArticuloGrupoNetoDTO(
+          {@JsonKey(name: 'ARTICULO_ID') required final String articuloId,
+          @JsonKey(name: 'GRUPO_NETO_ID') required final String grupoNetoId,
+          @JsonKey(name: 'GRUPO_NETO_DESCRIPCION')
+          required final String grupoNetoDescripcion,
+          @JsonKey(name: 'CANTIDAD_DESDE') required final int cantidadDesde,
+          @JsonKey(name: 'PRECIO') required final double precio,
+          @JsonKey(name: 'DIVISA_ID') required final String divisaId,
+          @JsonKey(name: 'TIPO_PRECIO') required final int tipoPrecio,
+          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+          @JsonKey(name: 'DELETED') final String deleted}) =
+      _$ArticuloGrupoNetoDTOImpl;
   const _ArticuloGrupoNetoDTO._() : super._();
 
   factory _ArticuloGrupoNetoDTO.fromJson(Map<String, dynamic> json) =
@@ -407,5 +376,5 @@ abstract class _ArticuloGrupoNetoDTO extends ArticuloGrupoNetoDTO {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ArticuloGrupoNetoDTOImplCopyWith<_$ArticuloGrupoNetoDTOImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }

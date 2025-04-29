@@ -12,8 +12,7 @@ part of 'usuario_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 UsuarioDTO _$UsuarioDTOFromJson(Map<String, dynamic> json) {
   return _UsuarioDTO.fromJson(json);
@@ -65,27 +64,25 @@ mixin _$UsuarioDTO {
 /// @nodoc
 abstract class $UsuarioDTOCopyWith<$Res> {
   factory $UsuarioDTOCopyWith(
-    UsuarioDTO value,
-    $Res Function(UsuarioDTO) then,
-  ) = _$UsuarioDTOCopyWithImpl<$Res, UsuarioDTO>;
+          UsuarioDTO value, $Res Function(UsuarioDTO) then) =
+      _$UsuarioDTOCopyWithImpl<$Res, UsuarioDTO>;
   @useResult
-  $Res call({
-    @JsonKey(name: 'USUARIO_ID') String id,
-    @JsonKey(name: 'USUARIO') String usuario,
-    @JsonKey(name: 'CLAVE') String contrasenya,
-    @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') String? nombreUsuario,
-    @JsonKey(name: 'PROVISIONAL_TOKEN') String provisionalToken,
-    @JsonKey(name: 'REFRESH_TOKEN') String? refreshToken,
-    @JsonKey(name: 'TEST') String test,
-    @JsonKey(name: 'IDIOMA_ID') String idiomaId,
-    @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') String modificarPedido,
-    @JsonKey(name: 'APP_VER_TOTAL_VENTAS') String verTotalVentas,
-    @JsonKey(name: 'PACKAGE_NAME') String? packageName,
-    @JsonKey(name: 'VERSION') String? version,
-    @JsonKey(name: 'BUILD_NUMBER') String? buildNumber,
-    @JsonKey(name: 'DEVICE_INFO') String? deviceInfo,
-    @JsonKey(name: 'MARGEN_COMERCIAL') double? margenComercial,
-  });
+  $Res call(
+      {@JsonKey(name: 'USUARIO_ID') String id,
+      @JsonKey(name: 'USUARIO') String usuario,
+      @JsonKey(name: 'CLAVE') String contrasenya,
+      @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') String? nombreUsuario,
+      @JsonKey(name: 'PROVISIONAL_TOKEN') String provisionalToken,
+      @JsonKey(name: 'REFRESH_TOKEN') String? refreshToken,
+      @JsonKey(name: 'TEST') String test,
+      @JsonKey(name: 'IDIOMA_ID') String idiomaId,
+      @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') String modificarPedido,
+      @JsonKey(name: 'APP_VER_TOTAL_VENTAS') String verTotalVentas,
+      @JsonKey(name: 'PACKAGE_NAME') String? packageName,
+      @JsonKey(name: 'VERSION') String? version,
+      @JsonKey(name: 'BUILD_NUMBER') String? buildNumber,
+      @JsonKey(name: 'DEVICE_INFO') String? deviceInfo,
+      @JsonKey(name: 'MARGEN_COMERCIAL') double? margenComercial});
 }
 
 /// @nodoc
@@ -119,86 +116,68 @@ class _$UsuarioDTOCopyWithImpl<$Res, $Val extends UsuarioDTO>
     Object? deviceInfo = freezed,
     Object? margenComercial = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            id:
-                null == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as String,
-            usuario:
-                null == usuario
-                    ? _value.usuario
-                    : usuario // ignore: cast_nullable_to_non_nullable
-                        as String,
-            contrasenya:
-                null == contrasenya
-                    ? _value.contrasenya
-                    : contrasenya // ignore: cast_nullable_to_non_nullable
-                        as String,
-            nombreUsuario:
-                freezed == nombreUsuario
-                    ? _value.nombreUsuario
-                    : nombreUsuario // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            provisionalToken:
-                null == provisionalToken
-                    ? _value.provisionalToken
-                    : provisionalToken // ignore: cast_nullable_to_non_nullable
-                        as String,
-            refreshToken:
-                freezed == refreshToken
-                    ? _value.refreshToken
-                    : refreshToken // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            test:
-                null == test
-                    ? _value.test
-                    : test // ignore: cast_nullable_to_non_nullable
-                        as String,
-            idiomaId:
-                null == idiomaId
-                    ? _value.idiomaId
-                    : idiomaId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            modificarPedido:
-                null == modificarPedido
-                    ? _value.modificarPedido
-                    : modificarPedido // ignore: cast_nullable_to_non_nullable
-                        as String,
-            verTotalVentas:
-                null == verTotalVentas
-                    ? _value.verTotalVentas
-                    : verTotalVentas // ignore: cast_nullable_to_non_nullable
-                        as String,
-            packageName:
-                freezed == packageName
-                    ? _value.packageName
-                    : packageName // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            version:
-                freezed == version
-                    ? _value.version
-                    : version // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            buildNumber:
-                freezed == buildNumber
-                    ? _value.buildNumber
-                    : buildNumber // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            deviceInfo:
-                freezed == deviceInfo
-                    ? _value.deviceInfo
-                    : deviceInfo // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            margenComercial:
-                freezed == margenComercial
-                    ? _value.margenComercial
-                    : margenComercial // ignore: cast_nullable_to_non_nullable
-                        as double?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      usuario: null == usuario
+          ? _value.usuario
+          : usuario // ignore: cast_nullable_to_non_nullable
+              as String,
+      contrasenya: null == contrasenya
+          ? _value.contrasenya
+          : contrasenya // ignore: cast_nullable_to_non_nullable
+              as String,
+      nombreUsuario: freezed == nombreUsuario
+          ? _value.nombreUsuario
+          : nombreUsuario // ignore: cast_nullable_to_non_nullable
+              as String?,
+      provisionalToken: null == provisionalToken
+          ? _value.provisionalToken
+          : provisionalToken // ignore: cast_nullable_to_non_nullable
+              as String,
+      refreshToken: freezed == refreshToken
+          ? _value.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+      test: null == test
+          ? _value.test
+          : test // ignore: cast_nullable_to_non_nullable
+              as String,
+      idiomaId: null == idiomaId
+          ? _value.idiomaId
+          : idiomaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      modificarPedido: null == modificarPedido
+          ? _value.modificarPedido
+          : modificarPedido // ignore: cast_nullable_to_non_nullable
+              as String,
+      verTotalVentas: null == verTotalVentas
+          ? _value.verTotalVentas
+          : verTotalVentas // ignore: cast_nullable_to_non_nullable
+              as String,
+      packageName: freezed == packageName
+          ? _value.packageName
+          : packageName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      version: freezed == version
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String?,
+      buildNumber: freezed == buildNumber
+          ? _value.buildNumber
+          : buildNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deviceInfo: freezed == deviceInfo
+          ? _value.deviceInfo
+          : deviceInfo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      margenComercial: freezed == margenComercial
+          ? _value.margenComercial
+          : margenComercial // ignore: cast_nullable_to_non_nullable
+              as double?,
+    ) as $Val);
   }
 }
 
@@ -206,28 +185,26 @@ class _$UsuarioDTOCopyWithImpl<$Res, $Val extends UsuarioDTO>
 abstract class _$$UsuarioDTOImplCopyWith<$Res>
     implements $UsuarioDTOCopyWith<$Res> {
   factory _$$UsuarioDTOImplCopyWith(
-    _$UsuarioDTOImpl value,
-    $Res Function(_$UsuarioDTOImpl) then,
-  ) = __$$UsuarioDTOImplCopyWithImpl<$Res>;
+          _$UsuarioDTOImpl value, $Res Function(_$UsuarioDTOImpl) then) =
+      __$$UsuarioDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'USUARIO_ID') String id,
-    @JsonKey(name: 'USUARIO') String usuario,
-    @JsonKey(name: 'CLAVE') String contrasenya,
-    @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') String? nombreUsuario,
-    @JsonKey(name: 'PROVISIONAL_TOKEN') String provisionalToken,
-    @JsonKey(name: 'REFRESH_TOKEN') String? refreshToken,
-    @JsonKey(name: 'TEST') String test,
-    @JsonKey(name: 'IDIOMA_ID') String idiomaId,
-    @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') String modificarPedido,
-    @JsonKey(name: 'APP_VER_TOTAL_VENTAS') String verTotalVentas,
-    @JsonKey(name: 'PACKAGE_NAME') String? packageName,
-    @JsonKey(name: 'VERSION') String? version,
-    @JsonKey(name: 'BUILD_NUMBER') String? buildNumber,
-    @JsonKey(name: 'DEVICE_INFO') String? deviceInfo,
-    @JsonKey(name: 'MARGEN_COMERCIAL') double? margenComercial,
-  });
+  $Res call(
+      {@JsonKey(name: 'USUARIO_ID') String id,
+      @JsonKey(name: 'USUARIO') String usuario,
+      @JsonKey(name: 'CLAVE') String contrasenya,
+      @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') String? nombreUsuario,
+      @JsonKey(name: 'PROVISIONAL_TOKEN') String provisionalToken,
+      @JsonKey(name: 'REFRESH_TOKEN') String? refreshToken,
+      @JsonKey(name: 'TEST') String test,
+      @JsonKey(name: 'IDIOMA_ID') String idiomaId,
+      @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') String modificarPedido,
+      @JsonKey(name: 'APP_VER_TOTAL_VENTAS') String verTotalVentas,
+      @JsonKey(name: 'PACKAGE_NAME') String? packageName,
+      @JsonKey(name: 'VERSION') String? version,
+      @JsonKey(name: 'BUILD_NUMBER') String? buildNumber,
+      @JsonKey(name: 'DEVICE_INFO') String? deviceInfo,
+      @JsonKey(name: 'MARGEN_COMERCIAL') double? margenComercial});
 }
 
 /// @nodoc
@@ -235,9 +212,8 @@ class __$$UsuarioDTOImplCopyWithImpl<$Res>
     extends _$UsuarioDTOCopyWithImpl<$Res, _$UsuarioDTOImpl>
     implements _$$UsuarioDTOImplCopyWith<$Res> {
   __$$UsuarioDTOImplCopyWithImpl(
-    _$UsuarioDTOImpl _value,
-    $Res Function(_$UsuarioDTOImpl) _then,
-  ) : super(_value, _then);
+      _$UsuarioDTOImpl _value, $Res Function(_$UsuarioDTOImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of UsuarioDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -260,109 +236,93 @@ class __$$UsuarioDTOImplCopyWithImpl<$Res>
     Object? deviceInfo = freezed,
     Object? margenComercial = freezed,
   }) {
-    return _then(
-      _$UsuarioDTOImpl(
-        id:
-            null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as String,
-        usuario:
-            null == usuario
-                ? _value.usuario
-                : usuario // ignore: cast_nullable_to_non_nullable
-                    as String,
-        contrasenya:
-            null == contrasenya
-                ? _value.contrasenya
-                : contrasenya // ignore: cast_nullable_to_non_nullable
-                    as String,
-        nombreUsuario:
-            freezed == nombreUsuario
-                ? _value.nombreUsuario
-                : nombreUsuario // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        provisionalToken:
-            null == provisionalToken
-                ? _value.provisionalToken
-                : provisionalToken // ignore: cast_nullable_to_non_nullable
-                    as String,
-        refreshToken:
-            freezed == refreshToken
-                ? _value.refreshToken
-                : refreshToken // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        test:
-            null == test
-                ? _value.test
-                : test // ignore: cast_nullable_to_non_nullable
-                    as String,
-        idiomaId:
-            null == idiomaId
-                ? _value.idiomaId
-                : idiomaId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        modificarPedido:
-            null == modificarPedido
-                ? _value.modificarPedido
-                : modificarPedido // ignore: cast_nullable_to_non_nullable
-                    as String,
-        verTotalVentas:
-            null == verTotalVentas
-                ? _value.verTotalVentas
-                : verTotalVentas // ignore: cast_nullable_to_non_nullable
-                    as String,
-        packageName:
-            freezed == packageName
-                ? _value.packageName
-                : packageName // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        version:
-            freezed == version
-                ? _value.version
-                : version // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        buildNumber:
-            freezed == buildNumber
-                ? _value.buildNumber
-                : buildNumber // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        deviceInfo:
-            freezed == deviceInfo
-                ? _value.deviceInfo
-                : deviceInfo // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        margenComercial:
-            freezed == margenComercial
-                ? _value.margenComercial
-                : margenComercial // ignore: cast_nullable_to_non_nullable
-                    as double?,
-      ),
-    );
+    return _then(_$UsuarioDTOImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      usuario: null == usuario
+          ? _value.usuario
+          : usuario // ignore: cast_nullable_to_non_nullable
+              as String,
+      contrasenya: null == contrasenya
+          ? _value.contrasenya
+          : contrasenya // ignore: cast_nullable_to_non_nullable
+              as String,
+      nombreUsuario: freezed == nombreUsuario
+          ? _value.nombreUsuario
+          : nombreUsuario // ignore: cast_nullable_to_non_nullable
+              as String?,
+      provisionalToken: null == provisionalToken
+          ? _value.provisionalToken
+          : provisionalToken // ignore: cast_nullable_to_non_nullable
+              as String,
+      refreshToken: freezed == refreshToken
+          ? _value.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+      test: null == test
+          ? _value.test
+          : test // ignore: cast_nullable_to_non_nullable
+              as String,
+      idiomaId: null == idiomaId
+          ? _value.idiomaId
+          : idiomaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      modificarPedido: null == modificarPedido
+          ? _value.modificarPedido
+          : modificarPedido // ignore: cast_nullable_to_non_nullable
+              as String,
+      verTotalVentas: null == verTotalVentas
+          ? _value.verTotalVentas
+          : verTotalVentas // ignore: cast_nullable_to_non_nullable
+              as String,
+      packageName: freezed == packageName
+          ? _value.packageName
+          : packageName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      version: freezed == version
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String?,
+      buildNumber: freezed == buildNumber
+          ? _value.buildNumber
+          : buildNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deviceInfo: freezed == deviceInfo
+          ? _value.deviceInfo
+          : deviceInfo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      margenComercial: freezed == margenComercial
+          ? _value.margenComercial
+          : margenComercial // ignore: cast_nullable_to_non_nullable
+              as double?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$UsuarioDTOImpl extends _UsuarioDTO {
-  const _$UsuarioDTOImpl({
-    @JsonKey(name: 'USUARIO_ID') required this.id,
-    @JsonKey(name: 'USUARIO') required this.usuario,
-    @JsonKey(name: 'CLAVE') required this.contrasenya,
-    @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')
-    required this.nombreUsuario,
-    @JsonKey(name: 'PROVISIONAL_TOKEN') required this.provisionalToken,
-    @JsonKey(name: 'REFRESH_TOKEN') this.refreshToken,
-    @JsonKey(name: 'TEST') required this.test,
-    @JsonKey(name: 'IDIOMA_ID') required this.idiomaId,
-    @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN') required this.modificarPedido,
-    @JsonKey(name: 'APP_VER_TOTAL_VENTAS') required this.verTotalVentas,
-    @JsonKey(name: 'PACKAGE_NAME') this.packageName,
-    @JsonKey(name: 'VERSION') this.version,
-    @JsonKey(name: 'BUILD_NUMBER') this.buildNumber,
-    @JsonKey(name: 'DEVICE_INFO') this.deviceInfo,
-    @JsonKey(name: 'MARGEN_COMERCIAL') this.margenComercial,
-  }) : super._();
+  const _$UsuarioDTOImpl(
+      {@JsonKey(name: 'USUARIO_ID') required this.id,
+      @JsonKey(name: 'USUARIO') required this.usuario,
+      @JsonKey(name: 'CLAVE') required this.contrasenya,
+      @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')
+      required this.nombreUsuario,
+      @JsonKey(name: 'PROVISIONAL_TOKEN') required this.provisionalToken,
+      @JsonKey(name: 'REFRESH_TOKEN') this.refreshToken,
+      @JsonKey(name: 'TEST') required this.test,
+      @JsonKey(name: 'IDIOMA_ID') required this.idiomaId,
+      @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')
+      required this.modificarPedido,
+      @JsonKey(name: 'APP_VER_TOTAL_VENTAS') required this.verTotalVentas,
+      @JsonKey(name: 'PACKAGE_NAME') this.packageName,
+      @JsonKey(name: 'VERSION') this.version,
+      @JsonKey(name: 'BUILD_NUMBER') this.buildNumber,
+      @JsonKey(name: 'DEVICE_INFO') this.deviceInfo,
+      @JsonKey(name: 'MARGEN_COMERCIAL') this.margenComercial})
+      : super._();
 
   factory _$UsuarioDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$UsuarioDTOImplFromJson(json);
@@ -454,23 +414,22 @@ class _$UsuarioDTOImpl extends _UsuarioDTO {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    usuario,
-    contrasenya,
-    nombreUsuario,
-    provisionalToken,
-    refreshToken,
-    test,
-    idiomaId,
-    modificarPedido,
-    verTotalVentas,
-    packageName,
-    version,
-    buildNumber,
-    deviceInfo,
-    margenComercial,
-  );
+      runtimeType,
+      id,
+      usuario,
+      contrasenya,
+      nombreUsuario,
+      provisionalToken,
+      refreshToken,
+      test,
+      idiomaId,
+      modificarPedido,
+      verTotalVentas,
+      packageName,
+      version,
+      buildNumber,
+      deviceInfo,
+      margenComercial);
 
   /// Create a copy of UsuarioDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -482,30 +441,34 @@ class _$UsuarioDTOImpl extends _UsuarioDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$UsuarioDTOImplToJson(this);
+    return _$$UsuarioDTOImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _UsuarioDTO extends UsuarioDTO {
-  const factory _UsuarioDTO({
-    @JsonKey(name: 'USUARIO_ID') required final String id,
-    @JsonKey(name: 'USUARIO') required final String usuario,
-    @JsonKey(name: 'CLAVE') required final String contrasenya,
-    @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')
-    required final String? nombreUsuario,
-    @JsonKey(name: 'PROVISIONAL_TOKEN') required final String provisionalToken,
-    @JsonKey(name: 'REFRESH_TOKEN') final String? refreshToken,
-    @JsonKey(name: 'TEST') required final String test,
-    @JsonKey(name: 'IDIOMA_ID') required final String idiomaId,
-    @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')
-    required final String modificarPedido,
-    @JsonKey(name: 'APP_VER_TOTAL_VENTAS') required final String verTotalVentas,
-    @JsonKey(name: 'PACKAGE_NAME') final String? packageName,
-    @JsonKey(name: 'VERSION') final String? version,
-    @JsonKey(name: 'BUILD_NUMBER') final String? buildNumber,
-    @JsonKey(name: 'DEVICE_INFO') final String? deviceInfo,
-    @JsonKey(name: 'MARGEN_COMERCIAL') final double? margenComercial,
-  }) = _$UsuarioDTOImpl;
+  const factory _UsuarioDTO(
+          {@JsonKey(name: 'USUARIO_ID') required final String id,
+          @JsonKey(name: 'USUARIO') required final String usuario,
+          @JsonKey(name: 'CLAVE') required final String contrasenya,
+          @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')
+          required final String? nombreUsuario,
+          @JsonKey(name: 'PROVISIONAL_TOKEN')
+          required final String provisionalToken,
+          @JsonKey(name: 'REFRESH_TOKEN') final String? refreshToken,
+          @JsonKey(name: 'TEST') required final String test,
+          @JsonKey(name: 'IDIOMA_ID') required final String idiomaId,
+          @JsonKey(name: 'MODIFICAR_PRECIO_PEDIDO_SN')
+          required final String modificarPedido,
+          @JsonKey(name: 'APP_VER_TOTAL_VENTAS')
+          required final String verTotalVentas,
+          @JsonKey(name: 'PACKAGE_NAME') final String? packageName,
+          @JsonKey(name: 'VERSION') final String? version,
+          @JsonKey(name: 'BUILD_NUMBER') final String? buildNumber,
+          @JsonKey(name: 'DEVICE_INFO') final String? deviceInfo,
+          @JsonKey(name: 'MARGEN_COMERCIAL') final double? margenComercial}) =
+      _$UsuarioDTOImpl;
   const _UsuarioDTO._() : super._();
 
   factory _UsuarioDTO.fromJson(Map<String, dynamic> json) =

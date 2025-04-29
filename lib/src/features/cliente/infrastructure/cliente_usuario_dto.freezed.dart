@@ -12,8 +12,7 @@ part of 'cliente_usuario_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ClienteUsuarioDTO _$ClienteUsuarioDTOFromJson(Map<String, dynamic> json) {
   return _ClienteUsuarioDTO.fromJson(json);
@@ -43,16 +42,14 @@ mixin _$ClienteUsuarioDTO {
 /// @nodoc
 abstract class $ClienteUsuarioDTOCopyWith<$Res> {
   factory $ClienteUsuarioDTOCopyWith(
-    ClienteUsuarioDTO value,
-    $Res Function(ClienteUsuarioDTO) then,
-  ) = _$ClienteUsuarioDTOCopyWithImpl<$Res, ClienteUsuarioDTO>;
+          ClienteUsuarioDTO value, $Res Function(ClienteUsuarioDTO) then) =
+      _$ClienteUsuarioDTOCopyWithImpl<$Res, ClienteUsuarioDTO>;
   @useResult
-  $Res call({
-    @JsonKey(name: 'CLIENTE_ID') String clienteId,
-    @JsonKey(name: 'USUARIO_ID') String usuarioId,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'CLIENTE_ID') String clienteId,
+      @JsonKey(name: 'USUARIO_ID') String usuarioId,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
@@ -75,59 +72,49 @@ class _$ClienteUsuarioDTOCopyWithImpl<$Res, $Val extends ClienteUsuarioDTO>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            clienteId:
-                null == clienteId
-                    ? _value.clienteId
-                    : clienteId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            usuarioId:
-                null == usuarioId
-                    ? _value.usuarioId
-                    : usuarioId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            lastUpdated:
-                null == lastUpdated
-                    ? _value.lastUpdated
-                    : lastUpdated // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      usuarioId: null == usuarioId
+          ? _value.usuarioId
+          : usuarioId // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$ClienteUsuarioDTOImplCopyWith<$Res>
     implements $ClienteUsuarioDTOCopyWith<$Res> {
-  factory _$$ClienteUsuarioDTOImplCopyWith(
-    _$ClienteUsuarioDTOImpl value,
-    $Res Function(_$ClienteUsuarioDTOImpl) then,
-  ) = __$$ClienteUsuarioDTOImplCopyWithImpl<$Res>;
+  factory _$$ClienteUsuarioDTOImplCopyWith(_$ClienteUsuarioDTOImpl value,
+          $Res Function(_$ClienteUsuarioDTOImpl) then) =
+      __$$ClienteUsuarioDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'CLIENTE_ID') String clienteId,
-    @JsonKey(name: 'USUARIO_ID') String usuarioId,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'CLIENTE_ID') String clienteId,
+      @JsonKey(name: 'USUARIO_ID') String usuarioId,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
 class __$$ClienteUsuarioDTOImplCopyWithImpl<$Res>
     extends _$ClienteUsuarioDTOCopyWithImpl<$Res, _$ClienteUsuarioDTOImpl>
     implements _$$ClienteUsuarioDTOImplCopyWith<$Res> {
-  __$$ClienteUsuarioDTOImplCopyWithImpl(
-    _$ClienteUsuarioDTOImpl _value,
-    $Res Function(_$ClienteUsuarioDTOImpl) _then,
-  ) : super(_value, _then);
+  __$$ClienteUsuarioDTOImplCopyWithImpl(_$ClienteUsuarioDTOImpl _value,
+      $Res Function(_$ClienteUsuarioDTOImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of ClienteUsuarioDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -139,42 +126,36 @@ class __$$ClienteUsuarioDTOImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$ClienteUsuarioDTOImpl(
-        clienteId:
-            null == clienteId
-                ? _value.clienteId
-                : clienteId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        usuarioId:
-            null == usuarioId
-                ? _value.usuarioId
-                : usuarioId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        lastUpdated:
-            null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+    return _then(_$ClienteUsuarioDTOImpl(
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      usuarioId: null == usuarioId
+          ? _value.usuarioId
+          : usuarioId // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ClienteUsuarioDTOImpl extends _ClienteUsuarioDTO {
-  const _$ClienteUsuarioDTOImpl({
-    @JsonKey(name: 'CLIENTE_ID') required this.clienteId,
-    @JsonKey(name: 'USUARIO_ID') required this.usuarioId,
-    @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-    @JsonKey(name: 'DELETED') this.deleted = 'N',
-  }) : super._();
+  const _$ClienteUsuarioDTOImpl(
+      {@JsonKey(name: 'CLIENTE_ID') required this.clienteId,
+      @JsonKey(name: 'USUARIO_ID') required this.usuarioId,
+      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+      @JsonKey(name: 'DELETED') this.deleted = 'N'})
+      : super._();
 
   factory _$ClienteUsuarioDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ClienteUsuarioDTOImplFromJson(json);
@@ -223,23 +204,23 @@ class _$ClienteUsuarioDTOImpl extends _ClienteUsuarioDTO {
   @pragma('vm:prefer-inline')
   _$$ClienteUsuarioDTOImplCopyWith<_$ClienteUsuarioDTOImpl> get copyWith =>
       __$$ClienteUsuarioDTOImplCopyWithImpl<_$ClienteUsuarioDTOImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ClienteUsuarioDTOImplToJson(this);
+    return _$$ClienteUsuarioDTOImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _ClienteUsuarioDTO extends ClienteUsuarioDTO {
-  const factory _ClienteUsuarioDTO({
-    @JsonKey(name: 'CLIENTE_ID') required final String clienteId,
-    @JsonKey(name: 'USUARIO_ID') required final String usuarioId,
-    @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') final String deleted,
-  }) = _$ClienteUsuarioDTOImpl;
+  const factory _ClienteUsuarioDTO(
+          {@JsonKey(name: 'CLIENTE_ID') required final String clienteId,
+          @JsonKey(name: 'USUARIO_ID') required final String usuarioId,
+          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+          @JsonKey(name: 'DELETED') final String deleted}) =
+      _$ClienteUsuarioDTOImpl;
   const _ClienteUsuarioDTO._() : super._();
 
   factory _ClienteUsuarioDTO.fromJson(Map<String, dynamic> json) =

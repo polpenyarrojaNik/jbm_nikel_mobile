@@ -12,8 +12,7 @@ part of 'cliente_tipo_potencial.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ClienteTipoPotencial {
@@ -45,38 +44,34 @@ mixin _$ClienteTipoPotencial {
 
 /// @nodoc
 abstract class $ClienteTipoPotencialCopyWith<$Res> {
-  factory $ClienteTipoPotencialCopyWith(
-    ClienteTipoPotencial value,
-    $Res Function(ClienteTipoPotencial) then,
-  ) = _$ClienteTipoPotencialCopyWithImpl<$Res, ClienteTipoPotencial>;
+  factory $ClienteTipoPotencialCopyWith(ClienteTipoPotencial value,
+          $Res Function(ClienteTipoPotencial) then) =
+      _$ClienteTipoPotencialCopyWithImpl<$Res, ClienteTipoPotencial>;
   @useResult
-  $Res call({
-    String id,
-    String descripcionES,
-    String? descripcionEN,
-    String? descripcionFR,
-    String? descripcionDE,
-    String? descripcionCA,
-    String? descripcionGB,
-    String? descripcionHU,
-    String? descripcionIT,
-    String? descripcionNL,
-    String? descripcionPL,
-    String? descripcionPT,
-    String? descripcionRO,
-    String? descripcionRU,
-    String? descripcionCN,
-    String? descripcionEL,
-    DateTime lastUpdated,
-    bool deleted,
-  });
+  $Res call(
+      {String id,
+      String descripcionES,
+      String? descripcionEN,
+      String? descripcionFR,
+      String? descripcionDE,
+      String? descripcionCA,
+      String? descripcionGB,
+      String? descripcionHU,
+      String? descripcionIT,
+      String? descripcionNL,
+      String? descripcionPL,
+      String? descripcionPT,
+      String? descripcionRO,
+      String? descripcionRU,
+      String? descripcionCN,
+      String? descripcionEL,
+      DateTime lastUpdated,
+      bool deleted});
 }
 
 /// @nodoc
-class _$ClienteTipoPotencialCopyWithImpl<
-  $Res,
-  $Val extends ClienteTipoPotencial
->
+class _$ClienteTipoPotencialCopyWithImpl<$Res,
+        $Val extends ClienteTipoPotencial>
     implements $ClienteTipoPotencialCopyWith<$Res> {
   _$ClienteTipoPotencialCopyWithImpl(this._value, this._then);
 
@@ -109,143 +104,119 @@ class _$ClienteTipoPotencialCopyWithImpl<
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            id:
-                null == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as String,
-            descripcionES:
-                null == descripcionES
-                    ? _value.descripcionES
-                    : descripcionES // ignore: cast_nullable_to_non_nullable
-                        as String,
-            descripcionEN:
-                freezed == descripcionEN
-                    ? _value.descripcionEN
-                    : descripcionEN // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionFR:
-                freezed == descripcionFR
-                    ? _value.descripcionFR
-                    : descripcionFR // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionDE:
-                freezed == descripcionDE
-                    ? _value.descripcionDE
-                    : descripcionDE // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionCA:
-                freezed == descripcionCA
-                    ? _value.descripcionCA
-                    : descripcionCA // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionGB:
-                freezed == descripcionGB
-                    ? _value.descripcionGB
-                    : descripcionGB // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionHU:
-                freezed == descripcionHU
-                    ? _value.descripcionHU
-                    : descripcionHU // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionIT:
-                freezed == descripcionIT
-                    ? _value.descripcionIT
-                    : descripcionIT // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionNL:
-                freezed == descripcionNL
-                    ? _value.descripcionNL
-                    : descripcionNL // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionPL:
-                freezed == descripcionPL
-                    ? _value.descripcionPL
-                    : descripcionPL // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionPT:
-                freezed == descripcionPT
-                    ? _value.descripcionPT
-                    : descripcionPT // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionRO:
-                freezed == descripcionRO
-                    ? _value.descripcionRO
-                    : descripcionRO // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionRU:
-                freezed == descripcionRU
-                    ? _value.descripcionRU
-                    : descripcionRU // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionCN:
-                freezed == descripcionCN
-                    ? _value.descripcionCN
-                    : descripcionCN // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionEL:
-                freezed == descripcionEL
-                    ? _value.descripcionEL
-                    : descripcionEL // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            lastUpdated:
-                null == lastUpdated
-                    ? _value.lastUpdated
-                    : lastUpdated // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as bool,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcionES: null == descripcionES
+          ? _value.descripcionES
+          : descripcionES // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcionEN: freezed == descripcionEN
+          ? _value.descripcionEN
+          : descripcionEN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionFR: freezed == descripcionFR
+          ? _value.descripcionFR
+          : descripcionFR // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionDE: freezed == descripcionDE
+          ? _value.descripcionDE
+          : descripcionDE // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCA: freezed == descripcionCA
+          ? _value.descripcionCA
+          : descripcionCA // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionGB: freezed == descripcionGB
+          ? _value.descripcionGB
+          : descripcionGB // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionHU: freezed == descripcionHU
+          ? _value.descripcionHU
+          : descripcionHU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionIT: freezed == descripcionIT
+          ? _value.descripcionIT
+          : descripcionIT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionNL: freezed == descripcionNL
+          ? _value.descripcionNL
+          : descripcionNL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPL: freezed == descripcionPL
+          ? _value.descripcionPL
+          : descripcionPL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPT: freezed == descripcionPT
+          ? _value.descripcionPT
+          : descripcionPT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRO: freezed == descripcionRO
+          ? _value.descripcionRO
+          : descripcionRO // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRU: freezed == descripcionRU
+          ? _value.descripcionRU
+          : descripcionRU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCN: freezed == descripcionCN
+          ? _value.descripcionCN
+          : descripcionCN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionEL: freezed == descripcionEL
+          ? _value.descripcionEL
+          : descripcionEL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$ClienteTipoPotencialImplCopyWith<$Res>
     implements $ClienteTipoPotencialCopyWith<$Res> {
-  factory _$$ClienteTipoPotencialImplCopyWith(
-    _$ClienteTipoPotencialImpl value,
-    $Res Function(_$ClienteTipoPotencialImpl) then,
-  ) = __$$ClienteTipoPotencialImplCopyWithImpl<$Res>;
+  factory _$$ClienteTipoPotencialImplCopyWith(_$ClienteTipoPotencialImpl value,
+          $Res Function(_$ClienteTipoPotencialImpl) then) =
+      __$$ClienteTipoPotencialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String descripcionES,
-    String? descripcionEN,
-    String? descripcionFR,
-    String? descripcionDE,
-    String? descripcionCA,
-    String? descripcionGB,
-    String? descripcionHU,
-    String? descripcionIT,
-    String? descripcionNL,
-    String? descripcionPL,
-    String? descripcionPT,
-    String? descripcionRO,
-    String? descripcionRU,
-    String? descripcionCN,
-    String? descripcionEL,
-    DateTime lastUpdated,
-    bool deleted,
-  });
+  $Res call(
+      {String id,
+      String descripcionES,
+      String? descripcionEN,
+      String? descripcionFR,
+      String? descripcionDE,
+      String? descripcionCA,
+      String? descripcionGB,
+      String? descripcionHU,
+      String? descripcionIT,
+      String? descripcionNL,
+      String? descripcionPL,
+      String? descripcionPT,
+      String? descripcionRO,
+      String? descripcionRU,
+      String? descripcionCN,
+      String? descripcionEL,
+      DateTime lastUpdated,
+      bool deleted});
 }
 
 /// @nodoc
 class __$$ClienteTipoPotencialImplCopyWithImpl<$Res>
     extends _$ClienteTipoPotencialCopyWithImpl<$Res, _$ClienteTipoPotencialImpl>
     implements _$$ClienteTipoPotencialImplCopyWith<$Res> {
-  __$$ClienteTipoPotencialImplCopyWithImpl(
-    _$ClienteTipoPotencialImpl _value,
-    $Res Function(_$ClienteTipoPotencialImpl) _then,
-  ) : super(_value, _then);
+  __$$ClienteTipoPotencialImplCopyWithImpl(_$ClienteTipoPotencialImpl _value,
+      $Res Function(_$ClienteTipoPotencialImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of ClienteTipoPotencial
   /// with the given fields replaced by the non-null parameter values.
@@ -271,126 +242,106 @@ class __$$ClienteTipoPotencialImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$ClienteTipoPotencialImpl(
-        id:
-            null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as String,
-        descripcionES:
-            null == descripcionES
-                ? _value.descripcionES
-                : descripcionES // ignore: cast_nullable_to_non_nullable
-                    as String,
-        descripcionEN:
-            freezed == descripcionEN
-                ? _value.descripcionEN
-                : descripcionEN // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionFR:
-            freezed == descripcionFR
-                ? _value.descripcionFR
-                : descripcionFR // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionDE:
-            freezed == descripcionDE
-                ? _value.descripcionDE
-                : descripcionDE // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionCA:
-            freezed == descripcionCA
-                ? _value.descripcionCA
-                : descripcionCA // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionGB:
-            freezed == descripcionGB
-                ? _value.descripcionGB
-                : descripcionGB // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionHU:
-            freezed == descripcionHU
-                ? _value.descripcionHU
-                : descripcionHU // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionIT:
-            freezed == descripcionIT
-                ? _value.descripcionIT
-                : descripcionIT // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionNL:
-            freezed == descripcionNL
-                ? _value.descripcionNL
-                : descripcionNL // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionPL:
-            freezed == descripcionPL
-                ? _value.descripcionPL
-                : descripcionPL // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionPT:
-            freezed == descripcionPT
-                ? _value.descripcionPT
-                : descripcionPT // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionRO:
-            freezed == descripcionRO
-                ? _value.descripcionRO
-                : descripcionRO // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionRU:
-            freezed == descripcionRU
-                ? _value.descripcionRU
-                : descripcionRU // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionCN:
-            freezed == descripcionCN
-                ? _value.descripcionCN
-                : descripcionCN // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionEL:
-            freezed == descripcionEL
-                ? _value.descripcionEL
-                : descripcionEL // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        lastUpdated:
-            null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as bool,
-      ),
-    );
+    return _then(_$ClienteTipoPotencialImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcionES: null == descripcionES
+          ? _value.descripcionES
+          : descripcionES // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcionEN: freezed == descripcionEN
+          ? _value.descripcionEN
+          : descripcionEN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionFR: freezed == descripcionFR
+          ? _value.descripcionFR
+          : descripcionFR // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionDE: freezed == descripcionDE
+          ? _value.descripcionDE
+          : descripcionDE // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCA: freezed == descripcionCA
+          ? _value.descripcionCA
+          : descripcionCA // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionGB: freezed == descripcionGB
+          ? _value.descripcionGB
+          : descripcionGB // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionHU: freezed == descripcionHU
+          ? _value.descripcionHU
+          : descripcionHU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionIT: freezed == descripcionIT
+          ? _value.descripcionIT
+          : descripcionIT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionNL: freezed == descripcionNL
+          ? _value.descripcionNL
+          : descripcionNL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPL: freezed == descripcionPL
+          ? _value.descripcionPL
+          : descripcionPL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPT: freezed == descripcionPT
+          ? _value.descripcionPT
+          : descripcionPT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRO: freezed == descripcionRO
+          ? _value.descripcionRO
+          : descripcionRO // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRU: freezed == descripcionRU
+          ? _value.descripcionRU
+          : descripcionRU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCN: freezed == descripcionCN
+          ? _value.descripcionCN
+          : descripcionCN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionEL: freezed == descripcionEL
+          ? _value.descripcionEL
+          : descripcionEL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$ClienteTipoPotencialImpl extends _ClienteTipoPotencial {
-  const _$ClienteTipoPotencialImpl({
-    required this.id,
-    required this.descripcionES,
-    this.descripcionEN,
-    this.descripcionFR,
-    this.descripcionDE,
-    this.descripcionCA,
-    this.descripcionGB,
-    this.descripcionHU,
-    this.descripcionIT,
-    this.descripcionNL,
-    this.descripcionPL,
-    this.descripcionPT,
-    this.descripcionRO,
-    this.descripcionRU,
-    this.descripcionCN,
-    this.descripcionEL,
-    required this.lastUpdated,
-    required this.deleted,
-  }) : super._();
+  const _$ClienteTipoPotencialImpl(
+      {required this.id,
+      required this.descripcionES,
+      this.descripcionEN,
+      this.descripcionFR,
+      this.descripcionDE,
+      this.descripcionCA,
+      this.descripcionGB,
+      this.descripcionHU,
+      this.descripcionIT,
+      this.descripcionNL,
+      this.descripcionPL,
+      this.descripcionPT,
+      this.descripcionRO,
+      this.descripcionRU,
+      this.descripcionCN,
+      this.descripcionEL,
+      required this.lastUpdated,
+      required this.deleted})
+      : super._();
 
   @override
   final String id;
@@ -477,26 +428,25 @@ class _$ClienteTipoPotencialImpl extends _ClienteTipoPotencial {
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    descripcionES,
-    descripcionEN,
-    descripcionFR,
-    descripcionDE,
-    descripcionCA,
-    descripcionGB,
-    descripcionHU,
-    descripcionIT,
-    descripcionNL,
-    descripcionPL,
-    descripcionPT,
-    descripcionRO,
-    descripcionRU,
-    descripcionCN,
-    descripcionEL,
-    lastUpdated,
-    deleted,
-  );
+      runtimeType,
+      id,
+      descripcionES,
+      descripcionEN,
+      descripcionFR,
+      descripcionDE,
+      descripcionCA,
+      descripcionGB,
+      descripcionHU,
+      descripcionIT,
+      descripcionNL,
+      descripcionPL,
+      descripcionPT,
+      descripcionRO,
+      descripcionRU,
+      descripcionCN,
+      descripcionEL,
+      lastUpdated,
+      deleted);
 
   /// Create a copy of ClienteTipoPotencial
   /// with the given fields replaced by the non-null parameter values.
@@ -504,34 +454,31 @@ class _$ClienteTipoPotencialImpl extends _ClienteTipoPotencial {
   @override
   @pragma('vm:prefer-inline')
   _$$ClienteTipoPotencialImplCopyWith<_$ClienteTipoPotencialImpl>
-  get copyWith =>
-      __$$ClienteTipoPotencialImplCopyWithImpl<_$ClienteTipoPotencialImpl>(
-        this,
-        _$identity,
-      );
+      get copyWith =>
+          __$$ClienteTipoPotencialImplCopyWithImpl<_$ClienteTipoPotencialImpl>(
+              this, _$identity);
 }
 
 abstract class _ClienteTipoPotencial extends ClienteTipoPotencial {
-  const factory _ClienteTipoPotencial({
-    required final String id,
-    required final String descripcionES,
-    final String? descripcionEN,
-    final String? descripcionFR,
-    final String? descripcionDE,
-    final String? descripcionCA,
-    final String? descripcionGB,
-    final String? descripcionHU,
-    final String? descripcionIT,
-    final String? descripcionNL,
-    final String? descripcionPL,
-    final String? descripcionPT,
-    final String? descripcionRO,
-    final String? descripcionRU,
-    final String? descripcionCN,
-    final String? descripcionEL,
-    required final DateTime lastUpdated,
-    required final bool deleted,
-  }) = _$ClienteTipoPotencialImpl;
+  const factory _ClienteTipoPotencial(
+      {required final String id,
+      required final String descripcionES,
+      final String? descripcionEN,
+      final String? descripcionFR,
+      final String? descripcionDE,
+      final String? descripcionCA,
+      final String? descripcionGB,
+      final String? descripcionHU,
+      final String? descripcionIT,
+      final String? descripcionNL,
+      final String? descripcionPL,
+      final String? descripcionPT,
+      final String? descripcionRO,
+      final String? descripcionRU,
+      final String? descripcionCN,
+      final String? descripcionEL,
+      required final DateTime lastUpdated,
+      required final bool deleted}) = _$ClienteTipoPotencialImpl;
   const _ClienteTipoPotencial._() : super._();
 
   @override
@@ -576,5 +523,5 @@ abstract class _ClienteTipoPotencial extends ClienteTipoPotencial {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClienteTipoPotencialImplCopyWith<_$ClienteTipoPotencialImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }

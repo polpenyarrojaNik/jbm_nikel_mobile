@@ -12,8 +12,7 @@ part of 'pedido_venta_estado.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$PedidoVentaEstado {
@@ -32,9 +31,8 @@ mixin _$PedidoVentaEstado {
 /// @nodoc
 abstract class $PedidoVentaEstadoCopyWith<$Res> {
   factory $PedidoVentaEstadoCopyWith(
-    PedidoVentaEstado value,
-    $Res Function(PedidoVentaEstado) then,
-  ) = _$PedidoVentaEstadoCopyWithImpl<$Res, PedidoVentaEstado>;
+          PedidoVentaEstado value, $Res Function(PedidoVentaEstado) then) =
+      _$PedidoVentaEstadoCopyWithImpl<$Res, PedidoVentaEstado>;
   @useResult
   $Res call({int id, String descripcion, DateTime lastUpdate, bool deleted});
 }
@@ -59,41 +57,33 @@ class _$PedidoVentaEstadoCopyWithImpl<$Res, $Val extends PedidoVentaEstado>
     Object? lastUpdate = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            id:
-                null == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as int,
-            descripcion:
-                null == descripcion
-                    ? _value.descripcion
-                    : descripcion // ignore: cast_nullable_to_non_nullable
-                        as String,
-            lastUpdate:
-                null == lastUpdate
-                    ? _value.lastUpdate
-                    : lastUpdate // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as bool,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      descripcion: null == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastUpdate: null == lastUpdate
+          ? _value.lastUpdate
+          : lastUpdate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$PedidoVentaEstadoImplCopyWith<$Res>
     implements $PedidoVentaEstadoCopyWith<$Res> {
-  factory _$$PedidoVentaEstadoImplCopyWith(
-    _$PedidoVentaEstadoImpl value,
-    $Res Function(_$PedidoVentaEstadoImpl) then,
-  ) = __$$PedidoVentaEstadoImplCopyWithImpl<$Res>;
+  factory _$$PedidoVentaEstadoImplCopyWith(_$PedidoVentaEstadoImpl value,
+          $Res Function(_$PedidoVentaEstadoImpl) then) =
+      __$$PedidoVentaEstadoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, String descripcion, DateTime lastUpdate, bool deleted});
@@ -103,10 +93,9 @@ abstract class _$$PedidoVentaEstadoImplCopyWith<$Res>
 class __$$PedidoVentaEstadoImplCopyWithImpl<$Res>
     extends _$PedidoVentaEstadoCopyWithImpl<$Res, _$PedidoVentaEstadoImpl>
     implements _$$PedidoVentaEstadoImplCopyWith<$Res> {
-  __$$PedidoVentaEstadoImplCopyWithImpl(
-    _$PedidoVentaEstadoImpl _value,
-    $Res Function(_$PedidoVentaEstadoImpl) _then,
-  ) : super(_value, _then);
+  __$$PedidoVentaEstadoImplCopyWithImpl(_$PedidoVentaEstadoImpl _value,
+      $Res Function(_$PedidoVentaEstadoImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of PedidoVentaEstado
   /// with the given fields replaced by the non-null parameter values.
@@ -118,42 +107,36 @@ class __$$PedidoVentaEstadoImplCopyWithImpl<$Res>
     Object? lastUpdate = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$PedidoVentaEstadoImpl(
-        id:
-            null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as int,
-        descripcion:
-            null == descripcion
-                ? _value.descripcion
-                : descripcion // ignore: cast_nullable_to_non_nullable
-                    as String,
-        lastUpdate:
-            null == lastUpdate
-                ? _value.lastUpdate
-                : lastUpdate // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as bool,
-      ),
-    );
+    return _then(_$PedidoVentaEstadoImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      descripcion: null == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastUpdate: null == lastUpdate
+          ? _value.lastUpdate
+          : lastUpdate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$PedidoVentaEstadoImpl extends _PedidoVentaEstado {
-  const _$PedidoVentaEstadoImpl({
-    required this.id,
-    required this.descripcion,
-    required this.lastUpdate,
-    required this.deleted,
-  }) : super._();
+  const _$PedidoVentaEstadoImpl(
+      {required this.id,
+      required this.descripcion,
+      required this.lastUpdate,
+      required this.deleted})
+      : super._();
 
   @override
   final int id;
@@ -193,18 +176,15 @@ class _$PedidoVentaEstadoImpl extends _PedidoVentaEstado {
   @pragma('vm:prefer-inline')
   _$$PedidoVentaEstadoImplCopyWith<_$PedidoVentaEstadoImpl> get copyWith =>
       __$$PedidoVentaEstadoImplCopyWithImpl<_$PedidoVentaEstadoImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 }
 
 abstract class _PedidoVentaEstado extends PedidoVentaEstado {
-  const factory _PedidoVentaEstado({
-    required final int id,
-    required final String descripcion,
-    required final DateTime lastUpdate,
-    required final bool deleted,
-  }) = _$PedidoVentaEstadoImpl;
+  const factory _PedidoVentaEstado(
+      {required final int id,
+      required final String descripcion,
+      required final DateTime lastUpdate,
+      required final bool deleted}) = _$PedidoVentaEstadoImpl;
   const _PedidoVentaEstado._() : super._();
 
   @override

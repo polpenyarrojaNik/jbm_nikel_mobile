@@ -12,8 +12,7 @@ part of 'visit_edit_page.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$VisitEditScreenData {
@@ -31,9 +30,8 @@ mixin _$VisitEditScreenData {
 /// @nodoc
 abstract class $VisitEditScreenDataCopyWith<$Res> {
   factory $VisitEditScreenDataCopyWith(
-    VisitEditScreenData value,
-    $Res Function(VisitEditScreenData) then,
-  ) = _$VisitEditScreenDataCopyWithImpl<$Res, VisitEditScreenData>;
+          VisitEditScreenData value, $Res Function(VisitEditScreenData) then) =
+      _$VisitEditScreenDataCopyWithImpl<$Res, VisitEditScreenData>;
   @useResult
   $Res call({Visita? visita, List<Pais> paises, List<Provincia> provincias});
 
@@ -59,26 +57,20 @@ class _$VisitEditScreenDataCopyWithImpl<$Res, $Val extends VisitEditScreenData>
     Object? paises = null,
     Object? provincias = null,
   }) {
-    return _then(
-      _value.copyWith(
-            visita:
-                freezed == visita
-                    ? _value.visita
-                    : visita // ignore: cast_nullable_to_non_nullable
-                        as Visita?,
-            paises:
-                null == paises
-                    ? _value.paises
-                    : paises // ignore: cast_nullable_to_non_nullable
-                        as List<Pais>,
-            provincias:
-                null == provincias
-                    ? _value.provincias
-                    : provincias // ignore: cast_nullable_to_non_nullable
-                        as List<Provincia>,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      visita: freezed == visita
+          ? _value.visita
+          : visita // ignore: cast_nullable_to_non_nullable
+              as Visita?,
+      paises: null == paises
+          ? _value.paises
+          : paises // ignore: cast_nullable_to_non_nullable
+              as List<Pais>,
+      provincias: null == provincias
+          ? _value.provincias
+          : provincias // ignore: cast_nullable_to_non_nullable
+              as List<Provincia>,
+    ) as $Val);
   }
 
   /// Create a copy of VisitEditScreenData
@@ -99,10 +91,9 @@ class _$VisitEditScreenDataCopyWithImpl<$Res, $Val extends VisitEditScreenData>
 /// @nodoc
 abstract class _$$VisitEditScreenDataImplCopyWith<$Res>
     implements $VisitEditScreenDataCopyWith<$Res> {
-  factory _$$VisitEditScreenDataImplCopyWith(
-    _$VisitEditScreenDataImpl value,
-    $Res Function(_$VisitEditScreenDataImpl) then,
-  ) = __$$VisitEditScreenDataImplCopyWithImpl<$Res>;
+  factory _$$VisitEditScreenDataImplCopyWith(_$VisitEditScreenDataImpl value,
+          $Res Function(_$VisitEditScreenDataImpl) then) =
+      __$$VisitEditScreenDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Visita? visita, List<Pais> paises, List<Provincia> provincias});
@@ -115,10 +106,9 @@ abstract class _$$VisitEditScreenDataImplCopyWith<$Res>
 class __$$VisitEditScreenDataImplCopyWithImpl<$Res>
     extends _$VisitEditScreenDataCopyWithImpl<$Res, _$VisitEditScreenDataImpl>
     implements _$$VisitEditScreenDataImplCopyWith<$Res> {
-  __$$VisitEditScreenDataImplCopyWithImpl(
-    _$VisitEditScreenDataImpl _value,
-    $Res Function(_$VisitEditScreenDataImpl) _then,
-  ) : super(_value, _then);
+  __$$VisitEditScreenDataImplCopyWithImpl(_$VisitEditScreenDataImpl _value,
+      $Res Function(_$VisitEditScreenDataImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of VisitEditScreenData
   /// with the given fields replaced by the non-null parameter values.
@@ -129,38 +119,33 @@ class __$$VisitEditScreenDataImplCopyWithImpl<$Res>
     Object? paises = null,
     Object? provincias = null,
   }) {
-    return _then(
-      _$VisitEditScreenDataImpl(
-        visita:
-            freezed == visita
-                ? _value.visita
-                : visita // ignore: cast_nullable_to_non_nullable
-                    as Visita?,
-        paises:
-            null == paises
-                ? _value._paises
-                : paises // ignore: cast_nullable_to_non_nullable
-                    as List<Pais>,
-        provincias:
-            null == provincias
-                ? _value._provincias
-                : provincias // ignore: cast_nullable_to_non_nullable
-                    as List<Provincia>,
-      ),
-    );
+    return _then(_$VisitEditScreenDataImpl(
+      visita: freezed == visita
+          ? _value.visita
+          : visita // ignore: cast_nullable_to_non_nullable
+              as Visita?,
+      paises: null == paises
+          ? _value._paises
+          : paises // ignore: cast_nullable_to_non_nullable
+              as List<Pais>,
+      provincias: null == provincias
+          ? _value._provincias
+          : provincias // ignore: cast_nullable_to_non_nullable
+              as List<Provincia>,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$VisitEditScreenDataImpl extends _VisitEditScreenData {
-  const _$VisitEditScreenDataImpl({
-    this.visita,
-    required final List<Pais> paises,
-    required final List<Provincia> provincias,
-  }) : _paises = paises,
-       _provincias = provincias,
-       super._();
+  const _$VisitEditScreenDataImpl(
+      {this.visita,
+      required final List<Pais> paises,
+      required final List<Provincia> provincias})
+      : _paises = paises,
+        _provincias = provincias,
+        super._();
 
   @override
   final Visita? visita;
@@ -192,19 +177,16 @@ class _$VisitEditScreenDataImpl extends _VisitEditScreenData {
             other is _$VisitEditScreenDataImpl &&
             (identical(other.visita, visita) || other.visita == visita) &&
             const DeepCollectionEquality().equals(other._paises, _paises) &&
-            const DeepCollectionEquality().equals(
-              other._provincias,
-              _provincias,
-            ));
+            const DeepCollectionEquality()
+                .equals(other._provincias, _provincias));
   }
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    visita,
-    const DeepCollectionEquality().hash(_paises),
-    const DeepCollectionEquality().hash(_provincias),
-  );
+      runtimeType,
+      visita,
+      const DeepCollectionEquality().hash(_paises),
+      const DeepCollectionEquality().hash(_provincias));
 
   /// Create a copy of VisitEditScreenData
   /// with the given fields replaced by the non-null parameter values.
@@ -213,17 +195,14 @@ class _$VisitEditScreenDataImpl extends _VisitEditScreenData {
   @pragma('vm:prefer-inline')
   _$$VisitEditScreenDataImplCopyWith<_$VisitEditScreenDataImpl> get copyWith =>
       __$$VisitEditScreenDataImplCopyWithImpl<_$VisitEditScreenDataImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 }
 
 abstract class _VisitEditScreenData extends VisitEditScreenData {
-  const factory _VisitEditScreenData({
-    final Visita? visita,
-    required final List<Pais> paises,
-    required final List<Provincia> provincias,
-  }) = _$VisitEditScreenDataImpl;
+  const factory _VisitEditScreenData(
+      {final Visita? visita,
+      required final List<Pais> paises,
+      required final List<Provincia> provincias}) = _$VisitEditScreenDataImpl;
   const _VisitEditScreenData._() : super._();
 
   @override

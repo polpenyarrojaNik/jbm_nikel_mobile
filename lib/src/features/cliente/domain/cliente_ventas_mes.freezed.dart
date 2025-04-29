@@ -12,8 +12,7 @@ part of 'cliente_ventas_mes.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ClienteVentasMes {
@@ -34,18 +33,16 @@ mixin _$ClienteVentasMes {
 /// @nodoc
 abstract class $ClienteVentasMesCopyWith<$Res> {
   factory $ClienteVentasMesCopyWith(
-    ClienteVentasMes value,
-    $Res Function(ClienteVentasMes) then,
-  ) = _$ClienteVentasMesCopyWithImpl<$Res, ClienteVentasMes>;
+          ClienteVentasMes value, $Res Function(ClienteVentasMes) then) =
+      _$ClienteVentasMesCopyWithImpl<$Res, ClienteVentasMes>;
   @useResult
-  $Res call({
-    int mes,
-    Money importeAnyo,
-    Money importeAnyo_1,
-    Money importeAnyo_2,
-    Money importeAnyo_3,
-    Money importeAnyo_4,
-  });
+  $Res call(
+      {int mes,
+      Money importeAnyo,
+      Money importeAnyo_1,
+      Money importeAnyo_2,
+      Money importeAnyo_3,
+      Money importeAnyo_4});
 }
 
 /// @nodoc
@@ -70,71 +67,59 @@ class _$ClienteVentasMesCopyWithImpl<$Res, $Val extends ClienteVentasMes>
     Object? importeAnyo_3 = null,
     Object? importeAnyo_4 = null,
   }) {
-    return _then(
-      _value.copyWith(
-            mes:
-                null == mes
-                    ? _value.mes
-                    : mes // ignore: cast_nullable_to_non_nullable
-                        as int,
-            importeAnyo:
-                null == importeAnyo
-                    ? _value.importeAnyo
-                    : importeAnyo // ignore: cast_nullable_to_non_nullable
-                        as Money,
-            importeAnyo_1:
-                null == importeAnyo_1
-                    ? _value.importeAnyo_1
-                    : importeAnyo_1 // ignore: cast_nullable_to_non_nullable
-                        as Money,
-            importeAnyo_2:
-                null == importeAnyo_2
-                    ? _value.importeAnyo_2
-                    : importeAnyo_2 // ignore: cast_nullable_to_non_nullable
-                        as Money,
-            importeAnyo_3:
-                null == importeAnyo_3
-                    ? _value.importeAnyo_3
-                    : importeAnyo_3 // ignore: cast_nullable_to_non_nullable
-                        as Money,
-            importeAnyo_4:
-                null == importeAnyo_4
-                    ? _value.importeAnyo_4
-                    : importeAnyo_4 // ignore: cast_nullable_to_non_nullable
-                        as Money,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      mes: null == mes
+          ? _value.mes
+          : mes // ignore: cast_nullable_to_non_nullable
+              as int,
+      importeAnyo: null == importeAnyo
+          ? _value.importeAnyo
+          : importeAnyo // ignore: cast_nullable_to_non_nullable
+              as Money,
+      importeAnyo_1: null == importeAnyo_1
+          ? _value.importeAnyo_1
+          : importeAnyo_1 // ignore: cast_nullable_to_non_nullable
+              as Money,
+      importeAnyo_2: null == importeAnyo_2
+          ? _value.importeAnyo_2
+          : importeAnyo_2 // ignore: cast_nullable_to_non_nullable
+              as Money,
+      importeAnyo_3: null == importeAnyo_3
+          ? _value.importeAnyo_3
+          : importeAnyo_3 // ignore: cast_nullable_to_non_nullable
+              as Money,
+      importeAnyo_4: null == importeAnyo_4
+          ? _value.importeAnyo_4
+          : importeAnyo_4 // ignore: cast_nullable_to_non_nullable
+              as Money,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$ClienteVentasMesImplCopyWith<$Res>
     implements $ClienteVentasMesCopyWith<$Res> {
-  factory _$$ClienteVentasMesImplCopyWith(
-    _$ClienteVentasMesImpl value,
-    $Res Function(_$ClienteVentasMesImpl) then,
-  ) = __$$ClienteVentasMesImplCopyWithImpl<$Res>;
+  factory _$$ClienteVentasMesImplCopyWith(_$ClienteVentasMesImpl value,
+          $Res Function(_$ClienteVentasMesImpl) then) =
+      __$$ClienteVentasMesImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    int mes,
-    Money importeAnyo,
-    Money importeAnyo_1,
-    Money importeAnyo_2,
-    Money importeAnyo_3,
-    Money importeAnyo_4,
-  });
+  $Res call(
+      {int mes,
+      Money importeAnyo,
+      Money importeAnyo_1,
+      Money importeAnyo_2,
+      Money importeAnyo_3,
+      Money importeAnyo_4});
 }
 
 /// @nodoc
 class __$$ClienteVentasMesImplCopyWithImpl<$Res>
     extends _$ClienteVentasMesCopyWithImpl<$Res, _$ClienteVentasMesImpl>
     implements _$$ClienteVentasMesImplCopyWith<$Res> {
-  __$$ClienteVentasMesImplCopyWithImpl(
-    _$ClienteVentasMesImpl _value,
-    $Res Function(_$ClienteVentasMesImpl) _then,
-  ) : super(_value, _then);
+  __$$ClienteVentasMesImplCopyWithImpl(_$ClienteVentasMesImpl _value,
+      $Res Function(_$ClienteVentasMesImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of ClienteVentasMes
   /// with the given fields replaced by the non-null parameter values.
@@ -148,54 +133,46 @@ class __$$ClienteVentasMesImplCopyWithImpl<$Res>
     Object? importeAnyo_3 = null,
     Object? importeAnyo_4 = null,
   }) {
-    return _then(
-      _$ClienteVentasMesImpl(
-        mes:
-            null == mes
-                ? _value.mes
-                : mes // ignore: cast_nullable_to_non_nullable
-                    as int,
-        importeAnyo:
-            null == importeAnyo
-                ? _value.importeAnyo
-                : importeAnyo // ignore: cast_nullable_to_non_nullable
-                    as Money,
-        importeAnyo_1:
-            null == importeAnyo_1
-                ? _value.importeAnyo_1
-                : importeAnyo_1 // ignore: cast_nullable_to_non_nullable
-                    as Money,
-        importeAnyo_2:
-            null == importeAnyo_2
-                ? _value.importeAnyo_2
-                : importeAnyo_2 // ignore: cast_nullable_to_non_nullable
-                    as Money,
-        importeAnyo_3:
-            null == importeAnyo_3
-                ? _value.importeAnyo_3
-                : importeAnyo_3 // ignore: cast_nullable_to_non_nullable
-                    as Money,
-        importeAnyo_4:
-            null == importeAnyo_4
-                ? _value.importeAnyo_4
-                : importeAnyo_4 // ignore: cast_nullable_to_non_nullable
-                    as Money,
-      ),
-    );
+    return _then(_$ClienteVentasMesImpl(
+      mes: null == mes
+          ? _value.mes
+          : mes // ignore: cast_nullable_to_non_nullable
+              as int,
+      importeAnyo: null == importeAnyo
+          ? _value.importeAnyo
+          : importeAnyo // ignore: cast_nullable_to_non_nullable
+              as Money,
+      importeAnyo_1: null == importeAnyo_1
+          ? _value.importeAnyo_1
+          : importeAnyo_1 // ignore: cast_nullable_to_non_nullable
+              as Money,
+      importeAnyo_2: null == importeAnyo_2
+          ? _value.importeAnyo_2
+          : importeAnyo_2 // ignore: cast_nullable_to_non_nullable
+              as Money,
+      importeAnyo_3: null == importeAnyo_3
+          ? _value.importeAnyo_3
+          : importeAnyo_3 // ignore: cast_nullable_to_non_nullable
+              as Money,
+      importeAnyo_4: null == importeAnyo_4
+          ? _value.importeAnyo_4
+          : importeAnyo_4 // ignore: cast_nullable_to_non_nullable
+              as Money,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$ClienteVentasMesImpl extends _ClienteVentasMes {
-  const _$ClienteVentasMesImpl({
-    required this.mes,
-    required this.importeAnyo,
-    required this.importeAnyo_1,
-    required this.importeAnyo_2,
-    required this.importeAnyo_3,
-    required this.importeAnyo_4,
-  }) : super._();
+  const _$ClienteVentasMesImpl(
+      {required this.mes,
+      required this.importeAnyo,
+      required this.importeAnyo_1,
+      required this.importeAnyo_2,
+      required this.importeAnyo_3,
+      required this.importeAnyo_4})
+      : super._();
 
   @override
   final int mes;
@@ -234,15 +211,8 @@ class _$ClienteVentasMesImpl extends _ClienteVentasMes {
   }
 
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    mes,
-    importeAnyo,
-    importeAnyo_1,
-    importeAnyo_2,
-    importeAnyo_3,
-    importeAnyo_4,
-  );
+  int get hashCode => Object.hash(runtimeType, mes, importeAnyo, importeAnyo_1,
+      importeAnyo_2, importeAnyo_3, importeAnyo_4);
 
   /// Create a copy of ClienteVentasMes
   /// with the given fields replaced by the non-null parameter values.
@@ -251,20 +221,17 @@ class _$ClienteVentasMesImpl extends _ClienteVentasMes {
   @pragma('vm:prefer-inline')
   _$$ClienteVentasMesImplCopyWith<_$ClienteVentasMesImpl> get copyWith =>
       __$$ClienteVentasMesImplCopyWithImpl<_$ClienteVentasMesImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 }
 
 abstract class _ClienteVentasMes extends ClienteVentasMes {
-  const factory _ClienteVentasMes({
-    required final int mes,
-    required final Money importeAnyo,
-    required final Money importeAnyo_1,
-    required final Money importeAnyo_2,
-    required final Money importeAnyo_3,
-    required final Money importeAnyo_4,
-  }) = _$ClienteVentasMesImpl;
+  const factory _ClienteVentasMes(
+      {required final int mes,
+      required final Money importeAnyo,
+      required final Money importeAnyo_1,
+      required final Money importeAnyo_2,
+      required final Money importeAnyo_3,
+      required final Money importeAnyo_4}) = _$ClienteVentasMesImpl;
   const _ClienteVentasMes._() : super._();
 
   @override

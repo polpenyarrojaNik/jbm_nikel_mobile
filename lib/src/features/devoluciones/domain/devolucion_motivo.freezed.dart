@@ -12,8 +12,7 @@ part of 'devolucion_motivo.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$DevolucionMotivo {
@@ -46,30 +45,28 @@ mixin _$DevolucionMotivo {
 /// @nodoc
 abstract class $DevolucionMotivoCopyWith<$Res> {
   factory $DevolucionMotivoCopyWith(
-    DevolucionMotivo value,
-    $Res Function(DevolucionMotivo) then,
-  ) = _$DevolucionMotivoCopyWithImpl<$Res, DevolucionMotivo>;
+          DevolucionMotivo value, $Res Function(DevolucionMotivo) then) =
+      _$DevolucionMotivoCopyWithImpl<$Res, DevolucionMotivo>;
   @useResult
-  $Res call({
-    String id,
-    String descripcionES,
-    String? descripcionEN,
-    String? descripcionFR,
-    String? descripcionDE,
-    String? descripcionCA,
-    String? descripcionGB,
-    String? descripcionHU,
-    String? descripcionIT,
-    String? descripcionNL,
-    String? descripcionPL,
-    String? descripcionPT,
-    String? descripcionRO,
-    String? descripcionRU,
-    String? descripcionCN,
-    String? descripcionEL,
-    DateTime lastUpdated,
-    bool deleted,
-  });
+  $Res call(
+      {String id,
+      String descripcionES,
+      String? descripcionEN,
+      String? descripcionFR,
+      String? descripcionDE,
+      String? descripcionCA,
+      String? descripcionGB,
+      String? descripcionHU,
+      String? descripcionIT,
+      String? descripcionNL,
+      String? descripcionPL,
+      String? descripcionPT,
+      String? descripcionRO,
+      String? descripcionRU,
+      String? descripcionCN,
+      String? descripcionEL,
+      DateTime lastUpdated,
+      bool deleted});
 }
 
 /// @nodoc
@@ -106,143 +103,119 @@ class _$DevolucionMotivoCopyWithImpl<$Res, $Val extends DevolucionMotivo>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            id:
-                null == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as String,
-            descripcionES:
-                null == descripcionES
-                    ? _value.descripcionES
-                    : descripcionES // ignore: cast_nullable_to_non_nullable
-                        as String,
-            descripcionEN:
-                freezed == descripcionEN
-                    ? _value.descripcionEN
-                    : descripcionEN // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionFR:
-                freezed == descripcionFR
-                    ? _value.descripcionFR
-                    : descripcionFR // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionDE:
-                freezed == descripcionDE
-                    ? _value.descripcionDE
-                    : descripcionDE // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionCA:
-                freezed == descripcionCA
-                    ? _value.descripcionCA
-                    : descripcionCA // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionGB:
-                freezed == descripcionGB
-                    ? _value.descripcionGB
-                    : descripcionGB // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionHU:
-                freezed == descripcionHU
-                    ? _value.descripcionHU
-                    : descripcionHU // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionIT:
-                freezed == descripcionIT
-                    ? _value.descripcionIT
-                    : descripcionIT // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionNL:
-                freezed == descripcionNL
-                    ? _value.descripcionNL
-                    : descripcionNL // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionPL:
-                freezed == descripcionPL
-                    ? _value.descripcionPL
-                    : descripcionPL // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionPT:
-                freezed == descripcionPT
-                    ? _value.descripcionPT
-                    : descripcionPT // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionRO:
-                freezed == descripcionRO
-                    ? _value.descripcionRO
-                    : descripcionRO // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionRU:
-                freezed == descripcionRU
-                    ? _value.descripcionRU
-                    : descripcionRU // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionCN:
-                freezed == descripcionCN
-                    ? _value.descripcionCN
-                    : descripcionCN // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionEL:
-                freezed == descripcionEL
-                    ? _value.descripcionEL
-                    : descripcionEL // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            lastUpdated:
-                null == lastUpdated
-                    ? _value.lastUpdated
-                    : lastUpdated // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as bool,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcionES: null == descripcionES
+          ? _value.descripcionES
+          : descripcionES // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcionEN: freezed == descripcionEN
+          ? _value.descripcionEN
+          : descripcionEN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionFR: freezed == descripcionFR
+          ? _value.descripcionFR
+          : descripcionFR // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionDE: freezed == descripcionDE
+          ? _value.descripcionDE
+          : descripcionDE // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCA: freezed == descripcionCA
+          ? _value.descripcionCA
+          : descripcionCA // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionGB: freezed == descripcionGB
+          ? _value.descripcionGB
+          : descripcionGB // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionHU: freezed == descripcionHU
+          ? _value.descripcionHU
+          : descripcionHU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionIT: freezed == descripcionIT
+          ? _value.descripcionIT
+          : descripcionIT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionNL: freezed == descripcionNL
+          ? _value.descripcionNL
+          : descripcionNL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPL: freezed == descripcionPL
+          ? _value.descripcionPL
+          : descripcionPL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPT: freezed == descripcionPT
+          ? _value.descripcionPT
+          : descripcionPT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRO: freezed == descripcionRO
+          ? _value.descripcionRO
+          : descripcionRO // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRU: freezed == descripcionRU
+          ? _value.descripcionRU
+          : descripcionRU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCN: freezed == descripcionCN
+          ? _value.descripcionCN
+          : descripcionCN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionEL: freezed == descripcionEL
+          ? _value.descripcionEL
+          : descripcionEL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$DevolucionMotivoImplCopyWith<$Res>
     implements $DevolucionMotivoCopyWith<$Res> {
-  factory _$$DevolucionMotivoImplCopyWith(
-    _$DevolucionMotivoImpl value,
-    $Res Function(_$DevolucionMotivoImpl) then,
-  ) = __$$DevolucionMotivoImplCopyWithImpl<$Res>;
+  factory _$$DevolucionMotivoImplCopyWith(_$DevolucionMotivoImpl value,
+          $Res Function(_$DevolucionMotivoImpl) then) =
+      __$$DevolucionMotivoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String descripcionES,
-    String? descripcionEN,
-    String? descripcionFR,
-    String? descripcionDE,
-    String? descripcionCA,
-    String? descripcionGB,
-    String? descripcionHU,
-    String? descripcionIT,
-    String? descripcionNL,
-    String? descripcionPL,
-    String? descripcionPT,
-    String? descripcionRO,
-    String? descripcionRU,
-    String? descripcionCN,
-    String? descripcionEL,
-    DateTime lastUpdated,
-    bool deleted,
-  });
+  $Res call(
+      {String id,
+      String descripcionES,
+      String? descripcionEN,
+      String? descripcionFR,
+      String? descripcionDE,
+      String? descripcionCA,
+      String? descripcionGB,
+      String? descripcionHU,
+      String? descripcionIT,
+      String? descripcionNL,
+      String? descripcionPL,
+      String? descripcionPT,
+      String? descripcionRO,
+      String? descripcionRU,
+      String? descripcionCN,
+      String? descripcionEL,
+      DateTime lastUpdated,
+      bool deleted});
 }
 
 /// @nodoc
 class __$$DevolucionMotivoImplCopyWithImpl<$Res>
     extends _$DevolucionMotivoCopyWithImpl<$Res, _$DevolucionMotivoImpl>
     implements _$$DevolucionMotivoImplCopyWith<$Res> {
-  __$$DevolucionMotivoImplCopyWithImpl(
-    _$DevolucionMotivoImpl _value,
-    $Res Function(_$DevolucionMotivoImpl) _then,
-  ) : super(_value, _then);
+  __$$DevolucionMotivoImplCopyWithImpl(_$DevolucionMotivoImpl _value,
+      $Res Function(_$DevolucionMotivoImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of DevolucionMotivo
   /// with the given fields replaced by the non-null parameter values.
@@ -268,126 +241,106 @@ class __$$DevolucionMotivoImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$DevolucionMotivoImpl(
-        id:
-            null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as String,
-        descripcionES:
-            null == descripcionES
-                ? _value.descripcionES
-                : descripcionES // ignore: cast_nullable_to_non_nullable
-                    as String,
-        descripcionEN:
-            freezed == descripcionEN
-                ? _value.descripcionEN
-                : descripcionEN // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionFR:
-            freezed == descripcionFR
-                ? _value.descripcionFR
-                : descripcionFR // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionDE:
-            freezed == descripcionDE
-                ? _value.descripcionDE
-                : descripcionDE // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionCA:
-            freezed == descripcionCA
-                ? _value.descripcionCA
-                : descripcionCA // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionGB:
-            freezed == descripcionGB
-                ? _value.descripcionGB
-                : descripcionGB // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionHU:
-            freezed == descripcionHU
-                ? _value.descripcionHU
-                : descripcionHU // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionIT:
-            freezed == descripcionIT
-                ? _value.descripcionIT
-                : descripcionIT // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionNL:
-            freezed == descripcionNL
-                ? _value.descripcionNL
-                : descripcionNL // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionPL:
-            freezed == descripcionPL
-                ? _value.descripcionPL
-                : descripcionPL // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionPT:
-            freezed == descripcionPT
-                ? _value.descripcionPT
-                : descripcionPT // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionRO:
-            freezed == descripcionRO
-                ? _value.descripcionRO
-                : descripcionRO // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionRU:
-            freezed == descripcionRU
-                ? _value.descripcionRU
-                : descripcionRU // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionCN:
-            freezed == descripcionCN
-                ? _value.descripcionCN
-                : descripcionCN // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionEL:
-            freezed == descripcionEL
-                ? _value.descripcionEL
-                : descripcionEL // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        lastUpdated:
-            null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as bool,
-      ),
-    );
+    return _then(_$DevolucionMotivoImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcionES: null == descripcionES
+          ? _value.descripcionES
+          : descripcionES // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcionEN: freezed == descripcionEN
+          ? _value.descripcionEN
+          : descripcionEN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionFR: freezed == descripcionFR
+          ? _value.descripcionFR
+          : descripcionFR // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionDE: freezed == descripcionDE
+          ? _value.descripcionDE
+          : descripcionDE // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCA: freezed == descripcionCA
+          ? _value.descripcionCA
+          : descripcionCA // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionGB: freezed == descripcionGB
+          ? _value.descripcionGB
+          : descripcionGB // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionHU: freezed == descripcionHU
+          ? _value.descripcionHU
+          : descripcionHU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionIT: freezed == descripcionIT
+          ? _value.descripcionIT
+          : descripcionIT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionNL: freezed == descripcionNL
+          ? _value.descripcionNL
+          : descripcionNL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPL: freezed == descripcionPL
+          ? _value.descripcionPL
+          : descripcionPL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPT: freezed == descripcionPT
+          ? _value.descripcionPT
+          : descripcionPT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRO: freezed == descripcionRO
+          ? _value.descripcionRO
+          : descripcionRO // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRU: freezed == descripcionRU
+          ? _value.descripcionRU
+          : descripcionRU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCN: freezed == descripcionCN
+          ? _value.descripcionCN
+          : descripcionCN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionEL: freezed == descripcionEL
+          ? _value.descripcionEL
+          : descripcionEL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$DevolucionMotivoImpl extends _DevolucionMotivo {
-  const _$DevolucionMotivoImpl({
-    required this.id,
-    required this.descripcionES,
-    this.descripcionEN,
-    this.descripcionFR,
-    this.descripcionDE,
-    this.descripcionCA,
-    this.descripcionGB,
-    this.descripcionHU,
-    this.descripcionIT,
-    this.descripcionNL,
-    this.descripcionPL,
-    this.descripcionPT,
-    this.descripcionRO,
-    this.descripcionRU,
-    this.descripcionCN,
-    this.descripcionEL,
-    required this.lastUpdated,
-    required this.deleted,
-  }) : super._();
+  const _$DevolucionMotivoImpl(
+      {required this.id,
+      required this.descripcionES,
+      this.descripcionEN,
+      this.descripcionFR,
+      this.descripcionDE,
+      this.descripcionCA,
+      this.descripcionGB,
+      this.descripcionHU,
+      this.descripcionIT,
+      this.descripcionNL,
+      this.descripcionPL,
+      this.descripcionPT,
+      this.descripcionRO,
+      this.descripcionRU,
+      this.descripcionCN,
+      this.descripcionEL,
+      required this.lastUpdated,
+      required this.deleted})
+      : super._();
 
   @override
   final String id;
@@ -474,26 +427,25 @@ class _$DevolucionMotivoImpl extends _DevolucionMotivo {
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    descripcionES,
-    descripcionEN,
-    descripcionFR,
-    descripcionDE,
-    descripcionCA,
-    descripcionGB,
-    descripcionHU,
-    descripcionIT,
-    descripcionNL,
-    descripcionPL,
-    descripcionPT,
-    descripcionRO,
-    descripcionRU,
-    descripcionCN,
-    descripcionEL,
-    lastUpdated,
-    deleted,
-  );
+      runtimeType,
+      id,
+      descripcionES,
+      descripcionEN,
+      descripcionFR,
+      descripcionDE,
+      descripcionCA,
+      descripcionGB,
+      descripcionHU,
+      descripcionIT,
+      descripcionNL,
+      descripcionPL,
+      descripcionPT,
+      descripcionRO,
+      descripcionRU,
+      descripcionCN,
+      descripcionEL,
+      lastUpdated,
+      deleted);
 
   /// Create a copy of DevolucionMotivo
   /// with the given fields replaced by the non-null parameter values.
@@ -502,32 +454,29 @@ class _$DevolucionMotivoImpl extends _DevolucionMotivo {
   @pragma('vm:prefer-inline')
   _$$DevolucionMotivoImplCopyWith<_$DevolucionMotivoImpl> get copyWith =>
       __$$DevolucionMotivoImplCopyWithImpl<_$DevolucionMotivoImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 }
 
 abstract class _DevolucionMotivo extends DevolucionMotivo {
-  const factory _DevolucionMotivo({
-    required final String id,
-    required final String descripcionES,
-    final String? descripcionEN,
-    final String? descripcionFR,
-    final String? descripcionDE,
-    final String? descripcionCA,
-    final String? descripcionGB,
-    final String? descripcionHU,
-    final String? descripcionIT,
-    final String? descripcionNL,
-    final String? descripcionPL,
-    final String? descripcionPT,
-    final String? descripcionRO,
-    final String? descripcionRU,
-    final String? descripcionCN,
-    final String? descripcionEL,
-    required final DateTime lastUpdated,
-    required final bool deleted,
-  }) = _$DevolucionMotivoImpl;
+  const factory _DevolucionMotivo(
+      {required final String id,
+      required final String descripcionES,
+      final String? descripcionEN,
+      final String? descripcionFR,
+      final String? descripcionDE,
+      final String? descripcionCA,
+      final String? descripcionGB,
+      final String? descripcionHU,
+      final String? descripcionIT,
+      final String? descripcionNL,
+      final String? descripcionPL,
+      final String? descripcionPT,
+      final String? descripcionRO,
+      final String? descripcionRU,
+      final String? descripcionCN,
+      final String? descripcionEL,
+      required final DateTime lastUpdated,
+      required final bool deleted}) = _$DevolucionMotivoImpl;
   const _DevolucionMotivo._() : super._();
 
   @override

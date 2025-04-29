@@ -12,8 +12,7 @@ part of 'visita_local_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 VisitaLocalDTO _$VisitaLocalDTOFromJson(Map<String, dynamic> json) {
   return _VisitaLocalDTO.fromJson(json);
@@ -107,54 +106,53 @@ mixin _$VisitaLocalDTO {
 /// @nodoc
 abstract class $VisitaLocalDTOCopyWith<$Res> {
   factory $VisitaLocalDTOCopyWith(
-    VisitaLocalDTO value,
-    $Res Function(VisitaLocalDTO) then,
-  ) = _$VisitaLocalDTOCopyWithImpl<$Res, VisitaLocalDTO>;
+          VisitaLocalDTO value, $Res Function(VisitaLocalDTO) then) =
+      _$VisitaLocalDTOCopyWithImpl<$Res, VisitaLocalDTO>;
   @useResult
-  $Res call({
-    @JsonKey(name: 'COD_VISITA_APP') String? visitaAppId,
-    @JsonKey(name: 'FECHA') DateTime fecha,
-    @JsonKey(name: 'CLIENTE_ID') String? clienteId,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_SN') String isClienteProvisional,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_NOMBRE') String? clienteProvisionalNombre,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL') String? clienteProvisionalEmail,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
-    String? clienteProvisionalTelefono,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_DIRECCION1')
-    String? clienteProvisionalDireccion1,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_DIRECCION2')
-    String? clienteProvisionalDireccion2,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_COD_POS')
-    String? clienteProvisionalCodigoPostal,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_POBLACION')
-    String? clienteProvisionalPoblacion,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_PROVINCIA_ID')
-    String? clienteProvisionalProvinciaId,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_REGION_ID')
-    String? clienteProvisionalRegionId,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_PAIS_ID')
-    String? clienteProvisionalPaisId,
-    @JsonKey(name: 'NUM_EMPL') String numEmpl,
-    @JsonKey(name: 'CONTACTO') String contacto,
-    @JsonKey(name: 'ATENDIDO_POR') String? atendidoPor,
-    @JsonKey(name: 'RESUMEN') String? resumen,
-    @JsonKey(name: 'MARCAS_COMPETENCIA') String? marcasCompetencia,
-    @JsonKey(name: 'OFERTA_REALIZADA') String ofertaRealizada,
-    @JsonKey(name: 'INTERES_CLIENTE') String? interesCliente,
-    @JsonKey(name: 'PEDIDO_REALIZADO') String pedidoRealizado,
-    @JsonKey(name: 'CODIGO_MOTIVO_NO_INTERES') int? codigoMotivoNoInteres,
-    @JsonKey(name: 'CODIGO_MOTIVO_NO_PEDIDO') int? codigoMotivoNoPedido,
-    @JsonKey(name: 'CODIGO_SECTOR') int? codigoSector,
-    @JsonKey(name: 'CODIGO_COMPETENCIA') int? codigoCompetencia,
-    @JsonKey(name: 'ALMACEN_PROPIO') String? almacenPropio,
-    @JsonKey(name: 'CAPACIDAD') String? capacidad,
-    @JsonKey(name: 'FRECUENCIA_PEDIDO') String? frecuenciaPedido,
-    @JsonKey(name: 'LATITUD') double latitud,
-    @JsonKey(name: 'LONGITUD') double longitud,
-    @JsonKey(name: 'ENVIADA') String enviada,
-    @JsonKey(name: 'TRATADA') String tratada,
-    @JsonKey(name: 'ERROR_SYNC') String? errorSyncMessage,
-  });
+  $Res call(
+      {@JsonKey(name: 'COD_VISITA_APP') String? visitaAppId,
+      @JsonKey(name: 'FECHA') DateTime fecha,
+      @JsonKey(name: 'CLIENTE_ID') String? clienteId,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_SN') String isClienteProvisional,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_NOMBRE')
+      String? clienteProvisionalNombre,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL') String? clienteProvisionalEmail,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
+      String? clienteProvisionalTelefono,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_DIRECCION1')
+      String? clienteProvisionalDireccion1,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_DIRECCION2')
+      String? clienteProvisionalDireccion2,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_COD_POS')
+      String? clienteProvisionalCodigoPostal,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_POBLACION')
+      String? clienteProvisionalPoblacion,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_PROVINCIA_ID')
+      String? clienteProvisionalProvinciaId,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_REGION_ID')
+      String? clienteProvisionalRegionId,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_PAIS_ID')
+      String? clienteProvisionalPaisId,
+      @JsonKey(name: 'NUM_EMPL') String numEmpl,
+      @JsonKey(name: 'CONTACTO') String contacto,
+      @JsonKey(name: 'ATENDIDO_POR') String? atendidoPor,
+      @JsonKey(name: 'RESUMEN') String? resumen,
+      @JsonKey(name: 'MARCAS_COMPETENCIA') String? marcasCompetencia,
+      @JsonKey(name: 'OFERTA_REALIZADA') String ofertaRealizada,
+      @JsonKey(name: 'INTERES_CLIENTE') String? interesCliente,
+      @JsonKey(name: 'PEDIDO_REALIZADO') String pedidoRealizado,
+      @JsonKey(name: 'CODIGO_MOTIVO_NO_INTERES') int? codigoMotivoNoInteres,
+      @JsonKey(name: 'CODIGO_MOTIVO_NO_PEDIDO') int? codigoMotivoNoPedido,
+      @JsonKey(name: 'CODIGO_SECTOR') int? codigoSector,
+      @JsonKey(name: 'CODIGO_COMPETENCIA') int? codigoCompetencia,
+      @JsonKey(name: 'ALMACEN_PROPIO') String? almacenPropio,
+      @JsonKey(name: 'CAPACIDAD') String? capacidad,
+      @JsonKey(name: 'FRECUENCIA_PEDIDO') String? frecuenciaPedido,
+      @JsonKey(name: 'LATITUD') double latitud,
+      @JsonKey(name: 'LONGITUD') double longitud,
+      @JsonKey(name: 'ENVIADA') String enviada,
+      @JsonKey(name: 'TRATADA') String tratada,
+      @JsonKey(name: 'ERROR_SYNC') String? errorSyncMessage});
 }
 
 /// @nodoc
@@ -207,237 +205,199 @@ class _$VisitaLocalDTOCopyWithImpl<$Res, $Val extends VisitaLocalDTO>
     Object? tratada = null,
     Object? errorSyncMessage = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            visitaAppId:
-                freezed == visitaAppId
-                    ? _value.visitaAppId
-                    : visitaAppId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            fecha:
-                null == fecha
-                    ? _value.fecha
-                    : fecha // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            clienteId:
-                freezed == clienteId
-                    ? _value.clienteId
-                    : clienteId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            isClienteProvisional:
-                null == isClienteProvisional
-                    ? _value.isClienteProvisional
-                    : isClienteProvisional // ignore: cast_nullable_to_non_nullable
-                        as String,
-            clienteProvisionalNombre:
-                freezed == clienteProvisionalNombre
-                    ? _value.clienteProvisionalNombre
-                    : clienteProvisionalNombre // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            clienteProvisionalEmail:
-                freezed == clienteProvisionalEmail
-                    ? _value.clienteProvisionalEmail
-                    : clienteProvisionalEmail // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            clienteProvisionalTelefono:
-                freezed == clienteProvisionalTelefono
-                    ? _value.clienteProvisionalTelefono
-                    : clienteProvisionalTelefono // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            clienteProvisionalDireccion1:
-                freezed == clienteProvisionalDireccion1
-                    ? _value.clienteProvisionalDireccion1
-                    : clienteProvisionalDireccion1 // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            clienteProvisionalDireccion2:
-                freezed == clienteProvisionalDireccion2
-                    ? _value.clienteProvisionalDireccion2
-                    : clienteProvisionalDireccion2 // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            clienteProvisionalCodigoPostal:
-                freezed == clienteProvisionalCodigoPostal
-                    ? _value.clienteProvisionalCodigoPostal
-                    : clienteProvisionalCodigoPostal // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            clienteProvisionalPoblacion:
-                freezed == clienteProvisionalPoblacion
-                    ? _value.clienteProvisionalPoblacion
-                    : clienteProvisionalPoblacion // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            clienteProvisionalProvinciaId:
-                freezed == clienteProvisionalProvinciaId
-                    ? _value.clienteProvisionalProvinciaId
-                    : clienteProvisionalProvinciaId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            clienteProvisionalRegionId:
-                freezed == clienteProvisionalRegionId
-                    ? _value.clienteProvisionalRegionId
-                    : clienteProvisionalRegionId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            clienteProvisionalPaisId:
-                freezed == clienteProvisionalPaisId
-                    ? _value.clienteProvisionalPaisId
-                    : clienteProvisionalPaisId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            numEmpl:
-                null == numEmpl
-                    ? _value.numEmpl
-                    : numEmpl // ignore: cast_nullable_to_non_nullable
-                        as String,
-            contacto:
-                null == contacto
-                    ? _value.contacto
-                    : contacto // ignore: cast_nullable_to_non_nullable
-                        as String,
-            atendidoPor:
-                freezed == atendidoPor
-                    ? _value.atendidoPor
-                    : atendidoPor // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            resumen:
-                freezed == resumen
-                    ? _value.resumen
-                    : resumen // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            marcasCompetencia:
-                freezed == marcasCompetencia
-                    ? _value.marcasCompetencia
-                    : marcasCompetencia // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            ofertaRealizada:
-                null == ofertaRealizada
-                    ? _value.ofertaRealizada
-                    : ofertaRealizada // ignore: cast_nullable_to_non_nullable
-                        as String,
-            interesCliente:
-                freezed == interesCliente
-                    ? _value.interesCliente
-                    : interesCliente // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            pedidoRealizado:
-                null == pedidoRealizado
-                    ? _value.pedidoRealizado
-                    : pedidoRealizado // ignore: cast_nullable_to_non_nullable
-                        as String,
-            codigoMotivoNoInteres:
-                freezed == codigoMotivoNoInteres
-                    ? _value.codigoMotivoNoInteres
-                    : codigoMotivoNoInteres // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            codigoMotivoNoPedido:
-                freezed == codigoMotivoNoPedido
-                    ? _value.codigoMotivoNoPedido
-                    : codigoMotivoNoPedido // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            codigoSector:
-                freezed == codigoSector
-                    ? _value.codigoSector
-                    : codigoSector // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            codigoCompetencia:
-                freezed == codigoCompetencia
-                    ? _value.codigoCompetencia
-                    : codigoCompetencia // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            almacenPropio:
-                freezed == almacenPropio
-                    ? _value.almacenPropio
-                    : almacenPropio // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            capacidad:
-                freezed == capacidad
-                    ? _value.capacidad
-                    : capacidad // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            frecuenciaPedido:
-                freezed == frecuenciaPedido
-                    ? _value.frecuenciaPedido
-                    : frecuenciaPedido // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            latitud:
-                null == latitud
-                    ? _value.latitud
-                    : latitud // ignore: cast_nullable_to_non_nullable
-                        as double,
-            longitud:
-                null == longitud
-                    ? _value.longitud
-                    : longitud // ignore: cast_nullable_to_non_nullable
-                        as double,
-            enviada:
-                null == enviada
-                    ? _value.enviada
-                    : enviada // ignore: cast_nullable_to_non_nullable
-                        as String,
-            tratada:
-                null == tratada
-                    ? _value.tratada
-                    : tratada // ignore: cast_nullable_to_non_nullable
-                        as String,
-            errorSyncMessage:
-                freezed == errorSyncMessage
-                    ? _value.errorSyncMessage
-                    : errorSyncMessage // ignore: cast_nullable_to_non_nullable
-                        as String?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      visitaAppId: freezed == visitaAppId
+          ? _value.visitaAppId
+          : visitaAppId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fecha: null == fecha
+          ? _value.fecha
+          : fecha // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      clienteId: freezed == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isClienteProvisional: null == isClienteProvisional
+          ? _value.isClienteProvisional
+          : isClienteProvisional // ignore: cast_nullable_to_non_nullable
+              as String,
+      clienteProvisionalNombre: freezed == clienteProvisionalNombre
+          ? _value.clienteProvisionalNombre
+          : clienteProvisionalNombre // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clienteProvisionalEmail: freezed == clienteProvisionalEmail
+          ? _value.clienteProvisionalEmail
+          : clienteProvisionalEmail // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clienteProvisionalTelefono: freezed == clienteProvisionalTelefono
+          ? _value.clienteProvisionalTelefono
+          : clienteProvisionalTelefono // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clienteProvisionalDireccion1: freezed == clienteProvisionalDireccion1
+          ? _value.clienteProvisionalDireccion1
+          : clienteProvisionalDireccion1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clienteProvisionalDireccion2: freezed == clienteProvisionalDireccion2
+          ? _value.clienteProvisionalDireccion2
+          : clienteProvisionalDireccion2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clienteProvisionalCodigoPostal: freezed == clienteProvisionalCodigoPostal
+          ? _value.clienteProvisionalCodigoPostal
+          : clienteProvisionalCodigoPostal // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clienteProvisionalPoblacion: freezed == clienteProvisionalPoblacion
+          ? _value.clienteProvisionalPoblacion
+          : clienteProvisionalPoblacion // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clienteProvisionalProvinciaId: freezed == clienteProvisionalProvinciaId
+          ? _value.clienteProvisionalProvinciaId
+          : clienteProvisionalProvinciaId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clienteProvisionalRegionId: freezed == clienteProvisionalRegionId
+          ? _value.clienteProvisionalRegionId
+          : clienteProvisionalRegionId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clienteProvisionalPaisId: freezed == clienteProvisionalPaisId
+          ? _value.clienteProvisionalPaisId
+          : clienteProvisionalPaisId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      numEmpl: null == numEmpl
+          ? _value.numEmpl
+          : numEmpl // ignore: cast_nullable_to_non_nullable
+              as String,
+      contacto: null == contacto
+          ? _value.contacto
+          : contacto // ignore: cast_nullable_to_non_nullable
+              as String,
+      atendidoPor: freezed == atendidoPor
+          ? _value.atendidoPor
+          : atendidoPor // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumen: freezed == resumen
+          ? _value.resumen
+          : resumen // ignore: cast_nullable_to_non_nullable
+              as String?,
+      marcasCompetencia: freezed == marcasCompetencia
+          ? _value.marcasCompetencia
+          : marcasCompetencia // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ofertaRealizada: null == ofertaRealizada
+          ? _value.ofertaRealizada
+          : ofertaRealizada // ignore: cast_nullable_to_non_nullable
+              as String,
+      interesCliente: freezed == interesCliente
+          ? _value.interesCliente
+          : interesCliente // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pedidoRealizado: null == pedidoRealizado
+          ? _value.pedidoRealizado
+          : pedidoRealizado // ignore: cast_nullable_to_non_nullable
+              as String,
+      codigoMotivoNoInteres: freezed == codigoMotivoNoInteres
+          ? _value.codigoMotivoNoInteres
+          : codigoMotivoNoInteres // ignore: cast_nullable_to_non_nullable
+              as int?,
+      codigoMotivoNoPedido: freezed == codigoMotivoNoPedido
+          ? _value.codigoMotivoNoPedido
+          : codigoMotivoNoPedido // ignore: cast_nullable_to_non_nullable
+              as int?,
+      codigoSector: freezed == codigoSector
+          ? _value.codigoSector
+          : codigoSector // ignore: cast_nullable_to_non_nullable
+              as int?,
+      codigoCompetencia: freezed == codigoCompetencia
+          ? _value.codigoCompetencia
+          : codigoCompetencia // ignore: cast_nullable_to_non_nullable
+              as int?,
+      almacenPropio: freezed == almacenPropio
+          ? _value.almacenPropio
+          : almacenPropio // ignore: cast_nullable_to_non_nullable
+              as String?,
+      capacidad: freezed == capacidad
+          ? _value.capacidad
+          : capacidad // ignore: cast_nullable_to_non_nullable
+              as String?,
+      frecuenciaPedido: freezed == frecuenciaPedido
+          ? _value.frecuenciaPedido
+          : frecuenciaPedido // ignore: cast_nullable_to_non_nullable
+              as String?,
+      latitud: null == latitud
+          ? _value.latitud
+          : latitud // ignore: cast_nullable_to_non_nullable
+              as double,
+      longitud: null == longitud
+          ? _value.longitud
+          : longitud // ignore: cast_nullable_to_non_nullable
+              as double,
+      enviada: null == enviada
+          ? _value.enviada
+          : enviada // ignore: cast_nullable_to_non_nullable
+              as String,
+      tratada: null == tratada
+          ? _value.tratada
+          : tratada // ignore: cast_nullable_to_non_nullable
+              as String,
+      errorSyncMessage: freezed == errorSyncMessage
+          ? _value.errorSyncMessage
+          : errorSyncMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$VisitaLocalDTOImplCopyWith<$Res>
     implements $VisitaLocalDTOCopyWith<$Res> {
-  factory _$$VisitaLocalDTOImplCopyWith(
-    _$VisitaLocalDTOImpl value,
-    $Res Function(_$VisitaLocalDTOImpl) then,
-  ) = __$$VisitaLocalDTOImplCopyWithImpl<$Res>;
+  factory _$$VisitaLocalDTOImplCopyWith(_$VisitaLocalDTOImpl value,
+          $Res Function(_$VisitaLocalDTOImpl) then) =
+      __$$VisitaLocalDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'COD_VISITA_APP') String? visitaAppId,
-    @JsonKey(name: 'FECHA') DateTime fecha,
-    @JsonKey(name: 'CLIENTE_ID') String? clienteId,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_SN') String isClienteProvisional,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_NOMBRE') String? clienteProvisionalNombre,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL') String? clienteProvisionalEmail,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
-    String? clienteProvisionalTelefono,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_DIRECCION1')
-    String? clienteProvisionalDireccion1,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_DIRECCION2')
-    String? clienteProvisionalDireccion2,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_COD_POS')
-    String? clienteProvisionalCodigoPostal,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_POBLACION')
-    String? clienteProvisionalPoblacion,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_PROVINCIA_ID')
-    String? clienteProvisionalProvinciaId,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_REGION_ID')
-    String? clienteProvisionalRegionId,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_PAIS_ID')
-    String? clienteProvisionalPaisId,
-    @JsonKey(name: 'NUM_EMPL') String numEmpl,
-    @JsonKey(name: 'CONTACTO') String contacto,
-    @JsonKey(name: 'ATENDIDO_POR') String? atendidoPor,
-    @JsonKey(name: 'RESUMEN') String? resumen,
-    @JsonKey(name: 'MARCAS_COMPETENCIA') String? marcasCompetencia,
-    @JsonKey(name: 'OFERTA_REALIZADA') String ofertaRealizada,
-    @JsonKey(name: 'INTERES_CLIENTE') String? interesCliente,
-    @JsonKey(name: 'PEDIDO_REALIZADO') String pedidoRealizado,
-    @JsonKey(name: 'CODIGO_MOTIVO_NO_INTERES') int? codigoMotivoNoInteres,
-    @JsonKey(name: 'CODIGO_MOTIVO_NO_PEDIDO') int? codigoMotivoNoPedido,
-    @JsonKey(name: 'CODIGO_SECTOR') int? codigoSector,
-    @JsonKey(name: 'CODIGO_COMPETENCIA') int? codigoCompetencia,
-    @JsonKey(name: 'ALMACEN_PROPIO') String? almacenPropio,
-    @JsonKey(name: 'CAPACIDAD') String? capacidad,
-    @JsonKey(name: 'FRECUENCIA_PEDIDO') String? frecuenciaPedido,
-    @JsonKey(name: 'LATITUD') double latitud,
-    @JsonKey(name: 'LONGITUD') double longitud,
-    @JsonKey(name: 'ENVIADA') String enviada,
-    @JsonKey(name: 'TRATADA') String tratada,
-    @JsonKey(name: 'ERROR_SYNC') String? errorSyncMessage,
-  });
+  $Res call(
+      {@JsonKey(name: 'COD_VISITA_APP') String? visitaAppId,
+      @JsonKey(name: 'FECHA') DateTime fecha,
+      @JsonKey(name: 'CLIENTE_ID') String? clienteId,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_SN') String isClienteProvisional,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_NOMBRE')
+      String? clienteProvisionalNombre,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL') String? clienteProvisionalEmail,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
+      String? clienteProvisionalTelefono,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_DIRECCION1')
+      String? clienteProvisionalDireccion1,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_DIRECCION2')
+      String? clienteProvisionalDireccion2,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_COD_POS')
+      String? clienteProvisionalCodigoPostal,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_POBLACION')
+      String? clienteProvisionalPoblacion,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_PROVINCIA_ID')
+      String? clienteProvisionalProvinciaId,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_REGION_ID')
+      String? clienteProvisionalRegionId,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_PAIS_ID')
+      String? clienteProvisionalPaisId,
+      @JsonKey(name: 'NUM_EMPL') String numEmpl,
+      @JsonKey(name: 'CONTACTO') String contacto,
+      @JsonKey(name: 'ATENDIDO_POR') String? atendidoPor,
+      @JsonKey(name: 'RESUMEN') String? resumen,
+      @JsonKey(name: 'MARCAS_COMPETENCIA') String? marcasCompetencia,
+      @JsonKey(name: 'OFERTA_REALIZADA') String ofertaRealizada,
+      @JsonKey(name: 'INTERES_CLIENTE') String? interesCliente,
+      @JsonKey(name: 'PEDIDO_REALIZADO') String pedidoRealizado,
+      @JsonKey(name: 'CODIGO_MOTIVO_NO_INTERES') int? codigoMotivoNoInteres,
+      @JsonKey(name: 'CODIGO_MOTIVO_NO_PEDIDO') int? codigoMotivoNoPedido,
+      @JsonKey(name: 'CODIGO_SECTOR') int? codigoSector,
+      @JsonKey(name: 'CODIGO_COMPETENCIA') int? codigoCompetencia,
+      @JsonKey(name: 'ALMACEN_PROPIO') String? almacenPropio,
+      @JsonKey(name: 'CAPACIDAD') String? capacidad,
+      @JsonKey(name: 'FRECUENCIA_PEDIDO') String? frecuenciaPedido,
+      @JsonKey(name: 'LATITUD') double latitud,
+      @JsonKey(name: 'LONGITUD') double longitud,
+      @JsonKey(name: 'ENVIADA') String enviada,
+      @JsonKey(name: 'TRATADA') String tratada,
+      @JsonKey(name: 'ERROR_SYNC') String? errorSyncMessage});
 }
 
 /// @nodoc
@@ -445,9 +405,8 @@ class __$$VisitaLocalDTOImplCopyWithImpl<$Res>
     extends _$VisitaLocalDTOCopyWithImpl<$Res, _$VisitaLocalDTOImpl>
     implements _$$VisitaLocalDTOImplCopyWith<$Res> {
   __$$VisitaLocalDTOImplCopyWithImpl(
-    _$VisitaLocalDTOImpl _value,
-    $Res Function(_$VisitaLocalDTOImpl) _then,
-  ) : super(_value, _then);
+      _$VisitaLocalDTOImpl _value, $Res Function(_$VisitaLocalDTOImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of VisitaLocalDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -489,229 +448,193 @@ class __$$VisitaLocalDTOImplCopyWithImpl<$Res>
     Object? tratada = null,
     Object? errorSyncMessage = freezed,
   }) {
-    return _then(
-      _$VisitaLocalDTOImpl(
-        visitaAppId:
-            freezed == visitaAppId
-                ? _value.visitaAppId
-                : visitaAppId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        fecha:
-            null == fecha
-                ? _value.fecha
-                : fecha // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        clienteId:
-            freezed == clienteId
-                ? _value.clienteId
-                : clienteId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        isClienteProvisional:
-            null == isClienteProvisional
-                ? _value.isClienteProvisional
-                : isClienteProvisional // ignore: cast_nullable_to_non_nullable
-                    as String,
-        clienteProvisionalNombre:
-            freezed == clienteProvisionalNombre
-                ? _value.clienteProvisionalNombre
-                : clienteProvisionalNombre // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        clienteProvisionalEmail:
-            freezed == clienteProvisionalEmail
-                ? _value.clienteProvisionalEmail
-                : clienteProvisionalEmail // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        clienteProvisionalTelefono:
-            freezed == clienteProvisionalTelefono
-                ? _value.clienteProvisionalTelefono
-                : clienteProvisionalTelefono // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        clienteProvisionalDireccion1:
-            freezed == clienteProvisionalDireccion1
-                ? _value.clienteProvisionalDireccion1
-                : clienteProvisionalDireccion1 // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        clienteProvisionalDireccion2:
-            freezed == clienteProvisionalDireccion2
-                ? _value.clienteProvisionalDireccion2
-                : clienteProvisionalDireccion2 // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        clienteProvisionalCodigoPostal:
-            freezed == clienteProvisionalCodigoPostal
-                ? _value.clienteProvisionalCodigoPostal
-                : clienteProvisionalCodigoPostal // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        clienteProvisionalPoblacion:
-            freezed == clienteProvisionalPoblacion
-                ? _value.clienteProvisionalPoblacion
-                : clienteProvisionalPoblacion // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        clienteProvisionalProvinciaId:
-            freezed == clienteProvisionalProvinciaId
-                ? _value.clienteProvisionalProvinciaId
-                : clienteProvisionalProvinciaId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        clienteProvisionalRegionId:
-            freezed == clienteProvisionalRegionId
-                ? _value.clienteProvisionalRegionId
-                : clienteProvisionalRegionId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        clienteProvisionalPaisId:
-            freezed == clienteProvisionalPaisId
-                ? _value.clienteProvisionalPaisId
-                : clienteProvisionalPaisId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        numEmpl:
-            null == numEmpl
-                ? _value.numEmpl
-                : numEmpl // ignore: cast_nullable_to_non_nullable
-                    as String,
-        contacto:
-            null == contacto
-                ? _value.contacto
-                : contacto // ignore: cast_nullable_to_non_nullable
-                    as String,
-        atendidoPor:
-            freezed == atendidoPor
-                ? _value.atendidoPor
-                : atendidoPor // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        resumen:
-            freezed == resumen
-                ? _value.resumen
-                : resumen // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        marcasCompetencia:
-            freezed == marcasCompetencia
-                ? _value.marcasCompetencia
-                : marcasCompetencia // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        ofertaRealizada:
-            null == ofertaRealizada
-                ? _value.ofertaRealizada
-                : ofertaRealizada // ignore: cast_nullable_to_non_nullable
-                    as String,
-        interesCliente:
-            freezed == interesCliente
-                ? _value.interesCliente
-                : interesCliente // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        pedidoRealizado:
-            null == pedidoRealizado
-                ? _value.pedidoRealizado
-                : pedidoRealizado // ignore: cast_nullable_to_non_nullable
-                    as String,
-        codigoMotivoNoInteres:
-            freezed == codigoMotivoNoInteres
-                ? _value.codigoMotivoNoInteres
-                : codigoMotivoNoInteres // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        codigoMotivoNoPedido:
-            freezed == codigoMotivoNoPedido
-                ? _value.codigoMotivoNoPedido
-                : codigoMotivoNoPedido // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        codigoSector:
-            freezed == codigoSector
-                ? _value.codigoSector
-                : codigoSector // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        codigoCompetencia:
-            freezed == codigoCompetencia
-                ? _value.codigoCompetencia
-                : codigoCompetencia // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        almacenPropio:
-            freezed == almacenPropio
-                ? _value.almacenPropio
-                : almacenPropio // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        capacidad:
-            freezed == capacidad
-                ? _value.capacidad
-                : capacidad // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        frecuenciaPedido:
-            freezed == frecuenciaPedido
-                ? _value.frecuenciaPedido
-                : frecuenciaPedido // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        latitud:
-            null == latitud
-                ? _value.latitud
-                : latitud // ignore: cast_nullable_to_non_nullable
-                    as double,
-        longitud:
-            null == longitud
-                ? _value.longitud
-                : longitud // ignore: cast_nullable_to_non_nullable
-                    as double,
-        enviada:
-            null == enviada
-                ? _value.enviada
-                : enviada // ignore: cast_nullable_to_non_nullable
-                    as String,
-        tratada:
-            null == tratada
-                ? _value.tratada
-                : tratada // ignore: cast_nullable_to_non_nullable
-                    as String,
-        errorSyncMessage:
-            freezed == errorSyncMessage
-                ? _value.errorSyncMessage
-                : errorSyncMessage // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+    return _then(_$VisitaLocalDTOImpl(
+      visitaAppId: freezed == visitaAppId
+          ? _value.visitaAppId
+          : visitaAppId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fecha: null == fecha
+          ? _value.fecha
+          : fecha // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      clienteId: freezed == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isClienteProvisional: null == isClienteProvisional
+          ? _value.isClienteProvisional
+          : isClienteProvisional // ignore: cast_nullable_to_non_nullable
+              as String,
+      clienteProvisionalNombre: freezed == clienteProvisionalNombre
+          ? _value.clienteProvisionalNombre
+          : clienteProvisionalNombre // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clienteProvisionalEmail: freezed == clienteProvisionalEmail
+          ? _value.clienteProvisionalEmail
+          : clienteProvisionalEmail // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clienteProvisionalTelefono: freezed == clienteProvisionalTelefono
+          ? _value.clienteProvisionalTelefono
+          : clienteProvisionalTelefono // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clienteProvisionalDireccion1: freezed == clienteProvisionalDireccion1
+          ? _value.clienteProvisionalDireccion1
+          : clienteProvisionalDireccion1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clienteProvisionalDireccion2: freezed == clienteProvisionalDireccion2
+          ? _value.clienteProvisionalDireccion2
+          : clienteProvisionalDireccion2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clienteProvisionalCodigoPostal: freezed == clienteProvisionalCodigoPostal
+          ? _value.clienteProvisionalCodigoPostal
+          : clienteProvisionalCodigoPostal // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clienteProvisionalPoblacion: freezed == clienteProvisionalPoblacion
+          ? _value.clienteProvisionalPoblacion
+          : clienteProvisionalPoblacion // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clienteProvisionalProvinciaId: freezed == clienteProvisionalProvinciaId
+          ? _value.clienteProvisionalProvinciaId
+          : clienteProvisionalProvinciaId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clienteProvisionalRegionId: freezed == clienteProvisionalRegionId
+          ? _value.clienteProvisionalRegionId
+          : clienteProvisionalRegionId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clienteProvisionalPaisId: freezed == clienteProvisionalPaisId
+          ? _value.clienteProvisionalPaisId
+          : clienteProvisionalPaisId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      numEmpl: null == numEmpl
+          ? _value.numEmpl
+          : numEmpl // ignore: cast_nullable_to_non_nullable
+              as String,
+      contacto: null == contacto
+          ? _value.contacto
+          : contacto // ignore: cast_nullable_to_non_nullable
+              as String,
+      atendidoPor: freezed == atendidoPor
+          ? _value.atendidoPor
+          : atendidoPor // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumen: freezed == resumen
+          ? _value.resumen
+          : resumen // ignore: cast_nullable_to_non_nullable
+              as String?,
+      marcasCompetencia: freezed == marcasCompetencia
+          ? _value.marcasCompetencia
+          : marcasCompetencia // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ofertaRealizada: null == ofertaRealizada
+          ? _value.ofertaRealizada
+          : ofertaRealizada // ignore: cast_nullable_to_non_nullable
+              as String,
+      interesCliente: freezed == interesCliente
+          ? _value.interesCliente
+          : interesCliente // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pedidoRealizado: null == pedidoRealizado
+          ? _value.pedidoRealizado
+          : pedidoRealizado // ignore: cast_nullable_to_non_nullable
+              as String,
+      codigoMotivoNoInteres: freezed == codigoMotivoNoInteres
+          ? _value.codigoMotivoNoInteres
+          : codigoMotivoNoInteres // ignore: cast_nullable_to_non_nullable
+              as int?,
+      codigoMotivoNoPedido: freezed == codigoMotivoNoPedido
+          ? _value.codigoMotivoNoPedido
+          : codigoMotivoNoPedido // ignore: cast_nullable_to_non_nullable
+              as int?,
+      codigoSector: freezed == codigoSector
+          ? _value.codigoSector
+          : codigoSector // ignore: cast_nullable_to_non_nullable
+              as int?,
+      codigoCompetencia: freezed == codigoCompetencia
+          ? _value.codigoCompetencia
+          : codigoCompetencia // ignore: cast_nullable_to_non_nullable
+              as int?,
+      almacenPropio: freezed == almacenPropio
+          ? _value.almacenPropio
+          : almacenPropio // ignore: cast_nullable_to_non_nullable
+              as String?,
+      capacidad: freezed == capacidad
+          ? _value.capacidad
+          : capacidad // ignore: cast_nullable_to_non_nullable
+              as String?,
+      frecuenciaPedido: freezed == frecuenciaPedido
+          ? _value.frecuenciaPedido
+          : frecuenciaPedido // ignore: cast_nullable_to_non_nullable
+              as String?,
+      latitud: null == latitud
+          ? _value.latitud
+          : latitud // ignore: cast_nullable_to_non_nullable
+              as double,
+      longitud: null == longitud
+          ? _value.longitud
+          : longitud // ignore: cast_nullable_to_non_nullable
+              as double,
+      enviada: null == enviada
+          ? _value.enviada
+          : enviada // ignore: cast_nullable_to_non_nullable
+              as String,
+      tratada: null == tratada
+          ? _value.tratada
+          : tratada // ignore: cast_nullable_to_non_nullable
+              as String,
+      errorSyncMessage: freezed == errorSyncMessage
+          ? _value.errorSyncMessage
+          : errorSyncMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$VisitaLocalDTOImpl extends _VisitaLocalDTO {
-  const _$VisitaLocalDTOImpl({
-    @JsonKey(name: 'COD_VISITA_APP') this.visitaAppId,
-    @JsonKey(name: 'FECHA') required this.fecha,
-    @JsonKey(name: 'CLIENTE_ID') this.clienteId,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_SN') required this.isClienteProvisional,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_NOMBRE') this.clienteProvisionalNombre,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL') this.clienteProvisionalEmail,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
-    this.clienteProvisionalTelefono,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_DIRECCION1')
-    this.clienteProvisionalDireccion1,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_DIRECCION2')
-    this.clienteProvisionalDireccion2,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_COD_POS')
-    this.clienteProvisionalCodigoPostal,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_POBLACION')
-    this.clienteProvisionalPoblacion,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_PROVINCIA_ID')
-    this.clienteProvisionalProvinciaId,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_REGION_ID')
-    this.clienteProvisionalRegionId,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_PAIS_ID') this.clienteProvisionalPaisId,
-    @JsonKey(name: 'NUM_EMPL') required this.numEmpl,
-    @JsonKey(name: 'CONTACTO') required this.contacto,
-    @JsonKey(name: 'ATENDIDO_POR') this.atendidoPor,
-    @JsonKey(name: 'RESUMEN') this.resumen,
-    @JsonKey(name: 'MARCAS_COMPETENCIA') this.marcasCompetencia,
-    @JsonKey(name: 'OFERTA_REALIZADA') required this.ofertaRealizada,
-    @JsonKey(name: 'INTERES_CLIENTE') required this.interesCliente,
-    @JsonKey(name: 'PEDIDO_REALIZADO') required this.pedidoRealizado,
-    @JsonKey(name: 'CODIGO_MOTIVO_NO_INTERES') this.codigoMotivoNoInteres,
-    @JsonKey(name: 'CODIGO_MOTIVO_NO_PEDIDO') this.codigoMotivoNoPedido,
-    @JsonKey(name: 'CODIGO_SECTOR') this.codigoSector,
-    @JsonKey(name: 'CODIGO_COMPETENCIA') this.codigoCompetencia,
-    @JsonKey(name: 'ALMACEN_PROPIO') required this.almacenPropio,
-    @JsonKey(name: 'CAPACIDAD') required this.capacidad,
-    @JsonKey(name: 'FRECUENCIA_PEDIDO') required this.frecuenciaPedido,
-    @JsonKey(name: 'LATITUD') required this.latitud,
-    @JsonKey(name: 'LONGITUD') required this.longitud,
-    @JsonKey(name: 'ENVIADA') this.enviada = 'N',
-    @JsonKey(name: 'TRATADA') this.tratada = 'N',
-    @JsonKey(name: 'ERROR_SYNC') this.errorSyncMessage,
-  }) : super._();
+  const _$VisitaLocalDTOImpl(
+      {@JsonKey(name: 'COD_VISITA_APP') this.visitaAppId,
+      @JsonKey(name: 'FECHA') required this.fecha,
+      @JsonKey(name: 'CLIENTE_ID') this.clienteId,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_SN') required this.isClienteProvisional,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_NOMBRE') this.clienteProvisionalNombre,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL') this.clienteProvisionalEmail,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
+      this.clienteProvisionalTelefono,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_DIRECCION1')
+      this.clienteProvisionalDireccion1,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_DIRECCION2')
+      this.clienteProvisionalDireccion2,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_COD_POS')
+      this.clienteProvisionalCodigoPostal,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_POBLACION')
+      this.clienteProvisionalPoblacion,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_PROVINCIA_ID')
+      this.clienteProvisionalProvinciaId,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_REGION_ID')
+      this.clienteProvisionalRegionId,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_PAIS_ID') this.clienteProvisionalPaisId,
+      @JsonKey(name: 'NUM_EMPL') required this.numEmpl,
+      @JsonKey(name: 'CONTACTO') required this.contacto,
+      @JsonKey(name: 'ATENDIDO_POR') this.atendidoPor,
+      @JsonKey(name: 'RESUMEN') this.resumen,
+      @JsonKey(name: 'MARCAS_COMPETENCIA') this.marcasCompetencia,
+      @JsonKey(name: 'OFERTA_REALIZADA') required this.ofertaRealizada,
+      @JsonKey(name: 'INTERES_CLIENTE') required this.interesCliente,
+      @JsonKey(name: 'PEDIDO_REALIZADO') required this.pedidoRealizado,
+      @JsonKey(name: 'CODIGO_MOTIVO_NO_INTERES') this.codigoMotivoNoInteres,
+      @JsonKey(name: 'CODIGO_MOTIVO_NO_PEDIDO') this.codigoMotivoNoPedido,
+      @JsonKey(name: 'CODIGO_SECTOR') this.codigoSector,
+      @JsonKey(name: 'CODIGO_COMPETENCIA') this.codigoCompetencia,
+      @JsonKey(name: 'ALMACEN_PROPIO') required this.almacenPropio,
+      @JsonKey(name: 'CAPACIDAD') required this.capacidad,
+      @JsonKey(name: 'FRECUENCIA_PEDIDO') required this.frecuenciaPedido,
+      @JsonKey(name: 'LATITUD') required this.latitud,
+      @JsonKey(name: 'LONGITUD') required this.longitud,
+      @JsonKey(name: 'ENVIADA') this.enviada = 'N',
+      @JsonKey(name: 'TRATADA') this.tratada = 'N',
+      @JsonKey(name: 'ERROR_SYNC') this.errorSyncMessage})
+      : super._();
 
   factory _$VisitaLocalDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$VisitaLocalDTOImplFromJson(json);
@@ -836,62 +759,32 @@ class _$VisitaLocalDTOImpl extends _VisitaLocalDTO {
                 other.clienteId == clienteId) &&
             (identical(other.isClienteProvisional, isClienteProvisional) ||
                 other.isClienteProvisional == isClienteProvisional) &&
-            (identical(
-                  other.clienteProvisionalNombre,
-                  clienteProvisionalNombre,
-                ) ||
+            (identical(other.clienteProvisionalNombre, clienteProvisionalNombre) ||
                 other.clienteProvisionalNombre == clienteProvisionalNombre) &&
-            (identical(
-                  other.clienteProvisionalEmail,
-                  clienteProvisionalEmail,
-                ) ||
+            (identical(other.clienteProvisionalEmail, clienteProvisionalEmail) ||
                 other.clienteProvisionalEmail == clienteProvisionalEmail) &&
-            (identical(
-                  other.clienteProvisionalTelefono,
-                  clienteProvisionalTelefono,
-                ) ||
+            (identical(other.clienteProvisionalTelefono, clienteProvisionalTelefono) ||
                 other.clienteProvisionalTelefono ==
                     clienteProvisionalTelefono) &&
-            (identical(
-                  other.clienteProvisionalDireccion1,
-                  clienteProvisionalDireccion1,
-                ) ||
+            (identical(other.clienteProvisionalDireccion1, clienteProvisionalDireccion1) ||
                 other.clienteProvisionalDireccion1 ==
                     clienteProvisionalDireccion1) &&
-            (identical(
-                  other.clienteProvisionalDireccion2,
-                  clienteProvisionalDireccion2,
-                ) ||
+            (identical(other.clienteProvisionalDireccion2, clienteProvisionalDireccion2) ||
                 other.clienteProvisionalDireccion2 ==
                     clienteProvisionalDireccion2) &&
-            (identical(
-                  other.clienteProvisionalCodigoPostal,
-                  clienteProvisionalCodigoPostal,
-                ) ||
+            (identical(other.clienteProvisionalCodigoPostal, clienteProvisionalCodigoPostal) ||
                 other.clienteProvisionalCodigoPostal ==
                     clienteProvisionalCodigoPostal) &&
-            (identical(
-                  other.clienteProvisionalPoblacion,
-                  clienteProvisionalPoblacion,
-                ) ||
+            (identical(other.clienteProvisionalPoblacion, clienteProvisionalPoblacion) ||
                 other.clienteProvisionalPoblacion ==
                     clienteProvisionalPoblacion) &&
-            (identical(
-                  other.clienteProvisionalProvinciaId,
-                  clienteProvisionalProvinciaId,
-                ) ||
+            (identical(other.clienteProvisionalProvinciaId, clienteProvisionalProvinciaId) ||
                 other.clienteProvisionalProvinciaId ==
                     clienteProvisionalProvinciaId) &&
-            (identical(
-                  other.clienteProvisionalRegionId,
-                  clienteProvisionalRegionId,
-                ) ||
+            (identical(other.clienteProvisionalRegionId, clienteProvisionalRegionId) ||
                 other.clienteProvisionalRegionId ==
                     clienteProvisionalRegionId) &&
-            (identical(
-                  other.clienteProvisionalPaisId,
-                  clienteProvisionalPaisId,
-                ) ||
+            (identical(other.clienteProvisionalPaisId, clienteProvisionalPaisId) ||
                 other.clienteProvisionalPaisId == clienteProvisionalPaisId) &&
             (identical(other.numEmpl, numEmpl) || other.numEmpl == numEmpl) &&
             (identical(other.contacto, contacto) ||
@@ -899,76 +792,63 @@ class _$VisitaLocalDTOImpl extends _VisitaLocalDTO {
             (identical(other.atendidoPor, atendidoPor) ||
                 other.atendidoPor == atendidoPor) &&
             (identical(other.resumen, resumen) || other.resumen == resumen) &&
-            (identical(other.marcasCompetencia, marcasCompetencia) ||
-                other.marcasCompetencia == marcasCompetencia) &&
-            (identical(other.ofertaRealizada, ofertaRealizada) ||
-                other.ofertaRealizada == ofertaRealizada) &&
-            (identical(other.interesCliente, interesCliente) ||
-                other.interesCliente == interesCliente) &&
-            (identical(other.pedidoRealizado, pedidoRealizado) ||
-                other.pedidoRealizado == pedidoRealizado) &&
-            (identical(other.codigoMotivoNoInteres, codigoMotivoNoInteres) ||
-                other.codigoMotivoNoInteres == codigoMotivoNoInteres) &&
-            (identical(other.codigoMotivoNoPedido, codigoMotivoNoPedido) ||
-                other.codigoMotivoNoPedido == codigoMotivoNoPedido) &&
-            (identical(other.codigoSector, codigoSector) ||
-                other.codigoSector == codigoSector) &&
-            (identical(other.codigoCompetencia, codigoCompetencia) ||
-                other.codigoCompetencia == codigoCompetencia) &&
-            (identical(other.almacenPropio, almacenPropio) ||
-                other.almacenPropio == almacenPropio) &&
-            (identical(other.capacidad, capacidad) ||
-                other.capacidad == capacidad) &&
-            (identical(other.frecuenciaPedido, frecuenciaPedido) ||
-                other.frecuenciaPedido == frecuenciaPedido) &&
+            (identical(other.marcasCompetencia, marcasCompetencia) || other.marcasCompetencia == marcasCompetencia) &&
+            (identical(other.ofertaRealizada, ofertaRealizada) || other.ofertaRealizada == ofertaRealizada) &&
+            (identical(other.interesCliente, interesCliente) || other.interesCliente == interesCliente) &&
+            (identical(other.pedidoRealizado, pedidoRealizado) || other.pedidoRealizado == pedidoRealizado) &&
+            (identical(other.codigoMotivoNoInteres, codigoMotivoNoInteres) || other.codigoMotivoNoInteres == codigoMotivoNoInteres) &&
+            (identical(other.codigoMotivoNoPedido, codigoMotivoNoPedido) || other.codigoMotivoNoPedido == codigoMotivoNoPedido) &&
+            (identical(other.codigoSector, codigoSector) || other.codigoSector == codigoSector) &&
+            (identical(other.codigoCompetencia, codigoCompetencia) || other.codigoCompetencia == codigoCompetencia) &&
+            (identical(other.almacenPropio, almacenPropio) || other.almacenPropio == almacenPropio) &&
+            (identical(other.capacidad, capacidad) || other.capacidad == capacidad) &&
+            (identical(other.frecuenciaPedido, frecuenciaPedido) || other.frecuenciaPedido == frecuenciaPedido) &&
             (identical(other.latitud, latitud) || other.latitud == latitud) &&
-            (identical(other.longitud, longitud) ||
-                other.longitud == longitud) &&
+            (identical(other.longitud, longitud) || other.longitud == longitud) &&
             (identical(other.enviada, enviada) || other.enviada == enviada) &&
             (identical(other.tratada, tratada) || other.tratada == tratada) &&
-            (identical(other.errorSyncMessage, errorSyncMessage) ||
-                other.errorSyncMessage == errorSyncMessage));
+            (identical(other.errorSyncMessage, errorSyncMessage) || other.errorSyncMessage == errorSyncMessage));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
-    runtimeType,
-    visitaAppId,
-    fecha,
-    clienteId,
-    isClienteProvisional,
-    clienteProvisionalNombre,
-    clienteProvisionalEmail,
-    clienteProvisionalTelefono,
-    clienteProvisionalDireccion1,
-    clienteProvisionalDireccion2,
-    clienteProvisionalCodigoPostal,
-    clienteProvisionalPoblacion,
-    clienteProvisionalProvinciaId,
-    clienteProvisionalRegionId,
-    clienteProvisionalPaisId,
-    numEmpl,
-    contacto,
-    atendidoPor,
-    resumen,
-    marcasCompetencia,
-    ofertaRealizada,
-    interesCliente,
-    pedidoRealizado,
-    codigoMotivoNoInteres,
-    codigoMotivoNoPedido,
-    codigoSector,
-    codigoCompetencia,
-    almacenPropio,
-    capacidad,
-    frecuenciaPedido,
-    latitud,
-    longitud,
-    enviada,
-    tratada,
-    errorSyncMessage,
-  ]);
+        runtimeType,
+        visitaAppId,
+        fecha,
+        clienteId,
+        isClienteProvisional,
+        clienteProvisionalNombre,
+        clienteProvisionalEmail,
+        clienteProvisionalTelefono,
+        clienteProvisionalDireccion1,
+        clienteProvisionalDireccion2,
+        clienteProvisionalCodigoPostal,
+        clienteProvisionalPoblacion,
+        clienteProvisionalProvinciaId,
+        clienteProvisionalRegionId,
+        clienteProvisionalPaisId,
+        numEmpl,
+        contacto,
+        atendidoPor,
+        resumen,
+        marcasCompetencia,
+        ofertaRealizada,
+        interesCliente,
+        pedidoRealizado,
+        codigoMotivoNoInteres,
+        codigoMotivoNoPedido,
+        codigoSector,
+        codigoCompetencia,
+        almacenPropio,
+        capacidad,
+        frecuenciaPedido,
+        latitud,
+        longitud,
+        enviada,
+        tratada,
+        errorSyncMessage
+      ]);
 
   /// Create a copy of VisitaLocalDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -977,64 +857,66 @@ class _$VisitaLocalDTOImpl extends _VisitaLocalDTO {
   @pragma('vm:prefer-inline')
   _$$VisitaLocalDTOImplCopyWith<_$VisitaLocalDTOImpl> get copyWith =>
       __$$VisitaLocalDTOImplCopyWithImpl<_$VisitaLocalDTOImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$VisitaLocalDTOImplToJson(this);
+    return _$$VisitaLocalDTOImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _VisitaLocalDTO extends VisitaLocalDTO {
-  const factory _VisitaLocalDTO({
-    @JsonKey(name: 'COD_VISITA_APP') final String? visitaAppId,
-    @JsonKey(name: 'FECHA') required final DateTime fecha,
-    @JsonKey(name: 'CLIENTE_ID') final String? clienteId,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_SN')
-    required final String isClienteProvisional,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_NOMBRE')
-    final String? clienteProvisionalNombre,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL')
-    final String? clienteProvisionalEmail,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
-    final String? clienteProvisionalTelefono,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_DIRECCION1')
-    final String? clienteProvisionalDireccion1,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_DIRECCION2')
-    final String? clienteProvisionalDireccion2,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_COD_POS')
-    final String? clienteProvisionalCodigoPostal,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_POBLACION')
-    final String? clienteProvisionalPoblacion,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_PROVINCIA_ID')
-    final String? clienteProvisionalProvinciaId,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_REGION_ID')
-    final String? clienteProvisionalRegionId,
-    @JsonKey(name: 'CLIENTE_POTENCIAL_PAIS_ID')
-    final String? clienteProvisionalPaisId,
-    @JsonKey(name: 'NUM_EMPL') required final String numEmpl,
-    @JsonKey(name: 'CONTACTO') required final String contacto,
-    @JsonKey(name: 'ATENDIDO_POR') final String? atendidoPor,
-    @JsonKey(name: 'RESUMEN') final String? resumen,
-    @JsonKey(name: 'MARCAS_COMPETENCIA') final String? marcasCompetencia,
-    @JsonKey(name: 'OFERTA_REALIZADA') required final String ofertaRealizada,
-    @JsonKey(name: 'INTERES_CLIENTE') required final String? interesCliente,
-    @JsonKey(name: 'PEDIDO_REALIZADO') required final String pedidoRealizado,
-    @JsonKey(name: 'CODIGO_MOTIVO_NO_INTERES') final int? codigoMotivoNoInteres,
-    @JsonKey(name: 'CODIGO_MOTIVO_NO_PEDIDO') final int? codigoMotivoNoPedido,
-    @JsonKey(name: 'CODIGO_SECTOR') final int? codigoSector,
-    @JsonKey(name: 'CODIGO_COMPETENCIA') final int? codigoCompetencia,
-    @JsonKey(name: 'ALMACEN_PROPIO') required final String? almacenPropio,
-    @JsonKey(name: 'CAPACIDAD') required final String? capacidad,
-    @JsonKey(name: 'FRECUENCIA_PEDIDO') required final String? frecuenciaPedido,
-    @JsonKey(name: 'LATITUD') required final double latitud,
-    @JsonKey(name: 'LONGITUD') required final double longitud,
-    @JsonKey(name: 'ENVIADA') final String enviada,
-    @JsonKey(name: 'TRATADA') final String tratada,
-    @JsonKey(name: 'ERROR_SYNC') final String? errorSyncMessage,
-  }) = _$VisitaLocalDTOImpl;
+  const factory _VisitaLocalDTO(
+      {@JsonKey(name: 'COD_VISITA_APP') final String? visitaAppId,
+      @JsonKey(name: 'FECHA') required final DateTime fecha,
+      @JsonKey(name: 'CLIENTE_ID') final String? clienteId,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_SN')
+      required final String isClienteProvisional,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_NOMBRE')
+      final String? clienteProvisionalNombre,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL')
+      final String? clienteProvisionalEmail,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
+      final String? clienteProvisionalTelefono,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_DIRECCION1')
+      final String? clienteProvisionalDireccion1,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_DIRECCION2')
+      final String? clienteProvisionalDireccion2,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_COD_POS')
+      final String? clienteProvisionalCodigoPostal,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_POBLACION')
+      final String? clienteProvisionalPoblacion,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_PROVINCIA_ID')
+      final String? clienteProvisionalProvinciaId,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_REGION_ID')
+      final String? clienteProvisionalRegionId,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_PAIS_ID')
+      final String? clienteProvisionalPaisId,
+      @JsonKey(name: 'NUM_EMPL') required final String numEmpl,
+      @JsonKey(name: 'CONTACTO') required final String contacto,
+      @JsonKey(name: 'ATENDIDO_POR') final String? atendidoPor,
+      @JsonKey(name: 'RESUMEN') final String? resumen,
+      @JsonKey(name: 'MARCAS_COMPETENCIA') final String? marcasCompetencia,
+      @JsonKey(name: 'OFERTA_REALIZADA') required final String ofertaRealizada,
+      @JsonKey(name: 'INTERES_CLIENTE') required final String? interesCliente,
+      @JsonKey(name: 'PEDIDO_REALIZADO') required final String pedidoRealizado,
+      @JsonKey(name: 'CODIGO_MOTIVO_NO_INTERES')
+      final int? codigoMotivoNoInteres,
+      @JsonKey(name: 'CODIGO_MOTIVO_NO_PEDIDO') final int? codigoMotivoNoPedido,
+      @JsonKey(name: 'CODIGO_SECTOR') final int? codigoSector,
+      @JsonKey(name: 'CODIGO_COMPETENCIA') final int? codigoCompetencia,
+      @JsonKey(name: 'ALMACEN_PROPIO') required final String? almacenPropio,
+      @JsonKey(name: 'CAPACIDAD') required final String? capacidad,
+      @JsonKey(name: 'FRECUENCIA_PEDIDO')
+      required final String? frecuenciaPedido,
+      @JsonKey(name: 'LATITUD') required final double latitud,
+      @JsonKey(name: 'LONGITUD') required final double longitud,
+      @JsonKey(name: 'ENVIADA') final String enviada,
+      @JsonKey(name: 'TRATADA') final String tratada,
+      @JsonKey(name: 'ERROR_SYNC')
+      final String? errorSyncMessage}) = _$VisitaLocalDTOImpl;
   const _VisitaLocalDTO._() : super._();
 
   factory _VisitaLocalDTO.fromJson(Map<String, dynamic> json) =

@@ -12,8 +12,7 @@ part of 'provincia_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ProvinciaDTO _$ProvinciaDTOFromJson(Map<String, dynamic> json) {
   return _ProvinciaDTO.fromJson(json);
@@ -47,18 +46,16 @@ mixin _$ProvinciaDTO {
 /// @nodoc
 abstract class $ProvinciaDTOCopyWith<$Res> {
   factory $ProvinciaDTOCopyWith(
-    ProvinciaDTO value,
-    $Res Function(ProvinciaDTO) then,
-  ) = _$ProvinciaDTOCopyWithImpl<$Res, ProvinciaDTO>;
+          ProvinciaDTO value, $Res Function(ProvinciaDTO) then) =
+      _$ProvinciaDTOCopyWithImpl<$Res, ProvinciaDTO>;
   @useResult
-  $Res call({
-    @JsonKey(name: 'PAIS_ID') String? paisId,
-    @JsonKey(name: 'REGION_ID') String? regionId,
-    @JsonKey(name: 'PROVINCIA_ID') String provinciaId,
-    @JsonKey(name: 'PROVINCIA') String? provincia,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'PAIS_ID') String? paisId,
+      @JsonKey(name: 'REGION_ID') String? regionId,
+      @JsonKey(name: 'PROVINCIA_ID') String provinciaId,
+      @JsonKey(name: 'PROVINCIA') String? provincia,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
@@ -83,41 +80,32 @@ class _$ProvinciaDTOCopyWithImpl<$Res, $Val extends ProvinciaDTO>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            paisId:
-                freezed == paisId
-                    ? _value.paisId
-                    : paisId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            regionId:
-                freezed == regionId
-                    ? _value.regionId
-                    : regionId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            provinciaId:
-                null == provinciaId
-                    ? _value.provinciaId
-                    : provinciaId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            provincia:
-                freezed == provincia
-                    ? _value.provincia
-                    : provincia // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            lastUpdated:
-                null == lastUpdated
-                    ? _value.lastUpdated
-                    : lastUpdated // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      paisId: freezed == paisId
+          ? _value.paisId
+          : paisId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      regionId: freezed == regionId
+          ? _value.regionId
+          : regionId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      provinciaId: null == provinciaId
+          ? _value.provinciaId
+          : provinciaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      provincia: freezed == provincia
+          ? _value.provincia
+          : provincia // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
@@ -125,19 +113,17 @@ class _$ProvinciaDTOCopyWithImpl<$Res, $Val extends ProvinciaDTO>
 abstract class _$$ProvinciaDTOImplCopyWith<$Res>
     implements $ProvinciaDTOCopyWith<$Res> {
   factory _$$ProvinciaDTOImplCopyWith(
-    _$ProvinciaDTOImpl value,
-    $Res Function(_$ProvinciaDTOImpl) then,
-  ) = __$$ProvinciaDTOImplCopyWithImpl<$Res>;
+          _$ProvinciaDTOImpl value, $Res Function(_$ProvinciaDTOImpl) then) =
+      __$$ProvinciaDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'PAIS_ID') String? paisId,
-    @JsonKey(name: 'REGION_ID') String? regionId,
-    @JsonKey(name: 'PROVINCIA_ID') String provinciaId,
-    @JsonKey(name: 'PROVINCIA') String? provincia,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'PAIS_ID') String? paisId,
+      @JsonKey(name: 'REGION_ID') String? regionId,
+      @JsonKey(name: 'PROVINCIA_ID') String provinciaId,
+      @JsonKey(name: 'PROVINCIA') String? provincia,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
@@ -145,9 +131,8 @@ class __$$ProvinciaDTOImplCopyWithImpl<$Res>
     extends _$ProvinciaDTOCopyWithImpl<$Res, _$ProvinciaDTOImpl>
     implements _$$ProvinciaDTOImplCopyWith<$Res> {
   __$$ProvinciaDTOImplCopyWithImpl(
-    _$ProvinciaDTOImpl _value,
-    $Res Function(_$ProvinciaDTOImpl) _then,
-  ) : super(_value, _then);
+      _$ProvinciaDTOImpl _value, $Res Function(_$ProvinciaDTOImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of ProvinciaDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -161,54 +146,46 @@ class __$$ProvinciaDTOImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$ProvinciaDTOImpl(
-        paisId:
-            freezed == paisId
-                ? _value.paisId
-                : paisId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        regionId:
-            freezed == regionId
-                ? _value.regionId
-                : regionId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        provinciaId:
-            null == provinciaId
-                ? _value.provinciaId
-                : provinciaId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        provincia:
-            freezed == provincia
-                ? _value.provincia
-                : provincia // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        lastUpdated:
-            null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+    return _then(_$ProvinciaDTOImpl(
+      paisId: freezed == paisId
+          ? _value.paisId
+          : paisId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      regionId: freezed == regionId
+          ? _value.regionId
+          : regionId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      provinciaId: null == provinciaId
+          ? _value.provinciaId
+          : provinciaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      provincia: freezed == provincia
+          ? _value.provincia
+          : provincia // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ProvinciaDTOImpl extends _ProvinciaDTO {
-  const _$ProvinciaDTOImpl({
-    @JsonKey(name: 'PAIS_ID') required this.paisId,
-    @JsonKey(name: 'REGION_ID') required this.regionId,
-    @JsonKey(name: 'PROVINCIA_ID') required this.provinciaId,
-    @JsonKey(name: 'PROVINCIA') this.provincia,
-    @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-    @JsonKey(name: 'DELETED') this.deleted = 'N',
-  }) : super._();
+  const _$ProvinciaDTOImpl(
+      {@JsonKey(name: 'PAIS_ID') required this.paisId,
+      @JsonKey(name: 'REGION_ID') required this.regionId,
+      @JsonKey(name: 'PROVINCIA_ID') required this.provinciaId,
+      @JsonKey(name: 'PROVINCIA') this.provincia,
+      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+      @JsonKey(name: 'DELETED') this.deleted = 'N'})
+      : super._();
 
   factory _$ProvinciaDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProvinciaDTOImplFromJson(json);
@@ -256,15 +233,8 @@ class _$ProvinciaDTOImpl extends _ProvinciaDTO {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    paisId,
-    regionId,
-    provinciaId,
-    provincia,
-    lastUpdated,
-    deleted,
-  );
+  int get hashCode => Object.hash(runtimeType, paisId, regionId, provinciaId,
+      provincia, lastUpdated, deleted);
 
   /// Create a copy of ProvinciaDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -276,19 +246,20 @@ class _$ProvinciaDTOImpl extends _ProvinciaDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ProvinciaDTOImplToJson(this);
+    return _$$ProvinciaDTOImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _ProvinciaDTO extends ProvinciaDTO {
-  const factory _ProvinciaDTO({
-    @JsonKey(name: 'PAIS_ID') required final String? paisId,
-    @JsonKey(name: 'REGION_ID') required final String? regionId,
-    @JsonKey(name: 'PROVINCIA_ID') required final String provinciaId,
-    @JsonKey(name: 'PROVINCIA') final String? provincia,
-    @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') final String deleted,
-  }) = _$ProvinciaDTOImpl;
+  const factory _ProvinciaDTO(
+      {@JsonKey(name: 'PAIS_ID') required final String? paisId,
+      @JsonKey(name: 'REGION_ID') required final String? regionId,
+      @JsonKey(name: 'PROVINCIA_ID') required final String provinciaId,
+      @JsonKey(name: 'PROVINCIA') final String? provincia,
+      @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') final String deleted}) = _$ProvinciaDTOImpl;
   const _ProvinciaDTO._() : super._();
 
   factory _ProvinciaDTO.fromJson(Map<String, dynamic> json) =

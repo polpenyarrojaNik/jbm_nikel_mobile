@@ -12,8 +12,7 @@ part of 'cliente_imp.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ClienteImp {
@@ -30,9 +29,8 @@ mixin _$ClienteImp {
 /// @nodoc
 abstract class $ClienteImpCopyWith<$Res> {
   factory $ClienteImpCopyWith(
-    ClienteImp value,
-    $Res Function(ClienteImp) then,
-  ) = _$ClienteImpCopyWithImpl<$Res, ClienteImp>;
+          ClienteImp value, $Res Function(ClienteImp) then) =
+      _$ClienteImpCopyWithImpl<$Res, ClienteImp>;
   @useResult
   $Res call({String clienteId, Sector sector});
 
@@ -53,22 +51,20 @@ class _$ClienteImpCopyWithImpl<$Res, $Val extends ClienteImp>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? clienteId = null, Object? sector = null}) {
-    return _then(
-      _value.copyWith(
-            clienteId:
-                null == clienteId
-                    ? _value.clienteId
-                    : clienteId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            sector:
-                null == sector
-                    ? _value.sector
-                    : sector // ignore: cast_nullable_to_non_nullable
-                        as Sector,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? clienteId = null,
+    Object? sector = null,
+  }) {
+    return _then(_value.copyWith(
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      sector: null == sector
+          ? _value.sector
+          : sector // ignore: cast_nullable_to_non_nullable
+              as Sector,
+    ) as $Val);
   }
 
   /// Create a copy of ClienteImp
@@ -86,9 +82,8 @@ class _$ClienteImpCopyWithImpl<$Res, $Val extends ClienteImp>
 abstract class _$$ClienteImpImplCopyWith<$Res>
     implements $ClienteImpCopyWith<$Res> {
   factory _$$ClienteImpImplCopyWith(
-    _$ClienteImpImpl value,
-    $Res Function(_$ClienteImpImpl) then,
-  ) = __$$ClienteImpImplCopyWithImpl<$Res>;
+          _$ClienteImpImpl value, $Res Function(_$ClienteImpImpl) then) =
+      __$$ClienteImpImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String clienteId, Sector sector});
@@ -102,29 +97,27 @@ class __$$ClienteImpImplCopyWithImpl<$Res>
     extends _$ClienteImpCopyWithImpl<$Res, _$ClienteImpImpl>
     implements _$$ClienteImpImplCopyWith<$Res> {
   __$$ClienteImpImplCopyWithImpl(
-    _$ClienteImpImpl _value,
-    $Res Function(_$ClienteImpImpl) _then,
-  ) : super(_value, _then);
+      _$ClienteImpImpl _value, $Res Function(_$ClienteImpImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of ClienteImp
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? clienteId = null, Object? sector = null}) {
-    return _then(
-      _$ClienteImpImpl(
-        clienteId:
-            null == clienteId
-                ? _value.clienteId
-                : clienteId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        sector:
-            null == sector
-                ? _value.sector
-                : sector // ignore: cast_nullable_to_non_nullable
-                    as Sector,
-      ),
-    );
+  $Res call({
+    Object? clienteId = null,
+    Object? sector = null,
+  }) {
+    return _then(_$ClienteImpImpl(
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      sector: null == sector
+          ? _value.sector
+          : sector // ignore: cast_nullable_to_non_nullable
+              as Sector,
+    ));
   }
 }
 
@@ -132,7 +125,7 @@ class __$$ClienteImpImplCopyWithImpl<$Res>
 
 class _$ClienteImpImpl extends _ClienteImp {
   const _$ClienteImpImpl({required this.clienteId, required this.sector})
-    : super._();
+      : super._();
 
   @override
   final String clienteId;
@@ -167,10 +160,9 @@ class _$ClienteImpImpl extends _ClienteImp {
 }
 
 abstract class _ClienteImp extends ClienteImp {
-  const factory _ClienteImp({
-    required final String clienteId,
-    required final Sector sector,
-  }) = _$ClienteImpImpl;
+  const factory _ClienteImp(
+      {required final String clienteId,
+      required final Sector sector}) = _$ClienteImpImpl;
   const _ClienteImp._() : super._();
 
   @override

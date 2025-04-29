@@ -34,7 +34,9 @@ abstract class _$ClienteDireccionEditPageController
     extends BuildlessAutoDisposeAsyncNotifier<ClienteDireccionEditPageData> {
   late final ClienteImpParam clienteImpParam;
 
-  FutureOr<ClienteDireccionEditPageData> build(ClienteImpParam clienteImpParam);
+  FutureOr<ClienteDireccionEditPageData> build(
+    ClienteImpParam clienteImpParam,
+  );
 }
 
 /// See also [ClienteDireccionEditPageController].
@@ -52,14 +54,18 @@ class ClienteDireccionEditPageControllerFamily
   ClienteDireccionEditPageControllerProvider call(
     ClienteImpParam clienteImpParam,
   ) {
-    return ClienteDireccionEditPageControllerProvider(clienteImpParam);
+    return ClienteDireccionEditPageControllerProvider(
+      clienteImpParam,
+    );
   }
 
   @override
   ClienteDireccionEditPageControllerProvider getProviderOverride(
     covariant ClienteDireccionEditPageControllerProvider provider,
   ) {
-    return call(provider.clienteImpParam);
+    return call(
+      provider.clienteImpParam,
+    );
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -79,28 +85,25 @@ class ClienteDireccionEditPageControllerFamily
 
 /// See also [ClienteDireccionEditPageController].
 class ClienteDireccionEditPageControllerProvider
-    extends
-        AutoDisposeAsyncNotifierProviderImpl<
-          ClienteDireccionEditPageController,
-          ClienteDireccionEditPageData
-        > {
+    extends AutoDisposeAsyncNotifierProviderImpl<
+        ClienteDireccionEditPageController, ClienteDireccionEditPageData> {
   /// See also [ClienteDireccionEditPageController].
-  ClienteDireccionEditPageControllerProvider(ClienteImpParam clienteImpParam)
-    : this._internal(
-        () =>
-            ClienteDireccionEditPageController()
-              ..clienteImpParam = clienteImpParam,
-        from: clienteDireccionEditPageControllerProvider,
-        name: r'clienteDireccionEditPageControllerProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$clienteDireccionEditPageControllerHash,
-        dependencies: ClienteDireccionEditPageControllerFamily._dependencies,
-        allTransitiveDependencies:
-            ClienteDireccionEditPageControllerFamily._allTransitiveDependencies,
-        clienteImpParam: clienteImpParam,
-      );
+  ClienteDireccionEditPageControllerProvider(
+    ClienteImpParam clienteImpParam,
+  ) : this._internal(
+          () => ClienteDireccionEditPageController()
+            ..clienteImpParam = clienteImpParam,
+          from: clienteDireccionEditPageControllerProvider,
+          name: r'clienteDireccionEditPageControllerProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$clienteDireccionEditPageControllerHash,
+          dependencies: ClienteDireccionEditPageControllerFamily._dependencies,
+          allTransitiveDependencies: ClienteDireccionEditPageControllerFamily
+              ._allTransitiveDependencies,
+          clienteImpParam: clienteImpParam,
+        );
 
   ClienteDireccionEditPageControllerProvider._internal(
     super._createNotifier, {
@@ -118,7 +121,9 @@ class ClienteDireccionEditPageControllerProvider
   FutureOr<ClienteDireccionEditPageData> runNotifierBuild(
     covariant ClienteDireccionEditPageController notifier,
   ) {
-    return notifier.build(clienteImpParam);
+    return notifier.build(
+      clienteImpParam,
+    );
   }
 
   @override
@@ -138,11 +143,8 @@ class ClienteDireccionEditPageControllerProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
-    ClienteDireccionEditPageController,
-    ClienteDireccionEditPageData
-  >
-  createElement() {
+  AutoDisposeAsyncNotifierProviderElement<ClienteDireccionEditPageController,
+      ClienteDireccionEditPageData> createElement() {
     return _ClienteDireccionEditPageControllerProviderElement(this);
   }
 
@@ -170,11 +172,8 @@ mixin ClienteDireccionEditPageControllerRef
 }
 
 class _ClienteDireccionEditPageControllerProviderElement
-    extends
-        AutoDisposeAsyncNotifierProviderElement<
-          ClienteDireccionEditPageController,
-          ClienteDireccionEditPageData
-        >
+    extends AutoDisposeAsyncNotifierProviderElement<
+        ClienteDireccionEditPageController, ClienteDireccionEditPageData>
     with ClienteDireccionEditPageControllerRef {
   _ClienteDireccionEditPageControllerProviderElement(super.provider);
 
@@ -182,6 +181,5 @@ class _ClienteDireccionEditPageControllerProviderElement
   ClienteImpParam get clienteImpParam =>
       (origin as ClienteDireccionEditPageControllerProvider).clienteImpParam;
 }
-
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

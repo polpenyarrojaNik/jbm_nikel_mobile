@@ -12,15 +12,12 @@ String _$clienteSectorPageControllerHash() =>
 /// See also [ClienteSectorPageController].
 @ProviderFor(ClienteSectorPageController)
 final clienteSectorPageControllerProvider = AutoDisposeAsyncNotifierProvider<
-  ClienteSectorPageController,
-  List<Sector>
->.internal(
+    ClienteSectorPageController, List<Sector>>.internal(
   ClienteSectorPageController.new,
   name: r'clienteSectorPageControllerProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$clienteSectorPageControllerHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$clienteSectorPageControllerHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
@@ -34,11 +31,8 @@ typedef _$ClienteSectorPageController = AutoDisposeAsyncNotifier<List<Sector>>;
 // **************************************************************************
 
 extension ClienteSectorPageControllerMutationExtension
-    on
-        AutoDisposeAsyncNotifierProvider<
-          ClienteSectorPageController,
-          List<Sector>
-        > {
+    on AutoDisposeAsyncNotifierProvider<ClienteSectorPageController,
+        List<Sector>> {
   Refreshable<UpdateClienteSectorMutation> get updateClienteSector =>
       _updateClienteSectorProvider;
 }
@@ -51,10 +45,10 @@ final _updateClienteSectorProvider = Provider.autoDispose((ref) {
   );
 }, dependencies: [clienteSectorPageControllerProvider]);
 
-typedef UpdateClienteSectorSignature =
-    Future<ClienteImp> Function(ClienteImp clienteImp);
-typedef UpdateClienteSectorStateSetter =
-    void Function(UpdateClienteSectorMutation newState);
+typedef UpdateClienteSectorSignature = Future<ClienteImp> Function(
+    ClienteImp clienteImp);
+typedef UpdateClienteSectorStateSetter = void Function(
+    UpdateClienteSectorMutation newState);
 
 sealed class UpdateClienteSectorMutation
     with AsyncMutation, MutationResult<ClienteImp> {
@@ -77,9 +71,8 @@ sealed class UpdateClienteSectorMutation
       final res = await _fn(clienteImp);
       _updateState(UpdateClienteSectorMutationSuccess.from(this, res));
     } catch (e, s) {
-      _updateState(
-        UpdateClienteSectorMutationFailure.from(this, error: e, stackTrace: s),
-      );
+      _updateState(UpdateClienteSectorMutationFailure.from(this,
+          error: e, stackTrace: s));
     }
   }
 }
@@ -95,14 +88,14 @@ final class UpdateClienteSectorMutationIdle extends UpdateClienteSectorMutation
   }) : super._();
 
   factory UpdateClienteSectorMutationIdle.from(
-    UpdateClienteSectorMutation other,
-  ) => UpdateClienteSectorMutationIdle._(
-    other._updateState,
-    other._fn,
-    error: other.error,
-    stackTrace: other.stackTrace,
-    result: other.result,
-  );
+          UpdateClienteSectorMutation other) =>
+      UpdateClienteSectorMutationIdle._(
+        other._updateState,
+        other._fn,
+        error: other.error,
+        stackTrace: other.stackTrace,
+        result: other.result,
+      );
 
   @override
   final Object? error;
@@ -116,8 +109,7 @@ final class UpdateClienteSectorMutationIdle extends UpdateClienteSectorMutation
 }
 
 final class UpdateClienteSectorMutationLoading
-    extends UpdateClienteSectorMutation
-    with MutationLoading {
+    extends UpdateClienteSectorMutation with MutationLoading {
   UpdateClienteSectorMutationLoading._(
     super._updateState,
     super._fn, {
@@ -127,14 +119,14 @@ final class UpdateClienteSectorMutationLoading
   }) : super._();
 
   factory UpdateClienteSectorMutationLoading.from(
-    UpdateClienteSectorMutation other,
-  ) => UpdateClienteSectorMutationLoading._(
-    other._updateState,
-    other._fn,
-    error: other.error,
-    stackTrace: other.stackTrace,
-    result: other.result,
-  );
+          UpdateClienteSectorMutation other) =>
+      UpdateClienteSectorMutationLoading._(
+        other._updateState,
+        other._fn,
+        error: other.error,
+        stackTrace: other.stackTrace,
+        result: other.result,
+      );
 
   @override
   final Object? error;
@@ -148,8 +140,7 @@ final class UpdateClienteSectorMutationLoading
 }
 
 final class UpdateClienteSectorMutationSuccess
-    extends UpdateClienteSectorMutation
-    with MutationSuccessResult<ClienteImp> {
+    extends UpdateClienteSectorMutation with MutationSuccessResult<ClienteImp> {
   UpdateClienteSectorMutationSuccess._(
     super._updateState,
     super._fn, {
@@ -159,15 +150,14 @@ final class UpdateClienteSectorMutationSuccess
   }) : super._();
 
   factory UpdateClienteSectorMutationSuccess.from(
-    UpdateClienteSectorMutation other,
-    ClienteImp result,
-  ) => UpdateClienteSectorMutationSuccess._(
-    other._updateState,
-    other._fn,
-    error: other.error,
-    stackTrace: other.stackTrace,
-    result: result,
-  );
+          UpdateClienteSectorMutation other, ClienteImp result) =>
+      UpdateClienteSectorMutationSuccess._(
+        other._updateState,
+        other._fn,
+        error: other.error,
+        stackTrace: other.stackTrace,
+        result: result,
+      );
 
   @override
   final Object? error;
@@ -180,8 +170,7 @@ final class UpdateClienteSectorMutationSuccess
 }
 
 final class UpdateClienteSectorMutationFailure
-    extends UpdateClienteSectorMutation
-    with MutationFailure {
+    extends UpdateClienteSectorMutation with MutationFailure {
   UpdateClienteSectorMutationFailure._(
     super._updateState,
     super._fn, {
@@ -194,13 +183,14 @@ final class UpdateClienteSectorMutationFailure
     UpdateClienteSectorMutation other, {
     required Object error,
     required StackTrace stackTrace,
-  }) => UpdateClienteSectorMutationFailure._(
-    other._updateState,
-    other._fn,
-    error: error,
-    stackTrace: stackTrace,
-    result: other.result,
-  );
+  }) =>
+      UpdateClienteSectorMutationFailure._(
+        other._updateState,
+        other._fn,
+        error: error,
+        stackTrace: stackTrace,
+        result: other.result,
+      );
 
   @override
   final Object error;

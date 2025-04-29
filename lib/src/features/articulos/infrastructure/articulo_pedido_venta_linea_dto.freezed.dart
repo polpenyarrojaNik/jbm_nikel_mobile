@@ -12,12 +12,10 @@ part of 'articulo_pedido_venta_linea_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ArticuloPedidoVentaLineaDTO _$ArticuloPedidoVentaLineaDTOFromJson(
-  Map<String, dynamic> json,
-) {
+    Map<String, dynamic> json) {
   return _ArticuloPedidoVentaLineaDTO.fromJson(json);
 }
 
@@ -61,44 +59,38 @@ mixin _$ArticuloPedidoVentaLineaDTO {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   $ArticuloPedidoVentaLineaDTOCopyWith<ArticuloPedidoVentaLineaDTO>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ArticuloPedidoVentaLineaDTOCopyWith<$Res> {
   factory $ArticuloPedidoVentaLineaDTOCopyWith(
-    ArticuloPedidoVentaLineaDTO value,
-    $Res Function(ArticuloPedidoVentaLineaDTO) then,
-  ) =
-      _$ArticuloPedidoVentaLineaDTOCopyWithImpl<
-        $Res,
-        ArticuloPedidoVentaLineaDTO
-      >;
+          ArticuloPedidoVentaLineaDTO value,
+          $Res Function(ArticuloPedidoVentaLineaDTO) then) =
+      _$ArticuloPedidoVentaLineaDTOCopyWithImpl<$Res,
+          ArticuloPedidoVentaLineaDTO>;
   @useResult
-  $Res call({
-    @JsonKey(name: 'EMPRESA_ID') String empresaId,
-    @JsonKey(name: 'PEDIDO_ID') String pedidoVentaId,
-    @JsonKey(name: 'PEDIDO_LINEA_ID') String id,
-    @JsonKey(name: 'ARTICULO_ID') String articuloId,
-    @JsonKey(name: 'ARTICULO_DESCRIPCION') String articuloDescription,
-    @JsonKey(name: 'CLIENTE_ID') String clienteId,
-    @JsonKey(name: 'NOMRE_CLIENTE') String nombreCliente,
-    @JsonKey(name: 'CANTIDAD') int cantidad,
-    @JsonKey(name: 'PRECIO_DIVISA') double precioDivisa,
-    @JsonKey(name: 'TIPO_PRECIO') int tipoPrecio,
-    @JsonKey(name: 'DESCUENTO1') double descuento1,
-    @JsonKey(name: 'DESCUENTO2') double descuento2,
-    @JsonKey(name: 'DESCUENTO3') double descuento3,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'EMPRESA_ID') String empresaId,
+      @JsonKey(name: 'PEDIDO_ID') String pedidoVentaId,
+      @JsonKey(name: 'PEDIDO_LINEA_ID') String id,
+      @JsonKey(name: 'ARTICULO_ID') String articuloId,
+      @JsonKey(name: 'ARTICULO_DESCRIPCION') String articuloDescription,
+      @JsonKey(name: 'CLIENTE_ID') String clienteId,
+      @JsonKey(name: 'NOMRE_CLIENTE') String nombreCliente,
+      @JsonKey(name: 'CANTIDAD') int cantidad,
+      @JsonKey(name: 'PRECIO_DIVISA') double precioDivisa,
+      @JsonKey(name: 'TIPO_PRECIO') int tipoPrecio,
+      @JsonKey(name: 'DESCUENTO1') double descuento1,
+      @JsonKey(name: 'DESCUENTO2') double descuento2,
+      @JsonKey(name: 'DESCUENTO3') double descuento3,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
-class _$ArticuloPedidoVentaLineaDTOCopyWithImpl<
-  $Res,
-  $Val extends ArticuloPedidoVentaLineaDTO
->
+class _$ArticuloPedidoVentaLineaDTOCopyWithImpl<$Res,
+        $Val extends ArticuloPedidoVentaLineaDTO>
     implements $ArticuloPedidoVentaLineaDTOCopyWith<$Res> {
   _$ArticuloPedidoVentaLineaDTOCopyWithImpl(this._value, this._then);
 
@@ -128,86 +120,68 @@ class _$ArticuloPedidoVentaLineaDTOCopyWithImpl<
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            empresaId:
-                null == empresaId
-                    ? _value.empresaId
-                    : empresaId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            pedidoVentaId:
-                null == pedidoVentaId
-                    ? _value.pedidoVentaId
-                    : pedidoVentaId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            id:
-                null == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as String,
-            articuloId:
-                null == articuloId
-                    ? _value.articuloId
-                    : articuloId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            articuloDescription:
-                null == articuloDescription
-                    ? _value.articuloDescription
-                    : articuloDescription // ignore: cast_nullable_to_non_nullable
-                        as String,
-            clienteId:
-                null == clienteId
-                    ? _value.clienteId
-                    : clienteId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            nombreCliente:
-                null == nombreCliente
-                    ? _value.nombreCliente
-                    : nombreCliente // ignore: cast_nullable_to_non_nullable
-                        as String,
-            cantidad:
-                null == cantidad
-                    ? _value.cantidad
-                    : cantidad // ignore: cast_nullable_to_non_nullable
-                        as int,
-            precioDivisa:
-                null == precioDivisa
-                    ? _value.precioDivisa
-                    : precioDivisa // ignore: cast_nullable_to_non_nullable
-                        as double,
-            tipoPrecio:
-                null == tipoPrecio
-                    ? _value.tipoPrecio
-                    : tipoPrecio // ignore: cast_nullable_to_non_nullable
-                        as int,
-            descuento1:
-                null == descuento1
-                    ? _value.descuento1
-                    : descuento1 // ignore: cast_nullable_to_non_nullable
-                        as double,
-            descuento2:
-                null == descuento2
-                    ? _value.descuento2
-                    : descuento2 // ignore: cast_nullable_to_non_nullable
-                        as double,
-            descuento3:
-                null == descuento3
-                    ? _value.descuento3
-                    : descuento3 // ignore: cast_nullable_to_non_nullable
-                        as double,
-            lastUpdated:
-                null == lastUpdated
-                    ? _value.lastUpdated
-                    : lastUpdated // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      empresaId: null == empresaId
+          ? _value.empresaId
+          : empresaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      pedidoVentaId: null == pedidoVentaId
+          ? _value.pedidoVentaId
+          : pedidoVentaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      articuloDescription: null == articuloDescription
+          ? _value.articuloDescription
+          : articuloDescription // ignore: cast_nullable_to_non_nullable
+              as String,
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      nombreCliente: null == nombreCliente
+          ? _value.nombreCliente
+          : nombreCliente // ignore: cast_nullable_to_non_nullable
+              as String,
+      cantidad: null == cantidad
+          ? _value.cantidad
+          : cantidad // ignore: cast_nullable_to_non_nullable
+              as int,
+      precioDivisa: null == precioDivisa
+          ? _value.precioDivisa
+          : precioDivisa // ignore: cast_nullable_to_non_nullable
+              as double,
+      tipoPrecio: null == tipoPrecio
+          ? _value.tipoPrecio
+          : tipoPrecio // ignore: cast_nullable_to_non_nullable
+              as int,
+      descuento1: null == descuento1
+          ? _value.descuento1
+          : descuento1 // ignore: cast_nullable_to_non_nullable
+              as double,
+      descuento2: null == descuento2
+          ? _value.descuento2
+          : descuento2 // ignore: cast_nullable_to_non_nullable
+              as double,
+      descuento3: null == descuento3
+          ? _value.descuento3
+          : descuento3 // ignore: cast_nullable_to_non_nullable
+              as double,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
@@ -215,42 +189,38 @@ class _$ArticuloPedidoVentaLineaDTOCopyWithImpl<
 abstract class _$$ArticuloPedidoVentaLineaDTOImplCopyWith<$Res>
     implements $ArticuloPedidoVentaLineaDTOCopyWith<$Res> {
   factory _$$ArticuloPedidoVentaLineaDTOImplCopyWith(
-    _$ArticuloPedidoVentaLineaDTOImpl value,
-    $Res Function(_$ArticuloPedidoVentaLineaDTOImpl) then,
-  ) = __$$ArticuloPedidoVentaLineaDTOImplCopyWithImpl<$Res>;
+          _$ArticuloPedidoVentaLineaDTOImpl value,
+          $Res Function(_$ArticuloPedidoVentaLineaDTOImpl) then) =
+      __$$ArticuloPedidoVentaLineaDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'EMPRESA_ID') String empresaId,
-    @JsonKey(name: 'PEDIDO_ID') String pedidoVentaId,
-    @JsonKey(name: 'PEDIDO_LINEA_ID') String id,
-    @JsonKey(name: 'ARTICULO_ID') String articuloId,
-    @JsonKey(name: 'ARTICULO_DESCRIPCION') String articuloDescription,
-    @JsonKey(name: 'CLIENTE_ID') String clienteId,
-    @JsonKey(name: 'NOMRE_CLIENTE') String nombreCliente,
-    @JsonKey(name: 'CANTIDAD') int cantidad,
-    @JsonKey(name: 'PRECIO_DIVISA') double precioDivisa,
-    @JsonKey(name: 'TIPO_PRECIO') int tipoPrecio,
-    @JsonKey(name: 'DESCUENTO1') double descuento1,
-    @JsonKey(name: 'DESCUENTO2') double descuento2,
-    @JsonKey(name: 'DESCUENTO3') double descuento3,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'EMPRESA_ID') String empresaId,
+      @JsonKey(name: 'PEDIDO_ID') String pedidoVentaId,
+      @JsonKey(name: 'PEDIDO_LINEA_ID') String id,
+      @JsonKey(name: 'ARTICULO_ID') String articuloId,
+      @JsonKey(name: 'ARTICULO_DESCRIPCION') String articuloDescription,
+      @JsonKey(name: 'CLIENTE_ID') String clienteId,
+      @JsonKey(name: 'NOMRE_CLIENTE') String nombreCliente,
+      @JsonKey(name: 'CANTIDAD') int cantidad,
+      @JsonKey(name: 'PRECIO_DIVISA') double precioDivisa,
+      @JsonKey(name: 'TIPO_PRECIO') int tipoPrecio,
+      @JsonKey(name: 'DESCUENTO1') double descuento1,
+      @JsonKey(name: 'DESCUENTO2') double descuento2,
+      @JsonKey(name: 'DESCUENTO3') double descuento3,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
 class __$$ArticuloPedidoVentaLineaDTOImplCopyWithImpl<$Res>
-    extends
-        _$ArticuloPedidoVentaLineaDTOCopyWithImpl<
-          $Res,
-          _$ArticuloPedidoVentaLineaDTOImpl
-        >
+    extends _$ArticuloPedidoVentaLineaDTOCopyWithImpl<$Res,
+        _$ArticuloPedidoVentaLineaDTOImpl>
     implements _$$ArticuloPedidoVentaLineaDTOImplCopyWith<$Res> {
   __$$ArticuloPedidoVentaLineaDTOImplCopyWithImpl(
-    _$ArticuloPedidoVentaLineaDTOImpl _value,
-    $Res Function(_$ArticuloPedidoVentaLineaDTOImpl) _then,
-  ) : super(_value, _then);
+      _$ArticuloPedidoVentaLineaDTOImpl _value,
+      $Res Function(_$ArticuloPedidoVentaLineaDTOImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of ArticuloPedidoVentaLineaDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -273,112 +243,95 @@ class __$$ArticuloPedidoVentaLineaDTOImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$ArticuloPedidoVentaLineaDTOImpl(
-        empresaId:
-            null == empresaId
-                ? _value.empresaId
-                : empresaId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        pedidoVentaId:
-            null == pedidoVentaId
-                ? _value.pedidoVentaId
-                : pedidoVentaId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        id:
-            null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as String,
-        articuloId:
-            null == articuloId
-                ? _value.articuloId
-                : articuloId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        articuloDescription:
-            null == articuloDescription
-                ? _value.articuloDescription
-                : articuloDescription // ignore: cast_nullable_to_non_nullable
-                    as String,
-        clienteId:
-            null == clienteId
-                ? _value.clienteId
-                : clienteId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        nombreCliente:
-            null == nombreCliente
-                ? _value.nombreCliente
-                : nombreCliente // ignore: cast_nullable_to_non_nullable
-                    as String,
-        cantidad:
-            null == cantidad
-                ? _value.cantidad
-                : cantidad // ignore: cast_nullable_to_non_nullable
-                    as int,
-        precioDivisa:
-            null == precioDivisa
-                ? _value.precioDivisa
-                : precioDivisa // ignore: cast_nullable_to_non_nullable
-                    as double,
-        tipoPrecio:
-            null == tipoPrecio
-                ? _value.tipoPrecio
-                : tipoPrecio // ignore: cast_nullable_to_non_nullable
-                    as int,
-        descuento1:
-            null == descuento1
-                ? _value.descuento1
-                : descuento1 // ignore: cast_nullable_to_non_nullable
-                    as double,
-        descuento2:
-            null == descuento2
-                ? _value.descuento2
-                : descuento2 // ignore: cast_nullable_to_non_nullable
-                    as double,
-        descuento3:
-            null == descuento3
-                ? _value.descuento3
-                : descuento3 // ignore: cast_nullable_to_non_nullable
-                    as double,
-        lastUpdated:
-            null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+    return _then(_$ArticuloPedidoVentaLineaDTOImpl(
+      empresaId: null == empresaId
+          ? _value.empresaId
+          : empresaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      pedidoVentaId: null == pedidoVentaId
+          ? _value.pedidoVentaId
+          : pedidoVentaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      articuloDescription: null == articuloDescription
+          ? _value.articuloDescription
+          : articuloDescription // ignore: cast_nullable_to_non_nullable
+              as String,
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      nombreCliente: null == nombreCliente
+          ? _value.nombreCliente
+          : nombreCliente // ignore: cast_nullable_to_non_nullable
+              as String,
+      cantidad: null == cantidad
+          ? _value.cantidad
+          : cantidad // ignore: cast_nullable_to_non_nullable
+              as int,
+      precioDivisa: null == precioDivisa
+          ? _value.precioDivisa
+          : precioDivisa // ignore: cast_nullable_to_non_nullable
+              as double,
+      tipoPrecio: null == tipoPrecio
+          ? _value.tipoPrecio
+          : tipoPrecio // ignore: cast_nullable_to_non_nullable
+              as int,
+      descuento1: null == descuento1
+          ? _value.descuento1
+          : descuento1 // ignore: cast_nullable_to_non_nullable
+              as double,
+      descuento2: null == descuento2
+          ? _value.descuento2
+          : descuento2 // ignore: cast_nullable_to_non_nullable
+              as double,
+      descuento3: null == descuento3
+          ? _value.descuento3
+          : descuento3 // ignore: cast_nullable_to_non_nullable
+              as double,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ArticuloPedidoVentaLineaDTOImpl extends _ArticuloPedidoVentaLineaDTO {
-  const _$ArticuloPedidoVentaLineaDTOImpl({
-    @JsonKey(name: 'EMPRESA_ID') required this.empresaId,
-    @JsonKey(name: 'PEDIDO_ID') required this.pedidoVentaId,
-    @JsonKey(name: 'PEDIDO_LINEA_ID') required this.id,
-    @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
-    @JsonKey(name: 'ARTICULO_DESCRIPCION') required this.articuloDescription,
-    @JsonKey(name: 'CLIENTE_ID') required this.clienteId,
-    @JsonKey(name: 'NOMRE_CLIENTE') required this.nombreCliente,
-    @JsonKey(name: 'CANTIDAD') required this.cantidad,
-    @JsonKey(name: 'PRECIO_DIVISA') required this.precioDivisa,
-    @JsonKey(name: 'TIPO_PRECIO') required this.tipoPrecio,
-    @JsonKey(name: 'DESCUENTO1') required this.descuento1,
-    @JsonKey(name: 'DESCUENTO2') required this.descuento2,
-    @JsonKey(name: 'DESCUENTO3') required this.descuento3,
-    @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-    @JsonKey(name: 'DELETED') required this.deleted,
-  }) : super._();
+  const _$ArticuloPedidoVentaLineaDTOImpl(
+      {@JsonKey(name: 'EMPRESA_ID') required this.empresaId,
+      @JsonKey(name: 'PEDIDO_ID') required this.pedidoVentaId,
+      @JsonKey(name: 'PEDIDO_LINEA_ID') required this.id,
+      @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
+      @JsonKey(name: 'ARTICULO_DESCRIPCION') required this.articuloDescription,
+      @JsonKey(name: 'CLIENTE_ID') required this.clienteId,
+      @JsonKey(name: 'NOMRE_CLIENTE') required this.nombreCliente,
+      @JsonKey(name: 'CANTIDAD') required this.cantidad,
+      @JsonKey(name: 'PRECIO_DIVISA') required this.precioDivisa,
+      @JsonKey(name: 'TIPO_PRECIO') required this.tipoPrecio,
+      @JsonKey(name: 'DESCUENTO1') required this.descuento1,
+      @JsonKey(name: 'DESCUENTO2') required this.descuento2,
+      @JsonKey(name: 'DESCUENTO3') required this.descuento3,
+      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+      @JsonKey(name: 'DELETED') required this.deleted})
+      : super._();
 
   factory _$ArticuloPedidoVentaLineaDTOImpl.fromJson(
-    Map<String, dynamic> json,
-  ) => _$$ArticuloPedidoVentaLineaDTOImplFromJson(json);
+          Map<String, dynamic> json) =>
+      _$$ArticuloPedidoVentaLineaDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'EMPRESA_ID')
@@ -469,23 +422,22 @@ class _$ArticuloPedidoVentaLineaDTOImpl extends _ArticuloPedidoVentaLineaDTO {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    empresaId,
-    pedidoVentaId,
-    id,
-    articuloId,
-    articuloDescription,
-    clienteId,
-    nombreCliente,
-    cantidad,
-    precioDivisa,
-    tipoPrecio,
-    descuento1,
-    descuento2,
-    descuento3,
-    lastUpdated,
-    deleted,
-  );
+      runtimeType,
+      empresaId,
+      pedidoVentaId,
+      id,
+      articuloId,
+      articuloDescription,
+      clienteId,
+      nombreCliente,
+      cantidad,
+      precioDivisa,
+      tipoPrecio,
+      descuento1,
+      descuento2,
+      descuento3,
+      lastUpdated,
+      deleted);
 
   /// Create a copy of ArticuloPedidoVentaLineaDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -493,36 +445,37 @@ class _$ArticuloPedidoVentaLineaDTOImpl extends _ArticuloPedidoVentaLineaDTO {
   @override
   @pragma('vm:prefer-inline')
   _$$ArticuloPedidoVentaLineaDTOImplCopyWith<_$ArticuloPedidoVentaLineaDTOImpl>
-  get copyWith => __$$ArticuloPedidoVentaLineaDTOImplCopyWithImpl<
-    _$ArticuloPedidoVentaLineaDTOImpl
-  >(this, _$identity);
+      get copyWith => __$$ArticuloPedidoVentaLineaDTOImplCopyWithImpl<
+          _$ArticuloPedidoVentaLineaDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ArticuloPedidoVentaLineaDTOImplToJson(this);
+    return _$$ArticuloPedidoVentaLineaDTOImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _ArticuloPedidoVentaLineaDTO
     extends ArticuloPedidoVentaLineaDTO {
-  const factory _ArticuloPedidoVentaLineaDTO({
-    @JsonKey(name: 'EMPRESA_ID') required final String empresaId,
-    @JsonKey(name: 'PEDIDO_ID') required final String pedidoVentaId,
-    @JsonKey(name: 'PEDIDO_LINEA_ID') required final String id,
-    @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
-    @JsonKey(name: 'ARTICULO_DESCRIPCION')
-    required final String articuloDescription,
-    @JsonKey(name: 'CLIENTE_ID') required final String clienteId,
-    @JsonKey(name: 'NOMRE_CLIENTE') required final String nombreCliente,
-    @JsonKey(name: 'CANTIDAD') required final int cantidad,
-    @JsonKey(name: 'PRECIO_DIVISA') required final double precioDivisa,
-    @JsonKey(name: 'TIPO_PRECIO') required final int tipoPrecio,
-    @JsonKey(name: 'DESCUENTO1') required final double descuento1,
-    @JsonKey(name: 'DESCUENTO2') required final double descuento2,
-    @JsonKey(name: 'DESCUENTO3') required final double descuento3,
-    @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') required final String deleted,
-  }) = _$ArticuloPedidoVentaLineaDTOImpl;
+  const factory _ArticuloPedidoVentaLineaDTO(
+          {@JsonKey(name: 'EMPRESA_ID') required final String empresaId,
+          @JsonKey(name: 'PEDIDO_ID') required final String pedidoVentaId,
+          @JsonKey(name: 'PEDIDO_LINEA_ID') required final String id,
+          @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
+          @JsonKey(name: 'ARTICULO_DESCRIPCION')
+          required final String articuloDescription,
+          @JsonKey(name: 'CLIENTE_ID') required final String clienteId,
+          @JsonKey(name: 'NOMRE_CLIENTE') required final String nombreCliente,
+          @JsonKey(name: 'CANTIDAD') required final int cantidad,
+          @JsonKey(name: 'PRECIO_DIVISA') required final double precioDivisa,
+          @JsonKey(name: 'TIPO_PRECIO') required final int tipoPrecio,
+          @JsonKey(name: 'DESCUENTO1') required final double descuento1,
+          @JsonKey(name: 'DESCUENTO2') required final double descuento2,
+          @JsonKey(name: 'DESCUENTO3') required final double descuento3,
+          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+          @JsonKey(name: 'DELETED') required final String deleted}) =
+      _$ArticuloPedidoVentaLineaDTOImpl;
   const _ArticuloPedidoVentaLineaDTO._() : super._();
 
   factory _ArticuloPedidoVentaLineaDTO.fromJson(Map<String, dynamic> json) =
@@ -579,5 +532,5 @@ abstract class _ArticuloPedidoVentaLineaDTO
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ArticuloPedidoVentaLineaDTOImplCopyWith<_$ArticuloPedidoVentaLineaDTOImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }

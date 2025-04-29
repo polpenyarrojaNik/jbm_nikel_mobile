@@ -34,7 +34,9 @@ abstract class _$ClienteVentasArticuloIndexScreenPaginatedController
     extends BuildlessAutoDisposeAsyncNotifier<List<ClienteVentasArticulo>> {
   late final String clienteId;
 
-  FutureOr<List<ClienteVentasArticulo>> build({required String clienteId});
+  FutureOr<List<ClienteVentasArticulo>> build({
+    required String clienteId,
+  });
 }
 
 /// See also [ClienteVentasArticuloIndexScreenPaginatedController].
@@ -59,11 +61,13 @@ class ClienteVentasArticuloIndexScreenPaginatedControllerFamily
 
   @override
   ClienteVentasArticuloIndexScreenPaginatedControllerProvider
-  getProviderOverride(
+      getProviderOverride(
     covariant ClienteVentasArticuloIndexScreenPaginatedControllerProvider
-    provider,
+        provider,
   ) {
-    return call(clienteId: provider.clienteId);
+    return call(
+      clienteId: provider.clienteId,
+    );
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -84,32 +88,29 @@ class ClienteVentasArticuloIndexScreenPaginatedControllerFamily
 
 /// See also [ClienteVentasArticuloIndexScreenPaginatedController].
 class ClienteVentasArticuloIndexScreenPaginatedControllerProvider
-    extends
-        AutoDisposeAsyncNotifierProviderImpl<
-          ClienteVentasArticuloIndexScreenPaginatedController,
-          List<ClienteVentasArticulo>
-        > {
+    extends AutoDisposeAsyncNotifierProviderImpl<
+        ClienteVentasArticuloIndexScreenPaginatedController,
+        List<ClienteVentasArticulo>> {
   /// See also [ClienteVentasArticuloIndexScreenPaginatedController].
   ClienteVentasArticuloIndexScreenPaginatedControllerProvider({
     required String clienteId,
   }) : this._internal(
-         () =>
-             ClienteVentasArticuloIndexScreenPaginatedController()
-               ..clienteId = clienteId,
-         from: clienteVentasArticuloIndexScreenPaginatedControllerProvider,
-         name: r'clienteVentasArticuloIndexScreenPaginatedControllerProvider',
-         debugGetCreateSourceHash:
-             const bool.fromEnvironment('dart.vm.product')
-                 ? null
-                 : _$clienteVentasArticuloIndexScreenPaginatedControllerHash,
-         dependencies:
-             ClienteVentasArticuloIndexScreenPaginatedControllerFamily
-                 ._dependencies,
-         allTransitiveDependencies:
-             ClienteVentasArticuloIndexScreenPaginatedControllerFamily
-                 ._allTransitiveDependencies,
-         clienteId: clienteId,
-       );
+          () => ClienteVentasArticuloIndexScreenPaginatedController()
+            ..clienteId = clienteId,
+          from: clienteVentasArticuloIndexScreenPaginatedControllerProvider,
+          name: r'clienteVentasArticuloIndexScreenPaginatedControllerProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$clienteVentasArticuloIndexScreenPaginatedControllerHash,
+          dependencies:
+              ClienteVentasArticuloIndexScreenPaginatedControllerFamily
+                  ._dependencies,
+          allTransitiveDependencies:
+              ClienteVentasArticuloIndexScreenPaginatedControllerFamily
+                  ._allTransitiveDependencies,
+          clienteId: clienteId,
+        );
 
   ClienteVentasArticuloIndexScreenPaginatedControllerProvider._internal(
     super._createNotifier, {
@@ -127,37 +128,35 @@ class ClienteVentasArticuloIndexScreenPaginatedControllerProvider
   FutureOr<List<ClienteVentasArticulo>> runNotifierBuild(
     covariant ClienteVentasArticuloIndexScreenPaginatedController notifier,
   ) {
-    return notifier.build(clienteId: clienteId);
+    return notifier.build(
+      clienteId: clienteId,
+    );
   }
 
   @override
   Override overrideWith(
-    ClienteVentasArticuloIndexScreenPaginatedController Function() create,
-  ) {
+      ClienteVentasArticuloIndexScreenPaginatedController Function() create) {
     return ProviderOverride(
       origin: this,
       override:
           ClienteVentasArticuloIndexScreenPaginatedControllerProvider._internal(
-            () => create()..clienteId = clienteId,
-            from: from,
-            name: null,
-            dependencies: null,
-            allTransitiveDependencies: null,
-            debugGetCreateSourceHash: null,
-            clienteId: clienteId,
-          ),
+        () => create()..clienteId = clienteId,
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        clienteId: clienteId,
+      ),
     );
   }
 
   @override
   AutoDisposeAsyncNotifierProviderElement<
-    ClienteVentasArticuloIndexScreenPaginatedController,
-    List<ClienteVentasArticulo>
-  >
-  createElement() {
+      ClienteVentasArticuloIndexScreenPaginatedController,
+      List<ClienteVentasArticulo>> createElement() {
     return _ClienteVentasArticuloIndexScreenPaginatedControllerProviderElement(
-      this,
-    );
+        this);
   }
 
   @override
@@ -185,21 +184,17 @@ mixin ClienteVentasArticuloIndexScreenPaginatedControllerRef
 }
 
 class _ClienteVentasArticuloIndexScreenPaginatedControllerProviderElement
-    extends
-        AutoDisposeAsyncNotifierProviderElement<
-          ClienteVentasArticuloIndexScreenPaginatedController,
-          List<ClienteVentasArticulo>
-        >
+    extends AutoDisposeAsyncNotifierProviderElement<
+        ClienteVentasArticuloIndexScreenPaginatedController,
+        List<ClienteVentasArticulo>>
     with ClienteVentasArticuloIndexScreenPaginatedControllerRef {
   _ClienteVentasArticuloIndexScreenPaginatedControllerProviderElement(
-    super.provider,
-  );
+      super.provider);
 
   @override
   String get clienteId =>
       (origin as ClienteVentasArticuloIndexScreenPaginatedControllerProvider)
           .clienteId;
 }
-
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

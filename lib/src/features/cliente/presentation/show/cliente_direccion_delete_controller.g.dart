@@ -34,7 +34,9 @@ abstract class _$ClienteDireccionDeleteController
     extends BuildlessAutoDisposeAsyncNotifier<bool> {
   late final ClienteImpParam clienteImpParam;
 
-  FutureOr<bool> build(ClienteImpParam clienteImpParam);
+  FutureOr<bool> build(
+    ClienteImpParam clienteImpParam,
+  );
 }
 
 /// See also [ClienteDireccionDeleteController].
@@ -51,14 +53,18 @@ class ClienteDireccionDeleteControllerFamily extends Family<AsyncValue<bool>> {
   ClienteDireccionDeleteControllerProvider call(
     ClienteImpParam clienteImpParam,
   ) {
-    return ClienteDireccionDeleteControllerProvider(clienteImpParam);
+    return ClienteDireccionDeleteControllerProvider(
+      clienteImpParam,
+    );
   }
 
   @override
   ClienteDireccionDeleteControllerProvider getProviderOverride(
     covariant ClienteDireccionDeleteControllerProvider provider,
   ) {
-    return call(provider.clienteImpParam);
+    return call(
+      provider.clienteImpParam,
+    );
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -78,28 +84,25 @@ class ClienteDireccionDeleteControllerFamily extends Family<AsyncValue<bool>> {
 
 /// See also [ClienteDireccionDeleteController].
 class ClienteDireccionDeleteControllerProvider
-    extends
-        AutoDisposeAsyncNotifierProviderImpl<
-          ClienteDireccionDeleteController,
-          bool
-        > {
+    extends AutoDisposeAsyncNotifierProviderImpl<
+        ClienteDireccionDeleteController, bool> {
   /// See also [ClienteDireccionDeleteController].
-  ClienteDireccionDeleteControllerProvider(ClienteImpParam clienteImpParam)
-    : this._internal(
-        () =>
-            ClienteDireccionDeleteController()
-              ..clienteImpParam = clienteImpParam,
-        from: clienteDireccionDeleteControllerProvider,
-        name: r'clienteDireccionDeleteControllerProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$clienteDireccionDeleteControllerHash,
-        dependencies: ClienteDireccionDeleteControllerFamily._dependencies,
-        allTransitiveDependencies:
-            ClienteDireccionDeleteControllerFamily._allTransitiveDependencies,
-        clienteImpParam: clienteImpParam,
-      );
+  ClienteDireccionDeleteControllerProvider(
+    ClienteImpParam clienteImpParam,
+  ) : this._internal(
+          () => ClienteDireccionDeleteController()
+            ..clienteImpParam = clienteImpParam,
+          from: clienteDireccionDeleteControllerProvider,
+          name: r'clienteDireccionDeleteControllerProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$clienteDireccionDeleteControllerHash,
+          dependencies: ClienteDireccionDeleteControllerFamily._dependencies,
+          allTransitiveDependencies:
+              ClienteDireccionDeleteControllerFamily._allTransitiveDependencies,
+          clienteImpParam: clienteImpParam,
+        );
 
   ClienteDireccionDeleteControllerProvider._internal(
     super._createNotifier, {
@@ -117,7 +120,9 @@ class ClienteDireccionDeleteControllerProvider
   FutureOr<bool> runNotifierBuild(
     covariant ClienteDireccionDeleteController notifier,
   ) {
-    return notifier.build(clienteImpParam);
+    return notifier.build(
+      clienteImpParam,
+    );
   }
 
   @override
@@ -137,11 +142,8 @@ class ClienteDireccionDeleteControllerProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
-    ClienteDireccionDeleteController,
-    bool
-  >
-  createElement() {
+  AutoDisposeAsyncNotifierProviderElement<ClienteDireccionDeleteController,
+      bool> createElement() {
     return _ClienteDireccionDeleteControllerProviderElement(this);
   }
 
@@ -169,18 +171,14 @@ mixin ClienteDireccionDeleteControllerRef
 }
 
 class _ClienteDireccionDeleteControllerProviderElement
-    extends
-        AutoDisposeAsyncNotifierProviderElement<
-          ClienteDireccionDeleteController,
-          bool
-        >
-    with ClienteDireccionDeleteControllerRef {
+    extends AutoDisposeAsyncNotifierProviderElement<
+        ClienteDireccionDeleteController,
+        bool> with ClienteDireccionDeleteControllerRef {
   _ClienteDireccionDeleteControllerProviderElement(super.provider);
 
   @override
   ClienteImpParam get clienteImpParam =>
       (origin as ClienteDireccionDeleteControllerProvider).clienteImpParam;
 }
-
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

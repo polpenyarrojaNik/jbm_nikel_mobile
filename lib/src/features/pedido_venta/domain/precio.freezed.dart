@@ -12,8 +12,7 @@ part of 'precio.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$Precio {
@@ -48,31 +47,28 @@ class _$PrecioCopyWithImpl<$Res, $Val extends Precio>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? precio = null, Object? tipoPrecio = null}) {
-    return _then(
-      _value.copyWith(
-            precio:
-                null == precio
-                    ? _value.precio
-                    : precio // ignore: cast_nullable_to_non_nullable
-                        as Money,
-            tipoPrecio:
-                null == tipoPrecio
-                    ? _value.tipoPrecio
-                    : tipoPrecio // ignore: cast_nullable_to_non_nullable
-                        as int,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? precio = null,
+    Object? tipoPrecio = null,
+  }) {
+    return _then(_value.copyWith(
+      precio: null == precio
+          ? _value.precio
+          : precio // ignore: cast_nullable_to_non_nullable
+              as Money,
+      tipoPrecio: null == tipoPrecio
+          ? _value.tipoPrecio
+          : tipoPrecio // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$PrecioImplCopyWith<$Res> implements $PrecioCopyWith<$Res> {
   factory _$$PrecioImplCopyWith(
-    _$PrecioImpl value,
-    $Res Function(_$PrecioImpl) then,
-  ) = __$$PrecioImplCopyWithImpl<$Res>;
+          _$PrecioImpl value, $Res Function(_$PrecioImpl) then) =
+      __$$PrecioImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Money precio, int tipoPrecio});
@@ -83,29 +79,27 @@ class __$$PrecioImplCopyWithImpl<$Res>
     extends _$PrecioCopyWithImpl<$Res, _$PrecioImpl>
     implements _$$PrecioImplCopyWith<$Res> {
   __$$PrecioImplCopyWithImpl(
-    _$PrecioImpl _value,
-    $Res Function(_$PrecioImpl) _then,
-  ) : super(_value, _then);
+      _$PrecioImpl _value, $Res Function(_$PrecioImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of Precio
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? precio = null, Object? tipoPrecio = null}) {
-    return _then(
-      _$PrecioImpl(
-        precio:
-            null == precio
-                ? _value.precio
-                : precio // ignore: cast_nullable_to_non_nullable
-                    as Money,
-        tipoPrecio:
-            null == tipoPrecio
-                ? _value.tipoPrecio
-                : tipoPrecio // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
+  $Res call({
+    Object? precio = null,
+    Object? tipoPrecio = null,
+  }) {
+    return _then(_$PrecioImpl(
+      precio: null == precio
+          ? _value.precio
+          : precio // ignore: cast_nullable_to_non_nullable
+              as Money,
+      tipoPrecio: null == tipoPrecio
+          ? _value.tipoPrecio
+          : tipoPrecio // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
@@ -113,7 +107,7 @@ class __$$PrecioImplCopyWithImpl<$Res>
 
 class _$PrecioImpl extends _Precio {
   const _$PrecioImpl({required this.precio, required this.tipoPrecio})
-    : super._();
+      : super._();
 
   @override
   final Money precio;
@@ -148,10 +142,9 @@ class _$PrecioImpl extends _Precio {
 }
 
 abstract class _Precio extends Precio {
-  const factory _Precio({
-    required final Money precio,
-    required final int tipoPrecio,
-  }) = _$PrecioImpl;
+  const factory _Precio(
+      {required final Money precio,
+      required final int tipoPrecio}) = _$PrecioImpl;
   const _Precio._() : super._();
 
   @override

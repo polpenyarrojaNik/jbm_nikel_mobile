@@ -12,8 +12,7 @@ part of 'visita_id_param.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$VisitaIdIsLocalParam {
@@ -30,19 +29,16 @@ mixin _$VisitaIdIsLocalParam {
 
 /// @nodoc
 abstract class $VisitaIdIsLocalParamCopyWith<$Res> {
-  factory $VisitaIdIsLocalParamCopyWith(
-    VisitaIdIsLocalParam value,
-    $Res Function(VisitaIdIsLocalParam) then,
-  ) = _$VisitaIdIsLocalParamCopyWithImpl<$Res, VisitaIdIsLocalParam>;
+  factory $VisitaIdIsLocalParamCopyWith(VisitaIdIsLocalParam value,
+          $Res Function(VisitaIdIsLocalParam) then) =
+      _$VisitaIdIsLocalParamCopyWithImpl<$Res, VisitaIdIsLocalParam>;
   @useResult
   $Res call({String id, bool isLocal, String? createVisitaFromClienteId});
 }
 
 /// @nodoc
-class _$VisitaIdIsLocalParamCopyWithImpl<
-  $Res,
-  $Val extends VisitaIdIsLocalParam
->
+class _$VisitaIdIsLocalParamCopyWithImpl<$Res,
+        $Val extends VisitaIdIsLocalParam>
     implements $VisitaIdIsLocalParamCopyWith<$Res> {
   _$VisitaIdIsLocalParamCopyWithImpl(this._value, this._then);
 
@@ -60,36 +56,29 @@ class _$VisitaIdIsLocalParamCopyWithImpl<
     Object? isLocal = null,
     Object? createVisitaFromClienteId = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            id:
-                null == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as String,
-            isLocal:
-                null == isLocal
-                    ? _value.isLocal
-                    : isLocal // ignore: cast_nullable_to_non_nullable
-                        as bool,
-            createVisitaFromClienteId:
-                freezed == createVisitaFromClienteId
-                    ? _value.createVisitaFromClienteId
-                    : createVisitaFromClienteId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      isLocal: null == isLocal
+          ? _value.isLocal
+          : isLocal // ignore: cast_nullable_to_non_nullable
+              as bool,
+      createVisitaFromClienteId: freezed == createVisitaFromClienteId
+          ? _value.createVisitaFromClienteId
+          : createVisitaFromClienteId // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$VisitaIdIsLocalParamImplCopyWith<$Res>
     implements $VisitaIdIsLocalParamCopyWith<$Res> {
-  factory _$$VisitaIdIsLocalParamImplCopyWith(
-    _$VisitaIdIsLocalParamImpl value,
-    $Res Function(_$VisitaIdIsLocalParamImpl) then,
-  ) = __$$VisitaIdIsLocalParamImplCopyWithImpl<$Res>;
+  factory _$$VisitaIdIsLocalParamImplCopyWith(_$VisitaIdIsLocalParamImpl value,
+          $Res Function(_$VisitaIdIsLocalParamImpl) then) =
+      __$$VisitaIdIsLocalParamImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id, bool isLocal, String? createVisitaFromClienteId});
@@ -99,10 +88,9 @@ abstract class _$$VisitaIdIsLocalParamImplCopyWith<$Res>
 class __$$VisitaIdIsLocalParamImplCopyWithImpl<$Res>
     extends _$VisitaIdIsLocalParamCopyWithImpl<$Res, _$VisitaIdIsLocalParamImpl>
     implements _$$VisitaIdIsLocalParamImplCopyWith<$Res> {
-  __$$VisitaIdIsLocalParamImplCopyWithImpl(
-    _$VisitaIdIsLocalParamImpl _value,
-    $Res Function(_$VisitaIdIsLocalParamImpl) _then,
-  ) : super(_value, _then);
+  __$$VisitaIdIsLocalParamImplCopyWithImpl(_$VisitaIdIsLocalParamImpl _value,
+      $Res Function(_$VisitaIdIsLocalParamImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of VisitaIdIsLocalParam
   /// with the given fields replaced by the non-null parameter values.
@@ -113,36 +101,29 @@ class __$$VisitaIdIsLocalParamImplCopyWithImpl<$Res>
     Object? isLocal = null,
     Object? createVisitaFromClienteId = freezed,
   }) {
-    return _then(
-      _$VisitaIdIsLocalParamImpl(
-        id:
-            null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as String,
-        isLocal:
-            null == isLocal
-                ? _value.isLocal
-                : isLocal // ignore: cast_nullable_to_non_nullable
-                    as bool,
-        createVisitaFromClienteId:
-            freezed == createVisitaFromClienteId
-                ? _value.createVisitaFromClienteId
-                : createVisitaFromClienteId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+    return _then(_$VisitaIdIsLocalParamImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      isLocal: null == isLocal
+          ? _value.isLocal
+          : isLocal // ignore: cast_nullable_to_non_nullable
+              as bool,
+      createVisitaFromClienteId: freezed == createVisitaFromClienteId
+          ? _value.createVisitaFromClienteId
+          : createVisitaFromClienteId // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$VisitaIdIsLocalParamImpl extends _VisitaIdIsLocalParam {
-  const _$VisitaIdIsLocalParamImpl({
-    required this.id,
-    required this.isLocal,
-    this.createVisitaFromClienteId,
-  }) : super._();
+  const _$VisitaIdIsLocalParamImpl(
+      {required this.id, required this.isLocal, this.createVisitaFromClienteId})
+      : super._();
 
   @override
   final String id;
@@ -163,10 +144,8 @@ class _$VisitaIdIsLocalParamImpl extends _VisitaIdIsLocalParam {
             other is _$VisitaIdIsLocalParamImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.isLocal, isLocal) || other.isLocal == isLocal) &&
-            (identical(
-                  other.createVisitaFromClienteId,
-                  createVisitaFromClienteId,
-                ) ||
+            (identical(other.createVisitaFromClienteId,
+                    createVisitaFromClienteId) ||
                 other.createVisitaFromClienteId == createVisitaFromClienteId));
   }
 
@@ -180,19 +159,16 @@ class _$VisitaIdIsLocalParamImpl extends _VisitaIdIsLocalParam {
   @override
   @pragma('vm:prefer-inline')
   _$$VisitaIdIsLocalParamImplCopyWith<_$VisitaIdIsLocalParamImpl>
-  get copyWith =>
-      __$$VisitaIdIsLocalParamImplCopyWithImpl<_$VisitaIdIsLocalParamImpl>(
-        this,
-        _$identity,
-      );
+      get copyWith =>
+          __$$VisitaIdIsLocalParamImplCopyWithImpl<_$VisitaIdIsLocalParamImpl>(
+              this, _$identity);
 }
 
 abstract class _VisitaIdIsLocalParam extends VisitaIdIsLocalParam {
-  const factory _VisitaIdIsLocalParam({
-    required final String id,
-    required final bool isLocal,
-    final String? createVisitaFromClienteId,
-  }) = _$VisitaIdIsLocalParamImpl;
+  const factory _VisitaIdIsLocalParam(
+      {required final String id,
+      required final bool isLocal,
+      final String? createVisitaFromClienteId}) = _$VisitaIdIsLocalParamImpl;
   const _VisitaIdIsLocalParam._() : super._();
 
   @override
@@ -207,5 +183,5 @@ abstract class _VisitaIdIsLocalParam extends VisitaIdIsLocalParam {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$VisitaIdIsLocalParamImplCopyWith<_$VisitaIdIsLocalParamImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }

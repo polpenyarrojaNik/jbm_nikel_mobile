@@ -12,8 +12,7 @@ part of 'devolucion.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$Devolucion {
@@ -46,30 +45,28 @@ mixin _$Devolucion {
 /// @nodoc
 abstract class $DevolucionCopyWith<$Res> {
   factory $DevolucionCopyWith(
-    Devolucion value,
-    $Res Function(Devolucion) then,
-  ) = _$DevolucionCopyWithImpl<$Res, Devolucion>;
+          Devolucion value, $Res Function(Devolucion) then) =
+      _$DevolucionCopyWithImpl<$Res, Devolucion>;
   @useResult
-  $Res call({
-    String empresaId,
-    String id,
-    DateTime fechaDevolucion,
-    String? clienteId,
-    String? direccionId,
-    String? nombre,
-    String? direccionRecogida1,
-    String? direccionRecogida2,
-    String? codigoPostal,
-    String? poblacion,
-    Pais? pais,
-    String? almacenDestino,
-    String? agenciaTransporte,
-    DevolucionEstado devolucionEstado,
-    double kilosDevolucion,
-    double bultos,
-    DateTime lastUpdated,
-    bool deleted,
-  });
+  $Res call(
+      {String empresaId,
+      String id,
+      DateTime fechaDevolucion,
+      String? clienteId,
+      String? direccionId,
+      String? nombre,
+      String? direccionRecogida1,
+      String? direccionRecogida2,
+      String? codigoPostal,
+      String? poblacion,
+      Pais? pais,
+      String? almacenDestino,
+      String? agenciaTransporte,
+      DevolucionEstado devolucionEstado,
+      double kilosDevolucion,
+      double bultos,
+      DateTime lastUpdated,
+      bool deleted});
 
   $PaisCopyWith<$Res>? get pais;
   $DevolucionEstadoCopyWith<$Res> get devolucionEstado;
@@ -109,101 +106,80 @@ class _$DevolucionCopyWithImpl<$Res, $Val extends Devolucion>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            empresaId:
-                null == empresaId
-                    ? _value.empresaId
-                    : empresaId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            id:
-                null == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as String,
-            fechaDevolucion:
-                null == fechaDevolucion
-                    ? _value.fechaDevolucion
-                    : fechaDevolucion // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            clienteId:
-                freezed == clienteId
-                    ? _value.clienteId
-                    : clienteId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            direccionId:
-                freezed == direccionId
-                    ? _value.direccionId
-                    : direccionId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            nombre:
-                freezed == nombre
-                    ? _value.nombre
-                    : nombre // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            direccionRecogida1:
-                freezed == direccionRecogida1
-                    ? _value.direccionRecogida1
-                    : direccionRecogida1 // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            direccionRecogida2:
-                freezed == direccionRecogida2
-                    ? _value.direccionRecogida2
-                    : direccionRecogida2 // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            codigoPostal:
-                freezed == codigoPostal
-                    ? _value.codigoPostal
-                    : codigoPostal // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            poblacion:
-                freezed == poblacion
-                    ? _value.poblacion
-                    : poblacion // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            pais:
-                freezed == pais
-                    ? _value.pais
-                    : pais // ignore: cast_nullable_to_non_nullable
-                        as Pais?,
-            almacenDestino:
-                freezed == almacenDestino
-                    ? _value.almacenDestino
-                    : almacenDestino // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            agenciaTransporte:
-                freezed == agenciaTransporte
-                    ? _value.agenciaTransporte
-                    : agenciaTransporte // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            devolucionEstado:
-                null == devolucionEstado
-                    ? _value.devolucionEstado
-                    : devolucionEstado // ignore: cast_nullable_to_non_nullable
-                        as DevolucionEstado,
-            kilosDevolucion:
-                null == kilosDevolucion
-                    ? _value.kilosDevolucion
-                    : kilosDevolucion // ignore: cast_nullable_to_non_nullable
-                        as double,
-            bultos:
-                null == bultos
-                    ? _value.bultos
-                    : bultos // ignore: cast_nullable_to_non_nullable
-                        as double,
-            lastUpdated:
-                null == lastUpdated
-                    ? _value.lastUpdated
-                    : lastUpdated // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as bool,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      empresaId: null == empresaId
+          ? _value.empresaId
+          : empresaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      fechaDevolucion: null == fechaDevolucion
+          ? _value.fechaDevolucion
+          : fechaDevolucion // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      clienteId: freezed == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      direccionId: freezed == direccionId
+          ? _value.direccionId
+          : direccionId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nombre: freezed == nombre
+          ? _value.nombre
+          : nombre // ignore: cast_nullable_to_non_nullable
+              as String?,
+      direccionRecogida1: freezed == direccionRecogida1
+          ? _value.direccionRecogida1
+          : direccionRecogida1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      direccionRecogida2: freezed == direccionRecogida2
+          ? _value.direccionRecogida2
+          : direccionRecogida2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      codigoPostal: freezed == codigoPostal
+          ? _value.codigoPostal
+          : codigoPostal // ignore: cast_nullable_to_non_nullable
+              as String?,
+      poblacion: freezed == poblacion
+          ? _value.poblacion
+          : poblacion // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pais: freezed == pais
+          ? _value.pais
+          : pais // ignore: cast_nullable_to_non_nullable
+              as Pais?,
+      almacenDestino: freezed == almacenDestino
+          ? _value.almacenDestino
+          : almacenDestino // ignore: cast_nullable_to_non_nullable
+              as String?,
+      agenciaTransporte: freezed == agenciaTransporte
+          ? _value.agenciaTransporte
+          : agenciaTransporte // ignore: cast_nullable_to_non_nullable
+              as String?,
+      devolucionEstado: null == devolucionEstado
+          ? _value.devolucionEstado
+          : devolucionEstado // ignore: cast_nullable_to_non_nullable
+              as DevolucionEstado,
+      kilosDevolucion: null == kilosDevolucion
+          ? _value.kilosDevolucion
+          : kilosDevolucion // ignore: cast_nullable_to_non_nullable
+              as double,
+      bultos: null == bultos
+          ? _value.bultos
+          : bultos // ignore: cast_nullable_to_non_nullable
+              as double,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
   }
 
   /// Create a copy of Devolucion
@@ -235,31 +211,29 @@ class _$DevolucionCopyWithImpl<$Res, $Val extends Devolucion>
 abstract class _$$DevolucionImplCopyWith<$Res>
     implements $DevolucionCopyWith<$Res> {
   factory _$$DevolucionImplCopyWith(
-    _$DevolucionImpl value,
-    $Res Function(_$DevolucionImpl) then,
-  ) = __$$DevolucionImplCopyWithImpl<$Res>;
+          _$DevolucionImpl value, $Res Function(_$DevolucionImpl) then) =
+      __$$DevolucionImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String empresaId,
-    String id,
-    DateTime fechaDevolucion,
-    String? clienteId,
-    String? direccionId,
-    String? nombre,
-    String? direccionRecogida1,
-    String? direccionRecogida2,
-    String? codigoPostal,
-    String? poblacion,
-    Pais? pais,
-    String? almacenDestino,
-    String? agenciaTransporte,
-    DevolucionEstado devolucionEstado,
-    double kilosDevolucion,
-    double bultos,
-    DateTime lastUpdated,
-    bool deleted,
-  });
+  $Res call(
+      {String empresaId,
+      String id,
+      DateTime fechaDevolucion,
+      String? clienteId,
+      String? direccionId,
+      String? nombre,
+      String? direccionRecogida1,
+      String? direccionRecogida2,
+      String? codigoPostal,
+      String? poblacion,
+      Pais? pais,
+      String? almacenDestino,
+      String? agenciaTransporte,
+      DevolucionEstado devolucionEstado,
+      double kilosDevolucion,
+      double bultos,
+      DateTime lastUpdated,
+      bool deleted});
 
   @override
   $PaisCopyWith<$Res>? get pais;
@@ -272,9 +246,8 @@ class __$$DevolucionImplCopyWithImpl<$Res>
     extends _$DevolucionCopyWithImpl<$Res, _$DevolucionImpl>
     implements _$$DevolucionImplCopyWith<$Res> {
   __$$DevolucionImplCopyWithImpl(
-    _$DevolucionImpl _value,
-    $Res Function(_$DevolucionImpl) _then,
-  ) : super(_value, _then);
+      _$DevolucionImpl _value, $Res Function(_$DevolucionImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of Devolucion
   /// with the given fields replaced by the non-null parameter values.
@@ -300,126 +273,106 @@ class __$$DevolucionImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$DevolucionImpl(
-        empresaId:
-            null == empresaId
-                ? _value.empresaId
-                : empresaId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        id:
-            null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as String,
-        fechaDevolucion:
-            null == fechaDevolucion
-                ? _value.fechaDevolucion
-                : fechaDevolucion // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        clienteId:
-            freezed == clienteId
-                ? _value.clienteId
-                : clienteId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        direccionId:
-            freezed == direccionId
-                ? _value.direccionId
-                : direccionId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        nombre:
-            freezed == nombre
-                ? _value.nombre
-                : nombre // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        direccionRecogida1:
-            freezed == direccionRecogida1
-                ? _value.direccionRecogida1
-                : direccionRecogida1 // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        direccionRecogida2:
-            freezed == direccionRecogida2
-                ? _value.direccionRecogida2
-                : direccionRecogida2 // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        codigoPostal:
-            freezed == codigoPostal
-                ? _value.codigoPostal
-                : codigoPostal // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        poblacion:
-            freezed == poblacion
-                ? _value.poblacion
-                : poblacion // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        pais:
-            freezed == pais
-                ? _value.pais
-                : pais // ignore: cast_nullable_to_non_nullable
-                    as Pais?,
-        almacenDestino:
-            freezed == almacenDestino
-                ? _value.almacenDestino
-                : almacenDestino // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        agenciaTransporte:
-            freezed == agenciaTransporte
-                ? _value.agenciaTransporte
-                : agenciaTransporte // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        devolucionEstado:
-            null == devolucionEstado
-                ? _value.devolucionEstado
-                : devolucionEstado // ignore: cast_nullable_to_non_nullable
-                    as DevolucionEstado,
-        kilosDevolucion:
-            null == kilosDevolucion
-                ? _value.kilosDevolucion
-                : kilosDevolucion // ignore: cast_nullable_to_non_nullable
-                    as double,
-        bultos:
-            null == bultos
-                ? _value.bultos
-                : bultos // ignore: cast_nullable_to_non_nullable
-                    as double,
-        lastUpdated:
-            null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as bool,
-      ),
-    );
+    return _then(_$DevolucionImpl(
+      empresaId: null == empresaId
+          ? _value.empresaId
+          : empresaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      fechaDevolucion: null == fechaDevolucion
+          ? _value.fechaDevolucion
+          : fechaDevolucion // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      clienteId: freezed == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      direccionId: freezed == direccionId
+          ? _value.direccionId
+          : direccionId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nombre: freezed == nombre
+          ? _value.nombre
+          : nombre // ignore: cast_nullable_to_non_nullable
+              as String?,
+      direccionRecogida1: freezed == direccionRecogida1
+          ? _value.direccionRecogida1
+          : direccionRecogida1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      direccionRecogida2: freezed == direccionRecogida2
+          ? _value.direccionRecogida2
+          : direccionRecogida2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      codigoPostal: freezed == codigoPostal
+          ? _value.codigoPostal
+          : codigoPostal // ignore: cast_nullable_to_non_nullable
+              as String?,
+      poblacion: freezed == poblacion
+          ? _value.poblacion
+          : poblacion // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pais: freezed == pais
+          ? _value.pais
+          : pais // ignore: cast_nullable_to_non_nullable
+              as Pais?,
+      almacenDestino: freezed == almacenDestino
+          ? _value.almacenDestino
+          : almacenDestino // ignore: cast_nullable_to_non_nullable
+              as String?,
+      agenciaTransporte: freezed == agenciaTransporte
+          ? _value.agenciaTransporte
+          : agenciaTransporte // ignore: cast_nullable_to_non_nullable
+              as String?,
+      devolucionEstado: null == devolucionEstado
+          ? _value.devolucionEstado
+          : devolucionEstado // ignore: cast_nullable_to_non_nullable
+              as DevolucionEstado,
+      kilosDevolucion: null == kilosDevolucion
+          ? _value.kilosDevolucion
+          : kilosDevolucion // ignore: cast_nullable_to_non_nullable
+              as double,
+      bultos: null == bultos
+          ? _value.bultos
+          : bultos // ignore: cast_nullable_to_non_nullable
+              as double,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$DevolucionImpl extends _Devolucion {
-  const _$DevolucionImpl({
-    required this.empresaId,
-    required this.id,
-    required this.fechaDevolucion,
-    this.clienteId,
-    this.direccionId,
-    this.nombre,
-    this.direccionRecogida1,
-    this.direccionRecogida2,
-    this.codigoPostal,
-    this.poblacion,
-    this.pais,
-    this.almacenDestino,
-    this.agenciaTransporte,
-    required this.devolucionEstado,
-    required this.kilosDevolucion,
-    required this.bultos,
-    required this.lastUpdated,
-    required this.deleted,
-  }) : super._();
+  const _$DevolucionImpl(
+      {required this.empresaId,
+      required this.id,
+      required this.fechaDevolucion,
+      this.clienteId,
+      this.direccionId,
+      this.nombre,
+      this.direccionRecogida1,
+      this.direccionRecogida2,
+      this.codigoPostal,
+      this.poblacion,
+      this.pais,
+      this.almacenDestino,
+      this.agenciaTransporte,
+      required this.devolucionEstado,
+      required this.kilosDevolucion,
+      required this.bultos,
+      required this.lastUpdated,
+      required this.deleted})
+      : super._();
 
   @override
   final String empresaId;
@@ -503,26 +456,25 @@ class _$DevolucionImpl extends _Devolucion {
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    empresaId,
-    id,
-    fechaDevolucion,
-    clienteId,
-    direccionId,
-    nombre,
-    direccionRecogida1,
-    direccionRecogida2,
-    codigoPostal,
-    poblacion,
-    pais,
-    almacenDestino,
-    agenciaTransporte,
-    devolucionEstado,
-    kilosDevolucion,
-    bultos,
-    lastUpdated,
-    deleted,
-  );
+      runtimeType,
+      empresaId,
+      id,
+      fechaDevolucion,
+      clienteId,
+      direccionId,
+      nombre,
+      direccionRecogida1,
+      direccionRecogida2,
+      codigoPostal,
+      poblacion,
+      pais,
+      almacenDestino,
+      agenciaTransporte,
+      devolucionEstado,
+      kilosDevolucion,
+      bultos,
+      lastUpdated,
+      deleted);
 
   /// Create a copy of Devolucion
   /// with the given fields replaced by the non-null parameter values.
@@ -534,26 +486,25 @@ class _$DevolucionImpl extends _Devolucion {
 }
 
 abstract class _Devolucion extends Devolucion {
-  const factory _Devolucion({
-    required final String empresaId,
-    required final String id,
-    required final DateTime fechaDevolucion,
-    final String? clienteId,
-    final String? direccionId,
-    final String? nombre,
-    final String? direccionRecogida1,
-    final String? direccionRecogida2,
-    final String? codigoPostal,
-    final String? poblacion,
-    final Pais? pais,
-    final String? almacenDestino,
-    final String? agenciaTransporte,
-    required final DevolucionEstado devolucionEstado,
-    required final double kilosDevolucion,
-    required final double bultos,
-    required final DateTime lastUpdated,
-    required final bool deleted,
-  }) = _$DevolucionImpl;
+  const factory _Devolucion(
+      {required final String empresaId,
+      required final String id,
+      required final DateTime fechaDevolucion,
+      final String? clienteId,
+      final String? direccionId,
+      final String? nombre,
+      final String? direccionRecogida1,
+      final String? direccionRecogida2,
+      final String? codigoPostal,
+      final String? poblacion,
+      final Pais? pais,
+      final String? almacenDestino,
+      final String? agenciaTransporte,
+      required final DevolucionEstado devolucionEstado,
+      required final double kilosDevolucion,
+      required final double bultos,
+      required final DateTime lastUpdated,
+      required final bool deleted}) = _$DevolucionImpl;
   const _Devolucion._() : super._();
 
   @override

@@ -12,8 +12,7 @@ part of 'catalogo_orden_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 CatalogoOrdenDTO _$CatalogoOrdenDTOFromJson(Map<String, dynamic> json) {
   return _CatalogoOrdenDTO.fromJson(json);
@@ -39,14 +38,12 @@ mixin _$CatalogoOrdenDTO {
 /// @nodoc
 abstract class $CatalogoOrdenDTOCopyWith<$Res> {
   factory $CatalogoOrdenDTOCopyWith(
-    CatalogoOrdenDTO value,
-    $Res Function(CatalogoOrdenDTO) then,
-  ) = _$CatalogoOrdenDTOCopyWithImpl<$Res, CatalogoOrdenDTO>;
+          CatalogoOrdenDTO value, $Res Function(CatalogoOrdenDTO) then) =
+      _$CatalogoOrdenDTOCopyWithImpl<$Res, CatalogoOrdenDTO>;
   @useResult
-  $Res call({
-    @JsonKey(name: 'CATALOGO_ID') int catalogoId,
-    @JsonKey(name: 'FECHA_ABIERTO') DateTime fechaAbierto,
-  });
+  $Res call(
+      {@JsonKey(name: 'CATALOGO_ID') int catalogoId,
+      @JsonKey(name: 'FECHA_ABIERTO') DateTime fechaAbierto});
 }
 
 /// @nodoc
@@ -63,78 +60,72 @@ class _$CatalogoOrdenDTOCopyWithImpl<$Res, $Val extends CatalogoOrdenDTO>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? catalogoId = null, Object? fechaAbierto = null}) {
-    return _then(
-      _value.copyWith(
-            catalogoId:
-                null == catalogoId
-                    ? _value.catalogoId
-                    : catalogoId // ignore: cast_nullable_to_non_nullable
-                        as int,
-            fechaAbierto:
-                null == fechaAbierto
-                    ? _value.fechaAbierto
-                    : fechaAbierto // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? catalogoId = null,
+    Object? fechaAbierto = null,
+  }) {
+    return _then(_value.copyWith(
+      catalogoId: null == catalogoId
+          ? _value.catalogoId
+          : catalogoId // ignore: cast_nullable_to_non_nullable
+              as int,
+      fechaAbierto: null == fechaAbierto
+          ? _value.fechaAbierto
+          : fechaAbierto // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$CatalogoOrdenDTOImplCopyWith<$Res>
     implements $CatalogoOrdenDTOCopyWith<$Res> {
-  factory _$$CatalogoOrdenDTOImplCopyWith(
-    _$CatalogoOrdenDTOImpl value,
-    $Res Function(_$CatalogoOrdenDTOImpl) then,
-  ) = __$$CatalogoOrdenDTOImplCopyWithImpl<$Res>;
+  factory _$$CatalogoOrdenDTOImplCopyWith(_$CatalogoOrdenDTOImpl value,
+          $Res Function(_$CatalogoOrdenDTOImpl) then) =
+      __$$CatalogoOrdenDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'CATALOGO_ID') int catalogoId,
-    @JsonKey(name: 'FECHA_ABIERTO') DateTime fechaAbierto,
-  });
+  $Res call(
+      {@JsonKey(name: 'CATALOGO_ID') int catalogoId,
+      @JsonKey(name: 'FECHA_ABIERTO') DateTime fechaAbierto});
 }
 
 /// @nodoc
 class __$$CatalogoOrdenDTOImplCopyWithImpl<$Res>
     extends _$CatalogoOrdenDTOCopyWithImpl<$Res, _$CatalogoOrdenDTOImpl>
     implements _$$CatalogoOrdenDTOImplCopyWith<$Res> {
-  __$$CatalogoOrdenDTOImplCopyWithImpl(
-    _$CatalogoOrdenDTOImpl _value,
-    $Res Function(_$CatalogoOrdenDTOImpl) _then,
-  ) : super(_value, _then);
+  __$$CatalogoOrdenDTOImplCopyWithImpl(_$CatalogoOrdenDTOImpl _value,
+      $Res Function(_$CatalogoOrdenDTOImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of CatalogoOrdenDTO
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? catalogoId = null, Object? fechaAbierto = null}) {
-    return _then(
-      _$CatalogoOrdenDTOImpl(
-        catalogoId:
-            null == catalogoId
-                ? _value.catalogoId
-                : catalogoId // ignore: cast_nullable_to_non_nullable
-                    as int,
-        fechaAbierto:
-            null == fechaAbierto
-                ? _value.fechaAbierto
-                : fechaAbierto // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-      ),
-    );
+  $Res call({
+    Object? catalogoId = null,
+    Object? fechaAbierto = null,
+  }) {
+    return _then(_$CatalogoOrdenDTOImpl(
+      catalogoId: null == catalogoId
+          ? _value.catalogoId
+          : catalogoId // ignore: cast_nullable_to_non_nullable
+              as int,
+      fechaAbierto: null == fechaAbierto
+          ? _value.fechaAbierto
+          : fechaAbierto // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$CatalogoOrdenDTOImpl extends _CatalogoOrdenDTO {
-  const _$CatalogoOrdenDTOImpl({
-    @JsonKey(name: 'CATALOGO_ID') required this.catalogoId,
-    @JsonKey(name: 'FECHA_ABIERTO') required this.fechaAbierto,
-  }) : super._();
+  const _$CatalogoOrdenDTOImpl(
+      {@JsonKey(name: 'CATALOGO_ID') required this.catalogoId,
+      @JsonKey(name: 'FECHA_ABIERTO') required this.fechaAbierto})
+      : super._();
 
   factory _$CatalogoOrdenDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$CatalogoOrdenDTOImplFromJson(json);
@@ -173,21 +164,21 @@ class _$CatalogoOrdenDTOImpl extends _CatalogoOrdenDTO {
   @pragma('vm:prefer-inline')
   _$$CatalogoOrdenDTOImplCopyWith<_$CatalogoOrdenDTOImpl> get copyWith =>
       __$$CatalogoOrdenDTOImplCopyWithImpl<_$CatalogoOrdenDTOImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CatalogoOrdenDTOImplToJson(this);
+    return _$$CatalogoOrdenDTOImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _CatalogoOrdenDTO extends CatalogoOrdenDTO {
-  const factory _CatalogoOrdenDTO({
-    @JsonKey(name: 'CATALOGO_ID') required final int catalogoId,
-    @JsonKey(name: 'FECHA_ABIERTO') required final DateTime fechaAbierto,
-  }) = _$CatalogoOrdenDTOImpl;
+  const factory _CatalogoOrdenDTO(
+      {@JsonKey(name: 'CATALOGO_ID') required final int catalogoId,
+      @JsonKey(name: 'FECHA_ABIERTO')
+      required final DateTime fechaAbierto}) = _$CatalogoOrdenDTOImpl;
   const _CatalogoOrdenDTO._() : super._();
 
   factory _CatalogoOrdenDTO.fromJson(Map<String, dynamic> json) =

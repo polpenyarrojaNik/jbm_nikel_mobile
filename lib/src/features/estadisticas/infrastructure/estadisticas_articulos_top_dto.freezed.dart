@@ -12,12 +12,10 @@ part of 'estadisticas_articulos_top_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 EstadisitcasArticulosTopDTO _$EstadisitcasArticulosTopDTOFromJson(
-  Map<String, dynamic> json,
-) {
+    Map<String, dynamic> json) {
   return _EstadisitcasArticulosTopDTO.fromJson(json);
 }
 
@@ -37,32 +35,26 @@ mixin _$EstadisitcasArticulosTopDTO {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   $EstadisitcasArticulosTopDTOCopyWith<EstadisitcasArticulosTopDTO>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $EstadisitcasArticulosTopDTOCopyWith<$Res> {
   factory $EstadisitcasArticulosTopDTOCopyWith(
-    EstadisitcasArticulosTopDTO value,
-    $Res Function(EstadisitcasArticulosTopDTO) then,
-  ) =
-      _$EstadisitcasArticulosTopDTOCopyWithImpl<
-        $Res,
-        EstadisitcasArticulosTopDTO
-      >;
+          EstadisitcasArticulosTopDTO value,
+          $Res Function(EstadisitcasArticulosTopDTO) then) =
+      _$EstadisitcasArticulosTopDTOCopyWithImpl<$Res,
+          EstadisitcasArticulosTopDTO>;
   @useResult
-  $Res call({
-    @JsonKey(name: 'ARTICULO_ID') String articuloId,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'ARTICULO_ID') String articuloId,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
-class _$EstadisitcasArticulosTopDTOCopyWithImpl<
-  $Res,
-  $Val extends EstadisitcasArticulosTopDTO
->
+class _$EstadisitcasArticulosTopDTOCopyWithImpl<$Res,
+        $Val extends EstadisitcasArticulosTopDTO>
     implements $EstadisitcasArticulosTopDTOCopyWith<$Res> {
   _$EstadisitcasArticulosTopDTOCopyWithImpl(this._value, this._then);
 
@@ -80,26 +72,20 @@ class _$EstadisitcasArticulosTopDTOCopyWithImpl<
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            articuloId:
-                null == articuloId
-                    ? _value.articuloId
-                    : articuloId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            lastUpdated:
-                null == lastUpdated
-                    ? _value.lastUpdated
-                    : lastUpdated // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
@@ -107,30 +93,26 @@ class _$EstadisitcasArticulosTopDTOCopyWithImpl<
 abstract class _$$EstadisitcasArticulosTopDTOImplCopyWith<$Res>
     implements $EstadisitcasArticulosTopDTOCopyWith<$Res> {
   factory _$$EstadisitcasArticulosTopDTOImplCopyWith(
-    _$EstadisitcasArticulosTopDTOImpl value,
-    $Res Function(_$EstadisitcasArticulosTopDTOImpl) then,
-  ) = __$$EstadisitcasArticulosTopDTOImplCopyWithImpl<$Res>;
+          _$EstadisitcasArticulosTopDTOImpl value,
+          $Res Function(_$EstadisitcasArticulosTopDTOImpl) then) =
+      __$$EstadisitcasArticulosTopDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'ARTICULO_ID') String articuloId,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'ARTICULO_ID') String articuloId,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
 class __$$EstadisitcasArticulosTopDTOImplCopyWithImpl<$Res>
-    extends
-        _$EstadisitcasArticulosTopDTOCopyWithImpl<
-          $Res,
-          _$EstadisitcasArticulosTopDTOImpl
-        >
+    extends _$EstadisitcasArticulosTopDTOCopyWithImpl<$Res,
+        _$EstadisitcasArticulosTopDTOImpl>
     implements _$$EstadisitcasArticulosTopDTOImplCopyWith<$Res> {
   __$$EstadisitcasArticulosTopDTOImplCopyWithImpl(
-    _$EstadisitcasArticulosTopDTOImpl _value,
-    $Res Function(_$EstadisitcasArticulosTopDTOImpl) _then,
-  ) : super(_value, _then);
+      _$EstadisitcasArticulosTopDTOImpl _value,
+      $Res Function(_$EstadisitcasArticulosTopDTOImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EstadisitcasArticulosTopDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -141,40 +123,35 @@ class __$$EstadisitcasArticulosTopDTOImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$EstadisitcasArticulosTopDTOImpl(
-        articuloId:
-            null == articuloId
-                ? _value.articuloId
-                : articuloId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        lastUpdated:
-            null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+    return _then(_$EstadisitcasArticulosTopDTOImpl(
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$EstadisitcasArticulosTopDTOImpl extends _EstadisitcasArticulosTopDTO {
-  const _$EstadisitcasArticulosTopDTOImpl({
-    @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
-    @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-    @JsonKey(name: 'DELETED') this.deleted = 'N',
-  }) : super._();
+  const _$EstadisitcasArticulosTopDTOImpl(
+      {@JsonKey(name: 'ARTICULO_ID') required this.articuloId,
+      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+      @JsonKey(name: 'DELETED') this.deleted = 'N'})
+      : super._();
 
   factory _$EstadisitcasArticulosTopDTOImpl.fromJson(
-    Map<String, dynamic> json,
-  ) => _$$EstadisitcasArticulosTopDTOImplFromJson(json);
+          Map<String, dynamic> json) =>
+      _$$EstadisitcasArticulosTopDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'ARTICULO_ID')
@@ -214,23 +191,24 @@ class _$EstadisitcasArticulosTopDTOImpl extends _EstadisitcasArticulosTopDTO {
   @override
   @pragma('vm:prefer-inline')
   _$$EstadisitcasArticulosTopDTOImplCopyWith<_$EstadisitcasArticulosTopDTOImpl>
-  get copyWith => __$$EstadisitcasArticulosTopDTOImplCopyWithImpl<
-    _$EstadisitcasArticulosTopDTOImpl
-  >(this, _$identity);
+      get copyWith => __$$EstadisitcasArticulosTopDTOImplCopyWithImpl<
+          _$EstadisitcasArticulosTopDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$EstadisitcasArticulosTopDTOImplToJson(this);
+    return _$$EstadisitcasArticulosTopDTOImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _EstadisitcasArticulosTopDTO
     extends EstadisitcasArticulosTopDTO {
-  const factory _EstadisitcasArticulosTopDTO({
-    @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
-    @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') final String deleted,
-  }) = _$EstadisitcasArticulosTopDTOImpl;
+  const factory _EstadisitcasArticulosTopDTO(
+          {@JsonKey(name: 'ARTICULO_ID') required final String articuloId,
+          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+          @JsonKey(name: 'DELETED') final String deleted}) =
+      _$EstadisitcasArticulosTopDTOImpl;
   const _EstadisitcasArticulosTopDTO._() : super._();
 
   factory _EstadisitcasArticulosTopDTO.fromJson(Map<String, dynamic> json) =
@@ -251,5 +229,5 @@ abstract class _EstadisitcasArticulosTopDTO
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EstadisitcasArticulosTopDTOImplCopyWith<_$EstadisitcasArticulosTopDTOImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }

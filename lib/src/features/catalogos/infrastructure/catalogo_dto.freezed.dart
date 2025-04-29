@@ -12,8 +12,7 @@ part of 'catalogo_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 CatalogoDTO _$CatalogoDTOFromJson(Map<String, dynamic> json) {
   return _CatalogoDTO.fromJson(json);
@@ -57,24 +56,22 @@ mixin _$CatalogoDTO {
 /// @nodoc
 abstract class $CatalogoDTOCopyWith<$Res> {
   factory $CatalogoDTOCopyWith(
-    CatalogoDTO value,
-    $Res Function(CatalogoDTO) then,
-  ) = _$CatalogoDTOCopyWithImpl<$Res, CatalogoDTO>;
+          CatalogoDTO value, $Res Function(CatalogoDTO) then) =
+      _$CatalogoDTOCopyWithImpl<$Res, CatalogoDTO>;
   @useResult
-  $Res call({
-    @JsonKey(name: 'CATALOGO_ID') int catalogoId,
-    @JsonKey(name: 'NOMBRE') String nombre,
-    @JsonKey(name: 'IDIOMA_ID') String idiomaId,
-    @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID') String tipoPrecioCatalogoId,
-    @JsonKey(name: 'TIPO_PRECIO_CATALOGO_NOMBRE')
-    String tipoPrecioCatalogoNombre,
-    @JsonKey(name: 'TIPO_CATALOGO_ID') String tipoCatalogoId,
-    @JsonKey(name: 'TAG_BUSQUEDA') String tagBusqueda,
-    @JsonKey(name: 'ORDEN') int orden,
-    @JsonKey(name: 'NOMBRE_FICHERO_PORTADA') String nombreFicheroPortada,
-    @JsonKey(name: 'NOMBRE_FICHERO_CATALOGO') String nombreFicheroCatalogo,
-    @JsonKey(name: 'DESCARGA_SN') String descarga,
-  });
+  $Res call(
+      {@JsonKey(name: 'CATALOGO_ID') int catalogoId,
+      @JsonKey(name: 'NOMBRE') String nombre,
+      @JsonKey(name: 'IDIOMA_ID') String idiomaId,
+      @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID') String tipoPrecioCatalogoId,
+      @JsonKey(name: 'TIPO_PRECIO_CATALOGO_NOMBRE')
+      String tipoPrecioCatalogoNombre,
+      @JsonKey(name: 'TIPO_CATALOGO_ID') String tipoCatalogoId,
+      @JsonKey(name: 'TAG_BUSQUEDA') String tagBusqueda,
+      @JsonKey(name: 'ORDEN') int orden,
+      @JsonKey(name: 'NOMBRE_FICHERO_PORTADA') String nombreFicheroPortada,
+      @JsonKey(name: 'NOMBRE_FICHERO_CATALOGO') String nombreFicheroCatalogo,
+      @JsonKey(name: 'DESCARGA_SN') String descarga});
 }
 
 /// @nodoc
@@ -104,66 +101,52 @@ class _$CatalogoDTOCopyWithImpl<$Res, $Val extends CatalogoDTO>
     Object? nombreFicheroCatalogo = null,
     Object? descarga = null,
   }) {
-    return _then(
-      _value.copyWith(
-            catalogoId:
-                null == catalogoId
-                    ? _value.catalogoId
-                    : catalogoId // ignore: cast_nullable_to_non_nullable
-                        as int,
-            nombre:
-                null == nombre
-                    ? _value.nombre
-                    : nombre // ignore: cast_nullable_to_non_nullable
-                        as String,
-            idiomaId:
-                null == idiomaId
-                    ? _value.idiomaId
-                    : idiomaId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            tipoPrecioCatalogoId:
-                null == tipoPrecioCatalogoId
-                    ? _value.tipoPrecioCatalogoId
-                    : tipoPrecioCatalogoId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            tipoPrecioCatalogoNombre:
-                null == tipoPrecioCatalogoNombre
-                    ? _value.tipoPrecioCatalogoNombre
-                    : tipoPrecioCatalogoNombre // ignore: cast_nullable_to_non_nullable
-                        as String,
-            tipoCatalogoId:
-                null == tipoCatalogoId
-                    ? _value.tipoCatalogoId
-                    : tipoCatalogoId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            tagBusqueda:
-                null == tagBusqueda
-                    ? _value.tagBusqueda
-                    : tagBusqueda // ignore: cast_nullable_to_non_nullable
-                        as String,
-            orden:
-                null == orden
-                    ? _value.orden
-                    : orden // ignore: cast_nullable_to_non_nullable
-                        as int,
-            nombreFicheroPortada:
-                null == nombreFicheroPortada
-                    ? _value.nombreFicheroPortada
-                    : nombreFicheroPortada // ignore: cast_nullable_to_non_nullable
-                        as String,
-            nombreFicheroCatalogo:
-                null == nombreFicheroCatalogo
-                    ? _value.nombreFicheroCatalogo
-                    : nombreFicheroCatalogo // ignore: cast_nullable_to_non_nullable
-                        as String,
-            descarga:
-                null == descarga
-                    ? _value.descarga
-                    : descarga // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      catalogoId: null == catalogoId
+          ? _value.catalogoId
+          : catalogoId // ignore: cast_nullable_to_non_nullable
+              as int,
+      nombre: null == nombre
+          ? _value.nombre
+          : nombre // ignore: cast_nullable_to_non_nullable
+              as String,
+      idiomaId: null == idiomaId
+          ? _value.idiomaId
+          : idiomaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      tipoPrecioCatalogoId: null == tipoPrecioCatalogoId
+          ? _value.tipoPrecioCatalogoId
+          : tipoPrecioCatalogoId // ignore: cast_nullable_to_non_nullable
+              as String,
+      tipoPrecioCatalogoNombre: null == tipoPrecioCatalogoNombre
+          ? _value.tipoPrecioCatalogoNombre
+          : tipoPrecioCatalogoNombre // ignore: cast_nullable_to_non_nullable
+              as String,
+      tipoCatalogoId: null == tipoCatalogoId
+          ? _value.tipoCatalogoId
+          : tipoCatalogoId // ignore: cast_nullable_to_non_nullable
+              as String,
+      tagBusqueda: null == tagBusqueda
+          ? _value.tagBusqueda
+          : tagBusqueda // ignore: cast_nullable_to_non_nullable
+              as String,
+      orden: null == orden
+          ? _value.orden
+          : orden // ignore: cast_nullable_to_non_nullable
+              as int,
+      nombreFicheroPortada: null == nombreFicheroPortada
+          ? _value.nombreFicheroPortada
+          : nombreFicheroPortada // ignore: cast_nullable_to_non_nullable
+              as String,
+      nombreFicheroCatalogo: null == nombreFicheroCatalogo
+          ? _value.nombreFicheroCatalogo
+          : nombreFicheroCatalogo // ignore: cast_nullable_to_non_nullable
+              as String,
+      descarga: null == descarga
+          ? _value.descarga
+          : descarga // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
@@ -171,25 +154,23 @@ class _$CatalogoDTOCopyWithImpl<$Res, $Val extends CatalogoDTO>
 abstract class _$$CatalogoDTOImplCopyWith<$Res>
     implements $CatalogoDTOCopyWith<$Res> {
   factory _$$CatalogoDTOImplCopyWith(
-    _$CatalogoDTOImpl value,
-    $Res Function(_$CatalogoDTOImpl) then,
-  ) = __$$CatalogoDTOImplCopyWithImpl<$Res>;
+          _$CatalogoDTOImpl value, $Res Function(_$CatalogoDTOImpl) then) =
+      __$$CatalogoDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'CATALOGO_ID') int catalogoId,
-    @JsonKey(name: 'NOMBRE') String nombre,
-    @JsonKey(name: 'IDIOMA_ID') String idiomaId,
-    @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID') String tipoPrecioCatalogoId,
-    @JsonKey(name: 'TIPO_PRECIO_CATALOGO_NOMBRE')
-    String tipoPrecioCatalogoNombre,
-    @JsonKey(name: 'TIPO_CATALOGO_ID') String tipoCatalogoId,
-    @JsonKey(name: 'TAG_BUSQUEDA') String tagBusqueda,
-    @JsonKey(name: 'ORDEN') int orden,
-    @JsonKey(name: 'NOMBRE_FICHERO_PORTADA') String nombreFicheroPortada,
-    @JsonKey(name: 'NOMBRE_FICHERO_CATALOGO') String nombreFicheroCatalogo,
-    @JsonKey(name: 'DESCARGA_SN') String descarga,
-  });
+  $Res call(
+      {@JsonKey(name: 'CATALOGO_ID') int catalogoId,
+      @JsonKey(name: 'NOMBRE') String nombre,
+      @JsonKey(name: 'IDIOMA_ID') String idiomaId,
+      @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID') String tipoPrecioCatalogoId,
+      @JsonKey(name: 'TIPO_PRECIO_CATALOGO_NOMBRE')
+      String tipoPrecioCatalogoNombre,
+      @JsonKey(name: 'TIPO_CATALOGO_ID') String tipoCatalogoId,
+      @JsonKey(name: 'TAG_BUSQUEDA') String tagBusqueda,
+      @JsonKey(name: 'ORDEN') int orden,
+      @JsonKey(name: 'NOMBRE_FICHERO_PORTADA') String nombreFicheroPortada,
+      @JsonKey(name: 'NOMBRE_FICHERO_CATALOGO') String nombreFicheroCatalogo,
+      @JsonKey(name: 'DESCARGA_SN') String descarga});
 }
 
 /// @nodoc
@@ -197,9 +178,8 @@ class __$$CatalogoDTOImplCopyWithImpl<$Res>
     extends _$CatalogoDTOCopyWithImpl<$Res, _$CatalogoDTOImpl>
     implements _$$CatalogoDTOImplCopyWith<$Res> {
   __$$CatalogoDTOImplCopyWithImpl(
-    _$CatalogoDTOImpl _value,
-    $Res Function(_$CatalogoDTOImpl) _then,
-  ) : super(_value, _then);
+      _$CatalogoDTOImpl _value, $Res Function(_$CatalogoDTOImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of CatalogoDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -218,87 +198,75 @@ class __$$CatalogoDTOImplCopyWithImpl<$Res>
     Object? nombreFicheroCatalogo = null,
     Object? descarga = null,
   }) {
-    return _then(
-      _$CatalogoDTOImpl(
-        catalogoId:
-            null == catalogoId
-                ? _value.catalogoId
-                : catalogoId // ignore: cast_nullable_to_non_nullable
-                    as int,
-        nombre:
-            null == nombre
-                ? _value.nombre
-                : nombre // ignore: cast_nullable_to_non_nullable
-                    as String,
-        idiomaId:
-            null == idiomaId
-                ? _value.idiomaId
-                : idiomaId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        tipoPrecioCatalogoId:
-            null == tipoPrecioCatalogoId
-                ? _value.tipoPrecioCatalogoId
-                : tipoPrecioCatalogoId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        tipoPrecioCatalogoNombre:
-            null == tipoPrecioCatalogoNombre
-                ? _value.tipoPrecioCatalogoNombre
-                : tipoPrecioCatalogoNombre // ignore: cast_nullable_to_non_nullable
-                    as String,
-        tipoCatalogoId:
-            null == tipoCatalogoId
-                ? _value.tipoCatalogoId
-                : tipoCatalogoId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        tagBusqueda:
-            null == tagBusqueda
-                ? _value.tagBusqueda
-                : tagBusqueda // ignore: cast_nullable_to_non_nullable
-                    as String,
-        orden:
-            null == orden
-                ? _value.orden
-                : orden // ignore: cast_nullable_to_non_nullable
-                    as int,
-        nombreFicheroPortada:
-            null == nombreFicheroPortada
-                ? _value.nombreFicheroPortada
-                : nombreFicheroPortada // ignore: cast_nullable_to_non_nullable
-                    as String,
-        nombreFicheroCatalogo:
-            null == nombreFicheroCatalogo
-                ? _value.nombreFicheroCatalogo
-                : nombreFicheroCatalogo // ignore: cast_nullable_to_non_nullable
-                    as String,
-        descarga:
-            null == descarga
-                ? _value.descarga
-                : descarga // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+    return _then(_$CatalogoDTOImpl(
+      catalogoId: null == catalogoId
+          ? _value.catalogoId
+          : catalogoId // ignore: cast_nullable_to_non_nullable
+              as int,
+      nombre: null == nombre
+          ? _value.nombre
+          : nombre // ignore: cast_nullable_to_non_nullable
+              as String,
+      idiomaId: null == idiomaId
+          ? _value.idiomaId
+          : idiomaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      tipoPrecioCatalogoId: null == tipoPrecioCatalogoId
+          ? _value.tipoPrecioCatalogoId
+          : tipoPrecioCatalogoId // ignore: cast_nullable_to_non_nullable
+              as String,
+      tipoPrecioCatalogoNombre: null == tipoPrecioCatalogoNombre
+          ? _value.tipoPrecioCatalogoNombre
+          : tipoPrecioCatalogoNombre // ignore: cast_nullable_to_non_nullable
+              as String,
+      tipoCatalogoId: null == tipoCatalogoId
+          ? _value.tipoCatalogoId
+          : tipoCatalogoId // ignore: cast_nullable_to_non_nullable
+              as String,
+      tagBusqueda: null == tagBusqueda
+          ? _value.tagBusqueda
+          : tagBusqueda // ignore: cast_nullable_to_non_nullable
+              as String,
+      orden: null == orden
+          ? _value.orden
+          : orden // ignore: cast_nullable_to_non_nullable
+              as int,
+      nombreFicheroPortada: null == nombreFicheroPortada
+          ? _value.nombreFicheroPortada
+          : nombreFicheroPortada // ignore: cast_nullable_to_non_nullable
+              as String,
+      nombreFicheroCatalogo: null == nombreFicheroCatalogo
+          ? _value.nombreFicheroCatalogo
+          : nombreFicheroCatalogo // ignore: cast_nullable_to_non_nullable
+              as String,
+      descarga: null == descarga
+          ? _value.descarga
+          : descarga // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$CatalogoDTOImpl extends _CatalogoDTO {
-  const _$CatalogoDTOImpl({
-    @JsonKey(name: 'CATALOGO_ID') required this.catalogoId,
-    @JsonKey(name: 'NOMBRE') required this.nombre,
-    @JsonKey(name: 'IDIOMA_ID') required this.idiomaId,
-    @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID')
-    required this.tipoPrecioCatalogoId,
-    @JsonKey(name: 'TIPO_PRECIO_CATALOGO_NOMBRE')
-    required this.tipoPrecioCatalogoNombre,
-    @JsonKey(name: 'TIPO_CATALOGO_ID') required this.tipoCatalogoId,
-    @JsonKey(name: 'TAG_BUSQUEDA') required this.tagBusqueda,
-    @JsonKey(name: 'ORDEN') required this.orden,
-    @JsonKey(name: 'NOMBRE_FICHERO_PORTADA') required this.nombreFicheroPortada,
-    @JsonKey(name: 'NOMBRE_FICHERO_CATALOGO')
-    required this.nombreFicheroCatalogo,
-    @JsonKey(name: 'DESCARGA_SN') required this.descarga,
-  }) : super._();
+  const _$CatalogoDTOImpl(
+      {@JsonKey(name: 'CATALOGO_ID') required this.catalogoId,
+      @JsonKey(name: 'NOMBRE') required this.nombre,
+      @JsonKey(name: 'IDIOMA_ID') required this.idiomaId,
+      @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID')
+      required this.tipoPrecioCatalogoId,
+      @JsonKey(name: 'TIPO_PRECIO_CATALOGO_NOMBRE')
+      required this.tipoPrecioCatalogoNombre,
+      @JsonKey(name: 'TIPO_CATALOGO_ID') required this.tipoCatalogoId,
+      @JsonKey(name: 'TAG_BUSQUEDA') required this.tagBusqueda,
+      @JsonKey(name: 'ORDEN') required this.orden,
+      @JsonKey(name: 'NOMBRE_FICHERO_PORTADA')
+      required this.nombreFicheroPortada,
+      @JsonKey(name: 'NOMBRE_FICHERO_CATALOGO')
+      required this.nombreFicheroCatalogo,
+      @JsonKey(name: 'DESCARGA_SN') required this.descarga})
+      : super._();
 
   factory _$CatalogoDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$CatalogoDTOImplFromJson(json);
@@ -355,9 +323,7 @@ class _$CatalogoDTOImpl extends _CatalogoDTO {
             (identical(other.tipoPrecioCatalogoId, tipoPrecioCatalogoId) ||
                 other.tipoPrecioCatalogoId == tipoPrecioCatalogoId) &&
             (identical(
-                  other.tipoPrecioCatalogoNombre,
-                  tipoPrecioCatalogoNombre,
-                ) ||
+                    other.tipoPrecioCatalogoNombre, tipoPrecioCatalogoNombre) ||
                 other.tipoPrecioCatalogoNombre == tipoPrecioCatalogoNombre) &&
             (identical(other.tipoCatalogoId, tipoCatalogoId) ||
                 other.tipoCatalogoId == tipoCatalogoId) &&
@@ -375,19 +341,18 @@ class _$CatalogoDTOImpl extends _CatalogoDTO {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    catalogoId,
-    nombre,
-    idiomaId,
-    tipoPrecioCatalogoId,
-    tipoPrecioCatalogoNombre,
-    tipoCatalogoId,
-    tagBusqueda,
-    orden,
-    nombreFicheroPortada,
-    nombreFicheroCatalogo,
-    descarga,
-  );
+      runtimeType,
+      catalogoId,
+      nombre,
+      idiomaId,
+      tipoPrecioCatalogoId,
+      tipoPrecioCatalogoNombre,
+      tipoCatalogoId,
+      tagBusqueda,
+      orden,
+      nombreFicheroPortada,
+      nombreFicheroCatalogo,
+      descarga);
 
   /// Create a copy of CatalogoDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -399,28 +364,30 @@ class _$CatalogoDTOImpl extends _CatalogoDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CatalogoDTOImplToJson(this);
+    return _$$CatalogoDTOImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _CatalogoDTO extends CatalogoDTO {
-  const factory _CatalogoDTO({
-    @JsonKey(name: 'CATALOGO_ID') required final int catalogoId,
-    @JsonKey(name: 'NOMBRE') required final String nombre,
-    @JsonKey(name: 'IDIOMA_ID') required final String idiomaId,
-    @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID')
-    required final String tipoPrecioCatalogoId,
-    @JsonKey(name: 'TIPO_PRECIO_CATALOGO_NOMBRE')
-    required final String tipoPrecioCatalogoNombre,
-    @JsonKey(name: 'TIPO_CATALOGO_ID') required final String tipoCatalogoId,
-    @JsonKey(name: 'TAG_BUSQUEDA') required final String tagBusqueda,
-    @JsonKey(name: 'ORDEN') required final int orden,
-    @JsonKey(name: 'NOMBRE_FICHERO_PORTADA')
-    required final String nombreFicheroPortada,
-    @JsonKey(name: 'NOMBRE_FICHERO_CATALOGO')
-    required final String nombreFicheroCatalogo,
-    @JsonKey(name: 'DESCARGA_SN') required final String descarga,
-  }) = _$CatalogoDTOImpl;
+  const factory _CatalogoDTO(
+      {@JsonKey(name: 'CATALOGO_ID') required final int catalogoId,
+      @JsonKey(name: 'NOMBRE') required final String nombre,
+      @JsonKey(name: 'IDIOMA_ID') required final String idiomaId,
+      @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID')
+      required final String tipoPrecioCatalogoId,
+      @JsonKey(name: 'TIPO_PRECIO_CATALOGO_NOMBRE')
+      required final String tipoPrecioCatalogoNombre,
+      @JsonKey(name: 'TIPO_CATALOGO_ID') required final String tipoCatalogoId,
+      @JsonKey(name: 'TAG_BUSQUEDA') required final String tagBusqueda,
+      @JsonKey(name: 'ORDEN') required final int orden,
+      @JsonKey(name: 'NOMBRE_FICHERO_PORTADA')
+      required final String nombreFicheroPortada,
+      @JsonKey(name: 'NOMBRE_FICHERO_CATALOGO')
+      required final String nombreFicheroCatalogo,
+      @JsonKey(name: 'DESCARGA_SN')
+      required final String descarga}) = _$CatalogoDTOImpl;
   const _CatalogoDTO._() : super._();
 
   factory _CatalogoDTO.fromJson(Map<String, dynamic> json) =

@@ -12,8 +12,7 @@ part of 'devolucion_estado.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$DevolucionEstado {
@@ -32,16 +31,11 @@ mixin _$DevolucionEstado {
 /// @nodoc
 abstract class $DevolucionEstadoCopyWith<$Res> {
   factory $DevolucionEstadoCopyWith(
-    DevolucionEstado value,
-    $Res Function(DevolucionEstado) then,
-  ) = _$DevolucionEstadoCopyWithImpl<$Res, DevolucionEstado>;
+          DevolucionEstado value, $Res Function(DevolucionEstado) then) =
+      _$DevolucionEstadoCopyWithImpl<$Res, DevolucionEstado>;
   @useResult
-  $Res call({
-    String id,
-    String descripcion,
-    DateTime lastUpdated,
-    bool deleted,
-  });
+  $Res call(
+      {String id, String descripcion, DateTime lastUpdated, bool deleted});
 }
 
 /// @nodoc
@@ -64,59 +58,46 @@ class _$DevolucionEstadoCopyWithImpl<$Res, $Val extends DevolucionEstado>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            id:
-                null == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as String,
-            descripcion:
-                null == descripcion
-                    ? _value.descripcion
-                    : descripcion // ignore: cast_nullable_to_non_nullable
-                        as String,
-            lastUpdated:
-                null == lastUpdated
-                    ? _value.lastUpdated
-                    : lastUpdated // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as bool,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcion: null == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$DevolucionEstadoImplCopyWith<$Res>
     implements $DevolucionEstadoCopyWith<$Res> {
-  factory _$$DevolucionEstadoImplCopyWith(
-    _$DevolucionEstadoImpl value,
-    $Res Function(_$DevolucionEstadoImpl) then,
-  ) = __$$DevolucionEstadoImplCopyWithImpl<$Res>;
+  factory _$$DevolucionEstadoImplCopyWith(_$DevolucionEstadoImpl value,
+          $Res Function(_$DevolucionEstadoImpl) then) =
+      __$$DevolucionEstadoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String descripcion,
-    DateTime lastUpdated,
-    bool deleted,
-  });
+  $Res call(
+      {String id, String descripcion, DateTime lastUpdated, bool deleted});
 }
 
 /// @nodoc
 class __$$DevolucionEstadoImplCopyWithImpl<$Res>
     extends _$DevolucionEstadoCopyWithImpl<$Res, _$DevolucionEstadoImpl>
     implements _$$DevolucionEstadoImplCopyWith<$Res> {
-  __$$DevolucionEstadoImplCopyWithImpl(
-    _$DevolucionEstadoImpl _value,
-    $Res Function(_$DevolucionEstadoImpl) _then,
-  ) : super(_value, _then);
+  __$$DevolucionEstadoImplCopyWithImpl(_$DevolucionEstadoImpl _value,
+      $Res Function(_$DevolucionEstadoImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of DevolucionEstado
   /// with the given fields replaced by the non-null parameter values.
@@ -128,42 +109,36 @@ class __$$DevolucionEstadoImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$DevolucionEstadoImpl(
-        id:
-            null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as String,
-        descripcion:
-            null == descripcion
-                ? _value.descripcion
-                : descripcion // ignore: cast_nullable_to_non_nullable
-                    as String,
-        lastUpdated:
-            null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as bool,
-      ),
-    );
+    return _then(_$DevolucionEstadoImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcion: null == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$DevolucionEstadoImpl extends _DevolucionEstado {
-  const _$DevolucionEstadoImpl({
-    required this.id,
-    required this.descripcion,
-    required this.lastUpdated,
-    required this.deleted,
-  }) : super._();
+  const _$DevolucionEstadoImpl(
+      {required this.id,
+      required this.descripcion,
+      required this.lastUpdated,
+      required this.deleted})
+      : super._();
 
   @override
   final String id;
@@ -203,18 +178,15 @@ class _$DevolucionEstadoImpl extends _DevolucionEstado {
   @pragma('vm:prefer-inline')
   _$$DevolucionEstadoImplCopyWith<_$DevolucionEstadoImpl> get copyWith =>
       __$$DevolucionEstadoImplCopyWithImpl<_$DevolucionEstadoImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 }
 
 abstract class _DevolucionEstado extends DevolucionEstado {
-  const factory _DevolucionEstado({
-    required final String id,
-    required final String descripcion,
-    required final DateTime lastUpdated,
-    required final bool deleted,
-  }) = _$DevolucionEstadoImpl;
+  const factory _DevolucionEstado(
+      {required final String id,
+      required final String descripcion,
+      required final DateTime lastUpdated,
+      required final bool deleted}) = _$DevolucionEstadoImpl;
   const _DevolucionEstado._() : super._();
 
   @override

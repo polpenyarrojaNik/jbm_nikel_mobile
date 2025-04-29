@@ -12,12 +12,10 @@ part of 'estadisticas_venta_cliente_usuario_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 EstadisticasVentaClienteUsuarioDTO _$EstadisticasVentaClienteUsuarioDTOFromJson(
-  Map<String, dynamic> json,
-) {
+    Map<String, dynamic> json) {
   return _EstadisticasVentaClienteUsuarioDTO.fromJson(json);
 }
 
@@ -49,40 +47,33 @@ mixin _$EstadisticasVentaClienteUsuarioDTO {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   $EstadisticasVentaClienteUsuarioDTOCopyWith<
-    EstadisticasVentaClienteUsuarioDTO
-  >
-  get copyWith => throw _privateConstructorUsedError;
+          EstadisticasVentaClienteUsuarioDTO>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $EstadisticasVentaClienteUsuarioDTOCopyWith<$Res> {
   factory $EstadisticasVentaClienteUsuarioDTOCopyWith(
-    EstadisticasVentaClienteUsuarioDTO value,
-    $Res Function(EstadisticasVentaClienteUsuarioDTO) then,
-  ) =
-      _$EstadisticasVentaClienteUsuarioDTOCopyWithImpl<
-        $Res,
-        EstadisticasVentaClienteUsuarioDTO
-      >;
+          EstadisticasVentaClienteUsuarioDTO value,
+          $Res Function(EstadisticasVentaClienteUsuarioDTO) then) =
+      _$EstadisticasVentaClienteUsuarioDTOCopyWithImpl<$Res,
+          EstadisticasVentaClienteUsuarioDTO>;
   @useResult
-  $Res call({
-    @JsonKey(name: 'ANYO') double anyo,
-    @JsonKey(name: 'MES') double mes,
-    @JsonKey(name: 'CLIENTE_ID') String clienteId,
-    @JsonKey(name: 'ARTICULO_ID') String articuloId,
-    @JsonKey(name: 'UNIDADES') double? unidades,
-    @JsonKey(name: 'IMPORTE') double? importe,
-    @JsonKey(name: 'COSTE') double? coste,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'ANYO') double anyo,
+      @JsonKey(name: 'MES') double mes,
+      @JsonKey(name: 'CLIENTE_ID') String clienteId,
+      @JsonKey(name: 'ARTICULO_ID') String articuloId,
+      @JsonKey(name: 'UNIDADES') double? unidades,
+      @JsonKey(name: 'IMPORTE') double? importe,
+      @JsonKey(name: 'COSTE') double? coste,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
-class _$EstadisticasVentaClienteUsuarioDTOCopyWithImpl<
-  $Res,
-  $Val extends EstadisticasVentaClienteUsuarioDTO
->
+class _$EstadisticasVentaClienteUsuarioDTOCopyWithImpl<$Res,
+        $Val extends EstadisticasVentaClienteUsuarioDTO>
     implements $EstadisticasVentaClienteUsuarioDTOCopyWith<$Res> {
   _$EstadisticasVentaClienteUsuarioDTOCopyWithImpl(this._value, this._then);
 
@@ -106,56 +97,44 @@ class _$EstadisticasVentaClienteUsuarioDTOCopyWithImpl<
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            anyo:
-                null == anyo
-                    ? _value.anyo
-                    : anyo // ignore: cast_nullable_to_non_nullable
-                        as double,
-            mes:
-                null == mes
-                    ? _value.mes
-                    : mes // ignore: cast_nullable_to_non_nullable
-                        as double,
-            clienteId:
-                null == clienteId
-                    ? _value.clienteId
-                    : clienteId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            articuloId:
-                null == articuloId
-                    ? _value.articuloId
-                    : articuloId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            unidades:
-                freezed == unidades
-                    ? _value.unidades
-                    : unidades // ignore: cast_nullable_to_non_nullable
-                        as double?,
-            importe:
-                freezed == importe
-                    ? _value.importe
-                    : importe // ignore: cast_nullable_to_non_nullable
-                        as double?,
-            coste:
-                freezed == coste
-                    ? _value.coste
-                    : coste // ignore: cast_nullable_to_non_nullable
-                        as double?,
-            lastUpdated:
-                null == lastUpdated
-                    ? _value.lastUpdated
-                    : lastUpdated // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      anyo: null == anyo
+          ? _value.anyo
+          : anyo // ignore: cast_nullable_to_non_nullable
+              as double,
+      mes: null == mes
+          ? _value.mes
+          : mes // ignore: cast_nullable_to_non_nullable
+              as double,
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      unidades: freezed == unidades
+          ? _value.unidades
+          : unidades // ignore: cast_nullable_to_non_nullable
+              as double?,
+      importe: freezed == importe
+          ? _value.importe
+          : importe // ignore: cast_nullable_to_non_nullable
+              as double?,
+      coste: freezed == coste
+          ? _value.coste
+          : coste // ignore: cast_nullable_to_non_nullable
+              as double?,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
@@ -163,36 +142,32 @@ class _$EstadisticasVentaClienteUsuarioDTOCopyWithImpl<
 abstract class _$$EstadisticasVentaClienteUsuarioDTOImplCopyWith<$Res>
     implements $EstadisticasVentaClienteUsuarioDTOCopyWith<$Res> {
   factory _$$EstadisticasVentaClienteUsuarioDTOImplCopyWith(
-    _$EstadisticasVentaClienteUsuarioDTOImpl value,
-    $Res Function(_$EstadisticasVentaClienteUsuarioDTOImpl) then,
-  ) = __$$EstadisticasVentaClienteUsuarioDTOImplCopyWithImpl<$Res>;
+          _$EstadisticasVentaClienteUsuarioDTOImpl value,
+          $Res Function(_$EstadisticasVentaClienteUsuarioDTOImpl) then) =
+      __$$EstadisticasVentaClienteUsuarioDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'ANYO') double anyo,
-    @JsonKey(name: 'MES') double mes,
-    @JsonKey(name: 'CLIENTE_ID') String clienteId,
-    @JsonKey(name: 'ARTICULO_ID') String articuloId,
-    @JsonKey(name: 'UNIDADES') double? unidades,
-    @JsonKey(name: 'IMPORTE') double? importe,
-    @JsonKey(name: 'COSTE') double? coste,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'ANYO') double anyo,
+      @JsonKey(name: 'MES') double mes,
+      @JsonKey(name: 'CLIENTE_ID') String clienteId,
+      @JsonKey(name: 'ARTICULO_ID') String articuloId,
+      @JsonKey(name: 'UNIDADES') double? unidades,
+      @JsonKey(name: 'IMPORTE') double? importe,
+      @JsonKey(name: 'COSTE') double? coste,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
 class __$$EstadisticasVentaClienteUsuarioDTOImplCopyWithImpl<$Res>
-    extends
-        _$EstadisticasVentaClienteUsuarioDTOCopyWithImpl<
-          $Res,
-          _$EstadisticasVentaClienteUsuarioDTOImpl
-        >
+    extends _$EstadisticasVentaClienteUsuarioDTOCopyWithImpl<$Res,
+        _$EstadisticasVentaClienteUsuarioDTOImpl>
     implements _$$EstadisticasVentaClienteUsuarioDTOImplCopyWith<$Res> {
   __$$EstadisticasVentaClienteUsuarioDTOImplCopyWithImpl(
-    _$EstadisticasVentaClienteUsuarioDTOImpl _value,
-    $Res Function(_$EstadisticasVentaClienteUsuarioDTOImpl) _then,
-  ) : super(_value, _then);
+      _$EstadisticasVentaClienteUsuarioDTOImpl _value,
+      $Res Function(_$EstadisticasVentaClienteUsuarioDTOImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EstadisticasVentaClienteUsuarioDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -209,55 +184,44 @@ class __$$EstadisticasVentaClienteUsuarioDTOImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$EstadisticasVentaClienteUsuarioDTOImpl(
-        anyo:
-            null == anyo
-                ? _value.anyo
-                : anyo // ignore: cast_nullable_to_non_nullable
-                    as double,
-        mes:
-            null == mes
-                ? _value.mes
-                : mes // ignore: cast_nullable_to_non_nullable
-                    as double,
-        clienteId:
-            null == clienteId
-                ? _value.clienteId
-                : clienteId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        articuloId:
-            null == articuloId
-                ? _value.articuloId
-                : articuloId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        unidades:
-            freezed == unidades
-                ? _value.unidades
-                : unidades // ignore: cast_nullable_to_non_nullable
-                    as double?,
-        importe:
-            freezed == importe
-                ? _value.importe
-                : importe // ignore: cast_nullable_to_non_nullable
-                    as double?,
-        coste:
-            freezed == coste
-                ? _value.coste
-                : coste // ignore: cast_nullable_to_non_nullable
-                    as double?,
-        lastUpdated:
-            null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+    return _then(_$EstadisticasVentaClienteUsuarioDTOImpl(
+      anyo: null == anyo
+          ? _value.anyo
+          : anyo // ignore: cast_nullable_to_non_nullable
+              as double,
+      mes: null == mes
+          ? _value.mes
+          : mes // ignore: cast_nullable_to_non_nullable
+              as double,
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      unidades: freezed == unidades
+          ? _value.unidades
+          : unidades // ignore: cast_nullable_to_non_nullable
+              as double?,
+      importe: freezed == importe
+          ? _value.importe
+          : importe // ignore: cast_nullable_to_non_nullable
+              as double?,
+      coste: freezed == coste
+          ? _value.coste
+          : coste // ignore: cast_nullable_to_non_nullable
+              as double?,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -265,21 +229,21 @@ class __$$EstadisticasVentaClienteUsuarioDTOImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$EstadisticasVentaClienteUsuarioDTOImpl
     extends _EstadisticasVentaClienteUsuarioDTO {
-  const _$EstadisticasVentaClienteUsuarioDTOImpl({
-    @JsonKey(name: 'ANYO') required this.anyo,
-    @JsonKey(name: 'MES') required this.mes,
-    @JsonKey(name: 'CLIENTE_ID') required this.clienteId,
-    @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
-    @JsonKey(name: 'UNIDADES') this.unidades,
-    @JsonKey(name: 'IMPORTE') this.importe,
-    @JsonKey(name: 'COSTE') this.coste,
-    @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-    @JsonKey(name: 'DELETED') this.deleted = 'N',
-  }) : super._();
+  const _$EstadisticasVentaClienteUsuarioDTOImpl(
+      {@JsonKey(name: 'ANYO') required this.anyo,
+      @JsonKey(name: 'MES') required this.mes,
+      @JsonKey(name: 'CLIENTE_ID') required this.clienteId,
+      @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
+      @JsonKey(name: 'UNIDADES') this.unidades,
+      @JsonKey(name: 'IMPORTE') this.importe,
+      @JsonKey(name: 'COSTE') this.coste,
+      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+      @JsonKey(name: 'DELETED') this.deleted = 'N'})
+      : super._();
 
   factory _$EstadisticasVentaClienteUsuarioDTOImpl.fromJson(
-    Map<String, dynamic> json,
-  ) => _$$EstadisticasVentaClienteUsuarioDTOImplFromJson(json);
+          Map<String, dynamic> json) =>
+      _$$EstadisticasVentaClienteUsuarioDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'ANYO')
@@ -336,18 +300,8 @@ class _$EstadisticasVentaClienteUsuarioDTOImpl
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    anyo,
-    mes,
-    clienteId,
-    articuloId,
-    unidades,
-    importe,
-    coste,
-    lastUpdated,
-    deleted,
-  );
+  int get hashCode => Object.hash(runtimeType, anyo, mes, clienteId, articuloId,
+      unidades, importe, coste, lastUpdated, deleted);
 
   /// Create a copy of EstadisticasVentaClienteUsuarioDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -355,36 +309,36 @@ class _$EstadisticasVentaClienteUsuarioDTOImpl
   @override
   @pragma('vm:prefer-inline')
   _$$EstadisticasVentaClienteUsuarioDTOImplCopyWith<
-    _$EstadisticasVentaClienteUsuarioDTOImpl
-  >
-  get copyWith => __$$EstadisticasVentaClienteUsuarioDTOImplCopyWithImpl<
-    _$EstadisticasVentaClienteUsuarioDTOImpl
-  >(this, _$identity);
+          _$EstadisticasVentaClienteUsuarioDTOImpl>
+      get copyWith => __$$EstadisticasVentaClienteUsuarioDTOImplCopyWithImpl<
+          _$EstadisticasVentaClienteUsuarioDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$EstadisticasVentaClienteUsuarioDTOImplToJson(this);
+    return _$$EstadisticasVentaClienteUsuarioDTOImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _EstadisticasVentaClienteUsuarioDTO
     extends EstadisticasVentaClienteUsuarioDTO {
-  const factory _EstadisticasVentaClienteUsuarioDTO({
-    @JsonKey(name: 'ANYO') required final double anyo,
-    @JsonKey(name: 'MES') required final double mes,
-    @JsonKey(name: 'CLIENTE_ID') required final String clienteId,
-    @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
-    @JsonKey(name: 'UNIDADES') final double? unidades,
-    @JsonKey(name: 'IMPORTE') final double? importe,
-    @JsonKey(name: 'COSTE') final double? coste,
-    @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') final String deleted,
-  }) = _$EstadisticasVentaClienteUsuarioDTOImpl;
+  const factory _EstadisticasVentaClienteUsuarioDTO(
+          {@JsonKey(name: 'ANYO') required final double anyo,
+          @JsonKey(name: 'MES') required final double mes,
+          @JsonKey(name: 'CLIENTE_ID') required final String clienteId,
+          @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
+          @JsonKey(name: 'UNIDADES') final double? unidades,
+          @JsonKey(name: 'IMPORTE') final double? importe,
+          @JsonKey(name: 'COSTE') final double? coste,
+          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+          @JsonKey(name: 'DELETED') final String deleted}) =
+      _$EstadisticasVentaClienteUsuarioDTOImpl;
   const _EstadisticasVentaClienteUsuarioDTO._() : super._();
 
   factory _EstadisticasVentaClienteUsuarioDTO.fromJson(
-    Map<String, dynamic> json,
-  ) = _$EstadisticasVentaClienteUsuarioDTOImpl.fromJson;
+          Map<String, dynamic> json) =
+      _$EstadisticasVentaClienteUsuarioDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'ANYO')
@@ -419,7 +373,6 @@ abstract class _EstadisticasVentaClienteUsuarioDTO
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EstadisticasVentaClienteUsuarioDTOImplCopyWith<
-    _$EstadisticasVentaClienteUsuarioDTOImpl
-  >
-  get copyWith => throw _privateConstructorUsedError;
+          _$EstadisticasVentaClienteUsuarioDTOImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

@@ -34,7 +34,9 @@ abstract class _$ArticuloIndexScreenController
     extends BuildlessAutoDisposeAsyncNotifier<int> {
   late final bool isSearchArticuloForForm;
 
-  FutureOr<int> build(bool isSearchArticuloForForm);
+  FutureOr<int> build(
+    bool isSearchArticuloForForm,
+  );
 }
 
 /// See also [ArticuloIndexScreenController].
@@ -48,15 +50,21 @@ class ArticuloIndexScreenControllerFamily extends Family<AsyncValue<int>> {
   const ArticuloIndexScreenControllerFamily();
 
   /// See also [ArticuloIndexScreenController].
-  ArticuloIndexScreenControllerProvider call(bool isSearchArticuloForForm) {
-    return ArticuloIndexScreenControllerProvider(isSearchArticuloForForm);
+  ArticuloIndexScreenControllerProvider call(
+    bool isSearchArticuloForForm,
+  ) {
+    return ArticuloIndexScreenControllerProvider(
+      isSearchArticuloForForm,
+    );
   }
 
   @override
   ArticuloIndexScreenControllerProvider getProviderOverride(
     covariant ArticuloIndexScreenControllerProvider provider,
   ) {
-    return call(provider.isSearchArticuloForForm);
+    return call(
+      provider.isSearchArticuloForForm,
+    );
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -76,28 +84,25 @@ class ArticuloIndexScreenControllerFamily extends Family<AsyncValue<int>> {
 
 /// See also [ArticuloIndexScreenController].
 class ArticuloIndexScreenControllerProvider
-    extends
-        AutoDisposeAsyncNotifierProviderImpl<
-          ArticuloIndexScreenController,
-          int
-        > {
+    extends AutoDisposeAsyncNotifierProviderImpl<ArticuloIndexScreenController,
+        int> {
   /// See also [ArticuloIndexScreenController].
-  ArticuloIndexScreenControllerProvider(bool isSearchArticuloForForm)
-    : this._internal(
-        () =>
-            ArticuloIndexScreenController()
-              ..isSearchArticuloForForm = isSearchArticuloForForm,
-        from: articuloIndexScreenControllerProvider,
-        name: r'articuloIndexScreenControllerProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$articuloIndexScreenControllerHash,
-        dependencies: ArticuloIndexScreenControllerFamily._dependencies,
-        allTransitiveDependencies:
-            ArticuloIndexScreenControllerFamily._allTransitiveDependencies,
-        isSearchArticuloForForm: isSearchArticuloForForm,
-      );
+  ArticuloIndexScreenControllerProvider(
+    bool isSearchArticuloForForm,
+  ) : this._internal(
+          () => ArticuloIndexScreenController()
+            ..isSearchArticuloForForm = isSearchArticuloForForm,
+          from: articuloIndexScreenControllerProvider,
+          name: r'articuloIndexScreenControllerProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$articuloIndexScreenControllerHash,
+          dependencies: ArticuloIndexScreenControllerFamily._dependencies,
+          allTransitiveDependencies:
+              ArticuloIndexScreenControllerFamily._allTransitiveDependencies,
+          isSearchArticuloForForm: isSearchArticuloForForm,
+        );
 
   ArticuloIndexScreenControllerProvider._internal(
     super._createNotifier, {
@@ -115,7 +120,9 @@ class ArticuloIndexScreenControllerProvider
   FutureOr<int> runNotifierBuild(
     covariant ArticuloIndexScreenController notifier,
   ) {
-    return notifier.build(isSearchArticuloForForm);
+    return notifier.build(
+      isSearchArticuloForForm,
+    );
   }
 
   @override
@@ -136,7 +143,7 @@ class ArticuloIndexScreenControllerProvider
 
   @override
   AutoDisposeAsyncNotifierProviderElement<ArticuloIndexScreenController, int>
-  createElement() {
+      createElement() {
     return _ArticuloIndexScreenControllerProviderElement(this);
   }
 
@@ -164,12 +171,9 @@ mixin ArticuloIndexScreenControllerRef
 }
 
 class _ArticuloIndexScreenControllerProviderElement
-    extends
-        AutoDisposeAsyncNotifierProviderElement<
-          ArticuloIndexScreenController,
-          int
-        >
-    with ArticuloIndexScreenControllerRef {
+    extends AutoDisposeAsyncNotifierProviderElement<
+        ArticuloIndexScreenController,
+        int> with ArticuloIndexScreenControllerRef {
   _ArticuloIndexScreenControllerProviderElement(super.provider);
 
   @override
@@ -240,34 +244,30 @@ class ArticuloIndexScreenPaginatedControllerFamily
 
 /// See also [ArticuloIndexScreenPaginatedController].
 class ArticuloIndexScreenPaginatedControllerProvider
-    extends
-        AutoDisposeAsyncNotifierProviderImpl<
-          ArticuloIndexScreenPaginatedController,
-          List<Articulo>
-        > {
+    extends AutoDisposeAsyncNotifierProviderImpl<
+        ArticuloIndexScreenPaginatedController, List<Articulo>> {
   /// See also [ArticuloIndexScreenPaginatedController].
   ArticuloIndexScreenPaginatedControllerProvider({
     required int page,
     required bool isSearchArticuloForForm,
   }) : this._internal(
-         () =>
-             ArticuloIndexScreenPaginatedController()
-               ..page = page
-               ..isSearchArticuloForForm = isSearchArticuloForForm,
-         from: articuloIndexScreenPaginatedControllerProvider,
-         name: r'articuloIndexScreenPaginatedControllerProvider',
-         debugGetCreateSourceHash:
-             const bool.fromEnvironment('dart.vm.product')
-                 ? null
-                 : _$articuloIndexScreenPaginatedControllerHash,
-         dependencies:
-             ArticuloIndexScreenPaginatedControllerFamily._dependencies,
-         allTransitiveDependencies:
-             ArticuloIndexScreenPaginatedControllerFamily
-                 ._allTransitiveDependencies,
-         page: page,
-         isSearchArticuloForForm: isSearchArticuloForForm,
-       );
+          () => ArticuloIndexScreenPaginatedController()
+            ..page = page
+            ..isSearchArticuloForForm = isSearchArticuloForForm,
+          from: articuloIndexScreenPaginatedControllerProvider,
+          name: r'articuloIndexScreenPaginatedControllerProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$articuloIndexScreenPaginatedControllerHash,
+          dependencies:
+              ArticuloIndexScreenPaginatedControllerFamily._dependencies,
+          allTransitiveDependencies:
+              ArticuloIndexScreenPaginatedControllerFamily
+                  ._allTransitiveDependencies,
+          page: page,
+          isSearchArticuloForForm: isSearchArticuloForForm,
+        );
 
   ArticuloIndexScreenPaginatedControllerProvider._internal(
     super._createNotifier, {
@@ -295,15 +295,13 @@ class ArticuloIndexScreenPaginatedControllerProvider
 
   @override
   Override overrideWith(
-    ArticuloIndexScreenPaginatedController Function() create,
-  ) {
+      ArticuloIndexScreenPaginatedController Function() create) {
     return ProviderOverride(
       origin: this,
       override: ArticuloIndexScreenPaginatedControllerProvider._internal(
-        () =>
-            create()
-              ..page = page
-              ..isSearchArticuloForForm = isSearchArticuloForForm,
+        () => create()
+          ..page = page
+          ..isSearchArticuloForForm = isSearchArticuloForForm,
         from: from,
         name: null,
         dependencies: null,
@@ -317,10 +315,7 @@ class ArticuloIndexScreenPaginatedControllerProvider
 
   @override
   AutoDisposeAsyncNotifierProviderElement<
-    ArticuloIndexScreenPaginatedController,
-    List<Articulo>
-  >
-  createElement() {
+      ArticuloIndexScreenPaginatedController, List<Articulo>> createElement() {
     return _ArticuloIndexScreenPaginatedControllerProviderElement(this);
   }
 
@@ -353,12 +348,9 @@ mixin ArticuloIndexScreenPaginatedControllerRef
 }
 
 class _ArticuloIndexScreenPaginatedControllerProviderElement
-    extends
-        AutoDisposeAsyncNotifierProviderElement<
-          ArticuloIndexScreenPaginatedController,
-          List<Articulo>
-        >
-    with ArticuloIndexScreenPaginatedControllerRef {
+    extends AutoDisposeAsyncNotifierProviderElement<
+        ArticuloIndexScreenPaginatedController,
+        List<Articulo>> with ArticuloIndexScreenPaginatedControllerRef {
   _ArticuloIndexScreenPaginatedControllerProviderElement(super.provider);
 
   @override
@@ -369,6 +361,5 @@ class _ArticuloIndexScreenPaginatedControllerProviderElement
       (origin as ArticuloIndexScreenPaginatedControllerProvider)
           .isSearchArticuloForForm;
 }
-
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -12,8 +12,7 @@ part of 'articulo_recambio_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ArticuloRecambioDTO _$ArticuloRecambioDTOFromJson(Map<String, dynamic> json) {
   return _ArticuloRecambioDTO.fromJson(json);
@@ -47,18 +46,16 @@ mixin _$ArticuloRecambioDTO {
 /// @nodoc
 abstract class $ArticuloRecambioDTOCopyWith<$Res> {
   factory $ArticuloRecambioDTOCopyWith(
-    ArticuloRecambioDTO value,
-    $Res Function(ArticuloRecambioDTO) then,
-  ) = _$ArticuloRecambioDTOCopyWithImpl<$Res, ArticuloRecambioDTO>;
+          ArticuloRecambioDTO value, $Res Function(ArticuloRecambioDTO) then) =
+      _$ArticuloRecambioDTOCopyWithImpl<$Res, ArticuloRecambioDTO>;
   @useResult
-  $Res call({
-    @JsonKey(name: 'ARTICULO_ID') String articuloId,
-    @JsonKey(name: 'RECAMBIO_ID') String id,
-    @JsonKey(name: 'DESCRIPCION') String descripcion,
-    @JsonKey(name: 'CANTIDAD') int cantidad,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'ARTICULO_ID') String articuloId,
+      @JsonKey(name: 'RECAMBIO_ID') String id,
+      @JsonKey(name: 'DESCRIPCION') String descripcion,
+      @JsonKey(name: 'CANTIDAD') int cantidad,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
@@ -83,71 +80,59 @@ class _$ArticuloRecambioDTOCopyWithImpl<$Res, $Val extends ArticuloRecambioDTO>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            articuloId:
-                null == articuloId
-                    ? _value.articuloId
-                    : articuloId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            id:
-                null == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as String,
-            descripcion:
-                null == descripcion
-                    ? _value.descripcion
-                    : descripcion // ignore: cast_nullable_to_non_nullable
-                        as String,
-            cantidad:
-                null == cantidad
-                    ? _value.cantidad
-                    : cantidad // ignore: cast_nullable_to_non_nullable
-                        as int,
-            lastUpdated:
-                null == lastUpdated
-                    ? _value.lastUpdated
-                    : lastUpdated // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcion: null == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
+              as String,
+      cantidad: null == cantidad
+          ? _value.cantidad
+          : cantidad // ignore: cast_nullable_to_non_nullable
+              as int,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$ArticuloRecambioDTOImplCopyWith<$Res>
     implements $ArticuloRecambioDTOCopyWith<$Res> {
-  factory _$$ArticuloRecambioDTOImplCopyWith(
-    _$ArticuloRecambioDTOImpl value,
-    $Res Function(_$ArticuloRecambioDTOImpl) then,
-  ) = __$$ArticuloRecambioDTOImplCopyWithImpl<$Res>;
+  factory _$$ArticuloRecambioDTOImplCopyWith(_$ArticuloRecambioDTOImpl value,
+          $Res Function(_$ArticuloRecambioDTOImpl) then) =
+      __$$ArticuloRecambioDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'ARTICULO_ID') String articuloId,
-    @JsonKey(name: 'RECAMBIO_ID') String id,
-    @JsonKey(name: 'DESCRIPCION') String descripcion,
-    @JsonKey(name: 'CANTIDAD') int cantidad,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'ARTICULO_ID') String articuloId,
+      @JsonKey(name: 'RECAMBIO_ID') String id,
+      @JsonKey(name: 'DESCRIPCION') String descripcion,
+      @JsonKey(name: 'CANTIDAD') int cantidad,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
 class __$$ArticuloRecambioDTOImplCopyWithImpl<$Res>
     extends _$ArticuloRecambioDTOCopyWithImpl<$Res, _$ArticuloRecambioDTOImpl>
     implements _$$ArticuloRecambioDTOImplCopyWith<$Res> {
-  __$$ArticuloRecambioDTOImplCopyWithImpl(
-    _$ArticuloRecambioDTOImpl _value,
-    $Res Function(_$ArticuloRecambioDTOImpl) _then,
-  ) : super(_value, _then);
+  __$$ArticuloRecambioDTOImplCopyWithImpl(_$ArticuloRecambioDTOImpl _value,
+      $Res Function(_$ArticuloRecambioDTOImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of ArticuloRecambioDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -161,54 +146,46 @@ class __$$ArticuloRecambioDTOImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$ArticuloRecambioDTOImpl(
-        articuloId:
-            null == articuloId
-                ? _value.articuloId
-                : articuloId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        id:
-            null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as String,
-        descripcion:
-            null == descripcion
-                ? _value.descripcion
-                : descripcion // ignore: cast_nullable_to_non_nullable
-                    as String,
-        cantidad:
-            null == cantidad
-                ? _value.cantidad
-                : cantidad // ignore: cast_nullable_to_non_nullable
-                    as int,
-        lastUpdated:
-            null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+    return _then(_$ArticuloRecambioDTOImpl(
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcion: null == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
+              as String,
+      cantidad: null == cantidad
+          ? _value.cantidad
+          : cantidad // ignore: cast_nullable_to_non_nullable
+              as int,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ArticuloRecambioDTOImpl extends _ArticuloRecambioDTO {
-  const _$ArticuloRecambioDTOImpl({
-    @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
-    @JsonKey(name: 'RECAMBIO_ID') required this.id,
-    @JsonKey(name: 'DESCRIPCION') required this.descripcion,
-    @JsonKey(name: 'CANTIDAD') required this.cantidad,
-    @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-    @JsonKey(name: 'DELETED') this.deleted = 'N',
-  }) : super._();
+  const _$ArticuloRecambioDTOImpl(
+      {@JsonKey(name: 'ARTICULO_ID') required this.articuloId,
+      @JsonKey(name: 'RECAMBIO_ID') required this.id,
+      @JsonKey(name: 'DESCRIPCION') required this.descripcion,
+      @JsonKey(name: 'CANTIDAD') required this.cantidad,
+      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+      @JsonKey(name: 'DELETED') this.deleted = 'N'})
+      : super._();
 
   factory _$ArticuloRecambioDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ArticuloRecambioDTOImplFromJson(json);
@@ -257,14 +234,7 @@ class _$ArticuloRecambioDTOImpl extends _ArticuloRecambioDTO {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    articuloId,
-    id,
-    descripcion,
-    cantidad,
-    lastUpdated,
-    deleted,
-  );
+      runtimeType, articuloId, id, descripcion, cantidad, lastUpdated, deleted);
 
   /// Create a copy of ArticuloRecambioDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -273,25 +243,25 @@ class _$ArticuloRecambioDTOImpl extends _ArticuloRecambioDTO {
   @pragma('vm:prefer-inline')
   _$$ArticuloRecambioDTOImplCopyWith<_$ArticuloRecambioDTOImpl> get copyWith =>
       __$$ArticuloRecambioDTOImplCopyWithImpl<_$ArticuloRecambioDTOImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ArticuloRecambioDTOImplToJson(this);
+    return _$$ArticuloRecambioDTOImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _ArticuloRecambioDTO extends ArticuloRecambioDTO {
-  const factory _ArticuloRecambioDTO({
-    @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
-    @JsonKey(name: 'RECAMBIO_ID') required final String id,
-    @JsonKey(name: 'DESCRIPCION') required final String descripcion,
-    @JsonKey(name: 'CANTIDAD') required final int cantidad,
-    @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') final String deleted,
-  }) = _$ArticuloRecambioDTOImpl;
+  const factory _ArticuloRecambioDTO(
+          {@JsonKey(name: 'ARTICULO_ID') required final String articuloId,
+          @JsonKey(name: 'RECAMBIO_ID') required final String id,
+          @JsonKey(name: 'DESCRIPCION') required final String descripcion,
+          @JsonKey(name: 'CANTIDAD') required final int cantidad,
+          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+          @JsonKey(name: 'DELETED') final String deleted}) =
+      _$ArticuloRecambioDTOImpl;
   const _ArticuloRecambioDTO._() : super._();
 
   factory _ArticuloRecambioDTO.fromJson(Map<String, dynamic> json) =

@@ -12,15 +12,12 @@ String _$phoneTextFormBuilderControllerHash() =>
 /// See also [PhoneTextFormBuilderController].
 @ProviderFor(PhoneTextFormBuilderController)
 final phoneTextFormBuilderControllerProvider = AutoDisposeNotifierProvider<
-  PhoneTextFormBuilderController,
-  String?
->.internal(
+    PhoneTextFormBuilderController, String?>.internal(
   PhoneTextFormBuilderController.new,
   name: r'phoneTextFormBuilderControllerProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$phoneTextFormBuilderControllerHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$phoneTextFormBuilderControllerHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
@@ -47,10 +44,10 @@ final _verifyExistingPhoneProvider = Provider.autoDispose((ref) {
   );
 }, dependencies: [phoneTextFormBuilderControllerProvider]);
 
-typedef VerifyExistingPhoneSignature =
-    Future<ClienteTelefono?> Function(String value);
-typedef VerifyExistingPhoneStateSetter =
-    void Function(VerifyExistingPhoneMutation newState);
+typedef VerifyExistingPhoneSignature = Future<ClienteTelefono?> Function(
+    String value);
+typedef VerifyExistingPhoneStateSetter = void Function(
+    VerifyExistingPhoneMutation newState);
 
 sealed class VerifyExistingPhoneMutation
     with AsyncMutation, MutationResult<ClienteTelefono?> {
@@ -73,9 +70,8 @@ sealed class VerifyExistingPhoneMutation
       final res = await _fn(value);
       _updateState(VerifyExistingPhoneMutationSuccess.from(this, res));
     } catch (e, s) {
-      _updateState(
-        VerifyExistingPhoneMutationFailure.from(this, error: e, stackTrace: s),
-      );
+      _updateState(VerifyExistingPhoneMutationFailure.from(this,
+          error: e, stackTrace: s));
     }
   }
 }
@@ -91,14 +87,14 @@ final class VerifyExistingPhoneMutationIdle extends VerifyExistingPhoneMutation
   }) : super._();
 
   factory VerifyExistingPhoneMutationIdle.from(
-    VerifyExistingPhoneMutation other,
-  ) => VerifyExistingPhoneMutationIdle._(
-    other._updateState,
-    other._fn,
-    error: other.error,
-    stackTrace: other.stackTrace,
-    result: other.result,
-  );
+          VerifyExistingPhoneMutation other) =>
+      VerifyExistingPhoneMutationIdle._(
+        other._updateState,
+        other._fn,
+        error: other.error,
+        stackTrace: other.stackTrace,
+        result: other.result,
+      );
 
   @override
   final Object? error;
@@ -112,8 +108,7 @@ final class VerifyExistingPhoneMutationIdle extends VerifyExistingPhoneMutation
 }
 
 final class VerifyExistingPhoneMutationLoading
-    extends VerifyExistingPhoneMutation
-    with MutationLoading {
+    extends VerifyExistingPhoneMutation with MutationLoading {
   VerifyExistingPhoneMutationLoading._(
     super._updateState,
     super._fn, {
@@ -123,14 +118,14 @@ final class VerifyExistingPhoneMutationLoading
   }) : super._();
 
   factory VerifyExistingPhoneMutationLoading.from(
-    VerifyExistingPhoneMutation other,
-  ) => VerifyExistingPhoneMutationLoading._(
-    other._updateState,
-    other._fn,
-    error: other.error,
-    stackTrace: other.stackTrace,
-    result: other.result,
-  );
+          VerifyExistingPhoneMutation other) =>
+      VerifyExistingPhoneMutationLoading._(
+        other._updateState,
+        other._fn,
+        error: other.error,
+        stackTrace: other.stackTrace,
+        result: other.result,
+      );
 
   @override
   final Object? error;
@@ -155,15 +150,14 @@ final class VerifyExistingPhoneMutationSuccess
   }) : super._();
 
   factory VerifyExistingPhoneMutationSuccess.from(
-    VerifyExistingPhoneMutation other,
-    ClienteTelefono? result,
-  ) => VerifyExistingPhoneMutationSuccess._(
-    other._updateState,
-    other._fn,
-    error: other.error,
-    stackTrace: other.stackTrace,
-    result: result,
-  );
+          VerifyExistingPhoneMutation other, ClienteTelefono? result) =>
+      VerifyExistingPhoneMutationSuccess._(
+        other._updateState,
+        other._fn,
+        error: other.error,
+        stackTrace: other.stackTrace,
+        result: result,
+      );
 
   @override
   final Object? error;
@@ -176,8 +170,7 @@ final class VerifyExistingPhoneMutationSuccess
 }
 
 final class VerifyExistingPhoneMutationFailure
-    extends VerifyExistingPhoneMutation
-    with MutationFailure {
+    extends VerifyExistingPhoneMutation with MutationFailure {
   VerifyExistingPhoneMutationFailure._(
     super._updateState,
     super._fn, {
@@ -190,13 +183,14 @@ final class VerifyExistingPhoneMutationFailure
     VerifyExistingPhoneMutation other, {
     required Object error,
     required StackTrace stackTrace,
-  }) => VerifyExistingPhoneMutationFailure._(
-    other._updateState,
-    other._fn,
-    error: error,
-    stackTrace: stackTrace,
-    result: other.result,
-  );
+  }) =>
+      VerifyExistingPhoneMutationFailure._(
+        other._updateState,
+        other._fn,
+        error: error,
+        stackTrace: stackTrace,
+        result: other.result,
+      );
 
   @override
   final Object error;

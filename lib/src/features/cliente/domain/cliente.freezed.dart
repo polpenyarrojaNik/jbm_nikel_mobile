@@ -12,8 +12,7 @@ part of 'cliente.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$Cliente {
@@ -100,75 +99,74 @@ abstract class $ClienteCopyWith<$Res> {
   factory $ClienteCopyWith(Cliente value, $Res Function(Cliente) then) =
       _$ClienteCopyWithImpl<$Res, Cliente>;
   @useResult
-  $Res call({
-    String id,
-    String nombreCliente,
-    String nombreFiscal,
-    String? nif,
-    String? direccionFiscal1,
-    String? direccionFiscal2,
-    String? codigoPostalFiscal,
-    String? poblacionFiscal,
-    String? provinciaFiscal,
-    Pais? paisFiscal,
-    double latitudFiscal,
-    double longitudFiscal,
-    String? direccionPredeterminada1,
-    String? direccionPredeterminada2,
-    String? codigoPostalPredeterminada,
-    String? poblacionPredeterminada,
-    String? provinciaPredeterminada,
-    Pais? paisPredeterminada,
-    double? latitudPredeterminada,
-    double? longitudPredeterminada,
-    String empresaId,
-    double iva,
-    Money ventasAnyoActual,
-    Money ventasAnyoAnterior,
-    Money ventasHaceDosAnyos,
-    double margenAnyoActual,
-    double margenAnyoAnterior,
-    double margenHaceDosAnyos,
-    double porcentajeAbonos,
-    double porcentajeGarantias,
-    String? centralCompras,
-    String? urlWeb,
-    Divisa? divisa,
-    String? tarifaId,
-    String? tarifaDescripcion,
-    String? descuentoGeneralId,
-    String? descripcionDescuentoGeneral,
-    String tipoCalculoPrecio,
-    PlazoDeCobro? plazoDeCobro,
-    MetodoDeCobro? metodoDeCobro,
-    double descuentoProntoPago,
-    Money riesgoConcedidoInterno,
-    DateTime? riesgoConcedidoInternoDate,
-    Money riesgoConcedidoCoafe,
-    DateTime? riesgoConcedidoCoafeFecha,
-    Money riesgoActual,
-    Money? riesgoConcedido,
-    Money? riesgoPendienteCobroVencido,
-    Money? riesgoPendienteCobroNoVencido,
-    Money? riesgoPendienteServir,
-    Money? riesgoPendienteFacturar,
-    Money riesgoExcedido,
-    String? obvservacionesInternas,
-    bool? clientePotencial,
-    ClienteEstadoPotencial? clienteEstadoPotencial,
-    ClienteTipoPotencial? clienteTipoPotencial,
-    String? representante1Id,
-    String? representante1Nombre,
-    String? representante2Id,
-    String? representante2Nombre,
-    String? telefonoMovil,
-    String? telefonoFijo,
-    String? email,
-    Sector? sector,
-    Subsector? subsector,
-    DateTime? lastUpdated,
-    bool deleted,
-  });
+  $Res call(
+      {String id,
+      String nombreCliente,
+      String nombreFiscal,
+      String? nif,
+      String? direccionFiscal1,
+      String? direccionFiscal2,
+      String? codigoPostalFiscal,
+      String? poblacionFiscal,
+      String? provinciaFiscal,
+      Pais? paisFiscal,
+      double latitudFiscal,
+      double longitudFiscal,
+      String? direccionPredeterminada1,
+      String? direccionPredeterminada2,
+      String? codigoPostalPredeterminada,
+      String? poblacionPredeterminada,
+      String? provinciaPredeterminada,
+      Pais? paisPredeterminada,
+      double? latitudPredeterminada,
+      double? longitudPredeterminada,
+      String empresaId,
+      double iva,
+      Money ventasAnyoActual,
+      Money ventasAnyoAnterior,
+      Money ventasHaceDosAnyos,
+      double margenAnyoActual,
+      double margenAnyoAnterior,
+      double margenHaceDosAnyos,
+      double porcentajeAbonos,
+      double porcentajeGarantias,
+      String? centralCompras,
+      String? urlWeb,
+      Divisa? divisa,
+      String? tarifaId,
+      String? tarifaDescripcion,
+      String? descuentoGeneralId,
+      String? descripcionDescuentoGeneral,
+      String tipoCalculoPrecio,
+      PlazoDeCobro? plazoDeCobro,
+      MetodoDeCobro? metodoDeCobro,
+      double descuentoProntoPago,
+      Money riesgoConcedidoInterno,
+      DateTime? riesgoConcedidoInternoDate,
+      Money riesgoConcedidoCoafe,
+      DateTime? riesgoConcedidoCoafeFecha,
+      Money riesgoActual,
+      Money? riesgoConcedido,
+      Money? riesgoPendienteCobroVencido,
+      Money? riesgoPendienteCobroNoVencido,
+      Money? riesgoPendienteServir,
+      Money? riesgoPendienteFacturar,
+      Money riesgoExcedido,
+      String? obvservacionesInternas,
+      bool? clientePotencial,
+      ClienteEstadoPotencial? clienteEstadoPotencial,
+      ClienteTipoPotencial? clienteTipoPotencial,
+      String? representante1Id,
+      String? representante1Nombre,
+      String? representante2Id,
+      String? representante2Nombre,
+      String? telefonoMovil,
+      String? telefonoFijo,
+      String? email,
+      Sector? sector,
+      Subsector? subsector,
+      DateTime? lastUpdated,
+      bool deleted});
 
   $PaisCopyWith<$Res>? get paisFiscal;
   $PaisCopyWith<$Res>? get paisPredeterminada;
@@ -264,346 +262,276 @@ class _$ClienteCopyWithImpl<$Res, $Val extends Cliente>
     Object? lastUpdated = freezed,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            id:
-                null == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as String,
-            nombreCliente:
-                null == nombreCliente
-                    ? _value.nombreCliente
-                    : nombreCliente // ignore: cast_nullable_to_non_nullable
-                        as String,
-            nombreFiscal:
-                null == nombreFiscal
-                    ? _value.nombreFiscal
-                    : nombreFiscal // ignore: cast_nullable_to_non_nullable
-                        as String,
-            nif:
-                freezed == nif
-                    ? _value.nif
-                    : nif // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            direccionFiscal1:
-                freezed == direccionFiscal1
-                    ? _value.direccionFiscal1
-                    : direccionFiscal1 // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            direccionFiscal2:
-                freezed == direccionFiscal2
-                    ? _value.direccionFiscal2
-                    : direccionFiscal2 // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            codigoPostalFiscal:
-                freezed == codigoPostalFiscal
-                    ? _value.codigoPostalFiscal
-                    : codigoPostalFiscal // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            poblacionFiscal:
-                freezed == poblacionFiscal
-                    ? _value.poblacionFiscal
-                    : poblacionFiscal // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            provinciaFiscal:
-                freezed == provinciaFiscal
-                    ? _value.provinciaFiscal
-                    : provinciaFiscal // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            paisFiscal:
-                freezed == paisFiscal
-                    ? _value.paisFiscal
-                    : paisFiscal // ignore: cast_nullable_to_non_nullable
-                        as Pais?,
-            latitudFiscal:
-                null == latitudFiscal
-                    ? _value.latitudFiscal
-                    : latitudFiscal // ignore: cast_nullable_to_non_nullable
-                        as double,
-            longitudFiscal:
-                null == longitudFiscal
-                    ? _value.longitudFiscal
-                    : longitudFiscal // ignore: cast_nullable_to_non_nullable
-                        as double,
-            direccionPredeterminada1:
-                freezed == direccionPredeterminada1
-                    ? _value.direccionPredeterminada1
-                    : direccionPredeterminada1 // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            direccionPredeterminada2:
-                freezed == direccionPredeterminada2
-                    ? _value.direccionPredeterminada2
-                    : direccionPredeterminada2 // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            codigoPostalPredeterminada:
-                freezed == codigoPostalPredeterminada
-                    ? _value.codigoPostalPredeterminada
-                    : codigoPostalPredeterminada // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            poblacionPredeterminada:
-                freezed == poblacionPredeterminada
-                    ? _value.poblacionPredeterminada
-                    : poblacionPredeterminada // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            provinciaPredeterminada:
-                freezed == provinciaPredeterminada
-                    ? _value.provinciaPredeterminada
-                    : provinciaPredeterminada // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            paisPredeterminada:
-                freezed == paisPredeterminada
-                    ? _value.paisPredeterminada
-                    : paisPredeterminada // ignore: cast_nullable_to_non_nullable
-                        as Pais?,
-            latitudPredeterminada:
-                freezed == latitudPredeterminada
-                    ? _value.latitudPredeterminada
-                    : latitudPredeterminada // ignore: cast_nullable_to_non_nullable
-                        as double?,
-            longitudPredeterminada:
-                freezed == longitudPredeterminada
-                    ? _value.longitudPredeterminada
-                    : longitudPredeterminada // ignore: cast_nullable_to_non_nullable
-                        as double?,
-            empresaId:
-                null == empresaId
-                    ? _value.empresaId
-                    : empresaId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            iva:
-                null == iva
-                    ? _value.iva
-                    : iva // ignore: cast_nullable_to_non_nullable
-                        as double,
-            ventasAnyoActual:
-                null == ventasAnyoActual
-                    ? _value.ventasAnyoActual
-                    : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
-                        as Money,
-            ventasAnyoAnterior:
-                null == ventasAnyoAnterior
-                    ? _value.ventasAnyoAnterior
-                    : ventasAnyoAnterior // ignore: cast_nullable_to_non_nullable
-                        as Money,
-            ventasHaceDosAnyos:
-                null == ventasHaceDosAnyos
-                    ? _value.ventasHaceDosAnyos
-                    : ventasHaceDosAnyos // ignore: cast_nullable_to_non_nullable
-                        as Money,
-            margenAnyoActual:
-                null == margenAnyoActual
-                    ? _value.margenAnyoActual
-                    : margenAnyoActual // ignore: cast_nullable_to_non_nullable
-                        as double,
-            margenAnyoAnterior:
-                null == margenAnyoAnterior
-                    ? _value.margenAnyoAnterior
-                    : margenAnyoAnterior // ignore: cast_nullable_to_non_nullable
-                        as double,
-            margenHaceDosAnyos:
-                null == margenHaceDosAnyos
-                    ? _value.margenHaceDosAnyos
-                    : margenHaceDosAnyos // ignore: cast_nullable_to_non_nullable
-                        as double,
-            porcentajeAbonos:
-                null == porcentajeAbonos
-                    ? _value.porcentajeAbonos
-                    : porcentajeAbonos // ignore: cast_nullable_to_non_nullable
-                        as double,
-            porcentajeGarantias:
-                null == porcentajeGarantias
-                    ? _value.porcentajeGarantias
-                    : porcentajeGarantias // ignore: cast_nullable_to_non_nullable
-                        as double,
-            centralCompras:
-                freezed == centralCompras
-                    ? _value.centralCompras
-                    : centralCompras // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            urlWeb:
-                freezed == urlWeb
-                    ? _value.urlWeb
-                    : urlWeb // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            divisa:
-                freezed == divisa
-                    ? _value.divisa
-                    : divisa // ignore: cast_nullable_to_non_nullable
-                        as Divisa?,
-            tarifaId:
-                freezed == tarifaId
-                    ? _value.tarifaId
-                    : tarifaId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            tarifaDescripcion:
-                freezed == tarifaDescripcion
-                    ? _value.tarifaDescripcion
-                    : tarifaDescripcion // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descuentoGeneralId:
-                freezed == descuentoGeneralId
-                    ? _value.descuentoGeneralId
-                    : descuentoGeneralId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            descripcionDescuentoGeneral:
-                freezed == descripcionDescuentoGeneral
-                    ? _value.descripcionDescuentoGeneral
-                    : descripcionDescuentoGeneral // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            tipoCalculoPrecio:
-                null == tipoCalculoPrecio
-                    ? _value.tipoCalculoPrecio
-                    : tipoCalculoPrecio // ignore: cast_nullable_to_non_nullable
-                        as String,
-            plazoDeCobro:
-                freezed == plazoDeCobro
-                    ? _value.plazoDeCobro
-                    : plazoDeCobro // ignore: cast_nullable_to_non_nullable
-                        as PlazoDeCobro?,
-            metodoDeCobro:
-                freezed == metodoDeCobro
-                    ? _value.metodoDeCobro
-                    : metodoDeCobro // ignore: cast_nullable_to_non_nullable
-                        as MetodoDeCobro?,
-            descuentoProntoPago:
-                null == descuentoProntoPago
-                    ? _value.descuentoProntoPago
-                    : descuentoProntoPago // ignore: cast_nullable_to_non_nullable
-                        as double,
-            riesgoConcedidoInterno:
-                null == riesgoConcedidoInterno
-                    ? _value.riesgoConcedidoInterno
-                    : riesgoConcedidoInterno // ignore: cast_nullable_to_non_nullable
-                        as Money,
-            riesgoConcedidoInternoDate:
-                freezed == riesgoConcedidoInternoDate
-                    ? _value.riesgoConcedidoInternoDate
-                    : riesgoConcedidoInternoDate // ignore: cast_nullable_to_non_nullable
-                        as DateTime?,
-            riesgoConcedidoCoafe:
-                null == riesgoConcedidoCoafe
-                    ? _value.riesgoConcedidoCoafe
-                    : riesgoConcedidoCoafe // ignore: cast_nullable_to_non_nullable
-                        as Money,
-            riesgoConcedidoCoafeFecha:
-                freezed == riesgoConcedidoCoafeFecha
-                    ? _value.riesgoConcedidoCoafeFecha
-                    : riesgoConcedidoCoafeFecha // ignore: cast_nullable_to_non_nullable
-                        as DateTime?,
-            riesgoActual:
-                null == riesgoActual
-                    ? _value.riesgoActual
-                    : riesgoActual // ignore: cast_nullable_to_non_nullable
-                        as Money,
-            riesgoConcedido:
-                freezed == riesgoConcedido
-                    ? _value.riesgoConcedido
-                    : riesgoConcedido // ignore: cast_nullable_to_non_nullable
-                        as Money?,
-            riesgoPendienteCobroVencido:
-                freezed == riesgoPendienteCobroVencido
-                    ? _value.riesgoPendienteCobroVencido
-                    : riesgoPendienteCobroVencido // ignore: cast_nullable_to_non_nullable
-                        as Money?,
-            riesgoPendienteCobroNoVencido:
-                freezed == riesgoPendienteCobroNoVencido
-                    ? _value.riesgoPendienteCobroNoVencido
-                    : riesgoPendienteCobroNoVencido // ignore: cast_nullable_to_non_nullable
-                        as Money?,
-            riesgoPendienteServir:
-                freezed == riesgoPendienteServir
-                    ? _value.riesgoPendienteServir
-                    : riesgoPendienteServir // ignore: cast_nullable_to_non_nullable
-                        as Money?,
-            riesgoPendienteFacturar:
-                freezed == riesgoPendienteFacturar
-                    ? _value.riesgoPendienteFacturar
-                    : riesgoPendienteFacturar // ignore: cast_nullable_to_non_nullable
-                        as Money?,
-            riesgoExcedido:
-                null == riesgoExcedido
-                    ? _value.riesgoExcedido
-                    : riesgoExcedido // ignore: cast_nullable_to_non_nullable
-                        as Money,
-            obvservacionesInternas:
-                freezed == obvservacionesInternas
-                    ? _value.obvservacionesInternas
-                    : obvservacionesInternas // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            clientePotencial:
-                freezed == clientePotencial
-                    ? _value.clientePotencial
-                    : clientePotencial // ignore: cast_nullable_to_non_nullable
-                        as bool?,
-            clienteEstadoPotencial:
-                freezed == clienteEstadoPotencial
-                    ? _value.clienteEstadoPotencial
-                    : clienteEstadoPotencial // ignore: cast_nullable_to_non_nullable
-                        as ClienteEstadoPotencial?,
-            clienteTipoPotencial:
-                freezed == clienteTipoPotencial
-                    ? _value.clienteTipoPotencial
-                    : clienteTipoPotencial // ignore: cast_nullable_to_non_nullable
-                        as ClienteTipoPotencial?,
-            representante1Id:
-                freezed == representante1Id
-                    ? _value.representante1Id
-                    : representante1Id // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            representante1Nombre:
-                freezed == representante1Nombre
-                    ? _value.representante1Nombre
-                    : representante1Nombre // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            representante2Id:
-                freezed == representante2Id
-                    ? _value.representante2Id
-                    : representante2Id // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            representante2Nombre:
-                freezed == representante2Nombre
-                    ? _value.representante2Nombre
-                    : representante2Nombre // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            telefonoMovil:
-                freezed == telefonoMovil
-                    ? _value.telefonoMovil
-                    : telefonoMovil // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            telefonoFijo:
-                freezed == telefonoFijo
-                    ? _value.telefonoFijo
-                    : telefonoFijo // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            email:
-                freezed == email
-                    ? _value.email
-                    : email // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            sector:
-                freezed == sector
-                    ? _value.sector
-                    : sector // ignore: cast_nullable_to_non_nullable
-                        as Sector?,
-            subsector:
-                freezed == subsector
-                    ? _value.subsector
-                    : subsector // ignore: cast_nullable_to_non_nullable
-                        as Subsector?,
-            lastUpdated:
-                freezed == lastUpdated
-                    ? _value.lastUpdated
-                    : lastUpdated // ignore: cast_nullable_to_non_nullable
-                        as DateTime?,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as bool,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      nombreCliente: null == nombreCliente
+          ? _value.nombreCliente
+          : nombreCliente // ignore: cast_nullable_to_non_nullable
+              as String,
+      nombreFiscal: null == nombreFiscal
+          ? _value.nombreFiscal
+          : nombreFiscal // ignore: cast_nullable_to_non_nullable
+              as String,
+      nif: freezed == nif
+          ? _value.nif
+          : nif // ignore: cast_nullable_to_non_nullable
+              as String?,
+      direccionFiscal1: freezed == direccionFiscal1
+          ? _value.direccionFiscal1
+          : direccionFiscal1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      direccionFiscal2: freezed == direccionFiscal2
+          ? _value.direccionFiscal2
+          : direccionFiscal2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      codigoPostalFiscal: freezed == codigoPostalFiscal
+          ? _value.codigoPostalFiscal
+          : codigoPostalFiscal // ignore: cast_nullable_to_non_nullable
+              as String?,
+      poblacionFiscal: freezed == poblacionFiscal
+          ? _value.poblacionFiscal
+          : poblacionFiscal // ignore: cast_nullable_to_non_nullable
+              as String?,
+      provinciaFiscal: freezed == provinciaFiscal
+          ? _value.provinciaFiscal
+          : provinciaFiscal // ignore: cast_nullable_to_non_nullable
+              as String?,
+      paisFiscal: freezed == paisFiscal
+          ? _value.paisFiscal
+          : paisFiscal // ignore: cast_nullable_to_non_nullable
+              as Pais?,
+      latitudFiscal: null == latitudFiscal
+          ? _value.latitudFiscal
+          : latitudFiscal // ignore: cast_nullable_to_non_nullable
+              as double,
+      longitudFiscal: null == longitudFiscal
+          ? _value.longitudFiscal
+          : longitudFiscal // ignore: cast_nullable_to_non_nullable
+              as double,
+      direccionPredeterminada1: freezed == direccionPredeterminada1
+          ? _value.direccionPredeterminada1
+          : direccionPredeterminada1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      direccionPredeterminada2: freezed == direccionPredeterminada2
+          ? _value.direccionPredeterminada2
+          : direccionPredeterminada2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      codigoPostalPredeterminada: freezed == codigoPostalPredeterminada
+          ? _value.codigoPostalPredeterminada
+          : codigoPostalPredeterminada // ignore: cast_nullable_to_non_nullable
+              as String?,
+      poblacionPredeterminada: freezed == poblacionPredeterminada
+          ? _value.poblacionPredeterminada
+          : poblacionPredeterminada // ignore: cast_nullable_to_non_nullable
+              as String?,
+      provinciaPredeterminada: freezed == provinciaPredeterminada
+          ? _value.provinciaPredeterminada
+          : provinciaPredeterminada // ignore: cast_nullable_to_non_nullable
+              as String?,
+      paisPredeterminada: freezed == paisPredeterminada
+          ? _value.paisPredeterminada
+          : paisPredeterminada // ignore: cast_nullable_to_non_nullable
+              as Pais?,
+      latitudPredeterminada: freezed == latitudPredeterminada
+          ? _value.latitudPredeterminada
+          : latitudPredeterminada // ignore: cast_nullable_to_non_nullable
+              as double?,
+      longitudPredeterminada: freezed == longitudPredeterminada
+          ? _value.longitudPredeterminada
+          : longitudPredeterminada // ignore: cast_nullable_to_non_nullable
+              as double?,
+      empresaId: null == empresaId
+          ? _value.empresaId
+          : empresaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      iva: null == iva
+          ? _value.iva
+          : iva // ignore: cast_nullable_to_non_nullable
+              as double,
+      ventasAnyoActual: null == ventasAnyoActual
+          ? _value.ventasAnyoActual
+          : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
+              as Money,
+      ventasAnyoAnterior: null == ventasAnyoAnterior
+          ? _value.ventasAnyoAnterior
+          : ventasAnyoAnterior // ignore: cast_nullable_to_non_nullable
+              as Money,
+      ventasHaceDosAnyos: null == ventasHaceDosAnyos
+          ? _value.ventasHaceDosAnyos
+          : ventasHaceDosAnyos // ignore: cast_nullable_to_non_nullable
+              as Money,
+      margenAnyoActual: null == margenAnyoActual
+          ? _value.margenAnyoActual
+          : margenAnyoActual // ignore: cast_nullable_to_non_nullable
+              as double,
+      margenAnyoAnterior: null == margenAnyoAnterior
+          ? _value.margenAnyoAnterior
+          : margenAnyoAnterior // ignore: cast_nullable_to_non_nullable
+              as double,
+      margenHaceDosAnyos: null == margenHaceDosAnyos
+          ? _value.margenHaceDosAnyos
+          : margenHaceDosAnyos // ignore: cast_nullable_to_non_nullable
+              as double,
+      porcentajeAbonos: null == porcentajeAbonos
+          ? _value.porcentajeAbonos
+          : porcentajeAbonos // ignore: cast_nullable_to_non_nullable
+              as double,
+      porcentajeGarantias: null == porcentajeGarantias
+          ? _value.porcentajeGarantias
+          : porcentajeGarantias // ignore: cast_nullable_to_non_nullable
+              as double,
+      centralCompras: freezed == centralCompras
+          ? _value.centralCompras
+          : centralCompras // ignore: cast_nullable_to_non_nullable
+              as String?,
+      urlWeb: freezed == urlWeb
+          ? _value.urlWeb
+          : urlWeb // ignore: cast_nullable_to_non_nullable
+              as String?,
+      divisa: freezed == divisa
+          ? _value.divisa
+          : divisa // ignore: cast_nullable_to_non_nullable
+              as Divisa?,
+      tarifaId: freezed == tarifaId
+          ? _value.tarifaId
+          : tarifaId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tarifaDescripcion: freezed == tarifaDescripcion
+          ? _value.tarifaDescripcion
+          : tarifaDescripcion // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descuentoGeneralId: freezed == descuentoGeneralId
+          ? _value.descuentoGeneralId
+          : descuentoGeneralId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionDescuentoGeneral: freezed == descripcionDescuentoGeneral
+          ? _value.descripcionDescuentoGeneral
+          : descripcionDescuentoGeneral // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tipoCalculoPrecio: null == tipoCalculoPrecio
+          ? _value.tipoCalculoPrecio
+          : tipoCalculoPrecio // ignore: cast_nullable_to_non_nullable
+              as String,
+      plazoDeCobro: freezed == plazoDeCobro
+          ? _value.plazoDeCobro
+          : plazoDeCobro // ignore: cast_nullable_to_non_nullable
+              as PlazoDeCobro?,
+      metodoDeCobro: freezed == metodoDeCobro
+          ? _value.metodoDeCobro
+          : metodoDeCobro // ignore: cast_nullable_to_non_nullable
+              as MetodoDeCobro?,
+      descuentoProntoPago: null == descuentoProntoPago
+          ? _value.descuentoProntoPago
+          : descuentoProntoPago // ignore: cast_nullable_to_non_nullable
+              as double,
+      riesgoConcedidoInterno: null == riesgoConcedidoInterno
+          ? _value.riesgoConcedidoInterno
+          : riesgoConcedidoInterno // ignore: cast_nullable_to_non_nullable
+              as Money,
+      riesgoConcedidoInternoDate: freezed == riesgoConcedidoInternoDate
+          ? _value.riesgoConcedidoInternoDate
+          : riesgoConcedidoInternoDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      riesgoConcedidoCoafe: null == riesgoConcedidoCoafe
+          ? _value.riesgoConcedidoCoafe
+          : riesgoConcedidoCoafe // ignore: cast_nullable_to_non_nullable
+              as Money,
+      riesgoConcedidoCoafeFecha: freezed == riesgoConcedidoCoafeFecha
+          ? _value.riesgoConcedidoCoafeFecha
+          : riesgoConcedidoCoafeFecha // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      riesgoActual: null == riesgoActual
+          ? _value.riesgoActual
+          : riesgoActual // ignore: cast_nullable_to_non_nullable
+              as Money,
+      riesgoConcedido: freezed == riesgoConcedido
+          ? _value.riesgoConcedido
+          : riesgoConcedido // ignore: cast_nullable_to_non_nullable
+              as Money?,
+      riesgoPendienteCobroVencido: freezed == riesgoPendienteCobroVencido
+          ? _value.riesgoPendienteCobroVencido
+          : riesgoPendienteCobroVencido // ignore: cast_nullable_to_non_nullable
+              as Money?,
+      riesgoPendienteCobroNoVencido: freezed == riesgoPendienteCobroNoVencido
+          ? _value.riesgoPendienteCobroNoVencido
+          : riesgoPendienteCobroNoVencido // ignore: cast_nullable_to_non_nullable
+              as Money?,
+      riesgoPendienteServir: freezed == riesgoPendienteServir
+          ? _value.riesgoPendienteServir
+          : riesgoPendienteServir // ignore: cast_nullable_to_non_nullable
+              as Money?,
+      riesgoPendienteFacturar: freezed == riesgoPendienteFacturar
+          ? _value.riesgoPendienteFacturar
+          : riesgoPendienteFacturar // ignore: cast_nullable_to_non_nullable
+              as Money?,
+      riesgoExcedido: null == riesgoExcedido
+          ? _value.riesgoExcedido
+          : riesgoExcedido // ignore: cast_nullable_to_non_nullable
+              as Money,
+      obvservacionesInternas: freezed == obvservacionesInternas
+          ? _value.obvservacionesInternas
+          : obvservacionesInternas // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clientePotencial: freezed == clientePotencial
+          ? _value.clientePotencial
+          : clientePotencial // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      clienteEstadoPotencial: freezed == clienteEstadoPotencial
+          ? _value.clienteEstadoPotencial
+          : clienteEstadoPotencial // ignore: cast_nullable_to_non_nullable
+              as ClienteEstadoPotencial?,
+      clienteTipoPotencial: freezed == clienteTipoPotencial
+          ? _value.clienteTipoPotencial
+          : clienteTipoPotencial // ignore: cast_nullable_to_non_nullable
+              as ClienteTipoPotencial?,
+      representante1Id: freezed == representante1Id
+          ? _value.representante1Id
+          : representante1Id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      representante1Nombre: freezed == representante1Nombre
+          ? _value.representante1Nombre
+          : representante1Nombre // ignore: cast_nullable_to_non_nullable
+              as String?,
+      representante2Id: freezed == representante2Id
+          ? _value.representante2Id
+          : representante2Id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      representante2Nombre: freezed == representante2Nombre
+          ? _value.representante2Nombre
+          : representante2Nombre // ignore: cast_nullable_to_non_nullable
+              as String?,
+      telefonoMovil: freezed == telefonoMovil
+          ? _value.telefonoMovil
+          : telefonoMovil // ignore: cast_nullable_to_non_nullable
+              as String?,
+      telefonoFijo: freezed == telefonoFijo
+          ? _value.telefonoFijo
+          : telefonoFijo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sector: freezed == sector
+          ? _value.sector
+          : sector // ignore: cast_nullable_to_non_nullable
+              as Sector?,
+      subsector: freezed == subsector
+          ? _value.subsector
+          : subsector // ignore: cast_nullable_to_non_nullable
+              as Subsector?,
+      lastUpdated: freezed == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
   }
 
   /// Create a copy of Cliente
@@ -685,12 +613,10 @@ class _$ClienteCopyWithImpl<$Res, $Val extends Cliente>
       return null;
     }
 
-    return $ClienteEstadoPotencialCopyWith<$Res>(
-      _value.clienteEstadoPotencial!,
-      (value) {
-        return _then(_value.copyWith(clienteEstadoPotencial: value) as $Val);
-      },
-    );
+    return $ClienteEstadoPotencialCopyWith<$Res>(_value.clienteEstadoPotencial!,
+        (value) {
+      return _then(_value.copyWith(clienteEstadoPotencial: value) as $Val);
+    });
   }
 
   /// Create a copy of Cliente
@@ -702,9 +628,8 @@ class _$ClienteCopyWithImpl<$Res, $Val extends Cliente>
       return null;
     }
 
-    return $ClienteTipoPotencialCopyWith<$Res>(_value.clienteTipoPotencial!, (
-      value,
-    ) {
+    return $ClienteTipoPotencialCopyWith<$Res>(_value.clienteTipoPotencial!,
+        (value) {
       return _then(_value.copyWith(clienteTipoPotencial: value) as $Val);
     });
   }
@@ -741,80 +666,78 @@ class _$ClienteCopyWithImpl<$Res, $Val extends Cliente>
 /// @nodoc
 abstract class _$$ClienteImplCopyWith<$Res> implements $ClienteCopyWith<$Res> {
   factory _$$ClienteImplCopyWith(
-    _$ClienteImpl value,
-    $Res Function(_$ClienteImpl) then,
-  ) = __$$ClienteImplCopyWithImpl<$Res>;
+          _$ClienteImpl value, $Res Function(_$ClienteImpl) then) =
+      __$$ClienteImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String nombreCliente,
-    String nombreFiscal,
-    String? nif,
-    String? direccionFiscal1,
-    String? direccionFiscal2,
-    String? codigoPostalFiscal,
-    String? poblacionFiscal,
-    String? provinciaFiscal,
-    Pais? paisFiscal,
-    double latitudFiscal,
-    double longitudFiscal,
-    String? direccionPredeterminada1,
-    String? direccionPredeterminada2,
-    String? codigoPostalPredeterminada,
-    String? poblacionPredeterminada,
-    String? provinciaPredeterminada,
-    Pais? paisPredeterminada,
-    double? latitudPredeterminada,
-    double? longitudPredeterminada,
-    String empresaId,
-    double iva,
-    Money ventasAnyoActual,
-    Money ventasAnyoAnterior,
-    Money ventasHaceDosAnyos,
-    double margenAnyoActual,
-    double margenAnyoAnterior,
-    double margenHaceDosAnyos,
-    double porcentajeAbonos,
-    double porcentajeGarantias,
-    String? centralCompras,
-    String? urlWeb,
-    Divisa? divisa,
-    String? tarifaId,
-    String? tarifaDescripcion,
-    String? descuentoGeneralId,
-    String? descripcionDescuentoGeneral,
-    String tipoCalculoPrecio,
-    PlazoDeCobro? plazoDeCobro,
-    MetodoDeCobro? metodoDeCobro,
-    double descuentoProntoPago,
-    Money riesgoConcedidoInterno,
-    DateTime? riesgoConcedidoInternoDate,
-    Money riesgoConcedidoCoafe,
-    DateTime? riesgoConcedidoCoafeFecha,
-    Money riesgoActual,
-    Money? riesgoConcedido,
-    Money? riesgoPendienteCobroVencido,
-    Money? riesgoPendienteCobroNoVencido,
-    Money? riesgoPendienteServir,
-    Money? riesgoPendienteFacturar,
-    Money riesgoExcedido,
-    String? obvservacionesInternas,
-    bool? clientePotencial,
-    ClienteEstadoPotencial? clienteEstadoPotencial,
-    ClienteTipoPotencial? clienteTipoPotencial,
-    String? representante1Id,
-    String? representante1Nombre,
-    String? representante2Id,
-    String? representante2Nombre,
-    String? telefonoMovil,
-    String? telefonoFijo,
-    String? email,
-    Sector? sector,
-    Subsector? subsector,
-    DateTime? lastUpdated,
-    bool deleted,
-  });
+  $Res call(
+      {String id,
+      String nombreCliente,
+      String nombreFiscal,
+      String? nif,
+      String? direccionFiscal1,
+      String? direccionFiscal2,
+      String? codigoPostalFiscal,
+      String? poblacionFiscal,
+      String? provinciaFiscal,
+      Pais? paisFiscal,
+      double latitudFiscal,
+      double longitudFiscal,
+      String? direccionPredeterminada1,
+      String? direccionPredeterminada2,
+      String? codigoPostalPredeterminada,
+      String? poblacionPredeterminada,
+      String? provinciaPredeterminada,
+      Pais? paisPredeterminada,
+      double? latitudPredeterminada,
+      double? longitudPredeterminada,
+      String empresaId,
+      double iva,
+      Money ventasAnyoActual,
+      Money ventasAnyoAnterior,
+      Money ventasHaceDosAnyos,
+      double margenAnyoActual,
+      double margenAnyoAnterior,
+      double margenHaceDosAnyos,
+      double porcentajeAbonos,
+      double porcentajeGarantias,
+      String? centralCompras,
+      String? urlWeb,
+      Divisa? divisa,
+      String? tarifaId,
+      String? tarifaDescripcion,
+      String? descuentoGeneralId,
+      String? descripcionDescuentoGeneral,
+      String tipoCalculoPrecio,
+      PlazoDeCobro? plazoDeCobro,
+      MetodoDeCobro? metodoDeCobro,
+      double descuentoProntoPago,
+      Money riesgoConcedidoInterno,
+      DateTime? riesgoConcedidoInternoDate,
+      Money riesgoConcedidoCoafe,
+      DateTime? riesgoConcedidoCoafeFecha,
+      Money riesgoActual,
+      Money? riesgoConcedido,
+      Money? riesgoPendienteCobroVencido,
+      Money? riesgoPendienteCobroNoVencido,
+      Money? riesgoPendienteServir,
+      Money? riesgoPendienteFacturar,
+      Money riesgoExcedido,
+      String? obvservacionesInternas,
+      bool? clientePotencial,
+      ClienteEstadoPotencial? clienteEstadoPotencial,
+      ClienteTipoPotencial? clienteTipoPotencial,
+      String? representante1Id,
+      String? representante1Nombre,
+      String? representante2Id,
+      String? representante2Nombre,
+      String? telefonoMovil,
+      String? telefonoFijo,
+      String? email,
+      Sector? sector,
+      Subsector? subsector,
+      DateTime? lastUpdated,
+      bool deleted});
 
   @override
   $PaisCopyWith<$Res>? get paisFiscal;
@@ -841,9 +764,8 @@ class __$$ClienteImplCopyWithImpl<$Res>
     extends _$ClienteCopyWithImpl<$Res, _$ClienteImpl>
     implements _$$ClienteImplCopyWith<$Res> {
   __$$ClienteImplCopyWithImpl(
-    _$ClienteImpl _value,
-    $Res Function(_$ClienteImpl) _then,
-  ) : super(_value, _then);
+      _$ClienteImpl _value, $Res Function(_$ClienteImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of Cliente
   /// with the given fields replaced by the non-null parameter values.
@@ -918,420 +840,351 @@ class __$$ClienteImplCopyWithImpl<$Res>
     Object? lastUpdated = freezed,
     Object? deleted = null,
   }) {
-    return _then(
-      _$ClienteImpl(
-        id:
-            null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as String,
-        nombreCliente:
-            null == nombreCliente
-                ? _value.nombreCliente
-                : nombreCliente // ignore: cast_nullable_to_non_nullable
-                    as String,
-        nombreFiscal:
-            null == nombreFiscal
-                ? _value.nombreFiscal
-                : nombreFiscal // ignore: cast_nullable_to_non_nullable
-                    as String,
-        nif:
-            freezed == nif
-                ? _value.nif
-                : nif // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        direccionFiscal1:
-            freezed == direccionFiscal1
-                ? _value.direccionFiscal1
-                : direccionFiscal1 // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        direccionFiscal2:
-            freezed == direccionFiscal2
-                ? _value.direccionFiscal2
-                : direccionFiscal2 // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        codigoPostalFiscal:
-            freezed == codigoPostalFiscal
-                ? _value.codigoPostalFiscal
-                : codigoPostalFiscal // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        poblacionFiscal:
-            freezed == poblacionFiscal
-                ? _value.poblacionFiscal
-                : poblacionFiscal // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        provinciaFiscal:
-            freezed == provinciaFiscal
-                ? _value.provinciaFiscal
-                : provinciaFiscal // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        paisFiscal:
-            freezed == paisFiscal
-                ? _value.paisFiscal
-                : paisFiscal // ignore: cast_nullable_to_non_nullable
-                    as Pais?,
-        latitudFiscal:
-            null == latitudFiscal
-                ? _value.latitudFiscal
-                : latitudFiscal // ignore: cast_nullable_to_non_nullable
-                    as double,
-        longitudFiscal:
-            null == longitudFiscal
-                ? _value.longitudFiscal
-                : longitudFiscal // ignore: cast_nullable_to_non_nullable
-                    as double,
-        direccionPredeterminada1:
-            freezed == direccionPredeterminada1
-                ? _value.direccionPredeterminada1
-                : direccionPredeterminada1 // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        direccionPredeterminada2:
-            freezed == direccionPredeterminada2
-                ? _value.direccionPredeterminada2
-                : direccionPredeterminada2 // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        codigoPostalPredeterminada:
-            freezed == codigoPostalPredeterminada
-                ? _value.codigoPostalPredeterminada
-                : codigoPostalPredeterminada // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        poblacionPredeterminada:
-            freezed == poblacionPredeterminada
-                ? _value.poblacionPredeterminada
-                : poblacionPredeterminada // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        provinciaPredeterminada:
-            freezed == provinciaPredeterminada
-                ? _value.provinciaPredeterminada
-                : provinciaPredeterminada // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        paisPredeterminada:
-            freezed == paisPredeterminada
-                ? _value.paisPredeterminada
-                : paisPredeterminada // ignore: cast_nullable_to_non_nullable
-                    as Pais?,
-        latitudPredeterminada:
-            freezed == latitudPredeterminada
-                ? _value.latitudPredeterminada
-                : latitudPredeterminada // ignore: cast_nullable_to_non_nullable
-                    as double?,
-        longitudPredeterminada:
-            freezed == longitudPredeterminada
-                ? _value.longitudPredeterminada
-                : longitudPredeterminada // ignore: cast_nullable_to_non_nullable
-                    as double?,
-        empresaId:
-            null == empresaId
-                ? _value.empresaId
-                : empresaId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        iva:
-            null == iva
-                ? _value.iva
-                : iva // ignore: cast_nullable_to_non_nullable
-                    as double,
-        ventasAnyoActual:
-            null == ventasAnyoActual
-                ? _value.ventasAnyoActual
-                : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
-                    as Money,
-        ventasAnyoAnterior:
-            null == ventasAnyoAnterior
-                ? _value.ventasAnyoAnterior
-                : ventasAnyoAnterior // ignore: cast_nullable_to_non_nullable
-                    as Money,
-        ventasHaceDosAnyos:
-            null == ventasHaceDosAnyos
-                ? _value.ventasHaceDosAnyos
-                : ventasHaceDosAnyos // ignore: cast_nullable_to_non_nullable
-                    as Money,
-        margenAnyoActual:
-            null == margenAnyoActual
-                ? _value.margenAnyoActual
-                : margenAnyoActual // ignore: cast_nullable_to_non_nullable
-                    as double,
-        margenAnyoAnterior:
-            null == margenAnyoAnterior
-                ? _value.margenAnyoAnterior
-                : margenAnyoAnterior // ignore: cast_nullable_to_non_nullable
-                    as double,
-        margenHaceDosAnyos:
-            null == margenHaceDosAnyos
-                ? _value.margenHaceDosAnyos
-                : margenHaceDosAnyos // ignore: cast_nullable_to_non_nullable
-                    as double,
-        porcentajeAbonos:
-            null == porcentajeAbonos
-                ? _value.porcentajeAbonos
-                : porcentajeAbonos // ignore: cast_nullable_to_non_nullable
-                    as double,
-        porcentajeGarantias:
-            null == porcentajeGarantias
-                ? _value.porcentajeGarantias
-                : porcentajeGarantias // ignore: cast_nullable_to_non_nullable
-                    as double,
-        centralCompras:
-            freezed == centralCompras
-                ? _value.centralCompras
-                : centralCompras // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        urlWeb:
-            freezed == urlWeb
-                ? _value.urlWeb
-                : urlWeb // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        divisa:
-            freezed == divisa
-                ? _value.divisa
-                : divisa // ignore: cast_nullable_to_non_nullable
-                    as Divisa?,
-        tarifaId:
-            freezed == tarifaId
-                ? _value.tarifaId
-                : tarifaId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        tarifaDescripcion:
-            freezed == tarifaDescripcion
-                ? _value.tarifaDescripcion
-                : tarifaDescripcion // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descuentoGeneralId:
-            freezed == descuentoGeneralId
-                ? _value.descuentoGeneralId
-                : descuentoGeneralId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        descripcionDescuentoGeneral:
-            freezed == descripcionDescuentoGeneral
-                ? _value.descripcionDescuentoGeneral
-                : descripcionDescuentoGeneral // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        tipoCalculoPrecio:
-            null == tipoCalculoPrecio
-                ? _value.tipoCalculoPrecio
-                : tipoCalculoPrecio // ignore: cast_nullable_to_non_nullable
-                    as String,
-        plazoDeCobro:
-            freezed == plazoDeCobro
-                ? _value.plazoDeCobro
-                : plazoDeCobro // ignore: cast_nullable_to_non_nullable
-                    as PlazoDeCobro?,
-        metodoDeCobro:
-            freezed == metodoDeCobro
-                ? _value.metodoDeCobro
-                : metodoDeCobro // ignore: cast_nullable_to_non_nullable
-                    as MetodoDeCobro?,
-        descuentoProntoPago:
-            null == descuentoProntoPago
-                ? _value.descuentoProntoPago
-                : descuentoProntoPago // ignore: cast_nullable_to_non_nullable
-                    as double,
-        riesgoConcedidoInterno:
-            null == riesgoConcedidoInterno
-                ? _value.riesgoConcedidoInterno
-                : riesgoConcedidoInterno // ignore: cast_nullable_to_non_nullable
-                    as Money,
-        riesgoConcedidoInternoDate:
-            freezed == riesgoConcedidoInternoDate
-                ? _value.riesgoConcedidoInternoDate
-                : riesgoConcedidoInternoDate // ignore: cast_nullable_to_non_nullable
-                    as DateTime?,
-        riesgoConcedidoCoafe:
-            null == riesgoConcedidoCoafe
-                ? _value.riesgoConcedidoCoafe
-                : riesgoConcedidoCoafe // ignore: cast_nullable_to_non_nullable
-                    as Money,
-        riesgoConcedidoCoafeFecha:
-            freezed == riesgoConcedidoCoafeFecha
-                ? _value.riesgoConcedidoCoafeFecha
-                : riesgoConcedidoCoafeFecha // ignore: cast_nullable_to_non_nullable
-                    as DateTime?,
-        riesgoActual:
-            null == riesgoActual
-                ? _value.riesgoActual
-                : riesgoActual // ignore: cast_nullable_to_non_nullable
-                    as Money,
-        riesgoConcedido:
-            freezed == riesgoConcedido
-                ? _value.riesgoConcedido
-                : riesgoConcedido // ignore: cast_nullable_to_non_nullable
-                    as Money?,
-        riesgoPendienteCobroVencido:
-            freezed == riesgoPendienteCobroVencido
-                ? _value.riesgoPendienteCobroVencido
-                : riesgoPendienteCobroVencido // ignore: cast_nullable_to_non_nullable
-                    as Money?,
-        riesgoPendienteCobroNoVencido:
-            freezed == riesgoPendienteCobroNoVencido
-                ? _value.riesgoPendienteCobroNoVencido
-                : riesgoPendienteCobroNoVencido // ignore: cast_nullable_to_non_nullable
-                    as Money?,
-        riesgoPendienteServir:
-            freezed == riesgoPendienteServir
-                ? _value.riesgoPendienteServir
-                : riesgoPendienteServir // ignore: cast_nullable_to_non_nullable
-                    as Money?,
-        riesgoPendienteFacturar:
-            freezed == riesgoPendienteFacturar
-                ? _value.riesgoPendienteFacturar
-                : riesgoPendienteFacturar // ignore: cast_nullable_to_non_nullable
-                    as Money?,
-        riesgoExcedido:
-            null == riesgoExcedido
-                ? _value.riesgoExcedido
-                : riesgoExcedido // ignore: cast_nullable_to_non_nullable
-                    as Money,
-        obvservacionesInternas:
-            freezed == obvservacionesInternas
-                ? _value.obvservacionesInternas
-                : obvservacionesInternas // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        clientePotencial:
-            freezed == clientePotencial
-                ? _value.clientePotencial
-                : clientePotencial // ignore: cast_nullable_to_non_nullable
-                    as bool?,
-        clienteEstadoPotencial:
-            freezed == clienteEstadoPotencial
-                ? _value.clienteEstadoPotencial
-                : clienteEstadoPotencial // ignore: cast_nullable_to_non_nullable
-                    as ClienteEstadoPotencial?,
-        clienteTipoPotencial:
-            freezed == clienteTipoPotencial
-                ? _value.clienteTipoPotencial
-                : clienteTipoPotencial // ignore: cast_nullable_to_non_nullable
-                    as ClienteTipoPotencial?,
-        representante1Id:
-            freezed == representante1Id
-                ? _value.representante1Id
-                : representante1Id // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        representante1Nombre:
-            freezed == representante1Nombre
-                ? _value.representante1Nombre
-                : representante1Nombre // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        representante2Id:
-            freezed == representante2Id
-                ? _value.representante2Id
-                : representante2Id // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        representante2Nombre:
-            freezed == representante2Nombre
-                ? _value.representante2Nombre
-                : representante2Nombre // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        telefonoMovil:
-            freezed == telefonoMovil
-                ? _value.telefonoMovil
-                : telefonoMovil // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        telefonoFijo:
-            freezed == telefonoFijo
-                ? _value.telefonoFijo
-                : telefonoFijo // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        email:
-            freezed == email
-                ? _value.email
-                : email // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        sector:
-            freezed == sector
-                ? _value.sector
-                : sector // ignore: cast_nullable_to_non_nullable
-                    as Sector?,
-        subsector:
-            freezed == subsector
-                ? _value.subsector
-                : subsector // ignore: cast_nullable_to_non_nullable
-                    as Subsector?,
-        lastUpdated:
-            freezed == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                    as DateTime?,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as bool,
-      ),
-    );
+    return _then(_$ClienteImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      nombreCliente: null == nombreCliente
+          ? _value.nombreCliente
+          : nombreCliente // ignore: cast_nullable_to_non_nullable
+              as String,
+      nombreFiscal: null == nombreFiscal
+          ? _value.nombreFiscal
+          : nombreFiscal // ignore: cast_nullable_to_non_nullable
+              as String,
+      nif: freezed == nif
+          ? _value.nif
+          : nif // ignore: cast_nullable_to_non_nullable
+              as String?,
+      direccionFiscal1: freezed == direccionFiscal1
+          ? _value.direccionFiscal1
+          : direccionFiscal1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      direccionFiscal2: freezed == direccionFiscal2
+          ? _value.direccionFiscal2
+          : direccionFiscal2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      codigoPostalFiscal: freezed == codigoPostalFiscal
+          ? _value.codigoPostalFiscal
+          : codigoPostalFiscal // ignore: cast_nullable_to_non_nullable
+              as String?,
+      poblacionFiscal: freezed == poblacionFiscal
+          ? _value.poblacionFiscal
+          : poblacionFiscal // ignore: cast_nullable_to_non_nullable
+              as String?,
+      provinciaFiscal: freezed == provinciaFiscal
+          ? _value.provinciaFiscal
+          : provinciaFiscal // ignore: cast_nullable_to_non_nullable
+              as String?,
+      paisFiscal: freezed == paisFiscal
+          ? _value.paisFiscal
+          : paisFiscal // ignore: cast_nullable_to_non_nullable
+              as Pais?,
+      latitudFiscal: null == latitudFiscal
+          ? _value.latitudFiscal
+          : latitudFiscal // ignore: cast_nullable_to_non_nullable
+              as double,
+      longitudFiscal: null == longitudFiscal
+          ? _value.longitudFiscal
+          : longitudFiscal // ignore: cast_nullable_to_non_nullable
+              as double,
+      direccionPredeterminada1: freezed == direccionPredeterminada1
+          ? _value.direccionPredeterminada1
+          : direccionPredeterminada1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      direccionPredeterminada2: freezed == direccionPredeterminada2
+          ? _value.direccionPredeterminada2
+          : direccionPredeterminada2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      codigoPostalPredeterminada: freezed == codigoPostalPredeterminada
+          ? _value.codigoPostalPredeterminada
+          : codigoPostalPredeterminada // ignore: cast_nullable_to_non_nullable
+              as String?,
+      poblacionPredeterminada: freezed == poblacionPredeterminada
+          ? _value.poblacionPredeterminada
+          : poblacionPredeterminada // ignore: cast_nullable_to_non_nullable
+              as String?,
+      provinciaPredeterminada: freezed == provinciaPredeterminada
+          ? _value.provinciaPredeterminada
+          : provinciaPredeterminada // ignore: cast_nullable_to_non_nullable
+              as String?,
+      paisPredeterminada: freezed == paisPredeterminada
+          ? _value.paisPredeterminada
+          : paisPredeterminada // ignore: cast_nullable_to_non_nullable
+              as Pais?,
+      latitudPredeterminada: freezed == latitudPredeterminada
+          ? _value.latitudPredeterminada
+          : latitudPredeterminada // ignore: cast_nullable_to_non_nullable
+              as double?,
+      longitudPredeterminada: freezed == longitudPredeterminada
+          ? _value.longitudPredeterminada
+          : longitudPredeterminada // ignore: cast_nullable_to_non_nullable
+              as double?,
+      empresaId: null == empresaId
+          ? _value.empresaId
+          : empresaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      iva: null == iva
+          ? _value.iva
+          : iva // ignore: cast_nullable_to_non_nullable
+              as double,
+      ventasAnyoActual: null == ventasAnyoActual
+          ? _value.ventasAnyoActual
+          : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
+              as Money,
+      ventasAnyoAnterior: null == ventasAnyoAnterior
+          ? _value.ventasAnyoAnterior
+          : ventasAnyoAnterior // ignore: cast_nullable_to_non_nullable
+              as Money,
+      ventasHaceDosAnyos: null == ventasHaceDosAnyos
+          ? _value.ventasHaceDosAnyos
+          : ventasHaceDosAnyos // ignore: cast_nullable_to_non_nullable
+              as Money,
+      margenAnyoActual: null == margenAnyoActual
+          ? _value.margenAnyoActual
+          : margenAnyoActual // ignore: cast_nullable_to_non_nullable
+              as double,
+      margenAnyoAnterior: null == margenAnyoAnterior
+          ? _value.margenAnyoAnterior
+          : margenAnyoAnterior // ignore: cast_nullable_to_non_nullable
+              as double,
+      margenHaceDosAnyos: null == margenHaceDosAnyos
+          ? _value.margenHaceDosAnyos
+          : margenHaceDosAnyos // ignore: cast_nullable_to_non_nullable
+              as double,
+      porcentajeAbonos: null == porcentajeAbonos
+          ? _value.porcentajeAbonos
+          : porcentajeAbonos // ignore: cast_nullable_to_non_nullable
+              as double,
+      porcentajeGarantias: null == porcentajeGarantias
+          ? _value.porcentajeGarantias
+          : porcentajeGarantias // ignore: cast_nullable_to_non_nullable
+              as double,
+      centralCompras: freezed == centralCompras
+          ? _value.centralCompras
+          : centralCompras // ignore: cast_nullable_to_non_nullable
+              as String?,
+      urlWeb: freezed == urlWeb
+          ? _value.urlWeb
+          : urlWeb // ignore: cast_nullable_to_non_nullable
+              as String?,
+      divisa: freezed == divisa
+          ? _value.divisa
+          : divisa // ignore: cast_nullable_to_non_nullable
+              as Divisa?,
+      tarifaId: freezed == tarifaId
+          ? _value.tarifaId
+          : tarifaId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tarifaDescripcion: freezed == tarifaDescripcion
+          ? _value.tarifaDescripcion
+          : tarifaDescripcion // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descuentoGeneralId: freezed == descuentoGeneralId
+          ? _value.descuentoGeneralId
+          : descuentoGeneralId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionDescuentoGeneral: freezed == descripcionDescuentoGeneral
+          ? _value.descripcionDescuentoGeneral
+          : descripcionDescuentoGeneral // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tipoCalculoPrecio: null == tipoCalculoPrecio
+          ? _value.tipoCalculoPrecio
+          : tipoCalculoPrecio // ignore: cast_nullable_to_non_nullable
+              as String,
+      plazoDeCobro: freezed == plazoDeCobro
+          ? _value.plazoDeCobro
+          : plazoDeCobro // ignore: cast_nullable_to_non_nullable
+              as PlazoDeCobro?,
+      metodoDeCobro: freezed == metodoDeCobro
+          ? _value.metodoDeCobro
+          : metodoDeCobro // ignore: cast_nullable_to_non_nullable
+              as MetodoDeCobro?,
+      descuentoProntoPago: null == descuentoProntoPago
+          ? _value.descuentoProntoPago
+          : descuentoProntoPago // ignore: cast_nullable_to_non_nullable
+              as double,
+      riesgoConcedidoInterno: null == riesgoConcedidoInterno
+          ? _value.riesgoConcedidoInterno
+          : riesgoConcedidoInterno // ignore: cast_nullable_to_non_nullable
+              as Money,
+      riesgoConcedidoInternoDate: freezed == riesgoConcedidoInternoDate
+          ? _value.riesgoConcedidoInternoDate
+          : riesgoConcedidoInternoDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      riesgoConcedidoCoafe: null == riesgoConcedidoCoafe
+          ? _value.riesgoConcedidoCoafe
+          : riesgoConcedidoCoafe // ignore: cast_nullable_to_non_nullable
+              as Money,
+      riesgoConcedidoCoafeFecha: freezed == riesgoConcedidoCoafeFecha
+          ? _value.riesgoConcedidoCoafeFecha
+          : riesgoConcedidoCoafeFecha // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      riesgoActual: null == riesgoActual
+          ? _value.riesgoActual
+          : riesgoActual // ignore: cast_nullable_to_non_nullable
+              as Money,
+      riesgoConcedido: freezed == riesgoConcedido
+          ? _value.riesgoConcedido
+          : riesgoConcedido // ignore: cast_nullable_to_non_nullable
+              as Money?,
+      riesgoPendienteCobroVencido: freezed == riesgoPendienteCobroVencido
+          ? _value.riesgoPendienteCobroVencido
+          : riesgoPendienteCobroVencido // ignore: cast_nullable_to_non_nullable
+              as Money?,
+      riesgoPendienteCobroNoVencido: freezed == riesgoPendienteCobroNoVencido
+          ? _value.riesgoPendienteCobroNoVencido
+          : riesgoPendienteCobroNoVencido // ignore: cast_nullable_to_non_nullable
+              as Money?,
+      riesgoPendienteServir: freezed == riesgoPendienteServir
+          ? _value.riesgoPendienteServir
+          : riesgoPendienteServir // ignore: cast_nullable_to_non_nullable
+              as Money?,
+      riesgoPendienteFacturar: freezed == riesgoPendienteFacturar
+          ? _value.riesgoPendienteFacturar
+          : riesgoPendienteFacturar // ignore: cast_nullable_to_non_nullable
+              as Money?,
+      riesgoExcedido: null == riesgoExcedido
+          ? _value.riesgoExcedido
+          : riesgoExcedido // ignore: cast_nullable_to_non_nullable
+              as Money,
+      obvservacionesInternas: freezed == obvservacionesInternas
+          ? _value.obvservacionesInternas
+          : obvservacionesInternas // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clientePotencial: freezed == clientePotencial
+          ? _value.clientePotencial
+          : clientePotencial // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      clienteEstadoPotencial: freezed == clienteEstadoPotencial
+          ? _value.clienteEstadoPotencial
+          : clienteEstadoPotencial // ignore: cast_nullable_to_non_nullable
+              as ClienteEstadoPotencial?,
+      clienteTipoPotencial: freezed == clienteTipoPotencial
+          ? _value.clienteTipoPotencial
+          : clienteTipoPotencial // ignore: cast_nullable_to_non_nullable
+              as ClienteTipoPotencial?,
+      representante1Id: freezed == representante1Id
+          ? _value.representante1Id
+          : representante1Id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      representante1Nombre: freezed == representante1Nombre
+          ? _value.representante1Nombre
+          : representante1Nombre // ignore: cast_nullable_to_non_nullable
+              as String?,
+      representante2Id: freezed == representante2Id
+          ? _value.representante2Id
+          : representante2Id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      representante2Nombre: freezed == representante2Nombre
+          ? _value.representante2Nombre
+          : representante2Nombre // ignore: cast_nullable_to_non_nullable
+              as String?,
+      telefonoMovil: freezed == telefonoMovil
+          ? _value.telefonoMovil
+          : telefonoMovil // ignore: cast_nullable_to_non_nullable
+              as String?,
+      telefonoFijo: freezed == telefonoFijo
+          ? _value.telefonoFijo
+          : telefonoFijo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sector: freezed == sector
+          ? _value.sector
+          : sector // ignore: cast_nullable_to_non_nullable
+              as Sector?,
+      subsector: freezed == subsector
+          ? _value.subsector
+          : subsector // ignore: cast_nullable_to_non_nullable
+              as Subsector?,
+      lastUpdated: freezed == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$ClienteImpl extends _Cliente {
-  const _$ClienteImpl({
-    required this.id,
-    required this.nombreCliente,
-    required this.nombreFiscal,
-    this.nif,
-    this.direccionFiscal1,
-    this.direccionFiscal2,
-    this.codigoPostalFiscal,
-    this.poblacionFiscal,
-    this.provinciaFiscal,
-    this.paisFiscal,
-    required this.latitudFiscal,
-    required this.longitudFiscal,
-    this.direccionPredeterminada1,
-    this.direccionPredeterminada2,
-    this.codigoPostalPredeterminada,
-    this.poblacionPredeterminada,
-    this.provinciaPredeterminada,
-    this.paisPredeterminada,
-    this.latitudPredeterminada,
-    this.longitudPredeterminada,
-    required this.empresaId,
-    required this.iva,
-    required this.ventasAnyoActual,
-    required this.ventasAnyoAnterior,
-    required this.ventasHaceDosAnyos,
-    required this.margenAnyoActual,
-    required this.margenAnyoAnterior,
-    required this.margenHaceDosAnyos,
-    required this.porcentajeAbonos,
-    required this.porcentajeGarantias,
-    this.centralCompras,
-    this.urlWeb,
-    this.divisa,
-    this.tarifaId,
-    this.tarifaDescripcion,
-    this.descuentoGeneralId,
-    this.descripcionDescuentoGeneral,
-    required this.tipoCalculoPrecio,
-    this.plazoDeCobro,
-    this.metodoDeCobro,
-    required this.descuentoProntoPago,
-    required this.riesgoConcedidoInterno,
-    this.riesgoConcedidoInternoDate,
-    required this.riesgoConcedidoCoafe,
-    this.riesgoConcedidoCoafeFecha,
-    required this.riesgoActual,
-    this.riesgoConcedido,
-    this.riesgoPendienteCobroVencido,
-    this.riesgoPendienteCobroNoVencido,
-    this.riesgoPendienteServir,
-    this.riesgoPendienteFacturar,
-    required this.riesgoExcedido,
-    this.obvservacionesInternas,
-    this.clientePotencial,
-    this.clienteEstadoPotencial,
-    this.clienteTipoPotencial,
-    this.representante1Id,
-    this.representante1Nombre,
-    this.representante2Id,
-    this.representante2Nombre,
-    this.telefonoMovil,
-    this.telefonoFijo,
-    this.email,
-    this.sector,
-    this.subsector,
-    this.lastUpdated,
-    required this.deleted,
-  }) : super._();
+  const _$ClienteImpl(
+      {required this.id,
+      required this.nombreCliente,
+      required this.nombreFiscal,
+      this.nif,
+      this.direccionFiscal1,
+      this.direccionFiscal2,
+      this.codigoPostalFiscal,
+      this.poblacionFiscal,
+      this.provinciaFiscal,
+      this.paisFiscal,
+      required this.latitudFiscal,
+      required this.longitudFiscal,
+      this.direccionPredeterminada1,
+      this.direccionPredeterminada2,
+      this.codigoPostalPredeterminada,
+      this.poblacionPredeterminada,
+      this.provinciaPredeterminada,
+      this.paisPredeterminada,
+      this.latitudPredeterminada,
+      this.longitudPredeterminada,
+      required this.empresaId,
+      required this.iva,
+      required this.ventasAnyoActual,
+      required this.ventasAnyoAnterior,
+      required this.ventasHaceDosAnyos,
+      required this.margenAnyoActual,
+      required this.margenAnyoAnterior,
+      required this.margenHaceDosAnyos,
+      required this.porcentajeAbonos,
+      required this.porcentajeGarantias,
+      this.centralCompras,
+      this.urlWeb,
+      this.divisa,
+      this.tarifaId,
+      this.tarifaDescripcion,
+      this.descuentoGeneralId,
+      this.descripcionDescuentoGeneral,
+      required this.tipoCalculoPrecio,
+      this.plazoDeCobro,
+      this.metodoDeCobro,
+      required this.descuentoProntoPago,
+      required this.riesgoConcedidoInterno,
+      this.riesgoConcedidoInternoDate,
+      required this.riesgoConcedidoCoafe,
+      this.riesgoConcedidoCoafeFecha,
+      required this.riesgoActual,
+      this.riesgoConcedido,
+      this.riesgoPendienteCobroVencido,
+      this.riesgoPendienteCobroNoVencido,
+      this.riesgoPendienteServir,
+      this.riesgoPendienteFacturar,
+      required this.riesgoExcedido,
+      this.obvservacionesInternas,
+      this.clientePotencial,
+      this.clienteEstadoPotencial,
+      this.clienteTipoPotencial,
+      this.representante1Id,
+      this.representante1Nombre,
+      this.representante2Id,
+      this.representante2Nombre,
+      this.telefonoMovil,
+      this.telefonoFijo,
+      this.email,
+      this.sector,
+      this.subsector,
+      this.lastUpdated,
+      required this.deleted})
+      : super._();
 
   @override
   final String id;
@@ -1500,31 +1353,16 @@ class _$ClienteImpl extends _Cliente {
                 other.latitudFiscal == latitudFiscal) &&
             (identical(other.longitudFiscal, longitudFiscal) ||
                 other.longitudFiscal == longitudFiscal) &&
-            (identical(
-                  other.direccionPredeterminada1,
-                  direccionPredeterminada1,
-                ) ||
+            (identical(other.direccionPredeterminada1, direccionPredeterminada1) ||
                 other.direccionPredeterminada1 == direccionPredeterminada1) &&
-            (identical(
-                  other.direccionPredeterminada2,
-                  direccionPredeterminada2,
-                ) ||
+            (identical(other.direccionPredeterminada2, direccionPredeterminada2) ||
                 other.direccionPredeterminada2 == direccionPredeterminada2) &&
-            (identical(
-                  other.codigoPostalPredeterminada,
-                  codigoPostalPredeterminada,
-                ) ||
+            (identical(other.codigoPostalPredeterminada, codigoPostalPredeterminada) ||
                 other.codigoPostalPredeterminada ==
                     codigoPostalPredeterminada) &&
-            (identical(
-                  other.poblacionPredeterminada,
-                  poblacionPredeterminada,
-                ) ||
+            (identical(other.poblacionPredeterminada, poblacionPredeterminada) ||
                 other.poblacionPredeterminada == poblacionPredeterminada) &&
-            (identical(
-                  other.provinciaPredeterminada,
-                  provinciaPredeterminada,
-                ) ||
+            (identical(other.provinciaPredeterminada, provinciaPredeterminada) ||
                 other.provinciaPredeterminada == provinciaPredeterminada) &&
             (identical(other.paisPredeterminada, paisPredeterminada) ||
                 other.paisPredeterminada == paisPredeterminada) &&
@@ -1551,170 +1389,116 @@ class _$ClienteImpl extends _Cliente {
                 other.porcentajeAbonos == porcentajeAbonos) &&
             (identical(other.porcentajeGarantias, porcentajeGarantias) ||
                 other.porcentajeGarantias == porcentajeGarantias) &&
-            (identical(other.centralCompras, centralCompras) ||
-                other.centralCompras == centralCompras) &&
+            (identical(other.centralCompras, centralCompras) || other.centralCompras == centralCompras) &&
             (identical(other.urlWeb, urlWeb) || other.urlWeb == urlWeb) &&
             (identical(other.divisa, divisa) || other.divisa == divisa) &&
-            (identical(other.tarifaId, tarifaId) ||
-                other.tarifaId == tarifaId) &&
-            (identical(other.tarifaDescripcion, tarifaDescripcion) ||
-                other.tarifaDescripcion == tarifaDescripcion) &&
-            (identical(other.descuentoGeneralId, descuentoGeneralId) ||
-                other.descuentoGeneralId == descuentoGeneralId) &&
-            (identical(
-                  other.descripcionDescuentoGeneral,
-                  descripcionDescuentoGeneral,
-                ) ||
-                other.descripcionDescuentoGeneral ==
-                    descripcionDescuentoGeneral) &&
-            (identical(other.tipoCalculoPrecio, tipoCalculoPrecio) ||
-                other.tipoCalculoPrecio == tipoCalculoPrecio) &&
-            (identical(other.plazoDeCobro, plazoDeCobro) ||
-                other.plazoDeCobro == plazoDeCobro) &&
-            (identical(other.metodoDeCobro, metodoDeCobro) ||
-                other.metodoDeCobro == metodoDeCobro) &&
-            (identical(other.descuentoProntoPago, descuentoProntoPago) ||
-                other.descuentoProntoPago == descuentoProntoPago) &&
-            (identical(other.riesgoConcedidoInterno, riesgoConcedidoInterno) ||
-                other.riesgoConcedidoInterno == riesgoConcedidoInterno) &&
-            (identical(
-                  other.riesgoConcedidoInternoDate,
-                  riesgoConcedidoInternoDate,
-                ) ||
-                other.riesgoConcedidoInternoDate ==
-                    riesgoConcedidoInternoDate) &&
-            (identical(other.riesgoConcedidoCoafe, riesgoConcedidoCoafe) ||
-                other.riesgoConcedidoCoafe == riesgoConcedidoCoafe) &&
-            (identical(
-                  other.riesgoConcedidoCoafeFecha,
-                  riesgoConcedidoCoafeFecha,
-                ) ||
-                other.riesgoConcedidoCoafeFecha == riesgoConcedidoCoafeFecha) &&
-            (identical(other.riesgoActual, riesgoActual) ||
-                other.riesgoActual == riesgoActual) &&
-            (identical(other.riesgoConcedido, riesgoConcedido) ||
-                other.riesgoConcedido == riesgoConcedido) &&
-            (identical(
-                  other.riesgoPendienteCobroVencido,
-                  riesgoPendienteCobroVencido,
-                ) ||
-                other.riesgoPendienteCobroVencido ==
-                    riesgoPendienteCobroVencido) &&
-            (identical(
-                  other.riesgoPendienteCobroNoVencido,
-                  riesgoPendienteCobroNoVencido,
-                ) ||
-                other.riesgoPendienteCobroNoVencido ==
-                    riesgoPendienteCobroNoVencido) &&
-            (identical(other.riesgoPendienteServir, riesgoPendienteServir) ||
-                other.riesgoPendienteServir == riesgoPendienteServir) &&
-            (identical(
-                  other.riesgoPendienteFacturar,
-                  riesgoPendienteFacturar,
-                ) ||
-                other.riesgoPendienteFacturar == riesgoPendienteFacturar) &&
-            (identical(other.riesgoExcedido, riesgoExcedido) ||
-                other.riesgoExcedido == riesgoExcedido) &&
-            (identical(other.obvservacionesInternas, obvservacionesInternas) ||
-                other.obvservacionesInternas == obvservacionesInternas) &&
-            (identical(other.clientePotencial, clientePotencial) ||
-                other.clientePotencial == clientePotencial) &&
-            (identical(other.clienteEstadoPotencial, clienteEstadoPotencial) ||
-                other.clienteEstadoPotencial == clienteEstadoPotencial) &&
-            (identical(other.clienteTipoPotencial, clienteTipoPotencial) ||
-                other.clienteTipoPotencial == clienteTipoPotencial) &&
-            (identical(other.representante1Id, representante1Id) ||
-                other.representante1Id == representante1Id) &&
-            (identical(other.representante1Nombre, representante1Nombre) ||
-                other.representante1Nombre == representante1Nombre) &&
-            (identical(other.representante2Id, representante2Id) ||
-                other.representante2Id == representante2Id) &&
-            (identical(other.representante2Nombre, representante2Nombre) ||
-                other.representante2Nombre == representante2Nombre) &&
-            (identical(other.telefonoMovil, telefonoMovil) ||
-                other.telefonoMovil == telefonoMovil) &&
-            (identical(other.telefonoFijo, telefonoFijo) ||
-                other.telefonoFijo == telefonoFijo) &&
+            (identical(other.tarifaId, tarifaId) || other.tarifaId == tarifaId) &&
+            (identical(other.tarifaDescripcion, tarifaDescripcion) || other.tarifaDescripcion == tarifaDescripcion) &&
+            (identical(other.descuentoGeneralId, descuentoGeneralId) || other.descuentoGeneralId == descuentoGeneralId) &&
+            (identical(other.descripcionDescuentoGeneral, descripcionDescuentoGeneral) || other.descripcionDescuentoGeneral == descripcionDescuentoGeneral) &&
+            (identical(other.tipoCalculoPrecio, tipoCalculoPrecio) || other.tipoCalculoPrecio == tipoCalculoPrecio) &&
+            (identical(other.plazoDeCobro, plazoDeCobro) || other.plazoDeCobro == plazoDeCobro) &&
+            (identical(other.metodoDeCobro, metodoDeCobro) || other.metodoDeCobro == metodoDeCobro) &&
+            (identical(other.descuentoProntoPago, descuentoProntoPago) || other.descuentoProntoPago == descuentoProntoPago) &&
+            (identical(other.riesgoConcedidoInterno, riesgoConcedidoInterno) || other.riesgoConcedidoInterno == riesgoConcedidoInterno) &&
+            (identical(other.riesgoConcedidoInternoDate, riesgoConcedidoInternoDate) || other.riesgoConcedidoInternoDate == riesgoConcedidoInternoDate) &&
+            (identical(other.riesgoConcedidoCoafe, riesgoConcedidoCoafe) || other.riesgoConcedidoCoafe == riesgoConcedidoCoafe) &&
+            (identical(other.riesgoConcedidoCoafeFecha, riesgoConcedidoCoafeFecha) || other.riesgoConcedidoCoafeFecha == riesgoConcedidoCoafeFecha) &&
+            (identical(other.riesgoActual, riesgoActual) || other.riesgoActual == riesgoActual) &&
+            (identical(other.riesgoConcedido, riesgoConcedido) || other.riesgoConcedido == riesgoConcedido) &&
+            (identical(other.riesgoPendienteCobroVencido, riesgoPendienteCobroVencido) || other.riesgoPendienteCobroVencido == riesgoPendienteCobroVencido) &&
+            (identical(other.riesgoPendienteCobroNoVencido, riesgoPendienteCobroNoVencido) || other.riesgoPendienteCobroNoVencido == riesgoPendienteCobroNoVencido) &&
+            (identical(other.riesgoPendienteServir, riesgoPendienteServir) || other.riesgoPendienteServir == riesgoPendienteServir) &&
+            (identical(other.riesgoPendienteFacturar, riesgoPendienteFacturar) || other.riesgoPendienteFacturar == riesgoPendienteFacturar) &&
+            (identical(other.riesgoExcedido, riesgoExcedido) || other.riesgoExcedido == riesgoExcedido) &&
+            (identical(other.obvservacionesInternas, obvservacionesInternas) || other.obvservacionesInternas == obvservacionesInternas) &&
+            (identical(other.clientePotencial, clientePotencial) || other.clientePotencial == clientePotencial) &&
+            (identical(other.clienteEstadoPotencial, clienteEstadoPotencial) || other.clienteEstadoPotencial == clienteEstadoPotencial) &&
+            (identical(other.clienteTipoPotencial, clienteTipoPotencial) || other.clienteTipoPotencial == clienteTipoPotencial) &&
+            (identical(other.representante1Id, representante1Id) || other.representante1Id == representante1Id) &&
+            (identical(other.representante1Nombre, representante1Nombre) || other.representante1Nombre == representante1Nombre) &&
+            (identical(other.representante2Id, representante2Id) || other.representante2Id == representante2Id) &&
+            (identical(other.representante2Nombre, representante2Nombre) || other.representante2Nombre == representante2Nombre) &&
+            (identical(other.telefonoMovil, telefonoMovil) || other.telefonoMovil == telefonoMovil) &&
+            (identical(other.telefonoFijo, telefonoFijo) || other.telefonoFijo == telefonoFijo) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.sector, sector) || other.sector == sector) &&
-            (identical(other.subsector, subsector) ||
-                other.subsector == subsector) &&
-            (identical(other.lastUpdated, lastUpdated) ||
-                other.lastUpdated == lastUpdated) &&
+            (identical(other.subsector, subsector) || other.subsector == subsector) &&
+            (identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated) &&
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @override
   int get hashCode => Object.hashAll([
-    runtimeType,
-    id,
-    nombreCliente,
-    nombreFiscal,
-    nif,
-    direccionFiscal1,
-    direccionFiscal2,
-    codigoPostalFiscal,
-    poblacionFiscal,
-    provinciaFiscal,
-    paisFiscal,
-    latitudFiscal,
-    longitudFiscal,
-    direccionPredeterminada1,
-    direccionPredeterminada2,
-    codigoPostalPredeterminada,
-    poblacionPredeterminada,
-    provinciaPredeterminada,
-    paisPredeterminada,
-    latitudPredeterminada,
-    longitudPredeterminada,
-    empresaId,
-    iva,
-    ventasAnyoActual,
-    ventasAnyoAnterior,
-    ventasHaceDosAnyos,
-    margenAnyoActual,
-    margenAnyoAnterior,
-    margenHaceDosAnyos,
-    porcentajeAbonos,
-    porcentajeGarantias,
-    centralCompras,
-    urlWeb,
-    divisa,
-    tarifaId,
-    tarifaDescripcion,
-    descuentoGeneralId,
-    descripcionDescuentoGeneral,
-    tipoCalculoPrecio,
-    plazoDeCobro,
-    metodoDeCobro,
-    descuentoProntoPago,
-    riesgoConcedidoInterno,
-    riesgoConcedidoInternoDate,
-    riesgoConcedidoCoafe,
-    riesgoConcedidoCoafeFecha,
-    riesgoActual,
-    riesgoConcedido,
-    riesgoPendienteCobroVencido,
-    riesgoPendienteCobroNoVencido,
-    riesgoPendienteServir,
-    riesgoPendienteFacturar,
-    riesgoExcedido,
-    obvservacionesInternas,
-    clientePotencial,
-    clienteEstadoPotencial,
-    clienteTipoPotencial,
-    representante1Id,
-    representante1Nombre,
-    representante2Id,
-    representante2Nombre,
-    telefonoMovil,
-    telefonoFijo,
-    email,
-    sector,
-    subsector,
-    lastUpdated,
-    deleted,
-  ]);
+        runtimeType,
+        id,
+        nombreCliente,
+        nombreFiscal,
+        nif,
+        direccionFiscal1,
+        direccionFiscal2,
+        codigoPostalFiscal,
+        poblacionFiscal,
+        provinciaFiscal,
+        paisFiscal,
+        latitudFiscal,
+        longitudFiscal,
+        direccionPredeterminada1,
+        direccionPredeterminada2,
+        codigoPostalPredeterminada,
+        poblacionPredeterminada,
+        provinciaPredeterminada,
+        paisPredeterminada,
+        latitudPredeterminada,
+        longitudPredeterminada,
+        empresaId,
+        iva,
+        ventasAnyoActual,
+        ventasAnyoAnterior,
+        ventasHaceDosAnyos,
+        margenAnyoActual,
+        margenAnyoAnterior,
+        margenHaceDosAnyos,
+        porcentajeAbonos,
+        porcentajeGarantias,
+        centralCompras,
+        urlWeb,
+        divisa,
+        tarifaId,
+        tarifaDescripcion,
+        descuentoGeneralId,
+        descripcionDescuentoGeneral,
+        tipoCalculoPrecio,
+        plazoDeCobro,
+        metodoDeCobro,
+        descuentoProntoPago,
+        riesgoConcedidoInterno,
+        riesgoConcedidoInternoDate,
+        riesgoConcedidoCoafe,
+        riesgoConcedidoCoafeFecha,
+        riesgoActual,
+        riesgoConcedido,
+        riesgoPendienteCobroVencido,
+        riesgoPendienteCobroNoVencido,
+        riesgoPendienteServir,
+        riesgoPendienteFacturar,
+        riesgoExcedido,
+        obvservacionesInternas,
+        clientePotencial,
+        clienteEstadoPotencial,
+        clienteTipoPotencial,
+        representante1Id,
+        representante1Nombre,
+        representante2Id,
+        representante2Nombre,
+        telefonoMovil,
+        telefonoFijo,
+        email,
+        sector,
+        subsector,
+        lastUpdated,
+        deleted
+      ]);
 
   /// Create a copy of Cliente
   /// with the given fields replaced by the non-null parameter values.
@@ -1726,75 +1510,74 @@ class _$ClienteImpl extends _Cliente {
 }
 
 abstract class _Cliente extends Cliente {
-  const factory _Cliente({
-    required final String id,
-    required final String nombreCliente,
-    required final String nombreFiscal,
-    final String? nif,
-    final String? direccionFiscal1,
-    final String? direccionFiscal2,
-    final String? codigoPostalFiscal,
-    final String? poblacionFiscal,
-    final String? provinciaFiscal,
-    final Pais? paisFiscal,
-    required final double latitudFiscal,
-    required final double longitudFiscal,
-    final String? direccionPredeterminada1,
-    final String? direccionPredeterminada2,
-    final String? codigoPostalPredeterminada,
-    final String? poblacionPredeterminada,
-    final String? provinciaPredeterminada,
-    final Pais? paisPredeterminada,
-    final double? latitudPredeterminada,
-    final double? longitudPredeterminada,
-    required final String empresaId,
-    required final double iva,
-    required final Money ventasAnyoActual,
-    required final Money ventasAnyoAnterior,
-    required final Money ventasHaceDosAnyos,
-    required final double margenAnyoActual,
-    required final double margenAnyoAnterior,
-    required final double margenHaceDosAnyos,
-    required final double porcentajeAbonos,
-    required final double porcentajeGarantias,
-    final String? centralCompras,
-    final String? urlWeb,
-    final Divisa? divisa,
-    final String? tarifaId,
-    final String? tarifaDescripcion,
-    final String? descuentoGeneralId,
-    final String? descripcionDescuentoGeneral,
-    required final String tipoCalculoPrecio,
-    final PlazoDeCobro? plazoDeCobro,
-    final MetodoDeCobro? metodoDeCobro,
-    required final double descuentoProntoPago,
-    required final Money riesgoConcedidoInterno,
-    final DateTime? riesgoConcedidoInternoDate,
-    required final Money riesgoConcedidoCoafe,
-    final DateTime? riesgoConcedidoCoafeFecha,
-    required final Money riesgoActual,
-    final Money? riesgoConcedido,
-    final Money? riesgoPendienteCobroVencido,
-    final Money? riesgoPendienteCobroNoVencido,
-    final Money? riesgoPendienteServir,
-    final Money? riesgoPendienteFacturar,
-    required final Money riesgoExcedido,
-    final String? obvservacionesInternas,
-    final bool? clientePotencial,
-    final ClienteEstadoPotencial? clienteEstadoPotencial,
-    final ClienteTipoPotencial? clienteTipoPotencial,
-    final String? representante1Id,
-    final String? representante1Nombre,
-    final String? representante2Id,
-    final String? representante2Nombre,
-    final String? telefonoMovil,
-    final String? telefonoFijo,
-    final String? email,
-    final Sector? sector,
-    final Subsector? subsector,
-    final DateTime? lastUpdated,
-    required final bool deleted,
-  }) = _$ClienteImpl;
+  const factory _Cliente(
+      {required final String id,
+      required final String nombreCliente,
+      required final String nombreFiscal,
+      final String? nif,
+      final String? direccionFiscal1,
+      final String? direccionFiscal2,
+      final String? codigoPostalFiscal,
+      final String? poblacionFiscal,
+      final String? provinciaFiscal,
+      final Pais? paisFiscal,
+      required final double latitudFiscal,
+      required final double longitudFiscal,
+      final String? direccionPredeterminada1,
+      final String? direccionPredeterminada2,
+      final String? codigoPostalPredeterminada,
+      final String? poblacionPredeterminada,
+      final String? provinciaPredeterminada,
+      final Pais? paisPredeterminada,
+      final double? latitudPredeterminada,
+      final double? longitudPredeterminada,
+      required final String empresaId,
+      required final double iva,
+      required final Money ventasAnyoActual,
+      required final Money ventasAnyoAnterior,
+      required final Money ventasHaceDosAnyos,
+      required final double margenAnyoActual,
+      required final double margenAnyoAnterior,
+      required final double margenHaceDosAnyos,
+      required final double porcentajeAbonos,
+      required final double porcentajeGarantias,
+      final String? centralCompras,
+      final String? urlWeb,
+      final Divisa? divisa,
+      final String? tarifaId,
+      final String? tarifaDescripcion,
+      final String? descuentoGeneralId,
+      final String? descripcionDescuentoGeneral,
+      required final String tipoCalculoPrecio,
+      final PlazoDeCobro? plazoDeCobro,
+      final MetodoDeCobro? metodoDeCobro,
+      required final double descuentoProntoPago,
+      required final Money riesgoConcedidoInterno,
+      final DateTime? riesgoConcedidoInternoDate,
+      required final Money riesgoConcedidoCoafe,
+      final DateTime? riesgoConcedidoCoafeFecha,
+      required final Money riesgoActual,
+      final Money? riesgoConcedido,
+      final Money? riesgoPendienteCobroVencido,
+      final Money? riesgoPendienteCobroNoVencido,
+      final Money? riesgoPendienteServir,
+      final Money? riesgoPendienteFacturar,
+      required final Money riesgoExcedido,
+      final String? obvservacionesInternas,
+      final bool? clientePotencial,
+      final ClienteEstadoPotencial? clienteEstadoPotencial,
+      final ClienteTipoPotencial? clienteTipoPotencial,
+      final String? representante1Id,
+      final String? representante1Nombre,
+      final String? representante2Id,
+      final String? representante2Nombre,
+      final String? telefonoMovil,
+      final String? telefonoFijo,
+      final String? email,
+      final Sector? sector,
+      final Subsector? subsector,
+      final DateTime? lastUpdated,
+      required final bool deleted}) = _$ClienteImpl;
   const _Cliente._() : super._();
 
   @override

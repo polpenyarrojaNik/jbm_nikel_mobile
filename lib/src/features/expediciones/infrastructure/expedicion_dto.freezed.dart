@@ -12,8 +12,7 @@ part of 'expedicion_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ExpedicionDTO _$ExpedicionDTOFromJson(Map<String, dynamic> json) {
   return _ExpedicionDTO.fromJson(json);
@@ -79,34 +78,32 @@ mixin _$ExpedicionDTO {
 /// @nodoc
 abstract class $ExpedicionDTOCopyWith<$Res> {
   factory $ExpedicionDTOCopyWith(
-    ExpedicionDTO value,
-    $Res Function(ExpedicionDTO) then,
-  ) = _$ExpedicionDTOCopyWithImpl<$Res, ExpedicionDTO>;
+          ExpedicionDTO value, $Res Function(ExpedicionDTO) then) =
+      _$ExpedicionDTOCopyWithImpl<$Res, ExpedicionDTO>;
   @useResult
-  $Res call({
-    @JsonKey(name: 'EMPRESA_ID') String empresaId,
-    @JsonKey(name: 'PEDIDO_ID') String pedidoVentaId,
-    @JsonKey(name: 'FECHA_PEDIDO') DateTime pedidoVentaDate,
-    @JsonKey(name: 'CLIENTE_ID') String clienteId,
-    @JsonKey(name: 'DIRECCION_ID') String? direccionId,
-    @JsonKey(name: 'NOMRE_CLIENTE') String nombreCliente,
-    @JsonKey(name: 'CODIGO_POSTAL') String? codigoPostal,
-    @JsonKey(name: 'POBLACION') String? poblacion,
-    @JsonKey(name: 'PROVINCIA') String? provincia,
-    @JsonKey(name: 'PAIS_ID') String? paisId,
-    @JsonKey(name: 'DIVISA_ID') String divisaId,
-    @JsonKey(name: 'BASE_IMPONIBLE') double baseImponible,
-    @JsonKey(name: 'ESTADO_PEDIDO_ID') int pedidoVentaEstadoId,
-    @JsonKey(name: 'NUM_LINEAS') int numLineas,
-    @JsonKey(name: 'TRACKING_ESTADO') String estadoTrackingId,
-    @JsonKey(name: 'ALBARAN_ID') String albaranId,
-    @JsonKey(name: 'TRACK_ID') String? trackId,
-    @JsonKey(name: 'AGENCIA') String? agencia,
-    @JsonKey(name: 'FECHA_ALBARAN') DateTime fechaAlbaran,
-    @JsonKey(name: 'OFERTA_SN') String oferta,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'EMPRESA_ID') String empresaId,
+      @JsonKey(name: 'PEDIDO_ID') String pedidoVentaId,
+      @JsonKey(name: 'FECHA_PEDIDO') DateTime pedidoVentaDate,
+      @JsonKey(name: 'CLIENTE_ID') String clienteId,
+      @JsonKey(name: 'DIRECCION_ID') String? direccionId,
+      @JsonKey(name: 'NOMRE_CLIENTE') String nombreCliente,
+      @JsonKey(name: 'CODIGO_POSTAL') String? codigoPostal,
+      @JsonKey(name: 'POBLACION') String? poblacion,
+      @JsonKey(name: 'PROVINCIA') String? provincia,
+      @JsonKey(name: 'PAIS_ID') String? paisId,
+      @JsonKey(name: 'DIVISA_ID') String divisaId,
+      @JsonKey(name: 'BASE_IMPONIBLE') double baseImponible,
+      @JsonKey(name: 'ESTADO_PEDIDO_ID') int pedidoVentaEstadoId,
+      @JsonKey(name: 'NUM_LINEAS') int numLineas,
+      @JsonKey(name: 'TRACKING_ESTADO') String estadoTrackingId,
+      @JsonKey(name: 'ALBARAN_ID') String albaranId,
+      @JsonKey(name: 'TRACK_ID') String? trackId,
+      @JsonKey(name: 'AGENCIA') String? agencia,
+      @JsonKey(name: 'FECHA_ALBARAN') DateTime fechaAlbaran,
+      @JsonKey(name: 'OFERTA_SN') String oferta,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
@@ -147,121 +144,96 @@ class _$ExpedicionDTOCopyWithImpl<$Res, $Val extends ExpedicionDTO>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            empresaId:
-                null == empresaId
-                    ? _value.empresaId
-                    : empresaId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            pedidoVentaId:
-                null == pedidoVentaId
-                    ? _value.pedidoVentaId
-                    : pedidoVentaId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            pedidoVentaDate:
-                null == pedidoVentaDate
-                    ? _value.pedidoVentaDate
-                    : pedidoVentaDate // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            clienteId:
-                null == clienteId
-                    ? _value.clienteId
-                    : clienteId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            direccionId:
-                freezed == direccionId
-                    ? _value.direccionId
-                    : direccionId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            nombreCliente:
-                null == nombreCliente
-                    ? _value.nombreCliente
-                    : nombreCliente // ignore: cast_nullable_to_non_nullable
-                        as String,
-            codigoPostal:
-                freezed == codigoPostal
-                    ? _value.codigoPostal
-                    : codigoPostal // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            poblacion:
-                freezed == poblacion
-                    ? _value.poblacion
-                    : poblacion // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            provincia:
-                freezed == provincia
-                    ? _value.provincia
-                    : provincia // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            paisId:
-                freezed == paisId
-                    ? _value.paisId
-                    : paisId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            divisaId:
-                null == divisaId
-                    ? _value.divisaId
-                    : divisaId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            baseImponible:
-                null == baseImponible
-                    ? _value.baseImponible
-                    : baseImponible // ignore: cast_nullable_to_non_nullable
-                        as double,
-            pedidoVentaEstadoId:
-                null == pedidoVentaEstadoId
-                    ? _value.pedidoVentaEstadoId
-                    : pedidoVentaEstadoId // ignore: cast_nullable_to_non_nullable
-                        as int,
-            numLineas:
-                null == numLineas
-                    ? _value.numLineas
-                    : numLineas // ignore: cast_nullable_to_non_nullable
-                        as int,
-            estadoTrackingId:
-                null == estadoTrackingId
-                    ? _value.estadoTrackingId
-                    : estadoTrackingId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            albaranId:
-                null == albaranId
-                    ? _value.albaranId
-                    : albaranId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            trackId:
-                freezed == trackId
-                    ? _value.trackId
-                    : trackId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            agencia:
-                freezed == agencia
-                    ? _value.agencia
-                    : agencia // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            fechaAlbaran:
-                null == fechaAlbaran
-                    ? _value.fechaAlbaran
-                    : fechaAlbaran // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            oferta:
-                null == oferta
-                    ? _value.oferta
-                    : oferta // ignore: cast_nullable_to_non_nullable
-                        as String,
-            lastUpdated:
-                null == lastUpdated
-                    ? _value.lastUpdated
-                    : lastUpdated // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      empresaId: null == empresaId
+          ? _value.empresaId
+          : empresaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      pedidoVentaId: null == pedidoVentaId
+          ? _value.pedidoVentaId
+          : pedidoVentaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      pedidoVentaDate: null == pedidoVentaDate
+          ? _value.pedidoVentaDate
+          : pedidoVentaDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      direccionId: freezed == direccionId
+          ? _value.direccionId
+          : direccionId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nombreCliente: null == nombreCliente
+          ? _value.nombreCliente
+          : nombreCliente // ignore: cast_nullable_to_non_nullable
+              as String,
+      codigoPostal: freezed == codigoPostal
+          ? _value.codigoPostal
+          : codigoPostal // ignore: cast_nullable_to_non_nullable
+              as String?,
+      poblacion: freezed == poblacion
+          ? _value.poblacion
+          : poblacion // ignore: cast_nullable_to_non_nullable
+              as String?,
+      provincia: freezed == provincia
+          ? _value.provincia
+          : provincia // ignore: cast_nullable_to_non_nullable
+              as String?,
+      paisId: freezed == paisId
+          ? _value.paisId
+          : paisId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      divisaId: null == divisaId
+          ? _value.divisaId
+          : divisaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      baseImponible: null == baseImponible
+          ? _value.baseImponible
+          : baseImponible // ignore: cast_nullable_to_non_nullable
+              as double,
+      pedidoVentaEstadoId: null == pedidoVentaEstadoId
+          ? _value.pedidoVentaEstadoId
+          : pedidoVentaEstadoId // ignore: cast_nullable_to_non_nullable
+              as int,
+      numLineas: null == numLineas
+          ? _value.numLineas
+          : numLineas // ignore: cast_nullable_to_non_nullable
+              as int,
+      estadoTrackingId: null == estadoTrackingId
+          ? _value.estadoTrackingId
+          : estadoTrackingId // ignore: cast_nullable_to_non_nullable
+              as String,
+      albaranId: null == albaranId
+          ? _value.albaranId
+          : albaranId // ignore: cast_nullable_to_non_nullable
+              as String,
+      trackId: freezed == trackId
+          ? _value.trackId
+          : trackId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      agencia: freezed == agencia
+          ? _value.agencia
+          : agencia // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fechaAlbaran: null == fechaAlbaran
+          ? _value.fechaAlbaran
+          : fechaAlbaran // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      oferta: null == oferta
+          ? _value.oferta
+          : oferta // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
@@ -269,35 +241,33 @@ class _$ExpedicionDTOCopyWithImpl<$Res, $Val extends ExpedicionDTO>
 abstract class _$$ExpedicionDTOImplCopyWith<$Res>
     implements $ExpedicionDTOCopyWith<$Res> {
   factory _$$ExpedicionDTOImplCopyWith(
-    _$ExpedicionDTOImpl value,
-    $Res Function(_$ExpedicionDTOImpl) then,
-  ) = __$$ExpedicionDTOImplCopyWithImpl<$Res>;
+          _$ExpedicionDTOImpl value, $Res Function(_$ExpedicionDTOImpl) then) =
+      __$$ExpedicionDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'EMPRESA_ID') String empresaId,
-    @JsonKey(name: 'PEDIDO_ID') String pedidoVentaId,
-    @JsonKey(name: 'FECHA_PEDIDO') DateTime pedidoVentaDate,
-    @JsonKey(name: 'CLIENTE_ID') String clienteId,
-    @JsonKey(name: 'DIRECCION_ID') String? direccionId,
-    @JsonKey(name: 'NOMRE_CLIENTE') String nombreCliente,
-    @JsonKey(name: 'CODIGO_POSTAL') String? codigoPostal,
-    @JsonKey(name: 'POBLACION') String? poblacion,
-    @JsonKey(name: 'PROVINCIA') String? provincia,
-    @JsonKey(name: 'PAIS_ID') String? paisId,
-    @JsonKey(name: 'DIVISA_ID') String divisaId,
-    @JsonKey(name: 'BASE_IMPONIBLE') double baseImponible,
-    @JsonKey(name: 'ESTADO_PEDIDO_ID') int pedidoVentaEstadoId,
-    @JsonKey(name: 'NUM_LINEAS') int numLineas,
-    @JsonKey(name: 'TRACKING_ESTADO') String estadoTrackingId,
-    @JsonKey(name: 'ALBARAN_ID') String albaranId,
-    @JsonKey(name: 'TRACK_ID') String? trackId,
-    @JsonKey(name: 'AGENCIA') String? agencia,
-    @JsonKey(name: 'FECHA_ALBARAN') DateTime fechaAlbaran,
-    @JsonKey(name: 'OFERTA_SN') String oferta,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'EMPRESA_ID') String empresaId,
+      @JsonKey(name: 'PEDIDO_ID') String pedidoVentaId,
+      @JsonKey(name: 'FECHA_PEDIDO') DateTime pedidoVentaDate,
+      @JsonKey(name: 'CLIENTE_ID') String clienteId,
+      @JsonKey(name: 'DIRECCION_ID') String? direccionId,
+      @JsonKey(name: 'NOMRE_CLIENTE') String nombreCliente,
+      @JsonKey(name: 'CODIGO_POSTAL') String? codigoPostal,
+      @JsonKey(name: 'POBLACION') String? poblacion,
+      @JsonKey(name: 'PROVINCIA') String? provincia,
+      @JsonKey(name: 'PAIS_ID') String? paisId,
+      @JsonKey(name: 'DIVISA_ID') String divisaId,
+      @JsonKey(name: 'BASE_IMPONIBLE') double baseImponible,
+      @JsonKey(name: 'ESTADO_PEDIDO_ID') int pedidoVentaEstadoId,
+      @JsonKey(name: 'NUM_LINEAS') int numLineas,
+      @JsonKey(name: 'TRACKING_ESTADO') String estadoTrackingId,
+      @JsonKey(name: 'ALBARAN_ID') String albaranId,
+      @JsonKey(name: 'TRACK_ID') String? trackId,
+      @JsonKey(name: 'AGENCIA') String? agencia,
+      @JsonKey(name: 'FECHA_ALBARAN') DateTime fechaAlbaran,
+      @JsonKey(name: 'OFERTA_SN') String oferta,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
@@ -305,9 +275,8 @@ class __$$ExpedicionDTOImplCopyWithImpl<$Res>
     extends _$ExpedicionDTOCopyWithImpl<$Res, _$ExpedicionDTOImpl>
     implements _$$ExpedicionDTOImplCopyWith<$Res> {
   __$$ExpedicionDTOImplCopyWithImpl(
-    _$ExpedicionDTOImpl _value,
-    $Res Function(_$ExpedicionDTOImpl) _then,
-  ) : super(_value, _then);
+      _$ExpedicionDTOImpl _value, $Res Function(_$ExpedicionDTOImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of ExpedicionDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -337,150 +306,126 @@ class __$$ExpedicionDTOImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$ExpedicionDTOImpl(
-        empresaId:
-            null == empresaId
-                ? _value.empresaId
-                : empresaId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        pedidoVentaId:
-            null == pedidoVentaId
-                ? _value.pedidoVentaId
-                : pedidoVentaId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        pedidoVentaDate:
-            null == pedidoVentaDate
-                ? _value.pedidoVentaDate
-                : pedidoVentaDate // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        clienteId:
-            null == clienteId
-                ? _value.clienteId
-                : clienteId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        direccionId:
-            freezed == direccionId
-                ? _value.direccionId
-                : direccionId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        nombreCliente:
-            null == nombreCliente
-                ? _value.nombreCliente
-                : nombreCliente // ignore: cast_nullable_to_non_nullable
-                    as String,
-        codigoPostal:
-            freezed == codigoPostal
-                ? _value.codigoPostal
-                : codigoPostal // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        poblacion:
-            freezed == poblacion
-                ? _value.poblacion
-                : poblacion // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        provincia:
-            freezed == provincia
-                ? _value.provincia
-                : provincia // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        paisId:
-            freezed == paisId
-                ? _value.paisId
-                : paisId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        divisaId:
-            null == divisaId
-                ? _value.divisaId
-                : divisaId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        baseImponible:
-            null == baseImponible
-                ? _value.baseImponible
-                : baseImponible // ignore: cast_nullable_to_non_nullable
-                    as double,
-        pedidoVentaEstadoId:
-            null == pedidoVentaEstadoId
-                ? _value.pedidoVentaEstadoId
-                : pedidoVentaEstadoId // ignore: cast_nullable_to_non_nullable
-                    as int,
-        numLineas:
-            null == numLineas
-                ? _value.numLineas
-                : numLineas // ignore: cast_nullable_to_non_nullable
-                    as int,
-        estadoTrackingId:
-            null == estadoTrackingId
-                ? _value.estadoTrackingId
-                : estadoTrackingId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        albaranId:
-            null == albaranId
-                ? _value.albaranId
-                : albaranId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        trackId:
-            freezed == trackId
-                ? _value.trackId
-                : trackId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        agencia:
-            freezed == agencia
-                ? _value.agencia
-                : agencia // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        fechaAlbaran:
-            null == fechaAlbaran
-                ? _value.fechaAlbaran
-                : fechaAlbaran // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        oferta:
-            null == oferta
-                ? _value.oferta
-                : oferta // ignore: cast_nullable_to_non_nullable
-                    as String,
-        lastUpdated:
-            null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+    return _then(_$ExpedicionDTOImpl(
+      empresaId: null == empresaId
+          ? _value.empresaId
+          : empresaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      pedidoVentaId: null == pedidoVentaId
+          ? _value.pedidoVentaId
+          : pedidoVentaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      pedidoVentaDate: null == pedidoVentaDate
+          ? _value.pedidoVentaDate
+          : pedidoVentaDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      direccionId: freezed == direccionId
+          ? _value.direccionId
+          : direccionId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nombreCliente: null == nombreCliente
+          ? _value.nombreCliente
+          : nombreCliente // ignore: cast_nullable_to_non_nullable
+              as String,
+      codigoPostal: freezed == codigoPostal
+          ? _value.codigoPostal
+          : codigoPostal // ignore: cast_nullable_to_non_nullable
+              as String?,
+      poblacion: freezed == poblacion
+          ? _value.poblacion
+          : poblacion // ignore: cast_nullable_to_non_nullable
+              as String?,
+      provincia: freezed == provincia
+          ? _value.provincia
+          : provincia // ignore: cast_nullable_to_non_nullable
+              as String?,
+      paisId: freezed == paisId
+          ? _value.paisId
+          : paisId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      divisaId: null == divisaId
+          ? _value.divisaId
+          : divisaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      baseImponible: null == baseImponible
+          ? _value.baseImponible
+          : baseImponible // ignore: cast_nullable_to_non_nullable
+              as double,
+      pedidoVentaEstadoId: null == pedidoVentaEstadoId
+          ? _value.pedidoVentaEstadoId
+          : pedidoVentaEstadoId // ignore: cast_nullable_to_non_nullable
+              as int,
+      numLineas: null == numLineas
+          ? _value.numLineas
+          : numLineas // ignore: cast_nullable_to_non_nullable
+              as int,
+      estadoTrackingId: null == estadoTrackingId
+          ? _value.estadoTrackingId
+          : estadoTrackingId // ignore: cast_nullable_to_non_nullable
+              as String,
+      albaranId: null == albaranId
+          ? _value.albaranId
+          : albaranId // ignore: cast_nullable_to_non_nullable
+              as String,
+      trackId: freezed == trackId
+          ? _value.trackId
+          : trackId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      agencia: freezed == agencia
+          ? _value.agencia
+          : agencia // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fechaAlbaran: null == fechaAlbaran
+          ? _value.fechaAlbaran
+          : fechaAlbaran // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      oferta: null == oferta
+          ? _value.oferta
+          : oferta // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ExpedicionDTOImpl extends _ExpedicionDTO {
-  const _$ExpedicionDTOImpl({
-    @JsonKey(name: 'EMPRESA_ID') required this.empresaId,
-    @JsonKey(name: 'PEDIDO_ID') required this.pedidoVentaId,
-    @JsonKey(name: 'FECHA_PEDIDO') required this.pedidoVentaDate,
-    @JsonKey(name: 'CLIENTE_ID') required this.clienteId,
-    @JsonKey(name: 'DIRECCION_ID') this.direccionId,
-    @JsonKey(name: 'NOMRE_CLIENTE') required this.nombreCliente,
-    @JsonKey(name: 'CODIGO_POSTAL') this.codigoPostal,
-    @JsonKey(name: 'POBLACION') this.poblacion,
-    @JsonKey(name: 'PROVINCIA') this.provincia,
-    @JsonKey(name: 'PAIS_ID') this.paisId,
-    @JsonKey(name: 'DIVISA_ID') required this.divisaId,
-    @JsonKey(name: 'BASE_IMPONIBLE') required this.baseImponible,
-    @JsonKey(name: 'ESTADO_PEDIDO_ID') required this.pedidoVentaEstadoId,
-    @JsonKey(name: 'NUM_LINEAS') required this.numLineas,
-    @JsonKey(name: 'TRACKING_ESTADO') required this.estadoTrackingId,
-    @JsonKey(name: 'ALBARAN_ID') required this.albaranId,
-    @JsonKey(name: 'TRACK_ID') this.trackId,
-    @JsonKey(name: 'AGENCIA') this.agencia,
-    @JsonKey(name: 'FECHA_ALBARAN') required this.fechaAlbaran,
-    @JsonKey(name: 'OFERTA_SN') required this.oferta,
-    @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-    @JsonKey(name: 'DELETED') required this.deleted,
-  }) : super._();
+  const _$ExpedicionDTOImpl(
+      {@JsonKey(name: 'EMPRESA_ID') required this.empresaId,
+      @JsonKey(name: 'PEDIDO_ID') required this.pedidoVentaId,
+      @JsonKey(name: 'FECHA_PEDIDO') required this.pedidoVentaDate,
+      @JsonKey(name: 'CLIENTE_ID') required this.clienteId,
+      @JsonKey(name: 'DIRECCION_ID') this.direccionId,
+      @JsonKey(name: 'NOMRE_CLIENTE') required this.nombreCliente,
+      @JsonKey(name: 'CODIGO_POSTAL') this.codigoPostal,
+      @JsonKey(name: 'POBLACION') this.poblacion,
+      @JsonKey(name: 'PROVINCIA') this.provincia,
+      @JsonKey(name: 'PAIS_ID') this.paisId,
+      @JsonKey(name: 'DIVISA_ID') required this.divisaId,
+      @JsonKey(name: 'BASE_IMPONIBLE') required this.baseImponible,
+      @JsonKey(name: 'ESTADO_PEDIDO_ID') required this.pedidoVentaEstadoId,
+      @JsonKey(name: 'NUM_LINEAS') required this.numLineas,
+      @JsonKey(name: 'TRACKING_ESTADO') required this.estadoTrackingId,
+      @JsonKey(name: 'ALBARAN_ID') required this.albaranId,
+      @JsonKey(name: 'TRACK_ID') this.trackId,
+      @JsonKey(name: 'AGENCIA') this.agencia,
+      @JsonKey(name: 'FECHA_ALBARAN') required this.fechaAlbaran,
+      @JsonKey(name: 'OFERTA_SN') required this.oferta,
+      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+      @JsonKey(name: 'DELETED') required this.deleted})
+      : super._();
 
   factory _$ExpedicionDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ExpedicionDTOImplFromJson(json);
@@ -606,30 +551,30 @@ class _$ExpedicionDTOImpl extends _ExpedicionDTO {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
-    runtimeType,
-    empresaId,
-    pedidoVentaId,
-    pedidoVentaDate,
-    clienteId,
-    direccionId,
-    nombreCliente,
-    codigoPostal,
-    poblacion,
-    provincia,
-    paisId,
-    divisaId,
-    baseImponible,
-    pedidoVentaEstadoId,
-    numLineas,
-    estadoTrackingId,
-    albaranId,
-    trackId,
-    agencia,
-    fechaAlbaran,
-    oferta,
-    lastUpdated,
-    deleted,
-  ]);
+        runtimeType,
+        empresaId,
+        pedidoVentaId,
+        pedidoVentaDate,
+        clienteId,
+        direccionId,
+        nombreCliente,
+        codigoPostal,
+        poblacion,
+        provincia,
+        paisId,
+        divisaId,
+        baseImponible,
+        pedidoVentaEstadoId,
+        numLineas,
+        estadoTrackingId,
+        albaranId,
+        trackId,
+        agencia,
+        fechaAlbaran,
+        oferta,
+        lastUpdated,
+        deleted
+      ]);
 
   /// Create a copy of ExpedicionDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -641,35 +586,37 @@ class _$ExpedicionDTOImpl extends _ExpedicionDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ExpedicionDTOImplToJson(this);
+    return _$$ExpedicionDTOImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _ExpedicionDTO extends ExpedicionDTO {
-  const factory _ExpedicionDTO({
-    @JsonKey(name: 'EMPRESA_ID') required final String empresaId,
-    @JsonKey(name: 'PEDIDO_ID') required final String pedidoVentaId,
-    @JsonKey(name: 'FECHA_PEDIDO') required final DateTime pedidoVentaDate,
-    @JsonKey(name: 'CLIENTE_ID') required final String clienteId,
-    @JsonKey(name: 'DIRECCION_ID') final String? direccionId,
-    @JsonKey(name: 'NOMRE_CLIENTE') required final String nombreCliente,
-    @JsonKey(name: 'CODIGO_POSTAL') final String? codigoPostal,
-    @JsonKey(name: 'POBLACION') final String? poblacion,
-    @JsonKey(name: 'PROVINCIA') final String? provincia,
-    @JsonKey(name: 'PAIS_ID') final String? paisId,
-    @JsonKey(name: 'DIVISA_ID') required final String divisaId,
-    @JsonKey(name: 'BASE_IMPONIBLE') required final double baseImponible,
-    @JsonKey(name: 'ESTADO_PEDIDO_ID') required final int pedidoVentaEstadoId,
-    @JsonKey(name: 'NUM_LINEAS') required final int numLineas,
-    @JsonKey(name: 'TRACKING_ESTADO') required final String estadoTrackingId,
-    @JsonKey(name: 'ALBARAN_ID') required final String albaranId,
-    @JsonKey(name: 'TRACK_ID') final String? trackId,
-    @JsonKey(name: 'AGENCIA') final String? agencia,
-    @JsonKey(name: 'FECHA_ALBARAN') required final DateTime fechaAlbaran,
-    @JsonKey(name: 'OFERTA_SN') required final String oferta,
-    @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') required final String deleted,
-  }) = _$ExpedicionDTOImpl;
+  const factory _ExpedicionDTO(
+      {@JsonKey(name: 'EMPRESA_ID') required final String empresaId,
+      @JsonKey(name: 'PEDIDO_ID') required final String pedidoVentaId,
+      @JsonKey(name: 'FECHA_PEDIDO') required final DateTime pedidoVentaDate,
+      @JsonKey(name: 'CLIENTE_ID') required final String clienteId,
+      @JsonKey(name: 'DIRECCION_ID') final String? direccionId,
+      @JsonKey(name: 'NOMRE_CLIENTE') required final String nombreCliente,
+      @JsonKey(name: 'CODIGO_POSTAL') final String? codigoPostal,
+      @JsonKey(name: 'POBLACION') final String? poblacion,
+      @JsonKey(name: 'PROVINCIA') final String? provincia,
+      @JsonKey(name: 'PAIS_ID') final String? paisId,
+      @JsonKey(name: 'DIVISA_ID') required final String divisaId,
+      @JsonKey(name: 'BASE_IMPONIBLE') required final double baseImponible,
+      @JsonKey(name: 'ESTADO_PEDIDO_ID') required final int pedidoVentaEstadoId,
+      @JsonKey(name: 'NUM_LINEAS') required final int numLineas,
+      @JsonKey(name: 'TRACKING_ESTADO') required final String estadoTrackingId,
+      @JsonKey(name: 'ALBARAN_ID') required final String albaranId,
+      @JsonKey(name: 'TRACK_ID') final String? trackId,
+      @JsonKey(name: 'AGENCIA') final String? agencia,
+      @JsonKey(name: 'FECHA_ALBARAN') required final DateTime fechaAlbaran,
+      @JsonKey(name: 'OFERTA_SN') required final String oferta,
+      @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+      @JsonKey(name: 'DELETED')
+      required final String deleted}) = _$ExpedicionDTOImpl;
   const _ExpedicionDTO._() : super._();
 
   factory _ExpedicionDTO.fromJson(Map<String, dynamic> json) =

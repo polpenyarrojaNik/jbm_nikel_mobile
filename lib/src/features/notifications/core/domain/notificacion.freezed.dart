@@ -12,8 +12,7 @@ part of 'notificacion.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$Notificacion {
@@ -33,17 +32,15 @@ mixin _$Notificacion {
 /// @nodoc
 abstract class $NotificacionCopyWith<$Res> {
   factory $NotificacionCopyWith(
-    Notificacion value,
-    $Res Function(Notificacion) then,
-  ) = _$NotificacionCopyWithImpl<$Res, Notificacion>;
+          Notificacion value, $Res Function(Notificacion) then) =
+      _$NotificacionCopyWithImpl<$Res, Notificacion>;
   @useResult
-  $Res call({
-    String notificationId,
-    DateTime fecha,
-    String usuarioId,
-    bool leidoSN,
-    String mensaje,
-  });
+  $Res call(
+      {String notificationId,
+      DateTime fecha,
+      String usuarioId,
+      bool leidoSN,
+      String mensaje});
 }
 
 /// @nodoc
@@ -67,36 +64,28 @@ class _$NotificacionCopyWithImpl<$Res, $Val extends Notificacion>
     Object? leidoSN = null,
     Object? mensaje = null,
   }) {
-    return _then(
-      _value.copyWith(
-            notificationId:
-                null == notificationId
-                    ? _value.notificationId
-                    : notificationId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            fecha:
-                null == fecha
-                    ? _value.fecha
-                    : fecha // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            usuarioId:
-                null == usuarioId
-                    ? _value.usuarioId
-                    : usuarioId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            leidoSN:
-                null == leidoSN
-                    ? _value.leidoSN
-                    : leidoSN // ignore: cast_nullable_to_non_nullable
-                        as bool,
-            mensaje:
-                null == mensaje
-                    ? _value.mensaje
-                    : mensaje // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      notificationId: null == notificationId
+          ? _value.notificationId
+          : notificationId // ignore: cast_nullable_to_non_nullable
+              as String,
+      fecha: null == fecha
+          ? _value.fecha
+          : fecha // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      usuarioId: null == usuarioId
+          ? _value.usuarioId
+          : usuarioId // ignore: cast_nullable_to_non_nullable
+              as String,
+      leidoSN: null == leidoSN
+          ? _value.leidoSN
+          : leidoSN // ignore: cast_nullable_to_non_nullable
+              as bool,
+      mensaje: null == mensaje
+          ? _value.mensaje
+          : mensaje // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
@@ -104,18 +93,16 @@ class _$NotificacionCopyWithImpl<$Res, $Val extends Notificacion>
 abstract class _$$NotificacionImplCopyWith<$Res>
     implements $NotificacionCopyWith<$Res> {
   factory _$$NotificacionImplCopyWith(
-    _$NotificacionImpl value,
-    $Res Function(_$NotificacionImpl) then,
-  ) = __$$NotificacionImplCopyWithImpl<$Res>;
+          _$NotificacionImpl value, $Res Function(_$NotificacionImpl) then) =
+      __$$NotificacionImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String notificationId,
-    DateTime fecha,
-    String usuarioId,
-    bool leidoSN,
-    String mensaje,
-  });
+  $Res call(
+      {String notificationId,
+      DateTime fecha,
+      String usuarioId,
+      bool leidoSN,
+      String mensaje});
 }
 
 /// @nodoc
@@ -123,9 +110,8 @@ class __$$NotificacionImplCopyWithImpl<$Res>
     extends _$NotificacionCopyWithImpl<$Res, _$NotificacionImpl>
     implements _$$NotificacionImplCopyWith<$Res> {
   __$$NotificacionImplCopyWithImpl(
-    _$NotificacionImpl _value,
-    $Res Function(_$NotificacionImpl) _then,
-  ) : super(_value, _then);
+      _$NotificacionImpl _value, $Res Function(_$NotificacionImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of Notificacion
   /// with the given fields replaced by the non-null parameter values.
@@ -138,48 +124,41 @@ class __$$NotificacionImplCopyWithImpl<$Res>
     Object? leidoSN = null,
     Object? mensaje = null,
   }) {
-    return _then(
-      _$NotificacionImpl(
-        notificationId:
-            null == notificationId
-                ? _value.notificationId
-                : notificationId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        fecha:
-            null == fecha
-                ? _value.fecha
-                : fecha // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        usuarioId:
-            null == usuarioId
-                ? _value.usuarioId
-                : usuarioId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        leidoSN:
-            null == leidoSN
-                ? _value.leidoSN
-                : leidoSN // ignore: cast_nullable_to_non_nullable
-                    as bool,
-        mensaje:
-            null == mensaje
-                ? _value.mensaje
-                : mensaje // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+    return _then(_$NotificacionImpl(
+      notificationId: null == notificationId
+          ? _value.notificationId
+          : notificationId // ignore: cast_nullable_to_non_nullable
+              as String,
+      fecha: null == fecha
+          ? _value.fecha
+          : fecha // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      usuarioId: null == usuarioId
+          ? _value.usuarioId
+          : usuarioId // ignore: cast_nullable_to_non_nullable
+              as String,
+      leidoSN: null == leidoSN
+          ? _value.leidoSN
+          : leidoSN // ignore: cast_nullable_to_non_nullable
+              as bool,
+      mensaje: null == mensaje
+          ? _value.mensaje
+          : mensaje // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$NotificacionImpl extends _Notificacion {
-  const _$NotificacionImpl({
-    required this.notificationId,
-    required this.fecha,
-    required this.usuarioId,
-    required this.leidoSN,
-    required this.mensaje,
-  }) : super._();
+  const _$NotificacionImpl(
+      {required this.notificationId,
+      required this.fecha,
+      required this.usuarioId,
+      required this.leidoSN,
+      required this.mensaje})
+      : super._();
 
   @override
   final String notificationId;
@@ -213,13 +192,7 @@ class _$NotificacionImpl extends _Notificacion {
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    notificationId,
-    fecha,
-    usuarioId,
-    leidoSN,
-    mensaje,
-  );
+      runtimeType, notificationId, fecha, usuarioId, leidoSN, mensaje);
 
   /// Create a copy of Notificacion
   /// with the given fields replaced by the non-null parameter values.
@@ -231,13 +204,12 @@ class _$NotificacionImpl extends _Notificacion {
 }
 
 abstract class _Notificacion extends Notificacion {
-  const factory _Notificacion({
-    required final String notificationId,
-    required final DateTime fecha,
-    required final String usuarioId,
-    required final bool leidoSN,
-    required final String mensaje,
-  }) = _$NotificacionImpl;
+  const factory _Notificacion(
+      {required final String notificationId,
+      required final DateTime fecha,
+      required final String usuarioId,
+      required final bool leidoSN,
+      required final String mensaje}) = _$NotificacionImpl;
   const _Notificacion._() : super._();
 
   @override

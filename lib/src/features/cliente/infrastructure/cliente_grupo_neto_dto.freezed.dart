@@ -12,8 +12,7 @@ part of 'cliente_grupo_neto_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ClienteGrupoNetoDTO _$ClienteGrupoNetoDTOFromJson(Map<String, dynamic> json) {
   return _ClienteGrupoNetoDTO.fromJson(json);
@@ -47,18 +46,16 @@ mixin _$ClienteGrupoNetoDTO {
 /// @nodoc
 abstract class $ClienteGrupoNetoDTOCopyWith<$Res> {
   factory $ClienteGrupoNetoDTOCopyWith(
-    ClienteGrupoNetoDTO value,
-    $Res Function(ClienteGrupoNetoDTO) then,
-  ) = _$ClienteGrupoNetoDTOCopyWithImpl<$Res, ClienteGrupoNetoDTO>;
+          ClienteGrupoNetoDTO value, $Res Function(ClienteGrupoNetoDTO) then) =
+      _$ClienteGrupoNetoDTOCopyWithImpl<$Res, ClienteGrupoNetoDTO>;
   @useResult
-  $Res call({
-    @JsonKey(name: 'CLIENTE_ID') String clienteId,
-    @JsonKey(name: 'GRUPO_NETO_ID') String grupoNetoId,
-    @JsonKey(name: 'GRUPO_NETO_DESCRIPCION') String grupoNetoDescripcion,
-    @JsonKey(name: 'DTO_ADICIONAL') double dtoAdicional,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'CLIENTE_ID') String clienteId,
+      @JsonKey(name: 'GRUPO_NETO_ID') String grupoNetoId,
+      @JsonKey(name: 'GRUPO_NETO_DESCRIPCION') String grupoNetoDescripcion,
+      @JsonKey(name: 'DTO_ADICIONAL') double dtoAdicional,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
@@ -83,71 +80,59 @@ class _$ClienteGrupoNetoDTOCopyWithImpl<$Res, $Val extends ClienteGrupoNetoDTO>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            clienteId:
-                null == clienteId
-                    ? _value.clienteId
-                    : clienteId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            grupoNetoId:
-                null == grupoNetoId
-                    ? _value.grupoNetoId
-                    : grupoNetoId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            grupoNetoDescripcion:
-                null == grupoNetoDescripcion
-                    ? _value.grupoNetoDescripcion
-                    : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
-                        as String,
-            dtoAdicional:
-                null == dtoAdicional
-                    ? _value.dtoAdicional
-                    : dtoAdicional // ignore: cast_nullable_to_non_nullable
-                        as double,
-            lastUpdated:
-                null == lastUpdated
-                    ? _value.lastUpdated
-                    : lastUpdated // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
-            deleted:
-                null == deleted
-                    ? _value.deleted
-                    : deleted // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      grupoNetoId: null == grupoNetoId
+          ? _value.grupoNetoId
+          : grupoNetoId // ignore: cast_nullable_to_non_nullable
+              as String,
+      grupoNetoDescripcion: null == grupoNetoDescripcion
+          ? _value.grupoNetoDescripcion
+          : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
+              as String,
+      dtoAdicional: null == dtoAdicional
+          ? _value.dtoAdicional
+          : dtoAdicional // ignore: cast_nullable_to_non_nullable
+              as double,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$ClienteGrupoNetoDTOImplCopyWith<$Res>
     implements $ClienteGrupoNetoDTOCopyWith<$Res> {
-  factory _$$ClienteGrupoNetoDTOImplCopyWith(
-    _$ClienteGrupoNetoDTOImpl value,
-    $Res Function(_$ClienteGrupoNetoDTOImpl) then,
-  ) = __$$ClienteGrupoNetoDTOImplCopyWithImpl<$Res>;
+  factory _$$ClienteGrupoNetoDTOImplCopyWith(_$ClienteGrupoNetoDTOImpl value,
+          $Res Function(_$ClienteGrupoNetoDTOImpl) then) =
+      __$$ClienteGrupoNetoDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'CLIENTE_ID') String clienteId,
-    @JsonKey(name: 'GRUPO_NETO_ID') String grupoNetoId,
-    @JsonKey(name: 'GRUPO_NETO_DESCRIPCION') String grupoNetoDescripcion,
-    @JsonKey(name: 'DTO_ADICIONAL') double dtoAdicional,
-    @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') String deleted,
-  });
+  $Res call(
+      {@JsonKey(name: 'CLIENTE_ID') String clienteId,
+      @JsonKey(name: 'GRUPO_NETO_ID') String grupoNetoId,
+      @JsonKey(name: 'GRUPO_NETO_DESCRIPCION') String grupoNetoDescripcion,
+      @JsonKey(name: 'DTO_ADICIONAL') double dtoAdicional,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
 class __$$ClienteGrupoNetoDTOImplCopyWithImpl<$Res>
     extends _$ClienteGrupoNetoDTOCopyWithImpl<$Res, _$ClienteGrupoNetoDTOImpl>
     implements _$$ClienteGrupoNetoDTOImplCopyWith<$Res> {
-  __$$ClienteGrupoNetoDTOImplCopyWithImpl(
-    _$ClienteGrupoNetoDTOImpl _value,
-    $Res Function(_$ClienteGrupoNetoDTOImpl) _then,
-  ) : super(_value, _then);
+  __$$ClienteGrupoNetoDTOImplCopyWithImpl(_$ClienteGrupoNetoDTOImpl _value,
+      $Res Function(_$ClienteGrupoNetoDTOImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of ClienteGrupoNetoDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -161,54 +146,47 @@ class __$$ClienteGrupoNetoDTOImplCopyWithImpl<$Res>
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
-    return _then(
-      _$ClienteGrupoNetoDTOImpl(
-        clienteId:
-            null == clienteId
-                ? _value.clienteId
-                : clienteId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        grupoNetoId:
-            null == grupoNetoId
-                ? _value.grupoNetoId
-                : grupoNetoId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        grupoNetoDescripcion:
-            null == grupoNetoDescripcion
-                ? _value.grupoNetoDescripcion
-                : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
-                    as String,
-        dtoAdicional:
-            null == dtoAdicional
-                ? _value.dtoAdicional
-                : dtoAdicional // ignore: cast_nullable_to_non_nullable
-                    as double,
-        lastUpdated:
-            null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        deleted:
-            null == deleted
-                ? _value.deleted
-                : deleted // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+    return _then(_$ClienteGrupoNetoDTOImpl(
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      grupoNetoId: null == grupoNetoId
+          ? _value.grupoNetoId
+          : grupoNetoId // ignore: cast_nullable_to_non_nullable
+              as String,
+      grupoNetoDescripcion: null == grupoNetoDescripcion
+          ? _value.grupoNetoDescripcion
+          : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
+              as String,
+      dtoAdicional: null == dtoAdicional
+          ? _value.dtoAdicional
+          : dtoAdicional // ignore: cast_nullable_to_non_nullable
+              as double,
+      lastUpdated: null == lastUpdated
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ClienteGrupoNetoDTOImpl extends _ClienteGrupoNetoDTO {
-  const _$ClienteGrupoNetoDTOImpl({
-    @JsonKey(name: 'CLIENTE_ID') required this.clienteId,
-    @JsonKey(name: 'GRUPO_NETO_ID') required this.grupoNetoId,
-    @JsonKey(name: 'GRUPO_NETO_DESCRIPCION') required this.grupoNetoDescripcion,
-    @JsonKey(name: 'DTO_ADICIONAL') required this.dtoAdicional,
-    @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-    @JsonKey(name: 'DELETED') this.deleted = 'N',
-  }) : super._();
+  const _$ClienteGrupoNetoDTOImpl(
+      {@JsonKey(name: 'CLIENTE_ID') required this.clienteId,
+      @JsonKey(name: 'GRUPO_NETO_ID') required this.grupoNetoId,
+      @JsonKey(name: 'GRUPO_NETO_DESCRIPCION')
+      required this.grupoNetoDescripcion,
+      @JsonKey(name: 'DTO_ADICIONAL') required this.dtoAdicional,
+      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
+      @JsonKey(name: 'DELETED') this.deleted = 'N'})
+      : super._();
 
   factory _$ClienteGrupoNetoDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ClienteGrupoNetoDTOImplFromJson(json);
@@ -257,15 +235,8 @@ class _$ClienteGrupoNetoDTOImpl extends _ClienteGrupoNetoDTO {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    clienteId,
-    grupoNetoId,
-    grupoNetoDescripcion,
-    dtoAdicional,
-    lastUpdated,
-    deleted,
-  );
+  int get hashCode => Object.hash(runtimeType, clienteId, grupoNetoId,
+      grupoNetoDescripcion, dtoAdicional, lastUpdated, deleted);
 
   /// Create a copy of ClienteGrupoNetoDTO
   /// with the given fields replaced by the non-null parameter values.
@@ -274,26 +245,26 @@ class _$ClienteGrupoNetoDTOImpl extends _ClienteGrupoNetoDTO {
   @pragma('vm:prefer-inline')
   _$$ClienteGrupoNetoDTOImplCopyWith<_$ClienteGrupoNetoDTOImpl> get copyWith =>
       __$$ClienteGrupoNetoDTOImplCopyWithImpl<_$ClienteGrupoNetoDTOImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ClienteGrupoNetoDTOImplToJson(this);
+    return _$$ClienteGrupoNetoDTOImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _ClienteGrupoNetoDTO extends ClienteGrupoNetoDTO {
-  const factory _ClienteGrupoNetoDTO({
-    @JsonKey(name: 'CLIENTE_ID') required final String clienteId,
-    @JsonKey(name: 'GRUPO_NETO_ID') required final String grupoNetoId,
-    @JsonKey(name: 'GRUPO_NETO_DESCRIPCION')
-    required final String grupoNetoDescripcion,
-    @JsonKey(name: 'DTO_ADICIONAL') required final double dtoAdicional,
-    @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') final String deleted,
-  }) = _$ClienteGrupoNetoDTOImpl;
+  const factory _ClienteGrupoNetoDTO(
+          {@JsonKey(name: 'CLIENTE_ID') required final String clienteId,
+          @JsonKey(name: 'GRUPO_NETO_ID') required final String grupoNetoId,
+          @JsonKey(name: 'GRUPO_NETO_DESCRIPCION')
+          required final String grupoNetoDescripcion,
+          @JsonKey(name: 'DTO_ADICIONAL') required final double dtoAdicional,
+          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
+          @JsonKey(name: 'DELETED') final String deleted}) =
+      _$ClienteGrupoNetoDTOImpl;
   const _ClienteGrupoNetoDTO._() : super._();
 
   factory _ClienteGrupoNetoDTO.fromJson(Map<String, dynamic> json) =

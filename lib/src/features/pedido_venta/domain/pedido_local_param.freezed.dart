@@ -12,8 +12,7 @@ part of 'pedido_local_param.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$PedidoLocalParam {
@@ -36,19 +35,17 @@ mixin _$PedidoLocalParam {
 /// @nodoc
 abstract class $PedidoLocalParamCopyWith<$Res> {
   factory $PedidoLocalParamCopyWith(
-    PedidoLocalParam value,
-    $Res Function(PedidoLocalParam) then,
-  ) = _$PedidoLocalParamCopyWithImpl<$Res, PedidoLocalParam>;
+          PedidoLocalParam value, $Res Function(PedidoLocalParam) then) =
+      _$PedidoLocalParamCopyWithImpl<$Res, PedidoLocalParam>;
   @useResult
-  $Res call({
-    String? pedidoAppId,
-    String? pedidoId,
-    String? empresaId,
-    bool isEdit,
-    bool? tratada,
-    String? createPedidoFromClienteId,
-    PedidoVentaLinea? addLineaDesdeArticulo,
-  });
+  $Res call(
+      {String? pedidoAppId,
+      String? pedidoId,
+      String? empresaId,
+      bool isEdit,
+      bool? tratada,
+      String? createPedidoFromClienteId,
+      PedidoVentaLinea? addLineaDesdeArticulo});
 
   $PedidoVentaLineaCopyWith<$Res>? get addLineaDesdeArticulo;
 }
@@ -76,46 +73,36 @@ class _$PedidoLocalParamCopyWithImpl<$Res, $Val extends PedidoLocalParam>
     Object? createPedidoFromClienteId = freezed,
     Object? addLineaDesdeArticulo = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            pedidoAppId:
-                freezed == pedidoAppId
-                    ? _value.pedidoAppId
-                    : pedidoAppId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            pedidoId:
-                freezed == pedidoId
-                    ? _value.pedidoId
-                    : pedidoId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            empresaId:
-                freezed == empresaId
-                    ? _value.empresaId
-                    : empresaId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            isEdit:
-                null == isEdit
-                    ? _value.isEdit
-                    : isEdit // ignore: cast_nullable_to_non_nullable
-                        as bool,
-            tratada:
-                freezed == tratada
-                    ? _value.tratada
-                    : tratada // ignore: cast_nullable_to_non_nullable
-                        as bool?,
-            createPedidoFromClienteId:
-                freezed == createPedidoFromClienteId
-                    ? _value.createPedidoFromClienteId
-                    : createPedidoFromClienteId // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            addLineaDesdeArticulo:
-                freezed == addLineaDesdeArticulo
-                    ? _value.addLineaDesdeArticulo
-                    : addLineaDesdeArticulo // ignore: cast_nullable_to_non_nullable
-                        as PedidoVentaLinea?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      pedidoAppId: freezed == pedidoAppId
+          ? _value.pedidoAppId
+          : pedidoAppId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pedidoId: freezed == pedidoId
+          ? _value.pedidoId
+          : pedidoId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      empresaId: freezed == empresaId
+          ? _value.empresaId
+          : empresaId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isEdit: null == isEdit
+          ? _value.isEdit
+          : isEdit // ignore: cast_nullable_to_non_nullable
+              as bool,
+      tratada: freezed == tratada
+          ? _value.tratada
+          : tratada // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      createPedidoFromClienteId: freezed == createPedidoFromClienteId
+          ? _value.createPedidoFromClienteId
+          : createPedidoFromClienteId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      addLineaDesdeArticulo: freezed == addLineaDesdeArticulo
+          ? _value.addLineaDesdeArticulo
+          : addLineaDesdeArticulo // ignore: cast_nullable_to_non_nullable
+              as PedidoVentaLinea?,
+    ) as $Val);
   }
 
   /// Create a copy of PedidoLocalParam
@@ -127,9 +114,8 @@ class _$PedidoLocalParamCopyWithImpl<$Res, $Val extends PedidoLocalParam>
       return null;
     }
 
-    return $PedidoVentaLineaCopyWith<$Res>(_value.addLineaDesdeArticulo!, (
-      value,
-    ) {
+    return $PedidoVentaLineaCopyWith<$Res>(_value.addLineaDesdeArticulo!,
+        (value) {
       return _then(_value.copyWith(addLineaDesdeArticulo: value) as $Val);
     });
   }
@@ -138,21 +124,19 @@ class _$PedidoLocalParamCopyWithImpl<$Res, $Val extends PedidoLocalParam>
 /// @nodoc
 abstract class _$$PedidoLocalParamImplCopyWith<$Res>
     implements $PedidoLocalParamCopyWith<$Res> {
-  factory _$$PedidoLocalParamImplCopyWith(
-    _$PedidoLocalParamImpl value,
-    $Res Function(_$PedidoLocalParamImpl) then,
-  ) = __$$PedidoLocalParamImplCopyWithImpl<$Res>;
+  factory _$$PedidoLocalParamImplCopyWith(_$PedidoLocalParamImpl value,
+          $Res Function(_$PedidoLocalParamImpl) then) =
+      __$$PedidoLocalParamImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String? pedidoAppId,
-    String? pedidoId,
-    String? empresaId,
-    bool isEdit,
-    bool? tratada,
-    String? createPedidoFromClienteId,
-    PedidoVentaLinea? addLineaDesdeArticulo,
-  });
+  $Res call(
+      {String? pedidoAppId,
+      String? pedidoId,
+      String? empresaId,
+      bool isEdit,
+      bool? tratada,
+      String? createPedidoFromClienteId,
+      PedidoVentaLinea? addLineaDesdeArticulo});
 
   @override
   $PedidoVentaLineaCopyWith<$Res>? get addLineaDesdeArticulo;
@@ -162,10 +146,9 @@ abstract class _$$PedidoLocalParamImplCopyWith<$Res>
 class __$$PedidoLocalParamImplCopyWithImpl<$Res>
     extends _$PedidoLocalParamCopyWithImpl<$Res, _$PedidoLocalParamImpl>
     implements _$$PedidoLocalParamImplCopyWith<$Res> {
-  __$$PedidoLocalParamImplCopyWithImpl(
-    _$PedidoLocalParamImpl _value,
-    $Res Function(_$PedidoLocalParamImpl) _then,
-  ) : super(_value, _then);
+  __$$PedidoLocalParamImplCopyWithImpl(_$PedidoLocalParamImpl _value,
+      $Res Function(_$PedidoLocalParamImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of PedidoLocalParam
   /// with the given fields replaced by the non-null parameter values.
@@ -180,60 +163,51 @@ class __$$PedidoLocalParamImplCopyWithImpl<$Res>
     Object? createPedidoFromClienteId = freezed,
     Object? addLineaDesdeArticulo = freezed,
   }) {
-    return _then(
-      _$PedidoLocalParamImpl(
-        pedidoAppId:
-            freezed == pedidoAppId
-                ? _value.pedidoAppId
-                : pedidoAppId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        pedidoId:
-            freezed == pedidoId
-                ? _value.pedidoId
-                : pedidoId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        empresaId:
-            freezed == empresaId
-                ? _value.empresaId
-                : empresaId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        isEdit:
-            null == isEdit
-                ? _value.isEdit
-                : isEdit // ignore: cast_nullable_to_non_nullable
-                    as bool,
-        tratada:
-            freezed == tratada
-                ? _value.tratada
-                : tratada // ignore: cast_nullable_to_non_nullable
-                    as bool?,
-        createPedidoFromClienteId:
-            freezed == createPedidoFromClienteId
-                ? _value.createPedidoFromClienteId
-                : createPedidoFromClienteId // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        addLineaDesdeArticulo:
-            freezed == addLineaDesdeArticulo
-                ? _value.addLineaDesdeArticulo
-                : addLineaDesdeArticulo // ignore: cast_nullable_to_non_nullable
-                    as PedidoVentaLinea?,
-      ),
-    );
+    return _then(_$PedidoLocalParamImpl(
+      pedidoAppId: freezed == pedidoAppId
+          ? _value.pedidoAppId
+          : pedidoAppId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pedidoId: freezed == pedidoId
+          ? _value.pedidoId
+          : pedidoId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      empresaId: freezed == empresaId
+          ? _value.empresaId
+          : empresaId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isEdit: null == isEdit
+          ? _value.isEdit
+          : isEdit // ignore: cast_nullable_to_non_nullable
+              as bool,
+      tratada: freezed == tratada
+          ? _value.tratada
+          : tratada // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      createPedidoFromClienteId: freezed == createPedidoFromClienteId
+          ? _value.createPedidoFromClienteId
+          : createPedidoFromClienteId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      addLineaDesdeArticulo: freezed == addLineaDesdeArticulo
+          ? _value.addLineaDesdeArticulo
+          : addLineaDesdeArticulo // ignore: cast_nullable_to_non_nullable
+              as PedidoVentaLinea?,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$PedidoLocalParamImpl extends _PedidoLocalParam {
-  const _$PedidoLocalParamImpl({
-    this.pedidoAppId,
-    this.pedidoId,
-    this.empresaId,
-    required this.isEdit,
-    this.tratada,
-    this.createPedidoFromClienteId,
-    this.addLineaDesdeArticulo,
-  }) : super._();
+  const _$PedidoLocalParamImpl(
+      {this.pedidoAppId,
+      this.pedidoId,
+      this.empresaId,
+      required this.isEdit,
+      this.tratada,
+      this.createPedidoFromClienteId,
+      this.addLineaDesdeArticulo})
+      : super._();
 
   @override
   final String? pedidoAppId;
@@ -268,26 +242,16 @@ class _$PedidoLocalParamImpl extends _PedidoLocalParam {
                 other.empresaId == empresaId) &&
             (identical(other.isEdit, isEdit) || other.isEdit == isEdit) &&
             (identical(other.tratada, tratada) || other.tratada == tratada) &&
-            (identical(
-                  other.createPedidoFromClienteId,
-                  createPedidoFromClienteId,
-                ) ||
+            (identical(other.createPedidoFromClienteId,
+                    createPedidoFromClienteId) ||
                 other.createPedidoFromClienteId == createPedidoFromClienteId) &&
             (identical(other.addLineaDesdeArticulo, addLineaDesdeArticulo) ||
                 other.addLineaDesdeArticulo == addLineaDesdeArticulo));
   }
 
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    pedidoAppId,
-    pedidoId,
-    empresaId,
-    isEdit,
-    tratada,
-    createPedidoFromClienteId,
-    addLineaDesdeArticulo,
-  );
+  int get hashCode => Object.hash(runtimeType, pedidoAppId, pedidoId, empresaId,
+      isEdit, tratada, createPedidoFromClienteId, addLineaDesdeArticulo);
 
   /// Create a copy of PedidoLocalParam
   /// with the given fields replaced by the non-null parameter values.
@@ -296,21 +260,18 @@ class _$PedidoLocalParamImpl extends _PedidoLocalParam {
   @pragma('vm:prefer-inline')
   _$$PedidoLocalParamImplCopyWith<_$PedidoLocalParamImpl> get copyWith =>
       __$$PedidoLocalParamImplCopyWithImpl<_$PedidoLocalParamImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 }
 
 abstract class _PedidoLocalParam extends PedidoLocalParam {
-  const factory _PedidoLocalParam({
-    final String? pedidoAppId,
-    final String? pedidoId,
-    final String? empresaId,
-    required final bool isEdit,
-    final bool? tratada,
-    final String? createPedidoFromClienteId,
-    final PedidoVentaLinea? addLineaDesdeArticulo,
-  }) = _$PedidoLocalParamImpl;
+  const factory _PedidoLocalParam(
+      {final String? pedidoAppId,
+      final String? pedidoId,
+      final String? empresaId,
+      required final bool isEdit,
+      final bool? tratada,
+      final String? createPedidoFromClienteId,
+      final PedidoVentaLinea? addLineaDesdeArticulo}) = _$PedidoLocalParamImpl;
   const _PedidoLocalParam._() : super._();
 
   @override

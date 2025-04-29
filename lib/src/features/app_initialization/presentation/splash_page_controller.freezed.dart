@@ -12,42 +12,44 @@ part of 'splash_page_controller.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SplashControllerState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int lastScehmaVersion, int newScehmaVersion)
-    downloadDatabase,
+        downloadDatabase,
     required TResult Function() loading,
     required TResult Function() initial,
     required TResult Function() notDownloaded,
     required TResult Function(Object error, StackTrace? stackTrace) error,
     required TResult Function() data,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int lastScehmaVersion, int newScehmaVersion)?
-    downloadDatabase,
+        downloadDatabase,
     TResult? Function()? loading,
     TResult? Function()? initial,
     TResult? Function()? notDownloaded,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
     TResult? Function()? data,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int lastScehmaVersion, int newScehmaVersion)?
-    downloadDatabase,
+        downloadDatabase,
     TResult Function()? loading,
     TResult Function()? initial,
     TResult Function()? notDownloaded,
     TResult Function(Object error, StackTrace? stackTrace)? error,
     TResult Function()? data,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_downloadDatabase value) downloadDatabase,
@@ -56,7 +58,8 @@ mixin _$SplashControllerState {
     required TResult Function(_notDownloaded value) notDownloaded,
     required TResult Function(_error value) error,
     required TResult Function(_data value) data,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_downloadDatabase value)? downloadDatabase,
@@ -65,7 +68,8 @@ mixin _$SplashControllerState {
     TResult? Function(_notDownloaded value)? notDownloaded,
     TResult? Function(_error value)? error,
     TResult? Function(_data value)? data,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_downloadDatabase value)? downloadDatabase,
@@ -75,22 +79,20 @@ mixin _$SplashControllerState {
     TResult Function(_error value)? error,
     TResult Function(_data value)? data,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SplashControllerStateCopyWith<$Res> {
-  factory $SplashControllerStateCopyWith(
-    SplashControllerState value,
-    $Res Function(SplashControllerState) then,
-  ) = _$SplashControllerStateCopyWithImpl<$Res, SplashControllerState>;
+  factory $SplashControllerStateCopyWith(SplashControllerState value,
+          $Res Function(SplashControllerState) then) =
+      _$SplashControllerStateCopyWithImpl<$Res, SplashControllerState>;
 }
 
 /// @nodoc
-class _$SplashControllerStateCopyWithImpl<
-  $Res,
-  $Val extends SplashControllerState
->
+class _$SplashControllerStateCopyWithImpl<$Res,
+        $Val extends SplashControllerState>
     implements $SplashControllerStateCopyWith<$Res> {
   _$SplashControllerStateCopyWithImpl(this._value, this._then);
 
@@ -105,10 +107,9 @@ class _$SplashControllerStateCopyWithImpl<
 
 /// @nodoc
 abstract class _$$downloadDatabaseImplCopyWith<$Res> {
-  factory _$$downloadDatabaseImplCopyWith(
-    _$downloadDatabaseImpl value,
-    $Res Function(_$downloadDatabaseImpl) then,
-  ) = __$$downloadDatabaseImplCopyWithImpl<$Res>;
+  factory _$$downloadDatabaseImplCopyWith(_$downloadDatabaseImpl value,
+          $Res Function(_$downloadDatabaseImpl) then) =
+      __$$downloadDatabaseImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int lastScehmaVersion, int newScehmaVersion});
 }
@@ -117,10 +118,9 @@ abstract class _$$downloadDatabaseImplCopyWith<$Res> {
 class __$$downloadDatabaseImplCopyWithImpl<$Res>
     extends _$SplashControllerStateCopyWithImpl<$Res, _$downloadDatabaseImpl>
     implements _$$downloadDatabaseImplCopyWith<$Res> {
-  __$$downloadDatabaseImplCopyWithImpl(
-    _$downloadDatabaseImpl _value,
-    $Res Function(_$downloadDatabaseImpl) _then,
-  ) : super(_value, _then);
+  __$$downloadDatabaseImplCopyWithImpl(_$downloadDatabaseImpl _value,
+      $Res Function(_$downloadDatabaseImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of SplashControllerState
   /// with the given fields replaced by the non-null parameter values.
@@ -130,18 +130,16 @@ class __$$downloadDatabaseImplCopyWithImpl<$Res>
     Object? lastScehmaVersion = null,
     Object? newScehmaVersion = null,
   }) {
-    return _then(
-      _$downloadDatabaseImpl(
-        null == lastScehmaVersion
-            ? _value.lastScehmaVersion
-            : lastScehmaVersion // ignore: cast_nullable_to_non_nullable
-                as int,
-        null == newScehmaVersion
-            ? _value.newScehmaVersion
-            : newScehmaVersion // ignore: cast_nullable_to_non_nullable
-                as int,
-      ),
-    );
+    return _then(_$downloadDatabaseImpl(
+      null == lastScehmaVersion
+          ? _value.lastScehmaVersion
+          : lastScehmaVersion // ignore: cast_nullable_to_non_nullable
+              as int,
+      null == newScehmaVersion
+          ? _value.newScehmaVersion
+          : newScehmaVersion // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
@@ -150,7 +148,7 @@ class __$$downloadDatabaseImplCopyWithImpl<$Res>
 class _$downloadDatabaseImpl extends _downloadDatabase
     with DiagnosticableTreeMixin {
   const _$downloadDatabaseImpl(this.lastScehmaVersion, this.newScehmaVersion)
-    : super._();
+      : super._();
 
   @override
   final int lastScehmaVersion;
@@ -167,8 +165,7 @@ class _$downloadDatabaseImpl extends _downloadDatabase
     super.debugFillProperties(properties);
     properties
       ..add(
-        DiagnosticsProperty('type', 'SplashControllerState.downloadDatabase'),
-      )
+          DiagnosticsProperty('type', 'SplashControllerState.downloadDatabase'))
       ..add(DiagnosticsProperty('lastScehmaVersion', lastScehmaVersion))
       ..add(DiagnosticsProperty('newScehmaVersion', newScehmaVersion));
   }
@@ -195,15 +192,13 @@ class _$downloadDatabaseImpl extends _downloadDatabase
   @pragma('vm:prefer-inline')
   _$$downloadDatabaseImplCopyWith<_$downloadDatabaseImpl> get copyWith =>
       __$$downloadDatabaseImplCopyWithImpl<_$downloadDatabaseImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int lastScehmaVersion, int newScehmaVersion)
-    downloadDatabase,
+        downloadDatabase,
     required TResult Function() loading,
     required TResult Function() initial,
     required TResult Function() notDownloaded,
@@ -217,7 +212,7 @@ class _$downloadDatabaseImpl extends _downloadDatabase
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int lastScehmaVersion, int newScehmaVersion)?
-    downloadDatabase,
+        downloadDatabase,
     TResult? Function()? loading,
     TResult? Function()? initial,
     TResult? Function()? notDownloaded,
@@ -231,7 +226,7 @@ class _$downloadDatabaseImpl extends _downloadDatabase
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int lastScehmaVersion, int newScehmaVersion)?
-    downloadDatabase,
+        downloadDatabase,
     TResult Function()? loading,
     TResult Function()? initial,
     TResult Function()? notDownloaded,
@@ -291,9 +286,8 @@ class _$downloadDatabaseImpl extends _downloadDatabase
 
 abstract class _downloadDatabase extends SplashControllerState {
   const factory _downloadDatabase(
-    final int lastScehmaVersion,
-    final int newScehmaVersion,
-  ) = _$downloadDatabaseImpl;
+          final int lastScehmaVersion, final int newScehmaVersion) =
+      _$downloadDatabaseImpl;
   const _downloadDatabase._() : super._();
 
   int get lastScehmaVersion;
@@ -309,9 +303,8 @@ abstract class _downloadDatabase extends SplashControllerState {
 /// @nodoc
 abstract class _$$loadingImplCopyWith<$Res> {
   factory _$$loadingImplCopyWith(
-    _$loadingImpl value,
-    $Res Function(_$loadingImpl) then,
-  ) = __$$loadingImplCopyWithImpl<$Res>;
+          _$loadingImpl value, $Res Function(_$loadingImpl) then) =
+      __$$loadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -319,9 +312,8 @@ class __$$loadingImplCopyWithImpl<$Res>
     extends _$SplashControllerStateCopyWithImpl<$Res, _$loadingImpl>
     implements _$$loadingImplCopyWith<$Res> {
   __$$loadingImplCopyWithImpl(
-    _$loadingImpl _value,
-    $Res Function(_$loadingImpl) _then,
-  ) : super(_value, _then);
+      _$loadingImpl _value, $Res Function(_$loadingImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of SplashControllerState
   /// with the given fields replaced by the non-null parameter values.
@@ -340,9 +332,8 @@ class _$loadingImpl extends _loading with DiagnosticableTreeMixin {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(
-      DiagnosticsProperty('type', 'SplashControllerState.loading'),
-    );
+    properties
+        .add(DiagnosticsProperty('type', 'SplashControllerState.loading'));
   }
 
   @override
@@ -358,7 +349,7 @@ class _$loadingImpl extends _loading with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int lastScehmaVersion, int newScehmaVersion)
-    downloadDatabase,
+        downloadDatabase,
     required TResult Function() loading,
     required TResult Function() initial,
     required TResult Function() notDownloaded,
@@ -372,7 +363,7 @@ class _$loadingImpl extends _loading with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int lastScehmaVersion, int newScehmaVersion)?
-    downloadDatabase,
+        downloadDatabase,
     TResult? Function()? loading,
     TResult? Function()? initial,
     TResult? Function()? notDownloaded,
@@ -386,7 +377,7 @@ class _$loadingImpl extends _loading with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int lastScehmaVersion, int newScehmaVersion)?
-    downloadDatabase,
+        downloadDatabase,
     TResult Function()? loading,
     TResult Function()? initial,
     TResult Function()? notDownloaded,
@@ -452,9 +443,8 @@ abstract class _loading extends SplashControllerState {
 /// @nodoc
 abstract class _$$initialImplCopyWith<$Res> {
   factory _$$initialImplCopyWith(
-    _$initialImpl value,
-    $Res Function(_$initialImpl) then,
-  ) = __$$initialImplCopyWithImpl<$Res>;
+          _$initialImpl value, $Res Function(_$initialImpl) then) =
+      __$$initialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -462,9 +452,8 @@ class __$$initialImplCopyWithImpl<$Res>
     extends _$SplashControllerStateCopyWithImpl<$Res, _$initialImpl>
     implements _$$initialImplCopyWith<$Res> {
   __$$initialImplCopyWithImpl(
-    _$initialImpl _value,
-    $Res Function(_$initialImpl) _then,
-  ) : super(_value, _then);
+      _$initialImpl _value, $Res Function(_$initialImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of SplashControllerState
   /// with the given fields replaced by the non-null parameter values.
@@ -483,9 +472,8 @@ class _$initialImpl extends _initial with DiagnosticableTreeMixin {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(
-      DiagnosticsProperty('type', 'SplashControllerState.initial'),
-    );
+    properties
+        .add(DiagnosticsProperty('type', 'SplashControllerState.initial'));
   }
 
   @override
@@ -501,7 +489,7 @@ class _$initialImpl extends _initial with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int lastScehmaVersion, int newScehmaVersion)
-    downloadDatabase,
+        downloadDatabase,
     required TResult Function() loading,
     required TResult Function() initial,
     required TResult Function() notDownloaded,
@@ -515,7 +503,7 @@ class _$initialImpl extends _initial with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int lastScehmaVersion, int newScehmaVersion)?
-    downloadDatabase,
+        downloadDatabase,
     TResult? Function()? loading,
     TResult? Function()? initial,
     TResult? Function()? notDownloaded,
@@ -529,7 +517,7 @@ class _$initialImpl extends _initial with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int lastScehmaVersion, int newScehmaVersion)?
-    downloadDatabase,
+        downloadDatabase,
     TResult Function()? loading,
     TResult Function()? initial,
     TResult Function()? notDownloaded,
@@ -595,9 +583,8 @@ abstract class _initial extends SplashControllerState {
 /// @nodoc
 abstract class _$$notDownloadedImplCopyWith<$Res> {
   factory _$$notDownloadedImplCopyWith(
-    _$notDownloadedImpl value,
-    $Res Function(_$notDownloadedImpl) then,
-  ) = __$$notDownloadedImplCopyWithImpl<$Res>;
+          _$notDownloadedImpl value, $Res Function(_$notDownloadedImpl) then) =
+      __$$notDownloadedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -605,9 +592,8 @@ class __$$notDownloadedImplCopyWithImpl<$Res>
     extends _$SplashControllerStateCopyWithImpl<$Res, _$notDownloadedImpl>
     implements _$$notDownloadedImplCopyWith<$Res> {
   __$$notDownloadedImplCopyWithImpl(
-    _$notDownloadedImpl _value,
-    $Res Function(_$notDownloadedImpl) _then,
-  ) : super(_value, _then);
+      _$notDownloadedImpl _value, $Res Function(_$notDownloadedImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of SplashControllerState
   /// with the given fields replaced by the non-null parameter values.
@@ -627,8 +613,7 @@ class _$notDownloadedImpl extends _notDownloaded with DiagnosticableTreeMixin {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(
-      DiagnosticsProperty('type', 'SplashControllerState.notDownloaded'),
-    );
+        DiagnosticsProperty('type', 'SplashControllerState.notDownloaded'));
   }
 
   @override
@@ -644,7 +629,7 @@ class _$notDownloadedImpl extends _notDownloaded with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int lastScehmaVersion, int newScehmaVersion)
-    downloadDatabase,
+        downloadDatabase,
     required TResult Function() loading,
     required TResult Function() initial,
     required TResult Function() notDownloaded,
@@ -658,7 +643,7 @@ class _$notDownloadedImpl extends _notDownloaded with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int lastScehmaVersion, int newScehmaVersion)?
-    downloadDatabase,
+        downloadDatabase,
     TResult? Function()? loading,
     TResult? Function()? initial,
     TResult? Function()? notDownloaded,
@@ -672,7 +657,7 @@ class _$notDownloadedImpl extends _notDownloaded with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int lastScehmaVersion, int newScehmaVersion)?
-    downloadDatabase,
+        downloadDatabase,
     TResult Function()? loading,
     TResult Function()? initial,
     TResult Function()? notDownloaded,
@@ -738,9 +723,8 @@ abstract class _notDownloaded extends SplashControllerState {
 /// @nodoc
 abstract class _$$errorImplCopyWith<$Res> {
   factory _$$errorImplCopyWith(
-    _$errorImpl value,
-    $Res Function(_$errorImpl) then,
-  ) = __$$errorImplCopyWithImpl<$Res>;
+          _$errorImpl value, $Res Function(_$errorImpl) then) =
+      __$$errorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Object error, StackTrace? stackTrace});
 }
@@ -750,25 +734,24 @@ class __$$errorImplCopyWithImpl<$Res>
     extends _$SplashControllerStateCopyWithImpl<$Res, _$errorImpl>
     implements _$$errorImplCopyWith<$Res> {
   __$$errorImplCopyWithImpl(
-    _$errorImpl _value,
-    $Res Function(_$errorImpl) _then,
-  ) : super(_value, _then);
+      _$errorImpl _value, $Res Function(_$errorImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of SplashControllerState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? error = null, Object? stackTrace = freezed}) {
-    return _then(
-      _$errorImpl(
-        null == error ? _value.error : error,
-        stackTrace:
-            freezed == stackTrace
-                ? _value.stackTrace
-                : stackTrace // ignore: cast_nullable_to_non_nullable
-                    as StackTrace?,
-      ),
-    );
+  $Res call({
+    Object? error = null,
+    Object? stackTrace = freezed,
+  }) {
+    return _then(_$errorImpl(
+      null == error ? _value.error : error,
+      stackTrace: freezed == stackTrace
+          ? _value.stackTrace
+          : stackTrace // ignore: cast_nullable_to_non_nullable
+              as StackTrace?,
+    ));
   }
 }
 
@@ -808,10 +791,7 @@ class _$errorImpl extends _error with DiagnosticableTreeMixin {
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(error),
-    stackTrace,
-  );
+      runtimeType, const DeepCollectionEquality().hash(error), stackTrace);
 
   /// Create a copy of SplashControllerState
   /// with the given fields replaced by the non-null parameter values.
@@ -825,7 +805,7 @@ class _$errorImpl extends _error with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int lastScehmaVersion, int newScehmaVersion)
-    downloadDatabase,
+        downloadDatabase,
     required TResult Function() loading,
     required TResult Function() initial,
     required TResult Function() notDownloaded,
@@ -839,7 +819,7 @@ class _$errorImpl extends _error with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int lastScehmaVersion, int newScehmaVersion)?
-    downloadDatabase,
+        downloadDatabase,
     TResult? Function()? loading,
     TResult? Function()? initial,
     TResult? Function()? notDownloaded,
@@ -853,7 +833,7 @@ class _$errorImpl extends _error with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int lastScehmaVersion, int newScehmaVersion)?
-    downloadDatabase,
+        downloadDatabase,
     TResult Function()? loading,
     TResult Function()? initial,
     TResult Function()? notDownloaded,
@@ -929,9 +909,8 @@ abstract class _error extends SplashControllerState {
 /// @nodoc
 abstract class _$$dataImplCopyWith<$Res> {
   factory _$$dataImplCopyWith(
-    _$dataImpl value,
-    $Res Function(_$dataImpl) then,
-  ) = __$$dataImplCopyWithImpl<$Res>;
+          _$dataImpl value, $Res Function(_$dataImpl) then) =
+      __$$dataImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -939,7 +918,7 @@ class __$$dataImplCopyWithImpl<$Res>
     extends _$SplashControllerStateCopyWithImpl<$Res, _$dataImpl>
     implements _$$dataImplCopyWith<$Res> {
   __$$dataImplCopyWithImpl(_$dataImpl _value, $Res Function(_$dataImpl) _then)
-    : super(_value, _then);
+      : super(_value, _then);
 
   /// Create a copy of SplashControllerState
   /// with the given fields replaced by the non-null parameter values.
@@ -974,7 +953,7 @@ class _$dataImpl extends _data with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int lastScehmaVersion, int newScehmaVersion)
-    downloadDatabase,
+        downloadDatabase,
     required TResult Function() loading,
     required TResult Function() initial,
     required TResult Function() notDownloaded,
@@ -988,7 +967,7 @@ class _$dataImpl extends _data with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int lastScehmaVersion, int newScehmaVersion)?
-    downloadDatabase,
+        downloadDatabase,
     TResult? Function()? loading,
     TResult? Function()? initial,
     TResult? Function()? notDownloaded,
@@ -1002,7 +981,7 @@ class _$dataImpl extends _data with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int lastScehmaVersion, int newScehmaVersion)?
-    downloadDatabase,
+        downloadDatabase,
     TResult Function()? loading,
     TResult Function()? initial,
     TResult Function()? notDownloaded,
