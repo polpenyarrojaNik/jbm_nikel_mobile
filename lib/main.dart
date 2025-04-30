@@ -37,6 +37,7 @@ void main() async {
           options.beforeSend =
               (event, hint) async => _sentryBeforeSendOptions(event, hint);
           options.tracesSampleRate = 1;
+          options.enableAutoPerformanceTracing = false;
         },
         appRunner:
             () => runApp(
