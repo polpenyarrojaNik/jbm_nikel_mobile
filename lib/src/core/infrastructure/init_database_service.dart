@@ -13,6 +13,7 @@ import '../application/log_service.dart';
 import '../exceptions/app_exception.dart';
 import '../exceptions/get_api_error.dart';
 import '../helpers/database_helper.dart';
+import '../helpers/error_logger.dart';
 import '../presentation/app.dart';
 import 'local_database.dart';
 import 'remote_database.dart';
@@ -25,6 +26,7 @@ final initDatabaseServiceProvider = Provider.autoDispose<InitDatabaseService>((
     ref.watch(dioProvider),
     ref.watch(appLocalDatabaseProvider),
     ref.watch(usuarioNotifierProvider),
+    ref.watch(errorLoggerProvider),
   );
 });
 
@@ -32,6 +34,7 @@ class InitDatabaseService {
   final Dio dio;
   final LocalAppDatabase localDb;
   final Usuario? usuario;
+  final ErrorLogger errorLogger;
 
   static final remoteInitDatabaseEndpoint = Uri.https(
     'jbm-api.nikel.es',
@@ -52,7 +55,7 @@ class InitDatabaseService {
     '/api/v12/sync/init-db-date',
   );
 
-  InitDatabaseService(this.dio, this.localDb, this.usuario);
+  InitDatabaseService(this.dio, this.localDb, this.usuario, this.errorLogger);
 
   Future<void> downloadInitDatabase() async {
     try {
@@ -122,30 +125,26 @@ class InitDatabaseService {
           response.toString(),
         );
       }
-    } catch (e) {
-      throw getApiError(e);
+    } catch (e, stackTrace) {
+      throw getApiError(e, stackTrace, errorLogger);
     }
   }
 
   Future<void> _saveDataInPreferences() async {
-    try {
-      final initialDatabaseDate = await _getRemoteInitialDatabaseDate();
+    final initialDatabaseDate = await _getRemoteInitialDatabaseDate();
 
-      await localDb
-          .into(localDb.syncDateTimeTable)
-          .insertOnConflictUpdate(
-            SyncDateTimeTableCompanion(
-              id: const Value(1),
-              dbSchemaVersion: const Value(databaseRelease),
-              articuloUltimaSync: Value(initialDatabaseDate),
-              clienteUltimaSync: Value(initialDatabaseDate),
-              pedidoUltimaSync: Value(initialDatabaseDate),
-              visitaUltimaSync: Value(initialDatabaseDate),
-            ),
-          );
-    } catch (e) {
-      rethrow;
-    }
+    await localDb
+        .into(localDb.syncDateTimeTable)
+        .insertOnConflictUpdate(
+          SyncDateTimeTableCompanion(
+            id: const Value(1),
+            dbSchemaVersion: const Value(databaseRelease),
+            articuloUltimaSync: Value(initialDatabaseDate),
+            clienteUltimaSync: Value(initialDatabaseDate),
+            pedidoUltimaSync: Value(initialDatabaseDate),
+            visitaUltimaSync: Value(initialDatabaseDate),
+          ),
+        );
   }
 
   Future<DateTime> _getRemoteInitialDatabaseDate() async {
@@ -164,8 +163,8 @@ class InitDatabaseService {
           response.toString(),
         );
       }
-    } catch (e) {
-      throw getApiError(e);
+    } catch (e, stackTrace) {
+      throw getApiError(e, stackTrace, errorLogger);
     }
   }
 

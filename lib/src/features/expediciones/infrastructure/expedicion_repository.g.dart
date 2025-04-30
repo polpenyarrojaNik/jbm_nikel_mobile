@@ -7,7 +7,7 @@ part of 'expedicion_repository.dart';
 // **************************************************************************
 
 String _$expedicionRepositoryHash() =>
-    r'15424967f858e4562193d49a5d933e2349a315c3';
+    r'a69657bafcb843b0c7371071f7807d92bb14d1c8';
 
 /// See also [expedicionRepository].
 @ProviderFor(expedicionRepository)

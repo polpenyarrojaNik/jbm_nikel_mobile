@@ -10,11 +10,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:money2/money2.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import '../../../core/application/log_service.dart';
 import '../../../core/domain/articulo_precio.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/exceptions/get_api_error.dart';
+import '../../../core/helpers/error_logger.dart';
 import '../../../core/helpers/extension.dart';
 import '../../../core/infrastructure/local_database.dart' as local;
 import '../../../core/infrastructure/remote_database.dart';
@@ -40,7 +42,13 @@ final pedidoVentaRepositoryProvider =
       final localDb = ref.watch(local.appLocalDatabaseProvider);
       final dio = ref.watch(dioProvider);
       final usuario = ref.watch(usuarioNotifierProvider)!;
-      return PedidoVentaRepository(remoteDb, localDb, dio, usuario);
+      return PedidoVentaRepository(
+        remoteDb,
+        localDb,
+        dio,
+        usuario,
+        ref.watch(errorLoggerProvider),
+      );
     });
 
 final pedidoVentaProvider = FutureProvider.autoDispose
@@ -111,11 +119,17 @@ class PedidoVentaRepository {
 
   final RemoteAppDatabase _remoteDb;
   final local.LocalAppDatabase _localDb;
-
   final Dio _dio;
   final Usuario usuario;
+  final ErrorLogger errorLogger;
 
-  PedidoVentaRepository(this._remoteDb, this._localDb, this._dio, this.usuario);
+  PedidoVentaRepository(
+    this._remoteDb,
+    this._localDb,
+    this._dio,
+    this.usuario,
+    this.errorLogger,
+  );
 
   Future<List<PedidoVenta>> getPedidoVentaLista({
     required int page,
@@ -894,6 +908,7 @@ class PedidoVentaRepository {
     required bool oferta,
     DateTime? ofertaFechaHasta,
     required bool isBorrador,
+    required ISentrySpan transaction,
   }) async {
     try {
       final pedidoVentaLocalDTO = PedidoVentaLocalDTO.fromForm(
@@ -915,7 +930,11 @@ class PedidoVentaRepository {
               .map((e) => PedidoVentaLineaLocalDTO.fromDomain(e))
               .toList();
 
-      await insertPedidoInDB(pedidoVentaLocalDTO, pedidoVentaLineaLocalDTOList);
+      await insertPedidoInDB(
+        pedidoVentaLocalDTO,
+        pedidoVentaLineaLocalDTOList,
+        transaction,
+      );
 
       if (!isBorrador) {
         try {
@@ -1236,7 +1255,12 @@ class PedidoVentaRepository {
   Future<void> insertPedidoInDB(
     PedidoVentaLocalDTO pedidoVentaLocalDTO,
     List<PedidoVentaLineaLocalDTO> pedidoVentaLineaLocalDTOList,
+    ISentrySpan transaction,
   ) async {
+    final span = transaction.startChild(
+      'insertPedidoInDB',
+      description: 'Insert pedido: ${pedidoVentaLocalDTO.toJson()}',
+    );
     try {
       // if (pedidoVentaLocalDTO.borrador == 'S') {
       //   await (_localDb.delete(_localDb.pedidoVentaLocalTable)
@@ -1256,6 +1280,8 @@ class PedidoVentaRepository {
       });
     } catch (e) {
       throw AppException.insertDataFailure(e.toString());
+    } finally {
+      await span.finish();
     }
   }
 
@@ -1348,8 +1374,8 @@ class PedidoVentaRepository {
           response.statusMessage ?? '',
         );
       }
-    } catch (e) {
-      throw getApiError(e);
+    } catch (e, stackTrace) {
+      throw getApiError(e, stackTrace, errorLogger);
     }
   }
 
@@ -2263,8 +2289,8 @@ class PedidoVentaRepository {
             response.statusMessage ?? '',
           );
         }
-      } catch (e) {
-        throw getApiError(e);
+      } catch (e, stackTrace) {
+        throw getApiError(e, stackTrace, errorLogger);
       }
     } catch (e) {
       rethrow;
@@ -2292,8 +2318,8 @@ class PedidoVentaRepository {
           response.statusMessage ?? '',
         );
       }
-    } catch (e) {
-      throw getApiError(e);
+    } catch (e, stackTrace) {
+      throw getApiError(e, stackTrace, errorLogger);
     }
   }
 

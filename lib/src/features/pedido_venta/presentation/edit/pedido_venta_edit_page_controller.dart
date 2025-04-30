@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import '../../domain/pedido_venta.dart';
 import '../../domain/pedido_venta_linea.dart';
 
@@ -215,6 +216,7 @@ class PedidoVentaEditPageController
     required bool oferta,
     DateTime? ofertaFechaHasta,
     required bool isBorrador,
+    required ISentrySpan transaction,
   }) async {
     state = const PedidoVentaEditPageControllerState.loading();
 
@@ -231,6 +233,7 @@ class PedidoVentaEditPageController
         oferta: oferta,
         ofertaFechaHasta: ofertaFechaHasta,
         isBorrador: isBorrador,
+        transaction: transaction,
       );
       state = PedidoVentaEditPageControllerState.saved(
         pedidoVentaAppId,

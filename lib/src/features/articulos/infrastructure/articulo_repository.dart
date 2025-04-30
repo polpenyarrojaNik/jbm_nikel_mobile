@@ -12,6 +12,7 @@ import '../../../core/application/log_service.dart';
 import '../../../core/domain/adjunto_param.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/exceptions/get_api_error.dart';
+import '../../../core/helpers/error_logger.dart';
 import '../../../core/helpers/formatters.dart';
 import '../../../core/infrastructure/local_database.dart';
 import '../../../core/infrastructure/remote_database.dart';
@@ -49,7 +50,13 @@ final articuloRepositoryProvider = Provider.autoDispose<ArticuloRepository>((
   final usuarioService = ref.watch(usuarioServiceProvider);
 
   final dio = ref.watch(dioProvider);
-  return ArticuloRepository(remoteDb, localDb, dio, usuarioService);
+  return ArticuloRepository(
+    remoteDb,
+    localDb,
+    dio,
+    usuarioService,
+    ref.watch(errorLoggerProvider),
+  );
 });
 
 final articuloLastSyncDateProvider = FutureProvider.autoDispose<DateTime>((
@@ -222,10 +229,16 @@ class ArticuloRepository {
   final RemoteAppDatabase _remoteDb;
   final LocalAppDatabase _localDb;
   final UsuarioService _usuario;
-
   final Dio _dio;
+  final ErrorLogger errorLogger;
 
-  ArticuloRepository(this._remoteDb, this._localDb, this._dio, this._usuario);
+  ArticuloRepository(
+    this._remoteDb,
+    this._localDb,
+    this._dio,
+    this._usuario,
+    this.errorLogger,
+  );
 
   Future<List<Articulo>> getArticuloLista({
     required int page,
@@ -1418,8 +1431,8 @@ ORDER  BY IMPORTE_ANYO DESC
           response.statusMessage ?? '',
         );
       }
-    } catch (e) {
-      throw getApiError(e);
+    } catch (e, stackTrace) {
+      throw getApiError(e, stackTrace, errorLogger);
     }
   }
 
@@ -1448,8 +1461,8 @@ ORDER  BY IMPORTE_ANYO DESC
           response.statusMessage ?? '',
         );
       }
-    } catch (e) {
-      throw getApiError(e);
+    } catch (e, stackTrace) {
+      throw getApiError(e, stackTrace, errorLogger);
     }
   }
 
@@ -1474,8 +1487,8 @@ ORDER  BY IMPORTE_ANYO DESC
           response.statusMessage ?? '',
         );
       }
-    } catch (e) {
-      throw getApiError(e);
+    } catch (e, stackTrace) {
+      throw getApiError(e, stackTrace, errorLogger);
     }
   }
 

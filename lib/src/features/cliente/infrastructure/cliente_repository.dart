@@ -16,6 +16,7 @@ import '../../../core/domain/pais.dart';
 import '../../../core/domain/sector.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/exceptions/get_api_error.dart';
+import '../../../core/helpers/error_logger.dart';
 import '../../../core/infrastructure/local_database.dart';
 import '../../../core/infrastructure/remote_database.dart';
 import '../../../core/infrastructure/sync_service.dart';
@@ -65,7 +66,14 @@ final clienteRepositoryProvider = Provider.autoDispose<ClienteRepository>((
 
   final dio = ref.watch(dioProvider);
   final usuario = ref.watch(usuarioNotifierProvider)!;
-  return ClienteRepository(remoteDb, localDb, dio, usuario, ref);
+  return ClienteRepository(
+    remoteDb,
+    localDb,
+    dio,
+    usuario,
+    ref.watch(errorLoggerProvider),
+    ref,
+  );
 });
 
 final clienteProvider = FutureProvider.autoDispose.family<Cliente, String>((
@@ -212,6 +220,7 @@ class ClienteRepository {
   final LocalAppDatabase _localDb;
   final Dio _dio;
   final Usuario usuario;
+  final ErrorLogger errorLogger;
   final Ref ref;
 
   ClienteRepository(
@@ -219,6 +228,7 @@ class ClienteRepository {
     this._localDb,
     this._dio,
     this.usuario,
+    this.errorLogger,
     this.ref,
   );
 
@@ -815,8 +825,8 @@ class ClienteRepository {
           response.statusMessage ?? '',
         );
       }
-    } catch (e) {
-      throw getApiError(e);
+    } catch (e, stackTrace) {
+      throw getApiError(e, stackTrace, errorLogger);
     }
   }
 
@@ -931,8 +941,8 @@ class ClienteRepository {
           response.statusMessage ?? '',
         );
       }
-    } catch (e) {
-      throw getApiError(e);
+    } catch (e, stackTrace) {
+      throw getApiError(e, stackTrace, errorLogger);
     }
   }
 
@@ -1498,8 +1508,8 @@ GROUP BY ARTICULO_ID, DESCRIPCION
             response.statusMessage ?? '',
           );
         }
-      } catch (e) {
-        throw getApiError(e);
+      } catch (e, stackTrace) {
+        throw getApiError(e, stackTrace, errorLogger);
       }
     } catch (e) {
       rethrow;
@@ -1637,8 +1647,8 @@ GROUP BY ARTICULO_ID, DESCRIPCION
           response.statusMessage ?? '',
         );
       }
-    } catch (e) {
-      throw getApiError(e);
+    } catch (e, stackTrace) {
+      throw getApiError(e, stackTrace, errorLogger);
     }
   }
 
@@ -1860,8 +1870,8 @@ GROUP BY ARTICULO_ID, DESCRIPCION
             response.statusMessage ?? '',
           );
         }
-      } catch (e) {
-        throw getApiError(e);
+      } catch (e, stackTrace) {
+        throw getApiError(e, stackTrace, errorLogger);
       }
     } catch (e) {
       rethrow;
@@ -2025,8 +2035,8 @@ GROUP BY ARTICULO_ID, DESCRIPCION
           response.statusMessage ?? '',
         );
       }
-    } catch (e) {
-      throw getApiError(e);
+    } catch (e, stackTrace) {
+      throw getApiError(e, stackTrace, errorLogger);
     }
   }
 

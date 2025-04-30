@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:path_provider/path_provider.dart';
+import '../../../core/helpers/error_logger.dart';
 import '../../../core/infrastructure/local_database.dart';
 import '../../../core/infrastructure/log_repository.dart';
 import '../../../core/infrastructure/sync_datetime_dto.dart';
@@ -171,6 +172,7 @@ Future<SyncProgress> syncInBackground(IsolateArgs isolateArgs) async {
       null,
       LogRepository(dio, localDb, isolateArgs.user),
       isolateArgs.documentDirectory,
+      ErrorLogger(),
     );
 
     return await syncService.syncAllTable();

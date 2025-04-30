@@ -57,6 +57,7 @@ dependencies:
   riverpod_annotation: ^2.6.1
   share_plus: ^11.0.0
   shimmer: ^3.0.0
+  sentry_flutter: ^8.14.2
   sqlite3_flutter_libs: ^0.5.29+1
   syncfusion_flutter_pdf: ^29.1.37
   syncfusion_flutter_pdfviewer: ^29.1.37
@@ -68,6 +69,7 @@ dependencies:
   gap: ^3.0.1
 
 dev_dependencies:
+  sentry_dart_plugin: ^2.4.1
   flutter_test:
     sdk: flutter
   auto_route_generator: ^9.0.0
@@ -109,3 +111,9 @@ flutter:
 
 flutter_intl:
   enabled: true
+
+sentry:
+  upload_debug_symbols: true
+  upload_source_maps: true
+  project: flutter-jbm-nikel-mobile
+  org: nikel-consultores-sl

@@ -5,6 +5,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/exceptions/get_api_error.dart';
+import '../../../core/helpers/error_logger.dart';
 import '../../../core/infrastructure/remote_database.dart';
 import '../../../core/presentation/app.dart';
 import '../../usuario/application/usuario_notifier.dart';
@@ -21,6 +22,7 @@ ExpedicionRepository expedicionRepository(Ref ref) => ExpedicionRepository(
   ref.watch(dioProvider),
   ref.watch(usuarioNotifierProvider)!,
   ref.watch(appRemoteDatabaseProvider),
+  ref.watch(errorLoggerProvider),
 );
 
 class ExpedicionRepository {
@@ -28,8 +30,9 @@ class ExpedicionRepository {
   final Dio dio;
   final Usuario usuario;
   final RemoteAppDatabase _remoteDb;
+  final ErrorLogger logger;
 
-  ExpedicionRepository(this.dio, this.usuario, this._remoteDb);
+  ExpedicionRepository(this.dio, this.usuario, this._remoteDb, this.logger);
 
   Future<List<Expedicion>> getExpedicionDTOLista({
     required String searchText,
@@ -229,8 +232,8 @@ class ExpedicionRepository {
           response.statusMessage ?? '',
         );
       }
-    } catch (e) {
-      throw getApiError(e);
+    } catch (e, stackTrace) {
+      throw getApiError(e, stackTrace, logger);
     }
   }
 }

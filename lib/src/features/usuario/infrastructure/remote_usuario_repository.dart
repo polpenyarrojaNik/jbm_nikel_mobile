@@ -8,6 +8,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/exceptions/get_api_error.dart';
+import '../../../core/helpers/error_logger.dart';
 import '../../../core/presentation/app.dart';
 import 'usuario_aux_dto.dart';
 import 'usuario_dto.dart';
@@ -17,13 +18,17 @@ typedef Json = Map<String, dynamic>;
 final remoteUsuarioRepositoryProvider = Provider<RemoteUsuarioRepository>((
   ref,
 ) {
-  return RemoteUsuarioRepository(ref.watch(dioForAuthProvider));
+  return RemoteUsuarioRepository(
+    ref.watch(dioForAuthProvider),
+    ref.watch(errorLoggerProvider),
+  );
 });
 
 class RemoteUsuarioRepository {
   final Dio _dio;
+  final ErrorLogger errorLogger;
 
-  RemoteUsuarioRepository(this._dio);
+  RemoteUsuarioRepository(this._dio, this.errorLogger);
 
   static final authorizationEndpoint = Uri.https(
     dotenv.get('URL', fallback: 'localhost:3001'),
@@ -122,8 +127,8 @@ class RemoteUsuarioRepository {
               'Internet Error',
         );
       }
-    } catch (e) {
-      throw getApiError(e);
+    } catch (e, stackTrace) {
+      throw getApiError(e, stackTrace, errorLogger);
     }
   }
 
@@ -159,8 +164,8 @@ class RemoteUsuarioRepository {
           response.statusMessage ?? '',
         );
       }
-    } catch (e) {
-      throw getApiError(e);
+    } catch (e, stackTrace) {
+      throw getApiError(e, stackTrace, errorLogger);
     }
   }
 }

@@ -317,3 +317,5 @@ fabric.properties
 #BabelEdit
 babelEdit/
 
+
+sentry.properties

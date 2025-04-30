@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/application/log_service.dart';
 import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/exceptions/get_api_error.dart';
+import '../../../../core/helpers/error_logger.dart';
 import '../../../../core/presentation/app.dart';
 import '../../../usuario/application/usuario_notifier.dart';
 import '../../../usuario/domain/usuario.dart';
@@ -18,14 +19,15 @@ typedef Json = Map<String, dynamic>;
 final notificationRepositoryProvider = Provider<NotificationRepository>((ref) {
   final dio = ref.watch(dioProvider);
   final user = ref.watch(usuarioNotifierProvider);
-  return NotificationRepository(dio, user);
+  return NotificationRepository(dio, user, ref.watch(errorLoggerProvider));
 });
 
 class NotificationRepository {
   final Dio dio;
   final Usuario? user;
+  final ErrorLogger errorLogger;
 
-  NotificationRepository(this.dio, this.user);
+  NotificationRepository(this.dio, this.user, this.errorLogger);
 
   Future<List<NotificationList>> getNotificationList() async {
     try {
@@ -126,8 +128,8 @@ class NotificationRepository {
           response.statusMessage ?? '',
         );
       }
-    } catch (e) {
-      throw getApiError(e);
+    } catch (e, stackTrace) {
+      throw getApiError(e, stackTrace, errorLogger);
     }
   }
 
@@ -152,8 +154,8 @@ class NotificationRepository {
           response.statusMessage ?? '',
         );
       }
-    } catch (e) {
-      throw getApiError(e);
+    } catch (e, stackTrace) {
+      throw getApiError(e, stackTrace, errorLogger);
     }
   }
 
@@ -178,8 +180,8 @@ class NotificationRepository {
           response.statusMessage ?? '',
         );
       }
-    } catch (e) {
-      throw getApiError(e);
+    } catch (e, stackTrace) {
+      throw getApiError(e, stackTrace, errorLogger);
     }
   }
 }

@@ -13,6 +13,7 @@ import '../../../core/application/log_service.dart';
 import '../../../core/domain/adjunto_param.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/exceptions/get_api_error.dart';
+import '../../../core/helpers/error_logger.dart';
 import '../../../core/infrastructure/local_database.dart';
 import '../../../core/presentation/app.dart';
 import '../../usuario/application/usuario_notifier.dart';
@@ -36,7 +37,12 @@ final catalogoRepositoryProvider = Provider.autoDispose<CatalogoRepository>((
   final dio = ref.watch(dioProvider);
   final usuario = ref.watch(usuarioNotifierProvider)!;
 
-  return CatalogoRepository(dio, localDb, usuario);
+  return CatalogoRepository(
+    dio,
+    localDb,
+    usuario,
+    ref.watch(errorLoggerProvider),
+  );
 });
 
 final tipoCatalogoListProvider = FutureProvider.autoDispose<List<TipoCatalogo>>(
@@ -65,8 +71,9 @@ class CatalogoRepository {
   final Dio _dio;
   final LocalAppDatabase _localDb;
   final Usuario _usuario;
+  final ErrorLogger errorLogger;
 
-  CatalogoRepository(this._dio, this._localDb, this._usuario);
+  CatalogoRepository(this._dio, this._localDb, this._usuario, this.errorLogger);
 
   Future<List<Catalogo>> getCatalogoList({
     TipoCatalogo? tipoCatalogo,
@@ -399,8 +406,8 @@ class CatalogoRepository {
           response.statusMessage ?? '',
         );
       }
-    } catch (e) {
-      throw getApiError(e);
+    } catch (e, stackTrace) {
+      throw getApiError(e, stackTrace, errorLogger);
     }
   }
 
@@ -425,8 +432,8 @@ class CatalogoRepository {
           response.statusMessage ?? '',
         );
       }
-    } catch (e) {
-      throw getApiError(e);
+    } catch (e, stackTrace) {
+      throw getApiError(e, stackTrace, errorLogger);
     }
   }
 
@@ -453,8 +460,8 @@ class CatalogoRepository {
           response.statusMessage ?? '',
         );
       }
-    } catch (e) {
-      throw getApiError(e);
+    } catch (e, stackTrace) {
+      throw getApiError(e, stackTrace, errorLogger);
     }
   }
 
@@ -479,8 +486,8 @@ class CatalogoRepository {
           response.statusMessage ?? '',
         );
       }
-    } catch (e) {
-      throw getApiError(e);
+    } catch (e, stackTrace) {
+      throw getApiError(e, stackTrace, errorLogger);
     }
   }
 
@@ -574,8 +581,8 @@ class CatalogoRepository {
           response.statusMessage ?? '',
         );
       }
-    } catch (e) {
-      throw getApiError(e);
+    } catch (e, stackTrace) {
+      throw getApiError(e, stackTrace, errorLogger);
     }
   }
 

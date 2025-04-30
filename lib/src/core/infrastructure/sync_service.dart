@@ -7,6 +7,7 @@ import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
 
 import '../../core/infrastructure/pais_dto.dart';
@@ -63,6 +64,7 @@ import '../domain/adjunto_param.dart';
 import '../domain/log.dart';
 import '../exceptions/app_exception.dart';
 import '../exceptions/get_api_error.dart';
+import '../helpers/error_logger.dart';
 import '../presentation/app.dart';
 import 'divisa_dto.dart';
 import 'familia_dto.dart';
@@ -90,6 +92,7 @@ final syncServiceProvider = Provider.autoDispose<SyncService>(
     ref.watch(usuarioServiceProvider),
     ref.watch(logRepositoryProvider),
     null,
+    ref.watch(errorLoggerProvider),
   ),
 );
 
@@ -101,6 +104,7 @@ class SyncService {
   final UsuarioService? usuarioService;
   final LogRepository logRepository;
   final Directory? documentDirectory;
+  final ErrorLogger errorLogger;
 
   static final remoteDatabaseDateTimeEndpoint = Uri.http(
     'jbm-api.nikel.es',
@@ -128,6 +132,7 @@ class SyncService {
     this.usuarioService,
     this.logRepository,
     this.documentDirectory,
+    this.errorLogger,
   );
 
   Future<DateTime> getRemoteDatabaseDateTime() async {
@@ -147,8 +152,8 @@ class SyncService {
           response.statusMessage ?? 'Internet Error',
         );
       }
-    } catch (e) {
-      throw getApiError(e);
+    } catch (e, stackTrace) {
+      throw getApiError(e, stackTrace, errorLogger);
     }
   }
 
@@ -672,6 +677,14 @@ class SyncService {
         final pedidoVentaLineaDTOList = await getLocalPedidoVentaLineaList(
           pedidoVentaAppId: pedidosNoEnviados[i].pedidoVentaAppId,
         );
+        final transaction = Sentry.startTransaction(
+          'Enviar pedido no enviado',
+          'sync',
+          customSamplingContext: {
+            'pedidoVentaAppId': pedidosNoEnviados[i].pedidoVentaAppId,
+            'isBorrador': pedidosNoEnviados[i].borrador,
+          },
+        );
         try {
           final pedidoLocalEnviado = await _remoteCreatePedidos(
             pedidosNoEnviados[i],
@@ -683,6 +696,8 @@ class SyncService {
           await updatePedidoVentaInDB(pedidoVentaLocalDto: pedidoLocalEnviado);
         } catch (e) {
           log.e(e);
+        } finally {
+          await transaction.finish();
         }
       }
     } catch (e) {
@@ -1133,70 +1148,54 @@ class SyncService {
           response.toString(),
         );
       }
-    } catch (e) {
-      throw getApiError(e);
+    } catch (e, stackTrace) {
+      throw getApiError(e, stackTrace, errorLogger);
     }
   }
 
   Future<DateTime?> getLastUpdatedDate({
     required TableInfo<Table, dynamic> tableInfo,
   }) async {
-    try {
-      final query =
-          await _remoteDb.customSelect(
-            ''' SELECT MAX(LAST_UPDATED) as MAX_DATE FROM ${tableInfo.actualTableName}
+    final query =
+        await _remoteDb.customSelect(
+          ''' SELECT MAX(LAST_UPDATED) as MAX_DATE FROM ${tableInfo.actualTableName}
           ''',
-          ).getSingle();
+        ).getSingle();
 
-      return query.data['MAX_DATE'] != null
-          ? DateTime.parse(query.data['MAX_DATE'] as String)
-          : null;
-    } catch (e) {
-      rethrow;
-    }
+    return query.data['MAX_DATE'] != null
+        ? DateTime.parse(query.data['MAX_DATE'] as String)
+        : null;
   }
 
   Future<void> enviarVisitasNoEnviadas() async {
-    try {
-      final visitasNoEnviadas = await getVisitasNoEnviadas();
-      for (var i = 0; i < visitasNoEnviadas.length; i++) {
-        try {
-          final visitaCompetenciaDtoList =
-              await _getVisitaCompetenciaLocalDtoList(
-                visitasNoEnviadas[i].visitaAppId,
-              );
-          final visitaLocalEnviada = await _remoteCreateVisita(
-            visitasNoEnviadas[i],
-            visitaCompetenciaDtoList,
-            _usuario!.provisionalToken,
-          );
-          await updateVisitaInDB(visitaLocalDto: visitaLocalEnviada);
-        } catch (e) {
-          log.e(e);
-        }
+    final visitasNoEnviadas = await getVisitasNoEnviadas();
+    for (var i = 0; i < visitasNoEnviadas.length; i++) {
+      try {
+        final visitaCompetenciaDtoList =
+            await _getVisitaCompetenciaLocalDtoList(
+              visitasNoEnviadas[i].visitaAppId,
+            );
+        final visitaLocalEnviada = await _remoteCreateVisita(
+          visitasNoEnviadas[i],
+          visitaCompetenciaDtoList,
+          _usuario!.provisionalToken,
+        );
+        await updateVisitaInDB(visitaLocalDto: visitaLocalEnviada);
+      } catch (e) {
+        log.e(e);
       }
-    } catch (e) {
-      rethrow;
     }
   }
 
   Future<List<VisitaLocalDTO>> getVisitasNoEnviadas() async {
-    try {
-      return (_localDb.select(_localDb.visitaLocalTable)
-        ..where((tbl) => tbl.enviada.equals('N'))).get();
-    } catch (e) {
-      rethrow;
-    }
+    return (_localDb.select(_localDb.visitaLocalTable)
+      ..where((tbl) => tbl.enviada.equals('N'))).get();
   }
 
   Future<List<PedidoVentaLocalDTO>> getPedidosNoEnviados() async {
-    try {
-      return (_localDb.select(_localDb.pedidoVentaLocalTable)..where(
-        (tbl) => tbl.enviada.equals('N') & tbl.borrador.equals('N'),
-      )).get();
-    } catch (e) {
-      rethrow;
-    }
+    return (_localDb.select(_localDb.pedidoVentaLocalTable)..where(
+      (tbl) => tbl.enviada.equals('N') & tbl.borrador.equals('N'),
+    )).get();
   }
 
   Future<PedidoVentaLocalDTO> _remoteCreatePedidos(
@@ -1242,8 +1241,8 @@ class SyncService {
           response.statusMessage ?? '',
         );
       }
-    } catch (e) {
-      throw getApiError(e);
+    } catch (e, stackTrace) {
+      throw getApiError(e, stackTrace, errorLogger);
     }
   }
 
@@ -1283,8 +1282,8 @@ class SyncService {
           response.statusMessage ?? '',
         );
       }
-    } catch (e) {
-      throw getApiError(e);
+    } catch (e, stackTrace) {
+      throw getApiError(e, stackTrace, errorLogger);
     }
   }
 
@@ -1549,8 +1548,8 @@ class SyncService {
           response.statusMessage ?? '',
         );
       }
-    } catch (e) {
-      throw getApiError(e);
+    } catch (e, stackTrace) {
+      throw getApiError(e, stackTrace, errorLogger);
     }
   }
 
@@ -1588,8 +1587,8 @@ class SyncService {
           response.statusMessage ?? '',
         );
       }
-    } catch (e) {
-      throw getApiError(e);
+    } catch (e, stackTrace) {
+      throw getApiError(e, stackTrace, errorLogger);
     }
   }
 
@@ -1637,8 +1636,8 @@ class SyncService {
           response.statusMessage ?? '',
         );
       }
-    } catch (e) {
-      throw getApiError(e);
+    } catch (e, stackTrace) {
+      throw getApiError(e, stackTrace, errorLogger);
     }
   }
 
@@ -1908,8 +1907,8 @@ class SyncService {
           response.statusMessage ?? '',
         );
       }
-    } catch (e) {
-      throw getApiError(e);
+    } catch (e, stackTrace) {
+      throw getApiError(e, stackTrace, errorLogger);
     }
   }
 

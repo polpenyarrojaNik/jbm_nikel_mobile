@@ -54,6 +54,10 @@ pub_major_upgrade: ## Upgrades pubspec dependencies
 	@$(RIMRAF) -rf Podfile.lock
 	@$(FLUTTER) pub upgrade --major-versions
 
+sentry_dart_plugin: ## Generates sentry dart plugin
+	@echo ":: Generating sentry dart plugin..."
+	@$(DART) run sentry_dart_plugin
+
 upgrade_pubspec: pub_major_upgrade build_runner format update_i18n lint icons ## Upgrades pubspec dependencies
 
 install_pubspec: pub_get build_runner format update_i18n lint icons  ## Install dependencies

@@ -3,38 +3,28 @@ import 'dart:io';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
-import '../application/log_service.dart';
-import '../exceptions/app_exception.dart';
-
 const int databaseRelease = 34;
 
 Future<void> deleteRemoteDatabase() async {
   const remoteDatabaseName = 'jbm.sqlite';
   const remoteDatabaseJournalName = 'jbm.sqlite-journal';
 
-  try {
-    final directory = await getApplicationDocumentsDirectory();
-    if (await _databaseFileExist(
-      directory: directory,
-      remoteDatabaseName: remoteDatabaseName,
-    )) {
-      File(
-        (join(directory.path, remoteDatabaseName)),
-      ).deleteSync(recursive: true);
-    }
-    if (await _databaseFileExist(
-      directory: directory,
-      remoteDatabaseName: remoteDatabaseJournalName,
-    )) {
-      File(
-        (join(directory.path, remoteDatabaseJournalName)),
-      ).deleteSync(recursive: true);
-    }
-  } on AppException catch (e) {
-    log.e(e.details);
-    rethrow;
-  } catch (e) {
-    rethrow;
+  final directory = await getApplicationDocumentsDirectory();
+  if (await _databaseFileExist(
+    directory: directory,
+    remoteDatabaseName: remoteDatabaseName,
+  )) {
+    File(
+      (join(directory.path, remoteDatabaseName)),
+    ).deleteSync(recursive: true);
+  }
+  if (await _databaseFileExist(
+    directory: directory,
+    remoteDatabaseName: remoteDatabaseJournalName,
+  )) {
+    File(
+      (join(directory.path, remoteDatabaseJournalName)),
+    ).deleteSync(recursive: true);
   }
 }
 

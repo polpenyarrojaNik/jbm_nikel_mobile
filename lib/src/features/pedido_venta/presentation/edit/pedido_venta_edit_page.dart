@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../../../generated/l10n.dart';
@@ -74,6 +76,7 @@ class PedidoVentaEditPage extends ConsumerStatefulWidget {
 
 class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
   late PedidoLocalParam pedidoLocalParam;
+  late ISentrySpan transaction;
 
   @override
   void initState() {
@@ -85,6 +88,16 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
       isEdit: widget.isEdit,
       createPedidoFromClienteId: widget.createPedidoFromClienteId,
       addLineaDesdeArticulo: widget.addLineaDesdeArticulo,
+    );
+    transaction = Sentry.startTransaction(
+      'Crear/Edtiar pedido',
+      'task',
+      customSamplingContext: {
+        'pedidoAppId': widget.pedidoAppId,
+        'pedidoId': widget.pedidoId,
+        'isBorrador': widget.pedidoAppId != null && widget.isEdit ? 'S' : 'N',
+        'isEdit': widget.isEdit ? 'S' : 'N',
+      },
     );
   }
 
@@ -229,6 +242,7 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
                 oferta: oferta,
                 ofertaFechaHasta: ofertaFechaHasta,
                 isBorrador: isBorrador,
+                transaction: transaction,
               ),
           error:
               (Object error, StackTrace? _) => ErrorMessageWidget(
@@ -261,6 +275,7 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
                 oferta: oferta,
                 ofertaFechaHasta: ofertaFechaHasta,
                 isBorrador: isBorrador,
+                transaction: transaction,
               ),
         ),
       ),
@@ -291,7 +306,7 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
     }
   }
 
-  void saveBorrador({
+  Future<void> saveBorrador({
     required Cliente cliente,
     ClienteDireccion? clienteDireccion,
     required List<PedidoVentaLinea> pedidoVentaLineaList,
@@ -299,8 +314,10 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
     String? pedidoCliente,
     required bool oferta,
     DateTime? ofertaFechaHasta,
-  }) {
-    ref
+  }) async {
+    await transaction.startChild('UI:BotónGuardarBorrador').finish();
+
+    await ref
         .read(pedidoVentaEditPageControllerProvider(pedidoLocalParam).notifier)
         .upsertPedidoVenta(
           pedidoVentaAppId: pedidoLocalParam.pedidoAppId!,
@@ -312,20 +329,24 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
           oferta: oferta,
           ofertaFechaHasta: ofertaFechaHasta,
           isBorrador: true,
+          transaction: transaction,
         );
 
     // ref.invalidate(getPedidoVentaBorradorPendiente);
     ref.invalidate(pedidoVentaProvider(pedidoLocalParam));
     ref.invalidate(pedidoVentaIndexScreenControllerProvider);
     ref.invalidate(pedidoVentaIndexScreenPaginatedControllerProvider);
+    await transaction.finish();
   }
 
-  void onSavedOrSavedErrorMessage({Object? error}) {
+  Future<void> onSavedOrSavedErrorMessage({Object? error}) async {
     if (error != null) {
-      context.showErrorBar(
-        duration: const Duration(seconds: 5),
-        content: Text(
-          (error is AppException) ? error.details.message : error.toString(),
+      unawaited(
+        context.showErrorBar(
+          duration: const Duration(seconds: 5),
+          content: Text(
+            (error is AppException) ? error.details.message : error.toString(),
+          ),
         ),
       );
     }
@@ -344,8 +365,10 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
         (route) => route.settings.name == PedidoVentaListRoute.name,
       );
     } else {
-      context.router.maybePop();
+      unawaited(context.router.maybePop());
     }
+
+    await transaction.finish();
   }
 }
 
@@ -364,6 +387,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
     required this.oferta,
     required this.ofertaFechaHasta,
     required this.isBorrador,
+    required this.transaction,
   });
 
   final bool isEdit;
@@ -378,12 +402,14 @@ class PedidoVentaEditForm extends ConsumerWidget {
   final bool oferta;
   final DateTime? ofertaFechaHasta;
   final bool isBorrador;
+  final ISentrySpan transaction;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // ignore: deprecated_member_use
     return WillPopScope(
-      onWillPop: () async => _askIfUserPop(context, ref, isBorrador),
+      onWillPop: () async => _askIfUserPop(context, ref, transaction),
+
       child: IconStepper(
         currentStep: currentStep,
         steps: getSteps(),
@@ -398,7 +424,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
   Future<bool> _askIfUserPop(
     BuildContext context,
     WidgetRef ref,
-    bool isBorrador,
+    ISentrySpan transaction,
   ) async {
     final result =
         await showDialog(
@@ -425,6 +451,10 @@ class PedidoVentaEditForm extends ConsumerWidget {
     //   ref.invalidate(pedidoVentaIndexScreenPaginatedControllerProvider);
     //   ref.invalidate(pedidoVentaIndexScreenControllerProvider);
     // }
+
+    if (result ?? false) {
+      await transaction.finish();
+    }
     return result ?? false;
   }
 
@@ -444,23 +474,8 @@ class PedidoVentaEditForm extends ConsumerWidget {
         remarksValidate(context, ref);
         break;
       case 4:
-        ref
-            .read(
-              pedidoVentaEditPageControllerProvider(pedidoLocalParam).notifier,
-            )
-            .upsertPedidoVenta(
-              pedidoId: pedidoLocalParam.pedidoId,
-              empresaId: pedidoLocalParam.empresaId,
-              pedidoVentaAppId: pedidoLocalParam.pedidoAppId!,
-              cliente: cliente!,
-              clienteDireccion: clienteDireccion,
-              pedidoVentaLineaList: pedidoVentaLineaList,
-              observaciones: observaciones,
-              pedidoCliente: pedidoCliente,
-              oferta: oferta,
-              ofertaFechaHasta: ofertaFechaHasta,
-              isBorrador: false,
-            );
+        saveSalesOrder(context, ref);
+
         break;
       default:
         ref
@@ -623,6 +638,27 @@ class PedidoVentaEditForm extends ConsumerWidget {
         isActive: true,
       ),
     ];
+  }
+
+  void saveSalesOrder(BuildContext context, WidgetRef ref) async {
+    await transaction.startChild('UI:BotónGuardarPedido').finish();
+
+    await ref
+        .read(pedidoVentaEditPageControllerProvider(pedidoLocalParam).notifier)
+        .upsertPedidoVenta(
+          pedidoId: pedidoLocalParam.pedidoId,
+          empresaId: pedidoLocalParam.empresaId,
+          pedidoVentaAppId: pedidoLocalParam.pedidoAppId!,
+          cliente: cliente!,
+          clienteDireccion: clienteDireccion,
+          pedidoVentaLineaList: pedidoVentaLineaList,
+          observaciones: observaciones,
+          pedidoCliente: pedidoCliente,
+          oferta: oferta,
+          ofertaFechaHasta: ofertaFechaHasta,
+          isBorrador: false,
+          transaction: transaction,
+        );
   }
 }
 

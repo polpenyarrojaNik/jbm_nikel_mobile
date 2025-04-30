@@ -2,10 +2,11 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 
+import '../helpers/error_logger.dart';
 import '../infrastructure/dio_extension.dart';
 import 'app_exception.dart';
 
-Error getApiError(Object e) {
+Error getApiError(Object e, StackTrace stackTrace, ErrorLogger logger) {
   if (e is DioException) {
     if (e.isNoConnectionError) {
       throw const AppException.notConnection();
@@ -35,6 +36,8 @@ Error getApiError(Object e) {
       );
     }
   } else {
+    logger.logException(e, stackTrace);
+
     throw e;
   }
 }

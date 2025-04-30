@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import '../../../core/exceptions/app_exception.dart';
 import '../domain/usuario.dart';
@@ -64,10 +65,27 @@ class UsuarioService {
 
     await _localUsuarioRepository.save(usuarioDtos);
 
+    await Sentry.configureScope(
+      (scope) => scope.setUser(
+        SentryUser(
+          id: usuarioDtos.id,
+          username: usuarioDtos.usuario,
+          name: usuarioDtos.nombreUsuario,
+          data: {
+            'ver_total_ventas': usuarioDtos.verTotalVentas,
+            'modificar_pedido': usuarioDtos.modificarPedido,
+            'margen_comercial': usuarioDtos.margenComercial,
+          },
+        ),
+      ),
+    );
+
     return usuarioDtos.toDomain();
   }
 
   Future<void> signOut() async {
+    await Sentry.configureScope((scope) => scope.setUser(null));
+
     await _localUsuarioRepository.clear();
   }
 
@@ -81,6 +99,21 @@ class UsuarioService {
             storedCredentials,
           );
           await _localUsuarioRepository.save(refreshedUsuarioDTO);
+
+          Sentry.configureScope(
+            (scope) => scope.setUser(
+              SentryUser(
+                id: refreshedUsuarioDTO.id,
+                username: refreshedUsuarioDTO.usuario,
+                name: refreshedUsuarioDTO.nombreUsuario,
+                data: {
+                  'ver_total_ventas': refreshedUsuarioDTO.verTotalVentas,
+                  'modificar_pedido': refreshedUsuarioDTO.modificarPedido,
+                  'margen_comercial': refreshedUsuarioDTO.margenComercial,
+                },
+              ),
+            ),
+          );
           return refreshedUsuarioDTO.toDomain();
         }
         return null;
@@ -132,6 +165,20 @@ class UsuarioService {
           deviceInfo: deviceInfoStr,
         );
         await _localUsuarioRepository.save(usuarioDto);
+        await Sentry.configureScope(
+          (scope) => scope.setUser(
+            SentryUser(
+              id: usuarioDto.id,
+              username: usuarioDto.usuario,
+              name: usuarioDto.nombreUsuario,
+              data: {
+                'ver_total_ventas': usuarioDto.verTotalVentas,
+                'modificar_pedido': usuarioDto.modificarPedido,
+                'margen_comercial': usuarioDto.margenComercial,
+              },
+            ),
+          ),
+        );
       }
     } catch (e) {
       // Do nothing
