@@ -23,4 +23,6 @@
   "cSpell.words": [
     "Catalago"
   ],
+    "dart.flutterSdkPath": "/Users/polpenarroja/.puro/envs/jbm/flutter",
+    "dart.sdkPath": "/Users/polpenarroja/.puro/envs/jbm/flutter/bin/cache/dart-sdk"
 }

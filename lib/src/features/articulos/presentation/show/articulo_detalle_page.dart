@@ -787,10 +787,11 @@ class _ArticluloResumenDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _DescriptionResumenRow(
-              title: 'ES: ',
-              description: articulo.resumenES,
-            ),
+            if (articulo.resumenES != null)
+              _DescriptionResumenRow(
+                title: 'ES: ',
+                description: articulo.resumenES,
+              ),
             const Divider(),
             if (articulo.resumenEN != null)
               _DescriptionResumenRow(
