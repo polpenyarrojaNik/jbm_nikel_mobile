@@ -35,7 +35,7 @@ class _ClientesAlrededorPageState extends ConsumerState<ClientesAlrededorPage> {
   @override
   void initState() {
     super.initState();
-    radiusKm = 10000;
+    radiusKm = 50000;
     showDireccionesEnvio = false;
     showPotenciales = false;
   }
@@ -300,7 +300,7 @@ class _SliderKm extends StatelessWidget {
                     : Theme.of(context).colorScheme.primary,
             value: radiusKm / 1000,
             min: 0,
-            max: 100,
+            max: 500,
             onChanged: (value) => onSliderChanged(value),
           ),
           DecoratedBox(
