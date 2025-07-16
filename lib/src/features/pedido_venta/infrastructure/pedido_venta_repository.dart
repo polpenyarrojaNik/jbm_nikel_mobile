@@ -2135,7 +2135,7 @@ class PedidoVentaRepository {
   Money _getPrecioUnitario({required Money precio, required int tipoPrecio}) {
     return tipoPrecio != 0
         ? Money.fromFixedWithCurrency(
-          precio.amount / Fixed.fromNum(tipoPrecio, decimalDigits: 0),
+          precio.amount / Fixed.fromNum(tipoPrecio),
           precio.currency,
         )
         : 0.toMoney(currencyId: precio.currency.isoCode);
@@ -2159,7 +2159,6 @@ class PedidoVentaRepository {
                 (1 - (descuento3 / 100))),
         6,
       ),
-      decimalDigits: 6,
     );
   }
 
@@ -2217,8 +2216,7 @@ class PedidoVentaRepository {
 
   Money getImporteIva(Money importeBaseImponible, double iva) {
     final importeIve =
-        (importeBaseImponible.amount * Fixed.fromNum(iva, decimalDigits: 2)) /
-        Fixed.fromNum(100, decimalDigits: 2);
+        (importeBaseImponible.amount * Fixed.fromNum(iva)) / Fixed.fromNum(100);
 
     return Money.fromFixedWithCurrency(
       importeIve,

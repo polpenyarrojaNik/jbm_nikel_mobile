@@ -483,10 +483,10 @@ packages:
     dependency: transitive
     description:
       name: fixed
-      sha256: "0de882a7459991f314fc53117146174dbdb6a0f5ba33aaf2ea6399a2d64e2322"
+      sha256: "9b67adeef364271501738a7ab452f45f3207b69a7d8d5692eaa22d038757b035"
       url: "https://pub.dev"
     source: hosted
-    version: "6.0.0"
+    version: "5.3.4"
   fixnum:
     dependency: transitive
     description:
@@ -1167,10 +1167,10 @@ packages:
     dependency: "direct main"
     description:
       name: money2
-      sha256: eefecd5656e49c28853ee9accacdefae1a3384c7ccfa20541b4aa892b5aeac08
+      sha256: "992f864f0cfb9261b800acd5d029047809c1b9936235c59c44cd782c3c634a69"
       url: "https://pub.dev"
     source: hosted
-    version: "6.0.0"
+    version: "5.4.6"
   octo_image:
     dependency: transitive
     description:
@@ -1611,14 +1611,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.0"
-  simple_sparse_list:
-    dependency: transitive
-    description:
-      name: simple_sparse_list
-      sha256: aa648fd240fa39b49dcd11c19c266990006006de6699a412de485695910fbc1f
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.1.4"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -1760,14 +1752,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.1"
-  strings:
-    dependency: transitive
-    description:
-      name: strings
-      sha256: "482f1511d2cd8ab9f2c4cc148e6837be8a00c03b9a8eaedbc981a84d9c6305d8"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.2.0"
   syncfusion_flutter_core:
     dependency: transitive
     description:
@@ -1880,14 +1864,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.0"
-  unicode:
-    dependency: transitive
-    description:
-      name: unicode
-      sha256: "0d99edbd2e74726bed2e4989713c8bec02e5581628e334d8c88c0271593fb402"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.1.8"
   upgrader:
     dependency: "direct main"
     description:
