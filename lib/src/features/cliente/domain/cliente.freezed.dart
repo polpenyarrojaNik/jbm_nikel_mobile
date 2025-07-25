@@ -85,6 +85,12 @@ mixin _$Cliente {
   String? get email => throw _privateConstructorUsedError;
   Sector? get sector => throw _privateConstructorUsedError;
   Subsector? get subsector => throw _privateConstructorUsedError;
+  int? get franqPortes1 => throw _privateConstructorUsedError;
+  int? get franqPortes2 => throw _privateConstructorUsedError;
+  int? get franqPortes3 => throw _privateConstructorUsedError;
+  double? get importePortes1 => throw _privateConstructorUsedError;
+  double? get importePortes2 => throw _privateConstructorUsedError;
+  double? get importePortes3 => throw _privateConstructorUsedError;
   DateTime? get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
@@ -165,6 +171,12 @@ abstract class $ClienteCopyWith<$Res> {
       String? email,
       Sector? sector,
       Subsector? subsector,
+      int? franqPortes1,
+      int? franqPortes2,
+      int? franqPortes3,
+      double? importePortes1,
+      double? importePortes2,
+      double? importePortes3,
       DateTime? lastUpdated,
       bool deleted});
 
@@ -259,6 +271,12 @@ class _$ClienteCopyWithImpl<$Res, $Val extends Cliente>
     Object? email = freezed,
     Object? sector = freezed,
     Object? subsector = freezed,
+    Object? franqPortes1 = freezed,
+    Object? franqPortes2 = freezed,
+    Object? franqPortes3 = freezed,
+    Object? importePortes1 = freezed,
+    Object? importePortes2 = freezed,
+    Object? importePortes3 = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = null,
   }) {
@@ -523,6 +541,30 @@ class _$ClienteCopyWithImpl<$Res, $Val extends Cliente>
           ? _value.subsector
           : subsector // ignore: cast_nullable_to_non_nullable
               as Subsector?,
+      franqPortes1: freezed == franqPortes1
+          ? _value.franqPortes1
+          : franqPortes1 // ignore: cast_nullable_to_non_nullable
+              as int?,
+      franqPortes2: freezed == franqPortes2
+          ? _value.franqPortes2
+          : franqPortes2 // ignore: cast_nullable_to_non_nullable
+              as int?,
+      franqPortes3: freezed == franqPortes3
+          ? _value.franqPortes3
+          : franqPortes3 // ignore: cast_nullable_to_non_nullable
+              as int?,
+      importePortes1: freezed == importePortes1
+          ? _value.importePortes1
+          : importePortes1 // ignore: cast_nullable_to_non_nullable
+              as double?,
+      importePortes2: freezed == importePortes2
+          ? _value.importePortes2
+          : importePortes2 // ignore: cast_nullable_to_non_nullable
+              as double?,
+      importePortes3: freezed == importePortes3
+          ? _value.importePortes3
+          : importePortes3 // ignore: cast_nullable_to_non_nullable
+              as double?,
       lastUpdated: freezed == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -736,6 +778,12 @@ abstract class _$$ClienteImplCopyWith<$Res> implements $ClienteCopyWith<$Res> {
       String? email,
       Sector? sector,
       Subsector? subsector,
+      int? franqPortes1,
+      int? franqPortes2,
+      int? franqPortes3,
+      double? importePortes1,
+      double? importePortes2,
+      double? importePortes3,
       DateTime? lastUpdated,
       bool deleted});
 
@@ -837,6 +885,12 @@ class __$$ClienteImplCopyWithImpl<$Res>
     Object? email = freezed,
     Object? sector = freezed,
     Object? subsector = freezed,
+    Object? franqPortes1 = freezed,
+    Object? franqPortes2 = freezed,
+    Object? franqPortes3 = freezed,
+    Object? importePortes1 = freezed,
+    Object? importePortes2 = freezed,
+    Object? importePortes3 = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = null,
   }) {
@@ -1101,6 +1155,30 @@ class __$$ClienteImplCopyWithImpl<$Res>
           ? _value.subsector
           : subsector // ignore: cast_nullable_to_non_nullable
               as Subsector?,
+      franqPortes1: freezed == franqPortes1
+          ? _value.franqPortes1
+          : franqPortes1 // ignore: cast_nullable_to_non_nullable
+              as int?,
+      franqPortes2: freezed == franqPortes2
+          ? _value.franqPortes2
+          : franqPortes2 // ignore: cast_nullable_to_non_nullable
+              as int?,
+      franqPortes3: freezed == franqPortes3
+          ? _value.franqPortes3
+          : franqPortes3 // ignore: cast_nullable_to_non_nullable
+              as int?,
+      importePortes1: freezed == importePortes1
+          ? _value.importePortes1
+          : importePortes1 // ignore: cast_nullable_to_non_nullable
+              as double?,
+      importePortes2: freezed == importePortes2
+          ? _value.importePortes2
+          : importePortes2 // ignore: cast_nullable_to_non_nullable
+              as double?,
+      importePortes3: freezed == importePortes3
+          ? _value.importePortes3
+          : importePortes3 // ignore: cast_nullable_to_non_nullable
+              as double?,
       lastUpdated: freezed == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -1182,6 +1260,12 @@ class _$ClienteImpl extends _Cliente {
       this.email,
       this.sector,
       this.subsector,
+      this.franqPortes1,
+      this.franqPortes2,
+      this.franqPortes3,
+      this.importePortes1,
+      this.importePortes2,
+      this.importePortes3,
       this.lastUpdated,
       required this.deleted})
       : super._();
@@ -1317,13 +1401,25 @@ class _$ClienteImpl extends _Cliente {
   @override
   final Subsector? subsector;
   @override
+  final int? franqPortes1;
+  @override
+  final int? franqPortes2;
+  @override
+  final int? franqPortes3;
+  @override
+  final double? importePortes1;
+  @override
+  final double? importePortes2;
+  @override
+  final double? importePortes3;
+  @override
   final DateTime? lastUpdated;
   @override
   final bool deleted;
 
   @override
   String toString() {
-    return 'Cliente(id: $id, nombreCliente: $nombreCliente, nombreFiscal: $nombreFiscal, nif: $nif, direccionFiscal1: $direccionFiscal1, direccionFiscal2: $direccionFiscal2, codigoPostalFiscal: $codigoPostalFiscal, poblacionFiscal: $poblacionFiscal, provinciaFiscal: $provinciaFiscal, paisFiscal: $paisFiscal, latitudFiscal: $latitudFiscal, longitudFiscal: $longitudFiscal, direccionPredeterminada1: $direccionPredeterminada1, direccionPredeterminada2: $direccionPredeterminada2, codigoPostalPredeterminada: $codigoPostalPredeterminada, poblacionPredeterminada: $poblacionPredeterminada, provinciaPredeterminada: $provinciaPredeterminada, paisPredeterminada: $paisPredeterminada, latitudPredeterminada: $latitudPredeterminada, longitudPredeterminada: $longitudPredeterminada, empresaId: $empresaId, iva: $iva, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, porcentajeAbonos: $porcentajeAbonos, porcentajeGarantias: $porcentajeGarantias, centralCompras: $centralCompras, urlWeb: $urlWeb, divisa: $divisa, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, descuentoGeneralId: $descuentoGeneralId, descripcionDescuentoGeneral: $descripcionDescuentoGeneral, tipoCalculoPrecio: $tipoCalculoPrecio, plazoDeCobro: $plazoDeCobro, metodoDeCobro: $metodoDeCobro, descuentoProntoPago: $descuentoProntoPago, riesgoConcedidoInterno: $riesgoConcedidoInterno, riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, riesgoConcedidoCoafe: $riesgoConcedidoCoafe, riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, riesgoActual: $riesgoActual, riesgoConcedido: $riesgoConcedido, riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, riesgoPendienteServir: $riesgoPendienteServir, riesgoPendienteFacturar: $riesgoPendienteFacturar, riesgoExcedido: $riesgoExcedido, obvservacionesInternas: $obvservacionesInternas, clientePotencial: $clientePotencial, clienteEstadoPotencial: $clienteEstadoPotencial, clienteTipoPotencial: $clienteTipoPotencial, representante1Id: $representante1Id, representante1Nombre: $representante1Nombre, representante2Id: $representante2Id, representante2Nombre: $representante2Nombre, telefonoMovil: $telefonoMovil, telefonoFijo: $telefonoFijo, email: $email, sector: $sector, subsector: $subsector, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'Cliente(id: $id, nombreCliente: $nombreCliente, nombreFiscal: $nombreFiscal, nif: $nif, direccionFiscal1: $direccionFiscal1, direccionFiscal2: $direccionFiscal2, codigoPostalFiscal: $codigoPostalFiscal, poblacionFiscal: $poblacionFiscal, provinciaFiscal: $provinciaFiscal, paisFiscal: $paisFiscal, latitudFiscal: $latitudFiscal, longitudFiscal: $longitudFiscal, direccionPredeterminada1: $direccionPredeterminada1, direccionPredeterminada2: $direccionPredeterminada2, codigoPostalPredeterminada: $codigoPostalPredeterminada, poblacionPredeterminada: $poblacionPredeterminada, provinciaPredeterminada: $provinciaPredeterminada, paisPredeterminada: $paisPredeterminada, latitudPredeterminada: $latitudPredeterminada, longitudPredeterminada: $longitudPredeterminada, empresaId: $empresaId, iva: $iva, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, porcentajeAbonos: $porcentajeAbonos, porcentajeGarantias: $porcentajeGarantias, centralCompras: $centralCompras, urlWeb: $urlWeb, divisa: $divisa, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, descuentoGeneralId: $descuentoGeneralId, descripcionDescuentoGeneral: $descripcionDescuentoGeneral, tipoCalculoPrecio: $tipoCalculoPrecio, plazoDeCobro: $plazoDeCobro, metodoDeCobro: $metodoDeCobro, descuentoProntoPago: $descuentoProntoPago, riesgoConcedidoInterno: $riesgoConcedidoInterno, riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, riesgoConcedidoCoafe: $riesgoConcedidoCoafe, riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, riesgoActual: $riesgoActual, riesgoConcedido: $riesgoConcedido, riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, riesgoPendienteServir: $riesgoPendienteServir, riesgoPendienteFacturar: $riesgoPendienteFacturar, riesgoExcedido: $riesgoExcedido, obvservacionesInternas: $obvservacionesInternas, clientePotencial: $clientePotencial, clienteEstadoPotencial: $clienteEstadoPotencial, clienteTipoPotencial: $clienteTipoPotencial, representante1Id: $representante1Id, representante1Nombre: $representante1Nombre, representante2Id: $representante2Id, representante2Nombre: $representante2Nombre, telefonoMovil: $telefonoMovil, telefonoFijo: $telefonoFijo, email: $email, sector: $sector, subsector: $subsector, franqPortes1: $franqPortes1, franqPortes2: $franqPortes2, franqPortes3: $franqPortes3, importePortes1: $importePortes1, importePortes2: $importePortes2, importePortes3: $importePortes3, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -1424,6 +1520,12 @@ class _$ClienteImpl extends _Cliente {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.sector, sector) || other.sector == sector) &&
             (identical(other.subsector, subsector) || other.subsector == subsector) &&
+            (identical(other.franqPortes1, franqPortes1) || other.franqPortes1 == franqPortes1) &&
+            (identical(other.franqPortes2, franqPortes2) || other.franqPortes2 == franqPortes2) &&
+            (identical(other.franqPortes3, franqPortes3) || other.franqPortes3 == franqPortes3) &&
+            (identical(other.importePortes1, importePortes1) || other.importePortes1 == importePortes1) &&
+            (identical(other.importePortes2, importePortes2) || other.importePortes2 == importePortes2) &&
+            (identical(other.importePortes3, importePortes3) || other.importePortes3 == importePortes3) &&
             (identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated) &&
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
@@ -1496,6 +1598,12 @@ class _$ClienteImpl extends _Cliente {
         email,
         sector,
         subsector,
+        franqPortes1,
+        franqPortes2,
+        franqPortes3,
+        importePortes1,
+        importePortes2,
+        importePortes3,
         lastUpdated,
         deleted
       ]);
@@ -1576,6 +1684,12 @@ abstract class _Cliente extends Cliente {
       final String? email,
       final Sector? sector,
       final Subsector? subsector,
+      final int? franqPortes1,
+      final int? franqPortes2,
+      final int? franqPortes3,
+      final double? importePortes1,
+      final double? importePortes2,
+      final double? importePortes3,
       final DateTime? lastUpdated,
       required final bool deleted}) = _$ClienteImpl;
   const _Cliente._() : super._();
@@ -1710,6 +1824,18 @@ abstract class _Cliente extends Cliente {
   Sector? get sector;
   @override
   Subsector? get subsector;
+  @override
+  int? get franqPortes1;
+  @override
+  int? get franqPortes2;
+  @override
+  int? get franqPortes3;
+  @override
+  double? get importePortes1;
+  @override
+  double? get importePortes2;
+  @override
+  double? get importePortes3;
   @override
   DateTime? get lastUpdated;
   @override

@@ -5,20 +5,6 @@ import 'package:drift/drift.dart';
 import 'package:drift/isolate.dart';
 import 'package:drift/native.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../features/visitas/infrastructure/visita_competencia_dto.dart';
-import 'divisa_dto.dart';
-import 'pais_dto.dart';
-import 'promo_dto_cab_dto.dart';
-import 'promo_dto_cliente_dto.dart';
-import 'promo_dto_lin_dto.dart';
-import 'provincia_dto.dart';
-import 'sector_dto.dart';
-import 'subfamilia_dto.dart';
-import '../../features/estadisticas/infrastructure/estadisticas_venta_cliente_usuario_dto.dart';
-import '../../features/expediciones/infrastructure/tracking_estado_dto.dart';
-import '../../features/visitas/infrastructure/visita_competidor_dto.dart';
-import '../../features/visitas/infrastructure/visita_motivos_no_venta_dto.dart';
-import '../../features/visitas/infrastructure/visita_sector_dto.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 
@@ -50,15 +36,27 @@ import '../../features/devoluciones/infrastructure/devolucion_motivo_dto.dart';
 import '../../features/devoluciones/infrastructure/devolucion_tipo_dto.dart';
 import '../../features/estadisticas/infrastructure/estadisticas_articulos_top_dto.dart';
 import '../../features/estadisticas/infrastructure/estadisticas_ultimos_precios_dto.dart';
+import '../../features/estadisticas/infrastructure/estadisticas_venta_cliente_usuario_dto.dart';
+import '../../features/expediciones/infrastructure/tracking_estado_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_albaran_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_estado_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_linea_dto.dart';
-
+import '../../features/visitas/infrastructure/visita_competencia_dto.dart';
+import '../../features/visitas/infrastructure/visita_competidor_dto.dart';
 import '../../features/visitas/infrastructure/visita_dto.dart';
-
+import '../../features/visitas/infrastructure/visita_motivos_no_venta_dto.dart';
+import '../../features/visitas/infrastructure/visita_sector_dto.dart';
 import '../domain/isolate_request.dart';
+import 'divisa_dto.dart';
 import 'familia_dto.dart';
+import 'pais_dto.dart';
+import 'promo_dto_cab_dto.dart';
+import 'promo_dto_cliente_dto.dart';
+import 'promo_dto_lin_dto.dart';
+import 'provincia_dto.dart';
+import 'sector_dto.dart';
+import 'subfamilia_dto.dart';
 import 'subsector_dto.dart';
 
 part 'remote_database.g.dart';
@@ -151,7 +149,7 @@ class RemoteAppDatabase extends _$RemoteAppDatabase {
   RemoteAppDatabase.connect(super.connection) : test = false, super.connect();
   RemoteAppDatabase.test() : test = true, super(NativeDatabase.memory());
   @override
-  int get schemaVersion => 34;
+  int get schemaVersion => 35;
 }
 
 Future<DriftIsolate> _createDriftIsolate() async {

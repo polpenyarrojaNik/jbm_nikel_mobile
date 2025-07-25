@@ -1,14 +1,14 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:money2/money2.dart';
+
 import '../../../core/domain/divisa.dart';
 import '../../../core/domain/pais.dart';
 import '../../../core/domain/sector.dart';
 import '../../../core/domain/subsector.dart';
-import 'plazo_cobro.dart';
-import 'package:money2/money2.dart';
-
 import 'cliente_estado_potencial.dart';
 import 'cliente_tipo_potencial.dart';
 import 'metodo_cobro.dart';
+import 'plazo_cobro.dart';
 
 part 'cliente.freezed.dart';
 
@@ -81,6 +81,12 @@ class Cliente with _$Cliente {
     String? email,
     Sector? sector,
     Subsector? subsector,
+    int? franqPortes1,
+    int? franqPortes2,
+    int? franqPortes3,
+    double? importePortes1,
+    double? importePortes2,
+    double? importePortes3,
     DateTime? lastUpdated,
     required bool deleted,
   }) = _Cliente;

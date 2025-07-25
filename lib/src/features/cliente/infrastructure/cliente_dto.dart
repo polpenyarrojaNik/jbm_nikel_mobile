@@ -91,6 +91,12 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
     @JsonKey(name: 'E_MAIL') String? email,
     @JsonKey(name: 'SECTOR_ID') String? sectorId,
     @JsonKey(name: 'SUBSECTOR_ID') String? subsectorId,
+    @JsonKey(name: 'FRANQ_PORTES1') int? franqPortes1,
+    @JsonKey(name: 'FRANQ_PORTES2') int? franqPortes2,
+    @JsonKey(name: 'FRANQ_PORTES3') int? franqPortes3,
+    @JsonKey(name: 'IMPORTE_PORTES1') double? importePortes1,
+    @JsonKey(name: 'IMPORTE_PORTES2') double? importePortes2,
+    @JsonKey(name: 'IMPORTE_PORTES3') double? importePortes3,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _ClienteDTO;
@@ -191,6 +197,12 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       email: email,
       sector: sector,
       subsector: subsector,
+      franqPortes1: franqPortes1,
+      franqPortes2: franqPortes2,
+      franqPortes3: franqPortes3,
+      importePortes1: importePortes1,
+      importePortes2: importePortes2,
+      importePortes3: importePortes3,
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S') ? true : false,
     );
@@ -254,6 +266,12 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       email: Value(email),
       sectorId: Value(sectorId),
       subsectorId: Value(subsectorId),
+      franqPortes1: Value(franqPortes1),
+      franqPortes2: Value(franqPortes2),
+      franqPortes3: Value(franqPortes3),
+      importePortes1: Value(importePortes1),
+      importePortes2: Value(importePortes2),
+      importePortes3: Value(importePortes3),
       lastUpdated: Value(lastUpdated),
       deleted: Value(deleted),
     ).toColumns(nullToAbsent);
@@ -399,6 +417,12 @@ class ClienteTable extends Table {
   TextColumn get email => text().nullable().named('E_MAIL')();
   TextColumn get sectorId => text().nullable().named('SECTOR_ID')();
   TextColumn get subsectorId => text().nullable().named('SUBSECTOR_ID')();
+  IntColumn get franqPortes1 => integer().nullable().named('FRANQ_PORTES1')();
+  IntColumn get franqPortes2 => integer().nullable().named('FRANQ_PORTES2')();
+  IntColumn get franqPortes3 => integer().nullable().named('FRANQ_PORTES3')();
+  RealColumn get importePortes1 => real().nullable().named('IMPORTE_PORTES1')();
+  RealColumn get importePortes2 => real().nullable().named('IMPORTE_PORTES2')();
+  RealColumn get importePortes3 => real().nullable().named('IMPORTE_PORTES3')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('DELETED')();

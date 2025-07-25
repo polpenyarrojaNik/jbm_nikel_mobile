@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 import 'package:map_launcher/map_launcher.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
@@ -567,6 +568,96 @@ class _ClientePreciosAndFormaDePago extends StatelessWidget {
                     ),
                 ],
               ),
+              if (cliente.franqPortes1 != null ||
+                  cliente.franqPortes2 != null ||
+                  cliente.franqPortes3 != null ||
+                  cliente.importePortes1 != null ||
+                  cliente.importePortes2 != null ||
+                  cliente.importePortes3 != null ||
+                  cliente.franqPortes1 != 0 ||
+                  cliente.franqPortes2 != 0 ||
+                  cliente.franqPortes3 != 0 ||
+                  cliente.importePortes1 != 0 ||
+                  cliente.importePortes2 != 0 ||
+                  cliente.importePortes3 != 0) ...[
+                const Divider(),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(''),
+                        const Gap(4),
+                        if (cliente.franqPortes1 != null &&
+                            cliente.franqPortes1 != 0)
+                          Text('Hasta'),
+                      ],
+                    ),
+                    const Gap(16),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Franquicia Portes'),
+                          const Gap(4),
+                          if (cliente.franqPortes1 != null &&
+                              cliente.franqPortes1 != 0)
+                            Text(
+                              '${numberFormatCantidades(cliente.franqPortes1)}€',
+                            ),
+
+                          if (cliente.franqPortes2 != null &&
+                              cliente.franqPortes2 != 0) ...[
+                            const Gap(4),
+                            Text(
+                              '${numberFormatCantidades(cliente.franqPortes2)}€',
+                            ),
+                          ],
+
+                          if (cliente.franqPortes3 != null &&
+                              cliente.franqPortes3 != 0) ...[
+                            const Gap(4),
+                            Text(
+                              '${numberFormatCantidades(cliente.franqPortes3)}€',
+                            ),
+                          ],
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Importe'),
+                          const Gap(4),
+                          if (cliente.franqPortes1 != null &&
+                              cliente.franqPortes1 != 0)
+                            Text(
+                              '${numberFormatDecimal(cliente.importePortes1 ?? 0.0)}€',
+                            ),
+
+                          if (cliente.franqPortes2 != null &&
+                              cliente.franqPortes2 != 0) ...[
+                            const Gap(4),
+                            Text(
+                              '${numberFormatDecimal(cliente.importePortes2 ?? 0.0)}€',
+                            ),
+                          ],
+                          if (cliente.franqPortes3 != null &&
+                              cliente.franqPortes3 != 0) ...[
+                            const Gap(4),
+                            Text(
+                              '${numberFormatDecimal(cliente.importePortes3 ?? 0.0)}€',
+                            ),
+                          ],
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ],
           ),
         ),

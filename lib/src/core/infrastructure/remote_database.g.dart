@@ -4500,6 +4500,42 @@ class $ClienteTableTable extends ClienteTable
   late final GeneratedColumn<String> subsectorId = GeneratedColumn<String>(
       'SUBSECTOR_ID', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _franqPortes1Meta =
+      const VerificationMeta('franqPortes1');
+  @override
+  late final GeneratedColumn<int> franqPortes1 = GeneratedColumn<int>(
+      'FRANQ_PORTES1', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
+  static const VerificationMeta _franqPortes2Meta =
+      const VerificationMeta('franqPortes2');
+  @override
+  late final GeneratedColumn<int> franqPortes2 = GeneratedColumn<int>(
+      'FRANQ_PORTES2', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
+  static const VerificationMeta _franqPortes3Meta =
+      const VerificationMeta('franqPortes3');
+  @override
+  late final GeneratedColumn<int> franqPortes3 = GeneratedColumn<int>(
+      'FRANQ_PORTES3', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
+  static const VerificationMeta _importePortes1Meta =
+      const VerificationMeta('importePortes1');
+  @override
+  late final GeneratedColumn<double> importePortes1 = GeneratedColumn<double>(
+      'IMPORTE_PORTES1', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _importePortes2Meta =
+      const VerificationMeta('importePortes2');
+  @override
+  late final GeneratedColumn<double> importePortes2 = GeneratedColumn<double>(
+      'IMPORTE_PORTES2', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _importePortes3Meta =
+      const VerificationMeta('importePortes3');
+  @override
+  late final GeneratedColumn<double> importePortes3 = GeneratedColumn<double>(
+      'IMPORTE_PORTES3', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
   static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
@@ -4571,6 +4607,12 @@ class $ClienteTableTable extends ClienteTable
         email,
         sectorId,
         subsectorId,
+        franqPortes1,
+        franqPortes2,
+        franqPortes3,
+        importePortes1,
+        importePortes2,
+        importePortes3,
         lastUpdated,
         deleted
       ];
@@ -4940,6 +4982,42 @@ class $ClienteTableTable extends ClienteTable
           subsectorId.isAcceptableOrUnknown(
               data['SUBSECTOR_ID']!, _subsectorIdMeta));
     }
+    if (data.containsKey('FRANQ_PORTES1')) {
+      context.handle(
+          _franqPortes1Meta,
+          franqPortes1.isAcceptableOrUnknown(
+              data['FRANQ_PORTES1']!, _franqPortes1Meta));
+    }
+    if (data.containsKey('FRANQ_PORTES2')) {
+      context.handle(
+          _franqPortes2Meta,
+          franqPortes2.isAcceptableOrUnknown(
+              data['FRANQ_PORTES2']!, _franqPortes2Meta));
+    }
+    if (data.containsKey('FRANQ_PORTES3')) {
+      context.handle(
+          _franqPortes3Meta,
+          franqPortes3.isAcceptableOrUnknown(
+              data['FRANQ_PORTES3']!, _franqPortes3Meta));
+    }
+    if (data.containsKey('IMPORTE_PORTES1')) {
+      context.handle(
+          _importePortes1Meta,
+          importePortes1.isAcceptableOrUnknown(
+              data['IMPORTE_PORTES1']!, _importePortes1Meta));
+    }
+    if (data.containsKey('IMPORTE_PORTES2')) {
+      context.handle(
+          _importePortes2Meta,
+          importePortes2.isAcceptableOrUnknown(
+              data['IMPORTE_PORTES2']!, _importePortes2Meta));
+    }
+    if (data.containsKey('IMPORTE_PORTES3')) {
+      context.handle(
+          _importePortes3Meta,
+          importePortes3.isAcceptableOrUnknown(
+              data['IMPORTE_PORTES3']!, _importePortes3Meta));
+    }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
           _lastUpdatedMeta,
@@ -5082,6 +5160,18 @@ class $ClienteTableTable extends ClienteTable
           .read(DriftSqlType.string, data['${effectivePrefix}SECTOR_ID']),
       subsectorId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}SUBSECTOR_ID']),
+      franqPortes1: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}FRANQ_PORTES1']),
+      franqPortes2: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}FRANQ_PORTES2']),
+      franqPortes3: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}FRANQ_PORTES3']),
+      importePortes1: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}IMPORTE_PORTES1']),
+      importePortes2: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}IMPORTE_PORTES2']),
+      importePortes3: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}IMPORTE_PORTES3']),
       lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
       deleted: attachedDatabase.typeMapping
@@ -5151,6 +5241,12 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
   final Value<String?> email;
   final Value<String?> sectorId;
   final Value<String?> subsectorId;
+  final Value<int?> franqPortes1;
+  final Value<int?> franqPortes2;
+  final Value<int?> franqPortes3;
+  final Value<double?> importePortes1;
+  final Value<double?> importePortes2;
+  final Value<double?> importePortes3;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
   final Value<int> rowid;
@@ -5210,6 +5306,12 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     this.email = const Value.absent(),
     this.sectorId = const Value.absent(),
     this.subsectorId = const Value.absent(),
+    this.franqPortes1 = const Value.absent(),
+    this.franqPortes2 = const Value.absent(),
+    this.franqPortes3 = const Value.absent(),
+    this.importePortes1 = const Value.absent(),
+    this.importePortes2 = const Value.absent(),
+    this.importePortes3 = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -5270,6 +5372,12 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     this.email = const Value.absent(),
     this.sectorId = const Value.absent(),
     this.subsectorId = const Value.absent(),
+    this.franqPortes1 = const Value.absent(),
+    this.franqPortes2 = const Value.absent(),
+    this.franqPortes3 = const Value.absent(),
+    this.importePortes1 = const Value.absent(),
+    this.importePortes2 = const Value.absent(),
+    this.importePortes3 = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -5349,6 +5457,12 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     Expression<String>? email,
     Expression<String>? sectorId,
     Expression<String>? subsectorId,
+    Expression<int>? franqPortes1,
+    Expression<int>? franqPortes2,
+    Expression<int>? franqPortes3,
+    Expression<double>? importePortes1,
+    Expression<double>? importePortes2,
+    Expression<double>? importePortes3,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
     Expression<int>? rowid,
@@ -5431,6 +5545,12 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
       if (email != null) 'E_MAIL': email,
       if (sectorId != null) 'SECTOR_ID': sectorId,
       if (subsectorId != null) 'SUBSECTOR_ID': subsectorId,
+      if (franqPortes1 != null) 'FRANQ_PORTES1': franqPortes1,
+      if (franqPortes2 != null) 'FRANQ_PORTES2': franqPortes2,
+      if (franqPortes3 != null) 'FRANQ_PORTES3': franqPortes3,
+      if (importePortes1 != null) 'IMPORTE_PORTES1': importePortes1,
+      if (importePortes2 != null) 'IMPORTE_PORTES2': importePortes2,
+      if (importePortes3 != null) 'IMPORTE_PORTES3': importePortes3,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
       if (rowid != null) 'rowid': rowid,
@@ -5493,6 +5613,12 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
       Value<String?>? email,
       Value<String?>? sectorId,
       Value<String?>? subsectorId,
+      Value<int?>? franqPortes1,
+      Value<int?>? franqPortes2,
+      Value<int?>? franqPortes3,
+      Value<double?>? importePortes1,
+      Value<double?>? importePortes2,
+      Value<double?>? importePortes3,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted,
       Value<int>? rowid}) {
@@ -5563,6 +5689,12 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
       email: email ?? this.email,
       sectorId: sectorId ?? this.sectorId,
       subsectorId: subsectorId ?? this.subsectorId,
+      franqPortes1: franqPortes1 ?? this.franqPortes1,
+      franqPortes2: franqPortes2 ?? this.franqPortes2,
+      franqPortes3: franqPortes3 ?? this.franqPortes3,
+      importePortes1: importePortes1 ?? this.importePortes1,
+      importePortes2: importePortes2 ?? this.importePortes2,
+      importePortes3: importePortes3 ?? this.importePortes3,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
       rowid: rowid ?? this.rowid,
@@ -5751,6 +5883,24 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     if (subsectorId.present) {
       map['SUBSECTOR_ID'] = Variable<String>(subsectorId.value);
     }
+    if (franqPortes1.present) {
+      map['FRANQ_PORTES1'] = Variable<int>(franqPortes1.value);
+    }
+    if (franqPortes2.present) {
+      map['FRANQ_PORTES2'] = Variable<int>(franqPortes2.value);
+    }
+    if (franqPortes3.present) {
+      map['FRANQ_PORTES3'] = Variable<int>(franqPortes3.value);
+    }
+    if (importePortes1.present) {
+      map['IMPORTE_PORTES1'] = Variable<double>(importePortes1.value);
+    }
+    if (importePortes2.present) {
+      map['IMPORTE_PORTES2'] = Variable<double>(importePortes2.value);
+    }
+    if (importePortes3.present) {
+      map['IMPORTE_PORTES3'] = Variable<double>(importePortes3.value);
+    }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
     }
@@ -5822,6 +5972,12 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
           ..write('email: $email, ')
           ..write('sectorId: $sectorId, ')
           ..write('subsectorId: $subsectorId, ')
+          ..write('franqPortes1: $franqPortes1, ')
+          ..write('franqPortes2: $franqPortes2, ')
+          ..write('franqPortes3: $franqPortes3, ')
+          ..write('importePortes1: $importePortes1, ')
+          ..write('importePortes2: $importePortes2, ')
+          ..write('importePortes3: $importePortes3, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted, ')
           ..write('rowid: $rowid')
@@ -27385,6 +27541,12 @@ typedef $$ClienteTableTableCreateCompanionBuilder = ClienteTableCompanion
   Value<String?> email,
   Value<String?> sectorId,
   Value<String?> subsectorId,
+  Value<int?> franqPortes1,
+  Value<int?> franqPortes2,
+  Value<int?> franqPortes3,
+  Value<double?> importePortes1,
+  Value<double?> importePortes2,
+  Value<double?> importePortes3,
   required DateTime lastUpdated,
   Value<String> deleted,
   Value<int> rowid,
@@ -27446,6 +27608,12 @@ typedef $$ClienteTableTableUpdateCompanionBuilder = ClienteTableCompanion
   Value<String?> email,
   Value<String?> sectorId,
   Value<String?> subsectorId,
+  Value<int?> franqPortes1,
+  Value<int?> franqPortes2,
+  Value<int?> franqPortes3,
+  Value<double?> importePortes1,
+  Value<double?> importePortes2,
+  Value<double?> importePortes3,
   Value<DateTime> lastUpdated,
   Value<String> deleted,
   Value<int> rowid,
@@ -27717,6 +27885,27 @@ class $$ClienteTableTableFilterComposer
 
   ColumnFilters<String> get subsectorId => $composableBuilder(
       column: $table.subsectorId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get franqPortes1 => $composableBuilder(
+      column: $table.franqPortes1, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get franqPortes2 => $composableBuilder(
+      column: $table.franqPortes2, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get franqPortes3 => $composableBuilder(
+      column: $table.franqPortes3, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<double> get importePortes1 => $composableBuilder(
+      column: $table.importePortes1,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<double> get importePortes2 => $composableBuilder(
+      column: $table.importePortes2,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<double> get importePortes3 => $composableBuilder(
+      column: $table.importePortes3,
+      builder: (column) => ColumnFilters(column));
 
   ColumnFilters<DateTime> get lastUpdated => $composableBuilder(
       column: $table.lastUpdated, builder: (column) => ColumnFilters(column));
@@ -28011,6 +28200,30 @@ class $$ClienteTableTableOrderingComposer
   ColumnOrderings<String> get subsectorId => $composableBuilder(
       column: $table.subsectorId, builder: (column) => ColumnOrderings(column));
 
+  ColumnOrderings<int> get franqPortes1 => $composableBuilder(
+      column: $table.franqPortes1,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get franqPortes2 => $composableBuilder(
+      column: $table.franqPortes2,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get franqPortes3 => $composableBuilder(
+      column: $table.franqPortes3,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<double> get importePortes1 => $composableBuilder(
+      column: $table.importePortes1,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<double> get importePortes2 => $composableBuilder(
+      column: $table.importePortes2,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<double> get importePortes3 => $composableBuilder(
+      column: $table.importePortes3,
+      builder: (column) => ColumnOrderings(column));
+
   ColumnOrderings<DateTime> get lastUpdated => $composableBuilder(
       column: $table.lastUpdated, builder: (column) => ColumnOrderings(column));
 
@@ -28264,6 +28477,24 @@ class $$ClienteTableTableAnnotationComposer
   GeneratedColumn<String> get subsectorId => $composableBuilder(
       column: $table.subsectorId, builder: (column) => column);
 
+  GeneratedColumn<int> get franqPortes1 => $composableBuilder(
+      column: $table.franqPortes1, builder: (column) => column);
+
+  GeneratedColumn<int> get franqPortes2 => $composableBuilder(
+      column: $table.franqPortes2, builder: (column) => column);
+
+  GeneratedColumn<int> get franqPortes3 => $composableBuilder(
+      column: $table.franqPortes3, builder: (column) => column);
+
+  GeneratedColumn<double> get importePortes1 => $composableBuilder(
+      column: $table.importePortes1, builder: (column) => column);
+
+  GeneratedColumn<double> get importePortes2 => $composableBuilder(
+      column: $table.importePortes2, builder: (column) => column);
+
+  GeneratedColumn<double> get importePortes3 => $composableBuilder(
+      column: $table.importePortes3, builder: (column) => column);
+
   GeneratedColumn<DateTime> get lastUpdated => $composableBuilder(
       column: $table.lastUpdated, builder: (column) => column);
 
@@ -28436,6 +28667,12 @@ class $$ClienteTableTableTableManager extends RootTableManager<
             Value<String?> email = const Value.absent(),
             Value<String?> sectorId = const Value.absent(),
             Value<String?> subsectorId = const Value.absent(),
+            Value<int?> franqPortes1 = const Value.absent(),
+            Value<int?> franqPortes2 = const Value.absent(),
+            Value<int?> franqPortes3 = const Value.absent(),
+            Value<double?> importePortes1 = const Value.absent(),
+            Value<double?> importePortes2 = const Value.absent(),
+            Value<double?> importePortes3 = const Value.absent(),
             Value<DateTime> lastUpdated = const Value.absent(),
             Value<String> deleted = const Value.absent(),
             Value<int> rowid = const Value.absent(),
@@ -28496,6 +28733,12 @@ class $$ClienteTableTableTableManager extends RootTableManager<
             email: email,
             sectorId: sectorId,
             subsectorId: subsectorId,
+            franqPortes1: franqPortes1,
+            franqPortes2: franqPortes2,
+            franqPortes3: franqPortes3,
+            importePortes1: importePortes1,
+            importePortes2: importePortes2,
+            importePortes3: importePortes3,
             lastUpdated: lastUpdated,
             deleted: deleted,
             rowid: rowid,
@@ -28556,6 +28799,12 @@ class $$ClienteTableTableTableManager extends RootTableManager<
             Value<String?> email = const Value.absent(),
             Value<String?> sectorId = const Value.absent(),
             Value<String?> subsectorId = const Value.absent(),
+            Value<int?> franqPortes1 = const Value.absent(),
+            Value<int?> franqPortes2 = const Value.absent(),
+            Value<int?> franqPortes3 = const Value.absent(),
+            Value<double?> importePortes1 = const Value.absent(),
+            Value<double?> importePortes2 = const Value.absent(),
+            Value<double?> importePortes3 = const Value.absent(),
             required DateTime lastUpdated,
             Value<String> deleted = const Value.absent(),
             Value<int> rowid = const Value.absent(),
@@ -28616,6 +28865,12 @@ class $$ClienteTableTableTableManager extends RootTableManager<
             email: email,
             sectorId: sectorId,
             subsectorId: subsectorId,
+            franqPortes1: franqPortes1,
+            franqPortes2: franqPortes2,
+            franqPortes3: franqPortes3,
+            importePortes1: importePortes1,
+            importePortes2: importePortes2,
+            importePortes3: importePortes3,
             lastUpdated: lastUpdated,
             deleted: deleted,
             rowid: rowid,

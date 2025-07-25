@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
-const int databaseRelease = 34;
+const int databaseRelease = 35;
 
 Future<void> deleteRemoteDatabase() async {
   const remoteDatabaseName = 'jbm.sqlite';
