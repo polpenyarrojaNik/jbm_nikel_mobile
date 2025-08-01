@@ -414,5 +414,8 @@
   "sectorUnsubscribededSectorMessage": "Secteur désabonné. Veuillez sélectionner un nouveau secteur",
   "save": "Garder",
   "accept": "Accepter",
-  "cancel": "Annuler"
+  "cancel": "Annuler",
+  "amount": "Montant",
+  "freightCharge": "Frais de transport",
+  "until": "Jusqu'à"
 }

@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "almacenPropio":
             MessageLookupByLibrary.simpleMessage("Magazzino proprio"),
         "alto": MessageLookupByLibrary.simpleMessage("Alto"),
+        "amount": MessageLookupByLibrary.simpleMessage("Quantità"),
         "articulo": MessageLookupByLibrary.simpleMessage("Articolo"),
         "articulo_index_buscarArticulos":
             MessageLookupByLibrary.simpleMessage("Cercare articoli"),
@@ -508,6 +509,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Forma da immagine"),
         "frecuenciaPedido":
             MessageLookupByLibrary.simpleMessage("Frequenza dell\'ordine"),
+        "freightCharge":
+            MessageLookupByLibrary.simpleMessage("Spese di trasporto"),
         "grande": MessageLookupByLibrary.simpleMessage("Grande"),
         "haOcurridoUnError":
             MessageLookupByLibrary.simpleMessage("C\'è stato un errore"),
@@ -751,6 +754,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ultimi prezzi"),
         "unidad": MessageLookupByLibrary.simpleMessage("Unità"),
         "unknown": MessageLookupByLibrary.simpleMessage("Sconosciuto"),
+        "until": MessageLookupByLibrary.simpleMessage("Fino a"),
         "visita_enviada": MessageLookupByLibrary.simpleMessage("Inviata"),
         "visita_index_buscarVisitas":
             MessageLookupByLibrary.simpleMessage("Cerca visite..."),

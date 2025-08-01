@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "almacenPropio":
             MessageLookupByLibrary.simpleMessage("Entrepôt propre"),
         "alto": MessageLookupByLibrary.simpleMessage("Haut"),
+        "amount": MessageLookupByLibrary.simpleMessage("Montant"),
         "articulo": MessageLookupByLibrary.simpleMessage("Article"),
         "articulo_index_buscarArticulos":
             MessageLookupByLibrary.simpleMessage("Chercher des articles"),
@@ -505,6 +506,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Formulaire à partir d\'une image"),
         "frecuenciaPedido":
             MessageLookupByLibrary.simpleMessage("Fréquence des commandes"),
+        "freightCharge":
+            MessageLookupByLibrary.simpleMessage("Frais de transport"),
         "grande": MessageLookupByLibrary.simpleMessage("Grand"),
         "haOcurridoUnError":
             MessageLookupByLibrary.simpleMessage("Une érreur est survenue"),
@@ -748,6 +751,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Derniers prix"),
         "unidad": MessageLookupByLibrary.simpleMessage("uté."),
         "unknown": MessageLookupByLibrary.simpleMessage("Inconnu"),
+        "until": MessageLookupByLibrary.simpleMessage("Jusqu\'à"),
         "visita_enviada": MessageLookupByLibrary.simpleMessage("Envoyé"),
         "visita_index_buscarVisitas":
             MessageLookupByLibrary.simpleMessage("Chercher des visites…"),

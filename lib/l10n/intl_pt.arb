@@ -414,5 +414,8 @@
   "sectorUnsubscribededSectorMessage": "Setor não inscrito. Por favor, selecione um novo setor",
   "save": "Salvar",
   "accept": "Aceitar",
-  "cancel": "Cancelar"
+  "cancel": "Cancelar",
+  "amount": "Quantia",
+  "freightCharge": "Taxa de frete",
+  "until": "Até"
 }

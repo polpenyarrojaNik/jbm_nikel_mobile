@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "almacenPropio":
             MessageLookupByLibrary.simpleMessage("Armazém próprio"),
         "alto": MessageLookupByLibrary.simpleMessage("Alto"),
+        "amount": MessageLookupByLibrary.simpleMessage("Quantia"),
         "articulo":
             MessageLookupByLibrary.simpleMessage("Pesquisar um produto"),
         "articulo_index_buscarArticulos":
@@ -506,6 +507,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Forma da imagem"),
         "frecuenciaPedido":
             MessageLookupByLibrary.simpleMessage("Frequência de pedidos"),
+        "freightCharge": MessageLookupByLibrary.simpleMessage("Taxa de frete"),
         "grande": MessageLookupByLibrary.simpleMessage("Grande"),
         "haOcurridoUnError":
             MessageLookupByLibrary.simpleMessage("ocorreu um erro"),
@@ -746,6 +748,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Últimos preços"),
         "unidad": MessageLookupByLibrary.simpleMessage("uni."),
         "unknown": MessageLookupByLibrary.simpleMessage("Desconhecido"),
+        "until": MessageLookupByLibrary.simpleMessage("Até"),
         "visita_enviada": MessageLookupByLibrary.simpleMessage("Enviado"),
         "visita_index_buscarVisitas":
             MessageLookupByLibrary.simpleMessage("Buscar visitas…"),

@@ -414,5 +414,8 @@
   "sectorUnsubscribededSectorMessage": "Sector dado de baja. Por favor, seleccione un nuevo sector",
   "save": "Guardar",
   "accept": "Aceptar",
-  "cancel": "Cancelar"
+  "cancel": "Cancelar",
+  "amount": "Importe",
+  "freightCharge": "Franquicia Portes",
+  "until": "Hasta"
 }

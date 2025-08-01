@@ -414,5 +414,8 @@
   "sectorUnsubscribededSectorMessage": "Settore annullato. Seleziona un nuovo settore",
   "save": "Salva",
   "accept": "Accettare",
-  "cancel": "Annulla"
+  "cancel": "Annulla",
+  "amount": "Quantità",
+  "freightCharge": "Spese di trasporto",
+  "until": "Fino a"
 }

@@ -4243,6 +4243,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Amount`
+  String get amount {
+    return Intl.message(
+      'Amount',
+      name: 'amount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Until`
+  String get until {
+    return Intl.message(
+      'Until',
+      name: 'until',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Freight charge`
+  String get freightCharge {
+    return Intl.message(
+      'Freight charge',
+      name: 'freightCharge',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

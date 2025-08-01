@@ -592,7 +592,7 @@ class _ClientePreciosAndFormaDePago extends StatelessWidget {
                         const Gap(4),
                         if (cliente.franqPortes1 != null &&
                             cliente.franqPortes1 != 0)
-                          Text('Hasta'),
+                          Text(S.of(context).until),
                       ],
                     ),
                     const Gap(16),
@@ -600,7 +600,7 @@ class _ClientePreciosAndFormaDePago extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Franquicia Portes'),
+                          Text(S.of(context).freightCharge),
                           const Gap(4),
                           if (cliente.franqPortes1 != null &&
                               cliente.franqPortes1 != 0)
@@ -630,7 +630,7 @@ class _ClientePreciosAndFormaDePago extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Importe'),
+                          Text(S.of(context).amount),
                           const Gap(4),
                           if (cliente.franqPortes1 != null &&
                               cliente.franqPortes1 != 0)

@@ -414,5 +414,8 @@
   "sectorUnsubscribededSectorMessage": "Sector unsubscribed. Please, select a new sector",
   "save": "Save",
   "accept": "Accept",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "amount": "Amount",
+  "until": "Until",
+  "freightCharge": "Freight charge"
 }
