@@ -66,7 +66,12 @@ class ClienteSectorPage extends ConsumerWidget {
     ref.listen(upsertClienteImpProvider, (_, state) {
       state.whenOrNull(
         data: (data) {
-          context.maybePop();
+          data.fold(
+            (l) => context.showErrorBar(
+              content: ErrorMessageWidget(l.details.message),
+            ),
+            (r) => context.maybePop(),
+          );
         },
         error: (error, _) {
           context.showErrorBar(content: ErrorMessageWidget(error.toString()));

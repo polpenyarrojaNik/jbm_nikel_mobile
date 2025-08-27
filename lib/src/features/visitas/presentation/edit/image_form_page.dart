@@ -5,10 +5,12 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:riverpod_mutations_annotation/riverpod_mutations_annotation.dart';
+import 'package:riverpod_mutations/riverpod_mutations.dart';
 
 import '../../../../../generated/l10n.dart';
+import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../domain/image_form_data.dart';
@@ -17,6 +19,24 @@ import '../../domain/recognized_text_type.dart';
 import '../../infrastructure/visita_repository.dart';
 
 part 'image_form_page.g.dart';
+
+class SetImageFromDataParam {
+  final String? name;
+  final String? company;
+  final String? cargo;
+  final List<String> address;
+  final String? email;
+  final List<String> phoneList;
+
+  const SetImageFromDataParam({
+    this.name,
+    this.company,
+    this.cargo,
+    required this.address,
+    this.email,
+    required this.phoneList,
+  });
+}
 
 @riverpod
 class ImageFormPageController extends _$ImageFormPageController {
@@ -27,19 +47,30 @@ class ImageFormPageController extends _$ImageFormPageController {
     return ref.read(visitaRepositoryProvider).reconginzedImage(imageFile);
   }
 
-  @mutation
-  Future<ImageFormData> setImageFromData(
-    String? name,
-    String? company,
-    String? cargo,
-    List<String> address,
-    String? email,
-    List<String> phoneList,
-    // String? website,
+  Future<Either<AppException, ImageFormData>> setImageFromData(
+    SetImageFromDataParam setImageFromDataParam,
   ) async {
-    return ref
+    final result = await ref
         .read(visitaRepositoryProvider)
-        .setImageFormData(name, company, cargo, address, email, phoneList);
+        .setImageFormData(setImageFromDataParam);
+
+    ref.invalidateSelf();
+
+    return result;
+  }
+}
+
+@riverpod
+class SetImageFromData extends _$SetImageFromData {
+  @override
+  MutationState<Either<AppException, ImageFormData>, SetImageFromDataParam>
+  build(File imageFile) {
+    return MutationState.create(
+      (newState) => state = newState,
+      (setImageFromDataParam) async => ref
+          .read(imageFormPageControllerProvider(imageFile).notifier)
+          .setImageFromData(setImageFromDataParam),
+    );
   }
 }
 
@@ -111,27 +142,28 @@ class _DraggableFormState extends ConsumerState<DraggableForm> {
 
   @override
   Widget build(BuildContext context) {
-    ref.listen(
-      imageFormPageControllerProvider(widget.imageFile).setImageFromData,
-      (_, state) {
-        if (state is SetImageFromDataMutationSuccess) {
-          context.router.maybePop(state.result);
-        } else if (state is SetImageFromDataMutationFailure) {
-          context.showErrorBar(content: Text(state.error.toString()));
-        }
-      },
-    );
-
-    final stateImageFormData = ref.watch(
-      imageFormPageControllerProvider(widget.imageFile).setImageFromData,
-    );
+    ref.listen(setImageFromDataProvider(widget.imageFile), (_, state) {
+      state.whenOrNull(
+        data: (data) {
+          data.fold(
+            (l) => context.showErrorBar(
+              content: ErrorMessageWidget(l.details.message),
+            ),
+            (r) => context.maybePop(r),
+          );
+        },
+        error: (error, _) {
+          context.showErrorBar(content: ErrorMessageWidget(error.toString()));
+        },
+      );
+    });
 
     return Scaffold(
       appBar: CommonAppBar(
         titleText: S.of(context).formFromImage,
         actions: [
           IconButton(
-            onPressed: () => saveImageFormData(stateImageFormData, ref),
+            onPressed: () => saveImageFormData(ref),
             icon: const Icon(Icons.check),
           ),
         ],
@@ -297,11 +329,18 @@ class _DraggableFormState extends ConsumerState<DraggableForm> {
     );
   }
 
-  void saveImageFormData(
-    SetImageFromDataMutation stateImageFormData,
-    WidgetRef ref,
-  ) {
-    stateImageFormData(name, company, cargo, address, email, phones);
+  void saveImageFormData(WidgetRef ref) {
+    final state = ref.read(setImageFromDataProvider(widget.imageFile));
+    state(
+      SetImageFromDataParam(
+        name: name,
+        company: company,
+        cargo: cargo,
+        address: address,
+        email: email,
+        phoneList: phones,
+      ),
+    );
   }
 
   void _setInitalValues(List<OcrRecognizedText> ocrRecognizedTextList) {

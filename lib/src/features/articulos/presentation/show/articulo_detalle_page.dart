@@ -2,18 +2,22 @@ import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:gap/gap.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:riverpod_mutations_annotation/riverpod_mutations_annotation.dart';
+import 'package:riverpod_mutations/riverpod_mutations.dart';
 
 import '../../../../../generated/l10n.dart';
+import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/async_value_widget.dart';
 import '../../../../core/presentation/common_widgets/column_field_text_detail.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/datos_extra_row.dart';
+import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/mobile_custom_separatos.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/common_widgets/selectable_text_widget.dart';
@@ -35,13 +39,37 @@ class ArticuloDetalleAddArticuloABorradorButtonController
   @override
   void build() {}
 
-  @mutation
-  Future<int> getPedidoVentaLinea(PedidoLocalParam pedidoLocalParam) async {
-    final pedidoVentaLineaList = await ref
-        .read(pedidoVentaRepositoryProvider)
-        .getPedidoVentaLineaListById(pedidoLocalParam: pedidoLocalParam);
+  Future<Either<AppException, int>> getPedidoVentaLinea(
+    PedidoLocalParam pedidoLocalParam,
+  ) async {
+    try {
+      final pedidoVentaLineaList = await ref
+          .read(pedidoVentaRepositoryProvider)
+          .getPedidoVentaLineaListById(pedidoLocalParam: pedidoLocalParam);
 
-    return pedidoVentaLineaList.length;
+      return right(pedidoVentaLineaList.length);
+    } catch (e) {
+      if (e is AppException) {
+        return left(e);
+      }
+      return left(AppException.unexpectedError());
+    }
+  }
+}
+
+@riverpod
+class GetPedidoVentaLinea extends _$GetPedidoVentaLinea {
+  @override
+  MutationState<Either<AppException, int>, PedidoLocalParam> build() {
+    return MutationState.create(
+      (newState) => state = newState,
+      (pedidoLocalParam) async => ref
+          .read(
+            articuloDetalleAddArticuloABorradorButtonControllerProvider
+                .notifier,
+          )
+          .getPedidoVentaLinea(pedidoLocalParam),
+    );
   }
 }
 
@@ -108,32 +136,38 @@ class AddArticleToBorradorButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen(
-      articuloDetalleAddArticuloABorradorButtonControllerProvider
-          .getPedidoVentaLinea,
-      (_, state) {
-        if (state is GetPedidoVentaLineaMutationSuccess) {
-          naviagateToSelectCantidad(
-            context,
-            PedidoLocalParam(
-              pedidoAppId: pedidoVentaBorradoresList.first.pedidoVentaAppId!,
-              isEdit: false,
+    ref.listen(getPedidoVentaLineaProvider, (_, state) {
+      state.whenOrNull(
+        data:
+            (data) => data.fold(
+              (l) => unawaited(
+                context.showErrorBar(
+                  content: ErrorMessageWidget(l.details.message),
+                ),
+              ),
+              (r) => naviagateToSelectCantidad(
+                context,
+                PedidoLocalParam(
+                  pedidoAppId:
+                      pedidoVentaBorradoresList.first.pedidoVentaAppId!,
+                  isEdit: false,
+                ),
+                pedidoVentaBorradoresList.first.clienteId!,
+                r,
+              ),
             ),
-            pedidoVentaBorradoresList.first.clienteId!,
-            state.result,
-          );
-        }
-      },
-    );
+        error:
+            (error, _) => context.showErrorBar(
+              content: ErrorMessageWidget(error.toString()),
+            ),
+      );
+    });
 
-    final getPedidoVentaLineaState = ref.watch(
-      articuloDetalleAddArticuloABorradorButtonControllerProvider
-          .getPedidoVentaLinea,
-    );
+    final getPedidoVentaLineaState = ref.watch(getPedidoVentaLineaProvider);
 
     return IconButton(
       onPressed:
-          getPedidoVentaLineaState is GetPedidoVentaLineaMutationLoading
+          getPedidoVentaLineaState.isLoading
               ? null
               : pedidoVentaBorradoresList.length == 1
               ? () => getPedidoVentaLineaState(
@@ -145,7 +179,7 @@ class AddArticleToBorradorButton extends ConsumerWidget {
               )
               : () => selectBorradorToAddArticle(
                 context,
-                getPedidoVentaLineaState,
+                ref,
                 pedidoVentaBorradoresList,
               ),
       icon: const Icon(Icons.add_shopping_cart_outlined),
@@ -154,7 +188,7 @@ class AddArticleToBorradorButton extends ConsumerWidget {
 
   Future<void> selectBorradorToAddArticle(
     BuildContext context,
-    GetPedidoVentaLineaMutation getPedidoVentaLineaState,
+    WidgetRef ref,
     List<PedidoVenta> pedidoVentaBorradoresList,
   ) async {
     final pedidoVentaBorrador = await showDialog<PedidoVenta?>(
@@ -171,6 +205,7 @@ class AddArticleToBorradorButton extends ConsumerWidget {
         isEdit: false,
         tratada: false,
       );
+      final getPedidoVentaLineaState = ref.read(getPedidoVentaLineaProvider);
       unawaited(getPedidoVentaLineaState(pedidoLocalParam));
     }
   }
@@ -1192,16 +1227,16 @@ class _Consultas extends StatelessWidget {
   }
 }
 
-class SummaryTextWidget extends StatefulWidget {
+class SummaryTextWidget extends ConsumerStatefulWidget {
   const SummaryTextWidget({super.key, required this.articulo});
 
   final Articulo articulo;
 
   @override
-  State<SummaryTextWidget> createState() => _SummaryTextWidgetState();
+  ConsumerState<SummaryTextWidget> createState() => _SummaryTextWidgetState();
 }
 
-class _SummaryTextWidgetState extends State<SummaryTextWidget> {
+class _SummaryTextWidgetState extends ConsumerState<SummaryTextWidget> {
   bool showAllText = false;
   @override
   void initState() {

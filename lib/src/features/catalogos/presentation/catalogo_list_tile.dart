@@ -28,10 +28,6 @@ class CatalogoListTile extends ConsumerWidget {
       catalogoFavoritoControllerProvider(catalogo.catalogoId),
     );
 
-    final stateCatalogoOrden = ref.watch(
-      catalogoOrdenControllerProvider.saveCatalogoAbierto,
-    );
-
     final state = ref.watch(catalogoAdjuntoControllerProvider);
 
     return SizedBox(
@@ -39,7 +35,7 @@ class CatalogoListTile extends ConsumerWidget {
       child: ClipRRect(
         child: GestureDetector(
           onTap: state.maybeWhen(
-            orElse: () => () => downloadAttachment(ref, stateCatalogoOrden),
+            orElse: () => () => downloadAttachment(ref),
             loading: null,
           ),
           child: Card(
@@ -135,10 +131,8 @@ class CatalogoListTile extends ConsumerWidget {
     );
   }
 
-  void downloadAttachment(
-    WidgetRef ref,
-    SaveCatalogoAbiertoMutation stateCatalogoOrden,
-  ) async {
+  void downloadAttachment(WidgetRef ref) async {
+    final stateCatalogoOrden = ref.read(saveCatalogoAbiertoProvider);
     unawaited(stateCatalogoOrden(catalogo.catalogoId));
     await ref
         .read(catalogoAdjuntoControllerProvider.notifier)

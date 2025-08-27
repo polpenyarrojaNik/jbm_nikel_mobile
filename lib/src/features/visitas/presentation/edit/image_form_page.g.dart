@@ -7,7 +7,7 @@ part of 'image_form_page.dart';
 // **************************************************************************
 
 String _$imageFormPageControllerHash() =>
-    r'df159db8689b247f669174ef3c1a523ac0fa4084';
+    r'491d5567f160e0b2090407027d77f9c103ea1281';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -177,196 +177,160 @@ class _ImageFormPageControllerProviderElement
   @override
   File get imageFile => (origin as ImageFormPageControllerProvider).imageFile;
 }
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
 
-// **************************************************************************
-// RiverpodMutationsGenerator
-// **************************************************************************
+String _$setImageFromDataHash() => r'cc91120b820efd30a76a7c04f9efce4accb6727a';
 
-typedef ImageFormPageControllerFamilyParams = (File imageFile,);
+abstract class _$SetImageFromData extends BuildlessAutoDisposeNotifier<
+    MutationState<Either<AppException, ImageFormData>, SetImageFromDataParam>> {
+  late final File imageFile;
 
-extension ImageFormPageControllerMutationExtension
-    on ImageFormPageControllerProvider {
-  ImageFormPageControllerFamilyParams get _params => (this.imageFile,);
-
-  Refreshable<SetImageFromDataMutation> get setImageFromData =>
-      _setImageFromDataProvider(_params);
+  MutationState<Either<AppException, ImageFormData>, SetImageFromDataParam>
+      build(
+    File imageFile,
+  );
 }
 
-// Could have extras in the future when @mutationKey gets added. for now identical to the class one.
-typedef _SetImageFromDataFamilyParameters = (File imageFile,);
+/// See also [SetImageFromData].
+@ProviderFor(SetImageFromData)
+const setImageFromDataProvider = SetImageFromDataFamily();
 
-final _setImageFromDataProvider = Provider.autoDispose.family(
-    (ref, _SetImageFromDataFamilyParameters _params) {
-  final notifier = ref.watch(imageFormPageControllerProvider(
-    _params.$1,
-  ).notifier);
-  return SetImageFromDataMutation(
-    (newState) => ref.state = newState,
-    notifier.setImageFromData,
-  );
-}, dependencies: [imageFormPageControllerProvider]);
+/// See also [SetImageFromData].
+class SetImageFromDataFamily extends Family<
+    MutationState<Either<AppException, ImageFormData>, SetImageFromDataParam>> {
+  /// See also [SetImageFromData].
+  const SetImageFromDataFamily();
 
-typedef SetImageFromDataSignature = Future<ImageFormData> Function(
-    String? name,
-    String? company,
-    String? cargo,
-    List<String> address,
-    String? email,
-    List<String> phoneList);
-typedef SetImageFromDataStateSetter = void Function(
-    SetImageFromDataMutation newState);
+  /// See also [SetImageFromData].
+  SetImageFromDataProvider call(
+    File imageFile,
+  ) {
+    return SetImageFromDataProvider(
+      imageFile,
+    );
+  }
 
-sealed class SetImageFromDataMutation
-    with AsyncMutation, MutationResult<ImageFormData> {
-  factory SetImageFromDataMutation(
-    SetImageFromDataStateSetter updateState,
-    SetImageFromDataSignature fn,
-  ) = SetImageFromDataMutationIdle._;
+  @override
+  SetImageFromDataProvider getProviderOverride(
+    covariant SetImageFromDataProvider provider,
+  ) {
+    return call(
+      provider.imageFile,
+    );
+  }
 
-  SetImageFromDataMutation._(this._updateState, this._fn);
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
 
-  final SetImageFromDataStateSetter _updateState;
-  final SetImageFromDataSignature _fn;
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
 
-  Object? get error;
-  StackTrace? get stackTrace;
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
 
-  Future<void> call(String? name, String? company, String? cargo,
-      List<String> address, String? email, List<String> phoneList) async {
-    try {
-      _updateState(SetImageFromDataMutationLoading.from(this));
-      final res = await _fn(name, company, cargo, address, email, phoneList);
-      _updateState(SetImageFromDataMutationSuccess.from(this, res));
-    } catch (e, s) {
-      _updateState(
-          SetImageFromDataMutationFailure.from(this, error: e, stackTrace: s));
-    }
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'setImageFromDataProvider';
+}
+
+/// See also [SetImageFromData].
+class SetImageFromDataProvider extends AutoDisposeNotifierProviderImpl<
+    SetImageFromData,
+    MutationState<Either<AppException, ImageFormData>, SetImageFromDataParam>> {
+  /// See also [SetImageFromData].
+  SetImageFromDataProvider(
+    File imageFile,
+  ) : this._internal(
+          () => SetImageFromData()..imageFile = imageFile,
+          from: setImageFromDataProvider,
+          name: r'setImageFromDataProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$setImageFromDataHash,
+          dependencies: SetImageFromDataFamily._dependencies,
+          allTransitiveDependencies:
+              SetImageFromDataFamily._allTransitiveDependencies,
+          imageFile: imageFile,
+        );
+
+  SetImageFromDataProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.imageFile,
+  }) : super.internal();
+
+  final File imageFile;
+
+  @override
+  MutationState<Either<AppException, ImageFormData>, SetImageFromDataParam>
+      runNotifierBuild(
+    covariant SetImageFromData notifier,
+  ) {
+    return notifier.build(
+      imageFile,
+    );
+  }
+
+  @override
+  Override overrideWith(SetImageFromData Function() create) {
+    return ProviderOverride(
+      origin: this,
+      override: SetImageFromDataProvider._internal(
+        () => create()..imageFile = imageFile,
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        imageFile: imageFile,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeNotifierProviderElement<
+      SetImageFromData,
+      MutationState<Either<AppException, ImageFormData>,
+          SetImageFromDataParam>> createElement() {
+    return _SetImageFromDataProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is SetImageFromDataProvider && other.imageFile == imageFile;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, imageFile.hashCode);
+
+    return _SystemHash.finish(hash);
   }
 }
 
-final class SetImageFromDataMutationIdle extends SetImageFromDataMutation
-    with MutationIdle {
-  SetImageFromDataMutationIdle._(
-    super._updateState,
-    super._fn, {
-    this.error,
-    this.stackTrace,
-    this.result,
-  }) : super._();
-
-  factory SetImageFromDataMutationIdle.from(SetImageFromDataMutation other) =>
-      SetImageFromDataMutationIdle._(
-        other._updateState,
-        other._fn,
-        error: other.error,
-        stackTrace: other.stackTrace,
-        result: other.result,
-      );
-
-  @override
-  final Object? error;
-
-  @override
-  final StackTrace? stackTrace;
-
-  @override
-  // ignore: inference_failure_on_uninitialized_variable
-  final result;
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+mixin SetImageFromDataRef on AutoDisposeNotifierProviderRef<
+    MutationState<Either<AppException, ImageFormData>, SetImageFromDataParam>> {
+  /// The parameter `imageFile` of this provider.
+  File get imageFile;
 }
 
-final class SetImageFromDataMutationLoading extends SetImageFromDataMutation
-    with MutationLoading {
-  SetImageFromDataMutationLoading._(
-    super._updateState,
-    super._fn, {
-    this.error,
-    this.stackTrace,
-    this.result,
-  }) : super._();
-
-  factory SetImageFromDataMutationLoading.from(
-          SetImageFromDataMutation other) =>
-      SetImageFromDataMutationLoading._(
-        other._updateState,
-        other._fn,
-        error: other.error,
-        stackTrace: other.stackTrace,
-        result: other.result,
-      );
+class _SetImageFromDataProviderElement
+    extends AutoDisposeNotifierProviderElement<
+        SetImageFromData,
+        MutationState<Either<AppException, ImageFormData>,
+            SetImageFromDataParam>> with SetImageFromDataRef {
+  _SetImageFromDataProviderElement(super.provider);
 
   @override
-  final Object? error;
-
-  @override
-  final StackTrace? stackTrace;
-
-  @override
-  // ignore: inference_failure_on_uninitialized_variable
-  final result;
+  File get imageFile => (origin as SetImageFromDataProvider).imageFile;
 }
-
-final class SetImageFromDataMutationSuccess extends SetImageFromDataMutation
-    with MutationSuccessResult<ImageFormData> {
-  SetImageFromDataMutationSuccess._(
-    super._updateState,
-    super._fn, {
-    this.error,
-    this.stackTrace,
-    required this.result,
-  }) : super._();
-
-  factory SetImageFromDataMutationSuccess.from(
-          SetImageFromDataMutation other, ImageFormData result) =>
-      SetImageFromDataMutationSuccess._(
-        other._updateState,
-        other._fn,
-        error: other.error,
-        stackTrace: other.stackTrace,
-        result: result,
-      );
-
-  @override
-  final Object? error;
-
-  @override
-  final StackTrace? stackTrace;
-
-  @override
-  final ImageFormData result;
-}
-
-final class SetImageFromDataMutationFailure extends SetImageFromDataMutation
-    with MutationFailure {
-  SetImageFromDataMutationFailure._(
-    super._updateState,
-    super._fn, {
-    required this.error,
-    required this.stackTrace,
-    this.result,
-  }) : super._();
-
-  factory SetImageFromDataMutationFailure.from(
-    SetImageFromDataMutation other, {
-    required Object error,
-    required StackTrace stackTrace,
-  }) =>
-      SetImageFromDataMutationFailure._(
-        other._updateState,
-        other._fn,
-        error: error,
-        stackTrace: stackTrace,
-        result: other.result,
-      );
-
-  @override
-  final Object error;
-
-  @override
-  final StackTrace stackTrace;
-
-  @override
-  // ignore: inference_failure_on_uninitialized_variable
-  final result;
-}
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

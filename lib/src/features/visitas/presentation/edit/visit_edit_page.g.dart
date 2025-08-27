@@ -7,7 +7,7 @@ part of 'visit_edit_page.dart';
 // **************************************************************************
 
 String _$visitEditPageControllerHash() =>
-    r'cd9dbb1244e44d9fbf2b47c809b0fd1ebf453951';
+    r'ea44a540ebad8d7acdef6ac8d4945c22bbc3f516';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -33,10 +33,12 @@ class _SystemHash {
 abstract class _$VisitEditPageController
     extends BuildlessAutoDisposeAsyncNotifier<VisitEditScreenData> {
   late final String visitaId;
+  late final bool isLocal;
   late final bool isNew;
 
   FutureOr<VisitEditScreenData> build(
     String visitaId,
+    bool isLocal,
     bool isNew,
   );
 }
@@ -54,10 +56,12 @@ class VisitEditPageControllerFamily
   /// See also [VisitEditPageController].
   VisitEditPageControllerProvider call(
     String visitaId,
+    bool isLocal,
     bool isNew,
   ) {
     return VisitEditPageControllerProvider(
       visitaId,
+      isLocal,
       isNew,
     );
   }
@@ -68,6 +72,7 @@ class VisitEditPageControllerFamily
   ) {
     return call(
       provider.visitaId,
+      provider.isLocal,
       provider.isNew,
     );
   }
@@ -94,10 +99,12 @@ class VisitEditPageControllerProvider
   /// See also [VisitEditPageController].
   VisitEditPageControllerProvider(
     String visitaId,
+    bool isLocal,
     bool isNew,
   ) : this._internal(
           () => VisitEditPageController()
             ..visitaId = visitaId
+            ..isLocal = isLocal
             ..isNew = isNew,
           from: visitEditPageControllerProvider,
           name: r'visitEditPageControllerProvider',
@@ -109,6 +116,7 @@ class VisitEditPageControllerProvider
           allTransitiveDependencies:
               VisitEditPageControllerFamily._allTransitiveDependencies,
           visitaId: visitaId,
+          isLocal: isLocal,
           isNew: isNew,
         );
 
@@ -120,10 +128,12 @@ class VisitEditPageControllerProvider
     required super.debugGetCreateSourceHash,
     required super.from,
     required this.visitaId,
+    required this.isLocal,
     required this.isNew,
   }) : super.internal();
 
   final String visitaId;
+  final bool isLocal;
   final bool isNew;
 
   @override
@@ -132,6 +142,7 @@ class VisitEditPageControllerProvider
   ) {
     return notifier.build(
       visitaId,
+      isLocal,
       isNew,
     );
   }
@@ -143,6 +154,7 @@ class VisitEditPageControllerProvider
       override: VisitEditPageControllerProvider._internal(
         () => create()
           ..visitaId = visitaId
+          ..isLocal = isLocal
           ..isNew = isNew,
         from: from,
         name: null,
@@ -150,6 +162,7 @@ class VisitEditPageControllerProvider
         allTransitiveDependencies: null,
         debugGetCreateSourceHash: null,
         visitaId: visitaId,
+        isLocal: isLocal,
         isNew: isNew,
       ),
     );
@@ -165,6 +178,7 @@ class VisitEditPageControllerProvider
   bool operator ==(Object other) {
     return other is VisitEditPageControllerProvider &&
         other.visitaId == visitaId &&
+        other.isLocal == isLocal &&
         other.isNew == isNew;
   }
 
@@ -172,6 +186,7 @@ class VisitEditPageControllerProvider
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
     hash = _SystemHash.combine(hash, visitaId.hashCode);
+    hash = _SystemHash.combine(hash, isLocal.hashCode);
     hash = _SystemHash.combine(hash, isNew.hashCode);
 
     return _SystemHash.finish(hash);
@@ -185,6 +200,9 @@ mixin VisitEditPageControllerRef
   /// The parameter `visitaId` of this provider.
   String get visitaId;
 
+  /// The parameter `isLocal` of this provider.
+  bool get isLocal;
+
   /// The parameter `isNew` of this provider.
   bool get isNew;
 }
@@ -197,194 +215,199 @@ class _VisitEditPageControllerProviderElement
   @override
   String get visitaId => (origin as VisitEditPageControllerProvider).visitaId;
   @override
+  bool get isLocal => (origin as VisitEditPageControllerProvider).isLocal;
+  @override
   bool get isNew => (origin as VisitEditPageControllerProvider).isNew;
 }
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
 
-// **************************************************************************
-// RiverpodMutationsGenerator
-// **************************************************************************
+String _$saveFormHash() => r'483005a18d08ef5d59496016f8eb4d826c3e6315';
 
-typedef VisitEditPageControllerFamilyParams = (
-  String visitaId,
-  bool isNew,
-);
+abstract class _$SaveForm extends BuildlessAutoDisposeNotifier<
+    MutationState<Either<AppException, Visita>, Visita>> {
+  late final String visitaId;
+  late final bool isLocal;
+  late final bool isNew;
 
-extension VisitEditPageControllerMutationExtension
-    on VisitEditPageControllerProvider {
-  VisitEditPageControllerFamilyParams get _params => (
-        this.visitaId,
-        this.isNew,
-      );
-
-  Refreshable<SaveFormMutation> get saveForm => _saveFormProvider(_params);
+  MutationState<Either<AppException, Visita>, Visita> build(
+    String visitaId,
+    bool isLocal,
+    bool isNew,
+  );
 }
 
-// Could have extras in the future when @mutationKey gets added. for now identical to the class one.
-typedef _SaveFormFamilyParameters = (
-  String visitaId,
-  bool isNew,
-);
+/// See also [SaveForm].
+@ProviderFor(SaveForm)
+const saveFormProvider = SaveFormFamily();
 
-final _saveFormProvider =
-    Provider.autoDispose.family((ref, _SaveFormFamilyParameters _params) {
-  final notifier = ref.watch(visitEditPageControllerProvider(
-    _params.$1,
-    _params.$2,
-  ).notifier);
-  return SaveFormMutation(
-    (newState) => ref.state = newState,
-    notifier.saveForm,
-  );
-}, dependencies: [visitEditPageControllerProvider]);
+/// See also [SaveForm].
+class SaveFormFamily
+    extends Family<MutationState<Either<AppException, Visita>, Visita>> {
+  /// See also [SaveForm].
+  const SaveFormFamily();
 
-typedef SaveFormSignature = Future<Visita> Function(Visita vistia);
-typedef SaveFormStateSetter = void Function(SaveFormMutation newState);
+  /// See also [SaveForm].
+  SaveFormProvider call(
+    String visitaId,
+    bool isLocal,
+    bool isNew,
+  ) {
+    return SaveFormProvider(
+      visitaId,
+      isLocal,
+      isNew,
+    );
+  }
 
-sealed class SaveFormMutation with AsyncMutation, MutationResult<Visita> {
-  factory SaveFormMutation(
-    SaveFormStateSetter updateState,
-    SaveFormSignature fn,
-  ) = SaveFormMutationIdle._;
+  @override
+  SaveFormProvider getProviderOverride(
+    covariant SaveFormProvider provider,
+  ) {
+    return call(
+      provider.visitaId,
+      provider.isLocal,
+      provider.isNew,
+    );
+  }
 
-  SaveFormMutation._(this._updateState, this._fn);
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
 
-  final SaveFormStateSetter _updateState;
-  final SaveFormSignature _fn;
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
 
-  Object? get error;
-  StackTrace? get stackTrace;
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
 
-  Future<void> call(Visita vistia) async {
-    try {
-      _updateState(SaveFormMutationLoading.from(this));
-      final res = await _fn(vistia);
-      _updateState(SaveFormMutationSuccess.from(this, res));
-    } catch (e, s) {
-      _updateState(SaveFormMutationFailure.from(this, error: e, stackTrace: s));
-    }
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'saveFormProvider';
+}
+
+/// See also [SaveForm].
+class SaveFormProvider extends AutoDisposeNotifierProviderImpl<SaveForm,
+    MutationState<Either<AppException, Visita>, Visita>> {
+  /// See also [SaveForm].
+  SaveFormProvider(
+    String visitaId,
+    bool isLocal,
+    bool isNew,
+  ) : this._internal(
+          () => SaveForm()
+            ..visitaId = visitaId
+            ..isLocal = isLocal
+            ..isNew = isNew,
+          from: saveFormProvider,
+          name: r'saveFormProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$saveFormHash,
+          dependencies: SaveFormFamily._dependencies,
+          allTransitiveDependencies: SaveFormFamily._allTransitiveDependencies,
+          visitaId: visitaId,
+          isLocal: isLocal,
+          isNew: isNew,
+        );
+
+  SaveFormProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.visitaId,
+    required this.isLocal,
+    required this.isNew,
+  }) : super.internal();
+
+  final String visitaId;
+  final bool isLocal;
+  final bool isNew;
+
+  @override
+  MutationState<Either<AppException, Visita>, Visita> runNotifierBuild(
+    covariant SaveForm notifier,
+  ) {
+    return notifier.build(
+      visitaId,
+      isLocal,
+      isNew,
+    );
+  }
+
+  @override
+  Override overrideWith(SaveForm Function() create) {
+    return ProviderOverride(
+      origin: this,
+      override: SaveFormProvider._internal(
+        () => create()
+          ..visitaId = visitaId
+          ..isLocal = isLocal
+          ..isNew = isNew,
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        visitaId: visitaId,
+        isLocal: isLocal,
+        isNew: isNew,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeNotifierProviderElement<SaveForm,
+      MutationState<Either<AppException, Visita>, Visita>> createElement() {
+    return _SaveFormProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is SaveFormProvider &&
+        other.visitaId == visitaId &&
+        other.isLocal == isLocal &&
+        other.isNew == isNew;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, visitaId.hashCode);
+    hash = _SystemHash.combine(hash, isLocal.hashCode);
+    hash = _SystemHash.combine(hash, isNew.hashCode);
+
+    return _SystemHash.finish(hash);
   }
 }
 
-final class SaveFormMutationIdle extends SaveFormMutation with MutationIdle {
-  SaveFormMutationIdle._(
-    super._updateState,
-    super._fn, {
-    this.error,
-    this.stackTrace,
-    this.result,
-  }) : super._();
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+mixin SaveFormRef on AutoDisposeNotifierProviderRef<
+    MutationState<Either<AppException, Visita>, Visita>> {
+  /// The parameter `visitaId` of this provider.
+  String get visitaId;
 
-  factory SaveFormMutationIdle.from(SaveFormMutation other) =>
-      SaveFormMutationIdle._(
-        other._updateState,
-        other._fn,
-        error: other.error,
-        stackTrace: other.stackTrace,
-        result: other.result,
-      );
+  /// The parameter `isLocal` of this provider.
+  bool get isLocal;
 
-  @override
-  final Object? error;
-
-  @override
-  final StackTrace? stackTrace;
-
-  @override
-  // ignore: inference_failure_on_uninitialized_variable
-  final result;
+  /// The parameter `isNew` of this provider.
+  bool get isNew;
 }
 
-final class SaveFormMutationLoading extends SaveFormMutation
-    with MutationLoading {
-  SaveFormMutationLoading._(
-    super._updateState,
-    super._fn, {
-    this.error,
-    this.stackTrace,
-    this.result,
-  }) : super._();
-
-  factory SaveFormMutationLoading.from(SaveFormMutation other) =>
-      SaveFormMutationLoading._(
-        other._updateState,
-        other._fn,
-        error: other.error,
-        stackTrace: other.stackTrace,
-        result: other.result,
-      );
+class _SaveFormProviderElement extends AutoDisposeNotifierProviderElement<
+    SaveForm,
+    MutationState<Either<AppException, Visita>, Visita>> with SaveFormRef {
+  _SaveFormProviderElement(super.provider);
 
   @override
-  final Object? error;
-
+  String get visitaId => (origin as SaveFormProvider).visitaId;
   @override
-  final StackTrace? stackTrace;
-
+  bool get isLocal => (origin as SaveFormProvider).isLocal;
   @override
-  // ignore: inference_failure_on_uninitialized_variable
-  final result;
+  bool get isNew => (origin as SaveFormProvider).isNew;
 }
-
-final class SaveFormMutationSuccess extends SaveFormMutation
-    with MutationSuccessResult<Visita> {
-  SaveFormMutationSuccess._(
-    super._updateState,
-    super._fn, {
-    this.error,
-    this.stackTrace,
-    required this.result,
-  }) : super._();
-
-  factory SaveFormMutationSuccess.from(SaveFormMutation other, Visita result) =>
-      SaveFormMutationSuccess._(
-        other._updateState,
-        other._fn,
-        error: other.error,
-        stackTrace: other.stackTrace,
-        result: result,
-      );
-
-  @override
-  final Object? error;
-
-  @override
-  final StackTrace? stackTrace;
-
-  @override
-  final Visita result;
-}
-
-final class SaveFormMutationFailure extends SaveFormMutation
-    with MutationFailure {
-  SaveFormMutationFailure._(
-    super._updateState,
-    super._fn, {
-    required this.error,
-    required this.stackTrace,
-    this.result,
-  }) : super._();
-
-  factory SaveFormMutationFailure.from(
-    SaveFormMutation other, {
-    required Object error,
-    required StackTrace stackTrace,
-  }) =>
-      SaveFormMutationFailure._(
-        other._updateState,
-        other._fn,
-        error: error,
-        stackTrace: stackTrace,
-        result: other.result,
-      );
-
-  @override
-  final Object error;
-
-  @override
-  final StackTrace stackTrace;
-
-  @override
-  // ignore: inference_failure_on_uninitialized_variable
-  final result;
-}
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

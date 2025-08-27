@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
@@ -591,15 +592,23 @@ class CatalogoRepository {
       ..orderBy([(tbl) => OrderingTerm.asc(tbl.fechaAbierto)])).get();
   }
 
-  Future<int> saveCatalogoAbierto(int catalogoId) async {
-    return _localDb
-        .into(_localDb.catalogoOrdenTable)
-        .insertOnConflictUpdate(
-          CatalogoOrdenDTO(
-            catalogoId: catalogoId,
-            fechaAbierto: DateTime.now(),
-          ),
-        );
+  Future<Either<AppException, Unit>> saveCatalogoAbierto(int catalogoId) async {
+    try {
+      await _localDb
+          .into(_localDb.catalogoOrdenTable)
+          .insertOnConflictUpdate(
+            CatalogoOrdenDTO(
+              catalogoId: catalogoId,
+              fechaAbierto: DateTime.now(),
+            ),
+          );
+      return right(unit);
+    } catch (e) {
+      if (e is AppException) {
+        return left(e);
+      }
+      return left(AppException.unexpectedError());
+    }
   }
 
   int getPriority(

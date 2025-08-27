@@ -7,6 +7,7 @@ import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:google_mlkit_entity_extraction/google_mlkit_entity_extraction.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:intl/intl.dart';
@@ -32,6 +33,7 @@ import '../domain/visita_competidor.dart';
 import '../domain/visita_id_param.dart';
 import '../domain/visita_motivos_no_venta.dart';
 import '../domain/visita_sector.dart';
+import '../presentation/edit/image_form_page.dart';
 import 'geolocation_entity_dto.dart';
 import 'visita_competencia_local_dto.dart';
 import 'visita_local_dto.dart';
@@ -1064,41 +1066,42 @@ class VisitaRepository {
     return ocrReconginzedTextList;
   }
 
-  Future<ImageFormData> setImageFormData(
-    String? name,
-    String? company,
-    String? cargo,
-    List<String> address,
-    String? email,
-    List<String> phoneList,
-    // String? website,
+  Future<Either<AppException, ImageFormData>> setImageFormData(
+    SetImageFromDataParam setImageFromDataParam,
   ) async {
-    final addressString = _getAddressString(address);
+    try {
+      final addressString = _getAddressString(setImageFromDataParam.address);
 
-    var imageFormData = ImageFormData(
-      name: name,
-      company: company,
-      cargo: cargo,
-      phoneList: phoneList,
-      email: email,
-      streetAddress1: addressString,
-      referenceStreetAddress: addressString,
-    );
+      var imageFormData = ImageFormData(
+        name: setImageFromDataParam.name,
+        company: setImageFromDataParam.company,
+        cargo: setImageFromDataParam.cargo,
+        phoneList: setImageFromDataParam.phoneList,
+        email: setImageFromDataParam.email,
+        streetAddress1: addressString,
+        referenceStreetAddress: addressString,
+      );
 
-    if (addressString != null) {
-      final geolocationEntity = await getAddress(addressString);
+      if (addressString != null) {
+        final geolocationEntity = await getAddress(addressString);
 
-      if (geolocationEntity != null) {
-        imageFormData = imageFormData.copyWith(
-          streetAddress1: geolocationEntity.streetAddress1,
-          zipCode: geolocationEntity.zipCode,
-          city: geolocationEntity.city,
-          state: geolocationEntity.state,
-          country: geolocationEntity.country,
-        );
+        if (geolocationEntity != null) {
+          imageFormData = imageFormData.copyWith(
+            streetAddress1: geolocationEntity.streetAddress1,
+            zipCode: geolocationEntity.zipCode,
+            city: geolocationEntity.city,
+            state: geolocationEntity.state,
+            country: geolocationEntity.country,
+          );
+        }
       }
+      return right(imageFormData);
+    } catch (e) {
+      if (e is AppException) {
+        return left(e);
+      }
+      return left(AppException.unexpectedError());
     }
-    return imageFormData;
   }
 
   Future<GeolocationEntity?> getAddress(String addressString) async {

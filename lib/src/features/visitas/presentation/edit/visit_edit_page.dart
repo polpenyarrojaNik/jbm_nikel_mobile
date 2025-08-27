@@ -7,10 +7,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:gap/gap.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:riverpod_mutations_annotation/riverpod_mutations_annotation.dart';
+import 'package:riverpod_mutations/riverpod_mutations.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../../../generated/l10n.dart';
@@ -59,13 +60,22 @@ class VisitEditPageController extends _$VisitEditPageController {
   VisitEditPageController();
 
   @override
-  Future<VisitEditScreenData> build(String visitaId, bool isNew) async {
+  Future<VisitEditScreenData> build(
+    String visitaId,
+    bool isLocal,
+    bool isNew,
+  ) async {
     Visita? visit;
 
     if (!isNew) {
-      visit = await ref
-          .read(visitaRepositoryProvider)
-          .getVisita(visitaId: visitaId);
+      visit =
+          isLocal
+              ? await ref
+                  .read(visitaRepositoryProvider)
+                  .getVisitaLocal(visitaAppId: visitaId)
+              : await ref
+                  .read(visitaRepositoryProvider)
+                  .getVisita(visitaId: visitaId);
     }
 
     final provincias = await ref.read(
@@ -81,11 +91,38 @@ class VisitEditPageController extends _$VisitEditPageController {
     );
   }
 
-  @mutation
-  Future<Visita> saveForm(Visita vistia) async {
-    await ref.read(visitaRepositoryProvider).upsertVisita(vistia);
+  Future<Either<AppException, Visita>> saveForm(Visita vistia) async {
+    try {
+      await ref.read(visitaRepositoryProvider).upsertVisita(vistia);
 
-    return vistia;
+      ref.invalidateSelf();
+
+      return right(vistia);
+    } catch (e) {
+      if (e is AppException) {
+        return left(e);
+      }
+      return left(AppException.unexpectedError());
+    }
+  }
+}
+
+@riverpod
+class SaveForm extends _$SaveForm {
+  @override
+  MutationState<Either<AppException, Visita>, Visita> build(
+    String visitaId,
+    bool isLocal,
+    bool isNew,
+  ) {
+    return MutationState.create(
+      (newState) => state = newState,
+      (newVisita) async => ref
+          .read(
+            visitEditPageControllerProvider(visitaId, isLocal, isNew).notifier,
+          )
+          .saveForm(newVisita),
+    );
   }
 }
 
@@ -109,37 +146,45 @@ class VisitaEditPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(visitEditPageControllerProvider(id, isNew));
-
-    final stateSaveForm = ref.watch(
-      visitEditPageControllerProvider(id, isNew).saveForm,
+    final state = ref.watch(
+      visitEditPageControllerProvider(id, isLocal, isNew),
     );
 
-    ref.listen(visitEditPageControllerProvider(id, isNew).saveForm, (
-      __,
-      state,
-    ) {
-      if (state is SaveFormMutationSuccess) {
-        ref.invalidate(
-          visitaDetalleControllerProvider(
-            id,
-            isLocal,
-            createVisitaFromClienteId,
-          ),
-        );
-        ref.invalidate(visitaIndexScreenControllerProvider);
-        ref.invalidate(visitaIndexScreenPaginatedControllerProvider);
-        context.showSuccessBar(
-          content: Text(S.of(context).visitas_edit_visitaEditar_saved),
-        );
+    final stateSaveForm = ref.watch(saveFormProvider(id, isLocal, isNew));
 
-        context.router.maybePop();
-      } else if (state is SaveFormMutationFailure) {
-        context.showErrorBar(
-          duration: const Duration(seconds: 5),
-          content: Text(state.error.toString()),
-        );
-      }
+    ref.listen(saveFormProvider(id, isLocal, isNew), (__, state) {
+      state.whenOrNull(
+        error:
+            (error, _) => context.showErrorBar(
+              duration: const Duration(seconds: 5),
+              content: Text(state.error.toString()),
+            ),
+        data: (result) {
+          result.fold(
+            (l) => context.showErrorBar(
+              duration: const Duration(seconds: 5),
+              content: ErrorMessageWidget(l.details.message),
+            ),
+            (r) {
+              context.showSuccessBar(
+                content: Text(S.of(context).visitas_edit_visitaEditar_saved),
+              );
+
+              ref.invalidate(
+                visitaDetalleControllerProvider(
+                  id,
+                  isLocal,
+                  createVisitaFromClienteId,
+                ),
+              );
+              ref.invalidate(visitaIndexScreenControllerProvider);
+              ref.invalidate(visitaIndexScreenPaginatedControllerProvider);
+
+              context.router.maybePop();
+            },
+          );
+        },
+      );
     });
     return Scaffold(
       appBar: CommonAppBar(
@@ -148,11 +193,11 @@ class VisitaEditPage extends ConsumerWidget {
                 ? S.of(context).visitas_edit_visitaEditar_titleNueva
                 : S.of(context).visitas_edit_visitaEditar_titleEditar),
         actions: [
-          stateSaveForm is SaveFormMutationLoading
+          stateSaveForm.isLoading
               ? Container()
               : IconButton(
                 icon: const Icon(Icons.save),
-                onPressed: () => saveForm(context, ref, stateSaveForm),
+                onPressed: () => saveForm(context, ref),
               ),
         ],
       ),
@@ -181,16 +226,12 @@ class VisitaEditPage extends ConsumerWidget {
     );
   }
 
-  void saveForm(
-    BuildContext context,
-    WidgetRef ref,
-    SaveFormMutation saveForm,
-  ) async {
+  void saveForm(BuildContext context, WidgetRef ref) async {
     if (formKey.currentState!.saveAndValidate()) {
       final isClientePotencial =
           formKey.currentState!.value['cliente_provisional'] as bool;
       if (isClientePotencial) {
-        final contiueToSavingVisit = await _checkClientePotencialValues(
+        final contiueToSavingVisit = await checkClientePotencialValues(
           context,
           ref,
           formKey.currentState!.value['direccion1'] as String?,
@@ -278,6 +319,8 @@ class VisitaEditPage extends ConsumerWidget {
         tratada: false,
       );
 
+      final saveForm = ref.read(saveFormProvider(id, isLocal, isNew));
+
       unawaited(saveForm(visita));
     } else {
       await context.showErrorBar(
@@ -288,7 +331,7 @@ class VisitaEditPage extends ConsumerWidget {
     }
   }
 
-  Future<bool> _checkClientePotencialValues(
+  Future<bool> checkClientePotencialValues(
     BuildContext context,
     WidgetRef ref,
     String? direccion1,
@@ -352,7 +395,7 @@ class _VisitaForm extends ConsumerStatefulWidget {
 }
 
 class _VisitaFormState extends ConsumerState<_VisitaForm> {
-  final List<VisitaCompetidor> competenciaFilterList = [];
+  final competenciaFilterList = <VisitaCompetidor>[];
   late bool isClienteProvisional;
   late bool isClienteLinked;
 
@@ -1139,7 +1182,7 @@ class VisitaMotivoNoVentaFormDropdown extends ConsumerWidget {
   }
 }
 
-class VisitaCompetidorListFilterDialog extends StatefulWidget {
+class VisitaCompetidorListFilterDialog extends ConsumerStatefulWidget {
   VisitaCompetidorListFilterDialog({
     super.key,
     required this.visitCompetitorList,
@@ -1149,17 +1192,17 @@ class VisitaCompetidorListFilterDialog extends StatefulWidget {
   final List<VisitaCompetidor> currentVisitCompetitorList;
   final List<VisitaCompetidor> visitCompetitorList;
 
-  final GlobalKey<FormBuilderState> formKey = GlobalKey<FormBuilderState>();
+  final formKey = GlobalKey<FormBuilderState>();
 
   @override
-  State<VisitaCompetidorListFilterDialog> createState() =>
+  ConsumerState<VisitaCompetidorListFilterDialog> createState() =>
       _UserAuxListFilterDialogState();
 }
 
 class _UserAuxListFilterDialogState
-    extends State<VisitaCompetidorListFilterDialog> {
-  List<VisitaCompetidor> competitorFilterList = [];
-  List<VisitaCompetidor> searchFilterList = [];
+    extends ConsumerState<VisitaCompetidorListFilterDialog> {
+  final competitorFilterList = <VisitaCompetidor>[];
+  var searchFilterList = <VisitaCompetidor>[];
 
   @override
   void initState() {
