@@ -6,6 +6,7 @@ import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:uuid/uuid.dart';
@@ -1516,18 +1517,27 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     }
   }
 
-  Future<ClienteImp> upsertClienteImp(ClienteImp clienteImp) async {
-    final clienteImpDto = ClienteImpDTO.fromDomain(clienteImp);
-    await _insertClienteImpInLocalDB(clienteImpDto);
-    await _updateClienteSectorInLocalDB(clienteImpDto);
-
+  Future<Either<AppException, Unit>> upsertClienteImp(
+    ClienteImp clienteImp,
+  ) async {
     try {
-      unawaited(ref.read(syncServiceProvider).syncClienteUpdate());
-    } catch (e) {
-      log.e(e.toString());
-    }
+      final clienteImpDto = ClienteImpDTO.fromDomain(clienteImp);
+      await _insertClienteImpInLocalDB(clienteImpDto);
+      await _updateClienteSectorInLocalDB(clienteImpDto);
 
-    return clienteImp;
+      try {
+        unawaited(ref.read(syncServiceProvider).syncClienteUpdate());
+      } catch (e) {
+        log.e(e.toString());
+      }
+
+      return right(unit);
+    } catch (e) {
+      if (e is AppException) {
+        return left(e);
+      }
+      return left(AppException.unexpectedError());
+    }
   }
 
   Future<List<ClienteContacto>> _getClienteContactoSyncList(
@@ -2231,45 +2241,58 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       return _remoteDb.articuloTable.descripcionFR.contains(searchText);
     } else if (currentLocale == 'it') {
       return _remoteDb.articuloTable.descripcionIT.contains(searchText);
-    } else {
-      return _remoteDb.articuloTable.descripcionES.contains(searchText);
     }
+    return _remoteDb.articuloTable.descripcionES.contains(searchText);
   }
 
-  Future<ClienteTelefono?> verifyExistingPhone(String value) async {
-    final customerListDTO =
-        await (_remoteDb.select(_remoteDb.clienteTable)..where(
-          (tbl) =>
-              tbl.telefonoFijo.equals(value) | tbl.telefonoMovil.equals(value),
-        )).get();
+  Future<Either<AppException, ClienteTelefono?>> verifyExistingPhone(
+    String value,
+  ) async {
+    try {
+      final customerListDTO =
+          await (_remoteDb.select(_remoteDb.clienteTable)..where(
+            (tbl) =>
+                tbl.telefonoFijo.equals(value) |
+                tbl.telefonoMovil.equals(value),
+          )).get();
 
-    if (customerListDTO.isNotEmpty) {
-      return ClienteTelefono.fromClienteDTO(customerListDTO.first, value);
+      if (customerListDTO.isNotEmpty) {
+        return right(
+          ClienteTelefono.fromClienteDTO(customerListDTO.first, value),
+        );
+      }
+
+      final clienteDireccionListDTO =
+          await (_remoteDb.select(_remoteDb.clienteDireccionTable)
+            ..where((tbl) => tbl.telefono.equals(value))).get();
+
+      if (clienteDireccionListDTO.isNotEmpty) {
+        return right(
+          ClienteTelefono.fromClienteDireccionDTO(
+            clienteDireccionListDTO.first,
+            value,
+          ),
+        );
+      }
+
+      final clienteContactoListDTO =
+          await (_remoteDb.select(_remoteDb.clienteContactoTable)..where(
+            (tbl) => tbl.telefono1.equals(value) | tbl.telefono2.equals(value),
+          )).get();
+
+      if (clienteContactoListDTO.isNotEmpty) {
+        final cliente = await getClienteById(
+          clienteId: clienteContactoListDTO.first.clienteId,
+        );
+        return right(ClienteTelefono.fromCliente(cliente, value));
+      }
+
+      return right(null);
+    } catch (e) {
+      if (e is AppException) {
+        return left(e);
+      }
+      return left(AppException.unexpectedError());
     }
-
-    final clienteDireccionListDTO =
-        await (_remoteDb.select(_remoteDb.clienteDireccionTable)
-          ..where((tbl) => tbl.telefono.equals(value))).get();
-
-    if (clienteDireccionListDTO.isNotEmpty) {
-      return ClienteTelefono.fromClienteDireccionDTO(
-        clienteDireccionListDTO.first,
-        value,
-      );
-    }
-
-    final clienteContactoListDTO =
-        await (_remoteDb.select(_remoteDb.clienteContactoTable)..where(
-          (tbl) => tbl.telefono1.equals(value) | tbl.telefono2.equals(value),
-        )).get();
-
-    if (clienteContactoListDTO.isNotEmpty) {
-      final cliente = await getClienteById(
-        clienteId: clienteContactoListDTO.first.clienteId,
-      );
-      return ClienteTelefono.fromCliente(cliente, value);
-    }
-
-    return null;
   }
 }

@@ -33,6 +33,7 @@ mixin _$AppException {
     required TResult Function() notConnection,
     required TResult Function() noSuchFileOrDirectory,
     required TResult Function() unexpectedResponseFormat,
+    required TResult Function() unexpectedError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +51,7 @@ mixin _$AppException {
     TResult? Function()? notConnection,
     TResult? Function()? noSuchFileOrDirectory,
     TResult? Function()? unexpectedResponseFormat,
+    TResult? Function()? unexpectedError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,6 +69,7 @@ mixin _$AppException {
     TResult Function()? notConnection,
     TResult Function()? noSuchFileOrDirectory,
     TResult Function()? unexpectedResponseFormat,
+    TResult Function()? unexpectedError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -90,6 +93,7 @@ mixin _$AppException {
     required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
     required TResult Function(UnexpectedResponseFormat value)
         unexpectedResponseFormat,
+    required TResult Function(UnexpectedError value) unexpectedError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -107,6 +111,7 @@ mixin _$AppException {
     TResult? Function(NotConnectionFailure value)? notConnection,
     TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
     TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
+    TResult? Function(UnexpectedError value)? unexpectedError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -124,6 +129,7 @@ mixin _$AppException {
     TResult Function(NotConnectionFailure value)? notConnection,
     TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
     TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
+    TResult Function(UnexpectedError value)? unexpectedError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -244,6 +250,7 @@ class _$RestApiFailureImpl implements RestApiFailure {
     required TResult Function() notConnection,
     required TResult Function() noSuchFileOrDirectory,
     required TResult Function() unexpectedResponseFormat,
+    required TResult Function() unexpectedError,
   }) {
     return restApiFailure(errorCode, errorMessage);
   }
@@ -264,6 +271,7 @@ class _$RestApiFailureImpl implements RestApiFailure {
     TResult? Function()? notConnection,
     TResult? Function()? noSuchFileOrDirectory,
     TResult? Function()? unexpectedResponseFormat,
+    TResult? Function()? unexpectedError,
   }) {
     return restApiFailure?.call(errorCode, errorMessage);
   }
@@ -284,6 +292,7 @@ class _$RestApiFailureImpl implements RestApiFailure {
     TResult Function()? notConnection,
     TResult Function()? noSuchFileOrDirectory,
     TResult Function()? unexpectedResponseFormat,
+    TResult Function()? unexpectedError,
     required TResult orElse(),
   }) {
     if (restApiFailure != null) {
@@ -313,6 +322,7 @@ class _$RestApiFailureImpl implements RestApiFailure {
     required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
     required TResult Function(UnexpectedResponseFormat value)
         unexpectedResponseFormat,
+    required TResult Function(UnexpectedError value) unexpectedError,
   }) {
     return restApiFailure(this);
   }
@@ -333,6 +343,7 @@ class _$RestApiFailureImpl implements RestApiFailure {
     TResult? Function(NotConnectionFailure value)? notConnection,
     TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
     TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
+    TResult? Function(UnexpectedError value)? unexpectedError,
   }) {
     return restApiFailure?.call(this);
   }
@@ -353,6 +364,7 @@ class _$RestApiFailureImpl implements RestApiFailure {
     TResult Function(NotConnectionFailure value)? notConnection,
     TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
     TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
+    TResult Function(UnexpectedError value)? unexpectedError,
     required TResult orElse(),
   }) {
     if (restApiFailure != null) {
@@ -461,6 +473,7 @@ class _$AuthLocalFailureImpl implements AuthLocalFailure {
     required TResult Function() notConnection,
     required TResult Function() noSuchFileOrDirectory,
     required TResult Function() unexpectedResponseFormat,
+    required TResult Function() unexpectedError,
   }) {
     return authLocalFailure(errorMessage);
   }
@@ -481,6 +494,7 @@ class _$AuthLocalFailureImpl implements AuthLocalFailure {
     TResult? Function()? notConnection,
     TResult? Function()? noSuchFileOrDirectory,
     TResult? Function()? unexpectedResponseFormat,
+    TResult? Function()? unexpectedError,
   }) {
     return authLocalFailure?.call(errorMessage);
   }
@@ -501,6 +515,7 @@ class _$AuthLocalFailureImpl implements AuthLocalFailure {
     TResult Function()? notConnection,
     TResult Function()? noSuchFileOrDirectory,
     TResult Function()? unexpectedResponseFormat,
+    TResult Function()? unexpectedError,
     required TResult orElse(),
   }) {
     if (authLocalFailure != null) {
@@ -530,6 +545,7 @@ class _$AuthLocalFailureImpl implements AuthLocalFailure {
     required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
     required TResult Function(UnexpectedResponseFormat value)
         unexpectedResponseFormat,
+    required TResult Function(UnexpectedError value) unexpectedError,
   }) {
     return authLocalFailure(this);
   }
@@ -550,6 +566,7 @@ class _$AuthLocalFailureImpl implements AuthLocalFailure {
     TResult? Function(NotConnectionFailure value)? notConnection,
     TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
     TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
+    TResult? Function(UnexpectedError value)? unexpectedError,
   }) {
     return authLocalFailure?.call(this);
   }
@@ -570,6 +587,7 @@ class _$AuthLocalFailureImpl implements AuthLocalFailure {
     TResult Function(NotConnectionFailure value)? notConnection,
     TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
     TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
+    TResult Function(UnexpectedError value)? unexpectedError,
     required TResult orElse(),
   }) {
     if (authLocalFailure != null) {
@@ -678,6 +696,7 @@ class _$FetchLocalDataFailureImpl implements FetchLocalDataFailure {
     required TResult Function() notConnection,
     required TResult Function() noSuchFileOrDirectory,
     required TResult Function() unexpectedResponseFormat,
+    required TResult Function() unexpectedError,
   }) {
     return fetchLocalDataFailure(errorMessage);
   }
@@ -698,6 +717,7 @@ class _$FetchLocalDataFailureImpl implements FetchLocalDataFailure {
     TResult? Function()? notConnection,
     TResult? Function()? noSuchFileOrDirectory,
     TResult? Function()? unexpectedResponseFormat,
+    TResult? Function()? unexpectedError,
   }) {
     return fetchLocalDataFailure?.call(errorMessage);
   }
@@ -718,6 +738,7 @@ class _$FetchLocalDataFailureImpl implements FetchLocalDataFailure {
     TResult Function()? notConnection,
     TResult Function()? noSuchFileOrDirectory,
     TResult Function()? unexpectedResponseFormat,
+    TResult Function()? unexpectedError,
     required TResult orElse(),
   }) {
     if (fetchLocalDataFailure != null) {
@@ -747,6 +768,7 @@ class _$FetchLocalDataFailureImpl implements FetchLocalDataFailure {
     required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
     required TResult Function(UnexpectedResponseFormat value)
         unexpectedResponseFormat,
+    required TResult Function(UnexpectedError value) unexpectedError,
   }) {
     return fetchLocalDataFailure(this);
   }
@@ -767,6 +789,7 @@ class _$FetchLocalDataFailureImpl implements FetchLocalDataFailure {
     TResult? Function(NotConnectionFailure value)? notConnection,
     TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
     TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
+    TResult? Function(UnexpectedError value)? unexpectedError,
   }) {
     return fetchLocalDataFailure?.call(this);
   }
@@ -787,6 +810,7 @@ class _$FetchLocalDataFailureImpl implements FetchLocalDataFailure {
     TResult Function(NotConnectionFailure value)? notConnection,
     TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
     TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
+    TResult Function(UnexpectedError value)? unexpectedError,
     required TResult orElse(),
   }) {
     if (fetchLocalDataFailure != null) {
@@ -896,6 +920,7 @@ class _$CreateFileInCahceFailureImpl implements CreateFileInCahceFailure {
     required TResult Function() notConnection,
     required TResult Function() noSuchFileOrDirectory,
     required TResult Function() unexpectedResponseFormat,
+    required TResult Function() unexpectedError,
   }) {
     return createFileInCacheFailure(errorMessage);
   }
@@ -916,6 +941,7 @@ class _$CreateFileInCahceFailureImpl implements CreateFileInCahceFailure {
     TResult? Function()? notConnection,
     TResult? Function()? noSuchFileOrDirectory,
     TResult? Function()? unexpectedResponseFormat,
+    TResult? Function()? unexpectedError,
   }) {
     return createFileInCacheFailure?.call(errorMessage);
   }
@@ -936,6 +962,7 @@ class _$CreateFileInCahceFailureImpl implements CreateFileInCahceFailure {
     TResult Function()? notConnection,
     TResult Function()? noSuchFileOrDirectory,
     TResult Function()? unexpectedResponseFormat,
+    TResult Function()? unexpectedError,
     required TResult orElse(),
   }) {
     if (createFileInCacheFailure != null) {
@@ -965,6 +992,7 @@ class _$CreateFileInCahceFailureImpl implements CreateFileInCahceFailure {
     required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
     required TResult Function(UnexpectedResponseFormat value)
         unexpectedResponseFormat,
+    required TResult Function(UnexpectedError value) unexpectedError,
   }) {
     return createFileInCacheFailure(this);
   }
@@ -985,6 +1013,7 @@ class _$CreateFileInCahceFailureImpl implements CreateFileInCahceFailure {
     TResult? Function(NotConnectionFailure value)? notConnection,
     TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
     TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
+    TResult? Function(UnexpectedError value)? unexpectedError,
   }) {
     return createFileInCacheFailure?.call(this);
   }
@@ -1005,6 +1034,7 @@ class _$CreateFileInCahceFailureImpl implements CreateFileInCahceFailure {
     TResult Function(NotConnectionFailure value)? notConnection,
     TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
     TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
+    TResult Function(UnexpectedError value)? unexpectedError,
     required TResult orElse(),
   }) {
     if (createFileInCacheFailure != null) {
@@ -1120,6 +1150,7 @@ class _$SyncFailureImpl implements SyncFailure {
     required TResult Function() notConnection,
     required TResult Function() noSuchFileOrDirectory,
     required TResult Function() unexpectedResponseFormat,
+    required TResult Function() unexpectedError,
   }) {
     return syncFailure(tableToSync, errorMessage);
   }
@@ -1140,6 +1171,7 @@ class _$SyncFailureImpl implements SyncFailure {
     TResult? Function()? notConnection,
     TResult? Function()? noSuchFileOrDirectory,
     TResult? Function()? unexpectedResponseFormat,
+    TResult? Function()? unexpectedError,
   }) {
     return syncFailure?.call(tableToSync, errorMessage);
   }
@@ -1160,6 +1192,7 @@ class _$SyncFailureImpl implements SyncFailure {
     TResult Function()? notConnection,
     TResult Function()? noSuchFileOrDirectory,
     TResult Function()? unexpectedResponseFormat,
+    TResult Function()? unexpectedError,
     required TResult orElse(),
   }) {
     if (syncFailure != null) {
@@ -1189,6 +1222,7 @@ class _$SyncFailureImpl implements SyncFailure {
     required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
     required TResult Function(UnexpectedResponseFormat value)
         unexpectedResponseFormat,
+    required TResult Function(UnexpectedError value) unexpectedError,
   }) {
     return syncFailure(this);
   }
@@ -1209,6 +1243,7 @@ class _$SyncFailureImpl implements SyncFailure {
     TResult? Function(NotConnectionFailure value)? notConnection,
     TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
     TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
+    TResult? Function(UnexpectedError value)? unexpectedError,
   }) {
     return syncFailure?.call(this);
   }
@@ -1229,6 +1264,7 @@ class _$SyncFailureImpl implements SyncFailure {
     TResult Function(NotConnectionFailure value)? notConnection,
     TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
     TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
+    TResult Function(UnexpectedError value)? unexpectedError,
     required TResult orElse(),
   }) {
     if (syncFailure != null) {
@@ -1311,6 +1347,7 @@ class _$ClienteNotFoundFailureImpl implements ClienteNotFoundFailure {
     required TResult Function() notConnection,
     required TResult Function() noSuchFileOrDirectory,
     required TResult Function() unexpectedResponseFormat,
+    required TResult Function() unexpectedError,
   }) {
     return clienteNotFound();
   }
@@ -1331,6 +1368,7 @@ class _$ClienteNotFoundFailureImpl implements ClienteNotFoundFailure {
     TResult? Function()? notConnection,
     TResult? Function()? noSuchFileOrDirectory,
     TResult? Function()? unexpectedResponseFormat,
+    TResult? Function()? unexpectedError,
   }) {
     return clienteNotFound?.call();
   }
@@ -1351,6 +1389,7 @@ class _$ClienteNotFoundFailureImpl implements ClienteNotFoundFailure {
     TResult Function()? notConnection,
     TResult Function()? noSuchFileOrDirectory,
     TResult Function()? unexpectedResponseFormat,
+    TResult Function()? unexpectedError,
     required TResult orElse(),
   }) {
     if (clienteNotFound != null) {
@@ -1380,6 +1419,7 @@ class _$ClienteNotFoundFailureImpl implements ClienteNotFoundFailure {
     required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
     required TResult Function(UnexpectedResponseFormat value)
         unexpectedResponseFormat,
+    required TResult Function(UnexpectedError value) unexpectedError,
   }) {
     return clienteNotFound(this);
   }
@@ -1400,6 +1440,7 @@ class _$ClienteNotFoundFailureImpl implements ClienteNotFoundFailure {
     TResult? Function(NotConnectionFailure value)? notConnection,
     TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
     TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
+    TResult? Function(UnexpectedError value)? unexpectedError,
   }) {
     return clienteNotFound?.call(this);
   }
@@ -1420,6 +1461,7 @@ class _$ClienteNotFoundFailureImpl implements ClienteNotFoundFailure {
     TResult Function(NotConnectionFailure value)? notConnection,
     TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
     TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
+    TResult Function(UnexpectedError value)? unexpectedError,
     required TResult orElse(),
   }) {
     if (clienteNotFound != null) {
@@ -1492,6 +1534,7 @@ class _$ArticuloNotFoundFailureImpl implements ArticuloNotFoundFailure {
     required TResult Function() notConnection,
     required TResult Function() noSuchFileOrDirectory,
     required TResult Function() unexpectedResponseFormat,
+    required TResult Function() unexpectedError,
   }) {
     return articuloNotFound();
   }
@@ -1512,6 +1555,7 @@ class _$ArticuloNotFoundFailureImpl implements ArticuloNotFoundFailure {
     TResult? Function()? notConnection,
     TResult? Function()? noSuchFileOrDirectory,
     TResult? Function()? unexpectedResponseFormat,
+    TResult? Function()? unexpectedError,
   }) {
     return articuloNotFound?.call();
   }
@@ -1532,6 +1576,7 @@ class _$ArticuloNotFoundFailureImpl implements ArticuloNotFoundFailure {
     TResult Function()? notConnection,
     TResult Function()? noSuchFileOrDirectory,
     TResult Function()? unexpectedResponseFormat,
+    TResult Function()? unexpectedError,
     required TResult orElse(),
   }) {
     if (articuloNotFound != null) {
@@ -1561,6 +1606,7 @@ class _$ArticuloNotFoundFailureImpl implements ArticuloNotFoundFailure {
     required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
     required TResult Function(UnexpectedResponseFormat value)
         unexpectedResponseFormat,
+    required TResult Function(UnexpectedError value) unexpectedError,
   }) {
     return articuloNotFound(this);
   }
@@ -1581,6 +1627,7 @@ class _$ArticuloNotFoundFailureImpl implements ArticuloNotFoundFailure {
     TResult? Function(NotConnectionFailure value)? notConnection,
     TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
     TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
+    TResult? Function(UnexpectedError value)? unexpectedError,
   }) {
     return articuloNotFound?.call(this);
   }
@@ -1601,6 +1648,7 @@ class _$ArticuloNotFoundFailureImpl implements ArticuloNotFoundFailure {
     TResult Function(NotConnectionFailure value)? notConnection,
     TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
     TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
+    TResult Function(UnexpectedError value)? unexpectedError,
     required TResult orElse(),
   }) {
     if (articuloNotFound != null) {
@@ -1673,6 +1721,7 @@ class _$PedidoVentaNotFoundFailureImpl implements PedidoVentaNotFoundFailure {
     required TResult Function() notConnection,
     required TResult Function() noSuchFileOrDirectory,
     required TResult Function() unexpectedResponseFormat,
+    required TResult Function() unexpectedError,
   }) {
     return pedidoVentaNotFound();
   }
@@ -1693,6 +1742,7 @@ class _$PedidoVentaNotFoundFailureImpl implements PedidoVentaNotFoundFailure {
     TResult? Function()? notConnection,
     TResult? Function()? noSuchFileOrDirectory,
     TResult? Function()? unexpectedResponseFormat,
+    TResult? Function()? unexpectedError,
   }) {
     return pedidoVentaNotFound?.call();
   }
@@ -1713,6 +1763,7 @@ class _$PedidoVentaNotFoundFailureImpl implements PedidoVentaNotFoundFailure {
     TResult Function()? notConnection,
     TResult Function()? noSuchFileOrDirectory,
     TResult Function()? unexpectedResponseFormat,
+    TResult Function()? unexpectedError,
     required TResult orElse(),
   }) {
     if (pedidoVentaNotFound != null) {
@@ -1742,6 +1793,7 @@ class _$PedidoVentaNotFoundFailureImpl implements PedidoVentaNotFoundFailure {
     required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
     required TResult Function(UnexpectedResponseFormat value)
         unexpectedResponseFormat,
+    required TResult Function(UnexpectedError value) unexpectedError,
   }) {
     return pedidoVentaNotFound(this);
   }
@@ -1762,6 +1814,7 @@ class _$PedidoVentaNotFoundFailureImpl implements PedidoVentaNotFoundFailure {
     TResult? Function(NotConnectionFailure value)? notConnection,
     TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
     TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
+    TResult? Function(UnexpectedError value)? unexpectedError,
   }) {
     return pedidoVentaNotFound?.call(this);
   }
@@ -1782,6 +1835,7 @@ class _$PedidoVentaNotFoundFailureImpl implements PedidoVentaNotFoundFailure {
     TResult Function(NotConnectionFailure value)? notConnection,
     TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
     TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
+    TResult Function(UnexpectedError value)? unexpectedError,
     required TResult orElse(),
   }) {
     if (pedidoVentaNotFound != null) {
@@ -1882,6 +1936,7 @@ class _$PedidoVentaDeleteFailureImpl implements PedidoVentaDeleteFailure {
     required TResult Function() notConnection,
     required TResult Function() noSuchFileOrDirectory,
     required TResult Function() unexpectedResponseFormat,
+    required TResult Function() unexpectedError,
   }) {
     return pedidoVentaDeleteFailure(errorMessage);
   }
@@ -1902,6 +1957,7 @@ class _$PedidoVentaDeleteFailureImpl implements PedidoVentaDeleteFailure {
     TResult? Function()? notConnection,
     TResult? Function()? noSuchFileOrDirectory,
     TResult? Function()? unexpectedResponseFormat,
+    TResult? Function()? unexpectedError,
   }) {
     return pedidoVentaDeleteFailure?.call(errorMessage);
   }
@@ -1922,6 +1978,7 @@ class _$PedidoVentaDeleteFailureImpl implements PedidoVentaDeleteFailure {
     TResult Function()? notConnection,
     TResult Function()? noSuchFileOrDirectory,
     TResult Function()? unexpectedResponseFormat,
+    TResult Function()? unexpectedError,
     required TResult orElse(),
   }) {
     if (pedidoVentaDeleteFailure != null) {
@@ -1951,6 +2008,7 @@ class _$PedidoVentaDeleteFailureImpl implements PedidoVentaDeleteFailure {
     required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
     required TResult Function(UnexpectedResponseFormat value)
         unexpectedResponseFormat,
+    required TResult Function(UnexpectedError value) unexpectedError,
   }) {
     return pedidoVentaDeleteFailure(this);
   }
@@ -1971,6 +2029,7 @@ class _$PedidoVentaDeleteFailureImpl implements PedidoVentaDeleteFailure {
     TResult? Function(NotConnectionFailure value)? notConnection,
     TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
     TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
+    TResult? Function(UnexpectedError value)? unexpectedError,
   }) {
     return pedidoVentaDeleteFailure?.call(this);
   }
@@ -1991,6 +2050,7 @@ class _$PedidoVentaDeleteFailureImpl implements PedidoVentaDeleteFailure {
     TResult Function(NotConnectionFailure value)? notConnection,
     TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
     TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
+    TResult Function(UnexpectedError value)? unexpectedError,
     required TResult orElse(),
   }) {
     if (pedidoVentaDeleteFailure != null) {
@@ -2098,6 +2158,7 @@ class _$InsertDataFailureImpl implements InsertDataFailure {
     required TResult Function() notConnection,
     required TResult Function() noSuchFileOrDirectory,
     required TResult Function() unexpectedResponseFormat,
+    required TResult Function() unexpectedError,
   }) {
     return insertDataFailure(errorMessage);
   }
@@ -2118,6 +2179,7 @@ class _$InsertDataFailureImpl implements InsertDataFailure {
     TResult? Function()? notConnection,
     TResult? Function()? noSuchFileOrDirectory,
     TResult? Function()? unexpectedResponseFormat,
+    TResult? Function()? unexpectedError,
   }) {
     return insertDataFailure?.call(errorMessage);
   }
@@ -2138,6 +2200,7 @@ class _$InsertDataFailureImpl implements InsertDataFailure {
     TResult Function()? notConnection,
     TResult Function()? noSuchFileOrDirectory,
     TResult Function()? unexpectedResponseFormat,
+    TResult Function()? unexpectedError,
     required TResult orElse(),
   }) {
     if (insertDataFailure != null) {
@@ -2167,6 +2230,7 @@ class _$InsertDataFailureImpl implements InsertDataFailure {
     required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
     required TResult Function(UnexpectedResponseFormat value)
         unexpectedResponseFormat,
+    required TResult Function(UnexpectedError value) unexpectedError,
   }) {
     return insertDataFailure(this);
   }
@@ -2187,6 +2251,7 @@ class _$InsertDataFailureImpl implements InsertDataFailure {
     TResult? Function(NotConnectionFailure value)? notConnection,
     TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
     TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
+    TResult? Function(UnexpectedError value)? unexpectedError,
   }) {
     return insertDataFailure?.call(this);
   }
@@ -2207,6 +2272,7 @@ class _$InsertDataFailureImpl implements InsertDataFailure {
     TResult Function(NotConnectionFailure value)? notConnection,
     TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
     TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
+    TResult Function(UnexpectedError value)? unexpectedError,
     required TResult orElse(),
   }) {
     if (insertDataFailure != null) {
@@ -2286,6 +2352,7 @@ class _$NotConnectionFailureImpl implements NotConnectionFailure {
     required TResult Function() notConnection,
     required TResult Function() noSuchFileOrDirectory,
     required TResult Function() unexpectedResponseFormat,
+    required TResult Function() unexpectedError,
   }) {
     return notConnection();
   }
@@ -2306,6 +2373,7 @@ class _$NotConnectionFailureImpl implements NotConnectionFailure {
     TResult? Function()? notConnection,
     TResult? Function()? noSuchFileOrDirectory,
     TResult? Function()? unexpectedResponseFormat,
+    TResult? Function()? unexpectedError,
   }) {
     return notConnection?.call();
   }
@@ -2326,6 +2394,7 @@ class _$NotConnectionFailureImpl implements NotConnectionFailure {
     TResult Function()? notConnection,
     TResult Function()? noSuchFileOrDirectory,
     TResult Function()? unexpectedResponseFormat,
+    TResult Function()? unexpectedError,
     required TResult orElse(),
   }) {
     if (notConnection != null) {
@@ -2355,6 +2424,7 @@ class _$NotConnectionFailureImpl implements NotConnectionFailure {
     required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
     required TResult Function(UnexpectedResponseFormat value)
         unexpectedResponseFormat,
+    required TResult Function(UnexpectedError value) unexpectedError,
   }) {
     return notConnection(this);
   }
@@ -2375,6 +2445,7 @@ class _$NotConnectionFailureImpl implements NotConnectionFailure {
     TResult? Function(NotConnectionFailure value)? notConnection,
     TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
     TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
+    TResult? Function(UnexpectedError value)? unexpectedError,
   }) {
     return notConnection?.call(this);
   }
@@ -2395,6 +2466,7 @@ class _$NotConnectionFailureImpl implements NotConnectionFailure {
     TResult Function(NotConnectionFailure value)? notConnection,
     TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
     TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
+    TResult Function(UnexpectedError value)? unexpectedError,
     required TResult orElse(),
   }) {
     if (notConnection != null) {
@@ -2465,6 +2537,7 @@ class _$ArchivoNoEncontradoImpl implements ArchivoNoEncontrado {
     required TResult Function() notConnection,
     required TResult Function() noSuchFileOrDirectory,
     required TResult Function() unexpectedResponseFormat,
+    required TResult Function() unexpectedError,
   }) {
     return noSuchFileOrDirectory();
   }
@@ -2485,6 +2558,7 @@ class _$ArchivoNoEncontradoImpl implements ArchivoNoEncontrado {
     TResult? Function()? notConnection,
     TResult? Function()? noSuchFileOrDirectory,
     TResult? Function()? unexpectedResponseFormat,
+    TResult? Function()? unexpectedError,
   }) {
     return noSuchFileOrDirectory?.call();
   }
@@ -2505,6 +2579,7 @@ class _$ArchivoNoEncontradoImpl implements ArchivoNoEncontrado {
     TResult Function()? notConnection,
     TResult Function()? noSuchFileOrDirectory,
     TResult Function()? unexpectedResponseFormat,
+    TResult Function()? unexpectedError,
     required TResult orElse(),
   }) {
     if (noSuchFileOrDirectory != null) {
@@ -2534,6 +2609,7 @@ class _$ArchivoNoEncontradoImpl implements ArchivoNoEncontrado {
     required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
     required TResult Function(UnexpectedResponseFormat value)
         unexpectedResponseFormat,
+    required TResult Function(UnexpectedError value) unexpectedError,
   }) {
     return noSuchFileOrDirectory(this);
   }
@@ -2554,6 +2630,7 @@ class _$ArchivoNoEncontradoImpl implements ArchivoNoEncontrado {
     TResult? Function(NotConnectionFailure value)? notConnection,
     TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
     TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
+    TResult? Function(UnexpectedError value)? unexpectedError,
   }) {
     return noSuchFileOrDirectory?.call(this);
   }
@@ -2574,6 +2651,7 @@ class _$ArchivoNoEncontradoImpl implements ArchivoNoEncontrado {
     TResult Function(NotConnectionFailure value)? notConnection,
     TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
     TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
+    TResult Function(UnexpectedError value)? unexpectedError,
     required TResult orElse(),
   }) {
     if (noSuchFileOrDirectory != null) {
@@ -2646,6 +2724,7 @@ class _$UnexpectedResponseFormatImpl implements UnexpectedResponseFormat {
     required TResult Function() notConnection,
     required TResult Function() noSuchFileOrDirectory,
     required TResult Function() unexpectedResponseFormat,
+    required TResult Function() unexpectedError,
   }) {
     return unexpectedResponseFormat();
   }
@@ -2666,6 +2745,7 @@ class _$UnexpectedResponseFormatImpl implements UnexpectedResponseFormat {
     TResult? Function()? notConnection,
     TResult? Function()? noSuchFileOrDirectory,
     TResult? Function()? unexpectedResponseFormat,
+    TResult? Function()? unexpectedError,
   }) {
     return unexpectedResponseFormat?.call();
   }
@@ -2686,6 +2766,7 @@ class _$UnexpectedResponseFormatImpl implements UnexpectedResponseFormat {
     TResult Function()? notConnection,
     TResult Function()? noSuchFileOrDirectory,
     TResult Function()? unexpectedResponseFormat,
+    TResult Function()? unexpectedError,
     required TResult orElse(),
   }) {
     if (unexpectedResponseFormat != null) {
@@ -2715,6 +2796,7 @@ class _$UnexpectedResponseFormatImpl implements UnexpectedResponseFormat {
     required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
     required TResult Function(UnexpectedResponseFormat value)
         unexpectedResponseFormat,
+    required TResult Function(UnexpectedError value) unexpectedError,
   }) {
     return unexpectedResponseFormat(this);
   }
@@ -2735,6 +2817,7 @@ class _$UnexpectedResponseFormatImpl implements UnexpectedResponseFormat {
     TResult? Function(NotConnectionFailure value)? notConnection,
     TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
     TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
+    TResult? Function(UnexpectedError value)? unexpectedError,
   }) {
     return unexpectedResponseFormat?.call(this);
   }
@@ -2755,6 +2838,7 @@ class _$UnexpectedResponseFormatImpl implements UnexpectedResponseFormat {
     TResult Function(NotConnectionFailure value)? notConnection,
     TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
     TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
+    TResult Function(UnexpectedError value)? unexpectedError,
     required TResult orElse(),
   }) {
     if (unexpectedResponseFormat != null) {
@@ -2766,4 +2850,188 @@ class _$UnexpectedResponseFormatImpl implements UnexpectedResponseFormat {
 
 abstract class UnexpectedResponseFormat implements AppException {
   const factory UnexpectedResponseFormat() = _$UnexpectedResponseFormatImpl;
+}
+
+/// @nodoc
+abstract class _$$UnexpectedErrorImplCopyWith<$Res> {
+  factory _$$UnexpectedErrorImplCopyWith(_$UnexpectedErrorImpl value,
+          $Res Function(_$UnexpectedErrorImpl) then) =
+      __$$UnexpectedErrorImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UnexpectedErrorImplCopyWithImpl<$Res>
+    extends _$AppExceptionCopyWithImpl<$Res, _$UnexpectedErrorImpl>
+    implements _$$UnexpectedErrorImplCopyWith<$Res> {
+  __$$UnexpectedErrorImplCopyWithImpl(
+      _$UnexpectedErrorImpl _value, $Res Function(_$UnexpectedErrorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$UnexpectedErrorImpl implements UnexpectedError {
+  const _$UnexpectedErrorImpl();
+
+  @override
+  String toString() {
+    return 'AppException.unexpectedError()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UnexpectedErrorImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int errorCode, String errorMessage)
+        restApiFailure,
+    required TResult Function(String errorMessage) authLocalFailure,
+    required TResult Function(String errorMessage) fetchLocalDataFailure,
+    required TResult Function(String errorMessage) createFileInCacheFailure,
+    required TResult Function(String tableToSync, String errorMessage)
+        syncFailure,
+    required TResult Function() clienteNotFound,
+    required TResult Function() articuloNotFound,
+    required TResult Function() pedidoVentaNotFound,
+    required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
+    required TResult Function(String errorMessage) insertDataFailure,
+    required TResult Function() notConnection,
+    required TResult Function() noSuchFileOrDirectory,
+    required TResult Function() unexpectedResponseFormat,
+    required TResult Function() unexpectedError,
+  }) {
+    return unexpectedError();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult? Function(String errorMessage)? authLocalFailure,
+    TResult? Function(String errorMessage)? fetchLocalDataFailure,
+    TResult? Function(String errorMessage)? createFileInCacheFailure,
+    TResult? Function(String tableToSync, String errorMessage)? syncFailure,
+    TResult? Function()? clienteNotFound,
+    TResult? Function()? articuloNotFound,
+    TResult? Function()? pedidoVentaNotFound,
+    TResult? Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult? Function(String errorMessage)? insertDataFailure,
+    TResult? Function()? notConnection,
+    TResult? Function()? noSuchFileOrDirectory,
+    TResult? Function()? unexpectedResponseFormat,
+    TResult? Function()? unexpectedError,
+  }) {
+    return unexpectedError?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult Function(String errorMessage)? authLocalFailure,
+    TResult Function(String errorMessage)? fetchLocalDataFailure,
+    TResult Function(String errorMessage)? createFileInCacheFailure,
+    TResult Function(String tableToSync, String errorMessage)? syncFailure,
+    TResult Function()? clienteNotFound,
+    TResult Function()? articuloNotFound,
+    TResult Function()? pedidoVentaNotFound,
+    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult Function(String errorMessage)? insertDataFailure,
+    TResult Function()? notConnection,
+    TResult Function()? noSuchFileOrDirectory,
+    TResult Function()? unexpectedResponseFormat,
+    TResult Function()? unexpectedError,
+    required TResult orElse(),
+  }) {
+    if (unexpectedError != null) {
+      return unexpectedError();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(RestApiFailure value) restApiFailure,
+    required TResult Function(AuthLocalFailure value) authLocalFailure,
+    required TResult Function(FetchLocalDataFailure value)
+        fetchLocalDataFailure,
+    required TResult Function(CreateFileInCahceFailure value)
+        createFileInCacheFailure,
+    required TResult Function(SyncFailure value) syncFailure,
+    required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
+    required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
+    required TResult Function(PedidoVentaNotFoundFailure value)
+        pedidoVentaNotFound,
+    required TResult Function(PedidoVentaDeleteFailure value)
+        pedidoVentaDeleteFailure,
+    required TResult Function(InsertDataFailure value) insertDataFailure,
+    required TResult Function(NotConnectionFailure value) notConnection,
+    required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
+    required TResult Function(UnexpectedResponseFormat value)
+        unexpectedResponseFormat,
+    required TResult Function(UnexpectedError value) unexpectedError,
+  }) {
+    return unexpectedError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(RestApiFailure value)? restApiFailure,
+    TResult? Function(AuthLocalFailure value)? authLocalFailure,
+    TResult? Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult? Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
+    TResult? Function(SyncFailure value)? syncFailure,
+    TResult? Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult? Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult? Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult? Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult? Function(InsertDataFailure value)? insertDataFailure,
+    TResult? Function(NotConnectionFailure value)? notConnection,
+    TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
+    TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
+    TResult? Function(UnexpectedError value)? unexpectedError,
+  }) {
+    return unexpectedError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(RestApiFailure value)? restApiFailure,
+    TResult Function(AuthLocalFailure value)? authLocalFailure,
+    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
+    TResult Function(SyncFailure value)? syncFailure,
+    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult Function(InsertDataFailure value)? insertDataFailure,
+    TResult Function(NotConnectionFailure value)? notConnection,
+    TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
+    TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
+    TResult Function(UnexpectedError value)? unexpectedError,
+    required TResult orElse(),
+  }) {
+    if (unexpectedError != null) {
+      return unexpectedError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UnexpectedError implements AppException {
+  const factory UnexpectedError() = _$UnexpectedErrorImpl;
 }

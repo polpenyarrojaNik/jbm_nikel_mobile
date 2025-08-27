@@ -5,31 +5,52 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_extra_fields/form_builder_extra_fields.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:gap/gap.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:riverpod_mutations_annotation/riverpod_mutations_annotation.dart';
+import 'package:riverpod_mutations/riverpod_mutations.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../features/cliente/domain/cliente.dart';
 import '../../../features/cliente/domain/cliente_imp.dart';
 import '../../../features/cliente/infrastructure/cliente_repository.dart';
 import '../../domain/sector.dart';
+import '../../exceptions/app_exception.dart';
 import 'app_form_builder_searchable_dropdown.dart';
 import 'error_message_widget.dart';
 
 part 'cliente_sector_page.g.dart';
 
 @riverpod
-@riverpod
 class ClienteSectorPageController extends _$ClienteSectorPageController {
   @override
-  Future<List<Sector>> build() async {
+  Future<List<Sector>> build() {
     return ref.read(clienteRepositoryProvider).getSectoresList();
   }
 
-  @mutation
-  Future<ClienteImp> updateClienteSector(ClienteImp clienteImp) async {
-    return ref.read(clienteRepositoryProvider).upsertClienteImp(clienteImp);
+  Future<Either<AppException, Unit>> updateClienteSector(
+    ClienteImp clienteImp,
+  ) async {
+    final result = await ref
+        .read(clienteRepositoryProvider)
+        .upsertClienteImp(clienteImp);
+
+    ref.invalidateSelf();
+
+    return result;
+  }
+}
+
+@riverpod
+class UpsertClienteImp extends _$UpsertClienteImp {
+  @override
+  MutationState<Either<AppException, Unit>, ClienteImp> build() {
+    return MutationState.create(
+      (newState) => state = newState,
+      (newClienteImp) async => ref
+          .read(clienteSectorPageControllerProvider.notifier)
+          .updateClienteSector(newClienteImp),
+    );
   }
 }
 
@@ -42,20 +63,18 @@ class ClienteSectorPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen(clienteSectorPageControllerProvider.updateClienteSector, (
-      _,
-      state,
-    ) {
-      if (state is UpdateClienteSectorMutationSuccess) {
-        context.maybePop();
-      } else if (state is UpdateClienteSectorMutationFailure) {
-        context.showErrorBar(content: ErrorMessageWidget(state.toString()));
-      }
+    ref.listen(upsertClienteImpProvider, (_, state) {
+      state.whenOrNull(
+        data: (data) {
+          context.maybePop();
+        },
+        error: (error, _) {
+          context.showErrorBar(content: ErrorMessageWidget(error.toString()));
+        },
+      );
     });
 
-    final stateUpdateClienteSector = ref.watch(
-      clienteSectorPageControllerProvider.updateClienteSector,
-    );
+    final stateUpdateClienteSector = ref.watch(upsertClienteImpProvider);
 
     final state = ref.watch(clienteSectorPageControllerProvider);
 
@@ -72,8 +91,7 @@ class ClienteSectorPage extends ConsumerWidget {
           child: state.when(
             data:
                 (sectoresList) =>
-                    (stateUpdateClienteSector
-                            is! UpdateClienteSectorMutationLoading)
+                    (!stateUpdateClienteSector.isLoading)
                         ? Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -115,8 +133,7 @@ class ClienteSectorPage extends ConsumerWidget {
                             ),
                             const Gap(16),
                             TextButton(
-                              onPressed:
-                                  () => setNewSector(stateUpdateClienteSector),
+                              onPressed: () => setNewSector(ref),
                               style: ButtonStyle(
                                 backgroundColor: WidgetStateProperty.all(
                                   Theme.of(context).colorScheme.primary,
@@ -169,12 +186,11 @@ class ClienteSectorPage extends ConsumerWidget {
     );
   }
 
-  void setNewSector(UpdateClienteSectorMutation stateUpdateClienteSector) {
+  void setNewSector(WidgetRef ref) {
     if (_formKey.currentState!.saveAndValidate()) {
       final sector = _formKey.currentState!.value['sector'] as Sector;
-      stateUpdateClienteSector(
-        ClienteImp(clienteId: cliente.id, sector: sector),
-      );
+      final stateClienteSector = ref.read(upsertClienteImpProvider);
+      stateClienteSector(ClienteImp(clienteId: cliente.id, sector: sector));
     }
   }
 }

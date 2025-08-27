@@ -45,6 +45,8 @@ class AppException with _$AppException {
 
   const factory AppException.unexpectedResponseFormat() =
       UnexpectedResponseFormat;
+
+  const factory AppException.unexpectedError() = UnexpectedError;
 }
 
 class AppExceptionData {
@@ -118,6 +120,8 @@ extension AppExceptionDetalles on AppException {
             'unexpected-response-format',
             'Unexpected response format.',
           ),
+      unexpectedError:
+          () => AppExceptionData('unexpected-error', 'Unexpected error.'),
     );
   }
 }
