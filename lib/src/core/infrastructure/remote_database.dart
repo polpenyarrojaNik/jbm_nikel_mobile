@@ -79,16 +79,19 @@ final appRemoteDatabaseProvider = Provider<RemoteAppDatabase>((ref) {
   }());
   final database = RemoteAppDatabase.connect(connection);
 
-  ref.onDispose(() async {
-    await DriftIsolate.fromConnectPort(
-      isolateRemoteDatabaseConnectPort!,
-    ).shutdownAll();
-    isolateRemoteDatabaseConnectPort = null;
-    await database.close();
-  });
+  ref.onDispose(() => onDisposeDatabase(database));
   return database;
 });
-const remoteDatabaseName = 'jbm.sqlite';
+
+void onDisposeDatabase(RemoteAppDatabase database) async {
+  await DriftIsolate.fromConnectPort(
+    isolateRemoteDatabaseConnectPort!,
+  ).shutdownAll();
+  isolateRemoteDatabaseConnectPort = null;
+  await database.close();
+}
+
+const kRemoteDatabaseName = 'jbm.sqlite';
 
 @DriftDatabase(
   tables: [
@@ -154,7 +157,7 @@ class RemoteAppDatabase extends _$RemoteAppDatabase {
 
 Future<DriftIsolate> _createDriftIsolate() async {
   final dir = await getApplicationDocumentsDirectory();
-  final path = p.join(dir.path, remoteDatabaseName);
+  final path = p.join(dir.path, kRemoteDatabaseName);
   final receivePort = ReceivePort();
 
   await Isolate.spawn(

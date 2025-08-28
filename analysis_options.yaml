@@ -35,26 +35,34 @@ dart_code_metrics:
     number-of-parameters: 4
     maximum-nesting-level: 5
   exclude:
+    all:
+      - "/localization/"
+    unused-code:
+      - "/**"
     metrics:
       - test/**
+  extends:
+    - recommended
   rules:
     - avoid-passing-async-when-sync-expected
     - avoid-redundant-async
-    - avoid-unnecessary-type-assertions
     - avoid-unnecessary-type-casts
-    - avoid-unrelated-type-assertions
     - avoid-unused-parameters
     - avoid-nested-conditional-expressions
     - no-boolean-literal-compare
-    - prefer-trailing-comma
-    - prefer-conditional-expressions
-    - no-equal-then-else
-    - prefer-moving-to-variable
-    - avoid-collapsible-if
     - avoid-redundant-else
     - avoid-incomplete-copy-with
     - avoid-self-compare
     - avoid-self-assignment
     - avoid-unnecessary-nullable-return-type
-    - avoid-unrelated-type-casts
-    - prefer-declaring-const-constructor
+    - prefer-match-file-name: false
+    - prefer-single-widget-per-file: false
+    - unnecessary-trailing-comma: false
+    - avoid-passing-self-as-argument: false
+    - avoid-shadowing: false
+    - prefer-declaring-const-constructor: false
+    - avoid-throw-objects-without-tostring: false
+    - avoid-dynamic: false
+    - avoid-unsafe-collection-methods: false
+    - prefer-trailing-comma: false
+    - prefer-correct-callback-field-name: false

@@ -5,7 +5,7 @@ import '../../../core/domain/pais.dart';
 part 'cliente_direccion_imp.freezed.dart';
 
 @freezed
-class ClienteDireccionImp with _$ClienteDireccionImp {
+abstract class ClienteDireccionImp with _$ClienteDireccionImp {
   const ClienteDireccionImp._();
   const factory ClienteDireccionImp({
     required String id,

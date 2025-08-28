@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'cliente_contacto_imp.freezed.dart';
 
 @freezed
-class ClienteContactoImp with _$ClienteContactoImp {
+abstract class ClienteContactoImp with _$ClienteContactoImp {
   const ClienteContactoImp._();
   const factory ClienteContactoImp({
     required String id,

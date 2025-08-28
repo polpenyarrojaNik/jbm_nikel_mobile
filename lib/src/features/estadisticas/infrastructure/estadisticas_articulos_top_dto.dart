@@ -9,7 +9,7 @@ part 'estadisticas_articulos_top_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class EstadisitcasArticulosTopDTO
+abstract class EstadisitcasArticulosTopDTO
     with _$EstadisitcasArticulosTopDTO
     implements Insertable<EstadisitcasArticulosTopDTO> {
   const EstadisitcasArticulosTopDTO._();

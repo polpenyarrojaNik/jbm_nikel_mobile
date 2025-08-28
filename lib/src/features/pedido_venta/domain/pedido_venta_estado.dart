@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'pedido_venta_estado.freezed.dart';
 
 @freezed
-class PedidoVentaEstado with _$PedidoVentaEstado {
+abstract class PedidoVentaEstado with _$PedidoVentaEstado {
   const PedidoVentaEstado._();
   const factory PedidoVentaEstado({
     required int id,

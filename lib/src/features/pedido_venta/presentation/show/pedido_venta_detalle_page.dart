@@ -2,26 +2,26 @@ import 'package:auto_route/auto_route.dart';
 import 'package:better_open_file/better_open_file.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../core/presentation/common_widgets/async_value_widget.dart';
-import '../../../../core/presentation/common_widgets/chip_container.dart';
-import '../../../../core/presentation/common_widgets/column_field_text_detail.dart';
-import '../../../../core/presentation/common_widgets/mobile_custom_separatos.dart';
-import '../index/pedido_search_controller.dart';
-import 'pedido_venta_linea_tile.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
+import '../../../../core/presentation/common_widgets/async_value_widget.dart';
+import '../../../../core/presentation/common_widgets/chip_container.dart';
+import '../../../../core/presentation/common_widgets/column_field_text_detail.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../../core/presentation/common_widgets/mobile_custom_separatos.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/common_widgets/row_field_text_detail.dart';
-import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/presentation/toasts.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../domain/pedido_local_param.dart';
 import '../../domain/pedido_venta.dart';
 import '../../infrastructure/pedido_venta_repository.dart';
+import '../index/pedido_search_controller.dart';
 import 'pedido_venta_adjunto_controller.dart';
+import 'pedido_venta_linea_tile.dart';
 
 @RoutePage()
 class PedidoVentaDetallePage extends ConsumerWidget {
@@ -109,45 +109,42 @@ class PedidoVentaDetallePage extends ConsumerWidget {
                               ),
                             ],
               );
-            } else {
-              if (pedidoVenta.isEditable) {
-                return [
-                  IconButton(
-                    icon: const Icon(Icons.edit),
-                    onPressed:
-                        () => context.router.push(
-                          PedidoVentaEditRoute(
-                            pedidoAppId: pedidoVenta.pedidoVentaAppId,
-                            empresaId: pedidoVenta.empresaId,
-                            isLocal: true,
-                          ),
-                        ),
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.delete),
-                    onPressed: () {
-                      ref.read(
-                        deletePedidoVentaProvider(
-                          pedidoLocalParam.pedidoAppId!,
-                        ),
-                      );
-                      ref.invalidate(
-                        pedidoVentaIndexScreenPaginatedControllerProvider,
-                      );
-                      ref.invalidate(pedidoVentaIndexScreenControllerProvider);
-                      context.router.maybePop();
-                    },
-                  ),
-                ];
-              }
-              return null;
             }
+            if (pedidoVenta.isEditable) {
+              return [
+                IconButton(
+                  icon: const Icon(Icons.edit),
+                  onPressed:
+                      () => context.router.push(
+                        PedidoVentaEditRoute(
+                          pedidoAppId: pedidoVenta.pedidoVentaAppId,
+                          empresaId: pedidoVenta.empresaId,
+                          isLocal: true,
+                        ),
+                      ),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.delete),
+                  onPressed: () {
+                    ref.read(
+                      deletePedidoVentaProvider(pedidoLocalParam.pedidoAppId!),
+                    );
+                    ref.invalidate(
+                      pedidoVentaIndexScreenPaginatedControllerProvider,
+                    );
+                    ref.invalidate(pedidoVentaIndexScreenControllerProvider);
+                    context.router.maybePop();
+                  },
+                ),
+              ];
+            }
+            return null;
           },
         ),
       ),
       body: AsyncValueWidget<PedidoVenta>(
         value: state,
-        data:
+        onData:
             (pedidoVenta) => SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -162,9 +159,9 @@ class PedidoVentaDetallePage extends ConsumerWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         ClienteInfoContainer(pedidoVenta: pedidoVenta),
-                        gapH12,
+                        const Gap(12),
                         PedidoVentaInfoContainer(pedidoVenta: pedidoVenta),
-                        if (!pedidoVenta.isLocal) gapH12,
+                        if (!pedidoVenta.isLocal) const Gap(12),
                         if (!pedidoVenta.isLocal)
                           AlbaranesContainer(
                             pedidoVentaId: pedidoVenta.pedidoVentaId!,
@@ -217,14 +214,13 @@ class ClienteInfoContainer extends StatelessWidget {
                         pedidoVenta.tratada,
                       )!,
               color: pedidoVentaEstadoColor(
-                enviada: pedidoVenta.enviada,
                 pedidoVentaEstadoId: pedidoVenta.pedidoVentaEstado?.id,
                 opacidad: 0.25,
               ),
             ),
           ],
         ),
-        gapH4,
+        const Gap(4),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -233,7 +229,7 @@ class ClienteInfoContainer extends StatelessWidget {
                 '#${pedidoVenta.clienteId} ${pedidoVenta.nombreCliente}',
               ),
             ),
-            gapW12,
+            const Gap(12),
             Text(
               dateFormatter(
                 pedidoVenta.pedidoVentaDate.toLocal().toIso8601String(),
@@ -294,26 +290,26 @@ class PedidoVentaInfoContainer extends StatelessWidget {
         RowFieldTextDetalle(
           fieldTitleValue:
               S.of(context).pedido_show_pedidoVentaDetalle_totalLineas,
-          value: pedidoVenta.totalLineas.toString(),
+          value: pedidoVenta.totalLineas?.toString(),
         ),
         RowFieldTextDetalle(
           fieldTitleValue:
               S.of(context).pedido_show_pedidoVentaDetalle_importePortes,
-          value: pedidoVenta.importePortes.toString(),
+          value: pedidoVenta.importePortes?.toString(),
         ),
         RowFieldTextDetalle(
           fieldTitleValue:
               S.of(context).pedido_show_pedidoVentaDetalle_baseImponible,
-          value: pedidoVenta.baseImponible.toString(),
+          value: pedidoVenta.baseImponible?.toString(),
         ),
         RowFieldTextDetalle(
           fieldTitleValue:
               '${S.of(context).pedido_show_pedidoVentaDetalle_importeIva} (${pedidoVenta.iva}%)',
-          value: pedidoVenta.importeIva.toString(),
+          value: pedidoVenta.importeIva?.toString(),
         ),
         RowFieldTextDetalle(
           fieldTitleValue: S.of(context).pedido_show_pedidoVentaDetalle_total,
-          value: pedidoVenta.total.toString(),
+          value: pedidoVenta.total?.toString(),
         ),
       ],
     );
@@ -341,7 +337,7 @@ class AlbaranesContainer extends ConsumerWidget {
                           color: Theme.of(context).textTheme.bodySmall!.color,
                         ),
                       ),
-                      gapH4,
+                      const Gap(4),
                       ListView.separated(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),

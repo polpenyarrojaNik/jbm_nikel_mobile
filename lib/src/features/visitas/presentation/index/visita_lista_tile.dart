@@ -1,10 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/routing/app_auto_router.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/chip_container.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
+import '../../../../core/routing/app_auto_router.dart';
 import '../../domain/visita.dart';
 import '../../domain/visita_id_param.dart';
 
@@ -31,7 +32,7 @@ class VisitaListaTile extends StatelessWidget {
                   )
                   : null,
       child: Container(
-        padding: listPadding,
+        padding: kPaddingList,
         color: Colors.transparent,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,7 +66,7 @@ class VisitaListaTile extends StatelessWidget {
               visita.getNombreMostrar(),
               style: Theme.of(context).textTheme.titleSmall,
             ),
-            gapH8,
+            const Gap(8),
             if (visita.resumen != null)
               Text(
                 visita.resumen!,

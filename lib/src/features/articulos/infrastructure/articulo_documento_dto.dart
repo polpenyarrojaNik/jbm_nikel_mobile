@@ -8,7 +8,7 @@ part 'articulo_documento_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class ArticuloDocumentoDTO with _$ArticuloDocumentoDTO {
+abstract class ArticuloDocumentoDTO with _$ArticuloDocumentoDTO {
   const ArticuloDocumentoDTO._();
   const factory ArticuloDocumentoDTO({
     @JsonKey(name: 'ARTICULO_ID') required String articuloId,

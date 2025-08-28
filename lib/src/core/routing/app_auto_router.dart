@@ -20,8 +20,8 @@ import '../../features/articulos/presentation/show/articulo_ventas_mes_page.dart
 import '../../features/articulos/presentation/show/ultimos_precios/articulo_ultimos_precios_page.dart';
 import '../../features/catalogos/presentation/catalogo_list_page.dart';
 import '../../features/catalogos/presentation/catalogo_pdf_viewer.dart';
-import '../../features/cliente/domain/cliente_imp_param.dart';
 import '../../features/cliente/domain/cliente.dart';
+import '../../features/cliente/domain/cliente_imp_param.dart';
 import '../../features/cliente/presentation/index/cliente_lista_page.dart';
 import '../../features/cliente/presentation/show/cliente_adjunto_page.dart';
 import '../../features/cliente/presentation/show/cliente_articulo_top_lista_page.dart';
@@ -60,10 +60,10 @@ import '../../features/usuario/application/usuario_notifier.dart';
 import '../../features/usuario/domain/usuario.dart';
 import '../../features/usuario/presentation/login/login_page.dart';
 import '../../features/visitas/domain/visita_id_param.dart';
-import '../../features/visitas/presentation/edit/visit_edit_page.dart';
-import '../../features/visitas/presentation/edit/visita_edit_select_contact_page.dart';
 import '../../features/visitas/presentation/edit/camera_page.dart';
 import '../../features/visitas/presentation/edit/image_form_page.dart';
+import '../../features/visitas/presentation/edit/visit_edit_page.dart';
+import '../../features/visitas/presentation/edit/visita_edit_select_contact_page.dart';
 import '../../features/visitas/presentation/index/visita_lista_page.dart';
 import '../../features/visitas/presentation/show/visita_detalle_page.dart';
 import '../application/log_service.dart';
@@ -270,7 +270,7 @@ class AuthGuard extends AutoRouteGuard {
     if (usuario != null || resolver.route.name == LoginRoute.name) {
       resolver.next(true);
     } else {
-      resolver.redirect(const LoginRoute());
+      resolver.redirectUntil(const LoginRoute());
     }
   }
 }
@@ -278,19 +278,19 @@ class AuthGuard extends AutoRouteGuard {
 class AutoRouteLogObserver extends AutoRouterObserver {
   @override
   void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) =>
-      log.d('Route: [pushed] ${route.settings.name}');
+      log.d('Route: [pushed] ${route.settings.name ?? ''}');
 
   @override
   void didReplace({Route<dynamic>? newRoute, Route<dynamic>? oldRoute}) =>
-      log.d('Route: [replaced] ${newRoute?.settings.name}');
+      log.d('Route: [replaced] ${newRoute?.settings.name ?? ''}');
 
   @override
   void didPop(Route<dynamic> route, Route<dynamic>? previousRoute) =>
-      log.d('Route: [popped] ${route.settings.name}');
+      log.d('Route: [popped] ${route.settings.name ?? ''}');
 
   @override
   void didRemove(Route<dynamic> route, Route<dynamic>? previousRoute) =>
-      log.d('Route: [removed] ${route.settings.name}');
+      log.d('Route: [removed] ${route.settings.name ?? ''}');
 
   @override
   void didInitTabRoute(TabPageRoute route, TabPageRoute? previousRoute) =>

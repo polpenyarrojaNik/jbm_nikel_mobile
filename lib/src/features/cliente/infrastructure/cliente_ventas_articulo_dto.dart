@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../core/helpers/extension.dart';
 
+import '../../../core/helpers/extension.dart';
 import '../domain/cliente_ventas_articulo.dart';
 
 part 'cliente_ventas_articulo_dto.freezed.dart';
@@ -9,7 +9,7 @@ part 'cliente_ventas_articulo_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class ClienteVentasArticuloDTO with _$ClienteVentasArticuloDTO {
+abstract class ClienteVentasArticuloDTO with _$ClienteVentasArticuloDTO {
   const ClienteVentasArticuloDTO._();
   const factory ClienteVentasArticuloDTO({
     @JsonKey(name: 'ARTICULO_ID') required String articuloId,

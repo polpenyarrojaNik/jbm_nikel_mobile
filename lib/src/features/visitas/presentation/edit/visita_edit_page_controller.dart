@@ -1,8 +1,8 @@
-import '../../domain/visita_motivos_no_venta.dart';
-import '../../domain/visita_sector.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../domain/visita_competidor.dart';
+import '../../domain/visita_motivos_no_venta.dart';
+import '../../domain/visita_sector.dart';
 import '../../infrastructure/visita_repository.dart';
 
 part 'visita_edit_page_controller.g.dart';
@@ -13,7 +13,7 @@ class VisitaSectorListFormDropdownController
   VisitaSectorListFormDropdownController();
 
   @override
-  Future<List<VisitaSector>> build() async {
+  Future<List<VisitaSector>> build() {
     return ref.read(visitaRepositoryProvider).getVisitaSectores();
   }
 }
@@ -24,7 +24,7 @@ class VisitaCompetidorListFormDropdownController
   VisitaCompetidorListFormDropdownController();
 
   @override
-  Future<List<VisitaCompetidor>> build() async {
+  Future<List<VisitaCompetidor>> build() {
     return ref.read(visitaRepositoryProvider).getVisitaCompetidores();
   }
 }
@@ -35,7 +35,7 @@ class VisitaMotivosNoVentaListFormDropdownController
   VisitaMotivosNoVentaListFormDropdownController();
 
   @override
-  Future<List<VisitaMotivoNoVenta>> build() async {
+  Future<List<VisitaMotivoNoVenta>> build() {
     return ref.read(visitaRepositoryProvider).getVisitaMotivosNoVenta();
   }
 }

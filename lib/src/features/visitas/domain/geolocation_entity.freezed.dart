@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,281 +9,326 @@ part of 'geolocation_entity.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 /// @nodoc
 mixin _$GeolocationEntity {
-  String get streetAddress1 => throw _privateConstructorUsedError;
-  String? get streetAddress2 => throw _privateConstructorUsedError;
-  String? get zipCode => throw _privateConstructorUsedError;
-  String? get city => throw _privateConstructorUsedError;
-  Provincia? get state => throw _privateConstructorUsedError;
-  Pais? get country => throw _privateConstructorUsedError;
 
-  /// Create a copy of GeolocationEntity
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $GeolocationEntityCopyWith<GeolocationEntity> get copyWith =>
-      throw _privateConstructorUsedError;
+ String get streetAddress1; String? get streetAddress2; String? get zipCode; String? get city; Provincia? get state; Pais? get country;
+/// Create a copy of GeolocationEntity
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$GeolocationEntityCopyWith<GeolocationEntity> get copyWith => _$GeolocationEntityCopyWithImpl<GeolocationEntity>(this as GeolocationEntity, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GeolocationEntity&&(identical(other.streetAddress1, streetAddress1) || other.streetAddress1 == streetAddress1)&&(identical(other.streetAddress2, streetAddress2) || other.streetAddress2 == streetAddress2)&&(identical(other.zipCode, zipCode) || other.zipCode == zipCode)&&(identical(other.city, city) || other.city == city)&&(identical(other.state, state) || other.state == state)&&(identical(other.country, country) || other.country == country));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,streetAddress1,streetAddress2,zipCode,city,state,country);
+
+@override
+String toString() {
+  return 'GeolocationEntity(streetAddress1: $streetAddress1, streetAddress2: $streetAddress2, zipCode: $zipCode, city: $city, state: $state, country: $country)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $GeolocationEntityCopyWith<$Res> {
-  factory $GeolocationEntityCopyWith(
-          GeolocationEntity value, $Res Function(GeolocationEntity) then) =
-      _$GeolocationEntityCopyWithImpl<$Res, GeolocationEntity>;
-  @useResult
-  $Res call(
-      {String streetAddress1,
-      String? streetAddress2,
-      String? zipCode,
-      String? city,
-      Provincia? state,
-      Pais? country});
+abstract mixin class $GeolocationEntityCopyWith<$Res>  {
+  factory $GeolocationEntityCopyWith(GeolocationEntity value, $Res Function(GeolocationEntity) _then) = _$GeolocationEntityCopyWithImpl;
+@useResult
+$Res call({
+ String streetAddress1, String? streetAddress2, String? zipCode, String? city, Provincia? state, Pais? country
+});
 
-  $ProvinciaCopyWith<$Res>? get state;
-  $PaisCopyWith<$Res>? get country;
+
+$ProvinciaCopyWith<$Res>? get state;$PaisCopyWith<$Res>? get country;
+
 }
-
 /// @nodoc
-class _$GeolocationEntityCopyWithImpl<$Res, $Val extends GeolocationEntity>
+class _$GeolocationEntityCopyWithImpl<$Res>
     implements $GeolocationEntityCopyWith<$Res> {
-  _$GeolocationEntityCopyWithImpl(this._value, this._then);
+  _$GeolocationEntityCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final GeolocationEntity _self;
+  final $Res Function(GeolocationEntity) _then;
 
-  /// Create a copy of GeolocationEntity
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? streetAddress1 = null,
-    Object? streetAddress2 = freezed,
-    Object? zipCode = freezed,
-    Object? city = freezed,
-    Object? state = freezed,
-    Object? country = freezed,
-  }) {
-    return _then(_value.copyWith(
-      streetAddress1: null == streetAddress1
-          ? _value.streetAddress1
-          : streetAddress1 // ignore: cast_nullable_to_non_nullable
-              as String,
-      streetAddress2: freezed == streetAddress2
-          ? _value.streetAddress2
-          : streetAddress2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      zipCode: freezed == zipCode
-          ? _value.zipCode
-          : zipCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      city: freezed == city
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
-              as String?,
-      state: freezed == state
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as Provincia?,
-      country: freezed == country
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
-              as Pais?,
-    ) as $Val);
+/// Create a copy of GeolocationEntity
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? streetAddress1 = null,Object? streetAddress2 = freezed,Object? zipCode = freezed,Object? city = freezed,Object? state = freezed,Object? country = freezed,}) {
+  return _then(_self.copyWith(
+streetAddress1: null == streetAddress1 ? _self.streetAddress1 : streetAddress1 // ignore: cast_nullable_to_non_nullable
+as String,streetAddress2: freezed == streetAddress2 ? _self.streetAddress2 : streetAddress2 // ignore: cast_nullable_to_non_nullable
+as String?,zipCode: freezed == zipCode ? _self.zipCode : zipCode // ignore: cast_nullable_to_non_nullable
+as String?,city: freezed == city ? _self.city : city // ignore: cast_nullable_to_non_nullable
+as String?,state: freezed == state ? _self.state : state // ignore: cast_nullable_to_non_nullable
+as Provincia?,country: freezed == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
+as Pais?,
+  ));
+}
+/// Create a copy of GeolocationEntity
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ProvinciaCopyWith<$Res>? get state {
+    if (_self.state == null) {
+    return null;
   }
 
-  /// Create a copy of GeolocationEntity
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ProvinciaCopyWith<$Res>? get state {
-    if (_value.state == null) {
-      return null;
-    }
-
-    return $ProvinciaCopyWith<$Res>(_value.state!, (value) {
-      return _then(_value.copyWith(state: value) as $Val);
-    });
+  return $ProvinciaCopyWith<$Res>(_self.state!, (value) {
+    return _then(_self.copyWith(state: value));
+  });
+}/// Create a copy of GeolocationEntity
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PaisCopyWith<$Res>? get country {
+    if (_self.country == null) {
+    return null;
   }
 
-  /// Create a copy of GeolocationEntity
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $PaisCopyWith<$Res>? get country {
-    if (_value.country == null) {
-      return null;
-    }
+  return $PaisCopyWith<$Res>(_self.country!, (value) {
+    return _then(_self.copyWith(country: value));
+  });
+}
+}
 
-    return $PaisCopyWith<$Res>(_value.country!, (value) {
-      return _then(_value.copyWith(country: value) as $Val);
-    });
-  }
+
+/// Adds pattern-matching-related methods to [GeolocationEntity].
+extension GeolocationEntityPatterns on GeolocationEntity {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _GeolocationEntity value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _GeolocationEntity() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _GeolocationEntity value)  $default,){
+final _that = this;
+switch (_that) {
+case _GeolocationEntity():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _GeolocationEntity value)?  $default,){
+final _that = this;
+switch (_that) {
+case _GeolocationEntity() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String streetAddress1,  String? streetAddress2,  String? zipCode,  String? city,  Provincia? state,  Pais? country)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _GeolocationEntity() when $default != null:
+return $default(_that.streetAddress1,_that.streetAddress2,_that.zipCode,_that.city,_that.state,_that.country);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String streetAddress1,  String? streetAddress2,  String? zipCode,  String? city,  Provincia? state,  Pais? country)  $default,) {final _that = this;
+switch (_that) {
+case _GeolocationEntity():
+return $default(_that.streetAddress1,_that.streetAddress2,_that.zipCode,_that.city,_that.state,_that.country);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String streetAddress1,  String? streetAddress2,  String? zipCode,  String? city,  Provincia? state,  Pais? country)?  $default,) {final _that = this;
+switch (_that) {
+case _GeolocationEntity() when $default != null:
+return $default(_that.streetAddress1,_that.streetAddress2,_that.zipCode,_that.city,_that.state,_that.country);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
-abstract class _$$GeolocationEntityImplCopyWith<$Res>
-    implements $GeolocationEntityCopyWith<$Res> {
-  factory _$$GeolocationEntityImplCopyWith(_$GeolocationEntityImpl value,
-          $Res Function(_$GeolocationEntityImpl) then) =
-      __$$GeolocationEntityImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String streetAddress1,
-      String? streetAddress2,
-      String? zipCode,
-      String? city,
-      Provincia? state,
-      Pais? country});
 
-  @override
-  $ProvinciaCopyWith<$Res>? get state;
-  @override
-  $PaisCopyWith<$Res>? get country;
+
+class _GeolocationEntity extends GeolocationEntity {
+   _GeolocationEntity({required this.streetAddress1, required this.streetAddress2, required this.zipCode, required this.city, required this.state, required this.country}): super._();
+  
+
+@override final  String streetAddress1;
+@override final  String? streetAddress2;
+@override final  String? zipCode;
+@override final  String? city;
+@override final  Provincia? state;
+@override final  Pais? country;
+
+/// Create a copy of GeolocationEntity
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$GeolocationEntityCopyWith<_GeolocationEntity> get copyWith => __$GeolocationEntityCopyWithImpl<_GeolocationEntity>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GeolocationEntity&&(identical(other.streetAddress1, streetAddress1) || other.streetAddress1 == streetAddress1)&&(identical(other.streetAddress2, streetAddress2) || other.streetAddress2 == streetAddress2)&&(identical(other.zipCode, zipCode) || other.zipCode == zipCode)&&(identical(other.city, city) || other.city == city)&&(identical(other.state, state) || other.state == state)&&(identical(other.country, country) || other.country == country));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,streetAddress1,streetAddress2,zipCode,city,state,country);
+
+@override
+String toString() {
+  return 'GeolocationEntity(streetAddress1: $streetAddress1, streetAddress2: $streetAddress2, zipCode: $zipCode, city: $city, state: $state, country: $country)';
+}
+
+
 }
 
 /// @nodoc
-class __$$GeolocationEntityImplCopyWithImpl<$Res>
-    extends _$GeolocationEntityCopyWithImpl<$Res, _$GeolocationEntityImpl>
-    implements _$$GeolocationEntityImplCopyWith<$Res> {
-  __$$GeolocationEntityImplCopyWithImpl(_$GeolocationEntityImpl _value,
-      $Res Function(_$GeolocationEntityImpl) _then)
-      : super(_value, _then);
+abstract mixin class _$GeolocationEntityCopyWith<$Res> implements $GeolocationEntityCopyWith<$Res> {
+  factory _$GeolocationEntityCopyWith(_GeolocationEntity value, $Res Function(_GeolocationEntity) _then) = __$GeolocationEntityCopyWithImpl;
+@override @useResult
+$Res call({
+ String streetAddress1, String? streetAddress2, String? zipCode, String? city, Provincia? state, Pais? country
+});
 
-  /// Create a copy of GeolocationEntity
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? streetAddress1 = null,
-    Object? streetAddress2 = freezed,
-    Object? zipCode = freezed,
-    Object? city = freezed,
-    Object? state = freezed,
-    Object? country = freezed,
-  }) {
-    return _then(_$GeolocationEntityImpl(
-      streetAddress1: null == streetAddress1
-          ? _value.streetAddress1
-          : streetAddress1 // ignore: cast_nullable_to_non_nullable
-              as String,
-      streetAddress2: freezed == streetAddress2
-          ? _value.streetAddress2
-          : streetAddress2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      zipCode: freezed == zipCode
-          ? _value.zipCode
-          : zipCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      city: freezed == city
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
-              as String?,
-      state: freezed == state
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as Provincia?,
-      country: freezed == country
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
-              as Pais?,
-    ));
-  }
+
+@override $ProvinciaCopyWith<$Res>? get state;@override $PaisCopyWith<$Res>? get country;
+
 }
-
 /// @nodoc
+class __$GeolocationEntityCopyWithImpl<$Res>
+    implements _$GeolocationEntityCopyWith<$Res> {
+  __$GeolocationEntityCopyWithImpl(this._self, this._then);
 
-class _$GeolocationEntityImpl extends _GeolocationEntity {
-  _$GeolocationEntityImpl(
-      {required this.streetAddress1,
-      required this.streetAddress2,
-      required this.zipCode,
-      required this.city,
-      required this.state,
-      required this.country})
-      : super._();
+  final _GeolocationEntity _self;
+  final $Res Function(_GeolocationEntity) _then;
 
-  @override
-  final String streetAddress1;
-  @override
-  final String? streetAddress2;
-  @override
-  final String? zipCode;
-  @override
-  final String? city;
-  @override
-  final Provincia? state;
-  @override
-  final Pais? country;
-
-  @override
-  String toString() {
-    return 'GeolocationEntity(streetAddress1: $streetAddress1, streetAddress2: $streetAddress2, zipCode: $zipCode, city: $city, state: $state, country: $country)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GeolocationEntityImpl &&
-            (identical(other.streetAddress1, streetAddress1) ||
-                other.streetAddress1 == streetAddress1) &&
-            (identical(other.streetAddress2, streetAddress2) ||
-                other.streetAddress2 == streetAddress2) &&
-            (identical(other.zipCode, zipCode) || other.zipCode == zipCode) &&
-            (identical(other.city, city) || other.city == city) &&
-            (identical(other.state, state) || other.state == state) &&
-            (identical(other.country, country) || other.country == country));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, streetAddress1, streetAddress2,
-      zipCode, city, state, country);
-
-  /// Create a copy of GeolocationEntity
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$GeolocationEntityImplCopyWith<_$GeolocationEntityImpl> get copyWith =>
-      __$$GeolocationEntityImplCopyWithImpl<_$GeolocationEntityImpl>(
-          this, _$identity);
+/// Create a copy of GeolocationEntity
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? streetAddress1 = null,Object? streetAddress2 = freezed,Object? zipCode = freezed,Object? city = freezed,Object? state = freezed,Object? country = freezed,}) {
+  return _then(_GeolocationEntity(
+streetAddress1: null == streetAddress1 ? _self.streetAddress1 : streetAddress1 // ignore: cast_nullable_to_non_nullable
+as String,streetAddress2: freezed == streetAddress2 ? _self.streetAddress2 : streetAddress2 // ignore: cast_nullable_to_non_nullable
+as String?,zipCode: freezed == zipCode ? _self.zipCode : zipCode // ignore: cast_nullable_to_non_nullable
+as String?,city: freezed == city ? _self.city : city // ignore: cast_nullable_to_non_nullable
+as String?,state: freezed == state ? _self.state : state // ignore: cast_nullable_to_non_nullable
+as Provincia?,country: freezed == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
+as Pais?,
+  ));
 }
 
-abstract class _GeolocationEntity extends GeolocationEntity {
-  factory _GeolocationEntity(
-      {required final String streetAddress1,
-      required final String? streetAddress2,
-      required final String? zipCode,
-      required final String? city,
-      required final Provincia? state,
-      required final Pais? country}) = _$GeolocationEntityImpl;
-  _GeolocationEntity._() : super._();
+/// Create a copy of GeolocationEntity
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ProvinciaCopyWith<$Res>? get state {
+    if (_self.state == null) {
+    return null;
+  }
 
-  @override
-  String get streetAddress1;
-  @override
-  String? get streetAddress2;
-  @override
-  String? get zipCode;
-  @override
-  String? get city;
-  @override
-  Provincia? get state;
-  @override
-  Pais? get country;
+  return $ProvinciaCopyWith<$Res>(_self.state!, (value) {
+    return _then(_self.copyWith(state: value));
+  });
+}/// Create a copy of GeolocationEntity
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PaisCopyWith<$Res>? get country {
+    if (_self.country == null) {
+    return null;
+  }
 
-  /// Create a copy of GeolocationEntity
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$GeolocationEntityImplCopyWith<_$GeolocationEntityImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  return $PaisCopyWith<$Res>(_self.country!, (value) {
+    return _then(_self.copyWith(country: value));
+  });
 }
+}
+
+// dart format on

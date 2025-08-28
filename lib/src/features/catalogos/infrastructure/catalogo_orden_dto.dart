@@ -1,5 +1,6 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../../core/infrastructure/local_database.dart';
 
 // ignore_for_file: invalid_annotation_target
@@ -8,7 +9,7 @@ part 'catalogo_orden_dto.freezed.dart';
 part 'catalogo_orden_dto.g.dart';
 
 @freezed
-class CatalogoOrdenDTO
+abstract class CatalogoOrdenDTO
     with _$CatalogoOrdenDTO
     implements Insertable<CatalogoOrdenDTO> {
   const CatalogoOrdenDTO._();

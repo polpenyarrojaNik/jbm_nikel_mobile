@@ -10,7 +10,7 @@ part 'metodo_cobro_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class MetodoDeCobroDTO
+abstract class MetodoDeCobroDTO
     with _$MetodoDeCobroDTO
     implements Insertable<MetodoDeCobroDTO> {
   const MetodoDeCobroDTO._();
@@ -57,7 +57,7 @@ class MetodoDeCobroDTO
       descripcionCN: descripcionCN,
       descripcionEL: descripcionEL,
       lastUpdate: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
+      deleted: (deleted == 'S'),
     );
   }
 

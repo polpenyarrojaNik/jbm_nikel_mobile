@@ -99,7 +99,7 @@ String formatProvinciaAndPais({String? province, Pais? pais}) {
   return provinceAndPais;
 }
 
-IconData? getIconoFromExtension(String path) {
+IconData getIconoFromExtension(String path) {
   final extension = path.split('.').last;
   if (extension == 'pdf') {
     return FontAwesomeIcons.filePdf;
@@ -123,9 +123,8 @@ IconData? getIconoFromExtension(String path) {
       extension == 'heic' ||
       extension == 'HEIC') {
     return FontAwesomeIcons.image;
-  } else {
-    return FontAwesomeIcons.file;
   }
+  return FontAwesomeIcons.file;
 }
 
 String getNombreArchivo(String path) {
@@ -234,7 +233,7 @@ String? getSummaryInLocalLanguage({required Articulo articulo}) {
   return null;
 }
 
-String? getPlazoCorboInLocalLanguage({required PlazoDeCobro plazoDeCobro}) {
+String getPlazoCorboInLocalLanguage({required PlazoDeCobro plazoDeCobro}) {
   final currentLocale = Intl.getCurrentLocale();
 
   if (currentLocale == 'es') {
@@ -300,9 +299,9 @@ String getEstadoCobroFactura({
 String getClienteEstadoPotencialInLocalLanguage({
   required ClienteEstadoPotencial? estadoPotencial,
 }) {
-  final currentLocale = Intl.getCurrentLocale();
-
   if (estadoPotencial != null) {
+    final currentLocale = Intl.getCurrentLocale();
+
     if (currentLocale == 'es') {
       return estadoPotencial.descripcionES;
     } else if (currentLocale == 'en' && estadoPotencial.descripcionEN != null) {
@@ -322,9 +321,9 @@ String getClienteEstadoPotencialInLocalLanguage({
 String? getClienteTipoPotencialInLocalLanguage({
   required ClienteTipoPotencial? tipoPotencial,
 }) {
-  final currentLocale = Intl.getCurrentLocale();
-
   if (tipoPotencial != null) {
+    final currentLocale = Intl.getCurrentLocale();
+
     if (currentLocale == 'es') {
       return tipoPotencial.descripcionES;
     } else if (currentLocale == 'en' && tipoPotencial.descripcionEN != null) {
@@ -350,9 +349,8 @@ Color? getColorEstadoVisitaLocal(
     return null;
   } else if (enviada) {
     return Theme.of(context).colorScheme.secondaryContainer;
-  } else {
-    return Theme.of(context).colorScheme.errorContainer;
   }
+  return Theme.of(context).colorScheme.errorContainer;
 }
 
 String? getEstadoVisitaLocal(BuildContext context, bool enviada, bool tratada) {
@@ -360,9 +358,8 @@ String? getEstadoVisitaLocal(BuildContext context, bool enviada, bool tratada) {
     return null;
   } else if (enviada) {
     return S.of(context).visita_enviada;
-  } else {
-    return S.of(context).visita_noEnviada;
   }
+  return S.of(context).visita_noEnviada;
 }
 
 String? getEstadoPedidoLocal(
@@ -377,9 +374,8 @@ String? getEstadoPedidoLocal(
     return S.of(context).pedido_enviado;
   } else if (borrador) {
     return S.of(context).pedido_borrador;
-  } else {
-    return S.of(context).pedido_noEnviado;
   }
+  return S.of(context).pedido_noEnviado;
 }
 
 TextStyle? getTextStyleFechaEntregaByEstado({
@@ -398,11 +394,7 @@ TextStyle? getTextStyleFechaEntregaByEstado({
   }
 }
 
-Color pedidoVentaEstadoColor({
-  int? pedidoVentaEstadoId,
-  required bool enviada,
-  double? opacidad,
-}) {
+Color pedidoVentaEstadoColor({int? pedidoVentaEstadoId, double? opacidad}) {
   switch (pedidoVentaEstadoId) {
     case 0: // Introducido
       return Colors.grey.withValues(alpha: opacidad ?? 1);
@@ -410,8 +402,8 @@ Color pedidoVentaEstadoColor({
       return Colors.lightGreen.withValues(alpha: opacidad ?? 1);
     case 2: //  Servido
       return Colors.green.withValues(alpha: opacidad ?? 1);
-    case 3: //Anulado
-      return Colors.red.withValues(alpha: opacidad ?? 1);
+    // case 3: //Anulado
+    //   return Colors.red.withValues(alpha: opacidad ?? 1);
     case 4: // Oferta
       return Colors.orange.withValues(alpha: opacidad ?? 1);
     case 90: //Abierto
@@ -473,19 +465,25 @@ FrecuenciaPedido? getFrecuenciaPedidoFromId(String? id) {
 String? getIdFromFrecuenciaPedido(FrecuenciaPedido? frecuenciaPedido) {
   if (frecuenciaPedido == null) return null;
 
-  return frecuenciaPedido == FrecuenciaPedido.mensual
-      ? 'M'
-      : frecuenciaPedido == FrecuenciaPedido.semanal
-      ? 'S'
-      : 'T';
+  switch (frecuenciaPedido) {
+    case FrecuenciaPedido.semanal:
+      return 'M';
+    case FrecuenciaPedido.mensual:
+      return 'S';
+    case FrecuenciaPedido.trimestral:
+      return 'T';
+  }
 }
 
 String getNameFromFrecuenciaPedido(FrecuenciaPedido frecuenciaPedido) {
-  return frecuenciaPedido == FrecuenciaPedido.mensual
-      ? S.current.mensual
-      : frecuenciaPedido == FrecuenciaPedido.semanal
-      ? S.current.semanal
-      : S.current.trimestral;
+  switch (frecuenciaPedido) {
+    case FrecuenciaPedido.semanal:
+      return S.current.mensual;
+    case FrecuenciaPedido.mensual:
+      return S.current.semanal;
+    case FrecuenciaPedido.trimestral:
+      return 'T';
+  }
 }
 
 InteresCliente? getInteresClienteFromId(String? id) {
@@ -504,19 +502,25 @@ InteresCliente? getInteresClienteFromId(String? id) {
 String? getIdFromInteresCliente(InteresCliente? interesCliente) {
   if (interesCliente == null) return null;
 
-  return interesCliente == InteresCliente.alto
-      ? 'A'
-      : interesCliente == InteresCliente.medio
-      ? 'M'
-      : 'B';
+  switch (interesCliente) {
+    case InteresCliente.alto:
+      return 'A';
+    case InteresCliente.medio:
+      return 'M';
+    case InteresCliente.bajo:
+      return 'B';
+  }
 }
 
 String getNameFromInteresCliente(InteresCliente interesCliente) {
-  return interesCliente == InteresCliente.alto
-      ? S.current.alto
-      : interesCliente == InteresCliente.medio
-      ? S.current.medio
-      : S.current.bajo;
+  switch (interesCliente) {
+    case InteresCliente.alto:
+      return S.current.alto;
+    case InteresCliente.medio:
+      return S.current.medio;
+    case InteresCliente.bajo:
+      return S.current.bajo;
+  }
 }
 
 Capacidad? getCapacidadFromId(String? id) {
@@ -535,17 +539,23 @@ Capacidad? getCapacidadFromId(String? id) {
 String? getIdFromCapacidad(Capacidad? capacidad) {
   if (capacidad == null) return null;
 
-  return capacidad == Capacidad.grande
-      ? 'G'
-      : capacidad == Capacidad.media
-      ? 'M'
-      : 'P';
+  switch (capacidad) {
+    case Capacidad.grande:
+      return 'G';
+    case Capacidad.media:
+      return 'M';
+    case Capacidad.pequena:
+      return 'P';
+  }
 }
 
 String getNameFromCapacidad(Capacidad capacidad) {
-  return capacidad == Capacidad.grande
-      ? S.current.grande
-      : capacidad == Capacidad.media
-      ? S.current.media
-      : S.current.pequena;
+  switch (capacidad) {
+    case Capacidad.grande:
+      return S.current.grande;
+    case Capacidad.media:
+      return S.current.media;
+    case Capacidad.pequena:
+      return S.current.pequena;
+  }
 }

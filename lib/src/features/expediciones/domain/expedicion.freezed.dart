@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,750 +9,422 @@ part of 'expedicion.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 /// @nodoc
 mixin _$Expedicion {
-  String? get empresaId => throw _privateConstructorUsedError;
-  String? get pedidoVentaId => throw _privateConstructorUsedError;
-  String? get usuarioId => throw _privateConstructorUsedError;
-  DateTime get pedidoVentaDate => throw _privateConstructorUsedError;
-  String? get clienteId => throw _privateConstructorUsedError;
-  String? get direccionId => throw _privateConstructorUsedError;
-  String get nombreCliente => throw _privateConstructorUsedError;
-  String? get codigoPostal => throw _privateConstructorUsedError;
-  String? get poblacion => throw _privateConstructorUsedError;
-  String? get provincia => throw _privateConstructorUsedError;
-  Pais? get pais => throw _privateConstructorUsedError;
-  Divisa get divisa => throw _privateConstructorUsedError;
-  Money? get baseImponible => throw _privateConstructorUsedError;
-  PedidoVentaEstado? get pedidoVentaEstado =>
-      throw _privateConstructorUsedError;
-  bool? get oferta => throw _privateConstructorUsedError;
-  String? get pedidoAppId => throw _privateConstructorUsedError;
-  int get numLineas => throw _privateConstructorUsedError;
-  TrackingEstado get trackingEstado => throw _privateConstructorUsedError;
-  String get albaranId => throw _privateConstructorUsedError;
-  String? get trackId => throw _privateConstructorUsedError;
-  String? get agencia => throw _privateConstructorUsedError;
-  DateTime get fechaAlbaran => throw _privateConstructorUsedError;
-  bool get enviada => throw _privateConstructorUsedError;
-  bool get tratada => throw _privateConstructorUsedError;
-  DateTime get lastUpdated => throw _privateConstructorUsedError;
-  bool get deleted => throw _privateConstructorUsedError;
 
-  /// Create a copy of Expedicion
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ExpedicionCopyWith<Expedicion> get copyWith =>
-      throw _privateConstructorUsedError;
+ String? get empresaId; String? get pedidoVentaId; String? get usuarioId; DateTime get pedidoVentaDate; String? get clienteId; String? get direccionId; String get nombreCliente; String? get codigoPostal; String? get poblacion; String? get provincia; Pais? get pais; Divisa get divisa; Money? get baseImponible; PedidoVentaEstado? get pedidoVentaEstado; bool? get oferta; String? get pedidoAppId; int get numLineas; TrackingEstado get trackingEstado; String get albaranId; String? get trackId; String? get agencia; DateTime get fechaAlbaran; bool get enviada; bool get tratada; DateTime get lastUpdated; bool get deleted;
+/// Create a copy of Expedicion
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ExpedicionCopyWith<Expedicion> get copyWith => _$ExpedicionCopyWithImpl<Expedicion>(this as Expedicion, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Expedicion&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.pedidoVentaId, pedidoVentaId) || other.pedidoVentaId == pedidoVentaId)&&(identical(other.usuarioId, usuarioId) || other.usuarioId == usuarioId)&&(identical(other.pedidoVentaDate, pedidoVentaDate) || other.pedidoVentaDate == pedidoVentaDate)&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.direccionId, direccionId) || other.direccionId == direccionId)&&(identical(other.nombreCliente, nombreCliente) || other.nombreCliente == nombreCliente)&&(identical(other.codigoPostal, codigoPostal) || other.codigoPostal == codigoPostal)&&(identical(other.poblacion, poblacion) || other.poblacion == poblacion)&&(identical(other.provincia, provincia) || other.provincia == provincia)&&(identical(other.pais, pais) || other.pais == pais)&&(identical(other.divisa, divisa) || other.divisa == divisa)&&(identical(other.baseImponible, baseImponible) || other.baseImponible == baseImponible)&&(identical(other.pedidoVentaEstado, pedidoVentaEstado) || other.pedidoVentaEstado == pedidoVentaEstado)&&(identical(other.oferta, oferta) || other.oferta == oferta)&&(identical(other.pedidoAppId, pedidoAppId) || other.pedidoAppId == pedidoAppId)&&(identical(other.numLineas, numLineas) || other.numLineas == numLineas)&&(identical(other.trackingEstado, trackingEstado) || other.trackingEstado == trackingEstado)&&(identical(other.albaranId, albaranId) || other.albaranId == albaranId)&&(identical(other.trackId, trackId) || other.trackId == trackId)&&(identical(other.agencia, agencia) || other.agencia == agencia)&&(identical(other.fechaAlbaran, fechaAlbaran) || other.fechaAlbaran == fechaAlbaran)&&(identical(other.enviada, enviada) || other.enviada == enviada)&&(identical(other.tratada, tratada) || other.tratada == tratada)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+}
+
+
+@override
+int get hashCode => Object.hashAll([runtimeType,empresaId,pedidoVentaId,usuarioId,pedidoVentaDate,clienteId,direccionId,nombreCliente,codigoPostal,poblacion,provincia,pais,divisa,baseImponible,pedidoVentaEstado,oferta,pedidoAppId,numLineas,trackingEstado,albaranId,trackId,agencia,fechaAlbaran,enviada,tratada,lastUpdated,deleted]);
+
+@override
+String toString() {
+  return 'Expedicion(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, usuarioId: $usuarioId, pedidoVentaDate: $pedidoVentaDate, clienteId: $clienteId, direccionId: $direccionId, nombreCliente: $nombreCliente, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, divisa: $divisa, baseImponible: $baseImponible, pedidoVentaEstado: $pedidoVentaEstado, oferta: $oferta, pedidoAppId: $pedidoAppId, numLineas: $numLineas, trackingEstado: $trackingEstado, albaranId: $albaranId, trackId: $trackId, agencia: $agencia, fechaAlbaran: $fechaAlbaran, enviada: $enviada, tratada: $tratada, lastUpdated: $lastUpdated, deleted: $deleted)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ExpedicionCopyWith<$Res> {
-  factory $ExpedicionCopyWith(
-          Expedicion value, $Res Function(Expedicion) then) =
-      _$ExpedicionCopyWithImpl<$Res, Expedicion>;
-  @useResult
-  $Res call(
-      {String? empresaId,
-      String? pedidoVentaId,
-      String? usuarioId,
-      DateTime pedidoVentaDate,
-      String? clienteId,
-      String? direccionId,
-      String nombreCliente,
-      String? codigoPostal,
-      String? poblacion,
-      String? provincia,
-      Pais? pais,
-      Divisa divisa,
-      Money? baseImponible,
-      PedidoVentaEstado? pedidoVentaEstado,
-      bool? oferta,
-      String? pedidoAppId,
-      int numLineas,
-      TrackingEstado trackingEstado,
-      String albaranId,
-      String? trackId,
-      String? agencia,
-      DateTime fechaAlbaran,
-      bool enviada,
-      bool tratada,
-      DateTime lastUpdated,
-      bool deleted});
+abstract mixin class $ExpedicionCopyWith<$Res>  {
+  factory $ExpedicionCopyWith(Expedicion value, $Res Function(Expedicion) _then) = _$ExpedicionCopyWithImpl;
+@useResult
+$Res call({
+ String? empresaId, String? pedidoVentaId, String? usuarioId, DateTime pedidoVentaDate, String? clienteId, String? direccionId, String nombreCliente, String? codigoPostal, String? poblacion, String? provincia, Pais? pais, Divisa divisa, Money? baseImponible, PedidoVentaEstado? pedidoVentaEstado, bool? oferta, String? pedidoAppId, int numLineas, TrackingEstado trackingEstado, String albaranId, String? trackId, String? agencia, DateTime fechaAlbaran, bool enviada, bool tratada, DateTime lastUpdated, bool deleted
+});
 
-  $PaisCopyWith<$Res>? get pais;
-  $DivisaCopyWith<$Res> get divisa;
-  $PedidoVentaEstadoCopyWith<$Res>? get pedidoVentaEstado;
-  $TrackingEstadoCopyWith<$Res> get trackingEstado;
+
+$PaisCopyWith<$Res>? get pais;$DivisaCopyWith<$Res> get divisa;$PedidoVentaEstadoCopyWith<$Res>? get pedidoVentaEstado;$TrackingEstadoCopyWith<$Res> get trackingEstado;
+
 }
-
 /// @nodoc
-class _$ExpedicionCopyWithImpl<$Res, $Val extends Expedicion>
+class _$ExpedicionCopyWithImpl<$Res>
     implements $ExpedicionCopyWith<$Res> {
-  _$ExpedicionCopyWithImpl(this._value, this._then);
+  _$ExpedicionCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Expedicion _self;
+  final $Res Function(Expedicion) _then;
 
-  /// Create a copy of Expedicion
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? empresaId = freezed,
-    Object? pedidoVentaId = freezed,
-    Object? usuarioId = freezed,
-    Object? pedidoVentaDate = null,
-    Object? clienteId = freezed,
-    Object? direccionId = freezed,
-    Object? nombreCliente = null,
-    Object? codigoPostal = freezed,
-    Object? poblacion = freezed,
-    Object? provincia = freezed,
-    Object? pais = freezed,
-    Object? divisa = null,
-    Object? baseImponible = freezed,
-    Object? pedidoVentaEstado = freezed,
-    Object? oferta = freezed,
-    Object? pedidoAppId = freezed,
-    Object? numLineas = null,
-    Object? trackingEstado = null,
-    Object? albaranId = null,
-    Object? trackId = freezed,
-    Object? agencia = freezed,
-    Object? fechaAlbaran = null,
-    Object? enviada = null,
-    Object? tratada = null,
-    Object? lastUpdated = null,
-    Object? deleted = null,
-  }) {
-    return _then(_value.copyWith(
-      empresaId: freezed == empresaId
-          ? _value.empresaId
-          : empresaId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pedidoVentaId: freezed == pedidoVentaId
-          ? _value.pedidoVentaId
-          : pedidoVentaId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      usuarioId: freezed == usuarioId
-          ? _value.usuarioId
-          : usuarioId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pedidoVentaDate: null == pedidoVentaDate
-          ? _value.pedidoVentaDate
-          : pedidoVentaDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      clienteId: freezed == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      direccionId: freezed == direccionId
-          ? _value.direccionId
-          : direccionId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nombreCliente: null == nombreCliente
-          ? _value.nombreCliente
-          : nombreCliente // ignore: cast_nullable_to_non_nullable
-              as String,
-      codigoPostal: freezed == codigoPostal
-          ? _value.codigoPostal
-          : codigoPostal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      poblacion: freezed == poblacion
-          ? _value.poblacion
-          : poblacion // ignore: cast_nullable_to_non_nullable
-              as String?,
-      provincia: freezed == provincia
-          ? _value.provincia
-          : provincia // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pais: freezed == pais
-          ? _value.pais
-          : pais // ignore: cast_nullable_to_non_nullable
-              as Pais?,
-      divisa: null == divisa
-          ? _value.divisa
-          : divisa // ignore: cast_nullable_to_non_nullable
-              as Divisa,
-      baseImponible: freezed == baseImponible
-          ? _value.baseImponible
-          : baseImponible // ignore: cast_nullable_to_non_nullable
-              as Money?,
-      pedidoVentaEstado: freezed == pedidoVentaEstado
-          ? _value.pedidoVentaEstado
-          : pedidoVentaEstado // ignore: cast_nullable_to_non_nullable
-              as PedidoVentaEstado?,
-      oferta: freezed == oferta
-          ? _value.oferta
-          : oferta // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      pedidoAppId: freezed == pedidoAppId
-          ? _value.pedidoAppId
-          : pedidoAppId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      numLineas: null == numLineas
-          ? _value.numLineas
-          : numLineas // ignore: cast_nullable_to_non_nullable
-              as int,
-      trackingEstado: null == trackingEstado
-          ? _value.trackingEstado
-          : trackingEstado // ignore: cast_nullable_to_non_nullable
-              as TrackingEstado,
-      albaranId: null == albaranId
-          ? _value.albaranId
-          : albaranId // ignore: cast_nullable_to_non_nullable
-              as String,
-      trackId: freezed == trackId
-          ? _value.trackId
-          : trackId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      agencia: freezed == agencia
-          ? _value.agencia
-          : agencia // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fechaAlbaran: null == fechaAlbaran
-          ? _value.fechaAlbaran
-          : fechaAlbaran // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      enviada: null == enviada
-          ? _value.enviada
-          : enviada // ignore: cast_nullable_to_non_nullable
-              as bool,
-      tratada: null == tratada
-          ? _value.tratada
-          : tratada // ignore: cast_nullable_to_non_nullable
-              as bool,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+/// Create a copy of Expedicion
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? empresaId = freezed,Object? pedidoVentaId = freezed,Object? usuarioId = freezed,Object? pedidoVentaDate = null,Object? clienteId = freezed,Object? direccionId = freezed,Object? nombreCliente = null,Object? codigoPostal = freezed,Object? poblacion = freezed,Object? provincia = freezed,Object? pais = freezed,Object? divisa = null,Object? baseImponible = freezed,Object? pedidoVentaEstado = freezed,Object? oferta = freezed,Object? pedidoAppId = freezed,Object? numLineas = null,Object? trackingEstado = null,Object? albaranId = null,Object? trackId = freezed,Object? agencia = freezed,Object? fechaAlbaran = null,Object? enviada = null,Object? tratada = null,Object? lastUpdated = null,Object? deleted = null,}) {
+  return _then(_self.copyWith(
+empresaId: freezed == empresaId ? _self.empresaId : empresaId // ignore: cast_nullable_to_non_nullable
+as String?,pedidoVentaId: freezed == pedidoVentaId ? _self.pedidoVentaId : pedidoVentaId // ignore: cast_nullable_to_non_nullable
+as String?,usuarioId: freezed == usuarioId ? _self.usuarioId : usuarioId // ignore: cast_nullable_to_non_nullable
+as String?,pedidoVentaDate: null == pedidoVentaDate ? _self.pedidoVentaDate : pedidoVentaDate // ignore: cast_nullable_to_non_nullable
+as DateTime,clienteId: freezed == clienteId ? _self.clienteId : clienteId // ignore: cast_nullable_to_non_nullable
+as String?,direccionId: freezed == direccionId ? _self.direccionId : direccionId // ignore: cast_nullable_to_non_nullable
+as String?,nombreCliente: null == nombreCliente ? _self.nombreCliente : nombreCliente // ignore: cast_nullable_to_non_nullable
+as String,codigoPostal: freezed == codigoPostal ? _self.codigoPostal : codigoPostal // ignore: cast_nullable_to_non_nullable
+as String?,poblacion: freezed == poblacion ? _self.poblacion : poblacion // ignore: cast_nullable_to_non_nullable
+as String?,provincia: freezed == provincia ? _self.provincia : provincia // ignore: cast_nullable_to_non_nullable
+as String?,pais: freezed == pais ? _self.pais : pais // ignore: cast_nullable_to_non_nullable
+as Pais?,divisa: null == divisa ? _self.divisa : divisa // ignore: cast_nullable_to_non_nullable
+as Divisa,baseImponible: freezed == baseImponible ? _self.baseImponible : baseImponible // ignore: cast_nullable_to_non_nullable
+as Money?,pedidoVentaEstado: freezed == pedidoVentaEstado ? _self.pedidoVentaEstado : pedidoVentaEstado // ignore: cast_nullable_to_non_nullable
+as PedidoVentaEstado?,oferta: freezed == oferta ? _self.oferta : oferta // ignore: cast_nullable_to_non_nullable
+as bool?,pedidoAppId: freezed == pedidoAppId ? _self.pedidoAppId : pedidoAppId // ignore: cast_nullable_to_non_nullable
+as String?,numLineas: null == numLineas ? _self.numLineas : numLineas // ignore: cast_nullable_to_non_nullable
+as int,trackingEstado: null == trackingEstado ? _self.trackingEstado : trackingEstado // ignore: cast_nullable_to_non_nullable
+as TrackingEstado,albaranId: null == albaranId ? _self.albaranId : albaranId // ignore: cast_nullable_to_non_nullable
+as String,trackId: freezed == trackId ? _self.trackId : trackId // ignore: cast_nullable_to_non_nullable
+as String?,agencia: freezed == agencia ? _self.agencia : agencia // ignore: cast_nullable_to_non_nullable
+as String?,fechaAlbaran: null == fechaAlbaran ? _self.fechaAlbaran : fechaAlbaran // ignore: cast_nullable_to_non_nullable
+as DateTime,enviada: null == enviada ? _self.enviada : enviada // ignore: cast_nullable_to_non_nullable
+as bool,tratada: null == tratada ? _self.tratada : tratada // ignore: cast_nullable_to_non_nullable
+as bool,lastUpdated: null == lastUpdated ? _self.lastUpdated : lastUpdated // ignore: cast_nullable_to_non_nullable
+as DateTime,deleted: null == deleted ? _self.deleted : deleted // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+/// Create a copy of Expedicion
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PaisCopyWith<$Res>? get pais {
+    if (_self.pais == null) {
+    return null;
   }
 
-  /// Create a copy of Expedicion
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $PaisCopyWith<$Res>? get pais {
-    if (_value.pais == null) {
-      return null;
-    }
-
-    return $PaisCopyWith<$Res>(_value.pais!, (value) {
-      return _then(_value.copyWith(pais: value) as $Val);
-    });
+  return $PaisCopyWith<$Res>(_self.pais!, (value) {
+    return _then(_self.copyWith(pais: value));
+  });
+}/// Create a copy of Expedicion
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$DivisaCopyWith<$Res> get divisa {
+  
+  return $DivisaCopyWith<$Res>(_self.divisa, (value) {
+    return _then(_self.copyWith(divisa: value));
+  });
+}/// Create a copy of Expedicion
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PedidoVentaEstadoCopyWith<$Res>? get pedidoVentaEstado {
+    if (_self.pedidoVentaEstado == null) {
+    return null;
   }
 
-  /// Create a copy of Expedicion
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $DivisaCopyWith<$Res> get divisa {
-    return $DivisaCopyWith<$Res>(_value.divisa, (value) {
-      return _then(_value.copyWith(divisa: value) as $Val);
-    });
-  }
-
-  /// Create a copy of Expedicion
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $PedidoVentaEstadoCopyWith<$Res>? get pedidoVentaEstado {
-    if (_value.pedidoVentaEstado == null) {
-      return null;
-    }
-
-    return $PedidoVentaEstadoCopyWith<$Res>(_value.pedidoVentaEstado!, (value) {
-      return _then(_value.copyWith(pedidoVentaEstado: value) as $Val);
-    });
-  }
-
-  /// Create a copy of Expedicion
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $TrackingEstadoCopyWith<$Res> get trackingEstado {
-    return $TrackingEstadoCopyWith<$Res>(_value.trackingEstado, (value) {
-      return _then(_value.copyWith(trackingEstado: value) as $Val);
-    });
-  }
+  return $PedidoVentaEstadoCopyWith<$Res>(_self.pedidoVentaEstado!, (value) {
+    return _then(_self.copyWith(pedidoVentaEstado: value));
+  });
+}/// Create a copy of Expedicion
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$TrackingEstadoCopyWith<$Res> get trackingEstado {
+  
+  return $TrackingEstadoCopyWith<$Res>(_self.trackingEstado, (value) {
+    return _then(_self.copyWith(trackingEstado: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$ExpedicionImplCopyWith<$Res>
-    implements $ExpedicionCopyWith<$Res> {
-  factory _$$ExpedicionImplCopyWith(
-          _$ExpedicionImpl value, $Res Function(_$ExpedicionImpl) then) =
-      __$$ExpedicionImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String? empresaId,
-      String? pedidoVentaId,
-      String? usuarioId,
-      DateTime pedidoVentaDate,
-      String? clienteId,
-      String? direccionId,
-      String nombreCliente,
-      String? codigoPostal,
-      String? poblacion,
-      String? provincia,
-      Pais? pais,
-      Divisa divisa,
-      Money? baseImponible,
-      PedidoVentaEstado? pedidoVentaEstado,
-      bool? oferta,
-      String? pedidoAppId,
-      int numLineas,
-      TrackingEstado trackingEstado,
-      String albaranId,
-      String? trackId,
-      String? agencia,
-      DateTime fechaAlbaran,
-      bool enviada,
-      bool tratada,
-      DateTime lastUpdated,
-      bool deleted});
 
-  @override
-  $PaisCopyWith<$Res>? get pais;
-  @override
-  $DivisaCopyWith<$Res> get divisa;
-  @override
-  $PedidoVentaEstadoCopyWith<$Res>? get pedidoVentaEstado;
-  @override
-  $TrackingEstadoCopyWith<$Res> get trackingEstado;
+/// Adds pattern-matching-related methods to [Expedicion].
+extension ExpedicionPatterns on Expedicion {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Expedicion value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Expedicion() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Expedicion value)  $default,){
+final _that = this;
+switch (_that) {
+case _Expedicion():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Expedicion value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Expedicion() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? empresaId,  String? pedidoVentaId,  String? usuarioId,  DateTime pedidoVentaDate,  String? clienteId,  String? direccionId,  String nombreCliente,  String? codigoPostal,  String? poblacion,  String? provincia,  Pais? pais,  Divisa divisa,  Money? baseImponible,  PedidoVentaEstado? pedidoVentaEstado,  bool? oferta,  String? pedidoAppId,  int numLineas,  TrackingEstado trackingEstado,  String albaranId,  String? trackId,  String? agencia,  DateTime fechaAlbaran,  bool enviada,  bool tratada,  DateTime lastUpdated,  bool deleted)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Expedicion() when $default != null:
+return $default(_that.empresaId,_that.pedidoVentaId,_that.usuarioId,_that.pedidoVentaDate,_that.clienteId,_that.direccionId,_that.nombreCliente,_that.codigoPostal,_that.poblacion,_that.provincia,_that.pais,_that.divisa,_that.baseImponible,_that.pedidoVentaEstado,_that.oferta,_that.pedidoAppId,_that.numLineas,_that.trackingEstado,_that.albaranId,_that.trackId,_that.agencia,_that.fechaAlbaran,_that.enviada,_that.tratada,_that.lastUpdated,_that.deleted);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? empresaId,  String? pedidoVentaId,  String? usuarioId,  DateTime pedidoVentaDate,  String? clienteId,  String? direccionId,  String nombreCliente,  String? codigoPostal,  String? poblacion,  String? provincia,  Pais? pais,  Divisa divisa,  Money? baseImponible,  PedidoVentaEstado? pedidoVentaEstado,  bool? oferta,  String? pedidoAppId,  int numLineas,  TrackingEstado trackingEstado,  String albaranId,  String? trackId,  String? agencia,  DateTime fechaAlbaran,  bool enviada,  bool tratada,  DateTime lastUpdated,  bool deleted)  $default,) {final _that = this;
+switch (_that) {
+case _Expedicion():
+return $default(_that.empresaId,_that.pedidoVentaId,_that.usuarioId,_that.pedidoVentaDate,_that.clienteId,_that.direccionId,_that.nombreCliente,_that.codigoPostal,_that.poblacion,_that.provincia,_that.pais,_that.divisa,_that.baseImponible,_that.pedidoVentaEstado,_that.oferta,_that.pedidoAppId,_that.numLineas,_that.trackingEstado,_that.albaranId,_that.trackId,_that.agencia,_that.fechaAlbaran,_that.enviada,_that.tratada,_that.lastUpdated,_that.deleted);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? empresaId,  String? pedidoVentaId,  String? usuarioId,  DateTime pedidoVentaDate,  String? clienteId,  String? direccionId,  String nombreCliente,  String? codigoPostal,  String? poblacion,  String? provincia,  Pais? pais,  Divisa divisa,  Money? baseImponible,  PedidoVentaEstado? pedidoVentaEstado,  bool? oferta,  String? pedidoAppId,  int numLineas,  TrackingEstado trackingEstado,  String albaranId,  String? trackId,  String? agencia,  DateTime fechaAlbaran,  bool enviada,  bool tratada,  DateTime lastUpdated,  bool deleted)?  $default,) {final _that = this;
+switch (_that) {
+case _Expedicion() when $default != null:
+return $default(_that.empresaId,_that.pedidoVentaId,_that.usuarioId,_that.pedidoVentaDate,_that.clienteId,_that.direccionId,_that.nombreCliente,_that.codigoPostal,_that.poblacion,_that.provincia,_that.pais,_that.divisa,_that.baseImponible,_that.pedidoVentaEstado,_that.oferta,_that.pedidoAppId,_that.numLineas,_that.trackingEstado,_that.albaranId,_that.trackId,_that.agencia,_that.fechaAlbaran,_that.enviada,_that.tratada,_that.lastUpdated,_that.deleted);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$ExpedicionImplCopyWithImpl<$Res>
-    extends _$ExpedicionCopyWithImpl<$Res, _$ExpedicionImpl>
-    implements _$$ExpedicionImplCopyWith<$Res> {
-  __$$ExpedicionImplCopyWithImpl(
-      _$ExpedicionImpl _value, $Res Function(_$ExpedicionImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of Expedicion
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? empresaId = freezed,
-    Object? pedidoVentaId = freezed,
-    Object? usuarioId = freezed,
-    Object? pedidoVentaDate = null,
-    Object? clienteId = freezed,
-    Object? direccionId = freezed,
-    Object? nombreCliente = null,
-    Object? codigoPostal = freezed,
-    Object? poblacion = freezed,
-    Object? provincia = freezed,
-    Object? pais = freezed,
-    Object? divisa = null,
-    Object? baseImponible = freezed,
-    Object? pedidoVentaEstado = freezed,
-    Object? oferta = freezed,
-    Object? pedidoAppId = freezed,
-    Object? numLineas = null,
-    Object? trackingEstado = null,
-    Object? albaranId = null,
-    Object? trackId = freezed,
-    Object? agencia = freezed,
-    Object? fechaAlbaran = null,
-    Object? enviada = null,
-    Object? tratada = null,
-    Object? lastUpdated = null,
-    Object? deleted = null,
-  }) {
-    return _then(_$ExpedicionImpl(
-      empresaId: freezed == empresaId
-          ? _value.empresaId
-          : empresaId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pedidoVentaId: freezed == pedidoVentaId
-          ? _value.pedidoVentaId
-          : pedidoVentaId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      usuarioId: freezed == usuarioId
-          ? _value.usuarioId
-          : usuarioId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pedidoVentaDate: null == pedidoVentaDate
-          ? _value.pedidoVentaDate
-          : pedidoVentaDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      clienteId: freezed == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      direccionId: freezed == direccionId
-          ? _value.direccionId
-          : direccionId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nombreCliente: null == nombreCliente
-          ? _value.nombreCliente
-          : nombreCliente // ignore: cast_nullable_to_non_nullable
-              as String,
-      codigoPostal: freezed == codigoPostal
-          ? _value.codigoPostal
-          : codigoPostal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      poblacion: freezed == poblacion
-          ? _value.poblacion
-          : poblacion // ignore: cast_nullable_to_non_nullable
-              as String?,
-      provincia: freezed == provincia
-          ? _value.provincia
-          : provincia // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pais: freezed == pais
-          ? _value.pais
-          : pais // ignore: cast_nullable_to_non_nullable
-              as Pais?,
-      divisa: null == divisa
-          ? _value.divisa
-          : divisa // ignore: cast_nullable_to_non_nullable
-              as Divisa,
-      baseImponible: freezed == baseImponible
-          ? _value.baseImponible
-          : baseImponible // ignore: cast_nullable_to_non_nullable
-              as Money?,
-      pedidoVentaEstado: freezed == pedidoVentaEstado
-          ? _value.pedidoVentaEstado
-          : pedidoVentaEstado // ignore: cast_nullable_to_non_nullable
-              as PedidoVentaEstado?,
-      oferta: freezed == oferta
-          ? _value.oferta
-          : oferta // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      pedidoAppId: freezed == pedidoAppId
-          ? _value.pedidoAppId
-          : pedidoAppId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      numLineas: null == numLineas
-          ? _value.numLineas
-          : numLineas // ignore: cast_nullable_to_non_nullable
-              as int,
-      trackingEstado: null == trackingEstado
-          ? _value.trackingEstado
-          : trackingEstado // ignore: cast_nullable_to_non_nullable
-              as TrackingEstado,
-      albaranId: null == albaranId
-          ? _value.albaranId
-          : albaranId // ignore: cast_nullable_to_non_nullable
-              as String,
-      trackId: freezed == trackId
-          ? _value.trackId
-          : trackId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      agencia: freezed == agencia
-          ? _value.agencia
-          : agencia // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fechaAlbaran: null == fechaAlbaran
-          ? _value.fechaAlbaran
-          : fechaAlbaran // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      enviada: null == enviada
-          ? _value.enviada
-          : enviada // ignore: cast_nullable_to_non_nullable
-              as bool,
-      tratada: null == tratada
-          ? _value.tratada
-          : tratada // ignore: cast_nullable_to_non_nullable
-              as bool,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$ExpedicionImpl extends _Expedicion {
-  const _$ExpedicionImpl(
-      {this.empresaId,
-      this.pedidoVentaId,
-      this.usuarioId,
-      required this.pedidoVentaDate,
-      this.clienteId,
-      this.direccionId,
-      required this.nombreCliente,
-      this.codigoPostal,
-      this.poblacion,
-      this.provincia,
-      this.pais,
-      required this.divisa,
-      this.baseImponible,
-      this.pedidoVentaEstado,
-      this.oferta,
-      this.pedidoAppId,
-      required this.numLineas,
-      required this.trackingEstado,
-      required this.albaranId,
-      required this.trackId,
-      this.agencia,
-      required this.fechaAlbaran,
-      required this.enviada,
-      required this.tratada,
-      required this.lastUpdated,
-      required this.deleted})
-      : super._();
 
-  @override
-  final String? empresaId;
-  @override
-  final String? pedidoVentaId;
-  @override
-  final String? usuarioId;
-  @override
-  final DateTime pedidoVentaDate;
-  @override
-  final String? clienteId;
-  @override
-  final String? direccionId;
-  @override
-  final String nombreCliente;
-  @override
-  final String? codigoPostal;
-  @override
-  final String? poblacion;
-  @override
-  final String? provincia;
-  @override
-  final Pais? pais;
-  @override
-  final Divisa divisa;
-  @override
-  final Money? baseImponible;
-  @override
-  final PedidoVentaEstado? pedidoVentaEstado;
-  @override
-  final bool? oferta;
-  @override
-  final String? pedidoAppId;
-  @override
-  final int numLineas;
-  @override
-  final TrackingEstado trackingEstado;
-  @override
-  final String albaranId;
-  @override
-  final String? trackId;
-  @override
-  final String? agencia;
-  @override
-  final DateTime fechaAlbaran;
-  @override
-  final bool enviada;
-  @override
-  final bool tratada;
-  @override
-  final DateTime lastUpdated;
-  @override
-  final bool deleted;
+class _Expedicion extends Expedicion {
+  const _Expedicion({this.empresaId, this.pedidoVentaId, this.usuarioId, required this.pedidoVentaDate, this.clienteId, this.direccionId, required this.nombreCliente, this.codigoPostal, this.poblacion, this.provincia, this.pais, required this.divisa, this.baseImponible, this.pedidoVentaEstado, this.oferta, this.pedidoAppId, required this.numLineas, required this.trackingEstado, required this.albaranId, required this.trackId, this.agencia, required this.fechaAlbaran, required this.enviada, required this.tratada, required this.lastUpdated, required this.deleted}): super._();
+  
 
-  @override
-  String toString() {
-    return 'Expedicion(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, usuarioId: $usuarioId, pedidoVentaDate: $pedidoVentaDate, clienteId: $clienteId, direccionId: $direccionId, nombreCliente: $nombreCliente, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, divisa: $divisa, baseImponible: $baseImponible, pedidoVentaEstado: $pedidoVentaEstado, oferta: $oferta, pedidoAppId: $pedidoAppId, numLineas: $numLineas, trackingEstado: $trackingEstado, albaranId: $albaranId, trackId: $trackId, agencia: $agencia, fechaAlbaran: $fechaAlbaran, enviada: $enviada, tratada: $tratada, lastUpdated: $lastUpdated, deleted: $deleted)';
-  }
+@override final  String? empresaId;
+@override final  String? pedidoVentaId;
+@override final  String? usuarioId;
+@override final  DateTime pedidoVentaDate;
+@override final  String? clienteId;
+@override final  String? direccionId;
+@override final  String nombreCliente;
+@override final  String? codigoPostal;
+@override final  String? poblacion;
+@override final  String? provincia;
+@override final  Pais? pais;
+@override final  Divisa divisa;
+@override final  Money? baseImponible;
+@override final  PedidoVentaEstado? pedidoVentaEstado;
+@override final  bool? oferta;
+@override final  String? pedidoAppId;
+@override final  int numLineas;
+@override final  TrackingEstado trackingEstado;
+@override final  String albaranId;
+@override final  String? trackId;
+@override final  String? agencia;
+@override final  DateTime fechaAlbaran;
+@override final  bool enviada;
+@override final  bool tratada;
+@override final  DateTime lastUpdated;
+@override final  bool deleted;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ExpedicionImpl &&
-            (identical(other.empresaId, empresaId) ||
-                other.empresaId == empresaId) &&
-            (identical(other.pedidoVentaId, pedidoVentaId) ||
-                other.pedidoVentaId == pedidoVentaId) &&
-            (identical(other.usuarioId, usuarioId) ||
-                other.usuarioId == usuarioId) &&
-            (identical(other.pedidoVentaDate, pedidoVentaDate) ||
-                other.pedidoVentaDate == pedidoVentaDate) &&
-            (identical(other.clienteId, clienteId) ||
-                other.clienteId == clienteId) &&
-            (identical(other.direccionId, direccionId) ||
-                other.direccionId == direccionId) &&
-            (identical(other.nombreCliente, nombreCliente) ||
-                other.nombreCliente == nombreCliente) &&
-            (identical(other.codigoPostal, codigoPostal) ||
-                other.codigoPostal == codigoPostal) &&
-            (identical(other.poblacion, poblacion) ||
-                other.poblacion == poblacion) &&
-            (identical(other.provincia, provincia) ||
-                other.provincia == provincia) &&
-            (identical(other.pais, pais) || other.pais == pais) &&
-            (identical(other.divisa, divisa) || other.divisa == divisa) &&
-            (identical(other.baseImponible, baseImponible) ||
-                other.baseImponible == baseImponible) &&
-            (identical(other.pedidoVentaEstado, pedidoVentaEstado) ||
-                other.pedidoVentaEstado == pedidoVentaEstado) &&
-            (identical(other.oferta, oferta) || other.oferta == oferta) &&
-            (identical(other.pedidoAppId, pedidoAppId) ||
-                other.pedidoAppId == pedidoAppId) &&
-            (identical(other.numLineas, numLineas) ||
-                other.numLineas == numLineas) &&
-            (identical(other.trackingEstado, trackingEstado) ||
-                other.trackingEstado == trackingEstado) &&
-            (identical(other.albaranId, albaranId) ||
-                other.albaranId == albaranId) &&
-            (identical(other.trackId, trackId) || other.trackId == trackId) &&
-            (identical(other.agencia, agencia) || other.agencia == agencia) &&
-            (identical(other.fechaAlbaran, fechaAlbaran) ||
-                other.fechaAlbaran == fechaAlbaran) &&
-            (identical(other.enviada, enviada) || other.enviada == enviada) &&
-            (identical(other.tratada, tratada) || other.tratada == tratada) &&
-            (identical(other.lastUpdated, lastUpdated) ||
-                other.lastUpdated == lastUpdated) &&
-            (identical(other.deleted, deleted) || other.deleted == deleted));
-  }
+/// Create a copy of Expedicion
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ExpedicionCopyWith<_Expedicion> get copyWith => __$ExpedicionCopyWithImpl<_Expedicion>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hashAll([
-        runtimeType,
-        empresaId,
-        pedidoVentaId,
-        usuarioId,
-        pedidoVentaDate,
-        clienteId,
-        direccionId,
-        nombreCliente,
-        codigoPostal,
-        poblacion,
-        provincia,
-        pais,
-        divisa,
-        baseImponible,
-        pedidoVentaEstado,
-        oferta,
-        pedidoAppId,
-        numLineas,
-        trackingEstado,
-        albaranId,
-        trackId,
-        agencia,
-        fechaAlbaran,
-        enviada,
-        tratada,
-        lastUpdated,
-        deleted
-      ]);
 
-  /// Create a copy of Expedicion
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ExpedicionImplCopyWith<_$ExpedicionImpl> get copyWith =>
-      __$$ExpedicionImplCopyWithImpl<_$ExpedicionImpl>(this, _$identity);
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Expedicion&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.pedidoVentaId, pedidoVentaId) || other.pedidoVentaId == pedidoVentaId)&&(identical(other.usuarioId, usuarioId) || other.usuarioId == usuarioId)&&(identical(other.pedidoVentaDate, pedidoVentaDate) || other.pedidoVentaDate == pedidoVentaDate)&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.direccionId, direccionId) || other.direccionId == direccionId)&&(identical(other.nombreCliente, nombreCliente) || other.nombreCliente == nombreCliente)&&(identical(other.codigoPostal, codigoPostal) || other.codigoPostal == codigoPostal)&&(identical(other.poblacion, poblacion) || other.poblacion == poblacion)&&(identical(other.provincia, provincia) || other.provincia == provincia)&&(identical(other.pais, pais) || other.pais == pais)&&(identical(other.divisa, divisa) || other.divisa == divisa)&&(identical(other.baseImponible, baseImponible) || other.baseImponible == baseImponible)&&(identical(other.pedidoVentaEstado, pedidoVentaEstado) || other.pedidoVentaEstado == pedidoVentaEstado)&&(identical(other.oferta, oferta) || other.oferta == oferta)&&(identical(other.pedidoAppId, pedidoAppId) || other.pedidoAppId == pedidoAppId)&&(identical(other.numLineas, numLineas) || other.numLineas == numLineas)&&(identical(other.trackingEstado, trackingEstado) || other.trackingEstado == trackingEstado)&&(identical(other.albaranId, albaranId) || other.albaranId == albaranId)&&(identical(other.trackId, trackId) || other.trackId == trackId)&&(identical(other.agencia, agencia) || other.agencia == agencia)&&(identical(other.fechaAlbaran, fechaAlbaran) || other.fechaAlbaran == fechaAlbaran)&&(identical(other.enviada, enviada) || other.enviada == enviada)&&(identical(other.tratada, tratada) || other.tratada == tratada)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
-abstract class _Expedicion extends Expedicion {
-  const factory _Expedicion(
-      {final String? empresaId,
-      final String? pedidoVentaId,
-      final String? usuarioId,
-      required final DateTime pedidoVentaDate,
-      final String? clienteId,
-      final String? direccionId,
-      required final String nombreCliente,
-      final String? codigoPostal,
-      final String? poblacion,
-      final String? provincia,
-      final Pais? pais,
-      required final Divisa divisa,
-      final Money? baseImponible,
-      final PedidoVentaEstado? pedidoVentaEstado,
-      final bool? oferta,
-      final String? pedidoAppId,
-      required final int numLineas,
-      required final TrackingEstado trackingEstado,
-      required final String albaranId,
-      required final String? trackId,
-      final String? agencia,
-      required final DateTime fechaAlbaran,
-      required final bool enviada,
-      required final bool tratada,
-      required final DateTime lastUpdated,
-      required final bool deleted}) = _$ExpedicionImpl;
-  const _Expedicion._() : super._();
 
-  @override
-  String? get empresaId;
-  @override
-  String? get pedidoVentaId;
-  @override
-  String? get usuarioId;
-  @override
-  DateTime get pedidoVentaDate;
-  @override
-  String? get clienteId;
-  @override
-  String? get direccionId;
-  @override
-  String get nombreCliente;
-  @override
-  String? get codigoPostal;
-  @override
-  String? get poblacion;
-  @override
-  String? get provincia;
-  @override
-  Pais? get pais;
-  @override
-  Divisa get divisa;
-  @override
-  Money? get baseImponible;
-  @override
-  PedidoVentaEstado? get pedidoVentaEstado;
-  @override
-  bool? get oferta;
-  @override
-  String? get pedidoAppId;
-  @override
-  int get numLineas;
-  @override
-  TrackingEstado get trackingEstado;
-  @override
-  String get albaranId;
-  @override
-  String? get trackId;
-  @override
-  String? get agencia;
-  @override
-  DateTime get fechaAlbaran;
-  @override
-  bool get enviada;
-  @override
-  bool get tratada;
-  @override
-  DateTime get lastUpdated;
-  @override
-  bool get deleted;
+@override
+int get hashCode => Object.hashAll([runtimeType,empresaId,pedidoVentaId,usuarioId,pedidoVentaDate,clienteId,direccionId,nombreCliente,codigoPostal,poblacion,provincia,pais,divisa,baseImponible,pedidoVentaEstado,oferta,pedidoAppId,numLineas,trackingEstado,albaranId,trackId,agencia,fechaAlbaran,enviada,tratada,lastUpdated,deleted]);
 
-  /// Create a copy of Expedicion
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ExpedicionImplCopyWith<_$ExpedicionImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'Expedicion(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, usuarioId: $usuarioId, pedidoVentaDate: $pedidoVentaDate, clienteId: $clienteId, direccionId: $direccionId, nombreCliente: $nombreCliente, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, divisa: $divisa, baseImponible: $baseImponible, pedidoVentaEstado: $pedidoVentaEstado, oferta: $oferta, pedidoAppId: $pedidoAppId, numLineas: $numLineas, trackingEstado: $trackingEstado, albaranId: $albaranId, trackId: $trackId, agencia: $agencia, fechaAlbaran: $fechaAlbaran, enviada: $enviada, tratada: $tratada, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ExpedicionCopyWith<$Res> implements $ExpedicionCopyWith<$Res> {
+  factory _$ExpedicionCopyWith(_Expedicion value, $Res Function(_Expedicion) _then) = __$ExpedicionCopyWithImpl;
+@override @useResult
+$Res call({
+ String? empresaId, String? pedidoVentaId, String? usuarioId, DateTime pedidoVentaDate, String? clienteId, String? direccionId, String nombreCliente, String? codigoPostal, String? poblacion, String? provincia, Pais? pais, Divisa divisa, Money? baseImponible, PedidoVentaEstado? pedidoVentaEstado, bool? oferta, String? pedidoAppId, int numLineas, TrackingEstado trackingEstado, String albaranId, String? trackId, String? agencia, DateTime fechaAlbaran, bool enviada, bool tratada, DateTime lastUpdated, bool deleted
+});
+
+
+@override $PaisCopyWith<$Res>? get pais;@override $DivisaCopyWith<$Res> get divisa;@override $PedidoVentaEstadoCopyWith<$Res>? get pedidoVentaEstado;@override $TrackingEstadoCopyWith<$Res> get trackingEstado;
+
+}
+/// @nodoc
+class __$ExpedicionCopyWithImpl<$Res>
+    implements _$ExpedicionCopyWith<$Res> {
+  __$ExpedicionCopyWithImpl(this._self, this._then);
+
+  final _Expedicion _self;
+  final $Res Function(_Expedicion) _then;
+
+/// Create a copy of Expedicion
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? empresaId = freezed,Object? pedidoVentaId = freezed,Object? usuarioId = freezed,Object? pedidoVentaDate = null,Object? clienteId = freezed,Object? direccionId = freezed,Object? nombreCliente = null,Object? codigoPostal = freezed,Object? poblacion = freezed,Object? provincia = freezed,Object? pais = freezed,Object? divisa = null,Object? baseImponible = freezed,Object? pedidoVentaEstado = freezed,Object? oferta = freezed,Object? pedidoAppId = freezed,Object? numLineas = null,Object? trackingEstado = null,Object? albaranId = null,Object? trackId = freezed,Object? agencia = freezed,Object? fechaAlbaran = null,Object? enviada = null,Object? tratada = null,Object? lastUpdated = null,Object? deleted = null,}) {
+  return _then(_Expedicion(
+empresaId: freezed == empresaId ? _self.empresaId : empresaId // ignore: cast_nullable_to_non_nullable
+as String?,pedidoVentaId: freezed == pedidoVentaId ? _self.pedidoVentaId : pedidoVentaId // ignore: cast_nullable_to_non_nullable
+as String?,usuarioId: freezed == usuarioId ? _self.usuarioId : usuarioId // ignore: cast_nullable_to_non_nullable
+as String?,pedidoVentaDate: null == pedidoVentaDate ? _self.pedidoVentaDate : pedidoVentaDate // ignore: cast_nullable_to_non_nullable
+as DateTime,clienteId: freezed == clienteId ? _self.clienteId : clienteId // ignore: cast_nullable_to_non_nullable
+as String?,direccionId: freezed == direccionId ? _self.direccionId : direccionId // ignore: cast_nullable_to_non_nullable
+as String?,nombreCliente: null == nombreCliente ? _self.nombreCliente : nombreCliente // ignore: cast_nullable_to_non_nullable
+as String,codigoPostal: freezed == codigoPostal ? _self.codigoPostal : codigoPostal // ignore: cast_nullable_to_non_nullable
+as String?,poblacion: freezed == poblacion ? _self.poblacion : poblacion // ignore: cast_nullable_to_non_nullable
+as String?,provincia: freezed == provincia ? _self.provincia : provincia // ignore: cast_nullable_to_non_nullable
+as String?,pais: freezed == pais ? _self.pais : pais // ignore: cast_nullable_to_non_nullable
+as Pais?,divisa: null == divisa ? _self.divisa : divisa // ignore: cast_nullable_to_non_nullable
+as Divisa,baseImponible: freezed == baseImponible ? _self.baseImponible : baseImponible // ignore: cast_nullable_to_non_nullable
+as Money?,pedidoVentaEstado: freezed == pedidoVentaEstado ? _self.pedidoVentaEstado : pedidoVentaEstado // ignore: cast_nullable_to_non_nullable
+as PedidoVentaEstado?,oferta: freezed == oferta ? _self.oferta : oferta // ignore: cast_nullable_to_non_nullable
+as bool?,pedidoAppId: freezed == pedidoAppId ? _self.pedidoAppId : pedidoAppId // ignore: cast_nullable_to_non_nullable
+as String?,numLineas: null == numLineas ? _self.numLineas : numLineas // ignore: cast_nullable_to_non_nullable
+as int,trackingEstado: null == trackingEstado ? _self.trackingEstado : trackingEstado // ignore: cast_nullable_to_non_nullable
+as TrackingEstado,albaranId: null == albaranId ? _self.albaranId : albaranId // ignore: cast_nullable_to_non_nullable
+as String,trackId: freezed == trackId ? _self.trackId : trackId // ignore: cast_nullable_to_non_nullable
+as String?,agencia: freezed == agencia ? _self.agencia : agencia // ignore: cast_nullable_to_non_nullable
+as String?,fechaAlbaran: null == fechaAlbaran ? _self.fechaAlbaran : fechaAlbaran // ignore: cast_nullable_to_non_nullable
+as DateTime,enviada: null == enviada ? _self.enviada : enviada // ignore: cast_nullable_to_non_nullable
+as bool,tratada: null == tratada ? _self.tratada : tratada // ignore: cast_nullable_to_non_nullable
+as bool,lastUpdated: null == lastUpdated ? _self.lastUpdated : lastUpdated // ignore: cast_nullable_to_non_nullable
+as DateTime,deleted: null == deleted ? _self.deleted : deleted // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+/// Create a copy of Expedicion
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PaisCopyWith<$Res>? get pais {
+    if (_self.pais == null) {
+    return null;
+  }
+
+  return $PaisCopyWith<$Res>(_self.pais!, (value) {
+    return _then(_self.copyWith(pais: value));
+  });
+}/// Create a copy of Expedicion
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$DivisaCopyWith<$Res> get divisa {
+  
+  return $DivisaCopyWith<$Res>(_self.divisa, (value) {
+    return _then(_self.copyWith(divisa: value));
+  });
+}/// Create a copy of Expedicion
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PedidoVentaEstadoCopyWith<$Res>? get pedidoVentaEstado {
+    if (_self.pedidoVentaEstado == null) {
+    return null;
+  }
+
+  return $PedidoVentaEstadoCopyWith<$Res>(_self.pedidoVentaEstado!, (value) {
+    return _then(_self.copyWith(pedidoVentaEstado: value));
+  });
+}/// Create a copy of Expedicion
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$TrackingEstadoCopyWith<$Res> get trackingEstado {
+  
+  return $TrackingEstadoCopyWith<$Res>(_self.trackingEstado, (value) {
+    return _then(_self.copyWith(trackingEstado: value));
+  });
+}
+}
+
+// dart format on

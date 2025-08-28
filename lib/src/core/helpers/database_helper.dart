@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
-const int databaseRelease = 35;
+const int kDatabaseRelease = 35;
 
 Future<void> deleteRemoteDatabase() async {
   const remoteDatabaseName = 'jbm.sqlite';
@@ -31,6 +31,6 @@ Future<void> deleteRemoteDatabase() async {
 Future<bool> _databaseFileExist({
   required Directory directory,
   required String remoteDatabaseName,
-}) async {
+}) {
   return File((join(directory.path, remoteDatabaseName))).exists();
 }

@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,1037 +9,501 @@ part of 'splash_page_controller.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 /// @nodoc
-mixin _$SplashControllerState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int lastScehmaVersion, int newScehmaVersion)
-        downloadDatabase,
-    required TResult Function() loading,
-    required TResult Function() initial,
-    required TResult Function() notDownloaded,
-    required TResult Function(Object error, StackTrace? stackTrace) error,
-    required TResult Function() data,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int lastScehmaVersion, int newScehmaVersion)?
-        downloadDatabase,
-    TResult? Function()? loading,
-    TResult? Function()? initial,
-    TResult? Function()? notDownloaded,
-    TResult? Function(Object error, StackTrace? stackTrace)? error,
-    TResult? Function()? data,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int lastScehmaVersion, int newScehmaVersion)?
-        downloadDatabase,
-    TResult Function()? loading,
-    TResult Function()? initial,
-    TResult Function()? notDownloaded,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function()? data,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_downloadDatabase value) downloadDatabase,
-    required TResult Function(_loading value) loading,
-    required TResult Function(_initial value) initial,
-    required TResult Function(_notDownloaded value) notDownloaded,
-    required TResult Function(_error value) error,
-    required TResult Function(_data value) data,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_downloadDatabase value)? downloadDatabase,
-    TResult? Function(_loading value)? loading,
-    TResult? Function(_initial value)? initial,
-    TResult? Function(_notDownloaded value)? notDownloaded,
-    TResult? Function(_error value)? error,
-    TResult? Function(_data value)? data,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_downloadDatabase value)? downloadDatabase,
-    TResult Function(_loading value)? loading,
-    TResult Function(_initial value)? initial,
-    TResult Function(_notDownloaded value)? notDownloaded,
-    TResult Function(_error value)? error,
-    TResult Function(_data value)? data,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+mixin _$SplashControllerState implements DiagnosticableTreeMixin {
+
+
+
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'SplashControllerState'))
+    ;
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SplashControllerState);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'SplashControllerState()';
+}
+
+
 }
 
 /// @nodoc
-abstract class $SplashControllerStateCopyWith<$Res> {
-  factory $SplashControllerStateCopyWith(SplashControllerState value,
-          $Res Function(SplashControllerState) then) =
-      _$SplashControllerStateCopyWithImpl<$Res, SplashControllerState>;
+class $SplashControllerStateCopyWith<$Res>  {
+$SplashControllerStateCopyWith(SplashControllerState _, $Res Function(SplashControllerState) __);
 }
 
-/// @nodoc
-class _$SplashControllerStateCopyWithImpl<$Res,
-        $Val extends SplashControllerState>
-    implements $SplashControllerStateCopyWith<$Res> {
-  _$SplashControllerStateCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+/// Adds pattern-matching-related methods to [SplashControllerState].
+extension SplashControllerStatePatterns on SplashControllerState {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
 
-  /// Create a copy of SplashControllerState
-  /// with the given fields replaced by the non-null parameter values.
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _downloadDatabase value)?  downloadDatabase,TResult Function( _loading value)?  loading,TResult Function( _initial value)?  initial,TResult Function( _notDownloaded value)?  notDownloaded,TResult Function( _error value)?  error,TResult Function( _data value)?  data,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _downloadDatabase() when downloadDatabase != null:
+return downloadDatabase(_that);case _loading() when loading != null:
+return loading(_that);case _initial() when initial != null:
+return initial(_that);case _notDownloaded() when notDownloaded != null:
+return notDownloaded(_that);case _error() when error != null:
+return error(_that);case _data() when data != null:
+return data(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _downloadDatabase value)  downloadDatabase,required TResult Function( _loading value)  loading,required TResult Function( _initial value)  initial,required TResult Function( _notDownloaded value)  notDownloaded,required TResult Function( _error value)  error,required TResult Function( _data value)  data,}){
+final _that = this;
+switch (_that) {
+case _downloadDatabase():
+return downloadDatabase(_that);case _loading():
+return loading(_that);case _initial():
+return initial(_that);case _notDownloaded():
+return notDownloaded(_that);case _error():
+return error(_that);case _data():
+return data(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _downloadDatabase value)?  downloadDatabase,TResult? Function( _loading value)?  loading,TResult? Function( _initial value)?  initial,TResult? Function( _notDownloaded value)?  notDownloaded,TResult? Function( _error value)?  error,TResult? Function( _data value)?  data,}){
+final _that = this;
+switch (_that) {
+case _downloadDatabase() when downloadDatabase != null:
+return downloadDatabase(_that);case _loading() when loading != null:
+return loading(_that);case _initial() when initial != null:
+return initial(_that);case _notDownloaded() when notDownloaded != null:
+return notDownloaded(_that);case _error() when error != null:
+return error(_that);case _data() when data != null:
+return data(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( int lastScehmaVersion,  int newScehmaVersion)?  downloadDatabase,TResult Function()?  loading,TResult Function()?  initial,TResult Function()?  notDownloaded,TResult Function( Object error,  StackTrace? stackTrace)?  error,TResult Function()?  data,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _downloadDatabase() when downloadDatabase != null:
+return downloadDatabase(_that.lastScehmaVersion,_that.newScehmaVersion);case _loading() when loading != null:
+return loading();case _initial() when initial != null:
+return initial();case _notDownloaded() when notDownloaded != null:
+return notDownloaded();case _error() when error != null:
+return error(_that.error,_that.stackTrace);case _data() when data != null:
+return data();case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( int lastScehmaVersion,  int newScehmaVersion)  downloadDatabase,required TResult Function()  loading,required TResult Function()  initial,required TResult Function()  notDownloaded,required TResult Function( Object error,  StackTrace? stackTrace)  error,required TResult Function()  data,}) {final _that = this;
+switch (_that) {
+case _downloadDatabase():
+return downloadDatabase(_that.lastScehmaVersion,_that.newScehmaVersion);case _loading():
+return loading();case _initial():
+return initial();case _notDownloaded():
+return notDownloaded();case _error():
+return error(_that.error,_that.stackTrace);case _data():
+return data();case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( int lastScehmaVersion,  int newScehmaVersion)?  downloadDatabase,TResult? Function()?  loading,TResult? Function()?  initial,TResult? Function()?  notDownloaded,TResult? Function( Object error,  StackTrace? stackTrace)?  error,TResult? Function()?  data,}) {final _that = this;
+switch (_that) {
+case _downloadDatabase() when downloadDatabase != null:
+return downloadDatabase(_that.lastScehmaVersion,_that.newScehmaVersion);case _loading() when loading != null:
+return loading();case _initial() when initial != null:
+return initial();case _notDownloaded() when notDownloaded != null:
+return notDownloaded();case _error() when error != null:
+return error(_that.error,_that.stackTrace);case _data() when data != null:
+return data();case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-abstract class _$$downloadDatabaseImplCopyWith<$Res> {
-  factory _$$downloadDatabaseImplCopyWith(_$downloadDatabaseImpl value,
-          $Res Function(_$downloadDatabaseImpl) then) =
-      __$$downloadDatabaseImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int lastScehmaVersion, int newScehmaVersion});
-}
-
-/// @nodoc
-class __$$downloadDatabaseImplCopyWithImpl<$Res>
-    extends _$SplashControllerStateCopyWithImpl<$Res, _$downloadDatabaseImpl>
-    implements _$$downloadDatabaseImplCopyWith<$Res> {
-  __$$downloadDatabaseImplCopyWithImpl(_$downloadDatabaseImpl _value,
-      $Res Function(_$downloadDatabaseImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of SplashControllerState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? lastScehmaVersion = null,
-    Object? newScehmaVersion = null,
-  }) {
-    return _then(_$downloadDatabaseImpl(
-      null == lastScehmaVersion
-          ? _value.lastScehmaVersion
-          : lastScehmaVersion // ignore: cast_nullable_to_non_nullable
-              as int,
-      null == newScehmaVersion
-          ? _value.newScehmaVersion
-          : newScehmaVersion // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$downloadDatabaseImpl extends _downloadDatabase
-    with DiagnosticableTreeMixin {
-  const _$downloadDatabaseImpl(this.lastScehmaVersion, this.newScehmaVersion)
-      : super._();
-
-  @override
-  final int lastScehmaVersion;
-  @override
-  final int newScehmaVersion;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SplashControllerState.downloadDatabase(lastScehmaVersion: $lastScehmaVersion, newScehmaVersion: $newScehmaVersion)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(
-          DiagnosticsProperty('type', 'SplashControllerState.downloadDatabase'))
-      ..add(DiagnosticsProperty('lastScehmaVersion', lastScehmaVersion))
-      ..add(DiagnosticsProperty('newScehmaVersion', newScehmaVersion));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$downloadDatabaseImpl &&
-            (identical(other.lastScehmaVersion, lastScehmaVersion) ||
-                other.lastScehmaVersion == lastScehmaVersion) &&
-            (identical(other.newScehmaVersion, newScehmaVersion) ||
-                other.newScehmaVersion == newScehmaVersion));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, lastScehmaVersion, newScehmaVersion);
-
-  /// Create a copy of SplashControllerState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$downloadDatabaseImplCopyWith<_$downloadDatabaseImpl> get copyWith =>
-      __$$downloadDatabaseImplCopyWithImpl<_$downloadDatabaseImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int lastScehmaVersion, int newScehmaVersion)
-        downloadDatabase,
-    required TResult Function() loading,
-    required TResult Function() initial,
-    required TResult Function() notDownloaded,
-    required TResult Function(Object error, StackTrace? stackTrace) error,
-    required TResult Function() data,
-  }) {
-    return downloadDatabase(lastScehmaVersion, newScehmaVersion);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int lastScehmaVersion, int newScehmaVersion)?
-        downloadDatabase,
-    TResult? Function()? loading,
-    TResult? Function()? initial,
-    TResult? Function()? notDownloaded,
-    TResult? Function(Object error, StackTrace? stackTrace)? error,
-    TResult? Function()? data,
-  }) {
-    return downloadDatabase?.call(lastScehmaVersion, newScehmaVersion);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int lastScehmaVersion, int newScehmaVersion)?
-        downloadDatabase,
-    TResult Function()? loading,
-    TResult Function()? initial,
-    TResult Function()? notDownloaded,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function()? data,
-    required TResult orElse(),
-  }) {
-    if (downloadDatabase != null) {
-      return downloadDatabase(lastScehmaVersion, newScehmaVersion);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_downloadDatabase value) downloadDatabase,
-    required TResult Function(_loading value) loading,
-    required TResult Function(_initial value) initial,
-    required TResult Function(_notDownloaded value) notDownloaded,
-    required TResult Function(_error value) error,
-    required TResult Function(_data value) data,
-  }) {
-    return downloadDatabase(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_downloadDatabase value)? downloadDatabase,
-    TResult? Function(_loading value)? loading,
-    TResult? Function(_initial value)? initial,
-    TResult? Function(_notDownloaded value)? notDownloaded,
-    TResult? Function(_error value)? error,
-    TResult? Function(_data value)? data,
-  }) {
-    return downloadDatabase?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_downloadDatabase value)? downloadDatabase,
-    TResult Function(_loading value)? loading,
-    TResult Function(_initial value)? initial,
-    TResult Function(_notDownloaded value)? notDownloaded,
-    TResult Function(_error value)? error,
-    TResult Function(_data value)? data,
-    required TResult orElse(),
-  }) {
-    if (downloadDatabase != null) {
-      return downloadDatabase(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _downloadDatabase extends SplashControllerState {
-  const factory _downloadDatabase(
-          final int lastScehmaVersion, final int newScehmaVersion) =
-      _$downloadDatabaseImpl;
-  const _downloadDatabase._() : super._();
-
-  int get lastScehmaVersion;
-  int get newScehmaVersion;
-
-  /// Create a copy of SplashControllerState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$downloadDatabaseImplCopyWith<_$downloadDatabaseImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$loadingImplCopyWith<$Res> {
-  factory _$$loadingImplCopyWith(
-          _$loadingImpl value, $Res Function(_$loadingImpl) then) =
-      __$$loadingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$loadingImplCopyWithImpl<$Res>
-    extends _$SplashControllerStateCopyWithImpl<$Res, _$loadingImpl>
-    implements _$$loadingImplCopyWith<$Res> {
-  __$$loadingImplCopyWithImpl(
-      _$loadingImpl _value, $Res Function(_$loadingImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of SplashControllerState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$loadingImpl extends _loading with DiagnosticableTreeMixin {
-  const _$loadingImpl() : super._();
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SplashControllerState.loading()';
-  }
+class _downloadDatabase extends SplashControllerState with DiagnosticableTreeMixin {
+  const _downloadDatabase(this.lastScehmaVersion, this.newScehmaVersion): super._();
+  
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-        .add(DiagnosticsProperty('type', 'SplashControllerState.loading'));
-  }
+ final  int lastScehmaVersion;
+ final  int newScehmaVersion;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$loadingImpl);
-  }
+/// Create a copy of SplashControllerState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$downloadDatabaseCopyWith<_downloadDatabase> get copyWith => __$downloadDatabaseCopyWithImpl<_downloadDatabase>(this, _$identity);
 
-  @override
-  int get hashCode => runtimeType.hashCode;
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int lastScehmaVersion, int newScehmaVersion)
-        downloadDatabase,
-    required TResult Function() loading,
-    required TResult Function() initial,
-    required TResult Function() notDownloaded,
-    required TResult Function(Object error, StackTrace? stackTrace) error,
-    required TResult Function() data,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int lastScehmaVersion, int newScehmaVersion)?
-        downloadDatabase,
-    TResult? Function()? loading,
-    TResult? Function()? initial,
-    TResult? Function()? notDownloaded,
-    TResult? Function(Object error, StackTrace? stackTrace)? error,
-    TResult? Function()? data,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int lastScehmaVersion, int newScehmaVersion)?
-        downloadDatabase,
-    TResult Function()? loading,
-    TResult Function()? initial,
-    TResult Function()? notDownloaded,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function()? data,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_downloadDatabase value) downloadDatabase,
-    required TResult Function(_loading value) loading,
-    required TResult Function(_initial value) initial,
-    required TResult Function(_notDownloaded value) notDownloaded,
-    required TResult Function(_error value) error,
-    required TResult Function(_data value) data,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_downloadDatabase value)? downloadDatabase,
-    TResult? Function(_loading value)? loading,
-    TResult? Function(_initial value)? initial,
-    TResult? Function(_notDownloaded value)? notDownloaded,
-    TResult? Function(_error value)? error,
-    TResult? Function(_data value)? data,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_downloadDatabase value)? downloadDatabase,
-    TResult Function(_loading value)? loading,
-    TResult Function(_initial value)? initial,
-    TResult Function(_notDownloaded value)? notDownloaded,
-    TResult Function(_error value)? error,
-    TResult Function(_data value)? data,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'SplashControllerState.downloadDatabase'))
+    ..add(DiagnosticsProperty('lastScehmaVersion', lastScehmaVersion))..add(DiagnosticsProperty('newScehmaVersion', newScehmaVersion));
 }
 
-abstract class _loading extends SplashControllerState {
-  const factory _loading() = _$loadingImpl;
-  const _loading._() : super._();
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _downloadDatabase&&(identical(other.lastScehmaVersion, lastScehmaVersion) || other.lastScehmaVersion == lastScehmaVersion)&&(identical(other.newScehmaVersion, newScehmaVersion) || other.newScehmaVersion == newScehmaVersion));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,lastScehmaVersion,newScehmaVersion);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'SplashControllerState.downloadDatabase(lastScehmaVersion: $lastScehmaVersion, newScehmaVersion: $newScehmaVersion)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$initialImplCopyWith<$Res> {
-  factory _$$initialImplCopyWith(
-          _$initialImpl value, $Res Function(_$initialImpl) then) =
-      __$$initialImplCopyWithImpl<$Res>;
+abstract mixin class _$downloadDatabaseCopyWith<$Res> implements $SplashControllerStateCopyWith<$Res> {
+  factory _$downloadDatabaseCopyWith(_downloadDatabase value, $Res Function(_downloadDatabase) _then) = __$downloadDatabaseCopyWithImpl;
+@useResult
+$Res call({
+ int lastScehmaVersion, int newScehmaVersion
+});
+
+
+
+
+}
+/// @nodoc
+class __$downloadDatabaseCopyWithImpl<$Res>
+    implements _$downloadDatabaseCopyWith<$Res> {
+  __$downloadDatabaseCopyWithImpl(this._self, this._then);
+
+  final _downloadDatabase _self;
+  final $Res Function(_downloadDatabase) _then;
+
+/// Create a copy of SplashControllerState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? lastScehmaVersion = null,Object? newScehmaVersion = null,}) {
+  return _then(_downloadDatabase(
+null == lastScehmaVersion ? _self.lastScehmaVersion : lastScehmaVersion // ignore: cast_nullable_to_non_nullable
+as int,null == newScehmaVersion ? _self.newScehmaVersion : newScehmaVersion // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
 }
 
-/// @nodoc
-class __$$initialImplCopyWithImpl<$Res>
-    extends _$SplashControllerStateCopyWithImpl<$Res, _$initialImpl>
-    implements _$$initialImplCopyWith<$Res> {
-  __$$initialImplCopyWithImpl(
-      _$initialImpl _value, $Res Function(_$initialImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of SplashControllerState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$initialImpl extends _initial with DiagnosticableTreeMixin {
-  const _$initialImpl() : super._();
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SplashControllerState.initial()';
-  }
+class _loading extends SplashControllerState with DiagnosticableTreeMixin {
+  const _loading(): super._();
+  
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-        .add(DiagnosticsProperty('type', 'SplashControllerState.initial'));
-  }
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$initialImpl);
-  }
 
-  @override
-  int get hashCode => runtimeType.hashCode;
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int lastScehmaVersion, int newScehmaVersion)
-        downloadDatabase,
-    required TResult Function() loading,
-    required TResult Function() initial,
-    required TResult Function() notDownloaded,
-    required TResult Function(Object error, StackTrace? stackTrace) error,
-    required TResult Function() data,
-  }) {
-    return initial();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int lastScehmaVersion, int newScehmaVersion)?
-        downloadDatabase,
-    TResult? Function()? loading,
-    TResult? Function()? initial,
-    TResult? Function()? notDownloaded,
-    TResult? Function(Object error, StackTrace? stackTrace)? error,
-    TResult? Function()? data,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int lastScehmaVersion, int newScehmaVersion)?
-        downloadDatabase,
-    TResult Function()? loading,
-    TResult Function()? initial,
-    TResult Function()? notDownloaded,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function()? data,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_downloadDatabase value) downloadDatabase,
-    required TResult Function(_loading value) loading,
-    required TResult Function(_initial value) initial,
-    required TResult Function(_notDownloaded value) notDownloaded,
-    required TResult Function(_error value) error,
-    required TResult Function(_data value) data,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_downloadDatabase value)? downloadDatabase,
-    TResult? Function(_loading value)? loading,
-    TResult? Function(_initial value)? initial,
-    TResult? Function(_notDownloaded value)? notDownloaded,
-    TResult? Function(_error value)? error,
-    TResult? Function(_data value)? data,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_downloadDatabase value)? downloadDatabase,
-    TResult Function(_loading value)? loading,
-    TResult Function(_initial value)? initial,
-    TResult Function(_notDownloaded value)? notDownloaded,
-    TResult Function(_error value)? error,
-    TResult Function(_data value)? data,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'SplashControllerState.loading'))
+    ;
 }
 
-abstract class _initial extends SplashControllerState {
-  const factory _initial() = _$initialImpl;
-  const _initial._() : super._();
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _loading);
 }
 
-/// @nodoc
-abstract class _$$notDownloadedImplCopyWith<$Res> {
-  factory _$$notDownloadedImplCopyWith(
-          _$notDownloadedImpl value, $Res Function(_$notDownloadedImpl) then) =
-      __$$notDownloadedImplCopyWithImpl<$Res>;
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'SplashControllerState.loading()';
 }
 
-/// @nodoc
-class __$$notDownloadedImplCopyWithImpl<$Res>
-    extends _$SplashControllerStateCopyWithImpl<$Res, _$notDownloadedImpl>
-    implements _$$notDownloadedImplCopyWith<$Res> {
-  __$$notDownloadedImplCopyWithImpl(
-      _$notDownloadedImpl _value, $Res Function(_$notDownloadedImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of SplashControllerState
-  /// with the given fields replaced by the non-null parameter values.
 }
+
+
+
 
 /// @nodoc
 
-class _$notDownloadedImpl extends _notDownloaded with DiagnosticableTreeMixin {
-  const _$notDownloadedImpl() : super._();
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SplashControllerState.notDownloaded()';
-  }
+class _initial extends SplashControllerState with DiagnosticableTreeMixin {
+  const _initial(): super._();
+  
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(
-        DiagnosticsProperty('type', 'SplashControllerState.notDownloaded'));
-  }
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$notDownloadedImpl);
-  }
 
-  @override
-  int get hashCode => runtimeType.hashCode;
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int lastScehmaVersion, int newScehmaVersion)
-        downloadDatabase,
-    required TResult Function() loading,
-    required TResult Function() initial,
-    required TResult Function() notDownloaded,
-    required TResult Function(Object error, StackTrace? stackTrace) error,
-    required TResult Function() data,
-  }) {
-    return notDownloaded();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int lastScehmaVersion, int newScehmaVersion)?
-        downloadDatabase,
-    TResult? Function()? loading,
-    TResult? Function()? initial,
-    TResult? Function()? notDownloaded,
-    TResult? Function(Object error, StackTrace? stackTrace)? error,
-    TResult? Function()? data,
-  }) {
-    return notDownloaded?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int lastScehmaVersion, int newScehmaVersion)?
-        downloadDatabase,
-    TResult Function()? loading,
-    TResult Function()? initial,
-    TResult Function()? notDownloaded,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function()? data,
-    required TResult orElse(),
-  }) {
-    if (notDownloaded != null) {
-      return notDownloaded();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_downloadDatabase value) downloadDatabase,
-    required TResult Function(_loading value) loading,
-    required TResult Function(_initial value) initial,
-    required TResult Function(_notDownloaded value) notDownloaded,
-    required TResult Function(_error value) error,
-    required TResult Function(_data value) data,
-  }) {
-    return notDownloaded(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_downloadDatabase value)? downloadDatabase,
-    TResult? Function(_loading value)? loading,
-    TResult? Function(_initial value)? initial,
-    TResult? Function(_notDownloaded value)? notDownloaded,
-    TResult? Function(_error value)? error,
-    TResult? Function(_data value)? data,
-  }) {
-    return notDownloaded?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_downloadDatabase value)? downloadDatabase,
-    TResult Function(_loading value)? loading,
-    TResult Function(_initial value)? initial,
-    TResult Function(_notDownloaded value)? notDownloaded,
-    TResult Function(_error value)? error,
-    TResult Function(_data value)? data,
-    required TResult orElse(),
-  }) {
-    if (notDownloaded != null) {
-      return notDownloaded(this);
-    }
-    return orElse();
-  }
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'SplashControllerState.initial'))
+    ;
 }
 
-abstract class _notDownloaded extends SplashControllerState {
-  const factory _notDownloaded() = _$notDownloadedImpl;
-  const _notDownloaded._() : super._();
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _initial);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'SplashControllerState.initial()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _notDownloaded extends SplashControllerState with DiagnosticableTreeMixin {
+  const _notDownloaded(): super._();
+  
+
+
+
+
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'SplashControllerState.notDownloaded'))
+    ;
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _notDownloaded);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'SplashControllerState.notDownloaded()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _error extends SplashControllerState with DiagnosticableTreeMixin {
+  const _error(this.error, {this.stackTrace}): super._();
+  
+
+ final  Object error;
+ final  StackTrace? stackTrace;
+
+/// Create a copy of SplashControllerState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$errorCopyWith<_error> get copyWith => __$errorCopyWithImpl<_error>(this, _$identity);
+
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'SplashControllerState.error'))
+    ..add(DiagnosticsProperty('error', error))..add(DiagnosticsProperty('stackTrace', stackTrace));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _error&&const DeepCollectionEquality().equals(other.error, error)&&(identical(other.stackTrace, stackTrace) || other.stackTrace == stackTrace));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(error),stackTrace);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'SplashControllerState.error(error: $error, stackTrace: $stackTrace)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$errorImplCopyWith<$Res> {
-  factory _$$errorImplCopyWith(
-          _$errorImpl value, $Res Function(_$errorImpl) then) =
-      __$$errorImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Object error, StackTrace? stackTrace});
+abstract mixin class _$errorCopyWith<$Res> implements $SplashControllerStateCopyWith<$Res> {
+  factory _$errorCopyWith(_error value, $Res Function(_error) _then) = __$errorCopyWithImpl;
+@useResult
+$Res call({
+ Object error, StackTrace? stackTrace
+});
+
+
+
+
+}
+/// @nodoc
+class __$errorCopyWithImpl<$Res>
+    implements _$errorCopyWith<$Res> {
+  __$errorCopyWithImpl(this._self, this._then);
+
+  final _error _self;
+  final $Res Function(_error) _then;
+
+/// Create a copy of SplashControllerState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? error = null,Object? stackTrace = freezed,}) {
+  return _then(_error(
+null == error ? _self.error : error ,stackTrace: freezed == stackTrace ? _self.stackTrace : stackTrace // ignore: cast_nullable_to_non_nullable
+as StackTrace?,
+  ));
 }
 
-/// @nodoc
-class __$$errorImplCopyWithImpl<$Res>
-    extends _$SplashControllerStateCopyWithImpl<$Res, _$errorImpl>
-    implements _$$errorImplCopyWith<$Res> {
-  __$$errorImplCopyWithImpl(
-      _$errorImpl _value, $Res Function(_$errorImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of SplashControllerState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? error = null,
-    Object? stackTrace = freezed,
-  }) {
-    return _then(_$errorImpl(
-      null == error ? _value.error : error,
-      stackTrace: freezed == stackTrace
-          ? _value.stackTrace
-          : stackTrace // ignore: cast_nullable_to_non_nullable
-              as StackTrace?,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$errorImpl extends _error with DiagnosticableTreeMixin {
-  const _$errorImpl(this.error, {this.stackTrace}) : super._();
 
-  @override
-  final Object error;
-  @override
-  final StackTrace? stackTrace;
+class _data extends SplashControllerState with DiagnosticableTreeMixin {
+  const _data(): super._();
+  
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SplashControllerState.error(error: $error, stackTrace: $stackTrace)';
-  }
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'SplashControllerState.error'))
-      ..add(DiagnosticsProperty('error', error))
-      ..add(DiagnosticsProperty('stackTrace', stackTrace));
-  }
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$errorImpl &&
-            const DeepCollectionEquality().equals(other.error, error) &&
-            (identical(other.stackTrace, stackTrace) ||
-                other.stackTrace == stackTrace));
-  }
 
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(error), stackTrace);
 
-  /// Create a copy of SplashControllerState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$errorImplCopyWith<_$errorImpl> get copyWith =>
-      __$$errorImplCopyWithImpl<_$errorImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int lastScehmaVersion, int newScehmaVersion)
-        downloadDatabase,
-    required TResult Function() loading,
-    required TResult Function() initial,
-    required TResult Function() notDownloaded,
-    required TResult Function(Object error, StackTrace? stackTrace) error,
-    required TResult Function() data,
-  }) {
-    return error(this.error, stackTrace);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int lastScehmaVersion, int newScehmaVersion)?
-        downloadDatabase,
-    TResult? Function()? loading,
-    TResult? Function()? initial,
-    TResult? Function()? notDownloaded,
-    TResult? Function(Object error, StackTrace? stackTrace)? error,
-    TResult? Function()? data,
-  }) {
-    return error?.call(this.error, stackTrace);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int lastScehmaVersion, int newScehmaVersion)?
-        downloadDatabase,
-    TResult Function()? loading,
-    TResult Function()? initial,
-    TResult Function()? notDownloaded,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function()? data,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this.error, stackTrace);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_downloadDatabase value) downloadDatabase,
-    required TResult Function(_loading value) loading,
-    required TResult Function(_initial value) initial,
-    required TResult Function(_notDownloaded value) notDownloaded,
-    required TResult Function(_error value) error,
-    required TResult Function(_data value) data,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_downloadDatabase value)? downloadDatabase,
-    TResult? Function(_loading value)? loading,
-    TResult? Function(_initial value)? initial,
-    TResult? Function(_notDownloaded value)? notDownloaded,
-    TResult? Function(_error value)? error,
-    TResult? Function(_data value)? data,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_downloadDatabase value)? downloadDatabase,
-    TResult Function(_loading value)? loading,
-    TResult Function(_initial value)? initial,
-    TResult Function(_notDownloaded value)? notDownloaded,
-    TResult Function(_error value)? error,
-    TResult Function(_data value)? data,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'SplashControllerState.data'))
+    ;
 }
 
-abstract class _error extends SplashControllerState {
-  const factory _error(final Object error, {final StackTrace? stackTrace}) =
-      _$errorImpl;
-  const _error._() : super._();
-
-  Object get error;
-  StackTrace? get stackTrace;
-
-  /// Create a copy of SplashControllerState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$errorImplCopyWith<_$errorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _data);
 }
 
-/// @nodoc
-abstract class _$$dataImplCopyWith<$Res> {
-  factory _$$dataImplCopyWith(
-          _$dataImpl value, $Res Function(_$dataImpl) then) =
-      __$$dataImplCopyWithImpl<$Res>;
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'SplashControllerState.data()';
 }
 
-/// @nodoc
-class __$$dataImplCopyWithImpl<$Res>
-    extends _$SplashControllerStateCopyWithImpl<$Res, _$dataImpl>
-    implements _$$dataImplCopyWith<$Res> {
-  __$$dataImplCopyWithImpl(_$dataImpl _value, $Res Function(_$dataImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of SplashControllerState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
-/// @nodoc
 
-class _$dataImpl extends _data with DiagnosticableTreeMixin {
-  const _$dataImpl() : super._();
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SplashControllerState.data()';
-  }
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'SplashControllerState.data'));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$dataImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int lastScehmaVersion, int newScehmaVersion)
-        downloadDatabase,
-    required TResult Function() loading,
-    required TResult Function() initial,
-    required TResult Function() notDownloaded,
-    required TResult Function(Object error, StackTrace? stackTrace) error,
-    required TResult Function() data,
-  }) {
-    return data();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int lastScehmaVersion, int newScehmaVersion)?
-        downloadDatabase,
-    TResult? Function()? loading,
-    TResult? Function()? initial,
-    TResult? Function()? notDownloaded,
-    TResult? Function(Object error, StackTrace? stackTrace)? error,
-    TResult? Function()? data,
-  }) {
-    return data?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int lastScehmaVersion, int newScehmaVersion)?
-        downloadDatabase,
-    TResult Function()? loading,
-    TResult Function()? initial,
-    TResult Function()? notDownloaded,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function()? data,
-    required TResult orElse(),
-  }) {
-    if (data != null) {
-      return data();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_downloadDatabase value) downloadDatabase,
-    required TResult Function(_loading value) loading,
-    required TResult Function(_initial value) initial,
-    required TResult Function(_notDownloaded value) notDownloaded,
-    required TResult Function(_error value) error,
-    required TResult Function(_data value) data,
-  }) {
-    return data(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_downloadDatabase value)? downloadDatabase,
-    TResult? Function(_loading value)? loading,
-    TResult? Function(_initial value)? initial,
-    TResult? Function(_notDownloaded value)? notDownloaded,
-    TResult? Function(_error value)? error,
-    TResult? Function(_data value)? data,
-  }) {
-    return data?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_downloadDatabase value)? downloadDatabase,
-    TResult Function(_loading value)? loading,
-    TResult Function(_initial value)? initial,
-    TResult Function(_notDownloaded value)? notDownloaded,
-    TResult Function(_error value)? error,
-    TResult Function(_data value)? data,
-    required TResult orElse(),
-  }) {
-    if (data != null) {
-      return data(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _data extends SplashControllerState {
-  const factory _data() = _$dataImpl;
-  const _data._() : super._();
-}
+// dart format on

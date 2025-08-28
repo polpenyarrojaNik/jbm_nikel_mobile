@@ -3,7 +3,10 @@ import 'package:logger/logger.dart';
 
 bool get isInDebugMode {
   var inDebugMode = false;
-  assert(inDebugMode = true);
+  assert(() {
+    inDebugMode = true;
+    return true;
+  }());
   return inDebugMode;
 }
 

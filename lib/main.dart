@@ -7,13 +7,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:money2/money2.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 // import 'package:upgrader/upgrader.dart';
 
 import 'src/core/application/log_service.dart';
 import 'src/core/helpers/extension.dart';
 import 'src/core/presentation/app.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 void main() async {
   await runZonedGuarded(
@@ -35,7 +35,7 @@ void main() async {
             ..considerInAppFramesByDefault = false
             ..addInAppInclude('jbm_nikel_mobile');
           options.beforeSend =
-              (event, hint) async => _sentryBeforeSendOptions(event, hint);
+              (event, hint) async => _sentryBeforeSendOptions(event);
           options.tracesSampleRate = 1;
           options.enableAutoPerformanceTracing = false;
         },
@@ -71,10 +71,7 @@ void main() async {
   );
 }
 
-Future<SentryEvent?> _sentryBeforeSendOptions(
-  SentryEvent event,
-  Hint hint,
-) async {
+SentryEvent? _sentryBeforeSendOptions(SentryEvent event) {
   if (!kReleaseMode) {
     return null;
   }

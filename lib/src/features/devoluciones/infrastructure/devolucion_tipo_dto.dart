@@ -1,8 +1,8 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../domain/devolucion_tipo.dart';
 
 import '../../../core/infrastructure/remote_database.dart';
+import '../domain/devolucion_tipo.dart';
 
 part 'devolucion_tipo_dto.freezed.dart';
 part 'devolucion_tipo_dto.g.dart';
@@ -10,7 +10,7 @@ part 'devolucion_tipo_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class DevolucionTipoDTO
+abstract class DevolucionTipoDTO
     with _$DevolucionTipoDTO
     implements Insertable<DevolucionTipoDTO> {
   const DevolucionTipoDTO._();
@@ -55,7 +55,7 @@ class DevolucionTipoDTO
       descripcionCN: descripcionCN,
       descripcionEL: descripcionEL,
       lastUpdated: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
+      deleted: (deleted == 'S'),
     );
   }
 

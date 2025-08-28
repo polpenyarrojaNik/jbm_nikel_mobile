@@ -9,7 +9,7 @@ part 'sync_datetime_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class SyncDateTimeDTO
+abstract class SyncDateTimeDTO
     with _$SyncDateTimeDTO
     implements Insertable<SyncDateTimeDTO> {
   const SyncDateTimeDTO._();

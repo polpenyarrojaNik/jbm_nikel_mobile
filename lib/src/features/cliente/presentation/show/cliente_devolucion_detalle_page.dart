@@ -1,19 +1,19 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../core/presentation/common_widgets/error_message_widget.dart';
-import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
-import '../../infrastructure/cliente_repository.dart';
-import 'cliente_devolucion_linea_list_tile.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/chip_container.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
+import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/mobile_custom_separatos.dart';
+import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/common_widgets/row_field_text_detail.dart';
-import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../devoluciones/domain/devolucion.dart';
+import '../../infrastructure/cliente_repository.dart';
+import 'cliente_devolucion_linea_list_tile.dart';
 
 @RoutePage()
 class ClienteDevolucionDetallePage extends StatelessWidget {
@@ -38,7 +38,7 @@ class ClienteDevolucionDetallePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ClienteInfoContainer(devolucion: devolucion),
-                  gapH12,
+                  const Gap(12),
                   DevolucionInfoContainer(devolucion: devolucion),
                 ],
               ),
@@ -77,7 +77,7 @@ class ClienteInfoContainer extends StatelessWidget {
             ),
           ],
         ),
-        gapH4,
+        const Gap(4),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -86,7 +86,7 @@ class ClienteInfoContainer extends StatelessWidget {
                 '#${devolucion.clienteId} ${devolucion.nombre ?? ''}',
               ),
             ),
-            gapW12,
+            const Gap(12),
             Text(
               dateFormatter(
                 devolucion.fechaDevolucion.toLocal().toIso8601String(),
@@ -141,7 +141,7 @@ class DevolucionInfoContainer extends StatelessWidget {
                 S.of(context).cliente_show_clienteDevolucion_destino,
             value: devolucion.almacenDestino,
           ),
-        gapH12,
+        const Gap(12),
       ],
     );
   }

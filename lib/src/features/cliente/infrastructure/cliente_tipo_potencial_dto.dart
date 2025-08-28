@@ -10,7 +10,7 @@ part 'cliente_tipo_potencial_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class ClienteTipoPotencialDTO
+abstract class ClienteTipoPotencialDTO
     with _$ClienteTipoPotencialDTO
     implements Insertable<ClienteTipoPotencialDTO> {
   const ClienteTipoPotencialDTO._();
@@ -57,7 +57,7 @@ class ClienteTipoPotencialDTO
       descripcionCN: descripcionCN,
       descripcionEL: descripcionEL,
       lastUpdated: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
+      deleted: (deleted == 'S'),
     );
   }
 

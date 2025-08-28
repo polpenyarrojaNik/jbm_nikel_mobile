@@ -10,7 +10,7 @@ part 'cliente_contacto_imp_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class ClienteContactoImpDTO
+abstract class ClienteContactoImpDTO
     with _$ClienteContactoImpDTO
     implements Insertable<ClienteContactoImpDTO> {
   const ClienteContactoImpDTO._();

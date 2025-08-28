@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:gap/gap.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../../../generated/l10n.dart';
@@ -15,7 +16,6 @@ import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/phone_text_form_field.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
-import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../../usuario/application/usuario_notifier.dart';
 import '../../../visitas/domain/image_form_data.dart';
@@ -47,8 +47,7 @@ class ClienteContactoEditPage extends ConsumerWidget {
 
     ref.listen<AsyncValue<ClienteContactoImpEditPageData>>(
       clienteContactoEditPageControllerProvider(clienteImpParam),
-      (_, state) => state.maybeWhen(
-        orElse: () {},
+      (_, state) => state.whenOrNull(
         error: (error, _) {
           final errorMessage =
               (error is AppException)
@@ -65,7 +64,6 @@ class ClienteContactoEditPage extends ConsumerWidget {
           context.router.maybePop();
         },
         data: (contactoModificacionEditPageData) {
-          contactoModificacionEditPageData = contactoModificacionEditPageData;
           if (contactoModificacionEditPageData.isSent) {
             if (contactoModificacionEditPageData.clienteContacto != null) {
               context.showSuccessBar(
@@ -110,7 +108,7 @@ class ClienteContactoEditPage extends ConsumerWidget {
                 .cliente_show_clienteContacto_clienteContactoEditPage_editarContacto,
         actions: [
           IconButton(
-            onPressed: () => _saveClienteContactoImp(context, ref, formKey),
+            onPressed: () => _saveClienteContactoImp(ref, formKey),
             icon: const Icon(Icons.save),
           ),
         ],
@@ -159,7 +157,6 @@ class ClienteContactoEditPage extends ConsumerWidget {
   }
 
   void _saveClienteContactoImp(
-    BuildContext context,
     WidgetRef ref,
     GlobalKey<FormBuilderState> formKey,
   ) async {
@@ -210,25 +207,7 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
             Align(
               alignment: Alignment.centerRight,
               child: IconButton(
-                onPressed: () async {
-                  final imageFile = await context.router.push<File?>(
-                    CameraRoute(),
-                  );
-
-                  if (imageFile != null && context.mounted) {
-                    final imageFormData = await context.router
-                        .push<ImageFormData?>(
-                          ImageFormRoute(
-                            imageFile: imageFile,
-                            isFromCliente: true,
-                          ),
-                        );
-
-                    if (imageFormData != null) {
-                      setContactValues(imageFormData);
-                    }
-                  }
-                },
+                onPressed: () => scanBusinessCard(context),
                 icon: const Icon(Icons.qr_code_scanner),
               ),
             ),
@@ -366,6 +345,20 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
       'email': imageFormData.email,
     });
   }
+
+  void scanBusinessCard(BuildContext context) async {
+    final imageFile = await context.router.push<File?>(CameraRoute());
+
+    if (imageFile != null && context.mounted) {
+      final imageFormData = await context.router.push<ImageFormData?>(
+        ImageFormRoute(imageFile: imageFile, isFromCliente: true),
+      );
+
+      if (imageFormData != null) {
+        setContactValues(imageFormData);
+      }
+    }
+  }
 }
 
 class _CambiosPendientesListView extends ConsumerWidget {
@@ -394,7 +387,7 @@ class _CambiosPendientesListView extends ConsumerWidget {
                               .cliente_show_clienteContacto_clienteContactoEditPage_cambiosPendientesDeTramitar,
                           style: Theme.of(context).textTheme.titleSmall,
                         ),
-                        gapH4,
+                        const Gap(4),
                         ListView.separated(
                           shrinkWrap: true,
                           itemBuilder:

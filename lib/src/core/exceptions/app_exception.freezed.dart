@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,3029 +9,934 @@ part of 'app_exception.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 /// @nodoc
 mixin _$AppException {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int errorCode, String errorMessage)
-        restApiFailure,
-    required TResult Function(String errorMessage) authLocalFailure,
-    required TResult Function(String errorMessage) fetchLocalDataFailure,
-    required TResult Function(String errorMessage) createFileInCacheFailure,
-    required TResult Function(String tableToSync, String errorMessage)
-        syncFailure,
-    required TResult Function() clienteNotFound,
-    required TResult Function() articuloNotFound,
-    required TResult Function() pedidoVentaNotFound,
-    required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
-    required TResult Function(String errorMessage) insertDataFailure,
-    required TResult Function() notConnection,
-    required TResult Function() noSuchFileOrDirectory,
-    required TResult Function() unexpectedResponseFormat,
-    required TResult Function() unexpectedError,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult? Function(String errorMessage)? authLocalFailure,
-    TResult? Function(String errorMessage)? fetchLocalDataFailure,
-    TResult? Function(String errorMessage)? createFileInCacheFailure,
-    TResult? Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult? Function()? clienteNotFound,
-    TResult? Function()? articuloNotFound,
-    TResult? Function()? pedidoVentaNotFound,
-    TResult? Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult? Function(String errorMessage)? insertDataFailure,
-    TResult? Function()? notConnection,
-    TResult? Function()? noSuchFileOrDirectory,
-    TResult? Function()? unexpectedResponseFormat,
-    TResult? Function()? unexpectedError,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult Function(String errorMessage)? authLocalFailure,
-    TResult Function(String errorMessage)? fetchLocalDataFailure,
-    TResult Function(String errorMessage)? createFileInCacheFailure,
-    TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? clienteNotFound,
-    TResult Function()? articuloNotFound,
-    TResult Function()? pedidoVentaNotFound,
-    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult Function(String errorMessage)? insertDataFailure,
-    TResult Function()? notConnection,
-    TResult Function()? noSuchFileOrDirectory,
-    TResult Function()? unexpectedResponseFormat,
-    TResult Function()? unexpectedError,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(RestApiFailure value) restApiFailure,
-    required TResult Function(AuthLocalFailure value) authLocalFailure,
-    required TResult Function(FetchLocalDataFailure value)
-        fetchLocalDataFailure,
-    required TResult Function(CreateFileInCahceFailure value)
-        createFileInCacheFailure,
-    required TResult Function(SyncFailure value) syncFailure,
-    required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
-    required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
-    required TResult Function(PedidoVentaNotFoundFailure value)
-        pedidoVentaNotFound,
-    required TResult Function(PedidoVentaDeleteFailure value)
-        pedidoVentaDeleteFailure,
-    required TResult Function(InsertDataFailure value) insertDataFailure,
-    required TResult Function(NotConnectionFailure value) notConnection,
-    required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
-    required TResult Function(UnexpectedResponseFormat value)
-        unexpectedResponseFormat,
-    required TResult Function(UnexpectedError value) unexpectedError,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(RestApiFailure value)? restApiFailure,
-    TResult? Function(AuthLocalFailure value)? authLocalFailure,
-    TResult? Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult? Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult? Function(SyncFailure value)? syncFailure,
-    TResult? Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult? Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult? Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult? Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult? Function(InsertDataFailure value)? insertDataFailure,
-    TResult? Function(NotConnectionFailure value)? notConnection,
-    TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
-    TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-    TResult? Function(UnexpectedError value)? unexpectedError,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(RestApiFailure value)? restApiFailure,
-    TResult Function(AuthLocalFailure value)? authLocalFailure,
-    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult Function(InsertDataFailure value)? insertDataFailure,
-    TResult Function(NotConnectionFailure value)? notConnection,
-    TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
-    TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-    TResult Function(UnexpectedError value)? unexpectedError,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AppException);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AppException()';
+}
+
+
 }
 
 /// @nodoc
-abstract class $AppExceptionCopyWith<$Res> {
-  factory $AppExceptionCopyWith(
-          AppException value, $Res Function(AppException) then) =
-      _$AppExceptionCopyWithImpl<$Res, AppException>;
+class $AppExceptionCopyWith<$Res>  {
+$AppExceptionCopyWith(AppException _, $Res Function(AppException) __);
 }
 
-/// @nodoc
-class _$AppExceptionCopyWithImpl<$Res, $Val extends AppException>
-    implements $AppExceptionCopyWith<$Res> {
-  _$AppExceptionCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+/// Adds pattern-matching-related methods to [AppException].
+extension AppExceptionPatterns on AppException {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
 
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( RestApiFailure value)?  restApiFailure,TResult Function( AuthLocalFailure value)?  authLocalFailure,TResult Function( FetchLocalDataFailure value)?  fetchLocalDataFailure,TResult Function( CreateFileInCahceFailure value)?  createFileInCacheFailure,TResult Function( SyncFailure value)?  syncFailure,TResult Function( ClienteNotFoundFailure value)?  clienteNotFound,TResult Function( ArticuloNotFoundFailure value)?  articuloNotFound,TResult Function( PedidoVentaNotFoundFailure value)?  pedidoVentaNotFound,TResult Function( PedidoVentaDeleteFailure value)?  pedidoVentaDeleteFailure,TResult Function( InsertDataFailure value)?  insertDataFailure,TResult Function( NotConnectionFailure value)?  notConnection,TResult Function( ArchivoNoEncontrado value)?  noSuchFileOrDirectory,TResult Function( UnexpectedResponseFormat value)?  unexpectedResponseFormat,TResult Function( UnexpectedError value)?  unexpectedError,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case RestApiFailure() when restApiFailure != null:
+return restApiFailure(_that);case AuthLocalFailure() when authLocalFailure != null:
+return authLocalFailure(_that);case FetchLocalDataFailure() when fetchLocalDataFailure != null:
+return fetchLocalDataFailure(_that);case CreateFileInCahceFailure() when createFileInCacheFailure != null:
+return createFileInCacheFailure(_that);case SyncFailure() when syncFailure != null:
+return syncFailure(_that);case ClienteNotFoundFailure() when clienteNotFound != null:
+return clienteNotFound(_that);case ArticuloNotFoundFailure() when articuloNotFound != null:
+return articuloNotFound(_that);case PedidoVentaNotFoundFailure() when pedidoVentaNotFound != null:
+return pedidoVentaNotFound(_that);case PedidoVentaDeleteFailure() when pedidoVentaDeleteFailure != null:
+return pedidoVentaDeleteFailure(_that);case InsertDataFailure() when insertDataFailure != null:
+return insertDataFailure(_that);case NotConnectionFailure() when notConnection != null:
+return notConnection(_that);case ArchivoNoEncontrado() when noSuchFileOrDirectory != null:
+return noSuchFileOrDirectory(_that);case UnexpectedResponseFormat() when unexpectedResponseFormat != null:
+return unexpectedResponseFormat(_that);case UnexpectedError() when unexpectedError != null:
+return unexpectedError(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( RestApiFailure value)  restApiFailure,required TResult Function( AuthLocalFailure value)  authLocalFailure,required TResult Function( FetchLocalDataFailure value)  fetchLocalDataFailure,required TResult Function( CreateFileInCahceFailure value)  createFileInCacheFailure,required TResult Function( SyncFailure value)  syncFailure,required TResult Function( ClienteNotFoundFailure value)  clienteNotFound,required TResult Function( ArticuloNotFoundFailure value)  articuloNotFound,required TResult Function( PedidoVentaNotFoundFailure value)  pedidoVentaNotFound,required TResult Function( PedidoVentaDeleteFailure value)  pedidoVentaDeleteFailure,required TResult Function( InsertDataFailure value)  insertDataFailure,required TResult Function( NotConnectionFailure value)  notConnection,required TResult Function( ArchivoNoEncontrado value)  noSuchFileOrDirectory,required TResult Function( UnexpectedResponseFormat value)  unexpectedResponseFormat,required TResult Function( UnexpectedError value)  unexpectedError,}){
+final _that = this;
+switch (_that) {
+case RestApiFailure():
+return restApiFailure(_that);case AuthLocalFailure():
+return authLocalFailure(_that);case FetchLocalDataFailure():
+return fetchLocalDataFailure(_that);case CreateFileInCahceFailure():
+return createFileInCacheFailure(_that);case SyncFailure():
+return syncFailure(_that);case ClienteNotFoundFailure():
+return clienteNotFound(_that);case ArticuloNotFoundFailure():
+return articuloNotFound(_that);case PedidoVentaNotFoundFailure():
+return pedidoVentaNotFound(_that);case PedidoVentaDeleteFailure():
+return pedidoVentaDeleteFailure(_that);case InsertDataFailure():
+return insertDataFailure(_that);case NotConnectionFailure():
+return notConnection(_that);case ArchivoNoEncontrado():
+return noSuchFileOrDirectory(_that);case UnexpectedResponseFormat():
+return unexpectedResponseFormat(_that);case UnexpectedError():
+return unexpectedError(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( RestApiFailure value)?  restApiFailure,TResult? Function( AuthLocalFailure value)?  authLocalFailure,TResult? Function( FetchLocalDataFailure value)?  fetchLocalDataFailure,TResult? Function( CreateFileInCahceFailure value)?  createFileInCacheFailure,TResult? Function( SyncFailure value)?  syncFailure,TResult? Function( ClienteNotFoundFailure value)?  clienteNotFound,TResult? Function( ArticuloNotFoundFailure value)?  articuloNotFound,TResult? Function( PedidoVentaNotFoundFailure value)?  pedidoVentaNotFound,TResult? Function( PedidoVentaDeleteFailure value)?  pedidoVentaDeleteFailure,TResult? Function( InsertDataFailure value)?  insertDataFailure,TResult? Function( NotConnectionFailure value)?  notConnection,TResult? Function( ArchivoNoEncontrado value)?  noSuchFileOrDirectory,TResult? Function( UnexpectedResponseFormat value)?  unexpectedResponseFormat,TResult? Function( UnexpectedError value)?  unexpectedError,}){
+final _that = this;
+switch (_that) {
+case RestApiFailure() when restApiFailure != null:
+return restApiFailure(_that);case AuthLocalFailure() when authLocalFailure != null:
+return authLocalFailure(_that);case FetchLocalDataFailure() when fetchLocalDataFailure != null:
+return fetchLocalDataFailure(_that);case CreateFileInCahceFailure() when createFileInCacheFailure != null:
+return createFileInCacheFailure(_that);case SyncFailure() when syncFailure != null:
+return syncFailure(_that);case ClienteNotFoundFailure() when clienteNotFound != null:
+return clienteNotFound(_that);case ArticuloNotFoundFailure() when articuloNotFound != null:
+return articuloNotFound(_that);case PedidoVentaNotFoundFailure() when pedidoVentaNotFound != null:
+return pedidoVentaNotFound(_that);case PedidoVentaDeleteFailure() when pedidoVentaDeleteFailure != null:
+return pedidoVentaDeleteFailure(_that);case InsertDataFailure() when insertDataFailure != null:
+return insertDataFailure(_that);case NotConnectionFailure() when notConnection != null:
+return notConnection(_that);case ArchivoNoEncontrado() when noSuchFileOrDirectory != null:
+return noSuchFileOrDirectory(_that);case UnexpectedResponseFormat() when unexpectedResponseFormat != null:
+return unexpectedResponseFormat(_that);case UnexpectedError() when unexpectedError != null:
+return unexpectedError(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( int errorCode,  String errorMessage)?  restApiFailure,TResult Function( String errorMessage)?  authLocalFailure,TResult Function( String errorMessage)?  fetchLocalDataFailure,TResult Function( String errorMessage)?  createFileInCacheFailure,TResult Function( String tableToSync,  String errorMessage)?  syncFailure,TResult Function()?  clienteNotFound,TResult Function()?  articuloNotFound,TResult Function()?  pedidoVentaNotFound,TResult Function( String errorMessage)?  pedidoVentaDeleteFailure,TResult Function( String errorMessage)?  insertDataFailure,TResult Function()?  notConnection,TResult Function()?  noSuchFileOrDirectory,TResult Function()?  unexpectedResponseFormat,TResult Function()?  unexpectedError,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case RestApiFailure() when restApiFailure != null:
+return restApiFailure(_that.errorCode,_that.errorMessage);case AuthLocalFailure() when authLocalFailure != null:
+return authLocalFailure(_that.errorMessage);case FetchLocalDataFailure() when fetchLocalDataFailure != null:
+return fetchLocalDataFailure(_that.errorMessage);case CreateFileInCahceFailure() when createFileInCacheFailure != null:
+return createFileInCacheFailure(_that.errorMessage);case SyncFailure() when syncFailure != null:
+return syncFailure(_that.tableToSync,_that.errorMessage);case ClienteNotFoundFailure() when clienteNotFound != null:
+return clienteNotFound();case ArticuloNotFoundFailure() when articuloNotFound != null:
+return articuloNotFound();case PedidoVentaNotFoundFailure() when pedidoVentaNotFound != null:
+return pedidoVentaNotFound();case PedidoVentaDeleteFailure() when pedidoVentaDeleteFailure != null:
+return pedidoVentaDeleteFailure(_that.errorMessage);case InsertDataFailure() when insertDataFailure != null:
+return insertDataFailure(_that.errorMessage);case NotConnectionFailure() when notConnection != null:
+return notConnection();case ArchivoNoEncontrado() when noSuchFileOrDirectory != null:
+return noSuchFileOrDirectory();case UnexpectedResponseFormat() when unexpectedResponseFormat != null:
+return unexpectedResponseFormat();case UnexpectedError() when unexpectedError != null:
+return unexpectedError();case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( int errorCode,  String errorMessage)  restApiFailure,required TResult Function( String errorMessage)  authLocalFailure,required TResult Function( String errorMessage)  fetchLocalDataFailure,required TResult Function( String errorMessage)  createFileInCacheFailure,required TResult Function( String tableToSync,  String errorMessage)  syncFailure,required TResult Function()  clienteNotFound,required TResult Function()  articuloNotFound,required TResult Function()  pedidoVentaNotFound,required TResult Function( String errorMessage)  pedidoVentaDeleteFailure,required TResult Function( String errorMessage)  insertDataFailure,required TResult Function()  notConnection,required TResult Function()  noSuchFileOrDirectory,required TResult Function()  unexpectedResponseFormat,required TResult Function()  unexpectedError,}) {final _that = this;
+switch (_that) {
+case RestApiFailure():
+return restApiFailure(_that.errorCode,_that.errorMessage);case AuthLocalFailure():
+return authLocalFailure(_that.errorMessage);case FetchLocalDataFailure():
+return fetchLocalDataFailure(_that.errorMessage);case CreateFileInCahceFailure():
+return createFileInCacheFailure(_that.errorMessage);case SyncFailure():
+return syncFailure(_that.tableToSync,_that.errorMessage);case ClienteNotFoundFailure():
+return clienteNotFound();case ArticuloNotFoundFailure():
+return articuloNotFound();case PedidoVentaNotFoundFailure():
+return pedidoVentaNotFound();case PedidoVentaDeleteFailure():
+return pedidoVentaDeleteFailure(_that.errorMessage);case InsertDataFailure():
+return insertDataFailure(_that.errorMessage);case NotConnectionFailure():
+return notConnection();case ArchivoNoEncontrado():
+return noSuchFileOrDirectory();case UnexpectedResponseFormat():
+return unexpectedResponseFormat();case UnexpectedError():
+return unexpectedError();case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( int errorCode,  String errorMessage)?  restApiFailure,TResult? Function( String errorMessage)?  authLocalFailure,TResult? Function( String errorMessage)?  fetchLocalDataFailure,TResult? Function( String errorMessage)?  createFileInCacheFailure,TResult? Function( String tableToSync,  String errorMessage)?  syncFailure,TResult? Function()?  clienteNotFound,TResult? Function()?  articuloNotFound,TResult? Function()?  pedidoVentaNotFound,TResult? Function( String errorMessage)?  pedidoVentaDeleteFailure,TResult? Function( String errorMessage)?  insertDataFailure,TResult? Function()?  notConnection,TResult? Function()?  noSuchFileOrDirectory,TResult? Function()?  unexpectedResponseFormat,TResult? Function()?  unexpectedError,}) {final _that = this;
+switch (_that) {
+case RestApiFailure() when restApiFailure != null:
+return restApiFailure(_that.errorCode,_that.errorMessage);case AuthLocalFailure() when authLocalFailure != null:
+return authLocalFailure(_that.errorMessage);case FetchLocalDataFailure() when fetchLocalDataFailure != null:
+return fetchLocalDataFailure(_that.errorMessage);case CreateFileInCahceFailure() when createFileInCacheFailure != null:
+return createFileInCacheFailure(_that.errorMessage);case SyncFailure() when syncFailure != null:
+return syncFailure(_that.tableToSync,_that.errorMessage);case ClienteNotFoundFailure() when clienteNotFound != null:
+return clienteNotFound();case ArticuloNotFoundFailure() when articuloNotFound != null:
+return articuloNotFound();case PedidoVentaNotFoundFailure() when pedidoVentaNotFound != null:
+return pedidoVentaNotFound();case PedidoVentaDeleteFailure() when pedidoVentaDeleteFailure != null:
+return pedidoVentaDeleteFailure(_that.errorMessage);case InsertDataFailure() when insertDataFailure != null:
+return insertDataFailure(_that.errorMessage);case NotConnectionFailure() when notConnection != null:
+return notConnection();case ArchivoNoEncontrado() when noSuchFileOrDirectory != null:
+return noSuchFileOrDirectory();case UnexpectedResponseFormat() when unexpectedResponseFormat != null:
+return unexpectedResponseFormat();case UnexpectedError() when unexpectedError != null:
+return unexpectedError();case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-abstract class _$$RestApiFailureImplCopyWith<$Res> {
-  factory _$$RestApiFailureImplCopyWith(_$RestApiFailureImpl value,
-          $Res Function(_$RestApiFailureImpl) then) =
-      __$$RestApiFailureImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int errorCode, String errorMessage});
-}
-
-/// @nodoc
-class __$$RestApiFailureImplCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res, _$RestApiFailureImpl>
-    implements _$$RestApiFailureImplCopyWith<$Res> {
-  __$$RestApiFailureImplCopyWithImpl(
-      _$RestApiFailureImpl _value, $Res Function(_$RestApiFailureImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? errorCode = null,
-    Object? errorMessage = null,
-  }) {
-    return _then(_$RestApiFailureImpl(
-      null == errorCode
-          ? _value.errorCode
-          : errorCode // ignore: cast_nullable_to_non_nullable
-              as int,
-      null == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$RestApiFailureImpl implements RestApiFailure {
-  const _$RestApiFailureImpl(this.errorCode, this.errorMessage);
-
-  @override
-  final int errorCode;
-  @override
-  final String errorMessage;
-
-  @override
-  String toString() {
-    return 'AppException.restApiFailure(errorCode: $errorCode, errorMessage: $errorMessage)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$RestApiFailureImpl &&
-            (identical(other.errorCode, errorCode) ||
-                other.errorCode == errorCode) &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, errorCode, errorMessage);
-
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$RestApiFailureImplCopyWith<_$RestApiFailureImpl> get copyWith =>
-      __$$RestApiFailureImplCopyWithImpl<_$RestApiFailureImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int errorCode, String errorMessage)
-        restApiFailure,
-    required TResult Function(String errorMessage) authLocalFailure,
-    required TResult Function(String errorMessage) fetchLocalDataFailure,
-    required TResult Function(String errorMessage) createFileInCacheFailure,
-    required TResult Function(String tableToSync, String errorMessage)
-        syncFailure,
-    required TResult Function() clienteNotFound,
-    required TResult Function() articuloNotFound,
-    required TResult Function() pedidoVentaNotFound,
-    required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
-    required TResult Function(String errorMessage) insertDataFailure,
-    required TResult Function() notConnection,
-    required TResult Function() noSuchFileOrDirectory,
-    required TResult Function() unexpectedResponseFormat,
-    required TResult Function() unexpectedError,
-  }) {
-    return restApiFailure(errorCode, errorMessage);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult? Function(String errorMessage)? authLocalFailure,
-    TResult? Function(String errorMessage)? fetchLocalDataFailure,
-    TResult? Function(String errorMessage)? createFileInCacheFailure,
-    TResult? Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult? Function()? clienteNotFound,
-    TResult? Function()? articuloNotFound,
-    TResult? Function()? pedidoVentaNotFound,
-    TResult? Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult? Function(String errorMessage)? insertDataFailure,
-    TResult? Function()? notConnection,
-    TResult? Function()? noSuchFileOrDirectory,
-    TResult? Function()? unexpectedResponseFormat,
-    TResult? Function()? unexpectedError,
-  }) {
-    return restApiFailure?.call(errorCode, errorMessage);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult Function(String errorMessage)? authLocalFailure,
-    TResult Function(String errorMessage)? fetchLocalDataFailure,
-    TResult Function(String errorMessage)? createFileInCacheFailure,
-    TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? clienteNotFound,
-    TResult Function()? articuloNotFound,
-    TResult Function()? pedidoVentaNotFound,
-    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult Function(String errorMessage)? insertDataFailure,
-    TResult Function()? notConnection,
-    TResult Function()? noSuchFileOrDirectory,
-    TResult Function()? unexpectedResponseFormat,
-    TResult Function()? unexpectedError,
-    required TResult orElse(),
-  }) {
-    if (restApiFailure != null) {
-      return restApiFailure(errorCode, errorMessage);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(RestApiFailure value) restApiFailure,
-    required TResult Function(AuthLocalFailure value) authLocalFailure,
-    required TResult Function(FetchLocalDataFailure value)
-        fetchLocalDataFailure,
-    required TResult Function(CreateFileInCahceFailure value)
-        createFileInCacheFailure,
-    required TResult Function(SyncFailure value) syncFailure,
-    required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
-    required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
-    required TResult Function(PedidoVentaNotFoundFailure value)
-        pedidoVentaNotFound,
-    required TResult Function(PedidoVentaDeleteFailure value)
-        pedidoVentaDeleteFailure,
-    required TResult Function(InsertDataFailure value) insertDataFailure,
-    required TResult Function(NotConnectionFailure value) notConnection,
-    required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
-    required TResult Function(UnexpectedResponseFormat value)
-        unexpectedResponseFormat,
-    required TResult Function(UnexpectedError value) unexpectedError,
-  }) {
-    return restApiFailure(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(RestApiFailure value)? restApiFailure,
-    TResult? Function(AuthLocalFailure value)? authLocalFailure,
-    TResult? Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult? Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult? Function(SyncFailure value)? syncFailure,
-    TResult? Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult? Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult? Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult? Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult? Function(InsertDataFailure value)? insertDataFailure,
-    TResult? Function(NotConnectionFailure value)? notConnection,
-    TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
-    TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-    TResult? Function(UnexpectedError value)? unexpectedError,
-  }) {
-    return restApiFailure?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(RestApiFailure value)? restApiFailure,
-    TResult Function(AuthLocalFailure value)? authLocalFailure,
-    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult Function(InsertDataFailure value)? insertDataFailure,
-    TResult Function(NotConnectionFailure value)? notConnection,
-    TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
-    TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-    TResult Function(UnexpectedError value)? unexpectedError,
-    required TResult orElse(),
-  }) {
-    if (restApiFailure != null) {
-      return restApiFailure(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class RestApiFailure implements AppException {
-  const factory RestApiFailure(final int errorCode, final String errorMessage) =
-      _$RestApiFailureImpl;
-
-  int get errorCode;
-  String get errorMessage;
-
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$RestApiFailureImplCopyWith<_$RestApiFailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$AuthLocalFailureImplCopyWith<$Res> {
-  factory _$$AuthLocalFailureImplCopyWith(_$AuthLocalFailureImpl value,
-          $Res Function(_$AuthLocalFailureImpl) then) =
-      __$$AuthLocalFailureImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String errorMessage});
-}
-
-/// @nodoc
-class __$$AuthLocalFailureImplCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res, _$AuthLocalFailureImpl>
-    implements _$$AuthLocalFailureImplCopyWith<$Res> {
-  __$$AuthLocalFailureImplCopyWithImpl(_$AuthLocalFailureImpl _value,
-      $Res Function(_$AuthLocalFailureImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? errorMessage = null,
-  }) {
-    return _then(_$AuthLocalFailureImpl(
-      null == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$AuthLocalFailureImpl implements AuthLocalFailure {
-  const _$AuthLocalFailureImpl(this.errorMessage);
 
-  @override
-  final String errorMessage;
+class RestApiFailure implements AppException {
+  const RestApiFailure(this.errorCode, this.errorMessage);
+  
 
-  @override
-  String toString() {
-    return 'AppException.authLocalFailure(errorMessage: $errorMessage)';
-  }
+ final  int errorCode;
+ final  String errorMessage;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AuthLocalFailureImpl &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
-  }
+/// Create a copy of AppException
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$RestApiFailureCopyWith<RestApiFailure> get copyWith => _$RestApiFailureCopyWithImpl<RestApiFailure>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, errorMessage);
 
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AuthLocalFailureImplCopyWith<_$AuthLocalFailureImpl> get copyWith =>
-      __$$AuthLocalFailureImplCopyWithImpl<_$AuthLocalFailureImpl>(
-          this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int errorCode, String errorMessage)
-        restApiFailure,
-    required TResult Function(String errorMessage) authLocalFailure,
-    required TResult Function(String errorMessage) fetchLocalDataFailure,
-    required TResult Function(String errorMessage) createFileInCacheFailure,
-    required TResult Function(String tableToSync, String errorMessage)
-        syncFailure,
-    required TResult Function() clienteNotFound,
-    required TResult Function() articuloNotFound,
-    required TResult Function() pedidoVentaNotFound,
-    required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
-    required TResult Function(String errorMessage) insertDataFailure,
-    required TResult Function() notConnection,
-    required TResult Function() noSuchFileOrDirectory,
-    required TResult Function() unexpectedResponseFormat,
-    required TResult Function() unexpectedError,
-  }) {
-    return authLocalFailure(errorMessage);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult? Function(String errorMessage)? authLocalFailure,
-    TResult? Function(String errorMessage)? fetchLocalDataFailure,
-    TResult? Function(String errorMessage)? createFileInCacheFailure,
-    TResult? Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult? Function()? clienteNotFound,
-    TResult? Function()? articuloNotFound,
-    TResult? Function()? pedidoVentaNotFound,
-    TResult? Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult? Function(String errorMessage)? insertDataFailure,
-    TResult? Function()? notConnection,
-    TResult? Function()? noSuchFileOrDirectory,
-    TResult? Function()? unexpectedResponseFormat,
-    TResult? Function()? unexpectedError,
-  }) {
-    return authLocalFailure?.call(errorMessage);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult Function(String errorMessage)? authLocalFailure,
-    TResult Function(String errorMessage)? fetchLocalDataFailure,
-    TResult Function(String errorMessage)? createFileInCacheFailure,
-    TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? clienteNotFound,
-    TResult Function()? articuloNotFound,
-    TResult Function()? pedidoVentaNotFound,
-    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult Function(String errorMessage)? insertDataFailure,
-    TResult Function()? notConnection,
-    TResult Function()? noSuchFileOrDirectory,
-    TResult Function()? unexpectedResponseFormat,
-    TResult Function()? unexpectedError,
-    required TResult orElse(),
-  }) {
-    if (authLocalFailure != null) {
-      return authLocalFailure(errorMessage);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(RestApiFailure value) restApiFailure,
-    required TResult Function(AuthLocalFailure value) authLocalFailure,
-    required TResult Function(FetchLocalDataFailure value)
-        fetchLocalDataFailure,
-    required TResult Function(CreateFileInCahceFailure value)
-        createFileInCacheFailure,
-    required TResult Function(SyncFailure value) syncFailure,
-    required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
-    required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
-    required TResult Function(PedidoVentaNotFoundFailure value)
-        pedidoVentaNotFound,
-    required TResult Function(PedidoVentaDeleteFailure value)
-        pedidoVentaDeleteFailure,
-    required TResult Function(InsertDataFailure value) insertDataFailure,
-    required TResult Function(NotConnectionFailure value) notConnection,
-    required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
-    required TResult Function(UnexpectedResponseFormat value)
-        unexpectedResponseFormat,
-    required TResult Function(UnexpectedError value) unexpectedError,
-  }) {
-    return authLocalFailure(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(RestApiFailure value)? restApiFailure,
-    TResult? Function(AuthLocalFailure value)? authLocalFailure,
-    TResult? Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult? Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult? Function(SyncFailure value)? syncFailure,
-    TResult? Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult? Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult? Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult? Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult? Function(InsertDataFailure value)? insertDataFailure,
-    TResult? Function(NotConnectionFailure value)? notConnection,
-    TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
-    TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-    TResult? Function(UnexpectedError value)? unexpectedError,
-  }) {
-    return authLocalFailure?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(RestApiFailure value)? restApiFailure,
-    TResult Function(AuthLocalFailure value)? authLocalFailure,
-    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult Function(InsertDataFailure value)? insertDataFailure,
-    TResult Function(NotConnectionFailure value)? notConnection,
-    TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
-    TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-    TResult Function(UnexpectedError value)? unexpectedError,
-    required TResult orElse(),
-  }) {
-    if (authLocalFailure != null) {
-      return authLocalFailure(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RestApiFailure&&(identical(other.errorCode, errorCode) || other.errorCode == errorCode)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
-abstract class AuthLocalFailure implements AppException {
-  const factory AuthLocalFailure(final String errorMessage) =
-      _$AuthLocalFailureImpl;
 
-  String get errorMessage;
+@override
+int get hashCode => Object.hash(runtimeType,errorCode,errorMessage);
 
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AuthLocalFailureImplCopyWith<_$AuthLocalFailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'AppException.restApiFailure(errorCode: $errorCode, errorMessage: $errorMessage)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$FetchLocalDataFailureImplCopyWith<$Res> {
-  factory _$$FetchLocalDataFailureImplCopyWith(
-          _$FetchLocalDataFailureImpl value,
-          $Res Function(_$FetchLocalDataFailureImpl) then) =
-      __$$FetchLocalDataFailureImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String errorMessage});
+abstract mixin class $RestApiFailureCopyWith<$Res> implements $AppExceptionCopyWith<$Res> {
+  factory $RestApiFailureCopyWith(RestApiFailure value, $Res Function(RestApiFailure) _then) = _$RestApiFailureCopyWithImpl;
+@useResult
+$Res call({
+ int errorCode, String errorMessage
+});
+
+
+
+
+}
+/// @nodoc
+class _$RestApiFailureCopyWithImpl<$Res>
+    implements $RestApiFailureCopyWith<$Res> {
+  _$RestApiFailureCopyWithImpl(this._self, this._then);
+
+  final RestApiFailure _self;
+  final $Res Function(RestApiFailure) _then;
+
+/// Create a copy of AppException
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? errorCode = null,Object? errorMessage = null,}) {
+  return _then(RestApiFailure(
+null == errorCode ? _self.errorCode : errorCode // ignore: cast_nullable_to_non_nullable
+as int,null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-class __$$FetchLocalDataFailureImplCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res, _$FetchLocalDataFailureImpl>
-    implements _$$FetchLocalDataFailureImplCopyWith<$Res> {
-  __$$FetchLocalDataFailureImplCopyWithImpl(_$FetchLocalDataFailureImpl _value,
-      $Res Function(_$FetchLocalDataFailureImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? errorMessage = null,
-  }) {
-    return _then(_$FetchLocalDataFailureImpl(
-      null == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$FetchLocalDataFailureImpl implements FetchLocalDataFailure {
-  const _$FetchLocalDataFailureImpl(this.errorMessage);
 
-  @override
-  final String errorMessage;
+class AuthLocalFailure implements AppException {
+  const AuthLocalFailure(this.errorMessage);
+  
 
-  @override
-  String toString() {
-    return 'AppException.fetchLocalDataFailure(errorMessage: $errorMessage)';
-  }
+ final  String errorMessage;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$FetchLocalDataFailureImpl &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
-  }
+/// Create a copy of AppException
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$AuthLocalFailureCopyWith<AuthLocalFailure> get copyWith => _$AuthLocalFailureCopyWithImpl<AuthLocalFailure>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, errorMessage);
 
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$FetchLocalDataFailureImplCopyWith<_$FetchLocalDataFailureImpl>
-      get copyWith => __$$FetchLocalDataFailureImplCopyWithImpl<
-          _$FetchLocalDataFailureImpl>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int errorCode, String errorMessage)
-        restApiFailure,
-    required TResult Function(String errorMessage) authLocalFailure,
-    required TResult Function(String errorMessage) fetchLocalDataFailure,
-    required TResult Function(String errorMessage) createFileInCacheFailure,
-    required TResult Function(String tableToSync, String errorMessage)
-        syncFailure,
-    required TResult Function() clienteNotFound,
-    required TResult Function() articuloNotFound,
-    required TResult Function() pedidoVentaNotFound,
-    required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
-    required TResult Function(String errorMessage) insertDataFailure,
-    required TResult Function() notConnection,
-    required TResult Function() noSuchFileOrDirectory,
-    required TResult Function() unexpectedResponseFormat,
-    required TResult Function() unexpectedError,
-  }) {
-    return fetchLocalDataFailure(errorMessage);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult? Function(String errorMessage)? authLocalFailure,
-    TResult? Function(String errorMessage)? fetchLocalDataFailure,
-    TResult? Function(String errorMessage)? createFileInCacheFailure,
-    TResult? Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult? Function()? clienteNotFound,
-    TResult? Function()? articuloNotFound,
-    TResult? Function()? pedidoVentaNotFound,
-    TResult? Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult? Function(String errorMessage)? insertDataFailure,
-    TResult? Function()? notConnection,
-    TResult? Function()? noSuchFileOrDirectory,
-    TResult? Function()? unexpectedResponseFormat,
-    TResult? Function()? unexpectedError,
-  }) {
-    return fetchLocalDataFailure?.call(errorMessage);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult Function(String errorMessage)? authLocalFailure,
-    TResult Function(String errorMessage)? fetchLocalDataFailure,
-    TResult Function(String errorMessage)? createFileInCacheFailure,
-    TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? clienteNotFound,
-    TResult Function()? articuloNotFound,
-    TResult Function()? pedidoVentaNotFound,
-    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult Function(String errorMessage)? insertDataFailure,
-    TResult Function()? notConnection,
-    TResult Function()? noSuchFileOrDirectory,
-    TResult Function()? unexpectedResponseFormat,
-    TResult Function()? unexpectedError,
-    required TResult orElse(),
-  }) {
-    if (fetchLocalDataFailure != null) {
-      return fetchLocalDataFailure(errorMessage);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(RestApiFailure value) restApiFailure,
-    required TResult Function(AuthLocalFailure value) authLocalFailure,
-    required TResult Function(FetchLocalDataFailure value)
-        fetchLocalDataFailure,
-    required TResult Function(CreateFileInCahceFailure value)
-        createFileInCacheFailure,
-    required TResult Function(SyncFailure value) syncFailure,
-    required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
-    required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
-    required TResult Function(PedidoVentaNotFoundFailure value)
-        pedidoVentaNotFound,
-    required TResult Function(PedidoVentaDeleteFailure value)
-        pedidoVentaDeleteFailure,
-    required TResult Function(InsertDataFailure value) insertDataFailure,
-    required TResult Function(NotConnectionFailure value) notConnection,
-    required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
-    required TResult Function(UnexpectedResponseFormat value)
-        unexpectedResponseFormat,
-    required TResult Function(UnexpectedError value) unexpectedError,
-  }) {
-    return fetchLocalDataFailure(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(RestApiFailure value)? restApiFailure,
-    TResult? Function(AuthLocalFailure value)? authLocalFailure,
-    TResult? Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult? Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult? Function(SyncFailure value)? syncFailure,
-    TResult? Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult? Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult? Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult? Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult? Function(InsertDataFailure value)? insertDataFailure,
-    TResult? Function(NotConnectionFailure value)? notConnection,
-    TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
-    TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-    TResult? Function(UnexpectedError value)? unexpectedError,
-  }) {
-    return fetchLocalDataFailure?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(RestApiFailure value)? restApiFailure,
-    TResult Function(AuthLocalFailure value)? authLocalFailure,
-    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult Function(InsertDataFailure value)? insertDataFailure,
-    TResult Function(NotConnectionFailure value)? notConnection,
-    TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
-    TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-    TResult Function(UnexpectedError value)? unexpectedError,
-    required TResult orElse(),
-  }) {
-    if (fetchLocalDataFailure != null) {
-      return fetchLocalDataFailure(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthLocalFailure&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
-abstract class FetchLocalDataFailure implements AppException {
-  const factory FetchLocalDataFailure(final String errorMessage) =
-      _$FetchLocalDataFailureImpl;
 
-  String get errorMessage;
+@override
+int get hashCode => Object.hash(runtimeType,errorMessage);
 
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FetchLocalDataFailureImplCopyWith<_$FetchLocalDataFailureImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'AppException.authLocalFailure(errorMessage: $errorMessage)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$CreateFileInCahceFailureImplCopyWith<$Res> {
-  factory _$$CreateFileInCahceFailureImplCopyWith(
-          _$CreateFileInCahceFailureImpl value,
-          $Res Function(_$CreateFileInCahceFailureImpl) then) =
-      __$$CreateFileInCahceFailureImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String errorMessage});
+abstract mixin class $AuthLocalFailureCopyWith<$Res> implements $AppExceptionCopyWith<$Res> {
+  factory $AuthLocalFailureCopyWith(AuthLocalFailure value, $Res Function(AuthLocalFailure) _then) = _$AuthLocalFailureCopyWithImpl;
+@useResult
+$Res call({
+ String errorMessage
+});
+
+
+
+
+}
+/// @nodoc
+class _$AuthLocalFailureCopyWithImpl<$Res>
+    implements $AuthLocalFailureCopyWith<$Res> {
+  _$AuthLocalFailureCopyWithImpl(this._self, this._then);
+
+  final AuthLocalFailure _self;
+  final $Res Function(AuthLocalFailure) _then;
+
+/// Create a copy of AppException
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? errorMessage = null,}) {
+  return _then(AuthLocalFailure(
+null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-class __$$CreateFileInCahceFailureImplCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res, _$CreateFileInCahceFailureImpl>
-    implements _$$CreateFileInCahceFailureImplCopyWith<$Res> {
-  __$$CreateFileInCahceFailureImplCopyWithImpl(
-      _$CreateFileInCahceFailureImpl _value,
-      $Res Function(_$CreateFileInCahceFailureImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? errorMessage = null,
-  }) {
-    return _then(_$CreateFileInCahceFailureImpl(
-      null == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$CreateFileInCahceFailureImpl implements CreateFileInCahceFailure {
-  const _$CreateFileInCahceFailureImpl(this.errorMessage);
 
-  @override
-  final String errorMessage;
+class FetchLocalDataFailure implements AppException {
+  const FetchLocalDataFailure(this.errorMessage);
+  
 
-  @override
-  String toString() {
-    return 'AppException.createFileInCacheFailure(errorMessage: $errorMessage)';
-  }
+ final  String errorMessage;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CreateFileInCahceFailureImpl &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
-  }
+/// Create a copy of AppException
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$FetchLocalDataFailureCopyWith<FetchLocalDataFailure> get copyWith => _$FetchLocalDataFailureCopyWithImpl<FetchLocalDataFailure>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, errorMessage);
 
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CreateFileInCahceFailureImplCopyWith<_$CreateFileInCahceFailureImpl>
-      get copyWith => __$$CreateFileInCahceFailureImplCopyWithImpl<
-          _$CreateFileInCahceFailureImpl>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int errorCode, String errorMessage)
-        restApiFailure,
-    required TResult Function(String errorMessage) authLocalFailure,
-    required TResult Function(String errorMessage) fetchLocalDataFailure,
-    required TResult Function(String errorMessage) createFileInCacheFailure,
-    required TResult Function(String tableToSync, String errorMessage)
-        syncFailure,
-    required TResult Function() clienteNotFound,
-    required TResult Function() articuloNotFound,
-    required TResult Function() pedidoVentaNotFound,
-    required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
-    required TResult Function(String errorMessage) insertDataFailure,
-    required TResult Function() notConnection,
-    required TResult Function() noSuchFileOrDirectory,
-    required TResult Function() unexpectedResponseFormat,
-    required TResult Function() unexpectedError,
-  }) {
-    return createFileInCacheFailure(errorMessage);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult? Function(String errorMessage)? authLocalFailure,
-    TResult? Function(String errorMessage)? fetchLocalDataFailure,
-    TResult? Function(String errorMessage)? createFileInCacheFailure,
-    TResult? Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult? Function()? clienteNotFound,
-    TResult? Function()? articuloNotFound,
-    TResult? Function()? pedidoVentaNotFound,
-    TResult? Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult? Function(String errorMessage)? insertDataFailure,
-    TResult? Function()? notConnection,
-    TResult? Function()? noSuchFileOrDirectory,
-    TResult? Function()? unexpectedResponseFormat,
-    TResult? Function()? unexpectedError,
-  }) {
-    return createFileInCacheFailure?.call(errorMessage);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult Function(String errorMessage)? authLocalFailure,
-    TResult Function(String errorMessage)? fetchLocalDataFailure,
-    TResult Function(String errorMessage)? createFileInCacheFailure,
-    TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? clienteNotFound,
-    TResult Function()? articuloNotFound,
-    TResult Function()? pedidoVentaNotFound,
-    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult Function(String errorMessage)? insertDataFailure,
-    TResult Function()? notConnection,
-    TResult Function()? noSuchFileOrDirectory,
-    TResult Function()? unexpectedResponseFormat,
-    TResult Function()? unexpectedError,
-    required TResult orElse(),
-  }) {
-    if (createFileInCacheFailure != null) {
-      return createFileInCacheFailure(errorMessage);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(RestApiFailure value) restApiFailure,
-    required TResult Function(AuthLocalFailure value) authLocalFailure,
-    required TResult Function(FetchLocalDataFailure value)
-        fetchLocalDataFailure,
-    required TResult Function(CreateFileInCahceFailure value)
-        createFileInCacheFailure,
-    required TResult Function(SyncFailure value) syncFailure,
-    required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
-    required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
-    required TResult Function(PedidoVentaNotFoundFailure value)
-        pedidoVentaNotFound,
-    required TResult Function(PedidoVentaDeleteFailure value)
-        pedidoVentaDeleteFailure,
-    required TResult Function(InsertDataFailure value) insertDataFailure,
-    required TResult Function(NotConnectionFailure value) notConnection,
-    required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
-    required TResult Function(UnexpectedResponseFormat value)
-        unexpectedResponseFormat,
-    required TResult Function(UnexpectedError value) unexpectedError,
-  }) {
-    return createFileInCacheFailure(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(RestApiFailure value)? restApiFailure,
-    TResult? Function(AuthLocalFailure value)? authLocalFailure,
-    TResult? Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult? Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult? Function(SyncFailure value)? syncFailure,
-    TResult? Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult? Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult? Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult? Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult? Function(InsertDataFailure value)? insertDataFailure,
-    TResult? Function(NotConnectionFailure value)? notConnection,
-    TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
-    TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-    TResult? Function(UnexpectedError value)? unexpectedError,
-  }) {
-    return createFileInCacheFailure?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(RestApiFailure value)? restApiFailure,
-    TResult Function(AuthLocalFailure value)? authLocalFailure,
-    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult Function(InsertDataFailure value)? insertDataFailure,
-    TResult Function(NotConnectionFailure value)? notConnection,
-    TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
-    TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-    TResult Function(UnexpectedError value)? unexpectedError,
-    required TResult orElse(),
-  }) {
-    if (createFileInCacheFailure != null) {
-      return createFileInCacheFailure(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FetchLocalDataFailure&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
-abstract class CreateFileInCahceFailure implements AppException {
-  const factory CreateFileInCahceFailure(final String errorMessage) =
-      _$CreateFileInCahceFailureImpl;
 
-  String get errorMessage;
+@override
+int get hashCode => Object.hash(runtimeType,errorMessage);
 
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CreateFileInCahceFailureImplCopyWith<_$CreateFileInCahceFailureImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'AppException.fetchLocalDataFailure(errorMessage: $errorMessage)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$SyncFailureImplCopyWith<$Res> {
-  factory _$$SyncFailureImplCopyWith(
-          _$SyncFailureImpl value, $Res Function(_$SyncFailureImpl) then) =
-      __$$SyncFailureImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String tableToSync, String errorMessage});
+abstract mixin class $FetchLocalDataFailureCopyWith<$Res> implements $AppExceptionCopyWith<$Res> {
+  factory $FetchLocalDataFailureCopyWith(FetchLocalDataFailure value, $Res Function(FetchLocalDataFailure) _then) = _$FetchLocalDataFailureCopyWithImpl;
+@useResult
+$Res call({
+ String errorMessage
+});
+
+
+
+
+}
+/// @nodoc
+class _$FetchLocalDataFailureCopyWithImpl<$Res>
+    implements $FetchLocalDataFailureCopyWith<$Res> {
+  _$FetchLocalDataFailureCopyWithImpl(this._self, this._then);
+
+  final FetchLocalDataFailure _self;
+  final $Res Function(FetchLocalDataFailure) _then;
+
+/// Create a copy of AppException
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? errorMessage = null,}) {
+  return _then(FetchLocalDataFailure(
+null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-class __$$SyncFailureImplCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res, _$SyncFailureImpl>
-    implements _$$SyncFailureImplCopyWith<$Res> {
-  __$$SyncFailureImplCopyWithImpl(
-      _$SyncFailureImpl _value, $Res Function(_$SyncFailureImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? tableToSync = null,
-    Object? errorMessage = null,
-  }) {
-    return _then(_$SyncFailureImpl(
-      null == tableToSync
-          ? _value.tableToSync
-          : tableToSync // ignore: cast_nullable_to_non_nullable
-              as String,
-      null == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$SyncFailureImpl implements SyncFailure {
-  const _$SyncFailureImpl(this.tableToSync, this.errorMessage);
 
-  @override
-  final String tableToSync;
-  @override
-  final String errorMessage;
+class CreateFileInCahceFailure implements AppException {
+  const CreateFileInCahceFailure(this.errorMessage);
+  
 
-  @override
-  String toString() {
-    return 'AppException.syncFailure(tableToSync: $tableToSync, errorMessage: $errorMessage)';
-  }
+ final  String errorMessage;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SyncFailureImpl &&
-            (identical(other.tableToSync, tableToSync) ||
-                other.tableToSync == tableToSync) &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
-  }
+/// Create a copy of AppException
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CreateFileInCahceFailureCopyWith<CreateFileInCahceFailure> get copyWith => _$CreateFileInCahceFailureCopyWithImpl<CreateFileInCahceFailure>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, tableToSync, errorMessage);
 
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SyncFailureImplCopyWith<_$SyncFailureImpl> get copyWith =>
-      __$$SyncFailureImplCopyWithImpl<_$SyncFailureImpl>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int errorCode, String errorMessage)
-        restApiFailure,
-    required TResult Function(String errorMessage) authLocalFailure,
-    required TResult Function(String errorMessage) fetchLocalDataFailure,
-    required TResult Function(String errorMessage) createFileInCacheFailure,
-    required TResult Function(String tableToSync, String errorMessage)
-        syncFailure,
-    required TResult Function() clienteNotFound,
-    required TResult Function() articuloNotFound,
-    required TResult Function() pedidoVentaNotFound,
-    required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
-    required TResult Function(String errorMessage) insertDataFailure,
-    required TResult Function() notConnection,
-    required TResult Function() noSuchFileOrDirectory,
-    required TResult Function() unexpectedResponseFormat,
-    required TResult Function() unexpectedError,
-  }) {
-    return syncFailure(tableToSync, errorMessage);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult? Function(String errorMessage)? authLocalFailure,
-    TResult? Function(String errorMessage)? fetchLocalDataFailure,
-    TResult? Function(String errorMessage)? createFileInCacheFailure,
-    TResult? Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult? Function()? clienteNotFound,
-    TResult? Function()? articuloNotFound,
-    TResult? Function()? pedidoVentaNotFound,
-    TResult? Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult? Function(String errorMessage)? insertDataFailure,
-    TResult? Function()? notConnection,
-    TResult? Function()? noSuchFileOrDirectory,
-    TResult? Function()? unexpectedResponseFormat,
-    TResult? Function()? unexpectedError,
-  }) {
-    return syncFailure?.call(tableToSync, errorMessage);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult Function(String errorMessage)? authLocalFailure,
-    TResult Function(String errorMessage)? fetchLocalDataFailure,
-    TResult Function(String errorMessage)? createFileInCacheFailure,
-    TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? clienteNotFound,
-    TResult Function()? articuloNotFound,
-    TResult Function()? pedidoVentaNotFound,
-    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult Function(String errorMessage)? insertDataFailure,
-    TResult Function()? notConnection,
-    TResult Function()? noSuchFileOrDirectory,
-    TResult Function()? unexpectedResponseFormat,
-    TResult Function()? unexpectedError,
-    required TResult orElse(),
-  }) {
-    if (syncFailure != null) {
-      return syncFailure(tableToSync, errorMessage);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(RestApiFailure value) restApiFailure,
-    required TResult Function(AuthLocalFailure value) authLocalFailure,
-    required TResult Function(FetchLocalDataFailure value)
-        fetchLocalDataFailure,
-    required TResult Function(CreateFileInCahceFailure value)
-        createFileInCacheFailure,
-    required TResult Function(SyncFailure value) syncFailure,
-    required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
-    required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
-    required TResult Function(PedidoVentaNotFoundFailure value)
-        pedidoVentaNotFound,
-    required TResult Function(PedidoVentaDeleteFailure value)
-        pedidoVentaDeleteFailure,
-    required TResult Function(InsertDataFailure value) insertDataFailure,
-    required TResult Function(NotConnectionFailure value) notConnection,
-    required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
-    required TResult Function(UnexpectedResponseFormat value)
-        unexpectedResponseFormat,
-    required TResult Function(UnexpectedError value) unexpectedError,
-  }) {
-    return syncFailure(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(RestApiFailure value)? restApiFailure,
-    TResult? Function(AuthLocalFailure value)? authLocalFailure,
-    TResult? Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult? Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult? Function(SyncFailure value)? syncFailure,
-    TResult? Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult? Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult? Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult? Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult? Function(InsertDataFailure value)? insertDataFailure,
-    TResult? Function(NotConnectionFailure value)? notConnection,
-    TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
-    TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-    TResult? Function(UnexpectedError value)? unexpectedError,
-  }) {
-    return syncFailure?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(RestApiFailure value)? restApiFailure,
-    TResult Function(AuthLocalFailure value)? authLocalFailure,
-    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult Function(InsertDataFailure value)? insertDataFailure,
-    TResult Function(NotConnectionFailure value)? notConnection,
-    TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
-    TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-    TResult Function(UnexpectedError value)? unexpectedError,
-    required TResult orElse(),
-  }) {
-    if (syncFailure != null) {
-      return syncFailure(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateFileInCahceFailure&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
-abstract class SyncFailure implements AppException {
-  const factory SyncFailure(
-      final String tableToSync, final String errorMessage) = _$SyncFailureImpl;
 
-  String get tableToSync;
-  String get errorMessage;
+@override
+int get hashCode => Object.hash(runtimeType,errorMessage);
 
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SyncFailureImplCopyWith<_$SyncFailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'AppException.createFileInCacheFailure(errorMessage: $errorMessage)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$ClienteNotFoundFailureImplCopyWith<$Res> {
-  factory _$$ClienteNotFoundFailureImplCopyWith(
-          _$ClienteNotFoundFailureImpl value,
-          $Res Function(_$ClienteNotFoundFailureImpl) then) =
-      __$$ClienteNotFoundFailureImplCopyWithImpl<$Res>;
+abstract mixin class $CreateFileInCahceFailureCopyWith<$Res> implements $AppExceptionCopyWith<$Res> {
+  factory $CreateFileInCahceFailureCopyWith(CreateFileInCahceFailure value, $Res Function(CreateFileInCahceFailure) _then) = _$CreateFileInCahceFailureCopyWithImpl;
+@useResult
+$Res call({
+ String errorMessage
+});
+
+
+
+
+}
+/// @nodoc
+class _$CreateFileInCahceFailureCopyWithImpl<$Res>
+    implements $CreateFileInCahceFailureCopyWith<$Res> {
+  _$CreateFileInCahceFailureCopyWithImpl(this._self, this._then);
+
+  final CreateFileInCahceFailure _self;
+  final $Res Function(CreateFileInCahceFailure) _then;
+
+/// Create a copy of AppException
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? errorMessage = null,}) {
+  return _then(CreateFileInCahceFailure(
+null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-class __$$ClienteNotFoundFailureImplCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res, _$ClienteNotFoundFailureImpl>
-    implements _$$ClienteNotFoundFailureImplCopyWith<$Res> {
-  __$$ClienteNotFoundFailureImplCopyWithImpl(
-      _$ClienteNotFoundFailureImpl _value,
-      $Res Function(_$ClienteNotFoundFailureImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$ClienteNotFoundFailureImpl implements ClienteNotFoundFailure {
-  const _$ClienteNotFoundFailureImpl();
 
-  @override
-  String toString() {
-    return 'AppException.clienteNotFound()';
-  }
+class SyncFailure implements AppException {
+  const SyncFailure(this.tableToSync, this.errorMessage);
+  
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ClienteNotFoundFailureImpl);
-  }
+ final  String tableToSync;
+ final  String errorMessage;
 
-  @override
-  int get hashCode => runtimeType.hashCode;
+/// Create a copy of AppException
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SyncFailureCopyWith<SyncFailure> get copyWith => _$SyncFailureCopyWithImpl<SyncFailure>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int errorCode, String errorMessage)
-        restApiFailure,
-    required TResult Function(String errorMessage) authLocalFailure,
-    required TResult Function(String errorMessage) fetchLocalDataFailure,
-    required TResult Function(String errorMessage) createFileInCacheFailure,
-    required TResult Function(String tableToSync, String errorMessage)
-        syncFailure,
-    required TResult Function() clienteNotFound,
-    required TResult Function() articuloNotFound,
-    required TResult Function() pedidoVentaNotFound,
-    required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
-    required TResult Function(String errorMessage) insertDataFailure,
-    required TResult Function() notConnection,
-    required TResult Function() noSuchFileOrDirectory,
-    required TResult Function() unexpectedResponseFormat,
-    required TResult Function() unexpectedError,
-  }) {
-    return clienteNotFound();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult? Function(String errorMessage)? authLocalFailure,
-    TResult? Function(String errorMessage)? fetchLocalDataFailure,
-    TResult? Function(String errorMessage)? createFileInCacheFailure,
-    TResult? Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult? Function()? clienteNotFound,
-    TResult? Function()? articuloNotFound,
-    TResult? Function()? pedidoVentaNotFound,
-    TResult? Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult? Function(String errorMessage)? insertDataFailure,
-    TResult? Function()? notConnection,
-    TResult? Function()? noSuchFileOrDirectory,
-    TResult? Function()? unexpectedResponseFormat,
-    TResult? Function()? unexpectedError,
-  }) {
-    return clienteNotFound?.call();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult Function(String errorMessage)? authLocalFailure,
-    TResult Function(String errorMessage)? fetchLocalDataFailure,
-    TResult Function(String errorMessage)? createFileInCacheFailure,
-    TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? clienteNotFound,
-    TResult Function()? articuloNotFound,
-    TResult Function()? pedidoVentaNotFound,
-    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult Function(String errorMessage)? insertDataFailure,
-    TResult Function()? notConnection,
-    TResult Function()? noSuchFileOrDirectory,
-    TResult Function()? unexpectedResponseFormat,
-    TResult Function()? unexpectedError,
-    required TResult orElse(),
-  }) {
-    if (clienteNotFound != null) {
-      return clienteNotFound();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(RestApiFailure value) restApiFailure,
-    required TResult Function(AuthLocalFailure value) authLocalFailure,
-    required TResult Function(FetchLocalDataFailure value)
-        fetchLocalDataFailure,
-    required TResult Function(CreateFileInCahceFailure value)
-        createFileInCacheFailure,
-    required TResult Function(SyncFailure value) syncFailure,
-    required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
-    required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
-    required TResult Function(PedidoVentaNotFoundFailure value)
-        pedidoVentaNotFound,
-    required TResult Function(PedidoVentaDeleteFailure value)
-        pedidoVentaDeleteFailure,
-    required TResult Function(InsertDataFailure value) insertDataFailure,
-    required TResult Function(NotConnectionFailure value) notConnection,
-    required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
-    required TResult Function(UnexpectedResponseFormat value)
-        unexpectedResponseFormat,
-    required TResult Function(UnexpectedError value) unexpectedError,
-  }) {
-    return clienteNotFound(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(RestApiFailure value)? restApiFailure,
-    TResult? Function(AuthLocalFailure value)? authLocalFailure,
-    TResult? Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult? Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult? Function(SyncFailure value)? syncFailure,
-    TResult? Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult? Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult? Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult? Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult? Function(InsertDataFailure value)? insertDataFailure,
-    TResult? Function(NotConnectionFailure value)? notConnection,
-    TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
-    TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-    TResult? Function(UnexpectedError value)? unexpectedError,
-  }) {
-    return clienteNotFound?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(RestApiFailure value)? restApiFailure,
-    TResult Function(AuthLocalFailure value)? authLocalFailure,
-    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult Function(InsertDataFailure value)? insertDataFailure,
-    TResult Function(NotConnectionFailure value)? notConnection,
-    TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
-    TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-    TResult Function(UnexpectedError value)? unexpectedError,
-    required TResult orElse(),
-  }) {
-    if (clienteNotFound != null) {
-      return clienteNotFound(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SyncFailure&&(identical(other.tableToSync, tableToSync) || other.tableToSync == tableToSync)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
-abstract class ClienteNotFoundFailure implements AppException {
-  const factory ClienteNotFoundFailure() = _$ClienteNotFoundFailureImpl;
+
+@override
+int get hashCode => Object.hash(runtimeType,tableToSync,errorMessage);
+
+@override
+String toString() {
+  return 'AppException.syncFailure(tableToSync: $tableToSync, errorMessage: $errorMessage)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$ArticuloNotFoundFailureImplCopyWith<$Res> {
-  factory _$$ArticuloNotFoundFailureImplCopyWith(
-          _$ArticuloNotFoundFailureImpl value,
-          $Res Function(_$ArticuloNotFoundFailureImpl) then) =
-      __$$ArticuloNotFoundFailureImplCopyWithImpl<$Res>;
+abstract mixin class $SyncFailureCopyWith<$Res> implements $AppExceptionCopyWith<$Res> {
+  factory $SyncFailureCopyWith(SyncFailure value, $Res Function(SyncFailure) _then) = _$SyncFailureCopyWithImpl;
+@useResult
+$Res call({
+ String tableToSync, String errorMessage
+});
+
+
+
+
+}
+/// @nodoc
+class _$SyncFailureCopyWithImpl<$Res>
+    implements $SyncFailureCopyWith<$Res> {
+  _$SyncFailureCopyWithImpl(this._self, this._then);
+
+  final SyncFailure _self;
+  final $Res Function(SyncFailure) _then;
+
+/// Create a copy of AppException
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? tableToSync = null,Object? errorMessage = null,}) {
+  return _then(SyncFailure(
+null == tableToSync ? _self.tableToSync : tableToSync // ignore: cast_nullable_to_non_nullable
+as String,null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-class __$$ArticuloNotFoundFailureImplCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res, _$ArticuloNotFoundFailureImpl>
-    implements _$$ArticuloNotFoundFailureImplCopyWith<$Res> {
-  __$$ArticuloNotFoundFailureImplCopyWithImpl(
-      _$ArticuloNotFoundFailureImpl _value,
-      $Res Function(_$ArticuloNotFoundFailureImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$ArticuloNotFoundFailureImpl implements ArticuloNotFoundFailure {
-  const _$ArticuloNotFoundFailureImpl();
 
-  @override
-  String toString() {
-    return 'AppException.articuloNotFound()';
-  }
+class ClienteNotFoundFailure implements AppException {
+  const ClienteNotFoundFailure();
+  
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ArticuloNotFoundFailureImpl);
-  }
 
-  @override
-  int get hashCode => runtimeType.hashCode;
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int errorCode, String errorMessage)
-        restApiFailure,
-    required TResult Function(String errorMessage) authLocalFailure,
-    required TResult Function(String errorMessage) fetchLocalDataFailure,
-    required TResult Function(String errorMessage) createFileInCacheFailure,
-    required TResult Function(String tableToSync, String errorMessage)
-        syncFailure,
-    required TResult Function() clienteNotFound,
-    required TResult Function() articuloNotFound,
-    required TResult Function() pedidoVentaNotFound,
-    required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
-    required TResult Function(String errorMessage) insertDataFailure,
-    required TResult Function() notConnection,
-    required TResult Function() noSuchFileOrDirectory,
-    required TResult Function() unexpectedResponseFormat,
-    required TResult Function() unexpectedError,
-  }) {
-    return articuloNotFound();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult? Function(String errorMessage)? authLocalFailure,
-    TResult? Function(String errorMessage)? fetchLocalDataFailure,
-    TResult? Function(String errorMessage)? createFileInCacheFailure,
-    TResult? Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult? Function()? clienteNotFound,
-    TResult? Function()? articuloNotFound,
-    TResult? Function()? pedidoVentaNotFound,
-    TResult? Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult? Function(String errorMessage)? insertDataFailure,
-    TResult? Function()? notConnection,
-    TResult? Function()? noSuchFileOrDirectory,
-    TResult? Function()? unexpectedResponseFormat,
-    TResult? Function()? unexpectedError,
-  }) {
-    return articuloNotFound?.call();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult Function(String errorMessage)? authLocalFailure,
-    TResult Function(String errorMessage)? fetchLocalDataFailure,
-    TResult Function(String errorMessage)? createFileInCacheFailure,
-    TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? clienteNotFound,
-    TResult Function()? articuloNotFound,
-    TResult Function()? pedidoVentaNotFound,
-    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult Function(String errorMessage)? insertDataFailure,
-    TResult Function()? notConnection,
-    TResult Function()? noSuchFileOrDirectory,
-    TResult Function()? unexpectedResponseFormat,
-    TResult Function()? unexpectedError,
-    required TResult orElse(),
-  }) {
-    if (articuloNotFound != null) {
-      return articuloNotFound();
-    }
-    return orElse();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(RestApiFailure value) restApiFailure,
-    required TResult Function(AuthLocalFailure value) authLocalFailure,
-    required TResult Function(FetchLocalDataFailure value)
-        fetchLocalDataFailure,
-    required TResult Function(CreateFileInCahceFailure value)
-        createFileInCacheFailure,
-    required TResult Function(SyncFailure value) syncFailure,
-    required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
-    required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
-    required TResult Function(PedidoVentaNotFoundFailure value)
-        pedidoVentaNotFound,
-    required TResult Function(PedidoVentaDeleteFailure value)
-        pedidoVentaDeleteFailure,
-    required TResult Function(InsertDataFailure value) insertDataFailure,
-    required TResult Function(NotConnectionFailure value) notConnection,
-    required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
-    required TResult Function(UnexpectedResponseFormat value)
-        unexpectedResponseFormat,
-    required TResult Function(UnexpectedError value) unexpectedError,
-  }) {
-    return articuloNotFound(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(RestApiFailure value)? restApiFailure,
-    TResult? Function(AuthLocalFailure value)? authLocalFailure,
-    TResult? Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult? Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult? Function(SyncFailure value)? syncFailure,
-    TResult? Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult? Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult? Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult? Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult? Function(InsertDataFailure value)? insertDataFailure,
-    TResult? Function(NotConnectionFailure value)? notConnection,
-    TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
-    TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-    TResult? Function(UnexpectedError value)? unexpectedError,
-  }) {
-    return articuloNotFound?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(RestApiFailure value)? restApiFailure,
-    TResult Function(AuthLocalFailure value)? authLocalFailure,
-    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult Function(InsertDataFailure value)? insertDataFailure,
-    TResult Function(NotConnectionFailure value)? notConnection,
-    TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
-    TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-    TResult Function(UnexpectedError value)? unexpectedError,
-    required TResult orElse(),
-  }) {
-    if (articuloNotFound != null) {
-      return articuloNotFound(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteNotFoundFailure);
 }
 
-abstract class ArticuloNotFoundFailure implements AppException {
-  const factory ArticuloNotFoundFailure() = _$ArticuloNotFoundFailureImpl;
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AppException.clienteNotFound()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class ArticuloNotFoundFailure implements AppException {
+  const ArticuloNotFoundFailure();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloNotFoundFailure);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AppException.articuloNotFound()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class PedidoVentaNotFoundFailure implements AppException {
+  const PedidoVentaNotFoundFailure();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PedidoVentaNotFoundFailure);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AppException.pedidoVentaNotFound()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class PedidoVentaDeleteFailure implements AppException {
+  const PedidoVentaDeleteFailure(this.errorMessage);
+  
+
+ final  String errorMessage;
+
+/// Create a copy of AppException
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PedidoVentaDeleteFailureCopyWith<PedidoVentaDeleteFailure> get copyWith => _$PedidoVentaDeleteFailureCopyWithImpl<PedidoVentaDeleteFailure>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PedidoVentaDeleteFailure&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,errorMessage);
+
+@override
+String toString() {
+  return 'AppException.pedidoVentaDeleteFailure(errorMessage: $errorMessage)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$PedidoVentaNotFoundFailureImplCopyWith<$Res> {
-  factory _$$PedidoVentaNotFoundFailureImplCopyWith(
-          _$PedidoVentaNotFoundFailureImpl value,
-          $Res Function(_$PedidoVentaNotFoundFailureImpl) then) =
-      __$$PedidoVentaNotFoundFailureImplCopyWithImpl<$Res>;
+abstract mixin class $PedidoVentaDeleteFailureCopyWith<$Res> implements $AppExceptionCopyWith<$Res> {
+  factory $PedidoVentaDeleteFailureCopyWith(PedidoVentaDeleteFailure value, $Res Function(PedidoVentaDeleteFailure) _then) = _$PedidoVentaDeleteFailureCopyWithImpl;
+@useResult
+$Res call({
+ String errorMessage
+});
+
+
+
+
+}
+/// @nodoc
+class _$PedidoVentaDeleteFailureCopyWithImpl<$Res>
+    implements $PedidoVentaDeleteFailureCopyWith<$Res> {
+  _$PedidoVentaDeleteFailureCopyWithImpl(this._self, this._then);
+
+  final PedidoVentaDeleteFailure _self;
+  final $Res Function(PedidoVentaDeleteFailure) _then;
+
+/// Create a copy of AppException
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? errorMessage = null,}) {
+  return _then(PedidoVentaDeleteFailure(
+null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-class __$$PedidoVentaNotFoundFailureImplCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res, _$PedidoVentaNotFoundFailureImpl>
-    implements _$$PedidoVentaNotFoundFailureImplCopyWith<$Res> {
-  __$$PedidoVentaNotFoundFailureImplCopyWithImpl(
-      _$PedidoVentaNotFoundFailureImpl _value,
-      $Res Function(_$PedidoVentaNotFoundFailureImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$PedidoVentaNotFoundFailureImpl implements PedidoVentaNotFoundFailure {
-  const _$PedidoVentaNotFoundFailureImpl();
 
-  @override
-  String toString() {
-    return 'AppException.pedidoVentaNotFound()';
-  }
+class InsertDataFailure implements AppException {
+  const InsertDataFailure(this.errorMessage);
+  
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PedidoVentaNotFoundFailureImpl);
-  }
+ final  String errorMessage;
 
-  @override
-  int get hashCode => runtimeType.hashCode;
+/// Create a copy of AppException
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$InsertDataFailureCopyWith<InsertDataFailure> get copyWith => _$InsertDataFailureCopyWithImpl<InsertDataFailure>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int errorCode, String errorMessage)
-        restApiFailure,
-    required TResult Function(String errorMessage) authLocalFailure,
-    required TResult Function(String errorMessage) fetchLocalDataFailure,
-    required TResult Function(String errorMessage) createFileInCacheFailure,
-    required TResult Function(String tableToSync, String errorMessage)
-        syncFailure,
-    required TResult Function() clienteNotFound,
-    required TResult Function() articuloNotFound,
-    required TResult Function() pedidoVentaNotFound,
-    required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
-    required TResult Function(String errorMessage) insertDataFailure,
-    required TResult Function() notConnection,
-    required TResult Function() noSuchFileOrDirectory,
-    required TResult Function() unexpectedResponseFormat,
-    required TResult Function() unexpectedError,
-  }) {
-    return pedidoVentaNotFound();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult? Function(String errorMessage)? authLocalFailure,
-    TResult? Function(String errorMessage)? fetchLocalDataFailure,
-    TResult? Function(String errorMessage)? createFileInCacheFailure,
-    TResult? Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult? Function()? clienteNotFound,
-    TResult? Function()? articuloNotFound,
-    TResult? Function()? pedidoVentaNotFound,
-    TResult? Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult? Function(String errorMessage)? insertDataFailure,
-    TResult? Function()? notConnection,
-    TResult? Function()? noSuchFileOrDirectory,
-    TResult? Function()? unexpectedResponseFormat,
-    TResult? Function()? unexpectedError,
-  }) {
-    return pedidoVentaNotFound?.call();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult Function(String errorMessage)? authLocalFailure,
-    TResult Function(String errorMessage)? fetchLocalDataFailure,
-    TResult Function(String errorMessage)? createFileInCacheFailure,
-    TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? clienteNotFound,
-    TResult Function()? articuloNotFound,
-    TResult Function()? pedidoVentaNotFound,
-    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult Function(String errorMessage)? insertDataFailure,
-    TResult Function()? notConnection,
-    TResult Function()? noSuchFileOrDirectory,
-    TResult Function()? unexpectedResponseFormat,
-    TResult Function()? unexpectedError,
-    required TResult orElse(),
-  }) {
-    if (pedidoVentaNotFound != null) {
-      return pedidoVentaNotFound();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(RestApiFailure value) restApiFailure,
-    required TResult Function(AuthLocalFailure value) authLocalFailure,
-    required TResult Function(FetchLocalDataFailure value)
-        fetchLocalDataFailure,
-    required TResult Function(CreateFileInCahceFailure value)
-        createFileInCacheFailure,
-    required TResult Function(SyncFailure value) syncFailure,
-    required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
-    required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
-    required TResult Function(PedidoVentaNotFoundFailure value)
-        pedidoVentaNotFound,
-    required TResult Function(PedidoVentaDeleteFailure value)
-        pedidoVentaDeleteFailure,
-    required TResult Function(InsertDataFailure value) insertDataFailure,
-    required TResult Function(NotConnectionFailure value) notConnection,
-    required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
-    required TResult Function(UnexpectedResponseFormat value)
-        unexpectedResponseFormat,
-    required TResult Function(UnexpectedError value) unexpectedError,
-  }) {
-    return pedidoVentaNotFound(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(RestApiFailure value)? restApiFailure,
-    TResult? Function(AuthLocalFailure value)? authLocalFailure,
-    TResult? Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult? Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult? Function(SyncFailure value)? syncFailure,
-    TResult? Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult? Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult? Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult? Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult? Function(InsertDataFailure value)? insertDataFailure,
-    TResult? Function(NotConnectionFailure value)? notConnection,
-    TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
-    TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-    TResult? Function(UnexpectedError value)? unexpectedError,
-  }) {
-    return pedidoVentaNotFound?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(RestApiFailure value)? restApiFailure,
-    TResult Function(AuthLocalFailure value)? authLocalFailure,
-    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult Function(InsertDataFailure value)? insertDataFailure,
-    TResult Function(NotConnectionFailure value)? notConnection,
-    TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
-    TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-    TResult Function(UnexpectedError value)? unexpectedError,
-    required TResult orElse(),
-  }) {
-    if (pedidoVentaNotFound != null) {
-      return pedidoVentaNotFound(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is InsertDataFailure&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
-abstract class PedidoVentaNotFoundFailure implements AppException {
-  const factory PedidoVentaNotFoundFailure() = _$PedidoVentaNotFoundFailureImpl;
+
+@override
+int get hashCode => Object.hash(runtimeType,errorMessage);
+
+@override
+String toString() {
+  return 'AppException.insertDataFailure(errorMessage: $errorMessage)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$PedidoVentaDeleteFailureImplCopyWith<$Res> {
-  factory _$$PedidoVentaDeleteFailureImplCopyWith(
-          _$PedidoVentaDeleteFailureImpl value,
-          $Res Function(_$PedidoVentaDeleteFailureImpl) then) =
-      __$$PedidoVentaDeleteFailureImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String errorMessage});
+abstract mixin class $InsertDataFailureCopyWith<$Res> implements $AppExceptionCopyWith<$Res> {
+  factory $InsertDataFailureCopyWith(InsertDataFailure value, $Res Function(InsertDataFailure) _then) = _$InsertDataFailureCopyWithImpl;
+@useResult
+$Res call({
+ String errorMessage
+});
+
+
+
+
+}
+/// @nodoc
+class _$InsertDataFailureCopyWithImpl<$Res>
+    implements $InsertDataFailureCopyWith<$Res> {
+  _$InsertDataFailureCopyWithImpl(this._self, this._then);
+
+  final InsertDataFailure _self;
+  final $Res Function(InsertDataFailure) _then;
+
+/// Create a copy of AppException
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? errorMessage = null,}) {
+  return _then(InsertDataFailure(
+null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-class __$$PedidoVentaDeleteFailureImplCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res, _$PedidoVentaDeleteFailureImpl>
-    implements _$$PedidoVentaDeleteFailureImplCopyWith<$Res> {
-  __$$PedidoVentaDeleteFailureImplCopyWithImpl(
-      _$PedidoVentaDeleteFailureImpl _value,
-      $Res Function(_$PedidoVentaDeleteFailureImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? errorMessage = null,
-  }) {
-    return _then(_$PedidoVentaDeleteFailureImpl(
-      null == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$PedidoVentaDeleteFailureImpl implements PedidoVentaDeleteFailure {
-  const _$PedidoVentaDeleteFailureImpl(this.errorMessage);
 
-  @override
-  final String errorMessage;
+class NotConnectionFailure implements AppException {
+  const NotConnectionFailure();
+  
 
-  @override
-  String toString() {
-    return 'AppException.pedidoVentaDeleteFailure(errorMessage: $errorMessage)';
-  }
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PedidoVentaDeleteFailureImpl &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
-  }
 
-  @override
-  int get hashCode => Object.hash(runtimeType, errorMessage);
 
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PedidoVentaDeleteFailureImplCopyWith<_$PedidoVentaDeleteFailureImpl>
-      get copyWith => __$$PedidoVentaDeleteFailureImplCopyWithImpl<
-          _$PedidoVentaDeleteFailureImpl>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int errorCode, String errorMessage)
-        restApiFailure,
-    required TResult Function(String errorMessage) authLocalFailure,
-    required TResult Function(String errorMessage) fetchLocalDataFailure,
-    required TResult Function(String errorMessage) createFileInCacheFailure,
-    required TResult Function(String tableToSync, String errorMessage)
-        syncFailure,
-    required TResult Function() clienteNotFound,
-    required TResult Function() articuloNotFound,
-    required TResult Function() pedidoVentaNotFound,
-    required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
-    required TResult Function(String errorMessage) insertDataFailure,
-    required TResult Function() notConnection,
-    required TResult Function() noSuchFileOrDirectory,
-    required TResult Function() unexpectedResponseFormat,
-    required TResult Function() unexpectedError,
-  }) {
-    return pedidoVentaDeleteFailure(errorMessage);
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult? Function(String errorMessage)? authLocalFailure,
-    TResult? Function(String errorMessage)? fetchLocalDataFailure,
-    TResult? Function(String errorMessage)? createFileInCacheFailure,
-    TResult? Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult? Function()? clienteNotFound,
-    TResult? Function()? articuloNotFound,
-    TResult? Function()? pedidoVentaNotFound,
-    TResult? Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult? Function(String errorMessage)? insertDataFailure,
-    TResult? Function()? notConnection,
-    TResult? Function()? noSuchFileOrDirectory,
-    TResult? Function()? unexpectedResponseFormat,
-    TResult? Function()? unexpectedError,
-  }) {
-    return pedidoVentaDeleteFailure?.call(errorMessage);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult Function(String errorMessage)? authLocalFailure,
-    TResult Function(String errorMessage)? fetchLocalDataFailure,
-    TResult Function(String errorMessage)? createFileInCacheFailure,
-    TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? clienteNotFound,
-    TResult Function()? articuloNotFound,
-    TResult Function()? pedidoVentaNotFound,
-    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult Function(String errorMessage)? insertDataFailure,
-    TResult Function()? notConnection,
-    TResult Function()? noSuchFileOrDirectory,
-    TResult Function()? unexpectedResponseFormat,
-    TResult Function()? unexpectedError,
-    required TResult orElse(),
-  }) {
-    if (pedidoVentaDeleteFailure != null) {
-      return pedidoVentaDeleteFailure(errorMessage);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(RestApiFailure value) restApiFailure,
-    required TResult Function(AuthLocalFailure value) authLocalFailure,
-    required TResult Function(FetchLocalDataFailure value)
-        fetchLocalDataFailure,
-    required TResult Function(CreateFileInCahceFailure value)
-        createFileInCacheFailure,
-    required TResult Function(SyncFailure value) syncFailure,
-    required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
-    required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
-    required TResult Function(PedidoVentaNotFoundFailure value)
-        pedidoVentaNotFound,
-    required TResult Function(PedidoVentaDeleteFailure value)
-        pedidoVentaDeleteFailure,
-    required TResult Function(InsertDataFailure value) insertDataFailure,
-    required TResult Function(NotConnectionFailure value) notConnection,
-    required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
-    required TResult Function(UnexpectedResponseFormat value)
-        unexpectedResponseFormat,
-    required TResult Function(UnexpectedError value) unexpectedError,
-  }) {
-    return pedidoVentaDeleteFailure(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(RestApiFailure value)? restApiFailure,
-    TResult? Function(AuthLocalFailure value)? authLocalFailure,
-    TResult? Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult? Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult? Function(SyncFailure value)? syncFailure,
-    TResult? Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult? Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult? Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult? Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult? Function(InsertDataFailure value)? insertDataFailure,
-    TResult? Function(NotConnectionFailure value)? notConnection,
-    TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
-    TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-    TResult? Function(UnexpectedError value)? unexpectedError,
-  }) {
-    return pedidoVentaDeleteFailure?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(RestApiFailure value)? restApiFailure,
-    TResult Function(AuthLocalFailure value)? authLocalFailure,
-    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult Function(InsertDataFailure value)? insertDataFailure,
-    TResult Function(NotConnectionFailure value)? notConnection,
-    TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
-    TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-    TResult Function(UnexpectedError value)? unexpectedError,
-    required TResult orElse(),
-  }) {
-    if (pedidoVentaDeleteFailure != null) {
-      return pedidoVentaDeleteFailure(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NotConnectionFailure);
 }
 
-abstract class PedidoVentaDeleteFailure implements AppException {
-  const factory PedidoVentaDeleteFailure(final String errorMessage) =
-      _$PedidoVentaDeleteFailureImpl;
 
-  String get errorMessage;
+@override
+int get hashCode => runtimeType.hashCode;
 
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PedidoVentaDeleteFailureImplCopyWith<_$PedidoVentaDeleteFailureImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'AppException.notConnection()';
 }
 
-/// @nodoc
-abstract class _$$InsertDataFailureImplCopyWith<$Res> {
-  factory _$$InsertDataFailureImplCopyWith(_$InsertDataFailureImpl value,
-          $Res Function(_$InsertDataFailureImpl) then) =
-      __$$InsertDataFailureImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String errorMessage});
+
 }
 
-/// @nodoc
-class __$$InsertDataFailureImplCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res, _$InsertDataFailureImpl>
-    implements _$$InsertDataFailureImplCopyWith<$Res> {
-  __$$InsertDataFailureImplCopyWithImpl(_$InsertDataFailureImpl _value,
-      $Res Function(_$InsertDataFailureImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? errorMessage = null,
-  }) {
-    return _then(_$InsertDataFailureImpl(
-      null == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
+
 
 /// @nodoc
 
-class _$InsertDataFailureImpl implements InsertDataFailure {
-  const _$InsertDataFailureImpl(this.errorMessage);
 
-  @override
-  final String errorMessage;
+class ArchivoNoEncontrado implements AppException {
+  const ArchivoNoEncontrado();
+  
 
-  @override
-  String toString() {
-    return 'AppException.insertDataFailure(errorMessage: $errorMessage)';
-  }
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$InsertDataFailureImpl &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
-  }
 
-  @override
-  int get hashCode => Object.hash(runtimeType, errorMessage);
 
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$InsertDataFailureImplCopyWith<_$InsertDataFailureImpl> get copyWith =>
-      __$$InsertDataFailureImplCopyWithImpl<_$InsertDataFailureImpl>(
-          this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int errorCode, String errorMessage)
-        restApiFailure,
-    required TResult Function(String errorMessage) authLocalFailure,
-    required TResult Function(String errorMessage) fetchLocalDataFailure,
-    required TResult Function(String errorMessage) createFileInCacheFailure,
-    required TResult Function(String tableToSync, String errorMessage)
-        syncFailure,
-    required TResult Function() clienteNotFound,
-    required TResult Function() articuloNotFound,
-    required TResult Function() pedidoVentaNotFound,
-    required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
-    required TResult Function(String errorMessage) insertDataFailure,
-    required TResult Function() notConnection,
-    required TResult Function() noSuchFileOrDirectory,
-    required TResult Function() unexpectedResponseFormat,
-    required TResult Function() unexpectedError,
-  }) {
-    return insertDataFailure(errorMessage);
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult? Function(String errorMessage)? authLocalFailure,
-    TResult? Function(String errorMessage)? fetchLocalDataFailure,
-    TResult? Function(String errorMessage)? createFileInCacheFailure,
-    TResult? Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult? Function()? clienteNotFound,
-    TResult? Function()? articuloNotFound,
-    TResult? Function()? pedidoVentaNotFound,
-    TResult? Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult? Function(String errorMessage)? insertDataFailure,
-    TResult? Function()? notConnection,
-    TResult? Function()? noSuchFileOrDirectory,
-    TResult? Function()? unexpectedResponseFormat,
-    TResult? Function()? unexpectedError,
-  }) {
-    return insertDataFailure?.call(errorMessage);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult Function(String errorMessage)? authLocalFailure,
-    TResult Function(String errorMessage)? fetchLocalDataFailure,
-    TResult Function(String errorMessage)? createFileInCacheFailure,
-    TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? clienteNotFound,
-    TResult Function()? articuloNotFound,
-    TResult Function()? pedidoVentaNotFound,
-    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult Function(String errorMessage)? insertDataFailure,
-    TResult Function()? notConnection,
-    TResult Function()? noSuchFileOrDirectory,
-    TResult Function()? unexpectedResponseFormat,
-    TResult Function()? unexpectedError,
-    required TResult orElse(),
-  }) {
-    if (insertDataFailure != null) {
-      return insertDataFailure(errorMessage);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(RestApiFailure value) restApiFailure,
-    required TResult Function(AuthLocalFailure value) authLocalFailure,
-    required TResult Function(FetchLocalDataFailure value)
-        fetchLocalDataFailure,
-    required TResult Function(CreateFileInCahceFailure value)
-        createFileInCacheFailure,
-    required TResult Function(SyncFailure value) syncFailure,
-    required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
-    required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
-    required TResult Function(PedidoVentaNotFoundFailure value)
-        pedidoVentaNotFound,
-    required TResult Function(PedidoVentaDeleteFailure value)
-        pedidoVentaDeleteFailure,
-    required TResult Function(InsertDataFailure value) insertDataFailure,
-    required TResult Function(NotConnectionFailure value) notConnection,
-    required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
-    required TResult Function(UnexpectedResponseFormat value)
-        unexpectedResponseFormat,
-    required TResult Function(UnexpectedError value) unexpectedError,
-  }) {
-    return insertDataFailure(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(RestApiFailure value)? restApiFailure,
-    TResult? Function(AuthLocalFailure value)? authLocalFailure,
-    TResult? Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult? Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult? Function(SyncFailure value)? syncFailure,
-    TResult? Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult? Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult? Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult? Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult? Function(InsertDataFailure value)? insertDataFailure,
-    TResult? Function(NotConnectionFailure value)? notConnection,
-    TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
-    TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-    TResult? Function(UnexpectedError value)? unexpectedError,
-  }) {
-    return insertDataFailure?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(RestApiFailure value)? restApiFailure,
-    TResult Function(AuthLocalFailure value)? authLocalFailure,
-    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult Function(InsertDataFailure value)? insertDataFailure,
-    TResult Function(NotConnectionFailure value)? notConnection,
-    TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
-    TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-    TResult Function(UnexpectedError value)? unexpectedError,
-    required TResult orElse(),
-  }) {
-    if (insertDataFailure != null) {
-      return insertDataFailure(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArchivoNoEncontrado);
 }
 
-abstract class InsertDataFailure implements AppException {
-  const factory InsertDataFailure(final String errorMessage) =
-      _$InsertDataFailureImpl;
 
-  String get errorMessage;
+@override
+int get hashCode => runtimeType.hashCode;
 
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$InsertDataFailureImplCopyWith<_$InsertDataFailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'AppException.noSuchFileOrDirectory()';
 }
 
-/// @nodoc
-abstract class _$$NotConnectionFailureImplCopyWith<$Res> {
-  factory _$$NotConnectionFailureImplCopyWith(_$NotConnectionFailureImpl value,
-          $Res Function(_$NotConnectionFailureImpl) then) =
-      __$$NotConnectionFailureImplCopyWithImpl<$Res>;
+
 }
 
-/// @nodoc
-class __$$NotConnectionFailureImplCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res, _$NotConnectionFailureImpl>
-    implements _$$NotConnectionFailureImplCopyWith<$Res> {
-  __$$NotConnectionFailureImplCopyWithImpl(_$NotConnectionFailureImpl _value,
-      $Res Function(_$NotConnectionFailureImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
-}
+
 
 /// @nodoc
 
-class _$NotConnectionFailureImpl implements NotConnectionFailure {
-  const _$NotConnectionFailureImpl();
 
-  @override
-  String toString() {
-    return 'AppException.notConnection()';
-  }
+class UnexpectedResponseFormat implements AppException {
+  const UnexpectedResponseFormat();
+  
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NotConnectionFailureImpl);
-  }
 
-  @override
-  int get hashCode => runtimeType.hashCode;
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int errorCode, String errorMessage)
-        restApiFailure,
-    required TResult Function(String errorMessage) authLocalFailure,
-    required TResult Function(String errorMessage) fetchLocalDataFailure,
-    required TResult Function(String errorMessage) createFileInCacheFailure,
-    required TResult Function(String tableToSync, String errorMessage)
-        syncFailure,
-    required TResult Function() clienteNotFound,
-    required TResult Function() articuloNotFound,
-    required TResult Function() pedidoVentaNotFound,
-    required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
-    required TResult Function(String errorMessage) insertDataFailure,
-    required TResult Function() notConnection,
-    required TResult Function() noSuchFileOrDirectory,
-    required TResult Function() unexpectedResponseFormat,
-    required TResult Function() unexpectedError,
-  }) {
-    return notConnection();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult? Function(String errorMessage)? authLocalFailure,
-    TResult? Function(String errorMessage)? fetchLocalDataFailure,
-    TResult? Function(String errorMessage)? createFileInCacheFailure,
-    TResult? Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult? Function()? clienteNotFound,
-    TResult? Function()? articuloNotFound,
-    TResult? Function()? pedidoVentaNotFound,
-    TResult? Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult? Function(String errorMessage)? insertDataFailure,
-    TResult? Function()? notConnection,
-    TResult? Function()? noSuchFileOrDirectory,
-    TResult? Function()? unexpectedResponseFormat,
-    TResult? Function()? unexpectedError,
-  }) {
-    return notConnection?.call();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult Function(String errorMessage)? authLocalFailure,
-    TResult Function(String errorMessage)? fetchLocalDataFailure,
-    TResult Function(String errorMessage)? createFileInCacheFailure,
-    TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? clienteNotFound,
-    TResult Function()? articuloNotFound,
-    TResult Function()? pedidoVentaNotFound,
-    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult Function(String errorMessage)? insertDataFailure,
-    TResult Function()? notConnection,
-    TResult Function()? noSuchFileOrDirectory,
-    TResult Function()? unexpectedResponseFormat,
-    TResult Function()? unexpectedError,
-    required TResult orElse(),
-  }) {
-    if (notConnection != null) {
-      return notConnection();
-    }
-    return orElse();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(RestApiFailure value) restApiFailure,
-    required TResult Function(AuthLocalFailure value) authLocalFailure,
-    required TResult Function(FetchLocalDataFailure value)
-        fetchLocalDataFailure,
-    required TResult Function(CreateFileInCahceFailure value)
-        createFileInCacheFailure,
-    required TResult Function(SyncFailure value) syncFailure,
-    required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
-    required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
-    required TResult Function(PedidoVentaNotFoundFailure value)
-        pedidoVentaNotFound,
-    required TResult Function(PedidoVentaDeleteFailure value)
-        pedidoVentaDeleteFailure,
-    required TResult Function(InsertDataFailure value) insertDataFailure,
-    required TResult Function(NotConnectionFailure value) notConnection,
-    required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
-    required TResult Function(UnexpectedResponseFormat value)
-        unexpectedResponseFormat,
-    required TResult Function(UnexpectedError value) unexpectedError,
-  }) {
-    return notConnection(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(RestApiFailure value)? restApiFailure,
-    TResult? Function(AuthLocalFailure value)? authLocalFailure,
-    TResult? Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult? Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult? Function(SyncFailure value)? syncFailure,
-    TResult? Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult? Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult? Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult? Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult? Function(InsertDataFailure value)? insertDataFailure,
-    TResult? Function(NotConnectionFailure value)? notConnection,
-    TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
-    TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-    TResult? Function(UnexpectedError value)? unexpectedError,
-  }) {
-    return notConnection?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(RestApiFailure value)? restApiFailure,
-    TResult Function(AuthLocalFailure value)? authLocalFailure,
-    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult Function(InsertDataFailure value)? insertDataFailure,
-    TResult Function(NotConnectionFailure value)? notConnection,
-    TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
-    TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-    TResult Function(UnexpectedError value)? unexpectedError,
-    required TResult orElse(),
-  }) {
-    if (notConnection != null) {
-      return notConnection(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UnexpectedResponseFormat);
 }
 
-abstract class NotConnectionFailure implements AppException {
-  const factory NotConnectionFailure() = _$NotConnectionFailureImpl;
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AppException.unexpectedResponseFormat()';
 }
 
-/// @nodoc
-abstract class _$$ArchivoNoEncontradoImplCopyWith<$Res> {
-  factory _$$ArchivoNoEncontradoImplCopyWith(_$ArchivoNoEncontradoImpl value,
-          $Res Function(_$ArchivoNoEncontradoImpl) then) =
-      __$$ArchivoNoEncontradoImplCopyWithImpl<$Res>;
+
 }
 
-/// @nodoc
-class __$$ArchivoNoEncontradoImplCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res, _$ArchivoNoEncontradoImpl>
-    implements _$$ArchivoNoEncontradoImplCopyWith<$Res> {
-  __$$ArchivoNoEncontradoImplCopyWithImpl(_$ArchivoNoEncontradoImpl _value,
-      $Res Function(_$ArchivoNoEncontradoImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
-}
+
 
 /// @nodoc
 
-class _$ArchivoNoEncontradoImpl implements ArchivoNoEncontrado {
-  const _$ArchivoNoEncontradoImpl();
 
-  @override
-  String toString() {
-    return 'AppException.noSuchFileOrDirectory()';
-  }
+class UnexpectedError implements AppException {
+  const UnexpectedError();
+  
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ArchivoNoEncontradoImpl);
-  }
 
-  @override
-  int get hashCode => runtimeType.hashCode;
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int errorCode, String errorMessage)
-        restApiFailure,
-    required TResult Function(String errorMessage) authLocalFailure,
-    required TResult Function(String errorMessage) fetchLocalDataFailure,
-    required TResult Function(String errorMessage) createFileInCacheFailure,
-    required TResult Function(String tableToSync, String errorMessage)
-        syncFailure,
-    required TResult Function() clienteNotFound,
-    required TResult Function() articuloNotFound,
-    required TResult Function() pedidoVentaNotFound,
-    required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
-    required TResult Function(String errorMessage) insertDataFailure,
-    required TResult Function() notConnection,
-    required TResult Function() noSuchFileOrDirectory,
-    required TResult Function() unexpectedResponseFormat,
-    required TResult Function() unexpectedError,
-  }) {
-    return noSuchFileOrDirectory();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult? Function(String errorMessage)? authLocalFailure,
-    TResult? Function(String errorMessage)? fetchLocalDataFailure,
-    TResult? Function(String errorMessage)? createFileInCacheFailure,
-    TResult? Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult? Function()? clienteNotFound,
-    TResult? Function()? articuloNotFound,
-    TResult? Function()? pedidoVentaNotFound,
-    TResult? Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult? Function(String errorMessage)? insertDataFailure,
-    TResult? Function()? notConnection,
-    TResult? Function()? noSuchFileOrDirectory,
-    TResult? Function()? unexpectedResponseFormat,
-    TResult? Function()? unexpectedError,
-  }) {
-    return noSuchFileOrDirectory?.call();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult Function(String errorMessage)? authLocalFailure,
-    TResult Function(String errorMessage)? fetchLocalDataFailure,
-    TResult Function(String errorMessage)? createFileInCacheFailure,
-    TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? clienteNotFound,
-    TResult Function()? articuloNotFound,
-    TResult Function()? pedidoVentaNotFound,
-    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult Function(String errorMessage)? insertDataFailure,
-    TResult Function()? notConnection,
-    TResult Function()? noSuchFileOrDirectory,
-    TResult Function()? unexpectedResponseFormat,
-    TResult Function()? unexpectedError,
-    required TResult orElse(),
-  }) {
-    if (noSuchFileOrDirectory != null) {
-      return noSuchFileOrDirectory();
-    }
-    return orElse();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(RestApiFailure value) restApiFailure,
-    required TResult Function(AuthLocalFailure value) authLocalFailure,
-    required TResult Function(FetchLocalDataFailure value)
-        fetchLocalDataFailure,
-    required TResult Function(CreateFileInCahceFailure value)
-        createFileInCacheFailure,
-    required TResult Function(SyncFailure value) syncFailure,
-    required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
-    required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
-    required TResult Function(PedidoVentaNotFoundFailure value)
-        pedidoVentaNotFound,
-    required TResult Function(PedidoVentaDeleteFailure value)
-        pedidoVentaDeleteFailure,
-    required TResult Function(InsertDataFailure value) insertDataFailure,
-    required TResult Function(NotConnectionFailure value) notConnection,
-    required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
-    required TResult Function(UnexpectedResponseFormat value)
-        unexpectedResponseFormat,
-    required TResult Function(UnexpectedError value) unexpectedError,
-  }) {
-    return noSuchFileOrDirectory(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(RestApiFailure value)? restApiFailure,
-    TResult? Function(AuthLocalFailure value)? authLocalFailure,
-    TResult? Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult? Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult? Function(SyncFailure value)? syncFailure,
-    TResult? Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult? Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult? Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult? Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult? Function(InsertDataFailure value)? insertDataFailure,
-    TResult? Function(NotConnectionFailure value)? notConnection,
-    TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
-    TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-    TResult? Function(UnexpectedError value)? unexpectedError,
-  }) {
-    return noSuchFileOrDirectory?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(RestApiFailure value)? restApiFailure,
-    TResult Function(AuthLocalFailure value)? authLocalFailure,
-    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult Function(InsertDataFailure value)? insertDataFailure,
-    TResult Function(NotConnectionFailure value)? notConnection,
-    TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
-    TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-    TResult Function(UnexpectedError value)? unexpectedError,
-    required TResult orElse(),
-  }) {
-    if (noSuchFileOrDirectory != null) {
-      return noSuchFileOrDirectory(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UnexpectedError);
 }
 
-abstract class ArchivoNoEncontrado implements AppException {
-  const factory ArchivoNoEncontrado() = _$ArchivoNoEncontradoImpl;
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AppException.unexpectedError()';
 }
 
-/// @nodoc
-abstract class _$$UnexpectedResponseFormatImplCopyWith<$Res> {
-  factory _$$UnexpectedResponseFormatImplCopyWith(
-          _$UnexpectedResponseFormatImpl value,
-          $Res Function(_$UnexpectedResponseFormatImpl) then) =
-      __$$UnexpectedResponseFormatImplCopyWithImpl<$Res>;
+
 }
 
-/// @nodoc
-class __$$UnexpectedResponseFormatImplCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res, _$UnexpectedResponseFormatImpl>
-    implements _$$UnexpectedResponseFormatImplCopyWith<$Res> {
-  __$$UnexpectedResponseFormatImplCopyWithImpl(
-      _$UnexpectedResponseFormatImpl _value,
-      $Res Function(_$UnexpectedResponseFormatImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
-}
 
-/// @nodoc
 
-class _$UnexpectedResponseFormatImpl implements UnexpectedResponseFormat {
-  const _$UnexpectedResponseFormatImpl();
-
-  @override
-  String toString() {
-    return 'AppException.unexpectedResponseFormat()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UnexpectedResponseFormatImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int errorCode, String errorMessage)
-        restApiFailure,
-    required TResult Function(String errorMessage) authLocalFailure,
-    required TResult Function(String errorMessage) fetchLocalDataFailure,
-    required TResult Function(String errorMessage) createFileInCacheFailure,
-    required TResult Function(String tableToSync, String errorMessage)
-        syncFailure,
-    required TResult Function() clienteNotFound,
-    required TResult Function() articuloNotFound,
-    required TResult Function() pedidoVentaNotFound,
-    required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
-    required TResult Function(String errorMessage) insertDataFailure,
-    required TResult Function() notConnection,
-    required TResult Function() noSuchFileOrDirectory,
-    required TResult Function() unexpectedResponseFormat,
-    required TResult Function() unexpectedError,
-  }) {
-    return unexpectedResponseFormat();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult? Function(String errorMessage)? authLocalFailure,
-    TResult? Function(String errorMessage)? fetchLocalDataFailure,
-    TResult? Function(String errorMessage)? createFileInCacheFailure,
-    TResult? Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult? Function()? clienteNotFound,
-    TResult? Function()? articuloNotFound,
-    TResult? Function()? pedidoVentaNotFound,
-    TResult? Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult? Function(String errorMessage)? insertDataFailure,
-    TResult? Function()? notConnection,
-    TResult? Function()? noSuchFileOrDirectory,
-    TResult? Function()? unexpectedResponseFormat,
-    TResult? Function()? unexpectedError,
-  }) {
-    return unexpectedResponseFormat?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult Function(String errorMessage)? authLocalFailure,
-    TResult Function(String errorMessage)? fetchLocalDataFailure,
-    TResult Function(String errorMessage)? createFileInCacheFailure,
-    TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? clienteNotFound,
-    TResult Function()? articuloNotFound,
-    TResult Function()? pedidoVentaNotFound,
-    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult Function(String errorMessage)? insertDataFailure,
-    TResult Function()? notConnection,
-    TResult Function()? noSuchFileOrDirectory,
-    TResult Function()? unexpectedResponseFormat,
-    TResult Function()? unexpectedError,
-    required TResult orElse(),
-  }) {
-    if (unexpectedResponseFormat != null) {
-      return unexpectedResponseFormat();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(RestApiFailure value) restApiFailure,
-    required TResult Function(AuthLocalFailure value) authLocalFailure,
-    required TResult Function(FetchLocalDataFailure value)
-        fetchLocalDataFailure,
-    required TResult Function(CreateFileInCahceFailure value)
-        createFileInCacheFailure,
-    required TResult Function(SyncFailure value) syncFailure,
-    required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
-    required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
-    required TResult Function(PedidoVentaNotFoundFailure value)
-        pedidoVentaNotFound,
-    required TResult Function(PedidoVentaDeleteFailure value)
-        pedidoVentaDeleteFailure,
-    required TResult Function(InsertDataFailure value) insertDataFailure,
-    required TResult Function(NotConnectionFailure value) notConnection,
-    required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
-    required TResult Function(UnexpectedResponseFormat value)
-        unexpectedResponseFormat,
-    required TResult Function(UnexpectedError value) unexpectedError,
-  }) {
-    return unexpectedResponseFormat(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(RestApiFailure value)? restApiFailure,
-    TResult? Function(AuthLocalFailure value)? authLocalFailure,
-    TResult? Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult? Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult? Function(SyncFailure value)? syncFailure,
-    TResult? Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult? Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult? Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult? Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult? Function(InsertDataFailure value)? insertDataFailure,
-    TResult? Function(NotConnectionFailure value)? notConnection,
-    TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
-    TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-    TResult? Function(UnexpectedError value)? unexpectedError,
-  }) {
-    return unexpectedResponseFormat?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(RestApiFailure value)? restApiFailure,
-    TResult Function(AuthLocalFailure value)? authLocalFailure,
-    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult Function(InsertDataFailure value)? insertDataFailure,
-    TResult Function(NotConnectionFailure value)? notConnection,
-    TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
-    TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-    TResult Function(UnexpectedError value)? unexpectedError,
-    required TResult orElse(),
-  }) {
-    if (unexpectedResponseFormat != null) {
-      return unexpectedResponseFormat(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class UnexpectedResponseFormat implements AppException {
-  const factory UnexpectedResponseFormat() = _$UnexpectedResponseFormatImpl;
-}
-
-/// @nodoc
-abstract class _$$UnexpectedErrorImplCopyWith<$Res> {
-  factory _$$UnexpectedErrorImplCopyWith(_$UnexpectedErrorImpl value,
-          $Res Function(_$UnexpectedErrorImpl) then) =
-      __$$UnexpectedErrorImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$UnexpectedErrorImplCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res, _$UnexpectedErrorImpl>
-    implements _$$UnexpectedErrorImplCopyWith<$Res> {
-  __$$UnexpectedErrorImplCopyWithImpl(
-      _$UnexpectedErrorImpl _value, $Res Function(_$UnexpectedErrorImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$UnexpectedErrorImpl implements UnexpectedError {
-  const _$UnexpectedErrorImpl();
-
-  @override
-  String toString() {
-    return 'AppException.unexpectedError()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UnexpectedErrorImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int errorCode, String errorMessage)
-        restApiFailure,
-    required TResult Function(String errorMessage) authLocalFailure,
-    required TResult Function(String errorMessage) fetchLocalDataFailure,
-    required TResult Function(String errorMessage) createFileInCacheFailure,
-    required TResult Function(String tableToSync, String errorMessage)
-        syncFailure,
-    required TResult Function() clienteNotFound,
-    required TResult Function() articuloNotFound,
-    required TResult Function() pedidoVentaNotFound,
-    required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
-    required TResult Function(String errorMessage) insertDataFailure,
-    required TResult Function() notConnection,
-    required TResult Function() noSuchFileOrDirectory,
-    required TResult Function() unexpectedResponseFormat,
-    required TResult Function() unexpectedError,
-  }) {
-    return unexpectedError();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult? Function(String errorMessage)? authLocalFailure,
-    TResult? Function(String errorMessage)? fetchLocalDataFailure,
-    TResult? Function(String errorMessage)? createFileInCacheFailure,
-    TResult? Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult? Function()? clienteNotFound,
-    TResult? Function()? articuloNotFound,
-    TResult? Function()? pedidoVentaNotFound,
-    TResult? Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult? Function(String errorMessage)? insertDataFailure,
-    TResult? Function()? notConnection,
-    TResult? Function()? noSuchFileOrDirectory,
-    TResult? Function()? unexpectedResponseFormat,
-    TResult? Function()? unexpectedError,
-  }) {
-    return unexpectedError?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult Function(String errorMessage)? authLocalFailure,
-    TResult Function(String errorMessage)? fetchLocalDataFailure,
-    TResult Function(String errorMessage)? createFileInCacheFailure,
-    TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? clienteNotFound,
-    TResult Function()? articuloNotFound,
-    TResult Function()? pedidoVentaNotFound,
-    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult Function(String errorMessage)? insertDataFailure,
-    TResult Function()? notConnection,
-    TResult Function()? noSuchFileOrDirectory,
-    TResult Function()? unexpectedResponseFormat,
-    TResult Function()? unexpectedError,
-    required TResult orElse(),
-  }) {
-    if (unexpectedError != null) {
-      return unexpectedError();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(RestApiFailure value) restApiFailure,
-    required TResult Function(AuthLocalFailure value) authLocalFailure,
-    required TResult Function(FetchLocalDataFailure value)
-        fetchLocalDataFailure,
-    required TResult Function(CreateFileInCahceFailure value)
-        createFileInCacheFailure,
-    required TResult Function(SyncFailure value) syncFailure,
-    required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
-    required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
-    required TResult Function(PedidoVentaNotFoundFailure value)
-        pedidoVentaNotFound,
-    required TResult Function(PedidoVentaDeleteFailure value)
-        pedidoVentaDeleteFailure,
-    required TResult Function(InsertDataFailure value) insertDataFailure,
-    required TResult Function(NotConnectionFailure value) notConnection,
-    required TResult Function(ArchivoNoEncontrado value) noSuchFileOrDirectory,
-    required TResult Function(UnexpectedResponseFormat value)
-        unexpectedResponseFormat,
-    required TResult Function(UnexpectedError value) unexpectedError,
-  }) {
-    return unexpectedError(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(RestApiFailure value)? restApiFailure,
-    TResult? Function(AuthLocalFailure value)? authLocalFailure,
-    TResult? Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult? Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult? Function(SyncFailure value)? syncFailure,
-    TResult? Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult? Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult? Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult? Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult? Function(InsertDataFailure value)? insertDataFailure,
-    TResult? Function(NotConnectionFailure value)? notConnection,
-    TResult? Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
-    TResult? Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-    TResult? Function(UnexpectedError value)? unexpectedError,
-  }) {
-    return unexpectedError?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(RestApiFailure value)? restApiFailure,
-    TResult Function(AuthLocalFailure value)? authLocalFailure,
-    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult Function(InsertDataFailure value)? insertDataFailure,
-    TResult Function(NotConnectionFailure value)? notConnection,
-    TResult Function(ArchivoNoEncontrado value)? noSuchFileOrDirectory,
-    TResult Function(UnexpectedResponseFormat value)? unexpectedResponseFormat,
-    TResult Function(UnexpectedError value)? unexpectedError,
-    required TResult orElse(),
-  }) {
-    if (unexpectedError != null) {
-      return unexpectedError(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class UnexpectedError implements AppException {
-  const factory UnexpectedError() = _$UnexpectedErrorImpl;
-}
+// dart format on

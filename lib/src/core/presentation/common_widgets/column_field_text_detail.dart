@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../theme/app_sizes.dart';
+import 'package:gap/gap.dart';
 
 class ColumnFieldTextDetalle extends StatelessWidget {
   const ColumnFieldTextDetalle({
@@ -25,15 +24,17 @@ class ColumnFieldTextDetalle extends StatelessWidget {
                 color: Theme.of(context).textTheme.bodySmall!.color,
               ),
             ),
-            (value is String)
-                ? (selectable)
-                    ? SelectableText(
-                      value as String,
-                      selectionControls: MaterialTextSelectionControls(),
-                    )
-                    : Text(value as String)
-                : value as Widget,
-            gapH4,
+            if (value is String)
+              if (selectable)
+                SelectableText(
+                  value as String,
+                  selectionControls: MaterialTextSelectionControls(),
+                )
+              else
+                Text(value as String)
+            else
+              value as Widget,
+            const Gap(4),
           ],
         )
         : Container();

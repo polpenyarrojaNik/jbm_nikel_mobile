@@ -226,14 +226,13 @@ class ExpedicionRepository {
       if (response.statusCode == 200) {
         final data = jsonDataSelector(response.data);
         return data.map((e) => ExpedicionDTO.fromJson(e as Json)).toList();
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
       }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
     } catch (e, stackTrace) {
-      throw getApiError(e, stackTrace, logger);
+      Error.throwWithStackTrace(getApiError(e, stackTrace, logger), stackTrace);
     }
   }
 }

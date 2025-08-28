@@ -1,7 +1,7 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../core/helpers/extension.dart';
 
+import '../../../core/helpers/extension.dart';
 import '../../../core/infrastructure/remote_database.dart';
 import '../domain/articulo_precio_tarifa.dart';
 
@@ -11,7 +11,7 @@ part 'articulo_precio_tarifa_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class ArticuloPrecioTarifaDTO
+abstract class ArticuloPrecioTarifaDTO
     with _$ArticuloPrecioTarifaDTO
     implements Insertable<ArticuloPrecioTarifaDTO> {
   const ArticuloPrecioTarifaDTO._();
@@ -40,7 +40,7 @@ class ArticuloPrecioTarifaDTO
       divisaId: divisaId,
       tipoPrecio: tipoPrecio,
       lastUpdated: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
+      deleted: (deleted == 'S'),
     );
   }
 

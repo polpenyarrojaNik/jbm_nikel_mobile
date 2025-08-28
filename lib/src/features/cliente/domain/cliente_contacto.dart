@@ -5,7 +5,7 @@ import 'cliente_contacto_imp.dart';
 part 'cliente_contacto.freezed.dart';
 
 @freezed
-class ClienteContacto with _$ClienteContacto {
+abstract class ClienteContacto with _$ClienteContacto {
   const ClienteContacto._();
   const factory ClienteContacto({
     required String clienteId,

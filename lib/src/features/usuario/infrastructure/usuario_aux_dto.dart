@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../domain/usuario.dart';
 
 part 'usuario_aux_dto.freezed.dart';
@@ -6,7 +7,7 @@ part 'usuario_aux_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class UsuarioAuxDTO with _$UsuarioAuxDTO {
+abstract class UsuarioAuxDTO with _$UsuarioAuxDTO {
   const UsuarioAuxDTO._();
   const factory UsuarioAuxDTO({
     @JsonKey(name: 'USUARIO_ID') required String id,

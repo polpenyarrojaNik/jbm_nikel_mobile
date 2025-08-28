@@ -41,7 +41,7 @@ final appLocalDatabaseProvider = Provider<LocalAppDatabase>((ref) {
   ref.onDispose(() => database.close());
   return database;
 });
-const localDatabaseName = 'local_jbm.sqlite';
+const kLocalDatabaseName = 'local_jbm.sqlite';
 
 @DriftDatabase(
   tables: [
@@ -232,7 +232,7 @@ class LocalAppDatabase extends _$LocalAppDatabase {
 
 Future<DriftIsolate> _createDriftIsolate() async {
   final dir = await getApplicationDocumentsDirectory();
-  final path = p.join(dir.path, localDatabaseName);
+  final path = p.join(dir.path, kLocalDatabaseName);
   final receivePort = ReceivePort();
 
   await Isolate.spawn(

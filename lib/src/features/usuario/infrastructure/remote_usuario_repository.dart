@@ -73,18 +73,20 @@ class RemoteUsuarioRepository {
               response.data['message']?.toString() ??
               'Internet Error',
         );
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? 'Internet Error',
-        );
       }
-    } on DioException catch (e) {
       throw AppException.restApiFailure(
-        e.response?.statusCode ?? 400,
-        e.response?.data['error']['detail']?.toString() ??
-            e.response?.data['error']['message']?.toString() ??
-            'Internet Error',
+        response.statusCode ?? 400,
+        response.statusMessage ?? 'Internet Error',
+      );
+    } on DioException catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.restApiFailure(
+          e.response?.statusCode ?? 400,
+          e.response?.data['error']['detail']?.toString() ??
+              e.response?.data['error']['message']?.toString() ??
+              'Internet Error',
+        ),
+        stackTrace,
       );
     }
   }
@@ -101,7 +103,7 @@ class RemoteUsuarioRepository {
         final packageInfo = await PackageInfo.fromPlatform();
         final deviceInfoPlugin = DeviceInfoPlugin();
 
-        late String deviceInfoStr;
+        String deviceInfoStr;
 
         if (Platform.isAndroid) {
           final andoridInfo = await deviceInfoPlugin.androidInfo;
@@ -110,7 +112,7 @@ class RemoteUsuarioRepository {
         } else {
           final iOSInfo = await deviceInfoPlugin.iosInfo;
           deviceInfoStr =
-              '${iOSInfo.utsname.machine}/${iOSInfo.identifierForVendor}';
+              '${iOSInfo.utsname.machine}/${iOSInfo.identifierForVendor ?? ''}';
         }
 
         return usuarioDTO.copyWith(
@@ -119,16 +121,18 @@ class RemoteUsuarioRepository {
           buildNumber: packageInfo.buildNumber,
           deviceInfo: deviceInfoStr,
         );
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.data['detail']?.toString() ??
-              response.data['message']?.toString() ??
-              'Internet Error',
-        );
       }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.data['detail']?.toString() ??
+            response.data['message']?.toString() ??
+            'Internet Error',
+      );
     } catch (e, stackTrace) {
-      throw getApiError(e, stackTrace, errorLogger);
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 
@@ -158,14 +162,16 @@ class RemoteUsuarioRepository {
         final jsonData = response.data['data'] as Map<String, dynamic>;
 
         return UsuarioAuxDTO.fromJson(jsonData);
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
       }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
     } catch (e, stackTrace) {
-      throw getApiError(e, stackTrace, errorLogger);
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 }

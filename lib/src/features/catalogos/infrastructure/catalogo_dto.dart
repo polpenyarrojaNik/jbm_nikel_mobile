@@ -1,6 +1,7 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../../core/infrastructure/local_database.dart';
 import '../domain/catalogo.dart';
 
@@ -10,7 +11,9 @@ part 'catalogo_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class CatalogoDTO with _$CatalogoDTO implements Insertable<CatalogoDTO> {
+abstract class CatalogoDTO
+    with _$CatalogoDTO
+    implements Insertable<CatalogoDTO> {
   const CatalogoDTO._();
   const factory CatalogoDTO({
     @JsonKey(name: 'CATALOGO_ID') required int catalogoId,

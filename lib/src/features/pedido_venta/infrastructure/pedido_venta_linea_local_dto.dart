@@ -1,8 +1,8 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../core/helpers/extension.dart';
 import 'package:money2/money2.dart';
 
+import '../../../core/helpers/extension.dart';
 import '../../../core/infrastructure/local_database.dart';
 import '../domain/pedido_venta_linea.dart';
 
@@ -11,7 +11,7 @@ part 'pedido_venta_linea_local_dto.g.dart';
 
 // ignore_for_file: invalid_annotation_target
 @freezed
-class PedidoVentaLineaLocalDTO
+abstract class PedidoVentaLineaLocalDTO
     with _$PedidoVentaLineaLocalDTO
     implements Insertable<PedidoVentaLineaLocalDTO> {
   const PedidoVentaLineaLocalDTO._();
@@ -81,7 +81,7 @@ class PedidoVentaLineaLocalDTO
       descuentoProntoPago: descuentoProntoPago,
       pedidoLineaIdComponente: pedidoLineaComponenteId,
       importeLinea: importeLinea,
-      stockDisponibleSN: (stockDisponibleSN == 'S') ? true : false,
+      stockDisponibleSN: (stockDisponibleSN == 'S'),
       fechaDisponible: fechaDisponible,
       iva: iva,
       cantidadPendiente: cantidad,

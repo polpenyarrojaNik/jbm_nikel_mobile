@@ -1,5 +1,6 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../../core/infrastructure/remote_database.dart';
 
 part 'estadisticas_venta_cliente_usuario_dto.freezed.dart';
@@ -8,7 +9,7 @@ part 'estadisticas_venta_cliente_usuario_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class EstadisticasVentaClienteUsuarioDTO
+abstract class EstadisticasVentaClienteUsuarioDTO
     with _$EstadisticasVentaClienteUsuarioDTO
     implements Insertable<EstadisticasVentaClienteUsuarioDTO> {
   const EstadisticasVentaClienteUsuarioDTO._();

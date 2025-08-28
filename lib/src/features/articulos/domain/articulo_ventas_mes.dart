@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'articulo_ventas_mes.freezed.dart';
 
 @freezed
-class ArticuloVentasMes with _$ArticuloVentasMes {
+abstract class ArticuloVentasMes with _$ArticuloVentasMes {
   const ArticuloVentasMes._();
   const factory ArticuloVentasMes({
     required int mes,

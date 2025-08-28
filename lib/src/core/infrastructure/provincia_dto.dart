@@ -1,8 +1,8 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'remote_database.dart';
 
 import '../domain/provincia.dart';
+import 'remote_database.dart';
 
 part 'provincia_dto.freezed.dart';
 part 'provincia_dto.g.dart';
@@ -10,7 +10,9 @@ part 'provincia_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class ProvinciaDTO with _$ProvinciaDTO implements Insertable<ProvinciaDTO> {
+abstract class ProvinciaDTO
+    with _$ProvinciaDTO
+    implements Insertable<ProvinciaDTO> {
   const ProvinciaDTO._();
   const factory ProvinciaDTO({
     @JsonKey(name: 'PAIS_ID') required String? paisId,
@@ -31,7 +33,7 @@ class ProvinciaDTO with _$ProvinciaDTO implements Insertable<ProvinciaDTO> {
       provinciaId: provinciaId,
       provincia: provincia,
       lastUpdate: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
+      deleted: (deleted == 'S'),
     );
   }
 

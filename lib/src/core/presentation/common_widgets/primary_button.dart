@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'progress_indicator_widget.dart';
 
-import '../theme/app_sizes.dart';
+import 'progress_indicator_widget.dart';
 
 /// Primary button based on [ElevatedButton].
 /// Useful for CTAs in the app.
@@ -22,7 +21,7 @@ class PrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: Sizes.p48,
+      height: 48,
       child: ElevatedButton(
         onPressed: onPressed,
         child:

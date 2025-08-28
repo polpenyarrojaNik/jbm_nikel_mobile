@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'articulo_documento.freezed.dart';
 
 @freezed
-class ArticuloDocumento with _$ArticuloDocumento {
+abstract class ArticuloDocumento with _$ArticuloDocumento {
   const ArticuloDocumento._();
   const factory ArticuloDocumento({
     required String articuloId,

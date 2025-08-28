@@ -24,9 +24,12 @@ Error getApiError(Object e, StackTrace stackTrace, ErrorLogger logger) {
         if (decodeError is AppException) {
           rethrow;
         }
-        throw AppException.restApiFailure(
-          e.response!.statusCode ?? 500,
-          e.response?.statusMessage ?? '',
+        Error.throwWithStackTrace(
+          AppException.restApiFailure(
+            e.response!.statusCode ?? 500,
+            e.response?.statusMessage ?? '',
+          ),
+          stackTrace,
         );
       }
     } else {
@@ -54,9 +57,8 @@ Map<String, dynamic> _parseResponseData(dynamic responseData) {
     throw AppException.restApiFailure(400, errorString);
   } else if (responseData is Map<String, dynamic>) {
     return responseData;
-  } else {
-    throw const AppException.unexpectedResponseFormat();
   }
+  throw const AppException.unexpectedResponseFormat();
 }
 
 String _extractErrorMessage(Map<String, dynamic> responseJson) {

@@ -1,10 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../expediciones/domain/tracking_estado.dart';
 
 part 'pedido_albaran.freezed.dart';
 
 @freezed
-class PedidoAlbaran with _$PedidoAlbaran {
+abstract class PedidoAlbaran with _$PedidoAlbaran {
   const PedidoAlbaran._();
   const factory PedidoAlbaran({
     required String empresaId,

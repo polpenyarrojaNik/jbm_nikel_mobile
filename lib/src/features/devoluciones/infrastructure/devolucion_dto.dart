@@ -1,8 +1,8 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../core/infrastructure/remote_database.dart';
 
 import '../../../core/domain/pais.dart';
+import '../../../core/infrastructure/remote_database.dart';
 import '../domain/devolucion.dart';
 import '../domain/devolucion_estado.dart';
 
@@ -11,7 +11,9 @@ part 'devolucion_dto.g.dart';
 
 // ignore_for_file: invalid_annotation_target
 @freezed
-class DevolucionDTO with _$DevolucionDTO implements Insertable<DevolucionDTO> {
+abstract class DevolucionDTO
+    with _$DevolucionDTO
+    implements Insertable<DevolucionDTO> {
   const DevolucionDTO._();
   const factory DevolucionDTO({
     @JsonKey(name: 'EMPRESA_ID') required String empresaId,

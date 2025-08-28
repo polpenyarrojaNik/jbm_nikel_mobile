@@ -9,7 +9,7 @@ part 'plazo_cobro_dto.g.dart';
 
 // ignore_for_file: invalid_annotation_target
 @freezed
-class PlazoDeCobroDTO
+abstract class PlazoDeCobroDTO
     with _$PlazoDeCobroDTO
     implements Insertable<PlazoDeCobroDTO> {
   const PlazoDeCobroDTO._();
@@ -56,7 +56,7 @@ class PlazoDeCobroDTO
       descripcionCN: descripcionCN,
       descripcionEL: descripcionEL,
       lastUpdate: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
+      deleted: (deleted == 'S'),
     );
   }
 

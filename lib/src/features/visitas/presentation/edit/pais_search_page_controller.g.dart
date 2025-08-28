@@ -12,12 +12,15 @@ String _$paisSearchPageControllerHash() =>
 /// See also [PaisSearchPageController].
 @ProviderFor(PaisSearchPageController)
 final paisSearchPageControllerProvider = AutoDisposeAsyncNotifierProvider<
-    PaisSearchPageController, List<Pais>>.internal(
+  PaisSearchPageController,
+  List<Pais>
+>.internal(
   PaisSearchPageController.new,
   name: r'paisSearchPageControllerProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$paisSearchPageControllerHash,
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$paisSearchPageControllerHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

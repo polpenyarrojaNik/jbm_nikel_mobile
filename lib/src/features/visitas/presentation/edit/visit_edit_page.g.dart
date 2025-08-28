@@ -59,22 +59,14 @@ class VisitEditPageControllerFamily
     bool isLocal,
     bool isNew,
   ) {
-    return VisitEditPageControllerProvider(
-      visitaId,
-      isLocal,
-      isNew,
-    );
+    return VisitEditPageControllerProvider(visitaId, isLocal, isNew);
   }
 
   @override
   VisitEditPageControllerProvider getProviderOverride(
     covariant VisitEditPageControllerProvider provider,
   ) {
-    return call(
-      provider.visitaId,
-      provider.isLocal,
-      provider.isNew,
-    );
+    return call(provider.visitaId, provider.isLocal, provider.isNew);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -94,31 +86,32 @@ class VisitEditPageControllerFamily
 
 /// See also [VisitEditPageController].
 class VisitEditPageControllerProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<VisitEditPageController,
-        VisitEditScreenData> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          VisitEditPageController,
+          VisitEditScreenData
+        > {
   /// See also [VisitEditPageController].
-  VisitEditPageControllerProvider(
-    String visitaId,
-    bool isLocal,
-    bool isNew,
-  ) : this._internal(
-          () => VisitEditPageController()
-            ..visitaId = visitaId
-            ..isLocal = isLocal
-            ..isNew = isNew,
-          from: visitEditPageControllerProvider,
-          name: r'visitEditPageControllerProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$visitEditPageControllerHash,
-          dependencies: VisitEditPageControllerFamily._dependencies,
-          allTransitiveDependencies:
-              VisitEditPageControllerFamily._allTransitiveDependencies,
-          visitaId: visitaId,
-          isLocal: isLocal,
-          isNew: isNew,
-        );
+  VisitEditPageControllerProvider(String visitaId, bool isLocal, bool isNew)
+    : this._internal(
+        () =>
+            VisitEditPageController()
+              ..visitaId = visitaId
+              ..isLocal = isLocal
+              ..isNew = isNew,
+        from: visitEditPageControllerProvider,
+        name: r'visitEditPageControllerProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$visitEditPageControllerHash,
+        dependencies: VisitEditPageControllerFamily._dependencies,
+        allTransitiveDependencies:
+            VisitEditPageControllerFamily._allTransitiveDependencies,
+        visitaId: visitaId,
+        isLocal: isLocal,
+        isNew: isNew,
+      );
 
   VisitEditPageControllerProvider._internal(
     super._createNotifier, {
@@ -140,11 +133,7 @@ class VisitEditPageControllerProvider
   FutureOr<VisitEditScreenData> runNotifierBuild(
     covariant VisitEditPageController notifier,
   ) {
-    return notifier.build(
-      visitaId,
-      isLocal,
-      isNew,
-    );
+    return notifier.build(visitaId, isLocal, isNew);
   }
 
   @override
@@ -152,10 +141,11 @@ class VisitEditPageControllerProvider
     return ProviderOverride(
       origin: this,
       override: VisitEditPageControllerProvider._internal(
-        () => create()
-          ..visitaId = visitaId
-          ..isLocal = isLocal
-          ..isNew = isNew,
+        () =>
+            create()
+              ..visitaId = visitaId
+              ..isLocal = isLocal
+              ..isNew = isNew,
         from: from,
         name: null,
         dependencies: null,
@@ -169,8 +159,11 @@ class VisitEditPageControllerProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<VisitEditPageController,
-      VisitEditScreenData> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    VisitEditPageController,
+    VisitEditScreenData
+  >
+  createElement() {
     return _VisitEditPageControllerProviderElement(this);
   }
 
@@ -208,8 +201,12 @@ mixin VisitEditPageControllerRef
 }
 
 class _VisitEditPageControllerProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<VisitEditPageController,
-        VisitEditScreenData> with VisitEditPageControllerRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          VisitEditPageController,
+          VisitEditScreenData
+        >
+    with VisitEditPageControllerRef {
   _VisitEditPageControllerProviderElement(super.provider);
 
   @override
@@ -222,8 +219,11 @@ class _VisitEditPageControllerProviderElement
 
 String _$saveFormHash() => r'483005a18d08ef5d59496016f8eb4d826c3e6315';
 
-abstract class _$SaveForm extends BuildlessAutoDisposeNotifier<
-    MutationState<Either<AppException, Visita>, Visita>> {
+abstract class _$SaveForm
+    extends
+        BuildlessAutoDisposeNotifier<
+          MutationState<Either<AppException, Visita>, Visita>
+        > {
   late final String visitaId;
   late final bool isLocal;
   late final bool isNew;
@@ -246,27 +246,13 @@ class SaveFormFamily
   const SaveFormFamily();
 
   /// See also [SaveForm].
-  SaveFormProvider call(
-    String visitaId,
-    bool isLocal,
-    bool isNew,
-  ) {
-    return SaveFormProvider(
-      visitaId,
-      isLocal,
-      isNew,
-    );
+  SaveFormProvider call(String visitaId, bool isLocal, bool isNew) {
+    return SaveFormProvider(visitaId, isLocal, isNew);
   }
 
   @override
-  SaveFormProvider getProviderOverride(
-    covariant SaveFormProvider provider,
-  ) {
-    return call(
-      provider.visitaId,
-      provider.isLocal,
-      provider.isNew,
-    );
+  SaveFormProvider getProviderOverride(covariant SaveFormProvider provider) {
+    return call(provider.visitaId, provider.isLocal, provider.isNew);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -285,30 +271,32 @@ class SaveFormFamily
 }
 
 /// See also [SaveForm].
-class SaveFormProvider extends AutoDisposeNotifierProviderImpl<SaveForm,
-    MutationState<Either<AppException, Visita>, Visita>> {
+class SaveFormProvider
+    extends
+        AutoDisposeNotifierProviderImpl<
+          SaveForm,
+          MutationState<Either<AppException, Visita>, Visita>
+        > {
   /// See also [SaveForm].
-  SaveFormProvider(
-    String visitaId,
-    bool isLocal,
-    bool isNew,
-  ) : this._internal(
-          () => SaveForm()
-            ..visitaId = visitaId
-            ..isLocal = isLocal
-            ..isNew = isNew,
-          from: saveFormProvider,
-          name: r'saveFormProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$saveFormHash,
-          dependencies: SaveFormFamily._dependencies,
-          allTransitiveDependencies: SaveFormFamily._allTransitiveDependencies,
-          visitaId: visitaId,
-          isLocal: isLocal,
-          isNew: isNew,
-        );
+  SaveFormProvider(String visitaId, bool isLocal, bool isNew)
+    : this._internal(
+        () =>
+            SaveForm()
+              ..visitaId = visitaId
+              ..isLocal = isLocal
+              ..isNew = isNew,
+        from: saveFormProvider,
+        name: r'saveFormProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$saveFormHash,
+        dependencies: SaveFormFamily._dependencies,
+        allTransitiveDependencies: SaveFormFamily._allTransitiveDependencies,
+        visitaId: visitaId,
+        isLocal: isLocal,
+        isNew: isNew,
+      );
 
   SaveFormProvider._internal(
     super._createNotifier, {
@@ -330,11 +318,7 @@ class SaveFormProvider extends AutoDisposeNotifierProviderImpl<SaveForm,
   MutationState<Either<AppException, Visita>, Visita> runNotifierBuild(
     covariant SaveForm notifier,
   ) {
-    return notifier.build(
-      visitaId,
-      isLocal,
-      isNew,
-    );
+    return notifier.build(visitaId, isLocal, isNew);
   }
 
   @override
@@ -342,10 +326,11 @@ class SaveFormProvider extends AutoDisposeNotifierProviderImpl<SaveForm,
     return ProviderOverride(
       origin: this,
       override: SaveFormProvider._internal(
-        () => create()
-          ..visitaId = visitaId
-          ..isLocal = isLocal
-          ..isNew = isNew,
+        () =>
+            create()
+              ..visitaId = visitaId
+              ..isLocal = isLocal
+              ..isNew = isNew,
         from: from,
         name: null,
         dependencies: null,
@@ -359,8 +344,11 @@ class SaveFormProvider extends AutoDisposeNotifierProviderImpl<SaveForm,
   }
 
   @override
-  AutoDisposeNotifierProviderElement<SaveForm,
-      MutationState<Either<AppException, Visita>, Visita>> createElement() {
+  AutoDisposeNotifierProviderElement<
+    SaveForm,
+    MutationState<Either<AppException, Visita>, Visita>
+  >
+  createElement() {
     return _SaveFormProviderElement(this);
   }
 
@@ -385,8 +373,11 @@ class SaveFormProvider extends AutoDisposeNotifierProviderImpl<SaveForm,
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin SaveFormRef on AutoDisposeNotifierProviderRef<
-    MutationState<Either<AppException, Visita>, Visita>> {
+mixin SaveFormRef
+    on
+        AutoDisposeNotifierProviderRef<
+          MutationState<Either<AppException, Visita>, Visita>
+        > {
   /// The parameter `visitaId` of this provider.
   String get visitaId;
 
@@ -397,9 +388,13 @@ mixin SaveFormRef on AutoDisposeNotifierProviderRef<
   bool get isNew;
 }
 
-class _SaveFormProviderElement extends AutoDisposeNotifierProviderElement<
-    SaveForm,
-    MutationState<Either<AppException, Visita>, Visita>> with SaveFormRef {
+class _SaveFormProviderElement
+    extends
+        AutoDisposeNotifierProviderElement<
+          SaveForm,
+          MutationState<Either<AppException, Visita>, Visita>
+        >
+    with SaveFormRef {
   _SaveFormProviderElement(super.provider);
 
   @override
@@ -409,5 +404,6 @@ class _SaveFormProviderElement extends AutoDisposeNotifierProviderElement<
   @override
   bool get isNew => (origin as SaveFormProvider).isNew;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

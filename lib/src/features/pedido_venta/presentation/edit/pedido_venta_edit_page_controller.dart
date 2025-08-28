@@ -1,14 +1,14 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
-import '../../domain/pedido_venta.dart';
-import '../../domain/pedido_venta_linea.dart';
 
 import '../../../../core/exceptions/app_exception.dart';
 import '../../../cliente/domain/cliente.dart';
 import '../../../cliente/domain/cliente_direccion.dart';
 import '../../../cliente/infrastructure/cliente_repository.dart';
 import '../../domain/pedido_local_param.dart';
+import '../../domain/pedido_venta.dart';
+import '../../domain/pedido_venta_linea.dart';
 import '../../infrastructure/pedido_venta_repository.dart';
 
 part 'pedido_venta_edit_page_controller.freezed.dart';
@@ -241,8 +241,7 @@ class PedidoVentaEditPageController
       );
     } catch (e, stack) {
       if (e is AppException) {
-        e.maybeWhen(
-          orElse: () {},
+        e.whenOrNull(
           notConnection:
               () =>
                   state = PedidoVentaEditPageControllerState.savedError(
@@ -297,7 +296,7 @@ class PedidoVentaEditPageController
     }
   }
 
-  Future<void> navigateToNextStep() async {
+  void navigateToNextStep() {
     _currentStep = (_currentStep < 4) ? _currentStep + 1 : _currentStep;
     state = PedidoVentaEditPageControllerState.data(
       _cliente,
@@ -312,7 +311,7 @@ class PedidoVentaEditPageController
     );
   }
 
-  Future<void> navigateToPreviousStep() async {
+  void navigateToPreviousStep() {
     _currentStep = (_currentStep > 0) ? _currentStep - 1 : _currentStep;
     state = PedidoVentaEditPageControllerState.data(
       _cliente,
@@ -327,7 +326,7 @@ class PedidoVentaEditPageController
     );
   }
 
-  Future<void> navigateToTappedStep({required int tappedStep}) async {
+  void navigateToTappedStep({required int tappedStep}) {
     _currentStep =
         (_currentStep > 0)
             ? _currentStep -= (_currentStep - tappedStep)
@@ -365,9 +364,7 @@ class PedidoVentaEditPageController
     );
   }
 
-  Future<void> selectDireccion({
-    required ClienteDireccion? clienteDireccion,
-  }) async {
+  void selectDireccion({required ClienteDireccion? clienteDireccion}) {
     _clienteDireccion = clienteDireccion;
     state = PedidoVentaEditPageControllerState.data(
       _cliente,
@@ -382,7 +379,7 @@ class PedidoVentaEditPageController
     );
   }
 
-  Future<void> addPedidoVentaLinea({required PedidoVentaLinea newLinea}) async {
+  void addPedidoVentaLinea({required PedidoVentaLinea newLinea}) {
     pedidoVentaLineaList.add(newLinea);
 
     state = PedidoVentaEditPageControllerState.data(
@@ -398,10 +395,10 @@ class PedidoVentaEditPageController
     );
   }
 
-  Future<void> updatePedidoVentaLinea({
+  void updatePedidoVentaLinea({
     required PedidoVentaLinea pedidoVentaLinea,
     required int posicionActualizar,
-  }) async {
+  }) {
     pedidoVentaLineaList[posicionActualizar] = pedidoVentaLinea;
 
     state = PedidoVentaEditPageControllerState.data(
@@ -417,9 +414,9 @@ class PedidoVentaEditPageController
     );
   }
 
-  Future<void> deletePedidoVentaLinea({
+  void deletePedidoVentaLinea({
     required PedidoVentaLinea pedidoVentaLineaToDelete,
-  }) async {
+  }) {
     pedidoVentaLineaList.remove(pedidoVentaLineaToDelete);
 
     pedidoVentaLineaList = recalcularPedidoVentaLineaId();
@@ -437,7 +434,7 @@ class PedidoVentaEditPageController
     );
   }
 
-  Future<void> setObservaciones(String? observaciones) async {
+  void setObservaciones(String? observaciones) {
     _observaciones = observaciones;
     state = PedidoVentaEditPageControllerState.data(
       _cliente,
@@ -452,7 +449,7 @@ class PedidoVentaEditPageController
     );
   }
 
-  Future<void> setPedidoCliente(String? pedidoCliente) async {
+  void setPedidoCliente(String? pedidoCliente) {
     _pedidoCliente = pedidoCliente;
     state = PedidoVentaEditPageControllerState.data(
       _cliente,
@@ -467,7 +464,7 @@ class PedidoVentaEditPageController
     );
   }
 
-  Future<void> setOfertaFechaHasta(DateTime? ofertaFechaHasta) async {
+  void setOfertaFechaHasta(DateTime? ofertaFechaHasta) {
     _ofertaFechaHasta = ofertaFechaHasta;
     state = PedidoVentaEditPageControllerState.data(
       _cliente,
@@ -482,7 +479,7 @@ class PedidoVentaEditPageController
     );
   }
 
-  Future<void> setOfertaSN(bool? newValueOferta) async {
+  void setOfertaSN(bool? newValueOferta) {
     _oferta = newValueOferta ?? _oferta;
     if (!_oferta) {
       _ofertaFechaHasta = null;

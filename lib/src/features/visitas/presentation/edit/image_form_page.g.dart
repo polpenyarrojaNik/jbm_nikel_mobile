@@ -34,9 +34,7 @@ abstract class _$ImageFormPageController
     extends BuildlessAutoDisposeAsyncNotifier<List<OcrRecognizedText>> {
   late final File imageFile;
 
-  FutureOr<List<OcrRecognizedText>> build(
-    File imageFile,
-  );
+  FutureOr<List<OcrRecognizedText>> build(File imageFile);
 }
 
 /// See also [ImageFormPageController].
@@ -50,21 +48,15 @@ class ImageFormPageControllerFamily
   const ImageFormPageControllerFamily();
 
   /// See also [ImageFormPageController].
-  ImageFormPageControllerProvider call(
-    File imageFile,
-  ) {
-    return ImageFormPageControllerProvider(
-      imageFile,
-    );
+  ImageFormPageControllerProvider call(File imageFile) {
+    return ImageFormPageControllerProvider(imageFile);
   }
 
   @override
   ImageFormPageControllerProvider getProviderOverride(
     covariant ImageFormPageControllerProvider provider,
   ) {
-    return call(
-      provider.imageFile,
-    );
+    return call(provider.imageFile);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -84,24 +76,26 @@ class ImageFormPageControllerFamily
 
 /// See also [ImageFormPageController].
 class ImageFormPageControllerProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<ImageFormPageController,
-        List<OcrRecognizedText>> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          ImageFormPageController,
+          List<OcrRecognizedText>
+        > {
   /// See also [ImageFormPageController].
-  ImageFormPageControllerProvider(
-    File imageFile,
-  ) : this._internal(
-          () => ImageFormPageController()..imageFile = imageFile,
-          from: imageFormPageControllerProvider,
-          name: r'imageFormPageControllerProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$imageFormPageControllerHash,
-          dependencies: ImageFormPageControllerFamily._dependencies,
-          allTransitiveDependencies:
-              ImageFormPageControllerFamily._allTransitiveDependencies,
-          imageFile: imageFile,
-        );
+  ImageFormPageControllerProvider(File imageFile)
+    : this._internal(
+        () => ImageFormPageController()..imageFile = imageFile,
+        from: imageFormPageControllerProvider,
+        name: r'imageFormPageControllerProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$imageFormPageControllerHash,
+        dependencies: ImageFormPageControllerFamily._dependencies,
+        allTransitiveDependencies:
+            ImageFormPageControllerFamily._allTransitiveDependencies,
+        imageFile: imageFile,
+      );
 
   ImageFormPageControllerProvider._internal(
     super._createNotifier, {
@@ -119,9 +113,7 @@ class ImageFormPageControllerProvider
   FutureOr<List<OcrRecognizedText>> runNotifierBuild(
     covariant ImageFormPageController notifier,
   ) {
-    return notifier.build(
-      imageFile,
-    );
+    return notifier.build(imageFile);
   }
 
   @override
@@ -141,8 +133,11 @@ class ImageFormPageControllerProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<ImageFormPageController,
-      List<OcrRecognizedText>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    ImageFormPageController,
+    List<OcrRecognizedText>
+  >
+  createElement() {
     return _ImageFormPageControllerProviderElement(this);
   }
 
@@ -170,8 +165,12 @@ mixin ImageFormPageControllerRef
 }
 
 class _ImageFormPageControllerProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<ImageFormPageController,
-        List<OcrRecognizedText>> with ImageFormPageControllerRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          ImageFormPageController,
+          List<OcrRecognizedText>
+        >
+    with ImageFormPageControllerRef {
   _ImageFormPageControllerProviderElement(super.provider);
 
   @override
@@ -180,14 +179,18 @@ class _ImageFormPageControllerProviderElement
 
 String _$setImageFromDataHash() => r'cc91120b820efd30a76a7c04f9efce4accb6727a';
 
-abstract class _$SetImageFromData extends BuildlessAutoDisposeNotifier<
-    MutationState<Either<AppException, ImageFormData>, SetImageFromDataParam>> {
+abstract class _$SetImageFromData
+    extends
+        BuildlessAutoDisposeNotifier<
+          MutationState<
+            Either<AppException, ImageFormData>,
+            SetImageFromDataParam
+          >
+        > {
   late final File imageFile;
 
   MutationState<Either<AppException, ImageFormData>, SetImageFromDataParam>
-      build(
-    File imageFile,
-  );
+  build(File imageFile);
 }
 
 /// See also [SetImageFromData].
@@ -195,27 +198,27 @@ abstract class _$SetImageFromData extends BuildlessAutoDisposeNotifier<
 const setImageFromDataProvider = SetImageFromDataFamily();
 
 /// See also [SetImageFromData].
-class SetImageFromDataFamily extends Family<
-    MutationState<Either<AppException, ImageFormData>, SetImageFromDataParam>> {
+class SetImageFromDataFamily
+    extends
+        Family<
+          MutationState<
+            Either<AppException, ImageFormData>,
+            SetImageFromDataParam
+          >
+        > {
   /// See also [SetImageFromData].
   const SetImageFromDataFamily();
 
   /// See also [SetImageFromData].
-  SetImageFromDataProvider call(
-    File imageFile,
-  ) {
-    return SetImageFromDataProvider(
-      imageFile,
-    );
+  SetImageFromDataProvider call(File imageFile) {
+    return SetImageFromDataProvider(imageFile);
   }
 
   @override
   SetImageFromDataProvider getProviderOverride(
     covariant SetImageFromDataProvider provider,
   ) {
-    return call(
-      provider.imageFile,
-    );
+    return call(provider.imageFile);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -234,25 +237,30 @@ class SetImageFromDataFamily extends Family<
 }
 
 /// See also [SetImageFromData].
-class SetImageFromDataProvider extends AutoDisposeNotifierProviderImpl<
-    SetImageFromData,
-    MutationState<Either<AppException, ImageFormData>, SetImageFromDataParam>> {
+class SetImageFromDataProvider
+    extends
+        AutoDisposeNotifierProviderImpl<
+          SetImageFromData,
+          MutationState<
+            Either<AppException, ImageFormData>,
+            SetImageFromDataParam
+          >
+        > {
   /// See also [SetImageFromData].
-  SetImageFromDataProvider(
-    File imageFile,
-  ) : this._internal(
-          () => SetImageFromData()..imageFile = imageFile,
-          from: setImageFromDataProvider,
-          name: r'setImageFromDataProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$setImageFromDataHash,
-          dependencies: SetImageFromDataFamily._dependencies,
-          allTransitiveDependencies:
-              SetImageFromDataFamily._allTransitiveDependencies,
-          imageFile: imageFile,
-        );
+  SetImageFromDataProvider(File imageFile)
+    : this._internal(
+        () => SetImageFromData()..imageFile = imageFile,
+        from: setImageFromDataProvider,
+        name: r'setImageFromDataProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$setImageFromDataHash,
+        dependencies: SetImageFromDataFamily._dependencies,
+        allTransitiveDependencies:
+            SetImageFromDataFamily._allTransitiveDependencies,
+        imageFile: imageFile,
+      );
 
   SetImageFromDataProvider._internal(
     super._createNotifier, {
@@ -268,12 +276,8 @@ class SetImageFromDataProvider extends AutoDisposeNotifierProviderImpl<
 
   @override
   MutationState<Either<AppException, ImageFormData>, SetImageFromDataParam>
-      runNotifierBuild(
-    covariant SetImageFromData notifier,
-  ) {
-    return notifier.build(
-      imageFile,
-    );
+  runNotifierBuild(covariant SetImageFromData notifier) {
+    return notifier.build(imageFile);
   }
 
   @override
@@ -294,9 +298,10 @@ class SetImageFromDataProvider extends AutoDisposeNotifierProviderImpl<
 
   @override
   AutoDisposeNotifierProviderElement<
-      SetImageFromData,
-      MutationState<Either<AppException, ImageFormData>,
-          SetImageFromDataParam>> createElement() {
+    SetImageFromData,
+    MutationState<Either<AppException, ImageFormData>, SetImageFromDataParam>
+  >
+  createElement() {
     return _SetImageFromDataProviderElement(this);
   }
 
@@ -316,21 +321,33 @@ class SetImageFromDataProvider extends AutoDisposeNotifierProviderImpl<
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin SetImageFromDataRef on AutoDisposeNotifierProviderRef<
-    MutationState<Either<AppException, ImageFormData>, SetImageFromDataParam>> {
+mixin SetImageFromDataRef
+    on
+        AutoDisposeNotifierProviderRef<
+          MutationState<
+            Either<AppException, ImageFormData>,
+            SetImageFromDataParam
+          >
+        > {
   /// The parameter `imageFile` of this provider.
   File get imageFile;
 }
 
 class _SetImageFromDataProviderElement
-    extends AutoDisposeNotifierProviderElement<
-        SetImageFromData,
-        MutationState<Either<AppException, ImageFormData>,
-            SetImageFromDataParam>> with SetImageFromDataRef {
+    extends
+        AutoDisposeNotifierProviderElement<
+          SetImageFromData,
+          MutationState<
+            Either<AppException, ImageFormData>,
+            SetImageFromDataParam
+          >
+        >
+    with SetImageFromDataRef {
   _SetImageFromDataProviderElement(super.provider);
 
   @override
   File get imageFile => (origin as SetImageFromDataProvider).imageFile;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,197 +9,272 @@ part of 'cliente_venta_articulo.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 /// @nodoc
 mixin _$ClienteVentaArticulo {
-  double get clienteId => throw _privateConstructorUsedError;
-  double get mes => throw _privateConstructorUsedError;
-  Money get importe => throw _privateConstructorUsedError;
-  Money get coste => throw _privateConstructorUsedError;
 
-  /// Create a copy of ClienteVentaArticulo
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ClienteVentaArticuloCopyWith<ClienteVentaArticulo> get copyWith =>
-      throw _privateConstructorUsedError;
+ double get clienteId; double get mes; Money get importe; Money get coste;
+/// Create a copy of ClienteVentaArticulo
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ClienteVentaArticuloCopyWith<ClienteVentaArticulo> get copyWith => _$ClienteVentaArticuloCopyWithImpl<ClienteVentaArticulo>(this as ClienteVentaArticulo, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteVentaArticulo&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.mes, mes) || other.mes == mes)&&(identical(other.importe, importe) || other.importe == importe)&&(identical(other.coste, coste) || other.coste == coste));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,clienteId,mes,importe,coste);
+
+@override
+String toString() {
+  return 'ClienteVentaArticulo(clienteId: $clienteId, mes: $mes, importe: $importe, coste: $coste)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ClienteVentaArticuloCopyWith<$Res> {
-  factory $ClienteVentaArticuloCopyWith(ClienteVentaArticulo value,
-          $Res Function(ClienteVentaArticulo) then) =
-      _$ClienteVentaArticuloCopyWithImpl<$Res, ClienteVentaArticulo>;
-  @useResult
-  $Res call({double clienteId, double mes, Money importe, Money coste});
-}
+abstract mixin class $ClienteVentaArticuloCopyWith<$Res>  {
+  factory $ClienteVentaArticuloCopyWith(ClienteVentaArticulo value, $Res Function(ClienteVentaArticulo) _then) = _$ClienteVentaArticuloCopyWithImpl;
+@useResult
+$Res call({
+ double clienteId, double mes, Money importe, Money coste
+});
 
+
+
+
+}
 /// @nodoc
-class _$ClienteVentaArticuloCopyWithImpl<$Res,
-        $Val extends ClienteVentaArticulo>
+class _$ClienteVentaArticuloCopyWithImpl<$Res>
     implements $ClienteVentaArticuloCopyWith<$Res> {
-  _$ClienteVentaArticuloCopyWithImpl(this._value, this._then);
+  _$ClienteVentaArticuloCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ClienteVentaArticulo _self;
+  final $Res Function(ClienteVentaArticulo) _then;
 
-  /// Create a copy of ClienteVentaArticulo
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? clienteId = null,
-    Object? mes = null,
-    Object? importe = null,
-    Object? coste = null,
-  }) {
-    return _then(_value.copyWith(
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as double,
-      mes: null == mes
-          ? _value.mes
-          : mes // ignore: cast_nullable_to_non_nullable
-              as double,
-      importe: null == importe
-          ? _value.importe
-          : importe // ignore: cast_nullable_to_non_nullable
-              as Money,
-      coste: null == coste
-          ? _value.coste
-          : coste // ignore: cast_nullable_to_non_nullable
-              as Money,
-    ) as $Val);
-  }
+/// Create a copy of ClienteVentaArticulo
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? clienteId = null,Object? mes = null,Object? importe = null,Object? coste = null,}) {
+  return _then(_self.copyWith(
+clienteId: null == clienteId ? _self.clienteId : clienteId // ignore: cast_nullable_to_non_nullable
+as double,mes: null == mes ? _self.mes : mes // ignore: cast_nullable_to_non_nullable
+as double,importe: null == importe ? _self.importe : importe // ignore: cast_nullable_to_non_nullable
+as Money,coste: null == coste ? _self.coste : coste // ignore: cast_nullable_to_non_nullable
+as Money,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [ClienteVentaArticulo].
+extension ClienteVentaArticuloPatterns on ClienteVentaArticulo {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ClienteVentaArticulo value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ClienteVentaArticulo() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ClienteVentaArticulo value)  $default,){
+final _that = this;
+switch (_that) {
+case _ClienteVentaArticulo():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ClienteVentaArticulo value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ClienteVentaArticulo() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( double clienteId,  double mes,  Money importe,  Money coste)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ClienteVentaArticulo() when $default != null:
+return $default(_that.clienteId,_that.mes,_that.importe,_that.coste);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( double clienteId,  double mes,  Money importe,  Money coste)  $default,) {final _that = this;
+switch (_that) {
+case _ClienteVentaArticulo():
+return $default(_that.clienteId,_that.mes,_that.importe,_that.coste);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( double clienteId,  double mes,  Money importe,  Money coste)?  $default,) {final _that = this;
+switch (_that) {
+case _ClienteVentaArticulo() when $default != null:
+return $default(_that.clienteId,_that.mes,_that.importe,_that.coste);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
-abstract class _$$ClienteVentaArticuloImplCopyWith<$Res>
-    implements $ClienteVentaArticuloCopyWith<$Res> {
-  factory _$$ClienteVentaArticuloImplCopyWith(_$ClienteVentaArticuloImpl value,
-          $Res Function(_$ClienteVentaArticuloImpl) then) =
-      __$$ClienteVentaArticuloImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({double clienteId, double mes, Money importe, Money coste});
+
+
+class _ClienteVentaArticulo extends ClienteVentaArticulo {
+  const _ClienteVentaArticulo({required this.clienteId, required this.mes, required this.importe, required this.coste}): super._();
+  
+
+@override final  double clienteId;
+@override final  double mes;
+@override final  Money importe;
+@override final  Money coste;
+
+/// Create a copy of ClienteVentaArticulo
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ClienteVentaArticuloCopyWith<_ClienteVentaArticulo> get copyWith => __$ClienteVentaArticuloCopyWithImpl<_ClienteVentaArticulo>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteVentaArticulo&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.mes, mes) || other.mes == mes)&&(identical(other.importe, importe) || other.importe == importe)&&(identical(other.coste, coste) || other.coste == coste));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,clienteId,mes,importe,coste);
+
+@override
+String toString() {
+  return 'ClienteVentaArticulo(clienteId: $clienteId, mes: $mes, importe: $importe, coste: $coste)';
+}
+
+
 }
 
 /// @nodoc
-class __$$ClienteVentaArticuloImplCopyWithImpl<$Res>
-    extends _$ClienteVentaArticuloCopyWithImpl<$Res, _$ClienteVentaArticuloImpl>
-    implements _$$ClienteVentaArticuloImplCopyWith<$Res> {
-  __$$ClienteVentaArticuloImplCopyWithImpl(_$ClienteVentaArticuloImpl _value,
-      $Res Function(_$ClienteVentaArticuloImpl) _then)
-      : super(_value, _then);
+abstract mixin class _$ClienteVentaArticuloCopyWith<$Res> implements $ClienteVentaArticuloCopyWith<$Res> {
+  factory _$ClienteVentaArticuloCopyWith(_ClienteVentaArticulo value, $Res Function(_ClienteVentaArticulo) _then) = __$ClienteVentaArticuloCopyWithImpl;
+@override @useResult
+$Res call({
+ double clienteId, double mes, Money importe, Money coste
+});
 
-  /// Create a copy of ClienteVentaArticulo
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? clienteId = null,
-    Object? mes = null,
-    Object? importe = null,
-    Object? coste = null,
-  }) {
-    return _then(_$ClienteVentaArticuloImpl(
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as double,
-      mes: null == mes
-          ? _value.mes
-          : mes // ignore: cast_nullable_to_non_nullable
-              as double,
-      importe: null == importe
-          ? _value.importe
-          : importe // ignore: cast_nullable_to_non_nullable
-              as Money,
-      coste: null == coste
-          ? _value.coste
-          : coste // ignore: cast_nullable_to_non_nullable
-              as Money,
-    ));
-  }
+
+
+
 }
-
 /// @nodoc
+class __$ClienteVentaArticuloCopyWithImpl<$Res>
+    implements _$ClienteVentaArticuloCopyWith<$Res> {
+  __$ClienteVentaArticuloCopyWithImpl(this._self, this._then);
 
-class _$ClienteVentaArticuloImpl extends _ClienteVentaArticulo {
-  const _$ClienteVentaArticuloImpl(
-      {required this.clienteId,
-      required this.mes,
-      required this.importe,
-      required this.coste})
-      : super._();
+  final _ClienteVentaArticulo _self;
+  final $Res Function(_ClienteVentaArticulo) _then;
 
-  @override
-  final double clienteId;
-  @override
-  final double mes;
-  @override
-  final Money importe;
-  @override
-  final Money coste;
-
-  @override
-  String toString() {
-    return 'ClienteVentaArticulo(clienteId: $clienteId, mes: $mes, importe: $importe, coste: $coste)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ClienteVentaArticuloImpl &&
-            (identical(other.clienteId, clienteId) ||
-                other.clienteId == clienteId) &&
-            (identical(other.mes, mes) || other.mes == mes) &&
-            (identical(other.importe, importe) || other.importe == importe) &&
-            (identical(other.coste, coste) || other.coste == coste));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, clienteId, mes, importe, coste);
-
-  /// Create a copy of ClienteVentaArticulo
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ClienteVentaArticuloImplCopyWith<_$ClienteVentaArticuloImpl>
-      get copyWith =>
-          __$$ClienteVentaArticuloImplCopyWithImpl<_$ClienteVentaArticuloImpl>(
-              this, _$identity);
+/// Create a copy of ClienteVentaArticulo
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? clienteId = null,Object? mes = null,Object? importe = null,Object? coste = null,}) {
+  return _then(_ClienteVentaArticulo(
+clienteId: null == clienteId ? _self.clienteId : clienteId // ignore: cast_nullable_to_non_nullable
+as double,mes: null == mes ? _self.mes : mes // ignore: cast_nullable_to_non_nullable
+as double,importe: null == importe ? _self.importe : importe // ignore: cast_nullable_to_non_nullable
+as Money,coste: null == coste ? _self.coste : coste // ignore: cast_nullable_to_non_nullable
+as Money,
+  ));
 }
 
-abstract class _ClienteVentaArticulo extends ClienteVentaArticulo {
-  const factory _ClienteVentaArticulo(
-      {required final double clienteId,
-      required final double mes,
-      required final Money importe,
-      required final Money coste}) = _$ClienteVentaArticuloImpl;
-  const _ClienteVentaArticulo._() : super._();
 
-  @override
-  double get clienteId;
-  @override
-  double get mes;
-  @override
-  Money get importe;
-  @override
-  Money get coste;
-
-  /// Create a copy of ClienteVentaArticulo
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ClienteVentaArticuloImplCopyWith<_$ClienteVentaArticuloImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
+
+// dart format on

@@ -55,7 +55,7 @@ class NotificationDetailPage extends ConsumerWidget {
                       ),
                     ),
                     Markdown(
-                      onTapLink: (_, link, ___) {
+                      onTapLink: (_, link, unknown) {
                         if (link != null) {
                           launchUrlString(link);
                         }

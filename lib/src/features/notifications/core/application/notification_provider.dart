@@ -20,9 +20,7 @@ class NotificationNotifier extends StateNotifier<AsyncValue<String?>> {
     : super(const AsyncValue.loading());
 
   Future<void> haveNotification() async {
-    final notificationId = await notificationRepository.haveNotification(
-      user!.id,
-    );
+    final notificationId = await notificationRepository.haveNotification();
 
     state = AsyncData(notificationId);
   }

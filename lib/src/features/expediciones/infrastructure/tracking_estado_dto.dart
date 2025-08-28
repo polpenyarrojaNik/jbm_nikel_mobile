@@ -1,6 +1,7 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
+
 import '../../../core/infrastructure/remote_database.dart';
 import '../domain/tracking_estado.dart';
 
@@ -10,7 +11,7 @@ part 'tracking_estado_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class TrackingEstadoDTO
+abstract class TrackingEstadoDTO
     with _$TrackingEstadoDTO
     implements Insertable<TrackingEstadoDTO> {
   const TrackingEstadoDTO._();
@@ -43,14 +44,13 @@ class TrackingEstadoDTO
       id: id,
       descripcion: getDescriptionInLocalLanguage(),
       lastUpdate: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
+      deleted: (deleted == 'S'),
     );
   }
 
   String getDescriptionInLocalLanguage() {
     final currentLocale = Intl.getCurrentLocale();
-    if (currentLocale == 'es') {
-    } else if (currentLocale == 'en' && descripcionEN != null) {
+    if (currentLocale == 'en' && descripcionEN != null) {
       return descripcionEN!;
     } else if (currentLocale == 'fr' && descripcionFR != null) {
       return descripcionFR!;

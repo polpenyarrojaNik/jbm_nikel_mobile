@@ -6,41 +6,38 @@ part of 'visita_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$VisitaDTOImpl _$$VisitaDTOImplFromJson(Map<String, dynamic> json) =>
-    _$VisitaDTOImpl(
-      id: json['VISITA_ID'] as String,
-      fecha: DateTime.parse(json['FECHA'] as String),
-      clienteId: json['CLIENTE_ID'] as String?,
-      isClienteProvisional: json['CLIENTE_POTENCIAL_SN'] as String,
-      clienteProvisionalNombre: json['CLIENTE_POTENCIAL_NOMBRE'] as String?,
-      clienteProvisionalEmail: json['CLIENTE_POTENCIAL_EMAIL'] as String?,
-      clienteProvisionalTelefono: json['CLIENTE_POTENCIAL_TELEFONO'] as String?,
-      clienteProvisionalPoblacion:
-          json['CLIENTE_POTENCIAL_POBLACION'] as String?,
-      numEmpl: json['NUM_EMPL'] as String,
-      contacto: json['CONTACTO'] as String?,
-      atendidoPor: json['ATENDIDO_POR'] as String?,
-      resumen: json['RESUMEN'] as String?,
-      marcasCompetencia: json['MARCAS_COMPETENCIA'] as String?,
-      ofertaRealizada: json['OFERTA_REALIZADA'] as String,
-      interesCliente: json['INTERES_CLIENTE'] as String,
-      pedidoRealizado: json['PEDIDO_REALIZADO'] as String,
-      codigoMotivoNoInteres:
-          (json['CODIGO_MOTIVO_NO_INTERES'] as num?)?.toInt(),
-      codigoMotivoNoPedido: (json['CODIGO_MOTIVO_NO_PEDIDO'] as num?)?.toInt(),
-      codigoSector: (json['CODIGO_SECTOR'] as num?)?.toInt(),
-      codigoCompetencia: (json['CODIGO_COMPETENCIA'] as num?)?.toInt(),
-      almacenPropio: json['ALMACEN_PROPIO'] as String,
-      capacidad: json['CAPACIDAD'] as String,
-      frecuenciaPedido: json['FRECUENCIA_PEDIDO'] as String,
-      latitud: (json['LATITUD'] as num).toDouble(),
-      longitud: (json['LONGITUD'] as num).toDouble(),
-      visitaAppId: json['COD_VISITA_APP'] as String?,
-      lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
-      deleted: json['DELETED'] as String? ?? 'N',
-    );
+_VisitaDTO _$VisitaDTOFromJson(Map<String, dynamic> json) => _VisitaDTO(
+  id: json['VISITA_ID'] as String,
+  fecha: DateTime.parse(json['FECHA'] as String),
+  clienteId: json['CLIENTE_ID'] as String?,
+  isClienteProvisional: json['CLIENTE_POTENCIAL_SN'] as String,
+  clienteProvisionalNombre: json['CLIENTE_POTENCIAL_NOMBRE'] as String?,
+  clienteProvisionalEmail: json['CLIENTE_POTENCIAL_EMAIL'] as String?,
+  clienteProvisionalTelefono: json['CLIENTE_POTENCIAL_TELEFONO'] as String?,
+  clienteProvisionalPoblacion: json['CLIENTE_POTENCIAL_POBLACION'] as String?,
+  numEmpl: json['NUM_EMPL'] as String,
+  contacto: json['CONTACTO'] as String?,
+  atendidoPor: json['ATENDIDO_POR'] as String?,
+  resumen: json['RESUMEN'] as String?,
+  marcasCompetencia: json['MARCAS_COMPETENCIA'] as String?,
+  ofertaRealizada: json['OFERTA_REALIZADA'] as String,
+  interesCliente: json['INTERES_CLIENTE'] as String,
+  pedidoRealizado: json['PEDIDO_REALIZADO'] as String,
+  codigoMotivoNoInteres: (json['CODIGO_MOTIVO_NO_INTERES'] as num?)?.toInt(),
+  codigoMotivoNoPedido: (json['CODIGO_MOTIVO_NO_PEDIDO'] as num?)?.toInt(),
+  codigoSector: (json['CODIGO_SECTOR'] as num?)?.toInt(),
+  codigoCompetencia: (json['CODIGO_COMPETENCIA'] as num?)?.toInt(),
+  almacenPropio: json['ALMACEN_PROPIO'] as String,
+  capacidad: json['CAPACIDAD'] as String,
+  frecuenciaPedido: json['FRECUENCIA_PEDIDO'] as String,
+  latitud: (json['LATITUD'] as num).toDouble(),
+  longitud: (json['LONGITUD'] as num).toDouble(),
+  visitaAppId: json['COD_VISITA_APP'] as String?,
+  lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
+  deleted: json['DELETED'] as String? ?? 'N',
+);
 
-Map<String, dynamic> _$$VisitaDTOImplToJson(_$VisitaDTOImpl instance) =>
+Map<String, dynamic> _$VisitaDTOToJson(_VisitaDTO instance) =>
     <String, dynamic>{
       'VISITA_ID': instance.id,
       'FECHA': instance.fecha.toIso8601String(),

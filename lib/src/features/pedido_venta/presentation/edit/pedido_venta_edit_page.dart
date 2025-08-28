@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:gap/gap.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:uuid/uuid.dart';
 
@@ -58,7 +59,7 @@ class PedidoVentaEditPage extends ConsumerStatefulWidget {
     this.createPedidoFromClienteId,
     this.addLineaDesdeArticulo,
   }) : pedidoAppId = pedidoAppId ?? const Uuid().v4(),
-       isEdit = (pedidoAppId == null && pedidoId == null) ? false : true;
+       isEdit = (pedidoAppId != null || pedidoId != null);
 
   final String? pedidoAppId;
   final String? pedidoId;
@@ -109,31 +110,34 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
 
     ref.listen<PedidoVentaEditPageControllerState>(
       pedidoVentaEditPageControllerProvider(pedidoLocalParam),
-      (__, state) {
+      (_, state) {
         state.maybeWhen(
-          saved: (_, __) => onSavedOrSavedErrorMessage(),
+          saved: (pedidoVentaAppId, isBorrador) => onSavedOrSavedErrorMessage(),
           deleted: () => context.router.popUntilRouteWithName('/pedido'),
           savedError:
               (
+                cliente,
+                clienteDireccion,
+                pedidoVentaLineaList,
+                currentStep,
+                observaciones,
+                pedidoCliente,
+                oferta,
+                ofertaFechaHasta,
+                isBorrador,
                 _,
-                __,
-                ___,
-                ____,
-                _____,
-                ______,
-                _________,
-                __________,
-                ________,
-                error,
-                _______,
-              ) => onSavedOrSavedErrorMessage(error: error),
+                stackTrace,
+              ) => onSavedOrSavedErrorMessage(),
+
           error:
-              (error, _) => context.showErrorBar(
-                duration: const Duration(seconds: 5),
-                content: Text(
-                  (error is AppException)
-                      ? error.details.message
-                      : error.toString(),
+              (error, _) => unawaited(
+                context.showErrorBar(
+                  duration: const Duration(seconds: 5),
+                  content: Text(
+                    (error is AppException)
+                        ? error.details.message
+                        : error.toString(),
+                  ),
                 ),
               ),
           orElse: () => null,
@@ -192,17 +196,17 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
                         : Container(),
             savedError:
                 (
-                  _,
-                  __,
-                  pedidoVentaLineasList,
-                  ____,
-                  _____,
-                  ______,
-                  _________,
-                  __________,
-                  ________,
+                  cliente,
+                  clienteDireccion,
+                  pedidoVentaLineaList,
+                  currentStep,
+                  observaciones,
+                  pedidoCliente,
+                  oferta,
+                  ofertaFechaHasta,
+                  isBorrador,
                   error,
-                  _______,
+                  stackTrace,
                 ) => IconButton(
                   icon: const Icon(Icons.share),
                   onPressed:
@@ -210,7 +214,7 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
                         pedidoLocalParam.isLocal
                             ? pedidoLocalParam.pedidoAppId!
                             : pedidoLocalParam.pedidoId!,
-                        pedidoVentaLineasList,
+                        pedidoVentaLineaList,
                       ),
                 ),
           ),
@@ -339,7 +343,7 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
     await transaction.finish();
   }
 
-  Future<void> onSavedOrSavedErrorMessage({Object? error}) async {
+  void onSavedOrSavedErrorMessage({Object? error}) async {
     if (error != null) {
       unawaited(
         context.showErrorBar(
@@ -408,7 +412,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // ignore: deprecated_member_use
     return WillPopScope(
-      onWillPop: () async => _askIfUserPop(context, ref, transaction),
+      onWillPop: () async => _askIfUserPop(context, transaction),
 
       child: IconStepper(
         currentStep: currentStep,
@@ -423,7 +427,6 @@ class PedidoVentaEditForm extends ConsumerWidget {
 
   Future<bool> _askIfUserPop(
     BuildContext context,
-    WidgetRef ref,
     ISentrySpan transaction,
   ) async {
     final result =
@@ -465,7 +468,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
         selectClienteValidate(context, ref);
         break;
       case 1:
-        selectClienteDireccionValidate(context, ref);
+        selectClienteDireccionValidate(ref);
         break;
       case 2:
         selectLineasValidate(context, ref);
@@ -474,7 +477,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
         remarksValidate(context, ref);
         break;
       case 4:
-        saveSalesOrder(context, ref);
+        saveSalesOrder(ref);
 
         break;
       default:
@@ -510,7 +513,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
     }
   }
 
-  void selectClienteDireccionValidate(BuildContext context, WidgetRef ref) {
+  void selectClienteDireccionValidate(WidgetRef ref) {
     ref
         .read(pedidoVentaEditPageControllerProvider(pedidoLocalParam).notifier)
         .navigateToNextStep();
@@ -561,11 +564,15 @@ class PedidoVentaEditForm extends ConsumerWidget {
           isEdit: isEdit,
         ),
         state:
-            (currentStep >= 0)
-                ? (currentStep == 0
-                    ? IconStepState.editing
-                    : IconStepState.complete)
-                : IconStepState.disabled,
+            (() {
+              if (currentStep < 0) {
+                return IconStepState.disabled;
+              }
+              if (currentStep == 0) {
+                return IconStepState.editing;
+              }
+              return IconStepState.complete;
+            })(),
         isActive: currentStep >= 0,
       ),
       IconStep(
@@ -577,11 +584,14 @@ class PedidoVentaEditForm extends ConsumerWidget {
           isEdit: isEdit,
         ),
         state:
-            (currentStep >= 1)
-                ? (currentStep == 1)
-                    ? IconStepState.editing
-                    : IconStepState.complete
-                : IconStepState.disabled,
+            (() {
+              if (currentStep < 1) {
+                return IconStepState.disabled;
+              } else if (currentStep == 1) {
+                return IconStepState.editing;
+              }
+              return IconStepState.complete;
+            })(),
         isActive: true,
       ),
       IconStep(
@@ -592,11 +602,14 @@ class PedidoVentaEditForm extends ConsumerWidget {
           pedidoVentaLineaList: pedidoVentaLineaList,
         ),
         state:
-            (currentStep >= 2)
-                ? (currentStep == 2)
-                    ? IconStepState.editing
-                    : IconStepState.complete
-                : IconStepState.disabled,
+            (() {
+              if (currentStep < 2) {
+                return IconStepState.disabled;
+              } else if (currentStep == 2) {
+                return IconStepState.editing;
+              }
+              return IconStepState.complete;
+            })(),
         isActive: true,
       ),
       IconStep(
@@ -610,11 +623,14 @@ class PedidoVentaEditForm extends ConsumerWidget {
           isClientePotencial: cliente?.clientePotencial ?? false,
         ),
         state:
-            (currentStep >= 3)
-                ? (currentStep == 3)
-                    ? IconStepState.editing
-                    : IconStepState.complete
-                : IconStepState.disabled,
+            (() {
+              if (currentStep < 3) {
+                return IconStepState.disabled;
+              } else if (currentStep == 3) {
+                return IconStepState.editing;
+              }
+              return IconStepState.complete;
+            })(),
         isActive: true,
       ),
       IconStep(
@@ -630,17 +646,20 @@ class PedidoVentaEditForm extends ConsumerWidget {
           ofertaFechaHasta: ofertaFechaHasta,
         ),
         state:
-            currentStep >= 4
-                ? (currentStep == 4)
-                    ? IconStepState.editing
-                    : IconStepState.complete
-                : IconStepState.disabled,
+            (() {
+              if (currentStep < 4) {
+                return IconStepState.disabled;
+              } else if (currentStep == 4) {
+                return IconStepState.editing;
+              }
+              return IconStepState.complete;
+            })(),
         isActive: true,
       ),
     ];
   }
 
-  void saveSalesOrder(BuildContext context, WidgetRef ref) async {
+  void saveSalesOrder(WidgetRef ref) async {
     await transaction.startChild('UI:BotónGuardarPedido').finish();
 
     await ref
@@ -826,6 +845,12 @@ class _StepSelectClienteDireccionContentState
     super.initState();
 
     focusNode.requestFocus();
+  }
+
+  @override
+  void dispose() {
+    focusNode.dispose();
+    super.dispose();
   }
 
   @override
@@ -1025,12 +1050,7 @@ class StepArticuloListContent extends ConsumerWidget {
           right: 20,
           child: FloatingActionButton(
             child: const Icon(Icons.add),
-            onPressed:
-                () => navigateToAddArticulo(
-                  context,
-                  cliente!.id,
-                  pedidoLocalParam,
-                ),
+            onPressed: () => navigateToAddArticulo(context),
           ),
         ),
       ],
@@ -1072,11 +1092,7 @@ class StepArticuloListContent extends ConsumerWidget {
     );
   }
 
-  void navigateToAddArticulo(
-    BuildContext context,
-    String clienteId,
-    PedidoLocalParam pedidoLocalParam,
-  ) {
+  void navigateToAddArticulo(BuildContext context) {
     context.router.push(ArticuloListaRoute(isSearchArticuloForForm: true));
   }
 
@@ -1146,9 +1162,9 @@ class _StepObservacionesContentState
 
   @override
   void dispose() {
-    super.dispose();
-
     ofertaFechaHastaController.dispose();
+
+    super.dispose();
   }
 
   @override
@@ -1248,7 +1264,7 @@ class _StepObservacionesContentState
       lastDate: DateTime(DateTime.now().year + 5),
     );
 
-    await ref
+    ref
         .read(
           pedidoVentaEditPageControllerProvider(
             widget.pedidoLocalParam,
@@ -1312,7 +1328,7 @@ class StepResumenContent extends ConsumerWidget {
                   ),
                 ),
               ),
-              gapH8,
+              const Gap(8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -1396,7 +1412,7 @@ class _ClienteResumenTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.transparent,
-      padding: listPadding,
+      padding: kPaddingList,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

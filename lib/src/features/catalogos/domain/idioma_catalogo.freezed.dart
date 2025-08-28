@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,159 +9,266 @@ part of 'idioma_catalogo.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 /// @nodoc
 mixin _$IdiomaCatalogo {
-  String get idiomaId => throw _privateConstructorUsedError;
-  String get descripcion => throw _privateConstructorUsedError;
 
-  /// Create a copy of IdiomaCatalogo
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $IdiomaCatalogoCopyWith<IdiomaCatalogo> get copyWith =>
-      throw _privateConstructorUsedError;
+ String get idiomaId; String get descripcion;
+/// Create a copy of IdiomaCatalogo
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$IdiomaCatalogoCopyWith<IdiomaCatalogo> get copyWith => _$IdiomaCatalogoCopyWithImpl<IdiomaCatalogo>(this as IdiomaCatalogo, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is IdiomaCatalogo&&(identical(other.idiomaId, idiomaId) || other.idiomaId == idiomaId)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,idiomaId,descripcion);
+
+@override
+String toString() {
+  return 'IdiomaCatalogo(idiomaId: $idiomaId, descripcion: $descripcion)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $IdiomaCatalogoCopyWith<$Res> {
-  factory $IdiomaCatalogoCopyWith(
-          IdiomaCatalogo value, $Res Function(IdiomaCatalogo) then) =
-      _$IdiomaCatalogoCopyWithImpl<$Res, IdiomaCatalogo>;
-  @useResult
-  $Res call({String idiomaId, String descripcion});
-}
+abstract mixin class $IdiomaCatalogoCopyWith<$Res>  {
+  factory $IdiomaCatalogoCopyWith(IdiomaCatalogo value, $Res Function(IdiomaCatalogo) _then) = _$IdiomaCatalogoCopyWithImpl;
+@useResult
+$Res call({
+ String idiomaId, String descripcion
+});
 
+
+
+
+}
 /// @nodoc
-class _$IdiomaCatalogoCopyWithImpl<$Res, $Val extends IdiomaCatalogo>
+class _$IdiomaCatalogoCopyWithImpl<$Res>
     implements $IdiomaCatalogoCopyWith<$Res> {
-  _$IdiomaCatalogoCopyWithImpl(this._value, this._then);
+  _$IdiomaCatalogoCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final IdiomaCatalogo _self;
+  final $Res Function(IdiomaCatalogo) _then;
 
-  /// Create a copy of IdiomaCatalogo
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? idiomaId = null,
-    Object? descripcion = null,
-  }) {
-    return _then(_value.copyWith(
-      idiomaId: null == idiomaId
-          ? _value.idiomaId
-          : idiomaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcion: null == descripcion
-          ? _value.descripcion
-          : descripcion // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
+/// Create a copy of IdiomaCatalogo
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? idiomaId = null,Object? descripcion = null,}) {
+  return _then(_self.copyWith(
+idiomaId: null == idiomaId ? _self.idiomaId : idiomaId // ignore: cast_nullable_to_non_nullable
+as String,descripcion: null == descripcion ? _self.descripcion : descripcion // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [IdiomaCatalogo].
+extension IdiomaCatalogoPatterns on IdiomaCatalogo {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _IdiomaCatalogo value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _IdiomaCatalogo() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _IdiomaCatalogo value)  $default,){
+final _that = this;
+switch (_that) {
+case _IdiomaCatalogo():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _IdiomaCatalogo value)?  $default,){
+final _that = this;
+switch (_that) {
+case _IdiomaCatalogo() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String idiomaId,  String descripcion)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _IdiomaCatalogo() when $default != null:
+return $default(_that.idiomaId,_that.descripcion);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String idiomaId,  String descripcion)  $default,) {final _that = this;
+switch (_that) {
+case _IdiomaCatalogo():
+return $default(_that.idiomaId,_that.descripcion);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String idiomaId,  String descripcion)?  $default,) {final _that = this;
+switch (_that) {
+case _IdiomaCatalogo() when $default != null:
+return $default(_that.idiomaId,_that.descripcion);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
-abstract class _$$IdiomaCatalogoImplCopyWith<$Res>
-    implements $IdiomaCatalogoCopyWith<$Res> {
-  factory _$$IdiomaCatalogoImplCopyWith(_$IdiomaCatalogoImpl value,
-          $Res Function(_$IdiomaCatalogoImpl) then) =
-      __$$IdiomaCatalogoImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String idiomaId, String descripcion});
+
+
+class _IdiomaCatalogo extends IdiomaCatalogo {
+  const _IdiomaCatalogo({required this.idiomaId, required this.descripcion}): super._();
+  
+
+@override final  String idiomaId;
+@override final  String descripcion;
+
+/// Create a copy of IdiomaCatalogo
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$IdiomaCatalogoCopyWith<_IdiomaCatalogo> get copyWith => __$IdiomaCatalogoCopyWithImpl<_IdiomaCatalogo>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _IdiomaCatalogo&&(identical(other.idiomaId, idiomaId) || other.idiomaId == idiomaId)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,idiomaId,descripcion);
+
+@override
+String toString() {
+  return 'IdiomaCatalogo(idiomaId: $idiomaId, descripcion: $descripcion)';
+}
+
+
 }
 
 /// @nodoc
-class __$$IdiomaCatalogoImplCopyWithImpl<$Res>
-    extends _$IdiomaCatalogoCopyWithImpl<$Res, _$IdiomaCatalogoImpl>
-    implements _$$IdiomaCatalogoImplCopyWith<$Res> {
-  __$$IdiomaCatalogoImplCopyWithImpl(
-      _$IdiomaCatalogoImpl _value, $Res Function(_$IdiomaCatalogoImpl) _then)
-      : super(_value, _then);
+abstract mixin class _$IdiomaCatalogoCopyWith<$Res> implements $IdiomaCatalogoCopyWith<$Res> {
+  factory _$IdiomaCatalogoCopyWith(_IdiomaCatalogo value, $Res Function(_IdiomaCatalogo) _then) = __$IdiomaCatalogoCopyWithImpl;
+@override @useResult
+$Res call({
+ String idiomaId, String descripcion
+});
 
-  /// Create a copy of IdiomaCatalogo
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? idiomaId = null,
-    Object? descripcion = null,
-  }) {
-    return _then(_$IdiomaCatalogoImpl(
-      idiomaId: null == idiomaId
-          ? _value.idiomaId
-          : idiomaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcion: null == descripcion
-          ? _value.descripcion
-          : descripcion // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
+
+
+
 }
-
 /// @nodoc
+class __$IdiomaCatalogoCopyWithImpl<$Res>
+    implements _$IdiomaCatalogoCopyWith<$Res> {
+  __$IdiomaCatalogoCopyWithImpl(this._self, this._then);
 
-class _$IdiomaCatalogoImpl extends _IdiomaCatalogo {
-  const _$IdiomaCatalogoImpl(
-      {required this.idiomaId, required this.descripcion})
-      : super._();
+  final _IdiomaCatalogo _self;
+  final $Res Function(_IdiomaCatalogo) _then;
 
-  @override
-  final String idiomaId;
-  @override
-  final String descripcion;
-
-  @override
-  String toString() {
-    return 'IdiomaCatalogo(idiomaId: $idiomaId, descripcion: $descripcion)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$IdiomaCatalogoImpl &&
-            (identical(other.idiomaId, idiomaId) ||
-                other.idiomaId == idiomaId) &&
-            (identical(other.descripcion, descripcion) ||
-                other.descripcion == descripcion));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, idiomaId, descripcion);
-
-  /// Create a copy of IdiomaCatalogo
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$IdiomaCatalogoImplCopyWith<_$IdiomaCatalogoImpl> get copyWith =>
-      __$$IdiomaCatalogoImplCopyWithImpl<_$IdiomaCatalogoImpl>(
-          this, _$identity);
+/// Create a copy of IdiomaCatalogo
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? idiomaId = null,Object? descripcion = null,}) {
+  return _then(_IdiomaCatalogo(
+idiomaId: null == idiomaId ? _self.idiomaId : idiomaId // ignore: cast_nullable_to_non_nullable
+as String,descripcion: null == descripcion ? _self.descripcion : descripcion // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-abstract class _IdiomaCatalogo extends IdiomaCatalogo {
-  const factory _IdiomaCatalogo(
-      {required final String idiomaId,
-      required final String descripcion}) = _$IdiomaCatalogoImpl;
-  const _IdiomaCatalogo._() : super._();
 
-  @override
-  String get idiomaId;
-  @override
-  String get descripcion;
-
-  /// Create a copy of IdiomaCatalogo
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$IdiomaCatalogoImplCopyWith<_$IdiomaCatalogoImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
+
+// dart format on

@@ -1,10 +1,10 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../../core/helpers/formatters.dart';
 import '../../../core/infrastructure/remote_database.dart';
 import '../../cliente/domain/cliente.dart';
 import '../domain/visita.dart';
-
 import '../domain/visita_competidor.dart';
 import '../domain/visita_motivos_no_venta.dart';
 import '../domain/visita_sector.dart';
@@ -15,7 +15,7 @@ part 'visita_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class VisitaDTO with _$VisitaDTO implements Insertable<VisitaDTO> {
+abstract class VisitaDTO with _$VisitaDTO implements Insertable<VisitaDTO> {
   const VisitaDTO._();
   const factory VisitaDTO({
     @JsonKey(name: 'VISITA_ID') required String id,
@@ -59,14 +59,14 @@ class VisitaDTO with _$VisitaDTO implements Insertable<VisitaDTO> {
     required VisitaMotivoNoVenta? motivoNoPedido,
     required VisitaSector? sector,
     required List<VisitaCompetidor> competenciaList,
-    bool? enviada = true,
-    bool? tratada = true,
+    bool enviada = true,
+    bool tratada = true,
   }) {
     return Visita(
       id: id,
       fecha: fecha,
       cliente: cliente,
-      isClienteProvisional: (isClienteProvisional == 'S') ? true : false,
+      isClienteProvisional: (isClienteProvisional == 'S'),
       clienteProvisionalNombre: clienteProvisionalNombre,
       clienteProvisionalEmail: clienteProvisionalEmail,
       clienteProvisionalTelefono: clienteProvisionalTelefono,
@@ -90,9 +90,9 @@ class VisitaDTO with _$VisitaDTO implements Insertable<VisitaDTO> {
       longitud: longitud,
       lastUpdated: lastUpdated,
       visitaAppId: visitaAppId,
-      deleted: (deleted == 'S') ? true : false,
-      enviada: enviada!,
-      tratada: tratada!,
+      deleted: (deleted == 'S'),
+      enviada: enviada,
+      tratada: tratada,
     );
   }
 

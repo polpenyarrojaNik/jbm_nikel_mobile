@@ -1,7 +1,7 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../core/helpers/extension.dart';
 
+import '../../../core/helpers/extension.dart';
 import '../../../core/infrastructure/remote_database.dart';
 import '../domain/estadisticas_ultimos_precios.dart';
 
@@ -11,7 +11,7 @@ part 'estadisticas_ultimos_precios_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class EstadisticasUltimosPreciosDTO
+abstract class EstadisticasUltimosPreciosDTO
     with _$EstadisticasUltimosPreciosDTO
     implements Insertable<EstadisticasUltimosPreciosDTO> {
   const EstadisticasUltimosPreciosDTO._();
@@ -53,7 +53,7 @@ class EstadisticasUltimosPreciosDTO
       descuento2: descuento2,
       descuento3: descuento3,
       lastUpdated: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
+      deleted: (deleted == 'S'),
     );
   }
 

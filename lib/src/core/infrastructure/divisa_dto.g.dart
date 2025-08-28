@@ -6,32 +6,31 @@ part of 'divisa_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$DivisaDTOImpl _$$DivisaDTOImplFromJson(Map<String, dynamic> json) =>
-    _$DivisaDTOImpl(
-      id: json['DIVISA_ID'] as String,
-      abv: json['ABREVIACION'] as String,
-      simbolo: json['SIMBOLO'] as String?,
-      redondeo: (json['REDONDEO'] as num?)?.toDouble(),
-      descripcionES: json['DESCRIPCION_ES'] as String,
-      descripcionEN: json['DESCRIPCION_EN'] as String?,
-      descripcionFR: json['DESCRIPCION_FR'] as String?,
-      descripcionDE: json['DESCRIPCION_DE'] as String?,
-      descripcionCA: json['DESCRIPCION_CA'] as String?,
-      descripcionGB: json['DESCRIPCION_GB'] as String?,
-      descripcionHU: json['DESCRIPCION_HU'] as String?,
-      descripcionIT: json['DESCRIPCION_IT'] as String?,
-      descripcionNL: json['DESCRIPCION_NL'] as String?,
-      descripcionPL: json['DESCRIPCION_PL'] as String?,
-      descripcionPT: json['DESCRIPCION_PT'] as String?,
-      descripcionRO: json['DESCRIPCION_RO'] as String?,
-      descripcionRU: json['DESCRIPCION_RU'] as String?,
-      descripcionCN: json['DESCRIPCION_CN'] as String?,
-      descripcionEL: json['DESCRIPCION_EL'] as String?,
-      lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
-      deleted: json['DELETED'] as String? ?? 'N',
-    );
+_DivisaDTO _$DivisaDTOFromJson(Map<String, dynamic> json) => _DivisaDTO(
+  id: json['DIVISA_ID'] as String,
+  abv: json['ABREVIACION'] as String,
+  simbolo: json['SIMBOLO'] as String?,
+  redondeo: (json['REDONDEO'] as num?)?.toDouble(),
+  descripcionES: json['DESCRIPCION_ES'] as String,
+  descripcionEN: json['DESCRIPCION_EN'] as String?,
+  descripcionFR: json['DESCRIPCION_FR'] as String?,
+  descripcionDE: json['DESCRIPCION_DE'] as String?,
+  descripcionCA: json['DESCRIPCION_CA'] as String?,
+  descripcionGB: json['DESCRIPCION_GB'] as String?,
+  descripcionHU: json['DESCRIPCION_HU'] as String?,
+  descripcionIT: json['DESCRIPCION_IT'] as String?,
+  descripcionNL: json['DESCRIPCION_NL'] as String?,
+  descripcionPL: json['DESCRIPCION_PL'] as String?,
+  descripcionPT: json['DESCRIPCION_PT'] as String?,
+  descripcionRO: json['DESCRIPCION_RO'] as String?,
+  descripcionRU: json['DESCRIPCION_RU'] as String?,
+  descripcionCN: json['DESCRIPCION_CN'] as String?,
+  descripcionEL: json['DESCRIPCION_EL'] as String?,
+  lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
+  deleted: json['DELETED'] as String? ?? 'N',
+);
 
-Map<String, dynamic> _$$DivisaDTOImplToJson(_$DivisaDTOImpl instance) =>
+Map<String, dynamic> _$DivisaDTOToJson(_DivisaDTO instance) =>
     <String, dynamic>{
       'DIVISA_ID': instance.id,
       'ABREVIACION': instance.abv,

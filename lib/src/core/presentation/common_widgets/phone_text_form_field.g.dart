@@ -12,12 +12,15 @@ String _$phoneTextFormBuilderControllerHash() =>
 /// See also [PhoneTextFormBuilderController].
 @ProviderFor(PhoneTextFormBuilderController)
 final phoneTextFormBuilderControllerProvider = AutoDisposeNotifierProvider<
-    PhoneTextFormBuilderController, String?>.internal(
+  PhoneTextFormBuilderController,
+  String?
+>.internal(
   PhoneTextFormBuilderController.new,
   name: r'phoneTextFormBuilderControllerProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$phoneTextFormBuilderControllerHash,
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$phoneTextFormBuilderControllerHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
@@ -29,18 +32,22 @@ String _$verifyExistingPhoneHash() =>
 /// See also [VerifyExistingPhone].
 @ProviderFor(VerifyExistingPhone)
 final verifyExistingPhoneProvider = AutoDisposeNotifierProvider<
-    VerifyExistingPhone,
-    MutationState<Either<AppException, ClienteTelefono?>, String>>.internal(
+  VerifyExistingPhone,
+  MutationState<Either<AppException, ClienteTelefono?>, String>
+>.internal(
   VerifyExistingPhone.new,
   name: r'verifyExistingPhoneProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$verifyExistingPhoneHash,
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$verifyExistingPhoneHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$VerifyExistingPhone = AutoDisposeNotifier<
-    MutationState<Either<AppException, ClienteTelefono?>, String>>;
+typedef _$VerifyExistingPhone =
+    AutoDisposeNotifier<
+      MutationState<Either<AppException, ClienteTelefono?>, String>
+    >;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

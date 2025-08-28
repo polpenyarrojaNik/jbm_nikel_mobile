@@ -118,10 +118,10 @@ class CatalogoRepository {
               .toList();
 
       final favoriteLocalList = await _getLocalFavoriteList(
-        tipoCatalogo: tipoCatalogo,
-        tipoPrecioCatalogo: tipoPrecioCatalogo,
-        idiomaCatalogo: idiomaCatalogo,
-        searchText: searchText,
+        // tipoCatalogo: tipoCatalogo,
+        // tipoPrecioCatalogo: tipoPrecioCatalogo,
+        // idiomaCatalogo: idiomaCatalogo,
+        // searchText: searchText,
       );
 
       final catalogoOrdenAbiertoList = await _getCatalogoOrdenDTOList();
@@ -136,15 +136,15 @@ class CatalogoRepository {
       );
 
       return catalogosList;
-    } on AppException catch (e) {
+    } on AppException catch (e, stackTrace) {
       return e.maybeWhen(
-        orElse: () => throw e,
+        orElse: () => Error.throwWithStackTrace(e, stackTrace),
         notConnection: () async {
           final favoriteLocalList = await _getLocalFavoriteList(
-            tipoCatalogo: tipoCatalogo,
-            tipoPrecioCatalogo: tipoPrecioCatalogo,
-            idiomaCatalogo: idiomaCatalogo,
-            searchText: searchText,
+            // tipoCatalogo: tipoCatalogo,
+            // tipoPrecioCatalogo: tipoPrecioCatalogo,
+            // idiomaCatalogo: idiomaCatalogo,
+            // searchText: searchText,
           );
           return favoriteLocalList
               .map(
@@ -162,71 +162,59 @@ class CatalogoRepository {
   }
 
   Future<List<TipoCatalogo>> getTipoCatalogoList() async {
-    try {
-      final tipoCatalogoDTOList = await _remoteTipoCatalogosList(
-        requestUri:
-            (_usuario.test)
-                ? Uri.http(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/catalogo/tipo',
-                )
-                : Uri.https(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/catalogo/tipo',
-                ),
-        jsonDataSelector: (json) => json['data'] as List<dynamic>,
-        provisionalToken: _usuario.provisionalToken,
-      );
+    final tipoCatalogoDTOList = await _remoteTipoCatalogosList(
+      requestUri:
+          (_usuario.test)
+              ? Uri.http(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/catalogo/tipo',
+              )
+              : Uri.https(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/catalogo/tipo',
+              ),
+      jsonDataSelector: (json) => json['data'] as List<dynamic>,
+      provisionalToken: _usuario.provisionalToken,
+    );
 
-      return tipoCatalogoDTOList.map((e) => e.toDomain()).toList();
-    } catch (error) {
-      rethrow;
-    }
+    return tipoCatalogoDTOList.map((e) => e.toDomain()).toList();
   }
 
   Future<List<TipoPrecioCatalogo>> getTipoPrecioCatalogoList() async {
-    try {
-      final tipoPrecioCatalogoDTOList = await _remoteTipoPrecioCatalogosList(
-        requestUri:
-            (_usuario.test)
-                ? Uri.http(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/catalogo/precio',
-                )
-                : Uri.https(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/catalogo/precio',
-                ),
-        jsonDataSelector: (json) => json['data'] as List<dynamic>,
-        provisionalToken: _usuario.provisionalToken,
-      );
-      return tipoPrecioCatalogoDTOList.map((e) => e.toDomain()).toList();
-    } catch (error) {
-      rethrow;
-    }
+    final tipoPrecioCatalogoDTOList = await _remoteTipoPrecioCatalogosList(
+      requestUri:
+          (_usuario.test)
+              ? Uri.http(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/catalogo/precio',
+              )
+              : Uri.https(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/catalogo/precio',
+              ),
+      jsonDataSelector: (json) => json['data'] as List<dynamic>,
+      provisionalToken: _usuario.provisionalToken,
+    );
+    return tipoPrecioCatalogoDTOList.map((e) => e.toDomain()).toList();
   }
 
   Future<List<IdiomaCatalogo>> getIdiomaCatalogoList() async {
-    try {
-      final idiomaCatalogoDTOList = await _remoteIdiomaCatalogosList(
-        requestUri:
-            (_usuario.test)
-                ? Uri.http(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/catalogo/idioma',
-                )
-                : Uri.https(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/catalogo/idioma',
-                ),
-        jsonDataSelector: (json) => json['data'] as List<dynamic>,
-        provisionalToken: _usuario.provisionalToken,
-      );
+    final idiomaCatalogoDTOList = await _remoteIdiomaCatalogosList(
+      requestUri:
+          (_usuario.test)
+              ? Uri.http(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/catalogo/idioma',
+              )
+              : Uri.https(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/catalogo/idioma',
+              ),
+      jsonDataSelector: (json) => json['data'] as List<dynamic>,
+      provisionalToken: _usuario.provisionalToken,
+    );
 
-      return idiomaCatalogoDTOList.map((e) => e.toDomain()).toList();
-    } catch (error) {
-      rethrow;
-    }
+    return idiomaCatalogoDTOList.map((e) => e.toDomain()).toList();
   }
 
   Future<File?> getDocumentFile({
@@ -234,68 +222,66 @@ class CatalogoRepository {
     required String provisionalToken,
     required bool test,
   }) async {
-    try {
-      if (adjuntoParam.nombreArchivo != '') {
-        final cahceDirectories = await getTemporaryDirectory();
-        final documentDirectories = await getApplicationDocumentsDirectory();
+    if (adjuntoParam.nombreArchivo != '') {
+      final cahceDirectories = await getTemporaryDirectory();
+      final documentDirectories = await getApplicationDocumentsDirectory();
 
-        if (fileExistInLocal(adjuntoParam, documentDirectories)) {
-          try {
-            final filePath =
-                '${documentDirectories.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}';
+      if (fileExistInLocal(adjuntoParam, documentDirectories)) {
+        try {
+          final filePath =
+              '${documentDirectories.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo ?? ""}';
 
-            final file = File(filePath);
+          final file = File(filePath);
 
-            return file;
-          } catch (e) {
-            throw AppException.createFileInCacheFailure(e.toString());
-          }
-        } else if (fileExistInLocal(adjuntoParam, cahceDirectories)) {
-          try {
-            final filePath =
-                '${cahceDirectories.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}';
-
-            final file = File(filePath);
-
-            return file;
-          } catch (e) {
-            throw AppException.createFileInCacheFailure(e.toString());
-          }
-        } else {
-          final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
-          final data = await _remoteGetAttachment(
-            requestUri:
-                (test)
-                    ? Uri.http(
-                      dotenv.get('URL', fallback: 'localhost:3001'),
-                      'api/v1/online/adjunto/catalogo/${adjuntoParam.id}',
-                      query,
-                    )
-                    : Uri.https(
-                      dotenv.get('URL', fallback: 'localhost:3001'),
-                      'api/v1/online/adjunto/catalogo/${adjuntoParam.id}',
-                      query,
-                    ),
-            provisionalToken: provisionalToken,
-          );
-
-          return await saveDocumentInLocal(
-            data,
-            adjuntoParam,
-            cahceDirectories,
+          return file;
+        } catch (e, stackTrace) {
+          Error.throwWithStackTrace(
+            AppException.createFileInCacheFailure(e.toString()),
+            stackTrace,
           );
         }
-      }
+      } else if (fileExistInLocal(adjuntoParam, cahceDirectories)) {
+        try {
+          final filePath =
+              '${cahceDirectories.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo ?? ''}';
 
-      return null;
-    } catch (e) {
-      rethrow;
+          final file = File(filePath);
+
+          return file;
+        } catch (e, stackTrace) {
+          Error.throwWithStackTrace(
+            AppException.createFileInCacheFailure(e.toString()),
+            stackTrace,
+          );
+        }
+      } else {
+        final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
+        final data = await _remoteGetAttachment(
+          requestUri:
+              (test)
+                  ? Uri.http(
+                    dotenv.get('URL', fallback: 'localhost:3001'),
+                    'api/v1/online/adjunto/catalogo/${adjuntoParam.id}',
+                    query,
+                  )
+                  : Uri.https(
+                    dotenv.get('URL', fallback: 'localhost:3001'),
+                    'api/v1/online/adjunto/catalogo/${adjuntoParam.id}',
+                    query,
+                  ),
+          provisionalToken: provisionalToken,
+        );
+
+        return saveDocumentInLocal(data, adjuntoParam, cahceDirectories);
+      }
     }
+
+    return null;
   }
 
   bool fileExistInLocal(AdjuntoParam adjuntoParam, Directory directory) {
     final filePath =
-        '${directory.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}';
+        '${directory.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo ?? ''}';
 
     final file = File(filePath);
 
@@ -336,8 +322,11 @@ class CatalogoRepository {
       )).go();
 
       await remoteFavoriteFileFromLocal(adjuntoParam);
-    } catch (e) {
-      AppException.insertDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.insertDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -348,17 +337,22 @@ class CatalogoRepository {
             ..where((tbl) => tbl.catalogoId.equals(catalogoId))).get();
 
       return query.isNotEmpty;
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
-  Future<List<CatalogoDTO>> _getLocalFavoriteList({
-    TipoCatalogo? tipoCatalogo,
-    TipoPrecioCatalogo? tipoPrecioCatalogo,
-    IdiomaCatalogo? idiomaCatalogo,
-    String? searchText,
-  }) async {
+  Future<List<CatalogoDTO>> _getLocalFavoriteList(
+    // {
+    // TipoCatalogo? tipoCatalogo,
+    // TipoPrecioCatalogo? tipoPrecioCatalogo,
+    // IdiomaCatalogo? idiomaCatalogo,
+    // String? searchText,
+    // }
+  ) async {
     try {
       final query = _localDb.select(_localDb.catalogoFavoritoTable);
 
@@ -381,8 +375,11 @@ class CatalogoRepository {
       // }
 
       return await query.get();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -401,14 +398,16 @@ class CatalogoRepository {
       if (response.statusCode == 200) {
         final data = jsonDataSelector(response.data);
         return data.map((e) => CatalogoDTO.fromJson(e as Json)).toList();
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
       }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
     } catch (e, stackTrace) {
-      throw getApiError(e, stackTrace, errorLogger);
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 
@@ -427,14 +426,16 @@ class CatalogoRepository {
       if (response.statusCode == 200) {
         final data = jsonDataSelector(response.data);
         return data.map((e) => TipoCatalogoDTO.fromJson(e as Json)).toList();
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
       }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
     } catch (e, stackTrace) {
-      throw getApiError(e, stackTrace, errorLogger);
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 
@@ -455,14 +456,16 @@ class CatalogoRepository {
         return data
             .map((e) => TipoPrecioCatalogoDTO.fromJson(e as Json))
             .toList();
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
       }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
     } catch (e, stackTrace) {
-      throw getApiError(e, stackTrace, errorLogger);
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 
@@ -481,14 +484,16 @@ class CatalogoRepository {
       if (response.statusCode == 200) {
         final data = jsonDataSelector(response.data);
         return data.map((e) => IdiomaCatalogoDTO.fromJson(e as Json)).toList();
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
       }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
     } catch (e, stackTrace) {
-      throw getApiError(e, stackTrace, errorLogger);
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 
@@ -530,32 +535,30 @@ class CatalogoRepository {
     String? searchText,
   }) {
     log.d('Locale ${Intl.getCurrentLocale()}');
-    final query = <String, String>{
+    final query = {
       'idiomaDispositivo': Intl.getCurrentLocale().toUpperCase(),
       'usuarioId': _usuario.id,
     };
 
     if (tipoCatalogo != null && tipoCatalogo.tipoCatalogoId != '00') {
-      query.addAll({'tipoCatalogo': tipoCatalogo.tipoCatalogoId});
+      query['tipoCatalogo'] = tipoCatalogo.tipoCatalogoId;
     }
 
     if (tipoPrecioCatalogo != null &&
         tipoPrecioCatalogo.tipoPrecioCatalogoId != '00') {
-      query.addAll({
-        'tipoPrecioCatalogo': tipoPrecioCatalogo.tipoPrecioCatalogoId,
-      });
+      query['tipoPrecioCatalogo'] = tipoPrecioCatalogo.tipoPrecioCatalogoId;
     }
 
     if (idiomaCatalogo != null && idiomaCatalogo.idiomaId != '00') {
-      query.addAll({'idiomaId': idiomaCatalogo.idiomaId});
+      query['idiomaId'] = idiomaCatalogo.idiomaId;
     } else {
       if (idiomaCatalogo?.idiomaId != '00') {
-        query.addAll({'idiomaId': _usuario.idiomaId});
+        query['idiomaId'] = _usuario.idiomaId;
       }
     }
 
     if (searchText != null) {
-      query.addAll({'busqueda': searchText.toUpperCase()});
+      query['busqueda'] = searchText.toUpperCase();
     }
 
     return query;
@@ -575,19 +578,21 @@ class CatalogoRepository {
         ),
       );
       if (response.statusCode == 200) {
-        return response.data as List<int>;
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
+        return (response.data as List<Object?>).cast();
       }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
     } catch (e, stackTrace) {
-      throw getApiError(e, stackTrace, errorLogger);
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 
-  Future<List<CatalogoOrdenDTO>> _getCatalogoOrdenDTOList() async {
+  Future<List<CatalogoOrdenDTO>> _getCatalogoOrdenDTOList() {
     return (_localDb.select(_localDb.catalogoOrdenTable)
       ..orderBy([(tbl) => OrderingTerm.asc(tbl.fechaAbierto)])).get();
   }
@@ -625,9 +630,8 @@ class CatalogoRepository {
       return 2;
     } else if (isAbierto) {
       return 3;
-    } else {
-      return 4;
     }
+    return 4;
   }
 
   bool _isCatalogoFavorito(
@@ -663,7 +667,7 @@ class CatalogoRepository {
   ) async {
     try {
       final file = await File(
-        '${directory.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}',
+        '${directory.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo ?? ''}',
       ).create(recursive: true);
 
       final raf = file.openSync(mode: FileMode.write);
@@ -687,8 +691,11 @@ class CatalogoRepository {
       document.dispose();
 
       return file;
-    } catch (e) {
-      throw AppException.createFileInCacheFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.createFileInCacheFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -696,7 +703,7 @@ class CatalogoRepository {
     final documentDirectory = await getApplicationDocumentsDirectory();
 
     final file = File(
-      '${documentDirectory.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}',
+      '${documentDirectory.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo ?? ''}',
     );
 
     if (file.existsSync()) {

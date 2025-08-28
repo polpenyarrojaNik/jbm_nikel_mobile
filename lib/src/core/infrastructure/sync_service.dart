@@ -146,14 +146,16 @@ class SyncService {
       if (response.statusCode == 200) {
         final dateStr = response.data['data'] as String;
         return DateTime.parse(dateStr);
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 500,
-          response.statusMessage ?? 'Internet Error',
-        );
       }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 500,
+        response.statusMessage ?? 'Internet Error',
+      );
     } catch (e, stackTrace) {
-      throw getApiError(e, stackTrace, errorLogger);
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 
@@ -671,37 +673,33 @@ class SyncService {
   }
 
   Future<void> enviarPedidosNoEnviados() async {
-    try {
-      final pedidosNoEnviados = await getPedidosNoEnviados();
-      for (var i = 0; i < pedidosNoEnviados.length; i++) {
-        final pedidoVentaLineaDTOList = await getLocalPedidoVentaLineaList(
-          pedidoVentaAppId: pedidosNoEnviados[i].pedidoVentaAppId,
+    final pedidosNoEnviados = await getPedidosNoEnviados();
+    for (var i = 0; i < pedidosNoEnviados.length; i++) {
+      final pedidoVentaLineaDTOList = await getLocalPedidoVentaLineaList(
+        pedidoVentaAppId: pedidosNoEnviados[i].pedidoVentaAppId,
+      );
+      final transaction = Sentry.startTransaction(
+        'Enviar pedido no enviado',
+        'sync',
+        customSamplingContext: {
+          'pedidoVentaAppId': pedidosNoEnviados[i].pedidoVentaAppId,
+          'isBorrador': pedidosNoEnviados[i].borrador,
+        },
+      );
+      try {
+        final pedidoLocalEnviado = await _remoteCreatePedidos(
+          pedidosNoEnviados[i],
+          pedidoVentaLineaDTOList
+              .map((e) => PedidoVentaLineaLocalDTO.fromDomain(e))
+              .toList(),
+          _usuario!.provisionalToken,
         );
-        final transaction = Sentry.startTransaction(
-          'Enviar pedido no enviado',
-          'sync',
-          customSamplingContext: {
-            'pedidoVentaAppId': pedidosNoEnviados[i].pedidoVentaAppId,
-            'isBorrador': pedidosNoEnviados[i].borrador,
-          },
-        );
-        try {
-          final pedidoLocalEnviado = await _remoteCreatePedidos(
-            pedidosNoEnviados[i],
-            pedidoVentaLineaDTOList
-                .map((e) => PedidoVentaLineaLocalDTO.fromDomain(e))
-                .toList(),
-            _usuario!.provisionalToken,
-          );
-          await updatePedidoVentaInDB(pedidoVentaLocalDto: pedidoLocalEnviado);
-        } catch (e) {
-          log.e(e);
-        } finally {
-          await transaction.finish();
-        }
+        await updatePedidoVentaInDB(pedidoVentaLocalDto: pedidoLocalEnviado);
+      } catch (e) {
+        log.e(e);
+      } finally {
+        await transaction.finish();
       }
-    } catch (e) {
-      rethrow;
     }
   }
 
@@ -722,8 +720,11 @@ class SyncService {
       return pedidoVentaLineaLocalListDTO
           .map((e) => e.toDomain(divisaId: pedidoVentaLocalDTO.divisaId!))
           .toList();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -1028,10 +1029,9 @@ class SyncService {
           query: query,
         );
 
-        await remotePageItems.maybeWhen(
-          orElse: () {},
-          withNewData: (data, maxPage, totalRows) async {
-            log.d('NUM VALUES ${tableInfo.actualTableName}: $totalRows');
+        await remotePageItems.whenOrNull(
+          withNewData: (data, maxPage, responseRows) async {
+            log.d('NUM VALUES ${tableInfo.actualTableName}: $responseRows');
             final tableValueDTOList = data.map((e) => fromJson(e)).toList();
 
             syncValuesList.addAll(tableValueDTOList);
@@ -1053,7 +1053,7 @@ class SyncService {
             }
 
             isNextPageAvailable = page < maxPage;
-            totalRows = totalRows;
+            totalRows = responseRows;
             page += 1;
           },
         );
@@ -1072,22 +1072,14 @@ class SyncService {
     required TableInfo<Table, dynamic> tableInfo,
     required Insertable<dynamic> dto,
   }) async {
-    try {
-      await _remoteDb.into(tableInfo).insertOnConflictUpdate(dto);
-    } catch (e) {
-      rethrow;
-    }
+    await _remoteDb.into(tableInfo).insertOnConflictUpdate(dto);
   }
 
   Future<void> deleteTableValue({
     required TableInfo<Table, dynamic> tableInfo,
     required Insertable<dynamic> dto,
   }) async {
-    try {
-      await _remoteDb.delete(tableInfo).delete(dto);
-    } catch (e) {
-      rethrow;
-    }
+    await _remoteDb.delete(tableInfo).delete(dto);
   }
 
   Map<String, String> _getAPIQuery({
@@ -1103,11 +1095,11 @@ class SyncService {
     };
 
     if (dateFrom != null) {
-      query.addAll({'dateFrom': dateFrom.toIso8601String()});
+      query['dateFrom'] = dateFrom.toIso8601String();
     }
 
     if (totalRows != null) {
-      query.addAll({'totalRows': '$totalRows'});
+      query['totalRows'] = '$totalRows';
     }
     return query;
   }
@@ -1142,14 +1134,16 @@ class SyncService {
           maxPage: headers.maxPage ?? 1,
           totalRows: headers.totalRows ?? 0,
         );
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 500,
-          response.toString(),
-        );
       }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 500,
+        response.toString(),
+      );
     } catch (e, stackTrace) {
-      throw getApiError(e, stackTrace, errorLogger);
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 
@@ -1187,12 +1181,12 @@ class SyncService {
     }
   }
 
-  Future<List<VisitaLocalDTO>> getVisitasNoEnviadas() async {
+  Future<List<VisitaLocalDTO>> getVisitasNoEnviadas() {
     return (_localDb.select(_localDb.visitaLocalTable)
       ..where((tbl) => tbl.enviada.equals('N'))).get();
   }
 
-  Future<List<PedidoVentaLocalDTO>> getPedidosNoEnviados() async {
+  Future<List<PedidoVentaLocalDTO>> getPedidosNoEnviados() {
     return (_localDb.select(_localDb.pedidoVentaLocalTable)..where(
       (tbl) => tbl.enviada.equals('N') & tbl.borrador.equals('N'),
     )).get();
@@ -1207,9 +1201,8 @@ class SyncService {
       final pedidoVentaLocalToJson = pedidoVentaLocalDto.toJson();
       final pedidoVentaLineasLocalListToJson =
           pedidoVentaLineaDTOList.map((e) => e.toJson()).toList();
-      pedidoVentaLocalToJson.addAll({
-        'PEDIDO_VENTA_LINEAS': pedidoVentaLineasLocalListToJson,
-      });
+      pedidoVentaLocalToJson['PEDIDO_VENTA_LINEAS'] =
+          pedidoVentaLineasLocalListToJson;
 
       final requestUri =
           (_usuario!.test)
@@ -1235,14 +1228,16 @@ class SyncService {
         final json = response.data['data'] as Map<String, dynamic>;
 
         return PedidoVentaLocalDTO.fromJson(json);
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
       }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
     } catch (e, stackTrace) {
-      throw getApiError(e, stackTrace, errorLogger);
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 
@@ -1276,14 +1271,16 @@ class SyncService {
         final json = response.data['data'] as Map<String, dynamic>;
 
         return VisitaLocalDTO.fromJson(json);
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
       }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
     } catch (e, stackTrace) {
-      throw getApiError(e, stackTrace, errorLogger);
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 
@@ -1294,8 +1291,11 @@ class SyncService {
       await _localDb
           .update(_localDb.pedidoVentaLocalTable)
           .replace(pedidoVentaLocalDto);
-    } catch (e) {
-      throw AppException.insertDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.insertDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -1304,113 +1304,94 @@ class SyncService {
   }) async {
     try {
       await _localDb.update(_localDb.visitaLocalTable).replace(visitaLocalDto);
-    } catch (e) {
-      throw AppException.insertDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.insertDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
   Future<void> checkPedidoVentaTratados() async {
-    try {
-      final pedidosNoTratadosDTO =
-          await (_localDb.select(_localDb.pedidoVentaLocalTable)..where(
-            (tbl) => tbl.tratada.equals('N') & tbl.borrador.equals('N'),
-          )).get();
+    final pedidosNoTratadosDTO =
+        await (_localDb.select(_localDb.pedidoVentaLocalTable)..where(
+          (tbl) => tbl.tratada.equals('N') & tbl.borrador.equals('N'),
+        )).get();
 
-      for (var i = 0; i < pedidosNoTratadosDTO.length; i++) {
-        final pedidoNoTratado = pedidosNoTratadosDTO[i];
+    for (var i = 0; i < pedidosNoTratadosDTO.length; i++) {
+      final pedidoNoTratado = pedidosNoTratadosDTO[i];
 
-        final pedidoNoTratadoExisitInPedidos =
-            await checkIfPedidosHaSidoImportado(
-              pedidoNoTratado.pedidoVentaAppId,
-            );
+      final pedidoNoTratadoExisitInPedidos =
+          await checkIfPedidosHaSidoImportado(pedidoNoTratado.pedidoVentaAppId);
 
-        if (pedidoNoTratadoExisitInPedidos) {
-          await _localDb
-              .update(_localDb.pedidoVentaLocalTable)
-              .write(const PedidoVentaLocalTableCompanion(tratada: Value('S')));
-        }
+      if (pedidoNoTratadoExisitInPedidos) {
+        await _localDb
+            .update(_localDb.pedidoVentaLocalTable)
+            .write(const PedidoVentaLocalTableCompanion(tratada: Value('S')));
       }
-    } catch (e) {
-      rethrow;
     }
   }
 
   Future<void> checkVisitasTratadas() async {
-    try {
-      final visitasNoTratadasDTO =
-          await (_localDb.select(_localDb.visitaLocalTable)
-            ..where((tbl) => tbl.tratada.equals('N'))).get();
+    final visitasNoTratadasDTO =
+        await (_localDb.select(_localDb.visitaLocalTable)
+          ..where((tbl) => tbl.tratada.equals('N'))).get();
 
-      for (var i = 0; i < visitasNoTratadasDTO.length; i++) {
-        final visitaNoTratada = visitasNoTratadasDTO[i];
+    for (var i = 0; i < visitasNoTratadasDTO.length; i++) {
+      final visitaNoTratada = visitasNoTratadasDTO[i];
 
-        final visitaNoTratadaExisitInVisitas =
-            await (_remoteDb.select(_remoteDb.visitaTable)..where(
-              (tbl) =>
-                  tbl.visitaAppId.equalsNullable(visitaNoTratada.visitaAppId),
-            )).getSingleOrNull();
-
-        if (visitaNoTratadaExisitInVisitas != null) {
-          await _localDb
-              .update(_localDb.visitaLocalTable)
-              .write(
-                const local.VisitaLocalTableCompanion(tratada: Value('S')),
-              );
-          await (_localDb.delete(_localDb.visitaCompetenciaLocalTable)..where(
+      final visitaNoTratadaExisitInVisitas =
+          await (_remoteDb.select(_remoteDb.visitaTable)..where(
             (tbl) =>
                 tbl.visitaAppId.equalsNullable(visitaNoTratada.visitaAppId),
-          )).go();
-        }
+          )).getSingleOrNull();
+
+      if (visitaNoTratadaExisitInVisitas != null) {
+        await _localDb
+            .update(_localDb.visitaLocalTable)
+            .write(const local.VisitaLocalTableCompanion(tratada: Value('S')));
+        await (_localDb.delete(_localDb.visitaCompetenciaLocalTable)..where(
+          (tbl) => tbl.visitaAppId.equalsNullable(visitaNoTratada.visitaAppId),
+        )).go();
       }
-    } catch (e) {
-      rethrow;
     }
   }
 
   Future<void> checkClientesContactosImp() async {
-    try {
-      final clienteContactoImpListDTO =
-          await (_localDb.select(_localDb.clienteContactoImpTable)
-            ..where((tbl) => tbl.enviado.equals('S'))).get();
+    final clienteContactoImpListDTO =
+        await (_localDb.select(_localDb.clienteContactoImpTable)
+          ..where((tbl) => tbl.enviado.equals('S'))).get();
 
-      for (var i = 0; i < clienteContactoImpListDTO.length; i++) {
-        final haveBeenTratado = await _checkIfClienteContactoImpHaveBeenTratado(
-          clienteContactoImpListDTO[i].clienteId,
-          clienteContactoImpListDTO[i].id,
-        );
+    for (var i = 0; i < clienteContactoImpListDTO.length; i++) {
+      final haveBeenTratado = await _checkIfClienteContactoImpHaveBeenTratado(
+        clienteContactoImpListDTO[i].clienteId,
+        clienteContactoImpListDTO[i].id,
+      );
 
-        if (haveBeenTratado) {
-          await (_localDb.delete(_localDb.clienteContactoImpTable)..where(
-            (tbl) => tbl.id.equals(clienteContactoImpListDTO[i].id),
-          )).go();
-        }
+      if (haveBeenTratado) {
+        await (_localDb.delete(
+          _localDb.clienteContactoImpTable,
+        )..where((tbl) => tbl.id.equals(clienteContactoImpListDTO[i].id))).go();
       }
-    } catch (e) {
-      rethrow;
     }
   }
 
   Future<void> checkClientesDireccionesImp() async {
-    try {
-      final clienteDireccionImpListDTO =
-          await (_localDb.select(_localDb.clienteDireccionImpTable)
-            ..where((tbl) => tbl.enviada.equals('S'))).get();
+    final clienteDireccionImpListDTO =
+        await (_localDb.select(_localDb.clienteDireccionImpTable)
+          ..where((tbl) => tbl.enviada.equals('S'))).get();
 
-      for (var i = 0; i < clienteDireccionImpListDTO.length; i++) {
-        final haveBeenTratado =
-            await _checkIfClienteDireccionImpHaveBeenTratada(
-              clienteDireccionImpListDTO[i].clienteId,
-              clienteDireccionImpListDTO[i].id,
-            );
+    for (var i = 0; i < clienteDireccionImpListDTO.length; i++) {
+      final haveBeenTratado = await _checkIfClienteDireccionImpHaveBeenTratada(
+        clienteDireccionImpListDTO[i].clienteId,
+        clienteDireccionImpListDTO[i].id,
+      );
 
-        if (haveBeenTratado) {
-          await (_localDb.delete(_localDb.clienteDireccionImpTable)..where(
-            (tbl) => tbl.id.equals(clienteDireccionImpListDTO[i].id),
-          )).go();
-        }
+      if (haveBeenTratado) {
+        await (_localDb.delete(_localDb.clienteDireccionImpTable)..where(
+          (tbl) => tbl.id.equals(clienteDireccionImpListDTO[i].id),
+        )).go();
       }
-    } catch (e) {
-      rethrow;
     }
   }
 
@@ -1430,63 +1411,47 @@ class SyncService {
   }
 
   Future<void> saveLastSyncDateTimeInArticulos() async {
-    try {
-      await _localDb
-          .update(_localDb.syncDateTimeTable)
-          .write(
-            local.SyncDateTimeTableCompanion(
-              id: const Value(1),
-              articuloUltimaSync: Value(DateTime.now().toUtc()),
-            ),
-          );
-    } catch (e) {
-      rethrow;
-    }
+    await _localDb
+        .update(_localDb.syncDateTimeTable)
+        .write(
+          local.SyncDateTimeTableCompanion(
+            id: const Value(1),
+            articuloUltimaSync: Value(DateTime.now().toUtc()),
+          ),
+        );
   }
 
   Future<void> saveLastSyncDateTimeInClientes() async {
-    try {
-      await _localDb
-          .update(_localDb.syncDateTimeTable)
-          .write(
-            local.SyncDateTimeTableCompanion(
-              id: const Value(1),
-              clienteUltimaSync: Value(DateTime.now().toUtc()),
-            ),
-          );
-    } catch (e) {
-      rethrow;
-    }
+    await _localDb
+        .update(_localDb.syncDateTimeTable)
+        .write(
+          local.SyncDateTimeTableCompanion(
+            id: const Value(1),
+            clienteUltimaSync: Value(DateTime.now().toUtc()),
+          ),
+        );
   }
 
   Future<void> saveLastSyncDateTimeInPedidos() async {
-    try {
-      await _localDb
-          .update(_localDb.syncDateTimeTable)
-          .write(
-            local.SyncDateTimeTableCompanion(
-              id: const Value(1),
-              pedidoUltimaSync: Value(DateTime.now().toUtc()),
-            ),
-          );
-    } catch (e) {
-      rethrow;
-    }
+    await _localDb
+        .update(_localDb.syncDateTimeTable)
+        .write(
+          local.SyncDateTimeTableCompanion(
+            id: const Value(1),
+            pedidoUltimaSync: Value(DateTime.now().toUtc()),
+          ),
+        );
   }
 
   Future<void> saveLastSyncDateTimeInVisitas() async {
-    try {
-      await _localDb
-          .update(_localDb.syncDateTimeTable)
-          .write(
-            local.SyncDateTimeTableCompanion(
-              id: const Value(1),
-              visitaUltimaSync: Value(DateTime.now().toUtc()),
-            ),
-          );
-    } catch (e) {
-      rethrow;
-    }
+    await _localDb
+        .update(_localDb.syncDateTimeTable)
+        .write(
+          local.SyncDateTimeTableCompanion(
+            id: const Value(1),
+            visitaUltimaSync: Value(DateTime.now().toUtc()),
+          ),
+        );
   }
 
   Future<SyncProgress> syncAllTable() async {
@@ -1542,14 +1507,16 @@ class SyncService {
         final clienteContactoHaveBeenTratado = response.data['data'] as bool;
 
         return clienteContactoHaveBeenTratado;
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
       }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
     } catch (e, stackTrace) {
-      throw getApiError(e, stackTrace, errorLogger);
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 
@@ -1581,14 +1548,16 @@ class SyncService {
         final clienteDireccionHaveBeenTratada = response.data['data'] as bool;
 
         return clienteDireccionHaveBeenTratada;
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
       }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
     } catch (e, stackTrace) {
-      throw getApiError(e, stackTrace, errorLogger);
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 
@@ -1630,14 +1599,16 @@ class SyncService {
         final pedidoHaSidoImportado = response.data['data'] as bool;
 
         return pedidoHaSidoImportado;
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
       }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
     } catch (e, stackTrace) {
-      throw getApiError(e, stackTrace, errorLogger);
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 
@@ -1658,7 +1629,6 @@ class SyncService {
   Future<void> insetLog({
     required String level,
     required String message,
-    String? error,
   }) async {
     final appLog = Log(
       level: level,
@@ -1687,30 +1657,25 @@ class SyncService {
   }
 
   Future<LogDTO> remotePostLogs({required LogDTO logDto}) async {
-    try {
-      final requestUri =
-          (_usuario!.test) ? remoteLogTestEndpoint : remoteLogEndpoint;
+    final requestUri =
+        (_usuario!.test) ? remoteLogTestEndpoint : remoteLogEndpoint;
 
-      final response = await _dio.postUri(
-        requestUri,
-        options: Options(
-          headers: {'authorization': 'Bearer ${_usuario.provisionalToken}'},
-        ),
-        data: jsonEncode(logDto.toJson()),
-      );
-      if (response.statusCode == 200) {
-        final json = response.data['data'] as Map<String, dynamic>;
+    final response = await _dio.postUri(
+      requestUri,
+      options: Options(
+        headers: {'authorization': 'Bearer ${_usuario.provisionalToken}'},
+      ),
+      data: jsonEncode(logDto.toJson()),
+    );
+    if (response.statusCode == 200) {
+      final json = response.data['data'] as Map<String, dynamic>;
 
-        return LogDTO.fromJson(json);
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
-      }
-    } catch (e) {
-      rethrow;
+      return LogDTO.fromJson(json);
     }
+    throw AppException.restApiFailure(
+      response.statusCode ?? 400,
+      response.statusMessage ?? '',
+    );
   }
 
   Future<void> deletePedidosAntiguos() async {
@@ -1752,7 +1717,7 @@ class SyncService {
         );
       }
       if (!isInMainThread) {
-        await removeDeletedCatalogs(
+        removeDeletedCatalogs(
           favoritesCatalogsDtoList,
           documentDirectory ?? await getApplicationDocumentsDirectory(),
         );
@@ -1790,7 +1755,7 @@ class SyncService {
         );
 
         if (isInMainThread) {
-          await _removeCatalogsFilesById(
+          _removeCatalogsFilesById(
             documentDirectory,
             favoritesCatalogsDtoList[i].catalogoId,
           );
@@ -1800,7 +1765,7 @@ class SyncService {
     }
   }
 
-  Future<List<CatalogoDTO>> _getFavoritesCatalogDtoList() async {
+  Future<List<CatalogoDTO>> _getFavoritesCatalogDtoList() {
     return _localDb.select(_localDb.catalogoFavoritoTable).get();
   }
 
@@ -1811,7 +1776,7 @@ class SyncService {
   ) async {
     try {
       final file = await File(
-        '${directory.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}',
+        '${directory.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo ?? ''}',
       ).create(recursive: true);
 
       final raf = file.openSync(mode: FileMode.write);
@@ -1835,15 +1800,18 @@ class SyncService {
       document.dispose();
 
       return file;
-    } catch (e) {
-      throw AppException.createFileInCacheFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.createFileInCacheFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
-  Future<void> removeDeletedCatalogs(
+  void removeDeletedCatalogs(
     List<CatalogoDTO> favoritesCatalogsDtoList,
     Directory documentDirectory,
-  ) async {
+  ) {
     final getCatalogoDirectory = Directory(
       '${documentDirectory.path}/catalogos/',
     );
@@ -1879,7 +1847,7 @@ class SyncService {
 
   bool _fileExistInLocal(AdjuntoParam adjuntoParam, Directory directory) {
     final filePath =
-        '${directory.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}';
+        '${directory.path}/catalogos/${adjuntoParam.id}/${adjuntoParam.nombreArchivo ?? ''}';
 
     final file = File(filePath);
 
@@ -1900,15 +1868,17 @@ class SyncService {
         ),
       );
       if (response.statusCode == 200) {
-        return response.data as List<int>;
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
+        return (response.data as List<Object?>).cast();
       }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
     } catch (e, stackTrace) {
-      throw getApiError(e, stackTrace, errorLogger);
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 
@@ -1919,10 +1889,7 @@ class SyncService {
   //   }
   // }
 
-  Future<void> _removeCatalogsFilesById(
-    Directory directory,
-    int catalogoId,
-  ) async {
+  void _removeCatalogsFilesById(Directory directory, int catalogoId) {
     final directoryCatalogos = Directory(
       '${directory.path}/catalogos/$catalogoId',
     );
@@ -1972,12 +1939,11 @@ class SyncService {
         final data = response.data['data'] as Map<String, dynamic>;
 
         return ClienteImpDTO.fromJson(data);
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
       }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
     } catch (e) {
       log.e('ERROR SYNC CLIENTE ${clienteImpDto.toJson()}: ${e.toString()}');
       return null;

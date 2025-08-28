@@ -1,9 +1,9 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../../core/helpers/extension.dart';
 import '../../../core/infrastructure/remote_database.dart';
 import '../domain/cliente_pago_pendiente.dart';
-
 import '../domain/metodo_cobro.dart';
 import 'metodo_cobro_dto.dart';
 
@@ -13,7 +13,7 @@ part 'cliente_pago_pendiente_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class ClientePagoPendienteDTO
+abstract class ClientePagoPendienteDTO
     with _$ClientePagoPendienteDTO
     implements Insertable<ClientePagoPendienteDTO> {
   const ClientePagoPendienteDTO._();
@@ -52,7 +52,7 @@ class ClientePagoPendienteDTO
       fechaExpiracionInicial: fechaExpiracionInicial,
       vencidoJBM: (vencidoJBM != null) ? (vencidoJBM != 'N') : null,
       lastUpdated: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
+      deleted: (deleted == 'S'),
     );
   }
 

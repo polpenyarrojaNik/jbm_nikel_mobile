@@ -9,471 +9,719 @@ class $VisitaLocalTableTable extends VisitaLocalTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $VisitaLocalTableTable(this.attachedDatabase, [this._alias]);
-  static const VerificationMeta _visitaAppIdMeta =
-      const VerificationMeta('visitaAppId');
+  static const VerificationMeta _visitaAppIdMeta = const VerificationMeta(
+    'visitaAppId',
+  );
   @override
   late final GeneratedColumn<String> visitaAppId = GeneratedColumn<String>(
-      'COD_VISITA_APP', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _clienteIdMeta =
-      const VerificationMeta('clienteId');
+    'COD_VISITA_APP',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _clienteIdMeta = const VerificationMeta(
+    'clienteId',
+  );
   @override
   late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
-      'CLIENTE_ID', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'CLIENTE_ID',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _isClienteProvisionalMeta =
       const VerificationMeta('isClienteProvisional');
   @override
   late final GeneratedColumn<String> isClienteProvisional =
-      GeneratedColumn<String>('CLIENTE_POTENCIAL_SN', aliasedName, false,
-          type: DriftSqlType.string, requiredDuringInsert: true);
+      GeneratedColumn<String>(
+        'CLIENTE_POTENCIAL_SN',
+        aliasedName,
+        false,
+        type: DriftSqlType.string,
+        requiredDuringInsert: true,
+      );
   static const VerificationMeta _clienteProvisionalNombreMeta =
       const VerificationMeta('clienteProvisionalNombre');
   @override
   late final GeneratedColumn<String> clienteProvisionalNombre =
-      GeneratedColumn<String>('CLIENTE_POTENCIAL_NOMBRE', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
+      GeneratedColumn<String>(
+        'CLIENTE_POTENCIAL_NOMBRE',
+        aliasedName,
+        true,
+        type: DriftSqlType.string,
+        requiredDuringInsert: false,
+      );
   static const VerificationMeta _clienteProvisionalEmailMeta =
       const VerificationMeta('clienteProvisionalEmail');
   @override
   late final GeneratedColumn<String> clienteProvisionalEmail =
-      GeneratedColumn<String>('CLIENTE_POTENCIAL_EMAIL', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
+      GeneratedColumn<String>(
+        'CLIENTE_POTENCIAL_EMAIL',
+        aliasedName,
+        true,
+        type: DriftSqlType.string,
+        requiredDuringInsert: false,
+      );
   static const VerificationMeta _clienteProvisionalTelefonoMeta =
       const VerificationMeta('clienteProvisionalTelefono');
   @override
   late final GeneratedColumn<String> clienteProvisionalTelefono =
-      GeneratedColumn<String>('CLIENTE_POTENCIAL_TELEFONO', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
+      GeneratedColumn<String>(
+        'CLIENTE_POTENCIAL_TELEFONO',
+        aliasedName,
+        true,
+        type: DriftSqlType.string,
+        requiredDuringInsert: false,
+      );
   static const VerificationMeta _clienteProvisionalDireccion1Meta =
       const VerificationMeta('clienteProvisionalDireccion1');
   @override
   late final GeneratedColumn<String> clienteProvisionalDireccion1 =
-      GeneratedColumn<String>('CLIENTE_POTENCIAL_DIRECCION1', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
+      GeneratedColumn<String>(
+        'CLIENTE_POTENCIAL_DIRECCION1',
+        aliasedName,
+        true,
+        type: DriftSqlType.string,
+        requiredDuringInsert: false,
+      );
   static const VerificationMeta _clienteProvisionalDireccion2Meta =
       const VerificationMeta('clienteProvisionalDireccion2');
   @override
   late final GeneratedColumn<String> clienteProvisionalDireccion2 =
-      GeneratedColumn<String>('CLIENTE_POTENCIAL_DIRECCION2', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
+      GeneratedColumn<String>(
+        'CLIENTE_POTENCIAL_DIRECCION2',
+        aliasedName,
+        true,
+        type: DriftSqlType.string,
+        requiredDuringInsert: false,
+      );
   static const VerificationMeta _clienteProvisionalCodigoPostalMeta =
       const VerificationMeta('clienteProvisionalCodigoPostal');
   @override
   late final GeneratedColumn<String> clienteProvisionalCodigoPostal =
-      GeneratedColumn<String>('CLIENTE_POTENCIAL_COD_POS', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
+      GeneratedColumn<String>(
+        'CLIENTE_POTENCIAL_COD_POS',
+        aliasedName,
+        true,
+        type: DriftSqlType.string,
+        requiredDuringInsert: false,
+      );
   static const VerificationMeta _clienteProvisionalPoblacionMeta =
       const VerificationMeta('clienteProvisionalPoblacion');
   @override
   late final GeneratedColumn<String> clienteProvisionalPoblacion =
-      GeneratedColumn<String>('CLIENTE_POTENCIAL_POBLACION', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
+      GeneratedColumn<String>(
+        'CLIENTE_POTENCIAL_POBLACION',
+        aliasedName,
+        true,
+        type: DriftSqlType.string,
+        requiredDuringInsert: false,
+      );
   static const VerificationMeta _clienteProvisionalProvinciaIdMeta =
       const VerificationMeta('clienteProvisionalProvinciaId');
   @override
   late final GeneratedColumn<String> clienteProvisionalProvinciaId =
       GeneratedColumn<String>(
-          'CLIENTE_POTENCIAL_PROVINCIA_ID', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
+        'CLIENTE_POTENCIAL_PROVINCIA_ID',
+        aliasedName,
+        true,
+        type: DriftSqlType.string,
+        requiredDuringInsert: false,
+      );
   static const VerificationMeta _clienteProvisionalRegionIdMeta =
       const VerificationMeta('clienteProvisionalRegionId');
   @override
   late final GeneratedColumn<String> clienteProvisionalRegionId =
-      GeneratedColumn<String>('CLIENTE_POTENCIAL_REGION_ID', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
+      GeneratedColumn<String>(
+        'CLIENTE_POTENCIAL_REGION_ID',
+        aliasedName,
+        true,
+        type: DriftSqlType.string,
+        requiredDuringInsert: false,
+      );
   static const VerificationMeta _clienteProvisionalPaisIdMeta =
       const VerificationMeta('clienteProvisionalPaisId');
   @override
   late final GeneratedColumn<String> clienteProvisionalPaisId =
-      GeneratedColumn<String>('CLIENTE_POTENCIAL_PAIS_ID', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
+      GeneratedColumn<String>(
+        'CLIENTE_POTENCIAL_PAIS_ID',
+        aliasedName,
+        true,
+        type: DriftSqlType.string,
+        requiredDuringInsert: false,
+      );
   static const VerificationMeta _fechaMeta = const VerificationMeta('fecha');
   @override
   late final GeneratedColumn<DateTime> fecha = GeneratedColumn<DateTime>(
-      'FECHA', aliasedName, false,
-      type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  static const VerificationMeta _numEmplMeta =
-      const VerificationMeta('numEmpl');
+    'FECHA',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _numEmplMeta = const VerificationMeta(
+    'numEmpl',
+  );
   @override
   late final GeneratedColumn<String> numEmpl = GeneratedColumn<String>(
-      'NUM_EMPL', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _contactoMeta =
-      const VerificationMeta('contacto');
+    'NUM_EMPL',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _contactoMeta = const VerificationMeta(
+    'contacto',
+  );
   @override
   late final GeneratedColumn<String> contacto = GeneratedColumn<String>(
-      'CONTACTO', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _atendidoPorMeta =
-      const VerificationMeta('atendidoPor');
+    'CONTACTO',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _atendidoPorMeta = const VerificationMeta(
+    'atendidoPor',
+  );
   @override
   late final GeneratedColumn<String> atendidoPor = GeneratedColumn<String>(
-      'ATENDIDO_POR', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _resumenMeta =
-      const VerificationMeta('resumen');
+    'ATENDIDO_POR',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _resumenMeta = const VerificationMeta(
+    'resumen',
+  );
   @override
   late final GeneratedColumn<String> resumen = GeneratedColumn<String>(
-      'RESUMEN', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _marcasCompetenciaMeta =
-      const VerificationMeta('marcasCompetencia');
+    'RESUMEN',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _marcasCompetenciaMeta = const VerificationMeta(
+    'marcasCompetencia',
+  );
   @override
   late final GeneratedColumn<String> marcasCompetencia =
-      GeneratedColumn<String>('MARCAS_COMPETENCIA', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _ofertaRealizadaMeta =
-      const VerificationMeta('ofertaRealizada');
+      GeneratedColumn<String>(
+        'MARCAS_COMPETENCIA',
+        aliasedName,
+        true,
+        type: DriftSqlType.string,
+        requiredDuringInsert: false,
+      );
+  static const VerificationMeta _ofertaRealizadaMeta = const VerificationMeta(
+    'ofertaRealizada',
+  );
   @override
   late final GeneratedColumn<String> ofertaRealizada = GeneratedColumn<String>(
-      'OFERTA_REALIZADA', aliasedName, false,
-      type: DriftSqlType.string,
-      requiredDuringInsert: false,
-      defaultValue: const Constant('N'));
-  static const VerificationMeta _interesClienteMeta =
-      const VerificationMeta('interesCliente');
+    'OFERTA_REALIZADA',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('N'),
+  );
+  static const VerificationMeta _interesClienteMeta = const VerificationMeta(
+    'interesCliente',
+  );
   @override
   late final GeneratedColumn<String> interesCliente = GeneratedColumn<String>(
-      'INTERES_CLIENTE', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _pedidoRealizadoMeta =
-      const VerificationMeta('pedidoRealizado');
+    'INTERES_CLIENTE',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _pedidoRealizadoMeta = const VerificationMeta(
+    'pedidoRealizado',
+  );
   @override
   late final GeneratedColumn<String> pedidoRealizado = GeneratedColumn<String>(
-      'PEDIDO_REALIZADO', aliasedName, false,
-      type: DriftSqlType.string,
-      requiredDuringInsert: false,
-      defaultValue: const Constant('N'));
+    'PEDIDO_REALIZADO',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('N'),
+  );
   static const VerificationMeta _codigoMotivoNoInteresMeta =
       const VerificationMeta('codigoMotivoNoInteres');
   @override
   late final GeneratedColumn<int> codigoMotivoNoInteres = GeneratedColumn<int>(
-      'CODIGO_MOTIVO_NO_INTERES', aliasedName, true,
-      type: DriftSqlType.int, requiredDuringInsert: false);
+    'CODIGO_MOTIVO_NO_INTERES',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _codigoMotivoNoPedidoMeta =
       const VerificationMeta('codigoMotivoNoPedido');
   @override
   late final GeneratedColumn<int> codigoMotivoNoPedido = GeneratedColumn<int>(
-      'CODIGO_MOTIVO_NO_PEDIDO', aliasedName, true,
-      type: DriftSqlType.int, requiredDuringInsert: false);
-  static const VerificationMeta _codigoSectorMeta =
-      const VerificationMeta('codigoSector');
+    'CODIGO_MOTIVO_NO_PEDIDO',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _codigoSectorMeta = const VerificationMeta(
+    'codigoSector',
+  );
   @override
   late final GeneratedColumn<int> codigoSector = GeneratedColumn<int>(
-      'CODIGO_SECTOR', aliasedName, true,
-      type: DriftSqlType.int, requiredDuringInsert: false);
-  static const VerificationMeta _codigoCompetenciaMeta =
-      const VerificationMeta('codigoCompetencia');
+    'CODIGO_SECTOR',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _codigoCompetenciaMeta = const VerificationMeta(
+    'codigoCompetencia',
+  );
   @override
   late final GeneratedColumn<int> codigoCompetencia = GeneratedColumn<int>(
-      'CODIGO_COMPETENCIA', aliasedName, true,
-      type: DriftSqlType.int, requiredDuringInsert: false);
-  static const VerificationMeta _almacenPropioMeta =
-      const VerificationMeta('almacenPropio');
+    'CODIGO_COMPETENCIA',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _almacenPropioMeta = const VerificationMeta(
+    'almacenPropio',
+  );
   @override
   late final GeneratedColumn<String> almacenPropio = GeneratedColumn<String>(
-      'ALMACEN_PROPIO', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _capacidadMeta =
-      const VerificationMeta('capacidad');
+    'ALMACEN_PROPIO',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _capacidadMeta = const VerificationMeta(
+    'capacidad',
+  );
   @override
   late final GeneratedColumn<String> capacidad = GeneratedColumn<String>(
-      'CAPACIDAD', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _frecuenciaPedidoMeta =
-      const VerificationMeta('frecuenciaPedido');
+    'CAPACIDAD',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _frecuenciaPedidoMeta = const VerificationMeta(
+    'frecuenciaPedido',
+  );
   @override
   late final GeneratedColumn<String> frecuenciaPedido = GeneratedColumn<String>(
-      'FRECUENCIA_PEDIDO', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _latitudMeta =
-      const VerificationMeta('latitud');
+    'FRECUENCIA_PEDIDO',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _latitudMeta = const VerificationMeta(
+    'latitud',
+  );
   @override
   late final GeneratedColumn<double> latitud = GeneratedColumn<double>(
-      'LATITUD', aliasedName, false,
-      type: DriftSqlType.double, requiredDuringInsert: true);
-  static const VerificationMeta _longitudMeta =
-      const VerificationMeta('longitud');
+    'LATITUD',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _longitudMeta = const VerificationMeta(
+    'longitud',
+  );
   @override
   late final GeneratedColumn<double> longitud = GeneratedColumn<double>(
-      'LONGITUD', aliasedName, false,
-      type: DriftSqlType.double, requiredDuringInsert: true);
-  static const VerificationMeta _enviadaMeta =
-      const VerificationMeta('enviada');
+    'LONGITUD',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _enviadaMeta = const VerificationMeta(
+    'enviada',
+  );
   @override
   late final GeneratedColumn<String> enviada = GeneratedColumn<String>(
-      'ENVIADA', aliasedName, false,
-      type: DriftSqlType.string,
-      requiredDuringInsert: false,
-      defaultValue: const Constant('N'));
-  static const VerificationMeta _tratadaMeta =
-      const VerificationMeta('tratada');
+    'ENVIADA',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('N'),
+  );
+  static const VerificationMeta _tratadaMeta = const VerificationMeta(
+    'tratada',
+  );
   @override
   late final GeneratedColumn<String> tratada = GeneratedColumn<String>(
-      'TRATADA', aliasedName, false,
-      type: DriftSqlType.string,
-      requiredDuringInsert: false,
-      defaultValue: const Constant('N'));
-  static const VerificationMeta _errorSyncMessageMeta =
-      const VerificationMeta('errorSyncMessage');
+    'TRATADA',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('N'),
+  );
+  static const VerificationMeta _errorSyncMessageMeta = const VerificationMeta(
+    'errorSyncMessage',
+  );
   @override
   late final GeneratedColumn<String> errorSyncMessage = GeneratedColumn<String>(
-      'ERROR_SYNC', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'ERROR_SYNC',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   @override
   List<GeneratedColumn> get $columns => [
-        visitaAppId,
-        clienteId,
-        isClienteProvisional,
-        clienteProvisionalNombre,
-        clienteProvisionalEmail,
-        clienteProvisionalTelefono,
-        clienteProvisionalDireccion1,
-        clienteProvisionalDireccion2,
-        clienteProvisionalCodigoPostal,
-        clienteProvisionalPoblacion,
-        clienteProvisionalProvinciaId,
-        clienteProvisionalRegionId,
-        clienteProvisionalPaisId,
-        fecha,
-        numEmpl,
-        contacto,
-        atendidoPor,
-        resumen,
-        marcasCompetencia,
-        ofertaRealizada,
-        interesCliente,
-        pedidoRealizado,
-        codigoMotivoNoInteres,
-        codigoMotivoNoPedido,
-        codigoSector,
-        codigoCompetencia,
-        almacenPropio,
-        capacidad,
-        frecuenciaPedido,
-        latitud,
-        longitud,
-        enviada,
-        tratada,
-        errorSyncMessage
-      ];
+    visitaAppId,
+    clienteId,
+    isClienteProvisional,
+    clienteProvisionalNombre,
+    clienteProvisionalEmail,
+    clienteProvisionalTelefono,
+    clienteProvisionalDireccion1,
+    clienteProvisionalDireccion2,
+    clienteProvisionalCodigoPostal,
+    clienteProvisionalPoblacion,
+    clienteProvisionalProvinciaId,
+    clienteProvisionalRegionId,
+    clienteProvisionalPaisId,
+    fecha,
+    numEmpl,
+    contacto,
+    atendidoPor,
+    resumen,
+    marcasCompetencia,
+    ofertaRealizada,
+    interesCliente,
+    pedidoRealizado,
+    codigoMotivoNoInteres,
+    codigoMotivoNoPedido,
+    codigoSector,
+    codigoCompetencia,
+    almacenPropio,
+    capacidad,
+    frecuenciaPedido,
+    latitud,
+    longitud,
+    enviada,
+    tratada,
+    errorSyncMessage,
+  ];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
   String get actualTableName => $name;
   static const String $name = 'VISITAS_LOCAL_IMP';
   @override
-  VerificationContext validateIntegrity(Insertable<VisitaLocalDTO> instance,
-      {bool isInserting = false}) {
+  VerificationContext validateIntegrity(
+    Insertable<VisitaLocalDTO> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('COD_VISITA_APP')) {
       context.handle(
+        _visitaAppIdMeta,
+        visitaAppId.isAcceptableOrUnknown(
+          data['COD_VISITA_APP']!,
           _visitaAppIdMeta,
-          visitaAppId.isAcceptableOrUnknown(
-              data['COD_VISITA_APP']!, _visitaAppIdMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_visitaAppIdMeta);
     }
     if (data.containsKey('CLIENTE_ID')) {
-      context.handle(_clienteIdMeta,
-          clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta));
+      context.handle(
+        _clienteIdMeta,
+        clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta),
+      );
     }
     if (data.containsKey('CLIENTE_POTENCIAL_SN')) {
       context.handle(
+        _isClienteProvisionalMeta,
+        isClienteProvisional.isAcceptableOrUnknown(
+          data['CLIENTE_POTENCIAL_SN']!,
           _isClienteProvisionalMeta,
-          isClienteProvisional.isAcceptableOrUnknown(
-              data['CLIENTE_POTENCIAL_SN']!, _isClienteProvisionalMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_isClienteProvisionalMeta);
     }
     if (data.containsKey('CLIENTE_POTENCIAL_NOMBRE')) {
       context.handle(
+        _clienteProvisionalNombreMeta,
+        clienteProvisionalNombre.isAcceptableOrUnknown(
+          data['CLIENTE_POTENCIAL_NOMBRE']!,
           _clienteProvisionalNombreMeta,
-          clienteProvisionalNombre.isAcceptableOrUnknown(
-              data['CLIENTE_POTENCIAL_NOMBRE']!,
-              _clienteProvisionalNombreMeta));
+        ),
+      );
     }
     if (data.containsKey('CLIENTE_POTENCIAL_EMAIL')) {
       context.handle(
+        _clienteProvisionalEmailMeta,
+        clienteProvisionalEmail.isAcceptableOrUnknown(
+          data['CLIENTE_POTENCIAL_EMAIL']!,
           _clienteProvisionalEmailMeta,
-          clienteProvisionalEmail.isAcceptableOrUnknown(
-              data['CLIENTE_POTENCIAL_EMAIL']!, _clienteProvisionalEmailMeta));
+        ),
+      );
     }
     if (data.containsKey('CLIENTE_POTENCIAL_TELEFONO')) {
       context.handle(
+        _clienteProvisionalTelefonoMeta,
+        clienteProvisionalTelefono.isAcceptableOrUnknown(
+          data['CLIENTE_POTENCIAL_TELEFONO']!,
           _clienteProvisionalTelefonoMeta,
-          clienteProvisionalTelefono.isAcceptableOrUnknown(
-              data['CLIENTE_POTENCIAL_TELEFONO']!,
-              _clienteProvisionalTelefonoMeta));
+        ),
+      );
     }
     if (data.containsKey('CLIENTE_POTENCIAL_DIRECCION1')) {
       context.handle(
+        _clienteProvisionalDireccion1Meta,
+        clienteProvisionalDireccion1.isAcceptableOrUnknown(
+          data['CLIENTE_POTENCIAL_DIRECCION1']!,
           _clienteProvisionalDireccion1Meta,
-          clienteProvisionalDireccion1.isAcceptableOrUnknown(
-              data['CLIENTE_POTENCIAL_DIRECCION1']!,
-              _clienteProvisionalDireccion1Meta));
+        ),
+      );
     }
     if (data.containsKey('CLIENTE_POTENCIAL_DIRECCION2')) {
       context.handle(
+        _clienteProvisionalDireccion2Meta,
+        clienteProvisionalDireccion2.isAcceptableOrUnknown(
+          data['CLIENTE_POTENCIAL_DIRECCION2']!,
           _clienteProvisionalDireccion2Meta,
-          clienteProvisionalDireccion2.isAcceptableOrUnknown(
-              data['CLIENTE_POTENCIAL_DIRECCION2']!,
-              _clienteProvisionalDireccion2Meta));
+        ),
+      );
     }
     if (data.containsKey('CLIENTE_POTENCIAL_COD_POS')) {
       context.handle(
+        _clienteProvisionalCodigoPostalMeta,
+        clienteProvisionalCodigoPostal.isAcceptableOrUnknown(
+          data['CLIENTE_POTENCIAL_COD_POS']!,
           _clienteProvisionalCodigoPostalMeta,
-          clienteProvisionalCodigoPostal.isAcceptableOrUnknown(
-              data['CLIENTE_POTENCIAL_COD_POS']!,
-              _clienteProvisionalCodigoPostalMeta));
+        ),
+      );
     }
     if (data.containsKey('CLIENTE_POTENCIAL_POBLACION')) {
       context.handle(
+        _clienteProvisionalPoblacionMeta,
+        clienteProvisionalPoblacion.isAcceptableOrUnknown(
+          data['CLIENTE_POTENCIAL_POBLACION']!,
           _clienteProvisionalPoblacionMeta,
-          clienteProvisionalPoblacion.isAcceptableOrUnknown(
-              data['CLIENTE_POTENCIAL_POBLACION']!,
-              _clienteProvisionalPoblacionMeta));
+        ),
+      );
     }
     if (data.containsKey('CLIENTE_POTENCIAL_PROVINCIA_ID')) {
       context.handle(
+        _clienteProvisionalProvinciaIdMeta,
+        clienteProvisionalProvinciaId.isAcceptableOrUnknown(
+          data['CLIENTE_POTENCIAL_PROVINCIA_ID']!,
           _clienteProvisionalProvinciaIdMeta,
-          clienteProvisionalProvinciaId.isAcceptableOrUnknown(
-              data['CLIENTE_POTENCIAL_PROVINCIA_ID']!,
-              _clienteProvisionalProvinciaIdMeta));
+        ),
+      );
     }
     if (data.containsKey('CLIENTE_POTENCIAL_REGION_ID')) {
       context.handle(
+        _clienteProvisionalRegionIdMeta,
+        clienteProvisionalRegionId.isAcceptableOrUnknown(
+          data['CLIENTE_POTENCIAL_REGION_ID']!,
           _clienteProvisionalRegionIdMeta,
-          clienteProvisionalRegionId.isAcceptableOrUnknown(
-              data['CLIENTE_POTENCIAL_REGION_ID']!,
-              _clienteProvisionalRegionIdMeta));
+        ),
+      );
     }
     if (data.containsKey('CLIENTE_POTENCIAL_PAIS_ID')) {
       context.handle(
+        _clienteProvisionalPaisIdMeta,
+        clienteProvisionalPaisId.isAcceptableOrUnknown(
+          data['CLIENTE_POTENCIAL_PAIS_ID']!,
           _clienteProvisionalPaisIdMeta,
-          clienteProvisionalPaisId.isAcceptableOrUnknown(
-              data['CLIENTE_POTENCIAL_PAIS_ID']!,
-              _clienteProvisionalPaisIdMeta));
+        ),
+      );
     }
     if (data.containsKey('FECHA')) {
       context.handle(
-          _fechaMeta, fecha.isAcceptableOrUnknown(data['FECHA']!, _fechaMeta));
+        _fechaMeta,
+        fecha.isAcceptableOrUnknown(data['FECHA']!, _fechaMeta),
+      );
     } else if (isInserting) {
       context.missing(_fechaMeta);
     }
     if (data.containsKey('NUM_EMPL')) {
-      context.handle(_numEmplMeta,
-          numEmpl.isAcceptableOrUnknown(data['NUM_EMPL']!, _numEmplMeta));
+      context.handle(
+        _numEmplMeta,
+        numEmpl.isAcceptableOrUnknown(data['NUM_EMPL']!, _numEmplMeta),
+      );
     } else if (isInserting) {
       context.missing(_numEmplMeta);
     }
     if (data.containsKey('CONTACTO')) {
-      context.handle(_contactoMeta,
-          contacto.isAcceptableOrUnknown(data['CONTACTO']!, _contactoMeta));
+      context.handle(
+        _contactoMeta,
+        contacto.isAcceptableOrUnknown(data['CONTACTO']!, _contactoMeta),
+      );
     } else if (isInserting) {
       context.missing(_contactoMeta);
     }
     if (data.containsKey('ATENDIDO_POR')) {
       context.handle(
+        _atendidoPorMeta,
+        atendidoPor.isAcceptableOrUnknown(
+          data['ATENDIDO_POR']!,
           _atendidoPorMeta,
-          atendidoPor.isAcceptableOrUnknown(
-              data['ATENDIDO_POR']!, _atendidoPorMeta));
+        ),
+      );
     }
     if (data.containsKey('RESUMEN')) {
-      context.handle(_resumenMeta,
-          resumen.isAcceptableOrUnknown(data['RESUMEN']!, _resumenMeta));
+      context.handle(
+        _resumenMeta,
+        resumen.isAcceptableOrUnknown(data['RESUMEN']!, _resumenMeta),
+      );
     }
     if (data.containsKey('MARCAS_COMPETENCIA')) {
       context.handle(
+        _marcasCompetenciaMeta,
+        marcasCompetencia.isAcceptableOrUnknown(
+          data['MARCAS_COMPETENCIA']!,
           _marcasCompetenciaMeta,
-          marcasCompetencia.isAcceptableOrUnknown(
-              data['MARCAS_COMPETENCIA']!, _marcasCompetenciaMeta));
+        ),
+      );
     }
     if (data.containsKey('OFERTA_REALIZADA')) {
       context.handle(
+        _ofertaRealizadaMeta,
+        ofertaRealizada.isAcceptableOrUnknown(
+          data['OFERTA_REALIZADA']!,
           _ofertaRealizadaMeta,
-          ofertaRealizada.isAcceptableOrUnknown(
-              data['OFERTA_REALIZADA']!, _ofertaRealizadaMeta));
+        ),
+      );
     }
     if (data.containsKey('INTERES_CLIENTE')) {
       context.handle(
+        _interesClienteMeta,
+        interesCliente.isAcceptableOrUnknown(
+          data['INTERES_CLIENTE']!,
           _interesClienteMeta,
-          interesCliente.isAcceptableOrUnknown(
-              data['INTERES_CLIENTE']!, _interesClienteMeta));
+        ),
+      );
     }
     if (data.containsKey('PEDIDO_REALIZADO')) {
       context.handle(
+        _pedidoRealizadoMeta,
+        pedidoRealizado.isAcceptableOrUnknown(
+          data['PEDIDO_REALIZADO']!,
           _pedidoRealizadoMeta,
-          pedidoRealizado.isAcceptableOrUnknown(
-              data['PEDIDO_REALIZADO']!, _pedidoRealizadoMeta));
+        ),
+      );
     }
     if (data.containsKey('CODIGO_MOTIVO_NO_INTERES')) {
       context.handle(
+        _codigoMotivoNoInteresMeta,
+        codigoMotivoNoInteres.isAcceptableOrUnknown(
+          data['CODIGO_MOTIVO_NO_INTERES']!,
           _codigoMotivoNoInteresMeta,
-          codigoMotivoNoInteres.isAcceptableOrUnknown(
-              data['CODIGO_MOTIVO_NO_INTERES']!, _codigoMotivoNoInteresMeta));
+        ),
+      );
     }
     if (data.containsKey('CODIGO_MOTIVO_NO_PEDIDO')) {
       context.handle(
+        _codigoMotivoNoPedidoMeta,
+        codigoMotivoNoPedido.isAcceptableOrUnknown(
+          data['CODIGO_MOTIVO_NO_PEDIDO']!,
           _codigoMotivoNoPedidoMeta,
-          codigoMotivoNoPedido.isAcceptableOrUnknown(
-              data['CODIGO_MOTIVO_NO_PEDIDO']!, _codigoMotivoNoPedidoMeta));
+        ),
+      );
     }
     if (data.containsKey('CODIGO_SECTOR')) {
       context.handle(
+        _codigoSectorMeta,
+        codigoSector.isAcceptableOrUnknown(
+          data['CODIGO_SECTOR']!,
           _codigoSectorMeta,
-          codigoSector.isAcceptableOrUnknown(
-              data['CODIGO_SECTOR']!, _codigoSectorMeta));
+        ),
+      );
     }
     if (data.containsKey('CODIGO_COMPETENCIA')) {
       context.handle(
+        _codigoCompetenciaMeta,
+        codigoCompetencia.isAcceptableOrUnknown(
+          data['CODIGO_COMPETENCIA']!,
           _codigoCompetenciaMeta,
-          codigoCompetencia.isAcceptableOrUnknown(
-              data['CODIGO_COMPETENCIA']!, _codigoCompetenciaMeta));
+        ),
+      );
     }
     if (data.containsKey('ALMACEN_PROPIO')) {
       context.handle(
+        _almacenPropioMeta,
+        almacenPropio.isAcceptableOrUnknown(
+          data['ALMACEN_PROPIO']!,
           _almacenPropioMeta,
-          almacenPropio.isAcceptableOrUnknown(
-              data['ALMACEN_PROPIO']!, _almacenPropioMeta));
+        ),
+      );
     }
     if (data.containsKey('CAPACIDAD')) {
-      context.handle(_capacidadMeta,
-          capacidad.isAcceptableOrUnknown(data['CAPACIDAD']!, _capacidadMeta));
+      context.handle(
+        _capacidadMeta,
+        capacidad.isAcceptableOrUnknown(data['CAPACIDAD']!, _capacidadMeta),
+      );
     }
     if (data.containsKey('FRECUENCIA_PEDIDO')) {
       context.handle(
+        _frecuenciaPedidoMeta,
+        frecuenciaPedido.isAcceptableOrUnknown(
+          data['FRECUENCIA_PEDIDO']!,
           _frecuenciaPedidoMeta,
-          frecuenciaPedido.isAcceptableOrUnknown(
-              data['FRECUENCIA_PEDIDO']!, _frecuenciaPedidoMeta));
+        ),
+      );
     }
     if (data.containsKey('LATITUD')) {
-      context.handle(_latitudMeta,
-          latitud.isAcceptableOrUnknown(data['LATITUD']!, _latitudMeta));
+      context.handle(
+        _latitudMeta,
+        latitud.isAcceptableOrUnknown(data['LATITUD']!, _latitudMeta),
+      );
     } else if (isInserting) {
       context.missing(_latitudMeta);
     }
     if (data.containsKey('LONGITUD')) {
-      context.handle(_longitudMeta,
-          longitud.isAcceptableOrUnknown(data['LONGITUD']!, _longitudMeta));
+      context.handle(
+        _longitudMeta,
+        longitud.isAcceptableOrUnknown(data['LONGITUD']!, _longitudMeta),
+      );
     } else if (isInserting) {
       context.missing(_longitudMeta);
     }
     if (data.containsKey('ENVIADA')) {
-      context.handle(_enviadaMeta,
-          enviada.isAcceptableOrUnknown(data['ENVIADA']!, _enviadaMeta));
+      context.handle(
+        _enviadaMeta,
+        enviada.isAcceptableOrUnknown(data['ENVIADA']!, _enviadaMeta),
+      );
     }
     if (data.containsKey('TRATADA')) {
-      context.handle(_tratadaMeta,
-          tratada.isAcceptableOrUnknown(data['TRATADA']!, _tratadaMeta));
+      context.handle(
+        _tratadaMeta,
+        tratada.isAcceptableOrUnknown(data['TRATADA']!, _tratadaMeta),
+      );
     }
     if (data.containsKey('ERROR_SYNC')) {
       context.handle(
+        _errorSyncMessageMeta,
+        errorSyncMessage.isAcceptableOrUnknown(
+          data['ERROR_SYNC']!,
           _errorSyncMessageMeta,
-          errorSyncMessage.isAcceptableOrUnknown(
-              data['ERROR_SYNC']!, _errorSyncMessageMeta));
+        ),
+      );
     }
     return context;
   }
@@ -483,85 +731,154 @@ class $VisitaLocalTableTable extends VisitaLocalTable
   @override
   VisitaLocalDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return VisitaLocalDTO(
-      visitaAppId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}COD_VISITA_APP'])!,
-      fecha: attachedDatabase.typeMapping
-          .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA'])!,
-      clienteId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID']),
-      isClienteProvisional: attachedDatabase.typeMapping.read(
-          DriftSqlType.string, data['${effectivePrefix}CLIENTE_POTENCIAL_SN'])!,
+    return VisitaLocalDTO.new(
+      visitaAppId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}COD_VISITA_APP'],
+          )!,
+      fecha:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}FECHA'],
+          )!,
+      clienteId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}CLIENTE_ID'],
+      ),
+      isClienteProvisional:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}CLIENTE_POTENCIAL_SN'],
+          )!,
       clienteProvisionalNombre: attachedDatabase.typeMapping.read(
-          DriftSqlType.string,
-          data['${effectivePrefix}CLIENTE_POTENCIAL_NOMBRE']),
+        DriftSqlType.string,
+        data['${effectivePrefix}CLIENTE_POTENCIAL_NOMBRE'],
+      ),
       clienteProvisionalEmail: attachedDatabase.typeMapping.read(
-          DriftSqlType.string,
-          data['${effectivePrefix}CLIENTE_POTENCIAL_EMAIL']),
+        DriftSqlType.string,
+        data['${effectivePrefix}CLIENTE_POTENCIAL_EMAIL'],
+      ),
       clienteProvisionalTelefono: attachedDatabase.typeMapping.read(
-          DriftSqlType.string,
-          data['${effectivePrefix}CLIENTE_POTENCIAL_TELEFONO']),
+        DriftSqlType.string,
+        data['${effectivePrefix}CLIENTE_POTENCIAL_TELEFONO'],
+      ),
       clienteProvisionalDireccion1: attachedDatabase.typeMapping.read(
-          DriftSqlType.string,
-          data['${effectivePrefix}CLIENTE_POTENCIAL_DIRECCION1']),
+        DriftSqlType.string,
+        data['${effectivePrefix}CLIENTE_POTENCIAL_DIRECCION1'],
+      ),
       clienteProvisionalDireccion2: attachedDatabase.typeMapping.read(
-          DriftSqlType.string,
-          data['${effectivePrefix}CLIENTE_POTENCIAL_DIRECCION2']),
+        DriftSqlType.string,
+        data['${effectivePrefix}CLIENTE_POTENCIAL_DIRECCION2'],
+      ),
       clienteProvisionalCodigoPostal: attachedDatabase.typeMapping.read(
-          DriftSqlType.string,
-          data['${effectivePrefix}CLIENTE_POTENCIAL_COD_POS']),
+        DriftSqlType.string,
+        data['${effectivePrefix}CLIENTE_POTENCIAL_COD_POS'],
+      ),
       clienteProvisionalPoblacion: attachedDatabase.typeMapping.read(
-          DriftSqlType.string,
-          data['${effectivePrefix}CLIENTE_POTENCIAL_POBLACION']),
+        DriftSqlType.string,
+        data['${effectivePrefix}CLIENTE_POTENCIAL_POBLACION'],
+      ),
       clienteProvisionalProvinciaId: attachedDatabase.typeMapping.read(
-          DriftSqlType.string,
-          data['${effectivePrefix}CLIENTE_POTENCIAL_PROVINCIA_ID']),
+        DriftSqlType.string,
+        data['${effectivePrefix}CLIENTE_POTENCIAL_PROVINCIA_ID'],
+      ),
       clienteProvisionalRegionId: attachedDatabase.typeMapping.read(
-          DriftSqlType.string,
-          data['${effectivePrefix}CLIENTE_POTENCIAL_REGION_ID']),
+        DriftSqlType.string,
+        data['${effectivePrefix}CLIENTE_POTENCIAL_REGION_ID'],
+      ),
       clienteProvisionalPaisId: attachedDatabase.typeMapping.read(
-          DriftSqlType.string,
-          data['${effectivePrefix}CLIENTE_POTENCIAL_PAIS_ID']),
-      numEmpl: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}NUM_EMPL'])!,
-      contacto: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}CONTACTO'])!,
-      atendidoPor: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}ATENDIDO_POR']),
-      resumen: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN']),
+        DriftSqlType.string,
+        data['${effectivePrefix}CLIENTE_POTENCIAL_PAIS_ID'],
+      ),
+      numEmpl:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}NUM_EMPL'],
+          )!,
+      contacto:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}CONTACTO'],
+          )!,
+      atendidoPor: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ATENDIDO_POR'],
+      ),
+      resumen: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}RESUMEN'],
+      ),
       marcasCompetencia: attachedDatabase.typeMapping.read(
-          DriftSqlType.string, data['${effectivePrefix}MARCAS_COMPETENCIA']),
-      ofertaRealizada: attachedDatabase.typeMapping.read(
-          DriftSqlType.string, data['${effectivePrefix}OFERTA_REALIZADA'])!,
-      interesCliente: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}INTERES_CLIENTE']),
-      pedidoRealizado: attachedDatabase.typeMapping.read(
-          DriftSqlType.string, data['${effectivePrefix}PEDIDO_REALIZADO'])!,
+        DriftSqlType.string,
+        data['${effectivePrefix}MARCAS_COMPETENCIA'],
+      ),
+      ofertaRealizada:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}OFERTA_REALIZADA'],
+          )!,
+      interesCliente: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}INTERES_CLIENTE'],
+      ),
+      pedidoRealizado:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}PEDIDO_REALIZADO'],
+          )!,
       codigoMotivoNoInteres: attachedDatabase.typeMapping.read(
-          DriftSqlType.int, data['${effectivePrefix}CODIGO_MOTIVO_NO_INTERES']),
+        DriftSqlType.int,
+        data['${effectivePrefix}CODIGO_MOTIVO_NO_INTERES'],
+      ),
       codigoMotivoNoPedido: attachedDatabase.typeMapping.read(
-          DriftSqlType.int, data['${effectivePrefix}CODIGO_MOTIVO_NO_PEDIDO']),
-      codigoSector: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}CODIGO_SECTOR']),
-      codigoCompetencia: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}CODIGO_COMPETENCIA']),
-      almacenPropio: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}ALMACEN_PROPIO']),
-      capacidad: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}CAPACIDAD']),
+        DriftSqlType.int,
+        data['${effectivePrefix}CODIGO_MOTIVO_NO_PEDIDO'],
+      ),
+      codigoSector: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}CODIGO_SECTOR'],
+      ),
+      codigoCompetencia: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}CODIGO_COMPETENCIA'],
+      ),
+      almacenPropio: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ALMACEN_PROPIO'],
+      ),
+      capacidad: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}CAPACIDAD'],
+      ),
       frecuenciaPedido: attachedDatabase.typeMapping.read(
-          DriftSqlType.string, data['${effectivePrefix}FRECUENCIA_PEDIDO']),
-      latitud: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}LATITUD'])!,
-      longitud: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}LONGITUD'])!,
-      enviada: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}ENVIADA'])!,
-      tratada: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}TRATADA'])!,
-      errorSyncMessage: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}ERROR_SYNC']),
+        DriftSqlType.string,
+        data['${effectivePrefix}FRECUENCIA_PEDIDO'],
+      ),
+      latitud:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.double,
+            data['${effectivePrefix}LATITUD'],
+          )!,
+      longitud:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.double,
+            data['${effectivePrefix}LONGITUD'],
+          )!,
+      enviada:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}ENVIADA'],
+          )!,
+      tratada:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}TRATADA'],
+          )!,
+      errorSyncMessage: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ERROR_SYNC'],
+      ),
     );
   }
 
@@ -680,13 +997,13 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
     this.tratada = const Value.absent(),
     this.errorSyncMessage = const Value.absent(),
     this.rowid = const Value.absent(),
-  })  : visitaAppId = Value(visitaAppId),
-        isClienteProvisional = Value(isClienteProvisional),
-        fecha = Value(fecha),
-        numEmpl = Value(numEmpl),
-        contacto = Value(contacto),
-        latitud = Value(latitud),
-        longitud = Value(longitud);
+  }) : visitaAppId = Value(visitaAppId),
+       isClienteProvisional = Value(isClienteProvisional),
+       fecha = Value(fecha),
+       numEmpl = Value(numEmpl),
+       contacto = Value(contacto),
+       latitud = Value(latitud),
+       longitud = Value(longitud);
   static Insertable<VisitaLocalDTO> custom({
     Expression<String>? visitaAppId,
     Expression<String>? clienteId,
@@ -776,42 +1093,43 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
     });
   }
 
-  VisitaLocalTableCompanion copyWith(
-      {Value<String>? visitaAppId,
-      Value<String?>? clienteId,
-      Value<String>? isClienteProvisional,
-      Value<String?>? clienteProvisionalNombre,
-      Value<String?>? clienteProvisionalEmail,
-      Value<String?>? clienteProvisionalTelefono,
-      Value<String?>? clienteProvisionalDireccion1,
-      Value<String?>? clienteProvisionalDireccion2,
-      Value<String?>? clienteProvisionalCodigoPostal,
-      Value<String?>? clienteProvisionalPoblacion,
-      Value<String?>? clienteProvisionalProvinciaId,
-      Value<String?>? clienteProvisionalRegionId,
-      Value<String?>? clienteProvisionalPaisId,
-      Value<DateTime>? fecha,
-      Value<String>? numEmpl,
-      Value<String>? contacto,
-      Value<String?>? atendidoPor,
-      Value<String?>? resumen,
-      Value<String?>? marcasCompetencia,
-      Value<String>? ofertaRealizada,
-      Value<String?>? interesCliente,
-      Value<String>? pedidoRealizado,
-      Value<int?>? codigoMotivoNoInteres,
-      Value<int?>? codigoMotivoNoPedido,
-      Value<int?>? codigoSector,
-      Value<int?>? codigoCompetencia,
-      Value<String?>? almacenPropio,
-      Value<String?>? capacidad,
-      Value<String?>? frecuenciaPedido,
-      Value<double>? latitud,
-      Value<double>? longitud,
-      Value<String>? enviada,
-      Value<String>? tratada,
-      Value<String?>? errorSyncMessage,
-      Value<int>? rowid}) {
+  VisitaLocalTableCompanion copyWith({
+    Value<String>? visitaAppId,
+    Value<String?>? clienteId,
+    Value<String>? isClienteProvisional,
+    Value<String?>? clienteProvisionalNombre,
+    Value<String?>? clienteProvisionalEmail,
+    Value<String?>? clienteProvisionalTelefono,
+    Value<String?>? clienteProvisionalDireccion1,
+    Value<String?>? clienteProvisionalDireccion2,
+    Value<String?>? clienteProvisionalCodigoPostal,
+    Value<String?>? clienteProvisionalPoblacion,
+    Value<String?>? clienteProvisionalProvinciaId,
+    Value<String?>? clienteProvisionalRegionId,
+    Value<String?>? clienteProvisionalPaisId,
+    Value<DateTime>? fecha,
+    Value<String>? numEmpl,
+    Value<String>? contacto,
+    Value<String?>? atendidoPor,
+    Value<String?>? resumen,
+    Value<String?>? marcasCompetencia,
+    Value<String>? ofertaRealizada,
+    Value<String?>? interesCliente,
+    Value<String>? pedidoRealizado,
+    Value<int?>? codigoMotivoNoInteres,
+    Value<int?>? codigoMotivoNoPedido,
+    Value<int?>? codigoSector,
+    Value<int?>? codigoCompetencia,
+    Value<String?>? almacenPropio,
+    Value<String?>? capacidad,
+    Value<String?>? frecuenciaPedido,
+    Value<double>? latitud,
+    Value<double>? longitud,
+    Value<String>? enviada,
+    Value<String>? tratada,
+    Value<String?>? errorSyncMessage,
+    Value<int>? rowid,
+  }) {
     return VisitaLocalTableCompanion(
       visitaAppId: visitaAppId ?? this.visitaAppId,
       clienteId: clienteId ?? this.clienteId,
@@ -872,48 +1190,59 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
       map['CLIENTE_ID'] = Variable<String>(clienteId.value);
     }
     if (isClienteProvisional.present) {
-      map['CLIENTE_POTENCIAL_SN'] =
-          Variable<String>(isClienteProvisional.value);
+      map['CLIENTE_POTENCIAL_SN'] = Variable<String>(
+        isClienteProvisional.value,
+      );
     }
     if (clienteProvisionalNombre.present) {
-      map['CLIENTE_POTENCIAL_NOMBRE'] =
-          Variable<String>(clienteProvisionalNombre.value);
+      map['CLIENTE_POTENCIAL_NOMBRE'] = Variable<String>(
+        clienteProvisionalNombre.value,
+      );
     }
     if (clienteProvisionalEmail.present) {
-      map['CLIENTE_POTENCIAL_EMAIL'] =
-          Variable<String>(clienteProvisionalEmail.value);
+      map['CLIENTE_POTENCIAL_EMAIL'] = Variable<String>(
+        clienteProvisionalEmail.value,
+      );
     }
     if (clienteProvisionalTelefono.present) {
-      map['CLIENTE_POTENCIAL_TELEFONO'] =
-          Variable<String>(clienteProvisionalTelefono.value);
+      map['CLIENTE_POTENCIAL_TELEFONO'] = Variable<String>(
+        clienteProvisionalTelefono.value,
+      );
     }
     if (clienteProvisionalDireccion1.present) {
-      map['CLIENTE_POTENCIAL_DIRECCION1'] =
-          Variable<String>(clienteProvisionalDireccion1.value);
+      map['CLIENTE_POTENCIAL_DIRECCION1'] = Variable<String>(
+        clienteProvisionalDireccion1.value,
+      );
     }
     if (clienteProvisionalDireccion2.present) {
-      map['CLIENTE_POTENCIAL_DIRECCION2'] =
-          Variable<String>(clienteProvisionalDireccion2.value);
+      map['CLIENTE_POTENCIAL_DIRECCION2'] = Variable<String>(
+        clienteProvisionalDireccion2.value,
+      );
     }
     if (clienteProvisionalCodigoPostal.present) {
-      map['CLIENTE_POTENCIAL_COD_POS'] =
-          Variable<String>(clienteProvisionalCodigoPostal.value);
+      map['CLIENTE_POTENCIAL_COD_POS'] = Variable<String>(
+        clienteProvisionalCodigoPostal.value,
+      );
     }
     if (clienteProvisionalPoblacion.present) {
-      map['CLIENTE_POTENCIAL_POBLACION'] =
-          Variable<String>(clienteProvisionalPoblacion.value);
+      map['CLIENTE_POTENCIAL_POBLACION'] = Variable<String>(
+        clienteProvisionalPoblacion.value,
+      );
     }
     if (clienteProvisionalProvinciaId.present) {
-      map['CLIENTE_POTENCIAL_PROVINCIA_ID'] =
-          Variable<String>(clienteProvisionalProvinciaId.value);
+      map['CLIENTE_POTENCIAL_PROVINCIA_ID'] = Variable<String>(
+        clienteProvisionalProvinciaId.value,
+      );
     }
     if (clienteProvisionalRegionId.present) {
-      map['CLIENTE_POTENCIAL_REGION_ID'] =
-          Variable<String>(clienteProvisionalRegionId.value);
+      map['CLIENTE_POTENCIAL_REGION_ID'] = Variable<String>(
+        clienteProvisionalRegionId.value,
+      );
     }
     if (clienteProvisionalPaisId.present) {
-      map['CLIENTE_POTENCIAL_PAIS_ID'] =
-          Variable<String>(clienteProvisionalPaisId.value);
+      map['CLIENTE_POTENCIAL_PAIS_ID'] = Variable<String>(
+        clienteProvisionalPaisId.value,
+      );
     }
     if (fecha.present) {
       map['FECHA'] = Variable<DateTime>(fecha.value);
@@ -943,12 +1272,14 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
       map['PEDIDO_REALIZADO'] = Variable<String>(pedidoRealizado.value);
     }
     if (codigoMotivoNoInteres.present) {
-      map['CODIGO_MOTIVO_NO_INTERES'] =
-          Variable<int>(codigoMotivoNoInteres.value);
+      map['CODIGO_MOTIVO_NO_INTERES'] = Variable<int>(
+        codigoMotivoNoInteres.value,
+      );
     }
     if (codigoMotivoNoPedido.present) {
-      map['CODIGO_MOTIVO_NO_PEDIDO'] =
-          Variable<int>(codigoMotivoNoPedido.value);
+      map['CODIGO_MOTIVO_NO_PEDIDO'] = Variable<int>(
+        codigoMotivoNoPedido.value,
+      );
     }
     if (codigoSector.present) {
       map['CODIGO_SECTOR'] = Variable<int>(codigoSector.value);
@@ -996,14 +1327,18 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
           ..write('clienteProvisionalEmail: $clienteProvisionalEmail, ')
           ..write('clienteProvisionalTelefono: $clienteProvisionalTelefono, ')
           ..write(
-              'clienteProvisionalDireccion1: $clienteProvisionalDireccion1, ')
+            'clienteProvisionalDireccion1: $clienteProvisionalDireccion1, ',
+          )
           ..write(
-              'clienteProvisionalDireccion2: $clienteProvisionalDireccion2, ')
+            'clienteProvisionalDireccion2: $clienteProvisionalDireccion2, ',
+          )
           ..write(
-              'clienteProvisionalCodigoPostal: $clienteProvisionalCodigoPostal, ')
+            'clienteProvisionalCodigoPostal: $clienteProvisionalCodigoPostal, ',
+          )
           ..write('clienteProvisionalPoblacion: $clienteProvisionalPoblacion, ')
           ..write(
-              'clienteProvisionalProvinciaId: $clienteProvisionalProvinciaId, ')
+            'clienteProvisionalProvinciaId: $clienteProvisionalProvinciaId, ',
+          )
           ..write('clienteProvisionalRegionId: $clienteProvisionalRegionId, ')
           ..write('clienteProvisionalPaisId: $clienteProvisionalPaisId, ')
           ..write('fecha: $fecha, ')
@@ -1039,127 +1374,213 @@ class $PedidoVentaLineaLocalTableTable extends PedidoVentaLineaLocalTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $PedidoVentaLineaLocalTableTable(this.attachedDatabase, [this._alias]);
-  static const VerificationMeta _pedidoVentaAppIdMeta =
-      const VerificationMeta('pedidoVentaAppId');
+  static const VerificationMeta _pedidoVentaAppIdMeta = const VerificationMeta(
+    'pedidoVentaAppId',
+  );
   @override
   late final GeneratedColumn<String> pedidoVentaAppId = GeneratedColumn<String>(
-      'PEDIDO_APP_ID', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _pedidoIdMeta =
-      const VerificationMeta('pedidoId');
+    'PEDIDO_APP_ID',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _pedidoIdMeta = const VerificationMeta(
+    'pedidoId',
+  );
   @override
   late final GeneratedColumn<String> pedidoId = GeneratedColumn<String>(
-      'PEDIDO_ID', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _empresaIdMeta =
-      const VerificationMeta('empresaId');
+    'PEDIDO_ID',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _empresaIdMeta = const VerificationMeta(
+    'empresaId',
+  );
   @override
   late final GeneratedColumn<String> empresaId = GeneratedColumn<String>(
-      'EMPRESA_ID', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'EMPRESA_ID',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _pedidoVentaLineaAppIdMeta =
       const VerificationMeta('pedidoVentaLineaAppId');
   @override
   late final GeneratedColumn<String> pedidoVentaLineaAppId =
-      GeneratedColumn<String>('LIN_APP_ID', aliasedName, false,
-          type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _articuloIdMeta =
-      const VerificationMeta('articuloId');
+      GeneratedColumn<String>(
+        'LIN_APP_ID',
+        aliasedName,
+        false,
+        type: DriftSqlType.string,
+        requiredDuringInsert: true,
+      );
+  static const VerificationMeta _articuloIdMeta = const VerificationMeta(
+    'articuloId',
+  );
   @override
   late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
-      'PRODUCTO_ID', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'PRODUCTO_ID',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _articuloDescriptionMeta =
       const VerificationMeta('articuloDescription');
   @override
   late final GeneratedColumn<String> articuloDescription =
-      GeneratedColumn<String>('DENOMINACION', aliasedName, false,
-          type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _cantidadMeta =
-      const VerificationMeta('cantidad');
+      GeneratedColumn<String>(
+        'DENOMINACION',
+        aliasedName,
+        false,
+        type: DriftSqlType.string,
+        requiredDuringInsert: true,
+      );
+  static const VerificationMeta _cantidadMeta = const VerificationMeta(
+    'cantidad',
+  );
   @override
   late final GeneratedColumn<int> cantidad = GeneratedColumn<int>(
-      'CANTIDAD', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
-  static const VerificationMeta _precioDivisaMeta =
-      const VerificationMeta('precioDivisa');
+    'CANTIDAD',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _precioDivisaMeta = const VerificationMeta(
+    'precioDivisa',
+  );
   @override
   late final GeneratedColumn<double> precioDivisa = GeneratedColumn<double>(
-      'PRECIO_DIVISA', aliasedName, false,
-      type: DriftSqlType.double, requiredDuringInsert: true);
-  static const VerificationMeta _tipoPrecioMeta =
-      const VerificationMeta('tipoPrecio');
+    'PRECIO_DIVISA',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tipoPrecioMeta = const VerificationMeta(
+    'tipoPrecio',
+  );
   @override
   late final GeneratedColumn<int> tipoPrecio = GeneratedColumn<int>(
-      'TPRECIO', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
-  static const VerificationMeta _descuento1Meta =
-      const VerificationMeta('descuento1');
+    'TPRECIO',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _descuento1Meta = const VerificationMeta(
+    'descuento1',
+  );
   @override
   late final GeneratedColumn<double> descuento1 = GeneratedColumn<double>(
-      'DTO1', aliasedName, false,
-      type: DriftSqlType.double, requiredDuringInsert: true);
-  static const VerificationMeta _descuento2Meta =
-      const VerificationMeta('descuento2');
+    'DTO1',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _descuento2Meta = const VerificationMeta(
+    'descuento2',
+  );
   @override
   late final GeneratedColumn<double> descuento2 = GeneratedColumn<double>(
-      'DTO2', aliasedName, false,
-      type: DriftSqlType.double, requiredDuringInsert: true);
-  static const VerificationMeta _descuento3Meta =
-      const VerificationMeta('descuento3');
+    'DTO2',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _descuento3Meta = const VerificationMeta(
+    'descuento3',
+  );
   @override
   late final GeneratedColumn<double> descuento3 = GeneratedColumn<double>(
-      'DTO3', aliasedName, false,
-      type: DriftSqlType.double, requiredDuringInsert: true);
+    'DTO3',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _descuentoProntoPagoMeta =
       const VerificationMeta('descuentoProntoPago');
   @override
   late final GeneratedColumn<double> descuentoProntoPago =
-      GeneratedColumn<double>('DTO_PP', aliasedName, false,
-          type: DriftSqlType.double, requiredDuringInsert: true);
-  static const VerificationMeta _stockDisponibleSNMeta =
-      const VerificationMeta('stockDisponibleSN');
+      GeneratedColumn<double>(
+        'DTO_PP',
+        aliasedName,
+        false,
+        type: DriftSqlType.double,
+        requiredDuringInsert: true,
+      );
+  static const VerificationMeta _stockDisponibleSNMeta = const VerificationMeta(
+    'stockDisponibleSN',
+  );
   @override
   late final GeneratedColumn<String> stockDisponibleSN =
-      GeneratedColumn<String>('STOCK_DISPONIBLE_SN', aliasedName, false,
-          type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _fechaDisponibleMeta =
-      const VerificationMeta('fechaDisponible');
+      GeneratedColumn<String>(
+        'STOCK_DISPONIBLE_SN',
+        aliasedName,
+        false,
+        type: DriftSqlType.string,
+        requiredDuringInsert: true,
+      );
+  static const VerificationMeta _fechaDisponibleMeta = const VerificationMeta(
+    'fechaDisponible',
+  );
   @override
   late final GeneratedColumn<DateTime> fechaDisponible =
-      GeneratedColumn<DateTime>('F_DISPONIBLE', aliasedName, true,
-          type: DriftSqlType.dateTime, requiredDuringInsert: false);
+      GeneratedColumn<DateTime>(
+        'F_DISPONIBLE',
+        aliasedName,
+        true,
+        type: DriftSqlType.dateTime,
+        requiredDuringInsert: false,
+      );
   static const VerificationMeta _ivaMeta = const VerificationMeta('iva');
   @override
   late final GeneratedColumn<double> iva = GeneratedColumn<double>(
-      'IVA', aliasedName, false,
-      type: DriftSqlType.double, requiredDuringInsert: true);
+    'IVA',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _pedidoLineaIdComponenteMeta =
       const VerificationMeta('pedidoLineaIdComponente');
   @override
   late final GeneratedColumn<String> pedidoLineaIdComponente =
-      GeneratedColumn<String>('PEDIDO_LINEA_ID_COMPONENTE', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
+      GeneratedColumn<String>(
+        'PEDIDO_LINEA_ID_COMPONENTE',
+        aliasedName,
+        true,
+        type: DriftSqlType.string,
+        requiredDuringInsert: false,
+      );
   @override
   List<GeneratedColumn> get $columns => [
-        pedidoVentaAppId,
-        pedidoId,
-        empresaId,
-        pedidoVentaLineaAppId,
-        articuloId,
-        articuloDescription,
-        cantidad,
-        precioDivisa,
-        tipoPrecio,
-        descuento1,
-        descuento2,
-        descuento3,
-        descuentoProntoPago,
-        stockDisponibleSN,
-        fechaDisponible,
-        iva,
-        pedidoLineaIdComponente
-      ];
+    pedidoVentaAppId,
+    pedidoId,
+    empresaId,
+    pedidoVentaLineaAppId,
+    articuloId,
+    articuloDescription,
+    cantidad,
+    precioDivisa,
+    tipoPrecio,
+    descuento1,
+    descuento2,
+    descuento3,
+    descuentoProntoPago,
+    stockDisponibleSN,
+    fechaDisponible,
+    iva,
+    pedidoLineaIdComponente,
+  ];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -1167,166 +1588,255 @@ class $PedidoVentaLineaLocalTableTable extends PedidoVentaLineaLocalTable
   static const String $name = 'PEDIDOS_LINEAS_LOCAL_IMP';
   @override
   VerificationContext validateIntegrity(
-      Insertable<PedidoVentaLineaLocalDTO> instance,
-      {bool isInserting = false}) {
+    Insertable<PedidoVentaLineaLocalDTO> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('PEDIDO_APP_ID')) {
       context.handle(
+        _pedidoVentaAppIdMeta,
+        pedidoVentaAppId.isAcceptableOrUnknown(
+          data['PEDIDO_APP_ID']!,
           _pedidoVentaAppIdMeta,
-          pedidoVentaAppId.isAcceptableOrUnknown(
-              data['PEDIDO_APP_ID']!, _pedidoVentaAppIdMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_pedidoVentaAppIdMeta);
     }
     if (data.containsKey('PEDIDO_ID')) {
-      context.handle(_pedidoIdMeta,
-          pedidoId.isAcceptableOrUnknown(data['PEDIDO_ID']!, _pedidoIdMeta));
+      context.handle(
+        _pedidoIdMeta,
+        pedidoId.isAcceptableOrUnknown(data['PEDIDO_ID']!, _pedidoIdMeta),
+      );
     }
     if (data.containsKey('EMPRESA_ID')) {
-      context.handle(_empresaIdMeta,
-          empresaId.isAcceptableOrUnknown(data['EMPRESA_ID']!, _empresaIdMeta));
+      context.handle(
+        _empresaIdMeta,
+        empresaId.isAcceptableOrUnknown(data['EMPRESA_ID']!, _empresaIdMeta),
+      );
     }
     if (data.containsKey('LIN_APP_ID')) {
       context.handle(
+        _pedidoVentaLineaAppIdMeta,
+        pedidoVentaLineaAppId.isAcceptableOrUnknown(
+          data['LIN_APP_ID']!,
           _pedidoVentaLineaAppIdMeta,
-          pedidoVentaLineaAppId.isAcceptableOrUnknown(
-              data['LIN_APP_ID']!, _pedidoVentaLineaAppIdMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_pedidoVentaLineaAppIdMeta);
     }
     if (data.containsKey('PRODUCTO_ID')) {
       context.handle(
-          _articuloIdMeta,
-          articuloId.isAcceptableOrUnknown(
-              data['PRODUCTO_ID']!, _articuloIdMeta));
+        _articuloIdMeta,
+        articuloId.isAcceptableOrUnknown(data['PRODUCTO_ID']!, _articuloIdMeta),
+      );
     } else if (isInserting) {
       context.missing(_articuloIdMeta);
     }
     if (data.containsKey('DENOMINACION')) {
       context.handle(
+        _articuloDescriptionMeta,
+        articuloDescription.isAcceptableOrUnknown(
+          data['DENOMINACION']!,
           _articuloDescriptionMeta,
-          articuloDescription.isAcceptableOrUnknown(
-              data['DENOMINACION']!, _articuloDescriptionMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_articuloDescriptionMeta);
     }
     if (data.containsKey('CANTIDAD')) {
-      context.handle(_cantidadMeta,
-          cantidad.isAcceptableOrUnknown(data['CANTIDAD']!, _cantidadMeta));
+      context.handle(
+        _cantidadMeta,
+        cantidad.isAcceptableOrUnknown(data['CANTIDAD']!, _cantidadMeta),
+      );
     } else if (isInserting) {
       context.missing(_cantidadMeta);
     }
     if (data.containsKey('PRECIO_DIVISA')) {
       context.handle(
+        _precioDivisaMeta,
+        precioDivisa.isAcceptableOrUnknown(
+          data['PRECIO_DIVISA']!,
           _precioDivisaMeta,
-          precioDivisa.isAcceptableOrUnknown(
-              data['PRECIO_DIVISA']!, _precioDivisaMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_precioDivisaMeta);
     }
     if (data.containsKey('TPRECIO')) {
-      context.handle(_tipoPrecioMeta,
-          tipoPrecio.isAcceptableOrUnknown(data['TPRECIO']!, _tipoPrecioMeta));
+      context.handle(
+        _tipoPrecioMeta,
+        tipoPrecio.isAcceptableOrUnknown(data['TPRECIO']!, _tipoPrecioMeta),
+      );
     } else if (isInserting) {
       context.missing(_tipoPrecioMeta);
     }
     if (data.containsKey('DTO1')) {
-      context.handle(_descuento1Meta,
-          descuento1.isAcceptableOrUnknown(data['DTO1']!, _descuento1Meta));
+      context.handle(
+        _descuento1Meta,
+        descuento1.isAcceptableOrUnknown(data['DTO1']!, _descuento1Meta),
+      );
     } else if (isInserting) {
       context.missing(_descuento1Meta);
     }
     if (data.containsKey('DTO2')) {
-      context.handle(_descuento2Meta,
-          descuento2.isAcceptableOrUnknown(data['DTO2']!, _descuento2Meta));
+      context.handle(
+        _descuento2Meta,
+        descuento2.isAcceptableOrUnknown(data['DTO2']!, _descuento2Meta),
+      );
     } else if (isInserting) {
       context.missing(_descuento2Meta);
     }
     if (data.containsKey('DTO3')) {
-      context.handle(_descuento3Meta,
-          descuento3.isAcceptableOrUnknown(data['DTO3']!, _descuento3Meta));
+      context.handle(
+        _descuento3Meta,
+        descuento3.isAcceptableOrUnknown(data['DTO3']!, _descuento3Meta),
+      );
     } else if (isInserting) {
       context.missing(_descuento3Meta);
     }
     if (data.containsKey('DTO_PP')) {
       context.handle(
+        _descuentoProntoPagoMeta,
+        descuentoProntoPago.isAcceptableOrUnknown(
+          data['DTO_PP']!,
           _descuentoProntoPagoMeta,
-          descuentoProntoPago.isAcceptableOrUnknown(
-              data['DTO_PP']!, _descuentoProntoPagoMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_descuentoProntoPagoMeta);
     }
     if (data.containsKey('STOCK_DISPONIBLE_SN')) {
       context.handle(
+        _stockDisponibleSNMeta,
+        stockDisponibleSN.isAcceptableOrUnknown(
+          data['STOCK_DISPONIBLE_SN']!,
           _stockDisponibleSNMeta,
-          stockDisponibleSN.isAcceptableOrUnknown(
-              data['STOCK_DISPONIBLE_SN']!, _stockDisponibleSNMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_stockDisponibleSNMeta);
     }
     if (data.containsKey('F_DISPONIBLE')) {
       context.handle(
+        _fechaDisponibleMeta,
+        fechaDisponible.isAcceptableOrUnknown(
+          data['F_DISPONIBLE']!,
           _fechaDisponibleMeta,
-          fechaDisponible.isAcceptableOrUnknown(
-              data['F_DISPONIBLE']!, _fechaDisponibleMeta));
+        ),
+      );
     }
     if (data.containsKey('IVA')) {
       context.handle(
-          _ivaMeta, iva.isAcceptableOrUnknown(data['IVA']!, _ivaMeta));
+        _ivaMeta,
+        iva.isAcceptableOrUnknown(data['IVA']!, _ivaMeta),
+      );
     } else if (isInserting) {
       context.missing(_ivaMeta);
     }
     if (data.containsKey('PEDIDO_LINEA_ID_COMPONENTE')) {
       context.handle(
+        _pedidoLineaIdComponenteMeta,
+        pedidoLineaIdComponente.isAcceptableOrUnknown(
+          data['PEDIDO_LINEA_ID_COMPONENTE']!,
           _pedidoLineaIdComponenteMeta,
-          pedidoLineaIdComponente.isAcceptableOrUnknown(
-              data['PEDIDO_LINEA_ID_COMPONENTE']!,
-              _pedidoLineaIdComponenteMeta));
+        ),
+      );
     }
     return context;
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey =>
-      {pedidoVentaAppId, pedidoVentaLineaAppId};
+  Set<GeneratedColumn> get $primaryKey => {
+    pedidoVentaAppId,
+    pedidoVentaLineaAppId,
+  };
   @override
-  PedidoVentaLineaLocalDTO map(Map<String, dynamic> data,
-      {String? tablePrefix}) {
+  PedidoVentaLineaLocalDTO map(
+    Map<String, dynamic> data, {
+    String? tablePrefix,
+  }) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return PedidoVentaLineaLocalDTO(
-      pedidoVentaAppId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}PEDIDO_APP_ID'])!,
-      empresaId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}EMPRESA_ID']),
-      pedidoId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}PEDIDO_ID']),
-      pedidoVentaLineaAppId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}LIN_APP_ID'])!,
-      articuloId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}PRODUCTO_ID'])!,
-      articuloDescription: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}DENOMINACION'])!,
-      cantidad: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}CANTIDAD'])!,
-      precioDivisa: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}PRECIO_DIVISA'])!,
-      tipoPrecio: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}TPRECIO'])!,
-      descuento1: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}DTO1'])!,
-      descuento2: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}DTO2'])!,
-      descuento3: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}DTO3'])!,
-      descuentoProntoPago: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}DTO_PP'])!,
-      stockDisponibleSN: attachedDatabase.typeMapping.read(
-          DriftSqlType.string, data['${effectivePrefix}STOCK_DISPONIBLE_SN'])!,
-      fechaDisponible: attachedDatabase.typeMapping
-          .read(DriftSqlType.dateTime, data['${effectivePrefix}F_DISPONIBLE']),
-      iva: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}IVA'])!,
+    return PedidoVentaLineaLocalDTO.new(
+      pedidoVentaAppId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}PEDIDO_APP_ID'],
+          )!,
+      empresaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}EMPRESA_ID'],
+      ),
+      pedidoId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}PEDIDO_ID'],
+      ),
+      pedidoVentaLineaAppId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}LIN_APP_ID'],
+          )!,
+      articuloId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}PRODUCTO_ID'],
+          )!,
+      articuloDescription:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}DENOMINACION'],
+          )!,
+      cantidad:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}CANTIDAD'],
+          )!,
+      precioDivisa:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.double,
+            data['${effectivePrefix}PRECIO_DIVISA'],
+          )!,
+      tipoPrecio:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}TPRECIO'],
+          )!,
+      descuento1:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.double,
+            data['${effectivePrefix}DTO1'],
+          )!,
+      descuento2:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.double,
+            data['${effectivePrefix}DTO2'],
+          )!,
+      descuento3:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.double,
+            data['${effectivePrefix}DTO3'],
+          )!,
+      descuentoProntoPago:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.double,
+            data['${effectivePrefix}DTO_PP'],
+          )!,
+      stockDisponibleSN:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}STOCK_DISPONIBLE_SN'],
+          )!,
+      fechaDisponible: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}F_DISPONIBLE'],
+      ),
+      iva:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.double,
+            data['${effectivePrefix}IVA'],
+          )!,
     );
   }
 
@@ -1395,19 +1905,19 @@ class PedidoVentaLineaLocalTableCompanion
     required double iva,
     this.pedidoLineaIdComponente = const Value.absent(),
     this.rowid = const Value.absent(),
-  })  : pedidoVentaAppId = Value(pedidoVentaAppId),
-        pedidoVentaLineaAppId = Value(pedidoVentaLineaAppId),
-        articuloId = Value(articuloId),
-        articuloDescription = Value(articuloDescription),
-        cantidad = Value(cantidad),
-        precioDivisa = Value(precioDivisa),
-        tipoPrecio = Value(tipoPrecio),
-        descuento1 = Value(descuento1),
-        descuento2 = Value(descuento2),
-        descuento3 = Value(descuento3),
-        descuentoProntoPago = Value(descuentoProntoPago),
-        stockDisponibleSN = Value(stockDisponibleSN),
-        iva = Value(iva);
+  }) : pedidoVentaAppId = Value(pedidoVentaAppId),
+       pedidoVentaLineaAppId = Value(pedidoVentaLineaAppId),
+       articuloId = Value(articuloId),
+       articuloDescription = Value(articuloDescription),
+       cantidad = Value(cantidad),
+       precioDivisa = Value(precioDivisa),
+       tipoPrecio = Value(tipoPrecio),
+       descuento1 = Value(descuento1),
+       descuento2 = Value(descuento2),
+       descuento3 = Value(descuento3),
+       descuentoProntoPago = Value(descuentoProntoPago),
+       stockDisponibleSN = Value(stockDisponibleSN),
+       iva = Value(iva);
   static Insertable<PedidoVentaLineaLocalDTO> custom({
     Expression<String>? pedidoVentaAppId,
     Expression<String>? pedidoId,
@@ -1451,25 +1961,26 @@ class PedidoVentaLineaLocalTableCompanion
     });
   }
 
-  PedidoVentaLineaLocalTableCompanion copyWith(
-      {Value<String>? pedidoVentaAppId,
-      Value<String?>? pedidoId,
-      Value<String?>? empresaId,
-      Value<String>? pedidoVentaLineaAppId,
-      Value<String>? articuloId,
-      Value<String>? articuloDescription,
-      Value<int>? cantidad,
-      Value<double>? precioDivisa,
-      Value<int>? tipoPrecio,
-      Value<double>? descuento1,
-      Value<double>? descuento2,
-      Value<double>? descuento3,
-      Value<double>? descuentoProntoPago,
-      Value<String>? stockDisponibleSN,
-      Value<DateTime?>? fechaDisponible,
-      Value<double>? iva,
-      Value<String?>? pedidoLineaIdComponente,
-      Value<int>? rowid}) {
+  PedidoVentaLineaLocalTableCompanion copyWith({
+    Value<String>? pedidoVentaAppId,
+    Value<String?>? pedidoId,
+    Value<String?>? empresaId,
+    Value<String>? pedidoVentaLineaAppId,
+    Value<String>? articuloId,
+    Value<String>? articuloDescription,
+    Value<int>? cantidad,
+    Value<double>? precioDivisa,
+    Value<int>? tipoPrecio,
+    Value<double>? descuento1,
+    Value<double>? descuento2,
+    Value<double>? descuento3,
+    Value<double>? descuentoProntoPago,
+    Value<String>? stockDisponibleSN,
+    Value<DateTime?>? fechaDisponible,
+    Value<double>? iva,
+    Value<String?>? pedidoLineaIdComponente,
+    Value<int>? rowid,
+  }) {
     return PedidoVentaLineaLocalTableCompanion(
       pedidoVentaAppId: pedidoVentaAppId ?? this.pedidoVentaAppId,
       pedidoId: pedidoId ?? this.pedidoId,
@@ -1546,8 +2057,9 @@ class PedidoVentaLineaLocalTableCompanion
       map['IVA'] = Variable<double>(iva.value);
     }
     if (pedidoLineaIdComponente.present) {
-      map['PEDIDO_LINEA_ID_COMPONENTE'] =
-          Variable<String>(pedidoLineaIdComponente.value);
+      map['PEDIDO_LINEA_ID_COMPONENTE'] = Variable<String>(
+        pedidoLineaIdComponente.value,
+      );
     }
     if (rowid.present) {
       map['rowid'] = Variable<int>(rowid.value);
@@ -1587,187 +2099,307 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $PedidoVentaLocalTableTable(this.attachedDatabase, [this._alias]);
-  static const VerificationMeta _usuarioIdMeta =
-      const VerificationMeta('usuarioId');
+  static const VerificationMeta _usuarioIdMeta = const VerificationMeta(
+    'usuarioId',
+  );
   @override
   late final GeneratedColumn<String> usuarioId = GeneratedColumn<String>(
-      'USUARIO_ID', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _pedidoVentaAppIdMeta =
-      const VerificationMeta('pedidoVentaAppId');
+    'USUARIO_ID',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _pedidoVentaAppIdMeta = const VerificationMeta(
+    'pedidoVentaAppId',
+  );
   @override
   late final GeneratedColumn<String> pedidoVentaAppId = GeneratedColumn<String>(
-      'PEDIDO_APP_ID', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _empresaIdMeta =
-      const VerificationMeta('empresaId');
+    'PEDIDO_APP_ID',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _empresaIdMeta = const VerificationMeta(
+    'empresaId',
+  );
   @override
   late final GeneratedColumn<String> empresaId = GeneratedColumn<String>(
-      'EMPRESA_ID', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _pedidoIdMeta =
-      const VerificationMeta('pedidoId');
+    'EMPRESA_ID',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _pedidoIdMeta = const VerificationMeta(
+    'pedidoId',
+  );
   @override
   late final GeneratedColumn<String> pedidoId = GeneratedColumn<String>(
-      'PEDIDO_ID', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _fechaAltaMeta =
-      const VerificationMeta('fechaAlta');
+    'PEDIDO_ID',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _fechaAltaMeta = const VerificationMeta(
+    'fechaAlta',
+  );
   @override
   late final GeneratedColumn<DateTime> fechaAlta = GeneratedColumn<DateTime>(
-      'FECHA_ALTA', aliasedName, false,
-      type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  static const VerificationMeta _clienteIdMeta =
-      const VerificationMeta('clienteId');
+    'FECHA_ALTA',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _clienteIdMeta = const VerificationMeta(
+    'clienteId',
+  );
   @override
   late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
-      'CLIENTE_ID', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _nombreClienteMeta =
-      const VerificationMeta('nombreCliente');
+    'CLIENTE_ID',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _nombreClienteMeta = const VerificationMeta(
+    'nombreCliente',
+  );
   @override
   late final GeneratedColumn<String> nombreCliente = GeneratedColumn<String>(
-      'NOMBRE_CLIENTE', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _direccionIdMeta =
-      const VerificationMeta('direccionId');
+    'NOMBRE_CLIENTE',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _direccionIdMeta = const VerificationMeta(
+    'direccionId',
+  );
   @override
   late final GeneratedColumn<String> direccionId = GeneratedColumn<String>(
-      'DIRECCION_ID', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _direccion1Meta =
-      const VerificationMeta('direccion1');
+    'DIRECCION_ID',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _direccion1Meta = const VerificationMeta(
+    'direccion1',
+  );
   @override
   late final GeneratedColumn<String> direccion1 = GeneratedColumn<String>(
-      'DIRECCION1', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _direccion2Meta =
-      const VerificationMeta('direccion2');
+    'DIRECCION1',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _direccion2Meta = const VerificationMeta(
+    'direccion2',
+  );
   @override
   late final GeneratedColumn<String> direccion2 = GeneratedColumn<String>(
-      'DIRECCION2', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _codigoPostalMeta =
-      const VerificationMeta('codigoPostal');
+    'DIRECCION2',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _codigoPostalMeta = const VerificationMeta(
+    'codigoPostal',
+  );
   @override
   late final GeneratedColumn<String> codigoPostal = GeneratedColumn<String>(
-      'CODIGO_POSTAL', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _poblacionMeta =
-      const VerificationMeta('poblacion');
+    'CODIGO_POSTAL',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _poblacionMeta = const VerificationMeta(
+    'poblacion',
+  );
   @override
   late final GeneratedColumn<String> poblacion = GeneratedColumn<String>(
-      'POBLACION', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _provinciaMeta =
-      const VerificationMeta('provincia');
+    'POBLACION',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _provinciaMeta = const VerificationMeta(
+    'provincia',
+  );
   @override
   late final GeneratedColumn<String> provincia = GeneratedColumn<String>(
-      'PROVINCIA', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'PROVINCIA',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _paisIdMeta = const VerificationMeta('paisId');
   @override
   late final GeneratedColumn<String> paisId = GeneratedColumn<String>(
-      'PAIS_ID', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _divisaIdMeta =
-      const VerificationMeta('divisaId');
+    'PAIS_ID',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _divisaIdMeta = const VerificationMeta(
+    'divisaId',
+  );
   @override
   late final GeneratedColumn<String> divisaId = GeneratedColumn<String>(
-      'DIVISA_ID', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _pedidoClienteMeta =
-      const VerificationMeta('pedidoCliente');
+    'DIVISA_ID',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _pedidoClienteMeta = const VerificationMeta(
+    'pedidoCliente',
+  );
   @override
   late final GeneratedColumn<String> pedidoCliente = GeneratedColumn<String>(
-      'PEDIDO_CLIENTE', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _observacionesMeta =
-      const VerificationMeta('observaciones');
+    'PEDIDO_CLIENTE',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _observacionesMeta = const VerificationMeta(
+    'observaciones',
+  );
   @override
   late final GeneratedColumn<String> observaciones = GeneratedColumn<String>(
-      'OBSERVACIONES', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'OBSERVACIONES',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _ofertaMeta = const VerificationMeta('oferta');
   @override
   late final GeneratedColumn<String> oferta = GeneratedColumn<String>(
-      'OFERTA_SN', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _ofertaFechaHastaMeta =
-      const VerificationMeta('ofertaFechaHasta');
+    'OFERTA_SN',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _ofertaFechaHastaMeta = const VerificationMeta(
+    'ofertaFechaHasta',
+  );
   @override
   late final GeneratedColumn<DateTime> ofertaFechaHasta =
-      GeneratedColumn<DateTime>('OFERTA_FECHA_HASTA', aliasedName, true,
-          type: DriftSqlType.dateTime, requiredDuringInsert: false);
+      GeneratedColumn<DateTime>(
+        'OFERTA_FECHA_HASTA',
+        aliasedName,
+        true,
+        type: DriftSqlType.dateTime,
+        requiredDuringInsert: false,
+      );
   static const VerificationMeta _ivaMeta = const VerificationMeta('iva');
   @override
   late final GeneratedColumn<double> iva = GeneratedColumn<double>(
-      'IVA', aliasedName, false,
-      type: DriftSqlType.double, requiredDuringInsert: true);
-  static const VerificationMeta _dtoBonificacionMeta =
-      const VerificationMeta('dtoBonificacion');
+    'IVA',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _dtoBonificacionMeta = const VerificationMeta(
+    'dtoBonificacion',
+  );
   @override
   late final GeneratedColumn<double> dtoBonificacion = GeneratedColumn<double>(
-      'DTO_BONIFICACION', aliasedName, false,
-      type: DriftSqlType.double, requiredDuringInsert: true);
-  static const VerificationMeta _enviadaMeta =
-      const VerificationMeta('enviada');
+    'DTO_BONIFICACION',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _enviadaMeta = const VerificationMeta(
+    'enviada',
+  );
   @override
   late final GeneratedColumn<String> enviada = GeneratedColumn<String>(
-      'ENVIADA', aliasedName, false,
-      type: DriftSqlType.string,
-      requiredDuringInsert: false,
-      defaultValue: const Constant('N'));
-  static const VerificationMeta _tratadaMeta =
-      const VerificationMeta('tratada');
+    'ENVIADA',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('N'),
+  );
+  static const VerificationMeta _tratadaMeta = const VerificationMeta(
+    'tratada',
+  );
   @override
   late final GeneratedColumn<String> tratada = GeneratedColumn<String>(
-      'TRATADA', aliasedName, false,
-      type: DriftSqlType.string,
-      requiredDuringInsert: false,
-      defaultValue: const Constant('N'));
-  static const VerificationMeta _borradorMeta =
-      const VerificationMeta('borrador');
+    'TRATADA',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('N'),
+  );
+  static const VerificationMeta _borradorMeta = const VerificationMeta(
+    'borrador',
+  );
   @override
   late final GeneratedColumn<String> borrador = GeneratedColumn<String>(
-      'BORRADOR', aliasedName, false,
-      type: DriftSqlType.string,
-      requiredDuringInsert: false,
-      defaultValue: const Constant('S'));
-  static const VerificationMeta _errorSyncMessageMeta =
-      const VerificationMeta('errorSyncMessage');
+    'BORRADOR',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('S'),
+  );
+  static const VerificationMeta _errorSyncMessageMeta = const VerificationMeta(
+    'errorSyncMessage',
+  );
   @override
   late final GeneratedColumn<String> errorSyncMessage = GeneratedColumn<String>(
-      'ERROR_SYNC', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'ERROR_SYNC',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   @override
   List<GeneratedColumn> get $columns => [
-        usuarioId,
-        pedidoVentaAppId,
-        empresaId,
-        pedidoId,
-        fechaAlta,
-        clienteId,
-        nombreCliente,
-        direccionId,
-        direccion1,
-        direccion2,
-        codigoPostal,
-        poblacion,
-        provincia,
-        paisId,
-        divisaId,
-        pedidoCliente,
-        observaciones,
-        oferta,
-        ofertaFechaHasta,
-        iva,
-        dtoBonificacion,
-        enviada,
-        tratada,
-        borrador,
-        errorSyncMessage
-      ];
+    usuarioId,
+    pedidoVentaAppId,
+    empresaId,
+    pedidoId,
+    fechaAlta,
+    clienteId,
+    nombreCliente,
+    direccionId,
+    direccion1,
+    direccion2,
+    codigoPostal,
+    poblacion,
+    provincia,
+    paisId,
+    divisaId,
+    pedidoCliente,
+    observaciones,
+    oferta,
+    ofertaFechaHasta,
+    iva,
+    dtoBonificacion,
+    enviada,
+    tratada,
+    borrador,
+    errorSyncMessage,
+  ];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -1775,145 +2407,201 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
   static const String $name = 'PEDIDOS_LOCAL_IMP';
   @override
   VerificationContext validateIntegrity(
-      Insertable<PedidoVentaLocalDTO> instance,
-      {bool isInserting = false}) {
+    Insertable<PedidoVentaLocalDTO> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('USUARIO_ID')) {
-      context.handle(_usuarioIdMeta,
-          usuarioId.isAcceptableOrUnknown(data['USUARIO_ID']!, _usuarioIdMeta));
+      context.handle(
+        _usuarioIdMeta,
+        usuarioId.isAcceptableOrUnknown(data['USUARIO_ID']!, _usuarioIdMeta),
+      );
     }
     if (data.containsKey('PEDIDO_APP_ID')) {
       context.handle(
+        _pedidoVentaAppIdMeta,
+        pedidoVentaAppId.isAcceptableOrUnknown(
+          data['PEDIDO_APP_ID']!,
           _pedidoVentaAppIdMeta,
-          pedidoVentaAppId.isAcceptableOrUnknown(
-              data['PEDIDO_APP_ID']!, _pedidoVentaAppIdMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_pedidoVentaAppIdMeta);
     }
     if (data.containsKey('EMPRESA_ID')) {
-      context.handle(_empresaIdMeta,
-          empresaId.isAcceptableOrUnknown(data['EMPRESA_ID']!, _empresaIdMeta));
+      context.handle(
+        _empresaIdMeta,
+        empresaId.isAcceptableOrUnknown(data['EMPRESA_ID']!, _empresaIdMeta),
+      );
     }
     if (data.containsKey('PEDIDO_ID')) {
-      context.handle(_pedidoIdMeta,
-          pedidoId.isAcceptableOrUnknown(data['PEDIDO_ID']!, _pedidoIdMeta));
+      context.handle(
+        _pedidoIdMeta,
+        pedidoId.isAcceptableOrUnknown(data['PEDIDO_ID']!, _pedidoIdMeta),
+      );
     }
     if (data.containsKey('FECHA_ALTA')) {
-      context.handle(_fechaAltaMeta,
-          fechaAlta.isAcceptableOrUnknown(data['FECHA_ALTA']!, _fechaAltaMeta));
+      context.handle(
+        _fechaAltaMeta,
+        fechaAlta.isAcceptableOrUnknown(data['FECHA_ALTA']!, _fechaAltaMeta),
+      );
     } else if (isInserting) {
       context.missing(_fechaAltaMeta);
     }
     if (data.containsKey('CLIENTE_ID')) {
-      context.handle(_clienteIdMeta,
-          clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta));
+      context.handle(
+        _clienteIdMeta,
+        clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta),
+      );
     } else if (isInserting) {
       context.missing(_clienteIdMeta);
     }
     if (data.containsKey('NOMBRE_CLIENTE')) {
       context.handle(
+        _nombreClienteMeta,
+        nombreCliente.isAcceptableOrUnknown(
+          data['NOMBRE_CLIENTE']!,
           _nombreClienteMeta,
-          nombreCliente.isAcceptableOrUnknown(
-              data['NOMBRE_CLIENTE']!, _nombreClienteMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_nombreClienteMeta);
     }
     if (data.containsKey('DIRECCION_ID')) {
       context.handle(
+        _direccionIdMeta,
+        direccionId.isAcceptableOrUnknown(
+          data['DIRECCION_ID']!,
           _direccionIdMeta,
-          direccionId.isAcceptableOrUnknown(
-              data['DIRECCION_ID']!, _direccionIdMeta));
+        ),
+      );
     }
     if (data.containsKey('DIRECCION1')) {
       context.handle(
-          _direccion1Meta,
-          direccion1.isAcceptableOrUnknown(
-              data['DIRECCION1']!, _direccion1Meta));
+        _direccion1Meta,
+        direccion1.isAcceptableOrUnknown(data['DIRECCION1']!, _direccion1Meta),
+      );
     }
     if (data.containsKey('DIRECCION2')) {
       context.handle(
-          _direccion2Meta,
-          direccion2.isAcceptableOrUnknown(
-              data['DIRECCION2']!, _direccion2Meta));
+        _direccion2Meta,
+        direccion2.isAcceptableOrUnknown(data['DIRECCION2']!, _direccion2Meta),
+      );
     }
     if (data.containsKey('CODIGO_POSTAL')) {
       context.handle(
+        _codigoPostalMeta,
+        codigoPostal.isAcceptableOrUnknown(
+          data['CODIGO_POSTAL']!,
           _codigoPostalMeta,
-          codigoPostal.isAcceptableOrUnknown(
-              data['CODIGO_POSTAL']!, _codigoPostalMeta));
+        ),
+      );
     }
     if (data.containsKey('POBLACION')) {
-      context.handle(_poblacionMeta,
-          poblacion.isAcceptableOrUnknown(data['POBLACION']!, _poblacionMeta));
+      context.handle(
+        _poblacionMeta,
+        poblacion.isAcceptableOrUnknown(data['POBLACION']!, _poblacionMeta),
+      );
     }
     if (data.containsKey('PROVINCIA')) {
-      context.handle(_provinciaMeta,
-          provincia.isAcceptableOrUnknown(data['PROVINCIA']!, _provinciaMeta));
+      context.handle(
+        _provinciaMeta,
+        provincia.isAcceptableOrUnknown(data['PROVINCIA']!, _provinciaMeta),
+      );
     }
     if (data.containsKey('PAIS_ID')) {
-      context.handle(_paisIdMeta,
-          paisId.isAcceptableOrUnknown(data['PAIS_ID']!, _paisIdMeta));
+      context.handle(
+        _paisIdMeta,
+        paisId.isAcceptableOrUnknown(data['PAIS_ID']!, _paisIdMeta),
+      );
     }
     if (data.containsKey('DIVISA_ID')) {
-      context.handle(_divisaIdMeta,
-          divisaId.isAcceptableOrUnknown(data['DIVISA_ID']!, _divisaIdMeta));
+      context.handle(
+        _divisaIdMeta,
+        divisaId.isAcceptableOrUnknown(data['DIVISA_ID']!, _divisaIdMeta),
+      );
     }
     if (data.containsKey('PEDIDO_CLIENTE')) {
       context.handle(
+        _pedidoClienteMeta,
+        pedidoCliente.isAcceptableOrUnknown(
+          data['PEDIDO_CLIENTE']!,
           _pedidoClienteMeta,
-          pedidoCliente.isAcceptableOrUnknown(
-              data['PEDIDO_CLIENTE']!, _pedidoClienteMeta));
+        ),
+      );
     }
     if (data.containsKey('OBSERVACIONES')) {
       context.handle(
+        _observacionesMeta,
+        observaciones.isAcceptableOrUnknown(
+          data['OBSERVACIONES']!,
           _observacionesMeta,
-          observaciones.isAcceptableOrUnknown(
-              data['OBSERVACIONES']!, _observacionesMeta));
+        ),
+      );
     }
     if (data.containsKey('OFERTA_SN')) {
-      context.handle(_ofertaMeta,
-          oferta.isAcceptableOrUnknown(data['OFERTA_SN']!, _ofertaMeta));
+      context.handle(
+        _ofertaMeta,
+        oferta.isAcceptableOrUnknown(data['OFERTA_SN']!, _ofertaMeta),
+      );
     } else if (isInserting) {
       context.missing(_ofertaMeta);
     }
     if (data.containsKey('OFERTA_FECHA_HASTA')) {
       context.handle(
+        _ofertaFechaHastaMeta,
+        ofertaFechaHasta.isAcceptableOrUnknown(
+          data['OFERTA_FECHA_HASTA']!,
           _ofertaFechaHastaMeta,
-          ofertaFechaHasta.isAcceptableOrUnknown(
-              data['OFERTA_FECHA_HASTA']!, _ofertaFechaHastaMeta));
+        ),
+      );
     }
     if (data.containsKey('IVA')) {
       context.handle(
-          _ivaMeta, iva.isAcceptableOrUnknown(data['IVA']!, _ivaMeta));
+        _ivaMeta,
+        iva.isAcceptableOrUnknown(data['IVA']!, _ivaMeta),
+      );
     } else if (isInserting) {
       context.missing(_ivaMeta);
     }
     if (data.containsKey('DTO_BONIFICACION')) {
       context.handle(
+        _dtoBonificacionMeta,
+        dtoBonificacion.isAcceptableOrUnknown(
+          data['DTO_BONIFICACION']!,
           _dtoBonificacionMeta,
-          dtoBonificacion.isAcceptableOrUnknown(
-              data['DTO_BONIFICACION']!, _dtoBonificacionMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_dtoBonificacionMeta);
     }
     if (data.containsKey('ENVIADA')) {
-      context.handle(_enviadaMeta,
-          enviada.isAcceptableOrUnknown(data['ENVIADA']!, _enviadaMeta));
+      context.handle(
+        _enviadaMeta,
+        enviada.isAcceptableOrUnknown(data['ENVIADA']!, _enviadaMeta),
+      );
     }
     if (data.containsKey('TRATADA')) {
-      context.handle(_tratadaMeta,
-          tratada.isAcceptableOrUnknown(data['TRATADA']!, _tratadaMeta));
+      context.handle(
+        _tratadaMeta,
+        tratada.isAcceptableOrUnknown(data['TRATADA']!, _tratadaMeta),
+      );
     }
     if (data.containsKey('BORRADOR')) {
-      context.handle(_borradorMeta,
-          borrador.isAcceptableOrUnknown(data['BORRADOR']!, _borradorMeta));
+      context.handle(
+        _borradorMeta,
+        borrador.isAcceptableOrUnknown(data['BORRADOR']!, _borradorMeta),
+      );
     }
     if (data.containsKey('ERROR_SYNC')) {
       context.handle(
+        _errorSyncMessageMeta,
+        errorSyncMessage.isAcceptableOrUnknown(
+          data['ERROR_SYNC']!,
           _errorSyncMessageMeta,
-          errorSyncMessage.isAcceptableOrUnknown(
-              data['ERROR_SYNC']!, _errorSyncMessageMeta));
+        ),
+      );
     }
     return context;
   }
@@ -1923,57 +2611,117 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
   @override
   PedidoVentaLocalDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return PedidoVentaLocalDTO(
-      usuarioId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}USUARIO_ID']),
-      pedidoId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}PEDIDO_ID']),
-      empresaId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}EMPRESA_ID']),
-      pedidoVentaAppId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}PEDIDO_APP_ID'])!,
-      clienteId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
-      nombreCliente: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}NOMBRE_CLIENTE'])!,
-      direccionId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION_ID']),
-      direccion1: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION1']),
-      direccion2: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION2']),
-      codigoPostal: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}CODIGO_POSTAL']),
-      poblacion: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}POBLACION']),
-      provincia: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}PROVINCIA']),
-      paisId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}PAIS_ID']),
-      divisaId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}DIVISA_ID']),
-      pedidoCliente: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}PEDIDO_CLIENTE']),
-      observaciones: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}OBSERVACIONES']),
-      oferta: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}OFERTA_SN'])!,
+    return PedidoVentaLocalDTO.new(
+      usuarioId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}USUARIO_ID'],
+      ),
+      pedidoId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}PEDIDO_ID'],
+      ),
+      empresaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}EMPRESA_ID'],
+      ),
+      pedidoVentaAppId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}PEDIDO_APP_ID'],
+          )!,
+      clienteId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}CLIENTE_ID'],
+          )!,
+      nombreCliente:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}NOMBRE_CLIENTE'],
+          )!,
+      direccionId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DIRECCION_ID'],
+      ),
+      direccion1: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DIRECCION1'],
+      ),
+      direccion2: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DIRECCION2'],
+      ),
+      codigoPostal: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}CODIGO_POSTAL'],
+      ),
+      poblacion: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}POBLACION'],
+      ),
+      provincia: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}PROVINCIA'],
+      ),
+      paisId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}PAIS_ID'],
+      ),
+      divisaId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DIVISA_ID'],
+      ),
+      pedidoCliente: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}PEDIDO_CLIENTE'],
+      ),
+      observaciones: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}OBSERVACIONES'],
+      ),
+      oferta:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}OFERTA_SN'],
+          )!,
       ofertaFechaHasta: attachedDatabase.typeMapping.read(
-          DriftSqlType.dateTime, data['${effectivePrefix}OFERTA_FECHA_HASTA']),
-      fechaAlta: attachedDatabase.typeMapping
-          .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA_ALTA'])!,
-      iva: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}IVA'])!,
-      dtoBonificacion: attachedDatabase.typeMapping.read(
-          DriftSqlType.double, data['${effectivePrefix}DTO_BONIFICACION'])!,
-      enviada: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}ENVIADA'])!,
-      tratada: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}TRATADA'])!,
-      borrador: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}BORRADOR'])!,
-      errorSyncMessage: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}ERROR_SYNC']),
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}OFERTA_FECHA_HASTA'],
+      ),
+      fechaAlta:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}FECHA_ALTA'],
+          )!,
+      iva:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.double,
+            data['${effectivePrefix}IVA'],
+          )!,
+      dtoBonificacion:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.double,
+            data['${effectivePrefix}DTO_BONIFICACION'],
+          )!,
+      enviada:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}ENVIADA'],
+          )!,
+      tratada:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}TRATADA'],
+          )!,
+      borrador:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}BORRADOR'],
+          )!,
+      errorSyncMessage: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ERROR_SYNC'],
+      ),
     );
   }
 
@@ -2066,13 +2814,13 @@ class PedidoVentaLocalTableCompanion
     this.borrador = const Value.absent(),
     this.errorSyncMessage = const Value.absent(),
     this.rowid = const Value.absent(),
-  })  : pedidoVentaAppId = Value(pedidoVentaAppId),
-        fechaAlta = Value(fechaAlta),
-        clienteId = Value(clienteId),
-        nombreCliente = Value(nombreCliente),
-        oferta = Value(oferta),
-        iva = Value(iva),
-        dtoBonificacion = Value(dtoBonificacion);
+  }) : pedidoVentaAppId = Value(pedidoVentaAppId),
+       fechaAlta = Value(fechaAlta),
+       clienteId = Value(clienteId),
+       nombreCliente = Value(nombreCliente),
+       oferta = Value(oferta),
+       iva = Value(iva),
+       dtoBonificacion = Value(dtoBonificacion);
   static Insertable<PedidoVentaLocalDTO> custom({
     Expression<String>? usuarioId,
     Expression<String>? pedidoVentaAppId,
@@ -2131,33 +2879,34 @@ class PedidoVentaLocalTableCompanion
     });
   }
 
-  PedidoVentaLocalTableCompanion copyWith(
-      {Value<String?>? usuarioId,
-      Value<String>? pedidoVentaAppId,
-      Value<String?>? empresaId,
-      Value<String?>? pedidoId,
-      Value<DateTime>? fechaAlta,
-      Value<String>? clienteId,
-      Value<String>? nombreCliente,
-      Value<String?>? direccionId,
-      Value<String?>? direccion1,
-      Value<String?>? direccion2,
-      Value<String?>? codigoPostal,
-      Value<String?>? poblacion,
-      Value<String?>? provincia,
-      Value<String?>? paisId,
-      Value<String?>? divisaId,
-      Value<String?>? pedidoCliente,
-      Value<String?>? observaciones,
-      Value<String>? oferta,
-      Value<DateTime?>? ofertaFechaHasta,
-      Value<double>? iva,
-      Value<double>? dtoBonificacion,
-      Value<String>? enviada,
-      Value<String>? tratada,
-      Value<String>? borrador,
-      Value<String?>? errorSyncMessage,
-      Value<int>? rowid}) {
+  PedidoVentaLocalTableCompanion copyWith({
+    Value<String?>? usuarioId,
+    Value<String>? pedidoVentaAppId,
+    Value<String?>? empresaId,
+    Value<String?>? pedidoId,
+    Value<DateTime>? fechaAlta,
+    Value<String>? clienteId,
+    Value<String>? nombreCliente,
+    Value<String?>? direccionId,
+    Value<String?>? direccion1,
+    Value<String?>? direccion2,
+    Value<String?>? codigoPostal,
+    Value<String?>? poblacion,
+    Value<String?>? provincia,
+    Value<String?>? paisId,
+    Value<String?>? divisaId,
+    Value<String?>? pedidoCliente,
+    Value<String?>? observaciones,
+    Value<String>? oferta,
+    Value<DateTime?>? ofertaFechaHasta,
+    Value<double>? iva,
+    Value<double>? dtoBonificacion,
+    Value<String>? enviada,
+    Value<String>? tratada,
+    Value<String>? borrador,
+    Value<String?>? errorSyncMessage,
+    Value<int>? rowid,
+  }) {
     return PedidoVentaLocalTableCompanion(
       usuarioId: usuarioId ?? this.usuarioId,
       pedidoVentaAppId: pedidoVentaAppId ?? this.pedidoVentaAppId,
@@ -2315,57 +3064,90 @@ class $SyncDateTimeTableTable extends SyncDateTimeTable
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<int> id = GeneratedColumn<int>(
-      'ID', aliasedName, false,
-      type: DriftSqlType.int,
-      requiredDuringInsert: false,
-      defaultValue: const Constant(1));
-  static const VerificationMeta _dbSchemaVersionMeta =
-      const VerificationMeta('dbSchemaVersion');
+    'ID',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(1),
+  );
+  static const VerificationMeta _dbSchemaVersionMeta = const VerificationMeta(
+    'dbSchemaVersion',
+  );
   @override
   late final GeneratedColumn<int> dbSchemaVersion = GeneratedColumn<int>(
-      'DB_SCHEMA_VERSION', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
+    'DB_SCHEMA_VERSION',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _articuloUltimaSyncMeta =
       const VerificationMeta('articuloUltimaSync');
   @override
   late final GeneratedColumn<DateTime> articuloUltimaSync =
-      GeneratedColumn<DateTime>('ARTICULO_ULTIMA_SYNC', aliasedName, false,
-          type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  static const VerificationMeta _clienteUltimaSyncMeta =
-      const VerificationMeta('clienteUltimaSync');
+      GeneratedColumn<DateTime>(
+        'ARTICULO_ULTIMA_SYNC',
+        aliasedName,
+        false,
+        type: DriftSqlType.dateTime,
+        requiredDuringInsert: true,
+      );
+  static const VerificationMeta _clienteUltimaSyncMeta = const VerificationMeta(
+    'clienteUltimaSync',
+  );
   @override
   late final GeneratedColumn<DateTime> clienteUltimaSync =
-      GeneratedColumn<DateTime>('CLIENTE_ULTIMA_SYNC', aliasedName, false,
-          type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  static const VerificationMeta _pedidoUltimaSyncMeta =
-      const VerificationMeta('pedidoUltimaSync');
+      GeneratedColumn<DateTime>(
+        'CLIENTE_ULTIMA_SYNC',
+        aliasedName,
+        false,
+        type: DriftSqlType.dateTime,
+        requiredDuringInsert: true,
+      );
+  static const VerificationMeta _pedidoUltimaSyncMeta = const VerificationMeta(
+    'pedidoUltimaSync',
+  );
   @override
   late final GeneratedColumn<DateTime> pedidoUltimaSync =
-      GeneratedColumn<DateTime>('PEDIDO_ULTIMA_SYNC', aliasedName, false,
-          type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  static const VerificationMeta _visitaUltimaSyncMeta =
-      const VerificationMeta('visitaUltimaSync');
+      GeneratedColumn<DateTime>(
+        'PEDIDO_ULTIMA_SYNC',
+        aliasedName,
+        false,
+        type: DriftSqlType.dateTime,
+        requiredDuringInsert: true,
+      );
+  static const VerificationMeta _visitaUltimaSyncMeta = const VerificationMeta(
+    'visitaUltimaSync',
+  );
   @override
   late final GeneratedColumn<DateTime> visitaUltimaSync =
-      GeneratedColumn<DateTime>('VISITA_ULTIMA_SYNC', aliasedName, false,
-          type: DriftSqlType.dateTime, requiredDuringInsert: true);
+      GeneratedColumn<DateTime>(
+        'VISITA_ULTIMA_SYNC',
+        aliasedName,
+        false,
+        type: DriftSqlType.dateTime,
+        requiredDuringInsert: true,
+      );
   @override
   List<GeneratedColumn> get $columns => [
-        id,
-        dbSchemaVersion,
-        articuloUltimaSync,
-        clienteUltimaSync,
-        pedidoUltimaSync,
-        visitaUltimaSync
-      ];
+    id,
+    dbSchemaVersion,
+    articuloUltimaSync,
+    clienteUltimaSync,
+    pedidoUltimaSync,
+    visitaUltimaSync,
+  ];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
   String get actualTableName => $name;
   static const String $name = 'SYNC_DATETIME';
   @override
-  VerificationContext validateIntegrity(Insertable<SyncDateTimeDTO> instance,
-      {bool isInserting = false}) {
+  VerificationContext validateIntegrity(
+    Insertable<SyncDateTimeDTO> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('ID')) {
@@ -2373,41 +3155,56 @@ class $SyncDateTimeTableTable extends SyncDateTimeTable
     }
     if (data.containsKey('DB_SCHEMA_VERSION')) {
       context.handle(
+        _dbSchemaVersionMeta,
+        dbSchemaVersion.isAcceptableOrUnknown(
+          data['DB_SCHEMA_VERSION']!,
           _dbSchemaVersionMeta,
-          dbSchemaVersion.isAcceptableOrUnknown(
-              data['DB_SCHEMA_VERSION']!, _dbSchemaVersionMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_dbSchemaVersionMeta);
     }
     if (data.containsKey('ARTICULO_ULTIMA_SYNC')) {
       context.handle(
+        _articuloUltimaSyncMeta,
+        articuloUltimaSync.isAcceptableOrUnknown(
+          data['ARTICULO_ULTIMA_SYNC']!,
           _articuloUltimaSyncMeta,
-          articuloUltimaSync.isAcceptableOrUnknown(
-              data['ARTICULO_ULTIMA_SYNC']!, _articuloUltimaSyncMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_articuloUltimaSyncMeta);
     }
     if (data.containsKey('CLIENTE_ULTIMA_SYNC')) {
       context.handle(
+        _clienteUltimaSyncMeta,
+        clienteUltimaSync.isAcceptableOrUnknown(
+          data['CLIENTE_ULTIMA_SYNC']!,
           _clienteUltimaSyncMeta,
-          clienteUltimaSync.isAcceptableOrUnknown(
-              data['CLIENTE_ULTIMA_SYNC']!, _clienteUltimaSyncMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_clienteUltimaSyncMeta);
     }
     if (data.containsKey('PEDIDO_ULTIMA_SYNC')) {
       context.handle(
+        _pedidoUltimaSyncMeta,
+        pedidoUltimaSync.isAcceptableOrUnknown(
+          data['PEDIDO_ULTIMA_SYNC']!,
           _pedidoUltimaSyncMeta,
-          pedidoUltimaSync.isAcceptableOrUnknown(
-              data['PEDIDO_ULTIMA_SYNC']!, _pedidoUltimaSyncMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_pedidoUltimaSyncMeta);
     }
     if (data.containsKey('VISITA_ULTIMA_SYNC')) {
       context.handle(
+        _visitaUltimaSyncMeta,
+        visitaUltimaSync.isAcceptableOrUnknown(
+          data['VISITA_ULTIMA_SYNC']!,
           _visitaUltimaSyncMeta,
-          visitaUltimaSync.isAcceptableOrUnknown(
-              data['VISITA_ULTIMA_SYNC']!, _visitaUltimaSyncMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_visitaUltimaSyncMeta);
     }
@@ -2419,21 +3216,37 @@ class $SyncDateTimeTableTable extends SyncDateTimeTable
   @override
   SyncDateTimeDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return SyncDateTimeDTO(
-      id: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}ID'])!,
-      dbSchemaVersion: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}DB_SCHEMA_VERSION'])!,
-      articuloUltimaSync: attachedDatabase.typeMapping.read(
-          DriftSqlType.dateTime,
-          data['${effectivePrefix}ARTICULO_ULTIMA_SYNC'])!,
-      clienteUltimaSync: attachedDatabase.typeMapping.read(
-          DriftSqlType.dateTime,
-          data['${effectivePrefix}CLIENTE_ULTIMA_SYNC'])!,
-      pedidoUltimaSync: attachedDatabase.typeMapping.read(
-          DriftSqlType.dateTime, data['${effectivePrefix}PEDIDO_ULTIMA_SYNC'])!,
-      visitaUltimaSync: attachedDatabase.typeMapping.read(
-          DriftSqlType.dateTime, data['${effectivePrefix}VISITA_ULTIMA_SYNC'])!,
+    return SyncDateTimeDTO.new(
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}ID'],
+          )!,
+      dbSchemaVersion:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}DB_SCHEMA_VERSION'],
+          )!,
+      articuloUltimaSync:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}ARTICULO_ULTIMA_SYNC'],
+          )!,
+      clienteUltimaSync:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}CLIENTE_ULTIMA_SYNC'],
+          )!,
+      pedidoUltimaSync:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}PEDIDO_ULTIMA_SYNC'],
+          )!,
+      visitaUltimaSync:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}VISITA_ULTIMA_SYNC'],
+          )!,
     );
   }
 
@@ -2465,11 +3278,11 @@ class SyncDateTimeTableCompanion extends UpdateCompanion<SyncDateTimeDTO> {
     required DateTime clienteUltimaSync,
     required DateTime pedidoUltimaSync,
     required DateTime visitaUltimaSync,
-  })  : dbSchemaVersion = Value(dbSchemaVersion),
-        articuloUltimaSync = Value(articuloUltimaSync),
-        clienteUltimaSync = Value(clienteUltimaSync),
-        pedidoUltimaSync = Value(pedidoUltimaSync),
-        visitaUltimaSync = Value(visitaUltimaSync);
+  }) : dbSchemaVersion = Value(dbSchemaVersion),
+       articuloUltimaSync = Value(articuloUltimaSync),
+       clienteUltimaSync = Value(clienteUltimaSync),
+       pedidoUltimaSync = Value(pedidoUltimaSync),
+       visitaUltimaSync = Value(visitaUltimaSync);
   static Insertable<SyncDateTimeDTO> custom({
     Expression<int>? id,
     Expression<int>? dbSchemaVersion,
@@ -2489,13 +3302,14 @@ class SyncDateTimeTableCompanion extends UpdateCompanion<SyncDateTimeDTO> {
     });
   }
 
-  SyncDateTimeTableCompanion copyWith(
-      {Value<int>? id,
-      Value<int>? dbSchemaVersion,
-      Value<DateTime>? articuloUltimaSync,
-      Value<DateTime>? clienteUltimaSync,
-      Value<DateTime>? pedidoUltimaSync,
-      Value<DateTime>? visitaUltimaSync}) {
+  SyncDateTimeTableCompanion copyWith({
+    Value<int>? id,
+    Value<int>? dbSchemaVersion,
+    Value<DateTime>? articuloUltimaSync,
+    Value<DateTime>? clienteUltimaSync,
+    Value<DateTime>? pedidoUltimaSync,
+    Value<DateTime>? visitaUltimaSync,
+  }) {
     return SyncDateTimeTableCompanion(
       id: id ?? this.id,
       dbSchemaVersion: dbSchemaVersion ?? this.dbSchemaVersion,
@@ -2516,8 +3330,9 @@ class SyncDateTimeTableCompanion extends UpdateCompanion<SyncDateTimeDTO> {
       map['DB_SCHEMA_VERSION'] = Variable<int>(dbSchemaVersion.value);
     }
     if (articuloUltimaSync.present) {
-      map['ARTICULO_ULTIMA_SYNC'] =
-          Variable<DateTime>(articuloUltimaSync.value);
+      map['ARTICULO_ULTIMA_SYNC'] = Variable<DateTime>(
+        articuloUltimaSync.value,
+      );
     }
     if (clienteUltimaSync.present) {
       map['CLIENTE_ULTIMA_SYNC'] = Variable<DateTime>(clienteUltimaSync.value);
@@ -2553,173 +3368,260 @@ class $LogTableTable extends LogTable with TableInfo<$LogTableTable, LogDTO> {
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<int> id = GeneratedColumn<int>(
-      'ID', aliasedName, false,
-      hasAutoIncrement: true,
-      type: DriftSqlType.int,
-      requiredDuringInsert: false,
-      defaultConstraints:
-          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+    'ID',
+    aliasedName,
+    false,
+    hasAutoIncrement: true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'PRIMARY KEY AUTOINCREMENT',
+    ),
+  );
   static const VerificationMeta _levelMeta = const VerificationMeta('level');
   @override
   late final GeneratedColumn<String> level = GeneratedColumn<String>(
-      'LOG_LEVEL', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _messageMeta =
-      const VerificationMeta('message');
+    'LOG_LEVEL',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _messageMeta = const VerificationMeta(
+    'message',
+  );
   @override
   late final GeneratedColumn<String> message = GeneratedColumn<String>(
-      'LOG_MESSAGE', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'LOG_MESSAGE',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _errorMeta = const VerificationMeta('error');
   @override
   late final GeneratedColumn<String> error = GeneratedColumn<String>(
-      'LOG_ERROR', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _stackTraceMeta =
-      const VerificationMeta('stackTrace');
+    'LOG_ERROR',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _stackTraceMeta = const VerificationMeta(
+    'stackTrace',
+  );
   @override
   late final GeneratedColumn<String> stackTrace = GeneratedColumn<String>(
-      'LOG_STACK_TRACE', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'LOG_STACK_TRACE',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _appIdMeta = const VerificationMeta('appId');
   @override
   late final GeneratedColumn<String> appId = GeneratedColumn<String>(
-      'APP_ID', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _appBuildMeta =
-      const VerificationMeta('appBuild');
+    'APP_ID',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _appBuildMeta = const VerificationMeta(
+    'appBuild',
+  );
   @override
   late final GeneratedColumn<String> appBuild = GeneratedColumn<String>(
-      'APP_BUILD', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _appBuildNameMeta =
-      const VerificationMeta('appBuildName');
+    'APP_BUILD',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _appBuildNameMeta = const VerificationMeta(
+    'appBuildName',
+  );
   @override
   late final GeneratedColumn<String> appBuildName = GeneratedColumn<String>(
-      'APP_BUILD_NAME', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'APP_BUILD_NAME',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _deviceMeta = const VerificationMeta('device');
   @override
   late final GeneratedColumn<String> device = GeneratedColumn<String>(
-      'DEVICE', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'DEVICE',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _userIdMeta = const VerificationMeta('userId');
   @override
   late final GeneratedColumn<String> userId = GeneratedColumn<String>(
-      'USER_ID', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _userEmailMeta =
-      const VerificationMeta('userEmail');
+    'USER_ID',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _userEmailMeta = const VerificationMeta(
+    'userEmail',
+  );
   @override
   late final GeneratedColumn<String> userEmail = GeneratedColumn<String>(
-      'USER_EMAIL', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _userNameMeta =
-      const VerificationMeta('userName');
+    'USER_EMAIL',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _userNameMeta = const VerificationMeta(
+    'userName',
+  );
   @override
   late final GeneratedColumn<String> userName = GeneratedColumn<String>(
-      'USER_NAME', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _timestampMeta =
-      const VerificationMeta('timestamp');
+    'USER_NAME',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _timestampMeta = const VerificationMeta(
+    'timestamp',
+  );
   @override
   late final GeneratedColumn<DateTime> timestamp = GeneratedColumn<DateTime>(
-      'TIMESTAMP', aliasedName, false,
-      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+    'TIMESTAMP',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
   @override
   List<GeneratedColumn> get $columns => [
-        id,
-        level,
-        message,
-        error,
-        stackTrace,
-        appId,
-        appBuild,
-        appBuildName,
-        device,
-        userId,
-        userEmail,
-        userName,
-        timestamp
-      ];
+    id,
+    level,
+    message,
+    error,
+    stackTrace,
+    appId,
+    appBuild,
+    appBuildName,
+    device,
+    userId,
+    userEmail,
+    userName,
+    timestamp,
+  ];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
   String get actualTableName => $name;
   static const String $name = 'LOG';
   @override
-  VerificationContext validateIntegrity(Insertable<LogDTO> instance,
-      {bool isInserting = false}) {
+  VerificationContext validateIntegrity(
+    Insertable<LogDTO> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('ID')) {
       context.handle(_idMeta, id.isAcceptableOrUnknown(data['ID']!, _idMeta));
     }
     if (data.containsKey('LOG_LEVEL')) {
-      context.handle(_levelMeta,
-          level.isAcceptableOrUnknown(data['LOG_LEVEL']!, _levelMeta));
+      context.handle(
+        _levelMeta,
+        level.isAcceptableOrUnknown(data['LOG_LEVEL']!, _levelMeta),
+      );
     } else if (isInserting) {
       context.missing(_levelMeta);
     }
     if (data.containsKey('LOG_MESSAGE')) {
-      context.handle(_messageMeta,
-          message.isAcceptableOrUnknown(data['LOG_MESSAGE']!, _messageMeta));
+      context.handle(
+        _messageMeta,
+        message.isAcceptableOrUnknown(data['LOG_MESSAGE']!, _messageMeta),
+      );
     } else if (isInserting) {
       context.missing(_messageMeta);
     }
     if (data.containsKey('LOG_ERROR')) {
-      context.handle(_errorMeta,
-          error.isAcceptableOrUnknown(data['LOG_ERROR']!, _errorMeta));
+      context.handle(
+        _errorMeta,
+        error.isAcceptableOrUnknown(data['LOG_ERROR']!, _errorMeta),
+      );
     }
     if (data.containsKey('LOG_STACK_TRACE')) {
       context.handle(
+        _stackTraceMeta,
+        stackTrace.isAcceptableOrUnknown(
+          data['LOG_STACK_TRACE']!,
           _stackTraceMeta,
-          stackTrace.isAcceptableOrUnknown(
-              data['LOG_STACK_TRACE']!, _stackTraceMeta));
+        ),
+      );
     }
     if (data.containsKey('APP_ID')) {
       context.handle(
-          _appIdMeta, appId.isAcceptableOrUnknown(data['APP_ID']!, _appIdMeta));
+        _appIdMeta,
+        appId.isAcceptableOrUnknown(data['APP_ID']!, _appIdMeta),
+      );
     } else if (isInserting) {
       context.missing(_appIdMeta);
     }
     if (data.containsKey('APP_BUILD')) {
-      context.handle(_appBuildMeta,
-          appBuild.isAcceptableOrUnknown(data['APP_BUILD']!, _appBuildMeta));
+      context.handle(
+        _appBuildMeta,
+        appBuild.isAcceptableOrUnknown(data['APP_BUILD']!, _appBuildMeta),
+      );
     } else if (isInserting) {
       context.missing(_appBuildMeta);
     }
     if (data.containsKey('APP_BUILD_NAME')) {
       context.handle(
+        _appBuildNameMeta,
+        appBuildName.isAcceptableOrUnknown(
+          data['APP_BUILD_NAME']!,
           _appBuildNameMeta,
-          appBuildName.isAcceptableOrUnknown(
-              data['APP_BUILD_NAME']!, _appBuildNameMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_appBuildNameMeta);
     }
     if (data.containsKey('DEVICE')) {
-      context.handle(_deviceMeta,
-          device.isAcceptableOrUnknown(data['DEVICE']!, _deviceMeta));
+      context.handle(
+        _deviceMeta,
+        device.isAcceptableOrUnknown(data['DEVICE']!, _deviceMeta),
+      );
     } else if (isInserting) {
       context.missing(_deviceMeta);
     }
     if (data.containsKey('USER_ID')) {
-      context.handle(_userIdMeta,
-          userId.isAcceptableOrUnknown(data['USER_ID']!, _userIdMeta));
+      context.handle(
+        _userIdMeta,
+        userId.isAcceptableOrUnknown(data['USER_ID']!, _userIdMeta),
+      );
     } else if (isInserting) {
       context.missing(_userIdMeta);
     }
     if (data.containsKey('USER_EMAIL')) {
-      context.handle(_userEmailMeta,
-          userEmail.isAcceptableOrUnknown(data['USER_EMAIL']!, _userEmailMeta));
+      context.handle(
+        _userEmailMeta,
+        userEmail.isAcceptableOrUnknown(data['USER_EMAIL']!, _userEmailMeta),
+      );
     }
     if (data.containsKey('USER_NAME')) {
-      context.handle(_userNameMeta,
-          userName.isAcceptableOrUnknown(data['USER_NAME']!, _userNameMeta));
+      context.handle(
+        _userNameMeta,
+        userName.isAcceptableOrUnknown(data['USER_NAME']!, _userNameMeta),
+      );
     }
     if (data.containsKey('TIMESTAMP')) {
-      context.handle(_timestampMeta,
-          timestamp.isAcceptableOrUnknown(data['TIMESTAMP']!, _timestampMeta));
+      context.handle(
+        _timestampMeta,
+        timestamp.isAcceptableOrUnknown(data['TIMESTAMP']!, _timestampMeta),
+      );
     } else if (isInserting) {
       context.missing(_timestampMeta);
     }
@@ -2731,31 +3633,64 @@ class $LogTableTable extends LogTable with TableInfo<$LogTableTable, LogDTO> {
   @override
   LogDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return LogDTO(
-      id: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}ID'])!,
-      level: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}LOG_LEVEL'])!,
-      message: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}LOG_MESSAGE'])!,
-      error: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}LOG_ERROR']),
-      appId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}APP_ID'])!,
-      appBuild: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}APP_BUILD'])!,
-      appBuildName: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}APP_BUILD_NAME'])!,
-      device: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}DEVICE'])!,
-      userId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}USER_ID'])!,
-      userEmail: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}USER_EMAIL']),
-      userName: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}USER_NAME']),
-      timestamp: attachedDatabase.typeMapping
-          .read(DriftSqlType.dateTime, data['${effectivePrefix}TIMESTAMP'])!,
+    return LogDTO.new(
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}ID'],
+          )!,
+      level:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}LOG_LEVEL'],
+          )!,
+      message:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}LOG_MESSAGE'],
+          )!,
+      error: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}LOG_ERROR'],
+      ),
+      appId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}APP_ID'],
+          )!,
+      appBuild:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}APP_BUILD'],
+          )!,
+      appBuildName:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}APP_BUILD_NAME'],
+          )!,
+      device:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}DEVICE'],
+          )!,
+      userId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}USER_ID'],
+          )!,
+      userEmail: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}USER_EMAIL'],
+      ),
+      userName: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}USER_NAME'],
+      ),
+      timestamp:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}TIMESTAMP'],
+          )!,
     );
   }
 
@@ -2808,14 +3743,14 @@ class LogTableCompanion extends UpdateCompanion<LogDTO> {
     this.userEmail = const Value.absent(),
     this.userName = const Value.absent(),
     required DateTime timestamp,
-  })  : level = Value(level),
-        message = Value(message),
-        appId = Value(appId),
-        appBuild = Value(appBuild),
-        appBuildName = Value(appBuildName),
-        device = Value(device),
-        userId = Value(userId),
-        timestamp = Value(timestamp);
+  }) : level = Value(level),
+       message = Value(message),
+       appId = Value(appId),
+       appBuild = Value(appBuild),
+       appBuildName = Value(appBuildName),
+       device = Value(device),
+       userId = Value(userId),
+       timestamp = Value(timestamp);
   static Insertable<LogDTO> custom({
     Expression<int>? id,
     Expression<String>? level,
@@ -2848,20 +3783,21 @@ class LogTableCompanion extends UpdateCompanion<LogDTO> {
     });
   }
 
-  LogTableCompanion copyWith(
-      {Value<int>? id,
-      Value<String>? level,
-      Value<String>? message,
-      Value<String?>? error,
-      Value<String?>? stackTrace,
-      Value<String>? appId,
-      Value<String>? appBuild,
-      Value<String>? appBuildName,
-      Value<String>? device,
-      Value<String>? userId,
-      Value<String?>? userEmail,
-      Value<String?>? userName,
-      Value<DateTime>? timestamp}) {
+  LogTableCompanion copyWith({
+    Value<int>? id,
+    Value<String>? level,
+    Value<String>? message,
+    Value<String?>? error,
+    Value<String?>? stackTrace,
+    Value<String>? appId,
+    Value<String>? appBuild,
+    Value<String>? appBuildName,
+    Value<String>? device,
+    Value<String>? userId,
+    Value<String?>? userEmail,
+    Value<String?>? userName,
+    Value<DateTime>? timestamp,
+  }) {
     return LogTableCompanion(
       id: id ?? this.id,
       level: level ?? this.level,
@@ -2951,170 +3887,250 @@ class $CatalogoFavoritoTableTable extends CatalogoFavoritoTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $CatalogoFavoritoTableTable(this.attachedDatabase, [this._alias]);
-  static const VerificationMeta _catalogoIdMeta =
-      const VerificationMeta('catalogoId');
+  static const VerificationMeta _catalogoIdMeta = const VerificationMeta(
+    'catalogoId',
+  );
   @override
   late final GeneratedColumn<int> catalogoId = GeneratedColumn<int>(
-      'CATALOGO_ID', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: false);
+    'CATALOGO_ID',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _nombreMeta = const VerificationMeta('nombre');
   @override
   late final GeneratedColumn<String> nombre = GeneratedColumn<String>(
-      'NOMBRE', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _idiomaIdMeta =
-      const VerificationMeta('idiomaId');
+    'NOMBRE',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _idiomaIdMeta = const VerificationMeta(
+    'idiomaId',
+  );
   @override
   late final GeneratedColumn<String> idiomaId = GeneratedColumn<String>(
-      'IDIOMA_ID', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'IDIOMA_ID',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _tipoPrecioCatalogoIdMeta =
       const VerificationMeta('tipoPrecioCatalogoId');
   @override
   late final GeneratedColumn<String> tipoPrecioCatalogoId =
-      GeneratedColumn<String>('TIPO_PRECIO_CATALOGO_ID', aliasedName, false,
-          type: DriftSqlType.string, requiredDuringInsert: true);
+      GeneratedColumn<String>(
+        'TIPO_PRECIO_CATALOGO_ID',
+        aliasedName,
+        false,
+        type: DriftSqlType.string,
+        requiredDuringInsert: true,
+      );
   static const VerificationMeta _tipoPrecioCatalogoNombreMeta =
       const VerificationMeta('tipoPrecioCatalogoNombre');
   @override
   late final GeneratedColumn<String> tipoPrecioCatalogoNombre =
-      GeneratedColumn<String>('TIPO_PRECIO_CATALOGO_NOMBRE', aliasedName, false,
-          type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _tipoCatalogoIdMeta =
-      const VerificationMeta('tipoCatalogoId');
+      GeneratedColumn<String>(
+        'TIPO_PRECIO_CATALOGO_NOMBRE',
+        aliasedName,
+        false,
+        type: DriftSqlType.string,
+        requiredDuringInsert: true,
+      );
+  static const VerificationMeta _tipoCatalogoIdMeta = const VerificationMeta(
+    'tipoCatalogoId',
+  );
   @override
   late final GeneratedColumn<String> tipoCatalogoId = GeneratedColumn<String>(
-      'TIPO_CATALOGO_ID', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _tagBusquedaMeta =
-      const VerificationMeta('tagBusqueda');
+    'TIPO_CATALOGO_ID',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tagBusquedaMeta = const VerificationMeta(
+    'tagBusqueda',
+  );
   @override
   late final GeneratedColumn<String> tagBusqueda = GeneratedColumn<String>(
-      'TAG_BUSQUEDA', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'TAG_BUSQUEDA',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _ordenMeta = const VerificationMeta('orden');
   @override
   late final GeneratedColumn<int> orden = GeneratedColumn<int>(
-      'ORDEN', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
+    'ORDEN',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _nombreFicheroPortadaMeta =
       const VerificationMeta('nombreFicheroPortada');
   @override
   late final GeneratedColumn<String> nombreFicheroPortada =
-      GeneratedColumn<String>('NOMBRE_FICHERO_PORTADA', aliasedName, false,
-          type: DriftSqlType.string, requiredDuringInsert: true);
+      GeneratedColumn<String>(
+        'NOMBRE_FICHERO_PORTADA',
+        aliasedName,
+        false,
+        type: DriftSqlType.string,
+        requiredDuringInsert: true,
+      );
   static const VerificationMeta _nombreFicheroCatalogoMeta =
       const VerificationMeta('nombreFicheroCatalogo');
   @override
   late final GeneratedColumn<String> nombreFicheroCatalogo =
-      GeneratedColumn<String>('NOMBRE_FICHERO_CATALOGO', aliasedName, false,
-          type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _descargaMeta =
-      const VerificationMeta('descarga');
+      GeneratedColumn<String>(
+        'NOMBRE_FICHERO_CATALOGO',
+        aliasedName,
+        false,
+        type: DriftSqlType.string,
+        requiredDuringInsert: true,
+      );
+  static const VerificationMeta _descargaMeta = const VerificationMeta(
+    'descarga',
+  );
   @override
   late final GeneratedColumn<String> descarga = GeneratedColumn<String>(
-      'DESCARGA_SN', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'DESCARGA_SN',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   @override
   List<GeneratedColumn> get $columns => [
-        catalogoId,
-        nombre,
-        idiomaId,
-        tipoPrecioCatalogoId,
-        tipoPrecioCatalogoNombre,
-        tipoCatalogoId,
-        tagBusqueda,
-        orden,
-        nombreFicheroPortada,
-        nombreFicheroCatalogo,
-        descarga
-      ];
+    catalogoId,
+    nombre,
+    idiomaId,
+    tipoPrecioCatalogoId,
+    tipoPrecioCatalogoNombre,
+    tipoCatalogoId,
+    tagBusqueda,
+    orden,
+    nombreFicheroPortada,
+    nombreFicheroCatalogo,
+    descarga,
+  ];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
   String get actualTableName => $name;
   static const String $name = 'CATALOGO_FAVORITO';
   @override
-  VerificationContext validateIntegrity(Insertable<CatalogoDTO> instance,
-      {bool isInserting = false}) {
+  VerificationContext validateIntegrity(
+    Insertable<CatalogoDTO> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('CATALOGO_ID')) {
       context.handle(
-          _catalogoIdMeta,
-          catalogoId.isAcceptableOrUnknown(
-              data['CATALOGO_ID']!, _catalogoIdMeta));
+        _catalogoIdMeta,
+        catalogoId.isAcceptableOrUnknown(data['CATALOGO_ID']!, _catalogoIdMeta),
+      );
     }
     if (data.containsKey('NOMBRE')) {
-      context.handle(_nombreMeta,
-          nombre.isAcceptableOrUnknown(data['NOMBRE']!, _nombreMeta));
+      context.handle(
+        _nombreMeta,
+        nombre.isAcceptableOrUnknown(data['NOMBRE']!, _nombreMeta),
+      );
     } else if (isInserting) {
       context.missing(_nombreMeta);
     }
     if (data.containsKey('IDIOMA_ID')) {
-      context.handle(_idiomaIdMeta,
-          idiomaId.isAcceptableOrUnknown(data['IDIOMA_ID']!, _idiomaIdMeta));
+      context.handle(
+        _idiomaIdMeta,
+        idiomaId.isAcceptableOrUnknown(data['IDIOMA_ID']!, _idiomaIdMeta),
+      );
     } else if (isInserting) {
       context.missing(_idiomaIdMeta);
     }
     if (data.containsKey('TIPO_PRECIO_CATALOGO_ID')) {
       context.handle(
+        _tipoPrecioCatalogoIdMeta,
+        tipoPrecioCatalogoId.isAcceptableOrUnknown(
+          data['TIPO_PRECIO_CATALOGO_ID']!,
           _tipoPrecioCatalogoIdMeta,
-          tipoPrecioCatalogoId.isAcceptableOrUnknown(
-              data['TIPO_PRECIO_CATALOGO_ID']!, _tipoPrecioCatalogoIdMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_tipoPrecioCatalogoIdMeta);
     }
     if (data.containsKey('TIPO_PRECIO_CATALOGO_NOMBRE')) {
       context.handle(
+        _tipoPrecioCatalogoNombreMeta,
+        tipoPrecioCatalogoNombre.isAcceptableOrUnknown(
+          data['TIPO_PRECIO_CATALOGO_NOMBRE']!,
           _tipoPrecioCatalogoNombreMeta,
-          tipoPrecioCatalogoNombre.isAcceptableOrUnknown(
-              data['TIPO_PRECIO_CATALOGO_NOMBRE']!,
-              _tipoPrecioCatalogoNombreMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_tipoPrecioCatalogoNombreMeta);
     }
     if (data.containsKey('TIPO_CATALOGO_ID')) {
       context.handle(
+        _tipoCatalogoIdMeta,
+        tipoCatalogoId.isAcceptableOrUnknown(
+          data['TIPO_CATALOGO_ID']!,
           _tipoCatalogoIdMeta,
-          tipoCatalogoId.isAcceptableOrUnknown(
-              data['TIPO_CATALOGO_ID']!, _tipoCatalogoIdMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_tipoCatalogoIdMeta);
     }
     if (data.containsKey('TAG_BUSQUEDA')) {
       context.handle(
+        _tagBusquedaMeta,
+        tagBusqueda.isAcceptableOrUnknown(
+          data['TAG_BUSQUEDA']!,
           _tagBusquedaMeta,
-          tagBusqueda.isAcceptableOrUnknown(
-              data['TAG_BUSQUEDA']!, _tagBusquedaMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_tagBusquedaMeta);
     }
     if (data.containsKey('ORDEN')) {
       context.handle(
-          _ordenMeta, orden.isAcceptableOrUnknown(data['ORDEN']!, _ordenMeta));
+        _ordenMeta,
+        orden.isAcceptableOrUnknown(data['ORDEN']!, _ordenMeta),
+      );
     } else if (isInserting) {
       context.missing(_ordenMeta);
     }
     if (data.containsKey('NOMBRE_FICHERO_PORTADA')) {
       context.handle(
+        _nombreFicheroPortadaMeta,
+        nombreFicheroPortada.isAcceptableOrUnknown(
+          data['NOMBRE_FICHERO_PORTADA']!,
           _nombreFicheroPortadaMeta,
-          nombreFicheroPortada.isAcceptableOrUnknown(
-              data['NOMBRE_FICHERO_PORTADA']!, _nombreFicheroPortadaMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_nombreFicheroPortadaMeta);
     }
     if (data.containsKey('NOMBRE_FICHERO_CATALOGO')) {
       context.handle(
+        _nombreFicheroCatalogoMeta,
+        nombreFicheroCatalogo.isAcceptableOrUnknown(
+          data['NOMBRE_FICHERO_CATALOGO']!,
           _nombreFicheroCatalogoMeta,
-          nombreFicheroCatalogo.isAcceptableOrUnknown(
-              data['NOMBRE_FICHERO_CATALOGO']!, _nombreFicheroCatalogoMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_nombreFicheroCatalogoMeta);
     }
     if (data.containsKey('DESCARGA_SN')) {
-      context.handle(_descargaMeta,
-          descarga.isAcceptableOrUnknown(data['DESCARGA_SN']!, _descargaMeta));
+      context.handle(
+        _descargaMeta,
+        descarga.isAcceptableOrUnknown(data['DESCARGA_SN']!, _descargaMeta),
+      );
     } else if (isInserting) {
       context.missing(_descargaMeta);
     }
@@ -3126,33 +4142,62 @@ class $CatalogoFavoritoTableTable extends CatalogoFavoritoTable
   @override
   CatalogoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return CatalogoDTO(
-      catalogoId: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}CATALOGO_ID'])!,
-      nombre: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}NOMBRE'])!,
-      idiomaId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}IDIOMA_ID'])!,
-      tipoPrecioCatalogoId: attachedDatabase.typeMapping.read(
-          DriftSqlType.string,
-          data['${effectivePrefix}TIPO_PRECIO_CATALOGO_ID'])!,
-      tipoPrecioCatalogoNombre: attachedDatabase.typeMapping.read(
-          DriftSqlType.string,
-          data['${effectivePrefix}TIPO_PRECIO_CATALOGO_NOMBRE'])!,
-      tipoCatalogoId: attachedDatabase.typeMapping.read(
-          DriftSqlType.string, data['${effectivePrefix}TIPO_CATALOGO_ID'])!,
-      tagBusqueda: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}TAG_BUSQUEDA'])!,
-      orden: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}ORDEN'])!,
-      nombreFicheroPortada: attachedDatabase.typeMapping.read(
-          DriftSqlType.string,
-          data['${effectivePrefix}NOMBRE_FICHERO_PORTADA'])!,
-      nombreFicheroCatalogo: attachedDatabase.typeMapping.read(
-          DriftSqlType.string,
-          data['${effectivePrefix}NOMBRE_FICHERO_CATALOGO'])!,
-      descarga: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}DESCARGA_SN'])!,
+    return CatalogoDTO.new(
+      catalogoId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}CATALOGO_ID'],
+          )!,
+      nombre:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}NOMBRE'],
+          )!,
+      idiomaId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}IDIOMA_ID'],
+          )!,
+      tipoPrecioCatalogoId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}TIPO_PRECIO_CATALOGO_ID'],
+          )!,
+      tipoPrecioCatalogoNombre:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}TIPO_PRECIO_CATALOGO_NOMBRE'],
+          )!,
+      tipoCatalogoId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}TIPO_CATALOGO_ID'],
+          )!,
+      tagBusqueda:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}TAG_BUSQUEDA'],
+          )!,
+      orden:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}ORDEN'],
+          )!,
+      nombreFicheroPortada:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}NOMBRE_FICHERO_PORTADA'],
+          )!,
+      nombreFicheroCatalogo:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}NOMBRE_FICHERO_CATALOGO'],
+          )!,
+      descarga:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}DESCARGA_SN'],
+          )!,
     );
   }
 
@@ -3199,16 +4244,16 @@ class CatalogoFavoritoTableCompanion extends UpdateCompanion<CatalogoDTO> {
     required String nombreFicheroPortada,
     required String nombreFicheroCatalogo,
     required String descarga,
-  })  : nombre = Value(nombre),
-        idiomaId = Value(idiomaId),
-        tipoPrecioCatalogoId = Value(tipoPrecioCatalogoId),
-        tipoPrecioCatalogoNombre = Value(tipoPrecioCatalogoNombre),
-        tipoCatalogoId = Value(tipoCatalogoId),
-        tagBusqueda = Value(tagBusqueda),
-        orden = Value(orden),
-        nombreFicheroPortada = Value(nombreFicheroPortada),
-        nombreFicheroCatalogo = Value(nombreFicheroCatalogo),
-        descarga = Value(descarga);
+  }) : nombre = Value(nombre),
+       idiomaId = Value(idiomaId),
+       tipoPrecioCatalogoId = Value(tipoPrecioCatalogoId),
+       tipoPrecioCatalogoNombre = Value(tipoPrecioCatalogoNombre),
+       tipoCatalogoId = Value(tipoCatalogoId),
+       tagBusqueda = Value(tagBusqueda),
+       orden = Value(orden),
+       nombreFicheroPortada = Value(nombreFicheroPortada),
+       nombreFicheroCatalogo = Value(nombreFicheroCatalogo),
+       descarga = Value(descarga);
   static Insertable<CatalogoDTO> custom({
     Expression<int>? catalogoId,
     Expression<String>? nombre,
@@ -3241,18 +4286,19 @@ class CatalogoFavoritoTableCompanion extends UpdateCompanion<CatalogoDTO> {
     });
   }
 
-  CatalogoFavoritoTableCompanion copyWith(
-      {Value<int>? catalogoId,
-      Value<String>? nombre,
-      Value<String>? idiomaId,
-      Value<String>? tipoPrecioCatalogoId,
-      Value<String>? tipoPrecioCatalogoNombre,
-      Value<String>? tipoCatalogoId,
-      Value<String>? tagBusqueda,
-      Value<int>? orden,
-      Value<String>? nombreFicheroPortada,
-      Value<String>? nombreFicheroCatalogo,
-      Value<String>? descarga}) {
+  CatalogoFavoritoTableCompanion copyWith({
+    Value<int>? catalogoId,
+    Value<String>? nombre,
+    Value<String>? idiomaId,
+    Value<String>? tipoPrecioCatalogoId,
+    Value<String>? tipoPrecioCatalogoNombre,
+    Value<String>? tipoCatalogoId,
+    Value<String>? tagBusqueda,
+    Value<int>? orden,
+    Value<String>? nombreFicheroPortada,
+    Value<String>? nombreFicheroCatalogo,
+    Value<String>? descarga,
+  }) {
     return CatalogoFavoritoTableCompanion(
       catalogoId: catalogoId ?? this.catalogoId,
       nombre: nombre ?? this.nombre,
@@ -3283,12 +4329,14 @@ class CatalogoFavoritoTableCompanion extends UpdateCompanion<CatalogoDTO> {
       map['IDIOMA_ID'] = Variable<String>(idiomaId.value);
     }
     if (tipoPrecioCatalogoId.present) {
-      map['TIPO_PRECIO_CATALOGO_ID'] =
-          Variable<String>(tipoPrecioCatalogoId.value);
+      map['TIPO_PRECIO_CATALOGO_ID'] = Variable<String>(
+        tipoPrecioCatalogoId.value,
+      );
     }
     if (tipoPrecioCatalogoNombre.present) {
-      map['TIPO_PRECIO_CATALOGO_NOMBRE'] =
-          Variable<String>(tipoPrecioCatalogoNombre.value);
+      map['TIPO_PRECIO_CATALOGO_NOMBRE'] = Variable<String>(
+        tipoPrecioCatalogoNombre.value,
+      );
     }
     if (tipoCatalogoId.present) {
       map['TIPO_CATALOGO_ID'] = Variable<String>(tipoCatalogoId.value);
@@ -3300,12 +4348,14 @@ class CatalogoFavoritoTableCompanion extends UpdateCompanion<CatalogoDTO> {
       map['ORDEN'] = Variable<int>(orden.value);
     }
     if (nombreFicheroPortada.present) {
-      map['NOMBRE_FICHERO_PORTADA'] =
-          Variable<String>(nombreFicheroPortada.value);
+      map['NOMBRE_FICHERO_PORTADA'] = Variable<String>(
+        nombreFicheroPortada.value,
+      );
     }
     if (nombreFicheroCatalogo.present) {
-      map['NOMBRE_FICHERO_CATALOGO'] =
-          Variable<String>(nombreFicheroCatalogo.value);
+      map['NOMBRE_FICHERO_CATALOGO'] = Variable<String>(
+        nombreFicheroCatalogo.value,
+      );
     }
     if (descarga.present) {
       map['DESCARGA_SN'] = Variable<String>(descarga.value);
@@ -3341,103 +4391,166 @@ class $ClienteContactoImpTableTable extends ClienteContactoImpTable
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
-      'GUID', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'GUID',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _fechaMeta = const VerificationMeta('fecha');
   @override
   late final GeneratedColumn<DateTime> fecha = GeneratedColumn<DateTime>(
-      'FECHA', aliasedName, false,
-      type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  static const VerificationMeta _usuarioIdMeta =
-      const VerificationMeta('usuarioId');
+    'FECHA',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _usuarioIdMeta = const VerificationMeta(
+    'usuarioId',
+  );
   @override
   late final GeneratedColumn<String> usuarioId = GeneratedColumn<String>(
-      'USUARIO_ID', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _clienteIdMeta =
-      const VerificationMeta('clienteId');
+    'USUARIO_ID',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _clienteIdMeta = const VerificationMeta(
+    'clienteId',
+  );
   @override
   late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
-      'CLIENTE_ID', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _contactoIdMeta =
-      const VerificationMeta('contactoId');
+    'CLIENTE_ID',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _contactoIdMeta = const VerificationMeta(
+    'contactoId',
+  );
   @override
   late final GeneratedColumn<String> contactoId = GeneratedColumn<String>(
-      'CONTACTO_ID', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _observacionesMeta =
-      const VerificationMeta('observaciones');
+    'CONTACTO_ID',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _observacionesMeta = const VerificationMeta(
+    'observaciones',
+  );
   @override
   late final GeneratedColumn<String> observaciones = GeneratedColumn<String>(
-      'OBSERVACIONES', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'OBSERVACIONES',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _nombreMeta = const VerificationMeta('nombre');
   @override
   late final GeneratedColumn<String> nombre = GeneratedColumn<String>(
-      'NOMBRE', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _apellido1Meta =
-      const VerificationMeta('apellido1');
+    'NOMBRE',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _apellido1Meta = const VerificationMeta(
+    'apellido1',
+  );
   @override
   late final GeneratedColumn<String> apellido1 = GeneratedColumn<String>(
-      'APELLIDO1', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _apellido2Meta =
-      const VerificationMeta('apellido2');
+    'APELLIDO1',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _apellido2Meta = const VerificationMeta(
+    'apellido2',
+  );
   @override
   late final GeneratedColumn<String> apellido2 = GeneratedColumn<String>(
-      'APELLIDO2', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _telefono1Meta =
-      const VerificationMeta('telefono1');
+    'APELLIDO2',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _telefono1Meta = const VerificationMeta(
+    'telefono1',
+  );
   @override
   late final GeneratedColumn<String> telefono1 = GeneratedColumn<String>(
-      'TELEFONO1', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _telefono2Meta =
-      const VerificationMeta('telefono2');
+    'TELEFONO1',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _telefono2Meta = const VerificationMeta(
+    'telefono2',
+  );
   @override
   late final GeneratedColumn<String> telefono2 = GeneratedColumn<String>(
-      'TELEFONO2', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'TELEFONO2',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _emailMeta = const VerificationMeta('email');
   @override
   late final GeneratedColumn<String> email = GeneratedColumn<String>(
-      'EMAIL', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _enviadoMeta =
-      const VerificationMeta('enviado');
+    'EMAIL',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _enviadoMeta = const VerificationMeta(
+    'enviado',
+  );
   @override
   late final GeneratedColumn<String> enviado = GeneratedColumn<String>(
-      'ENVIADO', aliasedName, false,
-      type: DriftSqlType.string,
-      requiredDuringInsert: false,
-      defaultValue: const Constant('N'));
+    'ENVIADO',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('N'),
+  );
   static const VerificationMeta _borrarMeta = const VerificationMeta('borrar');
   @override
   late final GeneratedColumn<String> borrar = GeneratedColumn<String>(
-      'BORRAR', aliasedName, false,
-      type: DriftSqlType.string,
-      requiredDuringInsert: false,
-      defaultValue: const Constant('N'));
+    'BORRAR',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('N'),
+  );
   @override
   List<GeneratedColumn> get $columns => [
-        id,
-        fecha,
-        usuarioId,
-        clienteId,
-        contactoId,
-        observaciones,
-        nombre,
-        apellido1,
-        apellido2,
-        telefono1,
-        telefono2,
-        email,
-        enviado,
-        borrar
-      ];
+    id,
+    fecha,
+    usuarioId,
+    clienteId,
+    contactoId,
+    observaciones,
+    nombre,
+    apellido1,
+    apellido2,
+    telefono1,
+    telefono2,
+    email,
+    enviado,
+    borrar,
+  ];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -3445,8 +4558,9 @@ class $ClienteContactoImpTableTable extends ClienteContactoImpTable
   static const String $name = 'CLIENTES_CONTACTOS_IMP';
   @override
   VerificationContext validateIntegrity(
-      Insertable<ClienteContactoImpDTO> instance,
-      {bool isInserting = false}) {
+    Insertable<ClienteContactoImpDTO> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('GUID')) {
@@ -3456,65 +4570,90 @@ class $ClienteContactoImpTableTable extends ClienteContactoImpTable
     }
     if (data.containsKey('FECHA')) {
       context.handle(
-          _fechaMeta, fecha.isAcceptableOrUnknown(data['FECHA']!, _fechaMeta));
+        _fechaMeta,
+        fecha.isAcceptableOrUnknown(data['FECHA']!, _fechaMeta),
+      );
     } else if (isInserting) {
       context.missing(_fechaMeta);
     }
     if (data.containsKey('USUARIO_ID')) {
-      context.handle(_usuarioIdMeta,
-          usuarioId.isAcceptableOrUnknown(data['USUARIO_ID']!, _usuarioIdMeta));
+      context.handle(
+        _usuarioIdMeta,
+        usuarioId.isAcceptableOrUnknown(data['USUARIO_ID']!, _usuarioIdMeta),
+      );
     } else if (isInserting) {
       context.missing(_usuarioIdMeta);
     }
     if (data.containsKey('CLIENTE_ID')) {
-      context.handle(_clienteIdMeta,
-          clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta));
+      context.handle(
+        _clienteIdMeta,
+        clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta),
+      );
     } else if (isInserting) {
       context.missing(_clienteIdMeta);
     }
     if (data.containsKey('CONTACTO_ID')) {
       context.handle(
-          _contactoIdMeta,
-          contactoId.isAcceptableOrUnknown(
-              data['CONTACTO_ID']!, _contactoIdMeta));
+        _contactoIdMeta,
+        contactoId.isAcceptableOrUnknown(data['CONTACTO_ID']!, _contactoIdMeta),
+      );
     }
     if (data.containsKey('OBSERVACIONES')) {
       context.handle(
+        _observacionesMeta,
+        observaciones.isAcceptableOrUnknown(
+          data['OBSERVACIONES']!,
           _observacionesMeta,
-          observaciones.isAcceptableOrUnknown(
-              data['OBSERVACIONES']!, _observacionesMeta));
+        ),
+      );
     }
     if (data.containsKey('NOMBRE')) {
-      context.handle(_nombreMeta,
-          nombre.isAcceptableOrUnknown(data['NOMBRE']!, _nombreMeta));
+      context.handle(
+        _nombreMeta,
+        nombre.isAcceptableOrUnknown(data['NOMBRE']!, _nombreMeta),
+      );
     }
     if (data.containsKey('APELLIDO1')) {
-      context.handle(_apellido1Meta,
-          apellido1.isAcceptableOrUnknown(data['APELLIDO1']!, _apellido1Meta));
+      context.handle(
+        _apellido1Meta,
+        apellido1.isAcceptableOrUnknown(data['APELLIDO1']!, _apellido1Meta),
+      );
     }
     if (data.containsKey('APELLIDO2')) {
-      context.handle(_apellido2Meta,
-          apellido2.isAcceptableOrUnknown(data['APELLIDO2']!, _apellido2Meta));
+      context.handle(
+        _apellido2Meta,
+        apellido2.isAcceptableOrUnknown(data['APELLIDO2']!, _apellido2Meta),
+      );
     }
     if (data.containsKey('TELEFONO1')) {
-      context.handle(_telefono1Meta,
-          telefono1.isAcceptableOrUnknown(data['TELEFONO1']!, _telefono1Meta));
+      context.handle(
+        _telefono1Meta,
+        telefono1.isAcceptableOrUnknown(data['TELEFONO1']!, _telefono1Meta),
+      );
     }
     if (data.containsKey('TELEFONO2')) {
-      context.handle(_telefono2Meta,
-          telefono2.isAcceptableOrUnknown(data['TELEFONO2']!, _telefono2Meta));
+      context.handle(
+        _telefono2Meta,
+        telefono2.isAcceptableOrUnknown(data['TELEFONO2']!, _telefono2Meta),
+      );
     }
     if (data.containsKey('EMAIL')) {
       context.handle(
-          _emailMeta, email.isAcceptableOrUnknown(data['EMAIL']!, _emailMeta));
+        _emailMeta,
+        email.isAcceptableOrUnknown(data['EMAIL']!, _emailMeta),
+      );
     }
     if (data.containsKey('ENVIADO')) {
-      context.handle(_enviadoMeta,
-          enviado.isAcceptableOrUnknown(data['ENVIADO']!, _enviadoMeta));
+      context.handle(
+        _enviadoMeta,
+        enviado.isAcceptableOrUnknown(data['ENVIADO']!, _enviadoMeta),
+      );
     }
     if (data.containsKey('BORRAR')) {
-      context.handle(_borrarMeta,
-          borrar.isAcceptableOrUnknown(data['BORRAR']!, _borrarMeta));
+      context.handle(
+        _borrarMeta,
+        borrar.isAcceptableOrUnknown(data['BORRAR']!, _borrarMeta),
+      );
     }
     return context;
   }
@@ -3524,35 +4663,69 @@ class $ClienteContactoImpTableTable extends ClienteContactoImpTable
   @override
   ClienteContactoImpDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return ClienteContactoImpDTO(
-      id: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}GUID'])!,
-      fecha: attachedDatabase.typeMapping
-          .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA'])!,
-      usuarioId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}USUARIO_ID'])!,
-      clienteId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
-      contactoId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}CONTACTO_ID']),
-      observaciones: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}OBSERVACIONES']),
-      nombre: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}NOMBRE']),
-      apellido1: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}APELLIDO1']),
-      apellido2: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}APELLIDO2']),
-      telefono1: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}TELEFONO1']),
-      telefono2: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}TELEFONO2']),
-      email: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}EMAIL']),
-      enviado: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}ENVIADO'])!,
-      borrar: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}BORRAR'])!,
+    return ClienteContactoImpDTO.new(
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}GUID'],
+          )!,
+      fecha:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}FECHA'],
+          )!,
+      usuarioId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}USUARIO_ID'],
+          )!,
+      clienteId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}CLIENTE_ID'],
+          )!,
+      contactoId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}CONTACTO_ID'],
+      ),
+      observaciones: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}OBSERVACIONES'],
+      ),
+      nombre: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}NOMBRE'],
+      ),
+      apellido1: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}APELLIDO1'],
+      ),
+      apellido2: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}APELLIDO2'],
+      ),
+      telefono1: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}TELEFONO1'],
+      ),
+      telefono2: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}TELEFONO2'],
+      ),
+      email: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}EMAIL'],
+      ),
+      enviado:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}ENVIADO'],
+          )!,
+      borrar:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}BORRAR'],
+          )!,
     );
   }
 
@@ -3612,10 +4785,10 @@ class ClienteContactoImpTableCompanion
     this.enviado = const Value.absent(),
     this.borrar = const Value.absent(),
     this.rowid = const Value.absent(),
-  })  : id = Value(id),
-        fecha = Value(fecha),
-        usuarioId = Value(usuarioId),
-        clienteId = Value(clienteId);
+  }) : id = Value(id),
+       fecha = Value(fecha),
+       usuarioId = Value(usuarioId),
+       clienteId = Value(clienteId);
   static Insertable<ClienteContactoImpDTO> custom({
     Expression<String>? id,
     Expression<DateTime>? fecha,
@@ -3652,22 +4825,23 @@ class ClienteContactoImpTableCompanion
     });
   }
 
-  ClienteContactoImpTableCompanion copyWith(
-      {Value<String>? id,
-      Value<DateTime>? fecha,
-      Value<String>? usuarioId,
-      Value<String>? clienteId,
-      Value<String?>? contactoId,
-      Value<String?>? observaciones,
-      Value<String?>? nombre,
-      Value<String?>? apellido1,
-      Value<String?>? apellido2,
-      Value<String?>? telefono1,
-      Value<String?>? telefono2,
-      Value<String?>? email,
-      Value<String>? enviado,
-      Value<String>? borrar,
-      Value<int>? rowid}) {
+  ClienteContactoImpTableCompanion copyWith({
+    Value<String>? id,
+    Value<DateTime>? fecha,
+    Value<String>? usuarioId,
+    Value<String>? clienteId,
+    Value<String?>? contactoId,
+    Value<String?>? observaciones,
+    Value<String?>? nombre,
+    Value<String?>? apellido1,
+    Value<String?>? apellido2,
+    Value<String?>? telefono1,
+    Value<String?>? telefono2,
+    Value<String?>? email,
+    Value<String>? enviado,
+    Value<String>? borrar,
+    Value<int>? rowid,
+  }) {
     return ClienteContactoImpTableCompanion(
       id: id ?? this.id,
       fecha: fecha ?? this.fecha,
@@ -3770,110 +4944,178 @@ class $ClienteDireccionImpTableTable extends ClienteDireccionImpTable
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
-      'GUID', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'GUID',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _fechaMeta = const VerificationMeta('fecha');
   @override
   late final GeneratedColumn<DateTime> fecha = GeneratedColumn<DateTime>(
-      'FECHA', aliasedName, false,
-      type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  static const VerificationMeta _usuarioIdMeta =
-      const VerificationMeta('usuarioId');
+    'FECHA',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _usuarioIdMeta = const VerificationMeta(
+    'usuarioId',
+  );
   @override
   late final GeneratedColumn<String> usuarioId = GeneratedColumn<String>(
-      'USUARIO_ID', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _clienteIdMeta =
-      const VerificationMeta('clienteId');
+    'USUARIO_ID',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _clienteIdMeta = const VerificationMeta(
+    'clienteId',
+  );
   @override
   late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
-      'CLIENTE_ID', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _direccionIdMeta =
-      const VerificationMeta('direccionId');
+    'CLIENTE_ID',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _direccionIdMeta = const VerificationMeta(
+    'direccionId',
+  );
   @override
   late final GeneratedColumn<String> direccionId = GeneratedColumn<String>(
-      'DIRECCION_ID', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'DIRECCION_ID',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _nombreMeta = const VerificationMeta('nombre');
   @override
   late final GeneratedColumn<String> nombre = GeneratedColumn<String>(
-      'NOMBRE', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _direccion1Meta =
-      const VerificationMeta('direccion1');
+    'NOMBRE',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _direccion1Meta = const VerificationMeta(
+    'direccion1',
+  );
   @override
   late final GeneratedColumn<String> direccion1 = GeneratedColumn<String>(
-      'DIRECCION1', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _direccion2Meta =
-      const VerificationMeta('direccion2');
+    'DIRECCION1',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _direccion2Meta = const VerificationMeta(
+    'direccion2',
+  );
   @override
   late final GeneratedColumn<String> direccion2 = GeneratedColumn<String>(
-      'DIRECCION2', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _codigoPostalMeta =
-      const VerificationMeta('codigoPostal');
+    'DIRECCION2',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _codigoPostalMeta = const VerificationMeta(
+    'codigoPostal',
+  );
   @override
   late final GeneratedColumn<String> codigoPostal = GeneratedColumn<String>(
-      'CODIGO_POSTAL', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _poblacionMeta =
-      const VerificationMeta('poblacion');
+    'CODIGO_POSTAL',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _poblacionMeta = const VerificationMeta(
+    'poblacion',
+  );
   @override
   late final GeneratedColumn<String> poblacion = GeneratedColumn<String>(
-      'POBLACION', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _provinciaMeta =
-      const VerificationMeta('provincia');
+    'POBLACION',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _provinciaMeta = const VerificationMeta(
+    'provincia',
+  );
   @override
   late final GeneratedColumn<String> provincia = GeneratedColumn<String>(
-      'PROVINCIA', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'PROVINCIA',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _paisIdMeta = const VerificationMeta('paisId');
   @override
   late final GeneratedColumn<String> paisId = GeneratedColumn<String>(
-      'PAIS_ID', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _telefonoMeta =
-      const VerificationMeta('telefono');
+    'PAIS_ID',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _telefonoMeta = const VerificationMeta(
+    'telefono',
+  );
   @override
   late final GeneratedColumn<String> telefono = GeneratedColumn<String>(
-      'TELEFONO', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _enviadaMeta =
-      const VerificationMeta('enviada');
+    'TELEFONO',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _enviadaMeta = const VerificationMeta(
+    'enviada',
+  );
   @override
   late final GeneratedColumn<String> enviada = GeneratedColumn<String>(
-      'ENVIADA', aliasedName, false,
-      type: DriftSqlType.string,
-      requiredDuringInsert: false,
-      defaultValue: const Constant('N'));
+    'ENVIADA',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('N'),
+  );
   static const VerificationMeta _borrarMeta = const VerificationMeta('borrar');
   @override
   late final GeneratedColumn<String> borrar = GeneratedColumn<String>(
-      'BORRAR', aliasedName, false,
-      type: DriftSqlType.string,
-      requiredDuringInsert: false,
-      defaultValue: const Constant('N'));
+    'BORRAR',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('N'),
+  );
   @override
   List<GeneratedColumn> get $columns => [
-        id,
-        fecha,
-        usuarioId,
-        clienteId,
-        direccionId,
-        nombre,
-        direccion1,
-        direccion2,
-        codigoPostal,
-        poblacion,
-        provincia,
-        paisId,
-        telefono,
-        enviada,
-        borrar
-      ];
+    id,
+    fecha,
+    usuarioId,
+    clienteId,
+    direccionId,
+    nombre,
+    direccion1,
+    direccion2,
+    codigoPostal,
+    poblacion,
+    provincia,
+    paisId,
+    telefono,
+    enviada,
+    borrar,
+  ];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -3881,8 +5123,9 @@ class $ClienteDireccionImpTableTable extends ClienteDireccionImpTable
   static const String $name = 'CLIENTES_DIRECCIONES_ENVIO_IMP';
   @override
   VerificationContext validateIntegrity(
-      Insertable<ClienteDireccionImpDTO> instance,
-      {bool isInserting = false}) {
+    Insertable<ClienteDireccionImpDTO> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('GUID')) {
@@ -3892,73 +5135,99 @@ class $ClienteDireccionImpTableTable extends ClienteDireccionImpTable
     }
     if (data.containsKey('FECHA')) {
       context.handle(
-          _fechaMeta, fecha.isAcceptableOrUnknown(data['FECHA']!, _fechaMeta));
+        _fechaMeta,
+        fecha.isAcceptableOrUnknown(data['FECHA']!, _fechaMeta),
+      );
     } else if (isInserting) {
       context.missing(_fechaMeta);
     }
     if (data.containsKey('USUARIO_ID')) {
-      context.handle(_usuarioIdMeta,
-          usuarioId.isAcceptableOrUnknown(data['USUARIO_ID']!, _usuarioIdMeta));
+      context.handle(
+        _usuarioIdMeta,
+        usuarioId.isAcceptableOrUnknown(data['USUARIO_ID']!, _usuarioIdMeta),
+      );
     } else if (isInserting) {
       context.missing(_usuarioIdMeta);
     }
     if (data.containsKey('CLIENTE_ID')) {
-      context.handle(_clienteIdMeta,
-          clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta));
+      context.handle(
+        _clienteIdMeta,
+        clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta),
+      );
     } else if (isInserting) {
       context.missing(_clienteIdMeta);
     }
     if (data.containsKey('DIRECCION_ID')) {
       context.handle(
+        _direccionIdMeta,
+        direccionId.isAcceptableOrUnknown(
+          data['DIRECCION_ID']!,
           _direccionIdMeta,
-          direccionId.isAcceptableOrUnknown(
-              data['DIRECCION_ID']!, _direccionIdMeta));
+        ),
+      );
     }
     if (data.containsKey('NOMBRE')) {
-      context.handle(_nombreMeta,
-          nombre.isAcceptableOrUnknown(data['NOMBRE']!, _nombreMeta));
+      context.handle(
+        _nombreMeta,
+        nombre.isAcceptableOrUnknown(data['NOMBRE']!, _nombreMeta),
+      );
     }
     if (data.containsKey('DIRECCION1')) {
       context.handle(
-          _direccion1Meta,
-          direccion1.isAcceptableOrUnknown(
-              data['DIRECCION1']!, _direccion1Meta));
+        _direccion1Meta,
+        direccion1.isAcceptableOrUnknown(data['DIRECCION1']!, _direccion1Meta),
+      );
     }
     if (data.containsKey('DIRECCION2')) {
       context.handle(
-          _direccion2Meta,
-          direccion2.isAcceptableOrUnknown(
-              data['DIRECCION2']!, _direccion2Meta));
+        _direccion2Meta,
+        direccion2.isAcceptableOrUnknown(data['DIRECCION2']!, _direccion2Meta),
+      );
     }
     if (data.containsKey('CODIGO_POSTAL')) {
       context.handle(
+        _codigoPostalMeta,
+        codigoPostal.isAcceptableOrUnknown(
+          data['CODIGO_POSTAL']!,
           _codigoPostalMeta,
-          codigoPostal.isAcceptableOrUnknown(
-              data['CODIGO_POSTAL']!, _codigoPostalMeta));
+        ),
+      );
     }
     if (data.containsKey('POBLACION')) {
-      context.handle(_poblacionMeta,
-          poblacion.isAcceptableOrUnknown(data['POBLACION']!, _poblacionMeta));
+      context.handle(
+        _poblacionMeta,
+        poblacion.isAcceptableOrUnknown(data['POBLACION']!, _poblacionMeta),
+      );
     }
     if (data.containsKey('PROVINCIA')) {
-      context.handle(_provinciaMeta,
-          provincia.isAcceptableOrUnknown(data['PROVINCIA']!, _provinciaMeta));
+      context.handle(
+        _provinciaMeta,
+        provincia.isAcceptableOrUnknown(data['PROVINCIA']!, _provinciaMeta),
+      );
     }
     if (data.containsKey('PAIS_ID')) {
-      context.handle(_paisIdMeta,
-          paisId.isAcceptableOrUnknown(data['PAIS_ID']!, _paisIdMeta));
+      context.handle(
+        _paisIdMeta,
+        paisId.isAcceptableOrUnknown(data['PAIS_ID']!, _paisIdMeta),
+      );
     }
     if (data.containsKey('TELEFONO')) {
-      context.handle(_telefonoMeta,
-          telefono.isAcceptableOrUnknown(data['TELEFONO']!, _telefonoMeta));
+      context.handle(
+        _telefonoMeta,
+        telefono.isAcceptableOrUnknown(data['TELEFONO']!, _telefonoMeta),
+      );
     }
     if (data.containsKey('ENVIADA')) {
-      context.handle(_enviadaMeta,
-          enviada.isAcceptableOrUnknown(data['ENVIADA']!, _enviadaMeta));
+      context.handle(
+        _enviadaMeta,
+        enviada.isAcceptableOrUnknown(data['ENVIADA']!, _enviadaMeta),
+      );
     }
     if (data.containsKey('BORRAR')) {
-      context.handle(_borrarMeta,
-          borrar.isAcceptableOrUnknown(data['BORRAR']!, _borrarMeta));
+      context.handle(
+        _borrarMeta,
+        borrar.isAcceptableOrUnknown(data['BORRAR']!, _borrarMeta),
+      );
     }
     return context;
   }
@@ -3968,37 +5237,73 @@ class $ClienteDireccionImpTableTable extends ClienteDireccionImpTable
   @override
   ClienteDireccionImpDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return ClienteDireccionImpDTO(
-      id: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}GUID'])!,
-      fecha: attachedDatabase.typeMapping
-          .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA'])!,
-      usuarioId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}USUARIO_ID'])!,
-      clienteId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
-      direccionId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION_ID']),
-      nombre: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}NOMBRE']),
-      direccion1: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION1']),
-      direccion2: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION2']),
-      codigoPostal: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}CODIGO_POSTAL']),
-      poblacion: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}POBLACION']),
-      provincia: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}PROVINCIA']),
-      paisId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}PAIS_ID']),
-      telefono: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}TELEFONO']),
-      enviada: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}ENVIADA'])!,
-      borrar: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}BORRAR'])!,
+    return ClienteDireccionImpDTO.new(
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}GUID'],
+          )!,
+      fecha:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}FECHA'],
+          )!,
+      usuarioId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}USUARIO_ID'],
+          )!,
+      clienteId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}CLIENTE_ID'],
+          )!,
+      direccionId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DIRECCION_ID'],
+      ),
+      nombre: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}NOMBRE'],
+      ),
+      direccion1: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DIRECCION1'],
+      ),
+      direccion2: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}DIRECCION2'],
+      ),
+      codigoPostal: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}CODIGO_POSTAL'],
+      ),
+      poblacion: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}POBLACION'],
+      ),
+      provincia: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}PROVINCIA'],
+      ),
+      paisId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}PAIS_ID'],
+      ),
+      telefono: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}TELEFONO'],
+      ),
+      enviada:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}ENVIADA'],
+          )!,
+      borrar:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}BORRAR'],
+          )!,
     );
   }
 
@@ -4061,10 +5366,10 @@ class ClienteDireccionImpTableCompanion
     this.enviada = const Value.absent(),
     this.borrar = const Value.absent(),
     this.rowid = const Value.absent(),
-  })  : id = Value(id),
-        fecha = Value(fecha),
-        usuarioId = Value(usuarioId),
-        clienteId = Value(clienteId);
+  }) : id = Value(id),
+       fecha = Value(fecha),
+       usuarioId = Value(usuarioId),
+       clienteId = Value(clienteId);
   static Insertable<ClienteDireccionImpDTO> custom({
     Expression<String>? id,
     Expression<DateTime>? fecha,
@@ -4103,23 +5408,24 @@ class ClienteDireccionImpTableCompanion
     });
   }
 
-  ClienteDireccionImpTableCompanion copyWith(
-      {Value<String>? id,
-      Value<DateTime>? fecha,
-      Value<String>? usuarioId,
-      Value<String>? clienteId,
-      Value<String?>? direccionId,
-      Value<String?>? nombre,
-      Value<String?>? direccion1,
-      Value<String?>? direccion2,
-      Value<String?>? codigoPostal,
-      Value<String?>? poblacion,
-      Value<String?>? provincia,
-      Value<String?>? paisId,
-      Value<String?>? telefono,
-      Value<String>? enviada,
-      Value<String>? borrar,
-      Value<int>? rowid}) {
+  ClienteDireccionImpTableCompanion copyWith({
+    Value<String>? id,
+    Value<DateTime>? fecha,
+    Value<String>? usuarioId,
+    Value<String>? clienteId,
+    Value<String?>? direccionId,
+    Value<String?>? nombre,
+    Value<String?>? direccion1,
+    Value<String?>? direccion2,
+    Value<String?>? codigoPostal,
+    Value<String?>? poblacion,
+    Value<String?>? provincia,
+    Value<String?>? paisId,
+    Value<String?>? telefono,
+    Value<String>? enviada,
+    Value<String>? borrar,
+    Value<int>? rowid,
+  }) {
     return ClienteDireccionImpTableCompanion(
       id: id ?? this.id,
       fecha: fecha ?? this.fecha,
@@ -4224,18 +5530,28 @@ class $CatalogoOrdenTableTable extends CatalogoOrdenTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $CatalogoOrdenTableTable(this.attachedDatabase, [this._alias]);
-  static const VerificationMeta _catalogoIdMeta =
-      const VerificationMeta('catalogoId');
+  static const VerificationMeta _catalogoIdMeta = const VerificationMeta(
+    'catalogoId',
+  );
   @override
   late final GeneratedColumn<int> catalogoId = GeneratedColumn<int>(
-      'CATALOGO_ID', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: false);
-  static const VerificationMeta _fechaAbiertoMeta =
-      const VerificationMeta('fechaAbierto');
+    'CATALOGO_ID',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _fechaAbiertoMeta = const VerificationMeta(
+    'fechaAbierto',
+  );
   @override
   late final GeneratedColumn<DateTime> fechaAbierto = GeneratedColumn<DateTime>(
-      'FECHA_ABIERTO', aliasedName, false,
-      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+    'FECHA_ABIERTO',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
   @override
   List<GeneratedColumn> get $columns => [catalogoId, fechaAbierto];
   @override
@@ -4244,21 +5560,26 @@ class $CatalogoOrdenTableTable extends CatalogoOrdenTable
   String get actualTableName => $name;
   static const String $name = 'CATALOGO_ORDEN';
   @override
-  VerificationContext validateIntegrity(Insertable<CatalogoOrdenDTO> instance,
-      {bool isInserting = false}) {
+  VerificationContext validateIntegrity(
+    Insertable<CatalogoOrdenDTO> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('CATALOGO_ID')) {
       context.handle(
-          _catalogoIdMeta,
-          catalogoId.isAcceptableOrUnknown(
-              data['CATALOGO_ID']!, _catalogoIdMeta));
+        _catalogoIdMeta,
+        catalogoId.isAcceptableOrUnknown(data['CATALOGO_ID']!, _catalogoIdMeta),
+      );
     }
     if (data.containsKey('FECHA_ABIERTO')) {
       context.handle(
+        _fechaAbiertoMeta,
+        fechaAbierto.isAcceptableOrUnknown(
+          data['FECHA_ABIERTO']!,
           _fechaAbiertoMeta,
-          fechaAbierto.isAcceptableOrUnknown(
-              data['FECHA_ABIERTO']!, _fechaAbiertoMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_fechaAbiertoMeta);
     }
@@ -4270,11 +5591,17 @@ class $CatalogoOrdenTableTable extends CatalogoOrdenTable
   @override
   CatalogoOrdenDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return CatalogoOrdenDTO(
-      catalogoId: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}CATALOGO_ID'])!,
-      fechaAbierto: attachedDatabase.typeMapping.read(
-          DriftSqlType.dateTime, data['${effectivePrefix}FECHA_ABIERTO'])!,
+    return CatalogoOrdenDTO.new(
+      catalogoId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}CATALOGO_ID'],
+          )!,
+      fechaAbierto:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}FECHA_ABIERTO'],
+          )!,
     );
   }
 
@@ -4305,8 +5632,10 @@ class CatalogoOrdenTableCompanion extends UpdateCompanion<CatalogoOrdenDTO> {
     });
   }
 
-  CatalogoOrdenTableCompanion copyWith(
-      {Value<int>? catalogoId, Value<DateTime>? fechaAbierto}) {
+  CatalogoOrdenTableCompanion copyWith({
+    Value<int>? catalogoId,
+    Value<DateTime>? fechaAbierto,
+  }) {
     return CatalogoOrdenTableCompanion(
       catalogoId: catalogoId ?? this.catalogoId,
       fechaAbierto: fechaAbierto ?? this.fechaAbierto,
@@ -4341,18 +5670,28 @@ class $ClienteImpTableTable extends ClienteImpTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ClienteImpTableTable(this.attachedDatabase, [this._alias]);
-  static const VerificationMeta _clienteIdMeta =
-      const VerificationMeta('clienteId');
+  static const VerificationMeta _clienteIdMeta = const VerificationMeta(
+    'clienteId',
+  );
   @override
   late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
-      'CLIENTE_ID', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _sectorIdMeta =
-      const VerificationMeta('sectorId');
+    'CLIENTE_ID',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _sectorIdMeta = const VerificationMeta(
+    'sectorId',
+  );
   @override
   late final GeneratedColumn<String> sectorId = GeneratedColumn<String>(
-      'SECTOR_ID', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'SECTOR_ID',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   @override
   List<GeneratedColumn> get $columns => [clienteId, sectorId];
   @override
@@ -4361,19 +5700,25 @@ class $ClienteImpTableTable extends ClienteImpTable
   String get actualTableName => $name;
   static const String $name = 'CLIENTES_IMP';
   @override
-  VerificationContext validateIntegrity(Insertable<ClienteImpDTO> instance,
-      {bool isInserting = false}) {
+  VerificationContext validateIntegrity(
+    Insertable<ClienteImpDTO> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('CLIENTE_ID')) {
-      context.handle(_clienteIdMeta,
-          clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta));
+      context.handle(
+        _clienteIdMeta,
+        clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta),
+      );
     } else if (isInserting) {
       context.missing(_clienteIdMeta);
     }
     if (data.containsKey('SECTOR_ID')) {
-      context.handle(_sectorIdMeta,
-          sectorId.isAcceptableOrUnknown(data['SECTOR_ID']!, _sectorIdMeta));
+      context.handle(
+        _sectorIdMeta,
+        sectorId.isAcceptableOrUnknown(data['SECTOR_ID']!, _sectorIdMeta),
+      );
     } else if (isInserting) {
       context.missing(_sectorIdMeta);
     }
@@ -4385,11 +5730,17 @@ class $ClienteImpTableTable extends ClienteImpTable
   @override
   ClienteImpDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return ClienteImpDTO(
-      clienteId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
-      sectorId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}SECTOR_ID'])!,
+    return ClienteImpDTO.new(
+      clienteId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}CLIENTE_ID'],
+          )!,
+      sectorId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}SECTOR_ID'],
+          )!,
     );
   }
 
@@ -4412,8 +5763,8 @@ class ClienteImpTableCompanion extends UpdateCompanion<ClienteImpDTO> {
     required String clienteId,
     required String sectorId,
     this.rowid = const Value.absent(),
-  })  : clienteId = Value(clienteId),
-        sectorId = Value(sectorId);
+  }) : clienteId = Value(clienteId),
+       sectorId = Value(sectorId);
   static Insertable<ClienteImpDTO> custom({
     Expression<String>? clienteId,
     Expression<String>? sectorId,
@@ -4426,8 +5777,11 @@ class ClienteImpTableCompanion extends UpdateCompanion<ClienteImpDTO> {
     });
   }
 
-  ClienteImpTableCompanion copyWith(
-      {Value<String>? clienteId, Value<String>? sectorId, Value<int>? rowid}) {
+  ClienteImpTableCompanion copyWith({
+    Value<String>? clienteId,
+    Value<String>? sectorId,
+    Value<int>? rowid,
+  }) {
     return ClienteImpTableCompanion(
       clienteId: clienteId ?? this.clienteId,
       sectorId: sectorId ?? this.sectorId,
@@ -4463,24 +5817,36 @@ class ClienteImpTableCompanion extends UpdateCompanion<ClienteImpDTO> {
 
 class $VisitaCompetenciaLocalTableTable extends VisitaCompetenciaLocalTable
     with
-        TableInfo<$VisitaCompetenciaLocalTableTable,
-            VisitaCompetenciaLocalDTO> {
+        TableInfo<
+          $VisitaCompetenciaLocalTableTable,
+          VisitaCompetenciaLocalDTO
+        > {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $VisitaCompetenciaLocalTableTable(this.attachedDatabase, [this._alias]);
-  static const VerificationMeta _visitaAppIdMeta =
-      const VerificationMeta('visitaAppId');
+  static const VerificationMeta _visitaAppIdMeta = const VerificationMeta(
+    'visitaAppId',
+  );
   @override
   late final GeneratedColumn<String> visitaAppId = GeneratedColumn<String>(
-      'COD_VISITA_APP', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _codigoCompetenciaMeta =
-      const VerificationMeta('codigoCompetencia');
+    'COD_VISITA_APP',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _codigoCompetenciaMeta = const VerificationMeta(
+    'codigoCompetencia',
+  );
   @override
   late final GeneratedColumn<int> codigoCompetencia = GeneratedColumn<int>(
-      'CODIGO_COMPETENCIA', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
+    'CODIGO_COMPETENCIA',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
   @override
   List<GeneratedColumn> get $columns => [visitaAppId, codigoCompetencia];
   @override
@@ -4490,23 +5856,30 @@ class $VisitaCompetenciaLocalTableTable extends VisitaCompetenciaLocalTable
   static const String $name = 'VISITA_COMPETENCIAS_IMP';
   @override
   VerificationContext validateIntegrity(
-      Insertable<VisitaCompetenciaLocalDTO> instance,
-      {bool isInserting = false}) {
+    Insertable<VisitaCompetenciaLocalDTO> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('COD_VISITA_APP')) {
       context.handle(
+        _visitaAppIdMeta,
+        visitaAppId.isAcceptableOrUnknown(
+          data['COD_VISITA_APP']!,
           _visitaAppIdMeta,
-          visitaAppId.isAcceptableOrUnknown(
-              data['COD_VISITA_APP']!, _visitaAppIdMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_visitaAppIdMeta);
     }
     if (data.containsKey('CODIGO_COMPETENCIA')) {
       context.handle(
+        _codigoCompetenciaMeta,
+        codigoCompetencia.isAcceptableOrUnknown(
+          data['CODIGO_COMPETENCIA']!,
           _codigoCompetenciaMeta,
-          codigoCompetencia.isAcceptableOrUnknown(
-              data['CODIGO_COMPETENCIA']!, _codigoCompetenciaMeta));
+        ),
+      );
     } else if (isInserting) {
       context.missing(_codigoCompetenciaMeta);
     }
@@ -4516,14 +5889,22 @@ class $VisitaCompetenciaLocalTableTable extends VisitaCompetenciaLocalTable
   @override
   Set<GeneratedColumn> get $primaryKey => {visitaAppId, codigoCompetencia};
   @override
-  VisitaCompetenciaLocalDTO map(Map<String, dynamic> data,
-      {String? tablePrefix}) {
+  VisitaCompetenciaLocalDTO map(
+    Map<String, dynamic> data, {
+    String? tablePrefix,
+  }) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return VisitaCompetenciaLocalDTO(
-      visitaAppId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}COD_VISITA_APP'])!,
-      codigoCompetencia: attachedDatabase.typeMapping.read(
-          DriftSqlType.int, data['${effectivePrefix}CODIGO_COMPETENCIA'])!,
+    return VisitaCompetenciaLocalDTO.new(
+      visitaAppId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}COD_VISITA_APP'],
+          )!,
+      codigoCompetencia:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}CODIGO_COMPETENCIA'],
+          )!,
     );
   }
 
@@ -4547,8 +5928,8 @@ class VisitaCompetenciaLocalTableCompanion
     required String visitaAppId,
     required int codigoCompetencia,
     this.rowid = const Value.absent(),
-  })  : visitaAppId = Value(visitaAppId),
-        codigoCompetencia = Value(codigoCompetencia);
+  }) : visitaAppId = Value(visitaAppId),
+       codigoCompetencia = Value(codigoCompetencia);
   static Insertable<VisitaCompetenciaLocalDTO> custom({
     Expression<String>? visitaAppId,
     Expression<int>? codigoCompetencia,
@@ -4561,10 +5942,11 @@ class VisitaCompetenciaLocalTableCompanion
     });
   }
 
-  VisitaCompetenciaLocalTableCompanion copyWith(
-      {Value<String>? visitaAppId,
-      Value<int>? codigoCompetencia,
-      Value<int>? rowid}) {
+  VisitaCompetenciaLocalTableCompanion copyWith({
+    Value<String>? visitaAppId,
+    Value<int>? codigoCompetencia,
+    Value<int>? rowid,
+  }) {
     return VisitaCompetenciaLocalTableCompanion(
       visitaAppId: visitaAppId ?? this.visitaAppId,
       codigoCompetencia: codigoCompetencia ?? this.codigoCompetencia,
@@ -4602,8 +5984,9 @@ abstract class _$LocalAppDatabase extends GeneratedDatabase {
   _$LocalAppDatabase(QueryExecutor e) : super(e);
   _$LocalAppDatabase.connect(DatabaseConnection c) : super.connect(c);
   $LocalAppDatabaseManager get managers => $LocalAppDatabaseManager(this);
-  late final $VisitaLocalTableTable visitaLocalTable =
-      $VisitaLocalTableTable(this);
+  late final $VisitaLocalTableTable visitaLocalTable = $VisitaLocalTableTable(
+    this,
+  );
   late final $PedidoVentaLineaLocalTableTable pedidoVentaLineaLocalTable =
       $PedidoVentaLineaLocalTableTable(this);
   late final $PedidoVentaLocalTableTable pedidoVentaLocalTable =
@@ -4619,8 +6002,9 @@ abstract class _$LocalAppDatabase extends GeneratedDatabase {
       $ClienteDireccionImpTableTable(this);
   late final $CatalogoOrdenTableTable catalogoOrdenTable =
       $CatalogoOrdenTableTable(this);
-  late final $ClienteImpTableTable clienteImpTable =
-      $ClienteImpTableTable(this);
+  late final $ClienteImpTableTable clienteImpTable = $ClienteImpTableTable(
+    this,
+  );
   late final $VisitaCompetenciaLocalTableTable visitaCompetenciaLocalTable =
       $VisitaCompetenciaLocalTableTable(this);
   @override
@@ -4628,99 +6012,99 @@ abstract class _$LocalAppDatabase extends GeneratedDatabase {
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities => [
-        visitaLocalTable,
-        pedidoVentaLineaLocalTable,
-        pedidoVentaLocalTable,
-        syncDateTimeTable,
-        logTable,
-        catalogoFavoritoTable,
-        clienteContactoImpTable,
-        clienteDireccionImpTable,
-        catalogoOrdenTable,
-        clienteImpTable,
-        visitaCompetenciaLocalTable
-      ];
+    visitaLocalTable,
+    pedidoVentaLineaLocalTable,
+    pedidoVentaLocalTable,
+    syncDateTimeTable,
+    logTable,
+    catalogoFavoritoTable,
+    clienteContactoImpTable,
+    clienteDireccionImpTable,
+    catalogoOrdenTable,
+    clienteImpTable,
+    visitaCompetenciaLocalTable,
+  ];
   @override
   DriftDatabaseOptions get options =>
       const DriftDatabaseOptions(storeDateTimeAsText: true);
 }
 
-typedef $$VisitaLocalTableTableCreateCompanionBuilder
-    = VisitaLocalTableCompanion Function({
-  required String visitaAppId,
-  Value<String?> clienteId,
-  required String isClienteProvisional,
-  Value<String?> clienteProvisionalNombre,
-  Value<String?> clienteProvisionalEmail,
-  Value<String?> clienteProvisionalTelefono,
-  Value<String?> clienteProvisionalDireccion1,
-  Value<String?> clienteProvisionalDireccion2,
-  Value<String?> clienteProvisionalCodigoPostal,
-  Value<String?> clienteProvisionalPoblacion,
-  Value<String?> clienteProvisionalProvinciaId,
-  Value<String?> clienteProvisionalRegionId,
-  Value<String?> clienteProvisionalPaisId,
-  required DateTime fecha,
-  required String numEmpl,
-  required String contacto,
-  Value<String?> atendidoPor,
-  Value<String?> resumen,
-  Value<String?> marcasCompetencia,
-  Value<String> ofertaRealizada,
-  Value<String?> interesCliente,
-  Value<String> pedidoRealizado,
-  Value<int?> codigoMotivoNoInteres,
-  Value<int?> codigoMotivoNoPedido,
-  Value<int?> codigoSector,
-  Value<int?> codigoCompetencia,
-  Value<String?> almacenPropio,
-  Value<String?> capacidad,
-  Value<String?> frecuenciaPedido,
-  required double latitud,
-  required double longitud,
-  Value<String> enviada,
-  Value<String> tratada,
-  Value<String?> errorSyncMessage,
-  Value<int> rowid,
-});
-typedef $$VisitaLocalTableTableUpdateCompanionBuilder
-    = VisitaLocalTableCompanion Function({
-  Value<String> visitaAppId,
-  Value<String?> clienteId,
-  Value<String> isClienteProvisional,
-  Value<String?> clienteProvisionalNombre,
-  Value<String?> clienteProvisionalEmail,
-  Value<String?> clienteProvisionalTelefono,
-  Value<String?> clienteProvisionalDireccion1,
-  Value<String?> clienteProvisionalDireccion2,
-  Value<String?> clienteProvisionalCodigoPostal,
-  Value<String?> clienteProvisionalPoblacion,
-  Value<String?> clienteProvisionalProvinciaId,
-  Value<String?> clienteProvisionalRegionId,
-  Value<String?> clienteProvisionalPaisId,
-  Value<DateTime> fecha,
-  Value<String> numEmpl,
-  Value<String> contacto,
-  Value<String?> atendidoPor,
-  Value<String?> resumen,
-  Value<String?> marcasCompetencia,
-  Value<String> ofertaRealizada,
-  Value<String?> interesCliente,
-  Value<String> pedidoRealizado,
-  Value<int?> codigoMotivoNoInteres,
-  Value<int?> codigoMotivoNoPedido,
-  Value<int?> codigoSector,
-  Value<int?> codigoCompetencia,
-  Value<String?> almacenPropio,
-  Value<String?> capacidad,
-  Value<String?> frecuenciaPedido,
-  Value<double> latitud,
-  Value<double> longitud,
-  Value<String> enviada,
-  Value<String> tratada,
-  Value<String?> errorSyncMessage,
-  Value<int> rowid,
-});
+typedef $$VisitaLocalTableTableCreateCompanionBuilder =
+    VisitaLocalTableCompanion Function({
+      required String visitaAppId,
+      Value<String?> clienteId,
+      required String isClienteProvisional,
+      Value<String?> clienteProvisionalNombre,
+      Value<String?> clienteProvisionalEmail,
+      Value<String?> clienteProvisionalTelefono,
+      Value<String?> clienteProvisionalDireccion1,
+      Value<String?> clienteProvisionalDireccion2,
+      Value<String?> clienteProvisionalCodigoPostal,
+      Value<String?> clienteProvisionalPoblacion,
+      Value<String?> clienteProvisionalProvinciaId,
+      Value<String?> clienteProvisionalRegionId,
+      Value<String?> clienteProvisionalPaisId,
+      required DateTime fecha,
+      required String numEmpl,
+      required String contacto,
+      Value<String?> atendidoPor,
+      Value<String?> resumen,
+      Value<String?> marcasCompetencia,
+      Value<String> ofertaRealizada,
+      Value<String?> interesCliente,
+      Value<String> pedidoRealizado,
+      Value<int?> codigoMotivoNoInteres,
+      Value<int?> codigoMotivoNoPedido,
+      Value<int?> codigoSector,
+      Value<int?> codigoCompetencia,
+      Value<String?> almacenPropio,
+      Value<String?> capacidad,
+      Value<String?> frecuenciaPedido,
+      required double latitud,
+      required double longitud,
+      Value<String> enviada,
+      Value<String> tratada,
+      Value<String?> errorSyncMessage,
+      Value<int> rowid,
+    });
+typedef $$VisitaLocalTableTableUpdateCompanionBuilder =
+    VisitaLocalTableCompanion Function({
+      Value<String> visitaAppId,
+      Value<String?> clienteId,
+      Value<String> isClienteProvisional,
+      Value<String?> clienteProvisionalNombre,
+      Value<String?> clienteProvisionalEmail,
+      Value<String?> clienteProvisionalTelefono,
+      Value<String?> clienteProvisionalDireccion1,
+      Value<String?> clienteProvisionalDireccion2,
+      Value<String?> clienteProvisionalCodigoPostal,
+      Value<String?> clienteProvisionalPoblacion,
+      Value<String?> clienteProvisionalProvinciaId,
+      Value<String?> clienteProvisionalRegionId,
+      Value<String?> clienteProvisionalPaisId,
+      Value<DateTime> fecha,
+      Value<String> numEmpl,
+      Value<String> contacto,
+      Value<String?> atendidoPor,
+      Value<String?> resumen,
+      Value<String?> marcasCompetencia,
+      Value<String> ofertaRealizada,
+      Value<String?> interesCliente,
+      Value<String> pedidoRealizado,
+      Value<int?> codigoMotivoNoInteres,
+      Value<int?> codigoMotivoNoPedido,
+      Value<int?> codigoSector,
+      Value<int?> codigoCompetencia,
+      Value<String?> almacenPropio,
+      Value<String?> capacidad,
+      Value<String?> frecuenciaPedido,
+      Value<double> latitud,
+      Value<double> longitud,
+      Value<String> enviada,
+      Value<String> tratada,
+      Value<String?> errorSyncMessage,
+      Value<int> rowid,
+    });
 
 class $$VisitaLocalTableTableFilterComposer
     extends Composer<_$LocalAppDatabase, $VisitaLocalTableTable> {
@@ -4732,127 +6116,175 @@ class $$VisitaLocalTableTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<String> get visitaAppId => $composableBuilder(
-      column: $table.visitaAppId, builder: (column) => ColumnFilters(column));
+    column: $table.visitaAppId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get clienteId => $composableBuilder(
-      column: $table.clienteId, builder: (column) => ColumnFilters(column));
+    column: $table.clienteId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get isClienteProvisional => $composableBuilder(
-      column: $table.isClienteProvisional,
-      builder: (column) => ColumnFilters(column));
+    column: $table.isClienteProvisional,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get clienteProvisionalNombre => $composableBuilder(
-      column: $table.clienteProvisionalNombre,
-      builder: (column) => ColumnFilters(column));
+    column: $table.clienteProvisionalNombre,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get clienteProvisionalEmail => $composableBuilder(
-      column: $table.clienteProvisionalEmail,
-      builder: (column) => ColumnFilters(column));
+    column: $table.clienteProvisionalEmail,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get clienteProvisionalTelefono => $composableBuilder(
-      column: $table.clienteProvisionalTelefono,
-      builder: (column) => ColumnFilters(column));
+    column: $table.clienteProvisionalTelefono,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get clienteProvisionalDireccion1 => $composableBuilder(
-      column: $table.clienteProvisionalDireccion1,
-      builder: (column) => ColumnFilters(column));
+    column: $table.clienteProvisionalDireccion1,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get clienteProvisionalDireccion2 => $composableBuilder(
-      column: $table.clienteProvisionalDireccion2,
-      builder: (column) => ColumnFilters(column));
+    column: $table.clienteProvisionalDireccion2,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get clienteProvisionalCodigoPostal =>
       $composableBuilder(
-          column: $table.clienteProvisionalCodigoPostal,
-          builder: (column) => ColumnFilters(column));
+        column: $table.clienteProvisionalCodigoPostal,
+        builder: (column) => ColumnFilters(column),
+      );
 
   ColumnFilters<String> get clienteProvisionalPoblacion => $composableBuilder(
-      column: $table.clienteProvisionalPoblacion,
-      builder: (column) => ColumnFilters(column));
+    column: $table.clienteProvisionalPoblacion,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get clienteProvisionalProvinciaId => $composableBuilder(
-      column: $table.clienteProvisionalProvinciaId,
-      builder: (column) => ColumnFilters(column));
+    column: $table.clienteProvisionalProvinciaId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get clienteProvisionalRegionId => $composableBuilder(
-      column: $table.clienteProvisionalRegionId,
-      builder: (column) => ColumnFilters(column));
+    column: $table.clienteProvisionalRegionId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get clienteProvisionalPaisId => $composableBuilder(
-      column: $table.clienteProvisionalPaisId,
-      builder: (column) => ColumnFilters(column));
+    column: $table.clienteProvisionalPaisId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<DateTime> get fecha => $composableBuilder(
-      column: $table.fecha, builder: (column) => ColumnFilters(column));
+    column: $table.fecha,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get numEmpl => $composableBuilder(
-      column: $table.numEmpl, builder: (column) => ColumnFilters(column));
+    column: $table.numEmpl,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get contacto => $composableBuilder(
-      column: $table.contacto, builder: (column) => ColumnFilters(column));
+    column: $table.contacto,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get atendidoPor => $composableBuilder(
-      column: $table.atendidoPor, builder: (column) => ColumnFilters(column));
+    column: $table.atendidoPor,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get resumen => $composableBuilder(
-      column: $table.resumen, builder: (column) => ColumnFilters(column));
+    column: $table.resumen,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get marcasCompetencia => $composableBuilder(
-      column: $table.marcasCompetencia,
-      builder: (column) => ColumnFilters(column));
+    column: $table.marcasCompetencia,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get ofertaRealizada => $composableBuilder(
-      column: $table.ofertaRealizada,
-      builder: (column) => ColumnFilters(column));
+    column: $table.ofertaRealizada,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get interesCliente => $composableBuilder(
-      column: $table.interesCliente,
-      builder: (column) => ColumnFilters(column));
+    column: $table.interesCliente,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get pedidoRealizado => $composableBuilder(
-      column: $table.pedidoRealizado,
-      builder: (column) => ColumnFilters(column));
+    column: $table.pedidoRealizado,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<int> get codigoMotivoNoInteres => $composableBuilder(
-      column: $table.codigoMotivoNoInteres,
-      builder: (column) => ColumnFilters(column));
+    column: $table.codigoMotivoNoInteres,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<int> get codigoMotivoNoPedido => $composableBuilder(
-      column: $table.codigoMotivoNoPedido,
-      builder: (column) => ColumnFilters(column));
+    column: $table.codigoMotivoNoPedido,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<int> get codigoSector => $composableBuilder(
-      column: $table.codigoSector, builder: (column) => ColumnFilters(column));
+    column: $table.codigoSector,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<int> get codigoCompetencia => $composableBuilder(
-      column: $table.codigoCompetencia,
-      builder: (column) => ColumnFilters(column));
+    column: $table.codigoCompetencia,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get almacenPropio => $composableBuilder(
-      column: $table.almacenPropio, builder: (column) => ColumnFilters(column));
+    column: $table.almacenPropio,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get capacidad => $composableBuilder(
-      column: $table.capacidad, builder: (column) => ColumnFilters(column));
+    column: $table.capacidad,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get frecuenciaPedido => $composableBuilder(
-      column: $table.frecuenciaPedido,
-      builder: (column) => ColumnFilters(column));
+    column: $table.frecuenciaPedido,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<double> get latitud => $composableBuilder(
-      column: $table.latitud, builder: (column) => ColumnFilters(column));
+    column: $table.latitud,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<double> get longitud => $composableBuilder(
-      column: $table.longitud, builder: (column) => ColumnFilters(column));
+    column: $table.longitud,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get enviada => $composableBuilder(
-      column: $table.enviada, builder: (column) => ColumnFilters(column));
+    column: $table.enviada,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get tratada => $composableBuilder(
-      column: $table.tratada, builder: (column) => ColumnFilters(column));
+    column: $table.tratada,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get errorSyncMessage => $composableBuilder(
-      column: $table.errorSyncMessage,
-      builder: (column) => ColumnFilters(column));
+    column: $table.errorSyncMessage,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$VisitaLocalTableTableOrderingComposer
@@ -4865,132 +6297,178 @@ class $$VisitaLocalTableTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<String> get visitaAppId => $composableBuilder(
-      column: $table.visitaAppId, builder: (column) => ColumnOrderings(column));
+    column: $table.visitaAppId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get clienteId => $composableBuilder(
-      column: $table.clienteId, builder: (column) => ColumnOrderings(column));
+    column: $table.clienteId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get isClienteProvisional => $composableBuilder(
-      column: $table.isClienteProvisional,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.isClienteProvisional,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get clienteProvisionalNombre => $composableBuilder(
-      column: $table.clienteProvisionalNombre,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.clienteProvisionalNombre,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get clienteProvisionalEmail => $composableBuilder(
-      column: $table.clienteProvisionalEmail,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.clienteProvisionalEmail,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get clienteProvisionalTelefono => $composableBuilder(
-      column: $table.clienteProvisionalTelefono,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.clienteProvisionalTelefono,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get clienteProvisionalDireccion1 =>
       $composableBuilder(
-          column: $table.clienteProvisionalDireccion1,
-          builder: (column) => ColumnOrderings(column));
+        column: $table.clienteProvisionalDireccion1,
+        builder: (column) => ColumnOrderings(column),
+      );
 
   ColumnOrderings<String> get clienteProvisionalDireccion2 =>
       $composableBuilder(
-          column: $table.clienteProvisionalDireccion2,
-          builder: (column) => ColumnOrderings(column));
+        column: $table.clienteProvisionalDireccion2,
+        builder: (column) => ColumnOrderings(column),
+      );
 
   ColumnOrderings<String> get clienteProvisionalCodigoPostal =>
       $composableBuilder(
-          column: $table.clienteProvisionalCodigoPostal,
-          builder: (column) => ColumnOrderings(column));
+        column: $table.clienteProvisionalCodigoPostal,
+        builder: (column) => ColumnOrderings(column),
+      );
 
   ColumnOrderings<String> get clienteProvisionalPoblacion => $composableBuilder(
-      column: $table.clienteProvisionalPoblacion,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.clienteProvisionalPoblacion,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get clienteProvisionalProvinciaId =>
       $composableBuilder(
-          column: $table.clienteProvisionalProvinciaId,
-          builder: (column) => ColumnOrderings(column));
+        column: $table.clienteProvisionalProvinciaId,
+        builder: (column) => ColumnOrderings(column),
+      );
 
   ColumnOrderings<String> get clienteProvisionalRegionId => $composableBuilder(
-      column: $table.clienteProvisionalRegionId,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.clienteProvisionalRegionId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get clienteProvisionalPaisId => $composableBuilder(
-      column: $table.clienteProvisionalPaisId,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.clienteProvisionalPaisId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<DateTime> get fecha => $composableBuilder(
-      column: $table.fecha, builder: (column) => ColumnOrderings(column));
+    column: $table.fecha,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get numEmpl => $composableBuilder(
-      column: $table.numEmpl, builder: (column) => ColumnOrderings(column));
+    column: $table.numEmpl,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get contacto => $composableBuilder(
-      column: $table.contacto, builder: (column) => ColumnOrderings(column));
+    column: $table.contacto,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get atendidoPor => $composableBuilder(
-      column: $table.atendidoPor, builder: (column) => ColumnOrderings(column));
+    column: $table.atendidoPor,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get resumen => $composableBuilder(
-      column: $table.resumen, builder: (column) => ColumnOrderings(column));
+    column: $table.resumen,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get marcasCompetencia => $composableBuilder(
-      column: $table.marcasCompetencia,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.marcasCompetencia,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get ofertaRealizada => $composableBuilder(
-      column: $table.ofertaRealizada,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.ofertaRealizada,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get interesCliente => $composableBuilder(
-      column: $table.interesCliente,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.interesCliente,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get pedidoRealizado => $composableBuilder(
-      column: $table.pedidoRealizado,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.pedidoRealizado,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<int> get codigoMotivoNoInteres => $composableBuilder(
-      column: $table.codigoMotivoNoInteres,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.codigoMotivoNoInteres,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<int> get codigoMotivoNoPedido => $composableBuilder(
-      column: $table.codigoMotivoNoPedido,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.codigoMotivoNoPedido,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<int> get codigoSector => $composableBuilder(
-      column: $table.codigoSector,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.codigoSector,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<int> get codigoCompetencia => $composableBuilder(
-      column: $table.codigoCompetencia,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.codigoCompetencia,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get almacenPropio => $composableBuilder(
-      column: $table.almacenPropio,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.almacenPropio,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get capacidad => $composableBuilder(
-      column: $table.capacidad, builder: (column) => ColumnOrderings(column));
+    column: $table.capacidad,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get frecuenciaPedido => $composableBuilder(
-      column: $table.frecuenciaPedido,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.frecuenciaPedido,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<double> get latitud => $composableBuilder(
-      column: $table.latitud, builder: (column) => ColumnOrderings(column));
+    column: $table.latitud,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<double> get longitud => $composableBuilder(
-      column: $table.longitud, builder: (column) => ColumnOrderings(column));
+    column: $table.longitud,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get enviada => $composableBuilder(
-      column: $table.enviada, builder: (column) => ColumnOrderings(column));
+    column: $table.enviada,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get tratada => $composableBuilder(
-      column: $table.tratada, builder: (column) => ColumnOrderings(column));
+    column: $table.tratada,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get errorSyncMessage => $composableBuilder(
-      column: $table.errorSyncMessage,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.errorSyncMessage,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$VisitaLocalTableTableAnnotationComposer
@@ -5003,51 +6481,71 @@ class $$VisitaLocalTableTableAnnotationComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   GeneratedColumn<String> get visitaAppId => $composableBuilder(
-      column: $table.visitaAppId, builder: (column) => column);
+    column: $table.visitaAppId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get clienteId =>
       $composableBuilder(column: $table.clienteId, builder: (column) => column);
 
   GeneratedColumn<String> get isClienteProvisional => $composableBuilder(
-      column: $table.isClienteProvisional, builder: (column) => column);
+    column: $table.isClienteProvisional,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get clienteProvisionalNombre => $composableBuilder(
-      column: $table.clienteProvisionalNombre, builder: (column) => column);
+    column: $table.clienteProvisionalNombre,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get clienteProvisionalEmail => $composableBuilder(
-      column: $table.clienteProvisionalEmail, builder: (column) => column);
+    column: $table.clienteProvisionalEmail,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get clienteProvisionalTelefono => $composableBuilder(
-      column: $table.clienteProvisionalTelefono, builder: (column) => column);
+    column: $table.clienteProvisionalTelefono,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get clienteProvisionalDireccion1 =>
       $composableBuilder(
-          column: $table.clienteProvisionalDireccion1,
-          builder: (column) => column);
+        column: $table.clienteProvisionalDireccion1,
+        builder: (column) => column,
+      );
 
   GeneratedColumn<String> get clienteProvisionalDireccion2 =>
       $composableBuilder(
-          column: $table.clienteProvisionalDireccion2,
-          builder: (column) => column);
+        column: $table.clienteProvisionalDireccion2,
+        builder: (column) => column,
+      );
 
   GeneratedColumn<String> get clienteProvisionalCodigoPostal =>
       $composableBuilder(
-          column: $table.clienteProvisionalCodigoPostal,
-          builder: (column) => column);
+        column: $table.clienteProvisionalCodigoPostal,
+        builder: (column) => column,
+      );
 
   GeneratedColumn<String> get clienteProvisionalPoblacion => $composableBuilder(
-      column: $table.clienteProvisionalPoblacion, builder: (column) => column);
+    column: $table.clienteProvisionalPoblacion,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get clienteProvisionalProvinciaId =>
       $composableBuilder(
-          column: $table.clienteProvisionalProvinciaId,
-          builder: (column) => column);
+        column: $table.clienteProvisionalProvinciaId,
+        builder: (column) => column,
+      );
 
   GeneratedColumn<String> get clienteProvisionalRegionId => $composableBuilder(
-      column: $table.clienteProvisionalRegionId, builder: (column) => column);
+    column: $table.clienteProvisionalRegionId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get clienteProvisionalPaisId => $composableBuilder(
-      column: $table.clienteProvisionalPaisId, builder: (column) => column);
+    column: $table.clienteProvisionalPaisId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<DateTime> get fecha =>
       $composableBuilder(column: $table.fecha, builder: (column) => column);
@@ -5059,43 +6557,65 @@ class $$VisitaLocalTableTableAnnotationComposer
       $composableBuilder(column: $table.contacto, builder: (column) => column);
 
   GeneratedColumn<String> get atendidoPor => $composableBuilder(
-      column: $table.atendidoPor, builder: (column) => column);
+    column: $table.atendidoPor,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get resumen =>
       $composableBuilder(column: $table.resumen, builder: (column) => column);
 
   GeneratedColumn<String> get marcasCompetencia => $composableBuilder(
-      column: $table.marcasCompetencia, builder: (column) => column);
+    column: $table.marcasCompetencia,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get ofertaRealizada => $composableBuilder(
-      column: $table.ofertaRealizada, builder: (column) => column);
+    column: $table.ofertaRealizada,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get interesCliente => $composableBuilder(
-      column: $table.interesCliente, builder: (column) => column);
+    column: $table.interesCliente,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get pedidoRealizado => $composableBuilder(
-      column: $table.pedidoRealizado, builder: (column) => column);
+    column: $table.pedidoRealizado,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<int> get codigoMotivoNoInteres => $composableBuilder(
-      column: $table.codigoMotivoNoInteres, builder: (column) => column);
+    column: $table.codigoMotivoNoInteres,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<int> get codigoMotivoNoPedido => $composableBuilder(
-      column: $table.codigoMotivoNoPedido, builder: (column) => column);
+    column: $table.codigoMotivoNoPedido,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<int> get codigoSector => $composableBuilder(
-      column: $table.codigoSector, builder: (column) => column);
+    column: $table.codigoSector,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<int> get codigoCompetencia => $composableBuilder(
-      column: $table.codigoCompetencia, builder: (column) => column);
+    column: $table.codigoCompetencia,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get almacenPropio => $composableBuilder(
-      column: $table.almacenPropio, builder: (column) => column);
+    column: $table.almacenPropio,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get capacidad =>
       $composableBuilder(column: $table.capacidad, builder: (column) => column);
 
   GeneratedColumn<String> get frecuenciaPedido => $composableBuilder(
-      column: $table.frecuenciaPedido, builder: (column) => column);
+    column: $table.frecuenciaPedido,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<double> get latitud =>
       $composableBuilder(column: $table.latitud, builder: (column) => column);
@@ -5110,249 +6630,293 @@ class $$VisitaLocalTableTableAnnotationComposer
       $composableBuilder(column: $table.tratada, builder: (column) => column);
 
   GeneratedColumn<String> get errorSyncMessage => $composableBuilder(
-      column: $table.errorSyncMessage, builder: (column) => column);
+    column: $table.errorSyncMessage,
+    builder: (column) => column,
+  );
 }
 
-class $$VisitaLocalTableTableTableManager extends RootTableManager<
-    _$LocalAppDatabase,
-    $VisitaLocalTableTable,
-    VisitaLocalDTO,
-    $$VisitaLocalTableTableFilterComposer,
-    $$VisitaLocalTableTableOrderingComposer,
-    $$VisitaLocalTableTableAnnotationComposer,
-    $$VisitaLocalTableTableCreateCompanionBuilder,
-    $$VisitaLocalTableTableUpdateCompanionBuilder,
-    (
-      VisitaLocalDTO,
-      BaseReferences<_$LocalAppDatabase, $VisitaLocalTableTable, VisitaLocalDTO>
-    ),
-    VisitaLocalDTO,
-    PrefetchHooks Function()> {
+class $$VisitaLocalTableTableTableManager
+    extends
+        RootTableManager<
+          _$LocalAppDatabase,
+          $VisitaLocalTableTable,
+          VisitaLocalDTO,
+          $$VisitaLocalTableTableFilterComposer,
+          $$VisitaLocalTableTableOrderingComposer,
+          $$VisitaLocalTableTableAnnotationComposer,
+          $$VisitaLocalTableTableCreateCompanionBuilder,
+          $$VisitaLocalTableTableUpdateCompanionBuilder,
+          (
+            VisitaLocalDTO,
+            BaseReferences<
+              _$LocalAppDatabase,
+              $VisitaLocalTableTable,
+              VisitaLocalDTO
+            >,
+          ),
+          VisitaLocalDTO,
+          PrefetchHooks Function()
+        > {
   $$VisitaLocalTableTableTableManager(
-      _$LocalAppDatabase db, $VisitaLocalTableTable table)
-      : super(TableManagerState(
+    _$LocalAppDatabase db,
+    $VisitaLocalTableTable table,
+  ) : super(
+        TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$VisitaLocalTableTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$VisitaLocalTableTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$VisitaLocalTableTableAnnotationComposer($db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<String> visitaAppId = const Value.absent(),
-            Value<String?> clienteId = const Value.absent(),
-            Value<String> isClienteProvisional = const Value.absent(),
-            Value<String?> clienteProvisionalNombre = const Value.absent(),
-            Value<String?> clienteProvisionalEmail = const Value.absent(),
-            Value<String?> clienteProvisionalTelefono = const Value.absent(),
-            Value<String?> clienteProvisionalDireccion1 = const Value.absent(),
-            Value<String?> clienteProvisionalDireccion2 = const Value.absent(),
-            Value<String?> clienteProvisionalCodigoPostal =
-                const Value.absent(),
-            Value<String?> clienteProvisionalPoblacion = const Value.absent(),
-            Value<String?> clienteProvisionalProvinciaId = const Value.absent(),
-            Value<String?> clienteProvisionalRegionId = const Value.absent(),
-            Value<String?> clienteProvisionalPaisId = const Value.absent(),
-            Value<DateTime> fecha = const Value.absent(),
-            Value<String> numEmpl = const Value.absent(),
-            Value<String> contacto = const Value.absent(),
-            Value<String?> atendidoPor = const Value.absent(),
-            Value<String?> resumen = const Value.absent(),
-            Value<String?> marcasCompetencia = const Value.absent(),
-            Value<String> ofertaRealizada = const Value.absent(),
-            Value<String?> interesCliente = const Value.absent(),
-            Value<String> pedidoRealizado = const Value.absent(),
-            Value<int?> codigoMotivoNoInteres = const Value.absent(),
-            Value<int?> codigoMotivoNoPedido = const Value.absent(),
-            Value<int?> codigoSector = const Value.absent(),
-            Value<int?> codigoCompetencia = const Value.absent(),
-            Value<String?> almacenPropio = const Value.absent(),
-            Value<String?> capacidad = const Value.absent(),
-            Value<String?> frecuenciaPedido = const Value.absent(),
-            Value<double> latitud = const Value.absent(),
-            Value<double> longitud = const Value.absent(),
-            Value<String> enviada = const Value.absent(),
-            Value<String> tratada = const Value.absent(),
-            Value<String?> errorSyncMessage = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              VisitaLocalTableCompanion(
-            visitaAppId: visitaAppId,
-            clienteId: clienteId,
-            isClienteProvisional: isClienteProvisional,
-            clienteProvisionalNombre: clienteProvisionalNombre,
-            clienteProvisionalEmail: clienteProvisionalEmail,
-            clienteProvisionalTelefono: clienteProvisionalTelefono,
-            clienteProvisionalDireccion1: clienteProvisionalDireccion1,
-            clienteProvisionalDireccion2: clienteProvisionalDireccion2,
-            clienteProvisionalCodigoPostal: clienteProvisionalCodigoPostal,
-            clienteProvisionalPoblacion: clienteProvisionalPoblacion,
-            clienteProvisionalProvinciaId: clienteProvisionalProvinciaId,
-            clienteProvisionalRegionId: clienteProvisionalRegionId,
-            clienteProvisionalPaisId: clienteProvisionalPaisId,
-            fecha: fecha,
-            numEmpl: numEmpl,
-            contacto: contacto,
-            atendidoPor: atendidoPor,
-            resumen: resumen,
-            marcasCompetencia: marcasCompetencia,
-            ofertaRealizada: ofertaRealizada,
-            interesCliente: interesCliente,
-            pedidoRealizado: pedidoRealizado,
-            codigoMotivoNoInteres: codigoMotivoNoInteres,
-            codigoMotivoNoPedido: codigoMotivoNoPedido,
-            codigoSector: codigoSector,
-            codigoCompetencia: codigoCompetencia,
-            almacenPropio: almacenPropio,
-            capacidad: capacidad,
-            frecuenciaPedido: frecuenciaPedido,
-            latitud: latitud,
-            longitud: longitud,
-            enviada: enviada,
-            tratada: tratada,
-            errorSyncMessage: errorSyncMessage,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String visitaAppId,
-            Value<String?> clienteId = const Value.absent(),
-            required String isClienteProvisional,
-            Value<String?> clienteProvisionalNombre = const Value.absent(),
-            Value<String?> clienteProvisionalEmail = const Value.absent(),
-            Value<String?> clienteProvisionalTelefono = const Value.absent(),
-            Value<String?> clienteProvisionalDireccion1 = const Value.absent(),
-            Value<String?> clienteProvisionalDireccion2 = const Value.absent(),
-            Value<String?> clienteProvisionalCodigoPostal =
-                const Value.absent(),
-            Value<String?> clienteProvisionalPoblacion = const Value.absent(),
-            Value<String?> clienteProvisionalProvinciaId = const Value.absent(),
-            Value<String?> clienteProvisionalRegionId = const Value.absent(),
-            Value<String?> clienteProvisionalPaisId = const Value.absent(),
-            required DateTime fecha,
-            required String numEmpl,
-            required String contacto,
-            Value<String?> atendidoPor = const Value.absent(),
-            Value<String?> resumen = const Value.absent(),
-            Value<String?> marcasCompetencia = const Value.absent(),
-            Value<String> ofertaRealizada = const Value.absent(),
-            Value<String?> interesCliente = const Value.absent(),
-            Value<String> pedidoRealizado = const Value.absent(),
-            Value<int?> codigoMotivoNoInteres = const Value.absent(),
-            Value<int?> codigoMotivoNoPedido = const Value.absent(),
-            Value<int?> codigoSector = const Value.absent(),
-            Value<int?> codigoCompetencia = const Value.absent(),
-            Value<String?> almacenPropio = const Value.absent(),
-            Value<String?> capacidad = const Value.absent(),
-            Value<String?> frecuenciaPedido = const Value.absent(),
-            required double latitud,
-            required double longitud,
-            Value<String> enviada = const Value.absent(),
-            Value<String> tratada = const Value.absent(),
-            Value<String?> errorSyncMessage = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              VisitaLocalTableCompanion.insert(
-            visitaAppId: visitaAppId,
-            clienteId: clienteId,
-            isClienteProvisional: isClienteProvisional,
-            clienteProvisionalNombre: clienteProvisionalNombre,
-            clienteProvisionalEmail: clienteProvisionalEmail,
-            clienteProvisionalTelefono: clienteProvisionalTelefono,
-            clienteProvisionalDireccion1: clienteProvisionalDireccion1,
-            clienteProvisionalDireccion2: clienteProvisionalDireccion2,
-            clienteProvisionalCodigoPostal: clienteProvisionalCodigoPostal,
-            clienteProvisionalPoblacion: clienteProvisionalPoblacion,
-            clienteProvisionalProvinciaId: clienteProvisionalProvinciaId,
-            clienteProvisionalRegionId: clienteProvisionalRegionId,
-            clienteProvisionalPaisId: clienteProvisionalPaisId,
-            fecha: fecha,
-            numEmpl: numEmpl,
-            contacto: contacto,
-            atendidoPor: atendidoPor,
-            resumen: resumen,
-            marcasCompetencia: marcasCompetencia,
-            ofertaRealizada: ofertaRealizada,
-            interesCliente: interesCliente,
-            pedidoRealizado: pedidoRealizado,
-            codigoMotivoNoInteres: codigoMotivoNoInteres,
-            codigoMotivoNoPedido: codigoMotivoNoPedido,
-            codigoSector: codigoSector,
-            codigoCompetencia: codigoCompetencia,
-            almacenPropio: almacenPropio,
-            capacidad: capacidad,
-            frecuenciaPedido: frecuenciaPedido,
-            latitud: latitud,
-            longitud: longitud,
-            enviada: enviada,
-            tratada: tratada,
-            errorSyncMessage: errorSyncMessage,
-            rowid: rowid,
-          ),
-          withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
-              .toList(),
+          createFilteringComposer:
+              () =>
+                  $$VisitaLocalTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () => $$VisitaLocalTableTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer:
+              () => $$VisitaLocalTableTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> visitaAppId = const Value.absent(),
+                Value<String?> clienteId = const Value.absent(),
+                Value<String> isClienteProvisional = const Value.absent(),
+                Value<String?> clienteProvisionalNombre = const Value.absent(),
+                Value<String?> clienteProvisionalEmail = const Value.absent(),
+                Value<String?> clienteProvisionalTelefono =
+                    const Value.absent(),
+                Value<String?> clienteProvisionalDireccion1 =
+                    const Value.absent(),
+                Value<String?> clienteProvisionalDireccion2 =
+                    const Value.absent(),
+                Value<String?> clienteProvisionalCodigoPostal =
+                    const Value.absent(),
+                Value<String?> clienteProvisionalPoblacion =
+                    const Value.absent(),
+                Value<String?> clienteProvisionalProvinciaId =
+                    const Value.absent(),
+                Value<String?> clienteProvisionalRegionId =
+                    const Value.absent(),
+                Value<String?> clienteProvisionalPaisId = const Value.absent(),
+                Value<DateTime> fecha = const Value.absent(),
+                Value<String> numEmpl = const Value.absent(),
+                Value<String> contacto = const Value.absent(),
+                Value<String?> atendidoPor = const Value.absent(),
+                Value<String?> resumen = const Value.absent(),
+                Value<String?> marcasCompetencia = const Value.absent(),
+                Value<String> ofertaRealizada = const Value.absent(),
+                Value<String?> interesCliente = const Value.absent(),
+                Value<String> pedidoRealizado = const Value.absent(),
+                Value<int?> codigoMotivoNoInteres = const Value.absent(),
+                Value<int?> codigoMotivoNoPedido = const Value.absent(),
+                Value<int?> codigoSector = const Value.absent(),
+                Value<int?> codigoCompetencia = const Value.absent(),
+                Value<String?> almacenPropio = const Value.absent(),
+                Value<String?> capacidad = const Value.absent(),
+                Value<String?> frecuenciaPedido = const Value.absent(),
+                Value<double> latitud = const Value.absent(),
+                Value<double> longitud = const Value.absent(),
+                Value<String> enviada = const Value.absent(),
+                Value<String> tratada = const Value.absent(),
+                Value<String?> errorSyncMessage = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => VisitaLocalTableCompanion(
+                visitaAppId: visitaAppId,
+                clienteId: clienteId,
+                isClienteProvisional: isClienteProvisional,
+                clienteProvisionalNombre: clienteProvisionalNombre,
+                clienteProvisionalEmail: clienteProvisionalEmail,
+                clienteProvisionalTelefono: clienteProvisionalTelefono,
+                clienteProvisionalDireccion1: clienteProvisionalDireccion1,
+                clienteProvisionalDireccion2: clienteProvisionalDireccion2,
+                clienteProvisionalCodigoPostal: clienteProvisionalCodigoPostal,
+                clienteProvisionalPoblacion: clienteProvisionalPoblacion,
+                clienteProvisionalProvinciaId: clienteProvisionalProvinciaId,
+                clienteProvisionalRegionId: clienteProvisionalRegionId,
+                clienteProvisionalPaisId: clienteProvisionalPaisId,
+                fecha: fecha,
+                numEmpl: numEmpl,
+                contacto: contacto,
+                atendidoPor: atendidoPor,
+                resumen: resumen,
+                marcasCompetencia: marcasCompetencia,
+                ofertaRealizada: ofertaRealizada,
+                interesCliente: interesCliente,
+                pedidoRealizado: pedidoRealizado,
+                codigoMotivoNoInteres: codigoMotivoNoInteres,
+                codigoMotivoNoPedido: codigoMotivoNoPedido,
+                codigoSector: codigoSector,
+                codigoCompetencia: codigoCompetencia,
+                almacenPropio: almacenPropio,
+                capacidad: capacidad,
+                frecuenciaPedido: frecuenciaPedido,
+                latitud: latitud,
+                longitud: longitud,
+                enviada: enviada,
+                tratada: tratada,
+                errorSyncMessage: errorSyncMessage,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String visitaAppId,
+                Value<String?> clienteId = const Value.absent(),
+                required String isClienteProvisional,
+                Value<String?> clienteProvisionalNombre = const Value.absent(),
+                Value<String?> clienteProvisionalEmail = const Value.absent(),
+                Value<String?> clienteProvisionalTelefono =
+                    const Value.absent(),
+                Value<String?> clienteProvisionalDireccion1 =
+                    const Value.absent(),
+                Value<String?> clienteProvisionalDireccion2 =
+                    const Value.absent(),
+                Value<String?> clienteProvisionalCodigoPostal =
+                    const Value.absent(),
+                Value<String?> clienteProvisionalPoblacion =
+                    const Value.absent(),
+                Value<String?> clienteProvisionalProvinciaId =
+                    const Value.absent(),
+                Value<String?> clienteProvisionalRegionId =
+                    const Value.absent(),
+                Value<String?> clienteProvisionalPaisId = const Value.absent(),
+                required DateTime fecha,
+                required String numEmpl,
+                required String contacto,
+                Value<String?> atendidoPor = const Value.absent(),
+                Value<String?> resumen = const Value.absent(),
+                Value<String?> marcasCompetencia = const Value.absent(),
+                Value<String> ofertaRealizada = const Value.absent(),
+                Value<String?> interesCliente = const Value.absent(),
+                Value<String> pedidoRealizado = const Value.absent(),
+                Value<int?> codigoMotivoNoInteres = const Value.absent(),
+                Value<int?> codigoMotivoNoPedido = const Value.absent(),
+                Value<int?> codigoSector = const Value.absent(),
+                Value<int?> codigoCompetencia = const Value.absent(),
+                Value<String?> almacenPropio = const Value.absent(),
+                Value<String?> capacidad = const Value.absent(),
+                Value<String?> frecuenciaPedido = const Value.absent(),
+                required double latitud,
+                required double longitud,
+                Value<String> enviada = const Value.absent(),
+                Value<String> tratada = const Value.absent(),
+                Value<String?> errorSyncMessage = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => VisitaLocalTableCompanion.insert(
+                visitaAppId: visitaAppId,
+                clienteId: clienteId,
+                isClienteProvisional: isClienteProvisional,
+                clienteProvisionalNombre: clienteProvisionalNombre,
+                clienteProvisionalEmail: clienteProvisionalEmail,
+                clienteProvisionalTelefono: clienteProvisionalTelefono,
+                clienteProvisionalDireccion1: clienteProvisionalDireccion1,
+                clienteProvisionalDireccion2: clienteProvisionalDireccion2,
+                clienteProvisionalCodigoPostal: clienteProvisionalCodigoPostal,
+                clienteProvisionalPoblacion: clienteProvisionalPoblacion,
+                clienteProvisionalProvinciaId: clienteProvisionalProvinciaId,
+                clienteProvisionalRegionId: clienteProvisionalRegionId,
+                clienteProvisionalPaisId: clienteProvisionalPaisId,
+                fecha: fecha,
+                numEmpl: numEmpl,
+                contacto: contacto,
+                atendidoPor: atendidoPor,
+                resumen: resumen,
+                marcasCompetencia: marcasCompetencia,
+                ofertaRealizada: ofertaRealizada,
+                interesCliente: interesCliente,
+                pedidoRealizado: pedidoRealizado,
+                codigoMotivoNoInteres: codigoMotivoNoInteres,
+                codigoMotivoNoPedido: codigoMotivoNoPedido,
+                codigoSector: codigoSector,
+                codigoCompetencia: codigoCompetencia,
+                almacenPropio: almacenPropio,
+                capacidad: capacidad,
+                frecuenciaPedido: frecuenciaPedido,
+                latitud: latitud,
+                longitud: longitud,
+                enviada: enviada,
+                tratada: tratada,
+                errorSyncMessage: errorSyncMessage,
+                rowid: rowid,
+              ),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          BaseReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$VisitaLocalTableTableProcessedTableManager = ProcessedTableManager<
-    _$LocalAppDatabase,
-    $VisitaLocalTableTable,
-    VisitaLocalDTO,
-    $$VisitaLocalTableTableFilterComposer,
-    $$VisitaLocalTableTableOrderingComposer,
-    $$VisitaLocalTableTableAnnotationComposer,
-    $$VisitaLocalTableTableCreateCompanionBuilder,
-    $$VisitaLocalTableTableUpdateCompanionBuilder,
-    (
+typedef $$VisitaLocalTableTableProcessedTableManager =
+    ProcessedTableManager<
+      _$LocalAppDatabase,
+      $VisitaLocalTableTable,
       VisitaLocalDTO,
-      BaseReferences<_$LocalAppDatabase, $VisitaLocalTableTable, VisitaLocalDTO>
-    ),
-    VisitaLocalDTO,
-    PrefetchHooks Function()>;
-typedef $$PedidoVentaLineaLocalTableTableCreateCompanionBuilder
-    = PedidoVentaLineaLocalTableCompanion Function({
-  required String pedidoVentaAppId,
-  Value<String?> pedidoId,
-  Value<String?> empresaId,
-  required String pedidoVentaLineaAppId,
-  required String articuloId,
-  required String articuloDescription,
-  required int cantidad,
-  required double precioDivisa,
-  required int tipoPrecio,
-  required double descuento1,
-  required double descuento2,
-  required double descuento3,
-  required double descuentoProntoPago,
-  required String stockDisponibleSN,
-  Value<DateTime?> fechaDisponible,
-  required double iva,
-  Value<String?> pedidoLineaIdComponente,
-  Value<int> rowid,
-});
-typedef $$PedidoVentaLineaLocalTableTableUpdateCompanionBuilder
-    = PedidoVentaLineaLocalTableCompanion Function({
-  Value<String> pedidoVentaAppId,
-  Value<String?> pedidoId,
-  Value<String?> empresaId,
-  Value<String> pedidoVentaLineaAppId,
-  Value<String> articuloId,
-  Value<String> articuloDescription,
-  Value<int> cantidad,
-  Value<double> precioDivisa,
-  Value<int> tipoPrecio,
-  Value<double> descuento1,
-  Value<double> descuento2,
-  Value<double> descuento3,
-  Value<double> descuentoProntoPago,
-  Value<String> stockDisponibleSN,
-  Value<DateTime?> fechaDisponible,
-  Value<double> iva,
-  Value<String?> pedidoLineaIdComponente,
-  Value<int> rowid,
-});
+      $$VisitaLocalTableTableFilterComposer,
+      $$VisitaLocalTableTableOrderingComposer,
+      $$VisitaLocalTableTableAnnotationComposer,
+      $$VisitaLocalTableTableCreateCompanionBuilder,
+      $$VisitaLocalTableTableUpdateCompanionBuilder,
+      (
+        VisitaLocalDTO,
+        BaseReferences<
+          _$LocalAppDatabase,
+          $VisitaLocalTableTable,
+          VisitaLocalDTO
+        >,
+      ),
+      VisitaLocalDTO,
+      PrefetchHooks Function()
+    >;
+typedef $$PedidoVentaLineaLocalTableTableCreateCompanionBuilder =
+    PedidoVentaLineaLocalTableCompanion Function({
+      required String pedidoVentaAppId,
+      Value<String?> pedidoId,
+      Value<String?> empresaId,
+      required String pedidoVentaLineaAppId,
+      required String articuloId,
+      required String articuloDescription,
+      required int cantidad,
+      required double precioDivisa,
+      required int tipoPrecio,
+      required double descuento1,
+      required double descuento2,
+      required double descuento3,
+      required double descuentoProntoPago,
+      required String stockDisponibleSN,
+      Value<DateTime?> fechaDisponible,
+      required double iva,
+      Value<String?> pedidoLineaIdComponente,
+      Value<int> rowid,
+    });
+typedef $$PedidoVentaLineaLocalTableTableUpdateCompanionBuilder =
+    PedidoVentaLineaLocalTableCompanion Function({
+      Value<String> pedidoVentaAppId,
+      Value<String?> pedidoId,
+      Value<String?> empresaId,
+      Value<String> pedidoVentaLineaAppId,
+      Value<String> articuloId,
+      Value<String> articuloDescription,
+      Value<int> cantidad,
+      Value<double> precioDivisa,
+      Value<int> tipoPrecio,
+      Value<double> descuento1,
+      Value<double> descuento2,
+      Value<double> descuento3,
+      Value<double> descuentoProntoPago,
+      Value<String> stockDisponibleSN,
+      Value<DateTime?> fechaDisponible,
+      Value<double> iva,
+      Value<String?> pedidoLineaIdComponente,
+      Value<int> rowid,
+    });
 
 class $$PedidoVentaLineaLocalTableTableFilterComposer
     extends Composer<_$LocalAppDatabase, $PedidoVentaLineaLocalTableTable> {
@@ -5364,62 +6928,89 @@ class $$PedidoVentaLineaLocalTableTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<String> get pedidoVentaAppId => $composableBuilder(
-      column: $table.pedidoVentaAppId,
-      builder: (column) => ColumnFilters(column));
+    column: $table.pedidoVentaAppId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get pedidoId => $composableBuilder(
-      column: $table.pedidoId, builder: (column) => ColumnFilters(column));
+    column: $table.pedidoId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get empresaId => $composableBuilder(
-      column: $table.empresaId, builder: (column) => ColumnFilters(column));
+    column: $table.empresaId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get pedidoVentaLineaAppId => $composableBuilder(
-      column: $table.pedidoVentaLineaAppId,
-      builder: (column) => ColumnFilters(column));
+    column: $table.pedidoVentaLineaAppId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get articuloId => $composableBuilder(
-      column: $table.articuloId, builder: (column) => ColumnFilters(column));
+    column: $table.articuloId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get articuloDescription => $composableBuilder(
-      column: $table.articuloDescription,
-      builder: (column) => ColumnFilters(column));
+    column: $table.articuloDescription,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<int> get cantidad => $composableBuilder(
-      column: $table.cantidad, builder: (column) => ColumnFilters(column));
+    column: $table.cantidad,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<double> get precioDivisa => $composableBuilder(
-      column: $table.precioDivisa, builder: (column) => ColumnFilters(column));
+    column: $table.precioDivisa,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<int> get tipoPrecio => $composableBuilder(
-      column: $table.tipoPrecio, builder: (column) => ColumnFilters(column));
+    column: $table.tipoPrecio,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<double> get descuento1 => $composableBuilder(
-      column: $table.descuento1, builder: (column) => ColumnFilters(column));
+    column: $table.descuento1,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<double> get descuento2 => $composableBuilder(
-      column: $table.descuento2, builder: (column) => ColumnFilters(column));
+    column: $table.descuento2,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<double> get descuento3 => $composableBuilder(
-      column: $table.descuento3, builder: (column) => ColumnFilters(column));
+    column: $table.descuento3,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<double> get descuentoProntoPago => $composableBuilder(
-      column: $table.descuentoProntoPago,
-      builder: (column) => ColumnFilters(column));
+    column: $table.descuentoProntoPago,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get stockDisponibleSN => $composableBuilder(
-      column: $table.stockDisponibleSN,
-      builder: (column) => ColumnFilters(column));
+    column: $table.stockDisponibleSN,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<DateTime> get fechaDisponible => $composableBuilder(
-      column: $table.fechaDisponible,
-      builder: (column) => ColumnFilters(column));
+    column: $table.fechaDisponible,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<double> get iva => $composableBuilder(
-      column: $table.iva, builder: (column) => ColumnFilters(column));
+    column: $table.iva,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get pedidoLineaIdComponente => $composableBuilder(
-      column: $table.pedidoLineaIdComponente,
-      builder: (column) => ColumnFilters(column));
+    column: $table.pedidoLineaIdComponente,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$PedidoVentaLineaLocalTableTableOrderingComposer
@@ -5432,63 +7023,89 @@ class $$PedidoVentaLineaLocalTableTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<String> get pedidoVentaAppId => $composableBuilder(
-      column: $table.pedidoVentaAppId,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.pedidoVentaAppId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get pedidoId => $composableBuilder(
-      column: $table.pedidoId, builder: (column) => ColumnOrderings(column));
+    column: $table.pedidoId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get empresaId => $composableBuilder(
-      column: $table.empresaId, builder: (column) => ColumnOrderings(column));
+    column: $table.empresaId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get pedidoVentaLineaAppId => $composableBuilder(
-      column: $table.pedidoVentaLineaAppId,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.pedidoVentaLineaAppId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get articuloId => $composableBuilder(
-      column: $table.articuloId, builder: (column) => ColumnOrderings(column));
+    column: $table.articuloId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get articuloDescription => $composableBuilder(
-      column: $table.articuloDescription,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.articuloDescription,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<int> get cantidad => $composableBuilder(
-      column: $table.cantidad, builder: (column) => ColumnOrderings(column));
+    column: $table.cantidad,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<double> get precioDivisa => $composableBuilder(
-      column: $table.precioDivisa,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.precioDivisa,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<int> get tipoPrecio => $composableBuilder(
-      column: $table.tipoPrecio, builder: (column) => ColumnOrderings(column));
+    column: $table.tipoPrecio,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<double> get descuento1 => $composableBuilder(
-      column: $table.descuento1, builder: (column) => ColumnOrderings(column));
+    column: $table.descuento1,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<double> get descuento2 => $composableBuilder(
-      column: $table.descuento2, builder: (column) => ColumnOrderings(column));
+    column: $table.descuento2,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<double> get descuento3 => $composableBuilder(
-      column: $table.descuento3, builder: (column) => ColumnOrderings(column));
+    column: $table.descuento3,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<double> get descuentoProntoPago => $composableBuilder(
-      column: $table.descuentoProntoPago,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.descuentoProntoPago,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get stockDisponibleSN => $composableBuilder(
-      column: $table.stockDisponibleSN,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.stockDisponibleSN,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<DateTime> get fechaDisponible => $composableBuilder(
-      column: $table.fechaDisponible,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.fechaDisponible,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<double> get iva => $composableBuilder(
-      column: $table.iva, builder: (column) => ColumnOrderings(column));
+    column: $table.iva,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get pedidoLineaIdComponente => $composableBuilder(
-      column: $table.pedidoLineaIdComponente,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.pedidoLineaIdComponente,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$PedidoVentaLineaLocalTableTableAnnotationComposer
@@ -5501,7 +7118,9 @@ class $$PedidoVentaLineaLocalTableTableAnnotationComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   GeneratedColumn<String> get pedidoVentaAppId => $composableBuilder(
-      column: $table.pedidoVentaAppId, builder: (column) => column);
+    column: $table.pedidoVentaAppId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get pedidoId =>
       $composableBuilder(column: $table.pedidoId, builder: (column) => column);
@@ -5510,240 +7129,290 @@ class $$PedidoVentaLineaLocalTableTableAnnotationComposer
       $composableBuilder(column: $table.empresaId, builder: (column) => column);
 
   GeneratedColumn<String> get pedidoVentaLineaAppId => $composableBuilder(
-      column: $table.pedidoVentaLineaAppId, builder: (column) => column);
+    column: $table.pedidoVentaLineaAppId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get articuloId => $composableBuilder(
-      column: $table.articuloId, builder: (column) => column);
+    column: $table.articuloId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get articuloDescription => $composableBuilder(
-      column: $table.articuloDescription, builder: (column) => column);
+    column: $table.articuloDescription,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<int> get cantidad =>
       $composableBuilder(column: $table.cantidad, builder: (column) => column);
 
   GeneratedColumn<double> get precioDivisa => $composableBuilder(
-      column: $table.precioDivisa, builder: (column) => column);
+    column: $table.precioDivisa,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<int> get tipoPrecio => $composableBuilder(
-      column: $table.tipoPrecio, builder: (column) => column);
+    column: $table.tipoPrecio,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<double> get descuento1 => $composableBuilder(
-      column: $table.descuento1, builder: (column) => column);
+    column: $table.descuento1,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<double> get descuento2 => $composableBuilder(
-      column: $table.descuento2, builder: (column) => column);
+    column: $table.descuento2,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<double> get descuento3 => $composableBuilder(
-      column: $table.descuento3, builder: (column) => column);
+    column: $table.descuento3,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<double> get descuentoProntoPago => $composableBuilder(
-      column: $table.descuentoProntoPago, builder: (column) => column);
+    column: $table.descuentoProntoPago,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get stockDisponibleSN => $composableBuilder(
-      column: $table.stockDisponibleSN, builder: (column) => column);
+    column: $table.stockDisponibleSN,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<DateTime> get fechaDisponible => $composableBuilder(
-      column: $table.fechaDisponible, builder: (column) => column);
+    column: $table.fechaDisponible,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<double> get iva =>
       $composableBuilder(column: $table.iva, builder: (column) => column);
 
   GeneratedColumn<String> get pedidoLineaIdComponente => $composableBuilder(
-      column: $table.pedidoLineaIdComponente, builder: (column) => column);
+    column: $table.pedidoLineaIdComponente,
+    builder: (column) => column,
+  );
 }
 
-class $$PedidoVentaLineaLocalTableTableTableManager extends RootTableManager<
-    _$LocalAppDatabase,
-    $PedidoVentaLineaLocalTableTable,
-    PedidoVentaLineaLocalDTO,
-    $$PedidoVentaLineaLocalTableTableFilterComposer,
-    $$PedidoVentaLineaLocalTableTableOrderingComposer,
-    $$PedidoVentaLineaLocalTableTableAnnotationComposer,
-    $$PedidoVentaLineaLocalTableTableCreateCompanionBuilder,
-    $$PedidoVentaLineaLocalTableTableUpdateCompanionBuilder,
-    (
-      PedidoVentaLineaLocalDTO,
-      BaseReferences<_$LocalAppDatabase, $PedidoVentaLineaLocalTableTable,
-          PedidoVentaLineaLocalDTO>
-    ),
-    PedidoVentaLineaLocalDTO,
-    PrefetchHooks Function()> {
+class $$PedidoVentaLineaLocalTableTableTableManager
+    extends
+        RootTableManager<
+          _$LocalAppDatabase,
+          $PedidoVentaLineaLocalTableTable,
+          PedidoVentaLineaLocalDTO,
+          $$PedidoVentaLineaLocalTableTableFilterComposer,
+          $$PedidoVentaLineaLocalTableTableOrderingComposer,
+          $$PedidoVentaLineaLocalTableTableAnnotationComposer,
+          $$PedidoVentaLineaLocalTableTableCreateCompanionBuilder,
+          $$PedidoVentaLineaLocalTableTableUpdateCompanionBuilder,
+          (
+            PedidoVentaLineaLocalDTO,
+            BaseReferences<
+              _$LocalAppDatabase,
+              $PedidoVentaLineaLocalTableTable,
+              PedidoVentaLineaLocalDTO
+            >,
+          ),
+          PedidoVentaLineaLocalDTO,
+          PrefetchHooks Function()
+        > {
   $$PedidoVentaLineaLocalTableTableTableManager(
-      _$LocalAppDatabase db, $PedidoVentaLineaLocalTableTable table)
-      : super(TableManagerState(
+    _$LocalAppDatabase db,
+    $PedidoVentaLineaLocalTableTable table,
+  ) : super(
+        TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$PedidoVentaLineaLocalTableTableFilterComposer(
-                  $db: db, $table: table),
-          createOrderingComposer: () =>
-              $$PedidoVentaLineaLocalTableTableOrderingComposer(
-                  $db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$PedidoVentaLineaLocalTableTableAnnotationComposer(
-                  $db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<String> pedidoVentaAppId = const Value.absent(),
-            Value<String?> pedidoId = const Value.absent(),
-            Value<String?> empresaId = const Value.absent(),
-            Value<String> pedidoVentaLineaAppId = const Value.absent(),
-            Value<String> articuloId = const Value.absent(),
-            Value<String> articuloDescription = const Value.absent(),
-            Value<int> cantidad = const Value.absent(),
-            Value<double> precioDivisa = const Value.absent(),
-            Value<int> tipoPrecio = const Value.absent(),
-            Value<double> descuento1 = const Value.absent(),
-            Value<double> descuento2 = const Value.absent(),
-            Value<double> descuento3 = const Value.absent(),
-            Value<double> descuentoProntoPago = const Value.absent(),
-            Value<String> stockDisponibleSN = const Value.absent(),
-            Value<DateTime?> fechaDisponible = const Value.absent(),
-            Value<double> iva = const Value.absent(),
-            Value<String?> pedidoLineaIdComponente = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              PedidoVentaLineaLocalTableCompanion(
-            pedidoVentaAppId: pedidoVentaAppId,
-            pedidoId: pedidoId,
-            empresaId: empresaId,
-            pedidoVentaLineaAppId: pedidoVentaLineaAppId,
-            articuloId: articuloId,
-            articuloDescription: articuloDescription,
-            cantidad: cantidad,
-            precioDivisa: precioDivisa,
-            tipoPrecio: tipoPrecio,
-            descuento1: descuento1,
-            descuento2: descuento2,
-            descuento3: descuento3,
-            descuentoProntoPago: descuentoProntoPago,
-            stockDisponibleSN: stockDisponibleSN,
-            fechaDisponible: fechaDisponible,
-            iva: iva,
-            pedidoLineaIdComponente: pedidoLineaIdComponente,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String pedidoVentaAppId,
-            Value<String?> pedidoId = const Value.absent(),
-            Value<String?> empresaId = const Value.absent(),
-            required String pedidoVentaLineaAppId,
-            required String articuloId,
-            required String articuloDescription,
-            required int cantidad,
-            required double precioDivisa,
-            required int tipoPrecio,
-            required double descuento1,
-            required double descuento2,
-            required double descuento3,
-            required double descuentoProntoPago,
-            required String stockDisponibleSN,
-            Value<DateTime?> fechaDisponible = const Value.absent(),
-            required double iva,
-            Value<String?> pedidoLineaIdComponente = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              PedidoVentaLineaLocalTableCompanion.insert(
-            pedidoVentaAppId: pedidoVentaAppId,
-            pedidoId: pedidoId,
-            empresaId: empresaId,
-            pedidoVentaLineaAppId: pedidoVentaLineaAppId,
-            articuloId: articuloId,
-            articuloDescription: articuloDescription,
-            cantidad: cantidad,
-            precioDivisa: precioDivisa,
-            tipoPrecio: tipoPrecio,
-            descuento1: descuento1,
-            descuento2: descuento2,
-            descuento3: descuento3,
-            descuentoProntoPago: descuentoProntoPago,
-            stockDisponibleSN: stockDisponibleSN,
-            fechaDisponible: fechaDisponible,
-            iva: iva,
-            pedidoLineaIdComponente: pedidoLineaIdComponente,
-            rowid: rowid,
-          ),
-          withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
-              .toList(),
+          createFilteringComposer:
+              () => $$PedidoVentaLineaLocalTableTableFilterComposer(
+                $db: db,
+                $table: table,
+              ),
+          createOrderingComposer:
+              () => $$PedidoVentaLineaLocalTableTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer:
+              () => $$PedidoVentaLineaLocalTableTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> pedidoVentaAppId = const Value.absent(),
+                Value<String?> pedidoId = const Value.absent(),
+                Value<String?> empresaId = const Value.absent(),
+                Value<String> pedidoVentaLineaAppId = const Value.absent(),
+                Value<String> articuloId = const Value.absent(),
+                Value<String> articuloDescription = const Value.absent(),
+                Value<int> cantidad = const Value.absent(),
+                Value<double> precioDivisa = const Value.absent(),
+                Value<int> tipoPrecio = const Value.absent(),
+                Value<double> descuento1 = const Value.absent(),
+                Value<double> descuento2 = const Value.absent(),
+                Value<double> descuento3 = const Value.absent(),
+                Value<double> descuentoProntoPago = const Value.absent(),
+                Value<String> stockDisponibleSN = const Value.absent(),
+                Value<DateTime?> fechaDisponible = const Value.absent(),
+                Value<double> iva = const Value.absent(),
+                Value<String?> pedidoLineaIdComponente = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PedidoVentaLineaLocalTableCompanion(
+                pedidoVentaAppId: pedidoVentaAppId,
+                pedidoId: pedidoId,
+                empresaId: empresaId,
+                pedidoVentaLineaAppId: pedidoVentaLineaAppId,
+                articuloId: articuloId,
+                articuloDescription: articuloDescription,
+                cantidad: cantidad,
+                precioDivisa: precioDivisa,
+                tipoPrecio: tipoPrecio,
+                descuento1: descuento1,
+                descuento2: descuento2,
+                descuento3: descuento3,
+                descuentoProntoPago: descuentoProntoPago,
+                stockDisponibleSN: stockDisponibleSN,
+                fechaDisponible: fechaDisponible,
+                iva: iva,
+                pedidoLineaIdComponente: pedidoLineaIdComponente,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String pedidoVentaAppId,
+                Value<String?> pedidoId = const Value.absent(),
+                Value<String?> empresaId = const Value.absent(),
+                required String pedidoVentaLineaAppId,
+                required String articuloId,
+                required String articuloDescription,
+                required int cantidad,
+                required double precioDivisa,
+                required int tipoPrecio,
+                required double descuento1,
+                required double descuento2,
+                required double descuento3,
+                required double descuentoProntoPago,
+                required String stockDisponibleSN,
+                Value<DateTime?> fechaDisponible = const Value.absent(),
+                required double iva,
+                Value<String?> pedidoLineaIdComponente = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PedidoVentaLineaLocalTableCompanion.insert(
+                pedidoVentaAppId: pedidoVentaAppId,
+                pedidoId: pedidoId,
+                empresaId: empresaId,
+                pedidoVentaLineaAppId: pedidoVentaLineaAppId,
+                articuloId: articuloId,
+                articuloDescription: articuloDescription,
+                cantidad: cantidad,
+                precioDivisa: precioDivisa,
+                tipoPrecio: tipoPrecio,
+                descuento1: descuento1,
+                descuento2: descuento2,
+                descuento3: descuento3,
+                descuentoProntoPago: descuentoProntoPago,
+                stockDisponibleSN: stockDisponibleSN,
+                fechaDisponible: fechaDisponible,
+                iva: iva,
+                pedidoLineaIdComponente: pedidoLineaIdComponente,
+                rowid: rowid,
+              ),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          BaseReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$PedidoVentaLineaLocalTableTableProcessedTableManager
-    = ProcessedTableManager<
-        _$LocalAppDatabase,
-        $PedidoVentaLineaLocalTableTable,
+typedef $$PedidoVentaLineaLocalTableTableProcessedTableManager =
+    ProcessedTableManager<
+      _$LocalAppDatabase,
+      $PedidoVentaLineaLocalTableTable,
+      PedidoVentaLineaLocalDTO,
+      $$PedidoVentaLineaLocalTableTableFilterComposer,
+      $$PedidoVentaLineaLocalTableTableOrderingComposer,
+      $$PedidoVentaLineaLocalTableTableAnnotationComposer,
+      $$PedidoVentaLineaLocalTableTableCreateCompanionBuilder,
+      $$PedidoVentaLineaLocalTableTableUpdateCompanionBuilder,
+      (
         PedidoVentaLineaLocalDTO,
-        $$PedidoVentaLineaLocalTableTableFilterComposer,
-        $$PedidoVentaLineaLocalTableTableOrderingComposer,
-        $$PedidoVentaLineaLocalTableTableAnnotationComposer,
-        $$PedidoVentaLineaLocalTableTableCreateCompanionBuilder,
-        $$PedidoVentaLineaLocalTableTableUpdateCompanionBuilder,
-        (
-          PedidoVentaLineaLocalDTO,
-          BaseReferences<_$LocalAppDatabase, $PedidoVentaLineaLocalTableTable,
-              PedidoVentaLineaLocalDTO>
-        ),
-        PedidoVentaLineaLocalDTO,
-        PrefetchHooks Function()>;
-typedef $$PedidoVentaLocalTableTableCreateCompanionBuilder
-    = PedidoVentaLocalTableCompanion Function({
-  Value<String?> usuarioId,
-  required String pedidoVentaAppId,
-  Value<String?> empresaId,
-  Value<String?> pedidoId,
-  required DateTime fechaAlta,
-  required String clienteId,
-  required String nombreCliente,
-  Value<String?> direccionId,
-  Value<String?> direccion1,
-  Value<String?> direccion2,
-  Value<String?> codigoPostal,
-  Value<String?> poblacion,
-  Value<String?> provincia,
-  Value<String?> paisId,
-  Value<String?> divisaId,
-  Value<String?> pedidoCliente,
-  Value<String?> observaciones,
-  required String oferta,
-  Value<DateTime?> ofertaFechaHasta,
-  required double iva,
-  required double dtoBonificacion,
-  Value<String> enviada,
-  Value<String> tratada,
-  Value<String> borrador,
-  Value<String?> errorSyncMessage,
-  Value<int> rowid,
-});
-typedef $$PedidoVentaLocalTableTableUpdateCompanionBuilder
-    = PedidoVentaLocalTableCompanion Function({
-  Value<String?> usuarioId,
-  Value<String> pedidoVentaAppId,
-  Value<String?> empresaId,
-  Value<String?> pedidoId,
-  Value<DateTime> fechaAlta,
-  Value<String> clienteId,
-  Value<String> nombreCliente,
-  Value<String?> direccionId,
-  Value<String?> direccion1,
-  Value<String?> direccion2,
-  Value<String?> codigoPostal,
-  Value<String?> poblacion,
-  Value<String?> provincia,
-  Value<String?> paisId,
-  Value<String?> divisaId,
-  Value<String?> pedidoCliente,
-  Value<String?> observaciones,
-  Value<String> oferta,
-  Value<DateTime?> ofertaFechaHasta,
-  Value<double> iva,
-  Value<double> dtoBonificacion,
-  Value<String> enviada,
-  Value<String> tratada,
-  Value<String> borrador,
-  Value<String?> errorSyncMessage,
-  Value<int> rowid,
-});
+        BaseReferences<
+          _$LocalAppDatabase,
+          $PedidoVentaLineaLocalTableTable,
+          PedidoVentaLineaLocalDTO
+        >,
+      ),
+      PedidoVentaLineaLocalDTO,
+      PrefetchHooks Function()
+    >;
+typedef $$PedidoVentaLocalTableTableCreateCompanionBuilder =
+    PedidoVentaLocalTableCompanion Function({
+      Value<String?> usuarioId,
+      required String pedidoVentaAppId,
+      Value<String?> empresaId,
+      Value<String?> pedidoId,
+      required DateTime fechaAlta,
+      required String clienteId,
+      required String nombreCliente,
+      Value<String?> direccionId,
+      Value<String?> direccion1,
+      Value<String?> direccion2,
+      Value<String?> codigoPostal,
+      Value<String?> poblacion,
+      Value<String?> provincia,
+      Value<String?> paisId,
+      Value<String?> divisaId,
+      Value<String?> pedidoCliente,
+      Value<String?> observaciones,
+      required String oferta,
+      Value<DateTime?> ofertaFechaHasta,
+      required double iva,
+      required double dtoBonificacion,
+      Value<String> enviada,
+      Value<String> tratada,
+      Value<String> borrador,
+      Value<String?> errorSyncMessage,
+      Value<int> rowid,
+    });
+typedef $$PedidoVentaLocalTableTableUpdateCompanionBuilder =
+    PedidoVentaLocalTableCompanion Function({
+      Value<String?> usuarioId,
+      Value<String> pedidoVentaAppId,
+      Value<String?> empresaId,
+      Value<String?> pedidoId,
+      Value<DateTime> fechaAlta,
+      Value<String> clienteId,
+      Value<String> nombreCliente,
+      Value<String?> direccionId,
+      Value<String?> direccion1,
+      Value<String?> direccion2,
+      Value<String?> codigoPostal,
+      Value<String?> poblacion,
+      Value<String?> provincia,
+      Value<String?> paisId,
+      Value<String?> divisaId,
+      Value<String?> pedidoCliente,
+      Value<String?> observaciones,
+      Value<String> oferta,
+      Value<DateTime?> ofertaFechaHasta,
+      Value<double> iva,
+      Value<double> dtoBonificacion,
+      Value<String> enviada,
+      Value<String> tratada,
+      Value<String> borrador,
+      Value<String?> errorSyncMessage,
+      Value<int> rowid,
+    });
 
 class $$PedidoVentaLocalTableTableFilterComposer
     extends Composer<_$LocalAppDatabase, $PedidoVentaLocalTableTable> {
@@ -5755,83 +7424,129 @@ class $$PedidoVentaLocalTableTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<String> get usuarioId => $composableBuilder(
-      column: $table.usuarioId, builder: (column) => ColumnFilters(column));
+    column: $table.usuarioId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get pedidoVentaAppId => $composableBuilder(
-      column: $table.pedidoVentaAppId,
-      builder: (column) => ColumnFilters(column));
+    column: $table.pedidoVentaAppId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get empresaId => $composableBuilder(
-      column: $table.empresaId, builder: (column) => ColumnFilters(column));
+    column: $table.empresaId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get pedidoId => $composableBuilder(
-      column: $table.pedidoId, builder: (column) => ColumnFilters(column));
+    column: $table.pedidoId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<DateTime> get fechaAlta => $composableBuilder(
-      column: $table.fechaAlta, builder: (column) => ColumnFilters(column));
+    column: $table.fechaAlta,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get clienteId => $composableBuilder(
-      column: $table.clienteId, builder: (column) => ColumnFilters(column));
+    column: $table.clienteId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get nombreCliente => $composableBuilder(
-      column: $table.nombreCliente, builder: (column) => ColumnFilters(column));
+    column: $table.nombreCliente,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get direccionId => $composableBuilder(
-      column: $table.direccionId, builder: (column) => ColumnFilters(column));
+    column: $table.direccionId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get direccion1 => $composableBuilder(
-      column: $table.direccion1, builder: (column) => ColumnFilters(column));
+    column: $table.direccion1,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get direccion2 => $composableBuilder(
-      column: $table.direccion2, builder: (column) => ColumnFilters(column));
+    column: $table.direccion2,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get codigoPostal => $composableBuilder(
-      column: $table.codigoPostal, builder: (column) => ColumnFilters(column));
+    column: $table.codigoPostal,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get poblacion => $composableBuilder(
-      column: $table.poblacion, builder: (column) => ColumnFilters(column));
+    column: $table.poblacion,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get provincia => $composableBuilder(
-      column: $table.provincia, builder: (column) => ColumnFilters(column));
+    column: $table.provincia,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get paisId => $composableBuilder(
-      column: $table.paisId, builder: (column) => ColumnFilters(column));
+    column: $table.paisId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get divisaId => $composableBuilder(
-      column: $table.divisaId, builder: (column) => ColumnFilters(column));
+    column: $table.divisaId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get pedidoCliente => $composableBuilder(
-      column: $table.pedidoCliente, builder: (column) => ColumnFilters(column));
+    column: $table.pedidoCliente,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get observaciones => $composableBuilder(
-      column: $table.observaciones, builder: (column) => ColumnFilters(column));
+    column: $table.observaciones,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get oferta => $composableBuilder(
-      column: $table.oferta, builder: (column) => ColumnFilters(column));
+    column: $table.oferta,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<DateTime> get ofertaFechaHasta => $composableBuilder(
-      column: $table.ofertaFechaHasta,
-      builder: (column) => ColumnFilters(column));
+    column: $table.ofertaFechaHasta,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<double> get iva => $composableBuilder(
-      column: $table.iva, builder: (column) => ColumnFilters(column));
+    column: $table.iva,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<double> get dtoBonificacion => $composableBuilder(
-      column: $table.dtoBonificacion,
-      builder: (column) => ColumnFilters(column));
+    column: $table.dtoBonificacion,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get enviada => $composableBuilder(
-      column: $table.enviada, builder: (column) => ColumnFilters(column));
+    column: $table.enviada,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get tratada => $composableBuilder(
-      column: $table.tratada, builder: (column) => ColumnFilters(column));
+    column: $table.tratada,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get borrador => $composableBuilder(
-      column: $table.borrador, builder: (column) => ColumnFilters(column));
+    column: $table.borrador,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get errorSyncMessage => $composableBuilder(
-      column: $table.errorSyncMessage,
-      builder: (column) => ColumnFilters(column));
+    column: $table.errorSyncMessage,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$PedidoVentaLocalTableTableOrderingComposer
@@ -5844,87 +7559,129 @@ class $$PedidoVentaLocalTableTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<String> get usuarioId => $composableBuilder(
-      column: $table.usuarioId, builder: (column) => ColumnOrderings(column));
+    column: $table.usuarioId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get pedidoVentaAppId => $composableBuilder(
-      column: $table.pedidoVentaAppId,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.pedidoVentaAppId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get empresaId => $composableBuilder(
-      column: $table.empresaId, builder: (column) => ColumnOrderings(column));
+    column: $table.empresaId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get pedidoId => $composableBuilder(
-      column: $table.pedidoId, builder: (column) => ColumnOrderings(column));
+    column: $table.pedidoId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<DateTime> get fechaAlta => $composableBuilder(
-      column: $table.fechaAlta, builder: (column) => ColumnOrderings(column));
+    column: $table.fechaAlta,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get clienteId => $composableBuilder(
-      column: $table.clienteId, builder: (column) => ColumnOrderings(column));
+    column: $table.clienteId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get nombreCliente => $composableBuilder(
-      column: $table.nombreCliente,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.nombreCliente,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get direccionId => $composableBuilder(
-      column: $table.direccionId, builder: (column) => ColumnOrderings(column));
+    column: $table.direccionId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get direccion1 => $composableBuilder(
-      column: $table.direccion1, builder: (column) => ColumnOrderings(column));
+    column: $table.direccion1,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get direccion2 => $composableBuilder(
-      column: $table.direccion2, builder: (column) => ColumnOrderings(column));
+    column: $table.direccion2,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get codigoPostal => $composableBuilder(
-      column: $table.codigoPostal,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.codigoPostal,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get poblacion => $composableBuilder(
-      column: $table.poblacion, builder: (column) => ColumnOrderings(column));
+    column: $table.poblacion,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get provincia => $composableBuilder(
-      column: $table.provincia, builder: (column) => ColumnOrderings(column));
+    column: $table.provincia,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get paisId => $composableBuilder(
-      column: $table.paisId, builder: (column) => ColumnOrderings(column));
+    column: $table.paisId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get divisaId => $composableBuilder(
-      column: $table.divisaId, builder: (column) => ColumnOrderings(column));
+    column: $table.divisaId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get pedidoCliente => $composableBuilder(
-      column: $table.pedidoCliente,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.pedidoCliente,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get observaciones => $composableBuilder(
-      column: $table.observaciones,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.observaciones,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get oferta => $composableBuilder(
-      column: $table.oferta, builder: (column) => ColumnOrderings(column));
+    column: $table.oferta,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<DateTime> get ofertaFechaHasta => $composableBuilder(
-      column: $table.ofertaFechaHasta,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.ofertaFechaHasta,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<double> get iva => $composableBuilder(
-      column: $table.iva, builder: (column) => ColumnOrderings(column));
+    column: $table.iva,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<double> get dtoBonificacion => $composableBuilder(
-      column: $table.dtoBonificacion,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.dtoBonificacion,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get enviada => $composableBuilder(
-      column: $table.enviada, builder: (column) => ColumnOrderings(column));
+    column: $table.enviada,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get tratada => $composableBuilder(
-      column: $table.tratada, builder: (column) => ColumnOrderings(column));
+    column: $table.tratada,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get borrador => $composableBuilder(
-      column: $table.borrador, builder: (column) => ColumnOrderings(column));
+    column: $table.borrador,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get errorSyncMessage => $composableBuilder(
-      column: $table.errorSyncMessage,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.errorSyncMessage,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$PedidoVentaLocalTableTableAnnotationComposer
@@ -5940,7 +7697,9 @@ class $$PedidoVentaLocalTableTableAnnotationComposer
       $composableBuilder(column: $table.usuarioId, builder: (column) => column);
 
   GeneratedColumn<String> get pedidoVentaAppId => $composableBuilder(
-      column: $table.pedidoVentaAppId, builder: (column) => column);
+    column: $table.pedidoVentaAppId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get empresaId =>
       $composableBuilder(column: $table.empresaId, builder: (column) => column);
@@ -5955,19 +7714,29 @@ class $$PedidoVentaLocalTableTableAnnotationComposer
       $composableBuilder(column: $table.clienteId, builder: (column) => column);
 
   GeneratedColumn<String> get nombreCliente => $composableBuilder(
-      column: $table.nombreCliente, builder: (column) => column);
+    column: $table.nombreCliente,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get direccionId => $composableBuilder(
-      column: $table.direccionId, builder: (column) => column);
+    column: $table.direccionId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get direccion1 => $composableBuilder(
-      column: $table.direccion1, builder: (column) => column);
+    column: $table.direccion1,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get direccion2 => $composableBuilder(
-      column: $table.direccion2, builder: (column) => column);
+    column: $table.direccion2,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get codigoPostal => $composableBuilder(
-      column: $table.codigoPostal, builder: (column) => column);
+    column: $table.codigoPostal,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get poblacion =>
       $composableBuilder(column: $table.poblacion, builder: (column) => column);
@@ -5982,22 +7751,30 @@ class $$PedidoVentaLocalTableTableAnnotationComposer
       $composableBuilder(column: $table.divisaId, builder: (column) => column);
 
   GeneratedColumn<String> get pedidoCliente => $composableBuilder(
-      column: $table.pedidoCliente, builder: (column) => column);
+    column: $table.pedidoCliente,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get observaciones => $composableBuilder(
-      column: $table.observaciones, builder: (column) => column);
+    column: $table.observaciones,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get oferta =>
       $composableBuilder(column: $table.oferta, builder: (column) => column);
 
   GeneratedColumn<DateTime> get ofertaFechaHasta => $composableBuilder(
-      column: $table.ofertaFechaHasta, builder: (column) => column);
+    column: $table.ofertaFechaHasta,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<double> get iva =>
       $composableBuilder(column: $table.iva, builder: (column) => column);
 
   GeneratedColumn<double> get dtoBonificacion => $composableBuilder(
-      column: $table.dtoBonificacion, builder: (column) => column);
+    column: $table.dtoBonificacion,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get enviada =>
       $composableBuilder(column: $table.enviada, builder: (column) => column);
@@ -6009,193 +7786,221 @@ class $$PedidoVentaLocalTableTableAnnotationComposer
       $composableBuilder(column: $table.borrador, builder: (column) => column);
 
   GeneratedColumn<String> get errorSyncMessage => $composableBuilder(
-      column: $table.errorSyncMessage, builder: (column) => column);
+    column: $table.errorSyncMessage,
+    builder: (column) => column,
+  );
 }
 
-class $$PedidoVentaLocalTableTableTableManager extends RootTableManager<
-    _$LocalAppDatabase,
-    $PedidoVentaLocalTableTable,
-    PedidoVentaLocalDTO,
-    $$PedidoVentaLocalTableTableFilterComposer,
-    $$PedidoVentaLocalTableTableOrderingComposer,
-    $$PedidoVentaLocalTableTableAnnotationComposer,
-    $$PedidoVentaLocalTableTableCreateCompanionBuilder,
-    $$PedidoVentaLocalTableTableUpdateCompanionBuilder,
-    (
-      PedidoVentaLocalDTO,
-      BaseReferences<_$LocalAppDatabase, $PedidoVentaLocalTableTable,
-          PedidoVentaLocalDTO>
-    ),
-    PedidoVentaLocalDTO,
-    PrefetchHooks Function()> {
+class $$PedidoVentaLocalTableTableTableManager
+    extends
+        RootTableManager<
+          _$LocalAppDatabase,
+          $PedidoVentaLocalTableTable,
+          PedidoVentaLocalDTO,
+          $$PedidoVentaLocalTableTableFilterComposer,
+          $$PedidoVentaLocalTableTableOrderingComposer,
+          $$PedidoVentaLocalTableTableAnnotationComposer,
+          $$PedidoVentaLocalTableTableCreateCompanionBuilder,
+          $$PedidoVentaLocalTableTableUpdateCompanionBuilder,
+          (
+            PedidoVentaLocalDTO,
+            BaseReferences<
+              _$LocalAppDatabase,
+              $PedidoVentaLocalTableTable,
+              PedidoVentaLocalDTO
+            >,
+          ),
+          PedidoVentaLocalDTO,
+          PrefetchHooks Function()
+        > {
   $$PedidoVentaLocalTableTableTableManager(
-      _$LocalAppDatabase db, $PedidoVentaLocalTableTable table)
-      : super(TableManagerState(
+    _$LocalAppDatabase db,
+    $PedidoVentaLocalTableTable table,
+  ) : super(
+        TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$PedidoVentaLocalTableTableFilterComposer(
-                  $db: db, $table: table),
-          createOrderingComposer: () =>
-              $$PedidoVentaLocalTableTableOrderingComposer(
-                  $db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$PedidoVentaLocalTableTableAnnotationComposer(
-                  $db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<String?> usuarioId = const Value.absent(),
-            Value<String> pedidoVentaAppId = const Value.absent(),
-            Value<String?> empresaId = const Value.absent(),
-            Value<String?> pedidoId = const Value.absent(),
-            Value<DateTime> fechaAlta = const Value.absent(),
-            Value<String> clienteId = const Value.absent(),
-            Value<String> nombreCliente = const Value.absent(),
-            Value<String?> direccionId = const Value.absent(),
-            Value<String?> direccion1 = const Value.absent(),
-            Value<String?> direccion2 = const Value.absent(),
-            Value<String?> codigoPostal = const Value.absent(),
-            Value<String?> poblacion = const Value.absent(),
-            Value<String?> provincia = const Value.absent(),
-            Value<String?> paisId = const Value.absent(),
-            Value<String?> divisaId = const Value.absent(),
-            Value<String?> pedidoCliente = const Value.absent(),
-            Value<String?> observaciones = const Value.absent(),
-            Value<String> oferta = const Value.absent(),
-            Value<DateTime?> ofertaFechaHasta = const Value.absent(),
-            Value<double> iva = const Value.absent(),
-            Value<double> dtoBonificacion = const Value.absent(),
-            Value<String> enviada = const Value.absent(),
-            Value<String> tratada = const Value.absent(),
-            Value<String> borrador = const Value.absent(),
-            Value<String?> errorSyncMessage = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              PedidoVentaLocalTableCompanion(
-            usuarioId: usuarioId,
-            pedidoVentaAppId: pedidoVentaAppId,
-            empresaId: empresaId,
-            pedidoId: pedidoId,
-            fechaAlta: fechaAlta,
-            clienteId: clienteId,
-            nombreCliente: nombreCliente,
-            direccionId: direccionId,
-            direccion1: direccion1,
-            direccion2: direccion2,
-            codigoPostal: codigoPostal,
-            poblacion: poblacion,
-            provincia: provincia,
-            paisId: paisId,
-            divisaId: divisaId,
-            pedidoCliente: pedidoCliente,
-            observaciones: observaciones,
-            oferta: oferta,
-            ofertaFechaHasta: ofertaFechaHasta,
-            iva: iva,
-            dtoBonificacion: dtoBonificacion,
-            enviada: enviada,
-            tratada: tratada,
-            borrador: borrador,
-            errorSyncMessage: errorSyncMessage,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            Value<String?> usuarioId = const Value.absent(),
-            required String pedidoVentaAppId,
-            Value<String?> empresaId = const Value.absent(),
-            Value<String?> pedidoId = const Value.absent(),
-            required DateTime fechaAlta,
-            required String clienteId,
-            required String nombreCliente,
-            Value<String?> direccionId = const Value.absent(),
-            Value<String?> direccion1 = const Value.absent(),
-            Value<String?> direccion2 = const Value.absent(),
-            Value<String?> codigoPostal = const Value.absent(),
-            Value<String?> poblacion = const Value.absent(),
-            Value<String?> provincia = const Value.absent(),
-            Value<String?> paisId = const Value.absent(),
-            Value<String?> divisaId = const Value.absent(),
-            Value<String?> pedidoCliente = const Value.absent(),
-            Value<String?> observaciones = const Value.absent(),
-            required String oferta,
-            Value<DateTime?> ofertaFechaHasta = const Value.absent(),
-            required double iva,
-            required double dtoBonificacion,
-            Value<String> enviada = const Value.absent(),
-            Value<String> tratada = const Value.absent(),
-            Value<String> borrador = const Value.absent(),
-            Value<String?> errorSyncMessage = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              PedidoVentaLocalTableCompanion.insert(
-            usuarioId: usuarioId,
-            pedidoVentaAppId: pedidoVentaAppId,
-            empresaId: empresaId,
-            pedidoId: pedidoId,
-            fechaAlta: fechaAlta,
-            clienteId: clienteId,
-            nombreCliente: nombreCliente,
-            direccionId: direccionId,
-            direccion1: direccion1,
-            direccion2: direccion2,
-            codigoPostal: codigoPostal,
-            poblacion: poblacion,
-            provincia: provincia,
-            paisId: paisId,
-            divisaId: divisaId,
-            pedidoCliente: pedidoCliente,
-            observaciones: observaciones,
-            oferta: oferta,
-            ofertaFechaHasta: ofertaFechaHasta,
-            iva: iva,
-            dtoBonificacion: dtoBonificacion,
-            enviada: enviada,
-            tratada: tratada,
-            borrador: borrador,
-            errorSyncMessage: errorSyncMessage,
-            rowid: rowid,
-          ),
-          withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
-              .toList(),
+          createFilteringComposer:
+              () => $$PedidoVentaLocalTableTableFilterComposer(
+                $db: db,
+                $table: table,
+              ),
+          createOrderingComposer:
+              () => $$PedidoVentaLocalTableTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer:
+              () => $$PedidoVentaLocalTableTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String?> usuarioId = const Value.absent(),
+                Value<String> pedidoVentaAppId = const Value.absent(),
+                Value<String?> empresaId = const Value.absent(),
+                Value<String?> pedidoId = const Value.absent(),
+                Value<DateTime> fechaAlta = const Value.absent(),
+                Value<String> clienteId = const Value.absent(),
+                Value<String> nombreCliente = const Value.absent(),
+                Value<String?> direccionId = const Value.absent(),
+                Value<String?> direccion1 = const Value.absent(),
+                Value<String?> direccion2 = const Value.absent(),
+                Value<String?> codigoPostal = const Value.absent(),
+                Value<String?> poblacion = const Value.absent(),
+                Value<String?> provincia = const Value.absent(),
+                Value<String?> paisId = const Value.absent(),
+                Value<String?> divisaId = const Value.absent(),
+                Value<String?> pedidoCliente = const Value.absent(),
+                Value<String?> observaciones = const Value.absent(),
+                Value<String> oferta = const Value.absent(),
+                Value<DateTime?> ofertaFechaHasta = const Value.absent(),
+                Value<double> iva = const Value.absent(),
+                Value<double> dtoBonificacion = const Value.absent(),
+                Value<String> enviada = const Value.absent(),
+                Value<String> tratada = const Value.absent(),
+                Value<String> borrador = const Value.absent(),
+                Value<String?> errorSyncMessage = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PedidoVentaLocalTableCompanion(
+                usuarioId: usuarioId,
+                pedidoVentaAppId: pedidoVentaAppId,
+                empresaId: empresaId,
+                pedidoId: pedidoId,
+                fechaAlta: fechaAlta,
+                clienteId: clienteId,
+                nombreCliente: nombreCliente,
+                direccionId: direccionId,
+                direccion1: direccion1,
+                direccion2: direccion2,
+                codigoPostal: codigoPostal,
+                poblacion: poblacion,
+                provincia: provincia,
+                paisId: paisId,
+                divisaId: divisaId,
+                pedidoCliente: pedidoCliente,
+                observaciones: observaciones,
+                oferta: oferta,
+                ofertaFechaHasta: ofertaFechaHasta,
+                iva: iva,
+                dtoBonificacion: dtoBonificacion,
+                enviada: enviada,
+                tratada: tratada,
+                borrador: borrador,
+                errorSyncMessage: errorSyncMessage,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<String?> usuarioId = const Value.absent(),
+                required String pedidoVentaAppId,
+                Value<String?> empresaId = const Value.absent(),
+                Value<String?> pedidoId = const Value.absent(),
+                required DateTime fechaAlta,
+                required String clienteId,
+                required String nombreCliente,
+                Value<String?> direccionId = const Value.absent(),
+                Value<String?> direccion1 = const Value.absent(),
+                Value<String?> direccion2 = const Value.absent(),
+                Value<String?> codigoPostal = const Value.absent(),
+                Value<String?> poblacion = const Value.absent(),
+                Value<String?> provincia = const Value.absent(),
+                Value<String?> paisId = const Value.absent(),
+                Value<String?> divisaId = const Value.absent(),
+                Value<String?> pedidoCliente = const Value.absent(),
+                Value<String?> observaciones = const Value.absent(),
+                required String oferta,
+                Value<DateTime?> ofertaFechaHasta = const Value.absent(),
+                required double iva,
+                required double dtoBonificacion,
+                Value<String> enviada = const Value.absent(),
+                Value<String> tratada = const Value.absent(),
+                Value<String> borrador = const Value.absent(),
+                Value<String?> errorSyncMessage = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PedidoVentaLocalTableCompanion.insert(
+                usuarioId: usuarioId,
+                pedidoVentaAppId: pedidoVentaAppId,
+                empresaId: empresaId,
+                pedidoId: pedidoId,
+                fechaAlta: fechaAlta,
+                clienteId: clienteId,
+                nombreCliente: nombreCliente,
+                direccionId: direccionId,
+                direccion1: direccion1,
+                direccion2: direccion2,
+                codigoPostal: codigoPostal,
+                poblacion: poblacion,
+                provincia: provincia,
+                paisId: paisId,
+                divisaId: divisaId,
+                pedidoCliente: pedidoCliente,
+                observaciones: observaciones,
+                oferta: oferta,
+                ofertaFechaHasta: ofertaFechaHasta,
+                iva: iva,
+                dtoBonificacion: dtoBonificacion,
+                enviada: enviada,
+                tratada: tratada,
+                borrador: borrador,
+                errorSyncMessage: errorSyncMessage,
+                rowid: rowid,
+              ),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          BaseReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$PedidoVentaLocalTableTableProcessedTableManager
-    = ProcessedTableManager<
-        _$LocalAppDatabase,
-        $PedidoVentaLocalTableTable,
+typedef $$PedidoVentaLocalTableTableProcessedTableManager =
+    ProcessedTableManager<
+      _$LocalAppDatabase,
+      $PedidoVentaLocalTableTable,
+      PedidoVentaLocalDTO,
+      $$PedidoVentaLocalTableTableFilterComposer,
+      $$PedidoVentaLocalTableTableOrderingComposer,
+      $$PedidoVentaLocalTableTableAnnotationComposer,
+      $$PedidoVentaLocalTableTableCreateCompanionBuilder,
+      $$PedidoVentaLocalTableTableUpdateCompanionBuilder,
+      (
         PedidoVentaLocalDTO,
-        $$PedidoVentaLocalTableTableFilterComposer,
-        $$PedidoVentaLocalTableTableOrderingComposer,
-        $$PedidoVentaLocalTableTableAnnotationComposer,
-        $$PedidoVentaLocalTableTableCreateCompanionBuilder,
-        $$PedidoVentaLocalTableTableUpdateCompanionBuilder,
-        (
-          PedidoVentaLocalDTO,
-          BaseReferences<_$LocalAppDatabase, $PedidoVentaLocalTableTable,
-              PedidoVentaLocalDTO>
-        ),
-        PedidoVentaLocalDTO,
-        PrefetchHooks Function()>;
-typedef $$SyncDateTimeTableTableCreateCompanionBuilder
-    = SyncDateTimeTableCompanion Function({
-  Value<int> id,
-  required int dbSchemaVersion,
-  required DateTime articuloUltimaSync,
-  required DateTime clienteUltimaSync,
-  required DateTime pedidoUltimaSync,
-  required DateTime visitaUltimaSync,
-});
-typedef $$SyncDateTimeTableTableUpdateCompanionBuilder
-    = SyncDateTimeTableCompanion Function({
-  Value<int> id,
-  Value<int> dbSchemaVersion,
-  Value<DateTime> articuloUltimaSync,
-  Value<DateTime> clienteUltimaSync,
-  Value<DateTime> pedidoUltimaSync,
-  Value<DateTime> visitaUltimaSync,
-});
+        BaseReferences<
+          _$LocalAppDatabase,
+          $PedidoVentaLocalTableTable,
+          PedidoVentaLocalDTO
+        >,
+      ),
+      PedidoVentaLocalDTO,
+      PrefetchHooks Function()
+    >;
+typedef $$SyncDateTimeTableTableCreateCompanionBuilder =
+    SyncDateTimeTableCompanion Function({
+      Value<int> id,
+      required int dbSchemaVersion,
+      required DateTime articuloUltimaSync,
+      required DateTime clienteUltimaSync,
+      required DateTime pedidoUltimaSync,
+      required DateTime visitaUltimaSync,
+    });
+typedef $$SyncDateTimeTableTableUpdateCompanionBuilder =
+    SyncDateTimeTableCompanion Function({
+      Value<int> id,
+      Value<int> dbSchemaVersion,
+      Value<DateTime> articuloUltimaSync,
+      Value<DateTime> clienteUltimaSync,
+      Value<DateTime> pedidoUltimaSync,
+      Value<DateTime> visitaUltimaSync,
+    });
 
 class $$SyncDateTimeTableTableFilterComposer
     extends Composer<_$LocalAppDatabase, $SyncDateTimeTableTable> {
@@ -6207,27 +8012,34 @@ class $$SyncDateTimeTableTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<int> get id => $composableBuilder(
-      column: $table.id, builder: (column) => ColumnFilters(column));
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<int> get dbSchemaVersion => $composableBuilder(
-      column: $table.dbSchemaVersion,
-      builder: (column) => ColumnFilters(column));
+    column: $table.dbSchemaVersion,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<DateTime> get articuloUltimaSync => $composableBuilder(
-      column: $table.articuloUltimaSync,
-      builder: (column) => ColumnFilters(column));
+    column: $table.articuloUltimaSync,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<DateTime> get clienteUltimaSync => $composableBuilder(
-      column: $table.clienteUltimaSync,
-      builder: (column) => ColumnFilters(column));
+    column: $table.clienteUltimaSync,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<DateTime> get pedidoUltimaSync => $composableBuilder(
-      column: $table.pedidoUltimaSync,
-      builder: (column) => ColumnFilters(column));
+    column: $table.pedidoUltimaSync,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<DateTime> get visitaUltimaSync => $composableBuilder(
-      column: $table.visitaUltimaSync,
-      builder: (column) => ColumnFilters(column));
+    column: $table.visitaUltimaSync,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$SyncDateTimeTableTableOrderingComposer
@@ -6240,27 +8052,34 @@ class $$SyncDateTimeTableTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<int> get id => $composableBuilder(
-      column: $table.id, builder: (column) => ColumnOrderings(column));
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<int> get dbSchemaVersion => $composableBuilder(
-      column: $table.dbSchemaVersion,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.dbSchemaVersion,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<DateTime> get articuloUltimaSync => $composableBuilder(
-      column: $table.articuloUltimaSync,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.articuloUltimaSync,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<DateTime> get clienteUltimaSync => $composableBuilder(
-      column: $table.clienteUltimaSync,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.clienteUltimaSync,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<DateTime> get pedidoUltimaSync => $composableBuilder(
-      column: $table.pedidoUltimaSync,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.pedidoUltimaSync,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<DateTime> get visitaUltimaSync => $composableBuilder(
-      column: $table.visitaUltimaSync,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.visitaUltimaSync,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$SyncDateTimeTableTableAnnotationComposer
@@ -6276,134 +8095,175 @@ class $$SyncDateTimeTableTableAnnotationComposer
       $composableBuilder(column: $table.id, builder: (column) => column);
 
   GeneratedColumn<int> get dbSchemaVersion => $composableBuilder(
-      column: $table.dbSchemaVersion, builder: (column) => column);
+    column: $table.dbSchemaVersion,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<DateTime> get articuloUltimaSync => $composableBuilder(
-      column: $table.articuloUltimaSync, builder: (column) => column);
+    column: $table.articuloUltimaSync,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<DateTime> get clienteUltimaSync => $composableBuilder(
-      column: $table.clienteUltimaSync, builder: (column) => column);
+    column: $table.clienteUltimaSync,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<DateTime> get pedidoUltimaSync => $composableBuilder(
-      column: $table.pedidoUltimaSync, builder: (column) => column);
+    column: $table.pedidoUltimaSync,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<DateTime> get visitaUltimaSync => $composableBuilder(
-      column: $table.visitaUltimaSync, builder: (column) => column);
+    column: $table.visitaUltimaSync,
+    builder: (column) => column,
+  );
 }
 
-class $$SyncDateTimeTableTableTableManager extends RootTableManager<
-    _$LocalAppDatabase,
-    $SyncDateTimeTableTable,
-    SyncDateTimeDTO,
-    $$SyncDateTimeTableTableFilterComposer,
-    $$SyncDateTimeTableTableOrderingComposer,
-    $$SyncDateTimeTableTableAnnotationComposer,
-    $$SyncDateTimeTableTableCreateCompanionBuilder,
-    $$SyncDateTimeTableTableUpdateCompanionBuilder,
-    (
-      SyncDateTimeDTO,
-      BaseReferences<_$LocalAppDatabase, $SyncDateTimeTableTable,
-          SyncDateTimeDTO>
-    ),
-    SyncDateTimeDTO,
-    PrefetchHooks Function()> {
+class $$SyncDateTimeTableTableTableManager
+    extends
+        RootTableManager<
+          _$LocalAppDatabase,
+          $SyncDateTimeTableTable,
+          SyncDateTimeDTO,
+          $$SyncDateTimeTableTableFilterComposer,
+          $$SyncDateTimeTableTableOrderingComposer,
+          $$SyncDateTimeTableTableAnnotationComposer,
+          $$SyncDateTimeTableTableCreateCompanionBuilder,
+          $$SyncDateTimeTableTableUpdateCompanionBuilder,
+          (
+            SyncDateTimeDTO,
+            BaseReferences<
+              _$LocalAppDatabase,
+              $SyncDateTimeTableTable,
+              SyncDateTimeDTO
+            >,
+          ),
+          SyncDateTimeDTO,
+          PrefetchHooks Function()
+        > {
   $$SyncDateTimeTableTableTableManager(
-      _$LocalAppDatabase db, $SyncDateTimeTableTable table)
-      : super(TableManagerState(
+    _$LocalAppDatabase db,
+    $SyncDateTimeTableTable table,
+  ) : super(
+        TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$SyncDateTimeTableTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$SyncDateTimeTableTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$SyncDateTimeTableTableAnnotationComposer(
-                  $db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            Value<int> dbSchemaVersion = const Value.absent(),
-            Value<DateTime> articuloUltimaSync = const Value.absent(),
-            Value<DateTime> clienteUltimaSync = const Value.absent(),
-            Value<DateTime> pedidoUltimaSync = const Value.absent(),
-            Value<DateTime> visitaUltimaSync = const Value.absent(),
-          }) =>
-              SyncDateTimeTableCompanion(
-            id: id,
-            dbSchemaVersion: dbSchemaVersion,
-            articuloUltimaSync: articuloUltimaSync,
-            clienteUltimaSync: clienteUltimaSync,
-            pedidoUltimaSync: pedidoUltimaSync,
-            visitaUltimaSync: visitaUltimaSync,
-          ),
-          createCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            required int dbSchemaVersion,
-            required DateTime articuloUltimaSync,
-            required DateTime clienteUltimaSync,
-            required DateTime pedidoUltimaSync,
-            required DateTime visitaUltimaSync,
-          }) =>
-              SyncDateTimeTableCompanion.insert(
-            id: id,
-            dbSchemaVersion: dbSchemaVersion,
-            articuloUltimaSync: articuloUltimaSync,
-            clienteUltimaSync: clienteUltimaSync,
-            pedidoUltimaSync: pedidoUltimaSync,
-            visitaUltimaSync: visitaUltimaSync,
-          ),
-          withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
-              .toList(),
+          createFilteringComposer:
+              () => $$SyncDateTimeTableTableFilterComposer(
+                $db: db,
+                $table: table,
+              ),
+          createOrderingComposer:
+              () => $$SyncDateTimeTableTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer:
+              () => $$SyncDateTimeTableTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<int> dbSchemaVersion = const Value.absent(),
+                Value<DateTime> articuloUltimaSync = const Value.absent(),
+                Value<DateTime> clienteUltimaSync = const Value.absent(),
+                Value<DateTime> pedidoUltimaSync = const Value.absent(),
+                Value<DateTime> visitaUltimaSync = const Value.absent(),
+              }) => SyncDateTimeTableCompanion(
+                id: id,
+                dbSchemaVersion: dbSchemaVersion,
+                articuloUltimaSync: articuloUltimaSync,
+                clienteUltimaSync: clienteUltimaSync,
+                pedidoUltimaSync: pedidoUltimaSync,
+                visitaUltimaSync: visitaUltimaSync,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                required int dbSchemaVersion,
+                required DateTime articuloUltimaSync,
+                required DateTime clienteUltimaSync,
+                required DateTime pedidoUltimaSync,
+                required DateTime visitaUltimaSync,
+              }) => SyncDateTimeTableCompanion.insert(
+                id: id,
+                dbSchemaVersion: dbSchemaVersion,
+                articuloUltimaSync: articuloUltimaSync,
+                clienteUltimaSync: clienteUltimaSync,
+                pedidoUltimaSync: pedidoUltimaSync,
+                visitaUltimaSync: visitaUltimaSync,
+              ),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          BaseReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$SyncDateTimeTableTableProcessedTableManager = ProcessedTableManager<
-    _$LocalAppDatabase,
-    $SyncDateTimeTableTable,
-    SyncDateTimeDTO,
-    $$SyncDateTimeTableTableFilterComposer,
-    $$SyncDateTimeTableTableOrderingComposer,
-    $$SyncDateTimeTableTableAnnotationComposer,
-    $$SyncDateTimeTableTableCreateCompanionBuilder,
-    $$SyncDateTimeTableTableUpdateCompanionBuilder,
-    (
+typedef $$SyncDateTimeTableTableProcessedTableManager =
+    ProcessedTableManager<
+      _$LocalAppDatabase,
+      $SyncDateTimeTableTable,
       SyncDateTimeDTO,
-      BaseReferences<_$LocalAppDatabase, $SyncDateTimeTableTable,
-          SyncDateTimeDTO>
-    ),
-    SyncDateTimeDTO,
-    PrefetchHooks Function()>;
-typedef $$LogTableTableCreateCompanionBuilder = LogTableCompanion Function({
-  Value<int> id,
-  required String level,
-  required String message,
-  Value<String?> error,
-  Value<String?> stackTrace,
-  required String appId,
-  required String appBuild,
-  required String appBuildName,
-  required String device,
-  required String userId,
-  Value<String?> userEmail,
-  Value<String?> userName,
-  required DateTime timestamp,
-});
-typedef $$LogTableTableUpdateCompanionBuilder = LogTableCompanion Function({
-  Value<int> id,
-  Value<String> level,
-  Value<String> message,
-  Value<String?> error,
-  Value<String?> stackTrace,
-  Value<String> appId,
-  Value<String> appBuild,
-  Value<String> appBuildName,
-  Value<String> device,
-  Value<String> userId,
-  Value<String?> userEmail,
-  Value<String?> userName,
-  Value<DateTime> timestamp,
-});
+      $$SyncDateTimeTableTableFilterComposer,
+      $$SyncDateTimeTableTableOrderingComposer,
+      $$SyncDateTimeTableTableAnnotationComposer,
+      $$SyncDateTimeTableTableCreateCompanionBuilder,
+      $$SyncDateTimeTableTableUpdateCompanionBuilder,
+      (
+        SyncDateTimeDTO,
+        BaseReferences<
+          _$LocalAppDatabase,
+          $SyncDateTimeTableTable,
+          SyncDateTimeDTO
+        >,
+      ),
+      SyncDateTimeDTO,
+      PrefetchHooks Function()
+    >;
+typedef $$LogTableTableCreateCompanionBuilder =
+    LogTableCompanion Function({
+      Value<int> id,
+      required String level,
+      required String message,
+      Value<String?> error,
+      Value<String?> stackTrace,
+      required String appId,
+      required String appBuild,
+      required String appBuildName,
+      required String device,
+      required String userId,
+      Value<String?> userEmail,
+      Value<String?> userName,
+      required DateTime timestamp,
+    });
+typedef $$LogTableTableUpdateCompanionBuilder =
+    LogTableCompanion Function({
+      Value<int> id,
+      Value<String> level,
+      Value<String> message,
+      Value<String?> error,
+      Value<String?> stackTrace,
+      Value<String> appId,
+      Value<String> appBuild,
+      Value<String> appBuildName,
+      Value<String> device,
+      Value<String> userId,
+      Value<String?> userEmail,
+      Value<String?> userName,
+      Value<DateTime> timestamp,
+    });
 
 class $$LogTableTableFilterComposer
     extends Composer<_$LocalAppDatabase, $LogTableTable> {
@@ -6415,43 +8275,69 @@ class $$LogTableTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<int> get id => $composableBuilder(
-      column: $table.id, builder: (column) => ColumnFilters(column));
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get level => $composableBuilder(
-      column: $table.level, builder: (column) => ColumnFilters(column));
+    column: $table.level,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get message => $composableBuilder(
-      column: $table.message, builder: (column) => ColumnFilters(column));
+    column: $table.message,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get error => $composableBuilder(
-      column: $table.error, builder: (column) => ColumnFilters(column));
+    column: $table.error,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get stackTrace => $composableBuilder(
-      column: $table.stackTrace, builder: (column) => ColumnFilters(column));
+    column: $table.stackTrace,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get appId => $composableBuilder(
-      column: $table.appId, builder: (column) => ColumnFilters(column));
+    column: $table.appId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get appBuild => $composableBuilder(
-      column: $table.appBuild, builder: (column) => ColumnFilters(column));
+    column: $table.appBuild,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get appBuildName => $composableBuilder(
-      column: $table.appBuildName, builder: (column) => ColumnFilters(column));
+    column: $table.appBuildName,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get device => $composableBuilder(
-      column: $table.device, builder: (column) => ColumnFilters(column));
+    column: $table.device,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get userId => $composableBuilder(
-      column: $table.userId, builder: (column) => ColumnFilters(column));
+    column: $table.userId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get userEmail => $composableBuilder(
-      column: $table.userEmail, builder: (column) => ColumnFilters(column));
+    column: $table.userEmail,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get userName => $composableBuilder(
-      column: $table.userName, builder: (column) => ColumnFilters(column));
+    column: $table.userName,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<DateTime> get timestamp => $composableBuilder(
-      column: $table.timestamp, builder: (column) => ColumnFilters(column));
+    column: $table.timestamp,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$LogTableTableOrderingComposer
@@ -6464,44 +8350,69 @@ class $$LogTableTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<int> get id => $composableBuilder(
-      column: $table.id, builder: (column) => ColumnOrderings(column));
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get level => $composableBuilder(
-      column: $table.level, builder: (column) => ColumnOrderings(column));
+    column: $table.level,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get message => $composableBuilder(
-      column: $table.message, builder: (column) => ColumnOrderings(column));
+    column: $table.message,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get error => $composableBuilder(
-      column: $table.error, builder: (column) => ColumnOrderings(column));
+    column: $table.error,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get stackTrace => $composableBuilder(
-      column: $table.stackTrace, builder: (column) => ColumnOrderings(column));
+    column: $table.stackTrace,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get appId => $composableBuilder(
-      column: $table.appId, builder: (column) => ColumnOrderings(column));
+    column: $table.appId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get appBuild => $composableBuilder(
-      column: $table.appBuild, builder: (column) => ColumnOrderings(column));
+    column: $table.appBuild,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get appBuildName => $composableBuilder(
-      column: $table.appBuildName,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.appBuildName,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get device => $composableBuilder(
-      column: $table.device, builder: (column) => ColumnOrderings(column));
+    column: $table.device,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get userId => $composableBuilder(
-      column: $table.userId, builder: (column) => ColumnOrderings(column));
+    column: $table.userId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get userEmail => $composableBuilder(
-      column: $table.userEmail, builder: (column) => ColumnOrderings(column));
+    column: $table.userEmail,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get userName => $composableBuilder(
-      column: $table.userName, builder: (column) => ColumnOrderings(column));
+    column: $table.userName,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<DateTime> get timestamp => $composableBuilder(
-      column: $table.timestamp, builder: (column) => ColumnOrderings(column));
+    column: $table.timestamp,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$LogTableTableAnnotationComposer
@@ -6526,7 +8437,9 @@ class $$LogTableTableAnnotationComposer
       $composableBuilder(column: $table.error, builder: (column) => column);
 
   GeneratedColumn<String> get stackTrace => $composableBuilder(
-      column: $table.stackTrace, builder: (column) => column);
+    column: $table.stackTrace,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get appId =>
       $composableBuilder(column: $table.appId, builder: (column) => column);
@@ -6535,7 +8448,9 @@ class $$LogTableTableAnnotationComposer
       $composableBuilder(column: $table.appBuild, builder: (column) => column);
 
   GeneratedColumn<String> get appBuildName => $composableBuilder(
-      column: $table.appBuildName, builder: (column) => column);
+    column: $table.appBuildName,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get device =>
       $composableBuilder(column: $table.device, builder: (column) => column);
@@ -6553,135 +8468,149 @@ class $$LogTableTableAnnotationComposer
       $composableBuilder(column: $table.timestamp, builder: (column) => column);
 }
 
-class $$LogTableTableTableManager extends RootTableManager<
-    _$LocalAppDatabase,
-    $LogTableTable,
-    LogDTO,
-    $$LogTableTableFilterComposer,
-    $$LogTableTableOrderingComposer,
-    $$LogTableTableAnnotationComposer,
-    $$LogTableTableCreateCompanionBuilder,
-    $$LogTableTableUpdateCompanionBuilder,
-    (LogDTO, BaseReferences<_$LocalAppDatabase, $LogTableTable, LogDTO>),
-    LogDTO,
-    PrefetchHooks Function()> {
+class $$LogTableTableTableManager
+    extends
+        RootTableManager<
+          _$LocalAppDatabase,
+          $LogTableTable,
+          LogDTO,
+          $$LogTableTableFilterComposer,
+          $$LogTableTableOrderingComposer,
+          $$LogTableTableAnnotationComposer,
+          $$LogTableTableCreateCompanionBuilder,
+          $$LogTableTableUpdateCompanionBuilder,
+          (LogDTO, BaseReferences<_$LocalAppDatabase, $LogTableTable, LogDTO>),
+          LogDTO,
+          PrefetchHooks Function()
+        > {
   $$LogTableTableTableManager(_$LocalAppDatabase db, $LogTableTable table)
-      : super(TableManagerState(
+    : super(
+        TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$LogTableTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$LogTableTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$LogTableTableAnnotationComposer($db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            Value<String> level = const Value.absent(),
-            Value<String> message = const Value.absent(),
-            Value<String?> error = const Value.absent(),
-            Value<String?> stackTrace = const Value.absent(),
-            Value<String> appId = const Value.absent(),
-            Value<String> appBuild = const Value.absent(),
-            Value<String> appBuildName = const Value.absent(),
-            Value<String> device = const Value.absent(),
-            Value<String> userId = const Value.absent(),
-            Value<String?> userEmail = const Value.absent(),
-            Value<String?> userName = const Value.absent(),
-            Value<DateTime> timestamp = const Value.absent(),
-          }) =>
-              LogTableCompanion(
-            id: id,
-            level: level,
-            message: message,
-            error: error,
-            stackTrace: stackTrace,
-            appId: appId,
-            appBuild: appBuild,
-            appBuildName: appBuildName,
-            device: device,
-            userId: userId,
-            userEmail: userEmail,
-            userName: userName,
-            timestamp: timestamp,
-          ),
-          createCompanionCallback: ({
-            Value<int> id = const Value.absent(),
-            required String level,
-            required String message,
-            Value<String?> error = const Value.absent(),
-            Value<String?> stackTrace = const Value.absent(),
-            required String appId,
-            required String appBuild,
-            required String appBuildName,
-            required String device,
-            required String userId,
-            Value<String?> userEmail = const Value.absent(),
-            Value<String?> userName = const Value.absent(),
-            required DateTime timestamp,
-          }) =>
-              LogTableCompanion.insert(
-            id: id,
-            level: level,
-            message: message,
-            error: error,
-            stackTrace: stackTrace,
-            appId: appId,
-            appBuild: appBuild,
-            appBuildName: appBuildName,
-            device: device,
-            userId: userId,
-            userEmail: userEmail,
-            userName: userName,
-            timestamp: timestamp,
-          ),
-          withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
-              .toList(),
+          createFilteringComposer:
+              () => $$LogTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () => $$LogTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer:
+              () => $$LogTableTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<String> level = const Value.absent(),
+                Value<String> message = const Value.absent(),
+                Value<String?> error = const Value.absent(),
+                Value<String?> stackTrace = const Value.absent(),
+                Value<String> appId = const Value.absent(),
+                Value<String> appBuild = const Value.absent(),
+                Value<String> appBuildName = const Value.absent(),
+                Value<String> device = const Value.absent(),
+                Value<String> userId = const Value.absent(),
+                Value<String?> userEmail = const Value.absent(),
+                Value<String?> userName = const Value.absent(),
+                Value<DateTime> timestamp = const Value.absent(),
+              }) => LogTableCompanion(
+                id: id,
+                level: level,
+                message: message,
+                error: error,
+                stackTrace: stackTrace,
+                appId: appId,
+                appBuild: appBuild,
+                appBuildName: appBuildName,
+                device: device,
+                userId: userId,
+                userEmail: userEmail,
+                userName: userName,
+                timestamp: timestamp,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                required String level,
+                required String message,
+                Value<String?> error = const Value.absent(),
+                Value<String?> stackTrace = const Value.absent(),
+                required String appId,
+                required String appBuild,
+                required String appBuildName,
+                required String device,
+                required String userId,
+                Value<String?> userEmail = const Value.absent(),
+                Value<String?> userName = const Value.absent(),
+                required DateTime timestamp,
+              }) => LogTableCompanion.insert(
+                id: id,
+                level: level,
+                message: message,
+                error: error,
+                stackTrace: stackTrace,
+                appId: appId,
+                appBuild: appBuild,
+                appBuildName: appBuildName,
+                device: device,
+                userId: userId,
+                userEmail: userEmail,
+                userName: userName,
+                timestamp: timestamp,
+              ),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          BaseReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$LogTableTableProcessedTableManager = ProcessedTableManager<
-    _$LocalAppDatabase,
-    $LogTableTable,
-    LogDTO,
-    $$LogTableTableFilterComposer,
-    $$LogTableTableOrderingComposer,
-    $$LogTableTableAnnotationComposer,
-    $$LogTableTableCreateCompanionBuilder,
-    $$LogTableTableUpdateCompanionBuilder,
-    (LogDTO, BaseReferences<_$LocalAppDatabase, $LogTableTable, LogDTO>),
-    LogDTO,
-    PrefetchHooks Function()>;
-typedef $$CatalogoFavoritoTableTableCreateCompanionBuilder
-    = CatalogoFavoritoTableCompanion Function({
-  Value<int> catalogoId,
-  required String nombre,
-  required String idiomaId,
-  required String tipoPrecioCatalogoId,
-  required String tipoPrecioCatalogoNombre,
-  required String tipoCatalogoId,
-  required String tagBusqueda,
-  required int orden,
-  required String nombreFicheroPortada,
-  required String nombreFicheroCatalogo,
-  required String descarga,
-});
-typedef $$CatalogoFavoritoTableTableUpdateCompanionBuilder
-    = CatalogoFavoritoTableCompanion Function({
-  Value<int> catalogoId,
-  Value<String> nombre,
-  Value<String> idiomaId,
-  Value<String> tipoPrecioCatalogoId,
-  Value<String> tipoPrecioCatalogoNombre,
-  Value<String> tipoCatalogoId,
-  Value<String> tagBusqueda,
-  Value<int> orden,
-  Value<String> nombreFicheroPortada,
-  Value<String> nombreFicheroCatalogo,
-  Value<String> descarga,
-});
+typedef $$LogTableTableProcessedTableManager =
+    ProcessedTableManager<
+      _$LocalAppDatabase,
+      $LogTableTable,
+      LogDTO,
+      $$LogTableTableFilterComposer,
+      $$LogTableTableOrderingComposer,
+      $$LogTableTableAnnotationComposer,
+      $$LogTableTableCreateCompanionBuilder,
+      $$LogTableTableUpdateCompanionBuilder,
+      (LogDTO, BaseReferences<_$LocalAppDatabase, $LogTableTable, LogDTO>),
+      LogDTO,
+      PrefetchHooks Function()
+    >;
+typedef $$CatalogoFavoritoTableTableCreateCompanionBuilder =
+    CatalogoFavoritoTableCompanion Function({
+      Value<int> catalogoId,
+      required String nombre,
+      required String idiomaId,
+      required String tipoPrecioCatalogoId,
+      required String tipoPrecioCatalogoNombre,
+      required String tipoCatalogoId,
+      required String tagBusqueda,
+      required int orden,
+      required String nombreFicheroPortada,
+      required String nombreFicheroCatalogo,
+      required String descarga,
+    });
+typedef $$CatalogoFavoritoTableTableUpdateCompanionBuilder =
+    CatalogoFavoritoTableCompanion Function({
+      Value<int> catalogoId,
+      Value<String> nombre,
+      Value<String> idiomaId,
+      Value<String> tipoPrecioCatalogoId,
+      Value<String> tipoPrecioCatalogoNombre,
+      Value<String> tipoCatalogoId,
+      Value<String> tagBusqueda,
+      Value<int> orden,
+      Value<String> nombreFicheroPortada,
+      Value<String> nombreFicheroCatalogo,
+      Value<String> descarga,
+    });
 
 class $$CatalogoFavoritoTableTableFilterComposer
     extends Composer<_$LocalAppDatabase, $CatalogoFavoritoTableTable> {
@@ -6693,42 +8622,59 @@ class $$CatalogoFavoritoTableTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<int> get catalogoId => $composableBuilder(
-      column: $table.catalogoId, builder: (column) => ColumnFilters(column));
+    column: $table.catalogoId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get nombre => $composableBuilder(
-      column: $table.nombre, builder: (column) => ColumnFilters(column));
+    column: $table.nombre,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get idiomaId => $composableBuilder(
-      column: $table.idiomaId, builder: (column) => ColumnFilters(column));
+    column: $table.idiomaId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get tipoPrecioCatalogoId => $composableBuilder(
-      column: $table.tipoPrecioCatalogoId,
-      builder: (column) => ColumnFilters(column));
+    column: $table.tipoPrecioCatalogoId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get tipoPrecioCatalogoNombre => $composableBuilder(
-      column: $table.tipoPrecioCatalogoNombre,
-      builder: (column) => ColumnFilters(column));
+    column: $table.tipoPrecioCatalogoNombre,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get tipoCatalogoId => $composableBuilder(
-      column: $table.tipoCatalogoId,
-      builder: (column) => ColumnFilters(column));
+    column: $table.tipoCatalogoId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get tagBusqueda => $composableBuilder(
-      column: $table.tagBusqueda, builder: (column) => ColumnFilters(column));
+    column: $table.tagBusqueda,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<int> get orden => $composableBuilder(
-      column: $table.orden, builder: (column) => ColumnFilters(column));
+    column: $table.orden,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get nombreFicheroPortada => $composableBuilder(
-      column: $table.nombreFicheroPortada,
-      builder: (column) => ColumnFilters(column));
+    column: $table.nombreFicheroPortada,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get nombreFicheroCatalogo => $composableBuilder(
-      column: $table.nombreFicheroCatalogo,
-      builder: (column) => ColumnFilters(column));
+    column: $table.nombreFicheroCatalogo,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get descarga => $composableBuilder(
-      column: $table.descarga, builder: (column) => ColumnFilters(column));
+    column: $table.descarga,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$CatalogoFavoritoTableTableOrderingComposer
@@ -6741,42 +8687,59 @@ class $$CatalogoFavoritoTableTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<int> get catalogoId => $composableBuilder(
-      column: $table.catalogoId, builder: (column) => ColumnOrderings(column));
+    column: $table.catalogoId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get nombre => $composableBuilder(
-      column: $table.nombre, builder: (column) => ColumnOrderings(column));
+    column: $table.nombre,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get idiomaId => $composableBuilder(
-      column: $table.idiomaId, builder: (column) => ColumnOrderings(column));
+    column: $table.idiomaId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get tipoPrecioCatalogoId => $composableBuilder(
-      column: $table.tipoPrecioCatalogoId,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.tipoPrecioCatalogoId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get tipoPrecioCatalogoNombre => $composableBuilder(
-      column: $table.tipoPrecioCatalogoNombre,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.tipoPrecioCatalogoNombre,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get tipoCatalogoId => $composableBuilder(
-      column: $table.tipoCatalogoId,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.tipoCatalogoId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get tagBusqueda => $composableBuilder(
-      column: $table.tagBusqueda, builder: (column) => ColumnOrderings(column));
+    column: $table.tagBusqueda,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<int> get orden => $composableBuilder(
-      column: $table.orden, builder: (column) => ColumnOrderings(column));
+    column: $table.orden,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get nombreFicheroPortada => $composableBuilder(
-      column: $table.nombreFicheroPortada,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.nombreFicheroPortada,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get nombreFicheroCatalogo => $composableBuilder(
-      column: $table.nombreFicheroCatalogo,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.nombreFicheroCatalogo,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get descarga => $composableBuilder(
-      column: $table.descarga, builder: (column) => ColumnOrderings(column));
+    column: $table.descarga,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$CatalogoFavoritoTableTableAnnotationComposer
@@ -6789,7 +8752,9 @@ class $$CatalogoFavoritoTableTableAnnotationComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   GeneratedColumn<int> get catalogoId => $composableBuilder(
-      column: $table.catalogoId, builder: (column) => column);
+    column: $table.catalogoId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get nombre =>
       $composableBuilder(column: $table.nombre, builder: (column) => column);
@@ -6798,172 +8763,210 @@ class $$CatalogoFavoritoTableTableAnnotationComposer
       $composableBuilder(column: $table.idiomaId, builder: (column) => column);
 
   GeneratedColumn<String> get tipoPrecioCatalogoId => $composableBuilder(
-      column: $table.tipoPrecioCatalogoId, builder: (column) => column);
+    column: $table.tipoPrecioCatalogoId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get tipoPrecioCatalogoNombre => $composableBuilder(
-      column: $table.tipoPrecioCatalogoNombre, builder: (column) => column);
+    column: $table.tipoPrecioCatalogoNombre,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get tipoCatalogoId => $composableBuilder(
-      column: $table.tipoCatalogoId, builder: (column) => column);
+    column: $table.tipoCatalogoId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get tagBusqueda => $composableBuilder(
-      column: $table.tagBusqueda, builder: (column) => column);
+    column: $table.tagBusqueda,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<int> get orden =>
       $composableBuilder(column: $table.orden, builder: (column) => column);
 
   GeneratedColumn<String> get nombreFicheroPortada => $composableBuilder(
-      column: $table.nombreFicheroPortada, builder: (column) => column);
+    column: $table.nombreFicheroPortada,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get nombreFicheroCatalogo => $composableBuilder(
-      column: $table.nombreFicheroCatalogo, builder: (column) => column);
+    column: $table.nombreFicheroCatalogo,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get descarga =>
       $composableBuilder(column: $table.descarga, builder: (column) => column);
 }
 
-class $$CatalogoFavoritoTableTableTableManager extends RootTableManager<
-    _$LocalAppDatabase,
-    $CatalogoFavoritoTableTable,
-    CatalogoDTO,
-    $$CatalogoFavoritoTableTableFilterComposer,
-    $$CatalogoFavoritoTableTableOrderingComposer,
-    $$CatalogoFavoritoTableTableAnnotationComposer,
-    $$CatalogoFavoritoTableTableCreateCompanionBuilder,
-    $$CatalogoFavoritoTableTableUpdateCompanionBuilder,
-    (
-      CatalogoDTO,
-      BaseReferences<_$LocalAppDatabase, $CatalogoFavoritoTableTable,
-          CatalogoDTO>
-    ),
-    CatalogoDTO,
-    PrefetchHooks Function()> {
+class $$CatalogoFavoritoTableTableTableManager
+    extends
+        RootTableManager<
+          _$LocalAppDatabase,
+          $CatalogoFavoritoTableTable,
+          CatalogoDTO,
+          $$CatalogoFavoritoTableTableFilterComposer,
+          $$CatalogoFavoritoTableTableOrderingComposer,
+          $$CatalogoFavoritoTableTableAnnotationComposer,
+          $$CatalogoFavoritoTableTableCreateCompanionBuilder,
+          $$CatalogoFavoritoTableTableUpdateCompanionBuilder,
+          (
+            CatalogoDTO,
+            BaseReferences<
+              _$LocalAppDatabase,
+              $CatalogoFavoritoTableTable,
+              CatalogoDTO
+            >,
+          ),
+          CatalogoDTO,
+          PrefetchHooks Function()
+        > {
   $$CatalogoFavoritoTableTableTableManager(
-      _$LocalAppDatabase db, $CatalogoFavoritoTableTable table)
-      : super(TableManagerState(
+    _$LocalAppDatabase db,
+    $CatalogoFavoritoTableTable table,
+  ) : super(
+        TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$CatalogoFavoritoTableTableFilterComposer(
-                  $db: db, $table: table),
-          createOrderingComposer: () =>
-              $$CatalogoFavoritoTableTableOrderingComposer(
-                  $db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$CatalogoFavoritoTableTableAnnotationComposer(
-                  $db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<int> catalogoId = const Value.absent(),
-            Value<String> nombre = const Value.absent(),
-            Value<String> idiomaId = const Value.absent(),
-            Value<String> tipoPrecioCatalogoId = const Value.absent(),
-            Value<String> tipoPrecioCatalogoNombre = const Value.absent(),
-            Value<String> tipoCatalogoId = const Value.absent(),
-            Value<String> tagBusqueda = const Value.absent(),
-            Value<int> orden = const Value.absent(),
-            Value<String> nombreFicheroPortada = const Value.absent(),
-            Value<String> nombreFicheroCatalogo = const Value.absent(),
-            Value<String> descarga = const Value.absent(),
-          }) =>
-              CatalogoFavoritoTableCompanion(
-            catalogoId: catalogoId,
-            nombre: nombre,
-            idiomaId: idiomaId,
-            tipoPrecioCatalogoId: tipoPrecioCatalogoId,
-            tipoPrecioCatalogoNombre: tipoPrecioCatalogoNombre,
-            tipoCatalogoId: tipoCatalogoId,
-            tagBusqueda: tagBusqueda,
-            orden: orden,
-            nombreFicheroPortada: nombreFicheroPortada,
-            nombreFicheroCatalogo: nombreFicheroCatalogo,
-            descarga: descarga,
-          ),
-          createCompanionCallback: ({
-            Value<int> catalogoId = const Value.absent(),
-            required String nombre,
-            required String idiomaId,
-            required String tipoPrecioCatalogoId,
-            required String tipoPrecioCatalogoNombre,
-            required String tipoCatalogoId,
-            required String tagBusqueda,
-            required int orden,
-            required String nombreFicheroPortada,
-            required String nombreFicheroCatalogo,
-            required String descarga,
-          }) =>
-              CatalogoFavoritoTableCompanion.insert(
-            catalogoId: catalogoId,
-            nombre: nombre,
-            idiomaId: idiomaId,
-            tipoPrecioCatalogoId: tipoPrecioCatalogoId,
-            tipoPrecioCatalogoNombre: tipoPrecioCatalogoNombre,
-            tipoCatalogoId: tipoCatalogoId,
-            tagBusqueda: tagBusqueda,
-            orden: orden,
-            nombreFicheroPortada: nombreFicheroPortada,
-            nombreFicheroCatalogo: nombreFicheroCatalogo,
-            descarga: descarga,
-          ),
-          withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
-              .toList(),
+          createFilteringComposer:
+              () => $$CatalogoFavoritoTableTableFilterComposer(
+                $db: db,
+                $table: table,
+              ),
+          createOrderingComposer:
+              () => $$CatalogoFavoritoTableTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer:
+              () => $$CatalogoFavoritoTableTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<int> catalogoId = const Value.absent(),
+                Value<String> nombre = const Value.absent(),
+                Value<String> idiomaId = const Value.absent(),
+                Value<String> tipoPrecioCatalogoId = const Value.absent(),
+                Value<String> tipoPrecioCatalogoNombre = const Value.absent(),
+                Value<String> tipoCatalogoId = const Value.absent(),
+                Value<String> tagBusqueda = const Value.absent(),
+                Value<int> orden = const Value.absent(),
+                Value<String> nombreFicheroPortada = const Value.absent(),
+                Value<String> nombreFicheroCatalogo = const Value.absent(),
+                Value<String> descarga = const Value.absent(),
+              }) => CatalogoFavoritoTableCompanion(
+                catalogoId: catalogoId,
+                nombre: nombre,
+                idiomaId: idiomaId,
+                tipoPrecioCatalogoId: tipoPrecioCatalogoId,
+                tipoPrecioCatalogoNombre: tipoPrecioCatalogoNombre,
+                tipoCatalogoId: tipoCatalogoId,
+                tagBusqueda: tagBusqueda,
+                orden: orden,
+                nombreFicheroPortada: nombreFicheroPortada,
+                nombreFicheroCatalogo: nombreFicheroCatalogo,
+                descarga: descarga,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> catalogoId = const Value.absent(),
+                required String nombre,
+                required String idiomaId,
+                required String tipoPrecioCatalogoId,
+                required String tipoPrecioCatalogoNombre,
+                required String tipoCatalogoId,
+                required String tagBusqueda,
+                required int orden,
+                required String nombreFicheroPortada,
+                required String nombreFicheroCatalogo,
+                required String descarga,
+              }) => CatalogoFavoritoTableCompanion.insert(
+                catalogoId: catalogoId,
+                nombre: nombre,
+                idiomaId: idiomaId,
+                tipoPrecioCatalogoId: tipoPrecioCatalogoId,
+                tipoPrecioCatalogoNombre: tipoPrecioCatalogoNombre,
+                tipoCatalogoId: tipoCatalogoId,
+                tagBusqueda: tagBusqueda,
+                orden: orden,
+                nombreFicheroPortada: nombreFicheroPortada,
+                nombreFicheroCatalogo: nombreFicheroCatalogo,
+                descarga: descarga,
+              ),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          BaseReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$CatalogoFavoritoTableTableProcessedTableManager
-    = ProcessedTableManager<
-        _$LocalAppDatabase,
-        $CatalogoFavoritoTableTable,
+typedef $$CatalogoFavoritoTableTableProcessedTableManager =
+    ProcessedTableManager<
+      _$LocalAppDatabase,
+      $CatalogoFavoritoTableTable,
+      CatalogoDTO,
+      $$CatalogoFavoritoTableTableFilterComposer,
+      $$CatalogoFavoritoTableTableOrderingComposer,
+      $$CatalogoFavoritoTableTableAnnotationComposer,
+      $$CatalogoFavoritoTableTableCreateCompanionBuilder,
+      $$CatalogoFavoritoTableTableUpdateCompanionBuilder,
+      (
         CatalogoDTO,
-        $$CatalogoFavoritoTableTableFilterComposer,
-        $$CatalogoFavoritoTableTableOrderingComposer,
-        $$CatalogoFavoritoTableTableAnnotationComposer,
-        $$CatalogoFavoritoTableTableCreateCompanionBuilder,
-        $$CatalogoFavoritoTableTableUpdateCompanionBuilder,
-        (
-          CatalogoDTO,
-          BaseReferences<_$LocalAppDatabase, $CatalogoFavoritoTableTable,
-              CatalogoDTO>
-        ),
-        CatalogoDTO,
-        PrefetchHooks Function()>;
-typedef $$ClienteContactoImpTableTableCreateCompanionBuilder
-    = ClienteContactoImpTableCompanion Function({
-  required String id,
-  required DateTime fecha,
-  required String usuarioId,
-  required String clienteId,
-  Value<String?> contactoId,
-  Value<String?> observaciones,
-  Value<String?> nombre,
-  Value<String?> apellido1,
-  Value<String?> apellido2,
-  Value<String?> telefono1,
-  Value<String?> telefono2,
-  Value<String?> email,
-  Value<String> enviado,
-  Value<String> borrar,
-  Value<int> rowid,
-});
-typedef $$ClienteContactoImpTableTableUpdateCompanionBuilder
-    = ClienteContactoImpTableCompanion Function({
-  Value<String> id,
-  Value<DateTime> fecha,
-  Value<String> usuarioId,
-  Value<String> clienteId,
-  Value<String?> contactoId,
-  Value<String?> observaciones,
-  Value<String?> nombre,
-  Value<String?> apellido1,
-  Value<String?> apellido2,
-  Value<String?> telefono1,
-  Value<String?> telefono2,
-  Value<String?> email,
-  Value<String> enviado,
-  Value<String> borrar,
-  Value<int> rowid,
-});
+        BaseReferences<
+          _$LocalAppDatabase,
+          $CatalogoFavoritoTableTable,
+          CatalogoDTO
+        >,
+      ),
+      CatalogoDTO,
+      PrefetchHooks Function()
+    >;
+typedef $$ClienteContactoImpTableTableCreateCompanionBuilder =
+    ClienteContactoImpTableCompanion Function({
+      required String id,
+      required DateTime fecha,
+      required String usuarioId,
+      required String clienteId,
+      Value<String?> contactoId,
+      Value<String?> observaciones,
+      Value<String?> nombre,
+      Value<String?> apellido1,
+      Value<String?> apellido2,
+      Value<String?> telefono1,
+      Value<String?> telefono2,
+      Value<String?> email,
+      Value<String> enviado,
+      Value<String> borrar,
+      Value<int> rowid,
+    });
+typedef $$ClienteContactoImpTableTableUpdateCompanionBuilder =
+    ClienteContactoImpTableCompanion Function({
+      Value<String> id,
+      Value<DateTime> fecha,
+      Value<String> usuarioId,
+      Value<String> clienteId,
+      Value<String?> contactoId,
+      Value<String?> observaciones,
+      Value<String?> nombre,
+      Value<String?> apellido1,
+      Value<String?> apellido2,
+      Value<String?> telefono1,
+      Value<String?> telefono2,
+      Value<String?> email,
+      Value<String> enviado,
+      Value<String> borrar,
+      Value<int> rowid,
+    });
 
 class $$ClienteContactoImpTableTableFilterComposer
     extends Composer<_$LocalAppDatabase, $ClienteContactoImpTableTable> {
@@ -6975,46 +8978,74 @@ class $$ClienteContactoImpTableTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<String> get id => $composableBuilder(
-      column: $table.id, builder: (column) => ColumnFilters(column));
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<DateTime> get fecha => $composableBuilder(
-      column: $table.fecha, builder: (column) => ColumnFilters(column));
+    column: $table.fecha,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get usuarioId => $composableBuilder(
-      column: $table.usuarioId, builder: (column) => ColumnFilters(column));
+    column: $table.usuarioId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get clienteId => $composableBuilder(
-      column: $table.clienteId, builder: (column) => ColumnFilters(column));
+    column: $table.clienteId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get contactoId => $composableBuilder(
-      column: $table.contactoId, builder: (column) => ColumnFilters(column));
+    column: $table.contactoId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get observaciones => $composableBuilder(
-      column: $table.observaciones, builder: (column) => ColumnFilters(column));
+    column: $table.observaciones,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get nombre => $composableBuilder(
-      column: $table.nombre, builder: (column) => ColumnFilters(column));
+    column: $table.nombre,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get apellido1 => $composableBuilder(
-      column: $table.apellido1, builder: (column) => ColumnFilters(column));
+    column: $table.apellido1,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get apellido2 => $composableBuilder(
-      column: $table.apellido2, builder: (column) => ColumnFilters(column));
+    column: $table.apellido2,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get telefono1 => $composableBuilder(
-      column: $table.telefono1, builder: (column) => ColumnFilters(column));
+    column: $table.telefono1,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get telefono2 => $composableBuilder(
-      column: $table.telefono2, builder: (column) => ColumnFilters(column));
+    column: $table.telefono2,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get email => $composableBuilder(
-      column: $table.email, builder: (column) => ColumnFilters(column));
+    column: $table.email,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get enviado => $composableBuilder(
-      column: $table.enviado, builder: (column) => ColumnFilters(column));
+    column: $table.enviado,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get borrar => $composableBuilder(
-      column: $table.borrar, builder: (column) => ColumnFilters(column));
+    column: $table.borrar,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$ClienteContactoImpTableTableOrderingComposer
@@ -7027,47 +9058,74 @@ class $$ClienteContactoImpTableTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<String> get id => $composableBuilder(
-      column: $table.id, builder: (column) => ColumnOrderings(column));
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<DateTime> get fecha => $composableBuilder(
-      column: $table.fecha, builder: (column) => ColumnOrderings(column));
+    column: $table.fecha,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get usuarioId => $composableBuilder(
-      column: $table.usuarioId, builder: (column) => ColumnOrderings(column));
+    column: $table.usuarioId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get clienteId => $composableBuilder(
-      column: $table.clienteId, builder: (column) => ColumnOrderings(column));
+    column: $table.clienteId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get contactoId => $composableBuilder(
-      column: $table.contactoId, builder: (column) => ColumnOrderings(column));
+    column: $table.contactoId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get observaciones => $composableBuilder(
-      column: $table.observaciones,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.observaciones,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get nombre => $composableBuilder(
-      column: $table.nombre, builder: (column) => ColumnOrderings(column));
+    column: $table.nombre,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get apellido1 => $composableBuilder(
-      column: $table.apellido1, builder: (column) => ColumnOrderings(column));
+    column: $table.apellido1,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get apellido2 => $composableBuilder(
-      column: $table.apellido2, builder: (column) => ColumnOrderings(column));
+    column: $table.apellido2,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get telefono1 => $composableBuilder(
-      column: $table.telefono1, builder: (column) => ColumnOrderings(column));
+    column: $table.telefono1,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get telefono2 => $composableBuilder(
-      column: $table.telefono2, builder: (column) => ColumnOrderings(column));
+    column: $table.telefono2,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get email => $composableBuilder(
-      column: $table.email, builder: (column) => ColumnOrderings(column));
+    column: $table.email,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get enviado => $composableBuilder(
-      column: $table.enviado, builder: (column) => ColumnOrderings(column));
+    column: $table.enviado,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get borrar => $composableBuilder(
-      column: $table.borrar, builder: (column) => ColumnOrderings(column));
+    column: $table.borrar,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$ClienteContactoImpTableTableAnnotationComposer
@@ -7092,10 +9150,14 @@ class $$ClienteContactoImpTableTableAnnotationComposer
       $composableBuilder(column: $table.clienteId, builder: (column) => column);
 
   GeneratedColumn<String> get contactoId => $composableBuilder(
-      column: $table.contactoId, builder: (column) => column);
+    column: $table.contactoId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get observaciones => $composableBuilder(
-      column: $table.observaciones, builder: (column) => column);
+    column: $table.observaciones,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get nombre =>
       $composableBuilder(column: $table.nombre, builder: (column) => column);
@@ -7122,166 +9184,192 @@ class $$ClienteContactoImpTableTableAnnotationComposer
       $composableBuilder(column: $table.borrar, builder: (column) => column);
 }
 
-class $$ClienteContactoImpTableTableTableManager extends RootTableManager<
-    _$LocalAppDatabase,
-    $ClienteContactoImpTableTable,
-    ClienteContactoImpDTO,
-    $$ClienteContactoImpTableTableFilterComposer,
-    $$ClienteContactoImpTableTableOrderingComposer,
-    $$ClienteContactoImpTableTableAnnotationComposer,
-    $$ClienteContactoImpTableTableCreateCompanionBuilder,
-    $$ClienteContactoImpTableTableUpdateCompanionBuilder,
-    (
-      ClienteContactoImpDTO,
-      BaseReferences<_$LocalAppDatabase, $ClienteContactoImpTableTable,
-          ClienteContactoImpDTO>
-    ),
-    ClienteContactoImpDTO,
-    PrefetchHooks Function()> {
+class $$ClienteContactoImpTableTableTableManager
+    extends
+        RootTableManager<
+          _$LocalAppDatabase,
+          $ClienteContactoImpTableTable,
+          ClienteContactoImpDTO,
+          $$ClienteContactoImpTableTableFilterComposer,
+          $$ClienteContactoImpTableTableOrderingComposer,
+          $$ClienteContactoImpTableTableAnnotationComposer,
+          $$ClienteContactoImpTableTableCreateCompanionBuilder,
+          $$ClienteContactoImpTableTableUpdateCompanionBuilder,
+          (
+            ClienteContactoImpDTO,
+            BaseReferences<
+              _$LocalAppDatabase,
+              $ClienteContactoImpTableTable,
+              ClienteContactoImpDTO
+            >,
+          ),
+          ClienteContactoImpDTO,
+          PrefetchHooks Function()
+        > {
   $$ClienteContactoImpTableTableTableManager(
-      _$LocalAppDatabase db, $ClienteContactoImpTableTable table)
-      : super(TableManagerState(
+    _$LocalAppDatabase db,
+    $ClienteContactoImpTableTable table,
+  ) : super(
+        TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$ClienteContactoImpTableTableFilterComposer(
-                  $db: db, $table: table),
-          createOrderingComposer: () =>
-              $$ClienteContactoImpTableTableOrderingComposer(
-                  $db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$ClienteContactoImpTableTableAnnotationComposer(
-                  $db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<String> id = const Value.absent(),
-            Value<DateTime> fecha = const Value.absent(),
-            Value<String> usuarioId = const Value.absent(),
-            Value<String> clienteId = const Value.absent(),
-            Value<String?> contactoId = const Value.absent(),
-            Value<String?> observaciones = const Value.absent(),
-            Value<String?> nombre = const Value.absent(),
-            Value<String?> apellido1 = const Value.absent(),
-            Value<String?> apellido2 = const Value.absent(),
-            Value<String?> telefono1 = const Value.absent(),
-            Value<String?> telefono2 = const Value.absent(),
-            Value<String?> email = const Value.absent(),
-            Value<String> enviado = const Value.absent(),
-            Value<String> borrar = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ClienteContactoImpTableCompanion(
-            id: id,
-            fecha: fecha,
-            usuarioId: usuarioId,
-            clienteId: clienteId,
-            contactoId: contactoId,
-            observaciones: observaciones,
-            nombre: nombre,
-            apellido1: apellido1,
-            apellido2: apellido2,
-            telefono1: telefono1,
-            telefono2: telefono2,
-            email: email,
-            enviado: enviado,
-            borrar: borrar,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String id,
-            required DateTime fecha,
-            required String usuarioId,
-            required String clienteId,
-            Value<String?> contactoId = const Value.absent(),
-            Value<String?> observaciones = const Value.absent(),
-            Value<String?> nombre = const Value.absent(),
-            Value<String?> apellido1 = const Value.absent(),
-            Value<String?> apellido2 = const Value.absent(),
-            Value<String?> telefono1 = const Value.absent(),
-            Value<String?> telefono2 = const Value.absent(),
-            Value<String?> email = const Value.absent(),
-            Value<String> enviado = const Value.absent(),
-            Value<String> borrar = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ClienteContactoImpTableCompanion.insert(
-            id: id,
-            fecha: fecha,
-            usuarioId: usuarioId,
-            clienteId: clienteId,
-            contactoId: contactoId,
-            observaciones: observaciones,
-            nombre: nombre,
-            apellido1: apellido1,
-            apellido2: apellido2,
-            telefono1: telefono1,
-            telefono2: telefono2,
-            email: email,
-            enviado: enviado,
-            borrar: borrar,
-            rowid: rowid,
-          ),
-          withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
-              .toList(),
+          createFilteringComposer:
+              () => $$ClienteContactoImpTableTableFilterComposer(
+                $db: db,
+                $table: table,
+              ),
+          createOrderingComposer:
+              () => $$ClienteContactoImpTableTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer:
+              () => $$ClienteContactoImpTableTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<DateTime> fecha = const Value.absent(),
+                Value<String> usuarioId = const Value.absent(),
+                Value<String> clienteId = const Value.absent(),
+                Value<String?> contactoId = const Value.absent(),
+                Value<String?> observaciones = const Value.absent(),
+                Value<String?> nombre = const Value.absent(),
+                Value<String?> apellido1 = const Value.absent(),
+                Value<String?> apellido2 = const Value.absent(),
+                Value<String?> telefono1 = const Value.absent(),
+                Value<String?> telefono2 = const Value.absent(),
+                Value<String?> email = const Value.absent(),
+                Value<String> enviado = const Value.absent(),
+                Value<String> borrar = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ClienteContactoImpTableCompanion(
+                id: id,
+                fecha: fecha,
+                usuarioId: usuarioId,
+                clienteId: clienteId,
+                contactoId: contactoId,
+                observaciones: observaciones,
+                nombre: nombre,
+                apellido1: apellido1,
+                apellido2: apellido2,
+                telefono1: telefono1,
+                telefono2: telefono2,
+                email: email,
+                enviado: enviado,
+                borrar: borrar,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required DateTime fecha,
+                required String usuarioId,
+                required String clienteId,
+                Value<String?> contactoId = const Value.absent(),
+                Value<String?> observaciones = const Value.absent(),
+                Value<String?> nombre = const Value.absent(),
+                Value<String?> apellido1 = const Value.absent(),
+                Value<String?> apellido2 = const Value.absent(),
+                Value<String?> telefono1 = const Value.absent(),
+                Value<String?> telefono2 = const Value.absent(),
+                Value<String?> email = const Value.absent(),
+                Value<String> enviado = const Value.absent(),
+                Value<String> borrar = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ClienteContactoImpTableCompanion.insert(
+                id: id,
+                fecha: fecha,
+                usuarioId: usuarioId,
+                clienteId: clienteId,
+                contactoId: contactoId,
+                observaciones: observaciones,
+                nombre: nombre,
+                apellido1: apellido1,
+                apellido2: apellido2,
+                telefono1: telefono1,
+                telefono2: telefono2,
+                email: email,
+                enviado: enviado,
+                borrar: borrar,
+                rowid: rowid,
+              ),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          BaseReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$ClienteContactoImpTableTableProcessedTableManager
-    = ProcessedTableManager<
-        _$LocalAppDatabase,
-        $ClienteContactoImpTableTable,
+typedef $$ClienteContactoImpTableTableProcessedTableManager =
+    ProcessedTableManager<
+      _$LocalAppDatabase,
+      $ClienteContactoImpTableTable,
+      ClienteContactoImpDTO,
+      $$ClienteContactoImpTableTableFilterComposer,
+      $$ClienteContactoImpTableTableOrderingComposer,
+      $$ClienteContactoImpTableTableAnnotationComposer,
+      $$ClienteContactoImpTableTableCreateCompanionBuilder,
+      $$ClienteContactoImpTableTableUpdateCompanionBuilder,
+      (
         ClienteContactoImpDTO,
-        $$ClienteContactoImpTableTableFilterComposer,
-        $$ClienteContactoImpTableTableOrderingComposer,
-        $$ClienteContactoImpTableTableAnnotationComposer,
-        $$ClienteContactoImpTableTableCreateCompanionBuilder,
-        $$ClienteContactoImpTableTableUpdateCompanionBuilder,
-        (
-          ClienteContactoImpDTO,
-          BaseReferences<_$LocalAppDatabase, $ClienteContactoImpTableTable,
-              ClienteContactoImpDTO>
-        ),
-        ClienteContactoImpDTO,
-        PrefetchHooks Function()>;
-typedef $$ClienteDireccionImpTableTableCreateCompanionBuilder
-    = ClienteDireccionImpTableCompanion Function({
-  required String id,
-  required DateTime fecha,
-  required String usuarioId,
-  required String clienteId,
-  Value<String?> direccionId,
-  Value<String?> nombre,
-  Value<String?> direccion1,
-  Value<String?> direccion2,
-  Value<String?> codigoPostal,
-  Value<String?> poblacion,
-  Value<String?> provincia,
-  Value<String?> paisId,
-  Value<String?> telefono,
-  Value<String> enviada,
-  Value<String> borrar,
-  Value<int> rowid,
-});
-typedef $$ClienteDireccionImpTableTableUpdateCompanionBuilder
-    = ClienteDireccionImpTableCompanion Function({
-  Value<String> id,
-  Value<DateTime> fecha,
-  Value<String> usuarioId,
-  Value<String> clienteId,
-  Value<String?> direccionId,
-  Value<String?> nombre,
-  Value<String?> direccion1,
-  Value<String?> direccion2,
-  Value<String?> codigoPostal,
-  Value<String?> poblacion,
-  Value<String?> provincia,
-  Value<String?> paisId,
-  Value<String?> telefono,
-  Value<String> enviada,
-  Value<String> borrar,
-  Value<int> rowid,
-});
+        BaseReferences<
+          _$LocalAppDatabase,
+          $ClienteContactoImpTableTable,
+          ClienteContactoImpDTO
+        >,
+      ),
+      ClienteContactoImpDTO,
+      PrefetchHooks Function()
+    >;
+typedef $$ClienteDireccionImpTableTableCreateCompanionBuilder =
+    ClienteDireccionImpTableCompanion Function({
+      required String id,
+      required DateTime fecha,
+      required String usuarioId,
+      required String clienteId,
+      Value<String?> direccionId,
+      Value<String?> nombre,
+      Value<String?> direccion1,
+      Value<String?> direccion2,
+      Value<String?> codigoPostal,
+      Value<String?> poblacion,
+      Value<String?> provincia,
+      Value<String?> paisId,
+      Value<String?> telefono,
+      Value<String> enviada,
+      Value<String> borrar,
+      Value<int> rowid,
+    });
+typedef $$ClienteDireccionImpTableTableUpdateCompanionBuilder =
+    ClienteDireccionImpTableCompanion Function({
+      Value<String> id,
+      Value<DateTime> fecha,
+      Value<String> usuarioId,
+      Value<String> clienteId,
+      Value<String?> direccionId,
+      Value<String?> nombre,
+      Value<String?> direccion1,
+      Value<String?> direccion2,
+      Value<String?> codigoPostal,
+      Value<String?> poblacion,
+      Value<String?> provincia,
+      Value<String?> paisId,
+      Value<String?> telefono,
+      Value<String> enviada,
+      Value<String> borrar,
+      Value<int> rowid,
+    });
 
 class $$ClienteDireccionImpTableTableFilterComposer
     extends Composer<_$LocalAppDatabase, $ClienteDireccionImpTableTable> {
@@ -7293,49 +9381,79 @@ class $$ClienteDireccionImpTableTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<String> get id => $composableBuilder(
-      column: $table.id, builder: (column) => ColumnFilters(column));
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<DateTime> get fecha => $composableBuilder(
-      column: $table.fecha, builder: (column) => ColumnFilters(column));
+    column: $table.fecha,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get usuarioId => $composableBuilder(
-      column: $table.usuarioId, builder: (column) => ColumnFilters(column));
+    column: $table.usuarioId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get clienteId => $composableBuilder(
-      column: $table.clienteId, builder: (column) => ColumnFilters(column));
+    column: $table.clienteId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get direccionId => $composableBuilder(
-      column: $table.direccionId, builder: (column) => ColumnFilters(column));
+    column: $table.direccionId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get nombre => $composableBuilder(
-      column: $table.nombre, builder: (column) => ColumnFilters(column));
+    column: $table.nombre,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get direccion1 => $composableBuilder(
-      column: $table.direccion1, builder: (column) => ColumnFilters(column));
+    column: $table.direccion1,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get direccion2 => $composableBuilder(
-      column: $table.direccion2, builder: (column) => ColumnFilters(column));
+    column: $table.direccion2,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get codigoPostal => $composableBuilder(
-      column: $table.codigoPostal, builder: (column) => ColumnFilters(column));
+    column: $table.codigoPostal,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get poblacion => $composableBuilder(
-      column: $table.poblacion, builder: (column) => ColumnFilters(column));
+    column: $table.poblacion,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get provincia => $composableBuilder(
-      column: $table.provincia, builder: (column) => ColumnFilters(column));
+    column: $table.provincia,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get paisId => $composableBuilder(
-      column: $table.paisId, builder: (column) => ColumnFilters(column));
+    column: $table.paisId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get telefono => $composableBuilder(
-      column: $table.telefono, builder: (column) => ColumnFilters(column));
+    column: $table.telefono,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get enviada => $composableBuilder(
-      column: $table.enviada, builder: (column) => ColumnFilters(column));
+    column: $table.enviada,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get borrar => $composableBuilder(
-      column: $table.borrar, builder: (column) => ColumnFilters(column));
+    column: $table.borrar,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$ClienteDireccionImpTableTableOrderingComposer
@@ -7348,50 +9466,79 @@ class $$ClienteDireccionImpTableTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<String> get id => $composableBuilder(
-      column: $table.id, builder: (column) => ColumnOrderings(column));
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<DateTime> get fecha => $composableBuilder(
-      column: $table.fecha, builder: (column) => ColumnOrderings(column));
+    column: $table.fecha,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get usuarioId => $composableBuilder(
-      column: $table.usuarioId, builder: (column) => ColumnOrderings(column));
+    column: $table.usuarioId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get clienteId => $composableBuilder(
-      column: $table.clienteId, builder: (column) => ColumnOrderings(column));
+    column: $table.clienteId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get direccionId => $composableBuilder(
-      column: $table.direccionId, builder: (column) => ColumnOrderings(column));
+    column: $table.direccionId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get nombre => $composableBuilder(
-      column: $table.nombre, builder: (column) => ColumnOrderings(column));
+    column: $table.nombre,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get direccion1 => $composableBuilder(
-      column: $table.direccion1, builder: (column) => ColumnOrderings(column));
+    column: $table.direccion1,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get direccion2 => $composableBuilder(
-      column: $table.direccion2, builder: (column) => ColumnOrderings(column));
+    column: $table.direccion2,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get codigoPostal => $composableBuilder(
-      column: $table.codigoPostal,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.codigoPostal,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get poblacion => $composableBuilder(
-      column: $table.poblacion, builder: (column) => ColumnOrderings(column));
+    column: $table.poblacion,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get provincia => $composableBuilder(
-      column: $table.provincia, builder: (column) => ColumnOrderings(column));
+    column: $table.provincia,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get paisId => $composableBuilder(
-      column: $table.paisId, builder: (column) => ColumnOrderings(column));
+    column: $table.paisId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get telefono => $composableBuilder(
-      column: $table.telefono, builder: (column) => ColumnOrderings(column));
+    column: $table.telefono,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get enviada => $composableBuilder(
-      column: $table.enviada, builder: (column) => ColumnOrderings(column));
+    column: $table.enviada,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get borrar => $composableBuilder(
-      column: $table.borrar, builder: (column) => ColumnOrderings(column));
+    column: $table.borrar,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$ClienteDireccionImpTableTableAnnotationComposer
@@ -7416,19 +9563,27 @@ class $$ClienteDireccionImpTableTableAnnotationComposer
       $composableBuilder(column: $table.clienteId, builder: (column) => column);
 
   GeneratedColumn<String> get direccionId => $composableBuilder(
-      column: $table.direccionId, builder: (column) => column);
+    column: $table.direccionId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get nombre =>
       $composableBuilder(column: $table.nombre, builder: (column) => column);
 
   GeneratedColumn<String> get direccion1 => $composableBuilder(
-      column: $table.direccion1, builder: (column) => column);
+    column: $table.direccion1,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get direccion2 => $composableBuilder(
-      column: $table.direccion2, builder: (column) => column);
+    column: $table.direccion2,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get codigoPostal => $composableBuilder(
-      column: $table.codigoPostal, builder: (column) => column);
+    column: $table.codigoPostal,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get poblacion =>
       $composableBuilder(column: $table.poblacion, builder: (column) => column);
@@ -7449,142 +9604,168 @@ class $$ClienteDireccionImpTableTableAnnotationComposer
       $composableBuilder(column: $table.borrar, builder: (column) => column);
 }
 
-class $$ClienteDireccionImpTableTableTableManager extends RootTableManager<
-    _$LocalAppDatabase,
-    $ClienteDireccionImpTableTable,
-    ClienteDireccionImpDTO,
-    $$ClienteDireccionImpTableTableFilterComposer,
-    $$ClienteDireccionImpTableTableOrderingComposer,
-    $$ClienteDireccionImpTableTableAnnotationComposer,
-    $$ClienteDireccionImpTableTableCreateCompanionBuilder,
-    $$ClienteDireccionImpTableTableUpdateCompanionBuilder,
-    (
-      ClienteDireccionImpDTO,
-      BaseReferences<_$LocalAppDatabase, $ClienteDireccionImpTableTable,
-          ClienteDireccionImpDTO>
-    ),
-    ClienteDireccionImpDTO,
-    PrefetchHooks Function()> {
+class $$ClienteDireccionImpTableTableTableManager
+    extends
+        RootTableManager<
+          _$LocalAppDatabase,
+          $ClienteDireccionImpTableTable,
+          ClienteDireccionImpDTO,
+          $$ClienteDireccionImpTableTableFilterComposer,
+          $$ClienteDireccionImpTableTableOrderingComposer,
+          $$ClienteDireccionImpTableTableAnnotationComposer,
+          $$ClienteDireccionImpTableTableCreateCompanionBuilder,
+          $$ClienteDireccionImpTableTableUpdateCompanionBuilder,
+          (
+            ClienteDireccionImpDTO,
+            BaseReferences<
+              _$LocalAppDatabase,
+              $ClienteDireccionImpTableTable,
+              ClienteDireccionImpDTO
+            >,
+          ),
+          ClienteDireccionImpDTO,
+          PrefetchHooks Function()
+        > {
   $$ClienteDireccionImpTableTableTableManager(
-      _$LocalAppDatabase db, $ClienteDireccionImpTableTable table)
-      : super(TableManagerState(
+    _$LocalAppDatabase db,
+    $ClienteDireccionImpTableTable table,
+  ) : super(
+        TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$ClienteDireccionImpTableTableFilterComposer(
-                  $db: db, $table: table),
-          createOrderingComposer: () =>
-              $$ClienteDireccionImpTableTableOrderingComposer(
-                  $db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$ClienteDireccionImpTableTableAnnotationComposer(
-                  $db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<String> id = const Value.absent(),
-            Value<DateTime> fecha = const Value.absent(),
-            Value<String> usuarioId = const Value.absent(),
-            Value<String> clienteId = const Value.absent(),
-            Value<String?> direccionId = const Value.absent(),
-            Value<String?> nombre = const Value.absent(),
-            Value<String?> direccion1 = const Value.absent(),
-            Value<String?> direccion2 = const Value.absent(),
-            Value<String?> codigoPostal = const Value.absent(),
-            Value<String?> poblacion = const Value.absent(),
-            Value<String?> provincia = const Value.absent(),
-            Value<String?> paisId = const Value.absent(),
-            Value<String?> telefono = const Value.absent(),
-            Value<String> enviada = const Value.absent(),
-            Value<String> borrar = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ClienteDireccionImpTableCompanion(
-            id: id,
-            fecha: fecha,
-            usuarioId: usuarioId,
-            clienteId: clienteId,
-            direccionId: direccionId,
-            nombre: nombre,
-            direccion1: direccion1,
-            direccion2: direccion2,
-            codigoPostal: codigoPostal,
-            poblacion: poblacion,
-            provincia: provincia,
-            paisId: paisId,
-            telefono: telefono,
-            enviada: enviada,
-            borrar: borrar,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String id,
-            required DateTime fecha,
-            required String usuarioId,
-            required String clienteId,
-            Value<String?> direccionId = const Value.absent(),
-            Value<String?> nombre = const Value.absent(),
-            Value<String?> direccion1 = const Value.absent(),
-            Value<String?> direccion2 = const Value.absent(),
-            Value<String?> codigoPostal = const Value.absent(),
-            Value<String?> poblacion = const Value.absent(),
-            Value<String?> provincia = const Value.absent(),
-            Value<String?> paisId = const Value.absent(),
-            Value<String?> telefono = const Value.absent(),
-            Value<String> enviada = const Value.absent(),
-            Value<String> borrar = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ClienteDireccionImpTableCompanion.insert(
-            id: id,
-            fecha: fecha,
-            usuarioId: usuarioId,
-            clienteId: clienteId,
-            direccionId: direccionId,
-            nombre: nombre,
-            direccion1: direccion1,
-            direccion2: direccion2,
-            codigoPostal: codigoPostal,
-            poblacion: poblacion,
-            provincia: provincia,
-            paisId: paisId,
-            telefono: telefono,
-            enviada: enviada,
-            borrar: borrar,
-            rowid: rowid,
-          ),
-          withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
-              .toList(),
+          createFilteringComposer:
+              () => $$ClienteDireccionImpTableTableFilterComposer(
+                $db: db,
+                $table: table,
+              ),
+          createOrderingComposer:
+              () => $$ClienteDireccionImpTableTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer:
+              () => $$ClienteDireccionImpTableTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<DateTime> fecha = const Value.absent(),
+                Value<String> usuarioId = const Value.absent(),
+                Value<String> clienteId = const Value.absent(),
+                Value<String?> direccionId = const Value.absent(),
+                Value<String?> nombre = const Value.absent(),
+                Value<String?> direccion1 = const Value.absent(),
+                Value<String?> direccion2 = const Value.absent(),
+                Value<String?> codigoPostal = const Value.absent(),
+                Value<String?> poblacion = const Value.absent(),
+                Value<String?> provincia = const Value.absent(),
+                Value<String?> paisId = const Value.absent(),
+                Value<String?> telefono = const Value.absent(),
+                Value<String> enviada = const Value.absent(),
+                Value<String> borrar = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ClienteDireccionImpTableCompanion(
+                id: id,
+                fecha: fecha,
+                usuarioId: usuarioId,
+                clienteId: clienteId,
+                direccionId: direccionId,
+                nombre: nombre,
+                direccion1: direccion1,
+                direccion2: direccion2,
+                codigoPostal: codigoPostal,
+                poblacion: poblacion,
+                provincia: provincia,
+                paisId: paisId,
+                telefono: telefono,
+                enviada: enviada,
+                borrar: borrar,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required DateTime fecha,
+                required String usuarioId,
+                required String clienteId,
+                Value<String?> direccionId = const Value.absent(),
+                Value<String?> nombre = const Value.absent(),
+                Value<String?> direccion1 = const Value.absent(),
+                Value<String?> direccion2 = const Value.absent(),
+                Value<String?> codigoPostal = const Value.absent(),
+                Value<String?> poblacion = const Value.absent(),
+                Value<String?> provincia = const Value.absent(),
+                Value<String?> paisId = const Value.absent(),
+                Value<String?> telefono = const Value.absent(),
+                Value<String> enviada = const Value.absent(),
+                Value<String> borrar = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ClienteDireccionImpTableCompanion.insert(
+                id: id,
+                fecha: fecha,
+                usuarioId: usuarioId,
+                clienteId: clienteId,
+                direccionId: direccionId,
+                nombre: nombre,
+                direccion1: direccion1,
+                direccion2: direccion2,
+                codigoPostal: codigoPostal,
+                poblacion: poblacion,
+                provincia: provincia,
+                paisId: paisId,
+                telefono: telefono,
+                enviada: enviada,
+                borrar: borrar,
+                rowid: rowid,
+              ),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          BaseReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$ClienteDireccionImpTableTableProcessedTableManager
-    = ProcessedTableManager<
-        _$LocalAppDatabase,
-        $ClienteDireccionImpTableTable,
+typedef $$ClienteDireccionImpTableTableProcessedTableManager =
+    ProcessedTableManager<
+      _$LocalAppDatabase,
+      $ClienteDireccionImpTableTable,
+      ClienteDireccionImpDTO,
+      $$ClienteDireccionImpTableTableFilterComposer,
+      $$ClienteDireccionImpTableTableOrderingComposer,
+      $$ClienteDireccionImpTableTableAnnotationComposer,
+      $$ClienteDireccionImpTableTableCreateCompanionBuilder,
+      $$ClienteDireccionImpTableTableUpdateCompanionBuilder,
+      (
         ClienteDireccionImpDTO,
-        $$ClienteDireccionImpTableTableFilterComposer,
-        $$ClienteDireccionImpTableTableOrderingComposer,
-        $$ClienteDireccionImpTableTableAnnotationComposer,
-        $$ClienteDireccionImpTableTableCreateCompanionBuilder,
-        $$ClienteDireccionImpTableTableUpdateCompanionBuilder,
-        (
-          ClienteDireccionImpDTO,
-          BaseReferences<_$LocalAppDatabase, $ClienteDireccionImpTableTable,
-              ClienteDireccionImpDTO>
-        ),
-        ClienteDireccionImpDTO,
-        PrefetchHooks Function()>;
-typedef $$CatalogoOrdenTableTableCreateCompanionBuilder
-    = CatalogoOrdenTableCompanion Function({
-  Value<int> catalogoId,
-  required DateTime fechaAbierto,
-});
-typedef $$CatalogoOrdenTableTableUpdateCompanionBuilder
-    = CatalogoOrdenTableCompanion Function({
-  Value<int> catalogoId,
-  Value<DateTime> fechaAbierto,
-});
+        BaseReferences<
+          _$LocalAppDatabase,
+          $ClienteDireccionImpTableTable,
+          ClienteDireccionImpDTO
+        >,
+      ),
+      ClienteDireccionImpDTO,
+      PrefetchHooks Function()
+    >;
+typedef $$CatalogoOrdenTableTableCreateCompanionBuilder =
+    CatalogoOrdenTableCompanion Function({
+      Value<int> catalogoId,
+      required DateTime fechaAbierto,
+    });
+typedef $$CatalogoOrdenTableTableUpdateCompanionBuilder =
+    CatalogoOrdenTableCompanion Function({
+      Value<int> catalogoId,
+      Value<DateTime> fechaAbierto,
+    });
 
 class $$CatalogoOrdenTableTableFilterComposer
     extends Composer<_$LocalAppDatabase, $CatalogoOrdenTableTable> {
@@ -7596,10 +9777,14 @@ class $$CatalogoOrdenTableTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<int> get catalogoId => $composableBuilder(
-      column: $table.catalogoId, builder: (column) => ColumnFilters(column));
+    column: $table.catalogoId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<DateTime> get fechaAbierto => $composableBuilder(
-      column: $table.fechaAbierto, builder: (column) => ColumnFilters(column));
+    column: $table.fechaAbierto,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$CatalogoOrdenTableTableOrderingComposer
@@ -7612,11 +9797,14 @@ class $$CatalogoOrdenTableTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<int> get catalogoId => $composableBuilder(
-      column: $table.catalogoId, builder: (column) => ColumnOrderings(column));
+    column: $table.catalogoId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<DateTime> get fechaAbierto => $composableBuilder(
-      column: $table.fechaAbierto,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.fechaAbierto,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$CatalogoOrdenTableTableAnnotationComposer
@@ -7629,91 +9817,124 @@ class $$CatalogoOrdenTableTableAnnotationComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   GeneratedColumn<int> get catalogoId => $composableBuilder(
-      column: $table.catalogoId, builder: (column) => column);
+    column: $table.catalogoId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<DateTime> get fechaAbierto => $composableBuilder(
-      column: $table.fechaAbierto, builder: (column) => column);
+    column: $table.fechaAbierto,
+    builder: (column) => column,
+  );
 }
 
-class $$CatalogoOrdenTableTableTableManager extends RootTableManager<
-    _$LocalAppDatabase,
-    $CatalogoOrdenTableTable,
-    CatalogoOrdenDTO,
-    $$CatalogoOrdenTableTableFilterComposer,
-    $$CatalogoOrdenTableTableOrderingComposer,
-    $$CatalogoOrdenTableTableAnnotationComposer,
-    $$CatalogoOrdenTableTableCreateCompanionBuilder,
-    $$CatalogoOrdenTableTableUpdateCompanionBuilder,
-    (
-      CatalogoOrdenDTO,
-      BaseReferences<_$LocalAppDatabase, $CatalogoOrdenTableTable,
-          CatalogoOrdenDTO>
-    ),
-    CatalogoOrdenDTO,
-    PrefetchHooks Function()> {
+class $$CatalogoOrdenTableTableTableManager
+    extends
+        RootTableManager<
+          _$LocalAppDatabase,
+          $CatalogoOrdenTableTable,
+          CatalogoOrdenDTO,
+          $$CatalogoOrdenTableTableFilterComposer,
+          $$CatalogoOrdenTableTableOrderingComposer,
+          $$CatalogoOrdenTableTableAnnotationComposer,
+          $$CatalogoOrdenTableTableCreateCompanionBuilder,
+          $$CatalogoOrdenTableTableUpdateCompanionBuilder,
+          (
+            CatalogoOrdenDTO,
+            BaseReferences<
+              _$LocalAppDatabase,
+              $CatalogoOrdenTableTable,
+              CatalogoOrdenDTO
+            >,
+          ),
+          CatalogoOrdenDTO,
+          PrefetchHooks Function()
+        > {
   $$CatalogoOrdenTableTableTableManager(
-      _$LocalAppDatabase db, $CatalogoOrdenTableTable table)
-      : super(TableManagerState(
+    _$LocalAppDatabase db,
+    $CatalogoOrdenTableTable table,
+  ) : super(
+        TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$CatalogoOrdenTableTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$CatalogoOrdenTableTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$CatalogoOrdenTableTableAnnotationComposer(
-                  $db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<int> catalogoId = const Value.absent(),
-            Value<DateTime> fechaAbierto = const Value.absent(),
-          }) =>
-              CatalogoOrdenTableCompanion(
-            catalogoId: catalogoId,
-            fechaAbierto: fechaAbierto,
-          ),
-          createCompanionCallback: ({
-            Value<int> catalogoId = const Value.absent(),
-            required DateTime fechaAbierto,
-          }) =>
-              CatalogoOrdenTableCompanion.insert(
-            catalogoId: catalogoId,
-            fechaAbierto: fechaAbierto,
-          ),
-          withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
-              .toList(),
+          createFilteringComposer:
+              () => $$CatalogoOrdenTableTableFilterComposer(
+                $db: db,
+                $table: table,
+              ),
+          createOrderingComposer:
+              () => $$CatalogoOrdenTableTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer:
+              () => $$CatalogoOrdenTableTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<int> catalogoId = const Value.absent(),
+                Value<DateTime> fechaAbierto = const Value.absent(),
+              }) => CatalogoOrdenTableCompanion(
+                catalogoId: catalogoId,
+                fechaAbierto: fechaAbierto,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> catalogoId = const Value.absent(),
+                required DateTime fechaAbierto,
+              }) => CatalogoOrdenTableCompanion.insert(
+                catalogoId: catalogoId,
+                fechaAbierto: fechaAbierto,
+              ),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          BaseReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$CatalogoOrdenTableTableProcessedTableManager = ProcessedTableManager<
-    _$LocalAppDatabase,
-    $CatalogoOrdenTableTable,
-    CatalogoOrdenDTO,
-    $$CatalogoOrdenTableTableFilterComposer,
-    $$CatalogoOrdenTableTableOrderingComposer,
-    $$CatalogoOrdenTableTableAnnotationComposer,
-    $$CatalogoOrdenTableTableCreateCompanionBuilder,
-    $$CatalogoOrdenTableTableUpdateCompanionBuilder,
-    (
+typedef $$CatalogoOrdenTableTableProcessedTableManager =
+    ProcessedTableManager<
+      _$LocalAppDatabase,
+      $CatalogoOrdenTableTable,
       CatalogoOrdenDTO,
-      BaseReferences<_$LocalAppDatabase, $CatalogoOrdenTableTable,
-          CatalogoOrdenDTO>
-    ),
-    CatalogoOrdenDTO,
-    PrefetchHooks Function()>;
-typedef $$ClienteImpTableTableCreateCompanionBuilder = ClienteImpTableCompanion
-    Function({
-  required String clienteId,
-  required String sectorId,
-  Value<int> rowid,
-});
-typedef $$ClienteImpTableTableUpdateCompanionBuilder = ClienteImpTableCompanion
-    Function({
-  Value<String> clienteId,
-  Value<String> sectorId,
-  Value<int> rowid,
-});
+      $$CatalogoOrdenTableTableFilterComposer,
+      $$CatalogoOrdenTableTableOrderingComposer,
+      $$CatalogoOrdenTableTableAnnotationComposer,
+      $$CatalogoOrdenTableTableCreateCompanionBuilder,
+      $$CatalogoOrdenTableTableUpdateCompanionBuilder,
+      (
+        CatalogoOrdenDTO,
+        BaseReferences<
+          _$LocalAppDatabase,
+          $CatalogoOrdenTableTable,
+          CatalogoOrdenDTO
+        >,
+      ),
+      CatalogoOrdenDTO,
+      PrefetchHooks Function()
+    >;
+typedef $$ClienteImpTableTableCreateCompanionBuilder =
+    ClienteImpTableCompanion Function({
+      required String clienteId,
+      required String sectorId,
+      Value<int> rowid,
+    });
+typedef $$ClienteImpTableTableUpdateCompanionBuilder =
+    ClienteImpTableCompanion Function({
+      Value<String> clienteId,
+      Value<String> sectorId,
+      Value<int> rowid,
+    });
 
 class $$ClienteImpTableTableFilterComposer
     extends Composer<_$LocalAppDatabase, $ClienteImpTableTable> {
@@ -7725,10 +9946,14 @@ class $$ClienteImpTableTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<String> get clienteId => $composableBuilder(
-      column: $table.clienteId, builder: (column) => ColumnFilters(column));
+    column: $table.clienteId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<String> get sectorId => $composableBuilder(
-      column: $table.sectorId, builder: (column) => ColumnFilters(column));
+    column: $table.sectorId,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$ClienteImpTableTableOrderingComposer
@@ -7741,10 +9966,14 @@ class $$ClienteImpTableTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<String> get clienteId => $composableBuilder(
-      column: $table.clienteId, builder: (column) => ColumnOrderings(column));
+    column: $table.clienteId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<String> get sectorId => $composableBuilder(
-      column: $table.sectorId, builder: (column) => ColumnOrderings(column));
+    column: $table.sectorId,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$ClienteImpTableTableAnnotationComposer
@@ -7763,86 +9992,116 @@ class $$ClienteImpTableTableAnnotationComposer
       $composableBuilder(column: $table.sectorId, builder: (column) => column);
 }
 
-class $$ClienteImpTableTableTableManager extends RootTableManager<
-    _$LocalAppDatabase,
-    $ClienteImpTableTable,
-    ClienteImpDTO,
-    $$ClienteImpTableTableFilterComposer,
-    $$ClienteImpTableTableOrderingComposer,
-    $$ClienteImpTableTableAnnotationComposer,
-    $$ClienteImpTableTableCreateCompanionBuilder,
-    $$ClienteImpTableTableUpdateCompanionBuilder,
-    (
-      ClienteImpDTO,
-      BaseReferences<_$LocalAppDatabase, $ClienteImpTableTable, ClienteImpDTO>
-    ),
-    ClienteImpDTO,
-    PrefetchHooks Function()> {
+class $$ClienteImpTableTableTableManager
+    extends
+        RootTableManager<
+          _$LocalAppDatabase,
+          $ClienteImpTableTable,
+          ClienteImpDTO,
+          $$ClienteImpTableTableFilterComposer,
+          $$ClienteImpTableTableOrderingComposer,
+          $$ClienteImpTableTableAnnotationComposer,
+          $$ClienteImpTableTableCreateCompanionBuilder,
+          $$ClienteImpTableTableUpdateCompanionBuilder,
+          (
+            ClienteImpDTO,
+            BaseReferences<
+              _$LocalAppDatabase,
+              $ClienteImpTableTable,
+              ClienteImpDTO
+            >,
+          ),
+          ClienteImpDTO,
+          PrefetchHooks Function()
+        > {
   $$ClienteImpTableTableTableManager(
-      _$LocalAppDatabase db, $ClienteImpTableTable table)
-      : super(TableManagerState(
+    _$LocalAppDatabase db,
+    $ClienteImpTableTable table,
+  ) : super(
+        TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$ClienteImpTableTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$ClienteImpTableTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$ClienteImpTableTableAnnotationComposer($db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<String> clienteId = const Value.absent(),
-            Value<String> sectorId = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ClienteImpTableCompanion(
-            clienteId: clienteId,
-            sectorId: sectorId,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String clienteId,
-            required String sectorId,
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              ClienteImpTableCompanion.insert(
-            clienteId: clienteId,
-            sectorId: sectorId,
-            rowid: rowid,
-          ),
-          withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
-              .toList(),
+          createFilteringComposer:
+              () =>
+                  $$ClienteImpTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () => $$ClienteImpTableTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer:
+              () => $$ClienteImpTableTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> clienteId = const Value.absent(),
+                Value<String> sectorId = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ClienteImpTableCompanion(
+                clienteId: clienteId,
+                sectorId: sectorId,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String clienteId,
+                required String sectorId,
+                Value<int> rowid = const Value.absent(),
+              }) => ClienteImpTableCompanion.insert(
+                clienteId: clienteId,
+                sectorId: sectorId,
+                rowid: rowid,
+              ),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          BaseReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$ClienteImpTableTableProcessedTableManager = ProcessedTableManager<
-    _$LocalAppDatabase,
-    $ClienteImpTableTable,
-    ClienteImpDTO,
-    $$ClienteImpTableTableFilterComposer,
-    $$ClienteImpTableTableOrderingComposer,
-    $$ClienteImpTableTableAnnotationComposer,
-    $$ClienteImpTableTableCreateCompanionBuilder,
-    $$ClienteImpTableTableUpdateCompanionBuilder,
-    (
+typedef $$ClienteImpTableTableProcessedTableManager =
+    ProcessedTableManager<
+      _$LocalAppDatabase,
+      $ClienteImpTableTable,
       ClienteImpDTO,
-      BaseReferences<_$LocalAppDatabase, $ClienteImpTableTable, ClienteImpDTO>
-    ),
-    ClienteImpDTO,
-    PrefetchHooks Function()>;
-typedef $$VisitaCompetenciaLocalTableTableCreateCompanionBuilder
-    = VisitaCompetenciaLocalTableCompanion Function({
-  required String visitaAppId,
-  required int codigoCompetencia,
-  Value<int> rowid,
-});
-typedef $$VisitaCompetenciaLocalTableTableUpdateCompanionBuilder
-    = VisitaCompetenciaLocalTableCompanion Function({
-  Value<String> visitaAppId,
-  Value<int> codigoCompetencia,
-  Value<int> rowid,
-});
+      $$ClienteImpTableTableFilterComposer,
+      $$ClienteImpTableTableOrderingComposer,
+      $$ClienteImpTableTableAnnotationComposer,
+      $$ClienteImpTableTableCreateCompanionBuilder,
+      $$ClienteImpTableTableUpdateCompanionBuilder,
+      (
+        ClienteImpDTO,
+        BaseReferences<
+          _$LocalAppDatabase,
+          $ClienteImpTableTable,
+          ClienteImpDTO
+        >,
+      ),
+      ClienteImpDTO,
+      PrefetchHooks Function()
+    >;
+typedef $$VisitaCompetenciaLocalTableTableCreateCompanionBuilder =
+    VisitaCompetenciaLocalTableCompanion Function({
+      required String visitaAppId,
+      required int codigoCompetencia,
+      Value<int> rowid,
+    });
+typedef $$VisitaCompetenciaLocalTableTableUpdateCompanionBuilder =
+    VisitaCompetenciaLocalTableCompanion Function({
+      Value<String> visitaAppId,
+      Value<int> codigoCompetencia,
+      Value<int> rowid,
+    });
 
 class $$VisitaCompetenciaLocalTableTableFilterComposer
     extends Composer<_$LocalAppDatabase, $VisitaCompetenciaLocalTableTable> {
@@ -7854,11 +10113,14 @@ class $$VisitaCompetenciaLocalTableTableFilterComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnFilters<String> get visitaAppId => $composableBuilder(
-      column: $table.visitaAppId, builder: (column) => ColumnFilters(column));
+    column: $table.visitaAppId,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<int> get codigoCompetencia => $composableBuilder(
-      column: $table.codigoCompetencia,
-      builder: (column) => ColumnFilters(column));
+    column: $table.codigoCompetencia,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$VisitaCompetenciaLocalTableTableOrderingComposer
@@ -7871,11 +10133,14 @@ class $$VisitaCompetenciaLocalTableTableOrderingComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   ColumnOrderings<String> get visitaAppId => $composableBuilder(
-      column: $table.visitaAppId, builder: (column) => ColumnOrderings(column));
+    column: $table.visitaAppId,
+    builder: (column) => ColumnOrderings(column),
+  );
 
   ColumnOrderings<int> get codigoCompetencia => $composableBuilder(
-      column: $table.codigoCompetencia,
-      builder: (column) => ColumnOrderings(column));
+    column: $table.codigoCompetencia,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$VisitaCompetenciaLocalTableTableAnnotationComposer
@@ -7888,86 +10153,116 @@ class $$VisitaCompetenciaLocalTableTableAnnotationComposer
     super.$removeJoinBuilderFromRootComposer,
   });
   GeneratedColumn<String> get visitaAppId => $composableBuilder(
-      column: $table.visitaAppId, builder: (column) => column);
+    column: $table.visitaAppId,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<int> get codigoCompetencia => $composableBuilder(
-      column: $table.codigoCompetencia, builder: (column) => column);
+    column: $table.codigoCompetencia,
+    builder: (column) => column,
+  );
 }
 
-class $$VisitaCompetenciaLocalTableTableTableManager extends RootTableManager<
-    _$LocalAppDatabase,
-    $VisitaCompetenciaLocalTableTable,
-    VisitaCompetenciaLocalDTO,
-    $$VisitaCompetenciaLocalTableTableFilterComposer,
-    $$VisitaCompetenciaLocalTableTableOrderingComposer,
-    $$VisitaCompetenciaLocalTableTableAnnotationComposer,
-    $$VisitaCompetenciaLocalTableTableCreateCompanionBuilder,
-    $$VisitaCompetenciaLocalTableTableUpdateCompanionBuilder,
-    (
-      VisitaCompetenciaLocalDTO,
-      BaseReferences<_$LocalAppDatabase, $VisitaCompetenciaLocalTableTable,
-          VisitaCompetenciaLocalDTO>
-    ),
-    VisitaCompetenciaLocalDTO,
-    PrefetchHooks Function()> {
+class $$VisitaCompetenciaLocalTableTableTableManager
+    extends
+        RootTableManager<
+          _$LocalAppDatabase,
+          $VisitaCompetenciaLocalTableTable,
+          VisitaCompetenciaLocalDTO,
+          $$VisitaCompetenciaLocalTableTableFilterComposer,
+          $$VisitaCompetenciaLocalTableTableOrderingComposer,
+          $$VisitaCompetenciaLocalTableTableAnnotationComposer,
+          $$VisitaCompetenciaLocalTableTableCreateCompanionBuilder,
+          $$VisitaCompetenciaLocalTableTableUpdateCompanionBuilder,
+          (
+            VisitaCompetenciaLocalDTO,
+            BaseReferences<
+              _$LocalAppDatabase,
+              $VisitaCompetenciaLocalTableTable,
+              VisitaCompetenciaLocalDTO
+            >,
+          ),
+          VisitaCompetenciaLocalDTO,
+          PrefetchHooks Function()
+        > {
   $$VisitaCompetenciaLocalTableTableTableManager(
-      _$LocalAppDatabase db, $VisitaCompetenciaLocalTableTable table)
-      : super(TableManagerState(
+    _$LocalAppDatabase db,
+    $VisitaCompetenciaLocalTableTable table,
+  ) : super(
+        TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$VisitaCompetenciaLocalTableTableFilterComposer(
-                  $db: db, $table: table),
-          createOrderingComposer: () =>
-              $$VisitaCompetenciaLocalTableTableOrderingComposer(
-                  $db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$VisitaCompetenciaLocalTableTableAnnotationComposer(
-                  $db: db, $table: table),
-          updateCompanionCallback: ({
-            Value<String> visitaAppId = const Value.absent(),
-            Value<int> codigoCompetencia = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              VisitaCompetenciaLocalTableCompanion(
-            visitaAppId: visitaAppId,
-            codigoCompetencia: codigoCompetencia,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            required String visitaAppId,
-            required int codigoCompetencia,
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              VisitaCompetenciaLocalTableCompanion.insert(
-            visitaAppId: visitaAppId,
-            codigoCompetencia: codigoCompetencia,
-            rowid: rowid,
-          ),
-          withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
-              .toList(),
+          createFilteringComposer:
+              () => $$VisitaCompetenciaLocalTableTableFilterComposer(
+                $db: db,
+                $table: table,
+              ),
+          createOrderingComposer:
+              () => $$VisitaCompetenciaLocalTableTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer:
+              () => $$VisitaCompetenciaLocalTableTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> visitaAppId = const Value.absent(),
+                Value<int> codigoCompetencia = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => VisitaCompetenciaLocalTableCompanion(
+                visitaAppId: visitaAppId,
+                codigoCompetencia: codigoCompetencia,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String visitaAppId,
+                required int codigoCompetencia,
+                Value<int> rowid = const Value.absent(),
+              }) => VisitaCompetenciaLocalTableCompanion.insert(
+                visitaAppId: visitaAppId,
+                codigoCompetencia: codigoCompetencia,
+                rowid: rowid,
+              ),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          BaseReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
           prefetchHooksCallback: null,
-        ));
+        ),
+      );
 }
 
-typedef $$VisitaCompetenciaLocalTableTableProcessedTableManager
-    = ProcessedTableManager<
-        _$LocalAppDatabase,
-        $VisitaCompetenciaLocalTableTable,
+typedef $$VisitaCompetenciaLocalTableTableProcessedTableManager =
+    ProcessedTableManager<
+      _$LocalAppDatabase,
+      $VisitaCompetenciaLocalTableTable,
+      VisitaCompetenciaLocalDTO,
+      $$VisitaCompetenciaLocalTableTableFilterComposer,
+      $$VisitaCompetenciaLocalTableTableOrderingComposer,
+      $$VisitaCompetenciaLocalTableTableAnnotationComposer,
+      $$VisitaCompetenciaLocalTableTableCreateCompanionBuilder,
+      $$VisitaCompetenciaLocalTableTableUpdateCompanionBuilder,
+      (
         VisitaCompetenciaLocalDTO,
-        $$VisitaCompetenciaLocalTableTableFilterComposer,
-        $$VisitaCompetenciaLocalTableTableOrderingComposer,
-        $$VisitaCompetenciaLocalTableTableAnnotationComposer,
-        $$VisitaCompetenciaLocalTableTableCreateCompanionBuilder,
-        $$VisitaCompetenciaLocalTableTableUpdateCompanionBuilder,
-        (
-          VisitaCompetenciaLocalDTO,
-          BaseReferences<_$LocalAppDatabase, $VisitaCompetenciaLocalTableTable,
-              VisitaCompetenciaLocalDTO>
-        ),
-        VisitaCompetenciaLocalDTO,
-        PrefetchHooks Function()>;
+        BaseReferences<
+          _$LocalAppDatabase,
+          $VisitaCompetenciaLocalTableTable,
+          VisitaCompetenciaLocalDTO
+        >,
+      ),
+      VisitaCompetenciaLocalDTO,
+      PrefetchHooks Function()
+    >;
 
 class $LocalAppDatabaseManager {
   final _$LocalAppDatabase _db;
@@ -7975,9 +10270,11 @@ class $LocalAppDatabaseManager {
   $$VisitaLocalTableTableTableManager get visitaLocalTable =>
       $$VisitaLocalTableTableTableManager(_db, _db.visitaLocalTable);
   $$PedidoVentaLineaLocalTableTableTableManager
-      get pedidoVentaLineaLocalTable =>
-          $$PedidoVentaLineaLocalTableTableTableManager(
-              _db, _db.pedidoVentaLineaLocalTable);
+  get pedidoVentaLineaLocalTable =>
+      $$PedidoVentaLineaLocalTableTableTableManager(
+        _db,
+        _db.pedidoVentaLineaLocalTable,
+      );
   $$PedidoVentaLocalTableTableTableManager get pedidoVentaLocalTable =>
       $$PedidoVentaLocalTableTableTableManager(_db, _db.pedidoVentaLocalTable);
   $$SyncDateTimeTableTableTableManager get syncDateTimeTable =>
@@ -7988,16 +10285,22 @@ class $LocalAppDatabaseManager {
       $$CatalogoFavoritoTableTableTableManager(_db, _db.catalogoFavoritoTable);
   $$ClienteContactoImpTableTableTableManager get clienteContactoImpTable =>
       $$ClienteContactoImpTableTableTableManager(
-          _db, _db.clienteContactoImpTable);
+        _db,
+        _db.clienteContactoImpTable,
+      );
   $$ClienteDireccionImpTableTableTableManager get clienteDireccionImpTable =>
       $$ClienteDireccionImpTableTableTableManager(
-          _db, _db.clienteDireccionImpTable);
+        _db,
+        _db.clienteDireccionImpTable,
+      );
   $$CatalogoOrdenTableTableTableManager get catalogoOrdenTable =>
       $$CatalogoOrdenTableTableTableManager(_db, _db.catalogoOrdenTable);
   $$ClienteImpTableTableTableManager get clienteImpTable =>
       $$ClienteImpTableTableTableManager(_db, _db.clienteImpTable);
   $$VisitaCompetenciaLocalTableTableTableManager
-      get visitaCompetenciaLocalTable =>
-          $$VisitaCompetenciaLocalTableTableTableManager(
-              _db, _db.visitaCompetenciaLocalTable);
+  get visitaCompetenciaLocalTable =>
+      $$VisitaCompetenciaLocalTableTableTableManager(
+        _db,
+        _db.visitaCompetenciaLocalTable,
+      );
 }

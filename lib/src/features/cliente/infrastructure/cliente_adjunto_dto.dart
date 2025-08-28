@@ -8,7 +8,7 @@ part 'cliente_adjunto_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class ClienteAdjuntoDTO with _$ClienteAdjuntoDTO {
+abstract class ClienteAdjuntoDTO with _$ClienteAdjuntoDTO {
   const ClienteAdjuntoDTO._();
   const factory ClienteAdjuntoDTO({
     @JsonKey(name: 'CLIENTE_ID') required String clienteId,

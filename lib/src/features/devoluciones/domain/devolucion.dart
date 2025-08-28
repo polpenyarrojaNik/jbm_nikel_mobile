@@ -6,7 +6,7 @@ import 'devolucion_estado.dart';
 part 'devolucion.freezed.dart';
 
 @freezed
-class Devolucion with _$Devolucion {
+abstract class Devolucion with _$Devolucion {
   const Devolucion._();
   const factory Devolucion({
     required String empresaId,

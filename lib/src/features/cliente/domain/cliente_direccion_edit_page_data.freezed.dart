@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,198 +9,291 @@ part of 'cliente_direccion_edit_page_data.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 /// @nodoc
 mixin _$ClienteDireccionEditPageData {
-  ClienteDireccion? get clienteDireccion => throw _privateConstructorUsedError;
-  bool get isSent => throw _privateConstructorUsedError;
-  Object? get error => throw _privateConstructorUsedError;
 
-  /// Create a copy of ClienteDireccionEditPageData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ClienteDireccionEditPageDataCopyWith<ClienteDireccionEditPageData>
-      get copyWith => throw _privateConstructorUsedError;
+ ClienteDireccion? get clienteDireccion; bool get isSent; Object? get error;
+/// Create a copy of ClienteDireccionEditPageData
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ClienteDireccionEditPageDataCopyWith<ClienteDireccionEditPageData> get copyWith => _$ClienteDireccionEditPageDataCopyWithImpl<ClienteDireccionEditPageData>(this as ClienteDireccionEditPageData, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteDireccionEditPageData&&(identical(other.clienteDireccion, clienteDireccion) || other.clienteDireccion == clienteDireccion)&&(identical(other.isSent, isSent) || other.isSent == isSent)&&const DeepCollectionEquality().equals(other.error, error));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,clienteDireccion,isSent,const DeepCollectionEquality().hash(error));
+
+@override
+String toString() {
+  return 'ClienteDireccionEditPageData(clienteDireccion: $clienteDireccion, isSent: $isSent, error: $error)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ClienteDireccionEditPageDataCopyWith<$Res> {
-  factory $ClienteDireccionEditPageDataCopyWith(
-          ClienteDireccionEditPageData value,
-          $Res Function(ClienteDireccionEditPageData) then) =
-      _$ClienteDireccionEditPageDataCopyWithImpl<$Res,
-          ClienteDireccionEditPageData>;
-  @useResult
-  $Res call({ClienteDireccion? clienteDireccion, bool isSent, Object? error});
+abstract mixin class $ClienteDireccionEditPageDataCopyWith<$Res>  {
+  factory $ClienteDireccionEditPageDataCopyWith(ClienteDireccionEditPageData value, $Res Function(ClienteDireccionEditPageData) _then) = _$ClienteDireccionEditPageDataCopyWithImpl;
+@useResult
+$Res call({
+ ClienteDireccion? clienteDireccion, bool isSent, Object? error
+});
 
-  $ClienteDireccionCopyWith<$Res>? get clienteDireccion;
+
+$ClienteDireccionCopyWith<$Res>? get clienteDireccion;
+
 }
-
 /// @nodoc
-class _$ClienteDireccionEditPageDataCopyWithImpl<$Res,
-        $Val extends ClienteDireccionEditPageData>
+class _$ClienteDireccionEditPageDataCopyWithImpl<$Res>
     implements $ClienteDireccionEditPageDataCopyWith<$Res> {
-  _$ClienteDireccionEditPageDataCopyWithImpl(this._value, this._then);
+  _$ClienteDireccionEditPageDataCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ClienteDireccionEditPageData _self;
+  final $Res Function(ClienteDireccionEditPageData) _then;
 
-  /// Create a copy of ClienteDireccionEditPageData
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? clienteDireccion = freezed,
-    Object? isSent = null,
-    Object? error = freezed,
-  }) {
-    return _then(_value.copyWith(
-      clienteDireccion: freezed == clienteDireccion
-          ? _value.clienteDireccion
-          : clienteDireccion // ignore: cast_nullable_to_non_nullable
-              as ClienteDireccion?,
-      isSent: null == isSent
-          ? _value.isSent
-          : isSent // ignore: cast_nullable_to_non_nullable
-              as bool,
-      error: freezed == error ? _value.error : error,
-    ) as $Val);
+/// Create a copy of ClienteDireccionEditPageData
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? clienteDireccion = freezed,Object? isSent = null,Object? error = freezed,}) {
+  return _then(_self.copyWith(
+clienteDireccion: freezed == clienteDireccion ? _self.clienteDireccion : clienteDireccion // ignore: cast_nullable_to_non_nullable
+as ClienteDireccion?,isSent: null == isSent ? _self.isSent : isSent // ignore: cast_nullable_to_non_nullable
+as bool,error: freezed == error ? _self.error : error ,
+  ));
+}
+/// Create a copy of ClienteDireccionEditPageData
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ClienteDireccionCopyWith<$Res>? get clienteDireccion {
+    if (_self.clienteDireccion == null) {
+    return null;
   }
 
-  /// Create a copy of ClienteDireccionEditPageData
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ClienteDireccionCopyWith<$Res>? get clienteDireccion {
-    if (_value.clienteDireccion == null) {
-      return null;
-    }
+  return $ClienteDireccionCopyWith<$Res>(_self.clienteDireccion!, (value) {
+    return _then(_self.copyWith(clienteDireccion: value));
+  });
+}
+}
 
-    return $ClienteDireccionCopyWith<$Res>(_value.clienteDireccion!, (value) {
-      return _then(_value.copyWith(clienteDireccion: value) as $Val);
-    });
-  }
+
+/// Adds pattern-matching-related methods to [ClienteDireccionEditPageData].
+extension ClienteDireccionEditPageDataPatterns on ClienteDireccionEditPageData {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ClienteDireccionEditPageData value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ClienteDireccionEditPageData() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ClienteDireccionEditPageData value)  $default,){
+final _that = this;
+switch (_that) {
+case _ClienteDireccionEditPageData():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ClienteDireccionEditPageData value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ClienteDireccionEditPageData() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( ClienteDireccion? clienteDireccion,  bool isSent,  Object? error)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ClienteDireccionEditPageData() when $default != null:
+return $default(_that.clienteDireccion,_that.isSent,_that.error);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( ClienteDireccion? clienteDireccion,  bool isSent,  Object? error)  $default,) {final _that = this;
+switch (_that) {
+case _ClienteDireccionEditPageData():
+return $default(_that.clienteDireccion,_that.isSent,_that.error);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( ClienteDireccion? clienteDireccion,  bool isSent,  Object? error)?  $default,) {final _that = this;
+switch (_that) {
+case _ClienteDireccionEditPageData() when $default != null:
+return $default(_that.clienteDireccion,_that.isSent,_that.error);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
-abstract class _$$ClienteDireccionEditPageDataImplCopyWith<$Res>
-    implements $ClienteDireccionEditPageDataCopyWith<$Res> {
-  factory _$$ClienteDireccionEditPageDataImplCopyWith(
-          _$ClienteDireccionEditPageDataImpl value,
-          $Res Function(_$ClienteDireccionEditPageDataImpl) then) =
-      __$$ClienteDireccionEditPageDataImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({ClienteDireccion? clienteDireccion, bool isSent, Object? error});
 
-  @override
-  $ClienteDireccionCopyWith<$Res>? get clienteDireccion;
+
+class _ClienteDireccionEditPageData extends ClienteDireccionEditPageData {
+  const _ClienteDireccionEditPageData({required this.clienteDireccion, required this.isSent, this.error}): super._();
+  
+
+@override final  ClienteDireccion? clienteDireccion;
+@override final  bool isSent;
+@override final  Object? error;
+
+/// Create a copy of ClienteDireccionEditPageData
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ClienteDireccionEditPageDataCopyWith<_ClienteDireccionEditPageData> get copyWith => __$ClienteDireccionEditPageDataCopyWithImpl<_ClienteDireccionEditPageData>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteDireccionEditPageData&&(identical(other.clienteDireccion, clienteDireccion) || other.clienteDireccion == clienteDireccion)&&(identical(other.isSent, isSent) || other.isSent == isSent)&&const DeepCollectionEquality().equals(other.error, error));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,clienteDireccion,isSent,const DeepCollectionEquality().hash(error));
+
+@override
+String toString() {
+  return 'ClienteDireccionEditPageData(clienteDireccion: $clienteDireccion, isSent: $isSent, error: $error)';
+}
+
+
 }
 
 /// @nodoc
-class __$$ClienteDireccionEditPageDataImplCopyWithImpl<$Res>
-    extends _$ClienteDireccionEditPageDataCopyWithImpl<$Res,
-        _$ClienteDireccionEditPageDataImpl>
-    implements _$$ClienteDireccionEditPageDataImplCopyWith<$Res> {
-  __$$ClienteDireccionEditPageDataImplCopyWithImpl(
-      _$ClienteDireccionEditPageDataImpl _value,
-      $Res Function(_$ClienteDireccionEditPageDataImpl) _then)
-      : super(_value, _then);
+abstract mixin class _$ClienteDireccionEditPageDataCopyWith<$Res> implements $ClienteDireccionEditPageDataCopyWith<$Res> {
+  factory _$ClienteDireccionEditPageDataCopyWith(_ClienteDireccionEditPageData value, $Res Function(_ClienteDireccionEditPageData) _then) = __$ClienteDireccionEditPageDataCopyWithImpl;
+@override @useResult
+$Res call({
+ ClienteDireccion? clienteDireccion, bool isSent, Object? error
+});
 
-  /// Create a copy of ClienteDireccionEditPageData
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? clienteDireccion = freezed,
-    Object? isSent = null,
-    Object? error = freezed,
-  }) {
-    return _then(_$ClienteDireccionEditPageDataImpl(
-      clienteDireccion: freezed == clienteDireccion
-          ? _value.clienteDireccion
-          : clienteDireccion // ignore: cast_nullable_to_non_nullable
-              as ClienteDireccion?,
-      isSent: null == isSent
-          ? _value.isSent
-          : isSent // ignore: cast_nullable_to_non_nullable
-              as bool,
-      error: freezed == error ? _value.error : error,
-    ));
-  }
+
+@override $ClienteDireccionCopyWith<$Res>? get clienteDireccion;
+
 }
-
 /// @nodoc
+class __$ClienteDireccionEditPageDataCopyWithImpl<$Res>
+    implements _$ClienteDireccionEditPageDataCopyWith<$Res> {
+  __$ClienteDireccionEditPageDataCopyWithImpl(this._self, this._then);
 
-class _$ClienteDireccionEditPageDataImpl extends _ClienteDireccionEditPageData {
-  const _$ClienteDireccionEditPageDataImpl(
-      {required this.clienteDireccion, required this.isSent, this.error})
-      : super._();
+  final _ClienteDireccionEditPageData _self;
+  final $Res Function(_ClienteDireccionEditPageData) _then;
 
-  @override
-  final ClienteDireccion? clienteDireccion;
-  @override
-  final bool isSent;
-  @override
-  final Object? error;
-
-  @override
-  String toString() {
-    return 'ClienteDireccionEditPageData(clienteDireccion: $clienteDireccion, isSent: $isSent, error: $error)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ClienteDireccionEditPageDataImpl &&
-            (identical(other.clienteDireccion, clienteDireccion) ||
-                other.clienteDireccion == clienteDireccion) &&
-            (identical(other.isSent, isSent) || other.isSent == isSent) &&
-            const DeepCollectionEquality().equals(other.error, error));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, clienteDireccion, isSent,
-      const DeepCollectionEquality().hash(error));
-
-  /// Create a copy of ClienteDireccionEditPageData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ClienteDireccionEditPageDataImplCopyWith<
-          _$ClienteDireccionEditPageDataImpl>
-      get copyWith => __$$ClienteDireccionEditPageDataImplCopyWithImpl<
-          _$ClienteDireccionEditPageDataImpl>(this, _$identity);
+/// Create a copy of ClienteDireccionEditPageData
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? clienteDireccion = freezed,Object? isSent = null,Object? error = freezed,}) {
+  return _then(_ClienteDireccionEditPageData(
+clienteDireccion: freezed == clienteDireccion ? _self.clienteDireccion : clienteDireccion // ignore: cast_nullable_to_non_nullable
+as ClienteDireccion?,isSent: null == isSent ? _self.isSent : isSent // ignore: cast_nullable_to_non_nullable
+as bool,error: freezed == error ? _self.error : error ,
+  ));
 }
 
-abstract class _ClienteDireccionEditPageData
-    extends ClienteDireccionEditPageData {
-  const factory _ClienteDireccionEditPageData(
-      {required final ClienteDireccion? clienteDireccion,
-      required final bool isSent,
-      final Object? error}) = _$ClienteDireccionEditPageDataImpl;
-  const _ClienteDireccionEditPageData._() : super._();
+/// Create a copy of ClienteDireccionEditPageData
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ClienteDireccionCopyWith<$Res>? get clienteDireccion {
+    if (_self.clienteDireccion == null) {
+    return null;
+  }
 
-  @override
-  ClienteDireccion? get clienteDireccion;
-  @override
-  bool get isSent;
-  @override
-  Object? get error;
-
-  /// Create a copy of ClienteDireccionEditPageData
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ClienteDireccionEditPageDataImplCopyWith<
-          _$ClienteDireccionEditPageDataImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  return $ClienteDireccionCopyWith<$Res>(_self.clienteDireccion!, (value) {
+    return _then(_self.copyWith(clienteDireccion: value));
+  });
 }
+}
+
+// dart format on

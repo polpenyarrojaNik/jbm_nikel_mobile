@@ -4,7 +4,7 @@ import 'package:money2/money2.dart';
 part 'cliente_ventas_mes.freezed.dart';
 
 @freezed
-class ClienteVentasMes with _$ClienteVentasMes {
+abstract class ClienteVentasMes with _$ClienteVentasMes {
   const ClienteVentasMes._();
   const factory ClienteVentasMes({
     required int mes,

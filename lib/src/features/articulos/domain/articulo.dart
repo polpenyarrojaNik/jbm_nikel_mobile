@@ -1,13 +1,13 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../core/domain/familia.dart';
 import 'package:money2/money2.dart';
 
+import '../../../core/domain/familia.dart';
 import '../../../core/domain/subfamilia.dart';
 
 part 'articulo.freezed.dart';
 
 @freezed
-class Articulo with _$Articulo {
+abstract class Articulo with _$Articulo {
   const Articulo._();
   const factory Articulo({
     required String id,

@@ -7,7 +7,7 @@ part 'jbm_headers.g.dart';
 typedef Json = Map<String, dynamic>;
 
 @freezed
-class JBMHeaders with _$JBMHeaders {
+abstract class JBMHeaders with _$JBMHeaders {
   const JBMHeaders._();
   const factory JBMHeaders({String? etag, int? maxPage, int? totalRows}) =
       _JBMHeaders;

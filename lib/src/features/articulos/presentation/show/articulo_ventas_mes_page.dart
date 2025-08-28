@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/bar_data.dart';
@@ -11,7 +12,6 @@ import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/legend_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
-import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../usuario/application/usuario_notifier.dart';
 import '../../domain/articulo_ventas_mes.dart';
 import '../../infrastructure/articulo_repository.dart';
@@ -52,7 +52,7 @@ class ArticuloVentasMesPage extends ConsumerWidget {
                                 articuloVentasMesList: articuloVentasMesList,
                                 showTodos: user?.verTotalVentas ?? false,
                               ),
-                              gapH16,
+                              const Gap(16),
                               Container(
                                 height: 420,
                                 padding: const EdgeInsets.symmetric(
@@ -62,7 +62,7 @@ class ArticuloVentasMesPage extends ConsumerWidget {
                                   articuloVentasMesList: articuloVentasMesList,
                                 ),
                               ),
-                              gapH16,
+                              const Gap(16),
                               const LeyendaWidget(),
                             ],
                           ),

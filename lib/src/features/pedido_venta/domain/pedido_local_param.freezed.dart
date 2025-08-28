@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,290 +9,305 @@ part of 'pedido_local_param.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 /// @nodoc
 mixin _$PedidoLocalParam {
-  String? get pedidoAppId => throw _privateConstructorUsedError;
-  String? get pedidoId => throw _privateConstructorUsedError;
-  String? get empresaId => throw _privateConstructorUsedError;
-  bool get isEdit => throw _privateConstructorUsedError;
-  bool? get tratada => throw _privateConstructorUsedError;
-  String? get createPedidoFromClienteId => throw _privateConstructorUsedError;
-  PedidoVentaLinea? get addLineaDesdeArticulo =>
-      throw _privateConstructorUsedError;
 
-  /// Create a copy of PedidoLocalParam
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $PedidoLocalParamCopyWith<PedidoLocalParam> get copyWith =>
-      throw _privateConstructorUsedError;
+ String? get pedidoAppId; String? get pedidoId; String? get empresaId; bool get isEdit; bool? get tratada; String? get createPedidoFromClienteId; PedidoVentaLinea? get addLineaDesdeArticulo;
+/// Create a copy of PedidoLocalParam
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PedidoLocalParamCopyWith<PedidoLocalParam> get copyWith => _$PedidoLocalParamCopyWithImpl<PedidoLocalParam>(this as PedidoLocalParam, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PedidoLocalParam&&(identical(other.pedidoAppId, pedidoAppId) || other.pedidoAppId == pedidoAppId)&&(identical(other.pedidoId, pedidoId) || other.pedidoId == pedidoId)&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.isEdit, isEdit) || other.isEdit == isEdit)&&(identical(other.tratada, tratada) || other.tratada == tratada)&&(identical(other.createPedidoFromClienteId, createPedidoFromClienteId) || other.createPedidoFromClienteId == createPedidoFromClienteId)&&(identical(other.addLineaDesdeArticulo, addLineaDesdeArticulo) || other.addLineaDesdeArticulo == addLineaDesdeArticulo));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,pedidoAppId,pedidoId,empresaId,isEdit,tratada,createPedidoFromClienteId,addLineaDesdeArticulo);
+
+@override
+String toString() {
+  return 'PedidoLocalParam(pedidoAppId: $pedidoAppId, pedidoId: $pedidoId, empresaId: $empresaId, isEdit: $isEdit, tratada: $tratada, createPedidoFromClienteId: $createPedidoFromClienteId, addLineaDesdeArticulo: $addLineaDesdeArticulo)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $PedidoLocalParamCopyWith<$Res> {
-  factory $PedidoLocalParamCopyWith(
-          PedidoLocalParam value, $Res Function(PedidoLocalParam) then) =
-      _$PedidoLocalParamCopyWithImpl<$Res, PedidoLocalParam>;
-  @useResult
-  $Res call(
-      {String? pedidoAppId,
-      String? pedidoId,
-      String? empresaId,
-      bool isEdit,
-      bool? tratada,
-      String? createPedidoFromClienteId,
-      PedidoVentaLinea? addLineaDesdeArticulo});
+abstract mixin class $PedidoLocalParamCopyWith<$Res>  {
+  factory $PedidoLocalParamCopyWith(PedidoLocalParam value, $Res Function(PedidoLocalParam) _then) = _$PedidoLocalParamCopyWithImpl;
+@useResult
+$Res call({
+ String? pedidoAppId, String? pedidoId, String? empresaId, bool isEdit, bool? tratada, String? createPedidoFromClienteId, PedidoVentaLinea? addLineaDesdeArticulo
+});
 
-  $PedidoVentaLineaCopyWith<$Res>? get addLineaDesdeArticulo;
+
+$PedidoVentaLineaCopyWith<$Res>? get addLineaDesdeArticulo;
+
 }
-
 /// @nodoc
-class _$PedidoLocalParamCopyWithImpl<$Res, $Val extends PedidoLocalParam>
+class _$PedidoLocalParamCopyWithImpl<$Res>
     implements $PedidoLocalParamCopyWith<$Res> {
-  _$PedidoLocalParamCopyWithImpl(this._value, this._then);
+  _$PedidoLocalParamCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final PedidoLocalParam _self;
+  final $Res Function(PedidoLocalParam) _then;
 
-  /// Create a copy of PedidoLocalParam
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? pedidoAppId = freezed,
-    Object? pedidoId = freezed,
-    Object? empresaId = freezed,
-    Object? isEdit = null,
-    Object? tratada = freezed,
-    Object? createPedidoFromClienteId = freezed,
-    Object? addLineaDesdeArticulo = freezed,
-  }) {
-    return _then(_value.copyWith(
-      pedidoAppId: freezed == pedidoAppId
-          ? _value.pedidoAppId
-          : pedidoAppId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pedidoId: freezed == pedidoId
-          ? _value.pedidoId
-          : pedidoId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      empresaId: freezed == empresaId
-          ? _value.empresaId
-          : empresaId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isEdit: null == isEdit
-          ? _value.isEdit
-          : isEdit // ignore: cast_nullable_to_non_nullable
-              as bool,
-      tratada: freezed == tratada
-          ? _value.tratada
-          : tratada // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      createPedidoFromClienteId: freezed == createPedidoFromClienteId
-          ? _value.createPedidoFromClienteId
-          : createPedidoFromClienteId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      addLineaDesdeArticulo: freezed == addLineaDesdeArticulo
-          ? _value.addLineaDesdeArticulo
-          : addLineaDesdeArticulo // ignore: cast_nullable_to_non_nullable
-              as PedidoVentaLinea?,
-    ) as $Val);
+/// Create a copy of PedidoLocalParam
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? pedidoAppId = freezed,Object? pedidoId = freezed,Object? empresaId = freezed,Object? isEdit = null,Object? tratada = freezed,Object? createPedidoFromClienteId = freezed,Object? addLineaDesdeArticulo = freezed,}) {
+  return _then(_self.copyWith(
+pedidoAppId: freezed == pedidoAppId ? _self.pedidoAppId : pedidoAppId // ignore: cast_nullable_to_non_nullable
+as String?,pedidoId: freezed == pedidoId ? _self.pedidoId : pedidoId // ignore: cast_nullable_to_non_nullable
+as String?,empresaId: freezed == empresaId ? _self.empresaId : empresaId // ignore: cast_nullable_to_non_nullable
+as String?,isEdit: null == isEdit ? _self.isEdit : isEdit // ignore: cast_nullable_to_non_nullable
+as bool,tratada: freezed == tratada ? _self.tratada : tratada // ignore: cast_nullable_to_non_nullable
+as bool?,createPedidoFromClienteId: freezed == createPedidoFromClienteId ? _self.createPedidoFromClienteId : createPedidoFromClienteId // ignore: cast_nullable_to_non_nullable
+as String?,addLineaDesdeArticulo: freezed == addLineaDesdeArticulo ? _self.addLineaDesdeArticulo : addLineaDesdeArticulo // ignore: cast_nullable_to_non_nullable
+as PedidoVentaLinea?,
+  ));
+}
+/// Create a copy of PedidoLocalParam
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PedidoVentaLineaCopyWith<$Res>? get addLineaDesdeArticulo {
+    if (_self.addLineaDesdeArticulo == null) {
+    return null;
   }
 
-  /// Create a copy of PedidoLocalParam
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $PedidoVentaLineaCopyWith<$Res>? get addLineaDesdeArticulo {
-    if (_value.addLineaDesdeArticulo == null) {
-      return null;
-    }
+  return $PedidoVentaLineaCopyWith<$Res>(_self.addLineaDesdeArticulo!, (value) {
+    return _then(_self.copyWith(addLineaDesdeArticulo: value));
+  });
+}
+}
 
-    return $PedidoVentaLineaCopyWith<$Res>(_value.addLineaDesdeArticulo!,
-        (value) {
-      return _then(_value.copyWith(addLineaDesdeArticulo: value) as $Val);
-    });
-  }
+
+/// Adds pattern-matching-related methods to [PedidoLocalParam].
+extension PedidoLocalParamPatterns on PedidoLocalParam {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _PedidoLocalParam value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _PedidoLocalParam() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _PedidoLocalParam value)  $default,){
+final _that = this;
+switch (_that) {
+case _PedidoLocalParam():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _PedidoLocalParam value)?  $default,){
+final _that = this;
+switch (_that) {
+case _PedidoLocalParam() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? pedidoAppId,  String? pedidoId,  String? empresaId,  bool isEdit,  bool? tratada,  String? createPedidoFromClienteId,  PedidoVentaLinea? addLineaDesdeArticulo)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _PedidoLocalParam() when $default != null:
+return $default(_that.pedidoAppId,_that.pedidoId,_that.empresaId,_that.isEdit,_that.tratada,_that.createPedidoFromClienteId,_that.addLineaDesdeArticulo);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? pedidoAppId,  String? pedidoId,  String? empresaId,  bool isEdit,  bool? tratada,  String? createPedidoFromClienteId,  PedidoVentaLinea? addLineaDesdeArticulo)  $default,) {final _that = this;
+switch (_that) {
+case _PedidoLocalParam():
+return $default(_that.pedidoAppId,_that.pedidoId,_that.empresaId,_that.isEdit,_that.tratada,_that.createPedidoFromClienteId,_that.addLineaDesdeArticulo);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? pedidoAppId,  String? pedidoId,  String? empresaId,  bool isEdit,  bool? tratada,  String? createPedidoFromClienteId,  PedidoVentaLinea? addLineaDesdeArticulo)?  $default,) {final _that = this;
+switch (_that) {
+case _PedidoLocalParam() when $default != null:
+return $default(_that.pedidoAppId,_that.pedidoId,_that.empresaId,_that.isEdit,_that.tratada,_that.createPedidoFromClienteId,_that.addLineaDesdeArticulo);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
-abstract class _$$PedidoLocalParamImplCopyWith<$Res>
-    implements $PedidoLocalParamCopyWith<$Res> {
-  factory _$$PedidoLocalParamImplCopyWith(_$PedidoLocalParamImpl value,
-          $Res Function(_$PedidoLocalParamImpl) then) =
-      __$$PedidoLocalParamImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String? pedidoAppId,
-      String? pedidoId,
-      String? empresaId,
-      bool isEdit,
-      bool? tratada,
-      String? createPedidoFromClienteId,
-      PedidoVentaLinea? addLineaDesdeArticulo});
 
-  @override
-  $PedidoVentaLineaCopyWith<$Res>? get addLineaDesdeArticulo;
+
+class _PedidoLocalParam extends PedidoLocalParam {
+  const _PedidoLocalParam({this.pedidoAppId, this.pedidoId, this.empresaId, required this.isEdit, this.tratada, this.createPedidoFromClienteId, this.addLineaDesdeArticulo}): super._();
+  
+
+@override final  String? pedidoAppId;
+@override final  String? pedidoId;
+@override final  String? empresaId;
+@override final  bool isEdit;
+@override final  bool? tratada;
+@override final  String? createPedidoFromClienteId;
+@override final  PedidoVentaLinea? addLineaDesdeArticulo;
+
+/// Create a copy of PedidoLocalParam
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$PedidoLocalParamCopyWith<_PedidoLocalParam> get copyWith => __$PedidoLocalParamCopyWithImpl<_PedidoLocalParam>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PedidoLocalParam&&(identical(other.pedidoAppId, pedidoAppId) || other.pedidoAppId == pedidoAppId)&&(identical(other.pedidoId, pedidoId) || other.pedidoId == pedidoId)&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.isEdit, isEdit) || other.isEdit == isEdit)&&(identical(other.tratada, tratada) || other.tratada == tratada)&&(identical(other.createPedidoFromClienteId, createPedidoFromClienteId) || other.createPedidoFromClienteId == createPedidoFromClienteId)&&(identical(other.addLineaDesdeArticulo, addLineaDesdeArticulo) || other.addLineaDesdeArticulo == addLineaDesdeArticulo));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,pedidoAppId,pedidoId,empresaId,isEdit,tratada,createPedidoFromClienteId,addLineaDesdeArticulo);
+
+@override
+String toString() {
+  return 'PedidoLocalParam(pedidoAppId: $pedidoAppId, pedidoId: $pedidoId, empresaId: $empresaId, isEdit: $isEdit, tratada: $tratada, createPedidoFromClienteId: $createPedidoFromClienteId, addLineaDesdeArticulo: $addLineaDesdeArticulo)';
+}
+
+
 }
 
 /// @nodoc
-class __$$PedidoLocalParamImplCopyWithImpl<$Res>
-    extends _$PedidoLocalParamCopyWithImpl<$Res, _$PedidoLocalParamImpl>
-    implements _$$PedidoLocalParamImplCopyWith<$Res> {
-  __$$PedidoLocalParamImplCopyWithImpl(_$PedidoLocalParamImpl _value,
-      $Res Function(_$PedidoLocalParamImpl) _then)
-      : super(_value, _then);
+abstract mixin class _$PedidoLocalParamCopyWith<$Res> implements $PedidoLocalParamCopyWith<$Res> {
+  factory _$PedidoLocalParamCopyWith(_PedidoLocalParam value, $Res Function(_PedidoLocalParam) _then) = __$PedidoLocalParamCopyWithImpl;
+@override @useResult
+$Res call({
+ String? pedidoAppId, String? pedidoId, String? empresaId, bool isEdit, bool? tratada, String? createPedidoFromClienteId, PedidoVentaLinea? addLineaDesdeArticulo
+});
 
-  /// Create a copy of PedidoLocalParam
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? pedidoAppId = freezed,
-    Object? pedidoId = freezed,
-    Object? empresaId = freezed,
-    Object? isEdit = null,
-    Object? tratada = freezed,
-    Object? createPedidoFromClienteId = freezed,
-    Object? addLineaDesdeArticulo = freezed,
-  }) {
-    return _then(_$PedidoLocalParamImpl(
-      pedidoAppId: freezed == pedidoAppId
-          ? _value.pedidoAppId
-          : pedidoAppId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pedidoId: freezed == pedidoId
-          ? _value.pedidoId
-          : pedidoId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      empresaId: freezed == empresaId
-          ? _value.empresaId
-          : empresaId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isEdit: null == isEdit
-          ? _value.isEdit
-          : isEdit // ignore: cast_nullable_to_non_nullable
-              as bool,
-      tratada: freezed == tratada
-          ? _value.tratada
-          : tratada // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      createPedidoFromClienteId: freezed == createPedidoFromClienteId
-          ? _value.createPedidoFromClienteId
-          : createPedidoFromClienteId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      addLineaDesdeArticulo: freezed == addLineaDesdeArticulo
-          ? _value.addLineaDesdeArticulo
-          : addLineaDesdeArticulo // ignore: cast_nullable_to_non_nullable
-              as PedidoVentaLinea?,
-    ));
-  }
+
+@override $PedidoVentaLineaCopyWith<$Res>? get addLineaDesdeArticulo;
+
 }
-
 /// @nodoc
+class __$PedidoLocalParamCopyWithImpl<$Res>
+    implements _$PedidoLocalParamCopyWith<$Res> {
+  __$PedidoLocalParamCopyWithImpl(this._self, this._then);
 
-class _$PedidoLocalParamImpl extends _PedidoLocalParam {
-  const _$PedidoLocalParamImpl(
-      {this.pedidoAppId,
-      this.pedidoId,
-      this.empresaId,
-      required this.isEdit,
-      this.tratada,
-      this.createPedidoFromClienteId,
-      this.addLineaDesdeArticulo})
-      : super._();
+  final _PedidoLocalParam _self;
+  final $Res Function(_PedidoLocalParam) _then;
 
-  @override
-  final String? pedidoAppId;
-  @override
-  final String? pedidoId;
-  @override
-  final String? empresaId;
-  @override
-  final bool isEdit;
-  @override
-  final bool? tratada;
-  @override
-  final String? createPedidoFromClienteId;
-  @override
-  final PedidoVentaLinea? addLineaDesdeArticulo;
-
-  @override
-  String toString() {
-    return 'PedidoLocalParam(pedidoAppId: $pedidoAppId, pedidoId: $pedidoId, empresaId: $empresaId, isEdit: $isEdit, tratada: $tratada, createPedidoFromClienteId: $createPedidoFromClienteId, addLineaDesdeArticulo: $addLineaDesdeArticulo)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PedidoLocalParamImpl &&
-            (identical(other.pedidoAppId, pedidoAppId) ||
-                other.pedidoAppId == pedidoAppId) &&
-            (identical(other.pedidoId, pedidoId) ||
-                other.pedidoId == pedidoId) &&
-            (identical(other.empresaId, empresaId) ||
-                other.empresaId == empresaId) &&
-            (identical(other.isEdit, isEdit) || other.isEdit == isEdit) &&
-            (identical(other.tratada, tratada) || other.tratada == tratada) &&
-            (identical(other.createPedidoFromClienteId,
-                    createPedidoFromClienteId) ||
-                other.createPedidoFromClienteId == createPedidoFromClienteId) &&
-            (identical(other.addLineaDesdeArticulo, addLineaDesdeArticulo) ||
-                other.addLineaDesdeArticulo == addLineaDesdeArticulo));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, pedidoAppId, pedidoId, empresaId,
-      isEdit, tratada, createPedidoFromClienteId, addLineaDesdeArticulo);
-
-  /// Create a copy of PedidoLocalParam
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PedidoLocalParamImplCopyWith<_$PedidoLocalParamImpl> get copyWith =>
-      __$$PedidoLocalParamImplCopyWithImpl<_$PedidoLocalParamImpl>(
-          this, _$identity);
+/// Create a copy of PedidoLocalParam
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? pedidoAppId = freezed,Object? pedidoId = freezed,Object? empresaId = freezed,Object? isEdit = null,Object? tratada = freezed,Object? createPedidoFromClienteId = freezed,Object? addLineaDesdeArticulo = freezed,}) {
+  return _then(_PedidoLocalParam(
+pedidoAppId: freezed == pedidoAppId ? _self.pedidoAppId : pedidoAppId // ignore: cast_nullable_to_non_nullable
+as String?,pedidoId: freezed == pedidoId ? _self.pedidoId : pedidoId // ignore: cast_nullable_to_non_nullable
+as String?,empresaId: freezed == empresaId ? _self.empresaId : empresaId // ignore: cast_nullable_to_non_nullable
+as String?,isEdit: null == isEdit ? _self.isEdit : isEdit // ignore: cast_nullable_to_non_nullable
+as bool,tratada: freezed == tratada ? _self.tratada : tratada // ignore: cast_nullable_to_non_nullable
+as bool?,createPedidoFromClienteId: freezed == createPedidoFromClienteId ? _self.createPedidoFromClienteId : createPedidoFromClienteId // ignore: cast_nullable_to_non_nullable
+as String?,addLineaDesdeArticulo: freezed == addLineaDesdeArticulo ? _self.addLineaDesdeArticulo : addLineaDesdeArticulo // ignore: cast_nullable_to_non_nullable
+as PedidoVentaLinea?,
+  ));
 }
 
-abstract class _PedidoLocalParam extends PedidoLocalParam {
-  const factory _PedidoLocalParam(
-      {final String? pedidoAppId,
-      final String? pedidoId,
-      final String? empresaId,
-      required final bool isEdit,
-      final bool? tratada,
-      final String? createPedidoFromClienteId,
-      final PedidoVentaLinea? addLineaDesdeArticulo}) = _$PedidoLocalParamImpl;
-  const _PedidoLocalParam._() : super._();
+/// Create a copy of PedidoLocalParam
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PedidoVentaLineaCopyWith<$Res>? get addLineaDesdeArticulo {
+    if (_self.addLineaDesdeArticulo == null) {
+    return null;
+  }
 
-  @override
-  String? get pedidoAppId;
-  @override
-  String? get pedidoId;
-  @override
-  String? get empresaId;
-  @override
-  bool get isEdit;
-  @override
-  bool? get tratada;
-  @override
-  String? get createPedidoFromClienteId;
-  @override
-  PedidoVentaLinea? get addLineaDesdeArticulo;
-
-  /// Create a copy of PedidoLocalParam
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PedidoLocalParamImplCopyWith<_$PedidoLocalParamImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  return $PedidoVentaLineaCopyWith<$Res>(_self.addLineaDesdeArticulo!, (value) {
+    return _then(_self.copyWith(addLineaDesdeArticulo: value));
+  });
 }
+}
+
+// dart format on

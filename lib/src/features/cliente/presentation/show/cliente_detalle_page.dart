@@ -14,7 +14,6 @@ import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/datos_extra_row.dart';
 import '../../../../core/presentation/common_widgets/mobile_custom_separatos.dart';
 import '../../../../core/presentation/common_widgets/selectable_text_widget.dart';
-import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../domain/cliente.dart';
 import '../../infrastructure/cliente_repository.dart';
@@ -37,7 +36,6 @@ class ClienteDetallePage extends ConsumerWidget {
             onPressed:
                 () => navigateToCreatePedido(
                   context: context,
-                  ref: ref,
                   clienteId: clienteId,
                 ),
             icon: const Icon(Icons.shopping_cart_outlined),
@@ -53,7 +51,7 @@ class ClienteDetallePage extends ConsumerWidget {
           final articuloValue = ref.watch(clienteProvider(clienteId));
           return AsyncValueWidget<Cliente>(
             value: articuloValue,
-            data:
+            onData:
                 (cliente) => ListView(
                   shrinkWrap: true,
                   physics: const BouncingScrollPhysics(),
@@ -71,7 +69,6 @@ class ClienteDetallePage extends ConsumerWidget {
 
   void navigateToCreatePedido({
     required BuildContext context,
-    required WidgetRef ref,
     required String clienteId,
   }) async {
     await context.router.push(
@@ -127,7 +124,7 @@ class _ClienteHeader extends StatelessWidget {
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
               ),
-              if (cliente.clientePotencial ?? false) gapW8,
+              if (cliente.clientePotencial ?? false) const Gap(8),
               if (cliente.clientePotencial ?? false)
                 ChipContainer(
                   text: getClienteEstadoPotencialInLocalLanguage(
@@ -137,7 +134,7 @@ class _ClienteHeader extends StatelessWidget {
                 ),
             ],
           ),
-          gapH8,
+          const Gap(8),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -167,7 +164,7 @@ class _ClienteHeader extends StatelessWidget {
               ),
             ],
           ),
-          gapH8,
+          const Gap(8),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -181,7 +178,7 @@ class _ClienteHeader extends StatelessWidget {
                 cliente.nombreFiscal,
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
-              if (!isSameAddress(cliente)) gapH4,
+              if (!isSameAddress(cliente)) const Gap(4),
               if (!isSameAddress(cliente))
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -214,7 +211,7 @@ class _ClienteHeader extends StatelessWidget {
                 ),
             ],
           ),
-          gapH8,
+          const Gap(8),
           if (cliente.nif != null)
             ColumnFieldTextDetalle(
               fieldTitleValue: S.of(context).cliente_show_clienteDetalle_nif,
@@ -254,7 +251,7 @@ class _ClienteHeader extends StatelessWidget {
   ) async {
     if (latitude != null && longitude != null) {
       final isAvailable = await MapLauncher.isMapAvailable(MapType.google);
-      if (isAvailable ?? false) {
+      if (isAvailable) {
         await MapLauncher.showMarker(
           mapType: MapType.google,
           coords: Coords(latitude, longitude),
@@ -262,7 +259,7 @@ class _ClienteHeader extends StatelessWidget {
         );
       } else {
         final isAvailable = await MapLauncher.isMapAvailable(MapType.apple);
-        if (isAvailable ?? false) {
+        if (isAvailable) {
           await MapLauncher.showMarker(
             mapType: MapType.apple,
             coords: Coords(latitude, longitude),
@@ -287,16 +284,16 @@ class _ClienteAnalisis extends StatelessWidget {
         MobileCustomSeparators(
           separatorTitle: S.of(context).cliente_show_clienteDetalle_analisis,
         ),
-        gapH8,
+        const Gap(8),
         Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _VentasRowWidget(cliente: cliente),
-              gapH8,
+              const Gap(8),
               _MargenRowWidget(cliente: cliente),
-              gapH8,
+              const Gap(8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -348,7 +345,7 @@ class _VentasRowWidget extends StatelessWidget {
             color: Theme.of(context).textTheme.bodySmall!.color,
           ),
         ),
-        gapH4,
+        const Gap(4),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -429,7 +426,7 @@ class _MargenRowWidget extends StatelessWidget {
             color: Theme.of(context).textTheme.bodySmall!.color,
           ),
         ),
-        gapH4,
+        const Gap(4),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -511,7 +508,7 @@ class _ClientePreciosAndFormaDePago extends StatelessWidget {
                   value: cliente.divisa?.descripcion,
                   selectable: true,
                 ),
-              if (cliente.tarifaDescripcion != null) gapH4,
+              if (cliente.tarifaDescripcion != null) const Gap(4),
               if (cliente.tarifaDescripcion != null)
                 ColumnFieldTextDetalle(
                   fieldTitleValue:
@@ -519,7 +516,7 @@ class _ClientePreciosAndFormaDePago extends StatelessWidget {
                   value: cliente.tarifaDescripcion ?? '',
                   selectable: true,
                 ),
-              if (cliente.descripcionDescuentoGeneral != null) gapH4,
+              if (cliente.descripcionDescuentoGeneral != null) const Gap(4),
               if (cliente.descripcionDescuentoGeneral != null)
                 ColumnFieldTextDetalle(
                   fieldTitleValue:
@@ -529,7 +526,7 @@ class _ClientePreciosAndFormaDePago extends StatelessWidget {
                   value: cliente.descripcionDescuentoGeneral!,
                   selectable: true,
                 ),
-              gapH4,
+              const Gap(4),
               ColumnFieldTextDetalle(
                 fieldTitleValue:
                     S.of(context).cliente_show_clienteDetalle_descuentoPP,
@@ -709,7 +706,7 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                           ),
                         ],
                       ),
-                      if (!cliente.riesgoExcedido.isZero) gapH8,
+                      if (!cliente.riesgoExcedido.isZero) const Gap(8),
                       if (!cliente.riesgoExcedido.isZero)
                         Column(
                           children: [
@@ -739,7 +736,7 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                             ),
                           ],
                         ),
-                      gapH12,
+                      const Gap(12),
                       Column(
                         children: [
                           Text(
@@ -770,7 +767,7 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                           ),
                         ],
                       ),
-                      gapH8,
+                      const Gap(8),
                       Column(
                         children: [
                           Text(
@@ -792,7 +789,7 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                           ),
                         ],
                       ),
-                      gapH8,
+                      const Gap(8),
                       Column(
                         children: [
                           Text(
@@ -814,7 +811,7 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                           ),
                         ],
                       ),
-                      gapH8,
+                      const Gap(8),
                       Column(
                         children: [
                           Text(
@@ -867,7 +864,7 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                             ),
                           ],
                         ),
-                      gapH12,
+                      const Gap(12),
                       Column(
                         children: [
                           Text(
@@ -896,7 +893,7 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                             ),
                         ],
                       ),
-                      gapH8,
+                      const Gap(8),
                       Column(
                         children: [
                           Text(
@@ -951,7 +948,7 @@ class _DatosRelacionados extends StatelessWidget {
           separatorTitle:
               S.of(context).cliente_show_clienteDetalle_datosRelacionados,
         ),
-        gapH8,
+        const Gap(8),
         DatosExtraRow(
           title: S.of(context).cliente_show_clienteDireccion_titulo,
           navigationTo:
@@ -1029,7 +1026,7 @@ class _DatosRelacionados extends StatelessWidget {
                 ),
               ),
         ),
-        gapH8,
+        const Gap(8),
       ],
     );
   }
@@ -1048,7 +1045,7 @@ class _Consultas extends StatelessWidget {
         MobileCustomSeparators(
           separatorTitle: S.of(context).cliente_show_clienteDetalle_consultas,
         ),
-        gapH8,
+        const Gap(8),
         DatosExtraRow(
           title: S.of(context).cliente_show_clienteVentasMes_titulo,
           navigationTo:

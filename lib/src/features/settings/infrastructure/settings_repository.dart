@@ -2,13 +2,13 @@ import 'dart:io';
 
 import 'package:drift/isolate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/exceptions/app_exception.dart';
-import '../../../core/infrastructure/local_database.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../../../core/application/log_service.dart';
+import '../../../core/exceptions/app_exception.dart';
+import '../../../core/infrastructure/local_database.dart';
 
 final settingsRepositoryProvider = Provider.autoDispose<SettingsRepository>((
   ref,
@@ -26,7 +26,7 @@ class SettingsRepository {
   final LocalAppDatabase localDb;
   const SettingsRepository(this.localDb);
 
-  Future<PackageInfo> getPackageInfo() async {
+  Future<PackageInfo> getPackageInfo() {
     return PackageInfo.fromPlatform();
   }
 
@@ -45,8 +45,11 @@ class SettingsRepository {
       await localDb.customStatement('VACUUM INTO ?', [file.path]);
 
       return file;
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -120,7 +123,7 @@ class SettingsRepository {
   Future<bool> _databaseFileExist({
     required Directory directory,
     required String remoteDatabaseName,
-  }) async {
+  }) {
     return File((join(directory.path, remoteDatabaseName))).exists();
   }
 }

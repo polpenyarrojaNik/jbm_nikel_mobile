@@ -1,12 +1,12 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'devolucion_estado.dart';
 
+import 'devolucion_estado.dart';
 import 'devolucion_motivo.dart';
 
 part 'devolucion_linea.freezed.dart';
 
 @freezed
-class DevolucionLinea with _$DevolucionLinea {
+abstract class DevolucionLinea with _$DevolucionLinea {
   const DevolucionLinea._();
   const factory DevolucionLinea({
     required String empresaId,

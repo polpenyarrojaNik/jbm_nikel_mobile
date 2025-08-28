@@ -1,16 +1,16 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../../core/domain/pais.dart';
+import '../../../core/domain/provincia.dart';
 import '../../cliente/domain/cliente.dart';
 import 'visita_competidor.dart';
 import 'visita_motivos_no_venta.dart';
 import 'visita_sector.dart';
 
-import '../../../core/domain/pais.dart';
-import '../../../core/domain/provincia.dart';
-
 part 'visita.freezed.dart';
 
 @freezed
-class Visita with _$Visita {
+abstract class Visita with _$Visita {
   const Visita._();
   const factory Visita({
     String? id,
@@ -59,7 +59,7 @@ class Visita with _$Visita {
   String getNombreMostrar() =>
       isClienteProvisional
           ? clienteProvisionalNombre!
-          : '#${cliente!.id} ${(cliente?.nombreCliente != null) ? cliente!.nombreCliente : ''}';
+          : '#${cliente!.id} ${cliente?.nombreCliente ?? ''}';
 }
 
 enum FrecuenciaPedido { semanal, mensual, trimestral }

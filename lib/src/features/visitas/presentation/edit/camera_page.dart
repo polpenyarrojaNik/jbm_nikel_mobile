@@ -43,10 +43,8 @@ class CameraPageState extends State<CameraPage> {
       if (e is CameraException) {
         switch (e.code) {
           case 'CameraAccessDenied':
-            // Handle access errors here.
-            break;
           default:
-            // Handle other errors here.
+            // Handle camera errors here.
             break;
         }
       }
@@ -58,54 +56,57 @@ class CameraPageState extends State<CameraPage> {
     return FutureBuilder(
       future: _initializeControllerFuture,
       builder: (context, snapshot) {
-        return snapshot.connectionState == ConnectionState.done
-            ? _controller.value.isInitialized
-                ? Scaffold(
-                  appBar: AppBar(title: Text(S.of(context).camera)),
-                  body: Stack(
-                    children: <Widget>[
-                      Center(
-                        child: LayoutBuilder(
-                          builder:
-                              (context, constraints) => SizedBox(
-                                width: constraints.maxWidth,
-                                height: constraints.maxHeight,
-                                child: CameraPreview(_controller),
-                              ),
+        if (snapshot.connectionState == ConnectionState.done) {
+          return _controller.value.isInitialized
+              ? Scaffold(
+                appBar: AppBar(title: Text(S.of(context).camera)),
+                body: Stack(
+                  children: [
+                    Center(
+                      child: LayoutBuilder(
+                        builder:
+                            (context, constraints) => SizedBox(
+                              width: constraints.maxWidth,
+                              height: constraints.maxHeight,
+                              child: CameraPreview(_controller),
+                            ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        width: MediaQuery.sizeOf(context).width * 0.8,
+                        height: MediaQuery.sizeOf(context).width * 0.5,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.red, width: 2.0),
                         ),
                       ),
-                      Align(
-                        alignment: Alignment.center,
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.8,
-                          height: MediaQuery.of(context).size.width * 0.5,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.red, width: 2.0),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  floatingActionButton: FloatingActionButton(
-                    onPressed: () async {
-                      final imageFile = await _takePicture();
-                      if (context.mounted && imageFile != null) {
-                        unawaited(context.router.maybePop(imageFile));
-                      }
-                    },
-                    child: const Icon(Icons.camera_alt),
-                  ),
-                )
-                : Scaffold(
-                  appBar: AppBar(title: Text(S.of(context).camera)),
-                  body: Container(
-                    color: Colors.black,
-                    child: const Center(child: CircularProgressIndicator()),
-                  ),
-                )
-            : const Center(child: CircularProgressIndicator());
+                    ),
+                  ],
+                ),
+                floatingActionButton: FloatingActionButton(
+                  onPressed: () => onTakePicture(context),
+                  child: const Icon(Icons.camera_alt),
+                ),
+              )
+              : Scaffold(
+                appBar: AppBar(title: Text(S.of(context).camera)),
+                body: Container(
+                  color: Colors.black,
+                  child: const Center(child: CircularProgressIndicator()),
+                ),
+              );
+        }
+        return const Center(child: CircularProgressIndicator());
       },
     );
+  }
+
+  void onTakePicture(BuildContext context) async {
+    final imageFile = await _takePicture();
+    if (context.mounted && imageFile != null) {
+      unawaited(context.router.maybePop(imageFile));
+    }
   }
 
   Future<File?> _takePicture() async {
@@ -125,8 +126,8 @@ class CameraPageState extends State<CameraPage> {
       const yRatio =
           0.3; // Relación de altura del recuadro con respecto a la altura de la pantalla
 
-      final screenWidth = MediaQuery.of(context).size.width;
-      final screenHeight = MediaQuery.of(context).size.height;
+      final screenWidth = MediaQuery.sizeOf(context).width;
+      final screenHeight = MediaQuery.sizeOf(context).height;
 
       final cropWidth = screenWidth * xRatio;
       final cropHeight = screenHeight * yRatio;

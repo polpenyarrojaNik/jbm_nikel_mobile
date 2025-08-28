@@ -13,14 +13,15 @@ String _$catalogoOrdenControllerHash() =>
 @ProviderFor(CatalogoOrdenController)
 final catalogoOrdenControllerProvider =
     AutoDisposeNotifierProvider<CatalogoOrdenController, void>.internal(
-  CatalogoOrdenController.new,
-  name: r'catalogoOrdenControllerProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$catalogoOrdenControllerHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      CatalogoOrdenController.new,
+      name: r'catalogoOrdenControllerProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$catalogoOrdenControllerHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$CatalogoOrdenController = AutoDisposeNotifier<void>;
 String _$saveCatalogoAbiertoHash() =>
@@ -29,18 +30,20 @@ String _$saveCatalogoAbiertoHash() =>
 /// See also [SaveCatalogoAbierto].
 @ProviderFor(SaveCatalogoAbierto)
 final saveCatalogoAbiertoProvider = AutoDisposeNotifierProvider<
-    SaveCatalogoAbierto,
-    MutationState<Either<AppException, Unit>, int>>.internal(
+  SaveCatalogoAbierto,
+  MutationState<Either<AppException, Unit>, int>
+>.internal(
   SaveCatalogoAbierto.new,
   name: r'saveCatalogoAbiertoProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$saveCatalogoAbiertoHash,
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$saveCatalogoAbiertoHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$SaveCatalogoAbierto
-    = AutoDisposeNotifier<MutationState<Either<AppException, Unit>, int>>;
+typedef _$SaveCatalogoAbierto =
+    AutoDisposeNotifier<MutationState<Either<AppException, Unit>, int>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

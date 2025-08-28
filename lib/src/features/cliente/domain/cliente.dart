@@ -13,7 +13,7 @@ import 'plazo_cobro.dart';
 part 'cliente.freezed.dart';
 
 @freezed
-class Cliente with _$Cliente {
+abstract class Cliente with _$Cliente {
   const Cliente._();
   const factory Cliente({
     required String id,

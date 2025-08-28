@@ -417,5 +417,7 @@
   "cancel": "Cancel",
   "amount": "Amount",
   "until": "Until",
-  "freightCharge": "Freight charge"
+  "freightCharge": "Freight charge",
+  "unknownFamily": "Unknown family",
+  "unknownCustomer": "Unknown customer"
 }

@@ -5,7 +5,7 @@ import '../../../core/domain/sector.dart';
 part 'cliente_imp.freezed.dart';
 
 @freezed
-class ClienteImp with _$ClienteImp {
+abstract class ClienteImp with _$ClienteImp {
   const ClienteImp._();
   const factory ClienteImp({
     required String clienteId,

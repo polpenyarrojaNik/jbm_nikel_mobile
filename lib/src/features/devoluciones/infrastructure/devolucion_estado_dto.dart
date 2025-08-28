@@ -11,7 +11,7 @@ part 'devolucion_estado_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class DevolucionEstadoDTO
+abstract class DevolucionEstadoDTO
     with _$DevolucionEstadoDTO
     implements Insertable<DevolucionEstadoDTO> {
   const DevolucionEstadoDTO._();
@@ -43,14 +43,13 @@ class DevolucionEstadoDTO
       id: id,
       descripcion: getDescriptionInLocalLanguage(),
       lastUpdated: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
+      deleted: (deleted == 'S'),
     );
   }
 
   String getDescriptionInLocalLanguage() {
     final currentLocale = Intl.getCurrentLocale();
-    if (currentLocale == 'es') {
-    } else if (currentLocale == 'en' && descripcionEN != null) {
+    if (currentLocale == 'en' && descripcionEN != null) {
       return descripcionEN!;
     } else if (currentLocale == 'fr' && descripcionFR != null) {
       return descripcionFR!;

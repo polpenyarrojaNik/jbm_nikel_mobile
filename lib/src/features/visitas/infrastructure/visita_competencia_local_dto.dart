@@ -10,7 +10,7 @@ part 'visita_competencia_local_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class VisitaCompetenciaLocalDTO
+abstract class VisitaCompetenciaLocalDTO
     with _$VisitaCompetenciaLocalDTO
     implements Insertable<VisitaCompetenciaLocalDTO> {
   const VisitaCompetenciaLocalDTO._();

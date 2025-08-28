@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../../../generated/l10n.dart';
@@ -8,7 +9,6 @@ import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/presentation/common_widgets/app_decoration.dart';
 import '../../../../core/presentation/common_widgets/primary_button.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
-import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/presentation/toasts.dart';
 import 'login_page_controller.dart';
 
@@ -23,16 +23,25 @@ class LoginPage extends ConsumerStatefulWidget {
 class LoginPageState extends ConsumerState<LoginPage> {
   String username = '';
   String contrasenya = '';
-  FormGroup buildForm() => fb.group(<String, Object>{
-    'usuario': FormControl<String>(validators: [Validators.required]),
+
+  final usuarioControl = FormControl<String>(validators: [Validators.required]);
+
+  FormGroup buildForm() => fb.group({
+    'usuario': usuarioControl,
     'contrasenya': ['', Validators.required],
   });
+
+  @override
+  void dispose() {
+    usuarioControl.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     ref.listen<AsyncValue<void>>(
       loginPageControllerProvider,
-      (_, state) => state.maybeWhen(
+      (_, state) => state.whenOrNull(
         error: (error, stackTrace) {
           if (!state.isRefreshing) {
             final errorMessage =
@@ -42,7 +51,6 @@ class LoginPageState extends ConsumerState<LoginPage> {
             showToast(errorMessage, context);
           }
         },
-        orElse: () {},
       ),
     );
 
@@ -64,12 +72,13 @@ class LoginPageState extends ConsumerState<LoginPage> {
                         Container(
                           alignment: Alignment.center,
                           child: Image.asset(
+                            semanticLabel: 'Logo de JBM',
                             'assets/jbm_300x300.png',
                             fit: BoxFit.cover,
                             width: 250,
                           ),
                         ),
-                        gapH48,
+                        const Gap(48),
                         Text(
                           S.of(context).auth_loginPage_titulo,
                           style: Theme.of(context).textTheme.headlineSmall!,
@@ -79,7 +88,7 @@ class LoginPageState extends ConsumerState<LoginPage> {
                           style: Theme.of(context).textTheme.headlineMedium!
                               .copyWith(fontWeight: FontWeight.bold),
                         ),
-                        gapH16,
+                        const Gap(16),
                         ReactiveTextField<String>(
                           key: const ValueKey('usuario'),
                           formControlName: 'usuario',
@@ -94,7 +103,7 @@ class LoginPageState extends ConsumerState<LoginPage> {
                             S.of(context).auth_loginPage_usuario,
                           ),
                         ),
-                        gapH16,
+                        const Gap(16),
                         ReactiveTextField<String>(
                           formControlName: 'contrasenya',
                           obscureText: true,
@@ -110,7 +119,7 @@ class LoginPageState extends ConsumerState<LoginPage> {
                             S.of(context).auth_loginPage_contrasena,
                           ),
                         ),
-                        gapH32,
+                        const Gap(32),
                         state.maybeWhen(
                           orElse: () {
                             return PrimaryButton(
@@ -120,10 +129,11 @@ class LoginPageState extends ConsumerState<LoginPage> {
                           },
                           loading: () => const ProgressIndicatorWidget(),
                         ),
-                        gapH32,
+                        const Gap(32),
                         Container(
                           alignment: Alignment.center,
                           child: Image.asset(
+                            semanticLabel: 'Logo de Nikel',
                             'assets/nikel_logo_400.png',
                             fit: BoxFit.fitWidth,
                             width: 150,

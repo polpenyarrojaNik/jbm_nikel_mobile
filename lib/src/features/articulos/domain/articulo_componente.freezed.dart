@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,563 +9,320 @@ part of 'articulo_componente.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 /// @nodoc
 mixin _$ArticuloComponente {
-  String get articuloId => throw _privateConstructorUsedError;
-  String get articuloComponenteId => throw _privateConstructorUsedError;
-  String get descripcionES => throw _privateConstructorUsedError;
-  String? get descripcionEN => throw _privateConstructorUsedError;
-  String? get descripcionFR => throw _privateConstructorUsedError;
-  String? get descripcionDE => throw _privateConstructorUsedError;
-  String? get descripcionCA => throw _privateConstructorUsedError;
-  String? get descripcionGB => throw _privateConstructorUsedError;
-  String? get descripcionHU => throw _privateConstructorUsedError;
-  String? get descripcionIT => throw _privateConstructorUsedError;
-  String? get descripcionNL => throw _privateConstructorUsedError;
-  String? get descripcionPL => throw _privateConstructorUsedError;
-  String? get descripcionPT => throw _privateConstructorUsedError;
-  String? get descripcionRO => throw _privateConstructorUsedError;
-  String? get descripcionRU => throw _privateConstructorUsedError;
-  String? get descripcionCN => throw _privateConstructorUsedError;
-  String? get descripcionEL => throw _privateConstructorUsedError;
-  int get cantidad => throw _privateConstructorUsedError;
-  DateTime get lastUpdated => throw _privateConstructorUsedError;
-  bool get deleted => throw _privateConstructorUsedError;
 
-  /// Create a copy of ArticuloComponente
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ArticuloComponenteCopyWith<ArticuloComponente> get copyWith =>
-      throw _privateConstructorUsedError;
+ String get articuloId; String get articuloComponenteId; String get descripcionES; String? get descripcionEN; String? get descripcionFR; String? get descripcionDE; String? get descripcionCA; String? get descripcionGB; String? get descripcionHU; String? get descripcionIT; String? get descripcionNL; String? get descripcionPL; String? get descripcionPT; String? get descripcionRO; String? get descripcionRU; String? get descripcionCN; String? get descripcionEL; int get cantidad; DateTime get lastUpdated; bool get deleted;
+/// Create a copy of ArticuloComponente
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ArticuloComponenteCopyWith<ArticuloComponente> get copyWith => _$ArticuloComponenteCopyWithImpl<ArticuloComponente>(this as ArticuloComponente, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloComponente&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.articuloComponenteId, articuloComponenteId) || other.articuloComponenteId == articuloComponenteId)&&(identical(other.descripcionES, descripcionES) || other.descripcionES == descripcionES)&&(identical(other.descripcionEN, descripcionEN) || other.descripcionEN == descripcionEN)&&(identical(other.descripcionFR, descripcionFR) || other.descripcionFR == descripcionFR)&&(identical(other.descripcionDE, descripcionDE) || other.descripcionDE == descripcionDE)&&(identical(other.descripcionCA, descripcionCA) || other.descripcionCA == descripcionCA)&&(identical(other.descripcionGB, descripcionGB) || other.descripcionGB == descripcionGB)&&(identical(other.descripcionHU, descripcionHU) || other.descripcionHU == descripcionHU)&&(identical(other.descripcionIT, descripcionIT) || other.descripcionIT == descripcionIT)&&(identical(other.descripcionNL, descripcionNL) || other.descripcionNL == descripcionNL)&&(identical(other.descripcionPL, descripcionPL) || other.descripcionPL == descripcionPL)&&(identical(other.descripcionPT, descripcionPT) || other.descripcionPT == descripcionPT)&&(identical(other.descripcionRO, descripcionRO) || other.descripcionRO == descripcionRO)&&(identical(other.descripcionRU, descripcionRU) || other.descripcionRU == descripcionRU)&&(identical(other.descripcionCN, descripcionCN) || other.descripcionCN == descripcionCN)&&(identical(other.descripcionEL, descripcionEL) || other.descripcionEL == descripcionEL)&&(identical(other.cantidad, cantidad) || other.cantidad == cantidad)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+}
+
+
+@override
+int get hashCode => Object.hashAll([runtimeType,articuloId,articuloComponenteId,descripcionES,descripcionEN,descripcionFR,descripcionDE,descripcionCA,descripcionGB,descripcionHU,descripcionIT,descripcionNL,descripcionPL,descripcionPT,descripcionRO,descripcionRU,descripcionCN,descripcionEL,cantidad,lastUpdated,deleted]);
+
+@override
+String toString() {
+  return 'ArticuloComponente(articuloId: $articuloId, articuloComponenteId: $articuloComponenteId, descripcionES: $descripcionES, descripcionEN: $descripcionEN, descripcionFR: $descripcionFR, descripcionDE: $descripcionDE, descripcionCA: $descripcionCA, descripcionGB: $descripcionGB, descripcionHU: $descripcionHU, descripcionIT: $descripcionIT, descripcionNL: $descripcionNL, descripcionPL: $descripcionPL, descripcionPT: $descripcionPT, descripcionRO: $descripcionRO, descripcionRU: $descripcionRU, descripcionCN: $descripcionCN, descripcionEL: $descripcionEL, cantidad: $cantidad, lastUpdated: $lastUpdated, deleted: $deleted)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ArticuloComponenteCopyWith<$Res> {
-  factory $ArticuloComponenteCopyWith(
-          ArticuloComponente value, $Res Function(ArticuloComponente) then) =
-      _$ArticuloComponenteCopyWithImpl<$Res, ArticuloComponente>;
-  @useResult
-  $Res call(
-      {String articuloId,
-      String articuloComponenteId,
-      String descripcionES,
-      String? descripcionEN,
-      String? descripcionFR,
-      String? descripcionDE,
-      String? descripcionCA,
-      String? descripcionGB,
-      String? descripcionHU,
-      String? descripcionIT,
-      String? descripcionNL,
-      String? descripcionPL,
-      String? descripcionPT,
-      String? descripcionRO,
-      String? descripcionRU,
-      String? descripcionCN,
-      String? descripcionEL,
-      int cantidad,
-      DateTime lastUpdated,
-      bool deleted});
-}
+abstract mixin class $ArticuloComponenteCopyWith<$Res>  {
+  factory $ArticuloComponenteCopyWith(ArticuloComponente value, $Res Function(ArticuloComponente) _then) = _$ArticuloComponenteCopyWithImpl;
+@useResult
+$Res call({
+ String articuloId, String articuloComponenteId, String descripcionES, String? descripcionEN, String? descripcionFR, String? descripcionDE, String? descripcionCA, String? descripcionGB, String? descripcionHU, String? descripcionIT, String? descripcionNL, String? descripcionPL, String? descripcionPT, String? descripcionRO, String? descripcionRU, String? descripcionCN, String? descripcionEL, int cantidad, DateTime lastUpdated, bool deleted
+});
 
+
+
+
+}
 /// @nodoc
-class _$ArticuloComponenteCopyWithImpl<$Res, $Val extends ArticuloComponente>
+class _$ArticuloComponenteCopyWithImpl<$Res>
     implements $ArticuloComponenteCopyWith<$Res> {
-  _$ArticuloComponenteCopyWithImpl(this._value, this._then);
+  _$ArticuloComponenteCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ArticuloComponente _self;
+  final $Res Function(ArticuloComponente) _then;
 
-  /// Create a copy of ArticuloComponente
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? articuloId = null,
-    Object? articuloComponenteId = null,
-    Object? descripcionES = null,
-    Object? descripcionEN = freezed,
-    Object? descripcionFR = freezed,
-    Object? descripcionDE = freezed,
-    Object? descripcionCA = freezed,
-    Object? descripcionGB = freezed,
-    Object? descripcionHU = freezed,
-    Object? descripcionIT = freezed,
-    Object? descripcionNL = freezed,
-    Object? descripcionPL = freezed,
-    Object? descripcionPT = freezed,
-    Object? descripcionRO = freezed,
-    Object? descripcionRU = freezed,
-    Object? descripcionCN = freezed,
-    Object? descripcionEL = freezed,
-    Object? cantidad = null,
-    Object? lastUpdated = null,
-    Object? deleted = null,
-  }) {
-    return _then(_value.copyWith(
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articuloComponenteId: null == articuloComponenteId
-          ? _value.articuloComponenteId
-          : articuloComponenteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcionES: null == descripcionES
-          ? _value.descripcionES
-          : descripcionES // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcionEN: freezed == descripcionEN
-          ? _value.descripcionEN
-          : descripcionEN // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionFR: freezed == descripcionFR
-          ? _value.descripcionFR
-          : descripcionFR // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionDE: freezed == descripcionDE
-          ? _value.descripcionDE
-          : descripcionDE // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionCA: freezed == descripcionCA
-          ? _value.descripcionCA
-          : descripcionCA // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionGB: freezed == descripcionGB
-          ? _value.descripcionGB
-          : descripcionGB // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionHU: freezed == descripcionHU
-          ? _value.descripcionHU
-          : descripcionHU // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionIT: freezed == descripcionIT
-          ? _value.descripcionIT
-          : descripcionIT // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionNL: freezed == descripcionNL
-          ? _value.descripcionNL
-          : descripcionNL // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionPL: freezed == descripcionPL
-          ? _value.descripcionPL
-          : descripcionPL // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionPT: freezed == descripcionPT
-          ? _value.descripcionPT
-          : descripcionPT // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionRO: freezed == descripcionRO
-          ? _value.descripcionRO
-          : descripcionRO // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionRU: freezed == descripcionRU
-          ? _value.descripcionRU
-          : descripcionRU // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionCN: freezed == descripcionCN
-          ? _value.descripcionCN
-          : descripcionCN // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionEL: freezed == descripcionEL
-          ? _value.descripcionEL
-          : descripcionEL // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cantidad: null == cantidad
-          ? _value.cantidad
-          : cantidad // ignore: cast_nullable_to_non_nullable
-              as int,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
-  }
+/// Create a copy of ArticuloComponente
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? articuloId = null,Object? articuloComponenteId = null,Object? descripcionES = null,Object? descripcionEN = freezed,Object? descripcionFR = freezed,Object? descripcionDE = freezed,Object? descripcionCA = freezed,Object? descripcionGB = freezed,Object? descripcionHU = freezed,Object? descripcionIT = freezed,Object? descripcionNL = freezed,Object? descripcionPL = freezed,Object? descripcionPT = freezed,Object? descripcionRO = freezed,Object? descripcionRU = freezed,Object? descripcionCN = freezed,Object? descripcionEL = freezed,Object? cantidad = null,Object? lastUpdated = null,Object? deleted = null,}) {
+  return _then(_self.copyWith(
+articuloId: null == articuloId ? _self.articuloId : articuloId // ignore: cast_nullable_to_non_nullable
+as String,articuloComponenteId: null == articuloComponenteId ? _self.articuloComponenteId : articuloComponenteId // ignore: cast_nullable_to_non_nullable
+as String,descripcionES: null == descripcionES ? _self.descripcionES : descripcionES // ignore: cast_nullable_to_non_nullable
+as String,descripcionEN: freezed == descripcionEN ? _self.descripcionEN : descripcionEN // ignore: cast_nullable_to_non_nullable
+as String?,descripcionFR: freezed == descripcionFR ? _self.descripcionFR : descripcionFR // ignore: cast_nullable_to_non_nullable
+as String?,descripcionDE: freezed == descripcionDE ? _self.descripcionDE : descripcionDE // ignore: cast_nullable_to_non_nullable
+as String?,descripcionCA: freezed == descripcionCA ? _self.descripcionCA : descripcionCA // ignore: cast_nullable_to_non_nullable
+as String?,descripcionGB: freezed == descripcionGB ? _self.descripcionGB : descripcionGB // ignore: cast_nullable_to_non_nullable
+as String?,descripcionHU: freezed == descripcionHU ? _self.descripcionHU : descripcionHU // ignore: cast_nullable_to_non_nullable
+as String?,descripcionIT: freezed == descripcionIT ? _self.descripcionIT : descripcionIT // ignore: cast_nullable_to_non_nullable
+as String?,descripcionNL: freezed == descripcionNL ? _self.descripcionNL : descripcionNL // ignore: cast_nullable_to_non_nullable
+as String?,descripcionPL: freezed == descripcionPL ? _self.descripcionPL : descripcionPL // ignore: cast_nullable_to_non_nullable
+as String?,descripcionPT: freezed == descripcionPT ? _self.descripcionPT : descripcionPT // ignore: cast_nullable_to_non_nullable
+as String?,descripcionRO: freezed == descripcionRO ? _self.descripcionRO : descripcionRO // ignore: cast_nullable_to_non_nullable
+as String?,descripcionRU: freezed == descripcionRU ? _self.descripcionRU : descripcionRU // ignore: cast_nullable_to_non_nullable
+as String?,descripcionCN: freezed == descripcionCN ? _self.descripcionCN : descripcionCN // ignore: cast_nullable_to_non_nullable
+as String?,descripcionEL: freezed == descripcionEL ? _self.descripcionEL : descripcionEL // ignore: cast_nullable_to_non_nullable
+as String?,cantidad: null == cantidad ? _self.cantidad : cantidad // ignore: cast_nullable_to_non_nullable
+as int,lastUpdated: null == lastUpdated ? _self.lastUpdated : lastUpdated // ignore: cast_nullable_to_non_nullable
+as DateTime,deleted: null == deleted ? _self.deleted : deleted // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
 }
 
-/// @nodoc
-abstract class _$$ArticuloComponenteImplCopyWith<$Res>
-    implements $ArticuloComponenteCopyWith<$Res> {
-  factory _$$ArticuloComponenteImplCopyWith(_$ArticuloComponenteImpl value,
-          $Res Function(_$ArticuloComponenteImpl) then) =
-      __$$ArticuloComponenteImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String articuloId,
-      String articuloComponenteId,
-      String descripcionES,
-      String? descripcionEN,
-      String? descripcionFR,
-      String? descripcionDE,
-      String? descripcionCA,
-      String? descripcionGB,
-      String? descripcionHU,
-      String? descripcionIT,
-      String? descripcionNL,
-      String? descripcionPL,
-      String? descripcionPT,
-      String? descripcionRO,
-      String? descripcionRU,
-      String? descripcionCN,
-      String? descripcionEL,
-      int cantidad,
-      DateTime lastUpdated,
-      bool deleted});
 }
 
-/// @nodoc
-class __$$ArticuloComponenteImplCopyWithImpl<$Res>
-    extends _$ArticuloComponenteCopyWithImpl<$Res, _$ArticuloComponenteImpl>
-    implements _$$ArticuloComponenteImplCopyWith<$Res> {
-  __$$ArticuloComponenteImplCopyWithImpl(_$ArticuloComponenteImpl _value,
-      $Res Function(_$ArticuloComponenteImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of ArticuloComponente
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? articuloId = null,
-    Object? articuloComponenteId = null,
-    Object? descripcionES = null,
-    Object? descripcionEN = freezed,
-    Object? descripcionFR = freezed,
-    Object? descripcionDE = freezed,
-    Object? descripcionCA = freezed,
-    Object? descripcionGB = freezed,
-    Object? descripcionHU = freezed,
-    Object? descripcionIT = freezed,
-    Object? descripcionNL = freezed,
-    Object? descripcionPL = freezed,
-    Object? descripcionPT = freezed,
-    Object? descripcionRO = freezed,
-    Object? descripcionRU = freezed,
-    Object? descripcionCN = freezed,
-    Object? descripcionEL = freezed,
-    Object? cantidad = null,
-    Object? lastUpdated = null,
-    Object? deleted = null,
-  }) {
-    return _then(_$ArticuloComponenteImpl(
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articuloComponenteId: null == articuloComponenteId
-          ? _value.articuloComponenteId
-          : articuloComponenteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcionES: null == descripcionES
-          ? _value.descripcionES
-          : descripcionES // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcionEN: freezed == descripcionEN
-          ? _value.descripcionEN
-          : descripcionEN // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionFR: freezed == descripcionFR
-          ? _value.descripcionFR
-          : descripcionFR // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionDE: freezed == descripcionDE
-          ? _value.descripcionDE
-          : descripcionDE // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionCA: freezed == descripcionCA
-          ? _value.descripcionCA
-          : descripcionCA // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionGB: freezed == descripcionGB
-          ? _value.descripcionGB
-          : descripcionGB // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionHU: freezed == descripcionHU
-          ? _value.descripcionHU
-          : descripcionHU // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionIT: freezed == descripcionIT
-          ? _value.descripcionIT
-          : descripcionIT // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionNL: freezed == descripcionNL
-          ? _value.descripcionNL
-          : descripcionNL // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionPL: freezed == descripcionPL
-          ? _value.descripcionPL
-          : descripcionPL // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionPT: freezed == descripcionPT
-          ? _value.descripcionPT
-          : descripcionPT // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionRO: freezed == descripcionRO
-          ? _value.descripcionRO
-          : descripcionRO // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionRU: freezed == descripcionRU
-          ? _value.descripcionRU
-          : descripcionRU // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionCN: freezed == descripcionCN
-          ? _value.descripcionCN
-          : descripcionCN // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionEL: freezed == descripcionEL
-          ? _value.descripcionEL
-          : descripcionEL // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cantidad: null == cantidad
-          ? _value.cantidad
-          : cantidad // ignore: cast_nullable_to_non_nullable
-              as int,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
+/// Adds pattern-matching-related methods to [ArticuloComponente].
+extension ArticuloComponentePatterns on ArticuloComponente {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ArticuloComponente value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ArticuloComponente() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ArticuloComponente value)  $default,){
+final _that = this;
+switch (_that) {
+case _ArticuloComponente():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ArticuloComponente value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ArticuloComponente() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String articuloId,  String articuloComponenteId,  String descripcionES,  String? descripcionEN,  String? descripcionFR,  String? descripcionDE,  String? descripcionCA,  String? descripcionGB,  String? descripcionHU,  String? descripcionIT,  String? descripcionNL,  String? descripcionPL,  String? descripcionPT,  String? descripcionRO,  String? descripcionRU,  String? descripcionCN,  String? descripcionEL,  int cantidad,  DateTime lastUpdated,  bool deleted)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ArticuloComponente() when $default != null:
+return $default(_that.articuloId,_that.articuloComponenteId,_that.descripcionES,_that.descripcionEN,_that.descripcionFR,_that.descripcionDE,_that.descripcionCA,_that.descripcionGB,_that.descripcionHU,_that.descripcionIT,_that.descripcionNL,_that.descripcionPL,_that.descripcionPT,_that.descripcionRO,_that.descripcionRU,_that.descripcionCN,_that.descripcionEL,_that.cantidad,_that.lastUpdated,_that.deleted);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String articuloId,  String articuloComponenteId,  String descripcionES,  String? descripcionEN,  String? descripcionFR,  String? descripcionDE,  String? descripcionCA,  String? descripcionGB,  String? descripcionHU,  String? descripcionIT,  String? descripcionNL,  String? descripcionPL,  String? descripcionPT,  String? descripcionRO,  String? descripcionRU,  String? descripcionCN,  String? descripcionEL,  int cantidad,  DateTime lastUpdated,  bool deleted)  $default,) {final _that = this;
+switch (_that) {
+case _ArticuloComponente():
+return $default(_that.articuloId,_that.articuloComponenteId,_that.descripcionES,_that.descripcionEN,_that.descripcionFR,_that.descripcionDE,_that.descripcionCA,_that.descripcionGB,_that.descripcionHU,_that.descripcionIT,_that.descripcionNL,_that.descripcionPL,_that.descripcionPT,_that.descripcionRO,_that.descripcionRU,_that.descripcionCN,_that.descripcionEL,_that.cantidad,_that.lastUpdated,_that.deleted);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String articuloId,  String articuloComponenteId,  String descripcionES,  String? descripcionEN,  String? descripcionFR,  String? descripcionDE,  String? descripcionCA,  String? descripcionGB,  String? descripcionHU,  String? descripcionIT,  String? descripcionNL,  String? descripcionPL,  String? descripcionPT,  String? descripcionRO,  String? descripcionRU,  String? descripcionCN,  String? descripcionEL,  int cantidad,  DateTime lastUpdated,  bool deleted)?  $default,) {final _that = this;
+switch (_that) {
+case _ArticuloComponente() when $default != null:
+return $default(_that.articuloId,_that.articuloComponenteId,_that.descripcionES,_that.descripcionEN,_that.descripcionFR,_that.descripcionDE,_that.descripcionCA,_that.descripcionGB,_that.descripcionHU,_that.descripcionIT,_that.descripcionNL,_that.descripcionPL,_that.descripcionPT,_that.descripcionRO,_that.descripcionRU,_that.descripcionCN,_that.descripcionEL,_that.cantidad,_that.lastUpdated,_that.deleted);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 
-class _$ArticuloComponenteImpl extends _ArticuloComponente {
-  const _$ArticuloComponenteImpl(
-      {required this.articuloId,
-      required this.articuloComponenteId,
-      required this.descripcionES,
-      this.descripcionEN,
-      this.descripcionFR,
-      this.descripcionDE,
-      this.descripcionCA,
-      this.descripcionGB,
-      this.descripcionHU,
-      this.descripcionIT,
-      this.descripcionNL,
-      this.descripcionPL,
-      this.descripcionPT,
-      this.descripcionRO,
-      this.descripcionRU,
-      this.descripcionCN,
-      this.descripcionEL,
-      required this.cantidad,
-      required this.lastUpdated,
-      required this.deleted})
-      : super._();
 
-  @override
-  final String articuloId;
-  @override
-  final String articuloComponenteId;
-  @override
-  final String descripcionES;
-  @override
-  final String? descripcionEN;
-  @override
-  final String? descripcionFR;
-  @override
-  final String? descripcionDE;
-  @override
-  final String? descripcionCA;
-  @override
-  final String? descripcionGB;
-  @override
-  final String? descripcionHU;
-  @override
-  final String? descripcionIT;
-  @override
-  final String? descripcionNL;
-  @override
-  final String? descripcionPL;
-  @override
-  final String? descripcionPT;
-  @override
-  final String? descripcionRO;
-  @override
-  final String? descripcionRU;
-  @override
-  final String? descripcionCN;
-  @override
-  final String? descripcionEL;
-  @override
-  final int cantidad;
-  @override
-  final DateTime lastUpdated;
-  @override
-  final bool deleted;
+class _ArticuloComponente extends ArticuloComponente {
+  const _ArticuloComponente({required this.articuloId, required this.articuloComponenteId, required this.descripcionES, this.descripcionEN, this.descripcionFR, this.descripcionDE, this.descripcionCA, this.descripcionGB, this.descripcionHU, this.descripcionIT, this.descripcionNL, this.descripcionPL, this.descripcionPT, this.descripcionRO, this.descripcionRU, this.descripcionCN, this.descripcionEL, required this.cantidad, required this.lastUpdated, required this.deleted}): super._();
+  
 
-  @override
-  String toString() {
-    return 'ArticuloComponente(articuloId: $articuloId, articuloComponenteId: $articuloComponenteId, descripcionES: $descripcionES, descripcionEN: $descripcionEN, descripcionFR: $descripcionFR, descripcionDE: $descripcionDE, descripcionCA: $descripcionCA, descripcionGB: $descripcionGB, descripcionHU: $descripcionHU, descripcionIT: $descripcionIT, descripcionNL: $descripcionNL, descripcionPL: $descripcionPL, descripcionPT: $descripcionPT, descripcionRO: $descripcionRO, descripcionRU: $descripcionRU, descripcionCN: $descripcionCN, descripcionEL: $descripcionEL, cantidad: $cantidad, lastUpdated: $lastUpdated, deleted: $deleted)';
-  }
+@override final  String articuloId;
+@override final  String articuloComponenteId;
+@override final  String descripcionES;
+@override final  String? descripcionEN;
+@override final  String? descripcionFR;
+@override final  String? descripcionDE;
+@override final  String? descripcionCA;
+@override final  String? descripcionGB;
+@override final  String? descripcionHU;
+@override final  String? descripcionIT;
+@override final  String? descripcionNL;
+@override final  String? descripcionPL;
+@override final  String? descripcionPT;
+@override final  String? descripcionRO;
+@override final  String? descripcionRU;
+@override final  String? descripcionCN;
+@override final  String? descripcionEL;
+@override final  int cantidad;
+@override final  DateTime lastUpdated;
+@override final  bool deleted;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ArticuloComponenteImpl &&
-            (identical(other.articuloId, articuloId) ||
-                other.articuloId == articuloId) &&
-            (identical(other.articuloComponenteId, articuloComponenteId) ||
-                other.articuloComponenteId == articuloComponenteId) &&
-            (identical(other.descripcionES, descripcionES) ||
-                other.descripcionES == descripcionES) &&
-            (identical(other.descripcionEN, descripcionEN) ||
-                other.descripcionEN == descripcionEN) &&
-            (identical(other.descripcionFR, descripcionFR) ||
-                other.descripcionFR == descripcionFR) &&
-            (identical(other.descripcionDE, descripcionDE) ||
-                other.descripcionDE == descripcionDE) &&
-            (identical(other.descripcionCA, descripcionCA) ||
-                other.descripcionCA == descripcionCA) &&
-            (identical(other.descripcionGB, descripcionGB) ||
-                other.descripcionGB == descripcionGB) &&
-            (identical(other.descripcionHU, descripcionHU) ||
-                other.descripcionHU == descripcionHU) &&
-            (identical(other.descripcionIT, descripcionIT) ||
-                other.descripcionIT == descripcionIT) &&
-            (identical(other.descripcionNL, descripcionNL) ||
-                other.descripcionNL == descripcionNL) &&
-            (identical(other.descripcionPL, descripcionPL) ||
-                other.descripcionPL == descripcionPL) &&
-            (identical(other.descripcionPT, descripcionPT) ||
-                other.descripcionPT == descripcionPT) &&
-            (identical(other.descripcionRO, descripcionRO) ||
-                other.descripcionRO == descripcionRO) &&
-            (identical(other.descripcionRU, descripcionRU) ||
-                other.descripcionRU == descripcionRU) &&
-            (identical(other.descripcionCN, descripcionCN) ||
-                other.descripcionCN == descripcionCN) &&
-            (identical(other.descripcionEL, descripcionEL) ||
-                other.descripcionEL == descripcionEL) &&
-            (identical(other.cantidad, cantidad) ||
-                other.cantidad == cantidad) &&
-            (identical(other.lastUpdated, lastUpdated) ||
-                other.lastUpdated == lastUpdated) &&
-            (identical(other.deleted, deleted) || other.deleted == deleted));
-  }
+/// Create a copy of ArticuloComponente
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ArticuloComponenteCopyWith<_ArticuloComponente> get copyWith => __$ArticuloComponenteCopyWithImpl<_ArticuloComponente>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hashAll([
-        runtimeType,
-        articuloId,
-        articuloComponenteId,
-        descripcionES,
-        descripcionEN,
-        descripcionFR,
-        descripcionDE,
-        descripcionCA,
-        descripcionGB,
-        descripcionHU,
-        descripcionIT,
-        descripcionNL,
-        descripcionPL,
-        descripcionPT,
-        descripcionRO,
-        descripcionRU,
-        descripcionCN,
-        descripcionEL,
-        cantidad,
-        lastUpdated,
-        deleted
-      ]);
 
-  /// Create a copy of ArticuloComponente
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ArticuloComponenteImplCopyWith<_$ArticuloComponenteImpl> get copyWith =>
-      __$$ArticuloComponenteImplCopyWithImpl<_$ArticuloComponenteImpl>(
-          this, _$identity);
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloComponente&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.articuloComponenteId, articuloComponenteId) || other.articuloComponenteId == articuloComponenteId)&&(identical(other.descripcionES, descripcionES) || other.descripcionES == descripcionES)&&(identical(other.descripcionEN, descripcionEN) || other.descripcionEN == descripcionEN)&&(identical(other.descripcionFR, descripcionFR) || other.descripcionFR == descripcionFR)&&(identical(other.descripcionDE, descripcionDE) || other.descripcionDE == descripcionDE)&&(identical(other.descripcionCA, descripcionCA) || other.descripcionCA == descripcionCA)&&(identical(other.descripcionGB, descripcionGB) || other.descripcionGB == descripcionGB)&&(identical(other.descripcionHU, descripcionHU) || other.descripcionHU == descripcionHU)&&(identical(other.descripcionIT, descripcionIT) || other.descripcionIT == descripcionIT)&&(identical(other.descripcionNL, descripcionNL) || other.descripcionNL == descripcionNL)&&(identical(other.descripcionPL, descripcionPL) || other.descripcionPL == descripcionPL)&&(identical(other.descripcionPT, descripcionPT) || other.descripcionPT == descripcionPT)&&(identical(other.descripcionRO, descripcionRO) || other.descripcionRO == descripcionRO)&&(identical(other.descripcionRU, descripcionRU) || other.descripcionRU == descripcionRU)&&(identical(other.descripcionCN, descripcionCN) || other.descripcionCN == descripcionCN)&&(identical(other.descripcionEL, descripcionEL) || other.descripcionEL == descripcionEL)&&(identical(other.cantidad, cantidad) || other.cantidad == cantidad)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
-abstract class _ArticuloComponente extends ArticuloComponente {
-  const factory _ArticuloComponente(
-      {required final String articuloId,
-      required final String articuloComponenteId,
-      required final String descripcionES,
-      final String? descripcionEN,
-      final String? descripcionFR,
-      final String? descripcionDE,
-      final String? descripcionCA,
-      final String? descripcionGB,
-      final String? descripcionHU,
-      final String? descripcionIT,
-      final String? descripcionNL,
-      final String? descripcionPL,
-      final String? descripcionPT,
-      final String? descripcionRO,
-      final String? descripcionRU,
-      final String? descripcionCN,
-      final String? descripcionEL,
-      required final int cantidad,
-      required final DateTime lastUpdated,
-      required final bool deleted}) = _$ArticuloComponenteImpl;
-  const _ArticuloComponente._() : super._();
 
-  @override
-  String get articuloId;
-  @override
-  String get articuloComponenteId;
-  @override
-  String get descripcionES;
-  @override
-  String? get descripcionEN;
-  @override
-  String? get descripcionFR;
-  @override
-  String? get descripcionDE;
-  @override
-  String? get descripcionCA;
-  @override
-  String? get descripcionGB;
-  @override
-  String? get descripcionHU;
-  @override
-  String? get descripcionIT;
-  @override
-  String? get descripcionNL;
-  @override
-  String? get descripcionPL;
-  @override
-  String? get descripcionPT;
-  @override
-  String? get descripcionRO;
-  @override
-  String? get descripcionRU;
-  @override
-  String? get descripcionCN;
-  @override
-  String? get descripcionEL;
-  @override
-  int get cantidad;
-  @override
-  DateTime get lastUpdated;
-  @override
-  bool get deleted;
+@override
+int get hashCode => Object.hashAll([runtimeType,articuloId,articuloComponenteId,descripcionES,descripcionEN,descripcionFR,descripcionDE,descripcionCA,descripcionGB,descripcionHU,descripcionIT,descripcionNL,descripcionPL,descripcionPT,descripcionRO,descripcionRU,descripcionCN,descripcionEL,cantidad,lastUpdated,deleted]);
 
-  /// Create a copy of ArticuloComponente
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ArticuloComponenteImplCopyWith<_$ArticuloComponenteImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'ArticuloComponente(articuloId: $articuloId, articuloComponenteId: $articuloComponenteId, descripcionES: $descripcionES, descripcionEN: $descripcionEN, descripcionFR: $descripcionFR, descripcionDE: $descripcionDE, descripcionCA: $descripcionCA, descripcionGB: $descripcionGB, descripcionHU: $descripcionHU, descripcionIT: $descripcionIT, descripcionNL: $descripcionNL, descripcionPL: $descripcionPL, descripcionPT: $descripcionPT, descripcionRO: $descripcionRO, descripcionRU: $descripcionRU, descripcionCN: $descripcionCN, descripcionEL: $descripcionEL, cantidad: $cantidad, lastUpdated: $lastUpdated, deleted: $deleted)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ArticuloComponenteCopyWith<$Res> implements $ArticuloComponenteCopyWith<$Res> {
+  factory _$ArticuloComponenteCopyWith(_ArticuloComponente value, $Res Function(_ArticuloComponente) _then) = __$ArticuloComponenteCopyWithImpl;
+@override @useResult
+$Res call({
+ String articuloId, String articuloComponenteId, String descripcionES, String? descripcionEN, String? descripcionFR, String? descripcionDE, String? descripcionCA, String? descripcionGB, String? descripcionHU, String? descripcionIT, String? descripcionNL, String? descripcionPL, String? descripcionPT, String? descripcionRO, String? descripcionRU, String? descripcionCN, String? descripcionEL, int cantidad, DateTime lastUpdated, bool deleted
+});
+
+
+
+
+}
+/// @nodoc
+class __$ArticuloComponenteCopyWithImpl<$Res>
+    implements _$ArticuloComponenteCopyWith<$Res> {
+  __$ArticuloComponenteCopyWithImpl(this._self, this._then);
+
+  final _ArticuloComponente _self;
+  final $Res Function(_ArticuloComponente) _then;
+
+/// Create a copy of ArticuloComponente
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? articuloId = null,Object? articuloComponenteId = null,Object? descripcionES = null,Object? descripcionEN = freezed,Object? descripcionFR = freezed,Object? descripcionDE = freezed,Object? descripcionCA = freezed,Object? descripcionGB = freezed,Object? descripcionHU = freezed,Object? descripcionIT = freezed,Object? descripcionNL = freezed,Object? descripcionPL = freezed,Object? descripcionPT = freezed,Object? descripcionRO = freezed,Object? descripcionRU = freezed,Object? descripcionCN = freezed,Object? descripcionEL = freezed,Object? cantidad = null,Object? lastUpdated = null,Object? deleted = null,}) {
+  return _then(_ArticuloComponente(
+articuloId: null == articuloId ? _self.articuloId : articuloId // ignore: cast_nullable_to_non_nullable
+as String,articuloComponenteId: null == articuloComponenteId ? _self.articuloComponenteId : articuloComponenteId // ignore: cast_nullable_to_non_nullable
+as String,descripcionES: null == descripcionES ? _self.descripcionES : descripcionES // ignore: cast_nullable_to_non_nullable
+as String,descripcionEN: freezed == descripcionEN ? _self.descripcionEN : descripcionEN // ignore: cast_nullable_to_non_nullable
+as String?,descripcionFR: freezed == descripcionFR ? _self.descripcionFR : descripcionFR // ignore: cast_nullable_to_non_nullable
+as String?,descripcionDE: freezed == descripcionDE ? _self.descripcionDE : descripcionDE // ignore: cast_nullable_to_non_nullable
+as String?,descripcionCA: freezed == descripcionCA ? _self.descripcionCA : descripcionCA // ignore: cast_nullable_to_non_nullable
+as String?,descripcionGB: freezed == descripcionGB ? _self.descripcionGB : descripcionGB // ignore: cast_nullable_to_non_nullable
+as String?,descripcionHU: freezed == descripcionHU ? _self.descripcionHU : descripcionHU // ignore: cast_nullable_to_non_nullable
+as String?,descripcionIT: freezed == descripcionIT ? _self.descripcionIT : descripcionIT // ignore: cast_nullable_to_non_nullable
+as String?,descripcionNL: freezed == descripcionNL ? _self.descripcionNL : descripcionNL // ignore: cast_nullable_to_non_nullable
+as String?,descripcionPL: freezed == descripcionPL ? _self.descripcionPL : descripcionPL // ignore: cast_nullable_to_non_nullable
+as String?,descripcionPT: freezed == descripcionPT ? _self.descripcionPT : descripcionPT // ignore: cast_nullable_to_non_nullable
+as String?,descripcionRO: freezed == descripcionRO ? _self.descripcionRO : descripcionRO // ignore: cast_nullable_to_non_nullable
+as String?,descripcionRU: freezed == descripcionRU ? _self.descripcionRU : descripcionRU // ignore: cast_nullable_to_non_nullable
+as String?,descripcionCN: freezed == descripcionCN ? _self.descripcionCN : descripcionCN // ignore: cast_nullable_to_non_nullable
+as String?,descripcionEL: freezed == descripcionEL ? _self.descripcionEL : descripcionEL // ignore: cast_nullable_to_non_nullable
+as String?,cantidad: null == cantidad ? _self.cantidad : cantidad // ignore: cast_nullable_to_non_nullable
+as int,lastUpdated: null == lastUpdated ? _self.lastUpdated : lastUpdated // ignore: cast_nullable_to_non_nullable
+as DateTime,deleted: null == deleted ? _self.deleted : deleted // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+
+}
+
+// dart format on

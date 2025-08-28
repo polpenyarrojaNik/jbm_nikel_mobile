@@ -13,11 +13,11 @@ import 'theme/app_theme.dart';
 final dioProvider = Provider((ref) => Dio());
 final dioForAuthProvider = Provider((ref) => Dio());
 final flutterSecureStorage = Provider((ref) => const FlutterSecureStorage());
-const articuloFechaUltimaSyncKey = 'ARTICULO_ULTIMA_SYNC';
-const clienteFechaUltimaSyncKey = 'CLIENTE_ULTIMA_SYNC';
-const pedidoVentaFechaUltimaSyncKey = 'PEDIDO_ULTIMA_SYNC';
-const visitaFechaUltimaSyncKey = 'VISITA_ULTIMA_SYNC';
-const dbSchemaVersionKey = 'DB_SCHEMA_VERSION';
+const kArticuloFechaUltimaSyncKey = 'ARTICULO_ULTIMA_SYNC';
+const kClienteFechaUltimaSyncKey = 'CLIENTE_ULTIMA_SYNC';
+const kPedidoVentaFechaUltimaSyncKey = 'PEDIDO_ULTIMA_SYNC';
+const kVisitaFechaUltimaSyncKey = 'VISITA_ULTIMA_SYNC';
+const kDbSchemaVersionKey = 'DB_SCHEMA_VERSION';
 
 class App extends ConsumerWidget {
   const App({super.key});

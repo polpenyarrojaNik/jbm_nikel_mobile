@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'provincia.freezed.dart';
 
 @freezed
-class Provincia with _$Provincia {
+abstract class Provincia with _$Provincia {
   const Provincia._();
   const factory Provincia({
     required String paisId,

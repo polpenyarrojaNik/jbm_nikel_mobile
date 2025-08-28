@@ -11,7 +11,7 @@ part 'familia_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class FamiliaDTO with _$FamiliaDTO implements Insertable<FamiliaDTO> {
+abstract class FamiliaDTO with _$FamiliaDTO implements Insertable<FamiliaDTO> {
   const FamiliaDTO._();
   const factory FamiliaDTO({
     @JsonKey(name: 'FAMILIA_ID') required String id,
@@ -42,7 +42,7 @@ class FamiliaDTO with _$FamiliaDTO implements Insertable<FamiliaDTO> {
       id: id,
       descripcion: getDescriptionInLocalLanguage(),
       lastUpdate: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
+      deleted: (deleted == 'S'),
     );
   }
 

@@ -9,7 +9,7 @@ part 'tipo_catalogo_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class TipoCatalogoDTO with _$TipoCatalogoDTO {
+abstract class TipoCatalogoDTO with _$TipoCatalogoDTO {
   const TipoCatalogoDTO._();
   const factory TipoCatalogoDTO({
     @JsonKey(name: 'TIPO_CATALOGO_ID') required String tipoCatalogoId,
@@ -37,8 +37,7 @@ class TipoCatalogoDTO with _$TipoCatalogoDTO {
 
   String getDescriptionInLocalLanguage() {
     final currentLocale = Intl.getCurrentLocale();
-    if (currentLocale == 'es') {
-    } else if (currentLocale == 'en' && descripcionEN != null) {
+    if (currentLocale == 'en' && descripcionEN != null) {
       return descripcionEN!;
     } else if (currentLocale == 'fr' && descripcionFR != null) {
       return descripcionFR!;

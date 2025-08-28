@@ -6,7 +6,7 @@ import '../../../core/domain/provincia.dart';
 part 'image_form_data.freezed.dart';
 
 @freezed
-class ImageFormData with _$ImageFormData {
+abstract class ImageFormData with _$ImageFormData {
   factory ImageFormData({
     String? name,
     String? company,

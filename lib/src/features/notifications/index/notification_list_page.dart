@@ -1,17 +1,17 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/helpers/formatters.dart';
-import '../../../core/presentation/common_widgets/error_message_widget.dart';
-import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
-import '../../../core/presentation/theme/app_sizes.dart';
-import '../core/application/notification_provider.dart';
-import 'notification_list_controller.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../generated/l10n.dart';
+import '../../../core/helpers/formatters.dart';
 import '../../../core/presentation/common_widgets/app_drawer.dart';
+import '../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../core/routing/app_auto_router.dart';
+import '../core/application/notification_provider.dart';
 import '../core/domain/notification_list.dart';
+import 'notification_list_controller.dart';
 
 @RoutePage()
 class NotificationIndexPage extends ConsumerWidget {
@@ -90,7 +90,7 @@ class _NotificationListTile extends StatelessWidget {
                 size: 12,
                 color: Theme.of(context).primaryColor,
               ),
-            if (!notificationList.leidoSN) gapW8,
+            if (!notificationList.leidoSN) const Gap(8),
             Flexible(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -103,7 +103,7 @@ class _NotificationListTile extends StatelessWidget {
                       style: Theme.of(context).textTheme.titleSmall,
                     ),
                   ),
-                  gapW16,
+                  const Gap(16),
                   Text(
                     dateFormatter(
                       notificationList.fecha.toIso8601String(),

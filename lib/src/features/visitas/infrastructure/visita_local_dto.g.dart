@@ -6,53 +6,47 @@ part of 'visita_local_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$VisitaLocalDTOImpl _$$VisitaLocalDTOImplFromJson(Map<String, dynamic> json) =>
-    _$VisitaLocalDTOImpl(
-      visitaAppId: json['COD_VISITA_APP'] as String?,
-      fecha: DateTime.parse(json['FECHA'] as String),
-      clienteId: json['CLIENTE_ID'] as String?,
-      isClienteProvisional: json['CLIENTE_POTENCIAL_SN'] as String,
-      clienteProvisionalNombre: json['CLIENTE_POTENCIAL_NOMBRE'] as String?,
-      clienteProvisionalEmail: json['CLIENTE_POTENCIAL_EMAIL'] as String?,
-      clienteProvisionalTelefono: json['CLIENTE_POTENCIAL_TELEFONO'] as String?,
-      clienteProvisionalDireccion1:
-          json['CLIENTE_POTENCIAL_DIRECCION1'] as String?,
-      clienteProvisionalDireccion2:
-          json['CLIENTE_POTENCIAL_DIRECCION2'] as String?,
-      clienteProvisionalCodigoPostal:
-          json['CLIENTE_POTENCIAL_COD_POS'] as String?,
-      clienteProvisionalPoblacion:
-          json['CLIENTE_POTENCIAL_POBLACION'] as String?,
-      clienteProvisionalProvinciaId:
-          json['CLIENTE_POTENCIAL_PROVINCIA_ID'] as String?,
-      clienteProvisionalRegionId:
-          json['CLIENTE_POTENCIAL_REGION_ID'] as String?,
-      clienteProvisionalPaisId: json['CLIENTE_POTENCIAL_PAIS_ID'] as String?,
-      numEmpl: json['NUM_EMPL'] as String,
-      contacto: json['CONTACTO'] as String,
-      atendidoPor: json['ATENDIDO_POR'] as String?,
-      resumen: json['RESUMEN'] as String?,
-      marcasCompetencia: json['MARCAS_COMPETENCIA'] as String?,
-      ofertaRealizada: json['OFERTA_REALIZADA'] as String,
-      interesCliente: json['INTERES_CLIENTE'] as String?,
-      pedidoRealizado: json['PEDIDO_REALIZADO'] as String,
-      codigoMotivoNoInteres:
-          (json['CODIGO_MOTIVO_NO_INTERES'] as num?)?.toInt(),
-      codigoMotivoNoPedido: (json['CODIGO_MOTIVO_NO_PEDIDO'] as num?)?.toInt(),
-      codigoSector: (json['CODIGO_SECTOR'] as num?)?.toInt(),
-      codigoCompetencia: (json['CODIGO_COMPETENCIA'] as num?)?.toInt(),
-      almacenPropio: json['ALMACEN_PROPIO'] as String?,
-      capacidad: json['CAPACIDAD'] as String?,
-      frecuenciaPedido: json['FRECUENCIA_PEDIDO'] as String?,
-      latitud: (json['LATITUD'] as num).toDouble(),
-      longitud: (json['LONGITUD'] as num).toDouble(),
-      enviada: json['ENVIADA'] as String? ?? 'N',
-      tratada: json['TRATADA'] as String? ?? 'N',
-      errorSyncMessage: json['ERROR_SYNC'] as String?,
-    );
+_VisitaLocalDTO _$VisitaLocalDTOFromJson(
+  Map<String, dynamic> json,
+) => _VisitaLocalDTO(
+  visitaAppId: json['COD_VISITA_APP'] as String?,
+  fecha: DateTime.parse(json['FECHA'] as String),
+  clienteId: json['CLIENTE_ID'] as String?,
+  isClienteProvisional: json['CLIENTE_POTENCIAL_SN'] as String,
+  clienteProvisionalNombre: json['CLIENTE_POTENCIAL_NOMBRE'] as String?,
+  clienteProvisionalEmail: json['CLIENTE_POTENCIAL_EMAIL'] as String?,
+  clienteProvisionalTelefono: json['CLIENTE_POTENCIAL_TELEFONO'] as String?,
+  clienteProvisionalDireccion1: json['CLIENTE_POTENCIAL_DIRECCION1'] as String?,
+  clienteProvisionalDireccion2: json['CLIENTE_POTENCIAL_DIRECCION2'] as String?,
+  clienteProvisionalCodigoPostal: json['CLIENTE_POTENCIAL_COD_POS'] as String?,
+  clienteProvisionalPoblacion: json['CLIENTE_POTENCIAL_POBLACION'] as String?,
+  clienteProvisionalProvinciaId:
+      json['CLIENTE_POTENCIAL_PROVINCIA_ID'] as String?,
+  clienteProvisionalRegionId: json['CLIENTE_POTENCIAL_REGION_ID'] as String?,
+  clienteProvisionalPaisId: json['CLIENTE_POTENCIAL_PAIS_ID'] as String?,
+  numEmpl: json['NUM_EMPL'] as String,
+  contacto: json['CONTACTO'] as String,
+  atendidoPor: json['ATENDIDO_POR'] as String?,
+  resumen: json['RESUMEN'] as String?,
+  marcasCompetencia: json['MARCAS_COMPETENCIA'] as String?,
+  ofertaRealizada: json['OFERTA_REALIZADA'] as String,
+  interesCliente: json['INTERES_CLIENTE'] as String?,
+  pedidoRealizado: json['PEDIDO_REALIZADO'] as String,
+  codigoMotivoNoInteres: (json['CODIGO_MOTIVO_NO_INTERES'] as num?)?.toInt(),
+  codigoMotivoNoPedido: (json['CODIGO_MOTIVO_NO_PEDIDO'] as num?)?.toInt(),
+  codigoSector: (json['CODIGO_SECTOR'] as num?)?.toInt(),
+  codigoCompetencia: (json['CODIGO_COMPETENCIA'] as num?)?.toInt(),
+  almacenPropio: json['ALMACEN_PROPIO'] as String?,
+  capacidad: json['CAPACIDAD'] as String?,
+  frecuenciaPedido: json['FRECUENCIA_PEDIDO'] as String?,
+  latitud: (json['LATITUD'] as num).toDouble(),
+  longitud: (json['LONGITUD'] as num).toDouble(),
+  enviada: json['ENVIADA'] as String? ?? 'N',
+  tratada: json['TRATADA'] as String? ?? 'N',
+  errorSyncMessage: json['ERROR_SYNC'] as String?,
+);
 
-Map<String, dynamic> _$$VisitaLocalDTOImplToJson(
-        _$VisitaLocalDTOImpl instance) =>
+Map<String, dynamic> _$VisitaLocalDTOToJson(_VisitaLocalDTO instance) =>
     <String, dynamic>{
       'COD_VISITA_APP': instance.visitaAppId,
       'FECHA': instance.fecha.toIso8601String(),

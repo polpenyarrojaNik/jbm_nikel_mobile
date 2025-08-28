@@ -1,7 +1,7 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../core/domain/pais.dart';
 
+import '../../../core/domain/pais.dart';
 import '../../../core/infrastructure/local_database.dart';
 import '../domain/cliente_direccion_imp.dart';
 
@@ -11,7 +11,7 @@ part 'cliente_direccion_imp_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class ClienteDireccionImpDTO
+abstract class ClienteDireccionImpDTO
     with _$ClienteDireccionImpDTO
     implements Insertable<ClienteDireccionImpDTO> {
   const ClienteDireccionImpDTO._();

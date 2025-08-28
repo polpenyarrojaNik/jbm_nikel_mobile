@@ -34,9 +34,7 @@ abstract class _$ClienteUltimosPreciosIndexScreenController
     extends BuildlessAutoDisposeAsyncNotifier<int> {
   late final String clienteId;
 
-  FutureOr<int> build({
-    required String clienteId,
-  });
+  FutureOr<int> build({required String clienteId});
 }
 
 /// See also [ClienteUltimosPreciosIndexScreenController].
@@ -63,9 +61,7 @@ class ClienteUltimosPreciosIndexScreenControllerFamily
   ClienteUltimosPreciosIndexScreenControllerProvider getProviderOverride(
     covariant ClienteUltimosPreciosIndexScreenControllerProvider provider,
   ) {
-    return call(
-      clienteId: provider.clienteId,
-    );
+    return call(clienteId: provider.clienteId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -85,27 +81,31 @@ class ClienteUltimosPreciosIndexScreenControllerFamily
 
 /// See also [ClienteUltimosPreciosIndexScreenController].
 class ClienteUltimosPreciosIndexScreenControllerProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<
-        ClienteUltimosPreciosIndexScreenController, int> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          ClienteUltimosPreciosIndexScreenController,
+          int
+        > {
   /// See also [ClienteUltimosPreciosIndexScreenController].
   ClienteUltimosPreciosIndexScreenControllerProvider({
     required String clienteId,
   }) : this._internal(
-          () => ClienteUltimosPreciosIndexScreenController()
-            ..clienteId = clienteId,
-          from: clienteUltimosPreciosIndexScreenControllerProvider,
-          name: r'clienteUltimosPreciosIndexScreenControllerProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$clienteUltimosPreciosIndexScreenControllerHash,
-          dependencies:
-              ClienteUltimosPreciosIndexScreenControllerFamily._dependencies,
-          allTransitiveDependencies:
-              ClienteUltimosPreciosIndexScreenControllerFamily
-                  ._allTransitiveDependencies,
-          clienteId: clienteId,
-        );
+         () =>
+             ClienteUltimosPreciosIndexScreenController()
+               ..clienteId = clienteId,
+         from: clienteUltimosPreciosIndexScreenControllerProvider,
+         name: r'clienteUltimosPreciosIndexScreenControllerProvider',
+         debugGetCreateSourceHash:
+             const bool.fromEnvironment('dart.vm.product')
+                 ? null
+                 : _$clienteUltimosPreciosIndexScreenControllerHash,
+         dependencies:
+             ClienteUltimosPreciosIndexScreenControllerFamily._dependencies,
+         allTransitiveDependencies:
+             ClienteUltimosPreciosIndexScreenControllerFamily
+                 ._allTransitiveDependencies,
+         clienteId: clienteId,
+       );
 
   ClienteUltimosPreciosIndexScreenControllerProvider._internal(
     super._createNotifier, {
@@ -123,14 +123,13 @@ class ClienteUltimosPreciosIndexScreenControllerProvider
   FutureOr<int> runNotifierBuild(
     covariant ClienteUltimosPreciosIndexScreenController notifier,
   ) {
-    return notifier.build(
-      clienteId: clienteId,
-    );
+    return notifier.build(clienteId: clienteId);
   }
 
   @override
   Override overrideWith(
-      ClienteUltimosPreciosIndexScreenController Function() create) {
+    ClienteUltimosPreciosIndexScreenController Function() create,
+  ) {
     return ProviderOverride(
       origin: this,
       override: ClienteUltimosPreciosIndexScreenControllerProvider._internal(
@@ -147,7 +146,10 @@ class ClienteUltimosPreciosIndexScreenControllerProvider
 
   @override
   AutoDisposeAsyncNotifierProviderElement<
-      ClienteUltimosPreciosIndexScreenController, int> createElement() {
+    ClienteUltimosPreciosIndexScreenController,
+    int
+  >
+  createElement() {
     return _ClienteUltimosPreciosIndexScreenControllerProviderElement(this);
   }
 
@@ -175,9 +177,12 @@ mixin ClienteUltimosPreciosIndexScreenControllerRef
 }
 
 class _ClienteUltimosPreciosIndexScreenControllerProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<
-        ClienteUltimosPreciosIndexScreenController,
-        int> with ClienteUltimosPreciosIndexScreenControllerRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          ClienteUltimosPreciosIndexScreenController,
+          int
+        >
+    with ClienteUltimosPreciosIndexScreenControllerRef {
   _ClienteUltimosPreciosIndexScreenControllerProviderElement(super.provider);
 
   @override
@@ -189,8 +194,8 @@ String _$clienteUltimosPreciosIndexScreenPaginatedControllerHash() =>
     r'4ce9f71fba12e87c2ca23acd15ed7c7aecf65dd0';
 
 abstract class _$ClienteUltimosPreciosIndexScreenPaginatedController
-    extends BuildlessAutoDisposeAsyncNotifier<
-        List<EstadisticasUltimosPrecios>> {
+    extends
+        BuildlessAutoDisposeAsyncNotifier<List<EstadisticasUltimosPrecios>> {
   late final int page;
   late final String clienteId;
 
@@ -224,14 +229,11 @@ class ClienteUltimosPreciosIndexScreenPaginatedControllerFamily
 
   @override
   ClienteUltimosPreciosIndexScreenPaginatedControllerProvider
-      getProviderOverride(
+  getProviderOverride(
     covariant ClienteUltimosPreciosIndexScreenPaginatedControllerProvider
-        provider,
+    provider,
   ) {
-    return call(
-      page: provider.page,
-      clienteId: provider.clienteId,
-    );
+    return call(page: provider.page, clienteId: provider.clienteId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -252,32 +254,35 @@ class ClienteUltimosPreciosIndexScreenPaginatedControllerFamily
 
 /// See also [ClienteUltimosPreciosIndexScreenPaginatedController].
 class ClienteUltimosPreciosIndexScreenPaginatedControllerProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<
-        ClienteUltimosPreciosIndexScreenPaginatedController,
-        List<EstadisticasUltimosPrecios>> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          ClienteUltimosPreciosIndexScreenPaginatedController,
+          List<EstadisticasUltimosPrecios>
+        > {
   /// See also [ClienteUltimosPreciosIndexScreenPaginatedController].
   ClienteUltimosPreciosIndexScreenPaginatedControllerProvider({
     required int page,
     required String clienteId,
   }) : this._internal(
-          () => ClienteUltimosPreciosIndexScreenPaginatedController()
-            ..page = page
-            ..clienteId = clienteId,
-          from: clienteUltimosPreciosIndexScreenPaginatedControllerProvider,
-          name: r'clienteUltimosPreciosIndexScreenPaginatedControllerProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$clienteUltimosPreciosIndexScreenPaginatedControllerHash,
-          dependencies:
-              ClienteUltimosPreciosIndexScreenPaginatedControllerFamily
-                  ._dependencies,
-          allTransitiveDependencies:
-              ClienteUltimosPreciosIndexScreenPaginatedControllerFamily
-                  ._allTransitiveDependencies,
-          page: page,
-          clienteId: clienteId,
-        );
+         () =>
+             ClienteUltimosPreciosIndexScreenPaginatedController()
+               ..page = page
+               ..clienteId = clienteId,
+         from: clienteUltimosPreciosIndexScreenPaginatedControllerProvider,
+         name: r'clienteUltimosPreciosIndexScreenPaginatedControllerProvider',
+         debugGetCreateSourceHash:
+             const bool.fromEnvironment('dart.vm.product')
+                 ? null
+                 : _$clienteUltimosPreciosIndexScreenPaginatedControllerHash,
+         dependencies:
+             ClienteUltimosPreciosIndexScreenPaginatedControllerFamily
+                 ._dependencies,
+         allTransitiveDependencies:
+             ClienteUltimosPreciosIndexScreenPaginatedControllerFamily
+                 ._allTransitiveDependencies,
+         page: page,
+         clienteId: clienteId,
+       );
 
   ClienteUltimosPreciosIndexScreenPaginatedControllerProvider._internal(
     super._createNotifier, {
@@ -297,39 +302,41 @@ class ClienteUltimosPreciosIndexScreenPaginatedControllerProvider
   FutureOr<List<EstadisticasUltimosPrecios>> runNotifierBuild(
     covariant ClienteUltimosPreciosIndexScreenPaginatedController notifier,
   ) {
-    return notifier.build(
-      page: page,
-      clienteId: clienteId,
-    );
+    return notifier.build(page: page, clienteId: clienteId);
   }
 
   @override
   Override overrideWith(
-      ClienteUltimosPreciosIndexScreenPaginatedController Function() create) {
+    ClienteUltimosPreciosIndexScreenPaginatedController Function() create,
+  ) {
     return ProviderOverride(
       origin: this,
       override:
           ClienteUltimosPreciosIndexScreenPaginatedControllerProvider._internal(
-        () => create()
-          ..page = page
-          ..clienteId = clienteId,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        page: page,
-        clienteId: clienteId,
-      ),
+            () =>
+                create()
+                  ..page = page
+                  ..clienteId = clienteId,
+            from: from,
+            name: null,
+            dependencies: null,
+            allTransitiveDependencies: null,
+            debugGetCreateSourceHash: null,
+            page: page,
+            clienteId: clienteId,
+          ),
     );
   }
 
   @override
   AutoDisposeAsyncNotifierProviderElement<
-      ClienteUltimosPreciosIndexScreenPaginatedController,
-      List<EstadisticasUltimosPrecios>> createElement() {
+    ClienteUltimosPreciosIndexScreenPaginatedController,
+    List<EstadisticasUltimosPrecios>
+  >
+  createElement() {
     return _ClienteUltimosPreciosIndexScreenPaginatedControllerProviderElement(
-        this);
+      this,
+    );
   }
 
   @override
@@ -362,12 +369,15 @@ mixin ClienteUltimosPreciosIndexScreenPaginatedControllerRef
 }
 
 class _ClienteUltimosPreciosIndexScreenPaginatedControllerProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<
-        ClienteUltimosPreciosIndexScreenPaginatedController,
-        List<EstadisticasUltimosPrecios>>
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          ClienteUltimosPreciosIndexScreenPaginatedController,
+          List<EstadisticasUltimosPrecios>
+        >
     with ClienteUltimosPreciosIndexScreenPaginatedControllerRef {
   _ClienteUltimosPreciosIndexScreenPaginatedControllerProviderElement(
-      super.provider);
+    super.provider,
+  );
 
   @override
   int get page =>
@@ -378,5 +388,6 @@ class _ClienteUltimosPreciosIndexScreenPaginatedControllerProviderElement
       (origin as ClienteUltimosPreciosIndexScreenPaginatedControllerProvider)
           .clienteId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -10,7 +10,7 @@ part 'articulo_sustitutivo_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class ArticuloSustitutivoDTO
+abstract class ArticuloSustitutivoDTO
     with _$ArticuloSustitutivoDTO
     implements Insertable<ArticuloSustitutivoDTO> {
   const ArticuloSustitutivoDTO._();
@@ -37,7 +37,7 @@ class ArticuloSustitutivoDTO
       orden: orden,
       stockDisponible: stockDisponible,
       lastUpdated: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
+      deleted: (deleted == 'S'),
     );
   }
 

@@ -4,7 +4,7 @@ import 'package:money2/money2.dart';
 part 'articulo_grupo_neto.freezed.dart';
 
 @freezed
-class ArticuloGrupoNeto with _$ArticuloGrupoNeto {
+abstract class ArticuloGrupoNeto with _$ArticuloGrupoNeto {
   const ArticuloGrupoNeto._();
   const factory ArticuloGrupoNeto({
     required String articuloId,

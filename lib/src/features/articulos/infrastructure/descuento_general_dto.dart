@@ -9,7 +9,7 @@ part 'descuento_general_dto.g.dart';
 
 // ignore_for_file: invalid_annotation_target
 @freezed
-class DescuentoGeneralDTO
+abstract class DescuentoGeneralDTO
     with _$DescuentoGeneralDTO
     implements Insertable<DescuentoGeneralDTO> {
   const DescuentoGeneralDTO._();
@@ -36,7 +36,7 @@ class DescuentoGeneralDTO
       cantidadDesde: cantidadDesde,
       descuento: descuento,
       lastUpdated: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
+      deleted: (deleted == 'S'),
     );
   }
 

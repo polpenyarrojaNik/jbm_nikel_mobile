@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../core/helpers/debouncer.dart';
@@ -13,7 +14,6 @@ import '../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../core/presentation/common_widgets/sin_resultados_widget.dart';
-import '../../../core/presentation/theme/app_sizes.dart';
 import '../../../core/routing/app_auto_router.dart';
 import '../../notifications/core/application/notification_provider.dart';
 import '../../pedido_venta/infrastructure/pedido_venta_repository.dart';
@@ -54,16 +54,13 @@ class _ExpedicionListPageListPageState
 
     ref.listen<AsyncValue<String?>>(
       notificationNotifierProvider,
-      (_, state) => state.maybeWhen(
-        orElse: () {},
-        data: (notificationId) {
-          if (notificationId != null) {
-            context.router.push(
-              NotificationDetailRoute(notificationId: notificationId),
-            );
-          }
-        },
-      ),
+      (_, state) => state.whenData((notificationId) {
+        if (notificationId != null) {
+          context.router.push(
+            NotificationDetailRoute(notificationId: notificationId),
+          );
+        }
+      }),
     );
 
     ref.listen<AsyncValue<void>>(
@@ -171,12 +168,12 @@ class PedidoExpedicionListViewWidget extends StatelessWidget {
               data:
                   (fechaUltimaSync) =>
                       UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
-              error: (_, __) => Container(),
+              error: (_, stackTrace) => Container(),
               loading: () => const ProgressIndicatorWidget(),
             );
           },
         ),
-        gapH8,
+        const Gap(8),
         Expanded(
           child: statePedidoVentaList.when(
             loading: () => const Center(child: ProgressIndicatorWidget()),

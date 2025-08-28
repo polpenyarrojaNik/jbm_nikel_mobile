@@ -1,8 +1,8 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
-import '../../../core/infrastructure/remote_database.dart';
 
+import '../../../core/infrastructure/remote_database.dart';
 import '../domain/pedido_venta_estado.dart';
 
 part 'pedido_venta_estado_dto.freezed.dart';
@@ -11,7 +11,7 @@ part 'pedido_venta_estado_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class PedidoVentaEstadoDTO
+abstract class PedidoVentaEstadoDTO
     with _$PedidoVentaEstadoDTO
     implements Insertable<PedidoVentaEstadoDTO> {
   const PedidoVentaEstadoDTO._();
@@ -44,14 +44,13 @@ class PedidoVentaEstadoDTO
       id: id,
       descripcion: getDescriptionInLocalLanguage(),
       lastUpdate: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
+      deleted: (deleted == 'S'),
     );
   }
 
   String getDescriptionInLocalLanguage() {
     final currentLocale = Intl.getCurrentLocale();
-    if (currentLocale == 'es') {
-    } else if (currentLocale == 'en' && descripcionEN != null) {
+    if (currentLocale == 'en' && descripcionEN != null) {
       return descripcionEN!;
     } else if (currentLocale == 'fr' && descripcionFR != null) {
       return descripcionFR!;

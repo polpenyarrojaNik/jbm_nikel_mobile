@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'usuario.freezed.dart';
 
 @freezed
-class Usuario with _$Usuario {
+abstract class Usuario with _$Usuario {
   const Usuario._();
   const factory Usuario({
     required String id,

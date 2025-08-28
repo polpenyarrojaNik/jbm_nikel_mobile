@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../domain/notificacion.dart';
 
 part 'notification_dto.freezed.dart';
@@ -7,7 +8,7 @@ part 'notification_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class NotificationDto with _$NotificationDto {
+abstract class NotificationDto with _$NotificationDto {
   const NotificationDto._();
   const factory NotificationDto({
     @JsonKey(name: 'NOTIFICACION_GUID') required String notificacionId,

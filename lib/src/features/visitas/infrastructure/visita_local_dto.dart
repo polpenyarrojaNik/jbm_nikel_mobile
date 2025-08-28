@@ -1,15 +1,15 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../core/helpers/formatters.dart';
-import '../../cliente/domain/cliente.dart';
-import '../domain/visita_competidor.dart';
-import '../domain/visita_motivos_no_venta.dart';
-import '../domain/visita_sector.dart';
 
 import '../../../core/domain/pais.dart';
 import '../../../core/domain/provincia.dart';
+import '../../../core/helpers/formatters.dart';
 import '../../../core/infrastructure/local_database.dart';
+import '../../cliente/domain/cliente.dart';
 import '../domain/visita.dart';
+import '../domain/visita_competidor.dart';
+import '../domain/visita_motivos_no_venta.dart';
+import '../domain/visita_sector.dart';
 import 'visita_competencia_local_dto.dart';
 
 part 'visita_local_dto.freezed.dart';
@@ -18,7 +18,7 @@ part 'visita_local_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class VisitaLocalDTO
+abstract class VisitaLocalDTO
     with _$VisitaLocalDTO
     implements Insertable<VisitaLocalDTO> {
   const VisitaLocalDTO._();
@@ -100,11 +100,14 @@ class VisitaLocalDTO
       codigoSector: visita.sector?.id,
       codigoCompetencia: null,
       almacenPropio:
-          visita.almacenPropio != null
-              ? visita.almacenPropio!
-                  ? 'S'
-                  : 'N'
-              : null,
+          (() {
+            if (visita.almacenPropio == null) {
+              return null;
+            } else if (visita.almacenPropio!) {
+              return 'S';
+            }
+            return 'N';
+          })(),
       capacidad: getIdFromCapacidad(visita.capacidad),
       frecuenciaPedido: getIdFromFrecuenciaPedido(visita.frecuenciaPedido),
       latitud: visita.latitud,
@@ -128,7 +131,7 @@ class VisitaLocalDTO
       id: null,
       fecha: fecha,
       cliente: cliente,
-      isClienteProvisional: (isClienteProvisional == 'S') ? true : false,
+      isClienteProvisional: (isClienteProvisional == 'S'),
       clienteProvisionalNombre: clienteProvisionalNombre,
       clienteProvisionalEmail: clienteProvisionalEmail,
       clienteProvisionalTelefono: clienteProvisionalTelefono,
@@ -159,8 +162,8 @@ class VisitaLocalDTO
       visitaAppId: visitaAppId,
       lastUpdated: DateTime.now().toUtc(),
       deleted: false,
-      enviada: (enviada == 'S') ? true : false,
-      tratada: (tratada == 'S') ? true : false,
+      enviada: (enviada == 'S'),
+      tratada: (tratada == 'S'),
       errorSyncMessage: errorSyncMessage,
     );
   }
@@ -169,10 +172,8 @@ class VisitaLocalDTO
     List<VisitaCompetenciaLocalDTO> visitaCompenteciaLocalDtoList,
   ) {
     final json = toJson();
-    json.addAll({
-      'VISITA_COMPETENCIA':
-          visitaCompenteciaLocalDtoList.map((e) => e.toJson()).toList(),
-    });
+    json['VISITA_COMPETENCIA'] =
+        visitaCompenteciaLocalDtoList.map((e) => e.toJson()).toList();
     return json;
   }
 

@@ -14,7 +14,7 @@ part 'pedido_venta_local_dto.g.dart';
 
 // ignore_for_file: invalid_annotation_target
 @freezed
-class PedidoVentaLocalDTO
+abstract class PedidoVentaLocalDTO
     with _$PedidoVentaLocalDTO
     implements Insertable<PedidoVentaLocalDTO> {
   const PedidoVentaLocalDTO._();
@@ -156,13 +156,13 @@ class PedidoVentaLocalDTO
       importeIva: importeIva,
       total: total,
       pedidoVentaEstado: null,
-      oferta: oferta == 'S' ? true : false,
+      oferta: oferta == 'S',
       ofertaFechaHasta: ofertaFechaHasta,
       lastUpdated: DateTime.now().toUtc(),
       deleted: false,
-      enviada: (enviada == 'S') ? true : false,
-      tratada: (tratada == 'S') ? true : false,
-      borrador: (borrador == 'S') ? true : false,
+      enviada: (enviada == 'S'),
+      tratada: (tratada == 'S'),
+      borrador: (borrador == 'S'),
       errorSyncMessage: errorSyncMessage,
     );
   }

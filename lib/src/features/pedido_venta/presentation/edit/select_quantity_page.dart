@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/articulo_precio.dart';
@@ -11,7 +12,6 @@ import '../../../../core/helpers/extension.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
-import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../../articulos/domain/articulo.dart';
 import '../../../articulos/domain/articulo_sustitutivo.dart';
@@ -90,6 +90,17 @@ class _SelecionarCantidadPageState
         ),
       );
     }
+  }
+
+  @override
+  void dispose() {
+    unitsController.dispose();
+    cajaController.dispose();
+    subcajaController.dispose();
+    paletController.dispose();
+    precioController.dispose();
+    descuento1Controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -385,7 +396,7 @@ class _SelecionarCantidadPageState
 
         if (!widget.seleccionarCantidadParam.addNewLineaDesdeArticulo) {
           if (widget.seleccionarCantidadParam.isUpdatingLinea()) {
-            await ref
+            ref
                 .read(
                   pedidoVentaEditPageControllerProvider(
                     widget.seleccionarCantidadParam.pedidoVentaParam,
@@ -397,7 +408,7 @@ class _SelecionarCantidadPageState
                       widget.seleccionarCantidadParam.posicionLinea,
                 );
           } else {
-            await ref
+            ref
                 .read(
                   pedidoVentaEditPageControllerProvider(
                     widget.seleccionarCantidadParam.pedidoVentaParam,
@@ -567,7 +578,7 @@ class _ArticuloInfo extends ConsumerWidget {
                                         .of(context)
                                         .pedido_edit_selectQuantity_artiuclosSustitutivos,
                                   ),
-                                  gapH4,
+                                  const Gap(4),
                                   SizedBox(
                                     height: 20,
                                     child: ListView.separated(
@@ -665,7 +676,7 @@ class TotalQuantityWidget extends ConsumerWidget {
                         color: Theme.of(context).colorScheme.onPrimaryContainer,
                       ),
                     ),
-                    gapH8,
+                    const Gap(8),
                     Text(
                       '${numberFormatCantidades(totalQuantity)} ${S.of(context).unidad}',
                       style: Theme.of(context).textTheme.titleSmall?.copyWith(
@@ -690,7 +701,7 @@ class TotalQuantityWidget extends ConsumerWidget {
                         color: Theme.of(context).colorScheme.onPrimaryContainer,
                       ),
                     ),
-                    gapH8,
+                    const Gap(8),
                     Text(
                       ref
                           .read(pedidoVentaRepositoryProvider)
@@ -773,7 +784,7 @@ class _UnitsFormField extends StatelessWidget {
                     extentOffset: unitsController.text.length,
                   ),
         ),
-        gapH4,
+        const Gap(4),
         Text(
           'x${numberFormatCantidades(ventaMultiplo)} ${S.of(context).unidad}',
           style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 9),
@@ -798,12 +809,10 @@ class _UnitsFormField extends StatelessWidget {
 
         setUnitsQuantity(multiploMasCercano);
         return '${S.of(context).pedido_edit_selectQuantity_tieneQueSerMultiploDe} $ventaMultiplo';
-      } else {
-        return null;
       }
-    } else {
-      return S.of(context).pedido_edit_selectQuantity_noPuedeEstarVacio;
+      return null;
     }
+    return S.of(context).pedido_edit_selectQuantity_noPuedeEstarVacio;
   }
 
   int setMultiploMasCercano(int quantity, int ventaMultiplo) {
@@ -871,7 +880,7 @@ class _CajaUnitsFormField extends StatelessWidget {
                     extentOffset: cajaController.text.length,
                   ),
         ),
-        gapH4,
+        const Gap(4),
         Text(
           'x${numberFormatCantidades(unidadesPorCaja)} ${S.of(context).unidad}',
           style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 9),
@@ -887,10 +896,7 @@ class _CajaUnitsFormField extends StatelessWidget {
         setUnitCajaQuantity(ventaMinimo % unidadesPorCaja);
         return '${S.of(context).pedido_edit_selectQuantity_minimo} $ventaMinimo ${S.of(context).unidad}';
       } else if ((quantity * unidadesPorCaja) % ventaMultiplo != 0) {
-        final multiploMasCercano = setMultiploMasCercanoCaja(
-          quantity,
-          ventaMultiplo,
-        );
+        final multiploMasCercano = setMultiploMasCercanoCaja(ventaMultiplo);
         cajaController.text = multiploMasCercano.toString();
 
         setUnitCajaQuantity(multiploMasCercano * unidadesPorCaja);
@@ -900,7 +906,7 @@ class _CajaUnitsFormField extends StatelessWidget {
     return null;
   }
 
-  int setMultiploMasCercanoCaja(int quantity, int ventaMultiplo) {
+  int setMultiploMasCercanoCaja(int ventaMultiplo) {
     var nuevaCantidad = 0;
     for (var i = ventaMultiplo; i > 0; i--) {
       if ((i * unidadesPorCaja) % ventaMultiplo == 0) {
@@ -965,7 +971,7 @@ class _SubcajaUnitsFormField extends StatelessWidget {
                     extentOffset: subcajaController.text.length,
                   ),
         ),
-        gapH4,
+        const Gap(4),
         Text(
           'x${numberFormatCantidades(unidadesPorSubcaja)} ${S.of(context).unidad}',
           style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 9),
@@ -981,10 +987,7 @@ class _SubcajaUnitsFormField extends StatelessWidget {
         setUnitSubcajaQuantity(ventaMinimo % unidadesPorSubcaja);
         return '${S.of(context).pedido_edit_selectQuantity_minimo} $ventaMinimo ${S.of(context).unidad}';
       } else if ((quantity * unidadesPorSubcaja) % ventaMultiplo != 0) {
-        final multiploMasCercano = setMultiploMasCercanoSubcaja(
-          quantity,
-          ventaMultiplo,
-        );
+        final multiploMasCercano = setMultiploMasCercanoSubcaja(ventaMultiplo);
         subcajaController.text = multiploMasCercano.toString();
 
         setUnitSubcajaQuantity(multiploMasCercano * unidadesPorSubcaja);
@@ -994,7 +997,7 @@ class _SubcajaUnitsFormField extends StatelessWidget {
     return null;
   }
 
-  int setMultiploMasCercanoSubcaja(int quantity, int ventaMultiplo) {
+  int setMultiploMasCercanoSubcaja(int ventaMultiplo) {
     var nuevaCantidad = 0;
     for (var i = ventaMultiplo; i > 0; i--) {
       if ((i * unidadesPorSubcaja) % ventaMultiplo == 0) {
@@ -1059,7 +1062,7 @@ class _PaletUnitsFormField extends StatelessWidget {
                     extentOffset: paletController.text.length,
                   ),
         ),
-        gapH4,
+        const Gap(4),
         Text(
           'x${numberFormatCantidades(unidadesPorPalet)} ${S.of(context).unidad}',
           style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 9),
@@ -1190,9 +1193,9 @@ class _ArticuloPrecioContainer extends ConsumerWidget {
                               ),
                     ),
                   ),
-                  gapW16,
+                  const Gap(16),
                   const VerticalDivider(),
-                  gapW16,
+                  const Gap(16),
                   Expanded(
                     child: FormBuilderTextField(
                       name: 'dto1',
@@ -1237,7 +1240,7 @@ class _ArticuloPrecioContainer extends ConsumerWidget {
                 ],
               ),
             ),
-            gapH4,
+            const Gap(4),
             articuloPrecioValue.maybeWhen(
               orElse: () => Container(),
               data:

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../domain/cliente_contacto_imp.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
+import '../../domain/cliente_contacto_imp.dart';
 
 class ClienteContactoImpListTile extends ConsumerWidget {
   const ClienteContactoImpListTile({
@@ -17,7 +18,7 @@ class ClienteContactoImpListTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
-      padding: listPadding,
+      padding: kPaddingList,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -41,7 +42,7 @@ class ClienteContactoImpListTile extends ConsumerWidget {
                     ),
                   ],
                 ),
-                gapH4,
+                const Gap(4),
                 if (clienteContactoImp.nombre != null)
                   Text(
                     clienteContactoImp.getName(
@@ -58,7 +59,7 @@ class ClienteContactoImpListTile extends ConsumerWidget {
                         color: Theme.of(context).textTheme.bodySmall?.color,
                         size: 14,
                       ),
-                      gapW4,
+                      const Gap(4),
                       Flexible(
                         child: Text(
                           clienteContactoImp.email!,
@@ -79,7 +80,7 @@ class ClienteContactoImpListTile extends ConsumerWidget {
                         color: Theme.of(context).textTheme.bodySmall?.color,
                         size: 14,
                       ),
-                      gapW4,
+                      const Gap(4),
                       Flexible(
                         child: Text(
                           clienteContactoImp.telefono1!,
@@ -100,7 +101,7 @@ class ClienteContactoImpListTile extends ConsumerWidget {
                         color: Theme.of(context).textTheme.bodySmall?.color,
                         size: 14,
                       ),
-                      gapW4,
+                      const Gap(4),
                       Text(
                         clienteContactoImp.telefono2!,
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(

@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'descuento_general.freezed.dart';
 
 @freezed
-class DescuentoGeneral with _$DescuentoGeneral {
+abstract class DescuentoGeneral with _$DescuentoGeneral {
   const DescuentoGeneral._();
   const factory DescuentoGeneral({
     required String descuentoGeneralId,

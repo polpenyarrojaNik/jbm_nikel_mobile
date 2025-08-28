@@ -8,7 +8,7 @@ part 'articulo_ventas_mes_todos_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class ArticuloVentasMesTodosDTO with _$ArticuloVentasMesTodosDTO {
+abstract class ArticuloVentasMesTodosDTO with _$ArticuloVentasMesTodosDTO {
   const ArticuloVentasMesTodosDTO._();
   const factory ArticuloVentasMesTodosDTO({
     @JsonKey(name: 'MES') required int mes,

@@ -1,12 +1,12 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../core/domain/pais.dart';
 
+import '../../../core/domain/pais.dart';
 import 'cliente_direccion_imp.dart';
 
 part 'cliente_direccion.freezed.dart';
 
 @freezed
-class ClienteDireccion with _$ClienteDireccion {
+abstract class ClienteDireccion with _$ClienteDireccion {
   const ClienteDireccion._();
   const factory ClienteDireccion({
     required String clienteId,

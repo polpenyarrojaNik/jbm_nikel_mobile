@@ -42,9 +42,12 @@ abstract class GeolocationEntityDTO with _$GeolocationEntityDTO {
 
   String get formatAddress {
     if (extra != null && extra?.subpremise != null) {
-      return '$streetName${streetNumber != null ? ' $streetNumber' : null}, ${extra?.subpremise}';
+      final subpremise = extra?.subpremise;
+      final address =
+          '$streetName${streetNumber != null ? ' $streetNumber' : ''}';
+      return subpremise != null ? '$address, $subpremise' : address;
     }
-    return '$streetName${streetNumber != null ? ' $streetNumber' : null}';
+    return '$streetName${streetNumber != null ? ' $streetNumber' : ''}';
   }
 }
 

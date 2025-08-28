@@ -10,7 +10,7 @@ part 'devolucion_motivo_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class DevolucionMotivoDTO
+abstract class DevolucionMotivoDTO
     with _$DevolucionMotivoDTO
     implements Insertable<DevolucionMotivoDTO> {
   const DevolucionMotivoDTO._();
@@ -55,7 +55,7 @@ class DevolucionMotivoDTO
       descripcionCN: descripcionCN,
       descripcionEL: descripcionEL,
       lastUpdated: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
+      deleted: (deleted == 'S'),
     );
   }
 

@@ -1,8 +1,8 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../domain/articulo_empresa_iva.dart';
 
 import '../../../core/infrastructure/remote_database.dart';
+import '../domain/articulo_empresa_iva.dart';
 
 part 'articulo_empresa_iva_dto.freezed.dart';
 part 'articulo_empresa_iva_dto.g.dart';
@@ -10,7 +10,7 @@ part 'articulo_empresa_iva_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class ArticuloEmpresaIvaDTO
+abstract class ArticuloEmpresaIvaDTO
     with _$ArticuloEmpresaIvaDTO
     implements Insertable<ArticuloEmpresaIvaDTO> {
   const ArticuloEmpresaIvaDTO._();
@@ -31,7 +31,7 @@ class ArticuloEmpresaIvaDTO
       empresaId: empresaId,
       iva: iva,
       lastUpdated: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
+      deleted: (deleted == 'S'),
     );
   }
 

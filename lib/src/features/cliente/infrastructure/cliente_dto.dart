@@ -25,7 +25,7 @@ part 'cliente_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
+abstract class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
   const ClienteDTO._();
   const factory ClienteDTO({
     @JsonKey(name: 'CLIENTE_ID') required String id,
@@ -185,7 +185,7 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       ),
       riesgoExcedido: calculateRiesgoExcedido(riesgoConcedido, divisaId!),
       obvservacionesInternas: obvservacionesInternas,
-      clientePotencial: (clientePotencial == 'S') ? true : false,
+      clientePotencial: (clientePotencial == 'S'),
       clienteEstadoPotencial: clienteEstadoPotencial,
       clienteTipoPotencial: clienteTipoPotencial,
       representante1Id: representante1Id,
@@ -204,7 +204,7 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       importePortes2: importePortes2,
       importePortes3: importePortes3,
       lastUpdated: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
+      deleted: (deleted == 'S'),
     );
   }
 
@@ -294,27 +294,23 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
   }
 
   Money calculateRiesgoExcedido(double? riesgoConcedido, String divisaId) {
-    try {
-      final riesgoActual = calculateRiesgoActual(
-        riesgoPendienteCobroVencido,
-        riesgoPendienteCobroNoVencido,
-        riesgoPendienteServir,
-        riesgoPendienteFacturar,
-        divisaId,
-      );
+    final riesgoActual = calculateRiesgoActual(
+      riesgoPendienteCobroVencido,
+      riesgoPendienteCobroNoVencido,
+      riesgoPendienteServir,
+      riesgoPendienteFacturar,
+      divisaId,
+    );
 
-      final riesgoExcedidoFixed =
-          Fixed.parse(riesgoConcedido?.toString() ?? '0') - riesgoActual.amount;
+    final riesgoExcedidoFixed =
+        Fixed.parse(riesgoConcedido?.toString() ?? '0') - riesgoActual.amount;
 
-      return riesgoExcedidoFixed.isNegative
-          ? Money.fromFixedWithCurrency(
-            riesgoExcedidoFixed.abs,
-            Currencies().find(divisaId)!,
-          )
-          : Money.parseWithCurrency('0', Currencies().find(divisaId)!);
-    } catch (e) {
-      rethrow;
-    }
+    return riesgoExcedidoFixed.isNegative
+        ? Money.fromFixedWithCurrency(
+          riesgoExcedidoFixed.abs,
+          Currencies().find(divisaId)!,
+        )
+        : Money.parseWithCurrency('0', Currencies().find(divisaId)!);
   }
 }
 

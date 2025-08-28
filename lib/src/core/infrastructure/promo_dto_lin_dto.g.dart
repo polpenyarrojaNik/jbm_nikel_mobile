@@ -6,9 +6,8 @@ part of 'promo_dto_lin_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PromoDtoLineaDTOImpl _$$PromoDtoLineaDTOImplFromJson(
-        Map<String, dynamic> json) =>
-    _$PromoDtoLineaDTOImpl(
+_PromoDtoLineaDTO _$PromoDtoLineaDTOFromJson(Map<String, dynamic> json) =>
+    _PromoDtoLineaDTO(
       empresaId: json['EMPRESA_ID'] as String,
       promoDtoId: json['PROMO_DTO_ID'] as String,
       articuloId: json['ARTICULO_ID'] as String,
@@ -20,8 +19,7 @@ _$PromoDtoLineaDTOImpl _$$PromoDtoLineaDTOImplFromJson(
       deleted: json['DELETED'] as String? ?? 'N',
     );
 
-Map<String, dynamic> _$$PromoDtoLineaDTOImplToJson(
-        _$PromoDtoLineaDTOImpl instance) =>
+Map<String, dynamic> _$PromoDtoLineaDTOToJson(_PromoDtoLineaDTO instance) =>
     <String, dynamic>{
       'EMPRESA_ID': instance.empresaId,
       'PROMO_DTO_ID': instance.promoDtoId,

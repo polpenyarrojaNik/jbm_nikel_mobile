@@ -185,9 +185,10 @@ class _DraggableFormState extends ConsumerState<DraggableForm> {
                       updateDataValue: (selectedTextType) {
                         if (selectedTextType != RecognizedTextType.name) {
                           if (name != null) {
-                            setTextType(selectedTextType, name!);
-                            name = null;
-                            setState(() {});
+                            setState(() {
+                              setTextType(selectedTextType, name!);
+                              name = null;
+                            });
                           }
                         }
                       },
@@ -199,9 +200,10 @@ class _DraggableFormState extends ConsumerState<DraggableForm> {
                       updateDataValue: (selectedTextType) {
                         if (selectedTextType != RecognizedTextType.company) {
                           if (company != null) {
-                            setTextType(selectedTextType, company!);
-                            company = null;
-                            setState(() {});
+                            setState(() {
+                              setTextType(selectedTextType, company!);
+                              company = null;
+                            });
                           }
                         }
                       },
@@ -213,9 +215,10 @@ class _DraggableFormState extends ConsumerState<DraggableForm> {
                       updateDataValue: (selectedTextType) {
                         if (selectedTextType != RecognizedTextType.cargo) {
                           if (cargo != null) {
-                            setTextType(selectedTextType, cargo!);
-                            cargo = null;
-                            setState(() {});
+                            setState(() {
+                              setTextType(selectedTextType, cargo!);
+                              cargo = null;
+                            });
                           }
                         }
                       },
@@ -226,10 +229,10 @@ class _DraggableFormState extends ConsumerState<DraggableForm> {
                       title: S.of(context).addresses,
                       updateDataListValue: (selectedTextType, text) {
                         if (selectedTextType != RecognizedTextType.address) {
-                          setTextType(selectedTextType, text);
-                          address.remove(text);
-
-                          setState(() {});
+                          setState(() {
+                            setTextType(selectedTextType, text);
+                            address.remove(text);
+                          });
                         }
                       },
                     ),
@@ -240,10 +243,10 @@ class _DraggableFormState extends ConsumerState<DraggableForm> {
                       updateDataValue: (selectedTextType) {
                         if (selectedTextType != RecognizedTextType.email) {
                           if (email != null) {
-                            setTextType(selectedTextType, email!);
-                            email = null;
-
-                            setState(() {});
+                            setState(() {
+                              setTextType(selectedTextType, email!);
+                              email = null;
+                            });
                           }
                         }
                       },
@@ -254,20 +257,21 @@ class _DraggableFormState extends ConsumerState<DraggableForm> {
                       title: S.of(context).phones,
                       updateDataListValue: (selectedTextType, text) {
                         if (selectedTextType != RecognizedTextType.telf) {
-                          setTextType(selectedTextType, text);
-                          phones.remove(text);
-
-                          setState(() {});
+                          setState(() {
+                            setTextType(selectedTextType, text);
+                            phones.remove(text);
+                          });
                         }
                       },
                     ),
                     const Divider(),
                     DottedBorder(
-                      padding: const EdgeInsets.all(10),
-                      color: Colors.grey,
-                      radius: const Radius.circular(5),
-                      strokeWidth: 0.5,
-                      dashPattern: const [5, 5],
+                      options: RectDottedBorderOptions(
+                        padding: const EdgeInsets.all(10),
+                        color: Colors.grey,
+                        strokeWidth: 0.5,
+                        dashPattern: const [5, 5],
+                      ),
                       child: SizedBox(
                         width: double.infinity,
                         child:
@@ -290,10 +294,12 @@ class _DraggableFormState extends ConsumerState<DraggableForm> {
                                                       if (selectedRecognizedTextType !=
                                                           RecognizedTextType
                                                               .unknown) {
-                                                        unreconizedList.remove(
-                                                          unreconizedText,
-                                                        );
-                                                        setState(() {});
+                                                        setState(() {
+                                                          unreconizedList
+                                                              .remove(
+                                                                unreconizedText,
+                                                              );
+                                                        });
                                                       }
                                                     },
                                                   ),
@@ -454,22 +460,24 @@ class TargetTextField extends StatelessWidget {
                   ? GestureDetector(
                     onTap: () => openSelectedTextTypeDialog(context, value),
                     child: DottedBorder(
-                      padding: const EdgeInsets.all(10),
-                      color: Colors.grey,
-                      radius: const Radius.circular(5),
-                      strokeWidth: 0.5,
-                      dashPattern: const [5, 5],
+                      options: RectDottedBorderOptions(
+                        padding: const EdgeInsets.all(10),
+                        color: Colors.grey,
+                        strokeWidth: 0.5,
+                        dashPattern: const [5, 5],
+                      ),
                       child: Chip(
                         label: Text(value!, textAlign: TextAlign.center),
                       ),
                     ),
                   )
                   : DottedBorder(
-                    padding: const EdgeInsets.all(10),
-                    color: Colors.grey,
-                    radius: const Radius.circular(5),
-                    strokeWidth: 0.5,
-                    dashPattern: const [5, 5],
+                    options: RectDottedBorderOptions(
+                      padding: const EdgeInsets.all(10),
+                      color: Colors.grey,
+                      strokeWidth: 0.5,
+                      dashPattern: const [5, 5],
+                    ),
                     child: Center(
                       child: Text(
                         S.of(context).empty,
@@ -525,11 +533,12 @@ class TargetListView extends StatelessWidget {
         const SizedBox(width: 8),
         Expanded(
           child: DottedBorder(
-            padding: const EdgeInsets.all(10),
-            color: Colors.grey,
-            radius: const Radius.circular(5),
-            strokeWidth: 0.5,
-            dashPattern: const [5, 5],
+            options: RectDottedBorderOptions(
+              padding: const EdgeInsets.all(10),
+              color: Colors.grey,
+              strokeWidth: 0.5,
+              dashPattern: const [5, 5],
+            ),
             child: SizedBox(
               width: double.infinity,
               child:
@@ -603,7 +612,7 @@ class ImageFileWidget extends StatelessWidget {
     return Container(
       width: double.maxFinite,
       color: Colors.black,
-      child: Image.file(imageFile),
+      child: Image.file(semanticLabel: 'imageFile', imageFile),
     );
   }
 }
@@ -651,20 +660,22 @@ class SelectTextTypeDialog extends StatelessWidget {
   }
 
   String _getRecognizedTextName(RecognizedTextType recognizedTextType) {
-    if (recognizedTextType == RecognizedTextType.name) {
-      return S.current.name;
-    } else if (recognizedTextType == RecognizedTextType.company) {
-      return S.current.company;
-    } else if (recognizedTextType == RecognizedTextType.address) {
-      return S.current.addresses;
-    } else if (recognizedTextType == RecognizedTextType.cargo) {
-      return S.current.position;
-    } else if (recognizedTextType == RecognizedTextType.email) {
-      return S.current.email;
-    } else if (recognizedTextType == RecognizedTextType.telf) {
-      return S.current.phones;
-    } else {
-      return S.current.unknown;
+    switch (recognizedTextType) {
+      case RecognizedTextType.name:
+        return S.current.name;
+      case RecognizedTextType.company:
+        return S.current.company;
+      case RecognizedTextType.address:
+        return S.current.addresses;
+      case RecognizedTextType.cargo:
+        return S.current.position;
+      case RecognizedTextType.email:
+        return S.current.email;
+      case RecognizedTextType.telf:
+        return S.current.phones;
+
+      default:
+        return S.current.unknown;
     }
   }
 }

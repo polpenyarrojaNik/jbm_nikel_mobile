@@ -315,7 +315,7 @@ class _IconStepperState extends State<IconStepper>
     );
   }
 
-  Widget _buildCircleChild(int index, bool oldState) {
+  Widget _buildCircleChild(int index) {
     final isDarkActive = _isDark() && widget.steps[index].isActive;
 
     return widget.steps[index].icon == null
@@ -334,17 +334,17 @@ class _IconStepperState extends State<IconStepper>
   }
 
   Color _circleColor(int index) {
-    final state = widget.steps[index].state;
     final colorScheme = Theme.of(context).colorScheme;
 
     if (widget.steps[index].isActive) {
+      final state = widget.steps[index].state;
+
       switch (state) {
-        case IconStepState.enabled:
+        case IconStepState.enabled || IconStepState.editing:
           return !_isDark() ? colorScheme.primary : colorScheme.secondary;
         case IconStepState.disabled:
           return !_isDark() ? _kDisabledLight : _kDisabledDark;
-        case IconStepState.editing:
-          return !_isDark() ? colorScheme.primary : colorScheme.secondary;
+
         case IconStepState.complete:
           return !_isDark() ? _kCompletedLight : _kCompletedDark;
         case IconStepState.error:
@@ -357,7 +357,7 @@ class _IconStepperState extends State<IconStepper>
     }
   }
 
-  Widget _buildCircle(int index, bool oldState) {
+  Widget _buildCircle(int index) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8.0),
       width: _kStepSize,
@@ -369,17 +369,12 @@ class _IconStepperState extends State<IconStepper>
           color: _circleColor(index),
           shape: BoxShape.circle,
         ),
-        child: Center(
-          child: _buildCircleChild(
-            index,
-            oldState && widget.steps[index].state == IconStepState.error,
-          ),
-        ),
+        child: Center(child: _buildCircleChild(index)),
       ),
     );
   }
 
-  Widget _buildTriangle(int index, bool oldState) {
+  Widget _buildTriangle(int index) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8.0),
       width: _kStepSize,
@@ -398,10 +393,7 @@ class _IconStepperState extends State<IconStepper>
                 0.0,
                 0.8,
               ), // 0.8 looks better than the geometrical 0.33.
-              child: _buildCircleChild(
-                index,
-                oldState && widget.steps[index].state != IconStepState.error,
-              ),
+              child: _buildCircleChild(index),
             ),
           ),
         ),
@@ -410,22 +402,24 @@ class _IconStepperState extends State<IconStepper>
   }
 
   Widget _buildIcon(int index) {
-    return widget.steps[index].state != _oldStates[index]
-        ? AnimatedCrossFade(
-          firstChild: _buildCircle(index, true),
-          secondChild: _buildTriangle(index, true),
-          firstCurve: const Interval(0.0, 0.6, curve: Curves.fastOutSlowIn),
-          secondCurve: const Interval(0.4, 1.0, curve: Curves.fastOutSlowIn),
-          sizeCurve: Curves.fastOutSlowIn,
-          crossFadeState:
-              widget.steps[index].state == IconStepState.error
-                  ? CrossFadeState.showSecond
-                  : CrossFadeState.showFirst,
-          duration: kThemeAnimationDuration,
-        )
-        : widget.steps[index].state != IconStepState.error
-        ? _buildCircle(index, false)
-        : _buildTriangle(index, false);
+    if (widget.steps[index].state != _oldStates[index]) {
+      return AnimatedCrossFade(
+        firstChild: _buildCircle(index),
+        secondChild: _buildTriangle(index),
+        firstCurve: const Interval(0.0, 0.6, curve: Curves.fastOutSlowIn),
+        secondCurve: const Interval(0.4, 1.0, curve: Curves.fastOutSlowIn),
+        sizeCurve: Curves.fastOutSlowIn,
+        crossFadeState:
+            widget.steps[index].state == IconStepState.error
+                ? CrossFadeState.showSecond
+                : CrossFadeState.showFirst,
+        duration: kThemeAnimationDuration,
+      );
+    }
+    if (widget.steps[index].state != IconStepState.error) {
+      return _buildCircle(index);
+    }
+    return _buildTriangle(index);
   }
 
   Widget _buildVerticalControls() {
@@ -449,39 +443,42 @@ class _IconStepperState extends State<IconStepper>
         // and cancel button styles have been configured to match the original
         // version of this widget.
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
+        children: [
           Expanded(
             child: TextButton(
               onPressed: widget.onStepCancel,
               style: ButtonStyle(
-                foregroundColor: WidgetStateProperty.resolveWith<Color?>((
+                foregroundColor: WidgetStateProperty.resolveWith((
                   Set<WidgetState> states,
                 ) {
-                  return states.contains(WidgetState.disabled)
-                      ? null
-                      : (_isDark()
-                          ? colorScheme.onSurface
-                          : colorScheme.onPrimary);
-                }),
-                iconColor: WidgetStateProperty.resolveWith<Color?>((
-                  Set<WidgetState> states,
-                ) {
-                  return states.contains(WidgetState.disabled)
-                      ? null
-                      : _isDark()
+                  if (states.contains(WidgetState.disabled)) {
+                    return null;
+                  }
+                  return _isDark()
                       ? colorScheme.onSurface
                       : colorScheme.onPrimary;
                 }),
-                backgroundColor: WidgetStateProperty.resolveWith<Color?>((
+                iconColor: WidgetStateProperty.resolveWith((
                   Set<WidgetState> states,
                 ) {
-                  return states.contains(WidgetState.disabled)
-                      ? null
-                      : _isDark()
+                  if (states.contains(WidgetState.disabled)) {
+                    return null;
+                  }
+                  return _isDark()
+                      ? colorScheme.onSurface
+                      : colorScheme.onPrimary;
+                }),
+                backgroundColor: WidgetStateProperty.resolveWith((
+                  Set<WidgetState> states,
+                ) {
+                  if (states.contains(WidgetState.disabled)) {
+                    return null;
+                  }
+                  return _isDark()
                       ? colorScheme.onPrimary
                       : colorScheme.primary;
                 }),
-                shape: WidgetStateProperty.all<OutlinedBorder>(buttonShape),
+                shape: WidgetStateProperty.all(buttonShape),
               ),
               child: const Icon(Icons.navigate_before),
             ),
@@ -491,34 +488,37 @@ class _IconStepperState extends State<IconStepper>
             child: TextButton(
               onPressed: widget.onStepContinue,
               style: ButtonStyle(
-                foregroundColor: WidgetStateProperty.resolveWith<Color?>((
+                foregroundColor: WidgetStateProperty.resolveWith((
                   Set<WidgetState> states,
                 ) {
-                  return states.contains(WidgetState.disabled)
-                      ? null
-                      : _isDark()
+                  if (states.contains(WidgetState.disabled)) {
+                    return null;
+                  }
+                  return _isDark()
                       ? colorScheme.onSurface
                       : colorScheme.onPrimary;
                 }),
-                iconColor: WidgetStateProperty.resolveWith<Color?>((
+                iconColor: WidgetStateProperty.resolveWith((
                   Set<WidgetState> states,
                 ) {
-                  return states.contains(WidgetState.disabled)
-                      ? null
-                      : _isDark()
+                  if (states.contains(WidgetState.disabled)) {
+                    return null;
+                  }
+                  return _isDark()
                       ? colorScheme.onSurface
                       : colorScheme.onPrimary;
                 }),
-                backgroundColor: WidgetStateProperty.resolveWith<Color?>((
+                backgroundColor: WidgetStateProperty.resolveWith((
                   Set<WidgetState> states,
                 ) {
-                  return states.contains(WidgetState.disabled)
-                      ? null
-                      : _isDark()
-                      ? colorScheme.onPrimary
-                      : colorScheme.primary;
+                  if (states.contains(WidgetState.disabled)) {
+                    return null;
+                  }
+                  return _isDark()
+                      ? colorScheme.onSurface
+                      : colorScheme.onPrimary;
                 }),
-                shape: WidgetStateProperty.all<OutlinedBorder>(buttonShape),
+                shape: WidgetStateProperty.all(buttonShape),
               ),
               child:
                   (widget.currentStep == widget.steps.length - 1)
@@ -544,9 +544,9 @@ class _IconStepperState extends State<IconStepper>
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 24.0),
       child: Row(
-        children: <Widget>[
+        children: [
           Column(
-            children: <Widget>[
+            children: [
               // Line parts are always added in order for the ink splash to
               // flood the tips of the connector lines.
               _buildLine(!_isFirst(index)),
@@ -561,7 +561,7 @@ class _IconStepperState extends State<IconStepper>
 
   Widget _buildVerticalBody(int index) {
     return Stack(
-      children: <Widget>[
+      children: [
         PositionedDirectional(
           start: 24.0,
           top: 0.0,
@@ -585,10 +585,7 @@ class _IconStepperState extends State<IconStepper>
               bottom: 24.0,
             ),
             child: Column(
-              children: <Widget>[
-                widget.steps[index].content,
-                _buildVerticalControls(),
-              ],
+              children: [widget.steps[index].content, _buildVerticalControls()],
             ),
           ),
           firstCurve: const Interval(0.0, 0.6, curve: Curves.fastOutSlowIn),
@@ -608,11 +605,11 @@ class _IconStepperState extends State<IconStepper>
     return ListView(
       shrinkWrap: true,
       physics: widget.physics,
-      children: <Widget>[
+      children: [
         for (int i = 0; i < widget.steps.length; i += 1)
           Column(
             key: _keys[i],
-            children: <Widget>[
+            children: [
               InkWell(
                 onTap:
                     widget.steps[i].state != IconStepState.disabled
@@ -651,7 +648,7 @@ class _IconStepperState extends State<IconStepper>
                   : null,
           canRequestFocus: widget.steps[i].state != IconStepState.disabled,
           child: Row(
-            children: <Widget>[
+            children: [
               SizedBox(height: 72.0, child: Center(child: _buildIcon(i))),
             ],
           ),
@@ -668,7 +665,7 @@ class _IconStepperState extends State<IconStepper>
     ];
 
     return Column(
-      children: <Widget>[
+      children: [
         Material(
           elevation: 2.0,
           child: Container(
@@ -727,7 +724,7 @@ class _TrianglePainter extends CustomPainter {
     final base = size.width;
     final halfBase = size.width / 2.0;
     final height = size.height;
-    final points = <Offset>[
+    final points = [
       Offset(0.0, height),
       Offset(base, height),
       Offset(halfBase, 0.0),

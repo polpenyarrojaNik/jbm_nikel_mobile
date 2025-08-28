@@ -417,5 +417,6 @@
   "cancel": "Cancelar",
   "amount": "Importe",
   "freightCharge": "Franquicia Portes",
-  "until": "Hasta"
+  "until": "Hasta",
+  "unknownFamily": "Familia desconocida"
 }

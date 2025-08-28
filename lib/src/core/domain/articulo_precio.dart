@@ -5,7 +5,7 @@ import '../../features/pedido_venta/domain/precio.dart';
 part 'articulo_precio.freezed.dart';
 
 @freezed
-class ArticuloPrecio with _$ArticuloPrecio {
+abstract class ArticuloPrecio with _$ArticuloPrecio {
   const ArticuloPrecio._();
   const factory ArticuloPrecio({
     required Precio precio,

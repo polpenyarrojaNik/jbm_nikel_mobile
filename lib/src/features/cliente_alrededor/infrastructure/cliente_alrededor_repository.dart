@@ -1,14 +1,14 @@
 import 'package:drift/drift.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
+
+import '../../../core/exceptions/app_exception.dart';
 import '../../../core/infrastructure/pais_dto.dart';
+import '../../../core/infrastructure/remote_database.dart';
 import '../../cliente/infrastructure/cliente_direccion_dto.dart';
 import '../../cliente/infrastructure/cliente_dto.dart';
 import '../../usuario/application/usuario_notifier.dart';
 import '../../usuario/domain/usuario.dart';
-
-import '../../../core/exceptions/app_exception.dart';
-import '../../../core/infrastructure/remote_database.dart';
 import '../domain/cliente_alrededor.dart';
 import '../domain/get_cliente_alrededor_arg.dart';
 import 'cliente_alrededor_dto.dart';
@@ -48,34 +48,26 @@ class ClienteAlrededorRepository {
   ClienteAlrededorRepository(this.remoteDb, this.usuario);
 
   Future<Position> getUbicacionActual() async {
-    try {
-      await checkPermission();
-      return Geolocator.getCurrentPosition();
-    } catch (e) {
-      rethrow;
-    }
+    await checkPermission();
+    return Geolocator.getCurrentPosition();
   }
 
   Future<List<ClienteAlrededor>> getClienteAlrededoresLista({
     required GetClienteAlrededorArg clienteAlrededorArg,
   }) async {
     final clienteAlrededorList = <ClienteAlrededor>[];
-    try {
-      final clienteDireccionesFiscalesAlrededorList =
-          await _getClienteDireccionesFiscalesList(clienteAlrededorArg);
-      clienteAlrededorList.addAll(clienteDireccionesFiscalesAlrededorList);
+    final clienteDireccionesFiscalesAlrededorList =
+        await _getClienteDireccionesFiscalesList(clienteAlrededorArg);
+    clienteAlrededorList.addAll(clienteDireccionesFiscalesAlrededorList);
 
-      if (clienteAlrededorArg.showDireccionesEnvio) {
-        final clienteDireccionesAlrededorList =
-            await _getClienteDireccionesAlrededorList(clienteAlrededorArg);
+    if (clienteAlrededorArg.showDireccionesEnvio) {
+      final clienteDireccionesAlrededorList =
+          await _getClienteDireccionesAlrededorList(clienteAlrededorArg);
 
-        clienteAlrededorList.addAll(clienteDireccionesAlrededorList);
-      }
-
-      return clienteAlrededorList;
-    } catch (e) {
-      rethrow;
+      clienteAlrededorList.addAll(clienteDireccionesAlrededorList);
     }
+
+    return clienteAlrededorList;
   }
 
   Future<List<ClienteAlrededor>> _getClienteDireccionesFiscalesList(
@@ -127,8 +119,11 @@ class ClienteAlrededorRepository {
 
         return clienteAlerdedorDTO.toDomain(pais: paisDTO?.toDomain());
       }).get();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -191,27 +186,26 @@ class ClienteAlrededorRepository {
 
         return clienteAlrededorDto.toDomain(pais: paisDTO?.toDomain());
       }).get();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
   Future<void> checkPermission() async {
     var permission = await Geolocator.checkPermission();
-    try {
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
         permission = await Geolocator.requestPermission();
-        if (permission == LocationPermission.denied) {
-          permission = await Geolocator.requestPermission();
-          return Future.error('Location permissions are denied');
-        }
+        return Future.error('Location permissions are denied');
       }
+    }
 
-      if (permission == LocationPermission.deniedForever) {
-        throw 'Location permissions are permanently denied, we cannot request permissions.';
-      }
-    } catch (e) {
-      rethrow;
+    if (permission == LocationPermission.deniedForever) {
+      throw 'Location permissions are permanently denied, we cannot request permissions.';
     }
   }
 
@@ -220,9 +214,12 @@ class ClienteAlrededorRepository {
       final query = (remoteDb.select(remoteDb.clienteTable)
         ..where((t) => t.id.equals(clienteId)));
 
-      return query.getSingle();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+      return await query.getSingle();
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 }

@@ -1,10 +1,11 @@
-import 'dart:io';
+import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:gap/gap.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -17,7 +18,6 @@ import '../../../core/presentation/common_widgets/column_field_text_detail.dart'
 import '../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
-import '../../../core/presentation/theme/app_sizes.dart';
 import '../../../core/presentation/toasts.dart';
 import '../../../core/routing/app_auto_router.dart';
 import '../../notifications/core/application/notification_provider.dart';
@@ -42,16 +42,13 @@ class SettingsPage extends ConsumerWidget {
 
     ref.listen<AsyncValue<String?>>(
       notificationNotifierProvider,
-      (_, state) => state.maybeWhen(
-        orElse: () {},
-        data: (notificationId) {
-          if (notificationId != null) {
-            context.router.push(
-              NotificationDetailRoute(notificationId: notificationId),
-            );
-          }
-        },
-      ),
+      (_, state) => state.whenData((notificationId) {
+        if (notificationId != null) {
+          context.router.push(
+            NotificationDetailRoute(notificationId: notificationId),
+          );
+        }
+      }),
     );
 
     ref.listen<ExportDatabaseControllerState>(
@@ -60,14 +57,13 @@ class SettingsPage extends ConsumerWidget {
         state.maybeWhen(
           orElse: () => null,
           loading:
-              () => showToast(S.of(context).settings_creandoArchivo, context),
-          data:
-              (file) => enviarDatabase(
-                file: file,
-                context: context,
-                usuarioId: usuario!.id,
+              () => unawaited(
+                showToast(S.of(context).settings_creandoArchivo, context),
               ),
-          error: (error, _) => showToast(error.toString(), context),
+          data:
+              (file) =>
+                  enviarDatabase(context: context, usuarioId: usuario!.id),
+          error: (error, _) => unawaited(showToast(error.toString(), context)),
         );
       },
     );
@@ -118,7 +114,7 @@ class SettingsPage extends ConsumerWidget {
               error: (e, _) => ErrorMessageWidget(e.toString()),
               loading: () => const ProgressIndicatorWidget(),
             ),
-            gapH16,
+            const Gap(16),
             stateSync.maybeWhen(
               orElse: () => Container(),
               synchronized: () => const _ActualizarArchivoBaseDeDatosButton(),
@@ -145,12 +141,11 @@ class SettingsPage extends ConsumerWidget {
 
   void enviarDatabase({
     required BuildContext context,
-    required File file,
     required String usuarioId,
   }) async {
-    final size = MediaQuery.of(context).size;
+    final size = MediaQuery.sizeOf(context);
     final directory = await getApplicationDocumentsDirectory();
-    final file = XFile('${directory.path}/$localDatabaseName');
+    final file = XFile('${directory.path}/$kLocalDatabaseName');
     final params = ShareParams(
       files: [XFile(file.path)],
       subject: 'Base de datos local #$usuarioId',
@@ -168,8 +163,7 @@ class _ActualizarArchivoBaseDeDatosButton extends ConsumerWidget {
     ref.listen<DeleteDatabaseControllerState>(
       deleteDatabaseControllerProvider,
       (_, state) {
-        state.maybeWhen(
-          orElse: () {},
+        state.whenOrNull(
           data: (deleted) {
             if (deleted) {
               ref.invalidate(syncNotifierProvider);
@@ -209,8 +203,7 @@ class _ReemplazarArchivoBaseDeDatosLocalButton extends ConsumerWidget {
     ref.listen<DeleteLocalDatabaseControllerState>(
       deleteLocalDatabaseControllerProvider,
       (_, state) {
-        state.maybeWhen(
-          orElse: () {},
+        state.whenOrNull(
           data: (deleted) {
             if (deleted) {
               ref.invalidate(syncNotifierProvider);
@@ -362,7 +355,7 @@ class _SignoutButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ElevatedButton(
-      onPressed: () => logout(context, ref),
+      onPressed: () => logout(ref),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -374,7 +367,7 @@ class _SignoutButton extends ConsumerWidget {
     );
   }
 
-  void logout(BuildContext context, WidgetRef ref) async {
+  void logout(WidgetRef ref) async {
     await ref.read(usuarioNotifierProvider.notifier).signOut();
   }
 }

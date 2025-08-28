@@ -1,5 +1,6 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'remote_database.dart';
 
 part 'promo_dto_cliente_dto.freezed.dart';
@@ -8,7 +9,7 @@ part 'promo_dto_cliente_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class PromoDtoClienteDTO
+abstract class PromoDtoClienteDTO
     with _$PromoDtoClienteDTO
     implements Insertable<PromoDtoClienteDTO> {
   const PromoDtoClienteDTO._();

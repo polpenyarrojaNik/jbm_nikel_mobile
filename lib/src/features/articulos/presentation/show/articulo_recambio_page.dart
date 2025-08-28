@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
@@ -33,7 +34,7 @@ class ArticuloRecambioPage extends ConsumerWidget {
       body: Column(
         children: [
           HeaderDatosRelacionados(entityId: articuloId, subtitle: description),
-          gapH8,
+          const Gap(8),
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
@@ -69,7 +70,7 @@ class ArticuloRecambioTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: listPadding,
+      padding: kPaddingList,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

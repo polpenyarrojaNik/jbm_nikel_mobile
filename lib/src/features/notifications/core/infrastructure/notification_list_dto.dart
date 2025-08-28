@@ -8,7 +8,7 @@ part 'notification_list_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class NotificationListDto with _$NotificationListDto {
+abstract class NotificationListDto with _$NotificationListDto {
   const NotificationListDto._();
   const factory NotificationListDto({
     @JsonKey(name: 'NOTIFICACION_GUID') required String notificacionId,

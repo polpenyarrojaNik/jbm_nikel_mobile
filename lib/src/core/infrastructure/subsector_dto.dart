@@ -12,7 +12,9 @@ part 'subsector_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class SubsectorDTO with _$SubsectorDTO implements Insertable<SubsectorDTO> {
+abstract class SubsectorDTO
+    with _$SubsectorDTO
+    implements Insertable<SubsectorDTO> {
   const SubsectorDTO._();
   const factory SubsectorDTO({
     @JsonKey(name: 'SECTOR_ID') required String sectorId,
@@ -40,7 +42,7 @@ class SubsectorDTO with _$SubsectorDTO implements Insertable<SubsectorDTO> {
       sector: sector,
       descripcion: getDescriptionInLocalLanguage(),
       lastUpdate: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
+      deleted: (deleted == 'S'),
     );
   }
 

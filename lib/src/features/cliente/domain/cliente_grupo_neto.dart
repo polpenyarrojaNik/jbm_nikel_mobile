@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'cliente_grupo_neto.freezed.dart';
 
 @freezed
-class ClienteGrupoNeto with _$ClienteGrupoNeto {
+abstract class ClienteGrupoNeto with _$ClienteGrupoNeto {
   const ClienteGrupoNeto._();
   const factory ClienteGrupoNeto({
     required String clienteId,

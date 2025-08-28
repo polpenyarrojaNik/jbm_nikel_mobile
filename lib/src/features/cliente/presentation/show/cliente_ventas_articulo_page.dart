@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/debouncer.dart';
@@ -10,7 +11,6 @@ import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart'
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
-import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/cliente_ventas_articulo.dart';
 import 'cliente_ventas_articulo_controller.dart';
 
@@ -47,7 +47,7 @@ class ClienteVentasArticuloPage extends ConsumerWidget {
             entityId: '#$clienteId ${nombreCliente ?? ''}',
             subtitle: null,
           ),
-          gapH8,
+          const Gap(8),
           VentasArticuloDataTable(clienteId: clienteId),
         ],
       ),
@@ -422,7 +422,7 @@ class _ClienteVentasArticuloDataList extends DataTableSource {
   );
 
   @override
-  DataRow? getRow(int i) => DataRow(
+  DataRow getRow(int i) => DataRow(
     selected: selectedRow == i,
     onLongPress: () => changedSelectedRowFunction(i),
     cells: [
@@ -535,5 +535,5 @@ class _ClienteVentasArticuloDataList extends DataTableSource {
   int get rowCount => clienteVentasArticuloList.length;
 
   @override
-  int get selectedRowCount => selectedRow;
+  int get selectedRowCount => selectedRow == -1 ? 0 : selectedRow;
 }

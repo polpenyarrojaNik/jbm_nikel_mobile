@@ -1,10 +1,10 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../../core/domain/pais.dart';
+import '../../../core/infrastructure/pais_dto.dart';
 import '../../../core/infrastructure/remote_database.dart';
 import '../domain/cliente_direccion.dart';
-
-import '../../../core/infrastructure/pais_dto.dart';
 import 'cliente_direccion_imp_dto.dart';
 
 part 'cliente_direccion_dto.freezed.dart';
@@ -13,7 +13,7 @@ part 'cliente_direccion_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class ClienteDireccionDTO
+abstract class ClienteDireccionDTO
     with _$ClienteDireccionDTO
     implements Insertable<ClienteDireccionDTO> {
   const ClienteDireccionDTO._();
@@ -79,12 +79,12 @@ class ClienteDireccionDTO
       pais: pais,
       latitud: latitud,
       longitud: longitud,
-      predeterminada: (predeterminada == 'S') ? true : false,
+      predeterminada: (predeterminada == 'S'),
       lastUpdated: lastUpdated,
       enviada: enviada,
       telefono: telefono,
       tratada: tratada,
-      deleted: (deleted == 'S') ? true : false,
+      deleted: (deleted == 'S'),
     );
   }
 

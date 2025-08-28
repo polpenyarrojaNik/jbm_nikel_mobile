@@ -1,12 +1,12 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../core/infrastructure/remote_database.dart';
-import '../domain/cliente_descuento.dart';
 
 import '../../../core/domain/familia.dart';
 import '../../../core/domain/subfamilia.dart';
 import '../../../core/infrastructure/familia_dto.dart';
+import '../../../core/infrastructure/remote_database.dart';
 import '../../../core/infrastructure/subfamilia_dto.dart';
+import '../domain/cliente_descuento.dart';
 
 part 'cliente_descuento_dto.freezed.dart';
 part 'cliente_descuento_dto.g.dart';
@@ -14,7 +14,7 @@ part 'cliente_descuento_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class ClienteDescuentoDTO
+abstract class ClienteDescuentoDTO
     with _$ClienteDescuentoDTO
     implements Insertable<ClienteDescuentoDTO> {
   const ClienteDescuentoDTO._();
@@ -46,7 +46,7 @@ class ClienteDescuentoDTO
       cantidadDesde: cantidadDesde,
       descuento: descuento,
       lastUpdated: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
+      deleted: (deleted == 'S'),
     );
   }
 

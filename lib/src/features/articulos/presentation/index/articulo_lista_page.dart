@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 import 'package:upgrader/upgrader.dart';
 
 import '../../../../../generated/l10n.dart';
@@ -12,7 +13,6 @@ import '../../../../core/presentation/common_widgets/async_value_ui.dart';
 import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
 import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
-import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../../notifications/core/application/notification_provider.dart';
 import '../../../sync/application/sync_notifier_provider.dart';
@@ -55,8 +55,7 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
 
     ref.listen<AsyncValue<String?>>(
       notificationNotifierProvider,
-      (_, state) => state.maybeWhen(
-        orElse: () {},
+      (_, state) => state.whenOrNull(
         data: (notificationId) {
           if (notificationId != null) {
             context.router.push(
@@ -156,12 +155,12 @@ class ArticleListViewWidget extends StatelessWidget {
               data:
                   (fechaUltimaSync) =>
                       UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
-              error: (_, __) => Container(),
+              error: (_, stackTrace) => Container(),
               loading: () => const ProgressIndicatorWidget(),
             );
           },
         ),
-        gapH8,
+        const Gap(8),
         Expanded(
           child: stateArticuloListCount.maybeWhen(
             data:

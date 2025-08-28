@@ -292,8 +292,11 @@ class ArticuloRepository {
           );
         }).toList(),
       );
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -319,8 +322,11 @@ class ArticuloRepository {
       final count = query.data['COUNT'] as int?;
 
       return count ?? 0;
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -333,7 +339,7 @@ class ArticuloRepository {
       final query = (_remoteDb.select(_remoteDb.articuloTable)
         ..where((t) => t.id.equals(articuloId)));
 
-      return query.asyncMap((row) async {
+      return await query.asyncMap((row) async {
         final familiaDTO =
             await (_remoteDb.select(_remoteDb.familiaTable)..where(
               (t) => t.id.equals(row.familiaId ?? ''),
@@ -412,8 +418,11 @@ class ArticuloRepository {
               margenHaceDosAnyos: margenHaceDosAnyos,
             );
       }).getSingle();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -482,11 +491,14 @@ AND estadisticas_venta.cliente_id IN (SELECT clientes_usuario.cliente_id
       final query = (_remoteDb.select(_remoteDb.articuloComponenteTable)
         ..where((t) => t.articuloId.equals(articuloId)));
 
-      return query.asyncMap((row) async {
+      return await query.asyncMap((row) async {
         return row.toDomain();
       }).get();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -520,8 +532,11 @@ SELECT *
       return query
           .map((row) => ArticuloPrecioTarifaDTO.fromJson(row.data).toDomain())
           .toList();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -555,8 +570,11 @@ SELECT *
       return query
           .map((row) => ArticuloGrupoNetoDTO.fromJson(row.data).toDomain())
           .toList();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -567,11 +585,14 @@ SELECT *
       final query = (_remoteDb.select(_remoteDb.articuloRecambioTable)
         ..where((t) => t.articuloId.equals(articuloId)));
 
-      return query.map((row) {
+      return await query.map((row) {
         return row.toDomain();
       }).get();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -586,7 +607,7 @@ SELECT *
           (t) => OrderingTerm(expression: t.articuloSustitutivoId),
         ]);
 
-      return query.asyncMap((row) async {
+      return await query.asyncMap((row) async {
         final articuloSustitutivo = await getArticuloById(
           articuloId: row.articuloSustitutivoId,
         );
@@ -597,8 +618,11 @@ SELECT *
           stockDisponible: articuloSustitutivo.stockDisponible,
         );
       }).get();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -607,29 +631,25 @@ SELECT *
     required String provisionalToken,
     required bool test,
   }) async {
-    try {
-      final query = {'ARTICULO_ID': articuloId};
-      final articuloImageDTOList = await _remoteGetArticuloImagen(
-        requestUri:
-            (test)
-                ? Uri.http(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/articulo/imagenes',
-                  query,
-                )
-                : Uri.https(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/articulo/imagenes',
-                  query,
-                ),
-        jsonDataSelector: (json) => json['data'] as List<dynamic>,
-        provisionalToken: provisionalToken,
-      );
+    final query = {'ARTICULO_ID': articuloId};
+    final articuloImageDTOList = await _remoteGetArticuloImagen(
+      requestUri:
+          (test)
+              ? Uri.http(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/articulo/imagenes',
+                query,
+              )
+              : Uri.https(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/articulo/imagenes',
+                query,
+              ),
+      jsonDataSelector: (json) => json['data'] as List<dynamic>,
+      provisionalToken: provisionalToken,
+    );
 
-      return articuloImageDTOList.map((e) => e.toDomain(test: test)).toList();
-    } catch (e) {
-      rethrow;
-    }
+    return articuloImageDTOList.map((e) => e.toDomain(test: test)).toList();
   }
 
   Future<List<ArticuloDocumento>> getArticuloDocumentoListById({
@@ -637,29 +657,25 @@ SELECT *
     required String provisionalToken,
     required bool test,
   }) async {
-    try {
-      final query = {'ARTICULO_ID': articuloId};
-      final articuloDocumentoDTOList = await _remoteGetArticuloDocumentos(
-        requestUri:
-            (test)
-                ? Uri.http(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/articulo/documentos',
-                  query,
-                )
-                : Uri.https(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/articulo/documentos',
-                  query,
-                ),
-        jsonDataSelector: (json) => json['data'] as List<dynamic>,
-        provisionalToken: provisionalToken,
-      );
+    final query = {'ARTICULO_ID': articuloId};
+    final articuloDocumentoDTOList = await _remoteGetArticuloDocumentos(
+      requestUri:
+          (test)
+              ? Uri.http(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/articulo/documentos',
+                query,
+              )
+              : Uri.https(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/articulo/documentos',
+                query,
+              ),
+      jsonDataSelector: (json) => json['data'] as List<dynamic>,
+      provisionalToken: provisionalToken,
+    );
 
-      return articuloDocumentoDTOList.map((e) => e.toDomain()).toList();
-    } catch (e) {
-      rethrow;
-    }
+    return articuloDocumentoDTOList.map((e) => e.toDomain()).toList();
   }
 
   Future<Uint8List?> getImageFile({
@@ -667,32 +683,28 @@ SELECT *
     required String provisionalToken,
     required bool test,
   }) async {
-    try {
-      if (adjuntoParam.nombreArchivo != '') {
-        final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
-        final dataImage = await _remoteGetAttachment(
-          requestUri:
-              (test)
-                  ? Uri.http(
-                    dotenv.get('URL', fallback: 'localhost:3001'),
-                    'api/v1/online/adjunto/articulo/${adjuntoParam.id}/img',
-                    query,
-                  )
-                  : Uri.https(
-                    dotenv.get('URL', fallback: 'localhost:3001'),
-                    'api/v1/online/adjunto/articulo/${adjuntoParam.id}/img',
-                    query,
-                  ),
-          provisionalToken: provisionalToken,
-        );
+    if (adjuntoParam.nombreArchivo != '') {
+      final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
+      final dataImage = await _remoteGetAttachment(
+        requestUri:
+            (test)
+                ? Uri.http(
+                  dotenv.get('URL', fallback: 'localhost:3001'),
+                  'api/v1/online/adjunto/articulo/${adjuntoParam.id}/img',
+                  query,
+                )
+                : Uri.https(
+                  dotenv.get('URL', fallback: 'localhost:3001'),
+                  'api/v1/online/adjunto/articulo/${adjuntoParam.id}/img',
+                  query,
+                ),
+        provisionalToken: provisionalToken,
+      );
 
-        return Uint8List.fromList((dataImage));
-      }
-
-      return null;
-    } catch (e) {
-      rethrow;
+      return Uint8List.fromList((dataImage));
     }
+
+    return null;
   }
 
   Future<File?> getArticuloDocumentFile({
@@ -700,44 +712,43 @@ SELECT *
     required String provisionalToken,
     required bool test,
   }) async {
-    try {
-      if (adjuntoParam.nombreArchivo != '') {
-        final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
-        final data = await _remoteGetAttachment(
-          requestUri:
-              (test)
-                  ? Uri.http(
-                    dotenv.get('URL', fallback: 'localhost:3001'),
-                    'api/v1/online/adjunto/articulo/${adjuntoParam.id}/doc',
-                    query,
-                  )
-                  : Uri.https(
-                    dotenv.get('URL', fallback: 'localhost:3001'),
-                    'api/v1/online/adjunto/articulo/${adjuntoParam.id}/doc',
-                    query,
-                  ),
-          provisionalToken: provisionalToken,
+    if (adjuntoParam.nombreArchivo != '') {
+      final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
+      final data = await _remoteGetAttachment(
+        requestUri:
+            (test)
+                ? Uri.http(
+                  dotenv.get('URL', fallback: 'localhost:3001'),
+                  'api/v1/online/adjunto/articulo/${adjuntoParam.id}/doc',
+                  query,
+                )
+                : Uri.https(
+                  dotenv.get('URL', fallback: 'localhost:3001'),
+                  'api/v1/online/adjunto/articulo/${adjuntoParam.id}/doc',
+                  query,
+                ),
+        provisionalToken: provisionalToken,
+      );
+
+      try {
+        final cahceDirectories = await getTemporaryDirectory();
+
+        final file = await File(
+          '${cahceDirectories.path}/articulo/${adjuntoParam.id}/${adjuntoParam.nombreArchivo ?? ''}',
+        ).create(recursive: true);
+        final raf = file.openSync(mode: FileMode.write);
+        raf.writeFromSync(data);
+        await raf.close();
+        return file;
+      } catch (e, stackTrace) {
+        Error.throwWithStackTrace(
+          AppException.createFileInCacheFailure(e.toString()),
+          stackTrace,
         );
-
-        try {
-          final cahceDirectories = await getTemporaryDirectory();
-
-          final file = await File(
-            '${cahceDirectories.path}/articulo/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}',
-          ).create(recursive: true);
-          final raf = file.openSync(mode: FileMode.write);
-          raf.writeFromSync(data);
-          await raf.close();
-          return file;
-        } catch (e) {
-          throw AppException.createFileInCacheFailure(e.toString());
-        }
       }
-
-      return null;
-    } catch (e) {
-      rethrow;
     }
+
+    return null;
   }
 
   Future<File?> getClientesDocumentFile({
@@ -745,44 +756,43 @@ SELECT *
     required String provisionalToken,
     required bool test,
   }) async {
-    try {
-      if (adjuntoParam.nombreArchivo != '') {
-        final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
-        final data = await _remoteGetAttachment(
-          requestUri:
-              (test)
-                  ? Uri.http(
-                    dotenv.get('URL', fallback: 'localhost:3001'),
-                    'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
-                    query,
-                  )
-                  : Uri.https(
-                    dotenv.get('URL', fallback: 'localhost:3001'),
-                    'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
-                    query,
-                  ),
-          provisionalToken: provisionalToken,
+    if (adjuntoParam.nombreArchivo != '') {
+      final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
+      final data = await _remoteGetAttachment(
+        requestUri:
+            (test)
+                ? Uri.http(
+                  dotenv.get('URL', fallback: 'localhost:3001'),
+                  'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
+                  query,
+                )
+                : Uri.https(
+                  dotenv.get('URL', fallback: 'localhost:3001'),
+                  'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
+                  query,
+                ),
+        provisionalToken: provisionalToken,
+      );
+
+      try {
+        final cahceDirectories = await getTemporaryDirectory();
+
+        final file = await File(
+          '${cahceDirectories.path}/clientes/${adjuntoParam.id}/${adjuntoParam.nombreArchivo ?? ''}',
+        ).create(recursive: true);
+        final raf = file.openSync(mode: FileMode.write);
+        raf.writeFromSync(data);
+        await raf.close();
+        return file;
+      } catch (e, stackTrace) {
+        Error.throwWithStackTrace(
+          AppException.createFileInCacheFailure(e.toString()),
+          stackTrace,
         );
-
-        try {
-          final cahceDirectories = await getTemporaryDirectory();
-
-          final file = await File(
-            '${cahceDirectories.path}/clientes/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}',
-          ).create(recursive: true);
-          final raf = file.openSync(mode: FileMode.write);
-          raf.writeFromSync(data);
-          await raf.close();
-          return file;
-        } catch (e) {
-          throw AppException.createFileInCacheFailure(e.toString());
-        }
       }
-
-      return null;
-    } catch (e) {
-      rethrow;
     }
+
+    return null;
   }
 
   Future<List<ArticuloPedidoVentaLinea>> getArticuloPedidoVentaById({
@@ -829,7 +839,7 @@ SELECT *
         OrderingTerm.asc(_remoteDb.pedidoVentaLineaTable.pedidoVentaLineaId),
       ]);
 
-      return query.asyncMap((row) async {
+      return await query.asyncMap((row) async {
         final pedidoVentaLineaDTO = row.readTable(
           _remoteDb.pedidoVentaLineaTable,
         );
@@ -843,8 +853,11 @@ SELECT *
           fechaPedido: pedidoVentaDTO.pedidoVentaDate,
         );
       }).get();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -892,7 +905,7 @@ SELECT *
         OrderingTerm.desc(_remoteDb.estadisticasUltimosPreciosTable.fecha),
       ]);
 
-      return query.asyncMap((row) async {
+      return await query.asyncMap((row) async {
         final lastPriceArticuloDTO = row.readTable(
           _remoteDb.estadisticasUltimosPreciosTable,
         );
@@ -902,8 +915,11 @@ SELECT *
           descripcion: '',
         );
       }).get();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -941,7 +957,7 @@ SELECT *
 
       query.limit(1);
 
-      return query.asyncMap((row) async {
+      return await query.asyncMap((row) async {
         final lastPriceArticuloDTO = row.readTable(
           _remoteDb.estadisticasUltimosPreciosTable,
         );
@@ -951,8 +967,11 @@ SELECT *
           descripcion: '',
         );
       }).getSingleOrNull();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -1001,8 +1020,11 @@ SELECT *
 
       final count = await query.map((row) => row.read(countExp)).getSingle();
       return count ?? 0;
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -1052,8 +1074,11 @@ SELECT *
       return queryVentasMes.map((row) {
         return ArticuloVentasMesDTO.fromJson(row.data).toDomain();
       }).toList();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -1074,8 +1099,11 @@ SELECT *
       return query
           .map((row) => ArticuloVentasClienteDTO.fromJson(row.data).toDomain())
           .toList();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -1425,14 +1453,16 @@ ORDER  BY IMPORTE_ANYO DESC
         return data
             .map((e) => ArticuloImagenDTO.fromJson(e as Map<String, dynamic>))
             .toList();
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
       }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
     } catch (e, stackTrace) {
-      throw getApiError(e, stackTrace, errorLogger);
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 
@@ -1455,14 +1485,16 @@ ORDER  BY IMPORTE_ANYO DESC
               (e) => ArticuloDocumentoDTO.fromJson(e as Map<String, dynamic>),
             )
             .toList();
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
       }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
     } catch (e, stackTrace) {
-      throw getApiError(e, stackTrace, errorLogger);
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 
@@ -1480,15 +1512,17 @@ ORDER  BY IMPORTE_ANYO DESC
         ),
       );
       if (response.statusCode == 200) {
-        return response.data as List<int>;
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
+        return (response.data as List<Object?>).cast();
       }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
     } catch (e, stackTrace) {
-      throw getApiError(e, stackTrace, errorLogger);
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 
@@ -1498,16 +1532,16 @@ ORDER  BY IMPORTE_ANYO DESC
     final stringList = searchText.split(' ');
 
     switch (currentLocale) {
-      case 'es':
-        var sqlWhere = '';
-        for (var i = 0; i < stringList.length; i++) {
-          sqlWhere +=
-              (i > 0 && i < stringList.length)
-                  ? " OR art.DESCRIPCION_ES LIKE '%${stringList[i]}%'"
-                  : "art.DESCRIPCION_ES LIKE '%${stringList[i]}%'";
-        }
+      // case 'es':
+      //   var sqlWhere = '';
+      //   for (var i = 0; i < stringList.length; i++) {
+      //     sqlWhere +=
+      //         (i > 0 && i < stringList.length)
+      //             ? " OR art.DESCRIPCION_ES LIKE '%${stringList[i]}%'"
+      //             : "art.DESCRIPCION_ES LIKE '%${stringList[i]}%'";
+      //   }
 
-        return sqlWhere;
+      //   return sqlWhere;
       case 'en':
         var sqlWhere = '';
         for (var i = 0; i < stringList.length; i++) {
@@ -1564,12 +1598,8 @@ ORDER  BY IMPORTE_ANYO DESC
   }
 
   Future<DateTime> getLastSyncDate() async {
-    try {
-      final lastSyncDTO =
-          await _localDb.select(_localDb.syncDateTimeTable).getSingle();
-      return lastSyncDTO.articuloUltimaSync;
-    } catch (e) {
-      rethrow;
-    }
+    final lastSyncDTO =
+        await _localDb.select(_localDb.syncDateTimeTable).getSingle();
+    return lastSyncDTO.articuloUltimaSync;
   }
 }

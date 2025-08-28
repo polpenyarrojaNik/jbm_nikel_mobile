@@ -44,7 +44,7 @@ class UsuarioService {
     final packageInfo = await PackageInfo.fromPlatform();
     final deviceInfoPlugin = DeviceInfoPlugin();
 
-    late String deviceInfoStr;
+    String deviceInfoStr;
 
     if (Platform.isAndroid) {
       final andoridInfo = await deviceInfoPlugin.androidInfo;
@@ -53,7 +53,7 @@ class UsuarioService {
     } else {
       final iOSInfo = await deviceInfoPlugin.iosInfo;
       deviceInfoStr =
-          '${iOSInfo.utsname.machine}/${iOSInfo.identifierForVendor}';
+          '${iOSInfo.utsname.machine}/${iOSInfo.identifierForVendor ?? ''}';
     }
 
     final usuarioDtos = usuarioDTO.copyWith(
@@ -141,7 +141,7 @@ class UsuarioService {
         final packageInfo = await PackageInfo.fromPlatform();
         final deviceInfoPlugin = DeviceInfoPlugin();
 
-        late String deviceInfoStr;
+        String deviceInfoStr;
 
         if (Platform.isAndroid) {
           final andoridInfo = await deviceInfoPlugin.androidInfo;
@@ -150,7 +150,7 @@ class UsuarioService {
         } else {
           final iOSInfo = await deviceInfoPlugin.iosInfo;
           deviceInfoStr =
-              '${iOSInfo.utsname.machine}/${iOSInfo.identifierForVendor}';
+              '${iOSInfo.utsname.machine}/${iOSInfo.identifierForVendor ?? ''}';
         }
 
         final usuarioDto = storedCredentials.copyWith(

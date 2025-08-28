@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../core/helpers/extension.dart';
 
+import '../../../core/helpers/extension.dart';
 import '../../pedido_venta/infrastructure/pedido_venta_linea_dto.dart';
 import '../domain/articulo_pedido_venta_linea.dart';
 
@@ -9,7 +9,7 @@ part 'articulo_pedido_venta_linea_dto.g.dart';
 
 // ignore_for_file: invalid_annotation_target
 @freezed
-class ArticuloPedidoVentaLineaDTO with _$ArticuloPedidoVentaLineaDTO {
+abstract class ArticuloPedidoVentaLineaDTO with _$ArticuloPedidoVentaLineaDTO {
   const ArticuloPedidoVentaLineaDTO._();
   const factory ArticuloPedidoVentaLineaDTO({
     @JsonKey(name: 'EMPRESA_ID') required String empresaId,
@@ -53,7 +53,7 @@ class ArticuloPedidoVentaLineaDTO with _$ArticuloPedidoVentaLineaDTO {
       descuento3: descuento3,
       fechaPedido: fechaPedido,
       lastUpdated: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
+      deleted: (deleted == 'S'),
     );
   }
 

@@ -4,7 +4,7 @@ import 'package:money2/money2.dart';
 part 'articulo_ventas_cliente.freezed.dart';
 
 @freezed
-class ArticuloVentasCliente with _$ArticuloVentasCliente {
+abstract class ArticuloVentasCliente with _$ArticuloVentasCliente {
   const ArticuloVentasCliente._();
   const factory ArticuloVentasCliente({
     required String clienteId,

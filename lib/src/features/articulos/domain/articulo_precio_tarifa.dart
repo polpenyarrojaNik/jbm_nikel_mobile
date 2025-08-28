@@ -4,7 +4,7 @@ import 'package:money2/money2.dart';
 part 'articulo_precio_tarifa.freezed.dart';
 
 @freezed
-class ArticuloPrecioTarifa with _$ArticuloPrecioTarifa {
+abstract class ArticuloPrecioTarifa with _$ArticuloPrecioTarifa {
   const ArticuloPrecioTarifa._();
   const factory ArticuloPrecioTarifa({
     required String articuloId,

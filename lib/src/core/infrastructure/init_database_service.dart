@@ -59,7 +59,7 @@ class InitDatabaseService {
 
   Future<void> downloadInitDatabase() async {
     try {
-      if (await getSchemaVersionFromPreferences() != databaseRelease) {
+      if (await getSchemaVersionFromPreferences() != kDatabaseRelease) {
         await deleteRemoteDatabase();
       }
 
@@ -91,7 +91,7 @@ class InitDatabaseService {
     try {
       final directory = await getApplicationDocumentsDirectory();
 
-      return await getSchemaVersionFromPreferences() == databaseRelease &&
+      return await getSchemaVersionFromPreferences() == kDatabaseRelease &&
           _databaseFileExist(directory: directory);
     } on AppException catch (e) {
       log.e(e.details);
@@ -102,7 +102,7 @@ class InitDatabaseService {
   }
 
   bool _databaseFileExist({required Directory directory}) {
-    return File((join(directory.path, remoteDatabaseName))).existsSync();
+    return File((join(directory.path, kRemoteDatabaseName))).existsSync();
   }
 
   Future<void> _getRemoteInitialDatabase({required Directory directory}) async {
@@ -126,7 +126,10 @@ class InitDatabaseService {
         );
       }
     } catch (e, stackTrace) {
-      throw getApiError(e, stackTrace, errorLogger);
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 
@@ -138,7 +141,7 @@ class InitDatabaseService {
         .insertOnConflictUpdate(
           SyncDateTimeTableCompanion(
             id: const Value(1),
-            dbSchemaVersion: const Value(databaseRelease),
+            dbSchemaVersion: const Value(kDatabaseRelease),
             articuloUltimaSync: Value(initialDatabaseDate),
             clienteUltimaSync: Value(initialDatabaseDate),
             pedidoUltimaSync: Value(initialDatabaseDate),
@@ -157,14 +160,16 @@ class InitDatabaseService {
 
       if (response.statusCode == 200) {
         return DateTime.parse(response.data['data'] as String);
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 500,
-          response.toString(),
-        );
       }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 500,
+        response.toString(),
+      );
     } catch (e, stackTrace) {
-      throw getApiError(e, stackTrace, errorLogger);
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 

@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../../generated/l10n.dart';
@@ -11,7 +12,6 @@ import '../../../core/helpers/formatters.dart';
 import '../../../core/presentation/common_widgets/address_text_widget.dart';
 import '../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../core/presentation/common_widgets/row_field_text_detail.dart';
-import '../../../core/presentation/theme/app_sizes.dart';
 import '../../../core/routing/app_auto_router.dart';
 import '../domain/cliente_alrededor.dart';
 import '../domain/get_cliente_alrededor_arg.dart';
@@ -68,7 +68,7 @@ class _ClientesAlrededorPageState extends ConsumerState<ClientesAlrededorPage> {
                             (_) => onChangeDireccionesEnvio(),
                         showDireccionesEnvio: showDireccionesEnvio,
                       ),
-                      gapH4,
+                      const Gap(4),
                       _CheckboxPotenciales(
                         onShowPotencialesChanged: (_) => onChangePotenciales(),
                         showPotenciales: showPotenciales,
@@ -155,6 +155,12 @@ class _GoogleMapsContainerState extends ConsumerState<GoogleMapsContainer> {
   }
 
   @override
+  void dispose() {
+    mapController?.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final stateMarkers = ref.watch(
       clientesDireccionesAlrededorListStream(
@@ -188,7 +194,7 @@ class _GoogleMapsContainerState extends ConsumerState<GoogleMapsContainer> {
             (clientesAlrededorList) =>
                 setMarkerList(clientesAlrededorList: clientesAlrededorList),
       ),
-      circles: <Circle>{circle},
+      circles: {circle},
       onLongPress:
           (newLatLng) => setState(() {
             mapLatLng = newLatLng;
@@ -231,11 +237,7 @@ class _GoogleMapsContainerState extends ConsumerState<GoogleMapsContainer> {
             markerId: MarkerId(c.markerId),
             position: LatLng(c.latitud, c.longitud),
             icon: BitmapDescriptor.defaultMarkerWithHue(
-              (c.isClientePotencial ?? false)
-                  ? BitmapDescriptor.hueYellow
-                  : (c.isDireccionFiscal)
-                  ? BitmapDescriptor.hueGreen
-                  : BitmapDescriptor.hueCyan,
+              _getMarkerIcon(c.isDireccionFiscal, c.isClientePotencial),
             ),
             onTap:
                 () => showDialog(
@@ -276,6 +278,15 @@ class _GoogleMapsContainerState extends ConsumerState<GoogleMapsContainer> {
       );
     }
     return markerList;
+  }
+
+  double _getMarkerIcon(bool isDireccionFiscal, bool? isClientePotencial) {
+    if (isClientePotencial ?? false) {
+      return BitmapDescriptor.hueYellow;
+    } else if ((isDireccionFiscal)) {
+      return BitmapDescriptor.hueGreen;
+    }
+    return BitmapDescriptor.hueCyan;
   }
 }
 
@@ -355,7 +366,7 @@ class _CheckboxDireccionesEnvio extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(S.of(context).cliente_alrededor_direccionesEnvio),
-            gapW8,
+            const Gap(8),
             Switch(
               value: showDireccionesEnvio,
               onChanged: (value) => onShowDireccionesEnvioChanged(value),
@@ -390,7 +401,7 @@ class _CheckboxPotenciales extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(S.of(context).cliente_alrededor_potenciales),
-            gapW8,
+            const Gap(8),
             Switch(
               value: showPotenciales,
               onChanged: (value) => onShowPotencialesChanged(value),
@@ -413,7 +424,7 @@ class _ClienteAlrededorDialog extends StatelessWidget {
       title: Row(
         children: [
           Flexible(child: Text(clienteAlrededor.nombre)),
-          gapW4,
+          const Gap(4),
           IconButton(
             onPressed:
                 () => context.router.push(
@@ -428,28 +439,28 @@ class _ClienteAlrededorDialog extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('#${clienteAlrededor.clienteId} ${clienteAlrededor.nombre}'),
-          gapH2,
+          const Gap(2),
           Text(
             clienteAlrededor.direccion ?? '',
             style: Theme.of(context).textTheme.bodyMedium!.copyWith(
               color: Theme.of(context).textTheme.bodySmall!.color,
             ),
           ),
-          gapH2,
+          const Gap(2),
           AddressTextWidget(
             codigoPostal: clienteAlrededor.codigoPostal,
             poblacion: clienteAlrededor.poblacion,
             provincia: clienteAlrededor.provincia,
             pais: clienteAlrededor.pais,
           ),
-          if (clienteAlrededor.nombreRepresentante1 != null) gapH2,
+          if (clienteAlrededor.nombreRepresentante1 != null) const Gap(2),
           if (clienteAlrededor.nombreRepresentante1 != null)
             RowFieldTextDetalle(
               fieldTitleValue:
                   S.of(context).cliente_show_clienteDetalle_comercial1,
               value: clienteAlrededor.nombreRepresentante1!,
             ),
-          if (clienteAlrededor.nombreRepresentante1 != null) gapH2,
+          if (clienteAlrededor.nombreRepresentante1 != null) const Gap(2),
           if (clienteAlrededor.nombreRepresentante2 != null)
             RowFieldTextDetalle(
               fieldTitleValue:
@@ -471,7 +482,7 @@ class _ClienteAlrededorDialog extends StatelessWidget {
               tipoPrecio: null,
             ),
           ),
-          gapH2,
+          const Gap(2),
           RowFieldTextDetalle(
             fieldTitleValue: S.of(context).cliente_alrededor_porcentajeAbonos,
             value: '${numberFormatDecimal(clienteAlrededor.porcentajeAbonos)}%',

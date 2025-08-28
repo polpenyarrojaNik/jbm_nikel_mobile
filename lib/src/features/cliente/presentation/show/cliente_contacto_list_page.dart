@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/exceptions/app_exception.dart';
@@ -43,7 +44,7 @@ class ClienteContactoListPage extends ConsumerWidget {
           HeaderDatosRelacionados(
             entityId: '#$clienteId ${nombreCliente ?? ''}',
           ),
-          gapH8,
+          const Gap(8),
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
@@ -100,7 +101,7 @@ class ClienteContactoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: listPadding,
+      padding: kPaddingList,
       child: Column(
         children: [
           Row(
@@ -126,7 +127,7 @@ class ClienteContactoTile extends StatelessWidget {
                             color: Theme.of(context).textTheme.bodySmall?.color,
                             size: 14,
                           ),
-                          gapW4,
+                          const Gap(4),
                           Flexible(
                             child: Text(
                               clienteContacto.email!,
@@ -150,7 +151,7 @@ class ClienteContactoTile extends StatelessWidget {
                             color: Theme.of(context).textTheme.bodySmall?.color,
                             size: 14,
                           ),
-                          gapW4,
+                          const Gap(4),
                           Flexible(
                             child: Text(
                               clienteContacto.telefono1!,
@@ -174,7 +175,7 @@ class ClienteContactoTile extends StatelessWidget {
                             color: Theme.of(context).textTheme.bodySmall?.color,
                             size: 14,
                           ),
-                          gapW4,
+                          const Gap(4),
                           Text(
                             clienteContacto.telefono2!,
                             style: Theme.of(
@@ -200,14 +201,14 @@ class ClienteContactoTile extends StatelessWidget {
                       onPressFunction:
                           () => navigateToEmailApp(clienteContacto.email!),
                     ),
-                  if (clienteContacto.telefono1 != null) gapW12,
+                  if (clienteContacto.telefono1 != null) const Gap(12),
                   if (clienteContacto.telefono1 != null)
                     ContactButtons(
                       icon: Icons.phone,
                       onPressFunction:
                           () => openPhoneCall(clienteContacto.telefono1!),
                     ),
-                  if (clienteContacto.telefono2 != null) gapW12,
+                  if (clienteContacto.telefono2 != null) const Gap(12),
                   if (clienteContacto.telefono2 != null)
                     ContactButtons(
                       icon: Icons.phone,
@@ -218,30 +219,28 @@ class ClienteContactoTile extends StatelessWidget {
               ),
             ],
           ),
-          if (!clienteContacto.enviado ||
-              (!clienteContacto.enviado && clienteContacto.deleted))
-            GestureDetector(
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.error,
-                    color: Theme.of(context).colorScheme.error,
-                    size: 14,
-                  ),
-                  gapW4,
-                  Flexible(
-                    child: Text(
-                      S
-                          .of(context)
-                          .cliente_show_clienteContacto_hayCambiosDeEnviar,
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Theme.of(context).colorScheme.error,
-                      ),
+          if (!clienteContacto.enviado || (clienteContacto.deleted))
+            Row(
+              children: [
+                Icon(
+                  Icons.error,
+                  color: Theme.of(context).colorScheme.error,
+                  size: 14,
+                ),
+                const Gap(4),
+                Flexible(
+                  child: Text(
+                    S
+                        .of(context)
+                        .cliente_show_clienteContacto_hayCambiosDeEnviar,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Theme.of(context).colorScheme.error,
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
+
           if (clienteContacto.tratado)
             _CambiosPendientesDeTramitarListView(clienteImpParam),
         ],
@@ -260,8 +259,7 @@ class _ClienteContactoActionButtons extends ConsumerWidget {
     ref.listen<AsyncValue<bool>>(
       clienteContactoDeleteControllerProvider(clienteImpParam),
       (_, state) {
-        state.maybeWhen(
-          orElse: () {},
+        state.whenOrNull(
           error: (error, _) {
             final errorMessage =
                 (error is AppException)
@@ -300,7 +298,7 @@ class _ClienteContactoActionButtons extends ConsumerWidget {
                 () => navigateToEditClienteContacto(context, clienteImpParam),
             icon: const Icon(Icons.edit),
           ),
-          gapW4,
+          const Gap(4),
           deleteContactoValue.maybeWhen(
             loading: () => const CircularProgressIndicator(strokeWidth: 2.5),
             orElse:
@@ -392,7 +390,7 @@ class _CambiosPendientesDeTramitarListView extends ConsumerWidget {
                           color: Theme.of(context).colorScheme.error,
                           size: 14,
                         ),
-                        gapW4,
+                        const Gap(4),
                         Flexible(
                           child: Text(
                             S

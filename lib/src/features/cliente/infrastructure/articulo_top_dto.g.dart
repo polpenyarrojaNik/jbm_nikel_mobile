@@ -6,8 +6,8 @@ part of 'articulo_top_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ArticuloTopDTOImpl _$$ArticuloTopDTOImplFromJson(Map<String, dynamic> json) =>
-    _$ArticuloTopDTOImpl(
+_ArticuloTopDTO _$ArticuloTopDTOFromJson(Map<String, dynamic> json) =>
+    _ArticuloTopDTO(
       articuloId: json['ARTICULO_ID'] as String,
       descripcion: json['DESCRIPCION_ES'] as String,
       ventasTotal: (json['VENTAS_TOTAL'] as num).toDouble(),
@@ -15,8 +15,7 @@ _$ArticuloTopDTOImpl _$$ArticuloTopDTOImplFromJson(Map<String, dynamic> json) =>
       divisaId: json['DIVISA_ID'] as String,
     );
 
-Map<String, dynamic> _$$ArticuloTopDTOImplToJson(
-        _$ArticuloTopDTOImpl instance) =>
+Map<String, dynamic> _$ArticuloTopDTOToJson(_ArticuloTopDTO instance) =>
     <String, dynamic>{
       'ARTICULO_ID': instance.articuloId,
       'DESCRIPCION_ES': instance.descripcion,

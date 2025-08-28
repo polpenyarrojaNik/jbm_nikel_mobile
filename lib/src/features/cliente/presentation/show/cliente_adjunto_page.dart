@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:better_open_file/better_open_file.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'cliente_adjunto_controller.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/adjunto_param.dart';
@@ -16,6 +16,7 @@ import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/presentation/toasts.dart';
 import '../../domain/cliente_adjunto.dart';
 import '../../infrastructure/cliente_repository.dart';
+import 'cliente_adjunto_controller.dart';
 
 @RoutePage()
 class ClienteAdjuntoPage extends ConsumerWidget {
@@ -56,7 +57,7 @@ class ClienteAdjuntoPage extends ConsumerWidget {
             entityId: '#$clienteId ${nombreCliente ?? ''}',
             subtitle: null,
           ),
-          gapH8,
+          const Gap(8),
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) {
@@ -101,7 +102,7 @@ class ClienteAdjuntoTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
-      padding: listPadding,
+      padding: kPaddingList,
       child: GestureDetector(
         onTap:
             () => openFile(
@@ -126,7 +127,7 @@ class ClienteAdjuntoTile extends ConsumerWidget {
                   getIconoFromExtension(clienteAdjunto.nombreAdjunto),
                   color: Theme.of(context).textTheme.bodySmall!.color,
                 ),
-                gapW8,
+                const Gap(8),
                 Flexible(child: Text(clienteAdjunto.nombreAdjunto)),
               ],
             ),

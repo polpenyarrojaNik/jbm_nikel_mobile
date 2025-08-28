@@ -6,9 +6,8 @@ part of 'descuento_general_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$DescuentoGeneralDTOImpl _$$DescuentoGeneralDTOImplFromJson(
-        Map<String, dynamic> json) =>
-    _$DescuentoGeneralDTOImpl(
+_DescuentoGeneralDTO _$DescuentoGeneralDTOFromJson(Map<String, dynamic> json) =>
+    _DescuentoGeneralDTO(
       descuentoGeneralId: json['DESCUENTO_GENERAL_ID'] as String,
       articuloId: json['ARTICULO_ID'] as String,
       familiaId: json['FAMILIA_ID'] as String,
@@ -19,15 +18,15 @@ _$DescuentoGeneralDTOImpl _$$DescuentoGeneralDTOImplFromJson(
       deleted: json['DELETED'] as String? ?? 'N',
     );
 
-Map<String, dynamic> _$$DescuentoGeneralDTOImplToJson(
-        _$DescuentoGeneralDTOImpl instance) =>
-    <String, dynamic>{
-      'DESCUENTO_GENERAL_ID': instance.descuentoGeneralId,
-      'ARTICULO_ID': instance.articuloId,
-      'FAMILIA_ID': instance.familiaId,
-      'SUBFAMILIA_ID': instance.subfamiliaId,
-      'CANTIDAD_DESDE': instance.cantidadDesde,
-      'DESCUENTO': instance.descuento,
-      'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
-      'DELETED': instance.deleted,
-    };
+Map<String, dynamic> _$DescuentoGeneralDTOToJson(
+  _DescuentoGeneralDTO instance,
+) => <String, dynamic>{
+  'DESCUENTO_GENERAL_ID': instance.descuentoGeneralId,
+  'ARTICULO_ID': instance.articuloId,
+  'FAMILIA_ID': instance.familiaId,
+  'SUBFAMILIA_ID': instance.subfamiliaId,
+  'CANTIDAD_DESDE': instance.cantidadDesde,
+  'DESCUENTO': instance.descuento,
+  'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
+  'DELETED': instance.deleted,
+};

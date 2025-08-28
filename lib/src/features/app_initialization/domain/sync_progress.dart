@@ -33,8 +33,8 @@ extension SplashProgressExtension on SyncProgress {
 
   static SyncProgress getFromInt(int splashProressInt) {
     switch (splashProressInt) {
-      case 0:
-        return SyncProgress.downloadedDatabase;
+      // case 0:
+      //   return SyncProgress.downloadedDatabase;
       case 1:
         return SyncProgress.syncArticulos;
       case 2:

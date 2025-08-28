@@ -3,14 +3,14 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'usuario_dto.dart';
 
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/presentation/app.dart';
+import 'usuario_dto.dart';
 
 typedef Json = Map<String, dynamic>;
 
-const _preferenceKey = 'auth_credentials';
+const _kPreferenceKey = 'auth_credentials';
 
 final localUsuarioRepositoryProvider = Provider<LocalUsuarioRepository>((ref) {
   return LocalUsuarioRepository(ref.watch(flutterSecureStorage));
@@ -26,9 +26,12 @@ class LocalUsuarioRepository {
   Future<void> save(UsuarioDTO usuarioDTO) async {
     _cachedUsuarioDTO = usuarioDTO;
     try {
-      await storage.write(key: _preferenceKey, value: jsonEncode(usuarioDTO));
-    } on PlatformException catch (e) {
-      throw AppException.authLocalFailure(e.toString());
+      await storage.write(key: _kPreferenceKey, value: jsonEncode(usuarioDTO));
+    } on PlatformException catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.authLocalFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -37,7 +40,7 @@ class LocalUsuarioRepository {
       return _cachedUsuarioDTO;
     }
     try {
-      final jsonString = await storage.read(key: _preferenceKey);
+      final jsonString = await storage.read(key: _kPreferenceKey);
 
       if (jsonString == null) {
         return null;
@@ -49,17 +52,23 @@ class LocalUsuarioRepository {
       } on FormatException {
         return null;
       }
-    } on PlatformException catch (e) {
-      throw AppException.authLocalFailure(e.toString());
+    } on PlatformException catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.authLocalFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
   Future<void> clear() async {
     _cachedUsuarioDTO = null;
     try {
-      await storage.delete(key: _preferenceKey);
-    } on PlatformException catch (e) {
-      throw AppException.authLocalFailure(e.toString());
+      await storage.delete(key: _kPreferenceKey);
+    } on PlatformException catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.authLocalFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 }

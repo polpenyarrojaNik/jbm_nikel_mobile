@@ -6,9 +6,8 @@ part of 'plazo_cobro_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PlazoDeCobroDTOImpl _$$PlazoDeCobroDTOImplFromJson(
-        Map<String, dynamic> json) =>
-    _$PlazoDeCobroDTOImpl(
+_PlazoDeCobroDTO _$PlazoDeCobroDTOFromJson(Map<String, dynamic> json) =>
+    _PlazoDeCobroDTO(
       id: json['PLAZO_COBRO_ID'] as String,
       descripcionES: json['DESCRIPCION_ES'] as String,
       descripcionEN: json['DESCRIPCION_EN'] as String?,
@@ -29,8 +28,7 @@ _$PlazoDeCobroDTOImpl _$$PlazoDeCobroDTOImplFromJson(
       deleted: json['DELETED'] as String? ?? 'N',
     );
 
-Map<String, dynamic> _$$PlazoDeCobroDTOImplToJson(
-        _$PlazoDeCobroDTOImpl instance) =>
+Map<String, dynamic> _$PlazoDeCobroDTOToJson(_PlazoDeCobroDTO instance) =>
     <String, dynamic>{
       'PLAZO_COBRO_ID': instance.id,
       'DESCRIPCION_ES': instance.descripcionES,

@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../infrastructure/cliente_repository.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
@@ -10,6 +10,7 @@ import '../../../../core/presentation/common_widgets/header_datos_relacionados.d
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/cliente_pago_pendiente.dart';
+import '../../infrastructure/cliente_repository.dart';
 
 @RoutePage()
 class ClientePagoPendientePage extends ConsumerWidget {
@@ -38,7 +39,7 @@ class ClientePagoPendientePage extends ConsumerWidget {
             entityId: '#$clienteId ${nombreCliente ?? ''}',
             subtitle: null,
           ),
-          gapH8,
+          const Gap(8),
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
@@ -79,7 +80,7 @@ class ClientePagoPendienteTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return IntrinsicHeight(
       child: Container(
-        padding: listPadding,
+        padding: kPaddingList,
         decoration: BoxDecoration(
           color:
               (clientePagoPendiente.vencidoJBM ?? false)
@@ -124,14 +125,14 @@ class ClientePagoPendienteTile extends StatelessWidget {
                         color: Theme.of(context).textTheme.bodyMedium?.color,
                       ),
                     ),
-                  if (clientePagoPendiente.fechaFactura != null) gapH4,
+                  if (clientePagoPendiente.fechaFactura != null) const Gap(4),
                   if (clientePagoPendiente.fechaFactura != null)
                     Text(
                       '${S.of(context).cliente_show_clienteFacturasPendientes_fFactura} ${dateFormatter(clientePagoPendiente.fechaFactura!.toLocal().toIso8601String())}',
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                   if (clientePagoPendiente.fechaExpiracionInicial != null)
-                    gapH4,
+                    const Gap(4),
                   if (clientePagoPendiente.fechaExpiracionInicial != null)
                     Text(
                       '${S.of(context).cliente_show_clienteFacturasPendientes_fvctoOriginal} ${dateFormatter(clientePagoPendiente.fechaExpiracionInicial!.toLocal().toIso8601String())}',

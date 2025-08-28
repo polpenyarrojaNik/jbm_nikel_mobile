@@ -3,6 +3,7 @@ import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/debouncer.dart';
@@ -14,7 +15,6 @@ import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/common_widgets/sin_resultados_widget.dart';
-import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../../notifications/core/application/notification_provider.dart';
 import '../../../sync/application/sync_notifier_provider.dart';
@@ -56,8 +56,7 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
 
     ref.listen<AsyncValue<String?>>(
       notificationNotifierProvider,
-      (_, state) => state.maybeWhen(
-        orElse: () {},
+      (_, state) => state.whenOrNull(
         data: (notificationId) {
           if (notificationId != null) {
             context.router.push(
@@ -181,12 +180,12 @@ class PedidosListViewWidget extends StatelessWidget {
               data:
                   (fechaUltimaSync) =>
                       UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
-              error: (_, __) => Container(),
+              error: (_, stackTrace) => Container(),
               loading: () => const ProgressIndicatorWidget(),
             );
           },
         ),
-        gapH8,
+        const Gap(8),
         Expanded(
           child: statePedidoVentaCount.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
@@ -300,7 +299,7 @@ class _PedidoVentaFilterDialogState
                 border: InputBorder.none,
               ),
               name: 'filter_estados',
-              options: showFieldOption(context, pedidoVentaEstadoList),
+              options: showFieldOption(pedidoVentaEstadoList),
               initialValue: widget.filteredStatus ?? pedidoVentaEstadoList[0],
               onChanged:
                   (newFilterValue) =>
@@ -312,7 +311,7 @@ class _PedidoVentaFilterDialogState
       actions: [
         MaterialButton(
           color: Theme.of(context).colorScheme.secondary,
-          onPressed: () => resetFilter(context, ref),
+          onPressed: () => resetFilter(context),
           child: Text(
             S.of(context).pedido_index_reset,
             style: const TextStyle(color: Colors.white),
@@ -320,7 +319,7 @@ class _PedidoVentaFilterDialogState
         ),
         MaterialButton(
           color: Theme.of(context).colorScheme.secondary,
-          onPressed: () => applyFilters(context, ref),
+          onPressed: () => applyFilters(context),
           child: Text(
             S.of(context).pedido_index_filtrar,
             style: const TextStyle(color: Colors.white),
@@ -331,7 +330,6 @@ class _PedidoVentaFilterDialogState
   }
 
   List<FormBuilderFieldOption<Object>> showFieldOption(
-    BuildContext context,
     List<PedidoVentaEstado> pedidoVentaEstadoList,
   ) {
     final fieldOptions = <FormBuilderFieldOption<Object>>[];
@@ -346,11 +344,11 @@ class _PedidoVentaFilterDialogState
     return fieldOptions;
   }
 
-  void resetFilter(BuildContext context, WidgetRef ref) {
+  void resetFilter(BuildContext context) {
     context.router.maybePop(null);
   }
 
-  void applyFilters(BuildContext context, WidgetRef ref) {
+  void applyFilters(BuildContext context) {
     context.router.maybePop(newFilterStatus);
   }
 

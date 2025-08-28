@@ -4,7 +4,7 @@ import 'package:money2/money2.dart';
 part 'estadisticas_ultimos_precios.freezed.dart';
 
 @freezed
-class EstadisticasUltimosPrecios with _$EstadisticasUltimosPrecios {
+abstract class EstadisticasUltimosPrecios with _$EstadisticasUltimosPrecios {
   const EstadisticasUltimosPrecios._();
   const factory EstadisticasUltimosPrecios({
     required String clienteId,

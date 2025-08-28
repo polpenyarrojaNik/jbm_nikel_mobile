@@ -52,7 +52,6 @@ class PedidoVentaListaTile extends ConsumerWidget {
                   Container(
                     width: 8,
                     color: pedidoVentaEstadoColor(
-                      enviada: pedidoVenta.enviada,
                       pedidoVentaEstadoId: pedidoVenta.pedidoVentaEstado?.id,
                     ),
                   ),
@@ -150,7 +149,9 @@ class PedidoVentaListaTile extends ConsumerWidget {
                       padding: const EdgeInsets.symmetric(vertical: 8),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [Text(pedidoVenta.baseImponible.toString())],
+                        children: [
+                          Text(pedidoVenta.baseImponible?.toString() ?? ''),
+                        ],
                       ),
                     ),
                   ),

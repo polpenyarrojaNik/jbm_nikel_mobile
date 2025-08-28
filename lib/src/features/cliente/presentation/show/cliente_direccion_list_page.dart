@@ -2,19 +2,20 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
-import '../../../../core/presentation/theme/app_sizes.dart';
-import '../../../pedido_venta/presentation/edit/pedido_venta_edit_page_controller.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/pais.dart';
 import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/helpers/debouncer.dart';
 import '../../../../core/helpers/formatters.dart';
+import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/routing/app_auto_router.dart';
+import '../../../pedido_venta/presentation/edit/pedido_venta_edit_page_controller.dart';
 import '../../domain/cliente_direccion.dart';
 import '../../domain/cliente_direccion_imp.dart';
 import '../../domain/cliente_imp_param.dart';
@@ -52,6 +53,12 @@ class _ClienteDireccionesListPageState
   }
 
   @override
+  void dispose() {
+    focusNode.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final state = ref.watch(clienteDireccionListProvider(widget.clienteId));
     return Scaffold(
@@ -70,7 +77,7 @@ class _ClienteDireccionesListPageState
           HeaderDatosRelacionados(
             entityId: '#${widget.clienteId} ${widget.nombreCliente ?? ''}',
           ),
-          gapH8,
+          const Gap(8),
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
@@ -136,7 +143,7 @@ class ClienteDireccionTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: listPadding,
+      padding: kPaddingList,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -163,7 +170,7 @@ class ClienteDireccionTile extends StatelessWidget {
                         clienteDireccion.nombre!,
                         style: Theme.of(context).textTheme.titleSmall,
                       ),
-                    if (clienteDireccion.nombre != null) gapH4,
+                    if (clienteDireccion.nombre != null) const Gap(4),
                     if (clienteDireccion.direccion1 != null)
                       Text(
                         formatCustomerAddress(
@@ -175,32 +182,30 @@ class ClienteDireccionTile extends StatelessWidget {
                         ),
                         style: Theme.of(context).textTheme.bodySmall!,
                       ),
-                    if (!clienteDireccion.enviada ||
-                        (!clienteDireccion.enviada && clienteDireccion.deleted))
-                      GestureDetector(
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.error,
-                              color: Theme.of(context).colorScheme.error,
-                              size: 14,
-                            ),
-                            gapW4,
-                            Flexible(
-                              child: Text(
-                                S
-                                    .of(context)
-                                    .cliente_show_clienteDireccion_hayCambiosDeEnviar,
-                                style: Theme.of(
-                                  context,
-                                ).textTheme.bodyMedium?.copyWith(
-                                  color: Theme.of(context).colorScheme.error,
-                                ),
+                    if ((!clienteDireccion.enviada && clienteDireccion.deleted))
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.error,
+                            color: Theme.of(context).colorScheme.error,
+                            size: 14,
+                          ),
+                          const Gap(4),
+                          Flexible(
+                            child: Text(
+                              S
+                                  .of(context)
+                                  .cliente_show_clienteDireccion_hayCambiosDeEnviar,
+                              style: Theme.of(
+                                context,
+                              ).textTheme.bodyMedium?.copyWith(
+                                color: Theme.of(context).colorScheme.error,
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
+
                     if (clienteDireccion.tratada && clienteImpParam.id != null)
                       _CambiosPendientesDeTramitarListView(clienteImpParam),
                   ],
@@ -227,8 +232,7 @@ class _ClienteDireccionActionButtons extends ConsumerWidget {
     ref.listen<AsyncValue<bool>>(
       clienteDireccionDeleteControllerProvider(clienteImpParam),
       (_, state) {
-        state.maybeWhen(
-          orElse: () {},
+        state.whenOrNull(
           error: (error, _) {
             final errorMessage =
                 (error is AppException)
@@ -267,7 +271,7 @@ class _ClienteDireccionActionButtons extends ConsumerWidget {
                 () => navigateToEditClienteDireccion(context, clienteImpParam),
             icon: const Icon(Icons.edit),
           ),
-          gapW4,
+          const Gap(4),
           deleteDireccionValue.maybeWhen(
             loading: () => const CircularProgressIndicator(strokeWidth: 2.5),
             orElse:
@@ -340,7 +344,7 @@ class _CambiosPendientesDeTramitarListView extends ConsumerWidget {
                           color: Theme.of(context).colorScheme.error,
                           size: 14,
                         ),
-                        gapW4,
+                        const Gap(4),
                         Flexible(
                           child: Text(
                             S

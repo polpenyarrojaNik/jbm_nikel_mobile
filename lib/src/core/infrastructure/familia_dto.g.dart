@@ -6,29 +6,28 @@ part of 'familia_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$FamiliaDTOImpl _$$FamiliaDTOImplFromJson(Map<String, dynamic> json) =>
-    _$FamiliaDTOImpl(
-      id: json['FAMILIA_ID'] as String,
-      descripcionES: json['DESCRIPCION_ES'] as String,
-      descripcionEN: json['DESCRIPCION_EN'] as String?,
-      descripcionFR: json['DESCRIPCION_FR'] as String?,
-      descripcionDE: json['DESCRIPCION_DE'] as String?,
-      descripcionCA: json['DESCRIPCION_CA'] as String?,
-      descripcionGB: json['DESCRIPCION_GB'] as String?,
-      descripcionHU: json['DESCRIPCION_HU'] as String?,
-      descripcionIT: json['DESCRIPCION_IT'] as String?,
-      descripcionNL: json['DESCRIPCION_NL'] as String?,
-      descripcionPL: json['DESCRIPCION_PL'] as String?,
-      descripcionPT: json['DESCRIPCION_PT'] as String?,
-      descripcionRO: json['DESCRIPCION_RO'] as String?,
-      descripcionRU: json['DESCRIPCION_RU'] as String?,
-      descripcionCN: json['DESCRIPCION_CN'] as String?,
-      descripcionEL: json['DESCRIPCION_EL'] as String?,
-      lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
-      deleted: json['DELETED'] as String? ?? 'N',
-    );
+_FamiliaDTO _$FamiliaDTOFromJson(Map<String, dynamic> json) => _FamiliaDTO(
+  id: json['FAMILIA_ID'] as String,
+  descripcionES: json['DESCRIPCION_ES'] as String,
+  descripcionEN: json['DESCRIPCION_EN'] as String?,
+  descripcionFR: json['DESCRIPCION_FR'] as String?,
+  descripcionDE: json['DESCRIPCION_DE'] as String?,
+  descripcionCA: json['DESCRIPCION_CA'] as String?,
+  descripcionGB: json['DESCRIPCION_GB'] as String?,
+  descripcionHU: json['DESCRIPCION_HU'] as String?,
+  descripcionIT: json['DESCRIPCION_IT'] as String?,
+  descripcionNL: json['DESCRIPCION_NL'] as String?,
+  descripcionPL: json['DESCRIPCION_PL'] as String?,
+  descripcionPT: json['DESCRIPCION_PT'] as String?,
+  descripcionRO: json['DESCRIPCION_RO'] as String?,
+  descripcionRU: json['DESCRIPCION_RU'] as String?,
+  descripcionCN: json['DESCRIPCION_CN'] as String?,
+  descripcionEL: json['DESCRIPCION_EL'] as String?,
+  lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
+  deleted: json['DELETED'] as String? ?? 'N',
+);
 
-Map<String, dynamic> _$$FamiliaDTOImplToJson(_$FamiliaDTOImpl instance) =>
+Map<String, dynamic> _$FamiliaDTOToJson(_FamiliaDTO instance) =>
     <String, dynamic>{
       'FAMILIA_ID': instance.id,
       'DESCRIPCION_ES': instance.descripcionES,

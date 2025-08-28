@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../theme/app_sizes.dart';
+import 'package:gap/gap.dart';
+
 import '../../../features/settings/infrastructure/settings_repository.dart';
 import '../../../features/usuario/application/usuario_notifier.dart';
-
 import 'icon_menu_badge.dart';
 
 class CustomSearchAppBar extends ConsumerStatefulWidget
@@ -51,8 +51,8 @@ class _CustomSearchAppBarState extends ConsumerState<CustomSearchAppBar> {
 
   @override
   void dispose() {
-    super.dispose();
     focusNode.dispose();
+    super.dispose();
   }
 
   @override
@@ -87,7 +87,7 @@ class _CustomSearchAppBarState extends ConsumerState<CustomSearchAppBar> {
                               style: Theme.of(context).textTheme.bodySmall,
                             ),
                       ),
-                      gapW8,
+                      const Gap(8),
                       Text(
                         ref.watch(usuarioNotifierProvider)!.id,
                         style: Theme.of(context).textTheme.bodySmall,
@@ -117,7 +117,7 @@ class _CustomSearchAppBarState extends ConsumerState<CustomSearchAppBar> {
     );
 
     if (actionButtons != null) {
-      final buttons = <IconButton>[searchIconButton];
+      final buttons = [searchIconButton];
 
       for (var i = 0; i < actionButtons.length; i++) {
         buttons.add(actionButtons[i]);

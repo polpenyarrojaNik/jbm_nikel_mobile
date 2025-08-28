@@ -1,10 +1,10 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../core/helpers/extension.dart';
-import '../domain/expedicion.dart';
 
 import '../../../core/domain/divisa.dart';
 import '../../../core/domain/pais.dart';
+import '../../../core/helpers/extension.dart';
 import '../../pedido_venta/domain/pedido_venta_estado.dart';
+import '../domain/expedicion.dart';
 import '../domain/tracking_estado.dart';
 
 part 'expedicion_dto.freezed.dart';
@@ -12,7 +12,7 @@ part 'expedicion_dto.g.dart';
 
 // ignore_for_file: invalid_annotation_target
 @freezed
-class ExpedicionDTO with _$ExpedicionDTO {
+abstract class ExpedicionDTO with _$ExpedicionDTO {
   const ExpedicionDTO._();
   const factory ExpedicionDTO({
     @JsonKey(name: 'EMPRESA_ID') required String empresaId,
@@ -62,7 +62,7 @@ class ExpedicionDTO with _$ExpedicionDTO {
       divisa: divisa,
       baseImponible: baseImponible.toMoney(currencyId: divisaId),
       pedidoVentaEstado: pedidoVentaEstado,
-      oferta: (oferta == 'S') ? true : false,
+      oferta: (oferta == 'S'),
       numLineas: numLineas,
       trackingEstado: trackingEstado,
       trackId: trackId,
@@ -72,7 +72,7 @@ class ExpedicionDTO with _$ExpedicionDTO {
       enviada: true,
       tratada: true,
       lastUpdated: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
+      deleted: (deleted == 'S'),
     );
   }
 }

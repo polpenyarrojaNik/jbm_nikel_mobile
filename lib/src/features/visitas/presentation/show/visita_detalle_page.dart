@@ -3,15 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../../core/helpers/helpers.dart';
-import '../../../../core/presentation/common_widgets/async_value_widget.dart';
-import '../../../../core/presentation/common_widgets/column_field_text_detail.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
+import '../../../../core/helpers/helpers.dart';
+import '../../../../core/presentation/common_widgets/async_value_widget.dart';
 import '../../../../core/presentation/common_widgets/chip_container.dart';
+import '../../../../core/presentation/common_widgets/column_field_text_detail.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
-import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../domain/visita.dart';
 import '../../domain/visita_id_param.dart';
@@ -28,7 +27,7 @@ class VisitaDetalleController extends _$VisitaDetalleController {
     String id,
     bool isLocal,
     String? createVisitaFromClienteId,
-  ) async {
+  ) {
     return ref
         .watch(visitaRepositoryProvider)
         .getVisitaById(
@@ -80,7 +79,7 @@ class VisitaDetallePage extends ConsumerWidget {
       ),
       body: AsyncValueWidget<Visita>(
         value: state,
-        data:
+        onData:
             (visita) => Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
@@ -185,7 +184,7 @@ class VisitaDetallePage extends ConsumerWidget {
                           S.of(context).visitas_show_visitaDetalle_poblacion,
                       value: visita.clienteProvisionalPoblacion!,
                     ),
-                  gapH8,
+                  const Gap(8),
                   if (visita.resumen != null)
                     ColumnFieldTextDetalle(
                       fieldTitleValue:

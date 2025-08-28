@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
@@ -16,7 +17,7 @@ class ClienteDireccionImpListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: listPadding,
+      padding: kPaddingList,
       child: Column(
         children: [
           Row(
@@ -35,7 +36,7 @@ class ClienteDireccionImpListTile extends StatelessWidget {
               ),
             ],
           ),
-          gapH8,
+          const Gap(8),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -59,7 +60,7 @@ class ClienteDireccionImpListTile extends StatelessWidget {
                         clienteDireccionImp.nombre!,
                         style: Theme.of(context).textTheme.titleSmall,
                       ),
-                    if (clienteDireccionImp.nombre != null) gapH4,
+                    if (clienteDireccionImp.nombre != null) const Gap(4),
                     if (clienteDireccionImp.direccion1 != null)
                       Text(
                         formatCustomerAddress(

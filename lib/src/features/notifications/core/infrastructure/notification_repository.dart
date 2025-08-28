@@ -30,56 +30,48 @@ class NotificationRepository {
   NotificationRepository(this.dio, this.user, this.errorLogger);
 
   Future<List<NotificationList>> getNotificationList() async {
-    try {
-      final notificationList = await _remoteNotificationList(
-        requestUri:
-            (user!.test)
-                ? Uri.http(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/notificacion',
-                  {'USER_ID': user!.id},
-                )
-                : Uri.https(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/notificacion',
-                  {'USER_ID': user!.id},
-                ),
-        jsonDataSelector: (json) => json['data'] as List<dynamic>,
-        provisionalToken: user!.provisionalToken,
-      );
+    final notificationList = await _remoteNotificationList(
+      requestUri:
+          (user!.test)
+              ? Uri.http(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/notificacion',
+                {'USER_ID': user!.id},
+              )
+              : Uri.https(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/notificacion',
+                {'USER_ID': user!.id},
+              ),
+      jsonDataSelector: (json) => json['data'] as List<dynamic>,
+      provisionalToken: user!.provisionalToken,
+    );
 
-      return notificationList.map((e) => e.toDomain()).toList();
-    } catch (e) {
-      rethrow;
-    }
+    return notificationList.map((e) => e.toDomain()).toList();
   }
 
   Future<Notificacion> getNotificationById(String id) async {
-    try {
-      final notificationDto = await _remoteNotificationById(
-        requestUri:
-            (user!.test)
-                ? Uri.http(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/notificacion/$id',
-                  {'USER_ID': user!.id},
-                )
-                : Uri.https(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/notificacion/$id',
-                  {'USER_ID': user!.id},
-                ),
-        jsonDataSelector: (json) => json['data'] as Map<String, dynamic>,
-        provisionalToken: user!.provisionalToken,
-      );
+    final notificationDto = await _remoteNotificationById(
+      requestUri:
+          (user!.test)
+              ? Uri.http(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/notificacion/$id',
+                {'USER_ID': user!.id},
+              )
+              : Uri.https(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/notificacion/$id',
+                {'USER_ID': user!.id},
+              ),
+      jsonDataSelector: (json) => json['data'] as Map<String, dynamic>,
+      provisionalToken: user!.provisionalToken,
+    );
 
-      return notificationDto.toDomain();
-    } catch (e) {
-      rethrow;
-    }
+    return notificationDto.toDomain();
   }
 
-  Future<String?> haveNotification(String id) async {
+  Future<String?> haveNotification() async {
     try {
       final notificationId = await _remoteHaveNotification(
         requestUri:
@@ -122,14 +114,16 @@ class NotificationRepository {
         return data
             .map((e) => NotificationListDto.fromJson(e as Json))
             .toList();
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
       }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
     } catch (e, stackTrace) {
-      throw getApiError(e, stackTrace, errorLogger);
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 
@@ -148,14 +142,16 @@ class NotificationRepository {
       if (response.statusCode == 200) {
         final data = jsonDataSelector(response.data);
         return NotificationDto.fromJson(data);
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
       }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
     } catch (e, stackTrace) {
-      throw getApiError(e, stackTrace, errorLogger);
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 
@@ -174,14 +170,16 @@ class NotificationRepository {
       if (response.statusCode == 200) {
         final data = jsonDataSelector(response.data);
         return data['notificacion_guid'] as String?;
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
       }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
     } catch (e, stackTrace) {
-      throw getApiError(e, stackTrace, errorLogger);
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 }

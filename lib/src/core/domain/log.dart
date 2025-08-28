@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'log.freezed.dart';
 
 @freezed
-class Log with _$Log {
+abstract class Log with _$Log {
   const Log._();
   const factory Log({
     int? id,

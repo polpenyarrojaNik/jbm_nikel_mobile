@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../../core/domain/pais.dart';
 import '../../../core/helpers/extension.dart';
-
 import '../../cliente/infrastructure/cliente_direccion_dto.dart';
 import '../../cliente/infrastructure/cliente_dto.dart';
 import '../domain/cliente_alrededor.dart';
@@ -12,7 +12,7 @@ part 'cliente_alrededor_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class ClienteAlrededorDTO with _$ClienteAlrededorDTO {
+abstract class ClienteAlrededorDTO with _$ClienteAlrededorDTO {
   const ClienteAlrededorDTO._();
   const factory ClienteAlrededorDTO({
     required String markerId,
@@ -70,7 +70,7 @@ class ClienteAlrededorDTO with _$ClienteAlrededorDTO {
     return ClienteAlrededorDTO(
       clienteId: clienteDireccionDto.clienteId,
       markerId:
-          '${clienteDireccionDto.clienteId}/${clienteDireccionDto.direccionId}',
+          '${clienteDireccionDto.clienteId}/${clienteDireccionDto.direccionId ?? 'UN'}',
       nombre: clienteDireccionDto.nombre!,
       isDireccionFiscal: 'N',
       direccion: clienteDireccionDto.direccion1,

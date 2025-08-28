@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'sector.freezed.dart';
 
 @freezed
-class Sector with _$Sector {
+abstract class Sector with _$Sector {
   const Sector._();
   const factory Sector({
     required String id,

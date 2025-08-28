@@ -93,31 +93,32 @@ class VisitaDetalleControllerFamily extends Family<AsyncValue<Visita>> {
 
 /// See also [VisitaDetalleController].
 class VisitaDetalleControllerProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<VisitaDetalleController,
-        Visita> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<VisitaDetalleController, Visita> {
   /// See also [VisitaDetalleController].
   VisitaDetalleControllerProvider(
     String id,
     bool isLocal,
     String? createVisitaFromClienteId,
   ) : this._internal(
-          () => VisitaDetalleController()
-            ..id = id
-            ..isLocal = isLocal
-            ..createVisitaFromClienteId = createVisitaFromClienteId,
-          from: visitaDetalleControllerProvider,
-          name: r'visitaDetalleControllerProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$visitaDetalleControllerHash,
-          dependencies: VisitaDetalleControllerFamily._dependencies,
-          allTransitiveDependencies:
-              VisitaDetalleControllerFamily._allTransitiveDependencies,
-          id: id,
-          isLocal: isLocal,
-          createVisitaFromClienteId: createVisitaFromClienteId,
-        );
+        () =>
+            VisitaDetalleController()
+              ..id = id
+              ..isLocal = isLocal
+              ..createVisitaFromClienteId = createVisitaFromClienteId,
+        from: visitaDetalleControllerProvider,
+        name: r'visitaDetalleControllerProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$visitaDetalleControllerHash,
+        dependencies: VisitaDetalleControllerFamily._dependencies,
+        allTransitiveDependencies:
+            VisitaDetalleControllerFamily._allTransitiveDependencies,
+        id: id,
+        isLocal: isLocal,
+        createVisitaFromClienteId: createVisitaFromClienteId,
+      );
 
   VisitaDetalleControllerProvider._internal(
     super._createNotifier, {
@@ -139,11 +140,7 @@ class VisitaDetalleControllerProvider
   FutureOr<Visita> runNotifierBuild(
     covariant VisitaDetalleController notifier,
   ) {
-    return notifier.build(
-      id,
-      isLocal,
-      createVisitaFromClienteId,
-    );
+    return notifier.build(id, isLocal, createVisitaFromClienteId);
   }
 
   @override
@@ -151,10 +148,11 @@ class VisitaDetalleControllerProvider
     return ProviderOverride(
       origin: this,
       override: VisitaDetalleControllerProvider._internal(
-        () => create()
-          ..id = id
-          ..isLocal = isLocal
-          ..createVisitaFromClienteId = createVisitaFromClienteId,
+        () =>
+            create()
+              ..id = id
+              ..isLocal = isLocal
+              ..createVisitaFromClienteId = createVisitaFromClienteId,
         from: from,
         name: null,
         dependencies: null,
@@ -169,7 +167,7 @@ class VisitaDetalleControllerProvider
 
   @override
   AutoDisposeAsyncNotifierProviderElement<VisitaDetalleController, Visita>
-      createElement() {
+  createElement() {
     return _VisitaDetalleControllerProviderElement(this);
   }
 
@@ -207,8 +205,9 @@ mixin VisitaDetalleControllerRef
 }
 
 class _VisitaDetalleControllerProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<VisitaDetalleController,
-        Visita> with VisitaDetalleControllerRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<VisitaDetalleController, Visita>
+    with VisitaDetalleControllerRef {
   _VisitaDetalleControllerProviderElement(super.provider);
 
   @override
@@ -219,5 +218,6 @@ class _VisitaDetalleControllerProviderElement
   String? get createVisitaFromClienteId =>
       (origin as VisitaDetalleControllerProvider).createVisitaFromClienteId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

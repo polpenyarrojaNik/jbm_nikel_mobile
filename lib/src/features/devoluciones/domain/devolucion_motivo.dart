@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'devolucion_motivo.freezed.dart';
 
 @freezed
-class DevolucionMotivo with _$DevolucionMotivo {
+abstract class DevolucionMotivo with _$DevolucionMotivo {
   const DevolucionMotivo._();
   const factory DevolucionMotivo({
     required String id,

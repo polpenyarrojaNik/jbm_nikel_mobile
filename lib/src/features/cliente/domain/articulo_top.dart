@@ -4,7 +4,7 @@ import 'package:money2/money2.dart';
 part 'articulo_top.freezed.dart';
 
 @freezed
-class ArticuloTop with _$ArticuloTop {
+abstract class ArticuloTop with _$ArticuloTop {
   const ArticuloTop._();
   const factory ArticuloTop({
     required String articuloId,

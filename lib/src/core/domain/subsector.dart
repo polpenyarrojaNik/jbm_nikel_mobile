@@ -5,7 +5,7 @@ import 'sector.dart';
 part 'subsector.freezed.dart';
 
 @freezed
-class Subsector with _$Subsector {
+abstract class Subsector with _$Subsector {
   const Subsector._();
   const factory Subsector({
     required String subsectorId,

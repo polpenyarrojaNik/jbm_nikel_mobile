@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,532 +9,338 @@ part of 'cliente_direccion.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 /// @nodoc
 mixin _$ClienteDireccion {
-  String get clienteId => throw _privateConstructorUsedError;
-  String? get direccionId => throw _privateConstructorUsedError;
-  String? get direccionImpGuid => throw _privateConstructorUsedError;
-  String? get nombre => throw _privateConstructorUsedError;
-  String? get direccion1 => throw _privateConstructorUsedError;
-  String? get direccion2 => throw _privateConstructorUsedError;
-  String? get codigoPostal => throw _privateConstructorUsedError;
-  String? get poblacion => throw _privateConstructorUsedError;
-  String? get provincia => throw _privateConstructorUsedError;
-  Pais? get pais => throw _privateConstructorUsedError;
-  String? get telefono => throw _privateConstructorUsedError;
-  double get latitud => throw _privateConstructorUsedError;
-  double get longitud => throw _privateConstructorUsedError;
-  bool get predeterminada => throw _privateConstructorUsedError;
-  DateTime get lastUpdated => throw _privateConstructorUsedError;
-  bool get enviada => throw _privateConstructorUsedError;
-  bool get tratada => throw _privateConstructorUsedError;
-  bool get deleted => throw _privateConstructorUsedError;
 
-  /// Create a copy of ClienteDireccion
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ClienteDireccionCopyWith<ClienteDireccion> get copyWith =>
-      throw _privateConstructorUsedError;
+ String get clienteId; String? get direccionId; String? get direccionImpGuid; String? get nombre; String? get direccion1; String? get direccion2; String? get codigoPostal; String? get poblacion; String? get provincia; Pais? get pais; String? get telefono; double get latitud; double get longitud; bool get predeterminada; DateTime get lastUpdated; bool get enviada; bool get tratada; bool get deleted;
+/// Create a copy of ClienteDireccion
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ClienteDireccionCopyWith<ClienteDireccion> get copyWith => _$ClienteDireccionCopyWithImpl<ClienteDireccion>(this as ClienteDireccion, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClienteDireccion&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.direccionId, direccionId) || other.direccionId == direccionId)&&(identical(other.direccionImpGuid, direccionImpGuid) || other.direccionImpGuid == direccionImpGuid)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.direccion1, direccion1) || other.direccion1 == direccion1)&&(identical(other.direccion2, direccion2) || other.direccion2 == direccion2)&&(identical(other.codigoPostal, codigoPostal) || other.codigoPostal == codigoPostal)&&(identical(other.poblacion, poblacion) || other.poblacion == poblacion)&&(identical(other.provincia, provincia) || other.provincia == provincia)&&(identical(other.pais, pais) || other.pais == pais)&&(identical(other.telefono, telefono) || other.telefono == telefono)&&(identical(other.latitud, latitud) || other.latitud == latitud)&&(identical(other.longitud, longitud) || other.longitud == longitud)&&(identical(other.predeterminada, predeterminada) || other.predeterminada == predeterminada)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.enviada, enviada) || other.enviada == enviada)&&(identical(other.tratada, tratada) || other.tratada == tratada)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,clienteId,direccionId,direccionImpGuid,nombre,direccion1,direccion2,codigoPostal,poblacion,provincia,pais,telefono,latitud,longitud,predeterminada,lastUpdated,enviada,tratada,deleted);
+
+@override
+String toString() {
+  return 'ClienteDireccion(clienteId: $clienteId, direccionId: $direccionId, direccionImpGuid: $direccionImpGuid, nombre: $nombre, direccion1: $direccion1, direccion2: $direccion2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, telefono: $telefono, latitud: $latitud, longitud: $longitud, predeterminada: $predeterminada, lastUpdated: $lastUpdated, enviada: $enviada, tratada: $tratada, deleted: $deleted)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ClienteDireccionCopyWith<$Res> {
-  factory $ClienteDireccionCopyWith(
-          ClienteDireccion value, $Res Function(ClienteDireccion) then) =
-      _$ClienteDireccionCopyWithImpl<$Res, ClienteDireccion>;
-  @useResult
-  $Res call(
-      {String clienteId,
-      String? direccionId,
-      String? direccionImpGuid,
-      String? nombre,
-      String? direccion1,
-      String? direccion2,
-      String? codigoPostal,
-      String? poblacion,
-      String? provincia,
-      Pais? pais,
-      String? telefono,
-      double latitud,
-      double longitud,
-      bool predeterminada,
-      DateTime lastUpdated,
-      bool enviada,
-      bool tratada,
-      bool deleted});
+abstract mixin class $ClienteDireccionCopyWith<$Res>  {
+  factory $ClienteDireccionCopyWith(ClienteDireccion value, $Res Function(ClienteDireccion) _then) = _$ClienteDireccionCopyWithImpl;
+@useResult
+$Res call({
+ String clienteId, String? direccionId, String? direccionImpGuid, String? nombre, String? direccion1, String? direccion2, String? codigoPostal, String? poblacion, String? provincia, Pais? pais, String? telefono, double latitud, double longitud, bool predeterminada, DateTime lastUpdated, bool enviada, bool tratada, bool deleted
+});
 
-  $PaisCopyWith<$Res>? get pais;
+
+$PaisCopyWith<$Res>? get pais;
+
 }
-
 /// @nodoc
-class _$ClienteDireccionCopyWithImpl<$Res, $Val extends ClienteDireccion>
+class _$ClienteDireccionCopyWithImpl<$Res>
     implements $ClienteDireccionCopyWith<$Res> {
-  _$ClienteDireccionCopyWithImpl(this._value, this._then);
+  _$ClienteDireccionCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ClienteDireccion _self;
+  final $Res Function(ClienteDireccion) _then;
 
-  /// Create a copy of ClienteDireccion
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? clienteId = null,
-    Object? direccionId = freezed,
-    Object? direccionImpGuid = freezed,
-    Object? nombre = freezed,
-    Object? direccion1 = freezed,
-    Object? direccion2 = freezed,
-    Object? codigoPostal = freezed,
-    Object? poblacion = freezed,
-    Object? provincia = freezed,
-    Object? pais = freezed,
-    Object? telefono = freezed,
-    Object? latitud = null,
-    Object? longitud = null,
-    Object? predeterminada = null,
-    Object? lastUpdated = null,
-    Object? enviada = null,
-    Object? tratada = null,
-    Object? deleted = null,
-  }) {
-    return _then(_value.copyWith(
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      direccionId: freezed == direccionId
-          ? _value.direccionId
-          : direccionId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      direccionImpGuid: freezed == direccionImpGuid
-          ? _value.direccionImpGuid
-          : direccionImpGuid // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nombre: freezed == nombre
-          ? _value.nombre
-          : nombre // ignore: cast_nullable_to_non_nullable
-              as String?,
-      direccion1: freezed == direccion1
-          ? _value.direccion1
-          : direccion1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      direccion2: freezed == direccion2
-          ? _value.direccion2
-          : direccion2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      codigoPostal: freezed == codigoPostal
-          ? _value.codigoPostal
-          : codigoPostal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      poblacion: freezed == poblacion
-          ? _value.poblacion
-          : poblacion // ignore: cast_nullable_to_non_nullable
-              as String?,
-      provincia: freezed == provincia
-          ? _value.provincia
-          : provincia // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pais: freezed == pais
-          ? _value.pais
-          : pais // ignore: cast_nullable_to_non_nullable
-              as Pais?,
-      telefono: freezed == telefono
-          ? _value.telefono
-          : telefono // ignore: cast_nullable_to_non_nullable
-              as String?,
-      latitud: null == latitud
-          ? _value.latitud
-          : latitud // ignore: cast_nullable_to_non_nullable
-              as double,
-      longitud: null == longitud
-          ? _value.longitud
-          : longitud // ignore: cast_nullable_to_non_nullable
-              as double,
-      predeterminada: null == predeterminada
-          ? _value.predeterminada
-          : predeterminada // ignore: cast_nullable_to_non_nullable
-              as bool,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      enviada: null == enviada
-          ? _value.enviada
-          : enviada // ignore: cast_nullable_to_non_nullable
-              as bool,
-      tratada: null == tratada
-          ? _value.tratada
-          : tratada // ignore: cast_nullable_to_non_nullable
-              as bool,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+/// Create a copy of ClienteDireccion
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? clienteId = null,Object? direccionId = freezed,Object? direccionImpGuid = freezed,Object? nombre = freezed,Object? direccion1 = freezed,Object? direccion2 = freezed,Object? codigoPostal = freezed,Object? poblacion = freezed,Object? provincia = freezed,Object? pais = freezed,Object? telefono = freezed,Object? latitud = null,Object? longitud = null,Object? predeterminada = null,Object? lastUpdated = null,Object? enviada = null,Object? tratada = null,Object? deleted = null,}) {
+  return _then(_self.copyWith(
+clienteId: null == clienteId ? _self.clienteId : clienteId // ignore: cast_nullable_to_non_nullable
+as String,direccionId: freezed == direccionId ? _self.direccionId : direccionId // ignore: cast_nullable_to_non_nullable
+as String?,direccionImpGuid: freezed == direccionImpGuid ? _self.direccionImpGuid : direccionImpGuid // ignore: cast_nullable_to_non_nullable
+as String?,nombre: freezed == nombre ? _self.nombre : nombre // ignore: cast_nullable_to_non_nullable
+as String?,direccion1: freezed == direccion1 ? _self.direccion1 : direccion1 // ignore: cast_nullable_to_non_nullable
+as String?,direccion2: freezed == direccion2 ? _self.direccion2 : direccion2 // ignore: cast_nullable_to_non_nullable
+as String?,codigoPostal: freezed == codigoPostal ? _self.codigoPostal : codigoPostal // ignore: cast_nullable_to_non_nullable
+as String?,poblacion: freezed == poblacion ? _self.poblacion : poblacion // ignore: cast_nullable_to_non_nullable
+as String?,provincia: freezed == provincia ? _self.provincia : provincia // ignore: cast_nullable_to_non_nullable
+as String?,pais: freezed == pais ? _self.pais : pais // ignore: cast_nullable_to_non_nullable
+as Pais?,telefono: freezed == telefono ? _self.telefono : telefono // ignore: cast_nullable_to_non_nullable
+as String?,latitud: null == latitud ? _self.latitud : latitud // ignore: cast_nullable_to_non_nullable
+as double,longitud: null == longitud ? _self.longitud : longitud // ignore: cast_nullable_to_non_nullable
+as double,predeterminada: null == predeterminada ? _self.predeterminada : predeterminada // ignore: cast_nullable_to_non_nullable
+as bool,lastUpdated: null == lastUpdated ? _self.lastUpdated : lastUpdated // ignore: cast_nullable_to_non_nullable
+as DateTime,enviada: null == enviada ? _self.enviada : enviada // ignore: cast_nullable_to_non_nullable
+as bool,tratada: null == tratada ? _self.tratada : tratada // ignore: cast_nullable_to_non_nullable
+as bool,deleted: null == deleted ? _self.deleted : deleted // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+/// Create a copy of ClienteDireccion
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PaisCopyWith<$Res>? get pais {
+    if (_self.pais == null) {
+    return null;
   }
 
-  /// Create a copy of ClienteDireccion
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $PaisCopyWith<$Res>? get pais {
-    if (_value.pais == null) {
-      return null;
-    }
-
-    return $PaisCopyWith<$Res>(_value.pais!, (value) {
-      return _then(_value.copyWith(pais: value) as $Val);
-    });
-  }
+  return $PaisCopyWith<$Res>(_self.pais!, (value) {
+    return _then(_self.copyWith(pais: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$ClienteDireccionImplCopyWith<$Res>
-    implements $ClienteDireccionCopyWith<$Res> {
-  factory _$$ClienteDireccionImplCopyWith(_$ClienteDireccionImpl value,
-          $Res Function(_$ClienteDireccionImpl) then) =
-      __$$ClienteDireccionImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String clienteId,
-      String? direccionId,
-      String? direccionImpGuid,
-      String? nombre,
-      String? direccion1,
-      String? direccion2,
-      String? codigoPostal,
-      String? poblacion,
-      String? provincia,
-      Pais? pais,
-      String? telefono,
-      double latitud,
-      double longitud,
-      bool predeterminada,
-      DateTime lastUpdated,
-      bool enviada,
-      bool tratada,
-      bool deleted});
 
-  @override
-  $PaisCopyWith<$Res>? get pais;
+/// Adds pattern-matching-related methods to [ClienteDireccion].
+extension ClienteDireccionPatterns on ClienteDireccion {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ClienteDireccion value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ClienteDireccion() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ClienteDireccion value)  $default,){
+final _that = this;
+switch (_that) {
+case _ClienteDireccion():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ClienteDireccion value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ClienteDireccion() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String clienteId,  String? direccionId,  String? direccionImpGuid,  String? nombre,  String? direccion1,  String? direccion2,  String? codigoPostal,  String? poblacion,  String? provincia,  Pais? pais,  String? telefono,  double latitud,  double longitud,  bool predeterminada,  DateTime lastUpdated,  bool enviada,  bool tratada,  bool deleted)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ClienteDireccion() when $default != null:
+return $default(_that.clienteId,_that.direccionId,_that.direccionImpGuid,_that.nombre,_that.direccion1,_that.direccion2,_that.codigoPostal,_that.poblacion,_that.provincia,_that.pais,_that.telefono,_that.latitud,_that.longitud,_that.predeterminada,_that.lastUpdated,_that.enviada,_that.tratada,_that.deleted);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String clienteId,  String? direccionId,  String? direccionImpGuid,  String? nombre,  String? direccion1,  String? direccion2,  String? codigoPostal,  String? poblacion,  String? provincia,  Pais? pais,  String? telefono,  double latitud,  double longitud,  bool predeterminada,  DateTime lastUpdated,  bool enviada,  bool tratada,  bool deleted)  $default,) {final _that = this;
+switch (_that) {
+case _ClienteDireccion():
+return $default(_that.clienteId,_that.direccionId,_that.direccionImpGuid,_that.nombre,_that.direccion1,_that.direccion2,_that.codigoPostal,_that.poblacion,_that.provincia,_that.pais,_that.telefono,_that.latitud,_that.longitud,_that.predeterminada,_that.lastUpdated,_that.enviada,_that.tratada,_that.deleted);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String clienteId,  String? direccionId,  String? direccionImpGuid,  String? nombre,  String? direccion1,  String? direccion2,  String? codigoPostal,  String? poblacion,  String? provincia,  Pais? pais,  String? telefono,  double latitud,  double longitud,  bool predeterminada,  DateTime lastUpdated,  bool enviada,  bool tratada,  bool deleted)?  $default,) {final _that = this;
+switch (_that) {
+case _ClienteDireccion() when $default != null:
+return $default(_that.clienteId,_that.direccionId,_that.direccionImpGuid,_that.nombre,_that.direccion1,_that.direccion2,_that.codigoPostal,_that.poblacion,_that.provincia,_that.pais,_that.telefono,_that.latitud,_that.longitud,_that.predeterminada,_that.lastUpdated,_that.enviada,_that.tratada,_that.deleted);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$ClienteDireccionImplCopyWithImpl<$Res>
-    extends _$ClienteDireccionCopyWithImpl<$Res, _$ClienteDireccionImpl>
-    implements _$$ClienteDireccionImplCopyWith<$Res> {
-  __$$ClienteDireccionImplCopyWithImpl(_$ClienteDireccionImpl _value,
-      $Res Function(_$ClienteDireccionImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of ClienteDireccion
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? clienteId = null,
-    Object? direccionId = freezed,
-    Object? direccionImpGuid = freezed,
-    Object? nombre = freezed,
-    Object? direccion1 = freezed,
-    Object? direccion2 = freezed,
-    Object? codigoPostal = freezed,
-    Object? poblacion = freezed,
-    Object? provincia = freezed,
-    Object? pais = freezed,
-    Object? telefono = freezed,
-    Object? latitud = null,
-    Object? longitud = null,
-    Object? predeterminada = null,
-    Object? lastUpdated = null,
-    Object? enviada = null,
-    Object? tratada = null,
-    Object? deleted = null,
-  }) {
-    return _then(_$ClienteDireccionImpl(
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
-      direccionId: freezed == direccionId
-          ? _value.direccionId
-          : direccionId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      direccionImpGuid: freezed == direccionImpGuid
-          ? _value.direccionImpGuid
-          : direccionImpGuid // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nombre: freezed == nombre
-          ? _value.nombre
-          : nombre // ignore: cast_nullable_to_non_nullable
-              as String?,
-      direccion1: freezed == direccion1
-          ? _value.direccion1
-          : direccion1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      direccion2: freezed == direccion2
-          ? _value.direccion2
-          : direccion2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      codigoPostal: freezed == codigoPostal
-          ? _value.codigoPostal
-          : codigoPostal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      poblacion: freezed == poblacion
-          ? _value.poblacion
-          : poblacion // ignore: cast_nullable_to_non_nullable
-              as String?,
-      provincia: freezed == provincia
-          ? _value.provincia
-          : provincia // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pais: freezed == pais
-          ? _value.pais
-          : pais // ignore: cast_nullable_to_non_nullable
-              as Pais?,
-      telefono: freezed == telefono
-          ? _value.telefono
-          : telefono // ignore: cast_nullable_to_non_nullable
-              as String?,
-      latitud: null == latitud
-          ? _value.latitud
-          : latitud // ignore: cast_nullable_to_non_nullable
-              as double,
-      longitud: null == longitud
-          ? _value.longitud
-          : longitud // ignore: cast_nullable_to_non_nullable
-              as double,
-      predeterminada: null == predeterminada
-          ? _value.predeterminada
-          : predeterminada // ignore: cast_nullable_to_non_nullable
-              as bool,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      enviada: null == enviada
-          ? _value.enviada
-          : enviada // ignore: cast_nullable_to_non_nullable
-              as bool,
-      tratada: null == tratada
-          ? _value.tratada
-          : tratada // ignore: cast_nullable_to_non_nullable
-              as bool,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$ClienteDireccionImpl extends _ClienteDireccion {
-  const _$ClienteDireccionImpl(
-      {required this.clienteId,
-      required this.direccionId,
-      required this.direccionImpGuid,
-      this.nombre,
-      this.direccion1,
-      this.direccion2,
-      this.codigoPostal,
-      this.poblacion,
-      this.provincia,
-      this.pais,
-      this.telefono,
-      required this.latitud,
-      required this.longitud,
-      required this.predeterminada,
-      required this.lastUpdated,
-      required this.enviada,
-      required this.tratada,
-      required this.deleted})
-      : super._();
 
-  @override
-  final String clienteId;
-  @override
-  final String? direccionId;
-  @override
-  final String? direccionImpGuid;
-  @override
-  final String? nombre;
-  @override
-  final String? direccion1;
-  @override
-  final String? direccion2;
-  @override
-  final String? codigoPostal;
-  @override
-  final String? poblacion;
-  @override
-  final String? provincia;
-  @override
-  final Pais? pais;
-  @override
-  final String? telefono;
-  @override
-  final double latitud;
-  @override
-  final double longitud;
-  @override
-  final bool predeterminada;
-  @override
-  final DateTime lastUpdated;
-  @override
-  final bool enviada;
-  @override
-  final bool tratada;
-  @override
-  final bool deleted;
+class _ClienteDireccion extends ClienteDireccion {
+  const _ClienteDireccion({required this.clienteId, required this.direccionId, required this.direccionImpGuid, this.nombre, this.direccion1, this.direccion2, this.codigoPostal, this.poblacion, this.provincia, this.pais, this.telefono, required this.latitud, required this.longitud, required this.predeterminada, required this.lastUpdated, required this.enviada, required this.tratada, required this.deleted}): super._();
+  
 
-  @override
-  String toString() {
-    return 'ClienteDireccion(clienteId: $clienteId, direccionId: $direccionId, direccionImpGuid: $direccionImpGuid, nombre: $nombre, direccion1: $direccion1, direccion2: $direccion2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, telefono: $telefono, latitud: $latitud, longitud: $longitud, predeterminada: $predeterminada, lastUpdated: $lastUpdated, enviada: $enviada, tratada: $tratada, deleted: $deleted)';
-  }
+@override final  String clienteId;
+@override final  String? direccionId;
+@override final  String? direccionImpGuid;
+@override final  String? nombre;
+@override final  String? direccion1;
+@override final  String? direccion2;
+@override final  String? codigoPostal;
+@override final  String? poblacion;
+@override final  String? provincia;
+@override final  Pais? pais;
+@override final  String? telefono;
+@override final  double latitud;
+@override final  double longitud;
+@override final  bool predeterminada;
+@override final  DateTime lastUpdated;
+@override final  bool enviada;
+@override final  bool tratada;
+@override final  bool deleted;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ClienteDireccionImpl &&
-            (identical(other.clienteId, clienteId) ||
-                other.clienteId == clienteId) &&
-            (identical(other.direccionId, direccionId) ||
-                other.direccionId == direccionId) &&
-            (identical(other.direccionImpGuid, direccionImpGuid) ||
-                other.direccionImpGuid == direccionImpGuid) &&
-            (identical(other.nombre, nombre) || other.nombre == nombre) &&
-            (identical(other.direccion1, direccion1) ||
-                other.direccion1 == direccion1) &&
-            (identical(other.direccion2, direccion2) ||
-                other.direccion2 == direccion2) &&
-            (identical(other.codigoPostal, codigoPostal) ||
-                other.codigoPostal == codigoPostal) &&
-            (identical(other.poblacion, poblacion) ||
-                other.poblacion == poblacion) &&
-            (identical(other.provincia, provincia) ||
-                other.provincia == provincia) &&
-            (identical(other.pais, pais) || other.pais == pais) &&
-            (identical(other.telefono, telefono) ||
-                other.telefono == telefono) &&
-            (identical(other.latitud, latitud) || other.latitud == latitud) &&
-            (identical(other.longitud, longitud) ||
-                other.longitud == longitud) &&
-            (identical(other.predeterminada, predeterminada) ||
-                other.predeterminada == predeterminada) &&
-            (identical(other.lastUpdated, lastUpdated) ||
-                other.lastUpdated == lastUpdated) &&
-            (identical(other.enviada, enviada) || other.enviada == enviada) &&
-            (identical(other.tratada, tratada) || other.tratada == tratada) &&
-            (identical(other.deleted, deleted) || other.deleted == deleted));
-  }
+/// Create a copy of ClienteDireccion
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ClienteDireccionCopyWith<_ClienteDireccion> get copyWith => __$ClienteDireccionCopyWithImpl<_ClienteDireccion>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      clienteId,
-      direccionId,
-      direccionImpGuid,
-      nombre,
-      direccion1,
-      direccion2,
-      codigoPostal,
-      poblacion,
-      provincia,
-      pais,
-      telefono,
-      latitud,
-      longitud,
-      predeterminada,
-      lastUpdated,
-      enviada,
-      tratada,
-      deleted);
 
-  /// Create a copy of ClienteDireccion
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ClienteDireccionImplCopyWith<_$ClienteDireccionImpl> get copyWith =>
-      __$$ClienteDireccionImplCopyWithImpl<_$ClienteDireccionImpl>(
-          this, _$identity);
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClienteDireccion&&(identical(other.clienteId, clienteId) || other.clienteId == clienteId)&&(identical(other.direccionId, direccionId) || other.direccionId == direccionId)&&(identical(other.direccionImpGuid, direccionImpGuid) || other.direccionImpGuid == direccionImpGuid)&&(identical(other.nombre, nombre) || other.nombre == nombre)&&(identical(other.direccion1, direccion1) || other.direccion1 == direccion1)&&(identical(other.direccion2, direccion2) || other.direccion2 == direccion2)&&(identical(other.codigoPostal, codigoPostal) || other.codigoPostal == codigoPostal)&&(identical(other.poblacion, poblacion) || other.poblacion == poblacion)&&(identical(other.provincia, provincia) || other.provincia == provincia)&&(identical(other.pais, pais) || other.pais == pais)&&(identical(other.telefono, telefono) || other.telefono == telefono)&&(identical(other.latitud, latitud) || other.latitud == latitud)&&(identical(other.longitud, longitud) || other.longitud == longitud)&&(identical(other.predeterminada, predeterminada) || other.predeterminada == predeterminada)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.enviada, enviada) || other.enviada == enviada)&&(identical(other.tratada, tratada) || other.tratada == tratada)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
 
-abstract class _ClienteDireccion extends ClienteDireccion {
-  const factory _ClienteDireccion(
-      {required final String clienteId,
-      required final String? direccionId,
-      required final String? direccionImpGuid,
-      final String? nombre,
-      final String? direccion1,
-      final String? direccion2,
-      final String? codigoPostal,
-      final String? poblacion,
-      final String? provincia,
-      final Pais? pais,
-      final String? telefono,
-      required final double latitud,
-      required final double longitud,
-      required final bool predeterminada,
-      required final DateTime lastUpdated,
-      required final bool enviada,
-      required final bool tratada,
-      required final bool deleted}) = _$ClienteDireccionImpl;
-  const _ClienteDireccion._() : super._();
 
-  @override
-  String get clienteId;
-  @override
-  String? get direccionId;
-  @override
-  String? get direccionImpGuid;
-  @override
-  String? get nombre;
-  @override
-  String? get direccion1;
-  @override
-  String? get direccion2;
-  @override
-  String? get codigoPostal;
-  @override
-  String? get poblacion;
-  @override
-  String? get provincia;
-  @override
-  Pais? get pais;
-  @override
-  String? get telefono;
-  @override
-  double get latitud;
-  @override
-  double get longitud;
-  @override
-  bool get predeterminada;
-  @override
-  DateTime get lastUpdated;
-  @override
-  bool get enviada;
-  @override
-  bool get tratada;
-  @override
-  bool get deleted;
+@override
+int get hashCode => Object.hash(runtimeType,clienteId,direccionId,direccionImpGuid,nombre,direccion1,direccion2,codigoPostal,poblacion,provincia,pais,telefono,latitud,longitud,predeterminada,lastUpdated,enviada,tratada,deleted);
 
-  /// Create a copy of ClienteDireccion
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ClienteDireccionImplCopyWith<_$ClienteDireccionImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'ClienteDireccion(clienteId: $clienteId, direccionId: $direccionId, direccionImpGuid: $direccionImpGuid, nombre: $nombre, direccion1: $direccion1, direccion2: $direccion2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, telefono: $telefono, latitud: $latitud, longitud: $longitud, predeterminada: $predeterminada, lastUpdated: $lastUpdated, enviada: $enviada, tratada: $tratada, deleted: $deleted)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ClienteDireccionCopyWith<$Res> implements $ClienteDireccionCopyWith<$Res> {
+  factory _$ClienteDireccionCopyWith(_ClienteDireccion value, $Res Function(_ClienteDireccion) _then) = __$ClienteDireccionCopyWithImpl;
+@override @useResult
+$Res call({
+ String clienteId, String? direccionId, String? direccionImpGuid, String? nombre, String? direccion1, String? direccion2, String? codigoPostal, String? poblacion, String? provincia, Pais? pais, String? telefono, double latitud, double longitud, bool predeterminada, DateTime lastUpdated, bool enviada, bool tratada, bool deleted
+});
+
+
+@override $PaisCopyWith<$Res>? get pais;
+
+}
+/// @nodoc
+class __$ClienteDireccionCopyWithImpl<$Res>
+    implements _$ClienteDireccionCopyWith<$Res> {
+  __$ClienteDireccionCopyWithImpl(this._self, this._then);
+
+  final _ClienteDireccion _self;
+  final $Res Function(_ClienteDireccion) _then;
+
+/// Create a copy of ClienteDireccion
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? clienteId = null,Object? direccionId = freezed,Object? direccionImpGuid = freezed,Object? nombre = freezed,Object? direccion1 = freezed,Object? direccion2 = freezed,Object? codigoPostal = freezed,Object? poblacion = freezed,Object? provincia = freezed,Object? pais = freezed,Object? telefono = freezed,Object? latitud = null,Object? longitud = null,Object? predeterminada = null,Object? lastUpdated = null,Object? enviada = null,Object? tratada = null,Object? deleted = null,}) {
+  return _then(_ClienteDireccion(
+clienteId: null == clienteId ? _self.clienteId : clienteId // ignore: cast_nullable_to_non_nullable
+as String,direccionId: freezed == direccionId ? _self.direccionId : direccionId // ignore: cast_nullable_to_non_nullable
+as String?,direccionImpGuid: freezed == direccionImpGuid ? _self.direccionImpGuid : direccionImpGuid // ignore: cast_nullable_to_non_nullable
+as String?,nombre: freezed == nombre ? _self.nombre : nombre // ignore: cast_nullable_to_non_nullable
+as String?,direccion1: freezed == direccion1 ? _self.direccion1 : direccion1 // ignore: cast_nullable_to_non_nullable
+as String?,direccion2: freezed == direccion2 ? _self.direccion2 : direccion2 // ignore: cast_nullable_to_non_nullable
+as String?,codigoPostal: freezed == codigoPostal ? _self.codigoPostal : codigoPostal // ignore: cast_nullable_to_non_nullable
+as String?,poblacion: freezed == poblacion ? _self.poblacion : poblacion // ignore: cast_nullable_to_non_nullable
+as String?,provincia: freezed == provincia ? _self.provincia : provincia // ignore: cast_nullable_to_non_nullable
+as String?,pais: freezed == pais ? _self.pais : pais // ignore: cast_nullable_to_non_nullable
+as Pais?,telefono: freezed == telefono ? _self.telefono : telefono // ignore: cast_nullable_to_non_nullable
+as String?,latitud: null == latitud ? _self.latitud : latitud // ignore: cast_nullable_to_non_nullable
+as double,longitud: null == longitud ? _self.longitud : longitud // ignore: cast_nullable_to_non_nullable
+as double,predeterminada: null == predeterminada ? _self.predeterminada : predeterminada // ignore: cast_nullable_to_non_nullable
+as bool,lastUpdated: null == lastUpdated ? _self.lastUpdated : lastUpdated // ignore: cast_nullable_to_non_nullable
+as DateTime,enviada: null == enviada ? _self.enviada : enviada // ignore: cast_nullable_to_non_nullable
+as bool,tratada: null == tratada ? _self.tratada : tratada // ignore: cast_nullable_to_non_nullable
+as bool,deleted: null == deleted ? _self.deleted : deleted // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+/// Create a copy of ClienteDireccion
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PaisCopyWith<$Res>? get pais {
+    if (_self.pais == null) {
+    return null;
+  }
+
+  return $PaisCopyWith<$Res>(_self.pais!, (value) {
+    return _then(_self.copyWith(pais: value));
+  });
+}
+}
+
+// dart format on

@@ -51,16 +51,13 @@ class _CatalogoListaPageState extends ConsumerState<CatalogoListaPage> {
 
     ref.listen<AsyncValue<String?>>(
       notificationNotifierProvider,
-      (_, state) => state.maybeWhen(
-        orElse: () {},
-        data: (notificationId) {
-          if (notificationId != null) {
-            context.router.push(
-              NotificationDetailRoute(notificationId: notificationId),
-            );
-          }
-        },
-      ),
+      (_, state) => state.whenData((notificationId) {
+        if (notificationId != null) {
+          context.router.push(
+            NotificationDetailRoute(notificationId: notificationId),
+          );
+        }
+      }),
     );
 
     ref.listen<CatalogoAdjuntoState>(catalogoAdjuntoControllerProvider, (
@@ -68,13 +65,13 @@ class _CatalogoListaPageState extends ConsumerState<CatalogoListaPage> {
       state,
     ) {
       state.when(
-        data:
-            (file, descarga) =>
-                (file != null && descarga)
-                    ? OpenFile.open(file.path)
-                    : (file != null)
-                    ? context.router.push(CatalogoPdfViewerRoute(pdfFile: file))
-                    : null,
+        data: (file, descarga) {
+          if (file != null && descarga) {
+            OpenFile.open(file.path);
+          } else if (file != null) {
+            context.router.push(CatalogoPdfViewerRoute(pdfFile: file));
+          }
+        },
         error: (error) => showToast(error.toString(), context),
         loading:
             () => showToast(

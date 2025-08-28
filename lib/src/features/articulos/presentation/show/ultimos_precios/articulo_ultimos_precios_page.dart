@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../../../generated/l10n.dart';
 import '../../../../../core/helpers/debouncer.dart';
@@ -60,7 +61,7 @@ class ArticuloUltimosPreciosPage extends ConsumerWidget {
       body: Column(
         children: [
           HeaderDatosRelacionados(entityId: articuloId, subtitle: description),
-          gapH8,
+          const Gap(8),
           stateClienteUltimosPreciosListCount.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             data:
@@ -104,7 +105,7 @@ class _UltimosPreciosTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: listPadding,
+      padding: kPaddingList,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -115,10 +116,10 @@ class _UltimosPreciosTile extends StatelessWidget {
                 '#${ultimosPrecios.clienteId}',
                 style: Theme.of(context).textTheme.bodySmall,
               ),
-              gapW16,
+              const Gap(16),
               Flexible(
                 child: Text(
-                  '${ultimosPrecios.nombreCliente}',
+                  ultimosPrecios.nombreCliente ?? S.of(context).unknownCustomer,
                   style: Theme.of(context).textTheme.bodySmall,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -131,7 +132,7 @@ class _UltimosPreciosTile extends StatelessWidget {
               Text(
                 dateFormatter(ultimosPrecios.fecha.toLocal().toIso8601String()),
               ),
-              gapW16,
+              const Gap(16),
               Text(
                 '${numberFormatCantidades(ultimosPrecios.cantidad.toDouble())} ${S.of(context).unidad}',
               ),

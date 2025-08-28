@@ -17,7 +17,7 @@ class ProvinciaSearchPageController extends _$ProvinciaSearchPageController {
   ProvinciaSearchPageController();
 
   @override
-  Future<List<Provincia>> build(String? paisId) async {
+  Future<List<Provincia>> build(String? paisId) {
     return ref
         .read(visitaRepositoryProvider)
         .getProvincias(paisId, ref.watch(provinciasSearchQueryStateProvider));

@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'notification_list.freezed.dart';
 
 @freezed
-class NotificationList with _$NotificationList {
+abstract class NotificationList with _$NotificationList {
   const NotificationList._();
   const factory NotificationList({
     required String notificationId,

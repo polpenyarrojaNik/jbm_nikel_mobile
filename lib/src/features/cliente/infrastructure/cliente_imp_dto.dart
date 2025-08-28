@@ -11,7 +11,9 @@ part 'cliente_imp_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class ClienteImpDTO with _$ClienteImpDTO implements Insertable<ClienteImpDTO> {
+abstract class ClienteImpDTO
+    with _$ClienteImpDTO
+    implements Insertable<ClienteImpDTO> {
   const ClienteImpDTO._();
   const factory ClienteImpDTO({
     @JsonKey(name: 'CLIENTE_ID') required String clienteId,

@@ -6,9 +6,8 @@ part of 'cliente_alrededor_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ClienteAlrededorDTOImpl _$$ClienteAlrededorDTOImplFromJson(
-        Map<String, dynamic> json) =>
-    _$ClienteAlrededorDTOImpl(
+_ClienteAlrededorDTO _$ClienteAlrededorDTOFromJson(Map<String, dynamic> json) =>
+    _ClienteAlrededorDTO(
       markerId: json['markerId'] as String,
       clienteId: json['clienteId'] as String,
       nombre: json['nombre'] as String,
@@ -28,24 +27,24 @@ _$ClienteAlrededorDTOImpl _$$ClienteAlrededorDTOImplFromJson(
       porcentajeAbonos: (json['porcentajeAbonos'] as num).toDouble(),
     );
 
-Map<String, dynamic> _$$ClienteAlrededorDTOImplToJson(
-        _$ClienteAlrededorDTOImpl instance) =>
-    <String, dynamic>{
-      'markerId': instance.markerId,
-      'clienteId': instance.clienteId,
-      'nombre': instance.nombre,
-      'isDireccionFiscal': instance.isDireccionFiscal,
-      'direccion': instance.direccion,
-      'codigoPostal': instance.codigoPostal,
-      'poblacion': instance.poblacion,
-      'provincia': instance.provincia,
-      'paisId': instance.paisId,
-      'isClientePotencial': instance.isClientePotencial,
-      'latitud': instance.latitud,
-      'longitud': instance.longitud,
-      'nombreRepresentante1': instance.nombreRepresentante1,
-      'nombreRepresentante2': instance.nombreRepresentante2,
-      'ventasAnyoActual': instance.ventasAnyoActual,
-      'ventasAnyoAnterior': instance.ventasAnyoAnterior,
-      'porcentajeAbonos': instance.porcentajeAbonos,
-    };
+Map<String, dynamic> _$ClienteAlrededorDTOToJson(
+  _ClienteAlrededorDTO instance,
+) => <String, dynamic>{
+  'markerId': instance.markerId,
+  'clienteId': instance.clienteId,
+  'nombre': instance.nombre,
+  'isDireccionFiscal': instance.isDireccionFiscal,
+  'direccion': instance.direccion,
+  'codigoPostal': instance.codigoPostal,
+  'poblacion': instance.poblacion,
+  'provincia': instance.provincia,
+  'paisId': instance.paisId,
+  'isClientePotencial': instance.isClientePotencial,
+  'latitud': instance.latitud,
+  'longitud': instance.longitud,
+  'nombreRepresentante1': instance.nombreRepresentante1,
+  'nombreRepresentante2': instance.nombreRepresentante2,
+  'ventasAnyoActual': instance.ventasAnyoActual,
+  'ventasAnyoAnterior': instance.ventasAnyoAnterior,
+  'porcentajeAbonos': instance.porcentajeAbonos,
+};

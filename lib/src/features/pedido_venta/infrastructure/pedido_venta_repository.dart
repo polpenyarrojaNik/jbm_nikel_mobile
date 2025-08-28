@@ -137,30 +137,25 @@ class PedidoVentaRepository {
     required PedidoVentaEstado? pedidoVentaEstado,
     String? clienteId,
   }) async {
-    try {
-      final pedidoVentaList = <PedidoVenta>[];
+    final pedidoVentaList = <PedidoVenta>[];
 
-      if (page == 0) {
-        final pedidoVentaLocalList = await getPedidosVentaLocal(
-          searchText: searchText,
-          clienteId: clienteId,
-          pedidoVentaEstado: pedidoVentaEstado,
-        );
-
-        pedidoVentaList.addAll(pedidoVentaLocalList);
-      }
-
-      final syncPedidosVentaList = await getSyncPedidoVentaList(
-        page: page,
+    if (page == 0) {
+      final pedidoVentaLocalList = await getPedidosVentaLocal(
         searchText: searchText,
         clienteId: clienteId,
-        pedidoVentaEstado: pedidoVentaEstado,
       );
-      pedidoVentaList.addAll(syncPedidosVentaList);
-      return pedidoVentaList;
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+
+      pedidoVentaList.addAll(pedidoVentaLocalList);
     }
+
+    final syncPedidosVentaList = await getSyncPedidoVentaList(
+      page: page,
+      searchText: searchText,
+      clienteId: clienteId,
+      pedidoVentaEstado: pedidoVentaEstado,
+    );
+    pedidoVentaList.addAll(syncPedidosVentaList);
+    return pedidoVentaList;
   }
 
   Future<int> getPedidoVentaCountList({
@@ -172,7 +167,6 @@ class PedidoVentaRepository {
       final pedidoVentaLocalCountList = await getPedidosVentaLocalCountList(
         searchText: searchText,
         clienteId: clienteId,
-        pedidoVentaEstado: pedidoVentaEstado,
       );
 
       final syncPedidosVentaCountList = await getSyncPedidoVentaCountList(
@@ -181,8 +175,11 @@ class PedidoVentaRepository {
         pedidoVentaEstado: pedidoVentaEstado,
       );
       return pedidoVentaLocalCountList + syncPedidosVentaCountList;
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -194,7 +191,6 @@ class PedidoVentaRepository {
       final pedidoVentaLocalList = await getPedidosVentaLocal(
         searchText: '',
         clienteId: clienteId,
-        pedidoVentaEstado: null,
       );
       pedidoVentaListByCliente.addAll(pedidoVentaLocalList);
 
@@ -206,8 +202,11 @@ class PedidoVentaRepository {
       );
       pedidoVentaListByCliente.addAll(syncPedidosVentaList);
       return pedidoVentaListByCliente;
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -216,7 +215,7 @@ class PedidoVentaRepository {
     required String searchText,
     PedidoVentaEstado? pedidoVentaEstado,
     String? clienteId,
-  }) async {
+  }) {
     final query = _remoteDb.select(_remoteDb.pedidoVentaTable).join([
       innerJoin(
         _remoteDb.clienteUsuarioTable,
@@ -429,7 +428,6 @@ class PedidoVentaRepository {
   Future<List<PedidoVenta>> getPedidosVentaLocal({
     required String searchText,
     String? clienteId,
-    required PedidoVentaEstado? pedidoVentaEstado,
   }) async {
     final pedidoVentaList = <PedidoVenta>[];
     final query = _localDb.select(_localDb.pedidoVentaLocalTable);
@@ -528,7 +526,6 @@ class PedidoVentaRepository {
   Future<int> getPedidosVentaLocalCountList({
     required String searchText,
     String? clienteId,
-    required PedidoVentaEstado? pedidoVentaEstado,
   }) async {
     //TODO COMO HACER COUNT
 
@@ -582,7 +579,6 @@ class PedidoVentaRepository {
     final pedidoLocalList = await getPedidosVentaLocal(
       searchText: searchText,
       clienteId: clienteId,
-      pedidoVentaEstado: pedidoVentaEstado,
     );
     return pedidoLocalList.length;
   }
@@ -598,8 +594,11 @@ class PedidoVentaRepository {
           : await getPedidoVentaLocalById(
             pedidoVentaAppId: pedidoVentaIdIsLocalParam.pedidoAppId!,
           );
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -640,8 +639,11 @@ class PedidoVentaRepository {
       );
 
       return pedidoVentaBorradoresList;
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -675,9 +677,7 @@ class PedidoVentaRepository {
   //   );
   // }
 
-  Future<PedidoVenta> getSyncPedidoVentaById({
-    required String pedidoVentaId,
-  }) async {
+  Future<PedidoVenta> getSyncPedidoVentaById({required String pedidoVentaId}) {
     final query = _remoteDb.select(_remoteDb.pedidoVentaTable).join([
       leftOuterJoin(
         _remoteDb.paisTable,
@@ -740,7 +740,7 @@ class PedidoVentaRepository {
         OrderingTerm.desc(_remoteDb.pedidoAlbaranTable.fechaAlbaran),
       ]);
 
-      return query.map((row) {
+      return await (query.map((row) {
         final pedidoVentaAlbaranDTO = row.readTable(
           _remoteDb.pedidoAlbaranTable,
         );
@@ -751,9 +751,12 @@ class PedidoVentaRepository {
         return pedidoVentaAlbaranDTO.toDomain(
           trackingEstado: trackingEstadoDTO?.toDomain(),
         );
-      }).get();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+      }).get());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -770,8 +773,11 @@ class PedidoVentaRepository {
             pedidoVentaAppId: pedidoLocalParam.pedidoAppId!,
             addLineaDesdeArticulo: pedidoLocalParam.addLineaDesdeArticulo,
           );
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -793,7 +799,7 @@ class PedidoVentaRepository {
         _remoteDb.pedidoVentaLineaTable.pedidoId.equals(pedidoVentaId),
       );
 
-      return query.asyncMap((row) async {
+      return await query.asyncMap((row) async {
         final pedidoVentaDTO = row.readTable(_remoteDb.pedidoVentaTable);
         final pedidoVentaLineaDTO = row.readTable(
           _remoteDb.pedidoVentaLineaTable,
@@ -813,8 +819,11 @@ class PedidoVentaRepository {
           stockDisponible: stockDisponible,
         );
       }).get();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -868,8 +877,11 @@ class PedidoVentaRepository {
       }
 
       return pedidoVentaLineaList;
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -879,21 +891,20 @@ class PedidoVentaRepository {
           await _remoteDb.select(_remoteDb.pedidoVentaEstadoTable).get();
 
       return query.map((e) => e.toDomain()).toList();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
   Future<int> getStockActual({required String articuloId}) async {
-    try {
-      final query =
-          await (_remoteDb.select(_remoteDb.articuloTable)
-            ..where((tbl) => tbl.id.equals(articuloId))).getSingle();
+    final query =
+        await (_remoteDb.select(_remoteDb.articuloTable)
+          ..where((tbl) => tbl.id.equals(articuloId))).getSingle();
 
-      return query.stockDisponible;
-    } catch (e) {
-      rethrow;
-    }
+    return query.stockDisponible;
   }
 
   Future<void> upsertPedidoVenta({
@@ -910,62 +921,55 @@ class PedidoVentaRepository {
     required bool isBorrador,
     required ISentrySpan transaction,
   }) async {
-    try {
-      final pedidoVentaLocalDTO = PedidoVentaLocalDTO.fromForm(
-        pedidoVentaAppId,
-        pedidoId,
-        empresaId,
-        usuario.id,
-        cliente,
-        clienteDireccion,
-        pedidoCliente,
-        observaciones,
-        oferta,
-        ofertaFechaHasta?.toUtc(),
-        isBorrador,
-      );
+    final pedidoVentaLocalDTO = PedidoVentaLocalDTO.fromForm(
+      pedidoVentaAppId,
+      pedidoId,
+      empresaId,
+      usuario.id,
+      cliente,
+      clienteDireccion,
+      pedidoCliente,
+      observaciones,
+      oferta,
+      ofertaFechaHasta?.toUtc(),
+      isBorrador,
+    );
 
-      final pedidoVentaLineaLocalDTOList =
-          pedidoVentaLineaList
-              .map((e) => PedidoVentaLineaLocalDTO.fromDomain(e))
-              .toList();
+    final pedidoVentaLineaLocalDTOList =
+        pedidoVentaLineaList
+            .map((e) => PedidoVentaLineaLocalDTO.fromDomain(e))
+            .toList();
 
-      await insertPedidoInDB(
-        pedidoVentaLocalDTO,
-        pedidoVentaLineaLocalDTOList,
-        transaction,
-      );
+    await insertPedidoInDB(
+      pedidoVentaLocalDTO,
+      pedidoVentaLineaLocalDTOList,
+      transaction,
+    );
 
-      if (!isBorrador) {
-        try {
-          if (pedidoId != null && empresaId != null) {
-            await _removePedidoSyncDatabase(pedidoId);
-          }
-          final pedidoVentaLocalDTOEnviado = await _remoteCreatePedidoVenta(
-            pedidoVentaLocalDTO,
-            pedidoVentaLineaLocalDTOList,
-            usuario.test,
-          );
-
-          await updatePedidoInDB(
-            pedidoVentaLocalDTO: pedidoVentaLocalDTOEnviado,
-          );
-        } catch (e) {
-          if (e is AppException) {
-            await e.maybeWhen(
-              orElse: () {},
-              notConnection:
-                  () => updateWithError(pedidoVentaLocalDTO, e.details.message),
-              restApiFailure:
-                  (error, _) =>
-                      updateWithError(pedidoVentaLocalDTO, e.details.message),
-            );
-          }
-          rethrow;
+    if (!isBorrador) {
+      try {
+        if (pedidoId != null && empresaId != null) {
+          await _removePedidoSyncDatabase(pedidoId);
         }
+        final pedidoVentaLocalDTOEnviado = await _remoteCreatePedidoVenta(
+          pedidoVentaLocalDTO,
+          pedidoVentaLineaLocalDTOList,
+          usuario.test,
+        );
+
+        await updatePedidoInDB(pedidoVentaLocalDTO: pedidoVentaLocalDTOEnviado);
+      } catch (e) {
+        if (e is AppException) {
+          await e.whenOrNull(
+            notConnection:
+                () => updateWithError(pedidoVentaLocalDTO, e.details.message),
+            restApiFailure:
+                (error, _) =>
+                    updateWithError(pedidoVentaLocalDTO, e.details.message),
+          );
+        }
+        rethrow;
       }
-    } catch (e) {
-      rethrow;
     }
   }
 
@@ -973,18 +977,14 @@ class PedidoVentaRepository {
     PedidoVentaLocalDTO pedidoVentaLocalDTO,
     String errorMessage,
   ) async {
-    try {
-      await (_localDb.update(_localDb.pedidoVentaLocalTable)..where(
-        (tbl) =>
-            tbl.pedidoVentaAppId.equals(pedidoVentaLocalDTO.pedidoVentaAppId),
-      )).write(
-        local.PedidoVentaLocalTableCompanion(
-          errorSyncMessage: Value(errorMessage),
-        ),
-      );
-    } catch (e) {
-      rethrow;
-    }
+    await (_localDb.update(_localDb.pedidoVentaLocalTable)..where(
+      (tbl) =>
+          tbl.pedidoVentaAppId.equals(pedidoVentaLocalDTO.pedidoVentaAppId),
+    )).write(
+      local.PedidoVentaLocalTableCompanion(
+        errorSyncMessage: Value(errorMessage),
+      ),
+    );
   }
 
   Future<void> deletePedidoVenta({required String pedidoVentaAppId}) async {
@@ -993,8 +993,11 @@ class PedidoVentaRepository {
         ..where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId))).go();
       await (_localDb.delete(_localDb.pedidoVentaLineaLocalTable)
         ..where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId))).go();
-    } catch (e) {
-      throw AppException.insertDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.insertDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -1004,12 +1007,10 @@ class PedidoVentaRepository {
     required int cantidad,
   }) async {
     var precio = 0.toMoney();
-    var precioNeto = Precio(precio: 0.toMoney(), tipoPrecio: 1);
     var divisaId = 'EU';
     var descuento1 = 0.0;
     const descuento2 = 0.0;
     const descuento3 = 0.0;
-    var descuento = 0.0;
 
     var tipoPrecio = 1;
     var iva = 0.0;
@@ -1058,16 +1059,14 @@ class PedidoVentaRepository {
               ? await _getDescuentoGeneral(
                 articuloId: articuloId,
                 descuentoGeneralId: descuentoGeneralId,
-                cantidad: cantidad,
               )
               : 0.0;
       final descuentoCliente = await _getDescuentoCliente(
         articuloId: articuloId,
         clienteId: clienteId,
-        cantidad: cantidad,
       );
 
-      descuento =
+      final descuento =
           (descuentoGeneral > descuentoCliente)
               ? descuentoGeneral
               : descuentoCliente;
@@ -1096,7 +1095,7 @@ class PedidoVentaRepository {
       );
 
       // Cálculo precio neto
-      precioNeto =
+      final precioNeto =
           (precioGrupoNetosUnitario.isZero ||
                   (!precioNetoClienteUnitario.isZero &&
                       precioNetoClienteUnitario <= precioGrupoNetosUnitario))
@@ -1179,39 +1178,34 @@ class PedidoVentaRepository {
     );
   }
 
-  Future<bool> ofertaHaveAttachment(String pedidoVentaId) async {
-    try {
-      return _remoteOfertaHaveAttachment(pedidoVentaId);
-    } catch (e) {
-      rethrow;
-    }
+  Future<bool> ofertaHaveAttachment(String pedidoVentaId) {
+    return _remoteOfertaHaveAttachment(pedidoVentaId);
   }
 
   Future<File?> getDocumentFile({required String pedidoVentaId}) async {
+    final data = await _remoteGetAttachment(
+      requestUri: Uri.https(
+        dotenv.get('URL', fallback: 'localhost:3001'),
+        'api/v1/online/adjunto/pedido/$pedidoVentaId',
+      ),
+      provisionalToken: usuario.provisionalToken,
+    );
+
     try {
-      final data = await _remoteGetAttachment(
-        requestUri: Uri.https(
-          dotenv.get('URL', fallback: 'localhost:3001'),
-          'api/v1/online/adjunto/pedido/$pedidoVentaId',
-        ),
-        provisionalToken: usuario.provisionalToken,
+      final cahceDirectories = await getTemporaryDirectory();
+
+      final file = await File(
+        '${cahceDirectories.path}/pedido/$pedidoVentaId/PV$pedidoVentaId.PDF',
+      ).create(recursive: true);
+      final raf = file.openSync(mode: FileMode.write);
+      raf.writeFromSync(data);
+      await raf.close();
+      return file;
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.createFileInCacheFailure(e.toString()),
+        stackTrace,
       );
-
-      try {
-        final cahceDirectories = await getTemporaryDirectory();
-
-        final file = await File(
-          '${cahceDirectories.path}/pedido/$pedidoVentaId/PV$pedidoVentaId.PDF',
-        ).create(recursive: true);
-        final raf = file.openSync(mode: FileMode.write);
-        raf.writeFromSync(data);
-        await raf.close();
-        return file;
-      } catch (e) {
-        throw AppException.createFileInCacheFailure(e.toString());
-      }
-    } catch (e) {
-      rethrow;
     }
   }
 
@@ -1221,35 +1215,32 @@ class PedidoVentaRepository {
   }) async {
     if (clienteDto.iva == 0) {
       return 0;
-    } else {
-      final ivaArticuloQuery =
-          _remoteDb.selectOnly(_remoteDb.articuloEmpresaIvaTable)
-            ..addColumns([_remoteDb.articuloEmpresaIvaTable.iva])
-            ..where(
-              _remoteDb.articuloEmpresaIvaTable.empresaId.equals(
-                    clienteDto.empresaId,
-                  ) &
-                  _remoteDb.articuloEmpresaIvaTable.articuloId.equals(
-                    articuloId,
-                  ),
-            );
-
-      final ivaClienteQuery =
-          _remoteDb.selectOnly(_remoteDb.clienteTable)
-            ..addColumns([_remoteDb.clienteTable.iva])
-            ..where(_remoteDb.clienteTable.id.equals(clienteDto.id));
-
-      final ivaArticulo = (await ivaArticuloQuery.getSingleOrNull())?.read(
-        _remoteDb.articuloEmpresaIvaTable.iva,
-      );
-      final ivaCliente = (await ivaClienteQuery.getSingleOrNull())?.read(
-        _remoteDb.clienteTable.iva,
-      );
-
-      late double iva;
-      iva = ivaArticulo ?? ivaCliente ?? 0;
-      return iva;
     }
+
+    final ivaArticuloQuery =
+        _remoteDb.selectOnly(_remoteDb.articuloEmpresaIvaTable)
+          ..addColumns([_remoteDb.articuloEmpresaIvaTable.iva])
+          ..where(
+            _remoteDb.articuloEmpresaIvaTable.empresaId.equals(
+                  clienteDto.empresaId,
+                ) &
+                _remoteDb.articuloEmpresaIvaTable.articuloId.equals(articuloId),
+          );
+
+    final ivaClienteQuery =
+        _remoteDb.selectOnly(_remoteDb.clienteTable)
+          ..addColumns([_remoteDb.clienteTable.iva])
+          ..where(_remoteDb.clienteTable.id.equals(clienteDto.id));
+
+    final ivaArticulo = (await ivaArticuloQuery.getSingleOrNull())?.read(
+      _remoteDb.articuloEmpresaIvaTable.iva,
+    );
+    final ivaCliente = (await ivaClienteQuery.getSingleOrNull())?.read(
+      _remoteDb.clienteTable.iva,
+    );
+
+    final iva = ivaArticulo ?? ivaCliente ?? 0;
+    return iva;
   }
 
   Future<void> insertPedidoInDB(
@@ -1278,8 +1269,11 @@ class PedidoVentaRepository {
               .insertOnConflictUpdate(pedidoVentaLineaLocalDTOList[i]);
         }
       });
-    } catch (e) {
-      throw AppException.insertDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.insertDataFailure(e.toString()),
+        stackTrace,
+      );
     } finally {
       await span.finish();
     }
@@ -1292,8 +1286,11 @@ class PedidoVentaRepository {
       await _localDb
           .update(_localDb.pedidoVentaLocalTable)
           .replace(pedidoVentaLocalDTO);
-    } catch (e) {
-      throw AppException.insertDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.insertDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -1325,11 +1322,13 @@ class PedidoVentaRepository {
         await csvFile.writeAsString(res);
 
         return csvFile;
-      } else {
-        return File(join(getTempDirectory.path, fileName));
       }
-    } catch (e) {
-      throw AppException.insertDataFailure(e.toString());
+      return File(join(getTempDirectory.path, fileName));
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.insertDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -1342,9 +1341,8 @@ class PedidoVentaRepository {
       final pedidoVentaLocalToJson = pedidoVentaLocalDTO.toJson();
       final pedidoVentaLineasLocalListToJson =
           pedidoVentaLineaDTOList.map((e) => e.toJson()).toList();
-      pedidoVentaLocalToJson.addAll({
-        'PEDIDO_VENTA_LINEAS': pedidoVentaLineasLocalListToJson,
-      });
+      pedidoVentaLocalToJson['PEDIDO_VENTA_LINEAS'] =
+          pedidoVentaLineasLocalListToJson;
 
       final requestUri =
           (test)
@@ -1368,14 +1366,17 @@ class PedidoVentaRepository {
         final json = response.data['data'] as Map<String, dynamic>;
 
         return PedidoVentaLocalDTO.fromJson(json);
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
       }
+
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
     } catch (e, stackTrace) {
-      throw getApiError(e, stackTrace, errorLogger);
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 
@@ -1563,7 +1564,6 @@ class PedidoVentaRepository {
   Future<double> _getDescuentoCliente({
     required String articuloId,
     required String clienteId,
-    required int cantidad,
   }) async {
     TypedResult? queryResult;
 
@@ -1861,35 +1861,35 @@ class PedidoVentaRepository {
   Future<double> _getDescuentoGeneral({
     required String articuloId,
     required String descuentoGeneralId,
-    required int cantidad,
   }) async {
     TypedResult? queryResult;
+    final articuloTable = _remoteDb.articuloTable;
+    final descuentoGeneralTable = _remoteDb.descuentoGeneralTable;
+
     // Coincide articulo, familia y subfamilia
     queryResult =
-        await (_remoteDb.select(_remoteDb.descuentoGeneralTable).join([
+        await (_remoteDb.select(descuentoGeneralTable).join([
                 innerJoin(
-                  _remoteDb.articuloTable,
-                  _remoteDb.articuloTable.id.equalsExp(
-                        _remoteDb.descuentoGeneralTable.articuloId,
+                  articuloTable,
+                  articuloTable.id.equalsExp(descuentoGeneralTable.articuloId) &
+                      articuloTable.familiaId.equalsExp(
+                        descuentoGeneralTable.familiaId,
                       ) &
-                      _remoteDb.articuloTable.familiaId.equalsExp(
-                        _remoteDb.descuentoGeneralTable.familiaId,
-                      ) &
-                      _remoteDb.articuloTable.subfamiliaId.equalsExp(
-                        _remoteDb.descuentoGeneralTable.subfamiliaId,
+                      articuloTable.subfamiliaId.equalsExp(
+                        descuentoGeneralTable.subfamiliaId,
                       ),
                   useColumns: false,
                 ),
               ])
               ..where(
-                _remoteDb.descuentoGeneralTable.descuentoGeneralId.equals(
+                descuentoGeneralTable.descuentoGeneralId.equals(
                       descuentoGeneralId,
                     ) &
-                    _remoteDb.articuloTable.id.equals(articuloId),
+                    articuloTable.id.equals(articuloId),
               )
               ..orderBy([
                 OrderingTerm(
-                  expression: _remoteDb.descuentoGeneralTable.cantidadDesde,
+                  expression: descuentoGeneralTable.cantidadDesde,
                   mode: OrderingMode.desc,
                 ),
               ])
@@ -1897,33 +1897,30 @@ class PedidoVentaRepository {
             .getSingleOrNull();
 
     if (queryResult != null) {
-      final descuento =
-          queryResult.read(_remoteDb.descuentoGeneralTable.descuento) ?? 0;
+      final descuento = queryResult.read(descuentoGeneralTable.descuento) ?? 0;
       return descuento;
     }
     // Coincide articulo, familia
     queryResult =
-        await (_remoteDb.select(_remoteDb.descuentoGeneralTable).join([
+        await (_remoteDb.select(descuentoGeneralTable).join([
                 innerJoin(
                   _remoteDb.articuloTable,
-                  _remoteDb.articuloTable.id.equalsExp(
-                        _remoteDb.descuentoGeneralTable.articuloId,
-                      ) &
-                      _remoteDb.articuloTable.familiaId.equalsExp(
-                        _remoteDb.descuentoGeneralTable.familiaId,
+                  articuloTable.id.equalsExp(descuentoGeneralTable.articuloId) &
+                      articuloTable.familiaId.equalsExp(
+                        descuentoGeneralTable.familiaId,
                       ),
                 ),
               ])
               ..where(
-                _remoteDb.descuentoGeneralTable.descuentoGeneralId.equals(
+                descuentoGeneralTable.descuentoGeneralId.equals(
                       descuentoGeneralId,
                     ) &
-                    _remoteDb.articuloTable.id.equals(articuloId) &
-                    _remoteDb.descuentoGeneralTable.subfamiliaId.equals('*'),
+                    articuloTable.id.equals(articuloId) &
+                    descuentoGeneralTable.subfamiliaId.equals('*'),
               )
               ..orderBy([
                 OrderingTerm(
-                  expression: _remoteDb.descuentoGeneralTable.cantidadDesde,
+                  expression: descuentoGeneralTable.cantidadDesde,
                   mode: OrderingMode.desc,
                 ),
               ])
@@ -1931,34 +1928,33 @@ class PedidoVentaRepository {
             .getSingleOrNull();
 
     if (queryResult != null) {
-      final descuento =
-          queryResult.read(_remoteDb.descuentoGeneralTable.descuento) ?? 0;
+      final descuento = queryResult.read(descuentoGeneralTable.descuento) ?? 0;
       return descuento;
     }
 
     // Coincide familia, subfamilia
     queryResult =
-        await (_remoteDb.select(_remoteDb.descuentoGeneralTable).join([
+        await (_remoteDb.select(descuentoGeneralTable).join([
                 innerJoin(
-                  _remoteDb.articuloTable,
-                  _remoteDb.articuloTable.familiaId.equalsExp(
-                        _remoteDb.descuentoGeneralTable.familiaId,
+                  articuloTable,
+                  articuloTable.familiaId.equalsExp(
+                        descuentoGeneralTable.familiaId,
                       ) &
-                      _remoteDb.articuloTable.subfamiliaId.equalsExp(
-                        _remoteDb.descuentoGeneralTable.subfamiliaId,
+                      articuloTable.subfamiliaId.equalsExp(
+                        descuentoGeneralTable.subfamiliaId,
                       ),
                 ),
               ])
               ..where(
-                _remoteDb.descuentoGeneralTable.descuentoGeneralId.equals(
+                descuentoGeneralTable.descuentoGeneralId.equals(
                       descuentoGeneralId,
                     ) &
-                    _remoteDb.articuloTable.id.equals(articuloId) &
-                    _remoteDb.descuentoGeneralTable.articuloId.equals('*'),
+                    articuloTable.id.equals(articuloId) &
+                    descuentoGeneralTable.articuloId.equals('*'),
               )
               ..orderBy([
                 OrderingTerm(
-                  expression: _remoteDb.descuentoGeneralTable.cantidadDesde,
+                  expression: descuentoGeneralTable.cantidadDesde,
                   mode: OrderingMode.desc,
                 ),
               ])
@@ -1966,34 +1962,31 @@ class PedidoVentaRepository {
             .getSingleOrNull();
 
     if (queryResult != null) {
-      final descuento =
-          queryResult.read(_remoteDb.descuentoGeneralTable.descuento) ?? 0;
+      final descuento = queryResult.read(descuentoGeneralTable.descuento) ?? 0;
       return descuento;
     }
 
     // Coincide articulo, subfamilia
     queryResult =
-        await (_remoteDb.select(_remoteDb.descuentoGeneralTable).join([
+        await (_remoteDb.select(descuentoGeneralTable).join([
                 innerJoin(
-                  _remoteDb.articuloTable,
-                  _remoteDb.articuloTable.id.equalsExp(
-                        _remoteDb.descuentoGeneralTable.articuloId,
-                      ) &
-                      _remoteDb.articuloTable.subfamiliaId.equalsExp(
-                        _remoteDb.descuentoGeneralTable.subfamiliaId,
+                  articuloTable,
+                  articuloTable.id.equalsExp(descuentoGeneralTable.articuloId) &
+                      articuloTable.subfamiliaId.equalsExp(
+                        descuentoGeneralTable.subfamiliaId,
                       ),
                 ),
               ])
               ..where(
-                _remoteDb.descuentoGeneralTable.descuentoGeneralId.equals(
+                descuentoGeneralTable.descuentoGeneralId.equals(
                       descuentoGeneralId,
                     ) &
-                    _remoteDb.articuloTable.id.equals(articuloId) &
-                    _remoteDb.descuentoGeneralTable.familiaId.equals('*'),
+                    articuloTable.id.equals(articuloId) &
+                    descuentoGeneralTable.familiaId.equals('*'),
               )
               ..orderBy([
                 OrderingTerm(
-                  expression: _remoteDb.descuentoGeneralTable.cantidadDesde,
+                  expression: descuentoGeneralTable.cantidadDesde,
                   mode: OrderingMode.desc,
                 ),
               ])
@@ -2001,32 +1994,29 @@ class PedidoVentaRepository {
             .getSingleOrNull();
 
     if (queryResult != null) {
-      final descuento =
-          queryResult.read(_remoteDb.descuentoGeneralTable.descuento) ?? 0;
+      final descuento = queryResult.read(descuentoGeneralTable.descuento) ?? 0;
       return descuento;
     }
 
     // Coincide articulo
     queryResult =
-        await (_remoteDb.select(_remoteDb.descuentoGeneralTable).join([
+        await (_remoteDb.select(descuentoGeneralTable).join([
                 innerJoin(
-                  _remoteDb.articuloTable,
-                  _remoteDb.articuloTable.id.equalsExp(
-                    _remoteDb.descuentoGeneralTable.articuloId,
-                  ),
+                  articuloTable,
+                  articuloTable.id.equalsExp(descuentoGeneralTable.articuloId),
                 ),
               ])
               ..where(
-                _remoteDb.descuentoGeneralTable.descuentoGeneralId.equals(
+                descuentoGeneralTable.descuentoGeneralId.equals(
                       descuentoGeneralId,
                     ) &
-                    _remoteDb.articuloTable.id.equals(articuloId) &
-                    _remoteDb.descuentoGeneralTable.familiaId.equals('*') &
-                    _remoteDb.descuentoGeneralTable.subfamiliaId.equals('*'),
+                    articuloTable.id.equals(articuloId) &
+                    descuentoGeneralTable.familiaId.equals('*') &
+                    descuentoGeneralTable.subfamiliaId.equals('*'),
               )
               ..orderBy([
                 OrderingTerm(
-                  expression: _remoteDb.descuentoGeneralTable.cantidadDesde,
+                  expression: descuentoGeneralTable.cantidadDesde,
                   mode: OrderingMode.desc,
                 ),
               ])
@@ -2034,32 +2024,31 @@ class PedidoVentaRepository {
             .getSingleOrNull();
 
     if (queryResult != null) {
-      final descuento =
-          queryResult.read(_remoteDb.descuentoGeneralTable.descuento) ?? 0;
+      final descuento = queryResult.read(descuentoGeneralTable.descuento) ?? 0;
       return descuento;
     }
 
     // Coincide subfamilia
     queryResult =
-        await (_remoteDb.select(_remoteDb.descuentoGeneralTable).join([
+        await (_remoteDb.select(descuentoGeneralTable).join([
                 innerJoin(
-                  _remoteDb.articuloTable,
-                  _remoteDb.articuloTable.subfamiliaId.equalsExp(
-                    _remoteDb.descuentoGeneralTable.subfamiliaId,
+                  articuloTable,
+                  articuloTable.subfamiliaId.equalsExp(
+                    descuentoGeneralTable.subfamiliaId,
                   ),
                 ),
               ])
               ..where(
-                _remoteDb.descuentoGeneralTable.descuentoGeneralId.equals(
+                descuentoGeneralTable.descuentoGeneralId.equals(
                       descuentoGeneralId,
                     ) &
-                    _remoteDb.articuloTable.id.equals(articuloId) &
-                    _remoteDb.descuentoGeneralTable.articuloId.equals('*') &
-                    _remoteDb.descuentoGeneralTable.familiaId.equals('*'),
+                    articuloTable.id.equals(articuloId) &
+                    descuentoGeneralTable.articuloId.equals('*') &
+                    descuentoGeneralTable.familiaId.equals('*'),
               )
               ..orderBy([
                 OrderingTerm(
-                  expression: _remoteDb.descuentoGeneralTable.cantidadDesde,
+                  expression: descuentoGeneralTable.cantidadDesde,
                   mode: OrderingMode.desc,
                 ),
               ])
@@ -2067,32 +2056,31 @@ class PedidoVentaRepository {
             .getSingleOrNull();
 
     if (queryResult != null) {
-      final descuento =
-          queryResult.read(_remoteDb.descuentoGeneralTable.descuento) ?? 0;
+      final descuento = queryResult.read(descuentoGeneralTable.descuento) ?? 0;
       return descuento;
     }
 
     // Coincide familia
     queryResult =
-        await (_remoteDb.select(_remoteDb.descuentoGeneralTable).join([
+        await (_remoteDb.select(descuentoGeneralTable).join([
                 innerJoin(
-                  _remoteDb.articuloTable,
-                  _remoteDb.articuloTable.familiaId.equalsExp(
-                    _remoteDb.descuentoGeneralTable.familiaId,
+                  articuloTable,
+                  articuloTable.familiaId.equalsExp(
+                    descuentoGeneralTable.familiaId,
                   ),
                 ),
               ])
               ..where(
-                _remoteDb.descuentoGeneralTable.descuentoGeneralId.equals(
+                descuentoGeneralTable.descuentoGeneralId.equals(
                       descuentoGeneralId,
                     ) &
-                    _remoteDb.articuloTable.id.equals(articuloId) &
-                    _remoteDb.descuentoGeneralTable.articuloId.equals('*') &
-                    _remoteDb.descuentoGeneralTable.subfamiliaId.equals('*'),
+                    articuloTable.id.equals(articuloId) &
+                    descuentoGeneralTable.articuloId.equals('*') &
+                    descuentoGeneralTable.subfamiliaId.equals('*'),
               )
               ..orderBy([
                 OrderingTerm(
-                  expression: _remoteDb.descuentoGeneralTable.cantidadDesde,
+                  expression: descuentoGeneralTable.cantidadDesde,
                   mode: OrderingMode.desc,
                 ),
               ])
@@ -2205,13 +2193,9 @@ class PedidoVentaRepository {
   }
 
   Future<DateTime> getLastSyncDate() async {
-    try {
-      final lastSyncDTO =
-          await _localDb.select(_localDb.syncDateTimeTable).getSingle();
-      return lastSyncDTO.pedidoUltimaSync;
-    } catch (e) {
-      rethrow;
-    }
+    final lastSyncDTO =
+        await _localDb.select(_localDb.syncDateTimeTable).getSingle();
+    return lastSyncDTO.pedidoUltimaSync;
   }
 
   Money getImporteIva(Money importeBaseImponible, double iva) {
@@ -2259,39 +2243,37 @@ class PedidoVentaRepository {
   Future<bool> _csvFileExists({
     required Directory directory,
     required String fileName,
-  }) async {
+  }) {
     return (File((join(directory.path, fileName))).exists());
   }
 
   Future<bool> _remoteOfertaHaveAttachment(String pedidoVentaId) async {
     try {
-      try {
-        final requestUri = Uri.https(
-          dotenv.get('URL', fallback: 'localhost:3001'),
-          'api/v1/online/adjunto/pedido/$pedidoVentaId/exist',
-        );
+      final requestUri = Uri.https(
+        dotenv.get('URL', fallback: 'localhost:3001'),
+        'api/v1/online/adjunto/pedido/$pedidoVentaId/exist',
+      );
 
-        final response = await _dio.getUri(
-          requestUri,
-          options: Options(
-            headers: {'authorization': 'Bearer ${usuario.provisionalToken}'},
-          ),
-        );
-        if (response.statusCode == 200) {
-          final responsaData = response.data['data'] as bool;
+      final response = await _dio.getUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer ${usuario.provisionalToken}'},
+        ),
+      );
+      if (response.statusCode == 200) {
+        final responsaData = response.data['data'] as bool;
 
-          return responsaData;
-        } else {
-          throw AppException.restApiFailure(
-            response.statusCode ?? 400,
-            response.statusMessage ?? '',
-          );
-        }
-      } catch (e, stackTrace) {
-        throw getApiError(e, stackTrace, errorLogger);
+        return responsaData;
       }
-    } catch (e) {
-      rethrow;
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 
@@ -2309,15 +2291,17 @@ class PedidoVentaRepository {
         ),
       );
       if (response.statusCode == 200) {
-        return response.data as List<int>;
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
+        return (response.data as List<Object?>).cast();
       }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
     } catch (e, stackTrace) {
-      throw getApiError(e, stackTrace, errorLogger);
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 
@@ -2461,17 +2445,16 @@ class PedidoVentaRepository {
         tipoPrecio: 1,
         dto: 0,
       );
-    } else {
-      final promo = filterResult[0];
-      return PrecioPromocion(
-        precio: Money.fromNum(
-          promo.read(_remoteDb.promoDtoLinTable.precio)!,
-          isoCode: divisaId,
-        ),
-        tipoPrecio: promo.read(_remoteDb.promoDtoLinTable.tipoPrecio) ?? 1,
-        dto: promo.read(_remoteDb.promoDtoLinTable.dto) ?? 0,
-      );
     }
+    final promo = filterResult[0];
+    return PrecioPromocion(
+      precio: Money.fromNum(
+        promo.read(_remoteDb.promoDtoLinTable.precio)!,
+        isoCode: divisaId,
+      ),
+      tipoPrecio: promo.read(_remoteDb.promoDtoLinTable.tipoPrecio) ?? 1,
+      dto: promo.read(_remoteDb.promoDtoLinTable.dto) ?? 0,
+    );
   }
 
   Future<bool> _getPromoDtoActivaCliente(
@@ -2530,8 +2513,7 @@ class PedidoVentaRepository {
       return false;
     } else if (promoClienteTodosIncluido && !promoClienteExcluido) {
       return true;
-    } else {
-      return false;
     }
+    return false;
   }
 }

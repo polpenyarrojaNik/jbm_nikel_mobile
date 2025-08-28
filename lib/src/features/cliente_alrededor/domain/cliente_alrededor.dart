@@ -1,11 +1,12 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../core/domain/pais.dart';
 import 'package:money2/money2.dart';
+
+import '../../../core/domain/pais.dart';
 
 part 'cliente_alrededor.freezed.dart';
 
 @freezed
-class ClienteAlrededor with _$ClienteAlrededor {
+abstract class ClienteAlrededor with _$ClienteAlrededor {
   const ClienteAlrededor._();
   const factory ClienteAlrededor({
     required String clienteId,

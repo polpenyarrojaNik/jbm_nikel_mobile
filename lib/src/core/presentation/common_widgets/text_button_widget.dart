@@ -5,20 +5,17 @@ class TextButtonWidget extends StatelessWidget {
     super.key,
     required this.titleText,
     required this.entityId,
-    required this.navigateFunction,
+    required this.onNavigateTo,
     required this.params,
   });
 
   final String titleText;
   final String entityId;
-  final Function() navigateFunction;
+  final Function() onNavigateTo;
   final Map<String, String> params;
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: () => navigateFunction(),
-      child: Text(titleText),
-    );
+    return TextButton(onPressed: () => onNavigateTo(), child: Text(titleText));
   }
 }

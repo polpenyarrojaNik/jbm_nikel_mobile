@@ -11,7 +11,7 @@ part 'divisa_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class DivisaDTO with _$DivisaDTO implements Insertable<DivisaDTO> {
+abstract class DivisaDTO with _$DivisaDTO implements Insertable<DivisaDTO> {
   const DivisaDTO._();
   const factory DivisaDTO({
     @JsonKey(name: 'DIVISA_ID') required String id,
@@ -48,7 +48,7 @@ class DivisaDTO with _$DivisaDTO implements Insertable<DivisaDTO> {
       redondeo: redondeo,
       descripcion: getDescriptionInLocalLanguage(),
       lastUpdate: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
+      deleted: (deleted == 'S'),
     );
   }
 

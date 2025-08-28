@@ -1,13 +1,13 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../core/domain/familia.dart';
-import '../../../core/helpers/extension.dart';
-import '../../../core/infrastructure/familia_dto.dart';
-import '../../../core/infrastructure/subfamilia_dto.dart';
 import 'package:money2/money2.dart';
 
+import '../../../core/domain/familia.dart';
 import '../../../core/domain/subfamilia.dart';
+import '../../../core/helpers/extension.dart';
+import '../../../core/infrastructure/familia_dto.dart';
 import '../../../core/infrastructure/remote_database.dart';
+import '../../../core/infrastructure/subfamilia_dto.dart';
 import '../domain/articulo.dart';
 
 part 'articulo_dto.freezed.dart';
@@ -16,7 +16,9 @@ part 'articulo_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class ArticuloDTO with _$ArticuloDTO implements Insertable<ArticuloDTO> {
+abstract class ArticuloDTO
+    with _$ArticuloDTO
+    implements Insertable<ArticuloDTO> {
   const ArticuloDTO._();
   const factory ArticuloDTO({
     @JsonKey(name: 'ARTICULO_ID') required String id,
@@ -125,10 +127,10 @@ class ArticuloDTO with _$ArticuloDTO implements Insertable<ArticuloDTO> {
       unidadesSubcaja: unidadesSubcaja,
       unidadesCaja: unidadesCaja,
       unidadesPalet: unidadesPalet,
-      activoWeb: (activoWeb == 'S') ? true : false,
-      activoApp: (activoApp == 'S') ? true : false,
-      enCatalogo: (enCatalogo == 'S') ? true : false,
-      descatalogado: (descatalogado == 'S') ? true : false,
+      activoWeb: (activoWeb == 'S'),
+      activoApp: (activoApp == 'S'),
+      enCatalogo: (enCatalogo == 'S'),
+      descatalogado: (descatalogado == 'S'),
       paginaEnCatalgo: paginaEnCatalgo,
       paginaEnCatalgo2: paginaEnCatalgo2,
       pesoKg: pesoKg,
@@ -176,7 +178,7 @@ class ArticuloDTO with _$ArticuloDTO implements Insertable<ArticuloDTO> {
       margenHaceDosAnyos: 0.0,
       ventasOrden: ventasOrden,
       lastUpdated: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
+      deleted: (deleted == 'S'),
     );
   }
 

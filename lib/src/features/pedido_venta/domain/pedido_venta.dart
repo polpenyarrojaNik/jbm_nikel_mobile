@@ -1,13 +1,14 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:money2/money2.dart';
+
 import '../../../core/domain/divisa.dart';
 import '../../../core/domain/pais.dart';
 import 'pedido_venta_estado.dart';
-import 'package:money2/money2.dart';
 
 part 'pedido_venta.freezed.dart';
 
 @freezed
-class PedidoVenta with _$PedidoVenta {
+abstract class PedidoVenta with _$PedidoVenta {
   const PedidoVenta._();
   const factory PedidoVenta({
     String? empresaId,

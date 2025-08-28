@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+
 import '../../../../core/helpers/formatters.dart';
+import '../../../../core/presentation/common_widgets/address_text_widget.dart';
 import '../../../../core/presentation/common_widgets/chip_container.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
-
-import '../../../../core/presentation/common_widgets/address_text_widget.dart';
 import '../../domain/cliente.dart';
 
 class ClienteListaTile extends StatelessWidget {
@@ -15,7 +16,7 @@ class ClienteListaTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.transparent,
-      padding: listPadding,
+      padding: kPaddingList,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -28,7 +29,7 @@ class ClienteListaTile extends StatelessWidget {
                   style: Theme.of(context).textTheme.titleSmall,
                 ),
               ),
-              if (cliente.clientePotencial ?? false) gapW12,
+              if (cliente.clientePotencial ?? false) const Gap(12),
               if (cliente.clientePotencial ?? false)
                 ChipContainer(
                   text: getClienteEstadoPotencialInLocalLanguage(

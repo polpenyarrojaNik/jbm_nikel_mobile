@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,245 +9,278 @@ part of 'provincia.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 /// @nodoc
 mixin _$Provincia {
-  String get paisId => throw _privateConstructorUsedError;
-  String get regionId => throw _privateConstructorUsedError;
-  String get provinciaId => throw _privateConstructorUsedError;
-  String? get provincia => throw _privateConstructorUsedError;
-  DateTime get lastUpdate => throw _privateConstructorUsedError;
-  bool get deleted => throw _privateConstructorUsedError;
 
-  /// Create a copy of Provincia
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ProvinciaCopyWith<Provincia> get copyWith =>
-      throw _privateConstructorUsedError;
+ String get paisId; String get regionId; String get provinciaId; String? get provincia; DateTime get lastUpdate; bool get deleted;
+/// Create a copy of Provincia
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ProvinciaCopyWith<Provincia> get copyWith => _$ProvinciaCopyWithImpl<Provincia>(this as Provincia, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Provincia&&(identical(other.paisId, paisId) || other.paisId == paisId)&&(identical(other.regionId, regionId) || other.regionId == regionId)&&(identical(other.provinciaId, provinciaId) || other.provinciaId == provinciaId)&&(identical(other.provincia, provincia) || other.provincia == provincia)&&(identical(other.lastUpdate, lastUpdate) || other.lastUpdate == lastUpdate)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,paisId,regionId,provinciaId,provincia,lastUpdate,deleted);
+
+@override
+String toString() {
+  return 'Provincia(paisId: $paisId, regionId: $regionId, provinciaId: $provinciaId, provincia: $provincia, lastUpdate: $lastUpdate, deleted: $deleted)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ProvinciaCopyWith<$Res> {
-  factory $ProvinciaCopyWith(Provincia value, $Res Function(Provincia) then) =
-      _$ProvinciaCopyWithImpl<$Res, Provincia>;
-  @useResult
-  $Res call(
-      {String paisId,
-      String regionId,
-      String provinciaId,
-      String? provincia,
-      DateTime lastUpdate,
-      bool deleted});
-}
+abstract mixin class $ProvinciaCopyWith<$Res>  {
+  factory $ProvinciaCopyWith(Provincia value, $Res Function(Provincia) _then) = _$ProvinciaCopyWithImpl;
+@useResult
+$Res call({
+ String paisId, String regionId, String provinciaId, String? provincia, DateTime lastUpdate, bool deleted
+});
 
+
+
+
+}
 /// @nodoc
-class _$ProvinciaCopyWithImpl<$Res, $Val extends Provincia>
+class _$ProvinciaCopyWithImpl<$Res>
     implements $ProvinciaCopyWith<$Res> {
-  _$ProvinciaCopyWithImpl(this._value, this._then);
+  _$ProvinciaCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Provincia _self;
+  final $Res Function(Provincia) _then;
 
-  /// Create a copy of Provincia
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? paisId = null,
-    Object? regionId = null,
-    Object? provinciaId = null,
-    Object? provincia = freezed,
-    Object? lastUpdate = null,
-    Object? deleted = null,
-  }) {
-    return _then(_value.copyWith(
-      paisId: null == paisId
-          ? _value.paisId
-          : paisId // ignore: cast_nullable_to_non_nullable
-              as String,
-      regionId: null == regionId
-          ? _value.regionId
-          : regionId // ignore: cast_nullable_to_non_nullable
-              as String,
-      provinciaId: null == provinciaId
-          ? _value.provinciaId
-          : provinciaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      provincia: freezed == provincia
-          ? _value.provincia
-          : provincia // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastUpdate: null == lastUpdate
-          ? _value.lastUpdate
-          : lastUpdate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
-  }
+/// Create a copy of Provincia
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? paisId = null,Object? regionId = null,Object? provinciaId = null,Object? provincia = freezed,Object? lastUpdate = null,Object? deleted = null,}) {
+  return _then(_self.copyWith(
+paisId: null == paisId ? _self.paisId : paisId // ignore: cast_nullable_to_non_nullable
+as String,regionId: null == regionId ? _self.regionId : regionId // ignore: cast_nullable_to_non_nullable
+as String,provinciaId: null == provinciaId ? _self.provinciaId : provinciaId // ignore: cast_nullable_to_non_nullable
+as String,provincia: freezed == provincia ? _self.provincia : provincia // ignore: cast_nullable_to_non_nullable
+as String?,lastUpdate: null == lastUpdate ? _self.lastUpdate : lastUpdate // ignore: cast_nullable_to_non_nullable
+as DateTime,deleted: null == deleted ? _self.deleted : deleted // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [Provincia].
+extension ProvinciaPatterns on Provincia {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Provincia value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Provincia() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Provincia value)  $default,){
+final _that = this;
+switch (_that) {
+case _Provincia():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Provincia value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Provincia() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String paisId,  String regionId,  String provinciaId,  String? provincia,  DateTime lastUpdate,  bool deleted)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Provincia() when $default != null:
+return $default(_that.paisId,_that.regionId,_that.provinciaId,_that.provincia,_that.lastUpdate,_that.deleted);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String paisId,  String regionId,  String provinciaId,  String? provincia,  DateTime lastUpdate,  bool deleted)  $default,) {final _that = this;
+switch (_that) {
+case _Provincia():
+return $default(_that.paisId,_that.regionId,_that.provinciaId,_that.provincia,_that.lastUpdate,_that.deleted);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String paisId,  String regionId,  String provinciaId,  String? provincia,  DateTime lastUpdate,  bool deleted)?  $default,) {final _that = this;
+switch (_that) {
+case _Provincia() when $default != null:
+return $default(_that.paisId,_that.regionId,_that.provinciaId,_that.provincia,_that.lastUpdate,_that.deleted);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
-abstract class _$$ProvinciaImplCopyWith<$Res>
-    implements $ProvinciaCopyWith<$Res> {
-  factory _$$ProvinciaImplCopyWith(
-          _$ProvinciaImpl value, $Res Function(_$ProvinciaImpl) then) =
-      __$$ProvinciaImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String paisId,
-      String regionId,
-      String provinciaId,
-      String? provincia,
-      DateTime lastUpdate,
-      bool deleted});
+
+
+class _Provincia extends Provincia {
+  const _Provincia({required this.paisId, required this.regionId, required this.provinciaId, this.provincia, required this.lastUpdate, required this.deleted}): super._();
+  
+
+@override final  String paisId;
+@override final  String regionId;
+@override final  String provinciaId;
+@override final  String? provincia;
+@override final  DateTime lastUpdate;
+@override final  bool deleted;
+
+/// Create a copy of Provincia
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ProvinciaCopyWith<_Provincia> get copyWith => __$ProvinciaCopyWithImpl<_Provincia>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Provincia&&(identical(other.paisId, paisId) || other.paisId == paisId)&&(identical(other.regionId, regionId) || other.regionId == regionId)&&(identical(other.provinciaId, provinciaId) || other.provinciaId == provinciaId)&&(identical(other.provincia, provincia) || other.provincia == provincia)&&(identical(other.lastUpdate, lastUpdate) || other.lastUpdate == lastUpdate)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,paisId,regionId,provinciaId,provincia,lastUpdate,deleted);
+
+@override
+String toString() {
+  return 'Provincia(paisId: $paisId, regionId: $regionId, provinciaId: $provinciaId, provincia: $provincia, lastUpdate: $lastUpdate, deleted: $deleted)';
+}
+
+
 }
 
 /// @nodoc
-class __$$ProvinciaImplCopyWithImpl<$Res>
-    extends _$ProvinciaCopyWithImpl<$Res, _$ProvinciaImpl>
-    implements _$$ProvinciaImplCopyWith<$Res> {
-  __$$ProvinciaImplCopyWithImpl(
-      _$ProvinciaImpl _value, $Res Function(_$ProvinciaImpl) _then)
-      : super(_value, _then);
+abstract mixin class _$ProvinciaCopyWith<$Res> implements $ProvinciaCopyWith<$Res> {
+  factory _$ProvinciaCopyWith(_Provincia value, $Res Function(_Provincia) _then) = __$ProvinciaCopyWithImpl;
+@override @useResult
+$Res call({
+ String paisId, String regionId, String provinciaId, String? provincia, DateTime lastUpdate, bool deleted
+});
 
-  /// Create a copy of Provincia
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? paisId = null,
-    Object? regionId = null,
-    Object? provinciaId = null,
-    Object? provincia = freezed,
-    Object? lastUpdate = null,
-    Object? deleted = null,
-  }) {
-    return _then(_$ProvinciaImpl(
-      paisId: null == paisId
-          ? _value.paisId
-          : paisId // ignore: cast_nullable_to_non_nullable
-              as String,
-      regionId: null == regionId
-          ? _value.regionId
-          : regionId // ignore: cast_nullable_to_non_nullable
-              as String,
-      provinciaId: null == provinciaId
-          ? _value.provinciaId
-          : provinciaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      provincia: freezed == provincia
-          ? _value.provincia
-          : provincia // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastUpdate: null == lastUpdate
-          ? _value.lastUpdate
-          : lastUpdate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
+
+
+
 }
-
 /// @nodoc
+class __$ProvinciaCopyWithImpl<$Res>
+    implements _$ProvinciaCopyWith<$Res> {
+  __$ProvinciaCopyWithImpl(this._self, this._then);
 
-class _$ProvinciaImpl extends _Provincia {
-  const _$ProvinciaImpl(
-      {required this.paisId,
-      required this.regionId,
-      required this.provinciaId,
-      this.provincia,
-      required this.lastUpdate,
-      required this.deleted})
-      : super._();
+  final _Provincia _self;
+  final $Res Function(_Provincia) _then;
 
-  @override
-  final String paisId;
-  @override
-  final String regionId;
-  @override
-  final String provinciaId;
-  @override
-  final String? provincia;
-  @override
-  final DateTime lastUpdate;
-  @override
-  final bool deleted;
-
-  @override
-  String toString() {
-    return 'Provincia(paisId: $paisId, regionId: $regionId, provinciaId: $provinciaId, provincia: $provincia, lastUpdate: $lastUpdate, deleted: $deleted)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ProvinciaImpl &&
-            (identical(other.paisId, paisId) || other.paisId == paisId) &&
-            (identical(other.regionId, regionId) ||
-                other.regionId == regionId) &&
-            (identical(other.provinciaId, provinciaId) ||
-                other.provinciaId == provinciaId) &&
-            (identical(other.provincia, provincia) ||
-                other.provincia == provincia) &&
-            (identical(other.lastUpdate, lastUpdate) ||
-                other.lastUpdate == lastUpdate) &&
-            (identical(other.deleted, deleted) || other.deleted == deleted));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, paisId, regionId, provinciaId,
-      provincia, lastUpdate, deleted);
-
-  /// Create a copy of Provincia
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ProvinciaImplCopyWith<_$ProvinciaImpl> get copyWith =>
-      __$$ProvinciaImplCopyWithImpl<_$ProvinciaImpl>(this, _$identity);
+/// Create a copy of Provincia
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? paisId = null,Object? regionId = null,Object? provinciaId = null,Object? provincia = freezed,Object? lastUpdate = null,Object? deleted = null,}) {
+  return _then(_Provincia(
+paisId: null == paisId ? _self.paisId : paisId // ignore: cast_nullable_to_non_nullable
+as String,regionId: null == regionId ? _self.regionId : regionId // ignore: cast_nullable_to_non_nullable
+as String,provinciaId: null == provinciaId ? _self.provinciaId : provinciaId // ignore: cast_nullable_to_non_nullable
+as String,provincia: freezed == provincia ? _self.provincia : provincia // ignore: cast_nullable_to_non_nullable
+as String?,lastUpdate: null == lastUpdate ? _self.lastUpdate : lastUpdate // ignore: cast_nullable_to_non_nullable
+as DateTime,deleted: null == deleted ? _self.deleted : deleted // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
 }
 
-abstract class _Provincia extends Provincia {
-  const factory _Provincia(
-      {required final String paisId,
-      required final String regionId,
-      required final String provinciaId,
-      final String? provincia,
-      required final DateTime lastUpdate,
-      required final bool deleted}) = _$ProvinciaImpl;
-  const _Provincia._() : super._();
 
-  @override
-  String get paisId;
-  @override
-  String get regionId;
-  @override
-  String get provinciaId;
-  @override
-  String? get provincia;
-  @override
-  DateTime get lastUpdate;
-  @override
-  bool get deleted;
-
-  /// Create a copy of Provincia
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ProvinciaImplCopyWith<_$ProvinciaImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
+
+// dart format on

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../core/exceptions/app_exception.dart';
@@ -10,7 +11,6 @@ import '../../../core/infrastructure/log_repository.dart';
 import '../../../core/infrastructure/remote_database.dart';
 import '../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
-import '../../../core/presentation/theme/app_sizes.dart';
 import '../../../core/presentation/toasts.dart';
 import '../../../core/routing/app_auto_router.dart';
 import '../../pedido_venta/infrastructure/pedido_venta_repository.dart';
@@ -29,8 +29,7 @@ class _SplashPageState extends ConsumerState<SplashPage> {
   @override
   Widget build(BuildContext context) {
     ref.listen<SplashControllerState>(splashPageControllerProvider, (_, state) {
-      state.maybeWhen(
-        orElse: () {},
+      state.whenOrNull(
         data: () async {
           ref.read(appRemoteDatabaseProvider);
           await ref
@@ -74,7 +73,7 @@ class _SplashPageState extends ConsumerState<SplashPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const ProgressIndicatorWidget(),
-                  gapH32,
+                  const Gap(32),
                   Text(
                     '${S.of(context).splash_descargandoBaseDeDatos}\n${S.of(context).splash_actualizandoBaseDeDatosDe} $lastSchemaDatabase ${S.of(context).splash_a} $newSchemaDatabase...',
                   ),

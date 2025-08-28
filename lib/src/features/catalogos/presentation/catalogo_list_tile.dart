@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 
 import '../../../core/domain/adjunto_param.dart';
 import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
-import '../../../core/presentation/theme/app_sizes.dart';
 import '../domain/catalogo.dart';
 import 'catalogo_adjunto_controller.dart';
 import 'catalogo_favorito_controller.dart';
@@ -101,7 +101,7 @@ class CatalogoListTile extends ConsumerWidget {
                       ),
                     ],
                   ),
-                  gapH8,
+                  const Gap(8),
                   Expanded(
                     child: ClipRRect(
                       child: CachedNetworkImage(
@@ -109,12 +109,14 @@ class CatalogoListTile extends ConsumerWidget {
                         fit: BoxFit.contain,
                         progressIndicatorBuilder:
                             (context, url, progress) => Image.asset(
+                              semanticLabel: 'Loading...',
                               // width: 300,
                               fit: BoxFit.contain,
                               'assets/image-placeholder.png',
                             ),
                         errorWidget:
                             (context, error, _) => Image.asset(
+                              semanticLabel: 'Error loading image',
                               // width: 300,
                               fit: BoxFit.contain,
                               'assets/image-placeholder.png',

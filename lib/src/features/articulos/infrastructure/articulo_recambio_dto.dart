@@ -1,8 +1,8 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../domain/articulo_recambio.dart';
 
 import '../../../core/infrastructure/remote_database.dart';
+import '../domain/articulo_recambio.dart';
 
 part 'articulo_recambio_dto.freezed.dart';
 part 'articulo_recambio_dto.g.dart';
@@ -10,7 +10,7 @@ part 'articulo_recambio_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class ArticuloRecambioDTO
+abstract class ArticuloRecambioDTO
     with _$ArticuloRecambioDTO
     implements Insertable<ArticuloRecambioDTO> {
   const ArticuloRecambioDTO._();
@@ -33,7 +33,7 @@ class ArticuloRecambioDTO
       descripcion: descripcion,
       cantidad: cantidad,
       lastUpdated: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
+      deleted: (deleted == 'S'),
     );
   }
 

@@ -1,13 +1,14 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../domain/usuario.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
+
+import '../domain/usuario.dart';
 
 part 'usuario_dto.freezed.dart';
 part 'usuario_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class UsuarioDTO with _$UsuarioDTO {
+abstract class UsuarioDTO with _$UsuarioDTO {
   const UsuarioDTO._();
   const factory UsuarioDTO({
     @JsonKey(name: 'USUARIO_ID') required String id,
@@ -29,16 +30,16 @@ class UsuarioDTO with _$UsuarioDTO {
     @JsonKey(name: 'MARGEN_COMERCIAL') double? margenComercial,
   }) = _UsuarioDTO;
 
-  DateTime? get expiration {
+  DateTime get expiration {
     return JwtDecoder.getExpirationDate(provisionalToken);
   }
 
   bool get isExpired {
     final expiration = this.expiration;
-    return expiration != null && DateTime.now().isAfter(expiration);
+    return DateTime.now().isAfter(expiration);
   }
 
-  bool get isTest => (test == 'S') ? true : false;
+  bool get isTest => (test == 'S');
 
   bool get canRefresh => refreshToken != null;
 
@@ -73,7 +74,7 @@ class UsuarioDTO with _$UsuarioDTO {
       nombreUsuario: nombreUsuario,
       provisionalToken: provisionalToken,
       refreshToken: refreshToken,
-      test: (test == 'S') ? true : false,
+      test: (test == 'S'),
       idiomaId: idiomaId,
       modificarPedido: modificarPedido == 'S',
       verTotalVentas: verTotalVentas == 'S',

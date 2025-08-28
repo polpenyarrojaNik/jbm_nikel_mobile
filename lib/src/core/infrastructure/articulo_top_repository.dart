@@ -1,11 +1,11 @@
 import 'package:drift/drift.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'remote_database.dart';
-import '../../features/cliente/infrastructure/articulo_top_dto.dart';
 
 import '../../features/articulos/domain/articulo.dart';
 import '../../features/cliente/domain/articulo_top.dart';
+import '../../features/cliente/infrastructure/articulo_top_dto.dart';
 import '../exceptions/app_exception.dart';
+import 'remote_database.dart';
 
 final articuloTopRepositoryProvider =
     Provider.autoDispose<ArticuloTopRepository>((ref) {
@@ -27,11 +27,10 @@ class ArticuloTopRepository {
   Future<List<ArticuloTop>> getArticuloTopList({
     required String clienteId,
   }) async {
-    try {
-      final query =
-          await db
-              .customSelect(
-                '''
+    final query =
+        await db
+            .customSelect(
+              '''
           SELECT estadisticas_articulos_top.ARTICULO_ID
 , ARTICULOS.DESCRIPCION_ES
 ,IFNULL((SELECT SUM (estadisticas_venta.importe)
@@ -50,20 +49,17 @@ FROM estadisticas_articulos_top
 INNER JOIN ARTICULOS ON ARTICULOS.articulo_id = ESTADISTICAS_ARTICULOS_TOP.ARTICULO_ID
 ORDER BY VENTAS_TOTAL DESC
 ''',
-                variables: [Variable(clienteId)],
-                readsFrom: {
-                  db.estadisticasArticulosTopTable,
-                  db.estadisticasClienteUsuarioVentasTable,
-                },
-              )
-              .get();
+              variables: [Variable(clienteId)],
+              readsFrom: {
+                db.estadisticasArticulosTopTable,
+                db.estadisticasClienteUsuarioVentasTable,
+              },
+            )
+            .get();
 
-      return query
-          .map((row) => ArticuloTopDTO.fromJson(row.data).toDomain())
-          .toList();
-    } on AppException {
-      rethrow;
-    }
+    return query
+        .map((row) => ArticuloTopDTO.fromJson(row.data).toDomain())
+        .toList();
   }
 
   Future<Articulo> getArticuloById({required String articuloId}) async {
@@ -71,7 +67,7 @@ ORDER BY VENTAS_TOTAL DESC
       final query = (db.select(db.articuloTable)
         ..where((t) => t.id.equals(articuloId)));
 
-      return query.asyncMap((row) async {
+      return await query.asyncMap((row) async {
         final familiaDTO =
             await (db.select(db.familiaTable)..where(
               (t) => t.id.equals(row.familiaId ?? ''),
@@ -85,8 +81,11 @@ ORDER BY VENTAS_TOTAL DESC
           subfamilia: subfamiliaDTO?.toDomain(),
         );
       }).getSingle();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 }

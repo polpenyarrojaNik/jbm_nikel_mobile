@@ -6,24 +6,23 @@ part of 'cliente_rappel_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ClienteRappelDTOImpl _$$ClienteRappelDTOImplFromJson(
-        Map<String, dynamic> json) =>
-    _$ClienteRappelDTOImpl(
+_ClienteRappelDTO _$ClienteRappelDTOFromJson(Map<String, dynamic> json) =>
+    _ClienteRappelDTO(
       clienteId: json['CLIENTE_ID'] as String,
       rappelId: json['RAPPEL_ID'] as String,
       descripcion: json['DESCRIPCION'] as String,
       fechaDesDe: DateTime.parse(json['FECHA_DESDE'] as String),
-      fechaHasta: json['FECHA_HASTA'] == null
-          ? null
-          : DateTime.parse(json['FECHA_HASTA'] as String),
+      fechaHasta:
+          json['FECHA_HASTA'] == null
+              ? null
+              : DateTime.parse(json['FECHA_HASTA'] as String),
       nombreArchivo: json['NOMBRE_ARCHIVO'] as String?,
       firmado: json['FIRMADO'] as String?,
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       deleted: json['DELETED'] as String? ?? 'N',
     );
 
-Map<String, dynamic> _$$ClienteRappelDTOImplToJson(
-        _$ClienteRappelDTOImpl instance) =>
+Map<String, dynamic> _$ClienteRappelDTOToJson(_ClienteRappelDTO instance) =>
     <String, dynamic>{
       'CLIENTE_ID': instance.clienteId,
       'RAPPEL_ID': instance.rappelId,

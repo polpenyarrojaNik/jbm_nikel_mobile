@@ -6,55 +6,51 @@ part of 'geolocation_entity_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$GeolocationEntityDTOImpl _$$GeolocationEntityDTOImplFromJson(
-        Map<String, dynamic> json) =>
-    _$GeolocationEntityDTOImpl(
-      formattedAddress: json['formattedAddress'] as String,
-      streetName: json['streetName'] as String,
-      streetNumber: json['streetNumber'] as String?,
-      city: json['city'] as String?,
-      countryCode: json['countryCode'] as String,
-      zipCode: json['zipcode'] as String,
-      advinistrativeLevels: json['administrativeLevels'] == null
+_GeolocationEntityDTO _$GeolocationEntityDTOFromJson(
+  Map<String, dynamic> json,
+) => _GeolocationEntityDTO(
+  formattedAddress: json['formattedAddress'] as String,
+  streetName: json['streetName'] as String,
+  streetNumber: json['streetNumber'] as String?,
+  city: json['city'] as String?,
+  countryCode: json['countryCode'] as String,
+  zipCode: json['zipcode'] as String,
+  advinistrativeLevels:
+      json['administrativeLevels'] == null
           ? null
           : AdministrativeLevelsDTO.fromJson(
-              json['administrativeLevels'] as Map<String, dynamic>),
-      extra: json['extra'] == null
+            json['administrativeLevels'] as Map<String, dynamic>,
+          ),
+  extra:
+      json['extra'] == null
           ? null
           : ExtraDTO.fromJson(json['extra'] as Map<String, dynamic>),
-    );
+);
 
-Map<String, dynamic> _$$GeolocationEntityDTOImplToJson(
-        _$GeolocationEntityDTOImpl instance) =>
-    <String, dynamic>{
-      'formattedAddress': instance.formattedAddress,
-      'streetName': instance.streetName,
-      'streetNumber': instance.streetNumber,
-      'city': instance.city,
-      'countryCode': instance.countryCode,
-      'zipcode': instance.zipCode,
-      'administrativeLevels': instance.advinistrativeLevels?.toJson(),
-      'extra': instance.extra?.toJson(),
-    };
+Map<String, dynamic> _$GeolocationEntityDTOToJson(
+  _GeolocationEntityDTO instance,
+) => <String, dynamic>{
+  'formattedAddress': instance.formattedAddress,
+  'streetName': instance.streetName,
+  'streetNumber': instance.streetNumber,
+  'city': instance.city,
+  'countryCode': instance.countryCode,
+  'zipcode': instance.zipCode,
+  'administrativeLevels': instance.advinistrativeLevels?.toJson(),
+  'extra': instance.extra?.toJson(),
+};
 
-_$AdministrativeLevelsDTOImpl _$$AdministrativeLevelsDTOImplFromJson(
-        Map<String, dynamic> json) =>
-    _$AdministrativeLevelsDTOImpl(
-      state: json['level2long'] as String?,
-    );
+_AdministrativeLevelsDTO _$AdministrativeLevelsDTOFromJson(
+  Map<String, dynamic> json,
+) => _AdministrativeLevelsDTO(state: json['level2long'] as String?);
 
-Map<String, dynamic> _$$AdministrativeLevelsDTOImplToJson(
-        _$AdministrativeLevelsDTOImpl instance) =>
-    <String, dynamic>{
-      'level2long': instance.state,
-    };
+Map<String, dynamic> _$AdministrativeLevelsDTOToJson(
+  _AdministrativeLevelsDTO instance,
+) => <String, dynamic>{'level2long': instance.state};
 
-_$ExtraDTOImpl _$$ExtraDTOImplFromJson(Map<String, dynamic> json) =>
-    _$ExtraDTOImpl(
-      subpremise: json['subpremise'] as String?,
-    );
+_ExtraDTO _$ExtraDTOFromJson(Map<String, dynamic> json) =>
+    _ExtraDTO(subpremise: json['subpremise'] as String?);
 
-Map<String, dynamic> _$$ExtraDTOImplToJson(_$ExtraDTOImpl instance) =>
-    <String, dynamic>{
-      'subpremise': instance.subpremise,
-    };
+Map<String, dynamic> _$ExtraDTOToJson(_ExtraDTO instance) => <String, dynamic>{
+  'subpremise': instance.subpremise,
+};

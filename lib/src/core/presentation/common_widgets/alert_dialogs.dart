@@ -15,7 +15,7 @@ Future<bool?> showAlertDialog({
   String? content,
   String? cancelActionText,
   String defaultActionText = 'OK',
-}) async {
+}) {
   if (kIsWeb || !Platform.isIOS) {
     return showDialog(
       context: context,
@@ -24,7 +24,7 @@ Future<bool?> showAlertDialog({
           (context) => AlertDialog(
             title: Text(title),
             content: content != null ? Text(content) : null,
-            actions: <Widget>[
+            actions: [
               if (cancelActionText != null)
                 TextButton(
                   child: Text(cancelActionText),
@@ -46,7 +46,7 @@ Future<bool?> showAlertDialog({
         (context) => CupertinoAlertDialog(
           title: Text(title),
           content: content != null ? Text(content) : null,
-          actions: <Widget>[
+          actions: [
             if (cancelActionText != null)
               CupertinoDialogAction(
                 child: Text(cancelActionText),

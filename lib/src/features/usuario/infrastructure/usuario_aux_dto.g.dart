@@ -6,8 +6,8 @@ part of 'usuario_aux_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$UsuarioAuxDTOImpl _$$UsuarioAuxDTOImplFromJson(Map<String, dynamic> json) =>
-    _$UsuarioAuxDTOImpl(
+_UsuarioAuxDTO _$UsuarioAuxDTOFromJson(Map<String, dynamic> json) =>
+    _UsuarioAuxDTO(
       id: json['USUARIO_ID'] as String,
       usuario: json['USUARIO'] as String,
       nombreUsuario: json['NOMBRE_MOSTRAR'] as String? ?? '',
@@ -17,7 +17,7 @@ _$UsuarioAuxDTOImpl _$$UsuarioAuxDTOImplFromJson(Map<String, dynamic> json) =>
       margenComercial: (json['MARGEN_COMERCIAL'] as num).toDouble(),
     );
 
-Map<String, dynamic> _$$UsuarioAuxDTOImplToJson(_$UsuarioAuxDTOImpl instance) =>
+Map<String, dynamic> _$UsuarioAuxDTOToJson(_UsuarioAuxDTO instance) =>
     <String, dynamic>{
       'USUARIO_ID': instance.id,
       'USUARIO': instance.usuario,

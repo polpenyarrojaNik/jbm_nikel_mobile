@@ -1,14 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:money2/money2.dart';
+
 import '../../../core/domain/divisa.dart';
 import '../../../core/domain/pais.dart';
 import '../../pedido_venta/domain/pedido_venta_estado.dart';
 import 'tracking_estado.dart';
-import 'package:money2/money2.dart';
 
 part 'expedicion.freezed.dart';
 
 @freezed
-class Expedicion with _$Expedicion {
+abstract class Expedicion with _$Expedicion {
   const Expedicion._();
   const factory Expedicion({
     String? empresaId,

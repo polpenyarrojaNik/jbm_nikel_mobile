@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../routing/app_auto_router.dart';
-import '../../../features/usuario/application/usuario_notifier.dart';
+import 'package:gap/gap.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../../../generated/l10n.dart';
-import '../theme/app_sizes.dart';
+import '../../../features/usuario/application/usuario_notifier.dart';
+import '../../routing/app_auto_router.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -29,7 +29,7 @@ class AppDrawer extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                gapH4,
+                const Gap(4),
                 Consumer(
                   builder: (context, ref, _) {
                     final state = ref.watch(usuarioNotifierProvider);

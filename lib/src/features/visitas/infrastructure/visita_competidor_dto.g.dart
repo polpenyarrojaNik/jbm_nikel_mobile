@@ -6,9 +6,8 @@ part of 'visita_competidor_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$VisitaCompetidorDTOImpl _$$VisitaCompetidorDTOImplFromJson(
-        Map<String, dynamic> json) =>
-    _$VisitaCompetidorDTOImpl(
+_VisitaCompetidorDTO _$VisitaCompetidorDTOFromJson(Map<String, dynamic> json) =>
+    _VisitaCompetidorDTO(
       id: (json['CODIGO'] as num).toInt(),
       descripcionES: json['DESCRIPCION_ES'] as String,
       descripcionEN: json['DESCRIPCION_EN'] as String?,
@@ -24,20 +23,20 @@ _$VisitaCompetidorDTOImpl _$$VisitaCompetidorDTOImplFromJson(
       deleted: json['DELETED'] as String? ?? 'N',
     );
 
-Map<String, dynamic> _$$VisitaCompetidorDTOImplToJson(
-        _$VisitaCompetidorDTOImpl instance) =>
-    <String, dynamic>{
-      'CODIGO': instance.id,
-      'DESCRIPCION_ES': instance.descripcionES,
-      'DESCRIPCION_EN': instance.descripcionEN,
-      'DESCRIPCION_FR': instance.descripcionFR,
-      'DESCRIPCION_DE': instance.descripcionDE,
-      'DESCRIPCION_CA': instance.descripcionCA,
-      'DESCRIPCION_GB': instance.descripcionGB,
-      'DESCRIPCION_HU': instance.descripcionHU,
-      'DESCRIPCION_IT': instance.descripcionIT,
-      'DESCRIPCION_NL': instance.descripcionNL,
-      'DESCRIPCION_PL': instance.descripcionPL,
-      'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
-      'DELETED': instance.deleted,
-    };
+Map<String, dynamic> _$VisitaCompetidorDTOToJson(
+  _VisitaCompetidorDTO instance,
+) => <String, dynamic>{
+  'CODIGO': instance.id,
+  'DESCRIPCION_ES': instance.descripcionES,
+  'DESCRIPCION_EN': instance.descripcionEN,
+  'DESCRIPCION_FR': instance.descripcionFR,
+  'DESCRIPCION_DE': instance.descripcionDE,
+  'DESCRIPCION_CA': instance.descripcionCA,
+  'DESCRIPCION_GB': instance.descripcionGB,
+  'DESCRIPCION_HU': instance.descripcionHU,
+  'DESCRIPCION_IT': instance.descripcionIT,
+  'DESCRIPCION_NL': instance.descripcionNL,
+  'DESCRIPCION_PL': instance.descripcionPL,
+  'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
+  'DELETED': instance.deleted,
+};

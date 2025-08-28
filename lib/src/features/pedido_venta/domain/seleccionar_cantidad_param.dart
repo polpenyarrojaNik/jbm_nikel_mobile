@@ -1,10 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'pedido_local_param.dart';
 
 part 'seleccionar_cantidad_param.freezed.dart';
 
 @freezed
-class SeleccionarCantidadParam with _$SeleccionarCantidadParam {
+abstract class SeleccionarCantidadParam with _$SeleccionarCantidadParam {
   const SeleccionarCantidadParam._();
   const factory SeleccionarCantidadParam({
     required PedidoLocalParam pedidoVentaParam,

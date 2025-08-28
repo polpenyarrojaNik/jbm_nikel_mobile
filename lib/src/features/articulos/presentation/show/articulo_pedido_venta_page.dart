@@ -1,8 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../core/presentation/theme/app_sizes.dart';
-import '../../infrastructure/articulo_repository.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
@@ -10,7 +9,9 @@ import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/articulo_pedido_venta_linea.dart';
+import '../../infrastructure/articulo_repository.dart';
 
 @RoutePage()
 class ArticuloPedidoVentaPage extends ConsumerWidget {
@@ -33,7 +34,7 @@ class ArticuloPedidoVentaPage extends ConsumerWidget {
       body: Column(
         children: [
           HeaderDatosRelacionados(entityId: articuloId, subtitle: description),
-          gapH8,
+          const Gap(8),
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
@@ -74,7 +75,7 @@ class ArticuloPedidoVentaLineaTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return IntrinsicHeight(
       child: Padding(
-        padding: listPadding,
+        padding: kPaddingList,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -107,13 +108,13 @@ class ArticuloPedidoVentaLineaTile extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                      gapW16,
+                      const Gap(16),
                       Text(
                         '${numberFormatCantidades(pedidoVentaLinea.cantidad)} ${S.of(context).unidad}',
                       ),
                     ],
                   ),
-                  gapH4,
+                  const Gap(4),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.end,

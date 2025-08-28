@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'devolucion_tipo.freezed.dart';
 
 @freezed
-class DevolucionTipo with _$DevolucionTipo {
+abstract class DevolucionTipo with _$DevolucionTipo {
   const DevolucionTipo._();
   const factory DevolucionTipo({
     required String id,

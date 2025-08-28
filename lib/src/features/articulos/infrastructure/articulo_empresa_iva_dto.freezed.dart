@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,267 +9,281 @@ part of 'articulo_empresa_iva_dto.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-ArticuloEmpresaIvaDTO _$ArticuloEmpresaIvaDTOFromJson(
-    Map<String, dynamic> json) {
-  return _ArticuloEmpresaIvaDTO.fromJson(json);
-}
 
 /// @nodoc
 mixin _$ArticuloEmpresaIvaDTO {
-  @JsonKey(name: 'ARTICULO_ID')
-  String get articuloId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'EMPRESA_ID')
-  String get empresaId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'IVA')
-  double get iva => throw _privateConstructorUsedError;
-  @JsonKey(name: 'LAST_UPDATED')
-  DateTime get lastUpdated => throw _privateConstructorUsedError;
-  @JsonKey(name: 'DELETED')
-  String get deleted => throw _privateConstructorUsedError;
+
+@JsonKey(name: 'ARTICULO_ID') String get articuloId;@JsonKey(name: 'EMPRESA_ID') String get empresaId;@JsonKey(name: 'IVA') double get iva;@JsonKey(name: 'LAST_UPDATED') DateTime get lastUpdated;@JsonKey(name: 'DELETED') String get deleted;
+/// Create a copy of ArticuloEmpresaIvaDTO
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ArticuloEmpresaIvaDTOCopyWith<ArticuloEmpresaIvaDTO> get copyWith => _$ArticuloEmpresaIvaDTOCopyWithImpl<ArticuloEmpresaIvaDTO>(this as ArticuloEmpresaIvaDTO, _$identity);
 
   /// Serializes this ArticuloEmpresaIvaDTO to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of ArticuloEmpresaIvaDTO
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ArticuloEmpresaIvaDTOCopyWith<ArticuloEmpresaIvaDTO> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloEmpresaIvaDTO&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.iva, iva) || other.iva == iva)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,articuloId,empresaId,iva,lastUpdated,deleted);
+
+@override
+String toString() {
+  return 'ArticuloEmpresaIvaDTO(articuloId: $articuloId, empresaId: $empresaId, iva: $iva, lastUpdated: $lastUpdated, deleted: $deleted)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ArticuloEmpresaIvaDTOCopyWith<$Res> {
-  factory $ArticuloEmpresaIvaDTOCopyWith(ArticuloEmpresaIvaDTO value,
-          $Res Function(ArticuloEmpresaIvaDTO) then) =
-      _$ArticuloEmpresaIvaDTOCopyWithImpl<$Res, ArticuloEmpresaIvaDTO>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'ARTICULO_ID') String articuloId,
-      @JsonKey(name: 'EMPRESA_ID') String empresaId,
-      @JsonKey(name: 'IVA') double iva,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
-}
+abstract mixin class $ArticuloEmpresaIvaDTOCopyWith<$Res>  {
+  factory $ArticuloEmpresaIvaDTOCopyWith(ArticuloEmpresaIvaDTO value, $Res Function(ArticuloEmpresaIvaDTO) _then) = _$ArticuloEmpresaIvaDTOCopyWithImpl;
+@useResult
+$Res call({
+@JsonKey(name: 'ARTICULO_ID') String articuloId,@JsonKey(name: 'EMPRESA_ID') String empresaId,@JsonKey(name: 'IVA') double iva,@JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,@JsonKey(name: 'DELETED') String deleted
+});
 
+
+
+
+}
 /// @nodoc
-class _$ArticuloEmpresaIvaDTOCopyWithImpl<$Res,
-        $Val extends ArticuloEmpresaIvaDTO>
+class _$ArticuloEmpresaIvaDTOCopyWithImpl<$Res>
     implements $ArticuloEmpresaIvaDTOCopyWith<$Res> {
-  _$ArticuloEmpresaIvaDTOCopyWithImpl(this._value, this._then);
+  _$ArticuloEmpresaIvaDTOCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ArticuloEmpresaIvaDTO _self;
+  final $Res Function(ArticuloEmpresaIvaDTO) _then;
 
-  /// Create a copy of ArticuloEmpresaIvaDTO
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? articuloId = null,
-    Object? empresaId = null,
-    Object? iva = null,
-    Object? lastUpdated = null,
-    Object? deleted = null,
-  }) {
-    return _then(_value.copyWith(
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      empresaId: null == empresaId
-          ? _value.empresaId
-          : empresaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      iva: null == iva
-          ? _value.iva
-          : iva // ignore: cast_nullable_to_non_nullable
-              as double,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
+/// Create a copy of ArticuloEmpresaIvaDTO
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? articuloId = null,Object? empresaId = null,Object? iva = null,Object? lastUpdated = null,Object? deleted = null,}) {
+  return _then(_self.copyWith(
+articuloId: null == articuloId ? _self.articuloId : articuloId // ignore: cast_nullable_to_non_nullable
+as String,empresaId: null == empresaId ? _self.empresaId : empresaId // ignore: cast_nullable_to_non_nullable
+as String,iva: null == iva ? _self.iva : iva // ignore: cast_nullable_to_non_nullable
+as double,lastUpdated: null == lastUpdated ? _self.lastUpdated : lastUpdated // ignore: cast_nullable_to_non_nullable
+as DateTime,deleted: null == deleted ? _self.deleted : deleted // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-abstract class _$$ArticuloEmpresaIvaDTOImplCopyWith<$Res>
-    implements $ArticuloEmpresaIvaDTOCopyWith<$Res> {
-  factory _$$ArticuloEmpresaIvaDTOImplCopyWith(
-          _$ArticuloEmpresaIvaDTOImpl value,
-          $Res Function(_$ArticuloEmpresaIvaDTOImpl) then) =
-      __$$ArticuloEmpresaIvaDTOImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'ARTICULO_ID') String articuloId,
-      @JsonKey(name: 'EMPRESA_ID') String empresaId,
-      @JsonKey(name: 'IVA') double iva,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
 }
 
-/// @nodoc
-class __$$ArticuloEmpresaIvaDTOImplCopyWithImpl<$Res>
-    extends _$ArticuloEmpresaIvaDTOCopyWithImpl<$Res,
-        _$ArticuloEmpresaIvaDTOImpl>
-    implements _$$ArticuloEmpresaIvaDTOImplCopyWith<$Res> {
-  __$$ArticuloEmpresaIvaDTOImplCopyWithImpl(_$ArticuloEmpresaIvaDTOImpl _value,
-      $Res Function(_$ArticuloEmpresaIvaDTOImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of ArticuloEmpresaIvaDTO
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? articuloId = null,
-    Object? empresaId = null,
-    Object? iva = null,
-    Object? lastUpdated = null,
-    Object? deleted = null,
-  }) {
-    return _then(_$ArticuloEmpresaIvaDTOImpl(
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      empresaId: null == empresaId
-          ? _value.empresaId
-          : empresaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      iva: null == iva
-          ? _value.iva
-          : iva // ignore: cast_nullable_to_non_nullable
-              as double,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
+/// Adds pattern-matching-related methods to [ArticuloEmpresaIvaDTO].
+extension ArticuloEmpresaIvaDTOPatterns on ArticuloEmpresaIvaDTO {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ArticuloEmpresaIvaDTO value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ArticuloEmpresaIvaDTO() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ArticuloEmpresaIvaDTO value)  $default,){
+final _that = this;
+switch (_that) {
+case _ArticuloEmpresaIvaDTO():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ArticuloEmpresaIvaDTO value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ArticuloEmpresaIvaDTO() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'ARTICULO_ID')  String articuloId, @JsonKey(name: 'EMPRESA_ID')  String empresaId, @JsonKey(name: 'IVA')  double iva, @JsonKey(name: 'LAST_UPDATED')  DateTime lastUpdated, @JsonKey(name: 'DELETED')  String deleted)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ArticuloEmpresaIvaDTO() when $default != null:
+return $default(_that.articuloId,_that.empresaId,_that.iva,_that.lastUpdated,_that.deleted);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'ARTICULO_ID')  String articuloId, @JsonKey(name: 'EMPRESA_ID')  String empresaId, @JsonKey(name: 'IVA')  double iva, @JsonKey(name: 'LAST_UPDATED')  DateTime lastUpdated, @JsonKey(name: 'DELETED')  String deleted)  $default,) {final _that = this;
+switch (_that) {
+case _ArticuloEmpresaIvaDTO():
+return $default(_that.articuloId,_that.empresaId,_that.iva,_that.lastUpdated,_that.deleted);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'ARTICULO_ID')  String articuloId, @JsonKey(name: 'EMPRESA_ID')  String empresaId, @JsonKey(name: 'IVA')  double iva, @JsonKey(name: 'LAST_UPDATED')  DateTime lastUpdated, @JsonKey(name: 'DELETED')  String deleted)?  $default,) {final _that = this;
+switch (_that) {
+case _ArticuloEmpresaIvaDTO() when $default != null:
+return $default(_that.articuloId,_that.empresaId,_that.iva,_that.lastUpdated,_that.deleted);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$ArticuloEmpresaIvaDTOImpl extends _ArticuloEmpresaIvaDTO {
-  const _$ArticuloEmpresaIvaDTOImpl(
-      {@JsonKey(name: 'ARTICULO_ID') required this.articuloId,
-      @JsonKey(name: 'EMPRESA_ID') required this.empresaId,
-      @JsonKey(name: 'IVA') required this.iva,
-      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-      @JsonKey(name: 'DELETED') this.deleted = 'N'})
-      : super._();
 
-  factory _$ArticuloEmpresaIvaDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ArticuloEmpresaIvaDTOImplFromJson(json);
+class _ArticuloEmpresaIvaDTO extends ArticuloEmpresaIvaDTO {
+  const _ArticuloEmpresaIvaDTO({@JsonKey(name: 'ARTICULO_ID') required this.articuloId, @JsonKey(name: 'EMPRESA_ID') required this.empresaId, @JsonKey(name: 'IVA') required this.iva, @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated, @JsonKey(name: 'DELETED') this.deleted = 'N'}): super._();
+  factory _ArticuloEmpresaIvaDTO.fromJson(Map<String, dynamic> json) => _$ArticuloEmpresaIvaDTOFromJson(json);
 
-  @override
-  @JsonKey(name: 'ARTICULO_ID')
-  final String articuloId;
-  @override
-  @JsonKey(name: 'EMPRESA_ID')
-  final String empresaId;
-  @override
-  @JsonKey(name: 'IVA')
-  final double iva;
-  @override
-  @JsonKey(name: 'LAST_UPDATED')
-  final DateTime lastUpdated;
-  @override
-  @JsonKey(name: 'DELETED')
-  final String deleted;
+@override@JsonKey(name: 'ARTICULO_ID') final  String articuloId;
+@override@JsonKey(name: 'EMPRESA_ID') final  String empresaId;
+@override@JsonKey(name: 'IVA') final  double iva;
+@override@JsonKey(name: 'LAST_UPDATED') final  DateTime lastUpdated;
+@override@JsonKey(name: 'DELETED') final  String deleted;
 
-  @override
-  String toString() {
-    return 'ArticuloEmpresaIvaDTO(articuloId: $articuloId, empresaId: $empresaId, iva: $iva, lastUpdated: $lastUpdated, deleted: $deleted)';
-  }
+/// Create a copy of ArticuloEmpresaIvaDTO
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ArticuloEmpresaIvaDTOCopyWith<_ArticuloEmpresaIvaDTO> get copyWith => __$ArticuloEmpresaIvaDTOCopyWithImpl<_ArticuloEmpresaIvaDTO>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ArticuloEmpresaIvaDTOImpl &&
-            (identical(other.articuloId, articuloId) ||
-                other.articuloId == articuloId) &&
-            (identical(other.empresaId, empresaId) ||
-                other.empresaId == empresaId) &&
-            (identical(other.iva, iva) || other.iva == iva) &&
-            (identical(other.lastUpdated, lastUpdated) ||
-                other.lastUpdated == lastUpdated) &&
-            (identical(other.deleted, deleted) || other.deleted == deleted));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, articuloId, empresaId, iva, lastUpdated, deleted);
-
-  /// Create a copy of ArticuloEmpresaIvaDTO
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ArticuloEmpresaIvaDTOImplCopyWith<_$ArticuloEmpresaIvaDTOImpl>
-      get copyWith => __$$ArticuloEmpresaIvaDTOImplCopyWithImpl<
-          _$ArticuloEmpresaIvaDTOImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ArticuloEmpresaIvaDTOImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$ArticuloEmpresaIvaDTOToJson(this, );
 }
 
-abstract class _ArticuloEmpresaIvaDTO extends ArticuloEmpresaIvaDTO {
-  const factory _ArticuloEmpresaIvaDTO(
-          {@JsonKey(name: 'ARTICULO_ID') required final String articuloId,
-          @JsonKey(name: 'EMPRESA_ID') required final String empresaId,
-          @JsonKey(name: 'IVA') required final double iva,
-          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-          @JsonKey(name: 'DELETED') final String deleted}) =
-      _$ArticuloEmpresaIvaDTOImpl;
-  const _ArticuloEmpresaIvaDTO._() : super._();
-
-  factory _ArticuloEmpresaIvaDTO.fromJson(Map<String, dynamic> json) =
-      _$ArticuloEmpresaIvaDTOImpl.fromJson;
-
-  @override
-  @JsonKey(name: 'ARTICULO_ID')
-  String get articuloId;
-  @override
-  @JsonKey(name: 'EMPRESA_ID')
-  String get empresaId;
-  @override
-  @JsonKey(name: 'IVA')
-  double get iva;
-  @override
-  @JsonKey(name: 'LAST_UPDATED')
-  DateTime get lastUpdated;
-  @override
-  @JsonKey(name: 'DELETED')
-  String get deleted;
-
-  /// Create a copy of ArticuloEmpresaIvaDTO
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ArticuloEmpresaIvaDTOImplCopyWith<_$ArticuloEmpresaIvaDTOImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloEmpresaIvaDTO&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.empresaId, empresaId) || other.empresaId == empresaId)&&(identical(other.iva, iva) || other.iva == iva)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,articuloId,empresaId,iva,lastUpdated,deleted);
+
+@override
+String toString() {
+  return 'ArticuloEmpresaIvaDTO(articuloId: $articuloId, empresaId: $empresaId, iva: $iva, lastUpdated: $lastUpdated, deleted: $deleted)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ArticuloEmpresaIvaDTOCopyWith<$Res> implements $ArticuloEmpresaIvaDTOCopyWith<$Res> {
+  factory _$ArticuloEmpresaIvaDTOCopyWith(_ArticuloEmpresaIvaDTO value, $Res Function(_ArticuloEmpresaIvaDTO) _then) = __$ArticuloEmpresaIvaDTOCopyWithImpl;
+@override @useResult
+$Res call({
+@JsonKey(name: 'ARTICULO_ID') String articuloId,@JsonKey(name: 'EMPRESA_ID') String empresaId,@JsonKey(name: 'IVA') double iva,@JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,@JsonKey(name: 'DELETED') String deleted
+});
+
+
+
+
+}
+/// @nodoc
+class __$ArticuloEmpresaIvaDTOCopyWithImpl<$Res>
+    implements _$ArticuloEmpresaIvaDTOCopyWith<$Res> {
+  __$ArticuloEmpresaIvaDTOCopyWithImpl(this._self, this._then);
+
+  final _ArticuloEmpresaIvaDTO _self;
+  final $Res Function(_ArticuloEmpresaIvaDTO) _then;
+
+/// Create a copy of ArticuloEmpresaIvaDTO
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? articuloId = null,Object? empresaId = null,Object? iva = null,Object? lastUpdated = null,Object? deleted = null,}) {
+  return _then(_ArticuloEmpresaIvaDTO(
+articuloId: null == articuloId ? _self.articuloId : articuloId // ignore: cast_nullable_to_non_nullable
+as String,empresaId: null == empresaId ? _self.empresaId : empresaId // ignore: cast_nullable_to_non_nullable
+as String,iva: null == iva ? _self.iva : iva // ignore: cast_nullable_to_non_nullable
+as double,lastUpdated: null == lastUpdated ? _self.lastUpdated : lastUpdated // ignore: cast_nullable_to_non_nullable
+as DateTime,deleted: null == deleted ? _self.deleted : deleted // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+// dart format on

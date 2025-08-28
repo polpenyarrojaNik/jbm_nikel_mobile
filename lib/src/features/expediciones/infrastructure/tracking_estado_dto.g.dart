@@ -6,9 +6,8 @@ part of 'tracking_estado_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$TrackingEstadoDTOImpl _$$TrackingEstadoDTOImplFromJson(
-        Map<String, dynamic> json) =>
-    _$TrackingEstadoDTOImpl(
+_TrackingEstadoDTO _$TrackingEstadoDTOFromJson(Map<String, dynamic> json) =>
+    _TrackingEstadoDTO(
       id: json['TRACKING_ESTADO'] as String,
       descripcionES: json['DESCRIPCION_ES'] as String,
       descripcionEN: json['DESCRIPCION_EN'] as String?,
@@ -28,8 +27,7 @@ _$TrackingEstadoDTOImpl _$$TrackingEstadoDTOImplFromJson(
       deleted: json['DELETED'] as String? ?? 'N',
     );
 
-Map<String, dynamic> _$$TrackingEstadoDTOImplToJson(
-        _$TrackingEstadoDTOImpl instance) =>
+Map<String, dynamic> _$TrackingEstadoDTOToJson(_TrackingEstadoDTO instance) =>
     <String, dynamic>{
       'TRACKING_ESTADO': instance.id,
       'DESCRIPCION_ES': instance.descripcionES,

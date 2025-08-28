@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'divisa.freezed.dart';
 
 @freezed
-class Divisa with _$Divisa {
+abstract class Divisa with _$Divisa {
   const Divisa._();
   const factory Divisa({
     required String id,

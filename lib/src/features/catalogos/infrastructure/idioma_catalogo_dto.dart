@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
+
 import '../domain/idioma_catalogo.dart';
 
 part 'idioma_catalogo_dto.freezed.dart';
@@ -8,7 +9,7 @@ part 'idioma_catalogo_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class IdiomaCatalogoDTO with _$IdiomaCatalogoDTO {
+abstract class IdiomaCatalogoDTO with _$IdiomaCatalogoDTO {
   const IdiomaCatalogoDTO._();
   const factory IdiomaCatalogoDTO({
     @JsonKey(name: 'IDIOMA_ID') required String idiomaId,
@@ -36,8 +37,7 @@ class IdiomaCatalogoDTO with _$IdiomaCatalogoDTO {
 
   String getDescriptionInLocalLanguage() {
     final currentLocale = Intl.getCurrentLocale();
-    if (currentLocale == 'es') {
-    } else if (currentLocale == 'en' && descripcionEN != null) {
+    if (currentLocale == 'en' && descripcionEN != null) {
       return descripcionEN!;
     } else if (currentLocale == 'fr' && descripcionFR != null) {
       return descripcionFR!;

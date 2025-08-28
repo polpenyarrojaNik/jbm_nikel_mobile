@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'metodo_cobro.freezed.dart';
 
 @freezed
-class MetodoDeCobro with _$MetodoDeCobro {
+abstract class MetodoDeCobro with _$MetodoDeCobro {
   const MetodoDeCobro._();
   const factory MetodoDeCobro({
     required String id,

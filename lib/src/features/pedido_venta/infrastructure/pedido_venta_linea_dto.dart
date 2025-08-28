@@ -1,8 +1,8 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../../core/helpers/extension.dart';
 import '../../../core/infrastructure/remote_database.dart';
-
 import '../domain/pedido_venta_linea.dart';
 
 part 'pedido_venta_linea_dto.freezed.dart';
@@ -10,7 +10,7 @@ part 'pedido_venta_linea_dto.g.dart';
 
 // ignore_for_file: invalid_annotation_target
 @freezed
-class PedidoVentaLineaDTO
+abstract class PedidoVentaLineaDTO
     with _$PedidoVentaLineaDTO
     implements Insertable<PedidoVentaLineaDTO> {
   const PedidoVentaLineaDTO._();
@@ -69,7 +69,7 @@ class PedidoVentaLineaDTO
       stockDisponible: stockDisponible,
       stockDisponibleSN: stockDisponible != null && stockDisponible > 0,
       lastUpdated: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
+      deleted: (deleted == 'S'),
     );
   }
 

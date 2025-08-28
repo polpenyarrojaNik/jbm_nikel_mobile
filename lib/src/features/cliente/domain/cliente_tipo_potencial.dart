@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'cliente_tipo_potencial.freezed.dart';
 
 @freezed
-class ClienteTipoPotencial with _$ClienteTipoPotencial {
+abstract class ClienteTipoPotencial with _$ClienteTipoPotencial {
   const ClienteTipoPotencial._();
   const factory ClienteTipoPotencial({
     required String id,

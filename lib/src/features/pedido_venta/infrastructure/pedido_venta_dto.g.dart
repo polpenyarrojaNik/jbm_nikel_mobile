@@ -6,8 +6,8 @@ part of 'pedido_venta_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PedidoVentaDTOImpl _$$PedidoVentaDTOImplFromJson(Map<String, dynamic> json) =>
-    _$PedidoVentaDTOImpl(
+_PedidoVentaDTO _$PedidoVentaDTOFromJson(Map<String, dynamic> json) =>
+    _PedidoVentaDTO(
       empresaId: json['EMPRESA_ID'] as String,
       pedidoVentaId: json['PEDIDO_ID'] as String,
       pedidoVentaDate: DateTime.parse(json['FECHA_PEDIDO'] as String),
@@ -29,17 +29,17 @@ _$PedidoVentaDTOImpl _$$PedidoVentaDTOImplFromJson(Map<String, dynamic> json) =>
       total: (json['TOTAL'] as num).toDouble(),
       pedidoVentaEstadoId: (json['ESTADO_PEDIDO_ID'] as num).toInt(),
       oferta: json['OFERTA_SN'] as String,
-      ofertaFechaHasta: json['OFERTA_FECHA_HASTA'] == null
-          ? null
-          : DateTime.parse(json['OFERTA_FECHA_HASTA'] as String),
+      ofertaFechaHasta:
+          json['OFERTA_FECHA_HASTA'] == null
+              ? null
+              : DateTime.parse(json['OFERTA_FECHA_HASTA'] as String),
       pedidoVentaAppId: json['PEDIDO_APP_ID'] as String?,
       iva: (json['IVA'] as num).toDouble(),
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       deleted: json['DELETED'] as String,
     );
 
-Map<String, dynamic> _$$PedidoVentaDTOImplToJson(
-        _$PedidoVentaDTOImpl instance) =>
+Map<String, dynamic> _$PedidoVentaDTOToJson(_PedidoVentaDTO instance) =>
     <String, dynamic>{
       'EMPRESA_ID': instance.empresaId,
       'PEDIDO_ID': instance.pedidoVentaId,

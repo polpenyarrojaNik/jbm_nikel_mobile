@@ -21,7 +21,6 @@ import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/mobile_custom_separatos.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/common_widgets/selectable_text_widget.dart';
-import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../../pedido_venta/domain/pedido_local_param.dart';
 import '../../../pedido_venta/domain/pedido_venta.dart';
@@ -37,7 +36,9 @@ part 'articulo_detalle_page.g.dart';
 class ArticuloDetalleAddArticuloABorradorButtonController
     extends _$ArticuloDetalleAddArticuloABorradorButtonController {
   @override
-  void build() {}
+  void build() {
+    return;
+  }
 
   Future<Either<AppException, int>> getPedidoVentaLinea(
     PedidoLocalParam pedidoLocalParam,
@@ -107,7 +108,7 @@ class ArticuloDetallePage extends ConsumerWidget {
           final articuloValue = ref.watch(articuloProvider(articuloId));
           return AsyncValueWidget<Articulo>(
             value: articuloValue,
-            data:
+            onData:
                 (articulo) => ListView(
                   shrinkWrap: true,
                   physics: const BouncingScrollPhysics(),
@@ -169,19 +170,24 @@ class AddArticleToBorradorButton extends ConsumerWidget {
       onPressed:
           getPedidoVentaLineaState.isLoading
               ? null
-              : pedidoVentaBorradoresList.length == 1
-              ? () => getPedidoVentaLineaState(
-                PedidoLocalParam(
-                  pedidoAppId:
-                      pedidoVentaBorradoresList.first.pedidoVentaAppId!,
-                  isEdit: false,
-                ),
-              )
-              : () => selectBorradorToAddArticle(
-                context,
-                ref,
-                pedidoVentaBorradoresList,
-              ),
+              : () {
+                if (pedidoVentaBorradoresList.length == 1) {
+                  getPedidoVentaLineaState(
+                    PedidoLocalParam(
+                      pedidoAppId:
+                          pedidoVentaBorradoresList.first.pedidoVentaAppId!,
+                      isEdit: false,
+                    ),
+                  );
+                } else {
+                  selectBorradorToAddArticle(
+                    context,
+                    ref,
+                    pedidoVentaBorradoresList,
+                  );
+                }
+              },
+
       icon: const Icon(Icons.add_shopping_cart_outlined),
     );
   }
@@ -336,13 +342,14 @@ class _ArticuloInfoContainer extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: SelectableText(
             selectionControls: MaterialTextSelectionControls(),
-            (articulo.subfamilia != null)
-                ? '${articulo.familia?.descripcion}/${articulo.subfamilia?.descripcion}'
-                : '${articulo.familia?.descripcion}',
+            (articulo.familia != null && articulo.subfamilia != null)
+                ? '${articulo.familia!.descripcion}/${articulo.subfamilia!.descripcion}'
+                : (articulo.familia?.descripcion ??
+                    S.of(context).unknownFamily),
             style: Theme.of(context).textTheme.bodySmall,
           ),
         ),
-        gapH8,
+        const Gap(8),
         if (getSummaryInLocalLanguage(articulo: articulo) != null)
           SummaryTextWidget(articulo: articulo),
         MobileCustomSeparators(
@@ -383,7 +390,8 @@ class _ArticuloInfoContainer extends StatelessWidget {
                                   Theme.of(context).textTheme.bodySmall!.color,
                             ),
                           ),
-                          if (articulo.comprasEntregaCantidad1 != 0) gapH8,
+                          if (articulo.comprasEntregaCantidad1 != 0)
+                            const Gap(8),
                           if (articulo.comprasEntregaCantidad2 != 0)
                             Text(
                               S
@@ -398,7 +406,8 @@ class _ArticuloInfoContainer extends StatelessWidget {
                                     ).textTheme.bodySmall!.color,
                               ),
                             ),
-                          if (articulo.comprasEntregaCantidad2 != 0) gapH8,
+                          if (articulo.comprasEntregaCantidad2 != 0)
+                            const Gap(8),
                           if (articulo.comprasEntregaCantidad3 != 0)
                             Text(
                               S
@@ -413,7 +422,8 @@ class _ArticuloInfoContainer extends StatelessWidget {
                                     ).textTheme.bodySmall!.color,
                               ),
                             ),
-                          if (articulo.comprasEntregaCantidad3 != 0) gapH8,
+                          if (articulo.comprasEntregaCantidad3 != 0)
+                            const Gap(8),
                           if (articulo.comprasEntregaCantidadMas3 != 0)
                             Text(
                               S.of(context).articulo_show_articuloDetalle_mas,
@@ -435,17 +445,17 @@ class _ArticuloInfoContainer extends StatelessWidget {
                           SelectableTextWidget(
                             '${numberFormatCantidades(articulo.comprasEntregaCantidad1)} ${S.of(context).unidad}',
                           ),
-                        if (articulo.comprasEntregaCantidad1 != 0) gapH8,
+                        if (articulo.comprasEntregaCantidad1 != 0) const Gap(8),
                         if (articulo.comprasEntregaCantidad2 != 0)
                           SelectableTextWidget(
                             '${numberFormatCantidades(articulo.comprasEntregaCantidad2)}  ${S.of(context).unidad}',
                           ),
-                        if (articulo.comprasEntregaCantidad2 != 0) gapH8,
+                        if (articulo.comprasEntregaCantidad2 != 0) const Gap(8),
                         if (articulo.comprasEntregaCantidad3 != 0)
                           SelectableTextWidget(
                             '${numberFormatCantidades(articulo.comprasEntregaCantidad3)}  ${S.of(context).unidad}',
                           ),
-                        if (articulo.comprasEntregaCantidad3 != 0) gapH8,
+                        if (articulo.comprasEntregaCantidad3 != 0) const Gap(8),
                         if (articulo.comprasEntregaCantidadMas3 != 0)
                           SelectableTextWidget(
                             '${numberFormatCantidades(articulo.comprasEntregaCantidadMas3)}  ${S.of(context).unidad}',
@@ -467,7 +477,7 @@ class _ArticuloInfoContainer extends StatelessWidget {
                               context: context,
                             ),
                           ),
-                        if (articulo.comprasEntregaFecha1 != null) gapH8,
+                        if (articulo.comprasEntregaFecha1 != null) const Gap(8),
                         if (articulo.comprasEntregaFecha2 != null)
                           SelectableTextWidget(
                             dateFormatter(
@@ -480,7 +490,7 @@ class _ArticuloInfoContainer extends StatelessWidget {
                               context: context,
                             ),
                           ),
-                        if (articulo.comprasEntregaFecha2 != null) gapH8,
+                        if (articulo.comprasEntregaFecha2 != null) const Gap(8),
                         if (articulo.comprasEntregaFecha3 != null)
                           SelectableTextWidget(
                             dateFormatter(
@@ -493,7 +503,7 @@ class _ArticuloInfoContainer extends StatelessWidget {
                               context: context,
                             ),
                           ),
-                        if (articulo.comprasEntregaFecha3 != null) gapH8,
+                        if (articulo.comprasEntregaFecha3 != null) const Gap(8),
                         if (articulo.comprasEntregaCantidadMas3 != 0)
                           const Text(''),
                       ],
@@ -627,7 +637,7 @@ class _ArticuloInfoContainer extends StatelessWidget {
                       ],
                     ),
                   ),
-                  gapW48,
+                  const Gap(48),
                   Expanded(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -677,7 +687,7 @@ class _ArticuloInfoContainer extends StatelessWidget {
                       ],
                     ),
                   ),
-                  gapW48,
+                  const Gap(48),
                   const Spacer(),
                 ],
               ),
@@ -937,7 +947,7 @@ class _DescriptionResumenRow extends StatelessWidget {
             color: Theme.of(context).textTheme.bodyMedium?.color,
           ),
         ),
-        gapW4,
+        const Gap(4),
         Flexible(
           child: SelectableText(
             selectionControls: MaterialTextSelectionControls(),
@@ -980,6 +990,12 @@ class _ArticuloImageCarrouselState
   }
 
   @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final state = ref.watch(articuloImageListProvider(widget.articuloId));
     return state.when(
@@ -1003,6 +1019,7 @@ class _ArticuloImageCarrouselState
                         imageUrl: articuloImagenes[i].url,
                         progressIndicatorBuilder:
                             (context, url, progress) => Image.asset(
+                              semanticLabel: 'Cargando imagen...',
                               height: 175,
                               width: 400,
                               fit: BoxFit.contain,
@@ -1034,22 +1051,19 @@ class _ArticuloImageCarrouselState
   }
 
   List<Widget> indicators(int imagesLength, currentIndex) {
-    return List<Widget>.generate(imagesLength, (index) {
+    return List.generate(imagesLength, (index) {
+      Color color;
+
+      if (currentIndex == index) {
+        color = _isDark() ? Colors.white : Colors.black;
+      } else {
+        color = _isDark() ? Colors.white54 : Colors.black26;
+      }
       return Container(
         margin: const EdgeInsets.all(3),
         width: 10,
         height: 10,
-        decoration: BoxDecoration(
-          color:
-              currentIndex == index
-                  ? _isDark()
-                      ? Colors.white
-                      : Colors.black
-                  : _isDark()
-                  ? Colors.white54
-                  : Colors.black26,
-          shape: BoxShape.circle,
-        ),
+        decoration: BoxDecoration(color: color, shape: BoxShape.circle),
       );
     });
   }
@@ -1073,7 +1087,7 @@ class _DatosRelacionados extends StatelessWidget {
           separatorTitle:
               S.of(context).articulo_show_articuloDetalle_datosRelacionados,
         ),
-        gapH8,
+        const Gap(8),
         DatosExtraRow(
           title: S.of(context).articulo_show_articuloPreciosTarifa_titulo,
           navigationTo:
@@ -1138,7 +1152,7 @@ class _DatosRelacionados extends StatelessWidget {
                 ),
               ),
         ),
-        gapH8,
+        const Gap(8),
       ],
     );
   }
@@ -1157,7 +1171,7 @@ class _Consultas extends StatelessWidget {
         MobileCustomSeparators(
           separatorTitle: S.of(context).articulo_show_articuloDetalle_consultas,
         ),
-        gapH8,
+        const Gap(8),
         DatosExtraRow(
           title: S.of(context).articulo_show_articuloPedidoVenta_titulo,
           navigationTo:
@@ -1263,7 +1277,7 @@ class _SummaryTextWidgetState extends ConsumerState<SummaryTextWidget> {
                   maxLines: (showAllText) ? null : 3,
                 ),
               ),
-              gapW8,
+              const Gap(8),
               IconButton(
                 onPressed:
                     () => showAllResumenes(
@@ -1320,14 +1334,14 @@ class _ArticuloAnalisis extends StatelessWidget {
         MobileCustomSeparators(
           separatorTitle: S.of(context).articulo_show_articuloDetalle_analisis,
         ),
-        gapH8,
+        const Gap(8),
         Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _VentasRowWidget(articulo: articulo),
-              gapH8,
+              const Gap(8),
               _MargenRowWidget(articulo: articulo),
             ],
           ),
@@ -1353,7 +1367,7 @@ class _VentasRowWidget extends StatelessWidget {
             color: Theme.of(context).textTheme.bodySmall!.color,
           ),
         ),
-        gapH4,
+        const Gap(4),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -1434,7 +1448,7 @@ class _MargenRowWidget extends StatelessWidget {
             color: Theme.of(context).textTheme.bodySmall!.color,
           ),
         ),
-        gapH4,
+        const Gap(4),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

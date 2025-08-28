@@ -9,7 +9,7 @@ part 'tipo_catalogo_precio_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class TipoPrecioCatalogoDTO with _$TipoPrecioCatalogoDTO {
+abstract class TipoPrecioCatalogoDTO with _$TipoPrecioCatalogoDTO {
   const TipoPrecioCatalogoDTO._();
   const factory TipoPrecioCatalogoDTO({
     @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID')
@@ -38,8 +38,7 @@ class TipoPrecioCatalogoDTO with _$TipoPrecioCatalogoDTO {
 
   String getDescriptionInLocalLanguage() {
     final currentLocale = Intl.getCurrentLocale();
-    if (currentLocale == 'es') {
-    } else if (currentLocale == 'en' && descripcionEN != null) {
+    if (currentLocale == 'en' && descripcionEN != null) {
       return descripcionEN!;
     } else if (currentLocale == 'fr' && descripcionFR != null) {
       return descripcionFR!;

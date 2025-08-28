@@ -1,10 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'pedido_venta_linea.dart';
 
 part 'pedido_local_param.freezed.dart';
 
 @freezed
-class PedidoLocalParam with _$PedidoLocalParam {
+abstract class PedidoLocalParam with _$PedidoLocalParam {
   const PedidoLocalParam._();
   const factory PedidoLocalParam({
     String? pedidoAppId,

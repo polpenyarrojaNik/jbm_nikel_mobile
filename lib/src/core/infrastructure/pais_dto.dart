@@ -11,7 +11,7 @@ part 'pais_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class PaisDTO with _$PaisDTO implements Insertable<PaisDTO> {
+abstract class PaisDTO with _$PaisDTO implements Insertable<PaisDTO> {
   const PaisDTO._();
   const factory PaisDTO({
     @JsonKey(name: 'PAIS_ID') required String id,
@@ -44,7 +44,7 @@ class PaisDTO with _$PaisDTO implements Insertable<PaisDTO> {
       isoCode: isoCode,
       descripcion: getDescriptionInLocalLanguage(),
       lastUpdate: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
+      deleted: (deleted == 'S'),
     );
   }
 

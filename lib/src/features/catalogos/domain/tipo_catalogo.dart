@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'tipo_catalogo.freezed.dart';
 
 @freezed
-class TipoCatalogo with _$TipoCatalogo {
+abstract class TipoCatalogo with _$TipoCatalogo {
   const TipoCatalogo._();
   const factory TipoCatalogo({
     required String tipoCatalogoId,

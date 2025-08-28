@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
@@ -8,7 +9,6 @@ import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
-import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/articulo_ventas_cliente.dart';
 import '../../infrastructure/articulo_repository.dart';
 
@@ -417,7 +417,7 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text('[${articuloVentasClienteList[i].clienteId}]'),
-                    gapW8,
+                    const Gap(8),
                     Flexible(
                       child: Text(
                         articuloVentasClienteList[i].nombreCliente,

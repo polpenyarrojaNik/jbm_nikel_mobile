@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../../core/presentation/common_widgets/app_decoration.dart';
-import '../../../../core/presentation/theme/app_sizes.dart';
 
 class VisitaListShimmer extends StatelessWidget {
   const VisitaListShimmer({super.key});
@@ -29,7 +29,7 @@ class VisitaListShimmer extends StatelessWidget {
               width: 200,
               decoration: AppDecoration.loadingTile,
             ),
-            gapH8,
+            const Gap(8),
             Container(
               margin: const EdgeInsets.all(2.0),
               height: 12,

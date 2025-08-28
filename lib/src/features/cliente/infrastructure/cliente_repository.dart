@@ -384,8 +384,11 @@ class ClienteRepository {
             );
           }).get();
       return clienteList;
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -482,8 +485,11 @@ class ClienteRepository {
 
       final count = await query.map((row) => row.read(countExp)).getSingle();
       return count ?? 0;
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -536,7 +542,7 @@ class ClienteRepository {
 
       query.where(_remoteDb.clienteTable.id.equals(clienteId));
 
-      return query.asyncMap((row) async {
+      return await query.asyncMap((row) async {
         ClienteDireccion? clienteDireccionPredeterminada;
         final clienteDTO = row.readTable(_remoteDb.clienteTable);
         final paisDTO = row.readTableOrNull(_remoteDb.paisTable);
@@ -580,19 +586,22 @@ class ClienteRepository {
           subsector: subsectorDTO?.toDomain(sectorDTO!.toDomain()),
         );
       }).getSingle();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
   Future<List<ClienteDescuento>> getClienteDescuentoById({
     required String clienteId,
-  }) {
+  }) async {
     try {
       final query = (_remoteDb.select(_remoteDb.clienteDescuentoTable)
         ..where((t) => t.clienteId.equals(clienteId)));
 
-      return query.asyncMap((row) async {
+      return await query.asyncMap((row) async {
         final articuloDto =
             (row.articuloId != '*')
                 ? await (_remoteDb.select(_remoteDb.articuloTable)
@@ -619,14 +628,17 @@ class ClienteRepository {
           subfamilia: subfamiliaDTO.toDomain(),
         );
       }).get();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
   Future<List<ClientePrecioNeto>> getClientePrecioNetoById({
     required String clienteId,
-  }) {
+  }) async {
     try {
       final query = _remoteDb.select(_remoteDb.clientePrecioNetoTable).join([
         innerJoin(
@@ -644,7 +656,7 @@ class ClienteRepository {
       ]);
       query.where(_remoteDb.clienteTable.id.equals(clienteId));
 
-      return query.map((row) {
+      return await query.map((row) {
         final clienteDTO = row.readTable(_remoteDb.clienteTable);
         final articulo = row
             .readTable(_remoteDb.articuloTable)
@@ -656,46 +668,55 @@ class ClienteRepository {
           descripcion: getDescriptionInLocalLanguage(articulo: articulo),
         );
       }).get();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
   Future<List<ClienteGrupoNeto>> getClienteGrupoNetoById({
     required String clienteId,
-  }) {
+  }) async {
     try {
       final query = (_remoteDb.select(_remoteDb.clienteGrupoNetoTable)
         ..where((t) => t.clienteId.equals(clienteId)));
 
-      return query.map((row) {
+      return await query.map((row) {
         return row.toDomain();
       }).get();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
   Future<List<ClienteRappel>> getClienteRappelById({
     required String clienteId,
-  }) {
+  }) async {
     try {
       final query =
           (_remoteDb.select(_remoteDb.clienteRappelTable)
             ..where((t) => t.clienteId.equals(clienteId))
             ..orderBy([(t) => OrderingTerm.desc(t.fechaDesDe)]));
 
-      return query.map((row) {
+      return await query.map((row) {
         return row.toDomain();
       }).get();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
   Future<List<ClientePagoPendiente>> getClientePagoPendienteById({
     required String clienteId,
-  }) {
+  }) async {
     try {
       final query = _remoteDb.select(_remoteDb.clientePagoPendienteTable).join([
         innerJoin(
@@ -708,7 +729,7 @@ class ClienteRepository {
 
       query.where(_remoteDb.clienteTable.id.equals(clienteId));
 
-      return query.asyncMap((row) async {
+      return await query.asyncMap((row) async {
         final clienteDTO = row.readTable(_remoteDb.clienteTable);
 
         final metodoDeCobroDTO =
@@ -724,8 +745,11 @@ class ClienteRepository {
           divisaId: clienteDTO.divisaId,
         );
       }).get();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -745,8 +769,11 @@ class ClienteRepository {
       return query.map((row) {
         return ClienteVentasMesDTO.fromJson(row.data).toDomain();
       }).toList();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -768,8 +795,11 @@ class ClienteRepository {
       return query.map((row) {
         return ClienteVentasArticuloDTO.fromJson(row.data).toDomain();
       }).toList();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -778,29 +808,25 @@ class ClienteRepository {
     required String provisionalToken,
     required bool test,
   }) async {
-    try {
-      final query = {'CLIENTE_ID': clienteId};
-      final clienteAdjuntoDTOList = await _remoteGetClienteAdjunto(
-        requestUri:
-            (test)
-                ? Uri.http(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/cliente/adjuntos',
-                  query,
-                )
-                : Uri.https(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/cliente/adjuntos',
-                  query,
-                ),
-        jsonDataSelector: (json) => json['data'] as List<dynamic>,
-        provisionalToken: provisionalToken,
-      );
+    final query = {'CLIENTE_ID': clienteId};
+    final clienteAdjuntoDTOList = await _remoteGetClienteAdjunto(
+      requestUri:
+          (test)
+              ? Uri.http(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/cliente/adjuntos',
+                query,
+              )
+              : Uri.https(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/cliente/adjuntos',
+                query,
+              ),
+      jsonDataSelector: (json) => json['data'] as List<dynamic>,
+      provisionalToken: provisionalToken,
+    );
 
-      return clienteAdjuntoDTOList.map((e) => e.toDomain()).toList();
-    } catch (e) {
-      rethrow;
-    }
+    return clienteAdjuntoDTOList.map((e) => e.toDomain()).toList();
   }
 
   Future<List<ClienteAdjuntoDTO>> _remoteGetClienteAdjunto({
@@ -820,14 +846,16 @@ class ClienteRepository {
         return data
             .map((e) => ClienteAdjuntoDTO.fromJson(e as Map<String, dynamic>))
             .toList();
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
       }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
     } catch (e, stackTrace) {
-      throw getApiError(e, stackTrace, errorLogger);
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 
@@ -836,44 +864,43 @@ class ClienteRepository {
     required String provisionalToken,
     required bool test,
   }) async {
-    try {
-      if (adjuntoParam.nombreArchivo != '') {
-        final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
-        final data = await _remoteGetAttachment(
-          requestUri:
-              (test)
-                  ? Uri.http(
-                    dotenv.get('URL', fallback: 'localhost:3001'),
-                    'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
-                    query,
-                  )
-                  : Uri.https(
-                    dotenv.get('URL', fallback: 'localhost:3001'),
-                    'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
-                    query,
-                  ),
-          provisionalToken: provisionalToken,
+    if (adjuntoParam.nombreArchivo != '') {
+      final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
+      final data = await _remoteGetAttachment(
+        requestUri:
+            (test)
+                ? Uri.http(
+                  dotenv.get('URL', fallback: 'localhost:3001'),
+                  'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
+                  query,
+                )
+                : Uri.https(
+                  dotenv.get('URL', fallback: 'localhost:3001'),
+                  'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
+                  query,
+                ),
+        provisionalToken: provisionalToken,
+      );
+
+      try {
+        final cahceDirectories = await getTemporaryDirectory();
+
+        final file = await File(
+          '${cahceDirectories.path}/cliente/${adjuntoParam.id}/${adjuntoParam.nombreArchivo ?? ''}',
+        ).create(recursive: true);
+        final raf = file.openSync(mode: FileMode.write);
+        raf.writeFromSync(data);
+        await raf.close();
+        return file;
+      } catch (e, stackTrace) {
+        Error.throwWithStackTrace(
+          AppException.createFileInCacheFailure(e.toString()),
+          stackTrace,
         );
-
-        try {
-          final cahceDirectories = await getTemporaryDirectory();
-
-          final file = await File(
-            '${cahceDirectories.path}/cliente/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}',
-          ).create(recursive: true);
-          final raf = file.openSync(mode: FileMode.write);
-          raf.writeFromSync(data);
-          await raf.close();
-          return file;
-        } catch (e) {
-          throw AppException.createFileInCacheFailure(e.toString());
-        }
       }
-
-      return null;
-    } catch (e) {
-      rethrow;
     }
+
+    return null;
   }
 
   Future<File?> getRappelDocumentFile({
@@ -881,44 +908,43 @@ class ClienteRepository {
     required String provisionalToken,
     required bool test,
   }) async {
-    try {
-      if (adjuntoParam.nombreArchivo != '') {
-        final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
-        final data = await _remoteGetAttachment(
-          requestUri:
-              (test)
-                  ? Uri.http(
-                    dotenv.get('URL', fallback: 'localhost:3001'),
-                    'api/v1/online/adjunto/rappel/${adjuntoParam.id}',
-                    query,
-                  )
-                  : Uri.https(
-                    dotenv.get('URL', fallback: 'localhost:3001'),
-                    'api/v1/online/adjunto/rappel/${adjuntoParam.id}',
-                    query,
-                  ),
-          provisionalToken: provisionalToken,
+    if (adjuntoParam.nombreArchivo != '') {
+      final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
+      final data = await _remoteGetAttachment(
+        requestUri:
+            (test)
+                ? Uri.http(
+                  dotenv.get('URL', fallback: 'localhost:3001'),
+                  'api/v1/online/adjunto/rappel/${adjuntoParam.id}',
+                  query,
+                )
+                : Uri.https(
+                  dotenv.get('URL', fallback: 'localhost:3001'),
+                  'api/v1/online/adjunto/rappel/${adjuntoParam.id}',
+                  query,
+                ),
+        provisionalToken: provisionalToken,
+      );
+
+      try {
+        final cahceDirectories = await getTemporaryDirectory();
+
+        final file = await File(
+          '${cahceDirectories.path}/rappel/${adjuntoParam.id}/${adjuntoParam.nombreArchivo ?? ''}',
+        ).create(recursive: true);
+        final raf = file.openSync(mode: FileMode.write);
+        raf.writeFromSync(data);
+        await raf.close();
+        return file;
+      } catch (e, stackTrace) {
+        Error.throwWithStackTrace(
+          AppException.createFileInCacheFailure(e.toString()),
+          stackTrace,
         );
-
-        try {
-          final cahceDirectories = await getTemporaryDirectory();
-
-          final file = await File(
-            '${cahceDirectories.path}/rappel/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}',
-          ).create(recursive: true);
-          final raf = file.openSync(mode: FileMode.write);
-          raf.writeFromSync(data);
-          await raf.close();
-          return file;
-        } catch (e) {
-          throw AppException.createFileInCacheFailure(e.toString());
-        }
       }
-
-      return null;
-    } catch (e) {
-      rethrow;
     }
+
+    return null;
   }
 
   Future<List<int>> _remoteGetAttachment({
@@ -935,15 +961,17 @@ class ClienteRepository {
         ),
       );
       if (response.statusCode == 200) {
-        return response.data as List<int>;
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
+        return (response.data as List<Object?>).cast();
       }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
     } catch (e, stackTrace) {
-      throw getApiError(e, stackTrace, errorLogger);
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 
@@ -1220,7 +1248,7 @@ GROUP BY ARTICULO_ID, DESCRIPCION
         OrderingTerm.desc(_remoteDb.estadisticasUltimosPreciosTable.fecha),
       ]);
 
-      return query.asyncMap((row) async {
+      return await query.asyncMap((row) async {
         final lastPriceArticuloDTO = row.readTable(
           _remoteDb.estadisticasUltimosPreciosTable,
         );
@@ -1231,8 +1259,11 @@ GROUP BY ARTICULO_ID, DESCRIPCION
           ),
         );
       }).get();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -1273,12 +1304,17 @@ GROUP BY ARTICULO_ID, DESCRIPCION
 
       final count = await query.map((row) => row.read(countExp)).getSingle();
       return count ?? 0;
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
-  Future<List<Devolucion>> getDevolucionByCliente({required String clienteId}) {
+  Future<List<Devolucion>> getDevolucionByCliente({
+    required String clienteId,
+  }) async {
     try {
       final query = _remoteDb.select(_remoteDb.devolucionTable).join([
         innerJoin(
@@ -1301,7 +1337,7 @@ GROUP BY ARTICULO_ID, DESCRIPCION
 
       query.where(_remoteDb.devolucionTable.clienteId.equals(clienteId));
 
-      return query.map((row) {
+      return await query.map((row) {
         final devolucionDTO = row.readTable(_remoteDb.devolucionTable);
         final devolucionEstadoDTO = row.readTable(
           _remoteDb.devolucionEstadoTable,
@@ -1313,8 +1349,11 @@ GROUP BY ARTICULO_ID, DESCRIPCION
           pais: paisDTO?.toDomain(),
         );
       }).get();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -1347,7 +1386,7 @@ GROUP BY ARTICULO_ID, DESCRIPCION
         _remoteDb.devolucionLineaTable.devolucionId.equals(devolucionId),
       );
 
-      return query.asyncMap((row) async {
+      return await query.asyncMap((row) async {
         final devolucionMotivoDTO = row.readTableOrNull(
           _remoteDb.devolucionMotivoTable,
         );
@@ -1363,8 +1402,11 @@ GROUP BY ARTICULO_ID, DESCRIPCION
           devolucionEstadoDTO?.toDomain(),
         );
       }).get();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -1391,8 +1433,11 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       }
 
       return clienteContactoList;
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -1403,9 +1448,12 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       final query = (_remoteDb.select(_remoteDb.clienteContactoTable)
         ..where((t) => t.contactoId.equals(clienteContactoId)));
 
-      return query.map((row) => row.toDomain()).getSingle();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+      return await query.map((row) => row.toDomain()).getSingle();
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -1423,8 +1471,11 @@ GROUP BY ARTICULO_ID, DESCRIPCION
         tratado: false,
         contactoImpGuid: clienteConatctoImpDto.id,
       );
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -1432,29 +1483,24 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     ClienteContactoImp upsertClienteContactoImp,
     bool isNew,
   ) async {
-    try {
-      final clienteContactoImpDto = ClienteContactoImpDTO.fromDomain(
-        upsertClienteContactoImp,
-      );
-      await _insertClienteContactoImpInLocalDB(clienteContactoImpDto);
+    final clienteContactoImpDto = ClienteContactoImpDTO.fromDomain(
+      upsertClienteContactoImp,
+    );
+    await _insertClienteContactoImpInLocalDB(clienteContactoImpDto);
 
-      final clienteContactoImpDtoEnviado =
-          await _remoteUpsertClienteContactoImp(clienteContactoImpDto);
+    final clienteContactoImpDtoEnviado = await _remoteUpsertClienteContactoImp(
+      clienteContactoImpDto,
+    );
 
-      if (!isNew) {
-        await _deleteClienteContactoImpInLocalDB(
-          clienteContactoImpDtoEnviado.id,
-        );
-      } else {
-        await _updateContactoImpInLocalDB(clienteContactoImpDtoEnviado);
-      }
-
-      return ClienteContactoDTO.fromContactoImp(
-        clienteContactoImpDtoEnviado,
-      ).toDomain();
-    } catch (e) {
-      rethrow;
+    if (!isNew) {
+      await _deleteClienteContactoImpInLocalDB(clienteContactoImpDtoEnviado.id);
+    } else {
+      await _updateContactoImpInLocalDB(clienteContactoImpDtoEnviado);
     }
+
+    return ClienteContactoDTO.fromContactoImp(
+      clienteContactoImpDtoEnviado,
+    ).toDomain();
   }
 
   Future<void> deleteClienteContacto(
@@ -1462,14 +1508,10 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     String? contactoId,
     String? contactoImpGuid,
   }) async {
-    try {
-      if (contactoImpGuid != null) {
-        await _deleteClienteContactoImpInLocalDB(contactoImpGuid);
-      } else {
-        await _deleteClienteContactoTratado(clienteId, contactoId!);
-      }
-    } catch (e) {
-      rethrow;
+    if (contactoImpGuid != null) {
+      await _deleteClienteContactoImpInLocalDB(contactoImpGuid);
+    } else {
+      await _deleteClienteContactoTratado(clienteId, contactoId!);
     }
   }
 
@@ -1477,43 +1519,41 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     ClienteImpParam clienteContactoImpParam,
   ) async {
     try {
-      try {
-        final requestUri =
-            (usuario.test)
-                ? Uri.http(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/clientes/${clienteContactoImpParam.clienteId}/contactos/${clienteContactoImpParam.id!}',
-                )
-                : Uri.https(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/clientes/${clienteContactoImpParam.clienteId}/contactos/${clienteContactoImpParam.id!}',
-                );
+      final requestUri =
+          (usuario.test)
+              ? Uri.http(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/clientes/${clienteContactoImpParam.clienteId}/contactos/${clienteContactoImpParam.id!}',
+              )
+              : Uri.https(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/clientes/${clienteContactoImpParam.clienteId}/contactos/${clienteContactoImpParam.id!}',
+              );
 
-        final response = await _dio.getUri(
-          requestUri,
-          options: Options(
-            headers: {'authorization': 'Bearer ${usuario.provisionalToken}'},
-          ),
+      final response = await _dio.getUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer ${usuario.provisionalToken}'},
+        ),
+      );
+      if (response.statusCode == 200) {
+        final jsonData = response.data['data'] as List<dynamic>;
+
+        final clienteContactoDTOList = jsonData.map(
+          (e) => ClienteContactoImpDTO.fromJson(e as Map<String, dynamic>),
         );
-        if (response.statusCode == 200) {
-          final jsonData = response.data['data'] as List<dynamic>;
 
-          final clienteContactoDTOList = jsonData.map(
-            (e) => ClienteContactoImpDTO.fromJson(e as Map<String, dynamic>),
-          );
-
-          return clienteContactoDTOList.map((e) => e.toDomain()).toList();
-        } else {
-          throw AppException.restApiFailure(
-            response.statusCode ?? 400,
-            response.statusMessage ?? '',
-          );
-        }
-      } catch (e, stackTrace) {
-        throw getApiError(e, stackTrace, errorLogger);
+        return clienteContactoDTOList.map((e) => e.toDomain()).toList();
       }
-    } catch (e) {
-      rethrow;
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 
@@ -1548,7 +1588,7 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       final query = (_remoteDb.select(_remoteDb.clienteContactoTable)
         ..where((t) => t.clienteId.equals(clienteId)));
 
-      return query.map((row) {
+      return await query.map((row) {
         for (var i = 0; i < clienteContactoImpList.length; i++) {
           final clienteContactoImp = clienteContactoImpList[i];
           if (!clienteContactoImp.enviado &&
@@ -1564,8 +1604,11 @@ GROUP BY ARTICULO_ID, DESCRIPCION
 
         return row.toDomain();
       }).get();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -1579,8 +1622,11 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       return await query
           .map((row) => ClienteContacto.fromClienteContactoImp(row.toDomain()))
           .get();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -1591,8 +1637,11 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       await _localDb
           .into(_localDb.clienteContactoImpTable)
           .insertOnConflictUpdate(clienteContactoImpDTO);
-    } catch (e) {
-      throw AppException.insertDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.insertDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -1601,8 +1650,11 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       await _localDb
           .into(_localDb.clienteImpTable)
           .insertOnConflictUpdate(clienteImpDTO);
-    } catch (e) {
-      throw AppException.insertDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.insertDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -1617,8 +1669,11 @@ GROUP BY ARTICULO_ID, DESCRIPCION
           subsectorId: const Value.absent(),
         ),
       );
-    } catch (e) {
-      throw AppException.insertDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.insertDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -1651,14 +1706,16 @@ GROUP BY ARTICULO_ID, DESCRIPCION
         final json = response.data['data'] as Map<String, dynamic>;
 
         return ClienteContactoImpDTO.fromJson(json);
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
       }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
     } catch (e, stackTrace) {
-      throw getApiError(e, stackTrace, errorLogger);
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 
@@ -1669,8 +1726,11 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       await _localDb
           .update(_localDb.clienteContactoImpTable)
           .replace(clienteContactoImpDTO);
-    } catch (e) {
-      throw AppException.insertDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.insertDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -1678,28 +1738,24 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     String clienteId,
     String clienteContactoId,
   ) async {
-    try {
-      final deletedContactoImpDto = ClienteContactoImpDTO(
-        id: const Uuid().v4(),
-        fecha: DateTime.now().toUtc().toLocal(),
-        usuarioId: usuario.id,
-        clienteId: clienteId,
-        contactoId: clienteContactoId,
-        enviado: 'N',
-        borrar: 'S',
-      );
+    final deletedContactoImpDto = ClienteContactoImpDTO(
+      id: const Uuid().v4(),
+      fecha: DateTime.now().toUtc().toLocal(),
+      usuarioId: usuario.id,
+      clienteId: clienteId,
+      contactoId: clienteContactoId,
+      enviado: 'N',
+      borrar: 'S',
+    );
 
-      await _insertClienteContactoImpInLocalDB(deletedContactoImpDto);
-      final contactoImpEnviado = await _remoteUpsertClienteContactoImp(
-        deletedContactoImpDto,
-      );
-      if (contactoImpEnviado.enviado == 'S') {
-        await _deleteClienteContactoImpInLocalDB(deletedContactoImpDto.id);
-      } else {
-        await _updateContactoImpInLocalDB(deletedContactoImpDto);
-      }
-    } catch (e) {
-      rethrow;
+    await _insertClienteContactoImpInLocalDB(deletedContactoImpDto);
+    final contactoImpEnviado = await _remoteUpsertClienteContactoImp(
+      deletedContactoImpDto,
+    );
+    if (contactoImpEnviado.enviado == 'S') {
+      await _deleteClienteContactoImpInLocalDB(deletedContactoImpDto.id);
+    } else {
+      await _updateContactoImpInLocalDB(deletedContactoImpDto);
     }
   }
 
@@ -1709,8 +1765,11 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     try {
       await (_localDb.delete(_localDb.clienteContactoImpTable)
         ..where((tbl) => tbl.id.equals(contactoGuidImp))).go();
-    } catch (e) {
-      throw AppException.insertDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.insertDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -1740,8 +1799,11 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       }
 
       return clienteDireccionList;
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -1760,8 +1822,11 @@ GROUP BY ARTICULO_ID, DESCRIPCION
         final pais = await _getPaisCliente(clienteId: clienteId);
         return row.toDomain(pais);
       }).getSingle();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -1786,8 +1851,11 @@ GROUP BY ARTICULO_ID, DESCRIPCION
         tratada: false,
         direccionImpGuid: clienteDireccionImpDto.id,
       );
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -1795,32 +1863,28 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     ClienteDireccionImp upsertClienteDireccionImp,
     bool isNew,
   ) async {
-    try {
-      final clienteDireccionImpDto = ClienteDireccionImpDTO.fromDomain(
-        upsertClienteDireccionImp,
+    final clienteDireccionImpDto = ClienteDireccionImpDTO.fromDomain(
+      upsertClienteDireccionImp,
+    );
+    await _insertClienteDireccionImpInLocalDB(clienteDireccionImpDto);
+
+    final clienteDireccionImpDtoEnviada =
+        await _remoteUpsertClienteDireccionImp(clienteDireccionImpDto);
+
+    if (!isNew) {
+      await _deleteClienteDireccionImpInLocalDB(
+        clienteDireccionImpDtoEnviada.id,
       );
-      await _insertClienteDireccionImpInLocalDB(clienteDireccionImpDto);
-
-      final clienteDireccionImpDtoEnviada =
-          await _remoteUpsertClienteDireccionImp(clienteDireccionImpDto);
-
-      if (!isNew) {
-        await _deleteClienteDireccionImpInLocalDB(
-          clienteDireccionImpDtoEnviada.id,
-        );
-      } else {
-        await _updateDireccionImpInLocalDB(clienteDireccionImpDtoEnviada);
-      }
-
-      final pais = await _getPaisCliente(
-        clienteId: clienteDireccionImpDtoEnviada.clienteId,
-      );
-      return ClienteDireccionDTO.fromDireccionImp(
-        clienteDireccionImpDtoEnviada,
-      ).toDomain(pais);
-    } catch (e) {
-      rethrow;
+    } else {
+      await _updateDireccionImpInLocalDB(clienteDireccionImpDtoEnviada);
     }
+
+    final pais = await _getPaisCliente(
+      clienteId: clienteDireccionImpDtoEnviada.clienteId,
+    );
+    return ClienteDireccionDTO.fromDireccionImp(
+      clienteDireccionImpDtoEnviada,
+    ).toDomain(pais);
   }
 
   Future<void> deleteClienteDireccion(
@@ -1828,14 +1892,10 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     String? direccionId,
     String? direccionImpGuid,
   }) async {
-    try {
-      if (direccionImpGuid != null) {
-        await _deleteClienteDireccionImpInLocalDB(direccionImpGuid);
-      } else {
-        await _deleteClienteDireccionTratada(clienteId, direccionId!);
-      }
-    } catch (e) {
-      rethrow;
+    if (direccionImpGuid != null) {
+      await _deleteClienteDireccionImpInLocalDB(direccionImpGuid);
+    } else {
+      await _deleteClienteDireccionTratada(clienteId, direccionId!);
     }
   }
 
@@ -1843,48 +1903,46 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     ClienteImpParam clienteDireccionImpParam,
   ) async {
     try {
-      try {
-        final requestUri =
-            (usuario.test)
-                ? Uri.http(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/clientes/${clienteDireccionImpParam.clienteId}/direcciones/${clienteDireccionImpParam.id!}',
-                )
-                : Uri.https(
-                  dotenv.get('URL', fallback: 'localhost:3001'),
-                  'api/v1/online/clientes/${clienteDireccionImpParam.clienteId}/direcciones/${clienteDireccionImpParam.id!}',
-                );
+      final requestUri =
+          (usuario.test)
+              ? Uri.http(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/clientes/${clienteDireccionImpParam.clienteId}/direcciones/${clienteDireccionImpParam.id!}',
+              )
+              : Uri.https(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/clientes/${clienteDireccionImpParam.clienteId}/direcciones/${clienteDireccionImpParam.id!}',
+              );
 
-        final response = await _dio.getUri(
-          requestUri,
-          options: Options(
-            headers: {'authorization': 'Bearer ${usuario.provisionalToken}'},
-          ),
+      final response = await _dio.getUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer ${usuario.provisionalToken}'},
+        ),
+      );
+      if (response.statusCode == 200) {
+        final jsonData = response.data['data'] as List<dynamic>;
+
+        final clienteDireccionDTOList = jsonData.map(
+          (e) => ClienteDireccionImpDTO.fromJson(e as Map<String, dynamic>),
         );
-        if (response.statusCode == 200) {
-          final jsonData = response.data['data'] as List<dynamic>;
 
-          final clienteDireccionDTOList = jsonData.map(
-            (e) => ClienteDireccionImpDTO.fromJson(e as Map<String, dynamic>),
-          );
-
-          return await Future.wait(
-            clienteDireccionDTOList.map((e) async {
-              final pais = await _getPaisCliente(clienteId: e.clienteId);
-              return e.toDomain(pais);
-            }).toList(),
-          );
-        } else {
-          throw AppException.restApiFailure(
-            response.statusCode ?? 400,
-            response.statusMessage ?? '',
-          );
-        }
-      } catch (e, stackTrace) {
-        throw getApiError(e, stackTrace, errorLogger);
+        return await Future.wait(
+          clienteDireccionDTOList.map((e) async {
+            final pais = await _getPaisCliente(clienteId: e.clienteId);
+            return e.toDomain(pais);
+          }).toList(),
+        );
       }
-    } catch (e) {
-      rethrow;
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 
@@ -1893,8 +1951,8 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     required String? direccionId,
   }) async {
     try {
-      final pais = await _getPaisCliente(clienteId: clienteId);
       if (direccionId != null) {
+        final pais = await _getPaisCliente(clienteId: clienteId);
         final queryRemote = (_remoteDb.select(
           _remoteDb.clienteDireccionTable,
         )..where(
@@ -1926,8 +1984,11 @@ GROUP BY ARTICULO_ID, DESCRIPCION
             .getSingle();
       }
       return null;
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -1967,8 +2028,11 @@ GROUP BY ARTICULO_ID, DESCRIPCION
 
         return row.toDomain(pais);
       }).get();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -1993,8 +2057,11 @@ GROUP BY ARTICULO_ID, DESCRIPCION
         final pais = await _getPaisCliente(clienteId: row.clienteId);
         return ClienteDireccion.fromClienteDireccionImp(row.toDomain(pais));
       }).get();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -2005,8 +2072,11 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       await _localDb
           .into(_localDb.clienteDireccionImpTable)
           .insertOnConflictUpdate(clienteDireccionImpDTO);
-    } catch (e) {
-      throw AppException.insertDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.insertDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -2039,14 +2109,16 @@ GROUP BY ARTICULO_ID, DESCRIPCION
         final json = response.data['data'] as Map<String, dynamic>;
 
         return ClienteDireccionImpDTO.fromJson(json);
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
       }
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
     } catch (e, stackTrace) {
-      throw getApiError(e, stackTrace, errorLogger);
+      Error.throwWithStackTrace(
+        getApiError(e, stackTrace, errorLogger),
+        stackTrace,
+      );
     }
   }
 
@@ -2057,8 +2129,11 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       await _localDb
           .update(_localDb.clienteDireccionImpTable)
           .replace(clienteDireccionImpDTO);
-    } catch (e) {
-      throw AppException.insertDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.insertDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -2066,28 +2141,24 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     String clienteId,
     String clienteDireccionId,
   ) async {
-    try {
-      final deletedDireccionImpDto = ClienteDireccionImpDTO(
-        id: const Uuid().v4(),
-        fecha: DateTime.now().toUtc().toLocal(),
-        usuarioId: usuario.id,
-        clienteId: clienteId,
-        direccionId: clienteDireccionId,
-        enviada: 'N',
-        borrar: 'S',
-      );
+    final deletedDireccionImpDto = ClienteDireccionImpDTO(
+      id: const Uuid().v4(),
+      fecha: DateTime.now().toUtc().toLocal(),
+      usuarioId: usuario.id,
+      clienteId: clienteId,
+      direccionId: clienteDireccionId,
+      enviada: 'N',
+      borrar: 'S',
+    );
 
-      await _insertClienteDireccionImpInLocalDB(deletedDireccionImpDto);
-      final direccionImpEnviado = await _remoteUpsertClienteDireccionImp(
-        deletedDireccionImpDto,
-      );
-      if (direccionImpEnviado.enviada == 'S') {
-        await _deleteClienteDireccionImpInLocalDB(deletedDireccionImpDto.id);
-      } else {
-        await _updateDireccionImpInLocalDB(deletedDireccionImpDto);
-      }
-    } catch (e) {
-      rethrow;
+    await _insertClienteDireccionImpInLocalDB(deletedDireccionImpDto);
+    final direccionImpEnviado = await _remoteUpsertClienteDireccionImp(
+      deletedDireccionImpDto,
+    );
+    if (direccionImpEnviado.enviada == 'S') {
+      await _deleteClienteDireccionImpInLocalDB(deletedDireccionImpDto.id);
+    } else {
+      await _updateDireccionImpInLocalDB(deletedDireccionImpDto);
     }
   }
 
@@ -2097,8 +2168,11 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     try {
       await (_localDb.delete(_localDb.clienteDireccionImpTable)
         ..where((tbl) => tbl.id.equals(direccionGuidImp))).go();
-    } catch (e) {
-      throw AppException.insertDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.insertDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -2156,9 +2230,8 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       return _remoteDb.paisTable.descripcionFR;
     } else if (currentLocale == 'it') {
       return _remoteDb.paisTable.descripcionIT;
-    } else {
-      return _remoteDb.paisTable.descripcionES;
     }
+    return _remoteDb.paisTable.descripcionES;
   }
 
   Expression<bool> _filtrarPaisPorDescripcion(String searchText) {
@@ -2174,15 +2247,13 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       return _remoteDb.paisTable.descripcionFR.contains(searchText);
     } else if (currentLocale == 'it') {
       return _remoteDb.paisTable.descripcionIT.contains(searchText);
-    } else {
-      return _remoteDb.paisTable.descripcionES.contains(searchText);
     }
+    return _remoteDb.paisTable.descripcionES.contains(searchText);
   }
 
   String getDescriptionInLocalLanguage({required Articulo articulo}) {
     final currentLocale = Intl.getCurrentLocale();
-    if (currentLocale == 'es') {
-    } else if (currentLocale == 'en' && articulo.descripcionEN != null) {
+    if (currentLocale == 'en' && articulo.descripcionEN != null) {
       return articulo.descripcionEN!;
     } else if (currentLocale == 'fr' && articulo.descripcionFR != null) {
       return articulo.descripcionFR!;
@@ -2219,13 +2290,9 @@ GROUP BY ARTICULO_ID, DESCRIPCION
   }
 
   Future<DateTime> getLastSyncDate() async {
-    try {
-      final lastSyncDTO =
-          await _localDb.select(_localDb.syncDateTimeTable).getSingle();
-      return lastSyncDTO.clienteUltimaSync;
-    } catch (e) {
-      rethrow;
-    }
+    final lastSyncDTO =
+        await _localDb.select(_localDb.syncDateTimeTable).getSingle();
+    return lastSyncDTO.clienteUltimaSync;
   }
 
   Expression<bool> _filtrarArticuloPorDescripcion(String searchText) {

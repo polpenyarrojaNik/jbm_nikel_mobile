@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import '../../../../core/presentation/common_widgets/phone_text_form_field.dart';
+import 'package:gap/gap.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../../../generated/l10n.dart';
@@ -13,8 +13,8 @@ import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/presentation/common_widgets/app_decoration.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../../core/presentation/common_widgets/phone_text_form_field.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
-import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../../usuario/application/usuario_notifier.dart';
 import '../../domain/cliente_direccion.dart';
@@ -61,8 +61,7 @@ class _ClienteDireccionEditPageState
 
     ref.listen<AsyncValue<ClienteDireccionEditPageData>>(
       clienteDireccionEditPageControllerProvider(widget.clienteImpParam),
-      (_, state) => state.maybeWhen(
-        orElse: () {},
+      (_, state) => state.whenOrNull(
         error: (error, _) {
           final errorMessage =
               (error is AppException)
@@ -77,7 +76,6 @@ class _ClienteDireccionEditPageState
           context.router.maybePop();
         },
         data: (clienteDireccionEditPageData) {
-          clienteDireccionEditPageData = clienteDireccionEditPageData;
           if (clienteDireccionEditPageData.isSent) {
             if (clienteDireccionEditPageData.clienteDireccion != null) {
               context.showSuccessBar(
@@ -118,7 +116,7 @@ class _ClienteDireccionEditPageState
                 .cliente_show_clienteDireccion_clienteDireccionEditPage_editarDireccion,
         actions: [
           IconButton(
-            onPressed: () => saveClienteDireccion(context, ref, formKey),
+            onPressed: () => saveClienteDireccion(ref, formKey),
             icon: const Icon(Icons.save),
           ),
         ],
@@ -172,7 +170,6 @@ class _ClienteDireccionEditPageState
   }
 
   void saveClienteDireccion(
-    BuildContext context,
     WidgetRef ref,
     GlobalKey<FormBuilderState> formKey,
   ) async {
@@ -207,7 +204,7 @@ class _ClienteDireccionEditPageState
   }
 }
 
-class ClienteDireccionEditForm extends StatefulWidget {
+class ClienteDireccionEditForm extends StatelessWidget {
   const ClienteDireccionEditForm({
     super.key,
     required this.clienteDireccion,
@@ -222,16 +219,10 @@ class ClienteDireccionEditForm extends StatefulWidget {
   final Function(Pais newPaisValue) onPaisChanged;
 
   @override
-  State<ClienteDireccionEditForm> createState() =>
-      _ClienteDireccionEditFormState();
-}
-
-class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
-  @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: FormBuilder(
-        key: widget.formKey,
+        key: formKey,
         autovalidateMode: AutovalidateMode.disabled,
         child: Column(
           children: [
@@ -239,7 +230,7 @@ class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
               padding: const EdgeInsets.all(8.0),
               child: FormBuilderTextField(
                 name: 'nombre',
-                initialValue: widget.clienteDireccion?.nombre,
+                initialValue: clienteDireccion?.nombre,
                 decoration: AppDecoration.defaultFieldDecoration(
                   S
                       .of(context)
@@ -255,7 +246,7 @@ class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
               padding: const EdgeInsets.all(8.0),
               child: FormBuilderTextField(
                 name: 'direccion1',
-                initialValue: widget.clienteDireccion?.direccion1,
+                initialValue: clienteDireccion?.direccion1,
                 keyboardType: TextInputType.streetAddress,
                 decoration: AppDecoration.defaultFieldDecoration(
                   S
@@ -272,7 +263,7 @@ class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
               padding: const EdgeInsets.all(8.0),
               child: FormBuilderTextField(
                 name: 'direccion2',
-                initialValue: widget.clienteDireccion?.direccion2,
+                initialValue: clienteDireccion?.direccion2,
                 keyboardType: TextInputType.streetAddress,
                 decoration: AppDecoration.defaultFieldDecoration(
                   S
@@ -288,7 +279,7 @@ class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
               padding: const EdgeInsets.all(8.0),
               child: FormBuilderTextField(
                 name: 'codigoPostal',
-                initialValue: widget.clienteDireccion?.codigoPostal,
+                initialValue: clienteDireccion?.codigoPostal,
                 decoration: AppDecoration.defaultFieldDecoration(
                   S
                       .of(context)
@@ -303,7 +294,7 @@ class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
               padding: const EdgeInsets.all(8.0),
               child: FormBuilderTextField(
                 name: 'poblacion',
-                initialValue: widget.clienteDireccion?.poblacion,
+                initialValue: clienteDireccion?.poblacion,
                 decoration: AppDecoration.defaultFieldDecoration(
                   S
                       .of(context)
@@ -319,7 +310,7 @@ class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
               padding: const EdgeInsets.all(8.0),
               child: FormBuilderTextField(
                 name: 'provincia',
-                initialValue: widget.clienteDireccion?.provincia,
+                initialValue: clienteDireccion?.provincia,
                 decoration: AppDecoration.defaultFieldDecoration(
                   S
                       .of(context)
@@ -336,8 +327,8 @@ class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
                 name: 'pais',
                 readOnly: true,
                 initialValue:
-                    widget.clienteDireccion?.pais?.descripcion ??
-                    widget.paisCliente?.descripcion,
+                    clienteDireccion?.pais?.descripcion ??
+                    paisCliente?.descripcion,
                 decoration: AppDecoration.defaultFieldDecoration(
                   S
                       .of(context)
@@ -350,7 +341,7 @@ class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
               padding: const EdgeInsets.all(8.0),
               child: PhoneTextFormField(
                 name: 'telefono',
-                initialValue: widget.clienteDireccion?.telefono,
+                initialValue: clienteDireccion?.telefono,
                 labelText: S.of(context).telefono,
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.numeric(checkNullOrEmpty: false),
@@ -370,10 +361,8 @@ class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
             as Pais?;
 
     if (newPaisValue != null) {
-      widget.onPaisChanged(newPaisValue);
-      widget.formKey.currentState?.fields['pais']?.didChange(
-        newPaisValue.descripcion,
-      );
+      onPaisChanged(newPaisValue);
+      formKey.currentState?.fields['pais']?.didChange(newPaisValue.descripcion);
     }
   }
 }
@@ -404,7 +393,7 @@ class _CambiosPendientesListView extends ConsumerWidget {
                               .cliente_show_clienteDireccion_clienteDireccionEditPage_cambiosPendientesDeTramitar,
                           style: Theme.of(context).textTheme.titleSmall,
                         ),
-                        gapH4,
+                        const Gap(4),
                         ListView.separated(
                           shrinkWrap: true,
                           itemBuilder:

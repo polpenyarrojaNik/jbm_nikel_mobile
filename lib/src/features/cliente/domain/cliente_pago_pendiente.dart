@@ -6,7 +6,7 @@ import 'metodo_cobro.dart';
 part 'cliente_pago_pendiente.freezed.dart';
 
 @freezed
-class ClientePagoPendiente with _$ClientePagoPendiente {
+abstract class ClientePagoPendiente with _$ClientePagoPendiente {
   const ClientePagoPendiente._();
   const factory ClientePagoPendiente({
     required String clienteId,

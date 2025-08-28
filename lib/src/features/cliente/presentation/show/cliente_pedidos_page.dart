@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../core/presentation/theme/app_sizes.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
@@ -35,7 +35,7 @@ class ClientePedidosPage extends ConsumerWidget {
             entityId: '#$clienteId ${nombreCliente ?? ''}',
             subtitle: null,
           ),
-          gapH8,
+          const Gap(8),
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
@@ -53,10 +53,10 @@ class ClientePedidosPage extends ConsumerWidget {
                                     pedidoVenta: clientePedidoVentaList[i],
                                     onTap:
                                         () => navigateToPedidoVentaDetalle(
-                                          context: context,
-                                          pedidoVentaId:
-                                              clientePedidoVentaList[i]
-                                                  .pedidoVentaId,
+                                          // context: context,
+                                          // pedidoVentaId:
+                                          //     clientePedidoVentaList[i]
+                                          //         .pedidoVentaId,
                                         ),
                                   ),
                                 ),
@@ -74,10 +74,13 @@ class ClientePedidosPage extends ConsumerWidget {
     );
   }
 
-  void navigateToPedidoVentaDetalle({
-    required BuildContext context,
-    String? pedidoVentaId,
-  }) {
+  void navigateToPedidoVentaDetalle(
+    //   {
+    //   required BuildContext context,
+    //   String? pedidoVentaId,
+    // }
+  ) {
+    return;
     // context.router.push(PedidoVentaDetalleRoute(pedidoLocalParam: Pedid
 
     //  pedidoVentaId));

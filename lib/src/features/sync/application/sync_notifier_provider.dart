@@ -5,18 +5,18 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:path_provider/path_provider.dart';
+
+import '../../../core/domain/isolate_args.dart';
 import '../../../core/helpers/error_logger.dart';
 import '../../../core/infrastructure/local_database.dart';
 import '../../../core/infrastructure/log_repository.dart';
-import '../../../core/infrastructure/sync_datetime_dto.dart';
-import '../../usuario/application/usuario_notifier.dart';
-import '../../usuario/infrastructure/usuario_service.dart';
-
-import '../../../core/domain/isolate_args.dart';
 import '../../../core/infrastructure/remote_database.dart';
+import '../../../core/infrastructure/sync_datetime_dto.dart';
 import '../../../core/infrastructure/sync_service.dart';
 import '../../app_initialization/domain/sync_progress.dart';
+import '../../usuario/application/usuario_notifier.dart';
 import '../../usuario/domain/usuario.dart';
+import '../../usuario/infrastructure/usuario_service.dart';
 
 part 'sync_notifier_provider.freezed.dart';
 
@@ -63,9 +63,9 @@ class SyncNotifier extends StateNotifier<SyncControllerState> {
   }
 
   Future<void> updateSyncDates(SyncProgress syncProgress) async {
-    final finishSyncDate = DateTime.now().toUtc();
-
     if (syncProgress.index > 0) {
+      final finishSyncDate = DateTime.now().toUtc();
+
       await _localDb
           .update(_localDb.syncDateTimeTable)
           .write(
@@ -158,27 +158,23 @@ class SyncNotifier extends StateNotifier<SyncControllerState> {
 }
 
 Future<SyncProgress> syncInBackground(IsolateArgs isolateArgs) async {
-  try {
-    final remoteDb = await createRemoteDatabaseConnection(isolateArgs);
-    final localDb = await createLocalDatabaseConnection(isolateArgs);
+  final remoteDb = await createRemoteDatabaseConnection(isolateArgs);
+  final localDb = await createLocalDatabaseConnection(isolateArgs);
 
-    final dio = Dio();
+  final dio = Dio();
 
-    final syncService = SyncService(
-      remoteDb,
-      localDb,
-      dio,
-      isolateArgs.user,
-      null,
-      LogRepository(dio, localDb, isolateArgs.user),
-      isolateArgs.documentDirectory,
-      ErrorLogger(),
-    );
+  final syncService = SyncService(
+    remoteDb,
+    localDb,
+    dio,
+    isolateArgs.user,
+    null,
+    LogRepository(dio, localDb, isolateArgs.user),
+    isolateArgs.documentDirectory,
+    ErrorLogger(),
+  );
 
-    return await syncService.syncAllTable();
-  } catch (e) {
-    rethrow;
-  }
+  return syncService.syncAllTable();
 }
 
 Future<RemoteAppDatabase> createRemoteDatabaseConnection(
@@ -202,7 +198,7 @@ Future<LocalAppDatabase> createLocalDatabaseConnection(
 }
 
 @freezed
-class SyncControllerState with _$SyncControllerState {
+abstract class SyncControllerState with _$SyncControllerState {
   const SyncControllerState._();
   const factory SyncControllerState.initial() = _initial;
 

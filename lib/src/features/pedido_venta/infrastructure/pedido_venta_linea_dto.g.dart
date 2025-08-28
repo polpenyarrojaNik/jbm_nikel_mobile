@@ -6,9 +6,8 @@ part of 'pedido_venta_linea_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PedidoVentaLineaDTOImpl _$$PedidoVentaLineaDTOImplFromJson(
-        Map<String, dynamic> json) =>
-    _$PedidoVentaLineaDTOImpl(
+_PedidoVentaLineaDTO _$PedidoVentaLineaDTOFromJson(Map<String, dynamic> json) =>
+    _PedidoVentaLineaDTO(
       empresaId: json['EMPRESA_ID'] as String,
       pedidoId: json['PEDIDO_ID'] as String,
       pedidoVentaLineaId: json['PEDIDO_LINEA_ID'] as String,
@@ -27,23 +26,23 @@ _$PedidoVentaLineaDTOImpl _$$PedidoVentaLineaDTOImplFromJson(
       deleted: json['DELETED'] as String,
     );
 
-Map<String, dynamic> _$$PedidoVentaLineaDTOImplToJson(
-        _$PedidoVentaLineaDTOImpl instance) =>
-    <String, dynamic>{
-      'EMPRESA_ID': instance.empresaId,
-      'PEDIDO_ID': instance.pedidoId,
-      'PEDIDO_LINEA_ID': instance.pedidoVentaLineaId,
-      'ARTICULO_ID': instance.articuloId,
-      'ARTICULO_DESCRIPCION': instance.articuloDescription,
-      'CANTIDAD': instance.cantidad,
-      'PRECIO_DIVISA': instance.precioDivisa,
-      'TIPO_PRECIO': instance.tipoPrecio,
-      'DESCUENTO1': instance.descuento1,
-      'DESCUENTO2': instance.descuento2,
-      'DESCUENTO3': instance.descuento3,
-      'PEDIDO_LINEA_ID_COMPONENTE': instance.pedidoLineaIdComponente,
-      'TOTAL_LINEA': instance.importeLinea,
-      'CANTIDAD_SERVIDA': instance.cantidadServida,
-      'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
-      'DELETED': instance.deleted,
-    };
+Map<String, dynamic> _$PedidoVentaLineaDTOToJson(
+  _PedidoVentaLineaDTO instance,
+) => <String, dynamic>{
+  'EMPRESA_ID': instance.empresaId,
+  'PEDIDO_ID': instance.pedidoId,
+  'PEDIDO_LINEA_ID': instance.pedidoVentaLineaId,
+  'ARTICULO_ID': instance.articuloId,
+  'ARTICULO_DESCRIPCION': instance.articuloDescription,
+  'CANTIDAD': instance.cantidad,
+  'PRECIO_DIVISA': instance.precioDivisa,
+  'TIPO_PRECIO': instance.tipoPrecio,
+  'DESCUENTO1': instance.descuento1,
+  'DESCUENTO2': instance.descuento2,
+  'DESCUENTO3': instance.descuento3,
+  'PEDIDO_LINEA_ID_COMPONENTE': instance.pedidoLineaIdComponente,
+  'TOTAL_LINEA': instance.importeLinea,
+  'CANTIDAD_SERVIDA': instance.cantidadServida,
+  'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
+  'DELETED': instance.deleted,
+};

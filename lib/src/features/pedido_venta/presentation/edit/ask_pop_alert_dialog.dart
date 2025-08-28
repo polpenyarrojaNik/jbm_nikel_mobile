@@ -17,7 +17,7 @@ class AskPopAlertDialog extends StatelessWidget {
     return AlertDialog(
       title: Text(S.of(context).askPopAlertDialog_atencion),
       content: Text(text),
-      actions: <Widget>[
+      actions: [
         TextButton(
           onPressed: () => context.router.maybePop(false),
           child: Text(S.of(context).askPopAlertDialog_cancelar),

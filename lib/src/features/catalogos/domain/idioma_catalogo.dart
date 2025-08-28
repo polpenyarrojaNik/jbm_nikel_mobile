@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'idioma_catalogo.freezed.dart';
 
 @freezed
-class IdiomaCatalogo with _$IdiomaCatalogo {
+abstract class IdiomaCatalogo with _$IdiomaCatalogo {
   const IdiomaCatalogo._();
   const factory IdiomaCatalogo({
     required String idiomaId,

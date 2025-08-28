@@ -4,7 +4,8 @@ import 'package:money2/money2.dart';
 part 'estadisticas_venta_cliente_usuario.freezed.dart';
 
 @freezed
-class EstadisticasVentaClienteUsuario with _$EstadisticasVentaClienteUsuario {
+abstract class EstadisticasVentaClienteUsuario
+    with _$EstadisticasVentaClienteUsuario {
   const EstadisticasVentaClienteUsuario._();
   const factory EstadisticasVentaClienteUsuario({
     required double anyo,

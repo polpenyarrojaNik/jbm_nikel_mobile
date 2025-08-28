@@ -13,7 +13,9 @@ class CatalogoOrdenController extends _$CatalogoOrdenController {
   CatalogoOrdenController();
 
   @override
-  void build() async {}
+  void build() async {
+    return;
+  }
 
   Future<Either<AppException, Unit>> saveCatalogoAbierto(int catalogoId) async {
     final result = await ref

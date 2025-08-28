@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 import 'package:money2/money2.dart';
 
 import '../../../../../generated/l10n.dart';
@@ -12,7 +13,6 @@ import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/legend_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
-import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/cliente_ventas_mes.dart';
 import '../../infrastructure/cliente_repository.dart';
 
@@ -40,7 +40,7 @@ class ClienteVentasMesPage extends ConsumerWidget {
             entityId: '#$clienteId ${nombreCliente ?? ''}',
             subtitle: null,
           ),
-          gapH8,
+          const Gap(8),
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
@@ -53,7 +53,7 @@ class ClienteVentasMesPage extends ConsumerWidget {
                               VentasMesDataTable(
                                 clienteVentasMesList: clienteVentasMesList,
                               ),
-                              gapH16,
+                              const Gap(16),
                               Container(
                                 height: 420,
                                 padding: const EdgeInsets.symmetric(
@@ -63,7 +63,7 @@ class ClienteVentasMesPage extends ConsumerWidget {
                                   clienteVentasMesList: clienteVentasMesList,
                                 ),
                               ),
-                              gapH8,
+                              const Gap(8),
                               const LeyendaWidget(),
                             ],
                           ),

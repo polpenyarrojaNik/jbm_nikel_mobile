@@ -1,10 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../core/helpers/database_helper.dart';
-import '../../../core/infrastructure/init_database_service.dart';
 
 import '../../../core/exceptions/app_exception.dart';
+import '../../../core/helpers/database_helper.dart';
+import '../../../core/infrastructure/init_database_service.dart';
 
 part 'splash_page_controller.freezed.dart';
 
@@ -14,7 +14,7 @@ final splashPageControllerProvider = StateNotifierProvider.autoDispose<
 >((ref) => SplashPageController(ref.watch(initDatabaseServiceProvider)));
 
 @freezed
-class SplashControllerState with _$SplashControllerState {
+abstract class SplashControllerState with _$SplashControllerState {
   const SplashControllerState._();
   const factory SplashControllerState.downloadDatabase(
     int lastScehmaVersion,
@@ -46,19 +46,15 @@ class SplashPageController extends StateNotifier<SplashControllerState> {
 
       final existDatabase = await _initDatabaseService.existDatabase();
 
-      try {
-        if (!existDatabase) {
-          final getLastDatabaseSchema =
-              await _initDatabaseService.getSchemaVersionFromPreferences();
-          state = SplashControllerState.downloadDatabase(
-            getLastDatabaseSchema,
-            databaseRelease,
-          );
+      if (!existDatabase) {
+        final getLastDatabaseSchema =
+            await _initDatabaseService.getSchemaVersionFromPreferences();
+        state = SplashControllerState.downloadDatabase(
+          getLastDatabaseSchema,
+          kDatabaseRelease,
+        );
 
-          await _initDatabaseService.downloadInitDatabase();
-        }
-      } catch (e) {
-        rethrow;
+        await _initDatabaseService.downloadInitDatabase();
       }
 
       state = const SplashControllerState.data();

@@ -6,9 +6,8 @@ part of 'notification_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$NotificationDtoImpl _$$NotificationDtoImplFromJson(
-        Map<String, dynamic> json) =>
-    _$NotificationDtoImpl(
+_NotificationDto _$NotificationDtoFromJson(Map<String, dynamic> json) =>
+    _NotificationDto(
       notificacionId: json['NOTIFICACION_GUID'] as String,
       fecha: DateTime.parse(json['F_ALTA'] as String),
       usuarioId: json['USUARIO_ID'] as String,
@@ -16,8 +15,7 @@ _$NotificationDtoImpl _$$NotificationDtoImplFromJson(
       mensaje: json['MENSAJE_MARKDOWN'] as String,
     );
 
-Map<String, dynamic> _$$NotificationDtoImplToJson(
-        _$NotificationDtoImpl instance) =>
+Map<String, dynamic> _$NotificationDtoToJson(_NotificationDto instance) =>
     <String, dynamic>{
       'NOTIFICACION_GUID': instance.notificacionId,
       'F_ALTA': instance.fecha.toIso8601String(),

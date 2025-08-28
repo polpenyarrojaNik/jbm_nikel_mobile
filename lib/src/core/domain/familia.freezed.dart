@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,193 +9,272 @@ part of 'familia.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 /// @nodoc
 mixin _$Familia {
-  String get id => throw _privateConstructorUsedError;
-  String get descripcion => throw _privateConstructorUsedError;
-  DateTime get lastUpdate => throw _privateConstructorUsedError;
-  bool get deleted => throw _privateConstructorUsedError;
 
-  /// Create a copy of Familia
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $FamiliaCopyWith<Familia> get copyWith => throw _privateConstructorUsedError;
+ String get id; String get descripcion; DateTime get lastUpdate; bool get deleted;
+/// Create a copy of Familia
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$FamiliaCopyWith<Familia> get copyWith => _$FamiliaCopyWithImpl<Familia>(this as Familia, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Familia&&(identical(other.id, id) || other.id == id)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.lastUpdate, lastUpdate) || other.lastUpdate == lastUpdate)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,id,descripcion,lastUpdate,deleted);
+
+@override
+String toString() {
+  return 'Familia(id: $id, descripcion: $descripcion, lastUpdate: $lastUpdate, deleted: $deleted)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $FamiliaCopyWith<$Res> {
-  factory $FamiliaCopyWith(Familia value, $Res Function(Familia) then) =
-      _$FamiliaCopyWithImpl<$Res, Familia>;
-  @useResult
-  $Res call({String id, String descripcion, DateTime lastUpdate, bool deleted});
-}
+abstract mixin class $FamiliaCopyWith<$Res>  {
+  factory $FamiliaCopyWith(Familia value, $Res Function(Familia) _then) = _$FamiliaCopyWithImpl;
+@useResult
+$Res call({
+ String id, String descripcion, DateTime lastUpdate, bool deleted
+});
 
+
+
+
+}
 /// @nodoc
-class _$FamiliaCopyWithImpl<$Res, $Val extends Familia>
+class _$FamiliaCopyWithImpl<$Res>
     implements $FamiliaCopyWith<$Res> {
-  _$FamiliaCopyWithImpl(this._value, this._then);
+  _$FamiliaCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Familia _self;
+  final $Res Function(Familia) _then;
 
-  /// Create a copy of Familia
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? descripcion = null,
-    Object? lastUpdate = null,
-    Object? deleted = null,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcion: null == descripcion
-          ? _value.descripcion
-          : descripcion // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastUpdate: null == lastUpdate
-          ? _value.lastUpdate
-          : lastUpdate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
-  }
+/// Create a copy of Familia
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? descripcion = null,Object? lastUpdate = null,Object? deleted = null,}) {
+  return _then(_self.copyWith(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,descripcion: null == descripcion ? _self.descripcion : descripcion // ignore: cast_nullable_to_non_nullable
+as String,lastUpdate: null == lastUpdate ? _self.lastUpdate : lastUpdate // ignore: cast_nullable_to_non_nullable
+as DateTime,deleted: null == deleted ? _self.deleted : deleted // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [Familia].
+extension FamiliaPatterns on Familia {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Familia value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Familia() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Familia value)  $default,){
+final _that = this;
+switch (_that) {
+case _Familia():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Familia value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Familia() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String descripcion,  DateTime lastUpdate,  bool deleted)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Familia() when $default != null:
+return $default(_that.id,_that.descripcion,_that.lastUpdate,_that.deleted);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String descripcion,  DateTime lastUpdate,  bool deleted)  $default,) {final _that = this;
+switch (_that) {
+case _Familia():
+return $default(_that.id,_that.descripcion,_that.lastUpdate,_that.deleted);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String descripcion,  DateTime lastUpdate,  bool deleted)?  $default,) {final _that = this;
+switch (_that) {
+case _Familia() when $default != null:
+return $default(_that.id,_that.descripcion,_that.lastUpdate,_that.deleted);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
-abstract class _$$FamiliaImplCopyWith<$Res> implements $FamiliaCopyWith<$Res> {
-  factory _$$FamiliaImplCopyWith(
-          _$FamiliaImpl value, $Res Function(_$FamiliaImpl) then) =
-      __$$FamiliaImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String id, String descripcion, DateTime lastUpdate, bool deleted});
+
+
+class _Familia extends Familia {
+  const _Familia({required this.id, required this.descripcion, required this.lastUpdate, required this.deleted}): super._();
+  
+
+@override final  String id;
+@override final  String descripcion;
+@override final  DateTime lastUpdate;
+@override final  bool deleted;
+
+/// Create a copy of Familia
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$FamiliaCopyWith<_Familia> get copyWith => __$FamiliaCopyWithImpl<_Familia>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Familia&&(identical(other.id, id) || other.id == id)&&(identical(other.descripcion, descripcion) || other.descripcion == descripcion)&&(identical(other.lastUpdate, lastUpdate) || other.lastUpdate == lastUpdate)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,id,descripcion,lastUpdate,deleted);
+
+@override
+String toString() {
+  return 'Familia(id: $id, descripcion: $descripcion, lastUpdate: $lastUpdate, deleted: $deleted)';
+}
+
+
 }
 
 /// @nodoc
-class __$$FamiliaImplCopyWithImpl<$Res>
-    extends _$FamiliaCopyWithImpl<$Res, _$FamiliaImpl>
-    implements _$$FamiliaImplCopyWith<$Res> {
-  __$$FamiliaImplCopyWithImpl(
-      _$FamiliaImpl _value, $Res Function(_$FamiliaImpl) _then)
-      : super(_value, _then);
+abstract mixin class _$FamiliaCopyWith<$Res> implements $FamiliaCopyWith<$Res> {
+  factory _$FamiliaCopyWith(_Familia value, $Res Function(_Familia) _then) = __$FamiliaCopyWithImpl;
+@override @useResult
+$Res call({
+ String id, String descripcion, DateTime lastUpdate, bool deleted
+});
 
-  /// Create a copy of Familia
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? descripcion = null,
-    Object? lastUpdate = null,
-    Object? deleted = null,
-  }) {
-    return _then(_$FamiliaImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      descripcion: null == descripcion
-          ? _value.descripcion
-          : descripcion // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastUpdate: null == lastUpdate
-          ? _value.lastUpdate
-          : lastUpdate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
+
+
+
 }
-
 /// @nodoc
+class __$FamiliaCopyWithImpl<$Res>
+    implements _$FamiliaCopyWith<$Res> {
+  __$FamiliaCopyWithImpl(this._self, this._then);
 
-class _$FamiliaImpl extends _Familia {
-  const _$FamiliaImpl(
-      {required this.id,
-      required this.descripcion,
-      required this.lastUpdate,
-      required this.deleted})
-      : super._();
+  final _Familia _self;
+  final $Res Function(_Familia) _then;
 
-  @override
-  final String id;
-  @override
-  final String descripcion;
-  @override
-  final DateTime lastUpdate;
-  @override
-  final bool deleted;
-
-  @override
-  String toString() {
-    return 'Familia(id: $id, descripcion: $descripcion, lastUpdate: $lastUpdate, deleted: $deleted)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$FamiliaImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.descripcion, descripcion) ||
-                other.descripcion == descripcion) &&
-            (identical(other.lastUpdate, lastUpdate) ||
-                other.lastUpdate == lastUpdate) &&
-            (identical(other.deleted, deleted) || other.deleted == deleted));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, descripcion, lastUpdate, deleted);
-
-  /// Create a copy of Familia
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$FamiliaImplCopyWith<_$FamiliaImpl> get copyWith =>
-      __$$FamiliaImplCopyWithImpl<_$FamiliaImpl>(this, _$identity);
+/// Create a copy of Familia
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? descripcion = null,Object? lastUpdate = null,Object? deleted = null,}) {
+  return _then(_Familia(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,descripcion: null == descripcion ? _self.descripcion : descripcion // ignore: cast_nullable_to_non_nullable
+as String,lastUpdate: null == lastUpdate ? _self.lastUpdate : lastUpdate // ignore: cast_nullable_to_non_nullable
+as DateTime,deleted: null == deleted ? _self.deleted : deleted // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
 }
 
-abstract class _Familia extends Familia {
-  const factory _Familia(
-      {required final String id,
-      required final String descripcion,
-      required final DateTime lastUpdate,
-      required final bool deleted}) = _$FamiliaImpl;
-  const _Familia._() : super._();
 
-  @override
-  String get id;
-  @override
-  String get descripcion;
-  @override
-  DateTime get lastUpdate;
-  @override
-  bool get deleted;
-
-  /// Create a copy of Familia
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FamiliaImplCopyWith<_$FamiliaImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
+
+// dart format on

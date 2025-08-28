@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,270 +9,281 @@ part of 'articulo_sustitutivo_dto.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-ArticuloSustitutivoDTO _$ArticuloSustitutivoDTOFromJson(
-    Map<String, dynamic> json) {
-  return _ArticuloSustitutivoDTO.fromJson(json);
-}
 
 /// @nodoc
 mixin _$ArticuloSustitutivoDTO {
-  @JsonKey(name: 'ARTICULO_ID')
-  String get articuloId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO')
-  String get articuloSustitutivoId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'ORDEN')
-  int get orden => throw _privateConstructorUsedError;
-  @JsonKey(name: 'LAST_UPDATED')
-  DateTime get lastUpdated => throw _privateConstructorUsedError;
-  @JsonKey(name: 'DELETED')
-  String get deleted => throw _privateConstructorUsedError;
+
+@JsonKey(name: 'ARTICULO_ID') String get articuloId;@JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO') String get articuloSustitutivoId;@JsonKey(name: 'ORDEN') int get orden;@JsonKey(name: 'LAST_UPDATED') DateTime get lastUpdated;@JsonKey(name: 'DELETED') String get deleted;
+/// Create a copy of ArticuloSustitutivoDTO
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ArticuloSustitutivoDTOCopyWith<ArticuloSustitutivoDTO> get copyWith => _$ArticuloSustitutivoDTOCopyWithImpl<ArticuloSustitutivoDTO>(this as ArticuloSustitutivoDTO, _$identity);
 
   /// Serializes this ArticuloSustitutivoDTO to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of ArticuloSustitutivoDTO
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ArticuloSustitutivoDTOCopyWith<ArticuloSustitutivoDTO> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloSustitutivoDTO&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.articuloSustitutivoId, articuloSustitutivoId) || other.articuloSustitutivoId == articuloSustitutivoId)&&(identical(other.orden, orden) || other.orden == orden)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,articuloId,articuloSustitutivoId,orden,lastUpdated,deleted);
+
+@override
+String toString() {
+  return 'ArticuloSustitutivoDTO(articuloId: $articuloId, articuloSustitutivoId: $articuloSustitutivoId, orden: $orden, lastUpdated: $lastUpdated, deleted: $deleted)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ArticuloSustitutivoDTOCopyWith<$Res> {
-  factory $ArticuloSustitutivoDTOCopyWith(ArticuloSustitutivoDTO value,
-          $Res Function(ArticuloSustitutivoDTO) then) =
-      _$ArticuloSustitutivoDTOCopyWithImpl<$Res, ArticuloSustitutivoDTO>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'ARTICULO_ID') String articuloId,
-      @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO') String articuloSustitutivoId,
-      @JsonKey(name: 'ORDEN') int orden,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
-}
+abstract mixin class $ArticuloSustitutivoDTOCopyWith<$Res>  {
+  factory $ArticuloSustitutivoDTOCopyWith(ArticuloSustitutivoDTO value, $Res Function(ArticuloSustitutivoDTO) _then) = _$ArticuloSustitutivoDTOCopyWithImpl;
+@useResult
+$Res call({
+@JsonKey(name: 'ARTICULO_ID') String articuloId,@JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO') String articuloSustitutivoId,@JsonKey(name: 'ORDEN') int orden,@JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,@JsonKey(name: 'DELETED') String deleted
+});
 
+
+
+
+}
 /// @nodoc
-class _$ArticuloSustitutivoDTOCopyWithImpl<$Res,
-        $Val extends ArticuloSustitutivoDTO>
+class _$ArticuloSustitutivoDTOCopyWithImpl<$Res>
     implements $ArticuloSustitutivoDTOCopyWith<$Res> {
-  _$ArticuloSustitutivoDTOCopyWithImpl(this._value, this._then);
+  _$ArticuloSustitutivoDTOCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ArticuloSustitutivoDTO _self;
+  final $Res Function(ArticuloSustitutivoDTO) _then;
 
-  /// Create a copy of ArticuloSustitutivoDTO
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? articuloId = null,
-    Object? articuloSustitutivoId = null,
-    Object? orden = null,
-    Object? lastUpdated = null,
-    Object? deleted = null,
-  }) {
-    return _then(_value.copyWith(
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articuloSustitutivoId: null == articuloSustitutivoId
-          ? _value.articuloSustitutivoId
-          : articuloSustitutivoId // ignore: cast_nullable_to_non_nullable
-              as String,
-      orden: null == orden
-          ? _value.orden
-          : orden // ignore: cast_nullable_to_non_nullable
-              as int,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
+/// Create a copy of ArticuloSustitutivoDTO
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? articuloId = null,Object? articuloSustitutivoId = null,Object? orden = null,Object? lastUpdated = null,Object? deleted = null,}) {
+  return _then(_self.copyWith(
+articuloId: null == articuloId ? _self.articuloId : articuloId // ignore: cast_nullable_to_non_nullable
+as String,articuloSustitutivoId: null == articuloSustitutivoId ? _self.articuloSustitutivoId : articuloSustitutivoId // ignore: cast_nullable_to_non_nullable
+as String,orden: null == orden ? _self.orden : orden // ignore: cast_nullable_to_non_nullable
+as int,lastUpdated: null == lastUpdated ? _self.lastUpdated : lastUpdated // ignore: cast_nullable_to_non_nullable
+as DateTime,deleted: null == deleted ? _self.deleted : deleted // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-abstract class _$$ArticuloSustitutivoDTOImplCopyWith<$Res>
-    implements $ArticuloSustitutivoDTOCopyWith<$Res> {
-  factory _$$ArticuloSustitutivoDTOImplCopyWith(
-          _$ArticuloSustitutivoDTOImpl value,
-          $Res Function(_$ArticuloSustitutivoDTOImpl) then) =
-      __$$ArticuloSustitutivoDTOImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'ARTICULO_ID') String articuloId,
-      @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO') String articuloSustitutivoId,
-      @JsonKey(name: 'ORDEN') int orden,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
 }
 
-/// @nodoc
-class __$$ArticuloSustitutivoDTOImplCopyWithImpl<$Res>
-    extends _$ArticuloSustitutivoDTOCopyWithImpl<$Res,
-        _$ArticuloSustitutivoDTOImpl>
-    implements _$$ArticuloSustitutivoDTOImplCopyWith<$Res> {
-  __$$ArticuloSustitutivoDTOImplCopyWithImpl(
-      _$ArticuloSustitutivoDTOImpl _value,
-      $Res Function(_$ArticuloSustitutivoDTOImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of ArticuloSustitutivoDTO
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? articuloId = null,
-    Object? articuloSustitutivoId = null,
-    Object? orden = null,
-    Object? lastUpdated = null,
-    Object? deleted = null,
-  }) {
-    return _then(_$ArticuloSustitutivoDTOImpl(
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articuloSustitutivoId: null == articuloSustitutivoId
-          ? _value.articuloSustitutivoId
-          : articuloSustitutivoId // ignore: cast_nullable_to_non_nullable
-              as String,
-      orden: null == orden
-          ? _value.orden
-          : orden // ignore: cast_nullable_to_non_nullable
-              as int,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
+/// Adds pattern-matching-related methods to [ArticuloSustitutivoDTO].
+extension ArticuloSustitutivoDTOPatterns on ArticuloSustitutivoDTO {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ArticuloSustitutivoDTO value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ArticuloSustitutivoDTO() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ArticuloSustitutivoDTO value)  $default,){
+final _that = this;
+switch (_that) {
+case _ArticuloSustitutivoDTO():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ArticuloSustitutivoDTO value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ArticuloSustitutivoDTO() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'ARTICULO_ID')  String articuloId, @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO')  String articuloSustitutivoId, @JsonKey(name: 'ORDEN')  int orden, @JsonKey(name: 'LAST_UPDATED')  DateTime lastUpdated, @JsonKey(name: 'DELETED')  String deleted)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ArticuloSustitutivoDTO() when $default != null:
+return $default(_that.articuloId,_that.articuloSustitutivoId,_that.orden,_that.lastUpdated,_that.deleted);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'ARTICULO_ID')  String articuloId, @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO')  String articuloSustitutivoId, @JsonKey(name: 'ORDEN')  int orden, @JsonKey(name: 'LAST_UPDATED')  DateTime lastUpdated, @JsonKey(name: 'DELETED')  String deleted)  $default,) {final _that = this;
+switch (_that) {
+case _ArticuloSustitutivoDTO():
+return $default(_that.articuloId,_that.articuloSustitutivoId,_that.orden,_that.lastUpdated,_that.deleted);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'ARTICULO_ID')  String articuloId, @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO')  String articuloSustitutivoId, @JsonKey(name: 'ORDEN')  int orden, @JsonKey(name: 'LAST_UPDATED')  DateTime lastUpdated, @JsonKey(name: 'DELETED')  String deleted)?  $default,) {final _that = this;
+switch (_that) {
+case _ArticuloSustitutivoDTO() when $default != null:
+return $default(_that.articuloId,_that.articuloSustitutivoId,_that.orden,_that.lastUpdated,_that.deleted);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$ArticuloSustitutivoDTOImpl extends _ArticuloSustitutivoDTO {
-  const _$ArticuloSustitutivoDTOImpl(
-      {@JsonKey(name: 'ARTICULO_ID') required this.articuloId,
-      @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO')
-      required this.articuloSustitutivoId,
-      @JsonKey(name: 'ORDEN') required this.orden,
-      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-      @JsonKey(name: 'DELETED') this.deleted = 'N'})
-      : super._();
 
-  factory _$ArticuloSustitutivoDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ArticuloSustitutivoDTOImplFromJson(json);
+class _ArticuloSustitutivoDTO extends ArticuloSustitutivoDTO {
+  const _ArticuloSustitutivoDTO({@JsonKey(name: 'ARTICULO_ID') required this.articuloId, @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO') required this.articuloSustitutivoId, @JsonKey(name: 'ORDEN') required this.orden, @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated, @JsonKey(name: 'DELETED') this.deleted = 'N'}): super._();
+  factory _ArticuloSustitutivoDTO.fromJson(Map<String, dynamic> json) => _$ArticuloSustitutivoDTOFromJson(json);
 
-  @override
-  @JsonKey(name: 'ARTICULO_ID')
-  final String articuloId;
-  @override
-  @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO')
-  final String articuloSustitutivoId;
-  @override
-  @JsonKey(name: 'ORDEN')
-  final int orden;
-  @override
-  @JsonKey(name: 'LAST_UPDATED')
-  final DateTime lastUpdated;
-  @override
-  @JsonKey(name: 'DELETED')
-  final String deleted;
+@override@JsonKey(name: 'ARTICULO_ID') final  String articuloId;
+@override@JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO') final  String articuloSustitutivoId;
+@override@JsonKey(name: 'ORDEN') final  int orden;
+@override@JsonKey(name: 'LAST_UPDATED') final  DateTime lastUpdated;
+@override@JsonKey(name: 'DELETED') final  String deleted;
 
-  @override
-  String toString() {
-    return 'ArticuloSustitutivoDTO(articuloId: $articuloId, articuloSustitutivoId: $articuloSustitutivoId, orden: $orden, lastUpdated: $lastUpdated, deleted: $deleted)';
-  }
+/// Create a copy of ArticuloSustitutivoDTO
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ArticuloSustitutivoDTOCopyWith<_ArticuloSustitutivoDTO> get copyWith => __$ArticuloSustitutivoDTOCopyWithImpl<_ArticuloSustitutivoDTO>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ArticuloSustitutivoDTOImpl &&
-            (identical(other.articuloId, articuloId) ||
-                other.articuloId == articuloId) &&
-            (identical(other.articuloSustitutivoId, articuloSustitutivoId) ||
-                other.articuloSustitutivoId == articuloSustitutivoId) &&
-            (identical(other.orden, orden) || other.orden == orden) &&
-            (identical(other.lastUpdated, lastUpdated) ||
-                other.lastUpdated == lastUpdated) &&
-            (identical(other.deleted, deleted) || other.deleted == deleted));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, articuloId,
-      articuloSustitutivoId, orden, lastUpdated, deleted);
-
-  /// Create a copy of ArticuloSustitutivoDTO
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ArticuloSustitutivoDTOImplCopyWith<_$ArticuloSustitutivoDTOImpl>
-      get copyWith => __$$ArticuloSustitutivoDTOImplCopyWithImpl<
-          _$ArticuloSustitutivoDTOImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ArticuloSustitutivoDTOImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$ArticuloSustitutivoDTOToJson(this, );
 }
 
-abstract class _ArticuloSustitutivoDTO extends ArticuloSustitutivoDTO {
-  const factory _ArticuloSustitutivoDTO(
-          {@JsonKey(name: 'ARTICULO_ID') required final String articuloId,
-          @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO')
-          required final String articuloSustitutivoId,
-          @JsonKey(name: 'ORDEN') required final int orden,
-          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-          @JsonKey(name: 'DELETED') final String deleted}) =
-      _$ArticuloSustitutivoDTOImpl;
-  const _ArticuloSustitutivoDTO._() : super._();
-
-  factory _ArticuloSustitutivoDTO.fromJson(Map<String, dynamic> json) =
-      _$ArticuloSustitutivoDTOImpl.fromJson;
-
-  @override
-  @JsonKey(name: 'ARTICULO_ID')
-  String get articuloId;
-  @override
-  @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO')
-  String get articuloSustitutivoId;
-  @override
-  @JsonKey(name: 'ORDEN')
-  int get orden;
-  @override
-  @JsonKey(name: 'LAST_UPDATED')
-  DateTime get lastUpdated;
-  @override
-  @JsonKey(name: 'DELETED')
-  String get deleted;
-
-  /// Create a copy of ArticuloSustitutivoDTO
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ArticuloSustitutivoDTOImplCopyWith<_$ArticuloSustitutivoDTOImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloSustitutivoDTO&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.articuloSustitutivoId, articuloSustitutivoId) || other.articuloSustitutivoId == articuloSustitutivoId)&&(identical(other.orden, orden) || other.orden == orden)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,articuloId,articuloSustitutivoId,orden,lastUpdated,deleted);
+
+@override
+String toString() {
+  return 'ArticuloSustitutivoDTO(articuloId: $articuloId, articuloSustitutivoId: $articuloSustitutivoId, orden: $orden, lastUpdated: $lastUpdated, deleted: $deleted)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ArticuloSustitutivoDTOCopyWith<$Res> implements $ArticuloSustitutivoDTOCopyWith<$Res> {
+  factory _$ArticuloSustitutivoDTOCopyWith(_ArticuloSustitutivoDTO value, $Res Function(_ArticuloSustitutivoDTO) _then) = __$ArticuloSustitutivoDTOCopyWithImpl;
+@override @useResult
+$Res call({
+@JsonKey(name: 'ARTICULO_ID') String articuloId,@JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO') String articuloSustitutivoId,@JsonKey(name: 'ORDEN') int orden,@JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,@JsonKey(name: 'DELETED') String deleted
+});
+
+
+
+
+}
+/// @nodoc
+class __$ArticuloSustitutivoDTOCopyWithImpl<$Res>
+    implements _$ArticuloSustitutivoDTOCopyWith<$Res> {
+  __$ArticuloSustitutivoDTOCopyWithImpl(this._self, this._then);
+
+  final _ArticuloSustitutivoDTO _self;
+  final $Res Function(_ArticuloSustitutivoDTO) _then;
+
+/// Create a copy of ArticuloSustitutivoDTO
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? articuloId = null,Object? articuloSustitutivoId = null,Object? orden = null,Object? lastUpdated = null,Object? deleted = null,}) {
+  return _then(_ArticuloSustitutivoDTO(
+articuloId: null == articuloId ? _self.articuloId : articuloId // ignore: cast_nullable_to_non_nullable
+as String,articuloSustitutivoId: null == articuloSustitutivoId ? _self.articuloSustitutivoId : articuloSustitutivoId // ignore: cast_nullable_to_non_nullable
+as String,orden: null == orden ? _self.orden : orden // ignore: cast_nullable_to_non_nullable
+as int,lastUpdated: null == lastUpdated ? _self.lastUpdated : lastUpdated // ignore: cast_nullable_to_non_nullable
+as DateTime,deleted: null == deleted ? _self.deleted : deleted // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+// dart format on

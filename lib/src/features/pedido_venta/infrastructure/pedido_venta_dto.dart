@@ -1,22 +1,22 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../core/helpers/extension.dart';
-import '../../../core/infrastructure/remote_database.dart';
-import 'pedido_venta_estado_dto.dart';
 
 import '../../../core/domain/divisa.dart';
 import '../../../core/domain/pais.dart';
+import '../../../core/helpers/extension.dart';
 import '../../../core/infrastructure/divisa_dto.dart';
 import '../../../core/infrastructure/pais_dto.dart';
+import '../../../core/infrastructure/remote_database.dart';
 import '../domain/pedido_venta.dart';
 import '../domain/pedido_venta_estado.dart';
+import 'pedido_venta_estado_dto.dart';
 
 part 'pedido_venta_dto.freezed.dart';
 part 'pedido_venta_dto.g.dart';
 
 // ignore_for_file: invalid_annotation_target
 @freezed
-class PedidoVentaDTO
+abstract class PedidoVentaDTO
     with _$PedidoVentaDTO
     implements Insertable<PedidoVentaDTO> {
   const PedidoVentaDTO._();
@@ -105,12 +105,12 @@ class PedidoVentaDTO
       totalLineas: totalLineas.toMoney(currencyId: divisaId),
       total: total.toMoney(currencyId: divisaId),
       pedidoVentaEstado: pedidoVentaEstado,
-      oferta: (oferta == 'S') ? true : false,
+      oferta: (oferta == 'S'),
       ofertaFechaHasta: ofertaFechaHasta,
       iva: iva,
       pedidoVentaAppId: pedidoVentaAppId,
       lastUpdated: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
+      deleted: (deleted == 'S'),
       enviada: true,
       tratada: true,
       borrador: false,

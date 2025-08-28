@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'articulo_sustitutivo.freezed.dart';
 
 @freezed
-class ArticuloSustitutivo with _$ArticuloSustitutivo {
+abstract class ArticuloSustitutivo with _$ArticuloSustitutivo {
   const ArticuloSustitutivo._();
   const factory ArticuloSustitutivo({
     required String articuloId,

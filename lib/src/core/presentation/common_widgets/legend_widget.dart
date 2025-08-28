@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
-import '../theme/app_sizes.dart';
 import 'app_decoration.dart';
 
 class LeyendaWidget extends StatelessWidget {
@@ -31,7 +31,7 @@ class LeyendaWidget extends StatelessWidget {
                       Theme.of(context).colorScheme.primary,
                     ),
                   ),
-                  gapW4,
+                  const Gap(4),
                   Text(
                     (DateTime.now().year).toString(),
                     style: Theme.of(context).textTheme.bodySmall,
@@ -52,7 +52,7 @@ class LeyendaWidget extends StatelessWidget {
                       Theme.of(context).colorScheme.outline,
                     ),
                   ),
-                  gapW4,
+                  const Gap(4),
                   Text(
                     (DateTime.now().year - 1).toString(),
                     style: Theme.of(context).textTheme.bodySmall,

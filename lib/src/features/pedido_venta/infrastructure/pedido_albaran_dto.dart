@@ -1,16 +1,16 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../domain/pedido_albaran.dart';
 
 import '../../../core/infrastructure/remote_database.dart';
 import '../../expediciones/domain/tracking_estado.dart';
+import '../domain/pedido_albaran.dart';
 
 part 'pedido_albaran_dto.freezed.dart';
 part 'pedido_albaran_dto.g.dart';
 
 // ignore_for_file: invalid_annotation_target
 @freezed
-class PedidoAlbaranDTO
+abstract class PedidoAlbaranDTO
     with _$PedidoAlbaranDTO
     implements Insertable<PedidoAlbaranDTO> {
   const PedidoAlbaranDTO._();
@@ -39,7 +39,7 @@ class PedidoAlbaranDTO
       trackId: trackId,
       trackingEstado: trackingEstado,
       lastUpdated: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
+      deleted: (deleted == 'S'),
     );
   }
 

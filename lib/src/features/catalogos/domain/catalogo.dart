@@ -4,7 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'catalogo.freezed.dart';
 
 @freezed
-class Catalogo with _$Catalogo {
+abstract class Catalogo with _$Catalogo {
   const Catalogo._();
   const factory Catalogo({
     required int catalogoId,

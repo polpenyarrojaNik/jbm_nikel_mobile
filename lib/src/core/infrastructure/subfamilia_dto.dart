@@ -11,7 +11,9 @@ part 'subfamilia_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class SubfamiliaDTO with _$SubfamiliaDTO implements Insertable<SubfamiliaDTO> {
+abstract class SubfamiliaDTO
+    with _$SubfamiliaDTO
+    implements Insertable<SubfamiliaDTO> {
   const SubfamiliaDTO._();
   const factory SubfamiliaDTO({
     @JsonKey(name: 'SUBFAMILIA_ID') required String id,
@@ -44,7 +46,7 @@ class SubfamiliaDTO with _$SubfamiliaDTO implements Insertable<SubfamiliaDTO> {
       familiaId: familiaId,
       descripcion: getDescriptionInLocalLanguage(),
       lastUpdate: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
+      deleted: (deleted == 'S'),
     );
   }
 

@@ -10,7 +10,7 @@ part 'log_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class LogDTO with _$LogDTO implements Insertable<LogDTO> {
+abstract class LogDTO with _$LogDTO implements Insertable<LogDTO> {
   const LogDTO._();
   const factory LogDTO({
     @JsonKey(name: 'ID') required int? id,

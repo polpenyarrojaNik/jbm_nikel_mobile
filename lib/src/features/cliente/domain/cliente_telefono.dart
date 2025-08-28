@@ -7,7 +7,7 @@ import '../infrastructure/cliente_direccion_dto.dart';
 part 'cliente_telefono.freezed.dart';
 
 @freezed
-class ClienteTelefono with _$ClienteTelefono {
+abstract class ClienteTelefono with _$ClienteTelefono {
   const ClienteTelefono._();
   const factory ClienteTelefono({
     required String clienteId,

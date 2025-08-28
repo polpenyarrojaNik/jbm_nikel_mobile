@@ -6,9 +6,8 @@ part of 'pedido_venta_local_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PedidoVentaLocalDTOImpl _$$PedidoVentaLocalDTOImplFromJson(
-        Map<String, dynamic> json) =>
-    _$PedidoVentaLocalDTOImpl(
+_PedidoVentaLocalDTO _$PedidoVentaLocalDTOFromJson(Map<String, dynamic> json) =>
+    _PedidoVentaLocalDTO(
       usuarioId: json['USUARIO_ID'] as String?,
       pedidoId: json['PEDIDO_ID'] as String?,
       empresaId: json['EMPRESA_ID'] as String?,
@@ -26,9 +25,10 @@ _$PedidoVentaLocalDTOImpl _$$PedidoVentaLocalDTOImplFromJson(
       pedidoCliente: json['PEDIDO_CLIENTE'] as String?,
       observaciones: json['OBSERVACIONES'] as String?,
       oferta: json['OFERTA_SN'] as String,
-      ofertaFechaHasta: json['OFERTA_FECHA_HASTA'] == null
-          ? null
-          : DateTime.parse(json['OFERTA_FECHA_HASTA'] as String),
+      ofertaFechaHasta:
+          json['OFERTA_FECHA_HASTA'] == null
+              ? null
+              : DateTime.parse(json['OFERTA_FECHA_HASTA'] as String),
       fechaAlta: DateTime.parse(json['FECHA_ALTA'] as String),
       iva: (json['IVA'] as num).toDouble(),
       dtoBonificacion: (json['DTO_BONIFICACION'] as num).toDouble(),
@@ -38,32 +38,32 @@ _$PedidoVentaLocalDTOImpl _$$PedidoVentaLocalDTOImplFromJson(
       errorSyncMessage: json['ERROR_SYNC'] as String?,
     );
 
-Map<String, dynamic> _$$PedidoVentaLocalDTOImplToJson(
-        _$PedidoVentaLocalDTOImpl instance) =>
-    <String, dynamic>{
-      'USUARIO_ID': instance.usuarioId,
-      'PEDIDO_ID': instance.pedidoId,
-      'EMPRESA_ID': instance.empresaId,
-      'PEDIDO_APP_ID': instance.pedidoVentaAppId,
-      'CLIENTE_ID': instance.clienteId,
-      'NOMBRE_CLIENTE': instance.nombreCliente,
-      'DIRECCION_ID': instance.direccionId,
-      'DIRECCION1': instance.direccion1,
-      'DIRECCION2': instance.direccion2,
-      'CODIGO_POSTAL': instance.codigoPostal,
-      'POBLACION': instance.poblacion,
-      'PROVINCIA': instance.provincia,
-      'PAIS_ID': instance.paisId,
-      'DIVISA_ID': instance.divisaId,
-      'PEDIDO_CLIENTE': instance.pedidoCliente,
-      'OBSERVACIONES': instance.observaciones,
-      'OFERTA_SN': instance.oferta,
-      'OFERTA_FECHA_HASTA': instance.ofertaFechaHasta?.toIso8601String(),
-      'FECHA_ALTA': instance.fechaAlta.toIso8601String(),
-      'IVA': instance.iva,
-      'DTO_BONIFICACION': instance.dtoBonificacion,
-      'ENVIADA': instance.enviada,
-      'TRATADA': instance.tratada,
-      'BORRADOR': instance.borrador,
-      'ERROR_SYNC': instance.errorSyncMessage,
-    };
+Map<String, dynamic> _$PedidoVentaLocalDTOToJson(
+  _PedidoVentaLocalDTO instance,
+) => <String, dynamic>{
+  'USUARIO_ID': instance.usuarioId,
+  'PEDIDO_ID': instance.pedidoId,
+  'EMPRESA_ID': instance.empresaId,
+  'PEDIDO_APP_ID': instance.pedidoVentaAppId,
+  'CLIENTE_ID': instance.clienteId,
+  'NOMBRE_CLIENTE': instance.nombreCliente,
+  'DIRECCION_ID': instance.direccionId,
+  'DIRECCION1': instance.direccion1,
+  'DIRECCION2': instance.direccion2,
+  'CODIGO_POSTAL': instance.codigoPostal,
+  'POBLACION': instance.poblacion,
+  'PROVINCIA': instance.provincia,
+  'PAIS_ID': instance.paisId,
+  'DIVISA_ID': instance.divisaId,
+  'PEDIDO_CLIENTE': instance.pedidoCliente,
+  'OBSERVACIONES': instance.observaciones,
+  'OFERTA_SN': instance.oferta,
+  'OFERTA_FECHA_HASTA': instance.ofertaFechaHasta?.toIso8601String(),
+  'FECHA_ALTA': instance.fechaAlta.toIso8601String(),
+  'IVA': instance.iva,
+  'DTO_BONIFICACION': instance.dtoBonificacion,
+  'ENVIADA': instance.enviada,
+  'TRATADA': instance.tratada,
+  'BORRADOR': instance.borrador,
+  'ERROR_SYNC': instance.errorSyncMessage,
+};

@@ -2,8 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:better_open_file/better_open_file.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../infrastructure/articulo_repository.dart';
-import 'articulo_documento_controller.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/adjunto_param.dart';
@@ -16,6 +15,8 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/presentation/toasts.dart';
 import '../../domain/articulo_documento.dart';
+import '../../infrastructure/articulo_repository.dart';
+import 'articulo_documento_controller.dart';
 
 @RoutePage()
 class ArticuloDocumentoPage extends ConsumerWidget {
@@ -54,7 +55,7 @@ class ArticuloDocumentoPage extends ConsumerWidget {
       body: Column(
         children: [
           HeaderDatosRelacionados(entityId: articuloId, subtitle: description),
-          gapH8,
+          const Gap(8),
           state.maybeWhen(
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) {
@@ -98,7 +99,7 @@ class ArticuloDocumentoTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
-      padding: listPadding,
+      padding: kPaddingList,
       child: GestureDetector(
         onTap:
             () => openFile(
@@ -123,7 +124,7 @@ class ArticuloDocumentoTile extends ConsumerWidget {
                   getIconoFromExtension(articuloDocumento.nombreArchivo ?? ''),
                   color: Theme.of(context).textTheme.bodySmall!.color,
                 ),
-                gapW8,
+                const Gap(8),
                 Flexible(child: Text(articuloDocumento.nombreArchivo ?? '')),
               ],
             ),

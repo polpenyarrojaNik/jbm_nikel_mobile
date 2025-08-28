@@ -14,7 +14,7 @@ class ArticuloListaTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.transparent,
-      padding: listPadding,
+      padding: kPaddingList,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -30,9 +30,10 @@ class ArticuloListaTile extends StatelessWidget {
           ),
           Text(getDescriptionArticuloInLocalLanguage(articulo: articulo)),
           Text(
-            (articulo.subfamilia != null)
-                ? '${articulo.familia?.descripcion}/${articulo.subfamilia?.descripcion}'
-                : '${articulo.familia?.descripcion}',
+            (articulo.familia != null && articulo.subfamilia != null)
+                ? '${articulo.familia!.descripcion}/${articulo.subfamilia!.descripcion}'
+                : (articulo.familia?.descripcion ??
+                    S.of(context).unknownFamily),
             style: Theme.of(context).textTheme.bodySmall,
           ),
         ],

@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,319 +9,287 @@ part of 'articulo_grupo_neto.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 /// @nodoc
 mixin _$ArticuloGrupoNeto {
-  String get articuloId => throw _privateConstructorUsedError;
-  String get grupoNetoId => throw _privateConstructorUsedError;
-  String get grupoNetoDescripcion => throw _privateConstructorUsedError;
-  int get cantidadDesde => throw _privateConstructorUsedError;
-  Money get precio => throw _privateConstructorUsedError;
-  String get divisaId => throw _privateConstructorUsedError;
-  int get tipoPrecio => throw _privateConstructorUsedError;
-  DateTime get lastUpdated => throw _privateConstructorUsedError;
-  bool get deleted => throw _privateConstructorUsedError;
 
-  /// Create a copy of ArticuloGrupoNeto
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ArticuloGrupoNetoCopyWith<ArticuloGrupoNeto> get copyWith =>
-      throw _privateConstructorUsedError;
+ String get articuloId; String get grupoNetoId; String get grupoNetoDescripcion; int get cantidadDesde; Money get precio; String get divisaId; int get tipoPrecio; DateTime get lastUpdated; bool get deleted;
+/// Create a copy of ArticuloGrupoNeto
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ArticuloGrupoNetoCopyWith<ArticuloGrupoNeto> get copyWith => _$ArticuloGrupoNetoCopyWithImpl<ArticuloGrupoNeto>(this as ArticuloGrupoNeto, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloGrupoNeto&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.grupoNetoId, grupoNetoId) || other.grupoNetoId == grupoNetoId)&&(identical(other.grupoNetoDescripcion, grupoNetoDescripcion) || other.grupoNetoDescripcion == grupoNetoDescripcion)&&(identical(other.cantidadDesde, cantidadDesde) || other.cantidadDesde == cantidadDesde)&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.divisaId, divisaId) || other.divisaId == divisaId)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,articuloId,grupoNetoId,grupoNetoDescripcion,cantidadDesde,precio,divisaId,tipoPrecio,lastUpdated,deleted);
+
+@override
+String toString() {
+  return 'ArticuloGrupoNeto(articuloId: $articuloId, grupoNetoId: $grupoNetoId, grupoNetoDescripcion: $grupoNetoDescripcion, cantidadDesde: $cantidadDesde, precio: $precio, divisaId: $divisaId, tipoPrecio: $tipoPrecio, lastUpdated: $lastUpdated, deleted: $deleted)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ArticuloGrupoNetoCopyWith<$Res> {
-  factory $ArticuloGrupoNetoCopyWith(
-          ArticuloGrupoNeto value, $Res Function(ArticuloGrupoNeto) then) =
-      _$ArticuloGrupoNetoCopyWithImpl<$Res, ArticuloGrupoNeto>;
-  @useResult
-  $Res call(
-      {String articuloId,
-      String grupoNetoId,
-      String grupoNetoDescripcion,
-      int cantidadDesde,
-      Money precio,
-      String divisaId,
-      int tipoPrecio,
-      DateTime lastUpdated,
-      bool deleted});
-}
+abstract mixin class $ArticuloGrupoNetoCopyWith<$Res>  {
+  factory $ArticuloGrupoNetoCopyWith(ArticuloGrupoNeto value, $Res Function(ArticuloGrupoNeto) _then) = _$ArticuloGrupoNetoCopyWithImpl;
+@useResult
+$Res call({
+ String articuloId, String grupoNetoId, String grupoNetoDescripcion, int cantidadDesde, Money precio, String divisaId, int tipoPrecio, DateTime lastUpdated, bool deleted
+});
 
+
+
+
+}
 /// @nodoc
-class _$ArticuloGrupoNetoCopyWithImpl<$Res, $Val extends ArticuloGrupoNeto>
+class _$ArticuloGrupoNetoCopyWithImpl<$Res>
     implements $ArticuloGrupoNetoCopyWith<$Res> {
-  _$ArticuloGrupoNetoCopyWithImpl(this._value, this._then);
+  _$ArticuloGrupoNetoCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ArticuloGrupoNeto _self;
+  final $Res Function(ArticuloGrupoNeto) _then;
 
-  /// Create a copy of ArticuloGrupoNeto
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? articuloId = null,
-    Object? grupoNetoId = null,
-    Object? grupoNetoDescripcion = null,
-    Object? cantidadDesde = null,
-    Object? precio = null,
-    Object? divisaId = null,
-    Object? tipoPrecio = null,
-    Object? lastUpdated = null,
-    Object? deleted = null,
-  }) {
-    return _then(_value.copyWith(
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      grupoNetoId: null == grupoNetoId
-          ? _value.grupoNetoId
-          : grupoNetoId // ignore: cast_nullable_to_non_nullable
-              as String,
-      grupoNetoDescripcion: null == grupoNetoDescripcion
-          ? _value.grupoNetoDescripcion
-          : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
-              as String,
-      cantidadDesde: null == cantidadDesde
-          ? _value.cantidadDesde
-          : cantidadDesde // ignore: cast_nullable_to_non_nullable
-              as int,
-      precio: null == precio
-          ? _value.precio
-          : precio // ignore: cast_nullable_to_non_nullable
-              as Money,
-      divisaId: null == divisaId
-          ? _value.divisaId
-          : divisaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      tipoPrecio: null == tipoPrecio
-          ? _value.tipoPrecio
-          : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as int,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
-  }
+/// Create a copy of ArticuloGrupoNeto
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? articuloId = null,Object? grupoNetoId = null,Object? grupoNetoDescripcion = null,Object? cantidadDesde = null,Object? precio = null,Object? divisaId = null,Object? tipoPrecio = null,Object? lastUpdated = null,Object? deleted = null,}) {
+  return _then(_self.copyWith(
+articuloId: null == articuloId ? _self.articuloId : articuloId // ignore: cast_nullable_to_non_nullable
+as String,grupoNetoId: null == grupoNetoId ? _self.grupoNetoId : grupoNetoId // ignore: cast_nullable_to_non_nullable
+as String,grupoNetoDescripcion: null == grupoNetoDescripcion ? _self.grupoNetoDescripcion : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
+as String,cantidadDesde: null == cantidadDesde ? _self.cantidadDesde : cantidadDesde // ignore: cast_nullable_to_non_nullable
+as int,precio: null == precio ? _self.precio : precio // ignore: cast_nullable_to_non_nullable
+as Money,divisaId: null == divisaId ? _self.divisaId : divisaId // ignore: cast_nullable_to_non_nullable
+as String,tipoPrecio: null == tipoPrecio ? _self.tipoPrecio : tipoPrecio // ignore: cast_nullable_to_non_nullable
+as int,lastUpdated: null == lastUpdated ? _self.lastUpdated : lastUpdated // ignore: cast_nullable_to_non_nullable
+as DateTime,deleted: null == deleted ? _self.deleted : deleted // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [ArticuloGrupoNeto].
+extension ArticuloGrupoNetoPatterns on ArticuloGrupoNeto {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ArticuloGrupoNeto value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ArticuloGrupoNeto() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ArticuloGrupoNeto value)  $default,){
+final _that = this;
+switch (_that) {
+case _ArticuloGrupoNeto():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ArticuloGrupoNeto value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ArticuloGrupoNeto() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String articuloId,  String grupoNetoId,  String grupoNetoDescripcion,  int cantidadDesde,  Money precio,  String divisaId,  int tipoPrecio,  DateTime lastUpdated,  bool deleted)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ArticuloGrupoNeto() when $default != null:
+return $default(_that.articuloId,_that.grupoNetoId,_that.grupoNetoDescripcion,_that.cantidadDesde,_that.precio,_that.divisaId,_that.tipoPrecio,_that.lastUpdated,_that.deleted);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String articuloId,  String grupoNetoId,  String grupoNetoDescripcion,  int cantidadDesde,  Money precio,  String divisaId,  int tipoPrecio,  DateTime lastUpdated,  bool deleted)  $default,) {final _that = this;
+switch (_that) {
+case _ArticuloGrupoNeto():
+return $default(_that.articuloId,_that.grupoNetoId,_that.grupoNetoDescripcion,_that.cantidadDesde,_that.precio,_that.divisaId,_that.tipoPrecio,_that.lastUpdated,_that.deleted);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String articuloId,  String grupoNetoId,  String grupoNetoDescripcion,  int cantidadDesde,  Money precio,  String divisaId,  int tipoPrecio,  DateTime lastUpdated,  bool deleted)?  $default,) {final _that = this;
+switch (_that) {
+case _ArticuloGrupoNeto() when $default != null:
+return $default(_that.articuloId,_that.grupoNetoId,_that.grupoNetoDescripcion,_that.cantidadDesde,_that.precio,_that.divisaId,_that.tipoPrecio,_that.lastUpdated,_that.deleted);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
-abstract class _$$ArticuloGrupoNetoImplCopyWith<$Res>
-    implements $ArticuloGrupoNetoCopyWith<$Res> {
-  factory _$$ArticuloGrupoNetoImplCopyWith(_$ArticuloGrupoNetoImpl value,
-          $Res Function(_$ArticuloGrupoNetoImpl) then) =
-      __$$ArticuloGrupoNetoImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String articuloId,
-      String grupoNetoId,
-      String grupoNetoDescripcion,
-      int cantidadDesde,
-      Money precio,
-      String divisaId,
-      int tipoPrecio,
-      DateTime lastUpdated,
-      bool deleted});
+
+
+class _ArticuloGrupoNeto extends ArticuloGrupoNeto {
+  const _ArticuloGrupoNeto({required this.articuloId, required this.grupoNetoId, required this.grupoNetoDescripcion, required this.cantidadDesde, required this.precio, required this.divisaId, required this.tipoPrecio, required this.lastUpdated, required this.deleted}): super._();
+  
+
+@override final  String articuloId;
+@override final  String grupoNetoId;
+@override final  String grupoNetoDescripcion;
+@override final  int cantidadDesde;
+@override final  Money precio;
+@override final  String divisaId;
+@override final  int tipoPrecio;
+@override final  DateTime lastUpdated;
+@override final  bool deleted;
+
+/// Create a copy of ArticuloGrupoNeto
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ArticuloGrupoNetoCopyWith<_ArticuloGrupoNeto> get copyWith => __$ArticuloGrupoNetoCopyWithImpl<_ArticuloGrupoNeto>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloGrupoNeto&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.grupoNetoId, grupoNetoId) || other.grupoNetoId == grupoNetoId)&&(identical(other.grupoNetoDescripcion, grupoNetoDescripcion) || other.grupoNetoDescripcion == grupoNetoDescripcion)&&(identical(other.cantidadDesde, cantidadDesde) || other.cantidadDesde == cantidadDesde)&&(identical(other.precio, precio) || other.precio == precio)&&(identical(other.divisaId, divisaId) || other.divisaId == divisaId)&&(identical(other.tipoPrecio, tipoPrecio) || other.tipoPrecio == tipoPrecio)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&(identical(other.deleted, deleted) || other.deleted == deleted));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,articuloId,grupoNetoId,grupoNetoDescripcion,cantidadDesde,precio,divisaId,tipoPrecio,lastUpdated,deleted);
+
+@override
+String toString() {
+  return 'ArticuloGrupoNeto(articuloId: $articuloId, grupoNetoId: $grupoNetoId, grupoNetoDescripcion: $grupoNetoDescripcion, cantidadDesde: $cantidadDesde, precio: $precio, divisaId: $divisaId, tipoPrecio: $tipoPrecio, lastUpdated: $lastUpdated, deleted: $deleted)';
+}
+
+
 }
 
 /// @nodoc
-class __$$ArticuloGrupoNetoImplCopyWithImpl<$Res>
-    extends _$ArticuloGrupoNetoCopyWithImpl<$Res, _$ArticuloGrupoNetoImpl>
-    implements _$$ArticuloGrupoNetoImplCopyWith<$Res> {
-  __$$ArticuloGrupoNetoImplCopyWithImpl(_$ArticuloGrupoNetoImpl _value,
-      $Res Function(_$ArticuloGrupoNetoImpl) _then)
-      : super(_value, _then);
+abstract mixin class _$ArticuloGrupoNetoCopyWith<$Res> implements $ArticuloGrupoNetoCopyWith<$Res> {
+  factory _$ArticuloGrupoNetoCopyWith(_ArticuloGrupoNeto value, $Res Function(_ArticuloGrupoNeto) _then) = __$ArticuloGrupoNetoCopyWithImpl;
+@override @useResult
+$Res call({
+ String articuloId, String grupoNetoId, String grupoNetoDescripcion, int cantidadDesde, Money precio, String divisaId, int tipoPrecio, DateTime lastUpdated, bool deleted
+});
 
-  /// Create a copy of ArticuloGrupoNeto
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? articuloId = null,
-    Object? grupoNetoId = null,
-    Object? grupoNetoDescripcion = null,
-    Object? cantidadDesde = null,
-    Object? precio = null,
-    Object? divisaId = null,
-    Object? tipoPrecio = null,
-    Object? lastUpdated = null,
-    Object? deleted = null,
-  }) {
-    return _then(_$ArticuloGrupoNetoImpl(
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      grupoNetoId: null == grupoNetoId
-          ? _value.grupoNetoId
-          : grupoNetoId // ignore: cast_nullable_to_non_nullable
-              as String,
-      grupoNetoDescripcion: null == grupoNetoDescripcion
-          ? _value.grupoNetoDescripcion
-          : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
-              as String,
-      cantidadDesde: null == cantidadDesde
-          ? _value.cantidadDesde
-          : cantidadDesde // ignore: cast_nullable_to_non_nullable
-              as int,
-      precio: null == precio
-          ? _value.precio
-          : precio // ignore: cast_nullable_to_non_nullable
-              as Money,
-      divisaId: null == divisaId
-          ? _value.divisaId
-          : divisaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      tipoPrecio: null == tipoPrecio
-          ? _value.tipoPrecio
-          : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as int,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
+
+
+
 }
-
 /// @nodoc
+class __$ArticuloGrupoNetoCopyWithImpl<$Res>
+    implements _$ArticuloGrupoNetoCopyWith<$Res> {
+  __$ArticuloGrupoNetoCopyWithImpl(this._self, this._then);
 
-class _$ArticuloGrupoNetoImpl extends _ArticuloGrupoNeto {
-  const _$ArticuloGrupoNetoImpl(
-      {required this.articuloId,
-      required this.grupoNetoId,
-      required this.grupoNetoDescripcion,
-      required this.cantidadDesde,
-      required this.precio,
-      required this.divisaId,
-      required this.tipoPrecio,
-      required this.lastUpdated,
-      required this.deleted})
-      : super._();
+  final _ArticuloGrupoNeto _self;
+  final $Res Function(_ArticuloGrupoNeto) _then;
 
-  @override
-  final String articuloId;
-  @override
-  final String grupoNetoId;
-  @override
-  final String grupoNetoDescripcion;
-  @override
-  final int cantidadDesde;
-  @override
-  final Money precio;
-  @override
-  final String divisaId;
-  @override
-  final int tipoPrecio;
-  @override
-  final DateTime lastUpdated;
-  @override
-  final bool deleted;
-
-  @override
-  String toString() {
-    return 'ArticuloGrupoNeto(articuloId: $articuloId, grupoNetoId: $grupoNetoId, grupoNetoDescripcion: $grupoNetoDescripcion, cantidadDesde: $cantidadDesde, precio: $precio, divisaId: $divisaId, tipoPrecio: $tipoPrecio, lastUpdated: $lastUpdated, deleted: $deleted)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ArticuloGrupoNetoImpl &&
-            (identical(other.articuloId, articuloId) ||
-                other.articuloId == articuloId) &&
-            (identical(other.grupoNetoId, grupoNetoId) ||
-                other.grupoNetoId == grupoNetoId) &&
-            (identical(other.grupoNetoDescripcion, grupoNetoDescripcion) ||
-                other.grupoNetoDescripcion == grupoNetoDescripcion) &&
-            (identical(other.cantidadDesde, cantidadDesde) ||
-                other.cantidadDesde == cantidadDesde) &&
-            (identical(other.precio, precio) || other.precio == precio) &&
-            (identical(other.divisaId, divisaId) ||
-                other.divisaId == divisaId) &&
-            (identical(other.tipoPrecio, tipoPrecio) ||
-                other.tipoPrecio == tipoPrecio) &&
-            (identical(other.lastUpdated, lastUpdated) ||
-                other.lastUpdated == lastUpdated) &&
-            (identical(other.deleted, deleted) || other.deleted == deleted));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      articuloId,
-      grupoNetoId,
-      grupoNetoDescripcion,
-      cantidadDesde,
-      precio,
-      divisaId,
-      tipoPrecio,
-      lastUpdated,
-      deleted);
-
-  /// Create a copy of ArticuloGrupoNeto
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ArticuloGrupoNetoImplCopyWith<_$ArticuloGrupoNetoImpl> get copyWith =>
-      __$$ArticuloGrupoNetoImplCopyWithImpl<_$ArticuloGrupoNetoImpl>(
-          this, _$identity);
+/// Create a copy of ArticuloGrupoNeto
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? articuloId = null,Object? grupoNetoId = null,Object? grupoNetoDescripcion = null,Object? cantidadDesde = null,Object? precio = null,Object? divisaId = null,Object? tipoPrecio = null,Object? lastUpdated = null,Object? deleted = null,}) {
+  return _then(_ArticuloGrupoNeto(
+articuloId: null == articuloId ? _self.articuloId : articuloId // ignore: cast_nullable_to_non_nullable
+as String,grupoNetoId: null == grupoNetoId ? _self.grupoNetoId : grupoNetoId // ignore: cast_nullable_to_non_nullable
+as String,grupoNetoDescripcion: null == grupoNetoDescripcion ? _self.grupoNetoDescripcion : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
+as String,cantidadDesde: null == cantidadDesde ? _self.cantidadDesde : cantidadDesde // ignore: cast_nullable_to_non_nullable
+as int,precio: null == precio ? _self.precio : precio // ignore: cast_nullable_to_non_nullable
+as Money,divisaId: null == divisaId ? _self.divisaId : divisaId // ignore: cast_nullable_to_non_nullable
+as String,tipoPrecio: null == tipoPrecio ? _self.tipoPrecio : tipoPrecio // ignore: cast_nullable_to_non_nullable
+as int,lastUpdated: null == lastUpdated ? _self.lastUpdated : lastUpdated // ignore: cast_nullable_to_non_nullable
+as DateTime,deleted: null == deleted ? _self.deleted : deleted // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
 }
 
-abstract class _ArticuloGrupoNeto extends ArticuloGrupoNeto {
-  const factory _ArticuloGrupoNeto(
-      {required final String articuloId,
-      required final String grupoNetoId,
-      required final String grupoNetoDescripcion,
-      required final int cantidadDesde,
-      required final Money precio,
-      required final String divisaId,
-      required final int tipoPrecio,
-      required final DateTime lastUpdated,
-      required final bool deleted}) = _$ArticuloGrupoNetoImpl;
-  const _ArticuloGrupoNeto._() : super._();
 
-  @override
-  String get articuloId;
-  @override
-  String get grupoNetoId;
-  @override
-  String get grupoNetoDescripcion;
-  @override
-  int get cantidadDesde;
-  @override
-  Money get precio;
-  @override
-  String get divisaId;
-  @override
-  int get tipoPrecio;
-  @override
-  DateTime get lastUpdated;
-  @override
-  bool get deleted;
-
-  /// Create a copy of ArticuloGrupoNeto
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ArticuloGrupoNetoImplCopyWith<_$ArticuloGrupoNetoImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
+
+// dart format on

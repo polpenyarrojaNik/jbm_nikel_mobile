@@ -6,9 +6,8 @@ part of 'devolucion_estado_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$DevolucionEstadoDTOImpl _$$DevolucionEstadoDTOImplFromJson(
-        Map<String, dynamic> json) =>
-    _$DevolucionEstadoDTOImpl(
+_DevolucionEstadoDTO _$DevolucionEstadoDTOFromJson(Map<String, dynamic> json) =>
+    _DevolucionEstadoDTO(
       id: json['DEVOLUCION_ESTADO_ID'] as String,
       descripcionES: json['DESCRIPCION_ES'] as String,
       descripcionEN: json['DESCRIPCION_EN'] as String?,
@@ -28,24 +27,24 @@ _$DevolucionEstadoDTOImpl _$$DevolucionEstadoDTOImplFromJson(
       deleted: json['DELETED'] as String? ?? 'N',
     );
 
-Map<String, dynamic> _$$DevolucionEstadoDTOImplToJson(
-        _$DevolucionEstadoDTOImpl instance) =>
-    <String, dynamic>{
-      'DEVOLUCION_ESTADO_ID': instance.id,
-      'DESCRIPCION_ES': instance.descripcionES,
-      'DESCRIPCION_EN': instance.descripcionEN,
-      'DESCRIPCION_FR': instance.descripcionFR,
-      'DESCRIPCION_DE': instance.descripcionDE,
-      'DESCRIPCION_CA': instance.descripcionCA,
-      'DESCRIPCION_GB': instance.descripcionGB,
-      'DESCRIPCION_HU': instance.descripcionHU,
-      'DESCRIPCION_IT': instance.descripcionIT,
-      'DESCRIPCION_NL': instance.descripcionNL,
-      'DESCRIPCION_PT': instance.descripcionPT,
-      'DESCRIPCION_RO': instance.descripcionRO,
-      'DESCRIPCION_RU': instance.descripcionRU,
-      'DESCRIPCION_CN': instance.descripcionCN,
-      'DESCRIPCION_EL': instance.descripcionEL,
-      'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
-      'DELETED': instance.deleted,
-    };
+Map<String, dynamic> _$DevolucionEstadoDTOToJson(
+  _DevolucionEstadoDTO instance,
+) => <String, dynamic>{
+  'DEVOLUCION_ESTADO_ID': instance.id,
+  'DESCRIPCION_ES': instance.descripcionES,
+  'DESCRIPCION_EN': instance.descripcionEN,
+  'DESCRIPCION_FR': instance.descripcionFR,
+  'DESCRIPCION_DE': instance.descripcionDE,
+  'DESCRIPCION_CA': instance.descripcionCA,
+  'DESCRIPCION_GB': instance.descripcionGB,
+  'DESCRIPCION_HU': instance.descripcionHU,
+  'DESCRIPCION_IT': instance.descripcionIT,
+  'DESCRIPCION_NL': instance.descripcionNL,
+  'DESCRIPCION_PT': instance.descripcionPT,
+  'DESCRIPCION_RO': instance.descripcionRO,
+  'DESCRIPCION_RU': instance.descripcionRU,
+  'DESCRIPCION_CN': instance.descripcionCN,
+  'DESCRIPCION_EL': instance.descripcionEL,
+  'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
+  'DELETED': instance.deleted,
+};

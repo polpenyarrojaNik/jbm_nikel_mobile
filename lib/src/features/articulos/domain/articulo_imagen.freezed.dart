@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,178 +9,269 @@ part of 'articulo_imagen.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 /// @nodoc
 mixin _$ArticuloImagen {
-  String get articuloId => throw _privateConstructorUsedError;
-  String get nombreArchivo => throw _privateConstructorUsedError;
-  String get url => throw _privateConstructorUsedError;
 
-  /// Create a copy of ArticuloImagen
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ArticuloImagenCopyWith<ArticuloImagen> get copyWith =>
-      throw _privateConstructorUsedError;
+ String get articuloId; String get nombreArchivo; String get url;
+/// Create a copy of ArticuloImagen
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ArticuloImagenCopyWith<ArticuloImagen> get copyWith => _$ArticuloImagenCopyWithImpl<ArticuloImagen>(this as ArticuloImagen, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArticuloImagen&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.nombreArchivo, nombreArchivo) || other.nombreArchivo == nombreArchivo)&&(identical(other.url, url) || other.url == url));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,articuloId,nombreArchivo,url);
+
+@override
+String toString() {
+  return 'ArticuloImagen(articuloId: $articuloId, nombreArchivo: $nombreArchivo, url: $url)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ArticuloImagenCopyWith<$Res> {
-  factory $ArticuloImagenCopyWith(
-          ArticuloImagen value, $Res Function(ArticuloImagen) then) =
-      _$ArticuloImagenCopyWithImpl<$Res, ArticuloImagen>;
-  @useResult
-  $Res call({String articuloId, String nombreArchivo, String url});
-}
+abstract mixin class $ArticuloImagenCopyWith<$Res>  {
+  factory $ArticuloImagenCopyWith(ArticuloImagen value, $Res Function(ArticuloImagen) _then) = _$ArticuloImagenCopyWithImpl;
+@useResult
+$Res call({
+ String articuloId, String nombreArchivo, String url
+});
 
+
+
+
+}
 /// @nodoc
-class _$ArticuloImagenCopyWithImpl<$Res, $Val extends ArticuloImagen>
+class _$ArticuloImagenCopyWithImpl<$Res>
     implements $ArticuloImagenCopyWith<$Res> {
-  _$ArticuloImagenCopyWithImpl(this._value, this._then);
+  _$ArticuloImagenCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ArticuloImagen _self;
+  final $Res Function(ArticuloImagen) _then;
 
-  /// Create a copy of ArticuloImagen
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? articuloId = null,
-    Object? nombreArchivo = null,
-    Object? url = null,
-  }) {
-    return _then(_value.copyWith(
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      nombreArchivo: null == nombreArchivo
-          ? _value.nombreArchivo
-          : nombreArchivo // ignore: cast_nullable_to_non_nullable
-              as String,
-      url: null == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
+/// Create a copy of ArticuloImagen
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? articuloId = null,Object? nombreArchivo = null,Object? url = null,}) {
+  return _then(_self.copyWith(
+articuloId: null == articuloId ? _self.articuloId : articuloId // ignore: cast_nullable_to_non_nullable
+as String,nombreArchivo: null == nombreArchivo ? _self.nombreArchivo : nombreArchivo // ignore: cast_nullable_to_non_nullable
+as String,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [ArticuloImagen].
+extension ArticuloImagenPatterns on ArticuloImagen {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ArticuloImagen value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ArticuloImagen() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ArticuloImagen value)  $default,){
+final _that = this;
+switch (_that) {
+case _ArticuloImagen():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ArticuloImagen value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ArticuloImagen() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String articuloId,  String nombreArchivo,  String url)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ArticuloImagen() when $default != null:
+return $default(_that.articuloId,_that.nombreArchivo,_that.url);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String articuloId,  String nombreArchivo,  String url)  $default,) {final _that = this;
+switch (_that) {
+case _ArticuloImagen():
+return $default(_that.articuloId,_that.nombreArchivo,_that.url);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String articuloId,  String nombreArchivo,  String url)?  $default,) {final _that = this;
+switch (_that) {
+case _ArticuloImagen() when $default != null:
+return $default(_that.articuloId,_that.nombreArchivo,_that.url);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
-abstract class _$$ArticuloImagenImplCopyWith<$Res>
-    implements $ArticuloImagenCopyWith<$Res> {
-  factory _$$ArticuloImagenImplCopyWith(_$ArticuloImagenImpl value,
-          $Res Function(_$ArticuloImagenImpl) then) =
-      __$$ArticuloImagenImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String articuloId, String nombreArchivo, String url});
+
+
+class _ArticuloImagen extends ArticuloImagen {
+  const _ArticuloImagen({required this.articuloId, required this.nombreArchivo, required this.url}): super._();
+  
+
+@override final  String articuloId;
+@override final  String nombreArchivo;
+@override final  String url;
+
+/// Create a copy of ArticuloImagen
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ArticuloImagenCopyWith<_ArticuloImagen> get copyWith => __$ArticuloImagenCopyWithImpl<_ArticuloImagen>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticuloImagen&&(identical(other.articuloId, articuloId) || other.articuloId == articuloId)&&(identical(other.nombreArchivo, nombreArchivo) || other.nombreArchivo == nombreArchivo)&&(identical(other.url, url) || other.url == url));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,articuloId,nombreArchivo,url);
+
+@override
+String toString() {
+  return 'ArticuloImagen(articuloId: $articuloId, nombreArchivo: $nombreArchivo, url: $url)';
+}
+
+
 }
 
 /// @nodoc
-class __$$ArticuloImagenImplCopyWithImpl<$Res>
-    extends _$ArticuloImagenCopyWithImpl<$Res, _$ArticuloImagenImpl>
-    implements _$$ArticuloImagenImplCopyWith<$Res> {
-  __$$ArticuloImagenImplCopyWithImpl(
-      _$ArticuloImagenImpl _value, $Res Function(_$ArticuloImagenImpl) _then)
-      : super(_value, _then);
+abstract mixin class _$ArticuloImagenCopyWith<$Res> implements $ArticuloImagenCopyWith<$Res> {
+  factory _$ArticuloImagenCopyWith(_ArticuloImagen value, $Res Function(_ArticuloImagen) _then) = __$ArticuloImagenCopyWithImpl;
+@override @useResult
+$Res call({
+ String articuloId, String nombreArchivo, String url
+});
 
-  /// Create a copy of ArticuloImagen
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? articuloId = null,
-    Object? nombreArchivo = null,
-    Object? url = null,
-  }) {
-    return _then(_$ArticuloImagenImpl(
-      articuloId: null == articuloId
-          ? _value.articuloId
-          : articuloId // ignore: cast_nullable_to_non_nullable
-              as String,
-      nombreArchivo: null == nombreArchivo
-          ? _value.nombreArchivo
-          : nombreArchivo // ignore: cast_nullable_to_non_nullable
-              as String,
-      url: null == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
+
+
+
 }
-
 /// @nodoc
+class __$ArticuloImagenCopyWithImpl<$Res>
+    implements _$ArticuloImagenCopyWith<$Res> {
+  __$ArticuloImagenCopyWithImpl(this._self, this._then);
 
-class _$ArticuloImagenImpl extends _ArticuloImagen {
-  const _$ArticuloImagenImpl(
-      {required this.articuloId,
-      required this.nombreArchivo,
-      required this.url})
-      : super._();
+  final _ArticuloImagen _self;
+  final $Res Function(_ArticuloImagen) _then;
 
-  @override
-  final String articuloId;
-  @override
-  final String nombreArchivo;
-  @override
-  final String url;
-
-  @override
-  String toString() {
-    return 'ArticuloImagen(articuloId: $articuloId, nombreArchivo: $nombreArchivo, url: $url)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ArticuloImagenImpl &&
-            (identical(other.articuloId, articuloId) ||
-                other.articuloId == articuloId) &&
-            (identical(other.nombreArchivo, nombreArchivo) ||
-                other.nombreArchivo == nombreArchivo) &&
-            (identical(other.url, url) || other.url == url));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, articuloId, nombreArchivo, url);
-
-  /// Create a copy of ArticuloImagen
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ArticuloImagenImplCopyWith<_$ArticuloImagenImpl> get copyWith =>
-      __$$ArticuloImagenImplCopyWithImpl<_$ArticuloImagenImpl>(
-          this, _$identity);
+/// Create a copy of ArticuloImagen
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? articuloId = null,Object? nombreArchivo = null,Object? url = null,}) {
+  return _then(_ArticuloImagen(
+articuloId: null == articuloId ? _self.articuloId : articuloId // ignore: cast_nullable_to_non_nullable
+as String,nombreArchivo: null == nombreArchivo ? _self.nombreArchivo : nombreArchivo // ignore: cast_nullable_to_non_nullable
+as String,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-abstract class _ArticuloImagen extends ArticuloImagen {
-  const factory _ArticuloImagen(
-      {required final String articuloId,
-      required final String nombreArchivo,
-      required final String url}) = _$ArticuloImagenImpl;
-  const _ArticuloImagen._() : super._();
 
-  @override
-  String get articuloId;
-  @override
-  String get nombreArchivo;
-  @override
-  String get url;
-
-  /// Create a copy of ArticuloImagen
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ArticuloImagenImplCopyWith<_$ArticuloImagenImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
+
+// dart format on

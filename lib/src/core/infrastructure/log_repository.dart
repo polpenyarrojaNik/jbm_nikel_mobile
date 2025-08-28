@@ -40,7 +40,6 @@ class LogRepository {
   Future<void> insetLog({
     required String level,
     required String message,
-    String? error,
   }) async {
     final appLog = Log(
       level: level,
@@ -77,47 +76,34 @@ class LogRepository {
   }
 
   Future<List<LogDTO>> getLogsFromDb() async {
-    try {
-      final logsDto = await localDb.select(localDb.logTable).get();
-      return logsDto;
-    } catch (e) {
-      rethrow;
-    }
+    final logsDto = await localDb.select(localDb.logTable).get();
+    return logsDto;
   }
 
   Future<LogDTO> remotePostLogs({required LogDTO logDto}) async {
-    try {
-      final requestUri =
-          (usuario!.test) ? remoteLogTestEndpoint : remoteLogEndpoint;
+    final requestUri =
+        (usuario!.test) ? remoteLogTestEndpoint : remoteLogEndpoint;
 
-      final response = await dio.postUri(
-        requestUri,
-        options: Options(
-          headers: {'authorization': 'Bearer ${usuario!.provisionalToken}'},
-        ),
-        data: jsonEncode(logDto.toJson()),
-      );
-      if (response.statusCode == 200) {
-        final json = response.data['data'] as Map<String, dynamic>;
+    final response = await dio.postUri(
+      requestUri,
+      options: Options(
+        headers: {'authorization': 'Bearer ${usuario!.provisionalToken}'},
+      ),
+      data: jsonEncode(logDto.toJson()),
+    );
+    if (response.statusCode == 200) {
+      final json = response.data['data'] as Map<String, dynamic>;
 
-        return LogDTO.fromJson(json);
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
-      }
-    } catch (e) {
-      rethrow;
+      return LogDTO.fromJson(json);
     }
+    throw AppException.restApiFailure(
+      response.statusCode ?? 400,
+      response.statusMessage ?? '',
+    );
   }
 
   Future<void> deleteLogInLocalDb({required int logId}) async {
-    try {
-      await (localDb.delete(localDb.logTable)
-        ..where((tbl) => tbl.id.equals(logId))).go();
-    } catch (e) {
-      rethrow;
-    }
+    await (localDb.delete(localDb.logTable)
+      ..where((tbl) => tbl.id.equals(logId))).go();
   }
 }

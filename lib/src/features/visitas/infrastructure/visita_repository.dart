@@ -85,8 +85,11 @@ class VisitaRepository {
 
       visitas.addAll(visitasSync);
       return visitas;
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -103,8 +106,11 @@ class VisitaRepository {
       );
 
       return visitasLocalCount + visitasSyncCount;
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -128,9 +134,13 @@ class VisitaRepository {
       );
 
       vistiasListByCliente.addAll(visitas);
+
       return vistiasListByCliente;
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -141,55 +151,51 @@ class VisitaRepository {
       return !visitaIdIsLocalParam.isLocal
           ? await getVisita(visitaId: visitaIdIsLocalParam.id)
           : await getVisitaLocal(visitaAppId: visitaIdIsLocalParam.id);
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.fetchLocalDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
   Future<void> deleteVisita(String visitaAppId) async {
-    (_localDb.delete(
-      _localDb.visitaLocalTable,
-    )).where((tbl) => tbl.visitaAppId.equals(visitaAppId));
+    await (_localDb.delete(_localDb.visitaLocalTable)
+      ..where((tbl) => tbl.visitaAppId.equals(visitaAppId))).go();
   }
 
   Future<void> upsertVisita(Visita visitaLocal) async {
-    try {
-      final visitaLocalDto = VisitaLocalDTO.fromDomain(visitaLocal);
-      final visitaCompetenciaLocalDTOList =
-          visitaLocal.competenciaList
-              .map(
-                (e) => VisitaCompetenciaLocalDTO.fromDomain(
-                  visitaLocal.visitaAppId!,
-                  e,
-                ),
-              )
-              .toList();
-      final json = jsonEncode(visitaLocalDto.toJson());
-      log.d(json);
-      await insertVisitaInDb(visitaLocalDto, visitaCompetenciaLocalDTOList);
+    final visitaLocalDto = VisitaLocalDTO.fromDomain(visitaLocal);
+    final visitaCompetenciaLocalDTOList =
+        visitaLocal.competenciaList
+            .map(
+              (e) => VisitaCompetenciaLocalDTO.fromDomain(
+                visitaLocal.visitaAppId!,
+                e,
+              ),
+            )
+            .toList();
+    final json = jsonEncode(visitaLocalDto.toJson());
+    log.d(json);
+    await insertVisitaInDb(visitaLocalDto, visitaCompetenciaLocalDTOList);
 
-      try {
-        final visitaLocalEnviada = await _remoteCreateVisita(
-          visitaLocalDto,
-          visitaCompetenciaLocalDTOList,
-          _usuario!.test,
-        );
-        await updateVisitaInDB(visitaLocalDto: visitaLocalEnviada);
-      } catch (e) {
-        if (e is AppException) {
-          await e.maybeWhen(
-            orElse: () {},
-            notConnection:
-                () => updateWithError(visitaLocalDto, e.details.message),
-            restApiFailure:
-                (error, _) =>
-                    updateWithError(visitaLocalDto, e.details.message),
-          );
-          return;
-        }
-        rethrow;
-      }
+    try {
+      final visitaLocalEnviada = await _remoteCreateVisita(
+        visitaLocalDto,
+        visitaCompetenciaLocalDTOList,
+        _usuario!.test,
+      );
+      await updateVisitaInDB(visitaLocalDto: visitaLocalEnviada);
     } catch (e) {
+      if (e is AppException) {
+        await e.whenOrNull(
+          notConnection:
+              () => updateWithError(visitaLocalDto, e.details.message),
+          restApiFailure:
+              (error, _) => updateWithError(visitaLocalDto, e.details.message),
+        );
+        return;
+      }
       rethrow;
     }
   }
@@ -198,15 +204,11 @@ class VisitaRepository {
     VisitaLocalDTO visitaLocalDto,
     String errorMessage,
   ) async {
-    try {
-      await (_localDb.update(_localDb.visitaLocalTable)..where(
-        (tbl) => tbl.visitaAppId.equals(visitaLocalDto.visitaAppId!),
-      )).write(
-        local.VisitaLocalTableCompanion(errorSyncMessage: Value(errorMessage)),
-      );
-    } catch (e) {
-      rethrow;
-    }
+    await (_localDb.update(_localDb.visitaLocalTable)..where(
+      (tbl) => tbl.visitaAppId.equals(visitaLocalDto.visitaAppId!),
+    )).write(
+      local.VisitaLocalTableCompanion(errorSyncMessage: Value(errorMessage)),
+    );
   }
 
   Future<void> insertVisitaInDb(
@@ -223,8 +225,11 @@ class VisitaRepository {
             .into(_localDb.visitaCompetenciaLocalTable)
             .insertOnConflictUpdate(visitaCompetenciaLocalDto);
       }
-    } catch (e) {
-      throw AppException.insertDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.insertDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -248,7 +253,9 @@ class VisitaRepository {
       final response = await _dio.postUri(
         requestUri,
         options: Options(
-          headers: {'authorization': 'Bearer ${_usuario?.provisionalToken}'},
+          headers: {
+            'authorization': 'Bearer ${_usuario?.provisionalToken ?? ''}',
+          },
         ),
         data: jsonEncode(visitaLocalDto.toApi(visitaCompetenciaDtoList)),
       );
@@ -256,34 +263,41 @@ class VisitaRepository {
         final json = response.data['data'] as Map<String, dynamic>;
 
         return VisitaLocalDTO.fromJson(json);
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
       }
-    } on DioException catch (e) {
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
+    } on DioException catch (e, stackTrace) {
       String? errorDetalle;
       if (e.isNoConnectionError) {
-        throw const AppException.notConnection();
+        Error.throwWithStackTrace(
+          const AppException.notConnection(),
+          stackTrace,
+        );
       }
       final responseErrorJson =
           (e.response?.data is List<int>)
               ? e.response?.statusMessage
-              : e.response?.data['detalle'] ?? e.response?.data['message'];
+              : (e.response?.data['detalle'] ?? e.response?.data['message']);
       if (responseErrorJson != null) {
         errorDetalle = responseErrorJson as String?;
 
-        throw AppException.restApiFailure(
-          e.response?.statusCode ?? 400,
-          errorDetalle ?? '',
-        );
-      } else {
-        throw AppException.restApiFailure(
-          e.response?.statusCode ?? 400,
-          e.response?.statusMessage ?? '',
+        Error.throwWithStackTrace(
+          AppException.restApiFailure(
+            e.response?.statusCode ?? 400,
+            errorDetalle ?? '',
+          ),
+          stackTrace,
         );
       }
+      Error.throwWithStackTrace(
+        AppException.restApiFailure(
+          e.response?.statusCode ?? 400,
+          e.response?.statusMessage ?? '',
+        ),
+        stackTrace,
+      );
     } catch (e) {
       rethrow;
     }
@@ -294,8 +308,11 @@ class VisitaRepository {
   }) async {
     try {
       await _localDb.update(_localDb.visitaLocalTable).replace(visitaLocalDto);
-    } catch (e) {
-      throw AppException.insertDataFailure(e.toString());
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        AppException.insertDataFailure(e.toString()),
+        stackTrace,
+      );
     }
   }
 
@@ -304,150 +321,139 @@ class VisitaRepository {
     required String usuarioId,
     String? clienteId,
   }) async {
-    try {
-      final visitaLocalList = <Visita>[];
-      final query = _localDb.select(_localDb.visitaLocalTable)..join([]);
+    final visitaLocalList = <Visita>[];
+    final query = _localDb.select(_localDb.visitaLocalTable)..join([]);
 
-      query.where((tbl) => tbl.tratada.equals('N'));
+    query.where((tbl) => tbl.tratada.equals('N'));
 
-      if (searchText != '') {
-        final busqueda = searchText.toUpperCase().split(' ');
-        Expression<bool>? predicate;
-        for (var i = 0; i < busqueda.length; i++) {
-          predicate =
-              predicate == null
-                  ? (_localDb.visitaLocalTable.resumen.like('%$searchText%') |
-                      _localDb.visitaLocalTable.clienteId.like(
-                        '%$searchText%',
-                      ) |
-                      _localDb.visitaLocalTable.clienteProvisionalNombre.like(
-                        '%$searchText%',
-                      ) |
-                      _localDb.visitaLocalTable.clienteProvisionalEmail.like(
-                        '%$searchText%',
-                      ) |
-                      _localDb.visitaLocalTable.clienteProvisionalTelefono.like(
-                        '%$searchText%',
-                      ) |
-                      _localDb.visitaLocalTable.clienteProvisionalPoblacion
-                          .like('%$searchText%') |
-                      _localDb.visitaLocalTable.contacto.like('%$searchText%'))
-                  : predicate &
-                      (_localDb.visitaLocalTable.resumen.like('%$searchText%') |
-                          _localDb.visitaLocalTable.clienteId.like(
-                            '%$searchText%',
-                          ) |
-                          _localDb.visitaLocalTable.clienteProvisionalNombre
-                              .like('%$searchText%') |
-                          _localDb.visitaLocalTable.clienteProvisionalEmail
-                              .like('%$searchText%') |
-                          _localDb.visitaLocalTable.clienteProvisionalTelefono
-                              .like('%$searchText%') |
-                          _localDb.visitaLocalTable.clienteProvisionalPoblacion
-                              .like('%$searchText%') |
-                          _localDb.visitaLocalTable.contacto.like(
-                            '%$searchText%',
-                          ));
-        }
-        query.where((tbl) => predicate!);
+    if (searchText != '') {
+      final busqueda = searchText.toUpperCase().split(' ');
+      Expression<bool>? predicate;
+      for (var i = 0; i < busqueda.length; i++) {
+        predicate =
+            predicate == null
+                ? (_localDb.visitaLocalTable.resumen.like('%$searchText%') |
+                    _localDb.visitaLocalTable.clienteId.like('%$searchText%') |
+                    _localDb.visitaLocalTable.clienteProvisionalNombre.like(
+                      '%$searchText%',
+                    ) |
+                    _localDb.visitaLocalTable.clienteProvisionalEmail.like(
+                      '%$searchText%',
+                    ) |
+                    _localDb.visitaLocalTable.clienteProvisionalTelefono.like(
+                      '%$searchText%',
+                    ) |
+                    _localDb.visitaLocalTable.clienteProvisionalPoblacion.like(
+                      '%$searchText%',
+                    ) |
+                    _localDb.visitaLocalTable.contacto.like('%$searchText%'))
+                : predicate &
+                    (_localDb.visitaLocalTable.resumen.like('%$searchText%') |
+                        _localDb.visitaLocalTable.clienteId.like(
+                          '%$searchText%',
+                        ) |
+                        _localDb.visitaLocalTable.clienteProvisionalNombre.like(
+                          '%$searchText%',
+                        ) |
+                        _localDb.visitaLocalTable.clienteProvisionalEmail.like(
+                          '%$searchText%',
+                        ) |
+                        _localDb.visitaLocalTable.clienteProvisionalTelefono
+                            .like('%$searchText%') |
+                        _localDb.visitaLocalTable.clienteProvisionalPoblacion
+                            .like('%$searchText%') |
+                        _localDb.visitaLocalTable.contacto.like(
+                          '%$searchText%',
+                        ));
       }
+      query.where((tbl) => predicate!);
+    }
 
-      if (clienteId != null) {
-        query.where((tbl) => tbl.clienteId.equals(clienteId));
-      }
+    if (clienteId != null) {
+      query.where((tbl) => tbl.clienteId.equals(clienteId));
+    }
 
-      query.orderBy([
-        (tbl) => OrderingTerm.asc(tbl.enviada),
-        (tbl) => OrderingTerm.desc(tbl.fecha),
-      ]);
+    query.orderBy([
+      (tbl) => OrderingTerm.asc(tbl.enviada),
+      (tbl) => OrderingTerm.desc(tbl.fecha),
+    ]);
 
-      final visitaLocalDTOList = await query.get();
+    final visitaLocalDTOList = await query.get();
 
-      for (var i = 0; i < visitaLocalDTOList.length; i++) {
-        final visitaLocalDTO = visitaLocalDTOList[i];
-        final clienteUsuarioDTO =
-            await (_remoteDb.select(_remoteDb.clienteUsuarioTable)..where(
-              (tbl) =>
-                  tbl.clienteId.equalsNullable(visitaLocalDTO.clienteId) &
-                  tbl.usuarioId.equals(usuarioId),
+    for (var i = 0; i < visitaLocalDTOList.length; i++) {
+      final visitaLocalDTO = visitaLocalDTOList[i];
+      final clienteUsuarioDTO =
+          await (_remoteDb.select(_remoteDb.clienteUsuarioTable)..where(
+            (tbl) =>
+                tbl.clienteId.equalsNullable(visitaLocalDTO.clienteId) &
+                tbl.usuarioId.equals(usuarioId),
+          )).getSingleOrNull();
+
+      if (clienteUsuarioDTO != null ||
+          (visitaLocalDTO.numEmpl == usuarioId &&
+              visitaLocalDTO.clienteId == null)) {
+        final clienteDTO =
+            await (_remoteDb.select(_remoteDb.clienteTable)..where(
+              (tbl) => tbl.id.equalsNullable(visitaLocalDTO.clienteId),
             )).getSingleOrNull();
 
-        if (clienteUsuarioDTO != null ||
-            (visitaLocalDTO.numEmpl == usuarioId &&
-                visitaLocalDTO.clienteId == null)) {
-          final clienteDTO =
-              await (_remoteDb.select(_remoteDb.clienteTable)..where(
-                (tbl) => tbl.id.equalsNullable(visitaLocalDTO.clienteId),
-              )).getSingleOrNull();
-
-          final provinciaDTO =
-              await (_remoteDb.select(_remoteDb.provinciaTable)..where(
-                (tbl) => tbl.provinciaId.equalsNullable(
-                  visitaLocalDTO.clienteProvisionalProvinciaId,
-                ),
-              )).getSingleOrNull();
-
-          final paisDTO =
-              await (_remoteDb.select(_remoteDb.paisTable)..where(
-                (tbl) => tbl.id.equalsNullable(
-                  visitaLocalDTO.clienteProvisionalPaisId,
-                ),
-              )).getSingleOrNull();
-
-          final motivoNoInteresDTO =
-              await (_remoteDb.select(
-                _remoteDb.visitaMotivoNoVentaTable,
-              )..where(
-                (tbl) =>
-                    tbl.id.equalsNullable(visitaLocalDTO.codigoMotivoNoInteres),
-              )).getSingleOrNull();
-
-          final motivoNoPedidoDTO =
-              await (_remoteDb.select(
-                _remoteDb.visitaMotivoNoVentaTable,
-              )..where(
-                (tbl) =>
-                    tbl.id.equalsNullable(visitaLocalDTO.codigoMotivoNoPedido),
-              )).getSingleOrNull();
-
-          final visitaSectorDTO =
-              await (_remoteDb.select(_remoteDb.visitaSectorTable)..where(
-                (tbl) => tbl.id.equalsNullable(visitaLocalDTO.codigoSector),
-              )).getSingleOrNull();
-
-          final visitaCompetenciaLocalListDTO =
-              await (_localDb.select(
-                _localDb.visitaCompetenciaLocalTable,
-              )..where(
-                (tbl) =>
-                    tbl.visitaAppId.equalsNullable(visitaLocalDTO.visitaAppId),
-              )).get();
-
-          final competenciaDtoList =
-              await _getCompetidorsFromVistasCompetenciaLocalDTOList(
-                visitaCompetenciaLocalListDTO,
-              );
-
-          visitaLocalList.add(
-            visitaLocalDTO.toDomain(
-              cliente: clienteDTO?.toDomain(
-                clienteDireccionPredeterminada: null,
+        final provinciaDTO =
+            await (_remoteDb.select(_remoteDb.provinciaTable)..where(
+              (tbl) => tbl.provinciaId.equalsNullable(
+                visitaLocalDTO.clienteProvisionalProvinciaId,
               ),
-              provincia: provinciaDTO?.toDomain(),
-              pais: paisDTO?.toDomain(),
-              motivoNoInteres: motivoNoInteresDTO?.toDomain(),
-              motivoNoPedido: motivoNoPedidoDTO?.toDomain(),
-              sector: visitaSectorDTO?.toDomain(),
-              competenciaList: competenciaDtoList,
-            ),
-          );
-        }
-      }
+            )).getSingleOrNull();
 
-      return visitaLocalList;
-    } catch (e) {
-      rethrow;
+        final paisDTO =
+            await (_remoteDb.select(_remoteDb.paisTable)..where(
+              (tbl) => tbl.id.equalsNullable(
+                visitaLocalDTO.clienteProvisionalPaisId,
+              ),
+            )).getSingleOrNull();
+
+        final motivoNoInteresDTO =
+            await (_remoteDb.select(_remoteDb.visitaMotivoNoVentaTable)..where(
+              (tbl) =>
+                  tbl.id.equalsNullable(visitaLocalDTO.codigoMotivoNoInteres),
+            )).getSingleOrNull();
+
+        final motivoNoPedidoDTO =
+            await (_remoteDb.select(_remoteDb.visitaMotivoNoVentaTable)..where(
+              (tbl) =>
+                  tbl.id.equalsNullable(visitaLocalDTO.codigoMotivoNoPedido),
+            )).getSingleOrNull();
+
+        final visitaSectorDTO =
+            await (_remoteDb.select(_remoteDb.visitaSectorTable)..where(
+              (tbl) => tbl.id.equalsNullable(visitaLocalDTO.codigoSector),
+            )).getSingleOrNull();
+
+        final visitaCompetenciaLocalListDTO =
+            await (_localDb.select(_localDb.visitaCompetenciaLocalTable)..where(
+              (tbl) =>
+                  tbl.visitaAppId.equalsNullable(visitaLocalDTO.visitaAppId),
+            )).get();
+
+        final competenciaDtoList =
+            await _getCompetidorsFromVistasCompetenciaLocalDTOList(
+              visitaCompetenciaLocalListDTO,
+            );
+
+        visitaLocalList.add(
+          visitaLocalDTO.toDomain(
+            cliente: clienteDTO?.toDomain(clienteDireccionPredeterminada: null),
+            provincia: provinciaDTO?.toDomain(),
+            pais: paisDTO?.toDomain(),
+            motivoNoInteres: motivoNoInteresDTO?.toDomain(),
+            motivoNoPedido: motivoNoPedidoDTO?.toDomain(),
+            sector: visitaSectorDTO?.toDomain(),
+            competenciaList: competenciaDtoList,
+          ),
+        );
+      }
     }
+
+    return visitaLocalList;
   }
 
   Future<int> getVisitasLocalCount({
@@ -455,82 +461,78 @@ class VisitaRepository {
     required String usuarioId,
     String? clienteId,
   }) async {
-    try {
-      //TODO Count visita correctamente.
+    //TODO Count visita correctamente.
 
-      // final countExp = _localDb.visitaLocalTable.visitaAppId.count();
+    // final countExp = _localDb.visitaLocalTable.visitaAppId.count();
 
-      // final query = _remoteDb.selectOnly(_remoteDb.visitaLocalTable).join([
-      //   leftOuterJoin(
-      //     _remoteDb.clienteTable,
-      //     _remoteDb.clienteTable.id
-      //         .equalsExp(_remoteDb.visitaLocalTable.clienteId),
-      //   ),
-      //   leftOuterJoin(
-      //     _remoteDb.clienteUsuarioTable,
-      //     _remoteDb.clienteUsuarioTable.clienteId
-      //         .equalsExp(_remoteDb.clienteTable.id),
-      //   )
-      // ]);
+    // final query = _remoteDb.selectOnly(_remoteDb.visitaLocalTable).join([
+    //   leftOuterJoin(
+    //     _remoteDb.clienteTable,
+    //     _remoteDb.clienteTable.id
+    //         .equalsExp(_remoteDb.visitaLocalTable.clienteId),
+    //   ),
+    //   leftOuterJoin(
+    //     _remoteDb.clienteUsuarioTable,
+    //     _remoteDb.clienteUsuarioTable.clienteId
+    //         .equalsExp(_remoteDb.clienteTable.id),
+    //   )
+    // ]);
 
-      // query.where(_remoteDb.visitaLocalTable.tratada.equals('N') &
-      //     (_remoteDb.clienteUsuarioTable.usuarioId.equals(usuarioId) |
-      //         (_remoteDb.visitaLocalTable.numEmpl.equals(usuarioId) &
-      //             _remoteDb.visitaLocalTable.clienteId.isNull())));
+    // query.where(_remoteDb.visitaLocalTable.tratada.equals('N') &
+    //     (_remoteDb.clienteUsuarioTable.usuarioId.equals(usuarioId) |
+    //         (_remoteDb.visitaLocalTable.numEmpl.equals(usuarioId) &
+    //             _remoteDb.visitaLocalTable.clienteId.isNull())));
 
-      // if (searchText != '') {
-      //   final busqueda = searchText.split(' ');
-      //   Expression<bool>? predicate;
-      //   for (var i = 0; i < busqueda.length; i++) {
-      //     if (predicate == null) {
-      //       predicate =
-      //           (_remoteDb.visitaLocalTable.resumen.like('%$searchText%') |
-      //               _remoteDb.visitaLocalTable.clienteId.like('%$searchText%') |
-      //               _remoteDb.visitaLocalTable.clienteProvisionalNombre
-      //                   .like('%$searchText%') |
-      //               _remoteDb.visitaLocalTable.clienteProvisionalEmail
-      //                   .like('%$searchText%') |
-      //               _remoteDb.visitaLocalTable.clienteProvisionalTelefono
-      //                   .like('%$searchText%') |
-      //               _remoteDb.visitaLocalTable.clienteProvisionalPoblacion
-      //                   .like('%$searchText%') |
-      //               _remoteDb.visitaLocalTable.contacto.like('%$searchText%'));
-      //     } else {
-      //       predicate = predicate &
-      //           (_remoteDb.visitaLocalTable.resumen.like('%$searchText%') |
-      //               _remoteDb.visitaLocalTable.clienteId.like('%$searchText%') |
-      //               _remoteDb.visitaLocalTable.clienteProvisionalNombre
-      //                   .like('%$searchText%') |
-      //               _remoteDb.visitaLocalTable.clienteProvisionalEmail
-      //                   .like('%$searchText%') |
-      //               _remoteDb.visitaLocalTable.clienteProvisionalTelefono
-      //                   .like('%$searchText%') |
-      //               _remoteDb.visitaLocalTable.clienteProvisionalPoblacion
-      //                   .like('%$searchText%') |
-      //               _remoteDb.visitaLocalTable.contacto.like('%$searchText%'));
-      //     }
-      //   }
-      //   query.where(predicate!);
-      // }
+    // if (searchText != '') {
+    //   final busqueda = searchText.split(' ');
+    //   Expression<bool>? predicate;
+    //   for (var i = 0; i < busqueda.length; i++) {
+    //     if (predicate == null) {
+    //       predicate =
+    //           (_remoteDb.visitaLocalTable.resumen.like('%$searchText%') |
+    //               _remoteDb.visitaLocalTable.clienteId.like('%$searchText%') |
+    //               _remoteDb.visitaLocalTable.clienteProvisionalNombre
+    //                   .like('%$searchText%') |
+    //               _remoteDb.visitaLocalTable.clienteProvisionalEmail
+    //                   .like('%$searchText%') |
+    //               _remoteDb.visitaLocalTable.clienteProvisionalTelefono
+    //                   .like('%$searchText%') |
+    //               _remoteDb.visitaLocalTable.clienteProvisionalPoblacion
+    //                   .like('%$searchText%') |
+    //               _remoteDb.visitaLocalTable.contacto.like('%$searchText%'));
+    //     } else {
+    //       predicate = predicate &
+    //           (_remoteDb.visitaLocalTable.resumen.like('%$searchText%') |
+    //               _remoteDb.visitaLocalTable.clienteId.like('%$searchText%') |
+    //               _remoteDb.visitaLocalTable.clienteProvisionalNombre
+    //                   .like('%$searchText%') |
+    //               _remoteDb.visitaLocalTable.clienteProvisionalEmail
+    //                   .like('%$searchText%') |
+    //               _remoteDb.visitaLocalTable.clienteProvisionalTelefono
+    //                   .like('%$searchText%') |
+    //               _remoteDb.visitaLocalTable.clienteProvisionalPoblacion
+    //                   .like('%$searchText%') |
+    //               _remoteDb.visitaLocalTable.contacto.like('%$searchText%'));
+    //     }
+    //   }
+    //   query.where(predicate!);
+    // }
 
-      // if (clienteId != null) {
-      //   query.where(_remoteDb.visitaLocalTable.clienteId.equals(clienteId));
-      // }
+    // if (clienteId != null) {
+    //   query.where(_remoteDb.visitaLocalTable.clienteId.equals(clienteId));
+    // }
 
-      // query.addColumns([countExp]);
+    // query.addColumns([countExp]);
 
-      // final count = await query.map((row) => row.read(countExp)).getSingle();
-      // return count ?? 0;
+    // final count = await query.map((row) => row.read(countExp)).getSingle();
+    // return count ?? 0;
 
-      final visitaLocalList = await getVisitasLocal(
-        searchText: searchText,
-        usuarioId: usuarioId,
-        clienteId: clienteId,
-      );
-      return visitaLocalList.length;
-    } catch (e) {
-      rethrow;
-    }
+    final visitaLocalList = await getVisitasLocal(
+      searchText: searchText,
+      usuarioId: usuarioId,
+      clienteId: clienteId,
+    );
+    return visitaLocalList.length;
   }
 
   Future<List<Visita>> getVisitas({
@@ -538,7 +540,7 @@ class VisitaRepository {
     required int page,
     required String searchText,
     String? clienteId,
-  }) async {
+  }) {
     final query = _remoteDb.select(_remoteDb.visitaTable).join([
       leftOuterJoin(
         _remoteDb.clienteTable,
@@ -712,7 +714,7 @@ class VisitaRepository {
     return count ?? 0;
   }
 
-  Future<Visita> getVisita({required String visitaId}) async {
+  Future<Visita> getVisita({required String visitaId}) {
     final query = _remoteDb.select(_remoteDb.visitaTable).join([
       leftOuterJoin(
         _remoteDb.clienteTable,
@@ -867,64 +869,50 @@ class VisitaRepository {
   }
 
   Future<DateTime> getLastSyncDate() async {
-    try {
-      final lastSyncDTO =
-          await _localDb.select(_localDb.syncDateTimeTable).getSingle();
-      return lastSyncDTO.visitaUltimaSync;
-    } catch (e) {
-      rethrow;
-    }
+    final lastSyncDTO =
+        await _localDb.select(_localDb.syncDateTimeTable).getSingle();
+    return lastSyncDTO.visitaUltimaSync;
   }
 
   Future<bool> existClientePotencialPhone(String phoneValue) async {
-    try {
-      final visitasList =
-          await (_remoteDb.select(_remoteDb.visitaTable)..where(
-            (tbl) => tbl.clienteProvisionalTelefono.equals(phoneValue),
-          )).get();
+    final visitasList =
+        await (_remoteDb.select(_remoteDb.visitaTable)..where(
+          (tbl) => tbl.clienteProvisionalTelefono.equals(phoneValue),
+        )).get();
 
-      final clienteContactoList =
-          await (_remoteDb.select(_remoteDb.clienteContactoTable)..where(
-            (tbl) =>
-                tbl.telefono1.equals(phoneValue) |
-                tbl.telefono2.equals(phoneValue),
-          )).get();
+    final clienteContactoList =
+        await (_remoteDb.select(_remoteDb.clienteContactoTable)..where(
+          (tbl) =>
+              tbl.telefono1.equals(phoneValue) |
+              tbl.telefono2.equals(phoneValue),
+        )).get();
 
-      return visitasList.isNotEmpty || clienteContactoList.isNotEmpty;
-    } catch (e) {
-      rethrow;
-    }
+    return visitasList.isNotEmpty || clienteContactoList.isNotEmpty;
   }
 
   Future<bool> existClientePotencialEmail(String emailValue) async {
-    try {
-      final visitasList =
-          await (_remoteDb.select(_remoteDb.visitaTable)..where(
-            (tbl) => tbl.clienteProvisionalEmail.equals(emailValue),
-          )).get();
+    final visitasList =
+        await (_remoteDb.select(_remoteDb.visitaTable)..where(
+          (tbl) => tbl.clienteProvisionalEmail.equals(emailValue),
+        )).get();
 
-      final clienteContactoList =
-          await (_remoteDb.select(_remoteDb.clienteContactoTable)
-            ..where((tbl) => tbl.email.equals(emailValue))).get();
+    final clienteContactoList =
+        await (_remoteDb.select(_remoteDb.clienteContactoTable)
+          ..where((tbl) => tbl.email.equals(emailValue))).get();
 
-      return visitasList.isNotEmpty || clienteContactoList.isNotEmpty;
-    } catch (e) {
-      rethrow;
-    }
+    return visitasList.isNotEmpty || clienteContactoList.isNotEmpty;
   }
 
   String descripcionSegunLocale(String searchText) {
     final currentLocale = Intl.getCurrentLocale();
 
     switch (currentLocale) {
-      case 'es':
-        return "DESCRIPCION_ES LIKE '%$searchText%'";
       case 'en':
         return "DESCRIPCION_EN LIKE '%$searchText%' OR DESCRIPCION_ES LIKE '%$searchText%'";
       case 'fr':
         return "DESCRIPCION_FR LIKE '%$searchText%' OR DESCRIPCION_ES LIKE '%$searchText%'";
       case 'de':
-        return "DESCRIPCION_EN LIKE '%$searchText%' OR DESCRIPCION_ES LIKE '%$searchText%'";
+        return "DESCRIPCION_DE LIKE '%$searchText%' OR DESCRIPCION_ES LIKE '%$searchText%'";
 
       case 'it':
         return "DESCRIPCION_IT LIKE '%$searchText%' OR DESCRIPCION_ES LIKE '%$searchText%'";
@@ -938,17 +926,17 @@ class VisitaRepository {
     final currentLocale = Intl.getCurrentLocale();
 
     switch (currentLocale) {
-      case 'es':
-        return "DESCRIPCION_ES";
+      // case 'es':
+      //   return "DESCRIPCION_ES";
       case 'en':
-        return "DESCRIPCION_ES";
+        return "DESCRIPCION_EN";
       case 'fr':
-        return "DESCRIPCION_ES";
+        return "DESCRIPCION_FR";
       case 'de':
-        return "DESCRIPCION_ES";
+        return "DESCRIPCION_DE";
 
       case 'it':
-        return "DESCRIPCION_ES";
+        return "DESCRIPCION_IT";
 
       default:
         return "DESCRIPCION_ES";
@@ -1021,38 +1009,49 @@ class VisitaRepository {
       if (annotations.isNotEmpty) {
         for (final annotation in annotations) {
           for (final entity in annotation.entities) {
-            if (entity.type == EntityType.phone) {
-              ocrReconginzedTextList.add(
-                OcrRecognizedText(
-                  annotation.text,
-                  RecognizedTextType.telf,
-                  telfText: annotation.text,
-                ),
-              );
-            } else if (entity.type == EntityType.email) {
-              ocrReconginzedTextList.add(
-                OcrRecognizedText(
-                  annotation.text,
-                  RecognizedTextType.email,
-                  emailText: annotation.text,
-                ),
-              );
-            } else if (entity.type == EntityType.url) {
-              ocrReconginzedTextList.add(
-                OcrRecognizedText(
-                  annotation.text,
-                  RecognizedTextType.website,
-                  websiteText: annotation.text,
-                ),
-              );
-            } else if (entity.type == EntityType.address) {
-              ocrReconginzedTextList.add(
-                OcrRecognizedText(annotation.text, RecognizedTextType.address),
-              );
-            } else {
-              ocrReconginzedTextList.add(
-                OcrRecognizedText(annotation.text, RecognizedTextType.unknown),
-              );
+            switch (entity.type) {
+              case EntityType.phone:
+                ocrReconginzedTextList.add(
+                  OcrRecognizedText(
+                    annotation.text,
+                    RecognizedTextType.telf,
+                    telfText: annotation.text,
+                  ),
+                );
+                break;
+              case EntityType.email:
+                ocrReconginzedTextList.add(
+                  OcrRecognizedText(
+                    annotation.text,
+                    RecognizedTextType.email,
+                    emailText: annotation.text,
+                  ),
+                );
+                break;
+              case EntityType.url:
+                ocrReconginzedTextList.add(
+                  OcrRecognizedText(
+                    annotation.text,
+                    RecognizedTextType.website,
+                    websiteText: annotation.text,
+                  ),
+                );
+                break;
+              case EntityType.address:
+                ocrReconginzedTextList.add(
+                  OcrRecognizedText(
+                    annotation.text,
+                    RecognizedTextType.address,
+                  ),
+                );
+                break;
+              default:
+                ocrReconginzedTextList.add(
+                  OcrRecognizedText(
+                    recognizedLines[i],
+                    RecognizedTextType.unknown,
+                  ),
+                );
             }
           }
         }
@@ -1146,41 +1145,50 @@ class VisitaRepository {
       final response = await _dio.getUri(
         requestUri,
         options: Options(
-          headers: {'authorization': 'Bearer ${_usuario?.provisionalToken}'},
+          headers: {
+            'authorization': 'Bearer ${_usuario?.provisionalToken ?? ''}',
+          },
         ),
       );
       if (response.statusCode == 200) {
         final json = response.data['data'] as Map<String, dynamic>;
 
         return GeolocationEntityDTO.fromJson(json);
-      } else {
-        throw AppException.restApiFailure(
-          response.statusCode ?? 400,
-          response.statusMessage ?? '',
-        );
       }
-    } on DioException catch (e) {
+      throw AppException.restApiFailure(
+        response.statusCode ?? 400,
+        response.statusMessage ?? '',
+      );
+    } on DioException catch (e, stackTrace) {
       String? errorDetalle;
       if (e.isNoConnectionError) {
-        throw const AppException.notConnection();
+        Error.throwWithStackTrace(
+          const AppException.notConnection(),
+          stackTrace,
+        );
       }
       final responseErrorJson =
           (e.response?.data is List<int>)
               ? e.response?.statusMessage
-              : e.response?.data['detalle'] ?? e.response?.data['message'];
+              : (e.response?.data['detalle'] ?? e.response?.data['message']);
       if (responseErrorJson != null) {
         errorDetalle = responseErrorJson as String?;
 
-        throw AppException.restApiFailure(
-          e.response?.statusCode ?? 400,
-          errorDetalle ?? '',
-        );
-      } else {
-        throw AppException.restApiFailure(
-          e.response?.statusCode ?? 400,
-          e.response?.statusMessage ?? '',
+        Error.throwWithStackTrace(
+          AppException.restApiFailure(
+            e.response?.statusCode ?? 400,
+            errorDetalle ?? '',
+          ),
+          stackTrace,
         );
       }
+      Error.throwWithStackTrace(
+        AppException.restApiFailure(
+          e.response?.statusCode ?? 400,
+          e.response?.statusMessage ?? '',
+        ),
+        stackTrace,
+      );
     } catch (e) {
       rethrow;
     }

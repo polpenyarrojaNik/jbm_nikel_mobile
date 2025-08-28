@@ -12,17 +12,20 @@ String _$catalogoIndexScreenControllerHash() =>
 /// See also [CatalogoIndexScreenController].
 @ProviderFor(CatalogoIndexScreenController)
 final catalogoIndexScreenControllerProvider = AutoDisposeAsyncNotifierProvider<
-    CatalogoIndexScreenController, List<Catalogo>>.internal(
+  CatalogoIndexScreenController,
+  List<Catalogo>
+>.internal(
   CatalogoIndexScreenController.new,
   name: r'catalogoIndexScreenControllerProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$catalogoIndexScreenControllerHash,
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$catalogoIndexScreenControllerHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$CatalogoIndexScreenController
-    = AutoDisposeAsyncNotifier<List<Catalogo>>;
+typedef _$CatalogoIndexScreenController =
+    AutoDisposeAsyncNotifier<List<Catalogo>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

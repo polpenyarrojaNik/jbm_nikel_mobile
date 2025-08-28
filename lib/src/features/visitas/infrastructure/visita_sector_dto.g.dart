@@ -6,9 +6,8 @@ part of 'visita_sector_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$VisitaSectorDTOImpl _$$VisitaSectorDTOImplFromJson(
-        Map<String, dynamic> json) =>
-    _$VisitaSectorDTOImpl(
+_VisitaSectorDTO _$VisitaSectorDTOFromJson(Map<String, dynamic> json) =>
+    _VisitaSectorDTO(
       id: (json['CODIGO'] as num).toInt(),
       descripcionES: json['DESCRIPCION_ES'] as String,
       descripcionEN: json['DESCRIPCION_EN'] as String?,
@@ -24,8 +23,7 @@ _$VisitaSectorDTOImpl _$$VisitaSectorDTOImplFromJson(
       deleted: json['DELETED'] as String? ?? 'N',
     );
 
-Map<String, dynamic> _$$VisitaSectorDTOImplToJson(
-        _$VisitaSectorDTOImpl instance) =>
+Map<String, dynamic> _$VisitaSectorDTOToJson(_VisitaSectorDTO instance) =>
     <String, dynamic>{
       'CODIGO': instance.id,
       'DESCRIPCION_ES': instance.descripcionES,
