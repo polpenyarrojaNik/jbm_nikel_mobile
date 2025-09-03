@@ -7,7 +7,7 @@ part of 'visita_edit_page_controller.dart';
 // **************************************************************************
 
 String _$visitaSectorListFormDropdownControllerHash() =>
-    r'4cfabc265d25c9c149c9c5e35c1e534b06007291';
+    r'4bccb6b3ddccb0a65abaad9bc9b1c9bdb950b374';
 
 /// See also [VisitaSectorListFormDropdownController].
 @ProviderFor(VisitaSectorListFormDropdownController)
@@ -29,7 +29,7 @@ final visitaSectorListFormDropdownControllerProvider =
 typedef _$VisitaSectorListFormDropdownController =
     AutoDisposeAsyncNotifier<List<VisitaSector>>;
 String _$visitaCompetidorListFormDropdownControllerHash() =>
-    r'8686e227ccb24d10ee521125a6187f628851acfe';
+    r'5b074473c8d07d0faf86556de1c007f72be10edb';
 
 /// See also [VisitaCompetidorListFormDropdownController].
 @ProviderFor(VisitaCompetidorListFormDropdownController)
@@ -51,7 +51,7 @@ final visitaCompetidorListFormDropdownControllerProvider =
 typedef _$VisitaCompetidorListFormDropdownController =
     AutoDisposeAsyncNotifier<List<VisitaCompetidor>>;
 String _$visitaMotivosNoVentaListFormDropdownControllerHash() =>
-    r'cd09d7e0d21bcc1fc8078999a4d1c634143a5cfc';
+    r'50b7ac18e047c8ebba1ade5888702ea0a33d4752';
 
 /// See also [VisitaMotivosNoVentaListFormDropdownController].
 @ProviderFor(VisitaMotivosNoVentaListFormDropdownController)

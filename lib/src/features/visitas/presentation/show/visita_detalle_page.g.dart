@@ -7,7 +7,7 @@ part of 'visita_detalle_page.dart';
 // **************************************************************************
 
 String _$visitaDetalleControllerHash() =>
-    r'10aa84b14200aedb7dfbec1043008c556c92acac';
+    r'1265ee52bba3d1070d15621ace58636a55b80f46';
 
 /// Copied from Dart SDK
 class _SystemHash {

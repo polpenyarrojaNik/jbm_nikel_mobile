@@ -7,7 +7,7 @@ part of 'articulo_detalle_page.dart';
 // **************************************************************************
 
 String _$articuloDetalleAddArticuloABorradorButtonControllerHash() =>
-    r'f0c57a89b2164ee0201c9da4e7759b2cae6cefc4';
+    r'359327836b4e87bf5ca5a20d045ad953ec89b46b';
 
 /// See also [ArticuloDetalleAddArticuloABorradorButtonController].
 @ProviderFor(ArticuloDetalleAddArticuloABorradorButtonController)

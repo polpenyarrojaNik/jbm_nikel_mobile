@@ -514,9 +514,7 @@ class _IconStepperState extends State<IconStepper>
                   if (states.contains(WidgetState.disabled)) {
                     return null;
                   }
-                  return _isDark()
-                      ? colorScheme.onSurface
-                      : colorScheme.onPrimary;
+                  return colorScheme.primary;
                 }),
                 shape: WidgetStateProperty.all(buttonShape),
               ),
