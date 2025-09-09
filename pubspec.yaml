@@ -1,11 +1,11 @@
 name: jbm_nikel_mobile
 description: JBM Nikel Mobile
 publish_to: "none"
-version: 1.2.106+175
+version: 1.2.107+176
 
 environment:
-  sdk: ">=3.7.0 <4.0.0"
-  flutter: ^3.29.0
+  sdk: "3.9.0"
+  flutter: ^3.35.2
 
 dependencies:
   flutter_localizations:
@@ -48,7 +48,7 @@ dependencies:
   json_annotation: ^4.9.0
   jwt_decoder: ^2.0.1
   logger: ^2.6.1
-  map_launcher: ^4.4.0
+  map_launcher: ^4.4.2
   material_design_icons_flutter: ^7.0.7296
   money2: ^6.0.5
   package_info_plus: ^8.3.1
